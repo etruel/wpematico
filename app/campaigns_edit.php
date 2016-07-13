@@ -69,8 +69,10 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 			foreach ($cttype->show as $show) {
 				if($CampaignType == $cttype->value) {
 					echo "#$show {display: block;}";
-					foreach ($cttype->hide as $hide) {  //proceso solo los hide del type seleccionado
-						echo "#$hide {display: none;}";
+					if(isset($cttype->hide) ) {  //proceso solo los hide del type seleccionado
+						foreach ($cttype->hide as $hide) {  //proceso solo los hide del type seleccionado
+							echo "#$hide {display: none;}";
+						}
 					}
 				}else{
 					echo "#$show {display: none;}";
@@ -568,11 +570,6 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 			$('#campaign_type').change(function() {
 				displayCTboxes();
 			});
-			
-			
-			
-			
-			
 			
 
 			jQuery(".help_tip").tipTip({maxWidth: "400px", edgeOffset: 5,fadeIn:50,fadeOut:50, keepAlive:true, defaultPosition: "right"});
