@@ -44,12 +44,12 @@ class WPeMatico_Campaign_edit_functions {
 	
 		//*************************************************************************************
 	static function campaign_type_box() {
-		global $post;
+		global $post, $campaign_data;
 		$options = self::campaign_type_options();
 		$readonly = ( count($options) == 1 ) ? 'disabled' : '';			
 		$echoHtml = '<select id="campaign_type" '.$readonly.' name="campaign_type" style="display:inline;">';
 		foreach($options as $key => $option) {
-			$echoHtml .= '<option value="'.$option["value"].'">'.$option["text"].'</option>';
+			$echoHtml .= '<option value="'.$option["value"].'"'.  selected( $option["value"], $campaign_data["campaign_type"], false ).'>'.$option["text"].'</option>';
 		}
 		$echoHtml .= '</select>';
 

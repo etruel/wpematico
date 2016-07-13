@@ -175,6 +175,8 @@ class WPeMatico_functions {
 		//$campaigndata['campaign_id'] = $post_id;
 		$campaigndata['campaign_title'] = (isset($post_data['campaign_title']) && !empty($post_data['campaign_title']) ) ? $post_data['campaign_title'] : get_the_title($campaigndata['ID']);
 
+		$campaigndata['campaign_type']	= (!isset($post_data['campaign_type']) ) ? 'feed': $post_data['campaign_type'];
+
 		$campaigndata['campaign_posttype']	= (!isset($post_data['campaign_posttype']) ) ? 'publish': $post_data['campaign_posttype'];
 		$campaigndata['campaign_customposttype']	= (!isset($post_data['campaign_customposttype']) ) ? 'post': $post_data['campaign_customposttype'];
 		$arrTaxonomies = get_object_taxonomies($campaigndata['campaign_customposttype']);
