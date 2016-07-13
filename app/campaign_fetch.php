@@ -94,13 +94,12 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		$prime = true;
 
 		// Access the feed
-		if(has_filter('Wpematico_process_fetching')) {   //campaign_type
-			//do_action('Wpematico_process_fetching', $this->campaign);
-			$simplepie = apply_filters('Wpematico_process_fetching', $this->campaign);
-		}else {
-			// Access the feed
+		if($this->campaign['campaign_type']=="feed") { 		// Access the feed
 			$simplepie =  WPeMatico :: fetchFeed($feed, $this->cfg['set_stupidly_fast'], $this->campaign['campaign_max']);
+		}else {
+			$simplepie = apply_filters('Wpematico_process_fetching', $this->campaign);
 		}
+		do_action('Wpematico_process_fetching_'.$this->campaign['campaign_type'], $this);  // Wpematico_process_fetching_feed
 		foreach($simplepie->get_items() as $item) {
 			if($prime){
 				//Siempre guardo el PRIMERO leido por feed  (es el ultimo item, mas nuevo)
