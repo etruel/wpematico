@@ -42,7 +42,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		add_action('admin_head', array( __CLASS__ ,'campaigns_admin_head_style'));
 	}
 	public static function campaigns_admin_head_style() {
-		global $post;
+		global $post, $campaign_data;
 		if($post->post_type != 'wpematico') return $post_id;
 		?>
 <style type="text/css">
@@ -61,6 +61,23 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 	#fullcontent-box h2.hndle {background: #006100;	color: white;}
 	#submitdiv h2.hndle {background: #0085ba;	color: white;}
 	.ruedita{background: url(<?php echo admin_url('images/spinner.gif'); ?>) no-repeat;height: 10px;margin: 5px 3px 0;}
+	<?php
+		$CampaignTypesArray =  self::campaign_type_options();
+		$CampaignType = $campaign_data['campaign_type'];
+		foreach ($CampaignTypesArray as $type) {
+			$cttype = (object)$type;
+			foreach ($cttype->show as $show) {
+				if($CampaignType == $cttype->value) {
+					echo "#$show {display: block;}";
+					foreach ($cttype->hide as $hide) {  //proceso solo los hide del type seleccionado
+						echo "#$hide {display: none;}";
+					}
+				}else{
+					echo "#$show {display: none;}";
+				}
+			}
+		}
+	?>;	
 </style>
 		<?php
 	}
@@ -82,7 +99,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 	}
 	
 	public static function campaigns_admin_head() {
-		global $post;
+		global $post,$campaign_data;
 		if($post->post_type != 'wpematico') return $post_id;
 		$post->post_password = '';
 		$visibility = 'public';
@@ -526,6 +543,35 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 				$('#run_now').attr('disabled','disabled');
 				$('#run_now').attr('title','<?php _e('Save before Run Campaign', WPeMatico :: TEXTDOMAIN ); ?>');
 			}
+
+			<?php $CampaignTypesArray =  self::campaign_type_options();	?>
+			CampaignTypesArray = <?php echo wp_json_encode($CampaignTypesArray); ?>;
+			
+			displayCTboxes = function() {
+				var campaignType = $('#campaign_type').val();
+				for(var i in CampaignTypesArray) {
+					CampaignTypesArray[i].show.forEach( function(metabox) {
+						if(campaignType == CampaignTypesArray[i].value ) {
+							$('#' + metabox).fadeIn();
+							CampaignTypesArray[i].hide.forEach( function(metab) {
+								$('#' + metab).fadeOut();
+							});
+						}else{
+							$('#' + metabox).fadeOut();
+						}
+					});
+				}
+			}
+			
+			$('#campaign_type').change(function() {
+				displayCTboxes();
+			});
+			
+			
+			
+			
+			
+			
 
 			jQuery(".help_tip").tipTip({maxWidth: "400px", edgeOffset: 5,fadeIn:50,fadeOut:50, keepAlive:true, defaultPosition: "right"});
 

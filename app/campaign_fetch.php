@@ -94,7 +94,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		$prime = true;
 
 		// Access the feed
-		if(has_filter('Wpematico_process_fetching')) {
+		if(has_filter('Wpematico_process_fetching')) {   //campaign_type
 			//do_action('Wpematico_process_fetching', $this->campaign);
 			$simplepie = apply_filters('Wpematico_process_fetching', $this->campaign);
 		}else {
