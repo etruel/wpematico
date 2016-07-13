@@ -553,9 +553,11 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 					CampaignTypesArray[i].show.forEach( function(metabox) {
 						if(campaignType == CampaignTypesArray[i].value ) {
 							$('#' + metabox).fadeIn();
-							CampaignTypesArray[i].hide.forEach( function(metab) {
-								$('#' + metab).fadeOut();
-							});
+							if(CampaignTypesArray[i].hasOwnProperty('hide')){
+								CampaignTypesArray[i].hide.forEach( function(metab) {
+									$('#' + metab).fadeOut();
+								});
+							}
 						}else{
 							$('#' + metabox).fadeOut();
 						}
