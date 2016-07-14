@@ -163,6 +163,7 @@ class WPeMatico_functions {
 		global $post, $cfg;
 		if(is_null($cfg)) $cfg = get_option(WPeMatico::OPTION_KEY);
 
+		$campaigndata = array();
 		if(isset($post_data['ID']) && !empty($post_data['ID']) ) {
 			$campaigndata['ID']=$post_data['ID'];
 		}elseif(isset($post_data['campaign_id']) && !empty($post_data['campaign_id']) ) {
@@ -170,6 +171,7 @@ class WPeMatico_functions {
 		}elseif( isset($post->ID) && $post->ID > 0 ) {
 			$campaigndata['ID']=$post->ID;
 		}else{
+			$campaigndata['ID']=0;
 		}
 		
 		//$campaigndata['campaign_id'] = $post_id;
