@@ -14,8 +14,8 @@ If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/
 
 
 ### [**Current Version in Wordpress**](https://wordpress.org/plugins/wpematico/)
-
 ### [**Screenshots**](https://wordpress.org/plugins/wpematico/screenshots/)
+
 
 #### FEATURES:
 * Campaigns Feeds and options are organized into campaigns.
@@ -59,4 +59,3 @@ If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/
 
 
 Don't hesitate to [give your feedback](https://wordpress.org/support/view/plugin-reviews/wpematico#postform). It will help making the plugin better.
-
