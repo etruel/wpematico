@@ -1,15 +1,6 @@
-=== WPeMatico WP Plugin ===
+### WPeMatico WP Plugin 
 
 **Repository for beta or in-development version of WPeMatico Wordpress Plugin**
-
-
-Contributors: etruel
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
-Tags: RSS, RSS to Post, Feed to Post, autoblog,rss aggregator, Feed, rss to post, syndication, Post, Posts, aggregation, atom, bot, content, writing
-Requires at least: 3.9
-Tested up to: 4.6
-Stable tag: trunk
-License: GPLv2 or later
 
 WPeMatico is autoblogging in the blink of an eye!  On complete autopilot WPeMatico gets new contents regularly for your site!
 
@@ -53,15 +44,15 @@ If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/
 > * Option to choose what roles can see the dashboard widget.
 > * Multilanguage ready.
  
-> #### **[Professional Add-on](https://etruel.com/downloads/wpematico-professional/):**
-> #### **[FULL Content](https://etruel.com/downloads/wpematico-full-content/):**
-> #### **[Make me Feed "Good"](https://etruel.com/downloads/wpematico-make-feed-good/):**
-> #### **[Facebook Fetcher](https://etruel.com/downloads/wpematico-facebook-fetcher/):**
-> #### **[Better Excerpts](https://etruel.com/downloads/wpematico-better-excerpts/):**
-> #### **[Publish 2 Email](https://etruel.com/downloads/wpematico-publish-2-email/):**
-> #### **[Categories 2 Tags](https://etruel.com/downloads/wpematico-cats2tags/):**
-> #### **[WPeMatico SMTP](https://etruel.com/downloads/wpematico-smtp/):**
-> #### **[Chinese tags](https://etruel.com/downloads/wpematico/chinese-tags):**
+#### **[Professional Add-on](https://etruel.com/downloads/wpematico-professional/):**
+#### **[FULL Content](https://etruel.com/downloads/wpematico-full-content/):**
+#### **[Make me Feed "Good"](https://etruel.com/downloads/wpematico-make-feed-good/):**
+#### **[Facebook Fetcher](https://etruel.com/downloads/wpematico-facebook-fetcher/):**
+#### **[Better Excerpts](https://etruel.com/downloads/wpematico-better-excerpts/):**
+#### **[Publish 2 Email](https://etruel.com/downloads/wpematico-publish-2-email/):**
+#### **[Categories 2 Tags](https://etruel.com/downloads/wpematico-cats2tags/):**
+#### **[WPeMatico SMTP](https://etruel.com/downloads/wpematico-smtp/):**
+#### **[Chinese tags](https://etruel.com/downloads/wpematico/chinese-tags):**
 
 
 = Do you like WPeMatico? =
@@ -83,12 +74,3 @@ Don't hesitate to [give your feedback](https://wordpress.org/support/view/plugin
 1. Editing a complete campaign. 
 
 1. SimplePie Requirements Tests.
-
-
-= Contributions =
-
-You can contribute with WPeMatico
-
-Don't hesitate to [give your feedback](https://wordpress.org/support/view/plugin-reviews/wpematico#postform). It will help making the plugin better. Other contributions (such as new translations or helping other users on the support forum) are welcome !
-
-
