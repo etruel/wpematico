@@ -13,8 +13,8 @@ This plugin offers you a nice interface following the WordPress standards that a
 If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/plugin-reviews/wpematico?rate=5#postform) on Wordpress. Thanks! :)
 
 
-### [**Current Version in Wordpress**](https://wordpress.org/plugins/wpematico/)
-### [**Screenshots**](https://wordpress.org/plugins/wpematico/screenshots/)
+#### [**Current Version in Wordpress**](https://wordpress.org/plugins/wpematico/)
+#### [**Screenshots**](https://wordpress.org/plugins/wpematico/screenshots/)
 
 
 #### FEATURES:
@@ -43,7 +43,7 @@ If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/
 * Multilanguage ready.
 
 
-### Add-ons:
+### [Add-ons](https://etruel.com):
 * [Professional Add-on](https://etruel.com/downloads/wpematico-professional/)
 * [FULL Content](https://etruel.com/downloads/wpematico-full-content/)
 * [Make me Feed "Good"](https://etruel.com/downloads/wpematico-make-feed-good/)
