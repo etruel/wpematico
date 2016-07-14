@@ -471,12 +471,16 @@ class WPEMATICO_Welcome {
 	 * time WPEMATICO is upgraded to a new version
 	 *
 	 * @access public
-	 * @since 1.4
+	 * @since 1.3.8
 	 * @return void
 	 */
 	public function welcome() {
 		// Bail if no activation redirect
 		if ( ! get_transient( '_wpematico_activation_redirect' ) )
+			return;
+		
+		// redirect if ! AJAX
+		if((defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) || (defined('DOING_AJAX') && DOING_AJAX) || isset($_REQUEST['bulk_edit']))
 			return;
 
 		// Delete the redirect transient
@@ -485,9 +489,10 @@ class WPEMATICO_Welcome {
 		// Bail if activating from network, or bulk
 		if ( is_network_admin() || isset( $_GET['activate-multi'] ) )
 			return;
-
-		$upgrade = get_option( 'WPeMatico_Options' );
-
+		
+		$upgrade = get_option( 'wpematico_db_version' );
+		update_option( 'wpematico_db_version', WPEMATICO_VERSION );
+			
 		if( ! $upgrade ) { // First time install
 			wp_safe_redirect( admin_url( 'index.php?page=wpematico-getting-started' ) ); exit;
 		} else { // Update

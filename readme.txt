@@ -256,6 +256,10 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
+= 1.3.8.1 =
+* Fixes Welcome screen on upgrading the plugin.
+* Fixes missing fields that were generating errors or crashed campaigns when running.
+
 = 1.3.8 =
 * Added New Feature Campaign Types to improve the plugin and the addons.
 * New Feature to work with **Youtube standard feeds.** First approach.
@@ -804,5 +808,5 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 1.3.8 =
+= 1.3.8.1 =
 * Some improvements and fixes. See changelog for more details.

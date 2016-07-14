@@ -54,20 +54,24 @@ function wpematico_row_meta($data, $page)	{
 
 /***************************************************************************************
 /***************************************************************************************
- * Activation and uninstall functions
+ * Activation, Upgrading and uninstall functions
  **************************************************************************************/
 register_activation_hook( WPEMATICO_BASENAME, 'wpematico_activate' );
 register_deactivation_hook( WPEMATICO_BASENAME, 'wpematico_deactivate' );
 register_uninstall_hook( WPEMATICO_BASENAME, 'wpematico_uninstall' );
 
-/**
- * activation
- * @return void
- */
-function wpematico_activate() {
-	WPeMatico :: Create_campaigns_page();
-	// ATTENTION: This is *only* done during plugin activation hook // You should *NEVER EVER* do this on every page load!!
-	flush_rewrite_rules();			
+add_action( 'plugins_loaded', 'wpematico_update_db_check' );
+
+function wpematico_update_db_check() {
+	if (version_compare(WPEMATICO_VERSION, get_option( 'wpematico_db_version' ), '>')) { // check if updated (will save new version on welcome )
+		if ( !get_transient( '_wpematico_activation_redirect' ) ){ //just one time running
+	        wpematico_install();
+		}
+    }
+}
+
+
+function wpematico_install(){
 	//tweaks old campaigns data, now saves meta for columns
 	$campaigns_data = array();
 	$args = array(
@@ -79,17 +83,30 @@ function wpematico_activate() {
 	$campaigns = get_posts( $args );
 	foreach( $campaigns as $post ):
 		$campaigndata = WPeMatico::get_campaign( $post->ID );	
-		$campaigndata = apply_filters('wpematico_check_campaigndata', $campaigndata);
+//		$campaigndata = apply_filters('wpematico_check_campaigndata', $campaigndata);
 		WPeMatico::update_campaign($post->ID, $campaigndata);
 	endforeach; 
 
+	// Add the transient to redirect
+	set_transient( '_wpematico_activation_redirect', true, 120 );
+
+}
+
+/**
+ * activation
+ * @return void
+ */
+function wpematico_activate() {
+	WPeMatico :: Create_campaigns_page();
+	// ATTENTION: This is *only* done during plugin activation hook // You should *NEVER EVER* do this on every page load!!
+	flush_rewrite_rules();
+	
+	// Call installation and update routines
+    wpematico_install();
+	
 	wp_clear_scheduled_hook('wpematico_cron');
 	//make schedule
 	wp_schedule_event(0, 'wpematico_int', 'wpematico_cron'); 
-	
-	// Add the transient to redirect
-	set_transient( '_wpematico_activation_redirect', true, 30 );
-
 }
 
 /**

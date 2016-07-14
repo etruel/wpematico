@@ -147,7 +147,7 @@ class WPeMatico_functions {
 		}
 		$campaign_data = get_post_meta( $post_id , 'campaign_data' );
 		$campaign_data = ( isset($campaign_data[0]) ) ? $campaign_data[0] : array(0) ;
-		$campaigndata['campaign_title'] = get_the_title($post_id);
+		$campaign_data = apply_filters('wpematico_check_campaigndata', $campaign_data);
 		return $campaign_data;
 	}
 	

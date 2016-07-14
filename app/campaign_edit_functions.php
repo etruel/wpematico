@@ -13,7 +13,7 @@ class WPeMatico_Campaign_edit_functions {
 		global $post, $current_screen, $campaign_data, $cfg, $helptip; 
 		require( dirname( __FILE__ ) . '/campaign_help.php' );
 		$campaign_data = WPeMatico :: get_campaign ($post->ID);
-		$campaign_data = apply_filters('wpematico_check_campaigndata', $campaign_data);
+//		$campaign_data = apply_filters('wpematico_check_campaigndata', $campaign_data);
 		$cfg = get_option(WPeMatico :: OPTION_KEY);
 		$cfg = apply_filters('wpematico_check_options', $cfg);
 
