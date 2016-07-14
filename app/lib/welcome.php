@@ -34,7 +34,7 @@ class WPEMATICO_Welcome {
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'admin_menus') );
 		add_action( 'admin_head', array( $this, 'admin_head' ) );
-		add_action( 'admin_init', array( $this, 'welcome'    ) );
+		add_action( 'admin_init', array( $this, 'welcome'    ), 11 );
 	}
 
 	/**
@@ -49,7 +49,7 @@ class WPEMATICO_Welcome {
 		// About Page
 		add_dashboard_page(
 			__( 'Welcome to WPeMatico', 'wpematico' ),
-			__( 'Welcome to WPeMatico', 'wpematico' ),
+			__( 'WPeMatico News', 'wpematico' ),
 			$this->minimum_capability,
 			'wpematico-about',
 			array( $this, 'about_screen' )
@@ -74,7 +74,7 @@ class WPEMATICO_Welcome {
 		);
 
 		// Now remove them from the menus so plugins that allow customizing the admin menu don't show them
-		remove_submenu_page( 'index.php', 'wpematico-about' );
+//		remove_submenu_page( 'index.php', 'wpematico-about' );
 		remove_submenu_page( 'index.php', 'wpematico-changelog' );
 		remove_submenu_page( 'index.php', 'wpematico-getting-started' );
 	}
@@ -174,6 +174,25 @@ class WPEMATICO_Welcome {
 			?>
 
 			<div class="changelog">
+				<h3><?php _e( 'Including Campaign Types.', 'wpematico' );?></h3>
+				<div class="feature-section">
+					<div class="feature-section-media">
+						<img src="<?php echo WPEMATICO_PLUGIN_URL . 'images/ctypes.png'; ?>"/>
+					</div>
+					<div class="feature-section-content">
+						<h4><?php _e( 'Youtube Fetcher', 'wpematico' );?></h4>
+						<p><?php _e( 'We implemented a new feature that, until now, was not working and that many asked for it: Fetch the feeds of channels or users of YouTube videos!', 'wpematico' );?></p>
+						<p><?php _e( 'Is a first step using them <b>Youtube standard feeds</b> without need of the API to make a content with the image outstanding, the video embedded and the description below.', 'wpematico' );?></p>
+
+						<h4><?php _e( 'Campaign Types', 'wpematico' );?></h4>
+						<p><?php _e( 'In addition to the feeds from Youtube, we have incorporated a new feature that will allow a powerful fetching. The types of campaign will improve the plugin for new plug-ins and will allow new sources different of RSS.', 'wpematico' );?></p>
+
+						<p><?php _e('The','wpematico'); ?> <a href="https://etruel.com/?post_type=download&p=6576&preview=true" target="_blank">WPeMatico Facebook Fetcher Add-On</a> <?php _e( 'uses this new feature allowing the users to use WPeMatico to get content from Facebook Pages and/or Groups.', 'wpematico' );?></p>
+					</div>
+				</div>
+			</div>
+
+			<div class="changelog">
 				<h3><?php _e( 'WPeMatico is changing its look.', 'wpematico' );?></h3>
 				<div class="feature-section">
 					<div class="feature-section-media">
@@ -254,7 +273,7 @@ class WPEMATICO_Welcome {
 							<p><?php _e( 'The extensions plugins were separated from the standard Wordpress plugins page to get a better management of all WPeMatico Addons.', 'wpematico' );?></p>
 						</div>
 						<div class="col">
-							<h4><?php _e( 'Rate 5 stars on Wordpress', 'wpematico' );?><div class="wporg-ratings" title="5 out of 5 stars" style="color:#ffb900;float: right;"><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span></div></h4>
+							<h4><a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#postform" target="_blank"><?php _e( 'Rate 5 stars on Wordpress', 'wpematico' );?></a><div class="wporg-ratings" title="5 out of 5 stars" style="color:#ffb900;float: right;"><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span></div></h4>
 							<p><?php _e( 'We need your positive rating of 5 stars in WordPress. Your comment will be published on the bottom of the website and besides it will help making the plugin better.', 'wpematico' );?></p>
 						</div>
 					</div>

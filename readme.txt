@@ -247,6 +247,7 @@ or to e-mail etruel@gmail.com
 = 1.3.8 =
 * Added New Feature Campaign Types to improve the plugin and the addons.
 * New Feature to work with **Youtube standard feeds.** First approach.
+* Added Dashboard page to access to Last News and "Getting started" texts.
 * Added New filters to allow new Campaign Types.
 * Added new parameter $item to the filter 'wpematico_inserted_post'.
 * Fixes an issue on a filter uploading the featured images.
