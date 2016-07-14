@@ -97,6 +97,18 @@ If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/
 
 ---
 
+> #### **[Facebook Fetcher](https://etruel.com/downloads/wpematico-facebook-fetcher/):**
+> * Uses the whole WPeMatico campaign data to obtain the content from Facebook to be published automatically.
+> * Imports from Facebook Groups or Pages.
+> * You can get from all pages/groups as you want, just adding one WPeMatico campaign per facebook page/group.
+> * Very easy auto-identification og Page ID and Group ID by filling the field with the URL.
+> * Also imports the image in big size.
+> * You can import also the comments in facebook with the names of the commenters to your site.
+> * You can set exactly when must run by setting the scheduler in the WPeMatico campaign.
+> * Duplicates control.  You can allow duplicates if you set the option in WPeMatico Settings.
+
+---
+
 > #### **[Better Excerpts](https://etruel.com/downloads/wpematico-better-excerpts/):**
 > * Set nice and better excerpts in front-end and also in feed contents.
 > * Set max size in chars, but cuts the excerpts at the previous end of sentence.
@@ -251,10 +263,11 @@ or to e-mail etruel@gmail.com
 * Added New filters to allow new Campaign Types.
 * Added new parameter $item to the filter 'wpematico_inserted_post'.
 * Fixes an issue on a filter uploading the featured images.
+* Fixes some issues getting images from text and stripping img tags from html.
 * Fixes an issue with some themes that hide the 'clear' CSS class in metaboxes.
 * Fixes some other minor bugs.
 * **NEW ADDON** : **WPeMatico Facebook Fetcher**
-* Allow publish posts from FB pages or groups in every campaign with FB APP Credentials.
+* Allow publish posts from Facebook pages or groups in every campaign with Fb APP Credentials.
 
 = 1.3.7.2 =
 * Added dinamic search for categories in campaign editing.

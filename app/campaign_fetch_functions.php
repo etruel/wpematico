@@ -470,19 +470,23 @@ class wpematico_campaign_fetch_functions {
 	static function strip_Image_by_src($src, $content, $withlink=true){
 		trigger_error( sprintf( __("Removing: %s from content." , WPeMatico :: TEXTDOMAIN ),'"'. $src .'"' ) , E_USER_NOTICE);
 		if($withlink){
-			$imgtag = '|<a(.+?)><img(.+?)src=\"'.addslashes($src).'\"(.*?)><\/a>|';
+			$imgtag = '|<a(.+?)><img(.+?)src=["\']'.addslashes($src).'["\'](.*?)><\/a>|';
 			$current_content = preg_replace( $imgtag, '',  $content );  //for tag img with a
 			$content = ( is_null($current_content) ) ? $content : $current_content ;  //for tag img with a
 		}		
-		$imgtag = '|<img(.+?)src=\"'.addslashes($src).'\"(.*?)>|';
+		$imgtag = '|<img(.+?)src=["\']'.addslashes($src).'["\'](.*?)>|';
 		$current_content = preg_replace( $imgtag, '',  $content );  //for tag img without a
 		$content = ( is_null($current_content) ) ? $content : $current_content ;  //for tag img with a
 		return $content;
 	}
 
 	/*** Devuelve todas las imagenes del contenido	*/
-	static function parseImages($text){    
-		preg_match_all('/<img(.+?)src=\"(.+?)\"(.*?)>/', $text, $out);  //for tag img
+	static function parseImages($text){
+		preg_match_all('/<img[^>]+>/i',$text, $result);
+		$imgstr = implode('', $result[0]);
+//		preg_match_all('/<img(.+?)src=["\'](.+?)["\'](.*?)>/', $imgstr , $out);  //for tag img con ' o "
+		preg_match_all('/<\s*img[^\>]*src\s*=\s*[\""\']?([^\""\'\s>]*)/', $imgstr, $out);  // patch to ignore iframes src
+		$out[2] = $out[1];
 		preg_match_all('/<link rel=\"(.+?)\" type=\"image\/jpg\" href=\"(.+?)\"(.+?)\/>/', $text, $out2); // for rel=enclosure
 		array_push($out,$out2);  // sum all items to array 
 		return $out;
@@ -507,7 +511,7 @@ class wpematico_campaign_fetch_functions {
 			$img = apply_filters('wpematico_yt_thumbnails', $enclosures[0]->thumbnails[0]);
 			$description = apply_filters('wpematico_yt_description', $enclosures[0]->description);
 			
-			$content = "<img src='$img' alt='$title'><br>$video<p>$description</p>";
+			$content = "<img src=\"$img\" alt=\"$title\"><br>$video<p>$description</p>";
 		}
 		return $content;
 	}
