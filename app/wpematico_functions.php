@@ -202,7 +202,18 @@ class WPeMatico_functions {
 		
 		$campaigndata['cron'] = (!isset($post_data['cronminutes']) ) ? ( (!isset($post_data['cron']) ) ? '0 3 * * *' : $post_data['cron'] ) : WPeMatico :: cron_string($post_data);
 		
-		$campaigndata['cronnextrun']= (isset($post_data['cronnextrun']) && !empty($post_data['cronnextrun']) ) ? (int)$post_data['cronnextrun'] :  (int)WPeMatico :: time_cron_next($campaigndata['cron']);
+		//Patch Cron Next run
+		//$campaigndata['cronnextrun']= (isset($post_data['cronnextrun']) && !empty($post_data['cronnextrun']) ) ? (int)$post_data['cronnextrun'] :  (int)WPeMatico :: time_cron_next($campaigndata['cron']);
+		if (isset($post_data['cronnextrun']) && !empty($post_data['cronnextrun']) ) {
+			if ( $post_data['cronnextrun'] <= current_time('timestamp') && $campaigndata['activated'] ) {
+				$campaigndata['cronnextrun']= (int)WPeMatico :: time_cron_next($campaigndata['cron']);
+			}else{
+				$campaigndata['cronnextrun']= (int)$post_data['cronnextrun'];
+			}
+		}else{
+			$campaigndata['cronnextrun']= (int)WPeMatico :: time_cron_next($campaigndata['cron']);
+		}
+		
 		// Direccion de e-mail donde enviar los logs
 		$campaigndata['mailerroronly']	= (!isset($post_data['mailerroronly']) || empty($post_data['mailerroronly'])) ? false: ($post_data['mailerroronly']==1) ? true : false;
 		$campaigndata['mailaddresslog']	= (!isset($post_data['mailaddresslog']) ) ? '' : sanitize_email( $post_data['mailaddresslog'] );
