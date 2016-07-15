@@ -29,6 +29,9 @@ function wpem_cron_callback() {
 		if ( !$activated )
 			continue;
 		if ( $cronnextrun <= current_time('timestamp') ) {
+			$campaign['cronnextrun']= (int)WPeMatico :: time_cron_next($campaign['cron']);
+			$this->update_campaign($post->ID, $campaign);  //Save Campaign new data
+
 			WPeMatico :: wpematico_dojob( $post->ID );
 		}
 	}
