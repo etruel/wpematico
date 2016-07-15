@@ -151,6 +151,12 @@ if ( !class_exists( 'WPeMatico' ) ) {
 				$campaigns = get_posts( $args );
 				foreach( $campaigns as $post ) {
 					$campaign = $this->get_campaign( $post->ID );
+					//Patch Cron Next run
+					if ( $campaign['cronnextrun'] <= current_time('timestamp') && $campaign['activated'] ) {
+						$campaign['cronnextrun']= (int)WPeMatico :: time_cron_next($campaign['cron']);
+						$this->update_campaign($post->ID, $campaign);  //Save Campaign new data
+					}
+					
 					$starttime = @$campaign['starttime']; 
 					if ($starttime>0) {
 						$runtime=current_time('timestamp')-$starttime;
