@@ -44,7 +44,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
 		//Set job start settings
 		$this->campaign['starttime']		= current_time('timestamp'); //set start time for job
-		$this->campaign['cronnextrun']		= WPeMatico :: time_cron_next($this->campaign['cron']); //set next run
+		$this->campaign['cronnextrun']		= (int)WPeMatico :: time_cron_next($this->campaign['cron']); //set next run
 		$this->campaign['lastpostscount'] 	= 0; // Lo pone en 0 y lo asigna al final		
 		WPeMatico :: update_campaign($this->campaign_id, $this->campaign); //Save start time data
 		//

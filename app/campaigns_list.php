@@ -579,7 +579,8 @@ class WPeMatico_Campaigns {
 				
 			}elseif ($activated) { // Running play gris & grab rojo & stop gris
 				//$campaign_data['cronnextrun']= WPeMatico :: time_cron_next($campaign_data['cron']); //set next run, ver por que no actualizae el cron
-				$cronnextrun = get_post_meta($post_id, 'cronnextrun', true);
+//				$cronnextrun = $campaign_data['cronnextrun']; //get_post_meta($post_id, 'cronnextrun', true);
+				$cronnextrun = WPeMatico :: time_cron_next($campaign_data['cron']);
 				$cronnextrun = (isset($cronnextrun) && !empty($cronnextrun) && ($cronnextrun > 0 ) ) ? $cronnextrun : $campaign_data['cronnextrun']; 
 				$ltitle =  __('Next Run:', 'wpematico' ).' '.date_i18n( get_option('date_format').' '. get_option('time_format'), $cronnextrun );
 				$lbotones = "<a class='statebutton play' href='JavaScript:run_now({$post->ID});' title='" . esc_attr(__('Run Once', 'wpematico')) . "'></a>";// To run now

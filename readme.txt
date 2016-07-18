@@ -257,7 +257,8 @@ or to e-mail etruel@gmail.com
 
 == Changelog ==
 = 1.3.8.2 =
-* Fixes don't refreshing the Next Run Cron time.
+* Many fixes on processing and showing Next Run Cron time across the screens.
+* Fixes notices on checking if a campaign are running.
 
 = 1.3.8.1 =
 * Fixes Welcome screen on upgrading the plugin.

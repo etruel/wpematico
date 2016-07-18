@@ -254,7 +254,8 @@ class WPeMatico_functions {
 		$campaigndata['lastpostscount']	= (!isset($post_data['lastpostscount']) ) ? 0: (int)$post_data['lastpostscount'];
 		$campaigndata['lastrun']	= (!isset($post_data['lastrun']) ) ? 0: (int)$post_data['lastrun'];
 		$campaigndata['lastruntime']	= (!isset($post_data['lastruntime']) ) ? 0: (int)$post_data['lastruntime'];
-		
+
+		$campaigndata['starttime']	= (!isset($post_data['starttime']) ) ? 0: (int)$post_data['starttime'];		
 
 		//campaign_categories & tags		
 		if (in_array('post_tag', $arrTaxonomies)) {
