@@ -1,7 +1,6 @@
 <?php
 /**
- * Weclome Page Class
- *
+ * Welcome Page Class
  * @package     WPEMATICO
  * @subpackage  Admin/Welcome
  * @copyright   Copyright (c) 2015, Pippin Williamson
@@ -184,10 +183,10 @@ class WPEMATICO_Welcome {
 						<p><?php _e( 'We implemented a new feature that, until now, was not working and that many asked for it: Fetch the feeds of channels or users of YouTube videos!', 'wpematico' );?></p>
 						<p><?php _e( 'Is a first step using them <b>Youtube standard feeds</b> without need of the API to make a content with the image outstanding, the video embedded and the description below.', 'wpematico' );?></p>
 
-						<h4><?php _e( 'Campaign Types', 'wpematico' );?></h4>
+						<h4><?php _e( 'Introducing Campaign Types', 'wpematico' );?></h4>
 						<p><?php _e( 'In addition to the feeds from Youtube, we have incorporated a new feature that will allow a powerful fetching. The types of campaign will improve the plugin for new plug-ins and will allow new sources different of RSS.', 'wpematico' );?></p>
 
-						<p><?php _e('The','wpematico'); ?> <a href="https://etruel.com/?post_type=download&p=6576&preview=true" target="_blank">WPeMatico Facebook Fetcher Add-On</a> <?php _e( 'uses this new feature allowing the users to use WPeMatico to get content from Facebook Pages and/or Groups.', 'wpematico' );?></p>
+						<p><?php _e('The','wpematico'); ?> <a href="https://etruel.com/downloads/wpematico-facebook-fetcher/" target="_blank">WPeMatico Facebook Fetcher Add-On</a> <?php _e( 'uses this new feature allowing the users to use WPeMatico to get content from Facebook Pages and/or Groups.', 'wpematico' );?></p>
 					</div>
 				</div>
 			</div>

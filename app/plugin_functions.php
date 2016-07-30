@@ -65,13 +65,13 @@ add_action( 'plugins_loaded', 'wpematico_update_db_check' );
 function wpematico_update_db_check() {
 	if (version_compare(WPEMATICO_VERSION, get_option( 'wpematico_db_version' ), '>')) { // check if updated (will save new version on welcome )
 		if ( !get_transient( '_wpematico_activation_redirect' ) ){ //just one time running
-	        wpematico_install();
+	        wpematico_install( false );
 		}
     }
 }
 
 
-function wpematico_install(){
+function wpematico_install( $update_campaigns = false ){
 	//tweaks old campaigns data, now saves meta for columns
 	$campaigns_data = array();
 	$args = array(
@@ -83,12 +83,11 @@ function wpematico_install(){
 	$campaigns = get_posts( $args );
 	foreach( $campaigns as $post ):
 		$campaigndata = WPeMatico::get_campaign( $post->ID );	
-//		$campaigndata = apply_filters('wpematico_check_campaigndata', $campaigndata);
 		WPeMatico::update_campaign($post->ID, $campaigndata);
 	endforeach; 
 
 	// Add the transient to redirect
-	set_transient( '_wpematico_activation_redirect', true, 120 );
+	set_transient( '_wpematico_activation_redirect', true, 120 ); // After two minutes lost welcome screen
 
 }
 
@@ -144,8 +143,10 @@ function wpematico_uninstall() {
 			}
 		}
 	}
-	if ($danger['wpemdeleoptions'])
+	if ($danger['wpemdeleoptions']) {
 		delete_option( WPeMatico :: OPTION_KEY );
+		delete_option( 'wpematico_db_version' );
+	}
 	//delete campaigns
 	if($danger['wpemdelecampaigns']) {
 		$args = array( 'post_type' => 'wpematico', 'orderby' => 'ID', 'order' => 'ASC' );

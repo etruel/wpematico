@@ -611,85 +611,59 @@ class WPeMatico_functions {
 				if (strstr($value,'/'))
 					list($value,$step)=explode('/',$value,2);
 				//replase weekeday 7 with 0 for sundays
-				if ($cronarraykey=='wday')
-					$value=str_replace('7','0',$value);
+				if ($cronarraykey=='wday') $value=str_replace('7','0',$value);
 				//ranges
 				if (strstr($value,'-')) {
 					list($first,$last)=explode('-',$value,2);
 					if (!is_numeric($first) or !is_numeric($last) or $last>60 or $first>60) //check
 						return false;
-					if ($cronarraykey=='minutes' and $step<5)  //set step ninmum to 5 min.
-						$step=5;
+					if ($cronarraykey=='minutes' and $step<5) $step=5; //set step in num to 5 min.
+
 					$range=array();
-					for ($i=$first;$i<=$last;$i=$i+$step)
-						$range[]=$i;
+					for ($i=$first;$i<=$last;$i=$i+$step) $range[]=$i;
+					
 					$cron[$cronarraykey]=array_merge($cron[$cronarraykey],$range);
 				} elseif ($value=='*') {
 					$range=array();
 					if ($cronarraykey=='minutes') {
-						if ($step<5) //set step ninmum to 5 min.
-							$step=5;
-						for ($i=0;$i<=59;$i=$i+$step)
-							$range[]=$i;
+						if ($step<5) $step=5; //set step in mum to 5 min.
+						for ($i=0;$i<=59;$i=$i+$step) $range[]=$i;
 					}
 					if ($cronarraykey=='hours') {
-						for ($i=0;$i<=23;$i=$i+$step)
-							$range[]=$i;
+						for ($i=0;$i<=23;$i=$i+$step) $range[]=$i;
 					}
 					if ($cronarraykey=='mday') {
-						for ($i=$step;$i<=31;$i=$i+$step)
-							$range[]=$i;
+						for ($i=$step;$i<=31;$i=$i+$step) $range[]=$i;
 					}
 					if ($cronarraykey=='mon') {
-						for ($i=$step;$i<=12;$i=$i+$step)
-							$range[]=$i;
+						for ($i=$step;$i<=12;$i=$i+$step) $range[]=$i;
 					}
 					if ($cronarraykey=='wday') {
-						for ($i=0;$i<=6;$i=$i+$step)
-							$range[]=$i;
+						for ($i=0;$i<=6;$i=$i+$step) $range[]=$i;
 					}
 					$cron[$cronarraykey]=array_merge($cron[$cronarraykey],$range);
 				} else {
 					//Month names
-					if (strtolower($value)=='jan')
-						$value=1;
-					if (strtolower($value)=='feb')
-						$value=2;
-					if (strtolower($value)=='mar')
-						$value=3;
-					if (strtolower($value)=='apr')
-						$value=4;
-					if (strtolower($value)=='may')
-						$value=5;
-					if (strtolower($value)=='jun')
-						$value=6;
-					if (strtolower($value)=='jul')
-						$value=7;
-					if (strtolower($value)=='aug')
-						$value=8;
-					if (strtolower($value)=='sep')
-						$value=9;
-					if (strtolower($value)=='oct')
-						$value=10;
-					if (strtolower($value)=='nov')
-						$value=11;
-					if (strtolower($value)=='dec')
-						$value=12;
+					if (strtolower($value)=='jan') $value=1;
+					if (strtolower($value)=='feb') $value=2;
+					if (strtolower($value)=='mar') $value=3;
+					if (strtolower($value)=='apr') $value=4;
+					if (strtolower($value)=='may') $value=5;
+					if (strtolower($value)=='jun') $value=6;
+					if (strtolower($value)=='jul') $value=7;
+					if (strtolower($value)=='aug') $value=8;
+					if (strtolower($value)=='sep') $value=9;
+					if (strtolower($value)=='oct') $value=10;
+					if (strtolower($value)=='nov') $value=11;
+					if (strtolower($value)=='dec') $value=12;
 					//Week Day names
-					if (strtolower($value)=='sun')
-						$value=0;
-					if (strtolower($value)=='sat')
-						$value=6;
-					if (strtolower($value)=='mon')
-						$value=1;
-					if (strtolower($value)=='tue')
-						$value=2;
-					if (strtolower($value)=='wed')
-						$value=3;
-					if (strtolower($value)=='thu')
-						$value=4;
-					if (strtolower($value)=='fri')
-						$value=5;
+					if (strtolower($value)=='sun') $value=0;
+					if (strtolower($value)=='mon') $value=1;
+					if (strtolower($value)=='tue') $value=2;
+					if (strtolower($value)=='wed') $value=3;
+					if (strtolower($value)=='thu') $value=4;
+					if (strtolower($value)=='fri') $value=5;
+					if (strtolower($value)=='sat') $value=6;
 					if (!is_numeric($value) or $value>60) //check
 						return false;
 					$cron[$cronarraykey]=array_merge($cron[$cronarraykey],array(0=>$value));

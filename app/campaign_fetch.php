@@ -102,7 +102,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		do_action('Wpematico_process_fetching_'.$this->campaign['campaign_type'], $this);  // Wpematico_process_fetching_feed
 		foreach($simplepie->get_items() as $item) {
 			if($prime){
-				//Siempre guardo el PRIMERO leido por feed  (es el ultimo item, mas nuevo)
+				//with first item get the hash of the last item (new) that will be saved.
 				$this->lasthash[$feed] = md5($item->get_permalink()); 
 				$prime=false;
 			}
@@ -111,7 +111,12 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			if( !$this->cfg['allowduplicates'] || !$this->cfg['allowduptitle'] || !$this->cfg['allowduphash'] ){
 				if( !$this->cfg['allowduphash'] ){
 					// chequeo a la primer coincidencia sale del foreach
-					$dupi = ( @$this->campaign[$feed]['lasthash'] == $this->currenthash[$feed] ); 
+					$lasthashvar = '_lasthash_'.sanitize_file_name($feed);
+					$hashvalue = get_post_meta( $this->campaign_id, $lasthashvar, true );
+					if (!isset( $this->campaign[$feed]['lasthash'] ) ) $this->campaign[$feed]['lasthash'] = '';
+					
+					$dupi = ( $this->campaign[$feed]['lasthash'] == $this->currenthash[$feed] ) || 
+								( $hashvalue == $this->currenthash[$feed] ); 
 					if ($dupi) {
 						trigger_error(sprintf(__('Found duplicated hash \'%1s\'', 'wpematico' ),$item->get_permalink()).': '.$this->currenthash[$feed] ,E_USER_NOTICE);
 						if( !$this->cfg['jumpduplicates'] ) {
@@ -148,7 +153,14 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		$realcount = 0;
 		foreach($items as $item) {					
 			$realcount++;
+			$this->currenthash[$feed] = md5($item->get_permalink()); // the hash of the current item feed 
 			$suma=$this->processItem($simplepie, $item, $feed);
+
+			$lasthashvar = '_lasthash_'.sanitize_file_name($feed);
+			$hashvalue = $this->currenthash[$feed];
+			add_post_meta( $this->campaign_id, $lasthashvar, $hashvalue, true )  or
+				update_post_meta( $this->campaign_id, $lasthashvar, $hashvalue );
+
 			if (isset($suma) && is_int($suma)) {
 				$realcount = $realcount + $suma;
 				$suma="";
@@ -422,8 +434,6 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
   	
 
 	
-	
-	
 	private function fetch_end() {
 		$this->campaign['lastrun'] 		  = $this->campaign['starttime'];
 		$this->campaign['lastruntime'] 	  = current_time('timestamp') - $this->campaign['starttime'];
@@ -431,9 +441,11 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		$this->campaign['postscount'] 	 += $this->fetched_posts; // Suma los posts procesados 
 		$this->campaign['lastpostscount'] = $this->fetched_posts; //  posts procesados esta vez
 
-		foreach($this->campaign['campaign_feeds'] as $feed) {    // Grabo el ultimo hash de cada feed
+/*		foreach($this->campaign['campaign_feeds'] as $feed) {    // Grabo el ultimo hash de cada feed
 			@$this->campaign[$feed]['lasthash'] = $this->lasthash[$feed]; // paraa chequear duplicados por el hash del permalink original
 		}
+*/		
+		do_action('Wpematico_end_fetching', $this->campaign, $this->fetched_posts );
 		if($this->cfg['nonstatic']){$this->campaign=NoNStatic::ending($this->campaign,$this->fetched_posts);}
 
 		WPeMatico :: update_campaign($this->campaign_id, $this->campaign);  //Save Campaign new data

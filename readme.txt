@@ -52,78 +52,50 @@ If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/
 #### With lots of amazing and professional features to work with images and content parsers/filters.
  
 > #### **[Professional Add-on](https://etruel.com/downloads/wpematico-professional/):**
-> * Allows to delete last HTML tag of post content.
-> * Import feed lists to a campaign.
-> * Automatic creation of author names based on source or custom typed author.
-> * Words count filters. Count how many words there are in the content to assign a category or skip the post.
-> * Content can be converted to text and reduced to a desired amount of words or letters.
-> * Keywords filtering. You can decide whether to skip a post for certain words in the title or in the content.
-> * Custom fields with dynamic values. 
-> * Filter and delete images in posts content just by width or height for every image.
-> * Filter Featured image by width or height on every post.
-> * You can upload or set the URL of a Default Featured image if an image is not found on the content.
-> * Custom title with/out counter.
-> * Strip HTML Tags from titles.
-> * Auto Tags Feature. Automatically generates tags taking words from the content. With filters.
-> * Supported Custom taxonomies for Custom Post Types.
+>   Extends WPeMatico with a lot of advanced functions and a lot of new features to parse and filter feed items contents, filters for featured, media, enclosure and in-content images, automatic tags generation, inserts custom fields with every post and much more.
+> * [Take a look to all its features by clicking here](https://etruel.com/downloads/wpematico-professional/)
  
 ---
 
 > #### **[FULL Content](https://etruel.com/downloads/wpematico-full-content/):**
+> This add-on takes the title and permalink of every feed item and scratches its web page to find the full content. 
+> Also allows to read the complete content for *multi-page articles* and gets the featured image from meta tags of source web page, Open Graph or Twitter images.
 > * Don't pay monthly fees until you see all what you can do with a onetime payment. ;-)
-> * Gets the full content of the article in the source site taken from every feed item permalink.
-> * If gets empty full content then takes the original feed item content.
-> * Reads complete content for *multi-page articles*.
-> * Gets the featured image from meta tags of source web page, Open Graph or Twitter images.
-> * Gets the title also from source web page instead of feed.
-> * Gets the date of the post from the source web page instead of feed.
-> * Gets the author also from source web page and optionally create it if not exist.
-> * Works automatically with 95% of the websites, but if not, allows set up a configuration file for every domain pointing to what section of the web page must be obtained.
-> * Option to force CURL access to source site.
-> * Fixes and corrects wrong HTML content.
-> * Includes a config file editor to add support for custom domains.
-> * Moves all the config files to a local folder to don't overwrite the config files when updates the plugin.
+> Works automatically with 95% of the websites, but if not, allows set up a configuration file for every domain pointing to what section of the web page must be obtained.
+> Includes a config file editor to add support for custom domains that moves all the config files to a local folder to don't overwrite the files when updates the plugin.
+> * [Take a look to all its features by clicking here](https://etruel.com/downloads/wpematico-full-content/)
 
 ---
 
 > #### **[Make me Feed "Good"](https://etruel.com/downloads/wpematico-make-feed-good/):**
-> * Create your custom feeds RSS 2.0 with content from external sites in your WordPress blog, regardless of whether or not those have their own feed.
-> * It is the perfect complement for WPeMatico together with the Full Content addon.
-> * It follows the standards of WordPress editing and code. If you know how to upload a post in WordPress, this is even easier.
-> * Unlimited pages of feeds from different sites as any Custom post type of wordpress with own template.
-> * Possibility to copy the template to your WordPress theme directory to edit whatever you want.
-> * Option to indicate to work with Full Content addon to extract the full contents and place it on each item in the feed.
-> * If the Full Content addon is not installed, anyway will get the permanent links with the titles of the main page.
+> Create your custom feeds RSS 2.0 with content from external sites in your WordPress blog, regardless of whether or not those have their own feed.
+> It follows the standards of WordPress editing and code. If you know how to upload a post in WordPress, this is even easier.
+> It is the perfect complement for WPeMatico together with the Full Content addon to indicate to extract the full contents and place it on each item in the feed.
+> If the Full Content addon is not installed, anyway will get the permanent links with the titles of the main page.
+> * [Take a look to all its features by clicking here](https://etruel.com/downloads/wpematico-make-feed-good/)
 
 ---
 
 > #### **[Facebook Fetcher](https://etruel.com/downloads/wpematico-facebook-fetcher/):**
-> * Uses the whole WPeMatico campaign data to obtain the content from Facebook to be published automatically.
-> * Imports from Facebook Groups or Pages.
-> * You can get from all pages/groups as you want, just adding one WPeMatico campaign per facebook page/group.
-> * Very easy auto-identification og Page ID and Group ID by filling the field with the URL.
-> * Also imports the image in big size.
-> * You can import also the comments in facebook with the names of the commenters to your site.
-> * You can set exactly when must run by setting the scheduler in the WPeMatico campaign.
-> * Duplicates control.  You can allow duplicates if you set the option in WPeMatico Settings.
+> Uses the WPeMatico campaign data to obtain the content from Facebook to be published automatically.
+> You can import from all pages/groups as you want, just adding one WPeMatico campaign per facebook page/group. Also imports the images in big size, allows import the comments in facebook with the names of the commenters to every imported post and many more features.
+> * [Take a look to all its features by clicking here](https://etruel.com/downloads/wpematico-facebook-fetcher/)
 
 ---
 
 > #### **[Better Excerpts](https://etruel.com/downloads/wpematico-better-excerpts/):**
-> * Set nice and better excerpts in front-end and also in feed contents.
-> * Set max size in chars, but cuts the excerpts at the previous end of sentence.
-> * Can be used to save the excerpts just for new posts of WPeMatico campaigns.
-> * Can be used to parse the excerpts of all posts of your site before shows them in your front-end page.
-> * Allows set or not this excerpt content to the RSS items contents.
+> Makes excerpts with first post content sentence and other filters. Sets nice and better excerpts in front-end and also in feed contents.
+> Can be used to save the excerpts just for new posts of WPeMatico campaigns or to parse the excerpts of all posts of your site when shows them in your front-end page.
+> * [Take a look to all its features by clicking here](https://etruel.com/downloads/wpematico-better-excerpts/)
 
 ---
 
 > #### **[Publish 2 Email](https://etruel.com/downloads/wpematico-publish-2-email/):**
-> * Sends the fetched posts to an email account. Each campaign allows send the posts to a different email account.
-> * Allows publishing remotely by Wordpress *Post via email*, *Jetpack Post by Email* features or plugins like *Postie*.
-> * If it is configured to not post locally, improves the performance and reduces the server load in both websites.
-> * **Using the email as interface from Wordpress to other Content Management Services:**
-> *As it sends the contents to an email account, allows to publish contents automatically through an email account from your Wordpress with WPeMatico to any CMSs or third party service that can reads emails.*
+> Very useful addon that allows publishing remotely by Wordpress *Post via email*, *Jetpack Post by Email* feature or plugins like *Postie*.  
+> Sends the fetched posts to an email account. Each campaign allows send the posts to a different email account.
+> **Using the email as interface from Wordpress to other CMS:**
+> *As it sends the contents to an email account, allows to publish contents automatically through an email account from your Wordpress with WPeMatico to any third party or Content Management Services that can reads emails.*
+> * [Take a look to all its features by clicking here](https://etruel.com/downloads/wpematico-publish-2-email/)
 
 ---
 
@@ -137,7 +109,7 @@ If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/
 
 ---
 
-> #### **[Chinese tags](https://etruel.com/downloads/wpematico/chinese-tags):**
+> #### **[Chinese tags](https://etruel.com/downloads/wpematico-chinese-tags):**
 > * Automatic chinese tags generated from content phrases, require WPeMatico Free & Professional add-on.
 > * Like almost all things in automatic mode, bear in mind that it is not perfect. However, it is better than nothing ;)
 
@@ -257,8 +229,13 @@ or to e-mail etruel@gmail.com
 
 == Changelog ==
 = 1.3.8.2 =
+* Tweaks on duplicate checking by item hash when get timeouts on running campaign.
+* Tweaks deleting options on uninstalling the plugin.
 * Many fixes on processing and showing Next Run Cron time across the screens.
 * Fixes notices on checking if a campaign are running.
+* Add some reference links inside Help screens to go to the FAQs.
+* **NEW ADDON** : **[WPeMatico Thumbnail Scratcher](https://etruel.com/downloads/wpematico-thumbnail-scratcher/)**
+* Find images on search engines automatically.
 
 = 1.3.8.1 =
 * Fixes Welcome screen on upgrading the plugin.
@@ -274,7 +251,7 @@ or to e-mail etruel@gmail.com
 * Fixes some issues getting images from text and stripping img tags from html.
 * Fixes an issue with some themes that hide the 'clear' CSS class in metaboxes.
 * Fixes some other minor bugs.
-* **NEW ADDON** : **WPeMatico Facebook Fetcher**
+* **NEW ADDON** : **[WPeMatico Facebook Fetcher](https://etruel.com/downloads/wpematico-facebook-fetcher/)**
 * Allow publish posts from Facebook pages or groups in every campaign with Fb APP Credentials.
 
 = 1.3.7.2 =
