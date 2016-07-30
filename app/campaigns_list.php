@@ -310,6 +310,9 @@ class WPeMatico_Campaigns {
 		$campaign_data =   WPeMatico :: get_campaign( $id );
 		foreach($campaign_data['campaign_feeds'] as $feed) {    // Grabo el ultimo hash de cada feed con 0
 			$campaign_data[$feed]['lasthash']="0"; 
+			$lasthashvar = '_lasthash_'.sanitize_file_name($feed);
+			add_post_meta( $id, $lasthashvar, "0", true )  or
+				update_post_meta( $id, $lasthashvar, "0" );
 		}
 		WPeMatico :: update_campaign( $id, $campaign_data );
 		WPeMatico::add_wp_notice( array('text' => __('Hash deleted on campaign',  'wpematico').' <b>'.  get_the_title($id).'</b>', 'below-h2'=>false ) );
