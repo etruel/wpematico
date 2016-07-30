@@ -232,6 +232,8 @@ or to e-mail etruel@gmail.com
 * Tweaks on duplicate checking by item hash when get timeouts on running campaign.
 * Tweaks deleting options on uninstalling the plugin.
 * Many fixes on processing and showing Next Run Cron time across the screens.
+* Tweaks on duplicate checking by item hash when get timeouts on running campaign.
+* Add some reference links inside Help screens to go to the FAQs.
 * Fixes notices on checking if a campaign are running.
 * Add some reference links inside Help screens to go to the FAQs.
 * **NEW ADDON** : **[WPeMatico Thumbnail Scratcher](https://etruel.com/downloads/wpematico-thumbnail-scratcher/)**
