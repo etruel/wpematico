@@ -53,16 +53,17 @@ If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/
  
 > #### **[Professional Add-on](https://etruel.com/downloads/wpematico-professional/):**
 >   Extends WPeMatico with a lot of advanced functions and a lot of new features to parse and filter feed items contents, filters for featured, media, enclosure and in-content images, automatic tags generation, inserts custom fields with every post and much more.
+
 > * [Take a look to all its features by clicking here](https://etruel.com/downloads/wpematico-professional/)
  
 ---
 
 > #### **[FULL Content](https://etruel.com/downloads/wpematico-full-content/):**
-> This add-on takes the title and permalink of every feed item and scratches its web page to find the full content. 
-> Also allows to read the complete content for *multi-page articles* and gets the featured image from meta tags of source web page, Open Graph or Twitter images.
+> Takes the title and permalink and scratches its web page to find the full content with option to search for *multi-page articles*. Set the featured image from meta tags of source web page, Open Graph or Twitter images. 
+> Works automatically with 95% of the websites, but if not, allows set up a configuration file for every domain pointing to what section of the web page must be obtained. 
+> *Includes a config file editor* to add support for custom domains that moves all the config files to a local folder to don't overwrite the files when updates the plugin. 
+
 > * Don't pay monthly fees until you see all what you can do with a onetime payment. ;-)
-> Works automatically with 95% of the websites, but if not, allows set up a configuration file for every domain pointing to what section of the web page must be obtained.
-> Includes a config file editor to add support for custom domains that moves all the config files to a local folder to don't overwrite the files when updates the plugin.
 > * [Take a look to all its features by clicking here](https://etruel.com/downloads/wpematico-full-content/)
 
 ---
@@ -72,6 +73,7 @@ If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/
 > It follows the standards of WordPress editing and code. If you know how to upload a post in WordPress, this is even easier.
 > It is the perfect complement for WPeMatico together with the Full Content addon to indicate to extract the full contents and place it on each item in the feed.
 > If the Full Content addon is not installed, anyway will get the permanent links with the titles of the main page.
+
 > * [Take a look to all its features by clicking here](https://etruel.com/downloads/wpematico-make-feed-good/)
 
 ---
@@ -79,6 +81,7 @@ If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/
 > #### **[Facebook Fetcher](https://etruel.com/downloads/wpematico-facebook-fetcher/):**
 > Uses the WPeMatico campaign data to obtain the content from Facebook to be published automatically.
 > You can import from all pages/groups as you want, just adding one WPeMatico campaign per facebook page/group. Also imports the images in big size, allows import the comments in facebook with the names of the commenters to every imported post and many more features.
+
 > * [Take a look to all its features by clicking here](https://etruel.com/downloads/wpematico-facebook-fetcher/)
 
 ---
@@ -86,6 +89,7 @@ If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/
 > #### **[Better Excerpts](https://etruel.com/downloads/wpematico-better-excerpts/):**
 > Makes excerpts with first post content sentence and other filters. Sets nice and better excerpts in front-end and also in feed contents.
 > Can be used to save the excerpts just for new posts of WPeMatico campaigns or to parse the excerpts of all posts of your site when shows them in your front-end page.
+
 > * [Take a look to all its features by clicking here](https://etruel.com/downloads/wpematico-better-excerpts/)
 
 ---
@@ -95,6 +99,7 @@ If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/
 > Sends the fetched posts to an email account. Each campaign allows send the posts to a different email account.
 > **Using the email as interface from Wordpress to other CMS:**
 > *As it sends the contents to an email account, allows to publish contents automatically through an email account from your Wordpress with WPeMatico to any third party or Content Management Services that can reads emails.*
+
 > * [Take a look to all its features by clicking here](https://etruel.com/downloads/wpematico-publish-2-email/)
 
 ---
