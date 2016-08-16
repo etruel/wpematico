@@ -233,6 +233,15 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
+= 1.3.8.3 =
+* Fixes a wrong parameter in an image name filter.
+* Extends the functionalities with some custom filters.
+* Ensures compatibility with the latest WordPress version.
+* Enlarges the version required for the professional addon to 1.3.8.
+* **Professional Add-on:** 
+* Adds new features: Rename the images uploaded to the website.
+* Keyword Filter for source item categories.
+
 = 1.3.8.2 =
 * Tweaks on duplicate checking by item hash when get timeouts on running campaign.
 * Tweaks deleting options on uninstalling the plugin.

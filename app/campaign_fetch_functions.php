@@ -71,7 +71,7 @@ class wpematico_campaign_fetch_functions {
 		$post_id = $this->campaign_id;
 		$current_item = apply_filters('wpematico_item_parsers', $current_item, $campaign, $feed, $item );
 		//if( $this->cfg['nonstatic'] ) { $current_item = NoNStatic :: content($current_item,$campaign,$item); }
-		
+
 		if($current_item == -1 ) return -1; //Hack to allow skip the post in this instance
 
 		// strip all HTML tags before apply template 
@@ -84,7 +84,7 @@ class wpematico_campaign_fetch_functions {
 			trigger_error(__('Cleaning Links from content.', WPeMatico :: TEXTDOMAIN ),E_USER_NOTICE);
 			$current_item['content'] = $this->strip_links((string)$current_item['content']);
 		}
-		
+
 		// Template parse           
 		if ($campaign['campaign_enable_template']){
 			trigger_error('<b>'.__('Parsing Post template.', WPeMatico :: TEXTDOMAIN ).'</b>',E_USER_NOTICE);
@@ -96,7 +96,7 @@ class wpematico_campaign_fetch_functions {
 				trigger_error(__('Can\'t find the featured image to add to the content.'),E_USER_WARNING);
 				$img_str = '<!-- no image -->';
 			}
-			
+
 			$vars = array(
 				'{content}',
 				'{title}',
@@ -111,6 +111,7 @@ class wpematico_campaign_fetch_functions {
 				'{campaigntitle}',
 				'{campaignid}'
 			);
+			$vars = apply_filters('wpematico_post_template_tags', $vars, $current_item, $campaign, $feed, $item );
 
 			$autor="";
 			$autorlink = "";
@@ -133,10 +134,11 @@ class wpematico_campaign_fetch_functions {
 				get_the_title($post_id),
 				$post_id
 			);
+			$replace = apply_filters('wpematico_post_template_replace', $replace, $current_item, $campaign, $feed, $item );
 
 			$current_item['content'] = str_ireplace($vars, $replace, ( $campaign['campaign_template'] ) ? stripslashes( $campaign['campaign_template'] ) : '{content}');
 		}
-	
+
 	 // Rewrite
 		//$rewrites = $campaign['campaign_rewrites'];
 		if (isset($campaign['campaign_rewrites']['origin']))
@@ -166,7 +168,7 @@ class wpematico_campaign_fetch_functions {
 		if ( !$this->cfg['disable_credits']) {$current_item['content'] .= '<p class="wpematico_credit"><small>Powered by <a href="http://www.wpematico.com" target="_blank">WPeMatico</a></small></p>'; }
 
 		$current_item = apply_filters('wpematico_after_item_parsers', $current_item, $campaign, $feed, $item );
-		if($current_item == -1 ) return -1; //Hack to allow skip the post in this instance
+		//if($current_item == -1 ) return -1; //Hack to allow skip the post in this instance
 		
 		return $current_item;
 	} // End ParseItemContent
@@ -328,7 +330,7 @@ class wpematico_campaign_fetch_functions {
 						$allowed = apply_filters('wpematico_allowext', $allowed );
 						//Fetch and Store the Image	
 						///////////////***************************************************************************************////////////////////////
-						$newimgname = apply_filters('wpematico_newimgname', sanitize_file_name(urlencode(basename($imagen_src_real))), $campaign );  // new name here
+						$newimgname = apply_filters('wpematico_newimgname', sanitize_file_name(urlencode(basename($imagen_src_real))), $current_item, $campaign, $item  );  // new name here
 						// Primero intento con mi funcion mas rapida
 						$upload_dir = wp_upload_dir();
 						$imagen_dst = trailingslashit($upload_dir['path']). $newimgname; 

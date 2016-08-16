@@ -371,7 +371,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 					$allowed = apply_filters('wpematico_allowext', $allowed );
 					//Fetch and Store the Image	
 					///////////////***************************************************************************************////////////////////////
-					$newimgname = apply_filters('wpematico_newimgname', sanitize_file_name(urlencode(basename($imagen_src_real))), $campaign );  // new name here
+					$newimgname = apply_filters('wpematico_newimgname', sanitize_file_name(urlencode(basename($imagen_src_real))), $this->current_item, $this->campaign, $item );  // new name here
 					// Primero intento con mi funcion mas rapida
 					$upload_dir = wp_upload_dir();
 					$imagen_dst = trailingslashit($upload_dir['path']). $newimgname; 
