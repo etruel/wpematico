@@ -239,6 +239,7 @@ or to e-mail etruel@gmail.com
 * Fixes the timeout banner in campaigns list that was missed in last version.
 * Fixes the sizes of the buttons with the new fonts introduced in WP 4.6.
 * Fixes a parameter with a filter for post titles.
+* Some improvements on addons Page.
 
 = 1.3.8.3 =
 * Fixes a wrong parameter in an image name filter.

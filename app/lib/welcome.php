@@ -485,6 +485,9 @@ class WPEMATICO_Welcome {
 		// Delete the redirect transient
 		delete_transient( '_wpematico_activation_redirect' );
 
+		// Delete the etruel_wpematico_addons_data transient to create again when access the addon page
+		delete_transient( 'etruel_wpematico_addons_data' );
+
 		// Bail if activating from network, or bulk
 		if ( is_network_admin() || isset( $_GET['activate-multi'] ) )
 			return;

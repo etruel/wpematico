@@ -125,11 +125,12 @@ function wpematico_addons_get_columns() {
 
 add_action('manage_plugins_custom_column', 'wpematico_addons_custom_columns',10,3);
 function wpematico_addons_custom_columns($column_name, $plugin_file, $plugin_data ) {
-	$caption = ( (isset($plugin_data['installed']) && ($plugin_data['installed']) ) || !isset($plugin_data['Remote'])) ? __('Installed','wpematico') : __('On Sale', 'wpematico');
+	$caption = ( (isset($plugin_data['installed']) && ($plugin_data['installed']) ) || !isset($plugin_data['Remote'])) ? __('Installed','wpematico') : __('Purchase', 'wpematico');
 	if (isset($plugin_data['installed']) && ($plugin_data['installed']) ) {
 		if(!isset($plugin_data['Remote'])) {
 			$caption = __('Installed','wpematico');
 			$title = __('See details and prices on etruel\'s store','wpematico');
+			$url   = 'https'.strstr( $plugin_data['PluginURI'], '://');
 //		}else{
 //			$caption = __('Buy', 'wpematico');
 		}
@@ -137,14 +138,18 @@ function wpematico_addons_custom_columns($column_name, $plugin_file, $plugin_dat
 		if(!isset($plugin_data['Remote'])) {
 			$caption = __('Locally','wpematico');
 			$title = __('Go to plugin URI','wpematico');
+			$url   = '#'.$plugin_data['Name'];
 		}else{
-			$caption = __('On Sale', 'wpematico'); //**** 
-			$title = __('See details and prices on etruel\'s store','wpematico');
+			$caption = __('Purchase', 'wpematico'); //**** 
+			$title = __('Go to purchase on the etruel\'s store','wpematico');
+			$url   = 'https'.strstr( $plugin_data['buynowURI'], '://');
 		}
 	}
 			
-	$class = ( $caption == __('On Sale','wpematico' ) ) ? 'button-primary' : '';
-	echo '<a target="_Blank" class="button '.$class.'" title="'.$title.'" href="https'.strstr( $plugin_data['PluginURI'], '://').'">' . $caption . '</a>';
+	$target = ( $caption == __('Locally','wpematico' ) ) ? '_self' : '_blank';
+	$class = ( $caption == __('Purchase','wpematico' ) ) ? 'button-primary' : '';
+	//echo '<a target="_Blank" class="button '.$class.'" title="'.$title.'" href="https'.strstr( $plugin_data['PluginURI'], '://').'">' . $caption . '</a>';
+	echo '<a target="'.$target.'" class="button '.$class.'" title="'.$title.'" href="'.$url.'">' . $caption . '</a>';
 	return true;
 }
 	
@@ -175,7 +180,7 @@ function wpematico_showhide_addons($plugins) {
 }
 function wpematico_addons_row_actions($actions, $plugin_file, $plugin_data, $context ){
 	$actions = array();
-	$actions['buynow'] =  '<a target="_Blank" class="edit" aria-label="' . esc_attr( sprintf( __( 'Go to %s WebPage','wpematico' ), $plugin_data['Name'] ) ) . '" title="' . esc_attr( sprintf( __( 'Open %s WebPage in new window.','wpematico' ), $plugin_data['Name'] ) ) . '" href="'.$plugin_data['PluginURI'].'">' . __('Buy Now','wpematico') . '</a>';
+	$actions['buynow'] =  '<a target="_Blank" class="edit" aria-label="' . esc_attr( sprintf( __( 'Go to %s WebPage','wpematico' ), $plugin_data['Name'] ) ) . '" title="' . esc_attr( sprintf( __( 'Open %s WebPage in new window.','wpematico' ), $plugin_data['Name'] ) ) . '" href="'.$plugin_data['PluginURI'].'">' . __('Details','wpematico') . '</a>';
 	return $actions;
 }
 
@@ -192,10 +197,20 @@ Function read_wpem_addons($plugins){
 			$itemtitle = $item->get_title();
 			$versions = $item->get_item_tags('', 'version');
 			$version = (is_array($versions)) ? $versions[0]['data'] : '';
+			$guid = $item->get_item_tags('', 'guid');
+			$guid = (is_array($guid)) ? $guid[0]['data'] : '';
+			wp_parse_str($guid, $query ); 
+			if(isset($query ) && !empty($query ) ) {
+				if(isset($query['p'])){
+					$download_id = $query['p'];
+				}
+			}
+			
 			$plugindirname = str_replace('-','_', strtolower( sanitize_file_name( $itemtitle )));
 			$addon[ $plugindirname ] = Array (
 				'Name'		  => $itemtitle,
 				'PluginURI'	  => $item->get_permalink(),
+				'buynowURI'	  => 'https://etruel.com/checkout?edd_action=add_to_cart&download_id='.$download_id.'&edd_options[price_id]=1',
 				'Version'	  => $version,	// $item->get_date('U'),
 				'Description' => $item->get_description(),
 				'Author'	  => 'etruel', 
