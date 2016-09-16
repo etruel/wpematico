@@ -112,7 +112,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			if ( $hook_in ) {
 				add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 				add_action( 'admin_init', array( $this, 'admin_init' ) );
-				add_action( 'admin_print_styles', array(&$this, 'all_WP_admin_styles') );
+				add_action( 'admin_print_styles', array($this, 'all_WP_admin_styles') );
 				add_action('in_admin_header', array($this, 'writing_settings_help') );
 
 				wp_register_style( 'WPematStylesheet', self :: $uri .'app/css/wpemat_styles.css' );
@@ -135,7 +135,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 							$display = true;
 						}
 					}	
-					if ( $current_user->ID && ( $display == true ) ) {	
+					if ( $current_user->ID && ( $display == true ) && current_user_can(get_post_type_object( 'wpematico' )->cap->edit_others_posts) ) {	
 						add_action('wp_dashboard_setup', array( &$this, 'wpematico_add_dashboard'));
 					}
 				}
@@ -295,7 +295,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			'not_found' =>  __('No campaign found', self :: TEXTDOMAIN ),
 			'not_found_in_trash' => __('No Campaign found in Trash', self :: TEXTDOMAIN ), 
 			'parent_item_colon' => '',
-			'menu_name' => 'WpeMatico');
+			'menu_name' => 'WPeMatico');
 		  $args = array(
 			'labels' => $labels,
 			//'public' => true,

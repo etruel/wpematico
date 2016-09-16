@@ -253,7 +253,7 @@ class WPeMatico_functions {
 		$campaigndata['postscount']	= (!isset($post_data['postscount']) ) ? 0: (int)$post_data['postscount'];
 		$campaigndata['lastpostscount']	= (!isset($post_data['lastpostscount']) ) ? 0: (int)$post_data['lastpostscount'];
 		$campaigndata['lastrun']	= (!isset($post_data['lastrun']) ) ? 0: (int)$post_data['lastrun'];
-		$campaigndata['lastruntime']	= (!isset($post_data['lastruntime']) ) ? 0: (int)$post_data['lastruntime'];
+		$campaigndata['lastruntime']	= (!isset($post_data['lastruntime']) ) ? 0: $post_data['lastruntime'];  // can be string
 
 		$campaigndata['starttime']	= (!isset($post_data['starttime']) ) ? 0: (int)$post_data['starttime'];		
 

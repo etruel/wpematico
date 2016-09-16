@@ -685,9 +685,9 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 //		$campaign['cron'] = WPeMatico :: cron_string($_POST);
 		$campaign = WPeMatico :: get_campaign ($post_id);
 		$_POST['postscount']	= (!isset($campaign['postscount']) ) ? 0: (int)$campaign['postscount'];
-		$_POST['lastpostscount']	= (!isset($campaign['lastpostscount']) ) ? 0: (int)$campaign['lastpostscount'];
+		$_POST['lastpostscount']	= (!isset($campaign['lastpostscount']) ) ? '': (int)$campaign['lastpostscount'];
 		$_POST['lastrun']	= (!isset($campaign['lastrun']) ) ? 0: (int)$campaign['lastrun'];
-		$_POST['lastruntime']	= (!isset($campaign['lastruntime']) ) ? 0: (int)$campaign['lastruntime'];
+		$_POST['lastruntime']	= (!isset($campaign['lastruntime']) ) ? 0: $campaign['lastruntime'];  //can be string
 
 		$campaign = array();
 		$campaign = apply_filters('wpematico_check_campaigndata', $_POST);

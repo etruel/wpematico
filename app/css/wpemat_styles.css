@@ -53,8 +53,8 @@ a.statebutton:hover {
   float: left;
   width: auto;
   text-align: center;
-  font-size: 1.5em;
-  margin: 0 5px 5px 4px;
+  font-size: 2em;
+  margin: 3px 5px 5px;
   padding: 1px;
 /*  pointer-events: none;*/
 }
@@ -62,10 +62,10 @@ a.statebutton:hover {
 .like:before               { content: "\2764"; }
 .star:before               { content: "\2605"; }
 .spark:before              { content: "\2737"; }
-.play:before               { content: "\25B6"; }
+.play:before               { content: "\25B6";font-size: 1.7em;margin: 4px 5px; }
 .revplay:before            { content: "\25C0"; }
 .grab:before               { content: "\25cf"; }
-.stop:before               { content: "\25a0"; }
+.stop:before               { content: "\25fe"; }
 .watch:before              { content: "\231A"; }
 .blacksun:before           { content: "\2600"; }
 .cloud:before              { content: "\2601"; }

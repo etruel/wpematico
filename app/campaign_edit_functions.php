@@ -188,15 +188,16 @@ class WPeMatico_Campaign_edit_functions {
 			<textarea class="large-text" id="campaign_template" name="campaign_template" /><?php echo stripslashes($campaign_template) ?></textarea>
 			<p class="he20" id="tags_note" class="note left"><?php _e('Allowed tags', 'wpematico' ); ?>: </p>
 			<p id="tags_list" style="border-left: 3px solid #EEEEEE; color: #999999; font-size: 11px; padding-left: 6px;margin-top: 0;">
-				<span class="tag">{content}</span>, <span class="tag">{title}</span>, <span class="tag">{image}</span>, <span class="tag">{author}</span>, <span class="tag">{authorlink}</span>, <span class="tag">{permalink}</span>, <span class="tag">{feedurl}</span>, <span class="tag">{feedtitle}</span>, <span class="tag">{feeddescription}</span>, <span class="tag">{feedlogo}</span>, <span class="tag">{campaigntitle}</span>, <span class="tag">{campaignid}</span>
+				<span class="tag">{title}</span>, <span class="tag">{content}</span>, <span class="tag">{itemcontent}</span>, <span class="tag">{image}</span>, <span class="tag">{author}</span>, <span class="tag">{authorlink}</span>, <span class="tag">{permalink}</span>, <span class="tag">{feedurl}</span>, <span class="tag">{feedtitle}</span>, <span class="tag">{feeddescription}</span>, <span class="tag">{feedlogo}</span>, <span class="tag">{campaigntitle}</span>, <span class="tag">{campaignid}</span>
 			</p>
 			<p><a href="javascript:void(0);" title="<?php _e('Click to Show/Hide', 'wpematico' ); ?>" onclick="jQuery('#tags_note,#tags_list').fadeToggle(); jQuery('#tags_list_det').fadeToggle();" class="m4"><?php _e('Click here to toggle more info.','wpematico') ?></a></p>
 			<div id="tags_list_det" style="display: none;">
 				<b><?php _e('Supported tags', 'wpematico' ); ?></b>
 				<p><?php _e('A tag is a piece of text that gets replaced dynamically when the post is created. Currently, these tags are supported:', 'wpematico' ); ?></p>
 				<ul style='list-style-type: square;margin:0 0 5px 20px;font:0.92em "Lucida Grande","Verdana";'>
-				  <li><strong class="tag">{content}</strong> <?php _e('The feed item content.', 'wpematico' ); ?> </li>
 				  <li><strong class="tag">{title}</strong> <?php _e('The feed item title.', 'wpematico' ); ?> </li>
+				  <li><strong class="tag">{content}</strong> <?php _e('The parsed post content.', 'wpematico' ); ?> </li>
+				  <li><strong class="tag">{itemcontent}</strong> <?php _e('The feed item description.', 'wpematico' ); ?> </li>
 				  <li><strong class="tag">{image}</strong> <?php _e('Put the featured image on content.', 'wpematico' ); ?> </li>
 				  <li><strong class="tag">{author}</strong> <?php _e('The feed item author.', 'wpematico' ); ?> </li>
 				  <li><strong class="tag">{authorlink}</strong> <?php _e('The feed item author link (If exist).', 'wpematico' ); ?> </li>
@@ -207,6 +208,7 @@ class WPeMatico_Campaign_edit_functions {
 				  <li><strong class="tag">{feedlogo}</strong> <?php _e('The feed\'s logo image URL.', 'wpematico' ); ?> </li>
 				  <li><strong class="tag">{campaigntitle}</strong> <?php _e('This campaign title', 'wpematico' ); ?> </li>
 				  <li><strong class="tag">{campaignid}</strong> <?php _e('This campaign ID.', 'wpematico' ); ?> </li>
+				  <?php do_action('wpematico_print_template_tags', $campaign_data); ?>
 				</ul>
 				<p><b><?php _e('Examples:', 'wpematico' ); ?></b></p>
 				<div id="tags_list_examples" style="display: block;">

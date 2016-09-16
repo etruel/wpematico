@@ -556,7 +556,7 @@ class WPeMatico_Campaigns {
 			$postscount = get_post_meta($post_id, 'postscount', true);
 			echo (isset($postscount) && !empty($postscount) ) ? $postscount : $campaign_data['postscount']; 
 			break;
-		  case 'next':
+		  case 'next':   // 'Current State' column
 			$starttime = (isset($campaign_data['starttime']) && !empty($campaign_data['starttime']) ) ? $campaign_data['starttime'] : 0 ; 
 			//print_r($campaign_data);
 			$activated = (bool)$campaign_data['activated']; 
@@ -602,7 +602,7 @@ class WPeMatico_Campaigns {
 		  case 'last':
 			$lastrun = get_post_meta($post_id, 'lastrun', true);
 			$lastrun = (isset($lastrun) && !empty($lastrun) ) ? $lastrun :  $campaign_data['lastrun']; 
-			$lastruntime = (isset($campaign_data['lastruntime']) && !empty($campaign_data['lastruntime']) ) ? $campaign_data['lastruntime'] : ''; 
+			$lastruntime = (isset($campaign_data['lastruntime'])) ? $campaign_data['lastruntime'] : ''; 
 			if ($lastrun) {
 				echo date_i18n( get_option('date_format').' '. get_option('time_format'), $lastrun );
 				if(isset($lastruntime) && !empty($lastruntime) ) {

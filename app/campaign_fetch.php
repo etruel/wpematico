@@ -43,8 +43,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		}
 
 		//Set job start settings
-		$this->campaign['starttime']		= current_time('timestamp'); //set start time for job
-		$this->campaign['cronnextrun']		= (int)WPeMatico :: time_cron_next($this->campaign['cron']); //set next run
+		$this->campaign['starttime']			= current_time('timestamp'); //set start time for job
 		$this->campaign['lastpostscount'] 	= 0; // Lo pone en 0 y lo asigna al final		
 		WPeMatico :: update_campaign($this->campaign_id, $this->campaign); //Save start time data
 		//
@@ -185,6 +184,9 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		trigger_error(sprintf('<b>' . __('Processing item %1s', 'wpematico' ),$item->get_title().'</b>' ),E_USER_NOTICE);
 		$this->current_item = array();
 		
+		// Get the source Permalink trying to redirect if is set.
+		$this->current_item['permalink'] = $this->getReadUrl($item->get_permalink(), $this->campaign);
+		
 		// First exclude filters
 		if ( $this->exclude_filters($this->current_item,$this->campaign,$feed,$item )) {
 			return -1 ;  // resta este item del total 
@@ -201,7 +203,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			}
 		}
 		// Item title
-		if( $this->cfg['nonstatic'] ) { $this->current_item = NoNStatic :: title($this->current_item,$this->campaign,$item,$count ); }else $this->current_item['title'] = esc_attr($item->get_title());
+		if( $this->cfg['nonstatic'] ) { $this->current_item = NoNStatic :: title($this->current_item,$this->campaign,$item,$realcount ); }else $this->current_item['title'] = esc_attr($item->get_title());
  		// Item author
 		if( $this->cfg['nonstatic'] ) { $this->current_item = NoNStatic :: author($this->current_item,$this->campaign, $feedurl ); }else $this->current_item['author'] = $this->campaign['campaign_author'];
 		// Item content
@@ -278,7 +280,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		   $arraycf = array(
 			   'wpe_campaignid' => $this->campaign_id, 
 			   'wpe_feed' => $feed->feed_url,
-			   'wpe_sourcepermalink' => $this->getReadUrl($item->get_permalink(), $this->campaign)
+			   'wpe_sourcepermalink' => $this->current_item['permalink'],
 		   ); 
 		   $this->current_item['meta'] = (isset($this->current_item['meta']) && !empty($this->current_item['meta']) ) ? array_merge($this->current_item['meta'], $arraycf) :  $arraycf ;
 		   $this->current_item['meta'] = apply_filters('wpem_meta_data', $this->current_item['meta'] );
@@ -363,7 +365,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			}else if( !empty($this->current_item['featured_image']) ) {
 				trigger_error(__('Featuring Image Into Post.', 'wpematico' ),E_USER_NOTICE);
 				if($this->current_item['images'][0] != $this->current_item['featured_image']){
-					$itemUrl = $this->getReadUrl($item->get_permalink(), $this->campaign);
+					$itemUrl = $this->current_item['permalink'];
 					$imagen_src = $this->current_item['featured_image'];
 					$imagen_src_real = $this->getRelativeUrl($itemUrl, $imagen_src);						
 					$imagen_src_real = apply_filters('wpematico_img_src_url', $imagen_src_real );
@@ -445,8 +447,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			@$this->campaign[$feed]['lasthash'] = $this->lasthash[$feed]; // paraa chequear duplicados por el hash del permalink original
 		}
 */		
-		do_action('Wpematico_end_fetching', $this->campaign, $this->fetched_posts );
-		if($this->cfg['nonstatic']){$this->campaign=NoNStatic::ending($this->campaign,$this->fetched_posts);}
+		$this->campaign = apply_filters('Wpematico_end_fetching', $this->campaign, $this->fetched_posts );
+		//if($this->cfg['nonstatic']){$this->campaign=NoNStatic::ending($this->campaign,$this->fetched_posts);}
 
 		WPeMatico :: update_campaign($this->campaign_id, $this->campaign);  //Save Campaign new data
 

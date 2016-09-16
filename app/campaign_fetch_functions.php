@@ -51,7 +51,8 @@ class wpematico_campaign_fetch_functions {
 		$post_id = $this->campaign_id;
 		$skip = false;
 
-		/* deprecated */ if( $this->cfg['nonstatic'] ) { $skip = NoNStatic :: exclfilters($current_item,$campaign,$item ); };
+		/* deprecated since 1.3.8.4
+		 * if( $this->cfg['nonstatic'] ) { $skip = NoNStatic :: exclfilters($current_item,$campaign,$item ); };  */
 		
 		$skip =  apply_filters('wpematico_excludes', $skip, $current_item, $campaign, $item );
 		
@@ -98,8 +99,9 @@ class wpematico_campaign_fetch_functions {
 			}
 
 			$vars = array(
-				'{content}',
 				'{title}',
+				'{content}',
+				'{itemcontent}',
 				'{image}',
 				'{author}',
 				'{authorlink}',
@@ -121,12 +123,13 @@ class wpematico_campaign_fetch_functions {
 			}		
 
 			$replace = array(
-				$current_item['content'],
 				$current_item['title'],
+				$current_item['content'],
+				$item->get_description(),
 				$img_str,
 				$autor,
 				$autorlink,
-				$item->get_link(),
+				$this->current_item['permalink'],
 				$feed->feed_url,
 				$feed->get_title(),
 				$feed->get_description(),
@@ -305,7 +308,7 @@ class wpematico_campaign_fetch_functions {
    */
 	function Item_images(&$current_item, &$campaign, &$feed, &$item) { 
 		if( ($this->cfg['imgcache'] || $this->campaign['campaign_imgcache'] ) && !($this->campaign['campaign_cancel_imgcache'])) {
-            $itemUrl = $this->getReadUrl($item->get_permalink(), $this->campaign);
+            $itemUrl = $this->current_item['permalink'];
 			
 			if( sizeof($current_item['images']) ) { // Si hay alguna imagen en el contenido
 				trigger_error('<b>'.__('Looking for images in content.', WPeMatico :: TEXTDOMAIN ).'</b>',E_USER_NOTICE);

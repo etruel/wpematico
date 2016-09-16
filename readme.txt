@@ -233,11 +233,18 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
+= 1.3.8.4 =
+* Improved getting the source permalinks and redirecting to the source sites.
+* Added a new post template tag to print the original feed content: {itemcontent}
+* Fixes the timeout banner in campaigns list that was missed in last version.
+* Fixes the sizes of the buttons with the new fonts introduced in WP 4.6.
+* Fixes a parameter with a filter for post titles.
+
 = 1.3.8.3 =
 * Fixes a wrong parameter in an image name filter.
 * Extends the functionalities with some custom filters.
 * Ensures compatibility with the latest WordPress version.
-* Enlarges the version required for the professional addon to 1.3.8.
+* **Enlarges the version required for the professional addon to 1.3.8**
 * **Professional Add-on:** 
 * Adds new features: Rename the images uploaded to the website.
 * Keyword Filter for source item categories.
@@ -803,5 +810,5 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 1.3.8.2 =
+= 1.3.8.3 =
 * Some improvements and fixes. See changelog for more details.
