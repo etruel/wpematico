@@ -811,5 +811,5 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 1.3.8.3 =
+= 1.3.8.4 =
 * Some improvements and fixes. See changelog for more details.
