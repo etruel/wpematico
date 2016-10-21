@@ -176,7 +176,7 @@ class WPEMATICO_Welcome {
 				<h3><?php _e( 'Including Campaign Types.', 'wpematico' );?></h3>
 				<div class="feature-section">
 					<div class="feature-section-media">
-						<img src="<?php echo WPEMATICO_PLUGIN_URL . 'images/campaigntype.png'; ?>"/>
+						<img src="<?php echo WPEMATICO_PLUGIN_URL.'images/campaigntype.png'; ?>"/>
 					</div>
 					<div class="feature-section-content">
 						<h4><?php _e( 'Youtube Fetcher', 'wpematico' );?></h4>

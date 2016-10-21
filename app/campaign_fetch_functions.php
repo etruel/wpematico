@@ -28,6 +28,8 @@ class wpematico_campaign_fetch_functions {
 			$dev = true;
 		}
 		if(has_filter('wpematico_duplicates')) $dev =  apply_filters('wpematico_duplicates', $dev, $campaign, $item);
+		//  http://wordpress.stackexchange.com/a/72691/65771
+		//  https://codex.wordpress.org/Function_Reference/get_page_by_title
 	
 		$dupmsg = ($dev) ? __('Yes') : __('No');
 		trigger_error(sprintf(__('Checking duplicated title \'%1s\'', WPeMatico :: TEXTDOMAIN ),$title).': '. $dupmsg ,E_USER_NOTICE);
