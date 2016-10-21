@@ -93,13 +93,17 @@ function WPeAddon_admin_head(){
 function add_admin_plugins_page() {
 	define( 'WPEM_ADMIN_DIR' , ABSPATH . basename(admin_url()) ) ;
 	//wp_die( ABSPATH . basename(admin_url()) . '/includes/plugin.php') ;
+	
 	if ( ! class_exists( 'WP_List_Table' ) ) {
 		require_once WPEM_ADMIN_DIR . '/includes/class-wp-list-table.php';
 		echo WPEM_ADMIN_DIR . '/includes/class-wp-list-table.php';
 	}
+	
 	if ( ! class_exists( 'WP_Plugins_List_Table' ) ) {
-		require 'includes/class-wp-plugins-list-table.php';
+		require WPEM_ADMIN_DIR .'/includes/class-wp-plugins-list-table.php';
+		
 	}
+	
 	global $plugins, $status, $wp_list_table;
 	$status ='all'; 
 	$page=  (!isset($page) or is_null($page))? 1 : $page;
@@ -125,6 +129,7 @@ function wpematico_addons_get_columns() {
 
 add_action('manage_plugins_custom_column', 'wpematico_addons_custom_columns',10,3);
 function wpematico_addons_custom_columns($column_name, $plugin_file, $plugin_data ) {
+	
 	$caption = ( (isset($plugin_data['installed']) && ($plugin_data['installed']) ) || !isset($plugin_data['Remote'])) ? __('Installed','wpematico') : __('Purchase', 'wpematico');
 	if (isset($plugin_data['installed']) && ($plugin_data['installed']) ) {
 		if(!isset($plugin_data['Remote'])) {

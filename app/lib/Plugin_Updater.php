@@ -63,7 +63,7 @@ class EDD_SL_Plugin_Updater {
 		remove_action( 'after_plugin_row_' . $this->name, 'wp_plugin_update_row', 10, 2 );
 		add_action( 'after_plugin_row_' . $this->name, array( $this, 'show_update_notification' ), 10, 2 );
 		add_action( 'admin_init', array( $this, 'show_changelog' ) );
-
+		
 	}
 
 	/**
@@ -82,11 +82,11 @@ class EDD_SL_Plugin_Updater {
 	public function check_update( $_transient_data ) {
 
 		global $pagenow;
-
+		
 		if ( ! is_object( $_transient_data ) ) {
 			$_transient_data = new stdClass;
 		}
-
+		
 		if ( 'plugins.php' == $pagenow && is_multisite() ) {
 			return $_transient_data;
 		}
@@ -94,7 +94,7 @@ class EDD_SL_Plugin_Updater {
 		if ( ! empty( $_transient_data->response ) && ! empty( $_transient_data->response[ $this->name ] ) && false === $this->wp_override ) {
 			return $_transient_data;
 		}
-
+		
 		$version_info = $this->api_request( 'plugin_latest_version', array( 'slug' => $this->slug ) );
 
 		if ( false !== $version_info && is_object( $version_info ) && isset( $version_info->new_version ) ) {
@@ -120,18 +120,19 @@ class EDD_SL_Plugin_Updater {
 	 * @param array   $plugin
 	 */
 	public function show_update_notification( $file, $plugin ) {
-
+		
 		if ( is_network_admin() ) {
+			
 			return;
 		}
-
+		
 		if( ! current_user_can( 'update_plugins' ) ) {
 			return;
 		}
-
-		if( ! is_multisite() ) {
+		
+		/*if( ! is_multisite() ) {
 			return;
-		}
+		}*/
 
 		if ( $this->name != $file ) {
 			return;
