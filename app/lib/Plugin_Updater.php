@@ -60,8 +60,16 @@ class EDD_SL_Plugin_Updater {
 
 		add_filter( 'pre_set_site_transient_update_plugins', array( $this, 'check_update' ) );
 		add_filter( 'plugins_api', array( $this, 'plugins_api_filter' ), 10, 3 );
-		remove_action( 'after_plugin_row_' . $this->name, 'wp_plugin_update_row', 10, 2 );
-		add_action( 'after_plugin_row_' . $this->name, array( $this, 'show_update_notification' ), 10, 2 );
+		
+		
+		if( ! is_multisite() ) {
+			add_action( 'after_plugin_row_' . $this->name, 'wp_plugin_update_row', 10, 2 );
+		} else {
+			remove_action( 'after_plugin_row_' . $this->name, 'wp_plugin_update_row', 10, 2 );
+			add_action( 'after_plugin_row_' . $this->name, array( $this, 'show_update_notification' ), 10, 2 );
+		
+		}
+		
 		add_action( 'admin_init', array( $this, 'show_changelog' ) );
 		
 	}
@@ -130,9 +138,9 @@ class EDD_SL_Plugin_Updater {
 			return;
 		}
 		
-		/*if( ! is_multisite() ) {
+		if( ! is_multisite() ) {
 			return;
-		}*/
+		}
 
 		if ( $this->name != $file ) {
 			return;
