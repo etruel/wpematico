@@ -39,7 +39,9 @@ if(file_exists('app/nonstatic.php'))
 	require_once("app/debug_page.php");
 	require_once("app/addons_page.php");
 	require_once("app/lib/welcome.php");
+	
 }
+require_once('app/licenses_handlers.php');
 require_once('app/cron_functions.php');
 require_once('app/wpematico_functions.php');
 add_action( 'init', array( 'WPeMatico', 'init' ) );
