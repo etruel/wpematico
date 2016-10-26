@@ -22,6 +22,66 @@ class wpematico_licenses_handlers {
 	}
 	public static function disable_old_updater() {
 		
+		if (defined( 'MAKE_ME_FEED_VER' )) {
+			if (version_compare(MAKE_ME_FEED_VER, '1.4', '<=')) {
+				remove_action( 'admin_init', 'make_me_feed_plugin_updater', 0 );
+				remove_action('wpempro_licenses_forms', 'make_me_feed_license_page' );
+				remove_action('admin_init', 'make_me_feed_register_option');
+				remove_action('admin_init', 'make_me_feed_activate_license');
+				remove_action('admin_init', 'make_me_feed_deactivate_license');
+			}
+		}
+		
+		if (defined( 'WPECATS2TAGS_VERSION' )) {
+			if (version_compare(WPECATS2TAGS_VERSION, '1.1', '<=')) {
+				remove_action( 'admin_init', 'WPeMatico_cats2tags_plugin_updater', 0 );
+				remove_action('wpempro_licenses_forms', 'wpematico_cats2tags_license_page' );
+				remove_action('admin_init', 'wpematico_cats2tags_register_option');
+				remove_action('admin_init', 'wpematico_cats2tags_activate_license');
+				remove_action('admin_init', 'wpematico_cats2tags_deactivate_license');
+			}
+		}
+		
+		if (defined( 'WPEMCHINESE_VERSION' )) {
+			if (version_compare(WPEMCHINESE_VERSION, '1.2', '<=')) {
+				remove_action('admin_init', 'wpematico_chinesetags_plugin_updater', 0 );
+				remove_action('wpempro_licenses_forms', 'wpematico_chinesetags_license_page' );
+				remove_action('admin_init', 'wpematico_chinesetags_register_option');
+				remove_action('admin_init', 'wpematico_chinesetags_activate_license');
+				remove_action('admin_init', 'wpematico_chinesetags_deactivate_license');
+			}
+		}
+		
+		
+		if (defined( 'WPEMEMAIL_VERSION' )) {
+			if (version_compare(WPEMEMAIL_VERSION, '1.3', '<=')) {
+				remove_action( 'admin_init', 'wpematico_publish2email_plugin_updater', 0 );
+				remove_action('wpempro_licenses_forms', 'wpematico_publish2email_license_page' );
+				remove_action('admin_init', 'wpematico_publish2email_register_option');
+				remove_action('admin_init', 'wpematico_publish2email_activate_license');
+				remove_action('admin_init', 'wpematico_publish2email_deactivate_license');
+			}
+		}
+		
+		if (defined( 'WPEBETTEREXCERPTS_VERSION' )) {
+			if (version_compare(WPEBETTEREXCERPTS_VERSION, '1.6', '<=')) {
+				remove_action( 'admin_init', 'WPeMatico_better_excerpts_plugin_updater', 0 );
+				remove_action('wpempro_licenses_forms', 'wpematico_better_excerpts_license_page' );
+				remove_action('admin_init', 'wpematico_better_excerpts_register_options');
+				remove_action('admin_init', 'wpematico_better_excerpts_activate_license');
+				remove_action('admin_init', 'wpematico_better_excerpts_deactivate_license');
+			}
+		}
+		
+		if (defined( 'WPESMTP_VERSION' )) {
+			if (version_compare(WPESMTP_VERSION, '1.2', '<=')) {
+				remove_action( 'admin_init', 'WPeMatico_smtp_plugin_updater', 0 );
+				remove_action('wpempro_licenses_forms', 'wpematico_smtp_license_page' );
+				remove_action('admin_init', 'wpematico_smtp_register_option');
+				remove_action('admin_init', 'wpematico_smtp_activate_license');
+				remove_action('admin_init', 'wpematico_smtp_deactivate_license');
+			}
+		}
 		
 		if (defined( 'WPEMATICOPRO_VERSION' )) {
 			if (version_compare(WPEMATICOPRO_VERSION, '1.3.8.1', '<=')) {
@@ -69,6 +129,104 @@ class wpematico_licenses_handlers {
 		
 	}
 	public static function activate_new_updater($args) {
+		
+		if (defined( 'MAKE_ME_FEED_VER' )) {
+			if (version_compare(MAKE_ME_FEED_VER, '1.4', '<=')) {
+				if (empty($args['make_me_feed'])) {
+					$args['make_me_feed'] = array();
+					$args['make_me_feed']['api_url'] = 'https://etruel.com';
+					$args['make_me_feed']['plugin_file'] = MAKE_ME_FEED_DIR . 'make-me-feed.php';
+					$args['make_me_feed']['api_data'] = array(
+															'version' 	=> MAKE_ME_FEED_VER, 				// current version number
+															'item_name' => MAKE_ME_FEED_ITEM_NAME, 	// name of this plugin
+															'author' 	=> 'Esteban Truelsegaard'  // author of this plugin
+														);
+					
+				}
+			}
+		}
+		
+		if (defined( 'WPECATS2TAGS_VERSION' )) {
+			if (version_compare(WPECATS2TAGS_VERSION, '1.1', '<=')) {
+				if (empty($args['cats2tags'])) {
+					$args['cats2tags'] = array();
+					$args['cats2tags']['api_url'] = 'https://etruel.com';
+					$args['cats2tags']['plugin_file'] = WP_PLUGIN_DIR. '/wpematico_cats2tags/wpematico_cats2tags.php';
+					$args['cats2tags']['api_data'] = array(
+															'version' 	=> WPECATS2TAGS_VERSION, 				// current version number
+															'item_name' => WPECATS2TAGS_ITEM_NAME, 	// name of this plugin
+															'author' 	=> 'Esteban Truelsegaard'  // author of this plugin
+														);
+					
+				}
+			}
+		}
+		
+		if (defined( 'WPEMCHINESE_VERSION' )) {
+			if (version_compare(WPEMCHINESE_VERSION, '1.2', '<=')) {
+				if (empty($args['chinese_tags'])) {
+					$args['chinese_tags'] = array();
+					$args['chinese_tags']['api_url'] = 'https://etruel.com';
+					$args['chinese_tags']['plugin_file'] = WP_PLUGIN_DIR. '/wpematico_chinese_tags/index.php';
+					$args['chinese_tags']['api_data'] = array(
+															'version' 	=> WPEMCHINESE_VERSION, 				// current version number
+															'item_name' => WPEMCHINESE_ITEM_NAME, 	// name of this plugin
+															'author' 	=> 'Esteban Truelsegaard'  // author of this plugin
+														);
+					
+				}
+			}
+		}
+		
+		if (defined( 'WPEMEMAIL_VERSION' )) {
+			if (version_compare(WPEMEMAIL_VERSION, '1.3', '<=')) {
+				if (empty($args['publish2email'])) {
+					$args['publish2email'] = array();
+					$args['publish2email']['api_url'] = 'https://etruel.com';
+					$args['publish2email']['plugin_file'] = WP_PLUGIN_DIR. '/wpematico_better_excerpts/wpem_better_excerpts.php';
+					$args['publish2email']['api_data'] = array(
+															'version' 	=> WPEMEMAIL_VERSION, 				// current version number
+															'item_name' => WPEMEMAIL_ITEM_NAME, 	// name of this plugin
+															'author' 	=> 'Esteban Truelsegaard'  // author of this plugin
+														);
+					
+				}
+			}
+		}
+		
+		if (defined( 'WPEBETTEREXCERPTS_VERSION' )) {
+			if (version_compare(WPEBETTEREXCERPTS_VERSION, '1.6', '<=')) {
+				if (empty($args['better_excerpts'])) {
+					$args['better_excerpts'] = array();
+					$args['better_excerpts']['api_url'] = 'https://etruel.com';
+					$args['better_excerpts']['plugin_file'] = WP_PLUGIN_DIR. '/wpematico_better_excerpts/wpem_better_excerpts.php';
+					$args['better_excerpts']['api_data'] = array(
+															'version' 	=> WPEBETTEREXCERPTS_VERSION, 				// current version number
+															'item_name' => WPEBETTEREXCERPTS_ITEM_NAME, 	// name of this plugin
+															'author' 	=> 'Esteban Truelsegaard'  // author of this plugin
+														);
+					
+				}
+			}
+		}
+		
+		
+		if (defined( 'WPESMTP_VERSION' )) {
+			if (version_compare(WPESMTP_VERSION, '1.2', '<=')) {
+				if (empty($args['wpematico_smtp'])) {
+					$args['wpematico_smtp'] = array();
+					$args['wpematico_smtp']['api_url'] = 'https://etruel.com';
+					$args['wpematico_smtp']['plugin_file'] = WP_PLUGIN_DIR. '/wpematico_smtp/wpematico_smtp.php';
+					$args['wpematico_smtp']['api_data'] = array(
+															'version' 	=> WPESMTP_VERSION, 				// current version number
+															'item_name' => WPESMTP_ITEM_NAME, 	// name of this plugin
+															'author' 	=> 'Esteban Truelsegaard'  // author of this plugin
+														);
+					
+				}
+			}
+		}
+		
 		
 		if (defined( 'WPEMATICOPRO_VERSION' )) {
 			if (version_compare(WPEMATICOPRO_VERSION, '1.3.8.1', '<=')) {
@@ -264,6 +422,10 @@ class wpematico_licenses_handlers {
 		}
 	}
 	public static function save_licenses() {
+		if (!isset($_POST['wpematico_save_licenses_nonce']) || !wp_verify_nonce($_POST['wpematico_save_licenses_nonce'], 'wpematico_save_licenses')) {
+			wp_redirect(admin_url('edit.php?post_type=wpematico&page=wpematico_settings&tab=pro_licenses'));
+			exit();
+		}
 		$keys = $_POST['license_key'];
 		$plugins_args = array();
 		$plugins_args = apply_filters('wpematico_plugins_updater_args', $plugins_args);
@@ -293,6 +455,7 @@ class wpematico_licenses_handlers {
 		$plugins_args = apply_filters('wpematico_plugins_updater_args', $plugins_args);
 		echo '<form method="post" action="'.admin_url('admin-post.php' ).'">
 				<input type="hidden" name="action" value="wpematico_save_licenses">
+				'.wp_nonce_field('wpematico_save_licenses', 'wpematico_save_licenses_nonce').'
 		';
 		foreach ($plugins_args as $plugin_name => $args) {
 			$license = self::get_key($plugin_name);
