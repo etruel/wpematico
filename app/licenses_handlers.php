@@ -280,7 +280,7 @@ class wpematico_licenses_handlers {
 				if (empty($args['thumbnail_scratcher'])) {
 					$args['thumbnail_scratcher'] = array();
 					$args['thumbnail_scratcher']['api_url'] = 'https://etruel.com';
-					$args['thumbnail_scratcher']['plugin_file'] = WPEMATICO_THUMBNAIL_SCRATCHER_DIR.'/wpematico_thumnail_scratcher.php';
+					$args['thumbnail_scratcher']['plugin_file'] = WPEMATICO_THUMBNAIL_SCRATCHER_DIR.'/wpematico_thumbnail_scratcher.php';
 					$args['thumbnail_scratcher']['api_data'] = array(
 															'version' 	=> WPEMATICO_THUMBNAIL_SCRATCHER_VER, 				// current version number
 															'item_name' => WPEMATICO_THUMBNAIL_SCRATCHER_ITEM_NAME, 	// name of this plugin
@@ -304,7 +304,10 @@ class wpematico_licenses_handlers {
 					'author' 	=> $args['api_data']['author']
 				)
 			);
+			
 			if( ! is_multisite() ) {
+				//$current = get_site_transient( 'update_plugins' );
+				//error_log(var_export($current->response, true));
 				add_action( 'after_plugin_row_' . plugin_basename($args['plugin_file']), 'wp_plugin_update_row', 10, 2 );
 			}
 			
@@ -462,14 +465,13 @@ class wpematico_licenses_handlers {
 			$plugin_title_name = $args['api_data']['item_name'];
 			$license_status = self::get_license_status($plugin_name);
 			$status_license_html = '';
-			
 			if ($license_status != false && $license_status == 'valid') {
 				$status_license_html = '<strong>'.__('Status', WPeMatico::TEXTDOMAIN).':</strong> '.__('Valid', WPeMatico::TEXTDOMAIN).'<span class="validcheck"> </span>
 										<br/>
 										<input id="'.$plugin_name.'_btn_license_deactivate" class="btn_license_deactivate button-secondary" name="'.$plugin_name.'_btn_license_deactivate" type="button" value="'.__('Deactivate License', WPeMatico::TEXTDOMAIN).'" style="vertical-align: middle;"/>';
 			} else if ($license_status === 'invalid' || $license_status === 'expired' || $license_status === 'item_name_mismatch' ) {
 				$status_license_html = '<strong>'.__('Status', WPeMatico::TEXTDOMAIN).':</strong> '.__('Invalid', WPeMatico::TEXTDOMAIN).'<i class="renewcheck"></i>';
-			} elseif($license_status === 'inactive' || $license_status === 'deactivated' ) {
+			} elseif($license_status === 'inactive' || $license_status === 'deactivated' || $license_status === 'site_inactive' ) {
 				$status_license_html = '<strong>'.__('Status', WPeMatico::TEXTDOMAIN).':</strong> '.__('Inactive', WPeMatico::TEXTDOMAIN).'<i class="warningcheck"></i>
 				<br/>
 				<input id="'.$plugin_name.'_btn_license_activate" class="btn_license_activate button-secondary" name="'.$plugin_name.'_btn_license_activate" type="button" value="'.__('Activate License', WPeMatico::TEXTDOMAIN).'"/>
