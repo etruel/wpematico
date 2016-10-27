@@ -15,6 +15,17 @@ add_action('pre_get_posts', array( 'WPeMatico_Campaigns', 'column_orderby') );
 add_action('restrict_manage_posts', array( 'WPeMatico_Campaigns', 'custom_filters') );
 add_action('pre_get_posts', array( 'WPeMatico_Campaigns', 'query_set_custom_filters') );
 
+		// Messages 
+		add_filter( 'post_updated_messages', array( 'WPeMatico_Campaigns' , 'wpematico_updated_messages') );
+		//LIST FILTER ACTIONS 
+		add_filter('views_edit-wpematico', array( 'WPeMatico_Campaigns', 'my_views_filter') );
+		add_filter('disable_months_dropdown', array( 'WPeMatico_Campaigns' , 'disable_list_filters'),10,2);
+		add_filter('disable_categories_dropdown', array( 'WPeMatico_Campaigns' , 'disable_list_filters'),10,2);
+
+		add_filter('bulk_actions-edit-wpematico', array( 'WPeMatico_Campaigns', 'old_bulk_actions' ), 90,1 );
+		add_action('restrict_manage_posts', array( 'WPeMatico_Campaigns', 'run_selected_campaigns' ), 1, 2 );
+
+
 add_filter('editable_slug', array('WPeMatico_Campaigns','inline_custom_fields'),999,1);
 	//CUSTOM BULK & EDIT ACTIONS
 	add_action( 'quick_edit_custom_box', array( 'WPeMatico_Campaigns', 'wpematico_add_to_quick_edit_custom_box'), 10, 2 );
@@ -47,16 +58,6 @@ class WPeMatico_Campaigns {
 		$cfg = apply_filters('wpematico_check_options', $cfg);
 		add_action('admin_print_styles-edit.php', array(__CLASS__,'list_admin_styles'));
 		add_action('admin_print_scripts-edit.php', array(__CLASS__,'list_admin_scripts'));
-		// Messages 
-		add_filter( 'post_updated_messages', array( __CLASS__ , 'wpematico_updated_messages') );
-		//LIST FILTER ACTIONS 
-		add_filter('views_edit-wpematico', array( __CLASS__, 'my_views_filter') );
-		add_filter('disable_months_dropdown', array( __CLASS__ , 'disable_list_filters'),10,2);
-		add_filter('disable_categories_dropdown', array( __CLASS__ , 'disable_list_filters'),10,2);
-
-		add_filter('bulk_actions-edit-wpematico', array( __CLASS__, 'old_bulk_actions' ), 90,1 );
-		add_action('restrict_manage_posts', array( __CLASS__, 'run_selected_campaigns' ), 1, 2 );
-
 		//QUICK ACTIONS
 		add_action('admin_action_wpematico_copy_campaign', array( &$this, 'wpematico_copy_campaign'));
 		add_action('admin_action_wpematico_toggle_campaign', array(&$this, 'wpematico_toggle_campaign'));
