@@ -21,7 +21,7 @@ class wpematico_licenses_handlers {
 
 	}
 	public static function disable_old_updater() {
-		
+		global $PRO_Licenser;
 		if (defined( 'MAKE_ME_FEED_VER' )) {
 			if (version_compare(MAKE_ME_FEED_VER, '1.4', '<=')) {
 				remove_action( 'admin_init', 'make_me_feed_plugin_updater', 0 );
@@ -295,6 +295,14 @@ class wpematico_licenses_handlers {
 	public static function plugin_updater() {
 		$plugins_args = array();
 		$plugins_args = apply_filters('wpematico_plugins_updater_args', $plugins_args);
+		
+		if(!class_exists( 'EDD_SL_Plugin_Updater') && !empty($plugins_args)) {
+			if(file_exists(WPEMATICO_PLUGIN_DIR . 'app/lib/Plugin_Updater.php')) {
+				require_once(WPEMATICO_PLUGIN_DIR . 'app/lib/Plugin_Updater.php');
+			} 
+		}
+		
+		
 		foreach ($plugins_args as $plugin_name => $args) {
 			$license_key = self::get_key($plugin_name);
 			$edd_updater = new EDD_SL_Plugin_Updater($args['api_url'], $args['plugin_file'], array(
