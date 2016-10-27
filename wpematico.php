@@ -3,7 +3,7 @@
  * Plugin Name: WPeMatico
  * Plugin URI: http://www.wpematico.com
  * Description: Enables administrators to create posts automatically from RSS/Atom feeds with multiples filters.  If you like it, please rate it 5 stars.
- * Version: 1.3.8.4
+ * Version: 1.4
  * Author: etruel <esteban@netmdp.com>
  * Author URI: http://www.netmdp.com
  * Text Domain: wpematico
@@ -12,7 +12,7 @@
 if ( ! function_exists( 'add_filter' ) )
 	exit;
 // Plugin version
-if(!defined( 'WPEMATICO_VERSION' ) ) define( 'WPEMATICO_VERSION', '1.3.8.4' );
+if(!defined( 'WPEMATICO_VERSION' ) ) define( 'WPEMATICO_VERSION', '1.4' );
 if(!defined( 'WPEMATICO_BASENAME' ) ) define( 'WPEMATICO_BASENAME', plugin_basename( __FILE__ ) );
 if(!defined( 'WPEMATICO_PLUGIN_URL' ) ) define( 'WPEMATICO_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 if(!defined( 'WPEMATICO_PLUGIN_DIR' ) ) define( 'WPEMATICO_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
@@ -38,10 +38,9 @@ if(file_exists('app/nonstatic.php'))
 	require_once("app/settings_page.php");
 	require_once("app/debug_page.php");
 	require_once("app/addons_page.php");
+	require_once('app/lib/licenses_handlers.php');	
 	require_once("app/lib/welcome.php");
-	
 }
-require_once('app/licenses_handlers.php');
 require_once('app/cron_functions.php');
 require_once('app/wpematico_functions.php');
 add_action( 'init', array( 'WPeMatico', 'init' ) );

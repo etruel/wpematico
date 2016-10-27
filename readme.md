@@ -49,6 +49,7 @@ If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/
 * [FULL Content](https://etruel.com/downloads/wpematico-full-content/)
 * [Make me Feed "Good"](https://etruel.com/downloads/wpematico-make-feed-good/)
 * [Facebook Fetcher](https://etruel.com/downloads/wpematico-facebook-fetcher/)
+* [Thumbnail Scratcher](https://etruel.com/downloads/wpematico-thumbnail-scratcher/)
 * [Better Excerpts](https://etruel.com/downloads/wpematico-better-excerpts/)
 * [Publish 2 Email](https://etruel.com/downloads/wpematico-publish-2-email/)
 * [Categories 2 Tags](https://etruel.com/downloads/wpematico-cats2tags/)

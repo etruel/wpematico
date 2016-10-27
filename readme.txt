@@ -233,6 +233,9 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
+= 1.4 =
+* New classes done from scratch for the management of the addons licenses.
+
 = 1.3.8.4 =
 * Improved getting the source permalinks and redirecting to the source sites.
 * Added a new post template tag to print the original feed content: {itemcontent}
@@ -811,5 +814,5 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 1.3.8.4 =
-* Some improvements and fixes. See changelog for more details.
+= 1.4 =
+* Many improvements and fixes. See changelog for more details.

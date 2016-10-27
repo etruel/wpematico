@@ -85,11 +85,11 @@ class wpematico_licenses_handlers {
 		
 		if (defined( 'WPEMATICOPRO_VERSION' )) {
 			if (version_compare(WPEMATICOPRO_VERSION, '1.3.8.1', '<=')) {
-				remove_action('admin_init', array('PRO_Licenser', 'admin_plugin_updater'), 0 );
-				remove_action('wpempro_licenses_forms', array('PRO_Licenser', 'license_page' ),1 );
-				remove_action('admin_init', array('PRO_Licenser', 'register_option') );
-				remove_action('admin_init', array('PRO_Licenser', 'wpempro_activate_license') );
-				remove_action('admin_init', array('PRO_Licenser', 'wpempro_deactivate_license') );
+				remove_action('admin_init', array($PRO_Licenser, 'admin_plugin_updater'), 0 );
+				remove_action('wpempro_licenses_forms', array($PRO_Licenser, 'license_page' ),1 );
+				remove_action('admin_init', array($PRO_Licenser, 'register_option') );
+				remove_action('admin_init', array($PRO_Licenser, 'wpempro_activate_license') );
+				remove_action('admin_init', array($PRO_Licenser, 'wpempro_deactivate_license') );
 			}
 			
 		}
@@ -483,8 +483,6 @@ class wpematico_licenses_handlers {
 			<div class="postbox ">
 			<div class="inside">
 			<h2><span class="dashicons-before dashicons-admin-plugins"></span>'.__($plugin_title_name.' License', WPeMatico::TEXTDOMAIN).'</h2>
-		
-		
 			<table class="form-table">
 			<tbody>
 				<tr valign="top">
