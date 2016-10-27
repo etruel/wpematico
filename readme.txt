@@ -234,7 +234,11 @@ or to e-mail etruel@gmail.com
 
 == Changelog ==
 = 1.4 =
-* New classes done from scratch for the management of the addons licenses.
+* Improvement: New classes done from scratch for the management of the addons licenses.
+* Added a column in the campaigns list with the campaign type.
+* Remove the unuseful filters in top of the campaigns list.
+* Added new filters by campaign types.
+* Tweaks on how to load the Bulk Actions.
 
 = 1.3.8.4 =
 * Improved getting the source permalinks and redirecting to the source sites.

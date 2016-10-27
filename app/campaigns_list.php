@@ -11,6 +11,10 @@ add_action('manage_wpematico_posts_custom_column',array('WPeMatico_Campaigns','c
 add_filter('post_row_actions' , array( 'WPeMatico_Campaigns', 'wpematico_quick_actions'), 10, 2);
 add_filter("manage_edit-wpematico_sortable_columns", array( 'WPeMatico_Campaigns', "sortable_columns") );
 add_action('pre_get_posts', array( 'WPeMatico_Campaigns', 'column_orderby') );
+
+add_action('restrict_manage_posts', array( 'WPeMatico_Campaigns', 'custom_filters') );
+add_action('pre_get_posts', array( 'WPeMatico_Campaigns', 'query_set_custom_filters') );
+
 add_filter('editable_slug', array('WPeMatico_Campaigns','inline_custom_fields'),999,1);
 	//CUSTOM BULK & EDIT ACTIONS
 	add_action( 'quick_edit_custom_box', array( 'WPeMatico_Campaigns', 'wpematico_add_to_quick_edit_custom_box'), 10, 2 );
@@ -24,19 +28,35 @@ if( strstr($_SERVER['REQUEST_URI'], 'wp-admin/edit.php?post_type=wpematico')
  	
 if ( class_exists( 'WPeMatico_Campaigns' ) ) return;
 class WPeMatico_Campaigns {
+	/**
+	 * Cached bulk actions.
+	 *
+	 * @since 3.1.0
+	 * @access private
+	 * @var array
+	 */
+	
+	
 	public static function init() {
 		new self();
 	}
 	
 	public function __construct( $hook_in = FALSE ) {
+		global $_bulk_actions;
 		$cfg = get_option( WPeMatico :: OPTION_KEY);
 		$cfg = apply_filters('wpematico_check_options', $cfg);
-		add_action('admin_print_styles-edit.php', array(&$this,'list_admin_styles'));
-		add_action('admin_print_scripts-edit.php', array(&$this,'list_admin_scripts'));
+		add_action('admin_print_styles-edit.php', array(__CLASS__,'list_admin_styles'));
+		add_action('admin_print_scripts-edit.php', array(__CLASS__,'list_admin_scripts'));
 		// Messages 
-		add_filter( 'post_updated_messages', array( &$this , 'wpematico_updated_messages') );
+		add_filter( 'post_updated_messages', array( __CLASS__ , 'wpematico_updated_messages') );
 		//LIST FILTER ACTIONS 
-		add_filter('views_edit-wpematico', array( &$this, 'my_views_filter') );
+		add_filter('views_edit-wpematico', array( __CLASS__, 'my_views_filter') );
+		add_filter('disable_months_dropdown', array( __CLASS__ , 'disable_list_filters'),10,2);
+		add_filter('disable_categories_dropdown', array( __CLASS__ , 'disable_list_filters'),10,2);
+
+		add_filter('bulk_actions-edit-wpematico', array( __CLASS__, 'old_bulk_actions' ), 90,1 );
+		add_action('restrict_manage_posts', array( __CLASS__, 'run_selected_campaigns' ), 1, 2 );
+
 		//QUICK ACTIONS
 		add_action('admin_action_wpematico_copy_campaign', array( &$this, 'wpematico_copy_campaign'));
 		add_action('admin_action_wpematico_toggle_campaign', array(&$this, 'wpematico_toggle_campaign'));
@@ -46,13 +66,139 @@ class WPeMatico_Campaigns {
 		add_action('admin_action_wpematico_clear_campaign', array(&$this, 'wpematico_clear_campaign'));		
 	}
 
+	public static function custom_filters($options) {
+		global $typenow, $wp_query, $current_user, $pagenow, $cfg;
+		if($pagenow=='edit.php' && is_admin() && $typenow=='wpematico') {
+
+		$options = WPeMatico_Campaign_edit::campaign_type_options();
+		$readonly = ( count($options) == 1 ) ? 'disabled' : '';
+		$campaign_type = (isset($_GET['campaign_type']) && !empty($_GET['campaign_type']) ) ? $_GET['campaign_type'] : '';
+		if(!empty($campaign_type)) $campaign_type = sanitize_text_field($campaign_type);
+		$echoHtml = '<div style="display: inline-block;"><select id="campaign_type" '.$readonly.' name="campaign_type" style="display:inline;">';
+		$echoHtml .= '<option value=""'.  selected( '', $campaign_type, false ).'>'.__('Campaign Type', 'wpematico').'</option>';
+		foreach($options as $key => $option) {
+			$echoHtml .= '<option value="'.$option["value"].'"'.  selected( $option["value"], $campaign_type, false ).'>'.$option["text"].'</option>';
+		}
+		$echoHtml .= '</select></div>';
+
+		echo $echoHtml;
+				
+		}
+	}
+	// Show only posts and media related to logged in author
+	public static function query_set_custom_filters( $wp_query ) {
+		global $current_user, $pagenow, $typenow;
+		if($pagenow=='edit.php' && is_admin() && $typenow=='wpematico') {
+			$campaign_type = (isset($_GET['campaign_type']) && !empty($_GET['campaign_type']) ) ? $_GET['campaign_type'] : '';
+
+			$filtering = false;
+			if(!empty($campaign_type)) { 
+				$filtering = true;				
+				$campaign_type = sanitize_text_field($campaign_type);
+				$meta_query[] =	array(
+					array(
+						'key' => 'campaign_data',
+						'value' => serialize($campaign_type),
+						'compare' => 'LIKE'
+					)
+				);
+			}
+			if(	$filtering ) {
+				$wp_query->set( 'meta_query', $meta_query);
+//				add_filter('views_edit-wpsellerevents',  array(__CLASS__,'fix_post_counts'));				
+			}
+		}
+	}
+
+
 	
+	public static function old_bulk_actions($bulk_actions) {
+		// Don't show on trash page
+		if( isset( $_REQUEST['post_status'] ) && $_REQUEST['post_status'] == 'trash' ) return $bulk_actions;
+
+		return array();
+	}
+	
+	protected static function get_bulk_actions() {
+		$actions = array();
+		$post_type_obj = get_post_type_object( 'wpematico' );
+		if ( current_user_can( $post_type_obj->cap->edit_posts ) ) {
+			$actions['edit'] = __( 'Edit' );
+		}
+		if ( current_user_can( $post_type_obj->cap->delete_posts ) ) {
+			$actions['trash'] = __( 'Move to Trash' );
+		}
+		return $actions;
+	}
+	
+	static function bulk_actions( $which = '' ) {
+		global $_bulk_actions;
+		if ( is_null( $_bulk_actions ) ) {
+			$_bulk_actions = self::get_bulk_actions();
+			/**
+			 * Filters the list table Bulk Actions drop-down.
+			 *
+			 * The dynamic portion of the hook name, `self::screen->id`, refers
+			 * to the ID of the current screen, usually a string.
+			 *
+			 * This filter can currently only be used to remove bulk actions.
+			 *
+			 * @since 3.5.0
+			 *
+			 * @param array $actions An array of the available bulk actions.
+			 */
+			$_bulk_actions = apply_filters( "new_bulk_actions-wpematico", $_bulk_actions );
+			//$_bulk_actions = array_intersect_assoc( $_bulk_actions, $no_new_actions );
+			$two = '';
+		} else {
+			$two = '2';
+		}
+
+		if ( empty( $_bulk_actions ) )
+			return;
+
+		echo '<label for="bulk-action-selector-' . esc_attr( $which ) . '" class="screen-reader-text">' . __( 'Select bulk action' ) . '</label>';
+		echo '<select name="action' . $two . '" id="bulk-action-selector-' . esc_attr( $which ) . "\">\n";
+		echo '<option value="-1">' . __( 'Bulk Actions' ) . "</option>\n";
+
+		foreach ( $_bulk_actions as $name => $title ) {
+			$class = 'edit' === $name ? ' class="hide-if-no-js"' : '';
+
+			echo "\t" . '<option value="' . $name . '"' . $class . '>' . $title . "</option>\n";
+		}
+
+		echo "</select>\n";
+
+		submit_button( __( 'Apply' ), 'action', '', false, array( 'id' => "doaction$two" ) );
+		echo "\n";
+	}
+	
+	public static function run_selected_campaigns($post_type, $which) {
+		global $typenow,$post_type, $pagenow;
+		// Don't show on trash page
+		if( isset( $_REQUEST['post_status'] ) && $_REQUEST['post_status'] == 'trash' ) return;
+		// Don't show if current user is not allowed to edit other's posts for this post type
+		if( empty( $typenow ) ) $typenow = $post_type;
+		// Don't show if current user is not allowed to edit other's posts for this post type
+		if ( ! current_user_can( get_post_type_object( $typenow )->cap->edit_others_posts ) ) return;
+		
+		echo '<div style="margin: 1px 5px 0 0;float:left;background-color: #EB9600;" id="run_all" onclick="javascript:run_all();" class="button">'. __('Run Selected Campaigns', 'wpematico' ) . '</div>';
+		self::bulk_actions($which);
+	}
+	
+	public static function disable_list_filters($disable , $post_type) {
+		if($post_type == 'wpematico') return true;
+		else return $disable;
+	}
+
 	public static function my_views_filter($links) {
 		global $post_type;
 		if($post_type != 'wpematico') return $links;		
 		$links['wpematico'] = __('Visit', 'wpematico').' <a href="http://www.wpematico.com" target="_Blank" class="wpelinks">www.wpematico.com</a>';
 		return $links;
 	}
+
+
 	
   	public static function list_admin_styles(){
 		wp_enqueue_style('campaigns-list',WPeMatico :: $uri .'app/css/campaigns_list.css');
@@ -73,7 +219,7 @@ class WPeMatico_Campaigns {
 	public static function campaigns_list_admin_head() {
 		global $post, $post_type;
 		if($post_type != 'wpematico') return $post->ID;
-			$runallbutton = '<div style="margin: 2px 5px 0 0;float:left;background-color: #EB9600;" id="run_all" onclick="javascript:run_all();" class="button">'. __('Run Selected Campaigns', 'wpematico' ) . '</div>';
+			
 			$clockabove = '<div id="contextual-help-link-wrap" class="hide-if-no-js screen-meta-toggle">'
 			. '<button type="button" id="show-clock" class="button show-clock" aria-controls="clock-wrap" aria-expanded="false">'
 			. date_i18n( get_option('date_format').' '. get_option('time_format') )
@@ -82,7 +228,6 @@ class WPeMatico_Campaigns {
 		?>		
 		<script type="text/javascript" language="javascript">
 			jQuery(document).ready(function($){
-				$('div.tablenav.top').prepend('<?php echo $runallbutton; ?>');
 	            $('span:contains("<?php _e('Slug'); ?>")').each(function (i) {
 					$(this).parent().hide();
 				});
@@ -511,6 +656,7 @@ class WPeMatico_Campaigns {
 			'cb' => '<input type="checkbox" />',
 			'title' => __('Campaign Name', 'wpematico'),
 			'status' => __('Publish as', 'wpematico'),
+			'campaign_type' => __('Campaign Type', 'wpematico'),
 			'next' => __('Current State', 'wpematico'),
 			'last' =>__('Last Run', 'wpematico'),
 			'count' => __('Posts', 'wpematico'),
@@ -551,6 +697,10 @@ class WPeMatico_Campaigns {
 		  case 'status':
 			echo '<div id="campaign_posttype-' . $post_id . '" value="' . $campaign_data['campaign_posttype'] . '">' . get_post_type_object($campaign_data['campaign_customposttype'])->labels->singular_name . '<br />'; 
 			echo '' . get_post_status_object($campaign_data['campaign_posttype'])->label . '</div>'; 
+			break;
+		  case 'campaign_type':
+			$CampaignTypestr =  WPeMatico_Campaign_edit::get_campaign_type_by_field($campaign_data['campaign_type']);
+			echo '<div class="center" id="campaign_type-' . $post_id . '" value="' . $campaign_data['campaign_type'] . '">' . str_replace( array(' (Default)','Fetcher'), '', $CampaignTypestr) . '</div>'; 
 			break;
 		  case 'count':
 			$postscount = get_post_meta($post_id, 'postscount', true);

@@ -21,7 +21,6 @@ class wpematico_licenses_handlers {
 
 	}
 	public static function disable_old_updater() {
-		global $PRO_Licenser;
 		if (defined( 'MAKE_ME_FEED_VER' )) {
 			if (version_compare(MAKE_ME_FEED_VER, '1.4', '<=')) {
 				remove_action( 'admin_init', 'make_me_feed_plugin_updater', 0 );
@@ -85,6 +84,7 @@ class wpematico_licenses_handlers {
 		
 		if (defined( 'WPEMATICOPRO_VERSION' )) {
 			if (version_compare(WPEMATICOPRO_VERSION, '1.3.8.1', '<=')) {
+				global $PRO_Licenser;				
 				remove_action('admin_init', array($PRO_Licenser, 'admin_plugin_updater'), 0 );
 				remove_action('wpempro_licenses_forms', array($PRO_Licenser, 'license_page' ),1 );
 				remove_action('admin_init', array($PRO_Licenser, 'register_option') );

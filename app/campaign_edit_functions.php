@@ -64,6 +64,16 @@ class WPeMatico_Campaign_edit_functions {
 
 		return $options;
 	}	
+	static function get_campaign_type_by_field($value, $field='value', $return='text') {
+		$options =  self::campaign_type_options();
+		foreach($options as $key => $option) {
+			if ($option[$field]==$value) {
+				if($return=='key') return $key;
+				else return $option[$return];
+			}
+		}
+		return FALSE;
+	}	
 	
 	
 		//*************************************************************************************
