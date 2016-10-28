@@ -15,22 +15,29 @@ add_action('pre_get_posts', array( 'WPeMatico_Campaigns', 'column_orderby') );
 add_action('restrict_manage_posts', array( 'WPeMatico_Campaigns', 'custom_filters') );
 add_action('pre_get_posts', array( 'WPeMatico_Campaigns', 'query_set_custom_filters') );
 
-		// Messages 
-		add_filter( 'post_updated_messages', array( 'WPeMatico_Campaigns' , 'wpematico_updated_messages') );
-		//LIST FILTER ACTIONS 
-		add_filter('views_edit-wpematico', array( 'WPeMatico_Campaigns', 'my_views_filter') );
-		add_filter('disable_months_dropdown', array( 'WPeMatico_Campaigns' , 'disable_list_filters'),10,2);
-		add_filter('disable_categories_dropdown', array( 'WPeMatico_Campaigns' , 'disable_list_filters'),10,2);
+// Messages 
+add_filter( 'post_updated_messages', array( 'WPeMatico_Campaigns' , 'wpematico_updated_messages') );
+//LIST FILTER ACTIONS 
+add_filter('views_edit-wpematico', array( 'WPeMatico_Campaigns', 'my_views_filter') );
+add_filter('disable_months_dropdown', array( 'WPeMatico_Campaigns' , 'disable_list_filters'),10,2);
+add_filter('disable_categories_dropdown', array( 'WPeMatico_Campaigns' , 'disable_list_filters'),10,2);
 
-		add_filter('bulk_actions-edit-wpematico', array( 'WPeMatico_Campaigns', 'old_bulk_actions' ), 90,1 );
-		add_action('restrict_manage_posts', array( 'WPeMatico_Campaigns', 'run_selected_campaigns' ), 1, 2 );
+add_filter('bulk_actions-edit-wpematico', array( 'WPeMatico_Campaigns', 'old_bulk_actions' ), 90,1 );
+add_action('restrict_manage_posts', array( 'WPeMatico_Campaigns', 'run_selected_campaigns' ), 1, 2 );
 
+add_action('admin_print_styles-edit.php', array( 'WPeMatico_Campaigns','list_admin_styles'));
+add_action('admin_print_scripts-edit.php', array( 'WPeMatico_Campaigns','list_admin_scripts'));
+//QUICK ACTIONS
+add_action('admin_action_wpematico_copy_campaign', array( 'WPeMatico_Campaigns', 'wpematico_copy_campaign'));
+add_action('admin_action_wpematico_toggle_campaign', array( 'WPeMatico_Campaigns', 'wpematico_toggle_campaign'));
+add_action('admin_action_wpematico_reset_campaign', array( 'WPeMatico_Campaigns', 'wpematico_reset_campaign'));
+add_action('admin_action_wpematico_clear_campaign', array( 'WPeMatico_Campaigns', 'wpematico_clear_campaign'));		
 
 add_filter('editable_slug', array('WPeMatico_Campaigns','inline_custom_fields'),999,1);
-	//CUSTOM BULK & EDIT ACTIONS
-	add_action( 'quick_edit_custom_box', array( 'WPeMatico_Campaigns', 'wpematico_add_to_quick_edit_custom_box'), 10, 2 );
-	add_action( 'wp_ajax_manage_wpematico_save_bulk_edit', array( 'WPeMatico_Campaigns', 'manage_wpematico_save_bulk_edit') );
-	add_action( 'wp_ajax_get_wpematico_categ_bulk_edit', array( 'WPeMatico_Campaigns', 'get_wpematico_categ_bulk_edit') );
+//CUSTOM BULK & EDIT ACTIONS
+add_action( 'quick_edit_custom_box', array( 'WPeMatico_Campaigns', 'wpematico_add_to_quick_edit_custom_box'), 10, 2 );
+add_action( 'wp_ajax_manage_wpematico_save_bulk_edit', array( 'WPeMatico_Campaigns', 'manage_wpematico_save_bulk_edit') );
+add_action( 'wp_ajax_get_wpematico_categ_bulk_edit', array( 'WPeMatico_Campaigns', 'get_wpematico_categ_bulk_edit') );
 
 if( strstr($_SERVER['REQUEST_URI'], 'wp-admin/edit.php?post_type=wpematico')  
   || strstr($_SERVER['REQUEST_URI'], 'wp-admin/admin.php?action=wpematico_') ) 
@@ -56,15 +63,8 @@ class WPeMatico_Campaigns {
 		global $_bulk_actions;
 		$cfg = get_option( WPeMatico :: OPTION_KEY);
 		$cfg = apply_filters('wpematico_check_options', $cfg);
-		add_action('admin_print_styles-edit.php', array(__CLASS__,'list_admin_styles'));
-		add_action('admin_print_scripts-edit.php', array(__CLASS__,'list_admin_scripts'));
-		//QUICK ACTIONS
-		add_action('admin_action_wpematico_copy_campaign', array( &$this, 'wpematico_copy_campaign'));
-		add_action('admin_action_wpematico_toggle_campaign', array(&$this, 'wpematico_toggle_campaign'));
 		if ( (isset($cfg['enabledelhash']) && !empty($cfg['enabledelhash']) ) && $cfg['enabledelhash'] )    // Si está habilitado en settings, lo muestra 
-			add_action('admin_action_wpematico_delhash_campaign', array(&$this, 'wpematico_delhash_campaign'));
-		add_action('admin_action_wpematico_reset_campaign', array(&$this, 'wpematico_reset_campaign'));
-		add_action('admin_action_wpematico_clear_campaign', array(&$this, 'wpematico_clear_campaign'));		
+			add_action('admin_action_wpematico_delhash_campaign', array( 'WPeMatico_Campaigns', 'wpematico_delhash_campaign'));
 	}
 
 	public static function custom_filters($options) {
@@ -176,6 +176,7 @@ class WPeMatico_Campaigns {
 	
 	public static function run_selected_campaigns($post_type, $which) {
 		global $typenow,$post_type, $pagenow;
+		if($post_type != 'wpematico') return;		
 		// Don't show on trash page
 		if( isset( $_REQUEST['post_status'] ) && $_REQUEST['post_status'] == 'trash' ) return;
 		// Don't show if current user is not allowed to edit other's posts for this post type
@@ -188,6 +189,7 @@ class WPeMatico_Campaigns {
 	}
 	
 	public static function disable_list_filters($disable , $post_type) {
+		global $post_type;
 		if($post_type == 'wpematico') return true;
 		else return $disable;
 	}
@@ -202,19 +204,19 @@ class WPeMatico_Campaigns {
 
 	
   	public static function list_admin_styles(){
+		global $post_type;
+		if($post_type != 'wpematico') return;		
 		wp_enqueue_style('campaigns-list',WPeMatico :: $uri .'app/css/campaigns_list.css');
 		wp_enqueue_style('wpematstyles',WPeMatico :: $uri .'app/css/wpemat_styles.css');
-//		add_action('admin_head', array( &$this ,'campaigns_admin_head_style'));
+//		add_action('admin_head', array(  'WPeMatico_Campaigns' ,'campaigns_admin_head_style'));
 	}
 	public static function list_admin_scripts(){
-		add_action('admin_head', array( __CLASS__ ,'campaigns_list_admin_head'));
+		global $post_type;
+		if($post_type != 'wpematico') return;		
+		add_action('admin_head', array(  'WPeMatico_Campaigns' ,'campaigns_list_admin_head'));
 //		wp_register_script('jquery-input-mask', 'js/jquery.maskedinput-1.2.2.js', array( 'jquery' ));
 //		wp_enqueue_script('color-picker', 'js/colorpicker.js', array('jquery'));
-		$slug = 'wpematico';
-		// load only when editing a video
-		if ( ( isset( $_GET['page'] ) && $_GET['page'] == $slug ) || ( isset( $_GET['post_type'] ) && $_GET['post_type'] == $slug ) ) {
-			wp_enqueue_script( 'wpematico-bulk-quick-edit', WPeMatico :: $uri . 'app/js/bulk_quick_edit.js', array( 'jquery', 'inline-edit-post' ), '', true );
-		}
+		wp_enqueue_script( 'wpematico-bulk-quick-edit', WPeMatico :: $uri . 'app/js/bulk_quick_edit.js', array( 'jquery', 'inline-edit-post' ), '', true );
 	}
 
 	public static function campaigns_list_admin_head() {
