@@ -90,13 +90,32 @@ function WPeAddon_admin_head(){
 	}
 }
 
+add_action( 'admin_init', 'activate_desactivate_plugins',0  );
+function activate_desactivate_plugins() {
+	global $plugins, $status, $wp_list_table;
+	if (!defined('WPEM_ADMIN_DIR')) {
+		define('WPEM_ADMIN_DIR' , ABSPATH . basename(admin_url()));
+	}
+	
+	if (isset($_REQUEST['checked'])){
+		$status ='all'; 
+		$page=  (!isset($page) or is_null($page))? 1 : $page;
+		$plugins['all']=get_plugins();
+		
+		require WPEM_ADMIN_DIR . '/plugins.php' ;
+		exit;
+	}
+	
+}
+
 function add_admin_plugins_page() {
-	define( 'WPEM_ADMIN_DIR' , ABSPATH . basename(admin_url()) ) ;
-	//wp_die( ABSPATH . basename(admin_url()) . '/includes/plugin.php') ;
+	if (!defined('WPEM_ADMIN_DIR')) {
+		define('WPEM_ADMIN_DIR' , ABSPATH . basename(admin_url()));
+	}
+	
 	
 	if ( ! class_exists( 'WP_List_Table' ) ) {
 		require_once WPEM_ADMIN_DIR . '/includes/class-wp-list-table.php';
-		echo WPEM_ADMIN_DIR . '/includes/class-wp-list-table.php';
 	}
 	
 	if ( ! class_exists( 'WP_Plugins_List_Table' ) ) {
