@@ -234,7 +234,9 @@ or to e-mail etruel@gmail.com
 
 == Changelog ==
 = 1.4 =
-* Improvement: New classes done from scratch for the management of the addons licenses.
+* New classes done from scratch for the management of the addons licenses.
+* Fixes sifferent issues on uploading Addons.
+* Fixes a warning on activate some addons at same time.
 * Added a column in the campaigns list with the campaign type.
 * Remove the unuseful filters in top of the campaigns list.
 * Added new filters by campaign types.
