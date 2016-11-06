@@ -284,7 +284,8 @@ class WPeMatico_functions {
 		} else {
 			$campaigndata['campaign_categories']	= array();
 		}
-
+		
+		$campaigndata['tax_input'] = (!isset($post_data['tax_input']) ) ?  array() : (array)$post_data['tax_input'];
 		#Proceso las Words to Category sacando los que estan en blanco
 		//campaign_wrd2cat, campaign_wrd2cat_regex, campaign_wrd2cat_category 
 		$campaign_wrd2cat = Array();

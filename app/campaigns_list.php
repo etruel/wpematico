@@ -38,6 +38,8 @@ add_filter('editable_slug', array('WPeMatico_Campaigns','inline_custom_fields'),
 add_action( 'quick_edit_custom_box', array( 'WPeMatico_Campaigns', 'wpematico_add_to_quick_edit_custom_box'), 10, 2 );
 add_action( 'wp_ajax_manage_wpematico_save_bulk_edit', array( 'WPeMatico_Campaigns', 'manage_wpematico_save_bulk_edit') );
 add_action( 'wp_ajax_get_wpematico_categ_bulk_edit', array( 'WPeMatico_Campaigns', 'get_wpematico_categ_bulk_edit') );
+add_action('wp_ajax_get_wpematico_quick_categories', array('WPeMatico_Campaigns', 'get_wpematico_quick_categories'));
+
 
 if( strstr($_SERVER['REQUEST_URI'], 'wp-admin/edit.php?post_type=wpematico')  
   || strstr($_SERVER['REQUEST_URI'], 'wp-admin/admin.php?action=wpematico_') ) 
@@ -219,12 +221,73 @@ class WPeMatico_Campaigns {
 //		wp_enqueue_script('color-picker', 'js/colorpicker.js', array('jquery'));
 		wp_enqueue_script( 'wpematico-bulk-quick-edit', WPeMatico :: $uri . 'app/js/bulk_quick_edit.js', array( 'jquery', 'inline-edit-post' ), '', true );
 	}
+	public static function get_wpematico_quick_categories() {
+		if (empty($_POST['campaign_id']) || empty($_POST['campaign_post_type'])) {
+			echo '';
+			wp_die();
+		}
+		$campaign_data = WPeMatico::get_campaign($_POST['campaign_id']);
+		$taxonomy_names = get_object_taxonomies($_POST['campaign_post_type']);
+		$hierarchical_taxonomies = array();
+		$flat_taxonomies = array();
+		foreach ( $taxonomy_names as $taxonomy_name ) {
+			$taxonomy = get_taxonomy( $taxonomy_name );
+			if ( !$taxonomy->show_ui )
+				continue;
 
+			if ( $taxonomy->hierarchical )
+				$hierarchical_taxonomies[] = $taxonomy;
+			else
+				$flat_taxonomies[] = $taxonomy;
+		}
+		
+		if ( !class_exists('WPeMaticoPRO') ) : ?>					
+			<?php if ( count( $hierarchical_taxonomies ) ) : ?>					
+			<fieldset class="inline-edit-col-center inline-edit-categories"><div class="inline-edit-col">
+				<?php foreach ( $hierarchical_taxonomies as $taxonomy ) : ?>
+
+				<span class="title inline-edit-categories-label"><?php echo esc_html( $taxonomy->labels->name ) ?></span>
+				<input type="hidden" name="<?php echo ( $taxonomy->name == 'category' ) ? 'post_category[]' : 'tax_input[' . esc_attr( $taxonomy->name ) . '][]'; ?>" value="0" />
+				<ul class="cat-checklist <?php echo esc_attr( $taxonomy->name )?>-checklist">
+					<?php wp_terms_checklist( null, array( 'taxonomy' => $taxonomy->name ) ) ?>
+				</ul>
+
+				<?php endforeach; //$hierarchical_taxonomies as $taxonomy ?>
+				</div>
+					
+			</fieldset>
+			<?php endif; // count( $hierarchical_taxonomies ) && !$bulk ?>
+
+		<?php endif; // !class_exists('WPeMaticoPRO') ?>
+				
+		<?php if ( count( $flat_taxonomies ) ) : ?>
+			<fieldset class="inline-edit-col-right">
+				<div class="inline-edit-col">
+			<?php foreach ( $flat_taxonomies as $taxonomy ) : ?>
+				<?php if ( current_user_can( $taxonomy->cap->assign_terms ) ) : ?>
+					<label class="inline-edit-tags">
+						<span class="title"><?php echo esc_html( $taxonomy->labels->name ) ?></span>
+						<textarea cols="22" rows="1" name="campaign_tags" class="tax_input_<?php echo esc_attr( $taxonomy->name )?>"></textarea>
+					</label>
+				<?php endif; ?>
+			<?php endforeach; //$flat_taxonomies as $taxonomy ?>
+				</div>
+			</fieldset>
+		<?php endif; 
+		wp_die();
+	}
 	public static function campaigns_list_admin_head() {
 		global $post, $post_type;
 		if($post_type != 'wpematico') return $post->ID;
-			
-			$clockabove = '<div id="contextual-help-link-wrap" class="hide-if-no-js screen-meta-toggle">'
+		
+		wp_enqueue_script( 'wpematico-ajax-quick-edit', WPEMATICO_PLUGIN_URL . 'app/js/ajax_quick_edit.js', array( 'jquery' ), WPEMATICO_VERSION, true );
+		wp_localize_script('wpematico-ajax-quick-edit', 'wpematico_list',
+				array('ajax_url' => admin_url( 'admin-ajax.php' ),
+					
+
+				) );
+
+		$clockabove = '<div id="contextual-help-link-wrap" class="hide-if-no-js screen-meta-toggle">'
 			. '<button type="button" id="show-clock" class="button show-clock" aria-controls="clock-wrap" aria-expanded="false">'
 			. date_i18n( get_option('date_format').' '. get_option('time_format') )
 			. '</button>'
@@ -831,11 +894,27 @@ class WPeMatico_Campaigns {
 	
 	
 	public static function wpematico_add_to_quick_edit_custom_box( $column_name, $post_type ) {
+		global $post;
+		$post_id = $post->ID;
+		$campaign_data = WPeMatico :: get_campaign ( $post->ID );
+		$campaign_max = $campaign_data['campaign_max'];
+		$campaign_feeddate = $campaign_data['campaign_feeddate'];
+		$campaign_author = $campaign_data['campaign_author'];
+		$campaign_linktosource = $campaign_data['campaign_linktosource'];
+		$campaign_commentstatus = $campaign_data['campaign_commentstatus'];
+		$campaign_allowpings = $campaign_data['campaign_allowpings'];
+		$campaign_woutfilter = $campaign_data['campaign_woutfilter'];
+		$campaign_strip_links = $campaign_data['campaign_strip_links'];
+		$campaign_customposttype = $campaign_data['campaign_customposttype'];
+		$campaign_posttype = $campaign_data['campaign_posttype'];
+		$campaign_post_format = (isset($campaign_data['campaign_post_format']) && !empty($campaign_data['campaign_post_format']) ) ? $campaign_data['campaign_post_format'] : '0';
+		$campaign_categories = $campaign_data['campaign_categories'];
+		$campaign_tags = @$campaign_data['campaign_tags'];
 		
 		$post = get_default_post_to_edit( $post_type );
 		$post_type_object = get_post_type_object( 'post' );
-
-		$taxonomy_names = get_object_taxonomies( 'post' );
+		
+		$taxonomy_names = get_object_taxonomies($campaign_customposttype);
 		$hierarchical_taxonomies = array();
 		$flat_taxonomies = array();
 		foreach ( $taxonomy_names as $taxonomy_name ) {
@@ -918,7 +997,7 @@ class WPeMatico_Campaigns {
 						</div>
 					</div>
 				</fieldset>	
-		
+				<div id="categories_div_<?php echo $post_id; ?>">
 				<?php if ( !class_exists('WPeMaticoPRO') ) : ?>					
 				<?php if ( count( $hierarchical_taxonomies ) ) : ?>					
 				<fieldset class="inline-edit-col-center inline-edit-categories"><div class="inline-edit-col">
@@ -949,9 +1028,10 @@ class WPeMatico_Campaigns {
 							</label>
 						<?php endif; ?>
 					<?php endforeach; //$flat_taxonomies as $taxonomy ?>
-					
+						</div>
+					</fieldset>
 					<?php endif; // count( $flat_taxonomies ) && !$bulk  ?>
-					
+				</div>	
 						<div class="inline-edit-radiosbox">
 							<label>
 								<span class="title"><?php _e('Post type',  'wpematico' ); ?></span>
@@ -965,7 +1045,7 @@ class WPeMatico_Campaigns {
 									$post_types=get_post_types($args,$output,$operator); 
 									foreach ($post_types  as $posttype ) {
 										if ($posttype == 'wpematico') continue;
-										echo '<label><input type="radio" name="campaign_customposttype" value="'. $posttype. '" id="customtype_'. $posttype. '" /> '. $posttype. '</label>';
+										echo '<label style="display: block;"><input type="radio" name="campaign_customposttype" class="campaign_customposttype" value="'. $posttype. '" id="customtype_'. $posttype. '" data-id="'.$post_id.'" /> '. $posttype. '</label>';
 									} ?>
 								</span>
 							</label>
@@ -975,10 +1055,10 @@ class WPeMatico_Campaigns {
 								<span class="title"><?php _e('Status',  'wpematico' ); ?></span>
 								<br/>
 								<span class="input-text">
-									<label><input type="radio" name="campaign_posttype" value="publish" /> <?php _e('Published'); ?></label>
-									<label><input type="radio" name="campaign_posttype" value="private" /> <?php _e('Private'); ?></label>
-									<label><input type="radio" name="campaign_posttype" value="pending" /> <?php _e('Pending'); ?></label>
-									<label><input type="radio" name="campaign_posttype" value="draft" /> <?php _e('Draft'); ?></label>
+									<label style="display: block;"><input type="radio" name="campaign_posttype" value="publish" /> <?php _e('Published'); ?></label>
+									<label style="display: block;"><input type="radio" name="campaign_posttype" value="private" /> <?php _e('Private'); ?></label>
+									<label style="display: block;"><input type="radio" name="campaign_posttype" value="pending" /> <?php _e('Pending'); ?></label>
+									<label style="display: block;"><input type="radio" name="campaign_posttype" value="draft" /> <?php _e('Draft'); ?></label>
 								</span>
 							</label>
 						</div>
@@ -997,7 +1077,7 @@ class WPeMatico_Campaigns {
 									<div id="post-formats-select">
 										<label><input type="radio" name="campaign_post_format" class="post-format" id="post-format-0" value="0" /> <?php echo get_post_format_string( 'standard' ); ?></label>
 										<?php foreach ( $post_formats[0] as $format ) : ?>
-											<label><input type="radio" name="campaign_post_format" class="post-format" id="post-format-<?php echo esc_attr( $format ); ?>" value="<?php echo esc_attr( $format ); ?>" /> <?php echo esc_html( get_post_format_string( $format ) ); ?></label>
+											<label style="display: block;"><input type="radio" name="campaign_post_format" class="post-format" id="post-format-<?php echo esc_attr( $format ); ?>" value="<?php echo esc_attr( $format ); ?>" /> <?php echo esc_html( get_post_format_string( $format ) ); ?></label>
 										<?php endforeach; ?>
 									</div>
 									<?php endif; ?>
@@ -1030,6 +1110,7 @@ class WPeMatico_Campaigns {
 	
 	static function save_quick_edit_post($post_id) {
 		//wp_die('save_quick_edit_post'.print_r($_POST,1));
+		error_log('executed');
 	    $slug = 'wpematico';
 		if ( !isset($_POST['post_type']) || ( $slug !== $_POST['post_type'] ) ) return $post_id; 
 		if ( !current_user_can( 'edit_post', $post_id ) ) 	return $post_id;
@@ -1039,6 +1120,11 @@ class WPeMatico_Campaigns {
 		$nivelerror = error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 		$campaign = WPeMatico :: get_campaign ($post_id);
+		//error_log(var_export($campaign, true));
+		// custom taxonomies
+			
+		
+		//error_log(var_export($_POST, true));
 		$posdata  = $_POST; //apply_filters('wpematico_check_campaigndata', $_POST );
 		//parse disabled checkfields that dont send any data
 		$posdata['campaign_feeddate']	= (!isset($posdata['campaign_feeddate']) || empty($posdata['campaign_feeddate'])) ? false: ($posdata['campaign_feeddate']==1) ? true : false;
@@ -1049,10 +1135,10 @@ class WPeMatico_Campaigns {
 		$campaign = array_merge($campaign, $posdata);
 		
 		$campaign = apply_filters('wpematico_check_campaigndata', $campaign );
-
+		error_log(var_export($campaign, true));
 		error_reporting($nivelerror);
 		
-		WPeMatico :: update_campaign($post_id, $campaign);
+		WPeMatico::update_campaign($post_id, $campaign);
 		
 		return $post_id ;	
 	}
@@ -1068,6 +1154,7 @@ class WPeMatico_Campaigns {
 	 * This is the WordPress AJAX function that will handle and save your data.
 	 */
 	function manage_wpematico_save_bulk_edit() {
+		error_log('executed');
 		// we need the post IDs
 		$post_ids = ( isset( $_POST[ 'post_ids' ] ) && !empty( $_POST[ 'post_ids' ] ) ) ? $_POST[ 'post_ids' ] : NULL;		
 		// if we have post IDs
@@ -1088,6 +1175,17 @@ class WPeMatico_Campaigns {
 			if (isset($_POST['post_category']) && is_array($_POST['post_category'])) {
 				$arrayData['post_category'] = $_POST['post_category'];
 			}
+			// custom taxonomies
+			if (isset($_POST['tax_input']) && is_array($_POST['tax_input'])) {
+				foreach ($_POST['tax_input'] as $taxonomy) {
+					foreach ($taxonomy as $tax) {
+						$arrayData['post_category'][] = $tax;
+					}
+					
+				}
+				
+			}
+			
 
 			// update for each post ID
 			foreach( $post_ids as $post_id ) {
