@@ -29,7 +29,10 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		}else{
 			set_error_handler('wpematico_joberrorhandler',E_ALL & ~E_NOTICE);
 		}
-		wpematico_init_set('safe_mode', 'Off');
+		
+		if (!version_compare(phpversion(), '5.3.0', '>')) { // PHP Version
+			wpematico_init_set('safe_mode', 'Off');   // deprecated after 5.3
+		}
 		wpematico_init_set('ignore_user_abort', 'On');
 		
 		//ignore_user_abort(true);			//user can't abort script (close windows or so.)
@@ -67,11 +70,12 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		$this->feeds = $this->campaign['campaign_feeds'] ; // --- Obtengo los feeds de la campaña
 		
 		foreach($this->feeds as $feed) {
-/*			// interrupt the script if timeout 
+			// interrupt the script if timeout 
   			if (current_time('timestamp')-$this->campaign['starttime'] >= $campaign_timeout) {
+				trigger_error(sprintf(__('Ending feed, reached running timeout at %1$d sec.', 'wpematico' ), $campaign_timeout ),E_USER_WARNING);
 				break;
 			}
-*/			wpematico_init_set('max_execution_time', $campaign_timeout, true);
+			wpematico_init_set('max_execution_time', $campaign_timeout, true);
 			$postcount += $this->processFeed($feed);         #- ---- Proceso todos los feeds      
 		}
 
@@ -160,13 +164,13 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		// Processes post stack
 		$realcount = 0;
 		foreach($items as $item) {	
-/*			// interrupt the script if timeout 
-			if (current_time('timestamp')-$this->campaign['starttime'] >= $campaign_timeout) {
+			// interrupt the script if timeout 
+  			if (current_time('timestamp')-$this->campaign['starttime'] >= $campaign_timeout) {
+				trigger_error(sprintf(__('Reached running timeout at %1$d sec.', 'wpematico' ), $campaign_timeout ),E_USER_WARNING);
 				break;
 			}
-*/			
 			// set timeout for rest of the items to Timeout setting less current run time
-			wpematico_init_set('max_execution_time', $campaign_timeout - ( current_time('timestamp') - $this->campaign['starttime'] ), true);
+			wpematico_init_set('max_execution_time', $campaign_timeout, true); // - ( current_time('timestamp') - $this->campaign['starttime'] ), true);
 			$realcount++;
 			$this->currenthash[$feed] = md5($item->get_permalink()); // the hash of the current item feed 
 			$suma=$this->processItem($simplepie, $item, $feed);
@@ -218,12 +222,11 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 				trigger_error(__('Original date out of range.  Assigning current date to post.', 'wpematico' ) ,E_USER_NOTICE);
 			}
 		}
-		$this->current_item['title'] = $item->get_title();
-		$this->current_item['title'] = htmlspecialchars_decode($this->current_item['title']);
 		
 		// Item title
+		$this->current_item['title'] = $item->get_title();
 		if( $this->cfg['nonstatic'] ) { $this->current_item = NoNStatic :: title($this->current_item,$this->campaign,$item,$realcount ); }else $this->current_item['title'] = esc_attr($this->current_item['title']);
- 		
+		$this->current_item['title'] = htmlspecialchars_decode($this->current_item['title']);
 
  		// Item author
 		if( $this->cfg['nonstatic'] ) { $this->current_item = NoNStatic :: author($this->current_item,$this->campaign, $feedurl ); }else $this->current_item['author'] = $this->campaign['campaign_author'];
@@ -536,10 +539,10 @@ function wpematico_init_set($index, $value, $error_only_fail = false) {
 	$oldvalue = @ini_set($index, $value); //@return string the old value on success, <b>FALSE</b> on failure. 
 	if ($error_only_fail) {
 		if ($oldvalue === false) {
-			trigger_error(sprintf(__('Triying to set %1$s = %2$s: <strong>%3$s</strong> - Old value:%4$s.', 'wpematico' ), $index, $value, (($oldvalue === FALSE) ? __('Failed', 'wpematico' ):__('Success', 'wpematico' )), $oldvalue),(($oldvalue === FALSE)?E_USER_WARNING:E_USER_NOTICE));
+			trigger_error(sprintf(__('Trying to set %1$s = %2$s: <strong>%3$s</strong> - Old value:%4$s.', 'wpematico' ), $index, $value, (($oldvalue === FALSE) ? __('Failed', 'wpematico' ):__('Success', 'wpematico' )), $oldvalue),(($oldvalue === FALSE)?E_USER_WARNING:E_USER_NOTICE));
 		}
 	} else {
-		trigger_error(sprintf(__('Triying to set %1$s = %2$s: <strong>%3$s</strong> - Old value:%4$s.', 'wpematico' ), $index, $value, (($oldvalue === FALSE)?__('Failed', 'wpematico' ):__('Success', 'wpematico' )), $oldvalue),(($oldvalue === FALSE)?E_USER_WARNING:E_USER_NOTICE));
+		trigger_error(sprintf(__('Trying to set %1$s = %2$s: <strong>%3$s</strong> - Old value:%4$s.', 'wpematico' ), $index, $value, (($oldvalue === FALSE)?__('Failed', 'wpematico' ):__('Success', 'wpematico' )), $oldvalue),(($oldvalue === FALSE)?E_USER_WARNING:E_USER_NOTICE));
 	}
 	
 	return $oldvalue;
