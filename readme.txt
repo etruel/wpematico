@@ -235,8 +235,10 @@ or to e-mail etruel@gmail.com
 == Changelog ==
 = 1.4 =
 * New classes done from scratch for the management of the addons licenses.
-* Fixes sifferent issues on uploading Addons.
+* Fixes different issues on uploading Addons.
 * Fixes a warning on activate some addons at same time.
+* Fixes the parser for html entities in the title for some wrong formatted feeds.
+* Tweaks on run campaign with php timeouts, value given by the plugin settings.
 * Added a column in the campaigns list with the campaign type.
 * Remove the unuseful filters in top of the campaigns list.
 * Added new filters by campaign types.

@@ -18,7 +18,6 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 	private $lasthash	   = array();
 	private $currenthash   = array();
 	public $current_item   = array();
-	private $time_start	   = 0;
 	
 	public function __construct($campaign_id) {
 		global $wpdb,$campaign_log_message, $jobwarnings, $joberrors;
@@ -30,10 +29,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		}else{
 			set_error_handler('wpematico_joberrorhandler',E_ALL & ~E_NOTICE);
 		}
-		wpematico_init_set('safe_mode', 'On');
+		wpematico_init_set('safe_mode', 'Off');
 		wpematico_init_set('ignore_user_abort', 'On');
-		
-		
 		
 		//ignore_user_abort(true);			//user can't abort script (close windows or so.)
 		$this->campaign_id=$campaign_id;			   //set campaign id
@@ -42,15 +39,15 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		//$this->fetched_posts = $this->campaign['postscount'];
 		$this->cfg = get_option(WPeMatico :: OPTION_KEY);
 		$campaign_timeout = (int)$this->cfg['campaign_timeout'];
-		$this->time_start = current_time('timestamp');
+
 		wpematico_init_set('max_execution_time', $campaign_timeout);
+		
 		// new actions 
 		if( (int)$this->cfg['throttle'] > 0 ) add_action('wpematico_inserted_post', array( 'WPeMatico', 'throttling_inserted_post' ));		
 
-		
 		//Set job start settings
-		$this->campaign['starttime']		= current_time('timestamp'); //set start time for job
-		$this->campaign['lastpostscount'] 	= 0; // Lo pone en 0 y lo asigna al final		
+		$this->campaign['starttime']	 = current_time('timestamp'); //set start time for job
+		$this->campaign['lastpostscount'] = 0; // Lo pone en 0 y lo asigna al final		
 		WPeMatico :: update_campaign($this->campaign_id, $this->campaign); //Save start time data
 		//
 		$this->set_actions_and_filters();
@@ -70,10 +67,11 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		$this->feeds = $this->campaign['campaign_feeds'] ; // --- Obtengo los feeds de la campaña
 		
 		foreach($this->feeds as $feed) {
-			if (current_time('timestamp')-$this->time_start >= $campaign_timeout) {
+/*			// interrupt the script if timeout 
+  			if (current_time('timestamp')-$this->campaign['starttime'] >= $campaign_timeout) {
 				break;
 			}
-			wpematico_init_set('max_execution_time', $campaign_timeout, true);
+*/			wpematico_init_set('max_execution_time', $campaign_timeout, true);
 			$postcount += $this->processFeed($feed);         #- ---- Proceso todos los feeds      
 		}
 
@@ -162,11 +160,13 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		// Processes post stack
 		$realcount = 0;
 		foreach($items as $item) {	
-			if (current_time('timestamp')-$this->time_start >= $campaign_timeout) {
+/*			// interrupt the script if timeout 
+			if (current_time('timestamp')-$this->campaign['starttime'] >= $campaign_timeout) {
 				break;
 			}
-			
-			wpematico_init_set('max_execution_time', $campaign_timeout, true);			
+*/			
+			// set timeout for rest of the items to Timeout setting less current run time
+			wpematico_init_set('max_execution_time', $campaign_timeout - ( current_time('timestamp') - $this->campaign['starttime'] ), true);
 			$realcount++;
 			$this->currenthash[$feed] = md5($item->get_permalink()); // the hash of the current item feed 
 			$suma=$this->processItem($simplepie, $item, $feed);
@@ -532,17 +532,17 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
 //function wpe_change_content_type(){ return 'text/html'; }
 function wpematico_init_set($index, $value, $error_only_fail = false) {
-	$oldvalue = ini_get($index);
-	$sucessSet = @ini_set($index, $value); //disable safe mode
+	//$oldvalue = ini_get($index);
+	$oldvalue = @ini_set($index, $value); //@return string the old value on success, <b>FALSE</b> on failure. 
 	if ($error_only_fail) {
-		if ($sucessSet === false) {
-			trigger_error(sprintf(__('Triying to set %1$s = %2$s: <strong>%3$s</strong> - Old value:%4$s.', 'wpematico' ), $index, $value, (($sucessSet === FALSE)?'failed':'success'), $oldvalue),(($sucessSet === FALSE)?E_USER_WARNING:E_USER_NOTICE));
+		if ($oldvalue === false) {
+			trigger_error(sprintf(__('Triying to set %1$s = %2$s: <strong>%3$s</strong> - Old value:%4$s.', 'wpematico' ), $index, $value, (($oldvalue === FALSE) ? __('Failed', 'wpematico' ):__('Success', 'wpematico' )), $oldvalue),(($oldvalue === FALSE)?E_USER_WARNING:E_USER_NOTICE));
 		}
 	} else {
-		trigger_error(sprintf(__('Triying to set %1$s = %2$s: <strong>%3$s</strong> - Old value:%4$s.', 'wpematico' ), $index, $value, (($sucessSet === FALSE)?'failed':'success'), $oldvalue),(($sucessSet === FALSE)?E_USER_WARNING:E_USER_NOTICE));
+		trigger_error(sprintf(__('Triying to set %1$s = %2$s: <strong>%3$s</strong> - Old value:%4$s.', 'wpematico' ), $index, $value, (($oldvalue === FALSE)?__('Failed', 'wpematico' ):__('Success', 'wpematico' )), $oldvalue),(($oldvalue === FALSE)?E_USER_WARNING:E_USER_NOTICE));
 	}
 	
-	return $sucessSet;
+	return $oldvalue;
 }
 //function for PHP error handling
 function wpematico_joberrorhandler($errno, $errstr, $errfile, $errline) {
