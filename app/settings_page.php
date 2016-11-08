@@ -210,6 +210,13 @@ function wpematico_settings(){
 							WPeMatico PRO Features</p>
 						</div>
 					</div>
+					<div class="postbox inside">
+						<h3 class="handle"><?php _e( 'The Perfect Package', 'wpematico' );?></h3>
+						<div class="inside">
+							<p id="left1" onmouseover="jQuery(this).css('opacity',0.9);this.style.backgroundColor='#111'" onmouseout="jQuery(this).css('opacity',0.5);this.style.backgroundColor='#fff'" style="text-align:center;opacity: 0.5;border-radius: 14px 14px 0 0;"><a href="https://etruel.com/downloads/wpematico-perfect-package/" target="_Blank" title="Go to etruel WebSite"><img style="width: 100%;" src="https://etruel.com/wp-content/uploads/edd/2016/09/wpematico_package_1024x512-300x150.png" title=""></a><br />
+							WPeMatico The Perfect Package</p>
+						</div>
+					</div>
 					<?php do_action('wpematico_wp_ratings'); ?>
 				</div>
 				<?php //include( WPeMatico :: $dir . 'myplugins.php');	?>
@@ -340,7 +347,7 @@ function wpematico_settings(){
 						</div>
 						<p></p>
 						<input name="jumpduplicates" id="jumpduplicates" class="checkbox" value="1" type="checkbox" <?php checked($cfg['jumpduplicates'],true); ?> />
-						<label for="jumpduplicates"><b><?php _e('Jump Duplicates / Continue fetching.', 'wpematico' ); ?></b></label>  <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['jumpduplicates']; ?>"></span>
+						<label for="jumpduplicates"><b><?php _e('Continue Fetching if found duplicated items.', 'wpematico' ); ?></b></label>  <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['jumpduplicates']; ?>"></span>
 						<p></p>
 						<input name="disableccf" id="disableccf" class="checkbox" value="1" type="checkbox" <?php checked($cfg['disableccf'],true); ?> />
 						<label for="disableccf"><b><?php _e('Disables Plugin Custom fields.', 'wpematico' ); ?></b></label>  <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['disableccf']; ?>"></span>
@@ -712,7 +719,7 @@ function wpematico_helpsettings($dev=''){
 					__('NOTE: If disable both controls, all items will be fetched again and again... and again, ad infinitum.  If you want allow duplicated titles, just activate "Allow duplicated titles".', 'wpematico' ),
 			),
 			'jumpduplicates' => array( 
-				'title' => __('Jump Duplicates / Continue fetching.', 'wpematico' ),
+				'title' => __('Continue Fetching if found duplicated items.', 'wpematico' ),
 				'tip' => __('Unless it is the first time, when finds a duplicate, it means that all following items were read before. This option avoids and allows jump every duplicate and continues reading the feed searching more new items. Not recommended.', 'wpematico' ),
 				'plustip' => '&nbsp;&nbsp;&nbsp;&nbsp;<b>' . __('How it works:','wpematico').':</b> '. __('The feed items are ordered by datetime in almost all cases. When the campaign runs, goes item by item from newest to oldest, and stops when found the first duplicated item, this mean that all items following (the old ones) are also duplicated.', 'wpematico' ).'<br>'.
 					__('As the hash is checked only by the last retrieved item, selecting this option may generate duplicate posts if duplicate checking by title does not work well for a campaign.', 'wpematico' ),

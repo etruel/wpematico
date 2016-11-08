@@ -3,7 +3,7 @@ Contributors: etruel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS, RSS to Post, Feed to Post, autoblog,rss aggregator, Feed, rss to post, syndication, Post, Posts, aggregation, atom, bot, content, writing
 Requires at least: 3.9
-Tested up to: 4.6
+Tested up to: 4.7
 Stable tag: trunk
 License: GPLv2 or later
 
@@ -235,12 +235,18 @@ or to e-mail etruel@gmail.com
 == Changelog ==
 = 1.4 =
 * Fixes the parser for html entities in the title for some wrong formatted feeds.
-* Tweaks on run campaign with php timeouts, value given by the plugin settings.
+* Improvements on running campaigns with php timeouts, value given by the plugin settings.
+* **Improvements in some functionalities of the campaigns list.**
+* The clock above with current date time is now alive by javascript.
+* Added Help Tab with descriptions and tips of every thing.
+* Background Color on selecting campaigns. 
 * Added a column in the campaigns list with the campaign type.
-* Remove the unuseful filters in top of the campaigns list.
+* Removes the unuseful filters in top of the campaigns list.
+* Moved the cron scheduler to its own metabox. (again)
+* Added a Select field with some predefined schedules for easy setup the cron.
 * New classes done from scratch for the management of the addons licenses.
 * Fixes different issues on uploading Addons.
-* Fixes a warning on activate some addons at same time.
+* Fixes a warning when activates some addons at same time.
 * Added new filters by campaign types.
 * Tweaks on how to load the Bulk Actions.
 

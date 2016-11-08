@@ -876,7 +876,7 @@ function wpematico_is_pro_active() {		// Check if PRO version is installed & act
 	}
 }
 
-add_action( 'wpematico_wp_ratings', 'wpematico_wp_ratings' );
+//add_action( 'wpematico_wp_ratings', 'wpematico_wp_ratings' );
 function wpematico_wp_ratings() {
 ?><div class="postbox">
 	<h3 class="handle"><?php _e( '5 Stars Ratings on Wordpress', WPeMatico :: TEXTDOMAIN );?></h3>

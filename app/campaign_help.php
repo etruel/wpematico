@@ -84,6 +84,12 @@ $helpcampaign = array(
 				'<br>'.__('You can define here on what times you wants to fetch this feeds.  This has 5 min. of margin on WP-cron schedules.  If you set up an external cron en WPeMatico Settings, you\'ll get better preciseness.', 'wpematico' ),
 			'plustip' => __('You can see some examples here:', 'wpematico' ) . ' <a href="https://etruel.com/question/use-cron-scheduling/" target="_blank">'.__('How to use the CRON scheduling ?', 'wpematico' ) .'</a>',
 		),
+		'cronperiod' => array( 
+			'title' => __('Preselected schedules.', 'wpematico' ),
+			'tip' => __('Select a predefined scheduler to get a value easily for the cron. This value is not saved.', 'wpematico' ).
+				'<br>'. __('This is also used frecuently as startpoint to define a cron schedule.', 'wpematico' ),
+			'plustip' => __('Just select an option and the values will be shown in the fields at right.', 'wpematico' ),
+		),
 	),
 	'Options for Images' => array(
 		'imgoptions' => array( 

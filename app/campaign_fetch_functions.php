@@ -91,9 +91,9 @@ class wpematico_campaign_fetch_functions {
 		// Template parse           
 		if ($campaign['campaign_enable_template']){
 			trigger_error('<b>'.__('Parsing Post template.', WPeMatico :: TEXTDOMAIN ).'</b>',E_USER_NOTICE);
-			if (isset( $current_item['images'][0] )) {
+			if ( !empty( $current_item['images'][0] ) ) {
 				$img_str = "<img class=\"wpe_imgrss\" src=\"" . $current_item['images'][0] . "\">";  //Solo la imagen
-			}elseif(isset( $current_item['featured_image'] )) {
+			}elseif( !empty( $current_item['featured_image'] ) ) {
 				$img_str = "<img class=\"wpe_imgrss\" src=\"" . $current_item['featured_image'] . "\">";  //Solo la imagen
 			}else{
 				trigger_error(__('Can\'t find the featured image to add to the content.'),E_USER_WARNING);

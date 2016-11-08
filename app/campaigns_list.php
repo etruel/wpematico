@@ -39,6 +39,8 @@ add_action( 'quick_edit_custom_box', array( 'WPeMatico_Campaigns', 'wpematico_ad
 add_action( 'wp_ajax_manage_wpematico_save_bulk_edit', array( 'WPeMatico_Campaigns', 'manage_wpematico_save_bulk_edit') );
 add_action( 'wp_ajax_get_wpematico_categ_bulk_edit', array( 'WPeMatico_Campaigns', 'get_wpematico_categ_bulk_edit') );
 
+add_action('in_admin_header', array( 'WPeMatico_Campaigns', 'campaigns_list_help'));
+
 if( strstr($_SERVER['REQUEST_URI'], 'wp-admin/edit.php?post_type=wpematico')  
   || strstr($_SERVER['REQUEST_URI'], 'wp-admin/admin.php?action=wpematico_') ) 
 	add_action( 'init', array( 'WPeMatico_Campaigns', 'init' ) );
@@ -46,17 +48,16 @@ if( strstr($_SERVER['REQUEST_URI'], 'wp-admin/edit.php?post_type=wpematico')
  	
 if ( class_exists( 'WPeMatico_Campaigns' ) ) return;
 class WPeMatico_Campaigns {
-	/**
-	 * Cached bulk actions.
-	 *
-	 * @since 3.1.0
-	 * @access private
-	 * @var array
-	 */
-	
-	
+
 	public static function init() {
 		new self();
+	}
+	
+	public static function campaigns_list_help() {
+		global $post_type, $current_screen; 
+		if($post_type != 'wpematico') return;		
+		require(  dirname( __FILE__ ) . '/campaigns_list_help.php' );
+
 	}
 	
 	public function __construct( $hook_in = FALSE ) {
@@ -65,7 +66,7 @@ class WPeMatico_Campaigns {
 		$cfg = apply_filters('wpematico_check_options', $cfg);
 		if ( (isset($cfg['enabledelhash']) && !empty($cfg['enabledelhash']) ) && $cfg['enabledelhash'] )    // Si está habilitado en settings, lo muestra 
 			add_action('admin_action_wpematico_delhash_campaign', array( 'WPeMatico_Campaigns', 'wpematico_delhash_campaign'));
-	}
+		}
 
 	public static function custom_filters($options) {
 		global $typenow, $wp_query, $current_user, $pagenow, $cfg;
@@ -112,7 +113,7 @@ class WPeMatico_Campaigns {
 	}
 
 
-	
+	// Functions to allow customize the bulk actions in campaigns list.  (WP 4.7 fix this)
 	public static function old_bulk_actions($bulk_actions) {
 		// Don't show on trash page
 		if( isset( $_REQUEST['post_status'] ) && $_REQUEST['post_status'] == 'trash' ) return $bulk_actions;
@@ -173,7 +174,8 @@ class WPeMatico_Campaigns {
 		submit_button( __( 'Apply' ), 'action', '', false, array( 'id' => "doaction$two" ) );
 		echo "\n";
 	}
-	
+	// END Functions to allow customize the bulk actions in campaigns list.  (WP 4.7 fix this)
+
 	public static function run_selected_campaigns($post_type, $which) {
 		global $typenow,$post_type, $pagenow;
 		if($post_type != 'wpematico') return;		
@@ -217,6 +219,7 @@ class WPeMatico_Campaigns {
 		add_action('admin_head', array(  'WPeMatico_Campaigns' ,'campaigns_list_admin_head'));
 //		wp_register_script('jquery-input-mask', 'js/jquery.maskedinput-1.2.2.js', array( 'jquery' ));
 //		wp_enqueue_script('color-picker', 'js/colorpicker.js', array('jquery'));
+		wp_enqueue_script( 'wpematico-Date.phpformats', WPeMatico :: $uri . 'app/js/Date.phpformats.js', array( 'jquery' ), '', true );
 		wp_enqueue_script( 'wpematico-bulk-quick-edit', WPeMatico :: $uri . 'app/js/bulk_quick_edit.js', array( 'jquery', 'inline-edit-post' ), '', true );
 	}
 
@@ -232,6 +235,7 @@ class WPeMatico_Campaigns {
 		?>		
 		<script type="text/javascript" language="javascript">
 			jQuery(document).ready(function($){
+				theclock();
 	            $('span:contains("<?php _e('Slug'); ?>")').each(function (i) {
 					$(this).parent().hide();
 				});
@@ -252,13 +256,38 @@ class WPeMatico_Campaigns {
 				
 				$('#screen-meta-links').append('<?php echo $clockabove; ?>');
 				
+				$("#cb-select-all-1, #cb-select-all-2").change (function() {
+					$("input[name='post[]']").each(function() {
+						if($(this).is(':checked')){
+							$("tr#post-"+ $(this).val() ).css('background-color', '#dbb27e');
+						}else{
+							$("tr#post-"+ $(this).val() ).attr('style','');
+						}
+					});
+				});
+				$("input[name='post[]']").change (function() {
+					if($(this).is(':checked')){
+						$("tr#post-"+ $(this).val() ).css('background-color', '#dbb27e');
+					}else{
+						$("tr#post-"+ $(this).val() ).attr('style','');
+					}
+				});
+
 			});
+
+			function theclock(){
+				nowdate = new Date();
+				now = nowdate.format("<?php echo get_option('date_format').' '. get_option('time_format'); ?>");
+				char=(nowdate.getSeconds()%2==0 )?' ':':';
+				jQuery('#show-clock').html(now.replace(':', char) );
+				setTimeout("theclock()",1000);
+			} 
 			
 			function run_now(c_ID) {
 				jQuery('html').css('cursor','wait');
 				jQuery('#post-'+c_ID+' .statebutton.play').addClass('green');
 				jQuery("div[id=fieldserror]").remove();
-				msgdev="<p><img width='16' src='<?php echo get_bloginfo('wpurl'); ?>/wp-admin/images/wpspin_light.gif'> <span style='vertical-align: top;margin: 10px;'><?php _e('Running Campaign...', 'wpematico' ); ?></span></p>";
+				msgdev="<p><img width='16' src='<?php echo admin_url('images/wpspin_light.gif'); ?>'> <span style='vertical-align: top;margin: 10px;'><?php _e('Running Campaign...', 'wpematico' ); ?></span></p>";
 				jQuery(".subsubsub").before('<div id="fieldserror" class="updated fade">'+msgdev+'</div>');
 				var data = {
 					campaign_ID: c_ID ,
@@ -271,27 +300,34 @@ class WPeMatico_Campaigns {
 					}else{
 						jQuery(".subsubsub").before('<div id="fieldserror" class="updated fade">'+msgdev+'</div>');
 						var floor = Math.floor;
-						var ret_posts = floor(jQuery("tr#post-"+c_ID+" > .count").html()) + floor(jQuery("#ret_lastposts").html());
-						jQuery("tr#post-"+c_ID+" > .count").html( '<b style="background-color: #FBB;padding: 3px 5px;">'+ret_posts.toString()+'</b>' );
-						jQuery("#lastruntime").html( "<b>"+jQuery("#ret_lastruntime").html()+"</b>");
+						var bef_posts = floor( jQuery("tr#post-"+c_ID+" > .count").html() );
+						var ret_posts = floor( bef_posts + floor(jQuery("#ret_lastposts").html()) );
+						if(bef_posts == ret_posts)
+							jQuery("tr#post-"+c_ID+" > .count").attr('style', 'font-weight: bold;color:#555;');
+						else
+							jQuery("tr#post-"+c_ID+" > .count").attr('style', 'font-weight: bold;color:#F00;');
+						jQuery("tr#post-"+c_ID+" > .count").html( ret_posts.toString() );
+						jQuery("#lastruntime").html( jQuery("#ret_lastruntime").html());
+						jQuery("#lastruntime").attr( 'style', 'font-weight: bold;');
 					}
 					jQuery('html').css('cursor','auto');
 					jQuery('#post-'+c_ID+' .statebutton.play').removeClass('green');
 				});
 			}
  			function run_all() {
-				var selectedItems = new Array();
-				jQuery("input[name='post[]']:checked").each(function() {selectedItems.push(jQuery(this).val());});
-				if (selectedItems .length == 0) {alert("<?php _e('Please select campaign(s) to Run.', 'wpematico' ); ?>"); return; }
+				var selectedItems = 0;
+				jQuery("input[name='post[]']:checked").each(function() {selectedItems++;});
+				if (selectedItems == 0) {alert("<?php _e('Please select campaign(s) to Run.', 'wpematico' ); ?>"); return; }
 				
 				jQuery('html').css('cursor','wait');
 				jQuery('#fieldserror').remove();
-				msgdev="<p><img width='16' src='<?php echo get_bloginfo('wpurl'); ?>/wp-admin/images/wpspin_light.gif'> <span style='vertical-align: top;margin: 10px;'><?php _e('Running Campaign...', 'wpematico' ); ?></span></p>";
+				msgdev="<p><img width='16' src='<?php echo admin_url('images/wpspin_light.gif'); ?>'> <span style='vertical-align: top;margin: 10px;'><?php _e('Running Campaign...', 'wpematico' ); ?></span></p>";
 				jQuery(".subsubsub").before('<div id="fieldserror" class="updated fade ajaxstop">'+msgdev+'</div>');
 				jQuery("input[name='post[]']:checked").each(function() {
-					c_id = jQuery(this).val();
+					var c_ID = jQuery(this).val();
+					jQuery('#post-'+c_ID+' .statebutton.play').addClass('green');
 					var data = {
-						campaign_ID: c_id ,
+						campaign_ID: c_ID ,
 						action: "wpematico_run"
 					};
 					jQuery.post(ajaxurl, data, function(msgdev) {  //si todo ok devuelve LOG sino 0
@@ -299,7 +335,19 @@ class WPeMatico_Campaigns {
 							jQuery(".subsubsub").before('<div id="fieldserror" class="error fade">'+msgdev+'</div>');
 						}else{
 							jQuery(".subsubsub").before('<div id="fieldserror" class="updated fade">'+msgdev+'</div>');
+							var floor = Math.floor;
+							var bef_posts = floor( jQuery("tr#post-"+c_ID+" > .count").html() );
+							var ret_posts = floor( bef_posts + floor(jQuery('#log_message_'+c_ID).next().next("#ret_lastposts").html()) );
+							if(bef_posts == ret_posts)
+								jQuery("tr#post-"+c_ID+" > .count").attr('style', 'font-weight: bold;color:#555;');
+							else
+								jQuery("tr#post-"+c_ID+" > .count").attr('style', 'font-weight: bold;color:#F00;');
+							jQuery("tr#post-"+c_ID+" > .count").html( ret_posts.toString() );
+							jQuery("#lastruntime").html( jQuery("#ret_lastruntime").html());
+							jQuery("#lastruntime").attr( 'style', 'font-weight: bold;');
 						}
+						jQuery('#post-'+c_ID+' .statebutton.play').removeClass('green');
+
 					});
 				}).ajaxStop(function() {
 					jQuery('html').css('cursor','auto');

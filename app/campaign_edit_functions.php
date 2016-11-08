@@ -26,6 +26,7 @@ class WPeMatico_Campaign_edit_functions {
 		add_meta_box( 'log-box', __('Send log', 'wpematico' ). '<span class="mya4_sprite infoIco help_tip" title="'. $helptip['sendlog'].'"></span>', array(  'WPeMatico_Campaign_edit'  ,'log_box' ),'wpematico','side', 'default' );
 		add_meta_box( 'feeds-box', __('Feeds for this Campaign', 'wpematico' ). '<span class="mya4_sprite infoIco help_tip" title="'. $helptip['feeds'].'"></span>', array(  'WPeMatico_Campaign_edit'  ,'feeds_box' ),'wpematico','normal', 'default' );
 		add_meta_box( 'options-box', __('Options for this campaign', 'wpematico' ), array(  'WPeMatico_Campaign_edit'  ,'options_box' ),'wpematico','normal', 'default' );
+		add_meta_box( 'cron-box', __('Schedule Cron', 'wpematico' ), array(  'WPeMatico_Campaign_edit'  ,'cron_box' ),'wpematico','normal', 'default' );
 		add_meta_box( 'images-box', __('Options for images', 'wpematico' ). '<span class="mya4_sprite infoIco help_tip" title="'. $helptip['imgoptions'].'"></span>', array(  'WPeMatico_Campaign_edit'  ,'images_box' ),'wpematico','normal', 'default' );
 		add_meta_box( 'template-box', __('Post Template', 'wpematico' ). '<span class="mya4_sprite infoIco help_tip" title="'. $helptip['postemplate'].'"></span>', array(  'WPeMatico_Campaign_edit'  ,'template_box' ),'wpematico','normal', 'default' );
 		if ($cfg['enableword2cats'])   // Si está habilitado en settings, lo muestra 
@@ -302,7 +303,8 @@ class WPeMatico_Campaign_edit_functions {
 			<label for="campaign_author"><?php echo __('Author:', 'wpematico' ); ?></label> 
 			<?php wp_dropdown_users(array('name' => 'campaign_author','selected' => $campaign_author )); ?> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['postsauthor']; ?>"></span>
 		</p>
-		
+	</div>	
+	<div id="optionslayer-right" class="ibfix vtop">
 		<p><input class="checkbox" type="checkbox"<?php checked($campaign_striphtml,true);?> name="campaign_striphtml" value="1" id="campaign_striphtml"/>
 			<label for="campaign_striphtml"><?php echo __('Strip All HTML Tags', 'wpematico' ); ?></label>  <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['striphtml']; ?>"></span>
 		</p>
@@ -317,12 +319,6 @@ class WPeMatico_Campaign_edit_functions {
 			<label for="campaign_woutfilter"><?php echo __('Post Content Unfiltered.', 'wpematico' ); ?></label><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['woutfilter']; ?>"></span>
 		</p>
 		<?php endif; ?>
-	</div>
-		<?php
-			$activated = $campaign_data['activated'];
-			$cron = $campaign_data['cron'];
-		?>
-	<div id="schedulelayer" class="ibfix vtop">
 		<p>
 			<input class="checkbox" type="checkbox"<?php checked($campaign_linktosource ,true);?> name="campaign_linktosource" value="1" id="campaign_linktosource"/> 
 			<label for="campaign_linktosource"><?php echo __('Post title links to source.', 'wpematico' ); ?></label> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['linktosource']; ?>"></span>
@@ -333,16 +329,126 @@ class WPeMatico_Campaign_edit_functions {
 			<label for="avoid_search_redirection"><?php echo __('Avoid search redirection to source permalink.', 'wpematico' ); ?></label> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['avoid_search_redirection']; ?>"></span>
 		</p>
 		<?php do_action('wpematico_permalinks_tools',$campaign_data,$cfg);  ?>
+	</div>
+		<?php
+	}
+	//*************************************************************************************
+	public static function cron_box( $post ) { 
+		global $post, $campaign_data, $cfg, $helptip ;
+		$activated = $campaign_data['activated'];
+		$cron = $campaign_data['cron'];
+		//Select en campaña que rellene el cron: Cada 15 min, cada 1hs, cada 3hs, cada 6hs.  2 veces por dia. 1 vez por dia 
+		$cronperiods = array(
+			'every5'=>array(
+				'text'=>__('Every 5 minutes', 'wpematico'),
+				'min'=>'*',
+				'hours'=>'*',
+				'days'=>'*',
+				'months'=>'*',
+				'weeks'=>'*'),
+			'every15'=>array(
+				'text'=>__('Every 15 minutes', 'wpematico'),
+				'min'=>'0,15,30,45',
+				'hours'=>'*',
+				'days'=>'*',
+				'months'=>'*',
+				'weeks'=>'*'),
+/*			'every30'=>array(
+				'text'=>__('Every half an hour', 'wpematico'),
+				'min'=>'0,30',
+				'hours'=>'*',
+				'days'=>'*',
+				'months'=>'*',
+				'weeks'=>'*'),
+*/			'every60'=>array(
+				'text'=>__('Once per hour', 'wpematico'),
+				'min'=>'0',
+				'hours'=>'*',
+				'days'=>'*',
+				'months'=>'*',
+				'weeks'=>'*'),
+			'every3h'=>array(
+				'text'=>__('Every 3 hours', 'wpematico'),
+				'min'=>'0',
+				'hours'=>'0,3,6,9,12,15,18,21',
+				'days'=>'*',
+				'months'=>'*',
+				'weeks'=>'*'),
+			'every6h'=>array(
+				'text'=>__('Every 6 hours', 'wpematico'),
+				'min'=>'0',
+				'hours'=>'0,6,12,18',
+				'days'=>'*',
+				'months'=>'*',
+				'weeks'=>'*'),
+			'every12h'=>array(
+				'text'=>__('Every 12 hours', 'wpematico'),
+				'min'=>'0',
+				'hours'=>'0,12',
+				'days'=>'*',
+				'months'=>'*',
+				'weeks'=>'*'),
+			'every1day'=>array(
+				'text'=>__('Every day at 3 o\'clock', 'wpematico'),
+				'min'=>'0',
+				'hours'=>'3',
+				'days'=>'*',
+				'months'=>'*',
+				'weeks'=>'*'),
+		);
+		$cronperiods = apply_filters('wpematico_cronperiods', $cronperiods);
+		?><script type="text/javascript">
+			jQuery(document).ready(function($){
+				$('#cronperiod').on( 'change', function(){
+					switch( $(this).val() ) {
+						<?php
+						foreach($cronperiods as $key => $values) {
+							echo "case '".$key."':
+							min	   = '".$values['min']."'; 
+							$('#cronminutes').val(min.split(','));
+							hours  = '".$values['hours']."';
+							$('#cronhours').val(hours.split(','));
+							days   = '".$values['days']."';
+							$('#crondays').val(days.split(','));
+							months = '".$values['months']."';
+							$('#cronmonths').val(months.split(','));
+							weeks  = '".$values['weeks']."';
+							$('#cronweeks').val(weeks.split(','));
+							break;
+						";
+						}
+						?>
+					}
+				});
+			});
+		</script>
+	<div id="schedulelayer" class="ibfix vtop">
 		<p>
 		<input class="checkbox" value="1" type="checkbox" <?php checked($activated,true); ?> name="activated" id="activated" /> <label for="activated"><?php _e('Activate scheduling', 'wpematico' ); ?></label><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['schedule']; ?>"></span>
 		</p>
 		<?php 
-		_e('Working as <a href="http://wikipedia.org/wiki/Cron" target="_blank">Cron</a> job schedule:', 'wpematico' ); echo ' <i>'.$cron.'</i><br />'; 
+		_e('Working as <a href="http://wikipedia.org/wiki/Cron" target="_blank">Cron</a> job schedule:', 'wpematico' ); 
+		echo ' <i>'.$cron.'</i> <br />'; 
 		_e('Next runtime:', 'wpematico' ); echo ' '.date_i18n( (get_option('date_format').' '.get_option('time_format') ),WPeMatico :: time_cron_next($cron) );
 		//_e('Next runtime:', 'wpematico' ); echo ' '.date('D, M j Y H:i',WPeMatico :: time_cron_next($cron));
 		?>
-
-		<div id="cronboxes">
+		<p>
+			<label for="cronperiod">
+				<?php _e('Preselected schedules.', 'wpematico' ); ?>
+			</label><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['cronperiod']; ?>"></span>
+			<br />
+			<select name="cronperiod" id="cronperiod">
+				<option value=""><?php _e('Select an option to change the values.','wpematico'); ?></option>
+			<?php
+			foreach($cronperiods as $key => $values) {
+				//echo "<option value=\"".$key."\"".selected(in_array("$i",$minutes,true),true,false).">".$values['text']."</option>";
+				echo "<option value=\"".$key."\">".$values['text']."</option>";
+			}
+			?>
+			</select>
+		</p>
+	</div>
+	<div id="cronboxes" class="ibfix vtop">
 			<?php @list($cronstr['minutes'],$cronstr['hours'],$cronstr['mday'],$cronstr['mon'],$cronstr['wday']) = explode(' ',$cron,5);    ?>
 			<div>
 				<b><?php _e('Minutes: ','wpematico'); ?></b><br />
@@ -412,7 +518,7 @@ class WPeMatico_Campaign_edit_functions {
 				<option value="5"<?php selected(in_array('5',$mon,true),true,true); ?>><?php _e('May'); ?></option>
 				<option value="6"<?php selected(in_array('6',$mon,true),true,true); ?>><?php _e('June'); ?></option>
 				<option value="7"<?php selected(in_array('7',$mon,true),true,true); ?>><?php _e('July'); ?></option>
-				<option value="8"<?php selected(in_array('8',$mon,true),true,true); ?>><?php _e('Augest'); ?></option>
+				<option value="8"<?php selected(in_array('8',$mon,true),true,true); ?>><?php _e('August'); ?></option>
 				<option value="9"<?php selected(in_array('9',$mon,true),true,true); ?>><?php _e('September'); ?></option>
 				<option value="10"<?php selected(in_array('10',$mon,true),true,true); ?>><?php _e('October'); ?></option>
 				<option value="11"<?php selected(in_array('11',$mon,true),true,true); ?>><?php _e('November'); ?></option>
@@ -440,7 +546,7 @@ class WPeMatico_Campaign_edit_functions {
 			</div>
 			<br class="clear" />
 		</div>
-	</div>	<?php
+	<?php
 	}
 
 	//*************************************************************************************
