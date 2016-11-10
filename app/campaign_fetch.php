@@ -250,7 +250,6 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		}
 		
 		if( $this->cfg['nonstatic'] ) { $this->current_item['images'] = NoNStatic :: img1s($this->current_item,$this->campaign,$item ); }
-//		$this->current_item = $this->Item_parseimg($this->current_item,$this->campaign,$feed,$item);
 
 		// Uploads and changes img sources in content
 		$this->current_item = $this->Item_images( $this->current_item, $this->campaign, $feed, $item );

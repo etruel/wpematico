@@ -234,6 +234,8 @@ or to e-mail etruel@gmail.com
 
 == Changelog ==
 = 1.4 =
+* Improvements on Settings page in checkboxes for images functions and Help texts.
+* Added some Wordpress filters and actions to Settings metaboxes.  
 * Fixes the parser for html entities in the title for some wrong formatted feeds.
 * Improvements on running campaigns with php timeouts, value given by the plugin settings.
 * **Improvements in some functionalities of the campaigns list.**
@@ -249,6 +251,15 @@ or to e-mail etruel@gmail.com
 * Fixes a warning when activates some addons at same time.
 * Added new filters by campaign types.
 * Tweaks on how to load the Bulk Actions.
+* **Enlarges the version required for the professional addon to 1.4**
+* **Professional Add-on:** 
+* Improves the Pro options for Images Metabox.
+* Improves some filters to make featured the RSS images.
+* Added an option to try to handle cases where images are delivered through a script and the correct file extension isn't available.
+* Fixes the Image rename feature when the image extension is missed, by adding '.jpg'
+* Fixes by adding the Featured Image as empty string to the post content when there is not a featured image.
+* Improvements on Custom function for uploads.
+* New feature to overwrite, rename or keep the duplicated images by names.
 
 = 1.3.8.4 =
 * Improved getting the source permalinks and redirecting to the source sites.
@@ -830,3 +841,4 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 = 1.4 =
 * Many improvements and fixes. See changelog for more details.
+* **Enlarges the version required for the professional addon to 1.4**

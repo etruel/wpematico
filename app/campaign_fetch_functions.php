@@ -389,15 +389,18 @@ class wpematico_campaign_fetch_functions {
 	function guarda_imagen ($url_origen,$new_file){ 
 		$ch = curl_init ($url_origen); 
 		if(!$ch) return false;
+		$dest_file = apply_filters('wpematico_overwrite_file', $new_file);
+		if( $dest_file===FALSE ) return $new_file;  // Don't upload it and return the name like it was uploaded
+		$new_file = $dest_file;  
 		$i = 1;
 		while (file_exists( $new_file )) {
 			$file_extension  = strrchr($new_file, '.');    //Will return .JPEG   substr($url_origen, strlen($url_origen)-4, strlen($url_origen));
 			if($i==1){
 				$file_name = substr($new_file, 0, strlen($new_file)-strlen($file_extension) );
-				$new_file = $file_name."[$i]".$file_extension;
+				$new_file = $file_name."-$i".$file_extension;
 			}else{
-				$file_name = substr( $new_file, 0, strlen($new_file)-strlen($file_extension)-strlen("[$i]") );
-				$new_file = $file_name."[$i]".$file_extension;
+				$file_name = substr( $new_file, 0, strlen($new_file)-strlen($file_extension)-strlen("-$i") );
+				$new_file = $file_name."-$i".$file_extension;
 			}
 			$i++;
 		}
@@ -473,7 +476,7 @@ class wpematico_campaign_fetch_functions {
 		return $current_item;
 	}
 
-	/*** Devuelve todas las imagenes del contenido	*/
+	/*** Delete images for its src	*/
 	static function strip_Image_by_src($src, $content, $withlink=true){
 		trigger_error( sprintf( __("Removing: %s from content." , WPeMatico :: TEXTDOMAIN ),'"'. $src .'"' ) , E_USER_NOTICE);
 		if($withlink){

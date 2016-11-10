@@ -56,7 +56,8 @@ class WPeMatico_Campaigns {
 	public static function campaigns_list_help() {
 		global $post_type, $current_screen; 
 		if($post_type != 'wpematico') return;		
-		require(  dirname( __FILE__ ) . '/campaigns_list_help.php' );
+		if($current_screen->id=='edit-wpematico')
+			require(  dirname( __FILE__ ) . '/campaigns_list_help.php' );
 
 	}
 	

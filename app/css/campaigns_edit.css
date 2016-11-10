@@ -9,6 +9,7 @@ p { margin-bottom: 2px; }
 #wcf_edit li { background-color: lemonChiffon; border: 2px solid #CEE1EF;padding: .5em;height: 40px;}
 
 #poststuff h3 {background-color: #6EDA67;}
+.inside h3.subsection {background-color: #eeeeee !important;line-height: 1em;padding:5px; margin: 15px 0 0;}
 
 #msgdrag {display:none;color:red;padding: 0 0 0 20px;font-weight: 600;font-size: 1em;}
 .feed_header {padding: 0 0 0 30px;font-weight: 600;font-size: 0.9em;}

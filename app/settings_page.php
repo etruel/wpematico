@@ -141,7 +141,11 @@ function wpematico_settings(){
 			<?php  wp_nonce_field('wpematico-settings'); ?>
 			<div id="side-info-column" class="inner-sidebar">
 				<div id="side-sortables" class="meta-box-sortables ui-sortable">
-					<div class="postbox inside"><div class="handlediv" title="<?php _e('Click to toggle'); ?>"><br></div>
+					<div class="postbox inside">
+						<button type="button" class="handlediv button-link" aria-expanded="true">
+							<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
+							<span class="toggle-indicator" aria-hidden="true"></span>
+						</button>
 						<h3 class="handle"><?php _e( 'About', 'wpematico' );?></h3>
 						<div class="inside">
 							<p id="left1" onmouseover="jQuery(this).css('opacity',0.9);" onmouseout="jQuery(this).css('opacity',0.5);" style="text-align:center;opacity: 0.5;"><a href="http://www.wpematico.com" target="_Blank" title="Go to new WPeMatico WebSite"><img style="width: 100%;" src="<?php echo WPeMatico :: $uri ; ?>/images/icon-512x512.jpg" title=""></a><br />
@@ -165,7 +169,11 @@ function wpematico_settings(){
 							<p></p>
 						</div>
 					</div>
-					<div class="postbox"><div class="handlediv" title="<?php _e('Click to toggle'); ?>"><br></div>
+					<div class="postbox">						
+						<button type="button" class="handlediv button-link" aria-expanded="true">
+							<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
+							<span class="toggle-indicator" aria-hidden="true"></span>
+						</button>
 						<h3 class="handle"><?php _e( 'Sending e-Mails', 'wpematico' );?></h3>
 						<div class="inside">
 							<p><b><?php _e('Sender Email:', 'wpematico' ); ?></b><br /><input name="mailsndemail" id="mailsndemail" type="text" value="<?php echo $cfg['mailsndemail'];?>" class="large-text" /><span id="mailmsg"></span></p>
@@ -183,7 +191,11 @@ function wpematico_settings(){
 							</p>
 						</div>
 					</div>
-					<div class="postbox inside"><div class="handlediv" title="<?php _e('Click to toggle'); ?>"><br></div>
+					<div class="postbox inside">
+						<button type="button" class="handlediv button-link" aria-expanded="true">
+							<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
+							<span class="toggle-indicator" aria-hidden="true"></span>
+						</button>
 						<h3 class="handle"><?php _e( 'Advanced', 'wpematico' );?></h3>
 						<div class="inside">
 							<p></p>
@@ -224,28 +236,39 @@ function wpematico_settings(){
 
 			<div id="post-body">
 				<div id="post-body-content">
-					<div id="normal-sortables" class="meta-box-sortables ui-sortable">
+				<div id="normal-sortables" class="meta-box-sortables ui-sortable">
 
-				<div id="imgs" class="postbox"><div class="handlediv" title="<?php _e('Click to toggle'); ?>"><br></div>
+				<div id="imgs" class="postbox">
+					<button type="button" class="handlediv button-link" aria-expanded="true">
+							<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
+							<span class="toggle-indicator" aria-hidden="true"></span>
+						</button>
 					<h3 class="hndle"><span><?php _e('Global Settings for Images', 'wpematico' ); ?></span></h3>
 					<div class="inside">
 						<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['imgcache'],true); ?> name="imgcache" id="imgcache" />&nbsp;<b><label for="imgcache"><?php _e('Cache Images.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['imgcache']; ?>"></span>
 						<div id="nolinkimg" style="padding-left:20px; <?php if (!$cfg['imgcache']) echo 'display:none;';?>">
-							<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['customupload'],true); ?> name="customupload" id="customupload" /><b>&nbsp;<label for="customupload"><?php _e('Custom functions for uploads.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['customupload']; ?>"></span>
-							<br/>
 							<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['imgattach'],true); ?> name="imgattach" id="imgattach" /><b>&nbsp;<label for="imgattach"><?php _e('Attach Images to posts.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['imgattach']; ?>"></span>
 							<br/>
 							<input name="gralnolinkimg" id="gralnolinkimg" class="checkbox" value="1" type="checkbox" <?php checked($cfg['gralnolinkimg'],true); ?> /><label for="gralnolinkimg"><?php _e('No link to source images', 'wpematico' ); ?></label><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['gralnolinkimg']; ?>"></span>
 						</div>
 						<p></p>
 						<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['featuredimg'],true); ?> name="featuredimg" id="featuredimg" /><b>&nbsp;<label for="featuredimg"><?php _e('Enable first image found on content as Featured Image.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['featuredimg']; ?>"></span>
-						<p></p>
+						<br />
 						<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['rmfeaturedimg'],true); ?> name="rmfeaturedimg" id="rmfeaturedimg" /><b>&nbsp;<label for="rmfeaturedimg"><?php _e('Remove Featured Image from content.', 'wpematico' ); ?></label></b> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['rmfeaturedimg']; ?>"></span>
+						<p></p>
+						<div id="custom_uploads" style="<?php if (!$cfg['imgcache'] && !$cfg['featuredimg']) echo 'display:none;';?>">
+							<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['customupload'],true); ?> name="customupload" id="customupload" /><b>&nbsp;<label for="customupload"><?php _e('Custom function for uploads.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['customupload']; ?>"></span>
+							<br/>
 						</div>
+						<?php do_action('wpematico_settings_images',$cfg); ?>
 					</div>
 				</div>
 
-				<div id="enablefeatures" class="postbox"><div class="handlediv" title="<?php _e('Click to toggle'); ?>"><br></div>
+				<div id="enablefeatures" class="postbox">
+					<button type="button" class="handlediv button-link" aria-expanded="true">
+						<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
+						<span class="toggle-indicator" aria-hidden="true"></span>
+					</button>
 					<h3 class="hndle"><span><?php _e('Enable Features', 'wpematico' ); ?></span><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['enablefeatures']; ?>"></span></h3>
 					<div class="inside"> 
 						<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enablerewrite'],true); ?> name="enablerewrite" id="enablerewrite" /> <label for="enablerewrite"><?php _e('Enable <b><i>Rewrite</i></b> feature', 'wpematico' ); ?></label>
@@ -260,7 +283,11 @@ function wpematico_settings(){
 					</div>
 				</div>
 
-				<div id="PROfeatures" class="postbox"><div class="handlediv" title="<?php _e('Click to toggle'); ?>"><br></div>
+				<div id="PROfeatures" class="postbox">
+					<button type="button" class="handlediv button-link" aria-expanded="true">
+						<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
+						<span class="toggle-indicator" aria-hidden="true"></span>
+					</button>
 					<h3 style="float:right; background-color: yellow;"><?php _e('ONLY AVAILABLE AT PRO VERSION.', 'wpematico' ); ?></h3>
 					<h3 class="hndle" style="background-color: yellow;"><span><?php _e('PRO Features', 'wpematico' ); ?></span> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['PROfeatures']; ?>"></span></h3>
 					<div class="inside"> 
@@ -290,7 +317,11 @@ function wpematico_settings(){
 					</div>
 				</div>
 
-				<div id="advancedfetching" class="postbox"><div class="handlediv" title="<?php _e('Click to toggle'); ?>"><br></div>
+				<div id="advancedfetching" class="postbox">
+					<button type="button" class="handlediv button-link" aria-expanded="true">
+						<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
+						<span class="toggle-indicator" aria-hidden="true"></span>
+					</button>
 					<h3 class="hndle"><span><?php _e('Advanced Fetching', 'wpematico' ); ?> <?php _e('(SimplePie Settings)', 'wpematico' ); ?></span></h3>
 					<div class="inside">
 						<p><b><?php _e('Test if SimplePie library works well on your server:', 'wpematico' ); ?></b>
@@ -321,7 +352,11 @@ function wpematico_settings(){
 						</div>
 				</div>
 
-				<div id="advancedfetching" class="postbox"><div class="handlediv" title="<?php _e('Click to toggle'); ?>"><br></div>
+				<div id="advancedfetching" class="postbox">
+					<button type="button" class="handlediv button-link" aria-expanded="true">
+						<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
+						<span class="toggle-indicator" aria-hidden="true"></span>
+					</button>
 					<h3 class="hndle"><span><?php _e('Advanced Fetching', 'wpematico' ); ?></span></h3>
 					<div class="inside">
 						<p></p>
@@ -356,7 +391,11 @@ function wpematico_settings(){
 					</div>
 				</div>
 
-				<div id="disablewpcron" class="postbox"><div class="handlediv" title="<?php _e('Click to toggle'); ?>"><br></div>
+				<div id="disablewpcron" class="postbox">
+					<button type="button" class="handlediv button-link" aria-expanded="true">
+						<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
+						<span class="toggle-indicator" aria-hidden="true"></span>
+					</button>
 					<h3 class="hndle"><span><?php _e('Cron and Scheduler Settings', 'wpematico' ); ?></span></h3>
 					<div class="inside">
 						<label><input class="checkbox" id="dontruncron" type="checkbox"<?php checked($cfg['dontruncron'],true);?> name="dontruncron" value="1"/> 
@@ -402,7 +441,11 @@ function wpematico_settings(){
 					</div>
 				</div>				
 
-				<div id="emptytrashdiv" class="postbox"><div class="handlediv" title="<?php _e('Click to toggle'); ?>"><br></div>
+				<div id="emptytrashdiv" class="postbox">
+					<button type="button" class="handlediv button-link" aria-expanded="true">
+						<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
+						<span class="toggle-indicator" aria-hidden="true"></span>
+					</button>
 					<h3 class="hndle"><span><?php _e('Other Tools', 'wpematico' ); ?></span></h3>
 					<div class="inside">
 					<div class="insidesec" style="border-right: 1px lightgrey solid; margin-right: 5px;padding-right: 7px; ">
@@ -464,6 +507,7 @@ function wpematico_settings(){
 					</div>
 					</div>
 				</div>				
+				</div>				
 
 
 				<div class="postbox inside">
@@ -498,6 +542,14 @@ function wpematico_settings(){
 				jQuery('#nolinkimg').fadeIn();
 			} else {
 				jQuery('#nolinkimg').fadeOut();
+			}
+		});
+
+		jQuery('#imgcache, #featuredimg').click(function() {
+			if ( true == jQuery('#imgcache').is(':checked') || true == jQuery('#featuredimg').is(':checked') ) {
+				jQuery('#custom_uploads').fadeIn();
+			} else {
+				jQuery('#custom_uploads').fadeOut();
 			}
 		});
 
@@ -616,28 +668,24 @@ function wpematico_helpsettings($dev=''){
 				'tip' => __('Set this features for all campaigns and can be overridden inside any campaign.', 'wpematico' ),
 			),
 			'imgcache' => array( 
-				'title' => __('Cache images. (Uploads)', 'wpematico' ),
-				'tip' => "<b>" . __('Image Caching', 'wpematico' ) . ":</b> " . 
-					__('When image caching is on, a copy of every image found in content of every feed (only in &lt;img&gt; tags) is downloaded to the Wordpress UPLOADS Dir.', 'wpematico' ) . "<br />" . 
-					__('If not enabled all images will linked to the image owner\'s server, but also make your website faster for your visitors.', 'wpematico' ) . "<br />".
+				'title' => __('Cache Images. (Uploads)', 'wpematico' ),
+				'tip' => __('When Cache Images is on, a copy of every image found in content of every feed item (only in &lt;img&gt; tags) is downloaded to the Wordpress UPLOADS Dir.', 'wpematico' ) . "<br />" . 
+					__('If not enabled all images will be linked to the image owner\'s server, but also make your website faster for your visitors.', 'wpematico' ) . "<br />".
 					"<b>" . __('Caching all images', 'wpematico' ) . ":</b> " . 
-					__('This featured in the general Settings section, will be overridden for the campaign-specific options.', 'wpematico' ),			
-			),
-			'customupload'	=> array( 
-				'title' => __('Custom Uploads for Images.', 'wpematico' ),
-				'tip' => __('Use this instead of Wordpress functions to improve performance. This function uploads the image "as is" from the original to use it inside the post.', 'wpematico' ),
-				'plustip' => __('Uncheck this if you need all sizes of wordpress images. The process can take too much resources if many images are uploaded at a time.', 'wpematico' ),
+					__('This featured in the general Settings section, will be overridden for the campaign-specific options.', 'wpematico' ),
 			),
 			'imgattach'	=> array( 
 				'title' => __('Attach Images to post.', 'wpematico' ),
 				'tip' => "<b>" . __('Image Attaching', 'wpematico' ).":</b> " . 
 					__('When Uploads images to Wordpress (and everything is working fine), every image attached is added to the Wordpress Media.', 'wpematico' ). "<br />" . 
-					__('If enabled Image Attaching all images will be attached to the owner post in WP media library; but if you see that the job process is too slowly you can deactivate this here.', 'wpematico' ),
+					__('If enable this feature all the images will be attached to its owner post in WP media library.', 'wpematico' ),
+				'plustip' => __('If you see that the job process is too slowly you can deactivate this here.', 'wpematico' ). "<br />" . 
+					__('This feature may not work if you use the Custom Function for Uploads.', 'wpematico' )
 			),
 			'gralnolinkimg' => array( 
 				'title' => __('Don\'t link external images.', 'wpematico' ),
 				'tip' => "<b>" . __('Note',  'wpematico' ). ":</b> " . 
-					__('If selected and image upload get error, then delete the &lt;img&gt; HTML tag from the content. Check this for don\'t link images from external sites.', 'wpematico' ),
+					__('If is selected and the image upload give error, then will delete the &lt;img&gt; HTML tag from the content. Check this to don\'t link images from external sites.', 'wpematico' ),
 				'plustip' => "<b>" . __('Note',  'wpematico' ). ":</b> " . 
 					__('If the image are inside &lt;a&gt; tags, then the link is also removed from content.', 'wpematico' ),
 			),
@@ -650,6 +698,13 @@ function wpematico_helpsettings($dev=''){
 				'title' => __('Remove Featured Image from content.', 'wpematico' ),
 				'tip' => __('Check this to strip the Featured Image from the post content.', 'wpematico' ),
 				'plustip' => __('Useful if you have double image in your posts pages or if you don\'t want to show the image in content for any reason.',  'wpematico' ),
+			),
+			'customupload'	=> array( 
+				'title' => __('Custom Uploads for Images.', 'wpematico' ),
+				'tip' => __('Use this instead of Wordpress functions to improve performance. This function uploads the image "as is" from the original to use it inside the post.', 'wpematico' ).
+					'<br />'. __('This function may not work in all servers.', 'wpematico' ),
+				'plustip' => __('Try it at your own risk, if you see that the images are not loading, uncheck it.', 'wpematico' ).
+					'<br />'. __('Also uncheck this if you need all sizes of wordpress images. The WP process can take too much resources if many images are uploaded at a time.', 'wpematico' ),
 			),
 		),
 		'Enable Features' => array( 
@@ -840,7 +895,7 @@ function wpematico_settings_help(){
 				$helptip[$section_key] = htmlentities($sdata['tip']);
 				$tabcontent .= '<p><strong>' . $sdata['title'] . '</strong><br />'.
 						$sdata['tip'] . '</p>';
-				$tabcontent .= (isset($sdata['plustip'])) ?	'<p>' . $sdata['plustip'] . '</p>' : '';
+				$tabcontent .= (isset($sdata['plustip'])) ?	'<p style="margin-top: 2px;margin-left: 7px;">' . $sdata['plustip'] . '</p>' : '';
 			}
 			$screen->add_help_tab( array(
 				'id'	=> $key,

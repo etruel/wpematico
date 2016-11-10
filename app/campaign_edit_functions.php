@@ -413,7 +413,7 @@ class WPeMatico_Campaign_edit_functions {
 							months = '".$values['months']."';
 							$('#cronmonths').val(months.split(','));
 							weeks  = '".$values['weeks']."';
-							$('#cronweeks').val(weeks.split(','));
+							$('#cronwday').val(weeks.split(','));
 							break;
 						";
 						}

@@ -51,7 +51,7 @@ $helpcampaignlist = array(
 		),
 	),
 );
-$helpcampaignlist = apply_filters('wpematico_help_campaign', $helpcampaignlist);
+$helpcampaignlist = apply_filters('wpematico_help_campaign_list', $helpcampaignlist);
 
 $screen = $current_screen; //WP_Screen::get('wpematico_page_wpematico_settings ');
 foreach($helpcampaignlist as $key => $section){
