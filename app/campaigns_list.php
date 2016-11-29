@@ -22,9 +22,6 @@ add_filter('views_edit-wpematico', array( 'WPeMatico_Campaigns', 'my_views_filte
 add_filter('disable_months_dropdown', array( 'WPeMatico_Campaigns' , 'disable_list_filters'),10,2);
 add_filter('disable_categories_dropdown', array( 'WPeMatico_Campaigns' , 'disable_list_filters'),10,2);
 
-add_filter('bulk_actions-edit-wpematico', array( 'WPeMatico_Campaigns', 'old_bulk_actions' ), 90,1 );
-add_action('restrict_manage_posts', array( 'WPeMatico_Campaigns', 'run_selected_campaigns' ), 1, 2 );
-
 add_action('admin_print_styles-edit.php', array( 'WPeMatico_Campaigns','list_admin_styles'));
 add_action('admin_print_scripts-edit.php', array( 'WPeMatico_Campaigns','list_admin_scripts'));
 //QUICK ACTIONS
@@ -45,7 +42,12 @@ if( strstr($_SERVER['REQUEST_URI'], 'wp-admin/edit.php?post_type=wpematico')
   || strstr($_SERVER['REQUEST_URI'], 'wp-admin/admin.php?action=wpematico_') ) 
 	add_action( 'init', array( 'WPeMatico_Campaigns', 'init' ) );
 	else return;
- 	
+
+// just in campaign list
+	add_filter('bulk_actions-edit-wpematico', array( 'WPeMatico_Campaigns', 'old_bulk_actions' ), 90,1 );
+	add_action('restrict_manage_posts', array( 'WPeMatico_Campaigns', 'run_selected_campaigns' ), 1, 2 );
+
+
 if ( class_exists( 'WPeMatico_Campaigns' ) ) return;
 class WPeMatico_Campaigns {
 

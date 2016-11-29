@@ -2,7 +2,7 @@
 Contributors: etruel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS, RSS to Post, Feed to Post, autoblog,rss aggregator, Feed, rss to post, syndication, Post, Posts, aggregation, atom, bot, content, writing
-Requires at least: 3.9
+Requires at least: 4.1
 Tested up to: 4.7
 Stable tag: trunk
 License: GPLv2 or later
@@ -233,6 +233,10 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
+= 1.4.1 =
+* Fixes a PHP Warning at campaign running for PHP version lower than 7.0
+* Fixes a PHP Warning on Media page.
+
 = 1.4 =
 * Improvements on Settings page in checkboxes for images functions and Help texts.
 * Added some Wordpress filters and actions to Settings metaboxes.  

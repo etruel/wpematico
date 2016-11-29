@@ -551,10 +551,18 @@ function wpematico_joberrorhandler($errno, $errstr, $errfile, $errline) {
 	global $campaign_log_message, $jobwarnings, $joberrors;
     
 	//genrate timestamp
-	if (!function_exists('memory_get_usage')) { // test if memory functions compiled in
-		$timestamp="<span style=\"background-color:c3c3c3;\" title=\"[Line: ".$errline."|File: ".trailingslashit(dirname($errfile,2)).basename($errfile)."\">".date_i18n('Y-m-d H:i.s').":</span> ";
-	} else  {
-		$timestamp="<span style=\"background-color:c3c3c3;\" title=\"[Line: ".$errline."|File: ".trailingslashit(dirname($errfile,2)).basename($errfile)."|Mem: ". WPeMatico :: formatBytes(@memory_get_usage(true))."|Mem Max: ". WPeMatico :: formatBytes( @memory_get_peak_usage(true))."|Mem Limit: ".ini_get('memory_limit')."]\">".date_i18n('Y-m-d H:i.s').":</span> ";
+	if (!version_compare(phpversion(), '6.9.0', '>')) { // PHP Version < 5.7 dirname 2nd 
+		if (!function_exists('memory_get_usage')) { // test if memory functions compiled in
+			$timestamp="<span style=\"background-color:c3c3c3;\" title=\"[Line: ".$errline."|File: ".trailingslashit(dirname($errfile)).basename($errfile)."\">".date_i18n('Y-m-d H:i.s').":</span> ";
+		} else  {
+			$timestamp="<span style=\"background-color:c3c3c3;\" title=\"[Line: ".$errline."|File: ".trailingslashit(dirname($errfile)).basename($errfile)."|Mem: ". WPeMatico :: formatBytes(@memory_get_usage(true))."|Mem Max: ". WPeMatico :: formatBytes( @memory_get_peak_usage(true))."|Mem Limit: ".ini_get('memory_limit')."]\">".date_i18n('Y-m-d H:i.s').":</span> ";
+		}
+	}else{
+		if (!function_exists('memory_get_usage')) { // test if memory functions compiled in
+			$timestamp="<span style=\"background-color:c3c3c3;\" title=\"[Line: ".$errline."|File: ".trailingslashit(dirname($errfile,2)).basename($errfile)."\">".date_i18n('Y-m-d H:i.s').":</span> ";
+		} else  {
+			$timestamp="<span style=\"background-color:c3c3c3;\" title=\"[Line: ".$errline."|File: ".trailingslashit(dirname($errfile,2)).basename($errfile)."|Mem: ". WPeMatico :: formatBytes(@memory_get_usage(true))."|Mem Max: ". WPeMatico :: formatBytes( @memory_get_peak_usage(true))."|Mem Limit: ".ini_get('memory_limit')."]\">".date_i18n('Y-m-d H:i.s').":</span> ";
+		}
 	}
 
 	switch ($errno) {
