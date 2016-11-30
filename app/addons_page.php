@@ -148,7 +148,9 @@ function wpematico_addons_get_columns() {
 
 add_action('manage_plugins_custom_column', 'wpematico_addons_custom_columns',10,3);
 function wpematico_addons_custom_columns($column_name, $plugin_file, $plugin_data ) {
-	
+	if (strpos($plugin_data['Name'], 'WPeMatico ') === false ) {
+		return true;
+	}
 	$caption = ( (isset($plugin_data['installed']) && ($plugin_data['installed']) ) || !isset($plugin_data['Remote'])) ? __('Installed','wpematico') : __('Purchase', 'wpematico');
 	if (isset($plugin_data['installed']) && ($plugin_data['installed']) ) {
 		if(!isset($plugin_data['Remote'])) {
