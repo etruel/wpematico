@@ -29,6 +29,7 @@ class Main_WPeMatico{
 		echo"<div class=\"$class\"> <p>$message</p></div>"; 
 	}
 	
+	
     public static function instance() {
 		if (version_compare(phpversion(), '5.3.0', '<')) { // check PHP Version
 			add_action( 'admin_notices', array(__CLASS__, 'required_php_notice') );
