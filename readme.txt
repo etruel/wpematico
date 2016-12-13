@@ -234,6 +234,7 @@ or to e-mail etruel@gmail.com
 
 == Changelog ==
 = 1.4.1 =
+* Fixes the save the posts as UTF-8 without html entities.
 * Fixes a PHP Warning that broke the licenses handler.
 * Fixes a PHP Warning at campaign running for PHP version lower than 7.0
 * Fixes a conditional in addons page that could allowing to print an extra column in other plugins pages.

@@ -228,13 +228,14 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		$this->current_item['title'] = htmlspecialchars_decode($this->current_item['title']);
 		if( $this->cfg['nonstatic'] ) { $this->current_item = NoNStatic :: title($this->current_item,$this->campaign,$item,$realcount ); }else $this->current_item['title'] = esc_attr($this->current_item['title']);
 		
-
  		// Item author
 		if( $this->cfg['nonstatic'] ) { $this->current_item = NoNStatic :: author($this->current_item,$this->campaign, $feedurl ); }else $this->current_item['author'] = $this->campaign['campaign_author'];
+
 		// Item content
 		$this->current_item['content'] = apply_filters('wpematico_get_post_content_feed', $item->get_content(), $this->campaign, $feed, $item );
 		$this->current_item = apply_filters('wpematico_get_post_content', $this->current_item, $this->campaign, $feed, $item );
-		//$this->current_item['content'] = mb_convert_encoding($this->current_item['content'], 'UTF-8', 'HTML-ENTITIES');
+		$this->current_item['content'] = mb_convert_encoding($this->current_item['content'], 'UTF-8', 'HTML-ENTITIES');
+		
 		//********* Parse and upload images
 		$this->current_item = apply_filters('wpematico_item_filters_pre_img', $this->current_item, $this->campaign );
 		//gets images array 
