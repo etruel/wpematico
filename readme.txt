@@ -233,6 +233,9 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
+= 1.4.2 =
+* Fixes to save the titles as UTF-8 without html entities. (For international characters)
+
 = 1.4.1 =
 * Fixes to save the posts as UTF-8 without html entities. (For international characters)
 * Fixes a PHP Warning that broke the licenses handler.
