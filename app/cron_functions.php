@@ -20,7 +20,7 @@ function wpematico_intervals($schedules) {
 }
 
 function wpem_cron_callback() {
-	$args = array( 'post_type' => 'wpematico', 'orderby' => 'ID', 'order' => 'ASC', 'numberposts' => -1 );
+	$args = array( 'post_type' => 'wpematico', 'orderby' => 'ID', 'order' => 'ASC', 'post_status' => 'publish', 'numberposts' => -1 );
 	$campaigns = get_posts( $args );
 	foreach( $campaigns as $post ) {
 		$campaign = WPeMatico :: get_campaign( $post->ID );
