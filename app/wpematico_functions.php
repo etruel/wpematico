@@ -36,7 +36,8 @@ class WPeMatico_functions {
 				$message.= __('Must install at least <b>WPeMatico Professional</b> '.WPeMatico::PROREQUIRED, WPeMatico :: TEXTDOMAIN );
 				$message.= ' <a href="'.admin_url('plugins.php?page=wpemaddons').'#wpematico-pro"> '. __('Go to upgrade Now', WPeMatico :: TEXTDOMAIN ). '</a>';
 				$message.= '<script type="text/javascript">jQuery(document).ready(function($){$("#wpematico-pro").css("backgroundColor","yellow");});</script>';
-				$checks=false;
+				//Commented to allow access to the settings page
+				//$checks=false;
 			}
 		}
 

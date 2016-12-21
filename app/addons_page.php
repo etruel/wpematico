@@ -237,7 +237,7 @@ Function read_wpem_addons($plugins){
 			$addon[ $plugindirname ] = Array (
 				'Name'		  => $itemtitle,
 				'PluginURI'	  => $item->get_permalink(),
-				'buynowURI'	  => 'https://etruel.com/checkout?edd_action=add_to_cart&download_id='.$download_id.'&edd_options[price_id]=1',
+				'buynowURI'	  => 'https://etruel.com/checkout?edd_action=add_to_cart&download_id='.$download_id.'&edd_options[price_id]=2',
 				'Version'	  => $version,	// $item->get_date('U'),
 				'Description' => $item->get_description(),
 				'Author'	  => 'etruel', 
