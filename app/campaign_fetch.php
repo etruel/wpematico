@@ -225,11 +225,12 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		
 		// Item title
 		$this->current_item['title'] = $item->get_title();
+		$this->current_item['title'] = htmlspecialchars_decode($this->current_item['title']);
 		$from = mb_detect_encoding($this->current_item['title'], "auto");
 		if ($from && $from != 'UTF-8') {
 			$this->current_item['title'] = mb_convert_encoding($this->current_item['title'], 'UTF-8', $from);
 		}
-		$this->current_item['title'] = htmlspecialchars_decode($this->current_item['title']);
+		
 		if( $this->cfg['nonstatic'] ) { $this->current_item = NoNStatic :: title($this->current_item,$this->campaign,$item,$realcount ); }else $this->current_item['title'] = esc_attr($this->current_item['title']);
 
 		
