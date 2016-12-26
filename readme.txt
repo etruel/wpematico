@@ -234,7 +234,7 @@ or to e-mail etruel@gmail.com
 
 == Changelog ==
 = 1.4.2 =
-* Fixes to save the titles as UTF-8 without html entities. (For international characters)
+* Fixes decoding html entities from the titles and post contents to UTF-8.
 * Tweaks the query of the campaigns to run the cron.
 
 = 1.4.1 =
