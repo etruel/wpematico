@@ -233,6 +233,10 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
+= 1.4.3 =
+* Updated Updater class.
+* Fix a minnor bug with license keys form for Professional Addon.
+
 = 1.4.2 =
 * Fixes decoding html entities from the titles and post contents to UTF-8.
 * Fixes titles by getting especial characters before convert them to UTF-8

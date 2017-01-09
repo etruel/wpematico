@@ -83,7 +83,7 @@ class wpematico_licenses_handlers {
 		}
 		
 		if (defined( 'WPEMATICOPRO_VERSION' )) {
-			if (version_compare(WPEMATICOPRO_VERSION, '1.3.8.1', '<=')) {
+			if (version_compare(WPEMATICOPRO_VERSION, '1.4', '<=')) {
 				global $PRO_Licenser;				
 				remove_action('admin_init', array($PRO_Licenser, 'admin_plugin_updater'), 0 );
 				remove_action('wpempro_licenses_forms', array($PRO_Licenser, 'license_page' ),1 );
