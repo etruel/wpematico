@@ -85,7 +85,7 @@ class wpematico_campaign_fetch_functions {
 		// take out links before apply template (if don't strip before html tags
 		if ($campaign['campaign_strip_links'] && !$campaign['campaign_striphtml'] ){
 			trigger_error(__('Cleaning Links from content.', WPeMatico :: TEXTDOMAIN ),E_USER_NOTICE);
-			$current_item['content'] = $this->strip_links((string)$current_item['content']);
+			$current_item['content'] = $this->strip_links((string)$current_item['content'], $campaign);
 		}
 
 		// Template parse           
@@ -502,8 +502,17 @@ class wpematico_campaign_fetch_functions {
 		return $out;
 	}
 
-	function strip_links($text) {
-	    $tags = array('a','iframe','script');
+	function strip_links($text, $campaign) {
+		$tags = array();
+		if (empty($campaign['campaign_strip_links_options'])) {
+			$tags = array('a','iframe','script');
+		} else {
+			foreach ($campaign['campaign_strip_links_options'] as $k=>$v) {
+				if ($v) {
+					$tags[] = $k;
+				}
+			}
+		}
 	    foreach ($tags as $tag){
 	        while(preg_match('/<'.$tag.'(|\W[^>]*)>(.*)<\/'. $tag .'>/iusU', $text, $found)){
 	            $text = str_replace($found[0],$found[2],$text);

@@ -224,7 +224,13 @@ class WPeMatico_functions {
 		$campaigndata['campaign_author']	= (!isset($post_data['campaign_author']) ) ? 0: (int)$post_data['campaign_author'];		
 		$campaigndata['campaign_linktosource']=(!isset($post_data['campaign_linktosource']) || empty($post_data['campaign_linktosource'])) ? false: ($post_data['campaign_linktosource']==1) ? true : false;
 		$campaigndata['avoid_search_redirection']=(!isset($post_data['avoid_search_redirection']) || empty($post_data['avoid_search_redirection'])) ? false: ($post_data['avoid_search_redirection']==1) ? true : false;
+		
 		$campaigndata['campaign_strip_links']=(!isset($post_data['campaign_strip_links']) || empty($post_data['campaign_strip_links'])) ? false: ($post_data['campaign_strip_links']==1) ? true : false;
+		$campaigndata['campaign_strip_links_options']=(!isset($post_data['campaign_strip_links_options']) || !is_array($post_data['campaign_strip_links_options'])) ? array('a' => true, 'script' => true, 'iframe' => true ): $post_data['campaign_strip_links_options'];
+		$campaigndata['campaign_strip_links_options']['a'] =(!isset($post_data['campaign_strip_links_options']['a']) || empty($post_data['campaign_strip_links_options']['a'])) ? false: ($post_data['campaign_strip_links_options']['a']) ? true : false;
+		$campaigndata['campaign_strip_links_options']['script'] =(!isset($post_data['campaign_strip_links_options']['script']) || empty($post_data['campaign_strip_links_options']['script'])) ? false: ($post_data['campaign_strip_links_options']['script']) ? true : false;
+		$campaigndata['campaign_strip_links_options']['iframe'] =(!isset($post_data['campaign_strip_links_options']['iframe']) || empty($post_data['campaign_strip_links_options']['iframe'])) ? false: ($post_data['campaign_strip_links_options']['iframe']) ? true : false;
+
 		$campaigndata['campaign_commentstatus']	= (!isset($post_data['campaign_commentstatus']) ) ? 'closed' :  $post_data['campaign_commentstatus'];
 		$campaigndata['campaign_allowpings']=(!isset($post_data['campaign_allowpings']) || empty($post_data['campaign_allowpings'])) ? false: ($post_data['campaign_allowpings']==1) ? true : false;
 		$campaigndata['campaign_woutfilter']=(!isset($post_data['campaign_woutfilter']) || empty($post_data['campaign_woutfilter'])) ? false: ($post_data['campaign_woutfilter']==1) ? true : false;

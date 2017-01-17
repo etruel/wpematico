@@ -276,7 +276,9 @@ class WPeMatico_Campaign_edit_functions {
 		$campaign_allowpings = $campaign_data['campaign_allowpings'];
 		$campaign_woutfilter = $campaign_data['campaign_woutfilter'];
 		$campaign_strip_links = $campaign_data['campaign_strip_links'];
+		$campaign_strip_links_options = $campaign_data['campaign_strip_links_options'];
 		$campaign_striphtml = $campaign_data['campaign_striphtml'];
+		
 		?>
 	<div id="optionslayer" class="ibfix vtop">
 		<p>
@@ -311,6 +313,18 @@ class WPeMatico_Campaign_edit_functions {
 		<p>
 			<input class="checkbox" type="checkbox"<?php checked($campaign_strip_links ,true);?> name="campaign_strip_links" value="1" id="campaign_strip_links"/> 
 			<label for="campaign_strip_links"><?php echo __('Strip links from content.', 'wpematico' ); ?></label> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['striplinks']; ?>"></span>
+			<div id="div_campaign_strip_links_options" style="margin-left:15px;<?php echo (($campaign_strip_links)?'':'display:none;'); ?>">
+				<input class="checkbox" type="checkbox"<?php checked($campaign_strip_links_options['a'] ,true);?> name="campaign_strip_links_options[a]" value="1" id="campaign_strip_links_options_a"/> 
+				<label for="campaign_strip_links_options[a]"><?php _e('Strip &lt;a&gt;.', 'wpematico' ); ?></label> <br/>
+				<input class="checkbox" type="checkbox"<?php checked($campaign_strip_links_options['iframe'] ,true);?> name="campaign_strip_links_options[iframe]" value="1" id="campaign_strip_links_options_iframe"/> 
+				<label for="campaign_strip_links_options[iframe]"><?php _e('Strip &lt;iframe&gt;.', 'wpematico' ); ?></label> <br/>
+				<input class="checkbox" type="checkbox"<?php checked($campaign_strip_links_options['script'] ,true);?> name="campaign_strip_links_options[script]" value="1" id="campaign_strip_links_options_script"/> 
+				<label for="campaign_strip_links_options[script]"><?php _e('Strip &lt;script&gt;.', 'wpematico' ); ?></label> 
+				<p class="description">
+					<?php _e('If you do not select any option will take as if you selected all.', 'wpematico' ); ?>
+				</p>
+
+			</div>
 		</p>
 		
 		<?php if ($cfg['woutfilter']) : ?>
