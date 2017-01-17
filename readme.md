@@ -11,7 +11,7 @@ WPeMatico is a very easy to use autoblogging plugin. Organized into campaigns, i
 
 This plugin offers you a nice interface following the WordPress standards that allows you to manage in every campaign all the feeds you import. In order to make your site more user-friendly, you can fetch contents from multiple feeds and arrange them according to categories.
 
-If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/plugin-reviews/wpematico?rate=5#postform) on Wordpress. Thanks! :)
+If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/plugin-reviews/wpematico?rate=5#new-post) on Wordpress. Thanks! :)
 
 
 #### [**Current Version in Wordpress**](https://wordpress.org/plugins/wpematico/)
@@ -60,4 +60,4 @@ If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/
 **Do you like WPeMatico?**
 
 
-Don't hesitate to [give your feedback](https://wordpress.org/support/view/plugin-reviews/wpematico#postform). It will help making the plugin better.
+Don't hesitate to [give your feedback](https://wordpress.org/support/view/plugin-reviews/wpematico#new-post). It will help making the plugin better.

@@ -25,7 +25,8 @@ function wpematico_action_links($data)	{
 	}
 	return array_merge(	$data,	array(
 		'<a href="edit.php?post_type=wpematico&page=wpematico_settings" title="' . __('Load WPeMatico Settings Page', 'wpematico' ) . '">' . __('Settings', 'wpematico' ) . '</a>',
-		'<a href="https://etruel.com/checkout?edd_action=add_to_cart&download_id=4313&edd_options[price_id]=2" target="_Blank" title="' . __('Buy all bundled Addons', 'wpematico' ) . '">' . __('Go Perfect', 'wpematico' ) . '</a>',
+		'<a href="https://etruel.com/downloads/wpematico-perfect-package/" target="_Blank" title="' . __('Take a look at the all bundled Addons', 'wpematico' ) . '">' . __('Go Perfect', 'wpematico' ) . '</a>',
+//		'<a href="https://etruel.com/checkout?edd_action=add_to_cart&download_id=4313&edd_options[price_id]=2" target="_Blank" title="' . __('Buy all bundled Addons', 'wpematico' ) . '">' . __('Go Perfect', 'wpematico' ) . '</a>',
 	));
 }
 
@@ -45,8 +46,9 @@ function wpematico_row_meta($data, $page)	{
 		//'<a href="http://www.wpematico.com/wpematico/" target="_blank">' . __('Info & comments') . '</a>',
 		'<a href="'.  admin_url('plugins.php?page=wpemaddons').'" target="_self">' . __('Extensions') . '</a>',
 		'<a href="https://etruel.com/my-account/support/" target="_blank">' . __('Support') . '</a>',
-		'<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#postform" target="_Blank" title="Rate 5 stars on Wordpress.org">' . __('Rate Plugin', 'wpematico' ) . '</a>',
-		'<a href="https://etruel.com/checkout?edd_action=add_to_cart&download_id=272&edd_options[price_id]=2" target="_Blank" title="' . __('Go to buy PRO version', 'wpematico' ) . '">' . __('Go PRO', 'wpematico' ) . '</a>'
+		'<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" target="_Blank" title="Rate 5 stars on Wordpress.org">' . __('Rate Plugin', 'wpematico' ) . '</a>',
+		'<strong><a href="https://etruel.com/downloads/wpematico-pro/" target="_Blank" title="' . __('Take a look at the PRO version features', 'wpematico' ) . '">' . __('Go PRO', 'wpematico' ) . '</a></strong>'
+//		'<a href="https://etruel.com/checkout?edd_action=add_to_cart&download_id=272&edd_options[price_id]=2" target="_Blank" title="' . __('Go to buy PRO version', 'wpematico' ) . '">' . __('Go PRO', 'wpematico' ) . '</a>'
 //			'<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU" target="_blank">' . __('Donate', 'wpematico' ) . '</a>'
 	));
 }		

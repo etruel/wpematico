@@ -3,7 +3,7 @@ Contributors: etruel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS, RSS to Post, Feed to Post, autoblog,rss aggregator, Feed, rss to post, syndication, Post, Posts, aggregation, atom, bot, content, writing
 Requires at least: 4.1
-Tested up to: 4.7
+Tested up to: 4.8
 Stable tag: trunk
 License: GPLv2 or later
 
@@ -21,7 +21,7 @@ Requires PHP >= 5.3
 For RSS fetching, it uses the Simplepie library included in Wordpress or forces to use the external library included in the plugin.
 As for image processing, it uses the core functions of Wordpress. Failing doing the latter, it will use the custom functions with or without cURL.
 
-If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/plugin-reviews/wpematico?rate=5#postform) on Wordpress. Thanks! :)
+If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/plugin-reviews/wpematico?rate=5#new-post) on Wordpress. Thanks! :)
 
 #### FEATURES:
 > #### FREE
@@ -135,7 +135,7 @@ If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/
 
 = Do you like WPeMatico? =
 
-Don't hesitate to [give your feedback](https://wordpress.org/support/view/plugin-reviews/wpematico#postform). It will help making the plugin better. Other contributions (such as new translations or helping other users on the support forum) are welcome !
+Don't hesitate to [give your feedback](https://wordpress.org/support/view/plugin-reviews/wpematico#new-post). It will help making the plugin better. Other contributions (such as new translations or helping other users on the support forum) are welcome !
 
 ---
 
@@ -215,7 +215,7 @@ You can either install it automatically from the WordPress admin, or do it manua
 
 You can contribute with WPeMatico
 
-Don't hesitate to [give your feedback](https://wordpress.org/support/view/plugin-reviews/wpematico#postform). It will help making the plugin better. Other contributions (such as new translations or helping other users on the support forum) are welcome !
+Don't hesitate to [give your feedback](https://wordpress.org/support/view/plugin-reviews/wpematico#new-post). It will help making the plugin better. Other contributions (such as new translations or helping other users on the support forum) are welcome !
 
 Features supported by
 Thomas from [Invade It](http://www.invadeit.co.th)

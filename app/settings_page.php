@@ -156,7 +156,7 @@ function wpematico_settings(){
 							<style type="text/css">#linkrate:before { content: "\2605\2605\2605\2605\2605";font-size: 18px;}
 							#linkrate { font-size: 18px;}</style>
 							<p style="text-align: center;">
-								<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#postform" id="linkrate" class="button" target="_Blank" title="Click here to rate plugin on Wordpress">  Rate </a>
+								<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" id="linkrate" class="button" target="_Blank" title="Click here to rate plugin on Wordpress">  Rate </a>
 							</p>
 							<p></p>
 							<p style="text-align: center;"><?php _e( 'Also you can donate a few dollars', 'wpematico' );?>
@@ -208,7 +208,7 @@ function wpematico_settings(){
 							<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disable_credits'],true); ?> name="disable_credits" id="disable_credits" /><b>&nbsp;<?php _e('Disable <i>WPeMatico Credits</i>', 'wpematico' ); ?></b> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['disable_credits']; ?>"></span>
 							<span id="discredits" style="<?php echo ($cfg['disable_credits'])?'':'display:none;' ?>"><br /><?php 
 							printf( __('If you can\'t show the WPeMatico credits in your posts, I really appreciate if you can take a minute to %s write a 5 star review on Wordpress %s. :) thanks.', 'wpematico' ),
-								'<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#postform" target="_Blank" title="Open a new window">',
+								'<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" target="_Blank" title="Open a new window">',
 								'</a>'); 
 							?></span>
 							<p></p>
@@ -843,7 +843,7 @@ function wpematico_helpsettings($dev=''){
 				'title' => __('Disable WPeMatico Credits.', 'wpematico' ),
 				'tip' => __('I really appreciate if you can left this option blank to show the plugin\'s credits.', 'wpematico' ),
 				'plustip' => sprintf( __('If you can\'t show the WPeMatico credits in your posts, I really appreciate if you can take a minute to %s write a 5 star review on Wordpress %s.  :-) thanks.', 'wpematico' ),
-								'<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#postform" target="_Blank" title="Open a new window">',
+								'<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" target="_Blank" title="Open a new window">',
 								'</a>'),
 			),
 		),
