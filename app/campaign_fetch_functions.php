@@ -502,7 +502,7 @@ class wpematico_campaign_fetch_functions {
 		return $out;
 	}
 
-	function strip_links($text, $campaign) {
+	function strip_links($text, $campaign = array()) {
 		$tags = array();
 		if (empty($campaign['campaign_strip_links_options'])) {
 			$tags = array('a','iframe','script');
