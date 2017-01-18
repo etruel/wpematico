@@ -234,8 +234,14 @@ or to e-mail etruel@gmail.com
 
 == Changelog ==
 = 1.4.3 =
+* Hides "Strip Links" option if "Strip all HTML Tags" option are checked.
+* Added options to the strip links for a, iframes and script tags.
+* Fixes the strip links behavior to avoid strip also the iframes.
+* Fixes the update-core for bulk plugin updates.
+* Fixes the Clean Trash button tool behavior.
+* Added a fix to use with the ACF PRO Plugin, that breaks the campaign editing screen.
+* Fixes a minnor bug with license keys form inputs.
 * Updated Updater class.
-* Fix a minnor bug with license keys form for Professional Addon.
 
 = 1.4.2 =
 * Fixes decoding html entities from the titles and post contents to UTF-8.
