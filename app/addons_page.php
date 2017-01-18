@@ -96,8 +96,11 @@ function activate_desactivate_plugins() {
 	if (!defined('WPEM_ADMIN_DIR')) {
 		define('WPEM_ADMIN_DIR' , ABSPATH . basename(admin_url()));
 	}
-	
-	if (isset($_REQUEST['checked'])){
+	$accepted_actions = array();
+	$accepted_actions[] = 'deactivate-selected';
+	$accepted_actions[] = 'activate-selected';
+
+	if (isset($_REQUEST['checked']) && isset($_REQUEST['page']) && $_REQUEST['page'] == 'wpemaddons' && in_array($_REQUEST['action'], $accepted_actions) !== false){
 		$status ='all'; 
 		$page=  (!isset($page) or is_null($page))? 1 : $page;
 		$plugins['all']=get_plugins();
