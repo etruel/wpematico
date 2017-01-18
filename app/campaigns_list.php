@@ -218,6 +218,7 @@ class WPeMatico_Campaigns {
 	}
 	public static function list_admin_scripts(){
 		global $post_type;
+		wp_enqueue_script( 'wpematico_delete_all', WPeMatico :: $uri .'app/js/delete_all.js', array( 'jquery' ), WPEMATICO_VERSION, true );
 		if($post_type != 'wpematico') return;		
 		add_action('admin_head', array(  'WPeMatico_Campaigns' ,'campaigns_list_admin_head'));
 //		wp_register_script('jquery-input-mask', 'js/jquery.maskedinput-1.2.2.js', array( 'jquery' ));

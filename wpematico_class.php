@@ -113,7 +113,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 		 * @return void
 		 */
 		public function add_button() {
-			global $typenow,$post_type, $pagenow;
+			global $typenow,$post_type, $pagenow, $wp_post_types;
 			// Don't show on comments list table
 			if( 'edit-comments.php' == $pagenow ) return;
 			// Don't show on trash page
@@ -129,17 +129,21 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			$args=array();
 			$output = 'names'; // names or objects
 			$post_types=get_post_types($args,$output); 
-			foreach ($post_types  as $post_type ) {
-				if($post_type != $typenow) continue;
-				if( isset($this->options['cpt_trashbutton'][$post_type]) && $this->options['cpt_trashbutton'][$post_type] ) {
+			foreach ($post_types  as $post_t ) {
+				if($post_t != $typenow) continue;
+				if( isset($this->options['cpt_trashbutton'][$post_t]) && $this->options['cpt_trashbutton'][$post_t] ) {
 					$display = true;
 				}
 			}
+			
 			if ( !$display ) return;
 			?>
 			<div class="alignright empty_trash">
-				<input type="hidden" name="post_status" value="trash" />
-				<?php submit_button( __( 'Empty Trash' ), 'apply', 'delete_all', false ); ?>
+				
+					<?php 
+					submit_button( __( 'Empty Trash' ), 'apply', 'delete_all', false );
+				 	?>
+				
 			</div>
 			<?php
 		}
