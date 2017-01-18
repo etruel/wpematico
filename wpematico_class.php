@@ -138,12 +138,12 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			
 			if ( !$display ) return;
 			?>
+			
+				
 			<div class="alignright empty_trash">
-				
 					<?php 
-					submit_button( __( 'Empty Trash' ), 'apply', 'delete_all', false );
-				 	?>
-				
+				submit_button( __( 'Empty Trash' ), 'apply', 'delete_all', false, array('onClick' => "jQuery('.post_status_page').val('trash');") );
+			?>				
 			</div>
 			<?php
 		}
