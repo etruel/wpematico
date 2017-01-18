@@ -6,8 +6,25 @@ jQuery(document).ready(function($){
 	
 	
 	jQuery('.inp_license_key').keyup(function(e){
-		var plugin_name = jQuery(this).data('plugin');
-		if (jQuery(this).val() == '') {
+		inp_license_key(this);
+	});
+	jQuery(".inp_license_key").bind({
+		copy : function(e){
+			inp_license_key(this, true);
+		},
+		paste : function(e){
+			inp_license_key(this, true);
+		},
+		cut : function(e){
+			inp_license_key(this, true);
+		}
+	});
+	
+	
+});
+function inp_license_key(element, copy = false) {
+		var plugin_name = jQuery(element).data('plugin');
+		if (jQuery(element).val() == '' && !copy) {
 			jQuery('#tr_license_status_'+plugin_name).fadeOut();
 			return false;
 		}
@@ -40,10 +57,8 @@ jQuery(document).ready(function($){
 			});
 			
 		});
-	});
-	
-	
-});
+
+}
 function startHookActivate() {
 	jQuery('.btn_license_activate').click(function(e){
 		var plugin_name = this.id.replace('_btn_license_activate', '');
