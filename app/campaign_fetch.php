@@ -397,6 +397,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
 			// Attaching images uploaded to created post in media library 
 			// Featured Image
+			$img_new_url = '';
 			if(!empty($this->current_item['nofeatimg'])) {
 				trigger_error('<strong>'.__('Skip Featured Image.', 'wpematico' ).'</strong>',E_USER_NOTICE);
 			}else if( !empty($this->current_item['featured_image']) ) {
