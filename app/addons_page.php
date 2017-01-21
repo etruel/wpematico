@@ -30,7 +30,10 @@ function redirect_to_wpemaddons() {
 		$actioned = array_multi_key_exists( array('error', 'deleted', 'activate', 'activate-multi', 'deactivate', 'deactivate-multi', '_error_nonce' ), $_REQUEST, false );
 		if( ( isset($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], 'page=wpemaddons') ) && $actioned ) {
 			$location = add_query_arg('page','wpemaddons', $location);// $_SERVER['REQUEST_URI'];
-			wp_redirect($location);
+			if (!headers_sent()) {
+				wp_redirect($location);
+			}
+			
 		}
 	}
 }
