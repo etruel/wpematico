@@ -22,31 +22,38 @@ class wpematico_campaign_fetch_functions {
 		if ( ! is_array( $wfeeds ) )
 			$wfeeds = array();
 		$title = $item->get_title();
+		
 		$title = htmlspecialchars_decode($title);
 		$from = mb_detect_encoding($title, "auto");
 		if ($from && $from != 'UTF-8') {
 			$title = mb_convert_encoding($title, 'UTF-8', $from);
 		}
 		$title = html_entity_decode($title, ENT_COMPAT | ENT_HTML401, 'UTF-8');
-		$permalink = $this->getReadUrl($item->get_permalink(), $campaign); 
+
 		if ($campaign['copy_permanlink_source']) {
+			//$permalink = $this->getReadUrl($item->get_permalink(), $campaign); 
+			$permalink = $item->get_permalink(); 
 			$slug = $this->get_slug_from_permalink($permalink);
 		} else {
 			$slug = sanitize_title($title);
 		}
+		
 		$check_sql = "SELECT post_name FROM $wpdb->posts WHERE post_name = %s AND post_type = %s AND ID != %d LIMIT 1";
 		$post_name_check = $wpdb->get_var( $wpdb->prepare( $check_sql, $slug, $cpost_type, $post_ID ) );
 		if ( $post_name_check || in_array( $slug, $wfeeds ) || apply_filters( 'wp_unique_post_slug_is_bad_flat_slug', false, $slug, $cpost_type ) ) {
 			$dev = true;
 		}
-		// Find on meta wpe_sourcepermalink when post_name is not found.
-		if (!$dev && empty($this->cfg['disableccf'])) {
-			$check_sql = "SELECT meta_value FROM $wpdb->postmeta WHERE meta_key = 'wpe_sourcepermalink' AND meta_value = %s LIMIT 1";
-			$permantlink_check = $wpdb->get_var( $wpdb->prepare( $check_sql, $permalink) );
-			if ($permantlink_check) {
-				$dev = true;
-			}
-		}
+		
+//		Kill big wordpresses 
+//		// Find on meta wpe_sourcepermalink when post_name is not found.
+//		if (!$dev && empty($this->cfg['disableccf'])) {
+//			$check_sql = "SELECT meta_value FROM $wpdb->postmeta WHERE meta_key = 'wpe_sourcepermalink' AND meta_value = %s LIMIT 1";
+//			$permantlink_check = $wpdb->get_var( $wpdb->prepare( $check_sql, $permalink) );
+//			if ($permantlink_check) {
+//				$dev = true;
+//			}
+//		}
+//		
 		if(has_filter('wpematico_duplicates')) $dev =  apply_filters('wpematico_duplicates', $dev, $campaign, $item);
 		//  http://wordpress.stackexchange.com/a/72691/65771
 		//  https://codex.wordpress.org/Function_Reference/get_page_by_title
@@ -251,7 +258,7 @@ class wpematico_campaign_fetch_functions {
 	} // End item filters
     
     /**
-     * Get relative path
+     * Get URL from relative path
      * @param $baseUrl base url
      * @param $relative relative url
      * @return absolute url version of relative url
