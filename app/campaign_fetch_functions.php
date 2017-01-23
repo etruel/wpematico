@@ -10,22 +10,42 @@ if ( class_exists( 'wpematico_campaign_fetch_functions' ) ) return;
 
 class wpematico_campaign_fetch_functions {
 
+	
 	function WPeisDuplicated($campaign, $feed, $item) {
 		// Post slugs must be unique across all posts.
 		global $wpdb, $wp_rewrite;
 		$post_ID = 0;
 		$cpost_type = $campaign['campaign_customposttype'];
 		$dev = false;
-
+		
 		$wfeeds = $wp_rewrite->feeds;
 		if ( ! is_array( $wfeeds ) )
 			$wfeeds = array();
 		$title = $item->get_title();
-		$slug = sanitize_title( $title );
+		$title = htmlspecialchars_decode($title);
+		$from = mb_detect_encoding($title, "auto");
+		if ($from && $from != 'UTF-8') {
+			$title = mb_convert_encoding($title, 'UTF-8', $from);
+		}
+		$title = html_entity_decode($title, ENT_COMPAT | ENT_HTML401, 'UTF-8');
+		$permalink = $this->getReadUrl($item->get_permalink(), $campaign); 
+		if ($campaign['copy_permanlink_source']) {
+			$slug = $this->get_slug_from_permalink($permalink);
+		} else {
+			$slug = sanitize_title($title);
+		}
 		$check_sql = "SELECT post_name FROM $wpdb->posts WHERE post_name = %s AND post_type = %s AND ID != %d LIMIT 1";
 		$post_name_check = $wpdb->get_var( $wpdb->prepare( $check_sql, $slug, $cpost_type, $post_ID ) );
 		if ( $post_name_check || in_array( $slug, $wfeeds ) || apply_filters( 'wp_unique_post_slug_is_bad_flat_slug', false, $slug, $cpost_type ) ) {
 			$dev = true;
+		}
+		// Find on meta wpe_sourcepermalink when post_name is not found.
+		if (!$dev && empty($this->cfg['disableccf'])) {
+			$check_sql = "SELECT meta_value FROM $wpdb->postmeta WHERE meta_key = 'wpe_sourcepermalink' AND meta_value = %s LIMIT 1";
+			$permantlink_check = $wpdb->get_var( $wpdb->prepare( $check_sql, $permalink) );
+			if ($permantlink_check) {
+				$dev = true;
+			}
 		}
 		if(has_filter('wpematico_duplicates')) $dev =  apply_filters('wpematico_duplicates', $dev, $campaign, $item);
 		//  http://wordpress.stackexchange.com/a/72691/65771
@@ -533,6 +553,18 @@ class wpematico_campaign_fetch_functions {
 			$content = "<img src=\"$img\" alt=\"$title\"><br>$video<p>$description</p>";
 		}
 		return $content;
+	}
+	function get_slug_from_permalink($permalink) {
+		$slug = '';
+		$permalink = trim(parse_url($permalink, PHP_URL_PATH), '/');
+		$pieces = explode('/', $permalink);
+		while (empty($slug) && count($pieces) > 0) {
+			$slug = array_pop($pieces);
+		}
+		if (empty($slug)) {
+			$slug = str_replace('/', '-', $permalink);
+		}
+		return $slug;
 	}
 
 } // class

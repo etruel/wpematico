@@ -271,6 +271,7 @@ class WPeMatico_Campaign_edit_functions {
 		$campaign_feeddate = $campaign_data['campaign_feeddate'];
 		$campaign_author = $campaign_data['campaign_author'];
 		$campaign_linktosource = $campaign_data['campaign_linktosource'];
+		$copy_permanlink_source = $campaign_data['copy_permanlink_source'];
 		$avoid_search_redirection = $campaign_data['avoid_search_redirection'];
 		$campaign_commentstatus = $campaign_data['campaign_commentstatus'];
 		$campaign_allowpings = $campaign_data['campaign_allowpings'];
@@ -338,6 +339,12 @@ class WPeMatico_Campaign_edit_functions {
 			<label for="campaign_linktosource"><?php echo __('Post title links to source.', 'wpematico' ); ?></label> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['linktosource']; ?>"></span>
 			<?php if($cfg['disableccf']) echo '<br /><small>'. __('Feature deactivated on Settings. Needs Metadata.', 'wpematico' ).'</small>'; ?>
 		</p>
+		<p>
+			<input class="checkbox" type="checkbox"<?php checked($copy_permanlink_source ,true);?> name="copy_permanlink_source" value="1" id="copy_permanlink_source"/> 
+			<label for="copy_permanlink_source"><?php echo __('Copy the permalink from the source.', 'wpematico' ); ?></label> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['copy_permanlink_source']; ?>"></span>
+		</p>
+
+
 		<p>
 			<input class="checkbox" type="checkbox"<?php checked($avoid_search_redirection ,true);?> name="avoid_search_redirection" value="1" id="avoid_search_redirection"/> 
 			<label for="avoid_search_redirection"><?php echo __('Avoid search redirection to source permalink.', 'wpematico' ); ?></label> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['avoid_search_redirection']; ?>"></span>

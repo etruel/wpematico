@@ -223,6 +223,9 @@ class WPeMatico_functions {
 		$campaigndata['campaign_max']	= (!isset($post_data['campaign_max']) ) ? 5: (int)$post_data['campaign_max'];		
 		$campaigndata['campaign_author']	= (!isset($post_data['campaign_author']) ) ? 0: (int)$post_data['campaign_author'];		
 		$campaigndata['campaign_linktosource']=(!isset($post_data['campaign_linktosource']) || empty($post_data['campaign_linktosource'])) ? false: ($post_data['campaign_linktosource']==1) ? true : false;
+
+		$campaigndata['copy_permanlink_source']=(!isset($post_data['copy_permanlink_source']) || empty($post_data['copy_permanlink_source'])) ? false: ($post_data['copy_permanlink_source']==1) ? true : false;
+
 		$campaigndata['avoid_search_redirection']=(!isset($post_data['avoid_search_redirection']) || empty($post_data['avoid_search_redirection'])) ? false: ($post_data['avoid_search_redirection']==1) ? true : false;
 		
 		$campaigndata['campaign_strip_links']=(!isset($post_data['campaign_strip_links']) || empty($post_data['campaign_strip_links'])) ? false: ($post_data['campaign_strip_links']==1) ? true : false;

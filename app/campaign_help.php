@@ -33,6 +33,10 @@ $helpcampaign = array(
 			'tip' => __('This option make the title permalink to original URL.', 'wpematico' ).'<br />'. 
 				__('This feature will be ignored if you deactivate Campaign Custom Fields on settings.', 'wpematico' ),
 		),
+		'copy_permanlink_source' => array( 
+			'title' => __('Copy the permalink from the source.', 'wpematico' ),
+			'tip' => __('This option allows to use the exact permalink of the source', 'wpematico' ),
+		),
 		'avoid_search_redirection' => array( 
 			'title' => __('Avoid Search redirection to source permalink.', 'wpematico' ),
 			'tip' => __('This feature allow follow or not redirections of URLs on permalinks to try to get the original source permalink.', 'wpematico' ),

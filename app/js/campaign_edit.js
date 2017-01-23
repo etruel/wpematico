@@ -20,4 +20,15 @@ jQuery(document).ready(function($){
 		}
 
 	});
+
+	jQuery('#campaign_linktosource').change(function() {
+		if (jQuery('#campaign_linktosource').is(':checked')) {
+			jQuery('#copy_permanlink_source').attr('checked', false);
+		}
+	});
+	jQuery('#copy_permanlink_source').change(function() {
+		if (jQuery('#copy_permanlink_source').is(':checked')) {
+			jQuery('#campaign_linktosource').attr('checked', false);
+		}
+	});
 });

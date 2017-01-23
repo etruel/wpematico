@@ -206,7 +206,6 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		
 		// Get the source Permalink trying to redirect if is set.
 		$this->current_item['permalink'] = $this->getReadUrl($item->get_permalink(), $this->campaign);
-		
 		// First exclude filters
 		if ( $this->exclude_filters($this->current_item,$this->campaign,$feed,$item )) {
 			return -1 ;  // resta este item del total 
@@ -344,10 +343,15 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			$truecontent = $content;
 			$content = '';
 		}
-
+		if ($this->campaign['copy_permanlink_source']) {
+			$slug = $this->get_slug_from_permalink($item->get_permalink());
+		} else {
+			$slug = sanitize_title($title);
+		}
 		$args = array(
 			'post_title' 	          => apply_filters('wpem_parse_title', $title),
 			'post_content'  	      => apply_filters('wpem_parse_content', $content),
+			'post_name'  	      	  => apply_filters('wpem_parse_name', $slug),
 			'post_content_filtered'   => apply_filters('wpem_parse_content_filtered', $content),
 			'post_status' 	          => apply_filters('wpem_parse_status', $status),
 			'post_type' 	          => apply_filters('wpem_parse_post_type', $post_type),
