@@ -471,8 +471,10 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 				require_once(ABSPATH . WPINC . '/comment.php');
 				pingback($this->current_item['content'], $post_id);      
 			}
-
-		} // wpematico_allow_insertpost
+		// wpematico_allow_insertpost
+		} else {
+			return -1; // resta este item del total 
+		}
 		
 	}
   	
