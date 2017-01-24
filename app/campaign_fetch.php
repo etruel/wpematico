@@ -236,8 +236,10 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		$this->current_item['title'] = html_entity_decode($this->current_item['title'], ENT_COMPAT | ENT_HTML401, 'UTF-8');
 		
  		// Item author
-		if( $this->cfg['nonstatic'] ) { $this->current_item = NoNStatic :: author($this->current_item,$this->campaign, $feedurl, $item ); }else $this->current_item['author'] = $this->campaign['campaign_author'];
-
+		//if( $this->cfg['nonstatic'] ) { $this->current_item = NoNStatic :: author($this->current_item,$this->campaign, $feedurl, $item ); }else $this->current_item['author'] = $this->campaign['campaign_author'];
+		$this->current_item['author'] = $this->campaign['campaign_author'];
+		$this->current_item =  apply_filters('wpematico_get_author', $this->current_item, $this->campaign, $feedurl, $item ); 
+		
 		// Item content
 		$this->current_item['content'] = apply_filters('wpematico_get_post_content_feed', $item->get_content(), $this->campaign, $feed, $item );
 		$this->current_item = apply_filters('wpematico_get_post_content', $this->current_item, $this->campaign, $feed, $item );

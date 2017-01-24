@@ -24,7 +24,7 @@ class wpematico_campaign_fetch_functions {
 		$title = $item->get_title();
 		
 		$title = htmlspecialchars_decode($title);
-		$from = mb_detect_encoding($title, "auto");
+		$from = mb_detect_encoding($title, "auto"); 
 		if ($from && $from != 'UTF-8') {
 			$title = mb_convert_encoding($title, 'UTF-8', $from);
 		}

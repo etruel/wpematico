@@ -143,7 +143,7 @@ class WPeMatico_Campaign_edit_functions {
 	}
 	
 	//**************************************************************************
-	public static function word2cats_box( $post ) { 
+	public static function word2cats_box( $post ) {
 		global $post, $campaign_data, $helptip;
 		$campaign_wrd2cat = $campaign_data['campaign_wrd2cat'];
 		?>
@@ -188,20 +188,34 @@ class WPeMatico_Campaign_edit_functions {
 	//*************************************************************************************
 	public static function template_box( $post ) { 
 		global $post, $campaign_data, $cfg, $helptip;
+		/**
+		 * An action to allow Addons inserts fields before the post template textarea
+		 */
+		do_action('wpematico_before_template_box',$post, $cfg);
+		/**
+		 * 
+		 */
+		
 		$campaign_enable_template = $campaign_data['campaign_enable_template'];
 		$campaign_template = $campaign_data['campaign_template'];
 		//$cfg = get_option(WPeMatico :: OPTION_KEY);
 		?>
-		<p class="he20"><?php _e('Modify, manage or add extra content to every post fetched.', 'wpematico' ) ?></p>		
-		<div id="wpe_post_template_edit" class="inlinetext">
-			<input name="campaign_enable_template" id="campaign_enable_template" class="checkbox" value="1" type="checkbox"<?php checked($campaign_enable_template,true) ?> />
-			<label for="campaign_enable_template"> <?php _e('Enable Post Template', 'wpematico' ) ?></label>
-			<textarea class="large-text" id="campaign_template" name="campaign_template" /><?php echo stripslashes($campaign_template) ?></textarea>
-			<p class="he20" id="tags_note" class="note left"><?php _e('Allowed tags', 'wpematico' ); ?>: </p>
-			<p id="tags_list" style="border-left: 3px solid #EEEEEE; color: #999999; font-size: 11px; padding-left: 6px;margin-top: 0;">
-				<span class="tag">{title}</span>, <span class="tag">{content}</span>, <span class="tag">{itemcontent}</span>, <span class="tag">{image}</span>, <span class="tag">{author}</span>, <span class="tag">{authorlink}</span>, <span class="tag">{permalink}</span>, <span class="tag">{feedurl}</span>, <span class="tag">{feedtitle}</span>, <span class="tag">{feeddescription}</span>, <span class="tag">{feedlogo}</span>, <span class="tag">{campaigntitle}</span>, <span class="tag">{campaignid}</span>
+		<p class="he20"><b><?php _e('Modify, manage or add extra content to every post fetched.', 'wpematico' ) ?></b></p>
+		<div id="wpe_post_template_edit" class="inlinetext" style="background: #c1fefe;;padding: 0.5em;">
+			<label for="campaign_enable_template">
+				<input name="campaign_enable_template" id="campaign_enable_template" class="checkbox" value="1" type="checkbox"<?php checked($campaign_enable_template,true) ?> /> <?php _e('Enable Post Template', 'wpematico' ) ?>
+			</label>
+			<div id="postemplatearea" style="<?php echo (checked($campaign_enable_template,true))?'':'display:none'; ?>">
+				<textarea class="large-text" id="campaign_template" name="campaign_template" /><?php echo stripslashes($campaign_template) ?></textarea>
+				<p class="he20" id="tags_note" class="note left"><?php _e('Allowed tags', 'wpematico' ); ?>: </p>
+				<p id="tags_list" style="border-left: 3px solid #EEEEEE; color: #999999; font-size: 11px; padding-left: 6px;margin-top: 0;">
+					<span class="tag">{title}</span>, <span class="tag">{content}</span>, <span class="tag">{itemcontent}</span>, <span class="tag">{image}</span>, <span class="tag">{author}</span>, <span class="tag">{authorlink}</span>, <span class="tag">{permalink}</span>, <span class="tag">{feedurl}</span>, <span class="tag">{feedtitle}</span>, <span class="tag">{feeddescription}</span>, <span class="tag">{feedlogo}</span>, <span class="tag">{campaigntitle}</span>, <span class="tag">{campaignid}</span>
+				</p>
+			</div>
+			<p><a href="javascript:void(0);" title="<?php _e('Click to Show/Hide the examples', 'wpematico' ); ?>" onclick="jQuery('#tags_note,#tags_list').fadeToggle('fast'); jQuery('#tags_list_det').fadeToggle();" class="m4">
+				<?php _e('Click here to see more info of the template feature.','wpematico'); ?>
+				</a>
 			</p>
-			<p><a href="javascript:void(0);" title="<?php _e('Click to Show/Hide', 'wpematico' ); ?>" onclick="jQuery('#tags_note,#tags_list').fadeToggle(); jQuery('#tags_list_det').fadeToggle();" class="m4"><?php _e('Click here to toggle more info.','wpematico') ?></a></p>
 			<div id="tags_list_det" style="display: none;">
 				<b><?php _e('Supported tags', 'wpematico' ); ?></b>
 				<p><?php _e('A tag is a piece of text that gets replaced dynamically when the post is created. Currently, these tags are supported:', 'wpematico' ); ?></p>
@@ -233,7 +247,10 @@ class WPeMatico_Campaign_edit_functions {
 			</div>
 
 		</div>
-		<?php if( $cfg['nonstatic'] ) { NoNStatic :: last_html_tag($post, $cfg); } ?>
+		<?php //if( $cfg['nonstatic'] ) { NoNStatic :: last_html_tag($post, $cfg); } 
+			do_action('wpematico_after_template_box',$post, $cfg);
+		?>
+		
 
 		<?php
 	}

@@ -240,7 +240,9 @@ or to e-mail etruel@gmail.com
 * Fixes the strip links behavior to avoid strip also the iframes.
 * Fixes the update-core for bulk plugin updates.
 * Fixes the Clean Trash button tool behavior.
+* Tweaks on post template metabox.
 * Improvements to the system on checking duplicated posts with encoded titles.
+* Added filters to allow Professional version inserts new features before and after post template.
 * Added filters to allow Professional version inserts the authors from the feed items.
 * Added a fix to use with the ACF PRO Plugin, that breaks the campaign editing screen.
 * Fixes a minnor bug with license keys form inputs.
