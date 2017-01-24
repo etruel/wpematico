@@ -241,6 +241,7 @@ or to e-mail etruel@gmail.com
 * Fixes the update-core for bulk plugin updates.
 * Fixes the Clean Trash button tool behavior.
 * Improvements to the system on checking duplicated posts with encoded titles.
+* Added filters to allow Professional version inserts the authors from the feed items.
 * Added a fix to use with the ACF PRO Plugin, that breaks the campaign editing screen.
 * Fixes a minnor bug with license keys form inputs.
 * Updated Updater class.
