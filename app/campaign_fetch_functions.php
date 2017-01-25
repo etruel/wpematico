@@ -173,7 +173,7 @@ class wpematico_campaign_fetch_functions {
 
 	 // Rewrite
 		//$rewrites = $campaign['campaign_rewrites'];
-		if (isset($campaign['campaign_rewrites']['origin']))
+		if (isset($campaign['campaign_rewrites']['origin']) && !empty($campaign['campaign_rewrites']['origin']) )
 			for ($i = 0; $i < count($campaign['campaign_rewrites']['origin']); $i++) {
 				$on_title = ($campaign['campaign_rewrites']['title'][$i]) ? true: false ;
 				$origin = stripslashes($campaign['campaign_rewrites']['origin'][$i]);

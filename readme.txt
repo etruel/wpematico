@@ -44,7 +44,8 @@ If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/
 > * Words to Category. Define custom words to search into content or title to assign every post to specified category.
 > * Detailed Log sending to custom e-mail. On every executed cron or only on errors with a campaign.
 > * Option to replace title links (Permalinks) to point to the source site.
-> * Post templating before save. 
+> * Can copy the slug from original permalink for better SEO.
+> * Post templating before save. Can include Galleries, link to the sources or any text you want.
 > * Dashboard Widget with campaigns summary.
 > * Option to choose what roles can see the dashboard widget.
 > * Multilanguage ready.
@@ -233,20 +234,23 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
-= 1.4.3 =
+= 1.5  Jan 25,2017 =
 * Added option to make the slug by copying it from the source permalink.
 * Added options to the strip links for a, iframes and script tags.
+* Tweaks on feeds metabox and adding some filters to allow new professional features.
+* Tweaks on post template metabox.
+* Added filters to allow Professional version inserts new features before and after post template.
+* Added filters to allow Professional version inserts the authors from the feed items.
+* Added a fix to use with the ACF PRO Plugin, that breaks the campaign editing screen.
 * Hides "Strip Links" option if "Strip all HTML Tags" option are checked.
 * Fixes the strip links behavior to avoid strip also the iframes.
 * Fixes the update-core for bulk plugin updates.
 * Fixes the Clean Trash button tool behavior.
-* Tweaks on post template metabox.
-* Improvements to the system on checking duplicated posts with encoded titles.
-* Added filters to allow Professional version inserts new features before and after post template.
-* Added filters to allow Professional version inserts the authors from the feed items.
-* Added a fix to use with the ACF PRO Plugin, that breaks the campaign editing screen.
 * Fixes a minnor bug with license keys form inputs.
+* Improvements to the system on checking duplicated posts with encoded titles.
 * Updated Updater class.
+* **Enlarges the version required for the Professional addon to 1.5** 
+* **Recommended to test it in development ambients before the update**
 
 = 1.4.2 =
 * Fixes decoding html entities from the titles and post contents to UTF-8.
@@ -868,6 +872,7 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 1.4 =
-* Many improvements and fixes. See changelog for more details.
-* **Enlarges the version required for the professional addon to 1.4**
+= 1.5 =
+* Many improvements and fixes. See changelog for more details. 
+* **Recommended to test it in development ambients before the update**
+* **Enlarges the version required for the professional addon to 1.5**

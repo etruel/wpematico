@@ -58,6 +58,23 @@ a.statebutton:hover {
   padding: 1px;
 /*  pointer-events: none;*/
 }
+/*Math & Factions*/
+.pi:before            { content: "\213C"; }
+.one_thrid:before     { content: "\2153"; }
+.two_thrid:before     { content: "\2154"; }
+.one_fifth:before     { content: "\2155"; }
+.two_fifth:before     { content: "\2156"; }
+.three_fifth:before   { content: "\2157"; }
+.four_fifth:before    { content: "\2158"; }
+.one_sixth:before     { content: "\2159"; }
+.five_sixth:before    { content: "\215A"; }
+.one_eighth:before    { content: "\215B"; }
+.three_eighth:before  { content: "\215C"; }
+.five_eighth:before   { content: "\215D"; }
+.seven_eighth:before  { content: "\215E"; }
+.quarter:before       { content: "\00BC"; }
+.half:before          { content: "\00BD"; }
+.three_quarter:before { content: "\00BE"; }
 /*Symbols*/
 .like:before               { content: "\2764"; }
 .star:before               { content: "\2605"; }
@@ -106,7 +123,7 @@ a.statebutton:hover {
     margin-left: -25px;
     padding: 10px;
 }
-.feedoptionsicon {
+.feedoptionsicon, .is_multifeedicon {
     font-size: 24px !important;
     line-height: 28px;
     margin: 0 0 0 4px;
