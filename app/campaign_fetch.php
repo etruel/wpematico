@@ -69,14 +69,14 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		$postcount = 0;
 		$this->feeds = $this->campaign['campaign_feeds'] ; // --- Obtengo los feeds de la campaña
 		
-		foreach($this->feeds as $feed) {
+		foreach($this->feeds as $kf => $feed) {
 			// interrupt the script if timeout 
   			if (current_time('timestamp')-$this->campaign['starttime'] >= $campaign_timeout) {
 				trigger_error(sprintf(__('Ending feed, reached running timeout at %1$d sec.', 'wpematico' ), $campaign_timeout ),E_USER_WARNING);
 				break;
 			}
 			wpematico_init_set('max_execution_time', $campaign_timeout, true);
-			$postcount += $this->processFeed($feed);         #- ---- Proceso todos los feeds      
+			$postcount += $this->processFeed($feed, $kf);         #- ---- Proceso todos los feeds      
 		}
 
 		$this->fetched_posts += $postcount; 
@@ -95,7 +95,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 	* @param   $feed       URL string    Feed 
 	* @return  The number of posts added
 	*/
-	private function processFeed($feed)  {
+	private function processFeed($feed, $kf)  {
 		global $realcount;
 		@set_time_limit(0);
 		trigger_error('<span class="coderr b"><b>'.sprintf(__('Processing feed %1s.', 'wpematico' ),$feed).'</b></span>' , E_USER_NOTICE);   // Log
@@ -106,10 +106,12 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
 		// Access the feed
 		if($this->campaign['campaign_type']=="feed") { 		// Access the feed
-			$simplepie =  WPeMatico :: fetchFeed($feed, $this->cfg['set_stupidly_fast'], $this->campaign['campaign_max']);
+			$wpe_url_feed = apply_filters('wpematico_simplepie_url', $feed, $kf, $this->campaign);
+			$simplepie =  WPeMatico :: fetchFeed($wpe_url_feed, $this->cfg['set_stupidly_fast'], $this->campaign['campaign_max']);
 		}else {
 			$simplepie = apply_filters('Wpematico_process_fetching', $this->campaign);
 		}
+		
 		do_action('Wpematico_process_fetching_'.$this->campaign['campaign_type'], $this);  // Wpematico_process_fetching_feed
 		foreach($simplepie->get_items() as $item) {
 			if($prime){
