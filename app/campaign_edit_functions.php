@@ -614,7 +614,7 @@ class WPeMatico_Campaign_edit_functions {
 					<div class="feed_column" id="">
 						<input name="campaign_feeds[<?php echo $i; ?>]" type="text" value="<?php echo $feed ?>" class="large-text feedinput"/><a href="<?php echo $feed ?>" title="<?php _e('Open URL in a new browser tab', 'wpematico' ); ?>" target="_Blank" class="wpefeedlink"></a>
 					</div>
-					<?php do_action('wpematico_campaign_feed_body_column',$feed,$cfg); ?>
+					<?php do_action('wpematico_campaign_feed_body_column',$feed,$cfg, $i); ?>
 					<?php //do_action('nonstatic_feedat','', $cfg); //deprecated!!! 20160309  ?>
 
 					<div class="" id="feed_actions">

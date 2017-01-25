@@ -194,6 +194,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 				feed_new.attr('id','feed_ID'+newval);
 				$('input', feed_new).eq(0).attr('name','campaign_feeds['+ newval +']');
 				$('.delete', feed_new).eq(0).attr('onclick', "delete_feed_url('#feed_ID"+ newval +"');");
+				$(document).trigger("before_add_more_feed", [feed_new, newval] );
 				$('#feeds_list').append(feed_new);
 				$('#feeds_list').vSort();
 			});
