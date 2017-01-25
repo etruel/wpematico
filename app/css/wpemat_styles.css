@@ -106,6 +106,12 @@ a.statebutton:hover {
     margin-left: -25px;
     padding: 10px;
 }
+.feedoptionsicon {
+    font-size: 24px !important;
+    line-height: 28px;
+    margin: 0 0 0 4px;
+	color: #c27c00;
+}
 
 .wi10 {width: 10% !important;}
 .wi30 {width: 30%;}

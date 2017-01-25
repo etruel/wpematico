@@ -24,7 +24,7 @@ class WPeMatico_Campaign_edit_functions {
 		add_meta_box( 'category-box',__('Campaign Categories',WPeMatico::TEXTDOMAIN). '<span class="mya4_sprite infoIco help_tip" title="'. $helptip['category'].'"></span>', array( 'WPeMatico_Campaign_edit' ,'cat_box'),'wpematico','side', 'default' );
 		add_meta_box( 'post_tag-box', __('Tags generation', 'wpematico' ). '<span class="mya4_sprite infoIco help_tip" title="'. $helptip['tags'].'"></span>', array(  'WPeMatico_Campaign_edit'  ,'tags_box' ),'wpematico','side', 'default' );
 		add_meta_box( 'log-box', __('Send log', 'wpematico' ). '<span class="mya4_sprite infoIco help_tip" title="'. $helptip['sendlog'].'"></span>', array(  'WPeMatico_Campaign_edit'  ,'log_box' ),'wpematico','side', 'default' );
-		add_meta_box( 'feeds-box', __('Feeds for this Campaign', 'wpematico' ). '<span class="mya4_sprite infoIco help_tip" title="'. $helptip['feeds'].'"></span>', array(  'WPeMatico_Campaign_edit'  ,'feeds_box' ),'wpematico','normal', 'default' );
+		add_meta_box( 'feeds-box', __('Feeds for this Campaign', 'wpematico' ). '<span class="mya4_sprite infoIco help_tip" title="'. $helptip['feeds'].'"></span>', array( 'WPeMatico_Campaign_edit'  ,'feeds_box' ),'wpematico','normal', 'default' );
 		add_meta_box( 'options-box', __('Options for this campaign', 'wpematico' ), array(  'WPeMatico_Campaign_edit'  ,'options_box' ),'wpematico','normal', 'default' );
 		add_meta_box( 'cron-box', __('Schedule Cron', 'wpematico' ), array(  'WPeMatico_Campaign_edit'  ,'cron_box' ),'wpematico','normal', 'default' );
 		add_meta_box( 'images-box', __('Options for images', 'wpematico' ). '<span class="mya4_sprite infoIco help_tip" title="'. $helptip['imgoptions'].'"></span>', array(  'WPeMatico_Campaign_edit'  ,'images_box' ),'wpematico','normal', 'default' );
@@ -206,7 +206,8 @@ class WPeMatico_Campaign_edit_functions {
 				<input name="campaign_enable_template" id="campaign_enable_template" class="checkbox" value="1" type="checkbox"<?php checked($campaign_enable_template,true) ?> /> <?php _e('Enable Post Template', 'wpematico' ) ?>
 			</label>
 			<div id="postemplatearea" style="<?php echo (checked($campaign_enable_template,true))?'':'display:none'; ?>">
-				<textarea class="large-text" id="campaign_template" name="campaign_template" /><?php echo stripslashes($campaign_template) ?></textarea>
+				<textarea class="large-text" id="campaign_template" name="campaign_template" /><?php echo stripslashes($campaign_template) ?></textarea><br/>
+				<span class="description"><?php _e('"{content}" must exist in the template if you want to see the content in your post. Works after the features above.', WPeMatico :: TEXTDOMAIN ); ?></span>
 				<p class="he20" id="tags_note" class="note left"><?php _e('Allowed tags', 'wpematico' ); ?>: </p>
 				<p id="tags_list" style="border-left: 3px solid #EEEEEE; color: #999999; font-size: 11px; padding-left: 6px;margin-top: 0;">
 					<span class="tag">{title}</span>, <span class="tag">{content}</span>, <span class="tag">{itemcontent}</span>, <span class="tag">{image}</span>, <span class="tag">{author}</span>, <span class="tag">{authorlink}</span>, <span class="tag">{permalink}</span>, <span class="tag">{feedurl}</span>, <span class="tag">{feedtitle}</span>, <span class="tag">{feeddescription}</span>, <span class="tag">{feedlogo}</span>, <span class="tag">{campaigntitle}</span>, <span class="tag">{campaignid}</span>
@@ -614,7 +615,7 @@ class WPeMatico_Campaign_edit_functions {
 						<input name="campaign_feeds[<?php echo $i; ?>]" type="text" value="<?php echo $feed ?>" class="large-text feedinput"/><a href="<?php echo $feed ?>" title="<?php _e('Open URL in a new browser tab', 'wpematico' ); ?>" target="_Blank" class="wpefeedlink"></a>
 					</div>
 					<?php do_action('wpematico_campaign_feed_body_column',$feed,$cfg); ?>
-					<?php do_action('nonstatic_feedat','', $cfg); //deprecated!!! 20160309  ?>
+					<?php //do_action('nonstatic_feedat','', $cfg); //deprecated!!! 20160309  ?>
 
 					<div class="" id="feed_actions">
 						<label title="<?php _e('Delete this item',  'wpematico'  ); ?>" onclick="delete_feed_url('#feed_ID<?php echo $i; ?>');" class="bicon delete left"></label>
