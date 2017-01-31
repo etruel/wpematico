@@ -234,6 +234,11 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
+= 1.6  Jan 25,2017 =
+* Fix issue with Strip all links feature without selected sub-options.
+* Fix the CSS warning class when an addon was succesfully updated.
+* Updated Updater class to 1.6.10v.
+
 = 1.5  Jan 25,2017 =
 * Added option to make the slug by copying it from the source permalink.
 * Added options to the strip links for a, iframes and script tags.

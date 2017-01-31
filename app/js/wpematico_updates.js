@@ -226,7 +226,7 @@ jQuery(document).ready(function($){
 				$updateMessage.attr( 'aria-label', wp.updates.l10n.updatedLabel.replace( '%s', name ) );
 			}
 
-			$updateMessage.removeClass( 'updating-message' ).addClass( 'updated-message' );
+			$updateMessage.removeClass( 'notice-warning updating-message' ).addClass( 'notice-success updated-message' );
 			$updateMessage.text( wp.updates.l10n.updated );
 			wp.a11y.speak( wp.updates.l10n.updatedMsg );
 
