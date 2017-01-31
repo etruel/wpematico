@@ -531,14 +531,15 @@ class wpematico_campaign_fetch_functions {
 
 	function strip_links($text, $campaign = array()) {
 		$tags = array();
-		if (empty($campaign['campaign_strip_links_options'])) {
-			$tags = array('a','iframe','script');
-		} else {
+		if (!empty($campaign['campaign_strip_links_options'])) {
 			foreach ($campaign['campaign_strip_links_options'] as $k=>$v) {
 				if ($v) {
 					$tags[] = $k;
 				}
 			}
+		}
+		if (empty($tags)) {
+			$tags = array('a','iframe','script');
 		}
 	    foreach ($tags as $tag){
 	        while(preg_match('/<'.$tag.'(|\W[^>]*)>(.*)<\/'. $tag .'>/iusU', $text, $found)){
