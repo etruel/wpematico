@@ -140,7 +140,10 @@ class wpematico_campaign_fetch_functions {
 				'{feeddescription}',
 				'{feedlogo}',
 				'{campaigntitle}',
-				'{campaignid}'
+				'{campaignid}',
+				'{item_date}',
+				'{item_time}'
+
 			);
 			$vars = apply_filters('wpematico_post_template_tags', $vars, $current_item, $campaign, $feed, $item );
 
@@ -164,7 +167,10 @@ class wpematico_campaign_fetch_functions {
 				$feed->get_description(),
 				$feed->get_image_url(),
 				get_the_title($post_id),
-				$post_id
+				$post_id,
+				date(get_option('date_format'), current_time('timestamp')),
+				date(get_option('time_format'), current_time('timestamp'))
+
 			);
 			$replace = apply_filters('wpematico_post_template_replace', $replace, $current_item, $campaign, $feed, $item );
 
