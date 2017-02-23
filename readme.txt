@@ -1,4 +1,4 @@
-=== WPeMatico ===
+﻿=== WPeMatico ===
 Contributors: etruel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS, RSS to Post, Feed to Post, autoblog,rss aggregator, Feed, rss to post, syndication, Post, Posts, aggregation, atom, bot, content, writing
@@ -234,6 +234,11 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
+= NUEVA VERSION =
+* Agregada la opcion de categorias padres, en el autocategorias.
+
+
+
 = 1.5.1  Jan 31, 2017 =
 * Fix issue with Strip all links feature without selected sub-options.
 * Fix the CSS warning class when an addon was succesfully updated.

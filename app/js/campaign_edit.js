@@ -38,4 +38,14 @@ jQuery(document).ready(function($){
 			jQuery('#campaign_linktosource').attr('checked', false);
 		}
 	});
+
+	jQuery('#campaign_autocats').change(function(e) {
+		if (jQuery('#campaign_autocats').is(':checked')) {
+			jQuery('#autocats_container').fadeIn();
+		} else {
+			jQuery('#autocats_container').fadeOut();
+		}
+	});
+
+
 });

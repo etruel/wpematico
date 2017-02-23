@@ -275,6 +275,9 @@ class WPeMatico_functions {
 		}
 
 		$campaigndata['campaign_autocats']	= (!isset($post_data['campaign_autocats']) || empty($post_data['campaign_autocats'])) ? false: ($post_data['campaign_autocats']==1) ? true : false;
+
+		$campaigndata['campaign_parent_autocats']	= (!isset($post_data['campaign_parent_autocats']) || empty($post_data['campaign_parent_autocats'])) ? -1: $post_data['campaign_parent_autocats'];
+		
 		// Primero proceso las categorias nuevas si las hay y las agrego al final del array
 		# New categories
 		if(isset($post_data['campaign_newcat'])) {

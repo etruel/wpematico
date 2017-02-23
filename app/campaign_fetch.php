@@ -291,7 +291,11 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 							trigger_error(__('Category exist: ', 'wpematico' ) . $catname ,E_USER_NOTICE);
 						}else{	//si no existe la creo
 							trigger_error(__('Adding Category: ', 'wpematico' ) . $catname ,E_USER_NOTICE);
-							$arg = array('description' => __("Auto Added by WPeMatico", 'wpematico' ), 'parent' => "0");
+							$parent_cat = "0";
+							if (isset($this->campaign['campaign_parent_autocats']) && $this->campaign['campaign_parent_autocats'] > 0) {
+								$parent_cat = $this->campaign['campaign_parent_autocats'];
+							}
+							$arg = array('description' => __("Auto Added by WPeMatico", 'wpematico' ), 'parent' => $parent_cat);
 							$term = wp_insert_term($catname, "category", $arg);
 						}
 						$this->current_item['categories'][] = $term['term_id'];

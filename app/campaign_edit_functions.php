@@ -672,6 +672,8 @@ class WPeMatico_Campaign_edit_functions {
 		global $post, $campaign_data, $helptip;
 		$campaign_categories = $campaign_data['campaign_categories'];
 		$campaign_autocats = $campaign_data['campaign_autocats'];
+		$campaign_parent_autocats = $campaign_data['campaign_parent_autocats'];
+		
 		//get_categories()
 		$args = array(
 			'descendants_and_self' => 0,
@@ -686,6 +688,36 @@ class WPeMatico_Campaign_edit_functions {
 		?>
 		<input class="checkbox" type="checkbox"<?php checked($campaign_autocats ,true);?> name="campaign_autocats" value="1" id="campaign_autocats"/> <b><?php echo '<label for="campaign_autocats">' . __('Add auto Categories', 'wpematico' ) . '</label>'; ?></b>
 		<span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['autocats']; ?>"></span>
+		<div id="autocats_container" <?php if(!$campaign_autocats) echo 'style="display:none;"';?>>
+			<br/>
+			<b><?php echo '<label for="campaign_parent_autocats">' . __('Parent category to auto categories', 'wpematico' ) . '</label>'; ?></b>
+			<span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['autocats']; ?>"></span> <br/>
+			<?php 
+			wp_dropdown_categories( array(
+				'show_option_all'    => '',
+				'show_option_none'   => __('No parent category', WPeMatico::TEXTDOMAIN ),
+				'orderby'            => 'name', 
+				'order'              => 'ASC',
+				'show_count'         => 0,
+				'hide_empty'         => 0, 
+				'child_of'           => 0,
+				'exclude'            => '',
+				'echo'               => 1,
+				'selected'           => $campaign_parent_autocats,
+				'hierarchical'       => 1, 
+				'name'               => 'campaign_parent_autocats',
+				'class'              => 'form-no-clear',
+				'id'				 => 'campaign_parent_autocats',
+				'depth'              => 3,
+				'tab_index'          => 0,
+				'taxonomy'           => 'category',
+				'hide_if_empty'      => false
+			));
+			?>
+			<br/>
+			<br/>
+		</div>
+
 		<div class="inside" style="overflow-y: scroll; overflow-x: hidden; max-height: 250px;">
 			<b><?php _e('Current Categories', 'wpematico' ); ?></b>
 			<div class="right ">
