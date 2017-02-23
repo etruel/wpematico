@@ -691,7 +691,7 @@ class WPeMatico_Campaign_edit_functions {
 		<div id="autocats_container" <?php if(!$campaign_autocats) echo 'style="display:none;"';?>>
 			<br/>
 			<b><?php echo '<label for="campaign_parent_autocats">' . __('Parent category to auto categories', 'wpematico' ) . '</label>'; ?></b>
-			<span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['autocats']; ?>"></span> <br/>
+			<span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['parent_autocats']; ?>"></span> <br/>
 			<?php 
 			wp_dropdown_categories( array(
 				'show_option_all'    => '',

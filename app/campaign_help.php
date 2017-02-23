@@ -184,6 +184,10 @@ $helpcampaign = array(
 				'title' => __('Add auto Categories.', 'wpematico' ),
 				'tip' => __('If categories are found on source item, these categories will be added to the post; If category does not exist, then will be created.', 'wpematico' ),
 		),
+		'parent_autocats' => array( 
+				'title' => __('Parent category to auto categories.', 'wpematico' ),
+				'tip' => __('If you select a category in this option, all automatically added categories will be children of the selected category.', 'wpematico' ),
+		),
 		'tags' => array( 
 				'title' => __('Tags Generation.', 'wpematico' ),
 				'tip' => __('You can insert here the tags for every post of this campaign.', 'wpematico' ),
