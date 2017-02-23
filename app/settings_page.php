@@ -858,7 +858,7 @@ function wpematico_helpsettings($dev=''){
 			),
 		)
 	);
-
+	$helpsettings = apply_filters('wpematico_help_settings_before', $helpsettings);
 	if ($dev=='tips') {
 		foreach($helpsettings as $key => $section){
 			foreach($section as $section_key => $sdata){
