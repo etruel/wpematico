@@ -365,7 +365,7 @@ class WPeMatico_Campaigns {
 	/**
 	 ************ACCION COPIAR 
 	 */
-	function copy_duplicate_campaign($post, $status = '', $parent_id = '') {
+	public static function copy_duplicate_campaign($post, $status = '', $parent_id = '') {
 		if ($post->post_type != 'wpematico') return;
 		$prefix = "";
 		$suffix = __("(Copy)",  'wpematico') ;
@@ -425,7 +425,7 @@ class WPeMatico_Campaigns {
 		return $new_post_id;
 	}
 
-	function wpematico_copy_campaign($status = ''){
+	public static function wpematico_copy_campaign($status = ''){
 		if (! ( isset( $_GET['post']) || isset( $_POST['post'])  || ( isset($_REQUEST['action']) && 'wpematico_copy_campaign' == $_REQUEST['action'] ) ) ) {
 			wp_die(__('No campaign ID has been supplied!',  'wpematico'));
 		}

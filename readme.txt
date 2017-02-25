@@ -236,7 +236,7 @@ or to e-mail etruel@gmail.com
 == Changelog ==
 = NUEVA VERSION =
 * Agregada la opcion de categorias padres, en el autocategorias.
-
+* Fixed issue with copy quick action.
 
 
 = 1.5.1  Jan 31, 2017 =
