@@ -44,7 +44,7 @@ if( strstr($_SERVER['REQUEST_URI'], 'wp-admin/edit.php?post_type=wpematico')
 	else return;
 
 // just in campaign list
-	add_filter('bulk_actions-edit-wpematico', array( 'WPeMatico_Campaigns', 'old_bulk_actions' ), 90,1 );
+	//add_filter('bulk_actions-edit-wpematico', array( 'WPeMatico_Campaigns', 'old_bulk_actions' ), 90,1 );
 	add_action('restrict_manage_posts', array( 'WPeMatico_Campaigns', 'run_selected_campaigns' ), 1, 2 );
 
 
@@ -115,7 +115,7 @@ class WPeMatico_Campaigns {
 		}
 	}
 
-
+	/*
 	// Functions to allow customize the bulk actions in campaigns list.  (WP 4.7 fix this)
 	public static function old_bulk_actions($bulk_actions) {
 		// Don't show on trash page
@@ -151,7 +151,7 @@ class WPeMatico_Campaigns {
 			 * @since 3.5.0
 			 *
 			 * @param array $actions An array of the available bulk actions.
-			 */
+			 
 			$_bulk_actions = apply_filters( "new_bulk_actions-wpematico", $_bulk_actions );
 			//$_bulk_actions = array_intersect_assoc( $_bulk_actions, $no_new_actions );
 			$two = '';
@@ -178,7 +178,7 @@ class WPeMatico_Campaigns {
 		echo "\n";
 	}
 	// END Functions to allow customize the bulk actions in campaigns list.  (WP 4.7 fix this)
-
+	*/
 	public static function run_selected_campaigns($post_type, $which) {
 		global $typenow,$post_type, $pagenow;
 		if($post_type != 'wpematico') return;		
@@ -190,7 +190,7 @@ class WPeMatico_Campaigns {
 		if ( ! current_user_can( get_post_type_object( $typenow )->cap->edit_others_posts ) ) return;
 		
 		echo '<div style="margin: 1px 5px 0 0;float:left;background-color: #EB9600;" id="run_all" onclick="javascript:run_all();" class="button">'. __('Run Selected Campaigns', 'wpematico' ) . '</div>';
-		self::bulk_actions($which);
+		//self::bulk_actions($which);
 	}
 	
 	public static function disable_list_filters($disable , $post_type) {
