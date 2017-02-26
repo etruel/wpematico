@@ -133,6 +133,8 @@ class wpematico_campaign_fetch_functions {
 				$vars[] = $tvar;
 				$replace[] = $tvalue;
 			}
+			$vars = apply_filters('wpematico_post_template_tags', $vars, $current_item, $campaign, $feed, $item);
+			$replace = apply_filters('wpematico_post_template_replace', $replace, $current_item, $campaign, $feed, $item);
 			$current_item['content'] = str_ireplace($vars, $replace, ( $campaign['campaign_template'] ) ? stripslashes( $campaign['campaign_template'] ) : '{content}');
 
 
