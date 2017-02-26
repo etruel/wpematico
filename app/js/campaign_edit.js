@@ -5,6 +5,9 @@ jQuery(document).ready(function($){
 		if (jQuery('#campaign_striphtml').is(':checked')) {
 			jQuery('#campaign_strip_links').attr('checked', false);
 			jQuery('#div_campaign_strip_links_options').fadeOut();
+			jQuery('#div_campaign_strip_links').fadeOut();
+		} else {
+			jQuery('#div_campaign_strip_links').fadeIn();
 		}
 	});
 	jQuery('#campaign_enable_template').change(function() {
