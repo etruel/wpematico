@@ -126,7 +126,19 @@ class wpematico_campaign_fetch_functions {
 				trigger_error(__('Can\'t find the featured image to add to the content.'),E_USER_WARNING);
 				$img_str = '<!-- no image -->';
 			}
+			$template_vars = apply_filters('wpematico_add_template_vars', array(), $current_item, $campaign, $feed, $item, $img_str);
+			$vars = array();
+			$replace = array();
+			foreach ($template_vars as $tvar => $tvalue) {
+				$vars[] = $tvar;
+				$replace[] = $tvalue;
+			}
+			$vars = apply_filters('wpematico_post_template_tags', $vars, $current_item, $campaign, $feed, $item);
+			$replace = apply_filters('wpematico_post_template_replace', $replace, $current_item, $campaign, $feed, $item);
+			$current_item['content'] = str_ireplace($vars, $replace, ( $campaign['campaign_template'] ) ? stripslashes( $campaign['campaign_template'] ) : '{content}');
 
+
+			/*
 			$vars = array(
 				'{title}',
 				'{content}',
@@ -175,6 +187,7 @@ class wpematico_campaign_fetch_functions {
 			$replace = apply_filters('wpematico_post_template_replace', $replace, $current_item, $campaign, $feed, $item );
 
 			$current_item['content'] = str_ireplace($vars, $replace, ( $campaign['campaign_template'] ) ? stripslashes( $campaign['campaign_template'] ) : '{content}');
+			*/
 		}
 
 	 // Rewrite

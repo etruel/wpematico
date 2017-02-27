@@ -26,8 +26,57 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		add_action('admin_print_styles-post-new.php', array( __CLASS__ ,'admin_styles'));
 		add_action('admin_print_scripts-post.php', array( __CLASS__ ,'admin_scripts'));
 		add_action('admin_print_scripts-post-new.php', array( __CLASS__ ,'admin_scripts'));
-	}
 
+		add_action( 'add_meta_boxes', array( __CLASS__ ,'all_meta_boxes'), 10, 2 );
+	}
+	public static function all_meta_boxes($post_type, $post) {
+		$cfg = get_option(WPeMatico::OPTION_KEY);
+		$cfg = apply_filters('wpematico_check_options', $cfg); 
+		$campaign_id = get_post_meta($post->ID, 'wpe_campaignid', true);
+		if (!empty($campaign_id) && !$cfg['disable_metaboxes_wpematico_posts']) {
+			add_meta_box( 
+		        'wpematico-all-meta-box',
+		        __('Wpematico Campaign Info', WPeMatico::TEXTDOMAIN ),
+		        array(__CLASS__, 'render_all_meta_boxes'),
+		        $post_type,
+		        'normal',
+		        'default'
+	    	);
+		}
+	}
+	public static function render_all_meta_boxes() {
+		global $post;
+		$campaign_id = get_post_meta($post->ID, 'wpe_campaignid', true);
+		$feed = get_post_meta($post->ID, 'wpe_feed', true);
+		$source = get_post_meta($post->ID, 'wpe_sourcepermalink', true);
+		
+		echo '<table class="form-table">
+			<tr>
+				<td style="width:120px;">
+					<b>'.__('Campaign', WPeMatico::TEXTDOMAIN ).':</b>
+				</td>
+				<td>
+					<a href="'.admin_url('post.php?post='.$campaign_id.'&action=edit').'" target="_blank">'.get_the_title($campaign_id).'</a>
+				</td>
+			</tr>
+			<tr>
+				<td style="width:120px;">
+					<b>'.__('Feed', WPeMatico::TEXTDOMAIN ).':</b>
+				</td>
+				<td>
+					<a href="'.$feed.'" rel="nofollow" target="_blank">'.$feed.'</a>
+				</td>
+			</tr>
+			<tr>
+				<td style="width:120px;">
+					<b>'.__('Source', WPeMatico::TEXTDOMAIN ).':</b>
+				</td>
+				<td>
+					<a href="'.$source.'" rel="nofollow" target="_blank">'.$source.'</a>
+				</td>
+			</tr>
+		</table>';
+	}
 	public static function disable_autosave() {
 	//	global $post_type, $post, $typenow;
 		if(get_post_type() != 'wpematico') return ;

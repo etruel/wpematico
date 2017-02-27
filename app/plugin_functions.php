@@ -159,3 +159,31 @@ function wpematico_uninstall() {
 		}
 	}
 }
+add_filter('wpematico_add_template_vars', 'default_template_vars', 10, 6);
+function default_template_vars($vars, $current_item, $campaign, $feed, $item, $img_str) {
+	$autor = '';
+	$autorlink = '';
+	if ($author = $item->get_author())	{
+		$autor = $author->get_name();
+		$autorlink = $author->get_link();
+	}	
+	$vars = array(
+		'{title}' => $current_item['title'],
+		'{content}' => $current_item['content'],
+		'{itemcontent}' => $item->get_description(),
+		'{image}' => $img_str,
+		'{author}' => $autor,
+		'{authorlink}' => $autorlink,
+		'{permalink}' => $current_item['permalink'],
+		'{feedurl}' => $feed->feed_url,
+		'{feedtitle}' => $feed->get_title(),
+		'{feeddescription}' => $feed->get_description(),
+		'{feedlogo}' => $feed->get_image_url(),
+		'{campaigntitle}' => get_the_title($campaign_id),
+		'{campaignid}' => $campaign['ID'],
+		'{item_date}' => date(get_option('date_format'), current_time('timestamp')),
+		'{item_time}' => date(get_option('time_format'), current_time('timestamp'))
+
+	);
+	return $vars;
+}
