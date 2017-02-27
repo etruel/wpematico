@@ -447,8 +447,17 @@ function wpematico_settings(){
 						<span class="toggle-indicator" aria-hidden="true"></span>
 					</button>
 					<h3 class="hndle"><span><?php _e('Other Tools', 'wpematico' ); ?></span></h3>
+
 					<div class="inside">
+						<p>
+					<label><input class="checkbox" id="disable_metaboxes_wpematico_posts" type="checkbox"<?php checked($cfg['disable_metaboxes_wpematico_posts'],true);?> name="disable_metaboxes_wpematico_posts" value="1"/> 
+							<strong><?php _e('Disable all meta boxes Wpematico Campaign Info', 'wpematico' ); ?></strong></label>
+							<span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['disable_metaboxes_wpematico_posts']; ?>"></span>
+					</p>
 					<div class="insidesec" style="border-right: 1px lightgrey solid; margin-right: 5px;padding-right: 7px; ">
+
+
+
 						<label><input class="checkbox" id="emptytrashbutton" type="checkbox"<?php checked($cfg['emptytrashbutton'],true);?> name="emptytrashbutton" value="1"/> 
 						<?php _e('Shows Button to empty trash on lists.', 'wpematico' ); ?></label>  <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['emptytrashbutton']; ?>"></span>
 						<br />
@@ -818,6 +827,10 @@ function wpematico_helpsettings($dev=''){
 			),
 		),
 		'Other tools & Advanced' => array( 
+			'disable_metaboxes_wpematico_posts' => array( 
+				'title' => __('Disable all meta boxes Wpematico Campaign Info.', 'wpematico' ),
+				'tip' => __('This option disables all the meta boxes in the posts created by the wpematico campaigns.', 'wpematico' ),
+			),
 			'emptytrashbutton' => array( 
 				'title' => __('Shows Button to empty trash on lists.', 'wpematico' ),
 				'tip' => __('Just an extra tool to display a button for empty trash folder on every custom post main screen. May be posts, pages or selects what you want.', 'wpematico' ),

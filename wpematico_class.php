@@ -446,6 +446,8 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			$cfg['emptytrashbutton']= (!isset($options['emptytrashbutton']) || empty($options['emptytrashbutton'])) ? false: ($options['emptytrashbutton']==1) ? true : false;
 			$cfg['cpt_trashbutton']	= (!isset($options['cpt_trashbutton']) || !is_array($options['cpt_trashbutton'])) ? array( 'post' => 1,	'page' => 1 ): $options['cpt_trashbutton'];
 
+			$cfg['disable_metaboxes_wpematico_posts']= (!isset($options['disable_metaboxes_wpematico_posts']) || empty($options['disable_metaboxes_wpematico_posts'])) ? false: ($options['disable_metaboxes_wpematico_posts']==1) ? true : false;
+			
 			return apply_filters('wpematico_more_options', $cfg, $options);
 		}
 		

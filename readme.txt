@@ -237,7 +237,7 @@ or to e-mail etruel@gmail.com
 = NUEVA VERSION =
 * Agregada la opcion de categorias padres, en el autocategorias.
 * Fixed issue with copy quick action.
-
+* Agregada nueva feature de meta boxes en los posts agregados por WPeMatico.
 
 = 1.5.1  Jan 31, 2017 =
 * Fix issue with Strip all links feature without selected sub-options.
