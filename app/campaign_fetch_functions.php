@@ -37,10 +37,19 @@ class wpematico_campaign_fetch_functions {
 		} else {
 			$slug = sanitize_title($title);
 		}
+
+		$exist_post_on_db = false;
+		$check_sql = "SELECT ID, post_name, post_type FROM $wpdb->posts WHERE post_name = %s LIMIT 1";
+		$post_name_check = $wpdb->get_results($wpdb->prepare( $check_sql, $slug));
+		if (!empty($post_name_check)) {
+			if ($post_name_check[0]->ID == 0 || $cpost_type == $post_name_check[0]->post_type) {
+				$exist_post_on_db = true;
+			}
+		}
 		
-		$check_sql = "SELECT post_name FROM $wpdb->posts WHERE post_name = %s AND post_type = %s AND ID != %d LIMIT 1";
-		$post_name_check = $wpdb->get_var( $wpdb->prepare( $check_sql, $slug, $cpost_type, $post_ID ) );
-		if ( $post_name_check || in_array( $slug, $wfeeds ) || apply_filters( 'wp_unique_post_slug_is_bad_flat_slug', false, $slug, $cpost_type ) ) {
+		//$check_sql = "SELECT post_name FROM $wpdb->posts WHERE post_name = %s AND post_type = %s AND ID != %d LIMIT 1";
+		//$post_name_check = $wpdb->get_var( $wpdb->prepare( $check_sql, $slug, $cpost_type, $post_ID ) );
+		if ($exist_post_on_db || in_array( $slug, $wfeeds ) || apply_filters( 'wp_unique_post_slug_is_bad_flat_slug', false, $slug, $cpost_type ) ) {
 			$dev = true;
 		}
 		
@@ -133,6 +142,9 @@ class wpematico_campaign_fetch_functions {
 				$vars[] = $tvar;
 				$replace[] = $tvalue;
 			}
+			/* wpematico_post_template_tags, wpematico_post_template_replace filter
+			   Are deprecated, will be removed on version 1.7
+			 */
 			$vars = apply_filters('wpematico_post_template_tags', $vars, $current_item, $campaign, $feed, $item);
 			$replace = apply_filters('wpematico_post_template_replace', $replace, $current_item, $campaign, $feed, $item);
 			$current_item['content'] = str_ireplace($vars, $replace, ( $campaign['campaign_template'] ) ? stripslashes( $campaign['campaign_template'] ) : '{content}');

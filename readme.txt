@@ -234,10 +234,13 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
-= NUEVA VERSION =
-* Agregada la opcion de categorias padres, en el autocategorias.
+= 1.6 =
+* Added the choice of parent categories in the Autocategories.
 * Fixed issue with copy quick action.
 * Agregada nueva feature de meta boxes en los posts agregados por WPeMatico.
+* wpematico_post_template_tags, wpematico_post_template_replace filter are deprecated, will be removed on version 1.7.
+* Changed 
+* Some changes in duplicate validation to improve performance.
 
 = 1.5.1  Jan 31, 2017 =
 * Fix issue with Strip all links feature without selected sub-options.
