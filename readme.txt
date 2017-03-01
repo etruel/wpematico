@@ -241,7 +241,7 @@ or to e-mail etruel@gmail.com
 * wpematico_post_template_tags, wpematico_post_template_replace filter are deprecated, will be removed on version 1.7.
 * Changed 
 * Some changes in duplicate validation to improve performance.
-* Updated SimplePie to 1.3.
+* Updated SimplePie to 1.4.3.
 
 = 1.5.1  Jan 31, 2017 =
 * Fix issue with Strip all links feature without selected sub-options.
