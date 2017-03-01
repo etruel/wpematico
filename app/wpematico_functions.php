@@ -451,7 +451,7 @@ class WPeMatico_functions {
 			. '</span></button></div>';
 			
 		}else {
-			require_once dirname( __FILE__) . '/lib/simplepie.inc.php';
+			require_once dirname( __FILE__) . '/lib/simple_pie_autoloader.php';
 		}
 	}else{
 		if (!class_exists('SimplePie')) {
@@ -460,7 +460,7 @@ class WPeMatico_functions {
 			else if (is_file( ABSPATH.'wp-admin/includes/class-simplepie.php'))
 				include_once( ABSPATH.'wp-admin/includes/class-simplepie.php' );
 			else
-				include_once( dirname( __FILE__) . '/lib/simplepie.inc.php' );
+				include_once( dirname( __FILE__) . '/lib/simple_pie_autoloader.php' );
 		}		
 	}
     $feed = new SimplePie();

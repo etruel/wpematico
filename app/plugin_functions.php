@@ -166,7 +166,7 @@ function default_template_vars($vars, $current_item, $campaign, $feed, $item, $i
 	if ($author = $item->get_author())	{
 		$autor = $author->get_name();
 		$autorlink = $author->get_link();
-	}	
+	}
 	$vars = array(
 		'{title}' => $current_item['title'],
 		'{content}' => $current_item['content'],
@@ -179,7 +179,7 @@ function default_template_vars($vars, $current_item, $campaign, $feed, $item, $i
 		'{feedtitle}' => $feed->get_title(),
 		'{feeddescription}' => $feed->get_description(),
 		'{feedlogo}' => $feed->get_image_url(),
-		'{campaigntitle}' => get_the_title($campaign_id),
+		'{campaigntitle}' => get_the_title($campaign['ID']),
 		'{campaignid}' => $campaign['ID'],
 		'{item_date}' => date(get_option('date_format'), current_time('timestamp')),
 		'{item_time}' => date(get_option('time_format'), current_time('timestamp'))
