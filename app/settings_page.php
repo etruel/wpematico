@@ -332,8 +332,6 @@ function wpematico_settings(){
 								href="javascript:Void(0);">	<?php _e('Click here', 'wpematico' ); ?></a>. <small> <?php _e('(open in popup)', 'wpematico' ); ?></small>
 						</p>
 						<p></p>
-						<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['force_mysimplepie'],true); ?> name="force_mysimplepie" id="force_mysimplepie" /> <?php _e('Force <b><i>Custom Simplepie Library</i></b>', 'wpematico' ); ?></label>  <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['mysimplepie']; ?>"></span>
-						<p></p>
 						<?php
 						$from_wordpress = false;
 						if ($cfg['force_mysimplepie']){
@@ -363,6 +361,9 @@ function wpematico_settings(){
 								  <p></p>';
 						}
 						?>
+						<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['force_mysimplepie'],true); ?> name="force_mysimplepie" id="force_mysimplepie" /> <?php _e('Force <b><i>Custom Simplepie Library</i></b>', 'wpematico' ); ?></label>  <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['mysimplepie']; ?>"></span>
+						<p></p>
+						
 						<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['set_stupidly_fast'],true); ?> name="set_stupidly_fast" id="set_stupidly_fast"  onclick="jQuery('#simpie').show();"  /> <?php _e('Set Simplepie <b><i>stupidly fast</i></b>', 'wpematico' ); ?></label>  <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['stupidly_fast']; ?>"></span>
 						<p></p>
 						<div id="simpie" style="margin-left: 25px;<?php if ($cfg['set_stupidly_fast']) echo 'display:none;';?>">
