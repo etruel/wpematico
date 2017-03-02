@@ -442,6 +442,9 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			$cfg['allowduphash']	= (!isset($options['allowduphash']) || empty($options['allowduphash'])) ? false: ($options['allowduphash']==1) ? true : false;
 			$cfg['jumpduplicates']	= (!isset($options['jumpduplicates']) || empty($options['jumpduplicates'])) ? false: ($options['jumpduplicates']==1) ? true : false;
 			$cfg['disableccf']	= (!isset($options['disableccf']) || empty($options['disableccf'])) ? false: ($options['disableccf']==1) ? true : false;
+			$cfg['add_extra_duplicate_filter_meta_source']	= (!isset($options['add_extra_duplicate_filter_meta_source']) || empty($options['add_extra_duplicate_filter_meta_source'])) ? false: ($options['add_extra_duplicate_filter_meta_source']==1) ? true : false;
+
+			
 			$cfg['nonstatic']		= (!isset($options['nonstatic']) || empty($options['nonstatic'])) ? false: ($options['nonstatic']==1) ? true : false;
 			$cfg['emptytrashbutton']= (!isset($options['emptytrashbutton']) || empty($options['emptytrashbutton'])) ? false: ($options['emptytrashbutton']==1) ? true : false;
 			$cfg['cpt_trashbutton']	= (!isset($options['cpt_trashbutton']) || !is_array($options['cpt_trashbutton'])) ? array( 'post' => 1,	'page' => 1 ): $options['cpt_trashbutton'];

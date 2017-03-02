@@ -31,7 +31,6 @@ class wpematico_campaign_fetch_functions {
 		$title = html_entity_decode($title, ENT_COMPAT | ENT_HTML401, 'UTF-8');
 
 		if ($campaign['copy_permanlink_source']) {
-			//$permalink = $this->getReadUrl($item->get_permalink(), $campaign); 
 			$permalink = $item->get_permalink(); 
 			$slug = $this->get_slug_from_permalink($permalink);
 		} else {
@@ -47,22 +46,27 @@ class wpematico_campaign_fetch_functions {
 			}
 		}
 		
+
+		if ($exist_post_on_db) {
+			$dev = true;
+		} else {
+			if ( in_array( $slug, $wfeeds ) ) {
+		 		$dev = true;
+			} else {
+				if (apply_filters( 'wp_unique_post_slug_is_bad_flat_slug', false, $slug, $cpost_type ) ) {
+				 	$dev = true;
+				}
+			}
+		}
+		
+		/*
 		//$check_sql = "SELECT post_name FROM $wpdb->posts WHERE post_name = %s AND post_type = %s AND ID != %d LIMIT 1";
 		//$post_name_check = $wpdb->get_var( $wpdb->prepare( $check_sql, $slug, $cpost_type, $post_ID ) );
 		if ($exist_post_on_db || in_array( $slug, $wfeeds ) || apply_filters( 'wp_unique_post_slug_is_bad_flat_slug', false, $slug, $cpost_type ) ) {
 			$dev = true;
 		}
-		
-//		Kill big wordpresses 
-//		// Find on meta wpe_sourcepermalink when post_name is not found.
-//		if (!$dev && empty($this->cfg['disableccf'])) {
-//			$check_sql = "SELECT meta_value FROM $wpdb->postmeta WHERE meta_key = 'wpe_sourcepermalink' AND meta_value = %s LIMIT 1";
-//			$permantlink_check = $wpdb->get_var( $wpdb->prepare( $check_sql, $permalink) );
-//			if ($permantlink_check) {
-//				$dev = true;
-//			}
-//		}
-//		
+
+	   */
 		if(has_filter('wpematico_duplicates')) $dev =  apply_filters('wpematico_duplicates', $dev, $campaign, $item);
 		//  http://wordpress.stackexchange.com/a/72691/65771
 		//  https://codex.wordpress.org/Function_Reference/get_page_by_title
@@ -70,6 +74,17 @@ class wpematico_campaign_fetch_functions {
 		$dupmsg = ($dev) ? __('Yes') : __('No');
 		trigger_error(sprintf(__('Checking duplicated title \'%1s\'', WPeMatico :: TEXTDOMAIN ),$title).': '. $dupmsg ,E_USER_NOTICE);
 
+		return $dev;
+	}
+	function WPeisDuplicatedMetaSource($campaign, $feed, $item) {
+		global $wpdb;
+		$dev = false;
+		$permalink = $this->getReadUrl($item->get_permalink(), $campaign); 
+		$check_sql = "SELECT meta_value FROM $wpdb->postmeta WHERE meta_key = 'wpe_sourcepermalink' AND meta_value = %s LIMIT 1";
+		$permantlink_check = $wpdb->get_var( $wpdb->prepare( $check_sql, $permalink) );
+		if ($permantlink_check) {
+			$dev = true;
+		}
 		return $dev;
 	}
 

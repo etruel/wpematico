@@ -386,8 +386,12 @@ function wpematico_settings(){
 						<p></p>
 						<input name="disableccf" id="disableccf" class="checkbox" value="1" type="checkbox" <?php checked($cfg['disableccf'],true); ?> />
 						<label for="disableccf"><b><?php _e('Disables Plugin Custom fields.', 'wpematico' ); ?></b></label>  <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['disableccf']; ?>"></span>
+						<br />
+						<div id="div_add_extra_duplicate_filter_meta_source" <?php if ($cfg['disableccf']) echo 'style="display:none;"' ?>>
+						<input name="add_extra_duplicate_filter_meta_source" id="add_extra_duplicate_filter_meta_source" class="checkbox" value="1" type="checkbox" <?php checked($cfg['add_extra_duplicate_filter_meta_source'],true); ?> />
+						<label for="disableccf"><b><?php _e('Add an extra duplicate filter by source permalink in meta field value.', 'wpematico' ); ?></b></label>  <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['add_extra_duplicate_filter_meta_source']; ?>"></span>
 						<br /> 
-
+						</div>
 					</div>
 				</div>
 
@@ -619,6 +623,17 @@ function wpematico_settings(){
 				jQuery('#hlptrash').fadeOut();
 			}
 		});
+
+		jQuery('#disableccf').change(function() {
+			if (jQuery('#disableccf').is(':checked')) {
+				jQuery('#div_add_extra_duplicate_filter_meta_source').fadeOut();
+			} else {
+				jQuery('#div_add_extra_duplicate_filter_meta_source').fadeIn();
+			}
+		});
+
+
+
 		jQuery(function(){
 			jQuery(".help_tip").tipTip({maxWidth: "300px", edgeOffset: 5,fadeIn:50,fadeOut:50, keepAlive:true, defaultPosition: "right"});
 		});
@@ -784,7 +799,7 @@ function wpematico_helpsettings($dev=''){
 			),
 			'jumpduplicates' => array( 
 				'title' => __('Continue Fetching if found duplicated items.', 'wpematico' ),
-				'tip' => __('Unless it is the first time, when finds a duplicate, it means that all following items were read before. This option avoids and allows jump every duplicate and continues reading the feed searching more new items. Not recommended.', 'wpematico' ),
+				'tip' => __('Unless it is the first time, when finds a duplicate, it means that all following items were read before. This option avoids and allows jump every duplicate and continues reading the feed searching more new items. NOT RECOMMENDED.', 'wpematico' ),
 				'plustip' => '&nbsp;&nbsp;&nbsp;&nbsp;<b>' . __('How it works:','wpematico').':</b> '. __('The feed items are ordered by datetime in almost all cases. When the campaign runs, goes item by item from newest to oldest, and stops when found the first duplicated item, this mean that all items following (the old ones) are also duplicated.', 'wpematico' ).'<br>'.
 					__('As the hash is checked only by the last retrieved item, selecting this option may generate duplicate posts if duplicate checking by title does not work well for a campaign.', 'wpematico' ),
 			),
@@ -797,6 +812,12 @@ function wpematico_helpsettings($dev=''){
 					. __('(Enabling this feature don\'t deletes the previous saved data.)', 'wpematico' ),
 				'plustip' => __('', 'wpematico' ),
 			),
+			'add_extra_duplicate_filter_meta_source' => array( 
+				'title' => __('Add an extra duplicate filter by source permalink in meta field value.', 'wpematico' ),
+				'tip' => __('This option is ONLY recommended if you continues with duplicates problems in your site. This can be given by some non-standards feeds.  NOT RECOMMENDED.', 'wpematico' ),
+				'plustip' => __('', 'wpematico' ),
+			),
+			
 		),
 		'Cron and Scheduler Settings' => array( 
 			'dontruncron' => array( 

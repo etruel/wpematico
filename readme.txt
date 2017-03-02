@@ -242,6 +242,8 @@ or to e-mail etruel@gmail.com
 * Changed 
 * Some changes in duplicate validation to improve performance.
 * Updated SimplePie to 1.4.3.
+* Added option "Add an extra duplicate filter by source permalink in meta field value". 
+* Duplicate filter performance improved by 80%.
 
 = 1.5.1  Jan 31, 2017 =
 * Fix issue with Strip all links feature without selected sub-options.

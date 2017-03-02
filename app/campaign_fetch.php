@@ -121,7 +121,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			}
 
 			$this->currenthash[$feed] = md5($item->get_permalink()); // el hash del item actual del feed feed 
-			if( !$this->cfg['allowduplicates'] || !$this->cfg['allowduptitle'] || !$this->cfg['allowduphash'] ){
+			if( !$this->cfg['allowduplicates'] || !$this->cfg['allowduptitle'] || !$this->cfg['allowduphash']  || $this->cfg['add_extra_duplicate_filter_meta_source']){
 				if( !$this->cfg['allowduphash'] ){
 					// chequeo a la primer coincidencia sale del foreach
 					$lasthashvar = '_lasthash_'.sanitize_file_name($feed);
@@ -148,6 +148,19 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 							trigger_error(__('Filtering duplicated posts.', 'wpematico' ),E_USER_NOTICE);
 							break;
 						}else {
+							trigger_error(__('Jumping duplicated post. Continuing.', 'wpematico' ),E_USER_NOTICE);
+							continue;
+						}
+					}
+				}
+
+				if( $this->cfg['add_extra_duplicate_filter_meta_source'] &&  !$this->cfg['disableccf']) {
+					if($this->WPeisDuplicatedMetaSource($this->campaign, $feed, $item)) {
+						trigger_error(sprintf(__('Found duplicated title \'%1s\'', 'wpematico' ),$item->get_title()).': '.$this->currenthash[$feed] ,E_USER_NOTICE);
+						if( !$this->cfg['jumpduplicates'] ) {
+							trigger_error(__('Filtering duplicated posts.', 'wpematico' ),E_USER_NOTICE);
+							break;
+						} else {
 							trigger_error(__('Jumping duplicated post. Continuing.', 'wpematico' ),E_USER_NOTICE);
 							continue;
 						}
