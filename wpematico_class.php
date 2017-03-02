@@ -429,7 +429,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			$cfg['featuredimg']		= (!isset($options['featuredimg']) || empty($options['featuredimg'])) ? false: ($options['featuredimg']==1) ? true : false;
 			$cfg['rmfeaturedimg']	= (!isset($options['rmfeaturedimg']) || empty($options['rmfeaturedimg'])) ? false: ($options['rmfeaturedimg']==1) ? true : false;
 			$cfg['force_mysimplepie']	= (!isset($options['force_mysimplepie']) || empty($options['force_mysimplepie'])) ? false: ($options['force_mysimplepie']==1) ? true : false;
-			$cfg['set_stupidly_fast']	= (!isset($options['set_stupidly_fast']) || empty($options['set_stupidly_fast'])) ? false: ($options['set_stupidly_fast']==1) ? true : false;
+			$cfg['set_stupidly_fast']	= (!isset($options['set_stupidly_fast']) || empty($options['set_stupidly_fast'])) ? true: ($options['set_stupidly_fast']==1) ? true : false;
 			$cfg['simplepie_strip_htmltags'] = (!isset($options['simplepie_strip_htmltags']) || empty($options['simplepie_strip_htmltags'])) ? false: ($options['simplepie_strip_htmltags']==1) ? true : false;
 			$cfg['simplepie_strip_attributes'] = (!isset($options['simplepie_strip_attributes']) || empty($options['simplepie_strip_attributes'])) ? false: ($options['simplepie_strip_attributes']==1) ? true : false;
 			$cfg['strip_htmltags']	= (!isset($options['strip_htmltags'])) ? '': $options['strip_htmltags'];			
