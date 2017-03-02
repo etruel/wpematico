@@ -334,6 +334,35 @@ function wpematico_settings(){
 						<p></p>
 						<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['force_mysimplepie'],true); ?> name="force_mysimplepie" id="force_mysimplepie" /> <?php _e('Force <b><i>Custom Simplepie Library</i></b>', 'wpematico' ); ?></label>  <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['mysimplepie']; ?>"></span>
 						<p></p>
+						<?php
+						$from_wordpress = false;
+						if ($cfg['force_mysimplepie']){
+							
+							include_once( dirname( __FILE__) . '/lib/simple_pie_autoloader.php' );
+							
+						} else {
+							$from_wordpress = true;
+							if (!class_exists('SimplePie')) {
+								if (is_file( ABSPATH . WPINC . '/class-simplepie.php')) {
+									include_once( ABSPATH. WPINC . '/class-simplepie.php' );
+								} else if (is_file( ABSPATH.'wp-admin/includes/class-simplepie.php')) {
+									include_once( ABSPATH.'wp-admin/includes/class-simplepie.php' );
+								}
+								else {
+									include_once( dirname( __FILE__) . '/lib/simple_pie_autoloader.php' );
+								}
+							}		
+						}
+						if ($from_wordpress) {
+							echo '<p></p>
+									<code>'.sprintf(__('USING SimplePie %s included in Wordpress'), SIMPLEPIE_VERSION).'</code>
+								  <p></p>';
+						} else {
+							echo '<p></p>
+									<code>'. sprintf(__('USING SimplePie %s included in WPeMatico Plugin'), SIMPLEPIE_VERSION) .' </code>
+								  <p></p>';
+						}
+						?>
 						<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['set_stupidly_fast'],true); ?> name="set_stupidly_fast" id="set_stupidly_fast"  onclick="jQuery('#simpie').show();"  /> <?php _e('Set Simplepie <b><i>stupidly fast</i></b>', 'wpematico' ); ?></label>  <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['stupidly_fast']; ?>"></span>
 						<p></p>
 						<div id="simpie" style="margin-left: 25px;<?php if ($cfg['set_stupidly_fast']) echo 'display:none;';?>">
