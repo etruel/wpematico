@@ -464,6 +464,12 @@ class wpematico_licenses_handlers {
 		
 		$plugins_args = array();
 		$plugins_args = apply_filters('wpematico_plugins_updater_args', $plugins_args);
+
+		if (empty($plugins_args)) {
+			echo '<div class="msg"><p>', __('This is where you would enter the license keys for one of our premium plugins, should you activate one.', 'wpematico'), '</p>';
+  			 echo '<p>', __('See some of the WPeMatico Add-ons in the', 'wpematico'), ' <a href="', admin_url( 'plugins.php?page=wpemaddons').'">Extensions list</a>.</p></div>';
+  			 return true;
+		}
 		echo '<form method="post" action="'.admin_url('admin-post.php' ).'">
 				<input type="hidden" name="action" value="wpematico_save_licenses">
 				'.wp_nonce_field('wpematico_save_licenses', 'wpematico_save_licenses_nonce').'
