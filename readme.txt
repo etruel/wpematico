@@ -245,6 +245,7 @@ or to e-mail etruel@gmail.com
 * Added option "Add an extra duplicate filter by source permalink in meta field value". 
 * Duplicate filter performance improved by 80%.
 * Pequenos cambios al settings respecto al SimplePie.
+* Added wpematico_addcat_description filter to change the descriptions of categories.
 
 = 1.5.1  Jan 31, 2017 =
 * Fix issue with Strip all links feature without selected sub-options.
