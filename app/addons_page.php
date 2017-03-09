@@ -224,7 +224,12 @@ function wpematico_addons_row_actions($actions, $plugin_file, $plugin_data, $con
 Function read_wpem_addons($plugins){
 	$cached 	= get_transient( 'etruel_wpematico_addons_data' );
 	if ( !is_array( $cached ) ) { // If no cache read source feed
-		$addonitems = WPeMatico::fetchFeed('http://etruel.com/downloads/category/wpematico-add-ons/feed/', true, 10);
+		$urls_addons = array();
+		$urls_addons[] = 'http://etruel.com/downloads/category/wpematico-add-ons/feed/';
+		for($i=2; $i<= 9; $i++) {
+			$urls_addons[] = 'http://etruel.com/downloads/category/wpematico-add-ons/feed/?paged='.$i;
+		}
+		$addonitems = WPeMatico::fetchFeed($urls_addons, true, 10);
 		$addon = array();
 		foreach($addonitems->get_items() as $item) {
 			$itemtitle = $item->get_title();
