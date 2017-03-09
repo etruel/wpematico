@@ -419,7 +419,7 @@ function wpematico_settings(){
 						<br />
 						<div id="div_add_extra_duplicate_filter_meta_source" <?php if ($cfg['disableccf']) echo 'style="display:none;"' ?>>
 						<input name="add_extra_duplicate_filter_meta_source" id="add_extra_duplicate_filter_meta_source" class="checkbox" value="1" type="checkbox" <?php checked($cfg['add_extra_duplicate_filter_meta_source'],true); ?> />
-						<label for="disableccf"><b><?php _e('Add an extra duplicate filter by source permalink in meta field value.', 'wpematico' ); ?></b></label>  <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['add_extra_duplicate_filter_meta_source']; ?>"></span>
+						<label for="add_extra_duplicate_filter_meta_source"><b><?php _e('Add an extra duplicate filter by source permalink in meta field value.', 'wpematico' ); ?></b></label>  <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['add_extra_duplicate_filter_meta_source']; ?>"></span>
 						<br /> 
 						</div>
 					</div>
