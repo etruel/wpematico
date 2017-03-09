@@ -69,6 +69,15 @@ If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/
 
 ---
 
+> #### **[Polyglot](https://etruel.com/downloads/wpematico-polyglot/):**
+> Polyglot lets you translate the posts obtained from remote feeds before inserting them in your WordPress blog. 
+> It can work with any other extension and translate after processing the content.
+> Just select the original language of articles in a WPeMatico campaign so you can translate to one of the 107 supported languages.
+
+> * [Take a look to all its features by clicking here](https://etruel.com/downloads/wpematico-polyglot/)
+
+---
+
 > #### **[Make me Feed "Good"](https://etruel.com/downloads/wpematico-make-feed-good/):**
 > Create your custom feeds RSS 2.0 with content from external sites in your WordPress blog, regardless of whether or not those have their own feed.
 > It follows the standards of WordPress editing and code. If you know how to upload a post in WordPress, this is even easier.
@@ -235,21 +244,23 @@ or to e-mail etruel@gmail.com
 
 == Changelog ==
 = 1.6 =
-* Added the choice of parent categories in the Autocategories.
-* Fixed issue with copy quick action.
-* Agregada nueva feature de meta boxes en los posts agregados por WPeMatico.
-* wpematico_post_template_tags, wpematico_post_template_replace filter are deprecated, will be removed on version 1.7.
-* Changed 
-* Some changes in duplicate validation to improve performance.
-* Updated SimplePie to 1.4.3.
-* Added option "Add an extra duplicate filter by source permalink in meta field value". 
-* Duplicate filter performance improved by 80%.
-* Pequenos cambios al settings respecto al SimplePie.
-* Added wpematico_addcat_description filter to change the descriptions of categories.
+* Added the option to choice a parent category for the Autocategories feature.
+* Added {item_date} and {item_time} tags to the post template.
+* Fixes issue with Copy campaign quick action.
+* Added a metabox in the post types published by WPeMatico with relevant data.
+* Tweaks in duplicates validation to improve performance by almost 80%.
+* Tweaks in Addons page in the buttons permalinks.
+* Added an option "Add an extra duplicate filter by source permalink in meta field value". 
+* Updated included SimplePie library to 1.4.3 version.
+* Tweaks by default in Settings now is checked Set Simplepie stupidly fast Option.
+* Tweaks showing what version of Simplepie are used by the plugin.
+* Added 'wpematico_addcat_description' filter to change the description Auto Added by WPeMatico in new categories.
+* Deprecated filters wpematico_post_template_tags, wpematico_post_template_replace, will be removed on version 1.7.
+* Updated Updater class to 1.6.11v.
 
 = 1.5.1  Jan 31, 2017 =
-* Fix issue with Strip all links feature without selected sub-options.
-* Fix the CSS warning class when an addon was succesfully updated.
+* Fixes issue with Strip all links feature without selected sub-options.
+* Fixes the CSS warning class when an addon was succesfully updated.
 * Updated Updater class to 1.6.10v.
 
 = 1.5  Jan 25, 2017 =

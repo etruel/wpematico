@@ -36,7 +36,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		if (!empty($campaign_id) && !$cfg['disable_metaboxes_wpematico_posts']) {
 			add_meta_box( 
 		        'wpematico-all-meta-box',
-		        __('Wpematico Campaign Info', WPeMatico::TEXTDOMAIN ),
+		        __('WPeMatico Campaign Info', WPeMatico::TEXTDOMAIN ),
 		        array(__CLASS__, 'render_all_meta_boxes'),
 		        $post_type,
 		        'normal',
@@ -49,30 +49,49 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		$campaign_id = get_post_meta($post->ID, 'wpe_campaignid', true);
 		$feed = get_post_meta($post->ID, 'wpe_feed', true);
 		$source = get_post_meta($post->ID, 'wpe_sourcepermalink', true);
-		
-		echo '<table class="form-table">
+		echo '<span class="description">' . __('All links are no-follow and open in a new browser tab.', WPeMatico::TEXTDOMAIN ).'</span>';
+		?><style type="text/css"> 
+			#wpematico-all-meta-box h2 {
+				background-color: orange;
+			}
+			.wpematico-data-table a {
+				text-decoration: none;
+			}
+			.wpematico-data-table a:hover {
+				text-decoration: underline;
+			}
+			.wpematico-data-table td:first-child {
+				padding-right: 10px;
+				text-align: right;
+			}
+			.wpematico-data-table tr {
+				height: 30px;
+				vertical-align: middle;
+			}
+		</style><?php
+		echo '<table class="wpematico-data-table">
 			<tr>
-				<td style="width:120px;">
-					<b>'.__('Campaign', WPeMatico::TEXTDOMAIN ).':</b>
+				<td>
+					<b>'.__('Published by Campaign', WPeMatico::TEXTDOMAIN ).':</b>
 				</td>
 				<td>
-					<a href="'.admin_url('post.php?post='.$campaign_id.'&action=edit').'" target="_blank">'.get_the_title($campaign_id).'</a>
+					<a title="'.__('Edit the campaign.', WPeMatico::TEXTDOMAIN ).'" href="'.admin_url('post.php?post='.$campaign_id.'&action=edit').'" target="_blank">'.get_the_title($campaign_id).'</a>
 				</td>
 			</tr>
 			<tr>
-				<td style="width:120px;">
-					<b>'.__('Feed', WPeMatico::TEXTDOMAIN ).':</b>
+				<td>
+					<b>'.__('From feed', WPeMatico::TEXTDOMAIN ).':</b>
 				</td>
 				<td>
-					<a href="'.$feed.'" rel="nofollow" target="_blank">'.$feed.'</a>
+					<a title="'.__('Open the feed URL in the browser.', WPeMatico::TEXTDOMAIN ).'" href="'.$feed.'" rel="nofollow" target="_blank">'.$feed.'</a>
 				</td>
 			</tr>
 			<tr>
-				<td style="width:120px;">
-					<b>'.__('Source', WPeMatico::TEXTDOMAIN ).':</b>
+				<td>
+					<b>'.__('Source permalink', WPeMatico::TEXTDOMAIN ).':</b>
 				</td>
 				<td>
-					<a href="'.$source.'" rel="nofollow" target="_blank">'.$source.'</a>
+					<a title="'.__('Go to the source website to see the original content.', WPeMatico::TEXTDOMAIN ).'" href="'.$source.'" rel="nofollow" target="_blank">'.$source.'</a>
 				</td>
 			</tr>
 		</table>';
