@@ -243,7 +243,7 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
-= 1.6 =
+= 1.6  Mar 9, 2017 =
 * Added the option to choice a parent category for the Autocategories feature.
 * Added {item_date} and {item_time} tags to the post template.
 * Fixes issue with Copy campaign quick action.
