@@ -257,6 +257,13 @@ or to e-mail etruel@gmail.com
 * Added 'wpematico_addcat_description' filter to change the description Auto Added by WPeMatico in new categories.
 * Deprecated filters wpematico_post_template_tags, wpematico_post_template_replace, will be removed on version 1.7.
 * Updated Updater class to 1.6.11v.
+* **Enlarges the version required for the Professional addon to 1.6** 
+* **Recommended to test it in development ambients before update**
+* **Professional Add-on:** 
+* **New Feature: Added Ramdom Rewrites for work like synonyms.**
+* Tweak: New option to add rel="nofollow" to links.
+* Tweak: New option to use tags from the feed with <tag> if it exists.
+* Tweak: Added bulk campaign import/export feature on bulk actions above the campaigns list.
 
 = 1.5.1  Jan 31, 2017 =
 * Fixes issue with Strip all links feature without selected sub-options.
