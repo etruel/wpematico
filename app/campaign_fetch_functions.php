@@ -154,7 +154,7 @@ class wpematico_campaign_fetch_functions {
 			 * New way to get the template vars. 
 			 * See below the function default_template_vars with the filter to add new tags 
 			 */
-			$template_vars = default_template_vars(array(), $current_item, $campaign, $feed, $item, $img_str);
+			$template_vars = self::default_template_vars(array(), $current_item, $campaign, $feed, $item, $img_str);
 			$vars = array();
 			$replace = array();
 			foreach ($template_vars as $tvar => $tvalue) {
@@ -207,7 +207,7 @@ class wpematico_campaign_fetch_functions {
 	} // End ParseItemContent
 
 
-	function default_template_vars($vars, $current_item, $campaign, $feed, $item, $img_str) {
+	public static function default_template_vars($vars, $current_item, $campaign, $feed, $item, $img_str) {
 		$autor = '';
 		$autorlink = '';
 		if ($author = $item->get_author())	{
