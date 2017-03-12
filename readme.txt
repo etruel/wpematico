@@ -245,6 +245,7 @@ or to e-mail etruel@gmail.com
 == Changelog ==
 = 1.6.1  Mar 12, 2017 =
 * Fix an issue that the post template tags don't works in some cases.
+* Fix the option Simplepie stupidly fast always set to true, but set to true as initial value.
 * Tweak: Added a new filter to allow add new tags to the template.
 * Tweak: Improved the filters for the new duplicate checks option by metafields.
 
