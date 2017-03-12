@@ -84,7 +84,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		$this->fetch_end(); // if everything ok call fetch_end  and end class
 	}
 	
-	public static function set_actions_and_filters() {
+	public function set_actions_and_filters() {
 		//hook to add actions and filter on init fetching
 		//add_action('Wpematico_init_fetching', array($this, 'wpematico_init_fetching') ); 
 		add_filter('wpematico_get_post_content_feed', array( 'wpematico_campaign_fetch_functions' , 'wpematico_get_yt_rss_tags'),999,4);
