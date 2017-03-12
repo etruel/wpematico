@@ -38,6 +38,14 @@ class wpematico_campaign_fetch_functions {
 		}
 
 		$exist_post_on_db = false;
+		/**
+		 * Deprecated since 1.6 in favor of a query improved by db indexes
+		//$check_sql = "SELECT post_name FROM $wpdb->posts WHERE post_name = %s AND post_type = %s AND ID != %d LIMIT 1";
+		//$post_name_check = $wpdb->get_var( $wpdb->prepare( $check_sql, $slug, $cpost_type, $post_ID ) );
+		if ($exist_post_on_db || in_array( $slug, $wfeeds ) || apply_filters( 'wp_unique_post_slug_is_bad_flat_slug', false, $slug, $cpost_type ) ) {
+			$dev = true;
+		}
+	   */
 		$check_sql = "SELECT ID, post_name, post_type FROM $wpdb->posts WHERE post_name = %s LIMIT 1";
 		$post_name_check = $wpdb->get_results($wpdb->prepare( $check_sql, $slug));
 		if (!empty($post_name_check)) {
@@ -45,7 +53,6 @@ class wpematico_campaign_fetch_functions {
 				$exist_post_on_db = true;
 			}
 		}
-		
 
 		if ($exist_post_on_db) {
 			$dev = true;
@@ -59,14 +66,6 @@ class wpematico_campaign_fetch_functions {
 			}
 		}
 		
-		/*
-		//$check_sql = "SELECT post_name FROM $wpdb->posts WHERE post_name = %s AND post_type = %s AND ID != %d LIMIT 1";
-		//$post_name_check = $wpdb->get_var( $wpdb->prepare( $check_sql, $slug, $cpost_type, $post_ID ) );
-		if ($exist_post_on_db || in_array( $slug, $wfeeds ) || apply_filters( 'wp_unique_post_slug_is_bad_flat_slug', false, $slug, $cpost_type ) ) {
-			$dev = true;
-		}
-
-	   */
 		if(has_filter('wpematico_duplicates')) $dev =  apply_filters('wpematico_duplicates', $dev, $campaign, $item);
 		//  http://wordpress.stackexchange.com/a/72691/65771
 		//  https://codex.wordpress.org/Function_Reference/get_page_by_title
@@ -76,7 +75,8 @@ class wpematico_campaign_fetch_functions {
 
 		return $dev;
 	}
-	function WPeisDuplicatedMetaSource($campaign, $feed, $item) {
+	
+	function WPeisDuplicatedMetaSource($dev, $campaign, $item, $cfg ) {
 		global $wpdb;
 		$dev = false;
 		$permalink = $this->getReadUrl($item->get_permalink(), $campaign); 
@@ -90,15 +90,14 @@ class wpematico_campaign_fetch_functions {
 
 		
 	/**
-   * Filters for skip item or not
+   * Filters to skip item or not
    * @param   $current_item   array    Current post data to be saved
    * @param   $campaign       array    Current campaign data
    * @param   $feed           object    Feed database object
    * @param   $item           object    SimplePie_Item object
    *
    * Return TRUE if skip the item 
-   */
-   
+   */   
 	function exclude_filters(&$current_item, &$campaign, &$feed, &$item) {  
 		$categories = (isset($current_item['categories']) && !empty($current_item['categories']) ) ? $current_item['categories'] : '';
 		$post_id = $this->campaign_id;
@@ -150,71 +149,27 @@ class wpematico_campaign_fetch_functions {
 				trigger_error(__('Can\'t find the featured image to add to the content.'),E_USER_WARNING);
 				$img_str = '<!-- no image -->';
 			}
-			$template_vars = apply_filters('wpematico_add_template_vars', array(), $current_item, $campaign, $feed, $item, $img_str);
+			/**
+			 * Since 1.6.1
+			 * New way to get the template vars. 
+			 * See below the function default_template_vars with the filter to add new tags 
+			 */
+			$template_vars = default_template_vars(array(), $current_item, $campaign, $feed, $item, $img_str);
 			$vars = array();
 			$replace = array();
 			foreach ($template_vars as $tvar => $tvalue) {
 				$vars[] = $tvar;
 				$replace[] = $tvalue;
 			}
-			/* wpematico_post_template_tags, wpematico_post_template_replace filter
-			   Are deprecated, will be removed on version 1.7
+			/**
+			 *  wpematico_post_template_tags, wpematico_post_template_replace filters
+			 *  Are deprecated, will be removed on version 1.7
 			 */
 			$vars = apply_filters('wpematico_post_template_tags', $vars, $current_item, $campaign, $feed, $item);
 			$replace = apply_filters('wpematico_post_template_replace', $replace, $current_item, $campaign, $feed, $item);
+			
 			$current_item['content'] = str_ireplace($vars, $replace, ( $campaign['campaign_template'] ) ? stripslashes( $campaign['campaign_template'] ) : '{content}');
 
-
-			/*
-			$vars = array(
-				'{title}',
-				'{content}',
-				'{itemcontent}',
-				'{image}',
-				'{author}',
-				'{authorlink}',
-				'{permalink}',
-				'{feedurl}',
-				'{feedtitle}',
-				'{feeddescription}',
-				'{feedlogo}',
-				'{campaigntitle}',
-				'{campaignid}',
-				'{item_date}',
-				'{item_time}'
-
-			);
-			$vars = apply_filters('wpematico_post_template_tags', $vars, $current_item, $campaign, $feed, $item );
-
-			$autor="";
-			$autorlink = "";
-			if ($author = $item->get_author())	{
-				$autor = $author->get_name();
-				$autorlink = $author->get_link();
-			}		
-
-			$replace = array(
-				$current_item['title'],
-				$current_item['content'],
-				$item->get_description(),
-				$img_str,
-				$autor,
-				$autorlink,
-				$this->current_item['permalink'],
-				$feed->feed_url,
-				$feed->get_title(),
-				$feed->get_description(),
-				$feed->get_image_url(),
-				get_the_title($post_id),
-				$post_id,
-				date(get_option('date_format'), current_time('timestamp')),
-				date(get_option('time_format'), current_time('timestamp'))
-
-			);
-			$replace = apply_filters('wpematico_post_template_replace', $replace, $current_item, $campaign, $feed, $item );
-
-			$current_item['content'] = str_ireplace($vars, $replace, ( $campaign['campaign_template'] ) ? stripslashes( $campaign['campaign_template'] ) : '{content}');
-			*/
 		}
 
 	 // Rewrite
@@ -250,6 +205,38 @@ class wpematico_campaign_fetch_functions {
 		
 		return $current_item;
 	} // End ParseItemContent
+
+
+	function default_template_vars($vars, $current_item, $campaign, $feed, $item, $img_str) {
+		$autor = '';
+		$autorlink = '';
+		if ($author = $item->get_author())	{
+			$autor = $author->get_name();
+			$autorlink = $author->get_link();
+		}
+		$vars = array(
+			'{title}' => $current_item['title'],
+			'{content}' => $current_item['content'],
+			'{itemcontent}' => $item->get_description(),
+			'{image}' => $img_str,
+			'{author}' => $autor,
+			'{authorlink}' => $autorlink,
+			'{permalink}' => $current_item['permalink'],
+			'{feedurl}' => $feed->feed_url,
+			'{feedtitle}' => $feed->get_title(),
+			'{feeddescription}' => $feed->get_description(),
+			'{feedlogo}' => $feed->get_image_url(),
+			'{campaigntitle}' => get_the_title($campaign['ID']),
+			'{campaignid}' => $campaign['ID'],
+			'{item_date}' => date_i18n(get_option('date_format'), current_time('timestamp')),
+			'{item_time}' => date_i18n(get_option('time_format'), current_time('timestamp'))
+
+		);
+		
+		$template_vars = apply_filters('wpematico_add_template_vars', $vars, $current_item, $campaign, $feed, $item);
+		
+		return $template_vars;
+	}
 	
 	/**
    * Filters an item content

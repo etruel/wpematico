@@ -243,6 +243,11 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
+= 1.6.1  Mar 12, 2017 =
+* Fix an issue that the post template tags don't works in some cases.
+* Tweak: Added a new filter to allow add new tags to the template.
+* Tweak: Improved the filters for the new duplicate checks option by metafields.
+
 = 1.6  Mar 9, 2017 =
 * Added the option to choice a parent category for the Autocategories feature.
 * Added {item_date} and {item_time} tags to the post template.
@@ -908,7 +913,7 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 1.5 =
+= 1.6.1 =
 * Many improvements and fixes. See changelog for more details. 
 * **Recommended to test it in development ambients before the update**
-* **Enlarges the version required for the professional addon to 1.5**
+* **Enlarges the version required for the professional addon to 1.6**

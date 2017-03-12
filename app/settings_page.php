@@ -410,6 +410,11 @@ function wpematico_settings(){
 							<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['allowduptitle'],true); ?> name="allowduptitle" id="allowduptitle" /><b>&nbsp;<?php echo '<label for="allowduptitle">' . __('Allow duplicates titles.', 'wpematico' ) . '</label>'; ?></b><br />
 							<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['allowduphash'],true); ?> name="allowduphash" id="allowduphash" /><b>&nbsp;<?php echo '<label for="allowduphash">' . __('Allow duplicates hashes. (Not Recommended)', 'wpematico' ) . '</label>'; ?></b>
 						</div>
+						<div id="div_add_extra_duplicate_filter_meta_source" <?php if ($cfg['disableccf'] || $cfg['allowduptitle']) echo 'style="display:none;"' ?>>
+						<input name="add_extra_duplicate_filter_meta_source" id="add_extra_duplicate_filter_meta_source" class="checkbox" value="1" type="checkbox" <?php checked($cfg['add_extra_duplicate_filter_meta_source'],true); ?> />
+						<label for="add_extra_duplicate_filter_meta_source"><b><?php _e('Add an extra duplicate filter by source permalink in meta field value.', 'wpematico' ); ?></b></label>  <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['add_extra_duplicate_filter_meta_source']; ?>"></span>
+						<br /> 
+						</div>
 						<p></p>
 						<input name="jumpduplicates" id="jumpduplicates" class="checkbox" value="1" type="checkbox" <?php checked($cfg['jumpduplicates'],true); ?> />
 						<label for="jumpduplicates"><b><?php _e('Continue Fetching if found duplicated items.', 'wpematico' ); ?></b></label>  <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['jumpduplicates']; ?>"></span>
@@ -417,11 +422,7 @@ function wpematico_settings(){
 						<input name="disableccf" id="disableccf" class="checkbox" value="1" type="checkbox" <?php checked($cfg['disableccf'],true); ?> />
 						<label for="disableccf"><b><?php _e('Disables Plugin Custom fields.', 'wpematico' ); ?></b></label>  <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['disableccf']; ?>"></span>
 						<br />
-						<div id="div_add_extra_duplicate_filter_meta_source" <?php if ($cfg['disableccf']) echo 'style="display:none;"' ?>>
-						<input name="add_extra_duplicate_filter_meta_source" id="add_extra_duplicate_filter_meta_source" class="checkbox" value="1" type="checkbox" <?php checked($cfg['add_extra_duplicate_filter_meta_source'],true); ?> />
-						<label for="add_extra_duplicate_filter_meta_source"><b><?php _e('Add an extra duplicate filter by source permalink in meta field value.', 'wpematico' ); ?></b></label>  <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['add_extra_duplicate_filter_meta_source']; ?>"></span>
-						<br /> 
-						</div>
+						
 					</div>
 				</div>
 
@@ -654,8 +655,8 @@ function wpematico_settings(){
 			}
 		});
 
-		jQuery('#disableccf').change(function() {
-			if (jQuery('#disableccf').is(':checked')) {
+		jQuery('#disableccf, #allowduptitle').change(function() {
+			if (jQuery('#disableccf, #allowduptitle').is(':checked')) {
 				jQuery('#div_add_extra_duplicate_filter_meta_source').fadeOut();
 			} else {
 				jQuery('#div_add_extra_duplicate_filter_meta_source').fadeIn();

@@ -66,7 +66,7 @@ register_uninstall_hook( WPEMATICO_BASENAME, 'wpematico_uninstall' );
 add_action( 'plugins_loaded', 'wpematico_update_db_check' );
 
 function wpematico_update_db_check() {
-	if (version_compare(WPEMATICO_VERSION, get_option( 'wpematico_db_version' ), '>')) { // check if updated (will save new version on welcome )
+	if (version_compare(WPEMATICO_VERSION, get_option( 'wpematico_db_version' ), '>')) { // check if updated (WILL SAVE new version on welcome )
 		if ( !get_transient( '_wpematico_activation_redirect' ) ){ //just one time running
 	        wpematico_install( false );
 		}
@@ -75,21 +75,23 @@ function wpematico_update_db_check() {
 
 
 function wpematico_install( $update_campaigns = false ){
-	//tweaks old campaigns data, now saves meta for columns
-	$campaigns_data = array();
-	$args = array(
-		'orderby'         => 'ID',
-		'order'           => 'ASC',
-		'post_type'       => 'wpematico', 
-		'numberposts' => -1
-	);
-	$campaigns = get_posts( $args );
-	foreach( $campaigns as $post ):
-		$campaigndata = WPeMatico::get_campaign( $post->ID );	
-		WPeMatico::update_campaign($post->ID, $campaigndata);
-	endforeach; 
+	if($update_campaigns) {
+		//tweaks old campaigns data, now saves meta for columns
+		$campaigns_data = array();
+		$args = array(
+			'orderby'         => 'ID',
+			'order'           => 'ASC',
+			'post_type'       => 'wpematico', 
+			'numberposts' => -1
+		);
+		$campaigns = get_posts( $args );
+		foreach( $campaigns as $post ):
+			$campaigndata = WPeMatico::get_campaign( $post->ID );	
+			WPeMatico::update_campaign($post->ID, $campaigndata);
+		endforeach; 
+	}
 
-	// Add the transient to redirect
+	// Add the transient to redirect 
 	set_transient( '_wpematico_activation_redirect', true, 120 ); // After two minutes lost welcome screen
 
 }
@@ -158,32 +160,4 @@ function wpematico_uninstall() {
 			wp_delete_post( $post->ID, true);  // forces delete to avoid trash
 		}
 	}
-}
-add_filter('wpematico_add_template_vars', 'default_template_vars', 10, 6);
-function default_template_vars($vars, $current_item, $campaign, $feed, $item, $img_str) {
-	$autor = '';
-	$autorlink = '';
-	if ($author = $item->get_author())	{
-		$autor = $author->get_name();
-		$autorlink = $author->get_link();
-	}
-	$vars = array(
-		'{title}' => $current_item['title'],
-		'{content}' => $current_item['content'],
-		'{itemcontent}' => $item->get_description(),
-		'{image}' => $img_str,
-		'{author}' => $autor,
-		'{authorlink}' => $autorlink,
-		'{permalink}' => $current_item['permalink'],
-		'{feedurl}' => $feed->feed_url,
-		'{feedtitle}' => $feed->get_title(),
-		'{feeddescription}' => $feed->get_description(),
-		'{feedlogo}' => $feed->get_image_url(),
-		'{campaigntitle}' => get_the_title($campaign['ID']),
-		'{campaignid}' => $campaign['ID'],
-		'{item_date}' => date(get_option('date_format'), current_time('timestamp')),
-		'{item_time}' => date(get_option('time_format'), current_time('timestamp'))
-
-	);
-	return $vars;
 }

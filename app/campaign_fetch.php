@@ -85,10 +85,15 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 	}
 	
 	public static function set_actions_and_filters() {
-		//hook for add actions and filter on init fetching
+		//hook to add actions and filter on init fetching
 		//add_action('Wpematico_init_fetching', array($this, 'wpematico_init_fetching') ); 
 		add_filter('wpematico_get_post_content_feed', array( 'wpematico_campaign_fetch_functions' , 'wpematico_get_yt_rss_tags'),999,4);
 		$priority = 10;
+		
+		if( $this->cfg['add_extra_duplicate_filter_meta_source'] &&  !$this->cfg['disableccf']) {
+			add_filter('wpematico_duplicates', array( 'wpematico_campaign_fetch_functions' , 'WPeisDuplicatedMetaSource'),$priority,3);
+		}
+		
 	}
 	/**
 	* Processes every feed of a campaign
@@ -154,18 +159,6 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 					}
 				}
 
-				if( $this->cfg['add_extra_duplicate_filter_meta_source'] &&  !$this->cfg['disableccf']) {
-					if($this->WPeisDuplicatedMetaSource($this->campaign, $feed, $item)) {
-						trigger_error(sprintf(__('Found duplicated title \'%1s\'', 'wpematico' ),$item->get_title()).': '.$this->currenthash[$feed] ,E_USER_NOTICE);
-						if( !$this->cfg['jumpduplicates'] ) {
-							trigger_error(__('Filtering duplicated posts.', 'wpematico' ),E_USER_NOTICE);
-							break;
-						} else {
-							trigger_error(__('Jumping duplicated post. Continuing.', 'wpematico' ),E_USER_NOTICE);
-							continue;
-						}
-					}
-				}
 			}
 			$count++;
 			array_unshift($items, $item); // add at Post stack in correct order by date 		  
