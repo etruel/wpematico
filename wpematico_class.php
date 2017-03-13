@@ -10,7 +10,7 @@ $cfg = apply_filters('wpematico_check_options',$cfg );
 if ( !class_exists( 'WPeMatico' ) ) {
 	class WPeMatico extends WPeMatico_functions {
 		const TEXTDOMAIN = 'wpematico';
-		const PROREQUIRED = '1.6';
+		const PROREQUIRED = '1.6.1';
 		const OPTION_KEY = 'WPeMatico_Options';
 		public static $name = '';
 		public static $version = '';
@@ -391,6 +391,9 @@ if ( !class_exists( 'WPeMatico' ) ) {
 		public function load_options() {
 			$cfg= get_option( self :: OPTION_KEY );
 			if ( !$cfg ) {
+				/**
+				 * Default values 
+				 */
 				$default_options = array();
 				$default_options['set_stupidly_fast'] = true;
 				$this->options = $this->check_options($default_options);
