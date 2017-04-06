@@ -243,6 +243,10 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
+= 1.6.2  April 6, 2017 =
+* Improved accuracy of duplicate check.
+* Update SimplePie timeout to 30 sec.
+
 = 1.6.1  Mar 12, 2017 =
 * Fix an issue that the post template tags don't works in some cases.
 * Fix the option Simplepie stupidly fast always set to true, but set to true as initial value.

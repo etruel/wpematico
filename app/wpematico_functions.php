@@ -464,6 +464,7 @@ class WPeMatico_functions {
 		}		
 	}
     $feed = new SimplePie();
+    $feed->timeout = apply_filters('wpe_simplepie_timeout', 30);
     $feed->enable_order_by_date(false);
 
 	$feed->set_feed_url($url);

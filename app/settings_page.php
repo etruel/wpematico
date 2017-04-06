@@ -125,6 +125,7 @@ function wpematico_settings(){
 		}		
 	}
 	$simplepie = new SimplePie();
+	$simplepie->timeout = apply_filters('wpe_simplepie_timeout', 30);
 	$cfg['strip_htmltags']	= (!($cfg['simplepie_strip_htmltags'])) ? implode(',',$simplepie->strip_htmltags): $cfg['strip_htmltags'];
 	$cfg['strip_htmlattr']	= (!($cfg['simplepie_strip_attributes'])) ? implode(',', $simplepie->strip_attributes) : $cfg['strip_htmlattr'];
 	$cfg['mailsndemail']	= (!($cfg['mailsndemail']) || empty($cfg['mailsndemail']) ) ? 'noreply@'.str_ireplace('www.', '', parse_url(get_option('siteurl'), PHP_URL_HOST)) : $cfg['mailsndemail'];
