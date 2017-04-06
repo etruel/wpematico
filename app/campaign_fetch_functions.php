@@ -28,8 +28,8 @@ class wpematico_campaign_fetch_functions {
 		if ($from && $from != 'UTF-8') {
 			$title = mb_convert_encoding($title, 'UTF-8', $from);
 		}
-		$title = html_entity_decode($title, ENT_COMPAT | ENT_HTML401, 'UTF-8');
-
+		$title = esc_attr($title);
+		$title = html_entity_decode($title, ENT_QUOTES | ENT_HTML401, 'UTF-8');
 		if ($campaign['copy_permanlink_source']) {
 			$permalink = $item->get_permalink(); 
 			$slug = $this->get_slug_from_permalink($permalink);

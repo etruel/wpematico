@@ -240,9 +240,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		
 		if( $this->cfg['nonstatic'] ) { $this->current_item = NoNStatic :: title($this->current_item,$this->campaign,$item,$realcount ); }else $this->current_item['title'] = esc_attr($this->current_item['title']);
 
-		
-		$this->current_item['title'] = html_entity_decode($this->current_item['title'], ENT_COMPAT | ENT_HTML401, 'UTF-8');
-		
+		$this->current_item['title'] = html_entity_decode($this->current_item['title'], ENT_QUOTES | ENT_HTML401, 'UTF-8');
+
  		// Item author
 		//if( $this->cfg['nonstatic'] ) { $this->current_item = NoNStatic :: author($this->current_item,$this->campaign, $feedurl, $item ); }else $this->current_item['author'] = $this->campaign['campaign_author'];
 		$this->current_item['author'] = $this->campaign['campaign_author'];
