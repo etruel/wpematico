@@ -38,8 +38,8 @@ function redirect_to_wpemaddons() {
 	}
 }
 
-add_action( 'admin_menu', 'admin_menu',99 );
-function admin_menu() {
+add_action( 'admin_menu', 'wpe_addon_admin_menu',99 );
+function wpe_addon_admin_menu() {
 	$page = add_submenu_page(
 		'plugins.php',
 		__( 'Add-ons', 'wpematico' ),
