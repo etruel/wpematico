@@ -275,6 +275,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			$sect_title='<img src="' . self :: $uri.'/images/robotico_orange-50x50.png'.'" style="margin: 0pt 2px -2px 0pt;">'.' WPeMatico '.WPEMATICO_VERSION;
 			add_settings_section('wpematico', $sect_title, array($this, 'writing_settings'), 'writing');
 			register_setting( 'writing', 'wpem_menu_position'); //, 'sanitize_callback' );
+			register_setting( 'writing', 'wpem_show_locally_addons'); //, 'sanitize_callback' );
 			register_setting( 'writing', 'wpem_hide_reviews'); //, 'sanitize_callback' );
 			add_settings_field( 
 				'wpem_menu_position',
@@ -285,6 +286,17 @@ if ( !class_exists( 'WPeMatico' ) ) {
 				array(        //The array of arguments to pass to the callback.
 					'id' => 'wpem_menu_position',
 					'description' => __('Activate this setting if you can\'t see WPeMatico menu at left under Posts menu item.', self :: TEXTDOMAIN )
+				)
+			);
+			add_settings_field( 
+				'wpem_show_locally_addons',
+				'See local Addons in plugin list',                
+				array($this, 'writing_wp_form'), 
+				'writing',                        
+				'wpematico',         
+				array(        //The array of arguments to pass to the callback.
+					'id' => 'wpem_show_locally_addons',
+					'description' => __('Activate this setting if you have problems with the addons page to see them in your plugin page like any other plugin.', self :: TEXTDOMAIN )
 				)
 			);
 			add_settings_field( 

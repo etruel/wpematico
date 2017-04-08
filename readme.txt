@@ -246,6 +246,7 @@ or to e-mail etruel@gmail.com
 = 1.6.2  April 6, 2017 =
 * Improved accuracy of duplicate check.
 * Update SimplePie timeout to 30 sec.
+* Added `See local Addons in plugin list` option.
 
 = 1.6.1  Mar 12, 2017 =
 * Fix an issue that the post template tags don't works in some cases.

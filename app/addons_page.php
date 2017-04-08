@@ -189,6 +189,7 @@ function wpematico_addons_custom_columns($column_name, $plugin_file, $plugin_dat
 add_filter( 'all_plugins', 'wpematico_showhide_addons');
 function wpematico_showhide_addons($plugins) {
 	global $current_screen;
+	$show_on_plugin_page = get_option('wpem_show_locally_addons', false); 
 	if ($current_screen->id == 'plugins_page_wpemaddons'){
 		$plugins = apply_filters( 'etruel_wpematico_addons_array', read_wpem_addons($plugins), 10, 1 );
 		foreach ($plugins as $key => $value) {
@@ -201,11 +202,17 @@ function wpematico_showhide_addons($plugins) {
 			}
 		}		
 	}else{
-		foreach ($plugins as $key => $value) {
-			if(strpos($key, 'wpematico_')!==FALSE) {
-				unset( $plugins[$key] );
+		/*
+		** If wpem_show_locally_addons option is checked not will be filtered Add Ons WPeMatico. 
+		*/
+		if (!$show_on_plugin_page) { 
+			foreach ($plugins as $key => $value) {
+				if(strpos($key, 'wpematico_')!==FALSE) {
+					unset( $plugins[$key] );
+				}
 			}
 		}
+		
 	}
 //	unset( $plugins['akismet/akismet.php'] );
 	
