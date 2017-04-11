@@ -247,6 +247,7 @@ or to e-mail etruel@gmail.com
 * Improved accuracy of duplicate check.
 * Update SimplePie timeout to 30 sec.
 * Added `See local Addons in plugin list` option.
+* Added feature to load language packs through translate.wordpress.org
 
 = 1.6.1  Mar 12, 2017 =
 * Fix an issue that the post template tags don't works in some cases.

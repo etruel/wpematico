@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Plugin Name: WPeMatico
  * Plugin URI: http://www.wpematico.com
  * Description: Enables administrators to create posts automatically from RSS/Atom feeds with multiples filters.  If you like it, please rate it 5 stars.
@@ -7,11 +7,21 @@
  * Author: etruel <esteban@netmdp.com>
  * Author URI: http://www.netmdp.com
  * Text Domain: wpematico
+ * Domain Path: /languages/
+ * 
+ * @package WPeMatico
+ * @category Core
+ * @author etruel <esteban@netmdp.com>
+ * @version 1.6.2
  */
 # @charset utf-8
 if ( ! function_exists( 'add_filter' ) )
 	exit;
 if (!class_exists('Main_WPeMatico') ) {
+
+/**
+ * Main_WPeMatico Class.
+ */	
 class Main_WPeMatico{
 	private static $instance;
 
@@ -113,10 +123,20 @@ class Main_WPeMatico{
 		// Setup paths to current locale file
 		$mofile_local   = $lang_dir . $mofile;
 		$mofile_global  = WP_LANG_DIR . '/wpematico/' . $mofile;
+		
+		/**
+		 * Directory of language packs through translate.wordpress.org
+		 * @var $mofile_global2 String.
+		 * @since 1.6.2
+		 */
+		$mofile_global2  = WP_LANG_DIR . '/plugins/wpematico/' . $mofile;
 
 		if( file_exists( $mofile_global ) ) {
 			// Look in global /wp-content/languages/wpematico/ folder
 			load_textdomain( 'wpematico', $mofile_global );
+		} elseif( file_exists( $mofile_global2 ) ) {
+			// Look in global /wp-content/languages/plugins/wpematico/ folder
+			load_textdomain( 'wpematico', $mofile_global2 );
 		} elseif( file_exists( $mofile_local ) ) {
 			// Look in local /wp-content/plugins/wpematico/languages/ folder
 			load_textdomain( 'wpematico', $mofile_local );
