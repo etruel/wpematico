@@ -244,7 +244,7 @@ or to e-mail etruel@gmail.com
 
 == Changelog ==
 = 1.6.2  April 6, 2017 =
-* Improved accuracy of duplicate check.
+* Improved accuracy in duplicate checking.
 * Update SimplePie timeout to 30 sec.
 * Added `See local Addons in plugin list` option.
 * Added feature to load language packs through translate.wordpress.org
