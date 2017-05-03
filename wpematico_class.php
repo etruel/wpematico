@@ -53,8 +53,6 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			if ( $hook_in ) {
 				add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 				add_action( 'admin_init', array( $this, 'admin_init' ) );
-				add_action('admin_enqueue_scripts', array( $this, 'dequeue_acf_scripts'), 99 ); //Fix Advanced custom fields PRO to use WPeMatico
-				add_filter( 'pre_get_posts', array( $this, 'delete_ksuce_exclude_categories'), 1, 1); // Fix UCE 
 
 				add_action( 'admin_print_styles', array($this, 'all_WP_admin_styles') );
 				add_action('in_admin_header', array($this, 'writing_settings_help') );
@@ -143,23 +141,6 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			?><div class="alignright empty_trash"><?php
 				submit_button( __( 'Empty Trash' ), 'apply', 'delete_all', false, array('onClick' => "jQuery('.post_status_page').val('trash');") );
 			?></div><?php
-		}
-		
-		//Fix Ultimate exclude categories to use WPeMatico
-		function delete_ksuce_exclude_categories($query) {
-
-			if (isset($query->query['post_type'])) {
-				if ($query->query['post_type'] == 'wpematico') {
-					remove_filter('pre_get_posts', 'ksuce_exclude_categories');
-				}
-			}
-			return $query;
-		}
-//*********************************************************************************		//Fix Advanced custom fields PRO to use WPeMatico
-		function dequeue_acf_scripts() {
-			global $post_type;
-			if($post_type=='wpematico')
-				wp_dequeue_script( 'acf-input' );
 		}
 		
 		//add dashboard widget

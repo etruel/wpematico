@@ -69,6 +69,7 @@ class Main_WPeMatico{
 			require_once("app/lib/welcome.php");
 		}
 		require_once('app/cron_functions.php');
+		require_once('app/compatibilities.php');
 		require_once('app/wpematico_functions.php');
 		require_once('wpematico_class.php');
 	}
