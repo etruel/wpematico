@@ -460,7 +460,7 @@ class WPeMatico_Campaigns {
 	/**
 	************ACCION TOGGLE 
 	*/
-	function wpematico_toggle_campaign($status = ''){
+	public static function wpematico_toggle_campaign($status = ''){
 		if (! ( isset( $_GET['post']) || isset( $_POST['post'])  || ( isset($_REQUEST['action']) && 'wpematico_toggle_campaign' == $_REQUEST['action'] ) ) ) {
 			wp_die(__('No campaign ID has been supplied!',  'wpematico'));
 		}
@@ -481,7 +481,7 @@ class WPeMatico_Campaigns {
 	/*********FIN ACCION TOGGLE 	*/
 	
 	/**	************ACCION RESET 	*/
-	function wpematico_reset_campaign($status = ''){
+	public static function wpematico_reset_campaign($status = ''){
 		if (! ( isset( $_GET['post']) || isset( $_POST['post'])  || ( isset($_REQUEST['action']) && 'wpematico_reset_campaign' == $_REQUEST['action'] ) ) ) {
 			wp_die(__('No campaign ID has been supplied!',  'wpematico'));
 		}
@@ -502,7 +502,7 @@ class WPeMatico_Campaigns {
 	/**************FIN ACCION RESET 	*/
 	
 	/**	************ACCION DELHASH	 	*/
-	function wpematico_delhash_campaign(){
+	public static function wpematico_delhash_campaign(){
 		if (! ( isset( $_GET['post']) || isset( $_POST['post'])  || ( isset($_REQUEST['action']) && 'wpematico_delhash_campaign' == $_REQUEST['action'] ) ) ) {
 			wp_die(__('No campaign ID has been supplied!',  'wpematico'));
 		}
@@ -524,7 +524,7 @@ class WPeMatico_Campaigns {
 	/**************FIN ACCION DELHASH	*/
 	
 	/**	************ACCION CLEAR: ABORT CAMPAIGN	 	*/
-	function wpematico_clear_campaign(){
+	public static function wpematico_clear_campaign(){
 		if (! ( isset( $_GET['post']) || isset( $_POST['post'])  || ( isset($_REQUEST['action']) && 'wpematico_clear_campaign' == $_REQUEST['action'] ) ) ) {
 			wp_die(__('No campaign ID has been supplied!',  'wpematico'));
 		}
@@ -549,7 +549,7 @@ class WPeMatico_Campaigns {
 	
 	
 	
-	static function wpematico_updated_messages( $messages ) {
+	public static function wpematico_updated_messages( $messages ) {
 	  global $post, $post_ID;
 	  $messages['wpematico'] = array(
 		0 => '', // Unused. Messages start at index 1.

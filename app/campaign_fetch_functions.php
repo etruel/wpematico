@@ -79,7 +79,7 @@ class wpematico_campaign_fetch_functions {
 	function WPeisDuplicatedMetaSource($dev, $campaign, $item, $cfg ) {
 		global $wpdb;
 		$dev = false;
-		$permalink = $this->getReadUrl($item->get_permalink(), $campaign); 
+		$permalink = self::getReadUrl($item->get_permalink(), $campaign); 
 		$check_sql = "SELECT meta_value FROM $wpdb->postmeta WHERE meta_key = 'wpe_sourcepermalink' AND meta_value = %s LIMIT 1";
 		$permantlink_check = $wpdb->get_var( $wpdb->prepare( $check_sql, $permalink) );
 		if ($permantlink_check) {

@@ -98,7 +98,7 @@ foreach( $campaigns as $post ) {
 		continue;
 	if ( $cronnextrun <= current_time('timestamp') || $dontruncron ) {
 		if($cfg['logexternalcron']) {
-			@$file_handle = fopen($filedir.sanitize_file_name($post->post_title.".txt.log"), "w+");
+			@$file_handle = fopen($filedir.sanitize_file_name($post->post_title.".txt.log"), "w+");  //wpemextcron.txt.log
 			$msg = 'Running WPeMatico external WP-Cron'."\n";
 			linelog($file_handle , $msg.PHP_EOL); 
 			echo $msg;

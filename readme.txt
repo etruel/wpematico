@@ -243,6 +243,15 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
+= 1.6.3  April 28, 2017 =
+* Debug Info in Settings is now System Status tab with new sections inside.
+* Added new table with info and system requirements in System Status tab.
+* Added many tweaks in the debug file.
+* The Wordpress reviews are back in the Settings page. 
+* Fixes an issue on running the controls by metafields for posts duplicated.
+* Fixes an issue with Ultimate exclude categories plugin to use it with WPeMatico.
+* Some fixes in many texts and tips.
+
 = 1.6.2  April 6, 2017 =
 * Improved accuracy in duplicate checking.
 * Update SimplePie timeout to 30 sec.
@@ -250,8 +259,8 @@ or to e-mail etruel@gmail.com
 * Added feature to load language packs through translate.wordpress.org
 
 = 1.6.1  Mar 12, 2017 =
-* Fix an issue that the post template tags don't works in some cases.
-* Fix the option Simplepie stupidly fast always set to true, but set to true as initial value.
+* Fixes an issue that the post template tags don't works in some cases.
+* Fixes the option Simplepie stupidly fast always set to true, but set to true as initial value.
 * Tweak: Added a new filter to allow add new tags to the template.
 * Tweak: Improved the filters for the new duplicate checks option by metafields.
 
@@ -920,7 +929,5 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 1.6.1 =
+= 1.6.3 =
 * Many improvements and fixes. See changelog for more details. 
-* **Recommended to test it in development ambients before the update**
-* **Enlarges the version required for the professional addon to 1.6**

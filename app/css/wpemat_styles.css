@@ -6,6 +6,30 @@ p { margin-bottom: 2px; }
 #misc-publishing-actions { display:none; }
 #nocustitle, #ctnocont, #striphtml{background: #E3E3E3; padding: 0.1em 15px ; }
 
+/*.nav-section:before{ content: " | "; }
+.nav-section:first-child:before{ content: ""; }
+*/
+.nav-section-active {
+	color: red;
+}
+.debug-section-title {
+	font-weight: 700 !important;
+    padding: 9px !important;
+}
+.debug-section {
+	margin-top: 15px;
+}
+.debug-section mark.yes {
+    color: #7ad03a;
+    background: 0;
+}
+.debug-section mark.error {
+    color: #a00;
+    background: 0;
+}
+
+
+
 .current-state {
     font-family: Arial;
     font-size: 10px;

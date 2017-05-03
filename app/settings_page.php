@@ -17,7 +17,7 @@ function wpematico_get_settings_tabs() {
 	//allways Licenses and debug file at end
 	$tabs = apply_filters( 'wpematico_settings_tabs', $tabs );
 	$tabs['pro_licenses']   = __( 'Licenses', 'wpematico' );
-	$tabs['debug_info']   = __( 'Debug Info', 'wpematico' );
+	$tabs['debug_info']   = __( 'System Status', 'wpematico' );
 
 	return $tabs;
 }
@@ -38,9 +38,9 @@ function wpematico_settings_page () {
 					'tab' => $tab_id
 				) );
 
-//				$tab_url = remove_query_arg( array(
-//					'wpematico-message'
-//				), $tab_url );
+				$tab_url = remove_query_arg( array(
+					'section'
+				), $tab_url );
 
 				$active = $current_tab == $tab_id ? ' nav-tab-active' : '';
 				echo '<a href="' . esc_url( $tab_url ) . '" title="' . esc_attr( $tab_name ) . '" class="nav-tab' . $active . '">' . ( $tab_name ) . '</a>';
@@ -487,7 +487,7 @@ function wpematico_settings(){
 					<div class="inside">
 						<p>
 					<label><input class="checkbox" id="disable_metaboxes_wpematico_posts" type="checkbox"<?php checked($cfg['disable_metaboxes_wpematico_posts'],true);?> name="disable_metaboxes_wpematico_posts" value="1"/> 
-							<strong><?php _e('Disable all meta boxes Wpematico Campaign Info', 'wpematico' ); ?></strong></label>
+							<strong><?php _e('Disable metabox Wpematico Campaign Info in post editing', 'wpematico' ); ?></strong></label>
 							<span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['disable_metaboxes_wpematico_posts']; ?>"></span>
 					</p>
 					<div class="insidesec" style="border-right: 1px lightgrey solid; margin-right: 5px;padding-right: 7px; ">
@@ -875,14 +875,14 @@ function wpematico_helpsettings($dev=''){
 			),
 			'logexternalcron' => array( 
 				'title' => __('Log file for external Cron.', 'wpematico' ),
-				'tip' => __('Try to save a file with simple steps taken at run wpe-cron.php. "wpemextcron.txt.log" will be saved on uploads folder or inside plugin, "app" folder.  Recommended on issues with cron.', 'wpematico' ),
+				'tip' => __('Try to save a file with simple steps taken at run wpe-cron.php. "%campaign title%.txt.log" will be saved on uploads folder or inside plugin, "app" folder.  Recommended on issues with cron.', 'wpematico' ),
 				'plustip' => __('', 'wpematico' ),
 			),
 		),
 		'Other tools & Advanced' => array( 
 			'disable_metaboxes_wpematico_posts' => array( 
-				'title' => __('Disable all meta boxes Wpematico Campaign Info.', 'wpematico' ),
-				'tip' => __('This option disables all the meta boxes in the posts created by the wpematico campaigns.', 'wpematico' ),
+				'title' => __('Disable metabox Wpematico Campaign Info in post editing.', 'wpematico' ),
+				'tip' => __('This option disables the metabox inside the posts editing screen created by the WPeMatico.', 'wpematico' ),
 			),
 			'emptytrashbutton' => array( 
 				'title' => __('Shows Button to empty trash on lists.', 'wpematico' ),
