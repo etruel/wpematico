@@ -839,6 +839,44 @@ public static function feeds_box( $post ) {
 				.help_wizard{font-size: 18px; min-height: 50px; max-height: 50px; overflow-y: auto;  padding:5px; padding-left: 50px;}
 				.icon-wizard-help{font-size: 70px; float: left; color: white; margin-top: 20px; margin-left: -10px; }
 				.closed_wizard{text-shadow: 1px 1px 1px #9E5729;}
+
+				@media only screen and (min-width : 320px) {
+					#thickbox_wizard{width: 50% !important;}
+					#thickbox_wizard{margin-top: -5px !important;}
+					#thickbox_wizard>h2{font-size: 12px !important;}
+					.help_wizard{font-size: 12px !important;}
+					.icon-wizard-help{font-size: 30px !important;}
+			    	.closed_wizard{font-size: 10px !important;}
+			    	.title_wizard{font-size: 0.8em !important; padding: 2px !important;}
+					.wpematico_divider_list_wizard{margin-top: -15px;}
+					#temp_postbox{margin-top: -25px !important;}
+			    }
+
+			    /* Extra Small Devices, Phones */ 
+			    @media only screen and (min-width : 480px) {
+
+			    }
+
+			    /* Small Devices, Tablets */
+			    @media only screen and (min-width : 768px) {
+
+			    }
+
+			    /* Medium Devices, Desktops */
+			    @media only screen and (min-width : 992px) {
+			    	#thickbox_wizard{width: 60% !important;}
+					#thickbox_wizard{margin-top: 20px !important;}
+					#thickbox_wizard>h2{font-size: 30px !important;}
+					.help_wizard{font-size: 18px !important;}
+					.icon-wizard-help{font-size: 70px !important;}
+			    	.closed_wizard{font-size: 10px !important;}
+			    	.title_wizard{font-size: 1.3em !important; padding: 10px !important;}
+					.wpematico_divider_list_wizard{margin-top: -0px;}
+					#temp_postbox{margin-top: 0px !important;}
+
+			    }
+
+
 			</style>
 			<div id="wizard_mask">
 
