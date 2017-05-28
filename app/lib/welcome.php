@@ -72,10 +72,21 @@ class WPEMATICO_Welcome {
 			array( $this, 'getting_started_screen' )
 		);
 
+		/*Subscription*/
+		add_dashboard_page(
+			__( 'WPeMatico Subscription', 'wpematico' ),
+			__( 'WPeMatico Subscription', 'wpematico' ),
+			$this->minimum_capability,
+			'wpematico-subscription',
+			array( $this, 'subscription_screen')
+		);
+
+
 		// Now remove them from the menus so plugins that allow customizing the admin menu don't show them
 //		remove_submenu_page( 'index.php', 'wpematico-about' );
 		remove_submenu_page( 'index.php', 'wpematico-changelog' );
 		remove_submenu_page( 'index.php', 'wpematico-getting-started' );
+		remove_submenu_page( 'index.php', 'wpematico-subscription' );
 	}
 
 	/**
@@ -151,6 +162,9 @@ class WPEMATICO_Welcome {
 			</a>
 			<a class="nav-tab <?php echo $selected == 'wpematico-changelog' ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'wpematico-changelog' ), 'index.php' ) ) ); ?>">
 				<?php _e( 'Changelog', 'wpematico' ); ?>
+			</a>
+			<a class="nav-tab <?php echo $selected == 'wpematico-subscription' ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'wpematico-subscription' ), 'index.php' ) ) ); ?>">
+				<?php _e( 'Subscription', 'wpematico' ); ?>
 			</a>
 		</h1>
 		<?php
@@ -287,6 +301,8 @@ class WPEMATICO_Welcome {
 		</div>
 		<?php
 	}
+
+
 
 	/**
 	 * Render Changelog Screen
@@ -435,6 +451,146 @@ class WPEMATICO_Welcome {
 		</div>
 		<?php
 	}
+
+
+	/**
+	 * Render Subscription Screen
+	 *
+	 * @access public
+	 * @since 2.0.3
+	 * @return void
+	 */
+
+	public function WPgetDomain($url){
+	    $protocolos = array('http://', 'https://', 'ftp://', 'www.');
+	    $url = explode('/', str_replace($protocolos, '', $url));
+	    return $url[0];
+	}
+	public function WPbaseurl(){
+		  return sprintf(
+		    "%s://%s%s",
+		    isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
+		    $_SERVER['SERVER_NAME'],
+		    $_SERVER['REQUEST_URI']
+		  );
+	}
+
+	public function subscription_screen(){
+	?>
+	<div class="wrap about-wrap wpematico-about-wrap">
+			<?php
+				// load welcome message and content tabs
+				$this->welcome_message();
+				$this->tabs();
+				global $current_user;
+  				wp_get_current_user();
+			?>
+			<style type="text/css">
+				.panel-heading {
+				    color: #fff;
+				    background-color: #0073AA;
+				    border-color:#006291;
+				    width: 50%;
+					padding-left: 20px;
+					padding-right: 20px;
+				}
+				.panel-heading h3 {
+				    font-size: 13px;
+				    letter-spacing: .1em;
+				    color: white;
+				    text-transform: uppercase;
+				    margin: 0;
+				    line-height: 40px;
+				    text-rendering: auto;
+
+				}
+				form#wpsubscription_form{
+					width: 50%;
+					background-color: #FFFFFF;
+					padding: 20px;
+
+				}
+				.wpsubscription_info{
+					padding: 15px;
+					margin-bottom: 19px;
+					border: 1px solid transparent;
+					border-radius: 3px;
+					color: #1f89c4;
+					background-color: #e7f4fb;
+					border-color: #63b7e6;
+					background: #fff!important;
+				}
+				.form-control{
+					border: 1px solid #e1e3e8;
+					color: #656b79;
+					height: 34px;
+					padding: 7px 9px;
+					box-shadow: none!important;
+					display: block;
+				    width: 50%;
+				    height: 37px;
+				    padding: 8px 16px;
+				    font-size: 13px;
+				    line-height: 1.46153846;
+				    color: #3d414a;
+				    background-color: #fff;
+				    background-image: none;
+				    border: 1px solid #e1e3e8;
+				    border-radius: 3px;
+				    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+				    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+					-webkit-appearance: textfield;
+				    background-color: white;
+				    -webkit-rtl-ordering: logical;
+				    user-select: text;
+				    cursor: auto;
+				}
+				.wpbutton-submit-subscription{
+					background-color: #E1E1E1;
+					margin-top: 0px;
+					margin-top: -10px;
+				    width: 50%;
+					padding-left: 20px;
+					padding-right: 20px;
+					padding-top: 20px;
+					padding-bottom: 20px;
+
+				}
+			</style>
+			<div class="subscription">
+				<p class="wpsubscription_info"><?php _e('Subscribe to our Newsletter and the first to receive information about the latest updates of WPeMatico.','wpematico'); ?></p>
+				<div class="panel-heading"><h3 class="wpform-h3title"><?php _e( 'Suscription', 'wpematico' );?></h3></div>
+				<form action="" id="wpsubscription_form" method="post" class="wpcf7-form" enctype="multipart/form-data">
+					
+					<p>
+						<label><?php _e("First Name","wpematico"); ?><br>
+						    <span class="">
+						    	<input type="text" id="" name="" value="<?php echo $current_user->user_firstname; ?>" size="40" class="form-control">
+						    </span>
+					    </label>
+					 </p>
+					 <p>
+						<label><?php _e("Email","wpematico"); ?><br>
+						    <span class="">
+						    	<input type="text" id="" name="" value="<?php echo $current_user->user_email; ?>" size="40" class="form-control">
+						    </span>
+					    </label>
+					 </p>
+					 <p>
+						<label><?php _e("Web Site","wpematico"); ?><br>
+						    <span class="">
+						    	<input type="text" id="" name="" value="<?php echo $this->WPgetDomain($this->WPbaseurl());  ?>" size="40" class="form-control">
+						    </span>
+					    </label>
+					 </p>
+				</form>
+				<p class="wpbutton-submit-subscription"><input type="submit" class="button button-primary"  value="<?php _e('Subscribe'); ?>">
+				</p>
+			</div>
+		</div>
+
+	<?php 
+	}	
 
 
 	/**

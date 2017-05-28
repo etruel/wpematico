@@ -243,6 +243,11 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
+== Changelog ==
+= 1.6.4  April 28, 2017 =
+* Added feature of create campaign with wizard.
+* Subscription form added on the welcome page.
+
 = 1.6.3  April 28, 2017 =
 * Debug Info in Settings is now System Status tab with new sections inside.
 * Added new table with info and system requirements in System Status tab.
