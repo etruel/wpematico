@@ -909,7 +909,7 @@ public static function feeds_box( $post ) {
 				if(cont_wizard==0) $("#prev_wizard").hide(0);
 	
 				//button custom tytle
-				$(".wp-heading-inline").after("<span class='thickbox_open'  style='color:black; font-weight:bold; cursor:pointer;'><?php echo __("[Create Campaign Wizard]","wpematico"); ?></span>")
+				$(".wp-heading-inline").after('<a href="#wizard" class="page-title-action thickbox_open"><?php echo __("Wizard","wpematico"); ?></a>');
 
 				//init ejecute function wizard
 				
@@ -1024,7 +1024,7 @@ public static function feeds_box( $post ) {
 				});//close prevWizard
 
 
-				jQuery(document).on('click','.thickbox_open',function(){
+				jQuery(document).on('click','.thickbox_open',function(e){
 					each_metabox_wizard();
 					sort_array_wizard();
 					$("#wizard_mask").fadeIn(500,function(){
@@ -1038,7 +1038,8 @@ public static function feeds_box( $post ) {
 							$(".help_wizard").text("This section does not have online help").text($("."+wizard_class_array[0]).find('h2 span span').attr("title-heltip"));
 						});
 					});
-					console.log(wizard_class_array);
+					//console.log(wizard_class_array);
+					e.preventDefault();
 				});
 
 
@@ -1067,7 +1068,7 @@ public static function feeds_box( $post ) {
 					wizard_id_array.length = 0;
 					$('.postbox').removeAttr('wizard');
 					$("#temp_postbox").find('h2.temp_uisortable span').text("");
-					console.log(wizard_class_array);
+					//console.log(wizard_class_array);
 					
 				});
 
