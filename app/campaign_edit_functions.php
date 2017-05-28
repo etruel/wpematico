@@ -840,9 +840,14 @@ public static function feeds_box( $post ) {
 				.icon-wizard-help{font-size: 70px; float: left; color: white; margin-top: 20px; margin-left: -10px; }
 				.closed_wizard{text-shadow: 1px 1px 1px #9E5729;}
 
-				@media only screen and (min-width : 320px) {
-					#thickbox_wizard{width: 50% !important;}
-					#thickbox_wizard{margin-top: -5px !important;}
+				
+				/* Small Devices */
+				@media screen and (max-width: 699px) and (min-width: 220px) {
+				    #thickbox_wizard{
+						width: 90% !important; 
+						margin-left: 1% !important;
+						margin-top: -5px !important;
+					}
 					#thickbox_wizard>h2{font-size: 12px !important;}
 					.help_wizard{font-size: 12px !important;}
 					.icon-wizard-help{font-size: 30px !important;}
@@ -850,20 +855,11 @@ public static function feeds_box( $post ) {
 			    	.title_wizard{font-size: 0.8em !important; padding: 2px !important;}
 					.wpematico_divider_list_wizard{margin-top: -15px;}
 					#temp_postbox{margin-top: -25px !important;}
-			    }
-
-			    /* Extra Small Devices, Phones */ 
-			    @media only screen and (min-width : 480px) {
-
-			    }
-
-			    /* Small Devices, Tablets */
-			    @media only screen and (min-width : 768px) {
-
-			    }
-
+				}
+			    
+			    
 			    /* Medium Devices, Desktops */
-			    @media only screen and (min-width : 992px) {
+			   @media screen and (max-width: 1000px) and (min-width: 700px) {
 			    	#thickbox_wizard{width: 60% !important;}
 					#thickbox_wizard{margin-top: 20px !important;}
 					#thickbox_wizard>h2{font-size: 30px !important;}
