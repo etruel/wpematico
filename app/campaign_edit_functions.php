@@ -839,8 +839,17 @@ public static function feeds_box( $post ) {
 				.help_wizard{font-size: 18px; min-height: 50px; max-height: 50px; overflow-y: auto;  padding:5px; padding-left: 50px;}
 				.icon-wizard-help{font-size: 70px; float: left; color: white; margin-top: 20px; margin-left: -10px; }
 				.closed_wizard{text-shadow: 1px 1px 1px #9E5729;}
-
-				
+				.thickbox_open {
+					background: rgb(238, 182, 78) !important;
+			   		border: 1px solid #f66d22 !important;
+				    color: red !important;
+				} 
+				.thickbox_open:hover {
+					background: #f66d22 !important;
+			   		border: 1px solid #f66d22 !important;
+				    color: white !important;
+				}
+			   
 				/* Small Devices */
 				@media screen and (max-width: 699px) and (min-width: 220px) {
 				    #thickbox_wizard{
