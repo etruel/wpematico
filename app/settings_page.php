@@ -234,7 +234,7 @@ function wpematico_settings(){
 				</div>
 				<?php //include( WPeMatico :: $dir . 'myplugins.php');	?>
 			</div>
-
+			<?php do_action('wpematico_setting_page_before');?>
 			<div id="post-body">
 				<div id="post-body-content">
 				<div id="normal-sortables" class="meta-box-sortables ui-sortable">

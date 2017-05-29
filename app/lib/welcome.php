@@ -184,6 +184,7 @@ class WPEMATICO_Welcome {
 				// load welcome message and content tabs
 				$this->welcome_message();
 				$this->tabs();
+				do_action('wpematico_welcome_page_before');
 			?>
 
 			<div class="changelog">
