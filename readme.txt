@@ -247,6 +247,7 @@ or to e-mail etruel@gmail.com
 * Added feature of create campaign with wizard.
 * Subscription form added on the welcome page.
 * Added translation notifications.
+* Added support with srcset attributes on images.
 
 = 1.6.3  April 28, 2017 =
 * Debug Info in Settings is now System Status tab with new sections inside.

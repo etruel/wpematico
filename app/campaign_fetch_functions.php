@@ -528,6 +528,7 @@ class wpematico_campaign_fetch_functions {
 		if($this->cfg['imgcache'] || $campaign['campaign_imgcache'] || $this->cfg['featuredimg']) {
 			$images = $this->parseImages($current_item['content']);
 			$current_item['images'] = $images[2];  //lista de url de imagenes
+			$current_item['content'] = $images[3];  //Replaced src by srcset(If exist and with larger images) in images.
  			
 			if( $this->cfg['nonstatic'] ) { $current_item['images'] = NoNStatic :: imgfind($current_item,$campaign,$item ); }
 			$current_item['images'] = array_values(array_unique($current_item['images']));
@@ -557,8 +558,34 @@ class wpematico_campaign_fetch_functions {
 //		preg_match_all('/<img(.+?)src=["\'](.+?)["\'](.*?)>/', $imgstr , $out);  //for tag img con ' o "
 		preg_match_all('/<\s*img[^\>]*src\s*=\s*[\""\']?([^\""\'\s>]*)/', $imgstr, $out);  // patch to ignore iframes src
 		$out[2] = $out[1];
+		$pattern = '/<img[^>]*src=(\"|\')([^\"\']*)(\'|\")[^>]*srcset=["\'](.+?)["\'](.*?)*>/';
+		preg_match_all($pattern, $imgstr , $srcset_out);   // patch to ignore iframes src
+		foreach ($srcset_out[2] as $ks => $src_with_srcset) {
+			if (in_array($src_with_srcset, $out[2])) {
+				$srcset_string = $srcset_out[4][$ks];
+				$pieces_srcset = explode(',', $srcset_string);
+				$max_width = 0;
+				$max_url = '';
+				foreach ($pieces_srcset as $kps => $piece) {
+					$piece = trim($piece);
+					$pieces_url_srcset = explode(' ', $piece);
+					$url_srcset = $pieces_url_srcset[0];
+					$with = intval($pieces_url_srcset[1]);
+					if ($with > $max_width) {
+						$max_width = $with;
+						$max_url = $url_srcset;
+					}
+				}
+				 if (($key_image = array_search($src_with_srcset, $out[2])) !== FALSE) {
+			       	$new_content = str_replace($out[2][$key_image], $max_url, $new_content);
+			       	$out[2][$key_image] = $max_url;
+			    }
+			   
+			}
+		}
 		preg_match_all('/<link rel=\"(.+?)\" type=\"image\/jpg\" href=\"(.+?)\"(.+?)\/>/', $text, $out2); // for rel=enclosure
 		array_push($out,$out2);  // sum all items to array 
+		$out[3] = $new_content;
 		return $out;
 	}
 
