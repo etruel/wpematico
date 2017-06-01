@@ -553,6 +553,7 @@ class wpematico_campaign_fetch_functions {
 
 	/*** Devuelve todas las imagenes del contenido	*/
 	static function parseImages($text){
+		$new_content = $text;
 		preg_match_all('/<img[^>]+>/i',$text, $result);
 		$imgstr = implode('', $result[0]);
 //		preg_match_all('/<img(.+?)src=["\'](.+?)["\'](.*?)>/', $imgstr , $out);  //for tag img con ' o "

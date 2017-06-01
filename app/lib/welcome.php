@@ -25,6 +25,8 @@ class WPEMATICO_Welcome {
 	 */
 	public $minimum_capability = 'manage_options';
 
+	public $api_url_subscription = 'http://www.wpematico.com/wp-admin/admin-post.php?action=wpmapirest_importdata';
+
 	/**
 	 * Get things started
 	 *
@@ -34,6 +36,7 @@ class WPEMATICO_Welcome {
 		add_action( 'admin_menu', array( $this, 'admin_menus') );
 		add_action( 'admin_head', array( $this, 'admin_head' ) );
 		add_action( 'admin_init', array( $this, 'welcome'    ), 11 );
+		add_action( 'admin_post_save_subscription_wpematico', array($this, 'save_subscription'));
 	}
 
 	/**
@@ -184,7 +187,6 @@ class WPEMATICO_Welcome {
 				// load welcome message and content tabs
 				$this->welcome_message();
 				$this->tabs();
-				do_action('wpematico_welcome_page_before');
 			?>
 
 			<div class="changelog">
@@ -458,23 +460,9 @@ class WPEMATICO_Welcome {
 	 * Render Subscription Screen
 	 *
 	 * @access public
-	 * @since 2.0.3
+	 * @since 1.7.0
 	 * @return void
 	 */
-
-	public function WPgetDomain($url){
-	    $protocolos = array('http://', 'https://', 'ftp://', 'www.');
-	    $url = explode('/', str_replace($protocolos, '', $url));
-	    return $url[0];
-	}
-	public function WPbaseurl(){
-		  return sprintf(
-		    "%s://%s%s",
-		    isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
-		    $_SERVER['SERVER_NAME'],
-		    $_SERVER['REQUEST_URI']
-		  );
-	}
 
 	public function subscription_screen(){
 	?>
@@ -509,6 +497,7 @@ class WPEMATICO_Welcome {
 					width: 50%;
 					background-color: #FFFFFF;
 					padding: 20px;
+					padding-bottom: 0px;
 
 				}
 				.wpsubscription_info{
@@ -550,49 +539,97 @@ class WPEMATICO_Welcome {
 					background-color: #E1E1E1;
 					margin-top: 0px;
 					margin-top: -10px;
-				    width: 50%;
+				    width: 100%;
 					padding-left: 20px;
 					padding-right: 20px;
 					padding-top: 20px;
 					padding-bottom: 20px;
+					margin-left: -20px;
+					margin-top: 20px;
 
 				}
 			</style>
 			<div class="subscription">
+				<?php 
+					if (get_option('wpematico_subscription_email_'.md5($current_user->user_email), false) === false) {
+				?>
 				<p class="wpsubscription_info"><?php _e('Subscribe to our Newsletter and the first to receive information about the latest updates of WPeMatico.','wpematico'); ?></p>
 				<div class="panel-heading"><h3 class="wpform-h3title"><?php _e( 'Suscription', 'wpematico' );?></h3></div>
-				<form action="" id="wpsubscription_form" method="post" class="wpcf7-form" enctype="multipart/form-data">
-					
+				<form action="<?php echo admin_url( 'admin-post.php' ); ?>" id="wpsubscription_form" method="post" class="wpcf7-form">
+					<input type="hidden" name="action" value="save_subscription_wpematico"/>
+					<?php 
+						wp_nonce_field('save_subscription_wpematico');
+					?>
 					<p>
 						<label><?php _e("First Name","wpematico"); ?><br>
 						    <span class="">
-						    	<input type="text" id="" name="" value="<?php echo $current_user->user_firstname; ?>" size="40" class="form-control">
+						    	<input type="text" id="" name="wpematico_subscription[fname]" value="<?php echo $current_user->user_firstname; ?>" size="40" class="form-control">
+						    </span>
+					    </label>
+					 </p>
+					 <p>
+						<label><?php _e("Last Name","wpematico"); ?><br>
+						    <span class="">
+						    	<input type="text" id="" name="wpematico_subscription[lname]" value="<?php echo $current_user->user_lastname; ?>" size="40" class="form-control">
 						    </span>
 					    </label>
 					 </p>
 					 <p>
 						<label><?php _e("Email","wpematico"); ?><br>
 						    <span class="">
-						    	<input type="text" id="" name="" value="<?php echo $current_user->user_email; ?>" size="40" class="form-control">
+						    	<input type="text" id="" name="wpematico_subscription[email]" value="<?php echo $current_user->user_email; ?>" size="40" class="form-control">
 						    </span>
 					    </label>
 					 </p>
-					 <p>
-						<label><?php _e("Web Site","wpematico"); ?><br>
-						    <span class="">
-						    	<input type="text" id="" name="" value="<?php echo $this->WPgetDomain($this->WPbaseurl());  ?>" size="40" class="form-control">
-						    </span>
-					    </label>
-					 </p>
+					 
+					<p class="wpbutton-submit-subscription"><input type="submit" class="button button-primary"  value="<?php _e('Subscribe'); ?>">
+					</p>
 				</form>
-				<p class="wpbutton-submit-subscription"><input type="submit" class="button button-primary"  value="<?php _e('Subscribe'); ?>">
-				</p>
+			<?php 
+			} else { ?>
+				<p class="wpsubscription_info"><?php echo sprintf( __('Your email %s is already subscribed.','wpematico'), '<strong>'.$current_user->user_email.'</strong>'); ?></p>
+			<?php 
+			}
+			?>
 			</div>
 		</div>
 
 	<?php 
 	}	
 
+	/**
+	* Static function save_subscription
+	* @access public
+	* @return void
+	* @since 1.7.0
+	*/
+	public function save_subscription() {
+		if ( ! wp_verify_nonce($_POST['_wpnonce'], 'save_subscription_wpematico' ) ) {
+		    wp_die(__( 'Security check', 'wpematico' )); 
+		}
+		if (empty($_POST['wpematico_subscription']['fname']) || empty($_POST['wpematico_subscription']['lname']) || empty($_POST['wpematico_subscription']['email'])) {
+			wp_redirect($_POST['_wp_http_referer']);
+			exit;
+		}
+		$response = wp_remote_post($this->api_url_subscription, array(
+			'method' => 'POST',
+			'timeout' => 45,
+			'redirection' => 2,
+			'httpversion' => '1.0',
+			'blocking' => true,
+			'headers' => array(),
+			'body' => array('FNAME' => $_POST['wpematico_subscription']['fname'], 'LNAME' => $_POST['wpematico_subscription']['lname'], 'EMAIL' => $_POST['wpematico_subscription']['email']),
+			'cookies' => array()
+		    )
+		);
+		if (!is_wp_error($response)) {
+			update_option('wpematico_subscription_email_'.md5($_POST['wpematico_subscription']['email']), true);
+		 	WPeMatico::add_wp_notice( array('text' => __('Subscription saved',  'wpematico'), 'below-h2'=>false ) );
+		}
+		
+		wp_redirect($_POST['_wp_http_referer']);
+		exit;
+	}
 
 	/**
 	 * Parse the WPEMATICO readme.txt file
