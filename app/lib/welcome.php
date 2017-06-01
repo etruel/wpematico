@@ -471,8 +471,7 @@ class WPEMATICO_Welcome {
 				// load welcome message and content tabs
 				$this->welcome_message();
 				$this->tabs();
-				global $current_user;
-  				wp_get_current_user();
+  				$current_user = wp_get_current_user();
 			?>
 			<style type="text/css">
 				.panel-heading {
@@ -551,7 +550,8 @@ class WPEMATICO_Welcome {
 			</style>
 			<div class="subscription">
 				<?php 
-					if (get_option('wpematico_subscription_email_'.md5($current_user->user_email), false) === false) {
+					$suscripted_user = get_option('wpematico_subscription_email_'.md5($current_user->ID), false);
+					if ($suscripted_user === false) {
 				?>
 				<p class="wpsubscription_info"><?php _e('Subscribe to our Newsletter and the first to receive information about the latest updates of WPeMatico.','wpematico'); ?></p>
 				<div class="panel-heading"><h3 class="wpform-h3title"><?php _e( 'Suscription', 'wpematico' );?></h3></div>
@@ -587,7 +587,7 @@ class WPEMATICO_Welcome {
 				</form>
 			<?php 
 			} else { ?>
-				<p class="wpsubscription_info"><?php echo sprintf( __('Your email %s is already subscribed.','wpematico'), '<strong>'.$current_user->user_email.'</strong>'); ?></p>
+				<p class="wpsubscription_info"><?php echo sprintf( __('Your email %s is already subscribed.','wpematico'), '<strong>'.$suscripted_user.'</strong>'); ?></p>
 			<?php 
 			}
 			?>
@@ -611,6 +611,11 @@ class WPEMATICO_Welcome {
 			wp_redirect($_POST['_wp_http_referer']);
 			exit;
 		}
+		if (!is_email($_POST['wpematico_subscription']['email'])) {
+			wp_redirect($_POST['_wp_http_referer']);
+			exit;
+		}
+		$current_user = wp_get_current_user();
 		$response = wp_remote_post($this->api_url_subscription, array(
 			'method' => 'POST',
 			'timeout' => 45,
@@ -623,7 +628,7 @@ class WPEMATICO_Welcome {
 		    )
 		);
 		if (!is_wp_error($response)) {
-			update_option('wpematico_subscription_email_'.md5($_POST['wpematico_subscription']['email']), true);
+			update_option('wpematico_subscription_email_'.md5($current_user->ID), $_POST['wpematico_subscription']['email']);
 		 	WPeMatico::add_wp_notice( array('text' => __('Subscription saved',  'wpematico'), 'below-h2'=>false ) );
 		}
 		
