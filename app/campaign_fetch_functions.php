@@ -532,7 +532,11 @@ class wpematico_campaign_fetch_functions {
  			
 			if( $this->cfg['nonstatic'] ) { $current_item['images'] = NoNStatic :: imgfind($current_item,$campaign,$item ); }
 			$current_item['images'] = array_values(array_unique($current_item['images']));
-
+			foreach ($current_item['images'] as $ki => $image) {
+				if (strpos($image, '//') === 0) {
+					$current_item['images'][$ki] = 'http:'.$current_item['images'][$ki];
+				}
+			}
 		}
 		return $current_item;
 	}
