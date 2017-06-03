@@ -616,6 +616,11 @@ class wpematico_campaign_fetch_functions {
 		if (empty($tags)) {
 			$tags = array('a','iframe','script');
 		}
+		$index_script = array_search('script', $tags);
+		if ($index_script !== FALSE) {
+			$text = $this->strip_tags_content($text, '<script>', TRUE);
+			unset($tags[$index_script]);
+		}
 	    foreach ($tags as $tag){
 	        while(preg_match('/<'.$tag.'(|\W[^>]*)>(.*)<\/'. $tag .'>/iusU', $text, $found)){
 	            $text = str_replace($found[0],$found[2],$text);
@@ -623,7 +628,24 @@ class wpematico_campaign_fetch_functions {
 	    }
 	    return preg_replace('/(<('.join('|',$tags).')(|\W.*)\/>)/iusU', '', $text);
 	}
+	function strip_tags_content($text, $tags = '', $invert = FALSE) { 
 
+	  preg_match_all('/<(.+?)[\s]*\/?[\s]*>/si', trim($tags), $tags); 
+	  $tags = array_unique($tags[1]); 
+	    
+	  if(is_array($tags) AND count($tags) > 0) { 
+	    if($invert == FALSE) { 
+	      return preg_replace('@<(?!(?:'. implode('|', $tags) .')\b)(\w+)\b.*?>.*?</\1>@si', '', $text); 
+	    } 
+	    else { 
+	      return preg_replace('@<('. implode('|', $tags) .')\b.*?>.*?</\1>@si', '', $text); 
+	    } 
+	  } 
+	  elseif($invert == FALSE) { 
+	    return preg_replace('@<(\w+)\b.*?>.*?</\1>@si', '', $text); 
+	  } 
+	  return $text; 
+	}
 	static function wpematico_get_yt_rss_tags( $content, $campaign, $feed, $item ) {		
 		if( strpos( $feed->feed_url, 'https://www.youtube.com/feeds/videos.xml' ) !== false ) {
 			$ytvideoId = $item->get_item_tags('http://www.youtube.com/xml/schemas/2015', 'videoId');
