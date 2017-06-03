@@ -249,6 +249,7 @@ or to e-mail etruel@gmail.com
 * Added translation notifications.
 * Added support with srcset attributes on images.
 * Added support to images with optional protocol.
+* Fixed problem with verify SSL on feeds.
 
 = 1.6.3  April 28, 2017 =
 * Debug Info in Settings is now System Status tab with new sections inside.

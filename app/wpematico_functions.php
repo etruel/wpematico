@@ -469,6 +469,8 @@ class WPeMatico_functions {
 
 	$feed->set_feed_url($url);
     $feed->feed_url = rawurldecode($feed->feed_url);
+    $feed->curl_options[CURLOPT_SSL_VERIFYHOST] = false;
+    $feed->curl_options[CURLOPT_SSL_VERIFYPEER] = false;
     $feed->set_item_limit($max);
 	$feed->set_stupidly_fast($stupidly_fast);
 	if(!$stupidly_fast) {
