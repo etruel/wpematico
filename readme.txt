@@ -251,6 +251,7 @@ or to e-mail etruel@gmail.com
 * Added support to images with optional protocol.
 * Fixed problem with verify SSL on feeds.
 * Fixed issue with content of script elements on article content.
+* Fixed issue with wpe-cron when log is enabled.
 
 = 1.6.3  April 28, 2017 =
 * Debug Info in Settings is now System Status tab with new sections inside.

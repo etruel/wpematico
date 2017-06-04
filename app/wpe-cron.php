@@ -87,7 +87,7 @@ if($cfg['dontruncron']) {
 if(!$disablewpcron && !$dontruncron) {
 	die( "To use this file you must deactivate cron on WPeMatico Settings Page in Wordpress admin." );
 }
-
+$file_handle = false;
 $args = array( 'post_type' => 'wpematico', 'orderby' => 'ID', 'order' => 'ASC', 'numberposts' => -1 );
 $campaigns = get_posts( $args );
 foreach( $campaigns as $post ) {
