@@ -399,7 +399,9 @@ class wpematico_campaign_fetch_functions {
 						}
 					}else {
 					    trigger_error(__('Uploading media...', WPeMatico :: TEXTDOMAIN ).$imagen_src,E_USER_NOTICE);
-						$imagen_src_real = $this->getRelativeUrl($itemUrl, $imagen_src);						
+						$imagen_src_real = $this->getRelativeUrl($itemUrl, $imagen_src);
+						// Strip all white space on images URLs.	
+						$imagen_src_real = str_replace(' ', '%20', $imagen_src_real);						
 						$imagen_src_real = apply_filters('wpematico_img_src_url', $imagen_src_real ); // original source
 						$allowed = (isset($this->cfg['allowed']) && !empty($this->cfg['allowed']) ) ? $this->cfg['allowed'] : 'jpg,gif,png,tif,bmp,jpeg' ;
 						$allowed = apply_filters('wpematico_allowext', $allowed );

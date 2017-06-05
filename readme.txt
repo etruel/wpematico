@@ -252,6 +252,7 @@ or to e-mail etruel@gmail.com
 * Fixed problem with verify SSL on feeds.
 * Fixed issue with content of script elements on article content.
 * Fixed issue with wpe-cron when log is enabled.
+* Fixed issue with white space on images.
 
 = 1.6.3  April 28, 2017 =
 * Debug Info in Settings is now System Status tab with new sections inside.
