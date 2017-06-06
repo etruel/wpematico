@@ -243,17 +243,16 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
-= 1.6.4  April 28, 2017 =
-* Added feature of create campaign with wizard.
-* Subscription form added on the welcome page.
-* Added translation notifications.
-* Added support with srcset attributes on images.
-* Added support to images with optional protocol.
-* Fixed problem with verify SSL on feeds.
-* Fixed issue with content of script elements on article content.
-* Fixed issue with wpe-cron when log is enabled.
-* Fixed issue with white space on images.
+= 1.6.4  Jun 6, 2017 =
+* Added a wizard to create a campaign!
 * Added feature "Order feed items by Date before process".
+* Added support for images with srcset attribute in their tags.
+* Added support for images with optional or missed protocol in their URLs.
+* Fixes a problem to verify SSL on feeds URLs with https.
+* Fixes an issue with strip script tags from articles contents.
+* Fixes an issue with external cron when the log file was enabled.
+* Fixes an issue with white spaces in the url of the images.
+* A subscription form to our news was added in the welcome page.
 
 = 1.6.3  April 28, 2017 =
 * Debug Info in Settings is now System Status tab with new sections inside.
