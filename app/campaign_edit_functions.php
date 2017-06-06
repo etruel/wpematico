@@ -288,6 +288,7 @@ public static function template_box( $post ) {
 public static function options_box( $post ) { 
 	global $post, $campaign_data, $cfg, $helptip ;
 	$campaign_max = $campaign_data['campaign_max'];
+	$campaign_feed_order_date = $campaign_data['campaign_feed_order_date'];
 	$campaign_feeddate = $campaign_data['campaign_feeddate'];
 	$campaign_author = $campaign_data['campaign_author'];
 	$campaign_linktosource = $campaign_data['campaign_linktosource'];
@@ -305,6 +306,10 @@ public static function options_box( $post ) {
 		<p>
 			<input name="campaign_max" type="number" min="0" size="3" value="<?php echo $campaign_max;?>" class="small-text" id="campaign_max"/> 
 			<label for="campaign_max"><?php echo __('Max items to create on each fetch.', 'wpematico' ); ?></label> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['itemfetch']; ?>"></span>
+		</p>
+		<p>
+			<input class="checkbox" type="checkbox"<?php checked($campaign_feed_order_date ,true);?> name="campaign_feed_order_date" value="1" id="campaign_feed_order_date"/>
+			<label for="campaign_feed_order_date"><?php echo __('Order feed items by Date before process.', 'wpematico' ); ?></label> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['feed_order_date']; ?>"></span>
 		</p>
 		<p>
 			<input class="checkbox" type="checkbox"<?php checked($campaign_feeddate ,true);?> name="campaign_feeddate" value="1" id="campaign_feeddate"/>

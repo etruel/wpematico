@@ -1093,6 +1093,7 @@ class WPeMatico_Campaigns {
 		$campaign = WPeMatico :: get_campaign ($post_id);
 		$posdata  = $_POST; //apply_filters('wpematico_check_campaigndata', $_POST );
 		//parse disabled checkfields that dont send any data
+		$posdata['campaign_feed_order_date']	= (!isset($posdata['campaign_feed_order_date']) || empty($posdata['campaign_feed_order_date'])) ? false: ($posdata['campaign_feed_order_date']==1) ? true : false;
 		$posdata['campaign_feeddate']	= (!isset($posdata['campaign_feeddate']) || empty($posdata['campaign_feeddate'])) ? false: ($posdata['campaign_feeddate']==1) ? true : false;
 		$posdata['campaign_allowpings']=(!isset($posdata['campaign_allowpings']) || empty($posdata['campaign_allowpings'])) ? false: ($posdata['campaign_allowpings']==1) ? true : false;
 		$posdata['campaign_linktosource']=(!isset($posdata['campaign_linktosource']) || empty($posdata['campaign_linktosource'])) ? false: ($posdata['campaign_linktosource']==1) ? true : false;

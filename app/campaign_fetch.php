@@ -112,7 +112,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		// Access the feed
 		if($this->campaign['campaign_type']=="feed") { 		// Access the feed
 			$wpe_url_feed = apply_filters('wpematico_simplepie_url', $feed, $kf, $this->campaign);
-			$simplepie =  WPeMatico :: fetchFeed($wpe_url_feed, $this->cfg['set_stupidly_fast'], $this->campaign['campaign_max']);
+			$simplepie =  WPeMatico :: fetchFeed($wpe_url_feed, $this->cfg['set_stupidly_fast'], $this->campaign['campaign_max'], $this->campaign['campaign_feed_order_date']);
 		}else {
 			$simplepie = apply_filters('Wpematico_process_fetching', $this->campaign);
 		}

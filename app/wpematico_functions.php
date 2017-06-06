@@ -189,6 +189,8 @@ class WPeMatico_functions {
 			$campaigndata['campaign_post_format']	= '0';
 		}
 		$campaigndata['activated']	= (!isset($post_data['activated']) || empty($post_data['activated'])) ? false: ($post_data['activated']==1) ? true : false;
+		
+		$campaigndata['campaign_feed_order_date']	= (!isset($post_data['campaign_feed_order_date']) || empty($post_data['campaign_feed_order_date'])) ? false: ($post_data['campaign_feed_order_date']==1) ? true : false;
 		$campaigndata['campaign_feeddate']	= (!isset($post_data['campaign_feeddate']) || empty($post_data['campaign_feeddate'])) ? false: ($post_data['campaign_feeddate']==1) ? true : false;
 
 		$campaign_feeds = array();
@@ -438,7 +440,7 @@ class WPeMatico_functions {
    * @param   integer     $max              Limit of items to fetch
    * @return  SimplePie_Item    Feed object
    **/
-  public static function fetchFeed($url, $stupidly_fast = false, $max = 0) {  # SimplePie
+  public static function fetchFeed($url, $stupidly_fast = false, $max = 0, $order_by_date = false) {  # SimplePie
 	$cfg = get_option(WPeMatico :: OPTION_KEY);
 	if ( $cfg['force_mysimplepie']){
 		if (class_exists('SimplePie')) {
@@ -465,7 +467,7 @@ class WPeMatico_functions {
 	}
     $feed = new SimplePie();
     $feed->timeout = apply_filters('wpe_simplepie_timeout', 30);
-    $feed->enable_order_by_date(false);
+    $feed->enable_order_by_date($order_by_date);
 
 	$feed->set_feed_url($url);
     $feed->feed_url = rawurldecode($feed->feed_url);

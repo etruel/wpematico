@@ -20,6 +20,10 @@ $helpcampaign = array(
 				__('Recommended values are between 3 and 5 fetching more times to not lose items.', 'wpematico' ).'  '.
 				__('Set it to 0 for unlimited.', 'wpematico' ),
 		),
+		'feed_order_date' => array( 
+			'title' => __('Order feed items by Date before process.', 'wpematico' ),
+			'tip' => __('Recommended to use only if the feeds are not ordered by date. The campaign can lose some items if the feed are not ordered by date from newest to oldest.', 'wpematico' ),
+		),
 		'itemdate' => array( 
 			'title' => __('Use feed item date.', 'wpematico' ),
 			'tip' => __('Use the original date from the post instead of the time the post is created by WPeMatico.', 'wpematico' ).'  '.
