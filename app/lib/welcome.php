@@ -75,21 +75,21 @@ class WPEMATICO_Welcome {
 			array( $this, 'getting_started_screen' )
 		);
 
-		/*Subscription*/
+/*		// Subscription
 		add_dashboard_page(
 			__( 'WPeMatico Subscription', 'wpematico' ),
 			__( 'WPeMatico Subscription', 'wpematico' ),
 			$this->minimum_capability,
 			'wpematico-subscription',
-			array( $this, 'subscription_screen')
+			array( $this, 'subscription_form')
 		);
 
-
+*/
 		// Now remove them from the menus so plugins that allow customizing the admin menu don't show them
 //		remove_submenu_page( 'index.php', 'wpematico-about' );
 		remove_submenu_page( 'index.php', 'wpematico-changelog' );
 		remove_submenu_page( 'index.php', 'wpematico-getting-started' );
-		remove_submenu_page( 'index.php', 'wpematico-subscription' );
+//		remove_submenu_page( 'index.php', 'wpematico-subscription' );
 	}
 
 	/**
@@ -166,9 +166,9 @@ class WPEMATICO_Welcome {
 			<a class="nav-tab <?php echo $selected == 'wpematico-changelog' ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'wpematico-changelog' ), 'index.php' ) ) ); ?>">
 				<?php _e( 'Changelog', 'wpematico' ); ?>
 			</a>
-			<a class="nav-tab <?php echo $selected == 'wpematico-subscription' ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'wpematico-subscription' ), 'index.php' ) ) ); ?>">
+<?php /*			<a class="nav-tab <?php echo $selected == 'wpematico-subscription' ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'wpematico-subscription' ), 'index.php' ) ) ); ?>">
 				<?php _e( 'Subscription', 'wpematico' ); ?>
-			</a>
+			</a>*/ ?>
 		</h1>
 		<?php
 	}
@@ -193,13 +193,13 @@ class WPEMATICO_Welcome {
 				<h3><?php _e( 'Including Campaign Types.', 'wpematico' );?></h3>
 				<div class="feature-section">
 					<div class="feature-section-media">
-						<img src="<?php echo WPEMATICO_PLUGIN_URL.'images/campaigntype.png'; ?>"/>
+						<?php $this->subscription_form(); ?>
 					</div>
 					<div class="feature-section-content">
 						<h4><?php _e( 'Youtube Fetcher', 'wpematico' );?></h4>
 						<p><?php _e( 'We implemented a new feature that, until now, was not working and that many asked for it: Fetch the feeds of channels or users of YouTube videos!', 'wpematico' );?></p>
 						<p><?php _e( 'Is a first step using them <b>Youtube standard feeds</b> without need of the API to make a content with the image outstanding, the video embedded and the description below.', 'wpematico' );?></p>
-
+						<img style="float:right;width: 120px;" src="<?php echo WPEMATICO_PLUGIN_URL.'images/campaigntype.png'; ?>"/>
 						<h4><?php _e( 'Introducing Campaign Types', 'wpematico' );?></h4>
 						<p><?php _e( 'In addition to the feeds from Youtube, we have incorporated a new feature that will allow a powerful fetching. The types of campaign will improve the plugin for new plug-ins and will allow new sources different of RSS.', 'wpematico' );?></p>
 
@@ -464,38 +464,19 @@ class WPEMATICO_Welcome {
 	 * @return void
 	 */
 
-	public function subscription_screen(){
+	public function subscription_form(){
 	?>
 	<div class="wrap about-wrap wpematico-about-wrap">
 			<?php
-				// load welcome message and content tabs
-				$this->welcome_message();
-				$this->tabs();
   				$current_user = wp_get_current_user();
 			?>
 			<style type="text/css">
-				.panel-heading {
-				    color: #fff;
-				    background-color: #0073AA;
-				    border-color:#006291;
-				    width: 50%;
-					padding-left: 20px;
-					padding-right: 20px;
-				}
-				.panel-heading h3 {
-				    font-size: 13px;
-				    letter-spacing: .1em;
-				    color: white;
-				    text-transform: uppercase;
-				    margin: 0;
-				    line-height: 40px;
-				    text-rendering: auto;
-
+				.subscription {
+					text-align: left;
 				}
 				form#wpsubscription_form{
-					width: 50%;
 					background-color: #FFFFFF;
-					padding: 20px;
+					padding: 10px 20px;
 					padding-bottom: 0px;
 
 				}
@@ -515,7 +496,6 @@ class WPEMATICO_Welcome {
 					height: 34px;
 					padding: 7px 9px;
 					box-shadow: none!important;
-					display: block;
 				    width: 50%;
 				    height: 37px;
 				    padding: 8px 16px;
@@ -538,13 +518,13 @@ class WPEMATICO_Welcome {
 					background-color: #E1E1E1;
 					margin-top: 0px;
 					margin-top: -10px;
-				    width: 100%;
 					padding-left: 20px;
 					padding-right: 20px;
 					padding-top: 20px;
 					padding-bottom: 20px;
 					margin-left: -20px;
 					margin-top: 20px;
+					text-align: right;
 
 				}
 			</style>
@@ -553,29 +533,28 @@ class WPEMATICO_Welcome {
 					$suscripted_user = get_option('wpematico_subscription_email_'.md5($current_user->ID), false);
 					if ($suscripted_user === false) {
 				?>
-				<p class="wpsubscription_info"><?php _e('Subscribe to our Newsletter and the first to receive information about the latest updates of WPeMatico.','wpematico'); ?></p>
-				<div class="panel-heading"><h3 class="wpform-h3title"><?php _e( 'Suscription', 'wpematico' );?></h3></div>
+				<p class="wpsubscription_info"><?php _e('Subscribe to our Newsletter and be the first to receive our news.','wpematico'); ?></p>
 				<form action="<?php echo admin_url( 'admin-post.php' ); ?>" id="wpsubscription_form" method="post" class="wpcf7-form">
 					<input type="hidden" name="action" value="save_subscription_wpematico"/>
 					<?php 
 						wp_nonce_field('save_subscription_wpematico');
 					?>
 					<p>
-						<label><?php _e("First Name","wpematico"); ?><br>
+						<label><?php _e("First Name","wpematico"); ?>
 						    <span class="">
 						    	<input type="text" id="" name="wpematico_subscription[fname]" value="<?php echo $current_user->user_firstname; ?>" size="40" class="form-control">
 						    </span>
 					    </label>
 					 </p>
 					 <p>
-						<label><?php _e("Last Name","wpematico"); ?><br>
+						<label><?php _e("Last Name","wpematico"); ?>
 						    <span class="">
 						    	<input type="text" id="" name="wpematico_subscription[lname]" value="<?php echo $current_user->user_lastname; ?>" size="40" class="form-control">
 						    </span>
 					    </label>
 					 </p>
 					 <p>
-						<label><?php _e("Email","wpematico"); ?><br>
+						 <label><?php _e("email","wpematico"); ?> <span>(*)</span>
 						    <span class="">
 						    	<input type="text" id="" name="wpematico_subscription[email]" value="<?php echo $current_user->user_email; ?>" size="40" class="form-control">
 						    </span>
