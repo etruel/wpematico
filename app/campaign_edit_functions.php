@@ -841,7 +841,7 @@ public static function feeds_box( $post ) {
 				#thickbox_wizard{position: relative;width:80%; height: auto;max-width: 700px;display: none;position: fixed;top: 0;left: 0;z-index: 9999999;padding:15px; background:-webkit-linear-gradient(#D47536,#B5642E); background:-moz-linear-gradient(#D47536,#B5642E); background:-o-linear-gradient(#D47536,#B5642E); }
 				#thickbox_wizard h2{text-align: center; font-family: helvetica; color: white; position: relative; }
 				#thickbox_wizard h2 input{position: absolute; top: 0; right:0; padding-right:10px; background-color: transparent; border:none; font-size: 40px !important; color: white; margin-top: -30px; }
-				.help_wizard{font-size: 18px; min-height: 50px; max-height: 50px; overflow-y: auto;  padding:5px; padding-left: 50px;}
+				.help_wizard{font-size: 18px; min-height: 20px; max-height: 10vh; overflow-y: auto;  padding:5px; padding-left: 50px;}
 				.icon-wizard-help{font-size: 70px; float: left; color: white; margin-top: 20px; margin-left: -10px; }
 				.closed_wizard{text-shadow: 1px 1px 1px #9E5729;}
 				.thickbox_open {
@@ -895,7 +895,7 @@ public static function feeds_box( $post ) {
 				<h2 style="font-size: 30px; text-shadow: 1px 1px 1px #9E5729;"><?php echo __('CAMPAIGN WIZARD','wpematico'); ?>
 				<input type="button" value="x" class="closed_wizard"></h2>
 					<div class="title_wizard" id="titlediv" style="padding: 10px; background-color: #DB9667;"></div>
-					<div class="wpematico_divider_list_wizard" style="border-top: 1px dotted #DE9768; padding-top: 5px; padding-bottom: 15px;">
+					<div class="wpematico_divider_list_wizard" style="padding-top: 1vh; padding-bottom: 1vh; height: 10vh;">
 						<span  class="dashicons dashicons-editor-help icon-wizard-help"></span>
 						<p style="color: white;" class="help_wizard"> <?php __('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 						tempor incididunt ut labore et dolore magna aliqua onsectetur adipisicing elit.', 'wpematico'); ?></p>
@@ -943,7 +943,7 @@ public static function feeds_box( $post ) {
 					$cont_wizard = 0;
 					$(".postbox").each(function(i){
 						
-						if($(this).find('h2 span').text().length>0  && $(this).css('display')=="block"){
+						if ($(this).find('h2 span').text().length>0  && jQuery(this).is(':visible') && !jQuery(this).is(':hidden')) {
 							
 							$(this).attr("wizard","wizard_metabox_"+$cont_wizard);
 							$(this).addClass("wizard_metabox_"+$cont_wizard);
@@ -960,34 +960,40 @@ public static function feeds_box( $post ) {
 				}
 				//sort array
 				function sort_array_wizard(){
-					temp_cont = 2; 
-					temp_wizard_array_name = [];
-					temp_wizard_class_name = [];
-					tam_array = parseInt(wizard_name_array.length)-1;
-					//sort array temp for
+					
+					temp_wizard_array_name = new Array();
+					temp_wizard_class_name = new Array();
+					
 					for(i=0;i<wizard_name_array.length;i++){
-						//search id field condition
-						switch(wizard_id_array[i]){
-							case 'campaign_types':
-								temp_wizard_array_name[0] = wizard_name_array[i];
-								temp_wizard_class_name[0] = wizard_class_array[i];
-							break;
-							case 'feeds-box':
-								temp_wizard_array_name[1] = wizard_name_array[i];
-								temp_wizard_class_name[1] = wizard_class_array[i];
-							break;
-							case 'submitdiv':
-								temp_wizard_array_name[tam_array] = wizard_name_array[i];
-								temp_wizard_class_name[tam_array] = wizard_class_array[i];
-							break;
-							default:
-								temp_wizard_array_name[temp_cont] = wizard_name_array[i];
-								temp_wizard_class_name[temp_cont] = wizard_class_array[i];
-								temp_cont++;
+						if (wizard_id_array[i] == 'campaign_types') {
+							temp_wizard_array_name.push(wizard_name_array[i]);
+							temp_wizard_class_name.push(wizard_class_array[i]);
 						}
-					}//closed for
+					}
+					for(i=0;i<wizard_name_array.length;i++){
+						if (wizard_id_array[i] == 'feeds-box') {
+							temp_wizard_array_name.push(wizard_name_array[i]);
+							temp_wizard_class_name.push(wizard_class_array[i]);
+						}
+					}
+					
+					for(i=0;i<wizard_name_array.length;i++){
+						if (wizard_id_array[i] != 'submitdiv' && wizard_id_array[i] != 'feeds-box' && wizard_id_array[i] != 'campaign_types') {
+							temp_wizard_array_name.push(wizard_name_array[i]);
+							temp_wizard_class_name.push(wizard_class_array[i]);
+						}
+					}
+					for(i=0;i<wizard_name_array.length;i++){
+						if (wizard_id_array[i] == 'submitdiv') {
+							temp_wizard_array_name.push(wizard_name_array[i]);
+							temp_wizard_class_name.push(wizard_class_array[i]);
+						}
+					}
+					//closed for
 					//sort original array
-					for(j=0;j<wizard_name_array.length;j++){
+					wizard_name_array = new Array();
+					wizard_class_array = new Array();
+					for(j=0;j<temp_wizard_array_name.length;j++){
 						wizard_name_array[j] = temp_wizard_array_name[j];
 						wizard_class_array[j] = temp_wizard_class_name[j];
 					}
@@ -1014,10 +1020,19 @@ public static function feeds_box( $post ) {
 						$("."+wizard_class_array[cont_wizard]).find('>div.inside').appendTo("#temp_postbox");
 						$(".temp_uisortable span").text($("."+wizard_class_array[cont_wizard]).find('h2 span').text());
 						//$(".temp_uisortable").css({'background':''+$("."+wizard_class_array[cont_wizard]).find("h2.ui-sortable-handle").css("background")+''});
-						$(".temp_uisortable").css({'background-color':color_background_title_wizard});
+						//$(".temp_uisortable").css({'background-color':color_background_title_wizard});
+						$(".temp_uisortable").css({'background':''+$("."+wizard_class_array[cont_wizard]).find("h2.ui-sortable-handle").css("background")+''});
 						//help line
-						$(".help_wizard").text("<?php echo __('This section does not have online help','wpematico'); ?>").text($("."+wizard_class_array[cont_wizard]).find('h2 span span').attr("title-heltip"));
-
+						$(".help_wizard").text('').html($("."+wizard_class_array[cont_wizard]).find('h2 span span').attr("title-heltip"));
+						if ($(".help_wizard").text() != '') {
+							jQuery('.wpematico_divider_list_wizard').show(); 
+							jQuery('#thickbox_wizard .postbox').css({'height':'30vh'});
+							
+						} else {
+							jQuery('.wpematico_divider_list_wizard').hide(); 
+							jQuery('#thickbox_wizard .postbox').css({'height':'42vh'});
+						}
+						jQuery('#tiptip_holder').fadeOut();
 						if((cont_wizard+1)>=tam_array_metabox) $(this).hide(0);
 
 					}
@@ -1031,8 +1046,16 @@ public static function feeds_box( $post ) {
 					$(".temp_uisortable span").text($("."+wizard_class_array[cont_wizard]).find('h2 span').text());
 					$(".temp_uisortable").css({'background':''+$("."+wizard_class_array[cont_wizard]).find("h2.ui-sortable-handle").css("background")+''});
 					//help line
-					$(".help_wizard").text("This section does not have online help").text($("."+wizard_class_array[cont_wizard]).find('h2 span span').attr("title-heltip"));
-					
+					$(".help_wizard").text('').html($("."+wizard_class_array[cont_wizard]).find('h2 span span').attr("title-heltip"));
+					if ($(".help_wizard").text() != '') {
+						jQuery('.wpematico_divider_list_wizard').show(); 
+						jQuery('#thickbox_wizard .postbox').css({'height':'30vh'});
+							
+					} else {
+						jQuery('.wpematico_divider_list_wizard').hide(); 
+						jQuery('#thickbox_wizard .postbox').css({'height':'42vh'});
+					}
+					jQuery('#tiptip_holder').fadeOut();
 					if(cont_wizard<=0) $(this).hide(0);
 
 				});//close prevWizard
@@ -1049,7 +1072,16 @@ public static function feeds_box( $post ) {
 							$("."+wizard_class_array[0]).find('>div.inside').appendTo("#temp_postbox");
 							$(".temp_uisortable span").text($("."+wizard_class_array[0]).find('h2 span').text());
 							$(".temp_uisortable").css({'background':''+$("."+wizard_class_array[0]).find("h2.ui-sortable-handle").css("background")+''});
-							$(".help_wizard").text("This section does not have online help").text($("."+wizard_class_array[0]).find('h2 span span').attr("title-heltip"));
+							$(".help_wizard").text('').html($("."+wizard_class_array[0]).find('h2 span span').attr("title-heltip"));
+							if ($(".help_wizard").text() != '') {
+								jQuery('.wpematico_divider_list_wizard').show(); 
+								jQuery('#thickbox_wizard .postbox').css({'height':'30vh'});
+								
+							} else {
+								jQuery('.wpematico_divider_list_wizard').hide(); 
+								jQuery('#thickbox_wizard .postbox').css({'height':'42vh'});
+							}
+							jQuery('#tiptip_holder').fadeOut();
 						});
 					});
 					//console.log(wizard_class_array);
@@ -1059,6 +1091,7 @@ public static function feeds_box( $post ) {
 
 				jQuery(document).on('click',".closed_wizard,#wizard_mask",function(){
 					$(".title_wizard").find("#titlewrap").appendTo("#post-body-content #titlediv");
+					jQuery('#thickbox_wizard .postbox').css({'height':'30vh'});
 					$("#temp_postbox").find(">div.inside").each(function(i){
 						class_wizard = $(this).attr("wizard");
 						$(this).appendTo("."+class_wizard);						
@@ -1082,6 +1115,7 @@ public static function feeds_box( $post ) {
 					wizard_id_array.length = 0;
 					$('.postbox').removeAttr('wizard');
 					$("#temp_postbox").find('h2.temp_uisortable span').text("");
+
 					//console.log(wizard_class_array);
 					
 				});

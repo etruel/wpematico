@@ -317,7 +317,7 @@ a.statebutton:hover {
 	left: 0;
 	position: absolute;
 	top: 0;
-	z-index: 99999;
+	z-index: 99999999;
 }
 #tiptip_holder.tip_top
 {
@@ -351,6 +351,7 @@ a.statebutton:hover {
 	text-shadow: 0 0 2px #000;
 	webkit-border-radius: 3px;
 	webkit-box-shadow: 0 0 3px #555;
+	z-index: 99999998;
 }
 #tiptip_content code
 {
@@ -374,6 +375,7 @@ a.statebutton:hover {
 	height: 0;
 	position: absolute;
 	width: 0;
+	z-index: 99999998;
 }
 #tiptip_holder.tip_top #tiptip_arrow
 {
