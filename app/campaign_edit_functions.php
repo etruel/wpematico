@@ -841,8 +841,8 @@ public static function feeds_box( $post ) {
 				#thickbox_wizard{position: relative;width:80%; height: auto;max-width: 700px;display: none;position: fixed;top: 0;left: 0;z-index: 9999999;padding:15px; background:-webkit-linear-gradient(#D47536,#B5642E); background:-moz-linear-gradient(#D47536,#B5642E); background:-o-linear-gradient(#D47536,#B5642E); }
 				#thickbox_wizard h2{text-align: center; font-family: helvetica; color: white; position: relative; }
 				#thickbox_wizard h2 input{position: absolute; top: 0; right:0; padding-right:10px; background-color: transparent; border:none; font-size: 40px !important; color: white; margin-top: -30px; }
-				.help_wizard{font-size: 18px; min-height: 20px; max-height: 10vh; overflow-y: auto;  padding:5px; padding-left: 50px;}
-				.icon-wizard-help{font-size: 70px; float: left; color: white; margin-top: 20px; margin-left: -10px; }
+				.help_wizard{font-size: 17px; min-height: 20px; max-height: 10vh; overflow-y: auto;  padding:5px; padding-left: 40px;}
+				.icon-wizard-help{font-size: 50px; float: left; color: white; margin-top: 5px; margin-left: -10px; }
 				.closed_wizard{text-shadow: 1px 1px 1px #9E5729;}
 				.thickbox_open {
 					background: rgb(238, 182, 78) !important;
@@ -878,14 +878,16 @@ public static function feeds_box( $post ) {
 					#thickbox_wizard{margin-top: 20px !important;}
 					#thickbox_wizard>h2{font-size: 30px !important;}
 					.help_wizard{font-size: 18px !important;}
-					.icon-wizard-help{font-size: 70px !important;}
+					.icon-wizard-help{font-size: 50px !important;}
 			    	.closed_wizard{font-size: 10px !important;}
 			    	.title_wizard{font-size: 1.3em !important; padding: 10px !important;}
 					.wpematico_divider_list_wizard{margin-top: -0px;}
 					#temp_postbox{margin-top: 0px !important;}
 
 			    }
-
+				.title_wizard #title-prompt-text {
+					padding-top: 6px !important;
+				}
 
 			</style>
 			<div id="wizard_mask">
@@ -897,12 +899,10 @@ public static function feeds_box( $post ) {
 					<div class="title_wizard" id="titlediv" style="padding: 10px; background-color: #DB9667;"></div>
 					<div class="wpematico_divider_list_wizard" style="padding-top: 1vh; padding-bottom: 1vh; height: 10vh;">
 						<span  class="dashicons dashicons-editor-help icon-wizard-help"></span>
-						<p style="color: white;" class="help_wizard"> <?php __('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua onsectetur adipisicing elit.', 'wpematico'); ?></p>
+						<p style="color: white;margin-top: 0px;" class="help_wizard"> </p>
 					</div>
 						
 					<!--title default wizard-->
-					<br>
 					<div class="postbox" id="temp_postbox" style="height: 30vh; overflow-y:auto; border:6px solid #DB9667;">
 						<h2 class="hndle ui-sortable-handle temp_uisortable"  style="color: black; padding: 10px;"><span></span></h2>
 					</div>
