@@ -608,7 +608,7 @@ class WPEMATICO_Welcome {
 		);
 		if (!is_wp_error($response)) {
 			update_option('wpematico_subscription_email_'.md5($current_user->ID), $_POST['wpematico_subscription']['email']);
-		 	WPeMatico::add_wp_notice( array('text' => __('Subscription saved',  'wpematico'), 'below-h2'=>false ) );
+		 	WPeMatico::add_wp_notice( array('text' => __('Subscription saved',  'wpematico'), 'below-h2'=> true ) );
 		}
 		
 		wp_redirect($_POST['_wp_http_referer']);
