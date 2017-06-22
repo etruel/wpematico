@@ -277,7 +277,15 @@ class WPeMatico_functions {
 			}
 			$campaign_cancel_imgcache = (!isset($post_data['campaign_cancel_imgcache']) || empty($post_data['campaign_cancel_imgcache'])) ? false: ($post_data['campaign_cancel_imgcache']==1) ? true : false;
 			if ($campaign_cancel_imgcache) {
-				$campaigndata['campaign_no_setting_img'] = false;
+				$campaigndata['campaign_no_setting_img'] = true;
+				$campaigndata['campaign_imgcache'] = false;
+				$campaigndata['campaign_attach_img'] = false;
+				$campaigndata['campaign_featuredimg'] = false;
+				$campaigndata['campaign_rmfeaturedimg'] = false;
+				$campaigndata['campaign_customupload'] = false;
+				if ($campaigndata['campaign_nolinkimg']) {
+					$campaigndata['campaign_imgcache'] = true;
+				}
 			}
 		}
 		if (!$campaigndata['campaign_imgcache']) {
