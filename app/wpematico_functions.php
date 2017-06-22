@@ -268,11 +268,17 @@ class WPeMatico_functions {
 		$campaigndata['campaign_customupload']=(!isset($post_data['campaign_customupload']) || empty($post_data['campaign_customupload'])) ? false: ($post_data['campaign_customupload']==1) ? true : false;
 		
 		/**
-		* Back compatibility on images process.
+		* Compatibility with previous image processing.
 		* @since 1.7.0
 		*/
 		if (version_compare(get_option( 'wpematico_db_version' ), '1.6.4', '<=')) {
-
+			if ($campaigndata['campaign_imgcache']) {
+				$campaigndata['campaign_no_setting_img'] = true;
+			}
+			$campaign_cancel_imgcache = (!isset($post_data['campaign_cancel_imgcache']) || empty($post_data['campaign_cancel_imgcache'])) ? false: ($post_data['campaign_cancel_imgcache']==1) ? true : false;
+			if ($campaign_cancel_imgcache) {
+				$campaigndata['campaign_no_setting_img'] = false;
+			}
 		}
 		if (!$campaigndata['campaign_imgcache']) {
 			$campaigndata['campaign_attach_img'] = false;
