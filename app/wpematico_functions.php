@@ -241,17 +241,46 @@ class WPeMatico_functions {
 		$campaigndata['campaign_woutfilter']=(!isset($post_data['campaign_woutfilter']) || empty($post_data['campaign_woutfilter'])) ? false: ($post_data['campaign_woutfilter']==1) ? true : false;
 		$campaigndata['campaign_striphtml']	= (!isset($post_data['campaign_striphtml']) || empty($post_data['campaign_striphtml'])) ? false: ($post_data['campaign_striphtml']==1) ? true : false;
 
-	// *** Campaign Images
-		$campaigndata['campaign_imgcache']=(!isset($post_data['campaign_imgcache']) || empty($post_data['campaign_imgcache'])) ? false: ($post_data['campaign_imgcache']==1) ? true : false;
-		$campaigndata['campaign_cancel_imgcache']=(!isset($post_data['campaign_cancel_imgcache']) || empty($post_data['campaign_cancel_imgcache'])) ? false: ($post_data['campaign_cancel_imgcache']==1) ? true : false;
-		if (isset($cfg['imgcache']) && $cfg['imgcache']) {
-			if ($campaigndata['campaign_cancel_imgcache']) $campaigndata['campaign_imgcache'] = false;
+	
+		// *** Campaign Audios
+		$campaigndata['campaign_audio_cache']=(!isset($post_data['campaign_audio_cache']) || empty($post_data['campaign_audio_cache'])) ? false: ($post_data['campaign_audio_cache']==1) ? true : false;
+		$campaigndata['campaign_cancel_audio_cache']=(!isset($post_data['campaign_cancel_imgcache']) || empty($post_data['campaign_cancel_imgcache'])) ? false: ($post_data['campaign_cancel_imgcache']==1) ? true : false;
+		if (isset($cfg['audio_cache']) && $cfg['audio_cache']) {
+			if ($campaigndata['campaign_cancel_audio_cache']){
+				$campaigndata['campaign_audio_cache'] = false;
+			}
 		}else{
-			if ($campaigndata['campaign_imgcache']) $campaigndata['campaign_cancel_imgcache'] = false;
+			if ($campaigndata['campaign_audio_cache']) {
+				$campaigndata['campaign_cancel_audio_cache'] = false;
+			} 
 		}
-		$campaigndata['campaign_nolinkimg']=(!isset($post_data['campaign_nolinkimg']) || empty($post_data['campaign_nolinkimg'])) ? false: ($post_data['campaign_nolinkimg']==1) ? true : false;
-		$campaigndata['campaign_solo1ra']=(!isset($post_data['campaign_solo1ra']) || empty($post_data['campaign_solo1ra'])) ? false: ($post_data['campaign_solo1ra']==1) ? true : false;
+		$campaigndata['campaign_nolink_audio']=(!isset($post_data['campaign_nolink_audio']) || empty($post_data['campaign_nolink_audio'])) ? false: ($post_data['campaign_nolink_audio']==1) ? true : false;
+		
 
+		// *** Campaign Images
+		$campaigndata['campaign_no_setting_img']=(!isset($post_data['campaign_no_setting_img']) || empty($post_data['campaign_no_setting_img'])) ? false: ($post_data['campaign_no_setting_img']==1) ? true : false;
+		$campaigndata['campaign_imgcache']=(!isset($post_data['campaign_imgcache']) || empty($post_data['campaign_imgcache'])) ? false: ($post_data['campaign_imgcache']==1) ? true : false;
+		$campaigndata['campaign_attach_img']=(!isset($post_data['campaign_attach_img']) || empty($post_data['campaign_attach_img'])) ? false: ($post_data['campaign_attach_img']==1) ? true : false; 
+		$campaigndata['campaign_nolinkimg']=(!isset($post_data['campaign_nolinkimg']) || empty($post_data['campaign_nolinkimg'])) ? false: ($post_data['campaign_nolinkimg']==1) ? true : false;
+		
+		$campaigndata['campaign_featuredimg']=(!isset($post_data['campaign_featuredimg']) || empty($post_data['campaign_featuredimg'])) ? false: ($post_data['campaign_featuredimg']==1) ? true : false;
+		$campaigndata['campaign_rmfeaturedimg']=(!isset($post_data['campaign_rmfeaturedimg']) || empty($post_data['campaign_rmfeaturedimg'])) ? false: ($post_data['campaign_rmfeaturedimg']==1) ? true : false;
+		$campaigndata['campaign_customupload']=(!isset($post_data['campaign_customupload']) || empty($post_data['campaign_customupload'])) ? false: ($post_data['campaign_customupload']==1) ? true : false;
+		
+		/**
+		* Back compatibility on images process.
+		* @since 1.7.0
+		*/
+		if (version_compare(get_option( 'wpematico_db_version' ), '1.6.4', '<=')) {
+
+		}
+		if (!$campaigndata['campaign_imgcache']) {
+			$campaigndata['campaign_attach_img'] = false;
+			$campaigndata['campaign_nolinkimg'] = false;
+			if (!$campaigndata['campaign_featuredimg']) {
+				$campaigndata['campaign_customupload'] = false;
+			}
+		}
 		// *** Campaign Template
 		$campaigndata['campaign_enable_template']=(!isset($post_data['campaign_enable_template']) || empty($post_data['campaign_enable_template'])) ? false: ($post_data['campaign_enable_template']==1) ? true : false;
 		if(isset($post_data['campaign_template']))

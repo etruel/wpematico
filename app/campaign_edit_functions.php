@@ -29,6 +29,11 @@ class WPeMatico_Campaign_edit_functions {
 		add_meta_box( 'options-box', __('Options for this campaign', 'wpematico' ), array(  'WPeMatico_Campaign_edit'  ,'options_box' ),'wpematico','normal', 'default' );
 		add_meta_box( 'cron-box', __('Schedule Cron', 'wpematico' ), array(  'WPeMatico_Campaign_edit'  ,'cron_box' ),'wpematico','normal', 'default' );
 		add_meta_box( 'images-box', __('Options for images', 'wpematico' ). '<span class="mya4_sprite infoIco help_tip" title-heltip="'.$helptip['imgoptions'].'"  title="'. $helptip['imgoptions'].'"></span>', array(  'WPeMatico_Campaign_edit'  ,'images_box' ),'wpematico','normal', 'default' );
+		add_meta_box( 'audios-box', __('Options for audios', 'wpematico' ). '<span class="mya4_sprite infoIco help_tip" title-heltip="'.$helptip['audio_options'].'"  title="'. $helptip['audio_options'].'"></span>', array(  'WPeMatico_Campaign_edit'  ,'audio_box' ),'wpematico','normal', 'default' );
+		add_meta_box( 'videos-box', __('Options for videos', 'wpematico' ). '<span class="mya4_sprite infoIco help_tip" title-heltip="'.$helptip['video_options'].'"  title="'. $helptip['video_options'].'"></span>', array(  'WPeMatico_Campaign_edit'  ,'video_box' ),'wpematico','normal', 'default' );
+		
+
+		
 		add_meta_box( 'template-box', __('Post Template', 'wpematico' ). '<span class="mya4_sprite infoIco help_tip" title-heltip="'.$helptip['postemplate'].'" title="'. $helptip['postemplate'].'"></span>', array(  'WPeMatico_Campaign_edit'  ,'template_box' ),'wpematico','normal', 'default' );
 		if ($cfg['enableword2cats'])   // Si está habilitado en settings, lo muestra 
 		add_meta_box( 'word2cats-box', __('Word to Category options', 'wpematico' ). '<span class="mya4_sprite infoIco help_tip" title-heltip="'.$helptip['wordcateg'].'"   title="'. $helptip['wordcateg'].'"></span>', array(  'WPeMatico_Campaign_edit'  ,'word2cats_box' ),'wpematico','normal', 'default' );
@@ -261,6 +266,87 @@ public static function template_box( $post ) {
 	public static function images_box( $post ) { 
 		global $post, $campaign_data, $cfg, $helptip;
 		$campaign_imgcache = $campaign_data['campaign_imgcache'];
+		$campaign_no_setting_img = $campaign_data['campaign_no_setting_img'];
+		$campaign_nolinkimg = $campaign_data['campaign_nolinkimg'];
+		$campaign_attach_img = $campaign_data['campaign_attach_img'];
+		$campaign_featuredimg = $campaign_data['campaign_featuredimg'];
+		$campaign_rmfeaturedimg = $campaign_data['campaign_rmfeaturedimg'];
+		$campaign_customupload = $campaign_data['campaign_customupload'];
+		
+		?>
+		
+		<input name="campaign_no_setting_img" id="campaign_no_setting_img" class="checkbox" value="1" type="checkbox" <?php checked($campaign_no_setting_img,true); ?> />
+		<label for="campaign_no_setting_img"><?php echo __('Don&#x27;t use general Settings', 'wpematico' ); ?></label> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['cancel_imgcache']; ?>"></span>
+		
+		<div id="div_no_setting_img" style="margin-left: 20px; <?php if (!$campaign_no_setting_img) echo 'display:none;';?>">
+			<p>
+				<input name="campaign_imgcache" id="campaign_imgcache" class="checkbox left" value="1" type="checkbox" <?php checked($campaign_imgcache,true); ?> />
+				<b><label for="campaign_imgcache"><?php echo __('Cache Images.', 'wpematico' ); ?></label></b> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['imgcache']; ?>"></span>
+			</p>
+			<div id="nolinkimg" style="margin-left: 20px; <?php if (!$campaign_imgcache) echo 'display:none;';?>">
+				
+				<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_attach_img,true); ?> name="campaign_attach_img" id="campaign_attach_img" /><b>&nbsp;<label for="campaign_attach_img"><?php _e('Attach Images to posts.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['imgattach']; ?>"></span><br/>
+				
+				<input name="campaign_nolinkimg" id="campaign_nolinkimg" class="checkbox" value="1" type="checkbox" <?php checked($campaign_nolinkimg,true); ?> />
+				<?php echo '<label for="campaign_nolinkimg">' . __('No link to source images', 'wpematico' ) . '</label>'; ?> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['gralnolinkimg']; ?>"></span>
+				
+			</div>
+			<p></p>
+			<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_featuredimg, true); ?> name="campaign_featuredimg" id="campaign_featuredimg" /><b>&nbsp;<label for="campaign_featuredimg"><?php _e('Enable first image found on content as Featured Image.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['featuredimg']; ?>"></span>
+			<br />
+			<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_rmfeaturedimg, true); ?> name="campaign_rmfeaturedimg" id="campaign_rmfeaturedimg" /><b>&nbsp;<label for="campaign_rmfeaturedimg"><?php _e('Remove Featured Image from content.', 'wpematico' ); ?></label></b> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['rmfeaturedimg']; ?>"></span>
+			<p></p>
+			<div id="custom_uploads" style="<?php if (!$campaign_imgcache && !$campaign_featuredimg) echo 'display:none;';?>">
+				<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_customupload, true); ?> name="campaign_customupload" id="campaign_customupload" /><b>&nbsp;<label for="campaign_customupload"><?php _e('Custom function for uploads.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['customupload']; ?>"></span>
+				<br/>
+			</div>
+		</div>
+		
+		<?php
+	}
+	/**
+	* Static function audio_box
+	* Create a meta-box on campaigns for audios management.
+	* @access public
+	* @return void
+	* @since 1.7.0
+	*/
+	public static function audio_box( $post ) { 
+		global $post, $campaign_data, $cfg, $helptip;
+		$campaign_audio_cache = $campaign_data['campaign_audio_cache'];
+		$campaign_cancel_audio_cache = $campaign_data['campaign_cancel_audio_cache'];
+		$campaign_nolink_audio = $campaign_data['campaign_nolink_audio'];
+		if (!$cfg['audio_cache']) : ?>
+		<p>
+			<input name="campaign_audio_cache" id="campaign_audio_cache" class="checkbox left" value="1" type="checkbox" <?php checked($campaign_audio_cache,true); ?> />
+			<label for="campaign_audio_cache"><?php echo __('Enable Cache Audios for this campaign.', 'wpematico' ); ?></label> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['audio_cache']; ?>"></span>
+		</p>
+		<div id="nolink_audio" <?php if (!$campaign_audio_cache) echo 'style="display:none;"';?>>
+			<p>
+				<input name="campaign_nolink_audio" id="campaign_nolink_audio" class="checkbox" value="1" type="checkbox" <?php checked($campaign_nolink_audio,true); ?> />
+				<b><?php echo '<label for="campaign_nolink_audio">' . __('No link to source images', 'wpematico' ) . '</label>'; ?></b> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['gralnolink_audio']; ?>"></span>
+			</p>
+		</div>
+		<?php else : ?>
+			<p>
+				<input name="campaign_cancel_audio_cache" id="campaign_cancel_audio_cache" class="checkbox" value="1" type="checkbox" <?php checked($campaign_cancel_audio_cache,true); ?> />
+				<label for="campaign_cancel_audio_cache"><?php echo __('Cancel Cache Audios for this campaign', 'wpematico' ); ?></label> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['cancel_audio_cache']; ?>"></span>
+			</p>
+		<?php endif ?>
+		<?php	/*	<p><input name="campaign_solo1ra" id="campaign_solo1ra" class="checkbox" value="1" type="checkbox" <?php checked($campaign_solo1ra,true); ?> />
+		<b><?php echo '<label for="campaign_solo1ra">' . __('Left just first image on every post.', 'wpematico' ) . '</label>'; ?></b></p>   */  ?>
+		<?php
+	}
+	/**
+	* Static function video_box
+	* Create a meta-box on campaigns for videos management.
+	* @access public
+	* @return void
+	* @since 1.7.0
+	*/
+	public static function video_box( $post ) { 
+		global $post, $campaign_data, $cfg, $helptip;
+		$campaign_imgcache = $campaign_data['campaign_imgcache'];
 		$campaign_cancel_imgcache = $campaign_data['campaign_cancel_imgcache'];
 		$campaign_nolinkimg = $campaign_data['campaign_nolinkimg'];
 		if (!$cfg['imgcache']) : ?>
@@ -274,16 +360,16 @@ public static function template_box( $post ) {
 				<b><?php echo '<label for="campaign_nolinkimg">' . __('No link to source images', 'wpematico' ) . '</label>'; ?></b> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['gralnolinkimg']; ?>"></span>
 			</p>
 		</div>
-	<?php else : ?>
-		<p>
-			<input name="campaign_cancel_imgcache" id="campaign_cancel_imgcache" class="checkbox" value="1" type="checkbox" <?php checked($campaign_cancel_imgcache,true); ?> />
-			<label for="campaign_cancel_imgcache"><?php echo __('Cancel Cache Images for this campaign', 'wpematico' ); ?></label> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['cancel_imgcache']; ?>"></span>
-		</p>
-	<?php endif ?>
-	<?php	/*	<p><input name="campaign_solo1ra" id="campaign_solo1ra" class="checkbox" value="1" type="checkbox" <?php checked($campaign_solo1ra,true); ?> />
-	<b><?php echo '<label for="campaign_solo1ra">' . __('Left just first image on every post.', 'wpematico' ) . '</label>'; ?></b></p>   */  ?>
-	<?php
-}
+		<?php else : ?>
+			<p>
+				<input name="campaign_cancel_imgcache" id="campaign_cancel_imgcache" class="checkbox" value="1" type="checkbox" <?php checked($campaign_cancel_imgcache,true); ?> />
+				<label for="campaign_cancel_imgcache"><?php echo __('Cancel Cache Images for this campaign', 'wpematico' ); ?></label> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['cancel_imgcache']; ?>"></span>
+			</p>
+		<?php endif ?>
+		<?php	/*	<p><input name="campaign_solo1ra" id="campaign_solo1ra" class="checkbox" value="1" type="checkbox" <?php checked($campaign_solo1ra,true); ?> />
+		<b><?php echo '<label for="campaign_solo1ra">' . __('Left just first image on every post.', 'wpematico' ) . '</label>'; ?></b></p>   */  ?>
+		<?php
+	}
 	//*************************************************************************************
 public static function options_box( $post ) { 
 	global $post, $campaign_data, $cfg, $helptip ;

@@ -279,12 +279,34 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 				disable_run_now();
 			}
 
-
-			$('#campaign_imgcache').click(function() {
-				if ( true == $('#campaign_imgcache').is(':checked')) {
-					$('#nolinkimg').fadeIn();
+			jQuery('#campaign_no_setting_img').click(function() {
+				if ( true == jQuery('#campaign_no_setting_img').is(':checked')) {
+					jQuery('#div_no_setting_img').fadeIn();
 				} else {
-					$('#nolinkimg').fadeOut();
+					jQuery('#div_no_setting_img').fadeOut();
+				}
+			});
+
+			jQuery('#campaign_imgcache').click(function() {
+				if ( true == jQuery('#campaign_imgcache').is(':checked')) {
+					jQuery('#nolinkimg').fadeIn();
+				} else {
+					jQuery('#nolinkimg').fadeOut();
+				}
+			});
+
+			jQuery('#campaign_imgcache, #campaign_featuredimg').click(function() {
+				if ( true == jQuery('#campaign_imgcache').is(':checked') || true == jQuery('#campaign_featuredimg').is(':checked') ) {
+					jQuery('#custom_uploads').fadeIn();
+				} else {
+					jQuery('#custom_uploads').fadeOut();
+				}
+			});
+			jQuery('#campaign_audio_cache').click(function() {
+				if ( true == jQuery('#campaign_audio_cache').is(':checked')) {
+					jQuery('#nolink_audio').fadeIn();
+				} else {
+					jQuery('#nolink_audio').fadeOut();
 				}
 			});
 			

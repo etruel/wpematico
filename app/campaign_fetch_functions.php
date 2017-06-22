@@ -378,8 +378,8 @@ class wpematico_campaign_fetch_functions {
    * @param   $feed           object    Feed database object
    * @param   $item           object    SimplePie_Item object
    */
-	function Item_images(&$current_item, &$campaign, &$feed, &$item) { 
-		if( ($this->cfg['imgcache'] || $this->campaign['campaign_imgcache'] ) && !($this->campaign['campaign_cancel_imgcache'])) {
+	function Item_images(&$current_item, &$campaign, &$feed, &$item, $options_images) { 
+		if($options_images['imgcache']) {
             $itemUrl = $this->current_item['permalink'];
 			
 			if( sizeof($current_item['images']) ) { // Si hay alguna imagen en el contenido
@@ -388,9 +388,12 @@ class wpematico_campaign_fetch_functions {
 				$featured = false; 
 				$img_new_url = array();
 				foreach($current_item['images'] as $imagen_src) {
-					if($this->cfg['featuredimg'] && $current_item['featured_image'] == $imagen_src) {
+					if($options_images['featuredimg'] && $current_item['featured_image'] == $imagen_src) {
 						$featured = true;  
 					}
+					/**
+					* @since 1.7.0 
+					* Deprecated 
 					if($this->campaign['campaign_cancel_imgcache']) {
 						if($this->cfg['gralnolinkimg'] || $this->campaign['campaign_nolinkimg']) {
 							//trigger_error( __('Deleted media img=', WPeMatico :: TEXTDOMAIN ).$imagen_src ,E_USER_WARNING);
@@ -398,6 +401,7 @@ class wpematico_campaign_fetch_functions {
 							// Si no quiere linkar las img al server la borro del contenido
 						}
 					}else {
+					*/
 					    trigger_error(__('Uploading media...', WPeMatico :: TEXTDOMAIN ).$imagen_src,E_USER_NOTICE);
 						$imagen_src_real = $this->getRelativeUrl($itemUrl, $imagen_src);
 						// Strip all white space on images URLs.	
@@ -414,7 +418,7 @@ class wpematico_campaign_fetch_functions {
 						$imagen_dst_url = trailingslashit($upload_dir['url']). $newimgname;
 						if(in_array(str_replace('.','',strrchr( strtolower($imagen_dst), '.')), explode(',', $allowed))) {   // -------- Controlo extensiones permitidas
 							trigger_error('Uploading media='.$imagen_src.' <b>to</b> imagen_dst='.$imagen_dst.'',E_USER_NOTICE);
-							$newfile = ($this->cfg['customupload']) ? $this->guarda_imagen($imagen_src_real, $imagen_dst) : false;
+							$newfile = ($options_images['customupload']) ? $this->guarda_imagen($imagen_src_real, $imagen_dst) : false;
 							if($newfile) { //subió
 								trigger_error('Uploaded media='.$newfile,E_USER_NOTICE);
 								$imagen_dst = $newfile; 
@@ -432,7 +436,7 @@ class wpematico_campaign_fetch_functions {
 									trigger_error('wp_upload_bits error:'.print_r($mirror,true).'.',E_USER_WARNING);
 									// Si no quiere linkar las img al server borro el link de la imagen
 									trigger_error( __('Upload file failed:', WPeMatico :: TEXTDOMAIN ).$imagen_dst,E_USER_WARNING);
-									if($this->cfg['gralnolinkimg'] || $this->campaign['campaign_nolinkimg']) {
+									if($options_images['gralnolinkimg']) {
 									//	trigger_error( __('Deleted media img.', WPeMatico :: TEXTDOMAIN ),E_USER_WARNING);
 										$current_item['content'] = self::strip_Image_by_src($imagen_src, $current_item['content']);
 									}
@@ -440,12 +444,12 @@ class wpematico_campaign_fetch_functions {
 							}
 						}else {
 							trigger_error( __('Extension not allowed: ', WPeMatico :: TEXTDOMAIN ). urldecode($imagen_dst_url),E_USER_WARNING);
-							if($this->cfg['gralnolinkimg'] || $this->campaign['campaign_nolinkimg']) { // Si no quiere linkar las img al server borro el link de la imagen
+							if($options_images['gralnolinkimg']) { // Si no quiere linkar las img al server borro el link de la imagen
 								trigger_error( __('Stripped src.', WPeMatico :: TEXTDOMAIN ),E_USER_WARNING);
 								$current_item['content'] = self::strip_Image_by_src($imagen_src, $current_item['content']);
 							}
 						}
-					}
+					//}
 				}
 				$current_item['images'] = (array)$img_new_url;
 				if($featured) $current_item['featured_image'] = $current_item['images'][0]; //change to new url
@@ -536,8 +540,8 @@ class wpematico_campaign_fetch_functions {
    * @param   $campaign       array    Current campaign data
    * @param   $item           object    SimplePie_Item object
    */
-	function Get_Item_images($current_item, $campaign, $feed, $item) {        
-		if($this->cfg['imgcache'] || $campaign['campaign_imgcache'] || $this->cfg['featuredimg']) {
+	function Get_Item_images($current_item, $campaign, $feed, $item, $options_images) {        
+		if($options_images['imgcache'] || $options_images['featuredimg']) {
 			$images = $this->parseImages($current_item['content']);
 			$current_item['images'] = $images[2];  //lista de url de imagenes
 			$current_item['content'] = $images[3];  //Replaced src by srcset(If exist and with larger images) in images.
@@ -545,6 +549,7 @@ class wpematico_campaign_fetch_functions {
 			if( $this->cfg['nonstatic'] ) { $current_item['images'] = NoNStatic :: imgfind($current_item,$campaign,$item ); }
 			$current_item['images'] = array_values(array_unique($current_item['images']));
 			foreach ($current_item['images'] as $ki => $image) {
+				$current_item['images'][$ki] = urldecode($current_item['images'][$ki]);
 				if (strpos($image, '//') === 0) {
 					$current_item['images'][$ki] = 'http:'.$current_item['images'][$ki];
 				}
@@ -604,6 +609,30 @@ class wpematico_campaign_fetch_functions {
 		array_push($out,$out2);  // sum all items to array 
 		$out[3] = $new_content;
 		return $out;
+	}
+	/**
+   	* Filters audios, upload and replace on text item content
+  	* @param   $current_item   array    Current post data to be saved
+  	* @param   $campaign       array    Current campaign data
+  	* @param   $item           object    SimplePie_Item object
+  	* @since 1.7.0
+   	*/
+	function Get_Item_Audios($current_item, $campaign, $feed, $item) {        
+		if($this->cfg['audio_cache'] || $campaign['campaign_audio_cache']) {
+			$images = $this->parseImages($current_item['content']);
+			$current_item['audios'] = $images[2];  //lista de url de imagenes
+			
+			if( $this->cfg['nonstatic'] ) { 
+				//$current_item['audios'] = NoNStatic::audio_find($current_item,$campaign,$item );
+			}
+			$current_item['audios'] = array_values(array_unique($current_item['audios']));
+			foreach ($current_item['audios'] as $ki => $image) {
+				if (strpos($image, '//') === 0) {
+					$current_item['audios'][$ki] = 'http:'.$current_item['audios'][$ki];
+				}
+			}
+		}
+		return $current_item;
 	}
 
 	function strip_links($text, $campaign = array()) {
@@ -672,6 +701,31 @@ class wpematico_campaign_fetch_functions {
 			$slug = str_replace('/', '-', $permalink);
 		}
 		return $slug;
+	}
+	function get_images_options() {
+		$options = array();
+		$options['imgcache'] = $this->cfg['imgcache'];
+		$options['imgattach'] = $this->cfg['imgattach'];
+		$options['gralnolinkimg'] = $this->cfg['gralnolinkimg'];
+		$options['featuredimg'] = $this->cfg['featuredimg'];
+		$options['rmfeaturedimg'] = $this->cfg['rmfeaturedimg'];
+		$options['customupload'] = $this->cfg['customupload'];
+		if (!$options['imgcache']) {
+			$options['imgattach'] = false;
+			$options['gralnolinkimg'] = false;
+			if (!$options['featuredimg']) {
+				$options['customupload'] = false;
+			}
+		}
+		if(isset($this->campaign['campaign_no_setting_img']) && $this->campaign['campaign_no_setting_img']) {
+			$options['imgcache'] = $this->campaign['campaign_imgcache'];
+			$options['imgattach'] = $this->campaign['campaign_attach_img'];
+			$options['gralnolinkimg'] = $this->campaign['campaign_nolinkimg'];
+			$options['featuredimg'] = $this->campaign['campaign_featuredimg'];
+			$options['rmfeaturedimg'] = $this->campaign['campaign_rmfeaturedimg'];
+			$options['customupload'] = $this->campaign['campaign_customupload'];
+		}
+		return $options;
 	}
 
 } // class

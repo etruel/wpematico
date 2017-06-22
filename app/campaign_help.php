@@ -120,6 +120,63 @@ $helpcampaign = array(
 				'title' => __('Don\'t link external images.', 'wpematico' ),
 				'tip' => __('If selected and image upload get error, then delete the \'src\' attribute of the &lt;img&gt;. Check this for don\'t link images from external sites.', 'wpematico' ),
 		),
+		'featuredimg' => array( 
+				'title' => __('Set first image on content as Featured Image.', 'wpematico' ),
+				'tip' => __('Check this to set first image found on every content to be uploaded, attached and made Featured.', 'wpematico' ),
+		),
+		'rmfeaturedimg' => array( 
+				'title' => __('Remove Featured Image from content.', 'wpematico' ),
+				'tip' => __('Check this to strip the Featured Image from the post content.', 'wpematico' ),
+		),
+		'customupload'	=> array( 
+				'title' => __('Custom Uploads for Images.', 'wpematico' ),
+				'tip' => __('Use this instead of Wordpress functions to improve performance. This function uploads the image "as is" from the original to use it inside the post.', 'wpematico' ).
+					'<br />'. __('This function may not work in all servers.', 'wpematico' ),
+		),
+	),
+	'Options for Audios' => array(
+		'audio_options' => array( 
+				'title' => __('Campaign Options For Audios.', 'wpematico' ),
+				'tip' => __('This features will be overridden only for this campaign the general Settings options for audios.', 'wpematico' ),
+		),
+		'cancel_audio_cache' => array( 
+				'title' => __('Cancel Cache Audios for this campaign.', 'wpematico' ),
+				'tip' => __('Checked do not upload the audios to your server just for the posts of this campaign.', 'wpematico' ),
+		),
+		'audio_cache' => array( 
+				'title' => __('Cache audios.', 'wpematico' ),
+				'tip' => __('All audios found in &lt;audio&gt; tags in content will be uploaded to your current WP Upload Folder and replaced urls in content . Otherwise remains links to source hosting server.', 'wpematico' ),
+		),
+		'audio_attach'	=> array( 
+				'title' => __('Attach Audios to post.', 'wpematico' ),
+				'tip' => __('All audios will be attached to the owner post and added to Wordpress Media library, but if you see that the job process is too slowly you can deactivate this here.', 'wpematico' ),
+		),
+		'gralnolink_audio' => array( 
+				'title' => __('Don\'t link external audios.', 'wpematico' ),
+				'tip' => __('If selected and audio upload get error, then delete the \'src\' attribute of the &lt;audio&gt;. Check this for don\'t link audios from external sites.', 'wpematico' ),
+		),
+	),
+	'Options for Videos' => array(
+		'video_options' => array( 
+				'title' => __('Campaign Options For Videos.', 'wpematico' ),
+				'tip' => __('This features will be overridden only for this campaign the general Settings options for videos.', 'wpematico' ),
+		),
+		'cancel_video_cache' => array( 
+				'title' => __('Cancel Cache Videos for this campaign.', 'wpematico' ),
+				'tip' => __('Checked do not upload the videos to your server just for the posts of this campaign.', 'wpematico' ),
+		),
+		'video_cache' => array( 
+				'title' => __('Cache videos.', 'wpematico' ),
+				'tip' => __('All videos found in &lt;img&gt; tags in content will be uploaded to your current WP Upload Folder and replaced urls in content . Otherwise remains links to source hosting server.', 'wpematico' ),
+		),
+		'video_attach'	=> array( 
+				'title' => __('Attach Videos to post.', 'wpematico' ),
+				'tip' => __('All videos will be attached to the owner post and added to Wordpress Media library; necessary for Featured video, but if you see that the job process is too slowly you can deactivate this here.', 'wpematico' ),
+		),
+		'gralnolink_video' => array( 
+				'title' => __('Don\'t link external videos.', 'wpematico' ),
+				'tip' => __('If selected and video upload get error, then delete the \'src\' attribute of the &lt;video&gt;. Check this for don\'t link videos from external sites.', 'wpematico' ),
+		),
 	),
 	'Post Template' => array( 
 		'postemplate' => array( 

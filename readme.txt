@@ -243,6 +243,9 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
+= 1.7.0  =
+* Change in the process logic of the images.
+
 = 1.6.4  Jun 6, 2017 =
 * Added a wizard to create a campaign!
 * Added feature "Order feed items by Date before process".

@@ -265,6 +265,44 @@ function wpematico_settings(){
 					</div>
 				</div>
 
+				<div id="imgs" class="postbox">
+					<button type="button" class="handlediv button-link" aria-expanded="true">
+							<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
+							<span class="toggle-indicator" aria-hidden="true"></span>
+						</button>
+					<h3 class="hndle"><span><?php _e('Global Settings for Audios', 'wpematico' ); ?></span></h3>
+					<div class="inside">
+						<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['audio_cache'],true); ?> name="audio_cache" id="audio_cache" />&nbsp;<b><label for="audio_cache"><?php _e('Cache Audios.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['audio_cache']; ?>"></span>
+						<div id="nolink_audio" style="padding-left:20px; <?php if (!$cfg['audio_cache']) echo 'display:none;';?>">
+							<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['audio_attach'],true); ?> name="audio_attach" id="audio_attach" /><b>&nbsp;<label for="audio_attach"><?php _e('Attach Audios to posts.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['audio_attach']; ?>"></span>
+							<br/>
+							<input name="gralnolink_audio" id="gralnolink_audio" class="checkbox" value="1" type="checkbox" <?php checked($cfg['gralnolink_audio'],true); ?> /><label for="gralnolink_audio"><?php _e('No link to source audios', 'wpematico' ); ?></label><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['gralnolink_audio']; ?>"></span>
+						</div>
+						<p></p>
+						
+						<?php do_action('wpematico_settings_audios',$cfg); ?>
+					</div>
+				</div>
+
+				<div id="imgs" class="postbox">
+					<button type="button" class="handlediv button-link" aria-expanded="true">
+							<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
+							<span class="toggle-indicator" aria-hidden="true"></span>
+						</button>
+					<h3 class="hndle"><span><?php _e('Global Settings for Videos', 'wpematico' ); ?></span></h3>
+					<div class="inside">
+						<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['video_cache'],true); ?> name="video_cache" id="video_cache" />&nbsp;<b><label for="video_cache"><?php _e('Cache Videos.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['video_cache']; ?>"></span>
+						<div id="nolink_video" style="padding-left:20px; <?php if (!$cfg['video_cache']) echo 'display:none;';?>">
+							<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['video_attach'],true); ?> name="video_attach" id="video_attach" /><b>&nbsp;<label for="video_attach"><?php _e('Attach Videos to posts.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['video_attach']; ?>"></span>
+							<br/>
+							<input name="gralnolink_video" id="gralnolink_video" class="checkbox" value="1" type="checkbox" <?php checked($cfg['gralnolink_video'],true); ?> /><label for="gralnolink_video"><?php _e('No link to source videos', 'wpematico' ); ?></label><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['gralnolink_video']; ?>"></span>
+						</div>
+						<p></p>
+						
+						<?php do_action('wpematico_settings_videos',$cfg); ?>
+					</div>
+				</div>
+
 				<div id="enablefeatures" class="postbox">
 					<button type="button" class="handlediv button-link" aria-expanded="true">
 						<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
@@ -582,11 +620,27 @@ function wpematico_settings(){
 		});
 
 	//jQuery(document).ready(function($){
+		
 		jQuery('#imgcache').click(function() {
 			if ( true == jQuery('#imgcache').is(':checked')) {
 				jQuery('#nolinkimg').fadeIn();
 			} else {
 				jQuery('#nolinkimg').fadeOut();
+			}
+		});
+		jQuery('#audio_cache').click(function() {
+			if ( true == jQuery('#audio_cache').is(':checked')) {
+				jQuery('#nolink_audio').fadeIn();
+			} else {
+				jQuery('#nolink_audio').fadeOut();
+			}
+		});
+
+		jQuery('#video_cache').click(function() {
+			if ( true == jQuery('#video_cache').is(':checked')) {
+				jQuery('#nolink_video').fadeIn();
+			} else {
+				jQuery('#nolink_video').fadeOut();
 			}
 		});
 
@@ -745,6 +799,8 @@ function wpematico_helpsettings($dev=''){
 				'plustip' => "<b>" . __('Note',  'wpematico' ). ":</b> " . 
 					__('If the image are inside &lt;a&gt; tags, then the link is also removed from content.', 'wpematico' ),
 			),
+
+			
 			'featuredimg' => array( 
 				'title' => __('Set first image on content as Featured Image.', 'wpematico' ),
 				'tip' => __('Check this to set first image found on every content to be uploaded, attached and made Featured.', 'wpematico' ),
@@ -761,6 +817,51 @@ function wpematico_helpsettings($dev=''){
 					'<br />'. __('This function may not work in all servers.', 'wpematico' ),
 				'plustip' => __('Try it at your own risk, if you see that the images are not loading, uncheck it.', 'wpematico' ).
 					'<br />'. __('Also uncheck this if you need all sizes of wordpress images. The WP process can take too much resources if many images are uploaded at a time.', 'wpematico' ),
+			),
+			'audio_cache' => array( 
+				'title' => __('Cache Audios. (Uploads)', 'wpematico' ),
+				'tip' => __('When Cache Audios is on, a copy of every audio found in content of every feed item (only in &lt;audio&gt; tags) is downloaded to the Wordpress UPLOADS Dir.', 'wpematico' ) . "<br />" . 
+					__('If not enabled all audios will be linked to the audio owner\'s server, but also make your website faster for your visitors.', 'wpematico' ) . "<br />".
+					"<b>" . __('Caching all audios', 'wpematico' ) . ":</b> " . 
+					__('This featured in the general Settings section, will be overridden for the campaign-specific options.', 'wpematico' ),
+			),
+			'audio_attach'	=> array( 
+				'title' => __('Attach Audios to post.', 'wpematico' ),
+				'tip' => "<b>" . __('Audio Attaching', 'wpematico' ).":</b> " . 
+					__('When Uploads audios to Wordpress (and everything is working fine), every audio attached is added to the Wordpress Media.', 'wpematico' ). "<br />" . 
+					__('If enable this feature all the audios will be attached to its owner post in WP media library.', 'wpematico' ),
+				'plustip' => __('If you see that the job process is too slowly you can deactivate this here.', 'wpematico' ). "<br />" . 
+					__('This feature may not work if you use the Custom Function for Uploads.', 'wpematico' )
+			),
+			'gralnolink_audio' => array( 
+				'title' => __('Don\'t link external audios.', 'wpematico' ),
+				'tip' => "<b>" . __('Note',  'wpematico' ). ":</b> " . 
+					__('If is selected and the audio upload give error, then will delete the &lt;audio&gt; HTML tag from the content. Check this to don\'t link audio from external sites.', 'wpematico' ),
+				'plustip' => "<b>" . __('Note',  'wpematico' ). ":</b> " . 
+					__('If the audio are inside &lt;a&gt; tags, then the link is also removed from content.', 'wpematico' ),
+			),
+
+			'video_cache' => array( 
+				'title' => __('Cache Videos. (Uploads)', 'wpematico' ),
+				'tip' => __('When Cache Videos is on, a copy of every video found in content of every feed item (only in &lt;video&gt; tags) is downloaded to the Wordpress UPLOADS Dir.', 'wpematico' ) . "<br />" . 
+					__('If not enabled all videos will be linked to the video owner\'s server, but also make your website faster for your visitors.', 'wpematico' ) . "<br />".
+					"<b>" . __('Caching all videos', 'wpematico' ) . ":</b> " . 
+					__('This featured in the general Settings section, will be overridden for the campaign-specific options.', 'wpematico' ),
+			),
+			'video_attach'	=> array( 
+				'title' => __('Attach Videos to post.', 'wpematico' ),
+				'tip' => "<b>" . __('Video Attaching', 'wpematico' ).":</b> " . 
+					__('When Uploads videos to Wordpress (and everything is working fine), every video attached is added to the Wordpress Media.', 'wpematico' ). "<br />" . 
+					__('If enable this feature all the videos will be attached to its owner post in WP media library.', 'wpematico' ),
+				'plustip' => __('If you see that the job process is too slowly you can deactivate this here.', 'wpematico' ). "<br />" . 
+					__('This feature may not work if you use the Custom Function for Uploads.', 'wpematico' )
+			),
+			'gralnolink_video' => array( 
+				'title' => __('Don\'t link external videos.', 'wpematico' ),
+				'tip' => "<b>" . __('Note',  'wpematico' ). ":</b> " . 
+					__('If is selected and the video upload give error, then will delete the &lt;video&gt; HTML tag from the content. Check this to don\'t link videos from external sites.', 'wpematico' ),
+				'plustip' => "<b>" . __('Note',  'wpematico' ). ":</b> " . 
+					__('If the video are inside &lt;a&gt; tags, then the link is also removed from content.', 'wpematico' ),
 			),
 		),
 		'Enable Features' => array( 

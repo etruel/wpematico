@@ -256,25 +256,49 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			$this->current_item['content'] = mb_convert_encoding($this->current_item['content'], 'UTF-8', $from);
 		}
 		$this->current_item['content'] = html_entity_decode($this->current_item['content'], ENT_COMPAT | ENT_HTML401, 'UTF-8');
+		
+		/**
+		* @since 1.7.0
+		* Parse and upload audio
+		*/
+		$this->current_item = apply_filters('wpematico_item_filters_pre_audio', $this->current_item, $this->campaign);
+		//gets audio array 
+		//$this->current_item = $this->Get_Item_Audios($this->current_item, $this->campaign, $feed, $item);
+
+		/**
+		* @since 1.7.0
+		* Parse and upload video
+		*/
+		//$this->current_item = apply_filters('wpematico_item_filters_pre_video', $this->current_item, $this->campaign);
+		//gets video array 
+		//$this->current_item = $this->Get_Item_Videos($this->current_item, $this->campaign, $feed, $item);
+
+
 		//********* Parse and upload images
+		/**
+		* @since 1.7.0 
+		* Get image options.
+		*/
+		$options_images = $this->get_images_options();
 		$this->current_item = apply_filters('wpematico_item_filters_pre_img', $this->current_item, $this->campaign );
 		//gets images array 
-		$this->current_item = $this->Get_Item_images($this->current_item,$this->campaign,$feed,$item);
+		$this->current_item = $this->Get_Item_images($this->current_item,$this->campaign, $feed, $item, $options_images);
 
 		$this->current_item['featured_image'] = apply_filters('wpematico_set_featured_img', '', $this->current_item, $this->campaign, $feed, $item );
-		if($this->cfg['featuredimg']){
+
+		if($options_images['featuredimg']){
 			if(!empty($this->current_item['images'])){
 				$this->current_item['featured_image'] = apply_filters('wpematico_get_featured_img', $this->current_item['images'][0], $this->current_item);
 			}
 		}
-		if( $this->cfg['rmfeaturedimg'] && !empty($this->current_item['featured_image']) ){ // removes featured from content
+		if($options_images['rmfeaturedimg'] && !empty($this->current_item['featured_image']) ){ // removes featured from content
 			$this->current_item['content'] = $this->strip_Image_by_src($this->current_item['featured_image'], $this->current_item['content']);
 		}
 		
 		if( $this->cfg['nonstatic'] ) { $this->current_item['images'] = NoNStatic :: img1s($this->current_item,$this->campaign,$item ); }
 
 		// Uploads and changes img sources in content
-		$this->current_item = $this->Item_images( $this->current_item, $this->campaign, $feed, $item );
+		$this->current_item = $this->Item_images($this->current_item, $this->campaign, $feed, $item, $options_images);
 
 		$this->current_item = apply_filters('wpematico_item_filters_pos_img', $this->current_item, $this->campaign );
 		
@@ -438,7 +462,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 					$img_new_url = "";
 					if(in_array(str_replace('.','',strrchr( strtolower($imagen_dst), '.')), explode(',', $allowed))) {   // -------- Controlo extensiones permitidas
 						trigger_error('Uploading media='.$imagen_src.' <b>to</b> imagen_dst='.$imagen_dst.'',E_USER_NOTICE);
-						$newfile = ($this->cfg['customupload']) ? $this->guarda_imagen($imagen_src_real, $imagen_dst) : false;
+						$newfile = ($options_images['customupload']) ? $this->guarda_imagen($imagen_src_real, $imagen_dst) : false;
 						if($newfile) { //subió
 							trigger_error('Uploaded media='.$newfile,E_USER_NOTICE);
 							$imagen_dst = $newfile; 
@@ -460,15 +484,15 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 					$this->current_item['featured_image'] = $img_new_url;
 					array_shift($this->current_item['images']);  //quito el 1er elemento para que no lo suba de nuevo abajo
 					$attachid = $this->insertfileasattach( $this->current_item['featured_image'] , $post_id);
-					set_post_thumbnail( $post_id, $attachid );
+					set_post_thumbnail($post_id, $attachid );
 					//add_post_meta($post_id, '_thumbnail_id', $attachid);
 				}else{
 					trigger_error( __('Upload featured image failed:', 'wpematico' ).$imagen_dst,E_USER_WARNING);
 				}
 			}
 			// Attach files in post content previously uploaded
-			if(!$this->campaign['campaign_cancel_imgcache']) {
-				if(($this->cfg['imgcache'] || $this->campaign['campaign_imgcache']) && ($this->cfg['imgattach'])) {
+			//if(!$this->campaign['campaign_cancel_imgcache']) {
+				if($options_images['imgcache'] && $options_images['imgattach']) {
 					if(is_array($this->current_item['images'])) {
 						if(sizeof($this->current_item['images'])) { // Si hay alguna imagen 
 							trigger_error(__('Attaching images', 'wpematico' ).": ".sizeof($this->current_item['images']),E_USER_NOTICE);
@@ -478,7 +502,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 						}
 					}
 				}			
-			}			
+			//}			
 
 			 // If pingback/trackbacks
 			if($this->campaign['campaign_allowpings']) {
