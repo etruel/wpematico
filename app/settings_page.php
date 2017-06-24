@@ -279,7 +279,10 @@ function wpematico_settings(){
 							<input name="gralnolink_audio" id="gralnolink_audio" class="checkbox" value="1" type="checkbox" <?php checked($cfg['gralnolink_audio'],true); ?> /><label for="gralnolink_audio"><?php _e('No link to source audios', 'wpematico' ); ?></label><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['gralnolink_audio']; ?>"></span>
 						</div>
 						<p></p>
-						
+						<div id="custom_uploads_audios" style="<?php if (!$cfg['audio_cache']) echo 'display:none;';?>">
+							<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['customupload_audios'],true); ?> name="customupload_audios" id="customupload_audios" /><b>&nbsp;<label for="customupload_audios"><?php _e('Custom function for uploads.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['customupload_audios']; ?>"></span>
+							<br/>
+						</div>
 						<?php do_action('wpematico_settings_audios',$cfg); ?>
 					</div>
 				</div>
@@ -298,7 +301,10 @@ function wpematico_settings(){
 							<input name="gralnolink_video" id="gralnolink_video" class="checkbox" value="1" type="checkbox" <?php checked($cfg['gralnolink_video'],true); ?> /><label for="gralnolink_video"><?php _e('No link to source videos', 'wpematico' ); ?></label><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['gralnolink_video']; ?>"></span>
 						</div>
 						<p></p>
-						
+						<div id="custom_uploads_videos" style="<?php if (!$cfg['video_cache']) echo 'display:none;';?>">
+							<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['customupload_videos'],true); ?> name="customupload_videos" id="customupload_videos" /><b>&nbsp;<label for="customupload_videos"><?php _e('Custom function for uploads.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['customupload_videos']; ?>"></span>
+							<br/>
+						</div>
 						<?php do_action('wpematico_settings_videos',$cfg); ?>
 					</div>
 				</div>
@@ -631,16 +637,20 @@ function wpematico_settings(){
 		jQuery('#audio_cache').click(function() {
 			if ( true == jQuery('#audio_cache').is(':checked')) {
 				jQuery('#nolink_audio').fadeIn();
+				jQuery('#custom_uploads_audios').fadeIn();
 			} else {
 				jQuery('#nolink_audio').fadeOut();
+				jQuery('#custom_uploads_audios').fadeOut();
 			}
 		});
 
 		jQuery('#video_cache').click(function() {
 			if ( true == jQuery('#video_cache').is(':checked')) {
 				jQuery('#nolink_video').fadeIn();
+				jQuery('#custom_uploads_videos').fadeIn();
 			} else {
 				jQuery('#nolink_video').fadeOut();
+				jQuery('#custom_uploads_videos').fadeOut();
 			}
 		});
 
@@ -840,6 +850,13 @@ function wpematico_helpsettings($dev=''){
 				'plustip' => "<b>" . __('Note',  'wpematico' ). ":</b> " . 
 					__('If the audio are inside &lt;a&gt; tags, then the link is also removed from content.', 'wpematico' ),
 			),
+			'customupload_audios'	=> array( 
+				'title' => __('Custom Uploads for Audios.', 'wpematico' ),
+				'tip' => __('Use this instead of Wordpress functions to improve performance. This function uploads the audio "as is" from the original to use it inside the post.', 'wpematico' ).
+					'<br />'. __('This function may not work in all servers.', 'wpematico' ),
+				'plustip' => __('Try it at your own risk, if you see that the audios are not loading, uncheck it.', 'wpematico' ).
+					'<br />'. __('Also uncheck this if you need all sizes of wordpress audios. The WP process can take too much resources if many audios are uploaded at a time.', 'wpematico' ),
+			),
 
 			'video_cache' => array( 
 				'title' => __('Cache Videos. (Uploads)', 'wpematico' ),
@@ -862,6 +879,13 @@ function wpematico_helpsettings($dev=''){
 					__('If is selected and the video upload give error, then will delete the &lt;video&gt; HTML tag from the content. Check this to don\'t link videos from external sites.', 'wpematico' ),
 				'plustip' => "<b>" . __('Note',  'wpematico' ). ":</b> " . 
 					__('If the video are inside &lt;a&gt; tags, then the link is also removed from content.', 'wpematico' ),
+			),
+			'customupload_videos'	=> array( 
+				'title' => __('Custom Uploads for Videos.', 'wpematico' ),
+				'tip' => __('Use this instead of Wordpress functions to improve performance. This function uploads the video "as is" from the original to use it inside the post.', 'wpematico' ).
+					'<br />'. __('This function may not work in all servers.', 'wpematico' ),
+				'plustip' => __('Try it at your own risk, if you see that the videos are not loading, uncheck it.', 'wpematico' ).
+					'<br />'. __('Also uncheck this if you need all sizes of wordpress videos. The WP process can take too much resources if many videos are uploaded at a time.', 'wpematico' ),
 			),
 		),
 		'Enable Features' => array( 

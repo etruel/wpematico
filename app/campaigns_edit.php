@@ -302,11 +302,44 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 					jQuery('#custom_uploads').fadeOut();
 				}
 			});
+
+			jQuery('#campaign_no_setting_audio').click(function() {
+				if ( true == jQuery('#campaign_no_setting_audio').is(':checked')) {
+					jQuery('#div_no_setting_audio').fadeIn();
+				} else {
+					jQuery('#div_no_setting_audio').fadeOut();
+				}
+			});
+
+
 			jQuery('#campaign_audio_cache').click(function() {
 				if ( true == jQuery('#campaign_audio_cache').is(':checked')) {
 					jQuery('#nolink_audio').fadeIn();
+					jQuery('#custom_uploads_audios').fadeIn();
 				} else {
 					jQuery('#nolink_audio').fadeOut();
+					jQuery('#custom_uploads_audios').fadeOut();
+					
+				}
+			});
+
+			jQuery('#campaign_no_setting_video').click(function() {
+				if ( true == jQuery('#campaign_no_setting_video').is(':checked')) {
+					jQuery('#div_no_setting_video').fadeIn();
+				} else {
+					jQuery('#div_no_setting_video').fadeOut();
+				}
+			});
+
+
+			jQuery('#campaign_video_cache').click(function() {
+				if ( true == jQuery('#campaign_video_cache').is(':checked')) {
+					jQuery('#nolink_video').fadeIn();
+					jQuery('#custom_uploads_videos').fadeIn();
+				} else {
+					jQuery('#nolink_video').fadeOut();
+					jQuery('#custom_uploads_videos').fadeOut();
+					
 				}
 			});
 			

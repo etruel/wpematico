@@ -441,11 +441,13 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			$cfg['audio_attach']		= (!isset($options['audio_attach']) || empty($options['audio_attach'])) ? false: ($options['audio_attach']==1) ? true : false;
 			$cfg['audio_cache']		= (!isset($options['audio_cache']) || empty($options['audio_cache'])) ? false: ($options['audio_cache']==1) ? true : false;
 			$cfg['gralnolink_audio']	= (!isset($options['gralnolink_audio']) || empty($options['gralnolink_audio'])) ? false: ($options['gralnolink_audio']==1) ? true : false;
+			$cfg['customupload_audios']	= (!isset($options['customupload_audios']) || empty($options['customupload_audios'])) ? false: ($options['customupload_audios']==1) ? true : false;
 			
 
 			$cfg['video_attach']		= (!isset($options['video_attach']) || empty($options['video_attach'])) ? false: ($options['video_attach']==1) ? true : false;
 			$cfg['video_cache']		= (!isset($options['video_cache']) || empty($options['video_cache'])) ? false: ($options['video_cache']==1) ? true : false;
 			$cfg['gralnolink_video']	= (!isset($options['gralnolink_video']) || empty($options['gralnolink_video'])) ? false: ($options['gralnolink_video']==1) ? true : false;
+			$cfg['customupload_videos']	= (!isset($options['customupload_videos']) || empty($options['customupload_videos'])) ? false: ($options['customupload_videos']==1) ? true : false;
 			
 
 			$cfg['featuredimg']		= (!isset($options['featuredimg']) || empty($options['featuredimg'])) ? false: ($options['featuredimg']==1) ? true : false;

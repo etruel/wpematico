@@ -104,10 +104,7 @@ $helpcampaign = array(
 				'title' => __('Campaign Options For Images.', 'wpematico' ),
 				'tip' => __('This features will be overridden only for this campaign the general Settings options for images.', 'wpematico' ),
 		),
-		'cancel_imgcache' => array( 
-				'title' => __('Cancel Cache Images for this campaign.', 'wpematico' ),
-				'tip' => __('Checked do not upload the images to your server just for the posts of this campaign.', 'wpematico' ),
-		),
+		
 		'imgcache' => array( 
 				'title' => __('Cache images.', 'wpematico' ),
 				'tip' => __('All images found in &lt;img&gt; tags in content will be uploaded to your current WP Upload Folder and replaced urls in content . Otherwise remains links to source hosting server.', 'wpematico' ),
@@ -139,10 +136,6 @@ $helpcampaign = array(
 				'title' => __('Campaign Options For Audios.', 'wpematico' ),
 				'tip' => __('This features will be overridden only for this campaign the general Settings options for audios.', 'wpematico' ),
 		),
-		'cancel_audio_cache' => array( 
-				'title' => __('Cancel Cache Audios for this campaign.', 'wpematico' ),
-				'tip' => __('Checked do not upload the audios to your server just for the posts of this campaign.', 'wpematico' ),
-		),
 		'audio_cache' => array( 
 				'title' => __('Cache audios.', 'wpematico' ),
 				'tip' => __('All audios found in &lt;audio&gt; tags in content will be uploaded to your current WP Upload Folder and replaced urls in content . Otherwise remains links to source hosting server.', 'wpematico' ),
@@ -155,19 +148,20 @@ $helpcampaign = array(
 				'title' => __('Don\'t link external audios.', 'wpematico' ),
 				'tip' => __('If selected and audio upload get error, then delete the \'src\' attribute of the &lt;audio&gt;. Check this for don\'t link audios from external sites.', 'wpematico' ),
 		),
+		'customupload_audios'	=> array( 
+				'title' => __('Custom Uploads for Audios.', 'wpematico' ),
+				'tip' => __('Use this instead of Wordpress functions to improve performance. This function uploads the audio "as is" from the original to use it inside the post.', 'wpematico' ).
+					'<br />'. __('This function may not work in all servers.', 'wpematico' ),
+		),
 	),
 	'Options for Videos' => array(
 		'video_options' => array( 
 				'title' => __('Campaign Options For Videos.', 'wpematico' ),
 				'tip' => __('This features will be overridden only for this campaign the general Settings options for videos.', 'wpematico' ),
 		),
-		'cancel_video_cache' => array( 
-				'title' => __('Cancel Cache Videos for this campaign.', 'wpematico' ),
-				'tip' => __('Checked do not upload the videos to your server just for the posts of this campaign.', 'wpematico' ),
-		),
 		'video_cache' => array( 
 				'title' => __('Cache videos.', 'wpematico' ),
-				'tip' => __('All videos found in &lt;img&gt; tags in content will be uploaded to your current WP Upload Folder and replaced urls in content . Otherwise remains links to source hosting server.', 'wpematico' ),
+				'tip' => __('All videos found in &lt;video&gt; tags in content will be uploaded to your current WP Upload Folder and replaced urls in content . Otherwise remains links to source hosting server.', 'wpematico' ),
 		),
 		'video_attach'	=> array( 
 				'title' => __('Attach Videos to post.', 'wpematico' ),
@@ -176,6 +170,11 @@ $helpcampaign = array(
 		'gralnolink_video' => array( 
 				'title' => __('Don\'t link external videos.', 'wpematico' ),
 				'tip' => __('If selected and video upload get error, then delete the \'src\' attribute of the &lt;video&gt;. Check this for don\'t link videos from external sites.', 'wpematico' ),
+		),
+		'customupload_videos'	=> array( 
+				'title' => __('Custom Uploads for Videos.', 'wpematico' ),
+				'tip' => __('Use this instead of Wordpress functions to improve performance. This function uploads the video "as is" from the original to use it inside the post.', 'wpematico' ).
+					'<br />'. __('This function may not work in all servers.', 'wpematico' ),
 		),
 	),
 	'Post Template' => array( 

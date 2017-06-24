@@ -727,5 +727,46 @@ class wpematico_campaign_fetch_functions {
 		}
 		return $options;
 	}
+	function get_audios_options() {
+		$options = array();
+		$options['audio_cache'] = $this->cfg['audio_cache'];
+		$options['audio_attach'] = $this->cfg['audio_attach'];
+		$options['gralnolink_audio'] = $this->cfg['gralnolink_audio'];
+		$options['customupload_audios'] = $this->cfg['customupload_audios'];
+		if (!$options['audio_cache']) {
+			$options['audio_attach'] = false;
+			$options['gralnolink_audio'] = false;
+			$options['customupload_audios'] = false;
+			
+		}
+		if(isset($this->campaign['campaign_no_setting_audio']) && $this->campaign['campaign_no_setting_audio']) {
+			$options['audio_cache'] = $this->campaign['campaign_audio_cache'];
+			$options['audio_attach'] = $this->campaign['campaign_attach_audio'];
+			$options['gralnolink_audio'] = $this->campaign['campaign_nolink_audio'];
+			$options['customupload_audios'] = $this->campaign['campaign_customupload_audio'];
+		}
+		return $options;
+	}
+
+	function get_videos_options() {
+		$options = array();
+		$options['video_cache'] = $this->cfg['video_cache'];
+		$options['video_attach'] = $this->cfg['video_attach'];
+		$options['gralnolink_video'] = $this->cfg['gralnolink_video'];
+		$options['customupload_videos'] = $this->cfg['customupload_videos'];
+		if (!$options['video_cache']) {
+			$options['video_attach'] = false;
+			$options['gralnolink_video'] = false;
+			$options['customupload_videos'] = false;
+			
+		}
+		if(isset($this->campaign['campaign_no_setting_video']) && $this->campaign['campaign_no_setting_video']) {
+			$options['video_cache'] = $this->campaign['campaign_video_cache'];
+			$options['video_attach'] = $this->campaign['campaign_attach_video'];
+			$options['gralnolink_video'] = $this->campaign['campaign_nolink_video'];
+			$options['customupload_videos'] = $this->campaign['campaign_customupload_video'];
+		}
+		return $options;
+	}
 
 } // class
