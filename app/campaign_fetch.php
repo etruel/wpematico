@@ -261,17 +261,20 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		* @since 1.7.0
 		* Parse and upload audio
 		*/
+		$options_audios = $this->get_audios_options();
 		$this->current_item = apply_filters('wpematico_item_filters_pre_audio', $this->current_item, $this->campaign);
-		//gets audio array 
-		//$this->current_item = $this->Get_Item_Audios($this->current_item, $this->campaign, $feed, $item);
+		$this->current_item = $this->Get_Item_Audios($this->current_item, $this->campaign, $feed, $item, $options_audios);
+		// Uploads and changes img sources in content
+		$this->current_item = $this->Item_Audios($this->current_item, $this->campaign, $feed, $item, $options_audios);
 
 		/**
 		* @since 1.7.0
 		* Parse and upload video
 		*/
-		//$this->current_item = apply_filters('wpematico_item_filters_pre_video', $this->current_item, $this->campaign);
+		$options_videos = $this->get_videos_options();
+		$this->current_item = apply_filters('wpematico_item_filters_pre_video', $this->current_item, $this->campaign);
 		//gets video array 
-		//$this->current_item = $this->Get_Item_Videos($this->current_item, $this->campaign, $feed, $item);
+		$this->current_item = $this->Get_Item_Videos($this->current_item, $this->campaign, $feed, $item, $options_videos);
 
 
 		//********* Parse and upload images
@@ -502,7 +505,18 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 						}
 					}
 				}			
-			//}			
+			//}
+
+			if($options_audios['audio_cache'] && $options_audios['audio_attach']) {
+				if(is_array($this->current_item['audios'])) {
+					if(sizeof($this->current_item['audios'])) { // if exist a audio.
+						trigger_error(__('Attaching audios', 'wpematico' ).": ".sizeof($this->current_item['images']),E_USER_NOTICE);
+						foreach($this->current_item['audios'] as $audio_src) {
+							$attachid = $this->insertfileasattach($audio_src,$post_id);
+						}
+					}
+				}
+			}			
 
 			 // If pingback/trackbacks
 			if($this->campaign['campaign_allowpings']) {

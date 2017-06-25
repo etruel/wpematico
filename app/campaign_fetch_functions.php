@@ -371,7 +371,7 @@ class wpematico_campaign_fetch_functions {
     }
 	
 		
- 	/**
+   /**
    * Filters images, upload and replace on text item content
    * @param   $current_item   array    Current post data to be saved
    * @param   $campaign       array    Current campaign data
@@ -610,30 +610,7 @@ class wpematico_campaign_fetch_functions {
 		$out[3] = $new_content;
 		return $out;
 	}
-	/**
-   	* Filters audios, upload and replace on text item content
-  	* @param   $current_item   array    Current post data to be saved
-  	* @param   $campaign       array    Current campaign data
-  	* @param   $item           object    SimplePie_Item object
-  	* @since 1.7.0
-   	*/
-	function Get_Item_Audios($current_item, $campaign, $feed, $item) {        
-		if($this->cfg['audio_cache'] || $campaign['campaign_audio_cache']) {
-			$images = $this->parseImages($current_item['content']);
-			$current_item['audios'] = $images[2];  //lista de url de imagenes
-			
-			if( $this->cfg['nonstatic'] ) { 
-				//$current_item['audios'] = NoNStatic::audio_find($current_item,$campaign,$item );
-			}
-			$current_item['audios'] = array_values(array_unique($current_item['audios']));
-			foreach ($current_item['audios'] as $ki => $image) {
-				if (strpos($image, '//') === 0) {
-					$current_item['audios'][$ki] = 'http:'.$current_item['audios'][$ki];
-				}
-			}
-		}
-		return $current_item;
-	}
+	
 
 	function strip_links($text, $campaign = array()) {
 		$tags = array();
@@ -727,6 +704,134 @@ class wpematico_campaign_fetch_functions {
 		}
 		return $options;
 	}
+	/**
+   	* Filters audios, upload and replace on text item content
+  	* @param   $current_item   array    Current post data to be saved
+  	* @param   $campaign       array    Current campaign data
+  	* @param   $item           object    SimplePie_Item object
+  	* @param   $options_audios array    Current audio options.
+  	* @since 1.7.0
+   	*/
+	function Get_Item_Audios($current_item, $campaign, $feed, $item, $options_audios) {        
+		if($options_audios['audio_cache']) {
+			$current_item['audios'] = $this->parseAudios($current_item['content']);
+			
+			if( $this->cfg['nonstatic'] ) { 
+				//$current_item['audios'] = NoNStatic::audio_find($current_item,$campaign,$item );
+			}
+			$current_item['audios'] = array_values(array_unique($current_item['audios']));
+			foreach ($current_item['audios'] as $ki => $image) {
+				if (strpos($image, '//') === 0) {
+					$current_item['audios'][$ki] = 'http:'.$current_item['audios'][$ki];
+				}
+				$url_parts = parse_url($current_item['audios'][$ki]);
+				$current_item['audios'][$ki] = $url_parts['scheme'].'://'.$url_parts['host'].(isset($url_parts['path'])?$url_parts['path']:'');
+
+			}
+		}
+		return $current_item;
+	}
+	/**
+   	* Filters audios, upload and replace on text item content
+  	* @param   $text   	string   text of content of current post.
+  	* @return  $audios 	array 	 Array of current audios on post content.
+  	* @since 1.7.0
+   	*/
+	function parseAudios($text){
+		$audios = array();
+		$dom = new DOMDocument();
+		@$dom->loadHTML($text);
+		$xpath = new DomXPath($dom);
+		$nodes = $xpath->query('//audio/source[@type="audio/mpeg"]');
+		foreach($nodes as $node) {
+		  $audios[] = $node->getAttribute('src');
+		}
+		return $audios;
+	}
+	/**
+	* @since 1.7.0
+	*/
+	function strip_Audio_by_src($src, $content){
+		trigger_error( sprintf( __("Removing: %s from content." , WPeMatico :: TEXTDOMAIN ),'"'. $src .'"' ) , E_USER_NOTICE);
+		// Creating regEx
+		return $content;
+	}
+   /**
+   * Filters audios, upload and replace on text item content
+   * @param   $current_item   array    Current post data to be saved
+   * @param   $campaign       array    Current campaign data
+   * @param   $feed           object    Feed database object
+   * @param   $item           object    SimplePie_Item object
+   * @param   $options_audios array    Current audio options.
+   * @since 1.7.0
+   */
+	function Item_Audios(&$current_item, &$campaign, &$feed, &$item, $options_audios) { 
+		if($options_audios['audio_cache']) {
+            $itemUrl = $this->current_item['permalink'];
+			
+			if( sizeof($current_item['audios']) ) { // If exist audios on content.
+				trigger_error('<b>'.__('Looking for audios in content.', WPeMatico::TEXTDOMAIN).'</b>',E_USER_NOTICE);
+				$audio_new_url_array = array();
+				foreach($current_item['audios'] as $audio_src) {
+					
+					trigger_error(__('Uploading media...', WPeMatico::TEXTDOMAIN ).$audio_src, E_USER_NOTICE);
+					$audio_src_real = $this->getRelativeUrl($itemUrl, $audio_src);
+					// Strip all white space on audios URLs.	
+					$audio_src_real = str_replace(' ', '%20', $audio_src_real);						
+					$audio_src_real = apply_filters('wpematico_audio_src_url', $audio_src_real ); // original source
+					$allowed_audio = (isset($this->cfg['allowed_audio']) && !empty($this->cfg['allowed_audio']) ) ? $this->cfg['allowed_audio'] : 'mp3' ;
+					$allowed_audio = apply_filters('wpematico_allowext_audio', $allowed_audio );
+					
+					// Store audio.	
+					$new_audio_name = apply_filters('wpematico_new_audio_name', sanitize_file_name(urlencode(basename($audio_src_real))), $current_item, $campaign, $item);  // new name here
+						// Primero intento con mi funcion mas rapida
+					$upload_dir = wp_upload_dir();
+					$audio_dst = trailingslashit($upload_dir['path']). $new_audio_name; 
+					$audio_dst_url = trailingslashit($upload_dir['url']). $new_audio_name;
+					if(in_array(str_replace('.','',strrchr( strtolower($audio_dst), '.')), explode(',', $allowed_audio))) {   // -------- Controlo extensiones permitidas
+							
+						trigger_error('Uploading media='.$audio_src.' <b>to</b> audio_dst='.$audio_dst.'', E_USER_NOTICE);
+						$newfile = ($options_audios['customupload_audios']) ? $this->guarda_imagen($audio_src_real, $audio_dst) : false;
+						if($newfile) { //subió
+							trigger_error('Uploaded media='.$newfile,E_USER_NOTICE);
+							$audio_dst = $newfile; 
+							$audio_dst_url = trailingslashit($upload_dir['url']). basename($newfile);
+							$current_item['content'] = str_replace($audio_src, $audio_dst_url, $current_item['content']);
+							$audio_new_url_array[] = $audio_dst_url;
+						} else { // falló -> intento con otros
+							$bits = WPeMatico::wpematico_get_contents($audio_src_real);
+							$mirror = wp_upload_bits($new_audio_name, NULL, $bits);
+							if(!$mirror['error']) {
+								trigger_error($mirror['url'], E_USER_NOTICE);
+								$current_item['content'] = str_replace($audio_src, $mirror['url'], $current_item['content']);
+								$audio_new_url_array[] = $mirror['url'];
+							} else {  
+								trigger_error('wp_upload_bits error:'.print_r($mirror,true).'.', E_USER_WARNING);
+								// Si no quiere linkar los audios al server borro el link de la audio
+								trigger_error( __('Upload file failed:', WPeMatico::TEXTDOMAIN ).$audio_dst, E_USER_WARNING);
+								if($options_audios['gralnolink_audio']) {
+									$current_item['content'] = $this->strip_Audio_by_src($audio_src, $current_item['content']);
+								}
+							}
+						}
+					}else {
+						trigger_error( __('Extension not allowed: ', WPeMatico::TEXTDOMAIN ). urldecode($audio_dst_url), E_USER_WARNING);
+						if($options_audios['gralnolink_audio']) { // Si no quiere linkar las img al server borro el link de la imagen
+							trigger_error( __('Stripped src.', WPeMatico::TEXTDOMAIN), E_USER_WARNING);
+							$current_item['content'] = $this->strip_Audio_by_src($audio_src, $current_item['content']);
+						}
+					}
+				}
+				$current_item['audios'] = (array)$audio_new_url_array;
+			}  // // Si hay alguna imagen en el contenido
+		} else {
+			trigger_error('<b>'.__('Looking for remote audios in content. No changes.', WPeMatico::TEXTDOMAIN ).'</b>', E_USER_NOTICE);
+			$current_item['audios'] = array();
+		}
+		return $current_item;		
+	}  // item images
+
+
 	function get_audios_options() {
 		$options = array();
 		$options['audio_cache'] = $this->cfg['audio_cache'];
@@ -747,7 +852,51 @@ class wpematico_campaign_fetch_functions {
 		}
 		return $options;
 	}
-
+	/**
+   	* Filters videos, upload and replace on text item content
+  	* @param   $current_item   array    Current post data to be saved
+  	* @param   $campaign       array    Current campaign data
+  	* @param   $item           object    SimplePie_Item object
+  	* @param   $options_videos array    Current video options.
+  	* @since 1.7.0
+   	*/
+	function Get_Item_Videos($current_item, $campaign, $feed, $item, $options_videos) {        
+		if($options_videos['video_cache']) {
+			$current_item['videos'] = $this->parseVideos($current_item['content']);
+			
+			if( $this->cfg['nonstatic'] ) { 
+				//$current_item['videos'] = NoNStatic::audio_find($current_item,$campaign,$item );
+			}
+			$current_item['videos'] = array_values(array_unique($current_item['videos']));
+			foreach ($current_item['videos'] as $ki => $image) {
+				if (strpos($image, '//') === 0) {
+					$current_item['videos'][$ki] = 'http:'.$current_item['videos'][$ki];
+				}
+				if (substr($current_item['videos'][$ki], -4) == '?_=1') { 
+					$current_item['videos'][$ki] = str_replace('?_=1', '', $current_item['videos'][$ki]);
+				}
+				
+			}
+		}
+		return $current_item;
+	}
+	/**
+   	* Filters videos, upload and replace on text item content
+  	* @param   $text   	string   text of content of current post.
+  	* @return  $videos 	array 	 Array of current videos on post content.
+  	* @since 1.7.0
+   	*/
+	function parseVideos($text){
+		$videos = array();
+		$dom = new DOMDocument();
+		@$dom->loadHTML($text);
+		$xpath = new DomXPath($dom);
+		$nodes = $xpath->query('//video/source[@type="video/mp4"]');
+		foreach($nodes as $node) {
+		  $videos[] = $node->getAttribute('src');
+		}
+		return $videos;
+	}
 	function get_videos_options() {
 		$options = array();
 		$options['video_cache'] = $this->cfg['video_cache'];
