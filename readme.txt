@@ -245,6 +245,8 @@ or to e-mail etruel@gmail.com
 == Changelog ==
 = 1.7.0  =
 * Change in the process logic of the images.
+* Added feature options for Audios.
+* Added feature options for Videos.
 
 = 1.6.4  Jun 6, 2017 =
 * Added a wizard to create a campaign!

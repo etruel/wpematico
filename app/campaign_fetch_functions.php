@@ -724,9 +724,6 @@ class wpematico_campaign_fetch_functions {
 				if (strpos($image, '//') === 0) {
 					$current_item['audios'][$ki] = 'http:'.$current_item['audios'][$ki];
 				}
-				$url_parts = parse_url($current_item['audios'][$ki]);
-				$current_item['audios'][$ki] = $url_parts['scheme'].'://'.$url_parts['host'].(isset($url_parts['path'])?$url_parts['path']:'');
-
 			}
 		}
 		return $current_item;
@@ -751,9 +748,13 @@ class wpematico_campaign_fetch_functions {
 	/**
 	* @since 1.7.0
 	*/
-	function strip_Audio_by_src($src, $content){
+	function strip_Audio_by_src($src, $content) {
 		trigger_error( sprintf( __("Removing: %s from content." , WPeMatico :: TEXTDOMAIN ),'"'. $src .'"' ) , E_USER_NOTICE);
-		// Creating regEx
+		$audio_src_real_scaped = addslashes($src);
+		$audio_src_real_scaped = addcslashes($audio_src_real_scaped, "?.+");
+		$pattern = '|<audio(.+?)>(.*?)<source(.*?)src=["\']'.$audio_src_real_scaped.'["\'](.*?)>(.*?)<\/audio>|';
+		$content_striped = preg_replace($pattern, '',  $content); 
+		$content = ( is_null($content_striped) ) ? $content : $content_striped;
 		return $content;
 	}
    /**
@@ -782,8 +783,13 @@ class wpematico_campaign_fetch_functions {
 					$allowed_audio = (isset($this->cfg['allowed_audio']) && !empty($this->cfg['allowed_audio']) ) ? $this->cfg['allowed_audio'] : 'mp3' ;
 					$allowed_audio = apply_filters('wpematico_allowext_audio', $allowed_audio );
 					
+					// Compability with WP, Strip Query added by WP ShortCode
+					$audio_src_without_query = $audio_src_real;
+					if (substr($audio_src_without_query, -4) == '?_=1') { 
+						$audio_src_without_query = str_replace('?_=1', '', $audio_src_without_query);
+					}
 					// Store audio.	
-					$new_audio_name = apply_filters('wpematico_new_audio_name', sanitize_file_name(urlencode(basename($audio_src_real))), $current_item, $campaign, $item);  // new name here
+					$new_audio_name = apply_filters('wpematico_new_audio_name', sanitize_file_name(urlencode(basename($audio_src_without_query))), $current_item, $campaign, $item);  // new name here
 						// Primero intento con mi funcion mas rapida
 					$upload_dir = wp_upload_dir();
 					$audio_dst = trailingslashit($upload_dir['path']). $new_audio_name; 
@@ -829,7 +835,7 @@ class wpematico_campaign_fetch_functions {
 			$current_item['audios'] = array();
 		}
 		return $current_item;		
-	}  // item images
+	}  // item audios
 
 
 	function get_audios_options() {
@@ -872,9 +878,7 @@ class wpematico_campaign_fetch_functions {
 				if (strpos($image, '//') === 0) {
 					$current_item['videos'][$ki] = 'http:'.$current_item['videos'][$ki];
 				}
-				if (substr($current_item['videos'][$ki], -4) == '?_=1') { 
-					$current_item['videos'][$ki] = str_replace('?_=1', '', $current_item['videos'][$ki]);
-				}
+				
 				
 			}
 		}
@@ -897,6 +901,97 @@ class wpematico_campaign_fetch_functions {
 		}
 		return $videos;
 	}
+	/**
+	* @since 1.7.0
+	*/
+	function strip_Video_by_src($src, $content) {
+		trigger_error( sprintf( __("Removing: %s from content." , WPeMatico :: TEXTDOMAIN ),'"'. $src .'"' ) , E_USER_NOTICE);
+		$video_src_real_scaped = addslashes($src);
+		$video_src_real_scaped = addcslashes($video_src_real_scaped, "?.+");
+		$pattern = '|<video(.+?)>(.*?)<source(.*?)src=["\']'.$video_src_real_scaped.'["\'](.*?)>(.*?)<\/video>|';
+		$content_striped = preg_replace($pattern, '',  $content); 
+		$content = ( is_null($content_striped) ) ? $content : $content_striped;
+		return $content;
+	}
+   	/**
+   	* Filters videos, upload and replace on text item content
+   	* @param   $current_item   array    Current post data to be saved
+   	* @param   $campaign       array    Current campaign data
+  	* @param   $feed           object    Feed database object
+   	* @param   $item           object    SimplePie_Item object
+   	* @param   $options_videos array    Current video options.
+   	* @since 1.7.0
+   	*/
+	function Item_Videos(&$current_item, &$campaign, &$feed, &$item, $options_videos) { 
+		if($options_videos['video_cache']) {
+            $itemUrl = $this->current_item['permalink'];
+			
+			if( sizeof($current_item['videos']) ) { // If exist videos on content.
+				trigger_error('<b>'.__('Looking for videos in content.', WPeMatico::TEXTDOMAIN).'</b>',E_USER_NOTICE);
+				$video_new_url_array = array();
+				foreach($current_item['videos'] as $video_src) {
+					
+					trigger_error(__('Uploading media...', WPeMatico::TEXTDOMAIN ).$video_src, E_USER_NOTICE);
+					$video_src_real = $this->getRelativeUrl($itemUrl, $video_src);
+					// Strip all white space on videos URLs.	
+					$video_src_real = str_replace(' ', '%20', $video_src_real);						
+					$video_src_real = apply_filters('wpematico_video_src_url', $video_src_real ); // original source
+					$allowed_video = (isset($this->cfg['allowed_video']) && !empty($this->cfg['allowed_video']) ) ? $this->cfg['allowed_video'] : 'mp4' ;
+					$allowed_video = apply_filters('wpematico_allowext_video', $allowed_video );
+					
+					// Compability with WP, Strip Query added by WP ShortCode
+					$video_src_without_query = $video_src_real;
+					if (substr($video_src_without_query, -4) == '?_=1') { 
+						$video_src_without_query = str_replace('?_=1', '', $video_src_without_query);
+					}
+					// Store video.	
+					$new_video_name = apply_filters('wpematico_new_video_name', sanitize_file_name(urlencode(basename($video_src_without_query))), $current_item, $campaign, $item);  // new name here
+						// Primero intento con mi funcion mas rapida
+					$upload_dir = wp_upload_dir();
+					$video_dst = trailingslashit($upload_dir['path']). $new_video_name; 
+					$video_dst_url = trailingslashit($upload_dir['url']). $new_video_name;
+					if(in_array(str_replace('.','',strrchr( strtolower($video_dst), '.')), explode(',', $allowed_video))) {   // -------- Controlo extensiones permitidas
+							
+						trigger_error('Uploading media='.$video_src.' <b>to</b> video_dst='.$video_dst.'', E_USER_NOTICE);
+						$newfile = ($options_videos['customupload_videos']) ? $this->guarda_imagen($video_src_real, $video_dst) : false;
+						if($newfile) { //subió
+							trigger_error('Uploaded media='.$newfile,E_USER_NOTICE);
+							$video_dst = $newfile; 
+							$video_dst_url = trailingslashit($upload_dir['url']). basename($newfile);
+							$current_item['content'] = str_replace($video_src, $video_dst_url, $current_item['content']);
+							$video_new_url_array[] = $video_dst_url;
+						} else { // falló -> intento con otros
+							$bits = WPeMatico::wpematico_get_contents($video_src_real);
+							$mirror = wp_upload_bits($new_video_name, NULL, $bits);
+							if(!$mirror['error']) {
+								trigger_error($mirror['url'], E_USER_NOTICE);
+								$current_item['content'] = str_replace($video_src, $mirror['url'], $current_item['content']);
+								$video_new_url_array[] = $mirror['url'];
+							} else {  
+								trigger_error('wp_upload_bits error:'.print_r($mirror,true).'.', E_USER_WARNING);
+								// Si no quiere linkar los videos al server borro el link de la video
+								trigger_error( __('Upload file failed:', WPeMatico::TEXTDOMAIN ).$video_dst, E_USER_WARNING);
+								if($options_videos['gralnolink_video']) {
+									$current_item['content'] = $this->strip_Video_by_src($video_src, $current_item['content']);
+								}
+							}
+						}
+					}else {
+						trigger_error( __('Extension not allowed: ', WPeMatico::TEXTDOMAIN ). urldecode($video_dst_url), E_USER_WARNING);
+						if($options_videos['gralnolink_video']) { // Si no quiere linkar las img al server borro el link de la imagen
+							trigger_error( __('Stripped src.', WPeMatico::TEXTDOMAIN), E_USER_WARNING);
+							$current_item['content'] = $this->strip_Video_by_src($video_src, $current_item['content']);
+						}
+					}
+				}
+				$current_item['videos'] = (array)$video_new_url_array;
+			}  // // Si hay alguna imagen en el contenido
+		} else {
+			trigger_error('<b>'.__('Looking for remote videos in content. No changes.', WPeMatico::TEXTDOMAIN ).'</b>', E_USER_NOTICE);
+			$current_item['videos'] = array();
+		}
+		return $current_item;		
+	}  // item videos
 	function get_videos_options() {
 		$options = array();
 		$options['video_cache'] = $this->cfg['video_cache'];

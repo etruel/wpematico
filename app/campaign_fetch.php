@@ -275,6 +275,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		$this->current_item = apply_filters('wpematico_item_filters_pre_video', $this->current_item, $this->campaign);
 		//gets video array 
 		$this->current_item = $this->Get_Item_Videos($this->current_item, $this->campaign, $feed, $item, $options_videos);
+		// Uploads and changes img sources in content
+		$this->current_item = $this->Item_Videos($this->current_item, $this->campaign, $feed, $item, $options_videos);
 
 
 		//********* Parse and upload images
@@ -507,16 +509,34 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 				}			
 			//}
 
+			/**
+			* Attach audios to post
+			* @since 1.7.0
+			*/	
 			if($options_audios['audio_cache'] && $options_audios['audio_attach']) {
 				if(is_array($this->current_item['audios'])) {
 					if(sizeof($this->current_item['audios'])) { // if exist a audio.
-						trigger_error(__('Attaching audios', 'wpematico' ).": ".sizeof($this->current_item['images']),E_USER_NOTICE);
+						trigger_error(__('Attaching audios', 'wpematico' ).": ".sizeof($this->current_item['audios']),E_USER_NOTICE);
 						foreach($this->current_item['audios'] as $audio_src) {
 							$attachid = $this->insertfileasattach($audio_src,$post_id);
 						}
 					}
 				}
-			}			
+			}
+			/**
+			* Attach videos to post
+			* @since 1.7.0
+			*/	
+			if($options_videos['video_cache'] && $options_videos['video_attach']) {
+				if(is_array($this->current_item['videos'])) {
+					if(sizeof($this->current_item['videos'])) { // if exist a video.
+						trigger_error(__('Attaching videos', 'wpematico' ).": ".sizeof($this->current_item['videos']),E_USER_NOTICE);
+						foreach($this->current_item['videos'] as $video_src) {
+							$attachid = $this->insertfileasattach($video_src,$post_id);
+						}
+					}
+				}
+			}	
 
 			 // If pingback/trackbacks
 			if($this->campaign['campaign_allowpings']) {
