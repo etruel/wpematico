@@ -561,12 +561,15 @@ class wpematico_campaign_fetch_functions {
 	/*** Delete images for its src	*/
 	static function strip_Image_by_src($src, $content, $withlink=true){
 		trigger_error( sprintf( __("Removing: %s from content." , WPeMatico :: TEXTDOMAIN ),'"'. $src .'"' ) , E_USER_NOTICE);
+		$img_src_real_scaped = addslashes($src);
+		$img_src_real_scaped = addcslashes($img_src_real_scaped, "?.+");
+
 		if($withlink){
-			$imgtag = '|<a(.+?)><img(.+?)src=["\']'.addslashes($src).'["\'](.*?)><\/a>|';
+			$imgtag = '|<a(.+?)><img(.+?)src=["\']'.$img_src_real_scaped.'["\'](.*?)><\/a>|';
 			$current_content = preg_replace( $imgtag, '',  $content );  //for tag img with a
 			$content = ( is_null($current_content) ) ? $content : $current_content ;  //for tag img with a
 		}		
-		$imgtag = '|<img(.+?)src=["\']'.addslashes($src).'["\'](.*?)>|';
+		$imgtag = '|<img(.+?)src=["\']'.$img_src_real_scaped.'["\'](.*?)>|';
 		$current_content = preg_replace( $imgtag, '',  $content );  //for tag img without a
 		$content = ( is_null($current_content) ) ? $content : $current_content ;  //for tag img with a
 		return $content;
