@@ -244,9 +244,12 @@ or to e-mail etruel@gmail.com
 
 == Changelog ==
 = 1.7.0  =
-* Change in the process logic of the images.
-* Added feature options for Audios.
-* Added feature options for Videos.
+* Configuracion de imagenes en cada campaña.
+* Agregado el soporte de audios en el contenido y sus opciones para su administracion.
+* Agregado el soporte de videos en el contenido y sus opciones para su administracion.
+* Solucionado problema con imagenes y el atributo srcset.
+* Solucionado los problemas con WPeisDuplicatedMetaSource.
+
 
 = 1.6.4  Jun 6, 2017 =
 * Added a wizard to create a campaign!

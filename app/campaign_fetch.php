@@ -261,7 +261,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		* @since 1.7.0
 		* Parse and upload audio
 		*/
-		$options_audios = $this->get_audios_options();
+		$options_audios = WPeMatico::get_audios_options($this->cfg, $this->campaign);
 		$this->current_item = apply_filters('wpematico_item_filters_pre_audio', $this->current_item, $this->campaign);
 		$this->current_item = $this->Get_Item_Audios($this->current_item, $this->campaign, $feed, $item, $options_audios);
 		// Uploads and changes img sources in content
@@ -271,7 +271,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		* @since 1.7.0
 		* Parse and upload video
 		*/
-		$options_videos = $this->get_videos_options();
+		$options_videos = WPeMatico::get_videos_options($this->cfg, $this->campaign);
 		$this->current_item = apply_filters('wpematico_item_filters_pre_video', $this->current_item, $this->campaign);
 		//gets video array 
 		$this->current_item = $this->Get_Item_Videos($this->current_item, $this->campaign, $feed, $item, $options_videos);
@@ -284,11 +284,10 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		* @since 1.7.0 
 		* Get image options.
 		*/
-		$options_images = $this->get_images_options();
+		$options_images = WPeMatico::get_images_options($this->cfg, $this->campaign);
 		$this->current_item = apply_filters('wpematico_item_filters_pre_img', $this->current_item, $this->campaign );
 		//gets images array 
 		$this->current_item = $this->Get_Item_images($this->current_item,$this->campaign, $feed, $item, $options_images);
-
 		$this->current_item['featured_image'] = apply_filters('wpematico_set_featured_img', '', $this->current_item, $this->campaign, $feed, $item );
 
 		if($options_images['featuredimg']){
@@ -304,7 +303,6 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
 		// Uploads and changes img sources in content
 		$this->current_item = $this->Item_images($this->current_item, $this->campaign, $feed, $item, $options_images);
-
 		$this->current_item = apply_filters('wpematico_item_filters_pos_img', $this->current_item, $this->campaign );
 		
 		//********** Do parses contents and titles

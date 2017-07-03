@@ -117,6 +117,10 @@ $helpcampaign = array(
 				'title' => __('Don\'t link external images.', 'wpematico' ),
 				'tip' => __('If selected and image upload get error, then delete the \'src\' attribute of the &lt;img&gt;. Check this for don\'t link images from external sites.', 'wpematico' ),
 		),
+		'image_srcset' => array( 
+				'title' => __('Use srcset attribute instead of src of &lt;img&gt; tag.', 'wpematico' ),
+				'tip'   => __('Selecting this option searches the srcset attribute if it exists, it searches for the larger image to overwrite the src attribute of the &lt;img&gt; tag.', 'wpematico' ),	
+		),
 		'featuredimg' => array( 
 				'title' => __('Set first image on content as Featured Image.', 'wpematico' ),
 				'tip' => __('Check this to set first image found on every content to be uploaded, attached and made Featured.', 'wpematico' ),

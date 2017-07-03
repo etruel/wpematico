@@ -269,6 +269,7 @@ public static function template_box( $post ) {
 		$campaign_no_setting_img = $campaign_data['campaign_no_setting_img'];
 		$campaign_nolinkimg = $campaign_data['campaign_nolinkimg'];
 		$campaign_attach_img = $campaign_data['campaign_attach_img'];
+		$campaign_image_srcset = $campaign_data['campaign_image_srcset'];
 		$campaign_featuredimg = $campaign_data['campaign_featuredimg'];
 		$campaign_rmfeaturedimg = $campaign_data['campaign_rmfeaturedimg'];
 		$campaign_customupload = $campaign_data['campaign_customupload'];
@@ -287,8 +288,9 @@ public static function template_box( $post ) {
 				
 				<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_attach_img,true); ?> name="campaign_attach_img" id="campaign_attach_img" /><b>&nbsp;<label for="campaign_attach_img"><?php _e('Attach Images to posts.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['imgattach']; ?>"></span><br/>
 				
-				<input name="campaign_nolinkimg" id="campaign_nolinkimg" class="checkbox" value="1" type="checkbox" <?php checked($campaign_nolinkimg,true); ?> />
-				<?php echo '<label for="campaign_nolinkimg">' . __('No link to source images', 'wpematico' ) . '</label>'; ?> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['gralnolinkimg']; ?>"></span>
+				<input name="campaign_nolinkimg" id="campaign_nolinkimg" class="checkbox" value="1" type="checkbox" <?php checked($campaign_nolinkimg,true); ?> /><label for="campaign_nolinkimg"><?php _e('No link to source images', 'wpematico' ); ?></label> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['gralnolinkimg']; ?>"></span><br/>
+				
+				<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_image_srcset,true); ?> name="campaign_image_srcset" id="campaign_image_srcset" /><b>&nbsp;<label for="campaign_image_srcset"><?php esc_attr_e('Use srcset attribute instead of src of <img> tag.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['image_srcset']; ?>"></span><br/>
 				
 			</div>
 			<p></p>
@@ -318,12 +320,17 @@ public static function template_box( $post ) {
 		$campaign_nolink_audio = $campaign_data['campaign_nolink_audio'];
 		$campaign_attach_audio = $campaign_data['campaign_attach_audio'];
 		$campaign_customupload_audio = $campaign_data['campaign_customupload_audio'];
+
+
 		?>
 		
 		<input name="campaign_no_setting_audio" id="campaign_no_setting_audio" class="checkbox" value="1" type="checkbox" <?php checked($campaign_no_setting_audio, true); ?> />
 		<label for="campaign_no_setting_audio"><?php echo __('Don&#x27;t use general Settings', 'wpematico' ); ?></label> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['audio_options']; ?>"></span>
 		
 		<div id="div_no_setting_audio" style="margin-left: 20px; <?php if (!$campaign_no_setting_audio) echo 'display:none;';?>">
+			<?php
+				do_action('wpematico_audio_box_setting_before');
+			?>
 			<p>
 				<input name="campaign_audio_cache" id="campaign_audio_cache" class="checkbox left" value="1" type="checkbox" <?php checked($campaign_audio_cache,true); ?> />
 				<b><label for="campaign_audio_cache"><?php echo __('Cache Audios.', 'wpematico' ); ?></label></b> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['audio_cache']; ?>"></span>
@@ -341,10 +348,13 @@ public static function template_box( $post ) {
 				<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_customupload_audio, true); ?> name="campaign_customupload_audio" id="campaign_customupload_audio" /><b>&nbsp;<label for="campaign_customupload_audio"><?php _e('Custom function for uploads.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['customupload_audios']; ?>"></span>
 				<br/>
 			</div>
+			<?php
+				do_action('wpematico_audio_box_setting_after');
+			?>
 		</div>
 		
 		<?php
-
+		do_action('wpematico_audio_box_out_setting');
 	}
 	/**
 	* Static function video_box
@@ -360,6 +370,7 @@ public static function template_box( $post ) {
 		$campaign_nolink_video = $campaign_data['campaign_nolink_video'];
 		$campaign_attach_video = $campaign_data['campaign_attach_video'];
 		$campaign_customupload_video = $campaign_data['campaign_customupload_video'];
+
 		?>
 		
 		<input name="campaign_no_setting_video" id="campaign_no_setting_video" class="checkbox" value="1" type="checkbox" <?php checked($campaign_no_setting_video, true); ?> />
@@ -383,9 +394,13 @@ public static function template_box( $post ) {
 				<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_customupload_video, true); ?> name="campaign_customupload_video" id="campaign_customupload_video" /><b>&nbsp;<label for="campaign_customupload_video"><?php _e('Custom function for uploads.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['customupload_videos']; ?>"></span>
 				<br/>
 			</div>
+			<?php
+				do_action('wpematico_video_box_setting_after');
+			?>
 		</div>
 		
 		<?php
+		do_action('wpematico_video_box_out_setting');
 	}
 	//*************************************************************************************
 public static function options_box( $post ) { 

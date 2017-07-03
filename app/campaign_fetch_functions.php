@@ -76,7 +76,7 @@ class wpematico_campaign_fetch_functions {
 		return $dev;
 	}
 	
-	function WPeisDuplicatedMetaSource($dev, $campaign, $item, $cfg ) {
+	public static function WPeisDuplicatedMetaSource($dev, $campaign, $item) {
 		global $wpdb;
 		$dev = false;
 		$permalink = self::getReadUrl($item->get_permalink(), $campaign); 
@@ -462,7 +462,7 @@ class wpematico_campaign_fetch_functions {
 	}  // item images
 
 
-	function guarda_imagen ($url_origen,$new_file){ 
+	function guarda_imagen($url_origen,$new_file){ 
 		$ch = curl_init ($url_origen); 
 		if(!$ch) return false;
 		$dest_file = apply_filters('wpematico_overwrite_file', $new_file);
@@ -483,6 +483,38 @@ class wpematico_campaign_fetch_functions {
 		$fs_archivo = fopen ($new_file, "w"); 
 		//curl_setopt ($ch, CURLOPT_URL, $url_origen);
 		curl_setopt ($ch, CURLOPT_FILE, $fs_archivo); 
+		curl_setopt ($ch, CURLOPT_HEADER, 0); 
+		curl_exec ($ch); 
+		
+		$httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+		curl_close ($ch); 
+		fclose ($fs_archivo); 
+
+		if(!($httpcode>=200 && $httpcode<300)) unlink($new_file);
+		return ($httpcode>=200 && $httpcode<300) ? $new_file : false;
+	} 
+	function save_video_audio($url_origen,$new_file){ 
+		$ch = curl_init ($url_origen); 
+		if(!$ch) return false;
+		$dest_file = apply_filters('wpematico_overwrite_file', $new_file);
+		if( $dest_file===FALSE ) return $new_file;  // Don't upload it and return the name like it was uploaded
+		$new_file = $dest_file;  
+		$i = 1;
+		while (file_exists( $new_file )) {
+			$file_extension  = strrchr($new_file, '.');    //Will return .JPEG   substr($url_origen, strlen($url_origen)-4, strlen($url_origen));
+			if($i==1){
+				$file_name = substr($new_file, 0, strlen($new_file)-strlen($file_extension) );
+				$new_file = $file_name."-$i".$file_extension;
+			}else{
+				$file_name = substr( $new_file, 0, strlen($new_file)-strlen($file_extension)-strlen("-$i") );
+				$new_file = $file_name."-$i".$file_extension;
+			}
+			$i++;
+		}
+		$fs_archivo = fopen ($new_file, "w"); 
+		//curl_setopt ($ch, CURLOPT_URL, $url_origen);
+		curl_setopt ($ch, CURLOPT_FILE, $fs_archivo); 
+		curl_setopt($ch, CURLOPT_RANGE, '0-500');
 		curl_setopt ($ch, CURLOPT_HEADER, 0); 
 		curl_exec ($ch); 
 		
@@ -540,13 +572,17 @@ class wpematico_campaign_fetch_functions {
    * @param   $campaign       array    Current campaign data
    * @param   $item           object    SimplePie_Item object
    */
-	function Get_Item_images($current_item, $campaign, $feed, $item, $options_images) {        
+	function Get_Item_images($current_item, $campaign, $feed, $item, $options_images) {      
 		if($options_images['imgcache'] || $options_images['featuredimg']) {
-			$images = $this->parseImages($current_item['content']);
+
+			     
+			$images = $this->parseImages($current_item['content'], $options_images);
 			$current_item['images'] = $images[2];  //lista de url de imagenes
 			$current_item['content'] = $images[3];  //Replaced src by srcset(If exist and with larger images) in images.
  			
-			if( $this->cfg['nonstatic'] ) { $current_item['images'] = NoNStatic :: imgfind($current_item,$campaign,$item ); }
+			if( $this->cfg['nonstatic'] ) { 
+				$current_item['images'] = NoNStatic::imgfind($current_item,$campaign,$item ); 
+			}
 			$current_item['images'] = array_values(array_unique($current_item['images']));
 			foreach ($current_item['images'] as $ki => $image) {
 				$current_item['images'][$ki] = urldecode($current_item['images'][$ki]);
@@ -576,38 +612,48 @@ class wpematico_campaign_fetch_functions {
 	}
 
 	/*** Devuelve todas las imagenes del contenido	*/
-	static function parseImages($text){
+	static function parseImages($text, $options_images = array()){
 		$new_content = $text;
 		preg_match_all('/<img[^>]+>/i',$text, $result);
 		$imgstr = implode('', $result[0]);
 //		preg_match_all('/<img(.+?)src=["\'](.+?)["\'](.*?)>/', $imgstr , $out);  //for tag img con ' o "
 		preg_match_all('/<\s*img[^\>]*src\s*=\s*[\""\']?([^\""\'\s>]*)/', $imgstr, $out);  // patch to ignore iframes src
+		
 		$out[2] = $out[1];
-		$pattern = '/<img[^>]*src=(\"|\')([^\"\']*)(\'|\")[^>]*srcset=["\'](.+?)["\'](.*?)*>/';
-		preg_match_all($pattern, $imgstr , $srcset_out);   // patch to ignore iframes src
-		foreach ($srcset_out[2] as $ks => $src_with_srcset) {
-			if (in_array($src_with_srcset, $out[2])) {
-				$srcset_string = $srcset_out[4][$ks];
-				$pieces_srcset = explode(',', $srcset_string);
-				$max_width = 0;
-				$max_url = '';
-				foreach ($pieces_srcset as $kps => $piece) {
-					$piece = trim($piece);
-					$pieces_url_srcset = explode(' ', $piece);
-					$url_srcset = $pieces_url_srcset[0];
-					$with = intval($pieces_url_srcset[1]);
-					if ($with > $max_width) {
-						$max_width = $with;
-						$max_url = $url_srcset;
+
+		if (isset($options_images['image_srcset']) && $options_images['image_srcset']) {
+			trigger_error( __("Getting srcset attribute...", WPeMatico::TEXTDOMAIN ), E_USER_NOTICE);
+			$images_array = (empty($result[0]) ? array() : $result[0]);
+			foreach ($images_array as $img_tag) {
+				$src_with_srcset  = WPeMatico::get_attribute_value('src', $img_tag);
+				if (in_array($src_with_srcset, $out[2])) {
+					$srcset_string = WPeMatico::get_attribute_value('srcset', $img_tag);
+					$pieces_srcset = explode(',', $srcset_string);
+					$max_width = 0;
+					$max_url = '';
+					foreach ($pieces_srcset as $kps => $piece) {
+						$piece = trim($piece);
+						$pieces_url_srcset = explode(' ', $piece);
+						$url_srcset = $pieces_url_srcset[0];
+						$with = intval($pieces_url_srcset[1]);
+						if ($with > $max_width) {
+							$max_width = $with;
+							$max_url = $url_srcset;
+						}
 					}
+
+					 if (($key_image = array_search($src_with_srcset, $out[2])) !== FALSE) {
+				       	$new_content = str_replace($out[2][$key_image], $max_url, $new_content);
+				       	$out[2][$key_image] = $max_url;
+				       	/* Translator: %s: URL of a image URL value */
+				       	trigger_error( sprintf( __("Overriding src attribute with value: %s from srcset." , WPeMatico::TEXTDOMAIN ), $src_with_srcset) , E_USER_NOTICE);
+				    }
 				}
-				 if (($key_image = array_search($src_with_srcset, $out[2])) !== FALSE) {
-			       	$new_content = str_replace($out[2][$key_image], $max_url, $new_content);
-			       	$out[2][$key_image] = $max_url;
-			    }
-			   
+				
 			}
 		}
+		
+		
 		preg_match_all('/<link rel=\"(.+?)\" type=\"image\/jpg\" href=\"(.+?)\"(.+?)\/>/', $text, $out2); // for rel=enclosure
 		array_push($out,$out2);  // sum all items to array 
 		$out[3] = $new_content;
@@ -629,7 +675,7 @@ class wpematico_campaign_fetch_functions {
 		}
 		$index_script = array_search('script', $tags);
 		if ($index_script !== FALSE) {
-			$text = $this->strip_tags_content($text, '<script>', TRUE);
+			$text =  WPeMatico::strip_tags_content($text, '<script>', TRUE);
 			unset($tags[$index_script]);
 		}
 	    foreach ($tags as $tag){
@@ -639,24 +685,7 @@ class wpematico_campaign_fetch_functions {
 	    }
 	    return preg_replace('/(<('.join('|',$tags).')(|\W.*)\/>)/iusU', '', $text);
 	}
-	function strip_tags_content($text, $tags = '', $invert = FALSE) { 
 
-	  preg_match_all('/<(.+?)[\s]*\/?[\s]*>/si', trim($tags), $tags); 
-	  $tags = array_unique($tags[1]); 
-	    
-	  if(is_array($tags) AND count($tags) > 0) { 
-	    if($invert == FALSE) { 
-	      return preg_replace('@<(?!(?:'. implode('|', $tags) .')\b)(\w+)\b.*?>.*?</\1>@si', '', $text); 
-	    } 
-	    else { 
-	      return preg_replace('@<('. implode('|', $tags) .')\b.*?>.*?</\1>@si', '', $text); 
-	    } 
-	  } 
-	  elseif($invert == FALSE) { 
-	    return preg_replace('@<(\w+)\b.*?>.*?</\1>@si', '', $text); 
-	  } 
-	  return $text; 
-	}
 	static function wpematico_get_yt_rss_tags( $content, $campaign, $feed, $item ) {		
 		if( strpos( $feed->feed_url, 'https://www.youtube.com/feeds/videos.xml' ) !== false ) {
 			$ytvideoId = $item->get_item_tags('http://www.youtube.com/xml/schemas/2015', 'videoId');
@@ -682,31 +711,7 @@ class wpematico_campaign_fetch_functions {
 		}
 		return $slug;
 	}
-	function get_images_options() {
-		$options = array();
-		$options['imgcache'] = $this->cfg['imgcache'];
-		$options['imgattach'] = $this->cfg['imgattach'];
-		$options['gralnolinkimg'] = $this->cfg['gralnolinkimg'];
-		$options['featuredimg'] = $this->cfg['featuredimg'];
-		$options['rmfeaturedimg'] = $this->cfg['rmfeaturedimg'];
-		$options['customupload'] = $this->cfg['customupload'];
-		if (!$options['imgcache']) {
-			$options['imgattach'] = false;
-			$options['gralnolinkimg'] = false;
-			if (!$options['featuredimg']) {
-				$options['customupload'] = false;
-			}
-		}
-		if(isset($this->campaign['campaign_no_setting_img']) && $this->campaign['campaign_no_setting_img']) {
-			$options['imgcache'] = $this->campaign['campaign_imgcache'];
-			$options['imgattach'] = $this->campaign['campaign_attach_img'];
-			$options['gralnolinkimg'] = $this->campaign['campaign_nolinkimg'];
-			$options['featuredimg'] = $this->campaign['campaign_featuredimg'];
-			$options['rmfeaturedimg'] = $this->campaign['campaign_rmfeaturedimg'];
-			$options['customupload'] = $this->campaign['campaign_customupload'];
-		}
-		return $options;
-	}
+	
 	/**
    	* Filters audios, upload and replace on text item content
   	* @param   $current_item   array    Current post data to be saved
@@ -720,7 +725,7 @@ class wpematico_campaign_fetch_functions {
 			$current_item['audios'] = $this->parseAudios($current_item['content']);
 			
 			if( $this->cfg['nonstatic'] ) { 
-				//$current_item['audios'] = NoNStatic::audio_find($current_item,$campaign,$item );
+				$current_item['audios'] = NoNStatic::find_audios($current_item, $campaign, $item, $options_audios);
 			}
 			$current_item['audios'] = array_values(array_unique($current_item['audios']));
 			foreach ($current_item['audios'] as $ki => $image) {
@@ -792,7 +797,7 @@ class wpematico_campaign_fetch_functions {
 						$audio_src_without_query = str_replace('?_=1', '', $audio_src_without_query);
 					}
 					// Store audio.	
-					$new_audio_name = apply_filters('wpematico_new_audio_name', sanitize_file_name(urlencode(basename($audio_src_without_query))), $current_item, $campaign, $item);  // new name here
+					$new_audio_name = apply_filters('wpematico_new_audio_name', sanitize_file_name(urlencode(basename($audio_src_without_query))), $current_item, $options_audios, $item);  // new name here
 						// Primero intento con mi funcion mas rapida
 					$upload_dir = wp_upload_dir();
 					$audio_dst = trailingslashit($upload_dir['path']). $new_audio_name; 
@@ -840,27 +845,6 @@ class wpematico_campaign_fetch_functions {
 		return $current_item;		
 	}  // item audios
 
-
-	function get_audios_options() {
-		$options = array();
-		$options['audio_cache'] = $this->cfg['audio_cache'];
-		$options['audio_attach'] = $this->cfg['audio_attach'];
-		$options['gralnolink_audio'] = $this->cfg['gralnolink_audio'];
-		$options['customupload_audios'] = $this->cfg['customupload_audios'];
-		if (!$options['audio_cache']) {
-			$options['audio_attach'] = false;
-			$options['gralnolink_audio'] = false;
-			$options['customupload_audios'] = false;
-			
-		}
-		if(isset($this->campaign['campaign_no_setting_audio']) && $this->campaign['campaign_no_setting_audio']) {
-			$options['audio_cache'] = $this->campaign['campaign_audio_cache'];
-			$options['audio_attach'] = $this->campaign['campaign_attach_audio'];
-			$options['gralnolink_audio'] = $this->campaign['campaign_nolink_audio'];
-			$options['customupload_audios'] = $this->campaign['campaign_customupload_audio'];
-		}
-		return $options;
-	}
 	/**
    	* Filters videos, upload and replace on text item content
   	* @param   $current_item   array    Current post data to be saved
@@ -874,15 +858,13 @@ class wpematico_campaign_fetch_functions {
 			$current_item['videos'] = $this->parseVideos($current_item['content']);
 			
 			if( $this->cfg['nonstatic'] ) { 
-				//$current_item['videos'] = NoNStatic::audio_find($current_item,$campaign,$item );
+				$current_item['videos'] = NoNStatic::find_videos($current_item, $campaign,$item, $options_videos);
 			}
 			$current_item['videos'] = array_values(array_unique($current_item['videos']));
 			foreach ($current_item['videos'] as $ki => $image) {
 				if (strpos($image, '//') === 0) {
 					$current_item['videos'][$ki] = 'http:'.$current_item['videos'][$ki];
 				}
-				
-				
 			}
 		}
 		return $current_item;
@@ -995,25 +977,6 @@ class wpematico_campaign_fetch_functions {
 		}
 		return $current_item;		
 	}  // item videos
-	function get_videos_options() {
-		$options = array();
-		$options['video_cache'] = $this->cfg['video_cache'];
-		$options['video_attach'] = $this->cfg['video_attach'];
-		$options['gralnolink_video'] = $this->cfg['gralnolink_video'];
-		$options['customupload_videos'] = $this->cfg['customupload_videos'];
-		if (!$options['video_cache']) {
-			$options['video_attach'] = false;
-			$options['gralnolink_video'] = false;
-			$options['customupload_videos'] = false;
-			
-		}
-		if(isset($this->campaign['campaign_no_setting_video']) && $this->campaign['campaign_no_setting_video']) {
-			$options['video_cache'] = $this->campaign['campaign_video_cache'];
-			$options['video_attach'] = $this->campaign['campaign_attach_video'];
-			$options['gralnolink_video'] = $this->campaign['campaign_nolink_video'];
-			$options['customupload_videos'] = $this->campaign['campaign_customupload_video'];
-		}
-		return $options;
-	}
+	
 
 } // class

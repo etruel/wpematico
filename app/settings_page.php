@@ -251,6 +251,8 @@ function wpematico_settings(){
 							<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['imgattach'],true); ?> name="imgattach" id="imgattach" /><b>&nbsp;<label for="imgattach"><?php _e('Attach Images to posts.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['imgattach']; ?>"></span>
 							<br/>
 							<input name="gralnolinkimg" id="gralnolinkimg" class="checkbox" value="1" type="checkbox" <?php checked($cfg['gralnolinkimg'],true); ?> /><label for="gralnolinkimg"><?php _e('No link to source images', 'wpematico' ); ?></label><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['gralnolinkimg']; ?>"></span>
+							<br/>
+							<input name="image_srcset" id="image_srcset" class="checkbox" value="1" type="checkbox" <?php checked($cfg['image_srcset'],true); ?> /><b>&nbsp;<label for="image_srcset"><?php esc_attr_e('Use srcset attribute instead of src of <img> tag.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['image_srcset']; ?>"></span>
 						</div>
 						<p></p>
 						<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['featuredimg'],true); ?> name="featuredimg" id="featuredimg" /><b>&nbsp;<label for="featuredimg"><?php _e('Enable first image found on content as Featured Image.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['featuredimg']; ?>"></span>
@@ -808,6 +810,13 @@ function wpematico_helpsettings($dev=''){
 					__('If is selected and the image upload give error, then will delete the &lt;img&gt; HTML tag from the content. Check this to don\'t link images from external sites.', 'wpematico' ),
 				'plustip' => "<b>" . __('Note',  'wpematico' ). ":</b> " . 
 					__('If the image are inside &lt;a&gt; tags, then the link is also removed from content.', 'wpematico' ),
+			),
+			'image_srcset' => array( 
+				'title' => __('Use srcset attribute instead of src of &lt;img&gt; tag.', 'wpematico' ),
+				'tip' => "<b>" . __('Note',  'wpematico' ). ":</b> " . 
+					__('Selecting this option searches the srcset attribute if it exists, it searches for the larger image to overwrite the src attribute of the &lt;img&gt; tag.', 'wpematico' ),
+				'plustip' => "<b>" . __('Note',  'wpematico' ). ":</b> " . 
+					__('If the srcset attribute does not exist the image processing will work normally.', 'wpematico' ),
 			),
 
 			

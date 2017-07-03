@@ -315,7 +315,6 @@ class wpematico_licenses_handlers {
 			
 			if( ! is_multisite() ) {
 				//$current = get_site_transient( 'update_plugins' );
-				//error_log(var_export($current->response, true));
 				add_action( 'after_plugin_row_' . plugin_basename($args['plugin_file']), 'wp_plugin_update_row', 10, 2 );
 			}
 			

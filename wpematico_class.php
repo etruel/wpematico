@@ -436,6 +436,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			$cfg['imgattach']		= (!isset($options['imgattach']) || empty($options['imgattach'])) ? false: ($options['imgattach']==1) ? true : false;
 			$cfg['imgcache']		= (!isset($options['imgcache']) || empty($options['imgcache'])) ? false: ($options['imgcache']==1) ? true : false;
 			$cfg['gralnolinkimg']	= (!isset($options['gralnolinkimg']) || empty($options['gralnolinkimg'])) ? false: ($options['gralnolinkimg']==1) ? true : false;
+			$cfg['image_srcset']	= (!isset($options['image_srcset']) || empty($options['image_srcset'])) ? false: ($options['image_srcset']==1) ? true : false;
 			
 
 			$cfg['audio_attach']		= (!isset($options['audio_attach']) || empty($options['audio_attach'])) ? false: ($options['audio_attach']==1) ? true : false;

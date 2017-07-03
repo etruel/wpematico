@@ -9,6 +9,157 @@ if ( !defined('ABSPATH') ) {
 if ( !class_exists( 'WPeMatico_functions' ) ) {
 
 class WPeMatico_functions {
+
+	/**
+	* @access public
+	* @return $options Array of current images settings.
+	* @since 1.7.0
+	*/
+	public static function get_images_options($settings = array(), $campaign = array()) {
+		$options = array();
+		$options['imgcache'] = $settings['imgcache'];
+		$options['imgattach'] = $settings['imgattach'];
+		$options['gralnolinkimg'] = $settings['gralnolinkimg'];
+		$options['image_srcset'] = $settings['image_srcset'];
+		
+		$options['featuredimg'] = $settings['featuredimg'];
+		$options['rmfeaturedimg'] = $settings['rmfeaturedimg'];
+		$options['customupload'] = $settings['customupload'];
+		if (!$options['imgcache']) {
+			$options['imgattach'] = false;
+			$options['gralnolinkimg'] = false;
+			$options['image_srcset'] = false;
+			if (!$options['featuredimg']) {
+				$options['customupload'] = false;
+			}
+		}
+		if(isset($campaign['campaign_no_setting_img']) && $campaign['campaign_no_setting_img']) {
+			$options['imgcache'] = $campaign['campaign_imgcache'];
+			$options['imgattach'] = $campaign['campaign_attach_img'];
+			$options['gralnolinkimg'] = $campaign['campaign_nolinkimg'];
+			$options['image_srcset'] = $campaign['campaign_image_srcset'];
+			$options['featuredimg'] = $campaign['campaign_featuredimg'];
+			$options['rmfeaturedimg'] = $campaign['campaign_rmfeaturedimg'];
+			$options['customupload'] = $campaign['campaign_customupload'];
+		}
+		$options = apply_filters('wpematico_images_options', $options, $settings, $campaign);
+		return $options;
+	}
+	/**
+	* @access public
+	* @return $options Array of current audios settings.
+	* @since 1.7.0
+	*/
+	public static function get_audios_options($settings = array(), $campaign = array()) {
+		
+		$options = array();
+		$options['audio_cache'] = $settings['audio_cache'];
+		$options['audio_attach'] = $settings['audio_attach'];
+		$options['gralnolink_audio'] = $settings['gralnolink_audio'];
+		$options['customupload_audios'] = $settings['customupload_audios'];
+		if (!$options['audio_cache']) {
+			$options['audio_attach'] = false;
+			$options['gralnolink_audio'] = false;
+			$options['customupload_audios'] = false;
+		}
+		if(isset($campaign['campaign_no_setting_audio']) && $campaign['campaign_no_setting_audio']) {
+			$options['audio_cache'] = $campaign['campaign_audio_cache'];
+			$options['audio_attach'] = $campaign['campaign_attach_audio'];
+			$options['gralnolink_audio'] = $campaign['campaign_nolink_audio'];
+			$options['customupload_audios'] = $campaign['campaign_customupload_audio'];
+		}
+		$options = apply_filters('wpematico_audios_options', $options, $settings, $campaign);
+		return $options;
+	} 
+
+	/**
+	* @access public
+	* @return $options Array of current videos settings.
+	* @since 1.7.0
+	*/
+	public static function get_videos_options($settings = array(), $campaign = array()) {
+		$options = array();
+		$options['video_cache'] = $settings['video_cache'];
+		$options['video_attach'] = $settings['video_attach'];
+		$options['gralnolink_video'] = $settings['gralnolink_video'];
+		$options['customupload_videos'] = $settings['customupload_videos'];
+		if (!$options['video_cache']) {
+			$options['video_attach'] = false;
+			$options['gralnolink_video'] = false;
+			$options['customupload_videos'] = false;
+			
+		}
+		if(isset($campaign['campaign_no_setting_video']) && $campaign['campaign_no_setting_video']) {
+			$options['video_cache'] = $campaign['campaign_video_cache'];
+			$options['video_attach'] = $campaign['campaign_attach_video'];
+			$options['gralnolink_video'] = $campaign['campaign_nolink_video'];
+			$options['customupload_videos'] = $campaign['campaign_customupload_video'];
+		}
+		$options = apply_filters('wpematico_videos_options', $options, $settings, $campaign);
+		return $options;
+	}
+	/**
+	* Static function get_attribute_value
+	* @access public
+	* @return $value String with value of HTML attribute.
+	* @since 1.7.0
+	*/
+	public static function get_attribute_value($atribute, $string) {
+		$value = '';
+		$attribute_patterns = array();
+		$attribute_patterns[] = $atribute.'=';
+		$attribute_patterns[] = $atribute.' = ';
+		$attribute_patterns[] = $atribute.'= ';
+		$attribute_patterns[] = $atribute.' =';
+		$pos_var = false;
+		$index_pattern = -1;
+		foreach ($attribute_patterns as $kp => $pattern) {
+			$pos_var = strpos($string, $pattern);
+			$index_pattern = $kp;
+			if ($pos_var !== false) {
+				break;
+			}
+		}
+		if ($pos_var === false) {
+			return $value;
+		}
+		$len_pattern = strlen($attribute_patterns[$index_pattern]);
+		$pos_offset_one = strpos($string, '"', $pos_var+$len_pattern+2);
+		$pos_offset = $pos_offset_one;
+		$pos_offset_two = strpos($string, "'", $pos_var+$len_pattern+2);
+		if ($pos_offset_one === false) {
+			$pos_offset_one = PHP_INT_MAX;
+		}
+		if ($pos_offset_two === false) {
+			$pos_offset_two = PHP_INT_MAX;
+		}
+
+		if ($pos_offset_two < $pos_offset_one) {
+			$pos_offset = $pos_offset_two;
+		}
+		$offset_substr = ($pos_offset-($pos_var+$len_pattern));
+		$value = substr($string, $pos_var+$len_pattern, $offset_substr);
+		$value = str_replace('"', '', $value);
+		$value = str_replace("'", '', $value);
+		return $value;
+	}
+
+	public static function strip_tags_content($text, $tags = '', $invert = FALSE) { 
+
+	  	preg_match_all('/<(.+?)[\s]*\/?[\s]*>/si', trim($tags), $tags); 
+	  	$tags = array_unique($tags[1]); 
+	    
+	  	if(is_array($tags) AND count($tags) > 0) { 
+	    	if($invert == FALSE) { 
+	      		return preg_replace('@<(?!(?:'. implode('|', $tags) .')\b)(\w+)\b.*?>.*?</\1>@si', '', $text); 
+	    	} else { 
+	      		return preg_replace('@<('. implode('|', $tags) .')\b.*?>.*?</\1>@si', '', $text); 
+	    	} 
+	  	} elseif ($invert == FALSE) { 
+	    	return preg_replace('@<(\w+)\b.*?>.*?</\1>@si', '', $text); 
+	  	} 
+	  	return $text; 
+	}
 	public static function wpematico_env_checks() {
 		global $wp_version, $user_ID;
 		$message = $wpematico_admin_message = '';
@@ -271,7 +422,9 @@ class WPeMatico_functions {
 		$campaigndata['campaign_imgcache']=(!isset($post_data['campaign_imgcache']) || empty($post_data['campaign_imgcache'])) ? false: ($post_data['campaign_imgcache']==1) ? true : false;
 		$campaigndata['campaign_attach_img']=(!isset($post_data['campaign_attach_img']) || empty($post_data['campaign_attach_img'])) ? false: ($post_data['campaign_attach_img']==1) ? true : false; 
 		$campaigndata['campaign_nolinkimg']=(!isset($post_data['campaign_nolinkimg']) || empty($post_data['campaign_nolinkimg'])) ? false: ($post_data['campaign_nolinkimg']==1) ? true : false;
+		$campaigndata['campaign_image_srcset']=(!isset($post_data['campaign_image_srcset']) || empty($post_data['campaign_image_srcset'])) ? false: ($post_data['campaign_image_srcset']==1) ? true : false;
 		
+
 		$campaigndata['campaign_featuredimg']=(!isset($post_data['campaign_featuredimg']) || empty($post_data['campaign_featuredimg'])) ? false: ($post_data['campaign_featuredimg']==1) ? true : false;
 		$campaigndata['campaign_rmfeaturedimg']=(!isset($post_data['campaign_rmfeaturedimg']) || empty($post_data['campaign_rmfeaturedimg'])) ? false: ($post_data['campaign_rmfeaturedimg']==1) ? true : false;
 		$campaigndata['campaign_customupload']=(!isset($post_data['campaign_customupload']) || empty($post_data['campaign_customupload'])) ? false: ($post_data['campaign_customupload']==1) ? true : false;
@@ -520,7 +673,7 @@ class WPeMatico_functions {
 		}		
 	}
     $feed = new SimplePie();
-    $feed->timeout = apply_filters('wpe_simplepie_timeout', 30);
+    $feed->timeout = apply_filters('wpe_simplepie_timeout', 130);
     $feed->enable_order_by_date($order_by_date);
 
 	$feed->set_feed_url($url);
