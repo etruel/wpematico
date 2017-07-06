@@ -724,9 +724,11 @@ class wpematico_campaign_fetch_functions {
 		if($options_audios['audio_cache']) {
 			$current_item['audios'] = $this->parseAudios($current_item['content']);
 			
-			if( $this->cfg['nonstatic'] ) { 
-				$current_item['audios'] = NoNStatic::find_audios($current_item, $campaign, $item, $options_audios);
-			}
+
+			$current_item = apply_filters('wpematico_get_item_audios', $current_item, $campaign, $item, $options_audios);
+			//if( $this->cfg['nonstatic'] ) { 
+				//$current_item['audios'] = NoNStatic::find_audios($current_item, $campaign, $item, $options_audios);
+			//}
 			$current_item['audios'] = array_values(array_unique($current_item['audios']));
 			foreach ($current_item['audios'] as $ki => $image) {
 				if (strpos($image, '//') === 0) {
@@ -857,9 +859,12 @@ class wpematico_campaign_fetch_functions {
 		if($options_videos['video_cache']) {
 			$current_item['videos'] = $this->parseVideos($current_item['content']);
 			
-			if( $this->cfg['nonstatic'] ) { 
-				$current_item['videos'] = NoNStatic::find_videos($current_item, $campaign,$item, $options_videos);
-			}
+
+			$current_item = apply_filters('wpematico_get_item_videos', $current_item, $campaign, $item, $options_videos);
+			
+			//if( $this->cfg['nonstatic'] ) { 
+				//$current_item['videos'] = NoNStatic::find_videos($current_item, $campaign,$item, $options_videos);
+			//}
 			$current_item['videos'] = array_values(array_unique($current_item['videos']));
 			foreach ($current_item['videos'] as $ki => $image) {
 				if (strpos($image, '//') === 0) {
