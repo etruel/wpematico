@@ -10,7 +10,7 @@ $cfg = apply_filters('wpematico_check_options',$cfg );
 if ( !class_exists( 'WPeMatico' ) ) {
 	class WPeMatico extends WPeMatico_functions {
 		const TEXTDOMAIN = 'wpematico';
-		const PROREQUIRED = '1.6.1';
+		const PROREQUIRED = '1.7';
 		const OPTION_KEY = 'WPeMatico_Options';
 		public static $name = '';
 		public static $version = '';

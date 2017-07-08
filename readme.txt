@@ -3,7 +3,7 @@ Contributors: etruel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS, RSS to Post, Feed to Post, autoblog,rss aggregator, Feed, rss to post, syndication, Post, Posts, aggregation, atom, bot, content, writing
 Requires at least: 4.1
-Tested up to: 4.8
+Tested up to: 4.9
 Stable tag: trunk
 License: GPLv2 or later
 
@@ -29,7 +29,7 @@ If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/
 > * Comfortable interface like Worpress posts editing for every campaign.
 > * Multiple feeds / categories / tags.
 > * Auto add categories from source posts.
-> * Integrated with the Simplepie library that comes with Wordpress. This includes RSS 0.91 and RSS 1.0 formats, the popular RSS 2.0 format, Atom...
+> * Integrated *or not* with the Simplepie library that comes with Wordpress. This includes RSS 0.91 and RSS 1.0 formats, the popular RSS 2.0 format, Atom...
 > * Feed auto discovery allows you to add feeds without even knowing the exact URL. (Thanks Simplepie!)
 > * Unix cron and WordPress cron jobs. 
 > * For maximum performance, you can make the RSS fetching process be called by an external cron job, or simply let WordPress handle it.
@@ -39,6 +39,7 @@ If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/
 > * The first image attached to a post can be marked as the Featured Image.
 > * It is possible to upload & attach only the featured image ignoring the others.
 > * You can choose whether to upload images as post attachments or not. Also upload remote images or link to source. Fully configurable.
+> * You can choose whether to upload *audio and video files* as post attachments or not. Also upload remote files or link to source. Fully configurable.
 > * Words or phrases rewriting. Regular expressions supported.
 > * Words Relinking. Define custom links for the words or phrases you specify.
 > * Words to Category. Define custom words to search into content or title to assign every post to specified category.
@@ -119,8 +120,9 @@ If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/
 
 ---
 
-> #### **[WPeMatico SMTP](https://etruel.com/downloads/wpematico-smtp/):**
-> * Add compatibility to use SMTP email method to send emails just from WPeMatico logs and add-ons.
+> #### **[WPeMatico Cache](https://etruel.com/downloads/wpematico-cache/):**
+> * A powerful single plugin or WPeMatico addon, which optimizes the websites speed thanks to processes and technologies that reduces the overload of the websites where it is installed.
+> * Improving the velocity till 10x comparing with with other cache plugins for WordPress. See the Requirements.
 
 ---
 
@@ -243,13 +245,21 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
-= 1.7.0  =
-* Configuracion de imagenes en cada campaña.
-* Agregado el soporte de audios en el contenido y sus opciones para su administracion.
-* Agregado el soporte de videos en el contenido y sus opciones para su administracion.
-* Solucionado problema con imagenes y el atributo srcset.
-* Solucionado los problemas con WPeisDuplicatedMetaSource.
-
+= 1.7.0  Jul 7, 2017 =
+* Added support for mp3 audio and mp4 video files in the feed contents. Integrated with Wordpress standards, link or attach files to a post.
+* Added new configurations for images inside every campaign to overwrite general settings.
+* Fixes a bug on images with srcset attribute.
+* Fixes a bug with Warnings on second check of duplicated posts that brokes the fetching process.
+* **Recommended to test it in development ambients before update**
+* [Professional] 
+* **Enlarges the version required for the Professional addon to 1.7v** (https://etruel.com/downloads/wpematico-professional/)
+* Added support for audio and video file types allowed by WP (<mp3, ogg, wav, wma, m4a> <mp4, m4v, mov, wmv, avi, mpg, ogv, 3gp, 3g2>)
+* Added the feature to get the audio and video files from the feed enclosures and podcasts.
+* Added some features for audio and video files:
+  Strip the queries variables in the URLs of audio and video links.
+  Audio and video filenames renamer.
+  Strip audios and videos html tags from the content.
+* [/Professional]
 
 = 1.6.4  Jun 6, 2017 =
 * Added a wizard to create a campaign!
@@ -948,5 +958,7 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 1.6.3 =
-* Many improvements and fixes. See changelog for more details. 
+= 1.7 =
+* **Enlarges the version required for the Professional addon to 1.7v**
+* **Recommended to test it in development ambients before update**
+* Many improvements and fixes. See changelog for more details.
