@@ -143,7 +143,71 @@ class WPeMatico_functions {
 		$value = str_replace("'", '', $value);
 		return $value;
 	}
+	/**
+	* Static function get_tags
+	* @access public
+	* @return void
+	* @since 1.7.1
+	*/
+	public static function get_tags($tag, $string) {
+		$tags_content = array();
+		$current_offset = 0;
+		do {
+			$tag_return = self::get_tag($tag, $string, $current_offset);
+			if ($tag_return) {
+				$tags_content[] = $tag_return[1];
+				$current_offset = $tag_return[0];
+			}
+		} while ($tag_return !== false);
+		return $tags_content;
+	}
+	/**
+	* Static function get_tags
+	* @access public
+	* @return void
+	* @since 1.7.1
+	*/
+	public static function get_tag($tag, $string, $offset_start = 0) {
+		$value = '';
+		$tag_patterns = array();
+		$tag_patterns[] = '<'.$tag;
+		$tag_patterns[] = '< '.$tag;
+		$pos_var = false;
+		$index_pattern = -1;
+		foreach ($tag_patterns as $kp => $pattern) {
+			$pos_var = strpos($string, $pattern, $offset_start);
+			$index_pattern = $kp;
+			if ($pos_var !== false) {
+				break;
+			}
+		}
+		if ($pos_var === false) {
+			return false;
+		}
+		$tag_end_patterns = array();
+		$tag_end_patterns[] = '</'.$tag.'>';
+		$tag_end_patterns[] = '</ '.$tag.'>';
+		$tag_end_patterns[] = '/>';
+		$tag_end_patterns[] = '/ >';
 
+		$pos_offset_end = false;
+		$index_pattern_end = -1;
+		$len_pattern = strlen($tag_patterns[$index_pattern]);
+		foreach ($tag_end_patterns as $kp => $pattern) {
+			$pos_offset_end = strpos($string, $pattern, $pos_var+$len_pattern+2);
+			$index_pattern_end = $kp;
+			if ($pos_offset_end !== false) {
+				break;
+			}
+		}
+
+		if ($pos_offset_end === false) {
+			return false;
+		}
+		
+		$value = substr($string, $pos_var, $pos_offset_end);
+		return array($pos_offset_end,  $value);
+	}
 	public static function strip_tags_content($text, $tags = '', $invert = FALSE) { 
 
 	  	preg_match_all('/<(.+?)[\s]*\/?[\s]*>/si', trim($tags), $tags); 

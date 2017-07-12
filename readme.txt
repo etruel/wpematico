@@ -245,6 +245,11 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
+= 1.7.1  Jul 11, 2017 =
+* Agregado la compatibilidad para agregar la subida por rangos con el profesional.
+* Agregada la funcion para obtener y procesar las imagenes de etiquetas <picture>
+
+
 = 1.7.0  Jul 7, 2017 =
 * Added support for mp3 audio and mp4 video files in the feed contents. Integrated with Wordpress standards, link or attach files to a post.
 * Added new configurations for images inside every campaign to overwrite general settings.
