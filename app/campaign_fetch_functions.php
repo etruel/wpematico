@@ -651,8 +651,35 @@ class wpematico_campaign_fetch_functions {
 				}
 				
 			}
+			$array_pictures = WPeMatico::get_tags('picture', $new_content);
+			foreach ($array_pictures as $picture_tag) {
+				$array_sources = WPeMatico::get_tags('source', $picture_tag);
+				foreach ($array_sources as $source_tag) {
+					$srcset_string = WPeMatico::get_attribute_value('srcset', $source_tag);
+					if (empty($srcset_string)) {
+						continue;
+					}
+					$pieces_srcset = explode(',', $srcset_string);
+					$max_width = 0;
+					$max_url = '';
+					foreach ($pieces_srcset as $kps => $piece) {
+						$piece = trim($piece);
+						$pieces_url_srcset = explode(' ', $piece);
+						$url_srcset = $pieces_url_srcset[0];
+						$with = intval($pieces_url_srcset[1]);
+						if ($with > $max_width) {
+							$max_width = $with;
+							$max_url = $url_srcset;
+						}
+					}
+
+					if (!empty($max_url)) {
+						$out[2][] = $max_url;
+					}
+				}
+			}
 		}
-		
+
 		
 		preg_match_all('/<link rel=\"(.+?)\" type=\"image\/jpg\" href=\"(.+?)\"(.+?)\/>/', $text, $out2); // for rel=enclosure
 		array_push($out,$out2);  // sum all items to array 
@@ -749,7 +776,7 @@ class wpematico_campaign_fetch_functions {
 		$dom = new DOMDocument();
 		@$dom->loadHTML($text);
 		$xpath = new DomXPath($dom);
-		$nodes = $xpath->query('//audio/source[@type="audio/mpeg"]');
+		$nodes = $xpath->query('//audio/source');
 		foreach($nodes as $node) {
 		  $audios[] = $node->getAttribute('src');
 		}
@@ -807,7 +834,15 @@ class wpematico_campaign_fetch_functions {
 					if(in_array(str_replace('.','',strrchr( strtolower($audio_dst), '.')), explode(',', $allowed_audio))) {   // -------- Controlo extensiones permitidas
 							
 						trigger_error('Uploading media='.$audio_src.' <b>to</b> audio_dst='.$audio_dst.'', E_USER_NOTICE);
-						$newfile = ($options_audios['customupload_audios']) ? $this->guarda_imagen($audio_src_real, $audio_dst) : false;
+						$newfile = false;
+						if($this->cfg['nonstatic'] && $options_audios['upload_ranges']) { 
+							$newfile = NoNStatic::partial_upload_file($audio_src_real, $audio_dst, $options_audios);
+						}
+						
+						if ($options_audios['customupload_audios'] && !$newfile){
+							$newfile = $this->guarda_imagen($audio_src_real, $audio_dst);
+						}
+
 						if($newfile) { //subió
 							trigger_error('Uploaded media='.$newfile,E_USER_NOTICE);
 							$audio_dst = $newfile; 
@@ -885,7 +920,7 @@ class wpematico_campaign_fetch_functions {
 		$dom = new DOMDocument();
 		@$dom->loadHTML($text);
 		$xpath = new DomXPath($dom);
-		$nodes = $xpath->query('//video/source[@type="video/mp4"]');
+		$nodes = $xpath->query('//video/source');
 		foreach($nodes as $node) {
 		  $videos[] = $node->getAttribute('src');
 		}
@@ -943,7 +978,17 @@ class wpematico_campaign_fetch_functions {
 					if(in_array(str_replace('.','',strrchr( strtolower($video_dst), '.')), explode(',', $allowed_video))) {   // -------- Controlo extensiones permitidas
 							
 						trigger_error('Uploading media='.$video_src.' <b>to</b> video_dst='.$video_dst.'', E_USER_NOTICE);
-						$newfile = ($options_videos['customupload_videos']) ? $this->guarda_imagen($video_src_real, $video_dst) : false;
+						$newfile = false;
+
+						if($this->cfg['nonstatic'] && $options_videos['upload_ranges']) { 
+							$newfile = NoNStatic::partial_upload_file($video_src_real, $video_dst, $options_videos);
+						}
+
+						if ($options_videos['customupload_videos'] && !$newfile){
+							$newfile = $this->guarda_imagen($video_src_real, $video_dst);
+						}
+
+						//$newfile = ($options_videos['customupload_videos']) ? $this->guarda_imagen($video_src_real, $video_dst) : false;
 						if($newfile) { //subió
 							trigger_error('Uploaded media='.$newfile,E_USER_NOTICE);
 							$video_dst = $newfile; 
