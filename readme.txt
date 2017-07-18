@@ -197,6 +197,18 @@ You can either install it automatically from the WordPress admin, or do it manua
 
 == Frequently Asked Questions ==
 
+= First Install & testing requirements Video
+
+[youtube https://youtu.be/z-yAVJY49XM]
+
+= Filling the Settings Video
+
+[youtube https://youtu.be/_6naAu1C-Oc]
+
+= Creating a Campaign Video
+
+[youtube https://youtu.be/Kzex_AyfWyo]
+
 = I have this plugin installed and activated. What must I do now ? =
 
 * OK, in Wordpress admin you should see now a new area below the posts called WPeMatico. At settings, setup the plugin configuration. At Campaigns you must add one. There, add one or several feeds of your choice. You can use a campaign for grouping the feeds for a category or another custom topic that you want.
@@ -246,9 +258,10 @@ or to e-mail etruel@gmail.com
 
 == Changelog ==
 = 1.7.1  Jul 11, 2017 =
-* Agregado la compatibilidad para agregar la subida por rangos con el profesional.
-* Agregada la funcion para obtener y procesar las imagenes de etiquetas <picture>
-
+* Fixes a bug for PHP < 5.4 introduced in previous version.
+* Added support for images with 'picture' html tags with srcset attribute.
+* Added filters to allow professional version to upload big file sizes by ranges for the new video/audio features.
+* Added some video tutorials in FAQs section.
 
 = 1.7.0  Jul 7, 2017 =
 * Added support for mp3 audio and mp4 video files in the feed contents. Integrated with Wordpress standards, link or attach files to a post.
@@ -963,7 +976,7 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 1.7 =
+= 1.7.1 =
 * **Enlarges the version required for the Professional addon to 1.7v**
 * **Recommended to test it in development ambients before update**
 * Many improvements and fixes. See changelog for more details.
