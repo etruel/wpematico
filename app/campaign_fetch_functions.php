@@ -352,12 +352,12 @@ class wpematico_campaign_fetch_functions {
 		if(!$campaign['avoid_search_redirection']) {
 			
 			if (version_compare(phpversion(), '5.3.0', '>=')) { 
-				stream_context_set_default( [
-				    'ssl' => [
+				stream_context_set_default(array(
+				    'ssl' => array(
 				        'verify_peer' => false,
 				        'verify_peer_name' => false,
-				    ],
-				]);
+				    ),
+				));
 			}
 			
 			$headers = get_headers($permalink);
