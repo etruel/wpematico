@@ -257,6 +257,11 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
+= 1.7.2  Jul 11, 2017 =
+* Cambios menores en las funciones del cron.
+* Agregada nuevos filtros para agregar la compatibilidad con featured imagen desde un attach id.
+
+
 = 1.7.1  Jul 11, 2017 =
 * Fixes a bug for PHP < 5.4 introduced in previous version.
 * Added support for images with 'picture' html tags with srcset attribute.

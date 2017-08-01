@@ -441,6 +441,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
 			// Attaching images uploaded to created post in media library 
 			// Featured Image
+			$featured_image_attach_id = 0;
 			$img_new_url = '';
 			if(!empty($this->current_item['nofeatimg'])) {
 				trigger_error('<strong>'.__('Skip Featured Image.', 'wpematico' ).'</strong>',E_USER_NOTICE);
@@ -488,10 +489,15 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 					array_shift($this->current_item['images']);  //quito el 1er elemento para que no lo suba de nuevo abajo
 					$attachid = $this->insertfileasattach( $this->current_item['featured_image'] , $post_id);
 					set_post_thumbnail($post_id, $attachid );
+					$featured_image_attach_id = $attachid;
 					//add_post_meta($post_id, '_thumbnail_id', $attachid);
 				}else{
-					trigger_error( __('Upload featured image failed:', 'wpematico' ).$imagen_dst,E_USER_WARNING);
+					//trigger_error( __('Upload featured image failed:', 'wpematico' ).$imagen_dst,E_USER_WARNING);
 				}
+			}
+			$featured_image_attach_id = apply_filters('wpematico_featured_image_attach_id', $featured_image_attach_id, $post_id, $this->current_item, $this->campaign, $item);
+			if ($featured_image_attach_id == 0) {
+				trigger_error( __('Upload featured image failed:', 'wpematico' ).$imagen_dst, E_USER_WARNING);
 			}
 			// Attach files in post content previously uploaded
 			//if(!$this->campaign['campaign_cancel_imgcache']) {
