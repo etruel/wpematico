@@ -497,7 +497,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			}
 			$featured_image_attach_id = apply_filters('wpematico_featured_image_attach_id', $featured_image_attach_id, $post_id, $this->current_item, $this->campaign, $item);
 			if ($featured_image_attach_id == 0) {
-				trigger_error( __('Upload featured image failed:', 'wpematico' ).$imagen_dst, E_USER_WARNING);
+				trigger_error( __('The post has no a featured image.', 'wpematico' ), E_USER_WARNING);
 			}
 			// Attach files in post content previously uploaded
 			//if(!$this->campaign['campaign_cancel_imgcache']) {
