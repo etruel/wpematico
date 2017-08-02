@@ -260,7 +260,7 @@ or to e-mail etruel@gmail.com
 = 1.7.2  Jul 11, 2017 =
 * Cambios menores en las funciones del cron.
 * Agregada nuevos filtros para agregar la compatibilidad con featured imagen desde un attach id.
-
+* Pequenos cambios en los mensajes de imagenes, audios y videos en el fechting.
 
 = 1.7.1  Jul 11, 2017 =
 * Fixes a bug for PHP < 5.4 introduced in previous version.
