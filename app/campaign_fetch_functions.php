@@ -455,7 +455,7 @@ class wpematico_campaign_fetch_functions {
 				if($featured) $current_item['featured_image'] = $current_item['images'][0]; //change to new url
 			}  // // Si hay alguna imagen en el contenido
 		}else {
-			if( sizeof($current_item['images']) ) { 
+			if(isset($current_item['images']) && sizeof($current_item['images']) ) { 
 				trigger_error('<b>'.__('Using remotely linked images in content. No changes.', WPeMatico::TEXTDOMAIN ).'</b>', E_USER_NOTICE);
 			}
 			$current_item['images'] = array();
@@ -567,7 +567,43 @@ class wpematico_campaign_fetch_functions {
 		}
 		return $current_item;
 	}
-*/	
+*/
+
+	/**
+	* @return void
+	* @since 1.7.2
+	*/
+	function featured_image_selector($current_item, $campaign, $feed, $item, $options_images) {
+		if (isset($campaign['campaign_enable_featured_image_selector']) && $campaign['campaign_enable_featured_image_selector']) {
+			trigger_error('<b>'.__('Executing featured image selector...', WPeMatico::TEXTDOMAIN).'</b>',E_USER_NOTICE);
+			$index_selector = (int)$campaign['campaign_featured_selector_index'];
+			if (isset($current_item['images'][$index_selector])) {
+				trigger_error('<b>'.sprintf( __('Featured image "%s": %s', WPeMatico::TEXTDOMAIN), $index_selector,  $current_item['images'][$index_selector]).'</b>',E_USER_NOTICE);
+				$current_item['featured_image'] = $current_item['images'][$index_selector];
+			} else {
+				trigger_error('<b>'.__('There is no the selector index on images.', WPeMatico::TEXTDOMAIN).'</b>',E_USER_NOTICE);
+				$images_array = $current_item['images'];
+				if (isset($campaign['campaign_featured_selector_ifno']) && $campaign['campaign_featured_selector_ifno'] == 'first') {
+					$first_image = array_shift($images_array);
+					if (empty($first_image)) {
+						trigger_error('<b>'.__('There is no the first image.', WPeMatico::TEXTDOMAIN).'</b>',E_USER_NOTICE);
+					} else {
+						trigger_error('<b>'.__('Using first image as the featured image.', WPeMatico::TEXTDOMAIN).'</b>',E_USER_NOTICE);
+						$current_item['featured_image'] = $first_image;
+					}
+				} else {
+					$last_image = array_pop($images_array);
+					if (empty($last_image)) {
+						trigger_error('<b>'.__('There is no the last image.', WPeMatico::TEXTDOMAIN).'</b>',E_USER_NOTICE);
+					} else {
+						trigger_error('<b>'.__('Using last image as the featured image.', WPeMatico::TEXTDOMAIN).'</b>',E_USER_NOTICE);
+						$current_item['featured_image'] = $last_image;
+					}
+				}
+			}
+		}
+		return $current_item;
+	}
  	/**
    * Filters images, upload and replace on text item content
    * @param   $current_item   array    Current post data to be saved
@@ -581,7 +617,7 @@ class wpematico_campaign_fetch_functions {
 			$images = $this->parseImages($current_item['content'], $options_images);
 			$current_item['images'] = $images[2];  //lista de url de imagenes
 			$current_item['content'] = $images[3];  //Replaced src by srcset(If exist and with larger images) in images.
- 			
+
 			if( $this->cfg['nonstatic'] ) { 
 				$current_item['images'] = NoNStatic::imgfind($current_item,$campaign,$item ); 
 			}
@@ -592,6 +628,7 @@ class wpematico_campaign_fetch_functions {
 					$current_item['images'][$ki] = 'http:'.$current_item['images'][$ki];
 				}
 			}
+
 		}
 		return $current_item;
 	}
@@ -878,7 +915,7 @@ class wpematico_campaign_fetch_functions {
 				$current_item['audios'] = (array)$audio_new_url_array;
 			}  // // Si hay alguna imagen en el contenido
 		} else {
-			if( sizeof($current_item['audios']) ) { 
+			if(isset($current_item['audios']) && sizeof($current_item['audios']) ) { 
 				trigger_error('<b>'.__('Using remotely linked audios in content. No changes.', WPeMatico::TEXTDOMAIN ).'</b>', E_USER_NOTICE);
 			}
 			$current_item['audios'] = array();
@@ -1026,7 +1063,7 @@ class wpematico_campaign_fetch_functions {
 				$current_item['videos'] = (array)$video_new_url_array;
 			}  // // Si hay alguna imagen en el contenido
 		} else {
-			if( sizeof($current_item['videos']) ) { 
+			if(isset($current_item['videos']) && sizeof($current_item['videos']) ) { 
 				trigger_error('<b>'.__('Using remotely linked videos in content. No changes.', WPeMatico::TEXTDOMAIN ).'</b>', E_USER_NOTICE);
 			}
 			$current_item['videos'] = array();

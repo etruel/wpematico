@@ -490,6 +490,12 @@ class WPeMatico_functions {
 		
 
 		$campaigndata['campaign_featuredimg']=(!isset($post_data['campaign_featuredimg']) || empty($post_data['campaign_featuredimg'])) ? false: ($post_data['campaign_featuredimg']==1) ? true : false;
+		
+		$campaigndata['campaign_enable_featured_image_selector']=(!isset($post_data['campaign_enable_featured_image_selector']) || empty($post_data['campaign_enable_featured_image_selector'])) ? false: ($post_data['campaign_enable_featured_image_selector']==1) ? true : false;
+		$campaigndata['campaign_featured_selector_index']=(!isset($post_data['campaign_featured_selector_index']) || empty($post_data['campaign_featured_selector_index'])) ? '0': $post_data['campaign_featured_selector_index'];
+		$campaigndata['campaign_featured_selector_ifno']=(!isset($post_data['campaign_featured_selector_ifno']) || empty($post_data['campaign_featured_selector_ifno'])) ? 'first': $post_data['campaign_featured_selector_ifno'];
+		
+
 		$campaigndata['campaign_rmfeaturedimg']=(!isset($post_data['campaign_rmfeaturedimg']) || empty($post_data['campaign_rmfeaturedimg'])) ? false: ($post_data['campaign_rmfeaturedimg']==1) ? true : false;
 		$campaigndata['campaign_customupload']=(!isset($post_data['campaign_customupload']) || empty($post_data['campaign_customupload'])) ? false: ($post_data['campaign_customupload']==1) ? true : false;
 		

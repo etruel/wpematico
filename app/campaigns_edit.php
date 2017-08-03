@@ -294,6 +294,14 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 					jQuery('#nolinkimg').fadeOut();
 				}
 			});
+			jQuery('#campaign_enable_featured_image_selector').click(function() {
+				if ( true == jQuery('#campaign_enable_featured_image_selector').is(':checked')) {
+					jQuery('#featured_img_selector_div').fadeIn();
+				} else {
+					jQuery('#featured_img_selector_div').fadeOut();
+				}
+			});
+			
 
 			jQuery('#campaign_imgcache, #campaign_featuredimg').click(function() {
 				if ( true == jQuery('#campaign_imgcache').is(':checked') || true == jQuery('#campaign_featuredimg').is(':checked') ) {

@@ -273,7 +273,18 @@ public static function template_box( $post ) {
 		$campaign_featuredimg = $campaign_data['campaign_featuredimg'];
 		$campaign_rmfeaturedimg = $campaign_data['campaign_rmfeaturedimg'];
 		$campaign_customupload = $campaign_data['campaign_customupload'];
-		
+		$campaign_enable_featured_image_selector = $campaign_data['campaign_enable_featured_image_selector'];
+		$campaign_featured_selector_index = $campaign_data['campaign_featured_selector_index'];
+		$campaign_featured_selector_ifno = $campaign_data['campaign_featured_selector_ifno'];
+		if (!$campaign_no_setting_img) {
+			$campaign_imgcache = $cfg['imgcache'];
+			$campaign_nolinkimg = $cfg['gralnolinkimg'];
+			$campaign_attach_img = $cfg['imgattach'];
+			$campaign_image_srcset = $cfg['image_srcset'];
+			$campaign_featuredimg = $cfg['featuredimg'];
+			$campaign_rmfeaturedimg = $cfg['rmfeaturedimg'];
+			$campaign_customupload = $cfg['customupload'];
+		}
 		?>
 		
 		<input name="campaign_no_setting_img" id="campaign_no_setting_img" class="checkbox" value="1" type="checkbox" <?php checked($campaign_no_setting_img,true); ?> />
@@ -296,6 +307,21 @@ public static function template_box( $post ) {
 			<p></p>
 			<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_featuredimg, true); ?> name="campaign_featuredimg" id="campaign_featuredimg" /><b>&nbsp;<label for="campaign_featuredimg"><?php _e('Enable first image found on content as Featured Image.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['featuredimg']; ?>"></span>
 			<br />
+			
+
+			<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_enable_featured_image_selector,true); ?> name="campaign_enable_featured_image_selector" id="campaign_enable_featured_image_selector" /><b>&nbsp;<label for="campaign_enable_featured_image_selector"><?php _e('Enable featured image selector.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['enable_featured_image_selector']; ?>"></span>
+				<div id="featured_img_selector_div" style="padding-left:20px; <?php if (!$campaign_enable_featured_image_selector) echo 'display:none;';?>">
+					<b><label for="featured_selector_index"><?php _e('Index to featured', WPeMatico::TEXTDOMAIN ); ?>:</label></b>
+					<input name="campaign_featured_selector_index" type="number" min="0" value="<?php echo $campaign_featured_selector_index; ?>" id="campaign_featured_selector_index"/><br />
+					<b><label for="campaign_featured_selector_ifno"><?php _e('If no exist index', WPeMatico::TEXTDOMAIN ); ?>:</label></b>
+					<select name="campaign_featured_selector_ifno" id="campaign_featured_selector_ifno"> 
+						<option value="first" <?php selected('first', $campaign_featured_selector_ifno, true); ?>>First image</option>
+						<option value="last" <?php selected('last', $campaign_featured_selector_ifno, true); ?>>Last image</option>
+					</select>
+
+			</div>
+			<br />
+
 			<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_rmfeaturedimg, true); ?> name="campaign_rmfeaturedimg" id="campaign_rmfeaturedimg" /><b>&nbsp;<label for="campaign_rmfeaturedimg"><?php _e('Remove Featured Image from content.', 'wpematico' ); ?></label></b> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['rmfeaturedimg']; ?>"></span>
 			<p></p>
 			<div id="custom_uploads" style="<?php if (!$campaign_imgcache && !$campaign_featuredimg) echo 'display:none;';?>">

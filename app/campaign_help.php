@@ -125,6 +125,11 @@ $helpcampaign = array(
 				'title' => __('Set first image on content as Featured Image.', 'wpematico' ),
 				'tip' => __('Check this to set first image found on every content to be uploaded, attached and made Featured.', 'wpematico' ),
 		),
+		'enable_featured_image_selector' => array( 
+				'title' => __('Enable featured image selector.', 'wpematico' ),
+				'tip' => __('Check this to set first image found on every content to be uploaded, attached and made Featured.', 'wpematico' ),
+		),
+		
 		'rmfeaturedimg' => array( 
 				'title' => __('Remove Featured Image from content.', 'wpematico' ),
 				'tip' => __('Check this to strip the Featured Image from the post content.', 'wpematico' ),

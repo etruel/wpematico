@@ -295,6 +295,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 				$this->current_item['featured_image'] = apply_filters('wpematico_get_featured_img', $this->current_item['images'][0], $this->current_item);
 			}
 		}
+
+		
 		if($options_images['rmfeaturedimg'] && !empty($this->current_item['featured_image']) ){ // removes featured from content
 			$this->current_item['content'] = $this->strip_Image_by_src($this->current_item['featured_image'], $this->current_item['content']);
 		}
@@ -303,6 +305,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
 		// Uploads and changes img sources in content
 		$this->current_item = $this->Item_images($this->current_item, $this->campaign, $feed, $item, $options_images);
+		$this->current_item = $this->featured_image_selector($this->current_item,$this->campaign, $feed, $item, $options_images);
+		
 		$this->current_item = apply_filters('wpematico_item_filters_pos_img', $this->current_item, $this->campaign );
 		
 		//********** Do parses contents and titles
@@ -438,6 +442,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			}
 
 			if(has_action('wpematico_inserted_post')) do_action('wpematico_inserted_post', $post_id, $this->campaign, $item );
+
 
 			// Attaching images uploaded to created post in media library 
 			// Featured Image
