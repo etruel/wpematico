@@ -36,7 +36,7 @@ If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/
 > * Options to set max items per fetch, comments on or off, sets authors and a lot of more options.
 > * It allows to publish to any public Wordpress Custom post type, status and post formats.
 > * Images caching are integrated with Wordpress Media Library. 
-> * The first (or 2nd or 3rd, your choice) image attached to a post can be marked as the Featured Image.
+> * The first image attached to a post can be marked as the Featured Image.
 > * It is possible to upload & attach only the featured image ignoring the others.
 > * You can choose whether to upload images as post attachments or not. Also upload remote images or link to source. Fully configurable.
 > * You can choose whether to upload *audio and video files* as post attachments or not. Also upload remote files or link to source. Fully configurable.
@@ -258,10 +258,9 @@ or to e-mail etruel@gmail.com
 
 == Changelog ==
 = 1.7.2  Jul 11, 2017 =
-* New Feature to use a choiced image by order in the source article.
-* New filters to process the featured image by attachment id.
-* Some tweaks in the campaigns logs for images, audios and videos when fetchs an item..
-* Fixes a bug when deactivate the WP Cron.
+* Cambios menores en las funciones del cron.
+* Agregada nuevos filtros para agregar la compatibilidad con featured imagen desde un attach id.
+
 
 = 1.7.1  Jul 11, 2017 =
 * Fixes a bug for PHP < 5.4 introduced in previous version.
@@ -982,7 +981,7 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 1.7.2 =
-* **Enlarges the version required for the Professional addon to 1.7x**
+= 1.7.1 =
+* **Enlarges the version required for the Professional addon to 1.7v**
 * **Recommended to test it in development ambients before update**
 * Many improvements and fixes. See changelog for more details.
