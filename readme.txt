@@ -258,7 +258,7 @@ or to e-mail etruel@gmail.com
 
 == Changelog ==
 = 1.7.2  Aug 3, 2017 =
-* New Feature to use a choiced image by order in the source article.
+* New feature to choose an image by order in the source article.
 * New filters to process the featured image by attachment id.
 * Some tweaks in the campaigns logs for images, audios and videos when fetchs an item..
 * Fixes a bug when deactivate the WP Cron.
@@ -983,6 +983,6 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 == Upgrade Notice ==
 
 = 1.7.2 =
-* **Enlarges the version required for the Professional addon to 1.7v**
+* **Enlarges the version required for the Professional addon to 1.7.3**
 * **Recommended to test it in development ambients before update**
 * Many improvements and fixes. See changelog for more details.

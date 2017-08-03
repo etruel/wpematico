@@ -127,7 +127,7 @@ $helpcampaign = array(
 		),
 		'enable_featured_image_selector' => array( 
 				'title' => __('Enable featured image selector.', 'wpematico' ),
-				'tip' => __('Check this to set first image found on every content to be uploaded, attached and made Featured.', 'wpematico' ),
+				'tip' => __('Check this to select a different image order in the content to take the featured image. The first or 2nd or 3rd, your choice.', 'wpematico' ),
 		),
 		
 		'rmfeaturedimg' => array( 
