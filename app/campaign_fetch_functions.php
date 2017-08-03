@@ -455,8 +455,10 @@ class wpematico_campaign_fetch_functions {
 				if($featured) $current_item['featured_image'] = $current_item['images'][0]; //change to new url
 			}  // // Si hay alguna imagen en el contenido
 		}else {
-			trigger_error('<b>'.__('Looking for remote images in content. No changes.', WPeMatico :: TEXTDOMAIN ).'</b>',E_USER_NOTICE);
-			$current_item['images']=array();
+			if( sizeof($current_item['images']) ) { 
+				trigger_error('<b>'.__('Using remotely linked images in content. No changes.', WPeMatico::TEXTDOMAIN ).'</b>', E_USER_NOTICE);
+			}
+			$current_item['images'] = array();
 		}
 		return $current_item;		
 	}  // item images
@@ -876,7 +878,9 @@ class wpematico_campaign_fetch_functions {
 				$current_item['audios'] = (array)$audio_new_url_array;
 			}  // // Si hay alguna imagen en el contenido
 		} else {
-			trigger_error('<b>'.__('Looking for remote audios in content. No changes.', WPeMatico::TEXTDOMAIN ).'</b>', E_USER_NOTICE);
+			if( sizeof($current_item['audios']) ) { 
+				trigger_error('<b>'.__('Using remotely linked audios in content. No changes.', WPeMatico::TEXTDOMAIN ).'</b>', E_USER_NOTICE);
+			}
 			$current_item['audios'] = array();
 		}
 		return $current_item;		
@@ -1022,7 +1026,9 @@ class wpematico_campaign_fetch_functions {
 				$current_item['videos'] = (array)$video_new_url_array;
 			}  // // Si hay alguna imagen en el contenido
 		} else {
-			trigger_error('<b>'.__('Looking for remote videos in content. No changes.', WPeMatico::TEXTDOMAIN ).'</b>', E_USER_NOTICE);
+			if( sizeof($current_item['videos']) ) { 
+				trigger_error('<b>'.__('Using remotely linked videos in content. No changes.', WPeMatico::TEXTDOMAIN ).'</b>', E_USER_NOTICE);
+			}
 			$current_item['videos'] = array();
 		}
 		return $current_item;		
