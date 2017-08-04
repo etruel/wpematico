@@ -36,7 +36,7 @@ If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/
 > * Options to set max items per fetch, comments on or off, sets authors and a lot of more options.
 > * It allows to publish to any public Wordpress Custom post type, status and post formats.
 > * Images caching are integrated with Wordpress Media Library. 
-> * The first (or 2nd or 3rd, your choice) image attached to a post can be marked as the Featured Image.
+> * The first (or 2nd or 3rd, you choose) image attached to a post can be marked as the Featured Image.
 > * It is possible to upload & attach only the featured image ignoring the others.
 > * You can choose whether to upload images as post attachments or not. Also upload remote images or link to source. Fully configurable.
 > * You can choose whether to upload *audio and video files* as post attachments or not. Also upload remote files or link to source. Fully configurable.
