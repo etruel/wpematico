@@ -257,14 +257,21 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
-= 1.7.3 =
-* Fixed issue with redirections having only path on location header.
-
-= 1.7.2  Aug 3, 2017 =
+= 1.7.2  Aug 9, 2017 =
 * New feature to choose an image by order in the source article.
 * New filters to process the featured image by attachment id.
 * Some tweaks in the campaigns logs for images, audios and videos when fetchs an item..
+* Fixed an issue on path redirections in the location header.
 * Fixes a bug when deactivate the WP Cron.
+* **Professional Add-on:**
+* **Enlarges the version required for the Professional addon to 1.7.3v** (https://etruel.com/downloads/wpematico-professional/)
+* New feature to avoid upload the Default image again and again.
+* Fixes a problem in campaigns import.
+* Added plugin version validation to update the campaigns if required.
+* **Full Content Add-on:**
+* Redesign and lot of improvements in the Config Files Editor screen. Settings, Full Content tab.
+* Adds a class Inspector to get the xPATH for the correct content in each domain.
+* Adds the feature to insert a new blank txt config file from scratch.
 
 = 1.7.1  Jul 11, 2017 =
 * Fixes a bug for PHP < 5.4 introduced in previous version.
@@ -279,7 +286,7 @@ or to e-mail etruel@gmail.com
 * Fixes a bug with Warnings on second check of duplicated posts that brokes the fetching process.
 * **Recommended to test it in development ambients before update**
 * [Professional] 
-* **Enlarges the version required for the Professional addon to 1.7v** (https://etruel.com/downloads/wpematico-professional/)
+* **Enlarges the version required for the Professional addon to 1.7v** 
 * Added support for audio and video file types allowed by WP (<mp3, ogg, wav, wma, m4a> <mp4, m4v, mov, wmv, avi, mpg, ogv, 3gp, 3g2>)
 * Added the feature to get the audio and video files from the feed enclosures and podcasts.
 * Added some features for audio and video files:
