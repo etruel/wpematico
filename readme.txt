@@ -257,6 +257,9 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
+= 1.7.3 =
+* Fixed issue with redirections having only path on location header.
+
 = 1.7.2  Aug 3, 2017 =
 * New feature to choose an image by order in the source article.
 * New filters to process the featured image by attachment id.

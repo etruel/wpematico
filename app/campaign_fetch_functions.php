@@ -363,8 +363,17 @@ class wpematico_campaign_fetch_functions {
 			$headers = get_headers($permalink);
 			foreach($headers as $header){
 				$parts = explode(':', $header, 2);
-				if(strtolower($parts[0]) == 'location')
-					return trim($parts[1]);
+				if(strtolower($parts[0]) == 'location') {
+					$location = trim($parts[1]);
+					$url_parts = parse_url($location);
+					if (!isset($url_parts['host']) && !isset($url_parts['scheme'])) {
+						$permalink_parts = parse_url($permalink);
+						if (isset($permalink_parts['host']) && isset($permalink_parts['scheme'])) {
+							$location = $permalink_parts['scheme'].'://'.$permalink_parts['host'].$location;
+						}
+					}
+					return $location;
+				}
 			}
         }
         return $permalink;
