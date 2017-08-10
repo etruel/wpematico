@@ -621,8 +621,7 @@ class wpematico_campaign_fetch_functions {
    */
 	function Get_Item_images($current_item, $campaign, $feed, $item, $options_images) {      
 		if($options_images['imgcache'] || $options_images['featuredimg']) {
-
-			     
+     
 			$images = $this->parseImages($current_item['content'], $options_images);
 			$current_item['images'] = $images[2];  //lista de url de imagenes
 			$current_item['content'] = $images[3];  //Replaced src by srcset(If exist and with larger images) in images.
@@ -631,6 +630,9 @@ class wpematico_campaign_fetch_functions {
 				$current_item['images'] = NoNStatic::imgfind($current_item,$campaign,$item ); 
 			}
 			$current_item['images'] = array_values(array_unique($current_item['images']));
+
+			$current_item = apply_filters('wpematico_get_item_images', $current_item, $campaign, $item, $options_images);
+
 			foreach ($current_item['images'] as $ki => $image) {
 				$current_item['images'][$ki] = urldecode($current_item['images'][$ki]);
 				if (strpos($image, '//') === 0) {
