@@ -257,6 +257,9 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
+= 1.7.3  =
+* Agregada la compatibilidad para trabajar con pagina padre.
+
 = 1.7.2  Aug 9, 2017 =
 * New feature to choose an image by order in the source article.
 * New filters to process the featured image by attachment id.

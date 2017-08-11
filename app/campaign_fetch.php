@@ -392,6 +392,10 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		} else {
 			$slug = sanitize_title($title);
 		}
+		$post_parent = 0;
+		if(isset($this->campaign['campaign_parent_page']) && $this->campaign['campaign_parent_page']) {
+			$post_parent = $this->campaign['campaign_parent_page'];
+		}
 		$args = array(
 			'post_title' 	          => apply_filters('wpem_parse_title', $title),
 			'post_content'  	      => apply_filters('wpem_parse_content', $content),
@@ -402,6 +406,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			'post_author'             => apply_filters('wpem_parse_authorid', $authorid),
 			'post_date'               => apply_filters('wpem_parse_date', $date),
 			'comment_status'          => apply_filters('wpem_parse_comment_status', $comment_status),
+			'post_parent'			  => apply_filters('wpem_parse_parent', $post_parent),
 			'ping_status'             => ($allowpings) ? "open" : "closed"
 		);
 		if(has_filter('wpematico_pre_insert_post')) $args =  apply_filters('wpematico_pre_insert_post', $args, $this->campaign);

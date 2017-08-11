@@ -18,6 +18,7 @@ class WPeMatico_Campaign_edit_functions {
 		$cfg = get_option(WPeMatico :: OPTION_KEY);
 		$cfg = apply_filters('wpematico_check_options', $cfg);
 
+		do_action('wpematico_create_metaboxes_before', $campaign_data, $cfg); 
 	//	add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
 		add_meta_box( 'campaign_types', __( 'Campaign Type', 'etruel-del-post-copies' ),  array('WPeMatico_Campaign_edit', 'campaign_type_box'), 'wpematico', 'side', 'high' );
 		if ( current_theme_supports( 'post-formats' ) )
