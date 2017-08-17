@@ -218,7 +218,33 @@ public static function template_box( $post ) {
 				<span class="description"><?php _e('"{content}" must exist in the template if you want to see the content in your post. Works after the features above.', WPeMatico :: TEXTDOMAIN ); ?></span>
 				<p class="he20" id="tags_note" class="note left"><?php _e('Allowed tags', 'wpematico' ); ?>: </p>
 				<p id="tags_list" style="border-left: 3px solid #EEEEEE; color: #999999; font-size: 11px; padding-left: 6px;margin-top: 0;">
-					<span class="tag">{title}</span>, <span class="tag">{content}</span>, <span class="tag">{itemcontent}</span>, <span class="tag">{image}</span>, <span class="tag">{author}</span>, <span class="tag">{authorlink}</span>, <span class="tag">{permalink}</span>, <span class="tag">{feedurl}</span>, <span class="tag">{feedtitle}</span>, <span class="tag">{feeddescription}</span>, <span class="tag">{feedlogo}</span>, <span class="tag">{campaigntitle}</span>, <span class="tag">{campaignid}</span>, <span class="tag">{item_date}</span>, <span class="tag">{item_time}</span>
+					<?php
+						$tags_array = array();
+						$tags_array[] = '{title}';
+						$tags_array[] = '{content}';
+						$tags_array[] = '{itemcontent}';
+						$tags_array[] = '{image}';
+						$tags_array[] = '{author}';
+						$tags_array[] = '{authorlink}';
+						$tags_array[] = '{permalink}';
+						$tags_array[] = '{feedurl}';
+						$tags_array[] = '{feedtitle}';
+						$tags_array[] = '{feeddescription}';
+						$tags_array[] = '{feedlogo}';
+						$tags_array[] = '{campaigntitle}';
+						$tags_array[] = '{campaignid}';
+						$tags_array[] = '{item_date}';
+						$tags_array[] = '{item_time}';
+						$tags_on_campaign_edit = apply_filters('wpematico_template_tags_campaign_edit', $tags_array);
+						foreach ($tags_on_campaign_edit as $tag) {
+							echo '<span class="tag">'.$tag.'</span>';
+							$lastEl = array_pop((array_slice($tags_on_campaign_edit, -1)));
+							if ($tag != $lastEl) {
+								echo ', ';
+							}
+						}
+					?>
+					
 				</p>
 			</div>
 			<p><a href="javascript:void(0);" title="<?php _e('Click to Show/Hide the examples', 'wpematico' ); ?>" onclick="jQuery('#tags_note,#tags_list').fadeToggle('fast'); jQuery('#tags_list_det').fadeToggle();" class="m4">
