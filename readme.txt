@@ -258,7 +258,8 @@ or to e-mail etruel@gmail.com
 
 == Changelog ==
 = 1.7.3  =
-* Agregada la compatibilidad para trabajar con pagina padre.
+* Adds the feature of choose a Parent Page for campaigns inserting feed items as pages.
+* Adds new filters for new custom features.
 
 = 1.7.2  Aug 9, 2017 =
 * New feature to choose an image by order in the source article.

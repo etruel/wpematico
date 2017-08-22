@@ -522,7 +522,7 @@ public static function options_box( $post ) {
 					<p class="description">
 						<?php _e('If you do not select any option will take as if you selected all.', 'wpematico' ); ?>
 					</p>
-
+					<?php do_action('wpematico_striptags_tools',$campaign_data,$cfg);  ?>
 				</div>
 			</p>
 		</div>
