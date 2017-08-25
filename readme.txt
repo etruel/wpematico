@@ -257,9 +257,14 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
-= 1.7.3  =
-* Adds the feature of choose a Parent Page for campaigns inserting feed items as pages.
+= 1.7.3 Aug 25, 2017 =
 * Adds new filters for new custom features.
+* **Professional Add-on:**
+* **Enlarges the version required for the Professional addon to 1.7.4v** (https://etruel.com/downloads/wpematico-professional/)
+* Added new feature Custom Feed Tags.
+* Added new feature to assign Parent page for campaigns inserting feed items as pages.
+* Added new feature to strip images with incorrect content.
+* Added new filters to allow the user manage the HTML tags stripped by a campaign.
 
 = 1.7.2  Aug 9, 2017 =
 * New feature to choose an image by order in the source article.
@@ -996,7 +1001,7 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 1.7.2 =
-* **Enlarges the version required for the Professional addon to 1.7.3**
+= 1.7.3 =
+* **Enlarges the version required for the Professional addon to 1.7.4**
 * **Recommended to test it in development ambients before update**
 * Many improvements and fixes. See changelog for more details.
