@@ -785,22 +785,28 @@ class WPeMatico_functions {
 			$url=$_POST['url'];
 			$ajax=true;
 		}
-		$feed = self :: fetchFeed($url, true);
-		$works = !$feed->error(); // if no error returned
+		$feed = self::fetchFeed($url, true);
+
+		$errors = $feed->error(); // if no error returned
+		$professional_notice = __('<strong>You can force a feed with <a href="https://etruel.com/downloads/wpematico-professional/">WPeMatico Professional</a></strong>', WPeMatico::TEXTDOMAIN );
+
 		if ($ajax) {
-			if($works) {
-				$response['message'] = sprintf(__('The feed %s has been parsed successfully.', WPeMatico :: TEXTDOMAIN ), $url);
+			if(empty($errors)) {
+				$response['message'] = sprintf(__('The feed %s has been parsed successfully.', WPeMatico::TEXTDOMAIN ), $url);
 				$response['success'] = true;
 			}else{
-				$response['message'] = sprintf(__('The feed %s cannot be parsed. Simplepie said: %s', WPeMatico :: TEXTDOMAIN ), $url, $works);
+				$response['message'] = sprintf(__('The feed %s cannot be parsed. Simplepie said: %s', WPeMatico::TEXTDOMAIN ), $url, $errors).' '.$professional_notice;
 				$response['success'] = false;
 			}
 			wp_send_json($response);  //echo json & die
-			//echo intval($works);
-			//die();
+
 		}else {
-			if($works) printf(__('The feed %s has been parsed successfully.', WPeMatico :: TEXTDOMAIN ), $url);
-			else	printf(__('The feed %s cannot be parsed. Simplepie said: %s', WPeMatico :: TEXTDOMAIN ), $url, $works);
+			if(empty($errors)) {
+				printf(__('The feed %s has been parsed successfully.', WPeMatico::TEXTDOMAIN ), $url);
+			} 
+			else {
+				printf(__('The feed %s cannot be parsed. Simplepie said: %s', WPeMatico::TEXTDOMAIN ), $url, $errors).' '.$professional_notice;
+			}	
 			return;
 		}
 
