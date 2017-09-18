@@ -259,6 +259,7 @@ or to e-mail etruel@gmail.com
 == Changelog ==
 = 1.7.4 =
 * Solucionado el problema de que los feed no mostraban sus errores al probarlos.
+* Agregada la compatibilidad para usar el force feed del Profesional.
 
 = 1.7.3 Aug 25, 2017 =
 * Adds new filters for new custom features.

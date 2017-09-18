@@ -112,7 +112,19 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		// Access the feed
 		if($this->campaign['campaign_type']=="feed") { 		// Access the feed
 			$wpe_url_feed = apply_filters('wpematico_simplepie_url', $feed, $kf, $this->campaign);
-			$simplepie =  WPeMatico :: fetchFeed($wpe_url_feed, $this->cfg['set_stupidly_fast'], $this->campaign['campaign_max'], $this->campaign['campaign_feed_order_date']);
+			/**
+			* @since 1.7.4
+			* Added @fetch_feed_params to change parameters values before fetch the feed.
+			*/
+			$fetch_feed_params = array(
+				'url' 			=> $wpe_url_feed,
+				'stupidly_fast' => $this->cfg['set_stupidly_fast'],
+				'max' 			=> $this->campaign['campaign_max'],
+				'order_by_date' => $this->campaign['campaign_feed_order_date'],
+				'force_feed' 	=> false,
+			);
+			$fetch_feed_params = apply_filters('wpematico_fetch_feed_params', $fetch_feed_params, $kf, $this->campaign);
+			$simplepie =  WPeMatico::fetchFeed($fetch_feed_params['url'], $fetch_feed_params['stupidly_fast'], $fetch_feed_params['max'], $fetch_feed_params['order_by_date'], $fetch_feed_params['force_feed']);
 		}else {
 			$simplepie = apply_filters('Wpematico_process_fetching', $this->campaign);
 		}

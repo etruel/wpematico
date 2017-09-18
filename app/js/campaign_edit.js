@@ -51,4 +51,107 @@ jQuery(document).ready(function($){
 	});
 
 
+	jQuery(document).on("click", '.check1feed', function(event) {
+		item = jQuery(this).parent().parent().find('.feed_column input');
+		feed = item.val();
+		var working = jQuery(this);
+		jQuery(working).removeClass('warning')
+			.removeClass("frowning_face")
+			.removeClass("smiling_face")
+			.addClass('ruedita');
+
+		if (feed !== "") {
+			jQuery(item).attr('style','Background:#CCC;');
+			var data = {
+				action: "wpematico_test_feed",
+				url: feed, 
+				'cookie': encodeURIComponent(document.cookie)
+			};
+			var new_data = jQuery(document).triggerHandler('data_test_feed', [data, item]);
+			if (new_data != undefined) {
+				data = new_data;
+			}					
+			jQuery.post(ajaxurl, data, function(response){
+				var dismiss = '<button type="button" class="notice-dismiss"><span class="screen-reader-text">'+wpematico_object.text_dismiss_this_notice+'</span></button>';
+				jQuery('.feederror').remove();
+				if(response.success ){
+					jQuery(item).attr('style','Background:#75EC77;');
+					jQuery("#poststuff").prepend('<div id="message" class="feederror notice notice-success is-dismissible"><p>'+response.message+'</p>' +dismiss +'</div>');
+					jQuery(working).removeClass('warning')
+							.removeClass("frowning_face")
+							.removeClass("ruedita")
+							.addClass('smiling_face');
+				} else {
+					jQuery(item).attr('style','Background:Red;');
+					jQuery("#poststuff").prepend('<div id="message" class="feederror notice notice-error is-dismissible"><p>ERROR: '+response.message+'</p>' +dismiss +'</div>');
+					jQuery(working).removeClass('warning')
+							.removeClass("smiling_face")
+							.removeClass("ruedita")
+							.addClass('frowning_face');
+
+				}
+			});
+ 		} else {			
+			alert(wpematico_object.text_type_some_feed_url);
+			jQuery(working).removeClass('ruedita')
+				.removeClass("frowning_face")
+				.removeClass("smiling_face")
+				.addClass('warning');
+		}
+	});
+
+	jQuery(document).on("click", '#checkfeeds', function(event) {
+
+		var feederr = 0;
+		var feedcnt = 0;
+		var errmsg = "Feed ERROR";
+		jQuery('.feederror').remove();
+		jQuery('.feedinput').each(function (el,item) {
+			feederr += 1;
+			feed = jQuery(item).attr('value');
+			var working = jQuery(item).parent().parent().find('#checkfeed');
+			if (feed !== "") {
+				jQuery(working).removeClass('warning')
+					.removeClass("frowning_face")
+					.removeClass("smiling_face")
+					.addClass('ruedita');
+				jQuery(item).attr('style','Background:#CCC;');
+				var data = {
+					action: "wpematico_test_feed",
+					url: feed, 
+					'cookie': encodeURIComponent(document.cookie)
+				};
+				var new_data = jQuery(document).triggerHandler('data_test_feed', [data, jQuery(item)]);
+				if (new_data != undefined) {
+					data = new_data;
+				}
+				jQuery.post(ajaxurl, data, function(response){
+					var dismiss = '<button type="button" class="notice-dismiss"><span class="screen-reader-text">'+wpematico_object.text_dismiss_this_notice+'</span></button>';
+					if( response.success ){
+						jQuery(item).attr('style','Background:#75EC77;');
+						jQuery("#poststuff").prepend('<div id="message" class="feederror notice notice-success is-dismissible"><p>'+response.message+'</p>' +dismiss +'</div>');
+						jQuery(working).removeClass('warning')
+								.removeClass("frowning_face")
+								.removeClass("ruedita")
+								.addClass('smiling_face');
+					} else {
+						jQuery(item).attr('style','Background:Red;');
+						jQuery("#poststuff").prepend('<div id="message" class="feederror notice notice-error is-dismissible"><p>ERROR: '+response.message+'</p>' +dismiss +'</div>');
+						jQuery(working).removeClass('warning')
+								.removeClass("smiling_face")
+								.removeClass("ruedita")
+								.addClass('frowning_face');
+					}
+					jQuery(working).removeClass("spinner");
+				});
+			}else{
+				if(feedcnt>1) {
+					alert(wpematico_object.text_type_some_new_feed_urls);
+				} 
+			}
+		}); 
+		if(feederr == 1){
+			alert(errmsg);
+		}else { }
+	});
 });

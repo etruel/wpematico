@@ -717,7 +717,7 @@ class WPeMatico_functions {
    * @param   integer     $max              Limit of items to fetch
    * @return  SimplePie_Item    Feed object
    **/
-  public static function fetchFeed($url, $stupidly_fast = false, $max = 0, $order_by_date = false) {  # SimplePie
+  public static function fetchFeed($url, $stupidly_fast = false, $max = 0, $order_by_date = false, $force_feed = false) {  # SimplePie
 	$cfg = get_option(WPeMatico :: OPTION_KEY);
 	if ( $cfg['force_mysimplepie']){
 		if (class_exists('SimplePie')) {
@@ -745,6 +745,7 @@ class WPeMatico_functions {
     $feed = new SimplePie();
     $feed->timeout = apply_filters('wpe_simplepie_timeout', 130);
     $feed->enable_order_by_date($order_by_date);
+    $feed->force_feed($force_feed);
 
 	$feed->set_feed_url($url);
     $feed->feed_url = rawurldecode($feed->feed_url);
@@ -777,15 +778,20 @@ class WPeMatico_functions {
 	*
 	*/
 	public static function Test_feed($args='') {
+		$force_feed = false;
 		if (is_array($args)) {
 			extract($args);
 			$ajax=false;
 		} else {
 			if(!isset($_POST['url'])) return false;
 			$url=$_POST['url'];
+			if (!empty($_POST['force_feed'])) {
+				$force_feed = true;
+			}
 			$ajax=true;
 		}
-		$feed = self::fetchFeed($url, true);
+
+		$feed = self::fetchFeed($url, true, 0, false, $force_feed);
 
 		$errors = $feed->error(); // if no error returned
 		$professional_notice = __('<strong>You can force a feed with <a href="https://etruel.com/downloads/wpematico-professional/">WPeMatico Professional</a></strong>', WPeMatico::TEXTDOMAIN );

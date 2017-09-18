@@ -159,7 +159,13 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		wp_enqueue_script( 'WPemattiptip' );
 		wp_dequeue_script( 'autosave' );
 		add_action('admin_head', array( __CLASS__ ,'campaigns_admin_head'));
-		wp_enqueue_script( 'wpematico_campaign_edit', WPeMatico :: $uri .'app/js/campaign_edit.js', array( 'jquery' ), WPEMATICO_VERSION, true );
+		wp_enqueue_script('wpematico_campaign_edit', WPeMatico :: $uri .'app/js/campaign_edit.js', array( 'jquery' ), WPEMATICO_VERSION, true );
+		wp_localize_script('wpematico_campaign_edit', 'wpematico_object', 
+				array(
+					'text_dismiss_this_notice' =>  __('Dismiss this notice.', WPeMatico::TEXTDOMAIN),
+					'text_type_some_feed_url' =>  __('Type some feed URL.', WPeMatico::TEXTDOMAIN),
+					'text_type_some_new_feed_urls' =>  __('Type some new Feed URL/s.', WPeMatico::TEXTDOMAIN),
+				));
 	}
 
 	function RunNowX() {
@@ -568,102 +574,9 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 			$(document).on("click", '.notice-dismiss', function(event) {
 				$(this).parent().remove();
 			});
-			//$('#checkfeeds').click(function() {
-			$(document).on("click", '#checkfeeds', function(event) {
-				//$.ajaxSetup({async:false});
-				var feederr = 0;
-				var feedcnt = 0;
-				errmsg ="Feed ERROR";
-				$('.feederror').remove();
-				$('.feedinput').each(function (el,item) {
-					feederr += 1;
-					feed = $(item).attr('value');
-					var working = $(item).parent().parent().find('#checkfeed');
-					if (feed !== "") {
-						$(working).removeClass('warning')
-							.removeClass("frowning_face")
-							.removeClass("smiling_face")
-							.addClass('ruedita');
-						$(item).attr('style','Background:#CCC;');
-						var data = {
-							action: "wpematico_test_feed",
-							url: feed, 
-							'cookie': encodeURIComponent(document.cookie)
-						};
-						$.post(ajaxurl, data, function(response){
-							var dismiss = '<button type="button" class="notice-dismiss"><span class="screen-reader-text"><?php _e( 'Dismiss this notice.', WPeMatico :: TEXTDOMAIN ); ?></span></button>';
-							if( response.success ){
-								$(item).attr('style','Background:#75EC77;');
-								$("#poststuff").prepend('<div id="message" class="feederror notice notice-success is-dismissible"><p>'+response.message+'</p>' +dismiss +'</div>');
-								$(working).removeClass('warning')
-										.removeClass("frowning_face")
-										.removeClass("ruedita")
-										.addClass('smiling_face');
-							}else{
-								$(item).attr('style','Background:Red;');
-								$("#poststuff").prepend('<div id="message" class="feederror notice notice-error is-dismissible"><p>ERROR: '+response.message+'</p>' +dismiss +'</div>');
-								$(working).removeClass('warning')
-										.removeClass("smiling_face")
-										.removeClass("ruedita")
-										.addClass('frowning_face');
-							}
-							$(working).removeClass("spinner");
-						});
-					}else{
-						if(feedcnt>1) alert("<?php _e('Type some new Feed URL/s.', WPeMatico :: TEXTDOMAIN ); ?>");
-					}
-				}); 
-				if(feederr == 1){
-					alert(errmsg);
-				}else{ }
-			});
 			
-			//$('.check1feed').click(function() {
-			$(document).on("click", '.check1feed', function(event) {
-				item = $(this).parent().parent().find('.feed_column input');
-				feed = item.val();
-				var working = $(this);
-				$(working).removeClass('warning')
-					.removeClass("frowning_face")
-					.removeClass("smiling_face")
-					.addClass('ruedita');
-				//$.ajaxSetup({async:false});
-				if (feed !== "") {
-					$(item).attr('style','Background:#CCC;');
-					var data = {
-						action: "wpematico_test_feed",
-						url: feed, 
-						'cookie': encodeURIComponent(document.cookie)
-					};
-					$.post(ajaxurl, data, function(response){
-						var dismiss = '<button type="button" class="notice-dismiss"><span class="screen-reader-text"><?php _e( 'Dismiss this notice.', WPeMatico :: TEXTDOMAIN ); ?></span></button>';
-						$('.feederror').remove();
-						if( response.success ){
-							$(item).attr('style','Background:#75EC77;');
-							$("#poststuff").prepend('<div id="message" class="feederror notice notice-success is-dismissible"><p>'+response.message+'</p>' +dismiss +'</div>');
-							$(working).removeClass('warning')
-									.removeClass("frowning_face")
-									.removeClass("ruedita")
-									.addClass('smiling_face');
-						}else{
-							$(item).attr('style','Background:Red;');
-							$("#poststuff").prepend('<div id="message" class="feederror notice notice-error is-dismissible"><p>ERROR: '+response.message+'</p>' +dismiss +'</div>');
-							$(working).removeClass('warning')
-									.removeClass("smiling_face")
-									.removeClass("ruedita")
-									.addClass('frowning_face');
-
-						}
-//						$(working).removeClass("spinner");
-					});
- 				}else{			
-					alert("<?php _e('Type some feed URL.', WPeMatico :: TEXTDOMAIN ); ?>");
-					$(working).removeClass('ruedita')
-						.removeClass("frowning_face")
-						.removeClass("smiling_face")
-						.addClass('warning');
-				}
-			});
+			
+			
 			
 			
 			$('.feedinput').focus(function() {
