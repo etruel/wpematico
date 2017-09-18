@@ -1,6 +1,5 @@
 jQuery(document).ready(function($){
 
-	
 	jQuery('#campaign_striphtml').change(function() {
 		if (jQuery('#campaign_striphtml').is(':checked')) {
 			jQuery('#campaign_strip_links').attr('checked', false);
@@ -67,10 +66,8 @@ jQuery(document).ready(function($){
 				url: feed, 
 				'cookie': encodeURIComponent(document.cookie)
 			};
-			var new_data = jQuery(document).triggerHandler('data_test_feed', [data, item]);
-			if (new_data != undefined) {
-				data = new_data;
-			}					
+			data = js_apply_filters('wpematico_data_test_feed', data, item);
+			
 			jQuery.post(ajaxurl, data, function(response){
 				var dismiss = '<button type="button" class="notice-dismiss"><span class="screen-reader-text">'+wpematico_object.text_dismiss_this_notice+'</span></button>';
 				jQuery('.feederror').remove();
@@ -121,10 +118,9 @@ jQuery(document).ready(function($){
 					url: feed, 
 					'cookie': encodeURIComponent(document.cookie)
 				};
-				var new_data = jQuery(document).triggerHandler('data_test_feed', [data, jQuery(item)]);
-				if (new_data != undefined) {
-					data = new_data;
-				}
+
+				data = js_apply_filters('wpematico_data_test_feed', data, jQuery(item));
+
 				jQuery.post(ajaxurl, data, function(response){
 					var dismiss = '<button type="button" class="notice-dismiss"><span class="screen-reader-text">'+wpematico_object.text_dismiss_this_notice+'</span></button>';
 					if( response.success ){
@@ -152,6 +148,8 @@ jQuery(document).ready(function($){
 		}); 
 		if(feederr == 1){
 			alert(errmsg);
-		}else { }
+		} else { 
+
+		}
 	});
 });

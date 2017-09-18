@@ -159,6 +159,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		wp_enqueue_script( 'WPemattiptip' );
 		wp_dequeue_script( 'autosave' );
 		add_action('admin_head', array( __CLASS__ ,'campaigns_admin_head'));
+		wp_enqueue_script('wpematico_hooks', WPeMatico :: $uri .'app/js/wpe_hooks.js', array(), WPEMATICO_VERSION, true );
 		wp_enqueue_script('wpematico_campaign_edit', WPeMatico :: $uri .'app/js/campaign_edit.js', array( 'jquery' ), WPEMATICO_VERSION, true );
 		wp_localize_script('wpematico_campaign_edit', 'wpematico_object', 
 				array(
