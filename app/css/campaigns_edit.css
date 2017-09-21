@@ -89,7 +89,7 @@ ul#categories li .children {margin-left: 12px;}
 .sortitem:hover .sorthandle{display:block;}
 .feed_column input {font-size: 1em !important;}
 
-#wrd2cat_edit .pDiv {height:42px;}
+#wrd2cat_edit .pDiv {height:85px;}
 #rewrites_edit .pDiv {height:65px;}
 
 /**********************************************************************************************/
@@ -202,3 +202,5 @@ div#optionslayer {
 .select_up{background-position:-202px 0;height:17px;width:17px}
 .checkmark_Italic{background-position:-161px 0;height:18px;width:19px}
 .alert_star{background-position:-175px -42px;height:15px;width:15px}
+#addmorew2c { font-weight: bold; text-decoration: none }
+.row_word_to_cat:nth-child(even) { background-color:LightCyan; }

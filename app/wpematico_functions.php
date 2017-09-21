@@ -598,7 +598,7 @@ class WPeMatico_functions {
 				}
 			}
 		}
-		$_wrd2cat = array('word'=>array(''),'title'=>array(false),'regex'=>array(false),'w2ccateg'=>array(''),'cases'=>array(false));
+		$_wrd2cat = array('word'=>array(''),'title'=>array(false),'regex'=>array(false),'w2ccateg'=>array(0),'cases'=>array(false));
 		$campaigndata['campaign_wrd2cat'] = (!empty($campaign_wrd2cat) ) ?(array) $campaign_wrd2cat : (array)$_wrd2cat;
 		
 		// *** Campaign Rewrites	

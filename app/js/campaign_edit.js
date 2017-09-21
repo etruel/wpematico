@@ -49,6 +49,7 @@ jQuery(document).ready(function($){
 		}
 	});
 
+	
 
 	jQuery(document).on("click", '.check1feed', function(event) {
 		item = jQuery(this).parent().parent().find('.feed_column input');
@@ -152,4 +153,36 @@ jQuery(document).ready(function($){
 
 		}
 	});
+
+	word2cats_events();
 });
+
+function word2cats_events() {
+	jQuery(document).on('click', '#addmorew2c', function(e) {
+		jQuery('#wrd2cat_max').val( parseInt(jQuery('#wrd2cat_max').val(),10) + 1 );
+		var new_index = jQuery('#wrd2cat_max').val();
+		add_word2cats_row(new_index);	
+		e.preventDefault();		
+	});
+	word2cats_events_rows();
+}
+function word2cats_events_rows() {
+	jQuery('.btn_delete_w2c').click(function(e) {
+		jQuery(this).parent().parent().parent().remove();
+		e.preventDefault();
+	});
+}
+
+function add_word2cats_row(index) {
+	var new_template = '<div id="w2c_ID{index}" class="row_word_to_cat"><div class="pDiv jobtype-select p7" id="nuevow2c"><div id="w1" class="left"><label>'+wpematico_object.text_w2c_word+' <input type="text" size="25" class="regular-text" id="campaign_wrd2cat" name="campaign_wrd2cat[word][{index}]" value="" /></label><br /><label><input name="campaign_wrd2cat[title][{index}]" id="campaign_wrd2cat_title" class="checkbox w2ctitle" value="1" type="checkbox"/>'+wpematico_object.text_w2c_on_title+'&nbsp;&nbsp;</label><label><input name="campaign_wrd2cat[regex][{index}]" id="campaign_wrd2cat_regex" class="checkbox w2cregex" value="1" type="checkbox"/>'+wpematico_object.text_w2c_regex+'&nbsp;&nbsp;</label><label><input name="campaign_wrd2cat[cases][{index}]" id="campaign_wrd2cat_cases" class="checkbox w2ccases" value="1" type="checkbox" />'+wpematico_object.text_w2c_case_sensitive+'&nbsp;&nbsp;</label></div><div id="c1" class="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+wpematico_object.text_w2c_to_category+''+wpematico_object.wpe_w2c_dropdown_categories+'</div><span class="wi10" id="w2cactions"><label title="'+wpematico_object.text_w2c_delete_this_item+'" class="bicon delete left btn_delete_w2c"></label></span></div></div>';
+	new_template = wpematico_replace_all(new_template, '{index}', index);
+	jQuery('#wrd2cat_edit').append(new_template);
+	word2cats_events_rows();
+}
+delete_row_input = function(row_id){
+	jQuery(row_id).fadeOut('slow', function() { $(this).remove(); });
+	disable_run_now();
+}
+function wpematico_replace_all(str, find, replace) {
+    return str.replace(new RegExp(find, 'g'), replace);
+}

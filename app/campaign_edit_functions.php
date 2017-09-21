@@ -156,39 +156,48 @@ public static function word2cats_box( $post ) {
 	$campaign_wrd2cat = $campaign_data['campaign_wrd2cat'];
 	?>
 	<p class="he20">
-		<span class="left"><?php _e('Assigning categories based on content words.', 'wpematico' ) ?></span> 
+		<span class="left"><?php _e('Assigning categories based on content words.', WPeMatico::TEXTDOMAIN) ?></span> 
 	</p>	
 	<div id="wrd2cat_edit" class="inlinetext">		
-		<?php for ($i = 0; $i <= count($campaign_wrd2cat['word']); $i++) : ?>
-			<div class="clear"></div>
-			<div id="w2c_ID<?php echo $i; ?>" class="<?php if(($i % 2) == 0) echo 'bw'; else echo 'lightblue'; ?> <?php if($i==count($campaign_wrd2cat['word'])) echo 'hide'; ?>">
+		<?php foreach ($campaign_wrd2cat['word'] as $i => $value) :  ?>
+
+			<div id="w2c_ID<?php echo $i; ?>" class="row_word_to_cat">
 				<div class="pDiv jobtype-select p7" id="nuevow2c">
 					<div id="w1" class="left">
-						<label><?php _e('Word:', 'wpematico' ) ?> <input type="text" size="25" class="regular-text" id="campaign_wrd2cat" name="campaign_wrd2cat[word][<?php echo $i; ?>]" value="<?php echo stripslashes(htmlspecialchars_decode(@$campaign_wrd2cat['word'][$i])); ?>" /></label><br />
-						<label><input name="campaign_wrd2cat[title][<?php echo $i; ?>]" id="campaign_wrd2cat_title" class="checkbox w2ctitle" value="1" type="checkbox"<?php checked($campaign_wrd2cat['title'][$i],true) ?> /><?php _e('on Title', 'wpematico' ) ?>&nbsp;&nbsp;</label>
-						<label><input name="campaign_wrd2cat[regex][<?php echo $i; ?>]" id="campaign_wrd2cat_regex" class="checkbox w2cregex" value="1" type="checkbox"<?php checked($campaign_wrd2cat['regex'][$i],true) ?> /><?php _e('RegEx', 'wpematico' ) ?>&nbsp;&nbsp;</label>
-						<label><input <?php echo ($campaign_wrd2cat['regex'][$i]) ? 'disabled' : '';?> name="campaign_wrd2cat[cases][<?php echo $i; ?>]" id="campaign_wrd2cat_cases" class="checkbox w2ccases" value="1" type="checkbox"<?php checked($campaign_wrd2cat['cases'][$i],true) ?> /><?php _e('Case sensitive', 'wpematico' ) ?>&nbsp;&nbsp;</label>
+						<label><?php _e('Word:', WPeMatico::TEXTDOMAIN) ?> <input type="text" size="25" class="regular-text" id="campaign_wrd2cat" name="campaign_wrd2cat[word][<?php echo $i; ?>]" value="<?php echo stripslashes(htmlspecialchars_decode(@$campaign_wrd2cat['word'][$i])); ?>" /></label><br />
+						<label><input name="campaign_wrd2cat[title][<?php echo $i; ?>]" id="campaign_wrd2cat_title" class="checkbox w2ctitle" value="1" type="checkbox"<?php checked($campaign_wrd2cat['title'][$i],true) ?> /><?php _e('on Title', WPeMatico::TEXTDOMAIN); ?>&nbsp;&nbsp;</label>
+						<label><input name="campaign_wrd2cat[regex][<?php echo $i; ?>]" id="campaign_wrd2cat_regex" class="checkbox w2cregex" value="1" type="checkbox"<?php checked($campaign_wrd2cat['regex'][$i],true) ?> /><?php _e('RegEx', WPeMatico::TEXTDOMAIN); ?>&nbsp;&nbsp;</label>
+						<label><input <?php echo ($campaign_wrd2cat['regex'][$i]) ? 'disabled' : '';?> name="campaign_wrd2cat[cases][<?php echo $i; ?>]" id="campaign_wrd2cat_cases" class="checkbox w2ccases" value="1" type="checkbox"<?php checked($campaign_wrd2cat['cases'][$i],true) ?> /><?php _e('Case sensitive', WPeMatico::TEXTDOMAIN); ?>&nbsp;&nbsp;</label>
 					</div>
 					<div id="c1" class="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<?php _e('To Category:', 'wpematico' ) ?>
-						<?php 
-						$catselected='selected='.$campaign_wrd2cat['w2ccateg'][$i];
-						$catname="name=campaign_wrd2cat[w2ccateg][".$i."]";
-						$catid="id=campaign_wrd2cat_category_".$i;
-						wp_dropdown_categories('hide_empty=0&hierarchical=1&show_option_none='.__('Select category', 'wpematico' ).'&'.$catselected.'&'.$catname.'&'.$catid);
+						<?php _e('To Category:', WPeMatico::TEXTDOMAIN); 
+						wp_dropdown_categories( array(
+											'show_option_all'    => '',
+											'show_option_none'   => __('Select category', 'wpematico' ),
+											'hide_empty'         => 0, 
+											'child_of'           => 0,
+											'exclude'            => '',
+											'echo'               => 1,
+											'selected'           => $campaign_wrd2cat['w2ccateg'][$i],
+											'hierarchical'       => 1, 
+											'name'               => 'campaign_wrd2cat[w2ccateg]['.$i.']',
+											'class'              => 'form-no-clear',
+											'id'           		 => 'campaign_wrd2cat_category_'.$i,
+											'hide_if_empty'      => false
+										));
 						?>
 					</div>
 					<span class="wi10" id="w2cactions">
-						<label title="<?php _e('Delete this item', 'wpematico' ); ?>" onclick="delete_row_input('#w2c_ID<?php echo $i; ?>')" class="bicon delete left"></label>
+						<label title="<?php _e('Delete this item', WPeMatico::TEXTDOMAIN); ?>"  class="bicon delete left btn_delete_w2c"></label>
 					</span>
 				</div>
 			</div>
-		<?php endfor ?>
-		<input id="wrd2cat_max" value="<?php echo $i; ?>" type="hidden" name="wrd2cat_max">
+		<?php endforeach; ?>
 	</div>
+	<input id="wrd2cat_max" value="<?php echo $i; ?>" type="hidden" name="wrd2cat_max">
 	<div class="clear"></div>
 	<div id="paging-box">
-		<a href="JavaScript:void(0);" class="button-primary add" id="addmorew2c" style="font-weight: bold; text-decoration: none;"> <?php _e('Add more', 'wpematico' ); ?>.</a>
+		<a href="#" class="button-primary add" id="addmorew2c"> <?php _e('Add more', WPeMatico::TEXTDOMAIN); ?></a>
 	</div>
 	<?php 
 }

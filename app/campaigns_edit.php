@@ -155,18 +155,51 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 	public static function admin_scripts(){
 		global $post;
 		if($post->post_type != 'wpematico') return $post->ID;
+
+		$cfg = get_option(WPeMatico::OPTION_KEY);
+		$cfg = apply_filters('wpematico_check_options', $cfg);
+
 		wp_enqueue_script('jquery-vsort'); 
 		wp_enqueue_script( 'WPemattiptip' );
 		wp_dequeue_script( 'autosave' );
 		add_action('admin_head', array( __CLASS__ ,'campaigns_admin_head'));
 		wp_enqueue_script('wpematico_hooks', WPeMatico :: $uri .'app/js/wpe_hooks.js', array(), WPEMATICO_VERSION, true );
 		wp_enqueue_script('wpematico_campaign_edit', WPeMatico :: $uri .'app/js/campaign_edit.js', array( 'jquery' ), WPEMATICO_VERSION, true );
-		wp_localize_script('wpematico_campaign_edit', 'wpematico_object', 
-				array(
+		
+
+		$wpematico_object = array(
 					'text_dismiss_this_notice' =>  __('Dismiss this notice.', WPeMatico::TEXTDOMAIN),
 					'text_type_some_feed_url' =>  __('Type some feed URL.', WPeMatico::TEXTDOMAIN),
 					'text_type_some_new_feed_urls' =>  __('Type some new Feed URL/s.', WPeMatico::TEXTDOMAIN),
-				));
+				);
+		if ($cfg['enableword2cats']) {
+			
+			$wpematico_object['text_w2c_word'] =  __('Word:', WPeMatico::TEXTDOMAIN);
+			$wpematico_object['text_w2c_on_title'] = __('on Title', WPeMatico::TEXTDOMAIN);
+			$wpematico_object['text_w2c_regex'] = __('RegEx', WPeMatico::TEXTDOMAIN);
+			$wpematico_object['text_w2c_case_sensitive'] = __('Case sensitive', WPeMatico::TEXTDOMAIN);
+			$wpematico_object['text_w2c_to_category'] = __('To Category:', WPeMatico::TEXTDOMAIN);
+			$wpematico_object['text_w2c_delete_this_item'] = __('Delete this item', WPeMatico::TEXTDOMAIN);
+
+			
+			$wpematico_object['wpe_w2c_dropdown_categories'] = wp_dropdown_categories( array(
+											'show_option_all'    => '',
+											'show_option_none'   => __('Select category', 'wpematico' ),
+											'hide_empty'         => 0, 
+											'child_of'           => 0,
+											'exclude'            => '',
+											'echo'               => 0,
+											'selected'           => 0,
+											'hierarchical'       => 1, 
+											'name'               => 'campaign_wrd2cat[w2ccateg][{index}]',
+											'class'              => 'form-no-clear',
+											'id'           		 => 'campaign_wrd2cat_category_{index}',
+											'hide_if_empty'      => false
+										));
+
+		}
+
+		wp_localize_script('wpematico_campaign_edit', 'wpematico_object', $wpematico_object);
 	}
 
 	function RunNowX() {
@@ -281,10 +314,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 				jQuery('#msgdrag').html('<?php _e('Update Campaign to save changes.', WPeMatico :: TEXTDOMAIN ); ?>').fadeIn();
 			}
 
-			delete_row_input = function(row_id){
-				jQuery(row_id).fadeOut('slow', function() { $(this).remove(); });
-				disable_run_now();
-			}
+
 
 			jQuery('#campaign_no_setting_img').click(function() {
 				if ( true == jQuery('#campaign_no_setting_img').is(':checked')) {
@@ -446,23 +476,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 				}
 			});
 			
-			$(document).on('click','#addmorew2c',function() {
-				$('#wrd2cat_max').val( parseInt($('#wrd2cat_max').val(),10) + 1 );
-				newval= $('#wrd2cat_max').val();
-				nuevo = $( '#nuevow2c').clone();
-				$('input', nuevo).eq(0).attr('name','campaign_wrd2cat[word]['+ newval +']');
-				$('input', nuevo).eq(1).attr('name','campaign_wrd2cat[title]['+ newval +']');
-				$('input', nuevo).eq(1).attr('name','campaign_wrd2cat[regex]['+ newval +']');
-				$('input', nuevo).eq(2).attr('name','campaign_wrd2cat[cases]['+ newval +']');
-				$('select',nuevo).eq(0).attr('name','campaign_wrd2cat[w2ccateg]['+ newval +']');
-				$('input', nuevo).eq(0).attr('value','');
-				$('input', nuevo).eq(1).removeAttr('checked');
-				$('input', nuevo).eq(2).attr('value','');
-				nuevo.attr( 'id', 'w2c_ID' + newval );
-				$('.delete', nuevo).eq(0).attr('onclick', "delete_row_input('#w2c_ID"+ newval +"');");
-				nuevo.show();
-				$('#wrd2cat_edit').append(nuevo);
-			});
+
 			
 			$(document).on('click','#addmorerew',function() {
 				$('#rew_max').val( parseInt($('#rew_max').val(),10) + 1 );
