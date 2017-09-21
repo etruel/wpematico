@@ -585,18 +585,20 @@ class WPeMatico_functions {
 			foreach($post_data['campaign_wrd2cat']['word'] as $id => $value) {       
 				//$word = ( isset($post_data['_wp_http_referer']) ) ? addslashes($post_data['campaign_wrd2cat']['word'][$id]): $post_data['campaign_wrd2cat']['word'][$id];
 				$word = ($post_data['campaign_wrd2cat']['word'][$id]);
-				$regex = ($post_data['campaign_wrd2cat']['regex'][$id]==1) ? true : false ;
-				$cases = ($post_data['campaign_wrd2cat']['cases'][$id]==1) ? true : false ;
-				$w2ccateg = $post_data['campaign_wrd2cat']['w2ccateg'][$id];
+				$title = (isset($post_data['campaign_wrd2cat']['title'][$id]) && $post_data['campaign_wrd2cat']['title'][$id]==1) ? true : false;
+				$regex = (isset($post_data['campaign_wrd2cat']['regex'][$id]) && $post_data['campaign_wrd2cat']['regex'][$id]==1) ? true : false;
+				$cases = (isset($post_data['campaign_wrd2cat']['cases'][$id]) && $post_data['campaign_wrd2cat']['cases'][$id]==1) ? true : false;
+				$w2ccateg = (isset($post_data['campaign_wrd2cat']['w2ccateg'][$id]) && !empty($post_data['campaign_wrd2cat']['w2ccateg'][$id]) ) ? $post_data['campaign_wrd2cat']['w2ccateg'][$id] : '' ;
 				if(!empty($word))  {
 					$campaign_wrd2cat['word'][]= ($regex) ? $word : htmlspecialchars($word) ;
+					$campaign_wrd2cat['title'][]= $title;
 					$campaign_wrd2cat['regex'][]= $regex;
 					$campaign_wrd2cat['cases'][]= $cases;
 					$campaign_wrd2cat['w2ccateg'][]=$w2ccateg ;
 				}
 			}
 		}
-		$_wrd2cat = array('word'=>array(''),'regex'=>array(false),'w2ccateg'=>array(''),'cases'=>array(false));
+		$_wrd2cat = array('word'=>array(''),'title'=>array(false),'regex'=>array(false),'w2ccateg'=>array(''),'cases'=>array(false));
 		$campaigndata['campaign_wrd2cat'] = (!empty($campaign_wrd2cat) ) ?(array) $campaign_wrd2cat : (array)$_wrd2cat;
 		
 		// *** Campaign Rewrites	

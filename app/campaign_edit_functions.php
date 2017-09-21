@@ -165,8 +165,9 @@ public static function word2cats_box( $post ) {
 				<div class="pDiv jobtype-select p7" id="nuevow2c">
 					<div id="w1" class="left">
 						<label><?php _e('Word:', 'wpematico' ) ?> <input type="text" size="25" class="regular-text" id="campaign_wrd2cat" name="campaign_wrd2cat[word][<?php echo $i; ?>]" value="<?php echo stripslashes(htmlspecialchars_decode(@$campaign_wrd2cat['word'][$i])); ?>" /></label><br />
-						<label><input name="campaign_wrd2cat[regex][<?php echo $i; ?>]" id="campaign_wrd2cat_regex" class="checkbox w2cregex" value="1" type="checkbox"<?php checked($campaign_wrd2cat['regex'][$i],true) ?> /> <?php _e('RegEx', 'wpematico' ) ?></label>
-						<label><input <?php echo ($campaign_wrd2cat['regex'][$i]) ? 'disabled' : '';?> name="campaign_wrd2cat[cases][<?php echo $i; ?>]" id="campaign_wrd2cat_cases" class="checkbox w2ccases" value="1" type="checkbox"<?php checked($campaign_wrd2cat['cases'][$i],true) ?> /> <?php _e('Case sensitive', 'wpematico' ) ?></label>
+						<label><input name="campaign_wrd2cat[title][<?php echo $i; ?>]" id="campaign_wrd2cat_title" class="checkbox w2ctitle" value="1" type="checkbox"<?php checked($campaign_wrd2cat['title'][$i],true) ?> /><?php _e('on Title', 'wpematico' ) ?>&nbsp;&nbsp;</label>
+						<label><input name="campaign_wrd2cat[regex][<?php echo $i; ?>]" id="campaign_wrd2cat_regex" class="checkbox w2cregex" value="1" type="checkbox"<?php checked($campaign_wrd2cat['regex'][$i],true) ?> /><?php _e('RegEx', 'wpematico' ) ?>&nbsp;&nbsp;</label>
+						<label><input <?php echo ($campaign_wrd2cat['regex'][$i]) ? 'disabled' : '';?> name="campaign_wrd2cat[cases][<?php echo $i; ?>]" id="campaign_wrd2cat_cases" class="checkbox w2ccases" value="1" type="checkbox"<?php checked($campaign_wrd2cat['cases'][$i],true) ?> /><?php _e('Case sensitive', 'wpematico' ) ?>&nbsp;&nbsp;</label>
 					</div>
 					<div id="c1" class="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<?php _e('To Category:', 'wpematico' ) ?>

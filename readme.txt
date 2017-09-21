@@ -257,15 +257,21 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
-= 1.7.4 =
-* Solucionado el problema de que los feed no mostraban sus errores al probarlos.
-* Agregada la compatibilidad para usar el force feed del Profesional.
-* Agregado el wpe hooks para usar filtros y actions desde JavaScript.
+= 1.8 Sep 25, 2017 =
+* Added wpe hooks (for developers) to use filters and actions from JavaScript.
+* Fixes the blank messages on errors when the feeds are tested.
+* Fixes few javascript issues on campaigns editing.
+* **Professional Add-on:**
+* **Enlarges the version required for the Professional addon to 1.8v** (https://etruel.com/downloads/wpematico-professional/)
+* Added a fixed icon for Feed Advanced Options in the feed row.
+* Added a new feature to Force Feed when Simplepie gives some error on checking. Find it in the Feed Advanced Options Popup.
+* Fixes the numeric name in the file for an exported campaign.
+* Fixes the malformed JSON in the content sometimes when export campaigns.
 
 = 1.7.3 Aug 25, 2017 =
 * Adds new filters for new custom features.
 * **Professional Add-on:**
-* **Enlarges the version required for the Professional addon to 1.7.4v** (https://etruel.com/downloads/wpematico-professional/)
+* **Enlarges the version required for the Professional addon to 1.7.4v** 
 * Added new feature Custom Feed Tags.
 * Added new feature to assign Parent page for campaigns inserting feed items as pages.
 * Added new feature to strip images with incorrect content.
@@ -278,7 +284,7 @@ or to e-mail etruel@gmail.com
 * Fixed an issue on path redirections in the location header.
 * Fixes a bug when deactivate the WP Cron.
 * **Professional Add-on:**
-* **Enlarges the version required for the Professional addon to 1.7.3v** (https://etruel.com/downloads/wpematico-professional/)
+* **Enlarges the version required for the Professional addon to 1.7.3v** 
 * New feature to avoid upload the Default image again and again.
 * Fixes a problem in campaigns import.
 * Added plugin version validation to update the campaigns if required.
@@ -299,7 +305,7 @@ or to e-mail etruel@gmail.com
 * Fixes a bug on images with srcset attribute.
 * Fixes a bug with Warnings on second check of duplicated posts that brokes the fetching process.
 * **Recommended to test it in development ambients before update**
-* [Professional] 
+* **Professional Add-on:**
 * **Enlarges the version required for the Professional addon to 1.7v** 
 * Added support for audio and video file types allowed by WP (<mp3, ogg, wav, wma, m4a> <mp4, m4v, mov, wmv, avi, mpg, ogv, 3gp, 3g2>)
 * Added the feature to get the audio and video files from the feed enclosures and podcasts.
@@ -307,7 +313,6 @@ or to e-mail etruel@gmail.com
   Strip the queries variables in the URLs of audio and video links.
   Audio and video filenames renamer.
   Strip audios and videos html tags from the content.
-* [/Professional]
 
 = 1.6.4  Jun 6, 2017 =
 * Added a wizard to create a campaign!
@@ -563,20 +568,19 @@ or to e-mail etruel@gmail.com
 * Fixed - Footer displayed on the Settings page.
 * Fixed - Settings are not deleted when uninstalling the plugin.
 * Some other tweaks and improvements.
-* [Professional] must download versions 1.3 (https://etruel.com/downloads/wpematico-professional/)
+* **Professional Add-on:** 
+* Enlarges Professional version to 1.3 (https://etruel.com/downloads/wpematico-professional/)
 *  Added a feature to Keywords Filters to take one or all words to skip/keep a post.
-* [/Professional]
 
 = 1.3.2 =
 * Added "Bulk Edit" for campaigns in list of campaigns, like Wordpress standards. (Just a few fields but more to come ;)
 * Added support for standard categories, tags and formats on all Post Types.
 * Fixes AJAX updates for WPeMatico Add-Ons Page under Plugins Section.
 * Some tweaks on campaign logs.
-* [Professional]
+* **Professional Add-on:**
 * =Added support for Custom taxonomies on Custom Post Types.=
 * Fixed a mistake in last version that has disabled automatic updates.
 * Some tweaks on campaign export/import.
-* [/Professional]
 
 = 1.3.1 =
 * Improved external cron on wpe-cron.php
@@ -602,20 +606,19 @@ or to e-mail etruel@gmail.com
 * Added a page for WPeMatico Addons to separate and hide these addons from Wordpress plugins page.
 * Added help texts and tutorials on Wordpress Help tab on top-right corner to campaign and Settings Pages.
 * Added an option on Wordpress Settings->Writing to hide Wordpress Reviews metabox on Settings pages.
+* New Images and icons :-)
 * [PRO] must download versions 1.3 [PRO](https://etruel.com/downloads/wpematico-pro/)
 * FULL Content AddOn:
 *  Separated from PRO as new Add-On to obtain better performance. You must Download the new add-on!!
 *  Merged with TXT file Editor add-on for FREE, adds an editor for config files for every domain!
 *  Also now you can move the config files of each source site to the upload folder to prevent files from being deletedwhen upgrading plugin.
-* Professional AddOn:
+* **Professional Add-on:**
 *  Added feature to skip a post if there’s no image in content.
 *  Added feature Image URL Cleaner.
 *  Added feature Strip all Images from content.
 *  Fixed some lost images for upper chars.
 *  Hide PRO Settings from Menu and leave just a tab into Settings.
 *  Fixes when save custom fields values on escaping for HTML attributes.
-* [/PRO]
-* New Images and icons :-)
 
 = 1.2.6 =
 * Added a Section on Wordpress Settings->Writing to allow changes to WPeMatico Menu position.
@@ -1006,7 +1009,7 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 1.7.3 =
-* **Enlarges the version required for the Professional addon to 1.7.4**
+= 1.8 =
+* **Enlarges the version required for the Professional addon to 1.8**
 * **Recommended to test it in development ambients before update**
 * Many improvements and fixes. See changelog for more details.

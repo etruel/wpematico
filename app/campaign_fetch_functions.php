@@ -261,11 +261,25 @@ class wpematico_campaign_fetch_functions {
 					if(isset($campaign['campaign_wrd2cat']['w2ccateg'][$i])) {
 						$tocat = $campaign['campaign_wrd2cat']['w2ccateg'][$i];
 						if($campaign['campaign_wrd2cat']['regex'][$i]) {
-							$foundit = (preg_match($word, $current_item['content'])) ? true : false; 
+							if($campaign['campaign_wrd2cat']['title'][$i]) {
+								$foundit = (preg_match($word, $current_item['title'])) ? true : false; 
+							}else {
+								$foundit = (preg_match($word, $current_item['content'])) ? true : false; 
+							}
 						}else{
-							if($campaign['campaign_wrd2cat']['cases'][$i]) 
-								$foundit = strpos($current_item['content'], $word);
-							else $foundit = stripos($current_item['content'], $word); //insensible a May/min
+							if($campaign['campaign_wrd2cat']['cases'][$i]) {
+								if($campaign['campaign_wrd2cat']['title'][$i]) {
+									$foundit = strpos($current_item['title'], $word);
+								}else{
+									$foundit = strpos($current_item['content'], $word);
+								}
+							}else{
+								if($campaign['campaign_wrd2cat']['title'][$i]) {
+									$foundit = stripos($current_item['title'], $word); //insensible a May/min
+								}else{
+									$foundit = stripos($current_item['content'], $word); //insensible a May/min
+								}
+							}
 						}
 						if ($foundit !== false ) {
 							trigger_error(sprintf(__('Found!: word %1s to Cat_id %2s', WPeMatico :: TEXTDOMAIN ),$word,$tocat),E_USER_NOTICE);
