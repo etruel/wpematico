@@ -719,7 +719,19 @@ class WPeMatico_functions {
    * @param   integer     $max              Limit of items to fetch
    * @return  SimplePie_Item    Feed object
    **/
-  public static function fetchFeed($url, $stupidly_fast = false, $max = 0, $order_by_date = false, $force_feed = false) {  # SimplePie
+  public static function fetchFeed($args, $stupidly_fast = false, $max = 0, $order_by_date = false, $force_feed = false) {  # SimplePie
+	
+	/**
+	* Allow send args from a single var $args easier to filter.
+	* @since 1.8.0
+	*/
+	if (is_array($args) && isset($args['url']) ) {  
+		extract($args);
+	} else {
+		$url = $args;
+	}
+
+
 	$cfg = get_option(WPeMatico :: OPTION_KEY);
 	if ( $cfg['force_mysimplepie']){
 		if (class_exists('SimplePie')) {

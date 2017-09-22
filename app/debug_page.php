@@ -183,6 +183,27 @@ function wpematico_settings_section_debug_file() {
 }
 add_action( 'wpematico_settings_section_debug_file', 'wpematico_settings_section_debug_file' );
 
+function wpematico_get_plugin_new_version( $plugin ) {
+	static $plugin_updates = array(); // Cache received responses.
+	$response = '';
+	if (empty( $plugin_updates)) {
+		$plugin_updates = get_site_transient('update_plugins');
+		if ($plugin_updates === false) {
+			$plugin_updates = array();
+		}
+	}
+	if (!isset($plugin_updates->response)) {
+		$plugin_updates->response = array();
+	}
+	foreach ($plugin_updates->response as $r_plugin => $value) {
+		if ($r_plugin == $plugin) {
+			$response = $value->new_version;
+			break;
+		}
+	}
+
+	return $response;
+}
 
 /**
  * Shows all data into a table
@@ -530,9 +551,9 @@ function wpematico_show_data_info() {
 				if ( is_multisite() ) {
 					$active_plugins = array_merge( $active_plugins, get_site_option( 'active_sitewide_plugins', array() ) );
 				}
-
+				
 				foreach ( $active_plugins as $plugin ) {
-
+					$new_version    = wpematico_get_plugin_new_version($plugin);
 					$plugin_data    = @get_plugin_data( WP_PLUGIN_DIR . '/' . $plugin );
 					$dirname        = dirname( $plugin );
 					$version_string = 'Version';
@@ -549,7 +570,11 @@ function wpematico_show_data_info() {
 						?>
 						<tr>
 							<td><?php echo $plugin_name; ?></td>
-							<td class="help">&nbsp;<?php echo $plugin_data['Version']; ?></td>
+							<td class="help">&nbsp;<?php echo $plugin_data['Version']; ?>
+								<?php if (!empty($new_version)) : ?>
+									<strong><?php printf(__('(needs update - %s)', 'wpematico'), $new_version); ?></strong>
+								<?php endif; ?>
+							</td>
 							<td><?php printf( _x( 'by %s', 'by author', 'wpematico' ), $plugin_data['Author'] ) . ' &ndash; ' . esc_html( $plugin_data['Version'] ) . $version_string . $network_string; ?></td>
 						</tr>
 						<?php
@@ -788,8 +813,8 @@ function wpematico_debug_info_get() {
 	foreach( $plugins as $plugin_path => $plugin ) {
 		if( !in_array( $plugin_path, $active_plugins ) )
 			continue;
-
-		$return .= $plugin['Name'] . ': ' . $plugin['Version'] . "\n";
+		$new_version = wpematico_get_plugin_new_version($plugin_path);
+		$return .= $plugin['Name'] . ': ' . $plugin['Version'].(!empty($new_version)?' (needs update - '.$new_version.')': ''). "\n";
 	}
 
 	$return  = apply_filters( 'wpematico_sysinfo_after_wordpress_plugins', $return );
@@ -800,8 +825,8 @@ function wpematico_debug_info_get() {
 	foreach( $plugins as $plugin_path => $plugin ) {
 		if( in_array( $plugin_path, $active_plugins ) )
 			continue;
-
-		$return .= $plugin['Name'] . ': ' . $plugin['Version'] . "\n";
+		$new_version = wpematico_get_plugin_new_version($plugin_path);
+		$return .= $plugin['Name'] . ': ' . $plugin['Version'].(!empty($new_version)?' (needs update - '.$new_version.')': ''). "\n";
 	}
 
 	$return = apply_filters( 'wpematico_sysinfo_after_wordpress_plugins_inactive', $return );

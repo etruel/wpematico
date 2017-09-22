@@ -261,6 +261,8 @@ or to e-mail etruel@gmail.com
 * Added wpe hooks (for developers) to use filters and actions from JavaScript.
 * Fixes the blank messages on errors when the feeds are tested.
 * Fixes few javascript issues on campaigns editing.
+* Se agrego al debug file y debug page si los plugins tienen actualizaciones.
+
 * **Professional Add-on:**
 * **Enlarges the version required for the Professional addon to 1.8v** (https://etruel.com/downloads/wpematico-professional/)
 * Added a fixed icon for Feed Advanced Options in the feed row.
