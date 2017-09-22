@@ -204,6 +204,30 @@ function wpematico_get_plugin_new_version( $plugin ) {
 
 	return $response;
 }
+function wpematico_disk_total_space($echo = true) {
+	$bytes = disk_total_space("."); 
+    $si_prefix = array( 'B', 'KB', 'MB', 'GB', 'TB', 'EB', 'ZB', 'YB' );
+    $base = 1024;
+    $class = min((int)log($bytes , $base) , count($si_prefix) - 1);
+    if ($echo) {
+    	 echo sprintf('%1.2f' , $bytes / pow($base,$class)) . ' ' . $si_prefix[$class] . '<br />';
+    } else {
+    	return sprintf('%1.2f' , $bytes / pow($base,$class)) . ' ' . $si_prefix[$class];
+    }
+   
+}
+
+function wpematico_disk_free_space($echo = true) {
+	$bytes = disk_free_space("."); 
+    $si_prefix = array( 'B', 'KB', 'MB', 'GB', 'TB', 'EB', 'ZB', 'YB' );
+    $base = 1024;
+    $class = min((int)log($bytes , $base) , count($si_prefix) - 1);
+    if ($echo) {
+    	 echo sprintf('%1.2f' , $bytes / pow($base,$class)) . ' ' . $si_prefix[$class] . '<br />';
+    } else {
+    	return sprintf('%1.2f' , $bytes / pow($base,$class)) . ' ' . $si_prefix[$class];
+    }
+}
 
 /**
  * Shows all data into a table
@@ -334,10 +358,24 @@ function wpematico_show_data_info() {
 					?></td>
 				</tr>
 				<tr>
+					<td data-export-label="Disk Total Space"><?php _e( 'Disk Total Space:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The total size of a filesystem or disk partition.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php wpematico_disk_total_space(); ?></td>
+				</tr>
+
+				<tr>
+					<td data-export-label="Disk Free Space"><?php _e( 'Disk Free Space:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The available space on filesystem or disk partition.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php wpematico_disk_free_space(); ?></td>
+				</tr>
+
+				<tr>
 					<td data-export-label="Max Upload Size"><?php _e( 'Max Upload Size:', 'wpematico' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The largest file size that can be uploaded to your WordPress installation.', 'wpematico'  ) . '">[?]</a>'; ?></td>
 					<td><?php echo size_format( wp_max_upload_size() ); ?></td>
 				</tr>
+				
+				
 			<?php if ( function_exists( 'ini_get' ) ) : ?>
 					<tr>
 						<td data-export-label="PHP Post Max Size"><?php _e( 'PHP Post Max Size:', 'wpematico' ); ?></td>
@@ -709,6 +747,8 @@ function wpematico_debug_info_get() {
 	$return .= 'PHP Version:              ' . PHP_VERSION . "\n";
 	$return .= 'MySQL Version:            ' . $wpdb->db_version() . "\n";
 	$return .= 'Webserver Info:           ' . $_SERVER['SERVER_SOFTWARE'] . "\n";
+	$return .= 'Disk Total Space:         ' . wpematico_disk_total_space(false) . "\n";
+	$return .= 'Disk Free Space:          ' . wpematico_disk_free_space(false) . "\n";
 
 	$return  = apply_filters( 'wpematico_sysinfo_after_webserver_config', $return );
 
