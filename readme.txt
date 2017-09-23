@@ -263,6 +263,7 @@ or to e-mail etruel@gmail.com
 * Fixes few javascript issues on campaigns editing.
 * Se agrego al debug file y debug page si los plugins tienen actualizaciones.
 * Se agrego al debug file el espacio disponible y el espacio total en el disco.
+* Mejoras significativas en el rendimiento de la debug page.
 
 * **Professional Add-on:**
 * **Enlarges the version required for the Professional addon to 1.8v** (https://etruel.com/downloads/wpematico-professional/)

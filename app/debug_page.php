@@ -171,6 +171,7 @@ function wpematico_settings_section_debug_file() {
 						</form>
 						<p></p>
 					</div>
+					
 				</td>
 			</tr>
 		</tbody>
@@ -229,11 +230,51 @@ function wpematico_disk_free_space($echo = true) {
     }
 }
 
+
+function wpematico_get_active_plugins() {
+	static $wpematico_active_plugins = array();
+	if (empty($wpematico_active_plugins)) {
+		$active_plugins = (array) get_option( 'active_plugins', array() );
+		if ( is_multisite() ) {
+			$active_plugins = array_merge( $active_plugins, get_site_option( 'active_sitewide_plugins', array() ) );
+		}
+		foreach ( $active_plugins as $plugin ) {
+			$wpematico_active_plugins[] = array(
+											'new_version' 	 => wpematico_get_plugin_new_version($plugin),
+											'plugin_data' 	 => @get_plugin_data( WP_PLUGIN_DIR . '/' . $plugin ),
+											'dirname' 	  	 => dirname( $plugin ),
+											'version_string' => 'Version',
+											'network_string' => '',
+										  );
+		}
+	}
+	return $wpematico_active_plugins;		
+}
+
+function wpematico_debug_data() {
+	
+	static $vars = array();
+	if (empty($vars)) {
+		global $wpdb;
+		$vars['home_url'] 			= home_url();
+		$vars['site_url'] 		  	= site_url();
+		$vars['is_multisite'] 		= is_multisite();
+		$vars['db_version'] 		= $wpdb->db_version();
+		$vars['php_ok'] 			= (function_exists('version_compare') && version_compare(phpversion(), '5.3.0', '>='));
+		$vars['remote_post_work'] 	= false;
+		$response 					= wp_remote_post( 'https://etruel.com/downloads/feed/', array( 'decompress' => false, 'user-agent' => 'wpematico-debug' ) );
+		if ( ! is_wp_error( $response ) && $response['response']['code'] >= 200 && $response['response']['code'] < 300 ) {
+			$vars['remote_post_work'] 	= true;
+		}
+	}
+	return $vars;
+}
 /**
  * Shows all data into a table
  */
 
 function wpematico_show_data_info() {
+	$debug_data = wpematico_debug_data();
 	?>
 		<h3 class="screen-reader-text"><?php _e( 'WordPress Environment', 'wpematico' ); ?></h3>
 		<table class="widefat debug-section" cellspacing="0">
@@ -246,22 +287,22 @@ function wpematico_show_data_info() {
 				<tr>
 					<td data-export-label="Home URL"><?php _e( 'Home URL:', 'wpematico' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The URL of your site\'s homepage.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php echo home_url(); ?></td>
+					<td><?php echo $debug_data['home_url']; ?></td>
 				</tr>
 				<tr>
 					<td data-export-label="Site URL"><?php _e( 'Site URL:', 'wpematico' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The root URL of your site.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php echo site_url(); ?></td>
+					<td><?php echo $debug_data['site_url']; ?></td>
 				</tr>
 				<tr>
 					<td data-export-label="WP Version"><?php _e( 'WP Version:', 'wpematico' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The version of WordPress installed on your site.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php bloginfo('version'); ?></td>
+					<td><?php echo bloginfo('version'); ?></td>
 				</tr>
 				<tr>
 					<td data-export-label="WP Multisite"><?php _e( 'WP Multisite:', 'wpematico' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Whether or not you have WordPress Multisite enabled.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php if ( is_multisite() ) {
+					<td><?php if ($debug_data['is_multisite']) {
 							echo '<mark class="no">' . '&#10004;' . __( 'WPeMatico was not fully tested in Multisite. Test it and give us your comments on the <a href="https://wordpress.org/support/plugin/wpematico/" target="_blank">forums</a>', 'wpematico' ) . '</mark>';
 						} else {
 							echo '<mark class="yes">' . __( 'No','wpematico') . '</mark>';
@@ -300,8 +341,7 @@ function wpematico_show_data_info() {
 				<tr>
 					<td data-export-label="WP Remote Post"><?php _e( 'WP Remote Post:', 'wpematico' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'WPeMatico uses this method to communicate with the different RSS feeds and remote websites', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<?php $response = wp_remote_post( 'https://etruel.com/downloads/feed/', array( 'decompress' => false, 'user-agent' => 'wpematico-debug' ) ); ?>
-					<td><?php echo ( ! is_wp_error( $response ) && $response['response']['code'] >= 200 && $response['response']['code'] < 300 ) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">wp_remote_post() failed. Some theme features may not work. Please contact your hosting provider and make sure that https://etruel.com/downloads/feed/ is not blocked.</mark>'; ?></td>
+					<td><?php echo ($debug_data['remote_post_work']) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">wp_remote_post() failed. Some theme features may not work. Please contact your hosting provider and make sure that https://etruel.com/downloads/feed/ is not blocked.</mark>'; ?></td>
 				</tr>
 			</tbody>
 		</table>
@@ -336,25 +376,18 @@ function wpematico_show_data_info() {
 					<td data-export-label="MySQL Version"><?php _e( 'MySQL Version:', 'wpematico' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The version of MySQL installed on your hosting server.', 'wpematico'  ) . '">[?]</a>'; ?></td>
 					<td>
-						<?php
-						/** @global wpdb $wpdb */
-						global $wpdb;
-						echo $wpdb->db_version();
-						?>
+						<?php echo $debug_data['db_version']; ?>
 					</td>
 				</tr>
 				<tr>
 					<td data-export-label="PHP Version"><?php _e( 'PHP Version:', 'wpematico' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The version of PHP installed on your hosting server.', 'wpematico'  ) . '">[?]</a>'; ?></td>
 					<td><?php 
-						if ( function_exists( 'phpversion' ) ) {
-							$php_ok = (function_exists('version_compare') && version_compare(phpversion(), '5.3.0', '>='));
-							if ( !$php_ok ) {
+							if (!$debug_data['php_ok']) {
 								echo '<mark class="error">' . esc_html( phpversion() ) . __( 'WPeMatico requires PHP >= 5.3.', 'wpematico' ) . '</mark>';
 							} else {
 								echo '<mark class="yes">' . esc_html( phpversion() ) . '</mark>';
 							}
-						} 
 					?></td>
 				</tr>
 				<tr>
@@ -579,23 +612,19 @@ function wpematico_show_data_info() {
 		<table class="widefat debug-section" cellspacing="0" id="status">
 			<thead>
 				<tr>
-					<th colspan="3" class="debug-section-title" data-export-label="Active Plugins (<?php echo count( (array) get_option( 'active_plugins' ) ); ?>)"><?php _e( 'Active Plugins', 'wpematico' ); ?> (<?php echo count( (array) get_option( 'active_plugins' ) ); ?>)</th>
+					<th colspan="3" class="debug-section-title" data-export-label="Active Plugins (<?php echo count( (array) wpematico_get_active_plugins() ); ?>)"><?php _e( 'Active Plugins', 'wpematico' ); ?> (<?php echo count( (array) wpematico_get_active_plugins() ); ?>)</th>
 				</tr>
 			</thead>
 			<tbody>
 				<?php
-				$active_plugins = (array) get_option( 'active_plugins', array() );
-
-				if ( is_multisite() ) {
-					$active_plugins = array_merge( $active_plugins, get_site_option( 'active_sitewide_plugins', array() ) );
-				}
+				$active_plugins = wpematico_get_active_plugins();
 				
 				foreach ( $active_plugins as $plugin ) {
-					$new_version    = wpematico_get_plugin_new_version($plugin);
-					$plugin_data    = @get_plugin_data( WP_PLUGIN_DIR . '/' . $plugin );
-					$dirname        = dirname( $plugin );
-					$version_string = 'Version';
-					$network_string = '';
+					$new_version    = $plugin['new_version'];
+					$plugin_data    = $plugin['plugin_data'];
+					$dirname        = $plugin['dirname'];
+					$version_string = $plugin['version_string'];
+					$network_string = $plugin['network_string'];
 
 					if ( ! empty( $plugin_data['Name'] ) ) {
 
@@ -653,7 +682,8 @@ function wpematico_save_danger_data() {
 function wpematico_debug_info_get() {
 	global $wpdb;
 	$cfg = get_option(WPeMatico :: OPTION_KEY);
-	$cfg = apply_filters('wpematico_check_options', $cfg);  
+	$cfg = apply_filters('wpematico_check_options', $cfg); 
+	$debug_data = wpematico_debug_data(); 
 
 	if( !class_exists( 'Browser' ) )
 		require_once dirname( __FILE__) . '/lib/browser.php';  //https://github.com/cbschuld/Browser.php
@@ -676,9 +706,9 @@ function wpematico_debug_info_get() {
 
 	// Start with the basics...
 	$return .= '-- Site Info' . "\n\n";
-	$return .= 'Site URL:                 ' . site_url() . "\n";
-	$return .= 'Home URL:                 ' . home_url() . "\n";
-	$return .= 'Multisite:                ' . ( is_multisite() ? 'Yes' : 'No' ) . "\n";
+	$return .= 'Site URL:                 ' . $debug_data['site_url'] . "\n";
+	$return .= 'Home URL:                 ' . $debug_data['home_url'] . "\n";
+	$return .= 'Multisite:                ' . ($debug_data['is_multisite'] ? 'Yes' : 'No' ) . "\n";
 
 	$return  = apply_filters( 'wpematico_sysinfo_after_site_info', $return );
 
@@ -714,19 +744,9 @@ function wpematico_debug_info_get() {
 		$return .= 'Page For Posts:           ' . ( $blog_page_id != 0 ? get_the_title( $blog_page_id ) . ' (#' . $blog_page_id . ')' : 'Unset' ) . "\n";
 	}
 
-	// Make sure wp_remote_post() is working
-	$request['cmd'] = '_notify-validate';
-
-	$params = array(
-		'sslverify'     => false,
-		'timeout'       => 60,
-		'user-agent'    => 'WPEMATICO/' . WPeMatico::$version,
-		'body'          => $request
-	);
 	
-	$response = wp_remote_post( 'https://www.paypal.com/cgi-bin/webscr', $params );
 
-	if( !is_wp_error( $response ) && $response['response']['code'] >= 200 && $response['response']['code'] < 300 ) {
+	if($debug_data['remote_post_work']) {
 		$WP_REMOTE_POST = 'wp_remote_post() works';
 	} else {
 		$WP_REMOTE_POST = 'wp_remote_post() does not work';
@@ -745,7 +765,7 @@ function wpematico_debug_info_get() {
 	$return .= "\n" . '-- Webserver Configuration' . "\n\n";
 	
 	$return .= 'PHP Version:              ' . PHP_VERSION . "\n";
-	$return .= 'MySQL Version:            ' . $wpdb->db_version() . "\n";
+	$return .= 'MySQL Version:            ' . $debug_data['db_version'] . "\n";
 	$return .= 'Webserver Info:           ' . $_SERVER['SERVER_SOFTWARE'] . "\n";
 	$return .= 'Disk Total Space:         ' . wpematico_disk_total_space(false) . "\n";
 	$return .= 'Disk Free Space:          ' . wpematico_disk_free_space(false) . "\n";
@@ -779,7 +799,6 @@ function wpematico_debug_info_get() {
 
 	// SimplePie required extensions and such
 	$return .= "\n" . '-- SimplePie required Extensions' . "\n\n";
-	$php_ok = (function_exists('version_compare') && version_compare(phpversion(), '5.2.0', '>='));
 	$pcre_ok = extension_loaded('pcre');
 	$curl_ok = function_exists('curl_exec');
 	$zlib_ok = extension_loaded('zlib');
@@ -795,7 +814,7 @@ function wpematico_debug_info_get() {
 	}else{
 		$xml_ok = false;
 	}
-	$return .= 'PHP 5.2.0 or higher:     ' . ( ($php_ok) ? 'Supported' : 'Not Supported') . "\n";
+	$return .= 'PHP 5.3.0 or higher:     ' . ( ($debug_data['php_ok']) ? 'Supported' : 'Not Supported') . "\n";
 	$return .= 'XML (php.net/xml):       ' . ( ($xml_ok) ? 'Enabled, and sane' : 'Disabled, or broken' ) . "\n";
 	$return .= 'PCRE (php.net/pcre):     ' . ( ($pcre_ok) ? 'Enabled' : 'Disabled' ) . "\n";
 	$return .= 'PCRE (php.net/curl):     ' . ( (extension_loaded('curl')) ? 'Enabled' : 'Disabled' ) . "\n";
@@ -846,17 +865,18 @@ function wpematico_debug_info_get() {
 
 	// WordPress active plugins
 	$return .= "\n" . '-- WordPress Active Plugins' . "\n\n";
+	
+	$active_plugins = wpematico_get_active_plugins();
+	foreach ($active_plugins as $key => $plugin) {
+		$new_version    = $plugin['new_version'];
+		$plugin_data    = $plugin['plugin_data'];
 
-	$plugins = get_plugins();
-	$active_plugins = get_option( 'active_plugins', array() );
-
-	foreach( $plugins as $plugin_path => $plugin ) {
-		if( !in_array( $plugin_path, $active_plugins ) )
-			continue;
-		$new_version = wpematico_get_plugin_new_version($plugin_path);
-		$return .= $plugin['Name'] . ': ' . $plugin['Version'].(!empty($new_version)?' (needs update - '.$new_version.')': ''). "\n";
+		if ( ! empty( $plugin_data['Name'] ) ) {
+			$plugin_name = esc_html( $plugin_data['Name'] );
+			$return .= $plugin_name . ': ' . $plugin_data['Version'].(!empty($new_version)?' (needs update - '.$new_version.')': ''). "\n";
+		}
 	}
-
+	$plugins = get_plugins();
 	$return  = apply_filters( 'wpematico_sysinfo_after_wordpress_plugins', $return );
 
 	// WordPress inactive plugins
@@ -871,26 +891,7 @@ function wpematico_debug_info_get() {
 
 	$return = apply_filters( 'wpematico_sysinfo_after_wordpress_plugins_inactive', $return );
 
-	if( is_multisite() ) {
-		// WordPress Multisite active plugins
-		$return .= "\n" . '-- Network Active Plugins' . "\n\n";
-
-		$plugins = wp_get_active_network_plugins();
-		$active_plugins = get_site_option( 'active_sitewide_plugins', array() );
-
-		foreach( $plugins as $plugin_path ) {
-			$plugin_base = plugin_basename( $plugin_path );
-
-			if( !array_key_exists( $plugin_base, $active_plugins ) )
-				continue;
-
-			$plugin  = get_plugin_data( $plugin_path );
-			$return .= $plugin['Name'] . ': ' . $plugin['Version'] . "\n";
-		}
-
-		$return  = apply_filters( 'wpematico_sysinfo_after_wordpress_ms_plugins', $return );
-	}
-
+	
 	// WordPress CONSTANTS filtering users & passwords
 	$return .= "\n" . '-- WordPress user Defined Constants' . "\n\n";
 
