@@ -153,6 +153,7 @@ function wpematico_settings_section_debug_file() {
 						<form action="<?php echo esc_url( admin_url( 'edit.php?post_type=wpematico&page=wpematico_settings&tab=debug_info' ) ); ?>" method="post" dir="ltr">
 							<label><input class="checkbox" value="1" type="checkbox" name="alsophpinfo" /> <?php _e('Include also PHPInfo() if available.', 'wpematico' ); ?></label><br/>
 							<label><input class="checkbox" value="1" type="checkbox" checked="checked" name="alsocampaignslogs" /> <?php _e('Include also Last Campaigns Log.', 'wpematico' ); ?></label><br/>
+							<?php do_action('wpematico_debug_page_form_options'); ?>
 							<input type="hidden" name="wpematico-action" value="download_debug_info" />
 							<p class="submit">
 								<?php submit_button( 'Download Debug Info File', 'primary', 'wpematico-download-debug-info', false ); ?>
@@ -948,6 +949,9 @@ function wpematico_debug_info_download() {
 			phpinfo();
 		endif;
 	}
+
+	do_action('wpematico_download_debug_file_extra_data');
+
 	if( !empty($_POST['alsocampaignslogs']) ) {
 		echo "\n\n" . '-- LAST CAMPAIGNS LOG --' . "<br />\n\n";  
 		$args = array(
