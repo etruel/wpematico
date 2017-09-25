@@ -531,39 +531,29 @@ function wpematico_show_data_info() {
 					} 
 					?></td>
 				</tr>
-				<tr>
-					<td data-export-label="ZipArchive"><?php _e( 'ZipArchive:', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'ZipArchive is recommended. They can be used to import and export zip files.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php echo class_exists( 'ZipArchive' ) ? '<mark class="yes">&#10004;</mark>' : '<mark class="no">ZipArchive is not installed on your server, but is recommended by some addons.</mark>'; ?></td>
-				</tr>
-				<tr>
-					<td data-export-label="DOMDocument"><?php _e( 'DOMDocument:', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'DOMDocument is recommended.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php echo class_exists( 'DOMDocument' ) ? '<mark class="yes">&#10004;</mark>' : '<mark class="no">DOMDocument is not installed on your server, but is recommended by some addons.</mark>'; ?></td>
-				</tr>
-				<tr>
-					<td data-export-label="GD Library"><?php _e( 'GD Library:', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'WPeMatico uses this library to resize images and speed up your site\'s loading time', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td>
-						<?php
-						$info = esc_attr__( 'Not Installed', 'wpematico' );
-						if ( extension_loaded( 'gd' ) && function_exists( 'gd_info' ) ) {
-							$info = esc_attr__( 'Installed', 'wpematico' );
-							$gd_info = gd_info();
-							if ( isset( $gd_info['GD Version'] ) ) {
-								$info = $gd_info['GD Version'];
-							}
-						}
-						echo $info;
-						?>
-					</td>
-				</tr>
 				<?php
-					$pcre_ok = extension_loaded('pcre');
-					$curl_ok = function_exists('curl_exec');
-					$zlib_ok = extension_loaded('zlib');
-					$mbstring_ok = extension_loaded('mbstring');
-					$iconv_ok = extension_loaded('iconv');
+					$professional_help 	= '<a href="https://etruel.com/downloads/wpematico-professional/" target="_blank">WPeMatico Professional</a>';
+					$cache_help 		= '<a href="https://etruel.com/downloads/wpematico-cache/" target="_blank">WPeMatico Cache</a>';
+					$mmf_help			= '<a href="https://etruel.com/downloads/wpematico-make-feed-good/" target="_blank">Make Me Feed</a>';
+					$polyglot_help		= '<a href="https://etruel.com/downloads/wpematico-polyglot/" target="_blank">WPeMatico PolyGlot</a>';
+					$full_help			= '<a href="https://etruel.com/downloads/wpematico-full-content/" target="_blank">WPeMatico Full Content</a>';
+					$better_help		= '<a href="https://etruel.com/downloads/wpematico-better-excerpts/" target="_blank">WPeMatico Better Excerpts</a>';
+					$chinese_help		= '<a href="https://etruel.com/downloads/wpematico-chinese-tags/" target="_blank">WPeMatico Chinese Tags</a>';
+					$facebook_help		= '<a href="https://etruel.com/downloads/wpematico-facebook-fetcher/" target="_blank">WPeMatico Facebook Fetcher</a>';
+					$thumbnail_help		= '<a href="https://etruel.com/downloads/wpematico-thumbnail-scratcher/" target="_blank">WPeMatico Thumbnail Scratcher</a>';
+					$smtp_help			= '<a href="https://etruel.com/downloads/wpematico-smtp/" target="_blank">WPeMatico SMTP</a>';
+					
+					
+					$pcre_ok 		= extension_loaded('pcre');
+					$curl_ok 		= function_exists('curl_exec');
+					$zlib_ok 		= extension_loaded('zlib');
+					$mbstring_ok 	= extension_loaded('mbstring');
+					$iconv_ok 		= extension_loaded('iconv');
+					$ssl_ok 		= extension_loaded('openssl');
+					$mcrypt_ok 		= extension_loaded('mcrypt');
+					$m_rewrite_ok 	= in_array('mod_rewrite', apache_get_modules());
+					$m_mime_ok 		= in_array('mod_mime', apache_get_modules());
+					$m_deflate_ok	= in_array('mod_deflate', apache_get_modules());
 					if (extension_loaded('xmlreader')) {
 						$xml_ok = true;
 					}elseif (extension_loaded('xml')) {
@@ -576,39 +566,80 @@ function wpematico_show_data_info() {
 					}
 				?>
 				<tr>
+					<td data-export-label="cURL (php.net/curl)"><?php _e( 'cURL (php.net/curl):', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__( '%s is required by %s.', 'wpematico'  ), 'cURL (php.net/curl)', 'WPeMatico Core, '.$professional_help.', '.$cache_help.', '.$mmf_help.', '.$polyglot_help)) . '">[?]</a>'; ?></td>
+					<td><?php echo (extension_loaded('curl')) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'cURL (php.net/curl)', 'some addons and Simplepie').'</mark>'; ?></td>
+				</tr>
+				<tr>
+					<td data-export-label="ZipArchive"><?php _e( 'ZipArchive:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'ZipArchive is recommended. They can be used to import and export zip files.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php echo class_exists( 'ZipArchive' ) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'ZipArchive', 'WPeMatico Core').'</mark>'; ?></td>
+				</tr>
+				<tr>
+					<td data-export-label="DOMDocument"><?php _e( 'DOMDocument:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__( '%s is required by %s.', 'wpematico'  ), 'DOMDocument', 'WPeMatico Core')) . '">[?]</a>'; ?></td>
+					<td><?php echo class_exists( 'DOMDocument' ) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'DOMDocument', 'some addons').'</mark>'; ?></td>
+				</tr>
+				<tr>
+					<td data-export-label="GD Library"><?php _e( 'GD Library:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'WPeMatico uses this library to resize images and speed up your site\'s loading time', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php echo ( extension_loaded( 'gd' ) && function_exists( 'gd_info' ) ) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'GD', 'WPeMatico Core').'</mark>'; ?></td>
+				</tr>
+				<tr>
 					<td data-export-label="XML (php.net/xml)"><?php _e( 'XML (php.net/xml):', 'wpematico' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'XML (php.net/xml) is required.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php echo ($xml_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">XML (php.net/xml) is not installed on your server, but is required for Simplepie to work with feed contents.</mark>'; ?></td>
+					<td><?php echo ($xml_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'XML (php.net/xml)', 'WPeMatico Core').'</mark>'; ?></td>
 				</tr>
 				<tr>
 					<td data-export-label="PCRE (php.net/pcre)"><?php _e( 'PCRE (php.net/pcre):', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'PCRE (php.net/pcre) is required.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php echo ($pcre_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">PCRE (php.net/pcre) is not installed on your server, but is required for Simplepie to work with feed contents.</mark>'; ?></td>
-				</tr>
-				<tr>
-					<td data-export-label="PCRE (php.net/curl)"><?php _e( 'PCRE (php.net/curl):', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'PCRE (php.net/curl) is required.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php echo (extension_loaded('curl')) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">PCRE (php.net/curl) is not installed on your server, but is required for Simplepie to work with feed contents.</mark>'; ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__( '%s is required by %s.', 'wpematico'  ), 'PCRE (php.net/pcre)', 'WPeMatico Core, '.$professional_help.', '.$full_help.', '.$better_help.', '.$cache_help.', '.$chinese_help.', '.$facebook_help.', '.$mmf_help.', '.$thumbnail_help.', '.$thumbnail_help.'')) . '">[?]</a>'; ?></td>
+					<td><?php echo ($pcre_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'PCRE (php.net/pcre)', 'some addons and WPeMatico Core').'</mark>'; ?></td>
 				</tr>
 				<tr>
 					<td data-export-label="Zlib (php.net/zlib)"><?php _e( 'Zlib (php.net/zlib):', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Zlib (php.net/zlib) is required.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php echo ($zlib_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">Zlib (php.net/zlib) is not installed on your server, but is required for Simplepie to work with feed contents.</mark>'; ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__( '%s is required by %s.', 'wpematico'  ), 'Zlib (php.net/zlib)', 'WPeMatico Core, '.$cache_help)) . '">[?]</a>'; ?></td>
+					<td><?php echo ($zlib_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'Zlib (php.net/zlib)', 'some addons and WPeMatico Core').'</mark>'; ?></td>
 				</tr>
 				<tr>
 					<td data-export-label="php.net/mbstring"><?php _e( 'php.net/mbstring:', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'php.net/mbstring is required.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php echo ($mbstring_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">php.net/mbstring is not installed on your server, but is required for Simplepie to work with feed contents.</mark>'; ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__( '%s is required by %s.', 'wpematico'  ), 'php.net/mbstring', 'WPeMatico Core, '.$full_help.', '.$chinese_help.', '.$mmf_help)) . '">[?]</a>'; ?></td>
+					<td><?php echo ($mbstring_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'php.net/mbstring', 'some addons and WPeMatico Core').'</mark>'; ?></td>
 				</tr>
 				<tr>
 					<td data-export-label="iconv (php.net/iconv)"><?php _e( 'iconv (php.net/iconv):', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'iconv (php.net/iconv) is required.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php echo ($iconv_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">iconv (php.net/iconv) is not installed on your server, but is required for Simplepie to work with feed contents.</mark>'; ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__( '%s is required by %s.', 'wpematico'  ), 'iconv (php.net/iconv)', 'WPeMatico Core, '.$full_help.', '.$mmf_help)) . '">[?]</a>'; ?></td>
+					<td><?php echo ($iconv_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'iconv (php.net/iconv)', 'some addons and WPeMatico Core').'</mark>'; ?></td>
+				</tr>
+				<tr>
+					<td data-export-label="OpenSSL (php.net/openssl)"><?php _e( 'OpenSSL (php.net/openssl):', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__( '%s is required by %s.', 'wpematico'  ), 'OpenSSL (php.net/openssl)', $smtp_help)) . '">[?]</a>'; ?></td>
+					<td><?php echo ($ssl_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="'.(defined( 'WPESMTP_VERSION') ? 'error' : 'error-no-install' ).'">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'OpenSSL (php.net/openssl)', 'some addons').'</mark>'; ?></td>
+				</tr>
+				<tr>
+					<td data-export-label="mcrypt (php.net/mcrypt)"><?php _e( 'mcrypt (php.net/mcrypt):', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__( '%s is required by %s.', 'wpematico'  ), 'mcrypt (php.net/mcrypt)', $smtp_help)) . '">[?]</a>'; ?></td>
+					<td><?php echo ($mcrypt_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="'.(defined( 'WPESMTP_VERSION') ? 'error' : 'error-no-install' ).'">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'mcrypt (php.net/mcrypt)', 'some addons').'</mark>'; ?></td>
+				</tr>
+
+				<tr>
+					<td data-export-label="Mod Rewrite"><?php _e( 'Mod Rewrite:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__( '%s is required by %s.', 'wpematico'  ), 'Mod Rewrite', $cache_help)) . '">[?]</a>'; ?></td>
+					<td><?php echo ($m_rewrite_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="'.(defined( 'WPEMATICO_CACHE_VERSION') ? 'error' : 'error-no-install' ).'">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'Mod Rewrite', 'some addons').'</mark>'; ?></td>
+				</tr>
+				<tr>
+					<td data-export-label="Mod Mime"><?php _e( 'Mod Mime:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__( '%s is required by %s.', 'wpematico'  ), 'Mod Mime', $cache_help)) . '">[?]</a>'; ?></td>
+					<td><?php echo ($m_mime_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="'.(defined( 'WPEMATICO_CACHE_VERSION') ? 'error' : 'error-no-install' ).'">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'Mod Mime', 'some addons').'</mark>'; ?></td>
+				</tr>
+				<tr>
+					<td data-export-label="Mod Deflate"><?php _e( 'Mod Deflate:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__( '%s is required by %s.', 'wpematico'  ), 'Mod Deflate', $cache_help)) . '">[?]</a>'; ?></td>
+					<td><?php echo ($m_deflate_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="'.(defined( 'WPEMATICO_CACHE_VERSION') ? 'error' : 'error-no-install' ).'">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'Mod Deflate', 'some addons').'</mark>'; ?></td>
 				</tr>
 
 			</tbody>
 		</table>
-
+		
 		<h3 class="screen-reader-text"><?php _e( 'Active Plugins', 'wpematico' ); ?></h3>
 		<table class="widefat debug-section" cellspacing="0" id="status">
 			<thead>
@@ -800,11 +831,17 @@ function wpematico_debug_info_get() {
 
 	// SimplePie required extensions and such
 	$return .= "\n" . '-- SimplePie required Extensions' . "\n\n";
-	$pcre_ok = extension_loaded('pcre');
-	$curl_ok = function_exists('curl_exec');
-	$zlib_ok = extension_loaded('zlib');
-	$mbstring_ok = extension_loaded('mbstring');
-	$iconv_ok = extension_loaded('iconv');
+	
+	$pcre_ok 		= extension_loaded('pcre');
+	$curl_ok		= function_exists('curl_exec');
+	$zlib_ok 		= extension_loaded('zlib');
+	$mbstring_ok 	= extension_loaded('mbstring');
+	$iconv_ok 		= extension_loaded('iconv');
+	$ssl_ok 		= extension_loaded('openssl');
+	$mcrypt_ok 		= extension_loaded('mcrypt');
+	$m_rewrite_ok 	= in_array('mod_rewrite', apache_get_modules());
+	$m_mime_ok 		= in_array('mod_mime', apache_get_modules());
+	$m_deflate_ok	= in_array('mod_deflate', apache_get_modules());
 	if (extension_loaded('xmlreader')) {
 		$xml_ok = true;
 	}elseif (extension_loaded('xml')) {
@@ -818,10 +855,15 @@ function wpematico_debug_info_get() {
 	$return .= 'PHP 5.3.0 or higher:     ' . ( ($debug_data['php_ok']) ? 'Supported' : 'Not Supported') . "\n";
 	$return .= 'XML (php.net/xml):       ' . ( ($xml_ok) ? 'Enabled, and sane' : 'Disabled, or broken' ) . "\n";
 	$return .= 'PCRE (php.net/pcre):     ' . ( ($pcre_ok) ? 'Enabled' : 'Disabled' ) . "\n";
-	$return .= 'PCRE (php.net/curl):     ' . ( (extension_loaded('curl')) ? 'Enabled' : 'Disabled' ) . "\n";
+	$return .= 'cURL (php.net/curl):     ' . ( (extension_loaded('curl')) ? 'Enabled' : 'Disabled' ) . "\n";
 	$return .= 'Zlib (php.net/zlib):     ' . ( ($zlib_ok) ? 'Enabled' : 'Disabled' ) . "\n";
 	$return .= 'php.net/mbstring:        ' . ( ($mbstring_ok) ? 'Enabled' : 'Disabled' ) . "\n";
 	$return .= 'iconv (php.net/iconv):   ' . ( ($iconv_ok) ? 'Enabled' : 'Disabled' ) . "\n";
+	$return .= 'php.net/openssl:   		 ' . ( ($ssl_ok) ? 'Enabled' : 'Disabled' ) . "\n";
+	$return .= 'php.net/mcrypt:   		 ' . ( ($mcrypt_ok) ? 'Enabled' : 'Disabled' ) . "\n";
+	$return .= 'Mod Rewrite:	   		 ' . ( ($m_rewrite_ok) ? 'Enabled' : 'Disabled' ) . "\n";
+	$return .= 'Mod Mime:	   			 ' . ( ($m_mime_ok) ? 'Enabled' : 'Disabled' ) . "\n";
+	$return .= 'Mod Deflate:	   		 ' . ( ($m_deflate_ok) ? 'Enabled' : 'Disabled' ) . "\n";
 					 
 	$return  = apply_filters( 'wpematico_sysinfo_after_simplepie_ext', $return );
 

@@ -264,6 +264,8 @@ or to e-mail etruel@gmail.com
 * Se agrego al debug file y debug page si los plugins tienen actualizaciones.
 * Se agrego al debug file el espacio disponible y el espacio total en el disco.
 * Mejoras significativas en el rendimiento de la debug page.
+* Actualizado el SimplePie a 1.5.
+* Los mod de apache ahora aparecen en el debug page y file.
 
 * **Professional Add-on:**
 * **Enlarges the version required for the Professional addon to 1.8v** (https://etruel.com/downloads/wpematico-professional/)

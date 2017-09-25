@@ -27,6 +27,10 @@ p { margin-bottom: 2px; }
     color: #a00;
     background: 0;
 }
+.debug-section mark.error-no-install {
+    color: pink;
+    background: 0;
+}
 
 
 
