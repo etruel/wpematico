@@ -11,6 +11,28 @@ if ( !defined('ABSPATH') ) {
  *  Experimental.  Uses worpdress plugins.php file filtered
  */
 
+function wpematico_get_addons_update() {
+	static $wpematico_updates = 0; // Cache received responses.
+
+	if (empty($wpematico_updates)) {
+		$plugin_updates = get_site_transient('update_plugins');
+		if ($plugin_updates === false) {
+			$plugin_updates = array();
+		}
+
+		if (!isset($plugin_updates->response)) {
+			$plugin_updates->response = array();
+		}
+		foreach ($plugin_updates->response as $r_plugin => $value) {
+			if(strpos($r_plugin, 'wpematico_') !== false) {
+				$wpematico_updates++;
+			}
+		}
+	}
+	
+	return $wpematico_updates;
+
+}
 
 
 add_action( 'admin_init', 'redirect_to_wpemaddons',0  );
@@ -40,10 +62,16 @@ function redirect_to_wpemaddons() {
 
 add_action( 'admin_menu', 'wpe_addon_admin_menu',99 );
 function wpe_addon_admin_menu() {
+	$update_wpematico_addons = wpematico_get_addons_update();
+	$count_menu = '';
+	if (!empty($update_wpematico_addons) && $update_wpematico_addons > 0) {
+		$count_menu = "<span class='update-plugins count-{$update_wpematico_addons}'><span class='plugin-count'>" . number_format_i18n($update_wpematico_addons) . "</span></span>";
+	}
+	
 	$page = add_submenu_page(
 		'plugins.php',
 		__( 'Add-ons', 'wpematico' ),
-		__( 'WPeMatico Add-ons', 'wpematico' ),
+		__( 'WPeMatico Add-ons', 'wpematico' ).' '.$count_menu,
 		'manage_options',
 		'wpemaddons',
 		'add_admin_plugins_page'
@@ -52,7 +80,7 @@ function wpe_addon_admin_menu() {
 	$page = add_submenu_page(
 		'edit.php?post_type=wpematico',
 		__( 'Add-ons', 'wpematico' ),
-		__( 'Extensions', 'wpematico' ),
+		__( 'Extensions', 'wpematico' ).' '.$count_menu,
 		'manage_options',
 		'plugins.php?page=wpemaddons'
 	);

@@ -266,6 +266,7 @@ or to e-mail etruel@gmail.com
 * Mejoras significativas en el rendimiento de la debug page.
 * Actualizado el SimplePie a 1.5.
 * Los mod de apache ahora aparecen en el debug page y file.
+* Se agrego la cantidad de addons por actualizar en el menu.
 
 * **Professional Add-on:**
 * **Enlarges the version required for the Professional addon to 1.8v** (https://etruel.com/downloads/wpematico-professional/)
