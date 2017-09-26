@@ -191,7 +191,7 @@ function wpematico_get_plugin_new_version( $plugin ) {
 	if (empty( $plugin_updates)) {
 		$plugin_updates = get_site_transient('update_plugins');
 		if ($plugin_updates === false) {
-			$plugin_updates = array();
+			$plugin_updates = new stdClass();
 		}
 	}
 	if (!isset($plugin_updates->response)) {

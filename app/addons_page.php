@@ -17,7 +17,7 @@ function wpematico_get_addons_update() {
 	if (empty($wpematico_updates)) {
 		$plugin_updates = get_site_transient('update_plugins');
 		if ($plugin_updates === false) {
-			$plugin_updates = array();
+			$plugin_updates = new stdClass();
 		}
 
 		if (!isset($plugin_updates->response)) {
