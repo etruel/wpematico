@@ -241,19 +241,18 @@ function wpematico_get_active_plugins() {
 		}
 		foreach ( $active_plugins as $plugin ) {
 			$wpematico_active_plugins[] = array(
-											'new_version' 	 => wpematico_get_plugin_new_version($plugin),
-											'plugin_data' 	 => @get_plugin_data( WP_PLUGIN_DIR . '/' . $plugin ),
-											'dirname' 	  	 => dirname( $plugin ),
-											'version_string' => 'Version',
-											'network_string' => '',
-										  );
+					'new_version' 	 => wpematico_get_plugin_new_version($plugin),
+					'plugin_data' 	 => @get_plugin_data( WP_PLUGIN_DIR . '/' . $plugin ),
+					'dirname' 	  	 => dirname( $plugin ),
+					'version_string' => 'Version',
+					'network_string' => '',
+				  );
 		}
 	}
 	return $wpematico_active_plugins;		
 }
 
 function wpematico_debug_data() {
-	
 	static $vars = array();
 	if (empty($vars)) {
 		global $wpdb;
@@ -268,6 +267,54 @@ function wpematico_debug_data() {
 			$vars['remote_post_work'] 	= true;
 		}
 	}
+	
+	$vars['professional_help'] 	= '<a href="https://etruel.com/downloads/wpematico-professional/" target="_blank">WPeMatico Professional</a>';
+	$vars['cache_help'] 		= '<a href="https://etruel.com/downloads/wpematico-cache/" target="_blank">WPeMatico Cache</a>';
+	$vars['mmf_help']			= '<a href="https://etruel.com/downloads/wpematico-make-feed-good/" target="_blank">Make Me Feed</a>';
+	$vars['polyglot_help']		= '<a href="https://etruel.com/downloads/wpematico-polyglot/" target="_blank">WPeMatico PolyGlot</a>';
+	$vars['full_help']			= '<a href="https://etruel.com/downloads/wpematico-full-content/" target="_blank">WPeMatico Full Content</a>';
+	$vars['better_help']		= '<a href="https://etruel.com/downloads/wpematico-better-excerpts/" target="_blank">WPeMatico Better Excerpts</a>';
+	$vars['chinese_help']		= '<a href="https://etruel.com/downloads/wpematico-chinese-tags/" target="_blank">WPeMatico Chinese Tags</a>';
+	$vars['facebook_help']		= '<a href="https://etruel.com/downloads/wpematico-facebook-fetcher/" target="_blank">WPeMatico Facebook Fetcher</a>';
+	$vars['thumbnail_help']		= '<a href="https://etruel.com/downloads/wpematico-thumbnail-scratcher/" target="_blank">WPeMatico Thumbnail Scratcher</a>';
+	$vars['smtp_help']			= '<a href="https://etruel.com/downloads/wpematico-smtp/" target="_blank">WPeMatico SMTP</a>';
+
+	$vars['pcre_ok'] 		= extension_loaded('pcre');
+	$vars['curl_ok'] 		= function_exists('curl_exec');
+	//$vars['curl_ok'] 		= extension_loaded('curl');
+	$vars['zlib_ok'] 		= extension_loaded('zlib');
+	$vars['mbstring_ok'] 	= extension_loaded('mbstring');
+	$vars['iconv_ok'] 		= extension_loaded('iconv');
+	$vars['ssl_ok'] 		= extension_loaded('openssl');
+	$vars['mcrypt_ok'] 		= extension_loaded('mcrypt');
+
+	if( function_exists('apache_get_modules')) {
+		$apache_modules = apache_get_modules();
+		$vars['m_rewrite_ok'] 	= in_array('mod_rewrite', $apache_modules);
+		$vars['m_mime_ok'] 		= in_array('mod_mime', $apache_modules);
+		$vars['m_deflate_ok']	= in_array('mod_deflate', $apache_modules);
+	}else{
+		$vars['m_rewrite_ok'] 	= (isset($_SERVER['HTTP_MOD_REWRITE']) && $_SERVER['HTTP_MOD_REWRITE'] == 'On' ) ? true : FALSE;
+
+	}
+	if (extension_loaded('xmlreader')) {
+		$vars['xml_ok'] = true;
+	}elseif (extension_loaded('xml')) {
+		$parser_check = xml_parser_create();
+		xml_parse_into_struct($parser_check, '<foo>&amp;</foo>', $values);
+		xml_parser_free($parser_check);
+		$vars['xml_ok'] = isset($values[0]['value']);
+	}else{
+		$vars['xml_ok'] = false;
+	}
+	
+	$vars['wp_memory'] = wpematico_let_to_num( WP_MEMORY_LIMIT );
+	$vars['memory'] = wpematico_let_to_num( ini_get( 'memory_limit' ) );
+	$vars['time_limit'] = ini_get('max_execution_time');
+
+	
+	
+	
 	return $vars;
 }
 /**
@@ -276,6 +323,7 @@ function wpematico_debug_data() {
 
 function wpematico_show_data_info() {
 	$debug_data = wpematico_debug_data();
+	extract($debug_data);
 	?>
 		<h3 class="screen-reader-text"><?php _e( 'WordPress Environment', 'wpematico' ); ?></h3>
 		<table class="widefat debug-section" cellspacing="0">
@@ -315,11 +363,10 @@ function wpematico_show_data_info() {
 					<td data-export-label="WP Memory Limit"><?php _e( 'WP Memory Limit:', 'wpematico' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The maximum amount of memory (RAM) that your site can use at one time.', 'wpematico'  ) . '">[?]</a>'; ?></td>
 					<td><?php
-						$memory = wpematico_let_to_num( WP_MEMORY_LIMIT );
-						if ( $memory < 128000000 ) {
-							echo '<mark class="no">' . sprintf( __( '%s - We recommend setting memory to at least <strong>128MB</strong>. <br /> Please define memory limit in <strong>wp-config.php</strong> file. To learn how, see: <a href="%s" target="_blank">Increasing memory allocated to PHP.</a>', 'wpematico' ), size_format( $memory ), 'http://codex.wordpress.org/Editing_wp-config.php#Increasing_memory_allocated_to_PHP' ) . '</mark>';
+						if ( $wp_memory < 128000000 ) {
+							echo '<mark class="no">' . sprintf( __( '%s - We recommend setting memory to at least <strong>128MB</strong>. <br /> Please define memory limit in <strong>wp-config.php</strong> file. To learn how, see: <a href="%s" target="_blank">Increasing memory allocated to PHP.</a>', 'wpematico' ), size_format( $wp_memory ), 'http://codex.wordpress.org/Editing_wp-config.php#Increasing_memory_allocated_to_PHP' ) . '</mark>';
 						} else {
-							echo '<mark class="yes">' . size_format( $memory ) . '</mark>';
+							echo '<mark class="yes">' . size_format( $wp_memory ) . '</mark>';
 						}
 					?></td>
 				</tr>
@@ -435,8 +482,6 @@ function wpematico_show_data_info() {
 						<td data-export-label="PHP Time Limit"><?php _e( 'PHP Time Limit:', 'wpematico' ); ?></td>
 						<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The amount of time (in seconds) that your site will spend on a single operation before timing out (to avoid server lockups)', 'wpematico'  ) . '">[?]</a>'; ?></td>
 						<td><?php
-							$time_limit = ini_get('max_execution_time');
-
 							if ( $time_limit < 180 && $time_limit != 0 ) {
 								echo '<mark class="error">' . sprintf( __( '%s - We recommend setting max execution time to at least 180. <br /> To give a campaign 5 minutes to run without timeouts, <strong>300</strong> seconds of max execution time is required.<br />See: <a href="%s" target="_blank">Increasing max execution to PHP</a>', 'wpematico' ), $time_limit, 'http://codex.wordpress.org/Common_WordPress_Errors#Maximum_execution_time_exceeded' ) . '</mark>';
 							} else {
@@ -451,7 +496,6 @@ function wpematico_show_data_info() {
 						<td data-export-label="PHP Memory Limit"><?php _e( 'PHP Memory Limit:', 'wpematico' ); ?></td>
 						<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The maximum amount of memory (RAM) that your PHP allows in this server.', 'wpematico'  ) . '">[?]</a>'; ?></td>
 						<td><?php
-							$memory = wpematico_let_to_num( ini_get( 'memory_limit' ) );
 							if ( $memory < 128000000 ) {
 								echo '<mark class="error">' . sprintf( __( '%s - We recommend setting memory to at least <strong>128MB</strong>. <br /> Please define memory limit in <strong>php.ini</strong> file.', 'wpematico' ), size_format( $memory ), 'http://codex.wordpress.org/Editing_wp-config.php#Increasing_memory_allocated_to_PHP' ) . '</mark>';
 							} else {
@@ -532,43 +576,12 @@ function wpematico_show_data_info() {
 					?></td>
 				</tr>
 				<?php
-					$professional_help 	= '<a href="https://etruel.com/downloads/wpematico-professional/" target="_blank">WPeMatico Professional</a>';
-					$cache_help 		= '<a href="https://etruel.com/downloads/wpematico-cache/" target="_blank">WPeMatico Cache</a>';
-					$mmf_help			= '<a href="https://etruel.com/downloads/wpematico-make-feed-good/" target="_blank">Make Me Feed</a>';
-					$polyglot_help		= '<a href="https://etruel.com/downloads/wpematico-polyglot/" target="_blank">WPeMatico PolyGlot</a>';
-					$full_help			= '<a href="https://etruel.com/downloads/wpematico-full-content/" target="_blank">WPeMatico Full Content</a>';
-					$better_help		= '<a href="https://etruel.com/downloads/wpematico-better-excerpts/" target="_blank">WPeMatico Better Excerpts</a>';
-					$chinese_help		= '<a href="https://etruel.com/downloads/wpematico-chinese-tags/" target="_blank">WPeMatico Chinese Tags</a>';
-					$facebook_help		= '<a href="https://etruel.com/downloads/wpematico-facebook-fetcher/" target="_blank">WPeMatico Facebook Fetcher</a>';
-					$thumbnail_help		= '<a href="https://etruel.com/downloads/wpematico-thumbnail-scratcher/" target="_blank">WPeMatico Thumbnail Scratcher</a>';
-					$smtp_help			= '<a href="https://etruel.com/downloads/wpematico-smtp/" target="_blank">WPeMatico SMTP</a>';
-					
-					
-					$pcre_ok 		= extension_loaded('pcre');
-					$curl_ok 		= function_exists('curl_exec');
-					$zlib_ok 		= extension_loaded('zlib');
-					$mbstring_ok 	= extension_loaded('mbstring');
-					$iconv_ok 		= extension_loaded('iconv');
-					$ssl_ok 		= extension_loaded('openssl');
-					$mcrypt_ok 		= extension_loaded('mcrypt');
-					$m_rewrite_ok 	= in_array('mod_rewrite', apache_get_modules());
-					$m_mime_ok 		= in_array('mod_mime', apache_get_modules());
-					$m_deflate_ok	= in_array('mod_deflate', apache_get_modules());
-					if (extension_loaded('xmlreader')) {
-						$xml_ok = true;
-					}elseif (extension_loaded('xml')) {
-						$parser_check = xml_parser_create();
-						xml_parse_into_struct($parser_check, '<foo>&amp;</foo>', $values);
-						xml_parser_free($parser_check);
-						$xml_ok = isset($values[0]['value']);
-					}else{
-						$xml_ok = false;
-					}
+
 				?>
 				<tr>
 					<td data-export-label="cURL (php.net/curl)"><?php _e( 'cURL (php.net/curl):', 'wpematico' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__( '%s is required by %s.', 'wpematico'  ), 'cURL (php.net/curl)', 'WPeMatico Core, '.$professional_help.', '.$cache_help.', '.$mmf_help.', '.$polyglot_help)) . '">[?]</a>'; ?></td>
-					<td><?php echo (extension_loaded('curl')) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'cURL (php.net/curl)', 'some addons and Simplepie').'</mark>'; ?></td>
+					<td><?php echo ($curl_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'cURL (php.net/curl)', 'some addons and Simplepie').'</mark>'; ?></td>
 				</tr>
 				<tr>
 					<td data-export-label="ZipArchive"><?php _e( 'ZipArchive:', 'wpematico' ); ?></td>
@@ -716,6 +729,7 @@ function wpematico_debug_info_get() {
 	$cfg = get_option(WPeMatico :: OPTION_KEY);
 	$cfg = apply_filters('wpematico_check_options', $cfg); 
 	$debug_data = wpematico_debug_data(); 
+	extract($debug_data);
 
 	if( !class_exists( 'Browser' ) )
 		require_once dirname( __FILE__) . '/lib/browser.php';  //https://github.com/cbschuld/Browser.php
@@ -788,7 +802,7 @@ function wpematico_debug_info_get() {
 	$return .= 'Table Prefix:             ' . 'Length: ' . strlen( $wpdb->prefix ) . '   Status: ' . ( strlen( $wpdb->prefix ) > 16 ? 'ERROR: Too long' : 'Acceptable' ) . "\n";
 
 	$return .= 'WP_DEBUG:                 ' . ( defined( 'WP_DEBUG' ) ? WP_DEBUG ? 'Enabled' : 'Disabled' : 'Not set' ) . "\n";
-	$return .= 'Memory Limit:             ' . WP_MEMORY_LIMIT . "\n";
+	$return .= 'Memory Limit:             ' . $wp_memory . "\n";
 	$return .= 'Registered Post Stati:    ' . implode( ', ', get_post_stati() ) . "\n";
 
 	$return  = apply_filters( 'wpematico_sysinfo_after_wordpress_config', $return );
@@ -832,40 +846,25 @@ function wpematico_debug_info_get() {
 	// SimplePie required extensions and such
 	$return .= "\n" . '-- SimplePie required Extensions' . "\n\n";
 	
-	$pcre_ok 		= extension_loaded('pcre');
-	$curl_ok		= function_exists('curl_exec');
-	$zlib_ok 		= extension_loaded('zlib');
-	$mbstring_ok 	= extension_loaded('mbstring');
-	$iconv_ok 		= extension_loaded('iconv');
-	$ssl_ok 		= extension_loaded('openssl');
-	$mcrypt_ok 		= extension_loaded('mcrypt');
-	$m_rewrite_ok 	= in_array('mod_rewrite', apache_get_modules());
-	$m_mime_ok 		= in_array('mod_mime', apache_get_modules());
-	$m_deflate_ok	= in_array('mod_deflate', apache_get_modules());
-	if (extension_loaded('xmlreader')) {
-		$xml_ok = true;
-	}elseif (extension_loaded('xml')) {
-		$parser_check = xml_parser_create();
-		xml_parse_into_struct($parser_check, '<foo>&amp;</foo>', $values);
-		xml_parser_free($parser_check);
-		$xml_ok = isset($values[0]['value']);
-	}else{
-		$xml_ok = false;
-	}
 	$return .= 'PHP 5.3.0 or higher:     ' . ( ($debug_data['php_ok']) ? 'Supported' : 'Not Supported') . "\n";
 	$return .= 'XML (php.net/xml):       ' . ( ($xml_ok) ? 'Enabled, and sane' : 'Disabled, or broken' ) . "\n";
 	$return .= 'PCRE (php.net/pcre):     ' . ( ($pcre_ok) ? 'Enabled' : 'Disabled' ) . "\n";
-	$return .= 'cURL (php.net/curl):     ' . ( (extension_loaded('curl')) ? 'Enabled' : 'Disabled' ) . "\n";
+	$return .= 'cURL (php.net/curl):     ' . ( ($curl_ok) ? 'Enabled' : 'Disabled' ) . "\n";
 	$return .= 'Zlib (php.net/zlib):     ' . ( ($zlib_ok) ? 'Enabled' : 'Disabled' ) . "\n";
 	$return .= 'php.net/mbstring:        ' . ( ($mbstring_ok) ? 'Enabled' : 'Disabled' ) . "\n";
 	$return .= 'iconv (php.net/iconv):   ' . ( ($iconv_ok) ? 'Enabled' : 'Disabled' ) . "\n";
 	$return .= 'php.net/openssl:   		 ' . ( ($ssl_ok) ? 'Enabled' : 'Disabled' ) . "\n";
 	$return .= 'php.net/mcrypt:   		 ' . ( ($mcrypt_ok) ? 'Enabled' : 'Disabled' ) . "\n";
+
+	$return  = apply_filters( 'wpematico_sysinfo_after_simplepie_ext', $return );
+
+	$return .= "\n" . '-- Required Apache Mods' . "\n\n";
+	
 	$return .= 'Mod Rewrite:	   		 ' . ( ($m_rewrite_ok) ? 'Enabled' : 'Disabled' ) . "\n";
 	$return .= 'Mod Mime:	   			 ' . ( ($m_mime_ok) ? 'Enabled' : 'Disabled' ) . "\n";
 	$return .= 'Mod Deflate:	   		 ' . ( ($m_deflate_ok) ? 'Enabled' : 'Disabled' ) . "\n";
 					 
-	$return  = apply_filters( 'wpematico_sysinfo_after_simplepie_ext', $return );
+	$return  = apply_filters( 'wpematico_sysinfo_after_apache_mods', $return );
 
 	// Session stuff
 	$return .= "\n" . '-- Session Configuration' . "\n\n";

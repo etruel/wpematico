@@ -257,17 +257,16 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
-= 1.8 Sep 25, 2017 =
+= 1.8 Oct 2, 2017 =
 * Added wpe hooks (for developers) to use filters and actions from JavaScript.
 * Fixes the blank messages on errors when the feeds are tested.
 * Fixes few javascript issues on campaigns editing.
-* Se agrego al debug file y debug page si los plugins tienen actualizaciones.
-* Se agrego al debug file el espacio disponible y el espacio total en el disco.
-* Mejoras significativas en el rendimiento de la debug page.
-* Actualizado el SimplePie a 1.5.
-* Los mod de apache ahora aparecen en el debug page y file.
-* Se agrego la cantidad de addons por actualizar en el menu.
-
+* Adds nahs updates individually for extensions.
+* Many tweaks to the debug page:
+* - Adds notice to updatable plugins.
+* - Adds Hard disk total and free space.
+* - Adds required PHP extensions and Apache Mods.
+* Updated included external SimplePie library to 1.5 version.
 * **Professional Add-on:**
 * **Enlarges the version required for the Professional addon to 1.8v** (https://etruel.com/downloads/wpematico-professional/)
 * Added a fixed icon for Feed Advanced Options in the feed row.
