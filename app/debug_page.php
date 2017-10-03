@@ -261,57 +261,69 @@ function wpematico_debug_data() {
 		$vars['is_multisite'] 		= is_multisite();
 		$vars['db_version'] 		= $wpdb->db_version();
 		$vars['php_ok'] 			= (function_exists('version_compare') && version_compare(phpversion(), '5.3.0', '>='));
+		$vars['remote_get_work'] 	= false;
 		$vars['remote_post_work'] 	= false;
 		$response 					= wp_remote_post( 'https://etruel.com/downloads/feed/', array( 'decompress' => false, 'user-agent' => 'wpematico-debug' ) );
 		if ( ! is_wp_error( $response ) && $response['response']['code'] >= 200 && $response['response']['code'] < 300 ) {
 			$vars['remote_post_work'] 	= true;
 		}
-	}
+		$response					=	wp_remote_get( 'https://etruel.com/downloads/feed/', array( 'decompress' => false, 'user-agent' => 'wpematico-debug' ) );
+		if ( ! is_wp_error( $response ) && $response['response']['code'] >= 200 && $response['response']['code'] < 300 ) {
+			$vars['remote_get_work'] 	= true;			
+		}
 	
-	$vars['professional_help'] 	= '<a href="https://etruel.com/downloads/wpematico-professional/" target="_blank">WPeMatico Professional</a>';
-	$vars['cache_help'] 		= '<a href="https://etruel.com/downloads/wpematico-cache/" target="_blank">WPeMatico Cache</a>';
-	$vars['mmf_help']			= '<a href="https://etruel.com/downloads/wpematico-make-feed-good/" target="_blank">Make Me Feed</a>';
-	$vars['polyglot_help']		= '<a href="https://etruel.com/downloads/wpematico-polyglot/" target="_blank">WPeMatico PolyGlot</a>';
-	$vars['full_help']			= '<a href="https://etruel.com/downloads/wpematico-full-content/" target="_blank">WPeMatico Full Content</a>';
-	$vars['better_help']		= '<a href="https://etruel.com/downloads/wpematico-better-excerpts/" target="_blank">WPeMatico Better Excerpts</a>';
-	$vars['chinese_help']		= '<a href="https://etruel.com/downloads/wpematico-chinese-tags/" target="_blank">WPeMatico Chinese Tags</a>';
-	$vars['facebook_help']		= '<a href="https://etruel.com/downloads/wpematico-facebook-fetcher/" target="_blank">WPeMatico Facebook Fetcher</a>';
-	$vars['thumbnail_help']		= '<a href="https://etruel.com/downloads/wpematico-thumbnail-scratcher/" target="_blank">WPeMatico Thumbnail Scratcher</a>';
-	$vars['smtp_help']			= '<a href="https://etruel.com/downloads/wpematico-smtp/" target="_blank">WPeMatico SMTP</a>';
+		$vars['professional_help'] 	= '<a href="https://etruel.com/downloads/wpematico-professional/" target="_blank">WPeMatico Professional</a>';
+		$vars['cache_help'] 		= '<a href="https://etruel.com/downloads/wpematico-cache/" target="_blank">WPeMatico Cache</a>';
+		$vars['mmf_help']			= '<a href="https://etruel.com/downloads/wpematico-make-feed-good/" target="_blank">Make Me Feed</a>';
+		$vars['polyglot_help']		= '<a href="https://etruel.com/downloads/wpematico-polyglot/" target="_blank">WPeMatico PolyGlot</a>';
+		$vars['full_help']			= '<a href="https://etruel.com/downloads/wpematico-full-content/" target="_blank">WPeMatico Full Content</a>';
+		$vars['better_help']		= '<a href="https://etruel.com/downloads/wpematico-better-excerpts/" target="_blank">WPeMatico Better Excerpts</a>';
+		$vars['chinese_help']		= '<a href="https://etruel.com/downloads/wpematico-chinese-tags/" target="_blank">WPeMatico Chinese Tags</a>';
+		$vars['facebook_help']		= '<a href="https://etruel.com/downloads/wpematico-facebook-fetcher/" target="_blank">WPeMatico Facebook Fetcher</a>';
+		$vars['thumbnail_help']		= '<a href="https://etruel.com/downloads/wpematico-thumbnail-scratcher/" target="_blank">WPeMatico Thumbnail Scratcher</a>';
+		$vars['smtp_help']			= '<a href="https://etruel.com/downloads/wpematico-smtp/" target="_blank">WPeMatico SMTP</a>';
 
-	$vars['pcre_ok'] 		= extension_loaded('pcre');
-	$vars['curl_ok'] 		= function_exists('curl_exec');
-	//$vars['curl_ok'] 		= extension_loaded('curl');
-	$vars['zlib_ok'] 		= extension_loaded('zlib');
-	$vars['mbstring_ok'] 	= extension_loaded('mbstring');
-	$vars['iconv_ok'] 		= extension_loaded('iconv');
-	$vars['ssl_ok'] 		= extension_loaded('openssl');
-	$vars['mcrypt_ok'] 		= extension_loaded('mcrypt');
+		$vars['pcre_ok'] 		= extension_loaded('pcre');
+		$vars['curl_ok'] 		= function_exists('curl_exec');
+		//$vars['curl_ok'] 		= extension_loaded('curl');
+		$vars['zlib_ok'] 		= extension_loaded('zlib');
+		$vars['mbstring_ok'] 	= extension_loaded('mbstring');
+		$vars['iconv_ok'] 		= extension_loaded('iconv');
+		$vars['ssl_ok'] 		= extension_loaded('openssl');
+		$vars['mcrypt_ok'] 		= extension_loaded('mcrypt');
 
-	if( function_exists('apache_get_modules')) {
-		$apache_modules = apache_get_modules();
-		$vars['m_rewrite_ok'] 	= in_array('mod_rewrite', $apache_modules);
-		$vars['m_mime_ok'] 		= in_array('mod_mime', $apache_modules);
-		$vars['m_deflate_ok']	= in_array('mod_deflate', $apache_modules);
-	}else{
-		$vars['m_rewrite_ok'] 	= (isset($_SERVER['HTTP_MOD_REWRITE']) && $_SERVER['HTTP_MOD_REWRITE'] == 'On' ) ? true : FALSE;
+		if( function_exists('apache_get_modules')) {
+			$apache_modules = apache_get_modules();
+			$vars['m_rewrite_ok'] 	= in_array('mod_rewrite', $apache_modules);
+			$vars['m_mime_ok'] 		= in_array('mod_mime', $apache_modules);
+			$vars['m_deflate_ok']	= in_array('mod_deflate', $apache_modules);
+		}else{
+			$vars['m_rewrite_ok'] 	= (isset($_SERVER['HTTP_MOD_REWRITE']) && $_SERVER['HTTP_MOD_REWRITE'] == 'On' ) ? true : FALSE;
+
+		}
+		if (extension_loaded('xmlreader')) {
+			$vars['xml_ok'] = true;
+		}elseif (extension_loaded('xml')) {
+			$parser_check = xml_parser_create();
+			xml_parse_into_struct($parser_check, '<foo>&amp;</foo>', $values);
+			xml_parser_free($parser_check);
+			$vars['xml_ok'] = isset($values[0]['value']);
+		}else{
+			$vars['xml_ok'] = false;
+		}
+
+		$vars['wp_memory'] = wpematico_let_to_num( WP_MEMORY_LIMIT );
+
+		$vars['safe_mode'] = ini_get('safe_mode');
+		$vars['memory'] = wpematico_let_to_num( ini_get( 'memory_limit' ) );
+		$vars['time_limit'] = ini_get('max_execution_time');
+		$vars['disable_functions'] = ini_get('disable_functions');
+		$vars['upload_max_filesize'] = ini_get('upload_max_filesize');
+		$vars['post_max_size'] = ini_get('post_max_size');
+		$vars['max_input_vars'] = ini_get('max_input_vars');
+		$vars['display_errors'] = ini_get('display_errors');
 
 	}
-	if (extension_loaded('xmlreader')) {
-		$vars['xml_ok'] = true;
-	}elseif (extension_loaded('xml')) {
-		$parser_check = xml_parser_create();
-		xml_parse_into_struct($parser_check, '<foo>&amp;</foo>', $values);
-		xml_parser_free($parser_check);
-		$vars['xml_ok'] = isset($values[0]['value']);
-	}else{
-		$vars['xml_ok'] = false;
-	}
-	
-	$vars['wp_memory'] = wpematico_let_to_num( WP_MEMORY_LIMIT );
-	$vars['memory'] = wpematico_let_to_num( ini_get( 'memory_limit' ) );
-	$vars['time_limit'] = ini_get('max_execution_time');
-
 	
 	
 	
@@ -336,12 +348,12 @@ function wpematico_show_data_info() {
 				<tr>
 					<td data-export-label="Home URL"><?php _e( 'Home URL:', 'wpematico' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The URL of your site\'s homepage.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php echo $debug_data['home_url']; ?></td>
+					<td><?php echo $home_url; ?></td>
 				</tr>
 				<tr>
 					<td data-export-label="Site URL"><?php _e( 'Site URL:', 'wpematico' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The root URL of your site.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php echo $debug_data['site_url']; ?></td>
+					<td><?php echo $site_url; ?></td>
 				</tr>
 				<tr>
 					<td data-export-label="WP Version"><?php _e( 'WP Version:', 'wpematico' ); ?></td>
@@ -351,7 +363,7 @@ function wpematico_show_data_info() {
 				<tr>
 					<td data-export-label="WP Multisite"><?php _e( 'WP Multisite:', 'wpematico' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Whether or not you have WordPress Multisite enabled.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php if ($debug_data['is_multisite']) {
+					<td><?php if ($is_multisite) {
 							echo '<mark class="no">' . '&#10004;' . __( 'WPeMatico was not fully tested in Multisite. Test it and give us your comments on the <a href="https://wordpress.org/support/plugin/wpematico/" target="_blank">forums</a>', 'wpematico' ) . '</mark>';
 						} else {
 							echo '<mark class="yes">' . __( 'No','wpematico') . '</mark>';
@@ -383,13 +395,12 @@ function wpematico_show_data_info() {
 				<tr>
 					<td data-export-label="WP Remote Get"><?php _e( 'WP Remote Get:', 'wpematico' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'WPeMatico uses this method to communicate with the different RSS feeds and remote websites.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<?php $response = wp_remote_get( 'https://etruel.com/downloads/feed/', array( 'decompress' => false, 'user-agent' => 'wpematico-debug' ) ); ?>
-					<td><?php echo ( ! is_wp_error( $response ) && $response['response']['code'] >= 200 && $response['response']['code'] < 300 ) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">wp_remote_get() failed. Some theme features may not work. Please contact your hosting provider and make sure that https://etruel.com/downloads/feed/ is not blocked.</mark>'; ?></td>
+					<td><?php echo ( $remote_get_work ) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">wp_remote_get() failed. Some theme features may not work. Please contact your hosting provider and make sure that https://etruel.com/downloads/feed/ is not blocked.</mark>'; ?></td>
 				</tr>
 				<tr>
 					<td data-export-label="WP Remote Post"><?php _e( 'WP Remote Post:', 'wpematico' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'WPeMatico uses this method to communicate with the different RSS feeds and remote websites', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php echo ($debug_data['remote_post_work']) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">wp_remote_post() failed. Some theme features may not work. Please contact your hosting provider and make sure that https://etruel.com/downloads/feed/ is not blocked.</mark>'; ?></td>
+					<td><?php echo ($remote_post_work) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">wp_remote_post() failed. Some theme features may not work. Please contact your hosting provider and make sure that https://etruel.com/downloads/feed/ is not blocked.</mark>'; ?></td>
 				</tr>
 			</tbody>
 		</table>
@@ -424,14 +435,14 @@ function wpematico_show_data_info() {
 					<td data-export-label="MySQL Version"><?php _e( 'MySQL Version:', 'wpematico' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The version of MySQL installed on your hosting server.', 'wpematico'  ) . '">[?]</a>'; ?></td>
 					<td>
-						<?php echo $debug_data['db_version']; ?>
+						<?php echo $db_version; ?>
 					</td>
 				</tr>
 				<tr>
 					<td data-export-label="PHP Version"><?php _e( 'PHP Version:', 'wpematico' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The version of PHP installed on your hosting server.', 'wpematico'  ) . '">[?]</a>'; ?></td>
 					<td><?php 
-							if (!$debug_data['php_ok']) {
+							if (!$php_ok) {
 								echo '<mark class="error">' . esc_html( phpversion() ) . __( 'WPeMatico requires PHP >= 5.3.', 'wpematico' ) . '</mark>';
 							} else {
 								echo '<mark class="yes">' . esc_html( phpversion() ) . '</mark>';
@@ -506,7 +517,7 @@ function wpematico_show_data_info() {
 					<tr>
 						<td data-export-label="PHP Disabled Functions"><?php _e( 'PHP Disabled Functions:', 'wpematico' ); ?></td>
 						<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'PHP disabled functions to avoid potential unknown vulnerabilities.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-						<td><?php echo str_replace(',', ',<br/>', ini_get( 'disable_functions') ); ?></td>
+						<td><?php echo str_replace(',', ',<br/>', $disable_functions ); ?></td>
 					</tr>
 					<tr>
 						<td data-export-label="SUHOSIN Installed"><?php _e( 'SUHOSIN Installed:', 'wpematico' ); ?></td>
@@ -561,7 +572,7 @@ function wpematico_show_data_info() {
 					<tr>
 						<td data-export-label="PHP Display Errors"><?php _e( 'PHP Display Errors:', 'wpematico' ); ?></td>
 						<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Shows or hide all the PHP errors and warnings in your script.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-						<td><?php echo ( ini_get( 'display_errors' ) ? __('On','wpematico').' (' . ini_get( 'display_errors' ) . ')' : 'N/A' ); ?></td>
+						<td><?php echo ( $display_errors ? __('On','wpematico').' (' . $display_errors . ')' : 'N/A' ); ?></td>
 					</tr>
 
 				<?php endif; ?>
@@ -752,9 +763,9 @@ function wpematico_debug_info_get() {
 
 	// Start with the basics...
 	$return .= '-- Site Info' . "\n\n";
-	$return .= 'Site URL:                 ' . $debug_data['site_url'] . "\n";
-	$return .= 'Home URL:                 ' . $debug_data['home_url'] . "\n";
-	$return .= 'Multisite:                ' . ($debug_data['is_multisite'] ? 'Yes' : 'No' ) . "\n";
+	$return .= 'Site URL:                 ' . $site_url . "\n";
+	$return .= 'Home URL:                 ' . $home_url . "\n";
+	$return .= 'Multisite:                ' . ($is_multisite ? 'Yes' : 'No' ) . "\n";
 
 	$return  = apply_filters( 'wpematico_sysinfo_after_site_info', $return );
 
@@ -790,19 +801,12 @@ function wpematico_debug_info_get() {
 		$return .= 'Page For Posts:           ' . ( $blog_page_id != 0 ? get_the_title( $blog_page_id ) . ' (#' . $blog_page_id . ')' : 'Unset' ) . "\n";
 	}
 
-	
-
-	if($debug_data['remote_post_work']) {
-		$WP_REMOTE_POST = 'wp_remote_post() works';
-	} else {
-		$WP_REMOTE_POST = 'wp_remote_post() does not work';
-	}
-
-	$return .= 'Remote Post:              ' . $WP_REMOTE_POST . "\n";
+	$return .= 'Remote Get:               ' . ($remote_get_work ? 'wp_remote_get() works' : 'wp_remote_get() does not work' ) . "\n";
+	$return .= 'Remote Post:              ' . ($remote_post_work ? 'wp_remote_post() works' : 'wp_remote_post() does not work' ) . "\n";
 	$return .= 'Table Prefix:             ' . 'Length: ' . strlen( $wpdb->prefix ) . '   Status: ' . ( strlen( $wpdb->prefix ) > 16 ? 'ERROR: Too long' : 'Acceptable' ) . "\n";
 
 	$return .= 'WP_DEBUG:                 ' . ( defined( 'WP_DEBUG' ) ? WP_DEBUG ? 'Enabled' : 'Disabled' : 'Not set' ) . "\n";
-	$return .= 'Memory Limit:             ' . $wp_memory . "\n";
+	$return .= 'Memory Limit:             ' . size_format( $wp_memory ) . "\n";
 	$return .= 'Registered Post Stati:    ' . implode( ', ', get_post_stati() ) . "\n";
 
 	$return  = apply_filters( 'wpematico_sysinfo_after_wordpress_config', $return );
@@ -811,7 +815,7 @@ function wpematico_debug_info_get() {
 	$return .= "\n" . '-- Webserver Configuration' . "\n\n";
 	
 	$return .= 'PHP Version:              ' . PHP_VERSION . "\n";
-	$return .= 'MySQL Version:            ' . $debug_data['db_version'] . "\n";
+	$return .= 'MySQL Version:            ' . $db_version . "\n";
 	$return .= 'Webserver Info:           ' . $_SERVER['SERVER_SOFTWARE'] . "\n";
 	$return .= 'Disk Total Space:         ' . wpematico_disk_total_space(false) . "\n";
 	$return .= 'Disk Free Space:          ' . wpematico_disk_free_space(false) . "\n";
@@ -821,15 +825,14 @@ function wpematico_debug_info_get() {
 	// PHP configs... now we're getting to the important stuff
 	$return .= "\n" . '-- PHP Configuration' . "\n\n";
 	
-	$return .= 'Safe Mode:                ' . ( ini_get( 'safe_mode' ) ? 'Enabled' : 'Disabled' . "\n" );
-	$return .= 'Memory Limit:             ' . ini_get( 'memory_limit' ) . "\n";
-	$return .= 'Upload Max Size:          ' . ini_get( 'upload_max_filesize' ) . "\n";
-	$return .= 'Post Max Size:            ' . ini_get( 'post_max_size' ) . "\n";
-	$return .= 'Upload Max Filesize:      ' . ini_get( 'upload_max_filesize' ) . "\n";
-	$return .= 'Time Limit:               ' . ini_get( 'max_execution_time' ) . "\n";
-	$return .= 'Max Input Vars:           ' . ini_get( 'max_input_vars' ) . "\n";
-	$return .= 'Disabled Functions:       ' . ini_get( 'disable_functions' ) . "\n";
-	$return .= 'Display Errors:           ' . ( ini_get( 'display_errors' ) ? 'On (' . ini_get( 'display_errors' ) . ')' : 'N/A' ) . "\n";
+	$return .= 'Safe Mode:                ' . ( $safe_mode ) ? 'Enabled' : 'Disabled' . "\n";
+	$return .= 'PHP Memory Limit:         ' . size_format( $memory ) . "\n";
+	$return .= 'Upload Max Filesize:      ' . $upload_max_filesize . "\n";
+	$return .= 'Post Max Size:            ' . $post_max_size . "\n";
+	$return .= 'Max Input Vars:           ' . $max_input_vars . "\n";
+	$return .= 'PHP Time Limit:           ' . $time_limit . "\n";
+	$return .= 'Disabled Functions:       ' . $disable_functions . "\n";
+	$return .= 'Display Errors:           ' . ( $display_errors ? 'On (' . $display_errors . ')' : 'N/A' ) . "\n";
 
 	$return  = apply_filters( 'wpematico_sysinfo_after_php_config', $return );
 
@@ -846,7 +849,7 @@ function wpematico_debug_info_get() {
 	// SimplePie required extensions and such
 	$return .= "\n" . '-- SimplePie required Extensions' . "\n\n";
 	
-	$return .= 'PHP 5.3.0 or higher:     ' . ( ($debug_data['php_ok']) ? 'Supported' : 'Not Supported') . "\n";
+	$return .= 'PHP 5.3.0 or higher:     ' . ( ($php_ok) ? 'Supported' : 'Not Supported') . "\n";
 	$return .= 'XML (php.net/xml):       ' . ( ($xml_ok) ? 'Enabled, and sane' : 'Disabled, or broken' ) . "\n";
 	$return .= 'PCRE (php.net/pcre):     ' . ( ($pcre_ok) ? 'Enabled' : 'Disabled' ) . "\n";
 	$return .= 'cURL (php.net/curl):     ' . ( ($curl_ok) ? 'Enabled' : 'Disabled' ) . "\n";
