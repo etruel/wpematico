@@ -217,6 +217,9 @@ function wpematico_addons_custom_columns($column_name, $plugin_file, $plugin_dat
 add_filter( 'all_plugins', 'wpematico_showhide_addons');
 function wpematico_showhide_addons($plugins) {
 	global $current_screen;
+	if (function_exists('wp_plugin_update_rows')) {
+		wp_plugin_update_rows();
+	}
 	$show_on_plugin_page = get_option('wpem_show_locally_addons', false); 
 	if ($current_screen->id == 'plugins_page_wpemaddons'){
 		$plugins = apply_filters( 'etruel_wpematico_addons_array', read_wpem_addons($plugins), 10, 1 );
