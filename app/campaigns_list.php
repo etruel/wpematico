@@ -649,9 +649,9 @@ class WPeMatico_Campaigns {
 						$actions['delhash'] = '<a href="'.self :: wpematico_action_link( $post->ID , 'display','delhash').'" title="' . esc_attr(__("Delete hash code for duplicates", 'wpematico')) . '">' .  __('Del Hash', 'wpematico') . '</a>';
 					//++++++seelog
 					if ( @$cfg['enableseelog']) {   // Si está habilitado en settings, lo muestra 
-						$nonce= wp_create_nonce  ('clog-nonce');
+						$nonce = wp_create_nonce  ('clog-nonce');
 						$nombre = get_the_title($post->ID);
-						$actionurl = WPeMatico :: $uri . 'app/campaign_log.php?p='.$post->ID.'&_wpnonce=' . $nonce;
+						$actionurl = admin_url('admin-post.php?action=wpematico_campaign_log&p='.$post->ID.'&_wpnonce=' . $nonce);
 						$actionjs = "javascript:window.open('$actionurl','$nombre','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=700, height=600');";
 
 						$actions['seelog'] = '<a href="#" onclick="'.$actionjs.' return false;" title="' . esc_attr(__("See last log of campaign. (Open a PopUp window)", 'wpematico')) . '">' . __('See Log', 'wpematico') . '</a>';

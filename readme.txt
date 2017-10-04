@@ -264,6 +264,7 @@ or to e-mail etruel@gmail.com
 * Adds nahs updates individually for extensions.
 * Many tweaks to the debug page:
 * Many tweaks and fixes in the Campaign Wizard.
+* Many tweaks and fixes in the Campaign Logs.
 * - Adds notice to updatable plugins.
 * - Adds Hard disk total and free space.
 * - Adds required PHP extensions and Apache Mods.
