@@ -252,10 +252,33 @@ function wpematico_get_active_plugins() {
 	return $wpematico_active_plugins;		
 }
 
+/**
+ * 
+ * @global object $wpdb
+ * @staticvar array $vars
+ * @return type array $vars to extract 
+ */
 function wpematico_debug_data() {
 	static $vars = array();
 	if (empty($vars)) {
 		global $wpdb;
+		if( !class_exists( 'Browser' ) )
+			require_once dirname( __FILE__) . '/lib/browser.php';  //https://github.com/cbschuld/Browser.php
+
+		$vars['browser']			= new Browser();
+
+		// Get theme info
+		if( get_bloginfo( 'version' ) < '3.4' ) {
+			$theme_data = get_theme_data( get_stylesheet_directory() . '/style.css' );
+			$vars['theme']			= $theme_data['Name'] . ' ' . $theme_data['Version'];
+		} else {
+			$theme_data = wp_get_theme();
+			$vars['theme']			= $theme_data->Name . ' ' . $theme_data->Version;
+		}
+
+		// Try to identify the hosting provider
+		$vars['host']				= wpematico_get_host();
+
 		$vars['home_url'] 			= home_url();
 		$vars['site_url'] 		  	= site_url();
 		$vars['is_multisite'] 		= is_multisite();
@@ -265,13 +288,17 @@ function wpematico_debug_data() {
 		$vars['remote_post_work'] 	= false;
 		$response 					= wp_remote_post( 'https://etruel.com/downloads/feed/', array( 'decompress' => false, 'user-agent' => 'wpematico-debug' ) );
 		if ( ! is_wp_error( $response ) && $response['response']['code'] >= 200 && $response['response']['code'] < 300 ) {
-			$vars['remote_post_work'] 	= true;
+			$vars['remote_post_work']= true;
 		}
 		$response					=	wp_remote_get( 'https://etruel.com/downloads/feed/', array( 'decompress' => false, 'user-agent' => 'wpematico-debug' ) );
 		if ( ! is_wp_error( $response ) && $response['response']['code'] >= 200 && $response['response']['code'] < 300 ) {
-			$vars['remote_get_work'] 	= true;			
+			$vars['remote_get_work']= true;			
 		}
-	
+		$vars['front_page_id']		= get_option( 'page_on_front' );
+		$vars['blog_page_id']		= get_option( 'page_for_posts' );
+		$vars['disk_total_space']	= wpematico_disk_total_space(false);
+		$vars['disk_free_space']	= wpematico_disk_free_space(false);
+		
 		$vars['professional_help'] 	= '<a href="https://etruel.com/downloads/wpematico-professional/" target="_blank">WPeMatico Professional</a>';
 		$vars['cache_help'] 		= '<a href="https://etruel.com/downloads/wpematico-cache/" target="_blank">WPeMatico Cache</a>';
 		$vars['mmf_help']			= '<a href="https://etruel.com/downloads/wpematico-make-feed-good/" target="_blank">Make Me Feed</a>';
@@ -313,15 +340,34 @@ function wpematico_debug_data() {
 		}
 
 		$vars['wp_memory'] = wpematico_let_to_num( WP_MEMORY_LIMIT );
+		$vars['wp_max_upload_size'] = wp_max_upload_size() ;
 
-		$vars['safe_mode'] = ini_get('safe_mode');
-		$vars['memory'] = wpematico_let_to_num( ini_get( 'memory_limit' ) );
-		$vars['time_limit'] = ini_get('max_execution_time');
-		$vars['disable_functions'] = ini_get('disable_functions');
-		$vars['upload_max_filesize'] = ini_get('upload_max_filesize');
-		$vars['post_max_size'] = ini_get('post_max_size');
-		$vars['max_input_vars'] = ini_get('max_input_vars');
-		$vars['display_errors'] = ini_get('display_errors');
+		if ( function_exists( 'ini_get' ) ) {
+			$vars['safe_mode'] = ini_get('safe_mode');
+			$vars['memory'] = wpematico_let_to_num( ini_get( 'memory_limit' ) );
+			$vars['time_limit'] = ini_get('max_execution_time');
+			$vars['disable_functions'] = ini_get('disable_functions');
+			$vars['upload_max_filesize'] = ini_get('upload_max_filesize');
+			$vars['post_max_size'] = ini_get('post_max_size');
+			$vars['max_input_vars'] = ini_get('max_input_vars');
+			$vars['required_input_vars'] = 0; // 12000 + ( 500 + 1000 );	// 1000 = theme options
+
+			$vars['display_errors'] = ini_get('display_errors');
+
+			$vars['session_name'] = esc_html( ini_get( 'session.name' ) );
+			$vars['session_cookie_path'] = esc_html( ini_get( 'session.cookie_path' ) );
+			$vars['session_save_path'] = esc_html( ini_get( 'session.save_path' ) );
+			$vars['session_use_cookies'] = ini_get( 'session.use_cookies' );
+			$vars['session_use_only_cookies'] = ini_get( 'session.use_only_cookies' );
+			
+			$vars['suhosin_max_input_vars'] = ini_get( 'suhosin.post.max_vars' );
+			$vars['suhosin_required_input_vars'] = 0; //$required_input_vars + ( 500 + 1000 );
+			$vars['suhosin_max_request_vars'] = ini_get( 'suhosin.request.max_vars' );
+			$vars['suhosin_required_request_vars'] = 0; //$suhosin_required_request_vars + ( 500 + 1000 );
+			$vars['suhosin_max_value_length'] = ini_get( "suhosin.post.max_value_length" );
+			$vars['recommended_max_value_length'] = 0; //2000000;
+
+		}
 
 	}
 	
@@ -337,74 +383,6 @@ function wpematico_show_data_info() {
 	$debug_data = wpematico_debug_data();
 	extract($debug_data);
 	?>
-		<h3 class="screen-reader-text"><?php _e( 'WordPress Environment', 'wpematico' ); ?></h3>
-		<table class="widefat debug-section" cellspacing="0">
-			<thead>
-				<tr>
-					<th colspan="3" class="debug-section-title" data-export-label="WordPress Environment"><?php _e( 'WordPress Environment', 'wpematico' ); ?></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td data-export-label="Home URL"><?php _e( 'Home URL:', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The URL of your site\'s homepage.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php echo $home_url; ?></td>
-				</tr>
-				<tr>
-					<td data-export-label="Site URL"><?php _e( 'Site URL:', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The root URL of your site.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php echo $site_url; ?></td>
-				</tr>
-				<tr>
-					<td data-export-label="WP Version"><?php _e( 'WP Version:', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The version of WordPress installed on your site.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php echo bloginfo('version'); ?></td>
-				</tr>
-				<tr>
-					<td data-export-label="WP Multisite"><?php _e( 'WP Multisite:', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Whether or not you have WordPress Multisite enabled.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php if ($is_multisite) {
-							echo '<mark class="no">' . '&#10004;' . __( 'WPeMatico was not fully tested in Multisite. Test it and give us your comments on the <a href="https://wordpress.org/support/plugin/wpematico/" target="_blank">forums</a>', 'wpematico' ) . '</mark>';
-						} else {
-							echo '<mark class="yes">' . __( 'No','wpematico') . '</mark>';
-						} 
-						?>
-					</td>
-				</tr>
-				<tr>
-					<td data-export-label="WP Memory Limit"><?php _e( 'WP Memory Limit:', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The maximum amount of memory (RAM) that your site can use at one time.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php
-						if ( $wp_memory < 128000000 ) {
-							echo '<mark class="no">' . sprintf( __( '%s - We recommend setting memory to at least <strong>128MB</strong>. <br /> Please define memory limit in <strong>wp-config.php</strong> file. To learn how, see: <a href="%s" target="_blank">Increasing memory allocated to PHP.</a>', 'wpematico' ), size_format( $wp_memory ), 'http://codex.wordpress.org/Editing_wp-config.php#Increasing_memory_allocated_to_PHP' ) . '</mark>';
-						} else {
-							echo '<mark class="yes">' . size_format( $wp_memory ) . '</mark>';
-						}
-					?></td>
-				</tr>
-				<tr>
-					<td data-export-label="WP Debug Mode"><?php _e( 'WP Debug Mode:', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Displays whether or not WordPress is in Debug Mode.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php if ( defined('WP_DEBUG') && WP_DEBUG ) echo '<mark class="no">' . '&#10004;' . '</mark>'; else echo '<mark class="yes">' . '&ndash;' . '</mark>'; ?></td>
-				</tr>
-				<tr>
-					<td data-export-label="Language"><?php _e( 'Language:', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The current language used by WordPress. Default = English', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php echo get_locale() ?></td>
-				</tr>
-				<tr>
-					<td data-export-label="WP Remote Get"><?php _e( 'WP Remote Get:', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'WPeMatico uses this method to communicate with the different RSS feeds and remote websites.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php echo ( $remote_get_work ) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">wp_remote_get() failed. Some theme features may not work. Please contact your hosting provider and make sure that https://etruel.com/downloads/feed/ is not blocked.</mark>'; ?></td>
-				</tr>
-				<tr>
-					<td data-export-label="WP Remote Post"><?php _e( 'WP Remote Post:', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'WPeMatico uses this method to communicate with the different RSS feeds and remote websites', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php echo ($remote_post_work) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">wp_remote_post() failed. Some theme features may not work. Please contact your hosting provider and make sure that https://etruel.com/downloads/feed/ is not blocked.</mark>'; ?></td>
-				</tr>
-			</tbody>
-		</table>
-
 		<h3 class="screen-reader-text"><?php _e( 'Server Environment', 'wpematico' ); ?></h3>
 		<table class="widefat debug-section" cellspacing="0">
 			<thead>
@@ -413,19 +391,13 @@ function wpematico_show_data_info() {
 				</tr>
 			</thead>
 			<tbody>
-				<?php 
-					$host = wpematico_get_host(); 	// Try to identify the hosting provider
-					// Can we determine the site's host?
-				if( $host ) :
-				?>
+				<?php if( $host ) : ?>
 				<tr>
 					<td data-export-label="Hosting Provider"><?php _e( 'Hosting Provider:', 'wpematico' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Information about the hosting provider of your site.', 'wpematico'  ) . '">[?]</a>'; ?></td>
 					<td><?php echo $host; ?></td>
 				</tr>
-				<?php 
-				endif;
-				?>
+				<?php endif; ?>
 				<tr>
 					<td data-export-label="Server Info"><?php _e( 'Server Info:', 'wpematico' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Information about the web server that is currently hosting your site.', 'wpematico'  ) . '">[?]</a>'; ?></td>
@@ -452,27 +424,46 @@ function wpematico_show_data_info() {
 				<tr>
 					<td data-export-label="Disk Total Space"><?php _e( 'Disk Total Space:', 'wpematico' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The total size of a filesystem or disk partition.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php wpematico_disk_total_space(); ?></td>
+					<td><?php echo $disk_total_space; ?></td>
 				</tr>
 
 				<tr>
 					<td data-export-label="Disk Free Space"><?php _e( 'Disk Free Space:', 'wpematico' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The available space on filesystem or disk partition.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php wpematico_disk_free_space(); ?></td>
+					<td><?php echo $disk_free_space; ?></td>
 				</tr>
-
 				<tr>
-					<td data-export-label="Max Upload Size"><?php _e( 'Max Upload Size:', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The largest file size that can be uploaded to your WordPress installation.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php echo size_format( wp_max_upload_size() ); ?></td>
+					<td data-export-label="Mod Rewrite"><?php _e( 'Mod Rewrite:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__( '%s is required by %s.', 'wpematico'  ), 'Mod Rewrite', $cache_help)) . '">[?]</a>'; ?></td>
+					<td><?php echo ($m_rewrite_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="'.(defined( 'WPEMATICO_CACHE_VERSION') ? 'error' : 'error-no-install' ).'">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'Mod Rewrite', 'some addons').'</mark>'; ?></td>
+				</tr>
+				<tr>
+					<td data-export-label="Mod Mime"><?php _e( 'Mod Mime:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__( '%s is required by %s.', 'wpematico'  ), 'Mod Mime', $cache_help)) . '">[?]</a>'; ?></td>
+					<td><?php echo ($m_mime_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="'.(defined( 'WPEMATICO_CACHE_VERSION') ? 'error' : 'error-no-install' ).'">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'Mod Mime', 'some addons').'</mark>'; ?></td>
+				</tr>
+				<tr>
+					<td data-export-label="Mod Deflate"><?php _e( 'Mod Deflate:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__( '%s is required by %s.', 'wpematico'  ), 'Mod Deflate', $cache_help)) . '">[?]</a>'; ?></td>
+					<td><?php echo ($m_deflate_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="'.(defined( 'WPEMATICO_CACHE_VERSION') ? 'error' : 'error-no-install' ).'">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'Mod Deflate', 'some addons').'</mark>'; ?></td>
 				</tr>
 				
-				
+			</tbody>
+		</table>
+
+		<h3 class="screen-reader-text"><?php _e( 'PHP Environment', 'wpematico' ); ?></h3>
+		<table class="widefat debug-section" cellspacing="0">
+			<thead>
+				<tr>
+					<th colspan="3" class="debug-section-title" data-export-label="PHP Environment"><?php _e( 'PHP Environment', 'wpematico' ); ?></th>
+				</tr>
+			</thead>
+			<tbody>
 			<?php if ( function_exists( 'ini_get' ) ) : ?>
 					<tr>
 						<td data-export-label="PHP Post Max Size"><?php _e( 'PHP Post Max Size:', 'wpematico' ); ?></td>
 						<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The largest file size that can be contained in one post.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-						<td><?php echo size_format( wpematico_let_to_num( ini_get('post_max_size') ) ); ?></td>
+						<td><?php echo size_format( wpematico_let_to_num( $post_max_size ) ); ?></td>
 					</tr>
 					<tr>
 						<td data-export-label="PHP Max Input Vars"><?php _e( 'PHP Max Input Vars:', 'wpematico' ); ?></td>
@@ -480,8 +471,6 @@ function wpematico_show_data_info() {
 						<?php
 						?>
 						<td><?php
-							$max_input_vars = ini_get('max_input_vars');
-							$required_input_vars = 0; // 12000 + ( 500 + 1000 );	// 1000 = theme options
 							if ( $max_input_vars < $required_input_vars ) {
 								echo '<mark class="error">' . sprintf( __( '%s - Recommended Value: %s.<br />Max input vars limitation will truncate POST data such as menus. See: <a href="%s" target="_blank">Increasing max input vars limit.</a>', 'wpematico' ), $max_input_vars, '<strong>' . $required_input_vars . '</strong>', 'http://sevenspark.com/docs/ubermenu-3/faqs/menu-item-limit' ) . '</mark>';
 							} else {
@@ -515,60 +504,21 @@ function wpematico_show_data_info() {
 						?></td>
 					</tr>
 					<tr>
+						<td data-export-label="PHP Safe Mode"><?php _e( 'PHP Safe Mode:', 'wpematico' ); ?></td>
+						<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The PHP safe mode is an attempt to solve the shared-server security problem. This feature has been DEPRECATED as of PHP 5.3.0 and REMOVED as of PHP 5.4.0.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+						<td><?php
+							if ( $safe_mode ) {
+								echo '<mark class="error">On - ' . sprintf( __( 'We recommend turn safe_mode <strong>Off</strong>. <br /> See: <a href="%s" target="_blank">PHP: Safe Mode.</a>.', 'wpematico' ), 'http://php.net/manual/en/features.safe-mode.php' ) . '</mark>';
+							} else {
+								echo '<mark class="yes">' . 'Off' . '</mark>';
+							}
+						?></td>
+					</tr>
+					<tr>
 						<td data-export-label="PHP Disabled Functions"><?php _e( 'PHP Disabled Functions:', 'wpematico' ); ?></td>
 						<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'PHP disabled functions to avoid potential unknown vulnerabilities.', 'wpematico'  ) . '">[?]</a>'; ?></td>
 						<td><?php echo str_replace(',', ',<br/>', $disable_functions ); ?></td>
 					</tr>
-					<tr>
-						<td data-export-label="SUHOSIN Installed"><?php _e( 'SUHOSIN Installed:', 'wpematico' ); ?></td>
-						<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Suhosin is an advanced protection system for PHP installations. It was designed to protect your servers on the one hand against a number of well known problems in PHP applications and on the other hand against potential unknown vulnerabilities within these applications or the PHP core itself.
-		If enabled on your server, Suhosin may need to be configured to increase its data submission limits.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-						<td><?php echo extension_loaded( 'suhosin' ) ? '&#10004;' : '&ndash;'; ?></td>
-					</tr>
-					<?php if ( extension_loaded( 'suhosin' ) ): ?>
-					<tr>
-						<td data-export-label="Suhosin Post Max Vars"><?php _e( 'Suhosin Post Max Vars:', 'wpematico' ); ?></td>
-						<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The maximum number of variables your server can use for a single function to avoid overloads.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-						<td><?php
-							$max_input_vars = ini_get( 'suhosin.post.max_vars' );
-							$required_input_vars = 0; //$required_input_vars + ( 500 + 1000 );
-
-							if ( $max_input_vars < $required_input_vars ) {
-								echo '<mark class="error">' . sprintf( __( '%s - Recommended Value: %s.<br />Max input vars limitation will truncate POST data such as menus. See: <a href="%s" target="_blank">Increasing max input vars limit.</a>', 'wpematico' ), $max_input_vars, '<strong>' . ( $required_input_vars ) . '</strong>', 'http://sevenspark.com/docs/ubermenu-3/faqs/menu-item-limit' ) . '</mark>';
-							} else {
-								echo '<mark class="yes">' . $max_input_vars . '</mark>';
-							}
-						?></td>
-					</tr>
-					<tr>
-						<td data-export-label="Suhosin Request Max Vars"><?php _e( 'Suhosin Request Max Vars:', 'wpematico' ); ?></td>
-						<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The maximum number of variables your server can use for a single function to avoid overloads.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-						<td><?php
-							$max_input_vars = ini_get( 'suhosin.request.max_vars' );
-							$required_input_vars = 0; //$required_input_vars + ( 500 + 1000 );
-
-							if ( $max_input_vars < $required_input_vars ) {
-								echo '<mark class="error">' . sprintf( __( '%s - Recommended Value: %s.<br />Max input vars limitation will truncate POST data such as menus. See: <a href="%s" target="_blank">Increasing max input vars limit.</a>', 'wpematico' ), $max_input_vars, '<strong>' . ( $required_input_vars + ( 500 + 1000 ) ) . '</strong>', 'http://sevenspark.com/docs/ubermenu-3/faqs/menu-item-limit' ) . '</mark>';
-							} else {
-								echo '<mark class="yes">' . $max_input_vars . '</mark>';
-							}
-						?></td>
-					</tr>
-					<tr>
-						<td data-export-label="Suhosin Post Max Value Length"><?php _e( 'Suhosin Post Max Value Length:', 'wpematico' ); ?></td>
-						<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Defines the maximum length of a variable that is registered through a POST request.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-						<td><?php
-							$suhosin_max_value_length = ini_get( "suhosin.post.max_value_length" );
-							$recommended_max_value_length = 0; //2000000;
-
-							if ( $suhosin_max_value_length < $recommended_max_value_length ) {
-								echo '<mark class="error">' . sprintf( __( '%s - Recommended Value: %s.<br />Post Max Value Length limitation may prohibit the form data from being saved to your database.', 'wpematico' ), $suhosin_max_value_length, '<strong>' . $recommended_max_value_length . '</strong>' ) . '</mark>';
-							} else {
-								echo '<mark class="yes">' . $suhosin_max_value_length . '</mark>See: <a href="http://suhosin.org/stories/configuration.html" target="_blank">Suhosin Configuration Info</a>.';
-							}
-						?></td>
-					</tr>
-					<?php endif; // suhosin installed ?>
 					<tr>
 						<td data-export-label="PHP Display Errors"><?php _e( 'PHP Display Errors:', 'wpematico' ); ?></td>
 						<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Shows or hide all the PHP errors and warnings in your script.', 'wpematico'  ) . '">[?]</a>'; ?></td>
@@ -601,7 +551,7 @@ function wpematico_show_data_info() {
 				</tr>
 				<tr>
 					<td data-export-label="DOMDocument"><?php _e( 'DOMDocument:', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__( '%s is required by %s.', 'wpematico'  ), 'DOMDocument', 'WPeMatico Core')) . '">[?]</a>'; ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__( '%s is recommended by %s.', 'wpematico'  ), 'DOMDocument', 'WPeMatico Core')) . '">[?]</a>'; ?></td>
 					<td><?php echo class_exists( 'DOMDocument' ) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'DOMDocument', 'some addons').'</mark>'; ?></td>
 				</tr>
 				<tr>
@@ -644,26 +594,162 @@ function wpematico_show_data_info() {
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__( '%s is required by %s.', 'wpematico'  ), 'mcrypt (php.net/mcrypt)', $smtp_help)) . '">[?]</a>'; ?></td>
 					<td><?php echo ($mcrypt_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="'.(defined( 'WPESMTP_VERSION') ? 'error' : 'error-no-install' ).'">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'mcrypt (php.net/mcrypt)', 'some addons').'</mark>'; ?></td>
 				</tr>
-
+<?php /*	Commented SUHOSIN details not important			<tr>
+					<td data-export-label="SUHOSIN Installed"><?php _e( 'SUHOSIN Installed:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Suhosin is an advanced protection system for PHP installations. It was designed to protect your servers on the one hand against a number of well known problems in PHP applications and on the other hand against potential unknown vulnerabilities within these applications or the PHP core itself.
+					If enabled on your server, Suhosin may need to be configured to increase its data submission limits.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php echo extension_loaded( 'suhosin' ) ? '&#10004;' : '&ndash;'; ?></td>
+				</tr>
+				<?php if ( extension_loaded( 'suhosin' ) ): ?>
+					<tr>
+						<td data-export-label="Suhosin Post Max Vars"><?php _e( 'Suhosin Post Max Vars:', 'wpematico' ); ?></td>
+						<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The maximum number of variables your server can use for a single function to avoid overloads.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+						<td><?php
+							if ( $suhosin_max_input_vars < $suhosin_required_input_vars ) {
+								echo '<mark class="error">' . sprintf( __( '%s - Recommended Value: %s.<br />Max input vars limitation will truncate POST data such as menus. See: <a href="%s" target="_blank">Increasing max input vars limit.</a>', 'wpematico' ), $suhosin_max_input_vars, '<strong>' . ( $suhosin_required_input_vars ) . '</strong>', 'http://sevenspark.com/docs/ubermenu-3/faqs/menu-item-limit' ) . '</mark>';
+							} else {
+								echo '<mark class="yes">' . $suhosin_max_input_vars . '</mark>';
+							}
+						?></td>
+					</tr>
+					<tr>
+						<td data-export-label="Suhosin Request Max Vars"><?php _e( 'Suhosin Request Max Vars:', 'wpematico' ); ?></td>
+						<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The maximum number of variables your server can use for a single function to avoid overloads.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+						<td><?php
+							if ( $suhosin_max_request_vars < $suhosin_required_request_vars ) {
+								echo '<mark class="error">' . sprintf( __( '%s - Recommended Value: %s.<br />Max input vars limitation will truncate POST data such as menus. See: <a href="%s" target="_blank">Increasing max input vars limit.</a>', 'wpematico' ), $suhosin_max_request_vars, '<strong>' . ( $suhosin_required_request_vars + ( 500 + 1000 ) ) . '</strong>', 'http://sevenspark.com/docs/ubermenu-3/faqs/menu-item-limit' ) . '</mark>';
+							} else {
+								echo '<mark class="yes">' . $suhosin_max_request_vars . '</mark>';
+							}
+						?></td>
+					</tr>
+					<tr>
+						<td data-export-label="Suhosin Post Max Value Length"><?php _e( 'Suhosin Post Max Value Length:', 'wpematico' ); ?></td>
+						<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Defines the maximum length of a variable that is registered through a POST request.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+						<td><?php
+							if ( $suhosin_max_value_length < $recommended_max_value_length ) {
+								echo '<mark class="error">' . sprintf( __( '%s - Recommended Value: %s.<br />Post Max Value Length limitation may prohibit the form data from being saved to your database.', 'wpematico' ), $suhosin_max_value_length, '<strong>' . $recommended_max_value_length . '</strong>' ) . '</mark>';
+							} else {
+								echo '<mark class="yes">' . $suhosin_max_value_length . '</mark>See: <a href="http://suhosin.org/stories/configuration.html" target="_blank">Suhosin Configuration Info</a>.';
+							}
+						?></td>
+					</tr>
+				<?php endif; // suhosin installed ?>
+*/ ?>				
 				<tr>
-					<td data-export-label="Mod Rewrite"><?php _e( 'Mod Rewrite:', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__( '%s is required by %s.', 'wpematico'  ), 'Mod Rewrite', $cache_help)) . '">[?]</a>'; ?></td>
-					<td><?php echo ($m_rewrite_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="'.(defined( 'WPEMATICO_CACHE_VERSION') ? 'error' : 'error-no-install' ).'">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'Mod Rewrite', 'some addons').'</mark>'; ?></td>
+					<td data-export-label="Session enabled"><?php _e( '$_SESSION enabled:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'PHP Session Configuration. http://php.net/manual/es/reserved.variables.session.php', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php echo isset( $_SESSION ) ? '&#10004;' : '&ndash;'; ?></td>
+				</tr>
+				<?php if ( isset( $_SESSION ) ) : ?>
+					<tr>
+						<td data-export-label="Session Name"><?php _e( 'Session Name:', 'wpematico' ); ?></td>
+						<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The Session Name.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+						<td><?php echo $session_name; ?></td>
+					</tr>				
+					<tr>
+						<td data-export-label="Cookie Path"><?php _e( 'Cookie Path:', 'wpematico' ); ?></td>
+						<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The Session Cookie Path.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+						<td><?php echo $session_cookie_path; ?></td>
+					</tr>				
+					<tr>
+						<td data-export-label="Save Path"><?php _e( 'Save Path:', 'wpematico' ); ?></td>
+						<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The Session Save Path.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+						<td><?php echo $session_save_path; ?></td>
+					</tr>				
+				<tr>
+					<td data-export-label="Use Cookies"><?php _e( 'Use Cookies:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Use Cookies.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php echo ( $session_use_cookies ) ? '&#10004;' : '&ndash;'; ?></td>
 				</tr>
 				<tr>
-					<td data-export-label="Mod Mime"><?php _e( 'Mod Mime:', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__( '%s is required by %s.', 'wpematico'  ), 'Mod Mime', $cache_help)) . '">[?]</a>'; ?></td>
-					<td><?php echo ($m_mime_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="'.(defined( 'WPEMATICO_CACHE_VERSION') ? 'error' : 'error-no-install' ).'">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'Mod Mime', 'some addons').'</mark>'; ?></td>
+					<td data-export-label="Session enabled"><?php _e( 'SUHOSIN Installed:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Session Configuration.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php echo ( $session_use_only_cookies ) ? '&#10004;' : '&ndash;'; ?></td>
 				</tr>
-				<tr>
-					<td data-export-label="Mod Deflate"><?php _e( 'Mod Deflate:', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__( '%s is required by %s.', 'wpematico'  ), 'Mod Deflate', $cache_help)) . '">[?]</a>'; ?></td>
-					<td><?php echo ($m_deflate_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="'.(defined( 'WPEMATICO_CACHE_VERSION') ? 'error' : 'error-no-install' ).'">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'Mod Deflate', 'some addons').'</mark>'; ?></td>
-				</tr>
+				<?php endif; ?>
 
 			</tbody>
 		</table>
 		
+		<h3 class="screen-reader-text"><?php _e( 'WordPress Environment', 'wpematico' ); ?></h3>
+		<table class="widefat debug-section" cellspacing="0">
+			<thead>
+				<tr>
+					<th colspan="3" class="debug-section-title" data-export-label="WordPress Environment"><?php _e( 'WordPress Environment', 'wpematico' ); ?></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td data-export-label="Home URL"><?php _e( 'User Browser:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The local users\' browser information.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php echo "<pre style='margin: 0;font-size: 11px;'>$browser</pre>"; ?></td>
+				</tr>
+				<tr>
+					<td data-export-label="Home URL"><?php _e( 'Home URL:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The URL of your site\'s homepage.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php echo $home_url; ?></td>
+				</tr>
+				<tr>
+					<td data-export-label="Site URL"><?php _e( 'Site URL:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The root URL of your site.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php echo $site_url; ?></td>
+				</tr>
+				<tr>
+					<td data-export-label="WP Version"><?php _e( 'WP Version:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The version of WordPress installed on your site.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php echo bloginfo('version'); ?></td>
+				</tr>
+				<tr>
+					<td data-export-label="WP Multisite"><?php _e( 'WP Multisite:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Whether or not you have WordPress Multisite enabled.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php if ($is_multisite) {
+							echo '<mark class="no">' . '&#10004;' . __( 'WPeMatico was not fully tested in Multisite. Test it and give us your comments on the <a href="https://wordpress.org/support/plugin/wpematico/" target="_blank">forums</a>', 'wpematico' ) . '</mark>';
+						} else {
+							echo '<mark class="yes">' . __( 'No','wpematico') . '</mark>';
+						} 
+						?>
+					</td>
+				</tr>
+				<tr>
+					<td data-export-label="WP Memory Limit"><?php _e( 'WP Memory Limit:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The maximum amount of memory (RAM) that your site can use at one time.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php
+						if ( $wp_memory < 128000000 ) {
+							echo '<mark class="no">' . sprintf( __( '%s - We recommend setting memory to at least <strong>128MB</strong>. <br /> Please define memory limit in <strong>wp-config.php</strong> file. To learn how, see: <a href="%s" target="_blank">Increasing memory allocated to PHP.</a>', 'wpematico' ), size_format( $wp_memory ), 'http://codex.wordpress.org/Editing_wp-config.php#Increasing_memory_allocated_to_PHP' ) . '</mark>';
+						} else {
+							echo '<mark class="yes">' . size_format( $wp_memory ) . '</mark>';
+						}
+					?></td>
+				</tr>
+				<tr>
+					<td data-export-label="WP Max Upload Size"><?php _e( 'WP Max Upload Size:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The largest file size that can be uploaded to your WordPress installation.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php echo size_format( $wp_max_upload_size ); ?></td>
+				</tr>
+				<tr>
+					<td data-export-label="WP Debug Mode"><?php _e( 'WP Debug Mode:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Displays whether or not WordPress is in Debug Mode.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php if ( defined('WP_DEBUG') && WP_DEBUG ) echo '<mark class="no">' . '&#10004;' . '</mark>'; else echo '<mark class="yes">' . '&ndash;' . '</mark>'; ?></td>
+				</tr>
+				<tr>
+					<td data-export-label="Language"><?php _e( 'Language:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The current language used by WordPress. Default = English', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php echo get_locale() ?></td>
+				</tr>
+				<tr>
+					<td data-export-label="WP Remote Get"><?php _e( 'WP Remote Get:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'WPeMatico uses this method to communicate with the different RSS feeds and remote websites.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php echo ( $remote_get_work ) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">wp_remote_get() failed. Some theme features may not work. Please contact your hosting provider and make sure that https://etruel.com/downloads/feed/ is not blocked.</mark>'; ?></td>
+				</tr>
+				<tr>
+					<td data-export-label="WP Remote Post"><?php _e( 'WP Remote Post:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'WPeMatico uses this method to communicate with the different RSS feeds and remote websites', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php echo ($remote_post_work) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">wp_remote_post() failed. Some theme features may not work. Please contact your hosting provider and make sure that https://etruel.com/downloads/feed/ is not blocked.</mark>'; ?></td>
+				</tr>
+			</tbody>
+		</table>
+
 		<h3 class="screen-reader-text"><?php _e( 'Active Plugins', 'wpematico' ); ?></h3>
 		<table class="widefat debug-section" cellspacing="0" id="status">
 			<thead>
@@ -742,65 +828,109 @@ function wpematico_debug_info_get() {
 	$debug_data = wpematico_debug_data(); 
 	extract($debug_data);
 
-	if( !class_exists( 'Browser' ) )
-		require_once dirname( __FILE__) . '/lib/browser.php';  //https://github.com/cbschuld/Browser.php
-
-	$browser = new Browser();
-
-	// Get theme info
-	if( get_bloginfo( 'version' ) < '3.4' ) {
-		$theme_data = get_theme_data( get_stylesheet_directory() . '/style.css' );
-		$theme      = $theme_data['Name'] . ' ' . $theme_data['Version'];
-	} else {
-		$theme_data = wp_get_theme();
-		$theme      = $theme_data->Name . ' ' . $theme_data->Version;
-	}
-
-	// Try to identify the hosting provider
-	$host = wpematico_get_host();
-
 	$return  = '### Begin Debug Info ###' . "\n\n";
 
-	// Start with the basics...
-	$return .= '-- Site Info' . "\n\n";
-	$return .= 'Site URL:                 ' . $site_url . "\n";
-	$return .= 'Home URL:                 ' . $home_url . "\n";
-	$return .= 'Multisite:                ' . ($is_multisite ? 'Yes' : 'No' ) . "\n";
-
-	$return  = apply_filters( 'wpematico_sysinfo_after_site_info', $return );
-
+	$return .= "" . '-- Server Environment' . "\n\n";
 	// Can we determine the site's host?
 	if( $host ) {
-		$return .= "\n" . '-- Hosting Provider' . "\n\n";
-		$return .= 'Host:                     ' . $host . "\n";
-
+		$return .= 'Hosting Provider:         ' . $host . "\n";
 		$return  = apply_filters( 'wpematico_sysinfo_after_host_info', $return );
 	}
 
-	// The local users' browser information, handled by the Browser class
-	$return .= "\n" . '-- User Browser' . "\n\n";
-	$return .= $browser;
+	// Server configuration (really just versioning)
+	$return .= 'WebServer Info:           ' . $_SERVER['SERVER_SOFTWARE'] . "\n";
+	$return .= 'MySQL Version:            ' . $db_version . "\n";
+	$return .= 'PHP Version:              ' . esc_html( phpversion() ) . "\n";
+	$return .= 'Disk Total Space:         ' . $disk_total_space . "\n";
+	$return .= 'Disk Free Space:          ' . $disk_free_space . "\n";
+	$return  = apply_filters( 'wpematico_sysinfo_after_webserver_config', $return );
 
+	$return .= "\n" . '-- Required Apache Mods' . "\n";
+	$return .= 'Mod Rewrite:             ' . ( ($m_rewrite_ok) ? 'Enabled' : 'Disabled' ) . "\n";
+	$return .= 'Mod Mime:                ' . ( ($m_mime_ok) ? 'Enabled' : 'Disabled' ) . "\n";
+	$return .= 'Mod Deflate:             ' . ( ($m_deflate_ok) ? 'Enabled' : 'Disabled' ) . "\n";
+					 
+	$return  = apply_filters( 'wpematico_sysinfo_after_apache_mods', $return );
+
+	$return .= "\n" . '-- PHP Configuration' . "\n\n";
+	
+	$return .= 'Post Max Size:           ' . $post_max_size . "\n";
+	$return .= 'Max Input Vars:          ' . $max_input_vars . "\n";
+	$return .= 'PHP Time Limit:          ' . $time_limit . "\n";
+	$return .= 'PHP Memory Limit:        ' . size_format( $memory ) . "\n";
+//	$return .= 'Upload Max Filesize:     ' . $upload_max_filesize . "\n";
+	$return .= 'Safe Mode:               ' . ( $safe_mode ? 'Enabled' : 'Disabled' ) . "\n";
+	$return .= 'Disabled Functions:      ' . $disable_functions . "\n";
+	$return .= 'Display Errors:          ' . ( $display_errors ? 'On (' . $display_errors . ')' : 'N/A' ) . "\n";
+	if ( $display_errors ) {
+		$return .= 'error_reporting levels:  ';
+		$errLvl = error_reporting();
+		for ($i = 0; $i < 15;  $i++ ) {
+			$return .= wpematico_FriendlyErrorType($errLvl & pow(2, $i)) . ", ";
+		}
+	}
+
+	$return  = apply_filters( 'wpematico_sysinfo_after_php_config', $return );
+
+	// PHP extensions and such
+	$return .= "\n\n" . '-- PHP Extensions' . "\n\n";
+	
+	// SimplePie required extensions and such	
+	$return .= 'cURL (php.net/curl):     ' . ( ($curl_ok) ? 'Enabled' : 'Disabled' ) . "\n";
+	$return .= 'XML (php.net/xml):       ' . ( ($xml_ok) ? 'Enabled, and sane' : 'Disabled, or broken' ) . "\n";
+	$return .= 'PCRE (php.net/pcre):     ' . ( ($pcre_ok) ? 'Enabled' : 'Disabled' ) . "\n";
+	$return .= 'Zlib (php.net/zlib):     ' . ( ($zlib_ok) ? 'Enabled' : 'Disabled' ) . "\n";
+	$return .= 'php.net/mbstring:        ' . ( ($mbstring_ok) ? 'Enabled' : 'Disabled' ) . "\n";
+	$return .= 'iconv (php.net/iconv):   ' . ( ($iconv_ok) ? 'Enabled' : 'Disabled' ) . "\n";
+	$return  = apply_filters( 'wpematico_sysinfo_after_simplepie_ext', $return );
+	
+	$return .= 'fsockopen:                ' . ( function_exists( 'fsockopen' ) ? 'Supported' : 'Not Supported' ) . "\n";
+	$return .= 'SOAP Client:              ' . ( class_exists( 'SoapClient' ) ? 'Installed' : 'Not Installed' ) . "\n";
+	$return .= 'php.net/openssl:   		 ' . ( ($ssl_ok) ? 'Enabled' : 'Disabled' ) . "\n";
+	$return .= 'php.net/mcrypt:   		 ' . ( ($mcrypt_ok) ? 'Enabled' : 'Disabled' ) . "\n";
+
+	$return  = apply_filters( 'wpematico_sysinfo_after_php_ext', $return );
+
+	// Session stuff
+	$return .= "\n" . '-- Session Configuration' . "\n\n";
+	$return .= 'Session:                  ' . ( isset( $_SESSION ) ? 'Enabled' : 'Disabled' ) . "\n";
+
+	// The rest of this is only relevant is session is enabled
+	if( isset( $_SESSION ) ) {
+		$return .= 'Session Name:             ' . $session_name . "\n";
+		$return .= 'Cookie Path:              ' . $session_cookie_path . "\n";
+		$return .= 'Save Path:                ' . $session_save_path . "\n";
+		$return .= 'Use Cookies:              ' . ( $session_use_cookies ? 'On' : 'Off' ) . "\n";
+		$return .= 'Use Only Cookies:         ' . ( $session_use_only_cookies ? 'On' : 'Off' ) . "\n";
+	}
+
+	$return  = apply_filters( 'wpematico_sysinfo_after_session_config', $return );
+
+	// Start with the basics...
+	$return .= '-- WordPress Environment' . "\n\n";
+	// The local users' browser information, handled by the Browser class
+	$return .= "" . '-- User Browser' . "\n";
+	$return .= $browser;
 	$return  = apply_filters( 'wpematico_sysinfo_after_user_browser', $return );
 
+	$return .= 'Site URL:                 ' . $site_url . "\n";
+	$return .= 'Home URL:                 ' . $home_url . "\n";
+	$return .= 'Multisite:                ' . ($is_multisite ? 'Yes' : 'No' ) . "\n";
+	$return  = apply_filters( 'wpematico_sysinfo_after_site_info', $return );
+
 	// WordPress configuration
-	$return .= "\n" . '-- WordPress Configuration' . "\n\n";
+	$return .= "\n" . '-- WordPress Configuration' . "\n";
 	$return .= 'Version:                  ' . get_bloginfo( 'version' ) . "\n";
 	$return .= 'Language WPLANG:          ' . ( defined( 'WPLANG' ) && WPLANG ? WPLANG : 'en_US' ) . "\n";
 	$return .= 'Language Setting:         ' . ( get_option( 'WPLANG' ) ? get_option( 'WPLANG' ) : 'Default' ) . "\n";
 	$return .= 'Permalink Structure:      ' . ( get_option( 'permalink_structure' ) ? get_option( 'permalink_structure' ) : 'Default' ) . "\n";
 	$return .= 'Active Theme:             ' . $theme . "\n";
 	$return .= 'Show On Front:            ' . get_option( 'show_on_front' ) . "\n";
-
 	// Only show page specs if frontpage is set to 'page'
 	if( get_option( 'show_on_front' ) == 'page' ) {
-		$front_page_id = get_option( 'page_on_front' );
-		$blog_page_id = get_option( 'page_for_posts' );
-
 		$return .= 'Page On Front:            ' . ( $front_page_id != 0 ? get_the_title( $front_page_id ) . ' (#' . $front_page_id . ')' : 'Unset' ) . "\n";
 		$return .= 'Page For Posts:           ' . ( $blog_page_id != 0 ? get_the_title( $blog_page_id ) . ' (#' . $blog_page_id . ')' : 'Unset' ) . "\n";
 	}
-
 	$return .= 'Remote Get:               ' . ($remote_get_work ? 'wp_remote_get() works' : 'wp_remote_get() does not work' ) . "\n";
 	$return .= 'Remote Post:              ' . ($remote_post_work ? 'wp_remote_post() works' : 'wp_remote_post() does not work' ) . "\n";
 	$return .= 'Table Prefix:             ' . 'Length: ' . strlen( $wpdb->prefix ) . '   Status: ' . ( strlen( $wpdb->prefix ) > 16 ? 'ERROR: Too long' : 'Acceptable' ) . "\n";
@@ -811,79 +941,7 @@ function wpematico_debug_info_get() {
 
 	$return  = apply_filters( 'wpematico_sysinfo_after_wordpress_config', $return );
 
-	// Server configuration (really just versioning)
-	$return .= "\n" . '-- Webserver Configuration' . "\n\n";
 	
-	$return .= 'PHP Version:              ' . PHP_VERSION . "\n";
-	$return .= 'MySQL Version:            ' . $db_version . "\n";
-	$return .= 'Webserver Info:           ' . $_SERVER['SERVER_SOFTWARE'] . "\n";
-	$return .= 'Disk Total Space:         ' . wpematico_disk_total_space(false) . "\n";
-	$return .= 'Disk Free Space:          ' . wpematico_disk_free_space(false) . "\n";
-
-	$return  = apply_filters( 'wpematico_sysinfo_after_webserver_config', $return );
-
-	// PHP configs... now we're getting to the important stuff
-	$return .= "\n" . '-- PHP Configuration' . "\n\n";
-	
-	$return .= 'Safe Mode:                ' . ( $safe_mode ) ? 'Enabled' : 'Disabled' . "\n";
-	$return .= 'PHP Memory Limit:         ' . size_format( $memory ) . "\n";
-	$return .= 'Upload Max Filesize:      ' . $upload_max_filesize . "\n";
-	$return .= 'Post Max Size:            ' . $post_max_size . "\n";
-	$return .= 'Max Input Vars:           ' . $max_input_vars . "\n";
-	$return .= 'PHP Time Limit:           ' . $time_limit . "\n";
-	$return .= 'Disabled Functions:       ' . $disable_functions . "\n";
-	$return .= 'Display Errors:           ' . ( $display_errors ? 'On (' . $display_errors . ')' : 'N/A' ) . "\n";
-
-	$return  = apply_filters( 'wpematico_sysinfo_after_php_config', $return );
-
-	// PHP extensions and such
-	$return .= "\n" . '-- PHP Extensions' . "\n\n";
-	
-	$return .= 'cURL:                     ' . ( function_exists( 'curl_init' ) ? 'Supported' : 'Not Supported' ) . "\n";
-	$return .= 'fsockopen:                ' . ( function_exists( 'fsockopen' ) ? 'Supported' : 'Not Supported' ) . "\n";
-	$return .= 'SOAP Client:              ' . ( class_exists( 'SoapClient' ) ? 'Installed' : 'Not Installed' ) . "\n";
-	$return .= 'Suhosin:                  ' . ( extension_loaded( 'suhosin' ) ? 'Installed' : 'Not Installed' ) . "\n";
-
-	$return  = apply_filters( 'wpematico_sysinfo_after_php_ext', $return );
-
-	// SimplePie required extensions and such
-	$return .= "\n" . '-- SimplePie required Extensions' . "\n\n";
-	
-	$return .= 'PHP 5.3.0 or higher:     ' . ( ($php_ok) ? 'Supported' : 'Not Supported') . "\n";
-	$return .= 'XML (php.net/xml):       ' . ( ($xml_ok) ? 'Enabled, and sane' : 'Disabled, or broken' ) . "\n";
-	$return .= 'PCRE (php.net/pcre):     ' . ( ($pcre_ok) ? 'Enabled' : 'Disabled' ) . "\n";
-	$return .= 'cURL (php.net/curl):     ' . ( ($curl_ok) ? 'Enabled' : 'Disabled' ) . "\n";
-	$return .= 'Zlib (php.net/zlib):     ' . ( ($zlib_ok) ? 'Enabled' : 'Disabled' ) . "\n";
-	$return .= 'php.net/mbstring:        ' . ( ($mbstring_ok) ? 'Enabled' : 'Disabled' ) . "\n";
-	$return .= 'iconv (php.net/iconv):   ' . ( ($iconv_ok) ? 'Enabled' : 'Disabled' ) . "\n";
-	$return .= 'php.net/openssl:   		 ' . ( ($ssl_ok) ? 'Enabled' : 'Disabled' ) . "\n";
-	$return .= 'php.net/mcrypt:   		 ' . ( ($mcrypt_ok) ? 'Enabled' : 'Disabled' ) . "\n";
-
-	$return  = apply_filters( 'wpematico_sysinfo_after_simplepie_ext', $return );
-
-	$return .= "\n" . '-- Required Apache Mods' . "\n\n";
-	
-	$return .= 'Mod Rewrite:	   		 ' . ( ($m_rewrite_ok) ? 'Enabled' : 'Disabled' ) . "\n";
-	$return .= 'Mod Mime:	   			 ' . ( ($m_mime_ok) ? 'Enabled' : 'Disabled' ) . "\n";
-	$return .= 'Mod Deflate:	   		 ' . ( ($m_deflate_ok) ? 'Enabled' : 'Disabled' ) . "\n";
-					 
-	$return  = apply_filters( 'wpematico_sysinfo_after_apache_mods', $return );
-
-	// Session stuff
-	$return .= "\n" . '-- Session Configuration' . "\n\n";
-	$return .= 'Session:                  ' . ( isset( $_SESSION ) ? 'Enabled' : 'Disabled' ) . "\n";
-
-	// The rest of this is only relevant is session is enabled
-	if( isset( $_SESSION ) ) {
-		$return .= 'Session Name:             ' . esc_html( ini_get( 'session.name' ) ) . "\n";
-		$return .= 'Cookie Path:              ' . esc_html( ini_get( 'session.cookie_path' ) ) . "\n";
-		$return .= 'Save Path:                ' . esc_html( ini_get( 'session.save_path' ) ) . "\n";
-		$return .= 'Use Cookies:              ' . ( ini_get( 'session.use_cookies' ) ? 'On' : 'Off' ) . "\n";
-		$return .= 'Use Only Cookies:         ' . ( ini_get( 'session.use_only_cookies' ) ? 'On' : 'Off' ) . "\n";
-	}
-
-	$return  = apply_filters( 'wpematico_sysinfo_after_session_config', $return );
-
 	// WPeMatico configuration
 	$return .= "\n" . '-- WPeMatico Configuration' . "\n\n";
 	$return .= 'Version:                  ' . WPeMatico::$version . "\n";
