@@ -1,6 +1,6 @@
 .inside{font-weight: normal;}
 p { margin-bottom: 2px; }
-#major-publishing-actions .radio { min-width: 16px; vertical-align: bottom; width: 16px; }
+#major-publishing-actions .radio { min-width: 16px; vertical-align: bottom; }
 
 #edit-slug-box { display:none; }
 #misc-publishing-actions { display:none; }
@@ -31,8 +31,6 @@ p { margin-bottom: 2px; }
     color: pink;
     background: 0;
 }
-
-
 
 .current-state {
     font-family: Arial;
@@ -456,3 +454,205 @@ overflow-y: auto;
 margin: 5px;
 display: table;
 }
+
+/* Wizard */
+#thickbox_wizard{
+	top: 120px !important;
+	left: 25% !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	width: 50% !important;
+	max-width: initial !important;
+	background: none !important;
+	background-color: #f1f1f1 !important;
+	box-shadow: 0 0 14px rgba(0,0,0,.7);
+}
+#thickbox_wizard h2{
+	margin: 0;
+    padding: 30px;
+	color: #ffffff;
+    background: #eb9600;
+}
+#thickbox_wizard h2 input{
+	right: 10px !important;
+	padding: 0 !important;
+	font-size: 30px !important;
+	margin-top: 0 !important;
+}
+#thickbox_wizard h2 input.closed_wizard{
+	font-size: 30px !important;
+}
+#thickbox_wizard #titlediv{
+	background-color: transparent !important;
+	padding: 15px 15px 0 !important;
+}
+#thickbox_wizard .postbox{
+	padding: 15px;
+	margin: 15px;
+	background-color: #ffffff;
+	border: 0 !important;
+	box-sizing: border-box;
+	height: auto !important;
+}
+#thickbox_wizard .postbox .inside{
+	margin: 0;
+	padding: 0;
+    width: 100%;
+    margin-top: 10px;
+    overflow: visible;
+}
+#thickbox_wizard .postbox #major-publishing-actions{
+	background-color: #ffffff;
+}
+#thickbox_wizard .postbox  h2 {
+	box-sizing: border-box;
+}
+#thickbox_wizard .postbox #campaign_type{
+	height: auto;
+}
+.wpematico_divider_list_wizard{
+	padding: 15px 15px 0;
+	height: auto !important;
+}
+.help_wizard{
+	font-size: 13px !important;
+	padding: 0 !important;
+	color: #888888 !important;
+	min-height: initial !important;
+	max-height: initial !important;
+}
+.icon-wizard-help{
+	width: auto;
+	height: auto;
+	color: #444 !important;
+	margin-left: 0 !important;
+	font-size: 18px !important;
+}
+#thickbox_wizard .postbox .control-buttons {
+	font-size: 20px;
+	position: absolute;
+    top: 21px;
+	z-index: 10;
+}
+#thickbox_wizard .postbox #prev_wizard{
+    left: 20px;
+}
+#thickbox_wizard .postbox #next_wizard{
+    right: 20px;
+}
+#mailaddresslog{
+	margin-bottom: 15px;
+}
+#next_wizard .dashicons,
+#prev_wizard .dashicons{
+	margin-top: -4px;
+	vertical-align: middle;
+}
+.postbox-title[data-background-color="postbox-wizard_metabox_0"]{
+	background: none !important;
+	background-color: #b4ceb1 !important;
+}
+.postbox-title[data-background-color="postbox-wizard_metabox_1"]{
+	background: none !important;
+	background-color: #0085ba !important;
+	color: #ffffff !important;
+}
+.postbox-title[data-background-color="postbox-wizard_metabox_2"]{
+	background: none !important;
+	background-color: #f09999 !important;
+}
+.postbox-title[data-background-color="postbox-wizard_metabox_3"]{
+	background: none !important;
+	background-color: #f997c7 !important;
+}
+.postbox-title[data-background-color="postbox-wizard_metabox_4"]{
+	background: none !important;
+	background-color: #55a288 !important;
+}
+.postbox-title[data-background-color="postbox-wizard_metabox_5"]{
+	background: none !important;
+	background-color: #ffffff !important;
+}
+.postbox-title[data-background-color="postbox-wizard_metabox_6"]{
+	background: none !important;
+	background-color: #006100 !important;
+	color: #ffffff !important;
+}
+.postbox-title[data-background-color="postbox-wizard_metabox_7"]{
+	background: none !important;
+	background-color: #eb9600 !important;
+}
+.postbox-title[data-background-color="postbox-wizard_metabox_8"]{
+	background: none !important;
+	background-color: #84f384 !important;
+}
+.postbox-title[data-background-color="postbox-wizard_metabox_9"]{
+	background: none !important;
+	background-color: #d4b388 !important;
+}
+.postbox-title[data-background-color="postbox-wizard_metabox_10"],
+.postbox-title[data-background-color="postbox-wizard_metabox_11"],
+.postbox-title[data-background-color="postbox-wizard_metabox_12"],
+.postbox-title[data-background-color="postbox-wizard_metabox_15"]{
+	background: none !important;
+	background-color: #e1fb34 !important;
+}
+.postbox-title[data-background-color="postbox-wizard_metabox_13"]{
+	background: none !important;
+	background-color: #c1fefe !important;
+}
+.postbox-title[data-background-color="postbox-wizard_metabox_14"]{
+	background: none !important;
+	background-color: #a2d1e1 !important;
+}
+.postbox-title[data-background-color="postbox-wizard_metabox_16"]{
+	background: none !important;
+	background-color: #ffffff !important;
+}
+@media (min-width: 992px){
+	#major-publishing-actions .radio{
+		width: 16px;
+	}
+}
+@media (max-width: 1199px){
+	#thickbox_wizard{
+		width: 60% !important;
+		left: 20% !important;
+	}
+}
+@media (max-width: 991px){
+	#thickbox_wizard {
+		width: 80% !important;
+		left: 10% !important;
+	}
+}
+@media (max-width: 767px){
+	#thickbox_wizard {
+	    width: 90% !important;
+		left: 5% !important;
+	}
+	#thickbox_wizard h2{
+		font-size: 20px !important;
+		padding: 20px !important;
+	}
+	#thickbox_wizard .postbox-title{
+		font-size: 14px !important;
+		padding: 10px !important;
+	}
+	#thickbox_wizard h2 input.closed_wizard{
+		font-size: 20px !important;
+	}
+	#thickbox_wizard .postbox .control-buttons{
+		font-size: 0;
+		padding: 0;
+		top: 18px;
+	}
+	.control-buttons .dashicons{
+		margin-top: 0 !important;
+		font-size: 30px;
+		padding: 0;
+		width: auto;
+		height: auto;
+	}
+}
+/* Wizard */

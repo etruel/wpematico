@@ -263,6 +263,7 @@ or to e-mail etruel@gmail.com
 * Fixes few javascript issues on campaigns editing.
 * Adds nahs updates individually for extensions.
 * Many tweaks to the debug page:
+* Many tweaks and fixes in the Campaign Wizard.
 * - Adds notice to updatable plugins.
 * - Adds Hard disk total and free space.
 * - Adds required PHP extensions and Apache Mods.

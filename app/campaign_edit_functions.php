@@ -1016,14 +1016,14 @@ public static function feeds_box( $post ) {
 		public static function campaign_wizard(){
 			global $post, $campaign_data, $cfg, $helptip;
 		
-			?>	
+			?>
 			<style type="text/css">
-				#wizard_mask{position: fixed;width: 100%;height: 100%;background-color: black;opacity: 0.5;top: 0;left: 0;z-index: 999999;display: none;}
-				#thickbox_wizard{position: relative;width:80%; height: auto;max-width: 700px;display: none;position: fixed;top: 0;left: 0;z-index: 9999999;padding:15px; background:-webkit-linear-gradient(#D47536,#B5642E); background:-moz-linear-gradient(#D47536,#B5642E); background:-o-linear-gradient(#D47536,#B5642E); }
+				#wizard_mask{position: fixed;width: 100%;height: 100%;background-color: rgba(0,0,0,.7);top: 0;left: 0;z-index: 999999;display: none;}
+				#thickbox_wizard{position: relative;display: none;position: absolute;z-index: 9999999;padding:15px; background:-webkit-linear-gradient(#D47536,#B5642E); background:-moz-linear-gradient(#D47536,#B5642E); background:-o-linear-gradient(#D47536,#B5642E); }
 				#thickbox_wizard h2{text-align: center; font-family: helvetica; color: white; position: relative; }
 				#thickbox_wizard h2 input{position: absolute; top: 0; right:0; padding-right:10px; background-color: transparent; border:none; font-size: 40px !important; color: white; margin-top: -30px; }
 				.help_wizard{font-size: 17px; min-height: 20px; max-height: 10vh; overflow-y: auto;  padding:5px; padding-left: 40px;}
-				.icon-wizard-help{font-size: 50px; float: left; color: white; margin-top: 5px; margin-left: -10px; }
+				.icon-wizard-help{font-size: 50px; float: left; color: white; }
 				.closed_wizard{text-shadow: 1px 1px 1px #9E5729;}
 				.thickbox_open {
 					background: rgb(238, 182, 78) !important;
@@ -1038,28 +1038,15 @@ public static function feeds_box( $post ) {
 			   
 				/* Small Devices */
 				@media screen and (max-width: 699px) and (min-width: 220px) {
-				    #thickbox_wizard{
-						width: 90% !important; 
-						margin-left: 1% !important;
-						margin-top: -5px !important;
-					}
-					#thickbox_wizard>h2{font-size: 12px !important;}
 					.help_wizard{font-size: 12px !important;}
-					.icon-wizard-help{font-size: 30px !important;}
 			    	.closed_wizard{font-size: 10px !important;}
 			    	.title_wizard{font-size: 0.8em !important; padding: 2px !important;}
-					.wpematico_divider_list_wizard{margin-top: -15px;}
-					#temp_postbox{margin-top: -25px !important;}
 				}
 			    
 			    
 			    /* Medium Devices, Desktops */
 			   @media screen and (max-width: 1000px) and (min-width: 700px) {
-			    	#thickbox_wizard{width: 60% !important;}
-					#thickbox_wizard{margin-top: 20px !important;}
-					#thickbox_wizard>h2{font-size: 30px !important;}
 					.help_wizard{font-size: 18px !important;}
-					.icon-wizard-help{font-size: 50px !important;}
 			    	.closed_wizard{font-size: 10px !important;}
 			    	.title_wizard{font-size: 1.3em !important; padding: 10px !important;}
 					.wpematico_divider_list_wizard{margin-top: -0px;}
@@ -1075,22 +1062,28 @@ public static function feeds_box( $post ) {
 
 			</div>
 			<div id="thickbox_wizard">
-				<h2 style="font-size: 30px; text-shadow: 1px 1px 1px #9E5729;"><?php echo __('CAMPAIGN WIZARD','wpematico'); ?>
-				<input type="button" value="x" class="closed_wizard"></h2>
+				<h2 style="font-size: 30px; font-family: Verdana; text-shadow: 1px 1px 1px rgba(0,0,0,.4);"><?php echo __('CAMPAIGN WIZARD','wpematico'); ?>
+					<input type="button" value="x" class="closed_wizard">
+				</h2>
 					<div class="title_wizard" id="titlediv" style="padding: 10px; background-color: #DB9667;"></div>
-					<div class="wpematico_divider_list_wizard" style="padding-top: 1vh; padding-bottom: 1vh; height: 10vh;">
+					<div class="wpematico_divider_list_wizard">
 						<span  class="dashicons dashicons-editor-help icon-wizard-help"></span>
 						<p style="color: white;margin-top: 0px;" class="help_wizard"> </p>
 					</div>
 						
 					<!--title default wizard-->
 					<div class="postbox" id="temp_postbox" style="height: 30vh; overflow-y:auto; border:6px solid #DB9667;">
-						<h2 class="hndle ui-sortable-handle temp_uisortable"  style="color: black; padding: 10px;"><span></span></h2>
+						<button type="button" id="prev_wizard" class="button control-buttons button-primary button-large">
+							<i class="dashicons dashicons-arrow-left"></i> <?php echo __('Prev','wpematico'); ?>
+						</button>
+						<button type="button" id="next_wizard" class="button control-buttons button-primary button-large">
+							<?php echo __('Next','wpematico'); ?> <i class="dashicons dashicons-arrow-right"></i>
+						</button>
+
+						<h2 class="hndle ui-sortable-handle temp_uisortable postbox-title" data-background-color="postbox-wizard_metabox_0" style="color: black; padding: 10px; font-family: 'Roboto', sans-serif;">
+							<span></span>
+						</h2>
 					</div>
-					<center>
-						<div style="display: inline-block; width: 100px;"><input type="button" id="prev_wizard" class="button button-primary button-large" value="<?php echo __('Prev','wpematico'); ?>" style="margin-bottom: 20px;font-size: 20px;"></div>
-						<div style="display: inline-block;width: 100px;" ><input type="button" id="next_wizard" class="button button-primary button-large" value="<?php echo __('Next','wpematico'); ?>" style="margin-bottom: 20px;  font-size: 20px;"></div>
-					</center>
 				</div>
 				<!--- -->
 
@@ -1199,6 +1192,7 @@ public static function feeds_box( $post ) {
 						$("#prev_wizard").show(0);
 						$("."+wizard_class_array[cont_wizard]).find('>div.inside').attr("wizard",$("."+wizard_class_array[cont_wizard]).attr("wizard"));
 						$("."+wizard_class_array[cont_wizard]).find('>div.inside').appendTo("#temp_postbox");
+						$('h2.postbox-title').attr('data-background-color','postbox-'+wizard_class_array[cont_wizard]);
 						$(".temp_uisortable span").text($("."+wizard_class_array[cont_wizard]).find('h2 span').text());
 						//$(".temp_uisortable").css({'background':''+$("."+wizard_class_array[cont_wizard]).find("h2.ui-sortable-handle").css("background")+''});
 						//$(".temp_uisortable").css({'background-color':color_background_title_wizard});
@@ -1224,6 +1218,7 @@ public static function feeds_box( $post ) {
 					$("#next_wizard").show(0);
 					$("."+wizard_class_array[cont_wizard]).find('>div.inside').attr("wizard",$("."+wizard_class_array[cont_wizard]).attr("wizard"));
 					$("."+wizard_class_array[cont_wizard]).find('>div.inside').appendTo("#temp_postbox");
+					$('h2.postbox-title').attr('data-background-color','postbox-'+wizard_class_array[cont_wizard]);
 					$(".temp_uisortable span").text($("."+wizard_class_array[cont_wizard]).find('h2 span').text());
 					$(".temp_uisortable").css({'background':''+$("."+wizard_class_array[cont_wizard]).find("h2.ui-sortable-handle").css("background")+''});
 					//help line
