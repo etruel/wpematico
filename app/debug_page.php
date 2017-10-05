@@ -318,6 +318,10 @@ function wpematico_debug_data() {
 		$vars['iconv_ok'] 		= extension_loaded('iconv');
 		$vars['ssl_ok'] 		= extension_loaded('openssl');
 		$vars['mcrypt_ok'] 		= extension_loaded('mcrypt');
+		$vars['ZipArchive'] 	= class_exists( 'ZipArchive' );
+		$vars['DOMDocument'] 	= class_exists( 'DOMDocument' );
+		$vars['GD_ok']			= ( extension_loaded( 'gd' ) && function_exists( 'gd_info' ) );
+
 
 		if( function_exists('apache_get_modules')) {
 			$apache_modules = apache_get_modules();
@@ -344,8 +348,10 @@ function wpematico_debug_data() {
 
 		if ( function_exists( 'ini_get' ) ) {
 			$vars['safe_mode'] = ini_get('safe_mode');
+			$vars['allow_url_fopen'] = ini_get('allow_url_fopen');
 			$vars['memory'] = wpematico_let_to_num( ini_get( 'memory_limit' ) );
 			$vars['time_limit'] = ini_get('max_execution_time');
+			$vars['ini_set'] = ini_set('max_execution_time', $vars['time_limit']) === false ? false : true;
 			$vars['disable_functions'] = ini_get('disable_functions');
 			$vars['upload_max_filesize'] = ini_get('upload_max_filesize');
 			$vars['post_max_size'] = ini_get('post_max_size');
@@ -515,6 +521,28 @@ function wpematico_show_data_info() {
 						?></td>
 					</tr>
 					<tr>
+						<td data-export-label="Allow URL fopen"><?php _e( 'Allow URL fopen:', 'wpematico' ); ?></td>
+						<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Enables the URL-aware fopen wrappers that enable accessing URL object like files.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+						<td><?php
+							if ( $allow_url_fopen ) {
+								echo '<mark class="yes">' . 'On' . '</mark>';
+							} else {
+								echo '<mark class="error">Off - ' . sprintf( __( 'We recommend turn Allow URL fopen <strong>On</strong>. <br /> See: <a href="%s" target="_blank">PHP: Allow URL fopen.</a>.', 'wpematico' ), 'http://php.net/manual/en/filesystem.configuration.php#ini.allow-url-fopen' ) . '</mark>';
+							}
+						?></td>
+					</tr>
+					<tr>
+						<td data-export-label="ini_set"><?php _e( 'ini_set:', 'wpematico' ); ?></td>
+						<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Sets the value of a PHP configuration option.  The configuration option will keep this new value during the script\'s execution, and will be restored at the script\'s ending. ', 'wpematico'  ) . '">[?]</a>'; ?></td>
+						<td><?php
+							if ( $ini_set ) {
+								echo '<mark class="yes">' . 'On' . '</mark>';
+							} else {
+								echo '<mark class="no">Off - ' . sprintf( __( 'We recommend to activate <strong>set_ini()</strong> in your server. <br /> See: <a href="%s" target="_blank">PHP: ini_set.</a>.', 'wpematico' ), 'http://php.net/manual/en/function.ini-set.php' ) . '</mark>';
+							}
+						?></td>
+					</tr>
+					<tr>
 						<td data-export-label="PHP Disabled Functions"><?php _e( 'PHP Disabled Functions:', 'wpematico' ); ?></td>
 						<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'PHP disabled functions to avoid potential unknown vulnerabilities.', 'wpematico'  ) . '">[?]</a>'; ?></td>
 						<td><?php echo str_replace(',', ',<br/>', $disable_functions ); ?></td>
@@ -547,17 +575,17 @@ function wpematico_show_data_info() {
 				<tr>
 					<td data-export-label="ZipArchive"><?php _e( 'ZipArchive:', 'wpematico' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'ZipArchive is recommended. They can be used to import and export zip files.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php echo class_exists( 'ZipArchive' ) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'ZipArchive', 'WPeMatico Core').'</mark>'; ?></td>
+					<td><?php echo $ZipArchive ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'ZipArchive', 'WPeMatico Core').'</mark>'; ?></td>
 				</tr>
 				<tr>
 					<td data-export-label="DOMDocument"><?php _e( 'DOMDocument:', 'wpematico' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__( '%s is recommended by %s.', 'wpematico'  ), 'DOMDocument', 'WPeMatico Core')) . '">[?]</a>'; ?></td>
-					<td><?php echo class_exists( 'DOMDocument' ) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'DOMDocument', 'some addons').'</mark>'; ?></td>
+					<td><?php echo $DOMDocument ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'DOMDocument', 'some addons').'</mark>'; ?></td>
 				</tr>
 				<tr>
 					<td data-export-label="GD Library"><?php _e( 'GD Library:', 'wpematico' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'WPeMatico uses this library to resize images and speed up your site\'s loading time', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php echo ( extension_loaded( 'gd' ) && function_exists( 'gd_info' ) ) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'GD', 'WPeMatico Core').'</mark>'; ?></td>
+					<td><?php echo $GD_ok ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'GD', 'WPeMatico Core').'</mark>'; ?></td>
 				</tr>
 				<tr>
 					<td data-export-label="XML (php.net/xml)"><?php _e( 'XML (php.net/xml):', 'wpematico' ); ?></td>
@@ -663,8 +691,8 @@ function wpematico_show_data_info() {
 					<td><?php echo ( $session_use_cookies ) ? '&#10004;' : '&ndash;'; ?></td>
 				</tr>
 				<tr>
-					<td data-export-label="Session enabled"><?php _e( 'SUHOSIN Installed:', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Session Configuration.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td data-export-label="Use Only Cookies"><?php _e( 'Use Only Cookies:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Use Only Cookies.', 'wpematico'  ) . '">[?]</a>'; ?></td>
 					<td><?php echo ( $session_use_only_cookies ) ? '&#10004;' : '&ndash;'; ?></td>
 				</tr>
 				<?php endif; ?>
@@ -681,7 +709,7 @@ function wpematico_show_data_info() {
 			</thead>
 			<tbody>
 				<tr>
-					<td data-export-label="Home URL"><?php _e( 'User Browser:', 'wpematico' ); ?></td>
+					<td data-export-label="User Browser"><?php _e( 'User Browser:', 'wpematico' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The local users\' browser information.', 'wpematico'  ) . '">[?]</a>'; ?></td>
 					<td><?php echo "<pre style='margin: 0;font-size: 11px;'>$browser</pre>"; ?></td>
 				</tr>
@@ -852,7 +880,7 @@ function wpematico_debug_info_get() {
 					 
 	$return  = apply_filters( 'wpematico_sysinfo_after_apache_mods', $return );
 
-	$return .= "\n" . '-- PHP Configuration' . "\n\n";
+	$return .= "\n" . '-- PHP Environment' . "\n\n";
 	
 	$return .= 'Post Max Size:           ' . $post_max_size . "\n";
 	$return .= 'Max Input Vars:          ' . $max_input_vars . "\n";
@@ -860,6 +888,8 @@ function wpematico_debug_info_get() {
 	$return .= 'PHP Memory Limit:        ' . size_format( $memory ) . "\n";
 //	$return .= 'Upload Max Filesize:     ' . $upload_max_filesize . "\n";
 	$return .= 'Safe Mode:               ' . ( $safe_mode ? 'Enabled' : 'Disabled' ) . "\n";
+	$return .= 'Allow URL fopen:         ' . ( $allow_url_fopen ? 'On' : 'Off' ) . "\n";
+	$return .= 'ini_set:         ' . ( $ini_set ? 'On' : 'Off' ) . "\n";
 	$return .= 'Disabled Functions:      ' . $disable_functions . "\n";
 	$return .= 'Display Errors:          ' . ( $display_errors ? 'On (' . $display_errors . ')' : 'N/A' ) . "\n";
 	if ( $display_errors ) {
@@ -877,22 +907,24 @@ function wpematico_debug_info_get() {
 	
 	// SimplePie required extensions and such	
 	$return .= 'cURL (php.net/curl):     ' . ( ($curl_ok) ? 'Enabled' : 'Disabled' ) . "\n";
+	$return .= 'ZipArchive:              ' . ( ($ZipArchive) ? 'Enabled' : 'Disabled' ) . "\n";
+	$return .= 'DOMDocument:             ' . ( ($DOMDocument) ? 'Enabled' : 'Disabled' ) . "\n";
+	$return .= 'GD Library:              ' . ( ($GD_ok) ? 'Enabled' : 'Disabled' ) . "\n";
 	$return .= 'XML (php.net/xml):       ' . ( ($xml_ok) ? 'Enabled, and sane' : 'Disabled, or broken' ) . "\n";
 	$return .= 'PCRE (php.net/pcre):     ' . ( ($pcre_ok) ? 'Enabled' : 'Disabled' ) . "\n";
 	$return .= 'Zlib (php.net/zlib):     ' . ( ($zlib_ok) ? 'Enabled' : 'Disabled' ) . "\n";
 	$return .= 'php.net/mbstring:        ' . ( ($mbstring_ok) ? 'Enabled' : 'Disabled' ) . "\n";
 	$return .= 'iconv (php.net/iconv):   ' . ( ($iconv_ok) ? 'Enabled' : 'Disabled' ) . "\n";
-	$return  = apply_filters( 'wpematico_sysinfo_after_simplepie_ext', $return );
-	
-	$return .= 'fsockopen:                ' . ( function_exists( 'fsockopen' ) ? 'Supported' : 'Not Supported' ) . "\n";
-	$return .= 'SOAP Client:              ' . ( class_exists( 'SoapClient' ) ? 'Installed' : 'Not Installed' ) . "\n";
-	$return .= 'php.net/openssl:   		 ' . ( ($ssl_ok) ? 'Enabled' : 'Disabled' ) . "\n";
-	$return .= 'php.net/mcrypt:   		 ' . ( ($mcrypt_ok) ? 'Enabled' : 'Disabled' ) . "\n";
+	$return .= 'OpenSSL(php.net/openssl):' . ( ($ssl_ok) ? 'Enabled' : 'Disabled' ) . "\n";
+	$return .= 'MCrypt (php.net/mcrypt): ' . ( ($mcrypt_ok) ? 'Enabled' : 'Disabled' ) . "\n";
+//	$return .= 'fsockopen:               ' . ( function_exists( 'fsockopen' ) ? 'Supported' : 'Not Supported' ) . "\n";
+//	$return .= 'SOAP Client:             ' . ( class_exists( 'SoapClient' ) ? 'Installed' : 'Not Installed' ) . "\n";
 
+	$return  = apply_filters( 'wpematico_sysinfo_after_simplepie_ext', $return );
 	$return  = apply_filters( 'wpematico_sysinfo_after_php_ext', $return );
 
 	// Session stuff
-	$return .= "\n" . '-- Session Configuration' . "\n\n";
+	$return .= "\n" . '-- Session Configuration' . "\n";
 	$return .= 'Session:                  ' . ( isset( $_SESSION ) ? 'Enabled' : 'Disabled' ) . "\n";
 
 	// The rest of this is only relevant is session is enabled
@@ -907,7 +939,7 @@ function wpematico_debug_info_get() {
 	$return  = apply_filters( 'wpematico_sysinfo_after_session_config', $return );
 
 	// Start with the basics...
-	$return .= '-- WordPress Environment' . "\n\n";
+	$return .= "\n" . '-- WordPress Environment' . "\n\n";
 	// The local users' browser information, handled by the Browser class
 	$return .= "" . '-- User Browser' . "\n";
 	$return .= $browser;
@@ -915,12 +947,12 @@ function wpematico_debug_info_get() {
 
 	$return .= 'Site URL:                 ' . $site_url . "\n";
 	$return .= 'Home URL:                 ' . $home_url . "\n";
+	$return .= 'Version:                  ' . get_bloginfo( 'version' ) . "\n";
 	$return .= 'Multisite:                ' . ($is_multisite ? 'Yes' : 'No' ) . "\n";
 	$return  = apply_filters( 'wpematico_sysinfo_after_site_info', $return );
 
 	// WordPress configuration
 	$return .= "\n" . '-- WordPress Configuration' . "\n";
-	$return .= 'Version:                  ' . get_bloginfo( 'version' ) . "\n";
 	$return .= 'Language WPLANG:          ' . ( defined( 'WPLANG' ) && WPLANG ? WPLANG : 'en_US' ) . "\n";
 	$return .= 'Language Setting:         ' . ( get_option( 'WPLANG' ) ? get_option( 'WPLANG' ) : 'Default' ) . "\n";
 	$return .= 'Permalink Structure:      ' . ( get_option( 'permalink_structure' ) ? get_option( 'permalink_structure' ) : 'Default' ) . "\n";
