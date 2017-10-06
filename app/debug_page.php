@@ -345,7 +345,21 @@ function wpematico_debug_data() {
 
 		$vars['wp_memory'] = wpematico_let_to_num( WP_MEMORY_LIMIT );
 		$vars['wp_max_upload_size'] = wp_max_upload_size() ;
+		$vars['permalink_structure'] = get_option( 'permalink_structure' ) ? get_option( 'permalink_structure' ) : 'Default';
+		$vars['show_on_front'] = get_option( 'show_on_front' );
+		// Only show page specs if frontpage is set to 'page'
+		if( $vars['show_on_front'] == 'page' ) {
+			$front_page_id = get_option('page_on_front');
+			$blog_page_id = get_option('page_for_posts');
+			$vars['wp_front_page_id'] = ( $front_page_id != 0 ? get_the_title( $front_page_id ) . ' (#' . $front_page_id . ')' : 'Unset' );
+			$vars['wp_blog_page_id'] = ( $blog_page_id != 0 ? get_the_title( $blog_page_id ) . ' (#' . $blog_page_id . ')' : 'Unset' );
+		}
+		$vars['db_prefix'] = strlen( $wpdb->prefix );
+		$vars['post_stati'] = implode( ', ', get_post_stati() );
 
+		$vars['active_plugins'] = wpematico_get_active_plugins();
+		$vars['muplugins'] = get_mu_plugins();		
+		
 		if ( function_exists( 'ini_get' ) ) {
 			$vars['safe_mode'] = ini_get('safe_mode');
 			$vars['allow_url_fopen'] = ini_get('allow_url_fopen');
@@ -740,6 +754,69 @@ function wpematico_show_data_info() {
 					</td>
 				</tr>
 				<tr>
+					<td data-export-label="Language WPLANG"><?php _e( 'Language WPLANG:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The current language set in wp-config.php, WPLANG constant. Default = en_US', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php echo get_locale() ?></td>
+				</tr>
+				<tr>
+					<td data-export-label="Language Setting"><?php _e( 'Language Setting:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The current language used by WordPress. Default = English', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php echo ( get_option( 'WPLANG' ) ? get_option( 'WPLANG' ) : 'Default' ) ?></td>
+				</tr>
+
+				<tr>
+					<td data-export-label="Permalink Structure"><?php _e( 'Permalink Structure:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The root URL of your site.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php echo $permalink_structure; ?></td>
+				</tr>
+				<tr>
+					<td data-export-label="Active Theme"><?php _e( 'Active Theme:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The version of WordPress installed on your site.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php echo $theme; ?></td>
+				</tr>
+				<tr>
+					<td data-export-label="Show On Front"><?php _e( 'Show On Front:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Wordpress option Show On Front.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php echo $show_on_front; ?>
+					<?php if ($show_on_front == 'page') {
+							echo '<br>  Page On Front:  ' . ($wp_front_page_id!= 'Unset' ? '<mark class="yes">' . $wp_front_page_id . '</mark>' : '<mark class="no">' . $wp_front_page_id . '</mark>') .'<br>' ;
+							echo ' Page For Posts: ' . ($wp_blog_page_id!= 'Unset' ? '<mark class="yes">' . $wp_blog_page_id . '</mark>' : '<mark class="no">' . $wp_blog_page_id . '</mark>');
+						} 
+						?>
+					</td>
+				</tr>
+				
+				<tr>
+					<td data-export-label="WP Remote Get"><?php _e( 'WP Remote Get:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'WPeMatico uses this method to communicate with the different RSS feeds and remote websites.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php echo ( $remote_get_work ) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">wp_remote_get() failed. Some theme features may not work. Please contact your hosting provider and make sure that https://etruel.com/downloads/feed/ is not blocked.</mark>'; ?></td>
+				</tr>
+				<tr>
+					<td data-export-label="WP Remote Post"><?php _e( 'WP Remote Post:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'WPeMatico uses this method to communicate with the different RSS feeds and remote websites', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php echo ($remote_post_work) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">wp_remote_post() failed. Some theme features may not work. Please contact your hosting provider and make sure that https://etruel.com/downloads/feed/ is not blocked.</mark>'; ?></td>
+				</tr>
+				<tr>
+					<td data-export-label="Table Prefix"><?php _e( 'Table Prefix:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The prefix of the DB tables names.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php echo 'Length: ' . $db_prefix . '   Status: ' . ( $db_prefix > 16 ? '<mark class="error">ERROR: Too long</mark>' : '<mark class="yes">Acceptable</mark>' ) ?></td>
+				</tr>
+				<tr>
+					<td data-export-label="WP Debug Mode"><?php _e( 'WP Debug Mode:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Displays whether or not WordPress is in Debug Mode.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php if ( defined('WP_DEBUG') && WP_DEBUG ) echo '<mark class="no">' . '&#10004;' . '</mark>'; else echo '<mark class="yes">' . '&ndash;' . '</mark>'; ?></td>
+				</tr>
+				<tr>
+					<td data-export-label="WP Debug Log Mode"><?php _e( 'WP Debug Log Mode:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Displays whether or not WordPress is writing its Debug in a file.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php if ( defined('WP_DEBUG_LOG') && WP_DEBUG_LOG ) echo '<mark class="no">' . '&#10004;' . '</mark>'; else echo '<mark class="yes">' . '&ndash;' . '</mark>'; ?></td>
+				</tr>
+				<tr>
+					<td data-export-label="WP Debug Display"><?php _e( 'WP Debug Mode Display:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Displays whether or not WordPress is showing in its site all warnings and errors reported by its Debug Mode.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php if ( defined('WP_DEBUG_DISPLAY') && WP_DEBUG_DISPLAY ) echo '<mark class="no">' . '&#10004;' . '</mark>'; else echo '<mark class="yes">' . '&ndash;' . '</mark>'; ?></td>
+				</tr>
+				<tr>
 					<td data-export-label="WP Memory Limit"><?php _e( 'WP Memory Limit:', 'wpematico' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The maximum amount of memory (RAM) that your site can use at one time.', 'wpematico'  ) . '">[?]</a>'; ?></td>
 					<td><?php
@@ -756,39 +833,65 @@ function wpematico_show_data_info() {
 					<td><?php echo size_format( $wp_max_upload_size ); ?></td>
 				</tr>
 				<tr>
-					<td data-export-label="WP Debug Mode"><?php _e( 'WP Debug Mode:', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Displays whether or not WordPress is in Debug Mode.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php if ( defined('WP_DEBUG') && WP_DEBUG ) echo '<mark class="no">' . '&#10004;' . '</mark>'; else echo '<mark class="yes">' . '&ndash;' . '</mark>'; ?></td>
-				</tr>
-				<tr>
-					<td data-export-label="Language"><?php _e( 'Language:', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The current language used by WordPress. Default = English', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php echo get_locale() ?></td>
-				</tr>
-				<tr>
-					<td data-export-label="WP Remote Get"><?php _e( 'WP Remote Get:', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'WPeMatico uses this method to communicate with the different RSS feeds and remote websites.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php echo ( $remote_get_work ) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">wp_remote_get() failed. Some theme features may not work. Please contact your hosting provider and make sure that https://etruel.com/downloads/feed/ is not blocked.</mark>'; ?></td>
-				</tr>
-				<tr>
-					<td data-export-label="WP Remote Post"><?php _e( 'WP Remote Post:', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'WPeMatico uses this method to communicate with the different RSS feeds and remote websites', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php echo ($remote_post_work) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">wp_remote_post() failed. Some theme features may not work. Please contact your hosting provider and make sure that https://etruel.com/downloads/feed/ is not blocked.</mark>'; ?></td>
+					<td data-export-label="Registered Post Stati"><?php _e( 'Registered Post Stati:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Registered Post Status by different custom post types or plugins.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php echo str_replace(',', ',<br/>', $post_stati ); ?></td>
 				</tr>
 			</tbody>
 		</table>
+
+	<?php //if (count( (array) $muplugins ) > 0 ) : ?>
+		<h3 class="screen-reader-text"><?php _e( 'Must-Use Plugins', 'wpematico' ); ?></h3>
+		<table class="widefat debug-section" cellspacing="0" id="status">
+			<thead>
+				<tr>
+					<th colspan="3" class="debug-section-title" data-export-label="Must-Use Plugins (<?php echo count( (array) $muplugins ); ?>)"><?php _e( 'Must-Use Plugins', 'wpematico' ); ?> (<?php echo count( (array) $muplugins ); ?>)</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php			
+				foreach ( $muplugins as $plugin ) {
+					$new_version    = $plugin['new_version'];
+					$plugin_data    = $plugin['plugin_data'];
+					$dirname        = $plugin['dirname'];
+					$version_string = $plugin['version_string'];
+					$network_string = $plugin['network_string'];
+
+					if ( ! empty( $plugin_data['Name'] ) ) {
+
+						// link the plugin name to the plugin url if available
+						$plugin_name = esc_html( $plugin_data['Name'] );
+
+						if ( ! empty( $plugin_data['PluginURI'] ) ) {
+							$plugin_name = '<a href="' . esc_url( $plugin_data['PluginURI'] ) . '" title="' . __( 'Visit plugin homepage' , 'wpematico' ) . '">' . $plugin_name . '</a>';
+						}
+						?>
+						<tr>
+							<td><?php echo $plugin_name; ?></td>
+							<td class="help">&nbsp;<?php echo $plugin_data['Version']; ?>
+								<?php if (!empty($new_version)) : ?>
+									<strong><?php printf(__('(needs update - %s)', 'wpematico'), $new_version); ?></strong>
+								<?php endif; ?>
+							</td>
+							<td><?php printf( _x( 'by %s', 'by author', 'wpematico' ), $plugin_data['Author'] ) . ' &ndash; ' . esc_html( $plugin_data['Version'] ) . $version_string . $network_string; ?></td>
+						</tr>
+						<?php
+					}
+				}
+				?>
+			</tbody>
+		</table>
+	<?php //endif; // (count($muplugins ) > 0 ?>
 
 		<h3 class="screen-reader-text"><?php _e( 'Active Plugins', 'wpematico' ); ?></h3>
 		<table class="widefat debug-section" cellspacing="0" id="status">
 			<thead>
 				<tr>
-					<th colspan="3" class="debug-section-title" data-export-label="Active Plugins (<?php echo count( (array) wpematico_get_active_plugins() ); ?>)"><?php _e( 'Active Plugins', 'wpematico' ); ?> (<?php echo count( (array) wpematico_get_active_plugins() ); ?>)</th>
+					<th colspan="3" class="debug-section-title" data-export-label="Active Plugins (<?php echo count( (array) $active_plugins ); ?>)"><?php _e( 'Active Plugins', 'wpematico' ); ?> (<?php echo count( (array) $active_plugins ); ?>)</th>
 				</tr>
 			</thead>
 			<tbody>
-				<?php
-				$active_plugins = wpematico_get_active_plugins();
-				
+				<?php				
 				foreach ( $active_plugins as $plugin ) {
 					$new_version    = $plugin['new_version'];
 					$plugin_data    = $plugin['plugin_data'];
@@ -820,6 +923,7 @@ function wpematico_show_data_info() {
 				?>
 			</tbody>
 		</table>
+		
 <?php
 }
 
@@ -850,13 +954,13 @@ function wpematico_save_danger_data() {
  * @return      string $return A string containing the info to output
  */
 function wpematico_debug_info_get() {
-	global $wpdb;
+	//global $wpdb;
 	$cfg = get_option(WPeMatico :: OPTION_KEY);
 	$cfg = apply_filters('wpematico_check_options', $cfg); 
 	$debug_data = wpematico_debug_data(); 
 	extract($debug_data);
 
-	$return  = '### Begin Debug Info ###' . "\n\n";
+	$return  = '<pre>### Begin Debug Info ###' . "\n\n";
 
 	$return .= "" . '-- Server Environment' . "\n\n";
 	// Can we determine the site's host?
@@ -942,34 +1046,37 @@ function wpematico_debug_info_get() {
 	$return .= "\n" . '-- WordPress Environment' . "\n\n";
 	// The local users' browser information, handled by the Browser class
 	$return .= "" . '-- User Browser' . "\n";
-	$return .= $browser;
+	$return .= $browser . "\n";
 	$return  = apply_filters( 'wpematico_sysinfo_after_user_browser', $return );
 
-	$return .= 'Site URL:                 ' . $site_url . "\n";
 	$return .= 'Home URL:                 ' . $home_url . "\n";
+	$return .= 'Site URL:                 ' . $site_url . "\n";
 	$return .= 'Version:                  ' . get_bloginfo( 'version' ) . "\n";
 	$return .= 'Multisite:                ' . ($is_multisite ? 'Yes' : 'No' ) . "\n";
 	$return  = apply_filters( 'wpematico_sysinfo_after_site_info', $return );
 
 	// WordPress configuration
 	$return .= "\n" . '-- WordPress Configuration' . "\n";
-	$return .= 'Language WPLANG:          ' . ( defined( 'WPLANG' ) && WPLANG ? WPLANG : 'en_US' ) . "\n";
+	$return .= 'Language WPLANG:          ' . get_locale() . "\n";
 	$return .= 'Language Setting:         ' . ( get_option( 'WPLANG' ) ? get_option( 'WPLANG' ) : 'Default' ) . "\n";
-	$return .= 'Permalink Structure:      ' . ( get_option( 'permalink_structure' ) ? get_option( 'permalink_structure' ) : 'Default' ) . "\n";
+	$return .= 'Permalink Structure:      ' . $permalink_structure . "\n";
 	$return .= 'Active Theme:             ' . $theme . "\n";
-	$return .= 'Show On Front:            ' . get_option( 'show_on_front' ) . "\n";
+	$return .= 'Show On Front:            ' . $show_on_front . "\n";
 	// Only show page specs if frontpage is set to 'page'
 	if( get_option( 'show_on_front' ) == 'page' ) {
-		$return .= 'Page On Front:            ' . ( $front_page_id != 0 ? get_the_title( $front_page_id ) . ' (#' . $front_page_id . ')' : 'Unset' ) . "\n";
-		$return .= 'Page For Posts:           ' . ( $blog_page_id != 0 ? get_the_title( $blog_page_id ) . ' (#' . $blog_page_id . ')' : 'Unset' ) . "\n";
+		$return .= 'Page On Front:            ' . $wp_front_page_id  . "\n";
+		$return .= 'Page For Posts:           ' . $wp_blog_page_id . "\n";
 	}
 	$return .= 'Remote Get:               ' . ($remote_get_work ? 'wp_remote_get() works' : 'wp_remote_get() does not work' ) . "\n";
 	$return .= 'Remote Post:              ' . ($remote_post_work ? 'wp_remote_post() works' : 'wp_remote_post() does not work' ) . "\n";
-	$return .= 'Table Prefix:             ' . 'Length: ' . strlen( $wpdb->prefix ) . '   Status: ' . ( strlen( $wpdb->prefix ) > 16 ? 'ERROR: Too long' : 'Acceptable' ) . "\n";
+	$return .= 'Table Prefix:             ' . 'Length: ' . $db_prefix . '   Status: ' . ( $db_prefix > 16 ? 'ERROR: Too long' : 'Acceptable' ) . "\n";
 
 	$return .= 'WP_DEBUG:                 ' . ( defined( 'WP_DEBUG' ) ? WP_DEBUG ? 'Enabled' : 'Disabled' : 'Not set' ) . "\n";
+	$return .= 'WP_DEBUG_LOG:             ' . ( defined( 'WP_DEBUG_LOG' ) ? WP_DEBUG_LOG ? 'Enabled' : 'Disabled' : 'Not set' ) . "\n";
+	$return .= 'WP_DEBUG_DISPLAY:         ' . ( defined( 'WP_DEBUG_DISPLAY' ) ? WP_DEBUG_DISPLAY ? 'Enabled' : 'Disabled' : 'Not set' ) . "\n";
 	$return .= 'Memory Limit:             ' . size_format( $wp_memory ) . "\n";
-	$return .= 'Registered Post Stati:    ' . implode( ', ', get_post_stati() ) . "\n";
+	$return .= 'WP Max Upload Size:       ' . size_format( $wp_max_upload_size ) . "\n";
+	$return .= 'Registered Post Stati:    ' . $post_stati . "\n";
 
 	$return  = apply_filters( 'wpematico_sysinfo_after_wordpress_config', $return );
 
@@ -987,9 +1094,8 @@ function wpematico_debug_info_get() {
 	$return  = apply_filters( 'wpematico_sysinfo_after_wpematico_config', $return );
 
     // Must-use plugins
-    $muplugins = get_mu_plugins();
     if( count( $muplugins > 0 ) ) {
-        $return .= "\n" . '-- Must-Use Plugins' . "\n\n";
+        $return .= "\n" . '-- Must-Use Plugins (' .count( (array) $muplugins ) .')' . "\n\n";
 
         foreach( $muplugins as $plugin => $plugin_data ) {
             $return .= $plugin_data['Name'] . ': ' . $plugin_data['Version'] . "\n";
@@ -999,9 +1105,7 @@ function wpematico_debug_info_get() {
     }
 
 	// WordPress active plugins
-	$return .= "\n" . '-- WordPress Active Plugins' . "\n\n";
-	
-	$active_plugins = wpematico_get_active_plugins();
+	$return .= "\n" . '-- WordPress Active Plugins (' .count( (array) $active_plugins ) .')' . "\n\n";
 	foreach ($active_plugins as $key => $plugin) {
 		$new_version    = $plugin['new_version'];
 		$plugin_data    = $plugin['plugin_data'];
@@ -1011,12 +1115,11 @@ function wpematico_debug_info_get() {
 			$return .= $plugin_name . ': ' . $plugin_data['Version'].(!empty($new_version)?' (needs update - '.$new_version.')': ''). "\n";
 		}
 	}
-	$plugins = get_plugins();
 	$return  = apply_filters( 'wpematico_sysinfo_after_wordpress_plugins', $return );
 
 	// WordPress inactive plugins
+	$plugins = get_plugins();
 	$return .= "\n" . '-- WordPress Inactive Plugins' . "\n\n";
-
 	foreach( $plugins as $plugin_path => $plugin ) {
 		if( in_array( $plugin_path, $active_plugins ) )
 			continue;
@@ -1053,7 +1156,7 @@ function wpematico_debug_info_get() {
 
 	$return  = apply_filters( 'wpematico_sysinfo_after_get_defined_constants', $return );
 
-	$return .= "\n\n" . '### End Debug Info ###';
+	$return .= "\n\n" . '### End Debug Info ###</pre>';
 
 	return $return;
 }
