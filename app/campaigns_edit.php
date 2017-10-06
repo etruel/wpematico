@@ -26,7 +26,6 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		add_action('admin_print_styles-post-new.php', array( __CLASS__ ,'admin_styles'));
 		add_action('admin_print_scripts-post.php', array( __CLASS__ ,'admin_scripts'));
 		add_action('admin_print_scripts-post-new.php', array( __CLASS__ ,'admin_scripts'));
-
 		add_action( 'add_meta_boxes', array( __CLASS__ ,'all_meta_boxes'), 10, 2 );
 	}
 	public static function all_meta_boxes($post_type, $post) {
@@ -36,7 +35,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		if (!empty($campaign_id) && !$cfg['disable_metaboxes_wpematico_posts']) {
 			add_meta_box( 
 		        'wpematico-all-meta-box',
-		        __('WPeMatico Campaign Info', WPeMatico::TEXTDOMAIN ),
+		        __('WPeMatico Campaign Info', 'wpematico' ),
 		        array(__CLASS__, 'render_all_meta_boxes'),
 		        $post_type,
 		        'normal',
@@ -49,7 +48,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		$campaign_id = get_post_meta($post->ID, 'wpe_campaignid', true);
 		$feed = get_post_meta($post->ID, 'wpe_feed', true);
 		$source = get_post_meta($post->ID, 'wpe_sourcepermalink', true);
-		echo '<span class="description">' . __('All links are no-follow and open in a new browser tab.', WPeMatico::TEXTDOMAIN ).'</span>';
+		echo '<span class="description">' . __('All links are no-follow and open in a new browser tab.', 'wpematico' ).'</span>';
 		?><style type="text/css"> 
 			#wpematico-all-meta-box h2 {
 				background-color: orange;
@@ -72,26 +71,26 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		echo '<table class="wpematico-data-table">
 			<tr>
 				<td>
-					<b>'.__('Published by Campaign', WPeMatico::TEXTDOMAIN ).':</b>
+					<b>'.__('Published by Campaign', 'wpematico' ).':</b>
 				</td>
 				<td>
-					<a title="'.__('Edit the campaign.', WPeMatico::TEXTDOMAIN ).'" href="'.admin_url('post.php?post='.$campaign_id.'&action=edit').'" target="_blank">'.get_the_title($campaign_id).'</a>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<b>'.__('From feed', WPeMatico::TEXTDOMAIN ).':</b>
-				</td>
-				<td>
-					<a title="'.__('Open the feed URL in the browser.', WPeMatico::TEXTDOMAIN ).'" href="'.$feed.'" rel="nofollow" target="_blank">'.$feed.'</a>
+					<a title="'.__('Edit the campaign.', 'wpematico' ).'" href="'.admin_url('post.php?post='.$campaign_id.'&action=edit').'" target="_blank">'.get_the_title($campaign_id).'</a>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<b>'.__('Source permalink', WPeMatico::TEXTDOMAIN ).':</b>
+					<b>'.__('From feed', 'wpematico' ).':</b>
 				</td>
 				<td>
-					<a title="'.__('Go to the source website to see the original content.', WPeMatico::TEXTDOMAIN ).'" href="'.$source.'" rel="nofollow" target="_blank">'.$source.'</a>
+					<a title="'.__('Open the feed URL in the browser.', 'wpematico' ).'" href="'.$feed.'" rel="nofollow" target="_blank">'.$feed.'</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b>'.__('Source permalink', 'wpematico' ).':</b>
+				</td>
+				<td>
+					<a title="'.__('Go to the source website to see the original content.', 'wpematico' ).'" href="'.$source.'" rel="nofollow" target="_blank">'.$source.'</a>
 				</td>
 			</tr>
 		</table>';
@@ -168,18 +167,20 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		
 
 		$wpematico_object = array(
-					'text_dismiss_this_notice' =>  __('Dismiss this notice.', WPeMatico::TEXTDOMAIN),
-					'text_type_some_feed_url' =>  __('Type some feed URL.', WPeMatico::TEXTDOMAIN),
-					'text_type_some_new_feed_urls' =>  __('Type some new Feed URL/s.', WPeMatico::TEXTDOMAIN),
+					'text_dismiss_this_notice' =>  __('Dismiss this notice.', 'wpematico'),
+					'text_type_some_feed_url' =>  __('Type some feed URL.', 'wpematico'),
+					'text_type_some_new_feed_urls' =>  __('Type some new Feed URL/s.', 'wpematico'),
+					'text_running_campaign' =>  __('Running Campaign...', 'wpematico'),
+					'image_run_loading' =>  get_bloginfo('wpurl').'/wp-admin/images/wpspin_light.gif',
 				);
 		if ($cfg['enableword2cats']) {
 			
-			$wpematico_object['text_w2c_word'] =  __('Word:', WPeMatico::TEXTDOMAIN);
-			$wpematico_object['text_w2c_on_title'] = __('on Title', WPeMatico::TEXTDOMAIN);
-			$wpematico_object['text_w2c_regex'] = __('RegEx', WPeMatico::TEXTDOMAIN);
-			$wpematico_object['text_w2c_case_sensitive'] = __('Case sensitive', WPeMatico::TEXTDOMAIN);
-			$wpematico_object['text_w2c_to_category'] = __('To Category:', WPeMatico::TEXTDOMAIN);
-			$wpematico_object['text_w2c_delete_this_item'] = __('Delete this item', WPeMatico::TEXTDOMAIN);
+			$wpematico_object['text_w2c_word'] =  __('Word:', 'wpematico');
+			$wpematico_object['text_w2c_on_title'] = __('on Title', 'wpematico');
+			$wpematico_object['text_w2c_regex'] = __('RegEx', 'wpematico');
+			$wpematico_object['text_w2c_case_sensitive'] = __('Case sensitive', 'wpematico');
+			$wpematico_object['text_w2c_to_category'] = __('To Category:', 'wpematico');
+			$wpematico_object['text_w2c_delete_this_item'] = __('Delete this item', 'wpematico');
 
 			
 			$wpematico_object['wpe_w2c_dropdown_categories'] = wp_dropdown_categories( array(
@@ -217,8 +218,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		$visibility_trans = __('Public');
 		$description = __('Campaign Description', WPeMatico :: TEXTDOMAIN );
 		$description_help = __('Here you can write some observations.',  WPeMatico :: TEXTDOMAIN);
-		//$runnowbutton_OLD = '<div class="right m7 " style="margin-left: 47px;"><div style="background-color: #EB9600;" id="run_now" class="button-primary">'. __('Run Now', WPeMatico :: TEXTDOMAIN ) . '</div></div>';
-		$runnowbutton = '<button style="background-color: #EB9600;" id="run_now" class="button button-large" type="button">'. __('Run Now', WPeMatico :: TEXTDOMAIN ) . '';
+		
 		$cfg = get_option(WPeMatico :: OPTION_KEY);
 		
 		?>
@@ -231,8 +231,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 			$('#postexcerpt .hndle span').text('<?php echo $description; ?>');
 			$('#postexcerpt .inside .screen-reader-text').text('<?php echo $description; ?>');
 			$('#postexcerpt .inside p').text('<?php echo $description_help; ?>');
-			//jQuery('#delete-action').append('<?php echo $runnowbutton; ?>');
-			$('#publishing-action').prepend('<?php echo $runnowbutton; ?>');
+
 
 			$('#psearchtext').keyup(function(tecla){
 				if(tecla.keyCode==27) {
@@ -497,29 +496,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 				$('#rewrites_edit').append(nuevo);
 			});
 			
-			$('#run_now').click(function() {
-				$(this).attr('style','Background:#CCC;');
-				$('html').css('cursor','wait');
-//				$.ajaxSetup({async:false});
-				$('#fieldserror').remove();
-				msgdev="<img width='12' src='<?php echo get_bloginfo('wpurl'); ?>/wp-admin/images/wpspin_light.gif' class='mt2'> <?php _e('Running Campaign...', WPeMatico :: TEXTDOMAIN ); ?>";
-				$("#poststuff").prepend('<div id="fieldserror" class="updated fade he20">'+msgdev+'</div>');
-				c_ID = $('#post_ID').val();
-				var data = {
-					campaign_ID: c_ID ,
-					action: "wpematico_run"
-				};
-				$.post(ajaxurl, data, function(msgdev) {  //si todo ok devuelve LOG sino 0
-					$('#fieldserror').remove();
-					if( msgdev.substring(0, 5) == 'ERROR' ){
-						$("#poststuff").prepend('<div id="fieldserror" class="error fade">'+msgdev+'</div>');
-					}else{
-						$("#poststuff").prepend('<div id="fieldserror" class="updated fade">'+msgdev+'</div>');
-					}
-					$('html').css('cursor','auto');
-					$(this).attr('style','Background:#FFF52F;');
-				});
-			});
+			
 			
 			$('#post').submit( function() {		//checkfields
 				$('#wpcontent .ajax-loading').attr('style',' visibility: visible;');

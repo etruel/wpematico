@@ -1,5 +1,29 @@
 jQuery(document).ready(function($){
 
+	jQuery('#run_now').click(function(e) {
+		jQuery(this).addClass('green');
+		jQuery('html').css('cursor','wait');
+		jQuery('#fieldserror').remove();
+		msgdev="<img width='12' src='"+wpematico_object.image_run_loading+"' class='mt2'> "+wpematico_object.text_running_campaign+"";
+		jQuery("#poststuff").prepend('<div id="fieldserror" class="updated fade he20">'+msgdev+'</div>');
+		c_ID = jQuery('#post_ID').val();
+		var data = {
+			campaign_ID: c_ID ,
+			action: "wpematico_run"
+		};
+		jQuery.post(ajaxurl, data, function(msgdev) {  //si todo ok devuelve LOG sino 0
+			jQuery('#fieldserror').remove();
+			if( msgdev.substring(0, 5) == 'ERROR' ){
+					jQuery("#poststuff").prepend('<div id="fieldserror" class="error fade">'+msgdev+'</div>');
+			}else{
+				jQuery("#poststuff").prepend('<div id="fieldserror" class="updated fade">'+msgdev+'</div>');
+			}
+			jQuery('html').css('cursor','auto');
+			jQuery('#run_now').removeClass('green');
+		});
+		e.preventDefault();
+	});
+
 	jQuery('#campaign_striphtml').change(function() {
 		if (jQuery('#campaign_striphtml').is(':checked')) {
 			jQuery('#campaign_strip_links').attr('checked', false);

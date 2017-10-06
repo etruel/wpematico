@@ -43,13 +43,100 @@ class WPeMatico_Campaign_edit_functions {
 		//***** Call nonstatic
 		if( $cfg['nonstatic'] ) { NoNStatic :: meta_boxes($campaign_data, $cfg); }
 		// Publish Meta_box edited
-		add_action('post_submitbox_start', array( __CLASS__ ,'post_submitbox_start')); 
+		add_action('post_submitbox_start', array( __CLASS__ ,'post_submitbox_start'), 10, 0); 
+		add_action('post_submitbox_start', array(__CLASS__, 'campaign_run_datails'), 11, 0);
 		//wizard script
 		add_action('admin_footer',array(__CLASS__,'campaign_wizard'));
 		do_action('wpematico_create_metaboxes',$campaign_data,$cfg); 
 
+		
+
 	}
 	
+	/**
+	* Static function submitbox
+	* @access public
+	* @return void
+	* @since 1.8.0
+	*/
+	public static function campaign_run_datails() {
+		global $post, $campaign_data;
+		$activated = (bool)$campaign_data['activated']; 
+		$lastrun = get_post_meta($post->ID, 'lastrun', true);
+		$lastrun = (isset($lastrun) && !empty($lastrun) ) ? $lastrun :  $campaign_data['lastrun']; 
+		$lastruntime = (isset($campaign_data['lastruntime'])) ? $campaign_data['lastruntime'] : ''; 
+		$postscount = get_post_meta($post->ID, 'postscount', true);
+		
+		$starttime = (isset($campaign_data['starttime']) && !empty($campaign_data['starttime']) ) ? $campaign_data['starttime'] : 0 ; 
+			//print_r($campaign_data);
+			$activated = (bool)$campaign_data['activated']; 
+			$atitle = ( $activated ) ? __("Stop and deactivate this campaign", 'wpematico') : __("Start/Activate Campaign Scheduler", 'wpematico');
+			if ($starttime>0) {  // Running play verde & grab rojo & stop gris
+				$runtime=current_time('timestamp')-$starttime;
+				
+				$lbotones = "<span class='statebutton play green'></span>";
+				if ($activated) { // Active play green & grab rojo & stop gris
+					$lbotones.= "<span class='statebutton grab red'></span>"; // To stop
+				} else {  // Inactive play verde & grab black & stop grey
+					$lbotones.= "<a class='statebutton grab' href='".WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','toggle')."' title='" . $atitle . "'></a>"; // To activate
+				}
+//				$lbotones.= "<span class='statebutton stop grey'></span>"; // To stop				
+				$lbotones.= "<a class='statebutton stop' href='".WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','clear')."' title='" . __("Break fetching and restore campaign", 'wpematico') . "'></a>"; // To activate
+				
+			}elseif ($activated) { // Running play gris & grab rojo & stop gris
+				$lbotones = "<a class='statebutton play' id='run_now' href='#' title='" . esc_attr(__('Run Once', 'wpematico')) . "'></a>";// To run now
+				$lbotones.= "<span class='statebutton grab red'></span>"; // To stop
+				$lbotones.= "<a class='statebutton stop' href='".WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','toggle')."' title='" . $atitle . "'></a>"; // To activate
+				
+			} else {  // Inactive play gris & grab gris & stop black
+				$lbotones = "<a class='statebutton play' id='run_now' href='#'  title='" . esc_attr(__('Run Once', 'wpematico')) . "'></a>";// To run now
+				$lbotones.= "<a class='statebutton grab' href='".WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','toggle')."' title='" . $atitle . "'></a>"; // To activate
+				$lbotones.= "<span class='statebutton stop grey'></span>"; // To stop
+				
+			}
+
+
+
+		?>
+		<div class="misc-pub-section wpematico_campaign_details">
+			<table class="wpematico_current_state">
+				<tr>
+					<td>
+						<?php echo $lbotones; ?>
+					</td>
+				</tr>
+			</table>
+			<table class="table_wpematico_details">
+				<?php 
+				if ($activated) : 
+					$cronnextrun = WPeMatico :: time_cron_next($campaign_data['cron']);
+					$cronnextrun = (isset($cronnextrun) && !empty($cronnextrun) && ($cronnextrun > 0 ) ) ? $cronnextrun : $campaign_data['cronnextrun']; 
+				?>
+				<tr>
+					<td><?php _e('Next Run:', 'wpematico'); ?></td>
+					<td><?php echo date_i18n( get_option('date_format').' '. get_option('time_format'), $cronnextrun ); ?></td>
+				</tr>
+				<?php endif; ?>
+				<?php 
+				if ($lastrun) : ?>
+				<tr>
+					<td><?php _e('Last Run:', 'wpematico'); ?></td>
+					<td><?php echo date_i18n( get_option('date_format').' '. get_option('time_format'), $lastrun ); ?></td>
+				</tr>
+				<tr>
+					<td><?php _e('Runtime:', 'wpematico'); ?></td>
+					<td><span id="lastruntime"><?php echo $lastruntime; ?></span> <?php _e('sec.', 'wpematico' ); ?></td>
+				</tr>
+				<?php endif; ?>
+				<tr>
+					<td><?php _e('Fetched Posts:', 'wpematico'); ?></td>
+					<td><?php echo (isset($postscount) && !empty($postscount) ) ? $postscount : $campaign_data['postscount']; ?></td>
+				</tr>
+			</table>
+		</div>
+		
+		<?php
+	}
 	
 		//*************************************************************************************
 	static function campaign_type_box() {
