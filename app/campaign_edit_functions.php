@@ -65,7 +65,9 @@ class WPeMatico_Campaign_edit_functions {
 		$lastrun = get_post_meta($post->ID, 'lastrun', true);
 		$lastrun = (isset($lastrun) && !empty($lastrun) ) ? $lastrun :  $campaign_data['lastrun']; 
 		$lastruntime = (isset($campaign_data['lastruntime'])) ? $campaign_data['lastruntime'] : ''; 
+		
 		$postscount = get_post_meta($post->ID, 'postscount', true);
+		$lastpostscount = get_post_meta($post->ID, 'lastpostscount', true);
 		
 		$starttime = (isset($campaign_data['starttime']) && !empty($campaign_data['starttime']) ) ? $campaign_data['starttime'] : 0 ; 
 			//print_r($campaign_data);
@@ -78,19 +80,19 @@ class WPeMatico_Campaign_edit_functions {
 				if ($activated) { // Active play green & grab rojo & stop gris
 					$lbotones.= "<span class='statebutton grab red'></span>"; // To stop
 				} else {  // Inactive play verde & grab black & stop grey
-					$lbotones.= "<a class='statebutton grab' href='".WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','toggle')."' title='" . $atitle . "'></a>"; // To activate
+					$lbotones.= "<a class='statebutton grab' href='".WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','toggle')."&campaign_edit=true' title='" . $atitle . "'></a>"; // To activate
 				}
 //				$lbotones.= "<span class='statebutton stop grey'></span>"; // To stop				
-				$lbotones.= "<a class='statebutton stop' href='".WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','clear')."' title='" . __("Break fetching and restore campaign", 'wpematico') . "'></a>"; // To activate
+				$lbotones.= "<a class='statebutton stop' href='".WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','clear')."&campaign_edit=true' title='" . __("Break fetching and restore campaign", 'wpematico') . "'></a>"; // To activate
 				
 			}elseif ($activated) { // Running play gris & grab rojo & stop gris
-				$lbotones = "<a class='statebutton play' id='run_now' href='#' title='" . esc_attr(__('Run Once', 'wpematico')) . "'></a>";// To run now
+				$lbotones = "<button type='button' class='statebutton play' id='run_now' title='" . esc_attr(__('Run Once', 'wpematico')) . "'></button>";// To run now
 				$lbotones.= "<span class='statebutton grab red'></span>"; // To stop
-				$lbotones.= "<a class='statebutton stop' href='".WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','toggle')."' title='" . $atitle . "'></a>"; // To activate
+				$lbotones.= "<a class='statebutton stop' href='".WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','toggle')."&campaign_edit=true' title='" . $atitle . "'></a>"; // To activate
 				
 			} else {  // Inactive play gris & grab gris & stop black
-				$lbotones = "<a class='statebutton play' id='run_now' href='#'  title='" . esc_attr(__('Run Once', 'wpematico')) . "'></a>";// To run now
-				$lbotones.= "<a class='statebutton grab' href='".WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','toggle')."' title='" . $atitle . "'></a>"; // To activate
+				$lbotones = "<button type='button' class='statebutton play' id='run_now' title='" . esc_attr(__('Run Once', 'wpematico')) . "'></button>";// To run now
+				$lbotones.= "<a class='statebutton grab' href='".WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','toggle')."&campaign_edit=true' title='" . $atitle . "'></a>"; // To activate
 				$lbotones.= "<span class='statebutton stop grey'></span>"; // To stop
 				
 			}
@@ -99,13 +101,7 @@ class WPeMatico_Campaign_edit_functions {
 
 		?>
 		<div class="misc-pub-section wpematico_campaign_details">
-			<table class="wpematico_current_state">
-				<tr>
-					<td>
-						<?php echo $lbotones; ?>
-					</td>
-				</tr>
-			</table>
+			
 			<table class="table_wpematico_details">
 				<?php 
 				if ($activated) : 
@@ -131,6 +127,22 @@ class WPeMatico_Campaign_edit_functions {
 				<tr>
 					<td><?php _e('Fetched Posts:', 'wpematico'); ?></td>
 					<td><?php echo (isset($postscount) && !empty($postscount) ) ? $postscount : $campaign_data['postscount']; ?></td>
+				</tr>
+				<tr>
+					<td><?php _e('Last Fetched Posts:', 'wpematico'); ?></td>
+					<td><?php echo (isset($lastpostscount) && !empty($lastpostscount) ) ? $lastpostscount : $campaign_data['lastpostscount']; ?></td>
+				</tr>
+				<?php do_action('wpematico_table_details'); ?>
+			</table>
+			<table class="wpematico_current_state">
+				<tr>
+					<td>
+						<?php echo $lbotones; ?>
+						<a id="campaign_edit_reset" href="<?php echo WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','reset'); ?>&campaign_edit=true" title="<?php _e('Reset post count', 'wpematico'); ?>" class="statebutton recycle2"></a>
+						<a id="campaign_edit_del_hash" href="<?php echo WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','delhash'); ?>&campaign_edit=true" title="<?php _e('Delete hash code for duplicates', 'wpematico'); ?>" class="statebutton delete"></a>
+						<a id="campaign_edit_see_logs" href="#" title="<?php _e('See last log of campaign. (Open a PopUp window)', 'wpematico'); ?>" class="statebutton blackstar"></a>
+						<?php do_action('wpematico_current_state_actions'); ?>
+					</td>
 				</tr>
 			</table>
 		</div>

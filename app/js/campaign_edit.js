@@ -1,5 +1,29 @@
 jQuery(document).ready(function($){
 
+	jQuery('#campaign_edit_reset').click(function(e) {
+		if (jQuery(this).data('wpematico_before_save')) {
+			e.preventDefault();
+			return false;
+		}
+		if (!confirm(wpematico_object.text_confirm_reset_campaign)) {
+			e.preventDefault();
+		}
+	});
+	jQuery('#campaign_edit_see_logs').click(function(e) {
+		window.open(wpematico_object.see_logs_action_url, wpematico_object.name_campaign,'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=700, height=600');
+		e.preventDefault();
+	});
+	jQuery('#campaign_edit_del_hash').click(function(e) {
+		if (jQuery(this).data('wpematico_before_save')) {
+			e.preventDefault();
+			return false;
+		}
+		if (!confirm(wpematico_object.text_confirm_delhash_campaign)) {
+			e.preventDefault();
+		}
+	});
+
+	
 	jQuery('#run_now').click(function(e) {
 		jQuery(this).addClass('green');
 		jQuery('html').css('cursor','wait');
@@ -209,4 +233,16 @@ delete_row_input = function(row_id){
 }
 function wpematico_replace_all(str, find, replace) {
     return str.replace(new RegExp(find, 'g'), replace);
+}
+function disable_run_now() {
+	jQuery('.wpematico_current_state a').each(function() {
+	  jQuery(this).data('wpematico_before_save', 'true');
+	});
+	jQuery('.wpematico_current_state > a, button').attr('disabled','disabled');
+	jQuery('.wpematico_current_state a').click(function(e) { 
+		e.preventDefault(); 
+	}); 
+	
+	jQuery('#run_now').attr('title',wpematico_object.text_save_before_run_campaign);
+	jQuery('.wpematico_current_state a').attr('title',wpematico_object.text_save_before_execute_action);
 }

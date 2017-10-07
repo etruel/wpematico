@@ -165,13 +165,24 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		wp_enqueue_script('wpematico_hooks', WPeMatico :: $uri .'app/js/wpe_hooks.js', array(), WPEMATICO_VERSION, true );
 		wp_enqueue_script('wpematico_campaign_edit', WPeMatico :: $uri .'app/js/campaign_edit.js', array( 'jquery' ), WPEMATICO_VERSION, true );
 		
+		$nonce = wp_create_nonce  ('clog-nonce');
+		$name_campaign = get_the_title($post->ID);
+		$see_logs_action_url = admin_url('admin-post.php?action=wpematico_campaign_log&p='.$post->ID.'&_wpnonce=' . $nonce);
 
 		$wpematico_object = array(
 					'text_dismiss_this_notice' =>  __('Dismiss this notice.', 'wpematico'),
 					'text_type_some_feed_url' =>  __('Type some feed URL.', 'wpematico'),
 					'text_type_some_new_feed_urls' =>  __('Type some new Feed URL/s.', 'wpematico'),
 					'text_running_campaign' =>  __('Running Campaign...', 'wpematico'),
+					'text_save_before_run_campaign' =>  __('Save before Run Campaign', 'wpematico'),
+					'text_save_before_execute_action' =>  __('Save before to execute this action', 'wpematico'),
+					'text_confirm_reset_campaign'		=> __('Are you sure you want to reset this campaign?', 'wpematico'),
+					'text_confirm_delhash_campaign'		=> __('Are you sure you want to delete hash code for duplicates of this campaign?', 'wpematico'),
+
 					'image_run_loading' =>  get_bloginfo('wpurl').'/wp-admin/images/wpspin_light.gif',
+
+					'name_campaign' =>  $name_campaign,
+					'see_logs_action_url' =>  $see_logs_action_url,
 				);
 		if ($cfg['enableword2cats']) {
 			
@@ -580,10 +591,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 				disable_run_now();
 			});
 			
-			disable_run_now = function() {
-				$('#run_now').attr('disabled','disabled');
-				$('#run_now').attr('title','<?php _e('Save before Run Campaign', WPeMatico :: TEXTDOMAIN ); ?>');
-			}
+			
 
 			<?php $CampaignTypesArray =  self::campaign_type_options();	?>
 			CampaignTypesArray = <?php echo wp_json_encode($CampaignTypesArray); ?>;

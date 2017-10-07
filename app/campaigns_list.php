@@ -429,7 +429,13 @@ class WPeMatico_Campaigns {
 		if (! ( isset( $_GET['post']) || isset( $_POST['post'])  || ( isset($_REQUEST['action']) && 'wpematico_copy_campaign' == $_REQUEST['action'] ) ) ) {
 			wp_die(__('No campaign ID has been supplied!',  'wpematico'));
 		}
-
+		$nonce = '';
+		if (isset($_REQUEST['nonce'])) {
+			$nonce = $_REQUEST['nonce'];
+		}
+		if(!wp_verify_nonce($nonce, 'wpe-action-nonce') ) {
+			wp_die('Are you sure?'); 
+		}
 		// Get the original post
 		$id = (isset($_GET['post']) ? $_GET['post'] : $_POST['post']);
 		$post = get_post($id);
@@ -464,6 +470,13 @@ class WPeMatico_Campaigns {
 		if (! ( isset( $_GET['post']) || isset( $_POST['post'])  || ( isset($_REQUEST['action']) && 'wpematico_toggle_campaign' == $_REQUEST['action'] ) ) ) {
 			wp_die(__('No campaign ID has been supplied!',  'wpematico'));
 		}
+		$nonce = '';
+		if (isset($_REQUEST['nonce'])) {
+			$nonce = $_REQUEST['nonce'];
+		}
+		if(!wp_verify_nonce($nonce, 'wpe-action-nonce') ) {
+			wp_die('Are you sure?'); 
+		}
 		// Get the original post
 		$id = (isset($_GET['post']) ? $_GET['post'] : $_POST['post']);
 
@@ -475,7 +488,11 @@ class WPeMatico_Campaigns {
 		WPeMatico::add_wp_notice( array('text' => $notice .' <b>'.  get_the_title($id).'</b>', 'below-h2'=>false ) );
 
 		// Redirect to the post list screen
-		wp_redirect( admin_url( 'edit.php?post_type=wpematico') );
+		if (isset($_GET['campaign_edit'])) {
+			wp_redirect( admin_url( 'post.php?action=edit&post=' . $id ) );
+		} else {
+			wp_redirect( admin_url( 'edit.php?post_type=wpematico') );
+		}
 	}
 
 	/*********FIN ACCION TOGGLE 	*/
@@ -484,6 +501,13 @@ class WPeMatico_Campaigns {
 	public static function wpematico_reset_campaign($status = ''){
 		if (! ( isset( $_GET['post']) || isset( $_POST['post'])  || ( isset($_REQUEST['action']) && 'wpematico_reset_campaign' == $_REQUEST['action'] ) ) ) {
 			wp_die(__('No campaign ID has been supplied!',  'wpematico'));
+		}
+		$nonce = '';
+		if (isset($_REQUEST['nonce'])) {
+			$nonce = $_REQUEST['nonce'];
+		}
+		if(!wp_verify_nonce($nonce, 'wpe-action-nonce') ) {
+			wp_die('Are you sure?'); 
 		}
 		// Get the original post
 		$id = (isset($_GET['post']) ? $_GET['post'] : $_POST['post']);
@@ -496,7 +520,11 @@ class WPeMatico_Campaigns {
 
 		WPeMatico::add_wp_notice( array('text' => __('Reset Campaign',  'wpematico').' <b>'.  get_the_title($id).'</b>', 'below-h2'=>false ) );
 		// Redirect to the post list screen
-		wp_redirect( admin_url( 'edit.php?post_type=wpematico') );
+		if (isset($_GET['campaign_edit'])) {
+			wp_redirect( admin_url( 'post.php?action=edit&post=' . $id ) );
+		} else {
+			wp_redirect( admin_url( 'edit.php?post_type=wpematico') );
+		}
 	}
 
 	/**************FIN ACCION RESET 	*/
@@ -505,6 +533,13 @@ class WPeMatico_Campaigns {
 	public static function wpematico_delhash_campaign(){
 		if (! ( isset( $_GET['post']) || isset( $_POST['post'])  || ( isset($_REQUEST['action']) && 'wpematico_delhash_campaign' == $_REQUEST['action'] ) ) ) {
 			wp_die(__('No campaign ID has been supplied!',  'wpematico'));
+		}
+		$nonce = '';
+		if (isset($_REQUEST['nonce'])) {
+			$nonce = $_REQUEST['nonce'];
+		}
+		if(!wp_verify_nonce($nonce, 'wpe-action-nonce') ) {
+			wp_die('Are you sure?'); 
 		}
 		// Get the original post
 		$id = (isset($_GET['post']) ? $_GET['post'] : $_POST['post']);
@@ -515,11 +550,15 @@ class WPeMatico_Campaigns {
 			add_post_meta( $id, $lasthashvar, "0", true )  or
 				update_post_meta( $id, $lasthashvar, "0" );
 		}
-		WPeMatico :: update_campaign( $id, $campaign_data );
+		WPeMatico::update_campaign( $id, $campaign_data );
 		WPeMatico::add_wp_notice( array('text' => __('Hash deleted on campaign',  'wpematico').' <b>'.  get_the_title($id).'</b>', 'below-h2'=>false ) );
 
 		// Redirect to the post list screen
-		wp_redirect( admin_url( 'edit.php?post_type=wpematico') );
+		if (isset($_GET['campaign_edit'])) {
+			wp_redirect( admin_url( 'post.php?action=edit&post=' . $id ) );
+		} else {
+			wp_redirect( admin_url( 'edit.php?post_type=wpematico') );
+		}
 	}
 	/**************FIN ACCION DELHASH	*/
 	
@@ -528,10 +567,17 @@ class WPeMatico_Campaigns {
 		if (! ( isset( $_GET['post']) || isset( $_POST['post'])  || ( isset($_REQUEST['action']) && 'wpematico_clear_campaign' == $_REQUEST['action'] ) ) ) {
 			wp_die(__('No campaign ID has been supplied!',  'wpematico'));
 		}
+		$nonce = '';
+		if (isset($_REQUEST['nonce'])) {
+			$nonce = $_REQUEST['nonce'];
+		}
+		if(!wp_verify_nonce($nonce, 'wpe-action-nonce') ) {
+			wp_die('Are you sure?'); 
+		} 
 
 		// Get the original post
 		$id = (isset($_GET['post']) ? $_GET['post'] : $_POST['post']);
-		$campaign_data =   WPeMatico :: get_campaign( $id );
+		$campaign_data =   WPeMatico::get_campaign( $id );
 
 		$campaign_data['cronnextrun']= WPeMatico :: time_cron_next($campaign_data['cron']); //set next run
 		$campaign_data['stoptime']   = current_time('timestamp');
@@ -539,11 +585,15 @@ class WPeMatico_Campaigns {
 		$campaign_data['lastruntime']= $campaign_data['stoptime']-$campaign_data['starttime'];
 		$campaign_data['starttime']  = '';
 
-		WPeMatico :: update_campaign( $id, $campaign_data );
+		WPeMatico::update_campaign( $id, $campaign_data );
 		WPeMatico::add_wp_notice( array('text' => __('Campaign cleared',  'wpematico').' <b>'.  get_the_title($id).'</b>', 'below-h2'=>false ) );
 
 		// Redirect to the post list screen
-		wp_redirect( admin_url( 'edit.php?post_type=wpematico') );
+		if (isset($_GET['campaign_edit'])) {
+			wp_redirect( admin_url( 'post.php?action=edit&post=' . $id ) );
+		} else {
+			wp_redirect( admin_url( 'edit.php?post_type=wpematico') );
+		}
 	}
 	/**************FIN ACCION DELHASH	*/
 	
@@ -592,10 +642,11 @@ class WPeMatico_Campaigns {
 			$action_name = "wpematico_clear_campaign";
 			break;			
 		}
+		$nonce = wp_create_nonce  ('wpe-action-nonce');
 		if ( 'display' == $context ) 
-			$action = '?action='.$action_name.'&amp;post='.$post->ID;
+			$action = '?action='.$action_name.'&amp;post='.$post->ID.'&amp;nonce='.$nonce;
 		else 
-			$action = '?action='.$action_name.'&post='.$post->ID;
+			$action = '?action='.$action_name.'&post='.$post->ID.'&nonce='.$nonce;
 			
 		$post_type_object = get_post_type_object( $post->post_type );
 		if ( !$post_type_object )	return;
