@@ -480,7 +480,7 @@ class WPeMatico_Campaigns {
 		// Get the original post
 		$id = (isset($_GET['post']) ? $_GET['post'] : $_POST['post']);
 
-		$campaign_data =   WPeMatico :: get_campaign( $id );
+		$campaign_data = WPeMatico::get_campaign( $id );
 		$campaign_data['activated'] = !$campaign_data['activated'];
 		WPeMatico :: update_campaign( $id, $campaign_data );
 		

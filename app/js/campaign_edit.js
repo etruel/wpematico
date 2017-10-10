@@ -63,7 +63,8 @@ jQuery(document).ready(function($){
 		$('input[name="campaign_feeds['+oldval+']"]').focus();
 		feed_new.attr('id','feed_ID'+newval);
 		$('input', feed_new).eq(0).attr('name','campaign_feeds['+ newval +']');
-		$('.delete', feed_new).eq(0).attr('onclick', "delete_feed_url('#feed_ID"+ newval +"');");
+		$('.deletefeed', feed_new).eq(0).attr('onclick', "delete_feed_url('#feed_ID"+ newval +"');");
+		$('.deletefeed', feed_new).eq(0).attr('id', 'deletefeed_'+newval);
 		$(document).trigger("before_add_more_feed", [feed_new, newval] );
 		$('#feeds_list').append(feed_new);
 		$('#feeds_list').vSort();
@@ -120,8 +121,9 @@ jQuery(document).ready(function($){
 
 	
 
-	$(document).on("click", '#deletefeed', function(event) {
+	$(document).on("click", '.deletefeed', function(e) {
 		delete_feed_url($(this).attr('data'));
+		e.preventDefault();
 	});
 	
 	$(document).on("click", '.check1feed', function(event) {
@@ -260,16 +262,16 @@ function wpematico_replace_all(str, find, replace) {
     return str.replace(new RegExp(find, 'g'), replace);
 }
 function disable_run_now() {
-	jQuery('.wpematico_current_state a').each(function() {
+	jQuery('.wpematico_current_state').find('a').each(function() {
 	  jQuery(this).data('wpematico_before_save', 'true');
 	});
-	jQuery('.wpematico_current_state > a, button').attr('disabled','disabled');
-	jQuery('.wpematico_current_state a').click(function(e) { 
+	jQuery('.wpematico_current_state').find('a, button').attr('disabled','disabled');
+	jQuery('.wpematico_current_state').find('a').click(function(e) { 
 		e.preventDefault(); 
 	}); 
 	
 	jQuery('#run_now').attr('title',wpematico_object.text_save_before_run_campaign);
-	jQuery('.wpematico_current_state a').attr('title',wpematico_object.text_save_before_execute_action);
+	jQuery('.wpematico_current_state').find('a').attr('title',wpematico_object.text_save_before_execute_action);
 }
 delete_feed_url = function(row_id){
 	jQuery(row_id).fadeOut(); 
