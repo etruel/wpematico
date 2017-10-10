@@ -258,16 +258,17 @@ or to e-mail etruel@gmail.com
 
 == Changelog ==
 = 1.8 Oct 2, 2017 =
+* Added a Campaign Control Panel with campaign info inside the editing screen.
 * Added wpe hooks (for developers) to use filters and actions from JavaScript.
-* Fixes the blank messages on errors when the feeds are tested.
-* Fixes few javascript issues on campaigns editing.
-* Adds nahs updates individually for extensions.
-* Many tweaks to the debug page:
+* Added nags updates individually for extensions.
 * Many tweaks and fixes in the Campaign Wizard.
-* Many tweaks and fixes in the Campaign Logs.
+* Many tweaks in the Campaign Logs.
+* Many tweaks to the debug page:
 * - Adds notice to updatable plugins.
 * - Adds Hard disk total and free space.
 * - Adds required PHP extensions and Apache Mods.
+* Fixes the blank messages on errors when the feeds are tested.
+* Fixes few javascript issues on campaigns editing.
 * Updated included external SimplePie library to 1.5 version.
 * **Professional Add-on:**
 * **Enlarges the version required for the Professional addon to 1.8v** (https://etruel.com/downloads/wpematico-professional/)

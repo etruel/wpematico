@@ -84,6 +84,33 @@ a.statebutton:hover {
   padding: 1px;
 /*  pointer-events: none;*/
 }
+
+.cpanelbutton.green {
+    color: #00BF00 !important;
+}
+.cpanelbutton.grey {
+    color: #888 !important;
+}
+.cpanelbutton.red {
+    color: red !important;
+}
+.cpanelbutton:hover {
+    cursor: pointer;
+}
+.cpanelbutton[disabled]:hover {
+    cursor: default;
+}
+
+.cpanelbutton:before {
+    margin-left: -10px; 
+}	
+.cpanelbutton {
+    height: 30px;
+	width: 30px;
+    padding-left: 0px;
+    margin: 0 5px 0 0;
+    padding-right: 0px;
+}
 /*Math & Factions*/
 .pi:before            { content: "\213C"; }
 .one_thrid:before     { content: "\2153"; }
@@ -128,7 +155,7 @@ a.statebutton:hover {
 .first_quarter_moon:before { content: "\263D"; }
 .last_quarter_moon:before  { content: "\263E"; }
 .wheelchair:before         { content: "\267F"; }
-.recycle:before            { content: "\267D"; }
+.recycle:before            { content: "\267D";font-size: 1.9em;margin: 3px; }
 .recycle2:before           { content: "\267C"; }
 .music_note:before         { content: "\266C"; }
 .male_and_female:before    { content: "\26A4"; }

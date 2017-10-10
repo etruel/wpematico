@@ -1,7 +1,9 @@
 jQuery(document).ready(function($){
-
-	jQuery('#campaign_edit_reset').click(function(e) {
-		if (jQuery(this).data('wpematico_before_save')) {
+	$('button[btn-href]').click(function(e) {
+		location.href = $(this).attr('btn-href');
+	});
+	$('#campaign_edit_reset').click(function(e) {
+		if ($(this).data('wpematico_before_save')) {
 			e.preventDefault();
 			return false;
 		}
@@ -9,12 +11,12 @@ jQuery(document).ready(function($){
 			e.preventDefault();
 		}
 	});
-	jQuery('#campaign_edit_see_logs').click(function(e) {
+	$('#campaign_edit_see_logs').click(function(e) {
 		window.open(wpematico_object.see_logs_action_url, wpematico_object.name_campaign,'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=700, height=600');
 		e.preventDefault();
 	});
-	jQuery('#campaign_edit_del_hash').click(function(e) {
-		if (jQuery(this).data('wpematico_before_save')) {
+	$('#campaign_edit_del_hash').click(function(e) {
+		if ($(this).data('wpematico_before_save')) {
 			e.preventDefault();
 			return false;
 		}
@@ -24,92 +26,93 @@ jQuery(document).ready(function($){
 	});
 
 	
-	jQuery('#run_now').click(function(e) {
-		jQuery(this).addClass('green');
-		jQuery('html').css('cursor','wait');
-		jQuery('#fieldserror').remove();
+//	$('#run_now').click(function(e) {
+	$(document).on("click", '.#run_now', function(e) {
+		$(this).addClass('green');
+		$('html').css('cursor','wait');
+		$('#fieldserror').remove();
 		msgdev="<img width='12' src='"+wpematico_object.image_run_loading+"' class='mt2'> "+wpematico_object.text_running_campaign+"";
-		jQuery("#poststuff").prepend('<div id="fieldserror" class="updated fade he20">'+msgdev+'</div>');
-		c_ID = jQuery('#post_ID').val();
+		$("#poststuff").prepend('<div id="fieldserror" class="updated fade he20">'+msgdev+'</div>');
+		c_ID = $('#post_ID').val();
 		var data = {
 			campaign_ID: c_ID ,
 			action: "wpematico_run"
 		};
-		jQuery.post(ajaxurl, data, function(msgdev) {  //si todo ok devuelve LOG sino 0
-			jQuery('#fieldserror').remove();
+		$.post(ajaxurl, data, function(msgdev) {  //si todo ok devuelve LOG sino 0
+			$('#fieldserror').remove();
 			if( msgdev.substring(0, 5) == 'ERROR' ){
-					jQuery("#poststuff").prepend('<div id="fieldserror" class="error fade">'+msgdev+'</div>');
+					$("#poststuff").prepend('<div id="fieldserror" class="error fade">'+msgdev+'</div>');
 			}else{
-				jQuery("#poststuff").prepend('<div id="fieldserror" class="updated fade">'+msgdev+'</div>');
+				$("#poststuff").prepend('<div id="fieldserror" class="updated fade">'+msgdev+'</div>');
 			}
-			jQuery('html').css('cursor','auto');
-			jQuery('#run_now').removeClass('green');
+			$('html').css('cursor','auto');
+			$('#run_now').removeClass('green');
 		});
 		e.preventDefault();
 	});
 
-	jQuery('#campaign_striphtml').change(function() {
-		if (jQuery('#campaign_striphtml').is(':checked')) {
-			jQuery('#campaign_strip_links').attr('checked', false);
-			jQuery('#div_campaign_strip_links_options').fadeOut();
-			jQuery('#div_campaign_strip_links').fadeOut();
+	$('#campaign_striphtml').change(function() {
+		if ($('#campaign_striphtml').is(':checked')) {
+			$('#campaign_strip_links').attr('checked', false);
+			$('#div_campaign_strip_links_options').fadeOut();
+			$('#div_campaign_strip_links').fadeOut();
 		} else {
-			jQuery('#div_campaign_strip_links').fadeIn();
+			$('#div_campaign_strip_links').fadeIn();
 		}
 	});
-	jQuery('#campaign_enable_template').change(function() {
-		if (jQuery('#campaign_enable_template').is(':checked')) {
-			jQuery('#postemplatearea').fadeIn();
+	$('#campaign_enable_template').change(function() {
+		if ($('#campaign_enable_template').is(':checked')) {
+			$('#postemplatearea').fadeIn();
 		} else {
-			jQuery('#postemplatearea').fadeOut();
+			$('#postemplatearea').fadeOut();
 		}
 	});
-	jQuery('#campaign_strip_links').change(function() {
-		if (jQuery('#campaign_striphtml').is(':checked') && jQuery('#campaign_strip_links').is(':checked')) {
-			jQuery('#campaign_strip_links').attr('checked', false);
-			jQuery('#div_campaign_strip_links_options').fadeOut();
+	$('#campaign_strip_links').change(function() {
+		if ($('#campaign_striphtml').is(':checked') && $('#campaign_strip_links').is(':checked')) {
+			$('#campaign_strip_links').attr('checked', false);
+			$('#div_campaign_strip_links_options').fadeOut();
 			return false;
 		}
-		if (jQuery('#campaign_strip_links').is(':checked')) {
-			jQuery('#div_campaign_strip_links_options').fadeIn();
+		if ($('#campaign_strip_links').is(':checked')) {
+			$('#div_campaign_strip_links_options').fadeIn();
 		} else {
-			jQuery('#div_campaign_strip_links_options').fadeOut();
+			$('#div_campaign_strip_links_options').fadeOut();
 		}
 
 	});
 
-	jQuery('#campaign_linktosource').change(function() {
-		if (jQuery('#campaign_linktosource').is(':checked')) {
-			jQuery('#copy_permanlink_source').attr('checked', false);
+	$('#campaign_linktosource').change(function() {
+		if ($('#campaign_linktosource').is(':checked')) {
+			$('#copy_permanlink_source').attr('checked', false);
 		}
 	});
-	jQuery('#copy_permanlink_source').change(function() {
-		if (jQuery('#copy_permanlink_source').is(':checked')) {
-			jQuery('#campaign_linktosource').attr('checked', false);
+	$('#copy_permanlink_source').change(function() {
+		if ($('#copy_permanlink_source').is(':checked')) {
+			$('#campaign_linktosource').attr('checked', false);
 		}
 	});
 
-	jQuery('#campaign_autocats').change(function(e) {
-		if (jQuery('#campaign_autocats').is(':checked')) {
-			jQuery('#autocats_container').fadeIn();
+	$('#campaign_autocats').change(function(e) {
+		if ($('#campaign_autocats').is(':checked')) {
+			$('#autocats_container').fadeIn();
 		} else {
-			jQuery('#autocats_container').fadeOut();
+			$('#autocats_container').fadeOut();
 		}
 	});
 
 	
 
-	jQuery(document).on("click", '.check1feed', function(event) {
-		item = jQuery(this).parent().parent().find('.feed_column input');
+	$(document).on("click", '.check1feed', function(event) {
+		item = $(this).parent().parent().find('.feed_column input');
 		feed = item.val();
-		var working = jQuery(this);
-		jQuery(working).removeClass('warning')
+		var working = $(this);
+		$(working).removeClass('warning')
 			.removeClass("frowning_face")
 			.removeClass("smiling_face")
 			.addClass('ruedita');
 
 		if (feed !== "") {
-			jQuery(item).attr('style','Background:#CCC;');
+			$(item).attr('style','Background:#CCC;');
 			var data = {
 				action: "wpematico_test_feed",
 				url: feed, 
@@ -117,20 +120,20 @@ jQuery(document).ready(function($){
 			};
 			data = js_apply_filters('wpematico_data_test_feed', data, item);
 			
-			jQuery.post(ajaxurl, data, function(response){
+			$.post(ajaxurl, data, function(response){
 				var dismiss = '<button type="button" class="notice-dismiss"><span class="screen-reader-text">'+wpematico_object.text_dismiss_this_notice+'</span></button>';
-				jQuery('.feederror').remove();
+				$('.feederror').remove();
 				if(response.success ){
-					jQuery(item).attr('style','Background:#75EC77;');
-					jQuery("#poststuff").prepend('<div id="message" class="feederror notice notice-success is-dismissible"><p>'+response.message+'</p>' +dismiss +'</div>');
-					jQuery(working).removeClass('warning')
+					$(item).attr('style','Background:#75EC77;');
+					$("#poststuff").prepend('<div id="message" class="feederror notice notice-success is-dismissible"><p>'+response.message+'</p>' +dismiss +'</div>');
+					$(working).removeClass('warning')
 							.removeClass("frowning_face")
 							.removeClass("ruedita")
 							.addClass('smiling_face');
 				} else {
-					jQuery(item).attr('style','Background:Red;');
-					jQuery("#poststuff").prepend('<div id="message" class="feederror notice notice-error is-dismissible"><p>ERROR: '+response.message+'</p>' +dismiss +'</div>');
-					jQuery(working).removeClass('warning')
+					$(item).attr('style','Background:Red;');
+					$("#poststuff").prepend('<div id="message" class="feederror notice notice-error is-dismissible"><p>ERROR: '+response.message+'</p>' +dismiss +'</div>');
+					$(working).removeClass('warning')
 							.removeClass("smiling_face")
 							.removeClass("ruedita")
 							.addClass('frowning_face');
@@ -139,55 +142,55 @@ jQuery(document).ready(function($){
 			});
  		} else {			
 			alert(wpematico_object.text_type_some_feed_url);
-			jQuery(working).removeClass('ruedita')
+			$(working).removeClass('ruedita')
 				.removeClass("frowning_face")
 				.removeClass("smiling_face")
 				.addClass('warning');
 		}
 	});
 
-	jQuery(document).on("click", '#checkfeeds', function(event) {
+	$(document).on("click", '#checkfeeds', function(event) {
 
 		var feederr = 0;
 		var feedcnt = 0;
 		var errmsg = "Feed ERROR";
-		jQuery('.feederror').remove();
-		jQuery('.feedinput').each(function (el,item) {
+		$('.feederror').remove();
+		$('.feedinput').each(function (el,item) {
 			feederr += 1;
-			feed = jQuery(item).attr('value');
-			var working = jQuery(item).parent().parent().find('#checkfeed');
+			feed = $(item).attr('value');
+			var working = $(item).parent().parent().find('#checkfeed');
 			if (feed !== "") {
-				jQuery(working).removeClass('warning')
+				$(working).removeClass('warning')
 					.removeClass("frowning_face")
 					.removeClass("smiling_face")
 					.addClass('ruedita');
-				jQuery(item).attr('style','Background:#CCC;');
+				$(item).attr('style','Background:#CCC;');
 				var data = {
 					action: "wpematico_test_feed",
 					url: feed, 
 					'cookie': encodeURIComponent(document.cookie)
 				};
 
-				data = js_apply_filters('wpematico_data_test_feed', data, jQuery(item));
+				data = js_apply_filters('wpematico_data_test_feed', data, $(item));
 
-				jQuery.post(ajaxurl, data, function(response){
+				$.post(ajaxurl, data, function(response){
 					var dismiss = '<button type="button" class="notice-dismiss"><span class="screen-reader-text">'+wpematico_object.text_dismiss_this_notice+'</span></button>';
 					if( response.success ){
-						jQuery(item).attr('style','Background:#75EC77;');
-						jQuery("#poststuff").prepend('<div id="message" class="feederror notice notice-success is-dismissible"><p>'+response.message+'</p>' +dismiss +'</div>');
-						jQuery(working).removeClass('warning')
+						$(item).attr('style','Background:#75EC77;');
+						$("#poststuff").prepend('<div id="message" class="feederror notice notice-success is-dismissible"><p>'+response.message+'</p>' +dismiss +'</div>');
+						$(working).removeClass('warning')
 								.removeClass("frowning_face")
 								.removeClass("ruedita")
 								.addClass('smiling_face');
 					} else {
-						jQuery(item).attr('style','Background:Red;');
-						jQuery("#poststuff").prepend('<div id="message" class="feederror notice notice-error is-dismissible"><p>ERROR: '+response.message+'</p>' +dismiss +'</div>');
-						jQuery(working).removeClass('warning')
+						$(item).attr('style','Background:Red;');
+						$("#poststuff").prepend('<div id="message" class="feederror notice notice-error is-dismissible"><p>ERROR: '+response.message+'</p>' +dismiss +'</div>');
+						$(working).removeClass('warning')
 								.removeClass("smiling_face")
 								.removeClass("ruedita")
 								.addClass('frowning_face');
 					}
-					jQuery(working).removeClass("spinner");
+					$(working).removeClass("spinner");
 				});
 			}else{
 				if(feedcnt>1) {

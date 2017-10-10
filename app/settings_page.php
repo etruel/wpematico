@@ -200,13 +200,13 @@ function wpematico_settings(){
 						<h3 class="handle"><?php _e( 'Advanced', 'wpematico' );?></h3>
 						<div class="inside">
 							<p></p>
-							<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disablecheckfeeds'],true); ?> name="disablecheckfeeds" id="disablecheckfeeds" /> <?php _e('Disable <b><i>Check Feeds before Save</i></b>', 'wpematico' ); ?></label> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['disablecheckfeeds']; ?>"></span>
+							<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disablecheckfeeds'],true); ?> name="disablecheckfeeds" id="disablecheckfeeds" /> <?php _e('Disable <b><i>Check Feeds before Save</i></b>', 'wpematico' ); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disablecheckfeeds']; ?>"></span>
 							<p></p>
-							<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enabledelhash'],true); ?> name="enabledelhash" id="enabledelhash" /><b>&nbsp;<?php _e('Enable <b><i>Del Hash</i></b>', 'wpematico' ); ?></b></label> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['enabledelhash']; ?>"></span>
+							<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enabledelhash'],true); ?> name="enabledelhash" id="enabledelhash" /><b>&nbsp;<?php _e('Enable <b><i>Del Hash</i></b>', 'wpematico' ); ?></b></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enabledelhash']; ?>"></span>
 							<p></p>
-							<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enableseelog'],true); ?> name="enableseelog" id="enableseelog" /><b>&nbsp;<?php _e('Enable <b><i>See last log</i></b>', 'wpematico' ); ?></b></label> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['enableseelog']; ?>"></span>
+							<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enableseelog'],true); ?> name="enableseelog" id="enableseelog" /><b>&nbsp;<?php _e('Enable <b><i>See last log</i></b>', 'wpematico' ); ?></b></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enableseelog']; ?>"></span>
 							<p></p>
-							<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disable_credits'],true); ?> name="disable_credits" id="disable_credits" /><b>&nbsp;<?php _e('Disable <i>WPeMatico Credits</i>', 'wpematico' ); ?></b> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['disable_credits']; ?>"></span>
+							<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disable_credits'],true); ?> name="disable_credits" id="disable_credits" /><b>&nbsp;<?php _e('Disable <i>WPeMatico Credits</i>', 'wpematico' ); ?></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disable_credits']; ?>"></span>
 							<span id="discredits" style="<?php echo ($cfg['disable_credits'])?'':'display:none;' ?>"><br /><?php 
 							printf( __('If you can\'t show the WPeMatico credits in your posts, I really appreciate if you can take a minute to %s write a 5 star review on Wordpress %s. :) thanks.', 'wpematico' ),
 								'<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" target="_Blank" title="Open a new window">',
@@ -246,21 +246,21 @@ function wpematico_settings(){
 						</button>
 					<h3 class="hndle"><span><?php _e('Global Settings for Images', 'wpematico' ); ?></span></h3>
 					<div class="inside">
-						<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['imgcache'],true); ?> name="imgcache" id="imgcache" />&nbsp;<b><label for="imgcache"><?php _e('Cache Images.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['imgcache']; ?>"></span>
+						<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['imgcache'],true); ?> name="imgcache" id="imgcache" />&nbsp;<b><label for="imgcache"><?php _e('Cache Images.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['imgcache']; ?>"></span>
 						<div id="nolinkimg" style="padding-left:20px; <?php if (!$cfg['imgcache']) echo 'display:none;';?>">
-							<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['imgattach'],true); ?> name="imgattach" id="imgattach" /><b>&nbsp;<label for="imgattach"><?php _e('Attach Images to posts.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['imgattach']; ?>"></span>
+							<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['imgattach'],true); ?> name="imgattach" id="imgattach" /><b>&nbsp;<label for="imgattach"><?php _e('Attach Images to posts.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['imgattach']; ?>"></span>
 							<br/>
-							<input name="gralnolinkimg" id="gralnolinkimg" class="checkbox" value="1" type="checkbox" <?php checked($cfg['gralnolinkimg'],true); ?> /><label for="gralnolinkimg"><?php _e('No link to source images', 'wpematico' ); ?></label><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['gralnolinkimg']; ?>"></span>
+							<input name="gralnolinkimg" id="gralnolinkimg" class="checkbox" value="1" type="checkbox" <?php checked($cfg['gralnolinkimg'],true); ?> /><label for="gralnolinkimg"><?php _e('No link to source images', 'wpematico' ); ?></label><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['gralnolinkimg']; ?>"></span>
 							<br/>
-							<input name="image_srcset" id="image_srcset" class="checkbox" value="1" type="checkbox" <?php checked($cfg['image_srcset'],true); ?> /><b>&nbsp;<label for="image_srcset"><?php esc_attr_e('Use srcset attribute instead of src of <img> tag.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['image_srcset']; ?>"></span>
+							<input name="image_srcset" id="image_srcset" class="checkbox" value="1" type="checkbox" <?php checked($cfg['image_srcset'],true); ?> /><b>&nbsp;<label for="image_srcset"><?php esc_attr_e('Use srcset attribute instead of src of <img> tag.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['image_srcset']; ?>"></span>
 						</div>
 						<p></p>
-						<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['featuredimg'],true); ?> name="featuredimg" id="featuredimg" /><b>&nbsp;<label for="featuredimg"><?php _e('Enable first image found on content as Featured Image.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['featuredimg']; ?>"></span>
+						<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['featuredimg'],true); ?> name="featuredimg" id="featuredimg" /><b>&nbsp;<label for="featuredimg"><?php _e('Enable first image found on content as Featured Image.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['featuredimg']; ?>"></span>
 						<br />
-						<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['rmfeaturedimg'],true); ?> name="rmfeaturedimg" id="rmfeaturedimg" /><b>&nbsp;<label for="rmfeaturedimg"><?php _e('Remove Featured Image from content.', 'wpematico' ); ?></label></b> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['rmfeaturedimg']; ?>"></span>
+						<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['rmfeaturedimg'],true); ?> name="rmfeaturedimg" id="rmfeaturedimg" /><b>&nbsp;<label for="rmfeaturedimg"><?php _e('Remove Featured Image from content.', 'wpematico' ); ?></label></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['rmfeaturedimg']; ?>"></span>
 						<p></p>
 						<div id="custom_uploads" style="<?php if (!$cfg['imgcache'] && !$cfg['featuredimg']) echo 'display:none;';?>">
-							<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['customupload'],true); ?> name="customupload" id="customupload" /><b>&nbsp;<label for="customupload"><?php _e('Custom function for uploads.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['customupload']; ?>"></span>
+							<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['customupload'],true); ?> name="customupload" id="customupload" /><b>&nbsp;<label for="customupload"><?php _e('Custom function for uploads.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['customupload']; ?>"></span>
 							<br/>
 						</div>
 						<?php do_action('wpematico_settings_images',$cfg); ?>
@@ -274,15 +274,15 @@ function wpematico_settings(){
 						</button>
 					<h3 class="hndle"><span><?php _e('Global Settings for Audios', 'wpematico' ); ?></span></h3>
 					<div class="inside">
-						<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['audio_cache'],true); ?> name="audio_cache" id="audio_cache" />&nbsp;<b><label for="audio_cache"><?php _e('Cache Audios.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['audio_cache']; ?>"></span>
+						<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['audio_cache'],true); ?> name="audio_cache" id="audio_cache" />&nbsp;<b><label for="audio_cache"><?php _e('Cache Audios.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['audio_cache']; ?>"></span>
 						<div id="nolink_audio" style="padding-left:20px; <?php if (!$cfg['audio_cache']) echo 'display:none;';?>">
-							<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['audio_attach'],true); ?> name="audio_attach" id="audio_attach" /><b>&nbsp;<label for="audio_attach"><?php _e('Attach Audios to posts.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['audio_attach']; ?>"></span>
+							<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['audio_attach'],true); ?> name="audio_attach" id="audio_attach" /><b>&nbsp;<label for="audio_attach"><?php _e('Attach Audios to posts.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['audio_attach']; ?>"></span>
 							<br/>
-							<input name="gralnolink_audio" id="gralnolink_audio" class="checkbox" value="1" type="checkbox" <?php checked($cfg['gralnolink_audio'],true); ?> /><label for="gralnolink_audio"><?php _e('No link to source audios', 'wpematico' ); ?></label><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['gralnolink_audio']; ?>"></span>
+							<input name="gralnolink_audio" id="gralnolink_audio" class="checkbox" value="1" type="checkbox" <?php checked($cfg['gralnolink_audio'],true); ?> /><label for="gralnolink_audio"><?php _e('No link to source audios', 'wpematico' ); ?></label><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['gralnolink_audio']; ?>"></span>
 						</div>
 						<p></p>
 						<div id="custom_uploads_audios" style="<?php if (!$cfg['audio_cache']) echo 'display:none;';?>">
-							<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['customupload_audios'],true); ?> name="customupload_audios" id="customupload_audios" /><b>&nbsp;<label for="customupload_audios"><?php _e('Custom function for uploads.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['customupload_audios']; ?>"></span>
+							<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['customupload_audios'],true); ?> name="customupload_audios" id="customupload_audios" /><b>&nbsp;<label for="customupload_audios"><?php _e('Custom function for uploads.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['customupload_audios']; ?>"></span>
 							<br/>
 						</div>
 						<?php do_action('wpematico_settings_audios',$cfg); ?>
@@ -296,15 +296,15 @@ function wpematico_settings(){
 						</button>
 					<h3 class="hndle"><span><?php _e('Global Settings for Videos', 'wpematico' ); ?></span></h3>
 					<div class="inside">
-						<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['video_cache'],true); ?> name="video_cache" id="video_cache" />&nbsp;<b><label for="video_cache"><?php _e('Cache Videos.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['video_cache']; ?>"></span>
+						<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['video_cache'],true); ?> name="video_cache" id="video_cache" />&nbsp;<b><label for="video_cache"><?php _e('Cache Videos.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['video_cache']; ?>"></span>
 						<div id="nolink_video" style="padding-left:20px; <?php if (!$cfg['video_cache']) echo 'display:none;';?>">
-							<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['video_attach'],true); ?> name="video_attach" id="video_attach" /><b>&nbsp;<label for="video_attach"><?php _e('Attach Videos to posts.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['video_attach']; ?>"></span>
+							<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['video_attach'],true); ?> name="video_attach" id="video_attach" /><b>&nbsp;<label for="video_attach"><?php _e('Attach Videos to posts.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['video_attach']; ?>"></span>
 							<br/>
-							<input name="gralnolink_video" id="gralnolink_video" class="checkbox" value="1" type="checkbox" <?php checked($cfg['gralnolink_video'],true); ?> /><label for="gralnolink_video"><?php _e('No link to source videos', 'wpematico' ); ?></label><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['gralnolink_video']; ?>"></span>
+							<input name="gralnolink_video" id="gralnolink_video" class="checkbox" value="1" type="checkbox" <?php checked($cfg['gralnolink_video'],true); ?> /><label for="gralnolink_video"><?php _e('No link to source videos', 'wpematico' ); ?></label><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['gralnolink_video']; ?>"></span>
 						</div>
 						<p></p>
 						<div id="custom_uploads_videos" style="<?php if (!$cfg['video_cache']) echo 'display:none;';?>">
-							<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['customupload_videos'],true); ?> name="customupload_videos" id="customupload_videos" /><b>&nbsp;<label for="customupload_videos"><?php _e('Custom function for uploads.', 'wpematico' ); ?></label></b><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['customupload_videos']; ?>"></span>
+							<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['customupload_videos'],true); ?> name="customupload_videos" id="customupload_videos" /><b>&nbsp;<label for="customupload_videos"><?php _e('Custom function for uploads.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['customupload_videos']; ?>"></span>
 							<br/>
 						</div>
 						<?php do_action('wpematico_settings_videos',$cfg); ?>
@@ -316,13 +316,13 @@ function wpematico_settings(){
 						<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
 						<span class="toggle-indicator" aria-hidden="true"></span>
 					</button>
-					<h3 class="hndle"><span><?php _e('Enable Features', 'wpematico' ); ?></span><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['enablefeatures']; ?>"></span></h3>
+					<h3 class="hndle"><span><?php _e('Enable Features', 'wpematico' ); ?></span><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablefeatures']; ?>"></span></h3>
 					<div class="inside"> 
 						<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enablerewrite'],true); ?> name="enablerewrite" id="enablerewrite" /> <label for="enablerewrite"><?php _e('Enable <b><i>Rewrite</i></b> feature', 'wpematico' ); ?></label>
-						<span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['enablerewrite']; ?>"></span>
+						<span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablerewrite']; ?>"></span>
 						<p></p>
 						<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enableword2cats'],true); ?> name="enableword2cats" id="enableword2cats" /> <label for="enableword2cats"><?php _e('Enable <b><i>Words to Categories</i></b> feature', 'wpematico' ); ?></label>
-						<span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['enableword2cats']; ?>"></span>
+						<span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enableword2cats']; ?>"></span>
 						<p></p>
 
 						<?php if( ! wpematico_is_pro_active() ) : ?>
@@ -336,29 +336,29 @@ function wpematico_settings(){
 						<span class="toggle-indicator" aria-hidden="true"></span>
 					</button>
 					<h3 style="float:right; background-color: yellow;"><?php _e('ONLY AVAILABLE AT PRO VERSION.', 'wpematico' ); ?></h3>
-					<h3 class="hndle" style="background-color: yellow;"><span><?php _e('PRO Features', 'wpematico' ); ?></span> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['PROfeatures']; ?>"></span></h3>
+					<h3 class="hndle" style="background-color: yellow;"><span><?php _e('PRO Features', 'wpematico' ); ?></span> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['PROfeatures']; ?>"></span></h3>
 					<div class="inside"> 
 							<!-- a href="https://etruel.com/downloads/wpematico-pro/" target="_Blank" title="Go to WPeMatico WebSite"><img style="background: transparent;height: 86%;position: absolute;margin-left: -10px;overflow: hidden;width: 100%;border: 1px solid #CCC;" src="<?php echo WPeMatico :: $uri; ?>images/onlypro.png" title=""></a -->
 						<p></p>
-						<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable <b><i>Keyword Filtering</i></b> feature', 'wpematico' ); ?> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['enablekwordf']; ?>"></span>
+						<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable <b><i>Keyword Filtering</i></b> feature', 'wpematico' ); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablekwordf']; ?>"></span>
 						<p></p>
-						<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable <b><i>Word count Filters</i></b> feature', 'wpematico' ); ?> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['enablewcf']; ?>"></span>
+						<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable <b><i>Word count Filters</i></b> feature', 'wpematico' ); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablewcf']; ?>"></span>
 						<p></p>
-						<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable <b><i>Custom Title</i></b> feature', 'wpematico' ); ?> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['enablecustomtitle']; ?>"></span>
+						<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable <b><i>Custom Title</i></b> feature', 'wpematico' ); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablecustomtitle']; ?>"></span>
 						<p></p>
-						<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable attempt to <b><i>Get Full Content</i></b> feature', 'wpematico' ); ?> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['fullcontent']; ?>"></span>
+						<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable attempt to <b><i>Get Full Content</i></b> feature', 'wpematico' ); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['fullcontent']; ?>"></span>
 						<p></p>
-						<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable <b><i>Author per feed</i></b> feature', 'wpematico' ); ?> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['authorfeed']; ?>"></span>
+						<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable <b><i>Author per feed</i></b> feature', 'wpematico' ); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['authorfeed']; ?>"></span>
 						<p></p>
-						<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable <b><i>Import feed list</i></b> feature', 'wpematico' ); ?> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['importfeeds']; ?>"></span>
+						<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable <b><i>Import feed list</i></b> feature', 'wpematico' ); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['importfeeds']; ?>"></span>
 						<p></p>
-						<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable <b><i>Auto Tags</i></b> feature.', 'wpematico' ); ?> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['enabletags']; ?>"></span>
+						<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable <b><i>Auto Tags</i></b> feature.', 'wpematico' ); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enabletags']; ?>"></span>
 						<div id="badtags" style="margin-left:25px;">
 						<b><label for="all_badtags"><?php _e('Bad Tags that will be not used on any post:', 'wpematico' ); ?></label></b><br />
 						<textarea style="width:500px;" disabled >some, tags, not, allowed</textarea><br />
 						<?php echo __('Enter comma separated list of excluded Tags in all campaigns.', 'wpematico' ); ?>
 						</div><br />
-						<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable <b><i>Custom Fields</i></b> feature.', 'wpematico' ); ?> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['enablecfields']; ?>"></span>
+						<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable <b><i>Custom Fields</i></b> feature.', 'wpematico' ); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablecfields']; ?>"></span>
 
 						<?php endif; ?>
 					</div>
@@ -408,19 +408,19 @@ function wpematico_settings(){
 								  <p></p>';
 						}
 						?>
-						<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['force_mysimplepie'],true); ?> name="force_mysimplepie" id="force_mysimplepie" /> <?php _e('Force <b><i>Custom Simplepie Library</i></b>', 'wpematico' ); ?></label>  <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['mysimplepie']; ?>"></span>
+						<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['force_mysimplepie'],true); ?> name="force_mysimplepie" id="force_mysimplepie" /> <?php _e('Force <b><i>Custom Simplepie Library</i></b>', 'wpematico' ); ?></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['mysimplepie']; ?>"></span>
 						<p></p>
 						
-						<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['set_stupidly_fast'],true); ?> name="set_stupidly_fast" id="set_stupidly_fast"  onclick="jQuery('#simpie').show();"  /> <?php _e('Set Simplepie <b><i>stupidly fast</i></b>', 'wpematico' ); ?></label>  <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['stupidly_fast']; ?>"></span>
+						<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['set_stupidly_fast'],true); ?> name="set_stupidly_fast" id="set_stupidly_fast"  onclick="jQuery('#simpie').show();"  /> <?php _e('Set Simplepie <b><i>stupidly fast</i></b>', 'wpematico' ); ?></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['stupidly_fast']; ?>"></span>
 						<p></p>
 						<div id="simpie" style="margin-left: 25px;<?php if ($cfg['set_stupidly_fast']) echo 'display:none;';?>">
 							<input name="simplepie_strip_htmltags" id="simplepie_strip_htmltags" class="checkbox" value="1" type="checkbox" <?php checked($cfg['simplepie_strip_htmltags'],true); ?> />
-							<label for="simplepie_strip_htmltags"><b><?php _e('Change SimplePie HTML tags to strip', 'wpematico' ); ?></b></label> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['strip_htmltags']; ?>"></span>
+							<label for="simplepie_strip_htmltags"><b><?php _e('Change SimplePie HTML tags to strip', 'wpematico' ); ?></b></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['strip_htmltags']; ?>"></span>
 							<br />
 							<textarea style="width:500px;" <?php disabled($cfg['simplepie_strip_htmltags'],false,true); ?> name="strip_htmltags" id="strip_htmltags" ><?php echo $cfg['strip_htmltags'] ; ?></textarea>
 							<p></p>
 							<input name="simplepie_strip_attributes" id="simplepie_strip_attributes" class="checkbox" value="1" type="checkbox" <?php checked($cfg['simplepie_strip_attributes'],true); ?> />
-							<label for="simplepie_strip_attributes"><b><?php _e('Change SimplePie HTML attributes to strip', 'wpematico' ); ?></b></label>  <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['strip_htmlattr']; ?>"></span>
+							<label for="simplepie_strip_attributes"><b><?php _e('Change SimplePie HTML attributes to strip', 'wpematico' ); ?></b></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['strip_htmlattr']; ?>"></span>
 							<br />
 							<textarea style="width:500px;" <?php disabled($cfg['simplepie_strip_attributes'],false,true); ?> name="strip_htmlattr" id="strip_htmlattr" ><?php echo $cfg['strip_htmlattr']; ?></textarea>
 						</div>
@@ -447,10 +447,10 @@ function wpematico_settings(){
 							<?php _e('When a campaign running is interrupted, cannot be executed again until click "Clear Campaign".  This option clear campaign after this timeout then can run again on next scheduled cron. A value of "0" ignore this, means that remain until user make click.  Recommended 300 Seconds.', 'wpematico' ); ?>
 						</span></p>
 						<p></p>
-						<label for="throttle"><b><?php _e('Add a throttle/delay in seconds after every post.', 'wpematico' ); ?></b></label> <input name="throttle" id="throttle" class="small-text" min="0" type="number" value="<?php echo $cfg['throttle']; ?>" /> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['throttle']; ?>"></span>
+						<label for="throttle"><b><?php _e('Add a throttle/delay in seconds after every post.', 'wpematico' ); ?></b></label> <input name="throttle" id="throttle" class="small-text" min="0" type="number" value="<?php echo $cfg['throttle']; ?>" /> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['throttle']; ?>"></span>
 
 						<p></p>
-						<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['allowduplicates'],true); ?> name="allowduplicates" id="allowduplicates" /><b>&nbsp;<?php echo '<label for="allowduplicates">' . __('Deactivate duplicate controls.', 'wpematico' ) . '</label>'; ?></b>  <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['allowduplicates']; ?>"></span>
+						<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['allowduplicates'],true); ?> name="allowduplicates" id="allowduplicates" /><b>&nbsp;<?php echo '<label for="allowduplicates">' . __('Deactivate duplicate controls.', 'wpematico' ) . '</label>'; ?></b>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['allowduplicates']; ?>"></span>
 						<br>
 						<div id="enadup" style="padding-left:20px; <?php if (!$cfg['allowduplicates']) echo 'display:none;';?>">
 							<small><?php _e('NOTE: If disable both controls, all items will be fetched again and again... and again, ad infinitum.  If you want allow duplicated titles, just activate "Allow duplicated titles".', 'wpematico' ); ?></small><br />
@@ -459,15 +459,15 @@ function wpematico_settings(){
 						</div>
 						<div id="div_add_extra_duplicate_filter_meta_source" <?php if ($cfg['disableccf'] || $cfg['allowduptitle']) echo 'style="display:none;"' ?>>
 						<input name="add_extra_duplicate_filter_meta_source" id="add_extra_duplicate_filter_meta_source" class="checkbox" value="1" type="checkbox" <?php checked($cfg['add_extra_duplicate_filter_meta_source'],true); ?> />
-						<label for="add_extra_duplicate_filter_meta_source"><b><?php _e('Add an extra duplicate filter by source permalink in meta field value.', 'wpematico' ); ?></b></label>  <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['add_extra_duplicate_filter_meta_source']; ?>"></span>
+						<label for="add_extra_duplicate_filter_meta_source"><b><?php _e('Add an extra duplicate filter by source permalink in meta field value.', 'wpematico' ); ?></b></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['add_extra_duplicate_filter_meta_source']; ?>"></span>
 						<br /> 
 						</div>
 						<p></p>
 						<input name="jumpduplicates" id="jumpduplicates" class="checkbox" value="1" type="checkbox" <?php checked($cfg['jumpduplicates'],true); ?> />
-						<label for="jumpduplicates"><b><?php _e('Continue Fetching if found duplicated items.', 'wpematico' ); ?></b></label>  <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['jumpduplicates']; ?>"></span>
+						<label for="jumpduplicates"><b><?php _e('Continue Fetching if found duplicated items.', 'wpematico' ); ?></b></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['jumpduplicates']; ?>"></span>
 						<p></p>
 						<input name="disableccf" id="disableccf" class="checkbox" value="1" type="checkbox" <?php checked($cfg['disableccf'],true); ?> />
-						<label for="disableccf"><b><?php _e('Disables Plugin Custom fields.', 'wpematico' ); ?></b></label>  <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['disableccf']; ?>"></span>
+						<label for="disableccf"><b><?php _e('Disables Plugin Custom fields.', 'wpematico' ); ?></b></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disableccf']; ?>"></span>
 						<br />
 						
 					</div>
@@ -481,7 +481,7 @@ function wpematico_settings(){
 					<h3 class="hndle"><span><?php _e('Cron and Scheduler Settings', 'wpematico' ); ?></span></h3>
 					<div class="inside">
 						<label><input class="checkbox" id="dontruncron" type="checkbox"<?php checked($cfg['dontruncron'],true);?> name="dontruncron" value="1"/> 
-							<strong><?php _e('Disable WPeMatico schedulings', 'wpematico' ); ?></strong></label> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['dontruncron']; ?>"></span>
+							<strong><?php _e('Disable WPeMatico schedulings', 'wpematico' ); ?></strong></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['dontruncron']; ?>"></span>
 						<br />
 						<?php $croncode = ($cfg['set_cron_code']) ? '?code=' . $cfg['cron_code'] : ''; ?>
 						<div id="hlpcron" style="padding-left:20px;">
@@ -490,7 +490,7 @@ function wpematico_settings(){
 							<?php _e('or URL:', 'wpematico' ); ?> &nbsp;&nbsp;&nbsp;<span class="coderr b"><i><?php echo WPeMatico :: $uri . "app/wpe-cron.php".$croncode; ?></i></span>
 							<br /><br />
 							<label><input class="checkbox" id="set_cron_code" type="checkbox"<?php checked($cfg['set_cron_code'],true);?> name="set_cron_code" value="1"/> 
-								<strong><?php _e('Set a password to access the external CRON', 'wpematico' ); ?></strong></label>  <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['set_cron_code']; ?>"></span>
+								<strong><?php _e('Set a password to access the external CRON', 'wpematico' ); ?></strong></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['set_cron_code']; ?>"></span>
 								<br /> 
 								<label style="padding-left:20px;">
 									<?php _e('Type the password to use the external CRON', 'wpematico' ); ?>: 
@@ -498,12 +498,12 @@ function wpematico_settings(){
 									<a style="font-size: 2.2em;" title="<?php _e('Paste a generated a ramdon string.'); ?>" class='dashicons dashicons-migrate' onclick="Javascript: jQuery('#cron_code').val( jQuery('#autocode').val() );" > &nbsp;&nbsp;</a> &nbsp;
 									<input name="cron_code" title="<?php _e('See text.'); ?>" id="cron_code" type="text" value="<?php echo $cfg['cron_code'];?>" class="standard-text" /> 
 									<?php /*<a class='dashicons dashicons-visibility' onclick="Javascript: jQuery('#cron_code').prop('type','text');" ></a>*/ ?>
-								</label>  <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['cron_code']; ?>"></span>
+								</label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['cron_code']; ?>"></span>
 						</div>
 						<br /> 
 
 						<label><input class="checkbox" id="disablewpcron" type="checkbox"<?php checked($cfg['disablewpcron'],true);?> name="disablewpcron" value="1"/> 
-							<strong><?php _e('Disable all WP_Cron', 'wpematico' ); ?></strong></label>  <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['disablewpcron']; ?>"></span>
+							<strong><?php _e('Disable all WP_Cron', 'wpematico' ); ?></strong></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disablewpcron']; ?>"></span>
 						<div id="hlpcron2" style="padding-left:20px;">
 							<?php _e('To run the wordpress cron with external cron you can set up a cron job that calls:', 'wpematico' ); ?><br />
 							<span class="coderr b"><i> php -q <?php echo ABSPATH.'wp-cron.php'; ?></i></span><br /> 
@@ -518,7 +518,7 @@ function wpematico_settings(){
 						</div><br /> 
 
 						<label><input class="checkbox" id="logexternalcron" type="checkbox"<?php checked($cfg['logexternalcron'],true);?> name="logexternalcron" value="1"/> 
-							<strong><?php _e('Log file for external Cron', 'wpematico' ); ?></strong></label> <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['logexternalcron']; ?>"></span>
+							<strong><?php _e('Log file for external Cron', 'wpematico' ); ?></strong></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['logexternalcron']; ?>"></span>
 							<br /> 
 					</div>
 				</div>				
@@ -534,14 +534,14 @@ function wpematico_settings(){
 						<p>
 					<label><input class="checkbox" id="disable_metaboxes_wpematico_posts" type="checkbox"<?php checked($cfg['disable_metaboxes_wpematico_posts'],true);?> name="disable_metaboxes_wpematico_posts" value="1"/> 
 							<strong><?php _e('Disable metabox Wpematico Campaign Info in post editing', 'wpematico' ); ?></strong></label>
-							<span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['disable_metaboxes_wpematico_posts']; ?>"></span>
+							<span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disable_metaboxes_wpematico_posts']; ?>"></span>
 					</p>
 					<div class="insidesec" style="border-right: 1px lightgrey solid; margin-right: 5px;padding-right: 7px; ">
 
 
 
 						<label><input class="checkbox" id="emptytrashbutton" type="checkbox"<?php checked($cfg['emptytrashbutton'],true);?> name="emptytrashbutton" value="1"/> 
-						<?php _e('Shows Button to empty trash on lists.', 'wpematico' ); ?></label>  <span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['emptytrashbutton']; ?>"></span>
+						<?php _e('Shows Button to empty trash on lists.', 'wpematico' ); ?></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['emptytrashbutton']; ?>"></span>
 						<br />
 						<?php _e('Select (custom) post types you want.', 'wpematico' ); ?>
 						<br />
@@ -570,7 +570,7 @@ function wpematico_settings(){
 					</div>
 					<div id="enabledashboard" class="insidesec">
 
-						<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disabledashboard'],true); ?> name="disabledashboard" id="disabledashboard" /> <?php _e('Disable <b><i>WP Dashboard Widget</i></b>', 'wpematico' ); ?></label><span class="mya4_sprite infoIco help_tip" title="<?php echo $helptip['disabledashboard']; ?>"></span>
+						<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disabledashboard'],true); ?> name="disabledashboard" id="disabledashboard" /> <?php _e('Disable <b><i>WP Dashboard Widget</i></b>', 'wpematico' ); ?></label><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disabledashboard']; ?>"></span>
 							<div>
 								<label id="roleslabel" <?php if ($cfg['disabledashboard']) echo 'style="display:none;"';?>><?php _e('User roles to show Dashboard widget:', 'wpematico' ); ?></label>
 								<div id="roles" <?php if ($cfg['disabledashboard']) echo 'style="display:none;"';?>>
