@@ -74,21 +74,21 @@ class WPeMatico_Campaign_edit_functions {
 
 				$lbotones = "<button disabled class='cpanelbutton dashicons dashicons-controls-play green'></button>";
 				if ($activated) { // Active play green & grab rojo & stop gris
-					$lbotones.= "<button disabled class='cpanelbutton dashicons dashicons-controls-repeat red'></button>"; // To activate
+					$lbotones.= "<button disabled class='cpanelbutton dashicons dashicons-microphone red'></button>"; // To activate
 				} else {  // Inactive play verde & grab black & stop grey
-					$lbotones.= "<button class='cpanelbutton dashicons dashicons-controls-repeat' btn-href='".WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','toggle')."&campaign_edit=true' title='" . $atitle . "'></button>"; // To activate
+					$lbotones.= "<button class='cpanelbutton dashicons dashicons-microphone' btn-href='".WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','toggle')."&campaign_edit=true' title='" . $atitle . "'></button>"; // To activate
 				}
 //				$lbotones.= "<span class='cpanelbutton stop grey'></span>"; // To stop				
 				$lbotones.= "<button class='cpanelbutton dashicons dashicons-controls-pause' btn-href='".WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','clear')."&campaign_edit=true' title='" . __("Break fetching and restore campaign", 'wpematico') . "'></button>"; // To deactivate
 				
 			}elseif ($activated) { // Running play gris & grab rojo & stop gris
 				$lbotones = "<button class='cpanelbutton dashicons dashicons-controls-play' id='run_now' title='" . esc_attr(__('Run Once', 'wpematico')) . "'></button>";// To run now
-				$lbotones.= "<button disabled class='cpanelbutton dashicons dashicons-controls-repeat red'></button>"; // To stop
+				$lbotones.= "<button disabled class='cpanelbutton dashicons dashicons-microphone red'></button>"; // To stop
 				$lbotones.= "<button class='cpanelbutton dashicons dashicons-controls-pause' btn-href='".WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','toggle')."&campaign_edit=true' title='" . $atitle . "'></button>"; // To deactivate
 				
 			} else {  // Inactive play gris & grab gris & stop black
 				$lbotones = "<button class='cpanelbutton dashicons dashicons-controls-play' id='run_now' title='" . esc_attr(__('Run Once', 'wpematico')) . "'></button>";// To run now
-				$lbotones.= "<button class='cpanelbutton dashicons dashicons-controls-repeat' btn-href='".WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','toggle')."&campaign_edit=true' title='" . $atitle . "'></button>"; // To activate
+				$lbotones.= "<button class='cpanelbutton dashicons dashicons-microphone' btn-href='".WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','toggle')."&campaign_edit=true' title='" . $atitle . "'></button>"; // To activate
 				$lbotones.= "<button disabled class='cpanelbutton dashicons dashicons-controls-pause grey'></button>"; // To stop
 				
 			}
@@ -886,7 +886,7 @@ public static function feeds_box( $post ) {
 			<div style="float:left;margin-left:2px;">
 				<input id="psearchtext" name="psearchtext" class="srchbdr0" type="text" value=''>
 			</div>
-			<div id="productsearch" class="left mya4_sprite searchIco" style="margin-top:4px;"></div>
+			<div id="productsearch" class="left dashicons dashicons-search" style="color:coral;"></div>
 		</div>
 	</div>
 	<div id="feeds_list" class="maxhe290" data-callback="jQuery('#msgdrag').html('<?php _e('Update Campaign to save Feeds order', 'wpematico'  ); ?>').fadeIn();"> <!-- callback script to run on successful sort -->
@@ -903,9 +903,10 @@ public static function feeds_box( $post ) {
 				<?php //do_action('nonstatic_feedat','', $cfg); //deprecated!!! 20160309  ?>
 
 				<div class="" id="feed_actions">
-					<label title="<?php _e('Delete this item',  'wpematico'  ); ?>" onclick="delete_feed_url('#feed_ID<?php echo $i; ?>');" class="bicon delete left"></label>
-					<label title="<?php _e('Check if this item work', 'wpematico' ); ?>" id="checkfeed" class="check1feed bicon warning left"></label>
-
+					<?php do_action('wpematico_campaign_feed_actions_1',$feed,$cfg, $i); ?>
+					<button title="<?php _e('Delete this item',  'wpematico'  ); ?>"  id="deletefeed" data='#feed_ID<?php echo $i; ?>' class="dashicons dashicons-trash red right"></button>
+					<button title="<?php _e('Check if this item work', 'wpematico' ); ?>" id="checkfeed" class="check1feed dashicons dashicons-editor-spellcheck"></button>
+					<?php do_action('wpematico_campaign_feed_actions_2',$feed,$cfg, $i); ?>
 				</div>
 			</div>
 			<?php $a=$i;

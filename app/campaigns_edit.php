@@ -183,6 +183,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 
 					'name_campaign' =>  $name_campaign,
 					'see_logs_action_url' =>  $see_logs_action_url,
+					'update2save' =>  __('Update Campaign to save changes.', 'wpematico' ),
 				);
 		if ($cfg['enableword2cats']) {
 			
@@ -301,30 +302,6 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 				$('#catfield').toggle();
 				$('#psearchcat').focus();
 			});
-			$('#addmorefeed').click(function() {
-				oldval = $('#feedfield_max').val();
-				jQuery('#feedfield_max').val( parseInt(jQuery('#feedfield_max').val(),10) + 1 );
-				newval = $('#feedfield_max').val();
-				feed_new= $('.feed_new_field').clone();
-				$('div.feed_new_field').removeClass('feed_new_field');
-				$('div#feed_ID'+oldval).fadeIn();
-				$('input[name="campaign_feeds['+oldval+']"]').focus();
-				feed_new.attr('id','feed_ID'+newval);
-				$('input', feed_new).eq(0).attr('name','campaign_feeds['+ newval +']');
-				$('.delete', feed_new).eq(0).attr('onclick', "delete_feed_url('#feed_ID"+ newval +"');");
-				$(document).trigger("before_add_more_feed", [feed_new, newval] );
-				$('#feeds_list').append(feed_new);
-				$('#feeds_list').vSort();
-			});
-					
-			delete_feed_url = function(row_id){
-				jQuery(row_id).fadeOut(); 
-				jQuery(row_id).remove();
-				disable_run_now();
-				jQuery('#msgdrag').html('<?php _e('Update Campaign to save changes.', WPeMatico :: TEXTDOMAIN ); ?>').fadeIn();
-			}
-
-
 
 			jQuery('#campaign_no_setting_img').click(function() {
 				if ( true == jQuery('#campaign_no_setting_img').is(':checked')) {

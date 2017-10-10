@@ -25,9 +25,8 @@ jQuery(document).ready(function($){
 		}
 	});
 
-	
 //	$('#run_now').click(function(e) {
-	$(document).on("click", '.#run_now', function(e) {
+	$(document).on("click", '#run_now', function(e) {
 		$(this).addClass('green');
 		$('html').css('cursor','wait');
 		$('#fieldserror').remove();
@@ -49,6 +48,25 @@ jQuery(document).ready(function($){
 			$('#run_now').removeClass('green');
 		});
 		e.preventDefault();
+	});
+
+	/**
+	 * Feeds functions and actions
+	 */
+	$('#addmorefeed').click(function() {
+		oldval = $('#feedfield_max').val();
+		jQuery('#feedfield_max').val( parseInt(jQuery('#feedfield_max').val(),10) + 1 );
+		newval = $('#feedfield_max').val();
+		feed_new= $('.feed_new_field').clone();
+		$('div.feed_new_field').removeClass('feed_new_field');
+		$('div#feed_ID'+oldval).fadeIn();
+		$('input[name="campaign_feeds['+oldval+']"]').focus();
+		feed_new.attr('id','feed_ID'+newval);
+		$('input', feed_new).eq(0).attr('name','campaign_feeds['+ newval +']');
+		$('.delete', feed_new).eq(0).attr('onclick', "delete_feed_url('#feed_ID"+ newval +"');");
+		$(document).trigger("before_add_more_feed", [feed_new, newval] );
+		$('#feeds_list').append(feed_new);
+		$('#feeds_list').vSort();
 	});
 
 	$('#campaign_striphtml').change(function() {
@@ -102,6 +120,10 @@ jQuery(document).ready(function($){
 
 	
 
+	$(document).on("click", '#deletefeed', function(event) {
+		delete_feed_url($(this).attr('data'));
+	});
+	
 	$(document).on("click", '.check1feed', function(event) {
 		item = $(this).parent().parent().find('.feed_column input');
 		feed = item.val();
@@ -248,4 +270,10 @@ function disable_run_now() {
 	
 	jQuery('#run_now').attr('title',wpematico_object.text_save_before_run_campaign);
 	jQuery('.wpematico_current_state a').attr('title',wpematico_object.text_save_before_execute_action);
+}
+delete_feed_url = function(row_id){
+	jQuery(row_id).fadeOut(); 
+	jQuery(row_id).remove();
+	disable_run_now();
+	jQuery('#msgdrag').html(wpematico_object.update2save).fadeIn();
 }

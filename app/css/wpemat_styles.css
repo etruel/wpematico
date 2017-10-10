@@ -44,7 +44,7 @@ p { margin-bottom: 2px; }
 	width: 90px;
 }
 
-.statebutton {
+.NO_statebutton {
   display: inline-block;
   background: #eeeeee; /* Old browsers */
   background: -moz-linear-gradient(top, #eeeeee 0%, #eeeeee 100%); /* FF3.6+ */
@@ -62,19 +62,16 @@ p { margin-bottom: 2px; }
   margin-right: 3px;
 }
 
-.statebutton.green {
+.green {
     color: #00BF00 !important;
 }
-.statebutton.grey {
+.grey {
     color: #888 !important;
 }
-.statebutton.red {
+.red {
     color: red !important;
 }
-a.statebutton:hover {
-    color: #555 !important;
-}
-
+/*
 .statebutton:before {
   float: left;
   width: auto;
@@ -82,18 +79,9 @@ a.statebutton:hover {
   font-size: 2em;
   margin: 3px 5px 5px;
   padding: 1px;
-/*  pointer-events: none;*/
 }
+*/
 
-.cpanelbutton.green {
-    color: #00BF00 !important;
-}
-.cpanelbutton.grey {
-    color: #888 !important;
-}
-.cpanelbutton.red {
-    color: red !important;
-}
 .cpanelbutton:hover {
     cursor: pointer;
 }
@@ -111,6 +99,7 @@ a.statebutton:hover {
     margin: 0 5px 0 0;
     padding-right: 0px;
 }
+
 /*Math & Factions*/
 .pi:before            { content: "\213C"; }
 .one_thrid:before     { content: "\2153"; }
@@ -170,6 +159,7 @@ a.statebutton:hover {
 .warning:before { content: "\26A0"; }
 .frowning_face:before { content: "\2639"; }
 .smiling_face:before { content: "\263A"; }
+
 .wpefeedlink {
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAVklEQVR4Xn3PgQkAMQhDUXfqTu7kTtkpd5RA8AInfArtQ2iRXFWT2QedAfttj2FsPIOE1eCOlEuoWWjgzYaB/IkeGOrxXhqB+uA9Bfcm0lAZuh+YIeAD+cAqSz4kCMUAAAAASUVORK5CYII=) center right no-repeat;
     position: absolute;
@@ -177,9 +167,6 @@ a.statebutton:hover {
     padding: 10px;
 }
 .feedoptionsicon, .is_multifeedicon {
-    font-size: 24px !important;
-    line-height: 28px;
-    margin: 0 0 0 4px;
 	color: #c27c00;
 }
 
