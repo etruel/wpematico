@@ -98,7 +98,7 @@ function run_all() {
 	jQuery(".subsubsub").before('<div id="fieldserror" class="updated fade ajaxstop">'+msgdev+'</div>');
 	jQuery("input[name='post[]']:checked").each(function() {
 		var c_ID = jQuery(this).val();
-		jQuery('#post-'+c_ID+' .statebutton.play').addClass('green');
+		jQuery('#post-'+c_ID+' .state_buttons.dashicons-controls-play').addClass('green');
 		var data = {
 				campaign_ID: c_ID ,
 				action: "wpematico_run"
@@ -121,7 +121,7 @@ function run_all() {
 					jQuery("#lastruntime").html( jQuery("#ret_lastruntime").html());
 					jQuery("#lastruntime").attr( 'style', 'font-weight: bold;');
 				}
-				jQuery('#post-'+c_ID+' .statebutton.play').removeClass('green');
+				jQuery('#post-'+c_ID+' .state_buttons.dashicons-controls-play').removeClass('green');
 
 		});
 	}).ajaxStop(function() {
