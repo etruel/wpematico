@@ -115,70 +115,6 @@ class WPeMatico_Campaigns {
 		}
 	}
 
-	/*
-	// Functions to allow customize the bulk actions in campaigns list.  (WP 4.7 fix this)
-	public static function old_bulk_actions($bulk_actions) {
-		// Don't show on trash page
-		if( isset( $_REQUEST['post_status'] ) && $_REQUEST['post_status'] == 'trash' ) return $bulk_actions;
-
-		return array();
-	}
-	
-	protected static function get_bulk_actions() {
-		$actions = array();
-		$post_type_obj = get_post_type_object( 'wpematico' );
-		if ( current_user_can( $post_type_obj->cap->edit_posts ) ) {
-			$actions['edit'] = __( 'Edit' );
-		}
-		if ( current_user_can( $post_type_obj->cap->delete_posts ) ) {
-			$actions['trash'] = __( 'Move to Trash' );
-		}
-		return $actions;
-	}
-	
-	static function bulk_actions( $which = '' ) {
-		global $_bulk_actions;
-		if ( is_null( $_bulk_actions ) ) {
-			$_bulk_actions = self::get_bulk_actions();
-			/**
-			 * Filters the list table Bulk Actions drop-down.
-			 *
-			 * The dynamic portion of the hook name, `self::screen->id`, refers
-			 * to the ID of the current screen, usually a string.
-			 *
-			 * This filter can currently only be used to remove bulk actions.
-			 *
-			 * @since 3.5.0
-			 *
-			 * @param array $actions An array of the available bulk actions.
-			 
-			$_bulk_actions = apply_filters( "new_bulk_actions-wpematico", $_bulk_actions );
-			//$_bulk_actions = array_intersect_assoc( $_bulk_actions, $no_new_actions );
-			$two = '';
-		} else {
-			$two = '2';
-		}
-
-		if ( empty( $_bulk_actions ) )
-			return;
-
-		echo '<label for="bulk-action-selector-' . esc_attr( $which ) . '" class="screen-reader-text">' . __( 'Select bulk action' ) . '</label>';
-		echo '<select name="action' . $two . '" id="bulk-action-selector-' . esc_attr( $which ) . "\">\n";
-		echo '<option value="-1">' . __( 'Bulk Actions' ) . "</option>\n";
-
-		foreach ( $_bulk_actions as $name => $title ) {
-			$class = 'edit' === $name ? ' class="hide-if-no-js"' : '';
-
-			echo "\t" . '<option value="' . $name . '"' . $class . '>' . $title . "</option>\n";
-		}
-
-		echo "</select>\n";
-
-		submit_button( __( 'Apply' ), 'action', '', false, array( 'id' => "doaction$two" ) );
-		echo "\n";
-	}
-	// END Functions to allow customize the bulk actions in campaigns list.  (WP 4.7 fix this)
-	*/
 	public static function run_selected_campaigns($post_type, $which) {
 		global $typenow,$post_type, $pagenow;
 		if($post_type != 'wpematico') return;		
@@ -214,153 +150,31 @@ class WPeMatico_Campaigns {
 		if($post_type != 'wpematico') return;		
 		wp_enqueue_style('campaigns-list',WPeMatico :: $uri .'app/css/campaigns_list.css');
 		wp_enqueue_style('wpematstyles',WPeMatico :: $uri .'app/css/wpemat_styles.css');
-//		add_action('admin_head', array(  'WPeMatico_Campaigns' ,'campaigns_admin_head_style'));
 	}
 	public static function list_admin_scripts(){
 		global $post_type;
 		
 		if($post_type != 'wpematico') return;		
-		add_action('admin_head', array(  'WPeMatico_Campaigns' ,'campaigns_list_admin_head'));
-//		wp_register_script('jquery-input-mask', 'js/jquery.maskedinput-1.2.2.js', array( 'jquery' ));
-//		wp_enqueue_script('color-picker', 'js/colorpicker.js', array('jquery'));
+
 		wp_enqueue_script( 'wpematico-Date.phpformats', WPeMatico :: $uri . 'app/js/Date.phpformats.js', array( 'jquery' ), '', true );
 		wp_enqueue_script( 'wpematico-bulk-quick-edit', WPeMatico :: $uri . 'app/js/bulk_quick_edit.js', array( 'jquery', 'inline-edit-post' ), '', true );
+		wp_enqueue_script( 'wpematico-campaign-list', WPeMatico :: $uri . 'app/js/campaign_list.js', array( 'jquery' ), WPEMATICO_VERSION, true );
+	
+		$wpematico_object = array(
+						
+			'image_run_loading' =>  get_bloginfo('wpurl').'/wp-admin/images/wpspin_light.gif',
+			'date_format' =>  get_option('date_format').' '. get_option('time_format'),
+			'i18n_date_format' =>  date_i18n( get_option('date_format').' '. get_option('time_format') ),
+
+			'text_running_campaign' =>  __('Running Campaign...', 'wpematico'),
+			'text_select_a_campaign_to_run' =>  __('Please select campaign(s) to Run.', 'wpematico'),
+			'text_slug' =>  __('Slug'),
+			'text_password' =>  __('Password'),
+			'text_date' =>  __('Date'),
+		);
+		wp_localize_script('wpematico-campaign-list', 'wpematico_object', $wpematico_object);
 	}
 
-	public static function campaigns_list_admin_head() {
-		global $post, $post_type;
-		if($post_type != 'wpematico') return $post->ID;
-			
-			$clockabove = '<div id="contextual-help-link-wrap" class="hide-if-no-js screen-meta-toggle">'
-			. '<button type="button" id="show-clock" class="button show-clock" aria-controls="clock-wrap" aria-expanded="false">'
-			. date_i18n( get_option('date_format').' '. get_option('time_format') )
-			. '</button>'
-			. '</div>';
-		?>		
-		<script type="text/javascript" language="javascript">
-			jQuery(document).ready(function($){
-				theclock();
-	            $('span:contains("<?php _e('Slug'); ?>")').each(function (i) {
-					$(this).parent().hide();
-				});
-				$('span:contains("<?php _e('Password'); ?>")').each(function (i) {
-					$(this).parent().parent().hide();
-				});
-				$('select[name="_status"]').each(function (i) {
-					$(this).parent().parent().parent().parent().hide();
-				});
-				$('span:contains("<?php _e('Date'); ?>")').each(function (i) {
-					$(this).parent().hide();
-				});
-				$('.inline-edit-date').each(function (i) {
-					$(this).hide();
-				});
-				$('.inline-edit-col-left').append(	$('#optionscampaign').html() );
-				$('#optionscampaign').remove();
-				
-				$('#screen-meta-links').append('<?php echo $clockabove; ?>');
-				
-				$("#cb-select-all-1, #cb-select-all-2").change (function() {
-					$("input[name='post[]']").each(function() {
-						if($(this).is(':checked')){
-							$("tr#post-"+ $(this).val() ).css('background-color', '#dbb27e');
-						}else{
-							$("tr#post-"+ $(this).val() ).attr('style','');
-						}
-					});
-				});
-				$("input[name='post[]']").change (function() {
-					if($(this).is(':checked')){
-						$("tr#post-"+ $(this).val() ).css('background-color', '#dbb27e');
-					}else{
-						$("tr#post-"+ $(this).val() ).attr('style','');
-					}
-				});
-
-			});
-
-			function theclock(){
-				nowdate = new Date();
-				now = nowdate.format("<?php echo get_option('date_format').' '. get_option('time_format'); ?>");
-				char=(nowdate.getSeconds()%2==0 )?' ':':';
-				jQuery('#show-clock').html(now.replace(':', char) );
-				setTimeout("theclock()",1000);
-			} 
-			
-			function run_now(c_ID) {
-				jQuery('html').css('cursor','wait');
-				jQuery('#post-'+c_ID+' .statebutton.play').addClass('green');
-				jQuery("div[id=fieldserror]").remove();
-				msgdev="<p><img width='16' src='<?php echo admin_url('images/wpspin_light.gif'); ?>'> <span style='vertical-align: top;margin: 10px;'><?php _e('Running Campaign...', 'wpematico' ); ?></span></p>";
-				jQuery(".subsubsub").before('<div id="fieldserror" class="updated fade">'+msgdev+'</div>');
-				var data = {
-					campaign_ID: c_ID ,
-					action: "wpematico_run"
-				};
-				jQuery.post(ajaxurl, data, function(msgdev) {  //si todo ok devuelve LOG sino 0
-					jQuery('#fieldserror').remove();
-					if( msgdev.substring(0, 5) == 'ERROR' ){
-						jQuery(".subsubsub").before('<div id="fieldserror" class="error fade">'+msgdev+'</div>');
-					}else{
-						jQuery(".subsubsub").before('<div id="fieldserror" class="updated fade">'+msgdev+'</div>');
-						var floor = Math.floor;
-						var bef_posts = floor( jQuery("tr#post-"+c_ID+" > .count").html() );
-						var ret_posts = floor( bef_posts + floor(jQuery("#ret_lastposts").html()) );
-						if(bef_posts == ret_posts)
-							jQuery("tr#post-"+c_ID+" > .count").attr('style', 'font-weight: bold;color:#555;');
-						else
-							jQuery("tr#post-"+c_ID+" > .count").attr('style', 'font-weight: bold;color:#F00;');
-						jQuery("tr#post-"+c_ID+" > .count").html( ret_posts.toString() );
-						jQuery("#lastruntime").html( jQuery("#ret_lastruntime").html());
-						jQuery("#lastruntime").attr( 'style', 'font-weight: bold;');
-					}
-					jQuery('html').css('cursor','auto');
-					jQuery('#post-'+c_ID+' .statebutton.play').removeClass('green');
-				});
-			}
- 			function run_all() {
-				var selectedItems = 0;
-				jQuery("input[name='post[]']:checked").each(function() {selectedItems++;});
-				if (selectedItems == 0) {alert("<?php _e('Please select campaign(s) to Run.', 'wpematico' ); ?>"); return; }
-				
-				jQuery('html').css('cursor','wait');
-				jQuery('#fieldserror').remove();
-				msgdev="<p><img width='16' src='<?php echo admin_url('images/wpspin_light.gif'); ?>'> <span style='vertical-align: top;margin: 10px;'><?php _e('Running Campaign...', 'wpematico' ); ?></span></p>";
-				jQuery(".subsubsub").before('<div id="fieldserror" class="updated fade ajaxstop">'+msgdev+'</div>');
-				jQuery("input[name='post[]']:checked").each(function() {
-					var c_ID = jQuery(this).val();
-					jQuery('#post-'+c_ID+' .statebutton.play').addClass('green');
-					var data = {
-						campaign_ID: c_ID ,
-						action: "wpematico_run"
-					};
-					jQuery.post(ajaxurl, data, function(msgdev) {  //si todo ok devuelve LOG sino 0
-						if( msgdev.substring(0, 5) == 'ERROR' ){
-							jQuery(".subsubsub").before('<div id="fieldserror" class="error fade">'+msgdev+'</div>');
-						}else{
-							jQuery(".subsubsub").before('<div id="fieldserror" class="updated fade">'+msgdev+'</div>');
-							var floor = Math.floor;
-							var bef_posts = floor( jQuery("tr#post-"+c_ID+" > .count").html() );
-							var ret_posts = floor( bef_posts + floor(jQuery('#log_message_'+c_ID).next().next("#ret_lastposts").html()) );
-							if(bef_posts == ret_posts)
-								jQuery("tr#post-"+c_ID+" > .count").attr('style', 'font-weight: bold;color:#555;');
-							else
-								jQuery("tr#post-"+c_ID+" > .count").attr('style', 'font-weight: bold;color:#F00;');
-							jQuery("tr#post-"+c_ID+" > .count").html( ret_posts.toString() );
-							jQuery("#lastruntime").html( jQuery("#ret_lastruntime").html());
-							jQuery("#lastruntime").attr( 'style', 'font-weight: bold;');
-						}
-						jQuery('#post-'+c_ID+' .statebutton.play').removeClass('green');
-
-					});
-				}).ajaxStop(function() {
-					jQuery('html').css('cursor','auto');
-					jQuery('.ajaxstop').remove().ajaxStop();
-				});
-			}
- 		</script>
-		<?php
-	}
 
 	/**
 	 ************ACCION COPIAR 
@@ -818,6 +632,9 @@ class WPeMatico_Campaigns {
 			//print_r($campaign_data);
 			$activated = (bool)$campaign_data['activated']; 
 			$atitle = ( $activated ) ? __("Stop and deactivate this campaign", 'wpematico') : __("Start/Activate Campaign Scheduler", 'wpematico');
+			
+
+			// NEW BUTTONS
 			if ($starttime>0) {  // Running play verde & grab rojo & stop gris
 				$runtime=current_time('timestamp')-$starttime;
 				if(($cfg['campaign_timeout'] <= $runtime) && ($cfg['campaign_timeout']>0)) {
@@ -828,33 +645,33 @@ class WPeMatico_Campaigns {
 					WPeMatico :: update_campaign($post_id, $campaign_data);  //Save Campaign new data
 				}
 				$ltitle = __('Running since:', 'wpematico' ).' '.$runtime.' '.__('sec.', 'wpematico' );
-				$lbotones = "<span class='statebutton play green'></span>";
+				$lbotones = '<button type="button" disabled class="state_buttons dashicons dashicons-controls-play green"></button>';
 				if ($activated) { // Active play green & grab rojo & stop gris
-					$lbotones.= "<span class='statebutton grab red'></span>"; // To stop
+					$lbotones.= '<button type="button" disabled class="state_buttons dashicons dashicons-microphone red"></button>'; // To activate
 				} else {  // Inactive play verde & grab black & stop grey
-					$lbotones.= "<a class='statebutton grab' href='".self :: wpematico_action_link( $post->ID , 'display','toggle')."' title='" . $atitle . "'></a>"; // To activate
+					$lbotones.= '<button type="button" class="state_buttons dashicons dashicons-microphone" btn-href="'.WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','toggle').'" title="' . $atitle . '"></button>'; // To activate
 				}
-//				$lbotones.= "<span class='statebutton stop grey'></span>"; // To stop				
-				$lbotones.= "<a class='statebutton stop' href='".self :: wpematico_action_link( $post->ID , 'display','clear')."' title='" . __("Break fetching and restore campaign", 'wpematico') . "'></a>"; // To activate
+//				$lbotones.= "<span class='state_buttons stop grey'></span>"; // To stop				
+				$lbotones.= '<button type="button" class="state_buttons dashicons dashicons-controls-pause" btn-href="'.WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','clear').'" title="' . __('Break fetching and restore campaign', 'wpematico') . '"></button>'; // To deactivate
 				
 			}elseif ($activated) { // Running play gris & grab rojo & stop gris
-				//$campaign_data['cronnextrun']= WPeMatico :: time_cron_next($campaign_data['cron']); //set next run, ver por que no actualizae el cron
-//				$cronnextrun = $campaign_data['cronnextrun']; //get_post_meta($post_id, 'cronnextrun', true);
 				$cronnextrun = WPeMatico :: time_cron_next($campaign_data['cron']);
 				$cronnextrun = (isset($cronnextrun) && !empty($cronnextrun) && ($cronnextrun > 0 ) ) ? $cronnextrun : $campaign_data['cronnextrun']; 
 				$ltitle =  __('Next Run:', 'wpematico' ).' '.date_i18n( get_option('date_format').' '. get_option('time_format'), $cronnextrun );
-				$lbotones = "<a class='statebutton play' href='JavaScript:run_now({$post->ID});' title='" . esc_attr(__('Run Once', 'wpematico')) . "'></a>";// To run now
-				$lbotones.= "<span class='statebutton grab red'></span>"; // To stop
-				$lbotones.= "<a class='statebutton stop' href='".self :: wpematico_action_link( $post->ID , 'display','toggle')."' title='" . $atitle . "'></a>"; // To activate
+				$lbotones = '<button type="button" class="state_buttons dashicons dashicons-controls-play" title="' . esc_attr(__('Run Once', 'wpematico')) . '"></button>';// To run now
+				$lbotones.= '<button type="button" disabled class="state_buttons dashicons dashicons-microphone red"></button>'; // To stop
+				$lbotones.= '<button type="button" class="state_buttons dashicons dashicons-controls-pause" btn-href="'.WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','toggle').'" title="' . $atitle . '"></button>'; // To deactivate
 				
 			} else {  // Inactive play gris & grab gris & stop black
 				$ltitle = __('Inactive', 'wpematico' );
-				$lbotones = "<a class='statebutton play' href='JavaScript:run_now({$post->ID});' title='" . esc_attr(__('Run Once', 'wpematico')) . "'></a>";// To run now
-				$lbotones.= "<a class='statebutton grab' href='".self :: wpematico_action_link( $post->ID , 'display','toggle')."' title='" . $atitle . "'></a>"; // To activate
-				$lbotones.= "<span class='statebutton stop grey'></span>"; // To stop
+				$lbotones = '<button type="button" class="state_buttons dashicons dashicons-controls-play" title="' . esc_attr(__('Run Once', 'wpematico')) . '"></button>';// To run now
+				$lbotones.= '<button type="button" class="state_buttons dashicons dashicons-microphone" btn-href="'.WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','toggle').'" title="' . $atitle . '"></button>'; // To activate
+				$lbotones.= '<button type="button" disabled class="state_buttons dashicons dashicons-controls-pause grey"></button>'; // To stop
 				
 			}
-			echo "<div class='row-actions2' title='$ltitle'>$lbotones</div>";
+
+
+			echo '<div class="row-actions2" title="'.$ltitle.'">'.$lbotones.'</div>';
 			break;
 		  case 'last':
 			$lastrun = get_post_meta($post_id, 'lastrun', true);
