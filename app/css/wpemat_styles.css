@@ -89,7 +89,7 @@ p { margin-bottom: 2px; }
     cursor: default;
 }
 
-.cpanelbutton, .state_buttons:before {
+.cpanelbutton:before,.state_buttons:before {
     margin-left: -10px; 
 }	
 .cpanelbutton, .state_buttons {
