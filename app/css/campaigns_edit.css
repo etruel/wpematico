@@ -12,24 +12,6 @@ p { margin-bottom: 2px; }
 .inside h3.subsection {background-color: #eeeeee !important;line-height: 1em;padding:5px; margin: 15px 0 0;}
 
 #msgdrag {display:none;color:red;padding: 0 0 0 20px;font-weight: 600;font-size: 1em;}
-.feed_header {padding: 0 0 0 30px;font-weight: 600;font-size: 0.9em;}
-div.feed_column {float: left;width: 39%;}
-#feed_actions{margin-left: 5px;}
-
-#feed_actions label{
-   font-size: 24px;
-    margin: 1px 2px;
-}
-#feed_actions button:before {
-	margin-left: -10px;
-}
-#feed_actions button {
-    height: 30px;
-    width: 30px;
-    padding-left: 0px;
-    margin: 0 5px 0 0;
-    padding-right: 0px;
-}
 
 #w2cactions .bicon{
 	font-size: 1.6em;
@@ -40,6 +22,21 @@ div.feed_column {float: left;width: 39%;}
 .rowactions{margin: 1.7em; display: flex;}
 .rowflex{display: flex;}
 .rowblock{display: block;}
+
+#wrd2cat_edit .pDiv {height:85px;}
+#rewrites_edit .pDiv {height:65px;}
+.pbfeet {margin:6px;}
+.pbfeet .select_down{margin-left:6px;}
+
+.pDiv{border-color: #BCBCBC;
+    border-style: solid none none;
+    border-width: 1px medium;
+	min-height: 28px;}
+
+#paging-box {background-color: #DDDDDD;border: 1px solid #B2B2B2;font-size: 11px;height: 30px;}
+#paging-box .leftText{float:left;margin-left:5px;margin-top:2px;width:360px;}
+#paging-box .middleText{float:left;margin-top:2px;}
+#paging-box .rightText{float:right;margin-right:10px;}
 
 #campaign_type {display: inline; width: 100%; text-align: center; color: #333; font-weight: bold;}
 
@@ -88,14 +85,40 @@ ul#categories li .children {margin-left: 12px;}
 .LightPink{background-color:LightPink;}
 .Papaya{background-color:PapayaWhip;}
 
+div.feed_column {float: left;width: 39%;}
+#feed_actions{margin-left: 5px;}
 
+#feed_actions button:before {
+	margin-left: -10px;
+}
+#feed_actions button {
+    height: 28px;
+    width: 30px;
+    padding-left: 0px;
+    margin: 1px 5px 0 0;
+    padding-right: 0px;
+	line-height: 0;
+}
+#feed_actions button:hover {
+    cursor: pointer;
+}
+#feed_actions button[disabled]:hover {
+    cursor: default;
+}
 .feed_header{
 	background-color:#E1DC9C;
 	background:-moz-linear-gradient(center bottom,#FCF6BC 0,#E1DC9C 98%,#FFFEA8 0);
 	background:-webkit-gradient(linear,left top,left bottom,from(#FCF6BC),to(#E1DC9C));
 	-ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FCF6BC',endColorstr='#E1DC9C');
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FCF6BC',endColorstr='#E1DC9C');
-	border:1px solid #BCBCBC;border-bottom-style:none;margin-top:-1px;overflow:hidden;padding:3px 10px}
+	font-weight: 600;
+	font-size: 0.9em;
+	border:1px solid #BCBCBC;
+	border-bottom-style:none;
+	margin-top:-1px;
+	overflow:hidden;
+	padding:3px 10px;
+}
 .feed_header input{color:#999;font-size:13px;padding:0px;width:227px}
 .feed_header .feed_column:first-child{padding-left:20px;}
 #feeds_list {background:#E2E2E2;}
@@ -104,23 +127,29 @@ ul#categories li .children {margin-left: 12px;}
 .sortitem:hover .sorthandle{display:block;}
 .feed_column input {font-size: 1em !important;}
 
-#wrd2cat_edit .pDiv {height:85px;}
-#rewrites_edit .pDiv {height:65px;}
+
+.wpematico_campaign_details {
+    width: 100%;
+	margin: 10px 0 5px;
+}
+
+.wpematico_campaign_details .feed_header {
+    padding-top: 7px;
+    font-weight: bold;
+    font-size: inherit;
+    text-align: center;
+}
+
+.cpanel-footer {
+    border: 1px solid #ccc;
+	margin: 3px 0 0;
+	background: #eee;
+	padding: 1px 2px;
+	min-height: 13px;
+}
 
 /**********************************************************************************************/
 /**********************************************************************************************/
-.pbfeet {margin:6px;}
-.pbfeet .select_down{margin-left:6px;}
-
-.pDiv{border-color: #BCBCBC;
-    border-style: solid none none;
-    border-width: 1px medium;
-	min-height: 28px;}
-
-#paging-box {background-color: #DDDDDD;border: 1px solid #B2B2B2;font-size: 11px;height: 30px;}
-#paging-box .leftText{float:left;margin-left:5px;margin-top:2px;width:360px;}
-#paging-box .middleText{float:left;margin-top:2px;}
-#paging-box .rightText{float:right;margin-right:10px;}
 
 
 div#cronboxes {
@@ -230,12 +259,3 @@ div#optionslayer {
 .table_wpematico_details tr:nth-child(2n) {
     background: beige;
 }
-/*.wpematico_current_state button.statebutton.play {
-  height: 30px;
-  line-height: 19.5px;
-  cursor: pointer;
-  vertical-align: middle;
-}
-.wpematico_current_state span, a {
-  vertical-align: middle;
-}*/

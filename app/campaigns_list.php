@@ -647,9 +647,9 @@ class WPeMatico_Campaigns {
 				$ltitle = __('Running since:', 'wpematico' ).' '.$runtime.' '.__('sec.', 'wpematico' );
 				$lbotones = '<button type="button" disabled class="state_buttons dashicons dashicons-controls-play green"></button>';
 				if ($activated) { // Active play green & grab rojo & stop gris
-					$lbotones.= '<button type="button" disabled class="state_buttons dashicons dashicons-microphone red"></button>'; // To activate
+					$lbotones.= '<button type="button" disabled class="state_buttons dashicons dashicons-update red"></button>'; // To activate
 				} else {  // Inactive play verde & grab black & stop grey
-					$lbotones.= '<button type="button" class="state_buttons dashicons dashicons-microphone" btn-href="'.WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','toggle').'" title="' . $atitle . '"></button>'; // To activate
+					$lbotones.= '<button type="button" class="state_buttons dashicons dashicons-update" btn-href="'.WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','toggle').'" title="' . $atitle . '"></button>'; // To activate
 				}
 //				$lbotones.= "<span class='state_buttons stop grey'></span>"; // To stop				
 				$lbotones.= '<button type="button" class="state_buttons dashicons dashicons-controls-pause" btn-href="'.WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','clear').'" title="' . __('Break fetching and restore campaign', 'wpematico') . '"></button>'; // To deactivate
@@ -659,13 +659,13 @@ class WPeMatico_Campaigns {
 				$cronnextrun = (isset($cronnextrun) && !empty($cronnextrun) && ($cronnextrun > 0 ) ) ? $cronnextrun : $campaign_data['cronnextrun']; 
 				$ltitle =  __('Next Run:', 'wpematico' ).' '.date_i18n( get_option('date_format').' '. get_option('time_format'), $cronnextrun );
 				$lbotones = '<button type="button" class="state_buttons dashicons dashicons-controls-play" title="' . esc_attr(__('Run Once', 'wpematico')) . '"></button>';// To run now
-				$lbotones.= '<button type="button" disabled class="state_buttons dashicons dashicons-microphone red"></button>'; // To stop
+				$lbotones.= '<button type="button" disabled class="state_buttons dashicons dashicons-update red"></button>'; // To stop
 				$lbotones.= '<button type="button" class="state_buttons dashicons dashicons-controls-pause" btn-href="'.WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','toggle').'" title="' . $atitle . '"></button>'; // To deactivate
 				
 			} else {  // Inactive play gris & grab gris & stop black
 				$ltitle = __('Inactive', 'wpematico' );
 				$lbotones = '<button type="button" class="state_buttons dashicons dashicons-controls-play" title="' . esc_attr(__('Run Once', 'wpematico')) . '"></button>';// To run now
-				$lbotones.= '<button type="button" class="state_buttons dashicons dashicons-microphone" btn-href="'.WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','toggle').'" title="' . $atitle . '"></button>'; // To activate
+				$lbotones.= '<button type="button" class="state_buttons dashicons dashicons-update" btn-href="'.WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','toggle').'" title="' . $atitle . '"></button>'; // To activate
 				$lbotones.= '<button type="button" disabled class="state_buttons dashicons dashicons-controls-pause grey"></button>'; // To stop
 				
 			}

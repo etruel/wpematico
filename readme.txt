@@ -269,6 +269,7 @@ or to e-mail etruel@gmail.com
 * - Adds required PHP extensions and Apache Mods.
 * Fixes the blank messages on errors when the feeds are tested.
 * Fixes few javascript issues on campaigns editing.
+* Fixes tha jQuery Synchronous XMLHttpRequest issues on campaigns editing.
 * Updated included external SimplePie library to 1.5 version.
 * **Professional Add-on:**
 * **Enlarges the version required for the Professional addon to 1.8v** (https://etruel.com/downloads/wpematico-professional/)

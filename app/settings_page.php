@@ -149,9 +149,20 @@ function wpematico_settings(){
 						</button>
 						<h3 class="handle"><?php _e( 'About', 'wpematico' );?></h3>
 						<div class="inside">
-							<p id="left1" onmouseover="jQuery(this).css('opacity',0.9);" onmouseout="jQuery(this).css('opacity',0.5);" style="text-align:center;opacity: 0.5;"><a href="http://www.wpematico.com" target="_Blank" title="Go to new WPeMatico WebSite"><img style="width: 100%;" src="<?php echo WPeMatico :: $uri ; ?>/images/icon-512x512.jpg" title=""></a><br />
-								<b>WPeMatico Free Version <?php echo WPeMatico :: $version ; ?></b></p>
-							<p><?php _e( 'Thanks for test, use and enjoy this plugin.', 'wpematico' );?></p>
+							<p><b>WPeMatico</b> <?php echo WPEMATICO_VERSION; ?> Version</p>
+							<p class="icon_version">
+								<a href="http://www.wpematico.com" target="_Blank" title="<?php _e('Go to the new WPeMatico WebSite','wpematico'); ?>">
+									<img class="logover" src="<?php echo WPeMatico :: $uri ; ?>/images/icon-512x512.jpg" title="">	
+									<span id="wpematico-website">WPeMatico Website</span><br>
+								</a><span id="wpematico-websiteinfo"><?php _e('Comments & Tutorials','wpematico'); ?></span>
+							</p>
+							<p class="icon_version">
+								<a href="https://etruel.com" target="_Blank" title="<?php _e('WPeMatico Addons in etruel.com store','wpematico'); ?>">
+									<img class="logover" src="<?php echo WPeMatico :: $uri ; ?>/images/etruelcom_ico.png" title="">	
+									<span id="wpematico-etruel">etruel.com</span><br>
+								</a><span id="wpematico-store"><?php _e('Addons store, FAQs & Support','wpematico'); ?></span>
+							</p>
+							<p><?php _e( 'Thanks for use & test this plugin.', 'wpematico' );?></p>
 							<p></p>
 							<p><?php _e( 'If you like it and want to thank, you can write a 5 star review on Wordpress.', 'wpematico' );?></p>
 							<style type="text/css">#linkrate:before { content: "\2605\2605\2605\2605\2605";font-size: 18px;}
@@ -160,38 +171,13 @@ function wpematico_settings(){
 								<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" id="linkrate" class="button" target="_Blank" title="Click here to rate plugin on Wordpress">  Rate </a>
 							</p>
 							<p></p>
-							<p style="text-align: center;"><?php _e( 'Also you can donate a few dollars', 'wpematico' );?>
-								<input type="button" class="button-secondary" name="donate" value="<?php _e( 'Click to Donate', 'wpematico' );?>" onclick="javascript:window.open('https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU');return false;"/>
-							</p>
-							<p></p>
 							<p style="text-align: center;">
 								<input type="button" class="button-primary" name="buypro" value="<?php _e( 'Buy PRO version online', 'wpematico' );?>" onclick="javascript:window.open('https://etruel.com/downloads/wpematico-pro/');return false;"/>
 							</p>
 							<p></p>
 						</div>
 					</div>
-					<div class="postbox">						
-						<button type="button" class="handlediv button-link" aria-expanded="true">
-							<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
-							<span class="toggle-indicator" aria-hidden="true"></span>
-						</button>
-						<h3 class="handle"><?php _e( 'Sending e-Mails', 'wpematico' );?></h3>
-						<div class="inside">
-							<p><b><?php _e('Sender Email:', 'wpematico' ); ?></b><br /><input name="mailsndemail" id="mailsndemail" type="text" value="<?php echo $cfg['mailsndemail'];?>" class="large-text" /><span id="mailmsg"></span></p>
-							<p><b><?php _e('Sender Name:', 'wpematico' ); ?></b><br /><input name="mailsndname" type="text" value="<?php echo $cfg['mailsndname'];?>" class="large-text" /></p>
-							<input type="hidden" name="mailmethod" value="<?php echo $cfg['mailmethod']; // "mailmethod"="mail" or "mailmethod"="SMTP"  ?>">
-							<label id="mailsendmail" <?php if ($cfg['mailmethod']!='Sendmail') echo 'style="display:none;"';?>><b><?php _e('Sendmail Path:', 'wpematico' ); ?></b><br /><input name="mailsendmail" type="text" value="<?php echo $cfg['mailsendmail'];?>" class="large-text" /><br /></label>
-						</div>
-					</div>
 
-					<div class="postbox inside">
-						<div class="inside">
-							<p>
-							<input type="hidden" name="wpematico-action" value="save_settings" />
-							<?php submit_button( __( 'Save settings', 'wpematico' ), 'primary', 'wpematico-save-settings', false ); ?>
-							</p>
-						</div>
-					</div>
 					<div class="postbox inside">
 						<button type="button" class="handlediv button-link" aria-expanded="true">
 							<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
@@ -209,20 +195,32 @@ function wpematico_settings(){
 							<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disable_credits'],true); ?> name="disable_credits" id="disable_credits" /><b>&nbsp;<?php _e('Disable <i>WPeMatico Credits</i>', 'wpematico' ); ?></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disable_credits']; ?>"></span>
 							<span id="discredits" style="<?php echo ($cfg['disable_credits'])?'':'display:none;' ?>"><br /><?php 
 							printf( __('If you can\'t show the WPeMatico credits in your posts, I really appreciate if you can take a minute to %s write a 5 star review on Wordpress %s. :) thanks.', 'wpematico' ),
-								'<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" target="_Blank" title="Open a new window">',
-								'</a>'); 
+								'<b><a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" target="_Blank" title="Open a new window">',
+								'</a></b>'); 
 							?></span>
-							<p></p>
 						</div>
+
+					<div class="postbox">
+						<h3 class="handle"><?php _e( 'Sending e-Mails', 'wpematico' );?></h3>
+						<div class="inside">
+							<label><b><?php _e('Sender Email:', 'wpematico' ); ?></b><br /><input name="mailsndemail" id="mailsndemail" type="text" value="<?php echo $cfg['mailsndemail'];?>" class="large-text" /><span id="mailmsg"></span></label>
+							<label><b><?php _e('Sender Name:', 'wpematico' ); ?></b><br /><input name="mailsndname" type="text" value="<?php echo $cfg['mailsndname'];?>" class="large-text" /></label>
+							<input type="hidden" name="mailmethod" value="<?php echo $cfg['mailmethod']; // "mailmethod"="mail" or "mailmethod"="SMTP"  ?>">
+							<label id="mailsendmail" <?php if ($cfg['mailmethod']!='Sendmail') echo 'style="display:none;"';?>><b><?php _e('Sendmail Path:', 'wpematico' ); ?></b><br /><input name="mailsendmail" type="text" value="<?php echo $cfg['mailsendmail'];?>" class="large-text" /><br /></label>
+						</div>
+						
 					</div>
 
-					<div class="postbox inside">
-						<h3 class="handle"><?php _e( 'About PRO', 'wpematico' );?></h3>
+					<div class="">
 						<div class="inside">
-							<p id="left1" onmouseover="jQuery(this).css('opacity',0.9);this.style.backgroundColor='#111'" onmouseout="jQuery(this).css('opacity',0.5);this.style.backgroundColor='#fff'" style="text-align:center;opacity: 0.5;border-radius: 14px 14px 0 0;"><a href="https://etruel.com/downloads/wpematico-pro/" target="_Blank" title="Go to etruel WebSite"><img style="width: 100%;" src="https://etruel.com/wp-content/uploads/2016/04/etruelcom2016_250x120.png" title=""></a><br />
-							WPeMatico PRO Features</p>
+							<p>
+							<input type="hidden" name="wpematico-action" value="save_settings" />
+							<?php submit_button( __( 'Save settings', 'wpematico' ), 'primary', 'wpematico-save-settings', false ); ?>
+							</p>
 						</div>
 					</div>
+					</div>
+
 					<div class="postbox inside">
 						<h3 class="handle"><?php _e( 'The Perfect Package', 'wpematico' );?></h3>
 						<div class="inside">
@@ -230,7 +228,9 @@ function wpematico_settings(){
 							WPeMatico The Perfect Package</p>
 						</div>
 					</div>
-					<?php do_action('wpematico_wp_ratings'); ?>
+					<div class="inside">
+						<?php do_action('wpematico_wp_ratings'); ?>
+					</div>
 				</div>
 				<?php //include( WPeMatico :: $dir . 'myplugins.php');	?>
 			</div>

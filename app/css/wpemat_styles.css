@@ -236,6 +236,16 @@ p { margin-bottom: 2px; }
 .pabs{position:absolute}
 .ibfix{display:inline-block;zoom:1;*display:inline}
 
+/*** Settings  ***/
+.logover {width: 20%;float:left;margin-right:5px;}
+.icon_version {
+	opacity: 0.5;
+	display: inline-block;
+}
+.icon_version:hover {opacity:0.9;}
+#discredits {background: yellow;}
+
+/*** Settings  ***/
 
 .submenu_dropdown .filter_bar,#gag-agreement .filter_bar{
 	background-color:#E1DC9C;
@@ -246,7 +256,6 @@ p { margin-bottom: 2px; }
 	border:1px solid #BCBCBC;border-bottom-style:none;margin-top:-1px;overflow:hidden;padding:3px 10px}
 .submenu_dropdown .filter_bar select{border:1px solid #B2B2B2;font-size:11px;padding:3px 3px 3px 7px;width:180px}
 .submenu_dropdown .filter_bar input{color:#999;font-size:13px;padding:0px;width:227px}
-
 
 #licenses .postbox .inside .postbox {
     float: left;
@@ -545,7 +554,7 @@ display: table;
 #thickbox_wizard .postbox .control-buttons {
 	font-size: 20px;
 	position: absolute;
-    top: 21px;
+    top: 18px;
 	z-index: 10;
 }
 #thickbox_wizard .postbox #prev_wizard{

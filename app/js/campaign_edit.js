@@ -2,6 +2,27 @@ jQuery(document).ready(function($){
 	$('button[btn-href]').click(function(e) {
 		location.href = $(this).attr('btn-href');
 	});
+	$('button.cpanelbutton').hover(
+		function(e) {
+			$(this).attr('title_out', $(this).attr('title') );
+			$('#cpanelnotebar').text( $(this).attr('title_out') );
+			$(this).attr('title', '') ;
+		},
+		function(e) {
+			$('#cpanelnotebar').text( '' );
+			$(this).attr( 'title', $(this).attr('title_out') ) ;
+		}
+	);
+
+	$('#feed_actions button').hover(
+		function(e) {
+			$('#cpanelnotebar').text( $(this).attr('title') );
+		},
+		function(e) {
+			$('#cpanelnotebar').text( '' );
+		}
+	);
+
 	$('#campaign_edit_reset').click(function(e) {
 		if ($(this).data('wpematico_before_save')) {
 			e.preventDefault();
@@ -130,9 +151,9 @@ jQuery(document).ready(function($){
 		item = $(this).parent().parent().find('.feed_column input');
 		feed = item.val();
 		var working = $(this);
-		$(working).removeClass('warning')
-			.removeClass("frowning_face")
-			.removeClass("smiling_face")
+		$(working).removeClass('dashicons-editor-spellcheck')
+			.removeClass("dashicons-thumbs-down red")
+			.removeClass("dashicons-thumbs-up green")
 			.addClass('ruedita');
 
 		if (feed !== "") {
@@ -150,26 +171,26 @@ jQuery(document).ready(function($){
 				if(response.success ){
 					$(item).attr('style','Background:#75EC77;');
 					$("#poststuff").prepend('<div id="message" class="feederror notice notice-success is-dismissible"><p>'+response.message+'</p>' +dismiss +'</div>');
-					$(working).removeClass('warning')
-							.removeClass("frowning_face")
+					$(working).removeClass('dashicons-editor-spellcheck')
+							.removeClass("dashicons-thumbs-down red")
 							.removeClass("ruedita")
-							.addClass('smiling_face');
+							.addClass('dashicons-thumbs-up green');
 				} else {
 					$(item).attr('style','Background:Red;');
 					$("#poststuff").prepend('<div id="message" class="feederror notice notice-error is-dismissible"><p>ERROR: '+response.message+'</p>' +dismiss +'</div>');
-					$(working).removeClass('warning')
-							.removeClass("smiling_face")
+					$(working).removeClass('dashicons-editor-spellcheck')
+							.removeClass("dashicons-thumbs-up green")
 							.removeClass("ruedita")
-							.addClass('frowning_face');
+							.addClass('dashicons-thumbs-down red');
 
 				}
 			});
  		} else {			
 			alert(wpematico_object.text_type_some_feed_url);
 			$(working).removeClass('ruedita')
-				.removeClass("frowning_face")
-				.removeClass("smiling_face")
-				.addClass('warning');
+				.removeClass("dashicons-thumbs-down red")
+				.removeClass("dashicons-thumbs-up green")
+				.addClass('dashicons-editor-spellcheck');
 		}
 	});
 
@@ -184,9 +205,9 @@ jQuery(document).ready(function($){
 			feed = $(item).attr('value');
 			var working = $(item).parent().parent().find('#checkfeed');
 			if (feed !== "") {
-				$(working).removeClass('warning')
-					.removeClass("frowning_face")
-					.removeClass("smiling_face")
+				$(working).removeClass('dashicons-editor-spellcheck')
+					.removeClass("dashicons-thumbs-down red")
+					.removeClass("dashicons-thumbs-up green")
 					.addClass('ruedita');
 				$(item).attr('style','Background:#CCC;');
 				var data = {
@@ -202,17 +223,17 @@ jQuery(document).ready(function($){
 					if( response.success ){
 						$(item).attr('style','Background:#75EC77;');
 						$("#poststuff").prepend('<div id="message" class="feederror notice notice-success is-dismissible"><p>'+response.message+'</p>' +dismiss +'</div>');
-						$(working).removeClass('warning')
-								.removeClass("frowning_face")
+						$(working).removeClass('dashicons-editor-spellcheck')
+								.removeClass("dashicons-thumbs-down red")
 								.removeClass("ruedita")
-								.addClass('smiling_face');
+								.addClass('dashicons-thumbs-up green');
 					} else {
 						$(item).attr('style','Background:Red;');
 						$("#poststuff").prepend('<div id="message" class="feederror notice notice-error is-dismissible"><p>ERROR: '+response.message+'</p>' +dismiss +'</div>');
-						$(working).removeClass('warning')
-								.removeClass("smiling_face")
+						$(working).removeClass('dashicons-editor-spellcheck')
+								.removeClass("dashicons-thumbs-up green")
 								.removeClass("ruedita")
-								.addClass('frowning_face');
+								.addClass('dashicons-thumbs-down red');
 					}
 					$(working).removeClass("spinner");
 				});

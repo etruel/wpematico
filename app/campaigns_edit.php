@@ -127,7 +127,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 	#rewrite-box h2.hndle {background: #ffb3be;}
 	#fullcontent-box h2.hndle {background: #006100;	color: white;}
 	#submitdiv h2.hndle {background: #0085ba;	color: white;}
-	.ruedita{background: url(<?php echo admin_url('images/spinner.gif'); ?>) no-repeat;height: 10px;margin: 5px 3px 0;}
+	.ruedita{background: url(<?php echo admin_url('images/spinner.gif'); ?>) no-repeat 3px;}
 	<?php
 		$CampaignTypesArray =  self::campaign_type_options();
 		$CampaignType = $campaign_data['campaign_type'];
