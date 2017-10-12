@@ -184,6 +184,13 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 					'name_campaign' =>  $name_campaign,
 					'see_logs_action_url' =>  $see_logs_action_url,
 					'update2save' =>  __('Update Campaign to save changes.', 'wpematico' ),
+					
+					'visibility_trans'  => __('Public'),
+					'visibility' => 'public',
+					'description' => __('Campaign Description', 'wpematico'),
+					'description_help' => __('Here you can write some observations.', 'wpematico'),
+		
+
 				);
 		if ($cfg['enableword2cats']) {
 			
@@ -226,154 +233,13 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		global $post,$campaign_data;
 		if($post->post_type != 'wpematico') return $post_id;
 		$post->post_password = '';
-		$visibility = 'public';
-		$visibility_trans = __('Public');
-		$description = __('Campaign Description', WPeMatico :: TEXTDOMAIN );
-		$description_help = __('Here you can write some observations.',  WPeMatico :: TEXTDOMAIN);
-		
+
 		$cfg = get_option(WPeMatico :: OPTION_KEY);
 		
 		?>
 		<script type="text/javascript" language="javascript">
 		jQuery(document).ready(function($){
-			//try {
-			$('#post-visibility-display').text('<?php echo $visibility_trans; ?>');
-			$('#hidden-post-visibility').val('<?php echo $visibility; ?>');
-			$('#visibility-radio-<?php echo $visibility; ?>').attr('checked', true);
-			$('#postexcerpt .hndle span').text('<?php echo $description; ?>');
-			$('#postexcerpt .inside .screen-reader-text').text('<?php echo $description; ?>');
-			$('#postexcerpt .inside p').text('<?php echo $description_help; ?>');
-
-
-			$('#psearchtext').keyup(function(tecla){
-				if(tecla.keyCode==27) {
-					$(this).attr('value','');
-					//$('.feedinput').parent().parent().show();
-					$('.feedinput').each(function (el,item) {
-						feed = $(item).attr('value');
-						if (feed != '') {
-							$(item).parent().parent().show();
-						}else{
-							$(item).parent().parent().hide();
-						}
-					});
-				}else{
-					buscafeed = $(this).val();
-					$('.feedinput').each(function (el,item) {
-						feed = $(item).attr('value');
-						if (feed.toLowerCase().indexOf(buscafeed) >= 0) {
-							if (feed != '') 
-								$(item).parent().parent().show();
-						}else{
-							$(item).parent().parent().hide();
-						}
-					});
-				}
-			});
 			
-			$('#psearchcat').keyup(function(tecla){
-				if(tecla.keyCode==27) {
-					$(this).attr('value','');
-					//$('.catinput').parent().parent().show();
-					$('.selectit').each(function (el,item) {
-						cat = $(item).text();
-						if (cat != '') {
-							$(item).parent().show();
-						}else{
-							$(item).parent().hide();
-						}
-					});
-					$('#catfield').fadeOut();
-				}else{
-					buscacat = $(this).val();
-					$('.selectit').each(function (el,item) {
-						cat = $(item).text();
-						if (cat.toLowerCase().indexOf(buscacat) >= 0) {
-							if (cat != '') 
-								$(item).parent().show();
-						}else{
-							$(item).parent().hide();
-						}
-					});
-				}
-			});
-			
-			$('#catsearch').click(function() {
-				$('#catfield').toggle();
-				$('#psearchcat').focus();
-			});
-
-			jQuery('#campaign_no_setting_img').click(function() {
-				if ( true == jQuery('#campaign_no_setting_img').is(':checked')) {
-					jQuery('#div_no_setting_img').fadeIn();
-				} else {
-					jQuery('#div_no_setting_img').fadeOut();
-				}
-			});
-
-			jQuery('#campaign_imgcache').click(function() {
-				if ( true == jQuery('#campaign_imgcache').is(':checked')) {
-					jQuery('#nolinkimg').fadeIn();
-				} else {
-					jQuery('#nolinkimg').fadeOut();
-				}
-			});
-			jQuery('#campaign_enable_featured_image_selector').click(function() {
-				if ( true == jQuery('#campaign_enable_featured_image_selector').is(':checked')) {
-					jQuery('#featured_img_selector_div').fadeIn();
-				} else {
-					jQuery('#featured_img_selector_div').fadeOut();
-				}
-			});
-			
-
-			jQuery('#campaign_imgcache, #campaign_featuredimg').click(function() {
-				if ( true == jQuery('#campaign_imgcache').is(':checked') || true == jQuery('#campaign_featuredimg').is(':checked') ) {
-					jQuery('#custom_uploads').fadeIn();
-				} else {
-					jQuery('#custom_uploads').fadeOut();
-				}
-			});
-
-			jQuery('#campaign_no_setting_audio').click(function() {
-				if ( true == jQuery('#campaign_no_setting_audio').is(':checked')) {
-					jQuery('#div_no_setting_audio').fadeIn();
-				} else {
-					jQuery('#div_no_setting_audio').fadeOut();
-				}
-			});
-
-
-			jQuery('#campaign_audio_cache').click(function() {
-				if ( true == jQuery('#campaign_audio_cache').is(':checked')) {
-					jQuery('#nolink_audio').fadeIn();
-					jQuery('#custom_uploads_audios').fadeIn();
-				} else {
-					jQuery('#nolink_audio').fadeOut();
-					jQuery('#custom_uploads_audios').fadeOut();
-					
-				}
-			});
-
-			jQuery('#campaign_no_setting_video').click(function() {
-				if ( true == jQuery('#campaign_no_setting_video').is(':checked')) {
-					jQuery('#div_no_setting_video').fadeIn();
-				} else {
-					jQuery('#div_no_setting_video').fadeOut();
-				}
-			});
-
-
-			jQuery('#campaign_video_cache').click(function() {
-				if ( true == jQuery('#campaign_video_cache').is(':checked')) {
-					jQuery('#nolink_video').fadeIn();
-					jQuery('#custom_uploads_videos').fadeIn();
-				} else {
-					jQuery('#nolink_video').fadeOut();
-					jQuery('#custom_uploads_videos').fadeOut();
-					
-				}
-			});
 			
 			var postTypesArray = {};
 			<?php
@@ -448,128 +314,13 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		        displayTaxonomies();
 			});
 
-			$('.tag').click(function(){
-				$('#campaign_template').attr('value',$('#campaign_template').attr('value')+$(this).html());
-			});
-			
-			$(document).on('click','.w2cregex',function() {
-				var cases = $(this).parent().parent().find('#campaign_wrd2cat_cases');
-				if ( true == $(this).is(':checked')) {
-					cases.attr('checked','checked');
-					cases.attr('disabled','disabled');
-				}else{
-					cases.removeAttr('checked');
-					cases.removeAttr('disabled');
-				}
-			});
-			
-
-			
-			$(document).on('click','#addmorerew',function() {
-				$('#rew_max').val( parseInt($('#rew_max').val(),10) + 1 );
-				newval = $('#rew_max').val();					
-				nuevo= $('#nuevorew').clone();
-				$('input', nuevo).eq(0).attr('name','campaign_word_option_title['+ newval +']');
-				$('input', nuevo).eq(1).attr('name','campaign_word_option_regex['+ newval +']');
-				$('textarea', nuevo).eq(0).attr('name','campaign_word_origin['+ newval +']');
-				$('textarea', nuevo).eq(1).attr('name','campaign_word_rewrite['+ newval +']');
-				$('textarea', nuevo).eq(2).attr('name','campaign_word_relink['+ newval +']');
-				$('input', nuevo).eq(0).removeAttr('checked');
-				$('input', nuevo).eq(1).removeAttr('checked');
-				$('#rw3', nuevo).show();
-				$('textarea', nuevo).eq(0).text('');
-				$('textarea', nuevo).eq(1).text('');
-				$('textarea', nuevo).eq(2).text('');
-				nuevo.show();
-				$('#rewrites_edit').append(nuevo);
-			});
-			
-			
-			
-			$('#post').submit( function() {		//checkfields
-				$('#wpcontent .ajax-loading').attr('style',' visibility: visible;');
-				$.ajaxSetup({async:false});
-				error=false;
-				var msg="Guardando...";
-				var wrd2cat= $('input[name^="campaign_wrd2cat[word]"]').serialize();
-				var wrd2cat_regex  = new Array();
-				$(".w2cregex").each(function() {
-					if ( true == $(this).is(':checked')) {
-						wrd2cat_regex.push('1');
-					}else{
-						wrd2cat_regex.push('0');
-					}
-				});
-
-				reword = $("textarea[name^='campaign_word_origin']").serialize();
-				var reword_regex  = new Array();
-				$("input[name^='campaign_word_option_regex']").each(function() {
-					if ( true == $(this).is(':checked')) {
-						reword_regex.push('1');
-					}else{
-						reword_regex.push('0');
-					}
-				});
-				var reword_title  = new Array();
-				$("input[name^='campaign_word_option_title']").each(function() {
-					if ( true == $(this).is(':checked')) {
-						reword_title.push('1');
-					}else{
-						reword_title.push('0');
-					}
-				});
-
-				feeds= $("input[name*='campaign_feeds']").serialize();
-				
-				var data = {
-					campaign_feeds: feeds,
-					campaign_word_origin: reword,
-					campaign_word_option_regex: reword_regex,
-					campaign_word_option_title: reword_title,
-					campaign_wrd2cat: wrd2cat,
-					campaign_wrd2cat_regex: wrd2cat_regex,
-					action: "wpematico_checkfields"
-				};
-				$.post(ajaxurl, data, function(todok){  //si todo ok devuelve 1 sino el error
-					if( todok != 1 ){
-						error=true;
-						msg=todok;
-					}else{
-						error=false;  //then submit campaign
-					}
-				});
-				if( error == true ) {
-					$('#fieldserror').remove();
-					$("#poststuff").prepend('<div id="fieldserror" class="error fade">ERROR: '+msg+'</div>');
-					$('#wpcontent .ajax-loading').attr('style',' visibility: hidden;');
-
-					return false;
-				}else {
-					$('.w2ccases').removeAttr('disabled'); //si todo bien habilito los check para que los tome el php
-					return true;
-				}
-			});
-			
-
-			//$('#checkfeeds').click(function() {
-			$(document).on("click", '.notice-dismiss', function(event) {
-				$(this).parent().remove();
-			});
-			
-			
-			
-			
-			
-			$('.feedinput').focus(function() {
-				$(this).attr('style','Background:#FFFFFF;');
-			});
-
-			$(document).on("change", '#post', function(event) {
-				disable_run_now();
-			});
 			
 			
 
+			
+			
+			
+			
 			<?php $CampaignTypesArray =  self::campaign_type_options();	?>
 			CampaignTypesArray = <?php echo wp_json_encode($CampaignTypesArray); ?>;
 			

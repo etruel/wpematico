@@ -82,17 +82,17 @@ p { margin-bottom: 2px; }
 }
 */
 
-.cpanelbutton, .state_buttons:hover {
+.cpanelbutton:hover {
     cursor: pointer;
 }
-.cpanelbutton[disabled],.state_buttons[disabled]:hover {
+.cpanelbutton[disabled]:hover {
     cursor: default;
 }
 
-.cpanelbutton:before,.state_buttons:before {
-    margin-left: -10px; 
+.cpanelbutton:before{
+    margin-left: 0px; 
 }	
-.cpanelbutton, .state_buttons {
+.cpanelbutton {
     height: 30px;
 	width: 30px;
     padding-left: 0px;
