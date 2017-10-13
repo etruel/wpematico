@@ -4,6 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: RSS, RSS to Post, Feed to Post, autoblog,rss aggregator, Feed, rss to post, syndication, Post, Posts, aggregation, atom, bot, content, writing
 Requires at least: 4.1
 Tested up to: 4.9
+Requires PHP: 5.3
 Stable tag: trunk
 License: GPLv2 or later
 
@@ -16,7 +17,6 @@ This plugin offers you a nice interface following the WordPress standards that a
 
 [youtube http://www.youtube.com/watch?v=N9wuKSbp1AE]
 
-Requires PHP >= 5.3
 
 For RSS fetching, it uses the Simplepie library included in Wordpress or forces to use the external library included in the plugin.
 As for image processing, it uses the core functions of Wordpress. Failing doing the latter, it will use the custom functions with or without cURL.
@@ -143,6 +143,11 @@ If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/
 > * We will even log directly into your site to find the problems.
 > * You can rest assured knowing that we are going to find an answer, no matter how long it takes.
 > * Includes the editing for a config file for *one* website for Full Content Add-on.
+
+
+= Requirements =
+
+You can see all the requirements details in the System Status tab inside WPeMatico Settings screen.
 
 
 = Do you like WPeMatico? =
@@ -273,8 +278,9 @@ or to e-mail etruel@gmail.com
 * Updated included external SimplePie library to 1.5 version.
 * **Professional Add-on:**
 * **Enlarges the version required for the Professional addon to 1.8v** (https://etruel.com/downloads/wpematico-professional/)
+* Added name spaces for feeds with Custom Tags to be used in the Campaign Template and Custom fields.
 * Added a fixed icon for Feed Advanced Options in the feed row.
-* Added a new feature to Force Feed when Simplepie gives some error on checking. Find it in the Feed Advanced Options Popup.
+* Added an option to Force Feed when Simplepie gives error. Find it in the Feed Advanced Options Popup.
 * Fixes the numeric name in the file for an exported campaign.
 * Fixes the malformed JSON in the content sometimes when export campaigns.
 

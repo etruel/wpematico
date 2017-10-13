@@ -164,7 +164,7 @@ class WPeMatico_Campaigns {
 						
 			'image_run_loading' =>  get_bloginfo('wpurl').'/wp-admin/images/wpspin_light.gif',
 			'date_format' =>  get_option('date_format').' '. get_option('time_format'),
-			'i18n_date_format' =>  date_i18n( get_option('date_format').' '. get_option('time_format') ),
+			'i18n_date_format' =>  date_i18n( get_option('date_format').'-'. get_option('time_format') ),
 
 			'text_running_campaign' =>  __('Running Campaign...', 'wpematico'),
 			'text_select_a_campaign_to_run' =>  __('Please select campaign(s) to Run.', 'wpematico'),

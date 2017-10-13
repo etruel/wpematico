@@ -187,14 +187,17 @@ function wpematico_addons_custom_columns($column_name, $plugin_file, $plugin_dat
 	if (strpos($plugin_data['Name'], 'WPeMatico ') === false && strpos($plugin_data['PluginURI'], 'wpematico') === false ) {
 		return true;
 	}
+	// Get the addon from the transient saved before
+	$addons = get_transient('etruel_wpematico_addons_data');
+	foreach($addons as $value) { 
+		$plugin_data_uri = strstr( $plugin_data['PluginURI'], '://');
+		$addon_data_uri = strstr( $value['PluginURI'], '://');
+		if( ($plugin_data['Name'] == $value['Name']) or ($plugin_data_uri == $addon_data_uri) ) {
+			$addon = $value;
+		}					
+	}
 	switch($column_name) {
 		case 'icon':
-			foreach(get_transient('etruel_wpematico_addons_data') as $value) { 
-				if($plugin_data['Name'] == $value['Name'] or 
-						preg_replace('/^http(s)?:\/\//','', $plugin_data['PluginURI']) == preg_replace('/^http(s)?:\/\//','', $value['PluginURI'] ) ) {
-					$addon = $value;
-				}					
-			}
 			if(isset($addon['icon'])) {
 				echo $addon['icon'];
 			}

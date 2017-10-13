@@ -1122,7 +1122,7 @@ public static function feeds_box( $post ) {
 				<h2 style="font-size: 30px; font-family: Sans Serif; text-shadow: 1px 1px 1px rgba(0,0,0,.4);"><?php echo __('CAMPAIGN WIZARD','wpematico'); ?>
 					<input type="button" value="x" class="closed_wizard">
 				</h2>
-					<div class="title_wizard" id="titlediv" style="padding: 10px; background-color: #DB9667;"></div>
+					<div class="title_wizard" id="titlediv"></div>
 					<div class="wpematico_divider_list_wizard">
 						<span  class="dashicons dashicons-editor-help icon-wizard-help"></span>
 						<p style="color: white;margin-top: 0px;" class="help_wizard"> </p>
@@ -1137,7 +1137,7 @@ public static function feeds_box( $post ) {
 							<?php echo __('Next','wpematico'); ?> <i class="dashicons dashicons-arrow-right"></i>
 						</button>
 
-						<h2 class="hndle ui-sortable-handle temp_uisortable postbox-title" data-background-color="postbox-wizard_metabox_0" style="color: black; padding: 10px; font-family: 'Roboto', sans-serif;">
+						<h2 class="hndle ui-sortable-handle temp_uisortable postbox-title" data-background-color="" style="color: black; padding: 10px; font-family: 'Roboto', sans-serif;">
 							<span></span>
 						</h2>
 					</div>
@@ -1194,17 +1194,20 @@ public static function feeds_box( $post ) {
 					
 					temp_wizard_array_name = new Array();
 					temp_wizard_class_name = new Array();
+					temp_wizard_id_array = new Array();
 					
 					for(i=0;i<wizard_name_array.length;i++){
 						if (wizard_id_array[i] == 'campaign_types') {
 							temp_wizard_array_name.push(wizard_name_array[i]);
 							temp_wizard_class_name.push(wizard_class_array[i]);
+							temp_wizard_id_array.push(wizard_id_array[i]);
 						}
 					}
 					for(i=0;i<wizard_name_array.length;i++){
 						if (wizard_id_array[i] == 'feeds-box') {
 							temp_wizard_array_name.push(wizard_name_array[i]);
 							temp_wizard_class_name.push(wizard_class_array[i]);
+							temp_wizard_id_array.push(wizard_id_array[i]);
 						}
 					}
 					
@@ -1212,21 +1215,25 @@ public static function feeds_box( $post ) {
 						if (wizard_id_array[i] != 'submitdiv' && wizard_id_array[i] != 'feeds-box' && wizard_id_array[i] != 'campaign_types') {
 							temp_wizard_array_name.push(wizard_name_array[i]);
 							temp_wizard_class_name.push(wizard_class_array[i]);
+							temp_wizard_id_array.push(wizard_id_array[i]);
 						}
 					}
 					for(i=0;i<wizard_name_array.length;i++){
 						if (wizard_id_array[i] == 'submitdiv') {
 							temp_wizard_array_name.push(wizard_name_array[i]);
 							temp_wizard_class_name.push(wizard_class_array[i]);
+							temp_wizard_id_array.push(wizard_id_array[i]);
 						}
 					}
 					//closed for
 					//sort original array
 					wizard_name_array = new Array();
 					wizard_class_array = new Array();
+					wizard_id_array = new Array();
 					for(j=0;j<temp_wizard_array_name.length;j++){
 						wizard_name_array[j] = temp_wizard_array_name[j];
 						wizard_class_array[j] = temp_wizard_class_name[j];
+						wizard_id_array[j] = temp_wizard_id_array[j];
 					}
 
 				}//closed function
@@ -1236,8 +1243,6 @@ public static function feeds_box( $post ) {
 						$(this).appendTo("."+class_wizard);
 					});
 				}
-			
-
 				jQuery(document).on('click','#next_wizard',function(){
 					cont_wizard++;
 					tam_array_metabox = parseInt(wizard_class_array.length);
@@ -1249,11 +1254,11 @@ public static function feeds_box( $post ) {
 						$("#prev_wizard").show(0);
 						$("."+wizard_class_array[cont_wizard]).find('>div.inside').attr("wizard",$("."+wizard_class_array[cont_wizard]).attr("wizard"));
 						$("."+wizard_class_array[cont_wizard]).find('>div.inside').appendTo("#temp_postbox");
-						$('h2.postbox-title').attr('data-background-color','postbox-'+wizard_class_array[cont_wizard]);
+						$('h2.postbox-title').attr('data-background-color','postbox-'+wizard_id_array[cont_wizard]);
 						$(".temp_uisortable span").text($("."+wizard_class_array[cont_wizard]).find('h2 span').text());
 						//$(".temp_uisortable").css({'background':''+$("."+wizard_class_array[cont_wizard]).find("h2.ui-sortable-handle").css("background")+''});
 						//$(".temp_uisortable").css({'background-color':color_background_title_wizard});
-						$(".temp_uisortable").css({'background':''+$("."+wizard_class_array[cont_wizard]).find("h2.ui-sortable-handle").css("background")+''});
+						$(".temp_uisortable").css('background-color',color_background_title_wizard);
 						//help line
 						$(".help_wizard").text('').html($("."+wizard_class_array[cont_wizard]).find('h2 span span').attr("title-heltip"));
 						if ($(".help_wizard").text() != '') {
@@ -1272,12 +1277,13 @@ public static function feeds_box( $post ) {
 				jQuery(document).on('click','#prev_wizard',function(){
 					clear_list_wizard();
 					cont_wizard--;
+					color_background_title_wizard = $("."+wizard_class_array[cont_wizard]).find("h2.ui-sortable-handle").css("background-color");
 					$("#next_wizard").show(0);
 					$("."+wizard_class_array[cont_wizard]).find('>div.inside').attr("wizard",$("."+wizard_class_array[cont_wizard]).attr("wizard"));
 					$("."+wizard_class_array[cont_wizard]).find('>div.inside').appendTo("#temp_postbox");
-					$('h2.postbox-title').attr('data-background-color','postbox-'+wizard_class_array[cont_wizard]);
+					$('h2.postbox-title').attr('data-background-color','postbox-'+wizard_id_array[cont_wizard]);
 					$(".temp_uisortable span").text($("."+wizard_class_array[cont_wizard]).find('h2 span').text());
-					$(".temp_uisortable").css({'background':''+$("."+wizard_class_array[cont_wizard]).find("h2.ui-sortable-handle").css("background")+''});
+					$(".temp_uisortable").css('background-color',color_background_title_wizard);
 					//help line
 					$(".help_wizard").text('').html($("."+wizard_class_array[cont_wizard]).find('h2 span span').attr("title-heltip"));
 					if ($(".help_wizard").text() != '') {
@@ -1297,6 +1303,7 @@ public static function feeds_box( $post ) {
 				jQuery(document).on('click','.thickbox_open',function(e){
 					each_metabox_wizard();
 					sort_array_wizard();
+					color_background_title_wizard = $("."+wizard_class_array[cont_wizard]).find("h2.ui-sortable-handle").css("background-color");
 					$("#wizard_mask").fadeIn(500,function(){
 						center_function_wizard();
 						$("#thickbox_wizard").slideDown(500,function(){
@@ -1304,7 +1311,7 @@ public static function feeds_box( $post ) {
 							$("."+wizard_class_array[0]).find('>div.inside').attr("wizard",$("."+wizard_class_array[0]).attr("wizard"));
 							$("."+wizard_class_array[0]).find('>div.inside').appendTo("#temp_postbox");
 							$(".temp_uisortable span").text($("."+wizard_class_array[0]).find('h2 span').text());
-							$(".temp_uisortable").css({'background':''+$("."+wizard_class_array[0]).find("h2.ui-sortable-handle").css("background")+''});
+							$(".temp_uisortable").css('background-color',color_background_title_wizard);
 							$(".help_wizard").text('').html($("."+wizard_class_array[0]).find('h2 span span').attr("title-heltip"));
 							if ($(".help_wizard").text() != '') {
 								jQuery('.wpematico_divider_list_wizard').show(); 

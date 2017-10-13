@@ -71,33 +71,23 @@ p { margin-bottom: 2px; }
 .red {
     color: red !important;
 }
-/*
-.statebutton:before {
-  float: left;
-  width: auto;
-  text-align: center;
-  font-size: 2em;
-  margin: 3px 5px 5px;
-  padding: 1px;
-}
-*/
-
 .cpanelbutton:hover {
     cursor: pointer;
+	background:  linear-gradient(to bottom, #cdcdcd 10%, #fcfcfc 100%);
 }
 .cpanelbutton[disabled]:hover {
     cursor: default;
+    background: linear-gradient(to bottom, #fcfcfc 20%, #adadad 100%);
 }
-
-.cpanelbutton:before{
-    margin-left: 0px; 
-}	
 .cpanelbutton {
     height: 30px;
 	width: 30px;
     padding-left: 0px;
     margin: 0 5px 0 0;
     padding-right: 0px;
+    border: 1px solid #AAA;
+    background: linear-gradient(to bottom, #fcfcfc 20%, #adadad 100%);
+    border-radius: 2px;
 }
 
 /*Math & Factions*/
@@ -318,23 +308,15 @@ p { margin-bottom: 2px; }
 .select_up{background-position:-202px 0;height:17px;width:17px}
 .checkmark_Italic{background-position:-161px 0;height:18px;width:19px}
 .alert_star{background-position:-175px -42px;height:15px;width:15px}
-.infoIco{
-	background-position: -15px -28px;
-	background-size: 130px;
-	width: 14px;
-	height: 14px;
-	display:inline-block;
-	vertical-align: bottom;
-	cursor: hand;
-	cursor: pointer;
-}
-.help_tip
-{
-	cursor: help;
-	line-height: 1;
-	margin: -4px 0 0 5px;
-	padding: 0;
-	vertical-align: middle;
+
+.help_tip {
+    cursor: help;
+    line-height: 1;
+    margin: 0px 0 0 2px;
+    padding: 0;
+    vertical-align: middle;
+    color: #0073aa;
+    font-size: 18px;
 }
 #tiptip_holder
 {
@@ -511,7 +493,7 @@ display: table;
 }
 #thickbox_wizard .postbox{
 	padding: 15px;
-	margin: 15px;
+	margin: 0 15px 15px;
 	background-color: #ffffff;
 	border: 0 !important;
 	box-sizing: border-box;
@@ -534,14 +516,13 @@ display: table;
 	height: auto;
 }
 .wpematico_divider_list_wizard{
-	padding: 15px 15px 0;
-	height: auto !important;
+	padding: 0px 15px 0;
 }
 .help_wizard{
 	font-size: 13px !important;
 	padding: 0 !important;
 	color: #888888 !important;
-	min-height: initial !important;
+	min-height: 60px;
 	max-height: initial !important;
 }
 .icon-wizard-help{
@@ -549,7 +530,7 @@ display: table;
 	height: auto;
 	color: #444 !important;
 	margin-left: 0 !important;
-	font-size: 18px !important;
+	font-size: 50px !important;
 }
 #thickbox_wizard .postbox .control-buttons {
 	font-size: 20px;
@@ -570,67 +551,6 @@ display: table;
 #prev_wizard .dashicons{
 	margin-top: -4px;
 	vertical-align: middle;
-}
-.postbox-title[data-background-color="postbox-wizard_metabox_0"]{
-	background: none !important;
-	background-color: #b4ceb1 !important;
-}
-.postbox-title[data-background-color="postbox-wizard_metabox_1"]{
-	background: none !important;
-	background-color: #0085ba !important;
-	color: #ffffff !important;
-}
-.postbox-title[data-background-color="postbox-wizard_metabox_2"]{
-	background: none !important;
-	background-color: #f09999 !important;
-}
-.postbox-title[data-background-color="postbox-wizard_metabox_3"]{
-	background: none !important;
-	background-color: #f997c7 !important;
-}
-.postbox-title[data-background-color="postbox-wizard_metabox_4"]{
-	background: none !important;
-	background-color: #55a288 !important;
-}
-.postbox-title[data-background-color="postbox-wizard_metabox_5"]{
-	background: none !important;
-	background-color: #ffffff !important;
-}
-.postbox-title[data-background-color="postbox-wizard_metabox_6"]{
-	background: none !important;
-	background-color: #006100 !important;
-	color: #ffffff !important;
-}
-.postbox-title[data-background-color="postbox-wizard_metabox_7"]{
-	background: none !important;
-	background-color: #eb9600 !important;
-}
-.postbox-title[data-background-color="postbox-wizard_metabox_8"]{
-	background: none !important;
-	background-color: #84f384 !important;
-}
-.postbox-title[data-background-color="postbox-wizard_metabox_9"]{
-	background: none !important;
-	background-color: #d4b388 !important;
-}
-.postbox-title[data-background-color="postbox-wizard_metabox_10"],
-.postbox-title[data-background-color="postbox-wizard_metabox_11"],
-.postbox-title[data-background-color="postbox-wizard_metabox_12"],
-.postbox-title[data-background-color="postbox-wizard_metabox_15"]{
-	background: none !important;
-	background-color: #e1fb34 !important;
-}
-.postbox-title[data-background-color="postbox-wizard_metabox_13"]{
-	background: none !important;
-	background-color: #c1fefe !important;
-}
-.postbox-title[data-background-color="postbox-wizard_metabox_14"]{
-	background: none !important;
-	background-color: #a2d1e1 !important;
-}
-.postbox-title[data-background-color="postbox-wizard_metabox_16"]{
-	background: none !important;
-	background-color: #ffffff !important;
 }
 @media (min-width: 992px){
 	#major-publishing-actions .radio{

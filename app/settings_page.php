@@ -43,7 +43,7 @@ function wpematico_settings_page () {
 				), $tab_url );
 
 				$active = $current_tab == $tab_id ? ' nav-tab-active' : '';
-				echo '<a href="' . esc_url( $tab_url ) . '" title="' . esc_attr( $tab_name ) . '" class="nav-tab' . $active . '">' . ( $tab_name ) . '</a>';
+				echo '<a href="' . esc_url( $tab_url ) . '" title="' . esc_attr(sanitize_text_field( $tab_name ) ) . '" class="nav-tab' . $active . '">' . ( $tab_name ) . '</a>';
 
 			}
 			?>

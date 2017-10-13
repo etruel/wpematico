@@ -802,21 +802,6 @@ function wpematico_show_data_info() {
 					<td><?php echo 'Length: ' . $db_prefix . '   Status: ' . ( $db_prefix > 16 ? '<mark class="error">ERROR: Too long</mark>' : '<mark class="yes">Acceptable</mark>' ) ?></td>
 				</tr>
 				<tr>
-					<td data-export-label="WP Debug Mode"><?php _e( 'WP Debug Mode:', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Displays whether or not WordPress is in Debug Mode.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php if ( defined('WP_DEBUG') && WP_DEBUG ) echo '<mark class="no">' . '&#10004;' . '</mark>'; else echo '<mark class="yes">' . '&ndash;' . '</mark>'; ?></td>
-				</tr>
-				<tr>
-					<td data-export-label="WP Debug Log Mode"><?php _e( 'WP Debug Log Mode:', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Displays whether or not WordPress is writing its Debug in a file.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php if ( defined('WP_DEBUG_LOG') && WP_DEBUG_LOG ) echo '<mark class="no">' . '&#10004;' . '</mark>'; else echo '<mark class="yes">' . '&ndash;' . '</mark>'; ?></td>
-				</tr>
-				<tr>
-					<td data-export-label="WP Debug Display"><?php _e( 'WP Debug Mode Display:', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Displays whether or not WordPress is showing in its site all warnings and errors reported by its Debug Mode.', 'wpematico'  ) . '">[?]</a>'; ?></td>
-					<td><?php if ( defined('WP_DEBUG_DISPLAY') && WP_DEBUG_DISPLAY ) echo '<mark class="no">' . '&#10004;' . '</mark>'; else echo '<mark class="yes">' . '&ndash;' . '</mark>'; ?></td>
-				</tr>
-				<tr>
 					<td data-export-label="WP Memory Limit"><?php _e( 'WP Memory Limit:', 'wpematico' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The maximum amount of memory (RAM) that your site can use at one time.', 'wpematico'  ) . '">[?]</a>'; ?></td>
 					<td><?php
@@ -836,6 +821,31 @@ function wpematico_show_data_info() {
 					<td data-export-label="Registered Post Stati"><?php _e( 'Registered Post Stati:', 'wpematico' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Registered Post Status by different custom post types or plugins.', 'wpematico'  ) . '">[?]</a>'; ?></td>
 					<td><?php echo str_replace(',', ',<br/>', $post_stati ); ?></td>
+				</tr>
+				<tr>
+					<td data-export-label="WP Debug Mode"><?php _e( 'WP Debug Mode:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Displays whether or not WordPress is in Debug Mode.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php if ( defined('WP_DEBUG') && WP_DEBUG ) echo '<mark class="no">' . '&#10004;' . '</mark>'; else echo '<mark class="yes">' . '&ndash;' . '</mark>'; ?></td>
+				</tr>
+				<tr>
+					<td data-export-label="WP Debug Log Mode"><?php _e( 'WP Debug Log Mode:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Displays whether or not WordPress is writing its Debug in a file.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php if ( defined('WP_DEBUG_LOG') && WP_DEBUG_LOG ) echo '<mark class="no">' . '&#10004;' . '</mark>'; else echo '<mark class="yes">' . '&ndash;' . '</mark>'; ?></td>
+				</tr>
+				<tr>
+					<td data-export-label="WP Debug Display"><?php _e( 'WP Debug Mode Display:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Displays whether or not WordPress is showing in its site all warnings and errors reported by its Debug Mode.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php if ( defined('WP_DEBUG_DISPLAY') && WP_DEBUG_DISPLAY ) echo '<mark class="no">' . '&#10004;' . '</mark>'; else echo '<mark class="yes">' . '&ndash;' . '</mark>'; ?></td>
+				</tr>
+				<tr>
+					<td data-export-label="WP Cron"><?php _e( 'WP Cron:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'The cron function of WordPress.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php if ( defined('DISABLE_WP_CRON') && DISABLE_WP_CRON ) echo '<mark class="no">' . '&ndash;' . esc_attr__( 'If you deactivates the cron function you should use WPeMatico in manual mode or with an external cron.', 'wpematico') . '</mark>'; else echo '<mark class="yes">' . '&#10004;' . '</mark>'; ?></td>
+				</tr>
+				<tr>
+					<td data-export-label="WP Cron Lock Timeout"><?php _e( 'WP Cron Lock Timeout:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Defines a period of time in which only one cronjob will be fired. Since WordPress 3.3. Value: time in seconds (Default: 60).', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php if ( defined('WP_CRON_LOCK_TIMEOUT') ) echo WP_CRON_LOCK_TIMEOUT==60 ? '<mark class="yes">' . 60 . '</mark>' : '<mark class="error">' . WP_CRON_LOCK_TIMEOUT . '</mark>'; else echo '<mark class="no">' . '&ndash;' . '</mark>'; ?></td>
 				</tr>
 			</tbody>
 		</table>
@@ -1071,12 +1081,16 @@ function wpematico_debug_info_get() {
 	$return .= 'Remote Post:              ' . ($remote_post_work ? 'wp_remote_post() works' : 'wp_remote_post() does not work' ) . "\n";
 	$return .= 'Table Prefix:             ' . 'Length: ' . $db_prefix . '   Status: ' . ( $db_prefix > 16 ? 'ERROR: Too long' : 'Acceptable' ) . "\n";
 
-	$return .= 'WP_DEBUG:                 ' . ( defined( 'WP_DEBUG' ) ? WP_DEBUG ? 'Enabled' : 'Disabled' : 'Not set' ) . "\n";
-	$return .= 'WP_DEBUG_LOG:             ' . ( defined( 'WP_DEBUG_LOG' ) ? WP_DEBUG_LOG ? 'Enabled' : 'Disabled' : 'Not set' ) . "\n";
-	$return .= 'WP_DEBUG_DISPLAY:         ' . ( defined( 'WP_DEBUG_DISPLAY' ) ? WP_DEBUG_DISPLAY ? 'Enabled' : 'Disabled' : 'Not set' ) . "\n";
 	$return .= 'Memory Limit:             ' . size_format( $wp_memory ) . "\n";
 	$return .= 'WP Max Upload Size:       ' . size_format( $wp_max_upload_size ) . "\n";
 	$return .= 'Registered Post Stati:    ' . $post_stati . "\n";
+	
+	$return .= 'WP_DEBUG:                 ' . ( defined( 'WP_DEBUG' ) ? WP_DEBUG ? 'Enabled' : 'Disabled' : 'Not set' ) . "\n";
+	$return .= 'WP_DEBUG_LOG:             ' . ( defined( 'WP_DEBUG_LOG' ) ? WP_DEBUG_LOG ? 'Enabled' : 'Disabled' : 'Not set' ) . "\n";
+	$return .= 'WP_DEBUG_DISPLAY:         ' . ( defined( 'WP_DEBUG_DISPLAY' ) ? WP_DEBUG_DISPLAY ? 'Enabled' : 'Disabled' : 'Not set' ) . "\n";
+
+	$return .= 'DISABLE_WP_CRON:          ' . ( defined( 'DISABLE_WP_CRON' ) ? DISABLE_WP_CRON ? 'True' : 'False' : 'Not set' ) . "\n";
+	$return .= 'WP_CRON_LOCK_TIMEOUT:     ' . ( defined( 'WP_CRON_LOCK_TIMEOUT' ) ? WP_CRON_LOCK_TIMEOUT : 'Not set' ) . "\n";
 
 	$return  = apply_filters( 'wpematico_sysinfo_after_wordpress_config', $return );
 
