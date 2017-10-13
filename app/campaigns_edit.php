@@ -363,7 +363,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 	* @return $err_message Int|String,  1 if OK, else return an error string
 	* @since 1.0.0
 	*/
-	public static function CheckFields() {  // 
+	public static function CheckFields() {
 		$cfg = get_option(WPeMatico::OPTION_KEY);
 		$err_message = "";
 		if( isset( $_POST['campaign_wrd2cat']) ) {
@@ -378,7 +378,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 					if($regex) 
 						if(false === @preg_match($word, '')) {
 							$err_message = ($err_message != "") ? $err_message."<br />" : "" ;
-							$err_message .= sprintf(__('There\'s an error with the supplied RegEx expression in word: %s', WPeMatico :: TEXTDOMAIN ),'<span class="coderr">'.$word.'</span>');
+							$err_message .= sprintf(__('There\'s an error with the supplied RegEx expression in word: %s', 'wpematico'),'<span class="coderr">'.$word.'</span>');
 						}
 				}
 			}
@@ -395,14 +395,14 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 					if($regex) 
 						if(false === @preg_match($origin, '')) {
 							$err_message = ($err_message != "") ? $err_message."<br />" : "" ;
-							$err_message .= sprintf(__('There\'s an error with the supplied RegEx expression in ReWrite: %s', WPeMatico :: TEXTDOMAIN ),'<span class="coderr">'.$origin.'</span>');
+							$err_message .= sprintf(__('There\'s an error with the supplied RegEx expression in ReWrite: %s', 'wpematico'),'<span class="coderr">'.$origin.'</span>');
 						}
 				}
 			}
 		}
 		
-		if(!isset($cfg['disablecheckfeeds']) || !$cfg['disablecheckfeeds'] ){  // Si no esta desactivado en settings
-			// If the campaign doesn't has a feed this give a error.
+		if(!isset($cfg['disablecheckfeeds']) || !$cfg['disablecheckfeeds'] ){  // If this options isn't deactivated in settings.
+			// If the campaign doesn't has a feed this give an error.
 			// This process strip all feed URLs empty.
 			if(isset($_POST['campaign_feeds'])) {
 				$feeds = array();
@@ -420,19 +420,19 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 
 			if(empty($campaign_feeds) || !isset($campaign_feeds)) {
 				$err_message = ($err_message != "") ? $err_message."<br />" : "" ;
-				$err_message .= __('At least one feed URL must be filled.',  WPeMatico :: TEXTDOMAIN );
+				$err_message .= __('At least one feed URL must be filled.', 'wpematico');
 			} else {  
 				foreach($campaign_feeds as $feed) {
-					$pos = strpos($feed, ' '); // el feed no puede tener espacios en el medio
+					$pos = strpos($feed, ' '); // The feed URL can't has white spaces.
 					if ($pos === false) {
 						$simplepie = WPeMatico :: fetchFeed($feed, true);
 						if($simplepie->error()) {
 							$err_message = ($err_message != "") ? $err_message."<br />" : "" ;
-							$err_message .= sprintf(__('Feed %s could not be parsed. (SimplePie said: %s)',  WPeMatico :: TEXTDOMAIN ),'<strong class="coderr">'. $feed. '</strong>', $simplepie->error());
+							$err_message .= sprintf(__('Feed %s could not be parsed. (SimplePie said: %s)',  'wpematico'),'<strong class="coderr">'. $feed. '</strong>', $simplepie->error());
 						}
 					}else{
 						$err_message = ($err_message != "") ? $err_message."<br />" : "" ;
-						$err_message .= sprintf(__('Feed %s could not be parsed because has an space in url.',  WPeMatico :: TEXTDOMAIN ),'<strong class="coderr">'. $feed. '</strong>');
+						$err_message .= sprintf(__('Feed %s could not be parsed because has an space in url.', 'wpematico'),'<strong class="coderr">'. $feed. '</strong>');
 					}
 				}
 			}
@@ -464,7 +464,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 
 		$nivelerror = error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
-		$campaign = WPeMatico :: get_campaign ($post_id);
+		$campaign = WPeMatico::get_campaign ($post_id);
 		$_POST['postscount']	= (!isset($campaign['postscount']) ) ? 0: (int)$campaign['postscount'];
 		$_POST['lastpostscount']	= (!isset($campaign['lastpostscount']) ) ? '': (int)$campaign['lastpostscount'];
 		$_POST['lastrun']	= (!isset($campaign['lastrun']) ) ? 0: (int)$campaign['lastrun'];
