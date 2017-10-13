@@ -305,8 +305,6 @@ delete_feed_url = function(row_id){
 	jQuery('#msgdrag').html(wpematico_object.update2save).fadeIn();
 }
 
-
-
 function events_submit_post($) {
 	$('#post').submit( function(e) {		//checkfields
 

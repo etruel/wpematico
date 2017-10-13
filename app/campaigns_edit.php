@@ -162,8 +162,9 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		wp_enqueue_script( 'WPemattiptip' );
 		wp_dequeue_script( 'autosave' );
 		add_action('admin_head', array( __CLASS__ ,'campaigns_admin_head'));
-		wp_enqueue_script('wpematico_hooks', WPeMatico :: $uri .'app/js/wpe_hooks.js', array(), WPEMATICO_VERSION, true );
-		wp_enqueue_script('wpematico_campaign_edit', WPeMatico :: $uri .'app/js/campaign_edit.js', array( 'jquery' ), WPEMATICO_VERSION, true );
+		wp_enqueue_script('wpematico_hooks', WPeMatico::$uri .'app/js/wpe_hooks.js', array(), WPEMATICO_VERSION, true );
+		wp_enqueue_script('wpematico_campaign_edit', WPeMatico::$uri .'app/js/campaign_edit.js', array( 'jquery' ), WPEMATICO_VERSION, true );
+		wp_enqueue_script('wpematico_campaign_wizard', WPeMatico::$uri .'app/js/campaign_wizard.js', array( 'jquery' ), WPEMATICO_VERSION, true );
 		
 		$nonce = wp_create_nonce  ('clog-nonce');
 		$name_campaign = get_the_title($post->ID);
@@ -178,6 +179,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 					'text_save_before_execute_action' =>  __('Save before to execute this action', 'wpematico'),
 					'text_confirm_reset_campaign'		=> __('Are you sure you want to reset this campaign?', 'wpematico'),
 					'text_confirm_delhash_campaign'		=> __('Are you sure you want to delete hash code for duplicates of this campaign?', 'wpematico'),
+					'text_wizard'		=> __('Wizard', 'wpematico'),
 
 					'image_run_loading' =>  get_bloginfo('wpurl').'/wp-admin/images/wpspin_light.gif',
 
