@@ -356,11 +356,16 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		</script>
 		<?php
 	}
-	/********** CHEQUEO CAMPOS ANTES DE GRABAR ****************************************************/
-	public static function CheckFields() {  // check required fields values before save post
-		$cfg = get_option(WPeMatico :: OPTION_KEY);
+	/**
+	* Static function CheckFields
+	* This function check required fields values before save post.
+	* @access public
+	* @return $err_message Int|String,  1 if OK, else return an error string
+	* @since 1.0.0
+	*/
+	public static function CheckFields() {  // 
+		$cfg = get_option(WPeMatico::OPTION_KEY);
 		$err_message = "";
-		//$post_data = $_POST;
 		if( isset( $_POST['campaign_wrd2cat']) ) {
 			$wrd2cat = array();
 			parse_str($_POST['campaign_wrd2cat'], $wrd2cat);
@@ -397,19 +402,18 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		}
 		
 		if(!isset($cfg['disablecheckfeeds']) || !$cfg['disablecheckfeeds'] ){  // Si no esta desactivado en settings
-			// Si no hay ningun feed devuelve mensaje de error
-			// Proceso los feeds sacando los que estan en blanco
+			// If the campaign doesn't has a feed this give a error.
+			// This process strip all feed URLs empty.
 			if(isset($_POST['campaign_feeds'])) {
 				$feeds = array();
 				parse_str($_POST['campaign_feeds'], $feeds);
 				$all_feeds = $feeds['campaign_feeds'];
 				foreach($all_feeds as $id => $feedname) {
-				//($id = 0; $id < count($all_feeds); $id++) {
-				//	$feedname = $all_feeds[$id];
 					if(!empty($feedname))  {
-						if(!isset($campaign_feeds)) 
+						if(!isset($campaign_feeds))  {
 							$campaign_feeds = array();					
-						$campaign_feeds[]=$feedname ;
+						}
+						$campaign_feeds[] = $feedname ;
 					}
 				}
 			}
@@ -436,19 +440,21 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		if($cfg['nonstatic']) {$err_message = NoNStatic::Checkp($_POST, $err_message);}
 		
 		if($err_message =="" ) $err_message="1";  //NO ERROR
-		die($err_message);  // Return 1 si OK, else -> error string
+		die($err_message); 
 	}
-	
-	
-	//************************* GRABA CAMPAÑA *******************************************************
+	/**
+	* Static function save_campaigndata
+	* This function save the campaign data.
+	* @access public
+	* @return $post_id
+	* @since 1.0.0
+	*/
 	public static function save_campaigndata( $post_id ) {
 		global $post,$cfg;
-		//wp_die('save_campaigndata<br>DOING_AUTOSAVE:'.DOING_AUTOSAVE.'<br>DOING_AJAX:'.DOING_AJAX.'<br>$_REQUEST[bulk_edit]:'.$_REQUEST['bulk_edit']);
 		if((defined('DOING_AJAX') && DOING_AJAX) || isset($_REQUEST['bulk_edit']) || (isset($_REQUEST['action']) && $_REQUEST['action']=='inline-save') ) {
 			WPeMatico_Campaigns::save_quick_edit_post($post_id);
-			//wp_die('save_campaigndata<br>DOING_AUTOSAVE:'.DOING_AUTOSAVE.'<br>DOING_AJAX:'.DOING_AJAX.'<br>$_REQUEST[bulk_edit]:'.$_REQUEST['bulk_edit']);
 			return $post_id;
-		}//http://news.google.com.pe/news?pz=1&cf=all&ned=es_pe&hl=es&output=rss
+		}
 		if ((defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) || (defined('DOING_AJAX') && DOING_AJAX) || isset($_REQUEST['bulk_edit']))
 			return $post_id;
 		if ( !wp_verify_nonce( @$_POST['wpematico_nonce'], 'edit-campaign' ) )
@@ -457,9 +463,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		if($post->post_type != 'wpematico') return $post_id;
 
 		$nivelerror = error_reporting(E_ERROR | E_WARNING | E_PARSE);
-		//$cfg = get_option(WPeMatico :: OPTION_KEY);
-		
-//		$campaign['cron'] = WPeMatico :: cron_string($_POST);
+
 		$campaign = WPeMatico :: get_campaign ($post_id);
 		$_POST['postscount']	= (!isset($campaign['postscount']) ) ? 0: (int)$campaign['postscount'];
 		$_POST['lastpostscount']	= (!isset($campaign['lastpostscount']) ) ? '': (int)$campaign['lastpostscount'];
@@ -468,16 +472,13 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 
 		$campaign = array();
 		$campaign = apply_filters('wpematico_check_campaigndata', $_POST);
-
-		//***** Call nonstatic
-//		if( $cfg['nonstatic'] ) { $campaign = NoNStatic :: save_data($campaign, $_POST); }
-		 
+ 
 		error_reporting($nivelerror);
 
 		if(has_filter('wpematico_presave_campaign')) $campaign = apply_filters('wpematico_presave_campaign', $campaign);
 		
-		// Grabo la campaña
-		WPeMatico :: update_campaign($post_id, $campaign);
+		// Saved campaign
+		WPeMatico::update_campaign($post_id, $campaign);
 
 		return $post_id ;
 	}
