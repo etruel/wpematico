@@ -899,7 +899,7 @@ public static function feeds_box( $post ) {
 			<div id="feed_ID<?php echo $i; ?>" class="sortitem <?php if(($i % 2) == 0) echo 'bw'; else echo 'lightblue'; ?> <?php if($lastitem) echo 'feed_new_field'; ?> " <?php if($lastitem) echo 'style="display:none;"'; ?> > <!-- sort item -->
 				<div class="sorthandle"> </div> <!-- sort handle -->
 				<div class="feed_column" id="">
-					<input name="campaign_feeds[<?php echo $i; ?>]" type="text" value="<?php echo $feed ?>" class="large-text feedinput"/><a href="<?php echo $feed ?>" title="<?php _e('Open URL in a new browser tab', 'wpematico' ); ?>" target="_Blank" class="wpefeedlink"></a>
+					<input name="campaign_feeds[<?php echo $i; ?>]" type="text" value="<?php echo $feed ?>" class="large-text feedinput"/><a href="<?php echo $feed ?>" title="<?php _e('Open URL in a new browser tab', 'wpematico' ); ?>" target="_Blank" class="wpefeedlink"><span class="dashicons dashicons-external"></span></a>
 				</div>
 				<?php do_action('wpematico_campaign_feed_body_column',$feed,$cfg, $i); ?>
 				<?php //do_action('nonstatic_feedat','', $cfg); //deprecated!!! 20160309  ?>

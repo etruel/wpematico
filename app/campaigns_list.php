@@ -138,8 +138,8 @@ class WPeMatico_Campaigns {
 	public static function my_views_filter($links) {
 		global $post_type;
 		if($post_type != 'wpematico') return $links;		
-		$links['wpematico'] = __('Visit', 'wpematico').' <a href="http://www.wpematico.com" target="_Blank" class="wpelinks">www.wpematico.com</a> ';
-		$links['etruelcom'] = ' <a href="https://etruel.com" target="_Blank" class="wpelinks">AddOns Store</a>';
+		$links['wpematico'] = __('Visit', 'wpematico').' <a href="http://www.wpematico.com" target="_Blank" class="wpelinks">www.wpematico.com<span class="dashicons dashicons-external"></span></a> ';
+		$links['etruelcom'] = ' <a href="https://etruel.com" target="_Blank" class="wpelinks">AddOns Store<span class="dashicons dashicons-external"></span></a>';
 		return $links;
 	}
 

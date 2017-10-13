@@ -150,14 +150,17 @@ p { margin-bottom: 2px; }
 .frowning_face:before { content: "\2639"; }
 .smiling_face:before { content: "\263A"; }
 
-.wpefeedlink {
-    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAVklEQVR4Xn3PgQkAMQhDUXfqTu7kTtkpd5RA8AInfArtQ2iRXFWT2QedAfttj2FsPIOE1eCOlEuoWWjgzYaB/IkeGOrxXhqB+uA9Bfcm0lAZuh+YIeAD+cAqSz4kCMUAAAAASUVORK5CYII=) center right no-repeat;
-    position: absolute;
-    margin-left: -25px;
-    padding: 10px;
+a.wpelinks {
+	/*padding: 4px 14px 0px 4px;*/
+	font-weight: bold;
+/*    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAVklEQVR4Xn3PgQkAMQhDUXfqTu7kTtkpd5RA8AInfArtQ2iRXFWT2QedAfttj2FsPIOE1eCOlEuoWWjgzYaB/IkeGOrxXhqB+uA9Bfcm0lAZuh+YIeAD+cAqSz4kCMUAAAAASUVORK5CYII=) center right no-repeat; 
+*/
 }
-.feedoptionsicon, .is_multifeedicon {
-	color: #c27c00;
+.wpelinks .dashicons-external {
+    font-size: 14px;
+    vertical-align: sub;
+    width: 10px;
+    color: darkgoldenrod;
 }
 
 .wi10 {width: 10% !important;}

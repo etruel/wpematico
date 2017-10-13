@@ -85,6 +85,20 @@ ul#categories li .children {margin-left: 12px;}
 .LightPink{background-color:LightPink;}
 .Papaya{background-color:PapayaWhip;}
 
+.wpefeedlink {
+    /*background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAVklEQVR4Xn3PgQkAMQhDUXfqTu7kTtkpd5RA8AInfArtQ2iRXFWT2QedAfttj2FsPIOE1eCOlEuoWWjgzYaB/IkeGOrxXhqB+uA9Bfcm0lAZuh+YIeAD+cAqSz4kCMUAAAAASUVORK5CYII=) center right no-repeat;*/
+    position: absolute;
+	margin-left: -19px;
+	padding: 1px 1px 5px;
+	text-decoration: none;
+}
+.wpefeedlink .dashicons-external {
+    font-size: 14px;
+}
+
+.feedoptionsicon, .is_multifeedicon {
+	color: #c27c00;
+}
 div.feed_column {float: left;width: 39%;}
 #feed_actions{margin-left: 5px;}
 #feed_actions button {
