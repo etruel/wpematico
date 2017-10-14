@@ -384,6 +384,14 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			wp_enqueue_style( 'WPematStylesheet' );
 			wp_enqueue_script( 'WPemattiptip' );
 			add_action('admin_head', 'wpematico_settings_head');
+			wp_enqueue_script('wpematico_settings_page', WPeMatico::$uri .'app/js/settings_page.js', array( 'jquery' ), WPEMATICO_VERSION, true );
+			
+			$wpematico_object = array(
+									'text_invalid_email' =>  __('Invalid email.', 'wpematico'),
+								);
+			wp_localize_script('wpematico_settings_page', 'wpematico_object', $wpematico_object);
+					
+
 		}
 
 		/**

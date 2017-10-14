@@ -85,13 +85,7 @@ function wpematico_settings_head() {
 	<style type="text/css">
 		.insidesec {display: inline-block; vertical-align: top;}
 	</style>
-	<script type="text/javascript" language="javascript">
-		jQuery(document).ready(function($){
-			$('.handlediv').click(function() { 
-				$(this).parent().toggleClass('closed');
-			});
-		});	
-	</script>
+
 	<?php
 }
 
@@ -219,6 +213,16 @@ function wpematico_settings(){
 							</p>
 						</div>
 					</div>
+					</div>
+
+					<div class="postbox inside">
+						<h3 class="handle"><?php _e( 'ShortPixel', 'wpematico' );?></h3>
+						<div class="inside" id="sp_content">
+							<?php _e( 'Join to ShortPixel and optimize your images without compromising on quality.', 'wpematico' );?>
+							<img src="https://shortpixel.com/img/logo.png">
+							<br/>
+							<a class="button" target="_blank" href="https://shortpixel.com/h/af/QMVAHE4246413"><?php _e( 'Get ShortPixel API Key', 'wpematico' );?></a>
+						</div>
 					</div>
 
 					<div class="postbox inside">
@@ -612,132 +616,8 @@ function wpematico_settings(){
 				</div>
 			</div>
 			</form>
+
 		</div>
-	<script type="text/javascript" language="javascript">
-		jQuery('#mailsndemail').blur(function() {
-			var x = jQuery(this).val();
-			var atpos = x.indexOf("@");
-			var dotpos = x.lastIndexOf(".");
-		  if (atpos< 1 || dotpos<atpos+2 || dotpos+2>=x.length) {
-			jQuery('#mailmsg').text("<?php _e( 'Invalid email.', 'wpematico' );?>");
-			return false;
-		  }else{
-			jQuery('#mailmsg').text("");
-			return true;
-		  }
-		});
-
-	//jQuery(document).ready(function($){
-		
-		jQuery('#imgcache').click(function() {
-			if ( true == jQuery('#imgcache').is(':checked')) {
-				jQuery('#nolinkimg').fadeIn();
-			} else {
-				jQuery('#nolinkimg').fadeOut();
-			}
-		});
-		jQuery('#audio_cache').click(function() {
-			if ( true == jQuery('#audio_cache').is(':checked')) {
-				jQuery('#nolink_audio').fadeIn();
-				jQuery('#custom_uploads_audios').fadeIn();
-			} else {
-				jQuery('#nolink_audio').fadeOut();
-				jQuery('#custom_uploads_audios').fadeOut();
-			}
-		});
-
-		jQuery('#video_cache').click(function() {
-			if ( true == jQuery('#video_cache').is(':checked')) {
-				jQuery('#nolink_video').fadeIn();
-				jQuery('#custom_uploads_videos').fadeIn();
-			} else {
-				jQuery('#nolink_video').fadeOut();
-				jQuery('#custom_uploads_videos').fadeOut();
-			}
-		});
-
-		jQuery('#imgcache, #featuredimg').click(function() {
-			if ( true == jQuery('#imgcache').is(':checked') || true == jQuery('#featuredimg').is(':checked') ) {
-				jQuery('#custom_uploads').fadeIn();
-			} else {
-				jQuery('#custom_uploads').fadeOut();
-			}
-		});
-
-		jQuery('#allowduplicates').click(function() {
-			if ( true == jQuery('#allowduplicates').is(':checked')) {
-				jQuery('#enadup').fadeIn();
-			} else {
-				jQuery('#allowduptitle').removeAttr("checked");
-				jQuery('#allowduphash').removeAttr("checked");
-				jQuery('#enadup').fadeOut();
-			}
-		});
-		jQuery('#disabledashboard').click(function() {
-			if ( true == jQuery('#disabledashboard').is(':checked')) {
-				jQuery('#roles').fadeOut();
-				jQuery('#roleslabel').fadeOut();
-			} else {
-				jQuery('#roles').fadeIn();
-				jQuery('#roleslabel').fadeIn();
-			}
-		});
-
-		jQuery('#disable_credits').click(function() {
-			if ( jQuery('#disable_credits').is(':checked')) {
-				jQuery('#discredits').fadeIn();
-			} else {
-				jQuery('#discredits').fadeOut();
-			}
-		});
-
-		jQuery('#set_stupidly_fast').click(function() {
-			if ( false == jQuery('#set_stupidly_fast').is(':checked')) {
-				jQuery('#simpie').fadeIn();
-			} else {
-				jQuery('#simplepie_strip_attributes').removeAttr("checked");
-				jQuery('#simplepie_strip_htmltags').removeAttr("checked");
-				jQuery('#simpie').fadeOut();
-			}
-		});
-		jQuery('#simplepie_strip_htmltags').click(function() {
-			if ( false == jQuery('#simplepie_strip_htmltags').is(':checked')) {
-				jQuery('#strip_htmltags').attr('disabled',true);
-			} else {
-				jQuery('#strip_htmltags').removeAttr("disabled");
-			}
-		});
-		jQuery('#simplepie_strip_attributes').click(function() {
-			if ( false == jQuery('#simplepie_strip_attributes').is(':checked')) {
-				jQuery('#strip_htmlattr').attr('disabled',true);
-			} else {
-				jQuery('#strip_htmlattr').removeAttr("disabled");
-			}
-		});
-		jQuery('#emptytrashbutton').click(function() {
-			if ( true == jQuery('#emptytrashbutton').is(':checked')) {
-				jQuery('#hlptrash').fadeIn();
-			} else {
-				jQuery('#hlptrash').fadeOut();
-			}
-		});
-
-		jQuery('#disableccf, #allowduptitle').change(function() {
-			if (jQuery('#disableccf, #allowduptitle').is(':checked')) {
-				jQuery('#div_add_extra_duplicate_filter_meta_source').fadeOut();
-			} else {
-				jQuery('#div_add_extra_duplicate_filter_meta_source').fadeIn();
-			}
-		});
-
-
-
-		jQuery(function(){
-			jQuery(".help_tip").tipTip({maxWidth: "300px", edgeOffset: 5,fadeIn:50,fadeOut:50, keepAlive:true, defaultPosition: "right"});
-		});
-	//}
-	</script>
-
 	<?php
 }  //wpematico_settings_tab_content
 
