@@ -189,13 +189,13 @@ class WPEMATICO_Welcome {
 				$this->tabs();
 			?>
 			<div class="changelog">
-				<h2><?php _e( 'Including Media Files.', 'wpematico' );?></h2>
+				<h2><?php _e( 'A new Campaign Control Panel.', 'wpematico' );?></h2>
 				<div class="feature-section">
 					<div class="feature-section-media">
 						<?php $this->subscription_form(); ?>
 					</div>
 					<div class="feature-section-content">
-						<h4><?php _e( 'Introduced the new Campaign Control Panel.', 'wpematico' );?></h4>
+						<h4><?php _e( 'Introduced the Campaign Control Panel.', 'wpematico' );?></h4>
 						<img style="float:right;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/ccpanel.png'; ?>" alt="Campaign Control Panel" width="" />
 						<p><?php _e( 'In addition to including the embedded links, the version 1.7 includes a full support for MP3 and MP4 media files. ', 'wpematico' );?><br />
 						<?php _e( 'Audio and video files inserted in the contents of the source can be downloaded and attached to the published post. ', 'wpematico' );?><br />
