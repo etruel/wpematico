@@ -29,6 +29,7 @@ if (typeof js_apply_filters !== 'function') {
 		args.shift();
 		for (var priority in  wpe_filters[tag].callbacks) {
 			for (var i = 0; i < wpe_filters[tag].callbacks[priority].length; i++) {
+				args[0] = value;
 				value = wpe_filters[tag].callbacks[priority][i].function.apply(this, args);
 			}
 		}
