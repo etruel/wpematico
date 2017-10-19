@@ -188,12 +188,60 @@ class WPEMATICO_Welcome {
 				$this->welcome_message();
 				$this->tabs();
 			?>
-
 			<div class="changelog">
-				<h3><?php _e( 'Including Media Files.', 'wpematico' );?></h3>
+				<h2><?php _e( 'Including Media Files.', 'wpematico' );?></h2>
 				<div class="feature-section">
 					<div class="feature-section-media">
 						<?php $this->subscription_form(); ?>
+					</div>
+					<div class="feature-section-content">
+						<h4><?php _e( 'Introduced the new Campaign Control Panel.', 'wpematico' );?></h4>
+						<img style="float:right;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/ccpanel.png'; ?>" alt="Campaign Control Panel" width="" />
+						<p><?php _e( 'In addition to including the embedded links, the version 1.7 includes a full support for MP3 and MP4 media files. ', 'wpematico' );?><br />
+						<?php _e( 'Audio and video files inserted in the contents of the source can be downloaded and attached to the published post. ', 'wpematico' );?><br />
+						<?php _e( 'Compatible with audio widget and video widget inserted in WordPress 4.8.', 'wpematico' );?> <?php _e( 'Only take care with the size of the files.', 'wpematico' );?> ;-)
+						</p>
+						
+						<h4><?php _e( 'Need other file types ?', 'wpematico' );?></h4>
+						<p><?php _e('The','wpematico'); ?> <strong><a href="https://etruel.com/downloads/wpematico-professional/" target="_blank">WPeMatico Professional add-on</a></strong> <?php _e( 'brings support for &lt;mp3, ogg, wav, wma, m4a&gt; &lt;mp4, m4v, mov, wmv, avi, mpg, ogv, 3gp, 3g2&gt; media file types among a lot more of special features.', 'wpematico' );?></p>
+
+					</div>
+				</div>
+			</div>
+			<hr>
+			<div class="changelog">
+				<h2><?php _e( 'An improved Campaign Wizard.', 'wpematico' );?></h2>
+				<div class="feature-section">
+					<div class="feature-section-media">
+						<img src="<?php echo WPEMATICO_PLUGIN_URL . 'images/wizard.png'; ?>"/>
+					</div>
+					<div class="feature-section-content">
+						<p><?php _e( "We've made several important improvements in the Campaign Wizard.", 'wpematico' );?></p>
+						<p><?php _e( 'With it you will see one by one each metabox with options of the campaign, showing the help tips to facilitate even more the creation and correct configuration of the feeds to import. And something very important is that it is compatible with the diferent addons that add metaboxes to the campaign.', 'wpematico' );?></p>
+
+						<h4><?php _e('All icons will be Dashicons!', 'wpematico' );?></h4>
+						<p><?php _e( "Until now we were using sprite images or Font Awesome Icons, but we are changing all to Dashicons, the official icon fonts of the WordPress and we're very proud of that.  We continue cleaning all, inclusive the corners." , 'wpematico' );?></p>
+
+						<h4><?php _e('The code was optimized by everywhere.', 'wpematico' );?></h4>
+						<p><?php _e( "We're optimizing the code to allow it to be more readable by humans, but the main focus is to improve the performance in the different screens, like the campaign editing or other screens.", 'wpematico' );?></p>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<div class="changelog">
+				<h2><?php _e( 'Including Media Files.', 'wpematico' );?></h2>
+				<div class="feature-section">
+					<div class="feature-section-media">
+						<h4><?php _e( 'The last WPeMatico Addons', 'wpematico' );?></h4>
+						<img style="float:left;margin-right: 7px; width: 120px;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/wpematico-hooks_200x100.png'; ?>" alt="WPeMatico Custom Hooks" width="200" />
+						<p><?php _e('The','wpematico'); ?> <a href="https://wordpress.org/plugins/wpematico-custom-hooks/" target="_blank">WPeMatico Custom Hooks</a> 
+						<?php _e( 'is an addon that allows you to execute actions and filters provided by WPeMatico in order to create custom behavior in the execution of your campaigns, right from your WordPress admin panel.', 'wpematico' );?></p>
+						<img style="float:left;margin-right: 7px; width: 120px;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/wpematico_polyglot-200x100.png'; ?>" alt="wpematico_translator" width="200" />
+						<p><?php _e('The','wpematico'); ?> <a href="https://etruel.com/downloads/wpematico-polyglot/" target="_blank">WPeMatico Polyglot</a> 
+						<?php _e( 'is an addon that lets you select the original language of articles in a campaign so you can translate them to one of the 107 supported languages before inserting them in your blog.', 'wpematico' );?></p>
+						<img style="float:left;margin-right: 7px; width: 120px;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/wpematico_cache-200x100.png'; ?>" alt="wpematico_audio y video" width="200" />
+						<p><?php _e('The','wpematico'); ?> <a href="https://etruel.com/downloads/wpematico-cache/" target="_blank">WPeMatico Cache</a> 
+						<?php _e( 'A powerful single plugin or WPeMatico addon, which optimizes the websites speed thanks to processes and technologies that reduces the overload of the websites where it is installed, improving the velocity till 10x comparing with other cache plugins for WordPress.', 'wpematico' );?></p>
 					</div>
 					<div class="feature-section-content">
 						<h4><?php _e( 'Mp3 and Mp4 Files', 'wpematico' );?></h4>
@@ -209,75 +257,30 @@ class WPEMATICO_Welcome {
 					</div>
 				</div>
 			</div>
-
+			<hr>
 			<div class="changelog">
-				<h3><?php _e( 'Single and global options for images.', 'wpematico' );?></h3>
+				<h2><?php _e( 'Single and global options for images, audio and video files.', 'wpematico' );?></h2>
 				<div class="feature-section">
 					<div class="feature-section-media">
 						<img src="<?php echo WPEMATICO_PLUGIN_URL . 'images/singleimages.png'; ?>" class="wpematico-welcome-screenshots"/>
 					</div>
 					<div class="feature-section-content">
-						<h4><?php _e( 'Set images Options in each campaign', 'wpematico' );?></h4>
-						<p><?php _e( 'For this release we have added the feature of overwriting the default image options from within the campaign edition. This allows to use the general options loaded in WPeMatico settings by all the campaigns, but for certain campaigns or special feeds we can configure it individually by checking the option: Don\'t use general settings..', 'wpematico' );?></p>
+						<h4><?php _e("Set the Options in each campaign", 'wpematico' );?></h4>
+						<p><?php _e( "We've added the feature of overwriting the default options from within the campaign edition. This allows to use the general options loaded in WPeMatico settings by all the campaigns, but for certain campaigns or special feeds we can configure it individually by checking the option: Don't use general settings.", 'wpematico' );?></p>
+						<p><?php _e( "You can customize the options individually for images, audio or video files.", 'wpematico' );?></p>
+						<p><?php _e( "Find the options in their metaboxes inside the campaign editing screens.  ", 'wpematico' );?></p>
 						
 					</div>
 
-					<h4><?php _e( 'Our Last Addons', 'wpematico' );?></h4>
-					<img style="float:left;margin-right: 7px; width: 120px;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/wpematico_cache-200x100.png'; ?>" alt="wpematico_audio y video" width="200" />
-					<p><?php _e('The','wpematico'); ?> <a href="https://etruel.com/downloads/wpematico-cache/" target="_blank">WPeMatico Cache</a> 
-					<?php _e( 'A powerful single plugin or WPeMatico addon, which optimizes the websites speed thanks to processes and technologies that reduces the overload of the websites where it is installed, improving the velocity till 10x comparing with other cache plugins for WordPress.', 'wpematico' );?></p>
-					<img style="float:left;margin-right: 7px; width: 120px;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/wpematico_polyglot-200x100.png'; ?>" alt="wpematico_translator" width="200" />
-					<p><?php _e('The','wpematico'); ?> <a href="https://etruel.com/downloads/wpematico-polyglot/" target="_blank">WPeMatico Polyglot</a> 
-					<?php _e( 'is an addon that lets you select the original language of articles in a campaign so you can translate them to one of the 107 supported languages before inserting them in your blog.', 'wpematico' );?></p>
 				</div>
 			</div>
-
+			<hr>
 			<div class="changelog">
-				<h3><?php _e( 'A new Campaign Wizard.', 'wpematico' );?></h3>
-				<div class="feature-section">
-					<div class="feature-section-media">
-						<img src="<?php echo WPEMATICO_PLUGIN_URL . 'images/wizard.png'; ?>"/>
-					</div>
-					<div class="feature-section-content">
-						<p><?php _e( 'This version comes with several important improvements. but the campaign wizard would be the more asked for the users.', 'wpematico' );?></p>
-						<p><?php _e( 'With it you will see one by one each metabox with options of the campaign, showing the help tips to facilitate even more the creation and correct configuration of the feeds to import. And something very important is that it is compatible with the diferent addons that add metaboxes to the campaign.', 'wpematico' );?></p>
-
-						<h4><?php _e( 'Coloured Titles in Campaign Metaboxes', 'wpematico' );?></h4>
-						<p><?php _e( 'Added colours to the background of the titles. This is a very useful feature at the campaign editing stage, that will allow you to find almost immediately, what you are looking for.', 'wpematico' );?></p>
-
-						<h4><?php _e( 'Tips in every campaign field option.', 'wpematico' );?></h4>
-						<p><?php _e( 'Beside each field is an icon of information, when mouse over it displays a tip or a help for that field. Hover over again to hide it.', 'wpematico' );?></p>
-					</div>
-				</div>
-			</div>
-
-			<div class="changelog">
-				<h3><?php _e( 'Better CRON Setups', 'wpematico' );?></h3>
-				<div class="feature-section">
-					<div class="feature-section-media">
-						<img src="<?php echo WPEMATICO_PLUGIN_URL . 'images/cron.png'; ?>"/>
-					</div>
-					<div class="feature-section-content">
-						<p><?php _e( 'WPeMatico version 1.3 allows set the automatic cron as you want.', 'wpematico' );?></p>
-
-						<h4><?php _e( 'Three type of CRON Schedules', 'wpematico' );?></h4>
-						<p><?php _e( 'By default WPeMatico uses WP Cron with just one cron job every 5 minutes.', 'wpematico' );?></p>
-
-						<h4><?php _e( 'You can use external third party services.', 'wpematico' );?></h4>
-						<p><?php _e( 'Deactivates only WPeMatico functions and uses a PHP file to be called from an external server by console or URL with password access.', 'wpematico' );?></p>
-
-						<h4><?php _e( 'You can use a cron of your server.', 'wpematico' );?></h4>
-						<p><?php _e( 'Allows deactivate the entire WP Cron and uses a server/hosting cron.', 'wpematico' );?></p>
-					</div>
-				</div>
-			</div>
-
-			<div class="changelog">
-				<h3><?php _e( 'Additional Updates', 'wpematico' );?></h3>
+				<h2><?php _e( 'Even More Developer Happiness', 'wpematico' );?></h2>
 				<div class="feature-section three-col">
 					<div class="col">
-						<h4><?php _e( 'New Add-ons System', 'wpematico' );?></h4>
-						<p><?php printf( __( 'Since version 1.3, it was implemented in %s, the online store for purchases and automatic updating of extensions.', 'wpematico' ),'<a href="https://etruel.com" target="_blank">https://etruel.com</a>');?></p>
+						<h4><?php _e( 'JavaScript hooks', 'wpematico' );?></h4>
+						<p><?php _e( "We've implemented the JavaScript hooks like WordPress actions and filters! You can make functions to enqueue the scripts and hooks to already added filters in the code.", 'wpematico' );?></p>
 					</div>
 					<div class="col">
 						<h4><a href="https://etruel.com/my-account/support/" target="_blank"><?php _e('Support ticket system for free', 'wpematico'); ?></a></h4>
@@ -287,14 +290,14 @@ class WPEMATICO_Welcome {
 						<h4><a href="https://etruel.com/downloads/premium-support/" target="_blank"><?php _e('Premium Support', 'wpematico'); ?></a></h4>
 						<p><?php _e( 'Get access to in-depth setup assistance. We\'ll dig in and do our absolute best to resolve issues for you. Any support that requires code or setup your site will need this service.' ,'wpematico' );?></p>
 					</div>
-					<div class="clear"></div>
+
 					<div class="col">
-						<h4><?php _e( 'Bulk Edit for campaigns.', 'wpematico' );?></h4>
-						<p><?php _e( 'A comfortable "Bulk Edit" feature was added for campaigns in list of campaigns. Select the campaigns by clicking the checkboxes and select "Edit" in "Bulk Actions".', 'wpematico' );?></p>
+						<h4><?php _e( 'Nags updates individually for extensions', 'wpematico' );?><span class="plugin-count" style="display: inline-block;background-color: #d54e21;color: #fff;font-size: 9px;line-height: 17px;font-weight: 600;margin: 1px 0 0 2px;vertical-align: top;-webkit-border-radius: 10px;border-radius: 10px;z-index: 26;padding: 0 6px;">1</span></h4>
+						<p><?php _e( 'A more clear nag update was added for the addons in the WPeMatico Extensions and Addons menu items.', 'wpematico' );?></p>
 					</div>
 					<div class="col">
-						<h4><?php _e( 'Excludes Add-ons From WP Plugins', 'wpematico' );?></h4>
-						<p><?php _e( 'The extensions plugins were separated from the standard Wordpress plugins page to get a better management of all WPeMatico Addons.', 'wpematico' );?></p>
+						<h4><?php _e( 'Hidden Options in Settings->Writing', 'wpematico' );?></h4>
+						<p><?php _e("If you have any problem with WPeMatico item menu, Settings page or lost some plugin, we've put there a WPeMatico Section, to try to avoid weird behaviors made by some thirds plugins.", 'wpematico' );?></p>
 					</div>
 					<div class="col">
 						<h4><a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" target="_blank"><?php _e( 'Rate 5 stars on Wordpress', 'wpematico' );?></a><div class="wporg-ratings" title="5 out of 5 stars" style="color:#ffb900;float: right;"><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span></div></h4>
