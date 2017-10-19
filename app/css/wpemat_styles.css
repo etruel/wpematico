@@ -475,11 +475,14 @@ display: table;
 	background-color: #f1f1f1 !important;
 	box-shadow: 0 0 14px rgba(0,0,0,.7);
 }
-#thickbox_wizard h2{
+#thickbox_wizard #campaign_wizard{
 	margin: 0;
     padding: 30px;
 	color: #ffffff;
     background: #eb9600;
+	font-size: 30px; 
+	font-family: Sans Serif; 
+	text-shadow: 1px 1px 1px rgba(0,0,0,.4);
 }
 #thickbox_wizard h2 input{
 	right: 10px !important;
@@ -535,26 +538,31 @@ display: table;
 	margin-left: 0 !important;
 	font-size: 50px !important;
 }
-#thickbox_wizard .postbox .control-buttons {
+#thickbox_wizard .control-buttons {
 	font-size: 20px;
 	position: absolute;
-    top: 18px;
 	z-index: 10;
+	margin: 2px 10px;
 }
-#thickbox_wizard .postbox #prev_wizard{
-    left: 20px;
+#thickbox_wizard #prev_wizard{
+    left: 10px;
 }
-#thickbox_wizard .postbox #next_wizard{
-    right: 20px;
+#thickbox_wizard #next_wizard{
+    right: 5px;
+}
+#thickbox_wizard #titlewrap {
+    margin: 0 auto;
+	padding: 0 100px;
+}
+#next_wizard .dashicons,
+#prev_wizard .dashicons{
+	font-size: 30px;
+	text-shadow: 1px 1px 1px rgba(0,0,0,.8);
 }
 #mailaddresslog{
 	margin-bottom: 15px;
 }
-#next_wizard .dashicons,
-#prev_wizard .dashicons{
-	margin-top: -4px;
-	vertical-align: middle;
-}
+
 @media (min-width: 992px){
 	#major-publishing-actions .radio{
 		width: 16px;

@@ -490,7 +490,7 @@ msgstr "Rescris de:"
 msgid "ReLink to:"
 msgstr "Relega la:"
 
-#: app/campaigns_edit.php:343
+#: app/campaign_edit.php:343
 #, php-format
 #@ wpematico
 msgid "There's an error with the supplied RegEx expression in word: %s"
@@ -549,7 +549,7 @@ msgstr "Activa"
 msgid "Copy"
 msgstr "Copie"
 
-#: app/campaigns_edit.php:72
+#: app/campaign_edit.php:72
 #: app/campaigns_list.php:441
 #: app/campaigns_list_OK.php:399
 #@ wpematico
@@ -1258,22 +1258,22 @@ msgstr ""
 msgid "Uploading image..."
 msgstr ""
 
-#: app/campaigns_edit.php:69
+#: app/campaign_edit.php:69
 #@ default
 msgid "Public"
 msgstr ""
 
-#: app/campaigns_edit.php:70
+#: app/campaign_edit.php:70
 #@ wpematico
 msgid "Campaign Description"
 msgstr ""
 
-#: app/campaigns_edit.php:71
+#: app/campaign_edit.php:71
 #@ wpematico
 msgid "Here you can write some observations."
 msgstr ""
 
-#: app/campaigns_edit.php:163
+#: app/campaign_edit.php:163
 #: app/campaigns_list.php:72
 #: app/campaigns_list.php:95
 #: app/campaigns_list_OK.php:150
@@ -1281,34 +1281,34 @@ msgstr ""
 msgid "Running Campaign..."
 msgstr ""
 
-#: app/campaigns_edit.php:264
+#: app/campaign_edit.php:264
 #@ wpematico
 msgid "Type some new Feed URL/s."
 msgstr ""
 
-#: app/campaigns_edit.php:305
+#: app/campaign_edit.php:305
 #@ wpematico
 msgid "Type some feed URL."
 msgstr ""
 
-#: app/campaigns_edit.php:360
+#: app/campaign_edit.php:360
 #, php-format
 #@ wpematico
 msgid "There's an error with the supplied RegEx expression in ReWrite: %s"
 msgstr ""
 
-#: app/campaigns_edit.php:385
+#: app/campaign_edit.php:385
 #@ wpematico
 msgid "At least one feed URL must be filled."
 msgstr ""
 
-#: app/campaigns_edit.php:393
+#: app/campaign_edit.php:393
 #, php-format
 #@ wpematico
 msgid "Feed %s could not be parsed. (SimplePie said: %s)"
 msgstr ""
 
-#: app/campaigns_edit.php:397
+#: app/campaign_edit.php:397
 #, php-format
 #@ wpematico
 msgid "Feed %s could not be parsed because has an space in url."

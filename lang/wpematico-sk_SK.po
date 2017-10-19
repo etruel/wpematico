@@ -173,29 +173,29 @@ msgstr "Ak chcete importovať alebo mazať prejsť na:"
 msgid "Settings saved."
 msgstr "Nastavenia uložené."
 
-#: app/campaigns_edit.php:69
+#: app/campaign_edit.php:69
 #@ default
 msgid "Public"
 msgstr "Verejnosti"
 
-#: app/campaigns_edit.php:70
+#: app/campaign_edit.php:70
 #@ wpematico
 msgid "Campaign Description"
 msgstr "Kampaň Popis"
 
-#: app/campaigns_edit.php:71
+#: app/campaign_edit.php:71
 #@ wpematico
 msgid "Here you can write some observations."
 msgstr "Tu môžete napísať niekoľko postrehov."
 
-#: app/campaigns_edit.php:72
+#: app/campaign_edit.php:72
 #: app/campaigns_list.php:441
 #: app/campaigns_list_OK.php:399
 #@ wpematico
 msgid "Run Now"
 msgstr "Spustiť teraz"
 
-#: app/campaigns_edit.php:163
+#: app/campaign_edit.php:163
 #: app/campaigns_list.php:72
 #: app/campaigns_list.php:95
 #: app/campaigns_list_OK.php:150
@@ -203,40 +203,40 @@ msgstr "Spustiť teraz"
 msgid "Running Campaign..."
 msgstr "Spustená kampaň..."
 
-#: app/campaigns_edit.php:264
+#: app/campaign_edit.php:264
 #@ wpematico
 msgid "Type some new Feed URL/s."
 msgstr "Zadajte nový Feed URL/niekt."
 
-#: app/campaigns_edit.php:305
+#: app/campaign_edit.php:305
 #@ wpematico
 msgid "Type some feed URL."
 msgstr "Zadajte niektoré feed URL."
 
-#: app/campaigns_edit.php:343
+#: app/campaign_edit.php:343
 #, php-format
 #@ wpematico
 msgid "There's an error with the supplied RegEx expression in word: %s"
 msgstr "Tam je chyba s dodaným RegEx výraz v programe word: %s"
 
-#: app/campaigns_edit.php:360
+#: app/campaign_edit.php:360
 #, php-format
 #@ wpematico
 msgid "There's an error with the supplied RegEx expression in ReWrite: %s"
 msgstr "Tam je chyba s dodaným RegEx výraz v prepísať: %s"
 
-#: app/campaigns_edit.php:385
+#: app/campaign_edit.php:385
 #@ wpematico
 msgid "At least one feed URL must be filled."
 msgstr "Aspoň jeden feed URL musí byť vyplnené."
 
-#: app/campaigns_edit.php:393
+#: app/campaign_edit.php:393
 #, php-format
 #@ wpematico
 msgid "Feed %s could not be parsed. (SimplePie said: %s)"
 msgstr "Krmivo %s nebolo možné analyzovať. (SimplePie povedal: % s)"
 
-#: app/campaigns_edit.php:397
+#: app/campaign_edit.php:397
 #, php-format
 #@ wpematico
 msgid "Feed %s could not be parsed because has an space in url."

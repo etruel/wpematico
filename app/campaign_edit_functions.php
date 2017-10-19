@@ -1101,53 +1101,45 @@ public static function feeds_box( $post ) {
 /*				echo '<input class="radio" type="radio" '.checked($post_type,$campaign_customposttype,false).' name="campaign_customposttype" value="'. $post_type. '" id="customtype_'. $post_type. '" /> <label for="customtype_'. $post_type. '">'.
 						__( $post_label ) .' ('. __( $post_type ) .')</label><br />';
 */
-						echo '<input class="radio" type="radio" '.checked($post_type,$campaign_customposttype,false).' name="campaign_customposttype" value="'. $post_type. '" id="customtype_'. $post_type. '" /> <label for="customtype_'. $post_type. '">'.
-						__( $post_label ) .'</label><br />';
-					}
-					?>
-				</div>
-			</div><div class="clear"></div>	<?php 
-		}
+				echo '<input class="radio" type="radio" '.checked($post_type,$campaign_customposttype,false).' name="campaign_customposttype" value="'. $post_type. 
+					'" id="customtype_'. $post_type. '" /> <label for="customtype_'. $post_type. '">' . __( $post_label ) .'</label><br />';
+			}
+				?>
+			</div>
+		</div><div class="clear"></div>	<?php 
+	}
 
 	//campaing wizard
 		public static function campaign_wizard(){
 			global $post, $campaign_data, $cfg, $helptip;
-		
-			?>
-			
-			<div id="wizard_mask">
-
-			</div>
+			?>	
+			<div id="wizard_mask"></div>
 			<div id="thickbox_wizard">
-				<h2 style="font-size: 30px; font-family: Sans Serif; text-shadow: 1px 1px 1px rgba(0,0,0,.4);"><?php echo __('CAMPAIGN WIZARD','wpematico'); ?>
+				<h2 id="campaign_wizard"><?php echo __('CAMPAIGN WIZARD','wpematico'); ?>
 					<input type="button" value="x" class="closed_wizard">
 				</h2>
-					<div class="title_wizard" id="titlediv"></div>
-					<div class="wpematico_divider_list_wizard">
-						<span  class="dashicons dashicons-editor-help icon-wizard-help"></span>
-						<p style="color: white;margin-top: 0px;" class="help_wizard"> </p>
-					</div>
-						
-					<!--title default wizard-->
-					<div class="postbox" id="temp_postbox" style="height: 30vh; overflow-y:auto; border:6px solid #DB9667;">
-						<button type="button" id="prev_wizard" class="button control-buttons button-primary button-large">
-							<i class="dashicons dashicons-arrow-left"></i> <?php echo __('Prev','wpematico'); ?>
-						</button>
-						<button type="button" id="next_wizard" class="button control-buttons button-primary button-large">
-							<?php echo __('Next','wpematico'); ?> <i class="dashicons dashicons-arrow-right"></i>
-						</button>
-
-						<h2 class="hndle ui-sortable-handle temp_uisortable postbox-title" data-background-color="" style="color: black; padding: 10px; font-family: 'Roboto', sans-serif;">
-							<span></span>
-						</h2>
-					</div>
+				<div class="title_wizard" id="titlediv">
+				<button type="button" id="prev_wizard" class="button control-buttons button-primary button-large">
+					<i class="dashicons dashicons-arrow-left"></i> <?php echo __('Prev','wpematico'); ?>
+				</button>
+				<button type="button" id="next_wizard" class="button control-buttons button-primary button-large">
+					<?php echo __('Next','wpematico'); ?> <i class="dashicons dashicons-arrow-right"></i>
+				</button>
 				</div>
-				<!--- -->
+				<div class="wpematico_divider_list_wizard">
+					<span  class="dashicons dashicons-editor-help icon-wizard-help"></span>
+					<p style="color: white;margin-top: 0px;" class="help_wizard"> </p>
+				</div>
 
-	<?php		
-
-}
-
+				<!--title default wizard-->
+				<div class="postbox" id="temp_postbox" style="height: 30vh; overflow-y:auto; border:6px solid #DB9667;">
+					<h2 class="hndle ui-sortable-handle temp_uisortable postbox-title" data-background-color="" style="color: black; padding: 10px; font-family: 'Roboto', sans-serif;">
+						<span></span>
+					</h2>
+				</div>
+			</div>
+		<?php		
+		}
 
 }
 ?>

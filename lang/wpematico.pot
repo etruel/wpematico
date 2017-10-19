@@ -244,7 +244,7 @@ msgstr ""
 # @ wpematico
 #: app/campaigns_list.php:112
 #: app/campaigns_list.php:139
-#: app/campaigns_edit.php:162
+#: app/campaign_edit.php:162
 msgid "Running Campaign..."
 msgstr ""
 
@@ -379,7 +379,7 @@ msgstr ""
 
 # @ wpematico
 #: app/campaigns_list.php:414
-#: app/campaigns_edit.php:67
+#: app/campaign_edit.php:67
 msgid "Run Now"
 msgstr ""
 
@@ -595,63 +595,63 @@ msgid "Post Format"
 msgstr ""
 
 # @ default
-#: app/campaigns_edit.php:63
+#: app/campaign_edit.php:63
 msgid "Public"
 msgstr ""
 
 # @ wpematico
-#: app/campaigns_edit.php:64
+#: app/campaign_edit.php:64
 msgid "Campaign Description"
 msgstr ""
 
 # @ wpematico
-#: app/campaigns_edit.php:65
+#: app/campaign_edit.php:65
 msgid "Here you can write some observations."
 msgstr ""
 
-#: app/campaigns_edit.php:273
+#: app/campaign_edit.php:273
 msgid "Dismiss this notice."
 msgstr ""
 
 # @ wpematico
-#: app/campaigns_edit.php:287
+#: app/campaign_edit.php:287
 msgid "Type some new Feed URL/s."
 msgstr ""
 
 # @ wpematico
-#: app/campaigns_edit.php:327
+#: app/campaign_edit.php:327
 msgid "Type some feed URL."
 msgstr ""
 
-#: app/campaigns_edit.php:343
+#: app/campaign_edit.php:343
 msgid "Save before Run Campaign"
 msgstr ""
 
 # @ wpematico
-#: app/campaigns_edit.php:368
+#: app/campaign_edit.php:368
 #, php-format
 msgid "There's an error with the supplied RegEx expression in word: %s"
 msgstr ""
 
 # @ wpematico
-#: app/campaigns_edit.php:385
+#: app/campaign_edit.php:385
 #, php-format
 msgid "There's an error with the supplied RegEx expression in ReWrite: %s"
 msgstr ""
 
 # @ wpematico
-#: app/campaigns_edit.php:410
+#: app/campaign_edit.php:410
 msgid "At least one feed URL must be filled."
 msgstr ""
 
 # @ wpematico
-#: app/campaigns_edit.php:418
+#: app/campaign_edit.php:418
 #, php-format
 msgid "Feed %s could not be parsed. (SimplePie said: %s)"
 msgstr ""
 
 # @ wpematico
-#: app/campaigns_edit.php:422
+#: app/campaign_edit.php:422
 #, php-format
 msgid "Feed %s could not be parsed because has an space in url."
 msgstr ""

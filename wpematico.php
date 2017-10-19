@@ -63,7 +63,7 @@ class Main_WPeMatico{
 			require_once('app/plugin_functions.php');
 			require_once('app/campaigns_list.php');
 			require_once("app/campaign_edit_functions.php");
-			require_once('app/campaigns_edit.php');
+			require_once('app/campaign_edit.php');
 			require_once("app/settings_page.php");
 			require_once("app/debug_page.php");
 			require_once("app/addons_page.php");

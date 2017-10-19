@@ -1080,67 +1080,67 @@ msgid "Sorry, your attach could not be inserted. Something wrong happened."
 msgstr "با عرض پوزش، پیوست شما نمی تواند اضافه شود. چیزی اشتباه رخ داده است."
 
 # @ default
-#: app/campaigns_edit.php:69
+#: app/campaign_edit.php:69
 msgid "Public"
 msgstr "عمومی"
 
 # @ wpematico
-#: app/campaigns_edit.php:70
+#: app/campaign_edit.php:70
 msgid "Campaign Description"
 msgstr "توضیح کمپین"
 
 # @ wpematico
-#: app/campaigns_edit.php:71
+#: app/campaign_edit.php:71
 msgid "Here you can write some observations."
 msgstr "اینجا می توانید برخی از مشاهدات ارسال را بنویسید."
 
 # @ wpematico
-#: app/campaigns_edit.php:72 app/campaigns_list.php:441
+#: app/campaign_edit.php:72 app/campaigns_list.php:441
 #: app/campaigns_list_OK.php:399
 msgid "Run Now"
 msgstr "الان اجرا کردن"
 
 # @ wpematico
-#: app/campaigns_edit.php:163 app/campaigns_list.php:72
+#: app/campaign_edit.php:163 app/campaigns_list.php:72
 #: app/campaigns_list.php:95 app/campaigns_list_OK.php:150
 msgid "Running Campaign..."
 msgstr "درحال اجرای کمپین"
 
 # @ wpematico
-#: app/campaigns_edit.php:264
+#: app/campaign_edit.php:264
 msgid "Type some new Feed URL/s."
 msgstr "تایپ کردن چند آدرس جدید خبرخوان"
 
 # @ wpematico
-#: app/campaigns_edit.php:305
+#: app/campaign_edit.php:305
 msgid "Type some feed URL."
 msgstr "تایپ کردن چند آدرس خبرخوان"
 
 # @ wpematico
-#: app/campaigns_edit.php:343
+#: app/campaign_edit.php:343
 #, php-format
 msgid "There's an error with the supplied RegEx expression in word: %s"
 msgstr "این خطا با بیان عبارت منظم عرضه شده در کلمه وجود دارد: %s"
 
 # @ wpematico
-#: app/campaigns_edit.php:360
+#: app/campaign_edit.php:360
 #, php-format
 msgid "There's an error with the supplied RegEx expression in ReWrite: %s"
 msgstr "خطا برای اینکه عبارت منظم در قسمت بازنویسی شده وجود دارد: %s"
 
 # @ wpematico
-#: app/campaigns_edit.php:385
+#: app/campaign_edit.php:385
 msgid "At least one feed URL must be filled."
 msgstr "حداقل یک آدرس خبرخوان باید وارد شود"
 
 # @ wpematico
-#: app/campaigns_edit.php:393
+#: app/campaign_edit.php:393
 #, php-format
 msgid "Feed %s could not be parsed. (SimplePie said: %s)"
 msgstr "نمی تواند تحلیل شود %s خبرخوان. (سیمپل پای گفته: %s)"
 
 # @ wpematico
-#: app/campaigns_edit.php:397
+#: app/campaign_edit.php:397
 #, php-format
 msgid "Feed %s could not be parsed because has an space in url."
 msgstr "نمی تواند تحلیل شود چون در آدرس فضای خالی وجود دارد %s خبرخوان"

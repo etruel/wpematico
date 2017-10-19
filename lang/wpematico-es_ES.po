@@ -253,7 +253,7 @@ msgstr ""
 # @ wpematico
 #: app/campaigns_list.php:112
 #: app/campaigns_list.php:139
-#: app/campaigns_edit.php:162
+#: app/campaign_edit.php:162
 msgid "Running Campaign..."
 msgstr "Ejecutando campañas"
 
@@ -402,7 +402,7 @@ msgstr "Ejecutar esta campaña ahora"
 
 # @ wpematico
 #: app/campaigns_list.php:414
-#: app/campaigns_edit.php:67
+#: app/campaign_edit.php:67
 msgid "Run Now"
 msgstr "Ejecutar ahora"
 
@@ -624,65 +624,65 @@ msgid "Post Format"
 msgstr "Plantilla de publicación"
 
 # @ default
-#: app/campaigns_edit.php:63
+#: app/campaign_edit.php:63
 msgid "Public"
 msgstr "Publico"
 
 # @ wpematico
-#: app/campaigns_edit.php:64
+#: app/campaign_edit.php:64
 msgid "Campaign Description"
 msgstr "Descripcion de campaña"
 
 # @ wpematico
-#: app/campaigns_edit.php:65
+#: app/campaign_edit.php:65
 msgid "Here you can write some observations."
 msgstr "Aqui puedes escribir algunas observaciones"
 
-#: app/campaigns_edit.php:273
+#: app/campaign_edit.php:273
 msgid "Dismiss this notice."
 msgstr ""
 
 # @ wpematico
-#: app/campaigns_edit.php:287
+#: app/campaign_edit.php:287
 msgid "Type some new Feed URL/s."
 msgstr "Escriba algunas URL de fuentes"
 
 # @ wpematico
-#: app/campaigns_edit.php:327
+#: app/campaign_edit.php:327
 msgid "Type some feed URL."
 msgstr "Escriba alguna URL de fuente"
 
 # @ wpematico
-#: app/campaigns_edit.php:343
+#: app/campaign_edit.php:343
 #, fuzzy
 msgid "Save before Run Campaign"
 msgstr "Fuente para esta campaña"
 
 # @ wpematico
-#: app/campaigns_edit.php:368
+#: app/campaign_edit.php:368
 #, php-format
 msgid "There's an error with the supplied RegEx expression in word: %s"
 msgstr "Existe un error con la expresión RegEx provista en la palabra: %s"
 
 # @ wpematico
-#: app/campaigns_edit.php:385
+#: app/campaign_edit.php:385
 #, php-format
 msgid "There's an error with the supplied RegEx expression in ReWrite: %s"
 msgstr "Existe un error con la expresión RegEx provista en la Re-escritura: %s"
 
 # @ wpematico
-#: app/campaigns_edit.php:410
+#: app/campaign_edit.php:410
 msgid "At least one feed URL must be filled."
 msgstr "Al menos una URl de fuente debe ser completada"
 
 # @ wpematico
-#: app/campaigns_edit.php:418
+#: app/campaign_edit.php:418
 #, php-format
 msgid "Feed %s could not be parsed. (SimplePie said: %s)"
 msgstr "Fuentes %s no pueden ser analizadas. (SimplePie dice: %s)"
 
 # @ wpematico
-#: app/campaigns_edit.php:422
+#: app/campaign_edit.php:422
 #, php-format
 msgid "Feed %s could not be parsed because has an space in url."
 msgstr "Fuente %s no puede ser analizada porque hay un espacio en la URL."
