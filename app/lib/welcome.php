@@ -107,7 +107,8 @@ class WPEMATICO_Welcome {
 			.wpematico-about-wrap #wpematico-header { margin-bottom: 15px; }
 			.wpematico-about-wrap #wpematico-header h1 { margin-bottom: 15px !important; }
 			.wpematico-about-wrap .about-text { margin: 0 0 15px; max-width: 670px; }
-			.wpematico-about-wrap .feature-section { margin-top: 20px; }
+			.wpematico-about-wrap .feature-section { margin-top: 20px; padding-bottom: 10px;}
+			.wpematico-about-wrap .changelog { margin-bottom: 20px;}
 			.wpematico-about-wrap .feature-section-content,
 			.wpematico-about-wrap .feature-section-media { width: 50%; box-sizing: border-box; }
 			.wpematico-about-wrap .feature-section-content { float: left; padding-right: 50px; }
@@ -195,15 +196,15 @@ class WPEMATICO_Welcome {
 						<?php $this->subscription_form(); ?>
 					</div>
 					<div class="feature-section-content">
-						<h4><?php _e( 'Introduced the Campaign Control Panel.', 'wpematico' );?></h4>
-						<img style="float:right;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/ccpanel.png'; ?>" alt="Campaign Control Panel" width="" />
-						<p><?php _e( 'In addition to including the embedded links, the version 1.7 includes a full support for MP3 and MP4 media files. ', 'wpematico' );?><br />
-						<?php _e( 'Audio and video files inserted in the contents of the source can be downloaded and attached to the published post. ', 'wpematico' );?><br />
-						<?php _e( 'Compatible with audio widget and video widget inserted in WordPress 4.8.', 'wpematico' );?> <?php _e( 'Only take care with the size of the files.', 'wpematico' );?> ;-)
+						<h4><?php _e( 'Introducing the Campaign Control Panel.', 'wpematico' );?></h4>
+						<img style="float:right;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/ccpanel.png'; ?>" alt="Campaign Control Panel" width="245" />
+						<p><?php _e( 'The most visible change in version 1.8 is certainly the campaign Control Panel. ', 'wpematico' );?><br />
+						<?php _e( 'This panel makes it possible to better control what is going on with the campaign you are editing.', 'wpematico' );?><br />
+						<?php _e( 'And also the "Delete hash" buttons for the duplicates control, view the "Last-run log", or even the "Reset" are displayed as buttons, no matter if the quick actions from Settings screen are activated.', 'wpematico' );?>
 						</p>
-						
-						<h4><?php _e( 'Need other file types ?', 'wpematico' );?></h4>
-						<p><?php _e('The','wpematico'); ?> <strong><a href="https://etruel.com/downloads/wpematico-professional/" target="_blank">WPeMatico Professional add-on</a></strong> <?php _e( 'brings support for &lt;mp3, ogg, wav, wma, m4a&gt; &lt;mp4, m4v, mov, wmv, avi, mpg, ogv, 3gp, 3g2&gt; media file types among a lot more of special features.', 'wpematico' );?></p>
+					
+						<h4><?php _e( 'Available for Addons too.', 'wpematico' );?></h4>
+						<p><?php _e('The','wpematico'); ?> <strong><a href="https://etruel.com/downloads/wpematico-professional/" target="_blank">WPeMatico Professional add-on</a></strong> <?php _e( 'will put an extra button to Export the campaign. The Control Panel has an proggramatic action to easily add an action button..', 'wpematico' );?></p>
 
 					</div>
 				</div>

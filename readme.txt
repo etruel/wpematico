@@ -263,6 +263,7 @@ or to e-mail etruel@gmail.com
 
 == Changelog ==
 = 1.8 Oct 2, 2017 =
+* **Major release - Recommended to test it in development ambients before update**
 * Added a Campaign Control Panel with campaign info inside the editing screen.
 * Added wpe hooks (for developers) to use filters and actions from JavaScript.
 * Added nags updates individually for extensions.
@@ -1026,6 +1027,6 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 == Upgrade Notice ==
 
 = 1.8 =
-* **Enlarges the version required for the Professional addon to 1.8**
+* **Enlarges the version required for the Professional addons to 1.8**
 * **Recommended to test it in development ambients before update**
 * Many improvements and fixes. See changelog for more details.
