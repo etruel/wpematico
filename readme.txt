@@ -262,7 +262,7 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
-= 1.8 Oct 2, 2017 =
+= 1.8 Oct 20, 2017 =
 * **Major release - Recommended to test it in development ambients before update**
 * Added a Campaign Control Panel with campaign info inside the editing screen.
 * Added wpe hooks (for developers) to use filters and actions from JavaScript.
