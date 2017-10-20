@@ -1,2969 +1,4802 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPeMatico v1.2.4\n"
+"Project-Id-Version: WPeMatico v1.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-30 20:37-0300\n"
-"PO-Revision-Date: 2015-09-30 20:38-0300\n"
+"POT-Creation-Date: 2017-10-20 01:21-0300\n"
+"PO-Revision-Date: 2017-10-20 01:21-0300\n"
 "Last-Translator: Esteban <esteban@netmdp.com>\n"
 "Language-Team: NetMdP <esteban@netmdp.com>\n"
-"Language: \n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: CSL v1.x\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.6.10\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
 "X-Poedit-Basepath: ../\n"
 "X-Textdomain-Support: yes\n"
 "X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPath-1: ../wpematico_pro\n"
+"X-Poedit-SearchPathExcluded-0: .git\n"
 
-#: myplugins.php:2
-msgid "Other plugins that can be useful"
+#: app/addons_page.php:73 app/addons_page.php:82
+msgid "Add-ons"
 msgstr ""
 
-#: wpematico.php:19
-msgid "PHP 5.3.0 or higher needed!"
+#: app/addons_page.php:74 app/lib/welcome.php:453
+msgid "WPeMatico Add-ons"
 msgstr ""
 
-#: wpematico.php:200
-msgid "Empty Trash"
+#: app/addons_page.php:83 app/plugin_functions.php:47
+msgid "Extensions"
 msgstr ""
 
-# @ wpematico
-#: wpematico.php:218
-msgid "Last Processed Campaigns:"
+#: app/addons_page.php:177
+msgid "Icon"
 msgstr ""
 
-# @ wpematico
-#: wpematico.php:224
-#: wpematico.php:257
-#: wpematico.php:330
-msgid "Edit Campaign"
+#: app/addons_page.php:178
+msgid "Add On"
 msgstr ""
 
-# @ wpematico
-#: wpematico.php:229
-#: wpematico.php:231
-#: app/campaign_fetch.php:466
+#: app/addons_page.php:179
+msgid "Description"
+msgstr ""
+
+#: app/addons_page.php:180
+msgid "Adquire"
+msgstr ""
+
+#: app/addons_page.php:207 app/addons_page.php:210
+msgid "Installed"
+msgstr ""
+
+#: app/addons_page.php:207 app/addons_page.php:222 app/addons_page.php:229
+msgid "Purchase"
+msgstr ""
+
+#: app/addons_page.php:211
+msgid "See details and prices on etruel's store"
+msgstr ""
+
+#: app/addons_page.php:218 app/addons_page.php:228
+msgid "Locally"
+msgstr ""
+
+#: app/addons_page.php:219
+msgid "Go to plugin URI"
+msgstr ""
+
+#: app/addons_page.php:223
+msgid "Go to purchase on the etruel's store"
+msgstr ""
+
+#: app/addons_page.php:277
 #, php-format
-msgid "Processed Posts: %1s"
+msgid "Go to %s WebPage"
 msgstr ""
 
-# @ wpematico
-#: wpematico.php:234
-#: wpematico.php:236
+#: app/addons_page.php:277
 #, php-format
-msgid "Fetch done in %1s sec."
+msgid "Open %s WebPage in new window."
 msgstr ""
 
-# @ wpematico
-#: wpematico.php:251
-msgid "Next Scheduled Campaigns:"
+#: app/addons_page.php:277
+msgid "Details"
 msgstr ""
 
-# @ wpematico
-#: wpematico.php:261
-#: app/campaigns_list.php:563
-msgid "Running since:"
+#: app/campaign_edit.php:38
+msgid "WPeMatico Campaign Info"
 msgstr ""
 
-# @ wpematico
-#: wpematico.php:261
-#: app/campaigns_list.php:563
-#: app/campaigns_list.php:580
-msgid "sec."
+#: app/campaign_edit.php:51
+msgid "All links are no-follow and open in a new browser tab."
 msgstr ""
 
-# @ wpematico
-#: wpematico.php:271
-#: app/campaigns_list.php:583
-msgid "None"
+#: app/campaign_edit.php:74
+msgid "Published by Campaign"
 msgstr ""
 
-# @ wpematico
-#: wpematico.php:289
-msgid "Load WPeMatico Settings Page"
+#: app/campaign_edit.php:77
+msgid "Edit the campaign."
 msgstr ""
 
-# @ wpematico
-#: wpematico.php:289
-#: wpematico.php:370
-#: wpematico.php:371
-#: app/settings_page.php:16
-msgid "Settings"
+#: app/campaign_edit.php:82
+msgid "From feed"
 msgstr ""
 
-#: wpematico.php:290
-msgid "View PRO version features"
+#: app/campaign_edit.php:85
+msgid "Open the feed URL in the browser."
 msgstr ""
 
-#: wpematico.php:290
-msgid "Go PRO"
+#: app/campaign_edit.php:90
+msgid "Source permalink"
 msgstr ""
 
-#: wpematico.php:311
-msgid "Bugtracker"
+#: app/campaign_edit.php:93
+msgid "Go to the source website to see the original content."
 msgstr ""
 
-# @ default
-#: wpematico.php:312
-msgid "Support"
-msgstr ""
-
-# @ wpematico
-#: wpematico.php:313
-msgid "Donate"
-msgstr ""
-
-# @ wpematico
-#: wpematico.php:326
-msgid "Campaigns"
-msgstr ""
-
-# @ wpematico
-#: wpematico.php:327
-msgid "Campaign"
-msgstr ""
-
-# @ wpematico
-#: wpematico.php:328
-msgid "Add New"
-msgstr ""
-
-# @ wpematico
-#: wpematico.php:329
-msgid "Add New Campaign"
-msgstr ""
-
-# @ wpematico
-#: wpematico.php:331
-msgid "New Campaign"
-msgstr ""
-
-# @ wpematico
-#: wpematico.php:332
-msgid "All Campaigns"
-msgstr ""
-
-# @ wpematico
-#: wpematico.php:333
-msgid "View Campaign"
-msgstr ""
-
-# @ wpematico
-#: wpematico.php:334
-msgid "Search Campaign"
-msgstr ""
-
-# @ wpematico
-#: wpematico.php:335
-msgid "No campaign found"
-msgstr ""
-
-# @ wpematico
-#: wpematico.php:336
-msgid "No Campaign found in Trash"
-msgstr ""
-
-# @ default
-#: wpematico.php:556
-msgid "WPeMatico"
-msgstr ""
-
-#: app/wpematico_functions.php:19
-msgid "- WordPress 3.9 or higher needed!"
-msgstr ""
-
-#: app/wpematico_functions.php:23
-msgid "- PHP 5.3.0 or higher needed!"
-msgstr ""
-
-#: app/wpematico_functions.php:35
-msgid "You are using WPeMatico PRO too old."
-msgstr ""
-
-#: app/wpematico_functions.php:36
-msgid "Must install at least <b>WPeMatico PRO</b> "
-msgstr ""
-
-#: app/wpematico_functions.php:37
-msgid "Go to upgrade Now"
-msgstr ""
-
-# @ wpematico
-#: app/wpematico_functions.php:44
-msgid "- WP-Cron don't working please check it!"
-msgstr ""
-
-# @ wpematico
-#: app/wpematico_functions.php:443
-#: app/wpematico_functions.php:453
-#, php-format
-msgid "The feed %s has been parsed successfully."
-msgstr ""
-
-# @ wpematico
-#: app/wpematico_functions.php:446
-#: app/wpematico_functions.php:454
-#, php-format
-msgid "The feed %s cannot be parsed. Simplepie said: %s"
-msgstr ""
-
-#: app/wpematico_functions.php:707
-msgid "error with wp_remote_get:"
-msgstr ""
-
-#: app/wpematico_functions.php:804
-msgid "5 Stars Ratings on Wordpress"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:55
-msgid "Visit"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:77
-msgid "Run Selected Campaigns"
-msgstr ""
-
-#: app/campaigns_list.php:87
-msgid "Slug"
-msgstr ""
-
-#: app/campaigns_list.php:90
-msgid "Password"
-msgstr ""
-
-#: app/campaigns_list.php:96
-msgid "Date"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:112
-#: app/campaigns_list.php:139
-#: app/campaign_edit.php:162
-msgid "Running Campaign..."
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:135
-msgid "Please select campaign(s) to Run."
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:169
-msgid "(Copy)"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:228
-#: app/campaigns_list.php:263
-#: app/campaigns_list.php:284
-#: app/campaigns_list.php:304
-#: app/campaigns_list.php:323
-msgid "No campaign ID has been supplied!"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:250
-msgid "Copy campaign failed, could not find original:"
-msgstr ""
-
-#: app/campaigns_list.php:272
-msgid "Campaign activated"
-msgstr ""
-
-#: app/campaigns_list.php:272
-msgid "Campaign Deactivated"
-msgstr ""
-
-#: app/campaigns_list.php:294
-msgid "Reset Campaign"
-msgstr ""
-
-#: app/campaigns_list.php:313
-msgid "Hash deleted on campaign"
-msgstr ""
-
-#: app/campaigns_list.php:337
-msgid "Campaign cleared"
-msgstr ""
-
-#: app/campaigns_list.php:389
-msgid "Edit this item"
-msgstr ""
-
-#: app/campaigns_list.php:389
-msgid "Edit"
-msgstr ""
-
-#: app/campaigns_list.php:390
-msgid "Edit this item inline"
-msgstr ""
-
-#: app/campaigns_list.php:390
-msgid "Quick&nbsp;Edit"
-msgstr ""
-
-#: app/campaigns_list.php:394
-msgid "Restore this item from the Trash"
-msgstr ""
-
-#: app/campaigns_list.php:394
-msgid "Restore"
-msgstr ""
-
-#: app/campaigns_list.php:396
-msgid "Move this item to the Trash"
-msgstr ""
-
-#: app/campaigns_list.php:396
-msgid "Trash"
-msgstr ""
-
-#: app/campaigns_list.php:398
-msgid "Delete this item permanently"
-msgstr ""
-
-#: app/campaigns_list.php:398
-msgid "Delete Permanently"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:406
-msgid "Deactivate this campaign"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:406
-msgid "Activate schedule"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:407
-msgid "Deactivate"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:407
-msgid "Activate"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:410
-msgid "Clone this item"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:410
-msgid "Copy"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:412
-msgid "Reset post count"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:412
-msgid "Reset"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:414
-msgid "Run Now this campaign"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:414
-#: app/campaign_edit.php:67
-msgid "Run Now"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:417
-msgid "Delete hash code for duplicates"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:417
-msgid "Del Hash"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:425
-msgid "See last log of campaign. (Open a PopUp window)"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:425
-msgid "See Log"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:430
-msgid "Clear fetching and restore campaign"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:430
-msgid "Clear campaign"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:442
-#: app/campaigns_list.php:445
-msgid "Campaign updated."
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:443
-msgid "Custom field updated."
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:444
-msgid "Custom field deleted."
-msgstr ""
-
-# @ default
-#: app/campaigns_list.php:447
-#, php-format
-msgid "Campaign restored to revision from %s"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:448
-msgid "Campaign published."
-msgstr ""
-
-# @ default
-#: app/campaigns_list.php:449
-msgid "Campaign saved."
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:450
-msgid "Campaign submitted."
-msgstr ""
-
-# @ default
-#: app/campaigns_list.php:451
-#, php-format
-msgid "Campaign scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">Preview campaign</a>"
-msgstr ""
-
-# @ default
-#: app/campaigns_list.php:453
-msgid "M j, Y @ G:i"
-msgstr ""
-
-# @ default
-#: app/campaigns_list.php:454
-#, php-format
-msgid "Campaign draft updated. <a target=\"_blank\" href=\"%s\">Preview campaign</a>"
-msgstr ""
-
-# @ default
-#: app/campaigns_list.php:464
-msgid "Campaign Name"
-msgstr ""
-
-#: app/campaigns_list.php:465
-msgid "Publish as"
-msgstr ""
-
-# @ default
-#: app/campaigns_list.php:466
-msgid "Posts"
-msgstr ""
-
-# @ default
-#: app/campaigns_list.php:467
-msgid "Next Run"
-msgstr ""
-
-# @ default
-#: app/campaigns_list.php:468
-msgid "Last Run"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:570
-msgid "Inactive"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:580
-msgid "Runtime:"
-msgstr ""
-
-#: app/campaigns_list.php:673
-msgid "Campaign Options"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:676
-msgid "Max items to create on each fetch:"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:683
-msgid "Use feed date"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:688
-#: app/campaign_edit_functions.php:347
-msgid "Author:"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:694
-#: app/campaign_edit_functions.php:339
-msgid "Discussion options:"
-msgstr ""
-
-#: app/campaigns_list.php:699
-msgid "Open"
-msgstr ""
-
-#: app/campaigns_list.php:700
-msgid "Closed"
-msgstr ""
-
-#: app/campaigns_list.php:701
-msgid "Registered only"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:715
-msgid "Allow pings?"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:719
-msgid "Post title links to source?"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:723
-msgid "Strip links from content"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:764
-#: app/campaign_edit_functions.php:669
-msgid "Post type"
-msgstr ""
-
-# @ wpematico
-# @ default
-#: app/campaigns_list.php:782
-#: app/campaign_edit_functions.php:662
-msgid "Status"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:785
-#: app/campaign_edit_functions.php:663
-msgid "Published"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:786
-#: app/campaign_edit_functions.php:664
-msgid "Private"
-msgstr ""
-
-#: app/campaigns_list.php:787
-#: app/campaign_edit_functions.php:665
-msgid "Pending"
-msgstr ""
-
-# @ wpematico
-#: app/campaigns_list.php:788
-#: app/campaign_edit_functions.php:666
-msgid "Draft"
-msgstr ""
-
-#: app/campaigns_list.php:797
-msgid "Post Format"
-msgstr ""
-
-# @ default
-#: app/campaign_edit.php:63
-msgid "Public"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit.php:64
-msgid "Campaign Description"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit.php:65
-msgid "Here you can write some observations."
-msgstr ""
-
-#: app/campaign_edit.php:273
+#: app/campaign_edit.php:174 app/settings_page.php:105
+#: app/wpematico_functions.php:743
 msgid "Dismiss this notice."
 msgstr ""
 
 # @ wpematico
-#: app/campaign_edit.php:287
+#: app/campaign_edit.php:175
+msgid "Type some feed URL."
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit.php:176
 msgid "Type some new Feed URL/s."
 msgstr ""
 
 # @ wpematico
-#: app/campaign_edit.php:327
-msgid "Type some feed URL."
+#: app/campaign_edit.php:177 app/campaigns_list.php:169
+msgid "Running Campaign..."
 msgstr ""
 
-#: app/campaign_edit.php:343
+#: app/campaign_edit.php:178
 msgid "Save before Run Campaign"
 msgstr ""
 
+#: app/campaign_edit.php:179
+msgid "Save before to execute this action"
+msgstr ""
+
+#: app/campaign_edit.php:180
+msgid "Are you sure you want to reset this campaign?"
+msgstr ""
+
+#: app/campaign_edit.php:181
+msgid ""
+"Are you sure you want to delete hash code for duplicates of this campaign?"
+msgstr ""
+
+#: app/campaign_edit.php:182
+msgid "Wizard"
+msgstr ""
+
+#: app/campaign_edit.php:188
+msgid "Update Campaign to save changes."
+msgstr ""
+
+# @ default
+#: app/campaign_edit.php:190
+msgid "Public"
+msgstr ""
+
 # @ wpematico
-#: app/campaign_edit.php:368
+#: app/campaign_edit.php:192
+msgid "Campaign Description"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit.php:193
+msgid "Here you can write some observations."
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit.php:199 app/campaign_edit_functions.php:263
+msgid "Word:"
+msgstr ""
+
+#: app/campaign_edit.php:200 app/campaign_edit_functions.php:264
+msgid "on Title"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit.php:201 app/campaign_edit_functions.php:218
+#: app/campaign_edit_functions.php:265
+msgid "RegEx"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit.php:202 app/campaign_edit_functions.php:266
+msgid "Case sensitive"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit.php:203 app/campaign_edit_functions.php:269
+msgid "To Category:"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit.php:204 app/campaign_edit_functions.php:232
+#: app/campaign_edit_functions.php:287 app/campaign_edit_functions.php:910
+msgid "Delete this item"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit.php:209 app/campaign_edit_functions.php:272
+msgid "Select category"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit.php:381
 #, php-format
 msgid "There's an error with the supplied RegEx expression in word: %s"
 msgstr ""
 
 # @ wpematico
-#: app/campaign_edit.php:385
+#: app/campaign_edit.php:398
 #, php-format
 msgid "There's an error with the supplied RegEx expression in ReWrite: %s"
 msgstr ""
 
 # @ wpematico
-#: app/campaign_edit.php:410
+#: app/campaign_edit.php:423
 msgid "At least one feed URL must be filled."
 msgstr ""
 
 # @ wpematico
-#: app/campaign_edit.php:418
+#: app/campaign_edit.php:431
 #, php-format
 msgid "Feed %s could not be parsed. (SimplePie said: %s)"
 msgstr ""
 
 # @ wpematico
-#: app/campaign_edit.php:422
+#: app/campaign_edit.php:435
 #, php-format
 msgid "Feed %s could not be parsed because has an space in url."
 msgstr ""
 
+#: app/campaign_edit_functions.php:23 app/campaigns_list.php:83
+#: app/campaigns_list.php:580 app/campaigns_list_help.php:15
+msgid "Campaign Type"
+msgstr ""
+
+#: app/campaign_edit_functions.php:25
+msgid "Campaign Posts Format"
+msgstr ""
+
 # @ wpematico
-#: app/campaign_fetch.php:54
+#: app/campaign_edit_functions.php:26
+msgid "Campaign Categories"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:27
+msgid "Tags generation"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:28
+msgid "Send log"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:29
+msgid "Feeds for this Campaign"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:30
+msgid "Options for this campaign"
+msgstr ""
+
+#: app/campaign_edit_functions.php:31
+msgid "Schedule Cron"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:32
+msgid "Options for images"
+msgstr ""
+
+#: app/campaign_edit_functions.php:33
+msgid "Options for audios"
+msgstr ""
+
+#: app/campaign_edit_functions.php:34
+msgid "Options for videos"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:36
+msgid "Post Template"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:38
+msgid "Word to Category options"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:40
+msgid "Rewrite options"
+msgstr ""
+
+#: app/campaign_edit_functions.php:71 app/campaigns_list.php:634
+msgid "Stop and deactivate this campaign"
+msgstr ""
+
+#: app/campaign_edit_functions.php:71 app/campaigns_list.php:634
+msgid "Start/Activate Campaign Scheduler"
+msgstr ""
+
+#: app/campaign_edit_functions.php:82 app/campaigns_list.php:655
+msgid "Break fetching and restore campaign"
+msgstr ""
+
+#: app/campaign_edit_functions.php:85 app/campaign_edit_functions.php:90
+#: app/campaigns_list.php:661 app/campaigns_list.php:667
+msgid "Run Once"
+msgstr ""
+
+#: app/campaign_edit_functions.php:106 app/campaigns_list.php:660
+#: app/campaigns_list.php:696
+msgid "Next Run:"
+msgstr ""
+
+#: app/campaign_edit_functions.php:113
+msgid "Last Runtime:"
+msgstr ""
+
+#: app/campaign_edit_functions.php:117
+msgid "Taken time:"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:118 app/campaigns_list.php:647
+#: app/campaigns_list.php:683 app/campaigns_list.php:692
+#: wpematico_class.php:202
+msgid "sec."
+msgstr ""
+
+#: app/campaign_edit_functions.php:122
+msgid "Last Fetched:"
+msgstr ""
+
+#: app/campaign_edit_functions.php:126
+msgid "Fetched Totals:"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:136 app/campaigns_list.php:509
+msgid "Reset post count"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:137 app/campaigns_list.php:514
+msgid "Delete hash code for duplicates"
+msgstr ""
+
+#: app/campaign_edit_functions.php:138
+msgid "See last log. (Open a PopUp window)"
+msgstr ""
+
+#: app/campaign_edit_functions.php:165
+msgid "Feed Fetcher (Default)"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:209
+msgid "Replaces words or phrases by other that you want or turns into link."
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:216
+msgid "Origin:"
+msgstr ""
+
+#: app/campaign_edit_functions.php:217
+msgid "Title"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:223
+msgid "Rewrite to:"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:227
+msgid "ReLink to:"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:243 app/campaign_edit_functions.php:296
+msgid "Add more"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:255
+msgid "Assigning categories based on content words."
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:317
+msgid "Modify, manage or add extra content to every post fetched."
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:320
+msgid "Enable Post Template"
+msgstr ""
+
+#: app/campaign_edit_functions.php:324
+msgid ""
+"\"{content}\" must exist in the template if you want to see the content in "
+"your post. Works after the features above."
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:325
+msgid "Allowed tags"
+msgstr ""
+
+#: app/campaign_edit_functions.php:356
+msgid "Click to Show/Hide the examples"
+msgstr ""
+
+#: app/campaign_edit_functions.php:357
+msgid "Click here to see more info of the template feature."
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:361 app/campaign_help.php:194
+msgid "Supported tags"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:362 app/campaign_help.php:195
+msgid ""
+"A tag is a piece of text that gets replaced dynamically when the post is "
+"created. Currently, these tags are supported:"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:364 app/campaign_help.php:198
+msgid "The feed item title."
+msgstr ""
+
+#: app/campaign_edit_functions.php:365
+msgid "The parsed post content."
+msgstr ""
+
+#: app/campaign_edit_functions.php:366
+msgid "The feed item description."
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:367 app/campaign_help.php:199
+msgid "Put the featured image on content."
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:368 app/campaign_help.php:200
+msgid "The feed item author."
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:369 app/campaign_help.php:201
+msgid "The feed item author link (If exist)."
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:370 app/campaign_help.php:202
+msgid "The feed item permalink."
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:371 app/campaign_help.php:203
+msgid "The feed URL."
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:372 app/campaign_help.php:204
+msgid "The feed title."
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:373 app/campaign_help.php:205
+msgid "The description of the feed."
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:374 app/campaign_help.php:206
+msgid "The feed's logo image URL."
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:375 app/campaign_help.php:207
+msgid "This campaign title"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:376 app/campaign_help.php:208
+msgid "This campaign ID."
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:379 app/campaign_help.php:210
+msgid "Examples:"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:381 app/campaign_help.php:212
+msgid ""
+"If you want to add a link to the source at the bottom of every post and the "
+"author, the post template would look like this:"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:382 app/campaign_edit_functions.php:385
+#: app/campaign_help.php:213 app/campaign_help.php:216
+msgid "Go to Source"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:383 app/campaign_help.php:214
+msgid "will be replaced with the feed item content"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:383 app/campaign_help.php:214
+msgid "by the source feed item URL, which makes it a working link and"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:383 app/campaign_help.php:214
+msgid "with the original author of the feed item."
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:384 app/campaign_help.php:215
+msgid ""
+"Also you can add a gallery with three columns with all thumbnails images "
+"clickables at the bottom of every content, but before source link and author "
+"name, the post template would look like this:"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:386 app/campaign_help.php:217
+msgid ""
+"it's a WP shortcode for insert a gallery into the post.  You can use any "
+"shortcode here; will be processed by Wordpress."
+msgstr ""
+
+#: app/campaign_edit_functions.php:424 app/campaign_edit_functions.php:487
+#: app/campaign_edit_functions.php:536
+msgid "Don&#x27;t use general Settings"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:429 app/settings_page.php:253
+msgid "Cache Images."
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:433 app/settings_page.php:255
+msgid "Attach Images to posts."
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:435 app/settings_page.php:257
+msgid "No link to source images"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:441 app/settings_page.php:262
+msgid "Enable first image found on content as Featured Image."
+msgstr ""
+
+#: app/campaign_edit_functions.php:445 app/campaign_help.php:129
+msgid "Enable featured image selector."
+msgstr ""
+
+#: app/campaign_edit_functions.php:447
+msgid "Index to featured"
+msgstr ""
+
+#: app/campaign_edit_functions.php:449
+msgid "If no exist index"
+msgstr ""
+
+#: app/campaign_edit_functions.php:458 app/campaign_help.php:134
+#: app/settings_page.php:264 app/settings_page.php:709
+msgid "Remove Featured Image from content."
+msgstr ""
+
+#: app/campaign_edit_functions.php:461 app/campaign_edit_functions.php:507
+#: app/campaign_edit_functions.php:553 app/settings_page.php:267
+#: app/settings_page.php:289 app/settings_page.php:311
+msgid "Custom function for uploads."
+msgstr ""
+
+#: app/campaign_edit_functions.php:495 app/settings_page.php:281
+msgid "Cache Audios."
+msgstr ""
+
+#: app/campaign_edit_functions.php:499 app/settings_page.php:283
+msgid "Attach Audios to posts."
+msgstr ""
+
+#: app/campaign_edit_functions.php:502 app/settings_page.php:285
+msgid "No link to source audios"
+msgstr ""
+
+#: app/campaign_edit_functions.php:541 app/settings_page.php:303
+msgid "Cache Videos."
+msgstr ""
+
+#: app/campaign_edit_functions.php:545 app/settings_page.php:305
+msgid "Attach Videos to posts."
+msgstr ""
+
+#: app/campaign_edit_functions.php:548 app/settings_page.php:307
+msgid "No link to source videos"
+msgstr ""
+
+#: app/campaign_edit_functions.php:585
+msgid "Max items to create on each fetch."
+msgstr ""
+
+#: app/campaign_edit_functions.php:589 app/campaign_help.php:24
+msgid "Order feed items by Date before process."
+msgstr ""
+
+#: app/campaign_edit_functions.php:593 app/campaign_help.php:28
+msgid "Use feed item date."
+msgstr ""
+
+#: app/campaign_edit_functions.php:597 app/campaign_help.php:51
+msgid "Pingbacks y trackbacks."
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:600 app/campaigns_list.php:806
+msgid "Discussion options:"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:608 app/campaigns_list.php:800
+msgid "Author:"
+msgstr ""
+
+#: app/campaign_edit_functions.php:614
+msgid "Strip All HTML Tags"
+msgstr ""
+
+#: app/campaign_edit_functions.php:620 app/campaign_help.php:68
+msgid "Strip links from content."
+msgstr ""
+
+#: app/campaign_edit_functions.php:623
+msgid "Strip &lt;a&gt;."
+msgstr ""
+
+#: app/campaign_edit_functions.php:625
+msgid "Strip &lt;iframe&gt;."
+msgstr ""
+
+#: app/campaign_edit_functions.php:627
+msgid "Strip &lt;script&gt;."
+msgstr ""
+
+#: app/campaign_edit_functions.php:629
+msgid "If you do not select any option will take as if you selected all."
+msgstr ""
+
+#: app/campaign_edit_functions.php:638 app/campaign_help.php:72
+msgid "Post Content Unfiltered."
+msgstr ""
+
+#: app/campaign_edit_functions.php:643 app/campaign_help.php:36
+msgid "Post title links to source."
+msgstr ""
+
+#: app/campaign_edit_functions.php:644
+msgid "Feature deactivated on Settings. Needs Metadata."
+msgstr ""
+
+#: app/campaign_edit_functions.php:648 app/campaign_help.php:41
+msgid "Copy the permalink from the source."
+msgstr ""
+
+#: app/campaign_edit_functions.php:654
+msgid "Avoid search redirection to source permalink."
+msgstr ""
+
+#: app/campaign_edit_functions.php:668
+msgid "Every 5 minutes"
+msgstr ""
+
+#: app/campaign_edit_functions.php:675
+msgid "Every 15 minutes"
+msgstr ""
+
+#: app/campaign_edit_functions.php:689
+msgid "Once per hour"
+msgstr ""
+
+#: app/campaign_edit_functions.php:696
+msgid "Every 3 hours"
+msgstr ""
+
+#: app/campaign_edit_functions.php:703
+msgid "Every 6 hours"
+msgstr ""
+
+#: app/campaign_edit_functions.php:710
+msgid "Every 12 hours"
+msgstr ""
+
+#: app/campaign_edit_functions.php:717
+msgid "Every day at 3 o'clock"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:752
+msgid "Activate scheduling"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:755
+msgid ""
+"Working as <a href=\"http://wikipedia.org/wiki/Cron\" target=\"_blank"
+"\">Cron</a> job schedule:"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:757
+msgid "Next runtime:"
+msgstr ""
+
+#: app/campaign_edit_functions.php:762 app/campaign_help.php:96
+msgid "Preselected schedules."
+msgstr ""
+
+#: app/campaign_edit_functions.php:766
+msgid "Select an option to change the values."
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:779
+msgid "Minutes: "
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:787 app/campaign_edit_functions.php:804
+#: app/campaign_edit_functions.php:821 app/campaign_edit_functions.php:838
+#: app/campaign_edit_functions.php:862
+msgid "Any (*)"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:796
+msgid "Hours:"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:813
+msgid "Days:"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:830
+msgid "Months:"
+msgstr ""
+
+# @ default
+#: app/campaign_edit_functions.php:839
+msgid "January"
+msgstr ""
+
+# @ default
+#: app/campaign_edit_functions.php:840
+msgid "February"
+msgstr ""
+
+# @ default
+#: app/campaign_edit_functions.php:841
+msgid "March"
+msgstr ""
+
+# @ default
+#: app/campaign_edit_functions.php:842
+msgid "April"
+msgstr ""
+
+# @ default
+#: app/campaign_edit_functions.php:843
+msgid "May"
+msgstr ""
+
+# @ default
+#: app/campaign_edit_functions.php:844
+msgid "June"
+msgstr ""
+
+# @ default
+#: app/campaign_edit_functions.php:845
+msgid "July"
+msgstr ""
+
+#: app/campaign_edit_functions.php:846
+msgid "August"
+msgstr ""
+
+# @ default
+#: app/campaign_edit_functions.php:847
+msgid "September"
+msgstr ""
+
+# @ default
+#: app/campaign_edit_functions.php:848
+msgid "October"
+msgstr ""
+
+# @ default
+#: app/campaign_edit_functions.php:849
+msgid "November"
+msgstr ""
+
+# @ default
+#: app/campaign_edit_functions.php:850
+msgid "December"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:854
+msgid "Weekday:"
+msgstr ""
+
+# @ default
+#: app/campaign_edit_functions.php:863
+msgid "Sunday"
+msgstr ""
+
+# @ default
+#: app/campaign_edit_functions.php:864
+msgid "Monday"
+msgstr ""
+
+# @ default
+#: app/campaign_edit_functions.php:865
+msgid "Tuesday"
+msgstr ""
+
+# @ default
+#: app/campaign_edit_functions.php:866
+msgid "Wednesday"
+msgstr ""
+
+# @ default
+#: app/campaign_edit_functions.php:867
+msgid "Thursday"
+msgstr ""
+
+# @ default
+#: app/campaign_edit_functions.php:868
+msgid "Friday"
+msgstr ""
+
+# @ default
+#: app/campaign_edit_functions.php:869
+msgid "Saturday"
+msgstr ""
+
+#: app/campaign_edit_functions.php:884
+msgid "Feed URL"
+msgstr ""
+
+#: app/campaign_edit_functions.php:894
+msgid "Update Campaign to save Feeds order"
+msgstr ""
+
+#: app/campaign_edit_functions.php:902
+msgid "Open URL in a new browser tab"
+msgstr ""
+
+#: app/campaign_edit_functions.php:909
+msgid "Check if this feed works"
+msgstr ""
+
+#: app/campaign_edit_functions.php:920
+msgid "Add Feed"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:921
+msgid "Check all feeds"
+msgstr ""
+
+#: app/campaign_edit_functions.php:925
+msgid "Displaying"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:926
+msgid "Display all feeds"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:939
+msgid "E-Mail-Adress:"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:941
+msgid "Send only E-Mail on errors."
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:951
+msgid "Tags:"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:953
+msgid "Enter comma separated list of Tags."
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:977
+msgid "Add auto Categories"
+msgstr ""
+
+#: app/campaign_edit_functions.php:981
+msgid "Parent category to auto categories"
+msgstr ""
+
+#: app/campaign_edit_functions.php:986
+msgid "No parent category"
+msgstr ""
+
+#: app/campaign_edit_functions.php:1010
+msgid "Current Categories"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:1025
+msgid "Quick add"
+msgstr ""
+
+# @ wpematico
+# @ default
+#: app/campaign_edit_functions.php:1081 app/campaigns_list.php:895
+#: app/lib/licenses_handlers.php:482 app/lib/licenses_handlers.php:486
+#: app/lib/licenses_handlers.php:488
+msgid "Status"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:1082 app/campaigns_list.php:898
+msgid "Published"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:1083 app/campaigns_list.php:899
+msgid "Private"
+msgstr ""
+
+#: app/campaign_edit_functions.php:1084 app/campaigns_list.php:900
+msgid "Pending"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:1085 app/campaigns_list.php:901
+msgid "Draft"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_edit_functions.php:1088 app/campaigns_list.php:877
+msgid "Post type"
+msgstr ""
+
+#: app/campaign_edit_functions.php:1118
+msgid "CAMPAIGN WIZARD"
+msgstr ""
+
+#: app/campaign_edit_functions.php:1123
+msgid "Prev"
+msgstr ""
+
+#: app/campaign_edit_functions.php:1126
+msgid "Next"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_fetch.php:62
 #, php-format
 msgid "PHP Safe Mode is on!!! Max exec time is %1$d sec."
 msgstr ""
 
 # @ wpematico
-#: app/campaign_fetch.php:58
+#: app/campaign_fetch.php:66
 #, php-format
-msgid "Memory limit set to %1$s ,because can not use PHP: memory_get_usage() function to dynamically increase the Memory!"
+msgid ""
+"Memory limit set to %1$s ,because can not use PHP: memory_get_usage() "
+"function to dynamically increase the Memory!"
+msgstr ""
+
+#: app/campaign_fetch.php:75
+#, php-format
+msgid "Ending feed, reached running timeout at %1$d sec."
 msgstr ""
 
 # @ wpematico
-#: app/campaign_fetch.php:83
+#: app/campaign_fetch.php:106
 #, php-format
 msgid "Processing feed %1s."
 msgstr ""
 
 # @ wpematico
-#: app/campaign_fetch.php:104
+#: app/campaign_fetch.php:151
 #, php-format
 msgid "Found duplicated hash '%1s'"
 msgstr ""
 
 # @ wpematico
-#: app/campaign_fetch.php:106
-#: app/campaign_fetch.php:118
+#: app/campaign_fetch.php:153 app/campaign_fetch.php:165
 msgid "Filtering duplicated posts."
 msgstr ""
 
-#: app/campaign_fetch.php:109
-#: app/campaign_fetch.php:121
+#: app/campaign_fetch.php:156 app/campaign_fetch.php:168
 msgid "Jumping duplicated post. Continuing."
 msgstr ""
 
-#: app/campaign_fetch.php:116
+#: app/campaign_fetch.php:163
 #, php-format
 msgid "Found duplicated title '%1s'"
 msgstr ""
 
 # @ wpematico
-#: app/campaign_fetch.php:130
+#: app/campaign_fetch.php:178
 #, php-format
 msgid "Campaign fetch limit reached at %1s."
 msgstr ""
 
+#: app/campaign_fetch.php:189
+#, php-format
+msgid "Reached running timeout at %1$d sec."
+msgstr ""
+
 # @ wpematico
-#: app/campaign_fetch.php:147
+#: app/campaign_fetch.php:210
 #, php-format
 msgid "%s posts added"
 msgstr ""
 
 # @ wpematico
-#: app/campaign_fetch.php:161
+#: app/campaign_fetch.php:224
 #, php-format
 msgid "Processing item %1s"
 msgstr ""
 
 # @ wpematico
-#: app/campaign_fetch.php:178
+#: app/campaign_fetch.php:239
 msgid "Assigning original date to post."
 msgstr ""
 
 # @ wpematico
-#: app/campaign_fetch.php:180
+#: app/campaign_fetch.php:241
 msgid "Original date out of range.  Assigning current date to post."
 msgstr ""
 
 # @ wpematico
-#: app/campaign_fetch.php:188
+#: app/campaign_fetch.php:332
 msgid "Assigning Auto Categories."
 msgstr ""
 
-#: app/campaign_fetch.php:195
+#: app/campaign_fetch.php:339
 msgid "Category exist: "
 msgstr ""
 
 # @ wpematico
-#: app/campaign_fetch.php:197
+#: app/campaign_fetch.php:341
 msgid "Adding Category: "
 msgstr ""
 
-#: app/campaign_fetch.php:198
+#: app/campaign_fetch.php:346
 msgid "Auto Added by WPeMatico"
 msgstr ""
 
-# @ wpematico
-#: app/campaign_fetch.php:260
-msgid "Attaching images"
-msgstr ""
-
-#: app/campaign_fetch.php:264
-msgid "Skip Featured Image."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_fetch.php:269
-msgid "Featured Image Into Post."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_fetch.php:282
-msgid "Processing item pingbacks"
-msgstr ""
-
-#: app/campaign_fetch.php:345
+#: app/campaign_fetch.php:435
 msgid "Categories added: "
 msgstr ""
 
-#: app/campaign_fetch.php:349
+#: app/campaign_fetch.php:439
 msgid "Tags added: "
 msgstr ""
 
-#: app/campaign_fetch.php:355
+#: app/campaign_fetch.php:445
 msgid "Post format added: "
 msgstr ""
 
-#: app/campaign_fetch.php:363
+#: app/campaign_fetch.php:453
 msgid "** Adding unfiltered content **"
 msgstr ""
 
+#: app/campaign_fetch.php:469
+msgid "Skip Featured Image."
+msgstr ""
+
+#: app/campaign_fetch.php:471
+msgid "Featuring Image Into Post."
+msgstr ""
+
+#: app/campaign_fetch.php:522
+msgid "The post has no a featured image."
+msgstr ""
+
 # @ wpematico
-#: app/campaign_fetch.php:417
-#: app/campaign_fetch.php:466
+#: app/campaign_fetch.php:529
+msgid "Attaching images"
+msgstr ""
+
+#: app/campaign_fetch.php:545
+msgid "Attaching audios"
+msgstr ""
+
+#: app/campaign_fetch.php:559
+msgid "Attaching videos"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_fetch.php:569
+msgid "Processing item pingbacks"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_fetch.php:598 app/campaign_fetch.php:647
 #, php-format
 msgid "Campaign fetched in %1s sec."
 msgstr ""
 
 # @ wpematico
-#: app/campaign_fetch.php:445
+#: app/campaign_fetch.php:626
 msgid "WPeMatico Log "
 msgstr ""
 
 # @ wpematico
-#: app/campaign_fetch.php:448
+#: app/campaign_fetch.php:629
 msgid "Campaign Name:"
 msgstr ""
 
 # @ wpematico
-#: app/campaign_fetch.php:450
+#: app/campaign_fetch.php:631
 msgid "Errors:"
 msgstr ""
 
 # @ wpematico
-#: app/campaign_fetch.php:452
+#: app/campaign_fetch.php:633
 msgid "Warnings:"
 msgstr ""
 
-#: app/campaign_fetch.php:456
-msgid "WPeMatico by <a href='http://www.etruel.com'>etruel</a>"
+#: app/campaign_fetch.php:637
+msgid "WPeMatico by <a href='https://etruel.com'>etruel</a>"
 msgstr ""
 
 # @ wpematico
-#: app/campaign_fetch.php:467
+#: app/campaign_fetch.php:647 wpematico_class.php:170 wpematico_class.php:172
+#, php-format
+msgid "Processed Posts: %1s"
+msgstr ""
+
+# @ wpematico
+#: app/campaign_fetch.php:648
 msgid "Show detailed Log"
 msgstr ""
 
+#: app/campaign_fetch.php:661 app/campaign_fetch.php:664
+#, php-format
+msgid "Trying to set %1$s = %2$s: <strong>%3$s</strong> - Old value:%4$s."
+msgstr ""
+
+#: app/campaign_fetch.php:661 app/campaign_fetch.php:664
+msgid "Failed"
+msgstr ""
+
+#: app/campaign_fetch.php:661 app/campaign_fetch.php:664
+msgid "Success"
+msgstr ""
+
 # @ wpematico
-#: app/campaign_fetch.php:495
+#: app/campaign_fetch.php:696
 msgid "[WARNING]"
 msgstr ""
 
 # @ wpematico
-#: app/campaign_fetch.php:500
+#: app/campaign_fetch.php:701
 msgid "[ERROR]"
 msgstr ""
 
 # @ wpematico
-#: app/campaign_fetch.php:504
+#: app/campaign_fetch.php:705
 msgid "[DEPRECATED]"
 msgstr ""
 
 # @ wpematico
-#: app/campaign_fetch.php:507
+#: app/campaign_fetch.php:708
 msgid "[STRICT NOTICE]"
 msgstr ""
 
 # @ wpematico
-#: app/campaign_fetch.php:510
+#: app/campaign_fetch.php:711
 msgid "[RECOVERABLE ERROR]"
 msgstr ""
 
-#: app/settings_page.php:17
-msgid "Licenses"
-msgstr ""
-
-#: app/settings_page.php:18
-msgid "Debug Info"
-msgstr ""
-
-#: app/settings_page.php:68
-msgid "This is where you would enter the license keys for one of our premium plugins, should you activate one."
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:121
-msgid "I really appreciate if you can left this option blank to show the plugin's credits."
-msgstr ""
-
-#: app/settings_page.php:122
-msgid "Show `See Log` link on campaigns list.  This link show the last processed log of every campaign."
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:123
-msgid "Show `Del Hash` link on campaigns list.  This link delete all hash codes for check duplicates on every feed per campaign."
-msgstr ""
-
-#: app/settings_page.php:124
-msgid "Check this if you don't want automatic check feed URLs before save every campaign."
-msgstr ""
-
-#: app/settings_page.php:125
-msgid "Check this if you don't want to display the widget dashboard.  Anyway, only admins will see it."
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:126
-msgid "Image Caching"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:126
-msgid "When image caching is on, a copy of every image found in content of every feed (only in &lt;img&gt; tags) is downloaded to the Wordpress UPLOADS Dir."
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:126
-msgid "If not enabled all images will linked to the image owner's server, but also make your website faster for your visitors."
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:126
-msgid "Caching all images"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:126
-msgid "This featured in the general Settings section, will be overridden for the campaign-specific options."
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:127
-msgid "Image Attaching"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:127
-msgid "By default when image caching is on (and everything is working fine), a copy of every image found is added to Wordpress Media."
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:127
-msgid "If enabled Image Attaching all images will be attached to the owner post in WP media library; but if you see that the job process is too slowly you can deactivate this here."
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:128
-msgid "Note"
-msgstr ""
-
-#: app/settings_page.php:128
-#: app/campaign_edit_functions.php:53
-msgid "If selected and image upload get error, then delete the 'src' attribute of the &lt;img&gt;. Check this for don't link images from external sites."
-msgstr ""
-
-#: app/settings_page.php:129
-msgid "If you need these features in each campaign, you can activate them here. This is not recommended if you will not use the feature."
-msgstr ""
-
-#: app/settings_page.php:130
-msgid "Rewrite a word or phrase for another."
-msgstr ""
-
-#: app/settings_page.php:131
-msgid "Assign a category to the post if a word is found in the content."
-msgstr ""
-
-#: app/settings_page.php:132
-msgid "Features only available when you buy the PRO version."
-msgstr ""
-
-#: app/settings_page.php:133
-#: ../wpematico_pro/prosettings.php:59
-msgid "This is for exclude or include posts according to the keywords <b>found</b> at content or title."
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:134
-#: ../wpematico_pro/prosettings.php:63
-msgid "This is for cut, exclude or include posts according to the letters o words <b>counted</b> at content."
-msgstr ""
-
-#: app/settings_page.php:135
-msgid "If you want a custom title for posts of a campaign, you can activate here."
-msgstr ""
-
-#: app/settings_page.php:136
-msgid "This feature generate tags automatically on every published post, on campaign edit you can disable auto feature and manually enter a list of tags or leave empty."
-msgstr ""
-
-#: app/settings_page.php:137
-#: ../wpematico_pro/prosettings.php:87
-msgid "Add custom fields with values as templates on every post."
-msgstr ""
-
-#: app/settings_page.php:138
-msgid "If you want to attempt to obtain full items content from source site instead of the campaign feed, you can activate here."
-msgstr ""
-
-#: app/settings_page.php:139
-msgid "This option allow you assign an author per feed when editing campaign. If no choice any author, the campaign author will be taken."
-msgstr ""
-
-#: app/settings_page.php:140
-#: ../wpematico_pro/prosettings.php:75
-msgid "On campaign edit you can import, copy & paste in a textarea field, a list of feed addresses with/out author names."
-msgstr ""
-
-#: app/settings_page.php:142
-msgid "Check this if you want to ignore Wordpress Simplepie library."
-msgstr ""
-
-#: app/settings_page.php:142
-msgid "Almost never be necessary.  Just if you have problems with version of Simplepie installed in Wordpress."
-msgstr ""
-
-#: app/settings_page.php:143
-msgid "Forgoes a substantial amount of data sanitization in favor of speed. This turns SimplePie into a dumb parser of feeds.  This means all feed content is gotten without parsers, filters or filters."
-msgstr ""
-
-#: app/settings_page.php:144
-msgid "By Default Simplepie strip these html tags from feed content.  You can change or allow some tags, for example if you want to allow iframes or embed code like videos."
-msgstr ""
-
-#: app/settings_page.php:145
-msgid "Simplepie also strip these attributes from html tags in content.  You can change it if you want to retain some of them or add more attributes to strip."
-msgstr ""
-
-#: app/settings_page.php:147
-msgid "This option make a delay after every action of insert a post.  May be useful if you want to give a break to the server while is fetching many posts.  Leave on 0 if you don't have any problem."
-msgstr ""
-
-#: app/settings_page.php:148
-msgid "Unless it is the first time, when finds a duplicate, it means that all following items were read before.  This option avoids and allows jump every duplicate and continues reading the feed searching more new items.  Not recommended."
-msgstr ""
-
-#: app/settings_page.php:149
-msgid "This option nulls saving custom fields on every post that campaign publish."
-msgstr ""
-
-#: app/settings_page.php:150
-msgid " For default the plugin save three custom fields on every post with campaign and source item data, necessary for use permalink to source feature, identify which campaign fetch the post or to make any bulk action on post types related with original campaign."
-msgstr ""
-
-#: app/settings_page.php:151
-msgid "Not recommended unless you want to loose this data and features in order to save DB."
-msgstr ""
-
-#: app/settings_page.php:152
-msgid "(Enabling this feature don't deletes the previous saved data.)"
-msgstr ""
-
-#: app/settings_page.php:154
-msgid "Check this to deactivate WPeMatico cron schedules. Affects all campaigns. To run campaigns you must do it manually or with external cron. (Recommended with External Cron)."
-msgstr ""
-
-#: app/settings_page.php:155
-msgid "Checking this, deactivates all Wordpress cron schedules. Affects to Wordpress itself and all other plugins.  Not recommended."
-msgstr ""
-
-#: app/settings_page.php:156
-msgid "Try to save a file with simple steps taken at run wpe-cron.php. \"wpemextcron.txt.log\" will be saved on uploads folder or inside plugin, \"app\" folder.  Recommended on issues with cron."
-msgstr ""
-
-#: app/settings_page.php:158
-msgid "Just an extra tool to display a button for empty trash folder on every custom post main screen. May be posts, pages or selects what you want."
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:166
-msgid "WPeMatico settings"
-msgstr ""
-
-#: app/settings_page.php:172
-#: app/settings_page.php:194
-#: app/settings_page.php:237
-#: app/settings_page.php:277
-#: app/settings_page.php:292
-#: app/settings_page.php:307
-#: app/settings_page.php:337
-#: app/settings_page.php:368
-#: app/settings_page.php:406
-#: app/settings_page.php:438
-msgid "Click to toggle"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:173
-#: ../wpematico_pro/prosettings.php:34
-msgid "About"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:177
-msgid "Thanks for test, use and enjoy this plugin."
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:178
-msgid "If you like it, I really appreciate a donation."
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:180
-msgid "Click for Donate"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:189
-msgid "Buy PRO version online"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:195
-msgid "Sending e-Mails"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:197
-msgid "Sender Email:"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:198
-msgid "Sender Name:"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:199
-msgid "Send mail method:"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:202
-msgid "PHP: mail()"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:204
-msgid "SMTP"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:207
-msgid "Sendmail Path:"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:209
-msgid "SMTP Hostname:"
-msgstr ""
-
-#: app/settings_page.php:210
-msgid "SMTP Port:"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:211
-msgid "SMTP Secure Connection:"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:213
-msgid "none"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:217
-msgid "SMTP Username:"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:218
-msgid "SMTP Password:"
-msgstr ""
-
-#: app/settings_page.php:223
-msgid "Configure Gmail Server for SMTP"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:233
-#: app/settings_page.php:510
-#: ../wpematico_pro/prosettings.php:96
-msgid "Save settings"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:238
-msgid "Advanced"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:241
-msgid "Disable <b><i>Check Feeds before Save</i></b>"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:243
-msgid "Enable <b><i>Del Hash</i></b>"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:245
-msgid "Enable <b><i>See last log</i></b>"
-msgstr ""
-
-#: app/settings_page.php:247
-msgid "Disable <i>WPeMatico Credits</i>"
-msgstr ""
-
-#: app/settings_page.php:253
-msgid "About PRO"
-msgstr ""
-
-#: app/settings_page.php:257
-#: ../wpematico_pro/prosettings.php:39
-msgid "If you like it and want to thank, you can write a 5 star review on Wordpress."
-msgstr ""
-
-#: app/settings_page.php:278
-msgid "Global Settings"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:280
-msgid "Cache Images."
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:282
-#: app/campaign_edit_functions.php:291
-msgid "No link to source images"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:285
-msgid "Attach Images to posts."
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:287
-msgid "Enable first image found on content as Featured Image."
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:293
-msgid "Enable Features"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:295
-msgid "Enable <b><i>Rewrite</i></b> feature"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:298
-msgid "Enable <b><i>Words to Categories</i></b> feature"
-msgstr ""
-
-#: app/settings_page.php:308
-msgid "ONLY AVAILABLE AT PRO VERSION."
-msgstr ""
-
-#: app/settings_page.php:309
-msgid "PRO Features"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:313
-#: ../wpematico_pro/prosettings.php:57
-msgid "Enable <b><i>Keyword Filtering</i></b> feature"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:315
-#: ../wpematico_pro/prosettings.php:61
-msgid "Enable <b><i>Word count Filters</i></b> feature"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:317
-#: ../wpematico_pro/prosettings.php:65
-msgid "Enable <b><i>Custom Title</i></b> feature"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:319
-#: ../wpematico_pro/prosettings.php:68
-msgid "Enable attempt to <b><i>Get Full Content</i></b> feature"
-msgstr ""
-
-#: app/settings_page.php:321
-#: ../wpematico_pro/prosettings.php:71
-msgid "Enable <b><i>Author per feed</i></b> feature"
-msgstr ""
-
-#: app/settings_page.php:323
-#: ../wpematico_pro/prosettings.php:74
-msgid "Enable <b><i>Import feed list</i></b> feature"
-msgstr ""
-
-#: app/settings_page.php:325
-#: ../wpematico_pro/prosettings.php:77
-msgid "Enable <b><i>Auto Tags</i></b> feature."
-msgstr ""
-
-#: app/settings_page.php:327
-msgid "Bad Tags that will be not used on any post:"
-msgstr ""
-
-#: app/settings_page.php:329
-#: ../wpematico_pro/prosettings.php:83
-msgid "Enter comma separated list of excluded Tags in all campaigns."
-msgstr ""
-
-#: app/settings_page.php:331
-#: ../wpematico_pro/prosettings.php:86
-msgid "Enable <b><i>Custom Fields</i></b> feature."
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:338
-#: app/settings_page.php:369
-msgid "Advanced Fetching"
-msgstr ""
-
-#: app/settings_page.php:338
-msgid "(SimplePie Settings)"
-msgstr ""
-
-#: app/settings_page.php:340
-msgid "Test if SimplePie library works well on your server:"
-msgstr ""
-
-#: app/settings_page.php:345
-msgid "Click here"
-msgstr ""
-
-#: app/settings_page.php:345
-msgid "(open in popup)"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:348
-msgid "Force <b><i>Custom Simplepie Library</i></b>"
-msgstr ""
-
-#: app/settings_page.php:350
-msgid "Set Simplepie <b><i>stupidly fast</i></b>"
-msgstr ""
-
-#: app/settings_page.php:354
-msgid "Change SimplePie HTML tags to strip"
-msgstr ""
-
-#: app/settings_page.php:359
-msgid "Change SimplePie HTML attributes to strip"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:372
-msgid "<b><i>Allow option on campaign for skip the content filters</i></b>"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:373
-msgid "NOTE: It is extremely dangerous to allow unfiltered content because there may be some vulnerability in the source code."
-msgstr ""
-
-#: app/settings_page.php:373
-msgid "Use only with reliable sources."
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:374
-msgid "See How WordPress Processes Post Content: "
-msgstr ""
-
-#: app/settings_page.php:378
-msgid "Timeout running campaign:"
-msgstr ""
-
-#: app/settings_page.php:378
-msgid "Seconds."
-msgstr ""
-
-#: app/settings_page.php:379
-msgid "When a campaign running is interrupted, cannot be executed again until click \"Clear Campaign\".  This option clear campaign after this timeout then can run again on next scheduled cron. A value of \"0\" ignore this, means that remain until user make click.  Recommended 300 Seconds."
-msgstr ""
-
-#: app/settings_page.php:382
-msgid "Add a throttle/delay in seconds after every post."
-msgstr ""
-
-#: app/settings_page.php:385
-msgid "Deactivate duplicate controls."
-msgstr ""
-
-#: app/settings_page.php:387
-msgid "Allowing duplicated posts"
-msgstr ""
-
-#: app/settings_page.php:387
-msgid "There are two controls for duplicates, title of the post and a hash generated by last item's url obtained on campaign process.  When the running campaign found a duplicated post the process is interrupted because assume that all followed posts, are also duplicates.  You can disable these controls here."
-msgstr ""
-
-#: app/settings_page.php:391
-msgid "NOTE: If disable both controls, all items will be fetched again and again... and again, ad infinitum.  If you want allow duplicated titles, just activate \"Allow duplicated titles\"."
-msgstr ""
-
-#: app/settings_page.php:392
-msgid "Allow duplicates titles."
-msgstr ""
-
-#: app/settings_page.php:393
-msgid "Allow duplicates hashes. (Not Recommended)"
-msgstr ""
-
-#: app/settings_page.php:397
-msgid "Jump Duplicates / Continue fetching."
-msgstr ""
-
-#: app/settings_page.php:400
-msgid "Disables Plugin Custom fields."
-msgstr ""
-
-#: app/settings_page.php:407
-msgid "Cron and Scheduler Settings"
-msgstr ""
-
-#: app/settings_page.php:410
-msgid "Disable WPeMatico schedulings"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:413
-msgid "You must set up a cron job that calls:"
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:415
-#: app/settings_page.php:423
-msgid "or URL:"
-msgstr ""
-
-#: app/settings_page.php:419
-msgid "Disable all WP_Cron"
-msgstr ""
-
-#: app/settings_page.php:421
-msgid "To run the wordpress cron with external cron you can set up a cron job that calls:"
-msgstr ""
-
-#: app/settings_page.php:426
-msgid "This set <code>DISABLE_WP_CRON</code> to <code>true</code>, then the <a href=\"https://core.trac.wordpress.org/browser/tags/4.2.3/src/wp-includes/cron.php#L314\" target=\"_blank\">current cron process should be killed</a>."
-msgstr ""
-
-#: app/settings_page.php:428
-msgid "You can find more info about WP Cron and also few steps to configure external crons:"
-msgstr ""
-
-#: app/settings_page.php:429
-msgid "here"
-msgstr ""
-
-#: app/settings_page.php:433
-msgid "Log file on external Cron"
-msgstr ""
-
-#: app/settings_page.php:439
-msgid "Other Tools"
-msgstr ""
-
-#: app/settings_page.php:443
-msgid "Shows Button to empty trash on lists."
-msgstr ""
-
-#: app/settings_page.php:445
-msgid "Select (custom) post types you want."
-msgstr ""
-
-#: app/settings_page.php:476
-msgid "Disable <b><i>WP Dashboard Widget</i></b>"
-msgstr ""
-
-#: app/settings_page.php:478
-msgid "User roles to show Dashboard widget:"
-msgstr ""
-
-#: app/settings_page.php:526
-msgid "Invalid email."
-msgstr ""
-
-# @ wpematico
-#: app/settings_page.php:650
-#: ../wpematico_pro/prosettings.php:137
-msgid "Settings saved."
-msgstr ""
-
-#: app/campaign_edit_functions.php:20
-msgid "The rewrite feature allow you to replace words or phrases of the content with the text you specify."
-msgstr ""
-
-#: app/campaign_edit_functions.php:21
-msgid "Also can use this feature to make simple links from some words with origin and re-link fields."
-msgstr ""
-
-#: app/campaign_edit_functions.php:22
-msgid "For examples click on [?] below."
-msgstr ""
-
-#: app/campaign_edit_functions.php:23
-msgid "You must type at least one feed url."
-msgstr ""
-
-#: app/campaign_edit_functions.php:24
-msgid "(Less feeds equal less used resources when fetching)."
-msgstr ""
-
-#: app/campaign_edit_functions.php:25
-msgid "Type the domain name to try to autodetect the feed url."
-msgstr ""
-
-#: app/campaign_edit_functions.php:26
-msgid "Items to fetch PER every feed above."
-msgstr ""
-
-#: app/campaign_edit_functions.php:27
-msgid "Recommended values are between 3 and 5 fetching more times to not lose items."
-msgstr ""
-
-#: app/campaign_edit_functions.php:28
-msgid "Set it to 0 for unlimited."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:29
-msgid "Use the original date from the post instead of the time the post is created by WPeMatico."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:30
-msgid "To avoid incoherent dates due to lousy setup feeds, WPeMatico will use the feed date only if these conditions are met:"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:32
-msgid "The feed item date is not too far in the past (specifically, as much time as the campaign frequency)."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:33
-msgid "The fetched feed item date is not in the future."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:34
-msgid "The created posts will be assigned to this author."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:35
-msgid "This option make the title permalink to original URL."
-msgstr ""
-
-#: app/campaign_edit_functions.php:36
-msgid "This feature will be ignored if you deactivate Campaign Custom Fields on settings."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:37
-msgid "This option take out clickable links from content, leaving just the text."
-msgstr ""
-
-#: app/campaign_edit_functions.php:38
-msgid "The posts created by this campaign will be assigned to this author."
-msgstr ""
-
-#: app/campaign_edit_functions.php:39
-msgid "Allows pinbacks and trackbacks in the posts created by this campaign."
-msgstr ""
-
-#: app/campaign_edit_functions.php:40
-msgid "Comments options to these posts."
-msgstr ""
-
-#: app/campaign_edit_functions.php:41
-msgid "Skip the Wordpress post content filters."
-msgstr ""
-
-#: app/campaign_edit_functions.php:42
-msgid "Save the content exactly how to Simplepie gets it."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:43
-msgid "Not recommended."
-msgstr ""
-
-#: app/campaign_edit_functions.php:45
-msgid "Activate Automatic Mode."
-msgstr ""
-
-#: app/campaign_edit_functions.php:46
-msgid "You can define here on what times you wants to fetch this feeds.  This has 5 min. of margin on WP-cron schedules.  If you set up an external cron en WPeMatico Settings, you'll get better preciseness."
-msgstr ""
-
-#: app/campaign_edit_functions.php:49
-msgid "This features will be overridden only for this campaign the general Settings options for images."
-msgstr ""
-
-#: app/campaign_edit_functions.php:50
-msgid "Checked do not upload the images to your server just for the posts of this campaign."
-msgstr ""
-
-#: app/campaign_edit_functions.php:51
-msgid "All images found in &lt;img&gt; tags will be updated to your current WP Upload Folder, added to Wordpress Media and replaced urls in content. Otherwise remains links to source host server."
-msgstr ""
-
-#: app/campaign_edit_functions.php:52
-msgid "All images will be attached to the owner post in WP media library; necessary for Featured image, but if you see that the job process is too slowly you can deactivate this here."
-msgstr ""
-
-#: app/campaign_edit_functions.php:55
-msgid "Campaign post template allow to modify the content fetched by adding extra information, such as text, images, campaign data, etc. before save it as post content."
-msgstr ""
-
-#: app/campaign_edit_functions.php:56
-msgid "You can use some tags that will be replaced for current value. Click on [?] below to see description and examples on how to use this feature."
-msgstr ""
-
-#: app/campaign_edit_functions.php:58
-msgid "Allow to assign a singular category to the post if a word is found in the content."
-msgstr ""
-
-#: app/campaign_edit_functions.php:60
-msgid "Add categories from the source post and/or assign already existing categories."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:61
-msgid "If categories are found on source item, these categories will be added to the post; If category does not exist, then will be created."
-msgstr ""
-
-#: app/campaign_edit_functions.php:62
-msgid "You can insert here the tags for every post of this campaign."
-msgstr ""
-
-#: app/campaign_edit_functions.php:63
-msgid "An email will be sent with the events of campaign fetching. You can also filter the emails only if an error occurred or left blank to not send emails of this campaign."
-msgstr ""
-
-#: app/campaign_edit_functions.php:64
-msgid "If your theme supports post formats you can select one for the posts of this campaign, otherwise left on Standard."
-msgstr ""
-
-#: app/campaign_edit_functions.php:72
-msgid "Campaign Posts Format"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:73
-msgid "Campaign Categories"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:74
-msgid "Tags generation"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:75
-msgid "Send log"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:76
-msgid "Feeds for this Campaign"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:77
-msgid "Options for this campaign"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:78
-msgid "Options for images"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:79
-msgid "Post Template"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:81
-msgid "Word to Category options"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:83
-msgid "Rewrite options"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:118
-msgid "Replaces words or phrases by other that you want or turns into link."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:119
-#: app/campaign_edit_functions.php:177
-#: app/campaign_edit_functions.php:239
-msgid "A little Help"
-msgstr ""
-
-#: app/campaign_edit_functions.php:119
-#: app/campaign_edit_functions.php:177
-msgid "Help"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:122
-#: app/campaign_edit_functions.php:180
-msgid "Basics:"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:122
-msgid "The rewriting settings allow you to replace parts of the content with the text you specify."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:123
-msgid "Basic rewriting:"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:124
-msgid "To replace all occurrences the word ass with butt, simply type ass in the \"origin field\", and butt in \"rewrite to\"."
-msgstr ""
-
-#: app/campaign_edit_functions.php:125
-msgid "Title:"
-msgstr ""
-
-#: app/campaign_edit_functions.php:126
-msgid "If you check \"Title\" checkbox only replace on title. If you un-check \"Title\" only replace on content. you must insert twice if you want to replace on both fields."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:127
-msgid "Relinking:"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:128
-msgid "If you want to find all occurrences of google and make them link to Google, just type google in the \"origin field\" and http://google.com in the \"relink to\" field."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:129
-msgid "Regular expressions"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:130
-msgid "For advanced users, regular expressions are supported. Using this will allow you to make more powerful replacements. Take multiple word replacements for example. Instead of using many rewriting boxes to replace ass and arse with butt, you can use the | operator: (ass|arse)."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:137
-msgid "Origin:"
-msgstr ""
-
-#: app/campaign_edit_functions.php:138
-msgid "Title"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:139
-#: app/campaign_edit_functions.php:192
-msgid "RegEx"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:143
-msgid "Rewrite to:"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:147
-msgid "ReLink to:"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:152
-#: app/campaign_edit_functions.php:204
-#: app/campaign_edit_functions.php:503
-#: app/campaign_edit_functions.php:518
-msgid "Delete this item"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:162
-#: app/campaign_edit_functions.php:214
-#: app/campaign_edit_functions.php:532
-msgid "Add more"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:176
-msgid "Assigning categories based on content words."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:180
-msgid "The Word to Category option allow you to assign singular category to the post."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:181
-msgid "Example:"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:182
-msgid "If the post content contain the word \"motor\" and then you want assign the post to category \"Engines\", simply type \"motor\" in the \"Word\" field, and select \"Engine\" in Categories combo."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:183
-msgid "Regular Expressions"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:184
-msgid "For advanced users, regular expressions are supported. Using this will allow you to make more powerful replacements. Take multiple word replacements for example. Instead of using many Word2Cat boxes to assign motor and car to Engines, you can use the | operator: (motor|car). If you want Case insensitive on RegEx, add \"/i\" at the end of RegEx."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:191
-msgid "Word:"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:193
-msgid "Case sensitive"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:196
-msgid "To Category:"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:201
-msgid "Select category"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:231
-msgid "Modify, manage or add extra content to every post fetched."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:236
-msgid "Enable Post Template"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:238
-msgid "Allowed tags"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:244
-msgid "Supported tags"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:245
-msgid "A tag is a piece of text that gets replaced dynamically when the post is created. Currently, these tags are supported:"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:247
-msgid "The feed item content."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:248
-msgid "The feed item title."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:249
-msgid "Put the featured image on content."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:250
-msgid "The feed item author."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:251
-msgid "The feed item author link (If exist)."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:252
-msgid "The feed item permalink."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:253
-msgid "The feed URL."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:254
-msgid "The feed title."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:255
-msgid "The description of the feed."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:256
-msgid "The feed's logo image URL."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:257
-msgid "This campaign title"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:258
-msgid "This campaign ID."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:260
-msgid "Some examples to help you to create custom post template."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:260
-msgid "Examples:"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:262
-msgid "If you want to add a link to the source at the bottom of every post and the author, the post template would look like this:"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:263
-#: app/campaign_edit_functions.php:266
-msgid "Go to Source"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:264
-msgid "will be replaced with the feed item content"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:264
-msgid "by the source feed item URL, which makes it a working link and"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:264
-msgid "with the original author of the feed item."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:265
-msgid "Also you can add a gallery with three columns with all thumbnails images clickables at the bottom of every content, but before source link and author name, the post template would look like this:"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:267
-msgid "it's a WP shortcode for insert a gallery into the post.  You can use any shortcode here; will be processed by Wordpress."
-msgstr ""
-
-#: app/campaign_edit_functions.php:286
-msgid "Enable Cache Images for this campaign."
-msgstr ""
-
-#: app/campaign_edit_functions.php:297
-msgid "Cancel Cache Images for this campaign"
-msgstr ""
-
-#: app/campaign_edit_functions.php:319
-msgid "Max items to create on each fetch."
-msgstr ""
-
-#: app/campaign_edit_functions.php:323
-msgid "Use feed item date."
-msgstr ""
-
-#: app/campaign_edit_functions.php:327
-msgid "Post title links to source."
-msgstr ""
-
-#: app/campaign_edit_functions.php:328
-msgid "Feature deactivated on Settings."
-msgstr ""
-
-#: app/campaign_edit_functions.php:332
-msgid "Strip links from content."
-msgstr ""
-
-#: app/campaign_edit_functions.php:336
-msgid "Pingbacks y trackbacks."
-msgstr ""
-
-#: app/campaign_edit_functions.php:354
-msgid "Post Content Unfiltered."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:364
-msgid "Activate scheduling"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:367
-msgid "Working as <a href=\"http://wikipedia.org/wiki/Cron\" target=\"_blank\">Cron</a> job schedule:"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:368
-msgid "Next runtime:"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:375
-msgid "Minutes: "
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:383
-#: app/campaign_edit_functions.php:400
-#: app/campaign_edit_functions.php:417
-#: app/campaign_edit_functions.php:434
-#: app/campaign_edit_functions.php:458
-msgid "Any (*)"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:392
-msgid "Hours:"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:409
-msgid "Days:"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:426
-msgid "Months:"
-msgstr ""
-
 # @ default
-#: app/campaign_edit_functions.php:435
-msgid "January"
-msgstr ""
-
-# @ default
-#: app/campaign_edit_functions.php:436
-msgid "February"
-msgstr ""
-
-# @ default
-#: app/campaign_edit_functions.php:437
-msgid "March"
-msgstr ""
-
-# @ default
-#: app/campaign_edit_functions.php:438
-msgid "April"
-msgstr ""
-
-# @ default
-#: app/campaign_edit_functions.php:439
-msgid "May"
-msgstr ""
-
-# @ default
-#: app/campaign_edit_functions.php:440
-msgid "June"
-msgstr ""
-
-# @ default
-#: app/campaign_edit_functions.php:441
-msgid "July"
-msgstr ""
-
-# @ default
-#: app/campaign_edit_functions.php:442
-msgid "Augest"
-msgstr ""
-
-# @ default
-#: app/campaign_edit_functions.php:443
-msgid "September"
-msgstr ""
-
-# @ default
-#: app/campaign_edit_functions.php:444
-msgid "October"
-msgstr ""
-
-# @ default
-#: app/campaign_edit_functions.php:445
-msgid "November"
-msgstr ""
-
-# @ default
-#: app/campaign_edit_functions.php:446
-msgid "December"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:450
-msgid "Weekday:"
-msgstr ""
-
-# @ default
-#: app/campaign_edit_functions.php:459
-msgid "Sunday"
-msgstr ""
-
-# @ default
-#: app/campaign_edit_functions.php:460
-msgid "Monday"
-msgstr ""
-
-# @ default
-#: app/campaign_edit_functions.php:461
-msgid "Tuesday"
-msgstr ""
-
-# @ default
-#: app/campaign_edit_functions.php:462
-msgid "Wednesday"
-msgstr ""
-
-# @ default
-#: app/campaign_edit_functions.php:463
-msgid "Thursday"
-msgstr ""
-
-# @ default
-#: app/campaign_edit_functions.php:464
-msgid "Friday"
-msgstr ""
-
-# @ default
-#: app/campaign_edit_functions.php:465
-msgid "Saturday"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:498
-msgid "Feed URL:"
-msgstr ""
-
-#: app/campaign_edit_functions.php:503
-#: app/campaign_edit_functions.php:518
-msgid "Are you sure ?"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:504
-#: app/campaign_edit_functions.php:519
-msgid "Check if this item work"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:513
-msgid "New Feed:"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:533
-msgid "Check all feeds"
-msgstr ""
-
-#: app/campaign_edit_functions.php:540
-msgid "Displaying"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:541
-msgid "Display all feeds"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:559
-msgid "E-Mail-Adress:"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:561
-msgid "Send only E-Mail on errors."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:571
-msgid "Tags:"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:573
-msgid "Enter comma separated list of Tags."
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:595
-msgid "Add auto Categories"
-msgstr ""
-
-#: app/campaign_edit_functions.php:598
-msgid "Current Categories"
-msgstr ""
-
-# @ wpematico
-#: app/campaign_edit_functions.php:606
-msgid "Quick add"
-msgstr ""
-
-# @ default
-#: app/campaign_fetch_functions.php:32
+#: app/campaign_fetch_functions.php:73
 msgid "Yes"
 msgstr ""
 
 # @ default
-#: app/campaign_fetch_functions.php:32
+#: app/campaign_fetch_functions.php:73 app/debug_page.php:751
 msgid "No"
 msgstr ""
 
 # @ wpematico
-#: app/campaign_fetch_functions.php:33
+#: app/campaign_fetch_functions.php:74
 #, php-format
 msgid "Checking duplicated title '%1s'"
 msgstr ""
 
+#: app/campaign_fetch_functions.php:132
+#, php-format
+msgid "Deleting html tags: %1s"
+msgstr ""
+
 # @ wpematico
-#: app/campaign_fetch_functions.php:82
+#: app/campaign_fetch_functions.php:137
 msgid "Cleaning Links from content."
 msgstr ""
 
 # @ wpematico
-#: app/campaign_fetch_functions.php:88
+#: app/campaign_fetch_functions.php:143
 msgid "Parsing Post template."
 msgstr ""
 
+#: app/campaign_fetch_functions.php:149
+msgid "Can't find the featured image to add to the content."
+msgstr ""
+
 # @ wpematico
-#: app/campaign_fetch_functions.php:178
+#: app/campaign_fetch_functions.php:257
 #, php-format
 msgid "Processing Words to Category %1s"
 msgstr ""
 
 # @ wpematico
-#: app/campaign_fetch_functions.php:192
+#: app/campaign_fetch_functions.php:285
 #, php-format
 msgid "Found!: word %1s to Cat_id %2s"
 msgstr ""
 
 # @ wpematico
-#: app/campaign_fetch_functions.php:195
+#: app/campaign_fetch_functions.php:288
 #, php-format
 msgid "Not found word %1s"
 msgstr ""
 
-# @ wpematico
-#: app/campaign_fetch_functions.php:301
-msgid "Uploading images."
+#: app/campaign_fetch_functions.php:409
+msgid "Looking for images in content."
 msgstr ""
 
-#: app/campaign_fetch_functions.php:307
-msgid "Deleted img src="
+#: app/campaign_fetch_functions.php:428 app/campaign_fetch_functions.php:879
+#: app/campaign_fetch_functions.php:1025
+msgid "Uploading media..."
 msgstr ""
 
-# @ wpematico
-#: app/campaign_fetch_functions.php:311
-msgid "Uploading image..."
-msgstr ""
-
-#: app/campaign_fetch_functions.php:338
+#: app/campaign_fetch_functions.php:461 app/campaign_fetch_functions.php:926
+#: app/campaign_fetch_functions.php:1074
 msgid "Upload file failed:"
 msgstr ""
 
-#: app/campaign_fetch_functions.php:340
-msgid "Deleted img src."
+#: app/campaign_fetch_functions.php:469 app/campaign_fetch_functions.php:933
+#: app/campaign_fetch_functions.php:1081
+msgid "Extension not allowed: "
 msgstr ""
 
-#: app/campaign_fetch_functions.php:346
-msgid "Extension not allowed:"
+#: app/campaign_fetch_functions.php:471 app/campaign_fetch_functions.php:935
+#: app/campaign_fetch_functions.php:1083
+msgid "Stripped src."
+msgstr ""
+
+#: app/campaign_fetch_functions.php:482
+msgid "Using remotely linked images in content. No changes."
 msgstr ""
 
 # @ default
-#: app/campaign_fetch_functions.php:408
+#: app/campaign_fetch_functions.php:568
 msgid "Attaching file:"
 msgstr ""
 
 # @ default
-#: app/campaign_fetch_functions.php:411
+#: app/campaign_fetch_functions.php:571
 msgid "Sorry, your attach could not be inserted. Something wrong happened."
 msgstr ""
 
-#: app/debug_page.php:18
-msgid "Use this file to get support on "
+#: app/campaign_fetch_functions.php:601
+msgid "Executing featured image selector..."
 msgstr ""
 
-#: app/debug_page.php:22
-msgid "Include also PHPInfo() if available."
+#: app/campaign_fetch_functions.php:604
+#, php-format
+msgid "Featured image \"%s\": %s"
 msgstr ""
 
-#: app/debug_page.php:23
-msgid "Include also Last Campaigns Log."
+#: app/campaign_fetch_functions.php:607
+msgid "There is no the selector index on images."
 msgstr ""
 
-#: app/debug_page.php:30
-msgid "To copy the system info, click below then press Ctrl + C (PC) or Cmd + C (Mac)."
+#: app/campaign_fetch_functions.php:612
+msgid "There is no the first image."
 msgstr ""
 
-#: app/debug_page.php:36
-msgid "SELECT ALL"
+#: app/campaign_fetch_functions.php:614
+msgid "Using first image as the featured image."
 msgstr ""
 
-#: ../wpematico_pro/prosettings.php:15
-msgid "PRO Settings"
+#: app/campaign_fetch_functions.php:620
+msgid "There is no the last image."
 msgstr ""
 
-#: ../wpematico_pro/prosettings.php:38
-msgid "Thanks for use and enjoy this plugin."
+#: app/campaign_fetch_functions.php:622
+msgid "Using last image as the featured image."
 msgstr ""
 
-#: ../wpematico_pro/prosettings.php:55
-msgid "PRO options"
+#: app/campaign_fetch_functions.php:663 app/campaign_fetch_functions.php:853
+#: app/campaign_fetch_functions.php:999
+#, php-format
+msgid "Removing: %s from content."
+msgstr ""
+
+#: app/campaign_fetch_functions.php:689
+msgid "Getting srcset attribute..."
+msgstr ""
+
+#: app/campaign_fetch_functions.php:713
+#, php-format
+msgid "Overriding src attribute with value: %s from srcset."
+msgstr ""
+
+#: app/campaign_fetch_functions.php:875
+msgid "Looking for audios in content."
+msgstr ""
+
+#: app/campaign_fetch_functions.php:944
+msgid "Using remotely linked audios in content. No changes."
+msgstr ""
+
+#: app/campaign_fetch_functions.php:1021
+msgid "Looking for videos in content."
+msgstr ""
+
+#: app/campaign_fetch_functions.php:1092
+msgid "Using remotely linked videos in content. No changes."
+msgstr ""
+
+#: app/campaign_help.php:12
+msgid "Feeds URLs."
+msgstr ""
+
+#: app/campaign_help.php:13
+msgid "You must type at least one feed url."
+msgstr ""
+
+#: app/campaign_help.php:14
+msgid "(Less feeds equal less used resources when fetching)."
+msgstr ""
+
+#: app/campaign_help.php:15
+msgid "Type the domain name to try to autodetect the feed url."
+msgstr ""
+
+#: app/campaign_help.php:18
+msgid "Max items per Fetch."
+msgstr ""
+
+#: app/campaign_help.php:19
+msgid "Items to fetch PER every feed above."
+msgstr ""
+
+#: app/campaign_help.php:20
+msgid ""
+"Recommended values are between 3 and 5 fetching more times to not lose items."
+msgstr ""
+
+#: app/campaign_help.php:21
+msgid "Set it to 0 for unlimited."
+msgstr ""
+
+#: app/campaign_help.php:25
+msgid ""
+"Recommended to use only if the feeds are not ordered by date. The campaign "
+"can lose some items if the feed are not ordered by date from newest to "
+"oldest."
 msgstr ""
 
 # @ wpematico
-#: ../wpematico_pro/prosettings.php:58
-#: ../wpematico_pro/prosettings.php:62
-msgid "If you need this feature in every campaign, you can activate here.  Not recommended if you will not use this."
+#: app/campaign_help.php:29
+msgid ""
+"Use the original date from the post instead of the time the post is created "
+"by WPeMatico."
 msgstr ""
 
-#: ../wpematico_pro/prosettings.php:66
-msgid "If you want a custom title for posts of a campaign, you can activate here.  Not recommended if you will not use this."
+# @ wpematico
+#: app/campaign_help.php:30
+msgid ""
+"To avoid incoherent dates due to lousy setup feeds, WPeMatico will use the "
+"feed date only if these conditions are met:"
 msgstr ""
 
-#: ../wpematico_pro/prosettings.php:69
-msgid "If you want to attempt to obtain full items content of a campaign, you can activate here.  Not recommended if you will not use this."
+# @ wpematico
+#: app/campaign_help.php:32
+msgid ""
+"The feed item date is not too far in the past (specifically, as much time as "
+"the campaign frequency)."
 msgstr ""
 
-#: ../wpematico_pro/prosettings.php:72
-msgid "This option allow you assign an author per feed when editing campaign.  If no choice any author, the campaign author will be taken."
+# @ wpematico
+#: app/campaign_help.php:33
+msgid "The fetched feed item date is not in the future."
 msgstr ""
 
-#: ../wpematico_pro/prosettings.php:78
-msgid "This feature generate tags automatically on every post fetched, on campaign edit you can disable auto feature and manually enter a list of tags or leave empty."
+# @ wpematico
+#: app/campaign_help.php:37
+msgid "This option make the title permalink to original URL."
 msgstr ""
 
-#: ../wpematico_pro/prosettings.php:81
-msgid "Bad Tags that will be not used on all posts:"
+#: app/campaign_help.php:38
+msgid ""
+"This feature will be ignored if you deactivate Campaign Custom Fields on "
+"settings."
 msgstr ""
 
-#: ../wpematico_pro/prosettings.php:90
-msgid "Enable <b><i>Image Filters</i></b> feature."
+#: app/campaign_help.php:42
+msgid "This option allows to use the exact permalink of the source"
 msgstr ""
 
-#: ../wpematico_pro/prosettings.php:91
-msgid "You can allow or skip each image in every post depends on image dimensions."
+#: app/campaign_help.php:45
+msgid "Avoid Search redirection to source permalink."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:142
-msgid "etruel Store"
+#: app/campaign_help.php:46
+msgid ""
+"This feature allow follow or not redirections of URLs on permalinks to try "
+"to get the original source permalink."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:187
-msgid "You are using WPeMatico PRO."
+#: app/campaign_help.php:47
+msgid ""
+"You can UNSELECT this if uses source permalinks and the obtained URLs are "
+"not the the originals."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:188
-msgid "Plugin <b>WPeMatico FREE</b> must be activated!"
+#: app/campaign_help.php:48
+msgid "CHECK this option to improve fetching speed and performance."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:189
-msgid "Go to Activate Now"
+#: app/campaign_help.php:52
+msgid "Allows pinbacks and trackbacks in the posts created by this campaign."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:194
-msgid "You are using WPeMatico PRO, but doesn't exist class WPeMatico."
+#: app/campaign_help.php:55
+msgid "Discussion options."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:195
-msgid "Something is going wrong. May be PHP Version prior to 5.3"
+#: app/campaign_help.php:56
+msgid "Comments options to these posts."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:226
-msgid "Full Content Options"
+#: app/campaign_help.php:59
+msgid "Author."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:228
-msgid "Custom Title Options"
+#: app/campaign_help.php:60
+msgid "The posts created by this campaign will be assigned to this author."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:230
-msgid "Keywords Filters"
+#: app/campaign_help.php:63
+msgid "Strip All HTML Tags."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:232
-msgid "Word Count Filters"
+#: app/campaign_help.php:64
+msgid "Remove all HTML from original content"
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:234
-msgid "Custom Fields"
+#: app/campaign_help.php:65
+msgid "NOTE that also strip images &lt;img&gt; and links &lt;a&gt;."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:236
-msgid "PRO Options for Images"
+# @ wpematico
+#: app/campaign_help.php:69
+msgid ""
+"This option take out clickable links from content, leaving just the text."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:278
-#: ../wpematico_pro/wpematicopro.php:281
-msgid "Cancel Import"
+#: app/campaign_help.php:73
+msgid "Skip the Wordpress post content filters."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:279
-#: ../wpematico_pro/wpematicopro.php:478
-msgid "Import feed list"
+#: app/campaign_help.php:74
+msgid "Saves the content exactly as the plugin has it."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:463
-msgid "Type or paste a list of urls, authors.  When update the campaign, the list will be imported as campaign feeds"
+# @ wpematico
+#: app/campaign_help.php:75
+msgid "Not recommended."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:466
-msgid "The list must be one feed URL per line.  You can add an author username if the feature \"Author per Feed\" is enabled on PRO Settings. If not exist, the users will be added to wordpress users. Otherwise take the campaign author."
+#: app/campaign_help.php:80
+msgid "Youtube feeds URLs."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:467
-msgid "Ex:"
+#: app/campaign_help.php:81
+msgid "Channel Videos feed and User Videos feed."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:487
-msgid "Use campaign Author"
+#: app/campaign_help.php:82
+msgid "Fill in the feed URL field in the standard way."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:501
-msgid "Auto generate tags"
+#: app/campaign_help.php:83
+msgid ""
+"For Youtube Channel as: https://www.youtube.com/feeds/videos.xml?channel_id="
+"%channelid%"
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:503
-msgid "This feature try to get tags automatically from post content."
+#: app/campaign_help.php:84
+msgid ""
+"For Youtube User as: https://www.youtube.com/feeds/videos.xml?user=%username%"
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:520
-msgid "Limit tags quantity to:"
+#: app/campaign_help.php:85
+msgid ""
+"The campaign fetches the title, the image, the embebed video and the "
+"description."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:523
-msgid "Tags with 3 characters or less are ignored."
+#: app/campaign_help.php:90
+msgid "Activate Scheduling."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:524
-msgid "Bad Tags:"
+#: app/campaign_help.php:91
+msgid "Activate Automatic Mode."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:526
-msgid "Enter comma separated list of excluded Tags."
+#: app/campaign_help.php:92
+msgid ""
+"You can define here on what times you wants to fetch this feeds.  This has 5 "
+"min. of margin on WP-cron schedules.  If you set up an external cron en "
+"WPeMatico Settings, you'll get better preciseness."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:538
-msgid "Last HTML tag to remove"
+#: app/campaign_help.php:93
+msgid "You can see some examples here:"
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:543
-msgid "HTML tag:"
+#: app/campaign_help.php:93
+msgid "How to use the CRON scheduling ?"
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:544
-msgid "(ex: div, p, span, etc.)"
+#: app/campaign_help.php:97
+msgid ""
+"Select a predefined scheduler to get a value easily for the cron. This value "
+"is not saved."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:545
-msgid "Position at content"
+#: app/campaign_help.php:98
+msgid "This is also used frecuently as startpoint to define a cron schedule."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:559
-msgid "This allow you to ignore a post if below X words or letters in content.  Also allow assign a category to the post if greater than X words."
+#: app/campaign_help.php:99
+msgid ""
+"Just select an option and the values will be shown in the fields at right."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:562
-#: ../wpematico_pro/wpematicopro.php:571
-msgid "Greater than:"
+#: app/campaign_help.php:104
+msgid "Campaign Options For Images."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:562
-msgid "You must check \"Words\" field if you want to count words, but the letters in the content are counted; then complete the amount to check to assign a special category."
+#: app/campaign_help.php:105
+msgid ""
+"This features will be overridden only for this campaign the general Settings "
+"options for images."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:563
-#: ../wpematico_pro/wpematicopro.php:592
-msgid "Cut at:"
+#: app/campaign_help.php:109
+msgid "Cache images."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:563
-msgid "If the content is bigger than X Words, then the post is converted to text and cutted at X Words. If letters are selected just cut the content at X letters (no matter if is in a middle of html tag)"
+#: app/campaign_help.php:110
+msgid ""
+"All images found in &lt;img&gt; tags in content will be uploaded to your "
+"current WP Upload Folder and replaced urls in content . Otherwise remains "
+"links to source hosting server."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:564
-msgid "First image on content will remain as featured image."
+#: app/campaign_help.php:113 app/settings_page.php:680
+msgid "Attach Images to post."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:565
-msgid "Less than:"
+#: app/campaign_help.php:114
+msgid ""
+"All images will be attached to the owner post and added to Wordpress Media "
+"library; necessary for Featured image, but if you see that the job process "
+"is too slowly you can deactivate this here."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:565
-msgid "If the content is less than X then the post is skipped."
+#: app/campaign_help.php:117 app/settings_page.php:688
+msgid "Don't link external images."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:566
-msgid "Leave empty or 0 to ignore."
+#: app/campaign_help.php:118
+msgid ""
+"If selected and image upload get error, then delete the 'src' attribute of "
+"the &lt;img&gt;. Check this for don't link images from external sites."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:574
-#: ../wpematico_pro/wpematicopro.php:595
-#: ../wpematico_pro/wpematicopro.php:608
-msgid "words."
+#: app/campaign_help.php:121 app/settings_page.php:695
+msgid "Use srcset attribute instead of src of &lt;img&gt; tag."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:574
-#: ../wpematico_pro/wpematicopro.php:595
-#: ../wpematico_pro/wpematicopro.php:608
-msgid "letters."
+#: app/campaign_help.php:122 app/settings_page.php:697
+msgid ""
+"Selecting this option searches the srcset attribute if it exists, it "
+"searches for the larger image to overwrite the src attribute of the &lt;"
+"img&gt; tag."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:577
-#: ../wpematico_pro/wpematicopro.php:599
-#: ../wpematico_pro/wpematicopro.php:611
-msgid "Words"
+#: app/campaign_help.php:125 app/settings_page.php:704
+msgid "Set first image on content as Featured Image."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:597
-msgid "if greater."
+#: app/campaign_help.php:126 app/settings_page.php:705
+msgid ""
+"Check this to set first image found on every content to be uploaded, "
+"attached and made Featured."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:605
-msgid "Discard post is less than:"
+#: app/campaign_help.php:130
+msgid ""
+"Check this to select a different image order in the content to take the "
+"featured image. The first or 2nd or 3rd, your choice."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:627
-msgid "Skip posts with words in content or words not in content."
+#: app/campaign_help.php:135 app/settings_page.php:710
+msgid "Check this to strip the Featured Image from the post content."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:630
-msgid "The keyword filters option allow you to skip a fetched post if has a word in content or title. Leaves empty all fields to ignore."
+#: app/campaign_help.php:138 app/settings_page.php:714
+msgid "Custom Uploads for Images."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:631
-msgid "If the post content contain the word \"motor\" and then you want skip because you don't want posts about motors, simply type \"motor\" in the \"Words\" field (1 per line)."
+#: app/campaign_help.php:139 app/settings_page.php:715
+msgid ""
+"Use this instead of Wordpress functions to improve performance. This "
+"function uploads the image \"as is\" from the original to use it inside the "
+"post."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:633
-msgid "For advanced users, regular expressions are supported. Using this will allow you to make more powerful filters. Take multiple word filtering for example. Instead of using many rows of words to assign motor and car to Engines, you can use the | operator: (motor|car). If you want Case insensitive on RegEx, add \"/i\" at the end of RegEx."
+#: app/campaign_help.php:140 app/campaign_help.php:163
+#: app/campaign_help.php:186 app/settings_page.php:716
+#: app/settings_page.php:745 app/settings_page.php:775
+msgid "This function may not work in all servers."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:637
-msgid "Must contain"
+#: app/campaign_help.php:145
+msgid "Campaign Options For Audios."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:638
-#: ../wpematico_pro/wpematicopro.php:647
-msgid "Search Title"
+#: app/campaign_help.php:146
+msgid ""
+"This features will be overridden only for this campaign the general Settings "
+"options for audios."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:639
-#: ../wpematico_pro/wpematicopro.php:648
-msgid "Search Content"
+#: app/campaign_help.php:149
+msgid "Cache audios."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:640
-#: ../wpematico_pro/wpematicopro.php:649
-msgid "Words:"
+#: app/campaign_help.php:150
+msgid ""
+"All audios found in &lt;audio&gt; tags in content will be uploaded to your "
+"current WP Upload Folder and replaced urls in content . Otherwise remains "
+"links to source hosting server."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:642
-#: ../wpematico_pro/wpematicopro.php:651
-msgid "RegEx:"
+#: app/campaign_help.php:153 app/settings_page.php:728
+msgid "Attach Audios to post."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:646
-msgid "Cannot contain:"
+#: app/campaign_help.php:154
+msgid ""
+"All audios will be attached to the owner post and added to Wordpress Media "
+"library, but if you see that the job process is too slowly you can "
+"deactivate this here."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:669
-msgid "Enable Custom Post title"
+#: app/campaign_help.php:157 app/settings_page.php:736
+msgid "Don't link external audios."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:671
-msgid "Custom Title for every post:"
+#: app/campaign_help.php:158
+msgid ""
+"If selected and audio upload get error, then delete the 'src' attribute of "
+"the &lt;audio&gt;. Check this for don't link audios from external sites."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:673
-msgid "You can write here the title for every post. All posts will be named with this field."
+#: app/campaign_help.php:161 app/settings_page.php:743
+msgid "Custom Uploads for Audios."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:674
-msgid "Now you can use {title} and {counter} and will be replaced on title."
+#: app/campaign_help.php:162 app/settings_page.php:744
+msgid ""
+"Use this instead of Wordpress functions to improve performance. This "
+"function uploads the audio \"as is\" from the original to use it inside the "
+"post."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:675
-msgid "If you don't use {counter} and checked the box below, by default the counter is added to end of title."
+#: app/campaign_help.php:168
+msgid "Campaign Options For Videos."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:677
-msgid "Ex: 'New Post: {title}'"
+#: app/campaign_help.php:169
+msgid ""
+"This features will be overridden only for this campaign the general Settings "
+"options for videos."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:679
-msgid "Add counter to Post title"
+#: app/campaign_help.php:172
+msgid "Cache videos."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:682
-msgid "Min. Counter Digits:"
+#: app/campaign_help.php:173
+msgid ""
+"All videos found in &lt;video&gt; tags in content will be uploaded to your "
+"current WP Upload Folder and replaced urls in content . Otherwise remains "
+"links to source hosting server."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:694
-msgid "Next Number:"
+#: app/campaign_help.php:176 app/settings_page.php:758
+msgid "Attach Videos to post."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:709
-msgid "Attempt to parse complete item text from the original website"
+#: app/campaign_help.php:177
+msgid ""
+"All videos will be attached to the owner post and added to Wordpress Media "
+"library; necessary for Featured video, but if you see that the job process "
+"is too slowly you can deactivate this here."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:711
-msgid "This feature try to parse the original web link with the full article."
+#: app/campaign_help.php:180 app/settings_page.php:766
+msgid "Don't link external videos."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:714
-msgid "Strip HTML"
+#: app/campaign_help.php:181
+msgid ""
+"If selected and video upload get error, then delete the 'src' attribute of "
+"the &lt;video&gt;. Check this for don't link videos from external sites."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:716
-msgid "Remove all HTML from original website"
+#: app/campaign_help.php:184 app/settings_page.php:773
+msgid "Custom Uploads for Videos."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:718
-msgid "Use cURL"
+#: app/campaign_help.php:185 app/settings_page.php:774
+msgid ""
+"Use this instead of Wordpress functions to improve performance. This "
+"function uploads the video \"as is\" from the original to use it inside the "
+"post."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:720
-msgid "Forces to use standard PHP cURL for scratches the source webpage, before try file_get_contents and Wordpress functions. RECOMMENDED."
+#: app/campaign_help.php:191
+msgid "Enable Post Template."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:733
-msgid "Add custom fields with values as templates."
+#: app/campaign_help.php:192
+msgid ""
+"Campaign post template allow to modify the content fetched by adding extra "
+"information, such as text, images, campaign data, etc. before save it as "
+"post content."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:736
-msgid "You must put the custom field name and its value in every field."
+#: app/campaign_help.php:193
+msgid ""
+"You can use some tags that will be replaced for current value. See below the "
+"description and examples on how to use this feature."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:737
-#: ../wpematico_pro/wpematicopro.php:750
-msgid "Value:"
+# @ wpematico
+#: app/campaign_help.php:197
+msgid "The feed item content."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:738
-msgid "You can use the same template fields like in box Post template."
+#: app/campaign_help.php:223
+msgid "Word to Category options."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:739
-msgid "Valid value tags:"
+#: app/campaign_help.php:224
+msgid ""
+"Allow to assign a singular category to the post if a word is found in the "
+"content."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:746
-msgid "Name:"
+# @ wpematico
+#: app/campaign_help.php:225
+msgid "Example:"
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:787
-msgid "Get Images from RSS"
+# @ wpematico
+#: app/campaign_help.php:226
+msgid ""
+"If the post content contain the word \"motor\" and then you want assign the "
+"post to category \"Engines\", simply type \"motor\" in the \"Word\" field, "
+"and select \"Engine\" in Categories combo."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:789
-msgid "Also enclosure and media RSS tags."
+# @ wpematico
+#: app/campaign_help.php:227
+msgid "Regular Expressions"
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:791
-msgid "Only if no images on content."
+# @ wpematico
+#: app/campaign_help.php:228
+msgid ""
+"For advanced users, regular expressions are supported. Using this will allow "
+"you to make more powerful replacements. Take multiple word replacements for "
+"example. Instead of using many Word2Cat boxes to assign motor and car to "
+"Engines, you can use the | operator: (motor|car). If you want Case "
+"insensitive on RegEx, add \"/i\" at the end of RegEx."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:795
-msgid "Add first image at the beginning of the post content."
+#: app/campaign_help.php:233 app/settings_page.php:790
+msgid "Content Rewrites."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:806
-msgid "Add filters by dimensions of images."
+#: app/campaign_help.php:234
+msgid ""
+"The rewrite feature allow you to replace words or phrases of the content "
+"with the text you specify."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:810
-msgid "You must select type of filter and fill width or height size in pixels for allow or skip every image."
+#: app/campaign_help.php:235
+msgid ""
+"Also can use this feature to make simple links from some words with origin "
+"and re-link fields."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:811
-msgid "Any image that does not comply with a filter will be removed from post content.  (Also its &lt;a href&gt; link, if it has)"
+#: app/campaign_help.php:236
+msgid "For examples click on [?] below."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:812
-msgid "Be careful that the filters are not clogged with each other and miss all images."
+# @ wpematico
+#: app/campaign_help.php:237
+msgid "Basic rewriting:"
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:819
-#: ../wpematico_pro/wpematicopro.php:904
-msgid "Filter:"
+# @ wpematico
+#: app/campaign_help.php:238
+msgid ""
+"To replace all occurrences the word ass with butt, simply type ass in the "
+"\"origin field\", and butt in \"rewrite to\"."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:838
-#: ../wpematico_pro/wpematicopro.php:923
-msgid "size:"
+#: app/campaign_help.php:239
+msgid "Title:"
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:864
-msgid "Parsers for Featured image."
+#: app/campaign_help.php:240
+msgid ""
+"If you check \"Title\" checkbox only replace on title. If you un-check "
+"\"Title\" only replace on content. you must insert twice if you want to "
+"replace on both fields."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:868
-msgid "You can allow or skip featured image in every post by some options."
+# @ wpematico
+#: app/campaign_help.php:241
+msgid "Relinking:"
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:869
-msgid "Attach Images to post must be enabled to set a Feature Image."
+# @ wpematico
+#: app/campaign_help.php:242
+msgid ""
+"If you want to find all occurrences of google and make them link to Google, "
+"just type google in the \"origin field\" and http://google.com in the "
+"\"relink to\" field."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:870
-msgid "Featured Image is taken from post images AFTER Image filters (above if enable on PRO settings)."
+# @ wpematico
+#: app/campaign_help.php:243
+msgid "Regular expressions"
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:874
-msgid "Make featured RSS image."
+# @ wpematico
+#: app/campaign_help.php:244
+msgid ""
+"For advanced users, regular expressions are supported. Using this will allow "
+"you to make more powerful replacements. Take multiple word replacements for "
+"example. Instead of using many rewriting boxes to replace ass and arse with "
+"butt, you can use the | operator: (ass|arse)."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:876
-msgid "Default Featured image if not found image on content."
+#: app/campaign_help.php:249
+msgid "Campaign Categories."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:880
-msgid "Image URL:"
+#: app/campaign_help.php:250
+msgid ""
+"Add categories from the source post and/or assign already existing "
+"categories."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:880
-msgid "Link:"
+#: app/campaign_help.php:253
+msgid "Add auto Categories."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:883
-msgid "Upload image"
+# @ wpematico
+#: app/campaign_help.php:254
+msgid ""
+"If categories are found on source item, these categories will be added to "
+"the post; If category does not exist, then will be created."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:894
-msgid "Only allow first Featured image that meets the following filters."
+#: app/campaign_help.php:257
+msgid "Parent category to auto categories."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:958
+#: app/campaign_help.php:258
+msgid ""
+"If you select a category in this option, all automatically added categories "
+"will be children of the selected category."
+msgstr ""
+
+#: app/campaign_help.php:261
+msgid "Tags Generation."
+msgstr ""
+
+#: app/campaign_help.php:262
+msgid "You can insert here the tags for every post of this campaign."
+msgstr ""
+
+#: app/campaign_help.php:265
+msgid "Campaign Post Format."
+msgstr ""
+
+#: app/campaign_help.php:266
+msgid ""
+"If your theme supports post formats you can select one for the posts of this "
+"campaign, otherwise left on Standard."
+msgstr ""
+
+#: app/campaign_help.php:271
+msgid "Sending Log."
+msgstr ""
+
+#: app/campaign_help.php:272
+msgid ""
+"An email will be sent with the events of campaign fetched. You can also "
+"filter the emails only if an error occurred or left blank to not send emails "
+"of this campaign."
+msgstr ""
+
+#: app/campaign_log.php:56
 #, php-format
-msgid "Processing Keyword filtering %1s"
+msgid "Last Log of Campaign %s: %s"
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:975
+# @ wpematico
+#: app/campaigns_list.php:128
+msgid "Run Selected Campaigns"
+msgstr ""
+
+# @ wpematico
+#: app/campaigns_list.php:141
+msgid "Visit"
+msgstr ""
+
+# @ wpematico
+#: app/campaigns_list.php:170
+msgid "Please select campaign(s) to Run."
+msgstr ""
+
+#: app/campaigns_list.php:171
+msgid "Slug"
+msgstr ""
+
+#: app/campaigns_list.php:172
+msgid "Password"
+msgstr ""
+
+#: app/campaigns_list.php:173
+msgid "Date"
+msgstr ""
+
+# @ wpematico
+#: app/campaigns_list.php:185
+msgid "(Copy)"
+msgstr ""
+
+# @ wpematico
+#: app/campaigns_list.php:244 app/campaigns_list.php:285
+#: app/campaigns_list.php:317 app/campaigns_list.php:349
+#: app/campaigns_list.php:382
+msgid "No campaign ID has been supplied!"
+msgstr ""
+
+# @ wpematico
+#: app/campaigns_list.php:272
+msgid "Copy campaign failed, could not find original:"
+msgstr ""
+
+#: app/campaigns_list.php:301
+msgid "Campaign activated"
+msgstr ""
+
+#: app/campaigns_list.php:301
+msgid "Campaign Deactivated"
+msgstr ""
+
+#: app/campaigns_list.php:335
+msgid "Reset Campaign"
+msgstr ""
+
+#: app/campaigns_list.php:368
+msgid "Hash deleted on campaign"
+msgstr ""
+
+#: app/campaigns_list.php:403
+msgid "Campaign cleared"
+msgstr ""
+
+# @ wpematico
+#: app/campaigns_list.php:420 app/campaigns_list.php:423
+msgid "Campaign updated."
+msgstr ""
+
+# @ wpematico
+#: app/campaigns_list.php:421
+msgid "Custom field updated."
+msgstr ""
+
+# @ wpematico
+#: app/campaigns_list.php:422
+msgid "Custom field deleted."
+msgstr ""
+
+# @ default
+#: app/campaigns_list.php:425
 #, php-format
-msgid "Assigning author %1s to %2s"
+msgid "Campaign restored to revision from %s"
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:1001
+# @ wpematico
+#: app/campaigns_list.php:426
+msgid "Campaign published."
+msgstr ""
+
+# @ default
+#: app/campaigns_list.php:427
+msgid "Campaign saved."
+msgstr ""
+
+# @ wpematico
+#: app/campaigns_list.php:428
+msgid "Campaign submitted."
+msgstr ""
+
+# @ default
+#: app/campaigns_list.php:429
 #, php-format
-msgid "Changing title to %1s"
+msgid ""
+"Campaign scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href="
+"\"%2$s\">Preview campaign</a>"
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:1011
+# @ default
+#: app/campaigns_list.php:431
+msgid "M j, Y @ G:i"
+msgstr ""
+
+# @ default
+#: app/campaigns_list.php:432
 #, php-format
-msgid "Attempting to get full article %1s"
+msgid ""
+"Campaign draft updated. <a target=\"_blank\" href=\"%s\">Preview campaign</a>"
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:1024
+#: app/campaigns_list.php:485
+msgid "Edit this item"
+msgstr ""
+
+#: app/campaigns_list.php:485 app/campaigns_list_help.php:25
+msgid "Edit"
+msgstr ""
+
+#: app/campaigns_list.php:486
+msgid "Edit this item inline"
+msgstr ""
+
+#: app/campaigns_list.php:486
+msgid "Quick&nbsp;Edit"
+msgstr ""
+
+#: app/campaigns_list.php:490
+msgid "Restore this item from the Trash"
+msgstr ""
+
+#: app/campaigns_list.php:490
+msgid "Restore"
+msgstr ""
+
+#: app/campaigns_list.php:492
+msgid "Move this item to the Trash"
+msgstr ""
+
+#: app/campaigns_list.php:492 app/campaigns_list_help.php:27
+msgid "Trash"
+msgstr ""
+
+#: app/campaigns_list.php:494
+msgid "Delete this item permanently"
+msgstr ""
+
+#: app/campaigns_list.php:494
+msgid "Delete Permanently"
+msgstr ""
+
+# @ wpematico
+#: app/campaigns_list.php:507
+msgid "Clone this item"
+msgstr ""
+
+# @ wpematico
+#: app/campaigns_list.php:507 app/campaigns_list_help.php:28
+msgid "Copy"
+msgstr ""
+
+# @ wpematico
+#: app/campaigns_list.php:509 app/campaigns_list_help.php:29
+msgid "Reset"
+msgstr ""
+
+# @ wpematico
+#: app/campaigns_list.php:514 app/campaigns_list_help.php:30
+msgid "Del Hash"
+msgstr ""
+
+# @ wpematico
+#: app/campaigns_list.php:522
+msgid "See last log of campaign. (Open a PopUp window)"
+msgstr ""
+
+# @ wpematico
+#: app/campaigns_list.php:522 app/campaigns_list_help.php:31
+msgid "See Log"
+msgstr ""
+
+# @ wpematico
+#: app/campaigns_list.php:527
+msgid "Clear fetching and restore campaign"
+msgstr ""
+
+# @ wpematico
+#: app/campaigns_list.php:527
+msgid "Clear campaign"
+msgstr ""
+
+# @ default
+#: app/campaigns_list.php:578 app/campaigns_list_help.php:13
+msgid "Campaign Name"
+msgstr ""
+
+#: app/campaigns_list.php:579 app/campaigns_list_help.php:14
+msgid "Publish as"
+msgstr ""
+
+#: app/campaigns_list.php:581 app/campaigns_list_help.php:16
+msgid "Current State"
+msgstr ""
+
+# @ default
+#: app/campaigns_list.php:582 app/campaigns_list_help.php:17
+msgid "Last Run"
+msgstr ""
+
+# @ default
+#: app/campaigns_list.php:583 app/campaigns_list_help.php:18
+msgid "Posts"
+msgstr ""
+
+# @ wpematico
+#: app/campaigns_list.php:647 app/campaigns_list.php:692
+#: wpematico_class.php:202
+msgid "Running since:"
+msgstr ""
+
+# @ wpematico
+#: app/campaigns_list.php:666 app/lib/licenses_handlers.php:488
+msgid "Inactive"
+msgstr ""
+
+# @ wpematico
+#: app/campaigns_list.php:683
+msgid "Runtime:"
+msgstr ""
+
+# @ wpematico
+#: app/campaigns_list.php:686 wpematico_class.php:212
+msgid "None"
+msgstr ""
+
+#: app/campaigns_list.php:785
+msgid "Campaign Options"
+msgstr ""
+
+# @ wpematico
+#: app/campaigns_list.php:788
+msgid "Max items to create on each fetch:"
+msgstr ""
+
+# @ wpematico
+#: app/campaigns_list.php:795
+msgid "Use feed date"
+msgstr ""
+
+#: app/campaigns_list.php:811
+msgid "Open"
+msgstr ""
+
+#: app/campaigns_list.php:812
+msgid "Closed"
+msgstr ""
+
+#: app/campaigns_list.php:813
+msgid "Registered only"
+msgstr ""
+
+# @ wpematico
+#: app/campaigns_list.php:827
+msgid "Allow pings?"
+msgstr ""
+
+# @ wpematico
+#: app/campaigns_list.php:831
+msgid "Post title links to source?"
+msgstr ""
+
+# @ wpematico
+#: app/campaigns_list.php:835
+msgid "Strip links from content"
+msgstr ""
+
+#: app/campaigns_list.php:910
+msgid "Post Format"
+msgstr ""
+
+#: app/campaigns_list_help.php:12
+msgid "Columns."
+msgstr ""
+
+#: app/campaigns_list_help.php:13
+msgid "The given name. Hover it to display the Quick actions below the name."
+msgstr ""
+
+#: app/campaigns_list_help.php:14
+msgid "Post type and Post Status that will be used for the new entries."
+msgstr ""
+
+#: app/campaigns_list_help.php:15
+msgid ""
+"Useful when you have more campaign types from Addons. You can hide the "
+"column in Screen Options Tab."
+msgstr ""
+
+#: app/campaigns_list_help.php:16
+msgid ""
+"Button Bar to Run, Activate or Stop the campaign. Its states are given by "
+"the colors."
+msgstr ""
+
+#: app/campaigns_list_help.php:17
+msgid ""
+"Last date that the campaign was executed and the seconds it took to "
+"complete. If the campaign is Activated also shows the Datetime for the Next "
+"Run."
+msgstr ""
+
+#: app/campaigns_list_help.php:18
+msgid ""
+"The posts quantity fetched by this campaign since its start or the last "
+"Reset."
+msgstr ""
+
+#: app/campaigns_list_help.php:23
+msgid "Quick Actions in every Row."
+msgstr ""
+
+#: app/campaigns_list_help.php:25
+msgid "Like clicking in the name, open the campaign to edit its details."
+msgstr ""
+
+#: app/campaigns_list_help.php:26
+msgid "Quick Edit"
+msgstr ""
+
+#: app/campaigns_list_help.php:26
+msgid "Edit some main fields, without enter in the campaign editor."
+msgstr ""
+
+#: app/campaigns_list_help.php:27
+msgid "Send the campaign to the trash."
+msgstr ""
+
+#: app/campaigns_list_help.php:28
+msgid ""
+"Creates a new campaign by copying all the fields of this.  The word "
+"\"(copy)\" is added to its title."
+msgstr ""
+
+#: app/campaigns_list_help.php:29
+msgid "Deletes the Log, Last Run data and the Posts fetched by the campaign."
+msgstr ""
+
+#: app/campaigns_list_help.php:30
+msgid ""
+"Every campaign save the hash of the last feed item fetched to avoid "
+"duplicates. This action deletes it.  Useful to make tests to allow fetch an "
+"item again. "
+msgstr ""
+
+#: app/campaigns_list_help.php:31
+msgid ""
+"Open a popup window to show the Last Log of the campaign. No other logs are "
+"saved."
+msgstr ""
+
+#: app/campaigns_list_help.php:32
+msgid "Export"
+msgstr ""
+
+#: app/campaigns_list_help.php:32
+msgid ""
+"Professional feature. Exports only this campaign data to a file that can be "
+"imported later by the plugin in other Wordpress website."
+msgstr ""
+
+#: app/campaigns_list_help.php:37
+msgid "Run Multiple Campaigns at once."
+msgstr ""
+
+#: app/campaigns_list_help.php:39
+msgid ""
+"You can select all or some campaigns by clicking in its checkbox in the "
+"first column."
+msgstr ""
+
+#: app/campaigns_list_help.php:40
+msgid ""
+"When click the orange button, the process starts and can take a long time."
+msgstr ""
+
+#: app/campaigns_list_help.php:41
+msgid ""
+"A notice for each campaign will be displayed at top of the page. The Post "
+"column will be updated in red if at least one post was fetched."
+msgstr ""
+
+#: app/campaigns_list_help.php:46
+msgid "Bulk actions."
+msgstr ""
+
+#: app/campaigns_list_help.php:48
+msgid ""
+"There are few fields that can be edited via Bulk Edit select field, by "
+"selecting some campaigns at a time."
+msgstr ""
+
+#: app/campaigns_list_help.php:49
+msgid ""
+"There is also the option to delete some selected campaigns at once with "
+"\"Send to Trash\" bulk action."
+msgstr ""
+
+#: app/campaigns_list_help.php:50
+msgid ""
+"Select the campaigns, then select the bulk action and click the \"Apply\" "
+"Button."
+msgstr ""
+
+# @ default
+#: app/cron_functions.php:17 app/lib/welcome.php:141 wpematico_class.php:342
+msgid "WPeMatico"
+msgstr ""
+
+#: app/debug_page.php:17
+msgid "Debug File"
+msgstr ""
+
+#: app/debug_page.php:18
+msgid "Danger Zone"
+msgstr ""
+
+#: app/debug_page.php:80
+msgid "Select actions to Uninstall"
+msgstr ""
+
+#: app/debug_page.php:81
+msgid "Delete all Options."
+msgstr ""
+
+#: app/debug_page.php:82
+msgid "Delete all Campaigns."
+msgstr ""
+
+#: app/debug_page.php:146
+msgid "Use this file to get support on "
+msgstr ""
+
+#: app/debug_page.php:149
+msgid "Get System Report"
+msgstr ""
+
+#: app/debug_page.php:150
+msgid "Click the button to see and download the system report."
+msgstr ""
+
+#: app/debug_page.php:154
+msgid "Include also PHPInfo() if available."
+msgstr ""
+
+#: app/debug_page.php:155
+msgid "Include also Last Campaigns Log."
+msgstr ""
+
+#: app/debug_page.php:163
+msgid ""
+"To copy the system info, click below then press Ctrl + C (PC) or Cmd + C "
+"(Mac)."
+msgstr ""
+
+#: app/debug_page.php:169
+msgid "SELECT ALL"
+msgstr ""
+
+#: app/debug_page.php:406 app/debug_page.php:410
+msgid "Server Environment"
+msgstr ""
+
+#: app/debug_page.php:416
+msgid "Hosting Provider:"
+msgstr ""
+
+#: app/debug_page.php:422
+msgid "Server Info:"
+msgstr ""
+
+#: app/debug_page.php:427
+msgid "MySQL Version:"
+msgstr ""
+
+#: app/debug_page.php:434
+msgid "PHP Version:"
+msgstr ""
+
+#: app/debug_page.php:438
+msgid "WPeMatico requires PHP >= 5.3."
+msgstr ""
+
+#: app/debug_page.php:445
+msgid "Disk Total Space:"
+msgstr ""
+
+#: app/debug_page.php:451
+msgid "Disk Free Space:"
+msgstr ""
+
+#: app/debug_page.php:456
+msgid "Mod Rewrite:"
+msgstr ""
+
+#: app/debug_page.php:457 app/debug_page.php:462 app/debug_page.php:467
+#: app/debug_page.php:586 app/debug_page.php:611 app/debug_page.php:616
+#: app/debug_page.php:621 app/debug_page.php:626 app/debug_page.php:631
+#: app/debug_page.php:636
 #, php-format
-msgid "Counting Words on %1s"
+msgid "%s is required by %s."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:1027
-#: ../wpematico_pro/wpematicopro.php:1055
+#: app/debug_page.php:458 app/debug_page.php:463 app/debug_page.php:468
+#: app/debug_page.php:587 app/debug_page.php:592 app/debug_page.php:597
+#: app/debug_page.php:602 app/debug_page.php:607 app/debug_page.php:612
+#: app/debug_page.php:617 app/debug_page.php:622 app/debug_page.php:627
+#: app/debug_page.php:632 app/debug_page.php:637
 #, php-format
-msgid "Found %1s words with %2s letters in content."
+msgid "%s is not installed on your server, but is recommended by %s."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:1040
+#: app/debug_page.php:461
+msgid "Mod Mime:"
+msgstr ""
+
+#: app/debug_page.php:466
+msgid "Mod Deflate:"
+msgstr ""
+
+#: app/debug_page.php:474 app/debug_page.php:478
+msgid "PHP Environment"
+msgstr ""
+
+#: app/debug_page.php:484
+msgid "PHP Post Max Size:"
+msgstr ""
+
+#: app/debug_page.php:489
+msgid "PHP Max Input Vars:"
+msgstr ""
+
+#: app/debug_page.php:495
 #, php-format
-msgid "Skipping: %1s"
+msgid ""
+"%s - Recommended Value: %s.<br />Max input vars limitation will truncate "
+"POST data such as menus. See: <a href=\"%s\" target=\"_blank\">Increasing "
+"max input vars limit.</a>"
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:1052
+#: app/debug_page.php:502
+msgid "PHP Time Limit:"
+msgstr ""
+
+#: app/debug_page.php:506
 #, php-format
-msgid "Processing Words count Filters %1s"
+msgid ""
+"%s - We recommend setting max execution time to at least 180. <br /> To give "
+"a campaign 5 minutes to run without timeouts, <strong>300</strong> seconds "
+"of max execution time is required.<br />See: <a href=\"%s\" target=\"_blank"
+"\">Increasing max execution to PHP</a>"
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:1069
+#: app/debug_page.php:510
+msgid ""
+"Current time limit is sufficient, but if you want to give 5 minutes to run "
+"without timeouts to each campaign, the required time is <strong>300</strong>."
+msgstr ""
+
+#: app/debug_page.php:516
+msgid "PHP Memory Limit:"
+msgstr ""
+
+#: app/debug_page.php:520
 #, php-format
-msgid "Greater than %1s To Cat_id %2s"
+msgid ""
+"%s - We recommend setting memory to at least <strong>128MB</strong>. <br /> "
+"Please define memory limit in <strong>php.ini</strong> file."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:1084
+#: app/debug_page.php:527
+msgid "PHP Safe Mode:"
+msgstr ""
+
+#: app/debug_page.php:531
 #, php-format
-msgid "Cutting at %1s"
+msgid ""
+"We recommend turn safe_mode <strong>Off</strong>. <br /> See: <a href=\"%s\" "
+"target=\"_blank\">PHP: Safe Mode.</a>."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:1191
+#: app/debug_page.php:538
+msgid "Allow URL fopen:"
+msgstr ""
+
+#: app/debug_page.php:544
 #, php-format
-msgid "Deleting html tags: %1s"
+msgid ""
+"We recommend turn Allow URL fopen <strong>On</strong>. <br /> See: <a href="
+"\"%s\" target=\"_blank\">PHP: Allow URL fopen.</a>."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:1220
-msgid "Adding custom tags to post."
+#: app/debug_page.php:549
+msgid "ini_set:"
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:1225
-msgid "Adding tags automatically to post."
-msgstr ""
-
-#: ../wpematico_pro/wpematicopro.php:1255
-msgid "Parsing Custom fields values."
-msgstr ""
-
-#: ../wpematico_pro/wpematicopro.php:1322
+#: app/debug_page.php:555
 #, php-format
-msgid "Skiping: Not found word %1s in content or title %2s."
+msgid ""
+"We recommend to activate <strong>set_ini()</strong> in your server. <br /> "
+"See: <a href=\"%s\" target=\"_blank\">PHP: ini_set.</a>."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:1330
+#: app/debug_page.php:560
+msgid "PHP Disabled Functions:"
+msgstr ""
+
+#: app/debug_page.php:565
+msgid "PHP Display Errors:"
+msgstr ""
+
+#: app/debug_page.php:567
+msgid "On"
+msgstr ""
+
+#: app/debug_page.php:572
+msgid "PHP Current error_reporting levels:"
+msgstr ""
+
+#: app/debug_page.php:585
+msgid "cURL (php.net/curl):"
+msgstr ""
+
+#: app/debug_page.php:590
+msgid "ZipArchive:"
+msgstr ""
+
+#: app/debug_page.php:595
+msgid "DOMDocument:"
+msgstr ""
+
+#: app/debug_page.php:596
 #, php-format
-msgid "Skiping: Not found word %1s in title %2s"
+msgid "%s is recommended by %s."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:1341
+#: app/debug_page.php:600
+msgid "GD Library:"
+msgstr ""
+
+#: app/debug_page.php:605
+msgid "XML (php.net/xml):"
+msgstr ""
+
+#: app/debug_page.php:610
+msgid "PCRE (php.net/pcre):"
+msgstr ""
+
+#: app/debug_page.php:615
+msgid "Zlib (php.net/zlib):"
+msgstr ""
+
+#: app/debug_page.php:620
+msgid "php.net/mbstring:"
+msgstr ""
+
+#: app/debug_page.php:625
+msgid "iconv (php.net/iconv):"
+msgstr ""
+
+#: app/debug_page.php:630
+msgid "OpenSSL (php.net/openssl):"
+msgstr ""
+
+#: app/debug_page.php:635
+msgid "mcrypt (php.net/mcrypt):"
+msgstr ""
+
+#: app/debug_page.php:682
+msgid "$_SESSION enabled:"
+msgstr ""
+
+#: app/debug_page.php:688
+msgid "Session Name:"
+msgstr ""
+
+#: app/debug_page.php:693
+msgid "Cookie Path:"
+msgstr ""
+
+#: app/debug_page.php:698
+msgid "Save Path:"
+msgstr ""
+
+#: app/debug_page.php:703
+msgid "Use Cookies:"
+msgstr ""
+
+#: app/debug_page.php:708
+msgid "Use Only Cookies:"
+msgstr ""
+
+#: app/debug_page.php:717 app/debug_page.php:721
+msgid "WordPress Environment"
+msgstr ""
+
+#: app/debug_page.php:726
+msgid "User Browser:"
+msgstr ""
+
+#: app/debug_page.php:731
+msgid "Home URL:"
+msgstr ""
+
+#: app/debug_page.php:736
+msgid "Site URL:"
+msgstr ""
+
+#: app/debug_page.php:741
+msgid "WP Version:"
+msgstr ""
+
+#: app/debug_page.php:746
+msgid "WP Multisite:"
+msgstr ""
+
+#: app/debug_page.php:749
+msgid ""
+"WPeMatico was not fully tested in Multisite. Test it and give us your "
+"comments on the <a href=\"https://wordpress.org/support/plugin/wpematico/\" "
+"target=\"_blank\">forums</a>"
+msgstr ""
+
+#: app/debug_page.php:757
+msgid "Language WPLANG:"
+msgstr ""
+
+#: app/debug_page.php:762
+msgid "Language Setting:"
+msgstr ""
+
+#: app/debug_page.php:768
+msgid "Permalink Structure:"
+msgstr ""
+
+#: app/debug_page.php:773
+msgid "Active Theme:"
+msgstr ""
+
+#: app/debug_page.php:778
+msgid "Show On Front:"
+msgstr ""
+
+#: app/debug_page.php:790
+msgid "WP Remote Get:"
+msgstr ""
+
+#: app/debug_page.php:795
+msgid "WP Remote Post:"
+msgstr ""
+
+#: app/debug_page.php:800
+msgid "Table Prefix:"
+msgstr ""
+
+#: app/debug_page.php:805
+msgid "WP Memory Limit:"
+msgstr ""
+
+#: app/debug_page.php:809
 #, php-format
-msgid "Found!: word %1s"
+msgid ""
+"%s - We recommend setting memory to at least <strong>128MB</strong>. <br /> "
+"Please define memory limit in <strong>wp-config.php</strong> file. To learn "
+"how, see: <a href=\"%s\" target=\"_blank\">Increasing memory allocated to "
+"PHP.</a>"
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:1343
+#: app/debug_page.php:816
+msgid "WP Max Upload Size:"
+msgstr ""
+
+#: app/debug_page.php:821
+msgid "Registered Post Stati:"
+msgstr ""
+
+#: app/debug_page.php:826
+msgid "WP Debug Mode:"
+msgstr ""
+
+#: app/debug_page.php:831
+msgid "WP Debug Log Mode:"
+msgstr ""
+
+#: app/debug_page.php:836
+msgid "WP Debug Mode Display:"
+msgstr ""
+
+#: app/debug_page.php:841
+msgid "WP Cron:"
+msgstr ""
+
+#: app/debug_page.php:846
+msgid "WP Cron Lock Timeout:"
+msgstr ""
+
+#: app/debug_page.php:854 app/debug_page.php:858
+msgid "Must-Use Plugins"
+msgstr ""
+
+#: app/debug_page.php:876 app/debug_page.php:918
+msgid "Visit plugin homepage"
+msgstr ""
+
+#: app/debug_page.php:883 app/debug_page.php:925
 #, php-format
-msgid "Skiping: Not found word %1s in content"
+msgid "(needs update - %s)"
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:1362
+#: app/debug_page.php:886 app/debug_page.php:928
 #, php-format
-msgid "Found!: regex %1s"
+msgctxt "by author"
+msgid "by %s"
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:1364
+#: app/debug_page.php:896 app/debug_page.php:900
+msgid "Active Plugins"
+msgstr ""
+
+#: app/debug_page.php:953
+msgid "Actions to Uninstall saved."
+msgstr ""
+
+#: app/debug_page.php:953
+msgid "The actions are executed when the plugin is uninstalled."
+msgstr ""
+
+#: app/lib/Plugin_Updater.php:201
 #, php-format
-msgid "Skiping: Not found regex %1s"
+msgid ""
+"There is a new version of %1$s available. %2$sView version %3$s details%4$s."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:1388
+#: app/lib/Plugin_Updater.php:209
 #, php-format
-msgid "Skiping: Found word %1s in content or title %2s."
+msgid ""
+"There is a new version of %1$s available. %2$sView version %3$s details%4$s "
+"or %5$supdate now%6$s."
 msgstr ""
 
-#: ../wpematico_pro/wpematicopro.php:1396
-#, php-format
-msgid "Skiping: Found word %1s in title %2s"
-msgstr ""
-
-#: ../wpematico_pro/wpematicopro.php:1407
-#, php-format
-msgid "Not Found word %1s"
-msgstr ""
-
-#: ../wpematico_pro/wpematicopro.php:1409
-#, php-format
-msgid "Skiping: Found word %1s in content"
-msgstr ""
-
-#: ../wpematico_pro/wpematicopro.php:1427
-#, php-format
-msgid "Not Found regex %1s"
-msgstr ""
-
-#: ../wpematico_pro/wpematicopro.php:1429
-#, php-format
-msgid "Skiping: found regex %1s"
-msgstr ""
-
-#: ../wpematico_pro/wpematicopro.php:1492
-#, php-format
-msgid "Getting enclosure link: %s"
-msgstr ""
-
-#: ../wpematico_pro/wpematicopro.php:1506
-msgid "Applying Image Filters."
-msgstr ""
-
-#: ../wpematico_pro/wpematicopro.php:1518
-#: ../wpematico_pro/wpematicopro.php:1561
-msgid "Don't works filters with: "
-msgstr ""
-
-#: ../wpematico_pro/wpematicopro.php:1526
-#: ../wpematico_pro/wpematicopro.php:1569
-msgid "Filter: "
-msgstr ""
-
-#: ../wpematico_pro/wpematicopro.php:1528
-msgid "Deleting: "
-msgstr ""
-
-#: ../wpematico_pro/wpematicopro.php:1549
-msgid "Filtering Featured Image."
-msgstr ""
-
-#: ../wpematico_pro/wpematicopro.php:1575
-msgid "First featured image meets filters: "
-msgstr ""
-
-#: ../wpematico_pro/wpematicopro.php:1596
-msgid "Inserting default Image Into Post."
-msgstr ""
-
-#: ../wpematico_pro/wpematicopro.php:1675
-msgid "There's an error in Keyword include filter: You must check at least one search option."
-msgstr ""
-
-#: ../wpematico_pro/wpematicopro.php:1681
-msgid "There's an error in Keyword exclude filter: You must check at least one search option."
-msgstr ""
-
-#: ../wpematico_pro/wpematicopro.php:1687
-#, php-format
-msgid "There's an error with the supplied RegEx expression in Keyword include filter: %s"
-msgstr ""
-
-#: ../wpematico_pro/wpematicopro.php:1693
-#, php-format
-msgid "There's an error with the supplied RegEx expression in Keyword exclude filter: %s"
-msgstr ""
-
-#: ../wpematico_pro/lib/Plugin_Updater.php:177
-#, php-format
-msgid "There is a new version of %1$s available. <a target=\"_blank\" class=\"thickbox\" href=\"%2$s\">View version %3$s details</a>."
-msgstr ""
-
-#: ../wpematico_pro/lib/Plugin_Updater.php:184
-#, php-format
-msgid "There is a new version of %1$s available. <a target=\"_blank\" class=\"thickbox\" href=\"%2$s\">View version %3$s details</a> or <a href=\"%4$s\">update now</a>."
-msgstr ""
-
-#: ../wpematico_pro/lib/Plugin_Updater.php:324
+#: app/lib/Plugin_Updater.php:399
 msgid "You do not have permission to install plugin updates"
 msgstr ""
 
-#: ../wpematico_pro/lib/Plugin_Updater.php:324
+#: app/lib/Plugin_Updater.php:399
 msgid "Error"
 msgstr ""
 
-#: ../wpematico_pro/lib/pro_licenser.php:61
-msgid "WPeMatico PRO License"
+#: app/lib/licenses_handlers.php:429 app/lib/licenses_handlers.php:573
+msgid "Check License"
 msgstr ""
 
-#: ../wpematico_pro/lib/pro_licenser.php:68
-msgid "License Key"
+#: app/lib/licenses_handlers.php:468 app/settings_page.php:70
+msgid ""
+"This is where you would enter the license keys for one of our premium "
+"plugins, should you activate one."
 msgstr ""
 
-#: ../wpematico_pro/lib/pro_licenser.php:72
-msgid "Enter your license key"
+#: app/lib/licenses_handlers.php:469 app/settings_page.php:71
+msgid "See some of the WPeMatico Add-ons in the"
 msgstr ""
 
-#: ../wpematico_pro/lib/pro_licenser.php:78
-msgid "Activated for updates"
+#: app/lib/licenses_handlers.php:482
+msgid "Valid"
 msgstr ""
 
-#: ../wpematico_pro/lib/pro_licenser.php:85
+#: app/lib/licenses_handlers.php:484
 msgid "Deactivate License"
 msgstr ""
 
-#: ../wpematico_pro/lib/pro_licenser.php:89
+#: app/lib/licenses_handlers.php:486
+msgid "Invalid"
+msgstr ""
+
+#: app/lib/licenses_handlers.php:490
 msgid "Activate License"
 msgstr ""
 
+#: app/lib/licenses_handlers.php:498
+msgid " License"
+msgstr ""
+
+#: app/lib/licenses_handlers.php:503
+msgid "License Key"
+msgstr ""
+
+#: app/lib/licenses_handlers.php:507
+msgid "Enter your license key"
+msgstr ""
+
+#: app/lib/licenses_handlers.php:534
+msgid ""
+"No activations left. Click here to manage the sites you've activated "
+"licenses on."
+msgstr ""
+
+#: app/lib/licenses_handlers.php:540
+msgid "Renew your license to continue receiving updates and support."
+msgstr ""
+
+#: app/lib/licenses_handlers.php:544
+msgid "Activations"
+msgstr ""
+
+#: app/lib/licenses_handlers.php:547
+msgid "Expires on"
+msgstr ""
+
+#: app/lib/licenses_handlers.php:550
+msgid "Registered to"
+msgstr ""
+
+#: app/lib/licenses_handlers.php:559 app/lib/licenses_handlers.php:569
+msgid "Activated for updates"
+msgstr ""
+
+#: app/lib/welcome.php:53
+msgid "Welcome to WPeMatico"
+msgstr ""
+
+#: app/lib/welcome.php:54
+msgid "WPeMatico News"
+msgstr ""
+
+#: app/lib/welcome.php:62 app/lib/welcome.php:63
+msgid "WPeMatico Changelog"
+msgstr ""
+
+#: app/lib/welcome.php:71 app/lib/welcome.php:72
+msgid "Getting started with WPeMatico"
+msgstr ""
+
+#: app/lib/welcome.php:142
+#, php-format
+msgid "Welcome to WPeMatico %s"
+msgstr ""
+
+#: app/lib/welcome.php:144
+#, php-format
+msgid ""
+"Thank you for updating to the latest version! WPeMatico %s is ready to make "
+"your autoblogging faster, safer, and better!"
+msgstr ""
+
+#: app/lib/welcome.php:162
+msgid "What's New"
+msgstr ""
+
+#: app/lib/welcome.php:165
+msgid "Getting Started"
+msgstr ""
+
+#: app/lib/welcome.php:168
+msgid "Changelog"
+msgstr ""
+
+#: app/lib/welcome.php:193
+msgid "A new Campaign Control Panel."
+msgstr ""
+
+#: app/lib/welcome.php:199
+msgid "Introducing the Campaign Control Panel."
+msgstr ""
+
+#: app/lib/welcome.php:201
+msgid ""
+"The most visible change in version 1.8 is certainly the campaign Control "
+"Panel. "
+msgstr ""
+
+#: app/lib/welcome.php:202
+msgid ""
+"This panel makes it possible to better control what is going on with the "
+"campaign you are editing."
+msgstr ""
+
+#: app/lib/welcome.php:203
+msgid ""
+"And also the \"Delete hash\" buttons for the duplicates control, view the "
+"\"Last-run log\", or even the \"Reset\" are displayed as buttons, no matter "
+"if the quick actions from Settings screen are activated."
+msgstr ""
+
+#: app/lib/welcome.php:206
+msgid "Available for Addons too."
+msgstr ""
+
+#: app/lib/welcome.php:207 app/lib/welcome.php:238 app/lib/welcome.php:241
+#: app/lib/welcome.php:244 app/lib/welcome.php:256
+msgid "The"
+msgstr ""
+
+#: app/lib/welcome.php:207
+msgid ""
+"will put an extra button to Export the campaign. The Control Panel has an "
+"proggramatic action to easily add an action button.."
+msgstr ""
+
+#: app/lib/welcome.php:214
+msgid "An improved Campaign Wizard."
+msgstr ""
+
+#: app/lib/welcome.php:220
+msgid "We've made several important improvements in the Campaign Wizard."
+msgstr ""
+
+#: app/lib/welcome.php:221
+msgid ""
+"With it you will see one by one each metabox with options of the campaign, "
+"showing the help tips to facilitate even more the creation and correct "
+"configuration of the feeds to import. And something very important is that "
+"it is compatible with the diferent addons that add metaboxes to the campaign."
+msgstr ""
+
+#: app/lib/welcome.php:223
+msgid "All icons will be Dashicons!"
+msgstr ""
+
+#: app/lib/welcome.php:224
+msgid ""
+"Until now we were using sprite images or Font Awesome Icons, but we are "
+"changing all to Dashicons, the official icon fonts of the WordPress and "
+"we're very proud of that.  We continue cleaning all, inclusive the corners."
+msgstr ""
+
+#: app/lib/welcome.php:226
+msgid "The code was optimized by everywhere."
+msgstr ""
+
+#: app/lib/welcome.php:227
+msgid ""
+"We're optimizing the code to allow it to be more readable by humans, but the "
+"main focus is to improve the performance in the different screens, like the "
+"campaign editing or other screens."
+msgstr ""
+
+#: app/lib/welcome.php:233
+msgid "Including Media Files."
+msgstr ""
+
+#: app/lib/welcome.php:236
+msgid "The last WPeMatico Addons"
+msgstr ""
+
+#: app/lib/welcome.php:239
+msgid ""
+"is an addon that allows you to execute actions and filters provided by "
+"WPeMatico in order to create custom behavior in the execution of your "
+"campaigns, right from your WordPress admin panel."
+msgstr ""
+
+#: app/lib/welcome.php:242
+msgid ""
+"is an addon that lets you select the original language of articles in a "
+"campaign so you can translate them to one of the 107 supported languages "
+"before inserting them in your blog."
+msgstr ""
+
+#: app/lib/welcome.php:245
+msgid ""
+"A powerful single plugin or WPeMatico addon, which optimizes the websites "
+"speed thanks to processes and technologies that reduces the overload of the "
+"websites where it is installed, improving the velocity till 10x comparing "
+"with other cache plugins for WordPress."
+msgstr ""
+
+#: app/lib/welcome.php:248
+msgid "Mp3 and Mp4 Files"
+msgstr ""
+
+#: app/lib/welcome.php:250
+msgid ""
+"In addition to including the embedded links, the version 1.7 includes a full "
+"support for MP3 and MP4 media files. "
+msgstr ""
+
+#: app/lib/welcome.php:251
+msgid ""
+"Audio and video files inserted in the contents of the source can be "
+"downloaded and attached to the published post. "
+msgstr ""
+
+#: app/lib/welcome.php:252
+msgid ""
+"Compatible with audio widget and video widget inserted in WordPress 4.8."
+msgstr ""
+
+#: app/lib/welcome.php:252
+msgid "Only take care with the size of the files."
+msgstr ""
+
+#: app/lib/welcome.php:255
+msgid "Need other file types ?"
+msgstr ""
+
+#: app/lib/welcome.php:256
+msgid ""
+"brings support for &lt;mp3, ogg, wav, wma, m4a&gt; &lt;mp4, m4v, mov, wmv, "
+"avi, mpg, ogv, 3gp, 3g2&gt; media file types among a lot more of special "
+"features."
+msgstr ""
+
+#: app/lib/welcome.php:263
+msgid "Single and global options for images, audio and video files."
+msgstr ""
+
+#: app/lib/welcome.php:269
+msgid "Set the Options in each campaign"
+msgstr ""
+
+#: app/lib/welcome.php:270
+msgid ""
+"We've added the feature of overwriting the default options from within the "
+"campaign edition. This allows to use the general options loaded in WPeMatico "
+"settings by all the campaigns, but for certain campaigns or special feeds we "
+"can configure it individually by checking the option: Don't use general "
+"settings."
+msgstr ""
+
+#: app/lib/welcome.php:271
+msgid ""
+"You can customize the options individually for images, audio or video files."
+msgstr ""
+
+#: app/lib/welcome.php:272
+msgid ""
+"Find the options in their metaboxes inside the campaign editing screens.  "
+msgstr ""
+
+#: app/lib/welcome.php:280
+msgid "Even More Developer Happiness"
+msgstr ""
+
+#: app/lib/welcome.php:283
+msgid "JavaScript hooks"
+msgstr ""
+
+#: app/lib/welcome.php:284
+msgid ""
+"We've implemented the JavaScript hooks like WordPress actions and filters! "
+"You can make functions to enqueue the scripts and hooks to already added "
+"filters in the code."
+msgstr ""
+
+#: app/lib/welcome.php:287
+msgid "Support ticket system for free"
+msgstr ""
+
+#: app/lib/welcome.php:288
+msgid ""
+"Ask for any problem you may have and you'll get support for free. If it is "
+"necessay we will see into your website to solve your issue."
+msgstr ""
+
+#: app/lib/welcome.php:291
+msgid "Premium Support"
+msgstr ""
+
+#: app/lib/welcome.php:292
+msgid ""
+"Get access to in-depth setup assistance. We'll dig in and do our absolute "
+"best to resolve issues for you. Any support that requires code or setup your "
+"site will need this service."
+msgstr ""
+
+#: app/lib/welcome.php:296
+msgid "Nags updates individually for extensions"
+msgstr ""
+
+#: app/lib/welcome.php:297
+msgid ""
+"A more clear nag update was added for the addons in the WPeMatico Extensions "
+"and Addons menu items."
+msgstr ""
+
+#: app/lib/welcome.php:300
+msgid "Hidden Options in Settings->Writing"
+msgstr ""
+
+#: app/lib/welcome.php:301
+msgid ""
+"If you have any problem with WPeMatico item menu, Settings page or lost some "
+"plugin, we've put there a WPeMatico Section, to try to avoid weird behaviors "
+"made by some thirds plugins."
+msgstr ""
+
+#: app/lib/welcome.php:304
+msgid "Rate 5 stars on Wordpress"
+msgstr ""
+
+#: app/lib/welcome.php:305
+msgid ""
+"We need your positive rating of 5 stars in WordPress. Your comment will be "
+"published on the bottom of the website and besides it will help making the "
+"plugin better."
+msgstr ""
+
+#: app/lib/welcome.php:311 app/lib/welcome.php:345
+msgid "Go to WPeMatico Settings"
+msgstr ""
+
+#: app/lib/welcome.php:312
+msgid "View the Full Changelog"
+msgstr ""
+
+#: app/lib/welcome.php:313
+msgid "Go to WPeMatico Extensions"
+msgstr ""
+
+#: app/lib/welcome.php:337
+msgid "Full Changelog"
+msgstr ""
+
+#: app/lib/welcome.php:366
+msgid ""
+"Autoblogging in the blink of an eye! On complete autopilot WpeMatico gets "
+"new content regularly for your site!  WPeMatico is a very easy to use "
+"autoblogging plugin. Organized into campaigns, it publishes your posts "
+"automatically from the RSS/Atom feeds of your choice."
+msgstr ""
+
+#: app/lib/welcome.php:367
+msgid ""
+"Use the tips below to get started using WPeMatico. You will be up and "
+"running in no time!"
+msgstr ""
+
+#: app/lib/welcome.php:370
+msgid "Fill in the Settings"
+msgstr ""
+
+#: app/lib/welcome.php:376
+msgid "RSS"
+msgstr ""
+
+#: app/lib/welcome.php:377
+msgid ""
+"RSS is a technology to facilitate the distribution of information in a "
+"centralized way. Usually daily visit several websites to see if there is "
+"anything new in our favorite places. The fundamental principle behind RSS is "
+"that \"the receiver is no longer in search of information, is the "
+"information that goes in search of the receiver.\" If you use an RSS "
+"aggregators not have to visit each of these sites because they receive all "
+"the news in one place. The aggregator checks your favorite websites in "
+"search of new content and features directly without any effort on your part."
+msgstr ""
+
+#: app/lib/welcome.php:378
+msgid ""
+"Blogs contain in its main page a XML file. In the case of blogs on WordPress "
+"the feed is defined as follows:"
+msgstr ""
+
+#: app/lib/welcome.php:379
+msgid "We have to add this URL to the RSS field to receive the items."
+msgstr ""
+
+#: app/lib/welcome.php:381
+msgid "WPeMatico &rarr; Settings"
+msgstr ""
+
+#: app/lib/welcome.php:382
+msgid ""
+"The WPeMatico &rarr; Settings menu is where you'll set all global aspects "
+"for the operation of the plugin and the global options for campaigns, "
+"advanced options and tools."
+msgstr ""
+
+#: app/lib/welcome.php:383
+msgid ""
+"There are also here the tests and the configuration options for the "
+"SimplePie library to get differnet behaviour when fetch the feed items."
+msgstr ""
+
+#: app/lib/welcome.php:384
+msgid ""
+"Set to an external or internal Wordpress CRON scheduler and look at for the "
+"configuration tabs of all plugin extensions and Add-ons."
+msgstr ""
+
+#: app/lib/welcome.php:388
+msgid "Testing SimplePie library"
+msgstr ""
+
+#: app/lib/welcome.php:394
+msgid "Creating Your First Campaign"
+msgstr ""
+
+#: app/lib/welcome.php:400
+#, php-format
+msgid "%s &rarr; Add New"
+msgstr ""
+
+#: app/lib/welcome.php:401
+msgid ""
+"The WPeMatico &rarr; All Campaigns menu is your access point for all aspects "
+"of your Feed campaigns creation and setup to fetch the items and insert them "
+"as posts or any Custom Post Type. To create your first campaign, simply "
+"click Add New and then fill out the campaign details."
+msgstr ""
+
+#: app/lib/welcome.php:407
+msgid "Need Help?"
+msgstr ""
+
+#: app/lib/welcome.php:413
+msgid "Inline Documentation"
+msgstr ""
+
+#: app/lib/welcome.php:414
+msgid ""
+"Are those small sentences and/or phrases that you see alongside, or "
+"underneath, a feature in WPeMatico that give a short but very helpful "
+"explanation of what the feature is and serve as guiding tips that correspond "
+"with each feature. These tips sometimes even provide basic, recommended "
+"settings."
+msgstr ""
+
+#: app/lib/welcome.php:416
+msgid "Help Tab"
+msgstr ""
+
+#: app/lib/welcome.php:417
+msgid ""
+"In addition to the inline documentation that you see scattered throughout "
+"the Dashboard, you’ll find a helpful tab in the upper-right corner of your "
+"Dashboard labeled Help. Click this tab and a panel drops down that contains "
+"a lot of text providing documentation relevant to the page you are currently "
+"viewing on your Dashboard."
+msgstr ""
+
+#: app/lib/welcome.php:419
+msgid ""
+"For example, if you’re viewing the WPeMatico Settings page, the Help tab "
+"drops down documentation relevant to the WPeMatico Settings page. Likewise, "
+"if you’re viewing the Add New Campaign page, clicking the Help tab drops "
+"down documentation with topics relevant to the settings and features you "
+"find on the Add New Campaign page within your Dashboard."
+msgstr ""
+
+#: app/lib/welcome.php:420
+msgid "Just click the Help tab again to close the Help panel."
+msgstr ""
+
+#: app/lib/welcome.php:425
+msgid "Need more Help?"
+msgstr ""
+
+#: app/lib/welcome.php:428
+msgid "Phenomenal Support"
+msgstr ""
+
+#: app/lib/welcome.php:429
+msgid ""
+"We do our best to provide the best support we can. If you encounter a "
+"problem or have a question, simply open a ticket using our <a target=\"_blank"
+"\" href=\"https://etruel.com/my-account/support\">support form</a>."
+msgstr ""
+
+#: app/lib/welcome.php:432
+msgid "Need Even Faster Support?"
+msgstr ""
+
+#: app/lib/welcome.php:433
+msgid ""
+"Our <a target=\"_blank\" href=\"https://etruel.com/downloads/premium-support/"
+"\">Premium Support</a> system is there for customers that need faster and/or "
+"more in-depth assistance."
+msgstr ""
+
+#: app/lib/welcome.php:439
+msgid "Stay Up to Date"
+msgstr ""
+
+#: app/lib/welcome.php:442
+msgid "Get Notified of Extension Releases"
+msgstr ""
+
+#: app/lib/welcome.php:443
+msgid ""
+"New extensions that make WPeMatico even more powerful are released nearly "
+"every single week. Subscribe to the newsletter to stay up to date with our "
+"latest releases. <a href=\"http://eepurl.com/bX2ANz\" target=\"_blank\">Sign "
+"up now</a> to ensure you do not miss a release!"
+msgstr ""
+
+#: app/lib/welcome.php:446
+msgid "Get Alerted About New Tutorials"
+msgstr ""
+
+#: app/lib/welcome.php:447
+msgid ""
+"<a href=\"http://eepurl.com/bX2ANz\" target=\"_blank\">Sign up now</a> to "
+"hear about the latest tutorial releases that explain how to take WPeMatico "
+"further."
+msgstr ""
+
+#: app/lib/welcome.php:456
+msgid "Extend the plugin features"
+msgstr ""
+
+#: app/lib/welcome.php:457
+msgid ""
+"Add-on plugins are available that greatly extend the default functionality "
+"of WPeMatico. There are a Professional extension for extend the parsers of "
+"the feed contents, The Full Content add-on to scratch the source webpage "
+"looking to get the entire article, and many more."
+msgstr ""
+
+#: app/lib/welcome.php:460
+msgid "Visit the Extension Store"
+msgstr ""
+
+#: app/lib/welcome.php:461
+msgid ""
+"<a href=\"https://etruel.com/downloads\" target=\"_blank\">The etruel store</"
+"a> has a list of all available extensions for WPeMatico, also other "
+"Worpdress plugins, some of them for free. Including convenient category "
+"filters so you can find exactly what you are looking for."
+msgstr ""
+
+#: app/lib/welcome.php:547
+msgid "Subscribe to our Newsletter and be the first to receive our news."
+msgstr ""
+
+#: app/lib/welcome.php:554
+msgid "First Name"
+msgstr ""
+
+#: app/lib/welcome.php:561
+msgid "Last Name"
+msgstr ""
+
+#: app/lib/welcome.php:568
+msgid "email"
+msgstr ""
+
+#: app/lib/welcome.php:575
+msgid "Subscribe"
+msgstr ""
+
+#: app/lib/welcome.php:580
+#, php-format
+msgid "Your email %s is already subscribed."
+msgstr ""
+
+#: app/lib/welcome.php:598
+msgid "Security check"
+msgstr ""
+
+#: app/lib/welcome.php:622
+msgid "Subscription saved"
+msgstr ""
+
+#: app/lib/welcome.php:639
+msgid "No valid changelog was found."
+msgstr ""
+
+#: app/lib/wp_ratings.php:33
+msgid "Can\\t connect to Wordpress Site"
+msgstr ""
+
+#: app/notification_traslate.php:176
+#, php-format
+msgid ""
+"As you can see, there is a translation of this plugin in %1$s. This "
+"translation is currently %3$d%% complete. We need your help to make it "
+"complete and to fix any errors. Please register at %4$s to help complete the "
+"translation to %1$s!"
+msgstr ""
+
+#: app/notification_traslate.php:178
+#, php-format
+msgid ""
+"You're using WordPress in %1$s. While %2$s has been translated to %1$s for "
+"%3$d%%, it's not been shipped with the plugin yet. You can help! Register at "
+"%4$s to help complete the translation to %1$s!"
+msgstr ""
+
+#: app/notification_traslate.php:180
+#, php-format
+msgid ""
+"You're using WordPress in a language we don't support yet. We'd love for "
+"%2$s to be translated in that language too, but unfortunately, it isn't "
+"right now. You can change that! Register at %4$s to help translate it!"
+msgstr ""
+
+# @ wpematico
+#: app/plugin_functions.php:27
+msgid "Load WPeMatico Settings Page"
+msgstr ""
+
+# @ wpematico
+#: app/plugin_functions.php:27 app/settings_page.php:16
+#: wpematico_class.php:365 wpematico_class.php:366
+msgid "Settings"
+msgstr ""
+
+#: app/plugin_functions.php:28
+msgid "Take a look at the all bundled Addons"
+msgstr ""
+
+#: app/plugin_functions.php:28
+msgid "Go Perfect"
+msgstr ""
+
+# @ default
+#: app/plugin_functions.php:48
+msgid "Support"
+msgstr ""
+
+#: app/plugin_functions.php:49
+msgid "Rate Plugin"
+msgstr ""
+
+#: app/plugin_functions.php:50
+msgid "Take a look at the PRO version features"
+msgstr ""
+
+#: app/plugin_functions.php:50
+msgid "Go PRO"
+msgstr ""
+
+#: app/settings_page.php:19
+msgid "Licenses"
+msgstr ""
+
+#: app/settings_page.php:20
+msgid "System Status"
+msgstr ""
+
+#: app/settings_page.php:101 app/wpematico_functions.php:739
+msgid ""
+"It seems that another plugin are opening Wordpress SimplePie before that "
+"WPeMatico can open its own library. This gives a PHP error on duplicated "
+"classes."
+msgstr ""
+
+#: app/settings_page.php:103 app/wpematico_functions.php:741
+msgid ""
+"You must disable the other plugin to allow Force WPeMatico Custom SimplePie "
+"library."
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:133
+msgid "WPeMatico settings"
+msgstr ""
+
+#: app/settings_page.php:141 app/settings_page.php:177
+#: app/settings_page.php:248 app/settings_page.php:276
+#: app/settings_page.php:298 app/settings_page.php:320
+#: app/settings_page.php:339 app/settings_page.php:373
+#: app/settings_page.php:438 app/settings_page.php:482
+#: app/settings_page.php:532
+msgid "Click to toggle"
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:144
+msgid "About"
+msgstr ""
+
+#: app/settings_page.php:148
+msgid "Go to the new WPeMatico WebSite"
+msgstr ""
+
+#: app/settings_page.php:151
+msgid "Comments & Tutorials"
+msgstr ""
+
+#: app/settings_page.php:154
+msgid "WPeMatico Addons in etruel.com store"
+msgstr ""
+
+#: app/settings_page.php:157
+msgid "Addons store, FAQs & Support"
+msgstr ""
+
+#: app/settings_page.php:159
+msgid "Thanks for use & test this plugin."
+msgstr ""
+
+#: app/settings_page.php:161
+msgid ""
+"If you like it and want to thank, you can write a 5 star review on Wordpress."
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:169
+msgid "Buy PRO version online"
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:180
+msgid "Advanced"
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:183
+msgid "Disable <b><i>Check Feeds before Save</i></b>"
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:185
+msgid "Enable <b><i>Del Hash</i></b>"
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:187
+msgid "Enable <b><i>See last log</i></b>"
+msgstr ""
+
+#: app/settings_page.php:189
+msgid "Disable <i>WPeMatico Credits</i>"
+msgstr ""
+
+#: app/settings_page.php:191
+#, php-format
+msgid ""
+"If you can't show the WPeMatico credits in your posts, I really appreciate "
+"if you can take a minute to %s write a 5 star review on Wordpress %s. :) "
+"thanks."
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:198
+msgid "Sending e-Mails"
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:200
+msgid "Sender Email:"
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:201
+msgid "Sender Name:"
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:203
+msgid "Sendmail Path:"
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:212 app/settings_page.php:611
+msgid "Save settings"
+msgstr ""
+
+#: app/settings_page.php:219
+msgid "ShortPixel"
+msgstr ""
+
+#: app/settings_page.php:221
+msgid ""
+"Join to ShortPixel and optimize your images without compromising on quality."
+msgstr ""
+
+#: app/settings_page.php:224
+msgid "Get ShortPixel API Key"
+msgstr ""
+
+#: app/settings_page.php:229
+msgid "The Perfect Package"
+msgstr ""
+
+#: app/settings_page.php:251
+msgid "Global Settings for Images"
+msgstr ""
+
+#: app/settings_page.php:279
+msgid "Global Settings for Audios"
+msgstr ""
+
+#: app/settings_page.php:301
+msgid "Global Settings for Videos"
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:323
+msgid "Enable Features"
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:325
+msgid "Enable <b><i>Rewrite</i></b> feature"
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:328
+msgid "Enable <b><i>Words to Categories</i></b> feature"
+msgstr ""
+
+#: app/settings_page.php:342
+msgid "ONLY AVAILABLE AT PRO VERSION."
+msgstr ""
+
+#: app/settings_page.php:343
+msgid "PRO Features"
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:347
+msgid "Enable <b><i>Keyword Filtering</i></b> feature"
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:349
+msgid "Enable <b><i>Word count Filters</i></b> feature"
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:351
+msgid "Enable <b><i>Custom Title</i></b> feature"
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:353
+msgid "Enable attempt to <b><i>Get Full Content</i></b> feature"
+msgstr ""
+
+#: app/settings_page.php:355
+msgid "Enable <b><i>Author per feed</i></b> feature"
+msgstr ""
+
+#: app/settings_page.php:357
+msgid "Enable <b><i>Import feed list</i></b> feature"
+msgstr ""
+
+#: app/settings_page.php:359
+msgid "Enable <b><i>Auto Tags</i></b> feature."
+msgstr ""
+
+#: app/settings_page.php:361
+msgid "Bad Tags that will be not used on any post:"
+msgstr ""
+
+#: app/settings_page.php:363
+msgid "Enter comma separated list of excluded Tags in all campaigns."
+msgstr ""
+
+#: app/settings_page.php:365
+msgid "Enable <b><i>Custom Fields</i></b> feature."
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:376 app/settings_page.php:441
+msgid "Advanced Fetching"
+msgstr ""
+
+#: app/settings_page.php:376
+msgid "(SimplePie Settings)"
+msgstr ""
+
+#: app/settings_page.php:378
+msgid "Test if SimplePie library works well on your server:"
+msgstr ""
+
+#: app/settings_page.php:383
+msgid "Click here"
+msgstr ""
+
+#: app/settings_page.php:383
+msgid "(open in popup)"
+msgstr ""
+
+#: app/settings_page.php:407
+#, php-format
+msgid "USING SimplePie %s included in Wordpress"
+msgstr ""
+
+#: app/settings_page.php:411
+#, php-format
+msgid "USING SimplePie %s included in WPeMatico Plugin"
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:415
+msgid "Force <b><i>Custom Simplepie Library</i></b>"
+msgstr ""
+
+#: app/settings_page.php:418
+msgid "Set Simplepie <b><i>stupidly fast</i></b>"
+msgstr ""
+
+#: app/settings_page.php:422
+msgid "Change SimplePie HTML tags to strip"
+msgstr ""
+
+#: app/settings_page.php:427
+msgid "Change SimplePie HTML attributes to strip"
+msgstr ""
+
+#: app/settings_page.php:444
+msgid "<b><i>Allow option on campaign to skip the content filters</i></b>"
+msgstr ""
+
+#: app/settings_page.php:446
+msgid "NOTE: It is extremely dangerous to allow unfiltered content."
+msgstr ""
+
+#: app/settings_page.php:449
+msgid "Timeout running campaign:"
+msgstr ""
+
+#: app/settings_page.php:449
+msgid "Seconds."
+msgstr ""
+
+#: app/settings_page.php:451
+msgid ""
+"When a campaign running is interrupted, cannot be executed again until click "
+"\"Clear Campaign\".  This option clear campaign after this timeout then can "
+"run again on next scheduled cron. A value of \"0\" ignore this, means that "
+"remain until user make click.  Recommended 300 Seconds."
+msgstr ""
+
+#: app/settings_page.php:454 app/settings_page.php:835
+msgid "Add a throttle/delay in seconds after every post."
+msgstr ""
+
+#: app/settings_page.php:457 app/settings_page.php:840
+msgid "Deactivate duplicate controls."
+msgstr ""
+
+#: app/settings_page.php:460 app/settings_page.php:844
+msgid ""
+"NOTE: If disable both controls, all items will be fetched again and again... "
+"and again, ad infinitum.  If you want allow duplicated titles, just activate "
+"\"Allow duplicated titles\"."
+msgstr ""
+
+#: app/settings_page.php:461
+msgid "Allow duplicates titles."
+msgstr ""
+
+#: app/settings_page.php:462
+msgid "Allow duplicates hashes. (Not Recommended)"
+msgstr ""
+
+#: app/settings_page.php:466 app/settings_page.php:862
+msgid "Add an extra duplicate filter by source permalink in meta field value."
+msgstr ""
+
+#: app/settings_page.php:471 app/settings_page.php:847
+msgid "Continue Fetching if found duplicated items."
+msgstr ""
+
+#: app/settings_page.php:474 app/settings_page.php:853
+msgid "Disables Plugin Custom fields."
+msgstr ""
+
+#: app/settings_page.php:485
+msgid "Cron and Scheduler Settings"
+msgstr ""
+
+#: app/settings_page.php:488
+msgid "Disable WPeMatico schedulings"
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:492
+msgid "You must set up a cron job that calls:"
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:494 app/settings_page.php:514
+msgid "or URL:"
+msgstr ""
+
+#: app/settings_page.php:497
+msgid "Set a password to access the external CRON"
+msgstr ""
+
+#: app/settings_page.php:500
+msgid "Type the password to use the external CRON"
+msgstr ""
+
+#: app/settings_page.php:502
+msgid "Paste a generated a ramdon string."
+msgstr ""
+
+#: app/settings_page.php:503
+msgid "See text."
+msgstr ""
+
+#: app/settings_page.php:510
+msgid "Disable all WP_Cron"
+msgstr ""
+
+#: app/settings_page.php:512
+msgid ""
+"To run the wordpress cron with external cron you can set up a cron job that "
+"calls:"
+msgstr ""
+
+#: app/settings_page.php:517
+msgid ""
+"This set <code>DISABLE_WP_CRON</code> to <code>true</code>, then the <a href="
+"\"https://core.trac.wordpress.org/browser/tags/4.2.3/src/wp-includes/cron."
+"php#L314\" target=\"_blank\">current cron process should be killed</a>."
+msgstr ""
+
+#: app/settings_page.php:519
+msgid ""
+"You can find more info about WP Cron and also few steps to configure "
+"external crons:"
+msgstr ""
+
+#: app/settings_page.php:520
+msgid "here"
+msgstr ""
+
+#: app/settings_page.php:525
+msgid "Log file for external Cron"
+msgstr ""
+
+#: app/settings_page.php:535
+msgid "Other Tools"
+msgstr ""
+
+#: app/settings_page.php:540
+msgid "Disable metabox Wpematico Campaign Info in post editing"
+msgstr ""
+
+#: app/settings_page.php:548 app/settings_page.php:902
+msgid "Shows Button to empty trash on lists."
+msgstr ""
+
+#: app/settings_page.php:550
+msgid "Select (custom) post types you want."
+msgstr ""
+
+#: app/settings_page.php:577
+msgid "Disable <b><i>WP Dashboard Widget</i></b>"
+msgstr ""
+
+#: app/settings_page.php:579
+msgid "User roles to show Dashboard widget:"
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:654
+msgid "Settings saved."
+msgstr ""
+
+#: app/settings_page.php:669
+msgid "Global Settings For Images."
+msgstr ""
+
+#: app/settings_page.php:670
+msgid ""
+"Set this features for all campaigns and can be overridden inside any "
+"campaign."
+msgstr ""
+
+#: app/settings_page.php:673
+msgid "Cache Images. (Uploads)"
+msgstr ""
+
+#: app/settings_page.php:674
+msgid ""
+"When Cache Images is on, a copy of every image found in content of every "
+"feed item (only in &lt;img&gt; tags) is downloaded to the Wordpress UPLOADS "
+"Dir."
+msgstr ""
+
+#: app/settings_page.php:675
+msgid ""
+"If not enabled all images will be linked to the image owner's server, but "
+"also make your website faster for your visitors."
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:676
+msgid "Caching all images"
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:677 app/settings_page.php:725
+#: app/settings_page.php:755
+msgid ""
+"This featured in the general Settings section, will be overridden for the "
+"campaign-specific options."
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:681
+msgid "Image Attaching"
+msgstr ""
+
+#: app/settings_page.php:682
+msgid ""
+"When Uploads images to Wordpress (and everything is working fine), every "
+"image attached is added to the Wordpress Media."
+msgstr ""
+
+#: app/settings_page.php:683
+msgid ""
+"If enable this feature all the images will be attached to its owner post in "
+"WP media library."
+msgstr ""
+
+#: app/settings_page.php:684 app/settings_page.php:732
+#: app/settings_page.php:762
+msgid ""
+"If you see that the job process is too slowly you can deactivate this here."
+msgstr ""
+
+#: app/settings_page.php:685 app/settings_page.php:733
+#: app/settings_page.php:763
+msgid "This feature may not work if you use the Custom Function for Uploads."
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:689 app/settings_page.php:691
+#: app/settings_page.php:696 app/settings_page.php:698
+#: app/settings_page.php:737 app/settings_page.php:739
+#: app/settings_page.php:767 app/settings_page.php:769
+msgid "Note"
+msgstr ""
+
+#: app/settings_page.php:690
+msgid ""
+"If is selected and the image upload give error, then will delete the &lt;"
+"img&gt; HTML tag from the content. Check this to don't link images from "
+"external sites."
+msgstr ""
+
+#: app/settings_page.php:692
+msgid ""
+"If the image are inside &lt;a&gt; tags, then the link is also removed from "
+"content."
+msgstr ""
+
+#: app/settings_page.php:699
+msgid ""
+"If the srcset attribute does not exist the image processing will work "
+"normally."
+msgstr ""
+
+#: app/settings_page.php:706
+msgid "Read about"
+msgstr ""
+
+#: app/settings_page.php:706
+msgid "Post Thumbnails"
+msgstr ""
+
+#: app/settings_page.php:711
+msgid ""
+"Useful if you have double image in your posts pages or if you don't want to "
+"show the image in content for any reason."
+msgstr ""
+
+#: app/settings_page.php:717
+msgid ""
+"Try it at your own risk, if you see that the images are not loading, uncheck "
+"it."
+msgstr ""
+
+#: app/settings_page.php:718
+msgid ""
+"Also uncheck this if you need all sizes of wordpress images. The WP process "
+"can take too much resources if many images are uploaded at a time."
+msgstr ""
+
+#: app/settings_page.php:721
+msgid "Cache Audios. (Uploads)"
+msgstr ""
+
+#: app/settings_page.php:722
+msgid ""
+"When Cache Audios is on, a copy of every audio found in content of every "
+"feed item (only in &lt;audio&gt; tags) is downloaded to the Wordpress "
+"UPLOADS Dir."
+msgstr ""
+
+#: app/settings_page.php:723
+msgid ""
+"If not enabled all audios will be linked to the audio owner's server, but "
+"also make your website faster for your visitors."
+msgstr ""
+
+#: app/settings_page.php:724
+msgid "Caching all audios"
+msgstr ""
+
+#: app/settings_page.php:729
+msgid "Audio Attaching"
+msgstr ""
+
+#: app/settings_page.php:730
+msgid ""
+"When Uploads audios to Wordpress (and everything is working fine), every "
+"audio attached is added to the Wordpress Media."
+msgstr ""
+
+#: app/settings_page.php:731
+msgid ""
+"If enable this feature all the audios will be attached to its owner post in "
+"WP media library."
+msgstr ""
+
+#: app/settings_page.php:738
+msgid ""
+"If is selected and the audio upload give error, then will delete the &lt;"
+"audio&gt; HTML tag from the content. Check this to don't link audio from "
+"external sites."
+msgstr ""
+
+#: app/settings_page.php:740
+msgid ""
+"If the audio are inside &lt;a&gt; tags, then the link is also removed from "
+"content."
+msgstr ""
+
+#: app/settings_page.php:746
+msgid ""
+"Try it at your own risk, if you see that the audios are not loading, uncheck "
+"it."
+msgstr ""
+
+#: app/settings_page.php:747
+msgid ""
+"Also uncheck this if you need all sizes of wordpress audios. The WP process "
+"can take too much resources if many audios are uploaded at a time."
+msgstr ""
+
+#: app/settings_page.php:751
+msgid "Cache Videos. (Uploads)"
+msgstr ""
+
+#: app/settings_page.php:752
+msgid ""
+"When Cache Videos is on, a copy of every video found in content of every "
+"feed item (only in &lt;video&gt; tags) is downloaded to the Wordpress "
+"UPLOADS Dir."
+msgstr ""
+
+#: app/settings_page.php:753
+msgid ""
+"If not enabled all videos will be linked to the video owner's server, but "
+"also make your website faster for your visitors."
+msgstr ""
+
+#: app/settings_page.php:754
+msgid "Caching all videos"
+msgstr ""
+
+#: app/settings_page.php:759
+msgid "Video Attaching"
+msgstr ""
+
+#: app/settings_page.php:760
+msgid ""
+"When Uploads videos to Wordpress (and everything is working fine), every "
+"video attached is added to the Wordpress Media."
+msgstr ""
+
+#: app/settings_page.php:761
+msgid ""
+"If enable this feature all the videos will be attached to its owner post in "
+"WP media library."
+msgstr ""
+
+#: app/settings_page.php:768
+msgid ""
+"If is selected and the video upload give error, then will delete the &lt;"
+"video&gt; HTML tag from the content. Check this to don't link videos from "
+"external sites."
+msgstr ""
+
+#: app/settings_page.php:770
+msgid ""
+"If the video are inside &lt;a&gt; tags, then the link is also removed from "
+"content."
+msgstr ""
+
+#: app/settings_page.php:776
+msgid ""
+"Try it at your own risk, if you see that the videos are not loading, uncheck "
+"it."
+msgstr ""
+
+#: app/settings_page.php:777
+msgid ""
+"Also uncheck this if you need all sizes of wordpress videos. The WP process "
+"can take too much resources if many videos are uploaded at a time."
+msgstr ""
+
+#: app/settings_page.php:782
+msgid "Enable Features."
+msgstr ""
+
+#: app/settings_page.php:783
+msgid ""
+"If you need these features in each campaign, you can activate them here. "
+"This is not recommended if you will not use the feature."
+msgstr ""
+
+#: app/settings_page.php:786
+msgid "Word to Categories."
+msgstr ""
+
+#: app/settings_page.php:787
+msgid ""
+"Assign a selected category to the post if a word is found in the content."
+msgstr ""
+
+#: app/settings_page.php:791
+msgid "Rewrite a word or phrase for another in the content of every post."
+msgstr ""
+
+#: app/settings_page.php:796
+msgid "Force Custom Simplepie Library."
+msgstr ""
+
+#: app/settings_page.php:797
+msgid "Check this if you want to ignore Wordpress Simplepie library."
+msgstr ""
+
+#: app/settings_page.php:798
+msgid ""
+"Almost never be necessary.  Just if you have problems with version of "
+"Simplepie installed in Wordpress."
+msgstr ""
+
+#: app/settings_page.php:802
+msgid "Set Simplepie stupidly fast."
+msgstr ""
+
+#: app/settings_page.php:803
+msgid ""
+"Forgoes a substantial amount of data sanitization in favor of speed. This "
+"turns SimplePie into a dumb parser of feeds.  This means all feed content is "
+"gotten without parsers or filters."
+msgstr ""
+
+#: app/settings_page.php:804
+msgid ""
+"Don't strip anything from the content.  All html, style and scripts codes "
+"are included in content."
+msgstr ""
+
+#: app/settings_page.php:805
+msgid "Recommended Just if you really trust in your source feeds"
+msgstr ""
+
+#: app/settings_page.php:806
+msgid ""
+"otherwise you can change the allowed HTML tags and attributes from options "
+"below."
+msgstr ""
+
+#: app/settings_page.php:809
+msgid "Change SimplePie HTML tags to strip."
+msgstr ""
+
+#: app/settings_page.php:810
+msgid ""
+"By Default Simplepie strip these html tags from feed content.  You can "
+"change or allow some tags, for example if you want to allow iframes or embed "
+"code like videos."
+msgstr ""
+
+#: app/settings_page.php:814
+msgid "Change SimplePie HTML attributes to strip."
+msgstr ""
+
+#: app/settings_page.php:815
+msgid ""
+"Simplepie also strip these attributes from html tags in content.  You can "
+"change it if you want to retain some of them or add more attributes to strip."
+msgstr ""
+
+#: app/settings_page.php:821 app/settings_page.php:828
+msgid "Allow option on campaign to skip the content filters."
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:822
+msgid ""
+"NOTE: It is extremely dangerous to allow unfiltered content because there "
+"may be some vulnerability in the source code."
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:823
+msgid "See How WordPress Processes Post Content: "
+msgstr ""
+
+#: app/settings_page.php:824
+msgid ""
+"After Wordpress inserted the post, this option will make an update query to "
+"database with the content of the post to avoid Wordpress filters."
+msgstr ""
+
+#: app/settings_page.php:825
+msgid "Use only with reliable sources."
+msgstr ""
+
+#: app/settings_page.php:829
+msgid ""
+"When a campaign is running and is interrupted by some issue, it cannot be "
+"executed again until click \"Clear Campaign\"."
+msgstr ""
+
+#: app/settings_page.php:830
+msgid ""
+"This option clear campaign after this timeout then can run again on next "
+"scheduled cron. A value of \"0\" ignore this, means that remain until user "
+"make click. "
+msgstr ""
+
+#: app/settings_page.php:831
+msgid "Recommended 300 Seconds. "
+msgstr ""
+
+#: app/settings_page.php:836
+msgid ""
+"This option make a delay after every action of insert a post.  May be useful "
+"if you want to give a break to the server while is fetching many posts.  "
+"Leave on 0 if you don't have any problem."
+msgstr ""
+
+#: app/settings_page.php:841
+msgid ""
+"When the running campaign found a duplicated post the process is interrupted "
+"because assume that all followed posts, are also duplicates.  You can "
+"disable these controls here."
+msgstr ""
+
+#: app/settings_page.php:842
+msgid ""
+"Duplicates checking by hash is a boost to checking for duplicates by title, "
+"which may fail many times."
+msgstr ""
+
+#: app/settings_page.php:843
+msgid "Allowing duplicated posts"
+msgstr ""
+
+#: app/settings_page.php:843
+msgid ""
+"There are two controls for duplicates, title of the post and a hash "
+"generated by last item's url obtained on campaign process."
+msgstr ""
+
+#: app/settings_page.php:848
+msgid ""
+"Unless it is the first time, when finds a duplicate, it means that all "
+"following items were read before. This option avoids and allows jump every "
+"duplicate and continues reading the feed searching more new items. NOT "
+"RECOMMENDED."
+msgstr ""
+
+#: app/settings_page.php:849
+msgid "How it works:"
+msgstr ""
+
+#: app/settings_page.php:849
+msgid ""
+"The feed items are ordered by datetime in almost all cases. When the "
+"campaign runs, goes item by item from newest to oldest, and stops when found "
+"the first duplicated item, this mean that all items following (the old ones) "
+"are also duplicated."
+msgstr ""
+
+#: app/settings_page.php:850
+msgid ""
+"As the hash is checked only by the last retrieved item, selecting this "
+"option may generate duplicate posts if duplicate checking by title does not "
+"work well for a campaign."
+msgstr ""
+
+#: app/settings_page.php:854
+msgid ""
+"This option nulls saving custom fields on every post that campaign publishes."
+msgstr ""
+
+#: app/settings_page.php:855
+msgid ""
+"By default the plugin saves three custom fields on every post with campaign "
+"and source item data."
+msgstr ""
+
+#: app/settings_page.php:856
+msgid ""
+"Necessary for use permalink to source feature, identify which campaign fetch "
+"the post or to make any bulk action on post types related with original "
+"campaign."
+msgstr ""
+
+#: app/settings_page.php:857
+msgid ""
+"Not recommended unless you want to loose this data and features in order to "
+"save DB space."
+msgstr ""
+
+#: app/settings_page.php:858
+msgid "(Enabling this feature don't deletes the previous saved data.)"
+msgstr ""
+
+#: app/settings_page.php:863
+msgid ""
+"This option is ONLY recommended if you continues with duplicates problems in "
+"your site. This can be given by some non-standards feeds.  NOT RECOMMENDED."
+msgstr ""
+
+#: app/settings_page.php:870
+msgid "Disable WPeMatico schedulings."
+msgstr ""
+
+#: app/settings_page.php:871
+msgid "This option deactivate WPeMatico plugin cron schedules."
+msgstr ""
+
+#: app/settings_page.php:872
+msgid ""
+"Affects all campaigns. To run campaigns you must do it manually or with "
+"external cron. (Recommended with External Cron)."
+msgstr ""
+
+#: app/settings_page.php:876
+msgid "Set a password to access the external CRON."
+msgstr ""
+
+#: app/settings_page.php:877
+msgid ""
+"Activate a code to allow or avoid the use of the external cron file.  "
+"Deactivated by default to backward compatibility, but strongly recommended."
+msgstr ""
+
+#: app/settings_page.php:878
+msgid "If this field is not checked the password will be ignored."
+msgstr ""
+
+#: app/settings_page.php:881
+msgid "Type the password to use the external CRON."
+msgstr ""
+
+#: app/settings_page.php:882
+msgid ""
+"This will be the code used in the command to run the cron.  Can be any "
+"string you want to use as ?code=this_code.  Recommended."
+msgstr ""
+
+#: app/settings_page.php:886
+msgid "Disable all WP_Cron."
+msgstr ""
+
+#: app/settings_page.php:887
+msgid ""
+"Check this to deactivate all Wordpress cron schedules. Affects to Wordpress "
+"itself and all other plugins.  Not recommended unless you want to use an "
+"external Cron for your wordpress."
+msgstr ""
+
+#: app/settings_page.php:891
+msgid "Log file for external Cron."
+msgstr ""
+
+#: app/settings_page.php:892
+msgid ""
+"Try to save a file with simple steps taken at run wpe-cron.php. \"%campaign "
+"title%.txt.log\" will be saved on uploads folder or inside plugin, \"app\" "
+"folder.  Recommended on issues with cron."
+msgstr ""
+
+#: app/settings_page.php:898
+msgid "Disable metabox Wpematico Campaign Info in post editing."
+msgstr ""
+
+#: app/settings_page.php:899
+msgid ""
+"This option disables the metabox inside the posts editing screen created by "
+"the WPeMatico."
+msgstr ""
+
+#: app/settings_page.php:903
+msgid ""
+"Just an extra tool to display a button for empty trash folder on every "
+"custom post main screen. May be posts, pages or selects what you want."
+msgstr ""
+
+#: app/settings_page.php:906
+msgid "Disable WP Dashboard Widget"
+msgstr ""
+
+#: app/settings_page.php:907
+msgid ""
+"Check this if you don't want to display the widget dashboard.  Anyway, only "
+"admins will see it."
+msgstr ""
+
+#: app/settings_page.php:911
+msgid "Disable Check Feeds before Save."
+msgstr ""
+
+#: app/settings_page.php:912
+msgid ""
+"Check this if you don't want automatic check feed URLs before save every "
+"campaign."
+msgstr ""
+
+#: app/settings_page.php:915
+msgid "Enable Del Hash."
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:916
+msgid ""
+"Show `Del Hash` link on campaigns list.  This link delete all hash codes for "
+"check duplicates on every feed per campaign."
+msgstr ""
+
+#: app/settings_page.php:919
+msgid "Enable See last log."
+msgstr ""
+
+#: app/settings_page.php:920
+msgid ""
+"Show `See Log` link on campaigns list.  This link show the last processed "
+"log of every campaign."
+msgstr ""
+
+#: app/settings_page.php:923
+msgid "Disable WPeMatico Credits."
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:924
+msgid ""
+"I really appreciate if you can left this option blank to show the plugin's "
+"credits."
+msgstr ""
+
+#: app/settings_page.php:925
+#, php-format
+msgid ""
+"If you can't show the WPeMatico credits in your posts, I really appreciate "
+"if you can take a minute to %s write a 5 star review on Wordpress %s.  :-) "
+"thanks."
+msgstr ""
+
+#: app/settings_page.php:932
+msgid "Sender Email."
+msgstr ""
+
+#: app/settings_page.php:933
+msgid "Email address used as \"FROM\" field in all emails sent by this plugin."
+msgstr ""
+
+#: app/settings_page.php:936
+msgid "Sender Name."
+msgstr ""
+
+#: app/settings_page.php:937
+msgid ""
+"The Name that will show in your inbox related to previous email address for "
+"all emails sent by this plugin."
+msgstr ""
+
+#: app/settings_page.php:949
+msgid "Features only available when you buy the PRO version."
+msgstr ""
+
+#: app/settings_page.php:950
+msgid ""
+"This is for exclude or include posts according to the keywords <b>found</b> "
+"at content or title."
+msgstr ""
+
+# @ wpematico
+#: app/settings_page.php:951
+msgid ""
+"This is for cut, exclude or include posts according to the letters o words "
+"<b>counted</b> at content."
+msgstr ""
+
+#: app/settings_page.php:952
+msgid ""
+"If you want a custom title for posts of a campaign, you can activate here."
+msgstr ""
+
+#: app/settings_page.php:953
+msgid ""
+"This feature generate tags automatically on every published post, on "
+"campaign edit you can disable auto feature and manually enter a list of tags "
+"or leave empty."
+msgstr ""
+
+#: app/settings_page.php:954
+msgid "Add custom fields with values as templates on every post."
+msgstr ""
+
+#: app/settings_page.php:955
+msgid ""
+"If you want to attempt to obtain full items content from source site instead "
+"of the campaign feed, you can activate here."
+msgstr ""
+
+#: app/settings_page.php:956
+msgid ""
+"This option allow you assign an author per feed when editing campaign. If no "
+"choice any author, the campaign author will be taken."
+msgstr ""
+
+#: app/settings_page.php:957
+msgid ""
+"On campaign edit you can import, copy & paste in a textarea field, a list of "
+"feed addresses with/out author names."
+msgstr ""
+
+#: app/wpematico_functions.php:234
+msgid "- WordPress 3.9 or higher needed!"
+msgstr ""
+
+#: app/wpematico_functions.php:238
+msgid "- PHP 5.3.0 or higher needed!"
+msgstr ""
+
+#: app/wpematico_functions.php:250
+msgid "You are using WPeMatico Professional too old."
+msgstr ""
+
+#: app/wpematico_functions.php:251
+msgid "Must install at least <b>WPeMatico Professional</b> "
+msgstr ""
+
+#: app/wpematico_functions.php:252
+msgid "Go to upgrade Now"
+msgstr ""
+
+# @ wpematico
+#: app/wpematico_functions.php:260
+msgid "- WP-Cron don't working please check it!"
+msgstr ""
+
+#: app/wpematico_functions.php:818
+msgid ""
+"<strong>You can force a feed with <a href=\"https://etruel.com/downloads/"
+"wpematico-professional/\">WPeMatico Professional</a></strong>"
+msgstr ""
+
+# @ wpematico
+#: app/wpematico_functions.php:822 app/wpematico_functions.php:832
+#, php-format
+msgid "The feed %s has been parsed successfully."
+msgstr ""
+
+# @ wpematico
+#: app/wpematico_functions.php:825 app/wpematico_functions.php:835
+#, php-format
+msgid "The feed %s cannot be parsed. Simplepie said: %s"
+msgstr ""
+
+#: app/wpematico_functions.php:1087
+msgid "Error with wp_remote_request:"
+msgstr ""
+
+#: app/wpematico_functions.php:1090
+msgid "Error with wp_remote_get:"
+msgstr ""
+
+#: app/wpematico_functions.php:1210
+msgid "5 Stars Ratings on Wordpress"
+msgstr ""
+
+#: wpematico.php:37
+msgid "PHP 5.3.0 or higher needed!"
+msgstr ""
+
+#: wpematico_class.php:142
+msgid "Empty Trash"
+msgstr ""
+
+# @ wpematico
+#: wpematico_class.php:159
+msgid "Last Processed Campaigns:"
+msgstr ""
+
+# @ wpematico
+#: wpematico_class.php:165 wpematico_class.php:198 wpematico_class.php:230
+msgid "Edit Campaign"
+msgstr ""
+
+# @ wpematico
+#: wpematico_class.php:175 wpematico_class.php:177
+#, php-format
+msgid "Fetch done in %1s sec."
+msgstr ""
+
+# @ wpematico
+#: wpematico_class.php:192
+msgid "Next Scheduled Campaigns:"
+msgstr ""
+
+# @ wpematico
+#: wpematico_class.php:226
+msgid "Campaigns"
+msgstr ""
+
+# @ wpematico
+#: wpematico_class.php:227
+msgid "Campaign"
+msgstr ""
+
+# @ wpematico
+#: wpematico_class.php:228
+msgid "Add New"
+msgstr ""
+
+# @ wpematico
+#: wpematico_class.php:229
+msgid "Add New Campaign"
+msgstr ""
+
+# @ wpematico
+#: wpematico_class.php:231
+msgid "New Campaign"
+msgstr ""
+
+# @ wpematico
+#: wpematico_class.php:232
+msgid "All Campaigns"
+msgstr ""
+
+# @ wpematico
+#: wpematico_class.php:233
+msgid "View Campaign"
+msgstr ""
+
+# @ wpematico
+#: wpematico_class.php:234
+msgid "Search Campaign"
+msgstr ""
+
+# @ wpematico
+#: wpematico_class.php:235
+msgid "No campaign found"
+msgstr ""
+
+# @ wpematico
+#: wpematico_class.php:236
+msgid "No Campaign found in Trash"
+msgstr ""
+
+#: wpematico_class.php:281
+msgid ""
+"Activate this setting if you can't see WPeMatico menu at left under Posts "
+"menu item."
+msgstr ""
+
+#: wpematico_class.php:292
+msgid ""
+"Activate this setting if you have problems with the addons page to see them "
+"in your plugin page like any other plugin."
+msgstr ""
+
+#: wpematico_class.php:303
+msgid ""
+"Activate this setting if you don't see the WPeMatico Settings page complete "
+"or can't read externals URLs."
+msgstr ""
+
+#: wpematico_class.php:343
+msgid ""
+"If you don't see the WPeMatico Menu may be another plugin or a custom menu "
+"added by your theme are \"overwritten\" the WPeMatico menu position."
+msgstr ""
+
+#: wpematico_class.php:344
+msgid ""
+"Click the checkbox \"Reset Menu Position\" to show the menu on last position "
+"in your Wordpress menu."
+msgstr ""
+
+#: wpematico_class.php:346
+msgid ""
+"If you can't see well the WPeMatico Settings page is probable that you are "
+"having problems to read external wordpress web pages from your server."
+msgstr ""
+
+#: wpematico_class.php:347
+msgid ""
+"Click the checkbox \"Hide Reviews on Settings\" to avoid this and show just "
+"a link to Wordpress reviews page."
+msgstr ""
+
+#: wpematico_class.php:351
+msgid ""
+"You must click the Save Changes button at the bottom of the screen for new "
+"settings to take effect."
+msgstr ""
+
+#: wpematico_class.php:390
+msgid "Invalid email."
+msgstr ""

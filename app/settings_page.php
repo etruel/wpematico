@@ -796,7 +796,7 @@ function wpematico_helpsettings($dev=''){
 				'title' => __('Force Custom Simplepie Library.', 'wpematico' ),
 				'tip' => __('Check this if you want to ignore Wordpress Simplepie library.', 'wpematico' ) . " " . 
 					__('Almost never be necessary.  Just if you have problems with version of Simplepie installed in Wordpress.', 'wpematico' ),
-				'plustip' => __('', 'wpematico' ),
+				// 'plustip' => __('', 'wpematico' ),
 			),
 			'stupidly_fast' => array( 
 				'title' => __('Set Simplepie stupidly fast.', 'wpematico' ),
@@ -808,12 +808,12 @@ function wpematico_helpsettings($dev=''){
 			'strip_htmltags' => array( 
 				'title' => __('Change SimplePie HTML tags to strip.', 'wpematico' ),
 				'tip' => __('By Default Simplepie strip these html tags from feed content.  You can change or allow some tags, for example if you want to allow iframes or embed code like videos.', 'wpematico' ),
-				'plustip' => __('', 'wpematico' ),
+				// 'plustip' => __('', 'wpematico' ),
 			),
 			'strip_htmlattr' => array( 
 				'title' => __('Change SimplePie HTML attributes to strip.', 'wpematico' ),
 				'tip' => __('Simplepie also strip these attributes from html tags in content.  You can change it if you want to retain some of them or add more attributes to strip.', 'wpematico' ),
-				'plustip' => __('', 'wpematico' ),
+				// 'plustip' => __('', 'wpematico' ),
 			),
 		),
 		'Advanced Fetching' => array( 
@@ -829,12 +829,12 @@ function wpematico_helpsettings($dev=''){
 				'tip' => __('When a campaign is running and is interrupted by some issue, it cannot be executed again until click "Clear Campaign".', 'wpematico' ).'<br>'.
 					__('This option clear campaign after this timeout then can run again on next scheduled cron. A value of "0" ignore this, means that remain until user make click. ', 'wpematico' )."<br />". 
 					__('Recommended 300 Seconds. ', 'wpematico' ),
-				'plustip' => __('', 'wpematico' ),
+				// 'plustip' => __('', 'wpematico' ),
 			),
 			'throttle' => array( 
 				'title' => __('Add a throttle/delay in seconds after every post.', 'wpematico' ),
 				'tip' => __('This option make a delay after every action of insert a post.  May be useful if you want to give a break to the server while is fetching many posts.  Leave on 0 if you don\'t have any problem.', 'wpematico' ),
-				'plustip' => __('', 'wpematico' ),
+				// 'plustip' => __('', 'wpematico' ),
 			),
 			'allowduplicates' => array( 
 				'title' => __('Deactivate duplicate controls.', 'wpematico' ),
@@ -856,12 +856,12 @@ function wpematico_helpsettings($dev=''){
 					. __('Necessary for use permalink to source feature, identify which campaign fetch the post or to make any bulk action on post types related with original campaign.', 'wpematico' ) .'<br>'
 					. __('Not recommended unless you want to loose this data and features in order to save DB space.', 'wpematico' ) .'<br>'
 					. __('(Enabling this feature don\'t deletes the previous saved data.)', 'wpematico' ),
-				'plustip' => __('', 'wpematico' ),
+				// 'plustip' => __('', 'wpematico' ),
 			),
 			'add_extra_duplicate_filter_meta_source' => array( 
 				'title' => __('Add an extra duplicate filter by source permalink in meta field value.', 'wpematico' ),
 				'tip' => __('This option is ONLY recommended if you continues with duplicates problems in your site. This can be given by some non-standards feeds.  NOT RECOMMENDED.', 'wpematico' ),
-				'plustip' => __('', 'wpematico' ),
+				// 'plustip' => __('', 'wpematico' ),
 			),
 			
 		),
@@ -870,7 +870,7 @@ function wpematico_helpsettings($dev=''){
 				'title' => __('Disable WPeMatico schedulings.', 'wpematico' ),
 				'tip' => __('This option deactivate WPeMatico plugin cron schedules.', 'wpematico' ).'<br>'.
 					__('Affects all campaigns. To run campaigns you must do it manually or with external cron. (Recommended with External Cron).', 'wpematico' ),
-				'plustip' => __('', 'wpematico' ),
+				// 'plustip' => __('', 'wpematico' ),
 			),
 			'set_cron_code' => array( 
 				'title' => __('Set a password to access the external CRON.', 'wpematico' ),
@@ -880,17 +880,17 @@ function wpematico_helpsettings($dev=''){
 			'cron_code' => array( 
 				'title' => __('Type the password to use the external CRON.', 'wpematico' ),
 				'tip' => __('This will be the code used in the command to run the cron.  Can be any string you want to use as ?code=this_code.  Recommended.', 'wpematico' ),
-				'plustip' => __('', 'wpematico' ),
+				// 'plustip' => __('', 'wpematico' ),
 			),
 			'disablewpcron' => array( 
 				'title' => __('Disable all WP_Cron.', 'wpematico' ),
 				'tip' => __('Check this to deactivate all Wordpress cron schedules. Affects to Wordpress itself and all other plugins.  Not recommended unless you want to use an external Cron for your wordpress.', 'wpematico' ),
-				'plustip' => __('', 'wpematico' ),
+				// 'plustip' => __('', 'wpematico' ),
 			),
 			'logexternalcron' => array( 
 				'title' => __('Log file for external Cron.', 'wpematico' ),
 				'tip' => __('Try to save a file with simple steps taken at run wpe-cron.php. "%campaign title%.txt.log" will be saved on uploads folder or inside plugin, "app" folder.  Recommended on issues with cron.', 'wpematico' ),
-				'plustip' => __('', 'wpematico' ),
+				// 'plustip' => __('', 'wpematico' ),
 			),
 		),
 		'Other tools & Advanced' => array( 
@@ -905,7 +905,7 @@ function wpematico_helpsettings($dev=''){
 			'disabledashboard' => array( 
 				'title' => __('Disable WP Dashboard Widget', 'wpematico' ),
 				'tip' => __('Check this if you don\'t want to display the widget dashboard.  Anyway, only admins will see it.', 'wpematico' ),
-				'plustip' => __('', 'wpematico' ),
+				// 'plustip' => __('', 'wpematico' ),
 			),
 			'disablecheckfeeds' => array( 
 				'title' => __('Disable Check Feeds before Save.', 'wpematico' ),
