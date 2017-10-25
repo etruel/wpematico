@@ -464,7 +464,11 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 
 		$nivelerror = error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
-		$campaign = WPeMatico::get_campaign ($post_id);
+		$campaign = WPeMatico::get_campaign($post_id);
+
+		$_POST['post_status'] =  (!isset($_POST['post_status']) ) ? 'publish': $_POST['post_status'];
+		$_POST['publish'] =  (!isset($_POST['publish']) ) ? 'publish': $_POST['publish'];
+
 		$_POST['postscount']	= (!isset($campaign['postscount']) ) ? 0: (int)$campaign['postscount'];
 		$_POST['lastpostscount']	= (!isset($campaign['lastpostscount']) ) ? '': (int)$campaign['lastpostscount'];
 		$_POST['lastrun']	= (!isset($campaign['lastrun']) ) ? 0: (int)$campaign['lastrun'];

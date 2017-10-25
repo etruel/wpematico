@@ -2,7 +2,9 @@ jQuery(document).ready(function($){
 
 	events_submit_post($);
 	wpe_others_events($);
-
+	if ($('input[name="original_post_status"]').val() != 'publish') {
+		$('#post').change();
+	}
 	$('button[btn-href]').click(function(e) {
 		location.href = $(this).attr('btn-href');
 	});
@@ -306,80 +308,81 @@ delete_feed_url = function(row_id){
 }
 
 function events_submit_post($) {
+	
 	$('#post').submit( function(e) {		//checkfields
 
 		// Skip validation if already validated
-	    if ( $(this).data('campaign_valid') ) {
-	        return;
+	    if (! $(this).data('campaign_valid') ) {
+	       var $formpost = $(this);
+		    // Make sure the browser doesn't submit the form
+	    	e.preventDefault();
+	    	var $spinner = $('#major-publishing-actions #publishing-action .spinner');
+	    	$spinner.addClass('is-active');
+			var $submitButtons = $formpost.find(':submit, a.submitdelete, #post-preview');
+			$submitButtons.addClass('disabled');
+
+
+			$('#wpcontent .ajax-loading').attr('style',' visibility: visible;');
+			
+			var error = false;
+			var wrd2cat= $('input[name^="campaign_wrd2cat[word]"]').serialize();
+			var wrd2cat_regex  = new Array();
+			$(".w2cregex").each(function() {
+				if ( true == $(this).is(':checked')) {
+					wrd2cat_regex.push('1');
+				} else {
+					wrd2cat_regex.push('0');
+				}
+			});
+
+			var reword = $("textarea[name^='campaign_word_origin']").serialize();
+			var reword_regex  = new Array();
+			$("input[name^='campaign_word_option_regex']").each(function() {
+				if ( true == $(this).is(':checked')) {
+					reword_regex.push('1');
+				} else {
+					reword_regex.push('0');
+				}
+			});
+			var reword_title  = new Array();
+			$("input[name^='campaign_word_option_title']").each(function() {
+				if ( true == $(this).is(':checked')) {
+					reword_title.push('1');
+				} else {
+					reword_title.push('0');
+				}
+			});
+
+			var feeds = $("input[name*='campaign_feeds']").serialize();
+						
+			var data = {
+				campaign_feeds: feeds,
+				campaign_word_origin: reword,
+				campaign_word_option_regex: reword_regex,
+				campaign_word_option_title: reword_title,
+				campaign_wrd2cat: wrd2cat,
+				campaign_wrd2cat_regex: wrd2cat_regex,
+				action: "wpematico_checkfields"
+			};
+			$.post(ajaxurl, data, function(todok){  //si todo ok devuelve 1 sino el error
+				if( todok != 1 ) {
+		            error=true;
+		            msg=todok;
+		            $('#fieldserror').remove();
+		            $("#poststuff").prepend('<div id="fieldserror" class="error fade">ERROR: '+msg+'</div>');
+		            $('#wpcontent .ajax-loading').attr('style',' visibility: hidden;');
+		        	$spinner.removeClass('is-active');
+		            $submitButtons.removeClass('disabled');
+		        } else {
+		            $formpost.data('campaign_valid', true);
+		            error=false;  //then submit campaign
+		            $('.w2ccases').removeAttr('disabled'); //si todo bien habilito los check para que los tome el php
+		            //$formpost.submit();
+		            $submitButtons.removeClass('disabled');
+		            $('input[name="publish"]').click();
+		        }
+			});
 	    }
-	    var $formpost = $(this);
-	    // Make sure the browser doesn't submit the form
-    	e.preventDefault();
-    	var $spinner = $('#major-publishing-actions #publishing-action .spinner');
-    	$spinner.addClass('is-active');
-		var $submitButtons = $formpost.find(':submit, a.submitdelete, #post-preview');
-		$submitButtons.addClass('disabled');
-
-
-		$('#wpcontent .ajax-loading').attr('style',' visibility: visible;');
-		
-		var error = false;
-		var wrd2cat= $('input[name^="campaign_wrd2cat[word]"]').serialize();
-		var wrd2cat_regex  = new Array();
-		$(".w2cregex").each(function() {
-			if ( true == $(this).is(':checked')) {
-				wrd2cat_regex.push('1');
-			} else {
-				wrd2cat_regex.push('0');
-			}
-		});
-
-		var reword = $("textarea[name^='campaign_word_origin']").serialize();
-		var reword_regex  = new Array();
-		$("input[name^='campaign_word_option_regex']").each(function() {
-			if ( true == $(this).is(':checked')) {
-				reword_regex.push('1');
-			} else {
-				reword_regex.push('0');
-			}
-		});
-		var reword_title  = new Array();
-		$("input[name^='campaign_word_option_title']").each(function() {
-			if ( true == $(this).is(':checked')) {
-				reword_title.push('1');
-			} else {
-				reword_title.push('0');
-			}
-		});
-
-		var feeds = $("input[name*='campaign_feeds']").serialize();
-					
-		var data = {
-			campaign_feeds: feeds,
-			campaign_word_origin: reword,
-			campaign_word_option_regex: reword_regex,
-			campaign_word_option_title: reword_title,
-			campaign_wrd2cat: wrd2cat,
-			campaign_wrd2cat_regex: wrd2cat_regex,
-			action: "wpematico_checkfields"
-		};
-		$.post(ajaxurl, data, function(todok){  //si todo ok devuelve 1 sino el error
-			if( todok != 1 ) {
-	            error=true;
-	            msg=todok;
-	            $('#fieldserror').remove();
-	            $("#poststuff").prepend('<div id="fieldserror" class="error fade">ERROR: '+msg+'</div>');
-	            $('#wpcontent .ajax-loading').attr('style',' visibility: hidden;');
-	        	$spinner.removeClass('is-active');
-	            $submitButtons.removeClass('disabled');
-	        } else {
-	            $formpost.data('campaign_valid', true);
-	            error=false;  //then submit campaign
-	            $('.w2ccases').removeAttr('disabled'); //si todo bien habilito los check para que los tome el php
-	            $formpost.submit();
-	        }
-		});
-		
 	});
 }
 
