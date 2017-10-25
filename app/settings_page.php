@@ -129,11 +129,14 @@ function wpematico_settings(){
 	$helptip=wpematico_helpsettings('tips')
 	
 	?>
-	<div class="wrap2">
+	<div class="wrap">
 		<h2><?php _e( 'WPeMatico settings', 'wpematico' );?></h2>
 		<div id="poststuff" class="metabox-holder has-right-sidebar">
 			<form method="post" action="" autocomplete="off" >
-			<?php  wp_nonce_field('wpematico-settings'); ?>
+			<?php  wp_nonce_field('wpematico-settings'); 
+			        /* Used to save closed meta boxes and their order */
+				wp_nonce_field( 'meta-box-order', 'meta-box-order-nonce', false );
+				wp_nonce_field( 'closedpostboxes', 'closedpostboxesnonce', false ); ?>
 			<div id="side-info-column" class="inner-sidebar">
 				<div id="side-sortables" class="meta-box-sortables ui-sortable">
 					<div class="postbox inside">
@@ -158,7 +161,7 @@ function wpematico_settings(){
 							</p>
 							<p><?php _e( 'Thanks for use & test this plugin.', 'wpematico' );?></p>
 							<p></p>
-							<p><?php _e( 'If you like it and want to thank, you can write a 5 star review on Wordpress.', 'wpematico' );?></p>
+							<p><?php _e( 'If you like this plugin, you can write a 5 star review on Wordpress.', 'wpematico' );?></p>
 							<style type="text/css">#linkrate:before { content: "\2605\2605\2605\2605\2605";font-size: 18px;}
 							#linkrate { font-size: 18px;}</style>
 							<p style="text-align: center;">
@@ -194,6 +197,7 @@ function wpematico_settings(){
 							?></span>
 						</div>
 
+
 					<div class="postbox">
 						<h3 class="handle"><?php _e( 'Sending e-Mails', 'wpematico' );?></h3>
 						<div class="inside">
@@ -215,13 +219,68 @@ function wpematico_settings(){
 					</div>
 					</div>
 
+					<div class="postbox"></div>
+					
+					<div id="promo-extended" class="postbox " >
+						<button type="button" class="handlediv" aria-expanded="true"><span class="screen-reader-text">Toggle panel: Pro version</span><span class="toggle-indicator" aria-hidden="true"></span></button>
+						<h2 class='hndle'><span>PRO Bundled Extension</span></h2>
+						<div class="inside">
+							<div class="sidebar-promo worker" id="sidebar-promo">
+								
+								<h3><span class="dashicons dashicons-welcome-learn-more" style="font-size-adjust: 1;width: 50px;"></span><?php _e('Extended functionalities','wpematico'); ?></h3>
+								<p>
+									<?php echo sprintf(__('%s plus %s AddOns makes the %s bundled package with the most wanted functionalities.').'  ', 
+										'<strong>Professional</strong>',
+										'<strong>Full Content</strong>',
+										'<a href="https://etruel.com/downloads/wpematico-pro/" target="_blank" rel="noopener"><strong>PRO</strong></a>');?> 
+									<span>
+									<?php _e('Lot of new features with contents, images, tags, filters, custom fields, custom feed tags and much more extends in the WPeMatico free plugin, going further than RSS feed limits and takes you to a new experience.','wpematico'); ?>
+									</span>
+								</p>
+								<a class="button button-primary" title="Features and prices" href="https://etruel.com/downloads/wpematico-pro/" target="_blank"><?php _e('WPeMatico PRO Page','wpematico'); ?></a>
+							</div>
+						</div>
+					</div>
+
+					<div id="promo-content" class="postbox " >
+						<button type="button" class="handlediv" aria-expanded="true"><span class="screen-reader-text">Toggle panel: Support</span><span class="toggle-indicator" aria-hidden="true"></span></button><h2 class='hndle'><span>Support</span></h2>
+						<div class="inside">
+							<div class="sidebar-promo" id="sidebar-promo">
+								<h3><span class="dashicons dashicons-sos" style="font-size-adjust: 1;width: 50px;"></span><?php _e('Have some questions?', 'wpematico'); ?></h3>
+								<p>
+									<?php _e('You may find answers at our', 'wpematico'); ?> <a target="_blank" href="https://etruel.com/faqs/">FAQ</a><br><?php _e('You may', 'wpematico'); ?> <a target="_blank" href="https://etruel.com/my-account/support/"><?php _e('contact us', 'wpematico'); ?></a> <?php _e('with customization requests and suggestions.', 'wpematico'); ?><br> 
+									<?php _e('Please visit our website to learn about our free and premium services at', 'wpematico'); ?> <a href="https://etruel.com/downloads/premium-support/" target="_blank" title="etruel.com">etruel.com</a>
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div id="promo-translate" class="postbox " >
+						<button type="button" class="handlediv" aria-expanded="true"><span class="screen-reader-text">Toggle panel: Translation</span><span class="toggle-indicator" aria-hidden="true"></span></button><h2 class='hndle'><span>Translation</span></h2>
+						<div class="inside">
+							<div class="sidebar-promo" id="sidebar-translate">
+								<h3 class="translate"><span class="dashicons dashicons-translation" style="font-size-adjust: 1;width: 50px;"></span><?php _e('Translation friendly', 'wpematico'); ?></h3>
+								<p><?php _e('Want to improve the texts or translate the plugin to your native language?', 'wpematico'); ?></p>
+								<label style="text-align: center;font-weight: bold;margin: 10px;" onclick="jQuery('#howtranslate').toggle();">Show / Hide steps</label>
+								<ol id="howtranslate" style="display: none;">
+									Download <a href="https://poedit.net/wordpress" target="_blank" title="See the docs">Poedit</a>.<br />
+									Download <a href="https://downloads.wordpress.org/plugin/wpematico.zip" target="_blank" title="Get it from wp.org">WPeMatico</a>.<br />
+									<li>Launch Poedit.</li>
+									<li>Edit a translation using existing .po file in lang folder.
+										In case if you find errors in existing translations.</li>
+									<li>Create new translation to translate into new language.</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+
 					<div class="postbox inside">
-						<h3 class="handle"><?php _e( 'ShortPixel', 'wpematico' );?></h3>
+						<h3 class="handle"><?php _e('ShortPixel', 'wpematico'); ?></h3>
 						<div class="inside" id="sp_content">
-							<?php _e( 'Join to ShortPixel and optimize your images without compromising on quality.', 'wpematico' );?>
+							<?php _e('Join to ShortPixel and optimize your images without compromising on quality.', 'wpematico'); ?>
 							<img src="https://shortpixel.com/img/logo.png">
 							<br/>
-							<a class="button" target="_blank" href="https://shortpixel.com/h/af/QMVAHE4246413"><?php _e( 'Get ShortPixel API Key', 'wpematico' );?></a>
+							<a class="button" target="_blank" href="https://shortpixel.com/h/af/QMVAHE4246413"><?php _e('Get ShortPixel API Key', 'wpematico'); ?></a>
 						</div>
 					</div>
 
@@ -614,8 +673,9 @@ function wpematico_settings(){
 				</div>
 				</div>
 				</div>
-			</div>
-			</form>
+			
+			</form>		
+		</div>
 
 		</div>
 	<?php

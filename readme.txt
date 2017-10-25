@@ -262,6 +262,12 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
+= 1.8.1 Oct 25, 2017 =
+* Added "Find in title" option in the Words to Categories feature.
+* Tweaks in the Campaign control panel behavior in new campaigns.
+* Tweaks in the Settings page to use the standard WordPress’ UI: Meta Boxes.
+* Fixes "Draft" status in new campaigns.
+
 = 1.8 Oct 20, 2017 =
 * **Major release - Recommended to test it in development ambients before update**
 * Added a Campaign Control Panel with campaign info inside the editing screen.

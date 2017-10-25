@@ -1,8 +1,8 @@
 jQuery(document).ready(function($){
 
-	$('.handlediv').click(function() { 
-		$(this).parent().toggleClass('closed');
-	});
+//	$('.handlediv').click(function() { 
+//		$(this).parent().toggleClass('closed');
+//	});
 
 	jQuery('#mailsndemail').blur(function() {
 		var x = jQuery(this).val();
@@ -122,4 +122,15 @@ jQuery(document).ready(function($){
 
 jQuery(function(){
 	jQuery(".help_tip").tipTip({maxWidth: "300px", edgeOffset: 5,fadeIn:50,fadeOut:50, keepAlive:true, defaultPosition: "right"});
+});
+
+//Metaboxes on Settings
+jQuery(document).on('ready', function($){
+    postboxes.save_state = function(){
+        return;
+    };
+    postboxes.save_order = function(){
+        return;
+    };
+    postboxes.add_postbox_toggles();
 });
