@@ -126,7 +126,16 @@ function wpematico_settings(){
 	$cfg['mailsndname']		= (!($cfg['mailsndname']) or empty($cfg['mailsndname']) ) ? 'WPeMatico Log' : $cfg['mailsndname'];
 	//$cfg['mailpass']		= (!($cfg['mailpass']) or empty($cfg['mailpass']) ) ? '' : bas 64_ d co d ($cfg['mailpass']);
 
-	$helptip=wpematico_helpsettings('tips')
+	$helptip=wpematico_helpsettings('tips');
+
+
+					
+	$get_current_screen = get_current_screen();
+	$closed_post_boxes = get_user_option('closedpostboxes_'.$get_current_screen->id);
+	if ( !is_array( $closed_post_boxes ) ) {
+		$closed_post_boxes = array( '' );
+	} 
+				
 	
 	?>
 	<div class="wrap">
@@ -136,7 +145,7 @@ function wpematico_settings(){
 			<?php  wp_nonce_field('wpematico-settings'); 
 			        /* Used to save closed meta boxes and their order */
 				wp_nonce_field( 'meta-box-order', 'meta-box-order-nonce', false );
-				wp_nonce_field( 'closedpostboxes', 'closedpostboxesnonce', false ); ?>
+				wp_nonce_field( 'closedpostboxes', 'closedpostboxesnonce', false ); ?> ?>
 			<div id="side-info-column" class="inner-sidebar">
 				<div id="side-sortables" class="meta-box-sortables ui-sortable">
 					<div class="postbox inside">
@@ -302,7 +311,9 @@ function wpematico_settings(){
 				<div id="post-body-content">
 				<div id="normal-sortables" class="meta-box-sortables ui-sortable">
 
-				<div id="imgs" class="postbox">
+				<div id="imgs" class="postbox <?php echo (in_array('imgs', $closed_post_boxes ) ? 'closed' : ''); ?>">
+
+					<input class="hide-postbox-tog" name="imgs-hide" type="checkbox" id="imgs-hide" value="imgs" <?php checked( in_array('imgs', $closed_post_boxes ), true, true ); ?>/>
 					<button type="button" class="handlediv button-link" aria-expanded="true">
 							<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
 							<span class="toggle-indicator" aria-hidden="true"></span>

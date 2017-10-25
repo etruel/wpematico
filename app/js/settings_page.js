@@ -126,11 +126,5 @@ jQuery(function(){
 
 //Metaboxes on Settings
 jQuery(document).on('ready', function($){
-    postboxes.save_state = function(){
-        return;
-    };
-    postboxes.save_order = function(){
-        return;
-    };
-    postboxes.add_postbox_toggles();
+    postboxes.add_postbox_toggles('wpematico_page_wpematico_settings');
 });
