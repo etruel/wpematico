@@ -392,6 +392,8 @@ if ( !class_exists( 'WPeMatico' ) ) {
 								);
 			wp_localize_script('wpematico_settings_page', 'wpematico_object', $wpematico_object);
 					
+			/* Add screen option: user can choose between 1 or 2 columns (default 2) */
+			//add_screen_option('layout_columns', array('max' => 2, 'default' => 2) );
 
 		}
 
