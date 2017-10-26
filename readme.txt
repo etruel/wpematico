@@ -1032,7 +1032,7 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 1.8 =
+= 1.8.1 =
 * **Enlarges the version required for the Professional addons to 1.8**
 * **Recommended to test it in development ambients before update**
 * Many improvements and fixes. See changelog for more details.
