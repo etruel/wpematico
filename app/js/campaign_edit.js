@@ -379,7 +379,8 @@ function events_submit_post($) {
 		            $('.w2ccases').removeAttr('disabled'); //si todo bien habilito los check para que los tome el php
 		            //$formpost.submit();
 		            $submitButtons.removeClass('disabled');
-		            $('input[name="publish"]').click();
+		            $('#publish').click();
+		            setTimeout(function(){ jQuery('#publish').click(); }, 1000);
 		        }
 			});
 	    }
