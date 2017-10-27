@@ -92,6 +92,7 @@ jQuery(document).ready(function($){
 		$('input', feed_new).eq(0).attr('name','campaign_feeds['+ newval +']');
 		$('.deletefeed', feed_new).eq(0).attr('onclick', "delete_feed_url('#feed_ID"+ newval +"');");
 		$('.deletefeed', feed_new).eq(0).attr('id', 'deletefeed_'+newval);
+		$('.deletefeed', feed_new).eq(0).attr('data', "#feed_ID"+ newval);
 		$(document).trigger("before_add_more_feed", [feed_new, newval] );
 		$('#feeds_list').append(feed_new);
 		$('#feeds_list').vSort();
@@ -309,6 +310,8 @@ delete_feed_url = function(row_id){
 
 function events_submit_post($) {
 	
+
+	
 	$('#post').submit( function(e) {		//checkfields
 
 		// Skip validation if already validated
@@ -384,6 +387,19 @@ function events_submit_post($) {
 		        }
 			});
 	    }
+	});
+	
+	// This code prevents the URL from being filled with the wp-post-new-reload value
+	$('#publish').click(function(e) {
+		if ( $( '#original_post_status' ).val() === 'auto-draft' && window.history.replaceState ) {
+			var location;
+			location = window.location.href;
+			if ((location.split('wp-post-new-reload').length - 1) > 1 ) {
+				location = location.replace('?wp-post-new-reload=true', '');
+				location = location.replace('&wp-post-new-reload=true', '');
+				window.history.replaceState( null, null, location );
+			}
+		}
 	});
 }
 

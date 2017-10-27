@@ -275,7 +275,12 @@ div#optionslayer-right {
 .table_wpematico_details tr:nth-child(2n) {
     background: beige;
 }
-
+#feeds_list div.sortitem:nth-child(2n+1) {
+    background-color: #FFF;
+}
+#feeds_list div.sortitem:nth-child(2n) {
+    background-color:LightCyan;
+}
 /*
   START CAMPAIGN WIZZARD CSS.
 */
