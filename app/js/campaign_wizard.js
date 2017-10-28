@@ -99,9 +99,7 @@ jQuery(document).ready(function($){
 	function events_submit_post_wizard($) {
 		var $submitButtons = $('#temp_postbox').find(':submit, a.submitdelete, #post-preview');
 		$submitButtons.click(function(e) {
-			e.preventDefault();
 			events_wizard_popup_close();
-			$('#post').submit();
 		});
 	}
 	function events_wizard_popup_close() {
