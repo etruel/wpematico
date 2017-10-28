@@ -215,16 +215,16 @@ class wpe_notification_traslate {
 				<p class="parr-wpmatico-traslate"><?php echo $message; ?></p>
 				<img class="img-wpmatico-traslate" src="<?php echo WPeMatico :: $uri ; ?>/images/icon-512x512.jpg" title=""></a><br />
 			</div>
-			<div style="clear: both;"></div>
 		</div>
 	</div>
 <!--####################STYLE HTML DIV################################33-->
 	<style type="text/css">
-		.div-wpmatico-traslate{background-color: white; padding:10px; padding-top: 0px;position: relative;width: 100%; max-width: 550px; border:1px solid #D9D9D9; margin-bottom: 5px; margin-top: 5px;}
+		.div-wpmatico-traslate{background-color: white; padding:10px; padding-top: 0px;position: relative;width: 100%; border:1px solid #D9D9D9; margin-bottom: 20px; margin-top: 5px; box-sizing: border-box;}
+		.description-traslate{display: flex;}
 		.icon-cerrar-div,.icon-minimizar-div{position: absolute; top: 0; right: 0; font-size: 25px; margin-top: -5px; cursor: pointer;}
 		.div-wpmatico-traslate h3{color: #4C5054; position: relative; border-bottom: 1px solid #ccc; padding-bottom: 10px;}
-		.parr-wpmatico-traslate{float: left; width: 65%; padding-right: 10px;}
-		.img-wpmatico-traslate{float: right; width:100px; height: auto; }
+		.parr-wpmatico-traslate{padding-right: 10px;}
+		.img-wpmatico-traslate{max-height: 130px; }
 
 	</style>
 

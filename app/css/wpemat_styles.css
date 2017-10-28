@@ -80,14 +80,20 @@ p { margin-bottom: 2px; }
     background: linear-gradient(to bottom, #fcfcfc 20%, #adadad 100%);
 }
 .cpanelbutton {
-    height: 30px;
-	width: 30px;
     padding-left: 0px;
     margin: 0 5px 0 0;
     padding-right: 0px;
     border: 1px solid #AAA;
     background: linear-gradient(to bottom, #fcfcfc 20%, #adadad 100%);
     border-radius: 2px;
+    width: 16.6666%;
+    padding: 5px;
+    height: auto;
+}
+.row-actions2 .cpanelbutton {
+	width: 30px;
+	height: 30px;
+	padding: 0;
 }
 
 /*Math & Factions*/
@@ -186,7 +192,7 @@ a.wpelinks {
 .tagcf:hover {color: red;}
 .codlist{background: #FAFAFA;border: 1px solid #CCCCCC;font-family: verdana,Tahoma,Georgia;font-size: 11px;padding: 0.1em 1em 0;width: 220px;}
 .code{background: none repeat scroll 0 0 #FAFAFA;border: 1px solid #CCCCCC;margin-bottom: 0.9em;padding: 0.4em 1em ;}
-.coderr{background: none repeat scroll 0 0 #FAFAFA;border: 1px solid #CCCCCC;margin-bottom: 0.9em; padding: 0.1em 1em 0 ;}
+.coderr{background: none repeat scroll 0 0 #FAFAFA;border: 1px solid #CCCCCC;margin-bottom: 0.9em; padding: 5px ; display: inline-block;}
 .inmetabox{margin: -6px -10px -8px;overflow: hidden;padding: 0 10px;}
 
 .bw{background-color: #FFF;}
@@ -320,6 +326,9 @@ a.wpelinks {
     vertical-align: middle;
     color: #0073aa;
     font-size: 18px;
+}
+.help_tip:hover{
+	color: #0293D8;
 }
 #tiptip_holder
 {
@@ -462,7 +471,9 @@ overflow-y: auto;
 margin: 5px;
 display: table;
 }
-
+.text-right{
+	text-align: right;
+}
 /* Wizard */
 #thickbox_wizard{
 	top: 120px !important;
@@ -562,7 +573,13 @@ display: table;
 #mailaddresslog{
 	margin-bottom: 15px;
 }
-
+#thickbox_wizard .wpematico_campaign_details{
+	margin: 0 0 15px !important;
+	padding: 15px 0 !important;
+}
+#thickbox_wizard div#cronboxes{
+	margin-left: 0 !important;
+}
 @media (min-width: 992px){
 	#major-publishing-actions .radio{
 		width: 16px;

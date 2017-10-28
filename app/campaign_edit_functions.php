@@ -95,7 +95,6 @@ class WPeMatico_Campaign_edit_functions {
 		?>
 		<div class="wpematico_campaign_details postbox">
 			<div class="feed_header">Campaign Control Panel</div>
-			
 			<table class="table_wpematico_details">
 				<?php 
 				if ($activated) : 
@@ -880,18 +879,19 @@ public static function feeds_box( $post ) {
 
 	$campaign_feeds = $campaign_data['campaign_feeds'];
 	?>  
-	<div class="feed_header">
-		<div class="feed_column"><?php _e('Feed URL', 'wpematico'  ) ?></div>
-		<?php do_action('wpematico_campaign_feed_header_column'); ?>
-		<label id="msgdrag"></label>
-		<div class="right ">
-			<div style="float:left;margin-left:2px;">
-				<input id="psearchtext" name="psearchtext" class="srchbdr0" type="text" value=''>
+	<div class="feed_content">
+		<div class="feed_header">
+			<div class="feed_column"><?php _e('Feed URL', 'wpematico'  ) ?></div>
+			<?php do_action('wpematico_campaign_feed_header_column'); ?>
+			<label id="msgdrag"></label>
+			<div class="right ">
+				<div style="float:left;margin-left:2px;">
+					<input id="psearchtext" name="psearchtext" class="srchbdr0" type="text" value=''>
+				</div>
+				<div id="productsearch" class="left dashicons dashicons-search" style="color:coral;"></div>
 			</div>
-			<div id="productsearch" class="left dashicons dashicons-search" style="color:coral;"></div>
 		</div>
-	</div>
-	<div id="feeds_list" class="maxhe290" data-callback="jQuery('#msgdrag').html('<?php _e('Update Campaign to save Feeds order', 'wpematico'  ); ?>').fadeIn();"> <!-- callback script to run on successful sort -->
+		<div id="feeds_list" class="maxhe290" data-callback="jQuery('#msgdrag').html('<?php _e('Update Campaign to save Feeds order', 'wpematico'  ); ?>').fadeIn();"> <!-- callback script to run on successful sort -->
 			<?php //foreach($campaign_feeds as $i => $feed): 
 			for ($i = 0; $i <= count(@$campaign_feeds); $i++) : ?>
 			<?php $feed = @$campaign_feeds[$i]; ?>			
@@ -916,17 +916,18 @@ public static function feeds_box( $post ) {
 		</div>
 		<input id="feedfield_max" value="<?php echo $a; ?>" type="hidden" name="feedfield_max">
 		<?php do_action('wpematico_campaign_feed_panel'); ?>
-		<div id="paging-box">		  
-			<a href="JavaScript:void(0);" class="button-primary add" id="addmorefeed" style="font-weight: bold; text-decoration: none;"> <?php _e('Add Feed', 'wpematico'  ); ?>.</a>
-			<span class="button-primary" id="checkfeeds" style="font-weight: bold; text-decoration: none;" ><?php _e('Check all feeds', 'wpematico' ); ?>.</span>
-			<?php do_action('wpematico_campaign_feed_panel_buttons'); ?>
-			<?php // if($cfg['nonstatic']){NoNStatic::bimport();} ?>
-			<div class="pbfeet right">
-				<?php _e('Displaying', 'wpematico' ); ?> <span id="pb-totalrecords" class="b"><?php echo $i-1; ?></span>&nbsp;<span id="pb-ptext">feeds </span>
-				<label class="right ui-icon select_down" onclick="jQuery('#feeds_list').toggleClass('maxhe290');jQuery(this).toggleClass('select_up');" title="<?php _e('Display all feeds', 'wpematico' ); ?>"></label>
-			</div>
+	</div>
+	<div id="paging-box">		  
+		<a href="JavaScript:void(0);" class="button-primary add" id="addmorefeed" style="font-weight: bold; text-decoration: none;"> <?php _e('Add Feed', 'wpematico'  ); ?>.</a>
+		<span class="button-primary" id="checkfeeds" style="font-weight: bold; text-decoration: none;" ><?php _e('Check all feeds', 'wpematico' ); ?>.</span>
+		<?php do_action('wpematico_campaign_feed_panel_buttons'); ?>
+		<?php // if($cfg['nonstatic']){NoNStatic::bimport();} ?>
+		<div class="pbfeet right">
+			<?php _e('Displaying', 'wpematico' ); ?> <span id="pb-totalrecords" class="b"><?php echo $i-1; ?></span>&nbsp;<span id="pb-ptext">feeds </span>
+			<label class="right ui-icon select_down" onclick="jQuery('#feeds_list').toggleClass('maxhe290');jQuery(this).toggleClass('select_up');" title="<?php _e('Display all feeds', 'wpematico' ); ?>"></label>
 		</div>
-		<?php
+	</div>
+	<?php
 	}
 
 	
@@ -1076,15 +1077,15 @@ public static function feeds_box( $post ) {
 		$campaign_posttype = $campaign_data['campaign_posttype'];
 		$campaign_customposttype = $campaign_data['campaign_customposttype'];
 		wp_nonce_field( 'edit-campaign', 'wpematico_nonce' ); 
-		?><div class="clear"></div><div style="margin: 0 0 15px 0;">
-		<div class="postbox inside" style="min-width:30%;float:left;padding: 5px;">
+		?><div class="clear"></div><div class="publish_status">
+		<div class="postbox inside">
 			<b><?php _e('Status',  'wpematico' ); ?></b><br />
 			<label><input type="radio" name="campaign_posttype" <?php echo checked('publish',$campaign_posttype,false); ?> value="publish" /> <?php _e('Published'); ?></label><br />
 			<label><input type="radio" name="campaign_posttype" <?php echo checked('private',$campaign_posttype,false); ?> value="private" /> <?php _e('Private'); ?></label><br />
 			<label><input type="radio" name="campaign_posttype" <?php echo checked('pending',$campaign_posttype,false); ?> value="pending" /> <?php _e('Pending'); ?></label><br />
 			<label><input type="radio" name="campaign_posttype" <?php echo checked('draft',$campaign_posttype,false); ?> value="draft" /> <?php _e('Draft'); ?></label>
 		</div>
-		<div class="postbox inside" style="float: right; min-width: 40%;padding: 5px 10px;">
+		<div class="postbox inside">
 			<b><?php _e('Post type',  'wpematico' ); ?></b><br />
 			<?php
 			$args=array(

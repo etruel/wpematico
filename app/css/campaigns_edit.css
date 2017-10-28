@@ -1,4 +1,23 @@
 p { margin-bottom: 2px; }
+.publish_status{
+	display: flex;
+}
+.publish_status .postbox{
+	width: 50%;
+	height: auto !important;
+	min-width: initial;
+	padding: 5px 10px !important;
+	margin-right: 10px !important;
+}
+.publish_status .postbox:last-child{
+	margin-right: 0 !important;
+}
+#major-publishing-actions{
+	border-top: 0;
+}
+#category-box #major-publishing-actions{
+	border: 1px solid #e5e5e5;
+}
 #major-publishing-actions .radio { min-width: 16px; vertical-align: bottom; width: 16px; }
 .updated a { display:none; } 
 
@@ -33,11 +52,12 @@ p { margin-bottom: 2px; }
     border-width: 1px medium;
 	min-height: 28px;}
 
-#paging-box {background-color: #DDDDDD;border: 1px solid #B2B2B2;font-size: 11px;height: 30px;}
+#paging-box {background-color: #F1F1F1;font-size: 11px;height: 30px; padding: 5px 10px; border: 1px solid #e5e5e5;}
 #paging-box .leftText{float:left;margin-left:5px;margin-top:2px;width:360px;}
 #paging-box .middleText{float:left;margin-top:2px;}
 #paging-box .rightText{float:right;margin-right:10px;}
-
+#paging-box .button-primary{margin-right: 5px;}
+#paging-box .button-primary:last-child{margin-right: 0px;}
 #campaign_type {display: inline; width: 100%; text-align: center; color: #333; font-weight: bold;}
 
 .delete{color: #F88;}
@@ -120,6 +140,10 @@ div.feed_column {float: left;width: 39%;}
     cursor: default;
     background: linear-gradient(to bottom, #fcfcfc 20%, #adadad 100%);
 }
+.feed_content{
+	border: 1px solid #e5e5e5;
+	border-bottom: 0;
+}
 .feed_header{
 	background-color:#E1DC9C;
 	background:-moz-linear-gradient(center bottom,#FCF6BC 0,#E1DC9C 98%,#FFFEA8 0);
@@ -128,16 +152,14 @@ div.feed_column {float: left;width: 39%;}
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FCF6BC',endColorstr='#E1DC9C');
 	font-weight: 600;
 	font-size: 0.9em;
-	border:1px solid #BCBCBC;
-	border-bottom-style:none;
 	margin-top:-1px;
 	overflow:hidden;
-	padding:3px 10px;
+	padding:5px 10px;
 }
 .feed_header input{color:#999;font-size:13px;padding:0px;width:227px}
 .feed_header .feed_column:first-child{padding-left:20px;}
-#feeds_list {background:#E2E2E2;}
-.sortitem{background:#fff;border:2px solid #ccc;padding-left:20px; display: flex;}
+#feeds_list {/*background:#E2E2E2;*/}
+.sortitem{background:#fff;padding: 8px 10px 8px 20px; display: flex;}
 .sortitem .sorthandle{position:absolute;top:5px;bottom:5px;left:3px;width:8px;display:none;background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAB3RJTUUH3wIDBycZ/Cj09AAAAAlwSFlzAAALEgAACxIB0t1+/AAAAARnQU1BAACxjwv8YQUAAAAWSURBVHjaY2DABhoaGupBGMRmYiAEAKo2BAFbROu9AAAAAElFTkSuQmCC');}
 .sortitem:hover .sorthandle{display:block;}
 .feed_column input {font-size: 1em !important;}
@@ -149,35 +171,50 @@ div.feed_column {float: left;width: 39%;}
 }
 
 .wpematico_campaign_details .feed_header {
-    padding-top: 7px;
+    padding: 7px;
     font-weight: bold;
     font-size: inherit;
     text-align: center;
 }
-
+.wpematico_campaign_details .wpematico_current_state{
+	width: 100%;
+	padding: 5px;
+}
+.wpematico_campaign_details .wpematico_current_state #wpematico_current_state_actions{
+	display: flex;
+	max-width: 260px;
+	margin: auto;
+}
+.wpematico_campaign_details .wpematico_current_state #wpematico_current_state_actions .cpanelbutton:last-child{
+	margin-right: 0;
+}
 .cpanel-footer {
-    border: 1px solid #ccc;
-	margin: 3px 0 0;
 	background: #eee;
 	padding: 1px 2px;
 	min-height: 13px;
+	padding: 5px;
 }
-
 /**********************************************************************************************/
 /**********************************************************************************************/
-
+#cron-box .inside{
+	display: flex;
+}
 div#cronboxes {
   background-color: tan;
-  padding-left: 10px;
+  width: 100%;
+  margin-left: 15px;
+  display: flex;
+  padding: 0 5px;
+  box-sizing: border-box;
 }
 div#cronboxes div {
-  float: left;
-  height: 200px;
-  margin-right: 10px;
-  display: inline-block;
+	padding: 5px; 
+	height: 200px;
+  	width: 100%;
 }
 div#cronboxes div select{
   height: 89%;
+  width: 100%;
 }
 div#optionslayer {
   margin-right: 10px;
@@ -266,14 +303,17 @@ div#optionslayer-right {
 #addmorew2c { font-weight: bold; text-decoration: none }
 .row_word_to_cat:nth-child(even) { background-color:LightCyan; }
 .table_wpematico_details {
-    border: 1px solid #ccc;
 	width: 100%;
+	border-spacing: 1px;
 }
 .table_wpematico_details tr:nth-child(2n+1) {
     background: aliceblue;
 }
 .table_wpematico_details tr:nth-child(2n) {
     background: beige;
+}
+.table_wpematico_details tr td{
+	padding: 5px;
 }
 #feeds_list div.sortitem:nth-child(2n+1) {
     background-color: #FFF;
@@ -321,4 +361,100 @@ div#optionslayer-right {
 	.wpematico_divider_list_wizard{margin-top: -0px;}
 	#temp_postbox{margin-top: 0px !important;}
 
+}
+@media (max-width: 1199px){
+	#cron-box .inside{
+		display: block;
+	}
+	div#cronboxes{
+		margin-left: 0;
+		margin-top: 15px;
+		box-sizing: border-box;
+	}
+}
+@media (max-width: 782px){
+	.wrap .page-title-action{
+		padding: 5px 10px;
+	}
+	#schedulelayer{
+		width: 100%;
+	}
+	.publish_status .postbox{
+		padding: 5px 10px 10px !important;
+	}
+	#major-publishing-actions input, #minor-publishing-actions .preview, #minor-publishing-actions input{
+		margin-top: 10px;
+		vertical-align: bottom !important;
+	}
+	input[type=radio], input[type=checkbox],
+	#major-publishing-actions .radio{
+		height: 20px !important;
+		width: 20px !important;
+	}
+	input[type=radio]:checked:before{
+		margin: 5px;
+	}
+	.widefat tfoot td input[type=checkbox]:before, .widefat th input[type=checkbox]:before, .widefat thead td input[type=checkbox]:before, input[type=checkbox]:checked:before{
+		margin: -3px -7px !important;
+	}
+	#wrd2cat_edit .pDiv {
+		padding: 10px 0;
+		height: auto;
+	}
+	#wrd2cat_edit .pDiv #w1{
+		float: none;
+	}
+	#wrd2cat_edit .pDiv #w1 label:first-child{
+		margin-bottom: 0;
+	}
+	#wrd2cat_edit .pDiv #w1 label{
+		display: block;
+		margin-bottom: 10px;
+		clear: both;
+	}
+	#wrd2cat_edit .pDiv label input{
+		box-sizing: border-box;
+		width: 100%;
+	}
+	#wrd2cat_edit .pDiv #c1{
+		margin-left: -20px;
+	}
+	#w2cactions .bicon{
+		width: 15px;
+		margin-top: 5px;
+	}
+	#poststuff .inside .he20{
+		height: auto;
+	}
+	#word2cats-box #paging-box{
+		margin-top: 15px;
+	}
+}
+@media (max-width: 565px){
+	#msgdrag,
+	div.feed_column{
+		padding-left: 0 !important;
+		float: none;
+		width: 100%;
+	}
+	.feed_content .feed_header .right{
+		float: none;
+	}
+	.feed_content #feed_actions{
+		display: flex;
+	}
+	div#cronboxes{
+		display: block;
+	}
+	div#cronboxes div{
+		box-sizing: border-box;
+	}
+	.pbfeet{
+		font-size: 0;
+	}
+}
+@media (max-width: 390px){
+	.wpefeedlink{
+		display: none;
+	}
 }
