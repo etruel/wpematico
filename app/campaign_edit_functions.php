@@ -264,8 +264,8 @@ public static function word2cats_box( $post ) {
 						<label><input name="campaign_wrd2cat[regex][<?php echo $i; ?>]" id="campaign_wrd2cat_regex" class="checkbox w2cregex" value="1" type="checkbox"<?php checked($campaign_wrd2cat['regex'][$i],true) ?> /><?php _e('RegEx', WPeMatico::TEXTDOMAIN); ?>&nbsp;&nbsp;</label>
 						<label><input <?php echo ($campaign_wrd2cat['regex'][$i]) ? 'disabled' : '';?> name="campaign_wrd2cat[cases][<?php echo $i; ?>]" id="campaign_wrd2cat_cases" class="checkbox w2ccases" value="1" type="checkbox"<?php checked($campaign_wrd2cat['cases'][$i],true) ?> /><?php _e('Case sensitive', WPeMatico::TEXTDOMAIN); ?>&nbsp;&nbsp;</label>
 					</div>
-					<div id="c1" class="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<?php _e('To Category:', WPeMatico::TEXTDOMAIN); 
+					<div id="c1" class="left">
+						<?php _e('To Category: ', WPeMatico::TEXTDOMAIN); 
 						wp_dropdown_categories( array(
 											'show_option_all'    => '',
 											'show_option_none'   => __('Select category', 'wpematico' ),

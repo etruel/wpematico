@@ -178,12 +178,12 @@ div.feed_column {float: left;width: 39%;}
 }
 .wpematico_campaign_details .wpematico_current_state{
 	width: 100%;
-	padding: 5px;
+	padding: 5px 5px 0;
+	padding: 5px 5px 0;
 }
 .wpematico_campaign_details .wpematico_current_state #wpematico_current_state_actions{
-	display: flex;
-	max-width: 260px;
-	margin: auto;
+    display: flex;
+    flex-wrap: wrap;
 }
 .wpematico_campaign_details .wpematico_current_state #wpematico_current_state_actions .cpanelbutton:last-child{
 	margin-right: 0;
@@ -206,6 +206,7 @@ div#cronboxes {
   display: flex;
   padding: 0 5px;
   box-sizing: border-box;
+  max-width: 800px;
 }
 div#cronboxes div {
 	padding: 5px; 
@@ -345,6 +346,10 @@ div#optionslayer-right {
 	padding: 10px; background-color: #DB9667;
 	font-size: 1.3em;
 }
+
+#wrd2cat_edit .pDiv #c1{
+	margin-left: 15px;
+}
 /* Small Devices */
 @media screen and (max-width: 699px) and (min-width: 220px) {
 	.help_wizard{font-size: 12px !important;}
@@ -370,6 +375,34 @@ div#optionslayer-right {
 		margin-left: 0;
 		margin-top: 15px;
 		box-sizing: border-box;
+	}
+	#wrd2cat_edit{
+		clear: both;
+	}
+	#wrd2cat_edit .pDiv {
+		padding: 10px 0;
+		height: auto;
+		display: flex;
+	}
+	#wrd2cat_edit .pDiv #w1,
+	#wrd2cat_edit .pDiv #c1{
+		width: 50%;
+	}
+	#wrd2cat_edit .pDiv select{
+		display: block;
+		width: 100%;
+	}
+	#wrd2cat_edit .pDiv label,
+	#wrd2cat_edit .pDiv select{
+		vertical-align: initial !important;
+	}
+	#wrd2cat_edit .pDiv label #campaign_wrd2cat{
+		margin-bottom: 10px;
+		box-sizing: border-box;
+		width: 100%;
+	}
+	#w2cactions .bicon{
+		margin-top: 20px;
 	}
 }
 @media (max-width: 782px){
@@ -397,37 +430,14 @@ div#optionslayer-right {
 	.widefat tfoot td input[type=checkbox]:before, .widefat th input[type=checkbox]:before, .widefat thead td input[type=checkbox]:before, input[type=checkbox]:checked:before{
 		margin: -3px -7px !important;
 	}
-	#wrd2cat_edit .pDiv {
-		padding: 10px 0;
-		height: auto;
-	}
-	#wrd2cat_edit .pDiv #w1{
-		float: none;
-	}
-	#wrd2cat_edit .pDiv #w1 label:first-child{
-		margin-bottom: 0;
-	}
-	#wrd2cat_edit .pDiv #w1 label{
-		display: block;
-		margin-bottom: 10px;
-		clear: both;
-	}
-	#wrd2cat_edit .pDiv label input{
-		box-sizing: border-box;
-		width: 100%;
-	}
-	#wrd2cat_edit .pDiv #c1{
-		margin-left: -20px;
-	}
-	#w2cactions .bicon{
-		width: 15px;
-		margin-top: 5px;
-	}
-	#poststuff .inside .he20{
-		height: auto;
-	}
 	#word2cats-box #paging-box{
 		margin-top: 15px;
+	}
+	#wrd2cat_edit select{
+		height: 35px;
+	}
+	.regular-text{
+		width: 100% !important;
 	}
 }
 @media (max-width: 565px){

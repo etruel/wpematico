@@ -80,22 +80,18 @@ p { margin-bottom: 2px; }
     background: linear-gradient(to bottom, #fcfcfc 20%, #adadad 100%);
 }
 .cpanelbutton {
+    height: 30px;
+	width: 30px;
     padding-left: 0px;
-    margin: 0 5px 0 0;
+    margin: 0 0 5px 5px;
     padding-right: 0px;
     border: 1px solid #AAA;
     background: linear-gradient(to bottom, #fcfcfc 20%, #adadad 100%);
     border-radius: 2px;
-    width: 16.6666%;
-    padding: 5px;
-    height: auto;
 }
-.row-actions2 .cpanelbutton {
-	width: 30px;
-	height: 30px;
-	padding: 0;
+.cpanelbutton:first-child{
+	margin-left: 0;
 }
-
 /*Math & Factions*/
 .pi:before            { content: "\213C"; }
 .one_thrid:before     { content: "\2153"; }
@@ -585,6 +581,11 @@ display: table;
 		width: 16px;
 	}
 }
+@media (min-width: 851px){
+	.cpanelbutton:nth-child(7n+1){
+		margin-left: 0;
+	}
+}
 @media (max-width: 1199px){
 	#thickbox_wizard{
 		width: 60% !important;
@@ -623,6 +624,9 @@ display: table;
 		font-size: 30px;
 		padding: 0;
 		width: auto;
+		height: auto;
+	}
+	.he20{
 		height: auto;
 	}
 }
