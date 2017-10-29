@@ -67,9 +67,8 @@ class WPeMatico_Campaigns {
 		global $_bulk_actions;
 		$cfg = get_option( WPeMatico :: OPTION_KEY);
 		$cfg = apply_filters('wpematico_check_options', $cfg);
-		if ( (isset($cfg['enabledelhash']) && !empty($cfg['enabledelhash']) ) && $cfg['enabledelhash'] )    // Si está habilitado en settings, lo muestra 
-			add_action('admin_action_wpematico_delhash_campaign', array( 'WPeMatico_Campaigns', 'wpematico_delhash_campaign'));
-		}
+		add_action('admin_action_wpematico_delhash_campaign', array( 'WPeMatico_Campaigns', 'wpematico_delhash_campaign'));
+	}
 
 	public static function custom_filters($options) {
 		global $typenow, $wp_query, $current_user, $pagenow, $cfg;

@@ -262,6 +262,13 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
 or to e-mail etruel@gmail.com
 
 == Changelog ==
+= x.x =
+* Solucionado el problema de dar dos veces click en el actualizar campaign.
+* Solucionado el problema al intentar guardar una campaign desde el wizard.
+* Solucionado el problema de que al borrar un feed en la lista de feeds.
+* Solucionado el problema que el delhash no se ejecuta en el campaign edit.
+* Agregadas algunas mejoras en el estilo CSS de las paginas.
+
 = 1.8.1 Oct 25, 2017 =
 * Added "Find in title" option in the Words to Categories feature.
 * Tweaks in the Campaign control panel behavior in new campaigns.
