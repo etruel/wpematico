@@ -98,6 +98,11 @@ class Main_WPeMatico{
 		if( isset($cfg['disablewpcron']) && $cfg['disablewpcron'] ){ 
 			define('DISABLE_WP_CRON',true);
 		}
+		if( isset($cfg['enable_alternate_wp_cron']) && $cfg['enable_alternate_wp_cron'] ){ 
+			if(!defined('ALTERNATE_WP_CRON') ) {
+				define('ALTERNATE_WP_CRON',true);
+			}
+		}
 		if( isset($cfg['dontruncron']) && $cfg['dontruncron'] ) {
 			wp_clear_scheduled_hook('wpematico_cron');
 		}else{

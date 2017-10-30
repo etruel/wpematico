@@ -268,6 +268,7 @@ or to e-mail etruel@gmail.com
 * Solucionado el problema de que al borrar un feed en la lista de feeds.
 * Solucionado el problema que el delhash no se ejecuta en el campaign edit.
 * Agregadas algunas mejoras en el estilo CSS de las paginas.
+* Agregada la opcion en el setting para usar el Alternate WP Cron.
 
 = 1.8.1 Oct 25, 2017 =
 * Added "Find in title" option in the Words to Categories feature.

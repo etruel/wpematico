@@ -231,11 +231,18 @@ function wpematico_disk_free_space($echo = true) {
     }
 }
 
+function wpematico_get_option_active_plugins() {
+	static $option_active_plugins = array();
+	if (empty($option_active_plugins)) {
+		$option_active_plugins = (array) get_option( 'active_plugins', array() );
+	}
+	return $option_active_plugins;
+}
 
 function wpematico_get_active_plugins() {
 	static $wpematico_active_plugins = array();
 	if (empty($wpematico_active_plugins)) {
-		$active_plugins = (array) get_option( 'active_plugins', array() );
+		$active_plugins = wpematico_get_option_active_plugins();
 		if ( is_multisite() ) {
 			$active_plugins = array_merge( $active_plugins, get_site_option( 'active_sitewide_plugins', array() ) );
 		}
@@ -847,6 +854,11 @@ function wpematico_show_data_info() {
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Defines a period of time in which only one cronjob will be fired. Since WordPress 3.3. Value: time in seconds (Default: 60).', 'wpematico'  ) . '">[?]</a>'; ?></td>
 					<td><?php if ( defined('WP_CRON_LOCK_TIMEOUT') ) echo WP_CRON_LOCK_TIMEOUT==60 ? '<mark class="yes">' . 60 . '</mark>' : '<mark class="error">' . WP_CRON_LOCK_TIMEOUT . '</mark>'; else echo '<mark class="no">' . '&ndash;' . '</mark>'; ?></td>
 				</tr>
+				<tr>
+					<td data-export-label="Alternate WP Cron"><?php _e( 'Alternate WP Cron:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Some servers disable the functionality that enables WordPress Cron to work properly. This constant provides an easy fix that should work on any server.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php if ( defined('ALTERNATE_WP_CRON') && ALTERNATE_WP_CRON ) echo '<mark class="no">' . '&#10004;' . '</mark>'; else echo '<mark class="yes">' . '&ndash;' . '</mark>'; ?> </td>
+				</tr>
 			</tbody>
 		</table>
 
@@ -1091,6 +1103,8 @@ function wpematico_debug_info_get() {
 
 	$return .= 'DISABLE_WP_CRON:          ' . ( defined( 'DISABLE_WP_CRON' ) ? DISABLE_WP_CRON ? 'True' : 'False' : 'Not set' ) . "\n";
 	$return .= 'WP_CRON_LOCK_TIMEOUT:     ' . ( defined( 'WP_CRON_LOCK_TIMEOUT' ) ? WP_CRON_LOCK_TIMEOUT : 'Not set' ) . "\n";
+	$return .= 'ALTERNATE_WP_CRON:        ' . ( defined( 'ALTERNATE_WP_CRON' ) ? ALTERNATE_WP_CRON ? 'Enabled' : 'Disabled' : 'Not set' ) . "\n";
+
 
 	$return  = apply_filters( 'wpematico_sysinfo_after_wordpress_config', $return );
 
@@ -1135,7 +1149,7 @@ function wpematico_debug_info_get() {
 	$plugins = get_plugins();
 	$return .= "\n" . '-- WordPress Inactive Plugins' . "\n\n";
 	foreach( $plugins as $plugin_path => $plugin ) {
-		if( in_array( $plugin_path, $active_plugins ) )
+		if( in_array( $plugin_path, wpematico_get_option_active_plugins()) )
 			continue;
 		$new_version = wpematico_get_plugin_new_version($plugin_path);
 		$return .= $plugin['Name'] . ': ' . $plugin['Version'].(!empty($new_version)?' (needs update - '.$new_version.')': ''). "\n";

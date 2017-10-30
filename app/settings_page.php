@@ -590,7 +590,12 @@ function wpematico_settings(){
 										<a href="http://code.tutsplus.com/articles/insights-into-wp-cron-an-introduction-to-scheduling-tasks-in-wordpress--wp-23119" target="_blank"><?php _e('here', 'wpematico'); ?></a>.
 									</div>
 								</div><br /> 
-
+								<?php
+									// https://wp-mix.com/wordpress-cron-not-working/
+								?>
+								<label><input class="checkbox" id="enable_alternate_wp_cron" type="checkbox"<?php checked($cfg['enable_alternate_wp_cron'], true); ?> name="enable_alternate_wp_cron" value="1"/> 
+									<strong><?php _e('Enable ALTERNATE_WP_CRON', 'wpematico'); ?></strong></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enable_alternate_wp_cron']; ?>"></span><br /> 
+								
 								<label><input class="checkbox" id="logexternalcron" type="checkbox"<?php checked($cfg['logexternalcron'], true); ?> name="logexternalcron" value="1"/> 
 									<strong><?php _e('Log file for external Cron', 'wpematico'); ?></strong></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['logexternalcron']; ?>"></span>
 								<br /> 
@@ -713,6 +718,13 @@ function wpematico_settings_save() {
 		if( isset($cfg['disablewpcron']) && $cfg['disablewpcron'] ){ 
 			define('DISABLE_WP_CRON',true);
 		}
+		if( isset($cfg['enable_alternate_wp_cron']) && $cfg['enable_alternate_wp_cron'] ){ 
+			if(!defined('ALTERNATE_WP_CRON') ) {
+				define('ALTERNATE_WP_CRON',true);
+			}
+		}
+
+		
 		if( !(isset($cfg['dontruncron']) && $cfg['dontruncron'] )) {
 			wp_schedule_event(time(), 'wpematico_int', 'wpematico_cron');
 		}
@@ -952,6 +964,11 @@ function wpematico_helpsettings($dev=''){
 			'disablewpcron' => array( 
 				'title' => __('Disable all WP_Cron.', 'wpematico' ),
 				'tip' => __('Check this to deactivate all Wordpress cron schedules. Affects to Wordpress itself and all other plugins.  Not recommended unless you want to use an external Cron for your wordpress.', 'wpematico' ),
+				// 'plustip' => __('', 'wpematico' ),
+			),
+			'enable_alternate_wp_cron' => array( 
+				'title' => __('Enable ALTERNATE_WP_CRON.', 'wpematico' ),
+				'tip' => __('Some servers disable the functionality that enables WordPress Cron to work properly. This constant provides an easy fix that should work on any server.', 'wpematico' ),
 				// 'plustip' => __('', 'wpematico' ),
 			),
 			'logexternalcron' => array( 

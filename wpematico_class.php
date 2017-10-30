@@ -433,6 +433,9 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			$cfg['disabledashboard']= (!isset($options['disabledashboard']) || empty($options['disabledashboard'])) ? false : ($options['disabledashboard']==1) ? true : false;
 			$cfg['roles_widget']	= (!isset($options['roles_widget']) || !is_array($options['roles_widget'])) ? array( "administrator" => "administrator" ): $options['roles_widget'];
 			$cfg['dontruncron']		= (!isset($options['dontruncron']) || empty($options['dontruncron'])) ? false: ($options['dontruncron']==1) ? true : false;
+			$cfg['enable_alternate_wp_cron']		= (!isset($options['enable_alternate_wp_cron']) || empty($options['enable_alternate_wp_cron'])) ? false: ($options['enable_alternate_wp_cron']==1) ? true : false;
+			
+			
 			$cfg['disablewpcron']	= (!isset($options['disablewpcron']) || empty($options['disablewpcron'])) ? false: ($options['disablewpcron']==1) ? true : false;
 			$cfg['set_cron_code']	= (!isset($options['set_cron_code']) || empty($options['set_cron_code'])) ? false: ($options['set_cron_code']==1) ? true : false;
 			$cfg['cron_code']		= (!isset($options['cron_code'])) ? '': $options['cron_code'];
