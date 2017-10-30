@@ -42,7 +42,7 @@ p { margin-bottom: 2px; }
 .rowflex{display: flex;}
 .rowblock{display: block;}
 
-#wrd2cat_edit .pDiv {height:85px;}
+#wrd2cat_edit .pDiv {display: flex;}
 #rewrites_edit .pDiv {height:65px;}
 .pbfeet {margin:6px;}
 .pbfeet .select_down{margin-left:6px;}
@@ -367,20 +367,14 @@ div#optionslayer-right {
 	#temp_postbox{margin-top: 0px !important;}
 
 }
-@media (max-width: 1199px){
-	#cron-box .inside{
-		display: block;
-	}
-	div#cronboxes{
-		margin-left: 0;
-		margin-top: 15px;
-		box-sizing: border-box;
+@media (max-width: 1235px){
+	#wrd2cat_edit .pDiv .regular-text{
+		width: 24em;
 	}
 	#wrd2cat_edit{
 		clear: both;
 	}
 	#wrd2cat_edit .pDiv {
-		padding: 10px 0;
 		height: auto;
 		display: flex;
 	}
@@ -403,6 +397,16 @@ div#optionslayer-right {
 	}
 	#w2cactions .bicon{
 		margin-top: 20px;
+	}
+}
+@media (max-width: 1199px){
+	#cron-box .inside{
+		display: block;
+	}
+	div#cronboxes{
+		margin-left: 0;
+		margin-top: 15px;
+		box-sizing: border-box;
 	}
 }
 @media (max-width: 782px){
