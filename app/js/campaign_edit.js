@@ -1,5 +1,4 @@
 jQuery(document).ready(function($){
-
 	events_submit_post($);
 	wpe_others_events($);
 	if ($('input[name="original_post_status"]').val() != 'publish') {
@@ -36,6 +35,8 @@ jQuery(document).ready(function($){
 		}
 		if (!confirm(wpematico_object.text_confirm_reset_campaign)) {
 			e.preventDefault();
+		}else{
+			location.href = $(this).attr('btn-action');
 		}
 	});
 	$('#campaign_edit_see_logs').click(function(e) {
@@ -49,9 +50,10 @@ jQuery(document).ready(function($){
 		}
 		if (!confirm(wpematico_object.text_confirm_delhash_campaign)) {
 			e.preventDefault();
+		}else{
+			location.href = $(this).attr('btn-action');
 		}
 	});
-
 //	$('#run_now').click(function(e) {
 	$(document).on("click", '#run_now', function(e) {
 		$(this).addClass('green');
@@ -277,7 +279,7 @@ function word2cats_events_rows() {
 }
 
 function add_word2cats_row(index) {
-	var new_template = '<div id="w2c_ID{index}" class="row_word_to_cat"><div class="pDiv jobtype-select p7" id="nuevow2c"><div id="w1"><label>'+wpematico_object.text_w2c_word+' <input type="text" size="25" class="regular-text" id="campaign_wrd2cat" name="campaign_wrd2cat[word][{index}]" value="" /></label><br /><label><input name="campaign_wrd2cat[title][{index}]" id="campaign_wrd2cat_title" class="checkbox w2ctitle" value="1" type="checkbox"/>'+wpematico_object.text_w2c_on_title+'&nbsp;&nbsp;</label><label><input name="campaign_wrd2cat[regex][{index}]" id="campaign_wrd2cat_regex" class="checkbox w2cregex" value="1" type="checkbox"/>'+wpematico_object.text_w2c_regex+'&nbsp;&nbsp;</label><label><input name="campaign_wrd2cat[cases][{index}]" id="campaign_wrd2cat_cases" class="checkbox w2ccases" value="1" type="checkbox" />'+wpematico_object.text_w2c_case_sensitive+'&nbsp;&nbsp;</label></div><div id="c1">'+wpematico_object.text_w2c_to_category+' '+wpematico_object.wpe_w2c_dropdown_categories+'</div><span class="wi10" id="w2cactions"><label title="'+wpematico_object.text_w2c_delete_this_item+'" class="bicon delete left btn_delete_w2c"></label></span></div></div>';
+	var new_template = '<div id="w2c_ID{index}" class="row_word_to_cat"><div class="pDiv jobtype-select p7" id="nuevow2c"><div id="w1"><label>'+wpematico_object.text_w2c_word+' <input type="text" size="25" class="regular-text" id="campaign_wrd2cat" name="campaign_wrd2cat[word][{index}]" value="" /></label><br /><label><input name="campaign_wrd2cat[title][{index}]" id="campaign_wrd2cat_title" class="checkbox w2ctitle" value="1" type="checkbox"/>'+wpematico_object.text_w2c_on_title+'&nbsp;&nbsp;</label><label><input name="campaign_wrd2cat[regex][{index}]" id="campaign_wrd2cat_regex" class="checkbox w2cregex" value="1" type="checkbox"/>'+wpematico_object.text_w2c_regex+'&nbsp;&nbsp;</label><label><input name="campaign_wrd2cat[cases][{index}]" id="campaign_wrd2cat_cases" class="checkbox w2ccases" value="1" type="checkbox" />'+wpematico_object.text_w2c_case_sensitive+'&nbsp;&nbsp;</label></div><div id="c1">'+wpematico_object.text_w2c_to_category+wpematico_object.wpe_w2c_dropdown_categories+'</div><span class="wi10" id="w2cactions"><label title="'+wpematico_object.text_w2c_delete_this_item+'" class="bicon delete left btn_delete_w2c"></label></span></div></div>';
 	new_template = wpematico_replace_all(new_template, '{index}', index);
 	jQuery('#wrd2cat_edit').append(new_template);
 	word2cats_events_rows();

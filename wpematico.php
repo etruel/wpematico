@@ -3,7 +3,7 @@
  * Plugin Name: WPeMatico
  * Plugin URI: http://www.wpematico.com
  * Description: Enables administrators to create posts automatically from RSS/Atom feeds with multiples filters.  If you like it, please rate it 5 stars.
- * Version: 1.8.1
+ * Version: 1.8.2
  * Author: etruel <esteban@netmdp.com>
  * Author URI: http://www.netmdp.com
  * Text Domain: wpematico
@@ -25,7 +25,7 @@ class Main_WPeMatico{
 	private static $instance;
 
 	private function setup_constants() {
-		if(!defined( 'WPEMATICO_VERSION' ) ) define( 'WPEMATICO_VERSION', '1.8.1' );
+		if(!defined( 'WPEMATICO_VERSION' ) ) define( 'WPEMATICO_VERSION', '1.8.2' );
 		if(!defined( 'WPEMATICO_BASENAME' ) ) define( 'WPEMATICO_BASENAME', plugin_basename( __FILE__ ) );
 		if(!defined( 'WPEMATICO_ROOTFILE' ) ) define( 'WPEMATICO_ROOTFILE', __FILE__ );
 		if(!defined( 'WPEMATICO_PLUGIN_URL' ) ) define( 'WPEMATICO_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -82,9 +82,8 @@ class Main_WPeMatico{
 		add_action( 'init', array( 'WPeMatico', 'init' ) );
 		add_action( 'the_permalink', array( 'WPeMatico', 'wpematico_permalink' ) );
 		add_filter( 'post_link', array( 'WPeMatico', 'wpematico_permalink' ) );
-	
 	}
-	
+
 	/**
 	 * setup_cron 
 	 *
@@ -96,7 +95,9 @@ class Main_WPeMatico{
 		global $cfg;
 		//Disable WP_Cron
 		if( isset($cfg['disablewpcron']) && $cfg['disablewpcron'] ){ 
-			define('DISABLE_WP_CRON',true);
+			if(!defined('DISABLE_WP_CRON') ) {
+				define('DISABLE_WP_CRON',true);
+			}
 		}
 		if( isset($cfg['enable_alternate_wp_cron']) && $cfg['enable_alternate_wp_cron'] ){ 
 			if(!defined('ALTERNATE_WP_CRON') ) {

@@ -132,8 +132,8 @@ class WPeMatico_Campaign_edit_functions {
 					<td>
 					<div id="wpematico_current_state_actions">
 						<?php echo $lbotones; ?>
-						<button type="button" class="cpanelbutton dashicons dashicons-backup" id="campaign_edit_reset" btn-href='<?php echo WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','reset'); ?>&campaign_edit=true' title="<?php _e('Reset post count', 'wpematico'); ?>"></button>
-						<button type="button" class="cpanelbutton dashicons dashicons-editor-unlink" id="campaign_edit_del_hash" btn-href='<?php echo WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','delhash'); ?>&campaign_edit=true' title="<?php _e('Delete hash code for duplicates', 'wpematico'); ?>"></button>
+						<button type="button" class="cpanelbutton dashicons dashicons-backup" id="campaign_edit_reset" btn-action='<?php echo WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','reset'); ?>&campaign_edit=true' title="<?php _e('Reset post count', 'wpematico'); ?>"></button>
+						<button type="button" class="cpanelbutton dashicons dashicons-editor-unlink" id="campaign_edit_del_hash" btn-action='<?php echo WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','delhash'); ?>&campaign_edit=true' title="<?php _e('Delete hash code for duplicates', 'wpematico'); ?>"></button>
 						<button type="button" class="cpanelbutton dashicons dashicons-clipboard" id="campaign_edit_see_logs" title="<?php _e('See last log. (Open a PopUp window)', 'wpematico'); ?>"></button>
 						<?php do_action('wpematico_current_state_actions'); ?>
 					</div>
@@ -265,7 +265,7 @@ public static function word2cats_box( $post ) {
 						<label><input <?php echo ($campaign_wrd2cat['regex'][$i]) ? 'disabled' : '';?> name="campaign_wrd2cat[cases][<?php echo $i; ?>]" id="campaign_wrd2cat_cases" class="checkbox w2ccases" value="1" type="checkbox"<?php checked($campaign_wrd2cat['cases'][$i],true) ?> /><?php _e('Case sensitive', WPeMatico::TEXTDOMAIN); ?>&nbsp;&nbsp;</label>
 					</div>
 					<div id="c1">
-						<?php _e('To Category: ', WPeMatico::TEXTDOMAIN); 
+						<?php _e('To Category:', WPeMatico::TEXTDOMAIN); echo ' ';
 						wp_dropdown_categories( array(
 											'show_option_all'    => '',
 											'show_option_none'   => __('Select category', 'wpematico' ),

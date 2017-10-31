@@ -200,7 +200,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 			$wpematico_object['text_w2c_on_title'] = __('on Title', 'wpematico');
 			$wpematico_object['text_w2c_regex'] = __('RegEx', 'wpematico');
 			$wpematico_object['text_w2c_case_sensitive'] = __('Case sensitive', 'wpematico');
-			$wpematico_object['text_w2c_to_category'] = __('To Category:', 'wpematico');
+			$wpematico_object['text_w2c_to_category'] = __('To Category:', 'wpematico').' ';
 			$wpematico_object['text_w2c_delete_this_item'] = __('Delete this item', 'wpematico');
 
 			

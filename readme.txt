@@ -1,5 +1,5 @@
 ﻿=== WPeMatico ===
-Contributors: etruel
+Contributors: etruel, sniuk 
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS, RSS to Post, Feed to Post, autoblog,rss aggregator, Feed, rss to post, syndication, Post, Posts, aggregation, atom, bot, content, writing
 Requires at least: 4.1
@@ -22,6 +22,8 @@ For RSS fetching, it uses the Simplepie library included in Wordpress or forces 
 As for image processing, it uses the core functions of Wordpress. Failing doing the latter, it will use the custom functions with or without cURL.
 
 If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/plugin-reviews/wpematico?rate=5#new-post) on Wordpress. Thanks! :)
+
+You can submit any bug in the [bugtracker](https://bitbucket.org/etruel/wpematico/issues).
 
 #### FEATURES:
 > #### FREE
@@ -246,29 +248,28 @@ You can contribute with WPeMatico
 
 Don't hesitate to [give your feedback](https://wordpress.org/support/view/plugin-reviews/wpematico#new-post). It will help making the plugin better. Other contributions (such as new translations or helping other users on the support forum) are welcome !
 
-Features supported by
-Thomas from [Invade It](http://www.invadeit.co.th)
-Filter images by width or height.
+[nikolovtmw](https://bitbucket.org/nikolovtmw/) has reported the Deprecated Synchronous XMLHttpRequest and provided the code to solve it! Thanks!
 
-Eli from [Eli the Computer Guy](http://www.elithecomputerguy.com/) 
-There’s an excelent video on Youtube [Use WPeMatico to Create a Free WordPress AutoBlog for Legitimate Purposes](https://www.youtube.com/watch?v=CX22kAeUKY8) 
-Later I've added subtitles and added to [Description](https://wordpress.org/plugins/wpematico/) page of this plugin.
+Features supported by Thomas from [Invade It](http://www.invadeit.co.th): Filter images by width or height.
 
-Branco [WebHostingGeeks.com](http://webhostinggeeks.com/user-reviews/). 
-Romanian & Slovak languages files.
+Eli from [Eli the Computer Guy](http://www.elithecomputerguy.com/). There’s an excelent video on Youtube [Use WPeMatico to Create a Free WordPress AutoBlog for Legitimate Purposes](https://www.youtube.com/watch?v=CX22kAeUKY8) 
+Later I've added subtitles and added it above in this page.
+
+Branco [WebHostingGeeks.com](http://webhostinggeeks.com/user-reviews/).  Romanian & Slovak languages files.
 
 Also we need tutorials on text, pdf, videos. All are welcome.
-You can send your files to [NetMdP](http://www.netmdp.com/wpematico/)
-or to e-mail etruel@gmail.com
+You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
-= x.x =
-* Solucionado el problema de dar dos veces click en el actualizar campaign.
-* Solucionado el problema al intentar guardar una campaign desde el wizard.
-* Solucionado el problema de que al borrar un feed en la lista de feeds.
-* Solucionado el problema que el delhash no se ejecuta en el campaign edit.
-* Agregadas algunas mejoras en el estilo CSS de las paginas.
-* Agregada la opcion en el setting para usar el Alternate WP Cron.
+= 1.8.2 Oct 31, 2017 =
+* Added the option in settings to use the alternate WP Cron.
+* Added improvements in the CSS style of the pages.
+* Many improvements in the responsive styles.
+* Fixes the problem of two clicks to update a campaign.
+* Fixes a problem when trying to save a campaign from the wizard.
+* Fixes a problem when deleting a feed in the list of feeds.
+* Fixes a problem that Delet Hash did not run in the campaign edit.
+* Fixes a problem that ignored the response to the button confirmation of the Campaign Control Panel.
 
 = 1.8.1 Oct 25, 2017 =
 * Added "Find in title" option in the Words to Categories feature.
@@ -1040,7 +1041,7 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 1.8.1 =
+= 1.8.2 =
 * **Enlarges the version required for the Professional addons to 1.8**
 * **Recommended to test it in development ambients before update**
 * Many improvements and fixes. See changelog for more details.

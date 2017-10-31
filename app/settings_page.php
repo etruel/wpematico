@@ -554,15 +554,19 @@ function wpematico_settings(){
 							</button>
 							<h3 class="hndle"><span><?php _e('Cron and Scheduler Settings', 'wpematico'); ?></span></h3>
 							<div class="inside">
+								<?php  // More details on https://wp-mix.com/wordpress-cron-not-working/   	?>
+								<label><input class="checkbox" id="enable_alternate_wp_cron" type="checkbox"<?php checked($cfg['enable_alternate_wp_cron'], true); ?> name="enable_alternate_wp_cron" value="1"/> 
+									<strong><?php _e('Enable ALTERNATE_WP_CRON', 'wpematico'); ?></strong></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enable_alternate_wp_cron']; ?>"></span>
+								<p></p> 
 								<label><input class="checkbox" id="dontruncron" type="checkbox"<?php checked($cfg['dontruncron'], true); ?> name="dontruncron" value="1"/> 
 									<strong><?php _e('Disable WPeMatico schedulings', 'wpematico'); ?></strong></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['dontruncron']; ?>"></span>
 								<br />
-									<?php $croncode = ($cfg['set_cron_code']) ? '?code=' . $cfg['cron_code'] : ''; ?>
+								<?php $croncode = ($cfg['set_cron_code']) ? '?code=' . $cfg['cron_code'] : ''; ?>
 								<div id="hlpcron" style="padding-left:20px;">
 								<?php _e('You must set up a cron job that calls:', 'wpematico'); ?><br />
 									<span class="coderr b"><i> php -q <?php echo WPeMatico :: $dir . "app/wpe-cron.php" . $croncode; ?></i></span><br />
 									<?php _e('or URL:', 'wpematico'); ?> &nbsp;&nbsp;&nbsp;<span class="coderr b"><i><?php echo WPeMatico :: $uri . "app/wpe-cron.php" . $croncode; ?></i></span>
-									<br /><br />
+									<br />
 									<label><input class="checkbox" id="set_cron_code" type="checkbox"<?php checked($cfg['set_cron_code'], true); ?> name="set_cron_code" value="1"/> 
 										<strong><?php _e('Set a password to access the external CRON', 'wpematico'); ?></strong></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['set_cron_code']; ?>"></span>
 									<br /> 
@@ -590,11 +594,6 @@ function wpematico_settings(){
 										<a href="http://code.tutsplus.com/articles/insights-into-wp-cron-an-introduction-to-scheduling-tasks-in-wordpress--wp-23119" target="_blank"><?php _e('here', 'wpematico'); ?></a>.
 									</div>
 								</div><br /> 
-								<?php
-									// https://wp-mix.com/wordpress-cron-not-working/
-								?>
-								<label><input class="checkbox" id="enable_alternate_wp_cron" type="checkbox"<?php checked($cfg['enable_alternate_wp_cron'], true); ?> name="enable_alternate_wp_cron" value="1"/> 
-									<strong><?php _e('Enable ALTERNATE_WP_CRON', 'wpematico'); ?></strong></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enable_alternate_wp_cron']; ?>"></span><br /> 
 								
 								<label><input class="checkbox" id="logexternalcron" type="checkbox"<?php checked($cfg['logexternalcron'], true); ?> name="logexternalcron" value="1"/> 
 									<strong><?php _e('Log file for external Cron', 'wpematico'); ?></strong></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['logexternalcron']; ?>"></span>
