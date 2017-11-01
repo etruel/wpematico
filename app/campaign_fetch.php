@@ -87,7 +87,10 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 	public function set_actions_and_filters() {
 		//hook to add actions and filter on init fetching
 		//add_action('Wpematico_init_fetching', array($this, 'wpematico_init_fetching') ); 
-		add_filter('wpematico_get_post_content_feed', array( 'wpematico_campaign_fetch_functions' , 'wpematico_get_yt_rss_tags'),999,4);
+		
+		if($this->campaign['campaign_type']=="youtube") { 
+			add_filter('wpematico_get_post_content_feed', array( 'wpematico_campaign_fetch_functions' , 'wpematico_get_yt_rss_tags'),999,4);
+		}
 		$priority = 10;
 		
 		if( $this->cfg['add_extra_duplicate_filter_meta_source'] &&  !$this->cfg['disableccf']) {
@@ -110,7 +113,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		$prime = true;
 
 		// Access the feed
-		if($this->campaign['campaign_type']=="feed") { 		// Access the feed
+		if($this->campaign['campaign_type']=="feed" or $this->campaign['campaign_type']=="youtube" ) { 		// Access the feed
 			$wpe_url_feed = apply_filters('wpematico_simplepie_url', $feed, $kf, $this->campaign);
 			/**
 			* @since 1.8.0

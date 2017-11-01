@@ -82,6 +82,17 @@ jQuery(document).ready(function($){
 	/**
 	 * Feeds functions and actions
 	 */
+	$('#scrollfeeds').click(function() {
+		$('#feeds_list').toggleClass('maxhe290');
+		$(this).toggleClass('dashicons-arrow-up-alt2').toggleClass('dashicons-arrow-down-alt2');
+		if( $(this).hasClass('dashicons-arrow-up-alt2')){
+			title = $(this).attr('titleon');
+		}else{
+			title = $(this).attr('titleoff');
+		}
+		$(this).attr('title', title);
+	});
+	
 	$('#addmorefeed').click(function() {
 		oldval = $('#feedfield_max').val();
 		jQuery('#feedfield_max').val( parseInt(jQuery('#feedfield_max').val(),10) + 1 );
@@ -98,6 +109,7 @@ jQuery(document).ready(function($){
 		$(document).trigger("before_add_more_feed", [feed_new, newval] );
 		$('#feeds_list').append(feed_new);
 		$('#feeds_list').vSort();
+		$('#pb-totalrecords').text( parseInt($('#pb-totalrecords').text()) + 1 );
 	});
 
 	$('#campaign_striphtml').change(function() {
@@ -153,6 +165,7 @@ jQuery(document).ready(function($){
 
 	$(document).on("click", '.deletefeed', function(e) {
 		delete_feed_url($(this).attr('data'));
+		$('#pb-totalrecords').text( parseInt( $('#pb-totalrecords').text()) - 1 );
 		e.preventDefault();
 	});
 	

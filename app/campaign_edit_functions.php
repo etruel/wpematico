@@ -20,13 +20,16 @@ class WPeMatico_Campaign_edit_functions {
 
 		do_action('wpematico_create_metaboxes_before', $campaign_data, $cfg); 
 	//	add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
-		add_meta_box( 'campaign_types', __( 'Campaign Type', 'etruel-del-post-copies' ),  array('WPeMatico_Campaign_edit', 'campaign_type_box'), 'wpematico', 'side', 'high' );
+		add_meta_box( 'campaign_types', __( 'Campaign Type','wpematico'),  array('WPeMatico_Campaign_edit', 'campaign_type_box'), 'wpematico', 'side', 'high' );
 		if ( current_theme_supports( 'post-formats' ) )
-		add_meta_box( 'post_format-box',__('Campaign Posts Format',WPeMatico::TEXTDOMAIN). '<span class="dashicons dashicons-warning help_tip" title-heltip="'.$helptip['postformat'].'" title="'.$helptip['postformat'].'"></span>', array( 'WPeMatico_Campaign_edit' ,'format_box'),'wpematico','side', 'default' );
-		add_meta_box( 'category-box',__('Campaign Categories',WPeMatico::TEXTDOMAIN). '<span class="dashicons dashicons-warning help_tip"  title-heltip="'.$helptip['category'].'"   title="'. $helptip['category'].'"></span>', array( 'WPeMatico_Campaign_edit' ,'cat_box'),'wpematico','side', 'default' );
+		add_meta_box( 'post_format-box',__('Campaign Posts Format','wpematico'). '<span class="dashicons dashicons-warning help_tip" title-heltip="'.$helptip['postformat'].'" title="'.$helptip['postformat'].'"></span>', array( 'WPeMatico_Campaign_edit' ,'format_box'),'wpematico','side', 'default' );
+		add_meta_box( 'category-box',__('Campaign Categories','wpematico'). '<span class="dashicons dashicons-warning help_tip"  title-heltip="'.$helptip['category'].'"   title="'. $helptip['category'].'"></span>', array( 'WPeMatico_Campaign_edit' ,'cat_box'),'wpematico','side', 'default' );
 		add_meta_box( 'post_tag-box', __('Tags generation', 'wpematico' ). '<span class="dashicons dashicons-warning help_tip" title-heltip="'.$helptip['tags'].'" title="'. $helptip['tags'].'"></span>', array(  'WPeMatico_Campaign_edit'  ,'tags_box' ),'wpematico','side', 'default' );
 		add_meta_box( 'log-box', __('Send log', 'wpematico' ). '<span class="dashicons dashicons-warning help_tip" title-heltip="'.$helptip['sendlog'].'"  title="'. $helptip['sendlog'].'"></span>', array(  'WPeMatico_Campaign_edit'  ,'log_box' ),'wpematico','side', 'default' );
+
 		add_meta_box( 'feeds-box', __('Feeds for this Campaign', 'wpematico' ). '<span class="dashicons dashicons-warning help_tip" title-heltip="'.$helptip['feeds'].'" title="'. $helptip['feeds'].'"></span>', array( 'WPeMatico_Campaign_edit'  ,'feeds_box' ),'wpematico','normal', 'default' );
+		add_meta_box( 'youtube-box', '<span class="dashicons dashicons-video-alt3"> </span> '.__('YouTube feeds for this Campaign', 'wpematico' ). '<span class="dashicons dashicons-warning help_tip" title-heltip="'.$helptip['feed_url'].'" title="'. $helptip['feed_url'].'"></span>', array( 'WPeMatico_Campaign_edit'  ,'feeds_box' ),'wpematico','normal', 'high' );
+		
 		add_meta_box( 'options-box', __('Options for this campaign', 'wpematico' ), array(  'WPeMatico_Campaign_edit'  ,'options_box' ),'wpematico','normal', 'default' );
 		add_meta_box( 'cron-box', __('Schedule Cron', 'wpematico' ), array(  'WPeMatico_Campaign_edit'  ,'cron_box' ),'wpematico','normal', 'default' );
 		add_meta_box( 'images-box', __('Options for images', 'wpematico' ). '<span class="dashicons dashicons-warning help_tip" title-heltip="'.$helptip['imgoptions'].'"  title="'. $helptip['imgoptions'].'"></span>', array(  'WPeMatico_Campaign_edit'  ,'images_box' ),'wpematico','normal', 'default' );
@@ -162,7 +165,7 @@ class WPeMatico_Campaign_edit_functions {
 	static function campaign_type_options() {
 		$options=array(
 			array( 'value'=> 'feed', 'text' => __('Feed Fetcher (Default)', 'wpematico' ), "show"=>array('feeds-box') ),
-		//	array( 'value'=> 'youtube','text' => __('You Tube Fetcher', 'wpematico' ) ),
+			array( 'value'=> 'youtube','text' => __('You Tube Fetcher', 'wpematico' ), "show"=>array('youtube-box') ),
 			);
 		$options = apply_filters('wpematico_campaign_type_options', $options);
 
@@ -251,7 +254,7 @@ public static function word2cats_box( $post ) {
 	$campaign_wrd2cat = $campaign_data['campaign_wrd2cat'];
 	?>
 	<p class="he20">
-		<span class="left"><?php _e('Assigning categories based on content words.', WPeMatico::TEXTDOMAIN) ?></span> 
+		<span class="left"><?php _e('Assigning categories based on content words.', 'wpematico') ?></span> 
 	</p>	
 	<div id="wrd2cat_edit" class="inlinetext">		
 		<?php foreach ($campaign_wrd2cat['word'] as $i => $value) :  ?>
@@ -259,13 +262,13 @@ public static function word2cats_box( $post ) {
 			<div id="w2c_ID<?php echo $i; ?>" class="row_word_to_cat">
 				<div class="pDiv jobtype-select p7" id="nuevow2c">
 					<div id="w1">
-						<label><?php _e('Word:', WPeMatico::TEXTDOMAIN) ?> <input type="text" size="25" class="regular-text" id="campaign_wrd2cat" name="campaign_wrd2cat[word][<?php echo $i; ?>]" value="<?php echo stripslashes(htmlspecialchars_decode(@$campaign_wrd2cat['word'][$i])); ?>" /></label><br />
-						<label><input name="campaign_wrd2cat[title][<?php echo $i; ?>]" id="campaign_wrd2cat_title" class="checkbox w2ctitle" value="1" type="checkbox"<?php checked($campaign_wrd2cat['title'][$i],true) ?> /><?php _e('on Title', WPeMatico::TEXTDOMAIN); ?>&nbsp;&nbsp;</label>
-						<label><input name="campaign_wrd2cat[regex][<?php echo $i; ?>]" id="campaign_wrd2cat_regex" class="checkbox w2cregex" value="1" type="checkbox"<?php checked($campaign_wrd2cat['regex'][$i],true) ?> /><?php _e('RegEx', WPeMatico::TEXTDOMAIN); ?>&nbsp;&nbsp;</label>
-						<label><input <?php echo ($campaign_wrd2cat['regex'][$i]) ? 'disabled' : '';?> name="campaign_wrd2cat[cases][<?php echo $i; ?>]" id="campaign_wrd2cat_cases" class="checkbox w2ccases" value="1" type="checkbox"<?php checked($campaign_wrd2cat['cases'][$i],true) ?> /><?php _e('Case sensitive', WPeMatico::TEXTDOMAIN); ?>&nbsp;&nbsp;</label>
+						<label><?php _e('Word:', 'wpematico') ?> <input type="text" size="25" class="regular-text" id="campaign_wrd2cat" name="campaign_wrd2cat[word][<?php echo $i; ?>]" value="<?php echo stripslashes(htmlspecialchars_decode(@$campaign_wrd2cat['word'][$i])); ?>" /></label><br />
+						<label><input name="campaign_wrd2cat[title][<?php echo $i; ?>]" id="campaign_wrd2cat_title" class="checkbox w2ctitle" value="1" type="checkbox"<?php checked($campaign_wrd2cat['title'][$i],true) ?> /><?php _e('on Title', 'wpematico'); ?>&nbsp;&nbsp;</label>
+						<label><input name="campaign_wrd2cat[regex][<?php echo $i; ?>]" id="campaign_wrd2cat_regex" class="checkbox w2cregex" value="1" type="checkbox"<?php checked($campaign_wrd2cat['regex'][$i],true) ?> /><?php _e('RegEx', 'wpematico'); ?>&nbsp;&nbsp;</label>
+						<label><input <?php echo ($campaign_wrd2cat['regex'][$i]) ? 'disabled' : '';?> name="campaign_wrd2cat[cases][<?php echo $i; ?>]" id="campaign_wrd2cat_cases" class="checkbox w2ccases" value="1" type="checkbox"<?php checked($campaign_wrd2cat['cases'][$i],true) ?> /><?php _e('Case sensitive', 'wpematico'); ?>&nbsp;&nbsp;</label>
 					</div>
 					<div id="c1">
-						<?php _e('To Category:', WPeMatico::TEXTDOMAIN); echo ' ';
+						<?php _e('To Category:', 'wpematico'); echo ' ';
 						wp_dropdown_categories( array(
 											'show_option_all'    => '',
 											'show_option_none'   => __('Select category', 'wpematico' ),
@@ -283,7 +286,7 @@ public static function word2cats_box( $post ) {
 						?>
 					</div>
 					<span class="wi10" id="w2cactions">
-						<label title="<?php _e('Delete this item', WPeMatico::TEXTDOMAIN); ?>"  class="bicon delete left btn_delete_w2c"></label>
+						<label title="<?php _e('Delete this item', 'wpematico'); ?>"  class="bicon delete left btn_delete_w2c"></label>
 					</span>
 				</div>
 			</div>
@@ -292,7 +295,7 @@ public static function word2cats_box( $post ) {
 	<input id="wrd2cat_max" value="<?php echo $i; ?>" type="hidden" name="wrd2cat_max">
 	<div class="clear"></div>
 	<div id="paging-box">
-		<a href="#" class="button-primary add" id="addmorew2c"> <?php _e('Add more', WPeMatico::TEXTDOMAIN); ?></a>
+		<a href="#" class="button-primary add" id="addmorew2c"> <?php _e('Add more', 'wpematico'); ?></a>
 	</div>
 	<?php 
 }
@@ -443,9 +446,9 @@ public static function template_box( $post ) {
 
 			<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_enable_featured_image_selector,true); ?> name="campaign_enable_featured_image_selector" id="campaign_enable_featured_image_selector" /><b>&nbsp;<label for="campaign_enable_featured_image_selector"><?php _e('Enable featured image selector.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enable_featured_image_selector']; ?>"></span>
 				<div id="featured_img_selector_div" style="padding-left:20px; <?php if (!$campaign_enable_featured_image_selector) echo 'display:none;';?>">
-					<b><label for="featured_selector_index"><?php _e('Index to featured', WPeMatico::TEXTDOMAIN ); ?>:</label></b>
+					<b><label for="featured_selector_index"><?php _e('Index to featured', 'wpematico' ); ?>:</label></b>
 					<input name="campaign_featured_selector_index" type="number" min="0" value="<?php echo $campaign_featured_selector_index; ?>" id="campaign_featured_selector_index"/><br />
-					<b><label for="campaign_featured_selector_ifno"><?php _e('If no exist index', WPeMatico::TEXTDOMAIN ); ?>:</label></b>
+					<b><label for="campaign_featured_selector_ifno"><?php _e('If no exist index', 'wpematico' ); ?>:</label></b>
 					<select name="campaign_featured_selector_ifno" id="campaign_featured_selector_ifno"> 
 						<option value="first" <?php selected('first', $campaign_featured_selector_ifno, true); ?>>First image</option>
 						<option value="last" <?php selected('last', $campaign_featured_selector_ifno, true); ?>>Last image</option>
@@ -924,7 +927,7 @@ public static function feeds_box( $post ) {
 		<?php // if($cfg['nonstatic']){NoNStatic::bimport();} ?>
 		<div class="pbfeet right">
 			<?php _e('Displaying', 'wpematico' ); ?> <span id="pb-totalrecords" class="b"><?php echo $i-1; ?></span>&nbsp;<span id="pb-ptext">feeds </span>
-			<label class="right ui-icon select_down" onclick="jQuery('#feeds_list').toggleClass('maxhe290');jQuery(this).toggleClass('select_up');" title="<?php _e('Display all feeds', 'wpematico' ); ?>"></label>
+			<label id="scrollfeeds" class="iconbutton right dashicons dashicons-arrow-down-alt2" title="<?php _e('Display all feeds', 'wpematico' ); ?>" titleoff="<?php _e('Display all feeds', 'wpematico' ); ?>" titleon="<?php _e('Scroll feeds list.', 'wpematico' ); ?>"></label>
 		</div>
 	</div>
 	<?php
@@ -984,7 +987,7 @@ public static function feeds_box( $post ) {
 							<?php 
 							wp_dropdown_categories( array(
 								'show_option_all'    => '',
-								'show_option_none'   => __('No parent category', WPeMatico::TEXTDOMAIN ),
+								'show_option_none'   => __('No parent category', 'wpematico' ),
 								'orderby'            => 'name', 
 								'order'              => 'ASC',
 								'show_count'         => 0,

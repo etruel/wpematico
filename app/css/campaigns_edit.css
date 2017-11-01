@@ -226,29 +226,7 @@ div#optionslayer-right {
 	padding-left: 10px;
 }
 
-.normal{font-weight:normal}
-.b{font-weight:bold}
-.u{text-decoration:underline}
-.i{font-style:italic}
-.strike{text-decoration:line-through}
-.tleft{text-align:left}
-.tright{text-align:right}
-.tcenter{text-align:center}
-.vtop{vertical-align:top}
-.vbottom{vertical-align:bottom}
-.vmiddle{vertical-align:middle}
-.left{float:left}
-.right{float:right}
-.floatend{clear:both;margin:0;line-height:1px;font-size:1px;height:1px}
-.pointer{cursor:pointer}
-.sup{vertical-align:15%}
-.hide{display:none}
-.vhide{visibility:hidden}
-.prel{position:relative}
-.pabs{position:absolute}
-.ibfix{display:inline-block;zoom:1;*display:inline}
-
-
+/************
 .mya4_sprite,.ui-icon{background:url(../../images/sprite.gif) top left;background-repeat:no-repeat}
 .mya4-tabicons{margin-right:10px;position:relative;vertical-align:text-top}
 .tab_inactive_payments{background-position:-34px -18px;width:10px;height:13px}
@@ -300,6 +278,7 @@ div#optionslayer-right {
 .select_up{background-position:-202px 0;height:17px;width:17px}
 .checkmark_Italic{background-position:-161px 0;height:18px;width:19px}
 .alert_star{background-position:-175px -42px;height:15px;width:15px}
+*************/
 
 #addmorew2c { font-weight: bold; text-decoration: none }
 .row_word_to_cat:nth-child(even) { background-color:LightCyan; }

@@ -264,10 +264,12 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 = 1.8.2 Oct 31, 2017 =
 * Added the option in settings to use the alternate WP Cron.
 * Added improvements in the CSS style of the pages.
+* Added YouTube as Campaign Type to give the posts a preformatted content.
 * Many improvements in the responsive styles.
 * Fixes the problem of two clicks to update a campaign.
 * Fixes a problem when trying to save a campaign from the wizard.
 * Fixes a problem when deleting a feed in the list of feeds.
+* Fixes the feeds counter at bottom of the feeds list when adds or deletes rows. 
 * Fixes a problem that Delet Hash did not run in the campaign edit.
 * Fixes a problem that ignored the response to the button confirmation of the Campaign Control Panel.
 

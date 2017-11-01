@@ -44,24 +44,6 @@ p { margin-bottom: 2px; }
 	width: 90px;
 }
 
-.NO_statebutton {
-  display: inline-block;
-  background: #eeeeee; /* Old browsers */
-  background: -moz-linear-gradient(top, #eeeeee 0%, #eeeeee 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#eeeeee)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #eeeeee 0%,#eeeeee 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #eeeeee 0%,#eeeeee 100%); /* Opera11.10+ */
-  background: -ms-linear-gradient(top, #eeeeee 0%,#eeeeee 100%); /* IE10+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#eeeeee',GradientType=0 ); /* IE6-9 */
-  background: linear-gradient(top, #eeeeee 0%,#eeeeee 100%); /* W3C */
-  border: 1px solid #a1a1a1;
-  padding: 0;
-  text-decoration: none;
-  color: #333;
-  border-radius: .2em;
-  margin-right: 3px;
-}
-
 .green {
     color: #00BF00 !important;
 }
@@ -92,7 +74,19 @@ p { margin-bottom: 2px; }
 .cpanelbutton:first-child{
 	margin-left: 0;
 }
-/*Math & Factions*/
+
+.iconbutton {
+    border: 1px solid lightsteelblue;
+    border-radius: 3px;
+    margin: -1px 2px;
+    background: white;
+}
+.iconbutton:hover {
+    background: grey;
+	color: white;
+}
+
+/*********************
 .pi:before            { content: "\213C"; }
 .one_thrid:before     { content: "\2153"; }
 .two_thrid:before     { content: "\2154"; }
@@ -109,7 +103,7 @@ p { margin-bottom: 2px; }
 .quarter:before       { content: "\00BC"; }
 .half:before          { content: "\00BD"; }
 .three_quarter:before { content: "\00BE"; }
-/*Symbols*/
+
 .like:before               { content: "\2764"; }
 .star:before               { content: "\2605"; }
 .spark:before              { content: "\2737"; }
@@ -143,11 +137,10 @@ p { margin-bottom: 2px; }
 .scissors:before           { content: "\2701"; }
 .airplane:before           { content: "\2708"; }
 .snow:before               { content: "\2042"; }
+***********************/
 
 .delete:before { content: "\2718";}
 .add:before { content: "\271A";}
-.isok:before { content: "\2714";}
-.cross:before { content: "\2716"; }
 .warning:before { content: "\26A0"; }
 .frowning_face:before { content: "\2639"; }
 .smiling_face:before { content: "\263A"; }
@@ -202,8 +195,7 @@ a.wpelinks {
 .LightPink{background-color:LightPink;}
 .Papaya{background-color:PapayaWhip;}
 
-/**********************************************************************************************/
-/**********************************************************************************************/
+
 .pDiv{border-color: #BCBCBC;
     border-style: none;
     border-width: 1px medium;
@@ -262,6 +254,7 @@ a.wpelinks {
     display: inline-block;
 }
 
+/*************************************
 .mya4_sprite,.ui-icon{background:url(../../images/sprite.gif) top left;background-repeat:no-repeat}
 .mya4-tabicons{margin-right:10px;position:relative;vertical-align:text-top}
 .tab_inactive_payments{background-position:-34px -18px;width:10px;height:13px}
@@ -313,6 +306,7 @@ a.wpelinks {
 .select_up{background-position:-202px 0;height:17px;width:17px}
 .checkmark_Italic{background-position:-161px 0;height:18px;width:19px}
 .alert_star{background-position:-175px -42px;height:15px;width:15px}
+*********************/
 
 .help_tip {
     cursor: help;
