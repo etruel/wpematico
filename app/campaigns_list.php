@@ -124,7 +124,7 @@ class WPeMatico_Campaigns {
 		// Don't show if current user is not allowed to edit other's posts for this post type
 		if ( ! current_user_can( get_post_type_object( $typenow )->cap->edit_others_posts ) ) return;
 		
-		echo '<div style="margin: 1px 5px 0 0;float:left;background-color: #EB9600;" id="run_all" onclick="javascript:run_all();" class="button">'. __('Run Selected Campaigns', 'wpematico' ) . '</div>';
+		echo '<div style="margin: 1px 5px 0 0;float:left;background-color: #EB9600;" id="run_all" onclick="javascript:run_all();" class="button">'. __('Run Selected Campaigns', 'wpematico' ) . ' <span style="line-height: 1.4em;" class="dashicons dashicons-controls-forward"></span></div>';
 		//self::bulk_actions($which);
 	}
 	

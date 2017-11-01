@@ -134,18 +134,24 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		$CampaignType = $campaign_data['campaign_type'];
 		foreach ($CampaignTypesArray as $type) {
 			$cttype = (object)$type;
-			foreach ($cttype->show as $show) {
-				if($CampaignType == $cttype->value) {
-					echo "#$show {display: block;}";
-					if(isset($cttype->hide) ) {  //proceso solo los hide del type seleccionado
-						foreach ($cttype->hide as $hide) {  //proceso solo los hide del type seleccionado
-							echo "#$hide {display: none;}";
-						}
-					}
-				}else{
+			foreach ($cttype->show as $show) {   // first hide all 
+				if($CampaignType != $cttype->value) {
 					echo "#$show {display: none;}";
 				}
 			}
+		}
+		foreach ($CampaignTypesArray as $type) {
+			$cttype = (object)$type;
+			foreach ($cttype->show as $show) {     // shows these CT metaboxes
+				if($CampaignType == $cttype->value) {
+					echo "#$show {display: block;}";
+					if(isset($cttype->hide) ) {  // tiene que ocultar algun metabox ? NOT Tested seems can't be recovered later
+						foreach ($cttype->hide as $hide) {  //process only the hide of selected type 
+							echo "#$hide {display: none;}";
+						}
+					}
+				}
+			}			
 		}
 	?>;	
 </style>
@@ -319,16 +325,19 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 
 			
 			
-
-			
-			
-			
 			
 			<?php $CampaignTypesArray =  self::campaign_type_options();	?>
 			CampaignTypesArray = <?php echo wp_json_encode($CampaignTypesArray); ?>;
 			
 			displayCTboxes = function() {
 				var campaignType = $('#campaign_type').val();
+				for(var i in CampaignTypesArray) {
+					CampaignTypesArray[i].show.forEach( function(metabox) {
+						if(campaignType != CampaignTypesArray[i].value ) {
+							$('#' + metabox).fadeOut();
+						}
+					});
+				}
 				for(var i in CampaignTypesArray) {
 					CampaignTypesArray[i].show.forEach( function(metabox) {
 						if(campaignType == CampaignTypesArray[i].value ) {
@@ -338,8 +347,6 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 									$('#' + metab).fadeOut();
 								});
 							}
-						}else{
-							$('#' + metabox).fadeOut();
 						}
 					});
 				}
