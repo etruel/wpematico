@@ -35,7 +35,9 @@ class WPEMATICO_Welcome {
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'admin_menus') );
 		add_action( 'admin_head', array( $this, 'admin_head' ) );
-		add_action( 'admin_init', array( $this, 'welcome'    ), 11 );
+		
+		add_action( 'admin_init', array( $this, 'prevent_double_act_redirect'), 9);
+		add_action( 'admin_init', array( $this, 'welcome'), 11 );
 		add_action( 'admin_post_save_subscription_wpematico', array($this, 'save_subscription'));
 	}
 
@@ -683,11 +685,30 @@ class WPEMATICO_Welcome {
 		
 		$upgrade = get_option( 'wpematico_db_version' );
 		update_option( 'wpematico_db_version', WPEMATICO_VERSION );
-			
+		
+		if (defined('WPE_PREVENT_REDIRECT_ACTIVE')) {
+			return;
+		}
+
 		if( ! $upgrade ) { // First time install
 			wp_safe_redirect( admin_url( 'index.php?page=wpematico-getting-started' ) ); exit;
 		} else { // Update
 			wp_safe_redirect( admin_url( 'index.php?page=wpematico-about' ) ); exit;
+		}
+	}
+	/**
+	* Static function prevent_double_act_redirect
+	* @access public
+	* @return void
+	* @since 1.8.2
+	*/
+	public function prevent_double_act_redirect() {
+		if (isset($_GET['page'])) {
+			if ($_GET['page'] == 'wpematico-getting-started' || $_GET['page'] == 'wpematico-about') {
+				define('WPE_PREVENT_REDIRECT_ACTIVE', true);
+				update_option( 'wpematico_db_version', WPEMATICO_VERSION );
+				delete_transient( '_wpematico_activation_redirect' );
+			}
 		}
 	}
 }

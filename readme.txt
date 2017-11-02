@@ -272,6 +272,7 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 * Fixes the feeds counter at bottom of the feeds list when adds or deletes rows. 
 * Fixes a problem that Delet Hash did not run in the campaign edit.
 * Fixes a problem that ignored the response to the button confirmation of the Campaign Control Panel.
+* Fixes a problem that redirects don't stop on plugin activation.
 
 = 1.8.1 Oct 25, 2017 =
 * Added "Find in title" option in the Words to Categories feature.
