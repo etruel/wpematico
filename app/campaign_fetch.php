@@ -87,13 +87,11 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 	public function set_actions_and_filters() {
 		//hook to add actions and filter on init fetching
 		//add_action('Wpematico_init_fetching', array($this, 'wpematico_init_fetching') ); 
-		
-		// comentar la primer linea para sacar youtube de los feeds $this->campaign['campaign_type']=="youtube"
-		add_filter('wpematico_get_post_content_feed', array( 'wpematico_campaign_fetch_functions' , 'wpematico_get_yt_rss_tags'),999,4);
-		add_filter('wpematico_get_post_content_youtube', array( 'wpematico_campaign_fetch_functions' , 'wpematico_get_yt_rss_tags'),999,4);
+
+		if($this->campaign['campaign_type']=="youtube") 
+			add_filter('wpematico_get_post_content_feed', array( 'wpematico_campaign_fetch_functions' , 'wpematico_get_yt_rss_tags'),999,4);
 		
 		$priority = 10;
-		
 		if( $this->cfg['add_extra_duplicate_filter_meta_source'] &&  !$this->cfg['disableccf']) {
 			add_filter('wpematico_duplicates', array( 'wpematico_campaign_fetch_functions' , 'WPeisDuplicatedMetaSource'),$priority,3);
 		}

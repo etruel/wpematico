@@ -265,6 +265,7 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 * Added the option in settings to use the alternate WP Cron.
 * Added improvements in the CSS style of the pages.
 * Added YouTube as Campaign Type to give the posts a preformatted content.
+* Added YouTube metabox in the wizard on selecting in Campaign type.
 * Many improvements in the responsive styles.
 * Fixes the problem of two clicks to update a campaign.
 * Fixes a problem when trying to save a campaign from the wizard.
@@ -272,7 +273,7 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 * Fixes the feeds counter at bottom of the feeds list when adds or deletes rows. 
 * Fixes a problem that Delet Hash did not run in the campaign edit.
 * Fixes a problem that ignored the response to the button confirmation of the Campaign Control Panel.
-* Fixes a problem that redirects don't stop on plugin activation.
+* Fixes a problem that could redirect indefinitely on plugin activation.
 
 = 1.8.1 Oct 25, 2017 =
 * Added "Find in title" option in the Words to Categories feature.

@@ -1,5 +1,3 @@
-
-
 jQuery(document).ready(function($){
 	var cont_wizard = 0;
 	var wizard_name_array = [];
@@ -42,15 +40,48 @@ jQuery(document).ready(function($){
 			}	
 		});
 	}
-		//sort array
+
+	$(document).on('change','#thickbox_wizard #campaign_type',function(){
+		if($(this).val()=='youtube'){
+			youtubox = $("#youtube-box");
+			if (youtubox.find('h2 span').text().length>0  && youtubox.is(':visible') && !youtubox.is(':hidden')) {
+				$cont_wizard++;
+				youtubox.attr("wizard","wizard_metabox_"+$cont_wizard);
+				youtubox.addClass("wizard_metabox_"+$cont_wizard);
+				wizard_id_array.splice(1, 0, youtubox.attr("id"));
+				wizard_name_array.splice(1, 0, youtubox.find('h2 span').text());
+				wizard_class_array.splice(1, 0, "wizard_metabox_"+$cont_wizard);
+			}
+		}else{
+			if (wizard_id_array[1] == 'youtube-box') {
+				youtubox = $("#youtube-box");
+				youtubox.attr("wizard","");
+				youtubox.removeClass("wizard_metabox_"+$cont_wizard);
+				$cont_wizard--;
+				wizard_id_array.splice(1, 1);
+				wizard_name_array.splice(1, 1);
+				wizard_class_array.splice(1, 1);
+			}
+		}
+	});
+
+	console.log('#### -- Event handlers ---- :', $._data($('#campaign_type')[0], "events") );
+
+	//sort array
 	function sort_array_wizard(){
-					
 		temp_wizard_array_name = new Array();
 		temp_wizard_class_name = new Array();
 		temp_wizard_id_array = new Array();
-					
+
 		for(i=0;i<wizard_name_array.length;i++){
 			if (wizard_id_array[i] == 'campaign_types') {
+				temp_wizard_array_name.push(wizard_name_array[i]);
+				temp_wizard_class_name.push(wizard_class_array[i]);
+				temp_wizard_id_array.push(wizard_id_array[i]);
+			}
+		}
+		for(i=0;i<wizard_name_array.length;i++){
+			if (wizard_id_array[i] == 'youtube-box') {
 				temp_wizard_array_name.push(wizard_name_array[i]);
 				temp_wizard_class_name.push(wizard_class_array[i]);
 				temp_wizard_id_array.push(wizard_id_array[i]);
@@ -63,8 +94,8 @@ jQuery(document).ready(function($){
 				temp_wizard_id_array.push(wizard_id_array[i]);
 			}
 		}
-					
 		for(i=0;i<wizard_name_array.length;i++){
+			//if ( $.inArray(wizard_id_array[i], ['campaign_types','feeds-box','submitdiv'] )===false ) {
 			if (wizard_id_array[i] != 'submitdiv' && wizard_id_array[i] != 'feeds-box' && wizard_id_array[i] != 'campaign_types') {
 				temp_wizard_array_name.push(wizard_name_array[i]);
 				temp_wizard_class_name.push(wizard_class_array[i]);
