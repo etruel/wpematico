@@ -261,6 +261,9 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
+= xx =
+Algunas modificaciones en el addon page.
+
 = 1.8.2 Nov 3, 2017 =
 * Added the option in settings to use the alternate WP Cron.
 * Added improvements in the CSS style of the pages.

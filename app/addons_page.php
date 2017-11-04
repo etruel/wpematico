@@ -65,7 +65,7 @@ function wpe_addon_admin_menu() {
 	$update_wpematico_addons = wpematico_get_addons_update();
 	$count_menu = '';
 	if (!empty($update_wpematico_addons) && $update_wpematico_addons > 0) {
-		$count_menu = "<span class='update-plugins count-{$update_wpematico_addons}'><span class='plugin-count'>" . number_format_i18n($update_wpematico_addons) . "</span></span>";
+		$count_menu = "<span class='update-plugins count-{$update_wpematico_addons}' style='position: absolute;	margin-left: 5px;'><span class='plugin-count'>" . number_format_i18n($update_wpematico_addons) . "</span></span>";
 	}
 	
 	$page = add_submenu_page(
