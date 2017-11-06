@@ -15,6 +15,8 @@ function wpematico_get_addons_update() {
 	static $wpematico_updates = 0; // Cache received responses.
 
 	if (empty($wpematico_updates)) {
+		
+
 		$plugin_updates = get_site_transient('update_plugins');
 		if ($plugin_updates === false) {
 			$plugin_updates = new stdClass();
@@ -42,13 +44,10 @@ function redirect_to_wpemaddons() {
 	if ($pagenow != 'admin-ajax.php' || $getpage == 'wpemaddons')
 	if ($pagenow == 'plugins.php' && ($getpage=='')  ){
 		$plugin = isset($_REQUEST['plugin']) ? $_REQUEST['plugin'] : '';
-//		$plugin_status = isset($_REQUEST['plugin_status']) ? $_REQUEST['plugin_status'] : '';
 		$s = isset($_REQUEST['s']) ? urlencode($_REQUEST['s']) : '';
 
 		$location = '';
-//		if( !empty($plugin_status) && in_array($plugin_status,array('all','active','inactive','upgrade'))) {
-//			$location = add_query_arg('plugin_status',$plugin_status );
-//		}
+
 		$actioned = array_multi_key_exists( array('error', 'deleted', 'activate', 'activate-multi', 'deactivate', 'deactivate-multi', '_error_nonce' ), $_REQUEST, false );
 		if( ( isset($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], 'page=wpemaddons') ) && $actioned ) {
 			$location = add_query_arg('page','wpemaddons', $location);// $_SERVER['REQUEST_URI'];
@@ -60,9 +59,11 @@ function redirect_to_wpemaddons() {
 	}
 }
 
+
 add_action( 'admin_menu', 'wpe_addon_admin_menu',99 );
 function wpe_addon_admin_menu() {
-	$update_wpematico_addons = wpematico_get_addons_update();
+	$update_data = wp_get_update_data();
+	$update_wpematico_addons = $update_data['counts']['plugins'];
 	$count_menu = '';
 	if (!empty($update_wpematico_addons) && $update_wpematico_addons > 0) {
 		$count_menu = "<span class='update-plugins count-{$update_wpematico_addons}' style='position: absolute;	margin-left: 5px;'><span class='plugin-count'>" . number_format_i18n($update_wpematico_addons) . "</span></span>";
@@ -99,6 +100,7 @@ add_action( 'admin_head', 'WPeAddon_admin_head' );
 function WPeAddon_admin_head(){
 	global $pagenow, $page_hook;
 	if($pagenow=='plugins.php' && $page_hook=='plugins_page_wpemaddons'){
+		
 	?>
 <script type="text/javascript">
 	jQuery(document).ready(function($){
@@ -161,7 +163,8 @@ function add_admin_plugins_page() {
 	$status ='all'; 
 	$page=  (!isset($page) or is_null($page))? 1 : $page;
 	$plugins['all']=get_plugins();
-
+	wp_update_plugins();
+	wp_clean_plugins_cache(false);
 	require WPEM_ADMIN_DIR . '/plugins.php' ;
 	exit;
 
