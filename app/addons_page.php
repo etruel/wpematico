@@ -12,28 +12,21 @@ if ( !defined('ABSPATH') ) {
  */
 
 function wpematico_get_addons_update() {
-	static $wpematico_updates = 0; // Cache received responses.
+	$wpematico_updates = 0; // Cache received responses.
+	$plugin_updates = get_site_transient('update_plugins');
+	if ($plugin_updates === false) {
+		$plugin_updates = new stdClass();
+	}
 
-	if (empty($wpematico_updates)) {
-		
-
-		$plugin_updates = get_site_transient('update_plugins');
-		if ($plugin_updates === false) {
-			$plugin_updates = new stdClass();
-		}
-
-		if (!isset($plugin_updates->response)) {
-			$plugin_updates->response = array();
-		}
-		foreach ($plugin_updates->response as $r_plugin => $value) {
-			if(strpos($r_plugin, 'wpematico_') !== false) {
-				$wpematico_updates++;
-			}
+	if (!isset($plugin_updates->response)) {
+		$plugin_updates->response = array();
+	}
+	foreach ($plugin_updates->response as $r_plugin => $value) {
+		if(strpos($r_plugin, 'wpematico_') !== false) {
+			$wpematico_updates++;
 		}
 	}
-	
 	return $wpematico_updates;
-
 }
 
 
@@ -62,8 +55,8 @@ function redirect_to_wpemaddons() {
 
 add_action( 'admin_menu', 'wpe_addon_admin_menu',99 );
 function wpe_addon_admin_menu() {
-	$update_data = wp_get_update_data();
-	$update_wpematico_addons = $update_data['counts']['plugins'];
+	
+	$update_wpematico_addons = wpematico_get_addons_update();
 	$count_menu = '';
 	if (!empty($update_wpematico_addons) && $update_wpematico_addons > 0) {
 		$count_menu = "<span class='update-plugins count-{$update_wpematico_addons}' style='position: absolute;	margin-left: 5px;'><span class='plugin-count'>" . number_format_i18n($update_wpematico_addons) . "</span></span>";
@@ -87,38 +80,38 @@ function wpe_addon_admin_menu() {
 	);
 
 }
+
+
+add_action( 'admin_head', 'WPeAddon_admin_head' );
 function WPeAddon_admin_scripts() {
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'plupload-all' );
 	wp_enqueue_style( 'plugin-install' );
 	wp_enqueue_script( 'plugin-install' );
 	add_thickbox();
-	wp_enqueue_script( 'wpematico-update', WPeMatico :: $uri . 'app/js/wpematico_updates.js', array( 'jquery', 'inline-edit-post' ), '', true );
+	wp_enqueue_script( 'wpematico-update', WPeMatico::$uri . 'app/js/wpematico_updates.js', array( 'jquery', 'inline-edit-post' ), WPEMATICO_VERSION, true );
 }
 
-add_action( 'admin_head', 'WPeAddon_admin_head' );
+
 function WPeAddon_admin_head(){
 	global $pagenow, $page_hook;
 	if($pagenow=='plugins.php' && $page_hook=='plugins_page_wpemaddons'){
-		
 	?>
-<script type="text/javascript">
-	jQuery(document).ready(function($){
-		$('.wrap h1').html('WPeMatico Add-Ons Plugins');
-//		$('.update-link').removeClass('update-link');
-		var $all= $('.subsubsub .all a').attr('href');
-		var $act= $('.subsubsub .active a').attr('href');
-		var $ina= $('.subsubsub .inactive a').attr('href');
-		var $rec= $('.subsubsub .recently_activated a').attr('href');
-		var $upg= $('.subsubsub .upgrade a').attr('href');
-		$('.subsubsub .all a').attr('href',$all+'&page=wpemaddons');
-		$('.subsubsub .active a').attr('href',$act+'&page=wpemaddons');
-		$('.subsubsub .inactive a').attr('href',$ina+'&page=wpemaddons');
-		$('.subsubsub .recently_activated a').attr('href',$rec+'&page=wpemaddons');
-		$('.subsubsub .upgrade a').attr('href',$upg+'&page=wpemaddons');
-	});
-	
-</script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($){
+			$('.wrap h1').html('WPeMatico Add-Ons Plugins');
+			var $all= $('.subsubsub .all a').attr('href');
+			var $act= $('.subsubsub .active a').attr('href');
+			var $ina= $('.subsubsub .inactive a').attr('href');
+			var $rec= $('.subsubsub .recently_activated a').attr('href');
+			var $upg= $('.subsubsub .upgrade a').attr('href');
+			$('.subsubsub .all a').attr('href',$all+'&page=wpemaddons');
+			$('.subsubsub .active a').attr('href',$act+'&page=wpemaddons');
+			$('.subsubsub .inactive a').attr('href',$ina+'&page=wpemaddons');
+			$('.subsubsub .recently_activated a').attr('href',$rec+'&page=wpemaddons');
+			$('.subsubsub .upgrade a').attr('href',$upg+'&page=wpemaddons');
+		});
+	</script>
 	<?php 
 	}
 }
@@ -149,14 +142,12 @@ function add_admin_plugins_page() {
 		define('WPEM_ADMIN_DIR' , ABSPATH . basename(admin_url()));
 	}
 	
-	
 	if ( ! class_exists( 'WP_List_Table' ) ) {
 		require_once WPEM_ADMIN_DIR . '/includes/class-wp-list-table.php';
 	}
 	
 	if ( ! class_exists( 'WP_Plugins_List_Table' ) ) {
 		require WPEM_ADMIN_DIR .'/includes/class-wp-plugins-list-table.php';
-		
 	}
 	
 	global $plugins, $status, $wp_list_table;
