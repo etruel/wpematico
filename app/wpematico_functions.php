@@ -812,10 +812,9 @@ class WPeMatico_functions {
 		$active_plugins = get_option( 'active_plugins' );
 		$active_plugins_names = array_map('basename', $active_plugins );
 		$is_pro_active = array_search( 'wpematicopro.php', $active_plugins_names );
+		$professional_notice = __('<strong>You can force a feed with <a href="https://etruel.com/downloads/wpematico-professional/">WPeMatico Professional</a></strong>', 'wpematico' );
 		if( $is_pro_active !== FALSE ) {
 			
-		}else{
-			$professional_notice = __('<strong>You can force a feed with <a href="https://etruel.com/downloads/wpematico-professional/">WPeMatico Professional</a></strong>', 'wpematico' );
 		}
 		if ($ajax) {
 			if(empty($errors)) {
