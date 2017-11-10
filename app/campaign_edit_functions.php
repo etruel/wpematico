@@ -463,9 +463,12 @@ public static function template_box( $post ) {
 				<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_customupload, true); ?> name="campaign_customupload" id="campaign_customupload" /><b>&nbsp;<label for="campaign_customupload"><?php _e('Custom function for uploads.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['customupload']; ?>"></span>
 				<br/>
 			</div>
+			<?php
+				do_action('wpematico_image_box_setting_after');
+			?>
 		</div>
-		
 		<?php
+		do_action('wpematico_image_box_out_setting');
 	}
 	/**
 	* Static function audio_box

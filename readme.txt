@@ -262,7 +262,8 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 
 == Changelog ==
 = xx =
-Algunas modificaciones en el addon page.
+* Algunas modificaciones en el addon page.
+* Algunas modificaciones en el campaign edit.
 
 = 1.8.2 Nov 3, 2017 =
 * Added the option in settings to use the alternate WP Cron.
