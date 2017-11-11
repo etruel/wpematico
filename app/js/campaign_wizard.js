@@ -95,8 +95,9 @@ jQuery(document).ready(function($){
 			}
 		}
 		for(i=0;i<wizard_name_array.length;i++){
-			//if ( $.inArray(wizard_id_array[i], ['campaign_types','feeds-box','submitdiv'] )===false ) {
-			if (wizard_id_array[i] != 'submitdiv' && wizard_id_array[i] != 'feeds-box' && wizard_id_array[i] != 'campaign_types') {
+			// All values of this array are not added in the middle boxes. 
+			var dont_add_on_middle = ['submitdiv', 'feeds-box', 'campaign_types', 'youtube-box'];
+			if (dont_add_on_middle.indexOf(wizard_id_array[i]) == -1) {
 				temp_wizard_array_name.push(wizard_name_array[i]);
 				temp_wizard_class_name.push(wizard_class_array[i]);
 				temp_wizard_id_array.push(wizard_id_array[i]);
