@@ -55,7 +55,17 @@ function redirect_to_wpemaddons() {
 
 add_action( 'admin_menu', 'wpe_addon_admin_menu',99 );
 function wpe_addon_admin_menu() {
-	
+	if (!empty($_REQUEST['verify-delete'])) {
+		global $user_ID;
+		$user_ID = get_current_user_id();
+		if (!defined('WPEM_ADMIN_DIR')) {
+			define('WPEM_ADMIN_DIR' , ABSPATH . basename(admin_url()));
+		}
+		$status ='all'; 
+		$page=  (!isset($page) or is_null($page))? 1 : $page;
+		require WPEM_ADMIN_DIR . '/plugins.php' ;
+		return false;
+	}
 	$update_wpematico_addons = wpematico_get_addons_update();
 	$count_menu = '';
 	if (!empty($update_wpematico_addons) && $update_wpematico_addons > 0) {
