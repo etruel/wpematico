@@ -51,20 +51,32 @@ function redirect_to_wpemaddons() {
 		}
 	}
 }
-
+function wpe_include_plugins() {
+	global $user_ID;
+	$user_ID = get_current_user_id();
+	if (!defined('WPEM_ADMIN_DIR')) {
+		define('WPEM_ADMIN_DIR' , ABSPATH . basename(admin_url()));
+	}
+	$status ='all'; 
+	$page=  (!isset($page) or is_null($page))? 1 : $page;
+	require WPEM_ADMIN_DIR . '/plugins.php';
+			
+}
 
 add_action( 'admin_menu', 'wpe_addon_admin_menu',99 );
 function wpe_addon_admin_menu() {
+
 	if (!empty($_REQUEST['verify-delete'])) {
-		global $user_ID;
-		$user_ID = get_current_user_id();
-		if (!defined('WPEM_ADMIN_DIR')) {
-			define('WPEM_ADMIN_DIR' , ABSPATH . basename(admin_url()));
+			wpe_include_plugins();
+			return false;	
+	}
+	if (!empty($_REQUEST['action']) && $_REQUEST['action'] == 'delete-selected') {
+		$plugins = isset( $_REQUEST['checked'] ) ? (array) wp_unslash( $_REQUEST['checked'] ) : array();
+		$plugins = array_filter($plugins, 'is_plugin_inactive'); // Do not allow to delete Activated plugins.
+		if (empty( $plugins ) ) {
+			wpe_include_plugins();
+			return false;	
 		}
-		$status ='all'; 
-		$page=  (!isset($page) or is_null($page))? 1 : $page;
-		require WPEM_ADMIN_DIR . '/plugins.php' ;
-		return false;
 	}
 	$update_wpematico_addons = wpematico_get_addons_update();
 	$count_menu = '';
