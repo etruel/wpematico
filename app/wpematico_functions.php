@@ -808,20 +808,21 @@ class WPeMatico_functions {
 		$feed = self::fetchFeed($url, true, 0, false, $force_feed);
 
 		$errors = $feed->error(); // if no error returned
-				// Check if PRO version is installed and its required version
-		$active_plugins = get_option( 'active_plugins' );
-		$active_plugins_names = array_map('basename', $active_plugins );
-		$is_pro_active = array_search( 'wpematicopro.php', $active_plugins_names );
-		$professional_notice = __('<strong>You can force a feed with <a href="https://etruel.com/downloads/wpematico-professional/">WPeMatico Professional</a></strong>', 'wpematico' );
-		if( $is_pro_active !== FALSE ) {
-			
+		// Check if PRO version is installed and its required version
+//		$active_plugins = get_option( 'active_plugins' );
+//		$active_plugins_names = array_map('basename', $active_plugins );
+//		$is_pro_active = array_search( 'wpematicopro.php', $active_plugins_names );
+		if( wpematico_is_pro_active() ) {
+			$professional_notice = '';
+		}else{
+			$professional_notice = __('<strong>You can force a feed with <a href="https://etruel.com/downloads/wpematico-professional/">WPeMatico Professional</a></strong>', 'wpematico' );
 		}
 		if ($ajax) {
 			if(empty($errors)) {
 				$response['message'] = sprintf(__('The feed %s has been parsed successfully.', 'wpematico' ), $url);
 				$response['success'] = true;
 			}else{
-				$response['message'] = sprintf(__('The feed %s cannot be parsed. Simplepie said: %s', 'wpematico' ), $url, $errors).' '.$professional_notice;
+				$response['message'] = sprintf(__('The feed %s cannot be parsed. Simplepie said: %s', 'wpematico' ), $url, $errors).'<br />'.$professional_notice;
 				$response['success'] = false;
 			}
 			wp_send_json($response);  //echo json & die
@@ -831,7 +832,7 @@ class WPeMatico_functions {
 				printf(__('The feed %s has been parsed successfully.', 'wpematico' ), $url);
 			} 
 			else {
-				printf(__('The feed %s cannot be parsed. Simplepie said: %s', 'wpematico' ), $url, $errors).' '.$professional_notice;
+				printf(__('The feed %s cannot be parsed. Simplepie said: %s', 'wpematico' ), $url, $errors).'<br />'.$professional_notice;
 			}	
 			return;
 		}
@@ -1201,6 +1202,7 @@ function wpematico_is_pro_active() {		// Check if PRO version is installed & act
 	if( $is_pro_active !== FALSE ) {
 		return true;
 	}
+	return $is_pro_active;
 }
 
 add_action( 'wpematico_wp_ratings', 'wpematico_wp_ratings' );

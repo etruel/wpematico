@@ -261,12 +261,11 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
-= xx =
-* Arreglado el atualizar de ajax en el addon page.
-* Arreglado el borrar addon de ajax en el addon page.
-* Se ha preparado el campaign edit para unificar las opciones del pro images y imagees del core.
-* Solucionado el problema al borrar varios addons.
-* Solucionado el problema de duplicado el youtube box en el wizard.
+= 1.8.3 =
+* Fixes some issues on delete and update functions in the addons page.
+* Fixes an issue on duplicated youtube metabox in campaign wizard.
+* Some new filters in the images options metabox for new features in future releases.
+* Tweak to show the force feed notice only for non professional addons.
 
 = 1.8.2 Nov 3, 2017 =
 * Added the option in settings to use the alternate WP Cron.
