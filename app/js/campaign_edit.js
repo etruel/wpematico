@@ -382,6 +382,8 @@ function events_submit_post($) {
 				campaign_wrd2cat_regex: wrd2cat_regex,
 				action: "wpematico_checkfields"
 			};
+			data = js_apply_filters('wpematico_checkfields_data', data);
+			
 			$.post(ajaxurl, data, function(todok){  //si todo ok devuelve 1 sino el error
 				if( todok != 1 ) {
 		            error=true;

@@ -433,7 +433,15 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 				foreach($campaign_feeds as $feed) {
 					$pos = strpos($feed, ' '); // The feed URL can't has white spaces.
 					if ($pos === false) {
-						$simplepie = WPeMatico :: fetchFeed($feed, true);
+						$fetch_feed_params = array(
+							'url' 			=> $feed,
+							'stupidly_fast' => true,
+							'max' 			=> 0,
+							'order_by_date' => false,
+							'force_feed' 	=> false,
+						);
+						$fetch_feed_params = apply_filters('wpematico_check_fetch_feed_params', $fetch_feed_params, 0, $_POST);
+						$simplepie =  WPeMatico::fetchFeed($fetch_feed_params);
 						if($simplepie->error()) {
 							$err_message = ($err_message != "") ? $err_message."<br />" : "" ;
 							$err_message .= sprintf(__('Feed %s could not be parsed. (SimplePie said: %s)',  'wpematico'),'<strong class="coderr">'. $feed. '</strong>', $simplepie->error());

@@ -261,6 +261,9 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
+=xx=
+* Some tweaks on checking fields in the campaign edit .
+
 = 1.8.3 Nov 12, 2017 =
 * Fixes some issues on delete and update functions in the addons page.
 * Fixes an issue on duplicated youtube metabox in campaign wizard.
