@@ -760,7 +760,9 @@ class WPeMatico_functions {
     $feed->timeout = apply_filters('wpe_simplepie_timeout', 130);
     $feed->enable_order_by_date($order_by_date);
     $feed->force_feed($force_feed);
-
+    $user_agent = 'WPeMatico '. (defined('SIMPLEPIE_NAME')? SIMPLEPIE_NAME: '') . '/' . (defined('SIMPLEPIE_VERSION')? SIMPLEPIE_VERSION: '') . ' (Feed Parser; ' . (defined('SIMPLEPIE_URL')? SIMPLEPIE_URL: '') . '; Allow like Gecko) Build/' . (defined('SIMPLEPIE_BUILD')? SIMPLEPIE_BUILD: '');
+ 	$user_agent = apply_filters('wpematico_simplepie_user_agent', $user_agent, $url);
+ 	$feed->set_useragent($user_agent);
 	$feed->set_feed_url($url);
     $feed->feed_url = rawurldecode($feed->feed_url);
     $feed->curl_options[CURLOPT_SSL_VERIFYHOST] = false;
@@ -804,8 +806,21 @@ class WPeMatico_functions {
 			}
 			$ajax=true;
 		}
+		/**
+		* @since 1.8.0
+		* Added @fetch_feed_params to change parameters values before fetch the feed.
+		*/
+		$fetch_feed_params = array(
+			'url' 			=> $url,
+			'stupidly_fast' => true,
+			'max' 			=> 0,
+			'order_by_date' => false,
+			'force_feed' 	=> $force_feed,
+		);
 
-		$feed = self::fetchFeed($url, true, 0, false, $force_feed);
+		$fetch_feed_params = apply_filters('wpematico_fetch_feed_params_test', $fetch_feed_params, 0, $_POST);
+
+		$feed = self::fetchFeed($fetch_feed_params);
 
 		$errors = $feed->error(); // if no error returned
 		// Check if PRO version is installed and its required version

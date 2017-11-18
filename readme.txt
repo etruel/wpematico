@@ -262,7 +262,9 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 
 == Changelog ==
 =xx=
-* Some tweaks on checking fields in the campaign edit .
+* Some tweaks on checking fields in the campaign edit.
+* Algunos ajustes en los user agent en el fetch de los feeds.
+* Algunos ajustes en el test feed.
 
 = 1.8.3 Nov 12, 2017 =
 * Fixes some issues on delete and update functions in the addons page.

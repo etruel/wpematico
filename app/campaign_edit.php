@@ -430,7 +430,9 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 				$err_message = ($err_message != "") ? $err_message."<br />" : "" ;
 				$err_message .= __('At least one feed URL must be filled.', 'wpematico');
 			} else {  
-				foreach($campaign_feeds as $feed) {
+				$post_campaign = $_POST;
+				$post_campaign['campaign_feeds'] = $campaign_feeds;
+				foreach($campaign_feeds as $kf => $feed) {
 					$pos = strpos($feed, ' '); // The feed URL can't has white spaces.
 					if ($pos === false) {
 						$fetch_feed_params = array(
@@ -440,7 +442,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 							'order_by_date' => false,
 							'force_feed' 	=> false,
 						);
-						$fetch_feed_params = apply_filters('wpematico_check_fetch_feed_params', $fetch_feed_params, 0, $_POST);
+						$fetch_feed_params = apply_filters('wpematico_check_fetch_feed_params', $fetch_feed_params, $kf, $post_campaign);
 						$simplepie =  WPeMatico::fetchFeed($fetch_feed_params);
 						if($simplepie->error()) {
 							$err_message = ($err_message != "") ? $err_message."<br />" : "" ;
