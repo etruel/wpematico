@@ -261,10 +261,11 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
-=xx=
-* Some tweaks on checking fields in the campaign edit.
-* Algunos ajustes en los user agent en el fetch de los feeds.
-* Algunos ajustes en el test feed.
+= 1.8.4 Nov 21, 2017 =
+* Added some filters on checking fields when saves a campaign.
+* Added the (previously ignored) force feed option when checks a feed and save campaigns.
+* Added an own custom user agent and filters to change it.
+* Some tweaks and filters on fetching feeds parameters.
 
 = 1.8.3 Nov 12, 2017 =
 * Fixes some issues on delete and update functions in the addons page.
