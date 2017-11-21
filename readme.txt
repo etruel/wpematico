@@ -3,7 +3,7 @@ Contributors: etruel, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS, RSS to Post, Feed to Post, autoblog,rss aggregator, Feed, rss to post, syndication, Post, Posts, aggregation, atom, bot, content, writing
 Requires at least: 4.1
-Tested up to: 4.9
+Tested up to: 5.0
 Requires PHP: 5.3
 Stable tag: trunk
 License: GPLv2 or later
@@ -1057,7 +1057,7 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 1.8.2 =
+= 1.8.4 =
 * **Enlarges the version required for the Professional addons to 1.8**
 * **Recommended to test it in development ambients before update**
 * Many improvements and fixes. See changelog for more details.
