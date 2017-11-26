@@ -261,6 +261,9 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
+= 1.8.5 =
+* Removed the notices of SimplePie about 'Duplicate Class' on the 'Check Feeds before Save'.
+
 = 1.8.4 Nov 21, 2017 =
 * Added some filters on checking fields when saves a campaign.
 * Added the (previously ignored) force feed option when checks a feed and save campaigns.

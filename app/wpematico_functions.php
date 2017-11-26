@@ -731,18 +731,22 @@ class WPeMatico_functions {
 		$url = $args;
 	}
 
+	if (!isset($disable_simplepie_notice)) {
+		$disable_simplepie_notice = false;
+	}
 
 	$cfg = get_option(WPeMatico :: OPTION_KEY);
 	if ( $cfg['force_mysimplepie']){
 		if (class_exists('SimplePie')) {
-			echo '<div id="message" class="notice notice-error is-dismissible"><p>'.
-				__('It seems that another plugin are opening Wordpress SimplePie before that WPeMatico can open its own library. This gives a PHP error on duplicated classes.', 'wpematico')
-			.'<br />'.
-				__('You must disable the other plugin to allow Force WPeMatico Custom SimplePie library.')
-			.'</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">'.
-				__('Dismiss this notice.')
-			. '</span></button></div>';
-			
+			if (empty($disable_simplepie_notice)) {
+				echo '<div id="message" class="notice notice-error is-dismissible"><p>'.
+					__('It seems that another plugin are opening Wordpress SimplePie before that WPeMatico can open its own library. This gives a PHP error on duplicated classes.', 'wpematico')
+				.'<br />'.
+					__('You must disable the other plugin to allow Force WPeMatico Custom SimplePie library.')
+				.'</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">'.
+					__('Dismiss this notice.')
+				. '</span></button></div>';
+			}
 		}else {
 			require_once dirname( __FILE__) . '/lib/simple_pie_autoloader.php';
 		}

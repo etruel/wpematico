@@ -441,6 +441,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 							'max' 			=> 0,
 							'order_by_date' => false,
 							'force_feed' 	=> false,
+							'disable_simplepie_notice' => true,
 						);
 						$fetch_feed_params = apply_filters('wpematico_check_fetch_feed_params', $fetch_feed_params, $kf, $post_campaign);
 						$simplepie =  WPeMatico::fetchFeed($fetch_feed_params);
