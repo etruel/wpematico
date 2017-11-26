@@ -263,6 +263,7 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 == Changelog ==
 = 1.8.5 =
 * Removed the notices of SimplePie about 'Duplicate Class' on the 'Check Feeds before Save'.
+* Added 'Start Campaigns' and 'Stop Campaigns' on the bulk actions of Campaigns list.
 
 = 1.8.4 Nov 21, 2017 =
 * Added some filters on checking fields when saves a campaign.

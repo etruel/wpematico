@@ -5,6 +5,7 @@ if ( !defined('ABSPATH') ) {
 	header( 'HTTP/1.1 403 Forbidden' );
 	exit();
 }
+add_filter('handle_bulk_actions-edit-wpematico', array('WPeMatico_Campaigns', 'bulk_action_handler'), 10, 3 );
 
 add_filter('manage_edit-wpematico_columns' , array( 'WPeMatico_Campaigns', 'set_edit_wpematico_columns'));
 add_action('manage_wpematico_posts_custom_column',array('WPeMatico_Campaigns','custom_wpematico_column'),10,2);
@@ -44,9 +45,9 @@ if( strstr($_SERVER['REQUEST_URI'], 'wp-admin/edit.php?post_type=wpematico')
 	else return;
 
 // just in campaign list
-	//add_filter('bulk_actions-edit-wpematico', array( 'WPeMatico_Campaigns', 'old_bulk_actions' ), 90,1 );
+	add_filter('bulk_actions-edit-wpematico', array( 'WPeMatico_Campaigns', 'bulk_actions' ), 10,1 );
 	add_action('restrict_manage_posts', array( 'WPeMatico_Campaigns', 'run_selected_campaigns' ), 1, 2 );
-
+	
 
 if ( class_exists( 'WPeMatico_Campaigns' ) ) return;
 class WPeMatico_Campaigns {
@@ -54,7 +55,65 @@ class WPeMatico_Campaigns {
 	public static function init() {
 		new self();
 	}
-	
+	/**
+	* Static function bulk_actions
+	* @access public
+	* @return $actions Array of all actions 
+	* @since 1.8.5
+	*/
+	public static function bulk_actions($actions) {
+		$new_actions = array();
+		$new_actions['start_campaigns'] = __( 'Start campaigns', 'wpematico');
+		$new_actions['stop_campaigns'] = __( 'Stop campaigns', 'wpematico');
+		$actions = array_merge($new_actions, $actions);
+		
+	    return $actions;
+	}
+	/**
+	* Static function bulk_action_handler
+	* @access public
+	* @return $redirect_to String with the URL to redirect 
+	* @since 1.8.5
+	*/
+	public static function bulk_action_handler( $redirect_to, $doaction, $post_ids ) {
+		
+		switch ($doaction) {
+			case 'start_campaigns':
+				foreach ($post_ids as $post_id) {
+				    self::bulk_toggle_campaign($post_id, 'activate');
+				}
+				WPeMatico::add_wp_notice( array('text' => sprintf(__('%s Campaigns activated',  'wpematico'), count( $post_ids )), 'below-h2'=>false ) );
+			break;
+			case 'stop_campaigns':
+				foreach ($post_ids as $post_id) {
+				    self::bulk_toggle_campaign($post_id, 'deactivate');
+				}
+				WPeMatico::add_wp_notice( array('text' => sprintf(__('%s Campaigns deactivated',  'wpematico'), count( $post_ids )), 'below-h2'=>false ) );
+			break;
+		}
+		$redirect_to = add_query_arg( 'bulk_wpematico', count( $post_ids ), $redirect_to );
+		return $redirect_to;
+	}
+	/**
+	* Static function bulk_stop_start_campaign
+	* @access public
+	* @return void
+	* @since 1.8.5
+	*/
+	public static function bulk_toggle_campaign($id, $action) {
+		$campaign_data = WPeMatico::get_campaign( $id );
+		if ($action == 'activate') {
+			if (empty($campaign_data['activated'])) {
+				$campaign_data['activated'] = !$campaign_data['activated'];
+				WPeMatico::update_campaign( $id, $campaign_data );
+			}
+		} else {
+			if (!empty($campaign_data['activated'])) {
+				$campaign_data['activated'] = !$campaign_data['activated'];
+				WPeMatico::update_campaign($id, $campaign_data );
+			}
+		}
+	}
 	public static function campaigns_list_help() {
 		global $post_type, $current_screen; 
 		if($post_type != 'wpematico') return;		
