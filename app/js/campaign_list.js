@@ -41,14 +41,15 @@ jQuery(document).ready(function($){
 			}
 		});
 	});
-	$("input[name='post[]']").change (function() {
-		if($(this).is(':checked')){
-			$("tr#post-"+ $(this).val() ).css('background-color', '#dbb27e');
+	$("input[name='post[]']").change(function() {
+		if($(this).is(':checked')){	
+			$("input[name='post[]']:checked").each(function() {
+				$("tr#post-"+ $(this).val() ).css('background-color', '#dbb27e');
+			});
 		} else {
 			$("tr#post-"+ $(this).val() ).attr('style','');
 		}
 	});
-
 });
 
 function run_now(c_ID) {
