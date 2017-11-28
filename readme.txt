@@ -266,6 +266,7 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 * Added 'Start Campaigns' and 'Stop Campaigns' on the bulk actions of Campaigns list.
 * Fixed issue of 'shift+click' to select campaigns on campaigns list.
 * Some tweaks in the CSS code.
+* Changed  messages of campaign logs and help messages about 'Featured Image Selector' feature.
 
 = 1.8.4 Nov 21, 2017 =
 * Added some filters on checking fields when saves a campaign.

@@ -604,12 +604,12 @@ class wpematico_campaign_fetch_functions {
 				trigger_error('<b>'.sprintf( __('Featured image "%s": %s', WPeMatico::TEXTDOMAIN), $index_selector,  $current_item['images'][$index_selector]).'</b>',E_USER_NOTICE);
 				$current_item['featured_image'] = $current_item['images'][$index_selector];
 			} else {
-				trigger_error('<b>'.__('There is no the selector index on images.', WPeMatico::TEXTDOMAIN).'</b>',E_USER_NOTICE);
+				trigger_error('<b>'.__('No image was found according to the selected index.', WPeMatico::TEXTDOMAIN).'</b>',E_USER_NOTICE);
 				$images_array = $current_item['images'];
 				if (isset($campaign['campaign_featured_selector_ifno']) && $campaign['campaign_featured_selector_ifno'] == 'first') {
 					$first_image = array_shift($images_array);
 					if (empty($first_image)) {
-						trigger_error('<b>'.__('There is no the first image.', WPeMatico::TEXTDOMAIN).'</b>',E_USER_NOTICE);
+						trigger_error('<b>'.__('The first image was not found in the content.', WPeMatico::TEXTDOMAIN).'</b>',E_USER_NOTICE);
 					} else {
 						trigger_error('<b>'.__('Using first image as the featured image.', WPeMatico::TEXTDOMAIN).'</b>',E_USER_NOTICE);
 						$current_item['featured_image'] = $first_image;
@@ -617,7 +617,7 @@ class wpematico_campaign_fetch_functions {
 				} else {
 					$last_image = array_pop($images_array);
 					if (empty($last_image)) {
-						trigger_error('<b>'.__('There is no the last image.', WPeMatico::TEXTDOMAIN).'</b>',E_USER_NOTICE);
+						trigger_error('<b>'.__('The last image was not found in the content.', WPeMatico::TEXTDOMAIN).'</b>',E_USER_NOTICE);
 					} else {
 						trigger_error('<b>'.__('Using last image as the featured image.', WPeMatico::TEXTDOMAIN).'</b>',E_USER_NOTICE);
 						$current_item['featured_image'] = $last_image;
