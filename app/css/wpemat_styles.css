@@ -245,7 +245,7 @@ p {
     display: none;
 }
 #category-box #major-publishing-actions{
-	border: 1px solid #e5e5e5;
+    border: 1px solid #e5e5e5;
 }
 #edit-slug-box,
 #post-preview {
@@ -1009,14 +1009,14 @@ div#optionslayer-right {
     background-color: rgba(0, 0, 0, .7);
     top: 0;
     left: 0;
-    z-index: 999999;
+    z-index: 100049;
     display: none;
 }
 #thickbox_wizard {
     position: relative;
     display: none;
     position: absolute;
-    z-index: 9999999;
+    z-index: 100049;
     padding: 15px;
     top: 120px;
     left: 25%;
@@ -1033,6 +1033,7 @@ div#optionslayer-right {
     font-family: helvetica;
     color: white;
     position: relative;
+    font-size: 14px;
 }
 #thickbox_wizard h2 input {
     position: absolute;
