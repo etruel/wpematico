@@ -261,12 +261,12 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
-= 1.8.5 =
-* Removed the notices of SimplePie about 'Duplicate Class' on the 'Check Feeds before Save'.
+= 1.8.5 Dec 4, 2017 =
 * Added 'Start Campaigns' and 'Stop Campaigns' on the bulk actions of Campaigns list.
-* Fixed issue of 'shift+click' to select campaigns on campaigns list.
-* Some tweaks in the CSS code.
-* Changed  messages of campaign logs and help messages about 'Featured Image Selector' feature.
+* Fixes the 'shift+click' issue to select campaigns on campaigns list.
+* Removed the notices of SimplePie about 'Duplicate Class' on the 'Check Feeds before Save'.
+* Tweaks the campaign logs and help messages about 'Featured Image Selector' feature.
+* Improves the CSS code.
 
 = 1.8.4 Nov 21, 2017 =
 * Added some filters on checking fields when saves a campaign.
@@ -1064,7 +1064,7 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 1.8.4 =
+= 1.8.5 =
 * **Enlarges the version required for the Professional addons to 1.8**
 * **Recommended to test it in development ambients before update**
 * Many improvements and fixes. See changelog for more details.
