@@ -189,11 +189,11 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 					'text_wizard'		=> __('Wizard', 'wpematico'),
 
 					'image_run_loading' =>  get_bloginfo('wpurl').'/wp-admin/images/wpspin_light.gif',
-
+					'id_campaign' =>  $post->ID,
 					'name_campaign' =>  $name_campaign,
 					'see_logs_action_url' =>  $see_logs_action_url,
 					'update2save' =>  __('Update Campaign to save changes.', 'wpematico' ),
-					
+					'admin_url' => admin_url('admin-post.php'),
 					'visibility_trans'  => __('Public'),
 					'visibility' => 'public',
 					'description' => __('Campaign Description', 'wpematico'),

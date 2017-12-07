@@ -912,6 +912,7 @@ public static function feeds_box( $post ) {
 
 				<div class="" id="feed_actions">
 					<?php do_action('wpematico_campaign_feed_actions_1',$feed,$cfg, $i); ?>
+					<button type="button" title="<?php _e('Preview Feed', 'wpematico' ); ?>" id="preview_feed_<?php echo $i; ?>" class="preview_feed dashicons dashicons-editor-ul"></button>
 					<button type="button" title="<?php _e('Check if this feed works', 'wpematico' ); ?>" id="checkfeed" class="check1feed dashicons dashicons-editor-spellcheck"></button>
 					<button type="button" title="<?php _e('Delete this item',  'wpematico'  ); ?>" id="deletefeed_<?php echo $i; ?>" data='#feed_ID<?php echo $i; ?>' class="deletefeed dashicons dashicons-trash red"></button>
 					<?php do_action('wpematico_campaign_feed_actions_2',$feed,$cfg, $i); ?>

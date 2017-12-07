@@ -161,7 +161,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 					}
 				}
 				if( !$this->cfg['allowduptitle'] ){
-					if($this->WPeisDuplicated($this->campaign, $feed, $item)) {
+					if(WPeMatico::is_duplicated_item($this->campaign, $feed, $item)) {
 						trigger_error(sprintf(__('Found duplicated title \'%1s\'', 'wpematico' ),$item->get_title()).': '.$this->currenthash[$feed] ,E_USER_NOTICE);
 						if( !$this->cfg['jumpduplicates'] ) {
 							trigger_error(__('Filtering duplicated posts.', 'wpematico' ),E_USER_NOTICE);
@@ -668,69 +668,4 @@ function wpematico_init_set($index, $value, $error_only_fail = false) {
 	
 	return $oldvalue;
 }
-//function for PHP error handling
-function wpematico_joberrorhandler($errno, $errstr, $errfile, $errline) {
-	global $campaign_log_message, $jobwarnings, $joberrors;
-    
-	//genrate timestamp
-	if (!version_compare(phpversion(), '6.9.0', '>')) { // PHP Version < 5.7 dirname 2nd 
-		if (!function_exists('memory_get_usage')) { // test if memory functions compiled in
-			$timestamp="<span style=\"background-color:c3c3c3;\" title=\"[Line: ".$errline."|File: ".trailingslashit(dirname($errfile)).basename($errfile)."\">".date_i18n('Y-m-d H:i.s').":</span> ";
-		} else  {
-			$timestamp="<span style=\"background-color:c3c3c3;\" title=\"[Line: ".$errline."|File: ".trailingslashit(dirname($errfile)).basename($errfile)."|Mem: ". WPeMatico :: formatBytes(@memory_get_usage(true))."|Mem Max: ". WPeMatico :: formatBytes( @memory_get_peak_usage(true))."|Mem Limit: ".ini_get('memory_limit')."]\">".date_i18n('Y-m-d H:i.s').":</span> ";
-		}
-	}else{
-		if (!function_exists('memory_get_usage')) { // test if memory functions compiled in
-			$timestamp="<span style=\"background-color:c3c3c3;\" title=\"[Line: ".$errline."|File: ".trailingslashit(dirname($errfile,2)).basename($errfile)."\">".date_i18n('Y-m-d H:i.s').":</span> ";
-		} else  {
-			$timestamp="<span style=\"background-color:c3c3c3;\" title=\"[Line: ".$errline."|File: ".trailingslashit(dirname($errfile,2)).basename($errfile)."|Mem: ". WPeMatico :: formatBytes(@memory_get_usage(true))."|Mem Max: ". WPeMatico :: formatBytes( @memory_get_peak_usage(true))."|Mem Limit: ".ini_get('memory_limit')."]\">".date_i18n('Y-m-d H:i.s').":</span> ";
-		}
-	}
 
-	switch ($errno) {
-    case E_NOTICE:
-	case E_USER_NOTICE:
-		$massage=$timestamp."<span>".$errstr."</span>";
-        break;
-    case E_WARNING:
-    case E_USER_WARNING:
-		$jobwarnings += 1;
-		$massage=$timestamp."<span style=\"background-color:yellow;\">".__('[WARNING]', 'wpematico' )." ".$errstr."</span>";
-        break;
-	case E_ERROR: 
-    case E_USER_ERROR:
-		$joberrors += 1;
-		$massage=$timestamp."<span style=\"background-color:red;\">".__('[ERROR]', 'wpematico' )." ".$errstr."</span>";
-        break;
-	case E_DEPRECATED:
-	case E_USER_DEPRECATED:
-		$massage=$timestamp."<span>".__('[DEPRECATED]', 'wpematico' )." ".$errstr."</span>";
-		break;
-	case E_STRICT:
-		$massage=$timestamp."<span>".__('[STRICT NOTICE]', 'wpematico' )." ".$errstr."</span>";
-		break;
-	case E_RECOVERABLE_ERROR:
-		$massage=$timestamp."<span>".__('[RECOVERABLE ERROR]', 'wpematico' )." ".$errstr."</span>";
-		break;
-	default:
-		$massage=$timestamp."<span>[".$errno."] ".$errstr."</span>";
-        break;
-    }
-
-	if (!empty($massage)) {
-
-		$campaign_log_message .= $massage."<br />\n";
-
-		if ($errno==E_ERROR or $errno==E_CORE_ERROR or $errno==E_COMPILE_ERROR) {//Die on fatal php errors.
-			die("Fatal Error:" . $errno);
-		}
-		//300 is most webserver time limit. 0= max time! Give script 5 min. more to work.
-		@set_time_limit(300); 
-		//true for no more php error hadling.
-		return true;
-	} else {
-		return false;
-	}
-
-	
-}

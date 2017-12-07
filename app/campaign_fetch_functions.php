@@ -11,70 +11,7 @@ if ( class_exists( 'wpematico_campaign_fetch_functions' ) ) return;
 class wpematico_campaign_fetch_functions {
 
 	
-	function WPeisDuplicated($campaign, $feed, $item) {
-		// Post slugs must be unique across all posts.
-		global $wpdb, $wp_rewrite;
-		$post_ID = 0;
-		$cpost_type = $campaign['campaign_customposttype'];
-		$dev = false;
-		
-		$wfeeds = $wp_rewrite->feeds;
-		if ( ! is_array( $wfeeds ) )
-			$wfeeds = array();
-		$title = $item->get_title();
-		
-		$title = htmlspecialchars_decode($title);
-		$from = mb_detect_encoding($title, "auto"); 
-		if ($from && $from != 'UTF-8') {
-			$title = mb_convert_encoding($title, 'UTF-8', $from);
-		}
-		$title = esc_attr($title);
-		$title = html_entity_decode($title, ENT_QUOTES | ENT_HTML401, 'UTF-8');
-		if ($campaign['copy_permanlink_source']) {
-			$permalink = $item->get_permalink(); 
-			$slug = $this->get_slug_from_permalink($permalink);
-		} else {
-			$slug = sanitize_title($title);
-		}
-
-		$exist_post_on_db = false;
-		/**
-		 * Deprecated since 1.6 in favor of a query improved by db indexes
-		//$check_sql = "SELECT post_name FROM $wpdb->posts WHERE post_name = %s AND post_type = %s AND ID != %d LIMIT 1";
-		//$post_name_check = $wpdb->get_var( $wpdb->prepare( $check_sql, $slug, $cpost_type, $post_ID ) );
-		if ($exist_post_on_db || in_array( $slug, $wfeeds ) || apply_filters( 'wp_unique_post_slug_is_bad_flat_slug', false, $slug, $cpost_type ) ) {
-			$dev = true;
-		}
-	   */
-		$check_sql = "SELECT ID, post_name, post_type FROM $wpdb->posts WHERE post_name = %s LIMIT 1";
-		$post_name_check = $wpdb->get_results($wpdb->prepare( $check_sql, $slug));
-		if (!empty($post_name_check)) {
-			if ($post_name_check[0]->ID == 0 || $cpost_type == $post_name_check[0]->post_type) {
-				$exist_post_on_db = true;
-			}
-		}
-
-		if ($exist_post_on_db) {
-			$dev = true;
-		} else {
-			if ( in_array( $slug, $wfeeds ) ) {
-		 		$dev = true;
-			} else {
-				if (apply_filters( 'wp_unique_post_slug_is_bad_flat_slug', false, $slug, $cpost_type ) ) {
-				 	$dev = true;
-				}
-			}
-		}
-		
-		if(has_filter('wpematico_duplicates')) $dev =  apply_filters('wpematico_duplicates', $dev, $campaign, $item);
-		//  http://wordpress.stackexchange.com/a/72691/65771
-		//  https://codex.wordpress.org/Function_Reference/get_page_by_title
 	
-		$dupmsg = ($dev) ? __('Yes') : __('No');
-		trigger_error(sprintf(__('Checking duplicated title \'%1s\'', WPeMatico :: TEXTDOMAIN ),$title).': '. $dupmsg ,E_USER_NOTICE);
-
-		return $dev;
-	}
 	
 	public static function WPeisDuplicatedMetaSource($dev, $campaign, $item) {
 		global $wpdb;
