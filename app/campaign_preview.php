@@ -38,8 +38,54 @@ class wpematico_preview {
 	* @since 1.9
 	*/
 	public static function scripts() {
-		
+		wp_enqueue_script('wpematico-campaign-preview', WPeMatico::$uri .'app/js/campaign_preview.js', array( 'jquery' ), WPEMATICO_VERSION, true );
 	}
+	/**
+	* Static function get_current_paged
+	* @access public
+	* @return $paged Int with current page of the feed.
+	* @since 1.9
+	*/
+	public static function get_current_paged($feed_url) {
+		$paged = 1;
+		$parts = parse_url($feed_url);
+		if (isset($parts['query'])) {
+			parse_str($parts['query'], $query);
+			if (isset($query['paged'])) {
+				$paged = $query['paged'];
+			}
+		}
+		return $paged;
+	}
+	/**
+	* Static function exist_next_page_feed
+	* @access public
+	* @return void
+	* @since version
+	*/
+	public static function exist_next_page($feed_url, $curr_simplepie, $campaign) {
+		$ret = false;
+		$fetch_feed_params = array(
+			'url' 			=> $feed_url,
+			'stupidly_fast' => true,
+			'max' 			=> 0,
+			'order_by_date' => false,
+			'force_feed' 	=> false,
+			'disable_simplepie_notice' => true,
+		);
+		$fetch_feed_params = apply_filters('wpematico_preview_next_fetch_feed_params', $fetch_feed_params, 0, $campaign);
+		$simplepie =  WPeMatico::fetchFeed($fetch_feed_params);
+		
+		if(empty($simplepie->error())) {
+			$hash_next = md5($simplepie->raw_data);
+			$hash_curr = md5($curr_simplepie->raw_data);
+			if ($hash_next != $hash_curr) {
+				$ret = true;
+			}
+		}
+		return $ret;
+	}
+
 	/**
 	* Static function print_preview
 	* @access public
@@ -47,7 +93,15 @@ class wpematico_preview {
 	* @since 1.9
 	*/
 	public static function print_preview($message) {
+		$nonce = '';
+		if (isset($_REQUEST['nonce'])) {
+			$nonce = $_REQUEST['nonce'];
+		}
 		
+		if (!wp_verify_nonce($nonce, 'preview-feed-nonce')) {
+		    wp_die('Security check'); 
+		} 
+
 		self::$cfg = get_option(WPeMatico::OPTION_KEY);
 
 		if (!empty($_REQUEST['feed'])) {
@@ -78,6 +132,13 @@ class wpematico_preview {
 		$fetch_feed_params = apply_filters('wpematico_preview_fetch_feed_params', $fetch_feed_params, 0, $campaign);
 		$simplepie =  WPeMatico::fetchFeed($fetch_feed_params);
 
+
+		$current_paged = self::get_current_paged($feed);
+		$next_feed = add_query_arg('paged', $current_paged+1, $feed);
+		if ($current_paged > 1) {
+			$prev_feed = add_query_arg('paged', $current_paged-1, $feed);
+		}
+		$exist_next_page = self::exist_next_page($next_feed, $simplepie, $campaign);
 
 		$count = 0;
 		$prime = true;
@@ -169,7 +230,7 @@ class wpematico_preview {
 			wp_no_robots();
 		}
 		?>
-		<title><?php _e('WPeMatico Preview Feed', 'wpematico'); ?></title>
+		<title><?php esc_html_e('WPeMatico Preview Feed', 'wpematico'); ?></title>
 		<?php
 			if ( 'rtl' == $text_direction ) {
 				echo '<style type="text/css"> body { font-family: Tahoma, Arial; } </style>';
@@ -190,117 +251,149 @@ class wpematico_preview {
 		
 	?>
 		<div id="preview-page">
-			<div class="feed-title">
-				<h2><?php echo $simplepie->get_title(); ?></h2>
-				
-			</div>
-			<div class="table-nav">
-			    <div class="alignleft actions bulkactions">
-			        <label for="bulk-action-selector-top" class="screen-reader-text">Selecciona acción en lote</label>
-			        <select name="action" id="bulk-action-selector-top">
-			            <option value="-1">Acciones en lote</option>
-			            <option value="start_campaigns">Start campaigns</option>
-			            <option value="stop_campaigns">Stop campaigns</option>
-			            <option value="edit" class="hide-if-no-js">Editar</option>
-			            <option value="trash">Mover a la papelera</option>
-			        </select>
-			        <input type="submit" id="doaction" class="button action" value="Aplicar">
-			    </div>
-			    <h2 class="screen-reader-text">Navegación por el listado de entradas</h2>
-			    <div class="tablenav-pages"><span class="displaying-num">23 elementos</span>
-			        <span class="pagination-links"><span class="tablenav-pages-navspan" aria-hidden="true">«</span>
-			        <span class="tablenav-pages-navspan" aria-hidden="true">‹</span>
-			        <span class="paging-input"><label for="current-page-selector" class="screen-reader-text">Página actual</label><input class="current-page" id="current-page-selector" type="text" name="paged" value="1" size="1" aria-describedby="table-paging"><span class="tablenav-paging-text"> de <span class="total-pages">2</span></span>
-			        </span>
-			        <a class="next-page" href="http://localhost/Trabajo/InkPress/wp-admin/edit.php?post_type=wpematico&amp;paged=2"><span class="screen-reader-text">Página siguiente</span><span aria-hidden="true">›</span></a>
-			        <span class="tablenav-pages-navspan" aria-hidden="true">»</span></span>
-			    </div>
-			</div>
-			<div class="table-responsive">
-			  <table class="table-preview">
-			  	<thead>
-			  		<tr>
-			  			<th id="cb" class="check-column">
-			  				<label class="screen-reader-text" for="cb-select-all-1">Seleccionar todos</label>
-			  				<input id="cb-select-all-1" type="checkbox">
-			  			</th>
-			  			<th>Post</th>
-			  			<th>Status</th>
-			  			<th>Actions</th>
-			  		</tr>
-			  	</thead>
-			  	<tbody>
-			  		<?php 
 
-			  			foreach($simplepie->get_items() as $item) : 
-			  				
-			  				$is_published = false;
-			  				$is_next = false;
+			<form id="wpematico_bulk_actions_form" action="<?php echo admin_url('admin-post.php'); ?>" method="post">
+				<input type="hidden" name="action" value="wpematico_bulk_action_handler"/>
+			    <?php wp_nonce_field('wpematico_bulk_actions'); ?> 
+
+				<div class="feed-title">
+					<h2><?php echo esc_html($simplepie->get_title()); ?> </h2>
+				</div>
+				<div class="table-nav">
+				    <div class="alignleft actions bulkactions">
+				        
+				        	
+					        <label for="bulk-action-selector-top" class="screen-reader-text"><?php esc_html_e('Select bulk action', 'wpematico');?></label>
+					        <select name="bulk_action" id="bulk-action-selector-top">
+					            <option value="-1"><?php esc_html_e('Bulk Actions', 'wpematico');?></option>
+					            <?php 
+					            	$bulk_actions = apply_filters('wpematico_preview_bulk_actions', array('fetch_items' => __('Fetch Items', 'wpematico')));
+					            	foreach ($bulk_actions as $value => $text) : ?>
+					       
+					            	 <option value="<?php echo esc_attr($value); ?>"><?php echo esc_html($text); ?></option>
+					            <?php	
+					            	endforeach;
+					            ?>
+					        </select>
+					        <input type="submit" id="doaction" class="button action" value="<?php esc_attr_e('Apply', 'wpematico'); ?>"/>
+				    	
+				    </div>
+				    <h2 class="screen-reader-text"><?php esc_attr_e('Posts list navigation', 'wpematico'); ?></h2>
+				    <div class="tablenav-pages">
+				    	<?php if ($current_paged > 1) : ?>
+				        	<a class="prev-page" href="<?php echo admin_url('admin-post.php?action=wpematico_preview&campaign='.$campaign_id.'&nonce='.$nonce.'&feed='.$prev_feed) ?>"><span class="screen-reader-text"><?php esc_attr_e('Previous page', 'wpematico'); ?></span><span aria-hidden="true">‹</span></a>
+				        <?php endif; ?>
+				    	<span class="displaying-num"><?php echo $current_paged; ?></span>
+				       	<?php if ($exist_next_page) : ?>
+				        	<a class="next-page" href="<?php echo admin_url('admin-post.php?action=wpematico_preview&campaign='.$campaign_id.'&nonce='.$nonce.'&feed='.$next_feed) ?>"><span class="screen-reader-text"><?php esc_attr_e('Next page', 'wpematico'); ?></span><span aria-hidden="true">›</span></a>
+				        <?php endif; ?>
+				    </div>
+				</div>
+				<div class="table-responsive">
+				  <table class="table-preview">
+				  	<thead>
+				  		<tr>
+				  			<th id="cb" class="check-column">
+				  				<label class="screen-reader-text" for="cb-select-all-1"><?php esc_html_e('Select All', 'wpematico'); ?></label>
+				  				<input id="cb-select-all-1" type="checkbox">
+				  			</th>
+				  			<th><?php esc_html_e('Post', 'wpematico'); ?></th>
+				  			<th><?php esc_html_e('Status', 'wpematico'); ?></th>
+				  			<th><?php esc_html_e('Actions', 'wpematico'); ?></th>
+				  		</tr>
+				  	</thead>
+				  	<tbody>
+				  		<?php 
+
+				  			foreach($simplepie->get_items() as $item) : 
+				  				
+				  				$is_published = false;
+				  				$is_next = false;
+				  				$item_hash = md5($item->get_permalink());
+
+				  				if (!empty($posts_fetched[$item_hash])) {
+				  					$is_published = true;
+				  				}
+
+				  				if (!empty($posts_next[$item_hash])) {
+				  					$is_next = true;
+				  				}
+				  				$description = $item->get_description(); 
+				  				$description = wpematico_convert_to_utf8($description);
+				  				$description = strip_tags($description);
+				  				if (strlen($description) > 303) {
+				  					$description = mb_substr($description, 0, 300);
+				  					$description .= '...'; 
+				  				}
+
+				  				$title = $item->get_title();
+				  				$title = wpematico_convert_to_utf8($title);
+				  				$title = strip_tags($title);
+				  				if (strlen($title) > 103) {
+				  					$title = mb_substr($title, 0, 100);
+				  					$title .= '...'; 
+				  				}
+				  				
+
+				  		?>
+						    <tr class="<?php echo (($is_published) ? 'pfeed-published' : ($is_next ? 'pfeed-nextfetch' : 'pfeed-unpublished')); ?>">
+						    	<td>
+						    		<label class="screen-reader-text" for="cb-select"><?php esc_html_e('Select', 'wpematico'); ?></label>
+					  				<input id="cb-select-78987" type="checkbox" name="item[]" value="<?php echo $item_hash; ?>">
+						    	</td>
+						    	<td>
+						    		<a href="#" id="pfeed-id" target="_blank"><?php echo esc_html($title); ?></a>
+						    		<span id="pfeed-date">miercoles, 5 de diciembre de 2017 2:32 p.m.</span>
+						    		<p><?php echo esc_html($description); ?></p>
+
+						    	</td>
+						    	<td>
+						    		<span class="status <?php echo (($is_published) ? 'published' : ($is_next ? 'nextfetch' : 'unpublished')); ?>"><?php echo (($is_published) ? __('Published', 'wpematico') : ($is_next ? __('Next fetch', 'wpematico') : __('Unpublished', 'wpematico'))); ?></span>
+						    	</td>
+						    	<td>
+						    		<button type="button" class="state_buttons cpanelbutton dashicons dashicons-controls-play" title="Run Once"></button>
+						    		<button type="button" disabled="" class="state_buttons cpanelbutton dashicons dashicons-update red"></button><button type="button" class="state_buttons cpanelbutton dashicons dashicons-controls-pause" btn-href="#" title="Stop and deactivate this campaign"></button>
+						    	</td>
+						    </tr>
+						<?php endforeach; ?>
+					    
+				    </tbody>
+				  </table>
+				</div>
+				<div class="table-nav mt-20">
+				    <div class="alignleft actions bulkactions">
+				        
+				        	
+					        <label for="bulk-action-selector-top" class="screen-reader-text"><?php esc_html_e('Select bulk action', 'wpematico');?></label>
+					        <select name="bulk_action2" id="bulk-action-selector-top">
+					            <option value="-1"><?php esc_html_e('Bulk Actions', 'wpematico');?></option>
+					            <?php 
+					            	$bulk_actions = apply_filters('wpematico_preview_bulk_actions', array('fetch_items' => __('Fetch Items', 'wpematico')));
+					            	foreach ($bulk_actions as $value => $text) : ?>
+					       
+					            	 <option value="<?php echo esc_attr($value); ?>"><?php echo esc_html($text); ?></option>
+					            <?php	
+					            	endforeach;
+					            ?>
+					        </select>
+					        <input type="submit" id="doaction2" class="button action" value="<?php esc_attr_e('Apply', 'wpematico'); ?>"/>
+				    	
+				    </div>
 
 
-			  				if (!empty($posts_fetched[md5($item->get_permalink())])) {
-			  					$is_published = true;
-			  				}
+				    <h2 class="screen-reader-text"><?php esc_attr_e('Posts list navigation', 'wpematico'); ?></h2>
+				    <div class="tablenav-pages">
+				    	<?php if ($current_paged > 1) : ?>
+				        	<a class="prev-page" href="<?php echo admin_url('admin-post.php?action=wpematico_preview&campaign='.$campaign_id.'&nonce='.$nonce.'&feed='.$prev_feed) ?>"><span class="screen-reader-text"><?php esc_attr_e('Previous page', 'wpematico'); ?></span><span aria-hidden="true">‹</span></a>
+				        <?php endif; ?>
+				    	<span class="displaying-num"><?php echo $current_paged; ?></span>
+				       	<?php if ($exist_next_page) : ?>
+				        	<a class="next-page" href="<?php echo admin_url('admin-post.php?action=wpematico_preview&campaign='.$campaign_id.'&nonce='.$nonce.'&feed='.$next_feed) ?>"><span class="screen-reader-text"><?php esc_attr_e('Next page', 'wpematico'); ?></span><span aria-hidden="true">›</span></a>
+				        <?php endif; ?>
+				    </div>
+				</div>
 
-			  				if (!empty($posts_next[md5($item->get_permalink())])) {
-			  					$is_next = true;
-			  				}
-			  				$description = $item->get_description(); 
-			  				$description = strip_tags($description);
-			  				if (strlen($description) > 303) {
-			  					$description = mb_substr($description, 0, 300);
-			  					$description .= '...'; 
-			  				}
-			  				
-
-			  		?>
-					    <tr class="<?php echo (($is_published) ? 'pfeed-published' : ($is_next ? 'pfeed-nextfetch' : 'pfeed-unpublished')); ?>">
-					    	<td>
-					    		<label class="screen-reader-text" for="cb-select">Seleccionar</label>
-				  				<input id="cb-select" type="checkbox">
-					    	</td>
-					    	<td>
-					    		<a href="#" id="pfeed-id" target="_blank"><?php echo $item->get_title(); ?></a>
-					    		<span id="pfeed-date">miercoles, 5 de diciembre de 2017 2:32 p.m.</span>
-					    		<p><?php echo $description; ?></p>
-					    	</td>
-					    	<td>
-					    		<span class="status <?php echo (($is_published) ? 'published' : ($is_next ? 'nextfetch' : 'unpublished')); ?>"><?php echo (($is_published) ? __('Published', 'wpematico') : ($is_next ? __('Next fetch', 'wpematico') : __('Unpublished', 'wpematico'))); ?></span>
-					    	</td>
-					    	<td>
-					    		<button type="button" class="state_buttons cpanelbutton dashicons dashicons-controls-play" title="Run Once"></button>
-					    		<button type="button" disabled="" class="state_buttons cpanelbutton dashicons dashicons-update red"></button><button type="button" class="state_buttons cpanelbutton dashicons dashicons-controls-pause" btn-href="#" title="Stop and deactivate this campaign"></button>
-					    	</td>
-					    </tr>
-					<?php endforeach; ?>
-				    
-			    </tbody>
-			  </table>
-			</div>
-			<div class="table-nav mt-20">
-			    <div class="alignleft actions bulkactions">
-			        <label for="bulk-action-selector-top" class="screen-reader-text">Selecciona acción en lote</label>
-			        <select name="action" id="bulk-action-selector-top">
-			            <option value="-1">Acciones en lote</option>
-			            <option value="start_campaigns">Start campaigns</option>
-			            <option value="stop_campaigns">Stop campaigns</option>
-			            <option value="edit" class="hide-if-no-js">Editar</option>
-			            <option value="trash">Mover a la papelera</option>
-			        </select>
-			        <input type="submit" id="doaction" class="button action" value="Aplicar">
-			    </div>
-			    <h2 class="screen-reader-text">Navegación por el listado de entradas</h2>
-			    <div class="tablenav-pages"><span class="displaying-num">23 elementos</span>
-			        <span class="pagination-links"><span class="tablenav-pages-navspan" aria-hidden="true">«</span>
-			        <span class="tablenav-pages-navspan" aria-hidden="true">‹</span>
-			        <span class="paging-input"><label for="current-page-selector" class="screen-reader-text">Página actual</label><input class="current-page" id="current-page-selector" type="text" name="paged" value="1" size="1" aria-describedby="table-paging"><span class="tablenav-paging-text"> de <span class="total-pages">2</span></span>
-			        </span>
-			        <a class="next-page" href="http://localhost/Trabajo/InkPress/wp-admin/edit.php?post_type=wpematico&amp;paged=2"><span class="screen-reader-text">Página siguiente</span><span aria-hidden="true">›</span></a>
-			        <span class="tablenav-pages-navspan" aria-hidden="true">»</span></span>
-			    </div>
-			</div>
-
-			
+			</form>
 		</div>
 		
 	</body>

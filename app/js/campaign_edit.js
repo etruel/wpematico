@@ -175,7 +175,7 @@ jQuery(document).ready(function($){
 	$(document).on("click", '.preview_feed', function(e) {
 		var feed_index = $(this).attr('id').replace('preview_feed_', '');
 		var feed = $("input[name='campaign_feeds["+feed_index+"]']").val();
-		window.open(wpematico_object.admin_url+'?action=wpematico_preview&campaign='+wpematico_object.id_campaign+'&feed='+feed, '_blank').focus();
+		window.open(wpematico_object.admin_url+'?action=wpematico_preview&campaign='+wpematico_object.id_campaign+'&nonce='+wpematico_object.preview_nonce+'&feed='+encodeURI(feed), '_blank').focus();
 		e.preventDefault();
 	});
 

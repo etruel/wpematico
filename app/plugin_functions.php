@@ -166,6 +166,13 @@ function wpematico_uninstall() {
 	}
 }
 
+function wpematico_convert_to_utf8($string) {
+	$from = mb_detect_encoding($string, "auto");
+	if ($from && $from != 'UTF-8') {
+		$string = mb_convert_encoding($string, 'UTF-8', $from);
+	}
+	return $string;
+}
 
 //function for PHP error handling
 function wpematico_joberrorhandler($errno, $errstr, $errfile, $errline) {

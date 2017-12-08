@@ -173,9 +173,10 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		wp_enqueue_script('wpematico_campaign_edit', WPeMatico::$uri .'app/js/campaign_edit.js', array( 'jquery' ), WPEMATICO_VERSION, true );
 		wp_enqueue_script('wpematico_campaign_wizard', WPeMatico::$uri .'app/js/campaign_wizard.js', array( 'jquery' ), WPEMATICO_VERSION, true );
 		
-		$nonce = wp_create_nonce  ('clog-nonce');
+
+
 		$name_campaign = get_the_title($post->ID);
-		$see_logs_action_url = admin_url('admin-post.php?action=wpematico_campaign_log&p='.$post->ID.'&_wpnonce=' . $nonce);
+		$see_logs_action_url = admin_url('admin-post.php?action=wpematico_campaign_log&p='.$post->ID.'&_wpnonce=' . wp_create_nonce('clog-nonce'));
 
 		$wpematico_object = array(
 					'text_dismiss_this_notice' =>  __('Dismiss this notice.', 'wpematico'),
@@ -198,6 +199,8 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 					'visibility' => 'public',
 					'description' => __('Campaign Description', 'wpematico'),
 					'description_help' => __('Here you can write some observations.', 'wpematico'),
+
+					'preview_nonce' => wp_create_nonce('preview-feed-nonce'),
 		
 
 				);
