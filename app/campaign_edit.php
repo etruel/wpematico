@@ -200,8 +200,6 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 					'description' => __('Campaign Description', 'wpematico'),
 					'description_help' => __('Here you can write some observations.', 'wpematico'),
 
-					'preview_nonce' => wp_create_nonce('preview-feed-nonce'),
-		
 
 				);
 		if ($cfg['enableword2cats']) {

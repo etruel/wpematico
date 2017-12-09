@@ -71,7 +71,6 @@ class Main_WPeMatico{
 			require_once('app/lib/licenses_handlers.php');	
 			require_once("app/lib/welcome.php");
 			require_once('app/campaign_log.php');
-			require_once('app/campaign_preview.php');
 		}
 		require_once('app/cron_functions.php');
 		require_once('app/compatibilities.php');

@@ -108,8 +108,6 @@ jQuery(document).ready(function($){
 		$('.deletefeed', feed_new).eq(0).attr('data', "#feed_ID"+ newval);
 
 
-		$('.preview_feed', feed_new).eq(0).attr('id', 'preview_feed_'+newval);
-
 		$(document).trigger("before_add_more_feed", [feed_new, newval] );
 		$('#feeds_list').append(feed_new);
 		$('#feeds_list').vSort();
@@ -172,13 +170,6 @@ jQuery(document).ready(function($){
 		$('#pb-totalrecords').text( parseInt( $('#pb-totalrecords').text()) - 1 );
 		e.preventDefault();
 	});
-	$(document).on("click", '.preview_feed', function(e) {
-		var feed_index = $(this).attr('id').replace('preview_feed_', '');
-		var feed = $("input[name='campaign_feeds["+feed_index+"]']").val();
-		window.open(wpematico_object.admin_url+'?action=wpematico_preview&campaign='+wpematico_object.id_campaign+'&nonce='+wpematico_object.preview_nonce+'&feed='+encodeURI(feed), '_blank').focus();
-		e.preventDefault();
-	});
-
 	
 	
 	$(document).on("click", '.check1feed', function(event) {
