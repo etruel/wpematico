@@ -40,9 +40,15 @@ jQuery(document).ready(function($){
 		}
 	});
 	$('#campaign_edit_see_logs').click(function(e) {
-		window.open(wpematico_object.see_logs_action_url, wpematico_object.name_campaign,'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=700, height=600');
+		window.open(wpematico_object.see_logs_action_url, wpematico_object.name_campaign+'_see_logs','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=700, height=600');
 		e.preventDefault();
 	});
+
+	$('#campaign_edit_preview').click(function(e) {
+		window.open(wpematico_object.preview_campaign_action_url, wpematico_object.name_campaign+'_preview','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=900, height=600');
+		e.preventDefault();
+	});
+
 	$('#campaign_edit_del_hash').click(function(e) {
 		if ($(this).data('wpematico_before_save')) {
 			e.preventDefault();

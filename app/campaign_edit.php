@@ -177,6 +177,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 
 		$name_campaign = get_the_title($post->ID);
 		$see_logs_action_url = admin_url('admin-post.php?action=wpematico_campaign_log&p='.$post->ID.'&_wpnonce=' . wp_create_nonce('clog-nonce'));
+		$preview_campaign_action_url = admin_url('admin-post.php?action=wpematico_campaign_preview&p='.$post->ID.'&_wpnonce=' . wp_create_nonce('campaign-preview-nonce'));
 
 		$wpematico_object = array(
 					'text_dismiss_this_notice' =>  __('Dismiss this notice.', 'wpematico'),
@@ -193,6 +194,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 					'id_campaign' =>  $post->ID,
 					'name_campaign' =>  $name_campaign,
 					'see_logs_action_url' =>  $see_logs_action_url,
+					'preview_campaign_action_url' =>  $preview_campaign_action_url,
 					'update2save' =>  __('Update Campaign to save changes.', 'wpematico' ),
 					'admin_url' => admin_url('admin-post.php'),
 					'visibility_trans'  => __('Public'),
