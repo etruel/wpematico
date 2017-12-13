@@ -247,7 +247,7 @@ class wpematico_campaign_preview {
 				  	</thead>
 				  	<tbody>
 				  		<?php 
-
+				  			$return_url = urlencode(admin_url('admin-post.php?action=wpematico_campaign_preview&p='.$campaign_id.'&_wpnonce=' . wp_create_nonce('campaign-preview-nonce')));
 				  			foreach($post_to_show as $item) : 
 				  				
 				  				
@@ -266,7 +266,10 @@ class wpematico_campaign_preview {
 				  					$title = mb_substr($title, 0, 100);
 				  					$title .= '...'; 
 				  				}
-				  				
+				  				$feed_url =  urlencode($item->get_feed()->feed_url);
+				  				$item_hash = md5($item->get_permalink());
+				  				$nonce_item = wp_create_nonce('campaign-preview-item-nonce');
+				  				$post_link_preview = admin_url('admin-post.php?action=wpematico_campaign_preview_item&_wpnonce='.$nonce_item.'&campaign='.$campaign_id.'&item_hash='.$item_hash.'&feed='.$feed_url.'&return_url='.$return_url);
 
 				  		?>
 						    <tr class="feed-nextfetch">
@@ -274,7 +277,7 @@ class wpematico_campaign_preview {
 						    		
 						    	</td>
 						    	<td>
-						    		<a href="#" id="pfeed-id" target="_blank"><?php echo esc_html($title); ?></a>
+						    		<a href="<?php echo $post_link_preview; ?>" id="pfeed-id"><?php echo esc_html($title); ?></a>
 						    		<span id="pfeed-date">miercoles, 5 de diciembre de 2017 2:32 p.m.</span>
 						    		<p><?php echo esc_html($description); ?></p>
 
