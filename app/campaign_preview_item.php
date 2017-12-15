@@ -11,7 +11,9 @@ if (!class_exists('wpematico_campaign_preview_item')) :
 
 class wpematico_campaign_preview_item {
 	public static $cfg;
-	public static $getting_post = false;
+	public static $getting_post;
+	public static $current_item_args = array();
+	public static $item_hash;
 	/**
 	* Static function hooks
 	* @access public
@@ -23,9 +25,104 @@ class wpematico_campaign_preview_item {
 		add_action('wpematico_preview_item_print_styles', array(__CLASS__, 'styles'));
 		add_action('wpematico_preview_item_print_scripts', array(__CLASS__, 'scripts'));
 		add_action('wp_ajax_wpematico_preview_get_item', array(__CLASS__, 'ajax_get_item_post'));
+	
+		add_filter('wpematico_preview_item_campaign', array(__CLASS__, 'campaign_to_preview_item'), 10, 3);
+		add_filter('wpematico_allow_insertpost', array(__CLASS__, 'allow_inserting_preview_item'), 9999, 3);
+	}
+	/**
+	* Static function campaign_to_preview_item
+	* This function filters the campaign values before fetch item.
+	* @access public
+	* @return void
+	* @since 1.9
+	*/
+	public static function campaign_to_preview_item($campaign, $feed, $cfg) {
+		$campaign['campaign_no_setting_img'] = true;
+		$campaign['campaign_imgcache'] = false;
+		$campaign['campaign_attach_img'] = false;
+		$campaign['campaign_nolinkimg'] = false;
+		$campaign['campaign_image_srcset'] = false;
+
+		$campaign['campaign_no_setting_audio'] = true;
+		$campaign['campaign_audio_cache'] = false;
+		$campaign['campaign_attach_audio'] = false;
+		$campaign['campaign_nolink_audio'] = false;
+
+		$campaign['campaign_no_setting_video'] = true;
+		$campaign['campaign_video_cache'] = false;
+		$campaign['campaign_attach_video'] = false;
+		$campaign['campaign_nolink_video'] = false;
+
+		return $campaign;
+	}
+	/**
+	* Static function allow_posting_preview_item
+	* @access public
+	* @return void
+	* @since version
+	*/
+	public static function allow_inserting_preview_item($allow, $fetch, $args ) {
+		if (!empty(self::$getting_post)) {
+			$allow = false;
+			self::$current_item_args = $args;
+		}
+		return $allow;
+	}
+	/**
+	* Static function fetch_preview_item
+	* This function takes care of execute the functions to fetch the item.
+	* @access public
+	* @return void
+	* @since 1.9
+	*/
+	public static function get_current_preview_item($campaign_id, $campaign, $feed) {
+		if (! class_exists('wpematico_campaign_fetch')) {
+			require_once(dirname(__FILE__).'/campaign_fetch.php');
+		}
+
+		self::$getting_post = true;
+		$campaign_fetch = new wpematico_campaign_fetch(0);
+		$campaign_fetch->cfg = self::$cfg;
+		$campaign_fetch->campaign_id = $campaign_id;
+		$campaign_fetch->campaign = $campaign;
+
+		$campaign_fetch->set_actions_and_filters();
+		
+		if(has_action('Wpematico_init_fetching')) do_action('Wpematico_init_fetching', $campaign_fetch->campaign);
+		
+		$fetch_feed_params = array(
+			'url' 			=> $feed,
+			'stupidly_fast' => true,
+			'max' 			=> 0,
+			'order_by_date' => false,
+			'force_feed' 	=> false,
+			'disable_simplepie_notice' => true,
+		);
+		$fetch_feed_params = apply_filters('wpematico_preview_item_fetch_params', $fetch_feed_params, 0, $campaign);
+		$simplepie =  WPeMatico::fetchFeed($fetch_feed_params);
+		
+		$item_to_fetch = null;
+
+		foreach($simplepie->get_items() as $item) {
+			if (self::$item_hash == md5($item->get_permalink())) { 
+				$item_to_fetch = $item;
+				break;
+			} 
+		}
+
+		if (empty($item_to_fetch)) {
+			return false;
+		}
+		$campaign_fetch->processItem($simplepie, $item_to_fetch, $feed);
+		if (empty(self::$current_item_args)) {
+			return false;
+		}
+
+		return true;
 	}
 	/**
 	* Static function ajax_get_item_post
+	* This function takes care of manage requests to print of item preview.
 	* @access public
 	* @return void
 	* @since 1.9
@@ -36,32 +133,55 @@ class wpematico_campaign_preview_item {
 			$nonce = $_REQUEST['nonce_get_item'];
 		}
 		
-		if (!wp_verify_nonce($nonce, 'campaign-preview-item-nonce')) {
-		    wp_die('Security check'); 
+		if (!wp_verify_nonce($nonce, 'campaign-preview-get-item')) {
+		    status_header(404);
+		    die(__('Security check.', 'wpematico'));
 		} 
 
 		self::$cfg = get_option(WPeMatico::OPTION_KEY);
 
 		
-		$campaign_id = intval($_REQUEST['campaign']);
+		$campaign_id = intval($_REQUEST['campaign_id']);
 		if (empty($campaign_id)) {
 			status_header(404);
-			wp_die(__('The campaign is invalid.', 'wpematico'), 404);
+			die(__('The campaign is invalid.', 'wpematico'));
 		} 
 		$campaign = WPeMatico::get_campaign($campaign_id);
 
 		if (empty($_REQUEST['item_hash'])) {
 			status_header(404);
-			wp_die(__('The item is invalid.', 'wpematico'), 404);
+			die(__('The item is invalid.', 'wpematico'));
 		}
-		$item_hash = $_REQUEST['item_hash'];
+		self::$item_hash = $_REQUEST['item_hash'];
 
 		if (empty($_REQUEST['feed'])) {
 			status_header(404);
-			wp_die(__('The feed is invalid.', 'wpematico'), 404);
+			die(__('The feed is invalid.', 'wpematico'));
 		}
 		$feed = $_REQUEST['feed'];
+
+		$campaign = apply_filters('wpematico_preview_item_campaign', $campaign, $feed, self::$cfg);
+		
+
+		if (! self::get_current_preview_item($campaign_id, $campaign, $feed) ) {
+			status_header(404);
+			die(__('The preview of the item has failed.', 'wpematico'));
+		}
+		?>
+		<div class="preview-page-post-title">
+			<h2><?php echo self::$current_item_args['post_title']; ?></h2>
+		</div>
+		
+		<div id="preview-page-post-content">
+			<?php echo self::$current_item_args['post_content']; ?>
+		</div>
+		<?php
+
+		die();
+
 	}
+
+	
 	/**
 	* Static function styles
 	* @access public
@@ -183,19 +303,25 @@ class wpematico_campaign_preview_item {
 			<input type="hidden" id="feed" name="feed" value="<?php echo $feed; ?>"/>
 			<input type="hidden" id="item_hash" name="item_hash" value="<?php echo $item_hash; ?>"/>
 			<input type="hidden" id="nonce_get_item" name="nonce_get_item" value="<?php echo wp_create_nonce('campaign-preview-get-item'); ?>"/>
-
-				<?php if (!empty($_REQUEST['return_url'])) : ?>
-					<a href="<?php echo $_REQUEST['return_url']; ?>" class="button">Back</a>
-				<?php endif; ?>
+				<div id="preview-post-actions">
+					<?php if (!empty($_REQUEST['return_url'])) : ?>
+						<a href="<?php echo $_REQUEST['return_url']; ?>" class="button">Back</a>
+					<?php endif; ?>
+					<button type="button" class="state_buttons cpanelbutton dashicons dashicons-controls-play" title="Run Once"></button>
+					<?php do_action('wpematico_preview_item_actions', $item); ?>
+				</div>
 				
-				<div class="preview-page-post-title">
-					<h2><img src="<?php echo admin_url('images/wpspin_light.gif'); ?>"> <?php _e('Loading post title...', 'wpematico'); ?></h2>
+				<div id="preview-post-content">
+					<div class="preview-page-post-title">
+						<h2><img src="<?php echo admin_url('images/wpspin_light.gif'); ?>"> <?php _e('Loading post title...', 'wpematico'); ?></h2>
+					</div>
+					
+					<div id="preview-page-post-content">
+						<img src="<?php echo admin_url('images/wpspin_light.gif'); ?>"> <?php _e('Loading post content...', 'wpematico'); ?>
+					</div>
 
 				</div>
 				
-				<div id="preview-page-post-content">
-					<img src="<?php echo admin_url('images/wpspin_light.gif'); ?>"> <?php _e('Loading post content...', 'wpematico'); ?>
-				</div>
 		</div>
 		
 	</body>

@@ -35,6 +35,10 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		}
 		wpematico_init_set('ignore_user_abort', 'On');
 		
+		if (empty($campaign_id)) {
+			return false; // If campaign is empty return false.
+		}
+
 		//ignore_user_abort(true);			//user can't abort script (close windows or so.)
 		$this->campaign_id=$campaign_id;			   //set campaign id
 		$this->campaign = WPeMatico :: get_campaign($this->campaign_id);

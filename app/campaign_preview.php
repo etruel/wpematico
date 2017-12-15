@@ -271,14 +271,16 @@ class wpematico_campaign_preview {
 				  				$nonce_item = wp_create_nonce('campaign-preview-item-nonce');
 				  				$post_link_preview = admin_url('admin-post.php?action=wpematico_campaign_preview_item&_wpnonce='.$nonce_item.'&campaign='.$campaign_id.'&item_hash='.$item_hash.'&feed='.$feed_url.'&return_url='.$return_url);
 
-				  		?>
+
+
+				  			?>
 						    <tr class="feed-nextfetch">
 						    	<td>
 						    		
 						    	</td>
 						    	<td>
 						    		<a href="<?php echo $post_link_preview; ?>" id="pfeed-id"><?php echo esc_html($title); ?></a>
-						    		<span id="pfeed-date">miercoles, 5 de diciembre de 2017 2:32 p.m.</span>
+						    		<span id="pfeed-date"><?php echo $item->get_date(); ?></span>
 						    		<p><?php echo esc_html($description); ?></p>
 
 						    	</td>
@@ -287,7 +289,7 @@ class wpematico_campaign_preview {
 						    	</td>
 						    	<td>
 						    		<button type="button" class="state_buttons cpanelbutton dashicons dashicons-controls-play" title="Run Once"></button>
-						    		
+						    		<?php do_action('wpematico_preview_campaign_item_actions', $item); ?>
 						    	</td>
 						    </tr>
 						<?php endforeach; ?>

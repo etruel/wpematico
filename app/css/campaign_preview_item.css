@@ -196,3 +196,13 @@ a:focus {
 	margin: 0;
 	padding-bottom: 10px;
 }
+.cpanelbutton {
+    height: 30px;
+    width: 30px;
+    padding-left: 0px;
+    margin: 0 0 5px 5px;
+    padding-right: 0px;
+    border: 1px solid #AAA;
+    background: linear-gradient(to bottom, #fcfcfc 20%, #adadad 100%);
+    border-radius: 2px;
+}

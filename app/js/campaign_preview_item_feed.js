@@ -8,9 +8,9 @@ jQuery(document).ready(function($){
 	};
 	console.log(request);
 	$.post(wpematico_preview_item.ajax_url, request, function(response) {
-		alert(response);
+		$('#preview-post-content').html(response);
 	})
-	.fail(function() {
-		alert( "error" );
+	.fail(function(jquery_xhr) {
+		alert('Error: '+jquery_xhr.responseText);
 	})
 });
