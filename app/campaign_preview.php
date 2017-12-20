@@ -65,7 +65,7 @@ class wpematico_campaign_preview {
 		);
 		$fetch_feed_params = apply_filters('wpematico_preview_fetch_feed_params', $fetch_feed_params, 0, $campaign);
 		$simplepie =  WPeMatico::fetchFeed($fetch_feed_params);
-
+		$campaign_id = $campaign['ID'];
 		$count = 0;
 		$prime = true;
 		$lasthash = array();
@@ -74,6 +74,7 @@ class wpematico_campaign_preview {
 
 		$posts_fetched = array();
 		$posts_next = array();
+		$breaked = false;
 
 		foreach($simplepie->get_items() as $item) {
 			if($prime){
@@ -83,7 +84,7 @@ class wpematico_campaign_preview {
 			}
 
 			$currenthash[$feed] = md5($item->get_permalink()); 
-			if( !self::$cfg['allowduplicates'] || !self::$cfg['allowduptitle'] || !self::$cfg['allowduphash']  || self::$cfg['add_extra_duplicate_filter_meta_source']){
+			if( !$breaked && (!self::$cfg['allowduplicates'] || !self::$cfg['allowduptitle'] || !self::$cfg['allowduphash']  || self::$cfg['add_extra_duplicate_filter_meta_source']) ){
 				if( !self::$cfg['allowduphash'] ){
 					// chequeo a la primer coincidencia sale del foreach
 					$lasthashvar = '_lasthash_'.sanitize_file_name($feed);
@@ -97,7 +98,8 @@ class wpematico_campaign_preview {
 						trigger_error(sprintf(__('Found duplicated hash \'%1s\'', 'wpematico' ),$item->get_permalink()).': '.$currenthash[$feed] ,E_USER_NOTICE);
 						if( !self::$cfg['jumpduplicates'] ) {
 							trigger_error(__('Filtering duplicated posts.', 'wpematico' ),E_USER_NOTICE);
-							break;
+							$breaked = true;
+							continue;
 						}else {
 							trigger_error(__('Jumping duplicated post. Continuing.', 'wpematico' ),E_USER_NOTICE);
 							continue;
@@ -110,7 +112,8 @@ class wpematico_campaign_preview {
 						trigger_error(sprintf(__('Found duplicated title \'%1s\'', 'wpematico' ),$item->get_title()).': '.$currenthash[$feed] ,E_USER_NOTICE);
 						if( !self::$cfg['jumpduplicates'] ) {
 							trigger_error(__('Filtering duplicated posts.', 'wpematico' ),E_USER_NOTICE);
-							break;
+							$breaked = true;
+							continue;
 						}else {
 							trigger_error(__('Jumping duplicated post. Continuing.', 'wpematico' ),E_USER_NOTICE);
 							continue;
@@ -118,12 +121,22 @@ class wpematico_campaign_preview {
 					}
 				}
 
+			} else {
+				
+				
 			}
-			$posts_next[md5($item->get_permalink())] = true;
+			if($breaked && WPeMatico::is_duplicated_item($campaign, $feed, $item)) {
+				$posts_fetched[md5($item->get_permalink())] = true;
+			} else if ($breaked) {
+				
+			} else {
+				$posts_next[md5($item->get_permalink())] = true;
+			}
 			$count++;	  
 			if($count == $campaign['campaign_max']) {
 				trigger_error(sprintf(__('Campaign fetch limit reached at %1s.', 'wpematico' ), $campaign['campaign_max']),E_USER_NOTICE);
-				break;
+				$breaked = true;
+				continue;
 			}
 		}
 		return array('next' => $posts_next, 'fetched' => $posts_fetched, 'simplepie' => $simplepie);

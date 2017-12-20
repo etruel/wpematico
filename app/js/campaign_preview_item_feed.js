@@ -6,7 +6,6 @@ jQuery(document).ready(function($){
 		nonce_get_item: $('#nonce_get_item').val(),
 		action: 		'wpematico_preview_get_item',
 	};
-	console.log(request);
 	$.post(wpematico_preview_item.ajax_url, request, function(response) {
 		$('#preview-post-content').html(response);
 	})
