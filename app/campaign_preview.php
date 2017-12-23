@@ -287,7 +287,7 @@ class wpematico_campaign_preview {
 
 
 				  			?>
-						    <tr class="feed-nextfetch">
+						    <tr id="tr_item_<?php echo $item_hash; ?>" class="feed-nextfetch">
 						    	<td>
 						    		
 						    	</td>
@@ -298,10 +298,10 @@ class wpematico_campaign_preview {
 
 						    	</td>
 						    	<td>
-						    		<span class="status nextfetch"><?php echo  __('Next fetch', 'wpematico'); ?></span>
+						    		<span id="status_item_<?php echo $item_hash; ?>" class="status nextfetch"><?php echo  __('Next fetch', 'wpematico'); ?></span>
 						    	</td>
 						    	<td>
-						    		<button type="button" class="state_buttons cpanelbutton dashicons dashicons-controls-play" title="Run Once"></button>
+						    		<button type="button" data-itemhash="<?php echo $item_hash; ?>" data-feed="<?php echo $feed_url; ?>" class="item_fetch cpanelbutton dashicons dashicons-controls-play" title="Run Once"></button>
 						    		<?php do_action('wpematico_preview_campaign_item_actions', $item); ?>
 						    	</td>
 						    </tr>

@@ -202,6 +202,8 @@ class wpematico_campaign_preview_item {
 		wp_localize_script('wpematico-campaign-preview-item', 'wpematico_preview_item', 
 			array(
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
+				'is_manual_addon_active' => (defined('WPEMATICO_MANUAL_FETCHING_VER') ? true : false),
+				'is_manual_addon_msg' => __('This action is available for use with the Manual Feetching Addon.', 'wpematico'),
 			)
 		);
 		
@@ -307,8 +309,9 @@ class wpematico_campaign_preview_item {
 					<?php if (!empty($_REQUEST['return_url'])) : ?>
 						<a href="<?php echo $_REQUEST['return_url']; ?>" class="button">Back</a>
 					<?php endif; ?>
-					<button type="button" class="state_buttons cpanelbutton dashicons dashicons-controls-play" title="Run Once"></button>
+					<button type="button" data-itemhash="<?php echo $item_hash; ?>" data-feed="<?php echo $feed; ?>" class="item_fetch cpanelbutton dashicons dashicons-controls-play" title="Run Once"></button>
 					<?php do_action('wpematico_preview_item_actions', $item); ?>
+					<img id="image_loading" style="display: none;" src="<?php echo admin_url('images/wpspin_light.gif'); ?>">
 				</div>
 				
 				<div id="preview-post-content">

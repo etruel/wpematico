@@ -12,4 +12,11 @@ jQuery(document).ready(function($){
 	.fail(function(jquery_xhr) {
 		alert('Error: '+jquery_xhr.responseText);
 	})
+
+
+	$('.item_fetch').click(function() {
+		if (!wpematico_preview_item.is_manual_addon_active) {
+			alert(wpematico_preview_item.is_manual_addon_msg);
+		}
+	});
 });
