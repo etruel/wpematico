@@ -494,7 +494,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 					$img_new_url = "";
 					if(in_array(str_replace('.','',strrchr( strtolower($imagen_dst), '.')), explode(',', $allowed))) {   // -------- Controlo extensiones permitidas
 						trigger_error('Uploading media='.$imagen_src.' <b>to</b> imagen_dst='.$imagen_dst.'',E_USER_NOTICE);
-						$newfile = ($options_images['customupload']) ? $this->guarda_imagen($imagen_src_real, $imagen_dst) : false;
+						$newfile = ($options_images['customupload']) ? WPeMatico::save_file_from_url($imagen_src_real, $imagen_dst) : false;
 						if($newfile) { //subió
 							trigger_error('Uploaded media='.$newfile,E_USER_NOTICE);
 							$imagen_dst = $newfile; 

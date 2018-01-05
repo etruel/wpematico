@@ -261,6 +261,12 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
+= 1.9  =
+* Added campaign preview feature.
+* Added compatibility to use Manual Fetching Addon.
+* Some tweaks and improvement of performance on uploading of files.
+
+
 = 1.8.5 Dec 4, 2017 =
 * Added 'Start Campaigns' and 'Stop Campaigns' on the bulk actions of Campaigns list.
 * Fixes the 'shift+click' issue to select campaigns on campaigns list.

@@ -169,6 +169,48 @@ class WPeMatico_functions {
 		return $options;
 	}
 	/**
+	* Static function save_image_from_url
+	* @access public
+	* @param $url_origin String contain the URL of File will be uploaded.
+	* @param $new_file String contain the Path of File where it will be saved.
+	* @return bool true if is success
+	* @since 1.9.0
+	*/
+	public static function save_file_from_url($url_origin, $new_file) {
+		$ch = curl_init ($url_origin); 
+		if(!$ch) return false;
+		$dest_file = apply_filters('wpematico_overwrite_file', $new_file);
+		if( $dest_file===FALSE ) return $new_file;  // Don't upload it and return the name like it was uploaded
+		$new_file = $dest_file;  
+		$i = 1;
+		while (file_exists( $new_file )) {
+			$file_extension  = strrchr($new_file, '.');    //Will return .JPEG   substr($url_origin, strlen($url_origin)-4, strlen($url_origen));
+			if($i==1){
+				$file_name = substr($new_file, 0, strlen($new_file)-strlen($file_extension) );
+				$new_file = $file_name."-$i".$file_extension;
+			}else{
+				$file_name = substr( $new_file, 0, strlen($new_file)-strlen($file_extension)-strlen("-$i") );
+				$new_file = $file_name."-$i".$file_extension;
+			}
+			$i++;
+		}
+		$fs_file = fopen ($new_file, "w"); 
+		//curl_setopt ($ch, CURLOPT_URL, $url_origin);
+		curl_setopt ($ch, CURLOPT_FILE, $fs_file); 
+		curl_setopt ($ch, CURLOPT_HEADER, 0); 
+		curl_exec ($ch); 
+		
+		$httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+		curl_close ($ch); 
+		fclose ($fs_file); 
+
+		if(!($httpcode>=200 && $httpcode<300)) unlink($new_file);
+		return ($httpcode>=200 && $httpcode<300) ? $new_file : false;
+	}
+	
+		
+	
+	/**
 	* Static function get_attribute_value
 	* @access public
 	* @return $value String with value of HTML attribute.

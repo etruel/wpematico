@@ -351,65 +351,55 @@ class wpematico_campaign_fetch_functions {
 					if($options_images['featuredimg'] && $current_item['featured_image'] == $imagen_src) {
 						$featured = true;  
 					}
-					/**
-					* @since 1.7.0 
-					* Deprecated 
-					if($this->campaign['campaign_cancel_imgcache']) {
-						if($this->cfg['gralnolinkimg'] || $this->campaign['campaign_nolinkimg']) {
-							//trigger_error( __('Deleted media img=', WPeMatico :: TEXTDOMAIN ).$imagen_src ,E_USER_WARNING);
-							$current_item['content'] = self::strip_Image_by_src($imagen_src, $current_item['content']);
-							// Si no quiere linkar las img al server la borro del contenido
-						}
-					}else {
-					*/
-					    trigger_error(__('Uploading media...', WPeMatico :: TEXTDOMAIN ).$imagen_src,E_USER_NOTICE);
-						$imagen_src_real = $this->getRelativeUrl($itemUrl, $imagen_src);
-						// Strip all white space on images URLs.	
-						$imagen_src_real = str_replace(' ', '%20', $imagen_src_real);						
-						$imagen_src_real = apply_filters('wpematico_img_src_url', $imagen_src_real ); // original source
-						$allowed = (isset($this->cfg['allowed']) && !empty($this->cfg['allowed']) ) ? $this->cfg['allowed'] : 'jpg,gif,png,tif,bmp,jpeg' ;
-						$allowed = apply_filters('wpematico_allowext', $allowed );
-						//Fetch and Store the Image	
-						///////////////***************************************************************************************////////////////////////
-						$newimgname = apply_filters('wpematico_newimgname', sanitize_file_name(urlencode(basename($imagen_src_real))), $current_item, $campaign, $item  );  // new name here
-						// Primero intento con mi funcion mas rapida
-						$upload_dir = wp_upload_dir();
-						$imagen_dst = trailingslashit($upload_dir['path']). $newimgname; 
-						$imagen_dst_url = trailingslashit($upload_dir['url']). $newimgname;
-						if(in_array(str_replace('.','',strrchr( strtolower($imagen_dst), '.')), explode(',', $allowed))) {   // -------- Controlo extensiones permitidas
-							trigger_error('Uploading media='.$imagen_src.' <b>to</b> imagen_dst='.$imagen_dst.'',E_USER_NOTICE);
-							$newfile = ($options_images['customupload']) ? $this->guarda_imagen($imagen_src_real, $imagen_dst) : false;
-							if($newfile) { //subió
-								trigger_error('Uploaded media='.$newfile,E_USER_NOTICE);
-								$imagen_dst = $newfile; 
-								$imagen_dst_url = trailingslashit($upload_dir['url']). basename($newfile);
-								$current_item['content'] = str_replace($imagen_src, $imagen_dst_url, $current_item['content']);
-								$img_new_url[] = $imagen_dst_url;
-							} else { // falló -> intento con otros
-								$bits = WPeMatico::wpematico_get_contents($imagen_src_real);
-								$mirror = wp_upload_bits( $newimgname, NULL, $bits);
-								if(!$mirror['error']) {
-									trigger_error($mirror['url'],E_USER_NOTICE);
-									$current_item['content'] = str_replace($imagen_src, $mirror['url'], $current_item['content']);
-									$img_new_url[] = $mirror['url'];
-								} else {  
-									trigger_error('wp_upload_bits error:'.print_r($mirror,true).'.',E_USER_WARNING);
-									// Si no quiere linkar las img al server borro el link de la imagen
-									trigger_error( __('Upload file failed:', WPeMatico :: TEXTDOMAIN ).$imagen_dst,E_USER_WARNING);
-									if($options_images['gralnolinkimg']) {
-									//	trigger_error( __('Deleted media img.', WPeMatico :: TEXTDOMAIN ),E_USER_WARNING);
-										$current_item['content'] = self::strip_Image_by_src($imagen_src, $current_item['content']);
-									}
+					
+				    trigger_error(__('Uploading media...', WPeMatico :: TEXTDOMAIN ).$imagen_src,E_USER_NOTICE);
+					$imagen_src_real = $this->getRelativeUrl($itemUrl, $imagen_src);
+					// Strip all white space on images URLs.	
+					$imagen_src_real = str_replace(' ', '%20', $imagen_src_real);						
+					$imagen_src_real = apply_filters('wpematico_img_src_url', $imagen_src_real ); // original source
+					$allowed = (isset($this->cfg['allowed']) && !empty($this->cfg['allowed']) ) ? $this->cfg['allowed'] : 'jpg,gif,png,tif,bmp,jpeg' ;
+					$allowed = apply_filters('wpematico_allowext', $allowed );
+					//Fetch and Store the Image	
+					///////////////***************************************************************************************////////////////////////
+					$newimgname = apply_filters('wpematico_newimgname', sanitize_file_name(urlencode(basename($imagen_src_real))), $current_item, $campaign, $item  );  // new name here
+					// Primero intento con mi funcion mas rapida
+					$upload_dir = wp_upload_dir();
+					$imagen_dst = trailingslashit($upload_dir['path']). $newimgname; 
+					$imagen_dst_url = trailingslashit($upload_dir['url']). $newimgname;
+					if(in_array(str_replace('.','',strrchr( strtolower($imagen_dst), '.')), explode(',', $allowed))) {   // -------- Controlo extensiones permitidas
+						trigger_error('Uploading media='.$imagen_src.' <b>to</b> imagen_dst='.$imagen_dst.'',E_USER_NOTICE);
+						$newfile = ($options_images['customupload']) ? WPeMatico::save_file_from_url($imagen_src_real, $imagen_dst) : false;
+						if($newfile) { //subió
+							trigger_error('Uploaded media='.$newfile,E_USER_NOTICE);
+							$imagen_dst = $newfile; 
+							$imagen_dst_url = trailingslashit($upload_dir['url']). basename($newfile);
+							$current_item['content'] = str_replace($imagen_src, $imagen_dst_url, $current_item['content']);
+							$img_new_url[] = $imagen_dst_url;
+						} else { // falló -> intento con otros
+							$bits = WPeMatico::wpematico_get_contents($imagen_src_real);
+							$mirror = wp_upload_bits( $newimgname, NULL, $bits);
+							if(!$mirror['error']) {
+								trigger_error($mirror['url'],E_USER_NOTICE);
+								$current_item['content'] = str_replace($imagen_src, $mirror['url'], $current_item['content']);
+								$img_new_url[] = $mirror['url'];
+							} else {  
+								trigger_error('wp_upload_bits error:'.print_r($mirror,true).'.',E_USER_WARNING);
+								// Si no quiere linkar las img al server borro el link de la imagen
+								trigger_error( __('Upload file failed:', WPeMatico :: TEXTDOMAIN ).$imagen_dst,E_USER_WARNING);
+								if($options_images['gralnolinkimg']) {
+								//	trigger_error( __('Deleted media img.', WPeMatico :: TEXTDOMAIN ),E_USER_WARNING);
+									$current_item['content'] = self::strip_Image_by_src($imagen_src, $current_item['content']);
 								}
 							}
-						}else {
-							trigger_error( __('Extension not allowed: ', WPeMatico :: TEXTDOMAIN ). urldecode($imagen_dst_url),E_USER_WARNING);
-							if($options_images['gralnolinkimg']) { // Si no quiere linkar las img al server borro el link de la imagen
-								trigger_error( __('Stripped src.', WPeMatico :: TEXTDOMAIN ),E_USER_WARNING);
-								$current_item['content'] = self::strip_Image_by_src($imagen_src, $current_item['content']);
-							}
 						}
-					//}
+					}else {
+						trigger_error( __('Extension not allowed: ', WPeMatico :: TEXTDOMAIN ). urldecode($imagen_dst_url),E_USER_WARNING);
+						if($options_images['gralnolinkimg']) { // Si no quiere linkar las img al server borro el link de la imagen
+							trigger_error( __('Stripped src.', WPeMatico :: TEXTDOMAIN ),E_USER_WARNING);
+							$current_item['content'] = self::strip_Image_by_src($imagen_src, $current_item['content']);
+						}
+					}
+					
 				}
 				$current_item['images'] = (array)$img_new_url;
 				if($featured) $current_item['featured_image'] = $current_item['images'][0]; //change to new url
@@ -423,71 +413,6 @@ class wpematico_campaign_fetch_functions {
 		return $current_item;		
 	}  // item images
 
-
-	function guarda_imagen($url_origen,$new_file){ 
-		$ch = curl_init ($url_origen); 
-		if(!$ch) return false;
-		$dest_file = apply_filters('wpematico_overwrite_file', $new_file);
-		if( $dest_file===FALSE ) return $new_file;  // Don't upload it and return the name like it was uploaded
-		$new_file = $dest_file;  
-		$i = 1;
-		while (file_exists( $new_file )) {
-			$file_extension  = strrchr($new_file, '.');    //Will return .JPEG   substr($url_origen, strlen($url_origen)-4, strlen($url_origen));
-			if($i==1){
-				$file_name = substr($new_file, 0, strlen($new_file)-strlen($file_extension) );
-				$new_file = $file_name."-$i".$file_extension;
-			}else{
-				$file_name = substr( $new_file, 0, strlen($new_file)-strlen($file_extension)-strlen("-$i") );
-				$new_file = $file_name."-$i".$file_extension;
-			}
-			$i++;
-		}
-		$fs_archivo = fopen ($new_file, "w"); 
-		//curl_setopt ($ch, CURLOPT_URL, $url_origen);
-		curl_setopt ($ch, CURLOPT_FILE, $fs_archivo); 
-		curl_setopt ($ch, CURLOPT_HEADER, 0); 
-		curl_exec ($ch); 
-		
-		$httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-		curl_close ($ch); 
-		fclose ($fs_archivo); 
-
-		if(!($httpcode>=200 && $httpcode<300)) unlink($new_file);
-		return ($httpcode>=200 && $httpcode<300) ? $new_file : false;
-	} 
-	function save_video_audio($url_origen,$new_file){ 
-		$ch = curl_init ($url_origen); 
-		if(!$ch) return false;
-		$dest_file = apply_filters('wpematico_overwrite_file', $new_file);
-		if( $dest_file===FALSE ) return $new_file;  // Don't upload it and return the name like it was uploaded
-		$new_file = $dest_file;  
-		$i = 1;
-		while (file_exists( $new_file )) {
-			$file_extension  = strrchr($new_file, '.');    //Will return .JPEG   substr($url_origen, strlen($url_origen)-4, strlen($url_origen));
-			if($i==1){
-				$file_name = substr($new_file, 0, strlen($new_file)-strlen($file_extension) );
-				$new_file = $file_name."-$i".$file_extension;
-			}else{
-				$file_name = substr( $new_file, 0, strlen($new_file)-strlen($file_extension)-strlen("-$i") );
-				$new_file = $file_name."-$i".$file_extension;
-			}
-			$i++;
-		}
-		$fs_archivo = fopen ($new_file, "w"); 
-		//curl_setopt ($ch, CURLOPT_URL, $url_origen);
-		curl_setopt ($ch, CURLOPT_FILE, $fs_archivo); 
-		curl_setopt($ch, CURLOPT_RANGE, '0-500');
-		curl_setopt ($ch, CURLOPT_HEADER, 0); 
-		curl_exec ($ch); 
-		
-		$httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-		curl_close ($ch); 
-		fclose ($fs_archivo); 
-
-		if(!($httpcode>=200 && $httpcode<300)) unlink($new_file);
-		return ($httpcode>=200 && $httpcode<300) ? $new_file : false;
-	} 
-	
 
 	/*** Adjunta un archivo ya subido al postid dado  */
  	function insertfileasattach($filename,$postid) {
@@ -841,7 +766,7 @@ class wpematico_campaign_fetch_functions {
 						}
 						
 						if ($options_audios['customupload_audios'] && !$newfile){
-							$newfile = $this->guarda_imagen($audio_src_real, $audio_dst);
+							$newfile = WPeMatico::save_file_from_url($audio_src_real, $audio_dst);
 						}
 
 						if($newfile) { //subió
@@ -988,10 +913,9 @@ class wpematico_campaign_fetch_functions {
 						}
 
 						if ($options_videos['customupload_videos'] && !$newfile){
-							$newfile = $this->guarda_imagen($video_src_real, $video_dst);
+							$newfile =  WPeMatico::save_file_from_url($video_src_real, $video_dst);
 						}
 
-						//$newfile = ($options_videos['customupload_videos']) ? $this->guarda_imagen($video_src_real, $video_dst) : false;
 						if($newfile) { //subió
 							trigger_error('Uploaded media='.$newfile,E_USER_NOTICE);
 							$video_dst = $newfile; 
