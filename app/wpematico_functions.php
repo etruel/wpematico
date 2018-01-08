@@ -883,6 +883,12 @@ class WPeMatico_functions {
     $feed->feed_url = rawurldecode($feed->feed_url);
     $feed->curl_options[CURLOPT_SSL_VERIFYHOST] = false;
     $feed->curl_options[CURLOPT_SSL_VERIFYPEER] = false;
+    /**
+    * This filter allows add curl options to SimplePie
+    * @since 1.9.0
+    */
+    $feed =  apply_filters('wpematico_simplepie_curl_options', $feed, $url);
+
     $feed->set_item_limit($max);
 	$feed->set_stupidly_fast($stupidly_fast);
 	if(!$stupidly_fast) {
