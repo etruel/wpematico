@@ -138,7 +138,7 @@ class WPeMatico_Campaign_edit_functions {
 						<button type="button" class="cpanelbutton dashicons dashicons-backup" id="campaign_edit_reset" btn-action='<?php echo WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','reset'); ?>&campaign_edit=true' title="<?php _e('Reset post count', 'wpematico'); ?>"></button>
 						<button type="button" class="cpanelbutton dashicons dashicons-editor-unlink" id="campaign_edit_del_hash" btn-action='<?php echo WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','delhash'); ?>&campaign_edit=true' title="<?php _e('Delete hash code for duplicates', 'wpematico'); ?>"></button>
 						<button type="button" class="cpanelbutton dashicons dashicons-clipboard" id="campaign_edit_see_logs" title="<?php _e('See last log. (Open a PopUp window)', 'wpematico'); ?>"></button>
-						<button type="button" class="cpanelbutton dashicons dashicons-editor-ul" id="campaign_edit_preview" title="<?php _e('Preview Campaign', 'wpematico'); ?>"></button>
+						<button type="button" class="cpanelbutton dashicons dashicons-visibility" id="campaign_edit_preview" title="<?php _e('Preview Campaign', 'wpematico'); ?>"></button>
 						<?php do_action('wpematico_current_state_actions'); ?>
 					</div>
 					</td>

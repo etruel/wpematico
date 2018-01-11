@@ -198,6 +198,14 @@ class WPeMatico_functions {
 		//curl_setopt ($ch, CURLOPT_URL, $url_origin);
 		curl_setopt ($ch, CURLOPT_FILE, $fs_file); 
 		curl_setopt ($ch, CURLOPT_HEADER, 0); 
+
+
+		/**
+		* It could be use to add cURL options to request.
+		* @since 1.9.0
+		*/
+		$ch = apply_filters('wpematico_save_file_from_url_params', $ch);
+		
 		curl_exec ($ch); 
 		
 		$httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -1205,6 +1213,14 @@ class WPeMatico_functions {
 		);
 		
 		$r = wp_parse_args( $args, $defaults );
+		
+		/**
+		* It could be use to add cURL options to request.
+		* @since 1.9.0
+		*/
+		$r = apply_filters('wpematico_get_contents_request_params', $r);
+
+
 		$curl = $r['curl'];
 		
 		$data = false;

@@ -265,6 +265,7 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 * Added campaign preview feature.
 * Added compatibility to use Manual Fetching Addon.
 * Some tweaks and improvement of performance on uploading of files.
+* Added compatibility to use Cookies HTTP from Professional Addon.
 
 
 = 1.8.5 Dec 4, 2017 =
