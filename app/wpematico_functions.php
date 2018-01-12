@@ -204,7 +204,7 @@ class WPeMatico_functions {
 		* It could be use to add cURL options to request.
 		* @since 1.9.0
 		*/
-		$ch = apply_filters('wpematico_save_file_from_url_params', $ch);
+		$ch = apply_filters('wpematico_save_file_from_url_params', $ch, $url_origin);
 		
 		curl_exec ($ch); 
 		
@@ -891,11 +891,7 @@ class WPeMatico_functions {
     $feed->feed_url = rawurldecode($feed->feed_url);
     $feed->curl_options[CURLOPT_SSL_VERIFYHOST] = false;
     $feed->curl_options[CURLOPT_SSL_VERIFYPEER] = false;
-    /**
-    * This filter allows add curl options to SimplePie
-    * @since 1.9.0
-    */
-    $feed =  apply_filters('wpematico_simplepie_curl_options', $feed, $url);
+    
 
     $feed->set_item_limit($max);
 	$feed->set_stupidly_fast($stupidly_fast);
@@ -1218,7 +1214,7 @@ class WPeMatico_functions {
 		* It could be use to add cURL options to request.
 		* @since 1.9.0
 		*/
-		$r = apply_filters('wpematico_get_contents_request_params', $r);
+		$r = apply_filters('wpematico_get_contents_request_params', $r, $url);
 
 
 		$curl = $r['curl'];
