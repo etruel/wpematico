@@ -266,7 +266,7 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 * Added compatibility to use Manual Fetching Addon.
 * Some tweaks and improvement of performance on uploading of files.
 * Added compatibility to use Cookies HTTP from Professional Addon.
-
+* Added error message when fail the run of campaign.
 
 = 1.8.5 Dec 4, 2017 =
 * Added 'Start Campaigns' and 'Stop Campaigns' on the bulk actions of Campaigns list.

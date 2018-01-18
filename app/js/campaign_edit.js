@@ -81,6 +81,11 @@ jQuery(document).ready(function($){
 			}
 			$('html').css('cursor','auto');
 			$('#run_now').removeClass('green');
+		}).fail(function() {
+			$('#fieldserror').remove();
+			$("#poststuff").prepend('<div id="fieldserror" class="error fade">'+wpematico_object.text_fail_run_campaign+'</div>');
+			$('html').css('cursor','auto');
+			$('#run_now').removeClass('green');
 		});
 		e.preventDefault();
 	});

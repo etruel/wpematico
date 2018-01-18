@@ -174,7 +174,6 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		wp_enqueue_script('wpematico_campaign_wizard', WPeMatico::$uri .'app/js/campaign_wizard.js', array( 'jquery' ), WPEMATICO_VERSION, true );
 		
 
-
 		$name_campaign = get_the_title($post->ID);
 		$see_logs_action_url = admin_url('admin-post.php?action=wpematico_campaign_log&p='.$post->ID.'&_wpnonce=' . wp_create_nonce('clog-nonce'));
 		$preview_campaign_action_url = admin_url('admin-post.php?action=wpematico_campaign_preview&p='.$post->ID.'&_wpnonce=' . wp_create_nonce('campaign-preview-nonce'));
@@ -188,6 +187,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 					'text_save_before_execute_action' =>  __('Save before to execute this action', 'wpematico'),
 					'text_confirm_reset_campaign'		=> __('Are you sure you want to reset this campaign?', 'wpematico'),
 					'text_confirm_delhash_campaign'		=> __('Are you sure you want to delete hash code for duplicates of this campaign?', 'wpematico'),
+					'text_fail_run_campaign'		=> sprintf(__('An error has occurred, this could be because the web server does not have all the requirements of WPeMatico please check your <a href="%s">System Status</a>, if everything is ok try again.', 'wpematico'), admin_url('edit.php?post_type=wpematico&page=wpematico_settings&tab=debug_info') ),
 					'text_wizard'		=> __('Wizard', 'wpematico'),
 
 					'image_run_loading' =>  get_bloginfo('wpurl').'/wp-admin/images/wpspin_light.gif',
