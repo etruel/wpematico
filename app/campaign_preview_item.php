@@ -309,7 +309,7 @@ class wpematico_campaign_preview_item {
 					<?php if (!empty($_REQUEST['return_url'])) : ?>
 						<a href="<?php echo $_REQUEST['return_url']; ?>" class="button">Back</a>
 					<?php endif; ?>
-					<button type="button" data-itemhash="<?php echo $item_hash; ?>" data-feed="<?php echo $feed; ?>" class="item_fetch cpanelbutton dashicons dashicons-controls-play" title="Run Once"></button>
+					<button type="button" data-itemhash="<?php echo $item_hash; ?>" data-feed="<?php echo $feed; ?>" class="item_fetch cpanelbutton dashicons dashicons-welcome-add-page" title="Run Once"></button>
 					<?php do_action('wpematico_preview_item_actions', $item); ?>
 					<img id="image_loading" style="display: none;" src="<?php echo admin_url('images/wpspin_light.gif'); ?>">
 				</div>
