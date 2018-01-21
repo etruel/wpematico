@@ -29,10 +29,10 @@ class WPeMatico_functions {
 		$title = $item->get_title();
 		
 		$title = htmlspecialchars_decode($title);
-		$from = mb_detect_encoding($title, "auto"); 
-		if ($from && $from != 'UTF-8') {
-			$title = mb_convert_encoding($title, 'UTF-8', $from);
+		if($campaign['campaign_enable_convert_utf8']) {
+			$title =  WPeMatico::change_to_utf8($title);
 		}
+
 		$title = esc_attr($title);
 		$title = html_entity_decode($title, ENT_QUOTES | ENT_HTML401, 'UTF-8');
 		if ($campaign['copy_permanlink_source']) {
@@ -79,6 +79,21 @@ class WPeMatico_functions {
 		trigger_error(sprintf(__('Checking duplicated title \'%1s\'', WPeMatico :: TEXTDOMAIN ),$title).': '. $dupmsg ,E_USER_NOTICE);
 
 		return $dev;
+	}
+	/**
+	* Static function change_to_utf8
+	* This function convert a string to UTF-8 if its has a different encoding.
+	* @access public
+	* @param $string String to convert to UTF-8
+	* @return $string String with UTF-8 encoding.
+	* @since 1.9.0
+	*/
+	public static function change_to_utf8($string) {
+		$from = mb_detect_encoding($string, "auto");
+		if ($from && $from != 'UTF-8') {
+			$string = mb_convert_encoding($string, 'UTF-8', $from);
+		}
+		return $string;
 	}
 	/**
 	* @access public
@@ -498,6 +513,7 @@ class WPeMatico_functions {
 	public static function check_campaigndata( $post_data ) {
 		global $post, $cfg;
 		if(is_null($cfg)) $cfg = get_option(WPeMatico::OPTION_KEY);
+		$wpematico_version = get_option( 'wpematico_db_version' );	
 
 		$campaigndata = array();
 		if(isset($post_data['ID']) && !empty($post_data['ID']) ) {
@@ -576,7 +592,18 @@ class WPeMatico_functions {
 		$campaigndata['campaign_woutfilter']=(!isset($post_data['campaign_woutfilter']) || empty($post_data['campaign_woutfilter'])) ? false: ($post_data['campaign_woutfilter']==1) ? true : false;
 		$campaigndata['campaign_striphtml']	= (!isset($post_data['campaign_striphtml']) || empty($post_data['campaign_striphtml'])) ? false: ($post_data['campaign_striphtml']==1) ? true : false;
 
-	
+
+		$campaigndata['campaign_enable_convert_utf8']=(!isset($post_data['campaign_enable_convert_utf8']) || empty($post_data['campaign_enable_convert_utf8'])) ? false: ($post_data['campaign_enable_convert_utf8']==1) ? true : false;
+		/**
+		* Compatibility with enable convert to UTF-8
+		* @since 1.9.0
+		*/
+		if (version_compare($wpematico_version, '1.9', '<')) {
+			$campaigndata['campaign_enable_convert_utf8'] = true;
+		}
+
+
+
 		// *** Campaign Audios
 		$campaigndata['campaign_no_setting_audio']=(!isset($post_data['campaign_no_setting_audio']) || empty($post_data['campaign_no_setting_audio'])) ? false: ($post_data['campaign_no_setting_audio']==1) ? true : false;
 		$campaigndata['campaign_audio_cache']=(!isset($post_data['campaign_audio_cache']) || empty($post_data['campaign_audio_cache'])) ? false: ($post_data['campaign_audio_cache']==1) ? true : false;
@@ -623,7 +650,7 @@ class WPeMatico_functions {
 		* Compatibility with previous image processing.
 		* @since 1.7.0
 		*/
-		if (version_compare(get_option( 'wpematico_db_version' ), '1.6.4', '<=')) {
+		if (version_compare($wpematico_version, '1.6.4', '<=')) {
 			if ($campaigndata['campaign_imgcache']) {
 				$campaigndata['campaign_no_setting_img'] = true;
 			}

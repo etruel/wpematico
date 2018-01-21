@@ -72,7 +72,7 @@ add_action( 'plugins_loaded', 'wpematico_update_db_check' );
 function wpematico_update_db_check() {
 	if (version_compare(WPEMATICO_VERSION, get_option( 'wpematico_db_version' ), '>')) { // check if updated (WILL SAVE new version on welcome )
 		if ( !get_transient( '_wpematico_activation_redirect' ) ){ //just one time running
-	        wpematico_install( false );
+	        wpematico_install( true );
 		}
     }
 }
@@ -88,6 +88,10 @@ function wpematico_install( $update_campaigns = false ){
 			'post_type'       => 'wpematico', 
 			'numberposts' => -1
 		);
+		if ( ! has_filter( 'wpematico_check_campaigndata' ) ) {
+			add_filter( 'wpematico_check_campaigndata', array('WPeMatico','check_campaigndata'), 10, 1);
+		}
+		
 		$campaigns = get_posts( $args );
 		foreach( $campaigns as $post ):
 			$campaigndata = WPeMatico::get_campaign( $post->ID );	
@@ -166,13 +170,6 @@ function wpematico_uninstall() {
 	}
 }
 
-function wpematico_convert_to_utf8($string) {
-	$from = mb_detect_encoding($string, "auto");
-	if ($from && $from != 'UTF-8') {
-		$string = mb_convert_encoding($string, 'UTF-8', $from);
-	}
-	return $string;
-}
 
 //function for PHP error handling
 function wpematico_joberrorhandler($errno, $errstr, $errfile, $errline) {

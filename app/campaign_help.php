@@ -51,6 +51,10 @@ $helpcampaign = array(
 			'title' => __('Pingbacks y trackbacks.', 'wpematico' ),
 			'tip' => __('Allows pinbacks and trackbacks in the posts created by this campaign.', 'wpematico' ),
 		),
+		'convert_utf8' => array( 
+			'title' => __('Convert character encoding to UTF-8.', 'wpematico' ),
+			'tip' => __('This feature convert character encoding of content and title to UTF-8 if they have different character encoding.', 'wpematico' ),
+		),
 		'commentstatus' => array( 
 			'title' => __('Discussion options.', 'wpematico' ),
 			'tip' => __('Comments options to these posts.', 'wpematico' ),

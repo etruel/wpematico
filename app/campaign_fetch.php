@@ -251,10 +251,10 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		// Item title
 		$this->current_item['title'] = $item->get_title();
 		$this->current_item['title'] = htmlspecialchars_decode($this->current_item['title']);
-		$from = mb_detect_encoding($this->current_item['title'], "auto");
-		if ($from && $from != 'UTF-8') {
-			$this->current_item['title'] = mb_convert_encoding($this->current_item['title'], 'UTF-8', $from);
+		if($this->campaign['campaign_enable_convert_utf8']) {
+			$this->current_item['title'] =  WPeMatico::change_to_utf8($this->current_item['title']);
 		}
+
 		
 		if( $this->cfg['nonstatic'] ) { $this->current_item = NoNStatic :: title($this->current_item,$this->campaign,$item,$realcount ); }else $this->current_item['title'] = esc_attr($this->current_item['title']);
 
@@ -269,10 +269,10 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		$this->current_item['content'] = apply_filters('wpematico_get_post_content_feed', $item->get_content(), $this->campaign, $feed, $item );
 		$this->current_item = apply_filters('wpematico_get_post_content', $this->current_item, $this->campaign, $feed, $item );
 
-		$from = mb_detect_encoding($this->current_item['content'], "auto");
-		if ($from && $from != 'UTF-8') {
-			$this->current_item['content'] = mb_convert_encoding($this->current_item['content'], 'UTF-8', $from);
+		if($this->campaign['campaign_enable_convert_utf8']) {
+			$this->current_item['content'] =  WPeMatico::change_to_utf8($this->current_item['content']);
 		}
+
 		$this->current_item['content'] = html_entity_decode($this->current_item['content'], ENT_COMPAT | ENT_HTML401, 'UTF-8');
 		
 		/**

@@ -584,6 +584,9 @@ public static function options_box( $post ) {
 	$campaign_strip_links_options = $campaign_data['campaign_strip_links_options'];
 	$campaign_striphtml = $campaign_data['campaign_striphtml'];
 
+	$campaign_enable_convert_utf8 = $campaign_data['campaign_enable_convert_utf8'];
+
+
 	?>
 	<div id="optionslayer" class="ibfix vtop">
 		<p>
@@ -602,6 +605,12 @@ public static function options_box( $post ) {
 			<input class="checkbox" type="checkbox"<?php checked($campaign_allowpings ,true);?> name="campaign_allowpings" value="1" id="campaign_allowpings"/> 
 			<label for="campaign_allowpings"><?php echo __('Pingbacks y trackbacks.', 'wpematico' ); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['allowpings']; ?>"></span>
 		</p>
+
+		<p>
+			<input class="checkbox" type="checkbox"<?php checked($campaign_enable_convert_utf8, true);?> name="campaign_enable_convert_utf8" value="1" id="campaign_enable_convert_utf8"/> 
+			<label for="campaign_enable_convert_utf8"><?php echo __('Convert character encoding to UTF-8.', 'wpematico' ); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['convert_utf8']; ?>"></span>
+		</p>
+
 		<p>
 			<label for="campaign_commentstatus"><?php echo __('Discussion options:', 'wpematico' ); ?></label>
 			<select id="campaign_commentstatus" name="campaign_commentstatus">
