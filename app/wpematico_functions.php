@@ -513,7 +513,6 @@ class WPeMatico_functions {
 	public static function check_campaigndata( $post_data ) {
 		global $post, $cfg;
 		if(is_null($cfg)) $cfg = get_option(WPeMatico::OPTION_KEY);
-		$wpematico_version = get_option( 'wpematico_db_version' );	
 
 		$campaigndata = array();
 		if(isset($post_data['ID']) && !empty($post_data['ID']) ) {
@@ -594,16 +593,7 @@ class WPeMatico_functions {
 
 
 		$campaigndata['campaign_enable_convert_utf8']=(!isset($post_data['campaign_enable_convert_utf8']) || empty($post_data['campaign_enable_convert_utf8'])) ? false: ($post_data['campaign_enable_convert_utf8']==1) ? true : false;
-		/**
-		* Compatibility with enable convert to UTF-8
-		* @since 1.9.0
-		*/
-		if (version_compare($wpematico_version, '1.9', '<')) {
-			$campaigndata['campaign_enable_convert_utf8'] = true;
-		}
-
-
-
+		
 		// *** Campaign Audios
 		$campaigndata['campaign_no_setting_audio']=(!isset($post_data['campaign_no_setting_audio']) || empty($post_data['campaign_no_setting_audio'])) ? false: ($post_data['campaign_no_setting_audio']==1) ? true : false;
 		$campaigndata['campaign_audio_cache']=(!isset($post_data['campaign_audio_cache']) || empty($post_data['campaign_audio_cache'])) ? false: ($post_data['campaign_audio_cache']==1) ? true : false;
@@ -646,28 +636,7 @@ class WPeMatico_functions {
 		$campaigndata['campaign_rmfeaturedimg']=(!isset($post_data['campaign_rmfeaturedimg']) || empty($post_data['campaign_rmfeaturedimg'])) ? false: ($post_data['campaign_rmfeaturedimg']==1) ? true : false;
 		$campaigndata['campaign_customupload']=(!isset($post_data['campaign_customupload']) || empty($post_data['campaign_customupload'])) ? false: ($post_data['campaign_customupload']==1) ? true : false;
 		
-		/**
-		* Compatibility with previous image processing.
-		* @since 1.7.0
-		*/
-		if (version_compare($wpematico_version, '1.6.4', '<=')) {
-			if ($campaigndata['campaign_imgcache']) {
-				$campaigndata['campaign_no_setting_img'] = true;
-			}
-		}
-		$campaign_cancel_imgcache = (!isset($post_data['campaign_cancel_imgcache']) || empty($post_data['campaign_cancel_imgcache'])) ? false: ($post_data['campaign_cancel_imgcache']==1) ? true : false;
-		if ($campaign_cancel_imgcache) {
-			$campaigndata['campaign_no_setting_img'] = true;
-			$campaigndata['campaign_imgcache'] = false;
-			$campaigndata['campaign_attach_img'] = false;
-			$campaigndata['campaign_featuredimg'] = false;
-			$campaigndata['campaign_rmfeaturedimg'] = false;
-			$campaigndata['campaign_customupload'] = false;
-			if ($campaigndata['campaign_nolinkimg']) {
-				$campaigndata['campaign_imgcache'] = true;
-			}
-		}
-		/* End Compatibility */
+		
 
 		if (!$campaigndata['campaign_imgcache']) {
 			$campaigndata['campaign_attach_img'] = false;

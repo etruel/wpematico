@@ -91,7 +91,7 @@ function wpematico_install( $update_campaigns = false ){
 		if ( ! has_filter( 'wpematico_check_campaigndata' ) ) {
 			add_filter( 'wpematico_check_campaigndata', array('WPeMatico','check_campaigndata'), 10, 1);
 		}
-		
+		add_filter( 'wpematico_check_campaigndata', 'wpematico_campaign_compatibilty_after', 11, 1);
 		$campaigns = get_posts( $args );
 		foreach( $campaigns as $post ):
 			$campaigndata = WPeMatico::get_campaign( $post->ID );	
@@ -102,6 +102,46 @@ function wpematico_install( $update_campaigns = false ){
 	// Add the transient to redirect 
 	set_transient( '_wpematico_activation_redirect', true, 120 ); // After two minutes lost welcome screen
 
+}
+/**
+* This function will be hooked after @check_campaigndata and only on install or update of wpematico .
+* @param $campaigndata an array with all campaign data.
+* @return $campaigndata an array with filtered campaign data to compatibility.
+* @since 1.9.0
+*/
+function wpematico_campaign_compatibilty_after($campaigndata) {
+	$wpematico_version = get_option( 'wpematico_db_version' );	
+	/**
+	* Compatibility with enable convert to UTF-8
+	* @since 1.9.0
+	*/
+	if (version_compare($wpematico_version, '1.9', '<')) {
+		$campaigndata['campaign_enable_convert_utf8'] = true;
+	}
+
+	/**
+	* Compatibility with previous image processing.
+	* @since 1.7.0
+	*/
+	if (version_compare($wpematico_version, '1.6.4', '<=')) {
+		if ($campaigndata['campaign_imgcache']) {
+			$campaigndata['campaign_no_setting_img'] = true;
+		}
+	}
+	$campaign_cancel_imgcache = (!isset($post_data['campaign_cancel_imgcache']) || empty($post_data['campaign_cancel_imgcache'])) ? false: ($post_data['campaign_cancel_imgcache']==1) ? true : false;
+	if ($campaign_cancel_imgcache) {
+		$campaigndata['campaign_no_setting_img'] = true;
+		$campaigndata['campaign_imgcache'] = false;
+		$campaigndata['campaign_attach_img'] = false;
+		$campaigndata['campaign_featuredimg'] = false;
+		$campaigndata['campaign_rmfeaturedimg'] = false;
+		$campaigndata['campaign_customupload'] = false;
+		if ($campaigndata['campaign_nolinkimg']) {
+			$campaigndata['campaign_imgcache'] = true;
+		}
+	}
+	
+	return $campaigndata;
 }
 
 /**
