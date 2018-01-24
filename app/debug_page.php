@@ -137,7 +137,133 @@ function wpematico_FriendlyErrorType($type)
 function wpematico_settings_section_debug_file() {   
 ?>
 <div class="wrap">
-	
+		<div id="poststuff">
+			<div id="post-body" class="metabox-holder columns-<?php echo 1 == get_current_screen()->get_columns() ? '1' : '2'; ?>">
+				<div id="postbox-container-1" class="postbox-container">
+					<div id="side-sortables" class="meta-box-sortables ui-sortable">
+						<div id="wpem-about" class="postbox">
+							<button type="button" class="handlediv button-link" aria-expanded="true">
+								<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
+								<span class="toggle-indicator" aria-hidden="true"></span>
+							</button>
+							<h2 class="hndle"><?php _e('About', 'wpematico'); ?></h2>
+							<div class="inside">
+								<p><b>WPeMatico</b> <?php echo WPEMATICO_VERSION; ?> Version</p>
+								<p class="icon_version">
+									<a href="http://www.wpematico.com" target="_Blank" title="<?php _e('Go to the new WPeMatico WebSite', 'wpematico'); ?>">
+										<img class="logover" src="<?php echo WPeMatico :: $uri; ?>/images/icon-512x512.jpg" title="">	
+										<span id="wpematico-website">WPeMatico Website</span><br>
+									</a><span id="wpematico-websiteinfo"><?php _e('Comments & Tutorials', 'wpematico'); ?></span>
+								</p>
+								<p class="icon_version">
+									<a href="https://etruel.com" target="_Blank" title="<?php _e('WPeMatico Addons in etruel.com store', 'wpematico'); ?>">
+										<img class="logover" src="<?php echo WPeMatico :: $uri; ?>/images/etruelcom_ico.png" title="">	
+										<span id="wpematico-etruel">etruel.com</span><br>
+									</a><span id="wpematico-store"><?php _e('Addons store, FAQs & Support', 'wpematico'); ?></span>
+								</p>
+								<p><?php _e('Thanks for use & test this plugin.', 'wpematico'); ?></p>
+								<p></p>
+								<p><?php _e('If you like this plugin, you can write a 5 star review on Wordpress.', 'wpematico'); ?></p>
+								<style type="text/css">#linkrate:before { content: "\2605\2605\2605\2605\2605";font-size: 18px;}
+									#linkrate { font-size: 18px;}</style>
+								<p style="text-align: center;">
+									<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" id="linkrate" class="button" target="_Blank" title="Click here to rate plugin on Wordpress">  Rate </a>
+								</p>
+								<p></p>
+								<p style="text-align: center;">
+									<input type="button" class="button-primary" name="buypro" value="<?php _e('Buy PRO version online', 'wpematico'); ?>" onclick="javascript:window.open('https://etruel.com/downloads/wpematico-pro/');return false;"/>
+								</p>
+								<p></p>
+							</div>
+						</div>
+
+						<div id="promo-extended" class="postbox " >
+							<button type="button" class="handlediv" aria-expanded="true"><span class="screen-reader-text">Toggle panel: Starter Packages</span><span class="toggle-indicator" aria-hidden="true"></span></button>
+							<h2 class='hndle'><span>Starter Bundled Extensions</span></h2>
+							<div class="inside">
+								<div class="sidebar-promo worker" id="sidebar-promo">
+
+									<h3><span class="dashicons dashicons-welcome-learn-more" style="font-size-adjust: 1;width: 50px;"></span><?php _e('Extended functionalities', 'wpematico'); ?></h3>
+									<p>
+										<?php
+										echo sprintf(__('Many AddOns makes the %s with the most wanted functionalities.') . '  ', '<a href="https://etruel.com/starter-packages/" target="_blank" rel="noopener"><strong>Starter Packages</strong></a>');
+										?> 
+										<span>
+											<?php _e('Lot of new features with contents, images, tags, filters, custom fields, custom feed tags and much more extends in the WPeMatico free plugin, going further than RSS feed limits and takes you to a new experience.', 'wpematico'); ?>
+										</span>
+									</p>
+									<p style="text-align: center;">
+										<a class="button button-primary" title="Features and prices" href="https://etruel.com/starter-packages/" target="_blank"><?php _e('Starter Packages Page', 'wpematico'); ?></a>
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div id="promo-content" class="postbox">
+							<button type="button" class="handlediv" aria-expanded="true">
+								<span class="screen-reader-text">Toggle panel: Support</span>
+								<span class="toggle-indicator" aria-hidden="true"></span>
+							</button>
+							<h2 class='hndle'><span>Support</span></h2>
+							<div class="inside">
+								<div class="sidebar-promo" id="sidebar-promo">
+									<h3><span class="dashicons dashicons-sos" style="font-size-adjust: 1;width: 50px;"></span><?php _e('Have some questions?', 'wpematico'); ?></h3>
+									<p>
+										<?php _e('You may find answers in our', 'wpematico'); ?> <a target="_blank" href="https://etruel.com/faqs/">FAQ</a><br><?php _e('You may', 'wpematico'); ?> <a target="_blank" href="https://etruel.com/my-account/support/"><?php _e('contact us', 'wpematico'); ?></a> <?php _e('with customization requests and suggestions.', 'wpematico'); ?><br> 
+										<?php _e('Please visit our website to learn about our free and premium services at', 'wpematico'); ?> <a href="https://etruel.com/downloads/premium-support/" target="_blank" title="etruel.com">etruel.com</a>
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div id="promo-translate" class="postbox " >
+							<button type="button" class="handlediv" aria-expanded="true">
+								<span class="screen-reader-text">Toggle panel: Translation</span>
+								<span class="toggle-indicator" aria-hidden="true"></span>
+							</button>
+							<h2 class='hndle'><span>Translation</span></h2>
+							<div class="inside">
+								<div class="sidebar-promo" id="sidebar-translate">
+									<h3 class="translate"><span class="dashicons dashicons-translation" style="font-size-adjust: 1;width: 50px;"></span><?php _e('Translation friendly', 'wpematico'); ?></h3>
+									<p><?php _e('Want to improve the texts or translate the plugin to your native language?', 'wpematico'); ?></p>
+									<label style="text-align: center;font-weight: bold;margin: 10px;" onclick="jQuery('#howtranslate').toggle();">Show / Hide steps</label>
+									<ol id="howtranslate" style="display: none;">
+										Download <a href="https://poedit.net/wordpress" target="_blank" title="See the docs">Poedit</a>.<br />
+										Download <a href="https://downloads.wordpress.org/plugin/wpematico.zip" target="_blank" title="Get it from wp.org">WPeMatico</a>.<br />
+										<li>Launch Poedit.</li>
+										<li>Edit a translation using existing .po file in lang folder.
+											In case if you find errors in existing translations.</li>
+										<li>Create new translation to translate into new language.</li>
+									</ol>
+								</div>
+							</div>
+						</div>
+
+						<div class="postbox">
+							<h2 class="handle"><?php _e('ShortPixel', 'wpematico'); ?></h2>
+							<div class="inside" id="sp_content">
+								<?php _e('Join to ShortPixel and optimize your images without compromising on quality.', 'wpematico'); ?>
+								<div style="text-align: center;">
+									<img src="https://shortpixel.com/img/logo.png">
+									<br />
+									<a class="button" target="_blank" href="https://shortpixel.com/h/af/QMVAHE4246413"><?php _e('Get ShortPixel API Key', 'wpematico'); ?></a>
+								</div>
+							</div>
+						</div>
+
+						<div class="postbox">
+							<h2 class="handle"><?php _e('The Perfect Package', 'wpematico'); ?></h2>
+							<div class="inside">
+								<p id="left1" onmouseover="jQuery(this).css('opacity',0.9);this.style.backgroundColor='#111'" onmouseout="jQuery(this).css('opacity',0.5);this.style.backgroundColor='#fff'" style="text-align:center;opacity: 0.5;border-radius: 14px 14px 0 0;"><a href="https://etruel.com/downloads/wpematico-perfect-package/" target="_Blank" title="Go to etruel WebSite"><img style="width: 100%;" src="https://etruel.com/wp-content/uploads/edd/2016/09/wpematico_package_1024x512-300x150.png" title=""></a><br />
+									WPeMatico The Perfect Package</p>
+							</div>
+						</div>
+						
+					</div>		<!-- #side-sortables -->
+				</div>		<!--  postbox-container-1 -->		
+
+	<?php do_action('wpematico_system_status_page_before'); ?>
+	<div id="postbox-container-2" class="postbox-container">
 	<table class="widefat wpematico-system-status-debug" cellspacing="0">
 		<tbody>
 			<tr>
@@ -180,6 +306,10 @@ function wpematico_settings_section_debug_file() {
 	
 	<p></p>
 	<?php wpematico_show_data_info(); 	?>
+	</div>		<!--  postbox-container-2 -->
+		</div> <!-- #post-body -->
+	</div> <!-- #poststuff -->
+
 </div>
 <?php 
 }
