@@ -229,7 +229,7 @@ $helpcampaign = array(
 				'plustip' => '<b>'. __('Example:', 'wpematico' ). '</b><br />'.
 					__('If the post content contain the word "motor" and then you want assign the post to category "Engines", simply type "motor" in the "Word" field, and select "Engine" in Categories combo.', 'wpematico' ) . '<br />' .
 				'<b>'. __('Regular Expressions', 'wpematico' ) . '</b><br />' .
-				__('For advanced users, regular expressions are supported. Using this will allow you to make more powerful replacements. Take multiple word replacements for example. Instead of using many Word2Cat boxes to assign motor and car to Engines, you can use the | operator: (motor|car). If you want Case insensitive on RegEx, add "/i" at the end of RegEx.', 'wpematico' )
+				__('For advanced users, regular expressions are supported. Using this will allow you to make more powerful replacements. Take multiple word replacements for example. Instead of using many Word2Cat boxes to assign motor and car to Engines, you can use the | operator: (motor|car), also the field accepts regular expressions without parameters, you should not indicate multiline or line breaks because by default use the entire text field. If you want Case insensitive on RegEx, you must check the "Case sensitive" checkbox below.', 'wpematico' )
 		),			
 	),
 	'Rewrite options' => array( 

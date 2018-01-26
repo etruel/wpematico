@@ -269,6 +269,7 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 * Added error message when fail the run of campaign.
 * Added 'convert character encoding to UTF-8' feature.
 * Some tweaks in back-compatibility of campaigns.
+* Some tweaks in helps of campaign.
 
 = 1.8.5 Dec 4, 2017 =
 * Added 'Start Campaigns' and 'Stop Campaigns' on the bulk actions of Campaigns list.
