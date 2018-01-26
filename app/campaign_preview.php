@@ -216,7 +216,7 @@ class wpematico_campaign_preview {
 			wp_no_robots();
 		}
 		?>
-		<title><?php esc_html_e('WPeMatico Preview Feed', 'wpematico'); ?></title>
+		<title><?php _e('WPeMatico Preview Feed', 'wpematico'); ?></title>
 		<?php
 			if ( 'rtl' == $text_direction ) {
 				echo '<style type="text/css"> body { font-family: Tahoma, Arial; } </style>';
@@ -228,9 +228,7 @@ class wpematico_campaign_preview {
 		?>
 	</head>
 	<body>
-
 	<?php endif; // ! did_action( 'admin_head' ) ?>
-
 	<?php 
 		
 		
@@ -253,9 +251,9 @@ class wpematico_campaign_preview {
 				  			<th id="cb" class="check-column">
 				  				
 				  			</th>
-				  			<th><?php esc_html_e('Post', 'wpematico'); ?></th>
-				  			<th><?php esc_html_e('Status', 'wpematico'); ?></th>
-				  			<th><?php esc_html_e('Actions', 'wpematico'); ?></th>
+				  			<th><?php _e('Post', 'wpematico'); ?></th>
+				  			<th><?php _e('Status', 'wpematico'); ?></th>
+				  			<th><?php _e('Actions', 'wpematico'); ?></th>
 				  		</tr>
 				  	</thead>
 				  	<tbody>
@@ -265,7 +263,7 @@ class wpematico_campaign_preview {
 				  				
 				  				
 				  				$description = $item->get_description(); 
-				  				$description = wpematico_convert_to_utf8($description);
+				  				$description = WPeMatico::change_to_utf8($description);
 				  				$description = strip_tags($description);
 				  				if (strlen($description) > 303) {
 				  					$description = mb_substr($description, 0, 300);
@@ -273,7 +271,7 @@ class wpematico_campaign_preview {
 				  				}
 
 				  				$title = $item->get_title();
-				  				$title = wpematico_convert_to_utf8($title);
+				  				$title = WPeMatico::change_to_utf8($title);
 				  				$title = strip_tags($title);
 				  				if (strlen($title) > 103) {
 				  					$title = mb_substr($title, 0, 100);

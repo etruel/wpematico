@@ -284,7 +284,7 @@ class wpematico_campaign_preview_item {
 			wp_no_robots();
 		}
 		?>
-		<title><?php esc_html_e('WPeMatico Preview Feed', 'wpematico'); ?></title>
+		<title><?php _e('WPeMatico Preview Feed', 'wpematico'); ?></title>
 		<?php
 			if ( 'rtl' == $text_direction ) {
 				echo '<style type="text/css"> body { font-family: Tahoma, Arial; } </style>';
