@@ -205,4 +205,5 @@ a:focus {
     border: 1px solid #AAA;
     background: linear-gradient(to bottom, #fcfcfc 20%, #adadad 100%);
     border-radius: 2px;
+    cursor: pointer;
 }

@@ -47,7 +47,22 @@ class wpematico_campaign_preview {
 			)
 		);
 	}
-
+	/**
+	* Static function get_item_hash
+	* @access public
+	* @param $item Object SimplePie Item.
+	* @return $hash a item hash id.
+	* @since 1.9.0
+	*/
+	public static function get_item_hash($item) {
+		$permalink = $item->get_permalink();
+		if (!empty($permalink)) {
+			$hash = md5($permalink);
+		} else {
+			$hash = md5($item->get_title());
+		}
+		return $hash;
+	}
 	/**
 	* Static function get_feeds_items_statues
 	* @access public
@@ -82,6 +97,8 @@ class wpematico_campaign_preview {
 				$lasthash[$feed] = md5($item->get_permalink()); 
 				$prime = false;
 			}
+			$item_hash = self::get_item_hash($item);
+			
 
 			$currenthash[$feed] = md5($item->get_permalink()); 
 			if( !$breaked && (!self::$cfg['allowduplicates'] || !self::$cfg['allowduptitle'] || !self::$cfg['allowduphash']  || self::$cfg['add_extra_duplicate_filter_meta_source']) ){
@@ -94,7 +111,7 @@ class wpematico_campaign_preview {
 					$dupi = ( $campaign[$feed]['lasthash'] == $currenthash[$feed] ) || 
 								( $hashvalue == $currenthash[$feed] ); 
 					if ($dupi) {
-						$posts_fetched[md5($item->get_permalink())] = true;
+						$posts_fetched[$item_hash] = true;
 						trigger_error(sprintf(__('Found duplicated hash \'%1s\'', 'wpematico' ),$item->get_permalink()).': '.$currenthash[$feed] ,E_USER_NOTICE);
 						if( !self::$cfg['jumpduplicates'] ) {
 							trigger_error(__('Filtering duplicated posts.', 'wpematico' ),E_USER_NOTICE);
@@ -108,7 +125,7 @@ class wpematico_campaign_preview {
 				}
 				if( !self::$cfg['allowduptitle'] ){
 					if(WPeMatico::is_duplicated_item($campaign, $feed, $item)) {
-						$posts_fetched[md5($item->get_permalink())] = true;
+						$posts_fetched[$item_hash] = true;
 						trigger_error(sprintf(__('Found duplicated title \'%1s\'', 'wpematico' ),$item->get_title()).': '.$currenthash[$feed] ,E_USER_NOTICE);
 						if( !self::$cfg['jumpduplicates'] ) {
 							trigger_error(__('Filtering duplicated posts.', 'wpematico' ),E_USER_NOTICE);
@@ -126,11 +143,11 @@ class wpematico_campaign_preview {
 				
 			}
 			if($breaked && WPeMatico::is_duplicated_item($campaign, $feed, $item)) {
-				$posts_fetched[md5($item->get_permalink())] = true;
+				$posts_fetched[$item_hash] = true;
 			} else if ($breaked) {
 				
 			} else {
-				$posts_next[md5($item->get_permalink())] = true;
+				$posts_next[$item_hash] = true;
 			}
 			$count++;	  
 			if($count == $campaign['campaign_max']) {
@@ -178,14 +195,23 @@ class wpematico_campaign_preview {
 			$feed_data = self::get_feeds_items_statues($feed, $campaign);
 			$simplepie = $feed_data['simplepie'];
 			foreach($simplepie->get_items() as $item) {
-				$item_hash = md5($item->get_permalink()); 
+				$item_hash = self::get_item_hash($item);
 				if (!empty($feed_data['next'][$item_hash])) {
 				  	$post_to_show[] = $item;
 				 }
 			}
 		}
-		
-
+		$campaign_customposttype = 'post';
+		$campaign_post_type_name = 'Posts';
+		if (!empty($campaign['campaign_customposttype'])) {
+			$campaign_customposttype = $campaign['campaign_customposttype'];
+		}
+		$obj_posttype = get_post_type_object($campaign_customposttype);
+		if (!empty($obj_posttype)) {
+			if (!empty($obj_posttype->labels->name)) {
+				$campaign_post_type_name = $obj_posttype->labels->name;
+			}
+		}
 		$items_to_show = array();
 
 		$have_gettext = function_exists('__');
@@ -241,7 +267,7 @@ class wpematico_campaign_preview {
 			    <?php wp_nonce_field('wpematico_bulk_actions'); ?> 
 
 				<div class="feed-title">
-					<h2>Campaign Preview</h2>
+					<h2><?php echo get_the_title($campaign_id).': '.sprintf(__('Next Posts(%s)'), $campaign_post_type_name); ?></h2>
 				</div>
 				
 				<div class="table-responsive">
@@ -278,7 +304,7 @@ class wpematico_campaign_preview {
 				  					$title .= '...'; 
 				  				}
 				  				$feed_url =  urlencode($item->get_feed()->feed_url);
-				  				$item_hash = md5($item->get_permalink());
+				  				$item_hash = self::get_item_hash($item);
 				  				$nonce_item = wp_create_nonce('campaign-preview-item-nonce');
 				  				$post_link_preview = admin_url('admin-post.php?action=wpematico_campaign_preview_item&_wpnonce='.$nonce_item.'&campaign='.$campaign_id.'&item_hash='.$item_hash.'&feed='.$feed_url.'&return_url='.$return_url);
 
@@ -299,7 +325,7 @@ class wpematico_campaign_preview {
 						    		<span id="status_item_<?php echo $item_hash; ?>" class="status nextfetch"><?php echo  __('Next fetch', 'wpematico'); ?></span>
 						    	</td>
 						    	<td>
-						    		<button type="button" data-itemhash="<?php echo $item_hash; ?>" data-feed="<?php echo $feed_url; ?>" class="item_fetch cpanelbutton dashicons dashicons-welcome-add-page" title="Run Once"></button>
+						    		<button type="button" data-itemhash="<?php echo $item_hash; ?>" data-feed="<?php echo $feed_url; ?>" class="item_fetch cpanelbutton dashicons dashicons-welcome-add-page" title="<?php esc_attr_e('Fetch Now', 'wpematico'); ?>"></button>
 						    		<?php do_action('wpematico_preview_campaign_item_actions', $item); ?>
 						    	</td>
 						    </tr>

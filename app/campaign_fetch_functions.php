@@ -297,7 +297,12 @@ class wpematico_campaign_fetch_functions {
 		
 		//if is this same host return 
 		$urlInfo = parse_url($permalink);
-		if($urlInfo['host'] == $_SERVER['SERVER_NAME']) return $permalink;
+		if (empty($urlInfo['host'])) {
+			return $permalink;
+		}
+		if($urlInfo['host'] == $_SERVER['SERVER_NAME']) {
+			return $permalink;
+		} 
 		
 		//search for redirections
 		if(!$campaign['avoid_search_redirection']) {
