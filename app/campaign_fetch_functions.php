@@ -657,18 +657,6 @@ class wpematico_campaign_fetch_functions {
 		}
 		return $content;
 	}
-	function get_slug_from_permalink($permalink) {
-		$slug = '';
-		$permalink = trim(parse_url($permalink, PHP_URL_PATH), '/');
-		$pieces = explode('/', $permalink);
-		while (empty($slug) && count($pieces) > 0) {
-			$slug = array_pop($pieces);
-		}
-		if (empty($slug)) {
-			$slug = str_replace('/', '-', $permalink);
-		}
-		return $slug;
-	}
 	
 	/**
    	* Filters audios, upload and replace on text item content

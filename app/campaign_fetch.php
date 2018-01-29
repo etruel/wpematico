@@ -406,7 +406,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			$content = '';
 		}
 		if ($this->campaign['copy_permanlink_source']) {
-			$slug = $this->get_slug_from_permalink($item->get_permalink());
+			$slug = WPeMatico::get_slug_from_permalink($item->get_permalink());
 		} else {
 			$slug = sanitize_title($title);
 		}

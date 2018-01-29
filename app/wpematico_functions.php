@@ -37,7 +37,7 @@ class WPeMatico_functions {
 		$title = html_entity_decode($title, ENT_QUOTES | ENT_HTML401, 'UTF-8');
 		if ($campaign['copy_permanlink_source']) {
 			$permalink = $item->get_permalink(); 
-			$slug = $this->get_slug_from_permalink($permalink);
+			$slug = self::get_slug_from_permalink($permalink);
 		} else {
 			$slug = sanitize_title($title);
 		}
@@ -1008,7 +1008,18 @@ class WPeMatico_functions {
 		}
 		return 0;
 	}
-
+	public static function get_slug_from_permalink($permalink) {
+		$slug = '';
+		$permalink = trim(parse_url($permalink, PHP_URL_PATH), '/');
+		$pieces = explode('/', $permalink);
+		while (empty($slug) && count($pieces) > 0) {
+			$slug = array_pop($pieces);
+		}
+		if (empty($slug)) {
+			$slug = str_replace('/', '-', $permalink);
+		}
+		return $slug;
+	}
 	public static function array_sort(&$array) {
 		if(!$array) return false;
 		$keys=func_get_args();
