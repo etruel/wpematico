@@ -47,6 +47,7 @@ If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/
 ### [Add-ons](https://etruel.com):
 * [Professional Add-on](https://etruel.com/downloads/wpematico-professional/)
 * [FULL Content](https://etruel.com/downloads/wpematico-full-content/)
+* [Manual Fetching](https://etruel.com/downloads/wpematico-manual-fetching/)
 * [Make me Feed "Good"](https://etruel.com/downloads/wpematico-make-feed-good/)
 * [Facebook Fetcher](https://etruel.com/downloads/wpematico-facebook-fetcher/)
 * [Thumbnail Scratcher](https://etruel.com/downloads/wpematico-thumbnail-scratcher/)
