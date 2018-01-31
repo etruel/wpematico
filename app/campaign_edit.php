@@ -104,7 +104,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
   	public static function admin_styles(){
 		global $post;
 		if($post->post_type != 'wpematico') return $post->ID;
-		wp_enqueue_style('campaigns-edit',WPeMatico :: $uri .'app/css/campaigns_edit.css');	
+		//wp_enqueue_style('campaigns-edit',WPeMatico :: $uri .'app/css/campaigns_edit.css');	
 		wp_enqueue_style( 'WPematStylesheet' );
 		add_action('admin_head', array( __CLASS__ ,'campaigns_admin_head_style'));
 	}

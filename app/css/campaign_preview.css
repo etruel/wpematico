@@ -49,14 +49,10 @@ p.description, p.help, span.description {
 	background: #fff;
 	color: #444;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-	margin: 2em auto;
-	padding: 1em 2em;
-	/*min-width: 700px;*/
+	padding: 1em;
 	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.13);
 	box-shadow: 0 1px 3px rgba(0,0,0,0.13);
-	margin-top: 20px;
-	margin-left: 60px;
-	margin-right: 60px;
+	margin: 25px 25px 0;
 }
 
 #preview-page p {
@@ -209,7 +205,6 @@ table {
 .table-preview {
 	border-spacing: 0;
     width: 100%;
-    min-width: 800px;
     max-width: 100%;
 }
 .table-preview td a,
@@ -439,10 +434,6 @@ span.status.unpublished{
 	    margin-bottom: 15px;
 	    overflow-y: hidden;
 	    -ms-overflow-style: -ms-autohiding-scrollbar;
-	}
-	#preview-page{
-		margin: 20px 30px;
-		padding: 1em;
 	}
 }
 @media screen and (max-width: 380px){

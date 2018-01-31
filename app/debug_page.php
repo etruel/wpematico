@@ -6,7 +6,6 @@ if ( !defined('ABSPATH') ) {
 	exit();
 }
 
-
 /**
 * Retrieve tools sections
 * @since       1.2.4
@@ -20,7 +19,6 @@ function wpematico_get_debug_sections() {
 
 	return $sections;
 }
-
 
 function wpematico_debug_print_sections () {
 	global $pagenow, $wp_roles, $current_user;			
@@ -178,6 +176,7 @@ function wpematico_settings_section_debug_file() {
 						</div>
 
 						<div id="promo-extended" class="postbox " >
+							<div class="ribbon"><span>HOT SALES</span></div>
 							<button type="button" class="handlediv" aria-expanded="true"><span class="screen-reader-text">Toggle panel: Starter Packages</span><span class="toggle-indicator" aria-hidden="true"></span></button>
 							<h2 class='hndle'><span>Starter Bundled Extensions</span></h2>
 							<div class="inside">

@@ -181,7 +181,7 @@ function wpematico_settings(){
 						</div>
 
 						<div id="wpem-advanced-actions" class="postbox">
-							<h2 class="handle"><?php _e('Advanced Actions', 'wpematico'); ?></h2>
+							<h2 style="background-color: yellow;" class="handle"><span class="dashicons dashicons-admin-settings"></span> <?php _e('Advanced Actions', 'wpematico'); ?></h2>
 							<div class="inside">
 								<p></p>
 								<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disablecheckfeeds'], true); ?> name="disablecheckfeeds" id="disablecheckfeeds" /> <?php _e('Disable <b><i>Check Feeds before Save</i></b>', 'wpematico'); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disablecheckfeeds']; ?>"></span>
@@ -207,7 +207,7 @@ function wpematico_settings(){
 								<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
 								<span class="toggle-indicator" aria-hidden="true"></span>
 							</button>
-							<h2 class="handle"><?php _e('Sending e-Mails', 'wpematico'); ?></h2>
+							<h2 class="handle"><span class="dashicons dashicons-email-alt"></span> <?php _e('Sending e-Mails', 'wpematico'); ?></h2>
 							<div class="inside">
 								<label><b><?php _e('Sender Email:', 'wpematico'); ?></b><br /><input name="mailsndemail" id="mailsndemail" type="text" value="<?php echo $cfg['mailsndemail']; ?>" class="large-text" /><span id="mailmsg"></span></label>
 								<label><b><?php _e('Sender Name:', 'wpematico'); ?></b><br /><input name="mailsndname" type="text" value="<?php echo $cfg['mailsndname']; ?>" class="large-text" /></label>
@@ -217,21 +217,23 @@ function wpematico_settings(){
 						</div>
 
 						<div id="promo-extended" class="postbox " >
+							<div class="ribbon"><span>HOT SALES</span></div>
 							<button type="button" class="handlediv" aria-expanded="true"><span class="screen-reader-text">Toggle panel: Pro version</span><span class="toggle-indicator" aria-hidden="true"></span></button>
-							<h2 class='hndle'><span>PRO Bundled Extension</span></h2>
+							<h2 class='hndle'><span>Starter Bundled Extensions</span></h2>
 							<div class="inside">
 								<div class="sidebar-promo worker" id="sidebar-promo">
-
 									<h3><span class="dashicons dashicons-welcome-learn-more" style="font-size-adjust: 1;width: 50px;"></span><?php _e('Extended functionalities', 'wpematico'); ?></h3>
 									<p>
 										<?php
-										echo sprintf(__('%s plus %s AddOns makes the %s bundled package with the most wanted functionalities.') . '  ', '<strong>Professional</strong>', '<strong>Full Content</strong>', '<a href="https://etruel.com/downloads/wpematico-pro/" target="_blank" rel="noopener"><strong>PRO</strong></a>');
+										echo sprintf(__('Many AddOns makes the %s with the most wanted functionalities.') . '  ', '<a href="https://etruel.com/starter-packages/" target="_blank" rel="noopener"><strong>Starter Packages</strong></a>');
 										?> 
 										<span>
 											<?php _e('Lot of new features with contents, images, tags, filters, custom fields, custom feed tags and much more extends in the WPeMatico free plugin, going further than RSS feed limits and takes you to a new experience.', 'wpematico'); ?>
 										</span>
 									</p>
-									<a class="button button-primary" title="Features and prices" href="https://etruel.com/downloads/wpematico-pro/" target="_blank"><?php _e('WPeMatico PRO Page', 'wpematico'); ?></a>
+									<p style="text-align: center;">
+										<a class="button button-primary" title="Features and prices" href="https://etruel.com/starter-packages/" target="_blank"><?php _e('Starter Packages Page', 'wpematico'); ?></a>
+									</p>
 								</div>
 							</div>
 						</div>
@@ -311,7 +313,7 @@ function wpematico_settings(){
 								<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
 								<span class="toggle-indicator" aria-hidden="true"></span>
 							</button>
-							<h3 class="hndle"><span><?php _e('Global Settings for Images', 'wpematico'); ?></span></h3>
+							<h3 class="hndle"><span class="dashicons dashicons-format-image"></span> <span><?php _e('Global Settings for Images', 'wpematico'); ?></span></h3>
 							<div class="inside">
 								<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['imgcache'], true); ?> name="imgcache" id="imgcache" />&nbsp;<b><label for="imgcache"><?php _e('Cache Images.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['imgcache']; ?>"></span>
 								<div id="nolinkimg" style="padding-left:20px; <?php if(!$cfg['imgcache']) echo 'display:none;'; ?>">
@@ -339,29 +341,7 @@ function wpematico_settings(){
 								<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
 								<span class="toggle-indicator" aria-hidden="true"></span>
 							</button>
-							<h3 class="hndle"><span><?php _e('Global Settings for Audios', 'wpematico'); ?></span></h3>
-							<div class="inside">
-								<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['audio_cache'], true); ?> name="audio_cache" id="audio_cache" />&nbsp;<b><label for="audio_cache"><?php _e('Cache Audios.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['audio_cache']; ?>"></span>
-								<div id="nolink_audio" style="padding-left:20px; <?php if(!$cfg['audio_cache']) echo 'display:none;'; ?>">
-									<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['audio_attach'], true); ?> name="audio_attach" id="audio_attach" /><b>&nbsp;<label for="audio_attach"><?php _e('Attach Audios to posts.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['audio_attach']; ?>"></span>
-									<br/>
-									<input name="gralnolink_audio" id="gralnolink_audio" class="checkbox" value="1" type="checkbox" <?php checked($cfg['gralnolink_audio'], true); ?> /><label for="gralnolink_audio"><?php _e('No link to source audios', 'wpematico'); ?></label><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['gralnolink_audio']; ?>"></span>
-								</div>
-								<p></p>
-								<div id="custom_uploads_audios" style="<?php if(!$cfg['audio_cache']) echo 'display:none;'; ?>">
-									<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['customupload_audios'], true); ?> name="customupload_audios" id="customupload_audios" /><b>&nbsp;<label for="customupload_audios"><?php _e('Custom function for uploads.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['customupload_audios']; ?>"></span>
-									<br/>
-								</div>
-								<?php do_action('wpematico_settings_audios', $cfg); ?>
-							</div>
-						</div>
-
-						<div id="imgs" class="postbox">
-							<button type="button" class="handlediv button-link" aria-expanded="true">
-								<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
-								<span class="toggle-indicator" aria-hidden="true"></span>
-							</button>
-							<h3 class="hndle"><span><?php _e('Global Settings for Videos', 'wpematico'); ?></span></h3>
+							<h3 class="hndle"><span class="dashicons dashicons-format-video"></span> <span><?php _e('Global Settings for Videos', 'wpematico'); ?></span></h3>
 							<div class="inside">
 								<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['video_cache'], true); ?> name="video_cache" id="video_cache" />&nbsp;<b><label for="video_cache"><?php _e('Cache Videos.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['video_cache']; ?>"></span>
 								<div id="nolink_video" style="padding-left:20px; <?php if(!$cfg['video_cache']) echo 'display:none;'; ?>">
@@ -378,12 +358,34 @@ function wpematico_settings(){
 							</div>
 						</div>
 
+						<div id="imgs" class="postbox">
+							<button type="button" class="handlediv button-link" aria-expanded="true">
+								<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
+								<span class="toggle-indicator" aria-hidden="true"></span>
+							</button>
+							<h3 class="hndle"><span class="dashicons dashicons-format-audio"></span> <span><?php _e('Global Settings for Audios', 'wpematico'); ?></span></h3>
+							<div class="inside">
+								<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['audio_cache'], true); ?> name="audio_cache" id="audio_cache" />&nbsp;<b><label for="audio_cache"><?php _e('Cache Audios.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['audio_cache']; ?>"></span>
+								<div id="nolink_audio" style="padding-left:20px; <?php if(!$cfg['audio_cache']) echo 'display:none;'; ?>">
+									<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['audio_attach'], true); ?> name="audio_attach" id="audio_attach" /><b>&nbsp;<label for="audio_attach"><?php _e('Attach Audios to posts.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['audio_attach']; ?>"></span>
+									<br/>
+									<input name="gralnolink_audio" id="gralnolink_audio" class="checkbox" value="1" type="checkbox" <?php checked($cfg['gralnolink_audio'], true); ?> /><label for="gralnolink_audio"><?php _e('No link to source audios', 'wpematico'); ?></label><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['gralnolink_audio']; ?>"></span>
+								</div>
+								<p></p>
+								<div id="custom_uploads_audios" style="<?php if(!$cfg['audio_cache']) echo 'display:none;'; ?>">
+									<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['customupload_audios'], true); ?> name="customupload_audios" id="customupload_audios" /><b>&nbsp;<label for="customupload_audios"><?php _e('Custom function for uploads.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['customupload_audios']; ?>"></span>
+									<br/>
+								</div>
+								<?php do_action('wpematico_settings_audios', $cfg); ?>
+							</div>
+						</div>
+
 						<div id="enablefeatures" class="postbox">
 							<button type="button" class="handlediv button-link" aria-expanded="true">
 								<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
 								<span class="toggle-indicator" aria-hidden="true"></span>
 							</button>
-							<h3 class="hndle"><span><?php _e('Enable Features', 'wpematico'); ?></span><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablefeatures']; ?>"></span></h3>
+							<h3 class="hndle"><span><span class="dashicons dashicons-admin-settings"></span> <?php _e('Enable Features', 'wpematico'); ?></span><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablefeatures']; ?>"></span></h3>
 							<div class="inside"> 
 								<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enablerewrite'], true); ?> name="enablerewrite" id="enablerewrite" /> <label for="enablerewrite"><?php _e('Enable <b><i>Rewrite</i></b> feature', 'wpematico'); ?></label>
 								<span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablerewrite']; ?>"></span>
@@ -445,7 +447,7 @@ function wpematico_settings(){
 								<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
 								<span class="toggle-indicator" aria-hidden="true"></span>
 							</button>
-							<h3 class="hndle"><span><?php _e('Advanced Fetching', 'wpematico'); ?> <?php _e('(SimplePie Settings)', 'wpematico'); ?></span></h3>
+							<h3 class="hndle"><span class="dashicons dashicons-chart-pie"></span> <span><?php _e('Advanced Fetching', 'wpematico'); ?> <?php _e('(SimplePie Settings)', 'wpematico'); ?></span></h3>
 							<div class="inside">
 								<p><b><?php _e('Test if SimplePie library works well on your server:', 'wpematico'); ?></b>
 									<a onclick="javascript:window.open(
@@ -508,7 +510,7 @@ function wpematico_settings(){
 								<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
 								<span class="toggle-indicator" aria-hidden="true"></span>
 							</button>
-							<h3 class="hndle"><span><?php _e('Advanced Fetching', 'wpematico'); ?></span></h3>
+							<h3 class="hndle"><span class="dashicons dashicons-admin-tools"></span> <span><?php _e('Advanced Fetching', 'wpematico'); ?></span></h3>
 							<div class="inside">
 								<p></p>
 								<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['woutfilter'], true); ?> name="woutfilter" id="woutfilter" /> <?php _e('<b><i>Allow option on campaign to skip the content filters</i></b>', 'wpematico'); ?><br />
@@ -552,7 +554,7 @@ function wpematico_settings(){
 								<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
 								<span class="toggle-indicator" aria-hidden="true"></span>
 							</button>
-							<h3 class="hndle"><span><?php _e('Cron and Scheduler Settings', 'wpematico'); ?></span></h3>
+							<h3 class="hndle"><span class="dashicons dashicons-clock"></span> <span><?php _e('Cron and Scheduler Settings', 'wpematico'); ?></span></h3>
 							<div class="inside">
 								<?php  // More details on https://wp-mix.com/wordpress-cron-not-working/   	?>
 								<label><input class="checkbox" id="enable_alternate_wp_cron" type="checkbox"<?php checked($cfg['enable_alternate_wp_cron'], true); ?> name="enable_alternate_wp_cron" value="1"/> 
@@ -606,7 +608,7 @@ function wpematico_settings(){
 								<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
 								<span class="toggle-indicator" aria-hidden="true"></span>
 							</button>
-							<h3 class="hndle"><span><?php _e('Other Tools', 'wpematico'); ?></span></h3>
+							<h3 class="hndle"><span class="dashicons dashicons-hammer"></span> <span><?php _e('Other Tools', 'wpematico'); ?></span></h3>
 
 							<div class="inside">
 								<p>

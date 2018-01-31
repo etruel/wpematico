@@ -72,6 +72,15 @@ You can submit any bug in the [bugtracker](https://bitbucket.org/etruel/wpematic
 
 ---
 
+> #### **[Manual Fetching](https://etruel.com/downloads/wpematico-manual-fetching/):**
+> Manual Fetching is the perfect complement for the Campaign Preview feature of WPeMatico. 
+> Extends its functionality to every feed individually and allows you to review and insert each item, one by one or in bulk mode with just a click in a button.
+> You’ll see the items that will be extracted but already parsed like will be published as posts with their images, audio and even videos.
+
+> * [Take a look to all its features by clicking here](https://etruel.com/downloads/wpematico-manual-fetching/)
+
+---
+
 > #### **[Polyglot](https://etruel.com/downloads/wpematico-polyglot/):**
 > Polyglot lets you translate the posts obtained from remote feeds before inserting them in your WordPress blog. 
 > It can work with any other extension and translate after processing the content.
@@ -261,16 +270,16 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
-= 1.9  =
+= 1.9 Jan 31, 2018 =
 * Added campaign preview feature.
-* Added compatibility to use Manual Fetching Addon.
-* Some tweaks and improvement of performance on uploading of files.
-* Added compatibility to use Cookies HTTP from Professional Addon.
-* Added error message when fail the run of campaign.
+* Added compatibility to use the new Manual Fetching Addon.
+* Added error message when fails the run of campaign.
+* Added some improvements of performance on uploading files.
 * Added 'convert character encoding to UTF-8' feature.
-* Some tweaks in back-compatibility of campaigns.
-* Some tweaks in helps of campaign.
-* Fixed issue on 'Copy the permalink from the source' feature.
+* Added compatibility to use Cookies HTTP from Professional Addon.
+* Some tweaks in helps of campaign editing screen.
+* Fixes an issue on 'Copy the permalink from the source' feature.
+* Fixes an issue calling campaigns_edit styles deprecated in previous versions.
 
 = 1.8.5 Dec 4, 2017 =
 * Added 'Start Campaigns' and 'Stop Campaigns' on the bulk actions of Campaigns list.
@@ -1075,7 +1084,7 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 1.8.5 =
-* **Enlarges the version required for the Professional addons to 1.8**
+= 1.9 =
+* **Enlarges the version required for the Professional addons to 1.9**
 * **Recommended to test it in development ambients before update**
 * Many improvements and fixes. See changelog for more details.
