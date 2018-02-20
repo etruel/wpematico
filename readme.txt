@@ -270,6 +270,10 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
+= 1.9.1 =
+* Fixed some PHP notices on campaign edit.
+* Fixed an issue in Error Handler.
+
 = 1.9 Jan 31, 2018 =
 * Added campaign preview feature.
 * Added compatibility to use the new Manual Fetching Addon.

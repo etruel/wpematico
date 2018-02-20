@@ -347,7 +347,8 @@ public static function template_box( $post ) {
 						$tags_on_campaign_edit = apply_filters('wpematico_template_tags_campaign_edit', $tags_array);
 						foreach ($tags_on_campaign_edit as $tag) {
 							echo '<span class="tag">'.$tag.'</span>';
-							$lastEl = array_pop((array_slice($tags_on_campaign_edit, -1)));
+							$array_slice = (array_slice($tags_on_campaign_edit, -1));
+							$lastEl = array_pop($array_slice);
 							if ($tag != $lastEl) {
 								echo ', ';
 							}
