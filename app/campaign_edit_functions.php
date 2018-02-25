@@ -324,7 +324,7 @@ public static function template_box( $post ) {
 			</label>
 			<div id="postemplatearea" style="<?php echo (checked($campaign_enable_template,true))?'':'display:none'; ?>">
 				<textarea class="large-text" id="campaign_template" name="campaign_template" /><?php echo stripslashes($campaign_template) ?></textarea><br/>
-				<span class="description"><?php _e('"{content}" must exist in the template if you want to see the content in your post. Works after the features above.', WPeMatico :: TEXTDOMAIN ); ?></span>
+				<span class="description"><?php _e('"{content}" must exist in the template if you want to see the content in your post. Works after the features above.', 'wpematico' ); ?></span>
 				<p class="he20" id="tags_note" class="note left"><?php _e('Allowed tags', 'wpematico' ); ?>: </p>
 				<p id="tags_list" style="border-left: 3px solid #EEEEEE; color: #999999; font-size: 11px; padding-left: 6px;margin-top: 0;">
 					<?php

@@ -491,6 +491,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 				if($this->current_item['images'][0] != $this->current_item['featured_image']){
 					$itemUrl = $this->current_item['permalink'];
 					$imagen_src = $this->current_item['featured_image'];
+//**** necesaria para la featured ?					$imagen_src = apply_filters('wpematico_imagen_src', $imagen_src ); // allow strip parts 
 					$imagen_src_real = $this->getRelativeUrl($itemUrl, $imagen_src);
 					// Strip all white space on images URLs.	
 					$imagen_src_real = str_replace(' ', '%20', $imagen_src_real);					
@@ -534,7 +535,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 					//	$attachid = $this->get_attach_id_from_url($this->current_item['featured_image']); 
 						$attachid = attachment_url_to_postid($this->current_item['featured_image']); 
 					}
-					if ($attachid = false) {
+					if ($attachid == false) {
 						$attachid = $this->insertfileasattach( $this->current_item['featured_image'] , $post_id);
 					}
 					set_post_thumbnail($post_id, $attachid );					

@@ -426,7 +426,7 @@ class wpematico_licenses_handlers {
 			wp_enqueue_script( 'wpematico-jquery-settings-licenses', WPEMATICO_PLUGIN_URL. 'app/js/licenses_handlers.js', array( 'jquery' ), WPEMATICO_VERSION, true );
 			wp_localize_script('wpematico-jquery-settings-licenses', 'wpematico_license_object',
 				array('ajax_url' => admin_url( 'admin-ajax.php' ),
-					'txt_check_license' => __('Check License', WPeMatico::TEXTDOMAIN),
+					'txt_check_license' => __('Check License', 'wpematico'),
 				)
 			);
 		}
@@ -479,15 +479,15 @@ class wpematico_licenses_handlers {
 			$license_status = self::get_license_status($plugin_name);
 			$status_license_html = '';
 			if ($license_status != false && $license_status == 'valid') {
-				$status_license_html = '<strong>'.__('Status', WPeMatico::TEXTDOMAIN).':</strong> '.__('Valid', WPeMatico::TEXTDOMAIN).'<span class="validcheck"> </span>
+				$status_license_html = '<strong>'.__('Status', 'wpematico').':</strong> '.__('Valid', 'wpematico').'<span class="validcheck"> </span>
 										<br/>
-										<input id="'.$plugin_name.'_btn_license_deactivate" class="btn_license_deactivate button-secondary" name="'.$plugin_name.'_btn_license_deactivate" type="button" value="'.__('Deactivate License', WPeMatico::TEXTDOMAIN).'" style="vertical-align: middle;"/>';
+										<input id="'.$plugin_name.'_btn_license_deactivate" class="btn_license_deactivate button-secondary" name="'.$plugin_name.'_btn_license_deactivate" type="button" value="'.__('Deactivate License', 'wpematico').'" style="vertical-align: middle;"/>';
 			} else if ($license_status === 'invalid' || $license_status === 'expired' || $license_status === 'item_name_mismatch' ) {
-				$status_license_html = '<strong>'.__('Status', WPeMatico::TEXTDOMAIN).':</strong> '.__('Invalid', WPeMatico::TEXTDOMAIN).'<i class="renewcheck"></i>';
+				$status_license_html = '<strong>'.__('Status', 'wpematico').':</strong> '.__('Invalid', 'wpematico').'<i class="renewcheck"></i>';
 			} elseif($license_status === 'inactive' || $license_status === 'deactivated' || $license_status === 'site_inactive' ) {
-				$status_license_html = '<strong>'.__('Status', WPeMatico::TEXTDOMAIN).':</strong> '.__('Inactive', WPeMatico::TEXTDOMAIN).'<i class="warningcheck"></i>
+				$status_license_html = '<strong>'.__('Status', 'wpematico').':</strong> '.__('Inactive', 'wpematico').'<i class="warningcheck"></i>
 				<br/>
-				<input id="'.$plugin_name.'_btn_license_activate" class="btn_license_activate button-secondary" name="'.$plugin_name.'_btn_license_activate" type="button" value="'.__('Activate License', WPeMatico::TEXTDOMAIN).'"/>
+				<input id="'.$plugin_name.'_btn_license_activate" class="btn_license_activate button-secondary" name="'.$plugin_name.'_btn_license_activate" type="button" value="'.__('Activate License', 'wpematico').'"/>
 				';
 			}
 			
@@ -495,16 +495,16 @@ class wpematico_licenses_handlers {
 			$html_addons = '
 			<div class="postbox ">
 			<div class="inside">
-			<h2><span class="dashicons-before dashicons-admin-plugins"></span>'.__($plugin_title_name.' License', WPeMatico::TEXTDOMAIN).'</h2>
+			<h2><span class="dashicons-before dashicons-admin-plugins"></span>'.__($plugin_title_name.' License', 'wpematico').'</h2>
 			<table class="form-table">
 			<tbody>
 				<tr valign="top">
 					<th scope="row" valign="top">
-						'.__('License Key', WPeMatico::TEXTDOMAIN).'
+						'.__('License Key', 'wpematico').'
 					</th>
 					<td>
 						<input id="license_key_'.$plugin_name.'" data-plugin="'.$plugin_name.'" class="regular-text inp_license_key" name="license_key['.$plugin_name.']" type="text" value="'.esc_attr( $license ).'" /><br />
-						<label class="description" for="license_key_'.$plugin_name.'">'.__('Enter your license key', WPeMatico::TEXTDOMAIN).'</label>
+						<label class="description" for="license_key_'.$plugin_name.'">'.__('Enter your license key', 'wpematico').'</label>
 					</td>
 				</tr>';
 				if ($license != false) {
@@ -531,23 +531,23 @@ class wpematico_licenses_handlers {
 							$html_div .= '<small>';
 							if ($license_status !== 'valid' && $activationsLeft === 0) {
 								$accountUrl = 'http://etruel.com/my-account/?action=manage_licenses&payment_id=' . $license_data->payment_id;
-								$html_div .= '<a href="'.$accountUrl.'">'.__("No activations left. Click here to manage the sites you've activated licenses on.", WPeMatico::TEXTDOMAIN).'</a>
+								$html_div .= '<a href="'.$accountUrl.'">'.__("No activations left. Click here to manage the sites you've activated licenses on.", 'wpematico').'</a>
 										<br/>';
 								
 							}
 							if ( strtotime($expires) < strtotime("+2 weeks") ) {
 								$renewalUrl = esc_attr($args['api_url']. '/checkout/?edd_license_key=' . $license); 
-								$html_div .= '<a href="'.$renewalUrl.'">'.__('Renew your license to continue receiving updates and support.', WPeMatico::TEXTDOMAIN).'</a>
+								$html_div .= '<a href="'.$renewalUrl.'">'.__('Renew your license to continue receiving updates and support.', 'wpematico').'</a>
 										<br/>';
 								
 							}
-							$html_div .= '<strong>'.__('Activations', WPeMatico::TEXTDOMAIN).':</strong>
+							$html_div .= '<strong>'.__('Activations', 'wpematico').':</strong>
 										'.$currentActivations.'/'.$activationsLimit.' ('.$activationsLeft.' left)
 									<br/>
-									<strong>'.__('Expires on', WPeMatico::TEXTDOMAIN).':</strong>
+									<strong>'.__('Expires on', 'wpematico').':</strong>
 										<code>'.$expires.'</code>
 									<br/>
-									<strong>'.__('Registered to', WPeMatico::TEXTDOMAIN).':</strong>
+									<strong>'.__('Registered to', 'wpematico').':</strong>
 										'.$license_data->customer_name.' (<code>'.$license_data->customer_email.'</code>)
 								</small>';			
 							
@@ -556,7 +556,7 @@ class wpematico_licenses_handlers {
 								
 					$html_addons .= '<tr id="tr_license_status_'.$plugin_name.'" class="tr_license_status" style="vertical-align: middle;">
 						<th scope="row" style="vertical-align: middle;">
-							'.__('Activated for updates', WPeMatico::TEXTDOMAIN).'
+							'.__('Activated for updates', 'wpematico').'
 						</th>
 						<td id="td_license_status_'.$plugin_name.'">
 						<p>'.$status_license_html.'</p>
@@ -566,11 +566,11 @@ class wpematico_licenses_handlers {
 				} else {
 					$html_addons .= '<tr id="tr_license_status_'.$plugin_name.'" class="tr_license_status" style="vertical-align: middle; display:none;">
 						<th scope="row" style="vertical-align: middle;">
-							'.__('Activated for updates', WPeMatico::TEXTDOMAIN).'
+							'.__('Activated for updates', 'wpematico').'
 						</th>
 						<td id="td_license_status_'.$plugin_name.'">
 							
-							<input id="'.$plugin_name.'_btn_license_check" class="btn_license_check button-secondary" name="'.$plugin_name.'_btn_license_check" type="button" value="'.__('Check License', WPeMatico::TEXTDOMAIN).'"/>
+							<input id="'.$plugin_name.'_btn_license_check" class="btn_license_check button-secondary" name="'.$plugin_name.'_btn_license_check" type="button" value="'.__('Check License', 'wpematico').'"/>
 							<div id="'.$plugin_name.'_ajax_status_license" style="display:none;"></div>
 						</td>
 					</tr>';

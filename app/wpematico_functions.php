@@ -88,7 +88,7 @@ class WPeMatico_functions {
 		//  https://codex.wordpress.org/Function_Reference/get_page_by_title
 	
 		$dupmsg = ($dev) ? __('Yes') : __('No');
-		trigger_error(sprintf(__('Checking duplicated title \'%1s\'', WPeMatico :: TEXTDOMAIN ),$title).': '. $dupmsg ,E_USER_NOTICE);
+		trigger_error(sprintf(__('Checking duplicated title \'%1s\'', 'wpematico' ),$title).': '. $dupmsg ,E_USER_NOTICE);
 
 		return $dev;
 	}
@@ -378,11 +378,11 @@ class WPeMatico_functions {
 		$checks=true;
 		if(!is_admin()) return false;
 		if (version_compare($wp_version, '3.9', '<')) { // check WP Version
-			$message.=__('- WordPress 3.9 or higher needed!', WPeMatico :: TEXTDOMAIN ) . '<br />';
+			$message.=__('- WordPress 3.9 or higher needed!', 'wpematico' ) . '<br />';
 			$checks=false;
 		}
 		if (version_compare(phpversion(), '5.3.0', '<')) { // check PHP Version
-			$message.=__('- PHP 5.3.0 or higher needed!', WPeMatico :: TEXTDOMAIN ) . '<br />';
+			$message.=__('- PHP 5.3.0 or higher needed!', 'wpematico' ) . '<br />';
 			$checks=false;
 		}
 		// Check if PRO version is installed and its required version
@@ -394,9 +394,9 @@ class WPeMatico_functions {
 			$plpath = trailingslashit(WP_PLUGIN_DIR).$active_plugins[$is_pro_active];
 			$proplugin_data = self::plugin_get_version($plpath);
 			if( $proplugin_data['Name'] == 'WPeMatico Professional' && version_compare($proplugin_data['Version'], WPeMatico::PROREQUIRED, '<') ) {
-				$message.= __('You are using WPeMatico Professional too old.', WPeMatico :: TEXTDOMAIN ).'<br />';
-				$message.= __('Must install at least <b>WPeMatico Professional</b> '.WPeMatico::PROREQUIRED, WPeMatico :: TEXTDOMAIN );
-				$message.= ' <a href="'.admin_url('plugins.php?page=wpemaddons').'#wpematico-pro"> '. __('Go to upgrade Now', WPeMatico :: TEXTDOMAIN ). '</a>';
+				$message.= __('You are using WPeMatico Professional too old.', 'wpematico' ).'<br />';
+				$message.= __('Must install at least <b>WPeMatico Professional</b> '.WPeMatico::PROREQUIRED, 'wpematico' );
+				$message.= ' <a href="'.admin_url('plugins.php?page=wpemaddons').'#wpematico-pro"> '. __('Go to upgrade Now', 'wpematico' ). '</a>';
 				$message.= '<script type="text/javascript">jQuery(document).ready(function($){$("#wpematico-pro").css("backgroundColor","yellow");});</script>';
 				//Commented to allow access to the settings page
 				//$checks=false;
@@ -404,7 +404,7 @@ class WPeMatico_functions {
 		}
 
 		if (wp_next_scheduled('wpematico_cron')!=0 and wp_next_scheduled('wpematico_cron')>(time()+360)) {  //check cron jobs work
-			$message.=__("- WP-Cron don't working please check it!", WPeMatico :: TEXTDOMAIN ) .'<br />';
+			$message.=__("- WP-Cron don't working please check it!", 'wpematico' ) .'<br />';
 		}
 		//put massage if one
 		if (!empty($message))
@@ -1252,10 +1252,10 @@ class WPeMatico_functions {
 				if(isset( $response['response']['code'] ) && 200 === $response['response']['code'] ) {
 					$data = wp_remote_retrieve_body( $response );
 				}else{
-					trigger_error(__('Error with wp_remote_request:', WPeMatico :: TEXTDOMAIN ) . print_r($response,1) ,E_USER_NOTICE);
+					trigger_error(__('Error with wp_remote_request:', 'wpematico' ) . print_r($response,1) ,E_USER_NOTICE);
 				}
 			}else{
-				trigger_error(__('Error with wp_remote_get:', WPeMatico :: TEXTDOMAIN ) . $response->get_error_message(),E_USER_NOTICE);
+				trigger_error(__('Error with wp_remote_get:', 'wpematico' ) . $response->get_error_message(),E_USER_NOTICE);
 			}
 		}
 		
@@ -1376,7 +1376,7 @@ function wpematico_is_pro_active() {		// Check if PRO version is installed & act
 add_action( 'wpematico_wp_ratings', 'wpematico_wp_ratings' );
 function wpematico_wp_ratings() {
 ?><div class="postbox">
-	<h3 class="handle"><?php _e( '5 Stars Ratings on Wordpress', WPeMatico :: TEXTDOMAIN );?></h3>
+	<h3 class="handle"><?php _e( '5 Stars Ratings on Wordpress', 'wpematico' );?></h3>
 	<?php if(get_option('wpem_hide_reviews')) : ?>
 	<div class="inside" style="max-height:300px;overflow-x: hidden;">
 		<p style="text-align: center;">

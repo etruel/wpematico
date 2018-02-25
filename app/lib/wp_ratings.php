@@ -30,7 +30,7 @@ print_r( curl_getinfo ( $ch ),1 ); //exit;
 unlink($cookie_jar) /*or die("Can't unlink $cookie_jar")*/;
 
 if (!$html) {
-	echo '<div id="reviews">'.  __('Can\t connect to Wordpress Site', WPeMatico::TEXTDOMAIN ).'</div>';
+	echo '<div id="reviews">'.  __('Can\t connect to Wordpress Site', 'wpematico' ).'</div>';
 	return false;
 }
 

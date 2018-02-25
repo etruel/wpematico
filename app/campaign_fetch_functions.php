@@ -82,13 +82,13 @@ class wpematico_campaign_fetch_functions {
 		}
 		// take out links before apply template (if don't strip before html tags
 		if ($campaign['campaign_strip_links'] && !$campaign['campaign_striphtml'] ){
-			trigger_error(__('Cleaning Links from content.', WPeMatico :: TEXTDOMAIN ),E_USER_NOTICE);
+			trigger_error(__('Cleaning Links from content.', 'wpematico' ),E_USER_NOTICE);
 			$current_item['content'] = $this->strip_links((string)$current_item['content'], $campaign);
 		}
 
 		// Template parse           
 		if ($campaign['campaign_enable_template']){
-			trigger_error('<b>'.__('Parsing Post template.', WPeMatico :: TEXTDOMAIN ).'</b>',E_USER_NOTICE);
+			trigger_error('<b>'.__('Parsing Post template.', 'wpematico' ).'</b>',E_USER_NOTICE);
 			if ( !empty( $current_item['images'][0] ) ) {
 				$img_str = "<img class=\"wpe_imgrss\" src=\"" . $current_item['images'][0] . "\">";  //Solo la imagen
 			}elseif( !empty( $current_item['featured_image'] ) ) {
@@ -202,7 +202,7 @@ class wpematico_campaign_fetch_functions {
 					&& (!empty($campaign['campaign_wrd2cat']['word'][0]) )
 					&& (!empty($campaign['campaign_wrd2cat']['w2ccateg'][0]) )
 				)
-			{	trigger_error(sprintf(__('Processing Words to Category %1s', WPeMatico :: TEXTDOMAIN ), $current_item['title'] ),E_USER_NOTICE);
+			{	trigger_error(sprintf(__('Processing Words to Category %1s', 'wpematico' ), $current_item['title'] ),E_USER_NOTICE);
 				for ($i = 0; $i < count($campaign['campaign_wrd2cat']['word']); $i++) {
 					$foundit = false;
 					$word = stripslashes(htmlspecialchars_decode(@$campaign['campaign_wrd2cat']['word'][$i]));
@@ -230,10 +230,10 @@ class wpematico_campaign_fetch_functions {
 							}
 						}
 						if ($foundit !== false ) {
-							trigger_error(sprintf(__('Found!: word %1s to Cat_id %2s', WPeMatico :: TEXTDOMAIN ),$word,$tocat),E_USER_NOTICE);
+							trigger_error(sprintf(__('Found!: word %1s to Cat_id %2s', 'wpematico' ),$word,$tocat),E_USER_NOTICE);
 							$current_item['categories'][] = $tocat;
 						}else{
-							trigger_error(sprintf(__('Not found word %1s', WPeMatico :: TEXTDOMAIN ),$word),E_USER_NOTICE);
+							trigger_error(sprintf(__('Not found word %1s', 'wpematico' ),$word),E_USER_NOTICE);
 						}
 					}
 				}
@@ -359,7 +359,7 @@ class wpematico_campaign_fetch_functions {
             $itemUrl = $this->current_item['permalink'];
 			
 			if( sizeof($current_item['images']) ) { // Si hay alguna imagen en el contenido
-				trigger_error('<b>'.__('Looking for images in content.', WPeMatico :: TEXTDOMAIN ).'</b>',E_USER_NOTICE);
+				trigger_error('<b>'.__('Looking for images in content.', 'wpematico' ).'</b>',E_USER_NOTICE);
 				//trigger_error(print_r($current_item['images'],true),E_USER_NOTICE);
 				$featured = false; 
 				$img_new_url = array();
@@ -368,7 +368,7 @@ class wpematico_campaign_fetch_functions {
 						$featured = true;  
 					}
 					$imagen_src = apply_filters('wpematico_imagen_src', $imagen_src ); // allow strip parts 
-				    trigger_error(__('Uploading media...', WPeMatico :: TEXTDOMAIN ).$imagen_src,E_USER_NOTICE);
+				    trigger_error(__('Uploading media...', 'wpematico' ).$imagen_src,E_USER_NOTICE);
 					$imagen_src_real = $this->getRelativeUrl($itemUrl, $imagen_src);
 					// Strip all white space on images URLs.	
 					$imagen_src_real = str_replace(' ', '%20', $imagen_src_real);						
@@ -401,17 +401,17 @@ class wpematico_campaign_fetch_functions {
 							} else {  
 								trigger_error('wp_upload_bits error:'.print_r($mirror,true).'.',E_USER_WARNING);
 								// Si no quiere linkar las img al server borro el link de la imagen
-								trigger_error( __('Upload file failed:', WPeMatico :: TEXTDOMAIN ).$imagen_dst,E_USER_WARNING);
+								trigger_error( __('Upload file failed:', 'wpematico' ).$imagen_dst,E_USER_WARNING);
 								if($options_images['gralnolinkimg']) {
-								//	trigger_error( __('Deleted media img.', WPeMatico :: TEXTDOMAIN ),E_USER_WARNING);
+								//	trigger_error( __('Deleted media img.', 'wpematico' ),E_USER_WARNING);
 									$current_item['content'] = self::strip_Image_by_src($imagen_src, $current_item['content']);
 								}
 							}
 						}
 					}else {
-						trigger_error( __('Extension not allowed: ', WPeMatico :: TEXTDOMAIN ). urldecode($imagen_dst_url),E_USER_WARNING);
+						trigger_error( __('Extension not allowed: ', 'wpematico' ). urldecode($imagen_dst_url),E_USER_WARNING);
 						if($options_images['gralnolinkimg']) { // Si no quiere linkar las img al server borro el link de la imagen
-							trigger_error( __('Stripped src.', WPeMatico :: TEXTDOMAIN ),E_USER_WARNING);
+							trigger_error( __('Stripped src.', 'wpematico' ),E_USER_WARNING);
 							$current_item['content'] = self::strip_Image_by_src($imagen_src, $current_item['content']);
 						}
 					}
@@ -422,7 +422,7 @@ class wpematico_campaign_fetch_functions {
 			}  // // Si hay alguna imagen en el contenido
 		}else {
 			if(isset($current_item['images']) && sizeof($current_item['images']) ) { 
-				trigger_error('<b>'.__('Using remotely linked images in content. No changes.', WPeMatico::TEXTDOMAIN ).'</b>', E_USER_NOTICE);
+				trigger_error('<b>'.__('Using remotely linked images in content. No changes.', 'wpematico' ).'</b>', E_USER_NOTICE);
 			}
 			$current_item['images'] = array();
 		}
@@ -489,28 +489,28 @@ class wpematico_campaign_fetch_functions {
 	*/
 	function featured_image_selector($current_item, $campaign, $feed, $item, $options_images) {
 		if (isset($campaign['campaign_enable_featured_image_selector']) && $campaign['campaign_enable_featured_image_selector']) {
-			trigger_error('<b>'.__('Executing featured image selector...', WPeMatico::TEXTDOMAIN).'</b>',E_USER_NOTICE);
+			trigger_error('<b>'.__('Executing featured image selector...', 'wpematico').'</b>',E_USER_NOTICE);
 			$index_selector = (int)$campaign['campaign_featured_selector_index'];
 			if (isset($current_item['images'][$index_selector])) {
-				trigger_error('<b>'.sprintf( __('Featured image "%s": %s', WPeMatico::TEXTDOMAIN), $index_selector,  $current_item['images'][$index_selector]).'</b>',E_USER_NOTICE);
+				trigger_error('<b>'.sprintf( __('Featured image "%s": %s', 'wpematico'), $index_selector,  $current_item['images'][$index_selector]).'</b>',E_USER_NOTICE);
 				$current_item['featured_image'] = $current_item['images'][$index_selector];
 			} else {
-				trigger_error('<b>'.__('No image was found according to the selected index.', WPeMatico::TEXTDOMAIN).'</b>',E_USER_NOTICE);
+				trigger_error('<b>'.__('No image was found according to the selected index.', 'wpematico').'</b>',E_USER_NOTICE);
 				$images_array = $current_item['images'];
 				if (isset($campaign['campaign_featured_selector_ifno']) && $campaign['campaign_featured_selector_ifno'] == 'first') {
 					$first_image = array_shift($images_array);
 					if (empty($first_image)) {
-						trigger_error('<b>'.__('The first image was not found in the content.', WPeMatico::TEXTDOMAIN).'</b>',E_USER_NOTICE);
+						trigger_error('<b>'.__('The first image was not found in the content.', 'wpematico').'</b>',E_USER_NOTICE);
 					} else {
-						trigger_error('<b>'.__('Using first image as the featured image.', WPeMatico::TEXTDOMAIN).'</b>',E_USER_NOTICE);
+						trigger_error('<b>'.__('Using first image as the featured image.', 'wpematico').'</b>',E_USER_NOTICE);
 						$current_item['featured_image'] = $first_image;
 					}
 				} else {
 					$last_image = array_pop($images_array);
 					if (empty($last_image)) {
-						trigger_error('<b>'.__('The last image was not found in the content.', WPeMatico::TEXTDOMAIN).'</b>',E_USER_NOTICE);
+						trigger_error('<b>'.__('The last image was not found in the content.', 'wpematico').'</b>',E_USER_NOTICE);
 					} else {
-						trigger_error('<b>'.__('Using last image as the featured image.', WPeMatico::TEXTDOMAIN).'</b>',E_USER_NOTICE);
+						trigger_error('<b>'.__('Using last image as the featured image.', 'wpematico').'</b>',E_USER_NOTICE);
 						$current_item['featured_image'] = $last_image;
 					}
 				}
@@ -551,7 +551,7 @@ class wpematico_campaign_fetch_functions {
 
 	/*** Delete images for its src	*/
 	static function strip_Image_by_src($src, $content, $withlink=true){
-		trigger_error( sprintf( __("Removing: %s from content." , WPeMatico :: TEXTDOMAIN ),'"'. $src .'"' ) , E_USER_NOTICE);
+		trigger_error( sprintf( __("Removing: %s from content." , 'wpematico' ),'"'. $src .'"' ) , E_USER_NOTICE);
 		$img_src_real_scaped = addslashes($src);
 		$img_src_real_scaped = addcslashes($img_src_real_scaped, "?.+");
 
@@ -577,7 +577,7 @@ class wpematico_campaign_fetch_functions {
 		$out[2] = $out[1];
 
 		if (isset($options_images['image_srcset']) && $options_images['image_srcset']) {
-			trigger_error( __("Getting srcset attribute...", WPeMatico::TEXTDOMAIN ), E_USER_NOTICE);
+			trigger_error( __("Getting srcset attribute...", 'wpematico' ), E_USER_NOTICE);
 			$images_array = (empty($result[0]) ? array() : $result[0]);
 			foreach ($images_array as $img_tag) {
 				$src_with_srcset  = WPeMatico::get_attribute_value('src', $img_tag);
@@ -601,7 +601,7 @@ class wpematico_campaign_fetch_functions {
 				       	$new_content = str_replace($out[2][$key_image], $max_url, $new_content);
 				       	$out[2][$key_image] = $max_url;
 				       	/* Translator: %s: URL of a image URL value */
-				       	trigger_error( sprintf( __("Overriding src attribute with value: %s from srcset." , WPeMatico::TEXTDOMAIN ), $src_with_srcset) , E_USER_NOTICE);
+				       	trigger_error( sprintf( __("Overriding src attribute with value: %s from srcset." , 'wpematico' ), $src_with_srcset) , E_USER_NOTICE);
 				    }
 				}
 				
@@ -729,7 +729,7 @@ class wpematico_campaign_fetch_functions {
 	* @since 1.7.0
 	*/
 	function strip_Audio_by_src($src, $content) {
-		trigger_error( sprintf( __("Removing: %s from content." , WPeMatico :: TEXTDOMAIN ),'"'. $src .'"' ) , E_USER_NOTICE);
+		trigger_error( sprintf( __("Removing: %s from content." , 'wpematico' ),'"'. $src .'"' ) , E_USER_NOTICE);
 		$audio_src_real_scaped = addslashes($src);
 		$audio_src_real_scaped = addcslashes($audio_src_real_scaped, "?.+");
 		$pattern = '|<audio(.+?)>(.*?)<source(.*?)src=["\']'.$audio_src_real_scaped.'["\'](.*?)>(.*?)<\/audio>|';
@@ -751,11 +751,11 @@ class wpematico_campaign_fetch_functions {
             $itemUrl = $this->current_item['permalink'];
 			
 			if( sizeof($current_item['audios']) ) { // If exist audios on content.
-				trigger_error('<b>'.__('Looking for audios in content.', WPeMatico::TEXTDOMAIN).'</b>',E_USER_NOTICE);
+				trigger_error('<b>'.__('Looking for audios in content.', 'wpematico').'</b>',E_USER_NOTICE);
 				$audio_new_url_array = array();
 				foreach($current_item['audios'] as $audio_src) {
 					
-					trigger_error(__('Uploading media...', WPeMatico::TEXTDOMAIN ).$audio_src, E_USER_NOTICE);
+					trigger_error(__('Uploading media...', 'wpematico' ).$audio_src, E_USER_NOTICE);
 					$audio_src_real = $this->getRelativeUrl($itemUrl, $audio_src);
 					// Strip all white space on audios URLs.	
 					$audio_src_real = str_replace(' ', '%20', $audio_src_real);						
@@ -802,16 +802,16 @@ class wpematico_campaign_fetch_functions {
 							} else {  
 								trigger_error('wp_upload_bits error:'.print_r($mirror,true).'.', E_USER_WARNING);
 								// Si no quiere linkar los audios al server borro el link de la audio
-								trigger_error( __('Upload file failed:', WPeMatico::TEXTDOMAIN ).$audio_dst, E_USER_WARNING);
+								trigger_error( __('Upload file failed:', 'wpematico' ).$audio_dst, E_USER_WARNING);
 								if($options_audios['gralnolink_audio']) {
 									$current_item['content'] = $this->strip_Audio_by_src($audio_src, $current_item['content']);
 								}
 							}
 						}
 					}else {
-						trigger_error( __('Extension not allowed: ', WPeMatico::TEXTDOMAIN ). urldecode($audio_dst_url), E_USER_WARNING);
+						trigger_error( __('Extension not allowed: ', 'wpematico' ). urldecode($audio_dst_url), E_USER_WARNING);
 						if($options_audios['gralnolink_audio']) { // Si no quiere linkar las img al server borro el link de la imagen
-							trigger_error( __('Stripped src.', WPeMatico::TEXTDOMAIN), E_USER_WARNING);
+							trigger_error( __('Stripped src.', 'wpematico'), E_USER_WARNING);
 							$current_item['content'] = $this->strip_Audio_by_src($audio_src, $current_item['content']);
 						}
 					}
@@ -820,7 +820,7 @@ class wpematico_campaign_fetch_functions {
 			}  // // Si hay alguna imagen en el contenido
 		} else {
 			if(isset($current_item['audios']) && sizeof($current_item['audios']) ) { 
-				trigger_error('<b>'.__('Using remotely linked audios in content. No changes.', WPeMatico::TEXTDOMAIN ).'</b>', E_USER_NOTICE);
+				trigger_error('<b>'.__('Using remotely linked audios in content. No changes.', 'wpematico' ).'</b>', E_USER_NOTICE);
 			}
 			$current_item['audios'] = array();
 		}
@@ -875,7 +875,7 @@ class wpematico_campaign_fetch_functions {
 	* @since 1.7.0
 	*/
 	function strip_Video_by_src($src, $content) {
-		trigger_error( sprintf( __("Removing: %s from content." , WPeMatico :: TEXTDOMAIN ),'"'. $src .'"' ) , E_USER_NOTICE);
+		trigger_error( sprintf( __("Removing: %s from content." , 'wpematico' ),'"'. $src .'"' ) , E_USER_NOTICE);
 		$video_src_real_scaped = addslashes($src);
 		$video_src_real_scaped = addcslashes($video_src_real_scaped, "?.+");
 		$pattern = '|<video(.+?)>(.*?)<source(.*?)src=["\']'.$video_src_real_scaped.'["\'](.*?)>(.*?)<\/video>|';
@@ -897,11 +897,11 @@ class wpematico_campaign_fetch_functions {
             $itemUrl = $this->current_item['permalink'];
 			
 			if( sizeof($current_item['videos']) ) { // If exist videos on content.
-				trigger_error('<b>'.__('Looking for videos in content.', WPeMatico::TEXTDOMAIN).'</b>',E_USER_NOTICE);
+				trigger_error('<b>'.__('Looking for videos in content.', 'wpematico').'</b>',E_USER_NOTICE);
 				$video_new_url_array = array();
 				foreach($current_item['videos'] as $video_src) {
 					
-					trigger_error(__('Uploading media...', WPeMatico::TEXTDOMAIN ).$video_src, E_USER_NOTICE);
+					trigger_error(__('Uploading media...', 'wpematico' ).$video_src, E_USER_NOTICE);
 					$video_src_real = $this->getRelativeUrl($itemUrl, $video_src);
 					// Strip all white space on videos URLs.	
 					$video_src_real = str_replace(' ', '%20', $video_src_real);						
@@ -949,16 +949,16 @@ class wpematico_campaign_fetch_functions {
 							} else {  
 								trigger_error('wp_upload_bits error:'.print_r($mirror,true).'.', E_USER_WARNING);
 								// Si no quiere linkar los videos al server borro el link de la video
-								trigger_error( __('Upload file failed:', WPeMatico::TEXTDOMAIN ).$video_dst, E_USER_WARNING);
+								trigger_error( __('Upload file failed:', 'wpematico' ).$video_dst, E_USER_WARNING);
 								if($options_videos['gralnolink_video']) {
 									$current_item['content'] = $this->strip_Video_by_src($video_src, $current_item['content']);
 								}
 							}
 						}
 					}else {
-						trigger_error( __('Extension not allowed: ', WPeMatico::TEXTDOMAIN ). urldecode($video_dst_url), E_USER_WARNING);
+						trigger_error( __('Extension not allowed: ', 'wpematico' ). urldecode($video_dst_url), E_USER_WARNING);
 						if($options_videos['gralnolink_video']) { // Si no quiere linkar las img al server borro el link de la imagen
-							trigger_error( __('Stripped src.', WPeMatico::TEXTDOMAIN), E_USER_WARNING);
+							trigger_error( __('Stripped src.', 'wpematico'), E_USER_WARNING);
 							$current_item['content'] = $this->strip_Video_by_src($video_src, $current_item['content']);
 						}
 					}
@@ -967,7 +967,7 @@ class wpematico_campaign_fetch_functions {
 			}  // // Si hay alguna imagen en el contenido
 		} else {
 			if(isset($current_item['videos']) && sizeof($current_item['videos']) ) { 
-				trigger_error('<b>'.__('Using remotely linked videos in content. No changes.', WPeMatico::TEXTDOMAIN ).'</b>', E_USER_NOTICE);
+				trigger_error('<b>'.__('Using remotely linked videos in content. No changes.', 'wpematico' ).'</b>', E_USER_NOTICE);
 			}
 			$current_item['videos'] = array();
 		}
