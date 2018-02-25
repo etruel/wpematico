@@ -1,4 +1,17 @@
 <?php
+/**
+ * WPeMatico plugin for WordPress
+ * campaign_fetch_functions 
+ * Contains all the auxiliary methods and filters used in the campaign fetch/run events
+ * Called by campaign_fetch.php
+ *  
+ * @package   wpematico
+ * @link      https://bitbucket.org/etruel/wpematico
+ * @author    Esteban Truelsegaard <etruel@etruel.com>
+ * @copyright 2006-2018 Esteban Truelsegaard
+ * @license   GPL v2 or later
+ */
+
 // don't load directly
 if ( !defined('ABSPATH') ) {
 	header( 'Status: 403 Forbidden' );
@@ -9,8 +22,6 @@ if ( !defined('ABSPATH') ) {
 if ( class_exists( 'wpematico_campaign_fetch_functions' ) ) return;
 
 class wpematico_campaign_fetch_functions {
-
-	
 	
 	
 	public static function WPeisDuplicatedMetaSource($dev, $campaign, $item) {
@@ -356,7 +367,7 @@ class wpematico_campaign_fetch_functions {
 					if($options_images['featuredimg'] && $current_item['featured_image'] == $imagen_src) {
 						$featured = true;  
 					}
-					
+					$imagen_src = apply_filters('wpematico_imagen_src', $imagen_src ); // allow strip parts 
 				    trigger_error(__('Uploading media...', WPeMatico :: TEXTDOMAIN ).$imagen_src,E_USER_NOTICE);
 					$imagen_src_real = $this->getRelativeUrl($itemUrl, $imagen_src);
 					// Strip all white space on images URLs.	
@@ -419,7 +430,20 @@ class wpematico_campaign_fetch_functions {
 	}  // item images
 
 
-	/*** Adjunta un archivo ya subido al postid dado  */
+	/**
+	 *  // retrieves the attachment ID from the file URL
+	 *  @return integer The attach ID of the image. If not exists return false.
+	 */
+ 	function get_attach_id_from_url($image_url) { 
+		global $wpdb;
+		$attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $image_url )); 
+		return ($attachment[0]>0) ? $attachment[0] : FALSE ; 
+	}
+	
+	/**
+	 *  attach a file or image to a post with its post_id  
+	 *  @return integer The new attach ID of the WP media
+	 */
  	function insertfileasattach($filename,$postid) {
   		$wp_filetype = wp_check_filetype(basename($filename), null );
 		$wp_upload_dir = wp_upload_dir();

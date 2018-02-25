@@ -1,17 +1,22 @@
 <?php
+/**
+ * WPeMatico plugin for WordPress
+ * plugin_functions
+ * Contains all the hooks to be called for the plugins wordpress page and the activate/deactivate/uninstall methods.
+
+ * @package   wpematico
+ * @link      https://bitbucket.org/etruel/wpematico
+ * @author    Esteban Truelsegaard <etruel@etruel.com>
+ * @copyright 2006-2018 Esteban Truelsegaard
+ * @license   GPL v2 or later
+ */
+
 // don't load directly 
 if ( !defined('ABSPATH') ) {
 	header( 'Status: 403 Forbidden' );
 	header( 'HTTP/1.1 403 Forbidden' );
 	exit();
 }
-
-
-
-
-
-
-
 
 add_filter(	'plugin_row_meta', 'wpematico_row_meta',10,2);
 add_filter(	'plugin_action_links_' . WPEMATICO_BASENAME, 'wpematico_action_links');

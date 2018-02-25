@@ -1,4 +1,16 @@
 <?php 
+/**
+ * WPeMatico plugin for WordPress
+ * wpematico_functions
+ * Contains all the auxiliary methods and functions to be called for the plugin inside WordPress pages.
+  
+ * @requires  campaign_fetch_functions
+ * @package   wpematico
+ * @link      https://bitbucket.org/etruel/wpematico
+ * @author    Esteban Truelsegaard <etruel@etruel.com>
+ * @copyright 2006-2018 Esteban Truelsegaard
+ * @license   GPL v2 or later
+ */
 // don't load directly 
 if ( !defined('ABSPATH') ) {
 	header( 'Status: 403 Forbidden' );

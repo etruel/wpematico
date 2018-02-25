@@ -1,4 +1,17 @@
 <?php
+/**
+ * WPeMatico plugin for WordPress
+ * campaign_fetch
+ * Contains all the methods to run manually or scheduled campaign.
+ 
+ * @requires  campaign_fetch_functions
+ * @package   wpematico
+ * @link      https://bitbucket.org/etruel/wpematico
+ * @author    Esteban Truelsegaard <etruel@etruel.com>
+ * @copyright 2006-2018 Esteban Truelsegaard
+ * @license   GPL v2 or later
+ */
+
 // don't load directly
 if ( !defined('ABSPATH') ){
 	header( 'Status: 403 Forbidden' );
@@ -514,9 +527,17 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 				}
 				if(!empty($img_new_url)) { 
 					$this->current_item['featured_image'] = $img_new_url;
-					array_shift($this->current_item['images']);  //quito el 1er elemento para que no lo suba de nuevo abajo
-					$attachid = $this->insertfileasattach( $this->current_item['featured_image'] , $post_id);
-					set_post_thumbnail($post_id, $attachid );
+					array_shift($this->current_item['images']);  //deletes featured image from array to avoid double upload below
+					$attachid = false;
+					if( !$options_images['imgattach']) {
+						//get previously uploaded attach IDs, false if not exist.  (Just attach once/first time)
+					//	$attachid = $this->get_attach_id_from_url($this->current_item['featured_image']); 
+						$attachid = attachment_url_to_postid($this->current_item['featured_image']); 
+					}
+					if ($attachid = false) {
+						$attachid = $this->insertfileasattach( $this->current_item['featured_image'] , $post_id);
+					}
+					set_post_thumbnail($post_id, $attachid );					
 					$featured_image_attach_id = $attachid;
 					//add_post_meta($post_id, '_thumbnail_id', $attachid);
 				}else{
