@@ -273,6 +273,7 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 = 1.9.1 =
 * Added a new wp filter to the source image name into the fetched content.
 * Tweak avoid attachs an already attached file if it's not necessary.
+* Fixes untranslatable tabs in help of campaigns list.
 * Fixes some PHP notices on campaign edit.
 * Fixes an issue in Error Handler.
 

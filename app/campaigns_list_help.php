@@ -64,7 +64,7 @@ foreach($helpcampaignlist as $key => $section){
 	}
 	$screen->add_help_tab( array(
 		'id'	=> $key,
-		'title'	=> $key,
+		'title'	=> $sdata['title'],
 		'content'=> $tabcontent,
 	) );
 }
