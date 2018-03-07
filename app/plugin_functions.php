@@ -77,7 +77,7 @@ add_action( 'plugins_loaded', 'wpematico_update_db_check' );
 function wpematico_update_db_check() {
 	if (version_compare(WPEMATICO_VERSION, get_option( 'wpematico_db_version' ), '>')) { // check if updated (WILL SAVE new version on welcome )
 		if ( !get_transient( '_wpematico_activation_redirect' ) ){ //just one time running
-	        wpematico_install( true );
+	        wpematico_install( false );  // true will re-save all the campaigns 
 		}
     }
 }
@@ -96,7 +96,7 @@ function wpematico_install( $update_campaigns = false ){
 		if ( ! has_filter( 'wpematico_check_campaigndata' ) ) {
 			add_filter( 'wpematico_check_campaigndata', array('WPeMatico','check_campaigndata'), 10, 1);
 		}
-		add_filter( 'wpematico_check_campaigndata', 'wpematico_campaign_compatibilty_after', 11, 1);
+		add_filter( 'wpematico_check_campaigndata', 'wpematico_campaign_compatibilty_after', 99, 1);
 		$campaigns = get_posts( $args );
 		foreach( $campaigns as $post ):
 			$campaigndata = WPeMatico::get_campaign( $post->ID );	
