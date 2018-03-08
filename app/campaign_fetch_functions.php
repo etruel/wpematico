@@ -574,12 +574,21 @@ class wpematico_campaign_fetch_functions {
 	/*** Devuelve todas las imagenes del contenido	*/
 	static function parseImages($text, $options_images = array()){
 		$new_content = $text;
-		preg_match_all('/<img[^>]+>/i',$text, $result);
-		$imgstr = implode('', $result[0]);
-//		preg_match_all('/<img(.+?)src=["\'](.+?)["\'](.*?)>/', $imgstr , $out);  //for tag img con ' o "
-		preg_match_all('/<\s*img[^\>]*src\s*=\s*[\""\']?([^\""\'\s>]*)/', $imgstr, $out);  // patch to ignore iframes src
 		
-		$out[2] = $out[1];
+		$current_parser = apply_filters('wpematico_images_parser', 'default', $current_item, $campaign, $feed, $item, $options_images);
+		if ($current_parser != 'default') {
+			$images = apply_filters('wpematico_images_parser_'.$current_parser, array(), $current_item, $campaign, $feed, $item, $options_images);
+		}else{
+	//		$pattern_img = '/<img[^>]+>/i';
+			$pattern_img = apply_filters('wpematico_pattern_img', '/<img.*(?:\s*[\'\"](.*?)[\'\"].*?\s*)+.*?>/si');
+			preg_match_all($pattern_img,$text, $result);
+			$imgstr = implode('', $result[0]);
+
+//			preg_match_all('/<\s*img[^\>]*src\s*=\s*[\""\']?([^\""\'\s>]*)/', $imgstr, $out);  // patch to ignore iframes src
+			preg_match_all('/\s*src\s*=\s*[\""\']?([^\""\'\s>]*)/', $imgstr, $out);  // patch to ignore iframes src
+		
+			$out[2] = $out[1];
+		}
 
 		if (isset($options_images['image_srcset']) && $options_images['image_srcset']) {
 			trigger_error( __("Getting srcset attribute...", 'wpematico' ), E_USER_NOTICE);
