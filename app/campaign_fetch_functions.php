@@ -527,9 +527,14 @@ class wpematico_campaign_fetch_functions {
 	function Get_Item_images($current_item, $campaign, $feed, $item, $options_images) {      
 		if($options_images['imgcache'] || $options_images['featuredimg']) {
      
-			$images = $this->parseImages($current_item['content'], $options_images);
-			$current_item['images'] = $images[2];  //lista de url de imagenes
-			$current_item['content'] = $images[3];  //Replaced src by srcset(If exist and with larger images) in images.
+			$current_parser = apply_filters('wpematico_images_parser', 'default', $current_item, $campaign, $feed, $item, $options_images);
+			if ($current_parser == 'default') {
+				$images = $this->parseImages($current_item['content'], $options_images);
+				$current_item['images'] = $images[2];  //lista de url de imagenes
+				$current_item['content'] = $images[3];  //Replaced src by srcset(If exist and with larger images) in images.
+			} else {
+				$current_item = apply_filters('wpematico_images_parser_'.$current_parser, $current_item, $campaign, $feed, $item, $options_images);
+			}
 
 			if( $this->cfg['nonstatic'] ) { 
 				$current_item['images'] = NoNStatic::imgfind($current_item,$campaign,$item ); 
