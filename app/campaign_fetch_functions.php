@@ -24,6 +24,21 @@ if ( class_exists( 'wpematico_campaign_fetch_functions' ) ) return;
 class wpematico_campaign_fetch_functions {
 	
 	
+	/**
+	* Static function detect_encoding_from_headers
+	* This function filter the input encoding used in change_to_utf8
+	* @access public
+	* @param $from String with the input encoding 
+	* @return $from String with the input encoding that maybe is from HTTP headers.
+	* @since 1.9.1
+	*/
+	public static function detect_encoding_from_headers($from) {
+		if (strtoupper($from) == 'ASCII') {
+			$from = WPeMatico::get_enconding_from_header(WPeMatico::$current_feed);
+		}
+		return $from;
+	}
+
 	public static function WPeisDuplicatedMetaSource($dev, $campaign, $item) {
 		global $wpdb;
 		$dev = false;

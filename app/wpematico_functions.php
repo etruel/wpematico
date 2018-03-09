@@ -23,6 +23,7 @@ if ( !class_exists( 'WPeMatico_functions' ) ) {
 class WPeMatico_functions {
 
 
+	public static $current_feed = ''; // The current feed that is running.
 	/**
 	* @access public
 	* @return $dev Bool true on duplicate item.
@@ -101,11 +102,37 @@ class WPeMatico_functions {
 	* @since 1.9.0
 	*/
 	public static function change_to_utf8($string) {
-		$from = mb_detect_encoding($string, "auto");
+		$from = apply_filters('wpematico_custom_chrset', mb_detect_encoding($string, "auto"));
 		if ($from && $from != 'UTF-8') {
 			$string = mb_convert_encoding($string, 'UTF-8', $from);
 		}
 		return $string;
+	}
+	/**
+	* Static function get_enconding_from_url
+	* This function get the encoding from headers of a URL.
+	* @access public
+	* @param $url String with an URL
+	* @return $encoding String with the encoding of the URL.
+	* @since 1.9.1
+	*/
+	public static function get_enconding_from_header($url) {
+		static $encoding_hosts = array();
+		$parsed_url = parse_url($url);
+		$host = (isset($parsed_url['host'])? $parsed_url['host']: time());
+
+		if (!isset($encoding_hosts[$host])) {
+			$encoding = '';
+			$response_header = wp_remote_get($url);
+			$content_type = wp_remote_retrieve_header($response_header, 'content-type');
+			if (!empty($content_type)) {
+				if (preg_match("#.+?/.+?;\\s?charset\\s?=\\s?(.+)#i", $content_type, $m)) {
+			        $encoding = $m[1];
+			    }
+			}
+			$encoding_hosts[$host] = strtoupper($encoding);
+		}
+		return $encoding_hosts[$host];
 	}
 	/**
 	* @access public
@@ -964,7 +991,7 @@ class WPeMatico_functions {
 		if( wpematico_is_pro_active() ) {
 			$professional_notice = '';
 		}else{
-			$professional_notice = __('<strong>You can force a feed with <a href="https://etruel.com/downloads/wpematico-professional/">WPeMatico Professional</a></strong>', 'wpematico' );
+			$professional_notice = __('<strong>You should use the Force Feed or Change User Agent features of <a href="https://etruel.com/downloads/wpematico-professional/">WPeMatico Professional</a></strong>', 'wpematico' );
 		}
 		if ($ajax) {
 			if(empty($errors)) {

@@ -87,6 +87,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		$this->feeds = $this->campaign['campaign_feeds'] ; // --- Obtengo los feeds de la campaña
 		
 		foreach($this->feeds as $kf => $feed) {
+			WPeMatico::$current_feed = $feed;
 			// interrupt the script if timeout 
   			if (current_time('timestamp')-$this->campaign['starttime'] >= $campaign_timeout) {
 				trigger_error(sprintf(__('Ending feed, reached running timeout at %1$d sec.', 'wpematico' ), $campaign_timeout ),E_USER_WARNING);
@@ -104,6 +105,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 	public function set_actions_and_filters() {
 		//hook to add actions and filter on init fetching
 		//add_action('Wpematico_init_fetching', array($this, 'wpematico_init_fetching') ); 
+		add_filter('wpematico_custom_chrset', array( 'wpematico_campaign_fetch_functions' , 'detect_encoding_from_headers'), 999, 1);
+
 
 		if($this->campaign['campaign_type']=="youtube") 
 			add_filter('wpematico_get_post_content_feed', array( 'wpematico_campaign_fetch_functions' , 'wpematico_get_yt_rss_tags'),999,4);
