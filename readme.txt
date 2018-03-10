@@ -270,14 +270,16 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
-= 1.9.1 =
+= 1.9.1 Mar 10, 2017 =
 * Added a new wp filter to the source image name into the fetched content.
 * Added some filters to allow other images parsers.
 * Tweak avoid attachs an already attached file if it's not necessary.
 * Tweaks the chrset encoding autodetect. 
+* Tweaks on images processing and parsers.
 * Fixes untranslatable tabs in help of campaigns list.
 * Fixes some PHP notices on campaign edit.
 * Fixes an issue in Error Handler.
+* **NOTE: Highly recommended to test it in development ambients before update**
 
 = 1.9 Jan 31, 2018 =
 * Added campaign preview feature.
@@ -1093,7 +1095,7 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 1.9 =
-* **Enlarges the version required for the Professional addons to 1.9**
-* **Recommended to test it in development ambients before update**
+= 1.9.1 =
+* **Enlarges the version required for the Professional addons to 1.9.1**
+* **NOTE: Highly recommended to test it in development ambients before update**
 * Many improvements and fixes. See changelog for more details.
