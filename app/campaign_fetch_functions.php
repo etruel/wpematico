@@ -579,7 +579,7 @@ class wpematico_campaign_fetch_functions {
 			$images = apply_filters('wpematico_images_parser_'.$current_parser, array(), $current_item, $campaign, $feed, $item, $options_images);
 		}else{
 	//		$pattern_img = '/<img[^>]+>/i';
-			$pattern_img = apply_filters('wpematico_pattern_img', '/<img.*(?:\s*[\'\"](.*?)[\'\"].*?\s*)+.*?>/si');
+			$pattern_img = apply_filters('wpematico_pattern_img', '/<img.*(?:\s*[\'\"](.*?)[\'\"].*?\s*)+.*?>/i');
 			preg_match_all($pattern_img,$text, $result);
 			$imgstr = implode('', $result[0]);
 
@@ -592,6 +592,7 @@ class wpematico_campaign_fetch_functions {
 		if (isset($options_images['image_srcset']) && $options_images['image_srcset']) {
 			trigger_error( __("Getting srcset attribute...", 'wpematico' ), E_USER_NOTICE);
 			$images_array = (empty($result[0]) ? array() : $result[0]);
+
 			foreach ($images_array as $img_tag) {
 				$src_with_srcset  = WPeMatico::get_attribute_value('src', $img_tag);
 				if (in_array($src_with_srcset, $out[2])) {
@@ -611,7 +612,8 @@ class wpematico_campaign_fetch_functions {
 					}
 
 					 if (($key_image = array_search($src_with_srcset, $out[2])) !== FALSE) {
-				       	$new_content = str_replace($out[2][$key_image], $max_url, $new_content);
+					 	$new_image_tag = preg_replace('/\s*src\s*=\s*(["\']).*?\1/', 'src="'.$max_url.'"', $img_tag);
+				       	$new_content = str_replace($img_tag, $new_image_tag, $new_content);
 				       	$out[2][$key_image] = $max_url;
 				       	/* Translator: %s: URL of a image URL value */
 				       	trigger_error( sprintf( __("Overriding src attribute with value: %s from srcset." , 'wpematico' ), $src_with_srcset) , E_USER_NOTICE);

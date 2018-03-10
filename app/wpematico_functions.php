@@ -326,9 +326,9 @@ class WPeMatico_functions {
 			return $value;
 		}
 		$len_pattern = strlen($attribute_patterns[$index_pattern]);
-		$pos_offset_one = strpos($string, '"', $pos_var+$len_pattern+2);
+		$pos_offset_one = strpos($string, '"', $pos_var+$len_pattern+1);
 		$pos_offset = $pos_offset_one;
-		$pos_offset_two = strpos($string, "'", $pos_var+$len_pattern+2);
+		$pos_offset_two = strpos($string, "'", $pos_var+$len_pattern+1);
 		if ($pos_offset_one === false) {
 			$pos_offset_one = PHP_INT_MAX;
 		}
