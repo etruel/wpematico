@@ -644,14 +644,15 @@ class wpematico_campaign_fetch_functions {
 		trigger_error( sprintf( __("Removing: %s from content." , 'wpematico' ),'"'. $src .'"' ) , E_USER_NOTICE);
 		$img_src_real_scaped = addslashes($src);
 		$img_src_real_scaped = addcslashes($img_src_real_scaped, "?.+");
-		//$imgtag = '|<img(.+?)src=["\']'.$img_src_real_scaped.'["\'](.*?)>|';
-		$imgtag = '|<img.*(?:\s*[\'\"](.*?)[\'\"]\s)src=["\']'.$img_src_real_scaped.'["\']+.*?>|';		
+		$imgtag = '<img(.+?)src=["\']'.$img_src_real_scaped.'["\'](.*?)>';
+		/* $imgtag = '<img.*(?:\s*[\'\"](.*?)[\'\"]\s)src=["\']'.$img_src_real_scaped.'["\']+.*?>'; */
 
 		if($withlink){
-			$imgtag = '|<a(.+?)>'.$imgtag.'<\/a>|';
-			$current_content = preg_replace( $imgtag, '',  $content );  //for tag img with a
+			$anchorimgtag = '|<a(.+?)>'.$imgtag.'<\/a>|';
+			$current_content = preg_replace( $anchorimgtag, '',  $content );  //for tag img with a
 			$content = ( is_null($current_content) ) ? $content : $current_content ;  //for tag img with a
-		}		
+		}
+		$imgtag = '|'.$imgtag.'|';		
 		$current_content = preg_replace( $imgtag, '',  $content );  //for tag img without a
 		$content = ( is_null($current_content) ) ? $content : $current_content ;  //for tag img 
 		return $content;
