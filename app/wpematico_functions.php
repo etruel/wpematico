@@ -22,7 +22,6 @@ if ( !class_exists( 'WPeMatico_functions' ) ) {
 
 class WPeMatico_functions {
 
-
 	public static $current_feed = ''; // The current feed that is running.
 	/**
 	* @access public
@@ -118,22 +117,51 @@ class WPeMatico_functions {
 	*/
 	public static function get_enconding_from_header($url) {
 		static $encoding_hosts = array();
+		if (empty($encoding_hosts)) {
+			$encoding_hosts = get_transient('encoding_hosts');
+			if ($encoding_hosts === false) {  $encoding_hosts = array(); }
+		}
+		
 		$parsed_url = parse_url($url);
 		$host = (isset($parsed_url['host'])? $parsed_url['host']: time());
 
 		if (!isset($encoding_hosts[$host])) {
 			$encoding = '';
 			$response_header = wp_remote_get($url);
-			$content_type = wp_remote_retrieve_header($response_header, 'content-type');
-			if (!empty($content_type)) {
-				if (preg_match("#.+?/.+?;\\s?charset\\s?=\\s?(.+)#i", $content_type, $m)) {
+			if (!empty($response_header)) {
+				if (preg_match("#.+?/.+?;\\s?encoding\\s?=\\s?(.+)#i", strtok($response_header, "\n"), $m)) {
 			        $encoding = $m[1];
 			    }
 			}
+			if($encoding === ''){
+				$content_type = wp_remote_retrieve_header($response_header, 'content-type');
+				if (!empty($content_type)) {
+					if (preg_match("#.+?/.+?;\\s?charset\\s?=\\s?(.+)#i", $content_type, $m)) {
+						$encoding = $m[1];
+					}
+				}
+			}
 			$encoding_hosts[$host] = strtoupper($encoding);
+			set_transient('encoding_hosts', $encoding_hosts, (HOUR_IN_SECONDS*2) );
 		}
 		return $encoding_hosts[$host];
 	}
+	
+	/**
+	* Static function detect_encoding_from_headers
+	* This function filter the input encoding used in change_to_utf8
+	* @access public
+	* @param $from String with the input encoding 
+	* @return $from String with the input encoding that maybe is from HTTP headers.
+	* @since 1.9.1
+	*/
+	public static function detect_encoding_from_headers($from) {
+		if (strtoupper($from) == 'ASCII') {
+			$from = WPeMatico::get_enconding_from_header(WPeMatico::$current_feed);
+		}
+		return $from;
+	}
+	
 	/**
 	* @access public
 	* @return $options Array of current images settings.

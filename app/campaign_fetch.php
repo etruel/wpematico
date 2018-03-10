@@ -105,8 +105,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 	public function set_actions_and_filters() {
 		//hook to add actions and filter on init fetching
 		//add_action('Wpematico_init_fetching', array($this, 'wpematico_init_fetching') ); 
-		add_filter('wpematico_custom_chrset', array( 'wpematico_campaign_fetch_functions' , 'detect_encoding_from_headers'), 999, 1);
-
+		add_filter('wpematico_custom_chrset', array( 'WPeMatico_functions' , 'detect_encoding_from_headers'), 999, 1);   // move all encoding functions to wpematico_campaign_fetch_functions
 
 		if($this->campaign['campaign_type']=="youtube") 
 			add_filter('wpematico_get_post_content_feed', array( 'wpematico_campaign_fetch_functions' , 'wpematico_get_yt_rss_tags'),999,4);
