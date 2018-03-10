@@ -650,11 +650,22 @@ class wpematico_campaign_fetch_functions {
 		if($withlink){
 			$anchorimgtag = '|<a(.+?)>'.$imgtag.'<\/a>|';
 			$current_content = preg_replace( $anchorimgtag, '',  $content );  //for tag img with a
-			$content = ( is_null($current_content) ) ? $content : $current_content ;  //for tag img with a
+			//$content = ( is_null($current_content) ) ? $content : $current_content ;  //for tag img with a
+			if( is_null($current_content) )  {
+				trigger_error( sprintf( __("Link with image URI not found in src." , 'wpematico' ),'"'. $src .'"' ) , E_USER_NOTICE);
+			}else{
+				$content = $current_content ; 
+				trigger_error( sprintf( __("Successfully removed with anchor link." , 'wpematico' ),'"'. $src .'"' ) , E_USER_NOTICE);
+			}
 		}
 		$imgtag = '|'.$imgtag.'|';		
 		$current_content = preg_replace( $imgtag, '',  $content );  //for tag img without a
-		$content = ( is_null($current_content) ) ? $content : $current_content ;  //for tag img 
+		if( is_null($current_content) )  {
+			trigger_error( sprintf( __("Image URI not found in src." , 'wpematico' ),'"'. $src .'"' ) , E_USER_NOTICE);
+		}else{
+			$content = $current_content ; 
+			trigger_error( sprintf( __("Successfully removed." , 'wpematico' ),'"'. $src .'"' ) , E_USER_NOTICE);
+		}
 		return $content;
 	}
 	
