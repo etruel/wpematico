@@ -278,7 +278,7 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 * Tweaks on images processing and parsers.
 * Fixes untranslatable tabs in help of campaigns list.
 * Fixes some PHP notices on campaign edit.
-* Fixes an issue in Error Handler.
+* Fixes an issue in the Error Handler.
 * **NOTE: Highly recommended to test it in development ambients before update**
 
 = 1.9 Jan 31, 2018 =
