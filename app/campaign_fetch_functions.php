@@ -459,8 +459,12 @@ class wpematico_campaign_fetch_functions {
 		$attach_id = wp_insert_attachment( $attachment,  $relfilename, $postid );
 		if (!$attach_id)
 			trigger_error(__('Sorry, your attach could not be inserted. Something wrong happened.').print_r($filename,true),E_USER_WARNING);
+		
+		if (!function_exists('wp_read_video_metadata') || !function_exists('wp_read_audio_metadata')) {
+			require_once(ABSPATH . 'wp-admin/includes/media.php.');
+		}
 		// must include the image.php file for the function wp_generate_attachment_metadata() to work
-		require_once(ABSPATH . "wp-admin" . '/includes/image.php');
+		require_once(ABSPATH . 'wp-admin/includes/image.php');
 		$attach_data = wp_generate_attachment_metadata( $attach_id, $relfilename );
 		wp_update_attachment_metadata( $attach_id,  $attach_data );
 		
