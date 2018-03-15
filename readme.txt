@@ -271,9 +271,9 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 
 == Changelog ==
 = 1.9.2 Mar 14, 2018 =
-* Fixed an issue on videos and audios import.
+* Fixes an issue on uploads videos and audios in some cases.
 
-= 1.9.1 Mar 10, 2017 =
+= 1.9.1 Mar 10, 2018 =
 * Added a new wp filter to the source image name into the fetched content.
 * Added some filters to allow other images parsers.
 * Tweak avoid attachs an already attached file if it's not necessary.
