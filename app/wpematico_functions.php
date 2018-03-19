@@ -882,12 +882,13 @@ class WPeMatico_functions {
 	/*** Determines what the title has to link to   * @return string new text   **/
 	public static function wpematico_permalink($url) {
 		// if from admin panel
-		if(get_the_ID()) {
-			$campaign_id = (int) get_post_meta(get_the_ID(), 'wpe_campaignid', true);
+		$post_id = url_to_postid( $url );
+		if($post_id) {
+			$campaign_id = (int) get_post_meta($post_id, 'wpe_campaignid', true);
 			if($campaign_id) {
 				$campaign = self::get_campaign( $campaign_id );
 				if( isset($campaign['campaign_linktosource']) && $campaign['campaign_linktosource'] )
-					return get_post_meta(get_the_ID(), 'wpe_sourcepermalink', true);
+					return get_post_meta($post_id, 'wpe_sourcepermalink', true);
 			}
 		}
 		return $url;      

@@ -134,6 +134,13 @@ function WPeAddon_admin_head(){
 			$('.subsubsub .upgrade a').attr('href',$upg+'&page=wpemaddons');
 		});
 	</script>
+	<style type="text/css">
+		@media screen and (max-width: 782px) {
+			.plugins_page_wpemaddons .column-name{
+			      display: none;
+			}
+		}
+	</style>
 	<?php 
 	}
 }
