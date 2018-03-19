@@ -392,20 +392,30 @@ class wpematico_campaign_fetch_functions {
 							$img_new_url[] = $imagen_dst_url;
 						} else { // falló -> intento con otros
 							$bits = WPeMatico::wpematico_get_contents($imagen_src_real);
-							$mirror = wp_upload_bits( $newimgname, NULL, $bits);
-							if(!$mirror['error']) {
-								trigger_error($mirror['url'],E_USER_NOTICE);
-								$current_item['content'] = str_replace($imagen_src, $mirror['url'], $current_item['content']);
-								$img_new_url[] = $mirror['url'];
-							} else {  
-								trigger_error('wp_upload_bits error:'.print_r($mirror,true).'.',E_USER_WARNING);
-								// Si no quiere linkar las img al server borro el link de la imagen
+							if (!$bits) {
+								// Remove the image if its upload fail.
 								trigger_error( __('Upload file failed:', 'wpematico' ).$imagen_dst,E_USER_WARNING);
 								if($options_images['gralnolinkimg']) {
 								//	trigger_error( __('Deleted media img.', 'wpematico' ),E_USER_WARNING);
 									$current_item['content'] = self::strip_Image_by_src($imagen_src, $current_item['content']);
 								}
+							} else {
+								$mirror = wp_upload_bits( $newimgname, NULL, $bits);
+								if(!$mirror['error']) {
+									trigger_error($mirror['url'],E_USER_NOTICE);
+									$current_item['content'] = str_replace($imagen_src, $mirror['url'], $current_item['content']);
+									$img_new_url[] = $mirror['url'];
+								} else {  
+									trigger_error('wp_upload_bits error:'.print_r($mirror,true).'.',E_USER_WARNING);
+									// Si no quiere linkar las img al server borro el link de la imagen
+									trigger_error( __('Upload file failed:', 'wpematico' ).$imagen_dst,E_USER_WARNING);
+									if($options_images['gralnolinkimg']) {
+									//	trigger_error( __('Deleted media img.', 'wpematico' ),E_USER_WARNING);
+										$current_item['content'] = self::strip_Image_by_src($imagen_src, $current_item['content']);
+									}
+								}
 							}
+							
 						}
 					}else {
 						trigger_error( __('Extension not allowed: ', 'wpematico' ). urldecode($imagen_dst_url),E_USER_WARNING);
@@ -564,15 +574,15 @@ class wpematico_campaign_fetch_functions {
 			$out = array(); 
 			$out[2] = apply_filters('wpematico_images_parser_'.$current_parser, array(), $current_item, $campaign, $feed, $item, $options_images);
 		}else{
-	//		$pattern_img = '/<img[^>]+>/i';
-/*			$pattern_img = apply_filters('wpematico_pattern_img', '/<img.*(?:\s*[\'\"](.*?)[\'\"].*?\s*)+.*?>/si');  */
-			$pattern_img = apply_filters('wpematico_pattern_img', '/<img.*(?:\s*[\'\"](.*?)[\'\"]\s)+.*?>/i');
+	
+			$pattern_img = apply_filters('wpematico_pattern_img', '/<img[^>]+>/i');
 			preg_match_all($pattern_img,$text, $result);
 			$imgstr = implode('', $result[0]);
 
-//			preg_match_all('/<\s*img[^\>]*src\s*=\s*[\""\']?([^\""\'\s>]*)/', $imgstr, $out);  // patch to ignore iframes src
-			preg_match_all('/\s*src\s*=\s*[\""\']?([^\""\'\s>]*)/', $imgstr, $out);
+			preg_match_all('/<\s*img[^\>]*src\s*=\s*[\""\']?([^\""\'\s>]*)/', $imgstr, $out);
 			$out[2] = $out[1];
+
+
 		}
 
 		if (isset($options_images['image_srcset']) && $options_images['image_srcset']) {
@@ -645,24 +655,25 @@ class wpematico_campaign_fetch_functions {
 
 	/*** Delete images for its src	*/
 	static function strip_Image_by_src($src, $content, $withlink=true){
+		
+		
+
+
 		trigger_error( sprintf( __("Removing: %s from content." , 'wpematico' ),'"'. $src .'"' ) , E_USER_NOTICE);
 		$img_src_real_scaped = addslashes($src);
 		$img_src_real_scaped = addcslashes($img_src_real_scaped, "?.+");
-		$imgtag = '<img(.+?)src=["\']'.$img_src_real_scaped.'["\'](.*?)>';
-		/* $imgtag = '<img.*(?:\s*[\'\"](.*?)[\'\"]\s)src=["\']'.$img_src_real_scaped.'["\']+.*?>'; */
 
 		if($withlink){
-			$anchorimgtag = '|<a(.+?)>'.$imgtag.'<\/a>|';
-			$current_content = preg_replace( $anchorimgtag, '',  $content );  //for tag img with a
-			//$content = ( is_null($current_content) ) ? $content : $current_content ;  //for tag img with a
+			$imgtag = '|<a(.+?)><img(.+?)src=["\']'.$img_src_real_scaped.'["\'](.*?)><\/a>|';
+			$current_content = preg_replace( $imgtag, '',  $content );  //for tag img with a
 			if( is_null($current_content) )  {
 				trigger_error( sprintf( __("Link with image URI not found in src." , 'wpematico' ),'"'. $src .'"' ) , E_USER_NOTICE);
 			}else{
 				$content = $current_content ; 
 				trigger_error( sprintf( __("Successfully removed with anchor link." , 'wpematico' ),'"'. $src .'"' ) , E_USER_NOTICE);
 			}
-		}
-		$imgtag = '|'.$imgtag.'|';		
+		}		
+		$imgtag = '|<img(.+?)src=["\']'.$img_src_real_scaped.'["\'](.*?)>|';
 		$current_content = preg_replace( $imgtag, '',  $content );  //for tag img without a
 		if( is_null($current_content) )  {
 			trigger_error( sprintf( __("Image URI not found in src." , 'wpematico' ),'"'. $src .'"' ) , E_USER_NOTICE);
