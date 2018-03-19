@@ -270,6 +270,9 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
+= 1.9.3 Mar 14, 2018 =
+* Fixes an issue on parser images.
+
 = 1.9.2 Mar 14, 2018 =
 * Fixes an issue on uploads videos and audios in some cases.
 
