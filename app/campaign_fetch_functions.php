@@ -471,7 +471,7 @@ class wpematico_campaign_fetch_functions {
 			trigger_error(__('Sorry, your attach could not be inserted. Something wrong happened.').print_r($filename,true),E_USER_WARNING);
 		
 		if (!function_exists('wp_read_video_metadata') || !function_exists('wp_read_audio_metadata')) {
-			require_once(ABSPATH . 'wp-admin/includes/media.php.');
+			require_once(ABSPATH . 'wp-admin/includes/media.php');
 		}
 		// must include the image.php file for the function wp_generate_attachment_metadata() to work
 		require_once(ABSPATH . 'wp-admin/includes/image.php');
