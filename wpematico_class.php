@@ -6,7 +6,6 @@ if ( ! function_exists( 'add_filter' ) )
 $cfg = get_option( 'WPeMatico_Options' );
 $cfg = apply_filters('wpematico_check_options',$cfg );
 
-
 if ( !class_exists( 'WPeMatico' ) ) {
 	class WPeMatico extends WPeMatico_functions {
 		const TEXTDOMAIN = 'wpematico';
