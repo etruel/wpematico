@@ -540,8 +540,14 @@ class wpematico_campaign_fetch_functions {
 	function Get_Item_images($current_item, $campaign, $feed, $item, $options_images) {      
 		if($options_images['imgcache'] || $options_images['featuredimg']) {
 			//$ItemImages = apply_filters('wpematico_item_images', 'CORE', $current_item, $campaign, $feed, $item, $options_images);
-			$images = $this->parseImages($current_item['content'], $options_images);
-			$current_item['images'] = $images[2];  //lista de url de imagenes
+			$current_parser = apply_filters('wpematico_images_parser', 'default', $current_item, $campaign, $feed, $item, $options_images);
+			if ($current_parser != 'default') {
+				$images = apply_filters('wpematico_images_parser_'.$current_parser, array(), $current_item, $campaign, $feed, $item, $options_images);
+			} else {
+				$images = $this->parseImages($current_item['content'], $options_images);
+			}
+		
+			$current_item['images'] = $images[2];  //List of image URLs
 			$current_item['content'] = $images[3];  //Replaced src by srcset(If exist and with larger images) in images.
 
 			if( $this->cfg['nonstatic'] ) { 
@@ -569,21 +575,17 @@ class wpematico_campaign_fetch_functions {
 	/*** Devuelve todas las imagenes del contenido	*/
 	static function parseImages($text, $options_images = array()){
 		$new_content = $text;
-		$current_parser = apply_filters('wpematico_images_parser', 'default', $current_item, $campaign, $feed, $item, $options_images);
-		if ($current_parser != 'default') {
-			$out = array(); 
-			$out[2] = apply_filters('wpematico_images_parser_'.$current_parser, array(), $current_item, $campaign, $feed, $item, $options_images);
-		}else{
+		
 	
-			$pattern_img = apply_filters('wpematico_pattern_img', '/<img[^>]+>/i');
-			preg_match_all($pattern_img,$text, $result);
-			$imgstr = implode('', $result[0]);
+		$pattern_img = apply_filters('wpematico_pattern_img', '/<img[^>]+>/i');
+		preg_match_all($pattern_img,$text, $result);
+		$imgstr = implode('', $result[0]);
 
-			preg_match_all('/<\s*img[^\>]*src\s*=\s*[\""\']?([^\""\'\s>]*)/', $imgstr, $out);
-			$out[2] = $out[1];
+		preg_match_all('/<\s*img[^\>]*src\s*=\s*[\""\']?([^\""\'\s>]*)/', $imgstr, $out);
+		$out[2] = $out[1];
 
 
-		}
+		
 
 		if (isset($options_images['image_srcset']) && $options_images['image_srcset']) {
 			trigger_error( __("Getting srcset attribute...", 'wpematico' ), E_USER_NOTICE);
