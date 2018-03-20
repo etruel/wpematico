@@ -440,7 +440,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			$cfg['set_cron_code']	= (!isset($options['set_cron_code']) || empty($options['set_cron_code'])) ? false: ($options['set_cron_code']==1) ? true : false;
 			$cfg['cron_code']		= (!isset($options['cron_code'])) ? '': $options['cron_code'];
 			$cfg['logexternalcron']	= (!isset($options['logexternalcron']) || empty($options['logexternalcron'])) ? false: ($options['logexternalcron']==1) ? true : false;
-			$cfg['disable_credits']	= (!isset($options['disable_credits']) || empty($options['disable_credits'])) ? false: ($options['disable_credits']==1) ? true : false;
+			$cfg['disable_credits']	= (!isset($options['disable_credits']) || empty($options['disable_credits'])) ? true: ($options['disable_credits']==1) ? true : false;
 			$cfg['disablecheckfeeds']=(!isset($options['disablecheckfeeds']) || empty($options['disablecheckfeeds'])) ? false: ($options['disablecheckfeeds']==1) ? true : false;
 			$cfg['enabledelhash']	= (!isset($options['enabledelhash']) || empty($options['enabledelhash'])) ? false: ($options['enabledelhash']==1) ? true : false;
 			$cfg['enableseelog']	= (!isset($options['enableseelog']) || empty($options['enableseelog'])) ? false: ($options['enableseelog']==1) ? true : false;

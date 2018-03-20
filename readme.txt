@@ -270,10 +270,11 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
-= 1.9.3 Mar 19, 2018 =
-* Fixes an issue on parser images.
-* Fixed an issue on source permalink.
-* Added some css in the addon page.
+= 1.9.3 Mar 20, 2018 =
+* Fixes some issues added in previous version on parser images. (Sorry)
+* Fixes an issue on set title to source permalink.
+* Fixes some responsive styles in the Addons/Extensions page.
+* From now, option "Disable WPeMatico Credits" will be active by default.
 
 = 1.9.2 Mar 14, 2018 =
 * Fixes an issue on uploads videos and audios in some cases.
