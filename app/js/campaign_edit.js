@@ -297,6 +297,15 @@ function word2cats_events() {
 		e.preventDefault();		
 	});
 	word2cats_events_rows();
+
+	jQuery('#campaign_w2c_only_use_a_category').change(function() {
+		if (jQuery('#campaign_w2c_only_use_a_category').is(':checked')) {
+			jQuery('#div_campaign_w2c_only_use_a_category').fadeIn();
+		} else {
+			jQuery('#div_campaign_w2c_only_use_a_category').fadeOut();
+		}
+	});
+
 }
 function word2cats_events_rows() {
 	jQuery('.btn_delete_w2c').click(function(e) {

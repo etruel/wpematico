@@ -253,10 +253,27 @@ public static function rewrite_box( $post ) {
 public static function word2cats_box( $post ) {
 	global $post, $campaign_data, $helptip;
 	$campaign_wrd2cat = $campaign_data['campaign_wrd2cat'];
+	$campaign_w2c_only_use_a_category = $campaign_data['campaign_w2c_only_use_a_category']; 
+	$campaign_w2c_the_category_most_used = $campaign_data['campaign_w2c_the_category_most_used']; 
 	?>
 	<p class="he20">
 		<span class="left"><?php _e('Assigning categories based on content words.', 'wpematico') ?></span> 
-	</p>	
+	</p>
+	<br/>
+
+	<input name="campaign_w2c_only_use_a_category" id="campaign_w2c_only_use_a_category" class="checkbox" value="1" type="checkbox" <?php checked($campaign_w2c_only_use_a_category, true); ?> />
+	<label for="campaign_w2c_only_use_a_category"><?php _e('Only assign <strong>one</strong> category to each post.', 'wpematico' ); ?></label>
+	<!-- <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['audio_cache']; ?>"></span> -->
+	<div id="div_campaign_w2c_only_use_a_category" style="margin-left: 20px; <?php if (!$campaign_w2c_only_use_a_category) echo 'display:none;';?>">
+			
+			<p>
+				<input name="campaign_w2c_the_category_most_used" id="campaign_w2c_the_category_most_used" class="checkbox left" value="1" type="checkbox" <?php checked($campaign_w2c_the_category_most_used,true); ?> />
+				<label for="campaign_w2c_the_category_most_used"><?php _e('The category of the word most counted in the content. Deactivate to use the first word found.', 'wpematico' ); ?></label> <!-- <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['audio_cache']; ?>"></span> -->
+			</p>
+
+	</div>
+
+	<br/>	
 	<div id="wrd2cat_edit" class="inlinetext">		
 		<?php foreach ($campaign_wrd2cat['word'] as $i => $value) :  ?>
 
@@ -298,6 +315,9 @@ public static function word2cats_box( $post ) {
 	<div id="paging-box">
 		<a href="#" class="button-primary add" id="addmorew2c"> <?php _e('Add more', 'wpematico'); ?></a>
 	</div>
+
+	
+	<br/>
 	<?php 
 }
 
