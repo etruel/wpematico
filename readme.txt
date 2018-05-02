@@ -270,7 +270,8 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
-= 1.9.4 Apr xx, 2018 =
+= 1.9.4 May xx, 2018 =
+* Added a new option to choice only one category into word to category feature.
 * Updated Updater class to v1.6.16.
 * Fixes PHP notices on debug page.
 * Added scheduled crons in System status tab.
