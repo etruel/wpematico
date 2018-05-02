@@ -195,13 +195,22 @@ class wpematico_campaign_fetch_functions {
 	function Item_filters(&$current_item, &$campaign, &$feed, &$item) {  
 		$categories = $current_item['categories'];
 		$post_id = $this->campaign_id;
+		$new_categories = array();
+		$new_categories_words = array();
+
+		$w2c_only_use_a_category = $campaign['campaign_w2c_only_use_a_category'];
+		$w2c_the_category_most_used = $campaign['campaign_w2c_the_category_most_used'];
 		//Proceso Words to Category y si hay las agrego al array
 		if ( $this->cfg['enableword2cats']) {
 			if( isset($campaign['campaign_wrd2cat']['word']) 
 					&& (!empty($campaign['campaign_wrd2cat']['word'][0]) )
 					&& (!empty($campaign['campaign_wrd2cat']['w2ccateg'][0]) )
 				)
-			{	trigger_error(sprintf(__('Processing Words to Category %1s', 'wpematico' ), $current_item['title'] ),E_USER_NOTICE);
+			{	
+
+
+				trigger_error(sprintf(__('Processing Words to Category %1s', 'wpematico' ), $current_item['title'] ),E_USER_NOTICE);
+
 				for ($i = 0; $i < count($campaign['campaign_wrd2cat']['word']); $i++) {
 					$foundit = false;
 					$word = stripslashes(htmlspecialchars_decode(@$campaign['campaign_wrd2cat']['word'][$i]));
@@ -230,12 +239,47 @@ class wpematico_campaign_fetch_functions {
 						}
 						if ($foundit !== false ) {
 							trigger_error(sprintf(__('Found!: word %1s to Cat_id %2s', 'wpematico' ),$word,$tocat),E_USER_NOTICE);
-							$current_item['categories'][] = $tocat;
+							$new_categories[] = $tocat;
+							$new_categories_words[] = strtolower($word);
 						}else{
 							trigger_error(sprintf(__('Not found word %1s', 'wpematico' ),$word),E_USER_NOTICE);
 						}
 					}
 				}
+				
+				if ($w2c_only_use_a_category) {
+					if ($w2c_the_category_most_used) {
+						trigger_error( __('Searching the category with more words.', 'wpematico' ), E_USER_NOTICE);
+						$content_lower = strtolower($current_item['content']);
+						$current_words_count = 0;
+						$category_with_more_words = 0;
+						foreach ($new_categories_words as  $kw => $search_word) {
+							$pieces_words = explode($search_word, $content_lower);
+							$words_count = count($pieces_words);
+							if ($words_count > $current_words_count) {
+								$current_words_count = $words_count;
+								if (!empty($new_categories[$kw])) {
+									$category_with_more_words = $new_categories[$kw];
+								}
+								 
+							}
+
+						}
+						if (!empty($category_with_more_words)) {
+							trigger_error(sprintf(__('The category with more words in content: %1s', 'wpematico' ), $category_with_more_words),E_USER_NOTICE);
+							$new_categories = array($category_with_more_words);
+						}
+						
+
+					} else {
+						$new_categories = (isset($new_categories[0]) ? array($new_categories[0]) : array()); 
+						if (isset($new_categories[0])) {
+							trigger_error(sprintf(__('Assign the first category: %1s', 'wpematico' ), $new_categories[0]), E_USER_NOTICE);
+						}
+					}
+				}
+
+				$current_item['categories'] = array_merge($current_item['categories'], $new_categories);
 			}
 		}	// End Words to Category
 

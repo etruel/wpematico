@@ -784,6 +784,9 @@ class WPeMatico_functions {
 		$_wrd2cat = array('word'=>array(''),'title'=>array(false),'regex'=>array(false),'w2ccateg'=>array(0),'cases'=>array(false));
 		$campaigndata['campaign_wrd2cat'] = (!empty($campaign_wrd2cat) ) ?(array) $campaign_wrd2cat : (array)$_wrd2cat;
 		
+		$campaigndata['campaign_w2c_only_use_a_category']=(!isset($post_data['campaign_w2c_only_use_a_category']) || empty($post_data['campaign_w2c_only_use_a_category'])) ? false: ($post_data['campaign_w2c_only_use_a_category']==1) ? true : false;
+		$campaigndata['campaign_w2c_the_category_most_used']=(!isset($post_data['campaign_w2c_the_category_most_used']) || empty($post_data['campaign_w2c_the_category_most_used'])) ? false: ($post_data['campaign_w2c_the_category_most_used']==1) ? true : false;
+		
 		// *** Campaign Rewrites	
 		// Proceso los rewrites sacando los que estan en blanco
 //		$campaign_rewrites = Array();
