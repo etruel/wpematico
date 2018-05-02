@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Allows plugins to use their own update API.
  *
  * @author Easy Digital Downloads
- * @version 1.6.14
+ * @version 1.6.16
  */
 class EDD_SL_Plugin_Updater {
 
@@ -40,9 +40,18 @@ class EDD_SL_Plugin_Updater {
 		$this->version     = $_api_data['version'];
 		$this->wp_override = isset( $_api_data['wp_override'] ) ? (bool) $_api_data['wp_override'] : false;
 		$this->beta        = ! empty( $this->api_data['beta'] ) ? true : false;
-		$this->cache_key   = md5( serialize( $this->slug . $this->api_data['license'] . $this->beta ) );
+		$this->cache_key   = 'edd_sl_' . md5( serialize( $this->slug . $this->api_data['license'] . $this->beta ) );
 
 		$edd_plugin_data[ $this->slug ] = $this->api_data;
+
+		/**
+		 * Fires after the $edd_plugin_data is setup.
+		 *
+		 * @since x.x.x
+		 *
+		 * @param array $edd_plugin_data Array of EDD SL plugin data.
+		 */
+		do_action( 'post_edd_sl_plugin_updater_setup', $edd_plugin_data );
 
 		// Set up hooks.
 		$this->init();
@@ -112,7 +121,7 @@ class EDD_SL_Plugin_Updater {
 
 			}
 
-			$_transient_data->last_checked           = current_time( 'timestamp' );
+			$_transient_data->last_checked           = time();
 			$_transient_data->checked[ $this->name ] = $this->version;
 
 		}
@@ -171,7 +180,7 @@ class EDD_SL_Plugin_Updater {
 
 			}
 
-			$update_cache->last_checked = current_time( 'timestamp' );
+			$update_cache->last_checked = time();
 			$update_cache->checked[ $this->name ] = $this->version;
 
 			set_site_transient( 'update_plugins', $update_cache );
@@ -455,7 +464,7 @@ class EDD_SL_Plugin_Updater {
 
 		$cache = get_option( $cache_key );
 
-		if( empty( $cache['timeout'] ) || current_time( 'timestamp' ) > $cache['timeout'] ) {
+		if( empty( $cache['timeout'] ) || time() > $cache['timeout'] ) {
 			return false; // Cache is expired
 		}
 
@@ -470,7 +479,7 @@ class EDD_SL_Plugin_Updater {
 		}
 
 		$data = array(
-			'timeout' => strtotime( '+3 hours', current_time( 'timestamp' ) ),
+			'timeout' => strtotime( '+3 hours', time() ),
 			'value'   => json_encode( $value )
 		);
 

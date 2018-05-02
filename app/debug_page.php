@@ -388,6 +388,15 @@ function wpematico_get_active_plugins() {
 	return $wpematico_active_plugins;		
 }
 
+function wpematico_getFileSystemMethod() {
+	if ( defined( 'MAINWP_SAVE_FS_METHOD' ) ) {
+		return MAINWP_SAVE_FS_METHOD;
+	}
+	$fs = get_filesystem_method();
+
+	return $fs;
+}
+
 /**
  * 
  * @global object $wpdb
@@ -434,6 +443,7 @@ function wpematico_debug_data() {
 		$vars['blog_page_id']		= get_option( 'page_for_posts' );
 		$vars['disk_total_space']	= wpematico_disk_total_space(false);
 		$vars['disk_free_space']	= wpematico_disk_free_space(false);
+		$vars['fsmethod']			= wpematico_getFileSystemMethod();
 		
 		$vars['professional_help'] 	= '<a href="https://etruel.com/downloads/wpematico-professional/" target="_blank">WPeMatico Professional</a>';
 		$vars['cache_help'] 		= '<a href="https://etruel.com/downloads/wpematico-cache/" target="_blank">WPeMatico Cache</a>';
@@ -466,7 +476,8 @@ function wpematico_debug_data() {
 			$vars['m_deflate_ok']	= in_array('mod_deflate', $apache_modules);
 		}else{
 			$vars['m_rewrite_ok'] 	= (isset($_SERVER['HTTP_MOD_REWRITE']) && $_SERVER['HTTP_MOD_REWRITE'] == 'On' ) ? true : FALSE;
-
+			$vars['m_mime_ok'] 		= FALSE;
+			$vars['m_deflate_ok']	= FALSE;
 		}
 		if (extension_loaded('xmlreader')) {
 			$vars['xml_ok'] = true;
@@ -524,17 +535,17 @@ function wpematico_debug_data() {
 			$vars['recommended_max_value_length'] = 0; //2000000;
 
 		}
+		$vars['cron_array'] = _get_cron_array();
+		$vars['schedules']  = wp_get_schedules();
 
 	}
-	
-	
-	
+		
 	return $vars;
 }
+
 /**
  * Shows all data into a table
  */
-
 function wpematico_show_data_info() {
 	$debug_data = wpematico_debug_data();
 	extract($debug_data);
@@ -959,6 +970,11 @@ function wpematico_show_data_info() {
 					<td><?php echo str_replace(',', ',<br/>', $post_stati ); ?></td>
 				</tr>
 				<tr>
+					<td data-export-label="FileSystem-Method"><?php _e( 'FileSystem Method:', 'wpematico' ); ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Registered Post Status by different custom post types or plugins.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td><?php if ( 'direct' !== $fsmethod ) echo '<mark class="no">' . $fsmethod . '</mark>'; else echo '<mark class="yes">' . $fsmethod . '</mark>'; ?></td>
+				</tr>
+				<tr>
 					<td data-export-label="WP Debug Mode"><?php _e( 'WP Debug Mode:', 'wpematico' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Displays whether or not WordPress is in Debug Mode.', 'wpematico'  ) . '">[?]</a>'; ?></td>
 					<td><?php if ( defined('WP_DEBUG') && WP_DEBUG ) echo '<mark class="no">' . '&#10004;' . '</mark>'; else echo '<mark class="yes">' . '&ndash;' . '</mark>'; ?></td>
@@ -1074,7 +1090,40 @@ function wpematico_show_data_info() {
 				?>
 			</tbody>
 		</table>
-		
+
+		<h3 class="screen-reader-text"><?php _e( 'Cron Schedules', 'wpematico' ); ?></h3>
+		<table class="widefat debug-section" cellspacing="0" id="status">
+			<thead>
+				<tr>
+					<th colspan="3" class="debug-section-title" data-export-label="Cron Schedules"><?php _e( 'Cron Schedules', 'wpematico' ); ?> </th>
+				</tr>
+				<tr>
+					<th scope="col" class="manage-column column-posts" style="">
+						<span><?php _e( 'Next due', 'wpematico' ); ?></span></th>
+					<th scope="col" class="manage-column column-posts" style="">
+						<span><?php _e( 'Schedule', 'wpematico' ); ?></span></th>
+					<th scope="col" class="manage-column column-posts" style="">
+						<span><?php _e( 'Hook', 'wpematico' ); ?></span></th>
+				</tr>
+			</thead>
+			<tbody id="the-sites-list" class="list:sites">
+			<?php
+			foreach ( $cron_array as $time => $cron ) {
+				foreach ( $cron as $hook => $cron_info ) {
+					foreach ( $cron_info as $key => $schedule ) {
+						?>
+						<tr>
+							<td><?php echo esc_html( date_i18n( get_option('date_format').' '. get_option('time_format'), $time ) ); ?></td>
+							<td><?php echo esc_html( ( isset( $schedule['schedule'] ) && isset( $schedules[ $schedule['schedule'] ] ) && isset( $schedules[ $schedule['schedule'] ]['display'] ) ) ? $schedules[ $schedule['schedule'] ]['display'] : '' ); ?> </td>
+							<td><?php echo esc_html( $hook ); ?></td>
+						</tr>
+						<?php
+					}
+				}
+			}
+			?>
+			</tbody>
+		</table>	
 <?php
 }
 
@@ -1226,6 +1275,7 @@ function wpematico_debug_info_get() {
 	$return .= 'WP Max Upload Size:       ' . size_format( $wp_max_upload_size ) . "\n";
 	$return .= 'Registered Post Stati:    ' . $post_stati . "\n";
 	
+	$return .= 'FileSystem Method:        ' . $fsmethod . "\n";
 	$return .= 'WP_DEBUG:                 ' . ( defined( 'WP_DEBUG' ) ? WP_DEBUG ? 'Enabled' : 'Disabled' : 'Not set' ) . "\n";
 	$return .= 'WP_DEBUG_LOG:             ' . ( defined( 'WP_DEBUG_LOG' ) ? WP_DEBUG_LOG ? 'Enabled' : 'Disabled' : 'Not set' ) . "\n";
 	$return .= 'WP_DEBUG_DISPLAY:         ' . ( defined( 'WP_DEBUG_DISPLAY' ) ? WP_DEBUG_DISPLAY ? 'Enabled' : 'Disabled' : 'Not set' ) . "\n";
@@ -1284,6 +1334,30 @@ function wpematico_debug_info_get() {
 		$return .= $plugin['Name'] . ': ' . $plugin['Version'].(!empty($new_version)?' (needs update - '.$new_version.')': ''). "\n";
 	}
 
+	$return = apply_filters( 'wpematico_sysinfo_after_wordpress_plugins_inactive', $return );
+
+	// WordPress inactive plugins
+	$plugins = get_plugins();
+	$return .= "\n" . '-- WordPress Cron Schedules' . "\n\n";
+	$return .= __( 'Next due', 'wpematico' );
+	$return.= ': ';
+	$return .= __( 'Schedule', 'wpematico' );
+	$return.= ': ';
+	$return .= __( 'Hook', 'wpematico' );
+	$return .= "\n";
+	foreach ( $cron_array as $time => $cron ) {
+		foreach ( $cron as $hook => $cron_info ) {
+			foreach ( $cron_info as $key => $schedule ) {
+				$return.= esc_html( date_i18n( get_option('date_format').' '. get_option('time_format'), $time ) );
+				$return.= ': ';
+				$return.= esc_html( ( isset( $schedule['schedule'] ) && isset( $schedules[ $schedule['schedule'] ] ) && isset( $schedules[ $schedule['schedule'] ]['display'] ) ) ? $schedules[ $schedule['schedule'] ]['display'] : '' );
+				$return.= ': ';
+				$return.= esc_html( $hook ). "\n";
+			}
+		}
+	}
+
+	
 	$return = apply_filters( 'wpematico_sysinfo_after_wordpress_plugins_inactive', $return );
 
 	
