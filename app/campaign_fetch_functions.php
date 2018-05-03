@@ -707,7 +707,7 @@ class wpematico_campaign_fetch_functions {
 
 		trigger_error( sprintf( __("Removing: %s from content." , 'wpematico' ),'"'. $src .'"' ) , E_USER_NOTICE);
 		$img_src_real_scaped = addslashes($src);
-		$img_src_real_scaped = addcslashes($img_src_real_scaped, "?.+");
+		$img_src_real_scaped = addcslashes($img_src_real_scaped, "?.+*");
 
 		if($withlink){
 			$imgtag = '|<a(.+?)><img(.+?)src=["\']'.$img_src_real_scaped.'["\'](.*?)><\/a>|';
@@ -818,7 +818,7 @@ class wpematico_campaign_fetch_functions {
 	function strip_Audio_by_src($src, $content) {
 		trigger_error( sprintf( __("Removing: %s from content." , 'wpematico' ),'"'. $src .'"' ) , E_USER_NOTICE);
 		$audio_src_real_scaped = addslashes($src);
-		$audio_src_real_scaped = addcslashes($audio_src_real_scaped, "?.+");
+		$audio_src_real_scaped = addcslashes($audio_src_real_scaped, "?.+*");
 		$pattern = '|<audio(.+?)>(.*?)<source(.*?)src=["\']'.$audio_src_real_scaped.'["\'](.*?)>(.*?)<\/audio>|';
 		$content_striped = preg_replace($pattern, '',  $content); 
 		$content = ( is_null($content_striped) ) ? $content : $content_striped;
@@ -964,7 +964,7 @@ class wpematico_campaign_fetch_functions {
 	function strip_Video_by_src($src, $content) {
 		trigger_error( sprintf( __("Removing: %s from content." , 'wpematico' ),'"'. $src .'"' ) , E_USER_NOTICE);
 		$video_src_real_scaped = addslashes($src);
-		$video_src_real_scaped = addcslashes($video_src_real_scaped, "?.+");
+		$video_src_real_scaped = addcslashes($video_src_real_scaped, "?.+*");
 		$pattern = '|<video(.+?)>(.*?)<source(.*?)src=["\']'.$video_src_real_scaped.'["\'](.*?)>(.*?)<\/video>|';
 		$content_striped = preg_replace($pattern, '',  $content); 
 		$content = ( is_null($content_striped) ) ? $content : $content_striped;

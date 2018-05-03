@@ -331,6 +331,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
 		
 		if($options_images['rmfeaturedimg'] && !empty($this->current_item['featured_image']) ){ // removes featured from content
+			error_log(var_export($this->current_item['content'], true));
+			error_log(var_export($this->current_item['featured_image'], true));
 			$this->current_item['content'] = $this->strip_Image_by_src($this->current_item['featured_image'], $this->current_item['content']);
 		}
 		
