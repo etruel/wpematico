@@ -1336,8 +1336,7 @@ function wpematico_debug_info_get() {
 
 	$return = apply_filters( 'wpematico_sysinfo_after_wordpress_plugins_inactive', $return );
 
-	// WordPress inactive plugins
-	$plugins = get_plugins();
+	// WordPress scheduled crons
 	$return .= "\n" . '-- WordPress Cron Schedules' . "\n\n";
 	$return .= __( 'Next due', 'wpematico' );
 	$return.= ': ';
@@ -1356,9 +1355,8 @@ function wpematico_debug_info_get() {
 			}
 		}
 	}
-
 	
-	$return = apply_filters( 'wpematico_sysinfo_after_wordpress_plugins_inactive', $return );
+	$return = apply_filters( 'wpematico_sysinfo_after_wordpress_scheduled_crons', $return );
 
 	
 	// WordPress CONSTANTS filtering users & passwords

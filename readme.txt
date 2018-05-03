@@ -270,11 +270,12 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
-= 1.9.4 May xx, 2018 =
-* Added a new option to choice only one category into word to category feature.
+= 1.9.4 May 03, 2018 =
+* Added a new option to use as category the word most used into Word to Category feature.
+* Added scheduled crons in System status tab.
 * Updated Updater class to v1.6.16.
 * Fixes PHP notices on debug page.
-* Added scheduled crons in System status tab.
+* Fixes Strip featured images with '*' in their names.
 
 = 1.9.3 Mar 20, 2018 =
 * Fixes some issues added in previous version on parser images. (Sorry)
