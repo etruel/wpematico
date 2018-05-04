@@ -747,7 +747,7 @@ class WPeMatico_functions {
 			$catname = $post_data['campaign_newcatname'][$k];
 			if(!empty($catname))  {
 			  //$post_data['post_category'][] = wp_insert_category(array('cat_name' => $catname));
-			  $arg = array('description' => "Auto Added by WPeMatico", 'parent' => "0");
+			  $arg = array('description' => apply_filters('wpematico_addcat_description', __("Category Added in a WPeMatico Campaign", 'wpematico' ), $catname), 'parent' => "0");
 			  $newcat = wp_insert_term($catname, "category", $arg);
 			  $post_data['post_category'][] = (is_array($newcat)) ? $newcat['term_id'] : $newcat;
 			}

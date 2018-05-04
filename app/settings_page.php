@@ -279,18 +279,6 @@ function wpematico_settings(){
 						</div>
 
 						<div class="postbox">
-							<h2 class="handle"><?php _e('ShortPixel', 'wpematico'); ?></h2>
-							<div class="inside" id="sp_content">
-								<?php _e('Join to ShortPixel and optimize your images without compromising on quality.', 'wpematico'); ?>
-								<div style="text-align: center;">
-									<img src="https://shortpixel.com/img/logo.png">
-									<br />
-									<a class="button" target="_blank" href="https://shortpixel.com/h/af/QMVAHE4246413"><?php _e('Get ShortPixel API Key', 'wpematico'); ?></a>
-								</div>
-							</div>
-						</div>
-
-						<div class="postbox">
 							<h2 class="handle"><?php _e('The Perfect Package', 'wpematico'); ?></h2>
 							<div class="inside">
 								<p id="left1" onmouseover="jQuery(this).css('opacity',0.9);this.style.backgroundColor='#111'" onmouseout="jQuery(this).css('opacity',0.5);this.style.backgroundColor='#fff'" style="text-align:center;opacity: 0.5;border-radius: 14px 14px 0 0;"><a href="https://etruel.com/downloads/wpematico-perfect-package/" target="_Blank" title="Go to etruel WebSite"><img style="width: 100%;" src="https://etruel.com/wp-content/uploads/edd/2016/09/wpematico_package_1024x512-300x150.png" title=""></a><br />
@@ -404,38 +392,33 @@ function wpematico_settings(){
 									<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
 									<span class="toggle-indicator" aria-hidden="true"></span>
 								</button>
-								<h3 style="float:right; background-color: yellow;"><?php _e('ONLY AVAILABLE AT PRO VERSION.', 'wpematico'); ?></h3>
-								<h3 class="hndle" style="background-color: yellow;"><span><?php _e('PRO Features', 'wpematico'); ?></span> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['PROfeatures']; ?>"></span></h3>
+								<h3 style="float:right; background-color: yellow;"><?php _e('Availables in addons at etruel.com.', 'wpematico'); ?></h3>
+								<h3 class="hndle" style="background-color: yellow;"><span><?php _e('Some Professional Features you could have.', 'wpematico'); ?></span> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['PROfeatures']; ?>"></span></h3>
 								<div class="inside"> 
-										<!-- a href="https://etruel.com/downloads/wpematico-pro/" target="_Blank" title="Go to WPeMatico WebSite"><img style="background: transparent;height: 86%;position: absolute;margin-left: -10px;overflow: hidden;width: 100%;border: 1px solid #CCC;" src="<?php echo WPeMatico :: $uri; ?>images/onlypro.png" title=""></a -->
 									<p></p>
-									<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable <b><i>Keyword Filtering</i></b> feature', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablekwordf']; ?>"></span>
+									<?php _e('<b><i>Keyword Filtering</i></b> feature', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablekwordf']; ?>"></span>
 									<p></p>
-									<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable <b><i>Word count Filters</i></b> feature', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablewcf']; ?>"></span>
+									<?php _e('<b><i>Word count Filters</i></b> feature', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablewcf']; ?>"></span>
 									<p></p>
-									<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable <b><i>Custom Title</i></b> feature', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablecustomtitle']; ?>"></span>
+									<?php _e('<b><i>Custom Title</i></b> feature', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablecustomtitle']; ?>"></span>
 									<p></p>
-									<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable attempt to <b><i>Get Full Content</i></b> feature', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['fullcontent']; ?>"></span>
+									<?php _e('attempt to <b><i>Get Full Content</i></b> feature', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['fullcontent']; ?>"></span>
 									<p></p>
-									<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable <b><i>Author per feed</i></b> feature', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['authorfeed']; ?>"></span>
+									<?php _e('<b><i>Author per feed</i></b> feature', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['authorfeed']; ?>"></span>
 									<p></p>
-									<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable <b><i>Import feed list</i></b> feature', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['importfeeds']; ?>"></span>
+									<?php _e('<b><i>Import feed list</i></b> feature', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['importfeeds']; ?>"></span>
 									<p></p>
-									<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable <b><i>Auto Tags</i></b> feature.', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enabletags']; ?>"></span>
-									<div id="badtags" style="margin-left:25px;">
-										<b><label for="all_badtags"><?php _e('Bad Tags that will be not used on any post:', 'wpematico'); ?></label></b><br />
-										<textarea style="width:500px;" disabled >some, tags, not, allowed</textarea><br />
-										<?php echo __('Enter comma separated list of excluded Tags in all campaigns.', 'wpematico'); ?>
-									</div><br />
-									<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable <b><i>Custom Fields</i></b> feature.', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablecfields']; ?>"></span>
+									<?php _e('<b><i>Auto Tags</i></b> feature.', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enabletags']; ?>"></span>
 									<p></p>
-									<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable <b><i>Custom Feed Tags</i></b> feature.', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="Add custom feed tags as template tags or custom field values on every post."></span>
+									<?php _e('<b><i>Custom Fields</i></b> feature.', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablecfields']; ?>"></span>
 									<p></p>
-									<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable <b><i>Image Filters</i></b> feature.', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="You can allow or skip each image in every post depends on image dimensions."></span>
+									<?php _e('<b><i>Custom Feed Tags</i></b> feature.', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="Add custom feed tags as template tags or custom field values on every post."></span>
 									<p></p>
-									<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable <b><i>Ramdom Rewrites</i></b> feature.', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="Rewrite custom words randomly as synonyms. You must complete the words separated by comma and per line in the textarea."></span>
+									<?php _e('<b><i>Image Filters</i></b> feature.', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="You can allow or skip each image in every post depends on image dimensions."></span>
 									<p></p>
-									<input class="checkbox" value="1" type="checkbox" disabled /> <?php _e('Enable <b><i>Deletes till the end of the line</i></b> feature.', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="This feature allows to delete from a word or phrase until the end of the line of a sentence."></span>
+									<?php _e('<b><i>Ramdom Rewrites</i></b> feature.', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="Rewrite custom words randomly as synonyms. You must complete the words separated by comma and per line in the textarea."></span>
+									<p></p>
+									<?php _e('<b><i>Deletes till the end of the line</i></b> feature.', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="This feature allows to delete from a word or phrase until the end of the line of a sentence."></span>
 									<p></p>
 
 								<?php endif; ?>
@@ -797,6 +780,8 @@ function wpematico_helpsettings($dev=''){
 				'plustip' => __('Try it at your own risk, if you see that the images are not loading, uncheck it.', 'wpematico' ).
 					'<br />'. __('Also uncheck this if you need all sizes of wordpress images. The WP process can take too much resources if many images are uploaded at a time.', 'wpematico' ),
 			),
+		),
+		'Audio Settings' => array( 
 			'audio_cache' => array( 
 				'title' => __('Cache Audios. (Uploads)', 'wpematico' ),
 				'tip' => __('When Cache Audios is on, a copy of every audio found in content of every feed item (only in &lt;audio&gt; tags) is downloaded to the Wordpress UPLOADS Dir.', 'wpematico' ) . "<br />" . 
@@ -826,7 +811,8 @@ function wpematico_helpsettings($dev=''){
 				'plustip' => __('Try it at your own risk, if you see that the audios are not loading, uncheck it.', 'wpematico' ).
 					'<br />'. __('Also uncheck this if you need all sizes of wordpress audios. The WP process can take too much resources if many audios are uploaded at a time.', 'wpematico' ),
 			),
-
+		),
+		'Video Settings' => array( 
 			'video_cache' => array( 
 				'title' => __('Cache Videos. (Uploads)', 'wpematico' ),
 				'tip' => __('When Cache Videos is on, a copy of every video found in content of every feed item (only in &lt;video&gt; tags) is downloaded to the Wordpress UPLOADS Dir.', 'wpematico' ) . "<br />" . 
@@ -1031,13 +1017,13 @@ function wpematico_helpsettings($dev=''){
 			}
 		}
 		$helptip = array_merge($helptip, array(
-			 'PROfeatures'		=> __('Features only available when you buy the PRO version.', 'wpematico' ),
+			 'PROfeatures'		=> __('Features only available when you buy the Professional Addon.', 'wpematico' ),
 			 'enablekwordf' 	=> __('This is for exclude or include posts according to the keywords <b>found</b> at content or title.', 'wpematico' ),
 			 'enablewcf' 	 	=> __('This is for cut, exclude or include posts according to the letters o words <b>counted</b> at content.', 'wpematico' ),
 			 'enablecustomtitle'=> __('If you want a custom title for posts of a campaign, you can activate here.', 'wpematico' ),
 			 'enabletags'		=> __('This feature generate tags automatically on every published post, on campaign edit you can disable auto feature and manually enter a list of tags or leave empty.', 'wpematico' ),
 			 'enablecfields'	=> __('Add custom fields with values as templates on every post.', 'wpematico' ),
-			 'fullcontent'		=> __('If you want to attempt to obtain full items content from source site instead of the campaign feed, you can activate here.', 'wpematico' ),
+			 'fullcontent'		=> __('Full Content is the correct addon if you want to attempt to obtain full items content from source site instead of the campaign feed.', 'wpematico' ),
 			 'authorfeed'		=> __('This option allow you assign an author per feed when editing campaign. If no choice any author, the campaign author will be taken.', 'wpematico' ),
 			 'importfeeds'		=> __('On campaign edit you can import, copy & paste in a textarea field, a list of feed addresses with/out author names.', 'wpematico' ),
 			)

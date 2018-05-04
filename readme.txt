@@ -270,7 +270,7 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
-= 1.9.4 May 03, 2018 =
+= 1.9.4 May 04, 2018 =
 * Added a new option to use as category the word most used into Word to Category feature.
 * Added scheduled crons in System status tab.
 * Updated Updater class to v1.6.16.
@@ -1111,7 +1111,6 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 1.9.1 =
-* **Enlarges the version required for the Professional addons to 1.9.1**
+= 1.9.4 =
 * **NOTE: Highly recommended to test it in development ambients before update**
 * Many improvements and fixes. See changelog for more details.
