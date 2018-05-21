@@ -236,8 +236,11 @@ class WPEMATICO_Welcome {
 					<div class="feature-section">
 						<div class="feature-section-media">
 							<h4><?php _e( 'The last WPeMatico Addons', 'wpematico' );?></h4>
+							<img style="float:left;margin-right: 7px; width: 120px;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/wpematico_exporter-200x100.png'; ?>" alt="wpematico_exporter" width="200" />
+							<p><?php _e('The','wpematico'); ?> <a href="https://etruel.com/downloads/wpematico-exporter/" target="_blank">WPeMatico Exporter</a> 
+							<?php _e( 'is a very easy to use WordPress auto-exporter plugin in which you can create XML files automatically from the Posts types of your choice.', 'wpematico' );?></p>
 							<img style="float:left;margin-right: 7px; width: 120px;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/wpematico_manual_fetching-200x100.png'; ?>" alt="wpematico_translator" width="200" />
-							<p><?php _e('The','wpematico'); ?> <a href="https://etruel.com/downloads/wpematico-polyglot/" target="_blank">WPeMatico Manual Fetching</a> 
+							<p><?php _e('The','wpematico'); ?> <a href="https://etruel.com/downloads/wpematico-manual-fetching/" target="_blank">WPeMatico Manual Fetching</a> 
 							<?php _e( 'extends the Campaign Preview functionality to every feed individually and allows you to review and insert each item, one by one or in bulk mode.', 'wpematico' );?></p>
 							<img style="float:left;margin-right: 7px; width: 120px;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/wpematico-hooks_200x100.png'; ?>" alt="WPeMatico Custom Hooks" width="200" />
 							<p><?php _e('The','wpematico'); ?> <a href="https://wordpress.org/plugins/wpematico-custom-hooks/" target="_blank">WPeMatico Custom Hooks</a> 
@@ -245,9 +248,6 @@ class WPEMATICO_Welcome {
 							<img style="float:left;margin-right: 7px; width: 120px;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/wpematico_polyglot-200x100.png'; ?>" alt="wpematico_translator" width="200" />
 							<p><?php _e('The','wpematico'); ?> <a href="https://etruel.com/downloads/wpematico-polyglot/" target="_blank">WPeMatico Polyglot</a> 
 							<?php _e( 'lets you select the original language of articles in a campaign to translate them to one of the 107 supported languages before inserting them in your blog.', 'wpematico' );?></p>
-							<img style="float:left;margin-right: 7px; width: 120px;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/wpematico_cache-200x100.png'; ?>" alt="wpematico_audio y video" width="200" />
-							<p><?php _e('The','wpematico'); ?> <a href="https://etruel.com/downloads/wpematico-cache/" target="_blank">WPeMatico Cache</a> 
-							<?php _e( 'A powerful single plugin or WPeMatico addon, which optimizes the websites speed with processes that reduces the overload of the websites where it is installed, improving till 10x the load speed.', 'wpematico' );?></p>
 						</div>
 						<div class="feature-section-content">
 							<h4><?php _e('Better speed on uploading files.', 'wpematico' );?></h4>
