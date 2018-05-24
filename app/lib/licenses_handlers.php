@@ -493,16 +493,17 @@ class wpematico_licenses_handlers {
 			
 			
 			$html_addons = '
-			<div class="postbox ">
+			<div class="postbox-license">
 			<div class="inside">
 			<h2><span class="dashicons-before dashicons-admin-plugins"></span>'.__($plugin_title_name.' License', 'wpematico').'</h2>
+			<div class="plugin-img">
+				<img src="">
+			</div>
 			<table class="form-table">
 			<tbody>
 				<tr valign="top">
-					<th scope="row" valign="top">
-						'.__('License Key', 'wpematico').'
-					</th>
 					<td>
+						<label style="display:block; font-weight: 600; margin-bottom: 10px;">'.__('License Key', 'wpematico').'</label>
 						<input id="license_key_'.$plugin_name.'" data-plugin="'.$plugin_name.'" class="regular-text inp_license_key" name="license_key['.$plugin_name.']" type="text" value="'.esc_attr( $license ).'" /><br />
 						<label class="description" for="license_key_'.$plugin_name.'">'.__('Enter your license key', 'wpematico').'</label>
 					</td>
