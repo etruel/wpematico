@@ -340,7 +340,7 @@ public static function template_box( $post ) {
 		<p class="he20"><b><?php _e('Modify, manage or add extra content to every post fetched.', 'wpematico' ) ?></b></p>
 		<div id="wpe_post_template_edit" class="inlinetext" style="background: #c1fefe;;padding: 0.5em;">
 			<label for="campaign_enable_template">
-				<input name="campaign_enable_template" id="campaign_enable_template" class="checkbox" value="1" type="checkbox"<?php checked($campaign_enable_template,true) ?> /> <?php _e('Enable Post Template', 'wpematico' ) ?>
+				<input name="campaign_enable_template" id="campaign_enable_template" class="checkbox" value="1" type="checkbox"<?php checked($campaign_enable_template,true) ?> /> <?php _e('Use custom posts template', 'wpematico' ) ?>
 			</label>
 			<div id="postemplatearea" style="<?php echo (checked($campaign_enable_template,true))?'':'display:none'; ?>">
 				<textarea class="large-text" id="campaign_template" name="campaign_template" /><?php echo stripslashes($campaign_template) ?></textarea><br/>
@@ -450,19 +450,19 @@ public static function template_box( $post ) {
 		<div id="div_no_setting_img" style="margin-left: 20px; <?php if (!$campaign_no_setting_img) echo 'display:none;';?>">
 			<p>
 				<input name="campaign_imgcache" id="campaign_imgcache" class="checkbox left" value="1" type="checkbox" <?php checked($campaign_imgcache,true); ?> />
-				<b><label for="campaign_imgcache"><?php echo __('Cache Images.', 'wpematico' ); ?></label></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['imgcache']; ?>"></span>
+				<b><label for="campaign_imgcache"><?php echo __('Store images locally.', 'wpematico' ); ?></label></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['imgcache']; ?>"></span>
 			</p>
 			<div id="nolinkimg" style="margin-left: 20px; <?php if (!$campaign_imgcache) echo 'display:none;';?>">
 				
 				<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_attach_img,true); ?> name="campaign_attach_img" id="campaign_attach_img" /><b>&nbsp;<label for="campaign_attach_img"><?php _e('Attach Images to posts.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['imgattach']; ?>"></span><br/>
 				
-				<input name="campaign_nolinkimg" id="campaign_nolinkimg" class="checkbox" value="1" type="checkbox" <?php checked($campaign_nolinkimg,true); ?> /><label for="campaign_nolinkimg"><?php _e('No link to source images', 'wpematico' ); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['gralnolinkimg']; ?>"></span><br/>
+				<input name="campaign_nolinkimg" id="campaign_nolinkimg" class="checkbox" value="1" type="checkbox" <?php checked($campaign_nolinkimg,true); ?> /><label for="campaign_nolinkimg"><?php _e('Remove link to source images', 'wpematico' ); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['gralnolinkimg']; ?>"></span><br/>
 				
 				<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_image_srcset,true); ?> name="campaign_image_srcset" id="campaign_image_srcset" /><b>&nbsp;<label for="campaign_image_srcset"><?php esc_attr_e('Use srcset attribute instead of src of <img> tag.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['image_srcset']; ?>"></span><br/>
 				
 			</div>
 			<p></p>
-			<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_featuredimg, true); ?> name="campaign_featuredimg" id="campaign_featuredimg" /><b>&nbsp;<label for="campaign_featuredimg"><?php _e('Enable first image found on content as Featured Image.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['featuredimg']; ?>"></span>
+			<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_featuredimg, true); ?> name="campaign_featuredimg" id="campaign_featuredimg" /><b>&nbsp;<label for="campaign_featuredimg"><?php _e('Set first image in content as Featured Image.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['featuredimg']; ?>"></span>
 			<br />
 			
 
@@ -482,7 +482,7 @@ public static function template_box( $post ) {
 			<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_rmfeaturedimg, true); ?> name="campaign_rmfeaturedimg" id="campaign_rmfeaturedimg" /><b>&nbsp;<label for="campaign_rmfeaturedimg"><?php _e('Remove Featured Image from content.', 'wpematico' ); ?></label></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['rmfeaturedimg']; ?>"></span>
 			<p></p>
 			<div id="custom_uploads" style="<?php if (!$campaign_imgcache && !$campaign_featuredimg) echo 'display:none;';?>">
-				<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_customupload, true); ?> name="campaign_customupload" id="campaign_customupload" /><b>&nbsp;<label for="campaign_customupload"><?php _e('Custom function for uploads.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['customupload']; ?>"></span>
+				<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_customupload, true); ?> name="campaign_customupload" id="campaign_customupload" /><b>&nbsp;<label for="campaign_customupload"><?php _e('Use custom upload.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['customupload']; ?>"></span>
 				<br/>
 			</div>
 			<?php
@@ -519,19 +519,19 @@ public static function template_box( $post ) {
 			?>
 			<p>
 				<input name="campaign_audio_cache" id="campaign_audio_cache" class="checkbox left" value="1" type="checkbox" <?php checked($campaign_audio_cache,true); ?> />
-				<b><label for="campaign_audio_cache"><?php echo __('Cache Audios.', 'wpematico' ); ?></label></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['audio_cache']; ?>"></span>
+				<b><label for="campaign_audio_cache"><?php echo __('Store audios locally.', 'wpematico' ); ?></label></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['audio_cache']; ?>"></span>
 			</p>
 			<div id="nolink_audio" style="margin-left: 20px; <?php if (!$campaign_audio_cache) echo 'display:none;';?>">
 				
 				<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_attach_audio,true); ?> name="campaign_attach_audio" id="campaign_attach_audio" /><b>&nbsp;<label for="campaign_attach_audio"><?php _e('Attach Audios to posts.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['audio_attach']; ?>"></span><br/>
 				
 				<input name="campaign_nolink_audio" id="campaign_nolink_audio" class="checkbox" value="1" type="checkbox" <?php checked($campaign_nolink_audio,true); ?> />
-				<?php echo '<label for="campaign_nolink_audio">' . __('No link to source audios', 'wpematico' ) . '</label>'; ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['gralnolink_audio']; ?>"></span>
+				<?php echo '<label for="campaign_nolink_audio">' . __('Remove link to source audios', 'wpematico' ) . '</label>'; ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['gralnolink_audio']; ?>"></span>
 				
 			</div>
 			<p></p>
 			<div id="custom_uploads_audios" style="<?php if (!$campaign_audio_cache) echo 'display:none;';?>">
-				<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_customupload_audio, true); ?> name="campaign_customupload_audio" id="campaign_customupload_audio" /><b>&nbsp;<label for="campaign_customupload_audio"><?php _e('Custom function for uploads.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['customupload_audios']; ?>"></span>
+				<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_customupload_audio, true); ?> name="campaign_customupload_audio" id="campaign_customupload_audio" /><b>&nbsp;<label for="campaign_customupload_audio"><?php _e('Use custom upload.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['customupload_audios']; ?>"></span>
 				<br/>
 			</div>
 			<?php
@@ -565,19 +565,19 @@ public static function template_box( $post ) {
 		<div id="div_no_setting_video" style="margin-left: 20px; <?php if (!$campaign_no_setting_video) echo 'display:none;';?>">
 			<p>
 				<input name="campaign_video_cache" id="campaign_video_cache" class="checkbox left" value="1" type="checkbox" <?php checked($campaign_video_cache,true); ?> />
-				<b><label for="campaign_video_cache"><?php echo __('Cache Videos.', 'wpematico' ); ?></label></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['video_cache']; ?>"></span>
+				<b><label for="campaign_video_cache"><?php echo __('Store videos locally.', 'wpematico' ); ?></label></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['video_cache']; ?>"></span>
 			</p>
 			<div id="nolink_video" style="margin-left: 20px; <?php if (!$campaign_video_cache) echo 'display:none;';?>">
 				
 				<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_attach_video,true); ?> name="campaign_attach_video" id="campaign_attach_video" /><b>&nbsp;<label for="campaign_attach_video"><?php _e('Attach Videos to posts.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['video_attach']; ?>"></span><br/>
 				
 				<input name="campaign_nolink_video" id="campaign_nolink_video" class="checkbox" value="1" type="checkbox" <?php checked($campaign_nolink_video,true); ?> />
-				<?php echo '<label for="campaign_nolink_video">' . __('No link to source videos', 'wpematico' ) . '</label>'; ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['gralnolink_video']; ?>"></span>
+				<?php echo '<label for="campaign_nolink_video">' . __('Remove link to source videos', 'wpematico' ) . '</label>'; ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['gralnolink_video']; ?>"></span>
 				
 			</div>
 			<p></p>
 			<div id="custom_uploads_videos" style="<?php if (!$campaign_video_cache) echo 'display:none;';?>">
-				<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_customupload_video, true); ?> name="campaign_customupload_video" id="campaign_customupload_video" /><b>&nbsp;<label for="campaign_customupload_video"><?php _e('Custom function for uploads.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['customupload_videos']; ?>"></span>
+				<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_customupload_video, true); ?> name="campaign_customupload_video" id="campaign_customupload_video" /><b>&nbsp;<label for="campaign_customupload_video"><?php _e('Use custom upload.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['customupload_videos']; ?>"></span>
 				<br/>
 			</div>
 			<?php
@@ -633,7 +633,7 @@ public static function options_box( $post ) {
 		</p>
 
 		<p>
-			<label for="campaign_commentstatus"><?php echo __('Discussion options:', 'wpematico' ); ?></label>
+			<label for="campaign_commentstatus"><?php echo __('Comments options:', 'wpematico' ); ?></label>
 			<select id="campaign_commentstatus" name="campaign_commentstatus">
 				<option value="open"<?php echo ($campaign_commentstatus =="open" || $campaign_commentstatus =="") ? 'SELECTED' : ''; ?> >Open</option>
 				<option value="closed" <?php echo ($campaign_commentstatus =="closed") ? 'SELECTED' : ''; ?> >Closed</option>

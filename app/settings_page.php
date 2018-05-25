@@ -174,7 +174,7 @@ function wpematico_settings(){
 								</p>
 								<p></p>
 								<p style="text-align: center;">
-									<input type="button" class="button-primary" name="buypro" value="<?php _e('Buy PRO version online', 'wpematico'); ?>" onclick="javascript:window.open('https://etruel.com/downloads/wpematico-pro/');return false;"/>
+									<input type="button" class="button-primary" name="buypro" value="<?php _e('Get the PRO Version', 'wpematico'); ?>" onclick="javascript:window.open('https://etruel.com/downloads/wpematico-pro/');return false;"/>
 								</p>
 								<p></p>
 							</div>
@@ -225,7 +225,7 @@ function wpematico_settings(){
 									<h3><span class="dashicons dashicons-welcome-learn-more" style="font-size-adjust: 1;width: 50px;"></span><?php _e('Extended functionalities', 'wpematico'); ?></h3>
 									<p>
 										<?php
-										echo sprintf(__('Many AddOns makes the %s with the most wanted functionalities.') . '  ', '<a href="https://etruel.com/starter-packages/" target="_blank" rel="noopener"><strong>Starter Packages</strong></a>');
+										echo sprintf(__('Many AddOns make up the %s with the most wanted features.') . '  ', '<a href="https://etruel.com/starter-packages/" target="_blank" rel="noopener"><strong>Starter Packages</strong></a>');
 										?> 
 										<span>
 											<?php _e('Lot of new features with contents, images, tags, filters, custom fields, custom feed tags and much more extends in the WPeMatico free plugin, going further than RSS feed limits and takes you to a new experience.', 'wpematico'); ?>
@@ -303,21 +303,21 @@ function wpematico_settings(){
 							</button>
 							<h3 class="hndle"><span class="dashicons dashicons-format-image"></span> <span><?php _e('Global Settings for Images', 'wpematico'); ?></span></h3>
 							<div class="inside">
-								<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['imgcache'], true); ?> name="imgcache" id="imgcache" />&nbsp;<b><label for="imgcache"><?php _e('Cache Images.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['imgcache']; ?>"></span>
+								<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['imgcache'], true); ?> name="imgcache" id="imgcache" />&nbsp;<b><label for="imgcache"><?php _e('Store images locally.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['imgcache']; ?>"></span>
 								<div id="nolinkimg" style="padding-left:20px; <?php if(!$cfg['imgcache']) echo 'display:none;'; ?>">
 									<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['imgattach'], true); ?> name="imgattach" id="imgattach" /><b>&nbsp;<label for="imgattach"><?php _e('Attach Images to posts.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['imgattach']; ?>"></span>
 									<br/>
-									<input name="gralnolinkimg" id="gralnolinkimg" class="checkbox" value="1" type="checkbox" <?php checked($cfg['gralnolinkimg'], true); ?> /><label for="gralnolinkimg"><?php _e('No link to source images', 'wpematico'); ?></label><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['gralnolinkimg']; ?>"></span>
+									<input name="gralnolinkimg" id="gralnolinkimg" class="checkbox" value="1" type="checkbox" <?php checked($cfg['gralnolinkimg'], true); ?> /><label for="gralnolinkimg"><?php _e('Remove link to source images', 'wpematico'); ?></label><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['gralnolinkimg']; ?>"></span>
 									<br/>
 									<input name="image_srcset" id="image_srcset" class="checkbox" value="1" type="checkbox" <?php checked($cfg['image_srcset'], true); ?> /><b>&nbsp;<label for="image_srcset"><?php esc_attr_e('Use srcset attribute instead of src of <img> tag.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['image_srcset']; ?>"></span>
 								</div>
 								<p></p>
-								<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['featuredimg'], true); ?> name="featuredimg" id="featuredimg" /><b>&nbsp;<label for="featuredimg"><?php _e('Enable first image found on content as Featured Image.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['featuredimg']; ?>"></span>
+								<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['featuredimg'], true); ?> name="featuredimg" id="featuredimg" /><b>&nbsp;<label for="featuredimg"><?php _e('Set first image in content as Featured Image.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['featuredimg']; ?>"></span>
 								<br />
 								<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['rmfeaturedimg'], true); ?> name="rmfeaturedimg" id="rmfeaturedimg" /><b>&nbsp;<label for="rmfeaturedimg"><?php _e('Remove Featured Image from content.', 'wpematico'); ?></label></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['rmfeaturedimg']; ?>"></span>
 								<p></p>
 								<div id="custom_uploads" style="<?php if(!$cfg['imgcache'] && !$cfg['featuredimg']) echo 'display:none;'; ?>">
-									<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['customupload'], true); ?> name="customupload" id="customupload" /><b>&nbsp;<label for="customupload"><?php _e('Custom function for uploads.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['customupload']; ?>"></span>
+									<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['customupload'], true); ?> name="customupload" id="customupload" /><b>&nbsp;<label for="customupload"><?php _e('Use custom upload.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['customupload']; ?>"></span>
 									<br/>
 								</div>
 								<?php do_action('wpematico_settings_images', $cfg); ?>
@@ -331,15 +331,15 @@ function wpematico_settings(){
 							</button>
 							<h3 class="hndle"><span class="dashicons dashicons-format-video"></span> <span><?php _e('Global Settings for Videos', 'wpematico'); ?></span></h3>
 							<div class="inside">
-								<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['video_cache'], true); ?> name="video_cache" id="video_cache" />&nbsp;<b><label for="video_cache"><?php _e('Cache Videos.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['video_cache']; ?>"></span>
+								<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['video_cache'], true); ?> name="video_cache" id="video_cache" />&nbsp;<b><label for="video_cache"><?php _e('Store videos locally.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['video_cache']; ?>"></span>
 								<div id="nolink_video" style="padding-left:20px; <?php if(!$cfg['video_cache']) echo 'display:none;'; ?>">
 									<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['video_attach'], true); ?> name="video_attach" id="video_attach" /><b>&nbsp;<label for="video_attach"><?php _e('Attach Videos to posts.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['video_attach']; ?>"></span>
 									<br/>
-									<input name="gralnolink_video" id="gralnolink_video" class="checkbox" value="1" type="checkbox" <?php checked($cfg['gralnolink_video'], true); ?> /><label for="gralnolink_video"><?php _e('No link to source videos', 'wpematico'); ?></label><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['gralnolink_video']; ?>"></span>
+									<input name="gralnolink_video" id="gralnolink_video" class="checkbox" value="1" type="checkbox" <?php checked($cfg['gralnolink_video'], true); ?> /><label for="gralnolink_video"><?php _e('Remove link to source videos', 'wpematico'); ?></label><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['gralnolink_video']; ?>"></span>
 								</div>
 								<p></p>
 								<div id="custom_uploads_videos" style="<?php if(!$cfg['video_cache']) echo 'display:none;'; ?>">
-									<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['customupload_videos'], true); ?> name="customupload_videos" id="customupload_videos" /><b>&nbsp;<label for="customupload_videos"><?php _e('Custom function for uploads.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['customupload_videos']; ?>"></span>
+									<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['customupload_videos'], true); ?> name="customupload_videos" id="customupload_videos" /><b>&nbsp;<label for="customupload_videos"><?php _e('Use custom upload.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['customupload_videos']; ?>"></span>
 									<br/>
 								</div>
 								<?php do_action('wpematico_settings_videos', $cfg); ?>
@@ -353,15 +353,15 @@ function wpematico_settings(){
 							</button>
 							<h3 class="hndle"><span class="dashicons dashicons-format-audio"></span> <span><?php _e('Global Settings for Audios', 'wpematico'); ?></span></h3>
 							<div class="inside">
-								<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['audio_cache'], true); ?> name="audio_cache" id="audio_cache" />&nbsp;<b><label for="audio_cache"><?php _e('Cache Audios.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['audio_cache']; ?>"></span>
+								<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['audio_cache'], true); ?> name="audio_cache" id="audio_cache" />&nbsp;<b><label for="audio_cache"><?php _e('Store audios locally.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['audio_cache']; ?>"></span>
 								<div id="nolink_audio" style="padding-left:20px; <?php if(!$cfg['audio_cache']) echo 'display:none;'; ?>">
 									<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['audio_attach'], true); ?> name="audio_attach" id="audio_attach" /><b>&nbsp;<label for="audio_attach"><?php _e('Attach Audios to posts.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['audio_attach']; ?>"></span>
 									<br/>
-									<input name="gralnolink_audio" id="gralnolink_audio" class="checkbox" value="1" type="checkbox" <?php checked($cfg['gralnolink_audio'], true); ?> /><label for="gralnolink_audio"><?php _e('No link to source audios', 'wpematico'); ?></label><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['gralnolink_audio']; ?>"></span>
+									<input name="gralnolink_audio" id="gralnolink_audio" class="checkbox" value="1" type="checkbox" <?php checked($cfg['gralnolink_audio'], true); ?> /><label for="gralnolink_audio"><?php _e('Remove link to source audios', 'wpematico'); ?></label><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['gralnolink_audio']; ?>"></span>
 								</div>
 								<p></p>
 								<div id="custom_uploads_audios" style="<?php if(!$cfg['audio_cache']) echo 'display:none;'; ?>">
-									<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['customupload_audios'], true); ?> name="customupload_audios" id="customupload_audios" /><b>&nbsp;<label for="customupload_audios"><?php _e('Custom function for uploads.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['customupload_audios']; ?>"></span>
+									<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['customupload_audios'], true); ?> name="customupload_audios" id="customupload_audios" /><b>&nbsp;<label for="customupload_audios"><?php _e('Use custom upload.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['customupload_audios']; ?>"></span>
 									<br/>
 								</div>
 								<?php do_action('wpematico_settings_audios', $cfg); ?>
@@ -526,7 +526,7 @@ function wpematico_settings(){
 								<label for="jumpduplicates"><b><?php _e('Continue Fetching if found duplicated items.', 'wpematico'); ?></b></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['jumpduplicates']; ?>"></span>
 								<p></p>
 								<input name="disableccf" id="disableccf" class="checkbox" value="1" type="checkbox" <?php checked($cfg['disableccf'], true); ?> />
-								<label for="disableccf"><b><?php _e('Disables Plugin Custom fields.', 'wpematico'); ?></b></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disableccf']; ?>"></span>
+								<label for="disableccf"><b><?php _e('Disable plugin custom fields.', 'wpematico'); ?></b></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disableccf']; ?>"></span>
 								<br />
 
 							</div>
@@ -541,7 +541,7 @@ function wpematico_settings(){
 							<div class="inside">
 								<?php  // More details on https://wp-mix.com/wordpress-cron-not-working/   	?>
 								<label><input class="checkbox" id="enable_alternate_wp_cron" type="checkbox"<?php checked($cfg['enable_alternate_wp_cron'], true); ?> name="enable_alternate_wp_cron" value="1"/> 
-									<strong><?php _e('Enable ALTERNATE_WP_CRON', 'wpematico'); ?></strong></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enable_alternate_wp_cron']; ?>"></span>
+									<strong><?php _e('Use ALTERNATE_WP_CRON', 'wpematico'); ?></strong></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enable_alternate_wp_cron']; ?>"></span>
 								<p></p> 
 								<label><input class="checkbox" id="dontruncron" type="checkbox"<?php checked($cfg['dontruncron'], true); ?> name="dontruncron" value="1"/> 
 									<strong><?php _e('Disable WPeMatico schedulings', 'wpematico'); ?></strong></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['dontruncron']; ?>"></span>
@@ -556,7 +556,7 @@ function wpematico_settings(){
 										<strong><?php _e('Set a password to access the external CRON', 'wpematico'); ?></strong></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['set_cron_code']; ?>"></span>
 									<br /> 
 									<label style="padding-left:20px;">
-										<?php _e('Type the password to use the external CRON', 'wpematico'); ?>: 
+										<?php _e('Set a password to use the external CRON', 'wpematico'); ?>: 
 										<input type="hidden" id="autocode" value="<?php echo substr(md5(time()), 0, 8); ?>"/> 
 										<a style="font-size: 2.2em;" title="<?php _e('Paste a generated a ramdon string.'); ?>" class='dashicons dashicons-migrate' onclick="Javascript: jQuery('#cron_code').val( jQuery('#autocode').val() );" > &nbsp;&nbsp;</a> &nbsp;
 										<input name="cron_code" title="<?php _e('See text.'); ?>" id="cron_code" type="text" value="<?php echo $cfg['cron_code']; ?>" class="standard-text" /> 
@@ -733,8 +733,8 @@ function wpematico_helpsettings($dev=''){
 				'tip' => __('Set this features for all campaigns and can be overridden inside any campaign.', 'wpematico' ),
 			),
 			'imgcache' => array( 
-				'title' => __('Cache Images. (Uploads)', 'wpematico' ),
-				'tip' => __('When Cache Images is on, a copy of every image found in content of every feed item (only in &lt;img&gt; tags) is downloaded to the Wordpress UPLOADS Dir.', 'wpematico' ) . "<br />" . 
+				'title' => __('Store images locally. (Uploads)', 'wpematico' ),
+				'tip' => __('When Store images locally is on, a copy of every image found in content of every feed item (only in &lt;img&gt; tags) is downloaded to the Wordpress UPLOADS Dir.', 'wpematico' ) . "<br />" . 
 					__('If not enabled all images will be linked to the image owner\'s server, but also make your website faster for your visitors.', 'wpematico' ) . "<br />".
 					"<b>" . __('Caching all images', 'wpematico' ) . ":</b> " . 
 					__('This featured in the general Settings section, will be overridden for the campaign-specific options.', 'wpematico' ),
@@ -783,8 +783,8 @@ function wpematico_helpsettings($dev=''){
 		),
 		'Audio Settings' => array( 
 			'audio_cache' => array( 
-				'title' => __('Cache Audios. (Uploads)', 'wpematico' ),
-				'tip' => __('When Cache Audios is on, a copy of every audio found in content of every feed item (only in &lt;audio&gt; tags) is downloaded to the Wordpress UPLOADS Dir.', 'wpematico' ) . "<br />" . 
+				'title' => __('Store audios locally. (Uploads)', 'wpematico' ),
+				'tip' => __('When Store audios locally is on, a copy of every audio found in content of every feed item (only in &lt;audio&gt; tags) is downloaded to the Wordpress UPLOADS Dir.', 'wpematico' ) . "<br />" . 
 					__('If not enabled all audios will be linked to the audio owner\'s server, but also make your website faster for your visitors.', 'wpematico' ) . "<br />".
 					"<b>" . __('Caching all audios', 'wpematico' ) . ":</b> " . 
 					__('This featured in the general Settings section, will be overridden for the campaign-specific options.', 'wpematico' ),
@@ -814,8 +814,8 @@ function wpematico_helpsettings($dev=''){
 		),
 		'Video Settings' => array( 
 			'video_cache' => array( 
-				'title' => __('Cache Videos. (Uploads)', 'wpematico' ),
-				'tip' => __('When Cache Videos is on, a copy of every video found in content of every feed item (only in &lt;video&gt; tags) is downloaded to the Wordpress UPLOADS Dir.', 'wpematico' ) . "<br />" . 
+				'title' => __('Store videos locally. (Uploads)', 'wpematico' ),
+				'tip' => __('When Store videos locally is on, a copy of every video found in content of every feed item (only in &lt;video&gt; tags) is downloaded to the Wordpress UPLOADS Dir.', 'wpematico' ) . "<br />" . 
 					__('If not enabled all videos will be linked to the video owner\'s server, but also make your website faster for your visitors.', 'wpematico' ) . "<br />".
 					"<b>" . __('Caching all videos', 'wpematico' ) . ":</b> " . 
 					__('This featured in the general Settings section, will be overridden for the campaign-specific options.', 'wpematico' ),
@@ -916,7 +916,7 @@ function wpematico_helpsettings($dev=''){
 					__('As the hash is checked only by the last retrieved item, selecting this option may generate duplicate posts if duplicate checking by title does not work well for a campaign.', 'wpematico' ),
 			),
 			'disableccf' => array( 
-				'title' => __('Disables Plugin Custom fields.', 'wpematico' ),
+				'title' => __('Disable plugin custom fields.', 'wpematico' ),
 				'tip' => __('This option nulls saving custom fields on every post that campaign publishes.', 'wpematico' ) .'<br>'
 					. __('By default the plugin saves three custom fields on every post with campaign and source item data.', 'wpematico' ) .'<br>'
 					. __('Necessary for use permalink to source feature, identify which campaign fetch the post or to make any bulk action on post types related with original campaign.', 'wpematico' ) .'<br>'
@@ -944,7 +944,7 @@ function wpematico_helpsettings($dev=''){
 				'plustip' => __('If this field is not checked the password will be ignored.', 'wpematico' ),
 			),
 			'cron_code' => array( 
-				'title' => __('Type the password to use the external CRON.', 'wpematico' ),
+				'title' => __('Set a password to use the external CRON.', 'wpematico' ),
 				'tip' => __('This will be the code used in the command to run the cron.  Can be any string you want to use as ?code=this_code.  Recommended.', 'wpematico' ),
 				// 'plustip' => __('', 'wpematico' ),
 			),
@@ -954,7 +954,7 @@ function wpematico_helpsettings($dev=''){
 				// 'plustip' => __('', 'wpematico' ),
 			),
 			'enable_alternate_wp_cron' => array( 
-				'title' => __('Enable ALTERNATE_WP_CRON.', 'wpematico' ),
+				'title' => __('Use ALTERNATE_WP_CRON.', 'wpematico' ),
 				'tip' => __('Some servers disable the functionality that enables WordPress Cron to work properly. This constant provides an easy fix that should work on any server.', 'wpematico' ),
 				// 'plustip' => __('', 'wpematico' ),
 			),
