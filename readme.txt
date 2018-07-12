@@ -1,4 +1,4 @@
-﻿=== WPeMatico ===
+﻿=== WPeMatico RSS Feed Fetcher ===
 Contributors: etruel, sniuk 
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS, RSS to Post, Feed to Post, autoblog,rss aggregator, Feed, rss to post, syndication, Post, Posts, aggregation, atom, bot, content, writing
@@ -270,6 +270,9 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
+= 2.0 Jul 14, 2018 =
+
+
 = 1.9.4 May 04, 2018 =
 * Added a new option to use as category the word most used into Word to Category feature.
 * Added scheduled crons in System status tab.
