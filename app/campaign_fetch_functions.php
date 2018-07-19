@@ -763,12 +763,38 @@ class wpematico_campaign_fetch_functions {
 			$title = apply_filters('wpematico_yt_altimg', $enclosures[0]->title );
 			$img = apply_filters('wpematico_yt_thumbnails', $enclosures[0]->thumbnails[0]);
 			$description = apply_filters('wpematico_yt_description', $enclosures[0]->description);
-			
-			$content = "<img src=\"$img\" alt=\"$title\"><br>$video<p>$description</p>";
+
+			$image_html = "<img src=\"$img\" alt=\"$title\"><br>";
+			if ($campaign['campaign_youtube_ign_image']) {
+				$image_html = "";
+			}
+
+			$description_html = "<p>$description</p>";
+			if ($campaign['campaign_youtube_ign_description']) {
+				$description_html = "";
+			}
+			$content = "$image_html $video $description_html";
 		}
 		return $content;
 	}
-	
+	public static function wpematico_get_yt_image($current_item, $campaign, $item, $options_images) {
+		if ($campaign['campaign_youtube_ign_image']) {
+			if ($campaign['campaign_youtube_image_only_featured']) {
+				$enclosures = $item->get_enclosures();
+				if (!empty($enclosures[0])) {
+					if (!empty($enclosures[0]->thumbnails[0])) {
+						$img = apply_filters('wpematico_yt_thumbnails', $enclosures[0]->thumbnails[0]);
+						if (empty($current_item['images'])) {
+							$current_item['images'][] = $img;
+						}
+					}
+				}
+				
+			}
+
+		}
+		return $current_item;
+	}
 	/**
    	* Filters audios, upload and replace on text item content
   	* @param   $current_item   array    Current post data to be saved

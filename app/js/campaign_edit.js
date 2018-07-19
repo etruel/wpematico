@@ -28,6 +28,17 @@ jQuery(document).ready(function($){
 		}
 	);
 
+
+	$('#campaign_youtube_ign_image').change(function() {
+		if ($('#campaign_youtube_ign_image').is(':checked')) {
+			$('#div_youtube_img_feature').fadeIn();
+		} else {
+			$('#div_youtube_img_feature').fadeOut();
+		}
+	});
+
+
+
 	$('#campaign_edit_reset').click(function(e) {
 		if ($(this).data('wpematico_before_save')) {
 			e.preventDefault();
@@ -285,6 +296,7 @@ jQuery(document).ready(function($){
 
 		}
 	});
+
 
 	word2cats_events();
 });

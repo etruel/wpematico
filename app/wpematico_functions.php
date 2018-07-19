@@ -811,6 +811,13 @@ class WPeMatico_functions {
 			}
 		}
 		$campaigndata['campaign_rewrites'] = !empty($campaign_rewrites) ? (array)$campaign_rewrites : array('origin'=>array(''),'title'=>array(false),'regex'=>array(false),'rewrite'=>array(''),'relink'=>array(''));
+		
+		
+		$campaigndata['campaign_youtube_ign_image']=(!isset($post_data['campaign_youtube_ign_image']) || empty($post_data['campaign_youtube_ign_image'])) ? false: ($post_data['campaign_youtube_ign_image']==1) ? true : false;
+		$campaigndata['campaign_youtube_image_only_featured']=(!isset($post_data['campaign_youtube_image_only_featured']) || empty($post_data['campaign_youtube_image_only_featured'])) ? false: ($post_data['campaign_youtube_image_only_featured']==1) ? true : false;
+		
+		$campaigndata['campaign_youtube_ign_description']=(!isset($post_data['campaign_youtube_ign_description']) || empty($post_data['campaign_youtube_ign_description'])) ? false: ($post_data['campaign_youtube_ign_description']==1) ? true : false;
+
 		if(has_filter('pro_check_campaigndata')) $campaigndata =  apply_filters('pro_check_campaigndata', $campaigndata, $post_data);
 		return $campaigndata;
 	}

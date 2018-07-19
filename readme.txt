@@ -271,6 +271,7 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 
 == Changelog ==
 = 2.0 Jul 14, 2018 =
+* Se agrego las funciones de ignore image, Solo usar como featured image y ignorar description.
 
 
 = 1.9.4 May 04, 2018 =
