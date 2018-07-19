@@ -976,14 +976,14 @@ public static function feeds_box( $post ) {
 		$campaign_youtube_ign_description = $campaign_data['campaign_youtube_ign_description'];
 		?>
 		<?php echo html_entity_decode($helptip['feed_url']); ?>
-		<p><strong>Ignore:</strong></p>
+		<p><strong><?php _e('Ignore:', 'wpematico'); ?></strong></p>
 		
-		<label><input class="checkbox" <?php checked($campaign_youtube_ign_image, true); ?> type="checkbox" name="campaign_youtube_ign_image" value="1" id="campaign_youtube_ign_image"> <?php _e('Image'); ?></label><br />
+		<label><input class="checkbox" <?php checked($campaign_youtube_ign_image, true); ?> type="checkbox" name="campaign_youtube_ign_image" value="1" id="campaign_youtube_ign_image"> <?php _e('Image', 'wpematico'); ?></label><br />
 		<div id="div_youtube_img_feature" style="margin-left: 17px; <?php echo (empty($campaign_youtube_ign_image)? 'display: none;' : ''); ?> ">
-			<label><input class="checkbox" <?php checked($campaign_youtube_image_only_featured, true); ?> type="checkbox" name="campaign_youtube_image_only_featured" value="1" id="campaign_youtube_image_only_featured"> <?php _e('Use only as featured image'); ?></label><br />
+			<label><input class="checkbox" <?php checked($campaign_youtube_image_only_featured, true); ?> type="checkbox" name="campaign_youtube_image_only_featured" value="1" id="campaign_youtube_image_only_featured"> <?php _e('Use only as featured image', 'wpematico'); ?></label><br />
 		</div>
 
-		<label><input class="checkbox" <?php checked($campaign_youtube_ign_description, true); ?> type="checkbox" name="campaign_youtube_ign_description" value="1" id="campaign_youtube_ign_description"> <?php _e('Description'); ?></label><br />
+		<label><input class="checkbox" <?php checked($campaign_youtube_ign_description, true); ?> type="checkbox" name="campaign_youtube_ign_description" value="1" id="campaign_youtube_ign_description"> <?php _e('Description', 'wpematico'); ?></label><br />
 		<?php
 	}
 
