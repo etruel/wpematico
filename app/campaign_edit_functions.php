@@ -975,26 +975,31 @@ public static function feeds_box( $post ) {
 		$campaign_youtube_image_only_featured = $campaign_data['campaign_youtube_image_only_featured'];
 		$campaign_youtube_ign_description = $campaign_data['campaign_youtube_ign_description'];
 		?><div class="ytpreview">
-			<div id="titlefeatured">Featured Image</div>
-			<div id="imgfeatured" class="dashicons dashicons-format-image" style="display: <?php echo ($campaign_youtube_ign_image && $campaign_youtube_image_only_featured)? 'none' : 'inline'; ?>;"></div>
-
-			<div id="titlecontent">Post Title</div>
-			<div id="imgcontent" class="dashicons dashicons-format-image" style="display: <?php echo ($campaign_youtube_ign_image && !$campaign_youtube_image_only_featured)? 'none' : 'inline'; ?>;"></div>
-			<br/>
-			<div id="videocontent" class="dashicons dashicons-format-video"></div>
+			<h4 id="titlefeatured">Featured Image</h4>
+			<div class="featured-box">
+				<span id="imgfeatured" class="dashicons dashicons-format-image" style="display: <?php echo ($campaign_youtube_ign_image && $campaign_youtube_image_only_featured)? 'none' : 'block'; ?>;"></span>
+			</div>
+			<h4 id="titlecontent">Post Title</h4>
+			<div class="images-box">
+				<span id="imgcontent" class="dashicons dashicons-format-image" style="display: <?php echo ($campaign_youtube_ign_image && !$campaign_youtube_image_only_featured)? 'none' : 'block'; ?>;"></span>
+			</div>
+			<div class="ytvideo-box">
+				<span id="videocontent" class="dashicons dashicons-controls-play"></span>
+			</div>
 			<div id="descritptioncontent" class="" style="display: <?php echo ($campaign_youtube_ign_description)? 'none' : 'block'; ?>;">
-				Lorem ipsum dolor sit amet, duo cibo voluptua platonem ne, veritus volutpat constituto eu est, vim in quodsi quaestio. Mei id cibo meis, sanctus blandit mnesarchum an vis. No mucius adipisci liberavisse est, pro te alii interesset. Vitae democritum eu vel. Commodo ancillae repudiare an cum, pro case sonet vocent et, elitr persius eloquentiam eu eos. Mel esse salutandi ad, errem feugait electram ius eu.
+				Lorem ipsum dolor sit amet, duo cibo voluptua platonem ne, veritus volutpat constituto est.
 			</div>	
 		</div>
-		<?php echo html_entity_decode($helptip['feed_url']); ?>
-		<p><strong><?php _e('Ignore:', 'wpematico'); ?></strong></p>
-		
-		<label><input class="checkbox" <?php checked($campaign_youtube_ign_image, true); ?> type="checkbox" name="campaign_youtube_ign_image" value="1" id="campaign_youtube_ign_image"> <?php _e('Image', 'wpematico'); ?></label><br />
-		<div id="div_youtube_img_feature" style="margin-left: 17px; <?php echo (empty($campaign_youtube_ign_image)? 'display: none;' : ''); ?> ">
-			<label><input class="checkbox" <?php checked($campaign_youtube_image_only_featured, true); ?> type="checkbox" name="campaign_youtube_image_only_featured" value="1" id="campaign_youtube_image_only_featured"> <?php _e('Use only as featured image', 'wpematico'); ?></label><br />
+		<div class="yt-help">
+			<?php echo html_entity_decode($helptip['feed_url']); ?>
+			<p><strong><?php _e('Ignore:', 'wpematico'); ?></strong></p>
+			
+			<label><input class="checkbox" <?php checked($campaign_youtube_ign_image, true); ?> type="checkbox" name="campaign_youtube_ign_image" value="1" id="campaign_youtube_ign_image"> <?php _e('Image', 'wpematico'); ?></label><br />
+			<div id="div_youtube_img_feature" style="margin-left: 17px; <?php echo (empty($campaign_youtube_ign_image)? 'display: none;' : ''); ?> ">
+				<label><input class="checkbox" <?php checked($campaign_youtube_image_only_featured, true); ?> type="checkbox" name="campaign_youtube_image_only_featured" value="1" id="campaign_youtube_image_only_featured"> <?php _e('Use only as featured image', 'wpematico'); ?></label><br />
+			</div>
+			<label><input class="checkbox" <?php checked($campaign_youtube_ign_description, true); ?> type="checkbox" name="campaign_youtube_ign_description" value="1" id="campaign_youtube_ign_description"> <?php _e('Description', 'wpematico'); ?></label><br />
 		</div>
-
-		<label><input class="checkbox" <?php checked($campaign_youtube_ign_description, true); ?> type="checkbox" name="campaign_youtube_ign_description" value="1" id="campaign_youtube_ign_description"> <?php _e('Description', 'wpematico'); ?></label><br />
 		<?php
 	}
 

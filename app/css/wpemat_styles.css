@@ -1320,24 +1320,93 @@ div#optionslayer-right {
 /* End CSS Corner Ribbon */
 
 /* Youtube Campaign  */
+#youtube-box .inside{
+    display: flex;
+    align-items: center;
+}
 .ytpreview {
     border: 1px lightgray solid;
-    float: left;
     padding: 10px;
-    margin: 7px;
+    margin: 7px 0;
 	color: gray;
-	width: 8em;
+    width: 100%;
+    box-sizing: border-box;
+    width: 150px;
+    min-width: 150px;
+    margin-right: 1rem;
 }
 .ytpreview .dashicons {
-    font-size: 8em;
-    display: inline;
-	color: lightgray;
+    font-size: 2em;
+    display: block;
+	color: #fff;
+    height: initial;
+    width: initial;
 }
-.ytpreview #imgfeatured{
-    font-size: 3em;
+.ytpreview h4{
+    margin: 0 0 0rem;
+    font-weight: 400;
+    font-size: .85em;
 }
 .ytpreview #titlecontent {
-    color: black;
+    color: #000;
 	font-weight: bold;
+}
+.ytpreview #descritptioncontent{
+    font-size: 9px;
+    line-height: 1;
+}
+.featured-box,
+.ytvideo-box,
+.images-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 0 .25rem;
+}
+.featured-box{
+    height: 35px;
+}
+.ytpreview .featured-box .dashicons{
+    font-size: 1.5em;
+}
+.featured-box,
+.images-box{
+    background-color: #8cd6f3;
+}
+.featured-box{
+    width: 60%;
+}
+.images-box{
+    width: 75%;
+}
+.ytvideo-box,
+.images-box{
+    height: 50px;
+}
+.ytvideo-box{
+    background-color: #aaa;
+}
+.ytvideo-box #videocontent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    font-size: 1.5em;
+}
+.yt-help{
+    width: 100%;
+}
+@media (max-width: 500px){
+    #youtube-box .inside{
+        flex-direction: column;
+        align-items: initial;
+    }
+    #youtube-box .inside .ytpreview{
+        order: 2;
+    }
 }
 /* End Youtube Campaign  */
