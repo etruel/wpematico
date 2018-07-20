@@ -137,12 +137,6 @@ You can submit any bug in the [bugtracker](https://bitbucket.org/etruel/wpematic
 
 ---
 
-> #### **[Chinese tags](https://etruel.com/downloads/wpematico-chinese-tags):**
-> * Automatic chinese tags generated from content phrases, require WPeMatico Free & Professional add-on.
-> * Like almost all things in automatic mode, bear in mind that it is not perfect. However, it is better than nothing ;)
-
----
-
 #### FREE & Premium Technical Support
 > #### **[FREE Technical Support](https://etruel.com/my-account/support):**
 > * Ask for any problem you may have and you'll get support for free.
@@ -270,8 +264,10 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
-= 2.0 Jul 14, 2018 =
-* Se agrego las funciones de ignore image, Solo usar como featured image y ignorar description.
+= 2.0 Jul 20, 2018 =
+* New major version! We're introducing the new Robotico 2.0!
+* Many code improvements. Graphics designs and cosmetic changes.
+* Youtube campaign type with options to include/exclude image and descriptions of videos.
 
 
 = 1.9.4 May 04, 2018 =

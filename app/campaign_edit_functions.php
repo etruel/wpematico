@@ -974,7 +974,18 @@ public static function feeds_box( $post ) {
 		$campaign_youtube_ign_image = $campaign_data['campaign_youtube_ign_image'];
 		$campaign_youtube_image_only_featured = $campaign_data['campaign_youtube_image_only_featured'];
 		$campaign_youtube_ign_description = $campaign_data['campaign_youtube_ign_description'];
-		?>
+		?><div class="ytpreview">
+			<div id="titlefeatured">Featured Image</div>
+			<div id="imgfeatured" class="dashicons dashicons-format-image" style="display: <?php echo ($campaign_youtube_ign_image && $campaign_youtube_image_only_featured)? 'none' : 'inline'; ?>;"></div>
+
+			<div id="titlecontent">Post Title</div>
+			<div id="imgcontent" class="dashicons dashicons-format-image" style="display: <?php echo ($campaign_youtube_ign_image && !$campaign_youtube_image_only_featured)? 'none' : 'inline'; ?>;"></div>
+			<br/>
+			<div id="videocontent" class="dashicons dashicons-format-video"></div>
+			<div id="descritptioncontent" class="" style="display: <?php echo ($campaign_youtube_ign_description)? 'none' : 'block'; ?>;">
+				Lorem ipsum dolor sit amet, duo cibo voluptua platonem ne, veritus volutpat constituto eu est, vim in quodsi quaestio. Mei id cibo meis, sanctus blandit mnesarchum an vis. No mucius adipisci liberavisse est, pro te alii interesset. Vitae democritum eu vel. Commodo ancillae repudiare an cum, pro case sonet vocent et, elitr persius eloquentiam eu eos. Mel esse salutandi ad, errem feugait electram ius eu.
+			</div>	
+		</div>
 		<?php echo html_entity_decode($helptip['feed_url']); ?>
 		<p><strong><?php _e('Ignore:', 'wpematico'); ?></strong></p>
 		

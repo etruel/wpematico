@@ -1318,3 +1318,26 @@ div#optionslayer-right {
   border-top: 3px solid #AD0C32;
 }
 /* End CSS Corner Ribbon */
+
+/* Youtube Campaign  */
+.ytpreview {
+    border: 1px lightgray solid;
+    float: left;
+    padding: 10px;
+    margin: 7px;
+	color: gray;
+	width: 8em;
+}
+.ytpreview .dashicons {
+    font-size: 8em;
+    display: inline;
+	color: lightgray;
+}
+.ytpreview #imgfeatured{
+    font-size: 3em;
+}
+.ytpreview #titlecontent {
+    color: black;
+	font-weight: bold;
+}
+/* End Youtube Campaign  */
