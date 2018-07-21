@@ -992,6 +992,7 @@ public static function feeds_box( $post ) {
 				Lorem ipsum dolor sit amet, duo cibo voluptua platonem ne, veritus volutpat constituto est.
 			</div>	
 		</div>
+		
 		<div class="yt-help">
 			<?php echo html_entity_decode($helptip['feed_url']); ?>
 			<p><strong><?php _e('Ignore:', 'wpematico'); ?></strong></p>
