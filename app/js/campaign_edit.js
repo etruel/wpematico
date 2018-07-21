@@ -36,7 +36,30 @@ jQuery(document).ready(function($){
 			$('#div_youtube_img_feature').fadeOut();
 		}
 	});
+	$('#campaign_youtube_ign_image, #campaign_youtube_image_only_featured, #campaign_youtube_ign_description').change(function() {
+		if ($('#campaign_youtube_ign_image').is(':checked') &&  !$('#campaign_youtube_image_only_featured').is(':checked')) {
+			$('.featured-box').fadeOut();
+			$('#titlefeatured').fadeOut();
+		} else {
+			$('.featured-box').fadeIn();
+			$('#titlefeatured').fadeIn();
+		}
 
+		if ($('#campaign_youtube_ign_image').is(':checked')) {
+			$('.images-box').fadeOut();
+		} else {
+			$('.images-box').fadeIn();
+		}
+
+		if ($('#campaign_youtube_ign_description').is(':checked')) {
+			$('#descritptioncontent').fadeOut();
+		} else {
+			$('#descritptioncontent').fadeIn();
+		}
+		 
+		
+
+	});
 
 
 	$('#campaign_edit_reset').click(function(e) {

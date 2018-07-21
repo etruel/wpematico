@@ -975,14 +975,16 @@ public static function feeds_box( $post ) {
 		$campaign_youtube_image_only_featured = $campaign_data['campaign_youtube_image_only_featured'];
 		$campaign_youtube_ign_description = $campaign_data['campaign_youtube_ign_description'];
 		?><div class="ytpreview">
-			<h4 id="titlefeatured">Featured Image</h4>
-			<div class="featured-box">
-				<span id="imgfeatured" class="dashicons dashicons-format-image" style="display: <?php echo ($campaign_youtube_ign_image && $campaign_youtube_image_only_featured)? 'none' : 'block'; ?>;"></span>
+			<h4 id="titlefeatured" style="display: <?php echo ($campaign_youtube_ign_image && !$campaign_youtube_image_only_featured)? 'none' : 'block'; ?>;">Featured Image</h4>
+			<div class="featured-box" style="display: <?php echo ($campaign_youtube_ign_image && !$campaign_youtube_image_only_featured)? 'none' : 'block'; ?>;">
+				<span id="imgfeatured" class="dashicons dashicons-format-image"></span>
 			</div>
+
 			<h4 id="titlecontent">Post Title</h4>
-			<div class="images-box">
-				<span id="imgcontent" class="dashicons dashicons-format-image" style="display: <?php echo ($campaign_youtube_ign_image && !$campaign_youtube_image_only_featured)? 'none' : 'block'; ?>;"></span>
+			<div class="images-box" style="display: <?php echo ($campaign_youtube_ign_image)? 'none' : 'block'; ?>;">
+				<span id="imgcontent" class="dashicons dashicons-format-image" ></span>
 			</div>
+
 			<div class="ytvideo-box">
 				<span id="videocontent" class="dashicons dashicons-controls-play"></span>
 			</div>
