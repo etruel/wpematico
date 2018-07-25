@@ -264,10 +264,10 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
-= 2.0 Jul 20, 2018 =
+= 2.0 Jul 24, 2018 =
 * New major version! We're introducing the new Robotico 2.0!
 * Many code improvements. Graphics designs and cosmetic changes.
-* Youtube campaign type with options to include/exclude image and descriptions of videos.
+* Preview template for the Youtube campaign types with options to include/exclude image and descriptions of videos.
 
 
 = 1.9.4 May 04, 2018 =
@@ -1111,6 +1111,6 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 1.9.4 =
+= 2.0 =
 * **NOTE: Highly recommended to test it in development ambients before update**
 * Many improvements and fixes. See changelog for more details.
