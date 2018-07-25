@@ -194,14 +194,30 @@ class WPEMATICO_Welcome {
 				$this->tabs();
 			?>
 			<div class="changelog">
-				<h2><?php _e( 'A new Campaign Fetch Preview.', 'wpematico' );?></h2>
+				<h2><?php _e( 'A new preview for the YouTube campaign.', 'wpematico' );?></h2>
 				<div class="feature-section">
 					<div class="feature-section-media">
 						<?php $this->subscription_form(); ?>
 					</div>
 					<div class="feature-section-content">
+						<h4><?php _e( 'This feature shows how the posts fetched from YouTube will look before that are created.', 'wpematico' );?></h4>
+						<p><?php _e( 'Now you have the possibility to choose which elements of the YouTube feeds will be included in the post, the image, the featured image or the description, the preview section in the metabox will show you in real time.', 'wpematico' );?></p>
+						<p><?php _e( "You can mark the selection options to see the possible results of the Post Template." , 'wpematico' );?></p>
+					</div>
+					<div class="feature-section-media">
+						<img style="float:left; width: 100%;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/yt-campaign.png'; ?>" alt="Preview for the YouTube campaign" width="400" />
+					</div>
+				</div>
+			</div>
+			<hr>
+			<div class="changelog">
+				<h2><?php _e( 'A new Campaign Fetch Preview.', 'wpematico' );?></h2>
+				<div class="feature-section">
+					<div class="feature-section-media">
+						<img style="border: 0;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/previewbutton.png'; ?>" alt="Campaign Control Panel" />
+					</div>
+					<div class="feature-section-content">
 						<h4><?php _e( 'Introducing the Campaign Preview Feature.', 'wpematico' );?></h4>
-						<img style="float:right;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/previewbutton.png'; ?>" alt="Campaign Control Panel" width="245" />
 						<p><?php _e( 'The most visible change in version 1.9 is certainly the Campaign Preview.', 'wpematico' );?><br />
 						<?php _e( 'This new feature lets you view the list of the posts the campaign will fetch the next time it runs.', 'wpematico' );?><br />
 						<?php _e( 'You can see the title, image and an excerpt of its content, but you can click in the title to see all its content like it will bring by WPeMatico plugin.', 'wpematico' );?>
@@ -219,8 +235,8 @@ class WPEMATICO_Welcome {
 			<div class="changelog">
 				<h2><?php _e( 'Some Performance Improvements.', 'wpematico' );?></h2>
 					<div class="feature-section">
-						<div class="feature-section-media">
-							<img style="float:left;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/utf8opt.png'; ?>" alt="Campaign UTF-8 option" width="400" />
+						<div class="feature-section-media" style="text-align: center;">
+							<img src="<?php echo WPEMATICO_PLUGIN_URL.'/images/utf8opt.png'; ?>" alt="Campaign UTF-8 option" width="400" />
 						</div>
 						<div class="feature-section-content">
 							<h4><?php _e('Convert character encoding to UTF-8.', 'wpematico' );?></h4>
@@ -235,19 +251,18 @@ class WPEMATICO_Welcome {
 				<h2><?php _e( 'More Tweaks and Improvements.', 'wpematico' );?></h2>
 					<div class="feature-section">
 						<div class="feature-section-media">
-							<h4><?php _e( 'The last WPeMatico Addons', 'wpematico' );?></h4>
+							<h4><?php _e( 'The last WPeMatico Addons', 'wpematico' );?></h4><img style="float:left;margin-right: 7px; width: 120px;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/wpematico_ebay-200x100.png'; ?>" alt="wpematico_ebay" width="200" />
+							<p><?php _e('The','wpematico'); ?> <a href="https://etruel.com/downloads/ebay-campaign-type/" target="_blank">WPeMatico Ebay Campaign Type</a>
+							<?php _e( 'allow you to use the eBay products in your website and publish them as posts or also as WooCommerce products by relating your eBay Parter Network Campaigns IDs.', 'wpematico' );?></p>
 							<img style="float:left;margin-right: 7px; width: 120px;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/wpematico_exporter-200x100.png'; ?>" alt="wpematico_exporter" width="200" />
 							<p><?php _e('The','wpematico'); ?> <a href="https://etruel.com/downloads/wpematico-exporter/" target="_blank">WPeMatico Exporter</a> 
 							<?php _e( 'is a very easy to use WordPress auto-exporter plugin in which you can create XML files automatically from the Posts types of your choice.', 'wpematico' );?></p>
-							<img style="float:left;margin-right: 7px; width: 120px;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/wpematico_manual_fetching-200x100.png'; ?>" alt="wpematico_translator" width="200" />
+							<img style="float:left;margin-right: 7px; width: 120px;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/wpematico_manual_fetching-200x100.png'; ?>" alt="wpematico_manual" width="200" />
 							<p><?php _e('The','wpematico'); ?> <a href="https://etruel.com/downloads/wpematico-manual-fetching/" target="_blank">WPeMatico Manual Fetching</a> 
 							<?php _e( 'extends the Campaign Preview functionality to every feed individually and allows you to review and insert each item, one by one or in bulk mode.', 'wpematico' );?></p>
 							<img style="float:left;margin-right: 7px; width: 120px;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/wpematico-hooks_200x100.png'; ?>" alt="WPeMatico Custom Hooks" width="200" />
 							<p><?php _e('The','wpematico'); ?> <a href="https://wordpress.org/plugins/wpematico-custom-hooks/" target="_blank">WPeMatico Custom Hooks</a> 
 							<?php _e( 'is a FREE addon that allows you to execute actions and filters provided by WPeMatico in order to create custom behavior in the execution of your campaigns.', 'wpematico' );?></p>
-							<img style="float:left;margin-right: 7px; width: 120px;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/wpematico_polyglot-200x100.png'; ?>" alt="wpematico_translator" width="200" />
-							<p><?php _e('The','wpematico'); ?> <a href="https://etruel.com/downloads/wpematico-polyglot/" target="_blank">WPeMatico Polyglot</a> 
-							<?php _e( 'lets you select the original language of articles in a campaign to translate them to one of the 107 supported languages before inserting them in your blog.', 'wpematico' );?></p>
 						</div>
 						<div class="feature-section-content">
 							<h4><?php _e('Better speed on uploading files.', 'wpematico' );?></h4>

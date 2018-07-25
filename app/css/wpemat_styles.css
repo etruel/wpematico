@@ -1094,6 +1094,9 @@ div#optionslayer-right {
     background-color: #f1f1f1;
     box-shadow: 0 0 14px rgba(0, 0, 0, .7);
 }
+#thickbox_wizard .left{
+    float: none !important;
+}
 #thickbox_wizard h2 {
     text-align: center;
     font-family: helvetica;
