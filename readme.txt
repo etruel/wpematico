@@ -268,7 +268,7 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 * New major version! We're introducing the new Robotico 2.0!
 * Many code improvements. Graphics designs and cosmetic changes.
 * Preview template for the Youtube campaign types with options to include/exclude image and descriptions of videos.
-
+* Updated pot file to translate well the plugin.  Our goal for the next versions is brings wpematico in your language!
 
 = 1.9.4 May 04, 2018 =
 * Added a new option to use as category the word most used into Word to Category feature.
