@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPeMatico v1.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-28 01:18-0300\n"
-"PO-Revision-Date: 2018-07-28 16:23-0400\n"
+"PO-Revision-Date: 2018-07-28 16:31-0400\n"
 "Last-Translator: Esteban <esteban@netmdp.com>\n"
 "Language-Team: NetMdP <esteban@netmdp.com>\n"
 "Language: es\n"
@@ -378,7 +378,7 @@ msgstr "Total de obtenidos:"
 # @ wpematico
 #: app/campaign_edit_functions.php:138 app/campaigns_list.php:567
 msgid "Reset post count"
-msgstr "Reiniciar conteo de publicaciones"
+msgstr "Reiniciar conteo de entradas"
 
 # @ wpematico
 #: app/campaign_edit_functions.php:139 app/campaigns_list.php:572
@@ -455,7 +455,7 @@ msgstr ""
 
 #: app/campaign_edit_functions.php:343
 msgid "Use custom posts template"
-msgstr "Usar plantilla de publicaciones personalizada"
+msgstr "Usar plantilla de entradas personalizada"
 
 #: app/campaign_edit_functions.php:347
 msgid ""
@@ -625,7 +625,7 @@ msgstr "Almacenar imágenes localmente."
 # @ wpematico
 #: app/campaign_edit_functions.php:457 app/settings_page.php:308
 msgid "Attach Images to posts."
-msgstr "Adjuntar Imágenes a publicaciones."
+msgstr "Adjuntar Imágenes a entradas."
 
 #: app/campaign_edit_functions.php:459 app/settings_page.php:310
 msgid "Remove link to source images"
@@ -664,7 +664,7 @@ msgstr "Almacenar audios localmente."
 
 #: app/campaign_edit_functions.php:526 app/settings_page.php:358
 msgid "Attach Audios to posts."
-msgstr "Adjuntar Audios a publicaciones."
+msgstr "Adjuntar Audios a entradas."
 
 #: app/campaign_edit_functions.php:529 app/settings_page.php:360
 msgid "Remove link to source audios"
@@ -676,7 +676,7 @@ msgstr "Almacenar videos localmente."
 
 #: app/campaign_edit_functions.php:572 app/settings_page.php:336
 msgid "Attach Videos to posts."
-msgstr "Adjuntar Videos a publicaciones."
+msgstr "Adjuntar Videos a entradas."
 
 #: app/campaign_edit_functions.php:575 app/settings_page.php:338
 msgid "Remove link to source videos"
@@ -1124,7 +1124,7 @@ msgstr "Se encontró duplicado '%1s'"
 #: app/campaign_fetch.php:177 app/campaign_fetch.php:189
 #: app/campaign_preview.php:117 app/campaign_preview.php:131
 msgid "Filtering duplicated posts."
-msgstr "Filtrando publicaciones duplicadas."
+msgstr "Filtrando entradas duplicadas."
 
 # @ wpematico
 #: app/campaign_fetch.php:180 app/campaign_fetch.php:192
@@ -1153,7 +1153,7 @@ msgstr "Se ha alcanzado el tiempo de espera de ejecución en %1$d segs."
 #: app/campaign_fetch.php:234
 #, php-format
 msgid "%s posts added"
-msgstr "%s publicaciones agregadas"
+msgstr "%s entradas agregadas"
 
 # @ wpematico
 #: app/campaign_fetch.php:248
@@ -1273,7 +1273,7 @@ msgstr ""
 #: app/campaign_fetch.php:680 wpematico_class.php:169 wpematico_class.php:171
 #, php-format
 msgid "Processed Posts: %1s"
-msgstr "Publicaciones procesadas: %1s"
+msgstr "Entradas procesadas: %1s"
 
 # @ wpematico
 #: app/campaign_fetch.php:681
@@ -1585,7 +1585,7 @@ msgstr ""
 #: app/campaign_help.php:52
 msgid "Allows pinbacks and trackbacks in the posts created by this campaign."
 msgstr ""
-"Permite pinbacks y trackbacks en las publicaciones creadas por esta campaña."
+"Permite pinbacks y trackbacks en las entradas creadas por esta campaña."
 
 #: app/campaign_help.php:56
 msgid ""
@@ -1601,7 +1601,7 @@ msgstr "Opciones de discusión."
 
 #: app/campaign_help.php:60
 msgid "Comments options to these posts."
-msgstr "Opciones de comentarios para estas publicaciones."
+msgstr "Opciones de comentarios para estas entradas."
 
 #: app/campaign_help.php:63
 msgid "Author."
@@ -1610,7 +1610,7 @@ msgstr "Autor."
 # @ wpematico
 #: app/campaign_help.php:64
 msgid "The posts created by this campaign will be assigned to this author."
-msgstr "Las publicaciones creadas por esta campaña se asignarán a este autor."
+msgstr "Las entradas creadas por esta campaña se asignarán a este autor."
 
 #: app/campaign_help.php:67
 msgid "Strip All HTML Tags."
@@ -1758,7 +1758,7 @@ msgstr ""
 
 #: app/campaign_help.php:117 app/settings_page.php:743
 msgid "Attach Images to post."
-msgstr "Adjuntar imágenes a las publicaciones."
+msgstr "Adjuntar imágenes a las entradas."
 
 #: app/campaign_help.php:118
 msgid ""
@@ -1875,7 +1875,7 @@ msgstr ""
 
 #: app/campaign_help.php:157 app/settings_page.php:793
 msgid "Attach Audios to post."
-msgstr "Adjuntar audios a las publicaciones."
+msgstr "Adjuntar audios a las entradas."
 
 #: app/campaign_help.php:158
 msgid ""
@@ -1943,7 +1943,7 @@ msgstr ""
 
 #: app/campaign_help.php:180 app/settings_page.php:824
 msgid "Attach Videos to post."
-msgstr "Adjuntar videos a las publicaciones."
+msgstr "Adjuntar videos a las entradas."
 
 #: app/campaign_help.php:181
 msgid ""
@@ -1984,7 +1984,7 @@ msgstr ""
 
 #: app/campaign_help.php:195
 msgid "Enable Post Template."
-msgstr "Usar plantilla de publicaciones personalizada "
+msgstr "Usar plantilla de entradas personalizada "
 
 #: app/campaign_help.php:196
 msgid ""
@@ -2207,7 +2207,7 @@ msgid ""
 "campaign, otherwise left on Standard."
 msgstr ""
 "Si su tema admite formatos de publicación, puede seleccionar uno para las "
-"publicaciones de esta campaña, que de lo contrario quedaría en Estándar."
+"entradas de esta campaña, que de lo contrario quedaría en Estándar."
 
 #: app/campaign_help.php:275
 msgid "Sending Log."
@@ -2245,7 +2245,7 @@ msgstr ""
 #: app/campaign_preview.php:270
 #, php-format
 msgid "Next Posts(%s)"
-msgstr "Próximas publicaciones(%s)"
+msgstr "Próximas entradas(%s)"
 
 #: app/campaign_preview.php:280
 msgid "Post"
@@ -2535,7 +2535,7 @@ msgstr "Ultima ejecución"
 # @ default
 #: app/campaigns_list.php:641 app/campaigns_list_help.php:18
 msgid "Posts"
-msgstr "Publicaciones"
+msgstr "Entradas"
 
 # @ wpematico
 #: app/campaigns_list.php:705 app/campaigns_list.php:750
@@ -4512,7 +4512,7 @@ msgstr "Muestra el botón para vaciar la basura en las listas."
 
 #: app/settings_page.php:606
 msgid "Select (custom) post types you want."
-msgstr "Seleccione los tipos de publicaciones (personalizadas) que desee."
+msgstr "Seleccione los tipos de entradas (personalizadas) que desee."
 
 # @ wpematico
 #: app/settings_page.php:636
@@ -4662,8 +4662,8 @@ msgid ""
 "Useful if you have double image in your posts pages or if you don't want to "
 "show the image in content for any reason."
 msgstr ""
-"Es útil si tiene doble imagen en las páginas de sus publicaciones o si no "
-"desea mostrar la imagen en el contenido por algún motivo."
+"Es útil si tiene doble imagen en las páginas de sus entradas o si no desea "
+"mostrar la imagen en el contenido por algún motivo."
 
 #: app/settings_page.php:780
 msgid ""
@@ -5018,7 +5018,7 @@ msgid ""
 msgstr ""
 "Esta opción produce un retraso después de cada acción de insertar una "
 "publicación. Puede ser útil si desea dar un descanso al servidor mientras "
-"obtiene muchas publicaciones. Deja en 0 si no tienes ningún problema."
+"obtiene muchas entradas. Deja en 0 si no tienes ningún problema."
 
 #: app/settings_page.php:907
 msgid ""
@@ -5027,7 +5027,7 @@ msgid ""
 "disable these controls here."
 msgstr ""
 "Cuando la campaña en ejecución encontró una publicación duplicada, el "
-"proceso se interrumpe porque se supone que todas las publicaciones seguidas "
+"proceso se interrumpe porque se supone que todas las entradas seguidas "
 "también son duplicadas. Puede deshabilitar estos controles aquí."
 
 #: app/settings_page.php:908
@@ -5041,7 +5041,7 @@ msgstr ""
 # @ wpematico
 #: app/settings_page.php:909
 msgid "Allowing duplicated posts"
-msgstr "Permitir publicaciones duplicadas"
+msgstr "Permitir entradas duplicadas"
 
 #: app/settings_page.php:909
 msgid ""
@@ -5088,7 +5088,7 @@ msgid ""
 "work well for a campaign."
 msgstr ""
 "Como el hash se verifica solo con el último elemento recuperado, al "
-"seleccionar esta opción se pueden generar publicaciones duplicadas si la "
+"seleccionar esta opción se pueden generar entradas duplicadas si la "
 "verificación duplicada por título no funciona bien para una campaña."
 
 #: app/settings_page.php:920
@@ -5114,7 +5114,7 @@ msgid ""
 msgstr ""
 "Es necesario utilizar la función de enlace permanente a la fuente, "
 "identificar qué campaña obtiene la publicación o realizar acciones masivas "
-"en los tipos de publicaciones relacionadas con la campaña original."
+"en los tipos de entradas relacionadas con la campaña original."
 
 #: app/settings_page.php:923
 msgid ""
@@ -5236,7 +5236,7 @@ msgid ""
 "the WPeMatico."
 msgstr ""
 "Esta opción desactiva el metabox dentro de la pantalla de edición de "
-"publicaciones creada por WPeMatico."
+"entradas creada por WPeMatico."
 
 #: app/settings_page.php:974
 msgid ""
@@ -5245,7 +5245,7 @@ msgid ""
 msgstr ""
 "Solo una herramienta adicional para mostrar un botón para vaciar la carpeta "
 "de papelera en cada pantalla principal de la publicación personalizada. "
-"Puede ser publicaciones, páginas o selecciona lo que quieras."
+"Puede ser entradas, páginas o selecciona lo que quieras."
 
 #: app/settings_page.php:977
 msgid "Disable WP Dashboard Widget"
@@ -5320,9 +5320,9 @@ msgid ""
 "if you can take a minute to %s write a 5 star review on Wordpress %s.  :-) "
 "thanks."
 msgstr ""
-"Si no puede mostrar los créditos de WPeMatico en sus publicaciones, "
-"realmente le agradecería si puede dedicar un minuto para %s escribir una "
-"reseña de 5 estrellas en Wordpress %s.  :-) gracias."
+"Si no puede mostrar los créditos de WPeMatico en sus entradas, realmente le "
+"agradecería si puede dedicar un minuto para %s escribir una reseña de 5 "
+"estrellas en Wordpress %s.  :-) gracias."
 
 #: app/settings_page.php:1003
 msgid "Sender Email."
@@ -5358,7 +5358,7 @@ msgid ""
 "This is for exclude or include posts according to the keywords <b>found</b> "
 "at content or title."
 msgstr ""
-"Esto es para incluir o excluir publicaciones acordes a las palabras clave "
+"Esto es para incluir o excluir entradas acordes a las palabras clave "
 "<b>encontradas</b> en los contenidos o títulos."
 
 # @ wpematico
@@ -5367,7 +5367,7 @@ msgid ""
 "This is for cut, exclude or include posts according to the letters o words "
 "<b>counted</b> at content."
 msgstr ""
-"Esto es para cortar, excluir o oncluir publicaciones acordes a las letras o "
+"Esto es para cortar, excluir o oncluir entradas acordes a las letras o "
 "palabras <b>contadas</b> en contenidos."
 
 # @ wpematico
@@ -5375,8 +5375,8 @@ msgstr ""
 msgid ""
 "If you want a custom title for posts of a campaign, you can activate here."
 msgstr ""
-"Si desea un título personalizado para las publicaciones de una campaña, "
-"puede activarlo aquí."
+"Si desea un título personalizado para las entradas de una campaña, puede "
+"activarlo aquí."
 
 #: app/settings_page.php:1024
 msgid ""
