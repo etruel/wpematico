@@ -8,14 +8,18 @@ if ( !defined('ABSPATH') ) {
 
 /**
 * Add cron interval
-*
-* @access protected
+* This function adds the wpematico schedule to the WP Cron Schedules.
 * @param array $schedules
 * @return array
 */
 function wpematico_intervals($schedules) {
-	$schedules['wpematico_int'] = array('interval' => '300', 'display' => __('WPeMatico'));
-//			$schedules = array_merge( $intervals, $schedules);
+	$schedule = apply_filters('wpematico_cron_schedule_values', 
+		array(	
+			'interval' => apply_filters('wpematico_cron_schedule_interval', '300'), 
+			'display' => __('WPeMatico')
+		)
+	);
+	$schedules['wpematico_int'] = $schedule;
 	return $schedules;
 }
 

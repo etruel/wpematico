@@ -17,6 +17,9 @@ function wpematico_get_addons_update() {
 	if ($plugin_updates === false) {
 		$plugin_updates = new stdClass();
 	}
+	if (empty($plugin_updates)) {
+		$plugin_updates = new stdClass();
+	}
 
 	if (!isset($plugin_updates->response)) {
 		$plugin_updates->response = array();
@@ -266,6 +269,8 @@ function wpematico_showhide_addons($plugins) {
 	if (function_exists('wp_plugin_update_rows')) {
 		wp_plugin_update_rows();
 	}
+	
+
 	$show_on_plugin_page = get_option('wpem_show_locally_addons', false); 
 	if ($current_screen->id == 'plugins_page_wpemaddons'){
 		$plugins = apply_filters( 'etruel_wpematico_addons_array', read_wpem_addons($plugins), 10, 1 );
@@ -321,6 +326,7 @@ Function read_wpem_addons($plugins){
 			$version = (is_array($versions)) ? $versions[0]['data'] : '';
 			$guid = $item->get_item_tags('', 'guid');
 			$guid = (is_array($guid)) ? $guid[0]['data'] : '';
+			$download_id = 0;
 			wp_parse_str($guid, $query ); 
 			if(isset($query ) && !empty($query ) ) {
 				if(isset($query['p'])){
