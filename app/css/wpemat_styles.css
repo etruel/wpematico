@@ -488,15 +488,19 @@ a.wpelinks {
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    justify-content: space-between;
     position: relative;
-    padding-bottom: 1rem;
+    margin: -15px;
+    padding-bottom: 2.5rem;
 }
 #licenses .postbox .inside .postbox-license{
-    border: 1px solid #e5e5e5;
     background: #fff;
-    margin-bottom: 1.6rem;  
     width: 100%;
+}
+#licenses .postbox .inside .postbox-license .inside{
+    padding: 15px;
+    margin: 15px;
+    border: 1px solid #e5e5e5;
+    width: auto;
 }
 #licenses .postbox .inside .postbox-license .regular-text{
     width: 100%;
@@ -528,23 +532,28 @@ a.wpelinks {
 #licenses .postbox .inside form p.submit{
     display: block;
     position: absolute;
-    right: 0;
-    bottom: 0;
+    right: 15px;
+    bottom: 15px;
     margin: 0;
     padding: 0;
 }
 @media (min-width: 768px){
     #licenses .postbox .inside .postbox-license{
-        -ms-flex: 0 0 49%;
-        flex: 0 0 49%;
-        max-width: 49%;
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
     }
 }
 @media (min-width: 992px){
     #licenses .postbox .inside .postbox-license{
-        -ms-flex: 0 0 32%;
-        flex: 0 0 32%;
-        max-width: 32%;
+        -ms-flex: 0 0 33.333333%;
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
+}
+@media (max-width: 782px){
+    #licenses .postbox .inside form{
+        padding-bottom: 3.5rem;
     }
 }
 .help_tip {
