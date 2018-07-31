@@ -269,6 +269,9 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 * Many code improvements. Graphics designs and cosmetic changes.
 * Preview template for the Youtube campaign types with options to include/exclude image and descriptions of videos.
 * Updated pot file to translate well the plugin.  Our goal for the next versions is brings wpematico in your language!
+* Added the feature disable categories description of wpematico.
+* Some fixes in add-ons page.
+* Added some hooks to handle the cron schedules of WPeMatico.
 
 = 1.9.4 May 04, 2018 =
 * Added a new option to use as category the word most used into Word to Category feature.

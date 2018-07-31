@@ -367,7 +367,13 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 							if (isset($this->campaign['campaign_parent_autocats']) && $this->campaign['campaign_parent_autocats'] > 0) {
 								$parent_cat = $this->campaign['campaign_parent_autocats'];
 							}
-							$arg = array('description' => apply_filters('wpematico_addcat_description', __("Auto Added by WPeMatico", 'wpematico' ), $catname), 'parent' => $parent_cat);
+							$arg_description = __('Auto Added by WPeMatico', 'wpematico' );
+							if( isset($this->cfg['disable_categories_description']) && $this->cfg['disable_categories_description'] ) {
+								$arg_description = '';
+							}
+							$arg_description = apply_filters('wpematico_addcat_description', $arg_description, $catname);
+
+							$arg = array('description' => $arg_description, 'parent' => $parent_cat);
 							$term = wp_insert_term($catname, "category", $arg);
 						}
 						$this->current_item['categories'][] = $term['term_id'];

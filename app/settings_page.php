@@ -194,6 +194,8 @@ function wpematico_settings(){
 								<span id="discredits" style="<?php echo ($cfg['disable_credits']) ? '' : 'display:none;' ?>"><br /><?php
 									printf(__('If you can\'t show the WPeMatico credits in your posts, I really appreciate if you can take a minute to %s write a 5 star review on Wordpress %s. :) thanks.', 'wpematico'), '<b><a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" target="_Blank" title="Open a new window">', '</a></b>');
 									?></span>
+								<p></p>
+								<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disable_categories_description'], true); ?> name="disable_categories_description" id="disable_categories_description" /><b>&nbsp;<?php _e('Disable <i>Category Description</i> of WPeMatico', 'wpematico'); ?></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disable_categories_description']; ?>"></span>
 								<p style="text-align: right;">
 									<input type="hidden" name="wpematico-action" value="save_settings" />
 									<?php submit_button(__('Save settings', 'wpematico'), 'primary', 'wpematico-save-settings', false); ?>
@@ -996,6 +998,11 @@ function wpematico_helpsettings($dev=''){
 				'plustip' => sprintf( __('If you can\'t show the WPeMatico credits in your posts, I really appreciate if you can take a minute to %s write a 5 star review on Wordpress %s.  :-) thanks.', 'wpematico' ),
 								'<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" target="_Blank" title="Open a new window">',
 								'</a>'),
+			),
+			'disable_categories_description' => array( 
+				'title' => __('Disable Category Description of WPeMatico.', 'wpematico' ),
+				'tip' => __('I really appreciate if you can left this option blank to show that the categories are created by WPeMatico.', 'wpematico' ),
+				
 			),
 		),
 		'Sending e-Mails' => array( 
