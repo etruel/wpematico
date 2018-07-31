@@ -46,7 +46,7 @@ function inp_license_key(element, copy = false) {
 				var response = jQuery.parseJSON(data);
 				console.log(response);
 				if (response.license == 'invalid' || response.license == 'expired') {
-					jQuery('#'+data_request.plugin_name+'_ajax_status_license').html('<strong style="color:red;">This key is invalid</strong>');
+					jQuery('#'+data_request.plugin_name+'_ajax_status_license').html('<strong style="color:red;">This key is '+response.license+'</strong>');
 				} else if (response.license == 'item_name_mismatch') {
 					jQuery('#'+data_request.plugin_name+'_ajax_status_license').html('<strong style="color:yellow;">This key is invalid for this plugin.</strong>');
 				} else {
