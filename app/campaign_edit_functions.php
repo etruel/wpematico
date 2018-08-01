@@ -632,7 +632,7 @@ public static function template_box( $post ) {
 			<label for="campaign_jumpduplicates"><b><?php _e('Continue Fetching if found duplicated items.', 'wpematico'); ?></b></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['jumpduplicates']; ?>"></span>
 			<p></p>
 			<?php
-				do_action('wpematico_video_box_setting_after');
+				do_action('wpematico_duplicate_box_setting_after');
 			?>
 		</div>
 		
