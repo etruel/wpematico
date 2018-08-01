@@ -264,10 +264,11 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
-= 2.0 Jul 31, 2018 =
+= 2.0 Aug 1, 2018 =
 * New major version! We're introducing the new Robotico 2.0!
 * Many code improvements. Graphics designs and cosmetic changes.
-* Preview template for the Youtube campaign types with options to include/exclude image and descriptions of videos.
+* Added a New Campaign type to publish to BBPress forums as forums, topics or replies.
+* Added a preview template for the Youtube campaign types with options to include/exclude image and descriptions of videos.
 * Added options to manage duplicated posts individually by campaign.
 * Added option to disable the description of categories created by WPeMatico.
 * Added some hooks to handle the cron schedules of WPeMatico.

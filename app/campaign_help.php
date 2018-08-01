@@ -89,10 +89,11 @@ $helpcampaign = array(
 				'<br><br>'.__('The campaign fetches the title, the image, the embebed video and the description.', 'wpematico' ),
 		),
 	),
-	'bbPress Campaign Type' => array( 
+	'bbPress Forums' => array( 
 		'bbpress' => array( 
-			'title' => __('How work bbPress Campaign Type', 'wpematico' ),
-			'tip' => __('If you do not select a forum, this will create new forums. Otherwise, this will create new topics in the selected forum.', 'wpematico' ),
+			'title' => __('How works the bbPress Campaign Type', 'wpematico' ),
+			'tip' => __('You can UN-select forum to create new Forums or select an already created bbPress Forum to publish new Topics inside it, according to the items in the feed.', 'wpematico' ),
+			'plustip' => __('You can also select a created Topic to publish all the items as replies of it.', 'wpematico' ),
 		),
 	),
 	'Schedule Options' => array( 
@@ -109,12 +110,11 @@ $helpcampaign = array(
 			'plustip' => __('Just select an option and the values will be shown in the fields at right.', 'wpematico' ),
 		),
 	),
-	'Options for Images' => array(
+	'Media Options' => array(
 		'imgoptions' => array( 
-				'title' => __('Campaign Options For Images.', 'wpematico' ),
-				'tip' => __('This features will be overridden only for this campaign the general Settings options for images.', 'wpematico' ),
+				'title' => '<h3>'.__('Campaign Options For Images.', 'wpematico' ).'</h3>',
+				'tip' => __('These features will override the general Settings options only for this campaign.', 'wpematico' ),
 		),
-		
 		'imgcache' => array( 
 				'title' => __('Cache images.', 'wpematico' ),
 				'tip' => __('All images found in &lt;img&gt; tags in content will be uploaded to your current WP Upload Folder and replaced urls in content . Otherwise remains links to source hosting server.', 'wpematico' ),
@@ -149,11 +149,11 @@ $helpcampaign = array(
 				'tip' => __('Use this instead of Wordpress functions to improve performance. This function uploads the image "as is" from the original to use it inside the post.', 'wpematico' ).
 					'<br />'. __('This function may not work in all servers.', 'wpematico' ),
 		),
-	),
-	'Options for Audios' => array(
+//	),
+//	'Options for Audios' => array(
 		'audio_options' => array( 
-				'title' => __('Campaign Options For Audios.', 'wpematico' ),
-				'tip' => __('This features will be overridden only for this campaign the general Settings options for audios.', 'wpematico' ),
+				'title' => '<h3>'.__('Campaign Options For Audios.', 'wpematico' ).'</h3>',
+				'tip' => __('These features will override the general Settings options only for this campaign.', 'wpematico' ),
 		),
 		'audio_cache' => array( 
 				'title' => __('Cache audios.', 'wpematico' ),
@@ -172,11 +172,11 @@ $helpcampaign = array(
 				'tip' => __('Use this instead of Wordpress functions to improve performance. This function uploads the audio "as is" from the original to use it inside the post.', 'wpematico' ).
 					'<br />'. __('This function may not work in all servers.', 'wpematico' ),
 		),
-	),
-	'Options for Videos' => array(
+//	),
+//	'Options for Videos' => array(
 		'video_options' => array( 
-				'title' => __('Campaign Options For Videos.', 'wpematico' ),
-				'tip' => __('This features will be overridden only for this campaign the general Settings options for videos.', 'wpematico' ),
+				'title' => '<h3>'.__('Campaign Options For Videos.', 'wpematico' ).'</h3>',
+				'tip' => __('These features will override the general Settings options only for this campaign', 'wpematico' ),
 		),
 		'video_cache' => array( 
 				'title' => __('Cache videos.', 'wpematico' ),
@@ -200,7 +200,7 @@ $helpcampaign = array(
 	'Duplicate Controls' => array(
 		'duplicate_options' => array( 
 				'title' => __('Campaign Options For Duplicates.', 'wpematico' ),
-				'tip' => __('This features will be overridden only for this campaign the general Settings options for duplicates.', 'wpematico' ),
+				'tip' => __('These features will override the general Settings options only for this campaign.', 'wpematico' ),
 		),
 		
 		'allowduplicates' => array( 

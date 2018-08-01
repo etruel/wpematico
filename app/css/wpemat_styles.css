@@ -1422,3 +1422,8 @@ div#optionslayer-right {
     }
 }
 /* End Youtube Campaign  */
+/* bbPress Campaign  */
+.dashicons-bbpress-logo:before {
+	content: "\f477";
+}
+/* End bbPress Campaign  */

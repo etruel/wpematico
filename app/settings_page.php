@@ -154,7 +154,7 @@ function wpematico_settings(){
 								<p><b>WPeMatico</b> <?php echo WPEMATICO_VERSION; ?> Version</p>
 								<p class="icon_version">
 									<a href="http://www.wpematico.com" target="_Blank" title="<?php _e('Go to the new WPeMatico WebSite', 'wpematico'); ?>">
-										<img class="logover" src="<?php echo WPeMatico :: $uri; ?>/images/icon-512x512.jpg" title="">	
+										<img class="logover" src="<?php echo WPeMatico :: $uri; ?>/images/robotico-helmet.png" title="">	
 										<span id="wpematico-website">WPeMatico Website</span><br>
 									</a><span id="wpematico-websiteinfo"><?php _e('Comments & Tutorials', 'wpematico'); ?></span>
 								</p>
@@ -173,9 +173,19 @@ function wpematico_settings(){
 									<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" id="linkrate" class="button" target="_Blank" title="Click here to rate plugin on Wordpress">  Rate </a>
 								</p>
 								<p></p>
-								<p style="text-align: center;">
-									<input type="button" class="button-primary" name="buypro" value="<?php _e('Get the PRO Version', 'wpematico'); ?>" onclick="javascript:window.open('https://etruel.com/downloads/wpematico-pro/');return false;"/>
-								</p>
+								<div id="improvescampaign" style="border: 1px #ccc solid;padding-bottom: 5px;" 
+									 onmouseover="javascript:jQuery('#improbuttons').stop().animate( {paddingTop: '35px'}, 500);">
+									<div id="improlabel" style="position:absolute;padding-top: 5px;padding-bottom: 9px;background: #EB9600;margin: 0;color: #fff;text-align: center;text-shadow: #333 1px 1px 2px;width: 91%;font-size: initial;font-weight: bold;">
+										Improve your Experience
+									</div>
+									<div id="improbuttons" style="text-align: center;padding-top: 0px;">
+										<input onmouseover="javascript:jQuery(this).addClass('button-primary');" onmouseout="javascript:jQuery(this).removeClass('button-primary');" class="button" name="buypro" value="GO PRO" onclick="javascript:window.open('https://etruel.com/downloads/wpematico-pro/');return false;" type="button">
+										&nbsp;
+										<input name="buypre" value="PREMIUM" onmouseover="javascript:jQuery(this).addClass('button-primary');" onmouseout="javascript:jQuery(this).removeClass('button-primary');" onclick="javascript:window.open('https://etruel.com/downloads/wpematico-premium/');return false;" class="button" type="button">
+										&nbsp;
+										<input class="button" name="buyper" value="PERFECT" onmouseover="javascript:jQuery(this).addClass('button-primary');" onmouseout="javascript:jQuery(this).removeClass('button-primary');" onclick="javascript:window.open('https://etruel.com/downloads/wpematico-perfect/');return false;" type="button">
+									</div>
+								</div>
 								<p></p>
 							</div>
 						</div>
