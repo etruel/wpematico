@@ -35,6 +35,8 @@ class WPeMatico_Campaign_edit_functions {
 		add_meta_box( 'images-box', __('Options for images', 'wpematico' ). '<span class="dashicons dashicons-warning help_tip" title-heltip="'.$helptip['imgoptions'].'"  title="'. $helptip['imgoptions'].'"></span>', array(  'WPeMatico_Campaign_edit'  ,'images_box' ),'wpematico','normal', 'default' );
 		add_meta_box( 'audios-box', __('Options for audios', 'wpematico' ). '<span class="dashicons dashicons-warning help_tip" title-heltip="'.$helptip['audio_options'].'"  title="'. $helptip['audio_options'].'"></span>', array(  'WPeMatico_Campaign_edit'  ,'audio_box' ),'wpematico','normal', 'default' );
 		add_meta_box( 'videos-box', __('Options for videos', 'wpematico' ). '<span class="dashicons dashicons-warning help_tip" title-heltip="'.$helptip['video_options'].'"  title="'. $helptip['video_options'].'"></span>', array(  'WPeMatico_Campaign_edit'  ,'video_box' ),'wpematico','normal', 'default' );
+
+		add_meta_box( 'duplicate-box', __('Duplicate controls', 'wpematico' ). '<span class="dashicons dashicons-warning help_tip" title-heltip="'.$helptip['duplicate_options'].'"  title="'. $helptip['duplicate_options'].'"></span>', array(  'WPeMatico_Campaign_edit'  ,'duplicate_box' ),'wpematico','normal', 'default' );
 		
 		add_meta_box( 'template-box', __('Post Template', 'wpematico' ). '<span class="dashicons dashicons-warning help_tip" title-heltip="'.$helptip['postemplate'].'" title="'. $helptip['postemplate'].'"></span>', array(  'WPeMatico_Campaign_edit'  ,'template_box' ),'wpematico','normal', 'default' );
 		if ($cfg['enableword2cats'])   // Si está habilitado en settings, lo muestra 
@@ -580,6 +582,55 @@ public static function template_box( $post ) {
 				<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_customupload_video, true); ?> name="campaign_customupload_video" id="campaign_customupload_video" /><b>&nbsp;<label for="campaign_customupload_video"><?php _e('Use custom upload.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['customupload_videos']; ?>"></span>
 				<br/>
 			</div>
+			<?php
+				do_action('wpematico_video_box_setting_after');
+			?>
+		</div>
+		
+		<?php
+		do_action('wpematico_video_box_out_setting');
+	}
+	/**
+	* Static function video_box
+	* Create a meta-box on campaigns for videos management.
+	* @access public
+	* @return void
+	* @since 2.0
+	*/
+	public static function duplicate_box( $post ) { 
+		global $post, $campaign_data, $cfg, $helptip;
+		$campaign_no_setting_duplicate = $campaign_data['campaign_no_setting_duplicate'];
+		$campaign_allowduplicates = $campaign_data['campaign_allowduplicates'];
+		$campaign_allowduptitle = $campaign_data['campaign_allowduptitle'];
+		$campaign_allowduphash = $campaign_data['campaign_allowduphash'];
+		$campaign_add_ext_duplicate_filter_ms = $campaign_data['campaign_add_ext_duplicate_filter_ms'];
+		$campaign_jumpduplicates = $campaign_data['campaign_jumpduplicates'];
+
+
+		?>
+		
+		<input name="campaign_no_setting_duplicate" id="campaign_no_setting_duplicate" class="checkbox" value="1" type="checkbox" <?php checked($campaign_no_setting_duplicate, true); ?> />
+		<label for="campaign_no_setting_duplicate"><?php echo __('Don&#x27;t use general Settings', 'wpematico' ); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['duplicate_options']; ?>"></span>
+		
+		<div id="div_no_setting_duplicate" style="margin-left: 20px; <?php if (!$campaign_no_setting_duplicate) echo 'display:none;';?>">
+			
+			<p></p>
+			<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_allowduplicates, true); ?> name="campaign_allowduplicates" id="campaign_allowduplicates" /><b> <label for="campaign_allowduplicates"> <?php _e('Deactivate duplicate controls.', 'wpematico'); ?></label> </b>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['allowduplicates']; ?>"></span>
+			<br>
+			<div id="enadup" style="padding-left:20px; <?php if(!$campaign_allowduplicates) echo 'display:none;'; ?>">
+				<small><?php _e('NOTE: If disable both controls, all items will be fetched again and again... and again, ad infinitum.  If you want allow duplicated titles, just activate "Allow duplicated titles".', 'wpematico'); ?></small><br />
+				<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_allowduptitle, true); ?> name="campaign_allowduptitle" id="campaign_allowduptitle" /><b>&nbsp;<?php echo '<label for="campaign_allowduptitle">' . __('Allow duplicates titles.', 'wpematico') . '</label>'; ?></b><br />
+				<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_allowduphash, true); ?> name="campaign_allowduphash" id="campaign_allowduphash" /><b>&nbsp;<?php echo '<label for="campaign_allowduphash">' . __('Allow duplicates hashes. (Not Recommended)', 'wpematico') . '</label>'; ?></b>
+			</div>
+			<div id="div_add_extra_duplicate_filter_meta_source" <?php if($cfg['disableccf'] || $campaign_allowduptitle) echo 'style="display:none;"' ?>>
+				<input name="campaign_add_ext_duplicate_filter_ms" id="campaign_add_ext_duplicate_filter_ms" class="checkbox" value="1" type="checkbox" <?php checked($campaign_add_ext_duplicate_filter_ms, true); ?> />
+				<label for="campaign_add_ext_duplicate_filter_ms"><b><?php _e('Add an extra duplicate filter by source permalink in meta field value.', 'wpematico'); ?></b></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['add_extra_duplicate_filter_meta_source']; ?>"></span>
+				<br /> 
+			</div>
+			<p></p>
+			<input name="campaign_jumpduplicates" id="campaign_jumpduplicates" class="checkbox" value="1" type="checkbox" <?php checked($campaign_jumpduplicates, true); ?> />
+			<label for="campaign_jumpduplicates"><b><?php _e('Continue Fetching if found duplicated items.', 'wpematico'); ?></b></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['jumpduplicates']; ?>"></span>
+			<p></p>
 			<?php
 				do_action('wpematico_video_box_setting_after');
 			?>

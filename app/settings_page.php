@@ -929,7 +929,6 @@ function wpematico_helpsettings($dev=''){
 			'add_extra_duplicate_filter_meta_source' => array( 
 				'title' => __('Add an extra duplicate filter by source permalink in meta field value.', 'wpematico' ),
 				'tip' => __('This option is ONLY recommended if you continues with duplicates problems in your site. This can be given by some non-standards feeds.  NOT RECOMMENDED.', 'wpematico' ),
-				// 'plustip' => __('', 'wpematico' ),
 			),
 			
 		),

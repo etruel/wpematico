@@ -272,6 +272,7 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 * Added the feature disable categories description of wpematico.
 * Some fixes in add-ons page.
 * Added some hooks to handle the cron schedules of WPeMatico.
+* Added the duplicate controls feature individually by campaigns.
 
 = 1.9.4 May 04, 2018 =
 * Added a new option to use as category the word most used into Word to Category feature.

@@ -622,6 +622,37 @@ function wpe_others_events($) {
 					
 		}
 	});
+
+	jQuery('#campaign_no_setting_duplicate').click(function() {
+		if ( true == jQuery('#campaign_no_setting_duplicate').is(':checked')) {
+			jQuery('#div_no_setting_duplicate').fadeIn();
+		} else {
+			jQuery('#div_no_setting_duplicate').fadeOut();
+		}
+	});
+
+	jQuery('#campaign_allowduplicates').click(function() {
+		if ( true == jQuery('#campaign_allowduplicates').is(':checked')) {
+			jQuery('#enadup').fadeIn();
+		} else {
+			jQuery('#campaign_allowduptitle').removeAttr("checked");
+			jQuery('#campaign_allowduphash').removeAttr("checked");
+			jQuery('#enadup').fadeOut();
+		}
+	});
+	jQuery('#campaign_allowduptitle').change(function() {
+		var disableccf = false;
+		if (wpematico_object.general_settings.disableccf != undefined) {
+			disableccf = wpematico_object.general_settings.disableccf;
+		}
+		if (jQuery('#campaign_allowduptitle').is(':checked') || disableccf) {
+			jQuery('#campaign_add_ext_duplicate_filter_ms').removeAttr("checked");
+			jQuery('#div_add_extra_duplicate_filter_meta_source').fadeOut();
+		} else {
+			jQuery('#div_add_extra_duplicate_filter_meta_source').fadeIn();
+		}
+	});
+
 	$('.tag').click(function(){
 		$('#campaign_template').attr('value',$('#campaign_template').attr('value')+$(this).html());
 	});

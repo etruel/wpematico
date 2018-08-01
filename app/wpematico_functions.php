@@ -161,7 +161,32 @@ class WPeMatico_functions {
 		}
 		return $from;
 	}
-	
+	/**
+	* @access public
+	* @return $options Array of current duplicate settings.
+	* @since 2.0
+	*/
+	public static function get_duplicate_options($settings = array(), $campaign = array()) {
+		$options = array();
+		$options['allowduplicates'] = $settings['allowduplicates'];
+		$options['allowduptitle'] = $settings['allowduptitle'];
+		$options['allowduphash'] = $settings['allowduphash'];
+		$options['jumpduplicates'] = $settings['jumpduplicates'];
+		$options['add_extra_duplicate_filter_meta_source'] = $settings['add_extra_duplicate_filter_meta_source'];
+
+		
+		if(isset($campaign['campaign_no_setting_duplicate']) && $campaign['campaign_no_setting_duplicate']) {
+
+			$options['allowduplicates'] = $campaign['campaign_allowduplicates'];
+			$options['allowduptitle'] = $campaign['campaign_allowduptitle'];
+			$options['allowduphash'] = $campaign['campaign_allowduphash'];
+			$options['jumpduplicates'] = $campaign['campaign_jumpduplicates'];
+			$options['add_extra_duplicate_filter_meta_source'] = $campaign['campaign_add_ext_duplicate_filter_ms'];
+
+		}
+		$options = apply_filters('wpematico_duplicate_options', $options, $settings, $campaign);
+		return $options;
+	}
 	/**
 	* @access public
 	* @return $options Array of current images settings.
@@ -817,6 +842,15 @@ class WPeMatico_functions {
 		$campaigndata['campaign_youtube_image_only_featured']=(!isset($post_data['campaign_youtube_image_only_featured']) || empty($post_data['campaign_youtube_image_only_featured'])) ? false: ($post_data['campaign_youtube_image_only_featured']==1) ? true : false;
 		
 		$campaigndata['campaign_youtube_ign_description']=(!isset($post_data['campaign_youtube_ign_description']) || empty($post_data['campaign_youtube_ign_description'])) ? false: ($post_data['campaign_youtube_ign_description']==1) ? true : false;
+
+
+		$campaigndata['campaign_no_setting_duplicate'] = (!isset($post_data['campaign_no_setting_duplicate']) || empty($post_data['campaign_no_setting_duplicate'])) ? false: ($post_data['campaign_no_setting_duplicate']==1) ? true : false;
+		$campaigndata['campaign_allowduplicates'] = (!isset($post_data['campaign_allowduplicates']) || empty($post_data['campaign_allowduplicates'])) ? false: ($post_data['campaign_allowduplicates']==1) ? true : false;
+		$campaigndata['campaign_allowduptitle']=(!isset($post_data['campaign_allowduptitle']) || empty($post_data['campaign_allowduptitle'])) ? false: ($post_data['campaign_allowduptitle']==1) ? true : false; 
+		$campaigndata['campaign_allowduphash']=(!isset($post_data['campaign_allowduphash']) || empty($post_data['campaign_allowduphash'])) ? false: ($post_data['campaign_allowduphash']==1) ? true : false;
+		$campaigndata['campaign_add_ext_duplicate_filter_ms']=(!isset($post_data['campaign_add_ext_duplicate_filter_ms']) || empty($post_data['campaign_add_ext_duplicate_filter_ms'])) ? false: ($post_data['campaign_add_ext_duplicate_filter_ms']==1) ? true : false;
+		$campaigndata['campaign_jumpduplicates']=(!isset($post_data['campaign_jumpduplicates']) || empty($post_data['campaign_jumpduplicates'])) ? false: ($post_data['campaign_jumpduplicates']==1) ? true : false;
+		
 
 		if(has_filter('pro_check_campaigndata')) $campaigndata =  apply_filters('pro_check_campaigndata', $campaigndata, $post_data);
 		return $campaigndata;

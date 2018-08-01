@@ -86,6 +86,7 @@ class wpematico_campaign_preview {
 		$lasthash = array();
 		$currenthash = array();
 
+		$duplicate_options = WPeMatico::get_duplicate_options(self::$cfg, $campaign);
 
 		$posts_fetched = array();
 		$posts_next = array();
@@ -101,8 +102,8 @@ class wpematico_campaign_preview {
 			
 
 			$currenthash[$feed] = md5($item->get_permalink()); 
-			if( !$breaked && (!self::$cfg['allowduplicates'] || !self::$cfg['allowduptitle'] || !self::$cfg['allowduphash']  || self::$cfg['add_extra_duplicate_filter_meta_source']) ){
-				if( !self::$cfg['allowduphash'] ){
+			if( !$breaked && (!$duplicate_options['allowduplicates'] || !$duplicate_options['allowduptitle'] || !$duplicate_options['allowduphash']  || $duplicate_options['add_extra_duplicate_filter_meta_source']) ){
+				if( !$duplicate_options['allowduphash'] ){
 					// chequeo a la primer coincidencia sale del foreach
 					$lasthashvar = '_lasthash_'.sanitize_file_name($feed);
 					$hashvalue = get_post_meta($campaign_id, $lasthashvar, true );
@@ -113,7 +114,7 @@ class wpematico_campaign_preview {
 					if ($dupi) {
 						$posts_fetched[$item_hash] = true;
 						trigger_error(sprintf(__('Found duplicated hash \'%1s\'', 'wpematico' ),$item->get_permalink()).': '.$currenthash[$feed] ,E_USER_NOTICE);
-						if( !self::$cfg['jumpduplicates'] ) {
+						if( !$duplicate_options['jumpduplicates'] ) {
 							trigger_error(__('Filtering duplicated posts.', 'wpematico' ),E_USER_NOTICE);
 							$breaked = true;
 							continue;
@@ -123,11 +124,11 @@ class wpematico_campaign_preview {
 						}
 					}
 				}
-				if( !self::$cfg['allowduptitle'] ){
+				if( !$duplicate_options['allowduptitle'] ){
 					if(WPeMatico::is_duplicated_item($campaign, $feed, $item)) {
 						$posts_fetched[$item_hash] = true;
 						trigger_error(sprintf(__('Found duplicated title \'%1s\'', 'wpematico' ),$item->get_title()).': '.$currenthash[$feed] ,E_USER_NOTICE);
-						if( !self::$cfg['jumpduplicates'] ) {
+						if( !$duplicate_options['jumpduplicates'] ) {
 							trigger_error(__('Filtering duplicated posts.', 'wpematico' ),E_USER_NOTICE);
 							$breaked = true;
 							continue;

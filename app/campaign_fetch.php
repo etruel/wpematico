@@ -153,6 +153,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			$simplepie = apply_filters('Wpematico_process_fetching', $this->campaign);
 		}
 		
+		$duplicate_options = WPeMatico::get_duplicate_options($this->cfg, $this->campaign);
+
 		do_action('Wpematico_process_fetching_'.$this->campaign['campaign_type'], $this);  // Wpematico_process_fetching_feed
 		foreach($simplepie->get_items() as $item) {
 			if($prime){
@@ -162,8 +164,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			}
 
 			$this->currenthash[$feed] = md5($item->get_permalink()); // el hash del item actual del feed feed 
-			if( !$this->cfg['allowduplicates'] || !$this->cfg['allowduptitle'] || !$this->cfg['allowduphash']  || $this->cfg['add_extra_duplicate_filter_meta_source']){
-				if( !$this->cfg['allowduphash'] ){
+			if( !$duplicate_options['allowduplicates'] || !$duplicate_options['allowduptitle'] || !$duplicate_options['allowduphash']  || $duplicate_options['add_extra_duplicate_filter_meta_source']){
+				if( !$duplicate_options['allowduphash'] ){
 					// chequeo a la primer coincidencia sale del foreach
 					$lasthashvar = '_lasthash_'.sanitize_file_name($feed);
 					$hashvalue = get_post_meta( $this->campaign_id, $lasthashvar, true );
@@ -173,7 +175,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 								( $hashvalue == $this->currenthash[$feed] ); 
 					if ($dupi) {
 						trigger_error(sprintf(__('Found duplicated hash \'%1s\'', 'wpematico' ),$item->get_permalink()).': '.$this->currenthash[$feed] ,E_USER_NOTICE);
-						if( !$this->cfg['jumpduplicates'] ) {
+						if( !$duplicate_options['jumpduplicates'] ) {
 							trigger_error(__('Filtering duplicated posts.', 'wpematico' ),E_USER_NOTICE);
 							break;
 						}else {
@@ -182,10 +184,10 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 						}
 					}
 				}
-				if( !$this->cfg['allowduptitle'] ){
+				if( !$duplicate_options['allowduptitle'] ){
 					if(WPeMatico::is_duplicated_item($this->campaign, $feed, $item)) {
 						trigger_error(sprintf(__('Found duplicated title \'%1s\'', 'wpematico' ),$item->get_title()).': '.$this->currenthash[$feed] ,E_USER_NOTICE);
-						if( !$this->cfg['jumpduplicates'] ) {
+						if( !$duplicate_options['jumpduplicates'] ) {
 							trigger_error(__('Filtering duplicated posts.', 'wpematico' ),E_USER_NOTICE);
 							break;
 						}else {
