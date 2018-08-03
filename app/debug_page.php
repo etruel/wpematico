@@ -239,18 +239,6 @@ function wpematico_settings_section_debug_file() {
 						</div>
 
 						<div class="postbox">
-							<h2 class="handle"><?php _e('ShortPixel', 'wpematico'); ?></h2>
-							<div class="inside" id="sp_content">
-								<?php _e('Join to ShortPixel and optimize your images without compromising on quality.', 'wpematico'); ?>
-								<div style="text-align: center;">
-									<img src="https://shortpixel.com/img/logo.png">
-									<br />
-									<a class="button" target="_blank" href="https://shortpixel.com/h/af/QMVAHE4246413"><?php _e('Get ShortPixel API Key', 'wpematico'); ?></a>
-								</div>
-							</div>
-						</div>
-
-						<div class="postbox">
 							<h2 class="handle"><?php _e('The Perfect Package', 'wpematico'); ?></h2>
 							<div class="inside">
 								<p id="left1" onmouseover="jQuery(this).css('opacity',0.9);this.style.backgroundColor='#111'" onmouseout="jQuery(this).css('opacity',0.5);this.style.backgroundColor='#fff'" style="text-align:center;opacity: 0.5;border-radius: 14px 14px 0 0;"><a href="https://etruel.com/downloads/wpematico-perfect-package/" target="_Blank" title="Go to etruel WebSite"><img style="width: 100%;" src="https://etruel.com/wp-content/uploads/edd/2016/09/wpematico_package_1024x512-300x150.png" title=""></a><br />
