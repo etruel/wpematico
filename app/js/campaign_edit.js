@@ -36,6 +36,36 @@ jQuery(document).ready(function($){
 			$('#div_youtube_img_feature').fadeOut();
 		}
 	});
+
+	$('#campaign_bbpress_forum').change(function() {
+		if ($('#campaign_bbpress_forum').val() != '') {
+			$('#inside_forums').fadeIn();
+			$('#customtype_forum').prop('checked', true);
+		} else {
+			$('#inside_forums').fadeOut();
+		}
+	});
+
+	$('#campaign_type').change(function() {
+		if ($('#campaign_type').val() != 'bbpress') {
+			$('#customtype_post').parent().fadeIn();
+		} else {
+			$('#customtype_post').parent().fadeOut();
+		}
+	});
+
+	if ($('#campaign_type').val() != 'bbpress') {
+		$('#customtype_post').parent().fadeIn();
+	} else {
+		$('#customtype_post').parent().fadeOut();
+	}
+
+	
+
+
+	
+
+
 	$('#campaign_youtube_ign_image, #campaign_youtube_image_only_featured, #campaign_youtube_ign_description').change(function() {
 		if ($('#campaign_youtube_ign_image').is(':checked') &&  !$('#campaign_youtube_image_only_featured').is(':checked')) {
 			$('.featured-box').fadeOut();

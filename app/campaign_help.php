@@ -89,6 +89,12 @@ $helpcampaign = array(
 				'<br><br>'.__('The campaign fetches the title, the image, the embebed video and the description.', 'wpematico' ),
 		),
 	),
+	'bbPress Campaign Type' => array( 
+		'bbpress' => array( 
+			'title' => __('How work bbPress Campaign Type', 'wpematico' ),
+			'tip' => __('If you do not select a forum, this will create new forums. Otherwise, this will create new topics in the selected forum.', 'wpematico' ),
+		),
+	),
 	'Schedule Options' => array( 
 		'schedule' => array( 
 			'title' => __('Activate Scheduling.', 'wpematico' ),

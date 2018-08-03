@@ -851,6 +851,9 @@ class WPeMatico_functions {
 		$campaigndata['campaign_add_ext_duplicate_filter_ms']=(!isset($post_data['campaign_add_ext_duplicate_filter_ms']) || empty($post_data['campaign_add_ext_duplicate_filter_ms'])) ? false: ($post_data['campaign_add_ext_duplicate_filter_ms']==1) ? true : false;
 		$campaigndata['campaign_jumpduplicates']=(!isset($post_data['campaign_jumpduplicates']) || empty($post_data['campaign_jumpduplicates'])) ? false: ($post_data['campaign_jumpduplicates']==1) ? true : false;
 		
+		$campaigndata['campaign_bbpress_forum']	= (!isset($post_data['campaign_bbpress_forum']) || empty($post_data['campaign_bbpress_forum'])) ? 0: $post_data['campaign_bbpress_forum'];
+		$campaigndata['campaign_bbpress_topic']	= (!isset($post_data['campaign_bbpress_topic']) || empty($post_data['campaign_bbpress_topic'])) ? 0: $post_data['campaign_bbpress_topic'];
+
 
 		if(has_filter('pro_check_campaigndata')) $campaigndata =  apply_filters('pro_check_campaigndata', $campaigndata, $post_data);
 		return $campaigndata;

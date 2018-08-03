@@ -30,6 +30,9 @@ class WPeMatico_Campaign_edit_functions {
 		add_meta_box( 'feeds-box', __('Feeds for this Campaign', 'wpematico' ). '<span class="dashicons dashicons-warning help_tip" title-heltip="'.$helptip['feeds'].'" title="'. $helptip['feeds'].'"></span>', array( 'WPeMatico_Campaign_edit'  ,'feeds_box' ),'wpematico','normal', 'default' );
 		add_meta_box( 'youtube-box', '<span class="dashicons dashicons-video-alt3"> </span> '.__('YouTube feeds for this Campaign', 'wpematico' ). '<span class="dashicons dashicons-warning help_tip" title-heltip="'.$helptip['feed_url'].'" title="'. $helptip['feed_url'].'"></span>', array( 'WPeMatico_Campaign_edit'  ,'youtube_box' ),'wpematico','normal', 'high' );
 		
+		add_meta_box( 'bbpress-box', '<span class="dashicons dashicons-feedback"> </span> '.__('bbPress for this Campaign', 'wpematico' ). '<span class="dashicons dashicons-warning help_tip" title-heltip="'.$helptip['bbpress'].'" title="'. $helptip['bbpress'].'"></span>', array( 'WPeMatico_Campaign_edit'  ,'bbpress_box' ),'wpematico','normal', 'high' );
+		
+
 		add_meta_box( 'options-box', __('Options for this campaign', 'wpematico' ), array(  'WPeMatico_Campaign_edit'  ,'options_box' ),'wpematico','normal', 'default' );
 		add_meta_box( 'cron-box', __('Schedule Cron', 'wpematico' ), array(  'WPeMatico_Campaign_edit'  ,'cron_box' ),'wpematico','normal', 'default' );
 		add_meta_box( 'images-box', __('Options for images', 'wpematico' ). '<span class="dashicons dashicons-warning help_tip" title-heltip="'.$helptip['imgoptions'].'"  title="'. $helptip['imgoptions'].'"></span>', array(  'WPeMatico_Campaign_edit'  ,'images_box' ),'wpematico','normal', 'default' );
@@ -169,6 +172,7 @@ class WPeMatico_Campaign_edit_functions {
 		$options=array(
 			array( 'value'=> 'feed', 'text' => __('Feed Fetcher (Default)', 'wpematico' ), "show"=>array('feeds-box') ),
 			array( 'value'=> 'youtube','text' => __('You Tube Fetcher', 'wpematico' ), "show"=>array('feeds-box','youtube-box') ),
+			array( 'value'=> 'bbpress','text' => __('bbPress Fetcher', 'wpematico' ), "show"=>array('feeds-box','bbpress-box') ),
 			);
 		$options = apply_filters('wpematico_campaign_type_options', $options);
 
@@ -1054,6 +1058,65 @@ public static function feeds_box( $post ) {
 			</div>
 			<label><input class="checkbox" <?php checked($campaign_youtube_ign_description, true); ?> type="checkbox" name="campaign_youtube_ign_description" value="1" id="campaign_youtube_ign_description"> <?php _e('Hide description', 'wpematico'); ?></label><br />
 		</div>
+		<?php
+	}
+
+	public static function bbpress_box( $post ) {
+		global $post, $campaign_data, $helptip;
+		$campaign_bbpress_forum = $campaign_data['campaign_bbpress_forum'];
+		$campaign_bbpress_topic = $campaign_data['campaign_bbpress_topic'];
+
+		?>
+		<?php if (!class_exists('bbPress')) : ?>
+			<p style="color: red;"><?php _e('You shouldn\'t use this campaign type if you don\'t have installed and activated the bbPress Plugin', 'wpematico'); ?></p>
+		<?php else: ?>
+		<p><?php _e('If you do not select a forum, this will create new forums. Otherwise, this will create new topics in the selected forum.', 'wpematico' ); ?></p>
+		<p>
+			<strong class="label">Forum:</strong>
+			<label class="screen-reader-text" for="parent_id">Forum</label>
+			<?php bbp_dropdown( array(
+				'post_type'          => bbp_get_forum_post_type(),
+				'selected'           => $campaign_bbpress_forum,
+				'numberposts'        => -1,
+				'orderby'            => 'title',
+				'order'              => 'ASC',
+				'walker'             => '',
+
+				// Output-related
+				'select_id'          => 'campaign_bbpress_forum',
+				'tab'                => bbp_get_tab_index(),
+				'options_only'       => false,
+				'show_none'          => __( '&mdash; Create new forums &mdash;', 'wpematico' ),
+				'disable_categories' => false,
+				'disabled'           => ''
+			) ); ?>	
+		</p>
+		<div id="inside_forums" style="margin-left: 30px; <?php echo (empty($campaign_bbpress_forum)? 'display: none;' : ''); ?>">
+			<p>
+				<strong class="label">Topic:</strong>
+				<label class="screen-reader-text" for="parent_id">Topic</label>
+				<?php bbp_dropdown( array(
+					'post_type'          => bbp_get_topic_post_type(),
+					'selected'           => $campaign_bbpress_topic,
+					'numberposts'        => -1,
+					'orderby'            => 'title',
+					'order'              => 'ASC',
+					'walker'             => '',
+
+					// Output-related
+					'select_id'          => 'campaign_bbpress_topic',
+					'tab'                => bbp_get_tab_index(),
+					'options_only'       => false,
+					'show_none'          => __( '&mdash; Create new topics &mdash;', 'wpematico' ),
+					'disable_categories' => false,
+					'disabled'           => ''
+				) ); ?>	
+			</p>
+
+		</div>
+
+		<?php endif; ?>
+
 		<?php
 	}
 

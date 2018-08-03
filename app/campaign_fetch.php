@@ -134,7 +134,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		$prime = true;
 
 		// Access the feed
-		if($this->campaign['campaign_type']=="feed" or $this->campaign['campaign_type']=="youtube" ) { 		// Access the feed
+		if($this->campaign['campaign_type']=="feed" or $this->campaign['campaign_type']=="youtube" or $this->campaign['campaign_type']=="bbpress" ) { 		// Access the feed
 			$wpe_url_feed = apply_filters('wpematico_simplepie_url', $feed, $kf, $this->campaign);
 			/**
 			* @since 1.8.0
@@ -388,6 +388,9 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		$this->current_item['allowpings'] = $this->campaign['campaign_allowpings'];
 		$this->current_item['commentstatus'] = $this->campaign['campaign_commentstatus'];
 		$this->current_item['customposttype'] = $this->campaign['campaign_customposttype'];
+		
+		
+
 		$this->current_item['campaign_post_format'] = $this->campaign['campaign_post_format'];
 
 		//********** Do filters
@@ -410,6 +413,21 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		   $this->current_item['meta'] = apply_filters('wpem_meta_data', $this->current_item['meta'] );
 		}
 		
+		if ($this->campaign['campaign_type'] == 'bbpress') {
+			if (empty($this->campaign['campaign_bbpress_forum'] )) {
+				$this->current_item['customposttype'] = 'forum';
+			} else {
+				$this->current_item['customposttype'] = 'topic';
+				if (!empty($this->campaign['campaign_bbpress_topic'] )) {
+					$this->current_item['customposttype'] = 'reply';
+				} 
+			}
+			
+			
+		}
+		
+		
+
 		// Create post
 		$title = $this->current_item['title'];
 		$content= $this->current_item['content'];
@@ -440,6 +458,16 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		if(isset($this->campaign['campaign_parent_page']) && $this->campaign['campaign_parent_page']) {
 			$post_parent = $this->campaign['campaign_parent_page'];
 		}
+
+		if ($this->campaign['campaign_type'] == 'bbpress') {
+			if ($this->current_item['customposttype'] == 'topic') {
+				$post_parent = $this->campaign['campaign_bbpress_forum'];
+			}
+			if ($this->current_item['customposttype'] == 'reply') {
+				$post_parent = $this->campaign['campaign_bbpress_topic'];
+			}
+		}
+
 		$args = array(
 			'post_title' 	          => apply_filters('wpem_parse_title', $title),
 			'post_content'  	      => apply_filters('wpem_parse_content', $content),
@@ -459,6 +487,52 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			remove_filter('content_save_pre', 'wp_filter_post_kses');
 //			remove_filter('content_filtered_save_pre', 'wp_filter_post_kses');
 			$post_id = wp_insert_post( $args );
+
+
+			if ($this->campaign['campaign_type'] == 'bbpress') {
+
+			
+				if ($this->current_item['customposttype'] == 'topic') {
+
+					if (function_exists('bbp_bump_forum_topic_count') && function_exists('bbp_update_forum_last_active_time')) {
+						bbp_bump_forum_topic_count($this->campaign['campaign_bbpress_forum']);
+
+						bbp_update_forum_last_active_time($this->campaign['campaign_bbpress_forum'], current_time('mysql'));
+						bbp_update_forum_last_topic_id($this->campaign['campaign_bbpress_forum'], $post_id );
+						bbp_update_forum_last_reply_id($this->campaign['campaign_bbpress_forum'], $post_id );
+						bbp_update_forum_last_active_id($this->campaign['campaign_bbpress_forum'], $post_id);
+						bbp_update_topic_last_active_time($post_id, current_time('mysql'));
+
+					}
+
+					$meta['_bbp_forum_id'] = $this->campaign['campaign_bbpress_forum'];
+					$meta['_bbp_topic_id'] = $post_id;
+					$meta['_bbp_reply_count'] = 0;
+
+					
+				}
+				if ($this->current_item['customposttype'] == 'reply') {
+
+					if (function_exists('bbp_bump_topic_reply_count') && function_exists('bbp_update_topic_last_active_time')) {
+
+						bbp_bump_forum_reply_count($this->campaign['campaign_bbpress_forum']);
+						bbp_update_forum_last_active_time($this->campaign['campaign_bbpress_forum'], current_time('mysql'));
+						bbp_update_forum_last_active_id($this->campaign['campaign_bbpress_forum'], $this->campaign['campaign_bbpress_topic']);
+
+						bbp_bump_topic_reply_count($this->campaign['campaign_bbpress_topic']);
+						bbp_update_topic_last_active_time($this->campaign['campaign_bbpress_topic'], current_time('mysql'));
+						bbp_update_topic_last_active_id($this->campaign['campaign_bbpress_topic'], $post_id);
+
+					}
+
+					$meta['_bbp_forum_id'] = $this->campaign['campaign_bbpress_forum'];
+					$meta['_bbp_topic_id'] = $this->campaign['campaign_bbpress_topic'];
+
+				}
+			}
+
+
+
 			add_filter('content_save_pre', 'wp_filter_post_kses');
 //			add_filter('content_filtered_save_pre', 'wp_filter_post_kses');
 
