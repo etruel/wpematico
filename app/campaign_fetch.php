@@ -154,7 +154,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		}
 		
 		$duplicate_options = WPeMatico::get_duplicate_options($this->cfg, $this->campaign);
-
+		
 		do_action('Wpematico_process_fetching_'.$this->campaign['campaign_type'], $this);  // Wpematico_process_fetching_feed
 		foreach($simplepie->get_items() as $item) {
 			if($prime){
