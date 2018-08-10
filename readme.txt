@@ -265,7 +265,7 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 
 == Changelog ==
 = 2.1 =
-* Added a new the template var "{author_wp}"
+
 
 = 2.0 Aug 1, 2018 =
 * New major version! We're introducing the new Robotico 2.0!

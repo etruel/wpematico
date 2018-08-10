@@ -161,14 +161,7 @@ class wpematico_campaign_fetch_functions {
 			$autor = $author->get_name();
 			$autorlink = $author->get_link();
 		}
-		$author_wp = '';
-		if (!empty($current_item['author'])) {
-			$author_wp_info = get_userdata($current_item['author']);
-			if ($author_wp_info) {
-				$author_wp = $author_wp_info->display_name;
-			}
-			
-		}
+		
 		$vars = array(
 			'{title}' => $current_item['title'],
 			'{content}' => $current_item['content'],
@@ -176,7 +169,7 @@ class wpematico_campaign_fetch_functions {
 			'{image}' => $img_str,
 			'{author}' => $autor,
 			'{author_wp}' => $author_wp,
-			'{authorlink}' => $autorlink,
+			
 			'{permalink}' => $current_item['permalink'],
 			'{feedurl}' => $feed->feed_url,
 			'{feedtitle}' => $feed->get_title(),
