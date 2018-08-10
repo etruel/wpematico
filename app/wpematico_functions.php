@@ -1071,7 +1071,12 @@ class WPeMatico_functions {
 		}
 		if ($ajax) {
 			if(empty($errors)) {
-				$response['message'] = sprintf(__('The feed %s has been parsed successfully.', 'wpematico' ), $url);
+				
+				$response['message'] = sprintf(__('The feed <strong>%s</strong> has been parsed successfully.', 'wpematico' ), $url);
+				$response['message'] .= '<br/> <strong> ' . __('Feed Title:', 'wpematico' ) . '</strong> ' . $feed->get_title();
+				$response['message'] .= '<br/> <strong> ' . __('Generator:', 'wpematico' ) . '</strong> ' . self::get_generator_feed($feed);
+				$response['message'] .= '<br/> <strong> ' . __('Charset Enconding:', 'wpematico' ) . '</strong> ' . $feed->get_encoding();
+				
 				$response['success'] = true;
 			}else{
 				$response['message'] = sprintf(__('The feed %s cannot be parsed. Simplepie said: %s', 'wpematico' ), $url, $errors).'<br />'.$professional_notice;
@@ -1090,7 +1095,23 @@ class WPeMatico_functions {
 		}
 
 	}
-  
+  	
+  	public static function get_generator_feed($feed) {
+  		$generator_text = __('Undetected', 'wpematico' );
+		if ($generator_tag = $feed->get_channel_tags('', 'generator')) {
+			$generator_text = $generator_tag[0]['data'];
+		} else if ($generator_tag = $feed->get_channel_tags(SIMPLEPIE_NAMESPACE_ATOM_10, 'generator')) {
+			$generator_text = $generator_tag[0]['data'];
+		} else if ($generator_tag = $feed->get_channel_tags(SIMPLEPIE_NAMESPACE_ATOM_03, 'generator')) {
+			$generator_text = $generator_tag[0]['data'];
+		} else if ($generator_tag = $feed->get_channel_tags(SIMPLEPIE_NAMESPACE_RDF, 'generator')) {
+			$generator_text = $generator_tag[0]['data'];
+		} else if ($generator_tag = $feed->get_channel_tags(SIMPLEPIE_NAMESPACE_RSS_20, 'generator')) {
+			$generator_text = $generator_tag[0]['data'];
+		}
+		return $generator_text;
+  	}
+
 	################### ARRAYS FUNCS
 	/* * filtering an array   */
     public static function filter_by_value ($array, $index, $value){
