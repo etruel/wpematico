@@ -138,7 +138,11 @@ class WPEMATICO_Welcome {
 	 * @return void
 	 */
 	public function welcome_message() {
-		list( $display_version ) = explode( '-', WPEMATICO_VERSION );
+		$stored_wpematico_version = get_option( 'wpematico_db_version' );
+		if (version_compare(WPEMATICO_VERSION, $stored_wpematico_version, '!=')) { 
+			set_transient( '_wpematico_user_has_seen_welcome_page', true, DAY_IN_SECONDS);
+	    }
+		list( $display_version ) = explode( '-', $stored_wpematico_version );
 		?>
 		<div id="wpematico-header">
 			<img class="wpematico-badge" src="<?php echo WPEMATICO_PLUGIN_URL . '/images/icon-256x256.png'; ?>" alt="<?php _e( 'WPeMatico', 'wpematico' ); ?>" / >
@@ -720,6 +724,10 @@ class WPEMATICO_Welcome {
 		if ( ! get_transient( '_wpematico_activation_redirect' ) )
 			return;
 		
+		// If a user has seen the welcome page then not redirect him again. 
+		if ( get_transient( '_wpematico_user_has_seen_welcome_page' ) ) {
+			return;
+		}
 		// redirect if ! AJAX
 		if((defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) || (defined('DOING_AJAX') && DOING_AJAX) || isset($_REQUEST['bulk_edit']))
 			return;
