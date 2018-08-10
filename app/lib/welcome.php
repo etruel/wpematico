@@ -138,11 +138,14 @@ class WPEMATICO_Welcome {
 	 * @return void
 	 */
 	public function welcome_message() {
+
 		$stored_wpematico_version = get_option( 'wpematico_db_version' );
 		if (version_compare(WPEMATICO_VERSION, $stored_wpematico_version, '!=')) { 
 			set_transient( '_wpematico_user_has_seen_welcome_page', true, DAY_IN_SECONDS);
+			echo '<div style="display: block !important;" class="notice notice-error below-h2">' . __( 'WPeMatico could not update the version in your database. Please if your website has an object cache disable it.', 'wpematico') . '</div>';
 	    }
-		list( $display_version ) = explode( '-', $stored_wpematico_version );
+
+		list( $display_version ) = explode( '-', WPEMATICO_VERSION );
 		?>
 		<div id="wpematico-header">
 			<img class="wpematico-badge" src="<?php echo WPEMATICO_PLUGIN_URL . '/images/icon-256x256.png'; ?>" alt="<?php _e( 'WPeMatico', 'wpematico' ); ?>" / >
