@@ -1077,6 +1077,18 @@ class WPeMatico_functions {
 				$response['message'] .= '<br/> <strong> ' . __('Generator:', 'wpematico' ) . '</strong> ' . self::get_generator_feed($feed);
 				$response['message'] .= '<br/> <strong> ' . __('Charset Enconding:', 'wpematico' ) . '</strong> ' . $feed->get_encoding();
 				
+				foreach($feed->get_items() as $item) {
+					$response['message'] .= '<br/><hr/> <strong> ' . __('Last Item Title:', 'wpematico' ) . '</strong> ' . $item->get_title();
+					$description = $item->get_content();
+					$description = strip_tags($description); 
+					if (strlen($description) > 53) {
+	  					$description = mb_substr($description, 0, 50);
+	  					$description .= '...'; 
+	  				}
+					$response['message'] .= '<br/> <strong> ' . __('Description:', 'wpematico' ) . '</strong> ' . $description;
+					break;
+				}
+
 				$response['success'] = true;
 			}else{
 				$response['message'] = sprintf(__('The feed %s cannot be parsed. Simplepie said: %s', 'wpematico' ), $url, $errors).'<br />'.$professional_notice;
