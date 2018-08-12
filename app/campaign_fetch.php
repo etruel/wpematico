@@ -263,11 +263,11 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			if (($itemdate > $this->campaign['lastrun']) && $itemdate < current_time('timestamp', 1)) {  
 				$this->current_item['date'] = $itemdate;
 				trigger_error(__('Assigning original date to post.', 'wpematico' ),E_USER_NOTICE);
-			}else{
+			} else {
 				trigger_error(__('Original date out of range.  Assigning current date to post.', 'wpematico' ) ,E_USER_NOTICE);
 			}
 		}
-		
+
 		// Item title
 		$this->current_item['title'] = $item->get_title();
 		$this->current_item['title'] = htmlspecialchars_decode($this->current_item['title']);

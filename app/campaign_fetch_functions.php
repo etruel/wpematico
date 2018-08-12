@@ -163,24 +163,23 @@ class wpematico_campaign_fetch_functions {
 		}
 		
 		$vars = array(
-			'{title}' => $current_item['title'],
-			'{content}' => $current_item['content'],
-			'{itemcontent}' => $item->get_description(),
-			'{image}' => $img_str,
-			'{author}' => $autor,
-			'{author_wp}' => $author_wp,
-			
-			'{permalink}' => $current_item['permalink'],
-			'{feedurl}' => $feed->feed_url,
-			'{feedtitle}' => $feed->get_title(),
-			'{feeddescription}' => $feed->get_description(),
-			'{feedlogo}' => $feed->get_image_url(),
-			'{campaigntitle}' => get_the_title($campaign['ID']),
-			'{campaignid}' => $campaign['ID'],
-			'{item_date}' => date_i18n(get_option('date_format'), current_time('timestamp')),
-			'{item_time}' => date_i18n(get_option('time_format'), current_time('timestamp'))
+			'{title}' 				=> $current_item['title'],
+			'{content}' 			=> $current_item['content'],
+			'{itemcontent}' 		=> $item->get_description(),
+			'{image}' 				=> $img_str,
+			'{author}' 				=> $autor,
+			'{permalink}' 			=> $current_item['permalink'],
+			'{feedurl}' 			=> $feed->feed_url,
+			'{feedtitle}'	 		=> $feed->get_title(),
+			'{feeddescription}' 	=> $feed->get_description(),
+			'{feedlogo}' 			=> $feed->get_image_url(),
+			'{campaigntitle}' 		=> get_the_title($campaign['ID']),
+			'{campaignid}' 			=> $campaign['ID'],
+			'{item_date}' 			=> (($current_item['date']) ? gmdate(get_option('date_format'), $current_item['date'] + (get_option('gmt_offset') * 3600)) : date_i18n(get_option('date_format'), current_time('timestamp'))),
+			'{item_time}' 			=> (($current_item['date']) ? gmdate(get_option('time_format'), $current_item['date'] + (get_option('gmt_offset') * 3600)) : date_i18n(get_option('time_format'), current_time('timestamp'))),
 
 		);
+
 		
 		$template_vars = apply_filters('wpematico_add_template_vars', $vars, $current_item, $campaign, $feed, $item);
 		

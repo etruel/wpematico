@@ -267,6 +267,7 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 = 2.1 =
 * Added some data of feed in the feeds tester.
 * Added another condition to avoid the multiple redirect in welcome page when updating.
+* Fixed an issue on {item_date} and {item_time} template tags.
 
 = 2.0 Aug 1, 2018 =
 * New major version! We're introducing the new Robotico 2.0!
