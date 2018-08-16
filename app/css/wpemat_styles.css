@@ -787,8 +787,17 @@ ul#categories li .children {
 .is_multifeedicon {
     color: #c27c00;
 }
+.name_column {
+    display: inline-block;
+    width: 10%;
+}
+input.feed_name {
+    display: inline-block;
+    width: 10%;
+	overflow: hidden;
+}
 div.feed_column {
-    float: left;
+    display: inline-block;
     width: 39%;
 }
 .feed_column input {

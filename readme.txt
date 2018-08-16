@@ -264,9 +264,9 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
-= 2.1 =
+= 2.1 Aug 15, 2018 =
 * Added some data of feed in the feeds tester.
-* Added another condition to avoid the multiple redirect in welcome page when updating.
+* Tweaks on redirect to the welcome page when updating.
 * Fixed an issue on {item_date} and {item_time} template tags.
 
 = 2.0 Aug 1, 2018 =

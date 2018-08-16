@@ -50,10 +50,37 @@ class WPeMatico_Campaign_edit_functions {
 		// Publish Meta_box edited
 		add_action('post_submitbox_start', array( __CLASS__ ,'post_submitbox_start'), 10, 0); 
 		add_action('post_submitbox_start', array(__CLASS__, 'campaign_run_datails'), 11, 0);
+		//Feed URLs columns
+		add_action('wpematico_campaign_feed_header_column', array(__CLASS__, 'headerfeedURL'),10 );
+		add_action('wpematico_campaign_feed_body_column', array(__CLASS__, 'bodyfeedURL'),10,3 );
 		//wizard script
 		add_action('admin_footer',array(__CLASS__,'campaign_wizard'));
 		do_action('wpematico_create_metaboxes',$campaign_data,$cfg); 
 
+	}
+	
+	/**
+	* Static function headerfeedURL
+	* @access public
+	* @return void
+	* @since 2.1
+	*/
+	public static function headerfeedURL() {
+		?><div class="feed_column"><?php _e('Feed URL', 'wpematico'  ) ?></div><?php
+	}
+	
+	/**
+	* Static function headerfeedURL
+	* @access public
+	* @return void
+	* @since 2.1
+	*/
+	public static function bodyfeedURL($feed, $cfg, $i ) {
+		?>
+		<div class="feed_column" id="">
+			<input name="campaign_feeds[<?php echo $i; ?>]" type="text" value="<?php echo $feed ?>" class="large-text feedinput"/><a href="<?php echo $feed ?>" title="<?php _e('Open URL in a new browser tab', 'wpematico' ); ?>" target="_Blank" class="wpefeedlink"><span class="dashicons dashicons-external"></span></a>
+		</div>
+		<?php
 	}
 	
 	/**
@@ -972,8 +999,12 @@ public static function feeds_box( $post ) {
 	?>  
 	<div class="feed_content">
 		<div class="feed_header">
-			<div class="feed_column"><?php _e('Feed URL', 'wpematico'  ) ?></div>
-			<?php do_action('wpematico_campaign_feed_header_column'); ?>
+			<?php /*
+				 * Action to print each column title
+				 * Complete since 2.1
+				 */
+				do_action('wpematico_campaign_feed_header_column'); 
+			?>
 			<label id="msgdrag"></label>
 			<div class="right ">
 				<div style="float:left;margin-left:2px;">
@@ -989,12 +1020,12 @@ public static function feeds_box( $post ) {
 			<?php $lastitem = $i==count(@$campaign_feeds); ?>			
 			<div id="feed_ID<?php echo $i; ?>" class="sortitem <?php if($lastitem) echo 'feed_new_field'; ?> " <?php if($lastitem) echo 'style="display:none;"'; ?> > <!-- sort item -->
 				<div class="sorthandle"> </div> <!-- sort handle -->
-				<div class="feed_column" id="">
-					<input name="campaign_feeds[<?php echo $i; ?>]" type="text" value="<?php echo $feed ?>" class="large-text feedinput"/><a href="<?php echo $feed ?>" title="<?php _e('Open URL in a new browser tab', 'wpematico' ); ?>" target="_Blank" class="wpefeedlink"><span class="dashicons dashicons-external"></span></a>
-				</div>
-				<?php do_action('wpematico_campaign_feed_body_column',$feed,$cfg, $i); ?>
-				<?php //do_action('nonstatic_feedat','', $cfg); //deprecated!!! 20160309  ?>
-
+				<?php /*
+				 * Action to print each column value
+				 * Complete since 2.1
+				 */
+				do_action('wpematico_campaign_feed_body_column',$feed,$cfg, $i); 
+				?>
 				<div class="" id="feed_actions">
 					<?php do_action('wpematico_campaign_feed_actions_1',$feed,$cfg, $i); ?>
 					<button type="button" title="<?php _e('Check if this feed works', 'wpematico' ); ?>" id="checkfeed" class="check1feed dashicons dashicons-editor-spellcheck"></button>
