@@ -749,7 +749,7 @@ class WPEMATICO_Welcome {
 		
 		$upgrade = get_option( 'wpematico_db_version' );
 		wp_cache_delete( 'wpematico_db_version', 'options');
-		update_option( 'wpematico_db_version', WPEMATICO_VERSION );
+		update_option( 'wpematico_db_version', WPEMATICO_VERSION, false );
 		 
 		/* It'll be used on future.
 		if (defined('WPE_PREVENT_REDIRECT_ACTIVE')) {
