@@ -177,7 +177,8 @@ jQuery(document).ready(function($){
 		$('div#feed_ID'+oldval).fadeIn();
 		$('input[name="campaign_feeds['+oldval+']"]').focus();
 		feed_new.attr('id','feed_ID'+newval);
-		$('input', feed_new).eq(0).attr('name','campaign_feeds['+ newval +']');
+//		$('input', feed_new).eq(0).attr('name','campaign_feeds['+ newval +']');
+		$('input[name*="campaign_feeds"]', feed_new).eq(0).attr('name','campaign_feeds['+ newval +']');
 		$('.deletefeed', feed_new).eq(0).attr('onclick', "delete_feed_url('#feed_ID"+ newval +"');");
 		$('.deletefeed', feed_new).eq(0).attr('id', 'deletefeed_'+newval);
 		$('.deletefeed', feed_new).eq(0).attr('data', "#feed_ID"+ newval);

@@ -267,7 +267,9 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 = 2.1 Aug 15, 2018 =
 * Added some data of feed in the feeds tester.
 * Tweaks on redirect to the welcome page when updating.
-* Fixed an issue on {item_date} and {item_time} template tags.
+* Tweaks on add more feeds to campaign javascript methods.
+* Fixes an issue on {item_date} and {item_time} template tags.
+* **Enlarges the version required for the Professional addon to 2.0v** (https://etruel.com/downloads/wpematico-professional/)
 
 = 2.0 Aug 1, 2018 =
 * New major version! We're introducing the new Robotico 2.0!
