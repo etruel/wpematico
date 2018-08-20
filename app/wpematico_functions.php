@@ -1038,7 +1038,7 @@ class WPeMatico_functions {
 		} else {
 			if(!isset($_POST['url'])) return false;
 			$url=$_POST['url'];
-			if (!empty($_POST['force_feed'])) {
+			if (!empty($_POST['feed']['force_feed'][0])) {
 				$force_feed = true;
 			}
 			$ajax=true;
