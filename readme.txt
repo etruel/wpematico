@@ -269,6 +269,7 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 * Tweaks on redirect to the welcome page when updating.
 * Tweaks on add more feeds to campaign javascript methods.
 * Fixes an issue on {item_date} and {item_time} template tags.
+* Fixes auto category description on quick add inside campaign.
 * **Enlarges the version required for the Professional addon to 2.0v** (https://etruel.com/downloads/wpematico-professional/)
 
 = 2.0 Aug 1, 2018 =
