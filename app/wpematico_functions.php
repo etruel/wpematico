@@ -1031,16 +1031,13 @@ class WPeMatico_functions {
 	*
 	*/
 	public static function Test_feed($args='') {
-		$force_feed = false;
+		
 		if (is_array($args)) {
 			extract($args);
 			$ajax=false;
 		} else {
 			if(!isset($_POST['url'])) return false;
 			$url=$_POST['url'];
-			if (!empty($_POST['feed']['force_feed'][0])) {
-				$force_feed = true;
-			}
 			$ajax=true;
 		}
 		/**
@@ -1052,11 +1049,10 @@ class WPeMatico_functions {
 			'stupidly_fast' => true,
 			'max' 			=> 0,
 			'order_by_date' => false,
-			'force_feed' 	=> $force_feed,
+			'force_feed' 	=> false,
 		);
-
+		
 		$fetch_feed_params = apply_filters('wpematico_fetch_feed_params_test', $fetch_feed_params, 0, $_POST);
-
 		$feed = self::fetchFeed($fetch_feed_params);
 
 		$errors = $feed->error(); // if no error returned
