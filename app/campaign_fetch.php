@@ -295,6 +295,13 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
 		$this->current_item['content'] = html_entity_decode($this->current_item['content'], ENT_COMPAT | ENT_HTML401, 'UTF-8');
 		
+
+		
+		$this->current_item = apply_filters('wpematico_item_pre_media', $this->current_item, $this->campaign, $feed, $item);
+		if ($this->current_item == -1) {
+			return -1;
+		}
+
 		/**
 		* @since 1.7.0
 		* Parse and upload audio
@@ -347,6 +354,13 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		
 		$this->current_item = apply_filters('wpematico_item_filters_pos_img', $this->current_item, $this->campaign );
 		
+		
+		$this->current_item = apply_filters('wpematico_item_pos_media', $this->current_item, $this->campaign, $feed, $item);
+		if ($this->current_item == -1) {
+			return -1;
+		}
+
+
 		//********** Do parses contents and titles
 		$this->current_item = $this->Item_parsers($this->current_item,$this->campaign,$feed,$item,$realcount, $feedurl );
 		if($this->current_item == -1 ) return -1;
