@@ -264,7 +264,7 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
-= 2.1 Aug 15, 2018 =
+= 2.1 Aug 29, 2018 =
 * Added some data of feed in the feeds tester.
 * Tweaks on redirect to the welcome page when updating.
 * Tweaks on add more feeds to campaign javascript methods.
@@ -1127,4 +1127,5 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 = 2.0 =
 * **NOTE: Highly recommended to test it in development ambients before update**
+* **Enlarges the version required for the Professional addon to 2.0v** [Webpage](https://etruel.com/downloads/wpematico-professional/)
 * Many improvements and fixes. See changelog for more details.
