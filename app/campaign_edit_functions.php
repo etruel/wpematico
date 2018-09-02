@@ -245,30 +245,31 @@ public static function rewrite_box( $post ) {
 	</p>
 	<div id="rewrites_edit" class="inlinetext">		
 		<?php for ($i = 0; $i < count($campaign_rewrites['origin']); $i++) : ?>			
-			<div class="<?php if(($i % 2) == 0) echo 'bw'; else echo 'lightblue'; ?> <?php if($i==count($campaign_rewrites['origin'])) echo 'hide'; ?>">
-				<div class="pDiv jobtype-select p7" id="nuevorew">
-					<div id="rw1" class="wi30 left p4"><div class="rowflex">
-						<?php _e('Origin:','wpematico') ?>&nbsp;&nbsp;
-						<label class="rowblock"><input name="campaign_word_option_title[<?php echo $i; ?>]" class="campaign_word_option_title" class="checkbox" value="1" type="checkbox"<?php checked($campaign_rewrites['title'][$i],true) ?> onclick="relink=jQuery(this).parent().parent().children('#rw3');if(true==jQuery(this).is(':checked')) relink.fadeOut(); else relink.fadeIn();"/><?php _e('Title','wpematico') ?></label>
-						&nbsp;<label class="rowblock"><input name="campaign_word_option_regex[<?php echo $i; ?>]" class="campaign_word_option_regex" class="checkbox" value="1" type="checkbox"<?php checked($campaign_rewrites['regex'][$i],true) ?> /><?php _e('RegEx','wpematico') ?></label>
+			
+				<div class="jobtype-select p7 rewrite-row" id="nuevorew" style="display: block;">
+					<div id="rw1" class="wi28-inline left-important p4">
+						<div>
+							<span class="left-important"><?php _e('Origin:','wpematico') ?>&nbsp;&nbsp;</span>
+							<label class="left-important"><input name="campaign_word_option_title[<?php echo $i; ?>]" class="campaign_word_option_title" class="checkbox" value="1" type="checkbox"<?php checked($campaign_rewrites['title'][$i],true) ?> onclick="relink=jQuery(this).parent().parent().children('#rw3');if(true==jQuery(this).is(':checked')) relink.fadeOut(); else relink.fadeIn();"/><?php _e('Title','wpematico') ?></label>
+							&nbsp;<label class="left-important"><input name="campaign_word_option_regex[<?php echo $i; ?>]" class="campaign_word_option_regex" class="checkbox" value="1" type="checkbox"<?php checked($campaign_rewrites['regex'][$i],true) ?> /><?php _e('RegEx','wpematico') ?></label>
+						</div>
+						<textarea class="large-text he35 campaign_word_origin" name="campaign_word_origin[<?php echo $i; ?>]" /><?php echo stripslashes($campaign_rewrites['origin'][$i]) ?></textarea>
 					</div>
-					<textarea class="large-text he35 campaign_word_origin" name="campaign_word_origin[<?php echo $i; ?>]" /><?php echo stripslashes($campaign_rewrites['origin'][$i]) ?></textarea>
+					<div class="wi28-inline left-important p4">
+						<?php _e('Rewrite to:','wpematico') ?>
+						<textarea class="large-text he35" id="campaign_word_rewrite" name="campaign_word_rewrite[<?php echo $i; ?>]" /><?php echo stripslashes($campaign_rewrites['rewrite'][$i]) ?></textarea>
+					</div>
+					<div id="rw3" class="wi28-inline left-important p4">
+						<?php _e('ReLink to:','wpematico') ?>
+						<textarea class="large-text he35" id="campaign_word_relink" name="campaign_word_relink[<?php echo $i; ?>]" /><?php echo stripslashes($campaign_rewrites['relink'][$i]) ?></textarea>
+					</div>
+					<div class="rowactions-rewrite">
+						<span class="" id="w2cactions">
+							<label title="<?php _e('Delete this item', 'wpematico' ); ?>" onclick=" jQuery(this).parent().parent().parent().children('#rw1').children('.campaign_word_origin').text(''); jQuery(this).parent().parent().parent().fadeOut();  disable_run_now();" class="bicon delete left"></label>
+						</span>
+					</div>
 				</div>
-				<div class="wi30 left p4">
-					<?php _e('Rewrite to:','wpematico') ?>
-					<textarea class="large-text he35" id="campaign_word_rewrite" name="campaign_word_rewrite[<?php echo $i; ?>]" /><?php echo stripslashes($campaign_rewrites['rewrite'][$i]) ?></textarea>
-				</div>
-				<div id="rw3" class="wi30 left p4" <?php if(checked($campaign_rewrites['title'][$i],true,false)) echo 'style="display:none"'; ?>>
-					<?php _e('ReLink to:','wpematico') ?>
-					<textarea class="large-text he35" id="campaign_word_relink" name="campaign_word_relink[<?php echo $i; ?>]" /><?php echo stripslashes($campaign_rewrites['relink'][$i]) ?></textarea>
-				</div>
-				<div class="rowactions">
-					<span class="" id="w2cactions">
-						<label title="<?php _e('Delete this item', 'wpematico' ); ?>" onclick=" jQuery(this).parent().parent().parent().children('#rw1').children('.campaign_word_origin').text(''); jQuery(this).parent().parent().parent().fadeOut();disable_run_now();" class="bicon delete left"></label>
-					</span>
-				</div>
-			</div>
-		</div>
+
 	<?php endfor ?>
 	<input id="rew_max" value="<?php echo $i-1; ?>" type="hidden" name="rew_max">
 

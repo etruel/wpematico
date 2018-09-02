@@ -87,6 +87,10 @@
 .wi10 {
     width: 10% !important;
 }
+.wi28-inline {
+    width: 28%;
+    display: inline-block;
+}
 .wi30 {
     width: 30%;
 }
@@ -132,6 +136,9 @@
 }
 .left {
     float: left
+}
+.left-important {
+    float: left !important;
 }
 .right {
     float: right
@@ -418,7 +425,7 @@ a.wpelinks {
     border-color: #BCBCBC;
     border-style: none;
     border-width: 1px medium;
-    display: flex !important;
+    display: flex;
 }
 #rewrites_edit .pDiv {
     display: flex;
@@ -1436,3 +1443,13 @@ div#optionslayer-right {
 	content: "\f477";
 }
 /* End bbPress Campaign  */
+
+.rowactions-rewrite {
+    display: inline-block; 
+    height: 70px;
+    float: right; 
+    padding-top: 25px;
+}
+.rewrite-row {
+    clear: both;
+}
