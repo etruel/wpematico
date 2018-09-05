@@ -632,7 +632,7 @@ class WPEMATICO_Welcome {
 					    </label>
 					 </p>
 					 
-					<p class="wpbutton-submit-subscription"><input type="submit" class="button button-primary"  value="<?php _e('Subscribe'); ?>">
+					<p class="wpbutton-submit-subscription"><input type="submit" class="button button-primary"  value="<?php _e('Subscribe', 'wpematico'); ?>">
 					</p>
 				</form>
 			<?php 

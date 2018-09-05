@@ -155,25 +155,25 @@ if ( !class_exists( 'WPeMatico' ) ) {
 				background: -webkit-gradient(linear,left top,left bottom,from(#FCF6BC),to(#E1DC9C));
 				-ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FCF6BC',endColorstr='#E1DC9C');
 				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FCF6BC',endColorstr='#E1DC9C');\">";
-			echo '<strong>'.__('Last Processed Campaigns:', self :: TEXTDOMAIN ).'</strong></div>';
+			echo '<strong>'.__('Last Processed Campaigns:', 'wpematico' ).'</strong></div>';
 			@$campaigns2 = $this->filter_by_value($campaigns, 'lastrun', '');  
 			$this->array_sort($campaigns2,'!lastrun');
 			if (is_array($campaigns2)) {
 				$count=0;
 				foreach ($campaigns2 as $key => $campaign_data) {
-					echo '<a href="'.wp_nonce_url('post.php?post='.$campaign_data['ID'].'&action=edit', 'edit').'" title="'.__('Edit Campaign', self :: TEXTDOMAIN ).'">';
+					echo '<a href="'.wp_nonce_url('post.php?post='.$campaign_data['ID'].'&action=edit', 'edit').'" title="'.__('Edit Campaign', 'wpematico' ).'">';
 						if ($campaign_data['lastrun']) {
 							echo " <i><strong>".$campaign_data['campaign_title']."</i></strong>, ";
 							echo  date_i18n( (get_option('date_format').' '.get_option('time_format') ), $campaign_data['lastrun'] ).', <i>'; 
 							if ($campaign_data['lastpostscount']>0)
-								echo ' <span style="color:green;">'. sprintf(__('Processed Posts: %1s', self :: TEXTDOMAIN ),$campaign_data['lastpostscount']).'</span>, ';
+								echo ' <span style="color:green;">'. sprintf(__('Processed Posts: %1s', 'wpematico' ),$campaign_data['lastpostscount']).'</span>, ';
 							else
-								echo ' <span style="color:red;">'. sprintf(__('Processed Posts: %1s', self :: TEXTDOMAIN ), '0').'</span>, ';
+								echo ' <span style="color:red;">'. sprintf(__('Processed Posts: %1s', 'wpematico' ), '0').'</span>, ';
 								
 							if ($campaign_data['lastruntime']<10)
-								echo ' <span style="color:green;">'. sprintf(__('Fetch done in %1s sec.', self :: TEXTDOMAIN ),$campaign_data['lastruntime']) .'</span>';
+								echo ' <span style="color:green;">'. sprintf(__('Fetch done in %1s sec.', 'wpematico' ),$campaign_data['lastruntime']) .'</span>';
 							else
-								echo ' <span style="color:red;">'. sprintf(__('Fetch done in %1s sec.', self :: TEXTDOMAIN ),$campaign_data['lastruntime']) .'</span>';
+								echo ' <span style="color:red;">'. sprintf(__('Fetch done in %1s sec.', 'wpematico' ),$campaign_data['lastruntime']) .'</span>';
 						} 
 					echo '</i></a><br />';
 					$count++;
@@ -188,17 +188,17 @@ if ( !class_exists( 'WPeMatico' ) ) {
 				background: -webkit-gradient(linear,left top,left bottom,from(#FCF6BC),to(#E1DC9C));
 				-ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FCF6BC',endColorstr='#E1DC9C');
 				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FCF6BC',endColorstr='#E1DC9C');\">";
-			echo '<strong>'.__('Next Scheduled Campaigns:', self :: TEXTDOMAIN ).'</strong>';
+			echo '<strong>'.__('Next Scheduled Campaigns:', 'wpematico' ).'</strong>';
 			echo '</div>';
 			echo '<ul style="list-style: circle inside none; margin-top: 2px; margin-left: 9px;">';
 			$this->array_sort($campaigns,'cronnextrun');
 			foreach ($campaigns as $key => $campaign_data) {
 				if ($campaign_data['activated']) {
-					echo '<li><a href="'.wp_nonce_url('post.php?post='.$campaign_data['ID'].'&action=edit', 'edit').'" title="'.__('Edit Campaign', self :: TEXTDOMAIN ).'">';
+					echo '<li><a href="'.wp_nonce_url('post.php?post='.$campaign_data['ID'].'&action=edit', 'edit').'" title="'.__('Edit Campaign', 'wpematico' ).'">';
 					echo '<strong>'.$campaign_data['campaign_title'].'</strong>, ';
 					if ($campaign_data['starttime']>0 and empty($campaign_data['stoptime'])) {
 						$runtime=current_time('timestamp')-$campaign_data['starttime'];
-						echo __('Running since:', self :: TEXTDOMAIN ).' '.$runtime.' '.__('sec.', self :: TEXTDOMAIN );
+						echo __('Running since:', 'wpematico' ).' '.$runtime.' '.__('sec.', 'wpematico' );
 					} elseif ($campaign_data['activated']) {
 						//echo date(get_option('date_format'),$campaign_data['cronnextrun']).' '.date(get_option('time_format'),$campaign_data['cronnextrun']);
 						echo date_i18n( (get_option('date_format').' '.get_option('time_format') ), $campaign_data['cronnextrun'] );
@@ -208,7 +208,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			}
 			$campaigns=$this->filter_by_value($campaigns, 'activated', '');
 			if (empty($campaigns)) 
-				echo '<i>'.__('None', self :: TEXTDOMAIN ).'</i><br />';
+				echo '<i>'.__('None', 'wpematico' ).'</i><br />';
 			echo '</ul>';
 
 		}
@@ -222,17 +222,17 @@ if ( !class_exists( 'WPeMatico' ) ) {
 		 */
 		 public static function Create_campaigns_page() {
 		  $labels = array(
-			'name' => __('Campaigns',  self :: TEXTDOMAIN ),
-			'singular_name' => __('Campaign',  self :: TEXTDOMAIN ),
-			'add_new' => __('Add New', self :: TEXTDOMAIN ),
-			'add_new_item' => __('Add New Campaign', self :: TEXTDOMAIN ),
-			'edit_item' => __('Edit Campaign', self :: TEXTDOMAIN ),
-			'new_item' => __('New Campaign', self :: TEXTDOMAIN ),
-			'all_items' => __('All Campaigns', self :: TEXTDOMAIN ),
-			'view_item' => __('View Campaign', self :: TEXTDOMAIN ),
-			'search_items' => __('Search Campaign', self :: TEXTDOMAIN ),
-			'not_found' =>  __('No campaign found', self :: TEXTDOMAIN ),
-			'not_found_in_trash' => __('No Campaign found in Trash', self :: TEXTDOMAIN ), 
+			'name' => __('Campaigns',  'wpematico' ),
+			'singular_name' => __('Campaign',  'wpematico' ),
+			'add_new' => __('Add New', 'wpematico' ),
+			'add_new_item' => __('Add New Campaign', 'wpematico' ),
+			'edit_item' => __('Edit Campaign', 'wpematico' ),
+			'new_item' => __('New Campaign', 'wpematico' ),
+			'all_items' => __('All Campaigns', 'wpematico' ),
+			'view_item' => __('View Campaign', 'wpematico' ),
+			'search_items' => __('Search Campaign', 'wpematico' ),
+			'not_found' =>  __('No campaign found', 'wpematico' ),
+			'not_found_in_trash' => __('No Campaign found in Trash', 'wpematico' ), 
 			'parent_item_colon' => '',
 			'menu_name' => 'WPeMatico');
 		  $args = array(
@@ -277,7 +277,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 				'wpematico',         
 				array(        //The array of arguments to pass to the callback.
 					'id' => 'wpem_menu_position',
-					'description' => __('Activate this setting if you can\'t see WPeMatico menu at left under Posts menu item.', self :: TEXTDOMAIN )
+					'description' => __('Activate this setting if you can\'t see WPeMatico menu at left under Posts menu item.', 'wpematico' )
 				)
 			);
 			add_settings_field( 
@@ -288,7 +288,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 				'wpematico',         
 				array(        //The array of arguments to pass to the callback.
 					'id' => 'wpem_show_locally_addons',
-					'description' => __('Activate this setting if you have problems with the addons page to see them in your plugin page like any other plugin.', self :: TEXTDOMAIN )
+					'description' => __('Activate this setting if you have problems with the addons page to see them in your plugin page like any other plugin.', 'wpematico' )
 				)
 			);
 			add_settings_field( 
@@ -299,7 +299,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 				'wpematico',         
 				array(        //The array of arguments to pass to the callback. In this case, just a description.
 					'id' => 'wpem_hide_reviews',
-					'description' => __('Activate this setting if you don\'t see the WPeMatico Settings page complete or can\'t read externals URLs.', self :: TEXTDOMAIN ),
+					'description' => __('Activate this setting if you don\'t see the WPeMatico Settings page complete or can\'t read externals URLs.', 'wpematico' ),
 				)
 			);
 
@@ -339,11 +339,11 @@ if ( !class_exists( 'WPeMatico' ) ) {
 				$screen->add_help_tab( array(
 					'id'      => 'wpematico',
 					'title'   => __('WPeMatico'),
-					'content' => '<p>' . __('If you don\'t see the WPeMatico Menu may be another plugin or a custom menu added by your theme are "overwritten" the WPeMatico menu position.', self :: TEXTDOMAIN ) . '<br />' .
-						'' . __('Click the checkbox "Reset Menu Position" to show the menu on last position in your Wordpress menu.', self :: TEXTDOMAIN ) . '</p>'.
+					'content' => '<p>' . __('If you don\'t see the WPeMatico Menu may be another plugin or a custom menu added by your theme are "overwritten" the WPeMatico menu position.', 'wpematico' ) . '<br />' .
+						'' . __('Click the checkbox "Reset Menu Position" to show the menu on last position in your Wordpress menu.', 'wpematico' ) . '</p>'.
 						'<p></p>'.
-						'<p>' . __('If you can\'t see well the WPeMatico Settings page is probable that you are having problems to read external wordpress web pages from your server.', self :: TEXTDOMAIN ) . '<br />' .
-						'' . __('Click the checkbox "Hide Reviews on Settings" to avoid this and show just a link to Wordpress reviews page.', self :: TEXTDOMAIN ) . '</p>'.
+						'<p>' . __('If you can\'t see well the WPeMatico Settings page is probable that you are having problems to read external wordpress web pages from your server.', 'wpematico' ) . '<br />' .
+						'' . __('Click the checkbox "Hide Reviews on Settings" to avoid this and show just a link to Wordpress reviews page.', 'wpematico' ) . '</p>'.
 						'<p></p>'.
 						'<p><a href="http://www.wpematico.com" target="_blank">WPeMatico WebPage</a>  -  <a href="https://etruel.com/downloads/category/wpematico-add-ons/" target="_blank">WPeMatico Add-Ons</a>  -  <a href="https://etruel.com/support/" target="_blank">etruel\'s Custom Support</a></p>'.
 						'<p></p>'.
@@ -361,8 +361,8 @@ if ( !class_exists( 'WPeMatico' ) ) {
 		public function admin_menu() {
 			$page = add_submenu_page(
 				'edit.php?post_type=wpematico',
-				__( 'Settings', self :: TEXTDOMAIN ),
-				__( 'Settings', self :: TEXTDOMAIN ),
+				__( 'Settings', 'wpematico' ),
+				__( 'Settings', 'wpematico' ),
 				'manage_options',
 				'wpematico_settings',
 				'wpematico_settings_page'
