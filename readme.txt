@@ -264,8 +264,10 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
-= 2.2 =
+= 2.1.1 =
 * Fixes an issue on the delete button of the rewrite metabox.
+* Updated .pot file
+* Added Chinese language
 
 = 2.1 Aug 29, 2018 =
 * Added some data of feed in the feeds tester.
