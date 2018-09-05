@@ -271,7 +271,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			register_setting( 'writing', 'wpem_hide_reviews'); //, 'sanitize_callback' );
 			add_settings_field( 
 				'wpem_menu_position',
-				'Reset Menu Position',                
+				__('Reset Menu Position', 'wpematico' ),                
 				array($this, 'writing_wp_form'), 
 				'writing',                        
 				'wpematico',         
@@ -282,7 +282,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			);
 			add_settings_field( 
 				'wpem_show_locally_addons',
-				'See local Addons in plugin list',                
+				__('See local Addons in plugin list', 'wpematico' ),               
 				array($this, 'writing_wp_form'), 
 				'writing',                        
 				'wpematico',         
@@ -293,7 +293,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			);
 			add_settings_field( 
 				'wpem_hide_reviews',                 
-				'Hide Reviews on Settings',
+				__('Hide Reviews on Settings', 'wpematico' ),
 				array($this, 'writing_wp_form'),
 				'writing',                        
 				'wpematico',         
