@@ -80,6 +80,9 @@ function wpematico_settings_section_danger_zone() {
 		<label><input class="checkbox" value="1" type="checkbox" <?php checked($danger['wpemdelecampaigns'],true);?> name="wpemdelecampaigns" /> <?php _e('Delete all Campaigns.', 'wpematico' ); ?></label><br/>
 		<?php  wp_nonce_field('wpematico-danger'); ?>
 		<input type="hidden" name="wpematico-action" value="set_danger_data" />
+		<p class="description">
+			<?php _e( 'These selected actions will be performed after WPeMatico plugin is deactivated and you select "Delete" it in the WPeMatico row from the plugins list.', 'wpematico' ); ?>
+		</p>
 		<p class="submit">
 			<?php submit_button( 'Save Actions to Uninstall.', 'primary', 'wpematico-set-danger-data', false ); ?>
 		</p>
