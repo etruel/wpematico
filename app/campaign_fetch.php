@@ -369,6 +369,13 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		$this->current_item['categories'] = (array)$this->campaign['campaign_categories']; 
 		if ($this->campaign['campaign_autocats']) {
 			if ($autocats = $item->get_categories()) {
+				/**
+				 * wpematico_before_insert_autocats
+				 * Filters the array of categories obtained by simplepie to be parsed before inserted into the database.
+				 * @since 2.1.2
+				 * @param array $autocats The array of categories names.
+				*/
+				$autocats = apply_filters('wpematico_before_insert_autocats', $autocats, $this ); 
 				trigger_error(__('Assigning Auto Categories.', 'wpematico' ) ,E_USER_NOTICE);
 				foreach($autocats as $id => $catego) {
 					$catname = $catego->term;
@@ -397,7 +404,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 				}
 			}
 		}
-
+		
 		$this->current_item['posttype'] = $this->campaign['campaign_posttype'];
 		$this->current_item['allowpings'] = $this->campaign['campaign_allowpings'];
 		$this->current_item['commentstatus'] = $this->campaign['campaign_commentstatus'];
@@ -424,6 +431,13 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			   'wpe_sourcepermalink' => $this->current_item['permalink'],
 		   ); 
 		   $this->current_item['meta'] = (isset($this->current_item['meta']) && !empty($this->current_item['meta']) ) ? array_merge($this->current_item['meta'], $arraycf) :  $arraycf ;
+		   
+		/**
+		 * wpem_meta_data
+		 * Filter the array of meta fields to be parsed before attached to the post.
+		 * @since 1.3
+		 * @param array $this->current_item['meta']  The array of meta fields: name => value.
+		*/
 		   $this->current_item['meta'] = apply_filters('wpem_meta_data', $this->current_item['meta'] );
 		}
 		
@@ -436,10 +450,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 					$this->current_item['customposttype'] = 'reply';
 				} 
 			}
-			
-			
-		}
-		
+						
+		}		
 		
 
 		// Create post
@@ -706,7 +718,6 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		
 	}
   	
-
 	
 	private function fetch_end() {
 		$this->campaign['lastrun'] 		  = $this->campaign['starttime'];

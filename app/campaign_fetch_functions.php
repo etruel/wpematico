@@ -207,9 +207,7 @@ class wpematico_campaign_fetch_functions {
 					&& (!empty($campaign['campaign_wrd2cat']['word'][0]) )
 					&& (!empty($campaign['campaign_wrd2cat']['w2ccateg'][0]) )
 				)
-			{	
-
-
+			{
 				trigger_error(sprintf(__('Processing Words to Category %1s', 'wpematico' ), $current_item['title'] ),E_USER_NOTICE);
 
 				for ($i = 0; $i < count($campaign['campaign_wrd2cat']['word']); $i++) {
@@ -292,6 +290,14 @@ class wpematico_campaign_fetch_functions {
 		}else 
 			$current_item['campaign_tags'] = explode(',', $campaign['campaign_tags']);
 		if(has_filter('wpematico_postags')) $current_item['campaign_tags'] =  apply_filters('wpematico_postags', $current_item, $item, $this->cfg);
+		
+		/**
+		 * wpematico_categories_after_filters
+		 * Filter the array of categories to be parsed before inserted into the database.
+		 * @since 2.1.2
+		 * @param string $autocats The array of categories names.
+		*/
+		$current_item['categories'] = apply_filters('wpematico_categories_after_filters', $current_item['categories'], $item, $this->cfg ); 
 
 		return $current_item;
 	} // End item filters

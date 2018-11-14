@@ -264,6 +264,10 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
+= 2.1.2 Nov 14, 2018 =
+* Added wp filters to parse categories and autocategories before inserted them in posts.
+* Improved some texts on code and filter descriptions.
+
 = 2.1.1 Sep 20, 2018 =
 * Fixes an issue on the delete button of the rewrite metabox.
 * Tweaks some texts on System status screens.
@@ -1131,7 +1135,7 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 2.0 =
+= 2.1.2 =
 * **NOTE: Highly recommended to test it in development ambients before update**
 * **Enlarges the version required for the Professional addon to 2.0v** [Webpage](https://etruel.com/downloads/wpematico-professional/)
-* Many improvements and fixes. See changelog for more details.
+* Minor update. See changelog for more details.
