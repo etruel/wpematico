@@ -322,6 +322,32 @@ class WPeMatico_functions {
 		if(!($httpcode>=200 && $httpcode<300)) unlink($new_file);
 		return ($httpcode>=200 && $httpcode<300) ? $new_file : false;
 	}
+
+	public static function get_file_from_url($url_origin) {
+		$ch = curl_init ($url_origin); 
+		//curl_setopt ($ch, CURLOPT_URL, $url_origin);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+
+		/**
+		* It could be use to add cURL options to request.
+		* @since 1.9.0
+		*/
+		$ch = apply_filters('wpematico_save_file_from_url_params', $ch, $url_origin);
+		
+		$response = curl_exec($ch);
+		
+		$curl_errno = curl_errno($ch);
+		$curl_error = curl_error($ch);	
+		if ($curl_errno > 0) {
+			$response = '';
+			
+	    }
+	    return $response;
+
+	}
 	
 		
 	
@@ -617,6 +643,7 @@ class WPeMatico_functions {
 			$campaigndata['ID']=0;
 		}
 		
+
 		//$campaigndata['campaign_id'] = $post_id;
 		$campaigndata['campaign_title'] = (isset($post_data['campaign_title']) && !empty($post_data['campaign_title']) ) ? $post_data['campaign_title'] : get_the_title($campaigndata['ID']);
 
@@ -859,6 +886,13 @@ class WPeMatico_functions {
 		$campaigndata['campaign_bbpress_forum']	= (!isset($post_data['campaign_bbpress_forum']) || empty($post_data['campaign_bbpress_forum'])) ? 0: $post_data['campaign_bbpress_forum'];
 		$campaigndata['campaign_bbpress_topic']	= (!isset($post_data['campaign_bbpress_topic']) || empty($post_data['campaign_bbpress_topic'])) ? 0: $post_data['campaign_bbpress_topic'];
 
+
+		$campaigndata['campaign_xml_feed_url'] = (isset($post_data['campaign_xml_feed_url']) && !empty($post_data['campaign_xml_feed_url']) ) ? $post_data['campaign_xml_feed_url'] : '';
+		$campaigndata['campaign_xml_node'] = (isset($post_data['campaign_xml_node']) && !empty($post_data['campaign_xml_node']) ) ? (array)$post_data['campaign_xml_node'] : array();
+		if ($campaigndata['campaign_type'] == 'xml') {
+			$campaigndata['campaign_feeds'] = array();
+			$campaigndata['campaign_feeds'][] = site_url( '/wpematico-xml-feed/');
+		}
 
 		if(has_filter('pro_check_campaigndata')) $campaigndata =  apply_filters('pro_check_campaigndata', $campaigndata, $post_data);
 		return $campaigndata;

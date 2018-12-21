@@ -1,4 +1,29 @@
 jQuery(document).ready(function($){
+
+	$('#xml-campaign-check-data-btn').click(function(e) {
+		
+		if ($('#campaign_xml_feed_url').val() == '') {
+			$('#campaign_xml_feed_url').focus();
+			e.preventDefault();
+		}
+
+		$('#xml-campaign-input-nodes-container').html('<img src="' +  wpematico_object.image_run_loading + '">' + wpematico_object.text_loading);
+		$('#xml-campaign-input-nodes-container').fadeIn();
+
+		var data = {
+			xml_feed: 	$('#campaign_xml_feed_url').val(),
+			action: 	"wpematico_xml_check_data",
+			nonce: 		wpematico_object.xml_check_data_nonce
+		};
+		$.post(ajaxurl, data, function(response) {  
+			$('#xml-campaign-input-nodes-container').html( response );
+		}).fail(function() {
+			
+		});
+		e.preventDefault();
+
+	});
+
 	events_submit_post($);
 	wpe_others_events($);
 	if ($('input[name="original_post_status"]').val() != 'publish') {

@@ -3,7 +3,7 @@ Contributors: etruel, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS, RSS to Post, Feed to Post, autoblog,rss aggregator, Feed, rss to post, syndication, Post, Posts, aggregation, atom, bot, content, writing
 Requires at least: 4.1
-Tested up to: 5.0
+Tested up to: 5.1
 Requires PHP: 5.3
 Stable tag: trunk
 License: GPLv2 or later
@@ -264,6 +264,9 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
+= 2.2 Dec 21, 2018 =
+* Added XML Campaign type to parse and fetch XML files as feeds.
+
 = 2.1.2 Nov 14, 2018 =
 * Added wp filters to parse categories and autocategories before inserted them in posts.
 * Improved some texts on code and filter descriptions.

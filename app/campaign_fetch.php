@@ -133,6 +133,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		$count = 0;
 		$prime = true;
 
+		error_log('Wpematico_process_fetching');
 		// Access the feed
 		if($this->campaign['campaign_type']=="feed" or $this->campaign['campaign_type']=="youtube" or $this->campaign['campaign_type']=="bbpress" ) { 		// Access the feed
 			$wpe_url_feed = apply_filters('wpematico_simplepie_url', $feed, $kf, $this->campaign);
@@ -150,6 +151,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			$fetch_feed_params = apply_filters('wpematico_fetch_feed_params', $fetch_feed_params, $kf, $this->campaign);
 			$simplepie =  WPeMatico::fetchFeed($fetch_feed_params);
 		}else {
+
 			$simplepie = apply_filters('Wpematico_process_fetching', $this->campaign);
 		}
 		

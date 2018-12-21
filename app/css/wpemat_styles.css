@@ -1453,3 +1453,15 @@ div#optionslayer-right {
 .rewrite-row {
     clear: both;
 }
+
+
+.table_check_data_xml {
+    width: 100%;
+    border-spacing: 1px;
+}
+.table_check_data_xml tr:nth-child(2n+1) {
+    background: aliceblue;
+}
+.table_check_data_xml tr:nth-child(2n) {
+    background: beige;
+}
