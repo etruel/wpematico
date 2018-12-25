@@ -490,6 +490,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			$cfg['disable_metaboxes_wpematico_posts']= (!isset($options['disable_metaboxes_wpematico_posts']) || empty($options['disable_metaboxes_wpematico_posts'])) ? false: ($options['disable_metaboxes_wpematico_posts']==1) ? true : false;
 			
 			$cfg['disable_categories_description']	= (!isset($options['disable_categories_description']) || empty($options['disable_categories_description'])) ? false: ($options['disable_categories_description']==1) ? true : false;
+			$cfg['enable_xml_upload']	= (!isset($options['enable_xml_upload']) || empty($options['enable_xml_upload'])) ? false: ($options['enable_xml_upload']==1) ? true : false;
 
 			return apply_filters('wpematico_more_options', $cfg, $options);
 		}

@@ -73,12 +73,13 @@ class Main_WPeMatico{
 			require_once('app/campaign_log.php');
 			require_once('app/campaign_preview.php');
 			require_once('app/campaign_preview_item.php');
-			require_once('app/xml-importer.php');
+			
 		}
 		require_once('app/cron_functions.php');
 		require_once('app/compatibilities.php');
 		require_once('app/wpematico_functions.php');
 		require_once('wpematico_class.php');
+		require_once('app/xml-importer.php');
 	}
 
 	private function hooks() {

@@ -81,6 +81,9 @@ class Blank_SimplePie_Item {
 		}
 		return $ret;
 	}
+	public function set_post_meta($key, $value) {
+		$this->post_meta[$key] = $value;
+	}
 	public function set_feed($feed) {
 		return $this->feed = $feed;
 	}

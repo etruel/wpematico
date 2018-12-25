@@ -206,6 +206,9 @@ function wpematico_settings(){
 									?></span>
 								<p></p>
 								<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disable_categories_description'], true); ?> name="disable_categories_description" id="disable_categories_description" /><b>&nbsp;<?php _e('Disable <i>Category Description</i> of WPeMatico', 'wpematico'); ?></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disable_categories_description']; ?>"></span>
+								<br>
+								<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enable_xml_upload'], true); ?> name="enable_xml_upload" id="enable_xml_upload" /><b>&nbsp;<?php _e('Enable <i>Upload of XMLs</i>', 'wpematico'); ?></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enable_xml_upload']; ?>"></span>
+
 								<p style="text-align: right;">
 									<input type="hidden" name="wpematico-action" value="save_settings" />
 									<?php submit_button(__('Save settings', 'wpematico'), 'primary', 'wpematico-save-settings', false); ?>
@@ -1013,6 +1016,12 @@ function wpematico_helpsettings($dev=''){
 				'tip' => __('I really appreciate if you can left this option blank to show that the categories are created by WPeMatico.', 'wpematico' ),
 				
 			),
+			'enable_xml_upload' => array( 
+				'title' => __('Enable Upload of XMLs.', 'wpematico' ),
+				'tip' => __('If you want upload XML files to use them in the XML Campaign Type. Enable this feature allow the upload XMLs from media.', 'wpematico' ),
+				
+			),
+
 		),
 		'Sending e-Mails' => array( 
 			'sendmail' => array( 
