@@ -90,17 +90,26 @@ class wpematico_campaign_preview_item {
 		
 		if(has_action('Wpematico_init_fetching')) do_action('Wpematico_init_fetching', $campaign_fetch->campaign);
 		
-		$fetch_feed_params = array(
-			'url' 			=> $feed,
-			'stupidly_fast' => true,
-			'max' 			=> 0,
-			'order_by_date' => false,
-			'force_feed' 	=> false,
-			'disable_simplepie_notice' => true,
-		);
-		$fetch_feed_params = apply_filters('wpematico_preview_item_fetch_params', $fetch_feed_params, 0, $campaign);
-		$simplepie =  WPeMatico::fetchFeed($fetch_feed_params);
 		
+		if($campaign['campaign_type']=="feed" or $campaign['campaign_type']=="youtube" or $campaign['campaign_type']=="bbpress" ) { 		// Access the feed
+			
+			$fetch_feed_params = array(
+				'url' 			=> $feed,
+				'stupidly_fast' => true,
+				'max' 			=> 0,
+				'order_by_date' => false,
+				'force_feed' 	=> false,
+				'disable_simplepie_notice' => true,
+			);
+			$fetch_feed_params = apply_filters('wpematico_preview_item_fetch_params', $fetch_feed_params, 0, $campaign);
+			$simplepie =  WPeMatico::fetchFeed($fetch_feed_params);
+		
+		}else {
+			$simplepie = apply_filters('Wpematico_process_fetching', $campaign);
+		}
+
+
+
 		$item_to_fetch = null;
 
 		foreach($simplepie->get_items() as $item) {

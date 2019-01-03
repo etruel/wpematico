@@ -181,7 +181,6 @@ class WPeMatico_XML_Importer {
 
 
             }
-            error_log(print_r($simplepie, true));
             return $simplepie;
         }
         return $campaign;
