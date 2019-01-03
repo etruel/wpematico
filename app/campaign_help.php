@@ -222,6 +222,23 @@ $helpcampaign = array(
 			),
 	),
 
+	'XML Campaign Type' => array(
+		
+		'XML Campaign Type Box' => array( 
+				'title' => __('XML Campaign Type', 'wpematico' ),
+				'tip' => __('The XML campaign type provides the necessary tools to fetch the information in the XML files. As if the XMLs were RSS feeds', 'wpematico' ),
+		),
+		
+		'Elements of XML' => array( 
+			'title' => __('Elements of XML.', 'wpematico' ),
+			'tip' => __('Select the Element of XML that corresponds to the correct post property. If the Element of XML is not unique per post you should use Parent Elements.', 'wpematico' ),
+		),
+		'Parent Element' => array( 
+				'title' => __('Parent Element.', 'wpematico' ),
+				'tip' => __('If the <strong>Elements of XML</strong> is not unique or has more than one element per post. The Parent Element helps to detect the elements of XML of each post.<br> The parent element must be the parent of the selected Element of XML. It must also be unique per post. ', 'wpematico' ),
+			),
+	),
+
 	'Post Template' => array( 
 		'postemplate' => array( 
 				'title' => __('Enable Post Template.', 'wpematico' ),
@@ -320,9 +337,11 @@ foreach($helpcampaign as $key => $section){
 				$sdata['tip'] . '</p>';
 		$tabcontent .= (isset($sdata['plustip'])) ?	'<p>' . $sdata['plustip'] . '</p>' : '';
 	}
-	$screen->add_help_tab( array(
-		'id'	=> $key,
-		'title'	=> $key,
-		'content'=> $tabcontent,
-	) );
+	if ( ! defined('WPEMATICO_AJAX') ) {
+		$screen->add_help_tab( array(
+			'id'		=> $key,
+			'title'		=> $key,
+			'content'	=> $tabcontent,
+		) );
+	}
 }

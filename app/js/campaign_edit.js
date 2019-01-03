@@ -17,6 +17,7 @@ jQuery(document).ready(function($){
 		};
 		$.post(ajaxurl, data, function(response) {  
 			$('#xml-campaign-input-nodes-container').html( response );
+			jQuery(".help_tip").tipTip({maxWidth: "400px", edgeOffset: 5,fadeIn:50,fadeOut:50, keepAlive:true, defaultPosition: "right"});
 		}).fail(function() {
 			
 		});

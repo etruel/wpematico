@@ -32,7 +32,7 @@ class WPeMatico_Campaign_edit_functions {
 		
 		add_meta_box( 'bbpress-box', '<span class="dashicons dashicons-bbpress-logo"> </span> '.__('bbPress Forums Options', 'wpematico' ). '<span class="dashicons dashicons-warning help_tip" title-heltip="'.$helptip['bbpress'].'" title="'. $helptip['bbpress'].'"></span>', array( 'WPeMatico_Campaign_edit'  ,'bbpress_box' ),'wpematico','normal', 'high' );
 		
-		add_meta_box( 'xml-campaign-box', '<span class="dashicons dashicons-rss"> </span> '.__('XML Campaign Type', 'wpematico' ). '<span class="dashicons dashicons-warning help_tip" title-heltip="'.$helptip['feed_url'].'" title="'. $helptip['feed_url'].'"></span>', array( 'WPeMatico_XML_Importer'  ,'metabox' ),'wpematico','normal', 'high' );
+		add_meta_box( 'xml-campaign-box', '<span class="dashicons dashicons-rss"> </span> '.__('XML Campaign Type', 'wpematico' ). '<span class="dashicons dashicons-warning help_tip" title-heltip="'.$helptip['XML Campaign Type Box'].'" title="'. $helptip['XML Campaign Type Box'].'"></span>', array( 'WPeMatico_XML_Importer'  ,'metabox' ),'wpematico','normal', 'high' );
 
 		add_meta_box( 'options-box', '<span class="dashicons dashicons-admin-settings"> </span> '.__('Options for this campaign', 'wpematico' ), array(  'WPeMatico_Campaign_edit'  ,'options_box' ),'wpematico','normal', 'default' );
 		add_meta_box( 'cron-box', '<span class="dashicons dashicons-backup"> </span> '.__('Schedule Cron', 'wpematico' ), array(  'WPeMatico_Campaign_edit'  ,'cron_box' ),'wpematico','normal', 'default' );

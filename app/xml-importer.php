@@ -228,14 +228,22 @@ class WPeMatico_XML_Importer {
             wp_die('Error: Empty feed URL');
         }
         $campaign_data = array(
-            'campaign_xml_feed_url' => $xml_url,
-            'campaign_xml_node'     => array(),
+            'campaign_xml_feed_url'     => $xml_url,
+            'campaign_xml_node'         => array(),
+            'campaign_xml_node_parent'  => array(),
         );
         self::get_xml_input_nodes( $campaign_data );
         die();
     }
 
     public static function get_xml_input_nodes($campaign_data) {
+        global $helptip;
+        if ( empty($helptip) ) {
+            if ( ! defined('WPEMATICO_AJAX') ) {
+                define('WPEMATICO_AJAX', true);
+            }
+            require( WPEMATICO_PLUGIN_DIR . '/app/campaign_help.php' );
+        }
         $campaign_xml_feed_url = $campaign_data['campaign_xml_feed_url'];
         $campaign_xml_node = $campaign_data['campaign_xml_node'];
         $campaign_xml_node_parent = $campaign_data['campaign_xml_node_parent'];
@@ -258,8 +266,8 @@ class WPeMatico_XML_Importer {
         <table class="table_check_data_xml">
             <tr>
                 <td><strong><?php _e('Properties', 'wpematico' ); ?></strong></td>
-                <td><strong><?php _e('Elements of XML', 'wpematico' ); ?></strong></td>
-                <td><strong><?php _e('Parent Element', 'wpematico' ); ?></strong></td>
+                <td><strong><?php _e('Elements of XML', 'wpematico' ); echo '<span class="dashicons dashicons-warning help_tip" title-heltip="'.$helptip['Elements of XML'].'"  title="'. $helptip['Elements of XML'].'"></span>'; ?></strong></td>
+                <td><strong><?php _e('Parent Element', 'wpematico' ); echo '<span class="dashicons dashicons-warning help_tip" title-heltip="'.$helptip['Parent Element'].'"  title="'. $helptip['Parent Element'].'"></span>'; ?></strong></td>
                 
             </tr>
             <tr>
