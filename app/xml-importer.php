@@ -341,13 +341,19 @@ class WPeMatico_XML_Importer {
 
 	private static function recurse_xml( $xml , $parent = "" ) {
         $child_count = 0;
-        if ( ! empty($xml->children()) ) {
+        $namespaces = array_merge( array(null),  $xml->getDocNamespaces(true));
+        foreach ($namespaces as $kns => $namespace) :
+            
+        
+        if ( ! empty($xml->children($namespace)) ) {
 
-            foreach( $xml->children() as $key => $value ) :
+            foreach( $xml->children($namespace) as $key => $value ) :
                 $child_count++;
 
-                    $name = $value->getName();
-                    $current_key = ( empty($parent) ?  (string)$key : $parent . "/" . (string)$key );
+                    $name = ( empty($namespace) ? $value->getName() : $kns . ":" . $value->getName() );
+                    
+                    $name_key = ( empty($namespace) ?  (string)$key : $kns . ":" . (string)$key );
+                    $current_key = ( empty($parent) ?  (string)$name_key : $parent . "/" . (string)$name_key );
                     $count = ( isset( self::$xmlnodes[$current_key]['count'] )  ? self::$xmlnodes[$current_key]['count'] + 1  : 1); 
                     
                     self::$xmlnodes[$current_key] = array(
@@ -369,8 +375,8 @@ class WPeMatico_XML_Importer {
             endforeach;
 
         }
-        
-       return $child_count;
+        endforeach;
+        return $child_count;
     }
 
 
