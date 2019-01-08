@@ -267,6 +267,9 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 = 2.2 Dec 21, 2018 =
 * Added XML Campaign type to parse and fetch XML files as feeds.
 * Some tweaks in Campaign Preview.
+* Some improvements in source code.
+* Added categories to Blank Simplepie Lib.
+
 
 = 2.1.2 Nov 14, 2018 =
 * Added wp filters to parse categories and autocategories before inserted them in posts.

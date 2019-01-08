@@ -43,6 +43,7 @@ class Blank_SimplePie_Item {
 	public $date = '';
 	public $author = false;
 	public $post_meta = array();
+	public $categories = array();
 	function __construct($title = '', $content = '', $link = '', $date = '', $author = false, $post_meta = array()) {
 		
 		$this->title = $title;
@@ -90,6 +91,12 @@ class Blank_SimplePie_Item {
 	public function get_feed() {
 		return $this->feed;
 	}
+	public function get_categories() {
+		return $this->categories;
+	}
+	public function add_category($category) {
+		$this->categories[] = $category;
+	}
 }
 endif;
 if (!class_exists('Blank_SimplePie_Item_Author')) :
@@ -108,5 +115,50 @@ class Blank_SimplePie_Item_Author {
 	}
 }
 endif;
+
+
+class Blank_SimplePie_Category
+{
+	
+	var $term;
+
+	var $scheme;
+
+	var $label;
+
+	var $type;
+
+	public function __construct($term = null, $scheme = null, $label = null, $type = null)
+	{
+		$this->term = $term;
+		$this->scheme = $scheme;
+		$this->label = $label;
+		$this->type = $type;
+	}
+
+	public function get_term()
+	{
+		return $this->term;
+	}
+
+	public function get_scheme()
+	{
+		return $this->scheme;
+	}
+
+	public function get_label($strict = false)
+	{
+		if ($this->label === null && $strict !== true)
+		{
+			return $this->get_term();
+		}
+		return $this->label;
+	}
+	
+	public function get_type()
+	{
+		return $this->type;
+	}
+}
 
 ?>

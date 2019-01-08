@@ -416,7 +416,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		$this->current_item['campaign_post_format'] = $this->campaign['campaign_post_format'];
 
 		//********** Do filters
-		$this->current_item = $this->Item_filters($this->current_item,$this->campaign,$feed,$item );
+		$this->current_item = $this->Item_filters( $this->current_item, $this->campaign, $feed, $item );
+		$this->current_item = apply_filters('wpematico_pos_item_filters', $this->current_item, $this->campaign, $feed, $item );
 
 		if( $this->cfg['nonstatic'] ) { $this->current_item = NoNStatic :: metaf($this->current_item, $this->campaign, $feed, $item ); }
 		

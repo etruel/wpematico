@@ -183,6 +183,7 @@ class WPeMatico_XML_Importer {
                         $new_simplepie_item = new Blank_SimplePie_Item( $new_title, $new_content, $new_permalink, $new_date, $new_author );
                         $new_simplepie_item->set_post_meta('image', $new_image);
                         $new_simplepie_item->set_feed($simplepie);
+                        $new_simplepie_item = apply_filters('wpematico_xml_simplepie_item_before_add', $new_simplepie_item, $key_node_title, $xml, $campaign);
                         $simplepie->addItem( $new_simplepie_item );
                    
                     }
@@ -313,10 +314,8 @@ class WPeMatico_XML_Importer {
                 <td><?php _e('Post image', 'wpematico' ); ?></td>
                 <td><?php self::get_select_node_html('post_image', ( !empty( $campaign_xml_node['post_image'] ) ? $campaign_xml_node['post_image'] : '' )  ); ?></td>
                 <td><?php self::get_select_node_html('post_image', ( !empty( $campaign_xml_node_parent['post_image'] ) ? $campaign_xml_node_parent['post_image'] : '' ),  'campaign_xml_node_parent', false  ); ?></td>
-
-            
             </tr>
-
+            <?php do_action('wpematico_xml_input_nodes_print', $campaign_data); ?>
             
         </table>
         <?php
