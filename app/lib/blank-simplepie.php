@@ -4,13 +4,14 @@
 * @package     Blank SimplePie
 * @since       1.0.0
 */
-if (!class_exists('Blank_SimplePie')) :
-class Blank_SimplePie {
+if (!class_exists('WPeMatico_SimplePie')) :
+class WPeMatico_SimplePie {
 	public $items = array();
 	public $feed_url = '';
 	public $title = '';
 	public $description = '';
 	public $image = null;
+
 	function __construct($feed_url = '', $title = '', $description = '') {
 		$this->feed_url = $feed_url;
 		$this->title = $title;
@@ -33,8 +34,8 @@ class Blank_SimplePie {
 	}
 }
 endif;
-if (!class_exists('Blank_SimplePie_Item')) :
-class Blank_SimplePie_Item {
+if (!class_exists('WPeMatico_SimplePie_Item')) :
+class WPeMatico_SimplePie_Item {
 	
 	public $title = '';
 	public $content = '';
@@ -44,7 +45,8 @@ class Blank_SimplePie_Item {
 	public $author = false;
 	public $post_meta = array();
 	public $categories = array();
-	function __construct($title = '', $content = '', $link = '', $date = '', $author = false, $post_meta = array()) {
+	public $data = array();
+	function __construct($title = '', $content = '', $link = '', $date = '', $author = '', $post_meta = array()) {
 		
 		$this->title = $title;
 		$this->content = $content;
@@ -68,6 +70,9 @@ class Blank_SimplePie_Item {
 	}
 	public function get_date($date_format = 'j F Y, g:i a') {
 		return date($date_format, strtotime($this->date));
+	}
+	public function set_author($author = '') {
+		$this->author = $author;
 	}
 	public function get_author() {
 		return $this->author;
@@ -97,10 +102,22 @@ class Blank_SimplePie_Item {
 	public function add_category($category) {
 		$this->categories[] = $category;
 	}
+
+	public function get_item_tags($namespace, $tag) {
+		if (isset($this->data['child'][$namespace][$tag]))
+		{
+			return $this->data['child'][$namespace][$tag];
+		}
+		else
+		{
+			return null;
+		}
+	}
+
 }
 endif;
-if (!class_exists('Blank_SimplePie_Item_Author')) :
-class Blank_SimplePie_Item_Author {
+if (!class_exists('WPeMatico_SimplePie_Item_Author')) :
+class WPeMatico_SimplePie_Item_Author {
 	public $name = '';
 	public $link = '';
 	function __construct($name = '', $link = '') {
@@ -116,9 +133,8 @@ class Blank_SimplePie_Item_Author {
 }
 endif;
 
-
-class Blank_SimplePie_Category
-{
+if (!class_exists('WPeMatico_SimplePie_Category')) :
+class WPeMatico_SimplePie_Category {
 	
 	var $term;
 
@@ -160,5 +176,5 @@ class Blank_SimplePie_Category
 		return $this->type;
 	}
 }
-
+endif;
 ?>

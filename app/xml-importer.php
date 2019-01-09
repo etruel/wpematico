@@ -17,7 +17,7 @@ class WPeMatico_XML_Importer {
         add_filter('Wpematico_process_fetching', array(__CLASS__, 'process_fetching'), 10, 1);
 
         add_filter('wpematico_get_item_images', array(__CLASS__, 'featured_image'), 10, 5);
-        add_filter('wpematico_get_author',  array(__CLASS__, 'author'), 10, 4 );
+        
         $options = get_option( WPeMatico::OPTION_KEY );
         if ( ! empty( $options['enable_xml_upload'] ) ) {
 
@@ -28,17 +28,7 @@ class WPeMatico_XML_Importer {
         
         
     }
-    public static function author($current_item, $campaign, $feed, $item ) {
-        if ($campaign['campaign_type'] == 'xml') {
-            if (class_exists('WPeMaticoPro_Campaign_Fetch')) {
-                if ( method_exists('WPeMaticoPro_Campaign_Fetch', 'get_author_from_feed') ) {
-                    $current_item = WPeMaticoPro_Campaign_Fetch::get_author_from_feed($current_item, $campaign, $feed, $item );
-                }
-            }
-            
-        }
-        return $current_item;
-    }
+    
     public static function featured_image($current_item, $campaign, $item, $options_images) {
         if ($campaign['campaign_type'] == 'xml') {
             if ( ! empty( $item->get_post_meta('image') ) ) {
@@ -59,11 +49,11 @@ class WPeMatico_XML_Importer {
         
         if (is_array($campaign) && $campaign['campaign_type'] == 'xml') {
             
-            if ( ! class_exists('Blank_SimplePie')) {
+            if ( ! class_exists('WPeMatico_SimplePie')) {
                 require_once(WPEMATICO_PLUGIN_DIR. 'app/lib/blank-simplepie.php');
             }
             
-            $simplepie = new Blank_SimplePie( $campaign['campaign_xml_feed_url'], 'WPeMatico XML Campaign Type', 'WPeMatico XML Campaign Type');
+            $simplepie = new WPeMatico_SimplePie( $campaign['campaign_xml_feed_url'], 'WPeMatico XML Campaign Type', 'WPeMatico XML Campaign Type');
             
             $data_xml = WPeMatico::wpematico_get_contents( $campaign['campaign_xml_feed_url'], true );
             if ( ! empty( $data_xml ) ) {
@@ -77,14 +67,12 @@ class WPeMatico_XML_Importer {
                 $xpath_content              = ( !empty( $campaign_xml_node['post_content'] ) ? $campaign_xml_node['post_content'] : '' );
                 $xpath_permalink            = ( !empty( $campaign_xml_node['post_permalink'] ) ? $campaign_xml_node['post_permalink'] : '' );
                 $xpath_date                 = ( !empty( $campaign_xml_node['post_date'] ) ? $campaign_xml_node['post_date'] : '' );
-                $xpath_author               = ( !empty( $campaign_xml_node['post_author'] ) ? $campaign_xml_node['post_author'] : '' );
                 $xpath_image                = ( !empty( $campaign_xml_node['post_image'] ) ? $campaign_xml_node['post_image'] : '' );
 
                 $xpath_parent_title         = ( !empty( $campaign_xml_node_parent['post_title'] ) ? $campaign_xml_node_parent['post_title'] : '' );
                 $xpath_parent_content       = ( !empty( $campaign_xml_node_parent['post_content'] ) ? $campaign_xml_node_parent['post_content'] : '' );
                 $xpath_parent_permalink     = ( !empty( $campaign_xml_node_parent['post_permalink'] ) ? $campaign_xml_node_parent['post_permalink'] : '' );
                 $xpath_parent_date          = ( !empty( $campaign_xml_node_parent['post_date'] ) ? $campaign_xml_node_parent['post_date'] : '' );
-                $xpath_parent_author        = ( !empty( $campaign_xml_node_parent['post_author'] ) ? $campaign_xml_node_parent['post_author'] : '' );
                 $xpath_parent_image         = ( !empty( $campaign_xml_node_parent['post_image'] ) ? $campaign_xml_node_parent['post_image'] : '' );
 
 
@@ -95,7 +83,6 @@ class WPeMatico_XML_Importer {
                     $nodes_content          =  ( ! empty($xpath_parent_content) ? $xml->xpath( $xpath_parent_content ) : ( ! empty( $xpath_content ) ? $xml->xpath( $xpath_content ) : array() )  );  
                     $nodes_permalink        =  ( ! empty($xpath_parent_permalink) ? $xml->xpath( $xpath_parent_permalink ) : ( ! empty( $xpath_permalink ) ? $xml->xpath( $xpath_permalink ) : array() )  );  
                     $nodes_date             =  ( ! empty($xpath_parent_date) ? $xml->xpath( $xpath_parent_date ) : ( ! empty( $xpath_date ) ? $xml->xpath( $xpath_date ) : array() )  );  
-                    $nodes_author           =  ( ! empty($xpath_parent_author) ? $xml->xpath( $xpath_parent_author ) : ( ! empty( $xpath_author ) ? $xml->xpath( $xpath_author ) : array() )  );  
                     $nodes_image            =  ( ! empty($xpath_parent_image) ? $xml->xpath( $xpath_parent_image ) : ( ! empty( $xpath_image ) ? $xml->xpath( $xpath_image ) : array() )  );  
 
                    
@@ -152,19 +139,7 @@ class WPeMatico_XML_Importer {
                         }  
 
 
-                        $new_author = '';
-                        if ( ! empty($xpath_parent_author) ) {
-                            $child_xpath_author     = str_replace($xpath_parent_author.'/', '', $xpath_author);
-                            $child_nodes_author     = ( ! empty($nodes_author[$key_node_title]) ? $nodes_author[$key_node_title]->xpath($child_xpath_author) : array() );
-                            $new_author             = (string)array_shift($child_nodes_author);
-                            if ( ! empty($new_author) ) {
-                                $new_author         = new Blank_SimplePie_Item_Author($new_author);
-                            } else {
-                                $new_author         = '';
-                            }
-                        } else {
-                            $new_author             = ( ! empty( $nodes_author[$key_node_title] ) ? new Blank_SimplePie_Item_Author($nodes_author[$key_node_title])  : '' );
-                        }
+                        
 
                         $new_image = '';
                         if ( ! empty($xpath_parent_image) ) {
@@ -180,7 +155,7 @@ class WPeMatico_XML_Importer {
 
                         
                         
-                        $new_simplepie_item = new Blank_SimplePie_Item( $new_title, $new_content, $new_permalink, $new_date, $new_author );
+                        $new_simplepie_item = new WPeMatico_SimplePie_Item( $new_title, $new_content, $new_permalink, $new_date);
                         $new_simplepie_item->set_post_meta('image', $new_image);
                         $new_simplepie_item->set_feed($simplepie);
                         $new_simplepie_item = apply_filters('wpematico_xml_simplepie_item_before_add', $new_simplepie_item, $key_node_title, $xml, $campaign);
@@ -305,11 +280,6 @@ class WPeMatico_XML_Importer {
                 <td><?php self::get_select_node_html('post_date', ( !empty( $campaign_xml_node_parent['post_date'] ) ? $campaign_xml_node_parent['post_date'] : '' ),  'campaign_xml_node_parent', false  ); ?></td>
             </tr>
 
-            <tr>
-                <td><?php _e('Post author', 'wpematico' ); ?></td>
-                <td><?php self::get_select_node_html('post_author', ( !empty( $campaign_xml_node['post_author'] ) ? $campaign_xml_node['post_author'] : '' )  ); ?></td>
-                <td><?php self::get_select_node_html('post_author', ( !empty( $campaign_xml_node_parent['post_author'] ) ? $campaign_xml_node_parent['post_author'] : '' ),  'campaign_xml_node_parent', false  ); ?></td>
-            </tr>
             <tr>
                 <td><?php _e('Post image', 'wpematico' ); ?></td>
                 <td><?php self::get_select_node_html('post_image', ( !empty( $campaign_xml_node['post_image'] ) ? $campaign_xml_node['post_image'] : '' )  ); ?></td>
