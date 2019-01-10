@@ -231,11 +231,12 @@ $helpcampaign = array(
 		
 		'Elements of XML' => array( 
 			'title' => __('Elements of XML.', 'wpematico' ),
-			'tip' => __('Select the Element of XML that corresponds to the correct post property. If the Element of XML is not unique per post you should use Parent Elements.', 'wpematico' ),
+			'tip' => __('Select the XML Element that corresponds to the correct post property. If the XML node is not unique per tag you should use the "Parent Elements" at right column to indicate to what parent belongs.', 'wpematico' ),
 		),
 		'Parent Element' => array( 
 				'title' => __('Parent Element.', 'wpematico' ),
-				'tip' => __('If the <strong>Elements of XML</strong> is not unique or has more than one element per post. The Parent Element helps to detect the elements of XML of each post.<br> The parent element must be the parent of the selected Element of XML. It must also be unique per post. ', 'wpematico' ),
+				'tip' => __('If the XML node is not unique or has more than one of the same element at left, the parent element helps to detect the correct XML node for each post property.', 'wpematico' ) . '<br>'. 
+					__('The parent element at right must be the parent of the selected XML node at left. Also, it must be unique per post.', 'wpematico' ),
 			),
 	),
 

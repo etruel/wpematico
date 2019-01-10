@@ -207,13 +207,11 @@ class WPEMATICO_Welcome {
 						<?php $this->subscription_form(); ?>
 					</div>
 					<div class="feature-section-content">
-						<h4><?php _e( 'XML Campaign type to allow parse and fetch XML feeds', 'wpematico' );?></h4>
-						<p><?php _e( 'This feature has the function of configure the campaign with the required fields that are found in the XML tags. A very important change in the plugin that will allow to import almost any XML feed to WordPress posts (types).', 'wpematico' );?></p>
-						<p><?php _e( 'An option in Settings enables the upload of XML files to the WordPress Media Library in order to use its URL in campaigns.', 'wpematico' );?></p>
-						<p><?php _e( 'Also, using the addons as the Professional will allow overwriting the data settled in the campaign and add the author, categories and tags also from the XML.', 'wpematico' );?></p>
-					</div>
-					<div class="feature-section-media">
-						<img style="float:left; width: 100%;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/xml_campaign.png'; ?>" alt="Preview for the YouTube campaign" width="400" />
+						<h4><?php _e( 'XML Campaign type to parse and fetch XML feeds', 'wpematico' );?></h4>
+						<p><?php _e( 'This feature allow you to configure every campaign with the fields that are found in the XML tags.  A very important addition that will allow to import almost anything that come in XML format to WordPress Posts (types).', 'wpematico' );?></p>
+						<p><?php _e( 'An option in Settings enables the upload of XML files in the WordPress Media Library in order to use its URL in the campaigns.', 'wpematico' );?></p>
+						<p><?php _e( 'Also, using the addons as the Professional will allow overwriting the data of a campaign and add the author, categories and tags also from the XML tags.', 'wpematico' );?></p>
+						<img style="width: 98%;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/xml_campaign.png'; ?>" alt="Preview for the YouTube campaign" width="400" />
 					</div>
 				</div>
 			</div>
@@ -249,7 +247,7 @@ class WPEMATICO_Welcome {
 				<h2><?php _e( 'A new Campaign Fetch Preview.', 'wpematico' );?></h2>
 				<div class="feature-section">
 					<div class="feature-section-media">
-						<img style="border: 0;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/previewbutton.png'; ?>" alt="Campaign Control Panel" />
+						<img style="border: 0;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/previewbutton.png'; ?>" alt="Campaign Preview" />
 					</div>
 					<div class="feature-section-content">
 						<h4><?php _e( 'Introducing the Campaign Preview Feature.', 'wpematico' );?></h4>
@@ -268,36 +266,24 @@ class WPEMATICO_Welcome {
 			</div>
 			<hr>
 			<div class="changelog">
-				<h2><?php _e( 'Some Performance Improvements.', 'wpematico' );?></h2>
-					<div class="feature-section">
-						<div class="feature-section-media" style="text-align: center;">
-							<img src="<?php echo WPEMATICO_PLUGIN_URL.'/images/utf8opt.png'; ?>" alt="Campaign UTF-8 option" width="400" />
-						</div>
-						<div class="feature-section-content">
-							<h4><?php _e('Convert character encoding to UTF-8.', 'wpematico' );?></h4>
-							<p><?php _e( "We've made several important improvements in the carachter encoding.", 'wpematico' );?></p>
-							<p><?php _e( 'This feature was automatic in the past working by reviewing all contents and re-encoding all, but taking with it a lot of server resources.', 'wpematico' );?></p>
-							<p><?php _e( "Now we’ve added and option to lets you choose if convert the character encoding of the content and title to UTF-8 if they have a different character encoding." , 'wpematico' );?></p>
-						</div>
-				</div>
-			</div>
-			<hr>
-			<div class="changelog">
 				<h2><?php _e( 'More Tweaks and Improvements.', 'wpematico' );?></h2>
 					<div class="feature-section">
 						<div class="feature-section-media">
-							<h4><?php _e( 'The last WPeMatico Addons', 'wpematico' );?></h4><img style="float:left;margin-right: 7px; width: 120px;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/wpematico_ebay-200x100.png'; ?>" alt="wpematico_ebay" width="200" />
-							<p><?php _e('The','wpematico'); ?> <a href="https://etruel.com/downloads/ebay-campaign-type/" target="_blank">WPeMatico Ebay Campaign Type</a>
-							<?php _e( 'allow you to use the eBay products in your website and publish them as posts or also as WooCommerce products by relating your eBay Parter Network Campaigns IDs.', 'wpematico' );?></p>
-							<img style="float:left;margin-right: 7px; width: 120px;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/wpematico_exporter-200x100.png'; ?>" alt="wpematico_exporter" width="200" />
-							<p><?php _e('The','wpematico'); ?> <a href="https://etruel.com/downloads/wpematico-exporter/" target="_blank">WPeMatico Exporter</a> 
-							<?php _e( 'is a very easy to use WordPress auto-exporter plugin in which you can create XML files automatically from the Posts types of your choice.', 'wpematico' );?></p>
+							<h4><?php _e( 'WPeMatico Addons', 'wpematico' );?></h4>
+							<img style="float:left;margin-right: 7px; width: 120px;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/wpematico-premium-200x100.png'; ?>" alt="wpematico_exporter" width="200" />
+							<p><?php _e('The','wpematico'); ?> <a href="https://etruel.com/downloads/wpematico-exporter/" target="_blank">WPeMatico Premium Package</a> 
+							<?php _e( 'contains the five preferred add-Ons with the most wanted features for autoblogging with WordPress in a very easy professional way.', 'wpematico' );?></p>
 							<img style="float:left;margin-right: 7px; width: 120px;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/wpematico_manual_fetching-200x100.png'; ?>" alt="wpematico_manual" width="200" />
 							<p><?php _e('The','wpematico'); ?> <a href="https://etruel.com/downloads/wpematico-manual-fetching/" target="_blank">WPeMatico Manual Fetching</a> 
 							<?php _e( 'extends the Campaign Preview functionality to every feed individually and allows you to review and insert each item, one by one or in bulk mode.', 'wpematico' );?></p>
+							<img style="float:left;margin-right: 7px; width: 120px;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/wpematico_ebay-200x100.png'; ?>" alt="wpematico_ebay" width="200" />
+							<p><?php _e('The','wpematico'); ?> <a href="https://etruel.com/downloads/ebay-campaign-type/" target="_blank">WPeMatico Ebay Campaign Type</a>
+							<?php _e( 'uses eBay products in your site and publish them as posts or WooCommerce products by relating your eBay Parter Network Campaigns IDs.', 'wpematico' );?></p>
 							<img style="float:left;margin-right: 7px; width: 120px;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/wpematico-hooks_200x100.png'; ?>" alt="WPeMatico Custom Hooks" width="200" />
 							<p><?php _e('The','wpematico'); ?> <a href="https://wordpress.org/plugins/wpematico-custom-hooks/" target="_blank">WPeMatico Custom Hooks</a> 
 							<?php _e( 'is a FREE addon that allows you to execute actions and filters provided by WPeMatico in order to create custom behavior in the execution of your campaigns.', 'wpematico' );?></p>
+							<h5><a style="float:right;" href="https://etruel.com/starter-packages/" target="_blank"><?php _e( 'Starter Packages.', 'wpematico' );?></a>
+							<a style="float:left;" href="https://etruel.com/downloads/category/wpematico-add-ons/" target="_blank"><?php _e( 'All available Addons', 'wpematico' );?></a></h5>
 						</div>
 						<div class="feature-section-content">
 							<h4><?php _e('Better speed on uploading files.', 'wpematico' );?></h4>
@@ -319,7 +305,7 @@ class WPEMATICO_Welcome {
 				<div class="feature-section">
 					<div class="feature-section-media">
 						<h4><?php _e( 'Mp3 and Mp4 Files', 'wpematico' );?></h4>
-						<img style="float:right;width: 120px;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/videoaudio.png'; ?>" alt="wpematico_audio y video" width="200" />
+						<img style="float:right;width: 120px;margin: 0 0 0 5px;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/videoaudio.png'; ?>" alt="wpematico_audio y video" width="200" />
 						<p><?php _e( 'In addition to including the embedded links, the version 1.7 includes a full support for MP3 and MP4 media files. ', 'wpematico' );?><br />
 						<?php _e( 'Audio and video files inserted in the contents of the source can be downloaded and attached to the published post. ', 'wpematico' );?><br />
 						<?php _e( 'Compatible with audio widget and video widget inserted in WordPress 4.8.', 'wpematico' );?> <?php _e( 'Only take care with the size of the files.', 'wpematico' );?> ;-)
@@ -331,9 +317,8 @@ class WPEMATICO_Welcome {
 					</div>
 					<div class="feature-section-content">
 						<h4><?php _e( 'Introducing the Campaign Control Panel.', 'wpematico' );?></h4>
-						<img style="float:right;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/ccpanel.png'; ?>" alt="Campaign Control Panel" width="245" />
-						<p><?php _e( 'The most visible change in version 1.8 is certainly the campaign Control Panel. ', 'wpematico' );?><br />
-						<?php _e( 'This panel makes it possible to better control what is going on with the campaign you are editing.', 'wpematico' );?><br />
+						<img style="float:right; width:245px;margin: 0 5px 0 5px;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/ccpanel.png'; ?>" alt="Campaign Control Panel" />
+						<p><?php _e( 'This panel makes it possible to better control what is going on with the campaign you are editing.', 'wpematico' );?><br />
 						<?php _e( 'And also the "Delete hash" buttons for the duplicates control, view the "Last-run log", or even the "Reset" are displayed as buttons, no matter if the quick actions from Settings screen are activated.', 'wpematico' );?>
 						</p>
 					
@@ -458,7 +443,7 @@ class WPEMATICO_Welcome {
 				<h3><?php _e( 'Fill in the Settings', 'wpematico' );?></h3>
 				<div class="feature-section">
 					<div class="feature-section-media" style="max-height: 400px; overflow: hidden;">
-						<img src="<?php echo WPEMATICO_PLUGIN_URL . 'screenshot-5.png'; ?>" class="wpematico-welcome-screenshots"/>
+						<img src="<?php echo WPEMATICO_PLUGIN_URL . 'screenshot-5.jpg'; ?>" class="wpematico-welcome-screenshots"/>
 					</div>
 					<div class="feature-section-content">
 						<h4><?php _e( 'RSS', 'wpematico' );?></h4>
@@ -482,7 +467,7 @@ class WPEMATICO_Welcome {
 				<h3><?php _e( 'Creating Your First Campaign', 'wpematico' );?></h3>
 				<div class="feature-section">
 					<div class="feature-section-media" style="max-height: 300px; overflow: hidden;">
-						<img src="<?php echo WPEMATICO_PLUGIN_URL . 'screenshot-6.png'; ?>" class="wpematico-welcome-screenshots"/>
+						<img src="<?php echo WPEMATICO_PLUGIN_URL . 'screenshot-6.jpg'; ?>" class="wpematico-welcome-screenshots"/>
 					</div>
 					<div class="feature-section-content">
 						<h4><a href="<?php echo admin_url( 'post-new.php?post_type=wpematico' ) ?>"><?php printf( __( '%s &rarr; Add New', 'wpematico' ), 'WPeMatico' ); ?></a></h4>
@@ -495,7 +480,7 @@ class WPEMATICO_Welcome {
 				<h3><?php _e( 'Need Help?', 'wpematico' );?></h3>
 				<div class="feature-section">
 					<div class="feature-section-media">
-						<img src="<?php echo WPEMATICO_PLUGIN_URL . 'screenshot-4.png'; ?>"/>
+						<img src="<?php echo WPEMATICO_PLUGIN_URL . 'screenshot-4.jpg'; ?>"/>
 					</div>
 					<div class="feature-section-content">
 						<h4><?php _e( 'Inline Documentation','wpematico' );?></h4>

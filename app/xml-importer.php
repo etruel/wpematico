@@ -288,7 +288,7 @@ class WPeMatico_XML_Importer {
         $xml_url = ( !empty( $_REQUEST['xml_feed'] ) ? $_REQUEST['xml_feed'] : '' ); 
 
         if ( empty( $xml_url ) ) {
-            wp_die('Error: Empty feed URL');
+             wp_die('<div id="message" class="error notice notice-error is-dismissible"><p>' . __('Error: Empty feed URL.', 'wpematico') . '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>' ); 
         }
         $campaign_data = array(
             'campaign_xml_feed_url'     => $xml_url,
@@ -315,7 +315,8 @@ class WPeMatico_XML_Importer {
 
 
         if ( stripos($data_xml, '<atom:link') !== false ||  stripos($data_xml, 'http://www.w3.org/2005/Atom') !== false || stripos($data_xml, 'application/rss+xml') !== false  ) {
-             wp_die(__('The file is a RSS feed that must use <strong>Feed Fetcher</strong> campaign type instead of XML.', 'wpematico')); 
+             //wp_die(__('The file is a RSS feed that must use <strong>Feed Fetcher</strong> campaign type instead of XML.', 'wpematico')); 
+             wp_die('<div id="message" class="error notice notice-error is-dismissible"><p>' . __('The file is a RSS feed that must use <strong>Feed Fetcher</strong> campaign type instead of XML.', 'wpematico') . '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>' ); 
         }
 
 
@@ -371,7 +372,7 @@ class WPeMatico_XML_Importer {
     public static function get_select_node_html($input, $value, $input_name = 'campaign_xml_node', $use_atributes = true) {
         ?>
         <select name="<?php echo $input_name; ?>[<?php echo $input; ?>]" id="<?php echo $input_name; ?><?php echo $input; ?>" class="<?php echo $input_name; ?>">
-            <option value=""><?php _e('Select a XML node please.', 'wpematico' ); ?></option>
+            <option value=""><?php _e('Select a XML node.', 'wpematico' ); ?></option>
             <?php
             $first_node_select = "";
             foreach ( self::$xmlnodes as $nodekey => $nodecount ) : ?>

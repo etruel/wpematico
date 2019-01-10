@@ -119,6 +119,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 	#post_tag-box h2.hndle {background: #f997c7;}
 	#log-box h2.hndle {background: #55a288;}
 	#feeds-box h2.hndle {background: #eb9600;}
+	#xml-campaign-box h2.hndle {background: #ce5c00;} /* #91a78d */
 	#youtube-box h2.hndle {background: red; color: white;}
 	#bbpress-box h2.hndle {background: #8DC770;}
 	#options-box h2.hndle {background: #84f384;}

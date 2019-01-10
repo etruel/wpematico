@@ -7,7 +7,10 @@ jQuery(document).ready(function($){
 			e.preventDefault();
 		}
 
-		$('#xml-campaign-input-nodes-container').html('<img src="' +  wpematico_object.image_run_loading + '">' + wpematico_object.text_loading);
+		//$('#xml-campaign-input-nodes-container').html('<img src="' +  wpematico_object.image_run_loading + '">' + wpematico_object.text_loading);
+		$('#xml-campaign-input-nodes-container').html(
+				'<div id="message" class="updated notice notice-updated"><p>' +'<img src="' +  wpematico_object.image_run_loading + '"> ' + wpematico_object.text_loading+ '</p></div>'
+				);
 		$('#xml-campaign-input-nodes-container').fadeIn();
 
 		var data = {
