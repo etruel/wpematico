@@ -11,14 +11,14 @@ License: GPLv2 or later
 WPeMatico is autoblogging in the blink of an eye!  On complete autopilot WPeMatico gets new contents regularly for your site!
 
 == Description ==
-WPeMatico is a very easy to use autoblogging plugin. Organized into campaigns, it publishes your posts automatically from the RSS/Atom feeds of your choice. 
+WPeMatico is a very easy to use autoblogging plugin. Organized into campaigns, it publishes your posts automatically from the RSS/Atom and XML feeds of your choice. 
 
 This plugin offers you a nice interface following the WordPress standards that allows you to manage in every campaign all the feeds you import. In order to make your site more user-friendly, you can fetch contents from multiple feeds and arrange them according to categories.
 
 [youtube http://www.youtube.com/watch?v=N9wuKSbp1AE]
 
 
-For RSS fetching, it uses the Simplepie library included in Wordpress or forces to use the external library included in the plugin.
+For XML and RSS fetching, it uses the Simplepie library included in Wordpress or forces to use the external library included in the plugin.
 As for image processing, it uses the core functions of Wordpress. Failing doing the latter, it will use the custom functions with or without cURL.
 
 If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/plugin-reviews/wpematico?rate=5#new-post) on Wordpress. Thanks! :)
@@ -31,7 +31,8 @@ You can submit any bug in the [bugtracker](https://bitbucket.org/etruel/wpematic
 > * Comfortable interface like Worpress posts editing for every campaign.
 > * Multiple feeds / categories / tags.
 > * Auto add categories from source posts.
-> * Integrated *or not* with the Simplepie library that comes with Wordpress. This includes RSS 0.91 and RSS 1.0 formats, the popular RSS 2.0 format, Atom...
+> * Integrated *or not* with the Simplepie library that comes with Wordpress. This includes **RSS 0.91** and **RSS 1.0** formats, the popular **RSS 2.0** format, **Atom** ...
+> * From 2.2v also supports for **XML** feeds or files by uploading them into WordPress Media lib.
 > * Feed auto discovery allows you to add feeds without even knowing the exact URL. (Thanks Simplepie!)
 > * Unix cron and WordPress cron jobs. 
 > * For maximum performance, you can make the RSS fetching process be called by an external cron job, or simply let WordPress handle it.
@@ -55,14 +56,14 @@ You can submit any bug in the [bugtracker](https://bitbucket.org/etruel/wpematic
  
 #### With lots of amazing and professional features to work with images and content parsers/filters.
  
-> #### **[Professional Add-on](https://etruel.com/downloads/wpematico-professional/):**
+#### **[Professional Add-on](https://etruel.com/downloads/wpematico-professional/):**
 >   Extends WPeMatico with a lot of advanced functions and a lot of new features to parse and filter feed items contents, filters for featured, media, enclosure and in-content images, automatic tags generation, inserts custom fields with every post and much more.
 
 > * [Take a look to all its features by clicking here](https://etruel.com/downloads/wpematico-professional/)
  
 ---
 
-> #### **[FULL Content](https://etruel.com/downloads/wpematico-full-content/):**
+#### **[FULL Content](https://etruel.com/downloads/wpematico-full-content/):**
 > Takes the title and permalink and scratches its web page to find the full content with option to search for *multi-page articles*. Set the featured image from meta tags of source web page, Open Graph or Twitter images. 
 > Works automatically with 95% of the websites, but if not, allows set up a configuration file for every domain pointing to what section of the web page must be obtained. 
 > *Includes a config file editor* to add support for custom domains that moves all the config files to a local folder to don't overwrite the files when updates the plugin. 
@@ -72,7 +73,7 @@ You can submit any bug in the [bugtracker](https://bitbucket.org/etruel/wpematic
 
 ---
 
-> #### **[Manual Fetching](https://etruel.com/downloads/wpematico-manual-fetching/):**
+#### **[Manual Fetching](https://etruel.com/downloads/wpematico-manual-fetching/):**
 > Manual Fetching is the perfect complement for the Campaign Preview feature of WPeMatico. 
 > Extends its functionality to every feed individually and allows you to review and insert each item, one by one or in bulk mode with just a click in a button.
 > You’ll see the items that will be extracted but already parsed like will be published as posts with their images, audio and even videos.
@@ -81,7 +82,7 @@ You can submit any bug in the [bugtracker](https://bitbucket.org/etruel/wpematic
 
 ---
 
-> #### **[Polyglot](https://etruel.com/downloads/wpematico-polyglot/):**
+#### **[Polyglot](https://etruel.com/downloads/wpematico-polyglot/):**
 > Polyglot lets you translate the posts obtained from remote feeds before inserting them in your WordPress blog. 
 > It can work with any other extension and translate after processing the content.
 > Just select the original language of articles in a WPeMatico campaign so you can translate to one of the 107 supported languages.
@@ -90,7 +91,7 @@ You can submit any bug in the [bugtracker](https://bitbucket.org/etruel/wpematic
 
 ---
 
-> #### **[Make me Feed "Good"](https://etruel.com/downloads/wpematico-make-feed-good/):**
+#### **[Make me Feed "Good"](https://etruel.com/downloads/wpematico-make-feed-good/):**
 > Create your custom feeds RSS 2.0 with content from external sites in your WordPress blog, regardless of whether or not those have their own feed.
 > It follows the standards of WordPress editing and code. If you know how to upload a post in WordPress, this is even easier.
 > It is the perfect complement for WPeMatico together with the Full Content addon to indicate to extract the full contents and place it on each item in the feed.
@@ -100,7 +101,7 @@ You can submit any bug in the [bugtracker](https://bitbucket.org/etruel/wpematic
 
 ---
 
-> #### **[Facebook Fetcher](https://etruel.com/downloads/wpematico-facebook-fetcher/):**
+#### **[Facebook Fetcher](https://etruel.com/downloads/wpematico-facebook-fetcher/):**
 > Uses the WPeMatico campaign data to obtain the content from Facebook to be published automatically.
 > You can import from all pages/groups as you want, just adding one WPeMatico campaign per facebook page/group. Also imports the images in big size, allows import the comments in facebook with the names of the commenters to every imported post and many more features.
 
@@ -108,7 +109,7 @@ You can submit any bug in the [bugtracker](https://bitbucket.org/etruel/wpematic
 
 ---
 
-> #### **[Better Excerpts](https://etruel.com/downloads/wpematico-better-excerpts/):**
+#### **[Better Excerpts](https://etruel.com/downloads/wpematico-better-excerpts/):**
 > Makes excerpts with first post content sentence and other filters. Sets nice and better excerpts in front-end and also in feed contents.
 > Can be used to save the excerpts just for new posts of WPeMatico campaigns or to parse the excerpts of all posts of your site when shows them in your front-end page.
 
@@ -116,7 +117,7 @@ You can submit any bug in the [bugtracker](https://bitbucket.org/etruel/wpematic
 
 ---
 
-> #### **[Publish 2 Email](https://etruel.com/downloads/wpematico-publish-2-email/):**
+#### **[Publish 2 Email](https://etruel.com/downloads/wpematico-publish-2-email/):**
 > Very useful addon that allows publishing remotely by Wordpress *Post via email*, *Jetpack Post by Email* feature or plugins like *Postie*.  
 > Sends the fetched posts to an email account. Each campaign allows send the posts to a different email account.
 > **Using the email as interface from Wordpress to other CMS:**
@@ -126,12 +127,7 @@ You can submit any bug in the [bugtracker](https://bitbucket.org/etruel/wpematic
 
 ---
 
-> #### **[Categories 2 Tags](https://etruel.com/downloads/wpematico-cats2tags/):**
-> * Takes the categories of the item while fetching a feed and converts them to tags automatically before inserting the post.
-
----
-
-> #### **[WPeMatico Cache](https://etruel.com/downloads/wpematico-cache/):**
+#### **[WPeMatico Cache](https://etruel.com/downloads/wpematico-cache/):**
 > * A powerful single plugin or WPeMatico addon, which optimizes the websites speed thanks to processes and technologies that reduces the overload of the websites where it is installed.
 > * Improving the velocity till 10x comparing with with other cache plugins for WordPress. See the Requirements.
 
@@ -264,12 +260,13 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
-= 2.2 Dec 21, 2018 =
-* Added XML Campaign type to parse and fetch XML files as feeds.
+= 2.2 Jan 10, 2019 =
+* Added XML Campaign type to parse and fetch XML feeds.
+* Added support to allow uploads of XML files to the media library to be used as URL in campaigns.
+* Tested and improved compatibility for xml with Addons Professional, Manual Fetching, Full Content, Polyglot, thumbnail scratcher and so on.
 * Some tweaks in Campaign Preview.
-* Some improvements in source code.
-* Added categories to Blank Simplepie Lib.
-
+* Some improvements in source code and css styles.
+* Tested compatibility with WordPress 5.1b.
 
 = 2.1.2 Nov 14, 2018 =
 * Added wp filters to parse categories and autocategories before inserted them in posts.
@@ -1142,7 +1139,7 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 2.1.2 =
-* **NOTE: Highly recommended to test it in development ambients before update**
-* **Enlarges the version required for the Professional addon to 2.0v** [Webpage](https://etruel.com/downloads/wpematico-professional/)
-* Minor update. See changelog for more details.
+= 2.2 =
+* **NOTE: Major Release. Highly recommended to test it in development ambients before update**
+* **Enlarges the version required for the Professional addon to 2.1v** [Webpage](https://etruel.com/downloads/wpematico-professional/)
+* See changelog for more details.
