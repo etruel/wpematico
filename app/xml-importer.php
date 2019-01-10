@@ -58,6 +58,7 @@ class WPeMatico_XML_Importer {
             $data_xml = WPeMatico::wpematico_get_contents( $campaign['campaign_xml_feed_url'], true );
             if ( ! empty( $data_xml ) ) {
                 $xml = @simplexml_load_string( $data_xml, 'SimpleXMLElement', LIBXML_NOCDATA );
+                $simplepie->raw_data = $data_xml;
 
                 $campaign_xml_node  = $campaign['campaign_xml_node'];
                 $campaign_xml_node_parent  = $campaign['campaign_xml_node_parent'];
@@ -89,6 +90,8 @@ class WPeMatico_XML_Importer {
 
                     foreach ($nodes_title as $key_node_title => $node_title) {
                         
+                        
+
                         $new_title = '';
                         if ( ! empty($xpath_parent_title) ) {
                             $child_xpath_title      = str_replace($xpath_parent_title.'/', '', $xpath_title);
@@ -100,6 +103,11 @@ class WPeMatico_XML_Importer {
                         } else {
                             $new_title              = (string)$node_title;
                         }
+
+
+                        
+                        
+
 
                         $new_content = '';
                         if ( ! empty($xpath_parent_content) ) {
@@ -156,6 +164,17 @@ class WPeMatico_XML_Importer {
                         
                         
                         $new_simplepie_item = new WPeMatico_SimplePie_Item( $new_title, $new_content, $new_permalink, $new_date);
+                        
+                        $item_data = array();
+                        if ( empty($xpath_parent_title) ) {
+                            $parent_node_title = $node_title->xpath( 'parent::*');
+                            $item_data = self::get_item_simplepie_data( ! empty($parent_node_title[0]) ? $parent_node_title[0] : $node_title, $xml);
+                        } else {
+                            $item_data = self::get_item_simplepie_data($node_title, $xml);
+                        }
+                        
+                        $new_simplepie_item->data = $item_data;
+
                         $new_simplepie_item->set_post_meta('image', $new_image);
                         $new_simplepie_item->set_feed($simplepie);
                         $new_simplepie_item = apply_filters('wpematico_xml_simplepie_item_before_add', $new_simplepie_item, $key_node_title, $xml, $campaign);
@@ -173,6 +192,64 @@ class WPeMatico_XML_Importer {
         return $campaign;
     }
 
+    public static function get_item_simplepie_data($item_node, $xml, $item_data = array()) {
+ 
+        if ( empty( $item_data ) ) {
+
+            $item_data = array();
+            $item_data['data'] = '';
+            $item_data['attribs'] = array();
+            $item_data['child'] = array();
+
+        }
+        
+        
+        $namespaces = array_merge( array(null),  $xml->getDocNamespaces(true));
+
+        foreach ($namespaces as $kns => $namespace) :
+            
+            $ns_url = ( !empty($namespace) ? $namespace : '');
+            
+            if ( empty( $item_data['child'][$ns_url] ) ) {
+                $item_data['child'][$ns_url] = array();
+            }
+            
+            if ( ! empty($item_node->children($namespace)) ) {
+
+                foreach( $item_node->children($namespace) as $key => $value ) :
+                    $curr_name = $value->getName();
+                    if ( empty( $item_data['child'][$ns_url][$curr_name] ) ) {
+                        $item_data['child'][$ns_url][$curr_name] = array();
+                    }
+                    $new_tag_data = array();
+                    $new_tag_data['data'] = (string)$value;
+                    $new_tag_data['attribs'] = self::get_item_attributes_data($value, $namespaces);
+                    $new_tag_data['child'] = array(); 
+
+                    $new_tag_data = self::get_item_simplepie_data($value, $xml, $new_tag_data);
+                    
+                    $item_data['child'][$ns_url][$curr_name][] = $new_tag_data;
+
+                        
+                endforeach;
+            }
+        endforeach;
+
+        return $item_data;
+    }
+    public static function get_item_attributes_data($item_node, $namespaces) {
+        $attributes = array();
+        foreach ($namespaces as $kns => $namespace) :
+            $ns_url = ( empty($namespace) ? $namespace : '');
+            if ( empty( $attributes[$ns_url] ) ) {
+                $attributes[$ns_url] = array();
+            }
+            foreach( $item_node->attributes($namespace) as $key => $value ) :
+                $attributes[$ns_url][$key] = (string)$value;
+            endforeach;
+        endforeach;
+        return $attributes;
+    }
 	public static function metabox( $post ) {
 		global $post, $campaign_data, $helptip;
 		$campaign_xml_feed_url = $campaign_data['campaign_xml_feed_url'];

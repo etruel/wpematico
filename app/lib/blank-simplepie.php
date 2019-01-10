@@ -11,6 +11,7 @@ class WPeMatico_SimplePie {
 	public $title = '';
 	public $description = '';
 	public $image = null;
+	public $raw_data = '';
 
 	function __construct($feed_url = '', $title = '', $description = '') {
 		$this->feed_url = $feed_url;
