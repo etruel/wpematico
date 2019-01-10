@@ -201,11 +201,39 @@ class WPEMATICO_Welcome {
 				$this->tabs();
 			?>
 			<div class="changelog">
-				<h2><?php _e( 'A new preview for the YouTube campaign.', 'wpematico' );?></h2>
+				<h2><?php _e( 'A new Campaign Type for XML feeds.', 'wpematico' );?></h2>
 				<div class="feature-section">
 					<div class="feature-section-media">
 						<?php $this->subscription_form(); ?>
 					</div>
+					<div class="feature-section-content">
+						<h4><?php _e( 'XML Campaign type to allow parse and fetch XML feeds', 'wpematico' );?></h4>
+						<p><?php _e( 'This feature has the function of configure the campaign with the required fields that are found in the XML tags. A very important change in the plugin that will allow to import almost any XML feed to WordPress posts (types).', 'wpematico' );?></p>
+						<p><?php _e( 'An option in Settings enables the upload of XML files to the WordPress Media Library in order to use its URL in campaigns.', 'wpematico' );?></p>
+						<p><?php _e( 'Also, using the addons as the Professional will allow overwriting the data settled in the campaign and add the author, categories and tags also from the XML.', 'wpematico' );?></p>
+					</div>
+					<div class="feature-section-media">
+						<img style="float:left; width: 100%;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/xml_campaign.png'; ?>" alt="Preview for the YouTube campaign" width="400" />
+					</div>
+				</div>
+			</div>
+			<hr>
+			<div class="changelog">
+				<h2><?php _e( 'A new Campaign Type for bbPress.', 'wpematico' );?></h2>
+				<div class="feature-section">
+					<div class="feature-section-content">
+						<h4><?php _e( 'This new feature allows you to automatically create new bbPress Forums, Topics ands Replies', 'wpematico' );?></h4>
+						<p><?php _e( 'With this Campaign Type you have the possibility to automatically create new Forums or select an already created bbPress Forum to publish new Topics inside it, these new posts (types) will be created according to the items of the feed that you are using.', 'wpematico' );?></p>
+					</div>
+					<div class="feature-section-media">
+						<img style="float:left; width: 100%;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/bbpress_campaign.png'; ?>" alt="Preview for the YouTube campaign" width="400" />
+					</div>
+				</div>
+			</div>
+			<hr>
+			<div class="changelog">
+				<h2><?php _e( 'A new preview for the YouTube campaign.', 'wpematico' );?></h2>
+				<div class="feature-section">
 					<div class="feature-section-content">
 						<h4><?php _e( 'This feature shows how the posts fetched from YouTube will look before that are created.', 'wpematico' );?></h4>
 						<p><?php _e( 'Now you have the possibility to choose which elements of the YouTube feeds will be included in the post, the image, the featured image or the description, the preview section in the metabox will show you in real time.', 'wpematico' );?></p>

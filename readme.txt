@@ -263,7 +263,7 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 = 2.2 Jan 10, 2019 =
 * Added XML Campaign type to parse and fetch XML feeds.
 * Added support to allow uploads of XML files to the media library to be used as URL in campaigns.
-* Tested and improved compatibility for xml with Addons Professional, Manual Fetching, Full Content, Polyglot, thumbnail scratcher and so on.
+* Tested and improved compatibility for xml with Addons Professional, Manual Fetching, Full Content, Polyglot, Thumbnail Scratcher and so on.
 * Some tweaks in Campaign Preview.
 * Some improvements in source code and css styles.
 * Tested compatibility with WordPress 5.1b.
