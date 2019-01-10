@@ -32,6 +32,9 @@ class WPeMatico_SimplePie {
 	public function get_image_url() {
 		return $this->image;
 	}
+	public function error() {
+		return false;
+	}
 }
 endif;
 if (!class_exists('WPeMatico_SimplePie_Item')) :
@@ -113,6 +116,7 @@ class WPeMatico_SimplePie_Item {
 			return null;
 		}
 	}
+	
 
 }
 endif;
