@@ -1,7 +1,7 @@
 ﻿=== WPeMatico RSS Feed Fetcher ===
 Contributors: etruel, sniuk 
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
-Tags: RSS, RSS to Post, Feed to Post, autoblog,rss aggregator, Feed, rss to post, syndication, Post, Posts, aggregation, atom, bot, content, writing
+Tags: RSS,XML,RSS to Post,Feed to Post,XML to post,autoblog,rss aggregator,Feed,rss to post,syndication,xml import,Post,Posts,aggregation,atom,bot,content,writing
 Requires at least: 4.1
 Tested up to: 5.1
 Requires PHP: 5.3
