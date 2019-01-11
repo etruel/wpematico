@@ -267,6 +267,7 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 * Some tweaks in Campaign Preview.
 * Some improvements in source code and css styles.
 * Tested compatibility with WordPress 5.1b.
+* **Enlarges the version required for the Professional addon to 2.1v** (https://etruel.com/downloads/wpematico-professional/)
 
 = 2.1.2 Nov 14, 2018 =
 * Added wp filters to parse categories and autocategories before inserted them in posts.
