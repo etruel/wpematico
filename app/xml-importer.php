@@ -31,8 +31,9 @@ class WPeMatico_XML_Importer {
     
     public static function featured_image($current_item, $campaign, $item, $options_images) {
         if ($campaign['campaign_type'] == 'xml') {
-            if ( ! empty( $item->get_post_meta('image') ) ) {
-                $current_item['images'][] = $item->get_post_meta('image');
+            $fimg = $item->get_post_meta('image');
+            if ( ! empty( $fimg ) ) {
+                $current_item['images'][] = $fimg;
             }
         }
         return $current_item;

@@ -260,6 +260,9 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
+= 2.2.1 Jan 13, 2019 =
+* Fixes compatibility with PHP 5.3 after introduced a method used by PHP 5.5+
+
 = 2.2 Jan 10, 2019 =
 * Added XML Campaign type to parse and fetch XML feeds.
 * Added support to allow uploads of XML files to the media library to be used as URL in campaigns.
@@ -1140,7 +1143,7 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 2.2 =
+= 2.2.1 =
 * **NOTE: Major Release. Highly recommended to test it in development ambients before update**
 * **Enlarges the version required for the Professional addon to 2.1v** [Webpage](https://etruel.com/downloads/wpematico-professional/)
 * See changelog for more details.
