@@ -400,6 +400,9 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 							$arg = array('description' => $arg_description, 'parent' => $parent_cat);
 							$term = wp_insert_term($catname, "category", $arg);
 						}
+						if ( is_wp_error( $term ) || empty( $term ) ) {
+							continue;
+						}
 						$this->current_item['categories'][] = $term['term_id'];
 					}					
 				}

@@ -260,6 +260,9 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
+= 2.2.2 Jan 14, 2019 =
+* Fixes compatibility with cache of DB when is inserting new categories. 
+
 = 2.2.1 Jan 13, 2019 =
 * Fixes compatibility with PHP 5.3 after introduced a method used by PHP 5.5+
 
