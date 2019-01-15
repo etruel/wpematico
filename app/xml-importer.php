@@ -56,7 +56,9 @@ class WPeMatico_XML_Importer {
             
             $simplepie = new WPeMatico_SimplePie( $campaign['campaign_xml_feed_url'], 'WPeMatico XML Campaign Type', 'WPeMatico XML Campaign Type');
             
-            $data_xml = WPeMatico::wpematico_get_contents( $campaign['campaign_xml_feed_url'], true );
+            $xml_feed_url = apply_filters('wpematico_xml_url_fetch', $campaign['campaign_xml_feed_url'], $campaign);
+
+            $data_xml = WPeMatico::wpematico_get_contents( $xml_feed_url, true );
             if ( ! empty( $data_xml ) ) {
                 $xml = @simplexml_load_string( $data_xml, 'SimpleXMLElement', LIBXML_NOCDATA );
                 $simplepie->raw_data = $data_xml;
@@ -215,9 +217,11 @@ class WPeMatico_XML_Importer {
                 $item_data['child'][$ns_url] = array();
             }
             
-            if ( ! empty($item_node->children($namespace)) ) {
+            $children_nodes = $item_node->children($namespace);
 
-                foreach( $item_node->children($namespace) as $key => $value ) :
+            if ( ! empty( $children_nodes ) ) {
+
+                foreach( $children_nodes as $key => $value ) :
                     $curr_name = $value->getName();
                     if ( empty( $item_data['child'][$ns_url][$curr_name] ) ) {
                         $item_data['child'][$ns_url][$curr_name] = array();
@@ -259,7 +263,7 @@ class WPeMatico_XML_Importer {
 		?>
 		<label for="campaign_xml_feed_url"><?php _e('URL of XML', 'wpematico' ); ?></label>
         <input type="text" class="regular-text" id="campaign_xml_feed_url" value="<?php echo $campaign_xml_feed_url; ?>" name="campaign_xml_feed_url">
-        
+        <?php do_action('wpematico_xml_main_inputs'); ?>
 		<div class="xml-campaign-check-data-container">
 			<br>
             <button class="button" type="button" id="xml-campaign-check-data-btn"><?php _e('Check data', 'wpematico' ); ?></button>
@@ -296,6 +300,7 @@ class WPeMatico_XML_Importer {
             'campaign_xml_node'         => array(),
             'campaign_xml_node_parent'  => array(),
         );
+        $campaign_data = apply_filters('wpematico_xml_campaign_data_ajax', $campaign_data, $_REQUEST);
         self::get_xml_input_nodes( $campaign_data );
         die();
     }
@@ -312,7 +317,8 @@ class WPeMatico_XML_Importer {
         $campaign_xml_node = $campaign_data['campaign_xml_node'];
         $campaign_xml_node_parent = $campaign_data['campaign_xml_node_parent'];
         
-        $data_xml = WPeMatico::wpematico_get_contents( $campaign_xml_feed_url, true );
+        $xml_feed_url = apply_filters('wpematico_xml_url_fetch', $campaign_xml_feed_url, $campaign_data);
+        $data_xml = WPeMatico::wpematico_get_contents( $xml_feed_url, true );
 
 
         if ( stripos($data_xml, '<atom:link') !== false ||  stripos($data_xml, 'http://www.w3.org/2005/Atom') !== false || stripos($data_xml, 'application/rss+xml') !== false  ) {
@@ -403,10 +409,10 @@ class WPeMatico_XML_Importer {
         $namespaces = array_merge( array(null),  $xml->getDocNamespaces(true));
         foreach ($namespaces as $kns => $namespace) :
             
-        
-        if ( ! empty($xml->children($namespace)) ) {
+        $children_nodes = $xml->children($namespace);
+        if ( ! empty( $children_nodes ) ) {
 
-            foreach( $xml->children($namespace) as $key => $value ) :
+            foreach( $children_nodes as $key => $value ) :
                 $child_count++;
 
                     $name = ( empty($namespace) ? $value->getName() : $kns . ":" . $value->getName() );

@@ -18,6 +18,7 @@ jQuery(document).ready(function($){
 			action: 	"wpematico_xml_check_data",
 			nonce: 		wpematico_object.xml_check_data_nonce
 		};
+		data = js_apply_filters('wpematico_xml_data_check_ajax', data);
 		$.post(ajaxurl, data, function(response) {  
 			$('#xml-campaign-input-nodes-container').html( response );
 			jQuery(".help_tip").tipTip({maxWidth: "400px", edgeOffset: 5,fadeIn:50,fadeOut:50, keepAlive:true, defaultPosition: "right"});
