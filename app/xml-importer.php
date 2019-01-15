@@ -56,9 +56,12 @@ class WPeMatico_XML_Importer {
             
             $simplepie = new WPeMatico_SimplePie( $campaign['campaign_xml_feed_url'], 'WPeMatico XML Campaign Type', 'WPeMatico XML Campaign Type');
             
-            $xml_feed_url = apply_filters('wpematico_xml_url_fetch', $campaign['campaign_xml_feed_url'], $campaign);
+            
+            $data_xml = apply_filters('wpematico_xml_file_fetch', '', $campaign);
+            if( empty( $data_xml ) ) {
+                $data_xml = WPeMatico::wpematico_get_contents( $campaign['campaign_xml_feed_url'], true );
+            }
 
-            $data_xml = WPeMatico::wpematico_get_contents( $xml_feed_url, true );
             if ( ! empty( $data_xml ) ) {
                 $xml = @simplexml_load_string( $data_xml, 'SimpleXMLElement', LIBXML_NOCDATA );
                 $simplepie->raw_data = $data_xml;
@@ -317,8 +320,12 @@ class WPeMatico_XML_Importer {
         $campaign_xml_node = $campaign_data['campaign_xml_node'];
         $campaign_xml_node_parent = $campaign_data['campaign_xml_node_parent'];
         
-        $xml_feed_url = apply_filters('wpematico_xml_url_fetch', $campaign_xml_feed_url, $campaign_data);
-        $data_xml = WPeMatico::wpematico_get_contents( $xml_feed_url, true );
+
+        $data_xml = apply_filters('wpematico_xml_file_fetch', '', $campaign_data);
+        if( empty( $data_xml ) ) {
+            $data_xml = WPeMatico::wpematico_get_contents( $campaign_xml_feed_url, true );
+        }
+      
 
 
         if ( stripos($data_xml, '<atom:link') !== false ||  stripos($data_xml, 'http://www.w3.org/2005/Atom') !== false || stripos($data_xml, 'application/rss+xml') !== false  ) {
