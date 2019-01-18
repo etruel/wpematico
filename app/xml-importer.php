@@ -323,11 +323,17 @@ class WPeMatico_XML_Importer {
 
         $data_xml = apply_filters('wpematico_xml_file_fetch', '', $campaign_data);
         if( empty( $data_xml ) ) {
-            $data_xml = WPeMatico::wpematico_get_contents( $campaign_xml_feed_url, true );
+            if ( ! empty( $campaign_xml_feed_url ) ) {
+                $data_xml = WPeMatico::wpematico_get_contents( $campaign_xml_feed_url, true );
+            }
+            
         }
+
+        if ( empty( $data_xml ) ) {
+            wp_die('<div id="message" class="error notice notice-error is-dismissible"><p>' . __('The file has no data or is empty.', 'wpematico') . '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>' ); 
+        }
+        
       
-
-
         if ( stripos($data_xml, '<atom:link') !== false ||  stripos($data_xml, 'http://www.w3.org/2005/Atom') !== false || stripos($data_xml, 'application/rss+xml') !== false  ) {
              //wp_die(__('The file is a RSS feed that must use <strong>Feed Fetcher</strong> campaign type instead of XML.', 'wpematico')); 
              wp_die('<div id="message" class="error notice notice-error is-dismissible"><p>' . __('The file is a RSS feed that must use <strong>Feed Fetcher</strong> campaign type instead of XML.', 'wpematico') . '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>' ); 
