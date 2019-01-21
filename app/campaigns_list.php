@@ -51,7 +51,7 @@ if( strstr($_SERVER['REQUEST_URI'], 'wp-admin/edit.php?post_type=wpematico')
 
 if ( class_exists( 'WPeMatico_Campaigns' ) ) return;
 class WPeMatico_Campaigns {
-
+	
 	public static function init() {
 		new self();
 	}
@@ -180,13 +180,12 @@ class WPeMatico_Campaigns {
 		if( isset( $_REQUEST['post_status'] ) && $_REQUEST['post_status'] == 'trash' ) return;
 		// Don't show if current user is not allowed to edit other's posts for this post type
 		if( empty( $typenow ) ) $typenow = $post_type;
-		// Don't show if current user is not allowed to edit other's posts for this post type
 		if ( ! current_user_can( get_post_type_object( $typenow )->cap->edit_others_posts ) ) return;
 		
 		echo '<div style="margin: 1px 5px 0 0; float: left; background-color: #EB9600; color: #fff; border-color: #b97600 #b97600 #b97600; box-shadow: 0 1px 0 #b97600; text-decoration: none; text-shadow: 0 -1px 1px #b97600,1px 0 1px #b97600,0 1px 1px #b97600,-1px 0 1px #b97600;" id="run_all" onclick="javascript:run_all();" class="button">'. __('Run Selected Campaigns', 'wpematico' ) . ' <span style="line-height: 1.4em;" class="dashicons dashicons-controls-forward"></span></div>';
 		//self::bulk_actions($which);
 	}
-	
+
 	public static function disable_list_filters($disable , $post_type) {
 		global $post_type;
 		if($post_type == 'wpematico') return true;
@@ -643,7 +642,6 @@ class WPeMatico_Campaigns {
 	}
 	
 	static function custom_wpematico_column( $column, $post_id ) {
-		global $post;
 		$cfg = get_option( WPeMatico :: OPTION_KEY);
 		$campaign_data = WPeMatico :: get_campaign ( $post_id );
 		switch ( $column ) {
@@ -655,19 +653,19 @@ class WPeMatico_Campaigns {
 //
 //				if ( $taxonomy->hierarchical && $taxonomy->show_ui ) {
 //
-//					$terms = get_object_term_cache( $post->ID, $taxonomy_name );
+//					$terms = get_object_term_cache( $post_id, $taxonomy_name );
 //					if ( false === $terms ) {
-//						$terms = wp_get_object_terms( $post->ID, $taxonomy_name );
-//						wp_cache_add( $post->ID, $terms, $taxonomy_name . '_relationships' );
+//						$terms = wp_get_object_terms( $post_id, $taxonomy_name );
+//						wp_cache_add( $post_id, $terms, $taxonomy_name . '_relationships' );
 //					}
 //					$term_ids = empty( $terms ) ? array() : wp_list_pluck( $terms, 'term_id' );
 //
-//					echo '<div class="post_category" id="' . $taxonomy_name . '_' . $post->ID . '">' . implode( ',', $campaign_categories ) . '</div>';
+//					echo '<div class="post_category" id="' . $taxonomy_name . '_' . $post_id . '">' . implode( ',', $campaign_categories ) . '</div>';
 //
 //				} elseif ( $taxonomy->show_ui ) {
 //
-//					echo '<div class="tags_input" id="'.$taxonomy_name.'_'.$post->ID.'">'
-//						. esc_html( str_replace( ',', ', ', get_terms_to_edit( $post->ID, $taxonomy_name ) ) ) . '</div>';
+//					echo '<div class="tags_input" id="'.$taxonomy_name.'_'.$post_id.'">'
+//						. esc_html( str_replace( ',', ', ', get_terms_to_edit( $post_id, $taxonomy_name ) ) ) . '</div>';
 //
 //				}
 //			}
@@ -707,10 +705,10 @@ class WPeMatico_Campaigns {
 				if ($activated) { // Active play green & grab rojo & stop gris
 					$lbotones.= '<button type="button" disabled class="state_buttons cpanelbutton dashicons dashicons-update red"></button>'; // To activate
 				} else {  // Inactive play verde & grab black & stop grey
-					$lbotones.= '<button type="button" class="state_buttons cpanelbutton dashicons dashicons-update" btn-href="'.WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','toggle').'" title="' . $atitle . '"></button>'; // To activate
+					$lbotones.= '<button type="button" class="state_buttons cpanelbutton dashicons dashicons-update" btn-href="'.WPeMatico_Campaigns::wpematico_action_link( $post_id , 'display','toggle').'" title="' . $atitle . '"></button>'; // To activate
 				}
 			
-				$lbotones.= '<button type="button" class="state_buttons cpanelbutton dashicons dashicons-controls-pause" btn-href="'.WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','clear').'" title="' . __('Break fetching and restore campaign', 'wpematico') . '"></button>'; // To deactivate
+				$lbotones.= '<button type="button" class="state_buttons cpanelbutton dashicons dashicons-controls-pause" btn-href="'.WPeMatico_Campaigns::wpematico_action_link( $post_id , 'display','clear').'" title="' . __('Break fetching and restore campaign', 'wpematico') . '"></button>'; // To deactivate
 				
 			}elseif ($activated) { // Running play gris & grab rojo & stop gris
 				$cronnextrun = WPeMatico :: time_cron_next($campaign_data['cron']);
@@ -718,12 +716,12 @@ class WPeMatico_Campaigns {
 				$ltitle =  __('Next Run:', 'wpematico' ).' '.date_i18n( get_option('date_format').' '. get_option('time_format'), $cronnextrun );
 				$lbotones = '<button type="button" class="state_buttons cpanelbutton dashicons dashicons-controls-play" title="' . esc_attr(__('Run Once', 'wpematico')) . '"></button>';// To run now
 				$lbotones.= '<button type="button" disabled class="state_buttons cpanelbutton dashicons dashicons-update red"></button>'; // To stop
-				$lbotones.= '<button type="button" class="state_buttons cpanelbutton dashicons dashicons-controls-pause" btn-href="'.WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','toggle').'" title="' . $atitle . '"></button>'; // To deactivate
+				$lbotones.= '<button type="button" class="state_buttons cpanelbutton dashicons dashicons-controls-pause" btn-href="'.WPeMatico_Campaigns::wpematico_action_link( $post_id , 'display','toggle').'" title="' . $atitle . '"></button>'; // To deactivate
 				
 			} else {  // Inactive play gris & grab gris & stop black
 				$ltitle = __('Inactive', 'wpematico' );
 				$lbotones = '<button type="button" class="state_buttons cpanelbutton dashicons dashicons-controls-play" title="' . esc_attr(__('Run Once', 'wpematico')) . '"></button>';// To run now
-				$lbotones.= '<button type="button" class="state_buttons cpanelbutton dashicons dashicons-update" btn-href="'.WPeMatico_Campaigns::wpematico_action_link( $post->ID , 'display','toggle').'" title="' . $atitle . '"></button>'; // To activate
+				$lbotones.= '<button type="button" class="state_buttons cpanelbutton dashicons dashicons-update" btn-href="'.WPeMatico_Campaigns::wpematico_action_link( $post_id , 'display','toggle').'" title="' . $atitle . '"></button>'; // To activate
 				$lbotones.= '<button type="button" disabled class="state_buttons cpanelbutton dashicons dashicons-controls-pause grey"></button>'; // To stop
 				
 			}

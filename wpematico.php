@@ -25,7 +25,7 @@ class Main_WPeMatico{
 	private static $instance;
 
 	private function setup_constants() {
-		if(!defined( 'WPEMATICO_VERSION' ) ) define( 'WPEMATICO_VERSION', '2.2.2' );
+		if(!defined( 'WPEMATICO_VERSION' ) ) define( 'WPEMATICO_VERSION', '2.2.3' );
 		if(!defined( 'WPEMATICO_BASENAME' ) ) define( 'WPEMATICO_BASENAME', plugin_basename( __FILE__ ) );
 		if(!defined( 'WPEMATICO_ROOTFILE' ) ) define( 'WPEMATICO_ROOTFILE', __FILE__ );
 		if(!defined( 'WPEMATICO_PLUGIN_URL' ) ) define( 'WPEMATICO_PLUGIN_URL', plugin_dir_url( __FILE__ ) );

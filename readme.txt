@@ -260,6 +260,10 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
+= 2.2.3 Jan 21, 2019 =
+* Added compatibility to import the XML files from URL o local folders with WPeMatico Exporter Addon.
+* Fixes some issues on xml files processing.
+
 = 2.2.2 Jan 15, 2019 =
 * Added filters to allow import posts from xml files of WPeMatico Exporter Add-on.
 * Added filters to insert categories automatically from xml files of WPeMatico Professional Add-on.
@@ -1149,7 +1153,7 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 2.2.2 =
+= 2.2.3 =
 * **NOTE: Major Release. Highly recommended to test it in development ambients before update**
 * **Enlarges the version required for the Professional addon to 2.1v** [Webpage](https://etruel.com/downloads/wpematico-professional/)
 * See changelog for more details.
