@@ -68,6 +68,7 @@ class Main_WPeMatico{
 			require_once("app/debug_page.php");
 			require_once("app/addons_page.php");
 			require_once("app/notification_traslate.php");
+			require_once("app/smart_notifications.php");
 			require_once('app/lib/licenses_handlers.php');	
 			require_once("app/lib/welcome.php");
 			require_once('app/campaign_log.php');
