@@ -1,5 +1,31 @@
 jQuery(document).ready(function($){
 
+
+	var icon_plus = 'dashicons-visibility';
+	var icon_dismis = 'dashicons-hidden';
+
+	
+	//minimize action
+	$(".icon-minimize-div").click(function(){
+		$('.parr-wpmatico-smart-notification').slideToggle(300);
+		if($(this).hasClass(icon_dismis)){
+			$(this).removeClass(icon_dismis);
+			$(this).addClass(icon_plus);
+			//ajax Icon Save
+			//save_icon_eyes(icon_plus);
+		}else{
+			$(this).removeClass(icon_plus);
+			$(this).addClass(icon_dismis);
+			//ajax Icon Save
+			//save_icon_eyes(icon_dismis);
+		}
+	});
+	
+	$(".icon-close-div").click(function(){
+		$(this).parent().parent().slideUp(500);
+		wpematico_close_notification();
+	});
+	
 	theclock();
 
 	$('button[btn-href]').click(function(e) {
@@ -51,7 +77,15 @@ jQuery(document).ready(function($){
 		}
 	});
 });
-
+function wpematico_close_notification() {
+	var data = {
+		'action': 'wpematico_close_notification',
+	};
+	// since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
+	jQuery.post(ajaxurl, data, function(response) {
+		//response
+	});
+}
 function run_now(c_ID) {
 	jQuery('html').css('cursor','wait');
 	jQuery('#post-'+c_ID+' .state_buttons.dashicons-controls-play').addClass('green');

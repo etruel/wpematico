@@ -94,71 +94,7 @@ class wpe_smart_notifications {
 				<br />
 			</div>
 		</div>
-		<style type="text/css">
-			.div-wpematico-smart-notification {
-				background-color: white;
-			    padding: 10px;
-			    padding-top: 0px;
-			    position: relative;
-			    /* width: 100%; */
-			    border: 1px solid #D9D9D9;
-			    margin-bottom: 20px;
-			    margin-top: 5px;
-			    /* display: block; */
-			    box-sizing: border-box;
-			    margin: 5px 20px 2px 0px;
-			    padding: 1px 12px;
-			    display: block;
-			}
-			.description-smart-notification{display: flex;}
-			.icon-close-div,.icon-minimize-div{position: absolute; top: 0; right: 0; font-size: 25px; margin-top: -5px; cursor: pointer;}
-			.div-wpematico-smart-notification h3{color: #4C5054; position: relative; border-bottom: 1px solid #ccc; padding-bottom: 10px;}
-			.parr-wpmatico-smart-notification{padding-right: 10px;}
-			
-
-		</style>
-		<script type="text/javascript">
-		jQuery(document).ready(function($){
-			//cerramos div
-			var icon_plus = 'dashicons-visibility';
-			var icon_dismis = 'dashicons-hidden';
-
-			
-			function wpematico_close_notification() {
-				var data = {
-					'action': 'wpematico_close_notification',
-				};
-				// since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
-				jQuery.post(ajaxurl, data, function(response) {
-					//response
-				});
-			}
-			
-
-			//minimize action
-			$(".icon-minimize-div").click(function(){
-				$('.parr-wpmatico-smart-notification').slideToggle(300);
-				if($(this).hasClass(icon_dismis)){
-					$(this).removeClass(icon_dismis);
-					$(this).addClass(icon_plus);
-					//ajax Icon Save
-					//save_icon_eyes(icon_plus);
-				}else{
-					$(this).removeClass(icon_plus);
-					$(this).addClass(icon_dismis);
-					//ajax Icon Save
-					//save_icon_eyes(icon_dismis);
-				}
-			});
-			
-			$(".icon-close-div").click(function(){
-				$(this).parent().parent().slideUp(500);
-				wpematico_close_notification();
-			});
-			
-		});
-	</script>
-
+		
 		<?php
 	}
 }
