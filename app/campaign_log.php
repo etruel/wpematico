@@ -44,9 +44,19 @@ class campaign_logs {
 		} else {
 		 	$post_id = $post_ID = 0;
 		}
+		$log = '';
+		$danger_options = WPeMatico::get_danger_options();
+		if ( ! $danger_options['wpe_debug_logs_campaign'] ) {
+			$log_array = get_post_meta( $post_id , 'last_campaign_log', false);
+			$log = array_pop($log_array);
+		} else {
+			$log_array = get_post_meta( $post_id , 'last_campaign_log', false);
+			foreach ($log_array as $klog => $value_log) {
+				$log .= ( ! empty($log) ? '<hr>' : '') . $value_log;
+			}
 
-		$log = get_post_meta( $post_id , 'last_campaign_log', true);
-
+		}
+		
 		?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
 		<head profile="http://gmpg.org/xfn/11">

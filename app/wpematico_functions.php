@@ -1443,6 +1443,14 @@ class WPeMatico_functions {
 		
 		return ($httpcode>=200 && $httpcode<300) ? $data : false;
 	}
+	public static function get_danger_options() {
+		$danger = get_option( 'WPeMatico_danger');
+		$danger['wpemdeleoptions']	 = (isset($danger['wpemdeleoptions']) && !empty($danger['wpemdeleoptions']) ) ? $danger['wpemdeleoptions'] : false;
+		$danger['wpemdelecampaigns'] = (isset($danger['wpemdelecampaigns']) && !empty($danger['wpemdelecampaigns']) ) ? $danger['wpemdelecampaigns'] : false;
+		$danger['wpe_debug_logs_campaign'] = (isset($danger['wpe_debug_logs_campaign']) && !empty($danger['wpe_debug_logs_campaign']) ) ? $danger['wpe_debug_logs_campaign'] : false;
+
+		return $danger;
+	}
 }  // Class WPeMatico_functions
 }  // if Class exist
 

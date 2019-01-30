@@ -70,11 +70,15 @@ add_action( 'wpematico_settings_tab_debug_info', 'wpematico_debug_print_sections
  * @return      void
  */
 function wpematico_settings_section_danger_zone() {   
-	$danger = get_option( 'WPeMatico_danger');
-	$danger['wpemdeleoptions']	 = (isset($danger['wpemdeleoptions']) && !empty($danger['wpemdeleoptions']) ) ? $danger['wpemdeleoptions'] : false;
-	$danger['wpemdelecampaigns'] = (isset($danger['wpemdelecampaigns']) && !empty($danger['wpemdelecampaigns']) ) ? $danger['wpemdelecampaigns'] : false;
+	$danger = WPeMatico::get_danger_options();
+
 ?>
 	<form action="options.php" method="post" dir="ltr">
+		<h3><?php _e('Debug Mode','wpematico'); ?></h3>
+		<label><input class="checkbox" value="1" type="checkbox" <?php checked($danger['wpe_debug_logs_campaign'],true);?> name="wpe_debug_logs_campaign" /> <?php _e('Activate Debug Logs in Campaigns', 'wpematico' ); ?></label><br/>
+		<p class="description">
+			<?php _e( 'This action will save all the logs from each campaign instead only the last one, to allow follow all actions and behaviors when campaign runs.', 'wpematico' ); ?>
+		</p>
 		<h3><?php _e('Select actions to Uninstall','wpematico'); ?></h3>
 		<label><input class="checkbox" value="1" type="checkbox" <?php checked($danger['wpemdeleoptions'],true);?> name="wpemdeleoptions" /> <?php _e('Delete all Options.', 'wpematico' ); ?></label><br/>
 		<label><input class="checkbox" value="1" type="checkbox" <?php checked($danger['wpemdelecampaigns'],true);?> name="wpemdelecampaigns" /> <?php _e('Delete all Campaigns.', 'wpematico' ); ?></label><br/>
@@ -1130,6 +1134,9 @@ function wpematico_save_danger_data() {
 		check_admin_referer('wpematico-danger');
 		$danger['wpemdeleoptions'] = (isset($_POST['wpemdeleoptions']) && !empty($_POST['wpemdeleoptions']) ) ? $_POST['wpemdeleoptions'] : false;
 		$danger['wpemdelecampaigns'] = (isset($_POST['wpemdelecampaigns']) && !empty($_POST['wpemdelecampaigns']) ) ? $_POST['wpemdelecampaigns'] : false;
+		$danger['wpe_debug_logs_campaign'] = (isset($_POST['wpe_debug_logs_campaign']) && !empty($_POST['wpe_debug_logs_campaign']) ) ? $_POST['wpe_debug_logs_campaign'] : false;
+		
+
 		if( update_option( 'WPeMatico_danger', $danger ) or add_option( 'WPeMatico_danger', $danger ) ) {
 			WPeMatico::add_wp_notice( array('text' => __('Actions to Uninstall saved.',  'wpematico').'<br>'.__('The actions are executed when the plugin is uninstalled.',  'wpematico'), 'below-h2'=>false ) );
 		}

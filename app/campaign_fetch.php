@@ -785,9 +785,18 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			
 		}
 		
-		// Save last log as meta field in campaign, replace if exist
-		add_post_meta( $this->campaign_id, 'last_campaign_log', $campaign_log_message, true )  or
-          update_post_meta( $this->campaign_id, 'last_campaign_log', $campaign_log_message );
+		$danger_options = WPeMatico::get_danger_options();
+
+		if ( ! $danger_options['wpe_debug_logs_campaign'] ) {
+			// Save last log as meta field in campaign, replace if exist
+			add_post_meta( $this->campaign_id, 'last_campaign_log', $campaign_log_message, true )  or
+	          update_post_meta( $this->campaign_id, 'last_campaign_log', $campaign_log_message );
+	    } else {
+	      	add_post_meta( $this->campaign_id, 'last_campaign_log', $campaign_log_message, false );
+	    }
+	
+		
+		
 		  
 		$Suss = sprintf(__('Campaign fetched in %1s sec.', 'wpematico' ),$this->campaign['lastruntime']) . '  ' . sprintf(__('Processed Posts: %1s', 'wpematico' ), $this->fetched_posts);
 		$message = '<p>'. $Suss.'  <a href="JavaScript:void(0);" style="font-weight: bold; text-decoration:none; display:inline;" onclick="jQuery(\'#log_message_'.$this->campaign_id.'\').fadeToggle();">' . __('Show detailed Log', 'wpematico' ) . '.</a></p>';
