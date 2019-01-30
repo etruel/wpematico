@@ -10,7 +10,6 @@ class wpe_smart_notifications {
 	public static function hooks() {
 
 		add_action('admin_notices', array(__CLASS__, 'show_notice'));
-
 		add_action( 'wp_ajax_wpematico_close_notification', array(__CLASS__, 'close_notification') );
 	}
 	public static function close_notification() {
@@ -81,16 +80,23 @@ class wpe_smart_notifications {
 		?>
 		<div class="clear"></div>
 		<div class="div-wpematico-smart-notification">
-			<h3>Rate notification
-			 <span class="icon-minimize-div  <?php print($class_iconeyes); ?>" style="margin-right: 30px;" ></span>
-			 <span class="icon-close-div dashicons dashicons-no"></span></h3>
+			<h3><?php _e( 'Rate 5 stars on Wordpress', 'wpematico' ); ?>
+			 <span class="icon-minimize-div  <?php print($class_iconeyes); ?>" style="margin-right: 30px;" title="Click here to minimize"></span>
+			 <span class="icon-close-div dashicons dashicons-no" title="Click here to close"></span></h3>
 			
 			 <div class="description-smart-notification">
 				<p class="parr-wpmatico-smart-notification">
-				
-				Message notice
 
+					<?php _e( 'The <strong>WPeMatico team</strong> work hard to offer you excellent tools for <strong>autoblogging</strong>.', 'wpematico' );?>
+					<br>
+					<?php _e( 'However, we would love you to write a <strong>5-star review in Wordpress</strong> as a token of appreciation.', 'wpematico' );?>
+					<br>
+					<?php _e( 'It only takes <strong>a minute</strong>', 'wpematico' );?>
+					<br>
+					<br>
+					<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" id="linkrate" class="button button-primary button-hero" target="_Blank" title="Click here to rate plugin on Wordpress">Rate us</a>
 				</p>
+
 				<br />
 			</div>
 		</div>

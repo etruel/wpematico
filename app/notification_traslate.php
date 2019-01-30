@@ -35,7 +35,7 @@ class wpe_notification_traslate {
 		add_action('wpematico_welcome_page_before',array(__CLASS__, 'form_wpmatico_traslate'));
 		add_action('wpematico_setting_page_before',array(__CLASS__, 'form_wpmatico_traslate'));
 		add_action('wpematico_settings_tab_pro_licenses',array(__CLASS__, 'form_wpmatico_traslate'));
-		add_action( 'wp_ajax_save_iconeyes', array(__CLASS__, 'save_iconeyes_callback') );
+		add_action( 'wp_ajax_wpematico_close_tnotification', array(__CLASS__, 'ajax_close_callback') );
 	}
 	/**
 	* Static function get_admin_locale
@@ -88,6 +88,43 @@ class wpe_notification_traslate {
 			self::$locale_name        = '';
 			self::$percent_translated = '';
 		}
+	}
+	public static function get_number_of_campaigns_post() {
+		global $wpdb;
+		$ret = array(0, 0);
+		$check_sql = "SELECT COALESCE(SUM(meta_value), 0) as countpost, COUNT(*) as count FROM $wpdb->postmeta WHERE meta_key = 'postscount'";
+		$results_data = $wpdb->get_results( $check_sql  );
+		if ( ! empty($results_data) ) {
+			$ret[0] = $results_data[0]->count;
+			$ret[1] = $results_data[0]->countpost;
+		}
+		return $ret;
+	}
+	public static function get_levels_notifications($current_numbers) {
+		
+
+		$cur_level_notification_campaigns = 0;
+		if ($current_numbers[0] > 7) {
+			$cur_level_notification_campaigns = 1;
+		}
+		if ($current_numbers[0] > 15) {
+			$cur_level_notification_campaigns = 2;
+		}
+
+		$cur_level_notification_posts = 0;
+		if ($current_numbers[1] > 50) {
+			$cur_level_notification_posts = 1;
+		}
+		if ($current_numbers[1] > 120) {
+			$cur_level_notification_posts = 2;
+		}
+		if ($current_numbers[1] > 350) {
+			$cur_level_notification_posts = 3;
+		}
+
+		$ret = array($cur_level_notification_campaigns, $cur_level_notification_posts);
+		return $ret;
+
 	}
 	/**
 	 * Try to find the transient for the translation set or retrieve them.
@@ -156,10 +193,11 @@ class wpe_notification_traslate {
 	* @return void
 	* @since 1.6.4
 	*/
-	public static function save_iconeyes_callback() {
-		$iconeyes = $_POST['iconeyes'];
+	public static function ajax_close_callback() {
 		//save option
-		update_option( 'icon_eyes_status', $iconeyes ); 
+		$current_numbers = self::get_number_of_campaigns_post();
+		$current_levels = self::get_levels_notifications($current_numbers);
+		update_option('wpematico_level_tnotifications', $current_levels);
 		wp_die();
 	}
 	/**
@@ -171,6 +209,18 @@ class wpe_notification_traslate {
 	public static function form_wpmatico_traslate() {
 		self::translation_details();
 		$message = '';
+
+		$current_numbers = self::get_number_of_campaigns_post();
+		$current_levels = self::get_levels_notifications($current_numbers);
+		$level_notifications = get_option('wpematico_level_tnotifications', array(0, 0));
+
+		$show_notice = false;
+		if ( $current_levels[0] > $level_notifications[0] || $current_levels[1] > $level_notifications[1] ) {
+			$show_notice = true;
+		}
+		if ( ! $show_notice ) {
+			return;
+		}
 
 		if (self::$translation_exists && self::$translation_loaded && self::$percent_translated < 90 ) {
 			$message = __( 'As you can see, there is a translation of this plugin in %1$s. This translation is currently %3$d%% complete. We need your help to make it complete and to fix any errors. Please register at %4$s to help complete the translation to %1$s!', self::$textdomain );
@@ -190,7 +240,7 @@ class wpe_notification_traslate {
 		$class_iconeyes = 'dashicons  dashicons-visibility';
 
 		$wpmatico_languaje = strtoupper(self::show_short_language());
-		if($wpmatico_languaje!='EN'){
+		if($wpmatico_languaje != 'EN'){
 			$icon_eyes_status = get_option("icon_eyes_status", '');
 			if(strpos($icon_eyes_status, 'dashicons-no') !== false ) {
 				$style_wpmatico_traslate = "display:none !important";
@@ -236,10 +286,9 @@ class wpe_notification_traslate {
 			var icon_dismis = 'dashicons-hidden';
 
 			//creating ajax function iconeyes
-			function save_icon_eyes(iconeyes){
+			function close_translate_notification(){
 				var data = {
-					'action': 'save_iconeyes',
-					'iconeyes':iconeyes
+					'action': 'wpematico_close_tnotification',
 				};
 				// since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
 				jQuery.post(ajaxurl, data, function(response) {
@@ -254,18 +303,18 @@ class wpe_notification_traslate {
 					$(this).removeClass(icon_dismis);
 					$(this).addClass(icon_plus);
 					//ajax Icon Save
-					save_icon_eyes(icon_plus);
+					//save_icon_eyes(icon_plus);
 				}else{
 					$(this).removeClass(icon_plus);
 					$(this).addClass(icon_dismis);
 					//ajax Icon Save
-					save_icon_eyes(icon_dismis);
+					//save_icon_eyes(icon_dismis);
 				}
 			});
 			$(".icon-cerrar-div").click(function(){
 				$(this).parent().parent().slideUp(500);
 				//ajax Icon Save
-				save_icon_eyes('dashicons-no');
+				close_translate_notification();
 			});
 		});
 	</script>
