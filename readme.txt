@@ -264,6 +264,7 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 * Adds smart notifications in campaign list.
 * Adds Debug Mode feature to save all campaigns logs instead only the last one. 
 * Some tweaks in translation notification in settings.
+* Adds some new data in debug file.
 
 = 2.2.3 Jan 21, 2019 =
 * Added compatibility to import the XML files from URL o local folders with WPeMatico Exporter Addon.

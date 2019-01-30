@@ -1152,7 +1152,7 @@ function wpematico_save_danger_data() {
  * @return      string $return A string containing the info to output
  */
 function wpematico_debug_info_get() {
-	//global $wpdb;
+	global $current_user;
 	$cfg = get_option(WPeMatico :: OPTION_KEY);
 	$cfg = apply_filters('wpematico_check_options', $cfg); 
 	$debug_data = wpematico_debug_data(); 
@@ -1249,10 +1249,12 @@ function wpematico_debug_info_get() {
 
 	$return .= 'Home URL:                 ' . $home_url . "\n";
 	$return .= 'Site URL:                 ' . $site_url . "\n";
+
 	$return .= 'Version:                  ' . get_bloginfo( 'version' ) . "\n";
 	$return .= 'Multisite:                ' . ($is_multisite ? 'Yes' : 'No' ) . "\n";
 	$return  = apply_filters( 'wpematico_sysinfo_after_site_info', $return );
-
+	$return .= 'Admin Email:              ' . get_option('admin_email') . "\n";
+	$return .= 'Current User Email:       ' . $current_user->user_email . "\n";
 	// WordPress configuration
 	$return .= "\n" . '-- WordPress Configuration' . "\n";
 	$return .= 'Language WPLANG:          ' . get_locale() . "\n";
