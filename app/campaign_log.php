@@ -51,6 +51,7 @@ class campaign_logs {
 			$log = array_pop($log_array);
 		} else {
 			$log_array = get_post_meta( $post_id , 'last_campaign_log', false);
+			$log_array = array_reverse($log_array);
 			foreach ($log_array as $klog => $value_log) {
 				$log .= ( ! empty($log) ? '<hr>' : '') . $value_log;
 			}
