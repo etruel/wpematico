@@ -963,8 +963,8 @@ div#optionslayer-right {
         display: flex;
         align-items: center;
     }
-    #featimgfilt_edit .bw .pDiv .left #campaign_feat_value,
-    #imgfilt_edit .bw .pDiv .left #campaign_if_value {
+    #featimgfilt_edit .pDiv .left #campaign_feat_value,
+    #imgfilt_edit .pDiv .left #campaign_if_value {
         max-width: 60px;
     }
     #wcountf-box .he20 {
