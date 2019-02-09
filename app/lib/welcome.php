@@ -764,11 +764,11 @@ class WPEMATICO_Welcome {
 		wp_cache_delete( 'wpematico_db_version', 'options');
 		update_option( 'wpematico_db_version', WPEMATICO_VERSION, false );
 		 
-		/* It'll be used on future.
-		if (defined('WPE_PREVENT_REDIRECT_ACTIVE')) {
+		// It constant could be used to prevent redirects.
+		if (defined('WPEMATICO_PREVENT_REDIRECT')) {
 			return;
 		}
-		*/
+		
 
 		if( ! $upgrade ) { // First time install
 			wp_safe_redirect( admin_url( 'index.php?page=wpematico-getting-started' ) ); exit;

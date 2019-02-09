@@ -1362,16 +1362,20 @@ class WPeMatico_functions {
 			$args = $curl;
 		}
 		$defaults = array(
-			'curl' => true,
-			'curl_setopt' => array(
-				'CURLOPT_HEADER'=> 0,
+			'curl' 			=> true,
+			'curl_setopt' 	=> array(
+				'CURLOPT_HEADER'		=> 0,
 				'CURLOPT_RETURNTRANSFER'=> 1,
 				'CURLOPT_FOLLOWLOCATION'=> 0,
 				//'CURLOPT_USERAGENT'=> "Mozilla/5.0 (Windows; U; Windows NT 5.1; rv:1.7.3) Gecko/20041001 Firefox/0.10.1",
-				'CURLOPT_USERAGENT'=> "Mozilla/5.0 (Windows NT 5.1; rv:5.0) Gecko/20100101 Firefox/5.0 Firefox/5.0",
+				'CURLOPT_USERAGENT'		=> "Mozilla/5.0 (Windows NT 5.1; rv:5.0) Gecko/20100101 Firefox/5.0 Firefox/5.0",
 			),
 		);
-		
+
+		if ( version_compare(self::get_curl_version(), '7.10.5', '>=') ) {
+			$defaults['curl_setopt']['CURLOPT_ENCODING'] = '';
+		}
+
 		$r = wp_parse_args( $args, $defaults );
 		
 		/**
@@ -1443,6 +1447,24 @@ class WPeMatico_functions {
 		
 		return ($httpcode>=200 && $httpcode<300) ? $data : false;
 	}
+	public static function get_curl_version() {
+
+		if ( ! function_exists('curl_version') ) {
+			return 0;
+		}
+		if ( is_array( $curl = curl_version() ) ) {
+			$curl = $curl['version'];
+		} elseif ( substr($curl, 0, 5) === 'curl/' ) {
+			$curl = substr($curl, 5, strcspn($curl, "\x09\x0A\x0B\x0C\x0D", 5));
+		} elseif ( substr($curl, 0, 8) === 'libcurl/' ) {
+			$curl = substr($curl, 8, strcspn($curl, "\x09\x0A\x0B\x0C\x0D", 8));
+		} else {
+			$curl = 0;
+		}
+
+		return $curl;
+	}
+
 	public static function get_danger_options() {
 		$danger = get_option( 'WPeMatico_danger');
 		$danger['wpemdeleoptions']	 = (isset($danger['wpemdeleoptions']) && !empty($danger['wpemdeleoptions']) ) ? $danger['wpemdeleoptions'] : false;
