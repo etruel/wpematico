@@ -266,7 +266,7 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 * Some tweaks in translation notification in settings.
 * Adds some new data in debug file.
 * Adds the WPEMATICO_PREVENT_REDIRECT constant to prevent redirections to welcome page.
-* Some tweaks in cURL requests for send empty HTTP Encoding header when cURL version is 7.0 or later.
+* Some tweaks in cURL requests for send empty HTTP Encoding header when cURL version is 7.10.5 or later.
 
 = 2.2.3 Jan 21, 2019 =
 * Added compatibility to import the XML files from URL o local folders with WPeMatico Exporter Addon.
