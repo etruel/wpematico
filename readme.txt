@@ -269,6 +269,8 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 * Some tweaks in cURL requests for send empty HTTP Encoding header when cURL version is 7.10.5 or later.
 * Fixes an issue in the feature check feeds before save with XML Campaign type.
 * Fixes an issue in saving the Disable WPeMatico Credits option.
+* Fixes in Chinese language files.
+* Fixes in the layout of campaign edition when using Chinese language.
 
 = 2.2.3 Jan 21, 2019 =
 * Added compatibility to import the XML files from URL o local folders with WPeMatico Exporter Addon.

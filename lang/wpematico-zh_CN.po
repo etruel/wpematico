@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPeMatico 2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-05 00:17-0300\n"
-"PO-Revision-Date: 2018-09-05 00:17-0300\n"
+"PO-Revision-Date: 2019-02-13 11:47-0400\n"
 "Last-Translator: WPeMatico.cn <help@wpematico.cn>\n"
 "Language-Team: NetMdP <esteban@netmdp.com>\n"
 "Language: zh_CN\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.2.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
 "_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
@@ -297,7 +297,7 @@ msgstr "bbPress论坛选项"
 
 #: wpematico/app/campaign_edit_functions.php:35
 msgid "Options for this campaign"
-msgstr "Cmapaign选项"
+msgstr "Campaign选项"
 
 #: wpematico/app/campaign_edit_functions.php:36
 msgid "Schedule Cron"
@@ -593,7 +593,7 @@ msgstr "通过源Feed项URL，生成一个工作链接"
 #: wpematico/app/campaign_edit_functions.php:440
 #: wpematico/app/campaign_help.php:250
 msgid "with the original author of the feed item."
-msgstr "feed项目的原作者"
+msgstr "feed项目的原作者."
 
 #: wpematico/app/campaign_edit_functions.php:441
 #: wpematico/app/campaign_help.php:251
@@ -622,7 +622,7 @@ msgstr "不使用常规设置"
 #: wpematico/app/campaign_edit_functions.php:486
 #: wpematico/app/settings_page.php:318
 msgid "Store images locally."
-msgstr "在本地存储图片"
+msgstr "在本地存储图片."
 
 #: wpematico/app/campaign_edit_functions.php:490
 #: wpematico/app/settings_page.php:320
@@ -637,12 +637,12 @@ msgstr "删除图片源的链接"
 #: wpematico/app/campaign_edit_functions.php:498
 #: wpematico/app/settings_page.php:327
 msgid "Set first image in content as Featured Image."
-msgstr "将内容中的第一个图片设置为特色图片"
+msgstr "将内容中的第一个图片设置为特色图片."
 
 #: wpematico/app/campaign_edit_functions.php:502
 #: wpematico/app/campaign_help.php:139
 msgid "Enable featured image selector."
-msgstr "启用特色图片选择器"
+msgstr "启用特色图片选择器."
 
 #: wpematico/app/campaign_edit_functions.php:504
 msgid "Index to featured"
@@ -700,7 +700,7 @@ msgstr "删除指向源视频的链接"
 #: wpematico/app/campaign_help.php:207 wpematico/app/settings_page.php:524
 #: wpematico/app/settings_page.php:918
 msgid "Deactivate duplicate controls."
-msgstr "停用重复控件"
+msgstr "停用重复控件."
 
 #: wpematico/app/campaign_edit_functions.php:652
 #: wpematico/app/campaign_help.php:211 wpematico/app/settings_page.php:527
@@ -727,7 +727,7 @@ msgstr "允许重复的hashes.(不推荐)."
 #: wpematico/app/campaign_help.php:220 wpematico/app/settings_page.php:533
 #: wpematico/app/settings_page.php:940
 msgid "Add an extra duplicate filter by source permalink in meta field value."
-msgstr "通过在字段值的源固定链接中增加重复筛选过滤"
+msgstr "通过在字段值的源固定链接中增加重复筛选过滤."
 
 #: wpematico/app/campaign_edit_functions.php:663
 #: wpematico/app/campaign_help.php:214 wpematico/app/settings_page.php:538
@@ -737,22 +737,22 @@ msgstr "如果发现重复项目, 则继续获取."
 
 #: wpematico/app/campaign_edit_functions.php:697
 msgid "Max items to create on each fetch."
-msgstr "每次要获取的最大帖子数"
+msgstr "每次要获取的最大帖子数."
 
 #: wpematico/app/campaign_edit_functions.php:701
 #: wpematico/app/campaign_help.php:24
 msgid "Order feed items by Date before process."
-msgstr "处理前.根据时间排序feed项目"
+msgstr "处理前.根据时间排序feed项目."
 
 #: wpematico/app/campaign_edit_functions.php:705
 #: wpematico/app/campaign_help.php:28
 msgid "Use feed item date."
-msgstr "使用Feed项目的时间"
+msgstr "使用Feed项目的时间."
 
 #: wpematico/app/campaign_edit_functions.php:709
 #: wpematico/app/campaign_help.php:51
 msgid "Pingbacks y trackbacks."
-msgstr "广播/通告"
+msgstr "广播/通告."
 
 #: wpematico/app/campaign_edit_functions.php:714
 #: wpematico/app/campaign_help.php:55 wpematico/app/lib/welcome.php:249
@@ -761,7 +761,7 @@ msgstr "将字符编码转换为 UTF-8。"
 
 #: wpematico/app/campaign_edit_functions.php:718
 msgid "Comments options:"
-msgstr "评论选项"
+msgstr "评论选项:"
 
 #: wpematico/app/campaign_edit_functions.php:726
 #: wpematico/app/campaigns_list.php:858
@@ -775,19 +775,19 @@ msgstr "过滤所有的Html标签"
 #: wpematico/app/campaign_edit_functions.php:738
 #: wpematico/app/campaign_help.php:72
 msgid "Strip links from content."
-msgstr "过滤内容里所有的链接"
+msgstr "过滤内容里所有的链接."
 
 #: wpematico/app/campaign_edit_functions.php:741
 msgid "Strip &lt;a&gt;."
-msgstr "过滤带<a>的标签."
+msgstr "过滤带&lt;a&gt;的标签."
 
 #: wpematico/app/campaign_edit_functions.php:743
 msgid "Strip &lt;iframe&gt;."
-msgstr "过滤<ifame>标签"
+msgstr "过滤&lt;ifame&gt;标签."
 
 #: wpematico/app/campaign_edit_functions.php:745
 msgid "Strip &lt;script&gt;."
-msgstr "过滤<script>标签"
+msgstr "过滤&lt;script&gt;标签"
 
 #: wpematico/app/campaign_edit_functions.php:747
 msgid "If you do not select any option will take as if you selected all."
@@ -3411,7 +3411,7 @@ msgstr "WPeMatico入门"
 msgid ""
 "WPeMatico could not update the version in your database. Please if your "
 "website has an object cache disable it."
-msgstr ""
+msgstr "WPeMatico无法更新数据库中的版本。如果您的网站有对象缓存，请将其禁用。"
 
 #: wpematico/app/lib/welcome.php:152
 #, php-format
@@ -5293,27 +5293,27 @@ msgstr ""
 #: wpematico/app/wpematico_functions.php:1076
 #, php-format
 msgid "The feed <strong>%s</strong> has been parsed successfully."
-msgstr ""
+msgstr "Feed <strong>%s</strong> 已成功解析."
 
 #: wpematico/app/wpematico_functions.php:1077
 msgid "Feed Title:"
-msgstr ""
+msgstr "Feed标题:"
 
 #: wpematico/app/wpematico_functions.php:1078
 msgid "Generator:"
-msgstr ""
+msgstr "生成器:"
 
 #: wpematico/app/wpematico_functions.php:1079
 msgid "Charset Enconding:"
-msgstr ""
+msgstr "字符编码："
 
 #: wpematico/app/wpematico_functions.php:1082
 msgid "Last Item Title:"
-msgstr ""
+msgstr "最后项目标题："
 
 #: wpematico/app/wpematico_functions.php:1089
 msgid "Description:"
-msgstr ""
+msgstr "描述："
 
 #: wpematico/app/wpematico_functions.php:1095
 #: wpematico/app/wpematico_functions.php:1105
@@ -5328,7 +5328,7 @@ msgstr "已成功解析Feed %s 。"
 
 #: wpematico/app/wpematico_functions.php:1113
 msgid "Undetected"
-msgstr ""
+msgstr "未被发现"
 
 #: wpematico/app/wpematico_functions.php:1392
 msgid "Error with wp_remote_request:"
@@ -5430,7 +5430,7 @@ msgstr "在垃圾箱中找不到Campaign"
 
 #: wpematico/wpematico_class.php:274
 msgid "Reset Menu Position"
-msgstr ""
+msgstr "重置菜单位置"
 
 #: wpematico/wpematico_class.php:280
 msgid ""
@@ -5440,7 +5440,7 @@ msgstr "如果在“文章”左侧看不到WPeMatico菜单，请激活此设置
 
 #: wpematico/wpematico_class.php:285
 msgid "See local Addons in plugin list"
-msgstr ""
+msgstr "请参阅插件列表中的本地插件"
 
 #: wpematico/wpematico_class.php:291
 msgid ""
@@ -5452,7 +5452,7 @@ msgstr ""
 
 #: wpematico/wpematico_class.php:296
 msgid "Hide Reviews on Settings"
-msgstr ""
+msgstr "隐藏设置上的评论"
 
 #: wpematico/wpematico_class.php:302
 msgid ""
@@ -5502,75 +5502,80 @@ msgstr "无效的电子邮箱地址。"
 
 #: wpematico_fullcontent/inc/campaign_edit.php:17
 msgid "Full Content Options"
-msgstr ""
+msgstr "完整内容选项"
 
 #: wpematico_fullcontent/inc/campaign_edit.php:53
 msgid "Get complete item content from the original item link"
-msgstr ""
+msgstr "从原网站链接获取完整的网站内容"
 
 #: wpematico_fullcontent/inc/campaign_edit.php:54
 msgid ""
 "This feature tries to get the original full article through the item link."
-msgstr ""
+msgstr "此功能尝试通过网站链接获取原网站的完整内容."
 
 #: wpematico_fullcontent/inc/campaign_edit.php:54
 msgid ""
 "To get this it parses the entire content of the source webpage and strips "
 "the useless html tags."
-msgstr ""
+msgstr "解析源网页的全部内容，去掉无用的html标记."
 
 #: wpematico_fullcontent/inc/campaign_edit.php:57
 msgid "Use cURL"
-msgstr ""
+msgstr "使用cURL"
 
 #: wpematico_fullcontent/inc/campaign_edit.php:58
 msgid ""
 "Forces to use standard PHP cURL to scratches the source webpage, before "
 "trying with file_get_contents and Wordpress functions. RECOMMENDED."
 msgstr ""
+"在尝试使用file_get_contents和Wordpress函数之前，强制使用标准PHP cURL来划分源"
+"网页。推荐."
 
 #: wpematico_fullcontent/inc/campaign_edit.php:61
 msgid "Use Open Graph for featured image"
-msgstr ""
+msgstr "使用Open Graph获取特色图片"
 
 #: wpematico_fullcontent/inc/campaign_edit.php:62
 msgid ""
 "Search for meta tag on source head, og:image (like facebook) to get the url "
 "of the featured image. If it is not found then search for twitter:image."
 msgstr ""
+"在源头上搜索元标记，og：图像（如facebook）来获取特色图片的网址。如果找不到，"
+"则搜索twitter：image。"
 
 #: wpematico_fullcontent/inc/campaign_edit.php:67
 msgid "Add it above the content."
-msgstr ""
+msgstr "将其添加到内容上面."
 
 #: wpematico_fullcontent/inc/campaign_edit.php:68
 msgid ""
 "This allows adding the Open Graph image to the beginning of the content."
-msgstr ""
+msgstr "允许将Open Graph图像添加到内容的开头."
 
 #: wpematico_fullcontent/inc/campaign_edit.php:72
 msgid "Only if no image in content."
-msgstr ""
+msgstr "仅在内容没有图片时."
 
 #: wpematico_fullcontent/inc/campaign_edit.php:73
 msgid ""
 "Do not add the og:image as featured and at the beginning of the post, "
 "<strong>if there are images in the content</strong>."
-msgstr ""
+msgstr "<strong>如果内容中有图片，请</strong>不要将og：图片添加到文章的开头."
 
 #: wpematico_fullcontent/inc/campaign_edit.php:79
 msgid "Searches for multi-page articles"
-msgstr ""
+msgstr "搜索分页文章"
 
 #: wpematico_fullcontent/inc/campaign_edit.php:80
 msgid ""
 "Searches and makes an unique content for articles divided into multiples "
 "pages. The xPath for the 'next' link must be set in config file."
 msgstr ""
+"搜索并为分页文章制作独特的内容。必须在配置文件中设置“next”链接的xPath。"
 
 #: wpematico_fullcontent/inc/campaign_edit.php:83
 msgid "Get the Title from the source webpage"
-msgstr ""
+msgstr "从源网页获取标题"
 
 #: wpematico_fullcontent/inc/campaign_edit.php:84
 msgid ""
@@ -5578,30 +5583,36 @@ msgid ""
 "of the feed item title. This will overwrite the custom title Professional "
 "feature."
 msgstr ""
+"强制使用从全文内容获取的标题（如果不是空白）,而不是Feed的项目标题.这会覆盖自"
+"定义标题Professional功能."
 
 #: wpematico_fullcontent/inc/campaign_edit.php:87
 msgid "Get the Date for the post from the source webpage"
-msgstr ""
+msgstr "从源网页获取文章的日期"
 
 #: wpematico_fullcontent/inc/campaign_edit.php:88
 msgid ""
 "Forces to use the date obtained from the full content if not blank, instead "
 "of the current date. This will overwrite the feed item date feature."
 msgstr ""
+"强制使用从全文内容获取的日期（如果不是空白）,而不是当前日期.这将覆盖Feed上的"
+"日期功能。"
 
 #: wpematico_fullcontent/inc/campaign_edit.php:91
 msgid "Get the Author from the source webpage"
-msgstr ""
+msgstr "从源网页获取作者"
 
 #: wpematico_fullcontent/inc/campaign_edit.php:92
 msgid ""
 "Forces to use the author obtained from the full content. Will checks if the "
 "username exist. This will overwrite the author fields in campaign."
 msgstr ""
+"强制使用作者从全文内容中获取。将检查用户名是否存在。这将覆盖广告系列中的作者"
+"字段。"
 
 #: wpematico_fullcontent/inc/campaign_edit.php:96
 msgid "Create the Author if not exist."
-msgstr ""
+msgstr "如果不存在，则创建作者."
 
 #: wpematico_fullcontent/inc/campaign_edit.php:97
 msgid ""
@@ -5609,532 +5620,537 @@ msgid ""
 "created with the email [username]@[thisdomain].  If not checked follows the "
 "campaign rules."
 msgstr ""
+"如果用户名在Wordpress用户里不存在，则创建用户。将使用电子邮件[username] @ "
+"[thisdomain]创建。如果未选中，则遵循Campaign规则。"
 
 #: wpematico_fullcontent/inc/class_extractor.php:23
 msgid "Class Items"
-msgstr ""
+msgstr "Class Items"
 
 #: wpematico_fullcontent/inc/class_extractor.php:27
 msgid "XPATH"
-msgstr ""
+msgstr "XPATH"
 
 #: wpematico_fullcontent/inc/class_extractor.php:34
 msgid "Set Body"
-msgstr ""
+msgstr "设置Body"
 
 #: wpematico_fullcontent/inc/class_extractor.php:35
 msgid "Set Strip"
-msgstr ""
+msgstr "设置Strip"
 
 #: wpematico_fullcontent/inc/fulljs.php:24
 msgid "FULLJS-ERROR: your lisence is have a invalid status: "
-msgstr ""
+msgstr "FULLJS-ERROR：你的lisence状态无效："
 
 #: wpematico_fullcontent/inc/fulljs.php:44
 msgid "FULLJS-ERROR: wp_remote_post error:"
-msgstr ""
+msgstr "FULLJS-ERROR：wp_remote_post错误："
 
 #: wpematico_fullcontent/inc/functions.php:20
 #: wpematico_fullcontent/inc/functions.php:120
 #: wpematico_fullcontent/inc/settings.php:800
 msgid "File not found."
-msgstr ""
+msgstr "文件没有找到。"
 
 #: wpematico_fullcontent/inc/functions.php:25
 msgid "Export location or file not readable"
-msgstr ""
+msgstr "导出位置或文件不可读"
 
 #: wpematico_fullcontent/inc/functions.php:82
 msgid "Denied."
-msgstr ""
+msgstr "拒绝."
 
 #: wpematico_fullcontent/inc/functions.php:100
 msgid "There is no html in content."
-msgstr ""
+msgstr "内容中没有html."
 
 #: wpematico_fullcontent/inc/functions.php:109
 msgid ""
 "You can try with \"autodetect_on_failure: yes\" or search another @class/@id "
 "that envelopes the content."
 msgstr ""
+"您可以尝试使用“autodetect_on_failure：yes”或搜索包含内容的另一个@ class / @ "
+"id."
 
 #: wpematico_fullcontent/inc/functions.php:110
 msgid ""
 "A good tip for this is use Firebug or Right Click -> \"Inspect Element\" on "
 "source URL."
-msgstr ""
+msgstr "Tips:在源URL上使用Firebug或右键单击 - >“检查元素”."
 
 #: wpematico_fullcontent/inc/functions.php:126
 msgid "There was an error creating directory."
-msgstr ""
+msgstr "创建目录出错."
 
 #: wpematico_fullcontent/inc/functions.php:143
 msgid "There was an error copying files."
-msgstr ""
+msgstr "复制文件错误."
 
 #: wpematico_fullcontent/inc/functions.php:146
 msgid "Can't copy files!"
-msgstr ""
+msgstr "无法复制文件！"
 
 #: wpematico_fullcontent/inc/functions.php:271
 msgid "There was an error loading file!"
-msgstr ""
+msgstr "加载文件时出错！"
 
 #: wpematico_fullcontent/inc/functions.php:274
 #: wpematico_fullcontent/inc/settings.php:104
 #: wpematico_fullcontent/inc/settings.php:189
 #: wpematico_fullcontent/inc/settings.php:221
 msgid "Select file to edit on right column."
-msgstr ""
+msgstr "选择要在右栏上编辑的文件."
 
 #: wpematico_fullcontent/inc/functions.php:285
 #: wpematico_fullcontent/inc/functions.php:286
 msgid "File loaded!"
-msgstr ""
+msgstr "文件已加载！"
 
 #: wpematico_fullcontent/inc/functions.php:348
 #: wpematico_fullcontent/inc/functions.php:420
 msgid "File saved!"
-msgstr ""
+msgstr "文件已保存！"
 
 #: wpematico_fullcontent/inc/functions.php:382
 msgid "Type new domain name (without \".txt\") and click \"Save as\" again!"
-msgstr ""
+msgstr "输入新域名（不带“.txt”），然后再次点击“另存为”！"
 
 #: wpematico_fullcontent/inc/functions.php:383
 msgid "Type new domain name and click this button!"
-msgstr ""
+msgstr "输入新域名，然后单击此按钮！"
 
 #: wpematico_fullcontent/inc/functions.php:388
 msgid "Wait... checking domain and saving..."
-msgstr ""
+msgstr "等等...检查域名并保存..."
 
 #: wpematico_fullcontent/inc/functions.php:429
 #: wpematico_fullcontent/inc/functions.php:559
 #: wpematico_fullcontent/inc/functions.php:608
 msgid "Something goes wrong! See console!"
-msgstr ""
+msgstr "出了点问题！见控制台！"
 
 #: wpematico_fullcontent/inc/functions.php:471
 msgid "Files Moved!"
-msgstr ""
+msgstr "文件已移动！"
 
 #: wpematico_fullcontent/inc/functions.php:471
 msgid "Reload the page before continue."
-msgstr ""
+msgstr "继续之前重新加载页面."
 
 #: wpematico_fullcontent/inc/functions.php:479
 msgid "Something goes wrong!"
-msgstr ""
+msgstr "出了点问题！"
 
 #: wpematico_fullcontent/inc/functions.php:503
 #: wpematico_fullcontent/inc/settings.php:250
 msgid "Field url does not match publisher"
-msgstr ""
+msgstr "字段网址与发布商不匹配"
 
 #: wpematico_fullcontent/inc/functions.php:524
 #: wpematico_fullcontent/inc/functions.php:574
 msgid "Testing test_url... wait..."
-msgstr ""
+msgstr "测试test_url ...等待......"
 
 #: wpematico_fullcontent/inc/functions.php:553
 #: wpematico_fullcontent/inc/functions.php:602
 msgid "Tested. See results below."
-msgstr ""
+msgstr "测试，结果如下:"
 
 #: wpematico_fullcontent/inc/functions.php:650
 msgid "** Can't upload!"
-msgstr ""
+msgstr "**无法上传！"
 
 #: wpematico_fullcontent/inc/functions.php:654
 #: wpematico_professional/wpematicopro.php:756
 msgid "** Can't upload! Just .txt files allowed!"
-msgstr ""
+msgstr "**无法上传！只允许.txt文件！"
 
 #: wpematico_fullcontent/inc/functions.php:663
 msgid ""
 "Your Custom folder stil remains inside own plugin directory. This means that "
 "your files will be replaced/deleted when update the plugin."
 msgstr ""
+"您的自定义文件夹仍在自己的插件目录中。这意味着更新插件时会替换/删除您的文件。"
 
 #: wpematico_fullcontent/inc/functions.php:665
 msgid ""
 "It's strongly recommended that you move your files to Wordpress uploads "
 "directory to don't loose your files later."
-msgstr ""
+msgstr "强烈建议您将文件移动到Wordpress目录，以免日后丢失文件。"
 
 #: wpematico_fullcontent/inc/functions.php:721
 msgid "Path"
-msgstr ""
+msgstr "路径"
 
 #: wpematico_fullcontent/inc/functions.php:725
 #: wpematico_fullcontent/inc/functions.php:738
 msgid "(Not writable)"
-msgstr ""
+msgstr "（不可写）"
 
 #: wpematico_fullcontent/inc/functions.php:736
 msgid "Click to edit"
-msgstr ""
+msgstr "点击编辑"
 
 #: wpematico_fullcontent/inc/getcontent.php:117
 #, php-format
 msgid "Attempting to get full article %1s"
-msgstr ""
+msgstr "试图获得完整的文章%1s"
 
 #: wpematico_fullcontent/inc/getcontent.php:266
 #, php-format
 msgid "Set featured image from og:image: %1s"
-msgstr ""
+msgstr "从：image：%1s 设置特色图片"
 
 #: wpematico_fullcontent/inc/getcontent.php:268
 msgid "Meta tag og:image not found."
-msgstr ""
+msgstr "元标记：未找到图片."
 
 #: wpematico_fullcontent/inc/getcontent.php:271
 #, php-format
 msgid "Set featured image from twitter:image: %1s"
-msgstr ""
+msgstr "设置来自twitter的精选图片：image：%1s"
 
 #: wpematico_fullcontent/inc/getcontent.php:273
 msgid "Meta tag twitter:image not found."
-msgstr ""
+msgstr "元标记twitter：找不到图片."
 
 #: wpematico_fullcontent/inc/getcontent.php:276
 #, php-format
 msgid "Set featured image from twitter:image:src: %1s"
-msgstr ""
+msgstr "设置来自twitter的特色图片：image：src：%1s"
 
 #: wpematico_fullcontent/inc/getcontent.php:279
 msgid "Meta tag twitter:image:src not found."
-msgstr ""
+msgstr "元标记twitter：image：src标签没有发现."
 
 #: wpematico_fullcontent/inc/getcontent.php:310
 #, php-format
 msgid "Got title from full article: %1s"
-msgstr ""
+msgstr "获得完整的文章标题： %1s"
 
 #: wpematico_fullcontent/inc/getcontent.php:317
 msgid "Assigning original date from full article to the post."
-msgstr ""
+msgstr "将文章的原始日期分配给文章."
 
 #: wpematico_fullcontent/inc/getcontent.php:319
 msgid "Full article date out of range.  Assigning current date to the post."
-msgstr ""
+msgstr "日期超出范围。将当前日期分配给文章."
 
 #: wpematico_fullcontent/inc/getcontent.php:361
 msgid "Processing multipage."
-msgstr ""
+msgstr "处理翻页."
 
 #: wpematico_fullcontent/inc/getcontent.php:365
 #, php-format
 msgid "--Processing next page: %1s"
-msgstr ""
+msgstr "- 处理下一页：%1s"
 
 #: wpematico_fullcontent/inc/getcontent.php:379
 msgid "--Failed to extract content"
-msgstr ""
+msgstr "- 无法提取内容"
 
 #: wpematico_fullcontent/inc/getcontent.php:382
 #, php-format
 msgid "--URL already processed: %1s"
-msgstr ""
+msgstr "--URL已处理：%1s"
 
 #: wpematico_fullcontent/inc/getcontent.php:385
 #, php-format
 msgid "--Failed to resolve against: %1s"
-msgstr ""
+msgstr "- 无法解决：%1s"
 
 #: wpematico_fullcontent/inc/getcontent.php:393
 msgid ""
 "--Failed to extract all parts of multi-page article, so not going to include "
 "them"
-msgstr ""
+msgstr "- 无法提取多页文章的内容"
 
 #: wpematico_fullcontent/inc/settings.php:9
 msgid "Full Content"
-msgstr ""
+msgstr "全部内容"
 
 #: wpematico_fullcontent/inc/settings.php:20
 msgid "You cannot use this features with \"Youtube Fetcher\" campaign type."
-msgstr ""
+msgstr "您无法将此功能与“Youtube Fetcher”Campaign类型配合使用."
 
 #: wpematico_fullcontent/inc/settings.php:31
 msgid "Config Files on Folder"
-msgstr ""
+msgstr "在文件夹上配置文件"
 
 #: wpematico_fullcontent/inc/settings.php:36
 msgid "Move to Uploads"
-msgstr ""
+msgstr "移至上传"
 
 #: wpematico_fullcontent/inc/settings.php:54
 #: wpematico_professional/includes/prosettings.php:65
 msgid "Thanks for use and enjoy this plugin."
-msgstr ""
+msgstr "感谢您使用并享受此插件."
 
 #: wpematico_fullcontent/inc/settings.php:55
 #: wpematico_professional/includes/prosettings.php:66
 msgid ""
 "If you like it and want to thank, you can write a 5 star review on Wordpress."
-msgstr ""
+msgstr "如果您喜欢它并想要感谢，您可以在Wordpress上写下5星评价."
 
 #: wpematico_fullcontent/inc/settings.php:84
 msgid "Test Url"
-msgstr ""
+msgstr "测试网址"
 
 #: wpematico_fullcontent/inc/settings.php:111
 msgid "Save a new file with the current content."
-msgstr ""
+msgstr "使用当前内容保存新文件."
 
 #: wpematico_fullcontent/inc/settings.php:112
 #: wpematico_fullcontent/inc/settings.php:214
 msgid "New"
-msgstr ""
+msgstr "新建"
 
 #: wpematico_fullcontent/inc/settings.php:119
 msgid "Save the content in the opened file."
-msgstr ""
+msgstr "将内容保存到打开的文件中."
 
 #: wpematico_fullcontent/inc/settings.php:121
 msgid "Save file"
-msgstr ""
+msgstr "保存文件"
 
 #: wpematico_fullcontent/inc/settings.php:127
 msgid "Inspect the test_url to get the right body content."
-msgstr ""
+msgstr "检查test_url来获得正确的正文内容."
 
 #: wpematico_fullcontent/inc/settings.php:129
 msgid "Inspector"
-msgstr ""
+msgstr "检查器"
 
 #: wpematico_fullcontent/inc/settings.php:156
 msgid "Sample html code obtained and parsed from test_url"
-msgstr ""
+msgstr "从test_url获取并解析的示例html代码"
 
 #: wpematico_fullcontent/inc/settings.php:160
 msgid "Rich text"
-msgstr ""
+msgstr "富文本"
 
 #: wpematico_fullcontent/inc/settings.php:161
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 #: wpematico_fullcontent/inc/settings.php:162
 msgid "Meta data"
-msgstr ""
+msgstr "Meta data（元数据）"
 
 #: wpematico_fullcontent/inc/settings.php:333
 msgid "Help and Tips"
-msgstr ""
+msgstr "帮助和提示"
 
 #: wpematico_fullcontent/inc/settings.php:334
 msgid "How to's Full content Addon."
-msgstr ""
+msgstr "如何使用完整内容插件."
 
 #: wpematico_fullcontent/inc/settings.php:339
 msgid "Command reference"
-msgstr ""
+msgstr "命令参考"
 
 #: wpematico_fullcontent/inc/settings.php:340
 msgid "These commands are allowed in text file to get full content."
-msgstr ""
+msgstr "文本文件中允许使用这些命令来获取完整内容."
 
 #: wpematico_fullcontent/inc/settings.php:345
 msgid "XPath Tutorial"
-msgstr ""
+msgstr "XPath教程"
 
 #: wpematico_fullcontent/inc/settings.php:346
 msgid "XPath as filesystem addressing."
-msgstr ""
+msgstr "XPath作为文件系统寻址."
 
 #: wpematico_fullcontent/inc/settings.php:821
 msgid ""
 "Domain does not exist. Please type a correct domain name without schema, ie: "
 "\"etruel.com\""
-msgstr ""
+msgstr "域名不存在。请输入的正确域名，即：“etruel.com”"
 
 #: wpematico_fullcontent/inc/settings.php:827
 msgid ""
 "File does not exist. Please type a correct domain name without schema, ie: "
 "\"etruel.com\"."
-msgstr ""
+msgstr "文件不存在。请输入正确域名，如：“etruel.com”。"
 
 #: wpematico_fullcontent/inc/settings.php:832
 msgid "Can't save file!"
-msgstr ""
+msgstr "无法保存文件！"
 
 #: wpematico_fullcontent/wpematico_fullcontent.php:202
 msgid "Go to Full Content Settings Page"
-msgstr ""
+msgstr "转到“全文内容设置”页面"
 
 #: wpematico_fullcontent/wpematico_fullcontent.php:222
 #: wpematico_professional/wpematicopro.php:394
 msgid "etruel Store"
-msgstr ""
+msgstr "etruel商店"
 
 #: wpematico_fullcontent/wpematico_fullcontent.php:245
 msgid "You are using WPeMatico Full Content."
-msgstr ""
+msgstr "您使用的WPeMatico Professional是老版本了."
 
 #: wpematico_fullcontent/wpematico_fullcontent.php:246
 msgid "Plugins <b>WPeMatico</b> must be activated!"
-msgstr ""
+msgstr "必须激活插件<b>WPeMatico</b> ！"
 
 #: wpematico_fullcontent/wpematico_fullcontent.php:247
 #: wpematico_professional/wpematicopro.php:475
 msgid "Go to Activate Now"
-msgstr ""
+msgstr "立即激活"
 
 #: wpematico_fullcontent/wpematico_fullcontent.php:252
 msgid ""
 "You are using WPeMatico Full Content, but doesn't exist class WPeMatico."
-msgstr ""
+msgstr "您正在使用WPeMatico Full Content，但不存在WPeMatico class."
 
 #: wpematico_fullcontent/wpematico_fullcontent.php:253
 msgid "Something is going wrong. Contact etruel."
-msgstr ""
+msgstr "出了点问题。联系etruel."
 
 #: wpematico_professional/includes/campaign_edit.php:86
 msgid "Name"
-msgstr ""
+msgstr "名称"
 
 #: wpematico_professional/includes/campaign_edit.php:108
 msgid "Author"
-msgstr ""
+msgstr "作者"
 
 #: wpematico_professional/includes/campaign_edit.php:116
 msgid "Use campaign Author"
-msgstr ""
+msgstr "使用Campaign作者"
 
 #: wpematico_professional/includes/campaign_edit.php:117
 msgid "Use feed Author"
-msgstr ""
+msgstr "使用Feed作者"
 
 #: wpematico_professional/includes/campaign_edit.php:191
 #: wpematico_professional/includes/campaign_edit.php:470
 msgid "Select a term"
-msgstr ""
+msgstr "选择一项"
 
 #: wpematico_professional/includes/campaign_edit.php:207
 msgid "Open Feed advanced Options"
-msgstr ""
+msgstr "打开Feed高级选项"
 
 #: wpematico_professional/includes/campaign_edit.php:213
 msgid "Feed Advanced Options"
-msgstr ""
+msgstr "Feed高级选项"
 
 #: wpematico_professional/includes/campaign_edit.php:228
 msgid "Close popup and save campaign to save the changes."
-msgstr ""
+msgstr "关闭弹出窗口并保存更改."
 
 #: wpematico_professional/includes/campaign_edit.php:249
 msgid "Is Multipage"
-msgstr ""
+msgstr "翻页"
 
 #: wpematico_professional/includes/campaign_edit.php:268
 msgid "Check to use as a multipage feed."
-msgstr ""
+msgstr "选中使用Feed翻页"
 
 #: wpematico_professional/includes/campaign_edit.php:269
 msgid ""
 "This option allow to check multiple pages for feeds like https://etruel.com/"
 "feed/?paged=2."
-msgstr ""
+msgstr "此选项允许检查多个页面，例如https://etruel.com/feed/?paged=2."
 
 #: wpematico_professional/includes/campaign_edit.php:273
 msgid "Max pages to fetch."
-msgstr ""
+msgstr "获取的最大页数."
 
 #: wpematico_professional/includes/campaign_edit.php:274
 msgid ""
 "You should change the field \"Max items to create on each fetch\" to a value "
 "= Max Pages * 10."
-msgstr ""
+msgstr "您应该将“每次获取时要创建的最大项目”字段更改为值=最大页数* 10."
 
 #: wpematico_professional/includes/campaign_edit.php:275
 msgid "Click here to fix it automatically."
-msgstr ""
+msgstr "单击此处自动修复它。"
 
 #: wpematico_professional/includes/campaign_edit.php:293
 msgid "Check to force feed."
-msgstr ""
+msgstr "检查强制Feed."
 
 #: wpematico_professional/includes/campaign_edit.php:294
 msgid "This option allow force to use a feed with invalid mime or content."
-msgstr ""
+msgstr "此选项允许强制使用包含无效Feed或内容."
 
 #: wpematico_professional/includes/campaign_edit.php:307
 msgid "Feed Name:"
-msgstr ""
+msgstr "Feed名称："
 
 #: wpematico_professional/includes/campaign_edit.php:309
 msgid ""
 "You can assign a name for this feed, also can be used later in the Post "
 "template as {feed_name}."
-msgstr ""
+msgstr "您可以为此Feed指定名称，也可以稍后在文章模板中用作{feed_name}。"
 
 #: wpematico_professional/includes/campaign_edit.php:329
 msgid "Check to use HTTP Cookies."
-msgstr ""
+msgstr "选中使用HTTP Cookie."
 
 #: wpematico_professional/includes/campaign_edit.php:330
 msgid "This option enables the use of HTTP Cookies"
-msgstr ""
+msgstr "此选项允许使用HTTP Cookie"
 
 #: wpematico_professional/includes/campaign_edit.php:363
 msgid "Select User Agent:"
-msgstr ""
+msgstr "选择User Agent:"
 
 #: wpematico_professional/includes/campaign_edit.php:372
 msgid ""
 "This option allow select a different User Agent when get remote websites."
-msgstr ""
+msgstr "此选项允许在获取远程网站时选择不同的用户代理."
 
 #: wpematico_professional/includes/campaign_edit.php:424
 msgid "Feed Chrset."
-msgstr ""
+msgstr "Feed 字符集."
 
 #: wpematico_professional/includes/campaign_edit.php:433
 msgid ""
 "This option allows select and force an Input Chrset Encoding to set for this "
 "feed."
-msgstr ""
+msgstr "此选项允许选择并强制为此Feed设置输入字符编码."
 
 #: wpematico_professional/includes/campaign_edit.php:466
 msgid "Select a taxonomy"
-msgstr ""
+msgstr "选择分类"
 
 #: wpematico_professional/includes/campaign_edit.php:534
 #: wpematico_professional/includes/prohelps.php:181
 msgid "Skip posts with words in author's name."
-msgstr ""
+msgstr "跳过作者关键词的文章."
 
 #: wpematico_professional/includes/campaign_edit.php:538
 #: wpematico_professional/wpematicopro.php:1549
 msgid "Must contain"
-msgstr ""
+msgstr "必须包含"
 
 #: wpematico_professional/includes/campaign_edit.php:540
 #: wpematico_professional/includes/campaign_edit.php:548
 #: wpematico_professional/wpematicopro.php:1557
 #: wpematico_professional/wpematicopro.php:1571
 msgid "Words:"
-msgstr ""
+msgstr "关键词."
 
 #: wpematico_professional/includes/campaign_edit.php:542
 #: wpematico_professional/includes/campaign_edit.php:550
 #: wpematico_professional/wpematicopro.php:1559
 #: wpematico_professional/wpematicopro.php:1573
 msgid "RegEx:"
-msgstr ""
+msgstr "正则表达式："
 
 #: wpematico_professional/includes/campaign_edit.php:546
 #: wpematico_professional/wpematicopro.php:1563
 msgid "Cannot contain:"
-msgstr ""
+msgstr "不能包含："
 
 #: wpematico_professional/includes/campaign_edit.php:597
 msgid "Determine what happens with duplicated image names"
-msgstr ""
+msgstr "重复图片名称"
 
 #: wpematico_professional/includes/campaign_edit.php:599
 #: wpematico_professional/includes/campaign_edit.php:847
@@ -6142,7 +6158,7 @@ msgstr ""
 #: wpematico_professional/includes/core_settings.php:84
 #: wpematico_professional/includes/core_settings.php:165
 msgid "Rename like Wordpress standards (name-1)"
-msgstr ""
+msgstr "重命名为Wordpress标准（name-1）"
 
 #: wpematico_professional/includes/campaign_edit.php:600
 #: wpematico_professional/includes/campaign_edit.php:848
@@ -6150,7 +6166,7 @@ msgstr ""
 #: wpematico_professional/includes/core_settings.php:85
 #: wpematico_professional/includes/core_settings.php:166
 msgid "Always Overwrite"
-msgstr ""
+msgstr "始终覆盖"
 
 #: wpematico_professional/includes/campaign_edit.php:601
 #: wpematico_professional/includes/campaign_edit.php:849
@@ -6158,30 +6174,30 @@ msgstr ""
 #: wpematico_professional/includes/core_settings.php:86
 #: wpematico_professional/includes/core_settings.php:167
 msgid "Always keep the first. Recommended."
-msgstr ""
+msgstr "始终保持第一,推荐."
 
 #: wpematico_professional/includes/campaign_edit.php:606
 msgid "Strip the queries variables in images URls."
-msgstr ""
+msgstr "剔除图片URls中的查询变量."
 
 #: wpematico_professional/includes/campaign_edit.php:608
 msgid "Check the source image to determine the extension."
-msgstr ""
+msgstr "检查源图片以确定扩展名。"
 
 #: wpematico_professional/includes/campaign_edit.php:611
 #: wpematico_professional/includes/prohelps.php:208
 #: wpematico_professional/includes/prohelps.php:214
 msgid "Check if image has correct content."
-msgstr ""
+msgstr "检查图片是否包含正确的内容."
 
 #: wpematico_professional/includes/campaign_edit.php:614
 msgid "Strip from content if it&#x27;s not an image."
-msgstr ""
+msgstr "如果内容不是图片，则从内容中删除。"
 
 #: wpematico_professional/includes/campaign_edit.php:621
 #: wpematico_professional/includes/prohelps.php:222
 msgid "Enable Image Renamer"
-msgstr ""
+msgstr "启用图片批量重命名"
 
 #: wpematico_professional/includes/campaign_edit.php:624
 #: wpematico_professional/includes/campaign_edit.php:881
@@ -6189,7 +6205,7 @@ msgstr ""
 #: wpematico_professional/includes/core_settings.php:100
 #: wpematico_professional/includes/core_settings.php:181
 msgid "Rename the images to"
-msgstr ""
+msgstr "将图片重命名为"
 
 #: wpematico_professional/includes/campaign_edit.php:626
 #: wpematico_professional/includes/campaign_edit.php:883
@@ -6199,7 +6215,7 @@ msgstr ""
 msgid ""
 "Don't complete the extension of the file. This field is used to change the "
 "name and remains the same extension."
-msgstr ""
+msgstr "此字段用于更改名称并保持相同的扩展名."
 
 #: wpematico_professional/includes/campaign_edit.php:627
 #, php-format
@@ -6207,6 +6223,8 @@ msgid ""
 "You can use %1s or %1s and will be replaced on uploading the image. "
 "Wordpress adds a number at the end if the image name already exists."
 msgstr ""
+"您可以使用%1s 或%1s，并在上传图片时替换它们。如果图片名称已存在，Wordpress会"
+"在末尾添加一个数字。"
 
 #: wpematico_professional/includes/campaign_edit.php:635
 #: wpematico_professional/includes/campaign_edit.php:894
@@ -6214,11 +6232,11 @@ msgstr ""
 #: wpematico_professional/includes/core_settings.php:114
 #: wpematico_professional/includes/core_settings.php:195
 msgid "From feed items"
-msgstr ""
+msgstr "来自Feed项目"
 
 #: wpematico_professional/includes/campaign_edit.php:637
 msgid "Get also Images from RSS"
-msgstr ""
+msgstr "从RSS获取图片"
 
 #: wpematico_professional/includes/campaign_edit.php:639
 #: wpematico_professional/includes/campaign_edit.php:898
@@ -6226,15 +6244,15 @@ msgstr ""
 #: wpematico_professional/includes/core_settings.php:118
 #: wpematico_professional/includes/core_settings.php:199
 msgid "Also enclosure and media RSS tags."
-msgstr ""
+msgstr "附件和媒体RSS标签."
 
 #: wpematico_professional/includes/campaign_edit.php:641
 msgid "Only if no images on content."
-msgstr ""
+msgstr "仅内容上没有图片时."
 
 #: wpematico_professional/includes/campaign_edit.php:643
 msgid "Make featured RSS image."
-msgstr ""
+msgstr "制作精选的RSS图像."
 
 #: wpematico_professional/includes/campaign_edit.php:647
 #: wpematico_professional/includes/campaign_edit.php:905
@@ -6242,61 +6260,61 @@ msgstr ""
 #: wpematico_professional/includes/core_settings.php:125
 #: wpematico_professional/includes/core_settings.php:206
 msgid "From Content"
-msgstr ""
+msgstr "来自内容"
 
 #: wpematico_professional/includes/campaign_edit.php:648
 msgid "Strip All Images from Content."
-msgstr ""
+msgstr "从内容中删除所有图片."
 
 #: wpematico_professional/includes/campaign_edit.php:653
 #: wpematico_professional/includes/prohelps.php:234
 msgid "Discard the Post if NO Images in Content."
-msgstr ""
+msgstr "如果内容中没有图片，则丢弃文章."
 
 #: wpematico_professional/includes/campaign_edit.php:655
 #: wpematico_professional/includes/prohelps.php:240
 msgid "Add featured image at the beginning of the post content."
-msgstr ""
+msgstr "在文章的开头添加特色图片."
 
 #: wpematico_professional/includes/campaign_edit.php:665
 #: wpematico_professional/includes/prohelps.php:247
 #: wpematico_professional/includes/prohelps.php:256
 msgid "Add filters by dimensions of images."
-msgstr ""
+msgstr "按图片尺寸添加滤镜."
 
 #: wpematico_professional/includes/campaign_edit.php:672
 #: wpematico_professional/includes/campaign_edit.php:760
 msgid "Filter:"
-msgstr ""
+msgstr "筛选："
 
 #: wpematico_professional/includes/campaign_edit.php:691
 #: wpematico_professional/includes/campaign_edit.php:779
 msgid "size:"
-msgstr ""
+msgstr "尺寸："
 
 #: wpematico_professional/includes/campaign_edit.php:716
 msgid "Parsers for Featured image"
-msgstr ""
+msgstr "特色图片的解析器"
 
 #: wpematico_professional/includes/campaign_edit.php:719
 msgid "Default Featured image if not found image on content."
-msgstr ""
+msgstr "如果未在内容中找到图片，则为默认特色图片"
 
 #: wpematico_professional/includes/campaign_edit.php:723
 msgid "Image URL:"
-msgstr ""
+msgstr "图片网址："
 
 #: wpematico_professional/includes/campaign_edit.php:723
 msgid "Link:"
-msgstr ""
+msgstr "链接："
 
 #: wpematico_professional/includes/campaign_edit.php:726
 msgid "Upload image"
-msgstr ""
+msgstr "上传图片"
 
 #: wpematico_professional/includes/campaign_edit.php:738
 msgid "Only allow first Featured image that meets the following filters."
-msgstr ""
+msgstr "仅允许符合以下过滤条件的第一张特色图片."
 
 #: wpematico_professional/includes/campaign_edit.php:833
 #: wpematico_professional/includes/campaign_edit.php:951
@@ -6306,43 +6324,43 @@ msgstr ""
 #: wpematico_professional/includes/prohelps.php:292
 #: wpematico_professional/includes/prohelps.php:340
 msgid "Upload by ranges"
-msgstr ""
+msgstr "按范围上传"
 
 #: wpematico_professional/includes/campaign_edit.php:836
 #: wpematico_professional/includes/campaign_edit.php:954
 #: wpematico_professional/includes/core_settings.php:74
 #: wpematico_professional/includes/core_settings.php:155
 msgid "MBs per ranges"
-msgstr ""
+msgstr "每个多少MB"
 
 #: wpematico_professional/includes/campaign_edit.php:845
 #: wpematico_professional/includes/core_settings.php:163
 msgid "Determine what happens with duplicated audio names"
-msgstr ""
+msgstr "重复的音频名称"
 
 #: wpematico_professional/includes/campaign_edit.php:855
 #: wpematico_professional/includes/core_settings.php:172
 msgid "Strip the queries variables in audios URLs."
-msgstr ""
+msgstr "在audios URL中删除查询变量."
 
 #: wpematico_professional/includes/campaign_edit.php:861
 #: wpematico_professional/includes/campaign_edit.php:979
 #: wpematico_professional/includes/prohelps.php:299
 #: wpematico_professional/includes/prohelps.php:347
 msgid "Decode html entities in URLs."
-msgstr ""
+msgstr "解码URL中的html"
 
 #: wpematico_professional/includes/campaign_edit.php:869
 #: wpematico_professional/includes/prohelps.php:306
 msgid "Follow redirections to find the audio file."
-msgstr ""
+msgstr "根据重定向查找音频文件."
 
 #: wpematico_professional/includes/campaign_edit.php:878
 #: wpematico_professional/includes/core_settings.php:178
 #: wpematico_professional/includes/prohelps.php:16
 #: wpematico_professional/includes/prohelps.php:279
 msgid "Enable Audio Renamer"
-msgstr ""
+msgstr "启用音频重命名"
 
 #: wpematico_professional/includes/campaign_edit.php:884
 #: wpematico_professional/includes/core_settings.php:185
@@ -6351,43 +6369,45 @@ msgid ""
 "You can use %1s or %1s and will be replaced on uploading the audio. "
 "Wordpress adds a number at the end if the audio name already exists."
 msgstr ""
+"您可以使用%1s或%1s，并在上传音频时替换它们。如果音频名称已存在，Wordpress会在"
+"末尾添加一个数字。"
 
 #: wpematico_professional/includes/campaign_edit.php:896
 #: wpematico_professional/includes/core_settings.php:197
 msgid "Get also Audios from RSS"
-msgstr ""
+msgstr "从RSS获取Audios"
 
 #: wpematico_professional/includes/campaign_edit.php:900
 #: wpematico_professional/includes/core_settings.php:201
 msgid "Only if no audios on content."
-msgstr ""
+msgstr "仅在内容没有音频时"
 
 #: wpematico_professional/includes/campaign_edit.php:906
 #: wpematico_professional/includes/core_settings.php:207
 msgid "Strip All Audios from Content."
-msgstr ""
+msgstr "从内容中删除所有音频."
 
 #: wpematico_professional/includes/campaign_edit.php:963
 #: wpematico_professional/includes/core_settings.php:82
 msgid "Determine what happens with duplicated video names"
-msgstr ""
+msgstr "重复的视频名称"
 
 #: wpematico_professional/includes/campaign_edit.php:973
 #: wpematico_professional/includes/core_settings.php:91
 msgid "Strip the queries variables in videos URLs."
-msgstr ""
+msgstr "在视频网址中删除查询变量."
 
 #: wpematico_professional/includes/campaign_edit.php:987
 #: wpematico_professional/includes/prohelps.php:354
 msgid "Follow redirections to find the video file."
-msgstr ""
+msgstr "根据重定向查找视频文件."
 
 #: wpematico_professional/includes/campaign_edit.php:994
 #: wpematico_professional/includes/core_settings.php:97
 #: wpematico_professional/includes/prohelps.php:29
 #: wpematico_professional/includes/prohelps.php:327
 msgid "Enable Video Renamer"
-msgstr ""
+msgstr "启用视频重命名"
 
 #: wpematico_professional/includes/campaign_edit.php:1000
 #: wpematico_professional/includes/core_settings.php:104
@@ -6396,302 +6416,305 @@ msgid ""
 "You can use %1s or %1s and will be replaced on uploading the video. "
 "Wordpress adds a number at the end if the video name already exists."
 msgstr ""
+"您可以使用%1s或%1s，并在上传音频时替换它们。如果音频名称已存在，Wordpress会在"
+"末尾添加一个数字。"
 
 #: wpematico_professional/includes/campaign_edit.php:1012
 #: wpematico_professional/includes/core_settings.php:116
 msgid "Get also Videos from RSS"
-msgstr ""
+msgstr "从RSS获取视频"
 
 #: wpematico_professional/includes/campaign_edit.php:1016
 #: wpematico_professional/includes/core_settings.php:120
 msgid "Only if no videos on content."
-msgstr ""
+msgstr "仅在内容上没有视频时。"
 
 #: wpematico_professional/includes/campaign_edit.php:1022
 #: wpematico_professional/includes/core_settings.php:126
 msgid "Strip All Videos from Content."
-msgstr ""
+msgstr "从内容中删除所有视频."
 
 #: wpematico_professional/includes/campaign_edit.php:1044
 #: wpematico_professional/includes/prohelps.php:145
 msgid "Strip HTML Tags From Title"
-msgstr ""
+msgstr "从标题中剔除HTML标记"
 
 #: wpematico_professional/includes/campaign_edit.php:1048
 #: wpematico_professional/includes/prohelps.php:151
 msgid "Enable Custom Post title"
-msgstr ""
+msgstr "启用自定义文章标题"
 
 #: wpematico_professional/includes/campaign_edit.php:1051
 msgid "Custom Title for every post:"
-msgstr ""
+msgstr "每篇文章的自定义标题："
 
 #: wpematico_professional/includes/campaign_edit.php:1053
 msgid ""
 "You can write here the title for every post. All posts will be named with "
 "this field."
-msgstr ""
+msgstr "你可以在这里写下每篇文章的标题,所有文章都将以此字段命名."
 
 #: wpematico_professional/includes/campaign_edit.php:1054
 msgid "Now you can use {title} and {counter} and will be replaced on title."
-msgstr ""
+msgstr "现在您可以使用{title}和{counter}，并将替换为标题。"
 
 #: wpematico_professional/includes/campaign_edit.php:1055
 msgid ""
 "If you don't use {counter} and checked the box below, by default the counter "
 "is added to end of title."
 msgstr ""
+"如果您不使用{counter}并选中下面的框，则默认情况下，计数器会添加到标题末尾。"
 
 #: wpematico_professional/includes/campaign_edit.php:1057
 msgid "Ex: 'New Post: {title}'"
-msgstr ""
+msgstr "例如：'新文章：{title}'"
 
 #: wpematico_professional/includes/campaign_edit.php:1061
 msgid "Add an extra filter to check duplicates by Custom Post title"
-msgstr ""
+msgstr "添加额外的过滤器以检查自定义文章重复的标题"
 
 #: wpematico_professional/includes/campaign_edit.php:1065
 msgid "Add counter to Post title"
-msgstr ""
+msgstr "添加计数器到帖子标题"
 
 #: wpematico_professional/includes/campaign_edit.php:1067
 msgid "Min. Counter Digits:"
-msgstr ""
+msgstr "计数器数字："
 
 #: wpematico_professional/includes/campaign_edit.php:1079
 msgid "Next Number:"
-msgstr ""
+msgstr "下一个数："
 
 #: wpematico_professional/includes/campaign_edit.php:1084
 #: wpematico_professional/includes/prohelps.php:157
 msgid "Enable delete till the end starting from some characters"
-msgstr ""
+msgstr "从某些字符开始直到最后才启用删除"
 
 #: wpematico_professional/includes/campaign_edit.php:1089
 #: wpematico_professional/includes/prosettings.php:157
 msgid "Characters of end of sentence:"
-msgstr ""
+msgstr "句末的字符："
 
 #: wpematico_professional/includes/campaign_edit.php:1092
 msgid "Keep characters (Do not delete their)"
-msgstr ""
+msgstr "保留字符（不要删除它们）"
 
 #: wpematico_professional/includes/campaign_edit.php:1099
 #: wpematico_professional/wpematicopro.php:1511
 msgid "Cut at:"
-msgstr ""
+msgstr "切入："
 
 #: wpematico_professional/includes/campaign_edit.php:1100
 msgid "Letter. If greater"
-msgstr ""
+msgstr "如果大于"
 
 #: wpematico_professional/includes/campaign_edit.php:1102
 #: wpematico_professional/wpematicopro.php:1496
 #: wpematico_professional/wpematicopro.php:1518
 #: wpematico_professional/wpematicopro.php:1530
 msgid "Words"
-msgstr ""
+msgstr "字词"
 
 #: wpematico_professional/includes/campaign_fetch.php:187
 #, php-format
 msgid "Processing Keyword filtering %1s"
-msgstr ""
+msgstr "处理关键字过滤%1s"
 
 #: wpematico_professional/includes/campaign_fetch.php:212
 msgid "Checking KeyWords in Categories."
-msgstr ""
+msgstr "检查分类中的关键字."
 
 #: wpematico_professional/includes/campaign_fetch.php:247
 msgid "Must contain: Found a keyword. Continuing..."
-msgstr ""
+msgstr "必须包含：找到关键字。继续..."
 
 #: wpematico_professional/includes/campaign_fetch.php:249
 msgid "Skiping: Must contain: Do not found any Keyword."
-msgstr ""
+msgstr "跳过：必须包含：未找到任何关键字."
 
 #: wpematico_professional/includes/campaign_fetch.php:294
 #, php-format
 msgid "MC:Found!: word %1s"
-msgstr ""
+msgstr "未找到关键词% 1s"
 
 #: wpematico_professional/includes/campaign_fetch.php:296
 #, php-format
 msgid "MC:Skiping: Not found word %1s in content or title %2s."
-msgstr ""
+msgstr "跳过：在内容或标题%2s中找不到单词%1s "
 
 #: wpematico_professional/includes/campaign_fetch.php:319
 #, php-format
 msgid "Must contain: Found regex %1s. Continuing..."
-msgstr ""
+msgstr "必须包含：找到正则表达式%1s.。继续..."
 
 #: wpematico_professional/includes/campaign_fetch.php:321
 #, php-format
 msgid "Skiping: Must contain do not found regex %1s."
-msgstr ""
+msgstr "跳过：必须包含未找到正则表达式%1s."
 
 #: wpematico_professional/includes/campaign_fetch.php:355
 msgid "Cannot contain: Do not found all keywords. Continuing..."
-msgstr ""
+msgstr "不能包含：未找到所有关键字。继续..."
 
 #: wpematico_professional/includes/campaign_fetch.php:357
 msgid "Skiping: Cannot contain: Found all Keywords."
-msgstr ""
+msgstr "跳过：不能包含：找到所有关键字。"
 
 #: wpematico_professional/includes/campaign_fetch.php:382
 #, php-format
 msgid "CC:Not Found!: word %1s"
-msgstr ""
+msgstr "CC：没找到！： %1s"
 
 #: wpematico_professional/includes/campaign_fetch.php:384
 #, php-format
 msgid "CC:Skiping: Found word %1s in content or title %2s."
-msgstr ""
+msgstr "跳过：在内容或标题 %2s.中找到单词%1s。"
 
 #: wpematico_professional/includes/campaign_fetch.php:407
 #, php-format
 msgid "Cannot contain: Not Found regex %1s. Continuing..."
-msgstr ""
+msgstr "不能包含：未找到正则表达式 %1s 继续..."
 
 #: wpematico_professional/includes/campaign_fetch.php:409
 #, php-format
 msgid "Skiping: Cannot contain: found regex %1s."
-msgstr ""
+msgstr "跳过：不能包含：找到正则表达式%1s."
 
 #: wpematico_professional/includes/campaign_fetch.php:435
 #, php-format
 msgid "Decoding HTML entities of %1s"
-msgstr ""
+msgstr "解码 %1s的HTML"
 
 #: wpematico_professional/includes/campaign_fetch.php:440
 #, php-format
 msgid "Follow redirection of %1s"
-msgstr ""
+msgstr "根据%1s的重定向"
 
 #: wpematico_professional/includes/campaign_fetch.php:463
 #, php-format
 msgid "New SRC URL: %1s"
-msgstr ""
+msgstr "新的SRC URL：%1s"
 
 #: wpematico_professional/includes/campaign_fetch.php:506
 #, php-format
 msgid "Processing Words to Taxonomies of %1s"
-msgstr ""
+msgstr "处理%1s分类的词"
 
 #: wpematico_professional/includes/campaign_fetch.php:537
 #, php-format
 msgid "Found!: word %1s to Term_id %2s"
-msgstr ""
+msgstr "发现！：字%1s 到Term_id%2s"
 
 #: wpematico_professional/includes/campaign_fetch.php:570
 #, php-format
 msgid "Added terms of %s taxonomy: "
-msgstr ""
+msgstr "添加%s 分类法的条款："
 
 #: wpematico_professional/includes/campaign_fetch.php:824
 msgid ""
 "Processing Author Filtering: Cannot be executed because the author's name is "
 "empty."
-msgstr ""
+msgstr "处理作者过滤：如果作者姓名为空，则无法执行。"
 
 #: wpematico_professional/includes/campaign_fetch.php:828
 #, php-format
 msgid "Processing Author Filtering: %1s"
-msgstr ""
+msgstr "处理作者筛选：%1s"
 
 #: wpematico_professional/includes/campaign_fetch.php:861
 #, php-format
 msgid "Author Must Contain:Found!: word %1s"
-msgstr ""
+msgstr "必须包含：找到正则表达式%1s.。继续..."
 
 #: wpematico_professional/includes/campaign_fetch.php:864
 #, php-format
 msgid "Author Must Contain:Not Found!: word %1s Continuing..."
-msgstr ""
+msgstr "作者必须包含：未找到！：字%1s 继续......"
 
 #: wpematico_professional/includes/campaign_fetch.php:867
 msgid "Author Must Contain:Not Found Any Word, Skipping Post..."
-msgstr ""
+msgstr "作者必须包含：找不到任何相关词，跳过文章……"
 
 #: wpematico_professional/includes/campaign_fetch.php:875
 #, php-format
 msgid "Author Must Contain: Found regex %1s."
-msgstr ""
+msgstr "作者必须包含：找到正则表达式%1s."
 
 #: wpematico_professional/includes/campaign_fetch.php:897
 #, php-format
 msgid "Author Cannot Contain:Found!: word %1s, Skipping Post..."
-msgstr ""
+msgstr "作者不能包含：找到！：单词%1s,，跳过帖子..."
 
 #: wpematico_professional/includes/campaign_fetch.php:900
 #, php-format
 msgid "Author Cannot Contain:Not Found!: word %1s Continuing..."
-msgstr ""
+msgstr "作者必须包含：未找到！：%1s 继续......"
 
 #: wpematico_professional/includes/campaign_fetch.php:908
 #, php-format
 msgid "Author Cannot Contain: Found regex %1s, Skipping Post..."
-msgstr ""
+msgstr "作者不能包含：找到正则表达式%1s，跳过文章…"
 
 #: wpematico_professional/includes/campaign_fetch.php:947
 msgid "Obtaining the characters at the end of the sentence of Better Excerpt."
-msgstr ""
+msgstr "获取Better Excerpt句子末尾的字符."
 
 #: wpematico_professional/includes/campaign_fetch.php:981
 #, php-format
 msgid "Deleting since phrase: %1s till end of the line."
-msgstr ""
+msgstr "从该短语后删除：%1s 直到行尾."
 
 #: wpematico_professional/includes/campaign_fetch.php:991
 #, php-format
 msgid "Deleting since phrase: %1s"
-msgstr ""
+msgstr "删除短语：%1s"
 
 #: wpematico_professional/includes/campaign_fetch.php:1006
 msgid "Striped all &#x3C;audio&#x3E; tags from content. "
-msgstr ""
+msgstr "从内容中删除所有&lt;audio&gt;标签。"
 
 #: wpematico_professional/includes/campaign_fetch.php:1016
 msgid "Striped all &#x3C;video&#x3E; tags from content. "
-msgstr ""
+msgstr "从内容中划分所有&lt;video&gt;标记。"
 
 #: wpematico_professional/includes/campaign_fetch.php:1100
 #, php-format
 msgid "Renamed audio %1s -> %2s"
-msgstr ""
+msgstr "重命名音频%1s -> %2s"
 
 #: wpematico_professional/includes/campaign_fetch.php:1135
 #, php-format
 msgid "Renamed video %1s -> %2s"
-msgstr ""
+msgstr "重命名视频%1s -> %2s"
 
 #: wpematico_professional/includes/campaign_fetch.php:1168
 #, php-format
 msgid "Renamed image %1s -> %2s"
-msgstr ""
+msgstr "重命名图片 %1s -> %2s"
 
 #: wpematico_professional/includes/debug_page.php:66
 msgid "Select campaigns to include."
-msgstr ""
+msgstr "选择要包含的Campaign"
 
 #: wpematico_professional/includes/debug_page.php:71
 msgid "Check"
-msgstr ""
+msgstr "选中"
 
 #: wpematico_professional/includes/functions.php:169
 #: wpematico_professional/includes/functions.php:170
 #: wpematico_professional/includes/prosettings.php:42
 msgid "PRO Settings"
-msgstr ""
+msgstr "PRO设置"
 
 #: wpematico_professional/includes/functions.php:305
 #, php-format
 msgid "Deleting since word: %s."
-msgstr ""
+msgstr "删除短语：%s."
 
 #: wpematico_professional/includes/prohelps.php:12
 #: wpematico_professional/includes/prohelps.php:272
 msgid "Strip the queries variables in audios URLs"
-msgstr ""
+msgstr "在audios URL中删除查询变量."
 
 #: wpematico_professional/includes/prohelps.php:13
 #: wpematico_professional/includes/prohelps.php:273
@@ -6699,6 +6722,8 @@ msgid ""
 "Cleans the queries variables in the same url of the audio before download "
 "it. Not recommended unless you have problems to get the files."
 msgstr ""
+"在下载之前清除音频的同一URL中的查询变量。除非您在获取文件时遇到问题，否则不推"
+"荐使用。"
 
 #: wpematico_professional/includes/prohelps.php:17
 #: wpematico_professional/includes/prohelps.php:280
@@ -6706,27 +6731,30 @@ msgid ""
 "You can write here the new name for every audio uploaded to the posts. All "
 "audios will be renamed with this field."
 msgstr ""
+"您可以在此处为上传到文章的每个音频写下新名称。所有音频都将使用此字段重命名。"
 
 #: wpematico_professional/includes/prohelps.php:20
 #: wpematico_professional/includes/prohelps.php:285
 msgid "Strip All Audios from Content"
-msgstr ""
+msgstr "从内容中删除所有音频."
 
 #: wpematico_professional/includes/prohelps.php:21
 #: wpematico_professional/includes/prohelps.php:286
 msgid "Activate this will deactivate all following options for audios."
-msgstr ""
+msgstr "激活此选项将取消激活音频以下的所有选项."
 
 #: wpematico_professional/includes/prohelps.php:25
 #: wpematico_professional/includes/prohelps.php:320
 msgid "Strip the queries variables in videos URLs"
-msgstr ""
+msgstr "在视频网址中删除查询变量."
 
 #: wpematico_professional/includes/prohelps.php:26
 msgid ""
 "Cleans the queries variables in the same url of the video before download "
 "it. Not recommended unless you have problems to get the files."
 msgstr ""
+"在下载之前清除视频的同一URL中的查询变量。除非您在获取文件时遇到问题，否则不推"
+"荐使用。"
 
 #: wpematico_professional/includes/prohelps.php:30
 #: wpematico_professional/includes/prohelps.php:328
@@ -6734,16 +6762,17 @@ msgid ""
 "You can write here the new name for every video uploaded to the posts. All "
 "videos will be renamed with this field."
 msgstr ""
+"您可以在此处为上传到文章的每个音频写下新名称。所有音频都将使用此字段重命名。"
 
 #: wpematico_professional/includes/prohelps.php:33
 #: wpematico_professional/includes/prohelps.php:333
 msgid "Strip All Videos from Content"
-msgstr ""
+msgstr "从内容中删除所有视频."
 
 #: wpematico_professional/includes/prohelps.php:34
 #: wpematico_professional/includes/prohelps.php:334
 msgid "Activate this will deactivate all following options for videos."
-msgstr ""
+msgstr "激活此功能将停用视频以下的所有选项。"
 
 #: wpematico_professional/includes/prohelps.php:39
 msgid ""
@@ -6751,12 +6780,14 @@ msgid ""
 "function uploads the file by ranges \"as is\" from the original to use it "
 "inside the post."
 msgstr ""
+"使用此代替Wordpress函数来提高性能。此函数按原样“as is”上传文件，以在文章中使"
+"用它."
 
 #: wpematico_professional/includes/prohelps.php:53
 msgid ""
 "Complete the Ramdom Rewrites form by adding all comma-separated words, line "
 "by line."
-msgstr ""
+msgstr "通过逐行添加所有逗号分隔的单词来完成Ramdom重写表单。"
 
 #: wpematico_professional/includes/prohelps.php:54
 msgid ""
@@ -6769,6 +6800,9 @@ msgid ""
 "\t\t\twill be replaced for one of the others of the same line.<br>\n"
 "\t\t\t"
 msgstr ""
+"在表单中插入以逗号分隔的单词列表替换。 <br>此列表将添加到已激活该功能的每个"
+"Campaign Ramdon Rewrite列表中。 <br>将逐行搜索单词，如果找到一个单词（无论行"
+"中的顺序）， <br>将被替换为同一行中的另一个。 <br>"
 
 #: wpematico_professional/includes/prohelps.php:59
 msgid ""
@@ -6777,68 +6811,70 @@ msgid ""
 "\t\t\t\tIf the text contains the word \"woman\" will be replaced by \"lady"
 "\", \"female\" or \"girl\" ramdomly."
 msgstr ""
+"<b>例：</b> <br> <b>女士，女士，女性，女孩</b> <br>如果文字中包含“女人”这个"
+"词，则会被“女士”，“女性”或“女孩”所取代。"
 
 #: wpematico_professional/includes/prohelps.php:69
 msgid "Add rel=\"nofollow\" to links."
-msgstr ""
+msgstr "将rel =“nofollow”添加到链接。"
 
 #: wpematico_professional/includes/prohelps.php:70
 msgid ""
 "This option adds the attribute rel=\"nofollow\" to all the links obtained in "
 "the post."
-msgstr ""
+msgstr "此选项将属性rel =“nofollow”添加到帖子中获取的所有链接。"
 
 #: wpematico_professional/includes/prohelps.php:75
 #: wpematico_professional/includes/prohelps.php:76
 #: wpematico_professional/wpematicopro.php:1350
 msgid "Sanitize Googlo News permalink."
-msgstr ""
+msgstr "采用Googlo News永久链接."
 
 #: wpematico_professional/includes/prohelps.php:84
 #: wpematico_professional/wpematicopro.php:1383
 msgid "Auto generate tags"
-msgstr ""
+msgstr "自动生成Tags"
 
 #: wpematico_professional/includes/prohelps.php:85
 msgid "This feature try to get tags automatically from post content."
-msgstr ""
+msgstr "此功能尝试从帖子内容自动获取Tags"
 
 #: wpematico_professional/includes/prohelps.php:90
 #: wpematico_professional/wpematicopro.php:1377
 msgid "Use &lt;tag&gt; tags from feed if exist."
-msgstr ""
+msgstr "如果存在，请使用Feed中的&lt;tag&gt;Tags."
 
 #: wpematico_professional/includes/prohelps.php:91
 msgid "This feature try to get tags automatically from the feed item."
-msgstr ""
+msgstr "此功能尝试从文章内容自动获取Tags"
 
 #: wpematico_professional/includes/prohelps.php:92
 msgid ""
 "This feature runs before that parse the content to get the tags from the "
 "text."
-msgstr ""
+msgstr "此功能在解析内容之前运行，以从文本中获取Tags."
 
 #: wpematico_professional/includes/prohelps.php:97
 msgid "Limit tags quantity."
-msgstr ""
+msgstr "将Tag数量限制为："
 
 #: wpematico_professional/includes/prohelps.php:98
 msgid "Tags with 3 characters or less are ignored."
-msgstr ""
+msgstr "忽略3个字符以下的Tags"
 
 #: wpematico_professional/includes/prohelps.php:104
 msgid "Bad Tags."
-msgstr ""
+msgstr "Bad Tags:"
 
 #: wpematico_professional/includes/prohelps.php:105
 #: wpematico_professional/wpematicopro.php:1412
 msgid "Enter comma separated list of excluded Tags."
-msgstr ""
+msgstr "输入逗号分隔排除的Tags列表。"
 
 #: wpematico_professional/includes/prohelps.php:111
 #: wpematico_professional/wpematicopro.php:1429
 msgid "Delete all in the content AFTER a word or phrase till the end."
-msgstr ""
+msgstr "在单词或短语之后删除内容中的所有内容直到结尾。"
 
 #: wpematico_professional/includes/prohelps.php:112
 msgid ""
@@ -6856,56 +6892,60 @@ msgid ""
 "\t\t\t\t<br>\n"
 "\t\t\t</span>"
 msgstr ""
+"<span class=\"srchbdr0 hide\" id=\"hlpphra\" style=\"display: inline;\"><b>基"
+"础知识：</b>删除直到内容的末尾 <br>找到该词语并删除其与其它的内容 <br> <b>示"
+"例：</b>如果文章内容包含短语“此帖最早在xxxxxx上发布...”然后您想要删除它，您应"
+"该使用“此帖最早发布”。 <br><br></span>"
 
 #: wpematico_professional/includes/prohelps.php:124
 #: wpematico_professional/wpematicopro.php:1441
 msgid "Keep phrase"
-msgstr ""
+msgstr "保留短语"
 
 #: wpematico_professional/includes/prohelps.php:125
 msgid ""
 "This option allows you to preserve the phrase found in the post content."
-msgstr ""
+msgstr "此选项允许您保留在文章内容中找到的短语。"
 
 #: wpematico_professional/includes/prohelps.php:130
 #: wpematico_professional/wpematicopro.php:1450
 msgid "Till the end of the line"
-msgstr ""
+msgstr "直到结束"
 
 #: wpematico_professional/includes/prohelps.php:131
 msgid ""
 "Delete the phrase till the end of the line instead the end of the content."
-msgstr ""
+msgstr "删除短语直到行的结尾.注意不是内容的结尾."
 
 #: wpematico_professional/includes/prohelps.php:136
 #: wpematico_professional/wpematicopro.php:1468
 msgid "Last HTML tag to remove"
-msgstr ""
+msgstr "要删除的最后一个HTML标记"
 
 #: wpematico_professional/includes/prohelps.php:137
 msgid ""
 "Finds the tag from right to end of the content and strip it.  Works after "
 "Phrase feature above. Keep empty to ignore."
-msgstr ""
+msgstr "从内容的右侧到末尾查找标记并将其删除"
 
 #: wpematico_professional/includes/prohelps.php:146
 msgid "Strip HTML Tags From Title."
-msgstr ""
+msgstr "从标题中剔除HTML标记"
 
 #: wpematico_professional/includes/prohelps.php:152
 msgid "Enable Custom Post title."
-msgstr ""
+msgstr "启用自定义文章标题."
 
 #: wpematico_professional/includes/prohelps.php:158
 msgid ""
 "Remove all characters after some characters or words. Separate all words "
 "with space."
-msgstr ""
+msgstr "删除某些字符或单词后的所有字符。用空格分隔所有单词。"
 
 #: wpematico_professional/includes/prohelps.php:168
 #: wpematico_professional/wpematicopro.php:1545
 msgid "Skip posts with words in content or words not in content."
-msgstr ""
+msgstr "跳过包含内容中的字词或内容中没有字词的文章."
 
 #: wpematico_professional/includes/prohelps.php:169
 msgid ""
@@ -6928,6 +6968,12 @@ msgid ""
 "Engines, you can use the | operator: (motor|car). If you want Case "
 "insensitive on RegEx, add \"/i\" at the end of RegEx."
 msgstr ""
+"<b>基础知识：</b>关键字过滤器允许您跳过已获取的文章，如果其内容，标题或分类中"
+"包含某单词。留下所有要忽略的字段。 <br>必须包含（任何单词）：检查三个字段，并"
+"且一个单词必须至少在其中一个字段中。 <br>必须包含（所有单词）：一次检查三个字"
+"段，所有单词必须在其中。 <br> <b>示例：</b>如果帖子内容包含单词“motor”，然后"
+"您想要跳过，只需在“单词”字段中输入“motor”（每行1个）。 <br> <b>常用表达</b> "
+"<br>对于高级用户，支持正则表达式。它可以让你定制更强大的过滤国内“/ i”。"
 
 #: wpematico_professional/includes/prohelps.php:182
 msgid ""
@@ -6947,10 +6993,15 @@ msgid ""
 "you can use the | operator: (jose|maria). If you want Case insensitive on "
 "RegEx, add \"/i\" at the end of RegEx."
 msgstr ""
+"<b>基础知识：</b>如果作者姓名中包含关键词，则跳过已发布的文章。留下所有要忽略"
+"的字段。 <br>必须包含：作者姓名必须至少包含其中一个关键词<br> <b>示例：</b>如"
+"果文章作者的姓名包含关键词“富裕者”，您想跳过关于“富裕者”的文章，只需在字段中"
+"输入“富裕者”（每行1个）。 <br> <b>常用表达</b> <br>对于高级用户，支持正则表达"
+"式。它可以让你定制更强大的过滤规则."
 
 #: wpematico_professional/includes/prohelps.php:196
 msgid "Strip the queries variables in images URls"
-msgstr ""
+msgstr "剔除图片URls中的查询变量"
 
 #: wpematico_professional/includes/prohelps.php:197
 #: wpematico_professional/includes/prohelps.php:321
@@ -6958,10 +7009,12 @@ msgid ""
 "Cleans the queries variables in the same url of the image before download "
 "it. Not recommended unless you have problems to get the files."
 msgstr ""
+"在下载之前清除图片的同一URL中的查询变量。除非您在获取文件时遇到问题，否则不推"
+"荐使用。"
 
 #: wpematico_professional/includes/prohelps.php:202
 msgid "Check the source image to determine the extension"
-msgstr ""
+msgstr "检查源图片以确定扩展名."
 
 #: wpematico_professional/includes/prohelps.php:203
 msgid ""
@@ -6969,12 +7022,14 @@ msgid ""
 "through a script, avoiding the WordPress upload error: Extension not "
 "allowed. Not Recommended."
 msgstr ""
+"清除并为通过脚本传递的图片添加正确的扩展，避免WordPress上载错误：不允许扩展。"
+"不建议。"
 
 #: wpematico_professional/includes/prohelps.php:209
 msgid ""
 "Strip all images that not has a correct content, avoiding upload images that "
 "cannot be viewed."
-msgstr ""
+msgstr "跳过所有内容不正确的图片，避免上传无法查看."
 
 #: wpematico_professional/includes/prohelps.php:215
 msgid ""
@@ -6983,30 +7038,33 @@ msgid ""
 "image. If this option is not checked, the image will not be uploaded but the "
 "src will be left to the original site."
 msgstr ""
+"此选项允许您从文章内容中剥离&lt;img&gt;标记（如果它不是图片或CDN返回HTML代码"
+"不是图片）。如果未选中此选项，则不会上传图片，Src标签保留原网站的."
 
 #: wpematico_professional/includes/prohelps.php:223
 msgid ""
 "You can write here the new name for every image uploaded to the posts. All "
 "images will be renamed with this field."
 msgstr ""
+"您可以在此处写上传到文章的每个图片的新名称。所有图片都将使用此字段重命名."
 
 #: wpematico_professional/includes/prohelps.php:228
 msgid "Strip All Images from Content"
-msgstr ""
+msgstr "从内容中删除所有图片."
 
 #: wpematico_professional/includes/prohelps.php:229
 msgid "Activate this will deactivate all following options for images."
-msgstr ""
+msgstr "激活此选项将停用以下的所有图片选项."
 
 #: wpematico_professional/includes/prohelps.php:235
 msgid "The posts without images in content will not be added."
-msgstr ""
+msgstr "内容中没有图片的文章将不会被添加."
 
 #: wpematico_professional/includes/prohelps.php:241
 msgid ""
 "This feature overwrites the option \"Remove featured image from Content\" of "
 "the General Settings.\n"
-msgstr ""
+msgstr "此功能将覆盖常规设置中的“从内容中删除特色图片”选项。\n"
 
 #: wpematico_professional/includes/prohelps.php:248
 #: wpematico_professional/includes/prohelps.php:257
@@ -7020,6 +7078,9 @@ msgid ""
 "\t\t\t\t\t\tBe careful that the filters are not clogged with each other and "
 "miss all images."
 msgstr ""
+"<b>基础知识：</b>您可以允许或跳过文章中的图片尺寸。 <br>您必须选择过滤并填写"
+"宽度或高度大小（以像素为单位）来控制。 <br>任何不符合过滤条件的图片都将从文章"
+"内容中删除."
 
 #: wpematico_professional/includes/prohelps.php:293
 msgid ""
@@ -7027,16 +7088,18 @@ msgid ""
 "function uploads the audios by ranges \"as is\" from the original to use it "
 "inside the post."
 msgstr ""
+"使用此代替Wordpress函数来提高性能。此功能按照“原样”的范围上传音频，以在文章中"
+"使用."
 
 #: wpematico_professional/includes/prohelps.php:300
 msgid ""
 "Use this option to convert HTML entities to their corresponding characters "
 "in the URLs of the audios files."
-msgstr ""
+msgstr "使用此选项可将HTML实体转换为音频文件的URL中的相应字符。"
 
 #: wpematico_professional/includes/prohelps.php:307
 msgid "Use this option to follow redirections to find the audio file."
-msgstr ""
+msgstr "使用此选项可以跟踪重定向以查找音频文件."
 
 #: wpematico_professional/includes/prohelps.php:341
 msgid ""
@@ -7044,22 +7107,24 @@ msgid ""
 "function uploads the video by ranges \"as is\" from the original to use it "
 "inside the post."
 msgstr ""
+"使用此代替Wordpress函数来提高性能，此功能按照“原样”的范围上传视频，以在文章中"
+"使用它."
 
 #: wpematico_professional/includes/prohelps.php:348
 msgid ""
 "Use this option to convert HTML entities to their corresponding characters "
 "in the URLs of the videos files."
-msgstr ""
+msgstr "使用此选项可将HTML实体转换为视频文件的URL中的相应字符."
 
 #: wpematico_professional/includes/prohelps.php:355
 msgid "Use this option to follow redirections to find the video file."
-msgstr ""
+msgstr "使用此选项可以按照重定向查找视频文件."
 
 #: wpematico_professional/includes/prohelps.php:365
 msgid ""
 "This allow you to ignore a post if below X words or letters in content. Also "
 "allow assign a category to the post if greater than X words."
-msgstr ""
+msgstr "允许忽略文章，如果内容少于XXX字或大于XXXX字，还允许为文章指定分类."
 
 #: wpematico_professional/includes/prohelps.php:366
 msgid ""
@@ -7075,11 +7140,14 @@ msgid ""
 "skipped.<br>\n"
 "\t\t\t\t\tLeave empty or 0 to ignore."
 msgstr ""
+"<b>大于：</b>如果要计算单词，必须选中“单词”字段，如果位于html标记的中间，则会"
+"运行一个函数来关闭标记。内容上的第一张图片将保留为精选图片。 <br> <b>小于：</"
+"b>如果内容小于X，则跳过文章。 <br>留空或0忽略。"
 
 #: wpematico_professional/includes/prohelps.php:403
 #: wpematico_professional/wpematicopro.php:1640
 msgid "Add custom fields with values as templates."
-msgstr ""
+msgstr "在每篇文章上添加自定义内容作为模板的自定义字段."
 
 #: wpematico_professional/includes/prohelps.php:404
 #, php-format
@@ -7090,10 +7158,12 @@ msgid ""
 "\t\t\t\tYou can use the same template fields like in box Post template.<br>\n"
 "\t\t\t\t<b>Valid value tags:</b>%s."
 msgstr ""
+"<b>基础知识：</b>您必须将自定义字段名称及其值放在每个字段中。 <br> <b>值：</"
+"b>您可以使用相同的模板字段，如邮箱模板。 <br> <b>有效值标签：</b> %s."
 
 #: wpematico_professional/includes/prohelps.php:417
 msgid "Add custom feed tags to use on template or custom fields."
-msgstr ""
+msgstr "添加自定义Feed Tag到模板或自定义字段上使用."
 
 #: wpematico_professional/includes/prohelps.php:418
 msgid ""
@@ -7103,10 +7173,13 @@ msgid ""
 "yourtag&#x3E; you should put <strong>yourtag</strong><br>\n"
 "\t\t\t\t<b>Template:</b> <strong>{yourtag}</strong>."
 msgstr ""
+"<b>基础知识：</b>您必须将自定义Feed标记及其模板变量放在每个字段中。 <br> "
+"<b>Feed标签：</b>如果存在标签&lt;yourtag&gt; value &lt;/ yourtag&gt;，您应该"
+"<strong>添加标签</strong> <br> <b>模板：</b> <strong>{yourtag}</strong> 。"
 
 #: wpematico_professional/includes/prohelps.php:428
 msgid "Import feed list."
-msgstr ""
+msgstr "导入Feed列表。"
 
 #: wpematico_professional/includes/prohelps.php:429
 msgid ""
@@ -7118,29 +7191,33 @@ msgid ""
 "visituser<br />www.thirthfeed.com/atom, wpuser<br />\n"
 "\t\t\t\t\t\t\t"
 msgstr ""
+"该列表必须是每行Feed网址。如果在PRO设置上启用了“每个Feed的作者”功能，则可以添"
+"加作者用户名。如果不存在，则将用户添加到wordpress用户。 <br /> www.yourfeed."
+"com/feed，admin <br /> www.otherfeed.com/rss，visituser <br /> www."
+"thirthfeed.com/atom,wpuser <br />."
 
 #: wpematico_professional/includes/prohelps.php:439
 #: wpematico_professional/wpematicopro.php:1052
 msgid "Activate Ramdom Rewrites."
-msgstr ""
+msgstr "激活随机重写."
 
 #: wpematico_professional/includes/prohelps.php:440
 msgid ""
 "Activate Ramdom Rewrites. Will show the form to allow add all the lines with "
 "comma-separated words to be used."
-msgstr ""
+msgstr "激活随机重写，允许使用逗号分隔的单词添加所有行。"
 
 #: wpematico_professional/includes/prohelps.php:445
 msgid "Number of maximum words to replace."
-msgstr ""
+msgstr "要替换的最大单词数。"
 
 #: wpematico_professional/includes/prohelps.php:446
 msgid "Maximum number of words to be replaced in the content of each post."
-msgstr ""
+msgstr "每篇文章中要替换的最大字数."
 
 #: wpematico_professional/includes/prohelps.php:451
 msgid "Words to Rewrite."
-msgstr ""
+msgstr "重写的文字."
 
 #: wpematico_professional/includes/prohelps.php:452
 msgid ""
@@ -7153,6 +7230,9 @@ msgid ""
 "\t\t\t\t\t\t\twill be replaced for one of the others of the same line.<br>\n"
 "\t\t\t\t\t\t\t"
 msgstr ""
+"在表单中插入以逗号分隔的关键词列表，用于替换。 <br>此列表将从“设置”屏幕添加到"
+"常规随机重写列表中。 <br>将逐行搜索关键词，如果找到关键词（无论行中的顺"
+"序）， <br>将被替换为同一行中的其他一个.<br>"
 
 #: wpematico_professional/includes/prohelps.php:457
 msgid ""
@@ -7162,26 +7242,29 @@ msgid ""
 "\t\t\t\t\t\t\tIf the text contains the word \"woman\" will be replaced by "
 "\"lady\", \"female\" or \"girl\" ramdomly."
 msgstr ""
+"\n"
+"<b>例：</b> <br> <b>女士，女士，女性，女孩</b> <br>如果文字中包含“女人”这个"
+"词，则会被“女士”，“女性”或“女孩”所取代。"
 
 #: wpematico_professional/includes/prosettings.php:77
 msgid "Advanced Features"
-msgstr ""
+msgstr "高级功能"
 
 #: wpematico_professional/includes/prosettings.php:80
 msgid "Enable <b><i>Export/Import</i></b> single Campaign"
-msgstr ""
+msgstr "启用<b><i>导出/导入</i></b>单个Campaign"
 
 #: wpematico_professional/includes/prosettings.php:82
 msgid "Enable <b><i>PRO Settings</i></b> menu item"
-msgstr ""
+msgstr "启用<b><i>PRO设置</i></b>菜单项"
 
 #: wpematico_professional/includes/prosettings.php:102
 msgid "PRO options"
-msgstr ""
+msgstr "PRO选项"
 
 #: wpematico_professional/includes/prosettings.php:104
 msgid "Enable <b><i>Keyword Filtering</i></b> feature"
-msgstr ""
+msgstr "启用<b><i>关键字过滤</i></b>功能"
 
 #: wpematico_professional/includes/prosettings.php:105
 #: wpematico_professional/includes/prosettings.php:109
@@ -7189,49 +7272,53 @@ msgstr ""
 msgid ""
 "If you need this feature in every campaign, you can activate here.  Not "
 "recommended if you will not use this."
-msgstr ""
+msgstr "如果您在每个Campaign中都需要此功能，则可以在此激活."
 
 #: wpematico_professional/includes/prosettings.php:108
 msgid "Enable <b><i>Word count Filters</i></b> feature"
-msgstr ""
+msgstr "<b><i>字数过滤器</i></b>功能"
 
 #: wpematico_professional/includes/prosettings.php:112
 msgid "Enable <b><i>Custom Title</i></b> feature"
-msgstr ""
+msgstr "启用<b><i>自定义标题</i></b>功能"
 
 #: wpematico_professional/includes/prosettings.php:113
 msgid ""
 "If you want a custom title for posts of a campaign, you can activate here.  "
 "Not recommended if you will not use this."
-msgstr ""
+msgstr "如果您希望获取Campaign的自定义标题，可以在此处激活."
 
 #: wpematico_professional/includes/prosettings.php:115
 msgid "Enable <b><i>Author per feed</i></b> feature"
-msgstr ""
+msgstr "启用<b><i>Feed的作者</i></b>功能"
 
 #: wpematico_professional/includes/prosettings.php:116
 msgid ""
 "This option allow you assign an author per feed when editing campaign.  If "
 "no choice any author, the campaign author will be taken."
 msgstr ""
+"此选项允许您在编辑Campaign时为每个Feed分配作者。如果没有选择作者，则默认采取"
+"Campaign作者。"
 
 #: wpematico_professional/includes/prosettings.php:118
 msgid "Enable <b><i>Import feed list</i></b> feature"
-msgstr ""
+msgstr "启用<b><i>导入订阅源列表</i></b>功能"
 
 #: wpematico_professional/includes/prosettings.php:121
 msgid "Enable <b><i>Multipaged</i></b> feeds feature"
-msgstr ""
+msgstr "启用<b><i>重写</i></b>功能"
 
 #: wpematico_professional/includes/prosettings.php:122
 msgid ""
 "On campaign edit you can set the fetching process to multipaged RSS feeds.  "
 "Like https://etruel.com/feed/?paged=1"
 msgstr ""
+"在Campaign编辑中，您可以将提取过程设置为翻页RSS Feed。比如https://etruel.com/"
+"feed/?paged=1"
 
 #: wpematico_professional/includes/prosettings.php:124
 msgid "Enable <b><i>Auto Tags</i></b> feature."
-msgstr ""
+msgstr "启用<b><i>自动Tags</i></b>功能。"
 
 #: wpematico_professional/includes/prosettings.php:125
 msgid ""
@@ -7239,40 +7326,42 @@ msgid ""
 "edit you can disable auto feature and manually enter a list of tags or leave "
 "empty."
 msgstr ""
+"此功能会在每篇发布的文章上自动生成Tags，在Campaign编辑时，您可以停用自动功"
+"能，手动输入标签列表或留空。"
 
 #: wpematico_professional/includes/prosettings.php:128
 msgid "Bad Tags that will be not used on all posts:"
-msgstr ""
+msgstr "所有文章都不会使用的不良标记："
 
 #: wpematico_professional/includes/prosettings.php:130
 msgid "Enter comma separated list of excluded Tags in all campaigns."
-msgstr ""
+msgstr "在所有Campaign中输入逗号分隔的排除的Tags列表."
 
 #: wpematico_professional/includes/prosettings.php:133
 msgid "Enable <b><i>Custom Fields</i></b> feature."
-msgstr ""
+msgstr "启用<b><i>自定义字段</i></b>功能。"
 
 #: wpematico_professional/includes/prosettings.php:137
 msgid "Enable <b><i>Custom Feed Tags</i></b> feature."
-msgstr ""
+msgstr "<b><i>自定义Feed标签</i></b>功能."
 
 #: wpematico_professional/includes/prosettings.php:138
 msgid ""
 "Add custom feed tags as template tags or custom field values on every post."
-msgstr ""
+msgstr "在每篇文章上添加自定义Feed标记作为模板标记或自定义字段值."
 
 #: wpematico_professional/includes/prosettings.php:141
 msgid "Enable <b><i>Image Filters</i></b> feature."
-msgstr ""
+msgstr "启用<b><i>图像过滤</i></b>功能."
 
 #: wpematico_professional/includes/prosettings.php:142
 msgid ""
 "You can allow or skip each image in every post depends on image dimensions."
-msgstr ""
+msgstr "您可以允许或跳过每篇文章中的不符合条件的图像尺寸."
 
 #: wpematico_professional/includes/prosettings.php:146
 msgid "Enable <b><i>Ramdom Rewrites</i></b> feature"
-msgstr ""
+msgstr "<b><i>随机重写</i></b>功能."
 
 #: wpematico_professional/includes/prosettings.php:147
 #, php-format
@@ -7280,404 +7369,408 @@ msgid ""
 "Rewrite custom words randomly as synonyms.  You must complete the words "
 "separated by comma and per line in the <a href=\"%s\">textarea</a>."
 msgstr ""
+"随机重写自定义单词作为同义词。您必须在<a href=\"%s\">textarea中</a>填写逗号和"
+"每行分隔的单词。"
 
 #: wpematico_professional/includes/prosettings.php:147
 msgid ""
 "Rewrite custom words randomly as synonyms.  You must complete the words "
 "separated by comma and per line in the textarea."
 msgstr ""
+"随机重写自定义单词作为同义词。您必须在textarea中填写逗号和每行分隔的单词。"
 
 #: wpematico_professional/includes/prosettings.php:151
 msgid "Enable <b><i>Deletes till the end of the line</i></b> feature."
-msgstr ""
+msgstr "启用<b><i>删除直到行</i></b>功能<b><i>结束</i></b> 。"
 
 #: wpematico_professional/includes/prosettings.php:152
 msgid ""
 "This feature allows to delete from a word or phrase until the end of the "
 "line of a sentence."
-msgstr ""
+msgstr "此功能允许从单词或短语中删除直到句子行的结尾."
 
 #: wpematico_professional/includes/prosettings.php:159
 msgid "Enter space separated list of characters of end of the line."
-msgstr ""
+msgstr "输入空格分隔的行尾字符列表."
 
 #: wpematico_professional/includes/prosettings.php:163
 msgid "Characters of end of sentence in the"
-msgstr ""
+msgstr "句末的字符："
 
 #: wpematico_professional/includes/prosettings.php:163
 msgid "Better Excerpt Options"
-msgstr ""
+msgstr "Better Excerpt 选项"
 
 #: wpematico_professional/includes/prosettings.php:169
 msgid "Enable <b><i>Author Filtering</i></b> feature"
-msgstr ""
+msgstr "启用<b><i>作者过滤</i></b>功能"
 
 #: wpematico_professional/includes/prosettings.php:171
 msgid ""
 "This is for exclude or include posts according to the authors <b>found</b> "
 "at posts."
-msgstr ""
+msgstr "根据作者在文章中<b>发现的</b>排除或包含帖子。"
 
 #: wpematico_professional/includes/prosettings.php:174
 msgid "Enable <b><i>Word 2 Taxonomy</i></b> feature"
-msgstr ""
+msgstr "<b><i>字数过滤器</i></b>功能"
 
 #: wpematico_professional/includes/prosettings.php:175
 msgid "If you need this feature in every campaign, you can activate here."
-msgstr ""
+msgstr "如果您在每个Campaign中都需要此功能，则可以在此处激活."
 
 #: wpematico_professional/includes/prosettings.php:176
 msgid "This is for assigning taxonomies based on content words."
-msgstr ""
+msgstr "这里是根据内容分词分类法。"
 
 #: wpematico_professional/wpematicopro.php:175
 #: wpematico_professional/wpematicopro.php:1025
 msgid "Ramdom Rewrites"
-msgstr ""
+msgstr "Ramdom重写"
 
 #: wpematico_professional/wpematicopro.php:209
 msgid "Ramdom Rewrites Settings"
-msgstr ""
+msgstr "随机重写设置"
 
 #: wpematico_professional/wpematicopro.php:215
 #: wpematico_professional/wpematicopro.php:1059
 msgid "Words to Rewrites:"
-msgstr ""
+msgstr "要重写的词："
 
 #: wpematico_professional/wpematicopro.php:215
 msgid "See tips in Help tab above right."
-msgstr ""
+msgstr "请参阅右上方“帮助”标签中的提示"
 
 #: wpematico_professional/wpematicopro.php:218
 #: wpematico_professional/wpematicopro.php:1062
 msgid ""
 "Enter a comma-separated list of words for rewrites use each line for "
 "different rewriting patterns."
-msgstr ""
+msgstr "输入以逗号分隔的单词列表，用于重写每行使用不同的重写模式。"
 
 #: wpematico_professional/wpematicopro.php:373
 msgid "Go to WPeMatico Pro Settings Page"
-msgstr ""
+msgstr "转到WPeMatico Pro设置页面"
 
 #: wpematico_professional/wpematicopro.php:427
 msgid "Professional Addon Updated."
-msgstr ""
+msgstr "专业插件已更新。"
 
 #: wpematico_professional/wpematicopro.php:473
 msgid "You are using WPeMatico PRO."
-msgstr ""
+msgstr "您正在使用WPeMatico PRO。"
 
 #: wpematico_professional/wpematicopro.php:474
 msgid "Plugin <b>WPeMatico FREE</b> must be activated!"
-msgstr ""
+msgstr "必须激活插件<b>WPeMatico FREE</b> ！"
 
 #: wpematico_professional/wpematicopro.php:480
 #: wpematico_professional/wpematicopro.php:487
 msgid "You are using WPeMatico PRO, but doesn't exist class WPeMatico."
-msgstr ""
+msgstr "您正在使用WPeMatico PRO"
 
 #: wpematico_professional/wpematicopro.php:481
 #: wpematico_professional/wpematicopro.php:488
 msgid "Something is going wrong. May be PHP Version prior to 5.3"
-msgstr ""
+msgstr "出了点问题，原因可能是5.3之前的PHP版本"
 
 #: wpematico_professional/wpematicopro.php:532
 msgid "Add <code>rel=\"nofollow\"</code> to links."
-msgstr ""
+msgstr "将<code>rel=\"nofollow\"</code>添加到链接。"
 
 #: wpematico_professional/wpematicopro.php:540
 #, php-format
 msgid "Add nofollow to links in: %1s"
-msgstr ""
+msgstr "将nofollow添加到%1s中的链接"
 
 #: wpematico_professional/wpematicopro.php:626
 msgid "Export & download Campaign"
-msgstr ""
+msgstr "导出和下载Campaign"
 
 #: wpematico_professional/wpematicopro.php:657
 msgid "Exporting failed, could not find the campaign:"
-msgstr ""
+msgstr "导出失败，找不到Campaign："
 
 #: wpematico_professional/wpematicopro.php:724
 msgid "Maximum stack depth exceeded"
-msgstr ""
+msgstr "超过最大堆栈深度"
 
 #: wpematico_professional/wpematicopro.php:727
 msgid "Underflow or the modes mismatch"
-msgstr ""
+msgstr "不匹配"
 
 #: wpematico_professional/wpematicopro.php:730
 msgid "Unexpected control character found"
-msgstr ""
+msgstr "发现意外的控制字符"
 
 #: wpematico_professional/wpematicopro.php:733
 msgid "Syntax error, malformed JSON"
-msgstr ""
+msgstr "语法错误，错误的JSON格式"
 
 #: wpematico_professional/wpematicopro.php:736
 msgid "Malformed UTF-8 characters, possibly incorrectly encoded"
-msgstr ""
+msgstr "错误的UTF-8字符格式，可能编码错误"
 
 #: wpematico_professional/wpematicopro.php:739
 msgid "Unknown error"
-msgstr ""
+msgstr "未知错误"
 
 #: wpematico_professional/wpematicopro.php:810
 msgid "Campaigns Imported."
-msgstr ""
+msgstr "已导入Campaigns."
 
 #: wpematico_professional/wpematicopro.php:814
 msgid "Export campaigns"
-msgstr ""
+msgstr "导出 Campaign"
 
 #: wpematico_professional/wpematicopro.php:840
 msgid "Initiating Ramdom Rewrites Process."
-msgstr ""
+msgstr "启用随机重写处理"
 
 #: wpematico_professional/wpematicopro.php:922
 #, php-format
 msgid "Words replaced by Ramdom Rewrites: %s."
-msgstr ""
+msgstr "随机重写替换关键词：%s."
 
 #: wpematico_professional/wpematicopro.php:939
 msgid "Upload & import a Campaign"
-msgstr ""
+msgstr "上传 & 导入Campaign"
 
 #: wpematico_professional/wpematicopro.php:939
 msgid "Import campaign"
-msgstr ""
+msgstr "导入 Campaign"
 
 #: wpematico_professional/wpematicopro.php:1011
 msgid "Parent Page"
-msgstr ""
+msgstr "父页："
 
 #: wpematico_professional/wpematicopro.php:1019
 msgid "Custom Title Options"
-msgstr ""
+msgstr "自定义标题选项"
 
 #: wpematico_professional/wpematicopro.php:1021
 msgid "Keywords Filters"
-msgstr ""
+msgstr "关键词过滤器"
 
 #: wpematico_professional/wpematicopro.php:1023
 msgid "Word Count Filters"
-msgstr ""
+msgstr "字数过滤器"
 
 #: wpematico_professional/wpematicopro.php:1027
 msgid "Custom Fields"
-msgstr ""
+msgstr "自定义字段"
 
 #: wpematico_professional/wpematicopro.php:1030
 msgid "Custom Feed Tags"
-msgstr ""
+msgstr "自定义Feed标签"
 
 #: wpematico_professional/wpematicopro.php:1033
 msgid "Filter Per Author"
-msgstr ""
+msgstr "按作者过滤"
 
 #: wpematico_professional/wpematicopro.php:1038
 msgid "Word to Taxonomy"
-msgstr ""
+msgstr "Word to Taxonomy"
 
 #: wpematico_professional/wpematicopro.php:1171
 #: wpematico_professional/wpematicopro.php:1174
 msgid "Cancel Import"
-msgstr ""
+msgstr "取消导入"
 
 #: wpematico_professional/wpematicopro.php:1172
 #: wpematico_professional/wpematicopro.php:1338
 msgid "Import feed list"
-msgstr ""
+msgstr "导入Feed列表"
 
 #: wpematico_professional/wpematicopro.php:1271
 #: wpematico_professional/wpematicopro.php:1607
 msgid "Feed Tag:"
-msgstr ""
+msgstr "Feed标签："
 
 #: wpematico_professional/wpematicopro.php:1272
 #: wpematico_professional/wpematicopro.php:1611
 msgid "Template:"
-msgstr ""
+msgstr "模板:"
 
 #: wpematico_professional/wpematicopro.php:1325
 msgid ""
 "Type or paste a list of urls, authors.  When update the campaign, the list "
 "will be imported as campaign feeds"
 msgstr ""
+"输入或粘贴网址列表，作者。更新Campaign时，该列表将作为Campaign的Feed导入"
 
 #: wpematico_professional/wpematicopro.php:1406
 msgid "Limit tags quantity to:"
-msgstr ""
+msgstr "将Tag数量限制为："
 
 #: wpematico_professional/wpematicopro.php:1410
 msgid "Bad Tags:"
-msgstr ""
+msgstr "Bad Tags:"
 
 #: wpematico_professional/wpematicopro.php:1436
 msgid "Phrases or keywords (one per line, case-insensitive):"
-msgstr ""
+msgstr "短语或关键词（每行一个，不区分大小写）："
 
 #: wpematico_professional/wpematicopro.php:1469
 msgid "HTML tag:"
-msgstr ""
+msgstr "HTML标签："
 
 #: wpematico_professional/wpematicopro.php:1470
 msgid "(ex: div, p, span, etc.)"
-msgstr ""
+msgstr "（例如：div，p，span等）"
 
 #: wpematico_professional/wpematicopro.php:1485
 msgid ""
 "This allow you to ignore a post if below X words or letters in content.  "
 "Also allow assign a category to the post if greater than X words."
-msgstr ""
+msgstr "它允许您忽略文章，如果内容少于XXX字或大于XXXX字，还允许为文章指定分类."
 
 #: wpematico_professional/wpematicopro.php:1490
 msgid "Greater than:"
-msgstr ""
+msgstr "大于:"
 
 #: wpematico_professional/wpematicopro.php:1493
 #: wpematico_professional/wpematicopro.php:1514
 #: wpematico_professional/wpematicopro.php:1527
 msgid "words."
-msgstr ""
+msgstr "文字."
 
 #: wpematico_professional/wpematicopro.php:1493
 #: wpematico_professional/wpematicopro.php:1514
 #: wpematico_professional/wpematicopro.php:1527
 msgid "letters."
-msgstr ""
+msgstr "字母."
 
 #: wpematico_professional/wpematicopro.php:1516
 msgid "if greater."
-msgstr ""
+msgstr "如果大于"
 
 #: wpematico_professional/wpematicopro.php:1524
 msgid "Discard post is less than:"
-msgstr ""
+msgstr "丢弃文章少于："
 
 #: wpematico_professional/wpematicopro.php:1551
 #: wpematico_professional/wpematicopro.php:1565
 msgid "Search in Title"
-msgstr ""
+msgstr "在标题中搜索"
 
 #: wpematico_professional/wpematicopro.php:1552
 #: wpematico_professional/wpematicopro.php:1566
 msgid "Search in Content"
-msgstr ""
+msgstr "在内容中搜索"
 
 #: wpematico_professional/wpematicopro.php:1553
 #: wpematico_professional/wpematicopro.php:1567
 msgid "Search in Categories"
-msgstr ""
+msgstr "在类别中搜索"
 
 #: wpematico_professional/wpematicopro.php:1554
 #: wpematico_professional/wpematicopro.php:1568
 msgid "Any of these words"
-msgstr ""
+msgstr "任何文字"
 
 #: wpematico_professional/wpematicopro.php:1555
 #: wpematico_professional/wpematicopro.php:1569
 msgid "All of these words"
-msgstr ""
+msgstr "所有的文字"
 
 #: wpematico_professional/wpematicopro.php:1596
 msgid "Add custom feed tags to use on template or custom fields"
-msgstr ""
+msgstr "添加自定义Feed Tag到模板或自定义字段上使用"
 
 #: wpematico_professional/wpematicopro.php:1649
 msgid "Name:"
-msgstr ""
+msgstr "名称："
 
 #: wpematico_professional/wpematicopro.php:1653
 msgid "Value:"
-msgstr ""
+msgstr "值："
 
 #: wpematico_professional/wpematicopro.php:1685
 msgid "Select a page"
-msgstr ""
+msgstr "选择一个页面"
 
 #: wpematico_professional/wpematicopro.php:1753
 #, php-format
 msgid "Assigning author %1s to %2s"
-msgstr ""
+msgstr "将作者%1s 分配给%2s"
 
 #: wpematico_professional/wpematicopro.php:1785
 #, php-format
 msgid "Assigning Taxonomies %1s"
-msgstr ""
+msgstr "分配分类法 %1s"
 
 #: wpematico_professional/wpematicopro.php:1823
 #: wpematico_professional/wpematicopro.php:1872
 #, php-format
 msgid "Cutting the title at %1s"
-msgstr ""
+msgstr "在%1s剪切标题"
 
 #: wpematico_professional/wpematicopro.php:1881
 #, php-format
 msgid "Changing title to %1s"
-msgstr ""
+msgstr "将标题更改为%1s"
 
 #: wpematico_professional/wpematicopro.php:1891
 #, php-format
 msgid "Counting Words on %1s"
-msgstr ""
+msgstr "计算%1s字"
 
 #: wpematico_professional/wpematicopro.php:1894
 #: wpematico_professional/wpematicopro.php:1955
 #, php-format
 msgid "Found %1s words with %2s letters in content."
-msgstr ""
+msgstr "在内容里找到%2s字母的%1s 个字."
 
 #: wpematico_professional/wpematicopro.php:1907
 #, php-format
 msgid "Skipping: %1s"
-msgstr ""
+msgstr "跳过: %1s"
 
 #: wpematico_professional/wpematicopro.php:1952
 #, php-format
 msgid "Processing Words count Filters %1s"
-msgstr ""
+msgstr "处理过滤的字数%1s"
 
 #: wpematico_professional/wpematicopro.php:1969
 #, php-format
 msgid "Greater than %1s To Cat_id %2s"
-msgstr ""
+msgstr "Greater than %1s To Cat_id %2s"
 
 #: wpematico_professional/wpematicopro.php:1985
 #, php-format
 msgid "Cutting at %1s"
-msgstr ""
+msgstr "切割%1s"
 
 #: wpematico_professional/wpematicopro.php:1995
 #, php-format
 msgid "Strip HTML tags from title %1s"
-msgstr ""
+msgstr "从标题%1s中删除HTML标记"
 
 #: wpematico_professional/wpematicopro.php:2012
 msgid "Adding tags from feed to post."
-msgstr ""
+msgstr "从Feed添加tag到文章."
 
 #: wpematico_professional/wpematicopro.php:2028
 msgid "Adding custom tags to post."
-msgstr ""
+msgstr "添加自定义Tag到文章."
 
 #: wpematico_professional/wpematicopro.php:2045
 msgid "Adding tags automatically to post."
-msgstr ""
+msgstr "自动添加Tag到文章."
 
 #: wpematico_professional/wpematicopro.php:2083
 msgid "Parsing Custom fields values."
-msgstr ""
+msgstr "解析自定义字段."
 
 #: wpematico_professional/wpematicopro.php:2180
 #: wpematico_professional/wpematicopro.php:2198
 msgid "No image in content -> skipping"
-msgstr ""
+msgstr "内容没有图片-> 跳过"
 
 #: wpematico_professional/wpematicopro.php:2255
 msgid "Deleting image with incorrect content:"
-msgstr ""
+msgstr "删除内容不正确的图片："
 
 #: wpematico_professional/wpematicopro.php:2378
 #: wpematico_professional/wpematicopro.php:2386
@@ -7685,69 +7778,69 @@ msgstr ""
 #: wpematico_professional/wpematicopro.php:2569
 #, php-format
 msgid "Getting enclosure link: %s"
-msgstr ""
+msgstr "获取图片链接: %s"
 
 #: wpematico_professional/wpematicopro.php:2396
 #, php-format
 msgid "Getting image tag: %s"
-msgstr ""
+msgstr "获取图片tag: %s"
 
 #: wpematico_professional/wpematicopro.php:2405
 #, php-format
 msgid "Featured image from enclosure: %s"
-msgstr ""
+msgstr "附件的特色图片：%s"
 
 #: wpematico_professional/wpematicopro.php:2419
 msgid "Applying Image Filters."
-msgstr ""
+msgstr "应用图片过滤器."
 
 #: wpematico_professional/wpematicopro.php:2431
 #: wpematico_professional/wpematicopro.php:2468
 msgid "Don't works filters with: "
-msgstr ""
+msgstr "不适用过滤："
 
 #: wpematico_professional/wpematicopro.php:2441
 #: wpematico_professional/wpematicopro.php:2478
 msgid "Filter: "
-msgstr ""
+msgstr "过滤："
 
 #: wpematico_professional/wpematicopro.php:2456
 msgid "Filtering Featured Image."
-msgstr ""
+msgstr "过滤特色图片."
 
 #: wpematico_professional/wpematicopro.php:2484
 msgid "First featured image meets filters: "
-msgstr ""
+msgstr "第一张特色图片符合过滤："
 
 #: wpematico_professional/wpematicopro.php:2587
 msgid "Inserting default Image Into Post."
-msgstr ""
+msgstr "将默认图片插入到文章"
 
 #: wpematico_professional/wpematicopro.php:2672
 msgid ""
 "There's an error in Keyword include filter: You must check at least one "
 "search option."
-msgstr ""
+msgstr "关键字过滤时出错：您必须至少检查一个搜索选。"
 
 #: wpematico_professional/wpematicopro.php:2679
 msgid ""
 "There's an error in Keyword exclude filter: You must check at least one "
 "search option."
-msgstr ""
+msgstr "关键字排除过滤中存在错误：您必须至少检查一个搜索项。"
 
 #: wpematico_professional/wpematicopro.php:2685
 #, php-format
 msgid ""
 "There's an error with the supplied RegEx expression in Keyword include "
 "filter: %s"
-msgstr ""
+msgstr "关键字过滤：%s 中提供的RegEx表达式出错"
 
 #: wpematico_professional/wpematicopro.php:2691
 #, php-format
 msgid ""
 "There's an error with the supplied RegEx expression in Keyword exclude "
 "filter: %s"
-msgstr ""
+msgstr "关键字排除过滤器中提供的RegEx表达式出错：%s"
 
 #~ msgid "ShortPixel"
 #~ msgstr "ShortPixel"
