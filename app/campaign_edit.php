@@ -417,7 +417,10 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 			}
 		}
 		
-		if(!isset($cfg['disablecheckfeeds']) || !$cfg['disablecheckfeeds'] ){  // If this options isn't deactivated in settings.
+		$campaign_type = ( ! empty($_POST['campaign_type']) ? $_POST['campaign_type'] : 'feed' );
+		$ct_validate_feed = apply_filters('wpematico_campaign_type_validate_feed_before_save', array('feed', 'youtube', 'bbpress', 'ebay'), $_POST );
+		
+		if( ( !isset($cfg['disablecheckfeeds']) || !$cfg['disablecheckfeeds'] ) && in_array($campaign_type, $ct_validate_feed)  ){  // If this options isn't deactivated in settings.
 			// If the campaign doesn't has a feed this give an error.
 			// This process strip all feed URLs empty.
 			if(isset($_POST['campaign_feeds'])) {

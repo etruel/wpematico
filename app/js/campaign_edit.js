@@ -491,8 +491,10 @@ function events_submit_post($) {
 			});
 
 			var feeds = $("input[name*='campaign_feeds']").serialize();
-						
+			var campaign_type = $('#campaign_type').val();
+					
 			var data = {
+				campaign_type: campaign_type,
 				campaign_feeds: feeds,
 				campaign_word_origin: reword,
 				campaign_word_option_regex: reword_regex,
@@ -502,7 +504,7 @@ function events_submit_post($) {
 				action: "wpematico_checkfields"
 			};
 			data = js_apply_filters('wpematico_checkfields_data', data);
-			
+		
 			$.post(ajaxurl, data, function(todok){  //si todo ok devuelve 1 sino el error
 				if( todok != 1 ) {
 		            error=true;
