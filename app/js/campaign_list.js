@@ -7,18 +7,8 @@ jQuery(document).ready(function($){
 	
 	//minimize action
 	$(".icon-minimize-div").click(function(){
-		$('.parr-wpmatico-smart-notification').slideToggle(300);
-		if($(this).hasClass(icon_dismis)){
-			$(this).removeClass(icon_dismis);
-			$(this).addClass(icon_plus);
-			//ajax Icon Save
-			//save_icon_eyes(icon_plus);
-		}else{
-			$(this).removeClass(icon_plus);
-			$(this).addClass(icon_dismis);
-			//ajax Icon Save
-			//save_icon_eyes(icon_dismis);
-		}
+		$('.div-wpematico-smart-notification').fadeOut();
+		
 	});
 	
 	$(".icon-close-div").click(function(){

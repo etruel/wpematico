@@ -76,22 +76,21 @@ class wpe_smart_notifications {
 		}
 
 
-		$class_iconeyes = 'dashicons  dashicons-visibility';
 		?>
 		<div class="clear"></div>
 		<div class="div-wpematico-smart-notification">
-			<h3><?php _e( 'Rate 5 stars on Wordpress', 'wpematico' ); ?>
-			 <span class="icon-minimize-div  <?php print($class_iconeyes); ?>" style="margin-right: 30px;" title="Click here to minimize"></span>
-			 <span class="icon-close-div dashicons dashicons-no" title="Click here to close"></span></h3>
+			<h3><a id="smart-notification-title-link" href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" target="_Blank"><?php _e( 'Rate 5 stars on Wordpress', 'wpematico' ); ?></a>
+			 <span class="icon-minimize-div dashicons  dashicons-visibility" style="margin-right: 30px;" title="Click here to close"></span>
+			 <span class="icon-close-div dashicons dashicons-no" title="Click here to dismiss"></span></h3>
 			
 			 <div class="description-smart-notification">
 				<p class="parr-wpmatico-smart-notification">
 
 					<?php _e( 'The <strong>WPeMatico team</strong> work hard to offer you excellent tools for <strong>autoblogging</strong>.', 'wpematico' );?>
 					<br>
-					<?php _e( 'However, we would love you to write a <strong>5-star review in Wordpress</strong> as a token of appreciation.', 'wpematico' );?>
+					<?php _e( 'So we would love you to write a <strong>5-star review</strong> in WordPress if you appreciate our plugin.', 'wpematico' );?>
 					<br>
-					<?php _e( 'It only takes <strong>a minute</strong>', 'wpematico' );?>
+					<?php _e( 'It only takes a minute, <strong>click the button below</strong> to go to the form.', 'wpematico' );?>
 					<br>
 					<br>
 					<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" id="linkrate" class="button button-primary button-hero" target="_Blank" title="Click here to rate plugin on Wordpress">Rate us</a>

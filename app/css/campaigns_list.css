@@ -73,6 +73,9 @@ width: 110px;
 .description-smart-notification{
     display: block;
 }
+#smart-notification-title-link {
+    text-decoration: none !important;
+}
 .icon-close-div,.icon-minimize-div{position: absolute; top: 0; right: 0; font-size: 25px; margin-top: -5px; cursor: pointer;}
 .div-wpematico-smart-notification h3{color: #4C5054; position: relative; border-bottom: 1px solid #ccc; padding-bottom: 10px;}
 .parr-wpmatico-smart-notification{padding-right: 10px;}
