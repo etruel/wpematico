@@ -1252,9 +1252,11 @@ function wpematico_debug_info_get() {
 
 	$return .= 'Version:                  ' . get_bloginfo( 'version' ) . "\n";
 	$return .= 'Multisite:                ' . ($is_multisite ? 'Yes' : 'No' ) . "\n";
-	$return  = apply_filters( 'wpematico_sysinfo_after_site_info', $return );
 	$return .= 'Admin Email:              ' . get_option('admin_email') . "\n";
 	$return .= 'Current User Email:       ' . $current_user->user_email . "\n";
+	
+	$return  = apply_filters( 'wpematico_sysinfo_after_site_info', $return );
+	
 	// WordPress configuration
 	$return .= "\n" . '-- WordPress Configuration' . "\n";
 	$return .= 'Language WPLANG:          ' . get_locale() . "\n";

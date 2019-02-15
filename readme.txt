@@ -260,17 +260,18 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
-= 2.3 Jan 30, 2019 =
-* Adds smart notifications in campaign list.
-* Adds Debug Mode feature to save all campaigns logs instead only the last one. 
-* Some tweaks in translation notification in settings.
-* Adds some new data in debug file.
-* Adds the WPEMATICO_PREVENT_REDIRECT constant to prevent redirections to welcome page.
-* Some tweaks in cURL requests for send empty HTTP Encoding header when cURL version is 7.10.5 or later.
-* Fixes an issue in the feature check feeds before save with XML Campaign type.
-* Fixes an issue in saving the Disable WPeMatico Credits option.
-* Fixes in Chinese language files.
-* Fixes in the layout of campaign edition when using Chinese language.
+= 2.3 Feb 15, 2019 =
+* Added Debug Mode feature to save all campaigns logs instead only the last one. 
+* Added smart notifications in campaign list.
+* Added some new data in debug file.
+* Added WPEMATICO_PREVENT_REDIRECT constant to prevent redirections to welcome page.
+* Tweaks in translation notification in settings.
+* Tweaks in cURL requests on sending empty HTTP Encoding header for cURL +7.10.5.
+* Updated Chinese language translations files.
+* Updated Updater class to v1.6.18 version.
+* Fixes the check feeds before save with XML Campaign type.
+* Fixes an issue saving the Disable WPeMatico Credits option.
+* Fixes some layouts in campaign edition using Chinese language.
 
 = 2.2.3 Jan 21, 2019 =
 * Added compatibility to import the XML files from URL o local folders with WPeMatico Exporter Addon.
@@ -1165,7 +1166,6 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 2.2.3 =
+= 2.3 =
 * **NOTE: Major Release. Highly recommended to test it in development ambients before update**
-* **Enlarges the version required for the Professional addon to 2.1v** [Webpage](https://etruel.com/downloads/wpematico-professional/)
 * See changelog for more details.
