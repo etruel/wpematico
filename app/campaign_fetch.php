@@ -289,7 +289,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		// Item content
 		$this->current_item['content'] = apply_filters('wpematico_get_post_content_feed', $item->get_content(), $this->campaign, $feed, $item );
 		$this->current_item = apply_filters('wpematico_get_post_content', $this->current_item, $this->campaign, $feed, $item );
-
+		
 		if($this->campaign['campaign_enable_convert_utf8']) {
 			$this->current_item['content'] =  WPeMatico::change_to_utf8($this->current_item['content']);
 		}
@@ -519,196 +519,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 //			remove_filter('content_filtered_save_pre', 'wp_filter_post_kses');
 			$post_id = wp_insert_post( $args );
 
-
-			if ($this->campaign['campaign_type'] == 'bbpress') {
-
+			$this->postProcessItem($post_id, $item);
 			
-				if ($this->current_item['customposttype'] == 'topic') {
-
-					if (function_exists('bbp_bump_forum_topic_count') && function_exists('bbp_update_forum_last_active_time')) {
-						bbp_bump_forum_topic_count($this->campaign['campaign_bbpress_forum']);
-
-						bbp_update_forum_last_active_time($this->campaign['campaign_bbpress_forum'], current_time('mysql'));
-						bbp_update_forum_last_topic_id($this->campaign['campaign_bbpress_forum'], $post_id );
-						bbp_update_forum_last_reply_id($this->campaign['campaign_bbpress_forum'], $post_id );
-						bbp_update_forum_last_active_id($this->campaign['campaign_bbpress_forum'], $post_id);
-						bbp_update_topic_last_active_time($post_id, current_time('mysql'));
-
-					}
-
-					$meta['_bbp_forum_id'] = $this->campaign['campaign_bbpress_forum'];
-					$meta['_bbp_topic_id'] = $post_id;
-					$meta['_bbp_reply_count'] = 0;
-
-					
-				}
-				if ($this->current_item['customposttype'] == 'reply') {
-
-					if (function_exists('bbp_bump_topic_reply_count') && function_exists('bbp_update_topic_last_active_time')) {
-
-						bbp_bump_forum_reply_count($this->campaign['campaign_bbpress_forum']);
-						bbp_update_forum_last_active_time($this->campaign['campaign_bbpress_forum'], current_time('mysql'));
-						bbp_update_forum_last_active_id($this->campaign['campaign_bbpress_forum'], $this->campaign['campaign_bbpress_topic']);
-
-						bbp_bump_topic_reply_count($this->campaign['campaign_bbpress_topic']);
-						bbp_update_topic_last_active_time($this->campaign['campaign_bbpress_topic'], current_time('mysql'));
-						bbp_update_topic_last_active_id($this->campaign['campaign_bbpress_topic'], $post_id);
-
-					}
-
-					$meta['_bbp_forum_id'] = $this->campaign['campaign_bbpress_forum'];
-					$meta['_bbp_topic_id'] = $this->campaign['campaign_bbpress_topic'];
-
-				}
-			}
-
-
-
-			add_filter('content_save_pre', 'wp_filter_post_kses');
-//			add_filter('content_filtered_save_pre', 'wp_filter_post_kses');
-
-			if(!empty($category)){ //solo muestra los tags si los tiene definidos
-				$aaa = wp_set_post_terms( $post_id, $category, 'category');
-				if(!empty($aaa)) trigger_error(__("Categories added: ", 'wpematico' ).implode(", ",$aaa) ,E_USER_NOTICE);
-			}
-			if(!empty($campaign_tags)){ //solo muestra los tags si los tiene definidos
-				$aaa = wp_set_post_terms( $post_id, $campaign_tags);
-				if(!empty($aaa)) trigger_error(__("Tags added: ", 'wpematico' ).implode(", ",$campaign_tags),E_USER_NOTICE);
-			}else if(has_action('wpematico_chinese_tags')) do_action('wpematico_chinese_tags', $post_id, $content, $this->campaign );
-
-			if(!empty($post_format)){ //inserto post format
-				//$aaa = wp_set_post_terms( $post_id, $category, 'post_format');
-				$aaa = set_post_format( $post_id , $post_format); 
-				if(!empty($aaa)) trigger_error(__("Post format added: ", 'wpematico' ).$post_format,E_USER_NOTICE);
-			}
-
-			if($this->cfg['woutfilter'] && $this->campaign['campaign_woutfilter'] ) {
-				global $wpdb, $wp_locale, $current_blog;
-				$table_name = $wpdb->prefix . "posts";  
-				$blog_id 	= @$current_blog->blog_id;
-				$content = $truecontent;
-				trigger_error(__('** Adding unfiltered content **', 'wpematico' ),E_USER_NOTICE);
-				$wpdb->update( $table_name, array( 'post_content' => $content, 'post_content_filtered' => $content ), array( 'ID' => $post_id )	);
-			}
-			// insert PostMeta
-			foreach($meta as $key => $value){
-				add_post_meta($post_id, $key, $value, true);
-			}
-
-			if(has_action('wpematico_inserted_post')) do_action('wpematico_inserted_post', $post_id, $this->campaign, $item );
-
-
-			// Attaching images uploaded to created post in media library 
-			// Featured Image
-			$featured_image_attach_id = 0;
-			$img_new_url = '';
-			if(!empty($this->current_item['nofeatimg'])) {
-				trigger_error('<strong>'.__('Skip Featured Image.', 'wpematico' ).'</strong>',E_USER_NOTICE);
-			}else if( !empty($this->current_item['featured_image']) ) {
-				trigger_error(__('Featuring Image Into Post.', 'wpematico' ),E_USER_NOTICE);
-				if($this->current_item['images'][0] != $this->current_item['featured_image']){
-					$itemUrl = $this->current_item['permalink'];
-					$imagen_src = $this->current_item['featured_image'];
-//**** necesaria para la featured ?					$imagen_src = apply_filters('wpematico_imagen_src', $imagen_src ); // allow strip parts 
-					$imagen_src_real = $this->getRelativeUrl($itemUrl, $imagen_src);
-					// Strip all white space on images URLs.	
-					$imagen_src_real = str_replace(' ', '%20', $imagen_src_real);					
-					$imagen_src_real = apply_filters('wpematico_img_src_url', $imagen_src_real );
-					$allowed = (isset($this->cfg['allowed']) && !empty($this->cfg['allowed']) ) ? $this->cfg['allowed'] : 'jpg,gif,png,tif,bmp,jpeg' ;
-					$allowed = apply_filters('wpematico_allowext', $allowed );
-					//Fetch and Store the Image	
-					///////////////***************************************************************************************////////////////////////
-					$newimgname = apply_filters('wpematico_newimgname', sanitize_file_name(urlencode(basename($imagen_src_real))), $this->current_item, $this->campaign, $item );  // new name here
-					// Primero intento con mi funcion mas rapida
-					$upload_dir = wp_upload_dir();
-					$imagen_dst = trailingslashit($upload_dir['path']). $newimgname; 
-					$imagen_dst_url = trailingslashit($upload_dir['url']). $newimgname;
-					$img_new_url = "";
-					if(in_array(str_replace('.','',strrchr( strtolower($imagen_dst), '.')), explode(',', $allowed))) {   // -------- Controlo extensiones permitidas
-						trigger_error('Uploading media='.$imagen_src.' <b>to</b> imagen_dst='.$imagen_dst.'',E_USER_NOTICE);
-						$newfile = ($options_images['customupload']) ? WPeMatico::save_file_from_url($imagen_src_real, $imagen_dst) : false;
-						if($newfile) { //subió
-							trigger_error('Uploaded media='.$newfile,E_USER_NOTICE);
-							$imagen_dst = $newfile; 
-							$imagen_dst_url = trailingslashit($upload_dir['url']). basename($newfile);
-							$img_new_url = $imagen_dst_url;
-						} else { // falló -> intento con otros
-							$bits = WPeMatico::wpematico_get_contents($imagen_src_real);
-							$mirror = wp_upload_bits( $newimgname, NULL, $bits);
-							if(!$mirror['error']) {
-								trigger_error($mirror['url'],E_USER_NOTICE);
-								$img_new_url = $mirror['url'];
-							}
-						}
-					}
-				}else{
-					$img_new_url=$this->current_item['featured_image'];
-				}
-				if(!empty($img_new_url)) { 
-					$this->current_item['featured_image'] = $img_new_url;
-					array_shift($this->current_item['images']);  //deletes featured image from array to avoid double upload below
-					$attachid = false;
-					if( !$options_images['imgattach']) {
-						//get previously uploaded attach IDs, false if not exist.  (Just attach once/first time)
-					//	$attachid = $this->get_attach_id_from_url($this->current_item['featured_image']); 
-						$attachid = attachment_url_to_postid($this->current_item['featured_image']); 
-					}
-					if ($attachid == false) {
-						$attachid = $this->insertfileasattach( $this->current_item['featured_image'] , $post_id);
-					}
-					set_post_thumbnail($post_id, $attachid );					
-					$featured_image_attach_id = $attachid;
-					//add_post_meta($post_id, '_thumbnail_id', $attachid);
-				}else{
-					//trigger_error( __('Upload featured image failed:', 'wpematico' ).$imagen_dst,E_USER_WARNING);
-				}
-			}
-			$featured_image_attach_id = apply_filters('wpematico_featured_image_attach_id', $featured_image_attach_id, $post_id, $this->current_item, $this->campaign, $item);
-			if ($featured_image_attach_id == 0) {
-				trigger_error( __('The post has no a featured image.', 'wpematico' ), E_USER_WARNING);
-			}
-			// Attach files in post content previously uploaded
-			//if(!$this->campaign['campaign_cancel_imgcache']) {
-				if($options_images['imgcache'] && $options_images['imgattach']) {
-					if(is_array($this->current_item['images'])) {
-						if(sizeof($this->current_item['images'])) { // Si hay alguna imagen 
-							trigger_error(__('Attaching images', 'wpematico' ).": ".sizeof($this->current_item['images']),E_USER_NOTICE);
-							foreach($this->current_item['images'] as $imagen_src) {
-								$attachid = $this->insertfileasattach($imagen_src,$post_id);
-							}
-						}
-					}
-				}			
-			//}
-
-			/**
-			* Attach audios to post
-			* @since 1.7.0
-			*/	
-			if($options_audios['audio_cache'] && $options_audios['audio_attach']) {
-				if(is_array($this->current_item['audios'])) {
-					if(sizeof($this->current_item['audios'])) { // if exist a audio.
-						trigger_error(__('Attaching audios', 'wpematico' ).": ".sizeof($this->current_item['audios']),E_USER_NOTICE);
-						foreach($this->current_item['audios'] as $audio_src) {
-							$attachid = $this->insertfileasattach($audio_src,$post_id);
-						}
-					}
-				}
-			}
-			/**
-			* Attach videos to post
-			* @since 1.7.0
-			*/	
-			if($options_videos['video_cache'] && $options_videos['video_attach']) {
-				if(is_array($this->current_item['videos'])) {
-					if(sizeof($this->current_item['videos'])) { // if exist a video.
-						trigger_error(__('Attaching videos', 'wpematico' ).": ".sizeof($this->current_item['videos']),E_USER_NOTICE);
-						foreach($this->current_item['videos'] as $video_src) {
-							$attachid = $this->insertfileasattach($video_src,$post_id);
-						}
-					}
-				}
-			}	
 
 			 // If pingback/trackbacks
 			if($this->campaign['campaign_allowpings']) {
@@ -722,7 +534,217 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		}
 		
 	}
-  	
+  	function postProcessItem($post_id, $item) {
+  		
+  		$meta 		= $this->current_item['meta'];
+  		$content 	= $this->current_item['content'];
+  		$options_images = WPeMatico::get_images_options($this->cfg, $this->campaign);
+
+  		if ($this->campaign['campaign_type'] == 'bbpress') {
+
+			
+			if ($this->current_item['customposttype'] == 'topic') {
+
+				if (function_exists('bbp_bump_forum_topic_count') && function_exists('bbp_update_forum_last_active_time')) {
+					bbp_bump_forum_topic_count($this->campaign['campaign_bbpress_forum']);
+
+					bbp_update_forum_last_active_time($this->campaign['campaign_bbpress_forum'], current_time('mysql'));
+					bbp_update_forum_last_topic_id($this->campaign['campaign_bbpress_forum'], $post_id );
+					bbp_update_forum_last_reply_id($this->campaign['campaign_bbpress_forum'], $post_id );
+					bbp_update_forum_last_active_id($this->campaign['campaign_bbpress_forum'], $post_id);
+					bbp_update_topic_last_active_time($post_id, current_time('mysql'));
+
+				}
+
+				$meta['_bbp_forum_id'] = $this->campaign['campaign_bbpress_forum'];
+				$meta['_bbp_topic_id'] = $post_id;
+				$meta['_bbp_reply_count'] = 0;
+
+				
+			}
+			if ($this->current_item['customposttype'] == 'reply') {
+
+				if (function_exists('bbp_bump_topic_reply_count') && function_exists('bbp_update_topic_last_active_time')) {
+
+					bbp_bump_forum_reply_count($this->campaign['campaign_bbpress_forum']);
+					bbp_update_forum_last_active_time($this->campaign['campaign_bbpress_forum'], current_time('mysql'));
+					bbp_update_forum_last_active_id($this->campaign['campaign_bbpress_forum'], $this->campaign['campaign_bbpress_topic']);
+
+					bbp_bump_topic_reply_count($this->campaign['campaign_bbpress_topic']);
+					bbp_update_topic_last_active_time($this->campaign['campaign_bbpress_topic'], current_time('mysql'));
+					bbp_update_topic_last_active_id($this->campaign['campaign_bbpress_topic'], $post_id);
+
+				}
+
+				$meta['_bbp_forum_id'] = $this->campaign['campaign_bbpress_forum'];
+				$meta['_bbp_topic_id'] = $this->campaign['campaign_bbpress_topic'];
+
+			}
+		}
+
+
+		add_filter('content_save_pre', 'wp_filter_post_kses');
+
+		$category = $this->current_item['categories'];
+
+		if( ! empty($category) ) { //solo muestra los tags si los tiene definidos
+			$aaa = wp_set_post_terms( $post_id, $category, 'category');
+			if(!empty($aaa)) trigger_error(__("Categories added: ", 'wpematico' ).implode(", ",$aaa) ,E_USER_NOTICE);
+		}
+		
+		$campaign_tags = $this->current_item['campaign_tags'];
+
+		if( ! empty( $campaign_tags ) ) { //solo muestra los tags si los tiene definidos
+			$aaa = wp_set_post_terms( $post_id, $campaign_tags);
+			if(!empty($aaa)) trigger_error(__("Tags added: ", 'wpematico' ).implode(", ",$campaign_tags),E_USER_NOTICE);
+		}else if(has_action('wpematico_chinese_tags')) do_action('wpematico_chinese_tags', $post_id, $content, $this->campaign );
+		
+		$post_format = $this->current_item['campaign_post_format'];
+
+		if(!empty($post_format)){ //inserto post format
+			//$aaa = wp_set_post_terms( $post_id, $category, 'post_format');
+			$aaa = set_post_format( $post_id , $post_format); 
+			if(!empty($aaa)) trigger_error(__("Post format added: ", 'wpematico' ).$post_format,E_USER_NOTICE);
+		}
+
+		$truecontent = '';
+		if($this->cfg['woutfilter'] && $this->campaign['campaign_woutfilter'] ) {
+			$truecontent = $content;
+			$content = '';
+		}
+		if($this->cfg['woutfilter'] && $this->campaign['campaign_woutfilter'] ) {
+			global $wpdb, $wp_locale, $current_blog;
+			$table_name = $wpdb->prefix . "posts";  
+			$blog_id 	= @$current_blog->blog_id;
+			$content = $truecontent;
+			trigger_error(__('** Adding unfiltered content **', 'wpematico' ),E_USER_NOTICE);
+			$wpdb->update( $table_name, array( 'post_content' => $content, 'post_content_filtered' => $content ), array( 'ID' => $post_id )	);
+		}
+		// insert PostMeta
+		foreach($meta as $key => $value){
+			add_post_meta($post_id, $key, $value, true);
+		}
+
+		if(has_action('wpematico_inserted_post')) do_action('wpematico_inserted_post', $post_id, $this->campaign, $item );
+
+		
+		// Attaching images uploaded to created post in media library 
+		// Featured Image
+		$featured_image_attach_id = 0;
+		$img_new_url = '';
+		if(!empty($this->current_item['nofeatimg'])) {
+			trigger_error('<strong>'.__('Skip Featured Image.', 'wpematico' ).'</strong>',E_USER_NOTICE);
+		}else if( !empty($this->current_item['featured_image']) ) {
+			trigger_error(__('Featuring Image Into Post.', 'wpematico' ),E_USER_NOTICE);
+			if($this->current_item['images'][0] != $this->current_item['featured_image']){
+				$itemUrl = $this->current_item['permalink'];
+				$imagen_src = $this->current_item['featured_image'];
+				//**** necesaria para la featured ?	$imagen_src = apply_filters('wpematico_imagen_src', $imagen_src ); // allow strip parts 
+				$imagen_src_real = $this->getRelativeUrl($itemUrl, $imagen_src);
+				// Strip all white space on images URLs.	
+				$imagen_src_real = str_replace(' ', '%20', $imagen_src_real);					
+				$imagen_src_real = apply_filters('wpematico_img_src_url', $imagen_src_real );
+				$allowed = (isset($this->cfg['allowed']) && !empty($this->cfg['allowed']) ) ? $this->cfg['allowed'] : 'jpg,gif,png,tif,bmp,jpeg' ;
+				$allowed = apply_filters('wpematico_allowext', $allowed );
+				//Fetch and Store the Image	
+				///////////////***************************************************************************************////////////////////////
+				$newimgname = apply_filters('wpematico_newimgname', sanitize_file_name(urlencode(basename($imagen_src_real))), $this->current_item, $this->campaign, $item );  // new name here
+				// Primero intento con mi funcion mas rapida
+				$upload_dir = wp_upload_dir();
+				$imagen_dst = trailingslashit($upload_dir['path']). $newimgname; 
+				$imagen_dst_url = trailingslashit($upload_dir['url']). $newimgname;
+				$img_new_url = "";
+				if(in_array(str_replace('.','',strrchr( strtolower($imagen_dst), '.')), explode(',', $allowed))) {   // -------- Controlo extensiones permitidas
+					trigger_error('Uploading media='.$imagen_src.' <b>to</b> imagen_dst='.$imagen_dst.'',E_USER_NOTICE);
+					$newfile = ($options_images['customupload']) ? WPeMatico::save_file_from_url($imagen_src_real, $imagen_dst) : false;
+					if($newfile) { //subió
+						trigger_error('Uploaded media='.$newfile,E_USER_NOTICE);
+						$imagen_dst = $newfile; 
+						$imagen_dst_url = trailingslashit($upload_dir['url']). basename($newfile);
+						$img_new_url = $imagen_dst_url;
+					} else { // falló -> intento con otros
+						$bits = WPeMatico::wpematico_get_contents($imagen_src_real);
+						$mirror = wp_upload_bits( $newimgname, NULL, $bits);
+						if(!$mirror['error']) {
+							trigger_error($mirror['url'],E_USER_NOTICE);
+							$img_new_url = $mirror['url'];
+						}
+					}
+				}
+			}else{
+				$img_new_url=$this->current_item['featured_image'];
+			}
+			if(!empty($img_new_url)) { 
+				$this->current_item['featured_image'] = $img_new_url;
+				array_shift($this->current_item['images']);  //deletes featured image from array to avoid double upload below
+				$attachid = false;
+				if( !$options_images['imgattach']) {
+					//get previously uploaded attach IDs, false if not exist.  (Just attach once/first time)
+				//	$attachid = $this->get_attach_id_from_url($this->current_item['featured_image']); 
+					$attachid = attachment_url_to_postid($this->current_item['featured_image']); 
+				}
+				if ($attachid == false) {
+					$attachid = $this->insertfileasattach( $this->current_item['featured_image'] , $post_id);
+				}
+				set_post_thumbnail($post_id, $attachid );					
+				$featured_image_attach_id = $attachid;
+				//add_post_meta($post_id, '_thumbnail_id', $attachid);
+			}else{
+				//trigger_error( __('Upload featured image failed:', 'wpematico' ).$imagen_dst,E_USER_WARNING);
+			}
+		}
+		$featured_image_attach_id = apply_filters('wpematico_featured_image_attach_id', $featured_image_attach_id, $post_id, $this->current_item, $this->campaign, $item);
+		if ($featured_image_attach_id == 0) {
+			trigger_error( __('The post has no a featured image.', 'wpematico' ), E_USER_WARNING);
+		}
+
+		// Attach files in post content previously uploaded
+		if($options_images['imgcache'] && $options_images['imgattach']) {
+			if(is_array($this->current_item['images'])) {
+				if(sizeof($this->current_item['images'])) { // Si hay alguna imagen 
+					trigger_error(__('Attaching images', 'wpematico' ).": ".sizeof($this->current_item['images']),E_USER_NOTICE);
+					foreach($this->current_item['images'] as $imagen_src) {
+						$attachid = $this->insertfileasattach($imagen_src,$post_id);
+					}
+				}
+			}
+		}			
+		
+		
+		/**
+		* Attach audios to post
+		* @since 1.7.0
+		*/
+		$options_audios = WPeMatico::get_audios_options($this->cfg, $this->campaign);	
+		if($options_audios['audio_cache'] && $options_audios['audio_attach']) {
+			if(is_array($this->current_item['audios'])) {
+				if(sizeof($this->current_item['audios'])) { // if exist a audio.
+					trigger_error(__('Attaching audios', 'wpematico' ).": ".sizeof($this->current_item['audios']),E_USER_NOTICE);
+					foreach($this->current_item['audios'] as $audio_src) {
+						$attachid = $this->insertfileasattach($audio_src,$post_id);
+					}
+				}
+			}
+		}
+
+		/**
+		* Attach videos to post
+		* @since 1.7.0
+		*/
+		$options_videos = WPeMatico::get_videos_options($this->cfg, $this->campaign);	
+		if($options_videos['video_cache'] && $options_videos['video_attach']) {
+			if(is_array($this->current_item['videos'])) {
+				if(sizeof($this->current_item['videos'])) { // if exist a video.
+					trigger_error(__('Attaching videos', 'wpematico' ).": ".sizeof($this->current_item['videos']),E_USER_NOTICE);
+					foreach($this->current_item['videos'] as $video_src) {
+						$attachid = $this->insertfileasattach($video_src,$post_id);
+					}
+				}
+			}
+		}	
+
+
+  	}
 	
 	private function fetch_end() {
 		$this->campaign['lastrun'] 		  = $this->campaign['starttime'];
