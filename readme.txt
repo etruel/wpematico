@@ -260,11 +260,13 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
-= 2.3 Feb 15, 2019 =
+= 2.3 Feb 20, 2019 =
+* **NOTE: Important changes. Highly recommended for testing in development environments prior to upgrade.**
 * Added Debug Mode feature to save all campaigns logs instead only the last one. 
 * Added smart notifications in campaign list.
 * Added some new data in debug file.
 * Added WPEMATICO_PREVENT_REDIRECT constant to prevent redirections to welcome page.
+* Improves the code to allow better integration with a future item synchronizer addon.
 * Tweaks in translation notification in settings.
 * Tweaks in cURL requests on sending empty HTTP Encoding header for cURL +7.10.5.
 * Updated Chinese language translations files.

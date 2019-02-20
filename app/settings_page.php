@@ -200,14 +200,14 @@ function wpematico_settings(){
 								<p></p>
 								<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enableseelog'], true); ?> name="enableseelog" id="enableseelog" /><b>&nbsp;<?php _e('Enable <b><i>See last log</i></b>', 'wpematico'); ?></b></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enableseelog']; ?>"></span>
 								<p></p>
+								<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enable_xml_upload'], true); ?> name="enable_xml_upload" id="enable_xml_upload" /><b>&nbsp;<?php _e('Enable <i>Upload of XMLs</i>', 'wpematico'); ?></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enable_xml_upload']; ?>"></span>
+								<p></p>
 								<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disable_credits'], true); ?> name="disable_credits" id="disable_credits" /><b>&nbsp;<?php _e('Disable <i>WPeMatico Credits</i>', 'wpematico'); ?></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disable_credits']; ?>"></span>
 								<span id="discredits" style="<?php echo ($cfg['disable_credits']) ? '' : 'display:none;' ?>"><br /><?php
 									printf(__('If you can\'t show the WPeMatico credits in your posts, I really appreciate if you can take a minute to %s write a 5 star review on Wordpress %s. :) thanks.', 'wpematico'), '<b><a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" target="_Blank" title="Open a new window">', '</a></b>');
 									?></span>
 								<p></p>
-								<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disable_categories_description'], true); ?> name="disable_categories_description" id="disable_categories_description" /><b>&nbsp;<?php _e('Disable <i>Category Description</i> of WPeMatico', 'wpematico'); ?></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disable_categories_description']; ?>"></span>
-								<br>
-								<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enable_xml_upload'], true); ?> name="enable_xml_upload" id="enable_xml_upload" /><b>&nbsp;<?php _e('Enable <i>Upload of XMLs</i>', 'wpematico'); ?></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enable_xml_upload']; ?>"></span>
+								<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disable_categories_description'], true); ?> name="disable_categories_description" id="disable_categories_description" /><b>&nbsp;<?php _e('Disable <i>Auto-Category description</i>', 'wpematico'); ?></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disable_categories_description']; ?>"></span>
 
 								<p style="text-align: right;">
 									<input type="hidden" name="wpematico-action" value="save_settings" />
@@ -1012,8 +1012,8 @@ function wpematico_helpsettings($dev=''){
 								'</a>'),
 			),
 			'disable_categories_description' => array( 
-				'title' => __('Disable Category Description of WPeMatico.', 'wpematico' ),
-				'tip' => __('I really appreciate if you can left this option blank to show that the categories are created by WPeMatico.', 'wpematico' ),
+				'title' => __('Disable Auto-Category Descriptions.', 'wpematico' ),
+				'tip' => __('Check this to avoid the future descriptions "Created by WPeMatico" of the created (auto)categories.  You could edit the past categories if you need to delete their descriptions.', 'wpematico' ),
 				
 			),
 			'enable_xml_upload' => array( 

@@ -75,20 +75,19 @@ class wpe_smart_notifications {
 			return;
 		}
 
-
 		?>
 		<div class="clear"></div>
 		<div class="div-wpematico-smart-notification">
 			<h3><a id="smart-notification-title-link" href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" target="_Blank"><?php _e( 'Rate 5 stars on Wordpress', 'wpematico' ); ?></a>
-			 <span class="icon-minimize-div dashicons  dashicons-visibility" style="margin-right: 30px;" title="Click here to close"></span>
-			 <span class="icon-close-div dashicons dashicons-no" title="Click here to dismiss"></span></h3>
+			 <span class="icon-minimize-div dashicons  dashicons-visibility" style="margin-right: 30px;" title="Close"></span>
+			 <span class="icon-close-div dashicons dashicons-no" title="Dismiss"></span></h3>
 			
 			 <div class="description-smart-notification">
 				<p class="parr-wpmatico-smart-notification">
 
 					<?php _e( 'The <strong>WPeMatico team</strong> work hard to offer you excellent tools for <strong>autoblogging</strong>.', 'wpematico' );?>
 					<br>
-					<?php _e( 'So we would love you to write a <strong>5-star review</strong> in WordPress if you appreciate our plugin.', 'wpematico' );?>
+					<?php printf(__('So we would love you to write a %1s in WordPress if you appreciate our plugin.', 'wpematico' ),'<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" id="link2rate" target="_Blank"><strong>5-star review</strong></a>'); ?>
 					<br>
 					<?php _e( 'It only takes a minute, <strong>click the button below</strong> to go to the form.', 'wpematico' );?>
 					<br>
