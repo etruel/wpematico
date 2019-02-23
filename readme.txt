@@ -260,6 +260,10 @@ Also we need tutorials on text, pdf, videos. All are welcome.
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
 
 == Changelog ==
+= **** =
+* Adds enclosures to BlankSimplepie Class.
+
+
 = 2.3 Feb 20, 2019 =
 * **NOTE: Important changes. Highly recommended for testing in development environments prior to upgrade.**
 * Added Debug Mode feature to save all campaigns logs instead only the last one. 
