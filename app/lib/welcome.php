@@ -201,17 +201,32 @@ class WPEMATICO_Welcome {
 				$this->tabs();
 			?>
 			<div class="changelog">
-				<h2><?php _e( 'A new Campaign Type for XML feeds.', 'wpematico' );?></h2>
+				<h2><?php _e( 'Debug Mode.', 'wpematico' );?></h2>
 				<div class="feature-section">
 					<div class="feature-section-media">
 						<?php $this->subscription_form(); ?>
 					</div>
 					<div class="feature-section-content">
+						<h4><?php _e( 'Debug Mode to save all the logs from each campaign', 'wpematico' );?></h4>
+						<p><?php _e( 'This feature allows you to save all the logs of each campaign rather than just the last one, in order to allow you to track all actions and behaviors when running the campaign.', 'wpematico' );?></p>
+					</div>
+					<div class="feature-section-media">
+						<img style="float:left; width: 100%;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/debug_mode.png'; ?>" alt="Preview for the YouTube campaign" width="400" />
+					</div>
+				</div>
+			</div>
+			<hr>
+			<div class="changelog">
+				<h2><?php _e( 'A new Campaign Type for XML feeds.', 'wpematico' );?></h2>
+				<div class="feature-section">
+					<div class="feature-section-content">
 						<h4><?php _e( 'XML Campaign type to parse and fetch XML feeds', 'wpematico' );?></h4>
-						<p><?php _e( 'This feature allow you to configure every campaign with the fields that are found in the XML tags.  A very important addition that will allow to import almost anything that come in XML format to WordPress Posts (types).', 'wpematico' );?></p>
+						<p><?php _e( 'This feature allows you to configure every campaign with the fields that are found in the XML tags.  A very important addition that will allow to import almost anything that come in XML format to WordPress Posts (types).', 'wpematico' );?></p>
 						<p><?php _e( 'An option in Settings enables the upload of XML files in the WordPress Media Library in order to use its URL in the campaigns.', 'wpematico' );?></p>
 						<p><?php _e( 'Also, using the addons as the Professional will allow overwriting the data of a campaign and add the author, categories and tags also from the XML tags.', 'wpematico' );?></p>
-						<img style="width: 98%;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/xml_campaign.png'; ?>" alt="Preview for the YouTube campaign" width="400" />
+					</div>
+					<div class="feature-section-media">
+						<img style="float:left; width: 100%;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/xml_campaign.png'; ?>" alt="Preview for the YouTube campaign" width="400" />
 					</div>
 				</div>
 			</div>
