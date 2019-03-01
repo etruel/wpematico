@@ -262,6 +262,8 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 == Changelog ==
 = **** =
 * Adds enclosures to BlankSimplepie Class.
+* Adds some tweaks in cURL requests.
+* Adds some changes in debug page and debug file.
 
 
 = 2.3 Feb 20, 2019 =

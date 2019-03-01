@@ -725,8 +725,8 @@ function wpematico_show_data_info() {
 				?>
 				<tr>
 					<td data-export-label="cURL (php.net/curl)"><?php _e( 'cURL (php.net/curl):', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__( '%s is required by %s.', 'wpematico'  ), 'cURL (php.net/curl)', 'WPeMatico Core, '.$professional_help.', '.$cache_help.', '.$mmf_help.', '.$polyglot_help)) . '">[?]</a>'; ?></td>
-					<td><?php echo ($curl_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'cURL (php.net/curl)', 'some addons and Simplepie').'</mark>'; ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__( '%s is required by %s.', 'wpematico'  ), 'cURL (php.net/curl)', 'WPeMatico Core, '.$professional_help.', '.$cache_help.', '.$mmf_help.', '.$polyglot_help)) . ' '. ( version_compare(WPeMatico::get_curl_version(), '7.10.5', '>=') ? '' : '<br>'. __('A version lower than 7.10 will work fine, but will generate a PHP Warning each time it is used.', 'wpematico') ) .' ">[?]</a>'; ?></td>
+					<td><?php echo ($curl_ok) ? ( ( version_compare(WPeMatico::get_curl_version(), '7.10.5', '>=') ) ? '<mark class="yes">'.WPeMatico::get_curl_version().'</mark>' :  '<mark class="error">'. WPeMatico::get_curl_version() . '</mark>'  )  : '<mark class="error">'.sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'cURL (php.net/curl)', 'some addons and Simplepie').'</mark>'; ?></td>
 				</tr>
 				<tr>
 					<td data-export-label="ZipArchive"><?php _e( 'ZipArchive:', 'wpematico' ); ?></td>
@@ -1208,7 +1208,7 @@ function wpematico_debug_info_get() {
 	$return .= "\n\n" . '-- PHP Extensions' . "\n\n";
 	
 	// SimplePie required extensions and such	
-	$return .= 'cURL (php.net/curl):     ' . ( ($curl_ok) ? 'Enabled' : 'Disabled' ) . "\n";
+	$return .= 'cURL (php.net/curl):     ' . ( ($curl_ok) ? WPeMatico::get_curl_version() : 'Disabled' ) . "\n";
 	$return .= 'ZipArchive:              ' . ( ($ZipArchive) ? 'Enabled' : 'Disabled' ) . "\n";
 	$return .= 'DOMDocument:             ' . ( ($DOMDocument) ? 'Enabled' : 'Disabled' ) . "\n";
 	$return .= 'GD Library:              ' . ( ($GD_ok) ? 'Enabled' : 'Disabled' ) . "\n";
