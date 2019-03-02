@@ -63,10 +63,16 @@ You can submit any bug in the [bugtracker](https://bitbucket.org/etruel/wpematic
  
 ---
 
+#### **[Synchronizer](https://etruel.com/downloads/wpematico-synchronizer/):**
+> Synchronizer allows you to keep updated the posts obtained, the synchronization process analyzes the content of the feed items and compares them with the post, if different it will be updated, including media files, authors, categories and tags.
+
+> * [Take a look to all its features by clicking here](https://etruel.com/downloads/wpematico-full-content/)
+
+---
+
 #### **[FULL Content](https://etruel.com/downloads/wpematico-full-content/):**
 > Takes the title and permalink and scratches its web page to find the full content with option to search for *multi-page articles*. Set the featured image from meta tags of source web page, Open Graph or Twitter images. 
 > Works automatically with 95% of the websites, but if not, allows set up a configuration file for every domain pointing to what section of the web page must be obtained. 
-> *Includes a config file editor* to add support for custom domains that moves all the config files to a local folder to don't overwrite the files when updates the plugin. 
 
 > * Don't pay monthly fees until you see all what you can do with a onetime payment. ;-)
 > * [Take a look to all its features by clicking here](https://etruel.com/downloads/wpematico-full-content/)
@@ -256,15 +262,14 @@ Later I've added subtitles and added it above in this page.
 
 Branco [WebHostingGeeks.com](http://webhostinggeeks.com/user-reviews/).  Romanian & Slovak languages files.
 
-Also we need tutorials on text, pdf, videos. All are welcome.
-You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel@gmail.com
+We are receiving tutorials on text, pdf, videos. All are welcome. Thank you!
+You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel [at] gmail.com
 
 == Changelog ==
-= **** =
-* Adds enclosures to BlankSimplepie Class.
-* Adds some tweaks in cURL requests.
-* Adds some changes in debug page and debug file.
-
+= 2.3.1 Mar 02, 2019 =
+* Improves BlankSimplepie Class to work with the new addon: Synchronizer.
+* Improves performance in cURL requests.
+* Added cURL version and recommended in debug page and debug file.
 
 = 2.3 Feb 20, 2019 =
 * **NOTE: Important changes. Highly recommended for testing in development environments prior to upgrade.**
@@ -1174,6 +1179,6 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 2.3 =
-* **NOTE: Major Release. Highly recommended to test it in development ambients before update**
+= 2.3.1 =
+* **NOTE: We recommend to test it in development ambients before update**
 * See changelog for more details.
