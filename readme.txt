@@ -268,6 +268,7 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 == Changelog ==
 = 2.3.1 Mar 02, 2019 =
 * Improves BlankSimplepie Class to work with the new addon: Synchronizer.
+* Improves some cosmetic things, images and responsive styles.
 * Improves performance in cURL requests.
 * Added cURL version and recommended in debug page and debug file.
 
