@@ -444,7 +444,7 @@ class wpematico_campaign_fetch_functions {
 							$imagen_dst = $newfile; 
 							$imagen_dst_url = trailingslashit($upload_dir['url']). basename($newfile);
 							$current_item['content'] = str_replace($imagen_src, $imagen_dst_url, $current_item['content']);
-							$imagen_dst_url = apply_filters('wpematico_new_image_url_uploaded', $imagen_dst_url, $imagen_src, $current_item, $campaign);
+							do_action('wpematico_new_image_url_uploaded', $imagen_dst_url, $imagen_src, $current_item, $campaign);
 							$img_new_url[] = $imagen_dst_url;
 						} else { // falló -> intento con otros
 							$bits = WPeMatico::wpematico_get_contents($imagen_src_real);
@@ -460,8 +460,8 @@ class wpematico_campaign_fetch_functions {
 								if(!$mirror['error']) {
 									trigger_error($mirror['url'],E_USER_NOTICE);
 									$current_item['content'] = str_replace($imagen_src, $mirror['url'], $current_item['content']);
-									$imagen_dst_url = apply_filters('wpematico_new_image_url_uploaded', $mirror['url'], $imagen_src, $current_item, $campaign);
-									$img_new_url[] = $imagen_dst_url;
+									do_action('wpematico_new_image_url_uploaded', $mirror['url'], $imagen_src, $current_item, $campaign);
+									$img_new_url[] = $mirror['url'];
 								} else {  
 									trigger_error('wp_upload_bits error:'.print_r($mirror,true).'.',E_USER_WARNING);
 									// Si no quiere linkar las img al server borro el link de la imagen
