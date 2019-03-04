@@ -459,65 +459,82 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		}		
 		
 
-		// Create post
-		$title = $this->current_item['title'];
-		$content= $this->current_item['content'];
-		$timestamp = $this->current_item['date'];
-		$category = $this->current_item['categories'];
-		$status = $this->current_item['posttype'];
-		$authorid = $this->current_item['author'];
-		$allowpings = $this->current_item['allowpings'];
-		$comment_status = (isset($this->current_item['commentstatus']) && !empty($this->current_item['commentstatus']) ) ? $this->current_item['commentstatus'] : 'open';
-		$meta = $this->current_item['meta'];
-		$post_type = (isset($this->current_item['customposttype']) && !empty($this->current_item['customposttype']) ) ? $this->current_item['customposttype'] : 'post';
+		
+		$this->current_item['customposttype'] = (isset($this->current_item['customposttype']) && !empty($this->current_item['customposttype']) ) ? $this->current_item['customposttype'] : 'post';
+		$this->current_item['commentstatus'] = (isset($this->current_item['commentstatus']) && !empty($this->current_item['commentstatus']) ) ? $this->current_item['commentstatus'] : 'open';
+		
+		
 		$images = $this->current_item['images'];
 		$campaign_tags = $this->current_item['campaign_tags'];
 		$post_format = $this->current_item['campaign_post_format'];
 		
-		$date = ($timestamp) ? gmdate('Y-m-d H:i:s', $timestamp + (get_option('gmt_offset') * 3600)) : null;
+		$this->current_item['date_formated'] = ($this->current_item['date']) ? gmdate('Y-m-d H:i:s', $this->current_item['date'] + (get_option('gmt_offset') * 3600)) : null;
 		
+		$truecontent = '';
 		if($this->cfg['woutfilter'] && $this->campaign['campaign_woutfilter'] ) {
-			$truecontent = $content;
-			$content = '';
+			$truecontent = $this->current_item['content'];
+			$this->current_item['content'] = '';
 		}
+		
 		if ($this->campaign['copy_permanlink_source']) {
-			$slug = WPeMatico::get_slug_from_permalink($item->get_permalink());
+			$this->current_item['slug'] = WPeMatico::get_slug_from_permalink($item->get_permalink());
 		} else {
-			$slug = sanitize_title($title);
+			$this->current_item['slug'] = sanitize_title($this->current_item['title']);
 		}
-		$post_parent = 0;
+
+		$this->current_item['post_parent'] = 0;
 		if(isset($this->campaign['campaign_parent_page']) && $this->campaign['campaign_parent_page']) {
-			$post_parent = $this->campaign['campaign_parent_page'];
+			$this->current_item['post_parent'] = $this->campaign['campaign_parent_page'];
 		}
 
 		if ($this->campaign['campaign_type'] == 'bbpress') {
 			if ($this->current_item['customposttype'] == 'topic') {
-				$post_parent = $this->campaign['campaign_bbpress_forum'];
+				$this->current_item['post_parent'] = $this->campaign['campaign_bbpress_forum'];
 			}
 			if ($this->current_item['customposttype'] == 'reply') {
-				$post_parent = $this->campaign['campaign_bbpress_topic'];
+				$this->current_item['post_parent'] = $this->campaign['campaign_bbpress_topic'];
 			}
 		}
-
+		$this->current_item['title'] 			= apply_filters('wpem_parse_title', $this->current_item['title']);
+		$this->current_item['content'] 			= apply_filters('wpem_parse_content', $this->current_item['content']);
+		$this->current_item['slug'] 			= apply_filters('wpem_parse_name', $this->current_item['slug']);
+		$this->current_item['date_formated'] 	= apply_filters('wpem_parse_date', $this->current_item['date_formated']);
+		$this->current_item['posttype']			= apply_filters('wpem_parse_status', $this->current_item['posttype']);
+		$this->current_item['customposttype']	= apply_filters('wpem_parse_post_type', $this->current_item['customposttype']);
+		$this->current_item['author']			= apply_filters('wpem_parse_authorid', $this->current_item['author']);
+		$this->current_item['commentstatus']	= apply_filters('wpem_parse_comment_status', $this->current_item['commentstatus']);
+		$this->current_item['post_parent'] 		= apply_filters('wpem_parse_parent', $this->current_item['post_parent']);
+		
 		$args = array(
-			'post_title' 	          => apply_filters('wpem_parse_title', $title),
-			'post_content'  	      => apply_filters('wpem_parse_content', $content),
-			'post_name'  	      	  => apply_filters('wpem_parse_name', $slug),
-			'post_content_filtered'   => apply_filters('wpem_parse_content_filtered', $content),
-			'post_status' 	          => apply_filters('wpem_parse_status', $status),
-			'post_type' 	          => apply_filters('wpem_parse_post_type', $post_type),
-			'post_author'             => apply_filters('wpem_parse_authorid', $authorid),
-			'post_date'               => apply_filters('wpem_parse_date', $date),
-			'comment_status'          => apply_filters('wpem_parse_comment_status', $comment_status),
-			'post_parent'			  => apply_filters('wpem_parse_parent', $post_parent),
-			'ping_status'             => ($allowpings) ? "open" : "closed"
+			'post_title' 	          => $this->current_item['title'],
+			'post_content'  	      => $this->current_item['content'],
+			'post_name'  	      	  => $this->current_item['slug'],
+			'post_content_filtered'   => apply_filters('wpem_parse_content_filtered', $this->current_item['content']),
+			'post_status' 	          => $this->current_item['posttype'],
+			'post_type' 	          => $this->current_item['customposttype'],
+			'post_author'             => $this->current_item['author'],
+			'post_date'               => $this->current_item['date_formated'],
+			'comment_status'          => $this->current_item['commentstatus'],
+			'post_parent'			  => $this->current_item['post_parent'],
+			'ping_status'             => ($this->current_item['allowpings']) ? "open" : "closed"
 		);
+
 		if(has_filter('wpematico_pre_insert_post')) $args =  apply_filters('wpematico_pre_insert_post', $args, $this->campaign);
 
 		if( apply_filters('wpematico_allow_insertpost', true, $this, $args ) ) {
 			remove_filter('content_save_pre', 'wp_filter_post_kses');
 //			remove_filter('content_filtered_save_pre', 'wp_filter_post_kses');
 			$post_id = wp_insert_post( $args );
+
+			if($this->cfg['woutfilter'] && $this->campaign['campaign_woutfilter'] ) {
+				global $wpdb, $wp_locale, $current_blog;
+				$table_name = $wpdb->prefix . "posts";  
+				$blog_id 	= @$current_blog->blog_id;
+				$this->current_item['content'] = $truecontent;
+				//error_log('$truecontent:' . var_export($truecontent, true));
+				trigger_error(__('** Adding unfiltered content **', 'wpematico' ),E_USER_NOTICE);
+				$wpdb->update( $table_name, array( 'post_content' => $this->current_item['content'], 'post_content_filtered' => $this->current_item['content'] ), array( 'ID' => $post_id )	);
+			}
 
 			$this->postProcessItem($post_id, $item);
 			
@@ -536,8 +553,6 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 	}
   	function postProcessItem($post_id, $item) {
   		
-  		$meta 		= $this->current_item['meta'];
-  		$content 	= $this->current_item['content'];
   		$options_images = WPeMatico::get_images_options($this->cfg, $this->campaign);
 
   		if ($this->campaign['campaign_type'] == 'bbpress') {
@@ -556,9 +571,9 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
 				}
 
-				$meta['_bbp_forum_id'] = $this->campaign['campaign_bbpress_forum'];
-				$meta['_bbp_topic_id'] = $post_id;
-				$meta['_bbp_reply_count'] = 0;
+				$this->current_item['meta']['_bbp_forum_id'] = $this->campaign['campaign_bbpress_forum'];
+				$this->current_item['meta']['_bbp_topic_id'] = $post_id;
+				$this->current_item['meta']['_bbp_reply_count'] = 0;
 
 				
 			}
@@ -576,8 +591,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
 				}
 
-				$meta['_bbp_forum_id'] = $this->campaign['campaign_bbpress_forum'];
-				$meta['_bbp_topic_id'] = $this->campaign['campaign_bbpress_topic'];
+				$this->current_item['meta']['_bbp_forum_id'] = $this->campaign['campaign_bbpress_forum'];
+				$this->current_item['meta']['_bbp_topic_id'] = $this->campaign['campaign_bbpress_topic'];
 
 			}
 		}
@@ -585,10 +600,10 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
 		add_filter('content_save_pre', 'wp_filter_post_kses');
 
-		$category = $this->current_item['categories'];
+		//$category = $this->current_item['categories'];
 
-		if( ! empty($category) ) { //solo muestra los tags si los tiene definidos
-			$aaa = wp_set_post_terms( $post_id, $category, 'category');
+		if( ! empty( $this->current_item['categories'] ) ) { //solo muestra los tags si los tiene definidos
+			$aaa = wp_set_post_terms( $post_id, $this->current_item['categories'], 'category');
 			if(!empty($aaa)) trigger_error(__("Categories added: ", 'wpematico' ).implode(", ",$aaa) ,E_USER_NOTICE);
 		}
 		
@@ -597,7 +612,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		if( ! empty( $campaign_tags ) ) { //solo muestra los tags si los tiene definidos
 			$aaa = wp_set_post_terms( $post_id, $campaign_tags);
 			if(!empty($aaa)) trigger_error(__("Tags added: ", 'wpematico' ).implode(", ",$campaign_tags),E_USER_NOTICE);
-		}else if(has_action('wpematico_chinese_tags')) do_action('wpematico_chinese_tags', $post_id, $content, $this->campaign );
+		}else if(has_action('wpematico_chinese_tags')) do_action('wpematico_chinese_tags', $post_id, $this->current_item['content'], $this->campaign );
 		
 		$post_format = $this->current_item['campaign_post_format'];
 
@@ -607,21 +622,10 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			if(!empty($aaa)) trigger_error(__("Post format added: ", 'wpematico' ).$post_format,E_USER_NOTICE);
 		}
 
-		$truecontent = '';
-		if($this->cfg['woutfilter'] && $this->campaign['campaign_woutfilter'] ) {
-			$truecontent = $content;
-			$content = '';
-		}
-		if($this->cfg['woutfilter'] && $this->campaign['campaign_woutfilter'] ) {
-			global $wpdb, $wp_locale, $current_blog;
-			$table_name = $wpdb->prefix . "posts";  
-			$blog_id 	= @$current_blog->blog_id;
-			$content = $truecontent;
-			trigger_error(__('** Adding unfiltered content **', 'wpematico' ),E_USER_NOTICE);
-			$wpdb->update( $table_name, array( 'post_content' => $content, 'post_content_filtered' => $content ), array( 'ID' => $post_id )	);
-		}
+		
+		
 		// insert PostMeta
-		foreach($meta as $key => $value){
+		foreach($this->current_item['meta'] as $key => $value){
 			add_post_meta($post_id, $key, $value, true);
 		}
 
