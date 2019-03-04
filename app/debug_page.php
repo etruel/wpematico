@@ -81,7 +81,7 @@ function wpematico_settings_section_danger_zone() {
 		</p>
 		
 		<?php submit_button( 'Save Settings', 'primary', false ); ?>
-		<p class="save-debug" style="margin-bottom: 40px;"></p>
+		<div class="div-danger-separator"></div>
 
 		<h3><?php _e('Select actions to Uninstall','wpematico'); ?></h3>
 		<label><input class="checkbox" value="1" type="checkbox" <?php checked($danger['wpemdeleoptions'],true);?> name="wpemdeleoptions" /> <?php _e('Delete all Options.', 'wpematico' ); ?></label><br/>

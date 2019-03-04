@@ -1505,3 +1505,6 @@ div#optionslayer-right {
 .campaign_xml_node_parent, .campaign_xml_node {
     width: 300px;
 }
+.div-danger-separator {
+    margin-bottom: 40px;
+}
