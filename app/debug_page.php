@@ -80,7 +80,7 @@ function wpematico_settings_section_danger_zone() {
 			<?php _e( 'This action will save all the logs from each campaign instead only the last one, to allow follow all actions and behaviors when campaign runs.', 'wpematico' ); ?>
 		</p>
 		
-		<?php submit_button( 'Save Settings', 'primary', false ); ?>
+		<?php submit_button( __( 'Save Settings', 'wpematico' ), 'primary', false ); ?>
 		<div class="div-danger-separator"></div>
 
 		<h3><?php _e('Select actions to Uninstall','wpematico'); ?></h3>
