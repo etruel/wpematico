@@ -269,6 +269,8 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 = ** =
 * Some tweaks in source code for improved performance.
 * Fixes a issue in Post Content Unfiltered feature.
+* Adds save settings button in danger zone.
+
 
 = 2.3.1 Mar 02, 2019 =
 * Improves BlankSimplepie Class to work with the new addon: Synchronizer.

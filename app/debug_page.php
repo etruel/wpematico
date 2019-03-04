@@ -79,6 +79,10 @@ function wpematico_settings_section_danger_zone() {
 		<p class="description">
 			<?php _e( 'This action will save all the logs from each campaign instead only the last one, to allow follow all actions and behaviors when campaign runs.', 'wpematico' ); ?>
 		</p>
+		
+		<?php submit_button( 'Save Settings', 'primary', false ); ?>
+		<p class="save-debug" style="margin-bottom: 40px;"></p>
+
 		<h3><?php _e('Select actions to Uninstall','wpematico'); ?></h3>
 		<label><input class="checkbox" value="1" type="checkbox" <?php checked($danger['wpemdeleoptions'],true);?> name="wpemdeleoptions" /> <?php _e('Delete all Options.', 'wpematico' ); ?></label><br/>
 		<label><input class="checkbox" value="1" type="checkbox" <?php checked($danger['wpemdelecampaigns'],true);?> name="wpemdelecampaigns" /> <?php _e('Delete all Campaigns.', 'wpematico' ); ?></label><br/>
