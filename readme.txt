@@ -266,11 +266,10 @@ We are receiving tutorials on text, pdf, videos. All are welcome. Thank you!
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel [at] gmail.com
 
 == Changelog ==
-= ** =
-* Some tweaks in source code for improved performance.
-* Fixes a issue in Post Content Unfiltered feature.
-* Adds save settings button in danger zone.
-
+= 2.3.2 Mar 12, 2019 =
+* Improved source code on fetch to improve performance.
+* Fixes an issue in Unfiltered Post Content feature.
+* Added Save Settings button in danger zone.
 
 = 2.3.1 Mar 02, 2019 =
 * Improves BlankSimplepie Class to work with the new addon: Synchronizer.
