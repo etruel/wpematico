@@ -266,6 +266,9 @@ We are receiving tutorials on text, pdf, videos. All are welcome. Thank you!
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel [at] gmail.com
 
 == Changelog ==
+= ** =
+* Adds some improvements in validations of feeds in XML campaign type.
+
 = 2.3.2 Mar 12, 2019 =
 * Improved source code on fetch to improve performance.
 * Fixes an issue in Unfiltered Post Content feature.

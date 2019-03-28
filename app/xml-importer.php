@@ -62,6 +62,10 @@ class WPeMatico_XML_Importer {
                 $data_xml = WPeMatico::wpematico_get_contents( $campaign['campaign_xml_feed_url'], true );
             }
 
+
+            $data_xml = apply_filters('wpematico_xml_data_before_parse', $data_xml, $campaign);
+        
+
             if ( ! empty( $data_xml ) ) {
                 $xml = @simplexml_load_string( $data_xml, 'SimpleXMLElement', LIBXML_NOCDATA );
                 $simplepie->raw_data = $data_xml;
@@ -320,7 +324,27 @@ class WPeMatico_XML_Importer {
         $campaign_xml_node = $campaign_data['campaign_xml_node'];
         $campaign_xml_node_parent = $campaign_data['campaign_xml_node_parent'];
         
+        $fetch_feed_params = array(
+            'url'           => $campaign_xml_feed_url,
+            'stupidly_fast' => true,
+            'max'           => 0,
+            'order_by_date' => false,
+            'force_feed'    => false,
+            'disable_simplepie_notice' => true,
+        );
 
+        $fetch_feed_params = apply_filters('wpematico_xml_fetch_feed_params', $fetch_feed_params, 0, $campaign_data);
+        $simplepie =  WPeMatico::fetchFeed($fetch_feed_params);
+
+        $xml_is_not_allowed = apply_filters('wpematico_xml_is_not_allowed', empty( $simplepie->error() ), $campaign_data );
+        if( $xml_is_not_allowed ) {
+             //wp_die(__('The file is a RSS feed that must use <strong>Feed Fetcher</strong> campaign type instead of XML.', 'wpematico')); 
+            echo '<div id="message" class="error notice notice-error is-dismissible"><p>' . __('The file is a RSS feed that must use <strong>Feed Fetcher</strong> campaign type instead of XML.', 'wpematico') . '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>'; 
+            if ( wp_doing_ajax() ) {
+                die();
+            }
+            return;
+        }
 
         $data_xml = apply_filters('wpematico_xml_file_fetch', '', $campaign_data);
         if ($data_xml == 'wpematico_campaign_xml_error') {
@@ -342,15 +366,9 @@ class WPeMatico_XML_Importer {
             return;
         }
         
-      
-        if ( stripos($data_xml, '<atom:link') !== false ||  stripos($data_xml, 'http://www.w3.org/2005/Atom') !== false || stripos($data_xml, 'application/rss+xml') !== false  ) {
-             //wp_die(__('The file is a RSS feed that must use <strong>Feed Fetcher</strong> campaign type instead of XML.', 'wpematico')); 
-            echo '<div id="message" class="error notice notice-error is-dismissible"><p>' . __('The file is a RSS feed that must use <strong>Feed Fetcher</strong> campaign type instead of XML.', 'wpematico') . '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>'; 
-            if ( wp_doing_ajax() ) {
-                die();
-            }
-            return;
-        }
+
+        $data_xml = apply_filters('wpematico_xml_data_before_parse', $data_xml, $campaign_data);
+        
 
 
         if ( ! empty( $data_xml ) ) {
