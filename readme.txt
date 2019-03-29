@@ -268,6 +268,7 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 == Changelog ==
 = ** =
 * Adds some improvements in validations of feeds in XML campaign type.
+* Fixes some issues when filtering the posts in the preview campaign.
 
 = 2.3.2 Mar 12, 2019 =
 * Improved source code on fetch to improve performance.

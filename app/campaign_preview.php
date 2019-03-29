@@ -168,6 +168,18 @@ class wpematico_campaign_preview {
 		}
 		return array('next' => $posts_next, 'fetched' => $posts_fetched, 'simplepie' => $simplepie);
 	}
+
+	public static function get_current_item_preview($item, $campaign) {
+		$current_item = array();
+		if (! class_exists('wpematico_campaign_fetch')) {
+			require_once(WPEMATICO_PLUGIN_DIR.'app/campaign_fetch.php');
+		}
+		$current_item['permalink'] = wpematico_campaign_fetch::getReadUrl($item->get_permalink(), $campaign);
+		$current_item['title'] = $item->get_title();
+		$current_item['content'] = $item->get_content();
+		return $current_item;
+	}
+
 	/**
 	* Static function print_preview
 	* @access public
@@ -198,19 +210,47 @@ class wpematico_campaign_preview {
 		}else{
 			set_error_handler('wpematico_joberrorhandler',E_ALL & ~E_NOTICE);
 		}
+
+
+		if (! class_exists('wpematico_campaign_fetch')) {
+			require_once(WPEMATICO_PLUGIN_DIR.'app/campaign_fetch.php');
+		}
+
+		$campaign_fetch = new wpematico_campaign_fetch(0);
+		
+		do_action('Wpematico_init_fetching', $campaign);
+
 		$post_to_show = array();
-		
-		
+
+
+
 		foreach($campaign['campaign_feeds']  as $kf => $feed) {
 			$feed_data = self::get_feeds_items_statues($feed, $campaign);
 			$simplepie = $feed_data['simplepie'];
 			foreach($simplepie->get_items() as $item) {
 				$item_hash = self::get_item_hash($item);
-				if (!empty($feed_data['next'][$item_hash])) {
-				  	$post_to_show[] = $item;
-				 }
+				
+				if (empty($feed_data['next'][$item_hash])) {
+				  	continue;
+				}
+				$current_item = self::get_current_item_preview($item, $campaign);
+				
+				if ( $campaign_fetch->exclude_filters($current_item, $campaign, $feed, $item )) {
+					return -1 ;  // resta este item del total 
+				}
+
+				$current_item = apply_filters('wpematico_item_pre_media', $current_item, $campaign, $simplepie, $item);
+				if ($current_item == -1) {
+					continue;
+				}
+				
+				$post_to_show[] = $item;
+				
+				
 			}
 		}
+		unset($campaign_fetch);
+		
 		$campaign_customposttype = 'post';
 		$campaign_post_type_name = 'Posts';
 		if (!empty($campaign['campaign_customposttype'])) {
