@@ -83,6 +83,14 @@ jQuery(document).ready(function($){
 			$('#customtype_post').parent().fadeOut();
 		}
 	});
+	wpematico_events_xml_campaign($);
+	$('#campaign_type').change(function() {
+		if ($('#campaign_type').val() == 'xml') {
+			wpematico_on_enabled_xml($);
+		} else {
+			wpematico_on_disabled_xml($);
+		}
+	});
 
 	if ($('#campaign_type').val() != 'bbpress') {
 		$('#customtype_post').parent().fadeIn();
@@ -384,6 +392,93 @@ jQuery(document).ready(function($){
 
 	word2cats_events();
 });
+function wpematico_events_xml_campaign($) {
+	$('#campaign_tags_feeds').click(function(e) {
+		if ($('#campaign_type').val() == 'xml') {
+			if ($('#campaign_xml_nodepost_tags').val() == '') {
+				$('#campaign_tags_feeds').prop('checked', false);
+			} else {
+				$('#campaign_tags_feeds').prop('checked', true);
+			}
+		}
+		
+	});
+
+	$('#campaign_xml_nodepost_tags').change(function(e) {
+		$('#campaign_tags_feeds').click();
+	});
+
+	if ($('#campaign_xml_nodepost_tags').val() == '') {
+		$('#campaign_tags_feeds').prop('checked', false);
+	} else {
+		$('#campaign_tags_feeds').prop('checked', true);
+	}
+
+
+
+	$('#campaign_autocats').click(function(e) {
+		if ($('#campaign_type').val() == 'xml') {
+			if ($('#campaign_xml_nodepost_categories').val() == '') {
+				$('#campaign_autocats').prop('checked', false);
+			} else {
+				$('#campaign_autocats').prop('checked', true);
+			}
+		}
+		
+	});
+
+	$('#campaign_xml_nodepost_categories').change(function(e) {
+		$('#campaign_autocats').click();
+	});
+
+	if ($('#campaign_xml_nodepost_categories').val() == '') {
+		$('#campaign_autocats').prop('checked', false);
+	} else {
+		$('#campaign_autocats').prop('checked', true);
+	}
+
+
+	$('#campaign_xml_nodepost_author').change(function(e) {
+		if ($('#campaign_xml_nodepost_author').val() == '') {
+			jQuery('[id^=feed_author]').val('-1');
+		} else {
+			jQuery('[id^=feed_author]').val('0');
+		}
+	});
+
+	if ($('#campaign_xml_nodepost_author').val() == '') {
+		jQuery('[id^=feed_author]').val('-1');
+	} else {
+		jQuery('[id^=feed_author]').val('0');
+	}
+
+}
+
+function wpematico_on_enabled_xml($) {
+	if ($('#campaign_xml_nodepost_tags').val() == '') {
+		$('#campaign_tags_feeds').prop('checked', false);
+	} else {
+		$('#campaign_tags_feeds').prop('checked', true);
+	}
+
+	if ($('#campaign_xml_nodepost_categories').val() == '') {
+		$('#campaign_autocats').prop('checked', false);
+	} else {
+		$('#campaign_autocats').prop('checked', true);
+	}
+
+	if ($('#campaign_xml_nodepost_author').val() == '') {
+		jQuery('[id^=feed_author]').val('-1');
+	} else {
+		jQuery('[id^=feed_author]').val('0');
+	}
+
+
+	
+}
+function wpematico_on_disabled_xml($) {
+	
+}
 
 function word2cats_events() {
 	jQuery(document).on('click', '#addmorew2c', function(e) {

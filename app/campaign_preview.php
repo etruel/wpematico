@@ -236,7 +236,7 @@ class wpematico_campaign_preview {
 				$current_item = self::get_current_item_preview($item, $campaign);
 				
 				if ( $campaign_fetch->exclude_filters($current_item, $campaign, $feed, $item )) {
-					continue;  // resta este item del total 
+					continue; 
 				}
 
 				$current_item = apply_filters('wpematico_item_pre_media', $current_item, $campaign, $simplepie, $item);
