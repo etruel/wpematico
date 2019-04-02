@@ -3,7 +3,7 @@ Contributors: etruel, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,RSS to Post,Feed to Post,XML to post,autoblog,rss aggregator,Feed,rss to post,syndication,xml import,Post,Posts,aggregation,atom,bot,content,writing
 Requires at least: 4.1
-Tested up to: 5.1
+Tested up to: 5.2
 Requires PHP: 5.3
 Stable tag: trunk
 License: GPLv2 or later
@@ -266,15 +266,15 @@ We are receiving tutorials on text, pdf, videos. All are welcome. Thank you!
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel [at] gmail.com
 
 == Changelog ==
-= ** =
-* Adds some improvements in validations of feeds in XML campaign type.
-* Fixes some issues when filtering the posts in the preview campaign.
-* Agrega validaciones para facilitar el funcionamiento del XML campaign type con otras features como el autocategorias y otras.
-* Corrige algunos mensajes de warning de php en los logs de las campaigns cuando se activa addons y no se actualiza la pagina de settings.
-
-= 2.3.2 Mar 12, 2019 =
-* Improved source code on fetch to improve performance.
+= 2.3.2 Apr 02, 2019 =
+* Fixes the parsing of filters in the Campaign Preview.
+* Fixes some PHP Warning and notices on campaigns logs.
 * Fixes an issue in Unfiltered Post Content feature.
+* Tweaks on XML Campaign types to allow RSS Feeds when Simplepie does not recognize them.
+* Tweaks in XML campaign type on authors and categories nodes.
+* Tweaks the feeds validations in XML campaign type.
+* Added a filter to allow parse the string gotten of the XML feed.
+* Some tweaks to improve performance on campaign runs.
 * Added Save Settings button in danger zone.
 
 = 2.3.1 Mar 02, 2019 =
@@ -1191,6 +1191,6 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 2.3.1 =
+= 2.3.2 =
 * **NOTE: We recommend to test it in development ambients before update**
 * See changelog for more details.
