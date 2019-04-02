@@ -270,6 +270,7 @@ You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-ma
 * Adds some improvements in validations of feeds in XML campaign type.
 * Fixes some issues when filtering the posts in the preview campaign.
 * Agrega validaciones para facilitar el funcionamiento del XML campaign type con otras features como el autocategorias y otras.
+* Corrige algunos mensajes de warning de php en los logs de las campaigns cuando se activa addons y no se actualiza la pagina de settings.
 
 = 2.3.2 Mar 12, 2019 =
 * Improved source code on fetch to improve performance.

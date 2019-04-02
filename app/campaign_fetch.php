@@ -58,6 +58,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		
 		//$this->fetched_posts = $this->campaign['postscount'];
 		$this->cfg = get_option(WPeMatico :: OPTION_KEY);
+		$this->cfg = apply_filters('wpematico_check_options', $this->cfg);
+		
 		$campaign_timeout = (int)$this->cfg['campaign_timeout'];
 
 		wpematico_init_set('max_execution_time', $campaign_timeout);
