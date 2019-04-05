@@ -266,6 +266,10 @@ We are receiving tutorials on text, pdf, videos. All are welcome. Thank you!
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel [at] gmail.com
 
 == Changelog ==
+= 2.3.3 Apr 05, 2019 =
+* Fixes a Fatal error introduced in 2.3.2 with PHP 5.5 or less
+* Tweaks in Settings, System status help texts.
+
 = 2.3.2 Apr 02, 2019 =
 * Fixes the parsing of filters in the Campaign Preview.
 * Fixes some PHP Warning and notices on campaigns logs.

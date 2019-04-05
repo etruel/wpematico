@@ -335,8 +335,9 @@ class WPeMatico_XML_Importer {
 
         $fetch_feed_params = apply_filters('wpematico_xml_fetch_feed_params', $fetch_feed_params, 0, $campaign_data);
         $simplepie =  WPeMatico::fetchFeed($fetch_feed_params);
-
-        $xml_is_not_allowed = apply_filters('wpematico_xml_is_not_allowed', empty( $simplepie->error() ), $campaign_data );
+		
+		$simplepie_error = $simplepie->error();
+        $xml_is_not_allowed = apply_filters('wpematico_xml_is_not_allowed', empty( $simplepie_error ), $campaign_data );
         if( $xml_is_not_allowed ) {
              //wp_die(__('The file is a RSS feed that must use <strong>Feed Fetcher</strong> campaign type instead of XML.', 'wpematico')); 
             echo '<div id="message" class="error notice notice-error is-dismissible"><p>' . __('The file is a RSS feed that must use <strong>Feed Fetcher</strong> campaign type instead of XML.', 'wpematico') . '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>'; 

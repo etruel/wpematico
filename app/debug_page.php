@@ -970,7 +970,7 @@ function wpematico_show_data_info() {
 				</tr>
 				<tr>
 					<td data-export-label="FileSystem-Method"><?php _e( 'FileSystem Method:', 'wpematico' ); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Registered Post Status by different custom post types or plugins.', 'wpematico'  ) . '">[?]</a>'; ?></td>
+					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'FileSystem Method is used for WordPress\' own automatic updates feature. Most common value is "direct".', 'wpematico'  ) . '">[?]</a>'; ?></td>
 					<td><?php if ( 'direct' !== $fsmethod ) echo '<mark class="no">' . $fsmethod . '</mark>'; else echo '<mark class="yes">' . $fsmethod . '</mark>'; ?></td>
 				</tr>
 				<tr>
