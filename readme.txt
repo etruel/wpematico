@@ -1195,6 +1195,6 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 2.3.2 =
+= 2.3.3 =
 * **NOTE: We recommend to test it in development ambients before update**
 * See changelog for more details.
