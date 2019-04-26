@@ -266,6 +266,10 @@ We are receiving tutorials on text, pdf, videos. All are welcome. Thank you!
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel [at] gmail.com
 
 == Changelog ==
+= 2.3.4 Apr , 2019 =
+* Fixes a Warning: count(): Parameter must be an array... on saving campaigns
+* Fixes a Warning: count(): Parameter must be an array... on debug file.
+
 = 2.3.3 Apr 05, 2019 =
 * Fixes a Fatal error introduced in 2.3.2 with PHP 5.5 or less
 * Tweaks in Settings, System status help texts.

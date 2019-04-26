@@ -1307,7 +1307,7 @@ function wpematico_debug_info_get() {
 	$return  = apply_filters( 'wpematico_sysinfo_after_wpematico_config', $return );
 
     // Must-use plugins
-    if( count( $muplugins > 0 ) ) {
+    if( count( (array) $muplugins > 0 ) ) {
         $return .= "\n" . '-- Must-Use Plugins (' .count( (array) $muplugins ) .')' . "\n\n";
 
         foreach( $muplugins as $plugin => $plugin_data ) {

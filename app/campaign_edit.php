@@ -387,7 +387,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 			parse_str($_POST['campaign_wrd2cat'], $wrd2cat);
 			$campaign_wrd2cat = @$wrd2cat['campaign_wrd2cat'];
 
-			for ($id = 0; $id < count($campaign_wrd2cat); $id++) {
+			for ($id = 0; $id < count((array) $campaign_wrd2cat); $id++) {
 				$word = $campaign_wrd2cat['word'][$id];
 				$regex = ($_POST['campaign_wrd2cat_regex'][$id]==1) ? true : false ;
 				if(!empty($word))  {
@@ -404,7 +404,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 			$rewrites = array();
 			parse_str($_POST['campaign_word_origin'], $rewrites);
 			$campaign_word_origin = @$rewrites['campaign_word_origin'];
-			for ($id = 0; $id < count($campaign_word_origin); $id++) {
+			for ($id = 0; $id < count((array) $campaign_word_origin); $id++) {
 				$origin = $campaign_word_origin[$id];
 				$regex = $_POST['campaign_word_option_regex'][$id]==1 ? true : false ;
 				if(!empty($origin))  {
