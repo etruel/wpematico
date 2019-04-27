@@ -247,7 +247,8 @@ function wpematico_addons_custom_columns($column_name, $plugin_file, $plugin_dat
 				}else{
 					$caption = __('Purchase', 'wpematico'); //**** 
 					$title = __('Go to purchase on the etruel\'s store','wpematico');
-					$url   = 'https'.strstr( $plugin_data['buynowURI'], '://');
+					//$url   = 'https'.strstr( $plugin_data['buynowURI'], '://');
+					$url   = 'https'.strstr( $plugin_data['PluginURI'], '://');
 				}
 			}
 
