@@ -96,6 +96,22 @@ jQuery(document).ready(function($){
 				wizard_name_array.splice(index_feed_box, 1);
 				wizard_class_array.splice(index_feed_box, 1);
 			}
+			var xmlbox = $("#xml-campaign-box");
+			if (xmlbox.find('h2 span').text().length>0  && xmlbox.is(':visible') && !xmlbox.is(':hidden')) {
+				$cont_wizard++;
+				xmlbox.attr("wizard","wizard_metabox_"+$cont_wizard);
+				xmlbox.addClass("wizard_metabox_"+$cont_wizard);
+				wizard_id_array.splice(1, 0, xmlbox.attr("id"));
+				wizard_name_array.splice(1, 0, xmlbox.find('h2 span').text());
+				wizard_class_array.splice(1, 0, "wizard_metabox_"+$cont_wizard);
+			}
+		} else {
+			index_xml_box = get_box_index_by_id('xml-campaign-box');
+			if ( index_xml_box >= 0 ) {
+				wizard_id_array.splice(index_xml_box, 1);
+				wizard_name_array.splice(index_xml_box, 1);
+				wizard_class_array.splice(index_xml_box, 1);
+			}
 		}
 		
 	});
