@@ -3,6 +3,12 @@ jQuery(document).ready(function($){
 	var wizard_name_array = [];
 	var wizard_class_array =[];
 	var wizard_id_array = [];
+
+	var feeds_box = $("#feeds-box");
+	var feeds_box_name = feeds_box.find('h2 span').text();
+	var feeds_box_class = 'wizard_metabox_9';
+	var feeds_box_id = 'feeds-box';
+
 	if(cont_wizard==0) {
 		$("#prev_wizard").hide(0);
 	} 
@@ -40,8 +46,26 @@ jQuery(document).ready(function($){
 			}	
 		});
 	}
+	function get_box_index_by_id(id) {
+		var index_box = -1;
+		for (var i = wizard_id_array.length - 1; i >= 0; i--) {
+			if ( wizard_id_array[i] == id ) {
+				index_box = i;
+				break;
+			}
+		}
+		return index_box;
+	}
+	$(document).on('change','#thickbox_wizard #campaign_type',function() {
+		var index_feed_box = get_box_index_by_id('feeds-box');
+		
+		// Adds feeds box to wizard if it was removed.
+		if ( index_feed_box == -1) {
+			wizard_id_array.splice(1, 0, feeds_box_id);
+			wizard_name_array.splice(1, 0, feeds_box_name);
+			wizard_class_array.splice(1, 0, feeds_box_class);
+		}
 
-	$(document).on('change','#thickbox_wizard #campaign_type',function(){
 		if($(this).val()=='youtube'){
 			youtubox = $("#youtube-box");
 			if (youtubox.find('h2 span').text().length>0  && youtubox.is(':visible') && !youtubox.is(':hidden')) {
@@ -63,6 +87,17 @@ jQuery(document).ready(function($){
 				wizard_class_array.splice(1, 1);
 			}
 		}
+		
+		if($(this).val()=='xml') {
+			index_feed_box = get_box_index_by_id('feeds-box');
+			if ( index_feed_box >= 0 ) {
+				feeds_box_class = wizard_class_array[index_feed_box];
+				wizard_id_array.splice(index_feed_box, 1);
+				wizard_name_array.splice(index_feed_box, 1);
+				wizard_class_array.splice(index_feed_box, 1);
+			}
+		}
+		
 	});
 
 	console.log('#### -- Event handlers ---- :', $._data($('#campaign_type')[0], "events") );
