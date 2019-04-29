@@ -477,13 +477,34 @@ class wpematico_licenses_handlers {
 			$license = self::get_key($plugin_name);
 			$plugin_title_name = $args['api_data']['item_name'];
 			$license_status = self::get_license_status($plugin_name);
+
+			if ($license != false) {
+					
+				$args_check = array(
+					'license' 	=> $license,
+					'item_name' => urlencode($args['api_data']['item_name']),
+					'url'       => home_url(),
+					'version' 	=> $args['api_data']['version'],
+					'author' 	=> 'Esteban Truelsegaard'	
+				);
+				$api_url = $args['api_url'];
+				$license_data = self::check_license($api_url, $args_check);
+					
+				if (is_object($license_data)) {
+					$license_status = (!empty($license_data->license) ? $license_data->license : $license_status );
+				}
+			}
+
+
 			$status_license_html = '';
 			if ($license_status != false && $license_status == 'valid') {
 				$status_license_html = '<strong>'.__('Status', 'wpematico').':</strong> '.__('Valid', 'wpematico').'<span class="validcheck"> </span>
 										<br/>
 										<input id="'.$plugin_name.'_btn_license_deactivate" class="btn_license_deactivate button-secondary" name="'.$plugin_name.'_btn_license_deactivate" type="button" value="'.__('Deactivate License', 'wpematico').'" style="vertical-align: middle;"/>';
-			} else if ($license_status === 'invalid' || $license_status === 'expired' || $license_status === 'item_name_mismatch' ) {
+			} else if ($license_status === 'invalid' || $license_status === 'item_name_mismatch' ) {
 				$status_license_html = '<strong>'.__('Status', 'wpematico').':</strong> '.__('Invalid', 'wpematico').'<i class="renewcheck"></i>';
+			} else if ($license_status === 'expired') {
+				$status_license_html = '<strong>'.__('Status', 'wpematico').':</strong> '.__('Expired', 'wpematico').'<i class="renewcheck"></i>';
 			} elseif($license_status === 'inactive' || $license_status === 'deactivated' || $license_status === 'site_inactive' ) {
 				$status_license_html = '<strong>'.__('Status', 'wpematico').':</strong> '.__('Inactive', 'wpematico').'<i class="warningcheck"></i>
 				<br/>
@@ -510,15 +531,8 @@ class wpematico_licenses_handlers {
 				</tr>';
 				if ($license != false) {
 					$html_div = '';
-					$args_check = array(
-						'license' 	=> $license,
-						'item_name' => urlencode($args['api_data']['item_name']),
-						'url'       => home_url(),
-						'version' 	=> $args['api_data']['version'],
-						'author' 	=> 'Esteban Truelsegaard'	
-					);
-					$api_url = $args['api_url'];
-					$license_data = self::check_license($api_url, $args_check);
+					
+
 					if (is_object($license_data)) {
 						
 						$currentActivations = $license_data->site_count;
