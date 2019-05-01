@@ -267,10 +267,10 @@ class wpematico_licenses_handlers {
 					$args['facebookfetcher']['api_url'] = 'https://etruel.com';
 					$args['facebookfetcher']['plugin_file'] = FACEBOOKFETCHER_ROOT_FILE;
 					$args['facebookfetcher']['api_data'] = array(
-															'version' 	=> FACEBOOKFETCHER_VER, 				// current version number
-															'item_name' => FACEBOOKFETCHER_ITEM_NAME, 	// name of this plugin
-															'author' 	=> 'Esteban Truelsegaard'  // author of this plugin
-														);
+                                                'version' 	=> FACEBOOKFETCHER_VER, 				// current version number
+                                                'item_name' => FACEBOOKFETCHER_ITEM_NAME, 	// name of this plugin
+                                                'author' 	=> 'Esteban Truelsegaard'  // author of this plugin
+                                        );
 					
 				}
 			}
@@ -539,8 +539,8 @@ class wpematico_licenses_handlers {
 						$activationsLeft = $license_data->activations_left;
 						$activationsLimit = $license_data->license_limit;
 						$expires = $license_data->expires;
-						$expires = substr( $expires, 0, strpos( $expires, " "));
-						
+						$expires = ( $expires=='lifetime')? __('Lifetime','wpematico') : substr( $expires, 0, strpos( $expires, " "));
+
 						if (!empty($license_data->payment_id) && !empty($license_data->license_limit)) {
 							
 							$html_div .= '<small>';
@@ -550,7 +550,7 @@ class wpematico_licenses_handlers {
 										<br/>';
 								
 							}
-							if ( strtotime($expires) < strtotime("+2 weeks") ) {
+							if ( strtotime($expires) < strtotime("+2 weeks") && $license_data->expires != 'lifetime') {
 								$renewalUrl = esc_attr($args['api_url']. '/checkout/?edd_license_key=' . $license); 
 								$html_div .= '<a href="'.$renewalUrl.'">'.__('Renew your license to continue receiving updates and support.', 'wpematico').'</a>
 										<br/>';

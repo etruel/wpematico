@@ -266,7 +266,11 @@ We are receiving tutorials on text, pdf, videos. All are welcome. Thank you!
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel [at] gmail.com
 
 == Changelog ==
-= 2.3.4 Apr , 2019 =
+= 2.3.4 May 01, 2019 =
+* Added a Feed Viewer (Beta) under System Status tab in Settings.
+* Fixes Wizard to work well with XML campaign types.
+* Fixes Licenses screen to display correctly the expired and lifetime licenses.
+* Fixes purchase links on extensions page to go to each product page.
 * Fixes a Warning: count(): Parameter must be an array... on saving campaigns
 * Fixes a Warning: count(): Parameter must be an array... on debug file.
 

@@ -14,6 +14,7 @@ if ( !defined('ABSPATH') ) {
 function wpematico_get_debug_sections() {
 	$sections                = array();
 	$sections['debug_file']  = __( 'Debug File', 'wpematico' );
+	$sections['feed_viewer'] = __( 'Feed Viewer', 'wpematico' );
 	$sections['danger_zone'] = __( 'Danger Zone', 'wpematico' );
 	$sections = apply_filters( 'wpematico_get_debug_sections', $sections );
 
@@ -62,6 +63,185 @@ function wpematico_debug_print_sections () {
 
 }
 add_action( 'wpematico_settings_tab_debug_info', 'wpematico_debug_print_sections' );
+
+add_action('wp_ajax_wpematico_get_feed_file', 'wpematico_feed_viewer');
+function wpematico_feed_viewer() {
+    check_admin_referer('wpematico-feedviewer');
+    if(!isset($_POST['url'])) return false;
+    if(!isset($_POST['_referer']) 
+        or !strpos($_POST['_referer'], "post_type=wpematico&page=wpematico_settings&tab=debug_info&section=feed_viewer"))
+            return false;
+
+    $url=$_POST['url'];
+        $fetch_feed_params = array(
+            'url'           => $url,
+            'stupidly_fast' => true,
+            'max'           => 0,
+            'order_by_date' => false,
+            'force_feed'    => false,
+        );
+
+//		$fetch_feed_params = apply_filters('wpematico_fetch_feed_params_test', $fetch_feed_params, 0, $_POST);
+        $feed = WPeMatico::fetchFeed($fetch_feed_params);
+
+        $errors = $feed->error(); // if no error returned
+
+        if (empty($errors)) {
+            $response['label'] = sprintf(__('The feed <strong>%s</strong> has been parsed successfully.', 'wpematico'), $url);
+            $headers = $feed->data['headers'];
+            $response['label'] .= '<br/><b>'.sprintf(__('Headers.', 'wpematico'), $url).'</b>';
+            foreach ($headers as $key => $value) {
+                $response['label'] .= "<br/>$key => $value";
+            }
+            $response['message'] = $feed->get_raw_data();
+            $response['success'] = true;
+        } else {
+            $response['label'] = sprintf(__('The feed %s cannot be obtained.', 'wpematico'), $url);
+//            $response['label'] .= '<br/>'.sprintf(__('Obtaining URL Contents.', 'wpematico'), $url);
+//            $feed = WPeMatico::wpematico_get_contents($url);
+//            if ($feed) {
+//                $response['label'] .= '<br/>'.sprintf(__('The URL <strong>%s</strong> has been obtained successfully.', 'wpematico'), $url);
+//                $response['message'] = $feed;
+//                $response['success'] = true;
+//            } else {
+//                $response['label'] .= '<br/>'.sprintf(__('The URL %s cannot be obtained.', 'wpematico'), $url);
+                $response['label'] .= '<br/>'.sprintf(__('Obtaining URL Contents with WP Remote Request.', 'wpematico'), $url);
+                $feed = wp_remote_request($url, array('timeout' => 5));
+                if (!is_wp_error($feed)) {
+                    if (isset($feed['response']['code'])) {
+                        if (200 === $feed['response']['code']) {
+                            $response['label'] .= '<br/>'.sprintf(__('The URL <strong>%s</strong> has been obtained.', 'wpematico'), $url);
+                            $response['success'] = true;
+                        } else {
+                            $response['label'] .= '<br/>'.sprintf(__('The URL %s cannot be obtained successfully.', 'wpematico'), $url);
+                            $response['success'] = false;
+                        }
+                        $response['label'] .= '<br/><b>'.sprintf(__('Headers.', 'wpematico'), $url).'</b>';
+                    } else {  //  No 'response'-->'code'
+                        $response['label'] .= '<br/><b>'.sprintf(__('ERROR Headers.', 'wpematico'), $url).'</b>';
+                    }
+                    $response['label'] .= "<br/>Code => ".wp_remote_retrieve_response_code($feed) . ' - ' . wp_remote_retrieve_response_message($feed);
+                    $headers = wp_remote_retrieve_headers($feed);
+                    foreach ($headers as $key => $value) {
+                        $response['label'] .= "<br/>$key => $value";
+                    }
+                    $response['message'] = wp_remote_retrieve_body($feed);
+
+                }else{  //has errors
+                    $response['label'] .= '<br/><b>'.sprintf(__('ERROR. See below for details', 'wpematico'), $url).'</b>';
+                    $is_wp_error = is_wp_error($feed);
+                    $response['message'] = '<pre>'. print_r($is_wp_error, true).'</pre>';
+                }
+            // }
+        }
+        wp_send_json($response);  //echo json & die
+}
+
+/**
+ * Display the debug info tab
+ *
+ * @since       1.2.4
+ * @return      void
+ */
+add_action( 'wpematico_settings_section_feed_viewer', 'wpematico_settings_section_feed_viewer' );
+function wpematico_settings_section_feed_viewer() {  
+    //add_action('wp_ajax_wpematico_test_feed', array( 'WPeMatico', 'Test_feed'));
+    
+    //https://www.ufirstfitness.com/category/general/rss
+?>
+        <div class="wrap">
+                <div id="poststuff">
+                    <div id="post-body" class="metabox-holder columns-<?php echo 1 == get_current_screen()->get_columns() ? '1' : '2'; ?>">
+                        <?php wpematico_status_rightcolumn(); ?>
+
+                        <div id="postbox-container-2" class="postbox-container">
+                            <table class="widefat wpematico-system-status-debug" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="3" data-export-label="WPeMatico Status">
+                                            <p class="text">
+                                                <?php _e('Paste a feed link here and the content will be shown on the textarea.'); ?>
+                                            </p>
+                                           <script type="text/javascript">
+                                                jQuery(document).ready(function($){
+                                                    
+                                                    $(document).on("keypress", '#feedlink', function(e) {
+                                                        if( e.keyCode == 13 )  {  //Ignore Enter key
+                                                            e.preventDefault();
+                                                            return false;
+                                                        }
+                                                    });
+                                                   
+                                                    $(document).on("click", '#getfeedbutton', function(e) {
+                                                        if( $('#feedlink').val()=='' ) {
+                                                            e.preventDefault();
+                                                            return False;
+                                                        }                                                    
+                                                        var working = $('.update-message');
+                                                        $(working)
+                                                            .removeClass("notice-error")
+                                                            .removeClass("updated-message")
+                                                            .addClass('updating-message');
+                                                        var data = {
+                                                            action: "wpematico_get_feed_file",
+                                                            url: $('#feedlink').val(), 
+                                                            _wpnonce: $('#_wpnonce').val(),
+                                                            _referer: $("input[name='_wp_http_referer']").val(),
+                                                        };
+                                                        $.post(ajaxurl, data, function(response) {  
+                                                            //    alert( response.message );
+                                                            $('#headersresponse').html(response.label);
+                                                            $('#wpematico-feedinfo').val(response.message);
+                                                            $('.update-message')
+                                                                .removeClass("updating-message")
+                                                                .addClass('updated-message');
+                                                        }).fail(function() {
+                                                            $('#wpematico-feedinfo').html( "FAIL" );
+                                                            $('.update-message')
+                                                                .removeClass("updating-message")
+                                                                .addClass('.notice-error');
+                                                        });
+                                                        e.preventDefault();
+                                                    });
+                                               });
+                                           </script>
+                                            <p id="seefeed" style="">
+                                                <form action="<?php echo esc_url(admin_url('edit.php?post_type=wpematico&page=wpematico_settings&tab=debug_info')); ?>" method="post" dir="ltr">
+                                                    <label><b><?php _e('Feed URL.', 'wpematico'); ?> <input class="large-text" id="feedlink" value="" type="text" name="feedlink"/></b></label><br/>
+                                                    <p class="submit">
+                                                        <a id="getfeedbutton" class="button-primary" href="#"><?php _e('Get Feed','wpematico'); ?></a>
+                                                    </p>
+                                                    <div class="update-message notice inline notice-warning notice-alt">
+                                                        <p id="headersresponse">Fill in a Feed URL and click the Get Feed Button.
+                                                        </p>
+                                                    </div>
+                                                    <div style="min-width: 650px;">
+                                                        <textarea readonly="readonly" id="wpematico-feedinfo" name="wpematico-feedinfo" style="width: 100%;min-height: 370px;">
+                                                            <?php _e('Get Feed and see here its contents.','wpematico'); ?>
+                                                        </textarea>
+                                                        <?php wp_nonce_field('wpematico-feedviewer'); ?>
+                                                        <label onclick="jQuery('#wpematico-feedinfo').focus();jQuery('#wpematico-feedinfo').select()" ><?php _e('SELECT ALL', 'wpematico'); ?></label>
+                                                    </div>
+
+                                                </form>
+                                                <p></p>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p></p>
+
+                        </div>		<!--  postbox-container-2 -->
+                    </div> <!-- #post-body -->
+                </div> <!-- #poststuff -->
+
+            </div>
+            <?php
+    
+}
 
 /**
  * Display the debug info tab
@@ -146,172 +326,173 @@ function wpematico_FriendlyErrorType($type)
 function wpematico_settings_section_debug_file() {   
 ?>
 <div class="wrap">
-		<div id="poststuff">
-			<div id="post-body" class="metabox-holder columns-<?php echo 1 == get_current_screen()->get_columns() ? '1' : '2'; ?>">
-				<div id="postbox-container-1" class="postbox-container">
-					<div id="side-sortables" class="meta-box-sortables ui-sortable">
-						<div id="wpem-about" class="postbox">
-							<button type="button" class="handlediv button-link" aria-expanded="true">
-								<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
-								<span class="toggle-indicator" aria-hidden="true"></span>
-							</button>
-							<h2 class="hndle"><?php _e('About', 'wpematico'); ?></h2>
-							<div class="inside">
-								<p><b>WPeMatico</b> <?php echo WPEMATICO_VERSION; ?> Version</p>
-								<p class="icon_version">
-									<a href="http://www.wpematico.com" target="_Blank" title="<?php _e('Go to the new WPeMatico WebSite', 'wpematico'); ?>">
-										<img class="logover" src="<?php echo WPeMatico :: $uri; ?>/images/icon-512x512.jpg" title="">	
-										<span id="wpematico-website">WPeMatico Website</span><br>
-									</a><span id="wpematico-websiteinfo"><?php _e('Comments & Tutorials', 'wpematico'); ?></span>
-								</p>
-								<p class="icon_version">
-									<a href="https://etruel.com" target="_Blank" title="<?php _e('WPeMatico Addons in etruel.com store', 'wpematico'); ?>">
-										<img class="logover" src="<?php echo WPeMatico :: $uri; ?>/images/etruelcom_ico.png" title="">	
-										<span id="wpematico-etruel">etruel.com</span><br>
-									</a><span id="wpematico-store"><?php _e('Addons store, FAQs & Support', 'wpematico'); ?></span>
-								</p>
-								<p><?php _e('Thanks for use & test this plugin.', 'wpematico'); ?></p>
-								<p></p>
-								<p><?php _e('If you like this plugin, you can write a 5 star review on Wordpress.', 'wpematico'); ?></p>
-								<style type="text/css">#linkrate:before { content: "\2605\2605\2605\2605\2605";font-size: 18px;}
-									#linkrate { font-size: 18px;}</style>
-								<p style="text-align: center;">
-									<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" id="linkrate" class="button" target="_Blank" title="Click here to rate plugin on Wordpress">  Rate </a>
-								</p>
-								<p></p>
-								<p style="text-align: center;">
-									<input type="button" class="button-primary" name="buypro" value="<?php _e('Buy PRO version online', 'wpematico'); ?>" onclick="javascript:window.open('https://etruel.com/downloads/wpematico-pro/');return false;"/>
-								</p>
-								<p></p>
-							</div>
-						</div>
-
-						<div id="promo-extended" class="postbox " >
-							<div class="ribbon"><span>HOT SALES</span></div>
-							<button type="button" class="handlediv" aria-expanded="true"><span class="screen-reader-text">Toggle panel: Starter Packages</span><span class="toggle-indicator" aria-hidden="true"></span></button>
-							<h2 class='hndle'><span>Starter Bundled Extensions</span></h2>
-							<div class="inside">
-								<div class="sidebar-promo worker" id="sidebar-promo">
-
-									<h3><span class="dashicons dashicons-welcome-learn-more" style="font-size-adjust: 1;width: 50px;"></span><?php _e('Extended functionalities', 'wpematico'); ?></h3>
-									<p>
-										<?php
-										echo sprintf(__('Many AddOns makes the %s with the most wanted functionalities.') . '  ', '<a href="https://etruel.com/starter-packages/" target="_blank" rel="noopener"><strong>Starter Packages</strong></a>');
-										?> 
-										<span>
-											<?php _e('Lot of new features with contents, images, tags, filters, custom fields, custom feed tags and much more extends in the WPeMatico free plugin, going further than RSS feed limits and takes you to a new experience.', 'wpematico'); ?>
-										</span>
-									</p>
-									<p style="text-align: center;">
-										<a class="button button-primary" title="Features and prices" href="https://etruel.com/starter-packages/" target="_blank"><?php _e('Starter Packages Page', 'wpematico'); ?></a>
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<div id="promo-content" class="postbox">
-							<button type="button" class="handlediv" aria-expanded="true">
-								<span class="screen-reader-text">Toggle panel: Support</span>
-								<span class="toggle-indicator" aria-hidden="true"></span>
-							</button>
-							<h2 class='hndle'><span>Support</span></h2>
-							<div class="inside">
-								<div class="sidebar-promo" id="sidebar-promo">
-									<h3><span class="dashicons dashicons-sos" style="font-size-adjust: 1;width: 50px;"></span><?php _e('Have some questions?', 'wpematico'); ?></h3>
-									<p>
-										<?php _e('You may find answers in our', 'wpematico'); ?> <a target="_blank" href="https://etruel.com/faqs/">FAQ</a><br><?php _e('You may', 'wpematico'); ?> <a target="_blank" href="https://etruel.com/my-account/support/"><?php _e('contact us', 'wpematico'); ?></a> <?php _e('with customization requests and suggestions.', 'wpematico'); ?><br> 
-										<?php _e('Please visit our website to learn about our free and premium services at', 'wpematico'); ?> <a href="https://etruel.com/downloads/premium-support/" target="_blank" title="etruel.com">etruel.com</a>
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<div id="promo-translate" class="postbox " >
-							<button type="button" class="handlediv" aria-expanded="true">
-								<span class="screen-reader-text">Toggle panel: Translation</span>
-								<span class="toggle-indicator" aria-hidden="true"></span>
-							</button>
-							<h2 class='hndle'><span>Translation</span></h2>
-							<div class="inside">
-								<div class="sidebar-promo" id="sidebar-translate">
-									<h3 class="translate"><span class="dashicons dashicons-translation" style="font-size-adjust: 1;width: 50px;"></span><?php _e('Translation friendly', 'wpematico'); ?></h3>
-									<p><?php _e('Want to improve the texts or translate the plugin to your native language?', 'wpematico'); ?></p>
-									<label style="text-align: center;font-weight: bold;margin: 10px;" onclick="jQuery('#howtranslate').toggle();">Show / Hide steps</label>
-									<ol id="howtranslate" style="display: none;">
-										Download <a href="https://poedit.net/wordpress" target="_blank" title="See the docs">Poedit</a>.<br />
-										Download <a href="https://downloads.wordpress.org/plugin/wpematico.zip" target="_blank" title="Get it from wp.org">WPeMatico</a>.<br />
-										<li>Launch Poedit.</li>
-										<li>Edit a translation using existing .po file in lang folder.
-											In case if you find errors in existing translations.</li>
-										<li>Create new translation to translate into new language.</li>
-									</ol>
-								</div>
-							</div>
-						</div>
-
-						<div class="postbox">
-							<h2 class="handle"><?php _e('The Perfect Package', 'wpematico'); ?></h2>
-							<div class="inside">
-								<p id="left1" onmouseover="jQuery(this).css('opacity',0.9);this.style.backgroundColor='#111'" onmouseout="jQuery(this).css('opacity',0.5);this.style.backgroundColor='#fff'" style="text-align:center;opacity: 0.5;border-radius: 14px 14px 0 0;"><a href="https://etruel.com/downloads/wpematico-perfect-package/" target="_Blank" title="Go to etruel WebSite"><img style="width: 100%;" src="https://etruel.com/wp-content/uploads/edd/2016/09/wpematico_package_1024x512-300x150.png" title=""></a><br />
-									WPeMatico The Perfect Package</p>
-							</div>
-						</div>
-						
-					</div>		<!-- #side-sortables -->
-				</div>		<!--  postbox-container-1 -->		
-
-	<?php do_action('wpematico_system_status_page_before'); ?>
-	<div id="postbox-container-2" class="postbox-container">
-	<table class="widefat wpematico-system-status-debug" cellspacing="0">
-		<tbody>
+    <div id="poststuff">
+        <div id="post-body" class="metabox-holder columns-<?php echo 1 == get_current_screen()->get_columns() ? '1' : '2'; ?>">
+            <?php wpematico_status_rightcolumn(); ?>
+            <?php do_action('wpematico_system_status_page_before'); ?>
+            <div id="postbox-container-2" class="postbox-container">
+                <table class="widefat wpematico-system-status-debug" cellspacing="0">
+                    <tbody>
 			<tr>
-				<td colspan="3" data-export-label="WPeMatico Status">
-					<p class="text">
-						<?php _e('Use this file to get support on '); ?><a href="https://etruel.com/support/" target="_blank" rel="follow">etruel's website</a>.
-					</p>
-					<span class="get-system-status">
-						<a href="javascript:;" onclick='jQuery( "#debug-report" ).slideDown();jQuery( this ).parent().fadeOut();' class="button-primary debug-report"><?php _e('Get System Report', 'wpematico' ); ?></a>
-						<span class="system-report-msg"><?php _e('Click the button to see and download the system report.', 'wpematico' ); ?></span>
-					</span>
-					<div id="debug-report" style="display: none;">
-						<form action="<?php echo esc_url( admin_url( 'edit.php?post_type=wpematico&page=wpematico_settings&tab=debug_info' ) ); ?>" method="post" dir="ltr">
-							<label><input class="checkbox" value="1" type="checkbox" name="alsophpinfo" /> <?php _e('Include also PHPInfo() if available.', 'wpematico' ); ?></label><br/>
-							<label><input class="checkbox" value="1" type="checkbox" checked="checked" name="alsocampaignslogs" /> <?php _e('Include also Last Campaigns Log.', 'wpematico' ); ?></label><br/>
-							<?php do_action('wpematico_debug_page_form_options'); ?>
-							<input type="hidden" name="wpematico-action" value="download_debug_info" />
-							<p class="submit">
-								<?php submit_button( 'Download Debug Info File', 'primary', 'wpematico-download-debug-info', false ); ?>
-							</p>
-							<div style="max-width: 650px;">
-							<textarea readonly="readonly" id="debug-info-textarea" name="wpematico-sysinfo" 
-									  title="<?php _e('To copy the system info, click below then press Ctrl + C (PC) or Cmd + C (Mac).',  'wpematico'); ?>"
-									  style="width: 100%;min-height: 370px;"
-							><?php 
-								echo wpematico_debug_info_get(); 
-							?></textarea>
-								<?php  wp_nonce_field('wpematico-settings'); ?>
-								<label onclick="jQuery('#debug-info-textarea').focus();jQuery('#debug-info-textarea').select()" ><?php _e('SELECT ALL', 'wpematico'); ?></label>
-							</div>
-
-						</form>
-						<p></p>
-					</div>
-					
-				</td>
+                            <td colspan="3" data-export-label="WPeMatico Status">
+                                <p class="text">
+                                    <?php _e('Use this file to get support on '); ?><a href="https://etruel.com/support/" target="_blank" rel="follow">etruel's website</a>.
+                                </p>
+                                <span class="get-system-status">
+                                    <a href="javascript:;" onclick='jQuery( "#debug-report" ).slideDown();jQuery( this ).parent().fadeOut();' class="button-primary debug-report"><?php _e('Get System Report', 'wpematico' ); ?></a>
+                                    <span class="system-report-msg"><?php _e('Click the button to see and download the system report.', 'wpematico' ); ?></span>
+                                </span>
+                                <div id="debug-report" style="display: none;">
+                                    <form action="<?php echo esc_url( admin_url( 'edit.php?post_type=wpematico&page=wpematico_settings&tab=debug_info' ) ); ?>" method="post" dir="ltr">
+                                        <label><input class="checkbox" value="1" type="checkbox" name="alsophpinfo" /> <?php _e('Include also PHPInfo() if available.', 'wpematico' ); ?></label><br/>
+                                        <label><input class="checkbox" value="1" type="checkbox" checked="checked" name="alsocampaignslogs" /> <?php _e('Include also Last Campaigns Log.', 'wpematico' ); ?></label><br/>
+                                        <?php do_action('wpematico_debug_page_form_options'); ?>
+                                        <input type="hidden" name="wpematico-action" value="download_debug_info" />
+                                        <p class="submit">
+                                                <?php submit_button( 'Download Debug Info File', 'primary', 'wpematico-download-debug-info', false ); ?>
+                                        </p>
+                                        <div style="max-width: 650px;">
+                                        <textarea readonly="readonly" id="debug-info-textarea" name="wpematico-sysinfo" 
+                                                          title="<?php _e('To copy the system info, click below then press Ctrl + C (PC) or Cmd + C (Mac).',  'wpematico'); ?>"
+                                                          style="width: 100%;min-height: 370px;"
+                                        ><?php 
+                                                echo wpematico_debug_info_get(); 
+                                        ?></textarea>
+                                                <?php  wp_nonce_field('wpematico-settings'); ?>
+                                                <label onclick="jQuery('#debug-info-textarea').focus();jQuery('#debug-info-textarea').select()" ><?php _e('SELECT ALL', 'wpematico'); ?></label>
+                                        </div>
+                                    </form>
+                                    <p></p>
+                                </div>
+                            </td>
 			</tr>
-		</tbody>
-	</table>
-	
-	<p></p>
-	<?php wpematico_show_data_info(); 	?>
-	</div>		<!--  postbox-container-2 -->
-		</div> <!-- #post-body -->
-	</div> <!-- #poststuff -->
-
+                    </tbody>
+                </table>
+        	<p></p>
+                <?php wpematico_show_data_info(); 	?>
+            </div>		<!--  postbox-container-2 -->
+        </div> <!-- #post-body -->
+    </div> <!-- #poststuff -->
 </div>
 <?php 
 }
 add_action( 'wpematico_settings_section_debug_file', 'wpematico_settings_section_debug_file' );
+
+function wpematico_status_rightcolumn() {  ?>
+    <div id="postbox-container-1" class="postbox-container">
+            <div id="side-sortables" class="meta-box-sortables ui-sortable">
+                    <div id="wpem-about" class="postbox">
+                            <button type="button" class="handlediv button-link" aria-expanded="true">
+                                    <span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
+                                    <span class="toggle-indicator" aria-hidden="true"></span>
+                            </button>
+                            <h2 class="hndle"><?php _e('About', 'wpematico'); ?></h2>
+                            <div class="inside">
+                                    <p><b>WPeMatico</b> <?php echo WPEMATICO_VERSION; ?> Version</p>
+                                    <p class="icon_version">
+                                            <a href="http://www.wpematico.com" target="_Blank" title="<?php _e('Go to the new WPeMatico WebSite', 'wpematico'); ?>">
+                                                    <img class="logover" src="<?php echo WPeMatico :: $uri; ?>images/icon-256x256.png" title="">	
+                                                    <span id="wpematico-website">WPeMatico Website</span><br>
+                                            </a><span id="wpematico-websiteinfo"><?php _e('Comments & Tutorials', 'wpematico'); ?></span>
+                                    </p>
+                                    <p class="icon_version">
+                                            <a href="https://etruel.com" target="_Blank" title="<?php _e('WPeMatico Addons in etruel.com store', 'wpematico'); ?>">
+                                                    <img class="logover" src="<?php echo WPeMatico :: $uri; ?>/images/etruelcom_ico.png" title="">	
+                                                    <span id="wpematico-etruel">etruel.com</span><br>
+                                            </a><span id="wpematico-store"><?php _e('Addons store, FAQs & Support', 'wpematico'); ?></span>
+                                    </p>
+                                    <p><?php _e('Thanks for use & test this plugin.', 'wpematico'); ?></p>
+                                    <p></p>
+                                    <p><?php _e('If you like this plugin, you can write a 5 star review on Wordpress.', 'wpematico'); ?></p>
+                                    <style type="text/css">#linkrate:before { content: "\2605\2605\2605\2605\2605";font-size: 18px;}
+                                            #linkrate { font-size: 18px;}</style>
+                                    <p style="text-align: center;">
+                                            <a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" id="linkrate" class="button" target="_Blank" title="Click here to rate plugin on Wordpress">  Rate </a>
+                                    </p>
+                                    <p></p>
+                                    <p style="text-align: center;">
+                                            <input type="button" class="button-primary" name="buypro" value="<?php _e('Buy PRO version online', 'wpematico'); ?>" onclick="javascript:window.open('https://etruel.com/downloads/wpematico-pro/');return false;"/>
+                                    </p>
+                                    <p></p>
+                            </div>
+                    </div>
+
+                    <div id="promo-extended" class="postbox " >
+                            <div class="ribbon"><span>HOT SALES</span></div>
+                            <button type="button" class="handlediv" aria-expanded="true"><span class="screen-reader-text">Toggle panel: Starter Packages</span><span class="toggle-indicator" aria-hidden="true"></span></button>
+                            <h2 class='hndle'><span>Starter Bundled Extensions</span></h2>
+                            <div class="inside">
+                                    <div class="sidebar-promo worker" id="sidebar-promo">
+
+                                            <h3><span class="dashicons dashicons-welcome-learn-more" style="font-size-adjust: 1;width: 50px;"></span><?php _e('Extended functionalities', 'wpematico'); ?></h3>
+                                            <p>
+                                                    <?php
+                                                    echo sprintf(__('Many AddOns makes the %s with the most wanted functionalities.') . '  ', '<a href="https://etruel.com/starter-packages/" target="_blank" rel="noopener"><strong>Starter Packages</strong></a>');
+                                                    ?> 
+                                                    <span>
+                                                            <?php _e('Lot of new features with contents, images, tags, filters, custom fields, custom feed tags and much more extends in the WPeMatico free plugin, going further than RSS feed limits and takes you to a new experience.', 'wpematico'); ?>
+                                                    </span>
+                                            </p>
+                                            <p style="text-align: center;">
+                                                    <a class="button button-primary" title="Features and prices" href="https://etruel.com/starter-packages/" target="_blank"><?php _e('Starter Packages Page', 'wpematico'); ?></a>
+                                            </p>
+                                    </div>
+                            </div>
+                    </div>
+
+                    <div id="promo-content" class="postbox">
+                            <button type="button" class="handlediv" aria-expanded="true">
+                                    <span class="screen-reader-text">Toggle panel: Support</span>
+                                    <span class="toggle-indicator" aria-hidden="true"></span>
+                            </button>
+                            <h2 class='hndle'><span>Support</span></h2>
+                            <div class="inside">
+                                    <div class="sidebar-promo" id="sidebar-promo">
+                                            <h3><span class="dashicons dashicons-sos" style="font-size-adjust: 1;width: 50px;"></span><?php _e('Have some questions?', 'wpematico'); ?></h3>
+                                            <p>
+                                                    <?php _e('You may find answers in our', 'wpematico'); ?> <a target="_blank" href="https://etruel.com/faqs/">FAQ</a><br><?php _e('You may', 'wpematico'); ?> <a target="_blank" href="https://etruel.com/my-account/support/"><?php _e('contact us', 'wpematico'); ?></a> <?php _e('with customization requests and suggestions.', 'wpematico'); ?><br> 
+                                                    <?php _e('Please visit our website to learn about our free and premium services at', 'wpematico'); ?> <a href="https://etruel.com/downloads/premium-support/" target="_blank" title="etruel.com">etruel.com</a>
+                                            </p>
+                                    </div>
+                            </div>
+                    </div>
+
+                    <div id="promo-translate" class="postbox " >
+                            <button type="button" class="handlediv" aria-expanded="true">
+                                    <span class="screen-reader-text">Toggle panel: Translation</span>
+                                    <span class="toggle-indicator" aria-hidden="true"></span>
+                            </button>
+                            <h2 class='hndle'><span>Translation</span></h2>
+                            <div class="inside">
+                                    <div class="sidebar-promo" id="sidebar-translate">
+                                            <h3 class="translate"><span class="dashicons dashicons-translation" style="font-size-adjust: 1;width: 50px;"></span><?php _e('Translation friendly', 'wpematico'); ?></h3>
+                                            <p><?php _e('Want to improve the texts or translate the plugin to your native language?', 'wpematico'); ?></p>
+                                            <label style="text-align: center;font-weight: bold;margin: 10px;" onclick="jQuery('#howtranslate').toggle();">Show / Hide steps</label>
+                                            <ol id="howtranslate" style="display: none;">
+                                                    Download <a href="https://poedit.net/wordpress" target="_blank" title="See the docs">Poedit</a>.<br />
+                                                    Download <a href="https://downloads.wordpress.org/plugin/wpematico.zip" target="_blank" title="Get it from wp.org">WPeMatico</a>.<br />
+                                                    <li>Launch Poedit.</li>
+                                                    <li>Edit a translation using existing .po file in lang folder.
+                                                            In case if you find errors in existing translations.</li>
+                                                    <li>Create new translation to translate into new language.</li>
+                                            </ol>
+                                    </div>
+                            </div>
+                    </div>
+
+                    <div class="postbox">
+                            <h2 class="handle"><?php _e('The Perfect Package', 'wpematico'); ?></h2>
+                            <div class="inside">
+                                    <p id="left1" onmouseover="jQuery(this).css('opacity',0.9);this.style.backgroundColor='#111'" onmouseout="jQuery(this).css('opacity',0.5);this.style.backgroundColor='#fff'" style="text-align:center;opacity: 0.5;border-radius: 14px 14px 0 0;"><a href="https://etruel.com/downloads/wpematico-perfect-package/" target="_Blank" title="Go to etruel WebSite"><img style="width: 100%;" src="https://etruel.com/wp-content/uploads/edd/2016/09/wpematico_package_1024x512-300x150.png" title=""></a><br />
+                                            WPeMatico The Perfect Package</p>
+                            </div>
+                    </div>
+
+            </div>		<!-- #side-sortables -->
+    </div>		<!--  postbox-container-1 -->		
+<?php
+}
+
 
 function wpematico_get_plugin_new_version( $plugin ) {
 	static $plugin_updates = array(); // Cache received responses.
