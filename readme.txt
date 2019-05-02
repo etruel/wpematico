@@ -1,9 +1,9 @@
 ﻿=== WPeMatico RSS Feed Fetcher ===
-Contributors: etruel, sniuk 
+Contributors: etruel, sniuk, khaztiel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,RSS to Post,Feed to Post,XML to post,autoblog,rss aggregator,Feed,rss to post,syndication,xml import,Post,Posts,aggregation,atom,bot,content,writing
 Requires at least: 4.1
-Tested up to: 5.1.1
+Tested up to: 5.2
 Requires PHP: 5.3
 Stable tag: trunk
 License: GPLv2 or later
@@ -1203,6 +1203,6 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 2.3.3 =
+= 2.3.4 =
 * **NOTE: We recommend to test it in development ambients before update**
 * See changelog for more details.
