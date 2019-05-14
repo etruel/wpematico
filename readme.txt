@@ -266,6 +266,11 @@ We are receiving tutorials on text, pdf, videos. All are welcome. Thank you!
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel [at] gmail.com
 
 == Changelog ==
+= 2.3.5 May 14, 2019 =
+* Fixes auto disabled Add Auto Categories checkbox on campaign edit.
+* Fixes Must-Use Plugins info on System Status.
+* Tweaks in Settings, System status texts and images.
+
 = 2.3.4 May 01, 2019 =
 * Added a Feed Viewer (Beta) under System Status tab in Settings.
 * Fixes Wizard to work well with XML campaign types.
@@ -1203,6 +1208,6 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 2.3.4 =
+= 2.3.5 =
 * **NOTE: We recommend to test it in development ambients before update**
 * See changelog for more details.

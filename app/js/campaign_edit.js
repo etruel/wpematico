@@ -436,9 +436,13 @@ function wpematico_events_xml_campaign($) {
 	});
 
 	if ( wpematico_xml_is_empty_node($('#campaign_xml_nodepost_categories').val()) ) {
+            if ($('#campaign_type').val() == 'xml') {
 		$('#campaign_autocats').prop('checked', false);
+            }
 	} else {
+            if ($('#campaign_type').val() == 'xml') {
 		$('#campaign_autocats').prop('checked', true);
+            }
 	}
 
 
