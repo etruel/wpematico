@@ -1,5 +1,5 @@
 ## WPeMatico 
-https://bitbucket.org/etruel/wpematico 
+https://github.com/etruel/wpematico 
 
 **Repository for in-development version of WPeMatico Wordpress Plugin**
 
