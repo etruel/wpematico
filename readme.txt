@@ -3,7 +3,7 @@ Contributors: etruel, sniuk, khaztiel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,RSS to Post,Feed to Post,XML to post,autoblog,rss aggregator,Feed,rss to post,syndication,xml import,Post,Posts,aggregation,atom,bot,content,writing
 Requires at least: 4.1
-Tested up to: 5.2
+Tested up to: 5.2.2
 Requires PHP: 5.3
 Stable tag: trunk
 License: GPLv2 or later
@@ -266,6 +266,10 @@ We are receiving tutorials on text, pdf, videos. All are welcome. Thank you!
 You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel [at] gmail.com
 
 == Changelog ==
+= 2.3.6 Jul 25, 2019 =
+* Fixes some javascript issues for Pro users.
+* Some tweaks in addons page.
+
 = 2.3.5 May 14, 2019 =
 * Fixes auto disabled Add Auto Categories checkbox on campaign edit.
 * Fixes Must-Use Plugins info on System Status.
@@ -1208,6 +1212,6 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 2.3.5 =
+= 2.3.6 =
 * **NOTE: We recommend to test it in development ambients before update**
 * See changelog for more details.

@@ -245,7 +245,7 @@ function wpematico_addons_custom_columns($column_name, $plugin_file, $plugin_dat
 					$title = __('Go to plugin URI','wpematico');
 					$url   = '#'.$plugin_data['Name'];
 				}else{
-					$caption = __('Purchase', 'wpematico'); //**** 
+					$caption = __('Purchase', 'wpematico'); //**** Bundled products always show 'Purchase'
 					$title = __('Go to purchase on the etruel\'s store','wpematico');
 					//$url   = 'https'.strstr( $plugin_data['buynowURI'], '://');
 					$url   = 'https'.strstr( $plugin_data['PluginURI'], '://');
