@@ -3,7 +3,7 @@ Contributors: etruel, sniuk, khaztiel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,RSS to Post,Feed to Post,XML to post,autoblog,rss aggregator,Feed,rss to post,syndication,xml import,Post,Posts,aggregation,atom,bot,content,writing
 Requires at least: 4.1
-Tested up to: 5.2.2
+Tested up to: 5.3
 Requires PHP: 5.3
 Stable tag: trunk
 License: GPLv2 or later
@@ -23,7 +23,7 @@ As for image processing, it uses the core functions of Wordpress. Failing doing 
 
 If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/plugin-reviews/wpematico?rate=5#new-post) on Wordpress. Thanks! :)
 
-You can submit any bug in the [bugtracker](https://bitbucket.org/etruel/wpematico/issues).
+You can submit any bug in the [bugtracker](https://github.com/etruel/wpematico/issues).
 
 #### FEATURES:
 > #### FREE
@@ -167,7 +167,7 @@ I took code from many, many other plugins, but for the first beta versions of th
 
 This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version. 
 
-Author page in spanish:[NetMdP](http://www.netmdp.com). 
+Author page in spanish:[NetMdP](https://www.netmdp.com). 
 Plugin and Add-ons page:[etruel.com](https://etruel.com).
 
 == Installation ==
@@ -263,9 +263,14 @@ Later I've added subtitles and added it above in this page.
 Branco [WebHostingGeeks.com](http://webhostinggeeks.com/user-reviews/).  Romanian & Slovak languages files.
 
 We are receiving tutorials on text, pdf, videos. All are welcome. Thank you!
-You can send your files to [NetMdP](http://www.netmdp.com/wpematico/) or to e-mail etruel [at] gmail.com
+You can send your files to [NetMdP](https://www.netmdp.com/wpematico/) or to e-mail wpematico [at] etruel.com
 
 == Changelog ==
+= 2.3.7 Aug 29, 2019 =
+* Added on campaigns custom statuses without domains added to WP.
+* Added wp filters to post status.
+* Many tweaks on the php code.
+
 = 2.3.6 Jul 25, 2019 =
 * Fixes some javascript issues for Pro users.
 * Some tweaks in addons page.

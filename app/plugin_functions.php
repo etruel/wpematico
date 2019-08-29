@@ -5,7 +5,7 @@
  * Contains all the hooks to be called for the plugins wordpress page and the activate/deactivate/uninstall methods.
 
  * @package   wpematico
- * @link      https://bitbucket.org/etruel/wpematico
+ * @link      https://github.com/etruel/wpematico
  * @author    Esteban Truelsegaard <etruel@etruel.com>
  * @copyright 2006-2018 Esteban Truelsegaard
  * @license   GPL v2 or later

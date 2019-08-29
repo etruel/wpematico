@@ -1150,9 +1150,7 @@ public static function feeds_box( $post ) {
 
 		</div>
 
-		<?php endif; ?>
-
-		<?php
+		<?php endif; 
 	}
 
 	//********************************
@@ -1171,79 +1169,79 @@ public static function feeds_box( $post ) {
 	public static function tags_box( $post ) {
 		global $post, $campaign_data, $cfg, $helptip;
 		$campaign_tags = $campaign_data['campaign_tags'];
-		?>			
-		<?php if( $cfg['nonstatic'] ) { NoNStatic :: protags($post); }  ?>
-			<p><b><?php echo '<label for="campaign_tags">' . __('Tags:', 'wpematico' ) . '</label>'; ?></b>
-				<textarea style="" class="large-text" id="campaign_tags" name="campaign_tags"><?php echo stripslashes($campaign_tags); ?></textarea><br />
-				<?php echo __('Enter comma separated list of Tags.', 'wpematico' ); ?></p>
-				<?php if( $cfg['nonstatic'] ) { NoNStatic :: protags1($post); }  ?>
-					<?php
-				}
+		
+		if( $cfg['nonstatic'] ) { NoNStatic :: protags($post); }  ?>
+		<p><b><?php echo '<label for="campaign_tags">' . __('Tags:', 'wpematico' ) . '</label>'; ?></b>
+		<textarea style="" class="large-text" id="campaign_tags" name="campaign_tags"><?php echo stripslashes($campaign_tags); ?></textarea><br />
+		<?php echo __('Enter comma separated list of Tags.', 'wpematico' ); ?></p>
+		<?php if( $cfg['nonstatic'] ) { NoNStatic :: protags1($post); }  ?>
+		<?php
+	}
 
 	//********************************
-				public static function cat_box( $post ) {
-					global $post, $campaign_data, $helptip;
-					$campaign_categories = $campaign_data['campaign_categories'];
-					$campaign_autocats = $campaign_data['campaign_autocats'];
-					$campaign_parent_autocats = $campaign_data['campaign_parent_autocats'];
+	public static function cat_box( $post ) {
+		global $post, $campaign_data, $helptip;
+		$campaign_categories = $campaign_data['campaign_categories'];
+		$campaign_autocats = $campaign_data['campaign_autocats'];
+		$campaign_parent_autocats = $campaign_data['campaign_parent_autocats'];
 
-		//get_categories()
-					$args = array(
-						'descendants_and_self' => 0,
-						'selected_cats' => $campaign_categories,
-						'popular_cats' => false,
-						'walker' => null,
-						'taxonomy' => 'category',
-						'checked_ontop' => true
-						);
+//get_categories()
+		$args = array(
+			'descendants_and_self' => 0,
+			'selected_cats' => $campaign_categories,
+			'popular_cats' => false,
+			'walker' => null,
+			'taxonomy' => 'category',
+			'checked_ontop' => true
+			);
 
-		//$aa = wp_terms_checklist( 0, $args );
-						?>
-						<input class="checkbox" type="checkbox"<?php checked($campaign_autocats ,true);?> name="campaign_autocats" value="1" id="campaign_autocats"/> <b><?php echo '<label for="campaign_autocats">' . __('Add auto Categories', 'wpematico' ) . '</label>'; ?></b>
-						<span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['autocats']; ?>"></span>
-						<div id="autocats_container" <?php if(!$campaign_autocats) echo 'style="display:none;"';?>>
-							<br/>
-							<b><?php echo '<label for="campaign_parent_autocats">' . __('Parent category to auto categories', 'wpematico' ) . '</label>'; ?></b>
-							<span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['parent_autocats']; ?>"></span> <br/>
-							<?php 
-							wp_dropdown_categories( array(
-								'show_option_all'    => '',
-								'show_option_none'   => __('No parent category', 'wpematico' ),
-								'orderby'            => 'name', 
-								'order'              => 'ASC',
-								'show_count'         => 0,
-								'hide_empty'         => 0, 
-								'child_of'           => 0,
-								'exclude'            => '',
-								'echo'               => 1,
-								'selected'           => $campaign_parent_autocats,
-								'hierarchical'       => 1, 
-								'name'               => 'campaign_parent_autocats',
-								'class'              => 'form-no-clear',
-								'id'				 => 'campaign_parent_autocats',
-								'depth'              => 3,
-								'tab_index'          => 0,
-								'taxonomy'           => 'category',
-								'hide_if_empty'      => false
-								));
-								?>
-								<br/>
-								<br/>
-							</div>
+//$aa = wp_terms_checklist( 0, $args );
+			?>
+			<input class="checkbox" type="checkbox"<?php checked($campaign_autocats ,true);?> name="campaign_autocats" value="1" id="campaign_autocats"/> <b><?php echo '<label for="campaign_autocats">' . __('Add auto Categories', 'wpematico' ) . '</label>'; ?></b>
+			<span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['autocats']; ?>"></span>
+			<div id="autocats_container" <?php if(!$campaign_autocats) echo 'style="display:none;"';?>>
+				<br/>
+				<b><?php echo '<label for="campaign_parent_autocats">' . __('Parent category to auto categories', 'wpematico' ) . '</label>'; ?></b>
+				<span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['parent_autocats']; ?>"></span> <br/>
+				<?php 
+				wp_dropdown_categories( array(
+					'show_option_all'    => '',
+					'show_option_none'   => __('No parent category', 'wpematico' ),
+					'orderby'            => 'name', 
+					'order'              => 'ASC',
+					'show_count'         => 0,
+					'hide_empty'         => 0, 
+					'child_of'           => 0,
+					'exclude'            => '',
+					'echo'               => 1,
+					'selected'           => $campaign_parent_autocats,
+					'hierarchical'       => 1, 
+					'name'               => 'campaign_parent_autocats',
+					'class'              => 'form-no-clear',
+					'id'				 => 'campaign_parent_autocats',
+					'depth'              => 3,
+					'tab_index'          => 0,
+					'taxonomy'           => 'category',
+					'hide_if_empty'      => false
+					));
+					?>
+					<br/>
+					<br/>
+				</div>
 
-							<div class="inside" style="overflow-y: scroll; overflow-x: hidden; max-height: 250px;">
-								<b><?php _e('Current Categories', 'wpematico' ); ?></b>
-								<div class="right ">
-									<div style="float:left;margin-left:2px;display:none;" id="catfield">
-										<input id="psearchcat" name="psearchcat" class="srchbdr0" type="text" value=''>
-									</div>
-									<div id="catsearch" class="left mya4_sprite searchIco" style="margin-top:4px;"></div>
-								</div>
+		<div class="inside" style="overflow-y: scroll; overflow-x: hidden; max-height: 250px;">
+			<b><?php _e('Current Categories', 'wpematico' ); ?></b>
+			<div class="right ">
+				<div style="float:left;margin-left:2px;display:none;" id="catfield">
+					<input id="psearchcat" name="psearchcat" class="srchbdr0" type="text" value=''>
+				</div>
+				<div id="catsearch" class="left mya4_sprite searchIco" style="margin-top:4px;"></div>
+			</div>
 
-								<ul id="categories" style="font-size: 11px;">
-									<?php 
-									wp_terms_checklist( 0, $args );
-				//self :: Categories_box($campaign_categories) ?>
+			<ul id="categories" style="font-size: 11px;">
+				<?php 
+				wp_terms_checklist( 0, $args );
+				?>
 			</ul> 
 		</div>
 		<div id="major-publishing-actions">
@@ -1252,63 +1250,55 @@ public static function feeds_box( $post ) {
 		<?php
 	}
 
-	// ** Muestro Categorías seleccionables 
-/*	private static function _wpe_edit_cat_row($category, $level, &$data) {  
-		$category = get_category( $category );
-		$name = $category->cat_name;
-		echo '
-		<li style="margin-left:'.$level.'5px" class="jobtype-select checkbox">
-		<input type="checkbox" value="' . $category->cat_ID . '" id="category_' . $category->cat_ID . '" name="campaign_categories[]" ';
-		echo (in_array($category->cat_ID, $data )) ? 'checked="checked"' : '' ;
-		echo '>
-		<label for="category_' . $category->cat_ID . '">' . $name . '</label></li>';
-	}
-
-	private static function Categories_box(&$data, $parent = 0, $level = 0, $categories = 0)  {    
-		if ( !$categories )
-			$categories = get_categories(array('hide_empty' => 0));
-
-		if(function_exists('_get_category_hierarchy'))
-		  $children = _get_category_hierarchy();
-		elseif(function_exists('_get_term_hierarchy'))
-		  $children = _get_term_hierarchy('category');
-		else
-		  $children = array();
-
-		if ( $categories ) {
-			ob_start();
-			foreach ( $categories as $category ) {
-				if ( $category->parent == $parent) {
-					echo "\t" . self :: _wpe_edit_cat_row($category, $level, $data);
-					if ( isset($children[$category->term_id]) )
-						self :: Categories_box($data, $category->term_id, $level + 1, $categories );
-				}
-			}
-			$output = ob_get_contents();
-			ob_end_clean();
-
-			echo $output;
-		} else {
-			return false;
-		}
-	}
-*/
 	// Action handler - The 'Save' button is about to be drawn on the advanced edit screen.
 	public static function post_submitbox_start()	{
-		global $post, $campaign_data, $helptip;
+		global $post, $campaign_data, $helptip, $wp_post_statuses;
 		if($post->post_type != 'wpematico') return $post->ID;
 		
 		$campaign_posttype = $campaign_data['campaign_posttype'];
 		$campaign_customposttype = $campaign_data['campaign_customposttype'];
 		wp_nonce_field( 'edit-campaign', 'wpematico_nonce' ); 
-		?><div class="clear"></div><div class="publish_status">
+		$statuses = array_filter($wp_post_statuses, function($object) {
+			if( $object->label_count['domain']=='' ) return true;
+		});
+		?>
+		<div class="clear"></div><div class="publish_status">
 		<div class="postbox inside">
 			<b><?php _e('Status',  'wpematico' ); ?></b><br />
-			<label><input type="radio" name="campaign_posttype" <?php echo checked('publish',$campaign_posttype,false); ?> value="publish" /> <?php _e('Published'); ?></label><br />
-			<label><input type="radio" name="campaign_posttype" <?php echo checked('private',$campaign_posttype,false); ?> value="private" /> <?php _e('Private'); ?></label><br />
-			<label><input type="radio" name="campaign_posttype" <?php echo checked('pending',$campaign_posttype,false); ?> value="pending" /> <?php _e('Pending'); ?></label><br />
-			<label><input type="radio" name="campaign_posttype" <?php echo checked('draft',$campaign_posttype,false); ?> value="draft" /> <?php _e('Draft'); ?></label>
+			<div id="stati_options">
+			<?php 
+				$args = apply_filters('wpematico_statuses_args', array(
+					
+//					'_builtin'                  => 1,
+					'show_in_admin_status_list' => 1,
+					'show_in_admin_all_list'    => 1,
+				));
+				$statuses = apply_filters('wpematico_campaign_statuses', wp_filter_object_list( $statuses, $args ));
+				$status_domain ='';
+				echo "<select id='campaign_statuses' name='campaign_posttype' >";
+				foreach ($statuses  as $key=>$status ) {
+					if($status_domain != $status->label_count['domain']){
+						$status_domain = $status->label_count['domain'];
+						//echo "<b>$status_domain</b><br />";
+						echo "<option disabled='disabled' value='' /> $status_domain</option>";
+					}
+					$status_name = $status->name;
+					$status_label = $status->label;
+					/**
+					 * TODO: Allow Scheduled status with datime in the future by hours 
+					 */
+					if (in_array($status_name, array('future','')) ) continue;
+					
+					//echo "<label><input type='radio' name='campaign_posttype' ".checked($status_name, $campaign_posttype, false)." value='$status_name' /> $status_label</label><br />";
+					echo "<option ".selected($status_name, $campaign_posttype, false)." value='$status_name' /> $status_label</option>";
+				}
+				echo '</select>';
+				//print_r($statuses); 
+
+			?>
+			<div id="loadingstatus" class="ruedita"></div></div>
 		</div>
+		<div class="clear"></div>
 		<div class="postbox inside">
 			<b><?php _e('Post type',  'wpematico' ); ?></b><br />
 			<?php
@@ -1318,18 +1308,19 @@ public static function feeds_box( $post ) {
 			$output = 'names'; // names or objects, note names is the default
 			$output = 'objects'; // names or objects, note names is the default
 			$operator = 'and'; // 'and' or 'or'
-			$post_types=get_post_types($args,$output,$operator); 
+			$post_types=get_post_types($args,$output,$operator);
+			/* ?><pre><?php print_r($post_types); ?></pre><?php  */
+//			echo "<select name='campaign_customposttype' >";
 			foreach ($post_types  as $post_type_obj ) {
 				$post_type = $post_type_obj->name;
 				$post_label = $post_type_obj->labels->name;
 				if ($post_type == 'wpematico') continue;
-/*				echo '<input class="radio" type="radio" '.checked($post_type,$campaign_customposttype,false).' name="campaign_customposttype" value="'. $post_type. '" id="customtype_'. $post_type. '" /> <label for="customtype_'. $post_type. '">'.
-						__( $post_label ) .' ('. __( $post_type ) .')</label><br />';
-*/
-				echo '<input class="radio" type="radio" '.checked($post_type,$campaign_customposttype,false).' name="campaign_customposttype" value="'. $post_type. 
-					'" id="customtype_'. $post_type. '" /> <label for="customtype_'. $post_type. '">' . __( $post_label ) .'</label><br />';
+				echo '<input class="radio cpt_radio" type="radio" '.checked($post_type,$campaign_customposttype,false).' name="campaign_customposttype" value="'. $post_type. 
+					'" id="customtype_'. $post_type. '" /> <label for="customtype_'. $post_type. '">' . __( $post_label ) .' (' . __( $post_type ) .')</label><br />';
+//				echo "<option ".selected($post_type,$campaign_customposttype, false)." value='$post_type' /> " . __( $post_label ) ."</option>";
 			}
-				?>
+//			echo '</select>';
+			?>
 			</div>
 		</div><div class="clear"></div>	<?php 
 	}
