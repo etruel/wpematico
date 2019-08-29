@@ -111,7 +111,7 @@ class WPEMATICO_Welcome {
 			.wpematico-about-wrap #wpematico-header h1 { margin-bottom: 15px !important; }
 			.wpematico-about-wrap .about-text { margin: 0 0 15px; max-width: 670px; }
 			.wpematico-about-wrap .feature-section { margin-top: 20px; padding-bottom: 10px;}
-			.wpematico-about-wrap .changelog { margin-bottom: 20px;}
+			.wpematico-about-wrap .changelog { margin-bottom: 20px; clear: both;}
 			.wpematico-about-wrap .feature-section-content,
 			.wpematico-about-wrap .feature-section-media { width: 50%; box-sizing: border-box; }
 			.wpematico-about-wrap .feature-section-content { float: left; padding-right: 50px; }
@@ -201,11 +201,23 @@ class WPEMATICO_Welcome {
 				$this->tabs();
 			?>
 			<div class="changelog">
-				<h2><?php _e( 'Debug Mode.', 'wpematico' );?></h2>
 				<div class="feature-section">
 					<div class="feature-section-media">
 						<?php $this->subscription_form(); ?>
 					</div>
+				<h2><?php _e( 'Custom Posts Statuses.', 'wpematico' );?></h2>
+					<div class="feature-section-content">
+						<img style="float:left; width: 100%; max-width: 250px;" src="<?php echo WPEMATICO_PLUGIN_URL.'/images/custom-posts-status.jpg'; ?>" alt="Preview for the YouTube campaign" width="400" />
+						<h4><?php _e( 'Post status allows you to organize your Posts.', 'wpematico' );?></h4>
+						<p><?php _e( 'Post status is an very useful editorial tool that allows you to organize your Posts based on their respective stages during the editorial workflow.', 'wpematico' );?></p>
+						<p><?php _e( 'Since this WPeMatico release you can select also the Custom Post Status created for posts.', 'wpematico' );?></p>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<div class="changelog">
+				<h2><?php _e( 'Debug Mode.', 'wpematico' );?></h2>
+				<div class="feature-section">
 					<div class="feature-section-content">
 						<h4><?php _e( 'Debug Mode to save all the logs from each campaign', 'wpematico' );?></h4>
 						<p><?php _e( 'This feature allows you to save all the logs of each campaign rather than just the last one, in order to allow you to track all actions and behaviors when running the campaign.', 'wpematico' );?></p>
