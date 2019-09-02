@@ -122,7 +122,7 @@ class WPeMatico_functions {
 	public static function get_enconding_from_header($url) {
 		static $encoding_hosts = array();
 		if(empty($encoding_hosts)) {
-			$encoding_hosts = get_transient('encoding_hosts');
+			$encoding_hosts = get_transient('wpematico_encoding_hosts');
 			if($encoding_hosts === false) {
 				$encoding_hosts = array();
 			}
@@ -132,15 +132,21 @@ class WPeMatico_functions {
 		$host		 = (isset($parsed_url['host']) ? $parsed_url['host'] : time());
 
 		if(!isset($encoding_hosts[$host])) {
+			/**
+			 * First checks encoding in the feed file attribute on first line
+			 * if not found find in their headers
+			 */
 			$encoding		 = '';
-			$response_header = wp_remote_get($url);
-			if(!empty($response_header)) {
-				if(preg_match("#.+?/.+?;\\s?encoding\\s?=\\s?(.+)#i", strtok($response_header, "\n"), $m)) {
+			$response = wp_remote_get(esc_url_raw( $url ) );
+			if(!empty($response)) {
+				$body = wp_remote_retrieve_body($response);
+				$lin1 = strtok($body, PHP_EOL);
+				if(preg_match('/.+?encoding\s?=\s?[\"\'].*?(.+?)[\"\']/s', $lin1, $m)) {
 					$encoding = $m[1];
 				}
 			}
 			if($encoding === '') {
-				$content_type = wp_remote_retrieve_header($response_header, 'content-type');
+				$content_type = wp_remote_retrieve_header($response, 'content-type');
 				if(!empty($content_type)) {
 					if(preg_match("#.+?/.+?;\\s?charset\\s?=\\s?(.+)#i", $content_type, $m)) {
 						$encoding = $m[1];
@@ -148,7 +154,7 @@ class WPeMatico_functions {
 				}
 			}
 			$encoding_hosts[$host] = strtoupper($encoding);
-			set_transient('encoding_hosts', $encoding_hosts, (HOUR_IN_SECONDS * 2));
+			set_transient('wpematico_encoding_hosts', $encoding_hosts, (HOUR_IN_SECONDS * 6));
 		}
 		return $encoding_hosts[$host];
 	}

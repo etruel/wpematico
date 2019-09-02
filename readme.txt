@@ -269,6 +269,9 @@ You can send your files to [NetMdP](https://www.netmdp.com/wpematico/) or to e-m
 = 2.3.7 Aug 29, 2019 =
 * Added on campaigns custom statuses without domains added to WP.
 * Added wp filters to post status.
+* Fixes an issue on getting the source chrset encoding.
+* Changes transient name of encoding_hosts to wpematico_encoding_hosts.
+* Incremented transient cache time of encoding hosts to 6 hours.
 * Many tweaks on the php code.
 
 = 2.3.6 Jul 25, 2019 =
