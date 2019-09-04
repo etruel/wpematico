@@ -159,6 +159,27 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		$duplicate_options = WPeMatico::get_duplicate_options($this->cfg, $this->campaign);
 		
 		do_action('Wpematico_process_fetching_'.$this->campaign['campaign_type'], $this);  // Wpematico_process_fetching_feed
+		
+		
+
+		if (!$duplicate_options['allowduphash'] && $duplicate_options['jumpduplicates'] ) {
+			$last_hashes_name = '_lasthashes_'.sanitize_file_name($feed);
+			$last_hashes = get_post_meta( $this->campaign_id, $last_hashes_name, false );
+			if ( empty($last_hashes) ) {
+				$last_hashes = array();
+			}
+			$max_duplicated_hashes_count = apply_filters('wpematico_max_duplicated_hashes_count', 20, $this->campaign_id, $feed);
+			
+			while (sizeof($last_hashes) > $max_duplicated_hashes_count) {
+				$old_hash = array_shift($last_hashes);
+				if ( !empty($old_hash) ) {
+					delete_post_meta($this->campaign_id, $last_hashes_name, $old_hash);
+				}
+			}
+			
+		}
+		
+		
 		foreach($simplepie->get_items() as $item) {
 			if($prime){
 				//with first item get the hash of the last item (new) that will be saved.
@@ -186,6 +207,15 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 							continue;
 						}
 					}
+					
+					if (!$duplicate_options['allowduphash'] && $duplicate_options['jumpduplicates'] ) {
+						if ( in_array($this->currenthash[$feed], $last_hashes) )  {
+							trigger_error(sprintf(__('Found duplicated hash \'%1s\'', 'wpematico' ),$item->get_permalink()).': '.$this->currenthash[$feed] ,E_USER_NOTICE);
+							trigger_error(__('Jumping duplicated post. Continuing.', 'wpematico' ), E_USER_NOTICE);
+							continue;
+						}
+					}
+
 				}
 				if( !$duplicate_options['allowduptitle'] ){
 					if(WPeMatico::is_duplicated_item($this->campaign, $feed, $item)) {
@@ -228,6 +258,12 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			$hashvalue = $this->currenthash[$feed];
 			add_post_meta( $this->campaign_id, $lasthashvar, $hashvalue, true )  or
 				update_post_meta( $this->campaign_id, $lasthashvar, $hashvalue );
+
+			if (!$duplicate_options['allowduphash'] && $duplicate_options['jumpduplicates'] ) {
+				add_post_meta($this->campaign_id, $last_hashes_name, $hashvalue, false );
+			}
+			
+
 
 			if (isset($suma) && is_int($suma)) {
 				$realcount = $realcount + $suma;
