@@ -210,7 +210,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 					
 					if (!$duplicate_options['allowduphash'] && $duplicate_options['jumpduplicates'] ) {
 						if ( in_array($this->currenthash[$feed], $last_hashes) )  {
-							trigger_error(sprintf(__('Found duplicated hash \'%1s\'', 'wpematico' ),$item->get_permalink()).': '.$this->currenthash[$feed] ,E_USER_NOTICE);
+							trigger_error(sprintf(__('Found duplicated hash of item \'%1s\'', 'wpematico' ),$item->get_permalink()).': '.$this->currenthash[$feed] ,E_USER_NOTICE);
 							trigger_error(__('Jumping duplicated post. Continuing.', 'wpematico' ), E_USER_NOTICE);
 							continue;
 						}

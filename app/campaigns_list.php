@@ -420,6 +420,10 @@ class WPeMatico_Campaigns {
 			$lasthashvar = '_lasthash_'.sanitize_file_name($feed);
 			add_post_meta( $id, $lasthashvar, "0", true )  or
 				update_post_meta( $id, $lasthashvar, "0" );
+
+			$last_hashes_name = '_lasthashes_'.sanitize_file_name($feed);
+			delete_post_meta($id, $last_hashes_name);
+
 		}
 		WPeMatico::update_campaign( $id, $campaign_data );
 		WPeMatico::add_wp_notice( array('text' => __('Hash deleted on campaign',  'wpematico').' <b>'.  get_the_title($id).'</b>', 'below-h2'=>false ) );
