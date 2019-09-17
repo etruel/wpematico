@@ -1252,28 +1252,19 @@ public static function feeds_box( $post ) {
 
 	// Action handler - The 'Save' button is about to be drawn on the advanced edit screen.
 	public static function post_submitbox_start()	{
-		global $post, $campaign_data, $helptip, $wp_post_statuses;
+		global $post, $campaign_data, $helptip;
 		if($post->post_type != 'wpematico') return $post->ID;
 		
 		$campaign_posttype = $campaign_data['campaign_posttype'];
 		$campaign_customposttype = $campaign_data['campaign_customposttype'];
 		wp_nonce_field( 'edit-campaign', 'wpematico_nonce' ); 
-		$statuses = array_filter($wp_post_statuses, function($object) {
-			if( $object->label_count['domain']=='' ) return true;
-		});
+		$statuses = WPeMatico_functions::getAllStatuses();
 		?>
 		<div class="clear"></div><div class="publish_status">
 		<div class="postbox inside">
 			<b><?php _e('Status',  'wpematico' ); ?></b><br />
 			<div id="stati_options">
 			<?php 
-				$args = apply_filters('wpematico_statuses_args', array(
-					
-//					'_builtin'                  => 1,
-					'show_in_admin_status_list' => 1,
-					'show_in_admin_all_list'    => 1,
-				));
-				$statuses = apply_filters('wpematico_campaign_statuses', wp_filter_object_list( $statuses, $args ));
 				$status_domain ='';
 				echo "<select id='campaign_statuses' name='campaign_posttype' >";
 				foreach ($statuses  as $key=>$status ) {

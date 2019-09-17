@@ -266,10 +266,11 @@ We are receiving tutorials on text, pdf, videos. All are welcome. Thank you!
 You can send your files to [NetMdP](https://www.netmdp.com/wpematico/) or to e-mail wpematico [at] etruel.com
 
 == Changelog ==
-= 2.3.7 Aug 29, 2019 =
+= 2.3.7 Sep 16, 2019 =
 * Added on campaigns custom statuses without domains added to WP.
 * Added wp filters to post status.
 * Fixes an issue on getting the source chrset encoding.
+* Fixes an issue on duplicates hash controls when jumping past items.
 * Changes transient name of encoding_hosts to wpematico_encoding_hosts.
 * Incremented transient cache time of encoding hosts to 6 hours.
 * Many tweaks on the php code.

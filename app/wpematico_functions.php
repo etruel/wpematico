@@ -535,6 +535,26 @@ class WPeMatico_functions {
 		return $checks;
 	}
 
+	/**
+	 * get All Statuses without domains
+	 * @global type $wp_post_statuses
+	 * @param type $statuses
+	 * @return type array
+	 */
+	static function getAllStatuses($statuses = array()){
+		global $wp_post_statuses;
+		$statuses = array_filter($wp_post_statuses, function($object) {
+			if( $object->label_count['domain']=='' ) return true;
+		});
+		$args = apply_filters('wpematico_statuses_args', array(
+//			'_builtin'                  => 1,
+			'show_in_admin_status_list' => 1,
+			'show_in_admin_all_list'    => 1,
+		));
+		return apply_filters('wpematico_campaign_statuses', wp_filter_object_list( $statuses, $args ));
+	}
+	
+	
 	/* 	//Admin header notify
 	  function wpematico_admin_notice() {
 	  global $wpematico_admin_message;
