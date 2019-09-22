@@ -421,15 +421,16 @@ if ( !class_exists( 'WPeMatico' ) ) {
 		}
 
 		public static function check_options($options) {
-			$cfg['mailmethod']		= (!isset($options['mailmethod'])) ?'mail':$options['mailmethod'];
+			$cfg['mailmethod']		= (!isset($options['mailmethod'])) ?'mail': sanitize_email($options['mailmethod']);
 			$cfg['mailsndemail']	= (!isset($options['mailsndemail'])) ? '':sanitize_email($options['mailsndemail']);
 			$cfg['mailsndname']		= (!isset($options['mailsndname'])) ? '':sanitize_text_field($options['mailsndname']);
 			$cfg['mailsendmail']	= (!isset($options['mailsendmail'])) ? '': untrailingslashit(str_replace('//','/',str_replace('\\','/',stripslashes($options['mailsendmail']))));
-			$cfg['mailsecure']		= (!isset($options['mailsecure'])) ? '': $options['mailsecure'];
+			$cfg['mailsecure']		= (!isset($options['mailsecure'])) ? '': sanitize_text_field($options['mailsecure']);
 			$cfg['mailhost']		= (!isset($options['mailhost'])) ? '': sanitize_text_field($options['mailhost']);
-			$cfg['mailport']		= (!isset($options['mailport'])) ? '': $options['mailport'];
-			$cfg['mailuser']		= (!isset($options['mailuser'])) ? '': $options['mailuser'];			
-			$cfg['mailpass']		= (!isset($options['mailpass'])) ? '': $options['mailpass'];
+			$cfg['mailport']		= (!isset($options['mailport'])) ? '': intval($options['mailport']);
+			$cfg['mailuser']		= (!isset($options['mailuser'])) ? '': sanitize_text_field($options['mailuser']);			
+			$cfg['mailpass']		= (!isset($options['mailpass'])) ? '': sanitize_text_field($options['mailpass']);
+			
 			$cfg['disabledashboard']= (!isset($options['disabledashboard']) || empty($options['disabledashboard'])) ? false : ($options['disabledashboard']==1) ? true : false;
 			$cfg['roles_widget']	= (!isset($options['roles_widget']) || !is_array($options['roles_widget'])) ? array( "administrator" => "administrator" ): $options['roles_widget'];
 			$cfg['dontruncron']		= (!isset($options['dontruncron']) || empty($options['dontruncron'])) ? false: ($options['dontruncron']==1) ? true : false;

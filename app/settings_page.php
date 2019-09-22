@@ -487,12 +487,12 @@ function wpematico_settings() {
 										<input name="simplepie_strip_htmltags" id="simplepie_strip_htmltags" class="checkbox" value="1" type="checkbox" <?php checked($cfg['simplepie_strip_htmltags'], true); ?> />
 										<label for="simplepie_strip_htmltags"><b><?php _e('Change SimplePie HTML tags to strip', 'wpematico'); ?></b></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['strip_htmltags']; ?>"></span>
 										<br />
-										<textarea style="width:500px;" <?php disabled($cfg['simplepie_strip_htmltags'], false, true); ?> name="strip_htmltags" id="strip_htmltags" ><?php echo $cfg['strip_htmltags']; ?></textarea>
+										<textarea style="width:500px;" <?php disabled($cfg['simplepie_strip_htmltags'], false, true); ?> name="strip_htmltags" id="strip_htmltags" ><?php echo esc_textarea($cfg['strip_htmltags']); ?></textarea>
 										<p></p>
 										<input name="simplepie_strip_attributes" id="simplepie_strip_attributes" class="checkbox" value="1" type="checkbox" <?php checked($cfg['simplepie_strip_attributes'], true); ?> />
 										<label for="simplepie_strip_attributes"><b><?php _e('Change SimplePie HTML attributes to strip', 'wpematico'); ?></b></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['strip_htmlattr']; ?>"></span>
 										<br />
-										<textarea style="width:500px;" <?php disabled($cfg['simplepie_strip_attributes'], false, true); ?> name="strip_htmlattr" id="strip_htmlattr" ><?php echo $cfg['strip_htmlattr']; ?></textarea>
+										<textarea style="width:500px;" <?php disabled($cfg['simplepie_strip_attributes'], false, true); ?> name="strip_htmlattr" id="strip_htmlattr" ><?php echo esc_textarea($cfg['strip_htmlattr']); ?></textarea>
 									</div>
 									<p></p>
 
