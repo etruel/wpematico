@@ -126,7 +126,7 @@ function wpematico_settings() {
 	?>
 	<div class="wrap">
 		<h2><?php _e('WPeMatico settings', 'wpematico'); ?></h2>
-		<form name="wpematico-settings" method="post" autocomplete="off" >
+		<form  action="<?php echo admin_url( 'admin-post.php' ); ?>" name="wpematico-settings" method="post" autocomplete="off" >
 			<?php
 			wp_nonce_field('wpematico-settings');
 			/* Used to save closed meta boxes and their order */
@@ -206,7 +206,7 @@ function wpematico_settings() {
 									<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disable_categories_description'], true); ?> name="disable_categories_description" id="disable_categories_description" /><b>&nbsp;<?php _e('Disable <i>Auto-Category description</i>', 'wpematico'); ?></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disable_categories_description']; ?>"></span>
 
 									<p style="text-align: right;">
-										<input type="hidden" name="wpematico-action" value="save_settings" />
+										<input type="hidden" name="action" value="save_wpematico_settings" />
 										<?php submit_button(__('Save settings', 'wpematico'), 'primary', 'wpematico-save-settings', false); ?>
 									</p>								
 								</div>
@@ -688,13 +688,11 @@ function wpematico_settings() {
 	<?php
 }
 
-//wpematico_settings_tab_content
 
-add_action('wpematico_save_settings', 'wpematico_settings_save');
-
+add_action( 'admin_post_save_wpematico_settings', 'wpematico_settings_save');
 function wpematico_settings_save() {
 	if('POST' === $_SERVER['REQUEST_METHOD']) {
-
+		if(is_user_logged_in()) wp_die("<h3>Cheatin' uh?</h3>","Closed today.");
 		$optionsdata = array_map('stripslashes_deep', $_POST);
 
 		check_admin_referer('wpematico-settings');

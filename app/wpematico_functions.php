@@ -1570,10 +1570,12 @@ class WPeMatico_functions {
 add_action('admin_init', 'wpematico_process_actions');
 function wpematico_process_actions() {
 	if(isset($_POST['wpematico-action'])) {
+//		if(!is_user_logged_in()) wp_die("Closed today.","Cheatin' uh?");
 		do_action('wpematico_' . $_POST['wpematico-action'], $_POST);
 	}
 
 	if(isset($_GET['wpematico-action'])) {
+//		if(!is_user_logged_in()) wp_die("Closed today.","Cheatin' uh?");
 		do_action('wpematico_' . $_GET['wpematico-action'], $_GET);
 	}
 }
