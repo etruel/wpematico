@@ -692,7 +692,7 @@ function wpematico_settings() {
 add_action( 'admin_post_save_wpematico_settings', 'wpematico_settings_save');
 function wpematico_settings_save() {
 	if('POST' === $_SERVER['REQUEST_METHOD']) {
-		if(is_user_logged_in()) wp_die("<h3>Cheatin' uh?</h3>","Closed today.");
+		if(!is_user_logged_in()) wp_die("<h3>Cheatin' uh?</h3>","Closed today.");
 		$optionsdata = array_map('stripslashes_deep', $_POST);
 
 		check_admin_referer('wpematico-settings');
