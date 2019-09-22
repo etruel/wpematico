@@ -220,10 +220,10 @@ function wpematico_settings() {
 								</button>
 								<h2 class="handle"><span class="dashicons dashicons-email-alt"></span> <?php _e('Sending e-Mails', 'wpematico'); ?></h2>
 								<div class="inside">
-									<label><b><?php _e('Sender Email:', 'wpematico'); ?></b><br /><input name="mailsndemail" id="mailsndemail" type="text" value="<?php echo $cfg['mailsndemail']; ?>" class="large-text" /><span id="mailmsg"></span></label>
-									<label><b><?php _e('Sender Name:', 'wpematico'); ?></b><br /><input name="mailsndname" type="text" value="<?php echo $cfg['mailsndname']; ?>" class="large-text" /></label>
-									<input type="hidden" name="mailmethod" value="<?php echo $cfg['mailmethod']; // "mailmethod"="mail" or "mailmethod"="SMTP"      ?>">
-									<label id="mailsendmail" <?php if($cfg['mailmethod'] != 'Sendmail') echo 'style="display:none;"'; ?>><b><?php _e('Sendmail Path:', 'wpematico'); ?></b><br /><input name="mailsendmail" type="text" value="<?php echo $cfg['mailsendmail']; ?>" class="large-text" /><br /></label>
+									<label><b><?php _e('Sender Email:', 'wpematico'); ?></b><br /><input name="mailsndemail" id="mailsndemail" type="text" value="<?php echo esc_attr($cfg['mailsndemail']); ?>" class="large-text" /><span id="mailmsg"></span></label>
+									<label><b><?php _e('Sender Name:', 'wpematico'); ?></b><br /><input name="mailsndname" type="text" value="<?php echo esc_attr($cfg['mailsndname']); ?>" class="large-text" /></label>
+									<input type="hidden" name="mailmethod" value="<?php echo esc_attr($cfg['mailmethod']); // "mailmethod"="mail" or "mailmethod"="SMTP"      ?>">
+									<label id="mailsendmail" <?php if($cfg['mailmethod'] != 'Sendmail') echo 'style="display:none;"'; ?>><b><?php _e('Sendmail Path:', 'wpematico'); ?></b><br /><input name="mailsendmail" type="text" value="<?php echo esc_attr($cfg['mailsendmail']); ?>" class="large-text" /><br /></label>
 								</div>
 							</div>
 
@@ -512,12 +512,12 @@ function wpematico_settings() {
 										<?php _e('NOTE: It is extremely dangerous to allow unfiltered content.', 'wpematico'); ?><br />
 									</div> 
 									<p></p>
-									<p><b><?php _e('Timeout running campaign:', 'wpematico'); ?></b> <input name="campaign_timeout" type="number" min="0" value="<?php echo $cfg['campaign_timeout']; ?>" class="small-text" /> <?php _e('Seconds.', 'wpematico'); ?>
+									<p><b><?php _e('Timeout running campaign:', 'wpematico'); ?></b> <input name="campaign_timeout" type="number" min="0" value="<?php echo esc_attr($cfg['campaign_timeout']); ?>" class="small-text" /> <?php _e('Seconds.', 'wpematico'); ?>
 										<span id="hlpspl" style="padding-left:20px;display: inline-block;">
 											<?php _e('When a campaign running is interrupted, cannot be executed again until click "Clear Campaign".  This option clear campaign after this timeout then can run again on next scheduled cron. A value of "0" ignore this, means that remain until user make click.  Recommended 300 Seconds.', 'wpematico'); ?>
 										</span></p>
 									<p></p>
-									<label for="throttle"><b><?php _e('Add a throttle/delay in seconds after every post.', 'wpematico'); ?></b></label> <input name="throttle" id="throttle" class="small-text" min="0" type="number" value="<?php echo $cfg['throttle']; ?>" /> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['throttle']; ?>"></span>
+									<label for="throttle"><b><?php _e('Add a throttle/delay in seconds after every post.', 'wpematico'); ?></b></label> <input name="throttle" id="throttle" class="small-text" min="0" type="number" value="<?php echo esc_attr($cfg['throttle']); ?>" /> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['throttle']; ?>"></span>
 
 									<p></p>
 									<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['allowduplicates'], true); ?> name="allowduplicates" id="allowduplicates" /><b>&nbsp;<?php echo '<label for="allowduplicates">' . __('Deactivate duplicate controls.', 'wpematico') . '</label>'; ?></b>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['allowduplicates']; ?>"></span>
@@ -570,7 +570,7 @@ function wpematico_settings() {
 											<?php _e('Set a password to use the external CRON', 'wpematico'); ?>: 
 											<input type="hidden" id="autocode" value="<?php echo substr(md5(time()), 0, 8); ?>"/> 
 											<a style="font-size: 2.2em;" title="<?php _e('Paste a generated a ramdon string.'); ?>" class='dashicons dashicons-migrate' onclick="Javascript: jQuery('#cron_code').val( jQuery('#autocode').val() );" > &nbsp;&nbsp;</a> &nbsp;
-											<input name="cron_code" title="<?php _e('See text.'); ?>" id="cron_code" type="text" value="<?php echo $cfg['cron_code']; ?>" class="standard-text" /> 
+											<input name="cron_code" title="<?php _e('See text.'); ?>" id="cron_code" type="text" value="<?php echo esc_attr($cfg['cron_code']); ?>" class="standard-text" /> 
 											<?php /* <a class='dashicons dashicons-visibility' onclick="Javascript: jQuery('#cron_code').prop('type','text');" ></a> */ ?>
 										</label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['cron_code']; ?>"></span>
 									</div>
