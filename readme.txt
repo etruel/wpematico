@@ -266,6 +266,10 @@ We are receiving tutorials on text, pdf, videos. All are welcome. Thank you!
 You can send your files to [NetMdP](https://www.netmdp.com/wpematico/) or to e-mail wpematico [at] etruel.com
 
 == Changelog ==
+= 2.3.8 Sep 22, 2019 =
+* Incremented security on saving settings.
+* Fixes a reported vulnerability that was only available to users who could access the WPeMatico Settings screen.
+
 = 2.3.7 Sep 16, 2019 =
 * Added on campaigns custom statuses without domains added to WP.
 * Added wp filters to post status.
@@ -1221,6 +1225,6 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 2.3.6 =
+= 2.3.8 =
 * **NOTE: We recommend to test it in development ambients before update**
 * See changelog for more details.

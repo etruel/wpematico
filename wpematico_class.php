@@ -423,10 +423,10 @@ if ( !class_exists( 'WPeMatico' ) ) {
 		public static function check_options($options) {
 			$cfg['mailmethod']		= (!isset($options['mailmethod'])) ?'mail':$options['mailmethod'];
 			$cfg['mailsndemail']	= (!isset($options['mailsndemail'])) ? '':sanitize_email($options['mailsndemail']);
-			$cfg['mailsndname']		= (!isset($options['mailsndname'])) ? '':$options['mailsndname'];
+			$cfg['mailsndname']		= (!isset($options['mailsndname'])) ? '':sanitize_text_field($options['mailsndname']);
 			$cfg['mailsendmail']	= (!isset($options['mailsendmail'])) ? '': untrailingslashit(str_replace('//','/',str_replace('\\','/',stripslashes($options['mailsendmail']))));
 			$cfg['mailsecure']		= (!isset($options['mailsecure'])) ? '': $options['mailsecure'];
-			$cfg['mailhost']		= (!isset($options['mailhost'])) ? '': $options['mailhost'];
+			$cfg['mailhost']		= (!isset($options['mailhost'])) ? '': sanitize_text_field($options['mailhost']);
 			$cfg['mailport']		= (!isset($options['mailport'])) ? '': $options['mailport'];
 			$cfg['mailuser']		= (!isset($options['mailuser'])) ? '': $options['mailuser'];			
 			$cfg['mailpass']		= (!isset($options['mailpass'])) ? '': $options['mailpass'];
@@ -438,7 +438,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			
 			$cfg['disablewpcron']	= (!isset($options['disablewpcron']) || empty($options['disablewpcron'])) ? false: ($options['disablewpcron']==1) ? true : false;
 			$cfg['set_cron_code']	= (!isset($options['set_cron_code']) || empty($options['set_cron_code'])) ? false: ($options['set_cron_code']==1) ? true : false;
-			$cfg['cron_code']		= (!isset($options['cron_code'])) ? '': $options['cron_code'];
+			$cfg['cron_code']		= (!isset($options['cron_code'])) ? '': sanitize_text_field($options['cron_code']);
 			$cfg['logexternalcron']	= (!isset($options['logexternalcron']) || empty($options['logexternalcron'])) ? false: ($options['logexternalcron']==1) ? true : false;
 			$cfg['disable_credits']	= (!isset($options['disable_credits']) || empty($options['disable_credits'])) ? false: ($options['disable_credits']==1) ? true : false;
 			$cfg['disablecheckfeeds']=(!isset($options['disablecheckfeeds']) || empty($options['disablecheckfeeds'])) ? false: ($options['disablecheckfeeds']==1) ? true : false;
@@ -471,8 +471,8 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			$cfg['set_stupidly_fast']	= (!isset($options['set_stupidly_fast']) || empty($options['set_stupidly_fast'])) ? false: ($options['set_stupidly_fast']==1) ? true : false;
 			$cfg['simplepie_strip_htmltags'] = (!isset($options['simplepie_strip_htmltags']) || empty($options['simplepie_strip_htmltags'])) ? false: ($options['simplepie_strip_htmltags']==1) ? true : false;
 			$cfg['simplepie_strip_attributes'] = (!isset($options['simplepie_strip_attributes']) || empty($options['simplepie_strip_attributes'])) ? false: ($options['simplepie_strip_attributes']==1) ? true : false;
-			$cfg['strip_htmltags']	= (!isset($options['strip_htmltags'])) ? '': $options['strip_htmltags'];			
-			$cfg['strip_htmlattr']	= (!isset($options['strip_htmlattr'])) ? '': $options['strip_htmlattr'];			
+			$cfg['strip_htmltags']	= (!isset($options['strip_htmltags'])) ? '': sanitize_text_field($options['strip_htmltags']);			
+			$cfg['strip_htmlattr']	= (!isset($options['strip_htmlattr'])) ? '': sanitize_text_field($options['strip_htmlattr']);			
 			$cfg['woutfilter']		= (!isset($options['woutfilter']) || empty($options['woutfilter'])) ? false: ($options['woutfilter']==1) ? true : false;
 			$cfg['campaign_timeout']= (!isset($options['campaign_timeout']) ) ? 300: (int)$options['campaign_timeout'];
 			$cfg['throttle']		= (!isset($options['throttle']) ) ? 0: (int)$options['throttle'];
