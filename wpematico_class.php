@@ -421,7 +421,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 		}
 
 		public static function check_options($options) {
-			$cfg['mailmethod']		= (!isset($options['mailmethod'])) ?'mail': sanitize_email($options['mailmethod']);
+			$cfg['mailmethod']		= (!isset($options['mailmethod'])) ?'mail': sanitize_text_field($options['mailmethod']);
 			$cfg['mailsndemail']	= (!isset($options['mailsndemail'])) ? '':sanitize_email($options['mailsndemail']);
 			$cfg['mailsndname']		= (!isset($options['mailsndname'])) ? '':sanitize_text_field($options['mailsndname']);
 			$cfg['mailsendmail']	= (!isset($options['mailsendmail'])) ? '': untrailingslashit(str_replace('//','/',str_replace('\\','/',stripslashes($options['mailsendmail']))));
