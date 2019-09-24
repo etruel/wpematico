@@ -441,7 +441,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 				$err_message = ($err_message != "") ? $err_message."<br />" : "" ;
 				$err_message .= __('At least one feed URL must be filled.', 'wpematico');
 			} else {  
-				$post_campaign = $_POST;
+				$post_campaign['feed'] = empty($_POST['feed']) ? array() : $_POST['feed'];
 				$post_campaign['campaign_feeds'] = $campaign_feeds;
 				foreach($campaign_feeds as $kf => $feed) {
 					$pos = strpos($feed, ' '); // The feed URL can't has white spaces.
@@ -496,13 +496,13 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 
 		$campaign = WPeMatico::get_campaign($post_id);
 
-		$_POST['post_status'] =  (!isset($_POST['post_status']) ) ? 'publish': $_POST['post_status'];
-		$_POST['publish'] =  (!isset($_POST['publish']) ) ? 'publish': $_POST['publish'];
+		$_POST['post_status'] =  (!isset($_POST['post_status']) ) ? 'publish': sanitize_text_field($_POST['post_status']);
+		$_POST['publish'] =  (!isset($_POST['publish']) ) ? 'publish': sanitize_text_field($_POST['publish']);
 
 		$_POST['postscount']	= (!isset($campaign['postscount']) ) ? 0: (int)$campaign['postscount'];
 		$_POST['lastpostscount']	= (!isset($campaign['lastpostscount']) ) ? '': (int)$campaign['lastpostscount'];
 		$_POST['lastrun']	= (!isset($campaign['lastrun']) ) ? 0: (int)$campaign['lastrun'];
-		$_POST['lastruntime']	= (!isset($campaign['lastruntime']) ) ? 0: $campaign['lastruntime'];  //can be string
+		$_POST['lastruntime']	= (!isset($campaign['lastruntime']) ) ? 0: sanitize_text_field($campaign['lastruntime']);  //can be string
 
 		$campaign = array();
 		$campaign = apply_filters('wpematico_check_campaigndata', $_POST);

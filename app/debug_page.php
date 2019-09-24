@@ -710,9 +710,9 @@ function wpematico_debug_data() {
 
 			$vars['display_errors'] = ini_get('display_errors');
 
-			$vars['session_name']				 = esc_html(ini_get('session.name'));
-			$vars['session_cookie_path']		 = esc_html(ini_get('session.cookie_path'));
-			$vars['session_save_path']			 = esc_html(ini_get('session.save_path'));
+			$vars['session_name']				 = ini_get('session.name');
+			$vars['session_cookie_path']		 = ini_get('session.cookie_path');
+			$vars['session_save_path']			 = ini_get('session.save_path');
 			$vars['session_use_cookies']		 = ini_get('session.use_cookies');
 			$vars['session_use_only_cookies']	 = ini_get('session.use_only_cookies');
 
@@ -1019,17 +1019,17 @@ function wpematico_show_data_info() {
 				<tr>
 					<td data-export-label="Session Name"><?php _e('Session Name:', 'wpematico'); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('The Session Name.', 'wpematico') . '">[?]</a>'; ?></td>
-					<td><?php echo $session_name; ?></td>
+					<td><?php echo esc_html($session_name); ?></td>
 				</tr>				
 				<tr>
 					<td data-export-label="Cookie Path"><?php _e('Cookie Path:', 'wpematico'); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('The Session Cookie Path.', 'wpematico') . '">[?]</a>'; ?></td>
-					<td><?php echo $session_cookie_path; ?></td>
+					<td><?php echo esc_html($session_cookie_path); ?></td>
 				</tr>				
 				<tr>
 					<td data-export-label="Save Path"><?php _e('Save Path:', 'wpematico'); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('The Session Save Path.', 'wpematico') . '">[?]</a>'; ?></td>
-					<td><?php echo $session_save_path; ?></td>
+					<td><?php echo esc_html($session_save_path); ?></td>
 				</tr>				
 				<tr>
 					<td data-export-label="Use Cookies"><?php _e('Use Cookies:', 'wpematico'); ?></td>
@@ -1455,9 +1455,9 @@ function wpematico_debug_info_get() {
 
 	// The rest of this is only relevant is session is enabled
 	if(isset($_SESSION)) {
-		$return	 .= 'Session Name:             ' . $session_name . "\n";
-		$return	 .= 'Cookie Path:              ' . $session_cookie_path . "\n";
-		$return	 .= 'Save Path:                ' . $session_save_path . "\n";
+		$return	 .= 'Session Name:             ' . esc_html($session_name) . "\n";
+		$return	 .= 'Cookie Path:              ' . esc_html($session_cookie_path) . "\n";
+		$return	 .= 'Save Path:                ' . esc_html($session_save_path) . "\n";
 		$return	 .= 'Use Cookies:              ' . ( $session_use_cookies ? 'On' : 'Off' ) . "\n";
 		$return	 .= 'Use Only Cookies:         ' . ( $session_use_only_cookies ? 'On' : 'Off' ) . "\n";
 	}
