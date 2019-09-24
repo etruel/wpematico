@@ -206,6 +206,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 					'description' 						=> __('Campaign Description', 'wpematico'),
 					'description_help' 					=> __('Here you can write some observations.', 'wpematico'),
 					'xml_check_data_nonce' 				=> wp_create_nonce('wpematico-xml-check-data-nonce'),
+					'check_fields_nonce' 				=> wp_create_nonce('wpematico-check-fields-nonce'),
 
 
 				);
@@ -380,6 +381,15 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 	* @since 1.0.0
 	*/
 	public static function CheckFields() {
+
+		$nonce = '';
+        if (isset($_POST['nonce'])) {
+            $nonce = $_POST['nonce'];
+        }
+        
+        if (!wp_verify_nonce($nonce, 'wpematico-check-fields-nonce')) {
+           die('1'); 
+        }
 		$cfg = get_option(WPeMatico::OPTION_KEY);
 		$err_message = "";
 		if( isset( $_POST['campaign_wrd2cat']) ) {
@@ -441,7 +451,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 				$err_message = ($err_message != "") ? $err_message."<br />" : "" ;
 				$err_message .= __('At least one feed URL must be filled.', 'wpematico');
 			} else {  
-				$post_campaign['feed'] = empty($_POST['feed']) ? array() : $_POST['feed'];
+				$post_campaign = apply_filters('wpematico_check_campaigndata', $_POST);
 				$post_campaign['campaign_feeds'] = $campaign_feeds;
 				foreach($campaign_feeds as $kf => $feed) {
 					$pos = strpos($feed, ' '); // The feed URL can't has white spaces.

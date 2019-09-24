@@ -621,7 +621,8 @@ function events_submit_post($) {
 				campaign_word_option_title: reword_title,
 				campaign_wrd2cat: wrd2cat,
 				campaign_wrd2cat_regex: wrd2cat_regex,
-				action: "wpematico_checkfields"
+				action: "wpematico_checkfields",
+				nonce: wpematico_object.check_fields_nonce
 			};
 			data = js_apply_filters('wpematico_checkfields_data', data);
 
