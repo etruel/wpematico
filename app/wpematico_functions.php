@@ -684,7 +684,9 @@ class WPeMatico_functions {
 
 		$campaign_feeds	 = array();
 		$all_feeds		 = ( isset($post_data['campaign_feeds']) && !empty($post_data['campaign_feeds']) ) ? $post_data['campaign_feeds'] : Array();
-		if(!empty($all_feeds)) {  // Proceso los feeds sacando los que estan en blanco
+		
+
+		if(!empty($all_feeds) && is_array($all_feeds)) {  // Proceso los feeds sacando los que estan en blanco
 			foreach($all_feeds as $id => $feedname) {
 				if(!empty($feedname))
 					$campaign_feeds[] = $feedname;
@@ -777,7 +779,7 @@ class WPeMatico_functions {
 		// *** Campaign Template
 		$campaigndata['campaign_enable_template']	 = (!isset($post_data['campaign_enable_template']) || empty($post_data['campaign_enable_template'])) ? false : ($post_data['campaign_enable_template'] == 1) ? true : false;
 		if(isset($post_data['campaign_template']))
-			$campaigndata['campaign_template']			 = sanitize_textarea_field($post_data['campaign_template']);
+			$campaigndata['campaign_template']			 = $post_data['campaign_template'];
 		else {
 			$campaigndata['campaign_enable_template']	 = false;
 			$campaigndata['campaign_template']			 = '';
@@ -858,7 +860,7 @@ class WPeMatico_functions {
 		// Proceso los rewrites sacando los que estan en blanco
 //		$campaign_rewrites = Array();
 		$campaign_rewrites = ( isset($post_data['campaign_rewrites']) && !empty($post_data['campaign_rewrites']) ) ? $post_data['campaign_rewrites'] : Array();
-		if(isset($post_data['campaign_word_origin'])) {
+		if(isset($post_data['campaign_word_origin']) && is_array($post_data['campaign_word_origin'])) {
 	
 			foreach($post_data['campaign_word_origin'] as $id => $rewrite) {
 				$origin	 = sanitize_text_field($post_data['campaign_word_origin'][$id]);
