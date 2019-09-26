@@ -382,11 +382,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 	*/
 	public static function CheckFields() {
 
-		$nonce = '';
-        if (isset($_POST['nonce'])) {
-            $nonce = $_POST['nonce'];
-        }
-        
+		$nonce = (isset($_POST['nonce'])) ? $_POST['nonce'] : '';
         if (!wp_verify_nonce($nonce, 'wpematico-check-fields-nonce')) {
            die('1'); 
         }

@@ -6,55 +6,9 @@ if(!defined('ABSPATH')) {
 	exit();
 }
 
-/**
- * Retrieve tools sections
- * @since       1.2.4
- * @return      array
- */
-function wpematico_get_debug_sections() {
-	$sections				 = array();
-	$sections['debug_file']	 = __('Debug File', 'wpematico');
-	$sections['feed_viewer'] = __('Feed Viewer', 'wpematico');
-	$sections['danger_zone'] = __('Danger Zone', 'wpematico');
-	$sections				 = apply_filters('wpematico_get_debug_sections', $sections);
-
-	return $sections;
-}
-
-function wpematico_debug_print_sections() {
-	global $pagenow, $wp_roles, $current_user;
-	//$cfg = get_option(WPeMatico :: OPTION_KEY);
-	$current_section = (isset($_GET['section']) ) ? $_GET['section'] : 'debug_file';
-	$sections		 = wpematico_get_debug_sections();
+//add_action('admin_head', 'wpematico_debug_head');
+function wpematico_debug_head() {
 	?>	
-	<div class="wrap">
-		<h3 class="nav-section-wrapper">
-			<?php
-			$f				 = TRUE;
-			foreach($sections as $section_id => $section_name) {
-				$section_url = add_query_arg(array(
-					'section' => $section_id
-				));
-
-//				$section_url = remove_query_arg( array(
-//					'section'
-//				), $section_url );
-
-				if(!$f)
-					echo " | ";
-				else
-					$f		 = FALSE;
-				$active	 = $current_section == $section_id ? ' nav-section-active' : '';
-				echo '<a href="' . esc_url($section_url) . '" title="' . esc_attr($section_name) . '" class="nav-section' . $active . '">' . ( $section_name ) . '</a>';
-			}
-			?>
-		</h3>
-		<div class="metabox-holder">
-			<?php
-			do_action('wpematico_settings_section_' . $current_section);
-			?>
-		</div><!-- .metabox-holder -->
-	</div><!-- .wrap -->
 	<script type="text/javascript" language="javascript">
 		jQuery(function () {
 			jQuery(".help_tip").tipTip({maxWidth: "300px", edgeOffset: 5, fadeIn: 50, fadeOut: 50, keepAlive: true, attribute: "data-tip"});
@@ -62,8 +16,6 @@ function wpematico_debug_print_sections() {
 	</script>
 	<?php
 }
-
-add_action('wpematico_settings_tab_debug_info', 'wpematico_debug_print_sections');
 
 add_action('wp_ajax_wpematico_get_feed_file', 'wpematico_feed_viewer');
 

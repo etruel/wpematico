@@ -266,6 +266,10 @@ We are receiving tutorials on text, pdf, videos. All are welcome. Thank you!
 You can send your files to [NetMdP](https://www.netmdp.com/wpematico/) or to e-mail wpematico [at] etruel.com
 
 == Changelog ==
+= 2.3.9 Sep 25, 2019 =
+* More security enhancements and minor changes to WP standards.Op
+* Optimized some changes in the code for the new features we are preparing for version 2.4
+
 = 2.3.8 Sep 22, 2019 =
 * Incremented security on saving settings.
 * Fixes a reported vulnerability that was only available to users who could access the WPeMatico Settings screen.

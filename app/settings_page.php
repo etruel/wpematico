@@ -7,53 +7,8 @@ if(!defined('ABSPATH')) {
 }
 
 /**
- * Retrieve tools tabs
- * @since       1.2.4
- * @return      array
+ * Make Licenses Tab contents
  */
-function wpematico_get_settings_tabs() {
-	$tabs					 = array();
-	$tabs['settings']		 = __('Settings', 'wpematico');
-	//allways Licenses and debug file at end
-	$tabs					 = apply_filters('wpematico_settings_tabs', $tabs);
-	$tabs['pro_licenses']	 = __('Licenses', 'wpematico');
-	$tabs['debug_info']		 = __('System Status', 'wpematico');
-
-	return $tabs;
-}
-
-function wpematico_settings_page() {
-	global $pagenow, $wp_roles, $current_user;
-	//$cfg = get_option(WPeMatico :: OPTION_KEY);
-	$current_tab = (isset($_GET['tab']) ) ? $_GET['tab'] : 'settings';
-	$tabs		 = wpematico_get_settings_tabs();
-	?>
-	<div class="wrap">
-		<h2 class="nav-tab-wrapper">
-			<?php
-			foreach($tabs as $tab_id => $tab_name) {
-				$tab_url = add_query_arg(array(
-					'tab' => $tab_id
-				));
-
-				$tab_url = remove_query_arg(array(
-					'section'
-					), $tab_url);
-
-				$active = $current_tab == $tab_id ? ' nav-tab-active' : '';
-				echo '<a href="' . esc_url($tab_url) . '" title="' . esc_attr(sanitize_text_field($tab_name)) . '" class="nav-tab' . $active . '">' . ( $tab_name ) . '</a>';
-			}
-			?>
-		</h2>
-		<div class="metabox-holder">
-			<?php
-			do_action('wpematico_settings_tab_' . $current_tab);
-			?>
-		</div><!-- .metabox-holder -->
-	</div><!-- .wrap -->
-	<?php
-}
-
 add_action('wpematico_settings_tab_pro_licenses', 'wpematicopro_licenses');
 
 function wpematicopro_licenses() {
