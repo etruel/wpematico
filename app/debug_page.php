@@ -645,7 +645,7 @@ function wpematico_debug_data() {
 		$vars['active_plugins']	 = wpematico_get_active_plugins();
 		$vars['muplugins']		 = get_mu_plugins();
 		if(!is_array($vars['muplugins'])) {
-			$muplugins = array();
+			$vars['muplugins']= array();
 		}
 
 		if(function_exists('ini_get')) {
