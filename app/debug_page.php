@@ -6,8 +6,13 @@ if(!defined('ABSPATH')) {
 	exit();
 }
 
-//add_action('admin_head', 'wpematico_debug_head');
+add_action('admin_head', 'wpematico_debug_head');
 function wpematico_debug_head() {
+	if(( isset($_GET['page']) && $_GET['page'] == 'wpematico_settings' ) &&
+	( isset($_GET['post_type']) && $_GET['post_type'] == 'wpematico' ) &&
+	( isset($_GET['tab']) && $_GET['tab'] == 'debug_info' ) &&
+	( !isset($_GET['section']) or $_GET['section'] == 'debug_file' )) {
+
 	?>	
 	<script type="text/javascript" language="javascript">
 		jQuery(function () {
@@ -15,6 +20,7 @@ function wpematico_debug_head() {
 		});
 	</script>
 	<?php
+	}
 }
 
 add_action('wp_ajax_wpematico_get_feed_file', 'wpematico_feed_viewer');

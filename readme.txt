@@ -266,7 +266,7 @@ We are receiving tutorials on text, pdf, videos. All are welcome. Thank you!
 You can send your files to [NetMdP](https://www.netmdp.com/wpematico/) or to e-mail wpematico [at] etruel.com
 
 == Changelog ==
-= 2.3.9 Sep 25, 2019 =
+= 2.3.9 Sep 26, 2019 =
 * More security enhancements and minor changes to WP standards.Op
 * Optimized some changes in the code for the new features we are preparing for version 2.4
 
@@ -1229,6 +1229,6 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 2.3.8 =
+= 2.3.9 =
 * **NOTE: We recommend to test it in development ambients before update**
 * See changelog for more details.
