@@ -45,7 +45,7 @@ function wpematico_get_debug_info_sections() {
 function wpematico_settings_page() {
 	global $pagenow, $wp_roles, $current_user;
 	//$cfg = get_option(WPeMatico :: OPTION_KEY);
-	$current_tab = (isset($_GET['tab']) ) ? $_GET['tab'] : 'settings';
+	$current_tab = (isset($_GET['tab']) ) ? sanitize_text_field( $_GET['tab'] ) : 'settings';
 	$tabs		 = wpematico_get_settings_tabs();
 	$sections = array();
 	$get_sections= "wpematico_get_".$current_tab."_sections";
@@ -85,13 +85,13 @@ function wpematico_settings_page() {
 
 function wpematico_print_tab_sections() {
 	global $pagenow, $wp_roles, $current_user;
-	$current_tab = (isset($_GET['tab']) ) ? $_GET['tab'] : 'settings';
+	$current_tab = (isset($_GET['tab']) ) ? sanitize_text_field( $_GET['tab'] ) : 'settings';
 	$sections = array();
 	$get_sections= "wpematico_get_".$current_tab."_sections";
 	if(function_exists($get_sections)) {
 		$sections = $get_sections();
 	}
-	$current_section = (isset($_GET['section']) ) ? $_GET['section'] : key($sections);
+	$current_section = (isset($_GET['section']) ) ? sanitize_text_field( $_GET['section'] ) : key($sections);
 	?>	
 	<div class="wrap">
 		<h3 class="nav-section-wrapper">
