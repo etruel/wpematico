@@ -266,8 +266,12 @@ We are receiving tutorials on text, pdf, videos. All are welcome. Thank you!
 You can send your files to [NetMdP](https://www.netmdp.com/wpematico/) or to e-mail wpematico [at] etruel.com
 
 == Changelog ==
+= 2.3.10 Oct 01, 2019 =
+* Fixes error Uncaught Error: Call to a member function get_columns() on null for Settings page.
+* More security enhancements.
+
 = 2.3.9 Sep 26, 2019 =
-* More security enhancements and minor changes to WP standards.Op
+* More security enhancements and minor changes to WP standards.
 * Optimized some changes in the code for the new features we are preparing for version 2.4
 
 = 2.3.8 Sep 22, 2019 =
@@ -1229,6 +1233,6 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 2.3.9 =
+= 2.3.10 =
 * **NOTE: We recommend to test it in development ambients before update**
 * See changelog for more details.

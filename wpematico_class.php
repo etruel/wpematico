@@ -367,7 +367,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 				'wpematico_settings',
 				'wpematico_settings_page'
 			);
-			add_action( 'admin_print_styles-' . $page, array(&$this, 'WPemat_admin_styles') );
+			add_action( 'admin_print_styles-' . $page, array('WPeMatico_Settings', 'styles') );
 		}
 		
 		public function all_WP_admin_styles(){
@@ -377,24 +377,6 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			}
 			</style><?php
  		}
-
-
-		public static function WPemat_admin_styles() {
-			wp_enqueue_style( 'WPematStylesheet' );
-			wp_enqueue_script( 'WPemattiptip' );
-			add_action('admin_head', 'wpematico_settings_head');
-			wp_enqueue_script('postbox');
-			wp_enqueue_script('wpematico_settings_page', WPeMatico::$uri .'app/js/settings_page.js', array( 'jquery', 'postbox' ), WPEMATICO_VERSION, true );
-			
-			$wpematico_object = array(
-									'text_invalid_email' =>  __('Invalid email.', 'wpematico'),
-								);
-			wp_localize_script('wpematico_settings_page', 'wpematico_object', $wpematico_object);
-					
-			/* Add screen option: user can choose between 1 or 2 columns (default 2) */
-			//add_screen_option('layout_columns', array('max' => 2, 'default' => 2) );
-
-		}
 
 		/**
 		 * load_options in class options attribute
