@@ -107,7 +107,6 @@ function wpe_addon_admin_menu() {
 }
 
 
-add_action( 'admin_head', 'WPeAddon_admin_head' );
 function WPeAddon_admin_scripts() {
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'plupload-all' );
@@ -117,7 +116,7 @@ function WPeAddon_admin_scripts() {
 	wp_enqueue_script( 'wpematico-update', WPeMatico::$uri . 'app/js/wpematico_updates.js', array( 'jquery', 'inline-edit-post' ), WPEMATICO_VERSION, true );
 }
 
-
+add_action( 'admin_head', 'WPeAddon_admin_head' );
 function WPeAddon_admin_head(){
 	global $pagenow, $page_hook;
 	if($pagenow=='plugins.php' && $page_hook=='plugins_page_wpemaddons'){

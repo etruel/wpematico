@@ -20,7 +20,72 @@ if ( !defined('ABSPATH') ) {
 
 add_filter(	'plugin_row_meta', 'wpematico_row_meta',10,2);
 add_filter(	'plugin_action_links_' . WPEMATICO_BASENAME, 'wpematico_action_links');
+add_action( "after_plugin_row_" . WPEMATICO_BASENAME, 'wpematico_update_row', 10, 2 );
+add_action( 'admin_head', 'WPeMatico_plugins_admin_head' );
 
+function WPeMatico_plugins_admin_head(){
+	global $pagenow, $page_hook;
+	if($pagenow=='plugins.php'){
+	?>
+	<script type="text/javascript">
+		jQuery(document).ready(function($){
+			$('tr[data-slug=wpematico]').addClass('update');
+		});
+	</script>
+	<style type="text/css">
+		@media screen and (max-width: 782px) {
+			#wpematico_addons_row{
+			      display: none;
+			}
+		}
+		.wpematico_active_addon {
+			padding: 1px 5px;
+			background: orange;
+			border-radius: 5px;
+			margin: 0 3px;
+}
+		.wpematico_addon {
+			padding: 1px 5px;
+			background: #8f7444;
+			border-radius: 5px;
+			margin: 0 3px;
+}
+	</style>
+	<?php 
+	}
+}
+
+
+/**
+* Actions-Links del Plugin
+*
+* @param   array   $data  Original Links
+* @return  array   $data  modified Links
+*/
+function wpematico_update_row( $file, $plugin_data ) {
+	$plugins = get_plugins();
+	$addons=read_wpem_addons( $plugins );
+	$installed = "";
+	foreach($addons as $key => $plugin) {
+		if( !isset($plugin['installed'])) {
+			unset( $addons[ $key ] );
+		}elseif( $plugin['installed']) {
+			if(is_plugin_active($key)){
+				$installed .= '<span class="wpematico_active_addon">'.str_replace("WPeMatico", "",$plugin['Name']).'</span> ';
+			}else{
+				$installed .= '<span class="wpematico_addon">'.str_replace("WPeMatico", "",$plugin['Name']).'</span> ';
+			}
+		}
+	}
+	if(empty($installed)) $installed = '<span class="wpematico_addon">'.__('None.', 'wpematico' ).'</span> ';
+	echo '<tr id="wpematico_addons_row" class="plugin-update-tr active" data-slug="wpematico-active-extensions">';
+	echo '<td class="plugin-update colspanchange" colspan="5">';
+	echo '<div class="notice inline notice-success notice-alt">';
+	echo '<a href="'.  admin_url('plugins.php?page=wpemaddons').'" target="_self">' . __('Installed Extensions:', 'wpematico' ).'</a>' . $installed ;
+	echo '</div>';
+	echo '</td>';
+	echo '</tr>';
+}
 
 /**
 * Actions-Links del Plugin
@@ -51,14 +116,14 @@ function wpematico_row_meta($data, $page)	{
 	if ( $page != WPEMATICO_BASENAME ) {
 		return $data;
 	}
+
 	return array_merge(	$data,	array(
 		//'<a href="http://www.wpematico.com/wpematico/" target="_blank">' . __('Info & comments') . '</a>',
 		'<a href="'.  admin_url('plugins.php?page=wpemaddons').'" target="_self">' . __('Extensions') . '</a>',
 		'<a href="https://etruel.com/my-account/support/" target="_blank">' . __('Support') . '</a>',
 		'<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" target="_Blank" title="Rate 5 stars on Wordpress.org">' . __('Rate Plugin', 'wpematico' ) . '</a>',
-		'<strong><a href="https://etruel.com/downloads/wpematico-pro/" target="_Blank" title="' . __('Take a look at the PRO version features', 'wpematico' ) . '">' . __('Go PRO', 'wpematico' ) . '</a></strong>'
-//		'<a href="https://etruel.com/checkout?edd_action=add_to_cart&download_id=272&edd_options[price_id]=2" target="_Blank" title="' . __('Go to buy PRO version', 'wpematico' ) . '">' . __('Go PRO', 'wpematico' ) . '</a>'
-//			'<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU" target="_blank">' . __('Donate', 'wpematico' ) . '</a>'
+		'<strong><a href="https://etruel.com/downloads/wpematico-pro/" target="_Blank" title="' . __('Take a look at the PRO version features', 'wpematico' ) . '">' . __('Go PRO', 'wpematico' ) . '</a></strong>',
+//		'<p>' . __('Activated Extensions:', 'wpematico' ) . '</p>',
 	));
 }		
 
