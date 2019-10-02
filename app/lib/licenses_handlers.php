@@ -535,10 +535,10 @@ class wpematico_licenses_handlers {
 
 					if (is_object($license_data)) {
 						
-						$currentActivations = $license_data->site_count;
-						$activationsLeft = $license_data->activations_left;
-						$activationsLimit = $license_data->license_limit;
-						$expires = $license_data->expires;
+						$currentActivations = !empty($license_data->site_count) ? $license_data->site_count : 0;
+						$activationsLeft = !empty($license_data->activations_left) ? $license_data->activations_left : 0;
+						$activationsLimit = !empty($license_data->license_limit) ? $license_data->license_limit : 0;
+						$expires = !empty($license_data->expires) ? $license_data->expires : 0;
 						$expires = ( $expires=='lifetime')? __('Lifetime','wpematico') : substr( $expires, 0, strpos( $expires, " "));
 
 						if (!empty($license_data->payment_id) && !empty($license_data->license_limit)) {
