@@ -268,7 +268,7 @@ You can send your files to [NetMdP](https://www.netmdp.com/wpematico/) or to e-m
 == Changelog ==
 = 2.3.10 Oct 02, 2019 =
 * Added descriptions of installed extensions in plugins page.
-* Fixes somw Warnings in Licenses page.
+* Fixes some Warnings in Licenses page.
 * Fixes error Uncaught Error: Call to a member function get_columns() on null for Settings page.
 * More security enhancements.
 
