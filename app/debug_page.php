@@ -108,6 +108,8 @@ add_action('wpematico_settings_section_feed_viewer', 'wpematico_settings_section
 function wpematico_settings_section_feed_viewer() {
 	//add_action('wp_ajax_wpematico_test_feed', array( 'WPeMatico', 'Test_feed'));
 	//https://www.ufirstfitness.com/category/general/rss
+	global $current_screen;
+	if(!isset($current_screen))	wp_die("Cheatin' uh?", "Closed today.");
 	?>
 	<div class="wrap">
 		<div id="poststuff">
@@ -210,6 +212,8 @@ function wpematico_settings_section_feed_viewer() {
  * @return      void
  */
 function wpematico_settings_section_danger_zone() {
+	global $current_screen;
+	if(!isset($current_screen))	wp_die("Cheatin' uh?", "Closed today.");
 	$danger = WPeMatico::get_danger_options();
 	?>
 	<form action="options.php" method="post" dir="ltr">
@@ -282,6 +286,8 @@ function wpematico_FriendlyErrorType($type) {
  * @return      void
  */
 function wpematico_settings_section_debug_file() {
+	global $current_screen;
+	if(!isset($current_screen))	wp_die("Cheatin' uh?", "Closed today.");
 	?>
 	<div class="wrap">
 		<div id="poststuff">
@@ -294,8 +300,13 @@ function wpematico_settings_section_debug_file() {
 							<tr>
 								<td colspan="3" data-export-label="WPeMatico Status">
 									<p class="text">
-										<?php _e('Use this file to get support on '); ?><a href="https://etruel.com/support/" target="_blank" rel="follow">etruel's website</a>.
+										<?php esc_html_e('Use this file to get support on '); ?><a href="https://etruel.com/support/" target="_blank" rel="follow">etruel's website</a>.
 									</p>
+									<div class="notice notice-warning"><p>
+										<?php esc_html_e('Beware that the information sent in this file could compromise your site or contain some non-standard WorPress private key on constant values.', 'wpematico'); ?>
+										<?php esc_html_e('Send this file only to someone you can trust.', 'wpematico'); ?>
+									</p>
+									</div>
 									<span class="get-system-status">
 										<a href="javascript:;" onclick='jQuery("#debug-report").slideDown();
 												jQuery(this).parent().fadeOut();' class="button-primary debug-report"><?php _e('Get System Report', 'wpematico'); ?></a>
