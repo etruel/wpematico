@@ -216,7 +216,7 @@ function wpematico_settings_section_danger_zone() {
 	if(!isset($current_screen))	wp_die("Cheatin' uh?", "Closed today.");
 	$danger = WPeMatico::get_danger_options();
 	?>
-	<form action="options.php" method="post" dir="ltr">
+	<form action="<?php echo admin_url('admin-post.php'); ?>" method="post" dir="ltr">
 		<h3><?php _e('Debug Mode', 'wpematico'); ?></h3>
 		<label><input class="checkbox" value="1" type="checkbox" <?php checked($danger['wpe_debug_logs_campaign'], true); ?> name="wpe_debug_logs_campaign" /> <?php _e('Activate Debug Logs in Campaigns', 'wpematico'); ?></label><br/>
 		<p class="description">
@@ -230,7 +230,7 @@ function wpematico_settings_section_danger_zone() {
 		<label><input class="checkbox" value="1" type="checkbox" <?php checked($danger['wpemdeleoptions'], true); ?> name="wpemdeleoptions" /> <?php _e('Delete all Options.', 'wpematico'); ?></label><br/>
 		<label><input class="checkbox" value="1" type="checkbox" <?php checked($danger['wpemdelecampaigns'], true); ?> name="wpemdelecampaigns" /> <?php _e('Delete all Campaigns.', 'wpematico'); ?></label><br/>
 		<?php wp_nonce_field('wpematico-danger'); ?>
-		<input type="hidden" name="wpematico-action" value="set_danger_data" />
+		<input type="hidden" name="action" value="set_danger_data" />
 		<p class="description">
 			<?php _e('These selected actions will be performed after WPeMatico plugin is deactivated and you select "Delete" it in the WPeMatico row from the plugins list.', 'wpematico'); ?>
 		</p>
@@ -240,6 +240,7 @@ function wpematico_settings_section_danger_zone() {
 	</form>
 	<?php
 }
+
 
 add_action('wpematico_settings_section_danger_zone', 'wpematico_settings_section_danger_zone');
 
@@ -1317,16 +1318,15 @@ function wpematico_show_data_info() {
 	<?php
 }
 
-add_action('wpematico_set_danger_data', 'wpematico_save_danger_data');
-
+add_action( 'admin_post_set_danger_data', 'wpematico_save_danger_data');
 function wpematico_save_danger_data() {
 	if('POST' === $_SERVER['REQUEST_METHOD']) {
-		$_POST = array_map('stripslashes_deep', $_POST);
+		
 
 		check_admin_referer('wpematico-danger');
-		$danger['wpemdeleoptions']			 = (isset($_POST['wpemdeleoptions']) && !empty($_POST['wpemdeleoptions']) ) ? $_POST['wpemdeleoptions'] : false;
-		$danger['wpemdelecampaigns']		 = (isset($_POST['wpemdelecampaigns']) && !empty($_POST['wpemdelecampaigns']) ) ? $_POST['wpemdelecampaigns'] : false;
-		$danger['wpe_debug_logs_campaign']	 = (isset($_POST['wpe_debug_logs_campaign']) && !empty($_POST['wpe_debug_logs_campaign']) ) ? $_POST['wpe_debug_logs_campaign'] : false;
+		$danger['wpemdeleoptions']			 = (isset($_POST['wpemdeleoptions']) && !empty($_POST['wpemdeleoptions']) ) ? true : false;
+		$danger['wpemdelecampaigns']		 = (isset($_POST['wpemdelecampaigns']) && !empty($_POST['wpemdelecampaigns']) ) ? true : false;
+		$danger['wpe_debug_logs_campaign']	 = (isset($_POST['wpe_debug_logs_campaign']) && !empty($_POST['wpe_debug_logs_campaign']) ) ? true : false;
 
 
 		if(update_option('WPeMatico_danger', $danger) or add_option('WPeMatico_danger', $danger)) {
@@ -1335,6 +1335,7 @@ function wpematico_save_danger_data() {
 		wp_redirect(admin_url('edit.php?post_type=wpematico&page=wpematico_settings&tab=debug_info&section=danger_zone'));
 	}
 }
+
 
 /**
  * Get system info
