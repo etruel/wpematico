@@ -556,6 +556,20 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			'post_parent'			  => $this->current_item['post_parent'],
 			'ping_status'             => ($this->current_item['allowpings']) ? "open" : "closed"
 		);
+		
+		if (!empty($this->current_item['categories']) && is_object_in_taxonomy( $args['post_type'], 'category' )) {
+			if ( empty($args['tax_input']) ) {
+				$args['tax_input'] = array();
+			}
+			$args['tax_input']['category'] = $this->current_item['categories'];
+		}
+
+		if (!empty($this->current_item['campaign_tags']) && is_object_in_taxonomy( $args['post_type'], 'post_tag' )) {
+			if ( empty($args['tax_input']) ) {
+				$args['tax_input'] = array();
+			}
+			$args['tax_input']['post_tag'] = $this->current_item['campaign_tags'];
+		}
 
 		if(has_filter('wpematico_pre_insert_post')) $args =  apply_filters('wpematico_pre_insert_post', $args, $this->campaign);
 
@@ -638,19 +652,32 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
 		add_filter('content_save_pre', 'wp_filter_post_kses');
 
-		//$category = $this->current_item['categories'];
 
-		if( ! empty( $this->current_item['categories'] ) ) { //solo muestra los tags si los tiene definidos
-			$aaa = wp_set_post_terms( $post_id, $this->current_item['categories'], 'category');
-			if(!empty($aaa)) trigger_error(__("Categories added: ", 'wpematico' ).implode(", ",$aaa) ,E_USER_NOTICE);
+		if( ! empty( $this->current_item['categories'] ) ) { //Adds to campaign logs the categories added
+			$wpe_categories_added = wp_get_object_terms( $post_id, 'category');
+			$aaa = '';
+			foreach( $wpe_categories_added AS $wpe_category_added ) {
+				$aaa .= $wpe_category_added->term_id . ', ';
+		    }
+			if(!empty($aaa)) {
+				$aaa = rtrim($aaa, ', ');
+				trigger_error(__("Categories added: ", 'wpematico' ) . $aaa, E_USER_NOTICE);
+			} 
 		}
-		
-		$campaign_tags = $this->current_item['campaign_tags'];
 
-		if( ! empty( $campaign_tags ) ) { //solo muestra los tags si los tiene definidos
-			$aaa = wp_set_post_terms( $post_id, $campaign_tags);
-			if(!empty($aaa)) trigger_error(__("Tags added: ", 'wpematico' ).implode(", ",$campaign_tags),E_USER_NOTICE);
-		}else if(has_action('wpematico_chinese_tags')) do_action('wpematico_chinese_tags', $post_id, $this->current_item['content'], $this->campaign );
+		if( ! empty( $this->current_item['campaign_tags'] ) ) { //Adds to campaign logs the post tags added
+			$wpe_tags_added = wp_get_object_terms( $post_id, 'post_tag');
+			$aaa = '';
+			foreach( $wpe_tags_added AS $wpe_tag_added ) {
+				$aaa .= $wpe_tag_added->term_id . ', ';
+		    }
+			if(!empty($aaa)) {
+				$aaa = rtrim($aaa, ', ');
+				trigger_error(__("Tags added: ", 'wpematico' ) . $aaa, E_USER_NOTICE);
+			} 
+		} else if(has_action('wpematico_chinese_tags')) {
+			do_action('wpematico_chinese_tags', $post_id, $this->current_item['content'], $this->campaign );
+		} 
 		
 		$post_format = $this->current_item['campaign_post_format'];
 
