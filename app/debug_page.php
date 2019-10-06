@@ -1559,26 +1559,64 @@ function wpematico_debug_info_get() {
 	// WordPress CONSTANTS filtering users & passwords
 	$return .= "\n" . '-- WordPress user Defined Constants' . "\n\n";
 
-	$wp_constants = get_defined_constants(1);
-	unset($wp_constants['user']['DB_USER']);
-	unset($wp_constants['user']['DB_PASSWORD']);
-	unset($wp_constants['user']['AUTH_KEY']);
-	unset($wp_constants['user']['SECURE_AUTH_KEY']);
-	unset($wp_constants['user']['LOGGED_IN_KEY']);
-	unset($wp_constants['user']['NONCE_KEY']);
-	unset($wp_constants['user']['AUTH_SALT']);
-	unset($wp_constants['user']['SECURE_AUTH_SALT']);
-	unset($wp_constants['user']['LOGGED_IN_SALT']);
-	unset($wp_constants['user']['NONCE_SALT']);
-	unset($wp_constants['user']['COOKIEHASH']);
-	unset($wp_constants['user']['USER_COOKIE']);
-	unset($wp_constants['user']['PASS_COOKIE']);
-	unset($wp_constants['user']['AUTH_COOKIE']);
-	unset($wp_constants['user']['SECURE_AUTH_COOKIE']);
-	unset($wp_constants['user']['LOGGED_IN_COOKIE']);
-	unset($wp_constants['user']['TEST_COOKIE']);
 
-	$return .= print_r($wp_constants['user'], 1);
+	$debug_constants = array();
+
+	$debug_constants['KB_IN_BYTES'] 			= ( defined( 'KB_IN_BYTES' ) ? KB_IN_BYTES : 'undefined' );
+	$debug_constants['MB_IN_BYTES'] 			= ( defined( 'MB_IN_BYTES' ) ? MB_IN_BYTES : 'undefined' );
+	$debug_constants['GB_IN_BYTES'] 			= ( defined( 'GB_IN_BYTES' ) ? GB_IN_BYTES : 'undefined' );
+	$debug_constants['TB_IN_BYTES'] 			= ( defined( 'TB_IN_BYTES' ) ? TB_IN_BYTES : 'undefined' );
+	$debug_constants['WP_MEMORY_LIMIT'] 		= ( defined( 'WP_MEMORY_LIMIT' ) ? WP_MEMORY_LIMIT : 'undefined' );
+	$debug_constants['WP_MAX_MEMORY_LIMIT'] 	= ( defined( 'WP_MAX_MEMORY_LIMIT' ) ? WP_MAX_MEMORY_LIMIT : 'undefined' );
+	$debug_constants['WP_CONTENT_DIR'] 			= ( defined( 'WP_CONTENT_DIR' ) ? WP_CONTENT_DIR : 'undefined' );
+	$debug_constants['WP_DEBUG'] 				= ( defined( 'WP_DEBUG' ) ? WP_DEBUG : 'undefined' );
+	$debug_constants['WP_DEBUG_DISPLAY'] 		= ( defined( 'WP_DEBUG_DISPLAY' ) ? WP_DEBUG_DISPLAY : 'undefined' );
+	$debug_constants['WP_DEBUG_LOG'] 			= ( defined( 'WP_DEBUG_LOG' ) ? WP_DEBUG_LOG : 'undefined' );
+	$debug_constants['WP_CACHE'] 				= ( defined( 'WP_CACHE' ) ? WP_CACHE : 'undefined' );
+	$debug_constants['SCRIPT_DEBUG'] 			= ( defined( 'SCRIPT_DEBUG' ) ? SCRIPT_DEBUG : 'undefined' );
+	$debug_constants['MEDIA_TRASH'] 			= ( defined( 'MEDIA_TRASH' ) ? MEDIA_TRASH : 'undefined' );
+	$debug_constants['SHORTINIT'] 				= ( defined( 'SHORTINIT' ) ? SHORTINIT : 'undefined' );
+	
+	$debug_constants['MINUTE_IN_SECONDS'] 		= ( defined( 'MINUTE_IN_SECONDS' ) ? MINUTE_IN_SECONDS : 'undefined' );
+	$debug_constants['HOUR_IN_SECONDS'] 		= ( defined( 'HOUR_IN_SECONDS' ) ? HOUR_IN_SECONDS : 'undefined' );
+	$debug_constants['DAY_IN_SECONDS'] 			= ( defined( 'DAY_IN_SECONDS' ) ? DAY_IN_SECONDS : 'undefined' );
+	$debug_constants['WEEK_IN_SECONDS'] 		= ( defined( 'WEEK_IN_SECONDS' ) ? WEEK_IN_SECONDS : 'undefined' );
+	$debug_constants['MONTH_IN_SECONDS'] 		= ( defined( 'MONTH_IN_SECONDS' ) ? MONTH_IN_SECONDS : 'undefined' );
+	$debug_constants['YEAR_IN_SECONDS'] 		= ( defined( 'YEAR_IN_SECONDS' ) ? YEAR_IN_SECONDS : 'undefined' );
+	$debug_constants['WP_CONTENT_URL'] 			= ( defined( 'WP_CONTENT_URL' ) ? WP_CONTENT_URL : 'undefined' );
+	$debug_constants['WP_PLUGIN_DIR'] 			= ( defined( 'WP_PLUGIN_DIR' ) ? WP_PLUGIN_DIR : 'undefined' );
+	$debug_constants['WP_PLUGIN_URL'] 			= ( defined( 'WP_PLUGIN_URL' ) ? WP_PLUGIN_URL : 'undefined' );
+	$debug_constants['PLUGINDIR']				= ( defined( 'PLUGINDIR' ) ? PLUGINDIR : 'undefined' );
+	$debug_constants['WPMU_PLUGIN_DIR']			= ( defined( 'WPMU_PLUGIN_DIR' ) ? WPMU_PLUGIN_DIR : 'undefined' );
+	$debug_constants['WPMU_PLUGIN_URL']			= ( defined( 'WPMU_PLUGIN_URL' ) ? WPMU_PLUGIN_URL : 'undefined' );
+	$debug_constants['MUPLUGINDIR']				= ( defined( 'MUPLUGINDIR' ) ? MUPLUGINDIR : 'undefined' );
+	
+	$debug_constants['FORCE_SSL_ADMIN']			= ( defined( 'FORCE_SSL_ADMIN' ) ? FORCE_SSL_ADMIN : 'undefined' );
+	$debug_constants['FORCE_SSL_LOGIN']			= ( defined( 'FORCE_SSL_LOGIN' ) ? FORCE_SSL_LOGIN : 'undefined' );
+	$debug_constants['AUTOSAVE_INTERVAL']		= ( defined( 'AUTOSAVE_INTERVAL' ) ? AUTOSAVE_INTERVAL : 'undefined' );
+	$debug_constants['EMPTY_TRASH_DAYS']		= ( defined( 'EMPTY_TRASH_DAYS' ) ? EMPTY_TRASH_DAYS : 'undefined' );
+	$debug_constants['WP_POST_REVISIONS']		= ( defined( 'WP_POST_REVISIONS' ) ? WP_POST_REVISIONS : 'undefined' );
+	$debug_constants['WP_CRON_LOCK_TIMEOUT']	= ( defined( 'WP_CRON_LOCK_TIMEOUT' ) ? WP_CRON_LOCK_TIMEOUT : 'undefined' );
+	$debug_constants['TEMPLATEPATH']			= ( defined( 'TEMPLATEPATH' ) ? TEMPLATEPATH : 'undefined' );
+	$debug_constants['STYLESHEETPATH']			= ( defined( 'STYLESHEETPATH' ) ? STYLESHEETPATH : 'undefined' );
+	$debug_constants['WP_DEFAULT_THEME']		= ( defined( 'WP_DEFAULT_THEME' ) ? WP_DEFAULT_THEME : 'undefined' );
+
+	$wp_constants = get_defined_constants(1);
+	if ( !empty($wp_constants['user']) ) {
+		foreach ($wp_constants['user'] as $key => $value) {
+			
+			if ( stripos($key, 'WPEM_') !== false || stripos($key, 'WPEMATICO') !== false ) {
+				$debug_constants[$key] = $value;
+			}
+		}
+	}
+	
+
+	$debug_constants = apply_filters('wpematico_debug_constants', $debug_constants);
+	
+	
+
+	$return .= print_r($debug_constants, 1);
 
 	$return = apply_filters('wpematico_sysinfo_after_get_defined_constants', $return);
 
