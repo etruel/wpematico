@@ -18,7 +18,7 @@ if ( !empty( $cached ) ) {
 $url = 'https://wordpress.org/support/plugin/wpematico/reviews/?filter=5';
 
 $ch = curl_init($url);
-$cookie_jar = tempnam('./tmp','cookie');
+$cookie_jar = @tempnam('./tmp','cookie');
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_VERBOSE, true);
 curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 5.1; rv:1.7.3) Gecko/20041001 Firefox/0.10.1" );

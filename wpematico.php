@@ -83,6 +83,7 @@ class Main_WPeMatico{
 		require_once('app/wpematico_functions.php');
 		require_once('wpematico_class.php');
 		require_once('app/xml-importer.php');
+		require_once('app/cron.php');
 	}
 
 	private function hooks() {

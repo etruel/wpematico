@@ -548,11 +548,19 @@ if(!class_exists('WPeMatico_Settings')) :
 											<label><input class="checkbox" id="dontruncron" type="checkbox"<?php checked($cfg['dontruncron'], true); ?> name="dontruncron" value="1"/> 
 												<strong><?php _e('Disable WPeMatico schedulings', 'wpematico'); ?></strong></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['dontruncron']; ?>"></span>
 											<br />
-											<?php $croncode	 = ($cfg['set_cron_code']) ? '?code=' . $cfg['cron_code'] : ''; ?>
+											<?php 
+												$croncode	 	= ($cfg['set_cron_code']) ? '?code=' . $cfg['cron_code'] : ''; 
+												
+												$url_cron = admin_url('admin-post.php?action=wpematico_cron');
+												if ($cfg['set_cron_code']) {
+													$url_cron = add_query_arg( array('code' => $cfg['cron_code']),  $url_cron);
+												}
+												
+											?>
 											<div id="hlpcron" style="padding-left:20px;">
 												<?php _e('You must set up a cron job that calls:', 'wpematico'); ?><br />
 												<span class="coderr b"><i> php -q <?php echo WPeMatico :: $dir . "app/wpe-cron.php" . $croncode; ?></i></span><br />
-												<?php _e('or URL:', 'wpematico'); ?> &nbsp;&nbsp;&nbsp;<span class="coderr b"><i><?php echo WPeMatico :: $uri . "app/wpe-cron.php" . $croncode; ?></i></span>
+												<?php _e('or URL:', 'wpematico'); ?> &nbsp;&nbsp;&nbsp;<span class="coderr b"><i><?php echo $url_cron; ?></i></span>
 												<br />
 												<label><input class="checkbox" id="set_cron_code" type="checkbox"<?php checked($cfg['set_cron_code'], true); ?> name="set_cron_code" value="1"/> 
 													<strong><?php _e('Set a password to access the external CRON', 'wpematico'); ?></strong></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['set_cron_code']; ?>"></span>
