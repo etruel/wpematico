@@ -68,13 +68,29 @@ jQuery(document).ready(function ($) {
 		}
 	});
 
-	$('#campaign_bbpress_forum').change(function () {
+	$('#campaign_bbpress_forum').change(function() {
 		if ($('#campaign_bbpress_forum').val() != '') {
 			$('#inside_forums').fadeIn();
-			$('#customtype_forum').prop('checked', true);
+			jQuery('#customtype_topic').prop('checked', true);
+			jQuery('input[name="campaign_customposttype"]').change();
 		} else {
+			jQuery('#customtype_forum').prop('checked', true);
+			jQuery('input[name="campaign_customposttype"]').change();
 			$('#inside_forums').fadeOut();
 		}
+	});
+
+	$('#campaign_bbpress_topic').change(function() {
+		if ($('#campaign_bbpress_topic').val() != '') {
+			jQuery('#customtype_reply').prop('checked', true);
+			jQuery('input[name="campaign_customposttype"]').change();
+		} else {
+			jQuery('#customtype_topic').prop('checked', true);
+			//debugger;
+			jQuery('input[name="campaign_customposttype"]').change();
+			//debugger;
+		}
+
 	});
 
 	$('#campaign_type').change(function () {
@@ -82,6 +98,12 @@ jQuery(document).ready(function ($) {
 			$('#customtype_post').parent().fadeIn();
 		} else {
 			$('#customtype_post').parent().fadeOut();
+
+			$('textarea[name="campaign_tags"]').val('');
+			$('input[name="post_category[]"]').prop('checked', false);
+
+			jQuery('#customtype_forum').prop('checked', true);
+			jQuery('input[name="campaign_customposttype"]').change();
 		}
 	});
 	wpematico_events_xml_campaign($);

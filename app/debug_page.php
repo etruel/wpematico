@@ -1600,7 +1600,9 @@ function wpematico_debug_info_get() {
 	$debug_constants['TEMPLATEPATH']			= ( defined( 'TEMPLATEPATH' ) ? TEMPLATEPATH : 'undefined' );
 	$debug_constants['STYLESHEETPATH']			= ( defined( 'STYLESHEETPATH' ) ? STYLESHEETPATH : 'undefined' );
 	$debug_constants['WP_DEFAULT_THEME']		= ( defined( 'WP_DEFAULT_THEME' ) ? WP_DEFAULT_THEME : 'undefined' );
-
+	$debug_constants['DISABLE_WP_CRON']			= ( defined( 'DISABLE_WP_CRON' ) ? DISABLE_WP_CRON : 'undefined' );
+	$debug_constants['ALTERNATE_WP_CRON']		= ( defined( 'ALTERNATE_WP_CRON' ) ? ALTERNATE_WP_CRON : 'undefined' );
+	
 	$wp_constants = get_defined_constants(1);
 	if ( !empty($wp_constants['user']) ) {
 		foreach ($wp_constants['user'] as $key => $value) {
