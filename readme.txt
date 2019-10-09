@@ -1243,6 +1243,6 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 2.3.11 =
+= 2.4.0 =
 * **Recommended update. Test it before in development enviroments**
 * We fixed a few bugs based on your feedback.  Thanks for helping us out!
