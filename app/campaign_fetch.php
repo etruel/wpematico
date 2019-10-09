@@ -558,17 +558,17 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		);
 		
 		if (!empty($this->current_item['categories']) && is_object_in_taxonomy( $args['post_type'], 'category' )) {
-			if ( empty($args['tax_input']) ) {
-				$args['tax_input'] = array();
+			if ( empty($args['post_category']) ) {
+				$args['post_category'] = array();
 			}
-			$args['tax_input']['category'] = $this->current_item['categories'];
+			$args['post_category'] = $this->current_item['categories'];
 		}
 
 		if (!empty($this->current_item['campaign_tags']) && is_object_in_taxonomy( $args['post_type'], 'post_tag' )) {
-			if ( empty($args['tax_input']) ) {
-				$args['tax_input'] = array();
+			if ( empty($args['tags_input']) ) {
+				$args['tags_input'] = array();
 			}
-			$args['tax_input']['post_tag'] = $this->current_item['campaign_tags'];
+			$args['tags_input'] = $this->current_item['campaign_tags'];
 		}
 
 		if(has_filter('wpematico_pre_insert_post')) $args =  apply_filters('wpematico_pre_insert_post', $args, $this->campaign);
