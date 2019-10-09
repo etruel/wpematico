@@ -266,6 +266,14 @@ We are receiving tutorials on text, pdf, videos. All are welcome. Thank you!
 You can send your files to [NetMdP](https://www.netmdp.com/wpematico/) or to e-mail wpematico [at] etruel.com
 
 == Changelog ==
+= 2.4.0 Oct 08, 2019 =
+* Improved from scratch the external cron processes.  If use external cron you should take a look at the new URLs in Settings.
+* Added tag metaboxes on BBPress Topics post type.
+* Improved the tags and categories insertion into the posts.
+* Changed debug file printed constants to a limited whitelist of them.
+* Fixes some issues in campaign edit js alerts.
+* Fixes a php warning on settings page.
+
 = 2.3.10 Oct 02, 2019 =
 * Added descriptions of installed extensions in plugins page.
 * Fixes some Warnings in Licenses page.
@@ -1235,6 +1243,6 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 2.3.10 =
-* **NOTE: Strongly recommended update**
-* See changelog for more details.
+= 2.3.11 =
+* **Recommended update. Test it before in development enviroments**
+* We fixed a few bugs based on your feedback.  Thanks for helping us out!

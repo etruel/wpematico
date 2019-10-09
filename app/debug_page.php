@@ -303,11 +303,6 @@ function wpematico_settings_section_debug_file() {
 									<p class="text">
 										<?php esc_html_e('Use this file to get support on '); ?><a href="https://etruel.com/support/" target="_blank" rel="follow">etruel's website</a>.
 									</p>
-									<div class="notice notice-warning"><p>
-										<?php esc_html_e('Beware that the information sent in this file could compromise your site or contain some non-standard WorPress private key on constant values.', 'wpematico'); ?>
-										<?php esc_html_e('Send this file only to someone you can trust.', 'wpematico'); ?>
-									</p>
-									</div>
 									<span class="get-system-status">
 										<a href="javascript:;" onclick='jQuery("#debug-report").slideDown();
 												jQuery(this).parent().fadeOut();' class="button-primary debug-report"><?php _e('Get System Report', 'wpematico'); ?></a>
@@ -725,7 +720,7 @@ function wpematico_show_data_info() {
 			<tr>
 				<td data-export-label="Server Info"><?php _e('Server Info:', 'wpematico'); ?></td>
 				<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('Information about the web server that is currently hosting your site.', 'wpematico') . '">[?]</a>'; ?></td>
-				<td><?php echo esc_html($_SERVER['SERVER_SOFTWARE']); ?></td>
+				<td><strong><?php echo esc_html($_SERVER['SERVER_SOFTWARE']); ?></strong></td>
 			</tr>
 			<tr>
 				<td data-export-label="MySQL Version"><?php _e('MySQL Version:', 'wpematico'); ?></td>
@@ -1370,9 +1365,13 @@ function wpematico_debug_info_get() {
 	$return	 = apply_filters('wpematico_sysinfo_after_webserver_config', $return);
 
 	$return	 .= "\n" . '-- Required Apache Mods' . "\n";
-	$return	 .= 'Mod Rewrite:             ' . ( ($m_rewrite_ok) ? 'Enabled' : 'Disabled' ) . "\n";
-	$return	 .= 'Mod Mime:                ' . ( ($m_mime_ok) ? 'Enabled' : 'Disabled' ) . "\n";
-	$return	 .= 'Mod Deflate:             ' . ( ($m_deflate_ok) ? 'Enabled' : 'Disabled' ) . "\n";
+	if ( stripos($_SERVER['SERVER_SOFTWARE'], 'nginx') !== false ) {
+		$return	 .= "\n" . '-- SERVER NGINX No Apache Mods' . "\n";
+	}else{
+		$return	 .= 'Mod Rewrite:             ' . ( ($m_rewrite_ok) ? 'Enabled' : 'Disabled' ) . "\n";
+		$return	 .= 'Mod Mime:                ' . ( ($m_mime_ok) ? 'Enabled' : 'Disabled' ) . "\n";
+		$return	 .= 'Mod Deflate:             ' . ( ($m_deflate_ok) ? 'Enabled' : 'Disabled' ) . "\n";
+	}
 
 	$return = apply_filters('wpematico_sysinfo_after_apache_mods', $return);
 
