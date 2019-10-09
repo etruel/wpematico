@@ -267,7 +267,7 @@ You can send your files to [NetMdP](https://www.netmdp.com/wpematico/) or to e-m
 
 == Changelog ==
 = 2.4.1 Oct 09, 2019 =
- * Fixes a bug in the new method to add categories and tags to posts by cron.
+* Fixes a bug in the new method to add categories and tags to posts by cron.
 
 = 2.4.0 Oct 08, 2019 =
 * Improved from scratch the external cron processes.  If use external cron you should take a look at the new URLs in Settings.
