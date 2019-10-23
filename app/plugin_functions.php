@@ -168,7 +168,9 @@ function wpematico_install( $update_campaigns = false ){
 			WPeMatico::update_campaign($post->ID, $campaigndata);
 		endforeach; 
 	}
-	$v = explode('.', WPEMATICO_VERSION);
+	
+	$version = rtrim(WPEMATICO_VERSION, '.0');
+	$v = explode('.', $version);
 	// Redirect to welcome page only in Major Updates
 	if ( count($v) <= 2 ) {
 		// Add the transient to redirect 
