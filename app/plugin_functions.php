@@ -168,9 +168,15 @@ function wpematico_install( $update_campaigns = false ){
 			WPeMatico::update_campaign($post->ID, $campaigndata);
 		endforeach; 
 	}
-
-	// Add the transient to redirect 
-	set_transient( '_wpematico_activation_redirect', true, 120 ); // After two minutes lost welcome screen
+	$v = explode('.', WPEMATICO_VERSION);
+	// Redirect to welcome page only in Major Updates
+	if ( count($v) <= 2 ) {
+		// Add the transient to redirect 
+		set_transient( '_wpematico_activation_redirect', true, 120 ); // After two minutes lost welcome screen
+	} else {
+		update_option( 'wpematico_db_version', WPEMATICO_VERSION, false );
+	}
+	
 
 }
 /**
