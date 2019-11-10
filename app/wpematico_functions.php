@@ -863,11 +863,11 @@ class WPeMatico_functions {
 		if(isset($post_data['campaign_word_origin']) && is_array($post_data['campaign_word_origin'])) {
 	
 			foreach($post_data['campaign_word_origin'] as $id => $rewrite) {
-				$origin	 = sanitize_text_field($post_data['campaign_word_origin'][$id]);
+				$origin	 = wp_check_invalid_utf8($post_data['campaign_word_origin'][$id]);
 				$regex	 = $post_data['campaign_word_option_regex'][$id] == 1 ? true : false;
 				$title	 = $post_data['campaign_word_option_title'][$id] == 1 ? true : false;
-				$rewrite = sanitize_text_field($post_data['campaign_word_rewrite'][$id]);
-				$relink	 = sanitize_text_field($post_data['campaign_word_relink'][$id]);
+				$rewrite = wp_check_invalid_utf8($post_data['campaign_word_rewrite'][$id]);
+				$relink	 = wp_check_invalid_utf8($post_data['campaign_word_relink'][$id]);
 				if(!empty($origin)) {
 					$campaign_rewrites['origin'][]	 = $origin;
 					$campaign_rewrites['regex'][]	 = $regex;
