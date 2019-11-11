@@ -619,10 +619,17 @@ class wpematico_campaign_fetch_functions {
 			$current_item = apply_filters('wpematico_get_item_images', $current_item, $campaign, $item, $options_images);
 
 			foreach ($current_item['images'] as $ki => $image) {
-				$current_item['images'][$ki] = urldecode($current_item['images'][$ki]);
+				$new_image_url = urldecode($current_item['images'][$ki]);
+				
 				if (strpos($image, '//') === 0) {
-					$current_item['images'][$ki] = 'http:'.$current_item['images'][$ki];
+					$new_image_url = 'http:'.$new_image_url;
 				}
+				
+				if ($new_image_url != $current_item['images'][$ki]) {
+					$current_item['content'] = str_replace($current_item['images'][$ki], $new_image_url, $current_item['content']);
+				}
+				$current_item['images'][$ki] = $new_image_url;
+				
 			}
 
 		}
