@@ -310,15 +310,14 @@ function wpematico_addons_row_actions($actions, $plugin_file, $plugin_data, $con
  * Return the array of plugins plus WPeMatico Add-on found on etruel.com website
  * @param type $plugins array of current plugins
  */
-Function read_wpem_addons($plugins){
+function read_wpem_addons($plugins){
 	$cached 	= get_transient( 'etruel_wpematico_addons_data' );
 	if ( !is_array( $cached ) ) { // If no cache read source feed
-		$urls_addons = array();
-		$urls_addons[] = 'http://etruel.com/downloads/category/wpematico-add-ons/feed/';
-		for($i=2; $i<= 9; $i++) {
-			$urls_addons[] = 'http://etruel.com/downloads/category/wpematico-add-ons/feed/?paged='.$i;
-		}
-		$addonitems = WPeMatico::fetchFeed($urls_addons, true, 10);
+		
+		$urls_addon = 'http://etruel.com/downloads/category/wpematico-add-ons/feed/';
+	
+		$addonitems = WPeMatico::fetchFeed($urls_addon, true, 100);
+		
 		$addon = array();
 		foreach($addonitems->get_items() as $item) {
 			$itemtitle = $item->get_title();
