@@ -141,9 +141,9 @@ class WPeMatico_Campaigns {
 
 			$options		 = WPeMatico_Campaign_edit::campaign_type_options();
 			$readonly		 = ( count($options) == 1 ) ? 'disabled' : '';
-			$campaign_type	 = (isset($_GET['campaign_type']) && !empty($_GET['campaign_type']) ) ? $_GET['campaign_type'] : '';
-			if(!empty($campaign_type))
-				$campaign_type	 = sanitize_text_field($campaign_type);
+			$campaign_type	 = (isset($_GET['campaign_type']) && !empty($_GET['campaign_type']) ) ? sanitize_text_field( $_GET['campaign_type'] ) : '';
+			
+		
 			$echoHtml		 = '<div style="display: inline-block;"><select id="campaign_type" ' . $readonly . ' name="campaign_type" style="display:inline;">';
 			$echoHtml		 .= '<option value=""' . selected('', $campaign_type, false) . '>' . __('Campaign Type', 'wpematico') . '</option>';
 			foreach($options as $key => $option) {
@@ -159,12 +159,11 @@ class WPeMatico_Campaigns {
 	public static function query_set_custom_filters($wp_query) {
 		global $current_user, $pagenow, $typenow;
 		if($pagenow == 'edit.php' && is_admin() && $typenow == 'wpematico') {
-			$campaign_type = (isset($_GET['campaign_type']) && !empty($_GET['campaign_type']) ) ? $_GET['campaign_type'] : '';
+			$campaign_type = (isset($_GET['campaign_type']) && !empty($_GET['campaign_type']) ) ? sanitize_text_field( $_GET['campaign_type'] ) : '';
 
 			$filtering = false;
 			if(!empty($campaign_type)) {
 				$filtering		 = true;
-				$campaign_type	 = sanitize_text_field($campaign_type);
 				$meta_query[]	 = array(
 					array(
 						'key'		 => 'campaign_data',
@@ -323,7 +322,7 @@ class WPeMatico_Campaigns {
 			wp_die('Are you sure?');
 		}
 		// Get the original post
-		$id		 = (isset($_GET['post']) ? $_GET['post'] : $_POST['post']);
+		$id		 = (isset($_GET['post']) ? absint($_GET['post']) : absint($_POST['post']) );
 		$post	 = get_post($id);
 
 		// Copy the post and insert it
@@ -363,7 +362,7 @@ class WPeMatico_Campaigns {
 			wp_die('Are you sure?');
 		}
 		// Get the original post
-		$id = (isset($_GET['post']) ? $_GET['post'] : $_POST['post']);
+		$id = (isset($_GET['post']) ? absint($_GET['post']) : absint($_POST['post']) );
 
 		$campaign_data				 = WPeMatico::get_campaign($id);
 		$campaign_data['activated']	 = !$campaign_data['activated'];
@@ -395,7 +394,7 @@ class WPeMatico_Campaigns {
 			wp_die('Are you sure?');
 		}
 		// Get the original post
-		$id								 = (isset($_GET['post']) ? $_GET['post'] : $_POST['post']);
+		$id								 = (isset($_GET['post']) ? absint( $_GET['post'] ) : absint( $_POST['post'] ) );
 		$campaign_data					 = WPeMatico :: get_campaign($id);
 		$campaign_data['postscount']	 = 0;
 		$campaign_data['lastpostscount'] = 0;
@@ -427,7 +426,7 @@ class WPeMatico_Campaigns {
 			wp_die('Are you sure?');
 		}
 		// Get the original post
-		$id				 = (isset($_GET['post']) ? $_GET['post'] : $_POST['post']);
+		$id				 = (isset($_GET['post']) ?  absint( $_GET['post'] ) :  absint( $_POST['post'] ) );
 		$campaign_data	 = WPeMatico :: get_campaign($id);
 		foreach($campaign_data['campaign_feeds'] as $feed) { // Grabo el ultimo hash de cada feed con 0
 			$campaign_data[$feed]['lasthash']	 = "0";
@@ -465,7 +464,7 @@ class WPeMatico_Campaigns {
 		}
 
 		// Get the original post
-		$id				 = (isset($_GET['post']) ? $_GET['post'] : $_POST['post']);
+		$id				 = (isset($_GET['post']) ?  absint( $_GET['post'] ) :  absint( $_POST['post'] ) );
 		$campaign_data	 = WPeMatico::get_campaign($id);
 
 		$campaign_data['cronnextrun']	 = WPeMatico :: time_cron_next($campaign_data['cron']); //set next run
@@ -496,7 +495,7 @@ class WPeMatico_Campaigns {
 			3	 => __('Custom field deleted.', 'wpematico'),
 			4	 => __('Campaign updated.', 'wpematico'),
 			/* translators: %s: date and time of the revision */
-			5	 => isset($_GET['revision']) ? sprintf(__('Campaign restored to revision from %s'), wp_post_revision_title((int) $_GET['revision'], false)) : false,
+			5	 => isset($_GET['revision']) ? sprintf(__('Campaign restored to revision from %s'), wp_post_revision_title( absint(  $_GET['revision'] ) , false)) : false,
 			6	 => sprintf(__('Campaign published.', 'wpematico')),
 			7	 => __('Campaign saved.'),
 			8	 => sprintf(__('Campaign submitted.', 'wpematico')),
@@ -814,8 +813,8 @@ class WPeMatico_Campaigns {
 	}
 
 	static function get_wpematico_categ_bulk_edit($post_id, $post_type) {
-		$post_id	 = ( isset($_POST['post_id']) && !empty($_POST['post_id']) ) ? $_POST['post_id'] : $post_id;
-		$post_type	 = ( isset($_POST['campaign_posttype']) && !empty($_POST['campaign_posttype']) ) ? $_POST['campaign_posttype'] : $post_type;
+		$post_id	 = ( isset($_POST['post_id']) && !empty($_POST['post_id']) ) ? absint($_POST['post_id']) : $post_id;
+		$post_type	 = ( isset($_POST['campaign_posttype']) && !empty($_POST['campaign_posttype']) ) ? sanitize_text_field($_POST['campaign_posttype']) : $post_type;
 	}
 
 	public static function wpematico_add_to_quick_edit_custom_box($column_name, $post_type) {
@@ -1055,13 +1054,13 @@ class WPeMatico_Campaigns {
 		$campaign							 = WPeMatico :: get_campaign($post_id);
 		$posdata							 = $_POST; //apply_filters('wpematico_check_campaigndata', $_POST );
 		//parse disabled checkfields that dont send any data
-		$posdata['campaign_feed_order_date'] = (!isset($posdata['campaign_feed_order_date']) || empty($posdata['campaign_feed_order_date'])) ? false : ($posdata['campaign_feed_order_date'] == 1) ? true : false;
-		$posdata['campaign_feeddate']		 = (!isset($posdata['campaign_feeddate']) || empty($posdata['campaign_feeddate'])) ? false : ($posdata['campaign_feeddate'] == 1) ? true : false;
-		$posdata['campaign_allowpings']		 = (!isset($posdata['campaign_allowpings']) || empty($posdata['campaign_allowpings'])) ? false : ($posdata['campaign_allowpings'] == 1) ? true : false;
-		$posdata['campaign_linktosource']	 = (!isset($posdata['campaign_linktosource']) || empty($posdata['campaign_linktosource'])) ? false : ($posdata['campaign_linktosource'] == 1) ? true : false;
-		$posdata['campaign_strip_links']	 = (!isset($posdata['campaign_strip_links']) || empty($posdata['campaign_strip_links'])) ? false : ($posdata['campaign_strip_links'] == 1) ? true : false;
+		$campaign['campaign_feed_order_date'] = (!isset($posdata['campaign_feed_order_date']) || empty($posdata['campaign_feed_order_date'])) ? false : ($posdata['campaign_feed_order_date'] == 1) ? true : false;
+		$campaign['campaign_feeddate']		 = (!isset($posdata['campaign_feeddate']) || empty($posdata['campaign_feeddate'])) ? false : ($posdata['campaign_feeddate'] == 1) ? true : false;
+		$campaign['campaign_allowpings']		 = (!isset($posdata['campaign_allowpings']) || empty($posdata['campaign_allowpings'])) ? false : ($posdata['campaign_allowpings'] == 1) ? true : false;
+		$campaign['campaign_linktosource']	 = (!isset($posdata['campaign_linktosource']) || empty($posdata['campaign_linktosource'])) ? false : ($posdata['campaign_linktosource'] == 1) ? true : false;
+		$campaign['campaign_strip_links']	 = (!isset($posdata['campaign_strip_links']) || empty($posdata['campaign_strip_links'])) ? false : ($posdata['campaign_strip_links'] == 1) ? true : false;
 
-		$campaign = array_merge($campaign, $posdata);
+		
 
 		$campaign = apply_filters('wpematico_check_campaigndata', $campaign);
 
@@ -1088,22 +1087,28 @@ class WPeMatico_Campaigns {
 			$arrayData = array();
 			// text or number fields
 			if($_POST['campaign_max']) {
-				$arrayData['campaign_max'] = $_POST['campaign_max'];
+				$arrayData['campaign_max'] = absint($_POST['campaign_max']);
 			}
-
-			// check box or select field
-			$checkBoxFieldsName = array('campaign_author', 'campaign_feeddate', 'campaign_commentstatus', 'campaign_allowpings', 'campaign_linktosource', 'campaign_strip_links');
-			foreach($checkBoxFieldsName as $field) {
-				$arrayData[$field] = $_POST[$field];
-			}
-
+			$arrayData['campaign_max']				= (!isset($_POST['campaign_max']) ) ? 0 : absint($_POST['campaign_max']);
+			$arrayData['campaign_author']			= (!isset($_POST['campaign_author']) ) ? 0 : absint($_POST['campaign_author']);
+			
+			$arrayData['campaign_feeddate'] 		= (!isset($_POST['campaign_feeddate']) || empty($_POST['campaign_feeddate'])) ? false : ($_POST['campaign_feeddate'] == 1) ? true : false;
+			$arrayData['campaign_commentstatus']	= (!isset($_POST['campaign_commentstatus']) ) ? 'closed' : sanitize_text_field($_POST['campaign_commentstatus']);
+			$arrayData['campaign_allowpings'] 		= (!isset($_POST['campaign_allowpings']) || empty($_POST['campaign_allowpings'])) ? false : ($_POST['campaign_allowpings'] == 1) ? true : false;
+			$arrayData['campaign_linktosource'] 	= (!isset($_POST['campaign_linktosource']) || empty($_POST['campaign_linktosource'])) ? false : ($_POST['campaign_linktosource'] == 1) ? true : false;
+			$arrayData['campaign_strip_links'] 		= (!isset($_POST['campaign_strip_links']) || empty($_POST['campaign_strip_links'])) ? false : ($_POST['campaign_strip_links'] == 1) ? true : false;
+			
 			// taxonomies
+			$arrayData['post_category'] = array();
 			if(isset($_POST['post_category']) && is_array($_POST['post_category'])) {
-				$arrayData['post_category'] = $_POST['post_category'];
+				 foreach($_POST['post_category'] as $term_id) {
+				 	$arrayData['post_category'][] = absint($term_id);
+				 }
 			}
 
 			// update for each post ID
 			foreach($post_ids as $post_id) {
+				$post_id = absint($post_id);
 				$campaign = WPeMatico :: get_campaign($post_id);
 				foreach($arrayData as $key => $dataEntry) {
 					$campaign[$key] = $dataEntry;

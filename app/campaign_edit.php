@@ -242,7 +242,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 
 	function RunNowX() {
 		if(!isset($_POST['campaign_ID'])) die('ERROR: ID no encontrado.'); 
-		$campaign_ID=$_POST['campaign_ID'];
+		$campaign_ID = absint($_POST['campaign_ID']);
 		echo substr( WPeMatico :: wpematico_dojob( $campaign_ID ) , 0, -1); // borro el ultimo caracter que es un 0
 		return ''; 
 	}

@@ -38,9 +38,9 @@ class campaign_logs {
 		} 
 
 		if ( isset( $_GET['p'] ) ) {
-		 	$post_id = $post_ID = (int) $_GET['p'];
+		 	$post_id = $post_ID = absint($_GET['p']);
 		} elseif ( isset( $_POST['post_ID'] ) ) {
-		 	$post_id = $post_ID = (int) $_POST['post_ID'];
+		 	$post_id = $post_ID = absint($_POST['post_ID']);
 		} else {
 		 	$post_id = $post_ID = 0;
 		}

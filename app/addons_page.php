@@ -371,7 +371,11 @@ function read_wpem_addons($plugins){
 	//recorre plugins a ver si existe compara por URI y lo borro de cached (addons)
 	foreach($plugins as $key => $plugin) {
 		foreach($cached as $Akey => $addon) {
-			if( ( strstr( $plugin['PluginURI'], '://') == strstr( $addon['PluginURI'], '://') ) ) { 
+			if( ( strstr( $plugin['PluginURI'], '://') == strstr( $addon['PluginURI'], '://') ) 
+			/*				|| ('WPeMatico PRO' == $plugin['Name'] && 'WPeMatico Professional' == $addon['Name']) 	
+				|| ('WPeMatico PRO' == $plugin['Name'] && 'WPeMatico PRO' == $addon['Name']) 	
+*/				) { // Saco bundled
+				
 				unset( $cached[ $Akey ] );
 				$plugins[$key]['installed'] = true;
 			}
