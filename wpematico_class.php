@@ -475,7 +475,9 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			
 			$cfg['disable_categories_description']	= (!isset($options['disable_categories_description']) || empty($options['disable_categories_description'])) ? false: ($options['disable_categories_description']==1) ? true : false;
 			$cfg['enable_xml_upload']	= (!isset($options['enable_xml_upload']) || empty($options['enable_xml_upload'])) ? false: ($options['enable_xml_upload']==1) ? true : false;
-
+			
+			$cfg['disable_extensions_feed_page']	= (!isset($options['disable_extensions_feed_page']) || empty($options['disable_extensions_feed_page'])) ? false: ($options['disable_extensions_feed_page']==1) ? true : false;
+			//Disable Extensions feed Page. 
 			return apply_filters('wpematico_more_options', $cfg, $options);
 		}
 		

@@ -194,7 +194,10 @@ if(!class_exists('WPeMatico_Settings')) :
 												?></span>
 											<p></p>
 											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disable_categories_description'], true); ?> name="disable_categories_description" id="disable_categories_description" /><b>&nbsp;<?php _e('Disable <i>Auto-Category description</i>', 'wpematico'); ?></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disable_categories_description']; ?>"></span>
-
+											<p></p>	
+											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disable_extensions_feed_page'], true); ?> name="disable_extensions_feed_page" id="disable_extensions_feed_page" /><b>&nbsp;<?php _e('Disable Extensions feed Page', 'wpematico'); ?></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disable_extensions_feed_page']; ?>"></span>
+												
+												
 											<p style="text-align: right;">
 												<input type="hidden" name="action" value="save_wpematico_settings" />
 												<?php submit_button(__('Save settings', 'wpematico'), 'primary', 'wpematico-save-settings', false); ?>

@@ -284,6 +284,10 @@ function wpematico_helpsettings($dev = '') {
 				'title'	 => __('Disable Auto-Category Descriptions.', 'wpematico'),
 				'tip'	 => __('Check this to avoid the future descriptions "Created by WPeMatico" of the created (auto)categories.  You could edit the past categories if you need to delete their descriptions.', 'wpematico'),
 			),
+			'disable_extensions_feed_page'	 => array(
+				'title'	 => __('Disable Extensions feed Page.', 'wpematico'),
+				'tip'	 => __('Check this to avoid the fetch of addons from feed page.', 'wpematico'),
+			),
 			'enable_xml_upload'					 => array(
 				'title'	 => __('Enable Upload of XMLs.', 'wpematico'),
 				'tip'	 => __('If you want upload XML files to use them in the XML Campaign Type. Enable this feature allow the upload XMLs from media.', 'wpematico'),

@@ -306,11 +306,7 @@ function wpematico_addons_row_actions($actions, $plugin_file, $plugin_data, $con
 	return $actions;
 }
 
-/**
- * Return the array of plugins plus WPeMatico Add-on found on etruel.com website
- * @param type $plugins array of current plugins
- */
-function read_wpem_addons($plugins){
+function wpematico_get_addons_maybe_fetch() {
 	$cached 	= get_transient( 'etruel_wpematico_addons_data' );
 	if ( !is_array( $cached ) ) { // If no cache read source feed
 		
@@ -358,13 +354,24 @@ function read_wpem_addons($plugins){
 		set_transient( 'etruel_wpematico_addons_data', $addons, $length );
 		$cached = $addons;
 	}
+	return $cached;
+}
+/**
+ * Return the array of plugins plus WPeMatico Add-on found on etruel.com website
+ * @param type $plugins array of current plugins
+ */
+function read_wpem_addons($plugins){
+	
+	$cfg = WPeMatico::check_options( get_option( 'WPeMatico_Options' ) );
+	$cached = array();
+	if ( empty( $cfg['disable_extensions_feed_page'] ) ) {
+		$cached = wpematico_get_addons_maybe_fetch();
+	}
+	
 	//recorre plugins a ver si existe compara por URI y lo borro de cached (addons)
 	foreach($plugins as $key => $plugin) {
 		foreach($cached as $Akey => $addon) {
-			if( ( strstr( $plugin['PluginURI'], '://') == strstr( $addon['PluginURI'], '://') ) 
-/*				|| ('WPeMatico PRO' == $plugin['Name'] && 'WPeMatico Professional' == $addon['Name']) 
-				|| ('WPeMatico PRO' == $plugin['Name'] && 'WPeMatico PRO' == $addon['Name']) 
-*/				) { // Saco bundled
+			if( ( strstr( $plugin['PluginURI'], '://') == strstr( $addon['PluginURI'], '://') ) ) { 
 				unset( $cached[ $Akey ] );
 				$plugins[$key]['installed'] = true;
 			}
