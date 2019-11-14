@@ -207,6 +207,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 					'description_help' 					=> __('Here you can write some observations.', 'wpematico'),
 					'xml_check_data_nonce' 				=> wp_create_nonce('wpematico-xml-check-data-nonce'),
 					'check_fields_nonce' 				=> wp_create_nonce('wpematico-check-fields-nonce'),
+					'run_now_edit_nonce' 				=> wp_create_nonce('wpematico-run-now-nonce'),
 
 
 				);
@@ -241,6 +242,13 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 	}
 
 	function RunNowX() {
+		
+		$nonce = (isset($_POST['nonce'])) ? $_POST['nonce'] : '';
+        if ( ! wp_verify_nonce($nonce, 'wpematico-run-now-nonce') ) {
+           die(__('Please refresh your browser and try again.', 'wpematico')); 
+        }
+		
+		
 		if(!isset($_POST['campaign_ID'])) die('ERROR: ID no encontrado.'); 
 		$campaign_ID = absint($_POST['campaign_ID']);
 		echo substr( WPeMatico :: wpematico_dojob( $campaign_ID ) , 0, -1); // borro el ultimo caracter que es un 0
