@@ -1450,7 +1450,7 @@ class WPeMatico_functions {
 		$r = wp_parse_args($args, $defaults);
 
 		/**
-		 * It could be use to add cURL options to request.
+		 * It could be used to add cURL options to request.
 		 * @since 1.9.0
 		 */
 		$r = apply_filters('wpematico_get_contents_request_params', $r, $url);

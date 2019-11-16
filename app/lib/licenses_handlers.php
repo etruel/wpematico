@@ -31,15 +31,15 @@ class wpematico_licenses_handlers {
 			}
 		}
 		
-		if (defined( 'WPECATS2TAGS_VERSION' )) {
-			if (version_compare(WPECATS2TAGS_VERSION, '1.1', '<=')) {
-				remove_action( 'admin_init', 'WPeMatico_cats2tags_plugin_updater', 0 );
-				remove_action('wpempro_licenses_forms', 'wpematico_cats2tags_license_page' );
-				remove_action('admin_init', 'wpematico_cats2tags_register_option');
-				remove_action('admin_init', 'wpematico_cats2tags_activate_license');
-				remove_action('admin_init', 'wpematico_cats2tags_deactivate_license');
-			}
-		}
+//		if (defined( 'WPECATS2TAGS_VERSION' )) {
+//			if (version_compare(WPECATS2TAGS_VERSION, '1.1', '<=')) {
+//				remove_action( 'admin_init', 'WPeMatico_cats2tags_plugin_updater', 0 );
+//				remove_action('wpempro_licenses_forms', 'wpematico_cats2tags_license_page' );
+//				remove_action('admin_init', 'wpematico_cats2tags_register_option');
+//				remove_action('admin_init', 'wpematico_cats2tags_activate_license');
+//				remove_action('admin_init', 'wpematico_cats2tags_deactivate_license');
+//			}
+//		}
 		
 		if (defined( 'WPEMCHINESE_VERSION' )) {
 			if (version_compare(WPEMCHINESE_VERSION, '1.2', '<=')) {
