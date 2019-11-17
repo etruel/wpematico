@@ -243,7 +243,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 
 	function RunNowX() {
 		
-		$nonce = (isset($_POST['nonce'])) ? $_POST['nonce'] : '';
+		$nonce = (isset($_POST['nonce'])) ?  sanitize_text_field($_POST['nonce']) : '';
         if ( ! wp_verify_nonce($nonce, 'wpematico-run-now-nonce') ) {
            die(__('Please refresh your browser and try again.', 'wpematico')); 
         }
@@ -390,7 +390,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 	*/
 	public static function CheckFields() {
 
-		$nonce = (isset($_POST['nonce'])) ? $_POST['nonce'] : '';
+		$nonce = (isset($_POST['nonce'])) ? sanitize_text_field($_POST['nonce']) : '';
         if (!wp_verify_nonce($nonce, 'wpematico-check-fields-nonce')) {
            die('1'); 
         }

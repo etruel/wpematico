@@ -32,7 +32,7 @@ class campaign_logs {
 	* @since version
 	*/
 	public static function print_log() {
-		$nonce = $_REQUEST['_wpnonce'];
+		$nonce = !empty($_REQUEST['_wpnonce']) ? sanitize_text_field($_REQUEST['_wpnonce']) : '';
 		if(!wp_verify_nonce($nonce, 'clog-nonce') ) {
 			wp_die('Are you sure?'); 
 		} 

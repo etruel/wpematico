@@ -139,7 +139,7 @@ class wpematico_campaign_preview_item {
 	public static function ajax_get_item_post() {
 		$nonce = '';
 		if (isset($_REQUEST['nonce_get_item'])) {
-			$nonce = $_REQUEST['nonce_get_item'];
+			$nonce = sanitize_text_field($_REQUEST['nonce_get_item']);
 		}
 		
 		if (!wp_verify_nonce($nonce, 'campaign-preview-get-item')) {
@@ -150,7 +150,7 @@ class wpematico_campaign_preview_item {
 		self::$cfg = get_option(WPeMatico::OPTION_KEY);
 
 		
-		$campaign_id = intval($_REQUEST['campaign_id']);
+		$campaign_id = absint($_REQUEST['campaign_id']);
 		if (empty($campaign_id)) {
 			status_header(404);
 			die(__('The campaign is invalid.', 'wpematico'));
@@ -161,7 +161,7 @@ class wpematico_campaign_preview_item {
 			status_header(404);
 			die(__('The item is invalid.', 'wpematico'));
 		}
-		self::$item_hash = $_REQUEST['item_hash'];
+		self::$item_hash = sanitize_text_field($_REQUEST['item_hash']);
 
 		if (empty($_REQUEST['feed'])) {
 			status_header(404);
@@ -228,7 +228,7 @@ class wpematico_campaign_preview_item {
 	public static function print_preview_item() {
 		$nonce = '';
 		if (isset($_REQUEST['_wpnonce'])) {
-			$nonce = $_REQUEST['_wpnonce'];
+			$nonce = sanitize_text_field($_REQUEST['_wpnonce']);
 		}
 		
 		if (!wp_verify_nonce($nonce, 'campaign-preview-item-nonce')) {
@@ -238,7 +238,7 @@ class wpematico_campaign_preview_item {
 		self::$cfg = get_option(WPeMatico::OPTION_KEY);
 
 		
-		$campaign_id = intval($_REQUEST['campaign']);
+		$campaign_id = absint($_REQUEST['campaign']);
 		if (empty($campaign_id)) {
 			wp_die(__('The campaign is invalid.', 'wpematico'));
 		} 
@@ -247,7 +247,7 @@ class wpematico_campaign_preview_item {
 		if (empty($_REQUEST['item_hash'])) {
 			wp_die(__('The item is invalid.', 'wpematico'));
 		}
-		$item_hash = $_REQUEST['item_hash'];
+		$item_hash = sanitize_text_field($_REQUEST['item_hash']);
 
 		
 		if (empty($_REQUEST['feed'])) {
@@ -316,7 +316,7 @@ class wpematico_campaign_preview_item {
 			<input type="hidden" id="nonce_get_item" name="nonce_get_item" value="<?php echo wp_create_nonce('campaign-preview-get-item'); ?>"/>
 				<div id="preview-post-actions">
 					<?php if (!empty($_REQUEST['return_url'])) : ?>
-						<a href="<?php echo $_REQUEST['return_url']; ?>" class="button">Back</a>
+						<a href="<?php echo esc_url($_REQUEST['return_url']); ?>" class="button">Back</a>
 					<?php endif; ?>
 					<button type="button" data-itemhash="<?php echo $item_hash; ?>" data-feed="<?php echo $feed; ?>" class="item_fetch cpanelbutton dashicons dashicons-welcome-add-page" title="<?php esc_attr_e('Fetch Now', 'wpematico'); ?>"></button>
 					<?php do_action('wpematico_preview_item_actions', $item); ?>

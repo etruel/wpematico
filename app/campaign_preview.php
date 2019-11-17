@@ -189,7 +189,7 @@ class wpematico_campaign_preview {
 	public static function print_preview() {
 		$nonce = '';
 		if (isset($_REQUEST['_wpnonce'])) {
-			$nonce = $_REQUEST['_wpnonce'];
+			$nonce = sanitize_text_field($_REQUEST['_wpnonce']);
 		}
 		
 		if (!wp_verify_nonce($nonce, 'campaign-preview-nonce')) {
@@ -199,7 +199,7 @@ class wpematico_campaign_preview {
 		self::$cfg = get_option(WPeMatico::OPTION_KEY);
 
 		
-		$campaign_id = intval($_REQUEST['p']);
+		$campaign_id = absint($_REQUEST['p']);
 		if (empty($campaign_id)) {
 			wp_die(__('The campaign is invalid.', 'wpematico'));
 		} 

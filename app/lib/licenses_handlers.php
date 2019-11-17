@@ -374,8 +374,20 @@ class wpematico_licenses_handlers {
 		return $license_data;
 	}
 	public static function ajax_change_status_license() {
+		
+		$nonce = !empty($_POST['nonce']) ? sanitize_text_field($_POST['nonce']) : '';
+		
+		if (!wp_verify_nonce($nonce, 'wpe-nonce-handler-license')) {
+		   wp_die('Security check'); 
+		}
+		
+		
 		if (!empty($_POST['plugin_name']) && !empty($_POST['status'])) {
-			$action_return = self::change_status_license($_POST['plugin_name'], $_POST['status']);
+			
+			$plugin_name	= sanitize_text_field($_POST['plugin_name']);
+			$status 		= sanitize_text_field($_POST['status']);
+			
+			$action_return = self::change_status_license($plugin_name, $status);
 			echo json_encode($action_return);
 			wp_die();
 			
@@ -383,13 +395,20 @@ class wpematico_licenses_handlers {
 		
 	}
 	public static function ajax_check_license() {
-		$plugin_name = $_POST['plugin_name'];
+		$nonce = !empty($_POST['nonce']) ? sanitize_text_field($_POST['nonce']) : '';
+		
+		if (!wp_verify_nonce($nonce, 'wpe-nonce-handler-license')) {
+		   wp_die('Security check'); 
+		}
+
+		
+		$plugin_name = sanitize_text_field($_POST['plugin_name']);
 		$plugins_args = array();
 		$plugins_args = apply_filters('wpematico_plugins_updater_args', $plugins_args);
 		if (empty($plugins_args[$plugin_name])) {
 			wp_die('error');
 		}
-		$license = $_POST['license'];
+		$license = sanitize_text_field($_POST['license']);
 		$args = array(
 			'license' 	=> $license,
 			'item_name' => urlencode($plugins_args[$plugin_name]['api_data']['item_name']),
@@ -426,7 +445,8 @@ class wpematico_licenses_handlers {
 			wp_enqueue_script( 'wpematico-jquery-settings-licenses', WPEMATICO_PLUGIN_URL. 'app/js/licenses_handlers.js', array( 'jquery' ), WPEMATICO_VERSION, true );
 			wp_localize_script('wpematico-jquery-settings-licenses', 'wpematico_license_object',
 				array('ajax_url' => admin_url( 'admin-ajax.php' ),
-					'txt_check_license' => __('Check License', 'wpematico'),
+					'txt_check_license' 	=> __('Check License', 'wpematico'),
+					'nonce_handler_license' => wp_create_nonce('wpe-nonce-handler-license')
 				)
 			);
 		}

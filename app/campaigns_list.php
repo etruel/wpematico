@@ -322,7 +322,7 @@ class WPeMatico_Campaigns {
 		}
 		$nonce = '';
 		if(isset($_REQUEST['nonce'])) {
-			$nonce = $_REQUEST['nonce'];
+			$nonce = sanitize_text_field($_REQUEST['nonce']);
 		}
 		if(!wp_verify_nonce($nonce, 'wpe-action-nonce')) {
 			wp_die('Are you sure?');
@@ -362,7 +362,7 @@ class WPeMatico_Campaigns {
 		}
 		$nonce = '';
 		if(isset($_REQUEST['nonce'])) {
-			$nonce = $_REQUEST['nonce'];
+			$nonce = sanitize_text_field($_REQUEST['nonce']);
 		}
 		if(!wp_verify_nonce($nonce, 'wpe-action-nonce')) {
 			wp_die('Are you sure?');
@@ -394,7 +394,7 @@ class WPeMatico_Campaigns {
 		}
 		$nonce = '';
 		if(isset($_REQUEST['nonce'])) {
-			$nonce = $_REQUEST['nonce'];
+			$nonce = sanitize_text_field($_REQUEST['nonce']);
 		}
 		if(!wp_verify_nonce($nonce, 'wpe-action-nonce')) {
 			wp_die('Are you sure?');
@@ -426,7 +426,7 @@ class WPeMatico_Campaigns {
 		}
 		$nonce = '';
 		if(isset($_REQUEST['nonce'])) {
-			$nonce = $_REQUEST['nonce'];
+			$nonce = sanitize_text_field($_REQUEST['nonce']);
 		}
 		if(!wp_verify_nonce($nonce, 'wpe-action-nonce')) {
 			wp_die('Are you sure?');
@@ -463,7 +463,7 @@ class WPeMatico_Campaigns {
 		}
 		$nonce = '';
 		if(isset($_REQUEST['nonce'])) {
-			$nonce = $_REQUEST['nonce'];
+			$nonce = sanitize_text_field($_REQUEST['nonce']);
 		}
 		if(!wp_verify_nonce($nonce, 'wpe-action-nonce')) {
 			wp_die('Are you sure?');

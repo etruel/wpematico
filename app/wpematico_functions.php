@@ -298,6 +298,10 @@ class WPeMatico_functions {
 	 * @since 1.9.0
 	 */
 	public static function save_file_from_url($url_origin, $new_file) {
+		global $wp_filesystem; 
+		
+		
+		
 		$ch			 = curl_init($url_origin);
 		if(!$ch)
 			return false;
@@ -1426,12 +1430,19 @@ class WPeMatico_functions {
 	 */
 	public static function wpematico_get_contents($url, $arguments = true) {
 		
-		$r		= apply_filters('wpematico_get_contents_request_params', $arguments, $url);
 
-		$data	= apply_filters( 'wpematico_before_get_content' ,false, $r, $url);
-	
+		$r			= apply_filters('wpematico_get_contents_request_params', $arguments, $url);
+
+		$data		= apply_filters( 'wpematico_before_get_content', false, $r, $url);
+		
+		
+		$defaults	= array(
+			'timeout' => 5
+		);
+		$r = wp_parse_args($r, $defaults);
+		
 		if(!$data) { // if stil getting error on get file content try WP func, this may give timeouts 
-			$response = wp_remote_request($url, array('timeout' => 5));
+			$response = wp_remote_request($url, $r);
 			if(!is_wp_error($response)) {
 				if(isset($response['response']['code']) && 200 === $response['response']['code']) {
 					$data = wp_remote_retrieve_body($response);

@@ -45,7 +45,7 @@ if ( ! class_exists( 'WPeMatico_Cron' ) )  {
 			 *  check password only when set_cron_code=true
 			 */
 			if( $cfg['set_cron_code'] ) {
-				if(!isset($_REQUEST['code']) || !($_REQUEST['code'] == $cfg['cron_code']) ) {
+				if(!isset($_REQUEST['code']) || !( sanitize_text_field( $_REQUEST['code'] )  == $cfg['cron_code']) ) {
 					die('Warning! cron.php was called with the wrong password or without one!');
 				}
 			}

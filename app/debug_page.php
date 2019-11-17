@@ -27,8 +27,11 @@ add_action('wp_ajax_wpematico_get_feed_file', 'wpematico_feed_viewer');
 
 function wpematico_feed_viewer() {
 	check_admin_referer('wpematico-feedviewer');
-	if(!isset($_POST['url']))
+	
+	if( ! isset($_POST['url'])) {
 		return false;
+	}
+		
 	if(!isset($_POST['_referer'])
 		or ! strpos($_POST['_referer'], "post_type=wpematico&page=wpematico_settings&tab=debug_info&section=feed_viewer"))
 		return false;
