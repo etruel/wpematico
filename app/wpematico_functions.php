@@ -1424,48 +1424,12 @@ class WPeMatico_functions {
 	 * 
 	 * @return mixed String Content or False if error on get remote file content.
 	 */
-	public static function wpematico_get_contents($url, $curl = true) {
-		if(is_bool($curl)) {
-			$args = array(
-				'curl' => $curl,
-			);
-		}else {
-			$args = $curl;
-		}
-		$defaults = array(
-			'curl'			 => true,
-			'curl_setopt'	 => array(
-				'CURLOPT_HEADER'		 => 0,
-				'CURLOPT_RETURNTRANSFER' => 1,
-				'CURLOPT_FOLLOWLOCATION' => 0,
-				'CURLOPT_ENCODING'		 => '',
-				//'CURLOPT_USERAGENT'=> "Mozilla/5.0 (Windows; U; Windows NT 5.1; rv:1.7.3) Gecko/20041001 Firefox/0.10.1",
-				'CURLOPT_USERAGENT'		 => "Mozilla/5.0 (Windows NT 5.1; rv:5.0) Gecko/20100101 Firefox/5.0 Firefox/5.0",
-			),
-		);
+	public static function wpematico_get_contents($url, $arguments = true) {
+		
+		$r		= apply_filters('wpematico_get_contents_request_params', $arguments, $url);
 
-
-
-
-		$r = wp_parse_args($args, $defaults);
-
-		/**
-		 * It could be used to add cURL options to request.
-		 * @since 1.9.0
-		 */
-		$r = apply_filters('wpematico_get_contents_request_params', $r, $url);
-
-
-		$curl = $r['curl'];
-
-		$data	 = false;
-		if($curl && function_exists('curl_version'))   // (in_array  ('curl', get_loaded_extensions()))
-			$data	 = self::file_get_contents_curl($url, $r);
-
-		if(!$data || !$curl || is_null($data)) {
-			$data = file_get_contents($url);
-		}
-
+		$data	= apply_filters( 'wpematico_before_get_content' ,false, $r, $url);
+	
 		if(!$data) { // if stil getting error on get file content try WP func, this may give timeouts 
 			$response = wp_remote_request($url, array('timeout' => 5));
 			if(!is_wp_error($response)) {
@@ -1482,48 +1446,7 @@ class WPeMatico_functions {
 		return $data;
 	}
 
-	public static function file_get_contents_curl($url, $args = '') {
-		if(empty($args)) {
-			$args = array();
-		}
-		$defaults	 = array(
-			'safemode'		 => false,
-			'curl_setopt'	 => array(
-				'CURLOPT_HEADER'		 => 0,
-				'CURLOPT_RETURNTRANSFER' => 1,
-				'CURLOPT_FOLLOWLOCATION' => 0,
-				//'CURLOPT_SSL_VERIFYPEER'=> 0,
-				'CURLOPT_USERAGENT'		 => "Mozilla/5.0 (Windows; U; Windows NT 5.1; rv:1.7.3) Gecko/20041001 Firefox/0.10.1",
-			),
-		);
-		$r			 = wp_parse_args($args, $defaults);
-		$ch			 = curl_init();
-		if(!$ch)
-			return false;
-
-		$safemode = ini_get('safe_mode');
-		if(!$r['safemode']) {
-			ini_set('safe_mode', false);
-		}else {
-			ini_set('safe_mode', true);
-		}
-
-		curl_setopt($ch, CURLOPT_URL, $url);
-		foreach($r['curl_setopt'] as $key => $value) {
-			curl_setopt($ch, @constant($key), $value);
-		}
-
-		$data		 = curl_exec($ch);
-		$httpcode	 = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-		curl_close($ch);
-
-		if(function_exists('ini_set')) {
-			ini_set('safe_mode', $safemode);
-		}
-
-
-		return ($httpcode >= 200 && $httpcode < 300) ? $data : false;
-	}
+	
 
 	public static function get_curl_version() {
 
