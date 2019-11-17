@@ -212,8 +212,14 @@ function wpematico_addons_custom_columns($column_name, $plugin_file, $plugin_dat
 	if (strpos($plugin_data['Name'], 'WPeMatico ') === false && strpos($plugin_data['PluginURI'], 'wpematico') === false ) {
 		return true;
 	}
-	// Get the addon from the transient saved before
-	$addons = get_transient('etruel_wpematico_addons_data');
+	
+	$cfg = WPeMatico::check_options( get_option( 'WPeMatico_Options' ) );
+	$addons = array();
+	if ( empty( $cfg['disable_extensions_feed_page'] ) ) {
+		// Get the addon from the transient saved before
+		$addons = wpematico_get_addons_maybe_fetch();
+	}
+	
 	foreach($addons as $value) { 
 		$plugin_data_uri = strstr( $plugin_data['PluginURI'], '://');
 		$addon_data_uri = strstr( $value['PluginURI'], '://');
