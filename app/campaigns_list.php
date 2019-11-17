@@ -1060,13 +1060,28 @@ class WPeMatico_Campaigns {
 		$campaign							 = WPeMatico :: get_campaign($post_id);
 		$posdata							 = $_POST; //apply_filters('wpematico_check_campaigndata', $_POST );
 		//parse disabled checkfields that dont send any data
-		$campaign['campaign_feed_order_date'] = (!isset($posdata['campaign_feed_order_date']) || empty($posdata['campaign_feed_order_date'])) ? false : ($posdata['campaign_feed_order_date'] == 1) ? true : false;
-		$campaign['campaign_feeddate']		 = (!isset($posdata['campaign_feeddate']) || empty($posdata['campaign_feeddate'])) ? false : ($posdata['campaign_feeddate'] == 1) ? true : false;
-		$campaign['campaign_allowpings']		 = (!isset($posdata['campaign_allowpings']) || empty($posdata['campaign_allowpings'])) ? false : ($posdata['campaign_allowpings'] == 1) ? true : false;
-		$campaign['campaign_linktosource']	 = (!isset($posdata['campaign_linktosource']) || empty($posdata['campaign_linktosource'])) ? false : ($posdata['campaign_linktosource'] == 1) ? true : false;
-		$campaign['campaign_strip_links']	 = (!isset($posdata['campaign_strip_links']) || empty($posdata['campaign_strip_links'])) ? false : ($posdata['campaign_strip_links'] == 1) ? true : false;
-
 		
+		$campaign['campaign_max']				= (!isset($posdata['campaign_max']) ) ? 0 : absint($posdata['campaign_max']);
+		$campaign['campaign_author']			= (!isset($posdata['campaign_author']) ) ? 0 : absint($posdata['campaign_author']);
+		$campaign['campaign_commentstatus']		= (!isset($posdata['campaign_commentstatus']) ) ? 'closed' : sanitize_text_field($posdata['campaign_commentstatus']);
+		$campaign['campaign_customposttype']	= (!isset($posdata['campaign_customposttype']) ) ? 'post' : sanitize_text_field($posdata['campaign_customposttype']);
+		$campaign['campaign_posttype']			= (!isset($posdata['campaign_posttype']) ) ? 'publish' : sanitize_text_field($posdata['campaign_posttype']);
+		$campaign['campaign_tags']				= (!isset($posdata['campaign_tags']) ) ? '' : sanitize_text_field($posdata['campaign_tags']);
+		
+			
+		$campaign['campaign_feed_order_date']	= (!isset($posdata['campaign_feed_order_date']) || empty($posdata['campaign_feed_order_date'])) ? false : ($posdata['campaign_feed_order_date'] == 1) ? true : false;
+		$campaign['campaign_feeddate']			= (!isset($posdata['campaign_feeddate']) || empty($posdata['campaign_feeddate'])) ? false : ($posdata['campaign_feeddate'] == 1) ? true : false;
+		$campaign['campaign_allowpings']		= (!isset($posdata['campaign_allowpings']) || empty($posdata['campaign_allowpings'])) ? false : ($posdata['campaign_allowpings'] == 1) ? true : false;
+		$campaign['campaign_linktosource']		= (!isset($posdata['campaign_linktosource']) || empty($posdata['campaign_linktosource'])) ? false : ($posdata['campaign_linktosource'] == 1) ? true : false;
+		$campaign['campaign_strip_links']		= (!isset($posdata['campaign_strip_links']) || empty($posdata['campaign_strip_links'])) ? false : ($posdata['campaign_strip_links'] == 1) ? true : false;
+
+			// taxonomies
+		$campaign['post_category'] = array();
+		if(isset($posdata['post_category']) && is_array($posdata['post_category'])) {
+			 foreach($posdata['post_category'] as $term_id) {
+			 	$campaign['post_category'][] = absint($term_id);
+			 }
+		}
 
 		$campaign = apply_filters('wpematico_check_campaigndata', $campaign);
 
