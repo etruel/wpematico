@@ -267,18 +267,8 @@ You can send your files to [NetMdP](https://www.netmdp.com/wpematico/) or to e-m
 
 == Changelog ==
 = 2.5 Nov 09, 2019 =
-"app/wpe-cron.php" WAS DEPRECATED and removed from WPeMatico as external cron method.
-
-wpe-cron.php
-DEPRECATED: Due to WordPress requirements, the external cron using the file wpe-cron.php has been removed.
-Go to WPeMatico Settings to see instructions to configure the new external cron calls.
-settings_help.php linea 287
-
-campaign_list.php 1103
-ver absint() x (int)
-manage_wpematico_save_bulk_edit
-
-1056 save_quick_edit_post
+* "app/wpe-cron.php" WAS DEPRECATED and removed from WPeMatico as external cron method.
+* 
 
 
 = 2.4.1 Oct 09, 2019 =

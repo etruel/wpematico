@@ -92,7 +92,7 @@ function startHookDesactivate() {
 	jQuery('.btn_license_deactivate').click(function(e) {
 		var plugin_name = this.id.replace('_btn_license_deactivate', '');
 		jQuery(this).prop('disabled', true);
-		jQuery('#' + plugin_name + '_ajax_status_license').html('Desactivating key...');
+		jQuery('#' + plugin_name + '_ajax_status_license').html('Deactivating key...');
 		jQuery('#' + plugin_name + '_ajax_status_license').fadeIn();
 		var data_request = {
 			action: 'wpematico_status_license',

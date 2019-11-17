@@ -285,8 +285,9 @@ function wpematico_helpsettings($dev = '') {
 				'tip'	 => __('Check this to avoid the future descriptions "Created by WPeMatico" of the created (auto)categories.  You could edit the past categories if you need to delete their descriptions.', 'wpematico'),
 			),
 			'disable_extensions_feed_page'	 => array(
-				'title'	 => __('Disable Extensions feed Page.', 'wpematico'),
-				'tip'	 => __('Check this to avoid the fetch of addons from feed page.', 'wpematico'),
+				'title'	 => __('Disable Extensions feed page requests.', 'wpematico'),
+				'tip'	 => __('Check this to avoid the fetch of WPeMatico Addons from our downloads feed page.', 'wpematico'),
+				'plustip'=> __('You\'ll see an empty page or just your installed extensions when you click on Extensions menu.', 'wpematico'),
 			),
 			'enable_xml_upload'					 => array(
 				'title'	 => __('Enable Upload of XMLs.', 'wpematico'),
