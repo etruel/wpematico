@@ -133,7 +133,8 @@ function run_all() {
 		jQuery('#post-' + c_ID + ' .state_buttons.dashicons-controls-play').addClass('green');
 		var data = {
 			campaign_ID: c_ID,
-			action: "wpematico_run"
+			action: "wpematico_run",
+			nonce: wpematico_object.run_now_list_nonce
 		};
 		jQuery.post(ajaxurl, data, function(msgdev) { //si todo ok devuelve LOG sino 0
 			if (msgdev.substring(0, 5) == 'ERROR') {

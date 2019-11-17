@@ -43,6 +43,8 @@ class WPeMatico_Campaigns {
 		add_action('admin_action_wpematico_toggle_campaign', array(__CLASS__, 'wpematico_toggle_campaign'));
 		add_action('admin_action_wpematico_reset_campaign', array(__CLASS__, 'wpematico_reset_campaign'));
 		add_action('admin_action_wpematico_clear_campaign', array(__CLASS__, 'wpematico_clear_campaign'));
+
+		add_action('admin_action_wpematico_delhash_campaign', array(__CLASS__, 'wpematico_delhash_campaign'));
 		
 		add_filter('editable_slug', array(__CLASS__, 'inline_custom_fields'), 999, 1);
 		//CUSTOM BULK & EDIT ACTIONS
@@ -136,12 +138,7 @@ class WPeMatico_Campaigns {
 			require( dirname(__FILE__) . '/campaigns_list_help.php' );
 	}
 
-	public function __construct($hook_in = FALSE) {
-		global $_bulk_actions;
-		$cfg = get_option(WPeMatico :: OPTION_KEY);
-		$cfg = apply_filters('wpematico_check_options', $cfg);
-		add_action('admin_action_wpematico_delhash_campaign', array('WPeMatico_Campaigns', 'wpematico_delhash_campaign'));
-	}
+	
 
 	public static function custom_filters($options) {
 		global $typenow, $wp_query, $current_user, $pagenow, $cfg;
