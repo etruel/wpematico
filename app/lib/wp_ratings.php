@@ -7,7 +7,7 @@ if ( !defined('ABSPATH') ) {
 }
 //error_reporting( E_CORE_ERROR | E_CORE_WARNING | E_COMPILE_ERROR | E_ERROR | E_WARNING | E_PARSE | E_USER_ERROR | E_USER_WARNING | E_RECOVERABLE_ERROR );
 
-$cached = get_transient( '_etruel_wpem_reviews_data' );
+//$cached = get_transient( '_etruel_wpem_reviews_data' );
 // Always return cached transients if exists.
 if ( !empty( $cached ) ) {
 	echo $cached;
@@ -16,16 +16,15 @@ if ( !empty( $cached ) ) {
 
 //$url = 'https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5';
 $url = 'https://wordpress.org/support/plugin/wpematico/reviews/?filter=5';
-
-$ch = curl_init($url);
 $cookie_jar = @tempnam('./tmp','cookie');
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_VERBOSE, true);
-curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 5.1; rv:1.7.3) Gecko/20041001 Firefox/0.10.1" );
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie_jar);
-$html = curl_exec($ch);
-print_r( curl_getinfo ( $ch ),1 ); //exit;
+$args = array(
+	'user-agent'=> "Mozilla/5.0 (Windows; U; Windows NT 5.1; rv:1.7.3) Gecko/20041001 Firefox/0.10.1",
+	'cookies'   => array($cookie_jar)
+);
+
+$html = WPeMatico_functions::wpematico_get_contents($url, $args);
+//print_r( $html,1 ); //exit;
+
 // remove the cookie jar
 unlink($cookie_jar) /*or die("Can't unlink $cookie_jar")*/;
 
@@ -91,7 +90,7 @@ ob_start();
 $contents = ob_get_contents();
 ob_end_clean();
 
-// save cache  every 12 hs
-set_transient( '_etruel_wpem_reviews_data', $contents, HOUR_IN_SECONDS * 12 ); 
+// Save reviews on cache once per day
+set_transient( '_etruel_wpem_reviews_data', $contents, DAY_IN_SECONDS ); 
 
 echo $contents;

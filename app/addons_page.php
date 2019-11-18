@@ -46,7 +46,7 @@ function redirect_to_wpemaddons() {
 
 		$actioned = array_multi_key_exists( array('error', 'deleted', 'activate', 'activate-multi', 'deactivate', 'deactivate-multi', '_error_nonce' ), $_REQUEST, false );
 		if( ( isset($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], 'page=wpemaddons') ) && $actioned ) {
-			$location = add_query_arg('page','wpemaddons', $location);// $_SERVER['REQUEST_URI'];
+			$location = add_query_arg('page','wpemaddons', $location);
 			if (!headers_sent()) {
 				wp_redirect($location);
 			}
@@ -356,7 +356,7 @@ function wpematico_get_addons_maybe_fetch() {
 			);
 		}
 		$addons = apply_filters( 'etruel_wpematico_addons_array', array_filter( $addon ) );
-		$length = apply_filters( 'etruel_wpematico_addons_transient_length', DAY_IN_SECONDS );
+		$length = apply_filters( 'etruel_wpematico_addons_transient_length', DAY_IN_SECONDS * 5 );
 		set_transient( 'etruel_wpematico_addons_data', $addons, $length );
 		$cached = $addons;
 	}

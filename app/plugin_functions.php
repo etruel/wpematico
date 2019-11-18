@@ -7,7 +7,7 @@
  * @package   wpematico
  * @link      https://github.com/etruel/wpematico
  * @author    Esteban Truelsegaard <etruel@etruel.com>
- * @copyright 2006-2018 Esteban Truelsegaard
+ * @copyright 2006-2019 Esteban Truelsegaard
  * @license   GPL v2 or later
  */
 

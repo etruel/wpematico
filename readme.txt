@@ -163,12 +163,24 @@ Don't hesitate to [give your feedback](https://wordpress.org/support/view/plugin
 
 ---
 
-I took code from many, many other plugins, but for the first beta versions of this plugin I read a lot of code from the old WP-o-Matic and also old versions of BackWPUp. I'm talking about 2009 or 2010. Thanks to the developers ;)
+Privacy terms
+
+For the first beta versions of this plugin I was inspired for the old WP-o-Matic and also old versions of BackWPUp to make the posttype list. I'm talking about 2009 or 2010. Thanks to the developers ;)
 
 This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version. 
 
-Author page in spanish:[NetMdP](https://www.netmdp.com). 
-Plugin and Add-ons page:[etruel.com](https://etruel.com).
+This plugin works also with addons or extensions that many can be purchased on our website.
+The plugin uses the Easy Digital Download Extension License Manager to check for updates and validity of licenses if they are in use.
+The Extensions page of the plugin, when it's opened, reads a feed only once every 5 days from our website to keep them updated. (*)
+The Settings page of the plugin, when it's opened and once per day max, reads the 5 stars user reviews from WordPress to show them in sidebar. (**)
+Subscription form in Welcome Page make a request to wpematico.com website to suscribe the form data in our newsletters list.
+
+(*) Can be deactivated from WPeMatico Settings screen.
+(**) Can be deactivated from WordPress Settings Writing screen.
+
+Plugin page: [wpematico.com](https://wpematico.com)
+Add-ons page: [etruel.com](https://etruel.com).
+Author page in spanish: [NetMdP](https://www.netmdp.com). 
 
 == Installation ==
 
@@ -245,11 +257,13 @@ You can either install it automatically from the WordPress admin, or do it manua
 = Where can I ask/see more questions? =
 
 * [Ask in this page](https://etruel.com/my-account/support).
-* [See tips on this page](https://etruel.com/faqs/).
+* [See tips and tutorials on this page](https://etruel.com/faqs/).
 
 = Contributions =
 
-You can contribute with WPeMatico
+We want to thank the WordPress.org plugins moderators as they helped us by marking the points to reinforce in the plugin to achieve even greater compatibility with WordPress in all the functions of our plugin.
+
+You can contribute with WPeMatico:
 
 Don't hesitate to [give your feedback](https://wordpress.org/support/view/plugin-reviews/wpematico#new-post). It will help making the plugin better. Other contributions (such as new translations or helping other users on the support forum) are welcome !
 
@@ -262,14 +276,18 @@ Later I've added subtitles and added it above in this page.
 
 Branco [WebHostingGeeks.com](http://webhostinggeeks.com/user-reviews/).  Romanian & Slovak languages files.
 
-We are receiving tutorials on text, pdf, videos. All are welcome. Thank you!
-You can send your files to [NetMdP](https://www.netmdp.com/wpematico/) or to e-mail wpematico [at] etruel.com
+We are receiving tutorials in text, pdf, videos and ideas for current and new features. All are welcome. Thank you! 
+You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
 = 2.5 Nov 09, 2019 =
 * "app/wpe-cron.php" WAS DEPRECATED and removed from WPeMatico as external cron method.
-* 
-
+* Removed cURL and file_get_contents calls from standard requests in favor of Wordpress http-api.
+* Custom function upload allow partial uploads resuming downloads for big files. This must be activated in plugin Settings screen only if you need to use it.
+* Custom Simplepie library can be activated in plugin Settings screen only if you have problems with the included library in Wordpress.
+* Added options in Settings, in the Advanced metabox on sidebar to deactivate external requests for Extensions.
+* Updated Terms and privacy in readme file.
+* Updated EDD plugin Updater for manage extension licenses.
 
 = 2.4.1 Oct 09, 2019 =
 * Fixes a bug in the new method to add categories and tags to posts by cron.
@@ -1251,6 +1269,6 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 == Upgrade Notice ==
 
-= 2.4.1 =
-* **Recommended update. Test it before in development enviroments**
-* We fixed a few bugs based on your feedback.  Thanks for helping us out!
+= 2.4.2 =
+* **Almost a major update. Test it before in development enviroments**
+* We changed many issues and improved lot of features based on WP feedback.  Thanks for helping us out!

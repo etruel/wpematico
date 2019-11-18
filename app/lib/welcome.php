@@ -54,7 +54,7 @@ class WPEMATICO_Welcome {
 		// About Page
 		add_dashboard_page(
 			__( 'Welcome to WPeMatico', 'wpematico' ),
-			__( 'WPeMatico News', 'wpematico' ),
+			__( 'WPeMatico About', 'wpematico' ),
 			$this->minimum_capability,
 			'wpematico-about',
 			array( $this, 'about_screen' )
@@ -78,21 +78,21 @@ class WPEMATICO_Welcome {
 			array( $this, 'getting_started_screen' )
 		);
 
-/*		// Subscription
+		// Privacy
 		add_dashboard_page(
-			__( 'WPeMatico Subscription', 'wpematico' ),
-			__( 'WPeMatico Subscription', 'wpematico' ),
+			__( 'WPeMatico Privacy', 'wpematico' ),
+			__( 'WPeMatico Privacy', 'wpematico' ),
 			$this->minimum_capability,
-			'wpematico-subscription',
-			array( $this, 'subscription_form')
+			'wpematico-privacy',
+			array( $this, 'privacy_screen')
 		);
 
-*/
+
 		// Now remove them from the menus so plugins that allow customizing the admin menu don't show them
 //		remove_submenu_page( 'index.php', 'wpematico-about' );
 		remove_submenu_page( 'index.php', 'wpematico-changelog' );
 		remove_submenu_page( 'index.php', 'wpematico-getting-started' );
-//		remove_submenu_page( 'index.php', 'wpematico-subscription' );
+		remove_submenu_page( 'index.php', 'wpematico-privacy' );
 	}
 
 	/**
@@ -177,9 +177,9 @@ class WPEMATICO_Welcome {
 			<a class="nav-tab <?php echo $selected == 'wpematico-changelog' ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'wpematico-changelog' ), 'index.php' ) ) ); ?>">
 				<?php _e( 'Changelog', 'wpematico' ); ?>
 			</a>
-<?php /*			<a class="nav-tab <?php echo $selected == 'wpematico-subscription' ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'wpematico-subscription' ), 'index.php' ) ) ); ?>">
-				<?php _e( 'Subscription', 'wpematico' ); ?>
-			</a>*/ ?>
+			<a class="nav-tab <?php echo $selected == 'wpematico-privacy' ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'wpematico-privacy' ), 'index.php' ) ) ); ?>">
+				<?php _e( 'Privacy', 'wpematico' ); ?>
+			</a>
 		</h1>
 		<?php
 	}
@@ -378,29 +378,29 @@ class WPEMATICO_Welcome {
 			<hr>
 			<div class="changelog">
 				<h2><?php _e( 'Even More Developer Happiness', 'wpematico' );?></h2>
-				<div class="feature-section three-col">
-					<div class="col">
+				<div class="feature-section has-3-columns">
+					<div class="column">
 						<h4><?php _e( 'JavaScript hooks', 'wpematico' );?></h4>
 						<p><?php _e( "We've implemented the JavaScript hooks like WordPress actions and filters! You can make functions to enqueue the scripts and hooks to already added filters in the code.", 'wpematico' );?></p>
 					</div>
-					<div class="col">
+					<div class="column">
 						<h4><a href="https://etruel.com/my-account/support/" target="_blank"><?php _e('Support ticket system for free', 'wpematico'); ?></a></h4>
 						<p><?php _e( 'Ask for any problem you may have and you\'ll get support for free. If it is necessay we will see into your website to solve your issue.', 'wpematico' );?></p>
 					</div>
-					<div class="col">
+					<div class="column">
 						<h4><a href="https://etruel.com/downloads/premium-support/" target="_blank"><?php _e('Premium Support', 'wpematico'); ?></a></h4>
 						<p><?php _e( 'Get access to in-depth setup assistance. We\'ll dig in and do our absolute best to resolve issues for you. Any support that requires code or setup your site will need this service.' ,'wpematico' );?></p>
 					</div>
 
-					<div class="col">
+					<div class="column">
 						<h4><?php _e( 'Nags updates individually for extensions', 'wpematico' );?><span class="plugin-count" style="display: inline-block;background-color: #d54e21;color: #fff;font-size: 9px;line-height: 17px;font-weight: 600;margin: 1px 0 0 2px;vertical-align: top;-webkit-border-radius: 10px;border-radius: 10px;z-index: 26;padding: 0 6px;">1</span></h4>
 						<p><?php _e( 'A more clear nag update was added for the addons in the WPeMatico Extensions and Addons menu items.', 'wpematico' );?></p>
 					</div>
-					<div class="col">
+					<div class="column">
 						<h4><?php _e( 'Hidden Options in Settings->Writing', 'wpematico' );?></h4>
 						<p><?php _e("If you have any problem with WPeMatico item menu, Settings page or lost some plugin, we've put there a WPeMatico Section, to try to avoid weird behaviors made by some thirds plugins.", 'wpematico' );?></p>
 					</div>
-					<div class="col">
+					<div class="column">
 						<h4><a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" target="_blank"><?php _e( 'Rate 5 stars on Wordpress', 'wpematico' );?></a><div class="wporg-ratings" title="5 out of 5 stars" style="color:#ffb900;float: right;"><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span></div></h4>
 						<p><?php _e( 'We need your positive rating of 5 stars in WordPress. Your comment will be published on the bottom of the website and besides it will help making the plugin better.', 'wpematico' );?></p>
 					</div>
@@ -438,6 +438,36 @@ class WPEMATICO_Welcome {
 
 				<div class="feature-section">
 					<?php echo $this->parse_readme(); ?>
+				</div>
+			</div>
+
+			<div class="return-to-dashboard">
+				<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'post_type' => 'wpematico', 'page' => 'wpematico-settings' ), 'edit.php' ) ) ); ?>"><?php _e( 'Go to WPeMatico Settings', 'wpematico' ); ?></a>
+			</div>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Render Changelog Screen
+	 *
+	 * @access public
+	 * @since 2.0.3
+	 * @return void
+	 */
+	public function privacy_screen() {
+		?>
+		<div class="wrap about-wrap wpematico-about-wrap">
+			<?php
+				// load welcome message and content tabs
+				$this->welcome_message();
+				$this->tabs();
+			?>
+			<div class="changelog">
+				<h3><?php _e( 'Privacy terms', 'wpematico' );?></h3>
+
+				<div class="feature-section">
+					<?php echo $this->parse_privacy(); ?>
 				</div>
 			</div>
 
@@ -523,12 +553,12 @@ class WPEMATICO_Welcome {
 
 			<div class="changelog">
 				<h3><?php _e( 'Need more Help?', 'wpematico' );?></h3>
-				<div class="feature-section two-col">
-					<div class="col">
+				<div class="feature-section has-2-columns">
+					<div class="column">
 						<h4><?php _e( 'Phenomenal Support','wpematico' );?></h4>
 						<p><?php _e( 'We do our best to provide the best support we can. If you encounter a problem or have a question, simply open a ticket using our <a target="_blank" href="https://etruel.com/my-account/support">support form</a>.', 'wpematico' );?></p>
 					</div>
-					<div class="col">
+					<div class="column">
 						<h4><?php _e( 'Need Even Faster Support?', 'wpematico' );?></h4>
 						<p><?php _e( 'Our <a target="_blank" href="https://etruel.com/downloads/premium-support/">Premium Support</a> system is there for customers that need faster and/or more in-depth assistance.', 'wpematico' );?></p>
 					</div>
@@ -537,12 +567,12 @@ class WPEMATICO_Welcome {
 
 			<div class="changelog">
 				<h3><?php _e( 'Stay Up to Date', 'wpematico' );?></h3>
-				<div class="feature-section two-col">
-					<div class="col">
+				<div class="feature-section has-2-columns">
+					<div class="column">
 						<h4><?php _e( 'Get Notified of Extension Releases','wpematico' );?></h4>
 						<p><?php _e( 'New extensions that make WPeMatico even more powerful are released nearly every single week. Subscribe to the newsletter to stay up to date with our latest releases. <a href="http://eepurl.com/bX2ANz" target="_blank">Sign up now</a> to ensure you do not miss a release!', 'wpematico' );?></p>
 					</div>
-					<div class="col">
+					<div class="column">
 						<h4><?php _e( 'Get Alerted About New Tutorials', 'wpematico' );?></h4>
 						<p><?php _e( '<a href="http://eepurl.com/bX2ANz" target="_blank">Sign up now</a> to hear about the latest tutorial releases that explain how to take WPeMatico further.', 'wpematico' );?></p>
 					</div>
@@ -551,12 +581,12 @@ class WPEMATICO_Welcome {
 
 			<div class="changelog">
 				<h3><?php _e( 'WPeMatico Add-ons', 'wpematico' );?></h3>
-				<div class="feature-section two-col">
-					<div class="col">
+				<div class="feature-section has-2-columns">
+					<div class="column">
 						<h4><?php _e( 'Extend the plugin features','wpematico' );?></h4>
 						<p><?php _e( 'Add-on plugins are available that greatly extend the default functionality of WPeMatico. There are a Professional extension for extend the parsers of the feed contents, The Full Content add-on to scratch the source webpage looking to get the entire article, and many more.', 'wpematico' );?></p>
 					</div>
-					<div class="col">
+					<div class="column">
 						<h4><?php _e( 'Visit the Extension Store', 'wpematico' );?></h4>
 						<p><?php _e( '<a href="https://etruel.com/downloads" target="_blank">The etruel store</a> has a list of all available extensions for WPeMatico, also other Worpdress plugins, some of them for free. Including convenient category filters so you can find exactly what you are looking for.', 'wpematico' );?></p>
 					</div>
@@ -697,12 +727,13 @@ class WPEMATICO_Welcome {
 		if ( ! wp_verify_nonce($_POST['_wpnonce'], 'save_subscription_wpematico' ) ) {
 		    wp_die(__( 'Security check', 'wpematico' )); 
 		}
-		if (empty($_POST['wpematico_subscription']['fname']) || empty($_POST['wpematico_subscription']['lname']) || empty($_POST['wpematico_subscription']['email'])) {
-			wp_redirect($_POST['_wp_http_referer']);
-			exit;
-		}
-		if (!is_email($_POST['wpematico_subscription']['email'])) {
-			wp_redirect($_POST['_wp_http_referer']);
+		$fname = sanitize_text_field($_POST['wpematico_subscription']['fname']);
+		$lname = sanitize_text_field($_POST['wpematico_subscription']['lname']);
+		$email = sanitize_email($_POST['wpematico_subscription']['email']);
+		$redir = wp_sanitize_redirect($_POST['_wp_http_referer']);
+		
+		if (empty($fname) || empty($lname) || empty($email) || !is_email($email) ) {
+			wp_redirect($redir);
 			exit;
 		}
 		$current_user = wp_get_current_user();
@@ -713,16 +744,16 @@ class WPEMATICO_Welcome {
 			'httpversion' => '1.0',
 			'blocking' => true,
 			'headers' => array(),
-			'body' => array('FNAME' => $_POST['wpematico_subscription']['fname'], 'LNAME' => $_POST['wpematico_subscription']['lname'], 'EMAIL' => $_POST['wpematico_subscription']['email']),
+			'body' => array('FNAME' => $fname, 'LNAME' => $lname, 'EMAIL' => $email),
 			'cookies' => array()
 		    )
 		);
 		if (!is_wp_error($response)) {
-			update_option('wpematico_subscription_email_'.md5($current_user->ID), $_POST['wpematico_subscription']['email']);
+			update_option('wpematico_subscription_email_'.md5($current_user->ID), $email);
 		 	WPeMatico::add_wp_notice( array('text' => __('Subscription saved',  'wpematico'), 'below-h2'=> true ) );
 		}
 		
-		wp_redirect($_POST['_wp_http_referer']);
+		wp_redirect($redir);
 		exit;
 	}
 
@@ -733,12 +764,12 @@ class WPEMATICO_Welcome {
 	 * @return string $readme HTML formatted readme file
 	 */
 	public function parse_readme() {
-		$file = file_exists( WPEMATICO_PLUGIN_DIR . 'readme.txt' ) ? WPEMATICO_PLUGIN_DIR . 'readme.txt' : null;
+		$file = file_exists( WPEMATICO_PLUGIN_DIR . 'readme.txt' ) ? WPEMATICO_PLUGIN_URL . 'readme.txt' : null;
 
 		if ( ! $file ) {
 			$readme = '<p>' . __( 'No valid changelog was found.', 'wpematico' ) . '</p>';
 		} else {
-			$readme = file_get_contents( $file );
+			$readme = WPeMatico_functions::wpematico_get_contents( $file );
 			$readme = nl2br( esc_html( $readme ) );
 			$readme = explode( '== Changelog ==', $readme );
 			$readme = end( $readme );
@@ -753,10 +784,39 @@ class WPEMATICO_Welcome {
 		return $readme;
 	}
 
+	/**
+	 * Column Privacy with the privacy also in readme.txt file
+	 *
+	 * @since 2.0.3
+	 * @return string $readme HTML formatted readme file
+	 */
+	public function parse_privacy() {
+		$file = file_exists( WPEMATICO_PLUGIN_DIR . 'readme.txt' ) ? WPEMATICO_PLUGIN_URL . 'readme.txt' : null;
+
+		if ( ! $file ) {
+			$readme = '<p>' . __( 'No valid changelog was found.', 'wpematico' ) . '</p>';
+		} else {
+			$readme = WPeMatico_functions::wpematico_get_contents( $file );
+			$readme = nl2br( esc_html( $readme ) );
+			$readme = explode( 'Privacy terms', $readme );
+			$readme = end( $readme );
+			$readme = explode( '== Installation ==', $readme );
+			$readme = $readme[0];
+
+			$readme = preg_replace( '/`(.*?)`/', '<code>\\1</code>', $readme );
+			$readme = preg_replace( '/[\040]\*\*(.*?)\*\*/', ' <strong>\\1</strong>', $readme );
+			$readme = preg_replace( '/[\040]\*(.*?)\*/', ' <em>\\1</em>', $readme );
+			$readme = preg_replace( '/= (.*?) =/', '<h4>\\1</h4>', $readme );
+			$readme = preg_replace( '/\[(.*?)\]\((.*?)\)/', '<a href="\\2">\\1</a>', $readme );
+		}
+
+		return $readme;
+	}
+
 
 	/**
 	 * Sends user to the Welcome page on first activation of WPEMATICO as well as each
-	 * time WPEMATICO is upgraded to a new version
+	 * time WPEMATICO is upgraded to a new MAJOR version
 	 *
 	 * @access public
 	 * @since 1.3.8

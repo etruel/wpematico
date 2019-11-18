@@ -290,7 +290,9 @@ if(!class_exists('WPeMatico_functions')) {
 		}
 
 		/**
-		 * Static function save_image_from_url
+		 * Static function save_image_from_url 
+		 * We need this custom function to avoid memory overflow problems on BIG files, because allow partial uploads by resuming file downloads.
+		 * 
 		 * @access public
 		 * @param $url_origin String contain the URL of File will be uploaded.
 		 * @param $new_file String contain the Path of File where it will be saved.
@@ -299,8 +301,6 @@ if(!class_exists('WPeMatico_functions')) {
 		 */
 		public static function save_file_from_url($url_origin, $new_file) {
 			global $wp_filesystem;
-
-
 
 			$ch			 = curl_init($url_origin);
 			if(!$ch)
@@ -325,7 +325,6 @@ if(!class_exists('WPeMatico_functions')) {
 			//curl_setopt ($ch, CURLOPT_URL, $url_origin);
 			curl_setopt($ch, CURLOPT_FILE, $fs_file);
 			curl_setopt($ch, CURLOPT_HEADER, 0);
-
 
 			/**
 			 * It could be use to add cURL options to request.
@@ -1444,7 +1443,7 @@ if(!class_exists('WPeMatico_functions')) {
 			$data = apply_filters('wpematico_before_get_content', false, $aux, $url);
 
 			$defaults	 = array(
-				'timeout' => 5
+				'timeout' => 15
 			);
 			$args = wp_parse_args($aux, $defaults);
 

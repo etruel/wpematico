@@ -1,4 +1,9 @@
 <?php
+/**
+ * File to manage *Addons* licenses to allow update them automatically. 
+ * Unifies all installed extensions licenses in this file to use the EDD_SL_Plugin_Updater library.
+ */
+
 // Exit if accessed directly
 if ( !defined('ABSPATH') ) {
 	header( 'Status: 403 Forbidden' );
@@ -7,7 +12,7 @@ if ( !defined('ABSPATH') ) {
 }
 class wpematico_licenses_handlers {
 	function __construct() {
-		add_action('admin_init', array(__CLASS__, 'plugin_updater'), 0 );
+		add_action('admin_init', array(__CLASS__, 'extension_updater'), 0 );
 		add_action('wpempro_licenses_forms', array(__CLASS__, 'license_page') );
 		add_action('init', array(__CLASS__, 'disable_old_updater'), 0 );
 		add_filter( 'wpematico_plugins_updater_args', array(__CLASS__, 'activate_new_updater'), 10, 1);
@@ -292,13 +297,13 @@ class wpematico_licenses_handlers {
 		}
 		return $args;
 	}
-	public static function plugin_updater() {
+	public static function extension_updater() {
 		$plugins_args = array();
 		$plugins_args = apply_filters('wpematico_plugins_updater_args', $plugins_args);
 		
 		if(!class_exists( 'EDD_SL_Plugin_Updater') && !empty($plugins_args)) {
-			if(file_exists(WPEMATICO_PLUGIN_DIR . 'app/lib/Plugin_Updater.php')) {
-				require_once(WPEMATICO_PLUGIN_DIR . 'app/lib/Plugin_Updater.php');
+			if(file_exists(WPEMATICO_PLUGIN_DIR . 'app/lib/EDD_SL_Plugin_Updater.php')) {
+				require_once(WPEMATICO_PLUGIN_DIR . 'app/lib/EDD_SL_Plugin_Updater.php');
 			} 
 		}
 		
