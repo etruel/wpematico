@@ -291,7 +291,8 @@ if(!class_exists('WPeMatico_functions')) {
 
 		/**
 		 * Static function save_image_from_url 
-		 * We need this custom function to avoid memory overflow problems on BIG files, because allow partial uploads by resuming file downloads.
+		 * We need this custom function to avoid memory overflow problems on BIG files, 
+		 * this allow partial uploads by resuming file downloads in parts.
 		 * 
 		 * @access public
 		 * @param $url_origin String contain the URL of File will be uploaded.

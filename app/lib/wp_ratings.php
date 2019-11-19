@@ -7,14 +7,13 @@ if ( !defined('ABSPATH') ) {
 }
 //error_reporting( E_CORE_ERROR | E_CORE_WARNING | E_COMPILE_ERROR | E_ERROR | E_WARNING | E_PARSE | E_USER_ERROR | E_USER_WARNING | E_RECOVERABLE_ERROR );
 
-//$cached = get_transient( '_etruel_wpem_reviews_data' );
+$cached = get_transient( '_etruel_wpem_reviews_data' );
 // Always return cached transients if exists.
 if ( !empty( $cached ) ) {
 	echo $cached;
 	return;
 }
 
-//$url = 'https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5';
 $url = 'https://wordpress.org/support/plugin/wpematico/reviews/?filter=5';
 $cookie_jar = @tempnam('./tmp','cookie');
 $args = array(

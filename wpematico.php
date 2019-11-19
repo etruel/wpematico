@@ -7,7 +7,7 @@
  * Author: etruel <esteban@netmdp.com>
  * Author URI: https://www.netmdp.com
  * Text Domain: wpematico
- * Domain Path: /languages/
+ * Domain Path: /lang/
  * 
  * @package WPeMatico
  * @category Core
