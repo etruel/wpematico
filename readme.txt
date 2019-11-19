@@ -224,7 +224,7 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
-= 2.4.2 Nov 18, 2019 =
+= 2.4.2 Nov 19, 2019 =
 * "app/wpe-cron.php" WAS DEPRECATED and removed from WPeMatico as external cron method.
 * Removed cURL and file_get_contents calls from standard requests in favor of Wordpress http-api.
 * Custom function upload allow partial uploads resuming downloads for big files. This must be activated in plugin Settings screen only if you need to use it.
@@ -1215,4 +1215,4 @@ This is a big update. Lots of things you asked for, are ready in 1.0 version.
 
 = 2.4.2 =
 * **Almost a major update. Test it before in development enviroments**
-* We changed many issues and improved lot of features based on WP feedback.  Thanks for helping us out!
+* We fixed many issues and improved lot of features based on WP feedback. Thanks for helping us out!
