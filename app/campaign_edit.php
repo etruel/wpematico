@@ -431,7 +431,12 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 			}
 		}
 		
-		$campaign_type = ( ! empty($_POST['campaign_type']) ? $_POST['campaign_type'] : 'feed' );
+		$campaign_type = ( ! empty($_POST['campaign_type']) ? sanitize_text_field($_POST['campaign_type']) : 'feed' );
+		
+		/**
+		 * Filter wpematico_campaign_type_validate_feed_before_save to allow add campaigns types fields to be checked.  
+		 * We send all fields in form to sanitize in the filter functions.
+		 */
 		$ct_validate_feed = apply_filters('wpematico_campaign_type_validate_feed_before_save', array('feed', 'youtube', 'bbpress', 'ebay'), $_POST );
 		
 		if( ( !isset($cfg['disablecheckfeeds']) || !$cfg['disablecheckfeeds'] ) && in_array($campaign_type, $ct_validate_feed)  ){  // If this options isn't deactivated in settings.
@@ -455,6 +460,9 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 				$err_message = ($err_message != "") ? $err_message."<br />" : "" ;
 				$err_message .= __('At least one feed URL must be filled.', 'wpematico');
 			} else {  
+				/**
+				 * wpematico_check_campaigndata Filter to sanitize and strip all fields 
+				 */
 				$post_campaign = apply_filters('wpematico_check_campaigndata', $_POST);
 				$post_campaign['campaign_feeds'] = $campaign_feeds;
 				foreach($campaign_feeds as $kf => $feed) {
@@ -519,6 +527,9 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		$_POST['lastruntime']	= (!isset($campaign['lastruntime']) ) ? 0: sanitize_text_field($campaign['lastruntime']);  //can be string
 
 		$campaign = array();
+		/**
+		 * wpematico_check_campaigndata Filter to sanitize and strip all fields 
+		 */
 		$campaign = apply_filters('wpematico_check_campaigndata', $_POST);
  
 		error_reporting($nivelerror);

@@ -1320,12 +1320,10 @@ add_action( 'admin_post_set_danger_data', 'wpematico_save_danger_data');
 function wpematico_save_danger_data() {
 	if('POST' === $_SERVER['REQUEST_METHOD']) {
 		
-
 		check_admin_referer('wpematico-danger');
 		$danger['wpemdeleoptions']			 = (isset($_POST['wpemdeleoptions']) && !empty($_POST['wpemdeleoptions']) ) ? true : false;
 		$danger['wpemdelecampaigns']		 = (isset($_POST['wpemdelecampaigns']) && !empty($_POST['wpemdelecampaigns']) ) ? true : false;
 		$danger['wpe_debug_logs_campaign']	 = (isset($_POST['wpe_debug_logs_campaign']) && !empty($_POST['wpe_debug_logs_campaign']) ) ? true : false;
-
 
 		if(update_option('WPeMatico_danger', $danger) or add_option('WPeMatico_danger', $danger)) {
 			WPeMatico::add_wp_notice(array('text' => __('Actions to Uninstall saved.', 'wpematico') . '<br>' . __('The actions are executed when the plugin is uninstalled.', 'wpematico'), 'below-h2' => false));
@@ -1350,7 +1348,7 @@ function wpematico_debug_info_get() {
 	$debug_data	 = wpematico_debug_data();
 	extract($debug_data);
 
-	$return = '<pre>### Begin Debug Info ###' . "\n\n";
+	$return = '### Begin Debug Info ###' . "\n\n";
 
 	$return .= "" . '-- Server Environment' . "\n\n";
 	// Can we determine the site's host?
@@ -1624,7 +1622,7 @@ function wpematico_debug_info_get() {
 
 	$return = apply_filters('wpematico_sysinfo_after_get_defined_constants', $return);
 
-	$return .= "\n\n" . '### End Debug Info ###</pre>';
+	$return .= "\n\n" . '### End Debug Info ###';
 
 	return $return;
 }
@@ -1642,6 +1640,7 @@ function wpematico_debug_info_download() {
 	header('Content-Type: text/plain');
 	header('Content-Disposition: attachment; filename="wpematico-debug-info.txt"');
 
+	//echo sanitize_textarea_field($_POST['wpematico-sysinfo']); 
 	echo wp_strip_all_tags($_POST['wpematico-sysinfo']);
 
 	if(!empty($_POST['alsophpinfo'])) {

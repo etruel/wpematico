@@ -8,7 +8,7 @@
  * @package   wpematico
  * @link      https://github.com/etruel/wpematico
  * @author    Esteban Truelsegaard <etruel@etruel.com>
- * @copyright 2006-2018 Esteban Truelsegaard
+ * @copyright 2006-2019 Esteban Truelsegaard
  * @license   GPL v2 or later
  */
 // don't load directly 
@@ -290,7 +290,7 @@ if(!class_exists('WPeMatico_functions')) {
 		}
 
 		/**
-		 * Static function save_image_from_url 
+		 * Static function save_file_from_url 
 		 * We need this custom function to avoid memory overflow problems on BIG files, 
 		 * this allow partial uploads by resuming file downloads in parts.
 		 * 
@@ -312,7 +312,7 @@ if(!class_exists('WPeMatico_functions')) {
 			$new_file	 = $dest_file;
 			$i			 = 1;
 			while (file_exists($new_file)) {
-				$file_extension = strrchr($new_file, '.'); //Will return .JPEG   substr($url_origin, strlen($url_origin)-4, strlen($url_origen));
+				$file_extension = strrchr($new_file, '.'); //Will return .JPEG
 				if($i == 1) {
 					$file_name	 = substr($new_file, 0, strlen($new_file) - strlen($file_extension));
 					$new_file	 = $file_name . "-$i" . $file_extension;
@@ -328,7 +328,7 @@ if(!class_exists('WPeMatico_functions')) {
 			curl_setopt($ch, CURLOPT_HEADER, 0);
 
 			/**
-			 * It could be use to add cURL options to request.
+			 * It could be used to add cURL options to request.
 			 * @since 1.9.0
 			 */
 			$ch = apply_filters('wpematico_save_file_from_url_params', $ch, $url_origin);
@@ -638,6 +638,9 @@ if(!class_exists('WPeMatico_functions')) {
 			}
 			$campaign_data	 = get_post_meta($post_id, 'campaign_data');
 			$campaign_data	 = ( isset($campaign_data[0]) ) ? $campaign_data[0] : array(0);
+			/**
+			 * wpematico_check_campaigndata Filter to sanitize and strip all fields 
+			 */
 			$campaign_data	 = apply_filters('wpematico_check_campaigndata', $campaign_data);
 			return $campaign_data;
 		}
@@ -1090,9 +1093,12 @@ if(!class_exists('WPeMatico_functions')) {
 				extract($args);
 				$ajax = false;
 			}else {
-				if(!isset($_POST['url']))
+				if(!isset($_POST['url'])){
 					return false;
-				$url	 = $_POST['url'];
+				}				
+				// to test sanitizers
+				//$url	 = wp_sanitize_redirect($_POST['url']);
+				$url	 = esc_url_raw($_POST['url']);
 				$ajax	 = true;
 			}
 			/**
@@ -1446,7 +1452,7 @@ if(!class_exists('WPeMatico_functions')) {
 			$defaults	 = array(
 				'timeout' => 15
 			);
-			$args = wp_parse_args($aux, $defaults);
+			$args		 = wp_parse_args($aux, $defaults);
 
 			if(!$data) { // if stil getting error on get file content try WP func, this may give timeouts 
 				$response = wp_remote_request($url, $args);
@@ -1497,20 +1503,20 @@ if(!class_exists('WPeMatico_functions')) {
 }  // if Class exist
 
 /* * ***** FUNCTIONS  ********** */
-
 add_action('admin_init', 'wpematico_process_actions');
-
 function wpematico_process_actions() {
 	if(isset($_POST['wpematico-action'])) {
 		if(!is_user_logged_in())
 			wp_die("Cheatin' uh?", "Closed today.");
-		do_action('wpematico_' . $_POST['wpematico-action'], $_POST);
+		$action = sanitize_text_field($_POST['wpematico-action']);
+		do_action('wpematico_' . $action, $_POST);
 	}
 
 	if(isset($_GET['wpematico-action'])) {
 		if(!is_user_logged_in())
 			wp_die("Cheatin' uh?", "Closed today.");
-		do_action('wpematico_' . $_GET['wpematico-action'], $_GET);
+		$action = sanitize_text_field($_GET['wpematico-action']);
+		do_action('wpematico_' . $action, $_GET);
 	}
 }
 
