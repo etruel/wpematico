@@ -151,7 +151,7 @@ class WPEMATICO_Welcome {
 			<img class="wpematico-badge" src="<?php echo WPEMATICO_PLUGIN_URL . '/images/icon-256x256.png'; ?>" alt="<?php _e( 'WPeMatico', 'wpematico' ); ?>" / >
 			<h1><?php printf( __( 'Welcome to WPeMatico %s', 'wpematico' ), $display_version ); ?></h1>
 			<p class="about-text">
-				<?php printf( __( 'Thank you for updating to the latest version! WPeMatico %s is ready to make your autoblogging faster, safer, and better!', 'wpematico' ), $display_version ); ?>
+				<?php printf( __( 'Thank you for updating to the latest version! WPeMatico %s is ready to make your autoblogging faster, safer, and better !', 'wpematico' ), $display_version ); ?>
 			</p>
 		</div>
 		<?php
