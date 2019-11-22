@@ -301,11 +301,7 @@ if(!class_exists('WPeMatico_functions')) {
 		 * @since 1.9.0
 		 */
 		public static function save_file_from_url($url_origin, $new_file) {
-			global $wp_filesystem;
 
-			$ch			 = curl_init($url_origin);
-			if(!$ch)
-				return false;
 			$dest_file	 = apply_filters('wpematico_overwrite_file', $new_file);
 			if($dest_file === FALSE)
 				return $new_file;  // Don't upload it and return the name like it was uploaded
@@ -322,26 +318,40 @@ if(!class_exists('WPeMatico_functions')) {
 				}
 				$i++;
 			}
-			$fs_file = fopen($new_file, "w");
-			//curl_setopt ($ch, CURLOPT_URL, $url_origin);
-			curl_setopt($ch, CURLOPT_FILE, $fs_file);
-			curl_setopt($ch, CURLOPT_HEADER, 0);
 
-			/**
-			 * It could be used to add cURL options to request.
-			 * @since 1.9.0
-			 */
-			$ch = apply_filters('wpematico_save_file_from_url_params', $ch, $url_origin);
+			global $wp_filesystem;
+			if(empty($wp_filesystem) || !isset($GLOBALS['wp_filesystem']) || !is_object($GLOBALS['wp_filesystem'])) {
+				ob_start();
+				if(file_exists(ABSPATH . '/wp-admin/includes/file.php')) {
+					include_once( ABSPATH . '/wp-admin/includes/file.php' );
+				}
+				$creds = request_filesystem_credentials('test');
+				ob_end_clean();
+				if(empty($creds)) {
+					if(!defined('FS_METHOD')) {
+						define('FS_METHOD', 'direct');
+					}
+				}
+				$init = WP_Filesystem($creds);
+				if(!$init)
+					return false;
+			
+			}
 
-			curl_exec($ch);
-
-			$httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-			curl_close($ch);
-			fclose($fs_file);
-
-			if(!($httpcode >= 200 && $httpcode < 300))
-				unlink($new_file);
-			return ($httpcode >= 200 && $httpcode < 300) ? $new_file : false;
+			// $wp_filesystem->get_contents will work only in 'direct' method that allows url, other methods should work only on local files
+			if(defined('FS_METHOD') && FS_METHOD == 'direct' ) {
+				$origin_content = $wp_filesystem->get_contents($url_origin);
+			}else {
+				$origin_content = WPeMatico::wpematico_get_contents($url_origin, $arg);
+			}
+			
+			$wrote = false;
+			if($origin_content != false ){
+				$wrote = $wp_filesystem->put_contents($new_file, $origin_content);
+				if(!$wrote)
+					unlink($new_file);
+			}
+			return ($wrote) ? $new_file : false;
 		}
 
 		/**
@@ -1093,9 +1103,9 @@ if(!class_exists('WPeMatico_functions')) {
 				extract($args);
 				$ajax = false;
 			}else {
-				if(!isset($_POST['url'])){
+				if(!isset($_POST['url'])) {
 					return false;
-				}				
+				}
 				// to test sanitizers
 				//$url	 = wp_sanitize_redirect($_POST['url']);
 				$url	 = esc_url_raw($_POST['url']);
@@ -1504,6 +1514,7 @@ if(!class_exists('WPeMatico_functions')) {
 
 /* * ***** FUNCTIONS  ********** */
 add_action('admin_init', 'wpematico_process_actions');
+
 function wpematico_process_actions() {
 	if(isset($_POST['wpematico-action'])) {
 		if(!is_user_logged_in())
@@ -1584,17 +1595,17 @@ add_action('wpematico_wp_ratings', 'wpematico_wp_ratings');
 function wpematico_wp_ratings() {
 	?><div class="postbox">
 		<h3 class="handle"><?php _e('5 Stars Ratings on Wordpress', 'wpematico'); ?></h3>
-		<?php if(get_option('wpem_hide_reviews')) : ?>
+	<?php if(get_option('wpem_hide_reviews')) : ?>
 			<div class="inside" style="max-height:300px;overflow-x: hidden;">
 				<p style="text-align: center;">
 					<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5" id="linkgo" class="button" target="_Blank" title="Click to see 5 stars Reviews on Wordpress"> Click to see 5 stars Reviews </a>
 				</p>
 			</div>
-		<?php else: ?>
+			<?php else: ?>
 			<div class="inside" style="max-height:300px;overflow-y: scroll;overflow-x: hidden;">
-				<?php require_once('lib/wp_ratings.php'); ?>
+			<?php require_once('lib/wp_ratings.php'); ?>
 			</div>
-		<?php endif; ?>
+	<?php endif; ?>
 	</div>
 	<?php
 }

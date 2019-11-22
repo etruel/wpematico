@@ -165,7 +165,7 @@ class WPEMATICO_Welcome {
 	 * @return void
 	 */
 	public function tabs() {
-		$selected = isset( $_GET['page'] ) ? $_GET['page'] : 'wpematico-about';
+		$selected = isset( $_GET['page'] ) ? sanitize_text_field($_GET['page']) : 'wpematico-about';
 		?>
 		<h1 class="nav-tab-wrapper">
 			<a class="nav-tab <?php echo $selected == 'wpematico-about' ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'wpematico-about' ), 'index.php' ) ) ); ?>">
