@@ -321,35 +321,64 @@ if(!class_exists('WPeMatico_functions')) {
 
 			global $wp_filesystem;
 			if(empty($wp_filesystem) || !isset($GLOBALS['wp_filesystem']) || !is_object($GLOBALS['wp_filesystem'])) {
-				ob_start();
+				
 				if(file_exists(ABSPATH . '/wp-admin/includes/file.php')) {
 					include_once( ABSPATH . '/wp-admin/includes/file.php' );
 				}
-				$creds = request_filesystem_credentials('test');
+				$upload_dir = wp_upload_dir();
+				$context = trailingslashit($upload_dir['path']); /* Used by request_filesystem_credentials to verify the folder permissions if it needs credentials. */
+
+				ob_start();
+				$creds = request_filesystem_credentials( 'edit.php?post_type=wpematico', '', false, $context);
 				ob_end_clean();
-				if(empty($creds)) {
+
+				if($creds === false) {
+					/* Por motivos de seguridad no deberia usarse, esto solo deberia de agregarlo el dueno del sitio.
+					/* Tal vez en un futuro, pero por ahora no. Nos deben tener en la mira.
 					if(!defined('FS_METHOD')) {
 						define('FS_METHOD', 'direct');
 					}
+					*/
+					return false;
 				}
-				$init = WP_Filesystem($creds);
+				$init = WP_Filesystem($creds, $context);
 				if(!$init)
 					return false;
 			
 			}
 
 			// $wp_filesystem->get_contents will work only in 'direct' method that allows url, other methods should work only on local files
+			/*
 			if(defined('FS_METHOD') && FS_METHOD == 'direct' ) {
 				$origin_content = $wp_filesystem->get_contents($url_origin);
 			}else {
-				$origin_content = WPeMatico::wpematico_get_contents($url_origin, $arg);
+				$origin_content = WPeMatico::wpematico_get_contents($url_origin, array());
 			}
-			
+			Creo que es mejor no limitarnos a FS_METHOD == DIRECT, teniendo otras funciones como download_url();
+			Ademas, tiene menos posibilidades de fallar. Y si lo hace se usa el wpematico_get_contents.
+
+			*/
+			$origin_content = '';
+			$download_file = download_url( $url_origin, 15, false );
+
+			if ( ! is_wp_error( $download_file ) ) {
+				
+				$origin_content = $wp_filesystem->get_contents($download_file);
+				unlink($download_file);
+			} else {
+				
+				trigger_error( sprintf( __('Download error: %s Using an alternate download method...', 'wpematico'), $download_file->get_error_message() ), E_USER_WARNING);
+				$origin_content = WPeMatico::wpematico_get_contents($url_origin, array());
+			}
+
+
 			$wrote = false;
-			if($origin_content != false ){
+			if( ! empty( $origin_content ) ) {
 				$wrote = $wp_filesystem->put_contents($new_file, $origin_content);
-				if(!$wrote)
+
+				if(!$wrote) {
 					unlink($new_file);
+				}
 			}
 			return ($wrote) ? $new_file : false;
 		}
