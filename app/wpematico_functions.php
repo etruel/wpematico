@@ -324,7 +324,6 @@ if(!class_exists('WPeMatico_functions')) {
 
 			/* checks if exists $wp_filesystem */
 			if(empty($wp_filesystem) || !isset($GLOBALS['wp_filesystem']) || !is_object($GLOBALS['wp_filesystem'])) {
-
 				if(file_exists(ABSPATH . '/wp-admin/includes/file.php')) {
 					include_once( ABSPATH . '/wp-admin/includes/file.php' );
 				}
@@ -332,7 +331,7 @@ if(!class_exists('WPeMatico_functions')) {
 				$context	 = trailingslashit($upload_dir['path']); /* Used by request_filesystem_credentials to verify the folder permissions if it needs credentials. */
 
 				ob_start();
-				$creds = request_filesystem_credentials('edit.php?post_type=wpematico', '', false, $context);
+				$creds = request_filesystem_credentials( 'edit.php?post_type=wpematico', '', false, $context);
 				ob_end_clean();
 
 				if($creds === false) {
