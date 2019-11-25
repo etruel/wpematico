@@ -300,8 +300,6 @@ if(!class_exists('WPeMatico_functions')) {
 		 * @since 1.9.0
 		 */
 		public static function save_file_from_url($url_origin, $new_file) {
-			global $wp_filesystem;
-			
 			/**
 			 * Filter to avoid download and return just the new name as it was downloaded.
 			 */
@@ -322,8 +320,10 @@ if(!class_exists('WPeMatico_functions')) {
 				$i++;
 			}
 
+			global $wp_filesystem;
 			/* checks if exists $wp_filesystem */
 			if(empty($wp_filesystem) || !isset($GLOBALS['wp_filesystem']) || !is_object($GLOBALS['wp_filesystem'])) {
+				
 				if(file_exists(ABSPATH . '/wp-admin/includes/file.php')) {
 					include_once( ABSPATH . '/wp-admin/includes/file.php' );
 				}
