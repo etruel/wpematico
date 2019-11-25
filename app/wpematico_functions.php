@@ -301,7 +301,27 @@ if(!class_exists('WPeMatico_functions')) {
 		 */
 		public static function save_file_from_url($url_origin, $new_file) {
 			global $wp_filesystem;
-			
+			/* checks if exists $wp_filesystem */
+			if(empty($wp_filesystem) || !isset($GLOBALS['wp_filesystem']) || !is_object($GLOBALS['wp_filesystem'])) {
+				
+				if(file_exists(ABSPATH . '/wp-admin/includes/file.php')) {
+					include_once( ABSPATH . '/wp-admin/includes/file.php' );
+				}
+				$upload_dir	 = wp_upload_dir();
+				$context	 = trailingslashit($upload_dir['path']); /* Used by request_filesystem_credentials to verify the folder permissions if it needs credentials. */
+
+				ob_start();
+				$creds = request_filesystem_credentials( 'edit.php?post_type=wpematico', '', false, $context);
+				ob_end_clean();
+
+				if($creds === false) {
+					return false;
+				}
+				$init = WP_Filesystem($creds, $context);
+				if(!$init)
+					return false;
+			}
+
 			/**
 			 * Filter to avoid download and return just the new name as it was downloaded.
 			 */
@@ -322,25 +342,7 @@ if(!class_exists('WPeMatico_functions')) {
 				$i++;
 			}
 
-			/* checks if exists $wp_filesystem */
-			if(empty($wp_filesystem) || !isset($GLOBALS['wp_filesystem']) || !is_object($GLOBALS['wp_filesystem'])) {
-				if(file_exists(ABSPATH . '/wp-admin/includes/file.php')) {
-					include_once( ABSPATH . '/wp-admin/includes/file.php' );
-				}
-				$upload_dir	 = wp_upload_dir();
-				$context	 = trailingslashit($upload_dir['path']); /* Used by request_filesystem_credentials to verify the folder permissions if it needs credentials. */
 
-				ob_start();
-				$creds = request_filesystem_credentials( 'edit.php?post_type=wpematico', '', false, $context);
-				ob_end_clean();
-
-				if($creds === false) {
-					return false;
-				}
-				$init = WP_Filesystem($creds, $context);
-				if(!$init)
-					return false;
-			}
 
 			$origin_content = '';
 			$wrote = false;
