@@ -118,6 +118,7 @@ class WPEMATICO_Welcome {
 			.about__container .has-subtle-background-color { background: #f9f9f9; }
 			.about__header-title .wpematico-badge { margin-right: 10px; }
 			.about__section.about__section_height { min-height: 560px; }
+			.about__section.about__section_height-2 { min-height: 400px; }
 			.about__section.is-feature { font-size: 1.4em; }
 			.about__container .about__image { padding: 0 32px; }
 			.about__section .span-text { font-size: .9em; }
@@ -226,7 +227,7 @@ class WPEMATICO_Welcome {
 
 			</div>
 
-			<div class="about__section is-feature">
+			<div class="about__section about__section_height-2 has-2-columns subscription">
 				<?php $this->subscription_form(); ?>
 			</div>
 
@@ -713,102 +714,105 @@ class WPEMATICO_Welcome {
 
 	public function subscription_form(){
 	?>
-	<div class="subscription">
-			<?php
-  				$current_user = wp_get_current_user();
-			?>
-			<style type="text/css">
-				.subscription {
-					max-width: 80%;
-					margin: auto;
-				}
-				.form-group label{
-					display: block;
-					margin-bottom: .5em;
-					font-size: 1rem;
-				}
-				.two-form-group{
-					display: flex;
-					flex-wrap: wrap;
-					align-items: flex-end;
-					margin-left: -7.5px;
-					margin-right: -7.5px;
-				}
-				.two-form-group .form-group{
-					-ms-flex: 0 0 50%;
-					flex: 0 0 50%;
-					max-width: 50%;
-					padding-left: 7.5px;
-					padding-right: 7.5px;
-					box-sizing: border-box;
-					margin-bottom: 1em;
-				}
-				.subscription #wpsubscription_form .form-control{
-					padding: 7.5px 15px;
-					box-shadow: none!important;
-					display: block;
-					width: 100%;
-					border-radius: 0;
-				    border: 2px solid #d3741c;
-				}
-				.wpbutton-submit-subscription{
-					margin-top: 32px;
-					text-align: right;
-				}
-				.wpbutton-submit-subscription .button-primary{
-					padding: 10px 20px;
-					border-radius: 0;
-					font-size: 15px;
-					background: #222;
-					border-color: #222;
-				}
-				.wpbutton-submit-subscription .button-primary:hover{
-					background: #111;
-					border-color: #111;
-				}
-				.wpsubscription_info{
-					text-align: center;
-				}
-			</style>
-			<?php 
-				$suscripted_user = get_option('wpematico_subscription_email_'.md5($current_user->ID), false);
-				if ($suscripted_user === false) {
-			?>
-			<h3 class="wpsubscription_info"><?php _e('Subscribe to our Newsletter and be the first to receive our news.','wpematico'); ?></h3>
-			<form action="<?php echo admin_url( 'admin-post.php' ); ?>" id="wpsubscription_form" method="post" class="wpcf7-form">
-				<input type="hidden" name="action" value="save_subscription_wpematico"/>
-				<?php 
-					wp_nonce_field('save_subscription_wpematico');
-				?>
-				<div class="two-form-group">
-					<div class="form-group">
-						<label><?php _e("Name","wpematico"); ?></label>
-						<input type="text" id="" name="wpematico_subscription[fname]" value="<?php echo $current_user->user_firstname; ?>" size="40" class="form-control" placeholder="<?php _e("First Name","wpematico"); ?>">
-					</div>
-					<div class="form-group">
-						<input type="text" id="" name="wpematico_subscription[lname]" value="<?php echo $current_user->user_lastname; ?>" size="40" class="form-control" placeholder="<?php _e("Last Name","wpematico"); ?>">
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label><?php _e("Email","wpematico"); ?> <span>(*)</span></label>
-					<input type="text" id="" name="wpematico_subscription[email]" value="<?php echo $current_user->user_email; ?>" size="40" class="form-control" placeholder="<?php _e("Email","wpematico"); ?>">
-				</div>
-				 
-				<div class="wpbutton-submit-subscription">
-					<input type="submit" class="button button-primary"  value="<?php _e('Subscribe', 'wpematico'); ?>">
-				</div>
-			</form>
-			<?php 
-			} else { ?>
-				<p class="wpsubscription_info"><?php echo sprintf( __('Your email %s is already subscribed.','wpematico'), '<strong>'.$suscripted_user.'</strong>'); ?></p>
-			<?php 
+		<?php
+			$current_user = wp_get_current_user();
+		?>
+		<style type="text/css">
+			.subscription {
 			}
-			?>
+			.form-group label{
+				display: block;
+				margin-bottom: .5em;
+				font-size: 1rem;
+				font-weight: 600;
+				color: #fff;
+			}
+			.two-form-group{
+				display: flex;
+				flex-wrap: wrap;
+				align-items: flex-end;
+				margin-left: -7.5px;
+				margin-right: -7.5px;
+			}
+			.two-form-group .form-group{
+				-ms-flex: 0 0 50%;
+				flex: 0 0 50%;
+				max-width: 50%;
+				padding-left: 7.5px;
+				padding-right: 7.5px;
+				box-sizing: border-box;
+				margin-bottom: 1em;
+			}
+			.subscription #wpsubscription_form .form-control{
+				padding: 7.5px 15px;
+				box-shadow: none!important;
+				display: block;
+				width: 100%;
+				border-radius: 0;
+			    border: 2px solid #d3741c;
+			}
+			.wpbutton-submit-subscription{
+				margin-top: 32px;
+				text-align: right;
+			}
+			.wpbutton-submit-subscription .button-primary{
+				padding: 10px 20px;
+				border-radius: 0;
+				font-size: 15px;
+				background: #222;
+				border-color: #222;
+			}
+			.wpbutton-submit-subscription .button-primary:hover{
+				background: #111;
+				border-color: #111;
+			}
+		</style>
+		<?php 
+			$suscripted_user = get_option('wpematico_subscription_email_'.md5($current_user->ID), false);
+			if ($suscripted_user === false) {
+		?>
+
+		<div class="column is-vertically-aligned-center">
+			<h2><?php _e( 'Stay Informed!', 'wpematico' );?></h2>
+			<h3 class="wpsubscription_info"><?php _e('Subscribe to our Newsletter and be the first to receive our news.','wpematico'); ?></h3>
+		</div>
+		<div class="column is-edge-to-edge has-accent-background-color">
+			<div class="about__image">
+				<form action="<?php echo admin_url( 'admin-post.php' ); ?>" id="wpsubscription_form" method="post" class="wpcf7-form">
+					<input type="hidden" name="action" value="save_subscription_wpematico"/>
+					<?php 
+						wp_nonce_field('save_subscription_wpematico');
+					?>
+					<div class="two-form-group">
+						<div class="form-group">
+							<label><?php _e("Name","wpematico"); ?></label>
+							<input type="text" id="" name="wpematico_subscription[fname]" value="<?php echo $current_user->user_firstname; ?>" size="40" class="form-control" placeholder="<?php _e("First Name","wpematico"); ?>">
+						</div>
+						<div class="form-group">
+							<input type="text" id="" name="wpematico_subscription[lname]" value="<?php echo $current_user->user_lastname; ?>" size="40" class="form-control" placeholder="<?php _e("Last Name","wpematico"); ?>">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label><?php _e("Email","wpematico"); ?> <span>(*)</span></label>
+						<input type="text" id="" name="wpematico_subscription[email]" value="<?php echo $current_user->user_email; ?>" size="40" class="form-control" placeholder="<?php _e("Email","wpematico"); ?>">
+					</div>
+					 
+					<div class="wpbutton-submit-subscription">
+						<input type="submit" class="button button-primary"  value="<?php _e('Subscribe', 'wpematico'); ?>">
+					</div>
+				</form>
+				<?php 
+				} else { ?>
+					<p class="wpsubscription_info"><?php echo sprintf( __('Your email %s is already subscribed.','wpematico'), '<strong>'.$suscripted_user.'</strong>'); ?></p>
+				<?php 
+				}
+				?>
+			</div>
 		</div>
 
 	<?php 
-	}	
+	}		
 
 	/**
 	* Static function save_subscription
