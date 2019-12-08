@@ -332,8 +332,9 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			$this->current_item['content'] =  WPeMatico::change_to_utf8($this->current_item['content']);
 		}
 
-		$this->current_item['content'] = html_entity_decode($this->current_item['content'], ENT_COMPAT | ENT_HTML401, 'UTF-8');
-		
+		if( $this->cfg['entity_decode_html'] ) {
+			$this->current_item['content'] = html_entity_decode($this->current_item['content'], ENT_COMPAT | ENT_HTML401, 'UTF-8');
+		}
 
 		
 		$this->current_item = apply_filters('wpematico_item_pre_media', $this->current_item, $this->campaign, $feed, $item);
@@ -462,7 +463,9 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
 		if( $this->cfg['nonstatic'] ) { $this->current_item = NoNStatic :: metaf($this->current_item, $this->campaign, $feed, $item ); }
 		
-		if( $this->cfg['nonstatic'] && !empty($this->current_item['tags']) ) $this->current_item['campaign_tags']=$this->current_item['tags'];
+		if( $this->cfg['nonstatic'] && !empty($this->current_item['tags']) ) {
+			$this->current_item['campaign_tags']= array_unique(array_merge($this->current_item['campaign_tags'], $this->current_item['tags']), SORT_REGULAR);
+		}
 		
 		// Meta
 		if( isset($this->cfg['disableccf']) && $this->cfg['disableccf'] ) {

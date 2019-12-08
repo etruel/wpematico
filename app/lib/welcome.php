@@ -670,7 +670,7 @@ class WPEMATICO_Welcome {
 					<p><?php _e( 'We do our best to provide the best support we can. If you encounter a problem or have a question, simply open a ticket using our <a target="_blank" href="https://etruel.com/my-account/support">support form</a>.', 'wpematico' );?></p>
 				</div>
 				<div class="column">
-					<h3><?php _e( 'Need Even Faster Support?', 'wpematico' );?></h3>
+					<h3><?php _e( 'Need Even Better Support?', 'wpematico' );?></h3>
 					<p><?php _e( 'Our <a target="_blank" href="https://etruel.com/downloads/premium-support/">Premium Support</a> system is there for customers that need faster and/or more in-depth assistance.', 'wpematico' );?></p>
 				</div>
 			</div>
@@ -773,11 +773,24 @@ class WPEMATICO_Welcome {
 		?>
 
 		<div class="column is-vertically-aligned-center">
-			<h2><?php _e( 'Stay Informed!', 'wpematico' );?></h2>
-			<h3 class="wpsubscription_info"><?php _e('Subscribe to our Newsletter and be the first to receive our news.','wpematico'); ?></h3>
+			<h2><?php _e( 'Last News in This Version!', 'wpematico' );?></h2>
+			<p><?php _e('Version 2.5 concludes a series of radical changes that we had started since version 2.4 in terms of plugin security.','wpematico'); ?>
+			<?php _e('Also following a strict revision to follow the standards of Wordpress coding development.','wpematico'); ?></p>
+			<p><?php _e('We have completely removed the use of <b>cURL</b> and own functions in favor of Wordpress file processing and functions to obtain remote files.','wpematico'); ?></p>
+			<p><?php _e('We removed  HTML entity decode from each post before inserted. You can activate the function again on Settings.','wpematico'); ?></p>
+			<p><?php _e('NOTE: We had to change the url of the external CRON. Take a look at the "Settings" if your campaigns are freezed.','wpematico'); ?></p>
+			<p></p>
+			<!-- p>La versión 2.5 culmina una serie de cambios radicales que habíamos comenzado desde la version 2.4 en cuanto a seguridad del plugin.  También siguiendo una estricta revisión a seguir los standares de desarrollo de códificación Wordpress.  
+Hemos eliminado completamente el uso de cURL y de funciones propias en favor de las funciones de tratamiento de archivos de Wordpress y para la obtención de archivos remotos.</p -->
+			<h3 class=""><?php _e('Thanks to all the contributors for their collaborations and to the moderators of WordPress Plugins for their revisions and for pointing us in the right direction on several issues.','wpematico'); ?></h3>
+
 		</div>
 		<div class="column is-edge-to-edge has-accent-background-color">
 			<div class="about__image">
+				<p></p>
+				<h2><strong><?php _e( 'Stay Informed!', 'wpematico' );?></strong></h2>
+				<h3 class="wpsubscription_info"><?php _e('Subscribe to our Newsletter and be the first to receive our news.','wpematico'); ?> 
+				<?php _e('We send around 4 or 5 emails per year. Really.','wpematico'); ?></h3>
 				<form action="<?php echo admin_url( 'admin-post.php' ); ?>" id="wpsubscription_form" method="post" class="wpcf7-form">
 					<input type="hidden" name="action" value="save_subscription_wpematico"/>
 					<?php 

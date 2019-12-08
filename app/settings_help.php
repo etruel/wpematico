@@ -293,6 +293,10 @@ function wpematico_helpsettings($dev = '') {
 				'title'	 => __('Enable Upload of XMLs.', 'wpematico'),
 				'tip'	 => __('If you want upload XML files to use them in the XML Campaign Type. Enable this feature allow the upload XMLs from media.', 'wpematico'),
 			),
+			'entity_decode_html'				 => array(
+				'title'	 => __('Enable html entity decode on publish.', 'wpematico'),
+				'tip'	 => __('Enable this feature if you need to decode HTML entities in feed content before publishing each post.', 'wpematico'),
+			),
 		),
 		'Sending e-Mails'				 => array(
 			'sendmail'	 => array(
