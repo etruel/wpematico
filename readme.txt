@@ -224,7 +224,23 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
-= 2.5 Dec 9, 2019 =
+
+= 2.5 Dec 11, 2019 =
+
+Version 2.5 concludes a series of radical changes that we had started since version 2.4 in terms of plugin security. Also following a strict revision to follow the standards of Wordpress coding development.
+
+#### _Enhancements:_
+
+> * We have completely removed the use of cURL and own functions in favor of Wordpress file processing and functions to obtain remote files.
+> * We removed HTML entity decode contents by default before insert each post. You can activate the function again on Settings.
+
+#### _Bugfixes:_
+
+> * Fixes the loss of manually entered tags in the campaign when processing categories.
+
+#### _Recent (may break) changes:_
+
+> * Added an option in Settings to make HTML entity decode to the post contents before inserted to avoid possible xss from untrusted feed sources. Users who need (and want), can activate it from there. Props to [@nibiwodong](https://github.com/nibiwodong).
 
 
 = 2.4.2 Nov 19, 2019 =
@@ -323,60 +339,12 @@ You can send your files to e-mail wpematico [at] etruel.com
 * Fixes an issue saving the Disable WPeMatico Credits option.
 * Fixes some layouts in campaign edition using Chinese language.
 
-= 2.2.3 Jan 21, 2019 =
-* Added compatibility to import the XML files from URL o local folders with WPeMatico Exporter Addon.
-* Fixes some issues on xml files processing.
-
-= 2.2.2 Jan 15, 2019 =
-* Added filters to allow import posts from xml files of WPeMatico Exporter Add-on.
-* Added filters to insert categories automatically from xml files of WPeMatico Professional Add-on.
-* Fixes compatibility with PHP 5.3 (again)
-* Fixes compatibility with cache of DB when is inserting new categories. 
-
-= 2.2.1 Jan 13, 2019 =
-* Fixes compatibility with PHP 5.3 after introduced a method used by PHP 5.5+
-
-= 2.2 Jan 10, 2019 =
-* Added XML Campaign type to parse and fetch XML feeds.
-* Added support to allow uploads of XML files to the media library to be used as URL in campaigns.
-* Tested and improved compatibility for xml with Addons Professional, Manual Fetching, Full Content, Polyglot, Thumbnail Scratcher and so on.
-* Some tweaks in Campaign Preview.
-* Some improvements in source code and css styles.
-* Tested compatibility with WordPress 5.1b.
-* **Enlarges the version required for the Professional addon to 2.1v** (https://etruel.com/downloads/wpematico-professional/)
-
-= 2.1.2 Nov 14, 2018 =
-* Added wp filters to parse categories and autocategories before inserted them in posts.
-* Improved some texts on code and filter descriptions.
-
-= 2.1.1 Sep 20, 2018 =
-* Fixes an issue on the delete button of the rewrite metabox.
-* Tweaks some texts on System status screens.
-* Updated .pot file
-* Added Chinese language
-
-= 2.1 Aug 29, 2018 =
-* Added some data of feed in the feeds tester.
-* Tweaks on redirect to the welcome page when updating.
-* Tweaks on add more feeds to campaign javascript methods.
-* Fixes an issue on {item_date} and {item_time} template tags.
-* Fixes auto category description on quick add inside campaign.
-* **Enlarges the version required for the Professional addon to 2.0v** (https://etruel.com/downloads/wpematico-professional/)
-
-= 2.0 Aug 1, 2018 =
-* New major version! We're introducing the new Robotico 2.0!
-* Many code improvements. Graphics designs and cosmetic changes.
-* Added a New Campaign type to publish to BBPress forums as forums, topics or replies.
-* Added a preview template for the Youtube campaign types with options to include/exclude image and descriptions of videos.
-* Added options to manage duplicated posts individually by campaign.
-* Added option to disable the description of categories created by WPeMatico.
-* Added some hooks to handle the cron schedules of WPeMatico.
-* Updated pot file to translate well the plugin.  Our goal for the next versions is brings wpematico in your language!
-* Some fixes in add-ons page.
-* Some fixes in licenses page, style and messages.
+= Earlier versions =
+For the changelog of earlier versions, please refer to [the changelog on wpematico.com](http://www.wpematico.com/wpematico-changelog/).
 
 = 0.1 Nov 17, 2010 =
 * initial release in WordPress Repository
+
 
 == Upgrade Notice ==
 
