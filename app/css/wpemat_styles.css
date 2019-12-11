@@ -180,7 +180,7 @@
     color: red;
 }
 .warning {
-    color: #eb9600;
+    color: #c64f00;
     opacity: 0.6;
 }
 .warning:hover {
@@ -582,11 +582,11 @@ a.wpelinks {
     margin: 0px 0 0 2px;
     padding: 0;
     vertical-align: middle;
-    color: #0073aa;
+    color: #d3741c;
     font-size: 18px;
 }
 .help_tip:hover {
-    color: #0293D8;
+    color: #ef8e2f;
 }
 #tiptip_holder {
     display: none;
@@ -608,34 +608,32 @@ a.wpelinks {
     padding-right: 5px;
 }
 #tiptip_content {
-    background-color: #191919;
-    background-color: rgba(25, 25, 25, 0.92);
-    background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(transparent), to(#000));
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 3px;
-    box-shadow: 0 0 3px #555;
+    background-color: #D3741C;
+    border: 1px solid rgba(211, 116, 28, 1);
+    border-radius: 0;
+    box-shadow: 4px 4px 4px rgba(0,0,0,.2);
     color: #fff;
-    font-size: 11px;
-    moz-border-radius: 3px;
-    moz-box-shadow: 0 0 3px #555;
-    padding: 4px 8px;
-    text-shadow: 0 0 2px #000;
-    webkit-border-radius: 3px;
-    webkit-box-shadow: 0 0 3px #555;
+    font-size: 13px;
+    moz-border-radius: 0;
+    moz-box-shadow: 4px 4px 4px rgba(0,0,0,.2);
+    padding: 10px 15px;
+    webkit-border-radius: 0;
+    webkit-box-shadow: 4px 4px 4px rgba(0,0,0,.2);
     z-index: 99999998;
 }
 #tiptip_content code {
     background: #1d94cf;
     color: #fff;
-    font-size: 12px;
+    font-size: 13px;
     padding: 2px;
     text-shadow: none;
 }
 #tiptip_content a {
-    color: #0CF;
+    color: #333;
+    font-weight: 600;
 }
 #tiptip_content a:hover {
-    color: #F93;
+    color: #222;
 }
 #tiptip_arrow,
 #tiptip_arrow_inner {
@@ -662,39 +660,39 @@ a.wpelinks {
     border-left-color: rgba(255, 255, 255, 0.35);
 }
 #tiptip_holder.tip_top #tiptip_arrow_inner {
-    border-top-color: #191919;
-    border-top-color: rgba(25, 25, 25, 0.92);
+    border-top-color: #D3741C;
+    border-top-color: rgba(211, 116, 28, 1);
     margin-left: -6px;
     margin-top: -7px;
 }
 #tiptip_holder.tip_bottom #tiptip_arrow_inner {
-    border-bottom-color: #191919;
-    border-bottom-color: rgba(25, 25, 25, 0.92);
+    border-bottom-color: #D3741C;
+    border-bottom-color: rgba(211, 116, 28, 1);
     margin-left: -6px;
     margin-top: -5px;
 }
 #tiptip_holder.tip_right #tiptip_arrow_inner {
-    border-right-color: #191919;
-    border-right-color: rgba(25, 25, 25, 0.92);
+    border-right-color: #D3741C;
+    border-right-color: rgba(211, 116, 28, 1);
     margin-left: -5px;
     margin-top: -6px;
 }
 #tiptip_holder.tip_left #tiptip_arrow_inner {
-    border-left-color: #191919;
-    border-left-color: rgba(25, 25, 25, 0.92);
+    border-left-color: #D3741C;
+    border-left-color: rgba(211, 116, 28, 1);
     margin-left: -7px;
     margin-top: -6px;
 }
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
     #tiptip_content {
-        background-color: rgba(45, 45, 45, 0.88);
-        padding: 4px 8px 5px 8px;
+        background-color: #D3741C;
+        padding: 10px 15px;
     }
     #tiptip_holder.tip_bottom #tiptip_arrow_inner {
-        border-bottom-color: rgba(45, 45, 45, 0.88);
+        border-bottom-color: #D3741C;
     }
     #tiptip_holder.tip_top #tiptip_arrow_inner {
-        border-top-color: rgba(20, 20, 20, 0.92);
+        border-top-color: #D3741C;
     }
 }
 #roles {
@@ -1218,7 +1216,7 @@ div#optionslayer-right {
     margin: 0;
     padding: 30px;
     color: #ffffff;
-    background: #eb9600;
+    background: #c64f00;
     font-size: 30px;
     font-family: Sans Serif;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, .4);
