@@ -241,7 +241,9 @@ Version 2.5 concludes a series of radical changes that we had started since vers
 #### _Recent (may break) changes:_
 
 > * Added an option in Settings to make HTML entity decode to the post contents before inserted to avoid possible xss from untrusted feed sources. Users who need (and want), can activate it from there. Props to [@nibiwodong](https://github.com/nibiwodong).
-
+> * The removed cURL in many functions could work a bit different for some servers.  You should take a look if the images uploads are working well and if not, you can select the Custom Uploads option in Settings.
+> * The external URL of CRON has changed since the previous version.  If your campaigns have been freezed for some time, it is because the Cron is not running.  Check out the settings for the new URL.
+> * **Enlarges the version required for the Professional addon to 2.4**
 
 = 2.4.2 Nov 19, 2019 =
 * "app/wpe-cron.php" WAS DEPRECATED and removed from WPeMatico as external cron method.
