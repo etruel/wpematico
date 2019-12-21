@@ -103,7 +103,7 @@ class WPEMATICO_Welcome {
 	 */
 	public function admin_head() {
 		global $current_screen;
-		if($current_screen->id == "dashboard_page_wpematico-about");
+		if($current_screen->id == "dashboard_page_wpematico-about" || $current_screen->id == "dashboard_page_wpematico-getting-started" || $current_screen->id == "dashboard_page_wpematico-changelog" || $current_screen->id == "dashboard_page_wpematico-privacy")  {
 		?>
 		<style type="text/css" media="screen">
 			/*<![CDATA[*/
@@ -140,6 +140,7 @@ class WPEMATICO_Welcome {
 			/*]]>*/
 		</style>
 		<?php
+		}
 	}
 
 	/**
@@ -228,9 +229,7 @@ class WPEMATICO_Welcome {
 
 			</div>
 
-			<div class="about__section about__section_height-2 has-2-columns subscription">
-				<?php $this->subscription_form(); ?>
-			</div>
+			<?php $this->subscription_form(); ?>
 
 			<hr />
 
@@ -712,7 +711,7 @@ class WPEMATICO_Welcome {
 	public function subscription_form() {
 		?>
 		<?php
-		$current_user	 = wp_get_current_user();
+		$current_user = wp_get_current_user();
 		?>
 		<style type="text/css">
 			.subscription {
@@ -768,60 +767,66 @@ class WPEMATICO_Welcome {
 		$suscripted_user = get_option('wpematico_subscription_email_' . md5($current_user->ID), false);
 		if($suscripted_user === false) {
 			?>
-
-			<div class="column is-vertically-aligned-center">
-				<h2><?php _e('Last News in This Version!', 'wpematico'); ?></h2>
-				<p><?php _e('Version 2.5 concludes a series of radical changes that we had started since version 2.4 in terms of plugin security.', 'wpematico'); ?>
-					<?php _e('Also following a strict revision to follow the standards of Wordpress coding development.', 'wpematico'); ?></p>
-				<p><?php _e('We have completely removed the use of <b>cURL</b> and own functions in favor of Wordpress file processing and functions to obtain remote files.', 'wpematico'); ?></p>
-				<p><?php _e('We removed  HTML entity decode from each post before inserted. You can activate the function again on Settings.', 'wpematico'); ?></p>
-				<p><?php _e('NOTE: We had to change the url of the external CRON. Take a look at the "Settings" if your campaigns are freezed.', 'wpematico'); ?></p>
-				<p></p>
-				<!-- p>La versión 2.5 culmina una serie de cambios radicales que habíamos comenzado desde la version 2.4 en cuanto a seguridad del plugin.  También siguiendo una estricta revisión a seguir los standares de desarrollo de códificación Wordpress.  
-			Hemos eliminado completamente el uso de cURL y de funciones propias en favor de las funciones de tratamiento de archivos de Wordpress y para la obtención de archivos remotos.</p -->
-				<h3 class=""><?php _e('Thanks to all the contributors for their collaborations and to the moderators of WordPress Plugins for their revisions and for pointing us in the right direction on several issues.', 'wpematico'); ?></h3>
-
-			</div>
-			<div class="column is-edge-to-edge has-accent-background-color">
-				<div class="about__image">
-					<p></p>
-					<h2><strong><?php _e('Stay Informed!', 'wpematico'); ?></strong></h2>
-					<h3 class="wpsubscription_info"><?php _e('Subscribe to our Newsletter and be the first to receive our news.', 'wpematico'); ?> 
-						<?php _e('We send around 4 or 5 emails per year. Really.', 'wpematico'); ?></h3>
-					<form action="<?php echo admin_url('admin-post.php'); ?>" id="wpsubscription_form" method="post" class="wpcf7-form">
-						<input type="hidden" name="action" value="save_subscription_wpematico"/>
-						<?php
-						wp_nonce_field('save_subscription_wpematico');
-						?>
-						<div class="two-form-group">
-							<div class="form-group">
-								<label><?php _e("Name", "wpematico"); ?></label>
-								<input type="text" id="" name="wpematico_subscription[fname]" value="<?php echo $current_user->user_firstname; ?>" size="40" class="form-control" placeholder="<?php _e("First Name", "wpematico"); ?>">
+			<div class="about__section about__section_height-2 has-2-columns subscription">
+				<div class="column is-vertically-aligned-center">
+					<h2><?php _e('Last News in This Version!', 'wpematico'); ?></h2>
+					<p><?php _e('Version 2.5 concludes a series of radical changes that we had started since version 2.4 in terms of plugin security.', 'wpematico'); ?>
+						<?php _e('Also following a strict revision to follow the standards of Wordpress coding development.', 'wpematico'); ?></p>
+					<p><?php _e('We have completely removed the use of <b>cURL</b> and own functions in favor of Wordpress file processing and functions to obtain remote files.', 'wpematico'); ?></p>
+					<p><?php _e('We removed  HTML entity decode from each post before inserted. You can activate the function again on Settings.', 'wpematico'); ?></p>
+					<p><?php _e('NOTE: We had to change the url of the external CRON. Take a look at the "Settings" if your campaigns are freezed.', 'wpematico'); ?></p>
+							<!-- p>La versión 2.5 culmina una serie de cambios radicales que habíamos comenzado desde la version 2.4 en cuanto a seguridad del plugin.  También siguiendo una estricta revisión a seguir los standares de desarrollo de códificación Wordpress.  
+						Hemos eliminado completamente el uso de cURL y de funciones propias en favor de las funciones de tratamiento de archivos de Wordpress y para la obtención de archivos remotos.</p -->
+					<h3 class=""><?php _e('Thanks to all the contributors for their collaborations and to the moderators of WordPress Plugins for their revisions and for pointing us in the right direction on several issues.', 'wpematico'); ?></h3>
+				</div>
+				<div class="column is-edge-to-edge has-accent-background-color">
+					<div class="about__image">
+						<p></p>
+						<h2><strong><?php _e('Stay Informed!', 'wpematico'); ?></strong></h2>
+						<h3 class="wpsubscription_info"><?php _e('Subscribe to our Newsletter and be the first to receive our news.', 'wpematico'); ?> 
+							<?php _e('We send around 4 or 5 emails per year. Really.', 'wpematico'); ?></h3>
+						<form action="<?php echo admin_url('admin-post.php'); ?>" id="wpsubscription_form" method="post" class="wpcf7-form">
+							<input type="hidden" name="action" value="save_subscription_wpematico"/>
+							<?php
+							wp_nonce_field('save_subscription_wpematico');
+							?>
+							<div class="two-form-group">
+								<div class="form-group">
+									<label><?php _e("Name", "wpematico"); ?></label>
+									<input type="text" id="" name="wpematico_subscription[fname]" value="<?php echo $current_user->user_firstname; ?>" size="40" class="form-control" placeholder="<?php _e("First Name", "wpematico"); ?>">
+								</div>
+								<div class="form-group">
+									<input type="text" id="" name="wpematico_subscription[lname]" value="<?php echo $current_user->user_lastname; ?>" size="40" class="form-control" placeholder="<?php _e("Last Name", "wpematico"); ?>">
+								</div>
 							</div>
+
 							<div class="form-group">
-								<input type="text" id="" name="wpematico_subscription[lname]" value="<?php echo $current_user->user_lastname; ?>" size="40" class="form-control" placeholder="<?php _e("Last Name", "wpematico"); ?>">
+								<label><?php _e("Email", "wpematico"); ?> <span>(*)</span></label>
+								<input type="text" id="" name="wpematico_subscription[email]" value="<?php echo $current_user->user_email; ?>" size="40" class="form-control" placeholder="<?php _e("Email", "wpematico"); ?>">
 							</div>
-						</div>
 
-						<div class="form-group">
-							<label><?php _e("Email", "wpematico"); ?> <span>(*)</span></label>
-							<input type="text" id="" name="wpematico_subscription[email]" value="<?php echo $current_user->user_email; ?>" size="40" class="form-control" placeholder="<?php _e("Email", "wpematico"); ?>">
-						</div>
-
-						<div class="wpbutton-submit-subscription">
-							<input type="submit" class="button button-primary"  value="<?php _e('Subscribe', 'wpematico'); ?>">
-						</div>
-					</form>
-				<?php }else {
-					?>
-					<p class="wpsubscription_info"><?php echo sprintf(__('Your email %s is already subscribed.', 'wpematico'), '<strong>' . $suscripted_user . '</strong>'); ?></p>
-					<?php
-				}
-				?>
+							<div class="wpbutton-submit-subscription">
+								<input type="submit" class="button button-primary"  value="<?php _e('Subscribe', 'wpematico'); ?>">
+							</div>
+						</form>
+					</div>
+				</div>
 			</div>
-		</div>
-
-		<?php
+		<?php } else{ ?>
+			<div class="about__section subscription">
+				<div class="column is-vertically-aligned-center">
+					<h2><?php _e('Last News in This Version!', 'wpematico'); ?></h2>
+					<p><?php _e('Version 2.5 concludes a series of radical changes that we had started since version 2.4 in terms of plugin security.', 'wpematico'); ?>
+						<?php _e('Also following a strict revision to follow the standards of Wordpress coding development.', 'wpematico'); ?></p>
+					<p><?php _e('We have completely removed the use of <b>cURL</b> and own functions in favor of Wordpress file processing and functions to obtain remote files.', 'wpematico'); ?></p>
+					<p><?php _e('We removed  HTML entity decode from each post before inserted. You can activate the function again on Settings.', 'wpematico'); ?></p>
+					<p><?php _e('NOTE: We had to change the url of the external CRON. Take a look at the "Settings" if your campaigns are freezed.', 'wpematico'); ?></p>
+							<!-- p>La versión 2.5 culmina una serie de cambios radicales que habíamos comenzado desde la version 2.4 en cuanto a seguridad del plugin.  También siguiendo una estricta revisión a seguir los standares de desarrollo de códificación Wordpress.  
+						Hemos eliminado completamente el uso de cURL y de funciones propias en favor de las funciones de tratamiento de archivos de Wordpress y para la obtención de archivos remotos.</p -->
+					<h3 class=""><?php _e('Thanks to all the contributors for their collaborations and to the moderators of WordPress Plugins for their revisions and for pointing us in the right direction on several issues.', 'wpematico'); ?></h3>
+				</div>
+			</div>
+		<?php }
 	}
 
 	/**
