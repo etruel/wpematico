@@ -461,7 +461,7 @@ class wpematico_licenses_handlers {
 			wp_redirect(admin_url('edit.php?post_type=wpematico&page=wpematico_settings&tab=pro_licenses'));
 			exit();
 		}
-		$keys = (isset($_POST['license_key']) && !empty($_POST['license_key']) ) ? sanitize_text_field($_POST['license_key']) : array();
+		$keys = (isset($_POST['license_key']) && !empty($_POST['license_key']) ) ? array_map( 'sanitize_key', $_POST['license_key'] ) : array(); 
 		$plugins_args = array();
 		$plugins_args = apply_filters('wpematico_plugins_updater_args', $plugins_args);
 		update_option( 'wpematico_license_keys', $keys);

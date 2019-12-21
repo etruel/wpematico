@@ -225,6 +225,10 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
 
+= 2.5.1 Dec 18, 2019 =
+
+Fixed a problem when sanitize the key on the licenses page and some tweaks in the welcome screen styles.
+
 = 2.5 Dec 11, 2019 =
 
 Version 2.5 concludes a series of radical changes that we had started since version 2.4 in terms of plugin security. Also following a strict revision to follow the standards of Wordpress coding development.

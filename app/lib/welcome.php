@@ -102,6 +102,8 @@ class WPEMATICO_Welcome {
 	 * @return void
 	 */
 	public function admin_head() {
+		global $current_screen;
+		if($current_screen->id == "dashboard_page_wpematico-about");
 		?>
 		<style type="text/css" media="screen">
 			/*<![CDATA[*/
