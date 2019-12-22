@@ -103,43 +103,43 @@ class WPEMATICO_Welcome {
 	 */
 	public function admin_head() {
 		global $current_screen;
-		if($current_screen->id == "dashboard_page_wpematico-about" || $current_screen->id == "dashboard_page_wpematico-getting-started" || $current_screen->id == "dashboard_page_wpematico-changelog" || $current_screen->id == "dashboard_page_wpematico-privacy")  {
-		?>
-		<style type="text/css" media="screen">
-			/*<![CDATA[*/
-			[class*="dashboard_page_"] #wpcontent { /*background: #fff;*/ padding: 0 24px; }
-			.about__header-navigation { background: #fff; color: #333;}
-			.about__section { background: #fff; }
-			.about__header-title { background: #ef8e2f; }
-			.about__header-badge { background: #D3741C; }
-			.about__header-text { background: #c64f00; }
-			.about__header-navigation .nav-tab-active { color: #ef8e2f; }
-			.about__header-navigation .nav-tab:active, .about__header-navigation .nav-tab:hover{ background: #f5f5f5; }
-			.about__container .has-accent-background-color { background: #ef8e2f; }
-			.about__container .has-subtle-background-color { background: #f9f9f9; }
-			.about__header-title .wpematico-badge { margin-right: 10px; }
-			.about__section.about__section_height { min-height: 560px; }
-			.about__section.about__section_height-2 { min-height: 400px; }
-			.about__section.is-feature { font-size: 1.4em; }
-			.about__container .about__image { padding: 0 32px; }
-			.about__section .span-text { font-size: .9em; }
-			.feature-section a, .about__section p a { font-weight: 600; }
-			.addon_block { display: flex; margin-bottom: 1em;}
-			.addon_block .addon_img img { display:block; max-width: 120px; height: auto; margin-right: 10px; }
-			.addon_block .addon_text { text-align: right;}
-			.addon_block .addon_text p { margin: 0; font-size: 13px; }
-			@media all and ( max-width: 782px ) {
-				.about__header-title .wpematico-badge{ max-height: 100px; }
-			}
-			@media all and ( max-width: 782px ) and (min-width: 481px) {
-				.about__header-navigation .nav-tab{ padding: 24px 16px; }
-			}
-			@media all and ( max-width: 600px ) and (min-width: 481px) {
-				.about__header-navigation .nav-tab{ font-size: 1.1em; }
-			}
-			/*]]>*/
-		</style>
-		<?php
+		if($current_screen->id == "dashboard_page_wpematico-about" || $current_screen->id == "dashboard_page_wpematico-getting-started" || $current_screen->id == "dashboard_page_wpematico-changelog" || $current_screen->id == "dashboard_page_wpematico-privacy") {
+			?>
+			<style type="text/css" media="screen">
+				/*<![CDATA[*/
+				[class*="dashboard_page_"] #wpcontent { /*background: #fff;*/ padding: 0 24px; }
+				.about__header-navigation { background: #fff; color: #333;}
+				.about__section { background: #fff; }
+				.about__header-title { background: #ef8e2f; }
+				.about__header-badge { background: #D3741C; }
+				.about__header-text { background: #c64f00; }
+				.about__header-navigation .nav-tab-active { color: #ef8e2f; }
+				.about__header-navigation .nav-tab:active, .about__header-navigation .nav-tab:hover{ background: #f5f5f5; }
+				.about__container .has-accent-background-color { background: #ef8e2f; }
+				.about__container .has-subtle-background-color { background: #f9f9f9; }
+				.about__header-title .wpematico-badge { margin-right: 10px; }
+				.about__section.about__section_height { min-height: 560px; }
+				.about__section.about__section_height-2 { min-height: 400px; }
+				.about__section.is-feature { font-size: 1.4em; }
+				.about__container .about__image { padding: 0 32px; }
+				.about__section .span-text { font-size: .9em; }
+				.feature-section a, .about__section p a { font-weight: 600; }
+				.addon_block { display: flex; margin-bottom: 1em;}
+				.addon_block .addon_img img { display:block; max-width: 120px; height: auto; margin-right: 10px; }
+				.addon_block .addon_text { text-align: right;}
+				.addon_block .addon_text p { margin: 0; font-size: 13px; }
+				@media all and ( max-width: 782px ) {
+					.about__header-title .wpematico-badge{ max-height: 100px; }
+				}
+				@media all and ( max-width: 782px ) and (min-width: 481px) {
+					.about__header-navigation .nav-tab{ padding: 24px 16px; }
+				}
+				@media all and ( max-width: 600px ) and (min-width: 481px) {
+					.about__header-navigation .nav-tab{ font-size: 1.1em; }
+				}
+				/*]]>*/
+			</style>
+			<?php
 		}
 	}
 
@@ -711,7 +711,7 @@ class WPEMATICO_Welcome {
 	public function subscription_form() {
 		?>
 		<?php
-		$current_user = wp_get_current_user();
+		$current_user	 = wp_get_current_user();
 		?>
 		<style type="text/css">
 			.subscription {
@@ -765,20 +765,25 @@ class WPEMATICO_Welcome {
 		</style>
 		<?php
 		$suscripted_user = get_option('wpematico_subscription_email_' . md5($current_user->ID), false);
+		$classes		 = "";
 		if($suscripted_user === false) {
-			?>
-			<div class="about__section about__section_height-2 has-2-columns subscription">
-				<div class="column is-vertically-aligned-center">
-					<h2><?php _e('Last News in This Version!', 'wpematico'); ?></h2>
-					<p><?php _e('Version 2.5 concludes a series of radical changes that we had started since version 2.4 in terms of plugin security.', 'wpematico'); ?>
-						<?php _e('Also following a strict revision to follow the standards of Wordpress coding development.', 'wpematico'); ?></p>
-					<p><?php _e('We have completely removed the use of <b>cURL</b> and own functions in favor of Wordpress file processing and functions to obtain remote files.', 'wpematico'); ?></p>
-					<p><?php _e('We removed  HTML entity decode from each post before inserted. You can activate the function again on Settings.', 'wpematico'); ?></p>
-					<p><?php _e('NOTE: We had to change the url of the external CRON. Take a look at the "Settings" if your campaigns are freezed.', 'wpematico'); ?></p>
-							<!-- p>La versión 2.5 culmina una serie de cambios radicales que habíamos comenzado desde la version 2.4 en cuanto a seguridad del plugin.  También siguiendo una estricta revisión a seguir los standares de desarrollo de códificación Wordpress.  
-						Hemos eliminado completamente el uso de cURL y de funciones propias en favor de las funciones de tratamiento de archivos de Wordpress y para la obtención de archivos remotos.</p -->
-					<h3 class=""><?php _e('Thanks to all the contributors for their collaborations and to the moderators of WordPress Plugins for their revisions and for pointing us in the right direction on several issues.', 'wpematico'); ?></h3>
-				</div>
+			$classes = "about__section_height-2 has-2-columns";
+		}
+		?>
+		<div class="about__section <?php echo $classes; ?> subscription">
+			<div class="column is-vertically-aligned-center">
+				<h2><?php _e('Last News in This Version!', 'wpematico'); ?></h2>
+				<p><?php _e('Version 2.5 concludes a series of radical changes that we had started since version 2.4 in terms of plugin security.', 'wpematico'); ?>
+					<?php _e('Also following a strict revision to follow the standards of Wordpress coding development.', 'wpematico'); ?></p>
+				<p><?php _e('We have completely removed the use of <b>cURL</b> and own functions in favor of Wordpress file processing and functions to obtain remote files.', 'wpematico'); ?></p>
+				<p><?php _e('We removed  HTML entity decode from each post before inserted. You can activate the function again on Settings.', 'wpematico'); ?></p>
+				<p><?php _e('NOTE: We had to change the url of the external CRON. Take a look at the "Settings" if your campaigns are freezed.', 'wpematico'); ?></p>
+				<p></p>
+				<!-- p>La versión 2.5 culmina una serie de cambios radicales que habíamos comenzado desde la version 2.4 en cuanto a seguridad del plugin.  También siguiendo una estricta revisión a seguir los standares de desarrollo de códificación Wordpress.  
+			Hemos eliminado completamente el uso de cURL y de funciones propias en favor de las funciones de tratamiento de archivos de Wordpress y para la obtención de archivos remotos.</p -->
+				<h3 class=""><?php _e('Thanks to all the contributors for their collaborations and to the moderators of WordPress Plugins for their revisions and for pointing us in the right direction on several issues.', 'wpematico'); ?></h3>
+			</div>
+			<?php if($suscripted_user === false) { ?>
 				<div class="column is-edge-to-edge has-accent-background-color">
 					<div class="about__image">
 						<p></p>
@@ -787,9 +792,7 @@ class WPEMATICO_Welcome {
 							<?php _e('We send around 4 or 5 emails per year. Really.', 'wpematico'); ?></h3>
 						<form action="<?php echo admin_url('admin-post.php'); ?>" id="wpsubscription_form" method="post" class="wpcf7-form">
 							<input type="hidden" name="action" value="save_subscription_wpematico"/>
-							<?php
-							wp_nonce_field('save_subscription_wpematico');
-							?>
+							<?php wp_nonce_field('save_subscription_wpematico'); ?>
 							<div class="two-form-group">
 								<div class="form-group">
 									<label><?php _e("Name", "wpematico"); ?></label>
@@ -811,22 +814,9 @@ class WPEMATICO_Welcome {
 						</form>
 					</div>
 				</div>
-			</div>
-		<?php } else{ ?>
-			<div class="about__section subscription">
-				<div class="column is-vertically-aligned-center">
-					<h2><?php _e('Last News in This Version!', 'wpematico'); ?></h2>
-					<p><?php _e('Version 2.5 concludes a series of radical changes that we had started since version 2.4 in terms of plugin security.', 'wpematico'); ?>
-						<?php _e('Also following a strict revision to follow the standards of Wordpress coding development.', 'wpematico'); ?></p>
-					<p><?php _e('We have completely removed the use of <b>cURL</b> and own functions in favor of Wordpress file processing and functions to obtain remote files.', 'wpematico'); ?></p>
-					<p><?php _e('We removed  HTML entity decode from each post before inserted. You can activate the function again on Settings.', 'wpematico'); ?></p>
-					<p><?php _e('NOTE: We had to change the url of the external CRON. Take a look at the "Settings" if your campaigns are freezed.', 'wpematico'); ?></p>
-							<!-- p>La versión 2.5 culmina una serie de cambios radicales que habíamos comenzado desde la version 2.4 en cuanto a seguridad del plugin.  También siguiendo una estricta revisión a seguir los standares de desarrollo de códificación Wordpress.  
-						Hemos eliminado completamente el uso de cURL y de funciones propias en favor de las funciones de tratamiento de archivos de Wordpress y para la obtención de archivos remotos.</p -->
-					<h3 class=""><?php _e('Thanks to all the contributors for their collaborations and to the moderators of WordPress Plugins for their revisions and for pointing us in the right direction on several issues.', 'wpematico'); ?></h3>
-				</div>
-			</div>
-		<?php }
+			<?php } ?>
+		</div>
+		<?php
 	}
 
 	/**
@@ -885,7 +875,6 @@ class WPEMATICO_Welcome {
 			$readme	 = explode('== Changelog ==', $readme);
 			$readme	 = end($readme);
 			$readme	 = html_entity_decode($this->wpematico_markdown($readme));
-
 		}
 
 		return ($readme);
@@ -898,36 +887,36 @@ class WPEMATICO_Welcome {
 	 * @return string
 	 */
 	private function wpematico_markdown($text) {
-		// Make it HTML safe for starters
+// Make it HTML safe for starters
 		$text	 = htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
-			// headlines
+// headlines
 		$s		 = array('===', '==', '=');
 		$r		 = array('h2', 'h3', 'h4');
 		for($x = 0; $x < sizeof($s); $x++)
 			$text	 = preg_replace('/(.*?)' . $s[$x] . '(?!\")(.*?)' . $s[$x] . '(.*?)/', '$1<' . $r[$x] . '>$2</' . $r[$x] . '>$3', $text);
 
-		// inline
+// inline
 		$s		 = array('\*\*', '\'');
 		$r		 = array('strong', 'code');
 		for($x = 0; $x < sizeof($s); $x++)
 			$text	 = preg_replace('/(.*?)' . $s[$x] . '(?!\s)(.*?)(?!\s)' . $s[$x] . '(.*?)/', '$1<' . $r[$x] . '>$2</' . $r[$x] . '>$3', $text);
 
-		// ' _italic_ '
+// ' _italic_ '
 		$text = preg_replace('/(\s)_(\S.*?\S)_(\s|$)/', ' <em>$2</em> ', $text);
 
-		// Blockquotes (they have email-styled > at the start)
-		$regex	 = '^&gt;.*?$(^(?:&gt;).*?\n|\n)*';
+// Blockquotes (they have email-styled > at the start)
+		$regex = '^&gt;.*?$(^(?:&gt;).*?\n|\n)*';
 		preg_match_all("~$regex~m", $text, $matches, PREG_SET_ORDER);
 		foreach($matches as $set) {
 			$block	 = "<blockquote>\n" . trim(preg_replace('~(^|\n)[&gt; ]+~', "\n", $set[0])) . "\n</blockquote>\n";
 			$text	 = str_replace($set[0], $block, $text);
 		}
-		// Titles
+// Titles
 		$text = preg_replace_callback("~(^|\n)(#{1,6}) ([^\n#]+)[^\n]*~", function($match) {
 			$n = strlen($match[2]);
 			return "\n<h$n>" . $match[3] . "</h$n>";
 		}, $text);
-		// ul lists	
+// ul lists	
 		$s		 = array('\*', '\+', '\-');
 		for($x = 0; $x < sizeof($s); $x++)
 			$text	 = preg_replace('/^[' . $s[$x] . '](\s)(.*?)(\n|$)/m', '<li>$2</li>', $text);
@@ -939,20 +928,20 @@ class WPEMATICO_Welcome {
 		$text	 = preg_replace('/\n<li>(.*?)/', '<ol><li>$1', $text);
 		$text	 = preg_replace('/(<\/li>)(?!(\<li\>|\<\/ul\>))/', '$1</ol>', $text);
 
-/*		// ol screenshots style
-		$text = preg_replace('/(?=Screenshots)(.*?)<ol>/', '$1<ol class="readme-parser-screenshots">', $text);
+		/* 		// ol screenshots style
+		  $text = preg_replace('/(?=Screenshots)(.*?)<ol>/', '$1<ol class="readme-parser-screenshots">', $text);
 
-		// line breaks
-		$text	 = preg_replace('/(.*?)(\n)/', "$1<br/>\n", $text);
-		$text	 = preg_replace('/(1|2|3|4)(><br\/>)/', '$1>', $text);
-		$text	 = str_replace('</ul><br/>', '</ul>', $text);
-		$text	 = str_replace('<br/><br/>', '<br/>', $text);
+		  // line breaks
+		  $text	 = preg_replace('/(.*?)(\n)/', "$1<br/>\n", $text);
+		  $text	 = preg_replace('/(1|2|3|4)(><br\/>)/', '$1>', $text);
+		  $text	 = str_replace('</ul><br/>', '</ul>', $text);
+		  $text	 = str_replace('<br/><br/>', '<br/>', $text);
 
-		// urls
-		$text	 = str_replace('http://www.', 'www.', $text);
-		$text	 = str_replace('www.', 'http://www.', $text);
-		$text	 = preg_replace('#(^|[^\"=]{1})(http://|ftp://|mailto:|https://)([^\s<>]+)([\s\n<>]|$)#', '$1<a target=\"_blank\" href="$2$3">$3</a>$4', $text);
-*/		
+		  // urls
+		  $text	 = str_replace('http://www.', 'www.', $text);
+		  $text	 = str_replace('www.', 'http://www.', $text);
+		  $text	 = preg_replace('#(^|[^\"=]{1})(http://|ftp://|mailto:|https://)([^\s<>]+)([\s\n<>]|$)#', '$1<a target=\"_blank\" href="$2$3">$3</a>$4', $text);
+		 */
 		// Links and Images
 		$regex = '(!)*\[([^\]]+)\]\(([^\)]+?)(?: &quot;([\w\s]+)&quot;)*\)';
 		preg_match_all("~$regex~", $text, $matches, PREG_SET_ORDER);
@@ -966,17 +955,16 @@ class WPEMATICO_Welcome {
 		}
 
 		// Paragraphs
-//		$text	 = preg_replace('~\n([^><\t]+)\n~', "\n\n<p>$1</p>\n\n", $text);
+		//		$text	 = preg_replace('~\n([^><\t]+)\n~', "\n\n<p>$1</p>\n\n", $text);
 		// Paragraphs (what about fixing the above?)
-//		$text	 = str_replace(array("<p>\n", "\n</p>"), array('<p>', '</p>'), $text);
+		//		$text	 = str_replace(array("<p>\n", "\n</p>"), array('<p>', '</p>'), $text);
 		// Lines that end in two spaces require a BR
-//		$text	 = str_replace("  \n", "<br>\n", $text);
+		//		$text	 = str_replace("  \n", "<br>\n", $text);
 		// Reduce crazy newlines
-//		$text	= preg_replace("~\n\n\n+~", "\n\n", $text);
-		
-		return $text;	
-	}
+		//		$text	= preg_replace("~\n\n\n+~", "\n\n", $text);
 
+		return $text;
+	}
 
 	/**
 	 * Column Privacy with the privacy also in readme.txt file
