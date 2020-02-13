@@ -765,7 +765,7 @@ public static function options_box( $post ) {
 			<?php if($cfg['disableccf']) echo '<br /><small>'. __('Feature deactivated on Settings. Needs Metadata.', 'wpematico' ).'</small>'; ?>
 		</p>
 		<p>
-			<input class="checkbox" type="checkbox"<?php checked($copy_permanlink_source ,true);?> name="copy_permanlink_source" value="1" id="copy_permanlink_source"/> 
+			<input <?php echo ((!$campaign_type=='youtube')?'':'disabled="disabled"'); ?>" class="checkbox" type="checkbox"<?php checked($copy_permanlink_source ,true);?> name="copy_permanlink_source" value="1" id="copy_permanlink_source"/> 
 			<label for="copy_permanlink_source"><?php echo __('Copy the permalink from the source.', 'wpematico' ); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['copy_permanlink_source']; ?>"></span>
 		</p>
 

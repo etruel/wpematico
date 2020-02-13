@@ -225,6 +225,10 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
 
+= 2.5.2 Feb 13, 2020 =
+
+Fixes an issue with Youtube campaign type by ignoring "Copy the permalink from the source" option.
+
 = 2.5.1 Dec 22, 2019 =
 
 Fixes a problem when sanitize keys on licenses page and tweaks the style just for the About screen. 
@@ -354,5 +358,5 @@ For the changelog of earlier versions, please refer to [the changelog on wpemati
 
 == Upgrade Notice ==
 
-= 2.5.1 =
-* Fixes a problem when sanitize keys on licenses page and tweaks the style just for the About screen. 
+= 2.5.2 =
+Fixes an issue with Youtube campaign type by ignoring "Copy the permalink from the source" option.

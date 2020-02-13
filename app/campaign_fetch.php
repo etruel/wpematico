@@ -517,7 +517,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			$this->current_item['content'] = '';
 		}
 		
-		if ($this->campaign['copy_permanlink_source']) {
+		if ($this->campaign['copy_permanlink_source'] && $this->campaign['campaign_type'] != 'youtube') {
 			$this->current_item['slug'] = WPeMatico::get_slug_from_permalink($item->get_permalink());
 		} else {
 			$this->current_item['slug'] = sanitize_title($this->current_item['title']);

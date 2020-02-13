@@ -91,6 +91,26 @@ jQuery(document).ready(function($) {
 	});
 
 	$('#campaign_type').change(function() {
+		if ($('#campaign_type').val() == 'youtube') {
+			if ($('#copy_permanlink_source').is(':checked')) {
+//				$('label[for="copy_permanlink_source"]').css('transition', "background-color 1s");
+//				$('label[for="copy_permanlink_source"]').css('background-color', "red");
+				colors = ['red', '#FFFFFF'];
+				var i = 0; var loops = 0; var qty = 3;
+				animate_loop = function () {
+					$('label[for="copy_permanlink_source"]').animate({backgroundColor: colors[(i++) % colors.length]
+					}, 1000, function () {
+						if (loops++ < qty)
+							animate_loop();
+					});
+				}
+				animate_loop();
+				$('#copy_permanlink_source').removeAttr('checked');
+				$('#copy_permanlink_source').attr('disabled', 'disabled');
+			}
+		}else{
+			$('#copy_permanlink_source').removeAttr('disabled');
+		}
 		if ($('#campaign_type').val() != 'bbpress') {
 			$('#customtype_post').parent().fadeIn();
 		}
