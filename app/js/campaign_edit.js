@@ -93,8 +93,6 @@ jQuery(document).ready(function($) {
 	$('#campaign_type').change(function() {
 		if ($('#campaign_type').val() == 'youtube') {
 			if ($('#copy_permanlink_source').is(':checked')) {
-//				$('label[for="copy_permanlink_source"]').css('transition', "background-color 1s");
-//				$('label[for="copy_permanlink_source"]').css('background-color', "red");
 				colors = ['red', '#FFFFFF'];
 				var i = 0; var loops = 0; var qty = 3;
 				animate_loop = function () {
@@ -106,8 +104,8 @@ jQuery(document).ready(function($) {
 				}
 				animate_loop();
 				$('#copy_permanlink_source').removeAttr('checked');
-				$('#copy_permanlink_source').attr('disabled', 'disabled');
 			}
+			$('#copy_permanlink_source').attr('disabled', 'disabled');
 		}else{
 			$('#copy_permanlink_source').removeAttr('disabled');
 		}
