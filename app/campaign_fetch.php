@@ -714,9 +714,9 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 				//**** necesaria para la featured ?	$imagen_src = apply_filters('wpematico_imagen_src', $imagen_src ); // allow strip parts 
 				$imagen_src_real = $this->getRelativeUrl($itemUrl, $imagen_src);
 				// Strip all white space on images URLs.	
-				$imagen_src_real = str_replace(' ', '%20', $imagen_src_real);					
+				$imagen_src_real = str_replace(' ', '%20', $imagen_src_real);
 				$imagen_src_real = apply_filters('wpematico_img_src_url', $imagen_src_real );
-				$allowed = (isset($this->cfg['allowed']) && !empty($this->cfg['allowed']) ) ? $this->cfg['allowed'] : 'jpg,gif,png,tif,bmp,jpeg' ;
+				$allowed = (isset($this->cfg['images_allowed_ext']) && !empty($this->cfg['images_allowed_ext']) ) ? $this->cfg['images_allowed_ext'] : 'jpg,gif,png,tif,bmp,jpeg' ;
 				$allowed = apply_filters('wpematico_allowext', $allowed );
 				//Fetch and Store the Image	
 				///////////////***************************************************************************************////////////////////////

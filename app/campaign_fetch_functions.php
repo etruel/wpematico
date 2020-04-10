@@ -427,7 +427,7 @@ class wpematico_campaign_fetch_functions {
 					// Strip all white space on images URLs.	
 					$imagen_src_real = str_replace(' ', '%20', $imagen_src_real);						
 					$imagen_src_real = apply_filters('wpematico_img_src_url', $imagen_src_real ); // original source
-					$allowed = (isset($this->cfg['allowed']) && !empty($this->cfg['allowed']) ) ? $this->cfg['allowed'] : 'jpg,gif,png,tif,bmp,jpeg' ;
+					$allowed = (isset($this->cfg['images_allowed_ext']) && !empty($this->cfg['images_allowed_ext']) ) ? $this->cfg['images_allowed_ext'] : 'jpg,gif,png,tif,bmp,jpeg' ;
 					$allowed = apply_filters('wpematico_allowext', $allowed );
 					//Fetch and Store the Image	
 					///////////////***************************************************************************************////////////////////////
@@ -893,7 +893,7 @@ class wpematico_campaign_fetch_functions {
 					// Strip all white space on audios URLs.	
 					$audio_src_real = str_replace(' ', '%20', $audio_src_real);						
 					$audio_src_real = apply_filters('wpematico_audio_src_url', $audio_src_real ); // original source
-					$allowed_audio = (isset($this->cfg['allowed_audio']) && !empty($this->cfg['allowed_audio']) ) ? $this->cfg['allowed_audio'] : 'mp3' ;
+					$allowed_audio = (isset($this->cfg['audio_allowed_ext']) && !empty($this->cfg['audio_allowed_ext']) ) ? $this->cfg['audio_allowed_ext'] : 'mp3' ;
 					$allowed_audio = apply_filters('wpematico_allowext_audio', $allowed_audio );
 					
 					// Compability with WP, Strip Query added by WP ShortCode
@@ -1039,7 +1039,7 @@ class wpematico_campaign_fetch_functions {
 					// Strip all white space on videos URLs.	
 					$video_src_real = str_replace(' ', '%20', $video_src_real);						
 					$video_src_real = apply_filters('wpematico_video_src_url', $video_src_real ); // original source
-					$allowed_video = (isset($this->cfg['allowed_video']) && !empty($this->cfg['allowed_video']) ) ? $this->cfg['allowed_video'] : 'mp4' ;
+					$allowed_video = (isset($this->cfg['video_allowed_ext']) && !empty($this->cfg['video_allowed_ext']) ) ? $this->cfg['video_allowed_ext'] : 'mp4' ;
 					$allowed_video = apply_filters('wpematico_allowext_video', $allowed_video );
 					
 					// Compability with WP, Strip Query added by WP ShortCode

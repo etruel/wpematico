@@ -290,6 +290,72 @@ if(!class_exists('WPeMatico_functions')) {
 		}
 
 		/**
+		 * @access public
+		 * @return $options Array all wp defaults image mime types plus added by custom filters in standard ways.
+		 * @since 2.5.3
+		 */
+		public static function get_images_allowed_mimes() {
+			$mime_types	 = get_allowed_mime_types();
+			$return		 = '';
+			foreach($mime_types as $key => $mime) {
+				// Validate image types and replace | by ,
+				if(strpos($mime, 'image/') !== false) {
+					$return .= str_replace('|', ',', "$key,");
+				}
+			}
+			//Deletes last chr if a ,
+			$return = (substr($return, -1) == ",") ? substr($return, 0, -1) : $return;
+			/**
+			 * $return has array of all wp defaults image mime types plus added by custom filters in standard ways
+			 */
+			return apply_filters('get_wpematico_images_allowed_mimes', $return	);
+		}
+
+		/**
+		 * @access public
+		 * @return $options Array all wp defaults video mime types plus added by custom filters in standard ways.
+		 * @since 2.5.3
+		 */
+		public static function get_audio_allowed_mimes() {
+			$mime_types	 = get_allowed_mime_types();
+			$return		 = '';
+			foreach($mime_types as $key => $mime) {
+				// Validate image types and replace | by ,
+				if(strpos($mime, 'audio/') !== false) {
+					$return .= str_replace('|', ',', "$key,");
+				}
+			}
+			//Deletes last chr if a ,
+			$return = (substr($return, -1) == ",") ? substr($return, 0, -1) : $return;
+			/**
+			 * $return has all wp defaults audio mime types plus added by custom filters in standard ways
+			 */
+			return apply_filters('get_wpematico_images_allowed_mimes', $return	);
+		}
+
+		/**
+		 * @access public
+		 * @return $options Array all wp defaults video mime types plus added by custom filters in standard ways.
+		 * @since 2.5.3
+		 */
+		public static function get_video_allowed_mimes() {
+			$mime_types	 = get_allowed_mime_types();
+			$return		 = '';
+			foreach($mime_types as $key => $mime) {
+				// Validate image types and replace | by ,
+				if(strpos($mime, 'video/') !== false) {
+					$return .= str_replace('|', ',', "$key,");
+				}
+			}
+			//Deletes last chr if a ,
+			$return = (substr($return, -1) == ",") ? substr($return, 0, -1) : $return;
+			/**
+			 * $return has all wp defaults video mime types plus added by custom filters in standard ways
+			 */
+			return apply_filters('get_wpematico_images_allowed_mimes', $return	);
+		}
+
+		/**
 		 * save_file_from_url 
 		 * Try several ways to download a file by url with filters to rename the local file
 		 * 
@@ -323,7 +389,7 @@ if(!class_exists('WPeMatico_functions')) {
 			global $wp_filesystem;
 			/* checks if exists $wp_filesystem */
 			if(empty($wp_filesystem) || !isset($GLOBALS['wp_filesystem']) || !is_object($GLOBALS['wp_filesystem'])) {
-				
+
 				if(file_exists(ABSPATH . '/wp-admin/includes/file.php')) {
 					include_once( ABSPATH . '/wp-admin/includes/file.php' );
 				}
@@ -331,7 +397,7 @@ if(!class_exists('WPeMatico_functions')) {
 				$context	 = trailingslashit($upload_dir['path']); /* Used by request_filesystem_credentials to verify the folder permissions if it needs credentials. */
 
 				ob_start();
-				$creds = request_filesystem_credentials( 'edit.php?post_type=wpematico', '', false, $context);
+				$creds = request_filesystem_credentials('edit.php?post_type=wpematico', '', false, $context);
 				ob_end_clean();
 
 				if($creds === false) {
@@ -342,8 +408,8 @@ if(!class_exists('WPeMatico_functions')) {
 					return false;
 			}
 
-			$origin_content = '';
-			$wrote = false;
+			$origin_content	 = '';
+			$wrote			 = false;
 			// $wp_filesystem->get_contents in 'direct' method allows url downloads, other methods should work only on local files
 			if(defined('FS_METHOD') && FS_METHOD == 'direct') {
 				$origin_content = $wp_filesystem->get_contents($url_origin);
@@ -351,18 +417,18 @@ if(!class_exists('WPeMatico_functions')) {
 			if(empty($origin_content)) {
 				// first try if no 'direct' method
 				$download_file = download_url($url_origin);  // 300 seconds timeout by default 
-				if(!is_wp_error($download_file)) { 
-					/** 
+				if(!is_wp_error($download_file)) {
+					/**
 					 * if success we try to move the file instead get and put contents to improve performance.  
 					 * (copy and unlink pasted from wp->file.php line 868~ )
 					 */
-					$move_new_file = @copy( $download_file, $new_file );
-					if(false === $move_new_file){
+					$move_new_file = @copy($download_file, $new_file);
+					if(false === $move_new_file) {
 						$origin_content = $wp_filesystem->get_contents($download_file);
-					}else{
+					}else {
 						//Successfully moved
-						$origin_content = '';
-						$wrote = true;
+						$origin_content	 = '';
+						$wrote			 = true;
 					}
 					unlink($download_file);
 				}else {
@@ -371,7 +437,7 @@ if(!class_exists('WPeMatico_functions')) {
 					$origin_content = WPeMatico::wpematico_get_contents($url_origin, array());
 				}
 			}
-			
+
 			if(!empty($origin_content)) {
 				$wrote = $wp_filesystem->put_contents($new_file, $origin_content);
 
@@ -752,7 +818,15 @@ if(!class_exists('WPeMatico_functions')) {
 			$campaigndata['campaign_author']		 = (!isset($post_data['campaign_author']) ) ? 0 : (int) $post_data['campaign_author'];
 			$campaigndata['campaign_linktosource']	 = (!isset($post_data['campaign_linktosource']) || empty($post_data['campaign_linktosource'])) ? false : ($post_data['campaign_linktosource'] == 1) ? true : false;
 
-			$campaigndata['copy_permanlink_source'] = (!isset($post_data['copy_permanlink_source']) || empty($post_data['copy_permanlink_source'])) ? false : ($post_data['copy_permanlink_source'] == 1) ? (($post_data['campaign_type']!='youtube') ? true : false) : false;
+			if(!isset($post_data['copy_permanlink_source']) || empty($post_data['copy_permanlink_source'])) {
+				$campaigndata['copy_permanlink_source'] = false;
+			}else {
+				if($post_data['copy_permanlink_source'] == 1) {
+					$campaigndata['copy_permanlink_source'] = ($post_data['campaign_type'] != 'youtube') ? true : false;
+				}else {
+					$campaigndata['copy_permanlink_source'] = false;
+				}
+			}
 
 			$campaigndata['avoid_search_redirection'] = (!isset($post_data['avoid_search_redirection']) || empty($post_data['avoid_search_redirection'])) ? false : ($post_data['avoid_search_redirection'] == 1) ? true : false;
 
@@ -1623,102 +1697,101 @@ add_action('wpematico_wp_ratings', 'wpematico_wp_ratings');
 function wpematico_wp_ratings() {
 	?><div class="postbox">
 		<h3 class="handle"><?php _e('5 Stars Ratings on Wordpress', 'wpematico'); ?></h3>
-	<?php if(get_option('wpem_hide_reviews')) : ?>
+		<?php if(get_option('wpem_hide_reviews')) : ?>
 			<div class="inside" style="max-height:300px;overflow-x: hidden;">
 				<p style="text-align: center;">
 					<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5" id="linkgo" class="button" target="_Blank" title="Click to see 5 stars Reviews on Wordpress"> Click to see 5 stars Reviews </a>
 				</p>
 			</div>
-	<?php else: ?>
+		<?php else: ?>
 			<div class="inside" style="max-height:300px;overflow-y: scroll;overflow-x: hidden;">
-			<?php require_once('lib/wp_ratings.php'); ?>
+				<?php require_once('lib/wp_ratings.php'); ?>
 			</div>
-			<?php endif; ?>
+		<?php endif; ?>
 	</div>
-		<?php
-	}
+	<?php
+}
 
-	/**
-	 * array_multi_key_exists	http://php.net/manual/es/function.array-key-exists.php#106449
-	 * @param array $arrNeedles
-	 * @param array $arrHaystack
-	 * @param type $blnMatchAll
-	 * @return boolean
-	 */
-	function array_multi_key_exists(array $arrNeedles, array $arrHaystack, $blnMatchAll = true) {
-		$blnFound = array_key_exists(array_shift($arrNeedles), $arrHaystack);
+/**
+ * array_multi_key_exists	http://php.net/manual/es/function.array-key-exists.php#106449
+ * @param array $arrNeedles
+ * @param array $arrHaystack
+ * @param type $blnMatchAll
+ * @return boolean
+ */
+function array_multi_key_exists(array $arrNeedles, array $arrHaystack, $blnMatchAll = true) {
+	$blnFound = array_key_exists(array_shift($arrNeedles), $arrHaystack);
 
-		if($blnFound && (count($arrNeedles) == 0 || !$blnMatchAll))
-			return true;
+	if($blnFound && (count($arrNeedles) == 0 || !$blnMatchAll))
+		return true;
 
-		if(!$blnFound && count($arrNeedles) == 0 || $blnMatchAll)
-			return false;
+	if(!$blnFound && count($arrNeedles) == 0 || $blnMatchAll)
+		return false;
 
-		return array_multi_key_exists($arrNeedles, $arrHaystack, $blnMatchAll);
-	}
+	return array_multi_key_exists($arrNeedles, $arrHaystack, $blnMatchAll);
+}
 
 //function for PHP error handling
-	function wpematico_joberrorhandler($errno, $errstr, $errfile, $errline) {
-		global $campaign_log_message, $jobwarnings, $joberrors;
+function wpematico_joberrorhandler($errno, $errstr, $errfile, $errline) {
+	global $campaign_log_message, $jobwarnings, $joberrors;
 
-		//genrate timestamp
-		if(!version_compare(phpversion(), '6.9.0', '>')) { // PHP Version < 5.7 dirname 2nd 
-			if(!function_exists('memory_get_usage')) { // test if memory functions compiled in
-				$timestamp = "<span style=\"background-color:c3c3c3;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile)) . basename($errfile) . "\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
-			}else {
-				$timestamp = "<span style=\"background-color:c3c3c3;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile)) . basename($errfile) . "|Mem: " . WPeMatico :: formatBytes(@memory_get_usage(true)) . "|Mem Max: " . WPeMatico :: formatBytes(@memory_get_peak_usage(true)) . "|Mem Limit: " . ini_get('memory_limit') . "]\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
-			}
+	//genrate timestamp
+	if(!version_compare(phpversion(), '6.9.0', '>')) { // PHP Version < 5.7 dirname 2nd 
+		if(!function_exists('memory_get_usage')) { // test if memory functions compiled in
+			$timestamp = "<span style=\"background-color:c3c3c3;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile)) . basename($errfile) . "\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
 		}else {
-			if(!function_exists('memory_get_usage')) { // test if memory functions compiled in
-				$timestamp = "<span style=\"background-color:c3c3c3;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile, 2)) . basename($errfile) . "\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
-			}else {
-				$timestamp = "<span style=\"background-color:c3c3c3;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile, 2)) . basename($errfile) . "|Mem: " . WPeMatico :: formatBytes(@memory_get_usage(true)) . "|Mem Max: " . WPeMatico :: formatBytes(@memory_get_peak_usage(true)) . "|Mem Limit: " . ini_get('memory_limit') . "]\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
-			}
+			$timestamp = "<span style=\"background-color:c3c3c3;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile)) . basename($errfile) . "|Mem: " . WPeMatico :: formatBytes(@memory_get_usage(true)) . "|Mem Max: " . WPeMatico :: formatBytes(@memory_get_peak_usage(true)) . "|Mem Limit: " . ini_get('memory_limit') . "]\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
 		}
-
-		switch ($errno) {
-			case E_NOTICE:
-			case E_USER_NOTICE:
-				$massage	 = $timestamp . "<span>" . $errstr . "</span>";
-				break;
-			case E_WARNING:
-			case E_USER_WARNING:
-				$jobwarnings += 1;
-				$massage	 = $timestamp . "<span style=\"background-color:yellow;\">" . __('[WARNING]', 'wpematico') . " " . $errstr . "</span>";
-				break;
-			case E_ERROR:
-			case E_USER_ERROR:
-				$joberrors	 += 1;
-				$massage	 = $timestamp . "<span style=\"background-color:red;\">" . __('[ERROR]', 'wpematico') . " " . $errstr . "</span>";
-				break;
-			case E_DEPRECATED:
-			case E_USER_DEPRECATED:
-				$massage	 = $timestamp . "<span>" . __('[DEPRECATED]', 'wpematico') . " " . $errstr . "</span>";
-				break;
-			case E_STRICT:
-				$massage	 = $timestamp . "<span>" . __('[STRICT NOTICE]', 'wpematico') . " " . $errstr . "</span>";
-				break;
-			case E_RECOVERABLE_ERROR:
-				$massage	 = $timestamp . "<span>" . __('[RECOVERABLE ERROR]', 'wpematico') . " " . $errstr . "</span>";
-				break;
-			default:
-				$massage	 = $timestamp . "<span>[" . $errno . "] " . $errstr . "</span>";
-				break;
-		}
-
-		if(!empty($massage)) {
-
-			$campaign_log_message .= $massage . "<br />\n";
-
-			if($errno == E_ERROR or $errno == E_CORE_ERROR or $errno == E_COMPILE_ERROR) {//Die on fatal php errors.
-				die("Fatal Error:" . $errno);
-			}
-			//300 is most webserver time limit. 0= max time! Give script 5 min. more to work.
-			@set_time_limit(300);
-			//true for no more php error hadling.
-			return true;
+	}else {
+		if(!function_exists('memory_get_usage')) { // test if memory functions compiled in
+			$timestamp = "<span style=\"background-color:c3c3c3;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile, 2)) . basename($errfile) . "\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
 		}else {
-			return false;
+			$timestamp = "<span style=\"background-color:c3c3c3;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile, 2)) . basename($errfile) . "|Mem: " . WPeMatico :: formatBytes(@memory_get_usage(true)) . "|Mem Max: " . WPeMatico :: formatBytes(@memory_get_peak_usage(true)) . "|Mem Limit: " . ini_get('memory_limit') . "]\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
 		}
 	}
-	
+
+	switch ($errno) {
+		case E_NOTICE:
+		case E_USER_NOTICE:
+			$massage	 = $timestamp . "<span>" . $errstr . "</span>";
+			break;
+		case E_WARNING:
+		case E_USER_WARNING:
+			$jobwarnings += 1;
+			$massage	 = $timestamp . "<span style=\"background-color:yellow;\">" . __('[WARNING]', 'wpematico') . " " . $errstr . "</span>";
+			break;
+		case E_ERROR:
+		case E_USER_ERROR:
+			$joberrors	 += 1;
+			$massage	 = $timestamp . "<span style=\"background-color:red;\">" . __('[ERROR]', 'wpematico') . " " . $errstr . "</span>";
+			break;
+		case E_DEPRECATED:
+		case E_USER_DEPRECATED:
+			$massage	 = $timestamp . "<span>" . __('[DEPRECATED]', 'wpematico') . " " . $errstr . "</span>";
+			break;
+		case E_STRICT:
+			$massage	 = $timestamp . "<span>" . __('[STRICT NOTICE]', 'wpematico') . " " . $errstr . "</span>";
+			break;
+		case E_RECOVERABLE_ERROR:
+			$massage	 = $timestamp . "<span>" . __('[RECOVERABLE ERROR]', 'wpematico') . " " . $errstr . "</span>";
+			break;
+		default:
+			$massage	 = $timestamp . "<span>[" . $errno . "] " . $errstr . "</span>";
+			break;
+	}
+
+	if(!empty($massage)) {
+
+		$campaign_log_message .= $massage . "<br />\n";
+
+		if($errno == E_ERROR or $errno == E_CORE_ERROR or $errno == E_COMPILE_ERROR) {//Die on fatal php errors.
+			die("Fatal Error:" . $errno);
+		}
+		//300 is most webserver time limit. 0= max time! Give script 5 min. more to work.
+		@set_time_limit(300);
+		//true for no more php error hadling.
+		return true;
+	}else {
+		return false;
+	}
+}

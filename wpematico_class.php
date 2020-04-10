@@ -9,7 +9,7 @@ $cfg = apply_filters('wpematico_check_options',$cfg );
 if ( !class_exists( 'WPeMatico' ) ) {
 	class WPeMatico extends WPeMatico_functions {
 		const TEXTDOMAIN = 'wpematico';
-		const PROREQUIRED = '2.4';
+		const PROREQUIRED = '2.5';
 		const OPTION_KEY = 'WPeMatico_Options';
 		public static $name = '';
 		public static $version = '';
@@ -389,7 +389,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			$cfg= get_option( self :: OPTION_KEY );
 			if ( !$cfg ) {
 				/**
-				 * Default values 
+				 * Default values at 1st time
 				 */
 				$default_options = array();
 				$default_options['set_stupidly_fast'] = true;
@@ -440,16 +440,23 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			$cfg['audio_cache']		= (!isset($options['audio_cache']) || empty($options['audio_cache'])) ? false: ($options['audio_cache']==1) ? true : false;
 			$cfg['gralnolink_audio']	= (!isset($options['gralnolink_audio']) || empty($options['gralnolink_audio'])) ? false: ($options['gralnolink_audio']==1) ? true : false;
 			$cfg['customupload_audios']	= (!isset($options['customupload_audios']) || empty($options['customupload_audios'])) ? false: ($options['customupload_audios']==1) ? true : false;
+			$audio_allowed_ext = self::get_audio_allowed_mimes(); //'mp4';
+			$cfg['audio_allowed_ext']	= (!isset($options['audio_allowed_ext'])) ? $audio_allowed_ext: sanitize_text_field($options['audio_allowed_ext']);
 			
 
 			$cfg['video_attach']		= (!isset($options['video_attach']) || empty($options['video_attach'])) ? false: ($options['video_attach']==1) ? true : false;
 			$cfg['video_cache']		= (!isset($options['video_cache']) || empty($options['video_cache'])) ? false: ($options['video_cache']==1) ? true : false;
 			$cfg['gralnolink_video']	= (!isset($options['gralnolink_video']) || empty($options['gralnolink_video'])) ? false: ($options['gralnolink_video']==1) ? true : false;
 			$cfg['customupload_videos']	= (!isset($options['customupload_videos']) || empty($options['customupload_videos'])) ? false: ($options['customupload_videos']==1) ? true : false;
+			$video_allowed_ext = self::get_video_allowed_mimes(); //'mp4';
+			$cfg['video_allowed_ext']	= (!isset($options['video_allowed_ext'])) ? $video_allowed_ext: sanitize_text_field($options['video_allowed_ext']);
 			
 
+			$images_allowed_ext = self::get_images_allowed_mimes(); //'jpg,gif,png,tif,bmp,jpeg';
+			$cfg['images_allowed_ext']	= (!isset($options['images_allowed_ext'])) ? $images_allowed_ext: sanitize_text_field($options['images_allowed_ext']);
 			$cfg['featuredimg']		= (!isset($options['featuredimg']) || empty($options['featuredimg'])) ? false: ($options['featuredimg']==1) ? true : false;
 			$cfg['rmfeaturedimg']	= (!isset($options['rmfeaturedimg']) || empty($options['rmfeaturedimg'])) ? false: ($options['rmfeaturedimg']==1) ? true : false;
+
 			$cfg['force_mysimplepie']	= (!isset($options['force_mysimplepie']) || empty($options['force_mysimplepie'])) ? false: ($options['force_mysimplepie']==1) ? true : false;
 			$cfg['set_stupidly_fast']	= (!isset($options['set_stupidly_fast']) || empty($options['set_stupidly_fast'])) ? false: ($options['set_stupidly_fast']==1) ? true : false;
 			$cfg['simplepie_strip_htmltags'] = (!isset($options['simplepie_strip_htmltags']) || empty($options['simplepie_strip_htmltags'])) ? false: ($options['simplepie_strip_htmltags']==1) ? true : false;

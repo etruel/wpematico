@@ -225,6 +225,12 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
 
+= 2.5.3 Apr 10, 2020 =
+
+* Added support in Settings screen to select images, audio y video extensions allowed to upload with WP mime types as guide.
+* Fixes notice Deprecated: Unparenthesized notice with PHP 7.4+.
+* Changed Settings metabox name "Other Tools" to "WordPress Backend Tools" to better refer to what is it.
+
 = 2.5.2 Feb 13, 2020 =
 
 Fixes an issue with Youtube campaign type by ignoring "Copy the permalink from the source" option.
