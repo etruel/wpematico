@@ -1,4 +1,5 @@
 <?php
+
 // don't load directly 
 if(!defined('ABSPATH')) {
 	header('Status: 403 Forbidden');
@@ -11,10 +12,9 @@ if(!defined('ABSPATH')) {
  * This class is used to make the help contents on tabs and tips
  * @since 2.3
  */
-
 function wpematico_helpsettings($dev = '') {
 	$helpsettings	 = array(
-		'Global Settings'				 => array(
+		'Global Settings'	 => array(
 			'imgoptions'	 => array(
 				'title'	 => __('Global Settings For Images.', 'wpematico'),
 				'tip'	 => __('Set this features for all campaigns and can be overridden inside any campaign.', 'wpematico'),
@@ -66,7 +66,7 @@ function wpematico_helpsettings($dev = '') {
 				'<br />' . __('Also uncheck this if you need all sizes of wordpress images. The WP process can take too much resources if many images are uploaded at a time.', 'wpematico'),
 			),
 		),
-		'Audio Settings'				 => array(
+		'Audio Settings'	 => array(
 			'audio_cache'			 => array(
 				'title'	 => __('Store audios locally. (Uploads)', 'wpematico'),
 				'tip'	 => __('When Store audios locally is on, a copy of every audio found in content of every feed item (only in &lt;audio&gt; tags) is downloaded to the Wordpress UPLOADS Dir.', 'wpematico') . "<br />" .
@@ -97,7 +97,7 @@ function wpematico_helpsettings($dev = '') {
 				'<br />' . __('Also uncheck this if you need all sizes of wordpress audios. The WP process can take too much resources if many audios are uploaded at a time.', 'wpematico'),
 			),
 		),
-		'Video Settings'				 => array(
+		'Video Settings'	 => array(
 			'video_cache'			 => array(
 				'title'	 => __('Store videos locally. (Uploads)', 'wpematico'),
 				'tip'	 => __('When Store videos locally is on, a copy of every video found in content of every feed item (only in &lt;video&gt; tags) is downloaded to the Wordpress UPLOADS Dir.', 'wpematico') . "<br />" .
@@ -128,7 +128,7 @@ function wpematico_helpsettings($dev = '') {
 				'<br />' . __('Also uncheck this if you need all sizes of wordpress videos. The WP process can take too much resources if many videos are uploaded at a time.', 'wpematico'),
 			),
 		),
-		'Enable Features'				 => array(
+		'Enable Features'	 => array(
 			'enablefeatures'	 => array(
 				'title'	 => __('Enable Features.', 'wpematico'),
 				'tip'	 => __('If you need these features in each campaign, you can activate them here. This is not recommended if you will not use the feature.', 'wpematico'),
@@ -142,7 +142,7 @@ function wpematico_helpsettings($dev = '') {
 				'tip'	 => __('Rewrite a word or phrase for another in the content of every post.', 'wpematico'),
 			),
 		),
-		'SimplePie Settings'			 => array(
+		'SimplePie Settings' => array(
 			'mysimplepie'	 => array(
 				'title'	 => __('Force Custom Simplepie Library.', 'wpematico'),
 				'tip'	 => __('Check this if you want to ignore Wordpress Simplepie library.', 'wpematico') . " " .
@@ -167,7 +167,7 @@ function wpematico_helpsettings($dev = '') {
 			// 'plustip' => __('', 'wpematico' ),
 			),
 		),
-		'Advanced Fetching'				 => array(
+		'Advanced Fetching'	 => array(
 			'woutfilter'							 => array(
 				'title'		 => __('Allow option on campaign to skip the content filters.', 'wpematico'),
 				'tip'		 => __('NOTE: It is extremely dangerous to allow unfiltered content because there may be some vulnerability in the source code.', 'wpematico') . '<br>' .
@@ -214,7 +214,7 @@ function wpematico_helpsettings($dev = '') {
 				'tip'	 => __('This option is ONLY recommended if you continues with duplicates problems in your site. This can be given by some non-standards feeds.  NOT RECOMMENDED.', 'wpematico'),
 			),
 		),
-		'Cron and Scheduler Settings'	 => array(
+		'Cron and Scheduler' => array(
 			'dontruncron'				 => array(
 				'title'	 => __('Disable WPeMatico schedulings.', 'wpematico'),
 				'tip'	 => __('This option deactivate WPeMatico plugin cron schedules.', 'wpematico') . '<br>' .
@@ -247,7 +247,15 @@ function wpematico_helpsettings($dev = '') {
 			// 'plustip' => __('', 'wpematico' ),
 			),
 		),
-		'Other tools & Advanced'		 => array(
+		'WP Backend Tools'	 => array(
+			'campaign_in_postslist'				 => array(
+				'title'	 => __('Enables the campaign ID to be displayed in the posts (types) lists.', 'wpematico'),
+				'tip'	 => __('This option enables WordPres to display a new column in the post lists (types) with the campaign ID that published each post.', 'wpematico'),
+			),
+			'column_campaign_pos'				 => array(
+				'title'	 => __('Column position in Posts(-types) lists.', 'wpematico'),
+				'tip'	 => __('This option allow to choose the column position in the post lists.', 'wpematico'),
+			),
 			'disable_metaboxes_wpematico_posts'	 => array(
 				'title'	 => __('Disable metabox Wpematico Campaign Info in post editing.', 'wpematico'),
 				'tip'	 => __('This option disables the metabox inside the posts editing screen created by the WPeMatico.', 'wpematico'),
@@ -261,44 +269,46 @@ function wpematico_helpsettings($dev = '') {
 				'tip'	 => __('Check this if you don\'t want to display the widget dashboard.  Anyway, only admins will see it.', 'wpematico'),
 			// 'plustip' => __('', 'wpematico' ),
 			),
-			'disablecheckfeeds'					 => array(
+		),
+		'Sidebar Advanced'	 => array(
+			'disablecheckfeeds'				 => array(
 				'title'	 => __('Disable Check Feeds before Save.', 'wpematico'),
 				'tip'	 => __('Check this if you don\'t want automatic check feed URLs before save every campaign.', 'wpematico'),
 			),
-			'enabledelhash'						 => array(
+			'enabledelhash'					 => array(
 				'title'	 => __('Enable Del Hash.', 'wpematico'),
 				'tip'	 => __('Show `Del Hash` link on campaigns list.  This link delete all hash codes for check duplicates on every feed per campaign.', 'wpematico'),
 			),
-			'enableseelog'						 => array(
+			'enableseelog'					 => array(
 				'title'	 => __('Enable See last log.', 'wpematico'),
 				'tip'	 => __('Show `See Log` link on campaigns list.  This link show the last processed log of every campaign.', 'wpematico'),
 			),
-			'disable_credits'					 => array(
+			'disable_credits'				 => array(
 				'title'		 => __('Disable WPeMatico Credits.', 'wpematico'),
 				'tip'		 => __('I really appreciate if you can left this option blank to show the plugin\'s credits.', 'wpematico'),
 				'plustip'	 => sprintf(__('If you can\'t show the WPeMatico credits in your posts, I really appreciate if you can take a minute to %s write a 5 star review on Wordpress %s.  :-) thanks.', 'wpematico'),
 					'<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" target="_Blank" title="Open a new window">',
 					'</a>'),
 			),
-			'disable_categories_description'	 => array(
+			'disable_categories_description' => array(
 				'title'	 => __('Disable Auto-Category Descriptions.', 'wpematico'),
 				'tip'	 => __('Check this to avoid the future descriptions "Created by WPeMatico" of the created (auto)categories.  You could edit the past categories if you need to delete their descriptions.', 'wpematico'),
 			),
 			'disable_extensions_feed_page'	 => array(
-				'title'	 => __('Disable Extensions feed page requests.', 'wpematico'),
-				'tip'	 => __('Check this to avoid the fetch of WPeMatico Addons from our downloads feed page.', 'wpematico'),
-				'plustip'=> __('You\'ll see an empty page or just your installed extensions when you click on Extensions menu.', 'wpematico'),
+				'title'		 => __('Disable Extensions feed page requests.', 'wpematico'),
+				'tip'		 => __('Check this to avoid the fetch of WPeMatico Addons from our downloads feed page.', 'wpematico'),
+				'plustip'	 => __('You\'ll see an empty page or just your installed extensions when you click on Extensions menu.', 'wpematico'),
 			),
-			'enable_xml_upload'					 => array(
+			'enable_xml_upload'				 => array(
 				'title'	 => __('Enable Upload of XMLs.', 'wpematico'),
 				'tip'	 => __('If you want upload XML files to use them in the XML Campaign Type. Enable this feature allow the upload XMLs from media.', 'wpematico'),
 			),
-			'entity_decode_html'				 => array(
+			'entity_decode_html'			 => array(
 				'title'	 => __('Enable html entity decode on publish.', 'wpematico'),
 				'tip'	 => __('Enable this feature if you need to decode HTML entities in feed content before publishing each post.', 'wpematico'),
 			),
 		),
-		'Sending e-Mails'				 => array(
+		'Sending e-Mails'	 => array(
 			'sendmail'	 => array(
 				'title'	 => __('Sender Email.', 'wpematico'),
 				'tip'	 => __('Email address used as "FROM" field in all emails sent by this plugin.', 'wpematico'),

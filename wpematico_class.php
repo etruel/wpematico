@@ -478,6 +478,8 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			$cfg['emptytrashbutton']= (!isset($options['emptytrashbutton']) || empty($options['emptytrashbutton'])) ? false: ($options['emptytrashbutton']==1) ? true : false;
 			$cfg['cpt_trashbutton']	= (!isset($options['cpt_trashbutton']) || !is_array($options['cpt_trashbutton'])) ? array( 'post' => 1,	'page' => 1 ): $options['cpt_trashbutton'];
 
+			$cfg['campaign_in_postslist']= (!isset($options['campaign_in_postslist']) || empty($options['campaign_in_postslist'])) ? false: ($options['campaign_in_postslist']==1) ? true : false;
+			$cfg['column_campaign_pos']= (!isset($options['column_campaign_pos']) ) ? 2: (int)$options['column_campaign_pos'];
 			$cfg['disable_metaboxes_wpematico_posts']= (!isset($options['disable_metaboxes_wpematico_posts']) || empty($options['disable_metaboxes_wpematico_posts'])) ? false: ($options['disable_metaboxes_wpematico_posts']==1) ? true : false;
 			
 			$cfg['disable_categories_description']	= (!isset($options['disable_categories_description']) || empty($options['disable_categories_description'])) ? false: ($options['disable_categories_description']==1) ? true : false;

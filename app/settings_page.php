@@ -134,7 +134,7 @@ if(!class_exists('WPeMatico_Settings')) :
 			$cfg['mailsndname']		 = (!($cfg['mailsndname']) or empty($cfg['mailsndname']) ) ? 'WPeMatico Log' : $cfg['mailsndname'];
 			//$cfg['mailpass']		= (!($cfg['mailpass']) or empty($cfg['mailpass']) ) ? '' : bas 64_ d co d ($cfg['mailpass']);
 
-			$helptip			 = wpematico_helpsettings('tips');
+			$helptip	 = wpematico_helpsettings('tips');
 			?>
 			<div class="wrap">
 				<h2><?php _e('WPeMatico settings', 'wpematico'); ?></h2>
@@ -238,7 +238,7 @@ if(!class_exists('WPeMatico_Settings')) :
 										<div class="inside">
 											<label><b><?php _e('Sender Email:', 'wpematico'); ?></b><br /><input name="mailsndemail" id="mailsndemail" type="text" value="<?php echo esc_attr($cfg['mailsndemail']); ?>" class="large-text" /><span id="mailmsg"></span></label>
 											<label><b><?php _e('Sender Name:', 'wpematico'); ?></b><br /><input name="mailsndname" type="text" value="<?php echo esc_attr($cfg['mailsndname']); ?>" class="large-text" /></label>
-											<input type="hidden" name="mailmethod" value="<?php echo esc_attr($cfg['mailmethod']); // "mailmethod"="mail" or "mailmethod"="SMTP"                   ?>">
+											<input type="hidden" name="mailmethod" value="<?php echo esc_attr($cfg['mailmethod']); // "mailmethod"="mail" or "mailmethod"="SMTP"                         ?>">
 											<label id="mailsendmail" <?php if($cfg['mailmethod'] != 'Sendmail') echo 'style="display:none;"'; ?>><b><?php _e('Sendmail Path:', 'wpematico'); ?></b><br /><input name="mailsendmail" type="text" value="<?php echo esc_attr($cfg['mailsendmail']); ?>" class="large-text" /><br /></label>
 										</div>
 									</div>
@@ -347,16 +347,16 @@ if(!class_exists('WPeMatico_Settings')) :
 												<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['customupload'], true); ?> name="customupload" id="customupload" /><b>&nbsp;<label for="customupload"><?php _e('Use custom upload.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['customupload']; ?>"></span>
 												<p></p>
 												<?php
-												$comma				 = _x(',', 'mime delimiter');
-												$ext_to_edit		 = (!is_string($cfg['images_allowed_ext'])) ? '' : $cfg['images_allowed_ext'];
-												$ext_list			 = WPeMatico::get_images_allowed_mimes();
+												$comma		 = _x(',', 'mime delimiter');
+												$ext_to_edit = (!is_string($cfg['images_allowed_ext'])) ? '' : $cfg['images_allowed_ext'];
+												$ext_list	 = WPeMatico::get_images_allowed_mimes();
 												?>
 												<label for="images_allowed_ext"><b><?php _e('Allowed image extensions to upload'); ?></b><br/>
-												<input type="text" class="regular-text" name="images_allowed_ext" id="images_allowed_ext" value="<?php echo str_replace(',', $comma . ' ', $ext_to_edit); // textarea_escaped by esc_attr()    ?>"/>
+													<input type="text" class="regular-text" name="images_allowed_ext" id="images_allowed_ext" value="<?php echo str_replace(',', $comma . ' ', $ext_to_edit); // textarea_escaped by esc_attr()          ?>"/>
 												</label>
 												<p class="description" id="new-mime-images_allowed_ext-desc"><?php _e('Separate with commas the allowed mime types for WPeMatico Uploads.', 'wpematico'); ?><br /> 
-													<?php _e('WordPress image mime types.', 'wpematico'); ?> <label class="description" id="images_allowed_ext-list" title="<?php _e('Click here to restore WP defaults.', 'wpematico') ?>" onclick="jQuery('#images_allowed_ext').val( jQuery(this).text() );return false;"><?php echo $ext_list; ?></label><br/>
-													<?php _e('Recommended.', 'wpematico'); ?> <label class="description" id="images_allowed_ext-list" title="<?php _e('Click here to set recommended values.', 'wpematico') ?>" onclick="jQuery('#images_allowed_ext').val( jQuery(this).text() );return false;"><?php echo "jpg,gif,png,tif,bmp,jpeg"; ?></label>
+													<?php _e('WordPress image mime types.', 'wpematico'); ?> <label class="description" id="images_allowed_ext-list" title="<?php _e('Click here to restore WP defaults.', 'wpematico') ?>" onclick="jQuery('#images_allowed_ext').val(jQuery(this).text());return false;"><?php echo $ext_list; ?></label><br/>
+													<?php _e('Recommended.', 'wpematico'); ?> <label class="description" id="images_allowed_ext-list" title="<?php _e('Click here to set recommended values.', 'wpematico') ?>" onclick="jQuery('#images_allowed_ext').val(jQuery(this).text());return false;"><?php echo "jpg,gif,png,tif,bmp,jpeg"; ?></label>
 												</p>
 
 											</div>
@@ -382,16 +382,16 @@ if(!class_exists('WPeMatico_Settings')) :
 												<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['customupload_videos'], true); ?> name="customupload_videos" id="customupload_videos" /><b>&nbsp;<label for="customupload_videos"><?php _e('Use custom upload.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['customupload_videos']; ?>"></span>
 												<p></p>
 												<?php
-												$comma				 = _x(',', 'mime delimiter');
-												$ext_to_edit		 = (!is_string($cfg['video_allowed_ext'])) ? '' : $cfg['video_allowed_ext'];
-												$ext_list			 = WPeMatico::get_video_allowed_mimes();
+												$comma		 = _x(',', 'mime delimiter');
+												$ext_to_edit = (!is_string($cfg['video_allowed_ext'])) ? '' : $cfg['video_allowed_ext'];
+												$ext_list	 = WPeMatico::get_video_allowed_mimes();
 												?>
 												<label for="video_allowed_ext"><b><?php _e('Allowed video extensions to upload'); ?></b><br/>
-												<input type="text" class="regular-text" name="video_allowed_ext" id="video_allowed_ext" value="<?php echo str_replace(',', $comma . ' ', $ext_to_edit); // textarea_escaped by esc_attr()    ?>"/>
+													<input type="text" class="regular-text" name="video_allowed_ext" id="video_allowed_ext" value="<?php echo str_replace(',', $comma . ' ', $ext_to_edit); // textarea_escaped by esc_attr()          ?>"/>
 												</label>
 												<p class="description" id="new-mime-video_allowed_ext-desc"><?php _e('Separate with commas the allowed mime types for WPeMatico Uploads.', 'wpematico'); ?><br /> 
-													<?php _e('WordPress video mime types.', 'wpematico'); ?> <label class="description" id="video_allowed_ext-list" title="<?php _e('Click here to restore WP defaults.', 'wpematico') ?>" onclick="jQuery('#video_allowed_ext').val( jQuery(this).text() );return false;"><?php echo $ext_list; ?></label><br/>
-													<?php _e('Recommended.', 'wpematico'); ?> <label class="description" id="video_allowed_ext-list" title="<?php _e('Click here to set recommended values.', 'wpematico') ?>" onclick="jQuery('#video_allowed_ext').val( jQuery(this).text() );return false;"><?php echo "mp4"; ?></label>
+													<?php _e('WordPress video mime types.', 'wpematico'); ?> <label class="description" id="video_allowed_ext-list" title="<?php _e('Click here to restore WP defaults.', 'wpematico') ?>" onclick="jQuery('#video_allowed_ext').val(jQuery(this).text());return false;"><?php echo $ext_list; ?></label><br/>
+													<?php _e('Recommended.', 'wpematico'); ?> <label class="description" id="video_allowed_ext-list" title="<?php _e('Click here to set recommended values.', 'wpematico') ?>" onclick="jQuery('#video_allowed_ext').val(jQuery(this).text());return false;"><?php echo "mp4"; ?></label>
 												</p>
 
 											</div>
@@ -417,16 +417,16 @@ if(!class_exists('WPeMatico_Settings')) :
 												<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['customupload_audios'], true); ?> name="customupload_audios" id="customupload_audios" /><b>&nbsp;<label for="customupload_audios"><?php _e('Use custom upload.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['customupload_audios']; ?>"></span>
 												<p></p>
 												<?php
-												$comma				 = _x(',', 'mime delimiter');
-												$ext_to_edit		 = (!is_string($cfg['audio_allowed_ext'])) ? '' : $cfg['audio_allowed_ext'];
-												$ext_list			 = WPeMatico::get_audio_allowed_mimes();
+												$comma		 = _x(',', 'mime delimiter');
+												$ext_to_edit = (!is_string($cfg['audio_allowed_ext'])) ? '' : $cfg['audio_allowed_ext'];
+												$ext_list	 = WPeMatico::get_audio_allowed_mimes();
 												?>
 												<label for="audio_allowed_ext"><b><?php _e('Allowed audio extensions to upload'); ?></b><br />
-												<input type="text" class="regular-text" name="audio_allowed_ext" id="audio_allowed_ext" value="<?php echo str_replace(',', $comma . ' ', $ext_to_edit); // textarea_escaped by esc_attr()    ?>" size="80" />
+													<input type="text" class="regular-text" name="audio_allowed_ext" id="audio_allowed_ext" value="<?php echo str_replace(',', $comma . ' ', $ext_to_edit); // textarea_escaped by esc_attr()          ?>" size="80" />
 												</label>
 												<p class="description" id="new-mime-audio_allowed_ext-desc"><?php _e('Separate with commas the allowed mime types for WPeMatico Uploads.', 'wpematico'); ?><br /> 
-													<?php _e('WordPress audio mime types.', 'wpematico'); ?> <label class="description" id="image_allowed_ext-list" title="<?php _e('Click here to restore WP defaults.', 'wpematico') ?>" onclick="jQuery('#audio_allowed_ext').val( jQuery(this).text() );return false;"><?php echo $ext_list; ?></label><br/>
-													<?php _e('Recommended.', 'wpematico'); ?> <label class="description" id="audio_allowed_ext-list" title="<?php _e('Click here to set recommended values.', 'wpematico') ?>" onclick="jQuery('#audio_allowed_ext').val( jQuery(this).text() );return false;"><?php echo "mp3"; ?></label>
+													<?php _e('WordPress audio mime types.', 'wpematico'); ?> <label class="description" id="image_allowed_ext-list" title="<?php _e('Click here to restore WP defaults.', 'wpematico') ?>" onclick="jQuery('#audio_allowed_ext').val(jQuery(this).text());return false;"><?php echo $ext_list; ?></label><br/>
+													<?php _e('Recommended.', 'wpematico'); ?> <label class="description" id="audio_allowed_ext-list" title="<?php _e('Click here to set recommended values.', 'wpematico') ?>" onclick="jQuery('#audio_allowed_ext').val(jQuery(this).text());return false;"><?php echo "mp3"; ?></label>
 												</p>
 
 											</div>
@@ -678,17 +678,30 @@ if(!class_exists('WPeMatico_Settings')) :
 
 										<div class="inside">
 											<p>
+												<label><input class="checkbox" id="campaign_in_postslist" type="checkbox"<?php checked($cfg['campaign_in_postslist'], true); ?> name="campaign_in_postslist" value="1"/> 
+													<strong><?php _e('Wpematico Campaign Column in Posts(-types) lists.', 'wpematico'); ?></strong></label>
+												<span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['campaign_in_postslist']; ?>"></span><br />
+												<span id="column_campaign_pos_field" class="insidesec" style="padding-left:20px; <?php if(!$cfg['campaign_in_postslist']) echo 'display:none;'; ?>">
+													<label>
+														<strong><?php _e('Column position in Posts(-types) lists.', 'wpematico'); ?></strong>
+														<input name="column_campaign_pos" id="column_campaign_pos" class="small-text" min="0" type="number" value="<?php echo esc_attr($cfg['column_campaign_pos']); ?>" /> 
+													</label>
+													<span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['column_campaign_pos']; ?>"></span>
+												</span>
+											</p>
+											<p>
 												<label><input class="checkbox" id="disable_metaboxes_wpematico_posts" type="checkbox"<?php checked($cfg['disable_metaboxes_wpematico_posts'], true); ?> name="disable_metaboxes_wpematico_posts" value="1"/> 
 													<strong><?php _e('Disable metabox Wpematico Campaign Info in post editing', 'wpematico'); ?></strong></label>
 												<span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disable_metaboxes_wpematico_posts']; ?>"></span>
 											</p>
+											<p></p>
 											<div class="insidesec" style="border-right: 1px lightgrey solid; margin-right: 5px;padding-right: 7px; ">
 												<label><input class="checkbox" id="emptytrashbutton" type="checkbox"<?php checked($cfg['emptytrashbutton'], true); ?> name="emptytrashbutton" value="1"/> 
 													<?php _e('Shows Button to empty trash on lists.', 'wpematico'); ?></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['emptytrashbutton']; ?>"></span>
 												<br />
-												<?php _e('Select (custom) post types you want.', 'wpematico'); ?>
-												<br />
 												<div id="hlptrash" style="padding-left:20px; <?php if(!$cfg['emptytrashbutton']) echo 'display:none;'; ?>">
+													<?php _e('Select (custom) post types you want.', 'wpematico'); ?>
+													<br />
 													<?php
 													// publicos y privados para que pueda mostrar el boton en todos
 													$args		 = array('public' => false);

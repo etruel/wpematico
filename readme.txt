@@ -225,7 +225,11 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
 
-= 2.5.3 Apr 10, 2020 =
+= 2.5.2.2 Apr 11, 2020 =
+
+* Added new options in Settings to allow show the Campaign ID in a new column in WordPress Posts (types) lists. 
+
+= 2.5.2.1 Apr 10, 2020 =
 
 * Added support in Settings screen to select images, audio y video extensions allowed to upload with WP mime types as guide.
 * Fixes notice Deprecated: Unparenthesized notice with PHP 7.4+.

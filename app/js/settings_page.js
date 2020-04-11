@@ -106,6 +106,14 @@ jQuery(document).ready(function ($) {
 		}
 	});
 
+	jQuery('#campaign_in_postslist').click(function () {
+		if (true == jQuery('#campaign_in_postslist').is(':checked')) {
+			jQuery('#column_campaign_pos_field').fadeIn();
+		} else {
+			jQuery('#column_campaign_pos_field').fadeOut();
+		}
+	});
+
 	jQuery('#disableccf, #allowduptitle').change(function () {
 		if (jQuery('#disableccf, #allowduptitle').is(':checked')) {
 			jQuery('#div_add_extra_duplicate_filter_meta_source').fadeOut();
