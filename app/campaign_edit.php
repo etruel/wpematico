@@ -26,75 +26,8 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		add_action('admin_print_styles-post-new.php', array( __CLASS__ ,'admin_styles'));
 		add_action('admin_print_scripts-post.php', array( __CLASS__ ,'admin_scripts'));
 		add_action('admin_print_scripts-post-new.php', array( __CLASS__ ,'admin_scripts'));
-		add_action( 'add_meta_boxes', array( __CLASS__ ,'all_meta_boxes'), 10, 2 );
 	}
-	public static function all_meta_boxes($post_type, $post) {
-		$cfg = get_option(WPeMatico::OPTION_KEY);
-		$cfg = apply_filters('wpematico_check_options', $cfg); 
-		$campaign_id = get_post_meta($post->ID, 'wpe_campaignid', true);
-		if (!empty($campaign_id) && !$cfg['disable_metaboxes_wpematico_posts']) {
-			add_meta_box( 
-		        'wpematico-all-meta-box',
-		        __('WPeMatico Campaign Info', 'wpematico' ),
-		        array(__CLASS__, 'render_all_meta_boxes'),
-		        $post_type,
-		        'normal',
-		        'default'
-	    	);
-		}
-	}
-	public static function render_all_meta_boxes() {
-		global $post;
-		$campaign_id = get_post_meta($post->ID, 'wpe_campaignid', true);
-		$feed = get_post_meta($post->ID, 'wpe_feed', true);
-		$source = get_post_meta($post->ID, 'wpe_sourcepermalink', true);
-		echo '<span class="description">' . __('All links are no-follow and open in a new browser tab.', 'wpematico' ).'</span>';
-		?><style type="text/css"> 
-			#wpematico-all-meta-box h2 {
-				background-color: orange;
-			}
-			.wpematico-data-table a {
-				text-decoration: none;
-			}
-			.wpematico-data-table a:hover {
-				text-decoration: underline;
-			}
-			.wpematico-data-table td:first-child {
-				padding-right: 10px;
-				text-align: right;
-			}
-			.wpematico-data-table tr {
-				height: 30px;
-				vertical-align: middle;
-			}
-		</style><?php
-		echo '<table class="wpematico-data-table">
-			<tr>
-				<td>
-					<b>'.__('Published by Campaign', 'wpematico' ).':</b>
-				</td>
-				<td>
-					<a title="'.__('Edit the campaign.', 'wpematico' ).'" href="'.admin_url('post.php?post='.$campaign_id.'&action=edit').'" target="_blank">'.get_the_title($campaign_id).'</a>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<b>'.__('From feed', 'wpematico' ).':</b>
-				</td>
-				<td>
-					<a title="'.__('Open the feed URL in the browser.', 'wpematico' ).'" href="'.$feed.'" rel="nofollow" target="_blank">'.$feed.'</a>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<b>'.__('Source permalink', 'wpematico' ).':</b>
-				</td>
-				<td>
-					<a title="'.__('Go to the source website to see the original content.', 'wpematico' ).'" href="'.$source.'" rel="nofollow" target="_blank">'.$source.'</a>
-				</td>
-			</tr>
-		</table>';
-	}
+
 	public static function disable_autosave() {
 	//	global $post_type, $post, $typenow;
 		if(get_post_type() != 'wpematico') return ;

@@ -63,23 +63,6 @@ if ( !class_exists( 'WPeMatico' ) ) {
 				add_filter(	'wpematico_check_campaigndata', array( __CLASS__,'check_campaigndata'),10,1);
 				add_filter(	'wpematico_check_options', array( __CLASS__,'check_options'),10,1);
 								
-				//add Dashboard widget
-				if (!$this->options['disabledashboard']){
-					global $current_user;      
-					wp_get_current_user();	
-					$user_object = new WP_User($current_user->ID);
-					$roles = $user_object->roles;
-					$display = false;
-					if (!is_array($this->options['roles_widget'])) $this->options['roles_widget']= array( "administrator" => "administrator" );
-					foreach( $roles as $cur_role ) {
-						if ( array_search($cur_role, $this->options['roles_widget']) ) {
-							$display = true;
-						}
-					}	
-					if ( $current_user->ID && ( $display == true ) && current_user_can(get_post_type_object( 'wpematico' )->cap->edit_others_posts) ) {	
-						add_action('wp_dashboard_setup', array( &$this, 'wpematico_add_dashboard'));
-					}
-				}
 			}
 			//add Empty Trash folder buttons
 			if ($this->options['emptytrashbutton']){
@@ -142,76 +125,6 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			?></div><?php
 		}
 		
-		//add dashboard widget
-		function wpematico_add_dashboard() {
-			wp_add_dashboard_widget( 'wpematico_widget', 'WPeMatico' , array( &$this, 'wpematico_dashboard_widget') );
-		}
-
-		 //Dashboard widget
-		function wpematico_dashboard_widget() {
-			$campaigns= $this->get_campaigns();
-			echo '<div style="background-color: #E1DC9C;border: 1px solid #DDDDDD; height: 20px; margin: -10px -10px 2px; padding: 5px 10px 0px;';
-			echo "background: -moz-linear-gradient(center bottom,#FCF6BC 0,#E1DC9C 98%,#FFFEA8 0);
-				background: -webkit-gradient(linear,left top,left bottom,from(#FCF6BC),to(#E1DC9C));
-				-ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FCF6BC',endColorstr='#E1DC9C');
-				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FCF6BC',endColorstr='#E1DC9C');\">";
-			echo '<strong>'.__('Last Processed Campaigns:', 'wpematico' ).'</strong></div>';
-			@$campaigns2 = $this->filter_by_value($campaigns, 'lastrun', '');  
-			$this->array_sort($campaigns2,'!lastrun');
-			if (is_array($campaigns2)) {
-				$count=0;
-				foreach ($campaigns2 as $key => $campaign_data) {
-					echo '<a href="'.wp_nonce_url('post.php?post='.$campaign_data['ID'].'&action=edit', 'edit').'" title="'.__('Edit Campaign', 'wpematico' ).'">';
-						if ($campaign_data['lastrun']) {
-							echo " <i><strong>".$campaign_data['campaign_title']."</i></strong>, ";
-							echo  date_i18n( (get_option('date_format').' '.get_option('time_format') ), $campaign_data['lastrun'] ).', <i>'; 
-							if ($campaign_data['lastpostscount']>0)
-								echo ' <span style="color:green;">'. sprintf(__('Processed Posts: %1s', 'wpematico' ),$campaign_data['lastpostscount']).'</span>, ';
-							else
-								echo ' <span style="color:red;">'. sprintf(__('Processed Posts: %1s', 'wpematico' ), '0').'</span>, ';
-								
-							if ($campaign_data['lastruntime']<10)
-								echo ' <span style="color:green;">'. sprintf(__('Fetch done in %1s sec.', 'wpematico' ),$campaign_data['lastruntime']) .'</span>';
-							else
-								echo ' <span style="color:red;">'. sprintf(__('Fetch done in %1s sec.', 'wpematico' ),$campaign_data['lastruntime']) .'</span>';
-						} 
-					echo '</i></a><br />';
-					$count++;
-					if ($count>=5)
-						break;
-				}		
-			}
-			unset($campaigns2);
-			echo '<br />';
-			echo '<div style="background-color: #E1DC9C;border: 1px solid #DDDDDD; height: 20px; margin: -10px -10px 2px; padding: 5px 10px 0px;';
-			echo "background: -moz-linear-gradient(center bottom,#FCF6BC 0,#E1DC9C 98%,#FFFEA8 0);
-				background: -webkit-gradient(linear,left top,left bottom,from(#FCF6BC),to(#E1DC9C));
-				-ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FCF6BC',endColorstr='#E1DC9C');
-				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FCF6BC',endColorstr='#E1DC9C');\">";
-			echo '<strong>'.__('Next Scheduled Campaigns:', 'wpematico' ).'</strong>';
-			echo '</div>';
-			echo '<ul style="list-style: circle inside none; margin-top: 2px; margin-left: 9px;">';
-			$this->array_sort($campaigns,'cronnextrun');
-			foreach ($campaigns as $key => $campaign_data) {
-				if ($campaign_data['activated']) {
-					echo '<li><a href="'.wp_nonce_url('post.php?post='.$campaign_data['ID'].'&action=edit', 'edit').'" title="'.__('Edit Campaign', 'wpematico' ).'">';
-					echo '<strong>'.$campaign_data['campaign_title'].'</strong>, ';
-					if ($campaign_data['starttime']>0 and empty($campaign_data['stoptime'])) {
-						$runtime=current_time('timestamp')-$campaign_data['starttime'];
-						echo __('Running since:', 'wpematico' ).' '.$runtime.' '.__('sec.', 'wpematico' );
-					} elseif ($campaign_data['activated']) {
-						//echo date(get_option('date_format'),$campaign_data['cronnextrun']).' '.date(get_option('time_format'),$campaign_data['cronnextrun']);
-						echo date_i18n( (get_option('date_format').' '.get_option('time_format') ), $campaign_data['cronnextrun'] );
-					}
-					echo '</a></li>';
-				}
-			}
-			$campaigns=$this->filter_by_value($campaigns, 'activated', '');
-			if (empty($campaigns)) 
-				echo '<i>'.__('None', 'wpematico' ).'</i><br />';
-			echo '</ul>';
-
-		}
 		
 
 		/**
@@ -442,7 +355,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			$cfg['customupload_audios']	= (!isset($options['customupload_audios']) || empty($options['customupload_audios'])) ? false: ($options['customupload_audios']==1) ? true : false;
 			$audio_allowed_ext = self::get_audio_allowed_mimes(); //'mp4';
 			$cfg['audio_allowed_ext']	= (!isset($options['audio_allowed_ext'])) ? $audio_allowed_ext: sanitize_text_field($options['audio_allowed_ext']);
-			
+			$cfg['audio_allowed_ext']	= str_replace(' ','', $cfg['audio_allowed_ext']);  // strip spaces from string			
 
 			$cfg['video_attach']		= (!isset($options['video_attach']) || empty($options['video_attach'])) ? false: ($options['video_attach']==1) ? true : false;
 			$cfg['video_cache']		= (!isset($options['video_cache']) || empty($options['video_cache'])) ? false: ($options['video_cache']==1) ? true : false;
@@ -450,10 +363,11 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			$cfg['customupload_videos']	= (!isset($options['customupload_videos']) || empty($options['customupload_videos'])) ? false: ($options['customupload_videos']==1) ? true : false;
 			$video_allowed_ext = self::get_video_allowed_mimes(); //'mp4';
 			$cfg['video_allowed_ext']	= (!isset($options['video_allowed_ext'])) ? $video_allowed_ext: sanitize_text_field($options['video_allowed_ext']);
-			
+			$cfg['video_allowed_ext']	= str_replace(' ','', $cfg['video_allowed_ext']);  // strip spaces from string			
 
 			$images_allowed_ext = self::get_images_allowed_mimes(); //'jpg,gif,png,tif,bmp,jpeg';
 			$cfg['images_allowed_ext']	= (!isset($options['images_allowed_ext'])) ? $images_allowed_ext: sanitize_text_field($options['images_allowed_ext']);
+			$cfg['images_allowed_ext']	= str_replace(' ','', $cfg['images_allowed_ext']);  // strip spaces from string
 			$cfg['featuredimg']		= (!isset($options['featuredimg']) || empty($options['featuredimg'])) ? false: ($options['featuredimg']==1) ? true : false;
 			$cfg['rmfeaturedimg']	= (!isset($options['rmfeaturedimg']) || empty($options['rmfeaturedimg'])) ? false: ($options['rmfeaturedimg']==1) ? true : false;
 

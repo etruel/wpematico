@@ -99,7 +99,7 @@ function wpe_addon_admin_menu() {
 	$page = add_submenu_page(
 		'edit.php?post_type=wpematico',
 		__( 'Add-ons', 'wpematico' ),
-		__( 'Extensions', 'wpematico' ).' '.$count_menu,
+		'<span style="color:#7cc048"> '.__( 'Extensions', 'wpematico' ).'</span> '.$count_menu,
 		'manage_options',
 		'plugins.php?page=wpemaddons'
 	);

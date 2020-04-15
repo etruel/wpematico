@@ -352,7 +352,7 @@ if(!class_exists('WPeMatico_Settings')) :
 												$ext_list	 = WPeMatico::get_images_allowed_mimes();
 												?>
 												<label for="images_allowed_ext"><b><?php _e('Allowed image extensions to upload'); ?></b><br/>
-													<input type="text" class="regular-text" name="images_allowed_ext" id="images_allowed_ext" value="<?php echo str_replace(',', $comma . ' ', $ext_to_edit); // textarea_escaped by esc_attr()          ?>"/>
+													<input type="text" class="regular-text" name="images_allowed_ext" id="images_allowed_ext" value="<?php echo str_replace(',', $comma, $ext_to_edit); ?>"/>
 												</label>
 												<p class="description" id="new-mime-images_allowed_ext-desc"><?php _e('Separate with commas the allowed mime types for WPeMatico Uploads.', 'wpematico'); ?><br /> 
 													<?php _e('WordPress image mime types.', 'wpematico'); ?> <label class="description" id="images_allowed_ext-list" title="<?php _e('Click here to restore WP defaults.', 'wpematico') ?>" onclick="jQuery('#images_allowed_ext').val(jQuery(this).text());return false;"><?php echo $ext_list; ?></label><br/>
