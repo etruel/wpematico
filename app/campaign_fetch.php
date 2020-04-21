@@ -715,6 +715,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 				$imagen_src_real = $this->getRelativeUrl($itemUrl, $imagen_src);
 				// Strip all white space on images URLs.	
 				$imagen_src_real = str_replace(' ', '%20', $imagen_src_real);
+				// Fix images URLs with entities like &amp;	to get it with correct name and remain the original in images array.
+				$imagen_src_real = html_entity_decode($imagen_src_real);
 				$imagen_src_real = apply_filters('wpematico_img_src_url', $imagen_src_real );
 				$allowed = (isset($this->cfg['images_allowed_ext']) && !empty($this->cfg['images_allowed_ext']) ) ? $this->cfg['images_allowed_ext'] : 'jpg,gif,png,tif,bmp,jpeg' ;
 				$allowed = apply_filters('wpematico_allowext', $allowed );

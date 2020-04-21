@@ -426,6 +426,8 @@ class wpematico_campaign_fetch_functions {
 					$imagen_src_real = $this->getRelativeUrl($itemUrl, $imagen_src);
 					// Strip all white space on images URLs.	
 					$imagen_src_real = str_replace(' ', '%20', $imagen_src_real);						
+					// Fix images URLs with entities like &amp;	to get it with correct name and remain the original in images array.
+					$imagen_src_real = html_entity_decode($imagen_src_real);
 					$imagen_src_real = apply_filters('wpematico_img_src_url', $imagen_src_real ); // original source
 					$allowed = (isset($this->cfg['images_allowed_ext']) && !empty($this->cfg['images_allowed_ext']) ) ? $this->cfg['images_allowed_ext'] : 'jpg,gif,png,tif,bmp,jpeg' ;
 					$allowed = apply_filters('wpematico_allowext', $allowed );
@@ -614,7 +616,7 @@ class wpematico_campaign_fetch_functions {
 
 			/**
 			 * WP Filter: wpematico_get_item_images runs after get all the images from the item content.
-			 * $current_item['images']: Has all images url 
+			 * $current_item['images']: Has all images urls 
 			 */
 			$current_item = apply_filters('wpematico_get_item_images', $current_item, $campaign, $item, $options_images);
 
