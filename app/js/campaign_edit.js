@@ -287,6 +287,14 @@ jQuery(document).ready(function($) {
 			$('#div_campaign_strip_links').fadeIn();
 		}
 	});
+	$('#campaign_feeddate').change(function() {
+		if ($('#campaign_feeddate').is(':checked')) {
+			$('#div_campaign_feeddate_options').fadeIn();
+		}
+		else {
+			$('#div_campaign_feeddate_options').fadeOut();
+		}
+	});
 	$('#campaign_enable_template').change(function() {
 		if ($('#campaign_enable_template').is(':checked')) {
 			$('#postemplatearea').fadeIn();

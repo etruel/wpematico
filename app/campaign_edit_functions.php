@@ -676,37 +676,42 @@ public static function template_box( $post ) {
 	//*************************************************************************************
 public static function options_box( $post ) { 
 	global $post, $campaign_data, $cfg, $helptip ;
-	$campaign_max = $campaign_data['campaign_max'];
-	$campaign_feed_order_date = $campaign_data['campaign_feed_order_date'];
-	$campaign_feeddate = $campaign_data['campaign_feeddate'];
-	$campaign_author = $campaign_data['campaign_author'];
-	$campaign_linktosource = $campaign_data['campaign_linktosource'];
-	$copy_permanlink_source = $campaign_data['copy_permanlink_source'];
-	$avoid_search_redirection = $campaign_data['avoid_search_redirection'];
-	$campaign_commentstatus = $campaign_data['campaign_commentstatus'];
-	$campaign_allowpings = $campaign_data['campaign_allowpings'];
-	$campaign_woutfilter = $campaign_data['campaign_woutfilter'];
-	$campaign_strip_links = $campaign_data['campaign_strip_links'];
-	$campaign_strip_links_options = $campaign_data['campaign_strip_links_options'];
-	$campaign_striphtml = $campaign_data['campaign_striphtml'];
+	$campaign_max				= $campaign_data['campaign_max'];
+	$campaign_feed_order_date	= $campaign_data['campaign_feed_order_date'];
+	$campaign_feeddate			= $campaign_data['campaign_feeddate'];
+	$campaign_feeddate_forced		 = $campaign_data['campaign_feeddate_forced'];
+	$campaign_author				 = $campaign_data['campaign_author'];
+	$campaign_linktosource			 = $campaign_data['campaign_linktosource'];
+	$copy_permanlink_source			 = $campaign_data['copy_permanlink_source'];
+	$avoid_search_redirection		 = $campaign_data['avoid_search_redirection'];
+	$campaign_commentstatus			 = $campaign_data['campaign_commentstatus'];
+	$campaign_allowpings			 = $campaign_data['campaign_allowpings'];
+	$campaign_woutfilter			 = $campaign_data['campaign_woutfilter'];
+	$campaign_strip_links			 = $campaign_data['campaign_strip_links'];
+	$campaign_strip_links_options	 = $campaign_data['campaign_strip_links_options'];
+	$campaign_striphtml				 = $campaign_data['campaign_striphtml'];
 
 	$campaign_enable_convert_utf8 = $campaign_data['campaign_enable_convert_utf8'];
-
-
 	?>
-	<div id="optionslayer" class="ibfix vtop">
-		<p>
-			<input name="campaign_max" type="number" min="0" size="3" value="<?php echo $campaign_max;?>" class="small-text" id="campaign_max"/> 
-			<label for="campaign_max"><?php echo __('Max items to create on each fetch.', 'wpematico' ); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['itemfetch']; ?>"></span>
+		<div id="optionslayer" class="ibfix vtop">
+			<p>
+				<input name="campaign_max" type="number" min="0" size="3" value="<?php echo $campaign_max; ?>" class="small-text" id="campaign_max"/> 
+				<label for="campaign_max"><?php echo __('Max items to create on each fetch.', 'wpematico'); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['itemfetch']; ?>"></span>
+			</p>
+			<p>
+				<input class="checkbox" type="checkbox"<?php checked($campaign_feed_order_date, true); ?> name="campaign_feed_order_date" value="1" id="campaign_feed_order_date"/>
+				<label for="campaign_feed_order_date"><?php echo __('Order feed items by Date before process.', 'wpematico'); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['feed_order_date']; ?>"></span>
+			</p>
+			<p>
+				<input class="checkbox" type="checkbox"<?php checked($campaign_feeddate, true); ?> name="campaign_feeddate" value="1" id="campaign_feeddate"/>
+				<label for="campaign_feeddate"><?php echo __('Use feed item date.', 'wpematico'); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['itemdate']; ?>"></span>
+			<div id="div_campaign_feeddate_options" style="margin-left:15px;<?php echo (($campaign_feeddate) ? '' : 'display:none;'); ?>">
+				<input class="checkbox" type="checkbox"<?php checked($campaign_feeddate_forced, true); ?> name="campaign_feeddate_forced" value="1" id="campaign_feeddate_forced"/> 
+				<label for="campaign_feeddate_forced"><?php _e('Force item date.', 'wpematico'); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['campaign_feeddate_forced']; ?>"></span>
+				<br />
+				<?php do_action('wpematico_feeddate_tools', $campaign_data, $cfg); ?>
+			</div>
 		</p>
-		<p>
-			<input class="checkbox" type="checkbox"<?php checked($campaign_feed_order_date ,true);?> name="campaign_feed_order_date" value="1" id="campaign_feed_order_date"/>
-			<label for="campaign_feed_order_date"><?php echo __('Order feed items by Date before process.', 'wpematico' ); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['feed_order_date']; ?>"></span>
-		</p>
-		<p>
-			<input class="checkbox" type="checkbox"<?php checked($campaign_feeddate ,true);?> name="campaign_feeddate" value="1" id="campaign_feeddate"/>
-			<label for="campaign_feeddate"><?php echo __('Use feed item date.', 'wpematico' ); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['itemdate']; ?>"></span>
-		</p>				
 		<p>
 			<input class="checkbox" type="checkbox"<?php checked($campaign_allowpings ,true);?> name="campaign_allowpings" value="1" id="campaign_allowpings"/> 
 			<label for="campaign_allowpings"><?php echo __('Pingbacks y trackbacks.', 'wpematico' ); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['allowpings']; ?>"></span>

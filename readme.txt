@@ -225,7 +225,11 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
 
-= 2.5.2.3 Apr 11, 2020 =
+= 2.5.2.4 Apr 23, 2020 =
+
+* Added new option in campaign to allow bypass the feed date required conditions.
+
+= 2.5.2.3 Apr 21, 2020 =
 
 * Fix images URLs with entities like &amp;to get it with correct name and replace the original in content.
 

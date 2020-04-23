@@ -32,6 +32,10 @@ $helpcampaign = array(
 				<li>'. __('The feed item date is not too far in the past (specifically, as much time as the campaign frequency).', 'wpematico' ).' </li>
 				<li>'. __('The fetched feed item date is not in the future.', 'wpematico' ).' </li></ul>',
 		),
+		'campaign_feeddate_forced' => array( 
+			'title' => __('Force item date.', 'wpematico' ),
+			'tip' => __('Use the feed item date ignoring incoherent dates like past posts published after new ones.', 'wpematico' ),
+		),
 		'linktosource' => array( 
 			'title' => __('Post title links to source.', 'wpematico' ),
 			'tip' => __('This option make the title permalink to original URL.', 'wpematico' ).'<br />'. 

@@ -308,7 +308,7 @@ if(!class_exists('WPeMatico_functions')) {
 			/**
 			 * $return has array of all wp defaults image mime types plus added by custom filters in standard ways
 			 */
-			return apply_filters('get_wpematico_images_allowed_mimes', $return	);
+			return apply_filters('get_wpematico_images_allowed_mimes', $return);
 		}
 
 		/**
@@ -330,7 +330,7 @@ if(!class_exists('WPeMatico_functions')) {
 			/**
 			 * $return has all wp defaults audio mime types plus added by custom filters in standard ways
 			 */
-			return apply_filters('get_wpematico_images_allowed_mimes', $return	);
+			return apply_filters('get_wpematico_images_allowed_mimes', $return);
 		}
 
 		/**
@@ -352,7 +352,7 @@ if(!class_exists('WPeMatico_functions')) {
 			/**
 			 * $return has all wp defaults video mime types plus added by custom filters in standard ways
 			 */
-			return apply_filters('get_wpematico_images_allowed_mimes', $return	);
+			return apply_filters('get_wpematico_images_allowed_mimes', $return);
 		}
 
 		/**
@@ -792,6 +792,7 @@ if(!class_exists('WPeMatico_functions')) {
 
 			$campaigndata['campaign_feed_order_date']	 = (!isset($post_data['campaign_feed_order_date']) || empty($post_data['campaign_feed_order_date'])) ? false : ($post_data['campaign_feed_order_date'] == 1) ? true : false;
 			$campaigndata['campaign_feeddate']			 = (!isset($post_data['campaign_feeddate']) || empty($post_data['campaign_feeddate'])) ? false : ($post_data['campaign_feeddate'] == 1) ? true : false;
+			$campaigndata['campaign_feeddate_forced']	 = (!isset($post_data['campaign_feeddate_forced']) || empty($post_data['campaign_feeddate_forced'])) ? false : ($post_data['campaign_feeddate_forced'] == 1) ? true : false;
 
 			$campaign_feeds	 = array();
 			$all_feeds		 = ( isset($post_data['campaign_feeds']) && !empty($post_data['campaign_feeds']) ) ? $post_data['campaign_feeds'] : Array();
