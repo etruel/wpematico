@@ -458,25 +458,27 @@ public static function template_box( $post ) {
 	//*************************************************************************************
 	public static function images_box( $post ) { 
 		global $post, $campaign_data, $cfg, $helptip;
-		$campaign_imgcache = $campaign_data['campaign_imgcache'];
-		$campaign_no_setting_img = $campaign_data['campaign_no_setting_img'];
-		$campaign_nolinkimg = $campaign_data['campaign_nolinkimg'];
-		$campaign_attach_img = $campaign_data['campaign_attach_img'];
-		$campaign_image_srcset = $campaign_data['campaign_image_srcset'];
-		$campaign_featuredimg = $campaign_data['campaign_featuredimg'];
-		$campaign_rmfeaturedimg = $campaign_data['campaign_rmfeaturedimg'];
-		$campaign_customupload = $campaign_data['campaign_customupload'];
+		$campaign_imgcache						 = $campaign_data['campaign_imgcache'];
+		$campaign_no_setting_img				 = $campaign_data['campaign_no_setting_img'];
+		$campaign_nolinkimg						 = $campaign_data['campaign_nolinkimg'];
+		$campaign_attach_img					 = $campaign_data['campaign_attach_img'];
+		$campaign_image_srcset					 = $campaign_data['campaign_image_srcset'];
+		$campaign_featuredimg					 = $campaign_data['campaign_featuredimg'];
+		$campaign_fifu							 = $campaign_data['campaign_fifu'];
+		$campaign_rmfeaturedimg					 = $campaign_data['campaign_rmfeaturedimg'];
+		$campaign_customupload					 = $campaign_data['campaign_customupload'];
 		$campaign_enable_featured_image_selector = $campaign_data['campaign_enable_featured_image_selector'];
-		$campaign_featured_selector_index = $campaign_data['campaign_featured_selector_index'];
-		$campaign_featured_selector_ifno = $campaign_data['campaign_featured_selector_ifno'];
-		if (!$campaign_no_setting_img) {
-			$campaign_imgcache = $cfg['imgcache'];
-			$campaign_nolinkimg = $cfg['gralnolinkimg'];
-			$campaign_attach_img = $cfg['imgattach'];
-			$campaign_image_srcset = $cfg['image_srcset'];
-			$campaign_featuredimg = $cfg['featuredimg'];
-			$campaign_rmfeaturedimg = $cfg['rmfeaturedimg'];
-			$campaign_customupload = $cfg['customupload'];
+		$campaign_featured_selector_index		 = $campaign_data['campaign_featured_selector_index'];
+		$campaign_featured_selector_ifno		 = $campaign_data['campaign_featured_selector_ifno'];
+		if(!$campaign_no_setting_img) {
+			$campaign_imgcache		 = $cfg['imgcache'];
+			$campaign_nolinkimg		 = $cfg['gralnolinkimg'];
+			$campaign_attach_img	 = $cfg['imgattach'];
+			$campaign_image_srcset	 = $cfg['image_srcset'];
+			$campaign_featuredimg	 = $cfg['featuredimg'];
+			$campaign_fifu			 = $cfg['fifu'];
+			$campaign_rmfeaturedimg	 = $cfg['rmfeaturedimg'];
+			$campaign_customupload	 = $cfg['customupload'];
 		}
 		?>
 		
@@ -500,8 +502,9 @@ public static function template_box( $post ) {
 			<p></p>
 			<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_featuredimg, true); ?> name="campaign_featuredimg" id="campaign_featuredimg" /><b>&nbsp;<label for="campaign_featuredimg"><?php _e('Set first image in content as Featured Image.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['featuredimg']; ?>"></span>
 			<br />
+			<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_fifu, true); ?> name="campaign_fifu" id="campaign_fifu" /><b>&nbsp;<label for="campaign_fifu"><?php _e('Use Featured Image from URL.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['fifu']; ?>"></span>
+			<br />
 			
-
 			<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_enable_featured_image_selector,true); ?> name="campaign_enable_featured_image_selector" id="campaign_enable_featured_image_selector" /><b>&nbsp;<label for="campaign_enable_featured_image_selector"><?php _e('Enable featured image selector.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enable_featured_image_selector']; ?>"></span>
 				<div id="featured_img_selector_div" style="padding-left:20px; <?php if (!$campaign_enable_featured_image_selector) echo 'display:none;';?>">
 					<b><label for="featured_selector_index"><?php _e('Index to featured', 'wpematico' ); ?>:</label></b>

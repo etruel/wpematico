@@ -139,6 +139,12 @@ $helpcampaign = array(
 				'title' => __('Set first image on content as Featured Image.', 'wpematico' ),
 				'tip' => __('Check this to set first image found on every content to be uploaded, attached and made Featured.', 'wpematico' ),
 		),
+		'fifu'	 => array(
+			'title'		 => __('Use Featured Image from URL.', 'wpematico'),
+			'tip'		 => __('Check this to use Featured Image from URL plugin. Be sure it is installed and activated.', 'wpematico'),
+			'plustip'	 => '<small> ' . __('Read about', 'wpematico') . ' <a href="https://wordpress.org/plugins/featured-image-from-url/" rel="nofollow" target="_Blank">' . __('Featured Image from URL', 'wpematico') . '</a> ' . __('plugin in WordPress repository.','wpematico') . '</small><br />' .
+				__('Note if that plugin is not activated, WPeMatico will still save the meta fields in each post without any other consequences.', 'wpematico'),
+		),
 		'enable_featured_image_selector' => array( 
 				'title' => __('Enable featured image selector.', 'wpematico' ),
 				'tip' => __('Check this to select a featured image, it doesn\'t matter what order it have in the content. You can choice the first, second or third image.', 'wpematico' ),

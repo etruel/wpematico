@@ -28,6 +28,9 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 	public $cfg				 = array();
 	public $campaign_id		 = 0;  // $post_id of campaign
 	public $campaign		 = array();
+	public $images_options	 = array();
+	public $audios_options	 = array();
+	public $videos_options	 = array();
 	private $feeds			 = array();
 	private $fetched_posts	 = 0;
 	private $lasthash		 = array();
@@ -55,12 +58,16 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		}
 
 		//ignore_user_abort(true);			//user can't abort script (close windows or so.)
-		$this->campaign_id	 = $campaign_id;	  //set campaign id
+		$this->campaign_id	 = $campaign_id;   //set campaign id
 		$this->campaign		 = WPeMatico :: get_campaign($this->campaign_id);
 
 		//$this->fetched_posts = $this->campaign['postscount'];
 		$this->cfg	 = get_option(WPeMatico :: OPTION_KEY);
 		$this->cfg	 = apply_filters('wpematico_check_options', $this->cfg);
+
+		$this->images_options = WPeMatico::get_images_options($this->cfg, $this->campaign);
+		$this->audios_options = WPeMatico::get_audios_options($this->cfg, $this->campaign);
+		$this->videos_options = WPeMatico::get_videos_options($this->cfg, $this->campaign);
 
 		$campaign_timeout = (int) $this->cfg['campaign_timeout'];
 
@@ -100,7 +107,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 				break;
 			}
 			wpematico_init_set('max_execution_time', $campaign_timeout, true);
-			$postcount += $this->processFeed($feed, $kf);		 #- ---- Proceso todos los feeds      
+			$postcount += $this->processFeed($feed, $kf);   #- ---- Proceso todos los feeds      
 		}
 
 		$this->fetched_posts += $postcount;
@@ -121,6 +128,11 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		$priority = 10;
 		if($this->cfg['add_extra_duplicate_filter_meta_source'] && !$this->cfg['disableccf']) {
 			add_filter('wpematico_duplicates', array('wpematico_campaign_fetch_functions', 'WPeisDuplicatedMetaSource'), $priority, 3);
+		}
+		if($this->options_images['fifu']) {
+			add_filter('wpematico_set_featured_img', array('wpematico_campaign_fetch_functions', 'url_meta_set_featured_image_etruel'), 999, 2);
+			add_filter('wpematico_get_featured_img', array('wpematico_campaign_fetch_functions', 'url_meta_set_featured_image_etruel'), 999, 2);
+			add_filter('wpematico_item_filters_pos_img', array('wpematico_campaign_fetch_functions', 'url_meta_set_featured_image_setmeta_etruel'), 999, 2);
 		}
 	}
 
@@ -298,10 +310,10 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		}
 		// Item date
 		$itemdate = null;  // current date
-		if($this->campaign['campaign_feeddate']) {  
+		if($this->campaign['campaign_feeddate']) {
 			$itemdate = $item->get_date('U');
 		}
-		if(!$this->campaign['campaign_feeddate_forced']) {  
+		if(!$this->campaign['campaign_feeddate_forced']) {
 			if($this->campaign['campaign_feeddate']) {
 				if(($itemdate > $this->campaign['lastrun'] && $itemdate < current_time('timestamp', 1))) {
 					trigger_error(__('Assigning original date to post.', 'wpematico'), E_USER_NOTICE);
@@ -312,7 +324,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			}
 		}
 		$this->current_item['date'] = apply_filters('wpematico_get_feeddate', $itemdate, $this->current_item, $this->campaign, $feedurl, $item);
-		
+
 		// Item title
 		$this->current_item['title'] = $item->get_title();
 		$this->current_item['title'] = htmlspecialchars_decode($this->current_item['title']);
