@@ -129,10 +129,10 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		if($this->cfg['add_extra_duplicate_filter_meta_source'] && !$this->cfg['disableccf']) {
 			add_filter('wpematico_duplicates', array('wpematico_campaign_fetch_functions', 'WPeisDuplicatedMetaSource'), $priority, 3);
 		}
-		if($this->options_images['fifu']) {
-			add_filter('wpematico_set_featured_img', array('wpematico_campaign_fetch_functions', 'url_meta_set_featured_image_etruel'), 999, 2);
-			add_filter('wpematico_get_featured_img', array('wpematico_campaign_fetch_functions', 'url_meta_set_featured_image_etruel'), 999, 2);
-			add_filter('wpematico_item_filters_pos_img', array('wpematico_campaign_fetch_functions', 'url_meta_set_featured_image_setmeta_etruel'), 999, 2);
+		if($this->images_options['fifu']) {
+			add_filter('wpematico_set_featured_img', array('wpematico_campaign_fetch_functions', 'url_meta_set_featured_image'), 999, 2);
+			add_filter('wpematico_get_featured_img', array('wpematico_campaign_fetch_functions', 'url_meta_set_featured_image'), 999, 2);
+			add_filter('wpematico_item_filters_pos_img', array('wpematico_campaign_fetch_functions', 'url_meta_set_featured_image_setmeta'), 999, 2);
 		}
 	}
 
