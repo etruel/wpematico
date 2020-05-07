@@ -778,6 +778,8 @@ class wpematico_campaign_fetch_functions {
 		if(!empty($wpematico_fifu_meta)) {
 			$current_item['meta']	 = $wpematico_fifu_meta;
 			$wpematico_fifu_meta	 = array();
+			add_filter('wpematico_featured_image_attach_id', function(){ return 1; // avoid log message No Featured image
+				} , 99, 0);
 			add_action('wpematico_inserted_post', array(__CLASS__, 'set_attachment_from_url'), 10, 3);
 		}
 		return $current_item;

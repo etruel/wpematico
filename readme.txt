@@ -228,7 +228,7 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
 
-= 2.5.2.5 Apr 30, 2020 =
+= 2.5.2.5 May 07, 2020 =
 
 * Added new free feature. We made WPeMatico compatible to work with Featured Image from URL plugin by Marcel Jacques Machado. (Thanks for the excellent plugin!)
 
@@ -239,7 +239,6 @@ You can send your files to e-mail wpematico [at] etruel.com
 = 2.5.2.3 Apr 21, 2020 =
 
 * Fix images URLs with entities like &amp;to get it with correct name and replace the original in content.
-
 
 = 2.5.2.2 Apr 11, 2020 =
 

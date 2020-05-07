@@ -318,11 +318,11 @@ if(!class_exists('WPeMatico_functions')) {
 		 * @return $options Array all wp defaults video mime types plus added by custom filters in standard ways.
 		 * @since 2.5.3
 		 */
-		public static function get_audio_allowed_mimes() {
+		public static function get_audios_allowed_mimes() {
 			$mime_types	 = get_allowed_mime_types();
 			$return		 = '';
 			foreach($mime_types as $key => $mime) {
-				// Validate image types and replace | by ,
+				// Validate audio types and replace | by ,
 				if(strpos($mime, 'audio/') !== false) {
 					$return .= str_replace('|', ',', "$key,");
 				}
@@ -332,7 +332,7 @@ if(!class_exists('WPeMatico_functions')) {
 			/**
 			 * $return has all wp defaults audio mime types plus added by custom filters in standard ways
 			 */
-			return apply_filters('get_wpematico_images_allowed_mimes', $return);
+			return apply_filters('get_wpematico_audios_allowed_mimes', $return);
 		}
 
 		/**
@@ -340,11 +340,11 @@ if(!class_exists('WPeMatico_functions')) {
 		 * @return $options Array all wp defaults video mime types plus added by custom filters in standard ways.
 		 * @since 2.5.3
 		 */
-		public static function get_video_allowed_mimes() {
+		public static function get_videos_allowed_mimes() {
 			$mime_types	 = get_allowed_mime_types();
 			$return		 = '';
 			foreach($mime_types as $key => $mime) {
-				// Validate image types and replace | by ,
+				// Validate video types and replace | by ,
 				if(strpos($mime, 'video/') !== false) {
 					$return .= str_replace('|', ',', "$key,");
 				}
@@ -354,7 +354,7 @@ if(!class_exists('WPeMatico_functions')) {
 			/**
 			 * $return has all wp defaults video mime types plus added by custom filters in standard ways
 			 */
-			return apply_filters('get_wpematico_images_allowed_mimes', $return);
+			return apply_filters('get_wpematico_videos_allowed_mimes', $return);
 		}
 
 		/**

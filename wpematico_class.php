@@ -354,7 +354,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			$cfg['audio_cache']		= (!isset($options['audio_cache']) || empty($options['audio_cache'])) ? false: ($options['audio_cache']==1) ? true : false;
 			$cfg['gralnolink_audio']	= (!isset($options['gralnolink_audio']) || empty($options['gralnolink_audio'])) ? false: ($options['gralnolink_audio']==1) ? true : false;
 			$cfg['customupload_audios']	= (!isset($options['customupload_audios']) || empty($options['customupload_audios'])) ? false: ($options['customupload_audios']==1) ? true : false;
-			$audio_allowed_ext = self::get_audio_allowed_mimes(); //'mp4';
+			$audio_allowed_ext = self::get_audios_allowed_mimes(); //'mp4';
 			$cfg['audio_allowed_ext']	= (!isset($options['audio_allowed_ext'])) ? $audio_allowed_ext: sanitize_text_field($options['audio_allowed_ext']);
 			$cfg['audio_allowed_ext']	= str_replace(' ','', $cfg['audio_allowed_ext']);  // strip spaces from string			
 
@@ -362,7 +362,7 @@ if ( !class_exists( 'WPeMatico' ) ) {
 			$cfg['video_cache']		= (!isset($options['video_cache']) || empty($options['video_cache'])) ? false: ($options['video_cache']==1) ? true : false;
 			$cfg['gralnolink_video']	= (!isset($options['gralnolink_video']) || empty($options['gralnolink_video'])) ? false: ($options['gralnolink_video']==1) ? true : false;
 			$cfg['customupload_videos']	= (!isset($options['customupload_videos']) || empty($options['customupload_videos'])) ? false: ($options['customupload_videos']==1) ? true : false;
-			$video_allowed_ext = self::get_video_allowed_mimes(); //'mp4';
+			$video_allowed_ext = self::get_videos_allowed_mimes(); //'mp4';
 			$cfg['video_allowed_ext']	= (!isset($options['video_allowed_ext'])) ? $video_allowed_ext: sanitize_text_field($options['video_allowed_ext']);
 			$cfg['video_allowed_ext']	= str_replace(' ','', $cfg['video_allowed_ext']);  // strip spaces from string			
 

@@ -386,10 +386,10 @@ if(!class_exists('WPeMatico_Settings')) :
 												<?php
 												$comma		 = _x(',', 'mime delimiter');
 												$ext_to_edit = (!is_string($cfg['video_allowed_ext'])) ? '' : $cfg['video_allowed_ext'];
-												$ext_list	 = WPeMatico::get_video_allowed_mimes();
+												$ext_list	 = WPeMatico::get_videos_allowed_mimes();
 												?>
 												<label for="video_allowed_ext"><b><?php _e('Allowed video extensions to upload'); ?></b><br/>
-													<input type="text" class="regular-text" name="video_allowed_ext" id="video_allowed_ext" value="<?php echo str_replace(',', $comma . ' ', $ext_to_edit); // textarea_escaped by esc_attr()          ?>"/>
+													<input type="text" class="regular-text" name="video_allowed_ext" id="video_allowed_ext" value="<?php echo str_replace(',', $comma, $ext_to_edit); // textarea_escaped by esc_attr()          ?>"/>
 												</label>
 												<p class="description" id="new-mime-video_allowed_ext-desc"><?php _e('Separate with commas the allowed mime types for WPeMatico Uploads.', 'wpematico'); ?><br /> 
 													<?php _e('WordPress video mime types.', 'wpematico'); ?> <label class="description" id="video_allowed_ext-list" title="<?php _e('Click here to restore WP defaults.', 'wpematico') ?>" onclick="jQuery('#video_allowed_ext').val(jQuery(this).text());return false;"><?php echo $ext_list; ?></label><br/>
@@ -421,10 +421,10 @@ if(!class_exists('WPeMatico_Settings')) :
 												<?php
 												$comma		 = _x(',', 'mime delimiter');
 												$ext_to_edit = (!is_string($cfg['audio_allowed_ext'])) ? '' : $cfg['audio_allowed_ext'];
-												$ext_list	 = WPeMatico::get_audio_allowed_mimes();
+												$ext_list	 = WPeMatico::get_audios_allowed_mimes();
 												?>
 												<label for="audio_allowed_ext"><b><?php _e('Allowed audio extensions to upload'); ?></b><br />
-													<input type="text" class="regular-text" name="audio_allowed_ext" id="audio_allowed_ext" value="<?php echo str_replace(',', $comma . ' ', $ext_to_edit); // textarea_escaped by esc_attr()          ?>" size="80" />
+													<input type="text" class="regular-text" name="audio_allowed_ext" id="audio_allowed_ext" value="<?php echo str_replace(',', $comma, $ext_to_edit); // textarea_escaped by esc_attr()          ?>" size="80" />
 												</label>
 												<p class="description" id="new-mime-audio_allowed_ext-desc"><?php _e('Separate with commas the allowed mime types for WPeMatico Uploads.', 'wpematico'); ?><br /> 
 													<?php _e('WordPress audio mime types.', 'wpematico'); ?> <label class="description" id="image_allowed_ext-list" title="<?php _e('Click here to restore WP defaults.', 'wpematico') ?>" onclick="jQuery('#audio_allowed_ext').val(jQuery(this).text());return false;"><?php echo $ext_list; ?></label><br/>
