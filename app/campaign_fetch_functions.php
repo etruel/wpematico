@@ -69,22 +69,14 @@ class wpematico_campaign_fetch_functions {
 	 * @param   $item           object    SimplePie_Item object
 	 */
 	function Item_parsers(&$current_item, &$campaign, &$feed, &$item, $count, $feedurl) {
-
 		$post_id		 = $this->campaign_id;
 		$current_item	 = apply_filters('wpematico_item_parsers', $current_item, $campaign, $feed, $item);
 		//if( $this->cfg['nonstatic'] ) { $current_item = NoNStatic :: content($current_item,$campaign,$item); }
 
 		if($current_item == -1)
 			return -1; //Hack to allow skip the post in this instance
-
-
-
-
-
-
-
-			
-// strip all HTML tags before apply template 
+	
+		// strip all HTML tags before apply template 
 		if($campaign['campaign_striphtml']) {
 			trigger_error(sprintf(__('Deleting html tags: %1s', 'wpematico'), $item->get_title()), E_USER_NOTICE);
 			$current_item['content'] = strip_tags($current_item['content'], apply_filters('wpem_dont_strip_tags', ''));
@@ -100,11 +92,13 @@ class wpematico_campaign_fetch_functions {
 			trigger_error('<b>' . __('Parsing Post template.', 'wpematico') . '</b>', E_USER_NOTICE);
 			if(!empty($current_item['images'][0])) {
 				$img_str = "<img class=\"wpe_imgrss\" src=\"" . $current_item['images'][0] . "\">";  //Solo la imagen
-			}elseif(!empty($current_item['featured_image'])) {
-				$img_str = "<img class=\"wpe_imgrss\" src=\"" . $current_item['featured_image'] . "\">";  //Solo la imagen
 			}else {
-				trigger_error(__('Can\'t find the featured image to add to the content.'), E_USER_WARNING);
-				$img_str = '<!-- no image -->';
+				if(!empty($current_item['featured_image'])) {
+					$img_str = "<img class=\"wpe_imgrss\" src=\"" . $current_item['featured_image'] . "\">";  //Solo la imagen
+				}else {
+					trigger_error(__('Can\'t find the featured image to add to the content.'), E_USER_WARNING);
+					$img_str = '<!-- no image -->';
+				}
 			}
 			/**
 			 * Since 1.6.1
@@ -756,7 +750,7 @@ class wpematico_campaign_fetch_functions {
 	 */
 	static function url_meta_set_featured_image($featured_image, $current_item) {
 		global $wpematico_fifu_meta;
-		trigger_error(__('Setting up external url for featured image', 'wpematico'), E_USER_NOTICE);
+		trigger_error(__('Setting up Featured Image From Url', 'wpematico'), E_USER_NOTICE);
 		remove_action('save_post', 'fifu_save_properties');
 		if(!empty($featured_image) && empty($wpematico_fifu_meta)) {
 			trigger_error(__('Adding featured image post meta:', 'wpematico') . $featured_image, E_USER_NOTICE);
@@ -786,7 +780,7 @@ class wpematico_campaign_fetch_functions {
 	}
 
 	static function set_attachment_from_url($post_id, $campaign, $item) {
-		trigger_error(__('set_attachment_from_url', 'wpematico'), E_USER_NOTICE);
+		trigger_error(__('Fifu save set attachment from URL.', 'wpematico'), E_USER_NOTICE);
 		if(function_exists('fifu_save')) {
 			fifu_save($post_id);
 		}

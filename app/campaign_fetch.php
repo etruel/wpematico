@@ -614,7 +614,6 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 				$table_name						 = $wpdb->prefix . "posts";
 				$blog_id						 = @$current_blog->blog_id;
 				$this->current_item['content']	 = $truecontent;
-				//error_log('$truecontent:' . var_export($truecontent, true));
 				trigger_error(__('** Adding unfiltered content **', 'wpematico'), E_USER_NOTICE);
 				$wpdb->update($table_name, array('post_content' => $this->current_item['content'], 'post_content_filtered' => $this->current_item['content']), array('ID' => $post_id));
 			}
@@ -731,12 +730,12 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		$img_new_url				 = '';
 		if(!empty($this->current_item['nofeatimg'])) {
 			trigger_error('<strong>' . __('Skip Featured Image.', 'wpematico') . '</strong>', E_USER_NOTICE);
-		}else if(!empty($this->current_item['featured_image'])) {
+		}else if(!empty($this->current_item['featured_image']) && (!$this->images_options['fifu']) ) {
 			trigger_error(__('Featuring Image Into Post.', 'wpematico'), E_USER_NOTICE);
 			if($this->current_item['images'][0] != $this->current_item['featured_image']) {
 				$itemUrl		 = $this->current_item['permalink'];
 				$imagen_src		 = $this->current_item['featured_image'];
-				//**** necesaria para la featured ?	$imagen_src = apply_filters('wpematico_imagen_src', $imagen_src ); // allow strip parts 
+				//**** ecesaria para la featured ?	$imagen_src = apply_filters('wpematico_imagen_src', $imagen_src ); // allow strip parts 
 				$imagen_src_real = $this->getRelativeUrl($itemUrl, $imagen_src);
 				// Strip all white space on images URLs.	
 				$imagen_src_real = str_replace(' ', '%20', $imagen_src_real);
