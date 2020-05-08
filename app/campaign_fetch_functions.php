@@ -1,5 +1,4 @@
 <?php
-
 /**
  * WPeMatico plugin for WordPress
  * campaign_fetch_functions 
@@ -75,7 +74,7 @@ class wpematico_campaign_fetch_functions {
 
 		if($current_item == -1)
 			return -1; //Hack to allow skip the post in this instance
-	
+
 		// strip all HTML tags before apply template 
 		if($campaign['campaign_striphtml']) {
 			trigger_error(sprintf(__('Deleting html tags: %1s', 'wpematico'), $item->get_title()), E_USER_NOTICE);
@@ -745,9 +744,10 @@ class wpematico_campaign_fetch_functions {
 		return $content;
 	}
 
-	/*** Adds featured images from URLs instead of upload them *
+	/*	 * * Adds featured images from URLs instead of upload them *
 	 * If fifu is not installed anyway save the meta fields
 	 */
+
 	static function url_meta_set_featured_image($featured_image, $current_item) {
 		global $wpematico_fifu_meta;
 		trigger_error(__('Setting up Featured Image From Url', 'wpematico'), E_USER_NOTICE);
@@ -758,10 +758,10 @@ class wpematico_campaign_fetch_functions {
 			if(function_exists('fifu_is_on') && fifu_is_on('fifu_query_strings')) {
 				$featured_image = preg_replace('/\?.*/', '', $featured_image);
 			}
-			$wpematico_fifu_meta = array();
+			$wpematico_fifu_meta					 = array();
 			$wpematico_fifu_meta['fifu_image_url']	 = $featured_image;
 			$wpematico_fifu_meta['fifu_image_alt']	 = $current_item['title'];
-			$wpematico_fifu_meta = apply_filters('wpematico_fifu_meta', $wpematico_fifu_meta, $current_item );
+			$wpematico_fifu_meta					 = apply_filters('wpematico_fifu_meta', $wpematico_fifu_meta, $current_item);
 			$featured_image							 = '';
 		}
 		return $featured_image;
@@ -772,8 +772,9 @@ class wpematico_campaign_fetch_functions {
 		if(!empty($wpematico_fifu_meta)) {
 			$current_item['meta']	 = $wpematico_fifu_meta;
 			$wpematico_fifu_meta	 = array();
-			add_filter('wpematico_featured_image_attach_id', function(){ return 1; // avoid log message No Featured image
-				} , 99, 0);
+			add_filter('wpematico_featured_image_attach_id', function() {
+				return 1; // avoid log message No Featured image
+			}, 99, 0);
 			add_action('wpematico_inserted_post', array(__CLASS__, 'set_attachment_from_url'), 10, 3);
 		}
 		return $current_item;
@@ -816,7 +817,28 @@ class wpematico_campaign_fetch_functions {
 	static function wpematico_get_yt_rss_tags($content, $campaign, $feed, $item) {
 		if(strpos($feed->feed_url, 'https://www.youtube.com/feeds/videos.xml') !== false) {
 			$ytvideoId	 = $item->get_item_tags('http://www.youtube.com/xml/schemas/2015', 'videoId');
-			$video		 = '<iframe width="560" height="315" src="https://www.youtube.com/embed/' . $ytvideoId[0]['data'] . '" frameborder="0" allowfullscreen></iframe>';
+			//iframe
+			if(!$campaign['campaign_youtube_embed'] && !$campaign['campaign_youtube_sizes']) {
+				$sizes = 'width="560" height="315"'; 
+			}
+			if(!$campaign['campaign_youtube_embed'] && $campaign['campaign_youtube_sizes']) {
+				$sizes = ' width="' . $campaign['campaign_youtube_width'] . '" height="' . $campaign['campaign_youtube_height'] . '"';
+			}
+			//embed
+			if($campaign['campaign_youtube_embed'] && $campaign['campaign_youtube_sizes']) {
+				$sizes = ' width="' . $campaign['campaign_youtube_width'] . '" height="' . $campaign['campaign_youtube_height'] . '"';
+			}
+			if($campaign['campaign_youtube_embed'] && !$campaign['campaign_youtube_sizes']) {
+				$sizes = "";
+			}
+			
+			if($campaign['campaign_youtube_embed']) {
+				$video = "[embed$sizes]https://www.youtube.com/watch?v=". $ytvideoId[0]['data'] . "[/embed]";
+			}else {
+				$video = '<iframe '.$sizes.' src="https://www.youtube.com/embed/' . $ytvideoId[0]['data'] . '" frameborder="0" allowfullscreen></iframe>';
+			}
+			trigger_error(__("Parsing Youtube video and feed item contents.", 'wpematico'), E_USER_NOTICE);
+			$video		 = apply_filters('wpematico_yt_video', $video);
 			$enclosures	 = $item->get_enclosures();
 			$title		 = apply_filters('wpematico_yt_altimg', $enclosures[0]->title);
 			$img		 = apply_filters('wpematico_yt_thumbnails', $enclosures[0]->thumbnails[0]);

@@ -228,6 +228,11 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
 
+= 2.5.2.6 May 07, 2020 =
+
+* Improved Youtube campaign types by use [embed] WP shortcode or Youtube shared iframe. 
+* Added size with and height for inserted youtube videos. 
+
 = 2.5.2.5 May 07, 2020 =
 
 * Added new free feature. We made WPeMatico compatible to work with Featured Image from URL plugin by Marcel Jacques Machado. (Thanks for the excellent plugin!)

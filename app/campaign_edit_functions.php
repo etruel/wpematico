@@ -1068,6 +1068,10 @@ public static function feeds_box( $post ) {
 	//********************************
 	public static function youtube_box( $post ) {
 		global $post, $campaign_data, $helptip;
+		$campaign_youtube_embed = $campaign_data['campaign_youtube_embed'];
+		$campaign_youtube_sizes = $campaign_data['campaign_youtube_sizes'];
+		$campaign_youtube_width = $campaign_data['campaign_youtube_width'];
+		$campaign_youtube_height = $campaign_data['campaign_youtube_height'];
 		$campaign_youtube_ign_image = $campaign_data['campaign_youtube_ign_image'];
 		$campaign_youtube_image_only_featured = $campaign_data['campaign_youtube_image_only_featured'];
 		$campaign_youtube_ign_description = $campaign_data['campaign_youtube_ign_description'];
@@ -1092,6 +1096,13 @@ public static function feeds_box( $post ) {
 		
 		<div class="yt-help">
 			<?php echo html_entity_decode($helptip['feed_url']); ?>
+			<p></p>
+			<label><input class="checkbox" <?php checked($campaign_youtube_embed, true); ?> type="checkbox" name="campaign_youtube_embed" value="1" id="campaign_youtube_embed"> <?php _e('Use [embed] WP shortcode instead Youtube shared iframe.', 'wpematico'); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['youtube_embed']; ?>"></span><br />
+			<label><input class="checkbox" <?php checked($campaign_youtube_sizes, true); ?> type="checkbox" value="1" id="campaign_youtube_sizes" name="campaign_youtube_sizes"> <?php _e('Change the sizes of the video frames.', 'wpematico'); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['youtube_sizes']; ?>"></span><br />
+			<div id="div_campaign_youtube_sizes" style="margin-left: 17px; <?php echo (!($campaign_youtube_sizes)? 'display: none;' : ''); ?> ">
+				<label><?php echo __('Width:', 'wpematico'); ?> <input name="campaign_youtube_width" type="number" min="0" size="3" value="<?php echo $campaign_youtube_width; ?>" class="small-text" id="campaign_youtube_width"/></label><br />
+				<label><?php echo __('Height:', 'wpematico'); ?> <input name="campaign_youtube_height" type="number" min="0" size="3" value="<?php echo $campaign_youtube_height; ?>" class="small-text" id="campaign_youtube_height"/></label>
+			</div>
 			<p><strong><?php _e('Ignore:', 'wpematico'); ?></strong></p>
 			
 			<label><input class="checkbox" <?php checked($campaign_youtube_ign_image, true); ?> type="checkbox" name="campaign_youtube_ign_image" value="1" id="campaign_youtube_ign_image"> <?php _e('Image', 'wpematico'); ?></label><br />

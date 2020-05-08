@@ -1003,8 +1003,13 @@ if(!class_exists('WPeMatico_functions')) {
 			$campaigndata['campaign_rewrites'] = !empty($campaign_rewrites) ? (array) $campaign_rewrites : array('origin' => array(''), 'title' => array(false), 'regex' => array(false), 'rewrite' => array(''), 'relink' => array(''));
 
 
-			$campaigndata['campaign_youtube_ign_image']				 = (!isset($post_data['campaign_youtube_ign_image']) || empty($post_data['campaign_youtube_ign_image'])) ? false : ($post_data['campaign_youtube_ign_image'] == 1) ? true : false;
-			$campaigndata['campaign_youtube_image_only_featured']	 = (!isset($post_data['campaign_youtube_image_only_featured']) || empty($post_data['campaign_youtube_image_only_featured'])) ? false : ($post_data['campaign_youtube_image_only_featured'] == 1) ? true : false;
+			$campaigndata['campaign_youtube_embed']		 = (!isset($post_data['campaign_youtube_embed']) || empty($post_data['campaign_youtube_embed'])) ? false : ($post_data['campaign_youtube_embed'] == 1) ? true : false;
+			$campaigndata['campaign_youtube_sizes']		 = (!isset($post_data['campaign_youtube_sizes']) || empty($post_data['campaign_youtube_sizes'])) ? false : ($post_data['campaign_youtube_sizes'] == 1) ? true : false;
+			$campaigndata['campaign_youtube_width']		 = (!isset($post_data['campaign_youtube_width']) ) ? 0 : (int) $post_data['campaign_youtube_width'];
+			$campaigndata['campaign_youtube_height']	 = (!isset($post_data['campaign_youtube_height']) ) ? 0 : (int) $post_data['campaign_youtube_height'];
+				
+			$campaigndata['campaign_youtube_ign_image']			 = (!isset($post_data['campaign_youtube_ign_image']) || empty($post_data['campaign_youtube_ign_image'])) ? false : ($post_data['campaign_youtube_ign_image'] == 1) ? true : false;
+			$campaigndata['campaign_youtube_image_only_featured']= (!isset($post_data['campaign_youtube_image_only_featured']) || empty($post_data['campaign_youtube_image_only_featured'])) ? false : ($post_data['campaign_youtube_image_only_featured'] == 1) ? true : false;
 
 			$campaigndata['campaign_youtube_ign_description'] = (!isset($post_data['campaign_youtube_ign_description']) || empty($post_data['campaign_youtube_ign_description'])) ? false : ($post_data['campaign_youtube_ign_description'] == 1) ? true : false;
 

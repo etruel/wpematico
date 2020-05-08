@@ -90,7 +90,19 @@ $helpcampaign = array(
 				'<br>'.__('Fill in the feed URL field in the standard way.', 'wpematico' ).
 				'<br><br>'.__('For Youtube Channel as: https://www.youtube.com/feeds/videos.xml?channel_id=%channelid%', 'wpematico' ).
 				'<br>'.__('For Youtube User as: https://www.youtube.com/feeds/videos.xml?user=%username%', 'wpematico' ).
+				'<br>'.__('For Youtube Playlist as: https://www.youtube.com/feeds/videos.xml?playlist_id=%playlist_id%', 'wpematico' ).
 				'<br><br>'.__('The campaign fetches the title, the image, the embebed video and the description.', 'wpematico' ),
+		),
+		'youtube_embed' => array( 
+			'title' => __('Use [embed]', 'wpematico' ),
+			'tip' => __('Use [embed] WordPress shortcode instead Youtube shared iframe html code.', 'wpematico' ) . '<br>'
+				. __('The Embed feature allows you to wrap embedded items using a simple Shortcode to set of a maximum (but not fixed) width and height. This was added as of WordPress 2.9 and is used like this: ', 'wpematico' )
+				. '[embed]...[/embed]',
+		),
+		'youtube_sizes' => array( 
+			'title' => __('Video sizes', 'wpematico' ),
+			'tip' => __('Width and Height of the video frame in the post.', 'wpematico' ) . '<br>'
+				. __('Recommended left 0 (zero) for responsive.', 'wpematico' ),
 		),
 	),
 	'bbPress Forums' => array( 
