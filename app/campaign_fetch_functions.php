@@ -434,8 +434,9 @@ class wpematico_campaign_fetch_functions {
 					$upload_dir		 = wp_upload_dir();
 					$imagen_dst		 = trailingslashit($upload_dir['path']) . $newimgname;
 					$imagen_dst_url	 = trailingslashit($upload_dir['url']) . $newimgname;
+					trigger_error('Filtering image extensions:' . $allowed, E_USER_NOTICE);
 					if(in_array(str_replace('.', '', strrchr(strtolower($imagen_dst), '.')), explode(',', $allowed))) {   // -------- Controlo extensiones permitidas
-						trigger_error('Uploading media=' . $imagen_src . ' <b>to</b> imagen_dst=' . $imagen_dst . '', E_USER_NOTICE);
+						trigger_error('Uploading media=' . $imagen_src . ' <b>to</b> image=' . $imagen_dst . '', E_USER_NOTICE);
 						$newfile = ($options_images['customupload']) ? WPeMatico::save_file_from_url($imagen_src_real, $imagen_dst) : false;
 						if($newfile) { //subió
 							trigger_error('Uploaded media=' . $newfile, E_USER_NOTICE);
@@ -970,6 +971,7 @@ class wpematico_campaign_fetch_functions {
 					$upload_dir		 = wp_upload_dir();
 					$audio_dst		 = trailingslashit($upload_dir['path']) . $new_audio_name;
 					$audio_dst_url	 = trailingslashit($upload_dir['url']) . $new_audio_name;
+					trigger_error('Filtering audio extensions:' . $allowed_audio, E_USER_NOTICE);
 					if(in_array(str_replace('.', '', strrchr(strtolower($audio_dst), '.')), explode(',', $allowed_audio))) {   // -------- Controlo extensiones permitidas
 						trigger_error('Uploading media=' . $audio_src . ' <b>to</b> audio_dst=' . $audio_dst . '', E_USER_NOTICE);
 						$newfile = false;
@@ -1120,6 +1122,7 @@ class wpematico_campaign_fetch_functions {
 					$upload_dir		 = wp_upload_dir();
 					$video_dst		 = trailingslashit($upload_dir['path']) . $new_video_name;
 					$video_dst_url	 = trailingslashit($upload_dir['url']) . $new_video_name;
+					trigger_error('Filtering video extensions:' . $allowed_video, E_USER_NOTICE);
 					if(in_array(str_replace('.', '', strrchr(strtolower($video_dst), '.')), explode(',', $allowed_video))) {   // -------- Controlo extensiones permitidas
 						trigger_error('Uploading media=' . $video_src . ' <b>to</b> video_dst=' . $video_dst . '', E_USER_NOTICE);
 						$newfile = false;

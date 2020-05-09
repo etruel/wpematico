@@ -843,6 +843,7 @@ if(!class_exists('WPeMatico_functions')) {
 			$campaigndata['campaign_allowpings']	 = (!isset($post_data['campaign_allowpings']) || empty($post_data['campaign_allowpings'])) ? false : ($post_data['campaign_allowpings'] == 1) ? true : false;
 			$campaigndata['campaign_woutfilter']	 = (!isset($post_data['campaign_woutfilter']) || empty($post_data['campaign_woutfilter'])) ? false : ($post_data['campaign_woutfilter'] == 1) ? true : false;
 			$campaigndata['campaign_striphtml']		 = (!isset($post_data['campaign_striphtml']) || empty($post_data['campaign_striphtml'])) ? false : ($post_data['campaign_striphtml'] == 1) ? true : false;
+			$campaigndata['campaign_get_excerpt']		 = (!isset($post_data['campaign_get_excerpt']) || empty($post_data['campaign_get_excerpt'])) ? false : ($post_data['campaign_get_excerpt'] == 1) ? true : false;
 
 
 			$campaigndata['campaign_enable_convert_utf8'] = (!isset($post_data['campaign_enable_convert_utf8']) || empty($post_data['campaign_enable_convert_utf8'])) ? false : ($post_data['campaign_enable_convert_utf8'] == 1) ? true : false;

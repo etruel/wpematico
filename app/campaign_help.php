@@ -67,6 +67,11 @@ $helpcampaign = array(
 			'title' => __('Author.', 'wpematico' ),
 			'tip' => __('The posts created by this campaign will be assigned to this author.', 'wpematico' ),
 		),
+		'get_excerpt' => array( 
+			'title' => __('Fill Excerpt with item description field.', 'wpematico' ),
+			'tip' => __('Wordpress defaults are making the excerpts "on the fly" from post contents, but check this option if you want to fill in the excerpt field with the description tag of the item. ', 'wpematico' ),
+			'plustip' => __('You could get the same value of the content because if the description field does not exists the content field will be used. ', 'wpematico' ),
+		),
 		'striphtml' => array( 
 			'title' => __('Strip All HTML Tags.', 'wpematico' ),
 			'tip' => __('Remove all HTML from original content', 'wpematico' ).'<br>'.

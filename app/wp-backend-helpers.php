@@ -24,19 +24,20 @@ class WPeMatico_backend_helpers {
 			return;
 		}
 		// Get all post types used in campaigns only if it is allowed in settings
-		$campaigns_data	 = array();
-		$args			 = array(
+		$campaigns_data			 = array();
+		$campaign_cpt = array();
+		$args					 = array(
 			'orderby'		 => 'ID',
 			'order'			 => 'ASC',
 			'post_type'		 => 'wpematico',
 			'numberposts'	 => -1
 		);
-		$campaigns		 = get_posts($args);
+		$campaigns				 = get_posts($args);
 		foreach($campaigns as $post):
 			$campaigns_data				 = WPeMatico::get_campaign($post->ID);
-			$campaign_customposttype[]	 = $campaigns_data['campaign_customposttype'];
+			$campaign_cpt[]	 = $campaigns_data['campaign_customposttype'];
 		endforeach;
-		$cpostypes = array_unique($campaign_customposttype);
+		$cpostypes = array_unique($campaign_cpt);
 
 		$args		 = array('public' => true);
 		$output		 = 'names'; // names or objects
@@ -213,7 +214,7 @@ class WPeMatico_backend_helpers {
 
 	//add dashboard widget
 	public static function wpematico_add_dashboard() {
-		wp_add_dashboard_widget('wpematico_widget', __('WPeMatico Summary','wpematico'), array(__CLASS__, 'wpematico_dashboard_widget'));
+		wp_add_dashboard_widget('wpematico_widget', __('WPeMatico Summary', 'wpematico'), array(__CLASS__, 'wpematico_dashboard_widget'));
 	}
 
 	//Dashboard widget

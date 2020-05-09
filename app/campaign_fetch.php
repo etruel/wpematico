@@ -316,14 +316,14 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		if(!$this->campaign['campaign_feeddate_forced']) {
 			if($this->campaign['campaign_feeddate']) {
 				if(($itemdate > $this->campaign['lastrun'] && $itemdate < current_time('timestamp', 1))) {
-					trigger_error(__('Assigning original date to post.', 'wpematico'), E_USER_NOTICE);
+					trigger_error(__('Assigning original date to post.', 'wpematico'). "($itemdate)", E_USER_NOTICE);
 				}else {
 					$itemdate = null;
 					trigger_error(__('Original date out of range.  Assigning current date to post.', 'wpematico'), E_USER_NOTICE);
 				}
 			}
 		}else {
-			trigger_error(__('Forced original date to post.', 'wpematico'), E_USER_NOTICE);
+			trigger_error(__('Forced original date to post.', 'wpematico'). "($itemdate)", E_USER_NOTICE);
 		}
 		$this->current_item['date'] = apply_filters('wpematico_get_feeddate', $itemdate, $this->current_item, $this->campaign, $feedurl, $item);
 
@@ -349,7 +349,12 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
 		// Item content
 		$this->current_item['content']	 = apply_filters('wpematico_get_post_content_feed', $item->get_content(), $this->campaign, $feed, $item);
+		// Item excerpt
+		if($this->campaign['campaign_get_excerpt']) {
+			$this->current_item['excerpt']	 = apply_filters('wpematico_get_post_excerpt_feed', $item->get_description(), $this->campaign, $feed, $item);
+		}
 		$this->current_item				 = apply_filters('wpematico_get_post_content', $this->current_item, $this->campaign, $feed, $item);
+
 
 		if($this->campaign['campaign_enable_convert_utf8']) {
 			$this->current_item['content'] = WPeMatico::change_to_utf8($this->current_item['content']);
@@ -565,6 +570,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		}
 		$this->current_item['title']			 = apply_filters('wpem_parse_title', $this->current_item['title']);
 		$this->current_item['content']			 = apply_filters('wpem_parse_content', $this->current_item['content']);
+		$this->current_item['excerpt']			 = apply_filters('wpem_parse_excerpt', $this->current_item['excerpt']);
 		$this->current_item['slug']				 = apply_filters('wpem_parse_name', $this->current_item['slug']);
 		$this->current_item['date_formated']	 = apply_filters('wpem_parse_date', $this->current_item['date_formated']);
 		$this->current_item['posttype']			 = apply_filters('wpem_parse_status', $this->current_item['posttype']);
@@ -576,6 +582,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		$args = array(
 			'post_title'			 => $this->current_item['title'],
 			'post_content'			 => $this->current_item['content'],
+			'post_excerpt'			 => $this->current_item['excerpt'],
 			'post_name'				 => $this->current_item['slug'],
 			'post_content_filtered'	 => apply_filters('wpem_parse_content_filtered', $this->current_item['content']),
 			'post_status'			 => $this->current_item['posttype'],

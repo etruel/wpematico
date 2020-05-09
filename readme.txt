@@ -228,32 +228,31 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
 
-= 2.5.2.6 May 07, 2020 =
+= 2.5.3 May 09, 2020 =
 
-* Improved Youtube campaign types by use [embed] WP shortcode or Youtube shared iframe. 
-* Added size with and height for inserted youtube videos. 
+This version launches a series of changes, additions and new features working with standard feeds, Youtube and media file extensions, plus a few fixes.
 
-= 2.5.2.5 May 07, 2020 =
+#### _Enhancements:_
 
-* Added new free feature. We made WPeMatico compatible to work with Featured Image from URL plugin by Marcel Jacques Machado. (Thanks for the excellent plugin!)
+> * Added support in Settings screen to select images, audio y video extensions allowed to upload with WP mime types as guide.
+> * Added new options in Settings to allow show the Campaign ID in a new column in WordPress Posts (types) lists.
+> * Added new option in campaign to allow bypass the feed date required conditions.
+> * Added new free feature. We made WPeMatico compatible to work with Featured Image from URL plugin by Marcel Jacques Machado. (Thanks for the excellent plugin!)
+> * Improved Youtube campaign types by use [embed] WP shortcode or Youtube shared iframe.
+> * Added size with and height for inserted youtube videos. 
+> * Added option to fill the excerpt field with the description of the feed item.
 
-= 2.5.2.4 Apr 23, 2020 =
+#### _Bugfixes:_
 
-* Added new option in campaign to allow bypass the feed date required conditions.
+> * Fixes notice Deprecated: Unparenthesized notice with PHP 7.4+.
+> * Changed Settings metabox name "Other Tools" to "WordPress Backend Tools" to better refer to what is it.
+> * Fix images URLs with entities like &amp;to get it with correct name and replace the original in content.
 
-= 2.5.2.3 Apr 21, 2020 =
+#### _Recent (may break) changes:_
 
-* Fix images URLs with entities like &amp;to get it with correct name and replace the original in content.
-
-= 2.5.2.2 Apr 11, 2020 =
-
-* Added new options in Settings to allow show the Campaign ID in a new column in WordPress Posts (types) lists. 
-
-= 2.5.2.1 Apr 10, 2020 =
-
-* Added support in Settings screen to select images, audio y video extensions allowed to upload with WP mime types as guide.
-* Fixes notice Deprecated: Unparenthesized notice with PHP 7.4+.
-* Changed Settings metabox name "Other Tools" to "WordPress Backend Tools" to better refer to what is it.
+> * Added support in Settings screen to select images, audio y video extensions allowed to upload with WP mime types as guide.
+> * Some improvements in the processing of upload images could have some unexpected behaviors on strange servers. (Weird but just to take a look.)
+> * **Enlarges the version required for the Professional addon to 2.6**
 
 = 2.5.2 Feb 13, 2020 =
 
@@ -303,84 +302,8 @@ Version 2.5 concludes a series of radical changes that we had started since vers
 * Fixes some issues in campaign edit js alerts.
 * Fixes a php warning on settings page.
 
-= 2.3.10 Oct 02, 2019 =
-* Added descriptions of installed extensions in plugins page.
-* Fixes some Warnings in Licenses page.
-* Fixes error Uncaught Error: Call to a member function get_columns() on null for Settings page.
-* More security enhancements.
-
-= 2.3.9 Sep 26, 2019 =
-* More security enhancements and minor changes to WP standards.
-* Optimized some changes in the code for the new features we are preparing for version 2.4
-
-= 2.3.8 Sep 22, 2019 =
-* Incremented security on saving settings.
-* Fixes a reported vulnerability that was only available to users who could access the WPeMatico Settings screen.
-
-= 2.3.7 Sep 16, 2019 =
-* Added on campaigns custom statuses without domains added to WP.
-* Added wp filters to post status.
-* Fixes an issue on getting the source chrset encoding.
-* Fixes an issue on duplicates hash controls when jumping past items.
-* Changes transient name of encoding_hosts to wpematico_encoding_hosts.
-* Incremented transient cache time of encoding hosts to 6 hours.
-* Many tweaks on the php code.
-
-= 2.3.6 Jul 25, 2019 =
-* Fixes some javascript issues for Pro users.
-* Some tweaks in addons page.
-
-= 2.3.5 May 14, 2019 =
-* Fixes auto disabled Add Auto Categories checkbox on campaign edit.
-* Fixes Must-Use Plugins info on System Status.
-* Tweaks in Settings, System status texts and images.
-
-= 2.3.4 May 01, 2019 =
-* Added a Feed Viewer (Beta) under System Status tab in Settings.
-* Fixes Wizard to work well with XML campaign types.
-* Fixes Licenses screen to display correctly the expired and lifetime licenses.
-* Fixes purchase links on extensions page to go to each product page.
-* Fixes a Warning: count(): Parameter must be an array... on saving campaigns
-* Fixes a Warning: count(): Parameter must be an array... on debug file.
-
-= 2.3.3 Apr 05, 2019 =
-* Fixes a Fatal error introduced in 2.3.2 with PHP 5.5 or less
-* Tweaks in Settings, System status help texts.
-
-= 2.3.2 Apr 02, 2019 =
-* Fixes the parsing of filters in the Campaign Preview.
-* Fixes some PHP Warning and notices on campaigns logs.
-* Fixes an issue in Unfiltered Post Content feature.
-* Tweaks on XML Campaign types to allow RSS Feeds when Simplepie does not recognize them.
-* Tweaks in XML campaign type on authors and categories nodes.
-* Tweaks the feeds validations in XML campaign type.
-* Added a filter to allow parse the string gotten of the XML feed.
-* Some tweaks to improve performance on campaign runs.
-* Added Save Settings button in danger zone.
-
-= 2.3.1 Mar 02, 2019 =
-* Improves BlankSimplepie Class to work with the new addon: Synchronizer.
-* Improves some cosmetic things, images and responsive styles.
-* Improves performance in cURL requests.
-* Added cURL version and recommended in debug page and debug file.
-
-= 2.3 Feb 20, 2019 =
-* **NOTE: Important changes. Highly recommended for testing in development environments prior to upgrade.**
-* Added Debug Mode feature to save all campaigns logs instead only the last one. 
-* Added smart notifications in campaign list.
-* Added some new data in debug file.
-* Added WPEMATICO_PREVENT_REDIRECT constant to prevent redirections to welcome page.
-* Improves the code to allow better integration with a future item synchronizer addon.
-* Tweaks in translation notification in settings.
-* Tweaks in cURL requests on sending empty HTTP Encoding header for cURL +7.10.5.
-* Updated Chinese language translations files.
-* Updated Updater class to v1.6.18 version.
-* Fixes the check feeds before save with XML Campaign type.
-* Fixes an issue saving the Disable WPeMatico Credits option.
-* Fixes some layouts in campaign edition using Chinese language.
-
 = Earlier versions =
-For the changelog of earlier versions, please refer to [the changelog on wpematico.com](http://www.wpematico.com/wpematico-changelog/).
+For the changelog of earlier versions, please refer to changelog.md file or [the changelog on wpematico.com](http://www.wpematico.com/wpematico-changelog/).
 
 = 0.1 Nov 17, 2010 =
 * initial release in WordPress Repository
@@ -388,5 +311,5 @@ For the changelog of earlier versions, please refer to [the changelog on wpemati
 
 == Upgrade Notice ==
 
-= 2.5.2 =
-Fixes an issue with Youtube campaign type by ignoring "Copy the permalink from the source" option.
+= 2.5.3 =
+This version launches a series of changes, additions and new features working with standard feeds, Youtube and media file extensions, plus a few fixes.

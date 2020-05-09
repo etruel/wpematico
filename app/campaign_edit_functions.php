@@ -693,6 +693,7 @@ public static function options_box( $post ) {
 	$campaign_strip_links			 = $campaign_data['campaign_strip_links'];
 	$campaign_strip_links_options	 = $campaign_data['campaign_strip_links_options'];
 	$campaign_striphtml				 = $campaign_data['campaign_striphtml'];
+	$campaign_get_excerpt			 = $campaign_data['campaign_get_excerpt'];
 
 	$campaign_enable_convert_utf8 = $campaign_data['campaign_enable_convert_utf8'];
 	?>
@@ -739,6 +740,10 @@ public static function options_box( $post ) {
 		</p>
 	</div>	
 	<div id="optionslayer-right" class="ibfix vtop">
+		<p><input class="checkbox" type="checkbox"<?php checked($campaign_get_excerpt,true);?> name="campaign_get_excerpt" value="1" id="campaign_get_excerpt"/>
+			<label for="campaign_get_excerpt"><?php echo __('Fill Excerpt with item description field.', 'wpematico' ); ?></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['get_excerpt']; ?>"></span>
+		</p>
+		
 		<p><input class="checkbox" type="checkbox"<?php checked($campaign_striphtml,true);?> name="campaign_striphtml" value="1" id="campaign_striphtml"/>
 			<label for="campaign_striphtml"><?php echo __('Strip All HTML Tags', 'wpematico' ); ?></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['striphtml']; ?>"></span>
 		</p>
