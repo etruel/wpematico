@@ -110,14 +110,17 @@ class WPEMATICO_Welcome {
 				[class*="dashboard_page_"] #wpcontent { /*background: #fff;*/ padding: 0 24px; }
 				.about__header-navigation { background: #fff; color: #333;}
 				.about__section { background: #fff; }
-				.about__header-title { background: #ef8e2f; }
-				.about__header-badge { background: #D3741C; }
-				.about__header-text { background: #c64f00; }
-				.about__header-navigation .nav-tab-active { color: #ef8e2f; }
+				.about__header { background-color: #222; }
+				.about__header-title p { color: #fff; }
+				.about__header-title p span { color: #eee; }
+				.about__header-text p { color: #fff; }
+				.about__header-navigation { border-color: #222 }
+				.about__header-navigation .nav-tab-active:active, .about__header-navigation .nav-tab-active:hover,
+				.about__header-navigation .nav-tab-active { color: #ef8e2f; border-color: #ef8e2f;}
 				.about__header-navigation .nav-tab:active, .about__header-navigation .nav-tab:hover{ background: #f5f5f5; }
 				.about__container .has-accent-background-color { background: #ef8e2f; }
 				.about__container .has-subtle-background-color { background: #f9f9f9; }
-				.about__header-title .wpematico-badge { margin-right: 10px; }
+				.about__header-title .wpematico-badge { margin-right: 10px; max-height: 60px; width: auto; }
 				.about__section.about__section_height { min-height: 560px; }
 				.about__section.about__section_height-2 { min-height: 400px; }
 				.about__section.is-feature { font-size: 1.4em; }
@@ -162,13 +165,11 @@ class WPEMATICO_Welcome {
 		?>
 		<div class="about__header-title">
 			<img class="wpematico-badge" src="<?php echo WPEMATICO_PLUGIN_URL . '/images/robotico_orange-75x130.png'; ?>" alt="<?php _e('WPeMatico', 'wpematico'); ?>" / >
-			<h1>
-				<span><?php echo $display_version; ?></span>
+			<p>
 				<?php _e('WPeMatico'); ?>
-			</h1>
+				<span><?php echo $display_version; ?></span>
+			</p>
 		</div>
-
-		<div class="about__header-badge"></div>
 
 		<div class="about__header-text">
 			<p>
@@ -221,7 +222,7 @@ class WPEMATICO_Welcome {
 		?>
 		<div class="wrap about__container">
 
-			<div class="about__header">
+			<div class="about__header" style="background-image: url('<?php echo WPEMATICO_PLUGIN_URL . '/images/about-header.png'; ?>');">
 
 				<?php $this->welcome_message(); ?>
 
@@ -232,6 +233,46 @@ class WPEMATICO_Welcome {
 			<?php $this->subscription_form(); ?>
 
 			<hr />
+
+			<div class="about__section about__section_height has-2-columns">
+				<div class="column is-edge-to-edge has-accent-background-color">
+					<div class="about__image aligncenter">
+						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/multimedia_extensions-featured_image_from_url.png'; ?>" alt="Use Featured Image From URL" style="max-height: 500px;" />
+					</div>
+				</div>
+				<div class="column is-vertically-aligned-center">
+					<h2><?php _e('Choose Media Mime Types.', 'wpematico'); ?></h2>
+
+					<h3><?php _e('Separate with commas the allowed mime types for WPeMatico Uploads.', 'wpematico'); ?></h3>
+
+					<p><?php _e('You can choose which media files will be uploaded to your website, you can add or remove the extensions you want and WPeMatico will do the rest.', 'wpematico'); ?></p>
+
+					<h2><?php _e('Use Featured Image From URL.', 'wpematico'); ?></h2>
+
+					<h3><?php _e('Use the featured images without storing them on your own website.', 'wpematico'); ?></h3>
+
+					<p><?php _e('Avoid storing images on your site, this new feature allows you to use the featured image from an external URL by activating the "Use Featured Image from URL" option from WPeMatico Settings or from each campaign.', 'wpematico'); ?></p>
+					<p></p>
+					<h3><?php _e('NOTE: Featured Image From URL plugin is required for this functionality.', 'wpematico'); ?></h3>
+				</div>
+			</div>
+
+			<div class="about__section about__section_height has-2-columns">
+				<div class="column is-vertically-aligned-center">
+					<h2><?php _e('Force Item Date.', 'wpematico'); ?></h2>
+
+					<p><?php _e('You can force the use of the original date of each feed item ignoring incoherent dates like past posts published after new ones.', 'wpematico'); ?></p>
+
+					<h2><?php _e('Create Post Excerpt Automatically.', 'wpematico'); ?></h2>
+
+					<p><?php _e('By default WordPress creates the excerpts "on the fly" from the post content, WPeMatico allows to create them using the description tag of the items in the feed.', 'wpematico'); ?></p>
+				</div>
+				<div class="column is-edge-to-edge has-accent-background-color">
+					<div class="about__image aligncenter">
+						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/force_date-post_excerpt.png'; ?>" alt="Debug Mode" />
+					</div>
+				</div>
+			</div>
 
 			<div class="about__section about__section_height has-2-columns">
 				<div class="column is-edge-to-edge has-accent-background-color">
@@ -773,15 +814,11 @@ class WPEMATICO_Welcome {
 		<div class="about__section <?php echo $classes; ?> subscription">
 			<div class="column is-vertically-aligned-center">
 				<h2><?php _e('Last News in This Version!', 'wpematico'); ?></h2>
-				<p><?php _e('Version 2.5 concludes a series of radical changes that we had started since version 2.4 in terms of plugin security.', 'wpematico'); ?>
-					<?php _e('Also following a strict revision to follow the standards of Wordpress coding development.', 'wpematico'); ?></p>
-				<p><?php _e('We have completely removed the use of <b>cURL</b> and own functions in favor of Wordpress file processing and functions to obtain remote files.', 'wpematico'); ?></p>
-				<p><?php _e('We removed  HTML entity decode from each post before inserted. You can activate the function again on Settings.', 'wpematico'); ?></p>
-				<p><?php _e('NOTE: We had to change the url of the external CRON. Take a look at the "Settings" if your campaigns are freezed.', 'wpematico'); ?></p>
-				<p></p>
-				<!-- p>La versión 2.5 culmina una serie de cambios radicales que habíamos comenzado desde la version 2.4 en cuanto a seguridad del plugin.  También siguiendo una estricta revisión a seguir los standares de desarrollo de códificación Wordpress.  
-			Hemos eliminado completamente el uso de cURL y de funciones propias en favor de las funciones de tratamiento de archivos de Wordpress y para la obtención de archivos remotos.</p -->
-				<h3 class=""><?php _e('Thanks to all the contributors for their collaborations and to the moderators of WordPress Plugins for their revisions and for pointing us in the right direction on several issues.', 'wpematico'); ?></h3>
+				<p><?php _e('WPeMatico continues to improve and innovate with each update, once again we include new features in order to improve the user experience and cover all their needs.', 'wpematico'); ?></p>
+				<p><?php _e('Choose which media files will be uploaded to your website by allowing or not their extension!','wpematico')?></p>
+				<p><?php _e('Can you imagine using the featured images without storing them on your own website? With this new version it&#39;s now possible! What are you waiting for to test it?', 'wpematico'); ?></p>
+				<h3><?php _e('NOTE: Featured Image From URL plugin is required for this functionality.', 'wpematico'); ?></h3>
+				<p><?php _e('In addition to this, in this new version you can also create excerpts using the description tag of the items in the feed and you can even force the use of the original date of each post!', 'wpematico'); ?></p>
 			</div>
 			<?php if($suscripted_user === false) { ?>
 				<div class="column is-edge-to-edge has-accent-background-color">

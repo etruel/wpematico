@@ -350,6 +350,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		// Item content
 		$this->current_item['content']	 = apply_filters('wpematico_get_post_content_feed', $item->get_content(), $this->campaign, $feed, $item);
 		// Item excerpt
+		$this->current_item['excerpt'] = '';
 		if($this->campaign['campaign_get_excerpt']) {
 			$this->current_item['excerpt']	 = apply_filters('wpematico_get_post_excerpt_feed', $item->get_description(), $this->campaign, $feed, $item);
 		}
