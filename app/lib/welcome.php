@@ -103,7 +103,8 @@ class WPEMATICO_Welcome {
 	 */
 	public function admin_head() {
 		global $current_screen;
-		if($current_screen->id == "dashboard_page_wpematico-about" || $current_screen->id == "dashboard_page_wpematico-getting-started" || $current_screen->id == "dashboard_page_wpematico-changelog" || $current_screen->id == "dashboard_page_wpematico-privacy") {
+		//$current_screen = get_current_screen();
+		if (!is_null($current_screen) && ($current_screen->id == "dashboard_page_wpematico-about" || $current_screen->id == "dashboard_page_wpematico-getting-started" || $current_screen->id == "dashboard_page_wpematico-changelog" || $current_screen->id == "dashboard_page_wpematico-privacy")) {
 			?>
 			<style type="text/css" media="screen">
 				/*<![CDATA[*/

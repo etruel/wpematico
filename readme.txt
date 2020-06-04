@@ -228,6 +228,11 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
 
+= 2.6.1 Jun 3, 2020 =
+
+* Fixes some notices of null variables in PHP.
+* Fixes more notices Deprecated: Unparenthesized notice with PHP 7.4+.
+
 = 2.6 May 11, 2020 =
 
 With a lot of changes, fixes and additions since 2.5 we have finally reach the 2.6 version, working with _Featured Image From URL,_ new multimedia extensions, new embed shortcodes for YouTube campaign types, avoid date filters an so on.  Take a look at previous changelog for more details.
@@ -324,5 +329,5 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 
-= 2.6 =
-This version launches a series of changes, additions and new features working with standard feeds, Youtube and media file extensions, plus a few fixes.
+= 2.6.1 =
+This version mainly fixes some notices and deprecated functions for PHP.

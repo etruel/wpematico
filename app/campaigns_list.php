@@ -1060,11 +1060,11 @@ if(!class_exists('WPeMatico_Campaigns')) :
 			$campaign['campaign_tags']			 = (!isset($posdata['campaign_tags']) ) ? '' : sanitize_text_field($posdata['campaign_tags']);
 
 			//parse disabled checkfields that dont send any data
-			$campaign['campaign_feed_order_date']	 = (!isset($posdata['campaign_feed_order_date']) || empty($posdata['campaign_feed_order_date'])) ? false : ($posdata['campaign_feed_order_date'] == 1) ? true : false;
-			$campaign['campaign_feeddate']			 = (!isset($posdata['campaign_feeddate']) || empty($posdata['campaign_feeddate'])) ? false : ($posdata['campaign_feeddate'] == 1) ? true : false;
-			$campaign['campaign_allowpings']		 = (!isset($posdata['campaign_allowpings']) || empty($posdata['campaign_allowpings'])) ? false : ($posdata['campaign_allowpings'] == 1) ? true : false;
-			$campaign['campaign_linktosource']		 = (!isset($posdata['campaign_linktosource']) || empty($posdata['campaign_linktosource'])) ? false : ($posdata['campaign_linktosource'] == 1) ? true : false;
-			$campaign['campaign_strip_links']		 = (!isset($posdata['campaign_strip_links']) || empty($posdata['campaign_strip_links'])) ? false : ($posdata['campaign_strip_links'] == 1) ? true : false;
+			$campaign['campaign_feed_order_date']	 = (!isset($posdata['campaign_feed_order_date']) || empty($posdata['campaign_feed_order_date'])) ? false : ( ($posdata['campaign_feed_order_date'] == 1) ? true : false );
+			$campaign['campaign_feeddate']			 = (!isset($posdata['campaign_feeddate']) || empty($posdata['campaign_feeddate'])) ? false : ( ($posdata['campaign_feeddate'] == 1) ? true : false );
+			$campaign['campaign_allowpings']		 = (!isset($posdata['campaign_allowpings']) || empty($posdata['campaign_allowpings'])) ? false : ( ($posdata['campaign_allowpings'] == 1) ? true : false );
+			$campaign['campaign_linktosource']		 = (!isset($posdata['campaign_linktosource']) || empty($posdata['campaign_linktosource'])) ? false : ( ($posdata['campaign_linktosource'] == 1) ? true : false );
+			$campaign['campaign_strip_links']		 = (!isset($posdata['campaign_strip_links']) || empty($posdata['campaign_strip_links'])) ? false : ( ($posdata['campaign_strip_links'] == 1) ? true : false );
 
 			// parse checked post categories
 			$campaign['post_category'] = array();
@@ -1106,11 +1106,11 @@ if(!class_exists('WPeMatico_Campaigns')) :
 				$arrayData['campaign_max']		 = (!isset($_POST['campaign_max']) ) ? 0 : absint($_POST['campaign_max']);
 				$arrayData['campaign_author']	 = (!isset($_POST['campaign_author']) ) ? 0 : absint($_POST['campaign_author']);
 
-				$arrayData['campaign_feeddate']		 = (!isset($_POST['campaign_feeddate']) || empty($_POST['campaign_feeddate'])) ? false : ($_POST['campaign_feeddate'] == 1) ? true : false;
+				$arrayData['campaign_feeddate']		 = (!isset($_POST['campaign_feeddate']) || empty($_POST['campaign_feeddate'])) ? false : ( ($_POST['campaign_feeddate'] == 1) ? true : false );
 				$arrayData['campaign_commentstatus'] = (!isset($_POST['campaign_commentstatus']) ) ? 'closed' : sanitize_text_field($_POST['campaign_commentstatus']);
-				$arrayData['campaign_allowpings']	 = (!isset($_POST['campaign_allowpings']) || empty($_POST['campaign_allowpings'])) ? false : ($_POST['campaign_allowpings'] == 1) ? true : false;
-				$arrayData['campaign_linktosource']	 = (!isset($_POST['campaign_linktosource']) || empty($_POST['campaign_linktosource'])) ? false : ($_POST['campaign_linktosource'] == 1) ? true : false;
-				$arrayData['campaign_strip_links']	 = (!isset($_POST['campaign_strip_links']) || empty($_POST['campaign_strip_links'])) ? false : ($_POST['campaign_strip_links'] == 1) ? true : false;
+				$arrayData['campaign_allowpings']	 = (!isset($_POST['campaign_allowpings']) || empty($_POST['campaign_allowpings'])) ? false : ( ($_POST['campaign_allowpings'] == 1) ? true : false );
+				$arrayData['campaign_linktosource']	 = (!isset($_POST['campaign_linktosource']) || empty($_POST['campaign_linktosource'])) ? false : ( ($_POST['campaign_linktosource'] == 1) ? true : false );
+				$arrayData['campaign_strip_links']	 = (!isset($_POST['campaign_strip_links']) || empty($_POST['campaign_strip_links'])) ? false : ( ($_POST['campaign_strip_links'] == 1) ? true : false );
 
 				// taxonomies
 				$arrayData['post_category'] = array();

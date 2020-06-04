@@ -790,11 +790,11 @@ if(!class_exists('WPeMatico_functions')) {
 			}else {
 				$campaigndata['campaign_post_format'] = '0';
 			}
-			$campaigndata['activated'] = (!isset($post_data['activated']) || empty($post_data['activated'])) ? false : ($post_data['activated'] == 1) ? true : false;
+			$campaigndata['activated'] = (!isset($post_data['activated']) || empty($post_data['activated'])) ? false : ( ($post_data['activated'] == 1) ? true : false );
 
-			$campaigndata['campaign_feed_order_date']	 = (!isset($post_data['campaign_feed_order_date']) || empty($post_data['campaign_feed_order_date'])) ? false : ($post_data['campaign_feed_order_date'] == 1) ? true : false;
-			$campaigndata['campaign_feeddate']			 = (!isset($post_data['campaign_feeddate']) || empty($post_data['campaign_feeddate'])) ? false : ($post_data['campaign_feeddate'] == 1) ? true : false;
-			$campaigndata['campaign_feeddate_forced']	 = (!isset($post_data['campaign_feeddate_forced']) || empty($post_data['campaign_feeddate_forced'])) ? false : ($post_data['campaign_feeddate_forced'] == 1) ? true : false;
+			$campaigndata['campaign_feed_order_date']	 = (!isset($post_data['campaign_feed_order_date']) || empty($post_data['campaign_feed_order_date'])) ? false : ( ($post_data['campaign_feed_order_date'] == 1) ? true : false );
+			$campaigndata['campaign_feeddate']			 = (!isset($post_data['campaign_feeddate']) || empty($post_data['campaign_feeddate'])) ? false : ( ($post_data['campaign_feeddate'] == 1) ? true : false );
+			$campaigndata['campaign_feeddate_forced']	 = (!isset($post_data['campaign_feeddate_forced']) || empty($post_data['campaign_feeddate_forced'])) ? false : ( ($post_data['campaign_feeddate_forced'] == 1) ? true : false );
 
 			$campaign_feeds	 = array();
 			$all_feeds		 = ( isset($post_data['campaign_feeds']) && !empty($post_data['campaign_feeds']) ) ? $post_data['campaign_feeds'] : Array();
@@ -813,13 +813,13 @@ if(!class_exists('WPeMatico_functions')) {
 			$campaigndata['cronnextrun'] = (isset($post_data['cronnextrun']) && !empty($post_data['cronnextrun']) ) ? (int) $post_data['cronnextrun'] : (int) WPeMatico :: time_cron_next($campaigndata['cron']);
 
 			// Email address to send campaign logs.
-			$campaigndata['mailerroronly']	 = (!isset($post_data['mailerroronly']) || empty($post_data['mailerroronly'])) ? false : ($post_data['mailerroronly'] == 1) ? true : false;
+			$campaigndata['mailerroronly']	 = (!isset($post_data['mailerroronly']) || empty($post_data['mailerroronly'])) ? false : ( ($post_data['mailerroronly'] == 1) ? true : false );
 			$campaigndata['mailaddresslog']	 = (!isset($post_data['mailaddresslog']) ) ? '' : sanitize_email($post_data['mailaddresslog']);
 
 			// *** Campaign Options
 			$campaigndata['campaign_max']			 = (!isset($post_data['campaign_max']) ) ? 5 : (int) $post_data['campaign_max'];
 			$campaigndata['campaign_author']		 = (!isset($post_data['campaign_author']) ) ? 0 : (int) $post_data['campaign_author'];
-			$campaigndata['campaign_linktosource']	 = (!isset($post_data['campaign_linktosource']) || empty($post_data['campaign_linktosource'])) ? false : ($post_data['campaign_linktosource'] == 1) ? true : false;
+			$campaigndata['campaign_linktosource']	 = (!isset($post_data['campaign_linktosource']) || empty($post_data['campaign_linktosource'])) ? false : ( ($post_data['campaign_linktosource'] == 1) ? true : false );
 
 			if(!isset($post_data['copy_permanlink_source']) || empty($post_data['copy_permanlink_source'])) {
 				$campaigndata['copy_permanlink_source'] = false;
@@ -831,29 +831,29 @@ if(!class_exists('WPeMatico_functions')) {
 				}
 			}
 
-			$campaigndata['avoid_search_redirection'] = (!isset($post_data['avoid_search_redirection']) || empty($post_data['avoid_search_redirection'])) ? false : ($post_data['avoid_search_redirection'] == 1) ? true : false;
+			$campaigndata['avoid_search_redirection'] = (!isset($post_data['avoid_search_redirection']) || empty($post_data['avoid_search_redirection'])) ? false : ( ($post_data['avoid_search_redirection'] == 1) ? true : false );
 
-			$campaigndata['campaign_strip_links']					 = (!isset($post_data['campaign_strip_links']) || empty($post_data['campaign_strip_links'])) ? false : ($post_data['campaign_strip_links'] == 1) ? true : false;
+			$campaigndata['campaign_strip_links']					 = (!isset($post_data['campaign_strip_links']) || empty($post_data['campaign_strip_links'])) ? false : ( ($post_data['campaign_strip_links'] == 1) ? true : false );
 			$campaigndata['campaign_strip_links_options']			 = (!isset($post_data['campaign_strip_links_options']) || !is_array($post_data['campaign_strip_links_options'])) ? array('a' => true, 'script' => true, 'iframe' => true) : $post_data['campaign_strip_links_options'];
-			$campaigndata['campaign_strip_links_options']['a']		 = (!isset($post_data['campaign_strip_links_options']['a']) || empty($post_data['campaign_strip_links_options']['a'])) ? false : ($post_data['campaign_strip_links_options']['a']) ? true : false;
-			$campaigndata['campaign_strip_links_options']['script']	 = (!isset($post_data['campaign_strip_links_options']['script']) || empty($post_data['campaign_strip_links_options']['script'])) ? false : ($post_data['campaign_strip_links_options']['script']) ? true : false;
-			$campaigndata['campaign_strip_links_options']['iframe']	 = (!isset($post_data['campaign_strip_links_options']['iframe']) || empty($post_data['campaign_strip_links_options']['iframe'])) ? false : ($post_data['campaign_strip_links_options']['iframe']) ? true : false;
+			$campaigndata['campaign_strip_links_options']['a']		 = (!isset($post_data['campaign_strip_links_options']['a']) || empty($post_data['campaign_strip_links_options']['a'])) ? false : ( ($post_data['campaign_strip_links_options']['a']) ? true : false );
+			$campaigndata['campaign_strip_links_options']['script']	 = (!isset($post_data['campaign_strip_links_options']['script']) || empty($post_data['campaign_strip_links_options']['script'])) ? false : ( ($post_data['campaign_strip_links_options']['script']) ? true : false );
+			$campaigndata['campaign_strip_links_options']['iframe']	 = (!isset($post_data['campaign_strip_links_options']['iframe']) || empty($post_data['campaign_strip_links_options']['iframe'])) ? false : ( ($post_data['campaign_strip_links_options']['iframe']) ? true : false );
 
 			$campaigndata['campaign_commentstatus']	 = (!isset($post_data['campaign_commentstatus']) ) ? 'closed' : sanitize_text_field($post_data['campaign_commentstatus']);
-			$campaigndata['campaign_allowpings']	 = (!isset($post_data['campaign_allowpings']) || empty($post_data['campaign_allowpings'])) ? false : ($post_data['campaign_allowpings'] == 1) ? true : false;
-			$campaigndata['campaign_woutfilter']	 = (!isset($post_data['campaign_woutfilter']) || empty($post_data['campaign_woutfilter'])) ? false : ($post_data['campaign_woutfilter'] == 1) ? true : false;
-			$campaigndata['campaign_striphtml']		 = (!isset($post_data['campaign_striphtml']) || empty($post_data['campaign_striphtml'])) ? false : ($post_data['campaign_striphtml'] == 1) ? true : false;
-			$campaigndata['campaign_get_excerpt']		 = (!isset($post_data['campaign_get_excerpt']) || empty($post_data['campaign_get_excerpt'])) ? false : ($post_data['campaign_get_excerpt'] == 1) ? true : false;
+			$campaigndata['campaign_allowpings']	 = (!isset($post_data['campaign_allowpings']) || empty($post_data['campaign_allowpings'])) ? false : ( ($post_data['campaign_allowpings'] == 1) ? true : false );
+			$campaigndata['campaign_woutfilter']	 = (!isset($post_data['campaign_woutfilter']) || empty($post_data['campaign_woutfilter'])) ? false : ( ($post_data['campaign_woutfilter'] == 1) ? true : false );
+			$campaigndata['campaign_striphtml']		 = (!isset($post_data['campaign_striphtml']) || empty($post_data['campaign_striphtml'])) ? false : ( ($post_data['campaign_striphtml'] == 1) ? true : false );
+			$campaigndata['campaign_get_excerpt']		 = (!isset($post_data['campaign_get_excerpt']) || empty($post_data['campaign_get_excerpt'])) ? false : ( ($post_data['campaign_get_excerpt'] == 1) ? true : false );
 
 
-			$campaigndata['campaign_enable_convert_utf8'] = (!isset($post_data['campaign_enable_convert_utf8']) || empty($post_data['campaign_enable_convert_utf8'])) ? false : ($post_data['campaign_enable_convert_utf8'] == 1) ? true : false;
+			$campaigndata['campaign_enable_convert_utf8'] = (!isset($post_data['campaign_enable_convert_utf8']) || empty($post_data['campaign_enable_convert_utf8'])) ? false : ( ($post_data['campaign_enable_convert_utf8'] == 1) ? true : false );
 
 			// *** Campaign Audios
-			$campaigndata['campaign_no_setting_audio']	 = (!isset($post_data['campaign_no_setting_audio']) || empty($post_data['campaign_no_setting_audio'])) ? false : ($post_data['campaign_no_setting_audio'] == 1) ? true : false;
-			$campaigndata['campaign_audio_cache']		 = (!isset($post_data['campaign_audio_cache']) || empty($post_data['campaign_audio_cache'])) ? false : ($post_data['campaign_audio_cache'] == 1) ? true : false;
-			$campaigndata['campaign_attach_audio']		 = (!isset($post_data['campaign_attach_audio']) || empty($post_data['campaign_attach_audio'])) ? false : ($post_data['campaign_attach_audio'] == 1) ? true : false;
-			$campaigndata['campaign_nolink_audio']		 = (!isset($post_data['campaign_nolink_audio']) || empty($post_data['campaign_nolink_audio'])) ? false : ($post_data['campaign_nolink_audio'] == 1) ? true : false;
-			$campaigndata['campaign_customupload_audio'] = (!isset($post_data['campaign_customupload_audio']) || empty($post_data['campaign_customupload_audio'])) ? false : ($post_data['campaign_customupload_audio'] == 1) ? true : false;
+			$campaigndata['campaign_no_setting_audio']	 = (!isset($post_data['campaign_no_setting_audio']) || empty($post_data['campaign_no_setting_audio'])) ? false : ( ($post_data['campaign_no_setting_audio'] == 1) ? true : false );
+			$campaigndata['campaign_audio_cache']		 = (!isset($post_data['campaign_audio_cache']) || empty($post_data['campaign_audio_cache'])) ? false : ( ($post_data['campaign_audio_cache'] == 1) ? true : false );
+			$campaigndata['campaign_attach_audio']		 = (!isset($post_data['campaign_attach_audio']) || empty($post_data['campaign_attach_audio'])) ? false : ( ($post_data['campaign_attach_audio'] == 1) ? true : false );
+			$campaigndata['campaign_nolink_audio']		 = (!isset($post_data['campaign_nolink_audio']) || empty($post_data['campaign_nolink_audio'])) ? false : ( ($post_data['campaign_nolink_audio'] == 1) ? true : false );
+			$campaigndata['campaign_customupload_audio'] = (!isset($post_data['campaign_customupload_audio']) || empty($post_data['campaign_customupload_audio'])) ? false : ( ($post_data['campaign_customupload_audio'] == 1) ? true : false );
 			if(!$campaigndata['campaign_audio_cache']) {
 				$campaigndata['campaign_attach_audio']		 = false;
 				$campaigndata['campaign_nolink_audio']		 = false;
@@ -861,11 +861,11 @@ if(!class_exists('WPeMatico_functions')) {
 			}
 
 			// *** Campaign Videos
-			$campaigndata['campaign_no_setting_video']	 = (!isset($post_data['campaign_no_setting_video']) || empty($post_data['campaign_no_setting_video'])) ? false : ($post_data['campaign_no_setting_video'] == 1) ? true : false;
-			$campaigndata['campaign_video_cache']		 = (!isset($post_data['campaign_video_cache']) || empty($post_data['campaign_video_cache'])) ? false : ($post_data['campaign_video_cache'] == 1) ? true : false;
-			$campaigndata['campaign_attach_video']		 = (!isset($post_data['campaign_attach_video']) || empty($post_data['campaign_attach_video'])) ? false : ($post_data['campaign_attach_video'] == 1) ? true : false;
-			$campaigndata['campaign_nolink_video']		 = (!isset($post_data['campaign_nolink_video']) || empty($post_data['campaign_nolink_video'])) ? false : ($post_data['campaign_nolink_video'] == 1) ? true : false;
-			$campaigndata['campaign_customupload_video'] = (!isset($post_data['campaign_customupload_video']) || empty($post_data['campaign_customupload_video'])) ? false : ($post_data['campaign_customupload_video'] == 1) ? true : false;
+			$campaigndata['campaign_no_setting_video']	 = (!isset($post_data['campaign_no_setting_video']) || empty($post_data['campaign_no_setting_video'])) ? false : ( ($post_data['campaign_no_setting_video'] == 1) ? true : false );
+			$campaigndata['campaign_video_cache']		 = (!isset($post_data['campaign_video_cache']) || empty($post_data['campaign_video_cache'])) ? false : ( ($post_data['campaign_video_cache'] == 1) ? true : false );
+			$campaigndata['campaign_attach_video']		 = (!isset($post_data['campaign_attach_video']) || empty($post_data['campaign_attach_video'])) ? false : ( ($post_data['campaign_attach_video'] == 1) ? true : false );
+			$campaigndata['campaign_nolink_video']		 = (!isset($post_data['campaign_nolink_video']) || empty($post_data['campaign_nolink_video'])) ? false : ( ($post_data['campaign_nolink_video'] == 1) ? true : false );
+			$campaigndata['campaign_customupload_video'] = (!isset($post_data['campaign_customupload_video']) || empty($post_data['campaign_customupload_video'])) ? false : ( ($post_data['campaign_customupload_video'] == 1) ? true : false );
 			if(!$campaigndata['campaign_video_cache']) {
 				$campaigndata['campaign_attach_video']		 = false;
 				$campaigndata['campaign_nolink_video']		 = false;
@@ -873,23 +873,23 @@ if(!class_exists('WPeMatico_functions')) {
 			}
 
 			// *** Campaign Images
-			$campaigndata['campaign_no_setting_img'] = (!isset($post_data['campaign_no_setting_img']) || empty($post_data['campaign_no_setting_img'])) ? false : ($post_data['campaign_no_setting_img'] == 1) ? true : false;
-			$campaigndata['campaign_imgcache']		 = (!isset($post_data['campaign_imgcache']) || empty($post_data['campaign_imgcache'])) ? false : ($post_data['campaign_imgcache'] == 1) ? true : false;
-			$campaigndata['campaign_attach_img']	 = (!isset($post_data['campaign_attach_img']) || empty($post_data['campaign_attach_img'])) ? false : ($post_data['campaign_attach_img'] == 1) ? true : false;
-			$campaigndata['campaign_nolinkimg']		 = (!isset($post_data['campaign_nolinkimg']) || empty($post_data['campaign_nolinkimg'])) ? false : ($post_data['campaign_nolinkimg'] == 1) ? true : false;
-			$campaigndata['campaign_image_srcset']	 = (!isset($post_data['campaign_image_srcset']) || empty($post_data['campaign_image_srcset'])) ? false : ($post_data['campaign_image_srcset'] == 1) ? true : false;
+			$campaigndata['campaign_no_setting_img'] = (!isset($post_data['campaign_no_setting_img']) || empty($post_data['campaign_no_setting_img'])) ? false : ( ($post_data['campaign_no_setting_img'] == 1) ? true : false );
+			$campaigndata['campaign_imgcache']		 = (!isset($post_data['campaign_imgcache']) || empty($post_data['campaign_imgcache'])) ? false : ( ($post_data['campaign_imgcache'] == 1) ? true : false );
+			$campaigndata['campaign_attach_img']	 = (!isset($post_data['campaign_attach_img']) || empty($post_data['campaign_attach_img'])) ? false : ( ($post_data['campaign_attach_img'] == 1) ? true : false );
+			$campaigndata['campaign_nolinkimg']		 = (!isset($post_data['campaign_nolinkimg']) || empty($post_data['campaign_nolinkimg'])) ? false : ( ($post_data['campaign_nolinkimg'] == 1) ? true : false );
+			$campaigndata['campaign_image_srcset']	 = (!isset($post_data['campaign_image_srcset']) || empty($post_data['campaign_image_srcset'])) ? false : ( ($post_data['campaign_image_srcset'] == 1) ? true : false );
 
 
-			$campaigndata['campaign_featuredimg'] = (!isset($post_data['campaign_featuredimg']) || empty($post_data['campaign_featuredimg'])) ? false : ($post_data['campaign_featuredimg'] == 1) ? true : false;
-			$campaigndata['campaign_fifu'] = (!isset($post_data['campaign_fifu']) || empty($post_data['campaign_fifu'])) ? false : ($post_data['campaign_fifu'] == 1) ? true : false;
+			$campaigndata['campaign_featuredimg'] = (!isset($post_data['campaign_featuredimg']) || empty($post_data['campaign_featuredimg'])) ? false : ( ($post_data['campaign_featuredimg'] == 1) ? true : false );
+			$campaigndata['campaign_fifu'] = (!isset($post_data['campaign_fifu']) || empty($post_data['campaign_fifu'])) ? false : ( ($post_data['campaign_fifu'] == 1) ? true : false );
 
-			$campaigndata['campaign_enable_featured_image_selector'] = (!isset($post_data['campaign_enable_featured_image_selector']) || empty($post_data['campaign_enable_featured_image_selector'])) ? false : ($post_data['campaign_enable_featured_image_selector'] == 1) ? true : false;
+			$campaigndata['campaign_enable_featured_image_selector'] = (!isset($post_data['campaign_enable_featured_image_selector']) || empty($post_data['campaign_enable_featured_image_selector'])) ? false : ( ($post_data['campaign_enable_featured_image_selector'] == 1) ? true : false );
 			$campaigndata['campaign_featured_selector_index']		 = (!isset($post_data['campaign_featured_selector_index']) || empty($post_data['campaign_featured_selector_index'])) ? '0' : (int) $post_data['campaign_featured_selector_index'];
 			$campaigndata['campaign_featured_selector_ifno']		 = (!isset($post_data['campaign_featured_selector_ifno']) || empty($post_data['campaign_featured_selector_ifno'])) ? 'first' : sanitize_text_field($post_data['campaign_featured_selector_ifno']);
 
 
-			$campaigndata['campaign_rmfeaturedimg']	 = (!isset($post_data['campaign_rmfeaturedimg']) || empty($post_data['campaign_rmfeaturedimg'])) ? false : ($post_data['campaign_rmfeaturedimg'] == 1) ? true : false;
-			$campaigndata['campaign_customupload']	 = (!isset($post_data['campaign_customupload']) || empty($post_data['campaign_customupload'])) ? false : ($post_data['campaign_customupload'] == 1) ? true : false;
+			$campaigndata['campaign_rmfeaturedimg']	 = (!isset($post_data['campaign_rmfeaturedimg']) || empty($post_data['campaign_rmfeaturedimg'])) ? false : ( ($post_data['campaign_rmfeaturedimg'] == 1) ? true : false );
+			$campaigndata['campaign_customupload']	 = (!isset($post_data['campaign_customupload']) || empty($post_data['campaign_customupload'])) ? false : ( ($post_data['campaign_customupload'] == 1) ? true : false );
 
 
 
@@ -901,7 +901,7 @@ if(!class_exists('WPeMatico_functions')) {
 				}
 			}
 			// *** Campaign Template
-			$campaigndata['campaign_enable_template']	 = (!isset($post_data['campaign_enable_template']) || empty($post_data['campaign_enable_template'])) ? false : ($post_data['campaign_enable_template'] == 1) ? true : false;
+			$campaigndata['campaign_enable_template']	 = (!isset($post_data['campaign_enable_template']) || empty($post_data['campaign_enable_template'])) ? false : ( ($post_data['campaign_enable_template'] == 1) ? true : false );
 			if(isset($post_data['campaign_template']))
 				$campaigndata['campaign_template']			 = $post_data['campaign_template'];
 			else {
@@ -924,7 +924,7 @@ if(!class_exists('WPeMatico_functions')) {
 				$campaigndata['campaign_tags'] = '';
 			}
 
-			$campaigndata['campaign_autocats'] = (!isset($post_data['campaign_autocats']) || empty($post_data['campaign_autocats'])) ? false : ($post_data['campaign_autocats'] == 1) ? true : false;
+			$campaigndata['campaign_autocats'] = (!isset($post_data['campaign_autocats']) || empty($post_data['campaign_autocats'])) ? false : ( ($post_data['campaign_autocats'] == 1) ? true : false );
 
 			$campaigndata['campaign_parent_autocats'] = (!isset($post_data['campaign_parent_autocats']) || empty($post_data['campaign_parent_autocats'])) ? -1 : (int) $post_data['campaign_parent_autocats'];
 
@@ -977,8 +977,8 @@ if(!class_exists('WPeMatico_functions')) {
 			$_wrd2cat							 = array('word' => array(''), 'title' => array(false), 'regex' => array(false), 'w2ccateg' => array(0), 'cases' => array(false));
 			$campaigndata['campaign_wrd2cat']	 = (!empty($campaign_wrd2cat) ) ? (array) $campaign_wrd2cat : (array) $_wrd2cat;
 
-			$campaigndata['campaign_w2c_only_use_a_category']	 = (!isset($post_data['campaign_w2c_only_use_a_category']) || empty($post_data['campaign_w2c_only_use_a_category'])) ? false : ($post_data['campaign_w2c_only_use_a_category'] == 1) ? true : false;
-			$campaigndata['campaign_w2c_the_category_most_used'] = (!isset($post_data['campaign_w2c_the_category_most_used']) || empty($post_data['campaign_w2c_the_category_most_used'])) ? false : ($post_data['campaign_w2c_the_category_most_used'] == 1) ? true : false;
+			$campaigndata['campaign_w2c_only_use_a_category']	 = (!isset($post_data['campaign_w2c_only_use_a_category']) || empty($post_data['campaign_w2c_only_use_a_category'])) ? false : ( ($post_data['campaign_w2c_only_use_a_category'] == 1) ? true : false );
+			$campaigndata['campaign_w2c_the_category_most_used'] = (!isset($post_data['campaign_w2c_the_category_most_used']) || empty($post_data['campaign_w2c_the_category_most_used'])) ? false : ( ($post_data['campaign_w2c_the_category_most_used'] == 1) ? true : false );
 
 			// *** Campaign Rewrites	
 			// Proceso los rewrites sacando los que estan en blanco
@@ -1004,23 +1004,23 @@ if(!class_exists('WPeMatico_functions')) {
 			$campaigndata['campaign_rewrites'] = !empty($campaign_rewrites) ? (array) $campaign_rewrites : array('origin' => array(''), 'title' => array(false), 'regex' => array(false), 'rewrite' => array(''), 'relink' => array(''));
 
 
-			$campaigndata['campaign_youtube_embed']		 = (!isset($post_data['campaign_youtube_embed']) || empty($post_data['campaign_youtube_embed'])) ? false : ($post_data['campaign_youtube_embed'] == 1) ? true : false;
-			$campaigndata['campaign_youtube_sizes']		 = (!isset($post_data['campaign_youtube_sizes']) || empty($post_data['campaign_youtube_sizes'])) ? false : ($post_data['campaign_youtube_sizes'] == 1) ? true : false;
+			$campaigndata['campaign_youtube_embed']		 = (!isset($post_data['campaign_youtube_embed']) || empty($post_data['campaign_youtube_embed'])) ? false : ( ($post_data['campaign_youtube_embed'] == 1) ? true : false );
+			$campaigndata['campaign_youtube_sizes']		 = (!isset($post_data['campaign_youtube_sizes']) || empty($post_data['campaign_youtube_sizes'])) ? false : ( ($post_data['campaign_youtube_sizes'] == 1) ? true : false );
 			$campaigndata['campaign_youtube_width']		 = (!isset($post_data['campaign_youtube_width']) ) ? 0 : (int) $post_data['campaign_youtube_width'];
 			$campaigndata['campaign_youtube_height']	 = (!isset($post_data['campaign_youtube_height']) ) ? 0 : (int) $post_data['campaign_youtube_height'];
 				
-			$campaigndata['campaign_youtube_ign_image']			 = (!isset($post_data['campaign_youtube_ign_image']) || empty($post_data['campaign_youtube_ign_image'])) ? false : ($post_data['campaign_youtube_ign_image'] == 1) ? true : false;
-			$campaigndata['campaign_youtube_image_only_featured']= (!isset($post_data['campaign_youtube_image_only_featured']) || empty($post_data['campaign_youtube_image_only_featured'])) ? false : ($post_data['campaign_youtube_image_only_featured'] == 1) ? true : false;
+			$campaigndata['campaign_youtube_ign_image']			 = (!isset($post_data['campaign_youtube_ign_image']) || empty($post_data['campaign_youtube_ign_image'])) ? false : ( ($post_data['campaign_youtube_ign_image'] == 1) ? true : false );
+			$campaigndata['campaign_youtube_image_only_featured']= (!isset($post_data['campaign_youtube_image_only_featured']) || empty($post_data['campaign_youtube_image_only_featured'])) ? false : ( ($post_data['campaign_youtube_image_only_featured'] == 1) ? true : false );
 
-			$campaigndata['campaign_youtube_ign_description'] = (!isset($post_data['campaign_youtube_ign_description']) || empty($post_data['campaign_youtube_ign_description'])) ? false : ($post_data['campaign_youtube_ign_description'] == 1) ? true : false;
+			$campaigndata['campaign_youtube_ign_description'] = (!isset($post_data['campaign_youtube_ign_description']) || empty($post_data['campaign_youtube_ign_description'])) ? false : ( ($post_data['campaign_youtube_ign_description'] == 1) ? true : false );
 
 
-			$campaigndata['campaign_no_setting_duplicate']			 = (!isset($post_data['campaign_no_setting_duplicate']) || empty($post_data['campaign_no_setting_duplicate'])) ? false : ($post_data['campaign_no_setting_duplicate'] == 1) ? true : false;
-			$campaigndata['campaign_allowduplicates']				 = (!isset($post_data['campaign_allowduplicates']) || empty($post_data['campaign_allowduplicates'])) ? false : ($post_data['campaign_allowduplicates'] == 1) ? true : false;
-			$campaigndata['campaign_allowduptitle']					 = (!isset($post_data['campaign_allowduptitle']) || empty($post_data['campaign_allowduptitle'])) ? false : ($post_data['campaign_allowduptitle'] == 1) ? true : false;
-			$campaigndata['campaign_allowduphash']					 = (!isset($post_data['campaign_allowduphash']) || empty($post_data['campaign_allowduphash'])) ? false : ($post_data['campaign_allowduphash'] == 1) ? true : false;
-			$campaigndata['campaign_add_ext_duplicate_filter_ms']	 = (!isset($post_data['campaign_add_ext_duplicate_filter_ms']) || empty($post_data['campaign_add_ext_duplicate_filter_ms'])) ? false : ($post_data['campaign_add_ext_duplicate_filter_ms'] == 1) ? true : false;
-			$campaigndata['campaign_jumpduplicates']				 = (!isset($post_data['campaign_jumpduplicates']) || empty($post_data['campaign_jumpduplicates'])) ? false : ($post_data['campaign_jumpduplicates'] == 1) ? true : false;
+			$campaigndata['campaign_no_setting_duplicate']			 = (!isset($post_data['campaign_no_setting_duplicate']) || empty($post_data['campaign_no_setting_duplicate'])) ? false : ( ($post_data['campaign_no_setting_duplicate'] == 1) ? true : false );
+			$campaigndata['campaign_allowduplicates']				 = (!isset($post_data['campaign_allowduplicates']) || empty($post_data['campaign_allowduplicates'])) ? false : ( ($post_data['campaign_allowduplicates'] == 1) ? true : false );
+			$campaigndata['campaign_allowduptitle']					 = (!isset($post_data['campaign_allowduptitle']) || empty($post_data['campaign_allowduptitle'])) ? false : ( ($post_data['campaign_allowduptitle'] == 1) ? true : false );
+			$campaigndata['campaign_allowduphash']					 = (!isset($post_data['campaign_allowduphash']) || empty($post_data['campaign_allowduphash'])) ? false : ( ($post_data['campaign_allowduphash'] == 1) ? true : false );
+			$campaigndata['campaign_add_ext_duplicate_filter_ms']	 = (!isset($post_data['campaign_add_ext_duplicate_filter_ms']) || empty($post_data['campaign_add_ext_duplicate_filter_ms'])) ? false : ( ($post_data['campaign_add_ext_duplicate_filter_ms'] == 1) ? true : false );
+			$campaigndata['campaign_jumpduplicates']				 = (!isset($post_data['campaign_jumpduplicates']) || empty($post_data['campaign_jumpduplicates'])) ? false : ( ($post_data['campaign_jumpduplicates'] == 1) ? true : false );
 
 			$campaigndata['campaign_bbpress_forum']	 = (!isset($post_data['campaign_bbpress_forum']) || empty($post_data['campaign_bbpress_forum'])) ? 0 : (int) $post_data['campaign_bbpress_forum'];
 			$campaigndata['campaign_bbpress_topic']	 = (!isset($post_data['campaign_bbpress_topic']) || empty($post_data['campaign_bbpress_topic'])) ? 0 : (int) $post_data['campaign_bbpress_topic'];
