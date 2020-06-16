@@ -129,7 +129,7 @@ class wpematico_campaign_fetch_functions {
 				$origin		 = stripslashes($campaign['campaign_rewrites']['origin'][$i]);
 				if(isset($campaign['campaign_rewrites']['rewrite'][$i])) {
 					$reword = !empty($campaign['campaign_rewrites']['relink'][$i]) ? '<a href="' . stripslashes($campaign['campaign_rewrites']['relink'][$i]) . '">' . stripslashes($campaign['campaign_rewrites']['rewrite'][$i]) . '</a>' : stripslashes($campaign['campaign_rewrites']['rewrite'][$i]);
-
+					
 					if($campaign['campaign_rewrites']['regex'][$i]) {
 						if($on_title)
 							$current_item['title']	 = preg_replace($origin, $reword, $current_item['title']);
