@@ -3,7 +3,7 @@ Contributors: etruel, sniuk, khaztiel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,RSS to Post,Feed to Post,XML to post,autoblog,rss aggregator,Feed,rss to post,syndication,xml import,Post,Posts,aggregation,atom,bot,content,writing
 Requires at least: 4.1
-Tested up to: 5.4
+Tested up to: 5.4.1
 Requires PHP: 5.3
 Stable tag: trunk
 License: GPLv2 or later
@@ -228,6 +228,24 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
 
+= 2.6.1 Jun 3, 2020 =
+
+* Fixes some notices of null variables in PHP.
+* Fixes more notices Deprecated: Unparenthesized notice with PHP 7.4+.
+
+= 2.6 May 11, 2020 =
+
+With a lot of changes, fixes and additions since 2.5 we have finally reach the 2.6 version, working with _Featured Image From URL,_ new multimedia extensions, new embed shortcodes for YouTube campaign types, avoid date filters an so on.  Take a look at previous changelog for more details.
+
+#### _Bugfixes:_
+
+> * Corrects the bug with the Excerpts option in the latest version by not allowing posts to be published.
+> * {item_date} and {item_time} added to post template descriptions tags.
+
+#### _Recent (may break) changes:_
+
+> * **Enlarges the version required for the Professional addon to 2.6**
+
 = 2.5.3 May 09, 2020 =
 
 This version launches a series of changes, additions and new features working with standard feeds, Youtube and media file extensions, plus a few fixes.
@@ -311,5 +329,5 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 
-= 2.5.3 =
-This version launches a series of changes, additions and new features working with standard feeds, Youtube and media file extensions, plus a few fixes.
+= 2.6.1 =
+This version mainly fixes some notices and deprecated functions for PHP.

@@ -434,6 +434,8 @@ public static function template_box( $post ) {
 				<li><strong class="tag">{feedlogo}</strong> <?php _e('The feed\'s logo image URL.', 'wpematico' ); ?> </li>
 				<li><strong class="tag">{campaigntitle}</strong> <?php _e('This campaign title', 'wpematico' ); ?> </li>
 				<li><strong class="tag">{campaignid}</strong> <?php _e('This campaign ID.', 'wpematico' ); ?> </li>
+				<li><strong class="tag">{item_date}</strong> <?php _e('The date of the post item.', 'wpematico' ); ?> </li>
+				<li><strong class="tag">{item_time}</strong> <?php _e('The time of the post item.', 'wpematico' ); ?> </li>
 				<?php do_action('wpematico_print_template_tags', $campaign_data); ?>
 			</ul>
 			<p><b><?php _e('Examples:', 'wpematico' ); ?></b></p>

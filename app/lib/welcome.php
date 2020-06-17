@@ -103,7 +103,8 @@ class WPEMATICO_Welcome {
 	 */
 	public function admin_head() {
 		global $current_screen;
-		if($current_screen->id == "dashboard_page_wpematico-about" || $current_screen->id == "dashboard_page_wpematico-getting-started" || $current_screen->id == "dashboard_page_wpematico-changelog" || $current_screen->id == "dashboard_page_wpematico-privacy") {
+		//$current_screen = get_current_screen();
+		if (!is_null($current_screen) && ($current_screen->id == "dashboard_page_wpematico-about" || $current_screen->id == "dashboard_page_wpematico-getting-started" || $current_screen->id == "dashboard_page_wpematico-changelog" || $current_screen->id == "dashboard_page_wpematico-privacy")) {
 			?>
 			<style type="text/css" media="screen">
 				/*<![CDATA[*/
@@ -174,8 +175,8 @@ class WPEMATICO_Welcome {
 		<div class="about__header-text">
 			<p>
 				<?php
-				printf(
-					__('Thank you for updating to the latest version! WPeMatico %s is ready to make your autoblogging faster, safer, and better!', 'wpematico'),
+				_e('Thank you for updating to the latest version!', 'wpematico');
+				printf(	'<br />'.__('WPeMatico %s is ready to make your autoblogging faster, safer, and better!', 'wpematico'),
 					$display_version
 				);
 				?>
@@ -237,7 +238,7 @@ class WPEMATICO_Welcome {
 			<div class="about__section about__section_height has-2-columns">
 				<div class="column is-edge-to-edge has-accent-background-color">
 					<div class="about__image aligncenter">
-						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/multimedia_extensions-featured_image_from_url.png'; ?>" alt="Use Featured Image From URL" style="max-height: 500px;" />
+						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/media_ext.png'; ?>" alt="Use Featured Image From URL" style="max-height: 500px;" />
 					</div>
 				</div>
 				<div class="column is-vertically-aligned-center">
@@ -266,42 +267,17 @@ class WPEMATICO_Welcome {
 					<h2><?php _e('Create Post Excerpt Automatically.', 'wpematico'); ?></h2>
 
 					<p><?php _e('By default WordPress creates the excerpts "on the fly" from the post content, WPeMatico allows to create them using the description tag of the items in the feed.', 'wpematico'); ?></p>
-				</div>
-				<div class="column is-edge-to-edge has-accent-background-color">
-					<div class="about__image aligncenter">
-						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/force_date-post_excerpt.png'; ?>" alt="Debug Mode" />
-					</div>
-				</div>
-			</div>
 
-			<div class="about__section about__section_height has-2-columns">
-				<div class="column is-edge-to-edge has-accent-background-color">
-					<div class="about__image aligncenter">
-						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/custom-posts-status.jpg'; ?>" alt="Posts Statuses" />
-					</div>
-				</div>
-				<div class="column is-vertically-aligned-center">
 					<h2><?php _e('Custom Posts Statuses.', 'wpematico'); ?></h2>
 
 					<h3><?php _e('Post status allows you to organize your Posts.', 'wpematico'); ?></h3>
 
 					<p><?php _e('Post status is an very useful editorial tool that allows you to organize your Posts based on their respective stages during the editorial workflow.', 'wpematico'); ?></p>
 
-					<p><?php _e('Since this WPeMatico release you can select also the Custom Post Status created for posts.', 'wpematico'); ?></p>
-				</div>
-			</div>
-
-			<div class="about__section about__section_height has-2-columns">
-				<div class="column is-vertically-aligned-center">
-					<h2><?php _e('Debug Mode.', 'wpematico'); ?></h2>
-
-					<h3><?php _e('Debug Mode to save all the logs from each campaign', 'wpematico'); ?></h3>
-
-					<p><?php _e('This feature allows you to save all the logs of each campaign rather than just the last one, in order to allow you to track all actions and behaviors when running the campaign.', 'wpematico'); ?></p>
 				</div>
 				<div class="column is-edge-to-edge has-accent-background-color">
 					<div class="about__image aligncenter">
-						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/debug_mode.png'; ?>" alt="Debug Mode" />
+						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/force_date-post_excerpt.png'; ?>" alt="Debug Mode" />
 					</div>
 				</div>
 			</div>
@@ -361,24 +337,6 @@ class WPEMATICO_Welcome {
 					<h3><?php _e('Using the Campaign Preview.', 'wpematico'); ?></h3>
 
 					<p><?php _e('When click in the “eye” icon, a popup will open to show you the next items to fetch.  This allow you to see if the campaign has pending items to publish from any feed inside it.', 'wpematico'); ?></p>
-				</div>
-			</div>
-
-			<div class="about__section about__section_height has-2-columns">
-				<div class="column is-vertically-aligned-center">
-					<p><?php _e("We've made several important improvements in the Campaign Wizard.", 'wpematico'); ?></p>
-					<p><?php _e('With it you will see one by one each metabox with options of the campaign, showing the help tips to facilitate even more the creation and correct configuration of the feeds to import. And something very important is that it is compatible with the diferent addons that add metaboxes to the campaign.', 'wpematico'); ?></p>
-
-					<h3><?php _e('All icons will be Dashicons!', 'wpematico'); ?></h3>
-					<p><?php _e("Until now we were using sprite images or Font Awesome Icons, but we are changing all to Dashicons, the official icon fonts of the WordPress and we're very proud of that.  We continue cleaning all, inclusive the corners.", 'wpematico'); ?></p>
-
-					<h3><?php _e('The code was optimized by everywhere.', 'wpematico'); ?></h3>
-					<p><?php _e("We're optimizing the code to allow it to be more readable by humans, but the main focus is to improve the performance in the different screens, like the campaign editing or other screens.", 'wpematico'); ?></p>
-				</div>
-				<div class="column is-edge-to-edge has-accent-background-color">
-					<div class="about__image aligncenter">
-						<img src="<?php echo WPEMATICO_PLUGIN_URL . 'images/wizard.png'; ?>" alt="Campaign Wizard" />
-					</div>
 				</div>
 			</div>
 
@@ -443,35 +401,6 @@ class WPEMATICO_Welcome {
 
 					<h5><a style="float:right;" href="https://etruel.com/starter-packages/" target="_blank"><?php _e('Starter Packages.', 'wpematico'); ?></a>
 						<a style="float:left;" href="https://etruel.com/downloads/category/wpematico-add-ons/" target="_blank"><?php _e('All available Addons', 'wpematico'); ?></a></h5>
-				</div>
-			</div>
-
-			<hr />
-
-			<div class="about__section about__section_height has-2-columns has-subtle-background-color">
-				<h2 class="is-section-header"><?php _e('Including Media Files.'); ?></h2>
-
-				<div class="column">
-					<h3><?php _e('Introducing the Campaign Control Panel.', 'wpematico'); ?></h3>
-
-					<img style="float:right; width:245px;margin: 0 5px 0 5px;" src="<?php echo WPEMATICO_PLUGIN_URL . '/images/ccpanel.png'; ?>" alt="Campaign Control Panel" />
-					<p><?php _e('This panel makes it possible to better control what is going on with the campaign you are editing.', 'wpematico'); ?><br />
-						<?php _e('And also the "Delete hash" buttons for the duplicates control, view the "Last-run log", or even the "Reset" are displayed as buttons, no matter if the quick actions from Settings screen are activated.', 'wpematico'); ?>
-					</p>
-
-					<h3><?php _e('Available for Addons too.', 'wpematico'); ?></h3>
-					<p><?php _e('The', 'wpematico'); ?> <strong><a href="https://etruel.com/downloads/wpematico-professional/" target="_blank">WPeMatico Professional add-on</a></strong> <?php _e('will put an extra button to Export the campaign. The Control Panel has an proggramatic action to easily add an action button..', 'wpematico'); ?></p>
-				</div>
-				<div class="column">
-					<h3><?php _e('Mp3 and Mp4 Files', 'wpematico'); ?></h3>
-
-					<img style="float:right;width: 120px;margin: 0 0 0 5px;" src="<?php echo WPEMATICO_PLUGIN_URL . '/images/videoaudio.png'; ?>" alt="wpematico_audio y video" width="200" />
-					<p><?php _e('In addition to including the embedded links, the version 1.7 includes a full support for MP3 and MP4 media files. ', 'wpematico'); ?><br />
-						<?php _e('Audio and video files inserted in the contents of the source can be downloaded and attached to the published post. ', 'wpematico'); ?><br />
-						<?php _e('Compatible with audio widget and video widget inserted in WordPress 4.8.', 'wpematico'); ?> <?php _e('Only take care with the size of the files.', 'wpematico'); ?> ;-)</p>
-
-					<h3><?php _e('Need other file types ?', 'wpematico'); ?></h3>
-					<p><?php _e('The', 'wpematico'); ?> <strong><a href="https://etruel.com/downloads/wpematico-professional/" target="_blank">WPeMatico Professional add-on</a></strong> <?php _e('brings support for &lt;mp3, ogg, wav, wma, m4a&gt; &lt;mp4, m4v, mov, wmv, avi, mpg, ogv, 3gp, 3g2&gt; media file types among a lot more of special features.', 'wpematico'); ?></p>
 				</div>
 			</div>
 

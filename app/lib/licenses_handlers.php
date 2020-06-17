@@ -439,10 +439,11 @@ class wpematico_licenses_handlers {
 	}
 	public static function styles() {
 		$screen = get_current_screen();
-		if ($screen->id == 'wpematico_page_wpematico_settings') {
-			wp_enqueue_style('wpematico-settings-licenses', WPEMATICO_PLUGIN_URL.'app/css/licenses_handlers.css');	
+		if (!is_null($screen)) {
+			if ($screen->id == 'wpematico_page_wpematico_settings') {
+				wp_enqueue_style('wpematico-settings-licenses', WPEMATICO_PLUGIN_URL . 'app/css/licenses_handlers.css');
+			}
 		}
-		
 	}
 	public static function scripts() {
 		$screen = get_current_screen();
