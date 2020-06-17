@@ -1,4 +1,4 @@
-=== WPeMatico RSS Feed Fetcher ===
+﻿=== WPeMatico RSS Feed Fetcher ===
 Contributors: etruel, sniuk, khaztiel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,RSS to Post,Feed to Post,XML to post,autoblog,rss aggregator,Feed,rss to post,syndication,xml import,Post,Posts,aggregation,atom,bot,content,writing
@@ -227,6 +227,9 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
+= 2.6.1 Jun 17, 2020 =
+
+* Modificacion de la ayuda de la opcion del FIFU.
 
 = 2.6.1 Jun 3, 2020 =
 
