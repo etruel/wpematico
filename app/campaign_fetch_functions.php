@@ -784,7 +784,7 @@ class wpematico_campaign_fetch_functions {
 	static function set_attachment_from_url($post_id, $campaign, $item) {
 		trigger_error(__('Fifu save set attachment from URL.', 'wpematico'), E_USER_NOTICE);
 		if(function_exists('fifu_save')) {
-			fifu_save($post_id);
+			fifu_save($post_id, false);
 		}
 	}
 

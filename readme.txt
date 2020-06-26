@@ -229,6 +229,10 @@ You can send your files to e-mail wpematico [at] etruel.com
 == Changelog ==
 = 2.6.1 Jun 17, 2020 =
 
+* Arreglo de bug con el FIFU (versión 3.1.3).
+
+= 2.6.1 Jun 17, 2020 =
+
 * Modificacion de la ayuda de la opcion del FIFU.
 
 = 2.6.1 Jun 3, 2020 =
