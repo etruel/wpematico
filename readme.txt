@@ -227,7 +227,7 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
-= 2.6.1 Jun 17, 2020 =
+= 2.6.2 Jun 25, 2020 =
 
 * Arreglo de bug con el FIFU (versión 3.1.3).
 
