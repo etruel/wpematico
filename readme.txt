@@ -3,7 +3,7 @@ Contributors: etruel, sniuk, khaztiel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,RSS to Post,Feed to Post,XML to post,autoblog,rss aggregator,Feed,rss to post,syndication,xml import,Post,Posts,aggregation,atom,bot,content,writing
 Requires at least: 4.1
-Tested up to: 5.4.1
+Tested up to: 5.4.2
 Requires PHP: 5.3
 Stable tag: trunk
 License: GPLv2 or later
@@ -40,6 +40,7 @@ You can submit any bug in the [bugtracker](https://github.com/etruel/wpematico/i
 > * Images caching are integrated with Wordpress Media Library. 
 > * The first (or 2nd or 3rd, you choose) image attached to a post can be marked as the Featured Image.
 > * It is possible to upload & attach only the featured image ignoring the others.
+> * Compatible to work with _Featured Image from URL_ plugin by _Marcel Jacques Machado._ 
 > * You can choose whether to upload images as post attachments or not. Also upload remote images or link to source. Fully configurable.
 > * You can choose whether to upload *audio and video files* as post attachments or not. Also upload remote files or link to source. Fully configurable.
 > * Words or phrases rewriting. Regular expressions supported.
@@ -227,18 +228,12 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
-= 2.6.2 Jun 25, 2020 =
+= 2.6.1 Jun 25, 2020 =
 
-* Arreglo de bug con el FIFU (versión 3.1.3).
-
-= 2.6.1 Jun 17, 2020 =
-
-* Modificacion de la ayuda de la opcion del FIFU.
-
-= 2.6.1 Jun 3, 2020 =
-
-* Fixes some notices of null variables in PHP.
-* Fixes more notices Deprecated: Unparenthesized notice with PHP 7.4+.
+* Tweaks on help texts on Featured Image from URL option in campaign.
+* Fixes a bug introduced in last update of FIFU 3.1.3 version.
+* Fixes some notices of null variables.
+* Fixes many notices Deprecated: Unparenthesized notice for PHP 7.4+.
 
 = 2.6 May 11, 2020 =
 
@@ -337,4 +332,4 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 == Upgrade Notice ==
 
 = 2.6.1 =
-This version mainly fixes some notices and deprecated functions for PHP.
+This version mainly fixes some notices and deprecated functions for PHP 7.4 and FIFU plugin compatibility.
