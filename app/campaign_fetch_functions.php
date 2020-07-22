@@ -754,7 +754,7 @@ class wpematico_campaign_fetch_functions {
 		trigger_error(__('Setting up Featured Image From Url', 'wpematico'), E_USER_NOTICE);
 		remove_action('save_post', 'fifu_save_properties');
 		if(!empty($featured_image) && empty($wpematico_fifu_meta)) {
-			trigger_error(__('Adding featured image post meta:', 'wpematico') . $featured_image, E_USER_NOTICE);
+			trigger_error(__('Adding featured image post meta: ', 'wpematico') . $featured_image, E_USER_NOTICE);
 			$featured_image = html_entity_decode(urldecode($featured_image), ENT_NOQUOTES, 'UTF-8');
 			if(function_exists('fifu_is_on') && fifu_is_on('fifu_query_strings')) {
 				$featured_image = preg_replace('/\?.*/', '', $featured_image);
@@ -771,8 +771,7 @@ class wpematico_campaign_fetch_functions {
 	static function url_meta_set_featured_image_setmeta($current_item, $campaign) {
 		global $wpematico_fifu_meta;
 		if(!empty($wpematico_fifu_meta)) {
-			$current_item['meta']	 = $wpematico_fifu_meta;
-			$wpematico_fifu_meta	 = array();
+			$current_item['meta'] = $wpematico_fifu_meta;
 			add_filter('wpematico_featured_image_attach_id', function() {
 				return 1; // avoid log message No Featured image
 			}, 99, 0);
@@ -782,10 +781,12 @@ class wpematico_campaign_fetch_functions {
 	}
 
 	static function set_attachment_from_url($post_id, $campaign, $item) {
-		trigger_error(__('Fifu save set attachment from URL.', 'wpematico'), E_USER_NOTICE);
-		if(function_exists('fifu_save')) {
-			fifu_save($post_id, false);
+		global $wpematico_fifu_meta;
+		if(!empty($wpematico_fifu_meta) && function_exists('fifu_dev_set_image')) {
+			trigger_error(__('Fifu save set attachment from URL.', 'wpematico'), E_USER_NOTICE);
+			fifu_dev_set_image($post_id, $wpematico_fifu_meta['fifu_image_url']);
 		}
+		$wpematico_fifu_meta	= array();
 	}
 
 	/*	 * * END Adds featured images from URLs instead of upload them * */
