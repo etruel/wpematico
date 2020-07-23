@@ -236,14 +236,16 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
-= 2.6.2 Jul 22, 2020 =
+= 2.6.3 Jul 23, 2020 =
 
+* Fixes on feed URL reading problems.
 * Tweaks on metabox styles for WordPress 5.5
+
+= 2.6.2 Jul 22, 2020 =
 
 #### _Bugfixes:_
 
 * Fixes and improves uses of FIFU plugin to use their functions. 
-* Problems reading the feed url corrected.
 
 #### _Recent (may break) changes:_
 
