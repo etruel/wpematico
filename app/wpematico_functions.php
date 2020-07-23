@@ -1177,7 +1177,7 @@ if(!class_exists('WPeMatico_functions')) {
 			$user_agent									 = apply_filters('wpematico_simplepie_user_agent', $user_agent, $url);
 			$feed->set_useragent($user_agent);
 			$feed->set_feed_url($url);
-			$feed->feed_url								 = rawurldecode($feed->feed_url);
+//			$feed->feed_url								 = rawurldecode($feed->feed_url);
 			$feed->curl_options[CURLOPT_SSL_VERIFYHOST]	 = false;
 			$feed->curl_options[CURLOPT_SSL_VERIFYPEER]	 = false;
 
