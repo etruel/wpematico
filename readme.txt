@@ -11,11 +11,11 @@ License: GPLv2 or later
 WPeMatico is autoblogging in the blink of an eye!  On complete autopilot WPeMatico gets new contents regularly for your site!
 
 == Description ==
-WPeMatico is a very easy to use autoblogging plugin. Organized into campaigns, it publishes your posts automatically from the RSS/Atom and XML feeds of your choice. 
+WPeMatico is a very easy to use autoblogging plugin. Organized into campaigns, it publishes your posts automatically from the RSS/Atom and XML feeds of your choice.
 
 This plugin offers you a nice interface following the WordPress standards that allows you to manage in every campaign all the feeds you import. In order to make your site more user-friendly, you can fetch contents from multiple feeds and arrange them according to categories.
 
-[youtube http://www.youtube.com/watch?v=N9wuKSbp1AE]
+[youtube https://www.youtube.com/watch?v=N9wuKSbp1AE]
 
 
 For XML and RSS fetching, it uses the Simplepie library included in Wordpress or forces to use the external library included in the plugin. As for image and files processing, it uses the core functions of Wordpress.
@@ -53,6 +53,14 @@ You can submit any bug in the [bugtracker](https://github.com/etruel/wpematico/i
 > * Dashboard Widget with campaigns summary.
 > * Option to choose what roles can see the dashboard widget.
 > * Multilanguage ready.
+>
+> #### Some external integrations included:
+> * Allows featured images from URL with _Featured Image from URL_ plugin.
+> * Allows to work with external crons from same server or external cron services websites.
+> * Allows to publish forums, topics and answers in BBPress forums.
+> * Allows to publish from XML custom feeds setting up their configurations.
+> * Publishing from YouTube playlists, channels and profile feeds.
+> * Allows to publish in multiple languages with Polylang plugin. Requires **Polylang** and [WPeMatico Polylang](https://wordpress.org/plugins/wpematico-polylang/?utm_source=extension&utm_medium=description_tab&utm_content=wpematico-polylang&utm_campaign=readme) plugins installed.
  
 #### With lots of amazing and professional features to work with images and content parsers and filters.
  
@@ -217,17 +225,27 @@ Don't hesitate to [give your feedback](https://wordpress.org/support/view/plugin
 
 [nikolovtmw](https://bitbucket.org/nikolovtmw/) has reported the Deprecated Synchronous XMLHttpRequest and provided the code to solve it! Thanks!
 
-Features supported by Thomas from [Invade It](http://www.invadeit.co.th): Filter images by width or height.
+Features supported by Thomas from [Invade It](https://www.invadeit.co.th): Filter images by width or height.
 
-Eli from [Eli the Computer Guy](http://www.elithecomputerguy.com/). There’s an excelent video on Youtube [Use WPeMatico to Create a Free WordPress AutoBlog for Legitimate Purposes](https://www.youtube.com/watch?v=CX22kAeUKY8) 
+Eli from [Eli the Computer Guy](https://www.elithecomputerguy.com/). There’s an excelent video on Youtube [Use WPeMatico to Create a Free WordPress AutoBlog for Legitimate Purposes](https://www.youtube.com/watch?v=CX22kAeUKY8) 
 Later I've added subtitles and added it above in this page.
 
-Branco [WebHostingGeeks.com](http://webhostinggeeks.com/user-reviews/).  Romanian & Slovak languages files.
+Branco [WebHostingGeeks.com](https://webhostinggeeks.com/user-reviews/).  Romanian & Slovak languages files.
 
-We are receiving tutorials in text, pdf, videos and ideas for current and new features. All are welcome. Thank you! 
+We are receiving tutorials in text, pdf, videos and ideas for current and new features. All are welcome. Thank you!
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
+= 2.6.2 Jul 22, 2020 =
+
+#### _Bugfixes:_
+
+* Fixes and improves uses of FIFU plugin to use their functions. 
+
+#### _Recent (may break) changes:_
+
+* Tweaks the feed URL parsers to include URLs with %20 in it.
+
 = 2.6.1 Jun 25, 2020 =
 
 * Tweaks on help texts on Featured Image from URL option in campaign.
@@ -302,28 +320,8 @@ Version 2.5 concludes a series of radical changes that we had started since vers
 > * The external URL of CRON has changed since the previous version.  If your campaigns have been freezed for some time, it is because the Cron is not running.  Check out the settings for the new URL.
 > * **Enlarges the version required for the Professional addon to 2.4**
 
-= 2.4.2 Nov 19, 2019 =
-* "app/wpe-cron.php" WAS DEPRECATED and removed from WPeMatico as external cron method.
-* Removed cURL and file_get_contents calls from standard requests in favor of Wordpress http-api.
-* Custom function upload allow partial uploads resuming downloads for big files. This must be activated in plugin Settings screen only if you need to use it.
-* Custom Simplepie library can be activated in plugin Settings screen only if you have problems with the included library in Wordpress.
-* Added options in Settings, in the Advanced metabox on sidebar to deactivate external requests for Extensions.
-* Updated privacy Terms in readme file and inside plugin, About screen.
-* Updated EDD plugin Updater for manage extensions licenses.
-
-= 2.4.1 Oct 09, 2019 =
-* Fixes a bug in the new method to add categories and tags to posts by cron.
-
-= 2.4.0 Oct 08, 2019 =
-* Improved from scratch the external cron processes.  If use external cron you should take a look at the new URLs in Settings.
-* Added tag metaboxes on BBPress Topics post type.
-* Improved the tags and categories insertion into the posts.
-* Changed debug file printed constants to a limited whitelist of them.
-* Fixes some issues in campaign edit js alerts.
-* Fixes a php warning on settings page.
-
 = Earlier versions =
-For the changelog of earlier versions, please refer to changelog.md file or [the changelog on wpematico.com](http://www.wpematico.com/wpematico-changelog/).
+For the changelog of earlier versions, please refer to changelog.md file or [the changelog on wpematico.com](https://www.wpematico.com/wpematico-changelog/).
 
 = 0.1 Nov 17, 2010 =
 * initial release in WordPress Repository
@@ -331,5 +329,5 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 
-= 2.6.1 =
-This version mainly fixes some notices and deprecated functions for PHP 7.4 and FIFU plugin compatibility.
+= 2.6.2 =
+This version fixes FIFU plugin compatibility and the feed URL parsers to include URLs with %20 in it. If you're using weird URL Feeds be sure to test it in development environment before use.

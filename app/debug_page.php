@@ -1108,7 +1108,7 @@ function wpematico_show_data_info() {
 				<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('The maximum amount of memory (RAM) that your site can use at one time.', 'wpematico') . '">[?]</a>'; ?></td>
 				<td><?php
 					if($wp_memory < 128000000) {
-						echo '<mark class="no">' . sprintf(__('%s - We recommend setting memory to at least <strong>128MB</strong>. <br /> Please define memory limit in <strong>wp-config.php</strong> file. To learn how, see: <a href="%s" target="_blank">Increasing memory allocated to PHP.</a>', 'wpematico'), size_format($wp_memory), 'http://codex.wordpress.org/Editing_wp-config.php#Increasing_memory_allocated_to_PHP') . '</mark>';
+						echo '<mark class="no">' . sprintf(__('%s - We recommend setting memory to at least <strong>128MB</strong>. <br /> Please define memory limit in <strong>wp-config.php</strong> file. To learn how, see: <a href="%s" target="_blank">Increasing memory allocated to PHP.</a>', 'wpematico'), size_format($wp_memory), 'https://wordpress.org/support/article/editing-wp-config-php/#increasing-memory-allocated-to-php') . '</mark>';
 					}else {
 						echo '<mark class="yes">' . size_format($wp_memory) . '</mark>';
 					}
