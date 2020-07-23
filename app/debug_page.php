@@ -36,7 +36,7 @@ function wpematico_feed_viewer() {
 		or ! strpos($_POST['_referer'], "post_type=wpematico&page=wpematico_settings&tab=debug_info&section=feed_viewer"))
 		return false;
 
-	$url				 = $_POST['url'];
+	$url				 = esc_url_raw($_POST['url']);
 	$fetch_feed_params	 = array(
 		'url'			 => $url,
 		'stupidly_fast'	 => true,

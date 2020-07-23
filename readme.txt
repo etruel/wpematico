@@ -243,6 +243,7 @@ You can send your files to e-mail wpematico [at] etruel.com
 #### _Bugfixes:_
 
 * Fixes and improves uses of FIFU plugin to use their functions. 
+* Problems reading the feed url corrected.
 
 #### _Recent (may break) changes:_
 

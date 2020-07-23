@@ -404,7 +404,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 					$pos = strpos($feed, ' '); // The feed URL can't has white spaces.
 					if ($pos === false) {
 						$fetch_feed_params = array(
-							'url' 			=> $feed,
+							'url' 			=> esc_url_raw($feed),
 							'stupidly_fast' => true,
 							'max' 			=> 0,
 							'order_by_date' => false,
