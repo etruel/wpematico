@@ -56,15 +56,20 @@ if(!class_exists('WPeMatico_Settings')) :
 					box-shadow: 2px 2px 3px #888888;
 					background: #FFF;
 				}
-
 				.ui-menu-item {
 					list-style-type: none;
 					padding: 10px;
 				}
-
 				.ui-menu-item:hover {
 					background: #F1F1F1;
-				}				
+				}		
+				.postbox .hndle{
+					border-bottom: 1px solid #ccd0d4;
+				}
+				.postbox .handlediv{
+					float: right;
+					text-align: center;
+				}
 			</style>
 
 			<?php

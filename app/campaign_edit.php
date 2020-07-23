@@ -46,23 +46,24 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		if($post->post_type != 'wpematico') return $post_id;
 		?>
 <style type="text/css">
-	#post_format-box h2.hndle {background: #7afed1;	}
-	#campaign_types h2.hndle {background: #b4ceb1;}
-	#category-box h2.hndle {background: #f09999;}
-	#post_tag-box h2.hndle {background: #f997c7;}
-	#log-box h2.hndle {background: #55a288;}
-	#feeds-box h2.hndle {background: #eb9600;}
-	#xml-campaign-box h2.hndle {background: #ce5c00;} /* #91a78d */
-	#youtube-box h2.hndle {background: red; color: white;}
-	#bbpress-box h2.hndle {background: #8DC770;}
-	#options-box h2.hndle {background: #84f384;}
-	#cron-box h2.hndle {background: #d4b388;} /* cron en otra metabox */
-	#images-box h2.hndle {background: #e1fb34;}
-	#template-box h2.hndle {background: #c1fefe;}
-	#word2cats-box h2.hndle {background: #f6e3c5;}
-	#rewrite-box h2.hndle {background: #ffb3be;}
-	#fullcontent-box h2.hndle {background: #006100;	color: white;}
-	#submitdiv h2.hndle {background: #0085ba;	color: white;}
+	.postbox-header h2.hndle .dashicons{ margin-right: 5px; }
+	#post_format-box h2.hndle, #post_format-box .postbox-header {background: #7afed1; justify-content: initial;}
+	#campaign_types h2.hndle, #campaign_types .postbox-header {background: #b4ceb1; justify-content: initial;}
+	#category-box h2.hndle, #category-box .postbox-header {background: #f09999; justify-content: initial;}
+	#post_tag-box h2.hndle, #post_tag-box .postbox-header {background: #f997c7; justify-content: initial;}
+	#log-box h2.hndle, #log-box .postbox-header {background: #55a288; justify-content: initial;}
+	#feeds-box h2.hndle, #feeds-box .postbox-header {background: #eb9600; justify-content: initial;}
+	#xml-campaign-box h2.hndle, #xml-campaign-box .postbox-header {background: #ce5c00; justify-content: initial;} /* #91a78d */
+	#youtube-box h2.hndle, #youtube-box .postbox-header {background: red; color: white; justify-content: initial;}
+	#bbpress-box h2.hndle, #bbpress-box .postbox-header {background: #8DC770; justify-content: initial;}
+	#options-box h2.hndle, #options-box .postbox-header {background: #84f384; justify-content: initial;}
+	#cron-box h2.hndle, #cron-box .postbox-header {background: #d4b388; justify-content: initial;} /* cron en otra metabox */
+	#images-box h2.hndle, #images-box .postbox-header {background: #e1fb34; justify-content: initial;}
+	#template-box h2.hndle, #template-box .postbox-header {background: #c1fefe; justify-content: initial;}
+	#word2cats-box h2.hndle, #word2cats-box .postbox-header {background: #f6e3c5; justify-content: initial;}
+	#rewrite-box h2.hndle, #rewrite-box .postbox-header {background: #ffb3be; justify-content: initial;}
+	#fullcontent-box h2.hndle, #fullcontent-box .postbox-header {background: #006100;	color: white; justify-content: initial;}
+	#submitdiv h2.hndle, #submitdiv .postbox-header {background: #0085ba;	color: white; justify-content: initial;}
 	.ruedita{background: url(<?php echo admin_url('images/spinner.gif'); ?>) no-repeat 4px !important;}
 	<?php
 		$CampaignTypesArray =  self::campaign_type_options();

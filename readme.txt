@@ -238,6 +238,8 @@ You can send your files to e-mail wpematico [at] etruel.com
 == Changelog ==
 = 2.6.2 Jul 22, 2020 =
 
+* Tweaks on metabox styles for WordPress 5.5
+
 #### _Bugfixes:_
 
 * Fixes and improves uses of FIFU plugin to use their functions. 
