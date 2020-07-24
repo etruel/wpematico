@@ -338,4 +338,4 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 == Upgrade Notice ==
 
 = 2.6.3 =
-This version fixes FIFU plugin compatibility and the feed URL parsers to include URLs with %20 in it. If you're using weird URL Feeds be sure to test it in development environment before use.
+This version fixes compatibility with incoming WordPress 5.5 and Simplepie 1.5.5 included in it and some other feed URL parsers to include URLs with %20 in it. If you're using weird URL Feeds be sure to test it in development environment before use.
