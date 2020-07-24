@@ -3,7 +3,7 @@ Contributors: etruel, sniuk, khaztiel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,RSS to Post,Feed to Post,XML to post,autoblog,rss aggregator,Feed,rss to post,syndication,xml import,Post,Posts,aggregation,atom,bot,content,writing
 Requires at least: 4.1
-Tested up to: 5.4.2
+Tested up to: 5.5
 Requires PHP: 5.3
 Stable tag: trunk
 License: GPLv2 or later
@@ -238,8 +238,11 @@ You can send your files to e-mail wpematico [at] etruel.com
 == Changelog ==
 = 2.6.3 Jul 23, 2020 =
 
-* Fixes on feed URL reading problems.
-* Tweaks on metabox styles for WordPress 5.5
+* Ready for WordPress 5.5
+* Compatible with the latest Simplepie 1.5.5 which will be updated in Wordpress 5.5
+* We continue to improve the feed URL parsers when saving campaigns and on the feed reader screen.
+* Tweak many styles to fit the new WordPress 5.5
+* Updated .pot file to latest text strings. (We'll have news on this topic very soon :)
 
 = 2.6.2 Jul 22, 2020 =
 
@@ -334,5 +337,5 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 
-= 2.6.2 =
+= 2.6.3 =
 This version fixes FIFU plugin compatibility and the feed URL parsers to include URLs with %20 in it. If you're using weird URL Feeds be sure to test it in development environment before use.
