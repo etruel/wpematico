@@ -236,13 +236,16 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
-= 2.6.3 Jul 23, 2020 =
+= 2.6.3 Jul 30, 2020 =
 
 * Ready for WordPress 5.5
 * Compatible with the latest Simplepie 1.5.5 which will be updated in Wordpress 5.5
 * We continue to improve the feed URL parsers when saving campaigns and on the feed reader screen.
 * Tweak many styles to fit the new WordPress 5.5
-* Updated .pot file to latest text strings. (We'll have news on this topic very soon :)
+* Improves the way to load the language files.
+* Updated .pot file to latest text strings.
+* Finished spanish translations.
+* Added and partially updated Romanian, Dutch, German, Russian, Chinese, Persian & Slovak languages files.
 
 = 2.6.2 Jul 22, 2020 =
 

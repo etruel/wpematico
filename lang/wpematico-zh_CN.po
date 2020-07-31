@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: WPeMatico 2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-23 17:59-0300\n"
-"PO-Revision-Date: 2020-07-23 18:05-0300\n"
-"Last-Translator: WPeMatico.cn <help@wpematico.cn>\n"
-"Language-Team: NetMdP <esteban@netmdp.com>\n"
+"PO-Revision-Date: 2020-07-30 23:43+0000\n"
+"Last-Translator: \n"
+"Language-Team: Chinese (China)\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Loco https://localise.biz/\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
 "_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
@@ -19,6 +19,7 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: .git\n"
+"X-Loco-Version: 2.3.3; wp-5.4.2"
 
 #: wpematico/app/addons_page.php:92 wpematico/app/addons_page.php:101
 msgid "Add-ons"
@@ -129,8 +130,8 @@ msgid ""
 "all the requirements of WPeMatico please check your <a href=\"%s\">System "
 "Status</a>, if everything is ok try again."
 msgstr ""
-"发生了一个错误, 这可能是因为 web 服务器没有达到WPeMatico 的运行要求, 请检查 "
-"<a href=\"%s\"> 系统状态 </a>, 如果检查一切正常, 请再重试一次。"
+"发生了一个错误, 这可能是因为 web 服务器没有达到WPeMatico 的运行要求, 请检查 <a href=\"%s\"> 系统状态 </a>, "
+"如果检查一切正常, 请再重试一次。"
 
 #: wpematico/app/campaign_edit.php:128
 msgid "Wizard"
@@ -138,7 +139,7 @@ msgstr "向导"
 
 #: wpematico/app/campaign_edit.php:129
 msgid "Loading..."
-msgstr ""
+msgstr "正在装入..."
 
 #: wpematico/app/campaign_edit.php:137
 msgid "Update Campaign to save changes."
@@ -211,7 +212,7 @@ msgstr "选择类别"
 
 #: wpematico/app/campaign_edit.php:183
 msgid "Please refresh your browser and try again."
-msgstr ""
+msgstr "请刷新浏览器，然后重试。"
 
 #: wpematico/app/campaign_edit.php:346
 #, php-format
@@ -275,7 +276,7 @@ msgstr "bbPress论坛选项"
 #: wpematico/app/campaign_edit_functions.php:204
 #: wpematico/app/campaign_help.php:255
 msgid "XML Campaign Type"
-msgstr ""
+msgstr "XML 营销活动类型"
 
 #: wpematico/app/campaign_edit_functions.php:37
 msgid "Options for this campaign"
@@ -455,8 +456,7 @@ msgstr "使用自定义帖子模板"
 msgid ""
 "\"{content}\" must exist in the template if you want to see the content in "
 "your post. Works after the features above."
-msgstr ""
-"如果您想查看帖子中的内容，“{content}”必须存在于模板中. 在上述功能之后运行."
+msgstr "如果您想查看帖子中的内容，“{content}”必须存在于模板中. 在上述功能之后运行."
 
 #: wpematico/app/campaign_edit_functions.php:384
 msgid "Allowed tags"
@@ -547,11 +547,11 @@ msgstr "Campaign ID."
 
 #: wpematico/app/campaign_edit_functions.php:437
 msgid "The date of the post item."
-msgstr ""
+msgstr "发布项的日期。"
 
 #: wpematico/app/campaign_edit_functions.php:438
 msgid "The time of the post item."
-msgstr ""
+msgstr "发布项的时间。"
 
 #: wpematico/app/campaign_edit_functions.php:441
 #: wpematico/app/campaign_help.php:291
@@ -592,9 +592,7 @@ msgid ""
 "Also you can add a gallery with three columns with all thumbnails images "
 "clickables at the bottom of every content, but before source link and author "
 "name, the post template would look like this:"
-msgstr ""
-"您还可以在每个内容的底部添加一个包含三列的图库，所有缩略图图像都可以点击，但"
-"在源链接和作者姓名之前，帖子模板将如下所示："
+msgstr "您还可以在每个内容的底部添加一个包含三列的图库，所有缩略图图像都可以点击，但在源链接和作者姓名之前，帖子模板将如下所示："
 
 #: wpematico/app/campaign_edit_functions.php:448
 #: wpematico/app/campaign_help.php:298
@@ -634,7 +632,7 @@ msgstr "将内容中的第一个图片设置为特色图片."
 #: wpematico/app/campaign_help.php:160 wpematico/app/settings_help.php:57
 #: wpematico/app/settings_page.php:349
 msgid "Use Featured Image from URL."
-msgstr ""
+msgstr "使用 URL中的特色图像。"
 
 #: wpematico/app/campaign_edit_functions.php:510
 #: wpematico/app/campaign_help.php:166
@@ -706,9 +704,7 @@ msgid ""
 "NOTE: If disable both controls, all items will be fetched again and again... "
 "and again, ad infinitum.  If you want allow duplicated titles, just activate "
 "\"Allow duplicated titles\"."
-msgstr ""
-"注意：如果停用这两个控件，所有的项目会重复提取，如果你希望允许重复标题，只需"
-"要勾选：“允许重复标题”"
+msgstr "注意：如果停用这两个控件，所有的项目会重复提取，如果你希望允许重复标题，只需要勾选：“允许重复标题”"
 
 #: wpematico/app/campaign_edit_functions.php:661
 #: wpematico/app/settings_page.php:590
@@ -749,7 +745,7 @@ msgstr "使用Feed项目的时间."
 #: wpematico/app/campaign_edit_functions.php:716
 #: wpematico/app/campaign_help.php:36
 msgid "Force item date."
-msgstr ""
+msgstr "强制项日期。"
 
 #: wpematico/app/campaign_edit_functions.php:723
 #: wpematico/app/campaign_help.php:55
@@ -773,7 +769,7 @@ msgstr "作者:"
 #: wpematico/app/campaign_edit_functions.php:746
 #: wpematico/app/campaign_help.php:71
 msgid "Fill Excerpt with item description field."
-msgstr ""
+msgstr "使用项目描述字段填写摘录。"
 
 #: wpematico/app/campaign_edit_functions.php:750
 msgid "Strip All HTML Tags"
@@ -857,11 +853,10 @@ msgstr "激活计划任务"
 
 #: wpematico/app/campaign_edit_functions.php:891
 msgid ""
-"Working as <a href=\"http://wikipedia.org/wiki/Cron\" target=\"_blank"
-"\">Cron</a> job schedule:"
+"Working as <a href=\"http://wikipedia.org/wiki/Cron\" target=\"_blank\">"
+"Cron</a> job schedule:"
 msgstr ""
-"以 <a href=“http://wikipedia.org/wiki/Cron” target=“_blank”>Cron</a> 作为任务"
-"调度:"
+"以 <a href=“http://wikipedia.org/wiki/Cron” target=“_blank”>Cron</a> 作为任务调度:"
 
 #: wpematico/app/campaign_edit_functions.php:893
 msgid "Next runtime:"
@@ -1010,19 +1005,19 @@ msgstr "滚动feeds列表"
 
 #: wpematico/app/campaign_edit_functions.php:1107
 msgid "Use [embed] WP shortcode instead Youtube shared iframe."
-msgstr ""
+msgstr "使用 [embed] WP shortcode 替代 Youtube 共享 iframe。"
 
 #: wpematico/app/campaign_edit_functions.php:1108
 msgid "Change the sizes of the video frames."
-msgstr ""
+msgstr "更改视频帧的大小。"
 
 #: wpematico/app/campaign_edit_functions.php:1110
 msgid "Width:"
-msgstr ""
+msgstr "宽度 :"
 
 #: wpematico/app/campaign_edit_functions.php:1111
 msgid "Height:"
-msgstr ""
+msgstr "高度 :"
 
 #: wpematico/app/campaign_edit_functions.php:1113
 msgid "Ignore:"
@@ -1048,19 +1043,16 @@ msgstr "如果你没有使用bbPress插件.就不要选这个Campaign类型"
 
 #: wpematico/app/campaign_edit_functions.php:1132
 msgid ""
-"If you want to install the forums plugins in your site go to your \"Plugins"
-"\" page, \"Add New\", then install and activate the bbPress Plugin from "
-"Automattic."
-msgstr ""
-"如果您想在网站上安装论坛插件, 请转到 \"插件\" 页面, \"添加新插件”, 然后安装并"
-"激活 bbPress 插件."
+"If you want to install the forums plugins in your site go to your "
+"\"Plugins\" page, \"Add New\", then install and activate the bbPress Plugin "
+"from Automattic."
+msgstr "如果您想在网站上安装论坛插件, 请转到 \"插件\" 页面, \"添加新插件”, 然后安装并激活 bbPress 插件."
 
 #: wpematico/app/campaign_edit_functions.php:1134
 msgid ""
 "If you do not select a forum, this will create new forums. Otherwise, this "
 "will create new topics in the selected forum."
-msgstr ""
-"如果您没有选择论坛, 则会创建新的论坛，否则, 它会在选定的论坛中创建新主题。"
+msgstr "如果您没有选择论坛, 则会创建新的论坛，否则, 它会在选定的论坛中创建新主题。"
 
 #: wpematico/app/campaign_edit_functions.php:1136
 #: wpematico/app/campaign_edit_functions.php:1137
@@ -1152,8 +1144,7 @@ msgstr "PHP 安全模式!!!最大执行时间为%1$d秒."
 msgid ""
 "Memory limit set to %1$s ,because can not use PHP: memory_get_usage() "
 "function to dynamically increase the Memory!"
-msgstr ""
-"内存限制设置为%1$s, 因为不能使用 PHP: memory_get_usage () 函数来动态增加内存!"
+msgstr "内存限制设置为%1$s, 因为不能使用 PHP: memory_get_usage () 函数来动态增加内存!"
 
 #: wpematico/app/campaign_fetch.php:106
 #, php-format
@@ -1222,7 +1213,7 @@ msgstr "如果来源日期超出范围.则使用当前日期"
 
 #: wpematico/app/campaign_fetch.php:326
 msgid "Forced original date to post."
-msgstr ""
+msgstr "强制原始日期发布。"
 
 #: wpematico/app/campaign_fetch.php:451
 msgid "Assigning Auto Categories."
@@ -1486,19 +1477,19 @@ msgstr "成功删除."
 
 #: wpematico/app/campaign_fetch_functions.php:754
 msgid "Setting up Featured Image From Url"
-msgstr ""
+msgstr "从 URL 设置特色图像"
 
 #: wpematico/app/campaign_fetch_functions.php:757
 msgid "Adding featured image post meta: "
-msgstr ""
+msgstr "添加特色图像后元: "
 
 #: wpematico/app/campaign_fetch_functions.php:786
 msgid "Fifu save set attachment from URL."
-msgstr ""
+msgstr "Fifu 保存来自 URL的附件。"
 
 #: wpematico/app/campaign_fetch_functions.php:842
 msgid "Parsing Youtube video and feed item contents."
-msgstr ""
+msgstr "解析 Youtube 视频和订阅源项内容。"
 
 #: wpematico/app/campaign_fetch_functions.php:952
 msgid "Looking for audios in content."
@@ -1554,9 +1545,7 @@ msgid ""
 "Recommended to use only if the feeds are not ordered by date. The campaign "
 "can lose some items if the feed are not ordered by date from newest to "
 "oldest."
-msgstr ""
-"建议仅在按日期排序的feed时使用.如果feed没有按照从新到旧的日期排序,则Campaign"
-"可能会丢失一些文章."
+msgstr "建议仅在按日期排序的feed时使用.如果feed没有按照从新到旧的日期排序,则Campaign可能会丢失一些文章."
 
 #: wpematico/app/campaign_help.php:29
 msgid ""
@@ -1568,9 +1557,7 @@ msgstr "使用该文章中的原始日期，而不是WPeMatico创建文章的时
 msgid ""
 "To avoid incoherent dates due to lousy setup feeds, WPeMatico will use the "
 "feed date only if these conditions are met:"
-msgstr ""
-"为了避免因糟糕的设置导致Feed日期不一致，只有满足以下条件，WPeMatico才会使用"
-"Feed日期："
+msgstr "为了避免因糟糕的设置导致Feed日期不一致，只有满足以下条件，WPeMatico才会使用Feed日期："
 
 #: wpematico/app/campaign_help.php:32
 msgid ""
@@ -1586,7 +1573,7 @@ msgstr "提取的Feed项目日期不能是未来."
 msgid ""
 "Use the feed item date ignoring incoherent dates like past posts published "
 "after new ones."
-msgstr ""
+msgstr "使用订阅源项日期将忽略不连贯的日期，如新发布后发布的帖子。"
 
 #: wpematico/app/campaign_help.php:41
 msgid "This option make the title permalink to original URL."
@@ -1616,8 +1603,7 @@ msgstr "此功能允许跟踪永久链接上或不重定向URL，以便获取内
 msgid ""
 "You can UNSELECT this if uses source permalinks and the obtained URLs are "
 "not the the originals."
-msgstr ""
-"如果你使用内容源的永久链接来获取的URL.不是默认URL，则可以取消选中此选项。"
+msgstr "如果你使用内容源的永久链接来获取的URL.不是默认URL，则可以取消选中此选项。"
 
 #: wpematico/app/campaign_help.php:52
 msgid "CHECK this option to improve fetching speed and performance."
@@ -1651,16 +1637,16 @@ msgstr "此Campaign创建的文章分配给该作者。"
 
 #: wpematico/app/campaign_help.php:72
 msgid ""
-"Wordpress defaults are making the excerpts \"on the fly\" from post "
-"contents, but check this option if you want to fill in the excerpt field "
-"with the description tag of the item. "
-msgstr ""
+"Wordpress defaults are making the excerpts \"on the fly\" from post contents,"
+" but check this option if you want to fill in the excerpt field with the "
+"description tag of the item. "
+msgstr "Wordpress 缺省值是从帖子内容中选择 \" fly\" 中的摘录，但如果要用项的描述标记填写摘录字段，请选中此选项。 "
 
 #: wpematico/app/campaign_help.php:73
 msgid ""
 "You could get the same value of the content because if the description field "
 "does not exists the content field will be used. "
-msgstr ""
+msgstr "您可以获取内容的相同值，因为如果描述字段不存在，那么将使用内容字段。 "
 
 #: wpematico/app/campaign_help.php:76
 msgid "Strip All HTML Tags."
@@ -1705,17 +1691,16 @@ msgstr "规范填写Feed URL字段."
 
 #: wpematico/app/campaign_help.php:96
 msgid ""
-"For Youtube Channel as: https://www.youtube.com/feeds/videos.xml?channel_id="
-"%channelid%"
+"For Youtube Channel as: https://www.youtube.com/feeds/videos.xml?"
+"channel_id=%channelid%"
 msgstr ""
-"对于Youtube频道.请访问：https://www.youtube.com/feeds/videos.xml?channel_id="
-"%channelid％"
+"对于Youtube频道.请访问：https://www.youtube.com/feeds/videos.xml?"
+"channel_id=%channelid％"
 
 #: wpematico/app/campaign_help.php:97
 msgid ""
 "For Youtube User as: https://www.youtube.com/feeds/videos.xml?user=%username%"
-msgstr ""
-"对于Youtube用户:https://www.youtube.com/feeds/videos.xml?user=％username%%"
+msgstr "对于Youtube用户:https://www.youtube.com/feeds/videos.xml?user=％username%%"
 
 #: wpematico/app/campaign_help.php:98
 msgid ""
@@ -1731,12 +1716,12 @@ msgstr "Campagin会提取标题，图片，嵌入的视频和文章描述."
 
 #: wpematico/app/campaign_help.php:102
 msgid "Use [embed]"
-msgstr ""
+msgstr "使用 [嵌入]"
 
 #: wpematico/app/campaign_help.php:103
 msgid ""
 "Use [embed] WordPress shortcode instead Youtube shared iframe html code."
-msgstr ""
+msgstr "使用 [embed] WordPress 短代码，而不是 Youtube 共享 iframe html 代码。"
 
 #: wpematico/app/campaign_help.php:104
 msgid ""
@@ -1744,18 +1729,20 @@ msgid ""
 "to set of a maximum (but not fixed) width and height. This was added as of "
 "WordPress 2.9 and is used like this: "
 msgstr ""
+"\" 嵌入 \" 功能允许您使用简单的快捷方式来包装嵌入项，以设置最大 ( 但不固定 ) 宽度和高度。 这已添加到 WordPress 2.9 "
+"中，并使用如下所示 : "
 
 #: wpematico/app/campaign_help.php:108
 msgid "Video sizes"
-msgstr ""
+msgstr "视频大小"
 
 #: wpematico/app/campaign_help.php:109
 msgid "Width and Height of the video frame in the post."
-msgstr ""
+msgstr "视频帧在帖子中的宽度和高度。"
 
 #: wpematico/app/campaign_help.php:110
 msgid "Recommended left 0 (zero) for responsive."
-msgstr ""
+msgstr "建议左 0 (零) 响应。"
 
 #: wpematico/app/campaign_help.php:115
 msgid "How works the bbPress Campaign Type"
@@ -1766,9 +1753,7 @@ msgid ""
 "You can UN-select forum to create new Forums or select an already created "
 "bbPress Forum to publish new Topics inside it, according to the items in the "
 "feed."
-msgstr ""
-"您可以根据Feed中的项目，通过取消选择论坛来创建新论坛或选择已创建的bbPress论坛"
-"以在其中发布新主题。"
+msgstr "您可以根据Feed中的项目，通过取消选择论坛来创建新论坛或选择已创建的bbPress论坛以在其中发布新主题。"
 
 #: wpematico/app/campaign_help.php:117
 msgid ""
@@ -1789,9 +1774,7 @@ msgid ""
 "You can define here on what times you wants to fetch this feeds.  This has 5 "
 "min. of margin on WP-cron schedules.  If you set up an external cron en "
 "WPeMatico Settings, you'll get better preciseness."
-msgstr ""
-"您可以在此处定义要获取此Feed的时间.WP-cron计划调度:如果您设置外部cron和"
-"WPeMatico设置.准确性更高."
+msgstr "您可以在此处定义要获取此Feed的时间.WP-cron计划调度:如果您设置外部cron和WPeMatico设置.准确性更高."
 
 #: wpematico/app/campaign_help.php:125
 msgid "You can see some examples here:"
@@ -1836,9 +1819,7 @@ msgid ""
 "All images found in &lt;img&gt; tags in content will be uploaded to your "
 "current WP Upload Folder and replaced urls in content . Otherwise remains "
 "links to source hosting server."
-msgstr ""
-"在抓取的内容中&lt;img&gt;标签中的所有图片都会上传到您当前的WP上传文件夹，并替"
-"换内容中的网址。否则仍然是内容源托管服务器的链接."
+msgstr "在抓取的内容中&lt;img&gt;标签中的所有图片都会上传到您当前的WP上传文件夹，并替换内容中的网址。否则仍然是内容源托管服务器的链接."
 
 #: wpematico/app/campaign_help.php:144 wpematico/app/settings_help.php:30
 msgid "Attach Images to post."
@@ -1849,9 +1830,7 @@ msgid ""
 "All images will be attached to the owner post and added to Wordpress Media "
 "library; necessary for Featured image, but if you see that the job process "
 "is too slowly you can deactivate this here."
-msgstr ""
-"所有图片都会添加到所有者文章并添加到Wordpress媒体库;特色图片是必选的.但如果您"
-"发现任务执行太慢.可以在此处停用此功能。"
+msgstr "所有图片都会添加到所有者文章并添加到Wordpress媒体库;特色图片是必选的.但如果您发现任务执行太慢.可以在此处停用此功能。"
 
 #: wpematico/app/campaign_help.php:148 wpematico/app/settings_help.php:38
 msgid "Don't link external images."
@@ -1861,9 +1840,7 @@ msgstr "不要链接外部图片."
 msgid ""
 "If selected and image upload get error, then delete the 'src' attribute of "
 "the &lt;img&gt;. Check this for don't link images from external sites."
-msgstr ""
-"如果选中的图片上传出错，则删除该&lt;img&gt;的&#39;src&#39;标签.检查此项是否链"
-"接外部站点的图片,"
+msgstr "如果选中的图片上传出错，则删除该&lt;img&gt;的&#39;src&#39;标签.检查此项是否链接外部站点的图片,"
 
 #: wpematico/app/campaign_help.php:152 wpematico/app/settings_help.php:45
 msgid "Use srcset attribute instead of src of &lt;img&gt; tag."
@@ -1874,9 +1851,7 @@ msgid ""
 "Selecting this option searches the srcset attribute if it exists, it "
 "searches for the larger image to overwrite the src attribute of the &lt;"
 "img&gt; tag."
-msgstr ""
-"选择此选项会搜索srcset属性（如果存在）.它会搜索较大的图片并覆盖&lt;img&gt;标"
-"记为src的属性."
+msgstr "选择此选项会搜索srcset属性（如果存在）.它会搜索较大的图片并覆盖&lt;img&gt;标记为src的属性."
 
 #: wpematico/app/campaign_help.php:156 wpematico/app/settings_help.php:52
 msgid "Set first image on content as Featured Image."
@@ -1892,7 +1867,7 @@ msgstr "选中此项可上传内容中的每张图片，并设置第一张图片
 msgid ""
 "Check this to use Featured Image from URL plugin. Be sure it is installed "
 "and activated."
-msgstr ""
+msgstr "选中此项以使用 URL 插件中的 \" 特色图像 \" 。 请确保已安装并激活。"
 
 #: wpematico/app/campaign_help.php:162 wpematico/app/settings_help.php:54
 #: wpematico/app/settings_help.php:59
@@ -1901,25 +1876,23 @@ msgstr "阅读"
 
 #: wpematico/app/campaign_help.php:162 wpematico/app/settings_help.php:59
 msgid "Featured Image from URL"
-msgstr ""
+msgstr "来自 URL 的特色图像"
 
 #: wpematico/app/campaign_help.php:162 wpematico/app/settings_help.php:59
 msgid "plugin in WordPress repository."
-msgstr ""
+msgstr "WordPress 存储库中的插件。"
 
 #: wpematico/app/campaign_help.php:163
 msgid ""
 "Note if that plugin is not activated, WPeMatico will still save the meta "
 "fields in each post but does't show any featured image."
-msgstr ""
+msgstr "请注意，如果该插件未激活，那么 WPeMattico 仍将保存每个帖子中的元字段，但不会显示任何特色图像。"
 
 #: wpematico/app/campaign_help.php:167
 msgid ""
 "Check this to select a featured image, it doesn't matter what order it have "
 "in the content. You can choice the first, second or third image."
-msgstr ""
-"选中此选项以选择特色图像，跟内容中的顺序无关。您可以选择第一张，第二张或第三"
-"张图片."
+msgstr "选中此选项以选择特色图像，跟内容中的顺序无关。您可以选择第一张，第二张或第三张图片."
 
 #: wpematico/app/campaign_help.php:172 wpematico/app/settings_help.php:64
 msgid "Check this to strip the Featured Image from the post content."
@@ -1955,9 +1928,7 @@ msgid ""
 "All audios found in &lt;audio&gt; tags in content will be uploaded to your "
 "current WP Upload Folder and replaced urls in content . Otherwise remains "
 "links to source hosting server."
-msgstr ""
-"在抓取的内容中&lt;img&gt;标签中的所有音频都会上传到您当前的WP上传文件夹，并替"
-"换内容中的网址。否则仍然是内容源托管服务器的链接."
+msgstr "在抓取的内容中&lt;img&gt;标签中的所有音频都会上传到您当前的WP上传文件夹，并替换内容中的网址。否则仍然是内容源托管服务器的链接."
 
 #: wpematico/app/campaign_help.php:190 wpematico/app/settings_help.php:84
 msgid "Attach Audios to post."
@@ -1968,9 +1939,7 @@ msgid ""
 "All audios will be attached to the owner post and added to Wordpress Media "
 "library, but if you see that the job process is too slowly you can "
 "deactivate this here."
-msgstr ""
-"所有音频都会添加到作者文章和Wordpress媒体库，但如果您发现上传过程太慢，则可以"
-"在此停用该功能。"
+msgstr "所有音频都会添加到作者文章和Wordpress媒体库，但如果您发现上传过程太慢，则可以在此停用该功能。"
 
 #: wpematico/app/campaign_help.php:194 wpematico/app/settings_help.php:92
 msgid "Don't link external audios."
@@ -1980,9 +1949,7 @@ msgstr "不要链接外部音频."
 msgid ""
 "If selected and audio upload get error, then delete the 'src' attribute of "
 "the &lt;audio&gt;. Check this for don't link audios from external sites."
-msgstr ""
-"如果选中的音频上传错误，则删除&lt;audio&gt;的&#39;src&#39;属性，选此项可以不"
-"从外部站点链接音频。"
+msgstr "如果选中的音频上传错误，则删除&lt;audio&gt;的&#39;src&#39;属性，选此项可以不从外部站点链接音频。"
 
 #: wpematico/app/campaign_help.php:198 wpematico/app/settings_help.php:99
 msgid "Custom Uploads for Audios."
@@ -2014,9 +1981,7 @@ msgid ""
 "All videos found in &lt;video&gt; tags in content will be uploaded to your "
 "current WP Upload Folder and replaced urls in content . Otherwise remains "
 "links to source hosting server."
-msgstr ""
-"在抓取的内容中&lt;img&gt;标签中的所有视频都会上传到您当前的WP上传文件夹，并替"
-"换内容中的网址。否则仍然是内容源托管服务器的链接."
+msgstr "在抓取的内容中&lt;img&gt;标签中的所有视频都会上传到您当前的WP上传文件夹，并替换内容中的网址。否则仍然是内容源托管服务器的链接."
 
 #: wpematico/app/campaign_help.php:213 wpematico/app/settings_help.php:115
 msgid "Attach Videos to post."
@@ -2027,9 +1992,7 @@ msgid ""
 "All videos will be attached to the owner post and added to Wordpress Media "
 "library; necessary for Featured video, but if you see that the job process "
 "is too slowly you can deactivate this here."
-msgstr ""
-"所有视频都会添加到所有者文章并添加到Wordpress媒体库;视频是必选的.但如果您发现"
-"任务执行太慢.可以在此处停用此功能。"
+msgstr "所有视频都会添加到所有者文章并添加到Wordpress媒体库;视频是必选的.但如果您发现任务执行太慢.可以在此处停用此功能。"
 
 #: wpematico/app/campaign_help.php:217 wpematico/app/settings_help.php:123
 msgid "Don't link external videos."
@@ -2039,9 +2002,7 @@ msgstr "不要链接外部视频."
 msgid ""
 "If selected and video upload get error, then delete the 'src' attribute of "
 "the &lt;video&gt;. Check this for don't link videos from external sites."
-msgstr ""
-"如果选中的视频上传错误，则删除&lt;video&gt;的&#39;src&#39;属性,检查此项是否链"
-"接外部网站的视频。"
+msgstr "如果选中的视频上传错误，则删除&lt;video&gt;的&#39;src&#39;属性,检查此项是否链接外部网站的视频。"
 
 #: wpematico/app/campaign_help.php:221 wpematico/app/settings_help.php:130
 msgid "Custom Uploads for Videos."
@@ -2063,8 +2024,7 @@ msgid ""
 "When the running campaign found a duplicated post the process is interrupted "
 "because assume that all followed posts, are also duplicates.  You can "
 "disable these controls here."
-msgstr ""
-"当运行中的Campaign发现重复的帖子时，任务会中断，您可以在此处禁用这些控件."
+msgstr "当运行中的Campaign发现重复的帖子时，任务会中断，您可以在此处禁用这些控件."
 
 #: wpematico/app/campaign_help.php:236 wpematico/app/settings_help.php:199
 msgid ""
@@ -2080,8 +2040,7 @@ msgstr "允许重复的文章."
 msgid ""
 "There are two controls for duplicates, title of the post and a hash "
 "generated by last item's url obtained on campaign process."
-msgstr ""
-"重复检查有两个方式，文章标题和在Campaign中获得的最后一个项目网址生成的hash."
+msgstr "重复检查有两个方式，文章标题和在Campaign中获得的最后一个项目网址生成的hash."
 
 #: wpematico/app/campaign_help.php:242 wpematico/app/settings_help.php:205
 msgid ""
@@ -2089,9 +2048,7 @@ msgid ""
 "following items were read before. This option avoids and allows jump every "
 "duplicate and continues reading the feed searching more new items. NOT "
 "RECOMMENDED."
-msgstr ""
-"除非是第一次，当发现重复时，这意味着之前读过所有后续项目。此选项可避免并允许"
-"跳转每个重复项并继续阅读搜索更多新项目的Feed。不建议。"
+msgstr "除非是第一次，当发现重复时，这意味着之前读过所有后续项目。此选项可避免并允许跳转每个重复项并继续阅读搜索更多新项目的Feed。不建议。"
 
 #: wpematico/app/campaign_help.php:243 wpematico/app/settings_help.php:206
 msgid "How it works:"
@@ -2104,35 +2061,30 @@ msgid ""
 "the first duplicated item, this mean that all items following (the old ones) "
 "are also duplicated."
 msgstr ""
-"一般情况下，Feeds都是按日期时间排序。当Campaign运行时，文章从最新到最旧，并在"
-"找到第一个重复文章时停止，这意味着后面的文章也会重复."
+"一般情况下，Feeds都是按日期时间排序。当Campaign运行时，文章从最新到最旧，并在找到第一个重复文章时停止，这意味着后面的文章也会重复."
 
 #: wpematico/app/campaign_help.php:244 wpematico/app/settings_help.php:207
 msgid ""
 "As the hash is checked only by the last retrieved item, selecting this "
 "option may generate duplicate posts if duplicate checking by title does not "
 "work well for a campaign."
-msgstr ""
-"由于hash从最后的文章检查，如果按标题重复检查不适用于Campaign，选择此项可能会"
-"获取重复的文章。"
+msgstr "由于hash从最后的文章检查，如果按标题重复检查不适用于Campaign，选择此项可能会获取重复的文章。"
 
 #: wpematico/app/campaign_help.php:248 wpematico/app/settings_help.php:220
 msgid ""
 "This option is ONLY recommended if you continues with duplicates problems in "
 "your site. This can be given by some non-standards feeds.  NOT RECOMMENDED."
-msgstr ""
-"如果在您的网站中还是出现重复问题，则仅建议使用此选项。这可以通过一些非常规过"
-"滤，不建议。"
+msgstr "如果在您的网站中还是出现重复问题，则仅建议使用此选项。这可以通过一些非常规过滤，不建议。"
 
 #: wpematico/app/campaign_help.php:256
 msgid ""
 "The XML campaign type provides the necessary tools to fetch the items in the "
 "XML files. As if the XMLs were RSS feeds."
-msgstr ""
+msgstr "XML 营销活动类型提供了用于访存 XML 文件中的项的必要工具。 就像 XML 是 RSS 订阅源一样。"
 
 #: wpematico/app/campaign_help.php:260
 msgid "Elements of XML."
-msgstr ""
+msgstr "XML 元素。"
 
 #: wpematico/app/campaign_help.php:261
 msgid ""
@@ -2141,23 +2093,25 @@ msgid ""
 "you should use the Parent Elements in the right column to indicate which "
 "parent the selected node belongs to."
 msgstr ""
+"选择与订阅源项属性对应的 XML 节点，如标题，内容，图像，日期等。 如果所选 XML "
+"节点不是唯一的，那么应该使用右列中的父元素来指示所选节点所属的父节点。"
 
 #: wpematico/app/campaign_help.php:264
 msgid "Parent Element."
-msgstr ""
+msgstr "父元素。"
 
 #: wpematico/app/campaign_help.php:265
 msgid ""
 "The function of the Parent Element is to detect the correct XML node of the "
 "feed Item properties when the node selected on the left is not unique or has "
 "more than one element."
-msgstr ""
+msgstr "父元素的功能是在左侧选择的节点不唯一或具有多个元素时检测订阅源项属性的正确 XML 节点。"
 
 #: wpematico/app/campaign_help.php:266
 msgid ""
 "The selected Parent Element must be the parent of the selected XML node in "
 "the left column."
-msgstr ""
+msgstr "所选父元素必须是左侧列中所选 XML 节点的父元素。"
 
 #: wpematico/app/campaign_help.php:272
 msgid "Enable Post Template."
@@ -2168,17 +2122,13 @@ msgid ""
 "Campaign post template allow to modify the content fetched by adding extra "
 "information, such as text, images, campaign data, etc. before save it as "
 "post content."
-msgstr ""
-"Campaign发布模板允许你按照自己想要的内容拼装，通过添加内容（如文本，图片，广"
-"告系列数据等）来修改所提取的内容."
+msgstr "Campaign发布模板允许你按照自己想要的内容拼装，通过添加内容（如文本，图片，广告系列数据等）来修改所提取的内容."
 
 #: wpematico/app/campaign_help.php:274
 msgid ""
 "You can use some tags that will be replaced for current value. See below the "
 "description and examples on how to use this feature."
-msgstr ""
-"您可以使用一些标签将替换为当前值的标签.请参阅下面有关如何使用此功能的说明和示"
-"例."
+msgstr "您可以使用一些标签将替换为当前值的标签.请参阅下面有关如何使用此功能的说明和示例."
 
 #: wpematico/app/campaign_help.php:278
 msgid "The feed item content."
@@ -2204,8 +2154,8 @@ msgid ""
 "post to category \"Engines\", simply type \"motor\" in the \"Word\" field, "
 "and select \"Engine\" in Categories combo."
 msgstr ""
-"如果帖子内容包含单词“motor”，然后您想将文章分配到“Engines”分类，只需"
-"在“Word”字段中键入“motor”，然后在“Categories”组中选择“Engine”."
+"如果帖子内容包含单词“motor”，然后您想将文章分配到“Engines”分类，只需在“Word”字段中键入“motor”，然后在“Categories”组中选择“Engine”"
+"."
 
 #: wpematico/app/campaign_help.php:308
 msgid "Regular Expressions"
@@ -2221,11 +2171,9 @@ msgid ""
 "line breaks because by default use the entire text field. If you want Case "
 "insensitive on RegEx, you must check the \"Case sensitive\" checkbox below."
 msgstr ""
-"对于高级用户，支持正则表达式。使用此功能可以让您获得更强大的替换功能。以多个"
-"单词替换为例。您可以使用|，而不是使用许多Word2Cat框motor 和 car 分配给引擎"
-"operator：（motor | car），该字段也接受不带参数的正则表达式，应指定多行或换行"
-"符，因为默认情况下使用整个文本字段。如果您希望在RegEx上不区分大小写，则必须选"
-"中下面的“区分大小写”复选框。"
+"对于高级用户，支持正则表达式。使用此功能可以让您获得更强大的替换功能。以多个单词替换为例。您可以使用|，而不是使用许多Word2Cat框motor 和 "
+"car 分配给引擎operator：（motor | "
+"car），该字段也接受不带参数的正则表达式，应指定多行或换行符，因为默认情况下使用整个文本字段。如果您希望在RegEx上不区分大小写，则必须选中下面的“区分大小写”复选框。"
 
 #: wpematico/app/campaign_help.php:314 wpematico/app/settings_help.php:147
 msgid "Content Rewrites."
@@ -2255,9 +2203,7 @@ msgstr "基本的重写："
 msgid ""
 "To replace all occurrences the word ass with butt, simply type ass in the "
 "\"origin field\", and butt in \"rewrite to\"."
-msgstr ""
-"要用butt替换内容中所有的单词”ass”，只需在“origin field”中输入ass，然后"
-"在“rewrite to”中输入."
+msgstr "要用butt替换内容中所有的单词”ass”，只需在“origin field”中输入ass，然后在“rewrite to”中输入."
 
 #: wpematico/app/campaign_help.php:320
 msgid "Title:"
@@ -2268,9 +2214,7 @@ msgid ""
 "If you check \"Title\" checkbox only replace on title. If you un-check "
 "\"Title\" only replace on content. you must insert twice if you want to "
 "replace on both fields."
-msgstr ""
-"如果选中“标题”复选框，则只替换标题。如果您取消选中“标题”，则仅替换内容。如果"
-"要在两个字段上替换，必须插入两次。"
+msgstr "如果选中“标题”复选框，则只替换标题。如果您取消选中“标题”，则仅替换内容。如果要在两个字段上替换，必须插入两次。"
 
 #: wpematico/app/campaign_help.php:322
 msgid "Relinking:"
@@ -2282,8 +2226,8 @@ msgid ""
 "just type google in the \"origin field\" and http://google.com in the "
 "\"relink to\" field."
 msgstr ""
-"如果您想查找所有出现的”Google”并添加链接，只需在“原始字段”中输入google，然后"
-"在“重新链接到”字段中输入http://google.com即可."
+"如果您想查找所有出现的”Google”并添加链接，只需在“原始字段”中输入google，然后在“重新链接到”字段中输入http://google."
+"com即可."
 
 #: wpematico/app/campaign_help.php:324
 msgid "Regular expressions"
@@ -2296,8 +2240,7 @@ msgid ""
 "example. Instead of using many rewriting boxes to replace ass and arse with "
 "butt, you can use the | operator: (ass|arse)."
 msgstr ""
-"对于高级用户，支持正则表达式。使用此功能可以让您进行更强大的替换。以多个单词"
-"替换为例，你可以使用| operator：（ass | ass）。"
+"对于高级用户，支持正则表达式。使用此功能可以让您进行更强大的替换。以多个单词替换为例，你可以使用| operator：（ass | ass）。"
 
 #: wpematico/app/campaign_help.php:330
 msgid "Campaign Categories."
@@ -2345,8 +2288,7 @@ msgstr "Campaign的文章格式."
 msgid ""
 "If your theme supports post formats you can select one for the posts of this "
 "campaign, otherwise left on Standard."
-msgstr ""
-"如果您的主题支持文章格式，则可以为此Campaign的文章选择一个，否则请选择标准."
+msgstr "如果您的主题支持文章格式，则可以为此Campaign的文章选择一个，否则请选择标准."
 
 #: wpematico/app/campaign_help.php:352
 msgid "Sending Log."
@@ -2357,9 +2299,7 @@ msgid ""
 "An email will be sent with the events of campaign fetched. You can also "
 "filter the emails only if an error occurred or left blank to not send emails "
 "of this campaign."
-msgstr ""
-"发送电子邮件，其中包含已提取的Campaign事件。您也可以仅在发生错误时发送，或留"
-"空以不发送此Campaign的电子邮件."
+msgstr "发送电子邮件，其中包含已提取的Campaign事件。您也可以仅在发生错误时发送，或留空以不发送此Campaign的电子邮件."
 
 #: wpematico/app/campaign_log.php:67
 #, php-format
@@ -2535,11 +2475,11 @@ msgstr "提交Campaign."
 #: wpematico/app/campaigns_list.php:499
 #, php-format
 msgid ""
-"Campaign scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href="
-"\"%2$s\">Preview campaign</a>"
+"Campaign scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" "
+"href=\"%2$s\">Preview campaign</a>"
 msgstr ""
-"Campaign预设： <strong>%1$s</strong> 。 <a target=\"_blank\" href=\"%2$s\">预"
-"览Campaign</a>"
+"Campaign预设： <strong>%1$s</strong> 。 <a target=\"_blank\" href=\"%2$s\">"
+"预览Campaign</a>"
 
 #: wpematico/app/campaigns_list.php:501
 msgid "M j, Y @ G:i"
@@ -2735,9 +2675,7 @@ msgstr "用于新条目的文章类型和文章状态."
 msgid ""
 "Useful when you have more campaign types from Addons. You can hide the "
 "column in Screen Options Tab."
-msgstr ""
-"当您有来自Addons的更多Campaign类型时非常有用，您可以在“屏幕选项”选项卡中隐藏"
-"该列。"
+msgstr "当您有来自Addons的更多Campaign类型时非常有用，您可以在“屏幕选项”选项卡中隐藏该列。"
 
 #: wpematico/app/campaigns_list_help.php:16
 msgid ""
@@ -2747,12 +2685,9 @@ msgstr "用于运行，激活或停止Campaign的按钮栏，它的状态根据�
 
 #: wpematico/app/campaigns_list_help.php:17
 msgid ""
-"Last date that the campaign was executed and the seconds it took to "
-"complete. If the campaign is Activated also shows the Datetime for the Next "
-"Run."
-msgstr ""
-"Campaign执行的最后日期以及完成Campaign所需的秒数，如果Campaign已激活，则会显"
-"示下次运行的日期时间。"
+"Last date that the campaign was executed and the seconds it took to complete."
+" If the campaign is Activated also shows the Datetime for the Next Run."
+msgstr "Campaign执行的最后日期以及完成Campaign所需的秒数，如果Campaign已激活，则会显示下次运行的日期时间。"
 
 #: wpematico/app/campaigns_list_help.php:18
 msgid ""
@@ -2782,11 +2717,9 @@ msgstr "把Campaign移到垃圾箱."
 
 #: wpematico/app/campaigns_list_help.php:28
 msgid ""
-"Creates a new campaign by copying all the fields of this.  The word "
-"\"(copy)\" is added to its title."
-msgstr ""
-"通过复制此Campaign的所有字段来创建新的Campaign,（copy）会被一并添加到其标题"
-"中."
+"Creates a new campaign by copying all the fields of this.  The word \"(copy)"
+"\" is added to its title."
+msgstr "通过复制此Campaign的所有字段来创建新的Campaign,（copy）会被一并添加到其标题中."
 
 #: wpematico/app/campaigns_list_help.php:29
 msgid "Deletes the Log, Last Run data and the Posts fetched by the campaign."
@@ -2797,9 +2730,7 @@ msgid ""
 "Every campaign save the hash of the last feed item fetched to avoid "
 "duplicates. This action deletes it.  Useful to make tests to allow fetch an "
 "item again. "
-msgstr ""
-"每个Campaign都会保存最后一个Feed项的hash，避免内容重复。此操作会删除hash，用"
-"在测试时候允许再次重新获取内容很有用。"
+msgstr "每个Campaign都会保存最后一个Feed项的hash，避免内容重复。此操作会删除hash，用在测试时候允许再次重新获取内容很有用。"
 
 #: wpematico/app/campaigns_list_help.php:31
 msgid ""
@@ -2837,8 +2768,7 @@ msgstr "单击橙色按钮时，这个过程可能需要很长时间."
 msgid ""
 "A notice for each campaign will be displayed at top of the page. The Post "
 "column will be updated in red if at least one post was fetched."
-msgstr ""
-"每个Campaign的通知都会显示在页面顶部，至少提取了一篇文章，Post列会以红色更新."
+msgstr "每个Campaign的通知都会显示在页面顶部，至少提取了一篇文章，Post列会以红色更新."
 
 #: wpematico/app/campaigns_list_help.php:46
 msgid "Bulk actions."
@@ -2874,16 +2804,16 @@ msgstr "Feed <strong>%s</strong> 已成功解析."
 
 #: wpematico/app/debug_page.php:56 wpematico/app/debug_page.php:83
 msgid "Headers."
-msgstr ""
+msgstr "头。"
 
 #: wpematico/app/debug_page.php:63
 #, php-format
 msgid "The feed %s cannot be obtained."
-msgstr ""
+msgstr "无法获取订阅源 %s 。"
 
 #: wpematico/app/debug_page.php:72
 msgid "Obtaining URL Contents with WP Remote Request."
-msgstr ""
+msgstr "获取具有 WP 远程请求的 URL 内容。"
 
 #: wpematico/app/debug_page.php:77
 #, php-format
@@ -2893,31 +2823,31 @@ msgstr ""
 #: wpematico/app/debug_page.php:80
 #, php-format
 msgid "The URL %s cannot be obtained successfully."
-msgstr ""
+msgstr "无法成功获取 URL %s 。"
 
 #: wpematico/app/debug_page.php:85
 msgid "ERROR Headers."
-msgstr ""
+msgstr "错误头。"
 
 #: wpematico/app/debug_page.php:94
 msgid "ERROR. See below for details"
-msgstr ""
+msgstr "错误。 详情见下文"
 
 #: wpematico/app/debug_page.php:128
 msgid "Paste a feed link here and the content will be shown on the textarea."
-msgstr ""
+msgstr "在此处粘贴订阅源链接，内容将显示在文本区域中。"
 
 #: wpematico/app/debug_page.php:175
 msgid "Feed URL."
-msgstr ""
+msgstr "订阅源 URL。"
 
 #: wpematico/app/debug_page.php:177
 msgid "Get Feed"
-msgstr ""
+msgstr "获取订阅源"
 
 #: wpematico/app/debug_page.php:185
 msgid "Get Feed and see here its contents."
-msgstr ""
+msgstr "获取订阅源并查看其内容。"
 
 #: wpematico/app/debug_page.php:189 wpematico/app/debug_page.php:332
 msgid "SELECT ALL"
@@ -2925,21 +2855,21 @@ msgstr "全选"
 
 #: wpematico/app/debug_page.php:223
 msgid "Debug Mode"
-msgstr ""
+msgstr "调试方式"
 
 #: wpematico/app/debug_page.php:224
 msgid "Activate Debug Logs in Campaigns"
-msgstr ""
+msgstr "在营销活动中激活调试日志"
 
 #: wpematico/app/debug_page.php:226
 msgid ""
 "This action will save all the logs from each campaign instead only the last "
 "one, to allow follow all actions and behaviors when campaign runs."
-msgstr ""
+msgstr "此操作将仅保存最后一个营销活动的所有日志，以允许在营销活动运行时执行所有操作和行为。"
 
 #: wpematico/app/debug_page.php:229
 msgid "Save Settings"
-msgstr ""
+msgstr "保存设置"
 
 #: wpematico/app/debug_page.php:232
 msgid "Select actions to Uninstall"
@@ -2958,7 +2888,7 @@ msgid ""
 "These selected actions will be performed after WPeMatico plugin is "
 "deactivated and you select \"Delete\" it in the WPeMatico row from the "
 "plugins list."
-msgstr ""
+msgstr "在取消激活 WPeMattico 插件之后，将执行这些选定操作，并从插件列表中选择 WPeMattico 行中的 \"删除 \" 。"
 
 #: wpematico/app/debug_page.php:311
 msgid "Get System Report"
@@ -3044,8 +2974,7 @@ msgid ""
 "custom feed tags and much more extends in the WPeMatico free plugin, going "
 "further than RSS feed limits and takes you to a new experience."
 msgstr ""
-"WPeMatico免费插件增加了很多内容，图像，标签，过滤器，自定义字段，自定义Feed标"
-"签等新功能，比RSS Feed更自由拓展，带给您全新的体验。"
+"WPeMatico免费插件增加了很多内容，图像，标签，过滤器，自定义字段，自定义Feed标签等新功能，比RSS Feed更自由拓展，带给您全新的体验。"
 
 #: wpematico/app/debug_page.php:410 wpematico/app/settings_page.php:267
 msgid "Starter Packages Page"
@@ -3084,7 +3013,7 @@ msgstr "请访问我们的网站，了解我们的免费和高级服务"
 
 #: wpematico/app/debug_page.php:438
 msgid "Translation"
-msgstr ""
+msgstr "翻译"
 
 #: wpematico/app/debug_page.php:441 wpematico/app/settings_page.php:298
 msgid "Translation friendly"
@@ -3182,8 +3111,8 @@ msgid ""
 "POST data such as menus. See: <a href=\"%s\" target=\"_blank\">Increasing "
 "max input vars limit.</a>"
 msgstr ""
-"%s - 推荐值：%s。<br />最大输入vars限制将截断文章数据。 请参阅：<a href=\"%s"
-"\" target=\"_blank\">增加最大输入变量限制</a>"
+"%s - 推荐值：%s。<br />最大输入vars限制将截断文章数据。 请参阅：<a href=\"%s\" target=\"_blank\">"
+"增加最大输入变量限制</a>"
 
 #: wpematico/app/debug_page.php:804
 msgid "PHP Time Limit:"
@@ -3194,20 +3123,18 @@ msgstr "PHP时间限制："
 msgid ""
 "%s - We recommend setting max execution time to at least 180. <br /> To give "
 "a campaign 5 minutes to run without timeouts, <strong>300</strong> seconds "
-"of max execution time is required.<br />See: <a href=\"%s\" target=\"_blank"
-"\">Increasing max execution to PHP</a>"
+"of max execution time is required.<br />See: <a href=\"%s\" "
+"target=\"_blank\">Increasing max execution to PHP</a>"
 msgstr ""
-"%s - 我们建议将最长执行时间设置为至少180。 <br />要使Campaign在没有超时的情况"
-"下运行5分钟，则需要<strong>300</strong>秒执行时间。 <br />请参阅：<a href="
-"\"%s\" target=\"_blank\">如何提高PHP最大执行时间</a>"
+"%s - 我们建议将最长执行时间设置为至少180。 <br />要使Campaign在没有超时的情况下运行5分钟，则需要<strong>"
+"300</strong>秒执行时间。 <br />请参阅：<a href=\"%s\" target=\"_blank\">"
+"如何提高PHP最大执行时间</a>"
 
 #: wpematico/app/debug_page.php:812
 msgid ""
 "Current time limit is sufficient, but if you want to give 5 minutes to run "
 "without timeouts to each campaign, the required time is <strong>300</strong>."
-msgstr ""
-"当前时间限制已足够，但如果您希望在没有超时的情况下为每个Campaign执行5分钟，则"
-"所需时间为<strong>300</strong> 。"
+msgstr "当前时间限制已足够，但如果您希望在没有超时的情况下为每个Campaign执行5分钟，则所需时间为<strong>300</strong> 。"
 
 #: wpematico/app/debug_page.php:818
 msgid "PHP Memory Limit:"
@@ -3219,8 +3146,8 @@ msgid ""
 "%s - We recommend setting memory to at least <strong>128MB</strong>. <br /> "
 "Please define memory limit in <strong>php.ini</strong> file."
 msgstr ""
-"%s - 我们建议将内存设置为至少<strong>128MB</strong> 。 <br />请在<strong>php."
-"ini</strong>文件中定义内存限制。"
+"%s - 我们建议将内存设置为至少<strong>128MB</strong> 。 <br />请在<strong>php.ini</strong>"
+"文件中定义内存限制。"
 
 #: wpematico/app/debug_page.php:829
 msgid "PHP Safe Mode:"
@@ -3232,8 +3159,8 @@ msgid ""
 "We recommend turn safe_mode <strong>Off</strong>. <br /> See: <a href=\"%s\" "
 "target=\"_blank\">PHP: Safe Mode.</a>."
 msgstr ""
-"我们建议把safe_mode设置<strong>关闭</strong> 。 <br />请参阅： <a href=\"%s"
-"\" target=\"_blank\">PHP：安全模式。</a> 。"
+"我们建议把safe_mode设置<strong>关闭</strong> 。 <br />请参阅： <a href=\"%s\" "
+"target=\"_blank\">PHP：安全模式。</a> 。"
 
 #: wpematico/app/debug_page.php:840
 msgid "Allow URL fopen:"
@@ -3242,11 +3169,11 @@ msgstr "允许URL fopen："
 #: wpematico/app/debug_page.php:846
 #, php-format
 msgid ""
-"We recommend turn Allow URL fopen <strong>On</strong>. <br /> See: <a href="
-"\"%s\" target=\"_blank\">PHP: Allow URL fopen.</a>."
+"We recommend turn Allow URL fopen <strong>On</strong>. <br /> See: <a "
+"href=\"%s\" target=\"_blank\">PHP: Allow URL fopen.</a>."
 msgstr ""
-"我们建议选择允许URL fopen <strong>On</strong> 。 <br />请参阅： <a href=\"%s"
-"\" target=\"_blank\">PHP：允许URL fopen。</a> 。"
+"我们建议选择允许URL fopen <strong>On</strong> 。 <br />请参阅： <a href=\"%s\" "
+"target=\"_blank\">PHP：允许URL fopen。</a> 。"
 
 #: wpematico/app/debug_page.php:851
 msgid "ini_set:"
@@ -3258,8 +3185,8 @@ msgid ""
 "We recommend to activate <strong>set_ini()</strong> in your server. <br /> "
 "See: <a href=\"%s\" target=\"_blank\">PHP: ini_set.</a>."
 msgstr ""
-"我们建议您在服务器中激活<strong>set_ini（）</strong> 。 <br />请参阅： <a "
-"href=\"%s\" target=\"_blank\">PHP：ini_set。</a> 。"
+"我们建议您在服务器中激活<strong>set_ini（）</strong> 。 <br />请参阅： <a href=\"%s\" "
+"target=\"_blank\">PHP：ini_set。</a> 。"
 
 #: wpematico/app/debug_page.php:862
 msgid "PHP Disabled Functions:"
@@ -3285,7 +3212,7 @@ msgstr "cURL（php.net/curl）："
 msgid ""
 "A version lower than 7.10 will work fine, but will generate a PHP Warning "
 "each time it is used."
-msgstr ""
+msgstr "低于 7.10 的版本将正常工作，但每次使用时都会生成 PHP 警告。"
 
 #: wpematico/app/debug_page.php:890
 msgid "ZipArchive:"
@@ -3438,9 +3365,9 @@ msgid ""
 "how, see: <a href=\"%s\" target=\"_blank\">Increasing memory allocated to "
 "PHP.</a>"
 msgstr ""
-"%s - 我们建议将内存设置为至少<strong>128MB</strong>。<br /> 请在 <strong>wp-"
-"config.php</strong>文件中定义内存限制。 要了解如何操作，请参阅：<a href=\"%s"
-"\" target=\"_blank\">在PHP增加内存分配.</a>"
+"%s - 我们建议将内存设置为至少<strong>128MB</strong>。<br /> 请在 <strong>wp-config."
+"php</strong>文件中定义内存限制。 要了解如何操作，请参阅：<a href=\"%s\" target=\"_blank\">"
+"在PHP增加内存分配.</a>"
 
 #: wpematico/app/debug_page.php:1118
 msgid "WP Max Upload Size:"
@@ -3536,8 +3463,7 @@ msgstr "有一个新版本的 %1$s 可用。%2$s查看版本 %3$s 细节%4$s."
 msgid ""
 "There is a new version of %1$s available. %2$sView version %3$s details%4$s "
 "or %5$supdate now%6$s."
-msgstr ""
-"有一个新版本的 %1$s 可用。 %2$s查看版本 %3$s 细节%4$s 或者 %5$s现在更新%6$s."
+msgstr "有一个新版本的 %1$s 可用。 %2$s查看版本 %3$s 细节%4$s 或者 %5$s现在更新%6$s."
 
 #: wpematico/app/lib/EDD_SL_Plugin_Updater.php:490
 msgid "You do not have permission to install plugin updates"
@@ -3578,7 +3504,7 @@ msgstr "无效"
 
 #: wpematico/app/lib/licenses_handlers.php:533
 msgid "Expired"
-msgstr ""
+msgstr "已到期"
 
 #: wpematico/app/lib/licenses_handlers.php:537
 msgid "Activate License"
@@ -3598,7 +3524,7 @@ msgstr "输入您的许可证密钥"
 
 #: wpematico/app/lib/licenses_handlers.php:568
 msgid "Lifetime"
-msgstr ""
+msgstr "一生"
 
 #: wpematico/app/lib/licenses_handlers.php:575
 msgid ""
@@ -3633,7 +3559,7 @@ msgstr "欢迎来到WPeMatico"
 
 #: wpematico/app/lib/welcome.php:56
 msgid "WPeMatico About"
-msgstr ""
+msgstr "WPeMatico 关于"
 
 #: wpematico/app/lib/welcome.php:64 wpematico/app/lib/welcome.php:65
 msgid "WPeMatico Changelog"
@@ -3645,7 +3571,7 @@ msgstr "WPeMatico入门"
 
 #: wpematico/app/lib/welcome.php:82 wpematico/app/lib/welcome.php:83
 msgid "WPeMatico Privacy"
-msgstr ""
+msgstr "WPeMattico 隐私"
 
 #: wpematico/app/lib/welcome.php:162
 msgid ""
@@ -3655,13 +3581,13 @@ msgstr "WPeMatico无法更新数据库中的版本。如果您的网站有对象
 
 #: wpematico/app/lib/welcome.php:178
 msgid "Thank you for updating to the latest version!"
-msgstr ""
+msgstr "感谢您更新最新版本!"
 
 #: wpematico/app/lib/welcome.php:179
 #, php-format
 msgid ""
 "WPeMatico %s is ready to make your autoblogging faster, safer, and better!"
-msgstr ""
+msgstr "WPeMattico %s 已准备好让您的自动博客更快，更安全，更美好 !"
 
 #: wpematico/app/lib/welcome.php:200
 msgid "What's New"
@@ -3677,30 +3603,30 @@ msgstr "更新日志"
 
 #: wpematico/app/lib/welcome.php:209
 msgid "Privacy"
-msgstr ""
+msgstr "隐私"
 
 #: wpematico/app/lib/welcome.php:245
 msgid "Choose Media Mime Types."
-msgstr ""
+msgstr "选择媒体 MIME 类型。"
 
 #: wpematico/app/lib/welcome.php:247 wpematico/app/settings_page.php:364
 #: wpematico/app/settings_page.php:399 wpematico/app/settings_page.php:434
 msgid "Separate with commas the allowed mime types for WPeMatico Uploads."
-msgstr ""
+msgstr "使用逗号分隔 WPeMattico Uploads 允许的 MIME 类型。"
 
 #: wpematico/app/lib/welcome.php:249
 msgid ""
 "You can choose which media files will be uploaded to your website, you can "
 "add or remove the extensions you want and WPeMatico will do the rest."
-msgstr ""
+msgstr "您可以选择将哪些介质文件上载到 Web 站点，您可以添加或除去您想要的扩展，而 WPeMatico 将执行其余的。"
 
 #: wpematico/app/lib/welcome.php:251
 msgid "Use Featured Image From URL."
-msgstr ""
+msgstr "使用 URL 中的特色图像。"
 
 #: wpematico/app/lib/welcome.php:253
 msgid "Use the featured images without storing them on your own website."
-msgstr ""
+msgstr "使用特色图像而不将其存储在自己的 Web 站点上。"
 
 #: wpematico/app/lib/welcome.php:255
 msgid ""
@@ -3708,25 +3634,27 @@ msgid ""
 "featured image from an external URL by activating the \"Use Featured Image "
 "from URL\" option from WPeMatico Settings or from each campaign."
 msgstr ""
+"避免在站点上存储图像，此新功能允许您通过从 WPeMattico 设置或从每个营销活动激活 \"使用来自 URL 的特色图像 \" 选项来从外部 URL "
+"使用特色图像。"
 
 #: wpematico/app/lib/welcome.php:257 wpematico/app/lib/welcome.php:749
 msgid ""
 "NOTE: Featured Image From URL plugin is required for this functionality."
-msgstr ""
+msgstr "注 : 此功能需要 \" 来自 URL 的图像 \" 插件。"
 
 #: wpematico/app/lib/welcome.php:263
 msgid "Force Item Date."
-msgstr ""
+msgstr "强制项目日期。"
 
 #: wpematico/app/lib/welcome.php:265
 msgid ""
 "You can force the use of the original date of each feed item ignoring "
 "incoherent dates like past posts published after new ones."
-msgstr ""
+msgstr "您可以强制使用每个订阅源项的原始日期，忽略不连贯的日期，如新发布后发布的帖子。"
 
 #: wpematico/app/lib/welcome.php:267
 msgid "Create Post Excerpt Automatically."
-msgstr ""
+msgstr "自动创建帖子摘录。"
 
 #: wpematico/app/lib/welcome.php:269
 msgid ""
@@ -3734,28 +3662,29 @@ msgid ""
 "content, WPeMatico allows to create them using the description tag of the "
 "items in the feed."
 msgstr ""
+"缺省情况下， WordPress 会从帖子内容创建 \" fly\" 中的摘录， WPeMattico 允许使用订阅源中项的描述标记创建这些片段。"
 
 #: wpematico/app/lib/welcome.php:271
 msgid "Custom Posts Statuses."
-msgstr ""
+msgstr "定制帖子状态。"
 
 #: wpematico/app/lib/welcome.php:273
 msgid "Post status allows you to organize your Posts."
-msgstr ""
+msgstr "职位状态允许您组织您的帖子。"
 
 #: wpematico/app/lib/welcome.php:275
 msgid ""
 "Post status is an very useful editorial tool that allows you to organize "
 "your Posts based on their respective stages during the editorial workflow."
-msgstr ""
+msgstr "发布状态是非常有用的编辑工具，它允许您根据编辑工作流程中的各个阶段组织您的帖子。"
 
 #: wpematico/app/lib/welcome.php:292
 msgid "A new Campaign Type for XML feeds."
-msgstr ""
+msgstr "XML 订阅源的新营销活动类型。"
 
 #: wpematico/app/lib/welcome.php:294
 msgid "XML Campaign type to parse and fetch XML feeds"
-msgstr ""
+msgstr "用于解析和访存 XML 订阅源的 XML Campaign 类型"
 
 #: wpematico/app/lib/welcome.php:296
 msgid ""
@@ -3763,18 +3692,20 @@ msgid ""
 "found in the XML tags.  A very important addition that will allow to import "
 "almost anything that come in XML format to WordPress Posts (types)."
 msgstr ""
+"此功能允许您使用 XML 标记中找到的字段配置每个营销活动。  一个非常重要的添加项，允许将 XML 格式的几乎任何内容导入 WordPress 帖子 "
+"(类型)。"
 
 #: wpematico/app/lib/welcome.php:298
 msgid ""
 "An option in Settings enables the upload of XML files in the WordPress Media "
 "Library in order to use its URL in the campaigns."
-msgstr ""
+msgstr "\" 设置 \" 中的选项允许在 WordPress Media Library 中上载 XML 文件，以便在营销活动中使用其 URL 。"
 
 #: wpematico/app/lib/welcome.php:300
 msgid ""
 "Also, using the addons as the Professional will allow overwriting the data "
 "of a campaign and add the author, categories and tags also from the XML tags."
-msgstr ""
+msgstr "此外，使用附加组件作为专业人员将允许覆盖营销活动的数据，并从 XML 标记中添加作者，类别和标记。"
 
 #: wpematico/app/lib/welcome.php:306
 msgid "A new preview for the YouTube campaign."
@@ -3791,9 +3722,7 @@ msgid ""
 "Now you have the possibility to choose which elements of the YouTube feeds "
 "will be included in the post, the image, the featured image or the "
 "description, the preview section in the metabox will show you in real time."
-msgstr ""
-"现在，您可以选择将YouTube Feed中的哪些元素包含在文章，图像，精选图片或描述，"
-"元数据框中的预览是实时显示的."
+msgstr "现在，您可以选择将YouTube Feed中的哪些元素包含在文章，图像，精选图片或描述，元数据框中的预览是实时显示的."
 
 #: wpematico/app/lib/welcome.php:312
 msgid ""
@@ -3807,7 +3736,7 @@ msgstr "新的Campaign 提取预览."
 
 #: wpematico/app/lib/welcome.php:331
 msgid "Introducing the Campaign Preview Feature"
-msgstr ""
+msgstr "介绍 Campaign 预览功能部件"
 
 #: wpematico/app/lib/welcome.php:333
 msgid ""
@@ -3825,9 +3754,7 @@ msgid ""
 "You can see the title, image and an excerpt of its content, but you can "
 "click in the title to see all its content like it will bring by WPeMatico "
 "plugin."
-msgstr ""
-"您可以看到标题，图片和摘要，同时可以单击标题来查看WPeMatico插件获取的所有内"
-"容."
+msgstr "您可以看到标题，图片和摘要，同时可以单击标题来查看WPeMatico插件获取的所有内容."
 
 #: wpematico/app/lib/welcome.php:337
 msgid "Using the Campaign Preview."
@@ -3838,9 +3765,7 @@ msgid ""
 "When click in the “eye” icon, a popup will open to show you the next items "
 "to fetch.  This allow you to see if the campaign has pending items to "
 "publish from any feed inside it."
-msgstr ""
-"单击“eye”图标时，会打开一个弹窗，显示下一个要获取的项目。这样，您就可以查看"
-"Campaign是否有待发布的待处理项目."
+msgstr "单击“eye”图标时，会打开一个弹窗，显示下一个要获取的项目。这样，您就可以查看Campaign是否有待发布的待处理项目."
 
 #: wpematico/app/lib/welcome.php:346
 msgid "More Tweaks and Improvements."
@@ -3865,9 +3790,7 @@ msgid ""
 "Until now if you run a campaign and give an error in the execution, the "
 "campaign would hangs up, but from now when fails, it will show an alert with "
 "the error message."
-msgstr ""
-"到目前为止，如果您运行的Campaign在执行过程中出错，则Campaign会挂起，但失败"
-"时，它会显示包含错误消息的提醒。"
+msgstr "到目前为止，如果您运行的Campaign在执行过程中出错，则Campaign会挂起，但失败时，它会显示包含错误消息的提醒。"
 
 #: wpematico/app/lib/welcome.php:355
 msgid "More icons and cosmetics things."
@@ -3878,9 +3801,7 @@ msgid ""
 "We're optimizing the screens to make them be more readable by humans, and "
 "also get more and better helps with examples and tips in the campaign "
 "editing or other screens."
-msgstr ""
-"我们正在优化内容，使其更易于阅读，并且还可以通过Campaign编辑或其他示例和提示"
-"中获得更多更好的帮助."
+msgstr "我们正在优化内容，使其更易于阅读，并且还可以通过Campaign编辑或其他示例和提示中获得更多更好的帮助."
 
 #: wpematico/app/lib/welcome.php:357
 msgid ""
@@ -3890,7 +3811,7 @@ msgstr "通过单击Wordpress管理屏幕右上角的“ <em>帮助”</em>选�
 
 #: wpematico/app/lib/welcome.php:360
 msgid "WPeMatico Addons"
-msgstr ""
+msgstr "WPeMatico 附加组件"
 
 #: wpematico/app/lib/welcome.php:367 wpematico/app/lib/welcome.php:377
 #: wpematico/app/lib/welcome.php:387 wpematico/app/lib/welcome.php:397
@@ -3901,37 +3822,34 @@ msgstr "这个"
 msgid ""
 "contains the five preferred add-Ons with the most wanted features for "
 "autoblogging with WordPress in a very easy professional way."
-msgstr ""
+msgstr "包含五个首选添加项，其中最需要的功能是使用 WordPress 以非常简单的专业方式进行自动博客。"
 
 #: wpematico/app/lib/welcome.php:378
 msgid ""
 "extends the Campaign Preview functionality to every feed individually and "
 "allows you to review and insert each item, one by one or in bulk mode."
-msgstr ""
-"将Campaign预览功能单独扩展到每个Feed，并允许您逐个查看和插入单个或批量模式."
+msgstr "将Campaign预览功能单独扩展到每个Feed，并允许您逐个查看和插入单个或批量模式."
 
 #: wpematico/app/lib/welcome.php:388
 msgid ""
 "uses eBay products in your site and publish them as posts or WooCommerce "
 "products by relating your eBay Parter Network Campaigns IDs."
-msgstr ""
+msgstr "在您的站点中使用 eBay 产品，并通过相关 eBay Parter 网络营销活动标识发布为帖子或 WooCommerce 产品。"
 
 #: wpematico/app/lib/welcome.php:398
 msgid ""
 "is a FREE addon that allows you to execute actions and filters provided by "
 "WPeMatico in order to create custom behavior in the execution of your "
 "campaigns."
-msgstr ""
-"是一个免费的插件，允许您执行WPeMatico提供的基础操作和过滤，以便在您的Campaign"
-"执行过程中更方便自定义操作."
+msgstr "是一个免费的插件，允许您执行WPeMatico提供的基础操作和过滤，以便在您的Campaign执行过程中更方便自定义操作."
 
 #: wpematico/app/lib/welcome.php:402
 msgid "Starter Packages."
-msgstr ""
+msgstr "启动软件包。"
 
 #: wpematico/app/lib/welcome.php:403
 msgid "All available Addons"
-msgstr ""
+msgstr "所有可用附加组件"
 
 #: wpematico/app/lib/welcome.php:410
 msgid "Even More Developer Happiness"
@@ -3946,9 +3864,7 @@ msgid ""
 "We've implemented the JavaScript hooks like WordPress actions and filters! "
 "You can make functions to enqueue the scripts and hooks to already added "
 "filters in the code."
-msgstr ""
-"我们已经实现了像WordPress动作和过滤器这样的JavaScript钩子！您可以创建函数以将"
-"已添加的过滤器、脚本置入队列并挂钩到代码中。"
+msgstr "我们已经实现了像WordPress动作和过滤器这样的JavaScript钩子！您可以创建函数以将已添加的过滤器、脚本置入队列并挂钩到代码中。"
 
 #: wpematico/app/lib/welcome.php:416
 msgid "Support ticket system for free"
@@ -3958,9 +3874,7 @@ msgstr "免费技术支持系统"
 msgid ""
 "Ask for any problem you may have and you'll get support for free. If it is "
 "necessay we will see into your website to solve your issue."
-msgstr ""
-"您遇到使用问题在这里可以获得免费支持。如果有必要，我们会进入您的网站帮你解决"
-"问题。"
+msgstr "您遇到使用问题在这里可以获得免费支持。如果有必要，我们会进入您的网站帮你解决问题。"
 
 #: wpematico/app/lib/welcome.php:420
 msgid "Premium Support"
@@ -3971,9 +3885,7 @@ msgid ""
 "Get access to in-depth setup assistance. We'll dig in and do our absolute "
 "best to resolve issues for you. Any support that requires code or setup your "
 "site will need this service."
-msgstr ""
-"获得深度设置帮助，我们深度挖掘并尽最大努力为您解决问题。任何需要代码或设置您"
-"的网站的支持都需要此服务。"
+msgstr "获得深度设置帮助，我们深度挖掘并尽最大努力为您解决问题。任何需要代码或设置您的网站的支持都需要此服务。"
 
 #: wpematico/app/lib/welcome.php:426
 msgid "Nags updates individually for extensions"
@@ -3995,8 +3907,7 @@ msgid ""
 "plugin, we've put there a WPeMatico Section, to try to avoid weird behaviors "
 "made by some thirds plugins."
 msgstr ""
-"如果您操作WPeMatico项目菜单，设置页面出现了一些插件问题，我们已经放置了一个"
-"WPeMatico组，以尽量避免某些插件所做出的奇怪行为。"
+"如果您操作WPeMatico项目菜单，设置页面出现了一些插件问题，我们已经放置了一个WPeMatico组，以尽量避免某些插件所做出的奇怪行为。"
 
 #: wpematico/app/lib/welcome.php:434 wpematico/app/smart_notifications.php:81
 msgid "Rate 5 stars on Wordpress"
@@ -4007,9 +3918,7 @@ msgid ""
 "We need your positive rating of 5 stars in WordPress. Your comment will be "
 "published on the bottom of the website and besides it will help making the "
 "plugin better."
-msgstr ""
-"我们需要你在WordPress中的5星评级，您的评论将发布在网站的底部，此外它将有助于"
-"使插件变的更好。"
+msgstr "我们需要你在WordPress中的5星评级，您的评论将发布在网站的底部，此外它将有助于使插件变的更好。"
 
 #: wpematico/app/lib/welcome.php:467
 msgid "Full Changelog"
@@ -4021,7 +3930,7 @@ msgstr "跳到WPeMatico设置"
 
 #: wpematico/app/lib/welcome.php:509
 msgid "Privacy terms"
-msgstr ""
+msgstr "隐私条款"
 
 #: wpematico/app/lib/welcome.php:549
 msgid ""
@@ -4030,9 +3939,8 @@ msgid ""
 "autoblogging plugin. Organized into campaigns, it publishes your posts "
 "automatically from the RSS/Atom feeds of your choice."
 msgstr ""
-"让你的博客秒变自动博客！在完整的自动博客上，WpeMatico会定期为您的网站获取新内"
-"容！ WPeMatico是一个非常容易使用的自动博客插件。它通过Campaign自动从您选择的"
-"RSS / Atom供稿中发布您的文章."
+"让你的博客秒变自动博客！在完整的自动博客上，WpeMatico会定期为您的网站获取新内容！ "
+"WPeMatico是一个非常容易使用的自动博客插件。它通过Campaign自动从您选择的RSS / Atom供稿中发布您的文章."
 
 #: wpematico/app/lib/welcome.php:550
 msgid ""
@@ -4059,12 +3967,9 @@ msgid ""
 "the news in one place. The aggregator checks your favorite websites in "
 "search of new content and features directly without any effort on your part."
 msgstr ""
-"RSS（也叫聚合内容）是一种RSS基于XML标准，在互联网上被广泛采用的内容包装和投递"
-"协议。RSS(Really Simple Syndication)是一种描述和同步网站内容的格式，是使用最"
-"广泛的XML应用。RSS搭建了信息迅速传播的一个技术平台，使得每个人都成为潜在的信"
-"息提供者。发布一个RSS文件后，这个RSS Feed中包含的信息就能直接被其他站点调用，"
-"而且由于这些数据都是标准的XML格式，所以也能在其他的终端和服务中使用，是一种描"
-"述和同步网站内容的格式。"
+"RSS（也叫聚合内容）是一种RSS基于XML标准，在互联网上被广泛采用的内容包装和投递协议。RSS(Really Simple Syndication)"
+"是一种描述和同步网站内容的格式，是使用最广泛的XML应用。RSS搭建了信息迅速传播的一个技术平台，使得每个人都成为潜在的信息提供者。发布一个RSS文件后，这个RSS"
+" Feed中包含的信息就能直接被其他站点调用，而且由于这些数据都是标准的XML格式，所以也能在其他的终端和服务中使用，是一种描述和同步网站内容的格式。"
 
 #: wpematico/app/lib/welcome.php:568
 msgid ""
@@ -4091,17 +3996,13 @@ msgstr "您可以在WPeMatico→设置菜单中设置插件全局操作设置所
 msgid ""
 "There are also here the tests and the configuration options for the "
 "SimplePie library to get differnet behaviour when fetch the feed items."
-msgstr ""
-"此处还有SimplePie库的测试和配置选项，以在获取Feed项时获取不同的自定义操作行"
-"为."
+msgstr "此处还有SimplePie库的测试和配置选项，以在获取Feed项时获取不同的自定义操作行为."
 
 #: wpematico/app/lib/welcome.php:578
 msgid ""
 "Set to an external or internal Wordpress CRON scheduler and look at for the "
 "configuration tabs of all plugin extensions and Add-ons."
-msgstr ""
-"设置为外部或内部Wordpress CRON调度程序，并查看所有插件扩展和附加组件的配置选"
-"项卡."
+msgstr "设置为外部或内部Wordpress CRON调度程序，并查看所有插件扩展和附加组件的配置选项卡."
 
 #: wpematico/app/lib/welcome.php:584
 msgid "Testing SimplePie library"
@@ -4123,9 +4024,9 @@ msgid ""
 "as posts or any Custom Post Type. To create your first campaign, simply "
 "click Add New and then fill out the campaign details."
 msgstr ""
-"WPeMatico→所有Campaigns菜单-是您的Feed Campaign创建和设置的地方，用于获取项目"
-"并将其作为文章或任何自定义文章类型。要创建第一个Campaign，只需点击添加，然后"
-"填写Campaign的详细信息."
+"WPeMatico→所有Campaigns菜单-是您的Feed "
+"Campaign创建和设置的地方，用于获取项目并将其作为文章或任何自定义文章类型。要创建第一个Campaign，只需点击添加，然后填写Campaign的详细信息"
+"."
 
 #: wpematico/app/lib/welcome.php:609
 msgid "Need Help?"
@@ -4143,8 +4044,7 @@ msgid ""
 "with each feature. These tips sometimes even provide basic, recommended "
 "settings."
 msgstr ""
-"您在WPeMatico中，在功能下面看到些小句子和/或短语是对该功能提供简短但非常有用"
-"的解释，并作为与每个功能相对应的指导提示，这些提示有些会提供基本的推荐设置。"
+"您在WPeMatico中，在功能下面看到些小句子和/或短语是对该功能提供简短但非常有用的解释，并作为与每个功能相对应的指导提示，这些提示有些会提供基本的推荐设置。"
 
 #: wpematico/app/lib/welcome.php:615
 msgid "Help Tab"
@@ -4158,9 +4058,7 @@ msgid ""
 "a lot of text providing documentation relevant to the page you are currently "
 "viewing on your Dashboard."
 msgstr ""
-"除了您在整个仪表板中分散的内置文档外，您还可以在控制板右上角找到一个标记为“帮"
-"助”的选项卡。单击此选项卡，下拉面板，提供了与您当前在仪表板上查看的页面相关的"
-"文档。"
+"除了您在整个仪表板中分散的内置文档外，您还可以在控制板右上角找到一个标记为“帮助”的选项卡。单击此选项卡，下拉面板，提供了与您当前在仪表板上查看的页面相关的文档。"
 
 #: wpematico/app/lib/welcome.php:619
 msgid ""
@@ -4170,10 +4068,7 @@ msgid ""
 "down documentation with topics relevant to the settings and features you "
 "find on the Add New Campaign page within your Dashboard."
 msgstr ""
-"例如，如果您正在查看WPeMatico设置页面，则“帮助”选项卡将删除与“WPeMatico设"
-"置”页面相关的文档。同样，如果您正在查看“添加新的Campaign”页面，单击“帮助”标签"
-"会下拉文档，会看到与您在控制板中的“添加新的Campaign”页面上找到的设置和功能相"
-"关的主题内容。"
+"例如，如果您正在查看WPeMatico设置页面，则“帮助”选项卡将删除与“WPeMatico设置”页面相关的文档。同样，如果您正在查看“添加新的Campaign”页面，单击“帮助”标签会下拉文档，会看到与您在控制板中的“添加新的Campaign”页面上找到的设置和功能相关的主题内容。"
 
 #: wpematico/app/lib/welcome.php:621
 msgid "Just click the Help tab again to close the Help panel."
@@ -4190,22 +4085,22 @@ msgstr "免费支持"
 #: wpematico/app/lib/welcome.php:638
 msgid ""
 "We do our best to provide the best support we can. If you encounter a "
-"problem or have a question, simply open a ticket using our <a target=\"_blank"
-"\" href=\"https://etruel.com/my-account/support\">support form</a>."
+"problem or have a question, simply open a ticket using our <a "
+"target=\"_blank\" href=\"https://etruel.com/my-account/support\">support "
+"form</a>."
 msgstr ""
-"我们尽最大努力为您提供最好的技术支持。如果您遇到问题或有疑问，只需使用我们的"
-"<a target=\"_blank\" href=\"https://etruel.com/my-account/support\">技术支持"
-"系统</a>。"
+"我们尽最大努力为您提供最好的技术支持。如果您遇到问题或有疑问，只需使用我们的<a target=\"_blank\" href=\"https:"
+"//etruel.com/my-account/support\">技术支持系统</a>。"
 
 #: wpematico/app/lib/welcome.php:641
 msgid "Need Even Better Support?"
-msgstr ""
+msgstr "需要更好的支持吗 ?"
 
 #: wpematico/app/lib/welcome.php:642
 msgid ""
-"Our <a target=\"_blank\" href=\"https://etruel.com/downloads/premium-support/"
-"\">Premium Support</a> system is there for customers that need faster and/or "
-"more in-depth assistance."
+"Our <a target=\"_blank\" href=\"https://etruel.com/downloads/premium-"
+"support/\">Premium Support</a> system is there for customers that need "
+"faster and/or more in-depth assistance."
 msgstr ""
 "我们的<a target=\"_blank\" href=\"https://etruel.com/downloads/premium-"
 "support/\">高级支持</a>系统适用于需要更快和/或更深度帮助的客户。"
@@ -4225,9 +4120,8 @@ msgid ""
 "latest releases. <a href=\"http://eepurl.com/bX2ANz\" target=\"_blank\">Sign "
 "up now</a> to ensure you do not miss a release!"
 msgstr ""
-"使WPeMatico更强大的新插件扩展基本每周都会更新。订阅以及时了解我们的最新版"
-"本。 <a href=\"http://eepurl.com/bX2ANz\" target=\"_blank\">立即注册</a>以确"
-"保您不会错过新功能！"
+"使WPeMatico更强大的新插件扩展基本每周都会更新。订阅以及时了解我们的最新版本。 <a href=\"http://eepurl."
+"com/bX2ANz\" target=\"_blank\">立即注册</a>以确保您不会错过新功能！"
 
 #: wpematico/app/lib/welcome.php:652
 msgid "Get Alerted About New Tutorials"
@@ -4239,8 +4133,8 @@ msgid ""
 "hear about the latest tutorial releases that explain how to take WPeMatico "
 "further."
 msgstr ""
-"<a href=\"http://eepurl.com/bX2ANz\" target=\"_blank\">立即注册，</a>了解最新"
-"的教程版本，了解如何进一步学习WPeMatico。"
+"<a href=\"http://eepurl.com/bX2ANz\" target=\"_blank\">立即注册，</a>"
+"了解最新的教程版本，了解如何进一步学习WPeMatico。"
 
 #: wpematico/app/lib/welcome.php:659
 msgid "Extend the plugin features"
@@ -4253,8 +4147,8 @@ msgid ""
 "the feed contents, The Full Content add-on to scratch the source webpage "
 "looking to get the entire article, and many more."
 msgstr ""
-"附加插件可用于极大地扩展WPeMatico的默认功能。Professional扩展用于扩展feed内容"
-"的解析器，Full Content插件用于抓取源网页以获取整篇文章等等。"
+"附加插件可用于极大地扩展WPeMatico的默认功能。Professional扩展用于扩展feed内容的解析器，Full "
+"Content插件用于抓取源网页以获取整篇文章等等。"
 
 #: wpematico/app/lib/welcome.php:663
 msgid "Visit the Extension Store"
@@ -4262,31 +4156,30 @@ msgstr "访问插件商店"
 
 #: wpematico/app/lib/welcome.php:664
 msgid ""
-"<a href=\"https://etruel.com/downloads\" target=\"_blank\">The etruel store</"
-"a> has a list of all available extensions for WPeMatico, also other "
+"<a href=\"https://etruel.com/downloads\" target=\"_blank\">The etruel "
+"store</a> has a list of all available extensions for WPeMatico, also other "
 "Worpdress plugins, some of them for free. Including convenient category "
 "filters so you can find exactly what you are looking for."
 msgstr ""
-"<a href=\"https://etruel.com/downloads\" target=\"_blank\">etruel商店</a>列出"
-"了WPeMatico的所有可用插件扩展，以及其他Worpdress插件，其中一些是免费的。比如"
-"分类过滤器，以便您可以准确找到所需内容。"
+"<a href=\"https://etruel.com/downloads\" target=\"_blank\">etruel商店</a>"
+"列出了WPeMatico的所有可用插件扩展，以及其他Worpdress插件，其中一些是免费的。比如分类过滤器，以便您可以准确找到所需内容。"
 
 #: wpematico/app/lib/welcome.php:745
 msgid "Last News in This Version!"
-msgstr ""
+msgstr "此版本中的最后一个新闻 !"
 
 #: wpematico/app/lib/welcome.php:746
 msgid ""
 "WPeMatico continues to improve and innovate with each update, once again we "
 "include new features in order to improve the user experience and cover all "
 "their needs."
-msgstr ""
+msgstr "WPeMattico 在每次更新中继续改进和创新，我们再次包含新功能，以提高用户体验并满足其所有需求。"
 
 #: wpematico/app/lib/welcome.php:747
 msgid ""
 "Choose which media files will be uploaded to your website by allowing or not "
 "their extension!"
-msgstr ""
+msgstr "选择哪些媒体文件将通过允许或不允许其扩展名上载到您的 Web 站点 !"
 
 #: wpematico/app/lib/welcome.php:748
 msgid ""
@@ -4300,11 +4193,11 @@ msgid ""
 "In addition to this, in this new version you can also create excerpts using "
 "the description tag of the items in the feed and you can even force the use "
 "of the original date of each post!"
-msgstr ""
+msgstr "除此之外，在此新版本中，您还可以使用订阅源中项目的描述标记创建摘录，甚至可以强制使用每个帖子的原始日期 !"
 
 #: wpematico/app/lib/welcome.php:756
 msgid "Stay Informed!"
-msgstr ""
+msgstr "保持消息"
 
 #: wpematico/app/lib/welcome.php:757
 msgid "Subscribe to our Newsletter and be the first to receive our news."
@@ -4312,7 +4205,7 @@ msgstr "订阅我们成为第一个收到WPeMatico新闻的人."
 
 #: wpematico/app/lib/welcome.php:758
 msgid "We send around 4 or 5 emails per year. Really."
-msgstr ""
+msgstr "我们每年发送 4 或 5 封邮件。 是啊"
 
 #: wpematico/app/lib/welcome.php:764
 #: wpematico_professional/includes/campaign_edit.php:90
@@ -4329,7 +4222,7 @@ msgstr "姓"
 
 #: wpematico/app/lib/welcome.php:773 wpematico/app/lib/welcome.php:774
 msgid "Email"
-msgstr ""
+msgstr "电子邮件"
 
 #: wpematico/app/lib/welcome.php:778
 msgid "Subscribe"
@@ -4362,8 +4255,7 @@ msgid ""
 "complete and to fix any errors. Please register at %4$s to help complete the "
 "translation to %1$s!"
 msgstr ""
-"如您所见，此插件在%1$s中有翻译。 此翻译目前已完成%3$d%%。 我们需要您的帮助才"
-"能完成并修复所有错误。 请注册%4$s以帮助完成%1$s的翻译！"
+"如您所见，此插件在%1$s中有翻译。 此翻译目前已完成%3$d%%。 我们需要您的帮助才能完成并修复所有错误。 请注册%4$s以帮助完成%1$s的翻译！"
 
 #: wpematico/app/notification_traslate.php:228
 #, php-format
@@ -4372,8 +4264,7 @@ msgid ""
 "%3$d%%, it's not been shipped with the plugin yet. You can help! Register at "
 "%4$s to help complete the translation to %1$s!"
 msgstr ""
-"你在%1$s中使用WordPress。%2$s已转换为%3$d%%的%1$s，但尚未附带该插件。你可以帮"
-"忙！注册%4$s 以帮助完成%1$s的翻译！"
+"你在%1$s中使用WordPress。%2$s已转换为%3$d%%的%1$s，但尚未附带该插件。你可以帮忙！注册%4$s 以帮助完成%1$s的翻译！"
 
 #: wpematico/app/notification_traslate.php:230
 #, php-format
@@ -4382,16 +4273,15 @@ msgid ""
 "%2$s to be translated in that language too, but unfortunately, it isn't "
 "right now. You can change that! Register at %4$s to help translate it!"
 msgstr ""
-"您正在使用我们尚不支持的语言使用WordPress。我们也喜欢用这种语言翻译%2$s，但不"
-"幸的是，它现在还不是。你可以改变它！注册%4$s 以帮助翻译它！"
+"您正在使用我们尚不支持的语言使用WordPress。我们也喜欢用这种语言翻译%2$s，但不幸的是，它现在还不是。你可以改变它！注册%4$s 以帮助翻译它！"
 
 #: wpematico/app/plugin_functions.php:80
 msgid "None."
-msgstr ""
+msgstr "没有。"
 
 #: wpematico/app/plugin_functions.php:84
 msgid "Installed Extensions:"
-msgstr ""
+msgstr "已安装的扩展:"
 
 #: wpematico/app/plugin_functions.php:101
 msgid "Load WPeMatico Settings Page"
@@ -4446,9 +4336,7 @@ msgid ""
 "When Store images locally is on, a copy of every image found in content of "
 "every feed item (only in &lt;img&gt; tags) is downloaded to the Wordpress "
 "UPLOADS Dir."
-msgstr ""
-"当本地存储图片时，会在每个订阅源项目的内容中找到图片的副本（仅在&lt;img&gt;标"
-"签中）下载到Wordpress UPLOADS目录。"
+msgstr "当本地存储图片时，会在每个订阅源项目的内容中找到图片的副本（仅在&lt;img&gt;标签中）下载到Wordpress UPLOADS目录。"
 
 #: wpematico/app/settings_help.php:25
 msgid ""
@@ -4475,9 +4363,7 @@ msgstr "图像附加"
 msgid ""
 "When Uploads images to Wordpress (and everything is working fine), every "
 "image attached is added to the Wordpress Media."
-msgstr ""
-"将图像上传到Wordpress时（一切正常），附加的每个图片都会添加到Wordpress Media"
-"中."
+msgstr "将图像上传到Wordpress时（一切正常），附加的每个图片都会添加到Wordpress Media中."
 
 #: wpematico/app/settings_help.php:33
 msgid ""
@@ -4508,9 +4394,7 @@ msgid ""
 "If is selected and the image upload give error, then will delete the &lt;"
 "img&gt; HTML tag from the content. Check this to don't link images from "
 "external sites."
-msgstr ""
-"如果选择的图片上传错误，则将从内容中删除&lt;img&gt; HTML标记，选中此项不链接"
-"外部站点的图片."
+msgstr "如果选择的图片上传错误，则将从内容中删除&lt;img&gt; HTML标记，选中此项不链接外部站点的图片."
 
 #: wpematico/app/settings_help.php:42
 msgid ""
@@ -4532,14 +4416,13 @@ msgstr "文章缩略图"
 msgid ""
 "Note if that plugin is not activated, WPeMatico will still save the meta "
 "fields in each post without any other consequences."
-msgstr ""
+msgstr "请注意，如果该插件未激活，那么 WPeMattico 将仍然保存每个帖子中的元字段，而不会产生任何其他后果。"
 
 #: wpematico/app/settings_help.php:65
 msgid ""
 "Useful if you have double image in your posts pages or if you don't want to "
 "show the image in content for any reason."
-msgstr ""
-"如果您的文章页面中有重复的图片，或者您不想在内容里显示图片，则非常有用。"
+msgstr "如果您的文章页面中有重复的图片，或者您不想在内容里显示图片，则非常有用。"
 
 #: wpematico/app/settings_help.php:71
 msgid ""
@@ -4551,9 +4434,7 @@ msgstr "如果您发现图片未加载，请自行检查."
 msgid ""
 "Also uncheck this if you need all sizes of wordpress images. The WP process "
 "can take too much resources if many images are uploaded at a time."
-msgstr ""
-"如果您需要所有尺寸的wordpress图片，也请取消选中此项。如果一次上传太多图片，WP"
-"进程可能会占用很大资源."
+msgstr "如果您需要所有尺寸的wordpress图片，也请取消选中此项。如果一次上传太多图片，WP进程可能会占用很大资源."
 
 #: wpematico/app/settings_help.php:77
 msgid "Store audios locally. (Uploads)"
@@ -4565,8 +4446,7 @@ msgid ""
 "every feed item (only in &lt;audio&gt; tags) is downloaded to the Wordpress "
 "UPLOADS Dir."
 msgstr ""
-"当本地存储音频时，会在每个订阅源项目的内容中找到音频的副本（仅在&lt;audio&gt;"
-"标签中）下载到Wordpress UPLOADS目录。"
+"当本地存储音频时，会在每个订阅源项目的内容中找到音频的副本（仅在&lt;audio&gt;标签中）下载到Wordpress UPLOADS目录。"
 
 #: wpematico/app/settings_help.php:79
 msgid ""
@@ -4586,8 +4466,7 @@ msgstr "添加音频"
 msgid ""
 "When Uploads audios to Wordpress (and everything is working fine), every "
 "audio attached is added to the Wordpress Media."
-msgstr ""
-"将音频上传到Wordpress时（一切正常），每个音频都会添加到Wordpress Media中."
+msgstr "将音频上传到Wordpress时（一切正常），每个音频都会添加到Wordpress Media中."
 
 #: wpematico/app/settings_help.php:87
 msgid ""
@@ -4600,9 +4479,7 @@ msgid ""
 "If is selected and the audio upload give error, then will delete the &lt;"
 "audio&gt; HTML tag from the content. Check this to don't link audio from "
 "external sites."
-msgstr ""
-"如果选择的音频上传错误，则会从内容中删除&lt;audio&gt; HTML标记,选中此项可以不"
-"链接外部站点的音频。"
+msgstr "如果选择的音频上传错误，则会从内容中删除&lt;audio&gt; HTML标记,选中此项可以不链接外部站点的音频。"
 
 #: wpematico/app/settings_help.php:96
 msgid ""
@@ -4620,9 +4497,7 @@ msgstr "如果您发现音频未加载，请自行检查."
 msgid ""
 "Also uncheck this if you need all sizes of wordpress audios. The WP process "
 "can take too much resources if many audios are uploaded at a time."
-msgstr ""
-"如果您需要所有尺寸的wordpress音频，也请取消选中此项。如果一次上传太多音频，WP"
-"进程可能会占用很大资源."
+msgstr "如果您需要所有尺寸的wordpress音频，也请取消选中此项。如果一次上传太多音频，WP进程可能会占用很大资源."
 
 #: wpematico/app/settings_help.php:108
 msgid "Store videos locally. (Uploads)"
@@ -4634,8 +4509,7 @@ msgid ""
 "every feed item (only in &lt;video&gt; tags) is downloaded to the Wordpress "
 "UPLOADS Dir."
 msgstr ""
-"当本地存储视频时，会在每个订阅源项目的内容中找到视频的副本（仅在&lt;video&gt;"
-"标签中）下载到Wordpress UPLOADS目录."
+"当本地存储视频时，会在每个订阅源项目的内容中找到视频的副本（仅在&lt;video&gt;标签中）下载到Wordpress UPLOADS目录."
 
 #: wpematico/app/settings_help.php:110
 msgid ""
@@ -4655,9 +4529,7 @@ msgstr "添加视频"
 msgid ""
 "When Uploads videos to Wordpress (and everything is working fine), every "
 "video attached is added to the Wordpress Media."
-msgstr ""
-"将视频上传到Wordpress时（一切正常），附件的每个视频都会添加到Wordpress Media"
-"中."
+msgstr "将视频上传到Wordpress时（一切正常），附件的每个视频都会添加到Wordpress Media中."
 
 #: wpematico/app/settings_help.php:118
 msgid ""
@@ -4670,9 +4542,7 @@ msgid ""
 "If is selected and the video upload give error, then will delete the &lt;"
 "video&gt; HTML tag from the content. Check this to don't link videos from "
 "external sites."
-msgstr ""
-"如果选中的视频上传错误，则会从内容中删除&lt;video&gt; HTML标记，选中此项不会"
-"链接外部网站的视频。"
+msgstr "如果选中的视频上传错误，则会从内容中删除&lt;video&gt; HTML标记，选中此项不会链接外部网站的视频。"
 
 #: wpematico/app/settings_help.php:127
 msgid ""
@@ -4690,9 +4560,7 @@ msgstr "如果您发现视频未加载，请自行检查."
 msgid ""
 "Also uncheck this if you need all sizes of wordpress videos. The WP process "
 "can take too much resources if many videos are uploaded at a time."
-msgstr ""
-"如果您需要所有尺寸的wordpress视频，也请取消选中此项。如果一次上传太多视频，WP"
-"进程可能会占用很大资源."
+msgstr "如果您需要所有尺寸的wordpress视频，也请取消选中此项。如果一次上传太多视频，WP进程可能会占用很大资源."
 
 #: wpematico/app/settings_help.php:139
 msgid "Enable Features."
@@ -4702,9 +4570,7 @@ msgstr "启用功能"
 msgid ""
 "If you need these features in each campaign, you can activate them here. "
 "This is not recommended if you will not use the feature."
-msgstr ""
-"如果您在每个Campaign中都需要这些功能，则可以在此处激活它们。如果您不使用此功"
-"能，则不建议这样做。"
+msgstr "如果您在每个Campaign中都需要这些功能，则可以在此处激活它们。如果您不使用此功能，则不建议这样做。"
 
 #: wpematico/app/settings_help.php:143
 msgid "Word to Categories."
@@ -4743,8 +4609,7 @@ msgid ""
 "turns SimplePie into a dumb parser of feeds.  This means all feed content is "
 "gotten without parsers or filters."
 msgstr ""
-"放弃大量数据清理工作来提升速度。相当于把SimplePie变成了一个简单的feed解析器，"
-"这意味着无需解析器或过滤器即可获得所有Feed内容。"
+"放弃大量数据清理工作来提升速度。相当于把SimplePie变成了一个简单的feed解析器，这意味着无需解析器或过滤器即可获得所有Feed内容。"
 
 #: wpematico/app/settings_help.php:161
 msgid ""
@@ -4772,8 +4637,7 @@ msgid ""
 "change or allow some tags, for example if you want to allow iframes or embed "
 "code like videos."
 msgstr ""
-"默认情况下，Simplepie从Feed内容中过滤这些html标签。您可以更改或允许某些标签，"
-"例如，如果您想要允许iframe或嵌入代码、视频."
+"默认情况下，Simplepie从Feed内容中过滤这些html标签。您可以更改或允许某些标签，例如，如果您想要允许iframe或嵌入代码、视频."
 
 #: wpematico/app/settings_help.php:171
 msgid "Change SimplePie HTML attributes to strip."
@@ -4783,9 +4647,7 @@ msgstr "过滤SimplePie HTML属性."
 msgid ""
 "Simplepie also strip these attributes from html tags in content.  You can "
 "change it if you want to retain some of them or add more attributes to strip."
-msgstr ""
-"Simplepie还会从内容中的html标记中删除这些属性。如果要保留其中一些或添加其它属"
-"性过滤，则可以更改它。"
+msgstr "Simplepie还会从内容中的html标记中删除这些属性。如果要保留其中一些或添加其它属性过滤，则可以更改它。"
 
 #: wpematico/app/settings_help.php:178 wpematico/app/settings_help.php:185
 msgid "Allow option on campaign to skip the content filters."
@@ -4805,9 +4667,7 @@ msgstr "请参阅WordPress如何处理发布内容："
 msgid ""
 "After Wordpress inserted the post, this option will make an update query to "
 "database with the content of the post to avoid Wordpress filters."
-msgstr ""
-"在Wordpress写入文章后，此选项将使用文章的内容对数据库进行更新查询以避免"
-"Wordpress过滤。"
+msgstr "在Wordpress写入文章后，此选项将使用文章的内容对数据库进行更新查询以避免Wordpress过滤。"
 
 #: wpematico/app/settings_help.php:182
 msgid "Use only with reliable sources."
@@ -4817,18 +4677,14 @@ msgstr "仅使用可靠的来源."
 msgid ""
 "When a campaign is running and is interrupted by some issue, it cannot be "
 "executed again until click \"Clear Campaign\"."
-msgstr ""
-"当Campaign运行中被某些问题中断时，在点击“清除Campaign”之前无法再次执行"
-"Campaign。"
+msgstr "当Campaign运行中被某些问题中断时，在点击“清除Campaign”之前无法再次执行Campaign。"
 
 #: wpematico/app/settings_help.php:187
 msgid ""
 "This option clear campaign after this timeout then can run again on next "
 "scheduled cron. A value of \"0\" ignore this, means that remain until user "
 "make click. "
-msgstr ""
-"此超时后此选项清除Campaign，然后可以在下一个计划的cron上再次运行。值为“0”时为"
-"忽略，表示在用户单击之前保持不变。"
+msgstr "此超时后此选项清除Campaign，然后可以在下一个计划的cron上再次运行。值为“0”时为忽略，表示在用户单击之前保持不变。"
 
 #: wpematico/app/settings_help.php:188
 msgid "Recommended 300 Seconds. "
@@ -4843,9 +4699,7 @@ msgid ""
 "This option make a delay after every action of insert a post.  May be useful "
 "if you want to give a break to the server while is fetching many posts.  "
 "Leave on 0 if you don't have any problem."
-msgstr ""
-"每次写入文章后，此选项都会有延迟。如果你想一口气获取很多文章时给服务器休息一"
-"下，这可能很有用。如果服务器没有任何问题，请保持为0."
+msgstr "每次写入文章后，此选项都会有延迟。如果你想一口气获取很多文章时给服务器休息一下，这可能很有用。如果服务器没有任何问题，请保持为0."
 
 #: wpematico/app/settings_help.php:210 wpematico/app/settings_page.php:603
 msgid "Disable plugin custom fields."
@@ -4860,17 +4714,14 @@ msgstr "此选项在Campaign发布的每篇文章上保存自定义字段。"
 msgid ""
 "By default the plugin saves three custom fields on every post with campaign "
 "and source item data."
-msgstr ""
-"默认情况下，该插件会在每篇文章中使用Campaign和源项目数据保存三个自定义字段."
+msgstr "默认情况下，该插件会在每篇文章中使用Campaign和源项目数据保存三个自定义字段."
 
 #: wpematico/app/settings_help.php:213
 msgid ""
 "Necessary for use permalink to source feature, identify which campaign fetch "
 "the post or to make any bulk action on post types related with original "
 "campaign."
-msgstr ""
-"必须使用固定链接来源功能，确定哪个Campaign可以抓取文章或对与原始Campaign相关"
-"的文章类型进行批量操作."
+msgstr "必须使用固定链接来源功能，确定哪个Campaign可以抓取文章或对与原始Campaign相关的文章类型进行批量操作."
 
 #: wpematico/app/settings_help.php:214
 msgid ""
@@ -4894,9 +4745,7 @@ msgstr "此选项停用WPeMatico插件cron计划."
 msgid ""
 "Affects all campaigns. To run campaigns you must do it manually or with "
 "external cron. (Recommended with External Cron)."
-msgstr ""
-"影响所有Campaign.要运行Campaign，您必须手动或使用外部cron.（推荐使用外部"
-"Cron）。"
+msgstr "影响所有Campaign.要运行Campaign，您必须手动或使用外部cron.（推荐使用外部Cron）。"
 
 #: wpematico/app/settings_help.php:231
 msgid "Set a password to access the external CRON."
@@ -4906,8 +4755,7 @@ msgstr "设置密码以访问外部CRON"
 msgid ""
 "Activate a code to allow or avoid the use of the external cron file.  "
 "Deactivated by default to backward compatibility, but strongly recommended."
-msgstr ""
-"激活代码以允许或避免使用外部cron文件。默认情况下禁用向后兼容，但强烈建议。"
+msgstr "激活代码以允许或避免使用外部cron文件。默认情况下禁用向后兼容，但强烈建议。"
 
 #: wpematico/app/settings_help.php:233
 msgid "If this field is not checked the password will be ignored."
@@ -4921,8 +4769,7 @@ msgstr "设置密码以使用外部CRON"
 msgid ""
 "This will be the code used in the command to run the cron.  Can be any "
 "string you want to use as ?code=this_code.  Recommended."
-msgstr ""
-"这是运行cron的命令时使用的代码，想要用任何字符串？code = this_code。推荐的。"
+msgstr "这是运行cron的命令时使用的代码，想要用任何字符串？code = this_code。推荐的。"
 
 #: wpematico/app/settings_help.php:241
 msgid "Disable all WP_Cron."
@@ -4934,8 +4781,8 @@ msgid ""
 "itself and all other plugins.  Not recommended unless you want to use an "
 "external Cron for your wordpress."
 msgstr ""
-"选中此项可停用所有Wordpress cron时间表。影响Wordpress本身和所有其他插件。除非"
-"你想为你的wordpress使用外部Cron，否则不推荐使用。"
+"选中此项可停用所有Wordpress "
+"cron时间表。影响Wordpress本身和所有其他插件。除非你想为你的wordpress使用外部Cron，否则不推荐使用。"
 
 #: wpematico/app/settings_help.php:246
 msgid "Use ALTERNATE_WP_CRON."
@@ -4945,9 +4792,7 @@ msgstr "使用ALTERNATE_WP_CRON"
 msgid ""
 "Some servers disable the functionality that enables WordPress Cron to work "
 "properly. This constant provides an easy fix that should work on any server."
-msgstr ""
-"某些服务器禁用WordPress Cron功能。此常量提供了一个修复方案，可以在任何服务器"
-"上运行。"
+msgstr "某些服务器禁用WordPress Cron功能。此常量提供了一个修复方案，可以在任何服务器上运行。"
 
 #: wpematico/app/settings_help.php:251
 msgid "Log file for external Cron."
@@ -4959,26 +4804,26 @@ msgid ""
 "title%.txt.log\" will be saved on uploads folder or inside plugin, \"app\" "
 "folder.  Recommended on issues with cron."
 msgstr ""
-"尝试使用运行wpe-cron.php时执行， “％campaign title％.txt.log”将保存在uploads"
-"文件夹或内部插件“app”文件夹中。推荐在cron错误时使用。"
+"尝试使用运行wpe-cron.php时执行， “％campaign title％.txt."
+"log”将保存在uploads文件夹或内部插件“app”文件夹中。推荐在cron错误时使用。"
 
 #: wpematico/app/settings_help.php:258
 msgid "Enables the campaign ID to be displayed in the posts (types) lists."
-msgstr ""
+msgstr "使营销活动标识显示在帖子 (类型) 列表中。"
 
 #: wpematico/app/settings_help.php:259
 msgid ""
 "This option enables WordPres to display a new column in the post lists "
 "(types) with the campaign ID that published each post."
-msgstr ""
+msgstr "此选项使 WordPres 可以使用发布每个帖子的营销活动标识来显示帖子列表中的新列 ( 类型) 。"
 
 #: wpematico/app/settings_help.php:262 wpematico/app/settings_page.php:693
 msgid "Column position in Posts(-types) lists."
-msgstr ""
+msgstr "帖子(-类型) 列表中的列位置。"
 
 #: wpematico/app/settings_help.php:263
 msgid "This option allow to choose the column position in the post lists."
-msgstr ""
+msgstr "此选项允许在帖子列表中选择列位置。"
 
 #: wpematico/app/settings_help.php:266
 msgid "Disable metabox Wpematico Campaign Info in post editing."
@@ -4998,9 +4843,7 @@ msgstr "显示按钮清空列表上的垃圾箱."
 msgid ""
 "Just an extra tool to display a button for empty trash folder on every "
 "custom post main screen. May be posts, pages or selects what you want."
-msgstr ""
-"只是一个额外的工具，可以在每个自定义文章主界面上显示空垃圾文件夹的按钮。可能"
-"是文章，页面或选择你想要的。"
+msgstr "只是一个额外的工具，可以在每个自定义文章主界面上显示空垃圾文件夹的按钮。可能是文章，页面或选择你想要的。"
 
 #: wpematico/app/settings_help.php:274
 msgid "Disable WP Dashboard Widget"
@@ -5030,9 +4873,7 @@ msgstr "启用Del Hash."
 msgid ""
 "Show `Del Hash` link on campaigns list.  This link delete all hash codes for "
 "check duplicates on every feed per campaign."
-msgstr ""
-"在Campaigns列表中显示“Del Hash”链接。此链接会删除所有hash代码，以在Campaigns"
-"的每个Feed上检查重复项。"
+msgstr "在Campaigns列表中显示“Del Hash”链接。此链接会删除所有hash代码，以在Campaigns的每个Feed上检查重复项。"
 
 #: wpematico/app/settings_help.php:289
 msgid "Enable See last log."
@@ -5042,8 +4883,7 @@ msgstr "启用查看上次日志."
 msgid ""
 "Show `See Log` link on campaigns list.  This link show the last processed "
 "log of every campaign."
-msgstr ""
-"在Campaigns列表中显示“查看日志”链接。此链接显示上次Campaigns的处理日志。"
+msgstr "在Campaigns列表中显示“查看日志”链接。此链接显示上次Campaigns的处理日志。"
 
 #: wpematico/app/settings_help.php:293
 msgid "Disable WPeMatico Credits."
@@ -5062,55 +4902,54 @@ msgid ""
 "if you can take a minute to %s write a 5 star review on Wordpress %s.  :-) "
 "thanks."
 msgstr ""
-"如果您无法在文章中显示WPeMatico评分，我真的很感激您是否可以花一分钟时间来%s "
-"对​​Wordpress  %s.撰写5星评价。 ：） 谢谢。"
+"如果您无法在文章中显示WPeMatico评分，我真的很感激您是否可以花一分钟时间来%s 对​​Wordpress  %s.撰写5星评价。 ：） 谢谢。"
 
 #: wpematico/app/settings_help.php:300
 msgid "Disable Auto-Category Descriptions."
-msgstr ""
+msgstr "禁用自动类别描述。"
 
 #: wpematico/app/settings_help.php:301
 msgid ""
 "Check this to avoid the future descriptions \"Created by WPeMatico\" of the "
 "created (auto)categories.  You could edit the past categories if you need to "
 "delete their descriptions."
-msgstr ""
+msgstr "选中此项以避免创建 ( 自动)类别的未来描述 \" 由 WPeMattico 创建 \" 。  如果需要删除其描述，那么可以编辑过去的类别。"
 
 #: wpematico/app/settings_help.php:304
 msgid "Disable Extensions feed page requests."
-msgstr ""
+msgstr "禁用扩展订阅源页面请求。"
 
 #: wpematico/app/settings_help.php:305
 msgid ""
 "Check this to avoid the fetch of WPeMatico Addons from our downloads feed "
 "page."
-msgstr ""
+msgstr "选中此项以避免从我们的下载订阅源页面访存 WPeMattico 附加组件。"
 
 #: wpematico/app/settings_help.php:306
 msgid ""
 "You'll see an empty page or just your installed extensions when you click on "
 "Extensions menu."
-msgstr ""
+msgstr "单击 \" 扩展 \" 菜单时，您将看到一个空页面或仅安装的扩展。"
 
 #: wpematico/app/settings_help.php:309
 msgid "Enable Upload of XMLs."
-msgstr ""
+msgstr "启用 XML 上载。"
 
 #: wpematico/app/settings_help.php:310
 msgid ""
 "If you want upload XML files to use them in the XML Campaign Type. Enable "
 "this feature allow the upload XMLs from media."
-msgstr ""
+msgstr "如果要上载 XML 文件，请在 XML Campaign Type中使用这些文件。 启用此功能部件允许从介质上载 XML 。"
 
 #: wpematico/app/settings_help.php:313
 msgid "Enable html entity decode on publish."
-msgstr ""
+msgstr "在发布时启用 html 实体解码。"
 
 #: wpematico/app/settings_help.php:314
 msgid ""
 "Enable this feature if you need to decode HTML entities in feed content "
 "before publishing each post."
-msgstr ""
+msgstr "如果需要在发布每个帖子之前对订阅源内容中的 HTML 实体进行解码，请启用此功能。"
 
 #: wpematico/app/settings_help.php:319
 msgid "Sender Email."
@@ -5158,9 +4997,7 @@ msgid ""
 "This feature generate tags automatically on every published post, on "
 "campaign edit you can disable auto feature and manually enter a list of tags "
 "or leave empty."
-msgstr ""
-"此功能会在每个发布的文章上自动生成标签，在Campaign编辑时，您可以停用自动功"
-"能，手动输入标签列表或留空。"
+msgstr "此功能会在每个发布的文章上自动生成标签，在Campaign编辑时，您可以停用自动功能，手动输入标签列表或留空。"
 
 #: wpematico/app/settings_help.php:341
 #: wpematico_professional/includes/prosettings.php:157
@@ -5171,26 +5008,20 @@ msgstr "在每个文章上添加自定义内容作为模板的自定义字段."
 msgid ""
 "Full Content is the correct addon if you want to attempt to obtain full "
 "items content from source site instead of the campaign feed."
-msgstr ""
-"如果您想尝试从源网站而不是Campaign Feed获取完整项目内容，则“Full content”是不"
-"错的插件。"
+msgstr "如果您想尝试从源网站而不是Campaign Feed获取完整项目内容，则“Full content”是不错的插件。"
 
 #: wpematico/app/settings_help.php:343
 msgid ""
 "This option allow you assign an author per feed when editing campaign. If no "
 "choice any author, the campaign author will be taken."
-msgstr ""
-"此选项允许您在编辑Campaign时为每个Feed分配作者。如果没有选择任何作者，则默认"
-"采取Campaign作者。"
+msgstr "此选项允许您在编辑Campaign时为每个Feed分配作者。如果没有选择任何作者，则默认采取Campaign作者。"
 
 #: wpematico/app/settings_help.php:344
 #: wpematico_professional/includes/prosettings.php:139
 msgid ""
 "On campaign edit you can import, copy & paste in a textarea field, a list of "
 "feed addresses with/out author names."
-msgstr ""
-"在广告系列编辑中，您可以导入，复制和粘贴textarea字段，带有/出作者姓名的Feed地"
-"址列表。"
+msgstr "在广告系列编辑中，您可以导入，复制和粘贴textarea字段，带有/出作者姓名的Feed地址列表。"
 
 #: wpematico/app/settings_page.php:41
 msgid "Invalid email."
@@ -5202,9 +5033,7 @@ msgid ""
 "It seems that another plugin are opening Wordpress SimplePie before that "
 "WPeMatico can open its own library. This gives a PHP error on duplicated "
 "classes."
-msgstr ""
-"在WPeMatico可以打开自己的库之前，似乎另一个插件正在打开Wordpress SimplePie，"
-"这可能会在重复的类上出现PHP错误。"
+msgstr "在WPeMatico可以打开自己的库之前，似乎另一个插件正在打开Wordpress SimplePie，这可能会在重复的类上出现PHP错误。"
 
 #: wpematico/app/settings_page.php:117
 #: wpematico/app/wpematico_functions.php:1154
@@ -5248,8 +5077,7 @@ msgid ""
 "if you can take a minute to %s write a 5 star review on Wordpress %s. :) "
 "thanks."
 msgstr ""
-"如果您无法在文章中显示WPeMatico评分，我真的很感激您是否可以花一分钟时间来%s "
-"对​​Wordpress  %s.撰写5星评价。 ：） 谢谢。"
+"如果您无法在文章中显示WPeMatico评分，我真的很感激您是否可以花一分钟时间来%s 对​​Wordpress  %s.撰写5星评价。 ：） 谢谢。"
 
 #: wpematico/app/settings_page.php:223
 msgid "Disable <i>Auto-Category description</i>"
@@ -5257,11 +5085,11 @@ msgstr ""
 
 #: wpematico/app/settings_page.php:225
 msgid "Disable Extensions feed Page"
-msgstr ""
+msgstr "禁用扩展订阅源页面"
 
 #: wpematico/app/settings_page.php:227
 msgid "HTML entity decode on publish."
-msgstr ""
+msgstr "HTML 实体在发布时解码。"
 
 #: wpematico/app/settings_page.php:232 wpematico/app/settings_page.php:773
 #: wpematico_professional/includes/prosettings.php:110
@@ -5296,36 +5124,36 @@ msgstr "图片的全局设置"
 
 #: wpematico/app/settings_page.php:349
 msgid "See more info in Help tab above."
-msgstr ""
+msgstr "请参阅以上 \" 帮助 \" 选项卡中的更多信息。"
 
 #: wpematico/app/settings_page.php:357 wpematico/app/settings_page.php:392
 #: wpematico/app/settings_page.php:427
 msgctxt "mime delimiter"
 msgid ","
-msgstr ""
+msgstr "，，"
 
 #: wpematico/app/settings_page.php:361
 msgid "Allowed image extensions to upload"
-msgstr ""
+msgstr "允许上载的图像扩展名"
 
 #: wpematico/app/settings_page.php:365
 msgid "WordPress image mime types."
-msgstr ""
+msgstr "WordPress 映像 mime 类型。"
 
 #: wpematico/app/settings_page.php:365 wpematico/app/settings_page.php:400
 #: wpematico/app/settings_page.php:435
 msgid "Click here to restore WP defaults."
-msgstr ""
+msgstr "单击此处以恢复 WP 缺省值。"
 
 #: wpematico/app/settings_page.php:366 wpematico/app/settings_page.php:401
 #: wpematico/app/settings_page.php:436
 msgid "Recommended."
-msgstr ""
+msgstr "建议。"
 
 #: wpematico/app/settings_page.php:366 wpematico/app/settings_page.php:401
 #: wpematico/app/settings_page.php:436
 msgid "Click here to set recommended values."
-msgstr ""
+msgstr "单击此处以设置建议值。"
 
 #: wpematico/app/settings_page.php:379
 msgid "Global Settings for Videos"
@@ -5333,11 +5161,11 @@ msgstr "视频的全局设置"
 
 #: wpematico/app/settings_page.php:396
 msgid "Allowed video extensions to upload"
-msgstr ""
+msgstr "允许上载视频扩展"
 
 #: wpematico/app/settings_page.php:400
 msgid "WordPress video mime types."
-msgstr ""
+msgstr "WordPress 视频 mime 类型。"
 
 #: wpematico/app/settings_page.php:414
 msgid "Global Settings for Audios"
@@ -5345,11 +5173,11 @@ msgstr "音频的全局设置"
 
 #: wpematico/app/settings_page.php:431
 msgid "Allowed audio extensions to upload"
-msgstr ""
+msgstr "允许上载的音频扩展"
 
 #: wpematico/app/settings_page.php:435
 msgid "WordPress audio mime types."
-msgstr ""
+msgstr "WordPress 音频 mime 类型。"
 
 #: wpematico/app/settings_page.php:449
 msgid "Enable Features"
@@ -5488,9 +5316,7 @@ msgid ""
 "run again on next scheduled cron. A value of \"0\" ignore this, means that "
 "remain until user make click.  Recommended 300 Seconds."
 msgstr ""
-"当Campaign运行中断时，在点击“停止Campaign”之前无法再次执行。然后可以在下一个"
-"计划的cron上再次运行，值为“0”则忽略此项，表示在用户单击之前保持不变，建议300"
-"秒。"
+"当Campaign运行中断时，在点击“停止Campaign”之前无法再次执行。然后可以在下一个计划的cron上再次运行，值为“0”则忽略此项，表示在用户单击之前保持不变，建议300秒。"
 
 #: wpematico/app/settings_page.php:614
 msgid "Cron and Scheduler Settings"
@@ -5516,11 +5342,11 @@ msgstr ""
 
 #: wpematico/app/settings_page.php:636
 msgid "Please change and use the URL below in all your cronjobs."
-msgstr ""
+msgstr "请在您的所有 cronjobs 中更改和使用以下 URL 。"
 
 #: wpematico/app/settings_page.php:638
 msgid "URL:"
-msgstr ""
+msgstr "URL :"
 
 #: wpematico/app/settings_page.php:646
 msgid "Set a password to access the external CRON"
@@ -5554,13 +5380,14 @@ msgstr "或URL："
 
 #: wpematico/app/settings_page.php:666
 msgid ""
-"This set <code>DISABLE_WP_CRON</code> to <code>true</code>, then the <a href="
-"\"https://core.trac.wordpress.org/browser/tags/4.2.3/src/wp-includes/cron."
-"php#L314\" target=\"_blank\">current cron process should be killed</a>."
+"This set <code>DISABLE_WP_CRON</code> to <code>true</code>, then the <a "
+"href=\"https://core.trac.wordpress.org/browser/tags/4.2.3/src/wp-"
+"includes/cron.php#L314\" target=\"_blank\">current cron process should be "
+"killed</a>."
 msgstr ""
-"这将<code>DISABLE_WP_CRON</code>设置为<code>true</code> ，然后<a href="
-"\"https://core.trac.wordpress.org/browser/tags/4.2.3/src/wp-includes/cron."
-"php#L314\" target=\"_blank\">应当关掉当前的cron进程</a> 。"
+"这将<code>DISABLE_WP_CRON</code>设置为<code>true</code> ，然后<a href=\"https://core."
+"trac.wordpress.org/browser/tags/4.2.3/src/wp-includes/cron.php#L314\" "
+"target=\"_blank\">应当关掉当前的cron进程</a> 。"
 
 #: wpematico/app/settings_page.php:668
 msgid ""
@@ -5578,11 +5405,11 @@ msgstr "外部Cron的日志文件"
 
 #: wpematico/app/settings_page.php:684
 msgid "WordPress Backend Tools"
-msgstr ""
+msgstr "WordPress 后端工具"
 
 #: wpematico/app/settings_page.php:689
 msgid "Wpematico Campaign Column in Posts(-types) lists."
-msgstr ""
+msgstr "帖子(-types ) 列表中的 Wpematico 运动列。"
 
 #: wpematico/app/settings_page.php:701
 msgid "Disable metabox Wpematico Campaign Info in post editing"
@@ -5621,7 +5448,7 @@ msgstr "调试文件"
 
 #: wpematico/app/settings_tabs.php:37
 msgid "Feed Viewer"
-msgstr ""
+msgstr "订阅源查看器"
 
 #: wpematico/app/settings_tabs.php:38
 msgid "Danger Zone"
@@ -5652,7 +5479,7 @@ msgstr "Campaign"
 
 #: wpematico/app/wp-backend-helpers.php:72
 msgid "Edit campaign"
-msgstr ""
+msgstr "编辑营销活动"
 
 #: wpematico/app/wp-backend-helpers.php:128
 msgid "WPeMatico Campaign Info"
@@ -5688,19 +5515,19 @@ msgstr "跳到原网站查看内容源."
 
 #: wpematico/app/wp-backend-helpers.php:217
 msgid "WPeMatico Summary"
-msgstr ""
+msgstr "WPeMattico 摘要"
 
 #: wpematico/app/wp-backend-helpers.php:235
 msgid "Last five Processed Campaigns:"
-msgstr ""
+msgstr "最后五个已处理的营销活动 :"
 
 #: wpematico/app/wp-backend-helpers.php:236
 msgid "Go to Campaigns List"
-msgstr ""
+msgstr "转至 \" 营销活动列表 \""
 
 #: wpematico/app/wp-backend-helpers.php:236
 msgid "See All"
-msgstr ""
+msgstr "查看全部"
 
 #: wpematico/app/wp-backend-helpers.php:242
 #: wpematico/app/wp-backend-helpers.php:271 wpematico/wpematico_class.php:142
@@ -5731,7 +5558,7 @@ msgstr "检查重复的标题&#39;%1s&#39;"
 #: wpematico/app/wpematico_functions.php:438
 #, php-format
 msgid "Download error: %s Using an alternate download method..."
-msgstr ""
+msgstr "下载错误: %s 使用备用下载方法..."
 
 #: wpematico/app/wpematico_functions.php:591
 msgid "- WordPress 3.9 or higher needed!"
@@ -5768,8 +5595,7 @@ msgid ""
 "Professional</a></strong>"
 msgstr ""
 "<strong>您应该使用<a href=\"https://etruel.com/downloads/wpematico-"
-"professional/\">WPeMatico Professional</a>的强制推送和更改用户代理功能</"
-"strong>"
+"professional/\">WPeMatico Professional</a>的强制推送和更改用户代理功能</strong>"
 
 #: wpematico/app/wpematico_functions.php:1255
 msgid "Feed Title:"
@@ -5840,29 +5666,30 @@ msgstr "[可恢复错误]"
 
 #: wpematico/app/xml-importer.php:42
 msgid "XMLs"
-msgstr ""
+msgstr "XML"
 
 #: wpematico/app/xml-importer.php:42
 msgid "Manage XMLs"
-msgstr ""
+msgstr "管理 XML"
 
 #: wpematico/app/xml-importer.php:42
 #, php-format
 msgid "XML <span class=\"count\">(%s)</span>"
 msgid_plural "XMLs <span class=\"count\">(%s)</span>"
 msgstr[0] ""
+msgstr[1] ""
 
 #: wpematico/app/xml-importer.php:271
 msgid "URL of XML"
-msgstr ""
+msgstr "XML 的 URL"
 
 #: wpematico/app/xml-importer.php:276
 msgid "Check data"
-msgstr ""
+msgstr "检查数据"
 
 #: wpematico/app/xml-importer.php:303
 msgid "Error: Empty feed URL."
-msgstr ""
+msgstr "错误: 订阅源 URL 为空。"
 
 #: wpematico/app/xml-importer.php:343
 msgid ""
@@ -5872,43 +5699,43 @@ msgstr ""
 
 #: wpematico/app/xml-importer.php:363
 msgid "The XML file has no data or is empty."
-msgstr ""
+msgstr "XML 文件没有数据或为空。"
 
 #: wpematico/app/xml-importer.php:384
 msgid "Properties"
-msgstr ""
+msgstr "属性"
 
 #: wpematico/app/xml-importer.php:385
 msgid "Elements of XML"
-msgstr ""
+msgstr "XML 元素"
 
 #: wpematico/app/xml-importer.php:386
 msgid "Parent Element"
-msgstr ""
+msgstr "父元素"
 
 #: wpematico/app/xml-importer.php:390
 msgid "Post title"
-msgstr ""
+msgstr "职位名称"
 
 #: wpematico/app/xml-importer.php:395
 msgid "Post content"
-msgstr ""
+msgstr "发布内容"
 
 #: wpematico/app/xml-importer.php:402
 msgid "Post permalink"
-msgstr ""
+msgstr "后置后置墨水"
 
 #: wpematico/app/xml-importer.php:408
 msgid "Post date"
-msgstr ""
+msgstr "发布日期"
 
 #: wpematico/app/xml-importer.php:414
 msgid "Post image"
-msgstr ""
+msgstr "后映像"
 
 #: wpematico/app/xml-importer.php:427
 msgid "Select a XML node."
-msgstr ""
+msgstr "选择 XML 节点。"
 
 #: wpematico/wpematico.php:37
 msgid "PHP 5.3.0 or higher needed!"
@@ -5972,9 +5799,7 @@ msgstr "请参阅插件列表中的本地插件"
 msgid ""
 "Activate this setting if you have problems with the addons page to see them "
 "in your plugin page like any other plugin."
-msgstr ""
-"如果您在插件页面中遇到问题，请在插件页面中查看帮助，就像激活其他插件一样，激"
-"活此设置。"
+msgstr "如果您在插件页面中遇到问题，请在插件页面中查看帮助，就像激活其他插件一样，激活此设置。"
 
 #: wpematico/wpematico_class.php:209
 msgid "Hide Reviews on Settings"
@@ -5990,9 +5815,7 @@ msgstr "如果您没有看到WPeMatico设置页面完成或无法读取外部URL
 msgid ""
 "If you don't see the WPeMatico Menu may be another plugin or a custom menu "
 "added by your theme are \"overwritten\" the WPeMatico menu position."
-msgstr ""
-"如果您没有看到WPeMatico菜单，可能是另一个插件，或者您的主题添加的自定义菜"
-"单“覆盖”了WPeMatico菜单位置。"
+msgstr "如果您没有看到WPeMatico菜单，可能是另一个插件，或者您的主题添加的自定义菜单“覆盖”了WPeMatico菜单位置。"
 
 #: wpematico/wpematico_class.php:256
 msgid ""
@@ -6004,17 +5827,13 @@ msgstr "单击“重置菜单位置”复选框，在Wordpress菜单中显示最
 msgid ""
 "If you can't see well the WPeMatico Settings page is probable that you are "
 "having problems to read external wordpress web pages from your server."
-msgstr ""
-"如果您看不清楚WPeMatico设置页面，可能是您从服务器读取外部wordpress网页时遇到"
-"问题。"
+msgstr "如果您看不清楚WPeMatico设置页面，可能是您从服务器读取外部wordpress网页时遇到问题。"
 
 #: wpematico/wpematico_class.php:259
 msgid ""
 "Click the checkbox \"Hide Reviews on Settings\" to avoid this and show just "
 "a link to Wordpress reviews page."
-msgstr ""
-"单击“隐藏设置上的评论”复选框可以避免这种情况，只显示指向Wordpress评论页面的链"
-"接。"
+msgstr "单击“隐藏设置上的评论”复选框可以避免这种情况，只显示指向Wordpress评论页面的链接。"
 
 #: wpematico/wpematico_class.php:263
 msgid ""
@@ -6053,9 +5872,7 @@ msgstr "使用cURL"
 msgid ""
 "Forces to use standard PHP cURL to scratches the source webpage, before "
 "trying with file_get_contents and Wordpress functions. RECOMMENDED."
-msgstr ""
-"在尝试使用file_get_contents和Wordpress函数之前，强制使用标准PHP cURL来划分源"
-"网页。推荐."
+msgstr "在尝试使用file_get_contents和Wordpress函数之前，强制使用标准PHP cURL来划分源网页。推荐."
 
 #: wpematico_fullcontent/inc/campaign_edit.php:73
 msgid "Use Open Graph for featured image"
@@ -6065,9 +5882,7 @@ msgstr "使用Open Graph获取特色图片"
 msgid ""
 "Search for meta tag on source head, og:image (like facebook) to get the url "
 "of the featured image. If it is not found then search for twitter:image."
-msgstr ""
-"在源头上搜索元标记，og：图像（如facebook）来获取特色图片的网址。如果找不到，"
-"则搜索twitter：image。"
+msgstr "在源头上搜索元标记，og：图像（如facebook）来获取特色图片的网址。如果找不到，则搜索twitter：image。"
 
 #: wpematico_fullcontent/inc/campaign_edit.php:79
 msgid "Add it above the content."
@@ -6096,8 +5911,7 @@ msgstr "搜索分页文章"
 msgid ""
 "Searches and makes an unique content for articles divided into multiples "
 "pages. The xPath for the 'next' link must be set in config file."
-msgstr ""
-"搜索并为分页文章制作独特的内容。必须在配置文件中设置“next”链接的xPath。"
+msgstr "搜索并为分页文章制作独特的内容。必须在配置文件中设置“next”链接的xPath。"
 
 #: wpematico_fullcontent/inc/campaign_edit.php:95
 msgid "Get the Title from the source webpage"
@@ -6108,9 +5922,7 @@ msgid ""
 "Forces to use the title obtained from the full content if not blank, instead "
 "of the feed item title. This will overwrite the custom title Professional "
 "feature."
-msgstr ""
-"强制使用从全文内容获取的标题（如果不是空白）,而不是Feed的项目标题.这会覆盖自"
-"定义标题Professional功能."
+msgstr "强制使用从全文内容获取的标题（如果不是空白）,而不是Feed的项目标题.这会覆盖自定义标题Professional功能."
 
 #: wpematico_fullcontent/inc/campaign_edit.php:99
 msgid "Get the Date for the post from the source webpage"
@@ -6120,9 +5932,7 @@ msgstr "从源网页获取文章的日期"
 msgid ""
 "Forces to use the date obtained from the full content if not blank, instead "
 "of the current date. This will overwrite the feed item date feature."
-msgstr ""
-"强制使用从全文内容获取的日期（如果不是空白）,而不是当前日期.这将覆盖Feed上的"
-"日期功能。"
+msgstr "强制使用从全文内容获取的日期（如果不是空白）,而不是当前日期.这将覆盖Feed上的日期功能。"
 
 #: wpematico_fullcontent/inc/campaign_edit.php:107
 msgid "Get the Author from the source webpage"
@@ -6132,9 +5942,7 @@ msgstr "从源网页获取作者"
 msgid ""
 "Forces to use the author obtained from the full content. Will checks if the "
 "username exist. This will overwrite the author fields in campaign."
-msgstr ""
-"强制使用作者从全文内容中获取。将检查用户名是否存在。这将覆盖广告系列中的作者"
-"字段。"
+msgstr "强制使用作者从全文内容中获取。将检查用户名是否存在。这将覆盖广告系列中的作者字段。"
 
 #: wpematico_fullcontent/inc/campaign_edit.php:112
 msgid "Create the Author if not exist."
@@ -6146,8 +5954,8 @@ msgid ""
 "created with the email [username]@[thisdomain].  If not checked follows the "
 "campaign rules."
 msgstr ""
-"如果用户名在Wordpress用户里不存在，则创建用户。将使用电子邮件[username] @ "
-"[thisdomain]创建。如果未选中，则遵循Campaign规则。"
+"如果用户名在Wordpress用户里不存在，则创建用户。将使用电子邮件[username] @ [thisdomain]"
+"创建。如果未选中，则遵循Campaign规则。"
 
 #: wpematico_fullcontent/inc/class_extractor.php:22
 msgid "Class Items"
@@ -6195,9 +6003,7 @@ msgstr "内容中没有html."
 msgid ""
 "You can try with \"autodetect_on_failure: yes\" or search another @class/@id "
 "that envelopes the content."
-msgstr ""
-"您可以尝试使用“autodetect_on_failure：yes”或搜索包含内容的另一个@ class / @ "
-"id."
+msgstr "您可以尝试使用“autodetect_on_failure：yes”或搜索包含内容的另一个@ class / @ id."
 
 #: wpematico_fullcontent/inc/functions.php:123
 msgid ""
@@ -6230,8 +6036,7 @@ msgstr "**无法上传！只允许.txt文件！"
 msgid ""
 "Your Custom folder stil remains inside own plugin directory. This means that "
 "your files will be replaced/deleted when update the plugin."
-msgstr ""
-"您的自定义文件夹仍在自己的插件目录中。这意味着更新插件时会替换/删除您的文件。"
+msgstr "您的自定义文件夹仍在自己的插件目录中。这意味着更新插件时会替换/删除您的文件。"
 
 #: wpematico_fullcontent/inc/functions.php:211
 msgid ""
@@ -6410,7 +6215,7 @@ msgstr "如果您喜欢它并想要感谢，您可以在Wordpress上写下5星�
 
 #: wpematico_fullcontent/inc/settings.php:129
 msgid "Config File"
-msgstr ""
+msgstr "配置文件"
 
 #: wpematico_fullcontent/inc/settings.php:142
 msgid "Test Url"
@@ -6525,7 +6330,7 @@ msgstr "出了点问题。联系etruel."
 
 #: wpematico_professional/includes/campaign_edit.php:110
 msgid "Get Date from xml tag."
-msgstr ""
+msgstr "从 xml 标记获取日期。"
 
 #: wpematico_professional/includes/campaign_edit.php:123
 msgid "Author"
@@ -6548,7 +6353,7 @@ msgstr "选择一项"
 #: wpematico_professional/includes/campaign_edit.php:300
 #: wpematico_professional/includes/campaign_edit.php:850
 msgid "Change Image"
-msgstr ""
+msgstr "更改图像"
 
 #: wpematico_professional/includes/campaign_edit.php:319
 msgid "Open Feed advanced Options"
@@ -6572,8 +6377,8 @@ msgstr "选中使用Feed翻页"
 
 #: wpematico_professional/includes/campaign_edit.php:381
 msgid ""
-"This option allow to check multiple pages for feeds like https://etruel.com/"
-"feed/?paged=2."
+"This option allow to check multiple pages for feeds like https://etruel."
+"com/feed/?paged=2."
 msgstr "此选项允许检查多个页面，例如https://etruel.com/feed/?paged=2."
 
 #: wpematico_professional/includes/campaign_edit.php:385
@@ -6637,12 +6442,12 @@ msgstr "此选项允许选择并强制为此Feed设置输入字符编码."
 
 #: wpematico_professional/includes/campaign_edit.php:567
 msgid " Ignore Words to Tax in Settings"
-msgstr ""
+msgstr " 忽略设置中的税款"
 
 #: wpematico_professional/includes/campaign_edit.php:574
 #: wpematico_professional/includes/prosettingsextra.php:269
 msgid "Add more."
-msgstr ""
+msgstr "添加更多。"
 
 #: wpematico_professional/includes/campaign_edit.php:589
 #: wpematico_professional/includes/prosettingsextra.php:249
@@ -6752,9 +6557,7 @@ msgstr "此字段用于更改名称并保持相同的扩展名."
 msgid ""
 "You can use %1s or %1s and will be replaced on uploading the image. "
 "Wordpress adds a number at the end if the image name already exists."
-msgstr ""
-"您可以使用%1s 或%1s，并在上传图片时替换它们。如果图片名称已存在，Wordpress会"
-"在末尾添加一个数字。"
+msgstr "您可以使用%1s 或%1s，并在上传图片时替换它们。如果图片名称已存在，Wordpress会在末尾添加一个数字。"
 
 #: wpematico_professional/includes/campaign_edit.php:753
 #: wpematico_professional/includes/campaign_edit.php:1017
@@ -6836,11 +6639,11 @@ msgstr "图片网址："
 
 #: wpematico_professional/includes/campaign_edit.php:846
 msgid "Open Image URL in a new browser tab"
-msgstr ""
+msgstr "在新浏览器选项卡中打开图像 URL"
 
 #: wpematico_professional/includes/campaign_edit.php:850
 msgid "Add Image"
-msgstr ""
+msgstr "添加图像"
 
 #: wpematico_professional/includes/campaign_edit.php:861
 msgid "Only allow first Featured image that meets the following filters."
@@ -6898,9 +6701,7 @@ msgstr "启用音频重命名"
 msgid ""
 "You can use %1s or %1s and will be replaced on uploading the audio. "
 "Wordpress adds a number at the end if the audio name already exists."
-msgstr ""
-"您可以使用%1s或%1s，并在上传音频时替换它们。如果音频名称已存在，Wordpress会在"
-"末尾添加一个数字。"
+msgstr "您可以使用%1s或%1s，并在上传音频时替换它们。如果音频名称已存在，Wordpress会在末尾添加一个数字。"
 
 #: wpematico_professional/includes/campaign_edit.php:1019
 #: wpematico_professional/includes/core_settings.php:197
@@ -6945,9 +6746,7 @@ msgstr "启用视频重命名"
 msgid ""
 "You can use %1s or %1s and will be replaced on uploading the video. "
 "Wordpress adds a number at the end if the video name already exists."
-msgstr ""
-"您可以使用%1s或%1s，并在上传音频时替换它们。如果音频名称已存在，Wordpress会在"
-"末尾添加一个数字。"
+msgstr "您可以使用%1s或%1s，并在上传音频时替换它们。如果音频名称已存在，Wordpress会在末尾添加一个数字。"
 
 #: wpematico_professional/includes/campaign_edit.php:1135
 #: wpematico_professional/includes/core_settings.php:116
@@ -6992,8 +6791,7 @@ msgstr "现在您可以使用{title}和{counter}，并将替换为标题。"
 msgid ""
 "If you don't use {counter} and checked the box below, by default the counter "
 "is added to end of title."
-msgstr ""
-"如果您不使用{counter}并选中下面的框，则默认情况下，计数器会添加到标题末尾。"
+msgstr "如果您不使用{counter}并选中下面的框，则默认情况下，计数器会添加到标题末尾。"
 
 #: wpematico_professional/includes/campaign_edit.php:1180
 msgid "Ex: 'New Post: {title}'"
@@ -7047,11 +6845,11 @@ msgstr "字词"
 
 #: wpematico_professional/includes/campaign_fetch.php:201
 msgid "Assigning date from feed item tag. "
-msgstr ""
+msgstr "从订阅源商品标记分配日期。 "
 
 #: wpematico_professional/includes/campaign_fetch.php:203
 msgid "Invalid Date format in feed item tag:"
-msgstr ""
+msgstr "订阅源项标记中的日期格式无效 :"
 
 #: wpematico_professional/includes/campaign_fetch.php:231
 msgid "** Flipping content paragraphs **"
@@ -7261,19 +7059,16 @@ msgstr "在audios URL中删除查询变量."
 #: wpematico_professional/includes/prohelps.php:15
 #: wpematico_professional/includes/prohelps.php:301
 msgid ""
-"Cleans the queries variables in the same url of the audio before download "
-"it. Not recommended unless you have problems to get the files."
-msgstr ""
-"在下载之前清除音频的同一URL中的查询变量。除非您在获取文件时遇到问题，否则不推"
-"荐使用。"
+"Cleans the queries variables in the same url of the audio before download it."
+" Not recommended unless you have problems to get the files."
+msgstr "在下载之前清除音频的同一URL中的查询变量。除非您在获取文件时遇到问题，否则不推荐使用。"
 
 #: wpematico_professional/includes/prohelps.php:19
 #: wpematico_professional/includes/prohelps.php:308
 msgid ""
 "You can write here the new name for every audio uploaded to the posts. All "
 "audios will be renamed with this field."
-msgstr ""
-"您可以在此处为上传到文章的每个音频写下新名称。所有音频都将使用此字段重命名。"
+msgstr "您可以在此处为上传到文章的每个音频写下新名称。所有音频都将使用此字段重命名。"
 
 #: wpematico_professional/includes/prohelps.php:22
 #: wpematico_professional/includes/prohelps.php:313
@@ -7292,19 +7087,16 @@ msgstr "在视频网址中删除查询变量."
 
 #: wpematico_professional/includes/prohelps.php:28
 msgid ""
-"Cleans the queries variables in the same url of the video before download "
-"it. Not recommended unless you have problems to get the files."
-msgstr ""
-"在下载之前清除视频的同一URL中的查询变量。除非您在获取文件时遇到问题，否则不推"
-"荐使用。"
+"Cleans the queries variables in the same url of the video before download it."
+" Not recommended unless you have problems to get the files."
+msgstr "在下载之前清除视频的同一URL中的查询变量。除非您在获取文件时遇到问题，否则不推荐使用。"
 
 #: wpematico_professional/includes/prohelps.php:32
 #: wpematico_professional/includes/prohelps.php:356
 msgid ""
 "You can write here the new name for every video uploaded to the posts. All "
 "videos will be renamed with this field."
-msgstr ""
-"您可以在此处为上传到文章的每个音频写下新名称。所有音频都将使用此字段重命名。"
+msgstr "您可以在此处为上传到文章的每个音频写下新名称。所有音频都将使用此字段重命名。"
 
 #: wpematico_professional/includes/prohelps.php:35
 #: wpematico_professional/includes/prohelps.php:361
@@ -7321,9 +7113,7 @@ msgid ""
 "Use this instead of Wordpress functions to improve performance. This "
 "function uploads the file by ranges \"as is\" from the original to use it "
 "inside the post."
-msgstr ""
-"使用此代替Wordpress函数来提高性能。此函数按原样“as is”上传文件，以在文章中使"
-"用它."
+msgstr "使用此代替Wordpress函数来提高性能。此函数按原样“as is”上传文件，以在文章中使用它."
 
 #: wpematico_professional/includes/prohelps.php:56
 msgid ""
@@ -7333,8 +7123,8 @@ msgstr "通过逐行添加所有逗号分隔的单词来完成Ramdom重写表单
 
 #: wpematico_professional/includes/prohelps.php:57
 msgid ""
-"Insert in the form a comma-separated list of words to be used to replace."
-"<br>\n"
+"Insert in the form a comma-separated list of words to be used to replace.<br>"
+"\n"
 "\t\t\tThis list will be added to the each campaign Ramdon Rewrite list that "
 "has activated the feature.<br>\n"
 "\t\t\tThe words will be searched line by line and, if one word is found (no "
@@ -7342,24 +7132,22 @@ msgid ""
 "\t\t\twill be replaced for one of the others of the same line.<br>\n"
 "\t\t\t"
 msgstr ""
-"在表单中插入以逗号分隔的单词列表替换。 <br>此列表将添加到已激活该功能的每个"
-"Campaign Ramdon Rewrite列表中。 <br>将逐行搜索单词，如果找到一个单词（无论行"
-"中的顺序）， <br>将被替换为同一行中的另一个。 <br>"
+"在表单中插入以逗号分隔的单词列表替换。 <br>此列表将添加到已激活该功能的每个Campaign Ramdon Rewrite列表中。 <br>"
+"将逐行搜索单词，如果找到一个单词（无论行中的顺序）， <br>将被替换为同一行中的另一个。 <br>"
 
 #: wpematico_professional/includes/prohelps.php:62
 msgid ""
 "<b>Example:</b><br>\n"
 "\t\t\t\t<b>lady, woman, female, girl</b><br>\n"
-"\t\t\t\tIf the text contains the word \"woman\" will be replaced by \"lady"
-"\", \"female\" or \"girl\" ramdomly."
+"\t\t\t\tIf the text contains the word \"woman\" will be replaced by \"lady\","
+" \"female\" or \"girl\" ramdomly."
 msgstr ""
-"<b>例：</b> <br> <b>女士，女士，女性，女孩</b> <br>如果文字中包含“女人”这个"
-"词，则会被“女士”，“女性”或“女孩”所取代。"
+"<b>例：</b> <br> <b>女士，女士，女性，女孩</b> <br>如果文字中包含“女人”这个词，则会被“女士”，“女性”或“女孩”所取代。"
 
 #: wpematico_professional/includes/prohelps.php:73
 #: wpematico_professional/includes/prohelps.php:74
 msgid "Separated by commas"
-msgstr ""
+msgstr "用逗号分隔"
 
 #: wpematico_professional/includes/prohelps.php:80
 msgid "Add rel=\"nofollow\" to links."
@@ -7379,13 +7167,13 @@ msgstr "采用Googlo News永久链接."
 
 #: wpematico_professional/includes/prohelps.php:91
 msgid "Use a custom feed tag to set the date."
-msgstr ""
+msgstr "使用定制订阅源标记来设置日期。"
 
 #: wpematico_professional/includes/prohelps.php:92
 msgid ""
 "You can set in each campaign which feed item tag should be used to set the "
 "date of each post. The value must be compatible with the strtotime function."
-msgstr ""
+msgstr "您可以在每个营销活动中设置用于设置每个帖子的日期的订阅源商品标记。 该值必须与 strtotime 函数兼容。"
 
 #: wpematico_professional/includes/prohelps.php:99
 #: wpematico_professional/wpematicopro.php:1277
@@ -7449,10 +7237,9 @@ msgid ""
 "\t\t\t\t<br>\n"
 "\t\t\t</span>"
 msgstr ""
-"<span class=\"srchbdr0 hide\" id=\"hlpphra\" style=\"display: inline;\"><b>基"
-"础知识：</b>删除直到内容的末尾 <br>找到该词语并删除其与其它的内容 <br> <b>示"
-"例：</b>如果文章内容包含短语“此帖最早在xxxxxx上发布...”然后您想要删除它，您应"
-"该使用“此帖最早发布”。 <br><br></span>"
+"<span class=\"srchbdr0 hide\" id=\"hlpphra\" style=\"display: inline;\"><b>"
+"基础知识：</b>删除直到内容的末尾 <br>找到该词语并删除其与其它的内容 <br> <b>示例：</b>"
+"如果文章内容包含短语“此帖最早在xxxxxx上发布...”然后您想要删除它，您应该使用“此帖最早发布”。 <br><br></span>"
 
 #: wpematico_professional/includes/prohelps.php:139
 #: wpematico_professional/wpematicopro.php:1335
@@ -7476,7 +7263,7 @@ msgstr "删除短语直到行的结尾.注意不是内容的结尾."
 
 #: wpematico_professional/includes/prohelps.php:151
 msgid "Flip Paragraphs"
-msgstr ""
+msgstr "翻转段落"
 
 #: wpematico_professional/includes/prohelps.php:152
 msgid ""
@@ -7488,18 +7275,18 @@ msgstr ""
 msgid ""
 "It runs after the above strips, so first deletes what doesn't suit and then "
 "inverts the paragraphs."
-msgstr ""
+msgstr "它运行在上述条带之后，因此首先删除不适合的内容，然后将段落倒置。"
 
 #: wpematico_professional/includes/prohelps.php:158
 msgid "Activate Flip Paragraphs"
-msgstr ""
+msgstr "激活翻转段落"
 
 #: wpematico_professional/includes/prohelps.php:159
 msgid ""
 "All new posts fetched by the campaign will flip the first and second "
-"paragraph of the content (&lt;p&gt; tags), each one is replaced by the "
-"other. And if the third one with the fourth one is presented as well, and so "
-"on until the end of the content."
+"paragraph of the content (&lt;p&gt; tags), each one is replaced by the other."
+" And if the third one with the fourth one is presented as well, and so on "
+"until the end of the content."
 msgstr ""
 
 #: wpematico_professional/includes/prohelps.php:164
@@ -7553,12 +7340,10 @@ msgid ""
 "Engines, you can use the | operator: (motor|car). If you want Case "
 "insensitive on RegEx, add \"/i\" at the end of RegEx."
 msgstr ""
-"<b>基础知识：</b>关键字过滤器允许您跳过已获取的文章，如果其内容，标题或分类中"
-"包含某单词。留下所有要忽略的字段。 <br>必须包含（任何单词）：检查三个字段，并"
-"且一个单词必须至少在其中一个字段中。 <br>必须包含（所有单词）：一次检查三个字"
-"段，所有单词必须在其中。 <br> <b>示例：</b>如果帖子内容包含单词“motor”，然后"
-"您想要跳过，只需在“单词”字段中输入“motor”（每行1个）。 <br> <b>常用表达</b> "
-"<br>对于高级用户，支持正则表达式。它可以让你定制更强大的过滤国内“/ i”。"
+"<b>基础知识：</b>关键字过滤器允许您跳过已获取的文章，如果其内容，标题或分类中包含某单词。留下所有要忽略的字段。 <br>"
+"必须包含（任何单词）：检查三个字段，并且一个单词必须至少在其中一个字段中。 <br>必须包含（所有单词）：一次检查三个字段，所有单词必须在其中。 <br>"
+" <b>示例：</b>如果帖子内容包含单词“motor”，然后您想要跳过，只需在“单词”字段中输入“motor”（每行1个）。 <br> <b>"
+"常用表达</b> <br>对于高级用户，支持正则表达式。它可以让你定制更强大的过滤国内“/ i”。"
 
 #: wpematico_professional/includes/prohelps.php:210
 msgid ""
@@ -7578,11 +7363,9 @@ msgid ""
 "you can use the | operator: (jose|maria). If you want Case insensitive on "
 "RegEx, add \"/i\" at the end of RegEx."
 msgstr ""
-"<b>基础知识：</b>如果作者姓名中包含关键词，则跳过已发布的文章。留下所有要忽略"
-"的字段。 <br>必须包含：作者姓名必须至少包含其中一个关键词<br> <b>示例：</b>如"
-"果文章作者的姓名包含关键词“富裕者”，您想跳过关于“富裕者”的文章，只需在字段中"
-"输入“富裕者”（每行1个）。 <br> <b>常用表达</b> <br>对于高级用户，支持正则表达"
-"式。它可以让你定制更强大的过滤规则."
+"<b>基础知识：</b>如果作者姓名中包含关键词，则跳过已发布的文章。留下所有要忽略的字段。 <br>必须包含：作者姓名必须至少包含其中一个关键词<br>"
+" <b>示例：</b>如果文章作者的姓名包含关键词“富裕者”，您想跳过关于“富裕者”的文章，只需在字段中输入“富裕者”（每行1个）。 <br> <b>"
+"常用表达</b> <br>对于高级用户，支持正则表达式。它可以让你定制更强大的过滤规则."
 
 #: wpematico_professional/includes/prohelps.php:224
 msgid "Strip the queries variables in images URls"
@@ -7591,11 +7374,9 @@ msgstr "剔除图片URls中的查询变量"
 #: wpematico_professional/includes/prohelps.php:225
 #: wpematico_professional/includes/prohelps.php:349
 msgid ""
-"Cleans the queries variables in the same url of the image before download "
-"it. Not recommended unless you have problems to get the files."
-msgstr ""
-"在下载之前清除图片的同一URL中的查询变量。除非您在获取文件时遇到问题，否则不推"
-"荐使用。"
+"Cleans the queries variables in the same url of the image before download it."
+" Not recommended unless you have problems to get the files."
+msgstr "在下载之前清除图片的同一URL中的查询变量。除非您在获取文件时遇到问题，否则不推荐使用。"
 
 #: wpematico_professional/includes/prohelps.php:230
 msgid "Check the source image to determine the extension"
@@ -7604,11 +7385,9 @@ msgstr "检查源图片以确定扩展名."
 #: wpematico_professional/includes/prohelps.php:231
 msgid ""
 "Cleans and puts the correct extensions to the images that are delivered "
-"through a script, avoiding the WordPress upload error: Extension not "
-"allowed. Not Recommended."
-msgstr ""
-"清除并为通过脚本传递的图片添加正确的扩展，避免WordPress上载错误：不允许扩展。"
-"不建议。"
+"through a script, avoiding the WordPress upload error: Extension not allowed."
+" Not Recommended."
+msgstr "清除并为通过脚本传递的图片添加正确的扩展，避免WordPress上载错误：不允许扩展。不建议。"
 
 #: wpematico_professional/includes/prohelps.php:237
 msgid ""
@@ -7623,15 +7402,14 @@ msgid ""
 "image. If this option is not checked, the image will not be uploaded but the "
 "src will be left to the original site."
 msgstr ""
-"此选项允许您从文章内容中剥离&lt;img&gt;标记（如果它不是图片或CDN返回HTML代码"
-"不是图片）。如果未选中此选项，则不会上传图片，Src标签保留原网站的."
+"此选项允许您从文章内容中剥离&lt;img&gt;"
+"标记（如果它不是图片或CDN返回HTML代码不是图片）。如果未选中此选项，则不会上传图片，Src标签保留原网站的."
 
 #: wpematico_professional/includes/prohelps.php:251
 msgid ""
 "You can write here the new name for every image uploaded to the posts. All "
 "images will be renamed with this field."
-msgstr ""
-"您可以在此处写上传到文章的每个图片的新名称。所有图片都将使用此字段重命名."
+msgstr "您可以在此处写上传到文章的每个图片的新名称。所有图片都将使用此字段重命名."
 
 #: wpematico_professional/includes/prohelps.php:256
 msgid "Strip All Images from Content"
@@ -7649,7 +7427,8 @@ msgstr "内容中没有图片的文章将不会被添加."
 msgid ""
 "This feature overwrites the option \"Remove featured image from Content\" of "
 "the General Settings.\n"
-msgstr "此功能将覆盖常规设置中的“从内容中删除特色图片”选项。\n"
+msgstr ""
+"此功能将覆盖常规设置中的“从内容中删除特色图片”选项。\n"
 
 #: wpematico_professional/includes/prohelps.php:276
 #: wpematico_professional/includes/prohelps.php:285
@@ -7663,18 +7442,15 @@ msgid ""
 "\t\t\t\t\t\tBe careful that the filters are not clogged with each other and "
 "miss all images."
 msgstr ""
-"<b>基础知识：</b>您可以允许或跳过文章中的图片尺寸。 <br>您必须选择过滤并填写"
-"宽度或高度大小（以像素为单位）来控制。 <br>任何不符合过滤条件的图片都将从文章"
-"内容中删除."
+"<b>基础知识：</b>您可以允许或跳过文章中的图片尺寸。 <br>您必须选择过滤并填写宽度或高度大小（以像素为单位）来控制。 <br>"
+"任何不符合过滤条件的图片都将从文章内容中删除."
 
 #: wpematico_professional/includes/prohelps.php:321
 msgid ""
 "Use this instead of Wordpress functions to improve performance. This "
 "function uploads the audios by ranges \"as is\" from the original to use it "
 "inside the post."
-msgstr ""
-"使用此代替Wordpress函数来提高性能。此功能按照“原样”的范围上传音频，以在文章中"
-"使用."
+msgstr "使用此代替Wordpress函数来提高性能。此功能按照“原样”的范围上传音频，以在文章中使用."
 
 #: wpematico_professional/includes/prohelps.php:328
 msgid ""
@@ -7691,9 +7467,7 @@ msgid ""
 "Use this instead of Wordpress functions to improve performance. This "
 "function uploads the video by ranges \"as is\" from the original to use it "
 "inside the post."
-msgstr ""
-"使用此代替Wordpress函数来提高性能，此功能按照“原样”的范围上传视频，以在文章中"
-"使用它."
+msgstr "使用此代替Wordpress函数来提高性能，此功能按照“原样”的范围上传视频，以在文章中使用它."
 
 #: wpematico_professional/includes/prohelps.php:376
 msgid ""
@@ -7717,17 +7491,16 @@ msgid ""
 "words, but the letters in the content are counted; then complete the amount "
 "to check to assign a special category.<br>\n"
 "\t\t\t\t\t<b>Cut at:</b> If the content is bigger than X Words, then the "
-"post is converted to text (strip all HTML tags) and cutted at X Words.\t\t\t"
-"\t\t If letters are selected just cut the content at X letters without strip "
-"HTML, if is in a middle of html tag, will run a function to close the tags.\t"
-"\t\t\t\tFirst image on content will remain as featured image.<br>\n"
+"post is converted to text (strip all HTML tags) and cutted at X Words."
+"\t\t\t\t\t If letters are selected just cut the content at X letters without "
+"strip HTML, if is in a middle of html tag, will run a function to close the "
+"tags.\t\t\t\t\tFirst image on content will remain as featured image.<br>\n"
 "\t\t\t\t\t<b>Less than:</b> If the content is less than X then the post is "
 "skipped.<br>\n"
 "\t\t\t\t\tLeave empty or 0 to ignore."
 msgstr ""
-"<b>大于：</b>如果要计算单词，必须选中“单词”字段，如果位于html标记的中间，则会"
-"运行一个函数来关闭标记。内容上的第一张图片将保留为精选图片。 <br> <b>小于：</"
-"b>如果内容小于X，则跳过文章。 <br>留空或0忽略。"
+"<b>大于：</b>如果要计算单词，必须选中“单词”字段，如果位于html标记的中间，则会运行一个函数来关闭标记。内容上的第一张图片将保留为精选图片。 "
+"<br> <b>小于：</b>如果内容小于X，则跳过文章。 <br>留空或0忽略。"
 
 #: wpematico_professional/includes/prohelps.php:431
 #: wpematico_professional/wpematicopro.php:1570
@@ -7743,8 +7516,8 @@ msgid ""
 "\t\t\t\tYou can use the same template fields like in box Post template.<br>\n"
 "\t\t\t\t<b>Valid value tags:</b>%s."
 msgstr ""
-"<b>基础知识：</b>您必须将自定义字段名称及其值放在每个字段中。 <br> <b>值：</"
-"b>您可以使用相同的模板字段，如邮箱模板。 <br> <b>有效值标签：</b> %s."
+"<b>基础知识：</b>您必须将自定义字段名称及其值放在每个字段中。 <br> <b>值：</b>您可以使用相同的模板字段，如邮箱模板。 <br> <b>"
+"有效值标签：</b> %s."
 
 #: wpematico_professional/includes/prohelps.php:445
 msgid "Add custom feed tags to use on template or custom fields."
@@ -7754,13 +7527,13 @@ msgstr "添加自定义Feed Tag到模板或自定义字段上使用."
 msgid ""
 "<b>Basics:</b> You must put the custom feed tag and its template variable in "
 "every field.<br>\n"
-"\t\t\t\t<b>Feed Tag:</b> If exist a tag &#x3C;yourtag&#x3E;value&#x3C;/"
-"yourtag&#x3E; you should put <strong>yourtag</strong><br>\n"
+"\t\t\t\t<b>Feed Tag:</b> If exist a tag &#x3C;yourtag&#x3E;value&#x3C;"
+"/yourtag&#x3E; you should put <strong>yourtag</strong><br>\n"
 "\t\t\t\t<b>Template:</b> <strong>{yourtag}</strong>."
 msgstr ""
-"<b>基础知识：</b>您必须将自定义Feed标记及其模板变量放在每个字段中。 <br> "
-"<b>Feed标签：</b>如果存在标签&lt;yourtag&gt; value &lt;/ yourtag&gt;，您应该"
-"<strong>添加标签</strong> <br> <b>模板：</b> <strong>{yourtag}</strong> 。"
+"<b>基础知识：</b>您必须将自定义Feed标记及其模板变量放在每个字段中。 <br> <b>Feed标签：</b>如果存在标签&lt;"
+"yourtag&gt; value &lt;/ yourtag&gt;，您应该<strong>添加标签</strong> <br> <b>模板：</b> "
+"<strong>{yourtag}</strong> 。"
 
 #: wpematico_professional/includes/prohelps.php:456
 msgid "Import feed list."
@@ -7776,10 +7549,9 @@ msgid ""
 "visituser<br />www.thirthfeed.com/atom, wpuser<br />\n"
 "\t\t\t\t\t\t\t"
 msgstr ""
-"该列表必须是每行Feed网址。如果在PRO设置上启用了“每个Feed的作者”功能，则可以添"
-"加作者用户名。如果不存在，则将用户添加到wordpress用户。 <br /> www.yourfeed."
-"com/feed，admin <br /> www.otherfeed.com/rss，visituser <br /> www."
-"thirthfeed.com/atom,wpuser <br />."
+"该列表必须是每行Feed网址。如果在PRO设置上启用了“每个Feed的作者”功能，则可以添加作者用户名。如果不存在，则将用户添加到wordpress用户。"
+" <br /> www.yourfeed.com/feed，admin <br /> www.otherfeed.com/rss，visituser "
+"<br /> www.thirthfeed.com/atom,wpuser <br />."
 
 #: wpematico_professional/includes/prohelps.php:467
 #: wpematico_professional/wpematicopro.php:997
@@ -7806,8 +7578,8 @@ msgstr "重写的文字."
 
 #: wpematico_professional/includes/prohelps.php:480
 msgid ""
-"Insert in the form a comma-separated list of words to be used to replace."
-"<br>\n"
+"Insert in the form a comma-separated list of words to be used to replace.<br>"
+"\n"
 "\t\t\t\t\t\t\tThis list will be added to the general Ramdon Rewrite list "
 "from the Settings screen.<br>\n"
 "\t\t\t\t\t\t\tThe words will be searched line by line and, if one word is "
@@ -7815,9 +7587,8 @@ msgid ""
 "\t\t\t\t\t\t\twill be replaced for one of the others of the same line.<br>\n"
 "\t\t\t\t\t\t\t"
 msgstr ""
-"在表单中插入以逗号分隔的关键词列表，用于替换。 <br>此列表将从“设置”屏幕添加到"
-"常规随机重写列表中。 <br>将逐行搜索关键词，如果找到关键词（无论行中的顺"
-"序）， <br>将被替换为同一行中的其他一个.<br>"
+"在表单中插入以逗号分隔的关键词列表，用于替换。 <br>此列表将从“设置”屏幕添加到常规随机重写列表中。 <br>"
+"将逐行搜索关键词，如果找到关键词（无论行中的顺序）， <br>将被替换为同一行中的其他一个.<br>"
 
 #: wpematico_professional/includes/prohelps.php:485
 msgid ""
@@ -7828,12 +7599,11 @@ msgid ""
 "\"lady\", \"female\" or \"girl\" ramdomly."
 msgstr ""
 "\n"
-"<b>例：</b> <br> <b>女士，女士，女性，女孩</b> <br>如果文字中包含“女人”这个"
-"词，则会被“女士”，“女性”或“女孩”所取代。"
+"<b>例：</b> <br> <b>女士，女士，女性，女孩</b> <br>如果文字中包含“女人”这个词，则会被“女士”，“女性”或“女孩”所取代。"
 
 #: wpematico_professional/includes/prosettings.php:54
 msgid "Professional"
-msgstr ""
+msgstr "专业"
 
 #: wpematico_professional/includes/prosettings.php:90
 msgid "Advanced Features"
@@ -7898,9 +7668,7 @@ msgstr "启用<b><i>Feed的作者</i></b>功能"
 msgid ""
 "This option allow you assign an author per feed when editing campaign.  If "
 "no choice any author, the campaign author will be taken."
-msgstr ""
-"此选项允许您在编辑Campaign时为每个Feed分配作者。如果没有选择作者，则默认采取"
-"Campaign作者。"
+msgstr "此选项允许您在编辑Campaign时为每个Feed分配作者。如果没有选择作者，则默认采取Campaign作者。"
 
 #: wpematico_professional/includes/prosettings.php:138
 msgid "Enable <b><i>Import feed list</i></b> feature"
@@ -7914,9 +7682,7 @@ msgstr "启用<b><i>重写</i></b>功能"
 msgid ""
 "On campaign edit you can set the fetching process to multipaged RSS feeds.  "
 "Like https://etruel.com/feed/?paged=1"
-msgstr ""
-"在Campaign编辑中，您可以将提取过程设置为翻页RSS Feed。比如https://etruel.com/"
-"feed/?paged=1"
+msgstr "在Campaign编辑中，您可以将提取过程设置为翻页RSS Feed。比如https://etruel.com/feed/?paged=1"
 
 #: wpematico_professional/includes/prosettings.php:147
 msgid "Enable <b><i>Auto Tags</i></b> feature."
@@ -7927,9 +7693,7 @@ msgid ""
 "This feature generate tags automatically on every post fetched, on campaign "
 "edit you can disable auto feature and manually enter a list of tags or leave "
 "empty."
-msgstr ""
-"此功能会在每篇发布的文章上自动生成Tags，在Campaign编辑时，您可以停用自动功"
-"能，手动输入标签列表或留空。"
+msgstr "此功能会在每篇发布的文章上自动生成Tags，在Campaign编辑时，您可以停用自动功能，手动输入标签列表或留空。"
 
 #: wpematico_professional/includes/prosettings.php:151
 msgid "Bad Tags that will be not used on all posts:"
@@ -7995,7 +7759,7 @@ msgstr "根据作者在文章中<b>发现的</b>排除或包含帖子。"
 
 #: wpematico_professional/includes/prosettingsextra.php:70
 msgid "Select a taxonmy"
-msgstr ""
+msgstr "选择分类"
 
 #: wpematico_professional/includes/prosettingsextra.php:101
 #: wpematico_professional/wpematicopro.php:961
@@ -8030,32 +7794,32 @@ msgstr "Word to Taxonomy"
 
 #: wpematico_professional/includes/prosettingsextra.php:214
 msgid "A error has been ocurred."
-msgstr ""
+msgstr "发生错误。"
 
 #: wpematico_professional/includes/prosettingsextra.php:245
 msgid "Select a post type"
-msgstr ""
+msgstr "选择帖子类型"
 
 #: wpematico_professional/includes/xml-importer.php:197
 msgid "Post author"
-msgstr ""
+msgstr "帖子作者"
 
 #: wpematico_professional/includes/xml-importer.php:202
 msgid "Post categories"
-msgstr ""
+msgstr "员额类别"
 
 #: wpematico_professional/includes/xml-importer.php:203
 msgid ""
 "The post categories of XML campaign type work with Auto categories features."
-msgstr ""
+msgstr "具有 \" 自动 \" 类别功能的 XML 营销活动类型工作的职位类别。"
 
 #: wpematico_professional/includes/xml-importer.php:214
 msgid "Post tags"
-msgstr ""
+msgstr "发布标记"
 
 #: wpematico_professional/includes/xml-importer.php:224
 msgid "Post format"
-msgstr ""
+msgstr "发布格式"
 
 #: wpematico_professional/wpematicopro.php:291
 msgid "Go to WPeMatico Pro Settings Page"
@@ -8155,7 +7919,7 @@ msgstr "父页："
 
 #: wpematico_professional/wpematicopro.php:947
 msgid "Custom Content Parsers"
-msgstr ""
+msgstr "定制内容解析器"
 
 #: wpematico_professional/wpematicopro.php:955
 msgid "Custom Title Options"
@@ -8205,8 +7969,7 @@ msgstr "模板:"
 msgid ""
 "Type or paste a list of urls, authors.  When update the campaign, the list "
 "will be imported as campaign feeds"
-msgstr ""
-"输入或粘贴网址列表，作者。更新Campaign时，该列表将作为Campaign的Feed导入"
+msgstr "输入或粘贴网址列表，作者。更新Campaign时，该列表将作为Campaign的Feed导入"
 
 #: wpematico_professional/wpematicopro.php:1300
 msgid "Limit tags quantity to:"
@@ -8222,11 +7985,11 @@ msgstr "短语或关键词（每行一个，不区分大小写）："
 
 #: wpematico_professional/wpematicopro.php:1364
 msgid "Flip Paragraphs."
-msgstr ""
+msgstr "翻转段落。"
 
 #: wpematico_professional/wpematicopro.php:1372
 msgid "Activate Flip Paragraphs."
-msgstr ""
+msgstr "激活翻转段落。"
 
 #: wpematico_professional/wpematicopro.php:1398
 msgid "HTML tag:"
@@ -8234,7 +7997,7 @@ msgstr "HTML标签："
 
 #: wpematico_professional/wpematicopro.php:1399
 msgid "(example: div, p, span, etc.)"
-msgstr ""
+msgstr "( 示例:div， p， span等 )"
 
 #: wpematico_professional/wpematicopro.php:1414
 msgid ""
@@ -8402,7 +8165,7 @@ msgstr "获取图片链接: %s"
 #: wpematico_professional/wpematicopro.php:2285
 #, php-format
 msgid "Enclosure type not accepted: %s"
-msgstr ""
+msgstr "未接受机柜类型 : %s"
 
 #: wpematico_professional/wpematicopro.php:2301
 #, php-format
@@ -8465,261 +8228,3 @@ msgid ""
 "There's an error with the supplied RegEx expression in Keyword exclude "
 "filter: %s"
 msgstr "关键字排除过滤器中提供的RegEx表达式出错：%s"
-
-#~ msgid "Published"
-#~ msgstr "已发布"
-
-#~ msgid "Private"
-#~ msgstr "私人"
-
-#~ msgid "Pending"
-#~ msgstr "待定"
-
-#~ msgid "Draft"
-#~ msgstr "草稿"
-
-#~ msgid "Use this file to get support on "
-#~ msgstr "使用此文件获得支持"
-
-#~ msgid "WPeMatico News"
-#~ msgstr "WPeMatico新闻"
-
-#~ msgid "Welcome to WPeMatico %s"
-#~ msgstr "欢迎来到WPeMatico %s"
-
-#~ msgid ""
-#~ "Thank you for updating to the latest version! WPeMatico %s is ready to "
-#~ "make your autoblogging faster, safer, and better!"
-#~ msgstr ""
-#~ "感谢您更新到最新版本！ WPeMatico  %s 已准备好让您的自动博客更快，更安全，"
-#~ "更好！"
-
-#~ msgid "Introducing the Campaign Preview Feature."
-#~ msgstr "介绍Campaign预览功能."
-
-#~ msgid "Some Performance Improvements."
-#~ msgstr "一些功能的提升."
-
-#~ msgid "We've made several important improvements in the carachter encoding."
-#~ msgstr "我们在carachter编码方面做了几项重要的改进."
-
-#~ msgid ""
-#~ "This feature was automatic in the past working by reviewing all contents "
-#~ "and re-encoding all, but taking with it a lot of server resources."
-#~ msgstr ""
-#~ "此功能在过去通过查看所有内容并重新编码自动执行，但占用大量服务器资源。"
-
-#~ msgid ""
-#~ "Now we’ve added and option to lets you choose if convert the character "
-#~ "encoding of the content and title to UTF-8 if they have a different "
-#~ "character encoding."
-#~ msgstr ""
-#~ "现在我们添加了一个选项，让您选择是否将内容和标题的字符编码转换为UTF-8（如"
-#~ "果它们具有不同的字符编码）."
-
-#~ msgid "The last WPeMatico Addons"
-#~ msgstr "最后更新的WPeMatico插件"
-
-#~ msgid ""
-#~ "allow you to use the eBay products in your website and publish them as "
-#~ "posts or also as WooCommerce products by relating your eBay Parter "
-#~ "Network Campaigns IDs."
-#~ msgstr ""
-#~ "允许您在您的网站中使用eBay产品，并通过关联您的eBay Parter Network "
-#~ "Campaigns ID将其作为文章或WooCommerce产品发布."
-
-#~ msgid ""
-#~ "is a very easy to use WordPress auto-exporter plugin in which you can "
-#~ "create XML files automatically from the Posts types of your choice."
-#~ msgstr ""
-#~ "是一个非常容易使用的WordPress自动导出插件，您可以在从WP中选择文章类型导出"
-#~ "自动创建XML文件."
-
-#~ msgid "Including Media Files."
-#~ msgstr "包含媒体文件."
-
-#~ msgid "Mp3 and Mp4 Files"
-#~ msgstr "Mp3和Mp4文件"
-
-#~ msgid ""
-#~ "In addition to including the embedded links, the version 1.7 includes a "
-#~ "full support for MP3 and MP4 media files. "
-#~ msgstr "除了包含嵌入式链接外，1.7版还包括对MP3和MP4媒体文件的完美支持"
-
-#~ msgid ""
-#~ "Audio and video files inserted in the contents of the source can be "
-#~ "downloaded and attached to the published post. "
-#~ msgstr "插入源内容的音频和视频文件可以下载并添加到已发布的文章."
-
-#~ msgid ""
-#~ "Compatible with audio widget and video widget inserted in WordPress 4.8."
-#~ msgstr "兼容WordPress 4.8中插入的音频小部件和视频小部件."
-
-#~ msgid "Only take care with the size of the files."
-#~ msgstr "只关注文件的大小."
-
-#~ msgid "Need other file types ?"
-#~ msgstr "需要其他文件类型？"
-
-#~ msgid ""
-#~ "brings support for &lt;mp3, ogg, wav, wma, m4a&gt; &lt;mp4, m4v, mov, "
-#~ "wmv, avi, mpg, ogv, 3gp, 3g2&gt; media file types among a lot more of "
-#~ "special features."
-#~ msgstr ""
-#~ "支持&lt;mp3，ogg，wav，wma，m4a&gt; &lt;mp4，m4v，mov，wmv，avi，mpg，"
-#~ "ogv，3gp，3g2&gt;媒体文件类型等功能."
-
-#~ msgid "Introducing the Campaign Control Panel."
-#~ msgstr "介绍Campaign控制面板."
-
-#~ msgid ""
-#~ "The most visible change in version 1.8 is certainly the campaign Control "
-#~ "Panel. "
-#~ msgstr "版本1.8中最明显的变化是Campaign控制面板."
-
-#~ msgid ""
-#~ "This panel makes it possible to better control what is going on with the "
-#~ "campaign you are editing."
-#~ msgstr "通过此面板，您可以更好地控制正在编辑的Campaign的内容。"
-
-#~ msgid ""
-#~ "And also the \"Delete hash\" buttons for the duplicates control, view the "
-#~ "\"Last-run log\", or even the \"Reset\" are displayed as buttons, no "
-#~ "matter if the quick actions from Settings screen are activated."
-#~ msgstr ""
-#~ "比如是否激活了“设置”屏幕中的快速操作，重复控件的“删除 hash”按钮，查看“上次"
-#~ "运行日志”，“重置”都改为按钮样式."
-
-#~ msgid "Available for Addons too."
-#~ msgstr "也可用于插件."
-
-#~ msgid ""
-#~ "will put an extra button to Export the campaign. The Control Panel has an "
-#~ "proggramatic action to easily add an action button.."
-#~ msgstr "增加一个按钮来导出Campaign,控制面板可以轻松添加操作按钮."
-
-#~ msgid "An improved Campaign Wizard."
-#~ msgstr "改进的Campaign 引导体验."
-
-#~ msgid "We've made several important improvements in the Campaign Wizard."
-#~ msgstr "我们在Campaign 引导中做了几项重要的改进."
-
-#~ msgid ""
-#~ "With it you will see one by one each metabox with options of the "
-#~ "campaign, showing the help tips to facilitate even more the creation and "
-#~ "correct configuration of the feeds to import. And something very "
-#~ "important is that it is compatible with the diferent addons that add "
-#~ "metaboxes to the campaign."
-#~ msgstr ""
-#~ "有了它，您可以逐个看元数据框，其中包Campaign的选项，显示帮助提示，确保正确"
-#~ "创建和配置要导入的Feed，而且更重要的是它可以和不同的插件兼容，这些插件会为"
-#~ "Campaign增加更多自定义功能."
-
-#~ msgid "All icons will be Dashicons!"
-#~ msgstr "所有图标都是最新的库！"
-
-#~ msgid ""
-#~ "Until now we were using sprite images or Font Awesome Icons, but we are "
-#~ "changing all to Dashicons, the official icon fonts of the WordPress and "
-#~ "we're very proud of that.  We continue cleaning all, inclusive the "
-#~ "corners."
-#~ msgstr ""
-#~ "到目前为止，我们使用精灵图片或字体图标，但我们正在改变所有的UI库，包括"
-#~ "WordPress的官方图标字体，我们为此感到非常自豪，并会继续完善。"
-
-#~ msgid "The code was optimized by everywhere."
-#~ msgstr "代码全面做了优化."
-
-#~ msgid ""
-#~ "We're optimizing the code to allow it to be more readable by humans, but "
-#~ "the main focus is to improve the performance in the different screens, "
-#~ "like the campaign editing or other screens."
-#~ msgstr ""
-#~ "我们正在优化代码使其更易用，但主要关注的是提高不同界面的性能，例如Campaign"
-#~ "编辑或其他界面。"
-
-#~ msgid "View the Full Changelog"
-#~ msgstr "查看完整的更新日志"
-
-#~ msgid "Go to WPeMatico Extensions"
-#~ msgstr "跳到WPeMatico 扩展"
-
-#~ msgid "Need Even Faster Support?"
-#~ msgstr "需要更快速的技术支持?"
-
-#~ msgid "email"
-#~ msgstr "电子邮件"
-
-#~ msgid "Your email %s is already subscribed."
-#~ msgstr "您的电子邮件 %s 已订阅."
-
-#~ msgid "Disable <i>Category Description</i> of WPeMatico"
-#~ msgstr "禁用<i>WPeMatico 积分</i>"
-
-#~ msgid "Other Tools"
-#~ msgstr "其他工具"
-
-#~ msgid "Disable Category Description of WPeMatico."
-#~ msgstr "禁用WPeMatico的分类摘要."
-
-#~ msgid ""
-#~ "I really appreciate if you can left this option blank to show that the "
-#~ "categories are created by WPeMatico."
-#~ msgstr "如果您可以将此选项留空以表明分类是由WPeMatico创建的，我会很感激。"
-
-#~ msgid "Last Processed Campaigns:"
-#~ msgstr "上次处理的Campaigns："
-
-#~ msgid "Something goes wrong!"
-#~ msgstr "出了点问题！"
-
-#~ msgid "Link:"
-#~ msgstr "链接："
-
-#~ msgid "Upload image"
-#~ msgstr "上传图片"
-
-#~ msgid "MC:Found!: word %1s"
-#~ msgstr "未找到关键词% 1s"
-
-#~ msgid "MC:Skiping: Not found word %1s in content or title %2s."
-#~ msgstr "跳过：在内容或标题%2s中找不到单词%1s "
-
-#~ msgid "CC:Not Found!: word %1s"
-#~ msgstr "CC：没找到！： %1s"
-
-#~ msgid "CC:Skiping: Found word %1s in content or title %2s."
-#~ msgstr "跳过：在内容或标题 %2s.中找到单词%1s。"
-
-#~ msgid ""
-#~ "Rewrite custom words randomly as synonyms.  You must complete the words "
-#~ "separated by comma and per line in the <a href=\"%s\">textarea</a>."
-#~ msgstr ""
-#~ "随机重写自定义单词作为同义词。您必须在<a href=\"%s\">textarea中</a>填写逗"
-#~ "号和每行分隔的单词。"
-
-#~ msgid ""
-#~ "Rewrite custom words randomly as synonyms.  You must complete the words "
-#~ "separated by comma and per line in the textarea."
-#~ msgstr ""
-#~ "随机重写自定义单词作为同义词。您必须在textarea中填写逗号和每行分隔的单词。"
-
-#~ msgid "If you need this feature in every campaign, you can activate here."
-#~ msgstr "如果您在每个Campaign中都需要此功能，则可以在此处激活."
-
-#~ msgid "This is for assigning taxonomies based on content words."
-#~ msgstr "这里是根据内容分词分类法。"
-
-#~ msgid "(ex: div, p, span, etc.)"
-#~ msgstr "（例如：div，p，span等）"
-
-#~ msgid "ShortPixel"
-#~ msgstr "ShortPixel"
-
-#~ msgid ""
-#~ "Join to ShortPixel and optimize your images without compromising on "
-#~ "quality."
-#~ msgstr "加入ShortPixel并优化您的图片，且不会影响图片质量."
-
-#~ msgid "Get ShortPixel API Key"
-#~ msgstr "获取ShortPixel API密钥"
