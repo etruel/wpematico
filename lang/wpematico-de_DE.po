@@ -7554,7 +7554,7 @@ msgstr ""
 
 #: wpematico_professional/includes/campaign_fetch.php:589
 #, php-format
-msgid "Decoding HTML entities of %1s"
+msgid "Decoding HTML entities of %s"
 msgstr ""
 
 #: wpematico_professional/includes/campaign_fetch.php:595

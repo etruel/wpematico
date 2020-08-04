@@ -169,15 +169,15 @@ if(!class_exists('WPeMatico_Settings')) :
 												<a href="http://www.wpematico.com" target="_Blank" title="<?php _e('Go to the new WPeMatico WebSite', 'wpematico'); ?>">
 													<img class="logover" src="<?php echo WPeMatico :: $uri; ?>/images/robotico-helmet.png" title="">	
 													<span id="wpematico-website">WPeMatico Website</span><br>
-												</a><span id="wpematico-websiteinfo"><?php _e('Comments & Tutorials', 'wpematico'); ?></span>
+												</a><span id="wpematico-websiteinfo"><?php _e('Comments and Tutorials', 'wpematico'); ?></span>
 											</p>
 											<p class="icon_version">
 												<a href="https://etruel.com" target="_Blank" title="<?php _e('WPeMatico Addons in etruel.com store', 'wpematico'); ?>">
 													<img class="logover" src="<?php echo WPeMatico :: $uri; ?>/images/etruelcom_ico.png" title="">	
 													<span id="wpematico-etruel">etruel.com</span><br>
-												</a><span id="wpematico-store"><?php _e('Addons store, FAQs & Support', 'wpematico'); ?></span>
+												</a><span id="wpematico-store"><?php _e('Addons store, FAQs and Support', 'wpematico'); ?></span>
 											</p>
-											<p><?php _e('Thanks for use & test this plugin.', 'wpematico'); ?></p>
+											<p><?php _e('Thanks for use and test this plugin.', 'wpematico'); ?></p>
 											<p></p>
 											<p><?php _e('If you like this plugin, you can write a 5 star review on Wordpress.', 'wpematico'); ?></p>
 											<style type="text/css">#linkrate:before { content: "\2605\2605\2605\2605\2605";font-size: 18px;}
@@ -207,20 +207,20 @@ if(!class_exists('WPeMatico_Settings')) :
 										<h2 style="background-color: yellow;" class="handle"><span class="dashicons dashicons-admin-settings"></span> <?php _e('Advanced Actions', 'wpematico'); ?></h2>
 										<div class="inside">
 											<p></p>
-											<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disablecheckfeeds'], true); ?> name="disablecheckfeeds" id="disablecheckfeeds" /> <?php _e('Disable <b><i>Check Feeds before Save</i></b>', 'wpematico'); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disablecheckfeeds']; ?>"></span>
+											<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disablecheckfeeds'], true); ?> name="disablecheckfeeds" id="disablecheckfeeds" /> <?php _e('Disable "Check Feeds before Save"', 'wpematico'); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disablecheckfeeds']; ?>"></span>
 											<p></p>
-											<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enabledelhash'], true); ?> name="enabledelhash" id="enabledelhash" /><b>&nbsp;<?php _e('Enable <b><i>Del Hash</i></b>', 'wpematico'); ?></b></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enabledelhash']; ?>"></span>
+											<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enabledelhash'], true); ?> name="enabledelhash" id="enabledelhash" /><b>&nbsp;<?php _e('Enable "Del Hash"', 'wpematico'); ?></b></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enabledelhash']; ?>"></span>
 											<p></p>
-											<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enableseelog'], true); ?> name="enableseelog" id="enableseelog" /><b>&nbsp;<?php _e('Enable <b><i>See last log</i></b>', 'wpematico'); ?></b></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enableseelog']; ?>"></span>
+											<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enableseelog'], true); ?> name="enableseelog" id="enableseelog" /><b>&nbsp;<?php _e('Enable "See last log"', 'wpematico'); ?></b></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enableseelog']; ?>"></span>
 											<p></p>
-											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enable_xml_upload'], true); ?> name="enable_xml_upload" id="enable_xml_upload" /><b>&nbsp;<?php _e('Enable <i>Upload of XMLs</i>', 'wpematico'); ?></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enable_xml_upload']; ?>"></span>
+											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enable_xml_upload'], true); ?> name="enable_xml_upload" id="enable_xml_upload" /><b>&nbsp;<?php _e('Enable "Upload of XMLs"', 'wpematico'); ?></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enable_xml_upload']; ?>"></span>
 											<p></p>
-											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disable_credits'], true); ?> name="disable_credits" id="disable_credits" /><b>&nbsp;<?php _e('Disable <i>WPeMatico Credits</i>', 'wpematico'); ?></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disable_credits']; ?>"></span>
+											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disable_credits'], true); ?> name="disable_credits" id="disable_credits" /><b>&nbsp;<?php _e('Disable "WPeMatico Credits"', 'wpematico'); ?></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disable_credits']; ?>"></span>
 											<span id="discredits" style="<?php echo ($cfg['disable_credits']) ? '' : 'display:none;' ?>"><br /><?php
 												printf(__('If you can\'t show the WPeMatico credits in your posts, I really appreciate if you can take a minute to %s write a 5 star review on Wordpress %s. :) thanks.', 'wpematico'), '<b><a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" target="_Blank" title="Open a new window">', '</a></b>');
 												?></span>
 											<p></p>
-											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disable_categories_description'], true); ?> name="disable_categories_description" id="disable_categories_description" /><b>&nbsp;<?php _e('Disable <i>Auto-Category description</i>', 'wpematico'); ?></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disable_categories_description']; ?>"></span>
+											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disable_categories_description'], true); ?> name="disable_categories_description" id="disable_categories_description" /><b>&nbsp;<?php _e('Disable "Auto-Category description"', 'wpematico'); ?></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disable_categories_description']; ?>"></span>
 											<p></p>	
 											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disable_extensions_feed_page'], true); ?> name="disable_extensions_feed_page" id="disable_extensions_feed_page" /><b>&nbsp;<?php _e('Disable Extensions feed Page', 'wpematico'); ?></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disable_extensions_feed_page']; ?>"></span>
 											<p></p>	
@@ -448,10 +448,10 @@ if(!class_exists('WPeMatico_Settings')) :
 										</button>
 										<h3 class="hndle"><span><span class="dashicons dashicons-admin-settings"></span> <?php _e('Enable Features', 'wpematico'); ?></span><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablefeatures']; ?>"></span></h3>
 										<div class="inside"> 
-											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enablerewrite'], true); ?> name="enablerewrite" id="enablerewrite" /> <label for="enablerewrite"><?php _e('Enable <b><i>Rewrite</i></b> feature', 'wpematico'); ?></label>
+											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enablerewrite'], true); ?> name="enablerewrite" id="enablerewrite" /> <label for="enablerewrite"><?php _e('Enable "Rewrite" feature', 'wpematico'); ?></label>
 											<span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablerewrite']; ?>"></span>
 											<p></p>
-											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enableword2cats'], true); ?> name="enableword2cats" id="enableword2cats" /> <label for="enableword2cats"><?php _e('Enable <b><i>Words to Categories</i></b> feature', 'wpematico'); ?></label>
+											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enableword2cats'], true); ?> name="enableword2cats" id="enableword2cats" /> <label for="enableword2cats"><?php _e('Enable "Words to Categories" feature', 'wpematico'); ?></label>
 											<span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enableword2cats']; ?>"></span>
 											<p></p>
 
@@ -469,29 +469,29 @@ if(!class_exists('WPeMatico_Settings')) :
 											<h3 class="hndle" style="background-color: yellow;"><span><?php _e('Some Professional Features you could have.', 'wpematico'); ?></span> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['PROfeatures']; ?>"></span></h3>
 											<div class="inside"> 
 												<p></p>
-												<?php _e('<b><i>Keyword Filtering</i></b> feature', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablekwordf']; ?>"></span>
+												<?php _e('"Keyword Filtering" feature', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablekwordf']; ?>"></span>
 												<p></p>
-												<?php _e('<b><i>Word count Filters</i></b> feature', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablewcf']; ?>"></span>
+												<?php _e('"Word count Filters" feature', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablewcf']; ?>"></span>
 												<p></p>
-												<?php _e('<b><i>Custom Title</i></b> feature', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablecustomtitle']; ?>"></span>
+												<?php _e('"Custom Title" feature', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablecustomtitle']; ?>"></span>
 												<p></p>
-												<?php _e('attempt to <b><i>Get Full Content</i></b> feature', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['fullcontent']; ?>"></span>
+												<?php _e('attempt to "Get Full Content" feature', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['fullcontent']; ?>"></span>
 												<p></p>
-												<?php _e('<b><i>Author per feed</i></b> feature', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['authorfeed']; ?>"></span>
+												<?php _e('"Author per feed" feature', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['authorfeed']; ?>"></span>
 												<p></p>
-												<?php _e('<b><i>Import feed list</i></b> feature', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['importfeeds']; ?>"></span>
+												<?php _e('"Import feed list" feature', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['importfeeds']; ?>"></span>
 												<p></p>
-												<?php _e('<b><i>Auto Tags</i></b> feature.', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enabletags']; ?>"></span>
+												<?php _e('"Auto Tags" feature.', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enabletags']; ?>"></span>
 												<p></p>
-												<?php _e('<b><i>Custom Fields</i></b> feature.', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablecfields']; ?>"></span>
+												<?php _e('"Custom Fields" feature.', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablecfields']; ?>"></span>
 												<p></p>
-												<?php _e('<b><i>Custom Feed Tags</i></b> feature.', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="Add custom feed tags as template tags or custom field values on every post."></span>
+												<?php _e('"Custom Feed Tags" feature.', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="Add custom feed tags as template tags or custom field values on every post."></span>
 												<p></p>
-												<?php _e('<b><i>Image Filters</i></b> feature.', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="You can allow or skip each image in every post depends on image dimensions."></span>
+												<?php _e('"Image Filters" feature.', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="You can allow or skip each image in every post depends on image dimensions."></span>
 												<p></p>
-												<?php _e('<b><i>Ramdom Rewrites</i></b> feature.', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="Rewrite custom words randomly as synonyms. You must complete the words separated by comma and per line in the textarea."></span>
+												<?php _e('"Ramdom Rewrites" feature.', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="Rewrite custom words randomly as synonyms. You must complete the words separated by comma and per line in the textarea."></span>
 												<p></p>
-												<?php _e('<b><i>Deletes till the end of the line</i></b> feature.', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="This feature allows to delete from a word or phrase until the end of the line of a sentence."></span>
+												<?php _e('"Deletes till the end of the line" feature.', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="This feature allows to delete from a word or phrase until the end of the line of a sentence."></span>
 												<p></p>
 
 											<?php endif; ?>
@@ -541,10 +541,10 @@ if(!class_exists('WPeMatico_Settings')) :
 									  <p></p>';
 											}
 											?>
-											<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['force_mysimplepie'], true); ?> name="force_mysimplepie" id="force_mysimplepie" /> <?php _e('Force <b><i>Custom Simplepie Library</i></b>', 'wpematico'); ?></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['mysimplepie']; ?>"></span>
+											<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['force_mysimplepie'], true); ?> name="force_mysimplepie" id="force_mysimplepie" /> <?php _e('Force "Custom Simplepie Library"', 'wpematico'); ?></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['mysimplepie']; ?>"></span>
 											<p></p>
 
-											<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['set_stupidly_fast'], true); ?> name="set_stupidly_fast" id="set_stupidly_fast"  onclick="jQuery('#simpie').show();"  /> <?php _e('Set Simplepie <b><i>stupidly fast</i></b>', 'wpematico'); ?></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['stupidly_fast']; ?>"></span>
+											<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['set_stupidly_fast'], true); ?> name="set_stupidly_fast" id="set_stupidly_fast"  onclick="jQuery('#simpie').show();"  /> <?php _e('Set Simplepie "stupidly fast"', 'wpematico'); ?></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['stupidly_fast']; ?>"></span>
 											<p></p>
 											<div id="simpie" style="margin-left: 25px;<?php if($cfg['set_stupidly_fast']) echo 'display:none;'; ?>">
 												<input name="simplepie_strip_htmltags" id="simplepie_strip_htmltags" class="checkbox" value="1" type="checkbox" <?php checked($cfg['simplepie_strip_htmltags'], true); ?> />
@@ -570,7 +570,7 @@ if(!class_exists('WPeMatico_Settings')) :
 										<h3 class="hndle"><span class="dashicons dashicons-admin-tools"></span> <span><?php _e('Advanced Fetching', 'wpematico'); ?></span></h3>
 										<div class="inside">
 											<p></p>
-											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['woutfilter'], true); ?> name="woutfilter" id="woutfilter" /> <?php _e('<b><i>Allow option on campaign to skip the content filters</i></b>', 'wpematico'); ?><br />
+											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['woutfilter'], true); ?> name="woutfilter" id="woutfilter" /> <?php echo '<b><i>' . __('Allow option on campaign to skip the content filters', 'wpematico') . '</b></i>'; ?><br />
 											<div id="hlpspl" style="padding-left:20px;">
 												<?php _e('NOTE: It is extremely dangerous to allow unfiltered content.', 'wpematico'); ?><br />
 											</div> 
@@ -632,7 +632,7 @@ if(!class_exists('WPeMatico_Settings')) :
 												<?php _e('You must set up a cron job that calls:', 'wpematico'); ?><br />
 												<?php
 												if(!has_action('wpematico_cronjob')) {
-													?><span class="coderr b LightPink"><?php _e('<i>"app/wpe-cron.php"</i> WAS DEPRECATED and removed from WPeMatico for reasons beyond our control.', 'wpematico'); ?><br />
+													?><span class="coderr b LightPink"><?php echo '<i>"app/wpe-cron.php"</i>' . __('WAS DEPRECATED and removed from WPeMatico for reasons beyond our control.', 'wpematico'); ?><br />
 														<?php _e('Please change and use the URL below in all your cronjobs.', 'wpematico'); ?></span><br />
 													<?php
 													_e('URL:', 'wpematico');
@@ -663,7 +663,7 @@ if(!class_exists('WPeMatico_Settings')) :
 												<?php _e('or URL:', 'wpematico'); ?> &nbsp;&nbsp;&nbsp;<span class="coderr b"><i><?php echo trailingslashit(get_option('siteurl')) . 'wp-cron.php'; ?></i></span>
 												<br /> 
 												<div class="mphlp" style="margin-top: 10px;">
-													<?php _e('This set <code>DISABLE_WP_CRON</code> to <code>true</code>, then the <a href="https://core.trac.wordpress.org/browser/tags/4.2.3/src/wp-includes/cron.php#L314" target="_blank">current cron process should be killed</a>.', 'wpematico'); ?>
+													<?php echo __('This set ', 'wpematico') . '<code>DISABLE_WP_CRON</code>' . __('to ', 'wpematico') . '<code>true</code>, ' . __('then the ', 'wpematico') . '<a href="https://core.trac.wordpress.org/browser/tags/4.2.3/src/wp-includes/cron.php#L314" target="_blank">' . __('current cron process should be killed', 'wpematico') . '</a>.'; ?>
 													<br /> 
 													<?php _e('You can find more info about WP Cron and also few steps to configure external crons:', 'wpematico'); ?>
 													<a href="http://code.tutsplus.com/articles/insights-into-wp-cron-an-introduction-to-scheduling-tasks-in-wordpress--wp-23119" target="_blank"><?php _e('here', 'wpematico'); ?></a>.
@@ -736,7 +736,7 @@ if(!class_exists('WPeMatico_Settings')) :
 											</div>
 											<div id="enabledashboard" class="insidesec">
 
-												<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disabledashboard'], true); ?> name="disabledashboard" id="disabledashboard" /> <?php _e('Disable <b><i>WP Dashboard Widget</i></b>', 'wpematico'); ?></label><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disabledashboard']; ?>"></span>
+												<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disabledashboard'], true); ?> name="disabledashboard" id="disabledashboard" /> <?php _e('Disable "WP Dashboard Widget"', 'wpematico'); ?></label><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disabledashboard']; ?>"></span>
 												<div>
 													<label id="roleslabel" <?php if($cfg['disabledashboard']) echo 'style="display:none;"'; ?>><?php _e('User roles to show Dashboard widget:', 'wpematico'); ?></label>
 													<div id="roles" <?php if($cfg['disabledashboard']) echo 'style="display:none;"'; ?>>

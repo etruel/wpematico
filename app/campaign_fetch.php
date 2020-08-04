@@ -144,7 +144,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 	private function processFeed($feed, $kf) {
 		global $realcount;
 		@set_time_limit(0);
-		trigger_error('<span class="coderr b"><b>' . sprintf(__('Processing feed %1s.', 'wpematico'), $feed) . '</b></span>', E_USER_NOTICE);   // Log
+		trigger_error('<span class="coderr b"><b>' . sprintf(__('Processing feed %s.', 'wpematico'), $feed) . '</b></span>', E_USER_NOTICE);   // Log
 
 		$items	 = array();
 		$count	 = 0;
@@ -213,7 +213,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 					$dupi = ( $this->campaign[$feed]['lasthash'] == $this->currenthash[$feed] ) ||
 						( $hashvalue == $this->currenthash[$feed] );
 					if($dupi) {
-						trigger_error(sprintf(__('Found duplicated hash \'%1s\'', 'wpematico'), $item->get_permalink()) . ': ' . $this->currenthash[$feed], E_USER_NOTICE);
+						trigger_error(sprintf(__('Found duplicated hash \'%s\'', 'wpematico'), $item->get_permalink()) . ': ' . $this->currenthash[$feed], E_USER_NOTICE);
 						if(!$duplicate_options['jumpduplicates']) {
 							trigger_error(__('Filtering duplicated posts.', 'wpematico'), E_USER_NOTICE);
 							break;
@@ -225,7 +225,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
 					if(!$duplicate_options['allowduphash'] && $duplicate_options['jumpduplicates']) {
 						if(in_array($this->currenthash[$feed], $last_hashes)) {
-							trigger_error(sprintf(__('Found duplicated hash of item \'%1s\'', 'wpematico'), $item->get_permalink()) . ': ' . $this->currenthash[$feed], E_USER_NOTICE);
+							trigger_error(sprintf(__('Found duplicated hash of item \'%s\'', 'wpematico'), $item->get_permalink()) . ': ' . $this->currenthash[$feed], E_USER_NOTICE);
 							trigger_error(__('Jumping duplicated post. Continuing.', 'wpematico'), E_USER_NOTICE);
 							continue;
 						}
@@ -233,7 +233,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 				}
 				if(!$duplicate_options['allowduptitle']) {
 					if(WPeMatico::is_duplicated_item($this->campaign, $feed, $item)) {
-						trigger_error(sprintf(__('Found duplicated title \'%1s\'', 'wpematico'), $item->get_title()) . ': ' . $this->currenthash[$feed], E_USER_NOTICE);
+						trigger_error(sprintf(__('Found duplicated title \'%s\'', 'wpematico'), $item->get_title()) . ': ' . $this->currenthash[$feed], E_USER_NOTICE);
 						if(!$duplicate_options['jumpduplicates']) {
 							trigger_error(__('Filtering duplicated posts.', 'wpematico'), E_USER_NOTICE);
 							break;
@@ -247,7 +247,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			$count++;
 			array_unshift($items, $item); // add at Post stack in correct order by date 		  
 			if($count == $this->campaign['campaign_max']) {
-				trigger_error(sprintf(__('Campaign fetch limit reached at %1s.', 'wpematico'), $this->campaign['campaign_max']), E_USER_NOTICE);
+				trigger_error(sprintf(__('Campaign fetch limit reached at %s.', 'wpematico'), $this->campaign['campaign_max']), E_USER_NOTICE);
 				break;
 			}
 		}
@@ -299,7 +299,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 	 */
 	function processItem($feed, $item, $feedurl) {
 		global $wpdb, $realcount;
-		trigger_error(sprintf('<b>' . __('Processing item %1s', 'wpematico'), $item->get_title() . '</b>'), E_USER_NOTICE);
+		trigger_error(sprintf('<b>' . __('Processing item %s', 'wpematico'), $item->get_title() . '</b>'), E_USER_NOTICE);
 		$this->current_item = array();
 
 		// Get the source Permalink trying to redirect if is set.
@@ -622,7 +622,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 				$table_name						 = $wpdb->prefix . "posts";
 				$blog_id						 = @$current_blog->blog_id;
 				$this->current_item['content']	 = $truecontent;
-				trigger_error(__('** Adding unfiltered content **', 'wpematico'), E_USER_NOTICE);
+				trigger_error('** ' . __('Adding unfiltered content', 'wpematico') . ' **', E_USER_NOTICE);
 				$wpdb->update($table_name, array('post_content' => $this->current_item['content'], 'post_content_filtered' => $this->current_item['content']), array('ID' => $post_id));
 			}
 
@@ -866,7 +866,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
 		WPeMatico :: update_campaign($this->campaign_id, $this->campaign);  //Save Campaign new data
 
-		trigger_error(sprintf(__('Campaign fetched in %1s sec.', 'wpematico'), $this->campaign['lastruntime']), E_USER_NOTICE);
+		trigger_error(sprintf(__('Campaign fetched in %s sec.', 'wpematico'), $this->campaign['lastruntime']), E_USER_NOTICE);
 	}
 
 	public function __destruct() {
@@ -905,7 +905,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
 			$mailbody	 .= "\n" . $campaign_log_message;
 			$mailbody	 .= "\n\n\n<hr>";
-			$mailbody	 .= __("WPeMatico by <a href='https://etruel.com'>etruel</a>", 'wpematico') . "\n";
+			$mailbody	 .= __("WPeMatico by ", "wpematico") . "<a href='https://etruel.com'>etruel</a> \n";
 			;
 
 			wp_mail($to_mail, $subject, $mailbody, $headers, '');
@@ -924,7 +924,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
 
 
-		$Suss					 = sprintf(__('Campaign fetched in %1s sec.', 'wpematico'), $this->campaign['lastruntime']) . '  ' . sprintf(__('Processed Posts: %1s', 'wpematico'), $this->fetched_posts);
+		$Suss					 = sprintf(__('Campaign fetched in %1s sec.', 'wpematico'), $this->campaign['lastruntime']) . '  ' . sprintf(__('Processed Posts: %s', 'wpematico'), $this->fetched_posts);
 		$message				 = '<p>' . $Suss . '  <a href="JavaScript:void(0);" style="font-weight: bold; text-decoration:none; display:inline;" onclick="jQuery(\'#log_message_' . $this->campaign_id . '\').fadeToggle();">' . __('Show detailed Log', 'wpematico') . '.</a></p>';
 		$campaign_log_message	 = $message . '<div id="log_message_' . $this->campaign_id . '" style="display:none;" class="error fade">' . $campaign_log_message . '</div><span id="ret_lastruntime" style="display:none;">' . $this->campaign["lastruntime"] . '</span><span id="ret_lastposts" style="display:none;">' . $this->fetched_posts . '</span>';
 
@@ -939,10 +939,10 @@ function wpematico_init_set($index, $value, $error_only_fail = false) {
 	$oldvalue = @ini_set($index, $value); //@return string the old value on success, <b>FALSE</b> on failure. 
 	if($error_only_fail) {
 		if($oldvalue === false) {
-			trigger_error(sprintf(__('Trying to set %1$s = %2$s: <strong>%3$s</strong> - Old value:%4$s.', 'wpematico'), $index, $value, (($oldvalue === FALSE) ? __('Failed', 'wpematico') : __('Success', 'wpematico')), $oldvalue), (($oldvalue === FALSE) ? E_USER_WARNING : E_USER_NOTICE));
+			trigger_error(sprintf(__('Trying to set %s = %s: \'%s\' - Old value:%s.', 'wpematico'), $index, $value, (($oldvalue === FALSE) ? __('Failed', 'wpematico') : __('Success', 'wpematico')), $oldvalue), (($oldvalue === FALSE) ? E_USER_WARNING : E_USER_NOTICE));
 		}
 	}else {
-		trigger_error(sprintf(__('Trying to set %1$s = %2$s: <strong>%3$s</strong> - Old value:%4$s.', 'wpematico'), $index, $value, (($oldvalue === FALSE) ? __('Failed', 'wpematico') : __('Success', 'wpematico')), $oldvalue), (($oldvalue === FALSE) ? E_USER_WARNING : E_USER_NOTICE));
+		trigger_error(sprintf(__('Trying to set %s = %s: \'%s\' - Old value:%s.', 'wpematico'), $index, $value, (($oldvalue === FALSE) ? __('Failed', 'wpematico') : __('Success', 'wpematico')), $oldvalue), (($oldvalue === FALSE) ? E_USER_WARNING : E_USER_NOTICE));
 	}
 
 	return $oldvalue;

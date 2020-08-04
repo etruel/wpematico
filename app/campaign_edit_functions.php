@@ -298,7 +298,7 @@ public static function word2cats_box( $post ) {
 	<br/>
 
 	<input name="campaign_w2c_only_use_a_category" id="campaign_w2c_only_use_a_category" class="checkbox" value="1" type="checkbox" <?php checked($campaign_w2c_only_use_a_category, true); ?> />
-	<label for="campaign_w2c_only_use_a_category"><?php _e('Only assign <strong>one</strong> category to each post.', 'wpematico' ); ?></label>
+	<label for="campaign_w2c_only_use_a_category"><?php _e('Only assign one category to each post.', 'wpematico' ); ?></label>
 	<!-- <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['audio_cache']; ?>"></span> -->
 	<div id="div_campaign_w2c_only_use_a_category" style="margin-left: 20px; <?php if (!$campaign_w2c_only_use_a_category) echo 'display:none;';?>">
 			
@@ -380,7 +380,7 @@ public static function template_box( $post ) {
 			</label>
 			<div id="postemplatearea" style="<?php echo (checked($campaign_enable_template,true))?'':'display:none'; ?>">
 				<textarea class="large-text" id="campaign_template" name="campaign_template" /><?php echo stripslashes($campaign_template) ?></textarea><br/>
-				<span class="description"><?php _e('"{content}" must exist in the template if you want to see the content in your post. Works after the features above.', 'wpematico' ); ?></span>
+				<span class="description"><?php _e('{content} must exist in the template if you want to see the content in your post. Works after the features above.', 'wpematico' ); ?></span>
 				<p class="he20" id="tags_note" class="note left"><?php _e('Allowed tags', 'wpematico' ); ?>: </p>
 				<p id="tags_list" style="border-left: 3px solid #EEEEEE; color: #999999; font-size: 11px; padding-left: 6px;margin-top: 0;">
 					<?php
@@ -485,7 +485,7 @@ public static function template_box( $post ) {
 		?>
 		
 		<input name="campaign_no_setting_img" id="campaign_no_setting_img" class="checkbox" value="1" type="checkbox" <?php checked($campaign_no_setting_img,true); ?> />
-		<label for="campaign_no_setting_img"><?php echo __('Don&#x27;t use general Settings', 'wpematico' ); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['imgoptions']; ?>"></span>
+		<label for="campaign_no_setting_img"><?php echo __("Don't use general Settings", 'wpematico' ); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['imgoptions']; ?>"></span>
 		
 		<div id="div_no_setting_img" style="margin-left: 20px; <?php if (!$campaign_no_setting_img) echo 'display:none;';?>">
 			<p>
@@ -552,7 +552,7 @@ public static function template_box( $post ) {
 		?>
 		
 		<input name="campaign_no_setting_audio" id="campaign_no_setting_audio" class="checkbox" value="1" type="checkbox" <?php checked($campaign_no_setting_audio, true); ?> />
-		<label for="campaign_no_setting_audio"><?php echo __('Don&#x27;t use general Settings', 'wpematico' ); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['audio_options']; ?>"></span>
+		<label for="campaign_no_setting_audio"><?php echo __("Don't use general Settings", 'wpematico' ); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['audio_options']; ?>"></span>
 		
 		<div id="div_no_setting_audio" style="margin-left: 20px; <?php if (!$campaign_no_setting_audio) echo 'display:none;';?>">
 			<?php
@@ -601,7 +601,7 @@ public static function template_box( $post ) {
 		?>
 		
 		<input name="campaign_no_setting_video" id="campaign_no_setting_video" class="checkbox" value="1" type="checkbox" <?php checked($campaign_no_setting_video, true); ?> />
-		<label for="campaign_no_setting_video"><?php echo __('Don&#x27;t use general Settings', 'wpematico' ); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['video_options']; ?>"></span>
+		<label for="campaign_no_setting_video"><?php echo __("Don't use general Settings", 'wpematico' ); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['video_options']; ?>"></span>
 		
 		<div id="div_no_setting_video" style="margin-left: 20px; <?php if (!$campaign_no_setting_video) echo 'display:none;';?>">
 			<p>
@@ -649,7 +649,7 @@ public static function template_box( $post ) {
 		?>
 		
 		<input name="campaign_no_setting_duplicate" id="campaign_no_setting_duplicate" class="checkbox" value="1" type="checkbox" <?php checked($campaign_no_setting_duplicate, true); ?> />
-		<label for="campaign_no_setting_duplicate"><?php echo __('Don&#x27;t use general Settings', 'wpematico' ); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['duplicate_options']; ?>"></span>
+		<label for="campaign_no_setting_duplicate"><?php echo __("Don't use general Settings", 'wpematico' ); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['duplicate_options']; ?>"></span>
 		
 		<div id="div_no_setting_duplicate" style="margin-left: 20px; <?php if (!$campaign_no_setting_duplicate) echo 'display:none;';?>">
 			
@@ -756,11 +756,11 @@ public static function options_box( $post ) {
 				<label for="campaign_strip_links"><?php echo __('Strip links from content.', 'wpematico' ); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['striplinks']; ?>"></span>
 				<div id="div_campaign_strip_links_options" style="margin-left:15px;<?php echo (($campaign_strip_links)?'':'display:none;'); ?>">
 					<input class="checkbox" type="checkbox"<?php checked($campaign_strip_links_options['a'] ,true);?> name="campaign_strip_links_options[a]" value="1" id="campaign_strip_links_options_a"/> 
-					<label for="campaign_strip_links_options[a]"><?php _e('Strip &lt;a&gt;.', 'wpematico' ); ?></label> <br/>
+					<label for="campaign_strip_links_options[a]"><?php echo __('Strip ', 'wpematico') . '&lt;a&gt;.'; ?></label> <br/>
 					<input class="checkbox" type="checkbox"<?php checked($campaign_strip_links_options['iframe'] ,true);?> name="campaign_strip_links_options[iframe]" value="1" id="campaign_strip_links_options_iframe"/> 
-					<label for="campaign_strip_links_options[iframe]"><?php _e('Strip &lt;iframe&gt;.', 'wpematico' ); ?></label> <br/>
+					<label for="campaign_strip_links_options[iframe]"><?php echo __('Strip ', 'wpematico') . '&lt;iframe&gt;.'; ?></label> <br/>
 					<input class="checkbox" type="checkbox"<?php checked($campaign_strip_links_options['script'] ,true);?> name="campaign_strip_links_options[script]" value="1" id="campaign_strip_links_options_script"/> 
-					<label for="campaign_strip_links_options[script]"><?php _e('Strip &lt;script&gt;.', 'wpematico' ); ?></label> 
+					<label for="campaign_strip_links_options[script]"><?php echo __('Strip ', 'wpematico') . '&lt;script&gt;.'; ?></label> 
 					<p class="description">
 						<?php _e('If you do not select any option will take as if you selected all.', 'wpematico' ); ?>
 					</p>
@@ -888,7 +888,7 @@ public static function cron_box( $post ) {
 		<input class="checkbox" value="1" type="checkbox" <?php checked($activated,true); ?> name="activated" id="activated" /> <label for="activated"><?php _e('Activate scheduling', 'wpematico' ); ?></label><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['schedule']; ?>"></span>
 	</p>
 	<?php 
-	_e('Working as <a href="http://wikipedia.org/wiki/Cron" target="_blank">Cron</a> job schedule:', 'wpematico' ); 
+	echo __('Working as ', 'wpematico') . '<a href="http://wikipedia.org/wiki/Cron" target="_blank">' . __('Cron', 'wpematico') . '</a> ' . __('job schedule:', 'wpematico'); 
 	echo ' <i>'.$cron.'</i> <br />'; 
 	_e('Next runtime:', 'wpematico' ); echo ' '.date_i18n( (get_option('date_format').' '.get_option('time_format') ),WPeMatico :: time_cron_next($cron) );
 		//_e('Next runtime:', 'wpematico' ); echo ' '.date('D, M j Y H:i',WPeMatico :: time_cron_next($cron));
@@ -920,7 +920,7 @@ public static function cron_box( $post ) {
 			$minutes=explode(',',$cronstr['minutes']);
 		?>
 		<select name="cronminutes[]" id="cronminutes" multiple="multiple">
-			<option value="*"<?php selected(in_array('*',$minutes,true),true,true); ?>><?php _e('Any (*)','wpematico'); ?></option>
+			<option value="*"<?php selected(in_array('*',$minutes,true),true,true); ?>><?php echo __('Any ','wpematico') . '(*)'; ?></option>
 			<?php
 			for ($i=0;$i<60;$i=$i+5) {
 				echo "<option value=\"".$i."\"".selected(in_array("$i",$minutes,true),true,false).">".$i."</option>";
@@ -937,7 +937,7 @@ public static function cron_box( $post ) {
 			$hours=explode(',',$cronstr['hours']);
 		?>
 		<select name="cronhours[]" id="cronhours" multiple="multiple">
-			<option value="*"<?php selected(in_array('*',$hours,true),true,true); ?>><?php _e('Any (*)','wpematico'); ?></option>
+			<option value="*"<?php selected(in_array('*',$hours,true),true,true); ?>><?php echo __('Any ','wpematico') . '(*)'; ?></option>
 			<?php
 			for ($i=0;$i<24;$i++) {
 				echo "<option value=\"".$i."\"".selected(in_array("$i",$hours,true),true,false).">".$i."</option>";
@@ -954,7 +954,7 @@ public static function cron_box( $post ) {
 			$mday=explode(',',$cronstr['mday']);
 		?>
 		<select name="cronmday[]" id="cronmday" multiple="multiple">
-			<option value="*"<?php selected(in_array('*',$mday,true),true,true); ?>><?php _e('Any (*)','wpematico'); ?></option>
+			<option value="*"<?php selected(in_array('*',$mday,true),true,true); ?>><?php echo __('Any ','wpematico') . '(*)'; ?></option>
 			<?php
 			for ($i=1;$i<=31;$i++) {
 				echo "<option value=\"".$i."\"".selected(in_array("$i",$mday,true),true,false).">".$i."</option>";
@@ -971,7 +971,7 @@ public static function cron_box( $post ) {
 			$mon=explode(',',$cronstr['mon']);
 		?>
 		<select name="cronmon[]" id="cronmon" multiple="multiple">
-			<option value="*"<?php selected(in_array('*',$mon,true),true,true); ?>><?php _e('Any (*)','wpematico'); ?></option>
+			<option value="*"<?php selected(in_array('*',$mon,true),true,true); ?>><?php echo __('Any ','wpematico') . '(*)'; ?></option>
 			<option value="1"<?php selected(in_array('1',$mon,true),true,true); ?>><?php _e('January'); ?></option>
 			<option value="2"<?php selected(in_array('2',$mon,true),true,true); ?>><?php _e('February'); ?></option>
 			<option value="3"<?php selected(in_array('3',$mon,true),true,true); ?>><?php _e('March'); ?></option>
@@ -995,7 +995,7 @@ public static function cron_box( $post ) {
 			else
 				$wday=explode(',',$cronstr['wday']);
 			?>
-			<option value="*"<?php selected(in_array('*',$wday,true),true,true); ?>><?php _e('Any (*)','wpematico'); ?></option>
+			<option value="*"<?php selected(in_array('*',$wday,true),true,true); ?>><?php echo __('Any ','wpematico') . '(*)'; ?></option>
 			<option value="0"<?php selected(in_array('0',$wday,true),true,true); ?>><?php _e('Sunday'); ?></option>
 			<option value="1"<?php selected(in_array('1',$wday,true),true,true); ?>><?php _e('Monday'); ?></option>
 			<option value="2"<?php selected(in_array('2',$wday,true),true,true); ?>><?php _e('Tuesday'); ?></option>
@@ -1147,7 +1147,7 @@ public static function feeds_box( $post ) {
 				'select_id'          => 'campaign_bbpress_forum',
 				'tab'                => bbp_get_tab_index(),
 				'options_only'       => false,
-				'show_none'          => __( '&mdash; Create new forums &mdash;', 'wpematico' ),
+				'show_none'          => __( '- Create new forums -', 'wpematico' ),
 				'disable_categories' => false,
 				'disabled'           => ''
 			) ); ?>	
@@ -1168,7 +1168,7 @@ public static function feeds_box( $post ) {
 					'select_id'          => 'campaign_bbpress_topic',
 					'tab'                => bbp_get_tab_index(),
 					'options_only'       => false,
-					'show_none'          => __( '&mdash; Create new topics &mdash;', 'wpematico' ),
+					'show_none'          => __( '- Create new topics -', 'wpematico' ),
 					'disable_categories' => false,
 					'disabled'           => ''
 				) ); ?>	

@@ -354,7 +354,7 @@ class WPEMATICO_Welcome {
 
 					<h3><?php _e('More icons and cosmetics things.', 'wpematico'); ?></h3>
 					<p><?php _e("We're optimizing the screens to make them be more readable by humans, and also get more and better helps with examples and tips in the campaign editing or other screens.", 'wpematico'); ?></p>
-					<p><?php _e("Find tips by clicking in the <em>Help</em> tab in the top-right corner inside Wordpress admin screens.", 'wpematico'); ?></p>
+					<p><?php _e("Find tips by clicking in the \"Help\" tab in the top-right corner inside Wordpress admin screens.", 'wpematico'); ?></p>
 				</div>
 				<div class="column">
 					<h3><?php _e('WPeMatico Addons', 'wpematico'); ?></h3>
@@ -427,7 +427,7 @@ class WPEMATICO_Welcome {
 					<p><?php _e('A more clear nag update was added for the addons in the WPeMatico Extensions and Addons menu items.', 'wpematico'); ?></p>
 				</div>
 				<div class="column">
-					<h3><?php _e('Hidden Options in Settings->Writing', 'wpematico'); ?></h3>
+					<h3><?php _e('Hidden Options in Settings -> Writing', 'wpematico'); ?></h3>
 					<p><?php _e("If you have any problem with WPeMatico item menu, Settings page or lost some plugin, we've put there a WPeMatico Section, to try to avoid weird behaviors made by some thirds plugins.", 'wpematico'); ?></p>
 				</div>
 				<div class="column">
@@ -572,8 +572,8 @@ class WPEMATICO_Welcome {
 
 			<div class="about__section about__section_height has-2-columns">
 				<div class="column is-vertically-aligned-center">
-					<h3><a href="<?php echo admin_url('edit.php?post_type=wpematico&page=wpematico_settings') ?>"><?php _e('WPeMatico &rarr; Settings', 'wpematico'); ?></a></h3>
-					<p><?php _e('The WPeMatico &rarr; Settings menu is where you\'ll set all global aspects for the operation of the plugin and the global options for campaigns, advanced options and tools.', 'wpematico'); ?></p>
+					<h3><a href="<?php echo admin_url('edit.php?post_type=wpematico&page=wpematico_settings') ?>"><?php echo 'WPeMatico &rarr; ' . __('Settings', 'wpematico'); ?></a></h3>
+					<p><?php _e('The WPeMatico Settings menu is where you\'ll set all global aspects for the operation of the plugin and the global options for campaigns, advanced options and tools.', 'wpematico'); ?></p>
 					<p><?php _e('There are also here the tests and the configuration options for the SimplePie library to get differnet behaviour when fetch the feed items.', 'wpematico'); ?></p>
 					<p><?php _e('Set to an external or internal Wordpress CRON scheduler and look at for the configuration tabs of all plugin extensions and Add-ons.', 'wpematico'); ?></p>
 				</div>
@@ -600,7 +600,7 @@ class WPEMATICO_Welcome {
 
 					<h3><a href="<?php echo admin_url('post-new.php?post_type=wpematico') ?>"><?php printf(__('%s &rarr; Add New', 'wpematico'), 'WPeMatico'); ?></a></h3>
 
-					<p><?php printf(__('The WPeMatico &rarr; All Campaigns menu is your access point for all aspects of your Feed campaigns creation and setup to fetch the items and insert them as posts or any Custom Post Type. To create your first campaign, simply click Add New and then fill out the campaign details.', 'wpematico')); ?></p>
+					<p><?php printf(__('The WPeMatico All Campaigns menu is your access point for all aspects of your Feed campaigns creation and setup to fetch the items and insert them as posts or any Custom Post Type. To create your first campaign, simply click Add New and then fill out the campaign details.', 'wpematico')); ?></p>
 				</div>
 			</div>
 
@@ -635,22 +635,22 @@ class WPEMATICO_Welcome {
 				<h2 class="is-section-header"><?php _e('Need more Help?', 'wpematico'); ?></h2>
 				<div class="column">
 					<h3><?php _e('Phenomenal Support', 'wpematico'); ?></h3>
-					<p><?php _e('We do our best to provide the best support we can. If you encounter a problem or have a question, simply open a ticket using our <a target="_blank" href="https://etruel.com/my-account/support">support form</a>.', 'wpematico'); ?></p>
+					<p><?php echo __('We do our best to provide the best support we can. If you encounter a problem or have a question, simply open a ticket using our ', 'wpematico') . '<a target="_blank" href="https://etruel.com/my-account/support">' . __('support form', 'wpematico') . '</a>.'; ?></p>
 				</div>
 				<div class="column">
 					<h3><?php _e('Need Even Better Support?', 'wpematico'); ?></h3>
-					<p><?php _e('Our <a target="_blank" href="https://etruel.com/downloads/premium-support/">Premium Support</a> system is there for customers that need faster and/or more in-depth assistance.', 'wpematico'); ?></p>
+					<p><?php echo __('Our ', 'wpematico') . '<a target="_blank" href="https://etruel.com/downloads/premium-support/">' . __('Premium Support', 'wpematico') . '</a>' . __('system is there for customers that need faster and/or more in-depth assistance.', 'wpematico'); ?></p>
 				</div>
 			</div>
 			<div class="about__section has-2-columns has-subtle-background-color">
 				<h2 class="is-section-header"><?php _e('Stay Up to Date', 'wpematico'); ?></h2>
 				<div class="column">
 					<h3><?php _e('Get Notified of Extension Releases', 'wpematico'); ?></h3>
-					<p><?php _e('New extensions that make WPeMatico even more powerful are released nearly every single week. Subscribe to the newsletter to stay up to date with our latest releases. <a href="http://eepurl.com/bX2ANz" target="_blank">Sign up now</a> to ensure you do not miss a release!', 'wpematico'); ?></p>
+					<p><?php echo __('New extensions that make WPeMatico even more powerful are released nearly every single week. Subscribe to the newsletter to stay up to date with our latest releases. ', 'wpematico') . '<a href="http://eepurl.com/bX2ANz" target="_blank">' . __('Sign up now', 'wpematico') . '</a>' . __(' to ensure you do not miss a release!', 'wpematico'); ?></p>
 				</div>
 				<div class="column">
 					<h3><?php _e('Get Alerted About New Tutorials', 'wpematico'); ?></h3>
-					<p><?php _e('<a href="http://eepurl.com/bX2ANz" target="_blank">Sign up now</a> to hear about the latest tutorial releases that explain how to take WPeMatico further.', 'wpematico'); ?></p>
+					<p><?php echo '<a href="http://eepurl.com/bX2ANz" target="_blank">' . __('Sign up now', 'wpematico') . '</a>' . __(' to hear about the latest tutorial releases that explain how to take WPeMatico further.', 'wpematico'); ?></p>
 				</div>
 			</div>
 			<div class="about__section has-2-columns has-subtle-background-color">
@@ -661,7 +661,7 @@ class WPEMATICO_Welcome {
 				</div>
 				<div class="column">
 					<h3><?php _e('Visit the Extension Store', 'wpematico'); ?></h3>
-					<p><?php _e('<a href="https://etruel.com/downloads" target="_blank">The etruel store</a> has a list of all available extensions for WPeMatico, also other Worpdress plugins, some of them for free. Including convenient category filters so you can find exactly what you are looking for.', 'wpematico'); ?></p>
+					<p><?php echo '<a href="https://etruel.com/downloads" target="_blank">' . __('The etruel store', 'wpematico') . '</a>' . __('has a list of all available extensions for WPeMatico, also other Worpdress plugins, some of them for free. Including convenient category filters so you can find exactly what you are looking for.', 'wpematico'); ?></p>
 				</div>
 			</div>
 
@@ -745,7 +745,7 @@ class WPEMATICO_Welcome {
 				<h2><?php _e('Last News in This Version!', 'wpematico'); ?></h2>
 				<p><?php _e('WPeMatico continues to improve and innovate with each update, once again we include new features in order to improve the user experience and cover all their needs.', 'wpematico'); ?></p>
 				<p><?php _e('Choose which media files will be uploaded to your website by allowing or not their extension!','wpematico')?></p>
-				<p><?php _e('Can you imagine using the featured images without storing them on your own website? With this new version it&#39;s now possible! What are you waiting for to test it?', 'wpematico'); ?></p>
+				<p><?php _e('Can you imagine using the featured images without storing them on your own website? With this new version it\'s now possible! What are you waiting for to test it?', 'wpematico'); ?></p>
 				<h3><?php _e('NOTE: Featured Image From URL plugin is required for this functionality.', 'wpematico'); ?></h3>
 				<p><?php _e('In addition to this, in this new version you can also create excerpts using the description tag of the items in the feed and you can even force the use of the original date of each post!', 'wpematico'); ?></p>
 			</div>

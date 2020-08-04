@@ -75,7 +75,7 @@ $helpcampaign = array(
 		'striphtml' => array( 
 			'title' => __('Strip All HTML Tags.', 'wpematico' ),
 			'tip' => __('Remove all HTML from original content', 'wpematico' ).'<br>'.
-				__('NOTE that also strip images &lt;img&gt; and links &lt;a&gt;.', 'wpematico' ),
+				__('NOTE that also strip images ', 'wpematico' ) . '&lt;img&gt; ' . __('and links ', 'wpematico' ) . '&lt;a&gt;.',
 		),
 		'striplinks' => array( 
 			'title' => __('Strip links from content.', 'wpematico' ),
@@ -93,9 +93,9 @@ $helpcampaign = array(
 			'title' => __('Youtube feeds URLs.', 'wpematico' ),
 			'tip' => __('Channel Videos feed and User Videos feed.', 'wpematico' ).
 				'<br>'.__('Fill in the feed URL field in the standard way.', 'wpematico' ).
-				'<br><br>'.__('For Youtube Channel as: https://www.youtube.com/feeds/videos.xml?channel_id=%channelid%', 'wpematico' ).
-				'<br>'.__('For Youtube User as: https://www.youtube.com/feeds/videos.xml?user=%username%', 'wpematico' ).
-				'<br>'.__('For Youtube Playlist as: https://www.youtube.com/feeds/videos.xml?playlist_id=%playlist_id%', 'wpematico' ).
+				'<br><br>'.__('For Youtube Channel as: ', 'wpematico' ) . 'https://www.youtube.com/feeds/videos.xml?channel_id=%channelid%'.
+				'<br>'.__('For Youtube User as: ', 'wpematico' ) . 'https://www.youtube.com/feeds/videos.xml?user=%username%'.
+				'<br>'.__('For Youtube Playlist as: ', 'wpematico' ) . 'https://www.youtube.com/feeds/videos.xml?playlist_id=%playlist_id%'.
 				'<br><br>'.__('The campaign fetches the title, the image, the embebed video and the description.', 'wpematico' ),
 		),
 		'youtube_embed' => array( 
@@ -138,7 +138,7 @@ $helpcampaign = array(
 		),
 		'imgcache' => array( 
 				'title' => __('Cache images.', 'wpematico' ),
-				'tip' => __('All images found in &lt;img&gt; tags in content will be uploaded to your current WP Upload Folder and replaced urls in content . Otherwise remains links to source hosting server.', 'wpematico' ),
+				'tip' => __('All images found in ', 'wpematico') . '&lt;img&gt; ' . __('tags in content will be uploaded to your current WP Upload Folder and replaced urls in content . Otherwise remains links to source hosting server.', 'wpematico' ),
 		),
 		'imgattach'	=> array( 
 				'title' => __('Attach Images to post.', 'wpematico' ),
@@ -149,7 +149,7 @@ $helpcampaign = array(
 				'tip' => __('If selected and image upload get error, then delete the \'src\' attribute of the &lt;img&gt;. Check this for don\'t link images from external sites.', 'wpematico' ),
 		),
 		'image_srcset' => array( 
-				'title' => __('Use srcset attribute instead of src of &lt;img&gt; tag.', 'wpematico' ),
+				'title' => __('Use srcset attribute instead of src of ', 'wpematico') . '&lt;img&gt; ' . __('tag.', 'wpematico' ),
 				'tip'   => __('Selecting this option searches the srcset attribute if it exists, it searches for the larger image to overwrite the src attribute of the &lt;img&gt; tag.', 'wpematico' ),	
 		),
 		'featuredimg' => array( 
@@ -184,7 +184,7 @@ $helpcampaign = array(
 		),
 		'audio_cache' => array( 
 				'title' => __('Cache audios.', 'wpematico' ),
-				'tip' => __('All audios found in &lt;audio&gt; tags in content will be uploaded to your current WP Upload Folder and replaced urls in content . Otherwise remains links to source hosting server.', 'wpematico' ),
+				'tip' => __('All audios found in ', 'wpematico') . '&lt;audio&gt;' . __('tags in content will be uploaded to your current WP Upload Folder and replaced urls in content . Otherwise remains links to source hosting server.', 'wpematico' ),
 		),
 		'audio_attach'	=> array( 
 				'title' => __('Attach Audios to post.', 'wpematico' ),
@@ -207,7 +207,7 @@ $helpcampaign = array(
 		),
 		'video_cache' => array( 
 				'title' => __('Cache videos.', 'wpematico' ),
-				'tip' => __('All videos found in &lt;video&gt; tags in content will be uploaded to your current WP Upload Folder and replaced urls in content . Otherwise remains links to source hosting server.', 'wpematico' ),
+				'tip' => __('All videos found in ', 'wpematico') . '&lt;video&gt;' . __('tags in content will be uploaded to your current WP Upload Folder and replaced urls in content . Otherwise remains links to source hosting server.', 'wpematico' ),
 		),
 		'video_attach'	=> array( 
 				'title' => __('Attach Videos to post.', 'wpematico' ),
@@ -215,7 +215,7 @@ $helpcampaign = array(
 		),
 		'gralnolink_video' => array( 
 				'title' => __('Don\'t link external videos.', 'wpematico' ),
-				'tip' => __('If selected and video upload get error, then delete the \'src\' attribute of the &lt;video&gt;. Check this for don\'t link videos from external sites.', 'wpematico' ),
+				'tip' => __('If selected and video upload get error, then delete the \'src\' attribute of the ', 'wpematico' ) . '&lt;video&gt;. ' . __('Check this for don\'t link videos from external sites.', 'wpematico' ),
 		),
 		'customupload_videos'	=> array( 
 				'title' => __('Custom Uploads for Videos.', 'wpematico' ),
@@ -306,7 +306,7 @@ $helpcampaign = array(
 				'plustip' => '<b>'. __('Example:', 'wpematico' ). '</b><br />'.
 					__('If the post content contain the word "motor" and then you want assign the post to category "Engines", simply type "motor" in the "Word" field, and select "Engine" in Categories combo.', 'wpematico' ) . '<br />' .
 				'<b>'. __('Regular Expressions', 'wpematico' ) . '</b><br />' .
-				__('For advanced users, regular expressions are supported. Using this will allow you to make more powerful replacements. Take multiple word replacements for example. Instead of using many Word2Cat boxes to assign motor and car to Engines, you can use the | operator: (motor|car), also the field accepts regular expressions without parameters, you should not indicate multiline or line breaks because by default use the entire text field. If you want Case insensitive on RegEx, you must check the "Case sensitive" checkbox below.', 'wpematico' )
+				__("For advanced users, regular expressions are supported. Using this will allow you to make more powerful replacements. Take multiple word replacements for example. Instead of using many Word2Cat boxes to assign motor and car to Engines, you can use the | operator: (motor|car), also the field accepts regular expressions without parameters, you should not indicate multiline or line breaks because by default use the entire text field. If you want Case insensitive on RegEx, you must check the 'Case sensitive' checkbox below.", 'wpematico' )
 		),			
 	),
 	'Rewrite options' => array( 
@@ -320,7 +320,7 @@ $helpcampaign = array(
 				'<b>' . __('Title:', 'wpematico' ) . '</b><br />'.
 				__('If you check "Title" checkbox only replace on title. If you un-check "Title" only replace on content. you must insert twice if you want to replace on both fields.', 'wpematico' ) . '<br />'.
 				'<b>' . __('Relinking:', 'wpematico' ) . '</b><br />'.
-				__('If you want to find all occurrences of google and make them link to Google, just type google in the "origin field" and http://google.com in the "relink to" field.', 'wpematico' ) . '<br />'.
+				__("If you want to find all occurrences of google and make them link to Google, just type google in the 'origin field' and ", "wpematico") . "http://google.com" . __("in the 'relink to' field.", 'wpematico' ) . '<br />'.
 				'<b>' . __('Regular expressions', 'wpematico' ) . '</b><br />'.
 				__('For advanced users, regular expressions are supported. Using this will allow you to make more powerful replacements. Take multiple word replacements for example. Instead of using many rewriting boxes to replace ass and arse with butt, you can use the | operator: (ass|arse).', 'wpematico' ),
 		),

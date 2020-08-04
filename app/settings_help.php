@@ -21,7 +21,7 @@ function wpematico_helpsettings($dev = '') {
 			),
 			'imgcache'		 => array(
 				'title'	 => __('Store images locally. (Uploads)', 'wpematico'),
-				'tip'	 => __('When Store images locally is on, a copy of every image found in content of every feed item (only in &lt;img&gt; tags) is downloaded to the Wordpress UPLOADS Dir.', 'wpematico') . "<br />" .
+				'tip'	 => __('When Store images locally is on, a copy of every image found in content of every feed item (only in ', 'wpematico') . '&lt;img&gt;' . __('tags) is downloaded to the Wordpress UPLOADS Dir.', 'wpematico') . "<br />" .
 				__('If not enabled all images will be linked to the image owner\'s server, but also make your website faster for your visitors.', 'wpematico') . "<br />" .
 				"<b>" . __('Caching all images', 'wpematico') . ":</b> " .
 				__('This featured in the general Settings section, will be overridden for the campaign-specific options.', 'wpematico'),
@@ -37,12 +37,12 @@ function wpematico_helpsettings($dev = '') {
 			'gralnolinkimg'	 => array(
 				'title'		 => __('Don\'t link external images.', 'wpematico'),
 				'tip'		 => "<b>" . __('Note', 'wpematico') . ":</b> " .
-				__('If is selected and the image upload give error, then will delete the &lt;img&gt; HTML tag from the content. Check this to don\'t link images from external sites.', 'wpematico'),
+				__('If is selected and the image upload give error, then will delete the ', 'wpematico') . '&lt;img&gt;' . __('HTML tag from the content. Check this to don\'t link images from external sites.', 'wpematico'),
 				'plustip'	 => "<b>" . __('Note', 'wpematico') . ":</b> " .
-				__('If the image are inside &lt;a&gt; tags, then the link is also removed from content.', 'wpematico'),
+				__('If the image are inside ', 'wpematico') . '&lt;a&gt;' . __('tags, then the link is also removed from content.', 'wpematico'),
 			),
 			'image_srcset'	 => array(
-				'title'		 => __('Use srcset attribute instead of src of &lt;img&gt; tag.', 'wpematico'),
+				'title'		 => __('Use srcset attribute instead of src of ', 'wpematico') . '&lt;img&gt; ' . __('tag.', 'wpematico'),
 				'tip'		 => "<b>" . __('Note', 'wpematico') . ":</b> " .
 				__('Selecting this option searches the srcset attribute if it exists, it searches for the larger image to overwrite the src attribute of the &lt;img&gt; tag.', 'wpematico'),
 				'plustip'	 => "<b>" . __('Note', 'wpematico') . ":</b> " .
@@ -75,7 +75,7 @@ function wpematico_helpsettings($dev = '') {
 		'Audio Settings'	 => array(
 			'audio_cache'			 => array(
 				'title'	 => __('Store audios locally. (Uploads)', 'wpematico'),
-				'tip'	 => __('When Store audios locally is on, a copy of every audio found in content of every feed item (only in &lt;audio&gt; tags) is downloaded to the Wordpress UPLOADS Dir.', 'wpematico') . "<br />" .
+				'tip'	 => __('When Store audios locally is on, a copy of every audio found in content of every feed item (only in ', 'wpematico') . '&lt;audio&gt;' . __('tags) is downloaded to the Wordpress UPLOADS Dir.', 'wpematico') . "<br />" .
 				__('If not enabled all audios will be linked to the audio owner\'s server, but also make your website faster for your visitors.', 'wpematico') . "<br />" .
 				"<b>" . __('Caching all audios', 'wpematico') . ":</b> " .
 				__('This featured in the general Settings section, will be overridden for the campaign-specific options.', 'wpematico'),
@@ -91,9 +91,9 @@ function wpematico_helpsettings($dev = '') {
 			'gralnolink_audio'		 => array(
 				'title'		 => __('Don\'t link external audios.', 'wpematico'),
 				'tip'		 => "<b>" . __('Note', 'wpematico') . ":</b> " .
-				__('If is selected and the audio upload give error, then will delete the &lt;audio&gt; HTML tag from the content. Check this to don\'t link audio from external sites.', 'wpematico'),
+				__('If is selected and the audio upload give error, then will delete the ', 'wpematico') . '&lt;audio&gt;' . __('HTML tag from the content. Check this to don\'t link audio from external sites.', 'wpematico'),
 				'plustip'	 => "<b>" . __('Note', 'wpematico') . ":</b> " .
-				__('If the audio are inside &lt;a&gt; tags, then the link is also removed from content.', 'wpematico'),
+				__('If the audio are inside ', 'wpematico') . '&lt;a&gt;' . __('tags, then the link is also removed from content.', 'wpematico'),
 			),
 			'customupload_audios'	 => array(
 				'title'		 => __('Custom Uploads for Audios.', 'wpematico'),
@@ -106,7 +106,7 @@ function wpematico_helpsettings($dev = '') {
 		'Video Settings'	 => array(
 			'video_cache'			 => array(
 				'title'	 => __('Store videos locally. (Uploads)', 'wpematico'),
-				'tip'	 => __('When Store videos locally is on, a copy of every video found in content of every feed item (only in &lt;video&gt; tags) is downloaded to the Wordpress UPLOADS Dir.', 'wpematico') . "<br />" .
+				'tip'	 => __('When Store videos locally is on, a copy of every video found in content of every feed item (only in ', 'wpematico') . '&lt;video&gt;' . __('tags) is downloaded to the Wordpress UPLOADS Dir.', 'wpematico') . "<br />" .
 				__('If not enabled all videos will be linked to the video owner\'s server, but also make your website faster for your visitors.', 'wpematico') . "<br />" .
 				"<b>" . __('Caching all videos', 'wpematico') . ":</b> " .
 				__('This featured in the general Settings section, will be overridden for the campaign-specific options.', 'wpematico'),
@@ -122,9 +122,9 @@ function wpematico_helpsettings($dev = '') {
 			'gralnolink_video'		 => array(
 				'title'		 => __('Don\'t link external videos.', 'wpematico'),
 				'tip'		 => "<b>" . __('Note', 'wpematico') . ":</b> " .
-				__('If is selected and the video upload give error, then will delete the &lt;video&gt; HTML tag from the content. Check this to don\'t link videos from external sites.', 'wpematico'),
+				__('If is selected and the video upload give error, then will delete the ', 'wpematico') . '&lt;video&gt;' . __('HTML tag from the content. Check this to don\'t link videos from external sites.', 'wpematico'),
 				'plustip'	 => "<b>" . __('Note', 'wpematico') . ":</b> " .
-				__('If the video are inside &lt;a&gt; tags, then the link is also removed from content.', 'wpematico'),
+				__('If the video are inside ', 'wpematico') . '&lt;a&gt;' . __('tags, then the link is also removed from content.', 'wpematico'),
 			),
 			'customupload_videos'	 => array(
 				'title'		 => __('Custom Uploads for Videos.', 'wpematico'),
@@ -249,7 +249,7 @@ function wpematico_helpsettings($dev = '') {
 			),
 			'logexternalcron'			 => array(
 				'title'	 => __('Log file for external Cron.', 'wpematico'),
-				'tip'	 => __('Try to save a file with simple steps taken at run wpe-cron.php. "%campaign title%.txt.log" will be saved on uploads folder or inside plugin, "app" folder.  Recommended on issues with cron.', 'wpematico'),
+				'tip'	 => __('Try to save a file with simple steps taken at run ', 'wpematico') . 'wpe-cron.php. "%campaign title%.txt.log"' . __('will be saved on uploads folder or inside plugin, "app" folder.  Recommended on issues with cron.', 'wpematico'),
 			// 'plustip' => __('', 'wpematico' ),
 			),
 		),
@@ -334,14 +334,14 @@ function wpematico_helpsettings($dev = '') {
 		}
 		$helptip = array_merge($helptip, array(
 			'PROfeatures'		 => __('Features only available when you buy the Professional Addon.', 'wpematico'),
-			'enablekwordf'		 => __('This is for exclude or include posts according to the keywords <b>found</b> at content or title.', 'wpematico'),
-			'enablewcf'			 => __('This is for cut, exclude or include posts according to the letters o words <b>counted</b> at content.', 'wpematico'),
+			'enablekwordf'		 => __('This is for exclude or include posts according to the keywords found at content or title.', 'wpematico'),
+			'enablewcf'			 => __('This is for cut, exclude or include posts according to the letters o words counted at content.', 'wpematico'),
 			'enablecustomtitle'	 => __('If you want a custom title for posts of a campaign, you can activate here.', 'wpematico'),
 			'enabletags'		 => __('This feature generate tags automatically on every published post, on campaign edit you can disable auto feature and manually enter a list of tags or leave empty.', 'wpematico'),
 			'enablecfields'		 => __('Add custom fields with values as templates on every post.', 'wpematico'),
 			'fullcontent'		 => __('Full Content is the correct addon if you want to attempt to obtain full items content from source site instead of the campaign feed.', 'wpematico'),
 			'authorfeed'		 => __('This option allow you assign an author per feed when editing campaign. If no choice any author, the campaign author will be taken.', 'wpematico'),
-			'importfeeds'		 => __('On campaign edit you can import, copy & paste in a textarea field, a list of feed addresses with/out author names.', 'wpematico'),
+			'importfeeds'		 => __('On campaign edit you can import, copy and paste in a textarea field, a list of feed addresses with/out author names.', 'wpematico'),
 			)
 		);
 		return apply_filters('wpematico_helptip_settings', $helptip);

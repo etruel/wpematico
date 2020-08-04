@@ -244,14 +244,14 @@ class WPeMatico_backend_helpers {
 					echo " <i><strong>" . $campaign_data['campaign_title'] . "</i></strong>, ";
 					echo date_i18n((get_option('date_format') . ' ' . get_option('time_format')), $campaign_data['lastrun']) . ', <i>';
 					if($campaign_data['lastpostscount'] > 0)
-						echo ' <span style="color:green;">' . sprintf(__('Processed Posts: %1s', 'wpematico'), $campaign_data['lastpostscount']) . '</span>, ';
+						echo ' <span style="color:green;">' . sprintf(__('Processed Posts: %s', 'wpematico'), $campaign_data['lastpostscount']) . '</span>, ';
 					else
-						echo ' <span style="color:red;">' . sprintf(__('Processed Posts: %1s', 'wpematico'), '0') . '</span>, ';
+						echo ' <span style="color:red;">' . sprintf(__('Processed Posts: %s', 'wpematico'), '0') . '</span>, ';
 
 					if($campaign_data['lastruntime'] < 10)
-						echo ' <span style="color:green;">' . sprintf(__('Fetch done in %1s sec.', 'wpematico'), $campaign_data['lastruntime']) . '</span>';
+						echo ' <span style="color:green;">' . sprintf(__('Fetch done in %s sec.', 'wpematico'), $campaign_data['lastruntime']) . '</span>';
 					else
-						echo ' <span style="color:red;">' . sprintf(__('Fetch done in %1s sec.', 'wpematico'), $campaign_data['lastruntime']) . '</span>';
+						echo ' <span style="color:red;">' . sprintf(__('Fetch done in %s sec.', 'wpematico'), $campaign_data['lastruntime']) . '</span>';
 				}
 				echo '</i></a><br />';
 				$count++;

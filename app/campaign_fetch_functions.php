@@ -77,7 +77,7 @@ class wpematico_campaign_fetch_functions {
 
 		// strip all HTML tags before apply template 
 		if($campaign['campaign_striphtml']) {
-			trigger_error(sprintf(__('Deleting html tags: %1s', 'wpematico'), $item->get_title()), E_USER_NOTICE);
+			trigger_error(sprintf(__('Deleting html tags: %s', 'wpematico'), $item->get_title()), E_USER_NOTICE);
 			$current_item['content'] = strip_tags($current_item['content'], apply_filters('wpem_dont_strip_tags', ''));
 		}
 		// take out links before apply template (if don't strip before html tags
@@ -207,7 +207,7 @@ class wpematico_campaign_fetch_functions {
 		if($this->cfg['enableword2cats']) {
 			if(isset($campaign['campaign_wrd2cat']['word']) && (!empty($campaign['campaign_wrd2cat']['word'][0]) ) && (!empty($campaign['campaign_wrd2cat']['w2ccateg'][0]) )
 			) {
-				trigger_error(sprintf(__('Processing Words to Category %1s', 'wpematico'), $current_item['title']), E_USER_NOTICE);
+				trigger_error(sprintf(__('Processing Words to Category %s', 'wpematico'), $current_item['title']), E_USER_NOTICE);
 
 				for($i = 0; $i < count($campaign['campaign_wrd2cat']['word']); $i++) {
 					$foundit = false;
@@ -236,11 +236,11 @@ class wpematico_campaign_fetch_functions {
 							}
 						}
 						if($foundit !== false) {
-							trigger_error(sprintf(__('Found!: word %1s to Cat_id %2s', 'wpematico'), $word, $tocat), E_USER_NOTICE);
+							trigger_error(sprintf(__('Found!: word %s to Cat_id %s', 'wpematico'), $word, $tocat), E_USER_NOTICE);
 							$new_categories[]		 = $tocat;
 							$new_categories_words[]	 = strtolower($word);
 						}else {
-							trigger_error(sprintf(__('Not found word %1s', 'wpematico'), $word), E_USER_NOTICE);
+							trigger_error(sprintf(__('Not found word %s', 'wpematico'), $word), E_USER_NOTICE);
 						}
 					}
 				}
@@ -262,13 +262,13 @@ class wpematico_campaign_fetch_functions {
 							}
 						}
 						if(!empty($category_with_more_words)) {
-							trigger_error(sprintf(__('The category with more words in content: %1s', 'wpematico'), $category_with_more_words), E_USER_NOTICE);
+							trigger_error(sprintf(__('The category with more words in content: %s', 'wpematico'), $category_with_more_words), E_USER_NOTICE);
 							$new_categories = array($category_with_more_words);
 						}
 					}else {
 						$new_categories = (isset($new_categories[0]) ? array($new_categories[0]) : array());
 						if(isset($new_categories[0])) {
-							trigger_error(sprintf(__('Assign the first category: %1s', 'wpematico'), $new_categories[0]), E_USER_NOTICE);
+							trigger_error(sprintf(__('Assign the first category: %s', 'wpematico'), $new_categories[0]), E_USER_NOTICE);
 						}
 					}
 				}

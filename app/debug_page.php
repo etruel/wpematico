@@ -51,7 +51,7 @@ function wpematico_feed_viewer() {
 	$errors = $feed->error(); // if no error returned
 
 	if(empty($errors)) {
-		$response['label']	 = sprintf(__('The feed <strong>%s</strong> has been parsed successfully.', 'wpematico'), $url);
+		$response['label']	 = sprintf(__('The feed %s has been parsed successfully.', 'wpematico'), $url);
 		$headers			 = $feed->data['headers'];
 		$response['label']	 .= '<br/><b>' . sprintf(__('Headers.', 'wpematico'), $url) . '</b>';
 		foreach($headers as $key => $value) {
@@ -74,7 +74,7 @@ function wpematico_feed_viewer() {
 		if(!is_wp_error($feed)) {
 			if(isset($feed['response']['code'])) {
 				if(200 === $feed['response']['code']) {
-					$response['label']	 .= '<br/>' . sprintf(__('The URL <strong>%s</strong> has been obtained.', 'wpematico'), $url);
+					$response['label']	 .= '<br/>' . sprintf(__('The URL %s has been obtained.', 'wpematico'), $url);
 					$response['success'] = true;
 				}else {
 					$response['label']	 .= '<br/>' . sprintf(__('The URL %s cannot be obtained successfully.', 'wpematico'), $url);
@@ -365,15 +365,15 @@ function wpematico_status_rightcolumn() {
 						<a href="http://www.wpematico.com" target="_Blank" title="<?php _e('Go to the new WPeMatico WebSite', 'wpematico'); ?>">
 							<img class="logover" src="<?php echo WPeMatico :: $uri; ?>images/icon-256x256.png" title="">	
 							<span id="wpematico-website">WPeMatico Website</span><br>
-						</a><span id="wpematico-websiteinfo"><?php _e('Comments & Tutorials', 'wpematico'); ?></span>
+						</a><span id="wpematico-websiteinfo"><?php _e('Comments and Tutorials', 'wpematico'); ?></span>
 					</p>
 					<p class="icon_version">
 						<a href="https://etruel.com" target="_Blank" title="<?php _e('WPeMatico Addons in etruel.com store', 'wpematico'); ?>">
 							<img class="logover" src="<?php echo WPeMatico :: $uri; ?>/images/etruelcom_ico.png" title="">	
 							<span id="wpematico-etruel">etruel.com</span><br>
-						</a><span id="wpematico-store"><?php _e('Addons store, FAQs & Support', 'wpematico'); ?></span>
+						</a><span id="wpematico-store"><?php _e('Addons store, FAQs and Support', 'wpematico'); ?></span>
 					</p>
-					<p><?php _e('Thanks for use & test this plugin.', 'wpematico'); ?></p>
+					<p><?php _e('Thanks for use and test this plugin.', 'wpematico'); ?></p>
 					<p></p>
 					<p><?php _e('If you like this plugin, you can write a 5 star review on Wordpress.', 'wpematico'); ?></p>
 					<style type="text/css">#linkrate:before { content: "\2605\2605\2605\2605\2605";font-size: 18px;}
@@ -737,7 +737,7 @@ function wpematico_show_data_info() {
 				<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('The version of PHP installed on your hosting server.', 'wpematico') . '">[?]</a>'; ?></td>
 				<td><?php
 					if(!$php_ok) {
-						echo '<mark class="error">' . esc_html(phpversion()) . __('WPeMatico requires PHP >= 5.3.', 'wpematico') . '</mark>';
+						echo '<mark class="error">' . esc_html(phpversion()) . __('WPeMatico requires', 'wpematico') . ' PHP >= 5.3.' . '</mark>';
 					}else {
 						echo '<mark class="yes">' . esc_html(phpversion()) . '</mark>';
 					}
@@ -794,7 +794,7 @@ function wpematico_show_data_info() {
 					?>
 					<td><?php
 						if($max_input_vars < $required_input_vars) {
-							echo '<mark class="error">' . sprintf(__('%s - Recommended Value: %s.<br />Max input vars limitation will truncate POST data such as menus. See: <a href="%s" target="_blank">Increasing max input vars limit.</a>', 'wpematico'), $max_input_vars, '<strong>' . $required_input_vars . '</strong>', 'http://sevenspark.com/docs/ubermenu-3/faqs/menu-item-limit') . '</mark>';
+							echo '<mark class="error">' . sprintf(__('%s - Recommended Value: %s.', 'wpematico') . '<br />' . __('Max input vars limitation will truncate POST data such as menus. See: ', 'wpematico') . '<a href="%s" target="_blank">' . __('Increasing max input vars limit.', 'wpematico') . '</a>', $max_input_vars, '<strong>' . $required_input_vars . '</strong>', 'http://sevenspark.com/docs/ubermenu-3/faqs/menu-item-limit') . '</mark>';
 						}else {
 							echo '<mark class="yes">' . $max_input_vars . '</mark>';
 						}
@@ -805,11 +805,11 @@ function wpematico_show_data_info() {
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('The amount of time (in seconds) that your site will spend on a single operation before timing out (to avoid server lockups)', 'wpematico') . '">[?]</a>'; ?></td>
 					<td><?php
 						if($time_limit < 180 && $time_limit != 0) {
-							echo '<mark class="error">' . sprintf(__('%s - We recommend setting max execution time to at least 180. <br /> To give a campaign 5 minutes to run without timeouts, <strong>300</strong> seconds of max execution time is required.<br />See: <a href="%s" target="_blank">Increasing max execution to PHP</a>', 'wpematico'), $time_limit, 'http://codex.wordpress.org/Common_WordPress_Errors#Maximum_execution_time_exceeded') . '</mark>';
+							echo '<mark class="error">' . sprintf(__('%s - We recommend setting max execution time to at least 180. ', 'wpematico') . '<br />' . __('To give a campaign 5 minutes to run without timeouts, ', 'wpematico') . '<strong>300</strong>' . __('seconds of max execution time is required.', 'wpematico') . '<br />' . __('See: ', 'wpematico') . '<a href="%s" target="_blank">' . __('Increasing max execution to PHP', 'wpematico') . '</a>', $time_limit, 'http://codex.wordpress.org/Common_WordPress_Errors#Maximum_execution_time_exceeded') . '</mark>';
 						}else {
 							echo '<mark class="yes">' . $time_limit . '</mark>';
 							if($time_limit < 300 && $time_limit != 0) {
-								echo '<br /><mark class="error">' . __('Current time limit is sufficient, but if you want to give 5 minutes to run without timeouts to each campaign, the required time is <strong>300</strong>.', 'wpematico') . '</mark>';
+								echo '<br /><mark class="error">' . __('Current time limit is sufficient, but if you want to give 5 minutes to run without timeouts to each campaign, the required time is 300.', 'wpematico') . '</mark>';
 							}
 						}
 						?></td>
@@ -819,7 +819,7 @@ function wpematico_show_data_info() {
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('The maximum amount of memory (RAM) that your PHP allows in this server.', 'wpematico') . '">[?]</a>'; ?></td>
 					<td><?php
 						if($memory < 128000000) {
-							echo '<mark class="error">' . sprintf(__('%s - We recommend setting memory to at least <strong>128MB</strong>. <br /> Please define memory limit in <strong>php.ini</strong> file.', 'wpematico'), size_format($memory), 'http://codex.wordpress.org/Editing_wp-config.php#Increasing_memory_allocated_to_PHP') . '</mark>';
+							echo '<mark class="error">' . sprintf(__('%s - We recommend setting memory to at least', 'wpematico') . '<strong>128MB</strong>. <br />' . __('Please define memory limit in php.ini file.', 'wpematico'), size_format($memory), 'http://codex.wordpress.org/Editing_wp-config.php#Increasing_memory_allocated_to_PHP') . '</mark>';
 						}else {
 							echo '<mark class="yes">' . size_format($memory) . '</mark>';
 						}
@@ -830,7 +830,7 @@ function wpematico_show_data_info() {
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('The PHP safe mode is an attempt to solve the shared-server security problem. This feature has been DEPRECATED as of PHP 5.3.0 and REMOVED as of PHP 5.4.0.', 'wpematico') . '">[?]</a>'; ?></td>
 					<td><?php
 						if($safe_mode) {
-							echo '<mark class="error">On - ' . sprintf(__('We recommend turn safe_mode <strong>Off</strong>. <br /> See: <a href="%s" target="_blank">PHP: Safe Mode.</a>.', 'wpematico'), 'http://php.net/manual/en/features.safe-mode.php') . '</mark>';
+							echo '<mark class="error">On - ' . sprintf(__('We recommend turn safe_mode "Off".', 'wpematico') . '<br />' . __('See: ', 'wpematico') . '<a href="%s" target="_blank">' . __('PHP: Safe Mode.', 'wpematico') . '</a>.', 'http://php.net/manual/en/features.safe-mode.php') . '</mark>';
 						}else {
 							echo '<mark class="yes">' . 'Off' . '</mark>';
 						}
@@ -843,7 +843,7 @@ function wpematico_show_data_info() {
 						if($allow_url_fopen) {
 							echo '<mark class="yes">' . 'On' . '</mark>';
 						}else {
-							echo '<mark class="error">Off - ' . sprintf(__('We recommend turn Allow URL fopen <strong>On</strong>. <br /> See: <a href="%s" target="_blank">PHP: Allow URL fopen.</a>.', 'wpematico'), 'http://php.net/manual/en/filesystem.configuration.php#ini.allow-url-fopen') . '</mark>';
+							echo '<mark class="error">Off - ' . sprintf(__('We recommend turn Allow URL fopen "On". ', 'wpematico') . '<br />' . __('See: ', 'wpematico') . '<a href="%s" target="_blank">' . __('PHP: Allow URL fopen.', 'wpematico') . '</a>.', 'http://php.net/manual/en/filesystem.configuration.php#ini.allow-url-fopen') . '</mark>';
 						}
 						?></td>
 				</tr>
@@ -854,7 +854,7 @@ function wpematico_show_data_info() {
 						if($ini_set) {
 							echo '<mark class="yes">' . 'On' . '</mark>';
 						}else {
-							echo '<mark class="no">Off - ' . sprintf(__('We recommend to activate <strong>set_ini()</strong> in your server. <br /> See: <a href="%s" target="_blank">PHP: ini_set.</a>.', 'wpematico'), 'http://php.net/manual/en/function.ini-set.php') . '</mark>';
+							echo '<mark class="no">Off - ' . sprintf(__('We recommend to activate "set_ini()" in your server. ', 'wpematico') . '<br />' . __('See: ', 'wpematico') . '<a href="%s" target="_blank">PHP: ini_set. </a>.', 'http://php.net/manual/en/function.ini-set.php') . '</mark>';
 						}
 						?></td>
 				</tr>
@@ -979,7 +979,7 @@ function wpematico_show_data_info() {
 			  <?php endif; // suhosin installed ?>
 			 */ ?>				
 			<tr>
-				<td data-export-label="Session enabled"><?php _e('$_SESSION enabled:', 'wpematico'); ?></td>
+				<td data-export-label="Session enabled"><?php echo '$_SESSION ' . __('enabled:', 'wpematico'); ?></td>
 				<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('PHP Session Configuration. http://php.net/manual/es/reserved.variables.session.php', 'wpematico') . '">[?]</a>'; ?></td>
 				<td><?php echo isset($_SESSION) ? '&#10004;' : '&ndash;'; ?></td>
 			</tr>
@@ -1047,7 +1047,7 @@ function wpematico_show_data_info() {
 				<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('Whether or not you have WordPress Multisite enabled.', 'wpematico') . '">[?]</a>'; ?></td>
 				<td><?php
 					if($is_multisite) {
-						echo '<mark class="no">' . '&#10004;' . __('WPeMatico was not fully tested in Multisite. Test it and give us your comments on the <a href="https://wordpress.org/support/plugin/wpematico/" target="_blank">forums</a>', 'wpematico') . '</mark>';
+						echo '<mark class="no">' . '&#10004;' . __('WPeMatico was not fully tested in Multisite. Test it and give us your comments on the ', 'wpematico') . '<a href="https://wordpress.org/support/plugin/wpematico/" target="_blank">' . __('forums', 'wpematico') . '</a>' . '</mark>';
 					}else {
 						echo '<mark class="yes">' . __('No', 'wpematico') . '</mark>';
 					}
@@ -1108,7 +1108,7 @@ function wpematico_show_data_info() {
 				<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('The maximum amount of memory (RAM) that your site can use at one time.', 'wpematico') . '">[?]</a>'; ?></td>
 				<td><?php
 					if($wp_memory < 128000000) {
-						echo '<mark class="no">' . sprintf(__('%s - We recommend setting memory to at least <strong>128MB</strong>. <br /> Please define memory limit in <strong>wp-config.php</strong> file. To learn how, see: <a href="%s" target="_blank">Increasing memory allocated to PHP.</a>', 'wpematico'), size_format($wp_memory), 'https://wordpress.org/support/article/editing-wp-config-php/#increasing-memory-allocated-to-php') . '</mark>';
+						echo '<mark class="no">' . sprintf(__('%s - We recommend setting memory to at least ', 'wpematico') . '<strong>128MB</strong>. <br />' . __('Please define memory limit in wp-config.php file. To learn how, see: ', 'wpematico') . '<a href="%s" target="_blank">' . __('Increasing memory allocated to PHP.', 'wpematico') . '</a>', size_format($wp_memory), 'https://wordpress.org/support/article/editing-wp-config-php/#increasing-memory-allocated-to-php') . '</mark>';
 					}else {
 						echo '<mark class="yes">' . size_format($wp_memory) . '</mark>';
 					}

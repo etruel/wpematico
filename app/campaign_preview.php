@@ -122,7 +122,7 @@ class wpematico_campaign_preview {
 								( $hashvalue == $currenthash[$feed] ); 
 					if ($dupi) {
 						$posts_fetched[$item_hash] = true;
-						trigger_error(sprintf(__('Found duplicated hash \'%1s\'', 'wpematico' ),$item->get_permalink()).': '.$currenthash[$feed] ,E_USER_NOTICE);
+						trigger_error(sprintf(__('Found duplicated hash \'%s\'', 'wpematico' ),$item->get_permalink()).': '.$currenthash[$feed] ,E_USER_NOTICE);
 						if( !$duplicate_options['jumpduplicates'] ) {
 							trigger_error(__('Filtering duplicated posts.', 'wpematico' ),E_USER_NOTICE);
 							$breaked = true;
@@ -136,7 +136,7 @@ class wpematico_campaign_preview {
 				if( !$duplicate_options['allowduptitle'] ){
 					if(WPeMatico::is_duplicated_item($campaign, $feed, $item)) {
 						$posts_fetched[$item_hash] = true;
-						trigger_error(sprintf(__('Found duplicated title \'%1s\'', 'wpematico' ),$item->get_title()).': '.$currenthash[$feed] ,E_USER_NOTICE);
+						trigger_error(sprintf(__('Found duplicated title \'%s\'', 'wpematico' ),$item->get_title()).': '.$currenthash[$feed] ,E_USER_NOTICE);
 						if( !$duplicate_options['jumpduplicates'] ) {
 							trigger_error(__('Filtering duplicated posts.', 'wpematico' ),E_USER_NOTICE);
 							$breaked = true;
@@ -161,7 +161,7 @@ class wpematico_campaign_preview {
 			}
 			$count++;	  
 			if($count == $campaign['campaign_max']) {
-				trigger_error(sprintf(__('Campaign fetch limit reached at %1s.', 'wpematico' ), $campaign['campaign_max']),E_USER_NOTICE);
+				trigger_error(sprintf(__('Campaign fetch limit reached at %s.', 'wpematico' ), $campaign['campaign_max']),E_USER_NOTICE);
 				$breaked = true;
 				continue;
 			}

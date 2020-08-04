@@ -85,11 +85,11 @@ class wpe_smart_notifications {
 			 <div class="description-smart-notification">
 				<p class="parr-wpmatico-smart-notification">
 
-					<?php _e( 'The <strong>WPeMatico team</strong> work hard to offer you excellent tools for <strong>autoblogging</strong>.', 'wpematico' );?>
+					<?php _e( 'The WPeMatico team work hard to offer you excellent tools for autoblogging.', 'wpematico' );?>
 					<br>
-					<?php printf(__('So we would love you to write a %1s in WordPress if you appreciate our plugin.', 'wpematico' ),'<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" id="link2rate" target="_Blank"><strong>5-star review</strong></a>'); ?>
+					<?php printf(__('So we would love you to write a %s in WordPress if you appreciate our plugin.', 'wpematico' ),'<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" id="link2rate" target="_Blank"><strong>5-star review</strong></a>'); ?>
 					<br>
-					<?php _e( 'It only takes a minute, <strong>click the button below</strong> to go to the form.', 'wpematico' );?>
+					<?php _e( 'It only takes a minute, "click the button below" to go to the form.', 'wpematico' );?>
 					<br>
 					<br>
 					<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" id="linkrate" class="button button-primary button-hero" target="_Blank" title="Click here to rate plugin on Wordpress">Rate us</a>

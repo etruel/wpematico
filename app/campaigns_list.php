@@ -496,10 +496,10 @@ if(!class_exists('WPeMatico_Campaigns')) :
 				6	 => sprintf(__('Campaign published.', 'wpematico')),
 				7	 => __('Campaign saved.'),
 				8	 => sprintf(__('Campaign submitted.', 'wpematico')),
-				9	 => sprintf(__('Campaign scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview campaign</a>'),
+				9	 => sprintf(__('Campaign scheduled for: %s.') . '<a target="_blank" href="%s">' . __('Preview campaign') . '</a>',
 					// translators: Publish box date format, see http://php.net/date
 					date_i18n(__('M j, Y @ G:i'), strtotime($post->post_date)), esc_url(get_permalink($post_ID))),
-				10	 => sprintf(__('Campaign draft updated. <a target="_blank" href="%s">Preview campaign</a>'), esc_url(add_query_arg('preview', 'true', get_permalink($post_ID)))),
+				10	 => sprintf(__('Campaign draft updated. ') . '<a target="_blank" href="%s">' . __('Preview campaign') . '</a>', esc_url(add_query_arg('preview', 'true', get_permalink($post_ID)))),
 			);
 
 			return $messages;
@@ -554,7 +554,7 @@ if(!class_exists('WPeMatico_Campaigns')) :
 				$actions		 = array();
 				if($can_edit_post && 'trash' != $post->post_status) {
 					$actions['edit']				 = '<a href="' . get_edit_post_link($post->ID, true) . '" title="' . esc_attr(__('Edit this item')) . '">' . __('Edit') . '</a>';
-					$actions['inline hide-if-no-js'] = '<a href="#" class="editinline" title="' . esc_attr(__('Edit this item inline')) . '">' . __('Quick&nbsp;Edit') . '</a>';
+					$actions['inline hide-if-no-js'] = '<a href="#" class="editinline" title="' . esc_attr(__('Edit this item inline')) . '">' . __('Quick Edit') . '</a>';
 				}
 				if(current_user_can('delete_post', $post->ID)) {
 					if('trash' == $post->post_status)

@@ -340,7 +340,7 @@ class WPeMatico_XML_Importer {
         $xml_is_not_allowed = apply_filters('wpematico_xml_is_not_allowed', empty( $simplepie_error ), $campaign_data );
         if( $xml_is_not_allowed ) {
              //wp_die(__('The file is a RSS feed that must use <strong>Feed Fetcher</strong> campaign type instead of XML.', 'wpematico')); 
-            echo '<div id="message" class="error notice notice-error is-dismissible"><p>' . __('The file is a RSS feed that must use <strong>Feed Fetcher</strong> campaign type instead of XML.', 'wpematico') . '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>'; 
+            echo '<div id="message" class="error notice notice-error is-dismissible"><p>' . __('The file is a RSS feed that must use "Feed Fetcher" campaign type instead of XML.', 'wpematico') . '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>'; 
             if ( wp_doing_ajax() ) {
                 die();
             }
