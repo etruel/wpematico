@@ -21,7 +21,7 @@ function wpematico_helpsettings($dev = '') {
 			),
 			'imgcache'		 => array(
 				'title'	 => __('Store images locally. (Uploads)', 'wpematico'),
-				'tip'	 => __('When Store images locally is on, a copy of every image found in content of every feed item (only in ', 'wpematico') . '&lt;img&gt;' . __('tags) is downloaded to the Wordpress UPLOADS Dir.', 'wpematico') . "<br />" .
+				'tip'	 => sprintf(__('When Store images locally is on, a copy of every image found in content of every feed item (only in %s tags) is downloaded to the Wordpress UPLOADS Dir.', 'wpematico'), '&lt;img&gt;') . "<br />" .
 				__('If not enabled all images will be linked to the image owner\'s server, but also make your website faster for your visitors.', 'wpematico') . "<br />" .
 				"<b>" . __('Caching all images', 'wpematico') . ":</b> " .
 				__('This featured in the general Settings section, will be overridden for the campaign-specific options.', 'wpematico'),
@@ -37,14 +37,14 @@ function wpematico_helpsettings($dev = '') {
 			'gralnolinkimg'	 => array(
 				'title'		 => __('Don\'t link external images.', 'wpematico'),
 				'tip'		 => "<b>" . __('Note', 'wpematico') . ":</b> " .
-				__('If is selected and the image upload give error, then will delete the ', 'wpematico') . '&lt;img&gt;' . __('HTML tag from the content. Check this to don\'t link images from external sites.', 'wpematico'),
+				sprintf(__('If is selected and the image upload give error, then will delete the %s HTML tag from the content. Check this to don\'t link images from external sites.', 'wpematico'), '&lt;img&gt;'),
 				'plustip'	 => "<b>" . __('Note', 'wpematico') . ":</b> " .
-				__('If the image are inside ', 'wpematico') . '&lt;a&gt;' . __('tags, then the link is also removed from content.', 'wpematico'),
+				sprintf(__('If the image are inside %s tags, then the link is also removed from content.', 'wpematico'), '&lt;a&gt;'),
 			),
 			'image_srcset'	 => array(
 				'title'		 => __('Use srcset attribute instead of src of ', 'wpematico') . '&lt;img&gt; ' . __('tag.', 'wpematico'),
 				'tip'		 => "<b>" . __('Note', 'wpematico') . ":</b> " .
-				__('Selecting this option searches the srcset attribute if it exists, it searches for the larger image to overwrite the src attribute of the &lt;img&gt; tag.', 'wpematico'),
+				sprintf(__('Selecting this option searches the srcset attribute if it exists, it searches for the larger image to overwrite the src attribute of the %s tag.', 'wpematico'), '&lt;img&gt;'),
 				'plustip'	 => "<b>" . __('Note', 'wpematico') . ":</b> " .
 				__('If the srcset attribute does not exist the image processing will work normally.', 'wpematico'),
 			),
@@ -75,7 +75,7 @@ function wpematico_helpsettings($dev = '') {
 		'Audio Settings'	 => array(
 			'audio_cache'			 => array(
 				'title'	 => __('Store audios locally. (Uploads)', 'wpematico'),
-				'tip'	 => __('When Store audios locally is on, a copy of every audio found in content of every feed item (only in ', 'wpematico') . '&lt;audio&gt;' . __('tags) is downloaded to the Wordpress UPLOADS Dir.', 'wpematico') . "<br />" .
+				'tip'	 => sprintf(__('When Store audios locally is on, a copy of every audio found in content of every feed item (only in %s tags) is downloaded to the Wordpress UPLOADS Dir.', 'wpematico'), '&lt;audio&gt;') . "<br />" .
 				__('If not enabled all audios will be linked to the audio owner\'s server, but also make your website faster for your visitors.', 'wpematico') . "<br />" .
 				"<b>" . __('Caching all audios', 'wpematico') . ":</b> " .
 				__('This featured in the general Settings section, will be overridden for the campaign-specific options.', 'wpematico'),
@@ -91,9 +91,9 @@ function wpematico_helpsettings($dev = '') {
 			'gralnolink_audio'		 => array(
 				'title'		 => __('Don\'t link external audios.', 'wpematico'),
 				'tip'		 => "<b>" . __('Note', 'wpematico') . ":</b> " .
-				__('If is selected and the audio upload give error, then will delete the ', 'wpematico') . '&lt;audio&gt;' . __('HTML tag from the content. Check this to don\'t link audio from external sites.', 'wpematico'),
+					sprintf(__('If is selected and the audio upload give error, then will delete the %s HTML tag from the content. Check this to don\'t link audio from external sites.', 'wpematico'), '&lt;audio&gt;'),
 				'plustip'	 => "<b>" . __('Note', 'wpematico') . ":</b> " .
-				__('If the audio are inside ', 'wpematico') . '&lt;a&gt;' . __('tags, then the link is also removed from content.', 'wpematico'),
+				printf(__('If the audio are inside %s tags, then the link is also removed from content.', 'wpematico'), '&lt;a&gt;'),
 			),
 			'customupload_audios'	 => array(
 				'title'		 => __('Custom Uploads for Audios.', 'wpematico'),
@@ -106,7 +106,7 @@ function wpematico_helpsettings($dev = '') {
 		'Video Settings'	 => array(
 			'video_cache'			 => array(
 				'title'	 => __('Store videos locally. (Uploads)', 'wpematico'),
-				'tip'	 => __('When Store videos locally is on, a copy of every video found in content of every feed item (only in ', 'wpematico') . '&lt;video&gt;' . __('tags) is downloaded to the Wordpress UPLOADS Dir.', 'wpematico') . "<br />" .
+				'tip'	 => sprintf(__('When Store videos locally is on, a copy of every video found in content of every feed item (only in %s tags) is downloaded to the Wordpress UPLOADS Dir.', 'wpematico'), '&lt;video&gt;') . "<br />" .
 				__('If not enabled all videos will be linked to the video owner\'s server, but also make your website faster for your visitors.', 'wpematico') . "<br />" .
 				"<b>" . __('Caching all videos', 'wpematico') . ":</b> " .
 				__('This featured in the general Settings section, will be overridden for the campaign-specific options.', 'wpematico'),
@@ -122,9 +122,9 @@ function wpematico_helpsettings($dev = '') {
 			'gralnolink_video'		 => array(
 				'title'		 => __('Don\'t link external videos.', 'wpematico'),
 				'tip'		 => "<b>" . __('Note', 'wpematico') . ":</b> " .
-				__('If is selected and the video upload give error, then will delete the ', 'wpematico') . '&lt;video&gt;' . __('HTML tag from the content. Check this to don\'t link videos from external sites.', 'wpematico'),
+					sprintf(__('If is selected and the video upload give error, then will delete the %s HTML tag from the content. Check this to don\'t link videos from external sites.', 'wpematico'), '&lt;video&gt;'),
 				'plustip'	 => "<b>" . __('Note', 'wpematico') . ":</b> " .
-				__('If the video are inside ', 'wpematico') . '&lt;a&gt;' . __('tags, then the link is also removed from content.', 'wpematico'),
+				sprintf(__('If the video are inside %s tags, then the link is also removed from content.', 'wpematico'), '&lt;a&gt;'),
 			),
 			'customupload_videos'	 => array(
 				'title'		 => __('Custom Uploads for Videos.', 'wpematico'),

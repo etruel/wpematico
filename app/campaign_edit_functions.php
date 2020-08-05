@@ -888,7 +888,7 @@ public static function cron_box( $post ) {
 		<input class="checkbox" value="1" type="checkbox" <?php checked($activated,true); ?> name="activated" id="activated" /> <label for="activated"><?php _e('Activate scheduling', 'wpematico' ); ?></label><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['schedule']; ?>"></span>
 	</p>
 	<?php 
-	echo __('Working as ', 'wpematico') . '<a href="http://wikipedia.org/wiki/Cron" target="_blank">' . __('Cron', 'wpematico') . '</a> ' . __('job schedule:', 'wpematico'); 
+	printf(__('Working as %s job schedule:', 'wpematico'), '<a href="http://wikipedia.org/wiki/Cron" target="_blank">Cron</a>'); 
 	echo ' <i>'.$cron.'</i> <br />'; 
 	_e('Next runtime:', 'wpematico' ); echo ' '.date_i18n( (get_option('date_format').' '.get_option('time_format') ),WPeMatico :: time_cron_next($cron) );
 		//_e('Next runtime:', 'wpematico' ); echo ' '.date('D, M j Y H:i',WPeMatico :: time_cron_next($cron));
