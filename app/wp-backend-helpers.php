@@ -221,8 +221,9 @@ class WPeMatico_backend_helpers {
 	public static function wpematico_dashboard_widget() {
 		$campaigns	 = WPeMatico::get_campaigns();
 		?><style type="text/css"> 
-			#wpematico_widget h2 {
-				background-color: orange;
+			#wpematico_widget h2,
+			#wpematico_widget .postbox-header{
+				background-color: #ef8e2f;
 			}
 			.wpematico_widget a {
 				text-decoration: none;

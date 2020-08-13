@@ -93,7 +93,7 @@ function wpematico_helpsettings($dev = '') {
 				'tip'		 => "<b>" . __('Note', 'wpematico') . ":</b> " .
 					sprintf(__('If is selected and the audio upload give error, then will delete the %s HTML tag from the content. Check this to don\'t link audio from external sites.', 'wpematico'), '&lt;audio&gt;'),
 				'plustip'	 => "<b>" . __('Note', 'wpematico') . ":</b> " .
-				printf(__('If the audio are inside %s tags, then the link is also removed from content.', 'wpematico'), '&lt;a&gt;'),
+				sprintf(__('If the audio are inside %s tags, then the link is also removed from content.', 'wpematico'), '&lt;a&gt;'),
 			),
 			'customupload_audios'	 => array(
 				'title'		 => __('Custom Uploads for Audios.', 'wpematico'),

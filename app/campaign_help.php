@@ -207,7 +207,7 @@ $helpcampaign = array(
 		),
 		'video_cache' => array( 
 				'title' => __('Cache videos.', 'wpematico' ),
-				'tip' => printf(__('All videos found in %s tags in content will be uploaded to your current WP Upload Folder and replaced urls in content . Otherwise remains links to source hosting server.', 'wpematico' ), '&lt;video&gt;'),
+				'tip' => sprintf(__('All videos found in %s tags in content will be uploaded to your current WP Upload Folder and replaced urls in content . Otherwise remains links to source hosting server.', 'wpematico' ), '&lt;video&gt;'),
 		),
 		'video_attach'	=> array( 
 				'title' => __('Attach Videos to post.', 'wpematico' ),
