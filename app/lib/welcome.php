@@ -109,19 +109,21 @@ class WPEMATICO_Welcome {
 			<style type="text/css" media="screen">
 				/*<![CDATA[*/
 				[class*="dashboard_page_"] #wpcontent { /*background: #fff;*/ padding: 0 24px; }
+				.wpe-flex{ display: flex; }
 				.about__header-navigation { background: #fff; color: #333;}
 				.about__section { background: #fff; }
 				.about__header { background-color: #222; }
 				.about__header-title p { color: #fff; }
 				.about__header-title p span { color: #eee; }
+				.about__header-text { background: #ef8e2f; }
 				.about__header-text p { color: #fff; }
 				.about__header-navigation { border-color: #222 }
 				.about__header-navigation .nav-tab-active:active, .about__header-navigation .nav-tab-active:hover,
 				.about__header-navigation .nav-tab-active { color: #ef8e2f; border-color: #ef8e2f;}
-				.about__header-navigation .nav-tab:active, .about__header-navigation .nav-tab:hover{ background: #f5f5f5; }
+				.about__header-navigation .nav-tab:active, .about__header-navigation .nav-tab:hover{ background: #f5f5f5; color: #ef8e2f; }
 				.about__container .has-accent-background-color { background: #ef8e2f; }
 				.about__container .has-subtle-background-color { background: #f9f9f9; }
-				.about__header-title .wpematico-badge { margin-right: 10px; max-height: 60px; width: auto; }
+				.about__header-title .wpematico-badge { align-self: flex-end; margin-bottom: 20px; max-height: 80px; width: auto; }
 				.about__section.about__section_height { min-height: 560px; }
 				.about__section.about__section_height-2 { min-height: 400px; }
 				.about__section.is-feature { font-size: 1.4em; }
@@ -133,7 +135,7 @@ class WPEMATICO_Welcome {
 				.addon_block .addon_text { text-align: right;}
 				.addon_block .addon_text p { margin: 0; font-size: 13px; }
 				@media all and ( max-width: 782px ) {
-					.about__header-title .wpematico-badge{ max-height: 100px; }
+					.about__header-title .wpematico-badge{ display: none; }
 				}
 				@media all and ( max-width: 782px ) and (min-width: 481px) {
 					.about__header-navigation .nav-tab{ padding: 24px 16px; }
@@ -164,14 +166,6 @@ class WPEMATICO_Welcome {
 
 		list( $display_version ) = explode('-', WPEMATICO_VERSION);
 		?>
-		<div class="about__header-title">
-			<img class="wpematico-badge" src="<?php echo WPEMATICO_PLUGIN_URL . '/images/robotico_orange-75x130.png'; ?>" alt="<?php _e('WPeMatico', 'wpematico'); ?>" / >
-			<p>
-				<?php _e('WPeMatico'); ?>
-				<span><?php echo $display_version; ?></span>
-			</p>
-		</div>
-
 		<div class="about__header-text">
 			<p>
 				<?php
@@ -180,6 +174,14 @@ class WPEMATICO_Welcome {
 					$display_version
 				);
 				?>
+			</p>
+		</div>
+
+		<div class="about__header-title">
+			<img class="wpematico-badge" src="<?php echo WPEMATICO_PLUGIN_URL . '/images/robotico_orange-75x130.png'; ?>" alt="<?php _e('WPeMatico', 'wpematico'); ?>" / >
+			<p>
+				<?php _e('WPeMatico'); ?>
+				<span><?php echo $display_version; ?></span>
 			</p>
 		</div>
 		<?php
@@ -223,7 +225,7 @@ class WPEMATICO_Welcome {
 		?>
 		<div class="wrap about__container">
 
-			<div class="about__header" style="background-image: url('<?php echo WPEMATICO_PLUGIN_URL . '/images/about-header.png'; ?>');">
+			<div class="about__header">
 
 				<?php $this->welcome_message(); ?>
 
@@ -236,8 +238,8 @@ class WPEMATICO_Welcome {
 			<hr />
 
 			<div class="about__section about__section_height has-2-columns">
-				<div class="column is-edge-to-edge has-accent-background-color">
-					<div class="about__image aligncenter">
+				<div class="column wpe-flex is-edge-to-edge has-accent-background-color">
+					<div class="about__image is-vertically-aligned-center">
 						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/media_ext.png'; ?>" alt="Use Featured Image From URL" style="max-height: 500px;" />
 					</div>
 				</div>
@@ -275,16 +277,16 @@ class WPEMATICO_Welcome {
 					<p><?php _e('Post status is an very useful editorial tool that allows you to organize your Posts based on their respective stages during the editorial workflow.', 'wpematico'); ?></p>
 
 				</div>
-				<div class="column is-edge-to-edge has-accent-background-color">
-					<div class="about__image aligncenter">
+				<div class="column wpe-flex is-edge-to-edge has-accent-background-color">
+					<div class="about__image is-vertically-aligned-center">
 						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/force_date-post_excerpt.png'; ?>" alt="Debug Mode" />
 					</div>
 				</div>
 			</div>
 
 			<div class="about__section about__section_height has-2-columns">
-				<div class="column is-edge-to-edge has-accent-background-color">
-					<div class="about__image aligncenter">
+				<div class="column wpe-flex is-edge-to-edge has-accent-background-color">
+					<div class="about__image is-vertically-aligned-center">
 						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/xml_campaign.png'; ?>" alt="XML Campaign Type" />
 					</div>
 				</div>
@@ -312,16 +314,16 @@ class WPEMATICO_Welcome {
 					<p><?php _e("You can mark the selection options to see the possible results of the Post Template.", 'wpematico'); ?></p>
 
 				</div>
-				<div class="column is-edge-to-edge has-accent-background-color">
-					<div class="about__image aligncenter">
+				<div class="column wpe-flex is-edge-to-edge has-accent-background-color">
+					<div class="about__image is-vertically-aligned-center">
 						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/yt-campaign.png'; ?>" alt="Preview for the YouTube campaign" />
 					</div>
 				</div>
 			</div>
 
 			<div class="about__section about__section_height has-2-columns">
-				<div class="column is-edge-to-edge has-accent-background-color">
-					<div class="about__image aligncenter">
+				<div class="column wpe-flex is-edge-to-edge has-accent-background-color">
+					<div class="about__image is-vertically-aligned-center">
 						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/previewbutton.png'; ?>" alt="Campaign Preview" />
 					</div>
 				</div>
@@ -553,8 +555,8 @@ class WPEMATICO_Welcome {
 			<hr />
 
 			<div class="about__section about__section_height has-2-columns">
-				<div class="column is-edge-to-edge has-accent-background-color">
-					<div class="about__image aligncenter">
+				<div class="column wpe-flex is-edge-to-edge has-accent-background-color">
+					<div class="about__image is-vertically-aligned-center">
 						<div class="feature-section-media" style="max-height: 400px; overflow: hidden;">
 							<img src="<?php echo WPEMATICO_PLUGIN_URL . 'screenshot-5.jpg'; ?>" class="Fill in the Settings"/>
 						</div>
@@ -577,8 +579,8 @@ class WPEMATICO_Welcome {
 					<p><?php _e('There are also here the tests and the configuration options for the SimplePie library to get differnet behaviour when fetch the feed items.', 'wpematico'); ?></p>
 					<p><?php _e('Set to an external or internal Wordpress CRON scheduler and look at for the configuration tabs of all plugin extensions and Add-ons.', 'wpematico'); ?></p>
 				</div>
-				<div class="column is-edge-to-edge has-accent-background-color">
-					<div class="about__image aligncenter">
+				<div class="column wpe-flex is-edge-to-edge has-accent-background-color">
+					<div class="about__image is-vertically-aligned-center">
 						<div class="feature-section-media" style="max-height: 400px; overflow: hidden;">
 							<img src="<?php echo WPEMATICO_PLUGIN_URL . 'screenshot-7.jpg'; ?>" class="Fill in the Settings"/>
 							<p style="text-align:center; color: #fff; margin:1em 0 0;"><?php _e('Testing SimplePie library', 'wpematico'); ?></p>
@@ -588,8 +590,8 @@ class WPEMATICO_Welcome {
 			</div>
 
 			<div class="about__section about__section_height has-2-columns">
-				<div class="column is-edge-to-edge has-accent-background-color">
-					<div class="about__image aligncenter">
+				<div class="column wpe-flex is-edge-to-edge has-accent-background-color">
+					<div class="about__image is-vertically-aligned-center">
 						<div class="feature-section-media" style="max-height: 400px; overflow: hidden;">
 							<img src="<?php echo WPEMATICO_PLUGIN_URL . 'screenshot-6.jpg'; ?>" class="Creating Your First Campaign"/>
 						</div>
@@ -620,8 +622,8 @@ class WPEMATICO_Welcome {
 
 					<span class="span-text"><?php _e('Just click the Help tab again to close the Help panel.', 'wpematico'); ?></span>
 				</div>
-				<div class="column is-edge-to-edge has-accent-background-color">
-					<div class="about__image aligncenter">
+				<div class="column wpe-flex is-edge-to-edge has-accent-background-color">
+					<div class="about__image is-vertically-aligned-center">
 						<div class="feature-section-media" style="max-height: 400px; overflow: hidden;">
 							<img src="<?php echo WPEMATICO_PLUGIN_URL . 'screenshot-4.jpg'; ?>" alt="Need Help?"/>
 						</div>
@@ -750,8 +752,8 @@ class WPEMATICO_Welcome {
 				<p><?php _e('In addition to this, in this new version you can also create excerpts using the description tag of the items in the feed and you can even force the use of the original date of each post!', 'wpematico'); ?></p>
 			</div>
 			<?php if($suscripted_user === false) { ?>
-				<div class="column is-edge-to-edge has-accent-background-color">
-					<div class="about__image">
+				<div class="column wpe-flex is-edge-to-edge has-accent-background-color">
+					<div class="about__image is-vertically-aligned-center">
 						<p></p>
 						<h2><strong><?php _e('Stay Informed!', 'wpematico'); ?></strong></h2>
 						<h3 class="wpsubscription_info"><?php _e('Subscribe to our Newsletter and be the first to receive our news.', 'wpematico'); ?> 
