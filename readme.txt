@@ -236,6 +236,13 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
+= 2.6.4 Aug X, 2020 =
+
+* Fixes few issues on printed strings.
+* Tweak styles on Welcome page to fit the new WordPress 5.5 styles
+* Improved many strings for easy translations.
+* Added many languages files. Some of them with automatic translations, but more easy to corrections.
+
 = 2.6.3 Jul 30, 2020 =
 
 * Ready for WordPress 5.5
