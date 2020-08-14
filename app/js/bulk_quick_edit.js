@@ -88,7 +88,7 @@
 	
     
         
-//        $( '#inline-edit' ).live( 'click', function() {
+//        $( '#inline-edit' ).on( 'click', function() {
 //		var $post_id = 0;
 //		if ( typeof( id ) == 'object' )
 //			$post_id = parseInt( this.getId( id ) );
@@ -98,7 +98,7 @@
 //                }
 //        });
         
-    $( '.submit.inline-edit-save .save' ).live( 'click', function() {
+    $( '.submit.inline-edit-save .save' ).on( 'click', function() {
 //		inlineEditPost.revert();
 		var post_id = $(this).closest('tr').attr('id');
 
@@ -111,7 +111,7 @@
 	});
 
         
-    $( '#bulk_edit' ).live( 'click', function() {
+    $( '#bulk_edit' ).on( 'click', function() {
 		// define the bulk edit row
 		var $bulk_row = $( '#bulk-edit' );
 		
