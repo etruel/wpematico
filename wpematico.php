@@ -3,7 +3,7 @@
  * Plugin Name: WPeMatico
  * Plugin URI: https://www.wpematico.com
  * Description: Enables administrators to create posts automatically from RSS/Atom feeds with multiples filters.  If you like it, please rate it 5 stars.
- * Version: 2.6.3
+ * Version: 2.6.4
  * Author: etruel <esteban@netmdp.com>
  * Author URI: https://www.netmdp.com
  * Text Domain: wpematico
@@ -27,7 +27,7 @@ if (!class_exists('Main_WPeMatico')) {
 
 		private function setup_constants() {
 			if (!defined('WPEMATICO_VERSION'))
-				define('WPEMATICO_VERSION', '2.6.3');
+				define('WPEMATICO_VERSION', '2.6.4');
 			if (!defined('WPEMATICO_BASENAME'))
 				define('WPEMATICO_BASENAME', plugin_basename(__FILE__));
 			if (!defined('WPEMATICO_ROOTFILE'))

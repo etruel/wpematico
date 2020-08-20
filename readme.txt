@@ -236,8 +236,9 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
-= 2.6.4 Aug X, 2020 =
+= 2.6.4 Aug 20, 2020 =
 
+* Fixes lost categories on saving campaigns in WP 5.5.
 * Fixes an issue in campaigns quick and bulk edit for deprecated function in new jQuery.
 * Fixes few issues on printed strings.
 * Tweak styles on Welcome page to fit the new WordPress 5.5 styles
@@ -348,5 +349,5 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 
-= 2.6.3 =
-This version fixes compatibility with incoming WordPress 5.5 and Simplepie 1.5.5 included in it and some other feed URL parsers to include URLs with %20 in it. If you're using weird URL Feeds be sure to test it in development environment before use.
+= 2.6.4 =
+This version fixes categories savings on campaigns, compatibilities with deprecated jQuery live functions and tweaks few styles of WordPress 5.5.
