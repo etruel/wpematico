@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPeMatico 2.5\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-13 14:48-0300\n"
-"PO-Revision-Date: 2020-08-14 12:06-0300\n"
+"PO-Revision-Date: 2020-08-17 16:57-0300\n"
 "Last-Translator: \n"
 "Language-Team: Español\n"
 "Language: es_ES\n"
@@ -5903,7 +5903,7 @@ msgid "\"Image Filters\" feature."
 msgstr "<b><i>Filtros de Imagen</i></b>"
 
 #: wpematico/app/settings_page.php:492
-msgid "\"Ramdom Rewrites\" feature."
+msgid "\"Random Rewrites\" feature."
 msgstr "<b><i>Re-escrituras aleatorias</i></b>"
 
 #: wpematico/app/settings_page.php:494
@@ -7928,7 +7928,7 @@ msgstr ""
 
 #: wpematico_professional/includes/prohelps.php:56
 msgid ""
-"Complete the Ramdom Rewrites form by adding all comma-separated words, line "
+"Complete the Random Rewrites form by adding all comma-separated words, line "
 "by line."
 msgstr ""
 "Completa el formulario de Reescritura aleatoria añadiendo todas las palabras "
@@ -7968,10 +7968,10 @@ msgstr "señora, mujer, hembra, chica"
 #: wpematico_professional/includes/prohelps.php:63
 msgid ""
 "If the text contains the word \"woman\" will be replaced by \"lady\", "
-"\"female\" or \"girl\" ramdomly."
+"\"female\" or \"girl\" randomly."
 msgstr ""
 "Si el texto contiene la palabra \"mujer\" será sustituido por \"la señora\", "
-"\"mujer\" o \"niña\" ramdomly."
+"\"mujer\" o \"niña\" randomly."
 
 #: wpematico_professional/includes/prohelps.php:72
 #: wpematico_professional/includes/prohelps.php:73
@@ -8563,12 +8563,12 @@ msgstr ""
 
 #: wpematico_professional/includes/prohelps.php:469
 #: wpematico_professional/wpematicopro.php:997
-msgid "Activate Ramdom Rewrites."
+msgid "Activate Random Rewrites."
 msgstr "Activar escrituras aleatorias."
 
 #: wpematico_professional/includes/prohelps.php:470
 msgid ""
-"Activate Ramdom Rewrites. Will show the form to allow add all the lines with "
+"Activate Random Rewrites. Will show the form to allow add all the lines with "
 "comma-separated words to be used."
 msgstr ""
 "Activar escrituras aleatorias. Mostrará el formulario para permitir agregar "
@@ -8613,7 +8613,7 @@ msgid ""
 "\t\t\t\t\t\t\t<b>Example:</b><br>\n"
 "\t\t\t\t\t\t\t<b>lady, woman, female, girl</b><br>\n"
 "\t\t\t\t\t\t\tIf the text contains the word \"woman\" will be replaced by "
-"\"lady\", \"female\" or \"girl\" ramdomly."
+"\"lady\", \"female\" or \"girl\" randomly."
 msgstr ""
 "\n"
 "\t\t\t\t\t\t\t<b>Ejemplo:</b><br>\n"
@@ -8782,7 +8782,7 @@ msgid "Enable \"Word 2 Taxonomy\" feature"
 msgstr "Activar función <b><i>Palabra a Taxonomía</i></b>"
 
 #: wpematico_professional/includes/prosettings.php:361
-msgid "Enable \"Ramdom Rewrites\" feature"
+msgid "Enable \"Random Rewrites\" feature"
 msgstr "Activar función <b><i>Re-escritura aleatoria</i></b>"
 
 #: wpematico_professional/includes/prosettings.php:365
@@ -8803,11 +8803,11 @@ msgstr "Seleccionar una taxonomía"
 
 #: wpematico_professional/includes/prosettingsextra.php:101
 #: wpematico_professional/wpematicopro.php:961
-msgid "Ramdom Rewrites"
+msgid "Random Rewrites"
 msgstr "Reescrituras aleatorias"
 
 #: wpematico_professional/includes/prosettingsextra.php:137
-msgid "Ramdom Rewrites Settings"
+msgid "Random Rewrites Settings"
 msgstr "Configuración de reescrituras aleatorias"
 
 #: wpematico_professional/includes/prosettingsextra.php:143
@@ -8950,13 +8950,13 @@ msgid "Export campaigns"
 msgstr "Exportar campañas"
 
 #: wpematico_professional/wpematicopro.php:766
-msgid "Initiating Ramdom Rewrites Process."
-msgstr "Iniciando el proceso de reescritura de Ramdom."
+msgid "Initiating Random Rewrites Process."
+msgstr "Iniciando el proceso de reescritura de Random."
 
 #: wpematico_professional/wpematicopro.php:848
 #, php-format
-msgid "Words replaced by Ramdom Rewrites: %s."
-msgstr "Palabras reemplazadas por Ramdom Rewrites: %s."
+msgid "Words replaced by Random Rewrites: %s."
+msgstr "Palabras reemplazadas por Random Rewrites: %s."
 
 #: wpematico_professional/wpematicopro.php:866
 msgid "Upload and import a Campaign"

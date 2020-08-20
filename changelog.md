@@ -427,7 +427,7 @@ Version 2.5 concludes a series of radical changes that we had started since vers
 * **Enlarges the version required for the Professional addon to 1.6** 
 * **Recommended to test it in development ambients before update**
 * **Professional Add-on:** 
-* **New Feature: Added Ramdom Rewrites for work like synonyms.**
+* **New Feature: Added Random Rewrites for work like synonyms.**
 * Tweak: New option to add rel="nofollow" to links.
 * Tweak: New option to use tags from the feed with <tag> if it exists.
 * Tweak: Added bulk campaign import/export feature on bulk actions above the campaigns list.

@@ -1214,7 +1214,7 @@ public static function feeds_box( $post ) {
 //get_categories()
 		$args = array(
 			'descendants_and_self' => 0,
-			'selected_cats' => $campaign_categories,
+			'selected_cats' => array_map('intval', $campaign_categories),
 			'popular_cats' => false,
 			'walker' => null,
 			'taxonomy' => 'category',

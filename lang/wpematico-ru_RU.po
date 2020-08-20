@@ -3,28 +3,28 @@ msgstr ""
 "Project-Id-Version: WPeMatico 2.6\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-13 14:48-0300\n"
-"PO-Revision-Date: 2020-08-13 19:21+0000\n"
+"PO-Revision-Date: 2020-08-17 17:03-0300\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && "
-"n%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2);\n"
-"X-Generator: Loco https://localise.biz/\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && n"
+"%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2);\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
 "_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
 "X-Poedit-Basepath: ../..\n"
 "X-Textdomain-Support: yes\n"
+"X-Loco-Version: 2.4.0; wp-5.5\n"
 "X-Poedit-SearchPath-0: wpematico\n"
 "X-Poedit-SearchPath-1: wpematico_professional\n"
 "X-Poedit-SearchPath-2: wpematico_fullcontent\n"
 "X-Poedit-SearchPathExcluded-0: wpematico/.git\n"
 "X-Poedit-SearchPathExcluded-1: wpematico_professional/.git\n"
 "X-Poedit-SearchPathExcluded-2: wpematico_fullcontent/.git\n"
-"X-Loco-Version: 2.4.0; wp-5.5"
 
 #: wpematico/app/addons_page.php:92 wpematico/app/addons_page.php:101
 msgid "Add-ons"
@@ -1063,9 +1063,9 @@ msgstr ""
 
 #: wpematico/app/campaign_edit_functions.php:1132
 msgid ""
-"If you want to install the forums plugins in your site go to your "
-"\"Plugins\" page, \"Add New\", then install and activate the bbPress Plugin "
-"from Automattic."
+"If you want to install the forums plugins in your site go to your \"Plugins"
+"\" page, \"Add New\", then install and activate the bbPress Plugin from "
+"Automattic."
 msgstr ""
 "Если вы хотите установить плагины форумов на вашем сайте, перейдите на "
 "страницу \"Plugins\", \"Add New\", затем установите и активируйте bbPress "
@@ -1675,8 +1675,8 @@ msgid ""
 "This feature convert character encoding of content and title to UTF-8 if "
 "they have different character encoding."
 msgstr ""
-"Эта функция преобразует символьную кодировку содержимого и заголовка в UTF-8,"
-" если у них другая кодировка символов."
+"Эта функция преобразует символьную кодировку содержимого и заголовка в "
+"UTF-8, если у них другая кодировка символов."
 
 #: wpematico/app/campaign_help.php:63
 msgid "Discussion options."
@@ -1696,9 +1696,9 @@ msgstr "Должности, созданные этой кампанией, бу
 
 #: wpematico/app/campaign_help.php:72
 msgid ""
-"Wordpress defaults are making the excerpts \"on the fly\" from post contents,"
-" but check this option if you want to fill in the excerpt field with the "
-"description tag of the item. "
+"Wordpress defaults are making the excerpts \"on the fly\" from post "
+"contents, but check this option if you want to fill in the excerpt field "
+"with the description tag of the item. "
 msgstr ""
 "Wordpress по умолчанию делает выдержки \"on the fly\" из post contents, но "
 "проверьте эту опцию, если вы хотите заполнить поле выдержки с тегом описания "
@@ -1916,8 +1916,9 @@ msgid ""
 "is too slowly you can deactivate this here."
 msgstr ""
 "Все изображения будут прикреплен к посту владельца и добавлены в библиотеку "
-"Wordpress Media; необходимо для изображаемого изображения, но если вы видите,"
-" что процесс задания слишком медленно, вы можете деактивировать это здесь."
+"Wordpress Media; необходимо для изображаемого изображения, но если вы "
+"видите, что процесс задания слишком медленно, вы можете деактивировать это "
+"здесь."
 
 #: wpematico/app/campaign_help.php:148 wpematico/app/settings_help.php:38
 msgid "Don't link external images."
@@ -2324,8 +2325,8 @@ msgid ""
 "and select \"Engine\" in Categories combo."
 msgstr ""
 "Если содержимое сообщения содержит слово \"motor\", а затем вы хотите "
-"назначить пост категории \"Engines\", просто введите \"motor\" в поле "
-"\"Word\" и выберите \"Engine\" в поле Categories."
+"назначить пост категории \"Engines\", просто введите \"motor\" в поле \"Word"
+"\" и выберите \"Engine\" в поле Categories."
 
 #: wpematico/app/campaign_help.php:308
 #: wpematico_professional/includes/prohelps.php:200
@@ -2882,8 +2883,9 @@ msgstr ""
 
 #: wpematico/app/campaigns_list_help.php:17
 msgid ""
-"Last date that the campaign was executed and the seconds it took to complete."
-" If the campaign is Activated also shows the Datetime for the Next Run."
+"Last date that the campaign was executed and the seconds it took to "
+"complete. If the campaign is Activated also shows the Datetime for the Next "
+"Run."
 msgstr ""
 "Дата последнего выполнения кампании и время ее завершения в секундах. Если "
 "кампания активирована, также выводится дата и время для следующего запуска."
@@ -2915,8 +2917,8 @@ msgstr "Отправить кампанию в корзину."
 
 #: wpematico/app/campaigns_list_help.php:28
 msgid ""
-"Creates a new campaign by copying all the fields of this.  The word \"(copy)"
-"\" is added to its title."
+"Creates a new campaign by copying all the fields of this.  The word "
+"\"(copy)\" is added to its title."
 msgstr ""
 "Создает новую кампанию, копируя все поля этого поля.  Слово \"(копия)\" "
 "добавляется к его названию."
@@ -4416,8 +4418,8 @@ msgid ""
 "settings."
 msgstr ""
 "Это небольшие предложения и/или фразы, которые вы видите рядом, или под ним, "
-"функция в WPeMatico, которая дает краткое, но очень полезное объяснение того,"
-" что такое функция, и служит в качестве руководящих советов, которые "
+"функция в WPeMatico, которая дает краткое, но очень полезное объяснение "
+"того, что такое функция, и служит в качестве руководящих советов, которые "
 "соответствуют каждой функции. Эти советы иногда даже предоставляют базовые "
 "рекомендуемые настройки."
 
@@ -4564,8 +4566,8 @@ msgid ""
 "can find exactly what you are looking for."
 msgstr ""
 "есть список всех доступных расширений для WPeMatico, а также другие плагины "
-"Worpdress, некоторые из них бесплатно. В том числе в разделе удобные фильтры,"
-" чтобы вы могли найти именно то, что ищете."
+"Worpdress, некоторые из них бесплатно. В том числе в разделе удобные "
+"фильтры, чтобы вы могли найти именно то, что ищете."
 
 #: wpematico/app/lib/welcome.php:745
 msgid "Last News in This Version!"
@@ -5082,8 +5084,8 @@ msgid ""
 "Almost never be necessary.  Just if you have problems with version of "
 "Simplepie installed in Wordpress."
 msgstr ""
-"Почти никогда не нужно.  Просто если у вас есть проблемы с версией Simplepie,"
-" установленной в Wordpress."
+"Почти никогда не нужно.  Просто если у вас есть проблемы с версией "
+"Simplepie, установленной в Wordpress."
 
 #: wpematico/app/settings_help.php:159
 msgid "Set Simplepie stupidly fast."
@@ -5130,9 +5132,9 @@ msgid ""
 "change or allow some tags, for example if you want to allow iframes or embed "
 "code like videos."
 msgstr ""
-"По умолчанию Simplepie раздевает эти теги html из содержимого ленты новостей."
-"  Можно изменить или разрешить некоторые теги, например, если вы хотите "
-"разрешить iframs или встроить код, например, видео."
+"По умолчанию Simplepie раздевает эти теги html из содержимого ленты "
+"новостей.  Можно изменить или разрешить некоторые теги, например, если вы "
+"хотите разрешить iframs или встроить код, например, видео."
 
 #: wpematico/app/settings_help.php:171
 msgid "Change SimplePie HTML attributes to strip."
@@ -5500,8 +5502,8 @@ msgid ""
 "If you want upload XML files to use them in the XML Campaign Type. Enable "
 "this feature allow the upload XMLs from media."
 msgstr ""
-"Если вы хотите закачать файлы XML, чтобы использовать их в типе кампании XML."
-" Включите эту функцию, чтобы разрешить передачу XMLS из носителя."
+"Если вы хотите закачать файлы XML, чтобы использовать их в типе кампании "
+"XML. Включите эту функцию, чтобы разрешить передачу XMLS из носителя."
 
 #: wpematico/app/settings_help.php:313
 msgid "Enable html entity decode on publish."
@@ -5834,7 +5836,7 @@ msgid "\"Image Filters\" feature."
 msgstr "Функция \"фильтры изображений\"."
 
 #: wpematico/app/settings_page.php:492
-msgid "\"Ramdom Rewrites\" feature."
+msgid "\"Random Rewrites\" feature."
 msgstr "Функция\" рамдом переписывает\"."
 
 #: wpematico/app/settings_page.php:494
@@ -7750,8 +7752,8 @@ msgstr "Раздевать запросы переменных в URL audios"
 #: wpematico_professional/includes/prohelps.php:15
 #: wpematico_professional/includes/prohelps.php:298
 msgid ""
-"Cleans the queries variables in the same url of the audio before download it."
-" Not recommended unless you have problems to get the files."
+"Cleans the queries variables in the same url of the audio before download "
+"it. Not recommended unless you have problems to get the files."
 msgstr ""
 "Позволяет очистить запросы к переменным в одном и том же URL-адресах звука "
 "перед загрузкой. Не рекомендуется, если у вас нет проблем для получения "
@@ -7783,8 +7785,8 @@ msgstr "Раздевание запросов переменных в URL вид
 
 #: wpematico_professional/includes/prohelps.php:28
 msgid ""
-"Cleans the queries variables in the same url of the video before download it."
-" Not recommended unless you have problems to get the files."
+"Cleans the queries variables in the same url of the video before download "
+"it. Not recommended unless you have problems to get the files."
 msgstr ""
 "Очистится запросы к переменным в одном и том же URL видео перед загрузкой. "
 "Не рекомендуется, если у вас нет проблем для получения файлов."
@@ -7820,10 +7822,10 @@ msgstr ""
 
 #: wpematico_professional/includes/prohelps.php:56
 msgid ""
-"Complete the Ramdom Rewrites form by adding all comma-separated words, line "
+"Complete the Random Rewrites form by adding all comma-separated words, line "
 "by line."
 msgstr ""
-"Заполните форму Ramdom Rewrites, добавив все слова, разделенные запятыми, по "
+"Заполните форму Random Rewrites, добавив все слова, разделенные запятыми, по "
 "строке."
 
 #: wpematico_professional/includes/prohelps.php:57
@@ -7860,7 +7862,7 @@ msgstr "леди, женщина, женщина, девушка"
 #: wpematico_professional/includes/prohelps.php:63
 msgid ""
 "If the text contains the word \"woman\" will be replaced by \"lady\", "
-"\"female\" or \"girl\" ramdomly."
+"\"female\" or \"girl\" randomly."
 msgstr ""
 "Если в тексте есть слово \"женщина\", то оно будет заменено на\" леди\",\" "
 "женщина \"или\" девушка \" рамдомли."
@@ -8113,8 +8115,8 @@ msgstr ""
 
 #: wpematico_professional/includes/prohelps.php:208
 msgid ""
-"This allows you to skip a fetched post if it has a word in its author's name."
-" Leaves empty all fields to ignore."
+"This allows you to skip a fetched post if it has a word in its author's "
+"name. Leaves empty all fields to ignore."
 msgstr ""
 "Это позволяет пропустить выбранное сообщение, если в нем есть слово в имени "
 "его автора. Оставляет пустыми все поля для игнорирования."
@@ -8131,8 +8133,8 @@ msgstr "Пример: "
 #: wpematico_professional/includes/prohelps.php:211
 msgid ""
 "If the post author's name contain the word \"jose\" and then you want skip "
-"because you don&apos;t want jose's posts, simply type \"jose\" in the "
-"\"Words\" field (1 per line)."
+"because you don&apos;t want jose's posts, simply type \"jose\" in the \"Words"
+"\" field (1 per line)."
 msgstr ""
 
 #: wpematico_professional/includes/prohelps.php:213
@@ -8140,8 +8142,8 @@ msgid ""
 "For advanced users, regular expressions are supported. Using this will allow "
 "you to make more powerful filters. Take multiple word filtering for example. "
 "Instead of using many rows of words to assign jose and maria, you can use "
-"the | operator: (jose|maria). If you want Case insensitive on RegEx, add "
-"\"/i\" at the end of RegEx."
+"the | operator: (jose|maria). If you want Case insensitive on RegEx, add \"/i"
+"\" at the end of RegEx."
 msgstr ""
 
 #: wpematico_professional/includes/prohelps.php:221
@@ -8151,8 +8153,8 @@ msgstr "Раздевание переменных запросов в URL изо
 #: wpematico_professional/includes/prohelps.php:222
 #: wpematico_professional/includes/prohelps.php:346
 msgid ""
-"Cleans the queries variables in the same url of the image before download it."
-" Not recommended unless you have problems to get the files."
+"Cleans the queries variables in the same url of the image before download "
+"it. Not recommended unless you have problems to get the files."
 msgstr ""
 "Очистится запросы к переменным в одном и том же URL образа перед загрузкой. "
 "Не рекомендуется, если у вас нет проблем для получения файлов."
@@ -8164,8 +8166,8 @@ msgstr "Проверьте исходное изображение, чтобы �
 #: wpematico_professional/includes/prohelps.php:228
 msgid ""
 "Cleans and puts the correct extensions to the images that are delivered "
-"through a script, avoiding the WordPress upload error: Extension not allowed."
-" Not Recommended."
+"through a script, avoiding the WordPress upload error: Extension not "
+"allowed. Not Recommended."
 msgstr ""
 "Очищает и помещает правильные расширения к изображениям, которые "
 "доставляются через скрипт, избегая ошибки закачивания WordPress: Расширение "
@@ -8219,8 +8221,8 @@ msgid ""
 "This feature overwrites the option \"Remove featured image from Content\" of "
 "the General Settings.\n"
 msgstr ""
-"Эта функция перезаписывает опцию \"Удалить рекомендуемый образ из "
-"содержимого\" общих параметров.\n"
+"Эта функция перезаписывает опцию \"Удалить рекомендуемый образ из содержимого"
+"\" общих параметров.\n"
 
 #: wpematico_professional/includes/prohelps.php:273
 #: wpematico_professional/includes/prohelps.php:282
@@ -8400,15 +8402,15 @@ msgstr ""
 
 #: wpematico_professional/includes/prohelps.php:469
 #: wpematico_professional/wpematicopro.php:997
-msgid "Activate Ramdom Rewrites."
-msgstr "Активируйте Ramdom Перезапись."
+msgid "Activate Random Rewrites."
+msgstr "Активируйте Random Перезапись."
 
 #: wpematico_professional/includes/prohelps.php:470
 msgid ""
-"Activate Ramdom Rewrites. Will show the form to allow add all the lines with "
+"Activate Random Rewrites. Will show the form to allow add all the lines with "
 "comma-separated words to be used."
 msgstr ""
-"Активируйте Ramdom Перезапись. Будет показан формат, позволяющий добавить "
+"Активируйте Random Перезапись. Будет показан формат, позволяющий добавить "
 "все строки с разделенными запятыми словами."
 
 #: wpematico_professional/includes/prohelps.php:475
@@ -8425,8 +8427,8 @@ msgstr "Слова для перезаписи."
 
 #: wpematico_professional/includes/prohelps.php:482
 msgid ""
-"Insert in the form a comma-separated list of words to be used to replace.<br>"
-"\n"
+"Insert in the form a comma-separated list of words to be used to replace."
+"<br>\n"
 "\t\t\t\t\t\t\tThis list will be added to the general Ramdon Rewrite list "
 "from the Settings screen.<br>\n"
 "\t\t\t\t\t\t\tThe words will be searched line by line and, if one word is "
@@ -8441,7 +8443,7 @@ msgid ""
 "\t\t\t\t\t\t\t<b>Example:</b><br>\n"
 "\t\t\t\t\t\t\t<b>lady, woman, female, girl</b><br>\n"
 "\t\t\t\t\t\t\tIf the text contains the word \"woman\" will be replaced by "
-"\"lady\", \"female\" or \"girl\" ramdomly."
+"\"lady\", \"female\" or \"girl\" randomly."
 msgstr ""
 
 #: wpematico_professional/includes/prosettings.php:107
@@ -8605,8 +8607,8 @@ msgid "Enable \"Word 2 Taxonomy\" feature"
 msgstr "Включить функцию \"таксономия Word 2\" "
 
 #: wpematico_professional/includes/prosettings.php:361
-msgid "Enable \"Ramdom Rewrites\" feature"
-msgstr "Включить функцию \"Ramdom перезаписывает\" "
+msgid "Enable \"Random Rewrites\" feature"
+msgstr "Включить функцию \"Random перезаписывает\" "
 
 #: wpematico_professional/includes/prosettings.php:365
 msgid "Complete it in the "
@@ -8626,12 +8628,12 @@ msgstr "Выбрать таксону"
 
 #: wpematico_professional/includes/prosettingsextra.php:101
 #: wpematico_professional/wpematicopro.php:961
-msgid "Ramdom Rewrites"
-msgstr "Ramdom Перезапись"
+msgid "Random Rewrites"
+msgstr "Random Перезапись"
 
 #: wpematico_professional/includes/prosettingsextra.php:137
-msgid "Ramdom Rewrites Settings"
-msgstr "Параметры перезаписи Ramdom"
+msgid "Random Rewrites Settings"
+msgstr "Параметры перезаписи Random"
 
 #: wpematico_professional/includes/prosettingsextra.php:143
 #: wpematico_professional/wpematicopro.php:1004
@@ -8771,13 +8773,13 @@ msgid "Export campaigns"
 msgstr "Экспортировать кампании"
 
 #: wpematico_professional/wpematicopro.php:766
-msgid "Initiating Ramdom Rewrites Process."
-msgstr "Инициируется Процесс Перезаписи Ramdom."
+msgid "Initiating Random Rewrites Process."
+msgstr "Инициируется Процесс Перезаписи Random."
 
 #: wpematico_professional/wpematicopro.php:848
 #, php-format
-msgid "Words replaced by Ramdom Rewrites: %s."
-msgstr "Слова заменено на Ramdom Rewrites: %s."
+msgid "Words replaced by Random Rewrites: %s."
+msgstr "Слова заменено на Random Rewrites: %s."
 
 #: wpematico_professional/wpematicopro.php:866
 msgid "Upload and import a Campaign"

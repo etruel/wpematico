@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPeMatico v1.1.3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-13 14:48-0300\n"
-"PO-Revision-Date: 2020-08-13 23:29+0000\n"
+"PO-Revision-Date: 2020-08-17 17:04-0300\n"
 "Last-Translator: \n"
 "Language-Team: Slovak\n"
 "Language: sk_SK\n"
@@ -11,14 +11,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Generator: Loco https://localise.biz/\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
 "_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
 "X-Poedit-Basepath: .\n"
 "X-Textdomain-Support: yes\n"
+"X-Loco-Version: 2.4.0; wp-5.5\n"
 "X-Poedit-SearchPath-0: .\n"
-"X-Loco-Version: 2.4.0; wp-5.5"
 
 #: wpematico/app/addons_page.php:92 wpematico/app/addons_page.php:101
 msgid "Add-ons"
@@ -486,8 +486,8 @@ msgid ""
 msgstr ""
 "Značka je kus textu, ktorý dostane nahradil dynamicky, keď miesto je "
 "vytvoril. V súčasnej dobe podporuje tieto značky:Una etiqueta es una porción "
-"de texto que será reemplazado dinamicamente cuando la publicación sea creada."
-" Actualmente, estas etiquetas están permitidas:"
+"de texto que será reemplazado dinamicamente cuando la publicación sea "
+"creada. Actualmente, estas etiquetas están permitidas:"
 
 #: wpematico/app/campaign_edit_functions.php:424
 #: wpematico/app/campaign_help.php:279
@@ -603,9 +603,9 @@ msgid ""
 "clickables at the bottom of every content, but before source link and author "
 "name, the post template would look like this:"
 msgstr ""
-"Môžete tiež pridať galériu s tromi stĺpmi so všetkými miniatovnými obrázkami,"
-" ktoré kliknú na spodnú časť každého obsahu, ale pred zdrojovým odkazom a "
-"názvom autora by šablóna príspevku vyzerala takto:"
+"Môžete tiež pridať galériu s tromi stĺpmi so všetkými miniatovnými "
+"obrázkami, ktoré kliknú na spodnú časť každého obsahu, ale pred zdrojovým "
+"odkazom a názvom autora by šablóna príspevku vyzerala takto:"
 
 #: wpematico/app/campaign_edit_functions.php:448
 #: wpematico/app/campaign_help.php:298
@@ -720,9 +720,9 @@ msgid ""
 "and again, ad infinitum.  If you want allow duplicated titles, just activate "
 "\"Allow duplicated titles\"."
 msgstr ""
-"POZNÁMKA: Ak zakážte obe ovládacie prvky, znova sa získajú všetky položky ..."
-" a znova ... a znova, ad infinitum.  Ak chcete povoliť duplikované nadpisy, "
-"len aktivujte \"Povoliť duplikované nadpisy\"."
+"POZNÁMKA: Ak zakážte obe ovládacie prvky, znova sa získajú všetky "
+"položky ... a znova ... a znova, ad infinitum.  Ak chcete povoliť "
+"duplikované nadpisy, len aktivujte \"Povoliť duplikované nadpisy\"."
 
 #: wpematico/app/campaign_edit_functions.php:661
 #: wpematico/app/settings_page.php:590
@@ -1056,9 +1056,9 @@ msgstr ""
 
 #: wpematico/app/campaign_edit_functions.php:1132
 msgid ""
-"If you want to install the forums plugins in your site go to your "
-"\"Plugins\" page, \"Add New\", then install and activate the bbPress Plugin "
-"from Automattic."
+"If you want to install the forums plugins in your site go to your \"Plugins"
+"\" page, \"Add New\", then install and activate the bbPress Plugin from "
+"Automattic."
 msgstr ""
 "Ak chcete nainštalovať fóra pluginy vo vašej lokalite prejdite na vaše "
 "\"Plugins\" stránku, \"Pridať nový\", potom nainštalujte a aktivujte bbPress "
@@ -1329,7 +1329,7 @@ msgstr "WPeMatico podľa "
 #: wpematico/app/campaign_fetch.php:927
 #, php-format
 msgid "Campaign fetched in %1s sec."
-msgstr "Kampaň priniesla v %1 sek."
+msgstr "Kampaň priniesla v %1s sek."
 
 #: wpematico/app/campaign_fetch.php:927
 #: wpematico/app/wp-backend-helpers.php:247
@@ -1698,9 +1698,9 @@ msgstr "Príspevky, ktoré vytvorila táto kampaň, sa priradia tomuto autorovi.
 
 #: wpematico/app/campaign_help.php:72
 msgid ""
-"Wordpress defaults are making the excerpts \"on the fly\" from post contents,"
-" but check this option if you want to fill in the excerpt field with the "
-"description tag of the item. "
+"Wordpress defaults are making the excerpts \"on the fly\" from post "
+"contents, but check this option if you want to fill in the excerpt field "
+"with the description tag of the item. "
 msgstr ""
 "Štandardné hodnoty pre wordpress robia výňatky \"na muchu\" od obsahu po "
 "obsahu, ale túto voľbu označte, ak chcete vyplniť pole excerpt s popisnou "
@@ -1711,8 +1711,8 @@ msgid ""
 "You could get the same value of the content because if the description field "
 "does not exists the content field will be used. "
 msgstr ""
-"Mohli by ste získať rovnakú hodnotu obsahu, pretože ak pole opisu neexistuje,"
-" použije sa pole obsahu. "
+"Mohli by ste získať rovnakú hodnotu obsahu, pretože ak pole opisu "
+"neexistuje, použije sa pole obsahu. "
 
 #: wpematico/app/campaign_help.php:76
 msgid "Strip All HTML Tags."
@@ -2225,8 +2225,8 @@ msgid ""
 "The XML campaign type provides the necessary tools to fetch the items in the "
 "XML files. As if the XMLs were RSS feeds."
 msgstr ""
-"Typ kampane XML poskytuje potrebné nástroje na výber položiek v súboroch XML."
-" Ako keby XMLs boli informačné kanály RSS."
+"Typ kampane XML poskytuje potrebné nástroje na výber položiek v súboroch "
+"XML. Ako keby XMLs boli informačné kanály RSS."
 
 #: wpematico/app/campaign_help.php:260
 msgid "Elements of XML."
@@ -2883,8 +2883,9 @@ msgstr ""
 
 #: wpematico/app/campaigns_list_help.php:17
 msgid ""
-"Last date that the campaign was executed and the seconds it took to complete."
-" If the campaign is Activated also shows the Datetime for the Next Run."
+"Last date that the campaign was executed and the seconds it took to "
+"complete. If the campaign is Activated also shows the Datetime for the Next "
+"Run."
 msgstr ""
 "Posledný dátum vykonania kampane a sekundy, ktoré trvalo na dokončenie. Ak "
 "je kampaň aktivovaná, zobrazí sa tiež Dátumčas pre nasledujúce spustenie."
@@ -2917,8 +2918,8 @@ msgstr "Pošlite kampaň do koša."
 
 #: wpematico/app/campaigns_list_help.php:28
 msgid ""
-"Creates a new campaign by copying all the fields of this.  The word \"(copy)"
-"\" is added to its title."
+"Creates a new campaign by copying all the fields of this.  The word "
+"\"(copy)\" is added to its title."
 msgstr ""
 "Vytvorí novú kampaň tak, že skopírujete všetky polia z tejto kampane.  Slovo "
 "\"(kópia)\" sa pridáva do jeho nadpisu."
@@ -3009,8 +3010,8 @@ msgid ""
 "Select the campaigns, then select the bulk action and click the \"Apply\" "
 "Button."
 msgstr ""
-"Vyberte kampane, potom vyberte hromadnú akciu a kliknite na tlačidlo "
-"\"Použiť\"."
+"Vyberte kampane, potom vyberte hromadnú akciu a kliknite na tlačidlo \"Použiť"
+"\"."
 
 #: wpematico/app/cron_functions.php:19 wpematico/app/lib/welcome.php:168
 #: wpematico/app/lib/welcome.php:170 wpematico/wpematico_class.php:254
@@ -3614,8 +3615,8 @@ msgstr "%s - odporúčame nastavenie pamäte aspoň "
 #: wpematico/app/debug_page.php:1111
 msgid "Please define memory limit in wp-config.php file. To learn how, see: "
 msgstr ""
-"Uveďte, memory limit v wp-config.php súbor. Ďalšie informácie nájdete v téme:"
-" "
+"Uveďte, memory limit v wp-config.php súbor. Ďalšie informácie nájdete v "
+"téme: "
 
 #: wpematico/app/debug_page.php:1111
 msgid "Increasing memory allocated to PHP."
@@ -4419,8 +4420,8 @@ msgstr ""
 "Okrem inline dokumentácie, ktorú vidíte roztrúsené v celom paneli Dashboard, "
 "nájdete užitočné karty v pravom hornom rohu vášho riadiaceho panelu s "
 "označením Pomoc. Kliknite na túto záložku a zobrazí sa panel, ktorý obsahuje "
-"množstvo textu, ktorý poskytuje dokumentáciu, ktorá je relevanna pre stránku,"
-" ktorú práve prezeráte na vašom riadiacom paneli."
+"množstvo textu, ktorý poskytuje dokumentáciu, ktorá je relevanna pre "
+"stránku, ktorú práve prezeráte na vašom riadiacom paneli."
 
 #: wpematico/app/lib/welcome.php:619
 msgid ""
@@ -4733,8 +4734,9 @@ msgid ""
 "If not enabled all images will be linked to the image owner's server, but "
 "also make your website faster for your visitors."
 msgstr ""
-"Ak nie je povolené, všetky obrázky budú pripojené k serveru vlastníka obrazu,"
-" ale tiež, aby vaše webové stránky rýchlejšie pre svojich návštevníkov."
+"Ak nie je povolené, všetky obrázky budú pripojené k serveru vlastníka "
+"obrazu, ale tiež, aby vaše webové stránky rýchlejšie pre svojich "
+"návštevníkov."
 
 #: wpematico/app/settings_help.php:26
 msgid "Caching all images"
@@ -5103,9 +5105,9 @@ msgid ""
 "change or allow some tags, for example if you want to allow iframes or embed "
 "code like videos."
 msgstr ""
-"Ak je predvolený simplekolák, tieto značky html z obsahu informačného kanála."
-"  Môžete zmeniť alebo povoliť niektoré značky, napríklad ak chcete povoliť "
-"iframe alebo embed kód ako videá."
+"Ak je predvolený simplekolák, tieto značky html z obsahu informačného "
+"kanála.  Môžete zmeniť alebo povoliť niektoré značky, napríklad ak chcete "
+"povoliť iframe alebo embed kód ako videá."
 
 #: wpematico/app/settings_help.php:171
 msgid "Change SimplePie HTML attributes to strip."
@@ -5358,8 +5360,8 @@ msgid ""
 "custom post main screen. May be posts, pages or selects what you want."
 msgstr ""
 "Len extra nástroj na zobrazenie tlačidla pre prázdny kôš priečinok na každej "
-"vlastnej post hlavnej obrazovke. Môžu to byť príspevky, stránky alebo výbery,"
-" ktoré chcete."
+"vlastnej post hlavnej obrazovke. Môžu to byť príspevky, stránky alebo "
+"výbery, ktoré chcete."
 
 #: wpematico/app/settings_help.php:274
 msgid "Disable WP Dashboard Widget"
@@ -5445,9 +5447,9 @@ msgid ""
 "created (auto)categories.  You could edit the past categories if you need to "
 "delete their descriptions."
 msgstr ""
-"Skontrolujte, či sa chcete vyhnúť budúcim popisom \"Vytvorené pre "
-"WPeMatico\" vytvorenej (automaticky) kategórií.  Ak je potrebné vymazať ich "
-"opisy, môžete upraviť predchádzajúce kategórie."
+"Skontrolujte, či sa chcete vyhnúť budúcim popisom \"Vytvorené pre WPeMatico"
+"\" vytvorenej (automaticky) kategórií.  Ak je potrebné vymazať ich opisy, "
+"môžete upraviť predchádzajúce kategórie."
 
 #: wpematico/app/settings_help.php:304
 msgid "Disable Extensions feed page requests."
@@ -5534,9 +5536,9 @@ msgid ""
 "This is for cut, exclude or include posts according to the letters o words "
 "counted at content."
 msgstr ""
-"To je pre rez, vylúčiť alebo zahrnúť príspevky podľa písmen o slová <b>"
-"počítané</b> na obsah.Esto es para cortar, excluir o oncluir publicaciones "
-"acordes a las letras o palabras <b>contadas</b> en contenidos."
+"To je pre rez, vylúčiť alebo zahrnúť príspevky podľa písmen o slová "
+"<b>počítané</b> na obsah.Esto es para cortar, excluir o oncluir "
+"publicaciones acordes a las letras o palabras <b>contadas</b> en contenidos."
 
 #: wpematico/app/settings_help.php:339
 msgid ""
@@ -5807,8 +5809,8 @@ msgid "\"Image Filters\" feature."
 msgstr "\"Obrázok Filtre\" funkciu."
 
 #: wpematico/app/settings_page.php:492
-msgid "\"Ramdom Rewrites\" feature."
-msgstr "\"Ramdom Prepisuje\" funkciu."
+msgid "\"Random Rewrites\" feature."
+msgstr "\"Random Prepisuje\" funkciu."
 
 #: wpematico/app/settings_page.php:494
 msgid "\"Deletes till the end of the line\" feature."
@@ -7710,8 +7712,8 @@ msgstr "Odstrániť premenné dotazu v audiosových adresách URL"
 #: wpematico_professional/includes/prohelps.php:15
 #: wpematico_professional/includes/prohelps.php:298
 msgid ""
-"Cleans the queries variables in the same url of the audio before download it."
-" Not recommended unless you have problems to get the files."
+"Cleans the queries variables in the same url of the audio before download "
+"it. Not recommended unless you have problems to get the files."
 msgstr ""
 "Vyčistí premenné dotazov v rovnakej adrese URL pred jeho stiahením. "
 "Neodporúča sa, pokiaľ nemáte problémy so získaním súborov."
@@ -7742,8 +7744,8 @@ msgstr "Odstrániť premenné s dotazmi v adresách URL videí"
 
 #: wpematico_professional/includes/prohelps.php:28
 msgid ""
-"Cleans the queries variables in the same url of the video before download it."
-" Not recommended unless you have problems to get the files."
+"Cleans the queries variables in the same url of the video before download "
+"it. Not recommended unless you have problems to get the files."
 msgstr ""
 "Vyčistí premenné dotazov v rovnakej adrese URL videa pred jeho stiahením. "
 "Neodporúča sa, pokiaľ nemáte problémy so získaním súborov."
@@ -7779,11 +7781,11 @@ msgstr ""
 
 #: wpematico_professional/includes/prohelps.php:56
 msgid ""
-"Complete the Ramdom Rewrites form by adding all comma-separated words, line "
+"Complete the Random Rewrites form by adding all comma-separated words, line "
 "by line."
 msgstr ""
-"Vyplňte formulár Ramdom Repíše tak, že pridáte všetky slová oddelené čiarkou,"
-" riadok podľa riadka."
+"Vyplňte formulár Random Repíše tak, že pridáte všetky slová oddelené "
+"čiarkou, riadok podľa riadka."
 
 #: wpematico_professional/includes/prohelps.php:57
 msgid ""
@@ -7819,10 +7821,10 @@ msgstr "mária, žena, žena, dievča"
 #: wpematico_professional/includes/prohelps.php:63
 msgid ""
 "If the text contains the word \"woman\" will be replaced by \"lady\", "
-"\"female\" or \"girl\" ramdomly."
+"\"female\" or \"girl\" randomly."
 msgstr ""
 "Ak text obsahuje slovo \"žena\" sa nahrádzajú slovami \"dáma\", \"žena\" "
-"alebo \"dievča\" ramdomly."
+"alebo \"dievča\" randomly."
 
 #: wpematico_professional/includes/prohelps.php:72
 #: wpematico_professional/includes/prohelps.php:73
@@ -8070,8 +8072,8 @@ msgstr ""
 
 #: wpematico_professional/includes/prohelps.php:208
 msgid ""
-"This allows you to skip a fetched post if it has a word in its author's name."
-" Leaves empty all fields to ignore."
+"This allows you to skip a fetched post if it has a word in its author's "
+"name. Leaves empty all fields to ignore."
 msgstr ""
 "To vám umožní preskočiť načítané príspevku, ak má slovo v jeho meno autora. "
 "Listy všetky prázdne polia ignorovať."
@@ -8087,8 +8089,8 @@ msgstr "Príklad: "
 #: wpematico_professional/includes/prohelps.php:211
 msgid ""
 "If the post author's name contain the word \"jose\" and then you want skip "
-"because you don&apos;t want jose's posts, simply type \"jose\" in the "
-"\"Words\" field (1 per line)."
+"because you don&apos;t want jose's posts, simply type \"jose\" in the \"Words"
+"\" field (1 per line)."
 msgstr ""
 
 #: wpematico_professional/includes/prohelps.php:213
@@ -8096,8 +8098,8 @@ msgid ""
 "For advanced users, regular expressions are supported. Using this will allow "
 "you to make more powerful filters. Take multiple word filtering for example. "
 "Instead of using many rows of words to assign jose and maria, you can use "
-"the | operator: (jose|maria). If you want Case insensitive on RegEx, add "
-"\"/i\" at the end of RegEx."
+"the | operator: (jose|maria). If you want Case insensitive on RegEx, add \"/i"
+"\" at the end of RegEx."
 msgstr ""
 
 #: wpematico_professional/includes/prohelps.php:221
@@ -8107,8 +8109,8 @@ msgstr "Odstrániť premenné dotazu v obrazoch URL"
 #: wpematico_professional/includes/prohelps.php:222
 #: wpematico_professional/includes/prohelps.php:346
 msgid ""
-"Cleans the queries variables in the same url of the image before download it."
-" Not recommended unless you have problems to get the files."
+"Cleans the queries variables in the same url of the image before download "
+"it. Not recommended unless you have problems to get the files."
 msgstr ""
 "Vyčistí premenné dotazov v rovnakej adrese URL obrázka pred jeho stiahením. "
 "Neodporúča sa, pokiaľ nemáte problémy so získaním súborov."
@@ -8120,8 +8122,8 @@ msgstr "Skontrolujte zdrojový obrázok, aby ste určili rozšírenie"
 #: wpematico_professional/includes/prohelps.php:228
 msgid ""
 "Cleans and puts the correct extensions to the images that are delivered "
-"through a script, avoiding the WordPress upload error: Extension not allowed."
-" Not Recommended."
+"through a script, avoiding the WordPress upload error: Extension not "
+"allowed. Not Recommended."
 msgstr ""
 "Cleans a kladie správne rozšírenia obrázkov, ktoré sú doručené "
 "prostredníctvom skriptu, vyhnúť sa WordPress nahrávanie chyba: Rozšírenie "
@@ -8348,15 +8350,15 @@ msgstr ""
 
 #: wpematico_professional/includes/prohelps.php:469
 #: wpematico_professional/wpematicopro.php:997
-msgid "Activate Ramdom Rewrites."
-msgstr "Aktivujte Ramdom Rewrites."
+msgid "Activate Random Rewrites."
+msgstr "Aktivujte Random Rewrites."
 
 #: wpematico_professional/includes/prohelps.php:470
 msgid ""
-"Activate Ramdom Rewrites. Will show the form to allow add all the lines with "
+"Activate Random Rewrites. Will show the form to allow add all the lines with "
 "comma-separated words to be used."
 msgstr ""
-"Aktivujte Ramdom Rewrites. Zobrazí formulár, aby bolo možné pridať všetky "
+"Aktivujte Random Rewrites. Zobrazí formulár, aby bolo možné pridať všetky "
 "riadky čiarkou oddelených slov, ktoré sa majú použiť."
 
 #: wpematico_professional/includes/prohelps.php:475
@@ -8374,8 +8376,8 @@ msgstr "Slová pre Rewrite."
 
 #: wpematico_professional/includes/prohelps.php:482
 msgid ""
-"Insert in the form a comma-separated list of words to be used to replace.<br>"
-"\n"
+"Insert in the form a comma-separated list of words to be used to replace."
+"<br>\n"
 "\t\t\t\t\t\t\tThis list will be added to the general Ramdon Rewrite list "
 "from the Settings screen.<br>\n"
 "\t\t\t\t\t\t\tThe words will be searched line by line and, if one word is "
@@ -8390,7 +8392,7 @@ msgid ""
 "\t\t\t\t\t\t\t<b>Example:</b><br>\n"
 "\t\t\t\t\t\t\t<b>lady, woman, female, girl</b><br>\n"
 "\t\t\t\t\t\t\tIf the text contains the word \"woman\" will be replaced by "
-"\"lady\", \"female\" or \"girl\" ramdomly."
+"\"lady\", \"female\" or \"girl\" randomly."
 msgstr ""
 
 #: wpematico_professional/includes/prosettings.php:107
@@ -8549,8 +8551,8 @@ msgid "Enable \"Word 2 Taxonomy\" feature"
 msgstr "Enable \"Slovo 2 Taxonómia\" funkcia"
 
 #: wpematico_professional/includes/prosettings.php:361
-msgid "Enable \"Ramdom Rewrites\" feature"
-msgstr "Enable \"Ramdom Prepisuje\" funkcia"
+msgid "Enable \"Random Rewrites\" feature"
+msgstr "Enable \"Random Prepisuje\" funkcia"
 
 #: wpematico_professional/includes/prosettings.php:365
 msgid "Complete it in the "
@@ -8570,12 +8572,12 @@ msgstr "Vybrať taxonómie"
 
 #: wpematico_professional/includes/prosettingsextra.php:101
 #: wpematico_professional/wpematicopro.php:961
-msgid "Ramdom Rewrites"
-msgstr "Prepisujú sa ramdom"
+msgid "Random Rewrites"
+msgstr "Prepisujú sa random"
 
 #: wpematico_professional/includes/prosettingsextra.php:137
-msgid "Ramdom Rewrites Settings"
-msgstr "Nastavenia prepisovania ramdom"
+msgid "Random Rewrites Settings"
+msgstr "Nastavenia prepisovania random"
 
 #: wpematico_professional/includes/prosettingsextra.php:143
 #: wpematico_professional/wpematicopro.php:1004
@@ -8715,13 +8717,13 @@ msgid "Export campaigns"
 msgstr "Exportovať kampane"
 
 #: wpematico_professional/wpematicopro.php:766
-msgid "Initiating Ramdom Rewrites Process."
-msgstr "Iniciuje sa Ramdom Repisuje proces."
+msgid "Initiating Random Rewrites Process."
+msgstr "Iniciuje sa Random Repisuje proces."
 
 #: wpematico_professional/wpematicopro.php:848
 #, php-format
-msgid "Words replaced by Ramdom Rewrites: %s."
-msgstr "Slová nahradené Ramdom Repismi: %s."
+msgid "Words replaced by Random Rewrites: %s."
+msgstr "Slová nahradené Random Repismi: %s."
 
 #: wpematico_professional/wpematicopro.php:866
 msgid "Upload and import a Campaign"

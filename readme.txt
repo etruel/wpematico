@@ -238,6 +238,7 @@ You can send your files to e-mail wpematico [at] etruel.com
 == Changelog ==
 = 2.6.4 Aug X, 2020 =
 
+* Fixes an issue in campaigns quick and bulk edit for deprecated function in new jQuery.
 * Fixes few issues on printed strings.
 * Tweak styles on Welcome page to fit the new WordPress 5.5 styles
 * Improved many strings for easy translations.

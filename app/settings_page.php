@@ -489,7 +489,7 @@ if(!class_exists('WPeMatico_Settings')) :
 												<p></p>
 												<?php _e('"Image Filters" feature.', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="You can allow or skip each image in every post depends on image dimensions."></span>
 												<p></p>
-												<?php _e('"Ramdom Rewrites" feature.', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="Rewrite custom words randomly as synonyms. You must complete the words separated by comma and per line in the textarea."></span>
+												<?php _e('"Random Rewrites" feature.', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="Rewrite custom words randomly as synonyms. You must complete the words separated by comma and per line in the textarea."></span>
 												<p></p>
 												<?php _e('"Deletes till the end of the line" feature.', 'wpematico'); ?> <span class="dashicons dashicons-warning help_tip" title="This feature allows to delete from a word or phrase until the end of the line of a sentence."></span>
 												<p></p>

@@ -5215,7 +5215,7 @@ msgid "\"Image Filters\" feature."
 msgstr ""
 
 #: wpematico/app/settings_page.php:492
-msgid "\"Ramdom Rewrites\" feature."
+msgid "\"Random Rewrites\" feature."
 msgstr ""
 
 #: wpematico/app/settings_page.php:494
@@ -7083,7 +7083,7 @@ msgstr ""
 
 #: wpematico_professional/includes/prohelps.php:56
 msgid ""
-"Complete the Ramdom Rewrites form by adding all comma-separated words, line "
+"Complete the Random Rewrites form by adding all comma-separated words, line "
 "by line."
 msgstr ""
 
@@ -7115,7 +7115,7 @@ msgstr ""
 #: wpematico_professional/includes/prohelps.php:63
 msgid ""
 "If the text contains the word \"woman\" will be replaced by \"lady\", "
-"\"female\" or \"girl\" ramdomly."
+"\"female\" or \"girl\" randomly."
 msgstr ""
 
 #: wpematico_professional/includes/prohelps.php:72
@@ -7574,12 +7574,12 @@ msgstr ""
 
 #: wpematico_professional/includes/prohelps.php:469
 #: wpematico_professional/wpematicopro.php:997
-msgid "Activate Ramdom Rewrites."
+msgid "Activate Random Rewrites."
 msgstr ""
 
 #: wpematico_professional/includes/prohelps.php:470
 msgid ""
-"Activate Ramdom Rewrites. Will show the form to allow add all the lines with "
+"Activate Random Rewrites. Will show the form to allow add all the lines with "
 "comma-separated words to be used."
 msgstr ""
 
@@ -7613,7 +7613,7 @@ msgid ""
 "\t\t\t\t\t\t\t<b>Example:</b><br>\n"
 "\t\t\t\t\t\t\t<b>lady, woman, female, girl</b><br>\n"
 "\t\t\t\t\t\t\tIf the text contains the word \"woman\" will be replaced by "
-"\"lady\", \"female\" or \"girl\" ramdomly."
+"\"lady\", \"female\" or \"girl\" randomly."
 msgstr ""
 
 #: wpematico_professional/includes/prosettings.php:107
@@ -7755,7 +7755,7 @@ msgid "Enable \"Word 2 Taxonomy\" feature"
 msgstr ""
 
 #: wpematico_professional/includes/prosettings.php:361
-msgid "Enable \"Ramdom Rewrites\" feature"
+msgid "Enable \"Random Rewrites\" feature"
 msgstr ""
 
 #: wpematico_professional/includes/prosettings.php:365
@@ -7776,11 +7776,11 @@ msgstr ""
 
 #: wpematico_professional/includes/prosettingsextra.php:101
 #: wpematico_professional/wpematicopro.php:961
-msgid "Ramdom Rewrites"
+msgid "Random Rewrites"
 msgstr ""
 
 #: wpematico_professional/includes/prosettingsextra.php:137
-msgid "Ramdom Rewrites Settings"
+msgid "Random Rewrites Settings"
 msgstr ""
 
 #: wpematico_professional/includes/prosettingsextra.php:143
@@ -7918,12 +7918,12 @@ msgid "Export campaigns"
 msgstr ""
 
 #: wpematico_professional/wpematicopro.php:766
-msgid "Initiating Ramdom Rewrites Process."
+msgid "Initiating Random Rewrites Process."
 msgstr ""
 
 #: wpematico_professional/wpematicopro.php:848
 #, php-format
-msgid "Words replaced by Ramdom Rewrites: %s."
+msgid "Words replaced by Random Rewrites: %s."
 msgstr ""
 
 #: wpematico_professional/wpematicopro.php:866

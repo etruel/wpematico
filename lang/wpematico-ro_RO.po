@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPeMatico 2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-13 14:48-0300\n"
-"PO-Revision-Date: 2020-08-13 21:36+0000\n"
+"PO-Revision-Date: 2020-08-17 17:03-0300\n"
 "Last-Translator: \n"
 "Language-Team: Romanian\n"
 "Language: ro_RO\n"
@@ -12,13 +12,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
 "2:1));\n"
-"X-Generator: Loco https://localise.biz/\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
 "_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
 "X-Textdomain-Support: yes\n"
+"X-Loco-Version: 2.4.0; wp-5.5\n"
 "X-Poedit-SearchPath-0: .\n"
-"X-Loco-Version: 2.4.0; wp-5.5"
 
 #: wpematico/app/addons_page.php:92 wpematico/app/addons_page.php:101
 msgid "Add-ons"
@@ -872,7 +872,7 @@ msgstr "Activa programare"
 #: wpematico/app/campaign_edit_functions.php:891
 #, php-format
 msgid "Working as %s job schedule:"
-msgstr "De lucru ca %e treabă de program:"
+msgstr "De lucru ca %s treabă de program:"
 
 #: wpematico/app/campaign_edit_functions.php:893
 msgid "Next runtime:"
@@ -1061,9 +1061,9 @@ msgstr ""
 
 #: wpematico/app/campaign_edit_functions.php:1132
 msgid ""
-"If you want to install the forums plugins in your site go to your "
-"\"Plugins\" page, \"Add New\", then install and activate the bbPress Plugin "
-"from Automattic."
+"If you want to install the forums plugins in your site go to your \"Plugins"
+"\" page, \"Add New\", then install and activate the bbPress Plugin from "
+"Automattic."
 msgstr ""
 "Dacă doriţi să instalaţi plug-in-urile de forumuri în site-ul dumneavoastră, "
 "mergeţi la pagina dumneavoastră \"Plugins\", \"Add New\", apoi instalaţi şi "
@@ -1702,9 +1702,9 @@ msgstr "Posturile create de aceasta campanie vor fi atribuite acestui autor."
 
 #: wpematico/app/campaign_help.php:72
 msgid ""
-"Wordpress defaults are making the excerpts \"on the fly\" from post contents,"
-" but check this option if you want to fill in the excerpt field with the "
-"description tag of the item. "
+"Wordpress defaults are making the excerpts \"on the fly\" from post "
+"contents, but check this option if you want to fill in the excerpt field "
+"with the description tag of the item. "
 msgstr ""
 "Valorile implicite WordPress fac din fragmente \"pe muscă\" din conţinutul "
 "postării, dar bifaţi această opţiune dacă doriţi să completaţi câmpul "
@@ -2884,8 +2884,9 @@ msgstr ""
 
 #: wpematico/app/campaigns_list_help.php:17
 msgid ""
-"Last date that the campaign was executed and the seconds it took to complete."
-" If the campaign is Activated also shows the Datetime for the Next Run."
+"Last date that the campaign was executed and the seconds it took to "
+"complete. If the campaign is Activated also shows the Datetime for the Next "
+"Run."
 msgstr ""
 "Ultima dată când a fost executată campania şi secundele pe care le-a luat "
 "pentru a se finaliza. Dacă campania este Activată, de asemenea, arată "
@@ -2920,8 +2921,8 @@ msgstr "Trimite campania la gunoi."
 
 #: wpematico/app/campaigns_list_help.php:28
 msgid ""
-"Creates a new campaign by copying all the fields of this.  The word \"(copy)"
-"\" is added to its title."
+"Creates a new campaign by copying all the fields of this.  The word "
+"\"(copy)\" is added to its title."
 msgstr ""
 "Creează o nouă campanie prin copierea tuturor câmpurilor din aceasta.  "
 "Cuvântul \"(copie)\" este adăugat la titlul său."
@@ -2999,8 +3000,8 @@ msgid ""
 "There are few fields that can be edited via Bulk Edit select field, by "
 "selecting some campaigns at a time."
 msgstr ""
-"Există câteva câmpuri care pot fi editate prin câmpul Selectare editare Bulk,"
-" selectând unele campanii la un moment dat."
+"Există câteva câmpuri care pot fi editate prin câmpul Selectare editare "
+"Bulk, selectând unele campanii la un moment dat."
 
 #: wpematico/app/campaigns_list_help.php:49
 msgid ""
@@ -4209,8 +4210,9 @@ msgid ""
 "Ask for any problem you may have and you'll get support for free. If it is "
 "necessay we will see into your website to solve your issue."
 msgstr ""
-"Cereţi orice problemă pe care aţi putea-o avea şi veţi obţine suport gratuit."
-" Dacă este necesar, vom vedea în site-ul dvs. pentru a rezolva problema dvs."
+"Cereţi orice problemă pe care aţi putea-o avea şi veţi obţine suport "
+"gratuit. Dacă este necesar, vom vedea în site-ul dvs. pentru a rezolva "
+"problema dvs."
 
 #: wpematico/app/lib/welcome.php:420 wpematico/app/lib/welcome.php:642
 msgid "Premium Support"
@@ -4897,8 +4899,8 @@ msgid ""
 "every feed item (only in %s tags) is downloaded to the Wordpress UPLOADS Dir."
 msgstr ""
 "Atunci când Magazin audio la nivel local este pe, o copie a fiecărui audio "
-"găsite în conținutul de fiecare element de alimentare (numai în %s categorie)"
-" este descărcat în Wordpress UPLOAD Dir."
+"găsite în conținutul de fiecare element de alimentare (numai în %s "
+"categorie) este descărcat în Wordpress UPLOAD Dir."
 
 #: wpematico/app/settings_help.php:79
 msgid ""
@@ -5408,8 +5410,8 @@ msgid ""
 "Check this if you don't want to display the widget dashboard.  Anyway, only "
 "admins will see it."
 msgstr ""
-"Verificaţi aceasta dacă nu doriţi să afişaţi tabloul de bord al widget-ului. "
-" Oricum, doar adminii o vor vedea."
+"Verificaţi aceasta dacă nu doriţi să afişaţi tabloul de bord al widget-"
+"ului.  Oricum, doar adminii o vor vedea."
 
 #: wpematico/app/settings_help.php:281
 msgid "Disable Check Feeds before Save."
@@ -5588,9 +5590,9 @@ msgid ""
 "campaign edit you can disable auto feature and manually enter a list of tags "
 "or leave empty."
 msgstr ""
-"Această caracteristică generează taguri automat pe fiecare postare publicată,"
-" pe editare campanie puteţi dezactiva caracteristica auto şi puteţi "
-"introduce manual o listă de taguri sau lăsaţi gol."
+"Această caracteristică generează taguri automat pe fiecare postare "
+"publicată, pe editare campanie puteţi dezactiva caracteristica auto şi "
+"puteţi introduce manual o listă de taguri sau lăsaţi gol."
 
 #: wpematico/app/settings_help.php:341
 #: wpematico_professional/includes/prosettings.php:211
@@ -5848,8 +5850,8 @@ msgid "\"Image Filters\" feature."
 msgstr "\"Filtre de imagine\" facilitate."
 
 #: wpematico/app/settings_page.php:492
-msgid "\"Ramdom Rewrites\" feature."
-msgstr "\"Ramdom Rescrie\" facilitate."
+msgid "\"Random Rewrites\" feature."
+msgstr "\"Random Rescrie\" facilitate."
 
 #: wpematico/app/settings_page.php:494
 msgid "\"Deletes till the end of the line\" feature."
@@ -6703,8 +6705,8 @@ msgid ""
 "your files will be replaced/deleted when update the plugin."
 msgstr ""
 "Folderul dumneavoastră personalizat stil rămâne în interiorul unui director "
-"plugin propriu. Aceasta înseamnă că fişierele dumneavoastră vor fi "
-"înlocuite/şterse la actualizarea plug-in-ului."
+"plugin propriu. Aceasta înseamnă că fişierele dumneavoastră vor fi înlocuite/"
+"şterse la actualizarea plug-in-ului."
 
 #: wpematico_fullcontent/inc/functions.php:211
 msgid ""
@@ -7070,8 +7072,8 @@ msgstr "Max pagini de adus."
 msgid ""
 "You should change the field \"Max items to create on each fetch\" to a value "
 msgstr ""
-"Ar trebui să schimbați câmpul \"Max elemente pentru a crea pe fiecare "
-"aduce\" la o valoare "
+"Ar trebui să schimbați câmpul \"Max elemente pentru a crea pe fiecare aduce"
+"\" la o valoare "
 
 #: wpematico_professional/includes/campaign_edit.php:387
 msgid "Click here to fix it automatically."
@@ -7597,8 +7599,8 @@ msgstr "MC: Found!: cuvintele: \"%s\""
 #, php-format
 msgid "MC: Skiping: Not found words \"%s\" in content or title \"%s\"."
 msgstr ""
-"MC: Skiping: Nu a fost găsit cuvinte \"%s\", în conținut sau titlul de "
-"\"%s\"."
+"MC: Skiping: Nu a fost găsit cuvinte \"%s\", în conținut sau titlul de \"%s"
+"\"."
 
 #: wpematico_professional/includes/campaign_fetch.php:461
 #, php-format
@@ -7749,7 +7751,7 @@ msgstr "Redenumit video %s> %s"
 #: wpematico_professional/includes/campaign_fetch.php:1368
 #, php-format
 msgid "Renamed image %s -> %s"
-msgstr "Redenumit imaginea %e -> %s"
+msgstr "Redenumit imaginea %s -> %s"
 
 #: wpematico_professional/includes/debug_page.php:66
 msgid "Select campaigns to include."
@@ -7777,8 +7779,8 @@ msgstr "Fâşie variabilele de interogări în URL-urile audi"
 #: wpematico_professional/includes/prohelps.php:15
 #: wpematico_professional/includes/prohelps.php:298
 msgid ""
-"Cleans the queries variables in the same url of the audio before download it."
-" Not recommended unless you have problems to get the files."
+"Cleans the queries variables in the same url of the audio before download "
+"it. Not recommended unless you have problems to get the files."
 msgstr ""
 "Curăţă variabilele de interogări în acelaşi url al audio-ului înainte de a-l "
 "descărca. Nu este recomandat decât dacă aveţi probleme pentru a obţine "
@@ -7810,8 +7812,8 @@ msgstr "Fâşie variabilele de interogări în URL-uri"
 
 #: wpematico_professional/includes/prohelps.php:28
 msgid ""
-"Cleans the queries variables in the same url of the video before download it."
-" Not recommended unless you have problems to get the files."
+"Cleans the queries variables in the same url of the video before download "
+"it. Not recommended unless you have problems to get the files."
 msgstr ""
 "Curăţă variabilele de interogări în acelaşi url al videoclipului înainte de "
 "a-l descărca. Nu este recomandat decât dacă aveţi probleme pentru a obţine "
@@ -7845,15 +7847,15 @@ msgid ""
 "inside the post."
 msgstr ""
 "Utilizaţi acest lucru în loc de funcţii Wordpress pentru a îmbunătăţi "
-"performanţa. Această funcţie încarcă fişierul după intervale \"aşa cum "
-"este\" de la original pentru a-l utiliza în interiorul postării."
+"performanţa. Această funcţie încarcă fişierul după intervale \"aşa cum este"
+"\" de la original pentru a-l utiliza în interiorul postării."
 
 #: wpematico_professional/includes/prohelps.php:56
 msgid ""
-"Complete the Ramdom Rewrites form by adding all comma-separated words, line "
+"Complete the Random Rewrites form by adding all comma-separated words, line "
 "by line."
 msgstr ""
-"Completaţi formularul Ramdom Rescrie prin adăugarea tuturor cuvintelor "
+"Completaţi formularul Random Rescrie prin adăugarea tuturor cuvintelor "
 "separate prin virgulă, linie după linie."
 
 #: wpematico_professional/includes/prohelps.php:57
@@ -7890,10 +7892,10 @@ msgstr "doamna, femeie, feminin, fată"
 #: wpematico_professional/includes/prohelps.php:63
 msgid ""
 "If the text contains the word \"woman\" will be replaced by \"lady\", "
-"\"female\" or \"girl\" ramdomly."
+"\"female\" or \"girl\" randomly."
 msgstr ""
 "Dacă textul conține cuvântul \"femeie\" va fi înlocuit cu \"doamna\", "
-"\"feminin\" sau \"fată\" ramdomly."
+"\"feminin\" sau \"fată\" randomly."
 
 #: wpematico_professional/includes/prohelps.php:72
 #: wpematico_professional/includes/prohelps.php:73
@@ -8146,8 +8148,8 @@ msgstr ""
 
 #: wpematico_professional/includes/prohelps.php:208
 msgid ""
-"This allows you to skip a fetched post if it has a word in its author's name."
-" Leaves empty all fields to ignore."
+"This allows you to skip a fetched post if it has a word in its author's "
+"name. Leaves empty all fields to ignore."
 msgstr ""
 "Acest lucru vă permite să săriți peste un preluat post, dacă acesta are un "
 "cuvânt în numele autorului său. Frunze goale toate domeniile pentru a ignora."
@@ -8165,8 +8167,8 @@ msgstr "Exemplu: "
 #: wpematico_professional/includes/prohelps.php:211
 msgid ""
 "If the post author's name contain the word \"jose\" and then you want skip "
-"because you don&apos;t want jose's posts, simply type \"jose\" in the "
-"\"Words\" field (1 per line)."
+"because you don&apos;t want jose's posts, simply type \"jose\" in the \"Words"
+"\" field (1 per line)."
 msgstr ""
 
 #: wpematico_professional/includes/prohelps.php:213
@@ -8174,8 +8176,8 @@ msgid ""
 "For advanced users, regular expressions are supported. Using this will allow "
 "you to make more powerful filters. Take multiple word filtering for example. "
 "Instead of using many rows of words to assign jose and maria, you can use "
-"the | operator: (jose|maria). If you want Case insensitive on RegEx, add "
-"\"/i\" at the end of RegEx."
+"the | operator: (jose|maria). If you want Case insensitive on RegEx, add \"/i"
+"\" at the end of RegEx."
 msgstr ""
 
 #: wpematico_professional/includes/prohelps.php:221
@@ -8185,8 +8187,8 @@ msgstr "Fâşie variabilele de interogări în imagini URL-uri"
 #: wpematico_professional/includes/prohelps.php:222
 #: wpematico_professional/includes/prohelps.php:346
 msgid ""
-"Cleans the queries variables in the same url of the image before download it."
-" Not recommended unless you have problems to get the files."
+"Cleans the queries variables in the same url of the image before download "
+"it. Not recommended unless you have problems to get the files."
 msgstr ""
 "Curăţă variabilele de interogări în acelaşi url al imaginii înainte de a-l "
 "descărca. Nu este recomandat decât dacă aveţi probleme pentru a obţine "
@@ -8199,8 +8201,8 @@ msgstr "Verificaţi imaginea sursă pentru a determina extensia"
 #: wpematico_professional/includes/prohelps.php:228
 msgid ""
 "Cleans and puts the correct extensions to the images that are delivered "
-"through a script, avoiding the WordPress upload error: Extension not allowed."
-" Not Recommended."
+"through a script, avoiding the WordPress upload error: Extension not "
+"allowed. Not Recommended."
 msgstr ""
 "Curăţă şi pune extensiile corecte la imaginile care sunt livrate printr-un "
 "script, evitând eroarea de încărcare WordPress: Extensia nu este permisă. "
@@ -8438,15 +8440,15 @@ msgstr ""
 
 #: wpematico_professional/includes/prohelps.php:469
 #: wpematico_professional/wpematicopro.php:997
-msgid "Activate Ramdom Rewrites."
-msgstr "Activare Ramdom Rescrie."
+msgid "Activate Random Rewrites."
+msgstr "Activare Random Rescrie."
 
 #: wpematico_professional/includes/prohelps.php:470
 msgid ""
-"Activate Ramdom Rewrites. Will show the form to allow add all the lines with "
+"Activate Random Rewrites. Will show the form to allow add all the lines with "
 "comma-separated words to be used."
 msgstr ""
-"Activare Ramdom Rescrie. Va afişa formularul pentru a permite adăugarea "
+"Activare Random Rescrie. Va afişa formularul pentru a permite adăugarea "
 "tuturor liniilor cu cuvinte separate prin virgulă care vor fi folosite."
 
 #: wpematico_professional/includes/prohelps.php:475
@@ -8463,8 +8465,8 @@ msgstr "Cuvinte de rescriere."
 
 #: wpematico_professional/includes/prohelps.php:482
 msgid ""
-"Insert in the form a comma-separated list of words to be used to replace.<br>"
-"\n"
+"Insert in the form a comma-separated list of words to be used to replace."
+"<br>\n"
 "\t\t\t\t\t\t\tThis list will be added to the general Ramdon Rewrite list "
 "from the Settings screen.<br>\n"
 "\t\t\t\t\t\t\tThe words will be searched line by line and, if one word is "
@@ -8479,7 +8481,7 @@ msgid ""
 "\t\t\t\t\t\t\t<b>Example:</b><br>\n"
 "\t\t\t\t\t\t\t<b>lady, woman, female, girl</b><br>\n"
 "\t\t\t\t\t\t\tIf the text contains the word \"woman\" will be replaced by "
-"\"lady\", \"female\" or \"girl\" ramdomly."
+"\"lady\", \"female\" or \"girl\" randomly."
 msgstr ""
 
 #: wpematico_professional/includes/prosettings.php:107
@@ -8643,8 +8645,8 @@ msgid "Enable \"Word 2 Taxonomy\" feature"
 msgstr "Permite \"Cuvânt 2 Taxonomie\" facilitate"
 
 #: wpematico_professional/includes/prosettings.php:361
-msgid "Enable \"Ramdom Rewrites\" feature"
-msgstr "Permite \"Ramdom Rescrie\" facilitate"
+msgid "Enable \"Random Rewrites\" feature"
+msgstr "Permite \"Random Rescrie\" facilitate"
 
 #: wpematico_professional/includes/prosettings.php:365
 msgid "Complete it in the "
@@ -8664,12 +8666,12 @@ msgstr "Selectaţi o taxonmea"
 
 #: wpematico_professional/includes/prosettingsextra.php:101
 #: wpematico_professional/wpematicopro.php:961
-msgid "Ramdom Rewrites"
-msgstr "Ramdom Rescrie"
+msgid "Random Rewrites"
+msgstr "Random Rescrie"
 
 #: wpematico_professional/includes/prosettingsextra.php:137
-msgid "Ramdom Rewrites Settings"
-msgstr "Setări Rescrieri Ramdom"
+msgid "Random Rewrites Settings"
+msgstr "Setări Rescrieri Random"
 
 #: wpematico_professional/includes/prosettingsextra.php:143
 #: wpematico_professional/wpematicopro.php:1004
@@ -8810,13 +8812,13 @@ msgid "Export campaigns"
 msgstr "Campanii de export"
 
 #: wpematico_professional/wpematicopro.php:766
-msgid "Initiating Ramdom Rewrites Process."
-msgstr "Iniţierea procesului de rescriere Ramdom."
+msgid "Initiating Random Rewrites Process."
+msgstr "Iniţierea procesului de rescriere Random."
 
 #: wpematico_professional/wpematicopro.php:848
 #, php-format
-msgid "Words replaced by Ramdom Rewrites: %s."
-msgstr "Cuvinte înlocuite de Ramdom Rescrie: %s."
+msgid "Words replaced by Random Rewrites: %s."
+msgstr "Cuvinte înlocuite de Random Rescrie: %s."
 
 #: wpematico_professional/wpematicopro.php:866
 msgid "Upload and import a Campaign"
