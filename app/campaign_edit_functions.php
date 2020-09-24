@@ -72,7 +72,7 @@ class WPeMatico_Campaign_edit_functions {
 	}
 	
 	/**
-	* Static function headerfeedURL
+	* Static function bodyfeedURL
 	* @access public
 	* @return void
 	* @since 2.1

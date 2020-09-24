@@ -3,7 +3,7 @@ Contributors: etruel, sniuk, khaztiel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,RSS to Post,Feed to Post,XML to post,autoblog,rss aggregator,Feed,rss to post,syndication,xml import,Post,Posts,aggregation,atom,bot,content,writing
 Requires at least: 4.1
-Tested up to: 5.5
+Tested up to: 5.6
 Requires PHP: 5.3
 Stable tag: trunk
 License: GPLv2 or later
@@ -236,6 +236,9 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
+= 2.6.5 Sep 24, 2020 =
+* Fixes and improves compatibility on wpematico_updates javascript file for WordPress Plugins screen.
+
 = 2.6.4 Aug 20, 2020 =
 
 * Fixes lost categories on saving campaigns in WP 5.5.
@@ -350,4 +353,4 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 == Upgrade Notice ==
 
 = 2.6.4 =
-This version fixes categories savings on campaigns, compatibilities with deprecated jQuery live functions and tweaks few styles of WordPress 5.5.
+This version fixes and improves compatibility on wpematico_updates javascript file for WordPress Plugins screen..
