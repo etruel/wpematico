@@ -257,6 +257,13 @@ p {
 #category-box #major-publishing-actions{
     border: 1px solid #e5e5e5;
 }
+#category-box #categories li{
+    display: flex;
+    align-items: center;
+}
+#category-box #categories li input[type="checkbox"]{
+    margin-right: .5rem;
+}
 #edit-slug-box,
 #post-preview {
     display: none;
