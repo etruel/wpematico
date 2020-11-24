@@ -725,7 +725,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
 		// insert PostMeta
 		foreach($this->current_item['meta'] as $key => $value) {
-			add_post_meta($post_id, $key, $value, true);
+			add_post_meta($post_id, $key, $value, true) or
+				update_post_meta($post_id, $key, $value);
 		}
 
 		if(has_action('wpematico_inserted_post'))

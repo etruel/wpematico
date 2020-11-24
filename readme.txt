@@ -236,6 +236,11 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
+= 2.6.6 Nov 24, 2020 =
+* Added a Warning notice at campaigns list on activating Debug mode.
+* Some tweaks in the Debug screen with functions that do not work in Apache servers.
+* Fixes a bug at fetching when save meta fields if inserting a thirdparty posttype could lose its value.
+
 = 2.6.5 Sep 24, 2020 =
 * Fixes and improves compatibility on wpematico_updates javascript file for WordPress Plugins screen.
 
@@ -352,5 +357,5 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 
-= 2.6.4 =
-This version fixes and improves compatibility on wpematico_updates javascript file for WordPress Plugins screen..
+= 2.6.6 =
+This version mainly fixes an issue of saving custom post types with their own custom meta fields.

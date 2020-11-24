@@ -13,7 +13,7 @@ function wpematico_debug_head() {
 	( isset($_GET['tab']) && $_GET['tab'] == 'debug_info' ) &&
 	( !isset($_GET['section']) or $_GET['section'] == 'debug_file' )) {
 
-	?>	
+	?>
 	<script type="text/javascript" language="javascript">
 		jQuery(function () {
 			jQuery(".help_tip").tipTip({maxWidth: "300px", edgeOffset: 5, fadeIn: 50, fadeOut: 50, keepAlive: true, attribute: "data-tip"});
@@ -27,11 +27,11 @@ add_action('wp_ajax_wpematico_get_feed_file', 'wpematico_feed_viewer');
 
 function wpematico_feed_viewer() {
 	check_admin_referer('wpematico-feedviewer');
-	
+
 	if( ! isset($_POST['url'])) {
 		return false;
 	}
-		
+
 	if(!isset($_POST['_referer'])
 		or ! strpos($_POST['_referer'], "post_type=wpematico&page=wpematico_settings&tab=debug_info&section=feed_viewer"))
 		return false;
@@ -122,57 +122,58 @@ function wpematico_settings_section_feed_viewer() {
 				<div id="postbox-container-2" class="postbox-container">
 					<table class="widefat wpematico-system-status-debug" cellspacing="0">
 						<tbody>
-							<tr>
-								<td colspan="3" data-export-label="WPeMatico Status">
-									<p class="text">
-										<?php _e('Paste a feed link here and the content will be shown on the textarea.'); ?>
-									</p>
-									<script type="text/javascript">
-										jQuery(document).ready(function ($) {
+						<tr>
+							<td colspan="3" data-export-label="WPeMatico Status">
+								<p class="text">
+									<?php _e('Paste a feed link here and the content will be shown on the textarea.'); ?>
+								</p>
+								<script type="text/javascript">
+									jQuery(document).ready(function($){
 
-											$(document).on("keypress", '#feedlink', function (e) {
-												if (e.keyCode == 13) {  //Ignore Enter key
-													e.preventDefault();
-													return false;
-												}
-											});
-
-											$(document).on("click", '#getfeedbutton', function (e) {
-												if ($('#feedlink').val() == '') {
-													e.preventDefault();
-													return False;
-												}
-												var working = $('.update-message');
-												$(working)
-												  .removeClass("notice-error")
-												  .removeClass("updated-message")
-												  .addClass('updating-message');
-												var data = {
-													action: "wpematico_get_feed_file",
-													url: $('#feedlink').val(),
-													_wpnonce: $('#_wpnonce').val(),
-													_referer: $("input[name='_wp_http_referer']").val(),
-												};
-												$.post(ajaxurl, data, function (response) {
-													//    alert( response.message );
-													$('#headersresponse').html(response.label);
-													$('#wpematico-feedinfo').val(response.message);
-													$('.update-message')
-													  .removeClass("updating-message")
-													  .addClass('updated-message');
-												}).fail(function () {
-													$('#wpematico-feedinfo').html("FAIL");
-													$('.update-message')
-													  .removeClass("updating-message")
-													  .addClass('.notice-error');
-												});
+										$(document).on("keypress", '#feedlink', function(e){
+											if(e.keyCode == 13){  //Ignore Enter key
 												e.preventDefault();
-											});
+												return false;
+											}
 										});
-									</script>
-									<p id="seefeed" style="">
+
+										$(document).on("click", '#getfeedbutton', function(e){
+											if($('#feedlink').val() == ''){
+												e.preventDefault();
+												return False;
+											}
+											var working = $('.update-message');
+											$(working)
+											.removeClass("notice-error")
+											.removeClass("updated-message")
+											.addClass('updating-message');
+											var data = {
+												action:"wpematico_get_feed_file",
+												url:$('#feedlink').val(),
+												_wpnonce:$('#_wpnonce').val(),
+												_referer:$("input[name='_wp_http_referer']").val(),
+											};
+											$.post(ajaxurl, data, function(response){
+												//    alert( response.message );
+												$('#headersresponse').html(response.label);
+												$('#wpematico-feedinfo').val(response.message);
+												$('.update-message')
+												.removeClass("updating-message")
+												.addClass('updated-message');
+											}).fail(function(){
+												$('#wpematico-feedinfo').html("FAIL");
+												$('.update-message')
+												.removeClass("updating-message")
+												.addClass('.notice-error');
+											});
+											e.preventDefault();
+										});
+									});
+								</script>
+								<div id="seefeed" style="">
 									<form action="<?php echo esc_url(admin_url('edit.php?post_type=wpematico&page=wpematico_settings&tab=debug_info')); ?>" method="post" dir="ltr">
-										<label><b><?php _e('Feed URL.', 'wpematico'); ?> <input class="large-text" id="feedlink" value="" type="text" name="feedlink"/></b></label><br/>
+										<label><b><?php _e('Feed URL.', 'wpematico'); ?>
+												<input class="large-text" id="feedlink" value="" type="text" name="feedlink"/></b></label><br/>
 										<p class="bsubmit">
 											<a id="getfeedbutton" class="button-primary" href="#"><?php _e('Get Feed', 'wpematico'); ?></a>
 										</p>
@@ -186,21 +187,19 @@ function wpematico_settings_section_feed_viewer() {
 											</textarea>
 											<?php wp_nonce_field('wpematico-feedviewer'); ?>
 											<label onclick="jQuery('#wpematico-feedinfo').focus();
-													jQuery('#wpematico-feedinfo').select()" ><?php _e('SELECT ALL', 'wpematico'); ?></label>
+													jQuery('#wpematico-feedinfo').select()"><?php _e('SELECT ALL', 'wpematico'); ?></label>
 										</div>
 
 									</form>
-									<p></p>
-									</div>
-
-								</td>
-							</tr>
+								</div>
+							</td>
+						</tr>
 						</tbody>
 					</table>
 
 					<p></p>
 
-				</div>		<!--  postbox-container-2 -->
+				</div>        <!--  postbox-container-2 -->
 			</div> <!-- #post-body -->
 		</div> <!-- #poststuff -->
 
@@ -321,7 +320,7 @@ function wpematico_settings_section_debug_file() {
 												<?php submit_button('Download Debug Info File', 'primary', 'wpematico-download-debug-info', false); ?>
 											</p>
 											<div style="max-width: 650px;">
-												<textarea readonly="readonly" id="debug-info-textarea" name="wpematico-sysinfo" 
+												<textarea readonly="readonly" id="debug-info-textarea" name="wpematico-sysinfo"
 														  title="<?php _e('To copy the system info, click below then press Ctrl + C (PC) or Cmd + C (Mac).', 'wpematico'); ?>"
 														  style="width: 100%;min-height: 370px;"
 														  ><?php
@@ -363,13 +362,13 @@ function wpematico_status_rightcolumn() {
 					<p><b>WPeMatico</b> <?php echo WPEMATICO_VERSION; ?> Version</p>
 					<p class="icon_version">
 						<a href="http://www.wpematico.com" target="_Blank" title="<?php _e('Go to the new WPeMatico WebSite', 'wpematico'); ?>">
-							<img class="logover" src="<?php echo WPeMatico :: $uri; ?>images/icon-256x256.png" title="">	
+							<img class="logover" src="<?php echo WPeMatico :: $uri; ?>images/icon-256x256.png" title="">
 							<span id="wpematico-website">WPeMatico Website</span><br>
 						</a><span id="wpematico-websiteinfo"><?php _e('Comments and Tutorials', 'wpematico'); ?></span>
 					</p>
 					<p class="icon_version">
 						<a href="https://etruel.com" target="_Blank" title="<?php _e('WPeMatico Addons in etruel.com store', 'wpematico'); ?>">
-							<img class="logover" src="<?php echo WPeMatico :: $uri; ?>/images/etruelcom_ico.png" title="">	
+							<img class="logover" src="<?php echo WPeMatico :: $uri; ?>/images/etruelcom_ico.png" title="">
 							<span id="wpematico-etruel">etruel.com</span><br>
 						</a><span id="wpematico-store"><?php _e('Addons store, FAQs and Support', 'wpematico'); ?></span>
 					</p>
@@ -401,7 +400,7 @@ function wpematico_status_rightcolumn() {
 						<p>
 							<?php
 							echo sprintf(__('Many AddOns makes the %s with the most wanted functionalities.') . '  ', '<a href="https://etruel.com/starter-packages/" target="_blank" rel="noopener"><strong>Starter Packages</strong></a>');
-							?> 
+							?>
 							<span>
 								<?php _e('Lot of new features with contents, images, tags, filters, custom fields, custom feed tags and much more extends in the WPeMatico free plugin, going further than RSS feed limits and takes you to a new experience.', 'wpematico'); ?>
 							</span>
@@ -423,7 +422,7 @@ function wpematico_status_rightcolumn() {
 					<div class="sidebar-promo" id="sidebar-promo">
 						<h3><span class="dashicons dashicons-sos" style="font-size-adjust: 1;width: 50px;"></span><?php _e('Have some questions?', 'wpematico'); ?></h3>
 						<p>
-							<?php _e('You may find answers in our', 'wpematico'); ?> <a target="_blank" href="https://etruel.com/faqs/">FAQ</a><br><?php _e('You may', 'wpematico'); ?> <a target="_blank" href="https://etruel.com/my-account/support/"><?php _e('contact us', 'wpematico'); ?></a> <?php _e('with customization requests and suggestions.', 'wpematico'); ?><br> 
+							<?php _e('You may find answers in our', 'wpematico'); ?> <a target="_blank" href="https://etruel.com/faqs/">FAQ</a><br><?php _e('You may', 'wpematico'); ?> <a target="_blank" href="https://etruel.com/my-account/support/"><?php _e('contact us', 'wpematico'); ?></a> <?php _e('with customization requests and suggestions.', 'wpematico'); ?><br>
 							<?php _e('Please visit our website to learn about our free and premium services at', 'wpematico'); ?> <a href="https://etruel.com/downloads/premium-support/" target="_blank" title="etruel.com">etruel.com</a>
 						</p>
 					</div>
@@ -464,7 +463,7 @@ function wpematico_status_rightcolumn() {
 			</div>
 
 		</div>		<!-- #side-sortables -->
-	</div>		<!--  postbox-container-1 -->		
+	</div>		<!--  postbox-container-1 -->
 	<?php
 }
 
@@ -490,27 +489,43 @@ function wpematico_get_plugin_new_version($plugin) {
 	return $response;
 }
 
-function wpematico_disk_total_space($echo = true) {
-	$bytes		 = disk_total_space(".");
-	$si_prefix	 = array('B', 'KB', 'MB', 'GB', 'TB', 'EB', 'ZB', 'YB');
-	$base		 = 1024;
-	$class		 = min((int) log($bytes, $base), count($si_prefix) - 1);
-	if($echo) {
-		echo sprintf('%1.2f', $bytes / pow($base, $class)) . ' ' . $si_prefix[$class] . '<br />';
-	}else {
-		return sprintf('%1.2f', $bytes / pow($base, $class)) . ' ' . $si_prefix[$class];
+function wpematico_disk_total_space($echo = TRUE) {
+	$bytes = disk_total_space(".");
+	if(is_float($bytes)) {
+		$si_prefix = array('B', 'KB', 'MB', 'GB', 'TB', 'EB', 'ZB', 'YB');
+		$base = 1024;
+		$class = min((int)log($bytes, $base), count($si_prefix) - 1);
+		if($echo) {
+			echo sprintf('%1.2f', $bytes / pow($base, $class)) . ' ' . $si_prefix[$class] . '<br />';
+		}else {
+			return sprintf('%1.2f', $bytes / pow($base, $class)) . ' ' . $si_prefix[$class];
+		}
+	}else{
+		if($echo) {
+			_e('ERROR: Function disk_total_space() seems not to exist.','wpematico').'<br />';
+		}else {
+			__('ERROR: Function disk_total_space() seems not to exist.','wpematico').'<br />';
+		}
 	}
 }
 
-function wpematico_disk_free_space($echo = true) {
-	$bytes		 = disk_free_space(".");
-	$si_prefix	 = array('B', 'KB', 'MB', 'GB', 'TB', 'EB', 'ZB', 'YB');
-	$base		 = 1024;
-	$class		 = min((int) log($bytes, $base), count($si_prefix) - 1);
-	if($echo) {
-		echo sprintf('%1.2f', $bytes / pow($base, $class)) . ' ' . $si_prefix[$class] . '<br />';
+function wpematico_disk_free_space($echo = TRUE) {
+	$bytes = disk_free_space(".");
+	if(is_float($bytes)) {
+		$si_prefix = array('B', 'KB', 'MB', 'GB', 'TB', 'EB', 'ZB', 'YB');
+		$base = 1024;
+		$class = min((int)log($bytes, $base), count($si_prefix) - 1);
+		if($echo) {
+			echo sprintf('%1.2f', $bytes / pow($base, $class)) . ' ' . $si_prefix[$class] . '<br />';
+		}else {
+			return sprintf('%1.2f', $bytes / pow($base, $class)) . ' ' . $si_prefix[$class];
+		}
 	}else {
-		return sprintf('%1.2f', $bytes / pow($base, $class)) . ' ' . $si_prefix[$class];
+		if($echo) {
+			_e('ERROR: Function disk_free_space() seems not to exist.', 'wpematico').'<br />';
+		}else {
+			__('ERROR: Function disk_free_space() seems not to exist.', 'wpematico').'<br />';
+		}
 	}
 }
 
@@ -552,10 +567,10 @@ function wpematico_getFileSystemMethod() {
 }
 
 /**
- * 
+ *
  * @global object $wpdb
  * @staticvar array $vars
- * @return type array $vars to extract 
+ * @return type array $vars to extract
  */
 function wpematico_debug_data() {
 	static $vars = array();
@@ -593,10 +608,15 @@ function wpematico_debug_data() {
 		if(!is_wp_error($response) && $response['response']['code'] >= 200 && $response['response']['code'] < 300) {
 			$vars['remote_get_work'] = true;
 		}
+
 		$vars['front_page_id']		 = get_option('page_on_front');
 		$vars['blog_page_id']		 = get_option('page_for_posts');
-		$vars['disk_total_space']	 = wpematico_disk_total_space(false);
-		$vars['disk_free_space']	 = wpematico_disk_free_space(false);
+
+		if (stripos($_SERVER['SERVER_SOFTWARE'],'apache') !== false){
+			$vars['disk_total_space']	 = wpematico_disk_total_space(false);
+			$vars['disk_free_space']	 = wpematico_disk_free_space(false);
+		}
+
 		$vars['fsmethod']			 = wpematico_getFileSystemMethod();
 
 		$vars['professional_help']	 = '<a href="https://etruel.com/downloads/wpematico-professional/" target="_blank">WPeMatico Professional</a>';
@@ -754,22 +774,23 @@ function wpematico_show_data_info() {
 				<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('The available space on filesystem or disk partition.', 'wpematico') . '">[?]</a>'; ?></td>
 				<td><?php echo $disk_free_space; ?></td>
 			</tr>
+			<?php if (stripos($_SERVER['SERVER_SOFTWARE'],'apache') !== false) : ?>
 			<tr>
 				<td data-export-label="Mod Rewrite"><?php _e('Mod Rewrite:', 'wpematico'); ?></td>
 				<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__('%s is required by %s.', 'wpematico'), 'Mod Rewrite', $cache_help)) . '">[?]</a>'; ?></td>
-				<td><?php echo ($m_rewrite_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="' . (defined('WPEMATICO_CACHE_VERSION') ? 'error' : 'error-no-install' ) . '">' . sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'Mod Rewrite', 'some addons') . '</mark>'; ?></td>
+				<td><?php echo ($m_rewrite_ok) ? '<mark class="yes">&#ff0000;</mark>' : '<mark class="' . (defined('WPEMATICO_CACHE_VERSION') ? 'error' : 'error-no-install' ) . '">' . sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'Mod Rewrite', 'some addons') . '</mark>'; ?></td>
 			</tr>
 			<tr>
 				<td data-export-label="Mod Mime"><?php _e('Mod Mime:', 'wpematico'); ?></td>
 				<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__('%s is required by %s.', 'wpematico'), 'Mod Mime', $cache_help)) . '">[?]</a>'; ?></td>
-				<td><?php echo ($m_mime_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="' . (defined('WPEMATICO_CACHE_VERSION') ? 'error' : 'error-no-install' ) . '">' . sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'Mod Mime', 'some addons') . '</mark>'; ?></td>
+				<td><?php echo ($m_mime_ok) ? '<mark class="yes">&#ff0000;</mark>' : '<mark class="' . (defined('WPEMATICO_CACHE_VERSION') ? 'error' : 'error-no-install' ) . '">' . sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'Mod Rewrite', 'some addons') . '</mark>'; ?></td>
 			</tr>
 			<tr>
 				<td data-export-label="Mod Deflate"><?php _e('Mod Deflate:', 'wpematico'); ?></td>
 				<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__('%s is required by %s.', 'wpematico'), 'Mod Deflate', $cache_help)) . '">[?]</a>'; ?></td>
-				<td><?php echo ($m_deflate_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="' . (defined('WPEMATICO_CACHE_VERSION') ? 'error' : 'error-no-install' ) . '">' . sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'Mod Deflate', 'some addons') . '</mark>'; ?></td>
+				<td><?php echo ($m_deflate_ok) ? '<mark class="yes">&#ff0000;</mark>' : '<mark class="' . (defined('WPEMATICO_CACHE_VERSION') ? 'error' : 'error-no-install' ) . '">' . sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'Mod Rewrite', 'some addons') . '</mark>'; ?></td>
 			</tr>
-
+			<?php endif; ?>
 		</tbody>
 	</table>
 
@@ -977,7 +998,7 @@ function wpematico_show_data_info() {
 			  ?></td>
 			  </tr>
 			  <?php endif; // suhosin installed ?>
-			 */ ?>				
+			 */ ?>
 			<tr>
 				<td data-export-label="Session enabled"><?php echo '$_SESSION ' . __('enabled:', 'wpematico'); ?></td>
 				<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('PHP Session Configuration. http://php.net/manual/es/reserved.variables.session.php', 'wpematico') . '">[?]</a>'; ?></td>
@@ -988,17 +1009,17 @@ function wpematico_show_data_info() {
 					<td data-export-label="Session Name"><?php _e('Session Name:', 'wpematico'); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('The Session Name.', 'wpematico') . '">[?]</a>'; ?></td>
 					<td><?php echo esc_html($session_name); ?></td>
-				</tr>				
+				</tr>
 				<tr>
 					<td data-export-label="Cookie Path"><?php _e('Cookie Path:', 'wpematico'); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('The Session Cookie Path.', 'wpematico') . '">[?]</a>'; ?></td>
 					<td><?php echo esc_html($session_cookie_path); ?></td>
-				</tr>				
+				</tr>
 				<tr>
 					<td data-export-label="Save Path"><?php _e('Save Path:', 'wpematico'); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('The Session Save Path.', 'wpematico') . '">[?]</a>'; ?></td>
 					<td><?php echo esc_html($session_save_path); ?></td>
-				</tr>				
+				</tr>
 				<tr>
 					<td data-export-label="Use Cookies"><?php _e('Use Cookies:', 'wpematico'); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('Use Cookies.', 'wpematico') . '">[?]</a>'; ?></td>
@@ -1312,14 +1333,14 @@ function wpematico_show_data_info() {
 	}
 	?>
 		</tbody>
-	</table>	
+	</table>
 	<?php
 }
 
 add_action( 'admin_post_set_danger_data', 'wpematico_save_danger_data');
 function wpematico_save_danger_data() {
 	if('POST' === $_SERVER['REQUEST_METHOD']) {
-		
+
 		check_admin_referer('wpematico-danger');
 		$danger['wpemdeleoptions']			 = (isset($_POST['wpemdeleoptions']) && !empty($_POST['wpemdeleoptions']) ) ? true : false;
 		$danger['wpemdelecampaigns']		 = (isset($_POST['wpemdelecampaigns']) && !empty($_POST['wpemdelecampaigns']) ) ? true : false;
@@ -1366,8 +1387,8 @@ function wpematico_debug_info_get() {
 	$return	 = apply_filters('wpematico_sysinfo_after_webserver_config', $return);
 
 	$return	 .= "\n" . '-- Required Apache Mods' . "\n";
-	if ( stripos($_SERVER['SERVER_SOFTWARE'], 'nginx') !== false ) {
-		$return	 .= "\n" . '-- SERVER NGINX No Apache Mods' . "\n";
+	if ( stripos($_SERVER['SERVER_SOFTWARE'], 'apache') === false ) {
+		$return	 .= "\n" . '-- NO SERVER Apache Mods' . "\n";
 	}else{
 		$return	 .= 'Mod Rewrite:             ' . ( ($m_rewrite_ok) ? 'Enabled' : 'Disabled' ) . "\n";
 		$return	 .= 'Mod Mime:                ' . ( ($m_mime_ok) ? 'Enabled' : 'Disabled' ) . "\n";
@@ -1541,18 +1562,19 @@ function wpematico_debug_info_get() {
 	$return	 .= ': ';
 	$return	 .= __('Hook', 'wpematico');
 	$return	 .= "\n";
-	foreach($cron_array as $time => $cron) {
-		foreach($cron as $hook => $cron_info) {
-			foreach($cron_info as $key => $schedule) {
-				$return	 .= esc_html(date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $time));
-				$return	 .= ': ';
-				$return	 .= esc_html(( isset($schedule['schedule']) && isset($schedules[$schedule['schedule']]) && isset($schedules[$schedule['schedule']]['display']) ) ? $schedules[$schedule['schedule']]['display'] : '');
-				$return	 .= ': ';
-				$return	 .= esc_html($hook) . "\n";
+	if(isset($cron_array)) {
+		foreach($cron_array as $time => $cron) {
+			foreach($cron as $hook => $cron_info) {
+				foreach($cron_info as $key => $schedule) {
+					$return .= esc_html(date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $time));
+					$return .= ': ';
+					$return .= esc_html((isset($schedule['schedule']) && isset($schedules[$schedule['schedule']]) && isset($schedules[$schedule['schedule']]['display'])) ? $schedules[$schedule['schedule']]['display'] : '');
+					$return .= ': ';
+					$return .= esc_html($hook) . "\n";
+				}
 			}
 		}
 	}
-
 	$return = apply_filters('wpematico_sysinfo_after_wordpress_scheduled_crons', $return);
 
 
@@ -1576,7 +1598,7 @@ function wpematico_debug_info_get() {
 	$debug_constants['SCRIPT_DEBUG'] 			= ( defined( 'SCRIPT_DEBUG' ) ? SCRIPT_DEBUG : 'undefined' );
 	$debug_constants['MEDIA_TRASH'] 			= ( defined( 'MEDIA_TRASH' ) ? MEDIA_TRASH : 'undefined' );
 	$debug_constants['SHORTINIT'] 				= ( defined( 'SHORTINIT' ) ? SHORTINIT : 'undefined' );
-	
+
 	$debug_constants['MINUTE_IN_SECONDS'] 		= ( defined( 'MINUTE_IN_SECONDS' ) ? MINUTE_IN_SECONDS : 'undefined' );
 	$debug_constants['HOUR_IN_SECONDS'] 		= ( defined( 'HOUR_IN_SECONDS' ) ? HOUR_IN_SECONDS : 'undefined' );
 	$debug_constants['DAY_IN_SECONDS'] 			= ( defined( 'DAY_IN_SECONDS' ) ? DAY_IN_SECONDS : 'undefined' );
@@ -1590,7 +1612,7 @@ function wpematico_debug_info_get() {
 	$debug_constants['WPMU_PLUGIN_DIR']			= ( defined( 'WPMU_PLUGIN_DIR' ) ? WPMU_PLUGIN_DIR : 'undefined' );
 	$debug_constants['WPMU_PLUGIN_URL']			= ( defined( 'WPMU_PLUGIN_URL' ) ? WPMU_PLUGIN_URL : 'undefined' );
 	$debug_constants['MUPLUGINDIR']				= ( defined( 'MUPLUGINDIR' ) ? MUPLUGINDIR : 'undefined' );
-	
+
 	$debug_constants['FORCE_SSL_ADMIN']			= ( defined( 'FORCE_SSL_ADMIN' ) ? FORCE_SSL_ADMIN : 'undefined' );
 	$debug_constants['FORCE_SSL_LOGIN']			= ( defined( 'FORCE_SSL_LOGIN' ) ? FORCE_SSL_LOGIN : 'undefined' );
 	$debug_constants['AUTOSAVE_INTERVAL']		= ( defined( 'AUTOSAVE_INTERVAL' ) ? AUTOSAVE_INTERVAL : 'undefined' );
@@ -1602,21 +1624,21 @@ function wpematico_debug_info_get() {
 	$debug_constants['WP_DEFAULT_THEME']		= ( defined( 'WP_DEFAULT_THEME' ) ? WP_DEFAULT_THEME : 'undefined' );
 	$debug_constants['DISABLE_WP_CRON']			= ( defined( 'DISABLE_WP_CRON' ) ? DISABLE_WP_CRON : 'undefined' );
 	$debug_constants['ALTERNATE_WP_CRON']		= ( defined( 'ALTERNATE_WP_CRON' ) ? ALTERNATE_WP_CRON : 'undefined' );
-	
+
 	$wp_constants = get_defined_constants(1);
 	if ( !empty($wp_constants['user']) ) {
 		foreach ($wp_constants['user'] as $key => $value) {
-			
+
 			if ( stripos($key, 'WPEM_') !== false || stripos($key, 'WPEMATICO') !== false ) {
 				$debug_constants[$key] = $value;
 			}
 		}
 	}
-	
+
 
 	$debug_constants = apply_filters('wpematico_debug_constants', $debug_constants);
-	
-	
+
+
 
 	$return .= print_r($debug_constants, 1);
 
