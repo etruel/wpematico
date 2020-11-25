@@ -236,8 +236,9 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
-= 2.6.6 Nov 24, 2020 =
+= 2.6.6 Nov 25, 2020 =
 * Added a Warning notice at campaigns list on activating Debug mode.
+* Some tweaks on styles of categories metaboxes.
 * Some tweaks in the Debug screen with functions that do not work in Apache servers.
 * Fixes a bug at fetching when save meta fields if inserting a thirdparty posttype could lose its value.
 
