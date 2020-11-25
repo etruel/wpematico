@@ -262,7 +262,11 @@ p {
     align-items: center;
 }
 #category-box #categories li input[type="checkbox"]{
+    min-width: 20px;
     margin-right: .5rem;
+}
+#category-box #categories li input[type="text"]{
+    max-width: calc(100% - 28px);
 }
 #edit-slug-box,
 #post-preview {
