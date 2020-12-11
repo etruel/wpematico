@@ -519,6 +519,7 @@ class wpematico_campaign_fetch_functions {
 			'post_mime_type' => $wp_filetype['type'],
 			'post_title'	 => preg_replace('/\.[^.]+$/', '', basename($filename)),
 			'post_content'	 => '',
+			'post_author'	 => get_post_field ('post_author', $postid),
 			'post_status'	 => 'inherit'
 		);
 		trigger_error(__('Attaching file:') . $filename, E_USER_NOTICE);
