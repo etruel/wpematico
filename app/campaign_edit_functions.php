@@ -762,7 +762,7 @@ public static function options_box( $post ) {
 					<input class="checkbox" type="checkbox"<?php checked($campaign_strip_links_options['script'] ,true);?> name="campaign_strip_links_options[script]" value="1" id="campaign_strip_links_options_script"/> 
 					<label for="campaign_strip_links_options[script]"><?php echo __('Strip ', 'wpematico') . '&lt;script&gt;.'; ?></label> 
 					<p class="description">
-						<?php _e('If you do not select any option will take as if you selected all.', 'wpematico' ); ?>
+						<?php _e('If you do not select an option, it will be assumed that all of them are selected..', 'wpematico' ); ?>
 					</p>
 					<?php do_action('wpematico_striptags_tools',$campaign_data,$cfg);  ?>
 				</div>

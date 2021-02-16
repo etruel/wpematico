@@ -236,6 +236,11 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
+= 2.6.7 Feb 16, 2021 =
+* Added an option to allow to delete all debug logs of the campains in Debug Mode.
+* Fixes a bug on saving images with incorrect post author.
+* Some tweaks on campaigns options texts.
+
 = 2.6.6 Nov 25, 2020 =
 * Added a Warning notice at campaigns list on activating Debug mode.
 * Some tweaks on styles of categories metaboxes.

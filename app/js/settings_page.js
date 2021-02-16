@@ -131,12 +131,26 @@ jQuery(function () {
 //Metaboxes on Settings
 jQuery(document).on('ready', function ($) {
 	postboxes.save_state = function () {
-		return;
+
 	};
 	postboxes.save_order = function () {
-		return;
+
 	};
 	// close postboxes that should be closed
 	jQuery('.if-js-closed').removeClass('if-js-closed').addClass('closed');
 	postboxes.add_postbox_toggles('wpematico_page_wpematico_settings');
+});
+
+// Danger Zone
+
+jQuery(document).on('ready', function ($) {
+	jQuery(document).on("click", '#wpe_debug_logs_campaign', function () {
+		if (true == jQuery('#wpe_debug_logs_campaign').is(':checked')) {
+			jQuery('#deledebug').fadeOut();
+			jQuery('#wpe_delete_debug_logs_campaign').removeAttr("checked");
+		} else {
+			jQuery('#deledebug').fadeIn();
+			jQuery('#wpe_delete_debug_logs_campaign').prop("checked",true);
+		}
+	});
 });

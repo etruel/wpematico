@@ -220,9 +220,10 @@ function wpematico_settings_section_danger_zone() {
 	?>
 	<form action="<?php echo admin_url('admin-post.php'); ?>" method="post" dir="ltr">
 		<h3><?php _e('Debug Mode', 'wpematico'); ?></h3>
-		<label><input class="checkbox" value="1" type="checkbox" <?php checked($danger['wpe_debug_logs_campaign'], true); ?> name="wpe_debug_logs_campaign" /> <?php _e('Activate Debug Logs in Campaigns', 'wpematico'); ?></label><br/>
+		<label><input id="wpe_debug_logs_campaign" class="checkbox" value="1" type="checkbox" <?php checked($danger['wpe_debug_logs_campaign'], true); ?> name="wpe_debug_logs_campaign" /> <?php _e('Activate Debug Logs in Campaigns', 'wpematico'); ?></label><br/>
 		<p class="description">
 			<?php _e('This action will save all the logs from each campaign instead only the last one, to allow follow all actions and behaviors when campaign runs.', 'wpematico'); ?>
+			<br/><label id="deledebug" style="margin-left: 20px; display: none;"><input id="wpe_delete_debug_logs_campaign" class="checkbox" value="1" checked type="checkbox" name="wpe_delete_debug_logs_campaign" /> <?php _e('Delete all Debug Logs in Campaigns', 'wpematico'); ?></label>
 		</p>
 
 		<?php submit_button(__('Save Settings', 'wpematico'), 'primary', false); ?>
@@ -306,7 +307,7 @@ function wpematico_settings_section_debug_file() {
 										<?php esc_html_e('Use this file to get support on '); ?><a href="https://etruel.com/support/" target="_blank" rel="follow">etruel's website</a>.
 									</p>
 									<span class="get-system-status">
-										<a href="javascript:;" onclick='jQuery("#debug-report").slideDown();
+										<a href="javascript:" onclick='jQuery("#debug-report").slideDown();
 												jQuery(this).parent().fadeOut();' class="button-primary debug-report"><?php _e('Get System Report', 'wpematico'); ?></a>
 										<span class="system-report-msg"><?php _e('Click the button to see and download the system report.', 'wpematico'); ?></span>
 									</span>
@@ -382,7 +383,7 @@ function wpematico_status_rightcolumn() {
 					</p>
 					<p></p>
 					<p style="text-align: center;">
-						<input type="button" class="button-primary" name="buypro" value="<?php _e('Buy PRO version online', 'wpematico'); ?>" onclick="javascript:window.open('https://etruel.com/downloads/wpematico-pro/');
+						<input type="button" class="button-primary" name="buypro" value="<?php _e('Buy PRO version online', 'wpematico'); ?>" onclick="window.open('https://etruel.com/downloads/wpematico-pro/');
 								return false;"/>
 					</p>
 					<p></p>
@@ -1342,9 +1343,24 @@ function wpematico_save_danger_data() {
 	if('POST' === $_SERVER['REQUEST_METHOD']) {
 
 		check_admin_referer('wpematico-danger');
+
 		$danger['wpemdeleoptions']			 = (isset($_POST['wpemdeleoptions']) && !empty($_POST['wpemdeleoptions']) ) ? true : false;
 		$danger['wpemdelecampaigns']		 = (isset($_POST['wpemdelecampaigns']) && !empty($_POST['wpemdelecampaigns']) ) ? true : false;
 		$danger['wpe_debug_logs_campaign']	 = (isset($_POST['wpe_debug_logs_campaign']) && !empty($_POST['wpe_debug_logs_campaign']) ) ? true : false;
+
+		if(!$danger['wpe_debug_logs_campaign'] ) {
+			$olddanger = WPeMatico::get_danger_options();
+			if($olddanger['wpe_debug_logs_campaign'] and (isset($_POST['wpe_delete_debug_logs_campaign']) && !empty($_POST['wpe_delete_debug_logs_campaign']) )) {
+				$meta_type  = 'wpematico';           // since we are deleting data for CPT
+				$object_id  = 0;                // no need to put id of object since we are deleting all
+				$meta_key   = 'last_campaign_log';    // Your target meta_key added using update_post_meta()
+				$meta_value = '';               // No need to check for value since we are deleting all
+				$delete_all = true;             // This is important to have TRUE to delete all post meta
+
+				delete_metadata( $meta_type, $object_id, $meta_key, $meta_value, $delete_all );
+				WPeMatico::add_wp_notice(array('text' => __('Campaigns Debugs deleted.', 'wpematico'), 'below-h2' => false));
+			}
+		}
 
 		if(update_option('WPeMatico_danger', $danger) or add_option('WPeMatico_danger', $danger)) {
 			WPeMatico::add_wp_notice(array('text' => __('Actions to Uninstall saved.', 'wpematico') . '<br>' . __('The actions are executed when the plugin is uninstalled.', 'wpematico'), 'below-h2' => false));

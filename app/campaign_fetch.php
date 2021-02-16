@@ -81,6 +81,9 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		$this->campaign['starttime']		 = current_time('timestamp'); //set start time for job
 		$this->campaign['lastpostscount']	 = 0; // Lo pone en 0 y lo asigna al final		
 		WPeMatico :: update_campaign($this->campaign_id, $this->campaign); //Save start time data
+//		add_post_meta($this->campaign_id, 'starttime', $campaign['starttime'], true) or
+//			update_post_meta($this->campaign_id, 'starttime', $campaign['starttime']);
+
 		//
 		$this->set_actions_and_filters();
 
@@ -855,7 +858,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		$this->campaign['lastrun']			 = $this->campaign['starttime'];
 		$this->campaign['lastruntime']		 = current_time('timestamp') - $this->campaign['starttime'];
 		$this->campaign['starttime']		 = '';
-		$this->campaign['postscount']		 += $this->fetched_posts; // Suma los posts procesados 
+		$this->campaign['postscount']		 += $this->fetched_posts; // Suma los posts procesados
 		$this->campaign['lastpostscount']	 = $this->fetched_posts; //  posts procesados esta vez
 
 		/* 		foreach($this->campaign['campaign_feeds'] as $feed) {    // Grabo el ultimo hash de cada feed
@@ -907,7 +910,6 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			$mailbody	 .= "\n" . $campaign_log_message;
 			$mailbody	 .= "\n\n\n<hr>";
 			$mailbody	 .= __("WPeMatico by ", "wpematico") . "<a href='https://etruel.com'>etruel</a> \n";
-			;
 
 			wp_mail($to_mail, $subject, $mailbody, $headers, '');
 		}

@@ -789,7 +789,7 @@ msgid "Strip "
 msgstr ""
 
 #: wpematico/app/campaign_edit_functions.php:765
-msgid "If you do not select any option will take as if you selected all."
+msgid "If you do not select an option, it will be assumed that all of them are selected.."
 msgstr ""
 
 #: wpematico/app/campaign_edit_functions.php:774
