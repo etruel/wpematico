@@ -239,6 +239,7 @@ You can send your files to e-mail wpematico [at] etruel.com
 = 2.6.7 Feb 16, 2021 =
 * Added an option to allow to delete all debug logs of the campains in Debug Mode.
 * Fixes a bug on saving images with incorrect post author.
+* Fixes the issue #17 on php implode categories reported by diogenis1971 on Github.
 * Some tweaks on campaigns options texts.
 
 = 2.6.6 Nov 25, 2020 =

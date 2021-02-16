@@ -1351,14 +1351,24 @@ function wpematico_save_danger_data() {
 		if(!$danger['wpe_debug_logs_campaign'] ) {
 			$olddanger = WPeMatico::get_danger_options();
 			if($olddanger['wpe_debug_logs_campaign'] and (isset($_POST['wpe_delete_debug_logs_campaign']) && !empty($_POST['wpe_delete_debug_logs_campaign']) )) {
-				$meta_type  = 'wpematico';           // since we are deleting data for CPT
-				$object_id  = 0;                // no need to put id of object since we are deleting all
-				$meta_key   = 'last_campaign_log';    // Your target meta_key added using update_post_meta()
-				$meta_value = '';               // No need to check for value since we are deleting all
-				$delete_all = true;             // This is important to have TRUE to delete all post meta
-
-				delete_metadata( $meta_type, $object_id, $meta_key, $meta_value, $delete_all );
-				WPeMatico::add_wp_notice(array('text' => __('Campaigns Debugs deleted.', 'wpematico'), 'below-h2' => false));
+				$args = array(
+						'orderby'		 => 'ID',
+						'order'			 => 'ASC',
+						'post_type'		 => 'wpematico',
+						'numberposts'	 => -1
+				);
+				$deletedAll = TRUE;
+				$campaigns	= get_posts($args);
+				foreach($campaigns as $post):
+					$deleted = delete_post_meta($post->ID, 'last_campaign_log');
+					if(!$deleted) {$deletedAll = FALSE;}
+				endforeach;
+//				$deleted = delete_metadata( 'wpematico', null, 'last_campaign_log', false, true );
+				if($deletedAll){
+					WPeMatico::add_wp_notice(array('text' => __('Campaigns Logs deleted.', 'wpematico'), 'below-h2' => false));
+				}else{
+					WPeMatico::add_wp_notice(array('text' => __('Failed on delete the campaigns Logs.', 'wpematico'), 'below-h2' => false));
+				}
 			}
 		}
 

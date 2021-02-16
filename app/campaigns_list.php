@@ -209,7 +209,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			if (!current_user_can(get_post_type_object($typenow)->cap->edit_others_posts))
 				return;
 
-			echo '<div style="margin: 1px 5px 0 0; float: left; background-color: #EB9600; color: #fff; border-color: #b97600 #b97600 #b97600; box-shadow: 0 1px 0 #b97600; text-decoration: none; text-shadow: 0 -1px 1px #b97600,1px 0 1px #b97600,0 1px 1px #b97600,-1px 0 1px #b97600;" id="run_all" onclick="javascript:run_all();" class="button">' . __('Run Selected Campaigns', 'wpematico') . ' <span style="line-height: 1.4em;" class="dashicons dashicons-controls-forward"></span></div>';
+			echo '<div style="margin: 1px 5px 0 0; float: left; background-color: #EB9600; color: #fff; border-color: #b97600 #b97600 #b97600; box-shadow: 0 1px 0 #b97600; text-decoration: none; text-shadow: 0 -1px 1px #b97600,1px 0 1px #b97600,0 1px 1px #b97600,-1px 0 1px #b97600;" id="run_all" onclick="run_all();" class="button">' . __('Run Selected Campaigns', 'wpematico') . ' <span style="line-height: 1.4em;" class="dashicons dashicons-controls-forward"></span></div>';
 			//self::bulk_actions($which);
 		}
 
@@ -639,8 +639,8 @@ if (!class_exists('WPeMatico_Campaigns')) :
 				$campaign_customposttype = $campaign_data['campaign_customposttype'];
 				$campaign_posttype = $campaign_data['campaign_posttype'];
 				$campaign_post_format = (isset($campaign_data['campaign_post_format']) && !empty($campaign_data['campaign_post_format']) ) ? $campaign_data['campaign_post_format'] : '0';
-				$campaign_categories = $campaign_data['campaign_categories'];
-				$campaign_tags = @$campaign_data['campaign_tags'];
+				$campaign_categories = (is_array($campaign_data['campaign_categories']) ? $campaign_data['campaign_categories'] : array();
+				$campaign_tags = (isset($campaign_data['campaign_tags'])) ? $campaign_data['campaign_tags'] : '';
 
 				$text .= '</div>
 					<div class="post_id">' . $post->ID . '</div>

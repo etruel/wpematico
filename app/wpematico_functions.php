@@ -953,8 +953,8 @@ if(!class_exists('WPeMatico_functions')) {
 				$campaigndata['campaign_categories'] = array();
 			}
 
-			#Proceso las Words to Category sacando los que estan en blanco
-			//campaign_wrd2cat, campaign_wrd2cat_regex, campaign_wrd2cat_category 
+			# Order Words to Category and strip the blank fields
+			//campaign_wrd2cat, campaign_wrd2cat_regex, campaign_wrd2cat_category
 			$campaign_wrd2cat = Array();
 			if(isset($post_data['campaign_wrd2cat']['word'])) {
 				//for ($i = 0; $i <= count(@$campaign_wrd2cat['word']); $i++) {
