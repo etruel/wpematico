@@ -1124,8 +1124,8 @@ if (!class_exists('WPeMatico_Campaigns')) :
 				if ($_POST['campaign_max']) {
 					$arrayData['campaign_max'] = absint($_POST['campaign_max']);
 				}
-				$arrayData['campaign_max'] = (!isset($_POST['campaign_max']) ) ? 0 : absint($_POST['campaign_max']);
-				$arrayData['campaign_author'] = (!isset($_POST['campaign_author']) ) ? 0 : absint($_POST['campaign_author']);
+//				$arrayData['campaign_max'] = (!isset($_POST['campaign_max']) ) ? 0 : absint($_POST['campaign_max']);
+//				$arrayData['campaign_author'] = (!isset($_POST['campaign_author']) ) ? 0 : absint($_POST['campaign_author']);
 
 				$arrayData['campaign_feeddate'] = (!isset($_POST['campaign_feeddate']) || empty($_POST['campaign_feeddate'])) ? false : ( ($_POST['campaign_feeddate'] == 1) ? true : false );
 				$arrayData['campaign_commentstatus'] = (!isset($_POST['campaign_commentstatus']) ) ? 'closed' : sanitize_text_field($_POST['campaign_commentstatus']);
@@ -1145,6 +1145,8 @@ if (!class_exists('WPeMatico_Campaigns')) :
 				foreach ($post_ids as $post_id) {
 					$post_id = absint($post_id);
 					$campaign = WPeMatico :: get_campaign($post_id);
+					$campaign['campaign_max'] = (!isset($_POST['campaign_max']) || $_POST['campaign_max']==0 ) ? $campaign['campaign_max'] : absint($_POST['campaign_max']);
+					$campaign['campaign_author'] = (!isset($_POST['campaign_author']) || $_POST['campaign_author']==0 ) ? $campaign['campaign_author'] : absint($_POST['campaign_author']);
 					foreach ($arrayData as $key => $dataEntry) {
 						$campaign[$key] = $dataEntry;
 					}
