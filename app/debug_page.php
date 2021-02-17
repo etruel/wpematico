@@ -1341,7 +1341,6 @@ function wpematico_show_data_info() {
 add_action( 'admin_post_set_danger_data', 'wpematico_save_danger_data');
 function wpematico_save_danger_data() {
 	if('POST' === $_SERVER['REQUEST_METHOD']) {
-
 		check_admin_referer('wpematico-danger');
 
 		$danger['wpemdeleoptions']			 = (isset($_POST['wpemdeleoptions']) && !empty($_POST['wpemdeleoptions']) ) ? true : false;

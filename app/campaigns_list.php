@@ -639,7 +639,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 				$campaign_customposttype = $campaign_data['campaign_customposttype'];
 				$campaign_posttype = $campaign_data['campaign_posttype'];
 				$campaign_post_format = (isset($campaign_data['campaign_post_format']) && !empty($campaign_data['campaign_post_format']) ) ? $campaign_data['campaign_post_format'] : '0';
-				$campaign_categories = (is_array($campaign_data['campaign_categories']) ? $campaign_data['campaign_categories'] : array();
+				$campaign_categories = (is_array($campaign_data['campaign_categories'])) ? $campaign_data['campaign_categories'] : array();
 				$campaign_tags = (isset($campaign_data['campaign_tags'])) ? $campaign_data['campaign_tags'] : '';
 
 				$text .= '</div>
@@ -655,7 +655,6 @@ if (!class_exists('WPeMatico_Campaigns')) :
 					<div class="campaign_customposttype">' . $campaign_customposttype . '</div>
 					<div class="campaign_posttype">' . $campaign_posttype . '</div>
 					<div class="campaign_post_format">' . $campaign_post_format . '</div>
-					<div class="campaign_categories">' . implode(',', $campaign_categories) . '</div>
 					<div class="campaign_tags">' . stripslashes($campaign_tags);
 			}
 			return $text;
