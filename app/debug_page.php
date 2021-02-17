@@ -1366,7 +1366,8 @@ function wpematico_save_danger_data() {
 				if($deletedAll){
 					WPeMatico::add_wp_notice(array('text' => __('Campaigns Logs deleted.', 'wpematico'), 'below-h2' => false));
 				}else{
-					WPeMatico::add_wp_notice(array('text' => __('Failed on delete the campaigns Logs.', 'wpematico'), 'below-h2' => false));
+					WPeMatico::add_wp_notice(array('text' => __('Failed on delete all campaigns Logs. ', 'wpematico') . '<br/>'
+							. __('This warning may appear if a campaign had already been deleted the logs or if a log could not be deleted. You can also manually reset a campaign to delete its logs individually.', 'wpematico'), 'below-h2' => false));
 				}
 			}
 		}

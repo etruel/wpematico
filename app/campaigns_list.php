@@ -655,6 +655,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 					<div class="campaign_customposttype">' . $campaign_customposttype . '</div>
 					<div class="campaign_posttype">' . $campaign_posttype . '</div>
 					<div class="campaign_post_format">' . $campaign_post_format . '</div>
+					<div class="campaign_categories">' . implode(',', $campaign_categories) . '</div>
 					<div class="campaign_tags">' . stripslashes($campaign_tags);
 			}
 			return $text;
