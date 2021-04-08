@@ -369,5 +369,5 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 
-= 2.6.7 =
-This version mainly fixes an issue on saving authors of images and adds an option to delete de debugs logs of all campaigns.
+= 2.6.8 =
+Fixes user translations, some CSS and JavaScript issues.
