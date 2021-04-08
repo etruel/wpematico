@@ -3,7 +3,7 @@
  * Plugin Name: WPeMatico
  * Plugin URI: https://www.wpematico.com
  * Description: Create posts automatically from RSS/Atom feeds organized into campaigns with multiples filters.  If you like it, please rate it 5 stars.
- * Version: 2.6.7
+ * Version: 2.6.8
  * Author: etruel <esteban@netmdp.com>
  * Author URI: https://etruel.com
  * Text Domain: wpematico
@@ -27,7 +27,7 @@ if (!class_exists('Main_WPeMatico')) {
 
 		private function setup_constants() {
 			if (!defined('WPEMATICO_VERSION'))
-				define('WPEMATICO_VERSION', '2.6.7');
+				define('WPEMATICO_VERSION', '2.6.8');
 			if (!defined('WPEMATICO_BASENAME'))
 				define('WPEMATICO_BASENAME', plugin_basename(__FILE__));
 			if (!defined('WPEMATICO_ROOTFILE'))
@@ -54,7 +54,7 @@ if (!class_exists('Main_WPeMatico')) {
 				self::$instance = new Main_WPeMatico();
 				self::$instance->setup_constants();
 				self::$instance->includes();
-				self::$instance->load_textdomain();
+				add_action( 'plugins_loaded', array( self::$instance, 'load_textdomain' ) );
 				self::$instance->hooks();
 				self::$instance->setup_cron();
 			}
@@ -142,47 +142,6 @@ if (!class_exists('Main_WPeMatico')) {
 			load_plugin_textdomain('wpematico', false, 'wpematico/lang');
 		}
 
-		/**
-		 * Internationalization
-		 *
-		 * @access      public
-		 * @since       1.0.0
-		 * @return      void
-		 */
-//	public function load_textdomain() {
-//		// Set filter for language directory
-//		$lang_dir = WPEMATICO_PLUGIN_DIR . '/lang/';
-//		$lang_dir = apply_filters( 'wpematico_languages_directory', $lang_dir );
-//
-//		// Traditional WordPress plugin locale filter
-//		$locale = apply_filters( 'plugin_locale', get_locale(), 'wpematico' );
-//		$mofile = sprintf( '%1$s-%2$s.mo', 'wpematico', $locale );
-//
-//		// Setup paths to current locale file
-//		$mofile_local   = $lang_dir . $mofile;
-//		$mofile_global  = WP_LANG_DIR . '/wpematico/' . $mofile;
-//		
-//		/**
-//		 * Directory of language packs through translate.wordpress.org
-//		 * @var $mofile_global2 String.
-//		 * @since 1.6.2
-//		 */
-//		$mofile_global2  = WP_LANG_DIR . '/plugins/wpematico/' . $mofile;
-//
-//		if( file_exists( $mofile_global ) ) {
-//			// Look in global /wp-content/languages/wpematico/ folder
-//			load_textdomain( 'wpematico', $mofile_global );
-//		} elseif( file_exists( $mofile_global2 ) ) {
-//			// Look in global /wp-content/languages/plugins/wpematico/ folder
-//			load_textdomain( 'wpematico', $mofile_global2 );
-//		} elseif( file_exists( $mofile_local ) ) {
-//			// Look in local /wp-content/plugins/wpematico/languages/ folder
-//			load_textdomain( 'wpematico', $mofile_local );
-//		} else {
-//			// Load the default language files
-//			load_plugin_textdomain( 'wpematico', false, $lang_dir );
-//		}
-//	}
 	}
 
 	//class WPeMatico

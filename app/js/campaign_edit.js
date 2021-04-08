@@ -9,8 +9,8 @@ jQuery(document).ready(function ($) {
 
 		//$('#xml-campaign-input-nodes-container').html('<img src="' +  wpematico_object.image_run_loading + '">' + wpematico_object.text_loading);
 		$('#xml-campaign-input-nodes-container').html(
-		  '<div id="message" class="updated notice notice-updated"><p>' + '<img src="' + wpematico_object.image_run_loading + '"> ' + wpematico_object.text_loading + '</p></div>'
-		  );
+				'<div id="message" class="updated notice notice-updated"><p>' + '<img src="' + wpematico_object.image_run_loading + '"> ' + wpematico_object.text_loading + '</p></div>'
+				);
 		$('#xml-campaign-input-nodes-container').fadeIn();
 
 		var data = {
@@ -39,24 +39,24 @@ jQuery(document).ready(function ($) {
 		location.href = $(this).attr('btn-href');
 	});
 	$('button.cpanelbutton').hover(
-	  function (e) {
-		  $(this).attr('title_out', $(this).attr('title'));
-		  $('#cpanelnotebar').text($(this).attr('title_out'));
-		  $(this).attr('title', '');
-	  },
-	  function (e) {
-		  $('#cpanelnotebar').text('');
-		  $(this).attr('title', $(this).attr('title_out'));
-	  }
+			function (e) {
+				$(this).attr('title_out', $(this).attr('title'));
+				$('#cpanelnotebar').text($(this).attr('title_out'));
+				$(this).attr('title', '');
+			},
+			function (e) {
+				$('#cpanelnotebar').text('');
+				$(this).attr('title', $(this).attr('title_out'));
+			}
 	);
 
 	$('#feed_actions button').hover(
-	  function (e) {
-		  $('#cpanelnotebar').text($(this).attr('title'));
-	  },
-	  function (e) {
-		  $('#cpanelnotebar').text('');
-	  }
+			function (e) {
+				$('#cpanelnotebar').text($(this).attr('title'));
+			},
+			function (e) {
+				$('#cpanelnotebar').text('');
+			}
 	);
 
 
@@ -338,9 +338,9 @@ jQuery(document).ready(function ($) {
 		feed = item.val();
 		var working = $(this);
 		$(working).removeClass('dashicons-editor-spellcheck')
-		  .removeClass("dashicons-thumbs-down red")
-		  .removeClass("dashicons-thumbs-up green")
-		  .addClass('ruedita');
+				.removeClass("dashicons-thumbs-down red")
+				.removeClass("dashicons-thumbs-up green")
+				.addClass('ruedita');
 
 		if (feed !== "") {
 			$(item).attr('style', 'Background:#CCC;');
@@ -358,25 +358,25 @@ jQuery(document).ready(function ($) {
 					$(item).attr('style', 'Background:#75EC77;');
 					$("#poststuff").prepend('<div id="message" class="feederror notice notice-success is-dismissible"><p>' + response.message + '</p>' + dismiss + '</div>');
 					$(working).removeClass('dashicons-editor-spellcheck')
-					  .removeClass("dashicons-thumbs-down red")
-					  .removeClass("ruedita")
-					  .addClass('dashicons-thumbs-up green');
+							.removeClass("dashicons-thumbs-down red")
+							.removeClass("ruedita")
+							.addClass('dashicons-thumbs-up green');
 				} else {
 					$(item).attr('style', 'Background:Red;');
 					$("#poststuff").prepend('<div id="message" class="feederror notice notice-error is-dismissible"><p>ERROR: ' + response.message + '</p>' + dismiss + '</div>');
 					$(working).removeClass('dashicons-editor-spellcheck')
-					  .removeClass("dashicons-thumbs-up green")
-					  .removeClass("ruedita")
-					  .addClass('dashicons-thumbs-down red');
+							.removeClass("dashicons-thumbs-up green")
+							.removeClass("ruedita")
+							.addClass('dashicons-thumbs-down red');
 
 				}
 			});
 		} else {
 			alert(wpematico_object.text_type_some_feed_url);
 			$(working).removeClass('ruedita')
-			  .removeClass("dashicons-thumbs-down red")
-			  .removeClass("dashicons-thumbs-up green")
-			  .addClass('dashicons-editor-spellcheck');
+					.removeClass("dashicons-thumbs-down red")
+					.removeClass("dashicons-thumbs-up green")
+					.addClass('dashicons-editor-spellcheck');
 		}
 	});
 
@@ -392,9 +392,9 @@ jQuery(document).ready(function ($) {
 			var working = $(item).parent().parent().find('#checkfeed');
 			if (feed !== "") {
 				$(working).removeClass('dashicons-editor-spellcheck')
-				  .removeClass("dashicons-thumbs-down red")
-				  .removeClass("dashicons-thumbs-up green")
-				  .addClass('ruedita');
+						.removeClass("dashicons-thumbs-down red")
+						.removeClass("dashicons-thumbs-up green")
+						.addClass('ruedita');
 				$(item).attr('style', 'Background:#CCC;');
 				var data = {
 					action: "wpematico_test_feed",
@@ -410,16 +410,16 @@ jQuery(document).ready(function ($) {
 						$(item).attr('style', 'Background:#75EC77;');
 						$("#poststuff").prepend('<div id="message" class="feederror notice notice-success is-dismissible"><p>' + response.message + '</p>' + dismiss + '</div>');
 						$(working).removeClass('dashicons-editor-spellcheck')
-						  .removeClass("dashicons-thumbs-down red")
-						  .removeClass("ruedita")
-						  .addClass('dashicons-thumbs-up green');
+								.removeClass("dashicons-thumbs-down red")
+								.removeClass("ruedita")
+								.addClass('dashicons-thumbs-up green');
 					} else {
 						$(item).attr('style', 'Background:Red;');
 						$("#poststuff").prepend('<div id="message" class="feederror notice notice-error is-dismissible"><p>ERROR: ' + response.message + '</p>' + dismiss + '</div>');
 						$(working).removeClass('dashicons-editor-spellcheck')
-						  .removeClass("dashicons-thumbs-up green")
-						  .removeClass("ruedita")
-						  .addClass('dashicons-thumbs-down red');
+								.removeClass("dashicons-thumbs-up green")
+								.removeClass("ruedita")
+								.addClass('dashicons-thumbs-down red');
 					}
 					$(working).removeClass("spinner");
 				});
@@ -892,7 +892,11 @@ function wpe_others_events($) {
 	});
 
 	$('.tag').click(function () {
-		$('#campaign_template').attr('value', $('#campaign_template').attr('value') + $(this).html());
+//		$('#campaign_template').val( $('#campaign_template').val() + $(this).html() );
+		var curPos = document.getElementById("campaign_template").selectionStart;
+		console.log(curPos);
+		let x = $("#campaign_template").val();
+		$("#campaign_template").val(x.slice(0, curPos) + $(this).html() + x.slice(curPos));
 	});
 
 	$(document).on('click', '.w2cregex', function () {

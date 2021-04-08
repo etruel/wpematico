@@ -3,7 +3,7 @@ Contributors: etruel, sniuk, khaztiel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,RSS to Post,Feed to Post,XML to post,autoblog,rss aggregator,Feed,rss to post,syndication,xml import,Post,Posts,aggregation,atom,bot,content,writing
 Requires at least: 4.1
-Tested up to: 5.6.1
+Tested up to: 5.7
 Requires PHP: 5.3
 Stable tag: trunk
 License: GPLv2 or later
@@ -236,6 +236,10 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
+= 2.6.8 Apr 8, 2021 =
+* Improved the post template feature on inserting {tags} in cursor position instead of the end of content.
+* Fixes custom user translation when he chooses a different of WordPress admin.
+
 = 2.6.7 Feb 17, 2021 =
 * Added an option to allow to delete all debug logs of the campains in Debug Mode.
 * Fixes a bug on saving images with incorrect post author.
