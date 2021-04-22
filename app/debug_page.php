@@ -755,10 +755,10 @@ function wpematico_show_data_info() {
                         <?php
                             $list_compaings =  new WP_Query( array( 'post_type' => 'wpematico', 'posts_per_page' => -1 ) );
                             $html = '<thead><tr>';
-                            $html .= '<th scope="col" class="manage-column column-posts">'.esc_html__('ID','wpematico').'</th>';
+                            $html .= '<th scope="col" class="manage-column column-posts">'.esc_html__('Campaign ID','wpematico').'</th>';
                             $html .= '<th scope="col" class="manage-column column-posts">'.esc_html__('Campaign type','wpematico').'</th>';
                             $html .= '<th scope="col" class="manage-column column-posts">'.esc_html__('Campaign Status','wpematico').'</th>';
-                            $html .= '<th scope="col" class="manage-column column-posts">'.esc_html__('Number feeds','wpematico').'</th>';
+                            $html .= '<th scope="col" class="manage-column column-posts">'.esc_html__('Number of feeds','wpematico').'</th>';
                             $html .= '<th scope="col" class="manage-column column-posts">'.esc_html__('Max value of feeds','wpematico').'</th>';
                             $html .= '</tr></thead>';
                             $html .= '<tbody>';
