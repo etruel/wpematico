@@ -567,6 +567,16 @@ function wpematico_getFileSystemMethod() {
 	return $fs;
 }
 
+function wpematico_compaings_info_data(){
+    static $compaings_info = array();
+    
+    if( wp_count_posts('wpematico')->publish ){
+        $compaings_info['published_compaings'] =  wp_count_posts('wpematico')->publish;    
+    }
+       
+    return $compaings_info;
+    
+}
 /**
  *
  * @global object $wpdb
@@ -581,7 +591,9 @@ function wpematico_debug_data() {
 			require_once dirname(__FILE__) . '/lib/browser.php';  //https://github.com/cbschuld/Browser.php
 
 		$vars['browser'] = new Browser();
-
+                
+                // Merge compaings info
+                $vars['compaings_info'] =  wpematico_compaings_info_data();
 		// Get theme info
 		if(get_bloginfo('version') < '3.4') {
 			$theme_data		 = get_theme_data(get_stylesheet_directory() . '/style.css');
@@ -726,6 +738,50 @@ function wpematico_show_data_info() {
 	$debug_data = wpematico_debug_data();
 	extract($debug_data);
 	?>
+        <h3 class="screen-reader-text"><?php _e('Campaigns Infos', 'wpematico'); ?></h3>
+	<table class="widefat debug-section" cellspacing="0">
+		<thead>
+			<tr>
+				<th colspan="5" class="debug-section-title" data-export-label="Campaigns Infos"><?php _e('Campaigns Infos', 'wpematico'); ?></th>
+			</tr>
+		</thead>
+                <tbody>
+                    <tr>
+                        <td data-export-label="Compaings info"><?php _e('Total campaigns:','wpematico');?></td>
+                        <td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('Number of compaings created.', 'wpematico') . '">[?]</a>'; ?></td>                    
+                        <td><strong><?php echo $debug_data['compaings_info']['published_compaings']; ?></strong></td>
+                    </tr>
+                    <tr>
+                        <?php
+                            $list_compaings =  new WP_Query( array( 'post_type' => 'wpematico', 'posts_per_page' => -1 ) );
+                            $html = '<thead><tr>';
+                            $html .= '<th scope="col" class="manage-column column-posts">'.esc_html__('ID','wpematico').'</th>';
+                            $html .= '<th scope="col" class="manage-column column-posts">'.esc_html__('Campaign type','wpematico').'</th>';
+                            $html .= '<th scope="col" class="manage-column column-posts">'.esc_html__('Campaign Status','wpematico').'</th>';
+                            $html .= '<th scope="col" class="manage-column column-posts">'.esc_html__('Number feeds','wpematico').'</th>';
+                            $html .= '<th scope="col" class="manage-column column-posts">'.esc_html__('Max value of feeds','wpematico').'</th>';
+                            $html .= '</tr></thead>';
+                            $html .= '<tbody>';
+                            while ( $list_compaings->have_posts() ) : $list_compaings->the_post();
+                                $c = get_post_meta(get_the_ID(), 'campaign_data');
+                                foreach ($c as $key => $value) {
+                                    
+                                    $html .= '<tr><td>'.$value['ID'].'</td>';
+                                    $html .= '<td>'.$value['campaign_type'].'</td>';
+                                    $html .= '<td>'.$value['campaign_posttype'].'</td>';
+                                    $html .= '<td>'.count($value['campaign_feeds']).'</td>';
+                                    $html .= '<td>'.$value['campaign_max'].'</td></tr>';   
+                                }
+                            endwhile;
+                            wp_reset_postdata();
+                            $html .= '</tbody>';
+                            echo $html;
+                        ?>
+                    </tr>
+                
+                </tbody>
+        </table>
+        
 	<h3 class="screen-reader-text"><?php _e('Server Environment', 'wpematico'); ?></h3>
 	<table class="widefat debug-section" cellspacing="0">
 		<thead>
