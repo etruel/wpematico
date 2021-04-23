@@ -567,6 +567,24 @@ function wpematico_getFileSystemMethod() {
 	return $fs;
 }
 
+function wpematico_campaigns_info_data(){
+    static $campaigns_info = array();
+    
+    if( wp_count_posts('wpematico')->publish ){
+        $campaigns_info[] = array( 'published_campaigns' => wp_count_posts('wpematico')->publish );    
+    }
+    $list_campaigns =  new WP_Query( array( 'post_type' => 'wpematico', 'posts_per_page' => -1 ) );
+    while ( $list_campaigns->have_posts() ) : $list_campaigns->the_post();
+        $campaigns = get_post_meta(get_the_ID(), 'campaign_data');
+        foreach ($campaigns as $campaign) {
+            $campaigns_info[] =  array(  $campaign );  
+        }
+    endwhile;
+    wp_reset_postdata();    
+    
+    return $campaigns_info;
+    
+}
 /**
  *
  * @global object $wpdb
@@ -581,7 +599,8 @@ function wpematico_debug_data() {
 			require_once dirname(__FILE__) . '/lib/browser.php';  //https://github.com/cbschuld/Browser.php
 
 		$vars['browser'] = new Browser();
-
+                
+                $vars['campaigns_info'] =  wpematico_campaigns_info_data();
 		// Get theme info
 		if(get_bloginfo('version') < '3.4') {
 			$theme_data		 = get_theme_data(get_stylesheet_directory() . '/style.css');
@@ -726,6 +745,51 @@ function wpematico_show_data_info() {
 	$debug_data = wpematico_debug_data();
 	extract($debug_data);
 	?>
+        <h3 class="screen-reader-text"><?php _e('Campaigns Infos', 'wpematico'); ?></h3>
+	<table class="widefat debug-section" cellspacing="0">
+		<thead>
+			<tr>
+				<th colspan="8" class="debug-section-title" data-export-label="Campaigns Infos"><?php _e('Campaigns Infos', 'wpematico'); ?></th>
+			</tr>
+		</thead>
+                <tbody>
+                    <tr>
+                        <td data-export-label="Compaings info"><?php _e('Total campaigns:','wpematico');?></td>
+                        <td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('Number of campaigns created.', 'wpematico') . '">[?]</a>'; ?></td>                    
+                        <td><strong><?php echo $debug_data['campaigns_info'][0]['published_campaigns']; ?></strong></td>
+                    </tr>
+                    <tr>
+                     <thead>
+                            <tr>
+                            <th scope="col" class="manage-column column-posts"><?php esc_html_e('Campaign ID','wpematico')?></th>
+                            <th scope="col" class="manage-column column-posts"><?php esc_html_e('Campaign type','wpematico')?></th>
+                            <th scope="col" class="manage-column column-posts"><?php esc_html_e('Publish as','wpematico')?></th>
+                            <th scope="col" class="manage-column column-posts"><?php esc_html_e('Campaign Status','wpematico')?></th>
+                            <th scope="col" class="manage-column column-posts"><?php esc_html_e('Number of feeds','wpematico')?></th>
+                            <th scope="col" class="manage-column column-posts"><?php esc_html_e('Max items','wpematico')?></th>
+                            <th scope="col" class="manage-column column-posts"><?php esc_html_e('Last Run','wpematico')?></th>
+                            <th scope="col" class="manage-column column-posts"><?php esc_html_e('Next Run','wpematico')?></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ( array_slice($debug_data['campaigns_info'],1) as $campaign) { ?>    
+                            <tr>
+                                <td><?php  echo $campaign[0]['ID']?></td>
+                                <td><?php  echo $campaign[0]['campaign_type']?></td>
+                                 <td><?php echo $campaign[0]['campaign_customposttype']?></td>
+                                <td><?php  echo $campaign[0]['campaign_posttype']?></td>
+                                <td><?php  echo count($campaign[0]['campaign_feeds'])?></td>
+                                <td><?php  echo $campaign[0]['campaign_max']?></td>
+                                <td><?php  echo date_i18n( get_option('date_format') .' ' . get_option('time_format'), $campaign[0]['lastrun'])?></td>
+                                <td><?php  echo date_i18n( get_option('date_format') .' ' . get_option('time_format'), $campaign[0]['cronnextrun'])?></td>
+                            </tr>
+                            <?php  } ?>
+                        </tbody>
+                    </tr>
+                    
+                </tbody>
+        </table>
+        
 	<h3 class="screen-reader-text"><?php _e('Server Environment', 'wpematico'); ?></h3>
 	<table class="widefat debug-section" cellspacing="0">
 		<thead>
@@ -1396,7 +1460,7 @@ function wpematico_debug_info_get() {
 	extract($debug_data);
 
 	$return = '### Begin Debug Info ###' . "\n\n";
-
+                
 	$return .= "" . '-- Server Environment' . "\n\n";
 	// Can we determine the site's host?
 	if($host) {
@@ -1530,7 +1594,22 @@ function wpematico_debug_info_get() {
 
 	$return = apply_filters('wpematico_sysinfo_after_wordpress_config', $return);
 
-
+        $return .= "\n" . '-- Campaigns Infos' . "\n\n";
+        $return .= "Total campaigns:    " . $debug_data['campaigns_info'][0]['published_campaigns'] . "\n\n";
+        foreach ( array_slice($debug_data['campaigns_info'],1) as $campaign) {
+                            
+            $return .= 'Campaign ID:        ' . $campaign[0]['ID'] . "\n";
+            $return .= 'Campaign type:      ' . $campaign[0]['campaign_type'] . "\n";
+            $return .= 'Publish as:         ' . $campaign[0]['campaign_customposttype'] . "\n";
+            $return .= 'Campaign Status:    ' . $campaign[0]['campaign_posttype'] . "\n";
+            $return .= 'Number of feeds:    ' . count($campaign[0]['campaign_feeds']) . "\n";
+            $return .= 'Max items:          ' . $campaign[0]['campaign_max']. "\n";
+            $return .= 'Last Run:           ' . date_i18n( get_option('date_format') .' ' . get_option('time_format'), $campaign[0]['lastrun']). "\n";
+            $return .= 'Next Run:           ' . date_i18n( get_option('date_format') .' ' . get_option('time_format'), $campaign[0]['cronnextrun']). "\n\n";
+        }        
+        
+        $return = apply_filters('wpematico_sysinfo_after_campaigns_infos', $return);
+        
 	// WPeMatico configuration
 	$return	 .= "\n" . '-- WPeMatico Configuration' . "\n\n";
 	$return	 .= 'Version:                  ' . WPeMatico::$version . "\n";
