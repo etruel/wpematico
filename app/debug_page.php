@@ -567,14 +567,22 @@ function wpematico_getFileSystemMethod() {
 	return $fs;
 }
 
-function wpematico_compaings_info_data(){
-    static $compaings_info = array();
+function wpematico_campaigns_info_data(){
+    static $campaigns_info = array();
     
     if( wp_count_posts('wpematico')->publish ){
-        $compaings_info['published_compaings'] =  wp_count_posts('wpematico')->publish;    
+        $campaigns_info[] = array( 'published_campaigns' => wp_count_posts('wpematico')->publish );    
     }
-       
-    return $compaings_info;
+    $list_campaigns =  new WP_Query( array( 'post_type' => 'wpematico', 'posts_per_page' => -1 ) );
+    while ( $list_campaigns->have_posts() ) : $list_campaigns->the_post();
+        $campaigns = get_post_meta(get_the_ID(), 'campaign_data');
+        foreach ($campaigns as $campaign) {
+            $campaigns_info[] =  array(  $campaign );  
+        }
+    endwhile;
+    wp_reset_postdata();    
+    
+    return $campaigns_info;
     
 }
 /**
@@ -592,8 +600,7 @@ function wpematico_debug_data() {
 
 		$vars['browser'] = new Browser();
                 
-                // Merge compaings info
-                $vars['compaings_info'] =  wpematico_compaings_info_data();
+                $vars['campaigns_info'] =  wpematico_campaigns_info_data();
 		// Get theme info
 		if(get_bloginfo('version') < '3.4') {
 			$theme_data		 = get_theme_data(get_stylesheet_directory() . '/style.css');
@@ -742,43 +749,40 @@ function wpematico_show_data_info() {
 	<table class="widefat debug-section" cellspacing="0">
 		<thead>
 			<tr>
-				<th colspan="5" class="debug-section-title" data-export-label="Campaigns Infos"><?php _e('Campaigns Infos', 'wpematico'); ?></th>
+				<th colspan="6" class="debug-section-title" data-export-label="Campaigns Infos"><?php _e('Campaigns Infos', 'wpematico'); ?></th>
 			</tr>
 		</thead>
                 <tbody>
                     <tr>
                         <td data-export-label="Compaings info"><?php _e('Total campaigns:','wpematico');?></td>
-                        <td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('Number of compaings created.', 'wpematico') . '">[?]</a>'; ?></td>                    
-                        <td><strong><?php echo $debug_data['compaings_info']['published_compaings']; ?></strong></td>
+                        <td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('Number of campaigns created.', 'wpematico') . '">[?]</a>'; ?></td>                    
+                        <td><strong><?php echo $debug_data['campaigns_info'][0]['published_campaigns']; ?></strong></td>
                     </tr>
                     <tr>
-                        <?php
-                            $list_compaings =  new WP_Query( array( 'post_type' => 'wpematico', 'posts_per_page' => -1 ) );
-                            $html = '<thead><tr>';
-                            $html .= '<th scope="col" class="manage-column column-posts">'.esc_html__('Campaign ID','wpematico').'</th>';
-                            $html .= '<th scope="col" class="manage-column column-posts">'.esc_html__('Campaign type','wpematico').'</th>';
-                            $html .= '<th scope="col" class="manage-column column-posts">'.esc_html__('Campaign Status','wpematico').'</th>';
-                            $html .= '<th scope="col" class="manage-column column-posts">'.esc_html__('Number of feeds','wpematico').'</th>';
-                            $html .= '<th scope="col" class="manage-column column-posts">'.esc_html__('Max value of feeds','wpematico').'</th>';
-                            $html .= '</tr></thead>';
-                            $html .= '<tbody>';
-                            while ( $list_compaings->have_posts() ) : $list_compaings->the_post();
-                                $c = get_post_meta(get_the_ID(), 'campaign_data');
-                                foreach ($c as $key => $value) {
-                                    
-                                    $html .= '<tr><td>'.$value['ID'].'</td>';
-                                    $html .= '<td>'.$value['campaign_type'].'</td>';
-                                    $html .= '<td>'.$value['campaign_posttype'].'</td>';
-                                    $html .= '<td>'.count($value['campaign_feeds']).'</td>';
-                                    $html .= '<td>'.$value['campaign_max'].'</td></tr>';   
-                                }
-                            endwhile;
-                            wp_reset_postdata();
-                            $html .= '</tbody>';
-                            echo $html;
-                        ?>
+                     <thead>
+                            <tr>
+                            <th scope="col" class="manage-column column-posts"><?php esc_html_e('Campaign ID','wpematico')?></th>
+                            <th scope="col" class="manage-column column-posts"><?php esc_html_e('Campaign type','wpematico')?></th>
+                            <th scope="col" class="manage-column column-posts"><?php esc_html_e('Publish as','wpematico')?></th>
+                            <th scope="col" class="manage-column column-posts"><?php esc_html_e('Campaign Status','wpematico')?></th>
+                            <th scope="col" class="manage-column column-posts"><?php esc_html_e('Number of feeds','wpematico')?></th>
+                            <th scope="col" class="manage-column column-posts"><?php esc_html_e('Max value of feeds','wpematico')?></th>
+                              </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ( array_slice($debug_data['campaigns_info'],1) as $campaign) { ?>    
+                            <tr>
+                                <td><?php  echo $campaign[0]['ID']?></td>
+                                <td><?php  echo $campaign[0]['campaign_type']?></td>
+                                 <td><?php echo $campaign[0]['campaign_customposttype']?></td>
+                                <td><?php  echo $campaign[0]['campaign_posttype']?></td>
+                                <td><?php  echo count($campaign[0]['campaign_feeds'])?></td>
+                                <td><?php  echo $campaign[0]['campaign_max']?></td>
+                            </tr>
+                            <?php  } ?>
+                        </tbody>
                     </tr>
-                
+                    
                 </tbody>
         </table>
         
