@@ -491,6 +491,7 @@ function wpematico_get_plugin_new_version($plugin) {
 }
 
 function wpematico_disk_total_space($echo = TRUE) {
+    if( function_exists( 'disk_total_space' ) ){
 	$bytes = disk_total_space(".");
 	if(is_float($bytes)) {
 		$si_prefix = array('B', 'KB', 'MB', 'GB', 'TB', 'EB', 'ZB', 'YB');
@@ -508,9 +509,13 @@ function wpematico_disk_total_space($echo = TRUE) {
 			__('ERROR: Function disk_total_space() seems not to exist.','wpematico').'<br />';
 		}
 	}
+    }else{
+        return FALSE;
+    }
 }
 
 function wpematico_disk_free_space($echo = TRUE) {
+    if( function_exists( 'disk_free_space' ) ){
 	$bytes = disk_free_space(".");
 	if(is_float($bytes)) {
 		$si_prefix = array('B', 'KB', 'MB', 'GB', 'TB', 'EB', 'ZB', 'YB');
@@ -528,6 +533,12 @@ function wpematico_disk_free_space($echo = TRUE) {
 			__('ERROR: Function disk_free_space() seems not to exist.', 'wpematico').'<br />';
 		}
 	}
+    }else{
+        
+        return FALSE;
+    }
+    
+    
 }
 
 function wpematico_get_option_active_plugins() {
@@ -631,12 +642,15 @@ function wpematico_debug_data() {
 
 		$vars['front_page_id']		 = get_option('page_on_front');
 		$vars['blog_page_id']		 = get_option('page_for_posts');
-
-		if (stripos($_SERVER['SERVER_SOFTWARE'],'apache') !== false){
+                    
+		if ( (stripos($_SERVER['SERVER_SOFTWARE'],'apache') !== false) || ( wpematico_disk_total_space(false) && wpematico_disk_free_space(false) ) ){
 			$vars['disk_total_space']	 = wpematico_disk_total_space(false);
 			$vars['disk_free_space']	 = wpematico_disk_free_space(false);
-		}
-
+		}else{
+			$vars['disk_total_space']	 = 'N.A';
+			$vars['disk_free_space']	 = 'N.A';                    
+                }
+            
 		$vars['fsmethod']			 = wpematico_getFileSystemMethod();
 
 		$vars['professional_help']	 = '<a href="https://etruel.com/downloads/wpematico-professional/" target="_blank">WPeMatico Professional</a>';
@@ -1294,10 +1308,10 @@ function wpematico_show_data_info() {
 		<tbody>
 			<?php
 			foreach($muplugins as $plugin => $plugin_data) {
-				$new_version	 = $plugin_data['new_version'];
-				$dirname		 = $plugin_data['dirname'];
-				$version_string	 = $plugin_data['version_string'];
-				$network_string	 = $plugin_data['network_string'];
+				$new_version	 = array_key_exists( 'new_version' , $plugin_data ) ? $plugin_data['new_version']: '';
+				$dirname	 = array_key_exists( 'dirname' , $plugin_data ) ? $plugin_data['dirname']: '';
+				$version_string	 = array_key_exists( 'version_string' , $plugin_data ) ? $plugin_data['version_string'] : '';
+				$network_string	 = array_key_exists( 'network_string' , $plugin_data ) ? $plugin_data['network_string'] : '';
 
 				if(!empty($plugin_data['Name'])) {
 
@@ -1624,7 +1638,7 @@ function wpematico_debug_info_get() {
 	$return = apply_filters('wpematico_sysinfo_after_wpematico_config', $return);
 
 	// Must-use plugins
-	if(count($muplugins > 0)) {
+	if( !empty( $muplugins ) ) {
 		$return .= "\n" . '-- Must-Use Plugins (' . count((array) $muplugins) . ')' . "\n\n";
 
 		foreach($muplugins as $plugin => $plugin_data) {
