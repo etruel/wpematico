@@ -12,13 +12,13 @@
  * @license   GPL v2 or later
  */
 // don't load directly 
-if(!defined('ABSPATH')) {
+if (!defined('ABSPATH')) {
 	header('Status: 403 Forbidden');
 	header('HTTP/1.1 403 Forbidden');
 	exit();
 }
 
-if(!class_exists('WPeMatico_functions')) {
+if (!class_exists('WPeMatico_functions')) {
 
 	class WPeMatico_functions {
 
@@ -32,30 +32,30 @@ if(!class_exists('WPeMatico_functions')) {
 		public static function is_duplicated_item($campaign, $feed, $item) {
 			// Post slugs must be unique across all posts.
 			global $wpdb, $wp_rewrite;
-			$post_ID	 = 0;
-			$cpost_type	 = $campaign['campaign_customposttype'];
-			$dev		 = false;
+			$post_ID = 0;
+			$cpost_type = $campaign['campaign_customposttype'];
+			$dev = false;
 
-			$wfeeds	 = $wp_rewrite->feeds;
-			if(!is_array($wfeeds))
-				$wfeeds	 = array();
-			$title	 = $item->get_title();
+			$wfeeds = $wp_rewrite->feeds;
+			if (!is_array($wfeeds))
+				$wfeeds = array();
+			$title = $item->get_title();
 
 			$title = htmlspecialchars_decode($title);
-			if($campaign['campaign_enable_convert_utf8']) {
+			if ($campaign['campaign_enable_convert_utf8']) {
 				$title = WPeMatico::change_to_utf8($title);
 			}
 
-			$title	 = esc_attr($title);
-			$title	 = html_entity_decode($title, ENT_QUOTES | ENT_HTML401, 'UTF-8');
-			if($campaign['copy_permanlink_source']) {
-				$permalink	 = $item->get_permalink();
-				$slug		 = self::get_slug_from_permalink($permalink);
-			}else {
+			$title = esc_attr($title);
+			$title = html_entity_decode($title, ENT_QUOTES | ENT_HTML401, 'UTF-8');
+			if ($campaign['copy_permanlink_source']) {
+				$permalink = $item->get_permalink();
+				$slug = self::get_slug_from_permalink($permalink);
+			} else {
 				$slug = sanitize_title($title);
 			}
 
-			$exist_post_on_db	 = false;
+			$exist_post_on_db = false;
 			/**
 			 * Deprecated since 1.6 in favor of a query improved by db indexes
 			  //$check_sql = "SELECT post_name FROM $wpdb->posts WHERE post_name = %s AND post_type = %s AND ID != %d LIMIT 1";
@@ -64,27 +64,27 @@ if(!class_exists('WPeMatico_functions')) {
 			  $dev = true;
 			  }
 			 */
-			$check_sql			 = "SELECT ID, post_name, post_type FROM $wpdb->posts WHERE post_name = %s LIMIT 1";
-			$post_name_check	 = $wpdb->get_results($wpdb->prepare($check_sql, $slug));
-			if(!empty($post_name_check)) {
-				if($post_name_check[0]->ID == 0 || $cpost_type == $post_name_check[0]->post_type) {
+			$check_sql = "SELECT ID, post_name, post_type FROM $wpdb->posts WHERE post_name = %s LIMIT 1";
+			$post_name_check = $wpdb->get_results($wpdb->prepare($check_sql, $slug));
+			if (!empty($post_name_check)) {
+				if ($post_name_check[0]->ID == 0 || $cpost_type == $post_name_check[0]->post_type) {
 					$exist_post_on_db = true;
 				}
 			}
 
-			if($exist_post_on_db) {
+			if ($exist_post_on_db) {
 				$dev = true;
-			}else {
-				if(in_array($slug, $wfeeds)) {
+			} else {
+				if (in_array($slug, $wfeeds)) {
 					$dev = true;
-				}else {
-					if(apply_filters('wp_unique_post_slug_is_bad_flat_slug', false, $slug, $cpost_type)) {
+				} else {
+					if (apply_filters('wp_unique_post_slug_is_bad_flat_slug', false, $slug, $cpost_type)) {
 						$dev = true;
 					}
 				}
 			}
 
-			if(has_filter('wpematico_duplicates'))
+			if (has_filter('wpematico_duplicates'))
 				$dev = apply_filters('wpematico_duplicates', $dev, $campaign, $item);
 			//  http://wordpress.stackexchange.com/a/72691/65771
 			//  https://codex.wordpress.org/Function_Reference/get_page_by_title
@@ -105,7 +105,7 @@ if(!class_exists('WPeMatico_functions')) {
 		 */
 		public static function change_to_utf8($string) {
 			$from = apply_filters('wpematico_custom_chrset', mb_detect_encoding($string, "auto"));
-			if($from && $from != 'UTF-8') {
+			if ($from && $from != 'UTF-8') {
 				$string = mb_convert_encoding($string, 'UTF-8', $from);
 			}
 			return $string;
@@ -121,34 +121,34 @@ if(!class_exists('WPeMatico_functions')) {
 		 */
 		public static function get_enconding_from_header($url) {
 			static $encoding_hosts = array();
-			if(empty($encoding_hosts)) {
+			if (empty($encoding_hosts)) {
 				$encoding_hosts = get_transient('wpematico_encoding_hosts');
-				if($encoding_hosts === false) {
+				if ($encoding_hosts === false) {
 					$encoding_hosts = array();
 				}
 			}
 
-			$parsed_url	 = parse_url($url);
-			$host		 = (isset($parsed_url['host']) ? $parsed_url['host'] : time());
+			$parsed_url = parse_url($url);
+			$host = (isset($parsed_url['host']) ? $parsed_url['host'] : time());
 
-			if(!isset($encoding_hosts[$host])) {
+			if (!isset($encoding_hosts[$host])) {
 				/**
 				 * First checks encoding in the feed file attribute on first line
 				 * if not found find in their headers
 				 */
-				$encoding	 = '';
-				$response	 = wp_remote_get(esc_url_raw($url));
-				if(!empty($response)) {
-					$body	 = wp_remote_retrieve_body($response);
-					$lin1	 = strtok($body, PHP_EOL);
-					if(preg_match('/.+?encoding\s?=\s?[\"\'].*?(.+?)[\"\']/s', $lin1, $m)) {
+				$encoding = '';
+				$response = wp_remote_get(esc_url_raw($url));
+				if (!empty($response)) {
+					$body = wp_remote_retrieve_body($response);
+					$lin1 = strtok($body, PHP_EOL);
+					if (preg_match('/.+?encoding\s?=\s?[\"\'].*?(.+?)[\"\']/s', $lin1, $m)) {
 						$encoding = $m[1];
 					}
 				}
-				if($encoding === '') {
+				if ($encoding === '') {
 					$content_type = wp_remote_retrieve_header($response, 'content-type');
-					if(!empty($content_type)) {
-						if(preg_match("#.+?/.+?;\\s?charset\\s?=\\s?(.+)#i", $content_type, $m)) {
+					if (!empty($content_type)) {
+						if (preg_match("#.+?/.+?;\\s?charset\\s?=\\s?(.+)#i", $content_type, $m)) {
 							$encoding = $m[1];
 						}
 					}
@@ -168,7 +168,7 @@ if(!class_exists('WPeMatico_functions')) {
 		 * @since 1.9.1
 		 */
 		public static function detect_encoding_from_headers($from) {
-			if(strtoupper($from) == 'ASCII') {
+			if (strtoupper($from) == 'ASCII') {
 				$from = WPeMatico::get_enconding_from_header(WPeMatico::$current_feed);
 			}
 			return $from;
@@ -180,21 +180,20 @@ if(!class_exists('WPeMatico_functions')) {
 		 * @since 2.0
 		 */
 		public static function get_duplicate_options($settings = array(), $campaign = array()) {
-			$options											 = array();
-			$options['allowduplicates']							 = $settings['allowduplicates'];
-			$options['allowduptitle']							 = $settings['allowduptitle'];
-			$options['allowduphash']							 = $settings['allowduphash'];
-			$options['jumpduplicates']							 = $settings['jumpduplicates'];
-			$options['add_extra_duplicate_filter_meta_source']	 = $settings['add_extra_duplicate_filter_meta_source'];
+			$options = array();
+			$options['allowduplicates'] = $settings['allowduplicates'];
+			$options['allowduptitle'] = $settings['allowduptitle'];
+			$options['allowduphash'] = $settings['allowduphash'];
+			$options['jumpduplicates'] = $settings['jumpduplicates'];
+			$options['add_extra_duplicate_filter_meta_source'] = $settings['add_extra_duplicate_filter_meta_source'];
 
+			if (isset($campaign['campaign_no_setting_duplicate']) && $campaign['campaign_no_setting_duplicate']) {
 
-			if(isset($campaign['campaign_no_setting_duplicate']) && $campaign['campaign_no_setting_duplicate']) {
-
-				$options['allowduplicates']							 = $campaign['campaign_allowduplicates'];
-				$options['allowduptitle']							 = $campaign['campaign_allowduptitle'];
-				$options['allowduphash']							 = $campaign['campaign_allowduphash'];
-				$options['jumpduplicates']							 = $campaign['campaign_jumpduplicates'];
-				$options['add_extra_duplicate_filter_meta_source']	 = $campaign['campaign_add_ext_duplicate_filter_ms'];
+				$options['allowduplicates'] = $campaign['campaign_allowduplicates'];
+				$options['allowduptitle'] = $campaign['campaign_allowduptitle'];
+				$options['allowduphash'] = $campaign['campaign_allowduphash'];
+				$options['jumpduplicates'] = $campaign['campaign_jumpduplicates'];
+				$options['add_extra_duplicate_filter_meta_source'] = $campaign['campaign_add_ext_duplicate_filter_ms'];
 			}
 			$options = apply_filters('wpematico_duplicate_options', $options, $settings, $campaign);
 			return $options;
@@ -206,33 +205,33 @@ if(!class_exists('WPeMatico_functions')) {
 		 * @since 1.7.0
 		 */
 		public static function get_images_options($settings = array(), $campaign = array()) {
-			$options					 = array();
-			$options['imgcache']		 = $settings['imgcache'];
-			$options['fifu']			 = $settings['fifu'];
-			$options['imgattach']		 = $settings['imgattach'];
-			$options['gralnolinkimg']	 = $settings['gralnolinkimg'];
-			$options['image_srcset']	 = $settings['image_srcset'];
+			$options = array();
+			$options['imgcache'] = $settings['imgcache'];
+			$options['fifu'] = $settings['fifu'];
+			$options['imgattach'] = $settings['imgattach'];
+			$options['gralnolinkimg'] = $settings['gralnolinkimg'];
+			$options['image_srcset'] = $settings['image_srcset'];
 
-			$options['featuredimg']		 = $settings['featuredimg'];
-			$options['rmfeaturedimg']	 = $settings['rmfeaturedimg'];
-			$options['customupload']	 = $settings['customupload'];
-			if(!$options['imgcache']) {
-				$options['imgattach']		 = false;
-				$options['gralnolinkimg']	 = false;
-				$options['image_srcset']	 = false;
-				if(!$options['featuredimg']) {
+			$options['featuredimg'] = $settings['featuredimg'];
+			$options['rmfeaturedimg'] = $settings['rmfeaturedimg'];
+			$options['customupload'] = $settings['customupload'];
+			if (!$options['imgcache']) {
+				$options['imgattach'] = false;
+				$options['gralnolinkimg'] = false;
+				$options['image_srcset'] = false;
+				if (!$options['featuredimg']) {
 					$options['customupload'] = false;
 				}
 			}
-			if(isset($campaign['campaign_no_setting_img']) && $campaign['campaign_no_setting_img']) {
-				$options['imgcache']		 = $campaign['campaign_imgcache'];
-				$options['imgattach']		 = $campaign['campaign_attach_img'];
-				$options['gralnolinkimg']	 = $campaign['campaign_nolinkimg'];
-				$options['image_srcset']	 = $campaign['campaign_image_srcset'];
-				$options['featuredimg']		 = $campaign['campaign_featuredimg'];
-				$options['fifu']			 = $campaign['campaign_fifu'];
-				$options['rmfeaturedimg']	 = $campaign['campaign_rmfeaturedimg'];
-				$options['customupload']	 = $campaign['campaign_customupload'];
+			if (isset($campaign['campaign_no_setting_img']) && $campaign['campaign_no_setting_img']) {
+				$options['imgcache'] = $campaign['campaign_imgcache'];
+				$options['imgattach'] = $campaign['campaign_attach_img'];
+				$options['gralnolinkimg'] = $campaign['campaign_nolinkimg'];
+				$options['image_srcset'] = $campaign['campaign_image_srcset'];
+				$options['featuredimg'] = $campaign['campaign_featuredimg'];
+				$options['fifu'] = $campaign['campaign_fifu'];
+				$options['rmfeaturedimg'] = $campaign['campaign_rmfeaturedimg'];
+				$options['customupload'] = $campaign['campaign_customupload'];
 			}
 			$options = apply_filters('wpematico_images_options', $options, $settings, $campaign);
 			return $options;
@@ -245,21 +244,21 @@ if(!class_exists('WPeMatico_functions')) {
 		 */
 		public static function get_audios_options($settings = array(), $campaign = array()) {
 
-			$options						 = array();
-			$options['audio_cache']			 = $settings['audio_cache'];
-			$options['audio_attach']		 = $settings['audio_attach'];
-			$options['gralnolink_audio']	 = $settings['gralnolink_audio'];
-			$options['customupload_audios']	 = $settings['customupload_audios'];
-			if(!$options['audio_cache']) {
-				$options['audio_attach']		 = false;
-				$options['gralnolink_audio']	 = false;
-				$options['customupload_audios']	 = false;
+			$options = array();
+			$options['audio_cache'] = $settings['audio_cache'];
+			$options['audio_attach'] = $settings['audio_attach'];
+			$options['gralnolink_audio'] = $settings['gralnolink_audio'];
+			$options['customupload_audios'] = $settings['customupload_audios'];
+			if (!$options['audio_cache']) {
+				$options['audio_attach'] = false;
+				$options['gralnolink_audio'] = false;
+				$options['customupload_audios'] = false;
 			}
-			if(isset($campaign['campaign_no_setting_audio']) && $campaign['campaign_no_setting_audio']) {
-				$options['audio_cache']			 = $campaign['campaign_audio_cache'];
-				$options['audio_attach']		 = $campaign['campaign_attach_audio'];
-				$options['gralnolink_audio']	 = $campaign['campaign_nolink_audio'];
-				$options['customupload_audios']	 = $campaign['campaign_customupload_audio'];
+			if (isset($campaign['campaign_no_setting_audio']) && $campaign['campaign_no_setting_audio']) {
+				$options['audio_cache'] = $campaign['campaign_audio_cache'];
+				$options['audio_attach'] = $campaign['campaign_attach_audio'];
+				$options['gralnolink_audio'] = $campaign['campaign_nolink_audio'];
+				$options['customupload_audios'] = $campaign['campaign_customupload_audio'];
 			}
 			$options = apply_filters('wpematico_audios_options', $options, $settings, $campaign);
 			return $options;
@@ -271,21 +270,21 @@ if(!class_exists('WPeMatico_functions')) {
 		 * @since 1.7.0
 		 */
 		public static function get_videos_options($settings = array(), $campaign = array()) {
-			$options						 = array();
-			$options['video_cache']			 = $settings['video_cache'];
-			$options['video_attach']		 = $settings['video_attach'];
-			$options['gralnolink_video']	 = $settings['gralnolink_video'];
-			$options['customupload_videos']	 = $settings['customupload_videos'];
-			if(!$options['video_cache']) {
-				$options['video_attach']		 = false;
-				$options['gralnolink_video']	 = false;
-				$options['customupload_videos']	 = false;
+			$options = array();
+			$options['video_cache'] = $settings['video_cache'];
+			$options['video_attach'] = $settings['video_attach'];
+			$options['gralnolink_video'] = $settings['gralnolink_video'];
+			$options['customupload_videos'] = $settings['customupload_videos'];
+			if (!$options['video_cache']) {
+				$options['video_attach'] = false;
+				$options['gralnolink_video'] = false;
+				$options['customupload_videos'] = false;
 			}
-			if(isset($campaign['campaign_no_setting_video']) && $campaign['campaign_no_setting_video']) {
-				$options['video_cache']			 = $campaign['campaign_video_cache'];
-				$options['video_attach']		 = $campaign['campaign_attach_video'];
-				$options['gralnolink_video']	 = $campaign['campaign_nolink_video'];
-				$options['customupload_videos']	 = $campaign['campaign_customupload_video'];
+			if (isset($campaign['campaign_no_setting_video']) && $campaign['campaign_no_setting_video']) {
+				$options['video_cache'] = $campaign['campaign_video_cache'];
+				$options['video_attach'] = $campaign['campaign_attach_video'];
+				$options['gralnolink_video'] = $campaign['campaign_nolink_video'];
+				$options['customupload_videos'] = $campaign['campaign_customupload_video'];
 			}
 			$options = apply_filters('wpematico_videos_options', $options, $settings, $campaign);
 			return $options;
@@ -297,11 +296,11 @@ if(!class_exists('WPeMatico_functions')) {
 		 * @since 2.5.3
 		 */
 		public static function get_images_allowed_mimes() {
-			$mime_types	 = get_allowed_mime_types();
-			$return		 = '';
-			foreach($mime_types as $key => $mime) {
+			$mime_types = get_allowed_mime_types();
+			$return = '';
+			foreach ($mime_types as $key => $mime) {
 				// Validate image types and replace | by ,
-				if(strpos($mime, 'image/') !== false) {
+				if (strpos($mime, 'image/') !== false) {
 					$return .= str_replace('|', ',', "$key,");
 				}
 			}
@@ -319,11 +318,11 @@ if(!class_exists('WPeMatico_functions')) {
 		 * @since 2.5.3
 		 */
 		public static function get_audios_allowed_mimes() {
-			$mime_types	 = get_allowed_mime_types();
-			$return		 = '';
-			foreach($mime_types as $key => $mime) {
+			$mime_types = get_allowed_mime_types();
+			$return = '';
+			foreach ($mime_types as $key => $mime) {
 				// Validate audio types and replace | by ,
-				if(strpos($mime, 'audio/') !== false) {
+				if (strpos($mime, 'audio/') !== false) {
 					$return .= str_replace('|', ',', "$key,");
 				}
 			}
@@ -341,11 +340,11 @@ if(!class_exists('WPeMatico_functions')) {
 		 * @since 2.5.3
 		 */
 		public static function get_videos_allowed_mimes() {
-			$mime_types	 = get_allowed_mime_types();
-			$return		 = '';
-			foreach($mime_types as $key => $mime) {
+			$mime_types = get_allowed_mime_types();
+			$return = '';
+			foreach ($mime_types as $key => $mime) {
 				// Validate video types and replace | by ,
-				if(strpos($mime, 'video/') !== false) {
+				if (strpos($mime, 'video/') !== false) {
 					$return .= str_replace('|', ',', "$key,");
 				}
 			}
@@ -364,86 +363,106 @@ if(!class_exists('WPeMatico_functions')) {
 		 * @access public
 		 * @param $url_origin String contain the URL of File will be uploaded.
 		 * @param $new_file String contain the Path of File where it will be saved.
-		 * @return bool true if is success
+		 * @return String Path to file if uploaded, bool false if not success
 		 * @since 1.9.0
 		 */
 		public static function save_file_from_url($url_origin, $new_file) {
 			/**
+			 * Beta: Filter to avoid run these methods by using an external function through the filter.
+			 * The function should read the $url_origin and save it as $new_file and return the file path as string.
+			 * If return false will continue trying to upload with the following methods below (see $allow_continue)
+			 */
+			$file_path = apply_filters('wpematico_user_custom_upload', false, $url_origin, $new_file);
+			if ($file_path !== false) {
+				return $file_path;  // Return path of the already uploaded file
+			} else {
+				/**
+				 * Beta: Continuing prior filter if it returned false.
+				 * Description: Allow or avoid continue trying with the below methods.
+				 * False to avoid continue and return false as the file was not uploaded.
+				 * True to skip this and follow the own custom uploads methods below.
+				 */
+				$allow_continue = apply_filters('wpematico_user_custom_upload_continue', true, $url_origin, $new_file);
+				if (!$allow_continue)
+					return false;  // Return 
+			}
+
+			/**
 			 * Filter to avoid download and return just the new name as it was downloaded.
 			 */
-			$dest_file	 = apply_filters('wpematico_overwrite_file', $new_file);
-			if($dest_file === FALSE)
+			$dest_file = apply_filters('wpematico_overwrite_file', $new_file);
+			if ($dest_file === FALSE)
 				return $new_file;  // Don't upload it and return the name like it was uploaded
-			$new_file	 = $dest_file;
-			$i			 = 1;
+			$new_file = $dest_file;
+			$i = 1;
 			while (file_exists($new_file)) {
 				$file_extension = strrchr($new_file, '.'); //Will return .JPEG
-				if($i == 1) {
-					$file_name	 = substr($new_file, 0, strlen($new_file) - strlen($file_extension));
-					$new_file	 = $file_name . "-$i" . $file_extension;
-				}else {
-					$file_name	 = substr($new_file, 0, strlen($new_file) - strlen($file_extension) - strlen("-$i"));
-					$new_file	 = $file_name . "-$i" . $file_extension;
+				if ($i == 1) {
+					$file_name = substr($new_file, 0, strlen($new_file) - strlen($file_extension));
+					$new_file = $file_name . "-$i" . $file_extension;
+				} else {
+					$file_name = substr($new_file, 0, strlen($new_file) - strlen($file_extension) - strlen("-$i"));
+					$new_file = $file_name . "-$i" . $file_extension;
 				}
 				$i++;
 			}
 
 			global $wp_filesystem;
 			/* checks if exists $wp_filesystem */
-			if(empty($wp_filesystem) || !isset($GLOBALS['wp_filesystem']) || !is_object($GLOBALS['wp_filesystem'])) {
+			if (empty($wp_filesystem) || !isset($GLOBALS['wp_filesystem']) || !is_object($GLOBALS['wp_filesystem'])) {
 
-				if(file_exists(ABSPATH . '/wp-admin/includes/file.php')) {
+				if (file_exists(ABSPATH . '/wp-admin/includes/file.php')) {
 					include_once( ABSPATH . '/wp-admin/includes/file.php' );
 				}
-				$upload_dir	 = wp_upload_dir();
-				$context	 = trailingslashit($upload_dir['path']); /* Used by request_filesystem_credentials to verify the folder permissions if it needs credentials. */
+				$upload_dir = wp_upload_dir();
+				$context = trailingslashit($upload_dir['path']); /* Used by request_filesystem_credentials to verify the folder permissions if it needs credentials. */
 
 				ob_start();
 				$creds = request_filesystem_credentials('edit.php?post_type=wpematico', '', false, $context);
 				ob_end_clean();
 
-				if($creds === false) {
+				if ($creds === false) {
 					return false;
 				}
 				$init = WP_Filesystem($creds, $context);
-				if(!$init)
+				if (!$init)
 					return false;
 			}
 
-			$origin_content	 = '';
-			$wrote			 = false;
+			$origin_content = '';
+			$wrote = false;
 			// $wp_filesystem->get_contents in 'direct' method allows url downloads, other methods should work only on local files
-			if(defined('FS_METHOD') && FS_METHOD == 'direct') {
+			if (defined('FS_METHOD') && FS_METHOD == 'direct') {
 				$origin_content = $wp_filesystem->get_contents($url_origin);
 			}
-			if(empty($origin_content)) {
+			if (empty($origin_content)) {
 				// first try if no 'direct' method
 				$download_file = download_url($url_origin);  // 300 seconds timeout by default 
-				if(!is_wp_error($download_file)) {
+				if (!is_wp_error($download_file)) {
 					/**
 					 * if success we try to move the file instead get and put contents to improve performance.  
 					 * (copy and unlink pasted from wp->file.php line 868~ )
 					 */
 					$move_new_file = @copy($download_file, $new_file);
-					if(false === $move_new_file) {
+					if (false === $move_new_file) {
 						$origin_content = $wp_filesystem->get_contents($download_file);
-					}else {
+					} else {
 						//Successfully moved
-						$origin_content	 = '';
-						$wrote			 = true;
+						$origin_content = '';
+						$wrote = true;
 					}
 					unlink($download_file);
-				}else {
+				} else {
 					//third try to obtain the file 
 					trigger_error(sprintf(__('Download error: %s Using an alternate download method...', 'wpematico'), $download_file->get_error_message()), E_USER_WARNING);
 					$origin_content = WPeMatico::wpematico_get_contents($url_origin, array());
 				}
 			}
 
-			if(!empty($origin_content)) {
+			if (!empty($origin_content)) {
 				$wrote = $wp_filesystem->put_contents($new_file, $origin_content);
 
-				if(!$wrote) {
+				if (!$wrote) {
 					unlink($new_file);
 				}
 			}
@@ -457,42 +476,42 @@ if(!class_exists('WPeMatico_functions')) {
 		 * @since 1.7.0
 		 */
 		public static function get_attribute_value($atribute, $string) {
-			$value					 = '';
-			$attribute_patterns		 = array();
-			$attribute_patterns[]	 = $atribute . '=';
-			$attribute_patterns[]	 = $atribute . ' = ';
-			$attribute_patterns[]	 = $atribute . '= ';
-			$attribute_patterns[]	 = $atribute . ' =';
-			$pos_var				 = false;
-			$index_pattern			 = -1;
-			foreach($attribute_patterns as $kp => $pattern) {
-				$pos_var		 = strpos($string, $pattern);
-				$index_pattern	 = $kp;
-				if($pos_var !== false) {
+			$value = '';
+			$attribute_patterns = array();
+			$attribute_patterns[] = $atribute . '=';
+			$attribute_patterns[] = $atribute . ' = ';
+			$attribute_patterns[] = $atribute . '= ';
+			$attribute_patterns[] = $atribute . ' =';
+			$pos_var = false;
+			$index_pattern = -1;
+			foreach ($attribute_patterns as $kp => $pattern) {
+				$pos_var = strpos($string, $pattern);
+				$index_pattern = $kp;
+				if ($pos_var !== false) {
 					break;
 				}
 			}
-			if($pos_var === false) {
+			if ($pos_var === false) {
 				return $value;
 			}
-			$len_pattern	 = strlen($attribute_patterns[$index_pattern]);
-			$pos_offset_one	 = strpos($string, '"', $pos_var + $len_pattern + 1);
-			$pos_offset		 = $pos_offset_one;
-			$pos_offset_two	 = strpos($string, "'", $pos_var + $len_pattern + 1);
-			if($pos_offset_one === false) {
+			$len_pattern = strlen($attribute_patterns[$index_pattern]);
+			$pos_offset_one = strpos($string, '"', $pos_var + $len_pattern + 1);
+			$pos_offset = $pos_offset_one;
+			$pos_offset_two = strpos($string, "'", $pos_var + $len_pattern + 1);
+			if ($pos_offset_one === false) {
 				$pos_offset_one = PHP_INT_MAX;
 			}
-			if($pos_offset_two === false) {
+			if ($pos_offset_two === false) {
 				$pos_offset_two = PHP_INT_MAX;
 			}
 
-			if($pos_offset_two < $pos_offset_one) {
+			if ($pos_offset_two < $pos_offset_one) {
 				$pos_offset = $pos_offset_two;
 			}
-			$offset_substr	 = ($pos_offset - ($pos_var + $len_pattern));
-			$value			 = substr($string, $pos_var + $len_pattern, $offset_substr);
-			$value			 = str_replace('"', '', $value);
-			$value			 = str_replace("'", '', $value);
+			$offset_substr = ($pos_offset - ($pos_var + $len_pattern));
+			$value = substr($string, $pos_var + $len_pattern, $offset_substr);
+			$value = str_replace('"', '', $value);
+			$value = str_replace("'", '', $value);
 			return $value;
 		}
 
@@ -503,13 +522,13 @@ if(!class_exists('WPeMatico_functions')) {
 		 * @since 1.7.1
 		 */
 		public static function get_tags($tag, $string) {
-			$tags_content	 = array();
-			$current_offset	 = 0;
+			$tags_content = array();
+			$current_offset = 0;
 			do {
 				$tag_return = self::get_tag($tag, $string, $current_offset);
-				if($tag_return) {
-					$tags_content[]	 = $tag_return[1];
-					$current_offset	 = $tag_return[0];
+				if ($tag_return) {
+					$tags_content[] = $tag_return[1];
+					$current_offset = $tag_return[0];
 				}
 			} while ($tag_return !== false);
 			return $tags_content;
@@ -522,40 +541,40 @@ if(!class_exists('WPeMatico_functions')) {
 		 * @since 1.7.1
 		 */
 		public static function get_tag($tag, $string, $offset_start = 0) {
-			$value			 = '';
-			$tag_patterns	 = array();
-			$tag_patterns[]	 = '<' . $tag;
-			$tag_patterns[]	 = '< ' . $tag;
-			$pos_var		 = false;
-			$index_pattern	 = -1;
-			foreach($tag_patterns as $kp => $pattern) {
-				$pos_var		 = strpos($string, $pattern, $offset_start);
-				$index_pattern	 = $kp;
-				if($pos_var !== false) {
+			$value = '';
+			$tag_patterns = array();
+			$tag_patterns[] = '<' . $tag;
+			$tag_patterns[] = '< ' . $tag;
+			$pos_var = false;
+			$index_pattern = -1;
+			foreach ($tag_patterns as $kp => $pattern) {
+				$pos_var = strpos($string, $pattern, $offset_start);
+				$index_pattern = $kp;
+				if ($pos_var !== false) {
 					break;
 				}
 			}
-			if($pos_var === false) {
+			if ($pos_var === false) {
 				return false;
 			}
-			$tag_end_patterns	 = array();
-			$tag_end_patterns[]	 = '</' . $tag . '>';
-			$tag_end_patterns[]	 = '</ ' . $tag . '>';
-			$tag_end_patterns[]	 = '/>';
-			$tag_end_patterns[]	 = '/ >';
+			$tag_end_patterns = array();
+			$tag_end_patterns[] = '</' . $tag . '>';
+			$tag_end_patterns[] = '</ ' . $tag . '>';
+			$tag_end_patterns[] = '/>';
+			$tag_end_patterns[] = '/ >';
 
-			$pos_offset_end		 = false;
-			$index_pattern_end	 = -1;
-			$len_pattern		 = strlen($tag_patterns[$index_pattern]);
-			foreach($tag_end_patterns as $kp => $pattern) {
-				$pos_offset_end		 = strpos($string, $pattern, $pos_var + $len_pattern + 2);
-				$index_pattern_end	 = $kp;
-				if($pos_offset_end !== false) {
+			$pos_offset_end = false;
+			$index_pattern_end = -1;
+			$len_pattern = strlen($tag_patterns[$index_pattern]);
+			foreach ($tag_end_patterns as $kp => $pattern) {
+				$pos_offset_end = strpos($string, $pattern, $pos_var + $len_pattern + 2);
+				$index_pattern_end = $kp;
+				if ($pos_offset_end !== false) {
 					break;
 				}
 			}
 
-			if($pos_offset_end === false) {
+			if ($pos_offset_end === false) {
 				return false;
 			}
 
@@ -568,13 +587,13 @@ if(!class_exists('WPeMatico_functions')) {
 			preg_match_all('/<(.+?)[\s]*\/?[\s]*>/si', trim($tags), $tags);
 			$tags = array_unique($tags[1]);
 
-			if(is_array($tags) AND count($tags) > 0) {
-				if($invert == FALSE) {
+			if (is_array($tags) AND count($tags) > 0) {
+				if ($invert == FALSE) {
 					return preg_replace('@<(?!(?:' . implode('|', $tags) . ')\b)(\w+)\b.*?>.*?</\1>@si', '', $text);
-				}else {
+				} else {
 					return preg_replace('@<(' . implode('|', $tags) . ')\b.*?>.*?</\1>@si', '', $text);
 				}
-			}elseif($invert == FALSE) {
+			} elseif ($invert == FALSE) {
 				return preg_replace('@<(\w+)\b.*?>.*?</\1>@si', '', $text);
 			}
 			return $text;
@@ -582,28 +601,28 @@ if(!class_exists('WPeMatico_functions')) {
 
 		public static function wpematico_env_checks() {
 			global $wp_version, $user_ID;
-			$message				 = $wpematico_admin_message = '';
-			$message				 = '';
-			$checks					 = true;
-			if(!is_admin())
+			$message = $wpematico_admin_message = '';
+			$message = '';
+			$checks = true;
+			if (!is_admin())
 				return false;
-			if(version_compare($wp_version, '3.9', '<')) { // check WP Version
+			if (version_compare($wp_version, '3.9', '<')) { // check WP Version
 				$message .= __('- WordPress 3.9 or higher needed!', 'wpematico') . '<br />';
-				$checks	 = false;
+				$checks = false;
 			}
-			if(version_compare(phpversion(), '5.3.0', '<')) { // check PHP Version
+			if (version_compare(phpversion(), '5.3.0', '<')) { // check PHP Version
 				$message .= __('- PHP 5.3.0 or higher needed!', 'wpematico') . '<br />';
-				$checks	 = false;
+				$checks = false;
 			}
 			// Check if PRO version is installed and its required version
-			$active_plugins			 = get_option('active_plugins');
-			$active_plugins_names	 = array_map('basename', $active_plugins);
-			$is_pro_active			 = array_search('wpematicopro.php', $active_plugins_names);
-			if($is_pro_active !== FALSE) {
+			$active_plugins = get_option('active_plugins');
+			$active_plugins_names = array_map('basename', $active_plugins);
+			$is_pro_active = array_search('wpematicopro.php', $active_plugins_names);
+			if ($is_pro_active !== FALSE) {
 				//$proplugin_data['Name']=  WPeMaticoPRO::NAME;
-				$plpath			 = trailingslashit(WP_PLUGIN_DIR) . $active_plugins[$is_pro_active];
-				$proplugin_data	 = self::plugin_get_version($plpath);
-				if($proplugin_data['Name'] == 'WPeMatico Professional' && version_compare($proplugin_data['Version'], WPeMatico::PROREQUIRED, '<')) {
+				$plpath = trailingslashit(WP_PLUGIN_DIR) . $active_plugins[$is_pro_active];
+				$proplugin_data = self::plugin_get_version($plpath);
+				if ($proplugin_data['Name'] == 'WPeMatico Professional' && version_compare($proplugin_data['Version'], WPeMatico::PROREQUIRED, '<')) {
 					$message .= __('You are using WPeMatico Professional too old.', 'wpematico') . '<br />';
 					$message .= __('Must install at least "WPeMatico Professional" ' . WPeMatico::PROREQUIRED, 'wpematico');
 					$message .= ' <a href="' . admin_url('plugins.php?page=wpemaddons') . '#wpematico-pro"> ' . __('Go to upgrade Now', 'wpematico') . '</a>';
@@ -613,21 +632,21 @@ if(!class_exists('WPeMatico_functions')) {
 				}
 			}
 
-			if(wp_next_scheduled('wpematico_cron') != 0 and wp_next_scheduled('wpematico_cron') > (time() + 360)) {  //check cron jobs work
+			if (wp_next_scheduled('wpematico_cron') != 0 and wp_next_scheduled('wpematico_cron') > (time() + 360)) {  //check cron jobs work
 				$message .= __("- WP-Cron don't working please check it!", 'wpematico') . '<br />';
 			}
 			//put massage if one
-			if(!empty($message))
+			if (!empty($message))
 				$wpematico_admin_message = '<div id="message" class="error fade"><strong>WPeMatico:</strong><br />' . $message . '</div>';
 
 //		$notice = delete_option('wpematico_notices');
 			$notice = get_option('wpematico_notices');
-			if(!empty($notice)) {
-				foreach($notice as $key => $mess) {
-					if($mess['user_ID'] == $user_ID) {
-						$class					 = ($mess['error']) ? "notice notice-error" : "notice notice-success";
-						$class					 .= ($mess['is-dismissible']) ? " is-dismissible" : "";
-						$class					 .= ($mess['below-h2']) ? " below-h2" : "";
+			if (!empty($notice)) {
+				foreach ($notice as $key => $mess) {
+					if ($mess['user_ID'] == $user_ID) {
+						$class = ($mess['error']) ? "notice notice-error" : "notice notice-success";
+						$class .= ($mess['is-dismissible']) ? " is-dismissible" : "";
+						$class .= ($mess['below-h2']) ? " below-h2" : "";
 						$wpematico_admin_message .= '<div id="message" class="' . $class . '"><p>' . $mess['text'] . '</p></div>';
 						unset($notice[$key]);
 					}
@@ -635,9 +654,9 @@ if(!class_exists('WPeMatico_functions')) {
 				update_option('wpematico_notices', $notice);
 			}
 
-			if(!empty($wpematico_admin_message)) {
+			if (!empty($wpematico_admin_message)) {
 				//send response to admin notice : ejemplo con la función dentro del add_action
-				add_action('admin_notices', function() use ($wpematico_admin_message) {
+				add_action('admin_notices', function () use ($wpematico_admin_message) {
 					//echo '<div class="error"><p>', esc_html($wpematico_admin_message), '</p></div>';
 					echo $wpematico_admin_message;
 				});
@@ -653,24 +672,17 @@ if(!class_exists('WPeMatico_functions')) {
 		 */
 		static function getAllStatuses($statuses = array()) {
 			global $wp_post_statuses;
-			$statuses = array_filter($wp_post_statuses, function($object) {
-				if($object->label_count['domain'] == '')
+			$statuses = array_filter($wp_post_statuses, function ($object) {
+				if ($object->label_count['domain'] == '')
 					return true;
 			});
 			$args = apply_filters('wpematico_statuses_args', array(
 //			'_builtin'                  => 1,
-				'show_in_admin_status_list'	 => 1,
-				'show_in_admin_all_list'	 => 1,
+				'show_in_admin_status_list' => 1,
+				'show_in_admin_all_list' => 1,
 			));
 			return apply_filters('wpematico_campaign_statuses', wp_filter_object_list($statuses, $args));
 		}
-
-		/* 	//Admin header notify
-		  function wpematico_admin_notice() {
-		  global $wpematico_admin_message;
-		  echo $wpematico_admin_message;
-		  }
-		 */
 
 		/** add_wp_notice
 		 * 
@@ -683,27 +695,27 @@ if(!class_exists('WPeMatico_functions')) {
 		 * 
 		 */
 		Public static function add_wp_notice($new_notice) {
-			if(is_string($new_notice))
-				$adm_notice['text']				 = $new_notice;
+			if (is_string($new_notice))
+				$adm_notice['text'] = $new_notice;
 			else
-				$adm_notice['text']				 = (!isset($new_notice['text'])) ? '' : $new_notice['text'];
-			$adm_notice['error']			 = (!isset($new_notice['error'])) ? false : $new_notice['error'];
-			$adm_notice['below-h2']			 = (!isset($new_notice['below-h2'])) ? true : $new_notice['below-h2'];
-			$adm_notice['is-dismissible']	 = (!isset($new_notice['is-dismissible'])) ? true : $new_notice['is-dismissible'];
-			$adm_notice['user_ID']			 = (!isset($new_notice['user_ID'])) ? get_current_user_id() : $new_notice['user_ID'];
+				$adm_notice['text'] = (!isset($new_notice['text'])) ? '' : $new_notice['text'];
+			$adm_notice['error'] = (!isset($new_notice['error'])) ? false : $new_notice['error'];
+			$adm_notice['below-h2'] = (!isset($new_notice['below-h2'])) ? true : $new_notice['below-h2'];
+			$adm_notice['is-dismissible'] = (!isset($new_notice['is-dismissible'])) ? true : $new_notice['is-dismissible'];
+			$adm_notice['user_ID'] = (!isset($new_notice['user_ID'])) ? get_current_user_id() : $new_notice['user_ID'];
 
-			$notice		 = get_option('wpematico_notices');
-			$notice[]	 = $adm_notice;
+			$notice = get_option('wpematico_notices');
+			$notice[] = $adm_notice;
 			update_option('wpematico_notices', $notice);
 		}
 
 		//file size
 		public static function formatBytes($bytes, $precision = 2) {
-			$units	 = array('B', 'KB', 'MB', 'GB', 'TB');
-			$bytes	 = max($bytes, 0);
-			$pow	 = floor(($bytes ? log($bytes) : 0) / log(1024));
-			$pow	 = min($pow, count($units) - 1);
-			$bytes	 /= pow(1024, $pow);
+			$units = array('B', 'KB', 'MB', 'GB', 'TB');
+			$bytes = max($bytes, 0);
+			$pow = floor(($bytes ? log($bytes) : 0) / log(1024));
+			$pow = min($pow, count($units) - 1);
+			$bytes /= pow(1024, $pow);
 			return round($bytes, $precision) . ' ' . $units[$pow];
 		}
 
@@ -715,15 +727,15 @@ if(!class_exists('WPeMatico_functions')) {
 		 * @return an array with all campaigns data 
 		 * */
 		public static function get_campaigns() {
-			$campaigns_data	 = array();
-			$args			 = array(
-				'orderby'		 => 'ID',
-				'order'			 => 'ASC',
-				'post_type'		 => 'wpematico',
-				'numberposts'	 => -1
+			$campaigns_data = array();
+			$args = array(
+				'orderby' => 'ID',
+				'order' => 'ASC',
+				'post_type' => 'wpematico',
+				'numberposts' => -1
 			);
-			$campaigns		 = get_posts($args);
-			foreach($campaigns as $post):
+			$campaigns = get_posts($args);
+			foreach ($campaigns as $post):
 				$campaigns_data[] = self::get_campaign($post->ID);
 			endforeach;
 			return $campaigns_data;
@@ -739,15 +751,15 @@ if(!class_exists('WPeMatico_functions')) {
 		 * @return an array with campaign data 
 		 * */
 		public static function get_campaign($post_id, $getfromdb = false) {
-			if($getfromdb) {
+			if ($getfromdb) {
 				$campaign = get_post($post_id);
 			}
-			$campaign_data	 = get_post_meta($post_id, 'campaign_data');
-			$campaign_data	 = ( isset($campaign_data[0]) ) ? $campaign_data[0] : array(0);
+			$campaign_data = get_post_meta($post_id, 'campaign_data');
+			$campaign_data = ( isset($campaign_data[0]) ) ? $campaign_data[0] : array(0);
 			/**
 			 * wpematico_check_campaigndata Filter to sanitize and strip all fields 
 			 */
-			$campaign_data	 = apply_filters('wpematico_check_campaigndata', $campaign_data);
+			$campaign_data = apply_filters('wpematico_check_campaigndata', $campaign_data);
 			return $campaign_data;
 		}
 
@@ -762,17 +774,17 @@ if(!class_exists('WPeMatico_functions')) {
 		/*		 * ************ CHECK DATA ************************************************ */
 		public static function check_campaigndata($post_data) {
 			global $post, $cfg;
-			if(is_null($cfg))
+			if (is_null($cfg))
 				$cfg = get_option(WPeMatico::OPTION_KEY);
 
 			$campaigndata = array();
-			if(isset($post_data['ID']) && !empty($post_data['ID'])) {
+			if (isset($post_data['ID']) && !empty($post_data['ID'])) {
 				$campaigndata['ID'] = (int) $post_data['ID'];
-			}elseif(isset($post_data['campaign_id']) && !empty($post_data['campaign_id'])) {
+			} elseif (isset($post_data['campaign_id']) && !empty($post_data['campaign_id'])) {
 				$campaigndata['ID'] = (int) $post_data['campaign_id'];
-			}elseif(isset($post->ID) && $post->ID > 0) {
+			} elseif (isset($post->ID) && $post->ID > 0) {
 				$campaigndata['ID'] = $post->ID;
-			}else {
+			} else {
 				$campaigndata['ID'] = 0;
 			}
 
@@ -782,27 +794,26 @@ if(!class_exists('WPeMatico_functions')) {
 
 			$campaigndata['campaign_type'] = (!isset($post_data['campaign_type']) ) ? 'feed' : sanitize_text_field($post_data['campaign_type']);
 
-			$campaigndata['campaign_posttype']		 = (!isset($post_data['campaign_posttype']) ) ? 'publish' : sanitize_text_field($post_data['campaign_posttype']);
+			$campaigndata['campaign_posttype'] = (!isset($post_data['campaign_posttype']) ) ? 'publish' : sanitize_text_field($post_data['campaign_posttype']);
 			$campaigndata['campaign_customposttype'] = (!isset($post_data['campaign_customposttype']) ) ? 'post' : sanitize_text_field($post_data['campaign_customposttype']);
-			$arrTaxonomies							 = get_object_taxonomies($campaigndata['campaign_customposttype']);
-			if(in_array('post_format', $arrTaxonomies)) {
+			$arrTaxonomies = get_object_taxonomies($campaigndata['campaign_customposttype']);
+			if (in_array('post_format', $arrTaxonomies)) {
 				$campaigndata['campaign_post_format'] = (!isset($post_data['campaign_post_format']) ) ? '0' : sanitize_text_field($post_data['campaign_post_format']);
-			}else {
+			} else {
 				$campaigndata['campaign_post_format'] = '0';
 			}
 			$campaigndata['activated'] = (!isset($post_data['activated']) || empty($post_data['activated'])) ? false : ( ($post_data['activated'] == 1) ? true : false );
 
-			$campaigndata['campaign_feed_order_date']	 = (!isset($post_data['campaign_feed_order_date']) || empty($post_data['campaign_feed_order_date'])) ? false : ( ($post_data['campaign_feed_order_date'] == 1) ? true : false );
-			$campaigndata['campaign_feeddate']			 = (!isset($post_data['campaign_feeddate']) || empty($post_data['campaign_feeddate'])) ? false : ( ($post_data['campaign_feeddate'] == 1) ? true : false );
-			$campaigndata['campaign_feeddate_forced']	 = (!isset($post_data['campaign_feeddate_forced']) || empty($post_data['campaign_feeddate_forced'])) ? false : ( ($post_data['campaign_feeddate_forced'] == 1) ? true : false );
+			$campaigndata['campaign_feed_order_date'] = (!isset($post_data['campaign_feed_order_date']) || empty($post_data['campaign_feed_order_date'])) ? false : ( ($post_data['campaign_feed_order_date'] == 1) ? true : false );
+			$campaigndata['campaign_feeddate'] = (!isset($post_data['campaign_feeddate']) || empty($post_data['campaign_feeddate'])) ? false : ( ($post_data['campaign_feeddate'] == 1) ? true : false );
+			$campaigndata['campaign_feeddate_forced'] = (!isset($post_data['campaign_feeddate_forced']) || empty($post_data['campaign_feeddate_forced'])) ? false : ( ($post_data['campaign_feeddate_forced'] == 1) ? true : false );
 
-			$campaign_feeds	 = array();
-			$all_feeds		 = ( isset($post_data['campaign_feeds']) && !empty($post_data['campaign_feeds']) ) ? $post_data['campaign_feeds'] : Array();
+			$campaign_feeds = array();
+			$all_feeds = ( isset($post_data['campaign_feeds']) && !empty($post_data['campaign_feeds']) ) ? $post_data['campaign_feeds'] : Array();
 
-
-			if(!empty($all_feeds) && is_array($all_feeds)) {  // Proceso los feeds sacando los que estan en blanco
-				foreach($all_feeds as $id => $feedname) {
-					if(!empty($feedname))
+			if (!empty($all_feeds) && is_array($all_feeds)) {  // Proceso los feeds sacando los que estan en blanco
+				foreach ($all_feeds as $id => $feedname) {
+					if (!empty($feedname))
 						$campaign_feeds[] = $feedname;
 				}
 			}
@@ -813,114 +824,109 @@ if(!class_exists('WPeMatico_functions')) {
 			$campaigndata['cronnextrun'] = (isset($post_data['cronnextrun']) && !empty($post_data['cronnextrun']) ) ? (int) $post_data['cronnextrun'] : (int) WPeMatico :: time_cron_next($campaigndata['cron']);
 
 			// Email address to send campaign logs.
-			$campaigndata['mailerroronly']	 = (!isset($post_data['mailerroronly']) || empty($post_data['mailerroronly'])) ? false : ( ($post_data['mailerroronly'] == 1) ? true : false );
-			$campaigndata['mailaddresslog']	 = (!isset($post_data['mailaddresslog']) ) ? '' : sanitize_email($post_data['mailaddresslog']);
+			$campaigndata['mailerroronly'] = (!isset($post_data['mailerroronly']) || empty($post_data['mailerroronly'])) ? false : ( ($post_data['mailerroronly'] == 1) ? true : false );
+			$campaigndata['mailaddresslog'] = (!isset($post_data['mailaddresslog']) ) ? '' : sanitize_email($post_data['mailaddresslog']);
 
 			// *** Campaign Options
-			$campaigndata['campaign_max']			 = (!isset($post_data['campaign_max']) ) ? 5 : (int) $post_data['campaign_max'];
-			$campaigndata['campaign_author']		 = (!isset($post_data['campaign_author']) ) ? 0 : (int) $post_data['campaign_author'];
-			$campaigndata['campaign_linktosource']	 = (!isset($post_data['campaign_linktosource']) || empty($post_data['campaign_linktosource'])) ? false : ( ($post_data['campaign_linktosource'] == 1) ? true : false );
+			$campaigndata['campaign_max'] = (!isset($post_data['campaign_max']) ) ? 5 : (int) $post_data['campaign_max'];
+			$campaigndata['campaign_author'] = (!isset($post_data['campaign_author']) ) ? 0 : (int) $post_data['campaign_author'];
+			$campaigndata['campaign_linktosource'] = (!isset($post_data['campaign_linktosource']) || empty($post_data['campaign_linktosource'])) ? false : ( ($post_data['campaign_linktosource'] == 1) ? true : false );
 
-			if(!isset($post_data['copy_permanlink_source']) || empty($post_data['copy_permanlink_source'])) {
+			if (!isset($post_data['copy_permanlink_source']) || empty($post_data['copy_permanlink_source'])) {
 				$campaigndata['copy_permanlink_source'] = false;
-			}else {
-				if($post_data['copy_permanlink_source'] == 1) {
+			} else {
+				if ($post_data['copy_permanlink_source'] == 1) {
 					$campaigndata['copy_permanlink_source'] = ($post_data['campaign_type'] != 'youtube') ? true : false;
-				}else {
+				} else {
 					$campaigndata['copy_permanlink_source'] = false;
 				}
 			}
 
 			$campaigndata['avoid_search_redirection'] = (!isset($post_data['avoid_search_redirection']) || empty($post_data['avoid_search_redirection'])) ? false : ( ($post_data['avoid_search_redirection'] == 1) ? true : false );
 
-			$campaigndata['campaign_strip_links']					 = (!isset($post_data['campaign_strip_links']) || empty($post_data['campaign_strip_links'])) ? false : ( ($post_data['campaign_strip_links'] == 1) ? true : false );
-			$campaigndata['campaign_strip_links_options']			 = (!isset($post_data['campaign_strip_links_options']) || !is_array($post_data['campaign_strip_links_options'])) ? array('a' => true, 'script' => true, 'iframe' => true) : $post_data['campaign_strip_links_options'];
-			$campaigndata['campaign_strip_links_options']['a']		 = (!isset($post_data['campaign_strip_links_options']['a']) || empty($post_data['campaign_strip_links_options']['a'])) ? false : ( ($post_data['campaign_strip_links_options']['a']) ? true : false );
-			$campaigndata['campaign_strip_links_options']['script']	 = (!isset($post_data['campaign_strip_links_options']['script']) || empty($post_data['campaign_strip_links_options']['script'])) ? false : ( ($post_data['campaign_strip_links_options']['script']) ? true : false );
-			$campaigndata['campaign_strip_links_options']['iframe']	 = (!isset($post_data['campaign_strip_links_options']['iframe']) || empty($post_data['campaign_strip_links_options']['iframe'])) ? false : ( ($post_data['campaign_strip_links_options']['iframe']) ? true : false );
+			$campaigndata['campaign_strip_links'] = (!isset($post_data['campaign_strip_links']) || empty($post_data['campaign_strip_links'])) ? false : ( ($post_data['campaign_strip_links'] == 1) ? true : false );
+			$campaigndata['campaign_strip_links_options'] = (!isset($post_data['campaign_strip_links_options']) || !is_array($post_data['campaign_strip_links_options'])) ? array('a' => true, 'script' => true, 'iframe' => true) : $post_data['campaign_strip_links_options'];
+			$campaigndata['campaign_strip_links_options']['a'] = (!isset($post_data['campaign_strip_links_options']['a']) || empty($post_data['campaign_strip_links_options']['a'])) ? false : ( ($post_data['campaign_strip_links_options']['a']) ? true : false );
+			$campaigndata['campaign_strip_links_options']['script'] = (!isset($post_data['campaign_strip_links_options']['script']) || empty($post_data['campaign_strip_links_options']['script'])) ? false : ( ($post_data['campaign_strip_links_options']['script']) ? true : false );
+			$campaigndata['campaign_strip_links_options']['iframe'] = (!isset($post_data['campaign_strip_links_options']['iframe']) || empty($post_data['campaign_strip_links_options']['iframe'])) ? false : ( ($post_data['campaign_strip_links_options']['iframe']) ? true : false );
 
-			$campaigndata['campaign_commentstatus']	 = (!isset($post_data['campaign_commentstatus']) ) ? 'closed' : sanitize_text_field($post_data['campaign_commentstatus']);
-			$campaigndata['campaign_allowpings']	 = (!isset($post_data['campaign_allowpings']) || empty($post_data['campaign_allowpings'])) ? false : ( ($post_data['campaign_allowpings'] == 1) ? true : false );
-			$campaigndata['campaign_woutfilter']	 = (!isset($post_data['campaign_woutfilter']) || empty($post_data['campaign_woutfilter'])) ? false : ( ($post_data['campaign_woutfilter'] == 1) ? true : false );
-			$campaigndata['campaign_striphtml']		 = (!isset($post_data['campaign_striphtml']) || empty($post_data['campaign_striphtml'])) ? false : ( ($post_data['campaign_striphtml'] == 1) ? true : false );
-			$campaigndata['campaign_get_excerpt']		 = (!isset($post_data['campaign_get_excerpt']) || empty($post_data['campaign_get_excerpt'])) ? false : ( ($post_data['campaign_get_excerpt'] == 1) ? true : false );
-
+			$campaigndata['campaign_commentstatus'] = (!isset($post_data['campaign_commentstatus']) ) ? 'closed' : sanitize_text_field($post_data['campaign_commentstatus']);
+			$campaigndata['campaign_allowpings'] = (!isset($post_data['campaign_allowpings']) || empty($post_data['campaign_allowpings'])) ? false : ( ($post_data['campaign_allowpings'] == 1) ? true : false );
+			$campaigndata['campaign_woutfilter'] = (!isset($post_data['campaign_woutfilter']) || empty($post_data['campaign_woutfilter'])) ? false : ( ($post_data['campaign_woutfilter'] == 1) ? true : false );
+			$campaigndata['campaign_striphtml'] = (!isset($post_data['campaign_striphtml']) || empty($post_data['campaign_striphtml'])) ? false : ( ($post_data['campaign_striphtml'] == 1) ? true : false );
+			$campaigndata['campaign_get_excerpt'] = (!isset($post_data['campaign_get_excerpt']) || empty($post_data['campaign_get_excerpt'])) ? false : ( ($post_data['campaign_get_excerpt'] == 1) ? true : false );
 
 			$campaigndata['campaign_enable_convert_utf8'] = (!isset($post_data['campaign_enable_convert_utf8']) || empty($post_data['campaign_enable_convert_utf8'])) ? false : ( ($post_data['campaign_enable_convert_utf8'] == 1) ? true : false );
 
 			// *** Campaign Audios
-			$campaigndata['campaign_no_setting_audio']	 = (!isset($post_data['campaign_no_setting_audio']) || empty($post_data['campaign_no_setting_audio'])) ? false : ( ($post_data['campaign_no_setting_audio'] == 1) ? true : false );
-			$campaigndata['campaign_audio_cache']		 = (!isset($post_data['campaign_audio_cache']) || empty($post_data['campaign_audio_cache'])) ? false : ( ($post_data['campaign_audio_cache'] == 1) ? true : false );
-			$campaigndata['campaign_attach_audio']		 = (!isset($post_data['campaign_attach_audio']) || empty($post_data['campaign_attach_audio'])) ? false : ( ($post_data['campaign_attach_audio'] == 1) ? true : false );
-			$campaigndata['campaign_nolink_audio']		 = (!isset($post_data['campaign_nolink_audio']) || empty($post_data['campaign_nolink_audio'])) ? false : ( ($post_data['campaign_nolink_audio'] == 1) ? true : false );
+			$campaigndata['campaign_no_setting_audio'] = (!isset($post_data['campaign_no_setting_audio']) || empty($post_data['campaign_no_setting_audio'])) ? false : ( ($post_data['campaign_no_setting_audio'] == 1) ? true : false );
+			$campaigndata['campaign_audio_cache'] = (!isset($post_data['campaign_audio_cache']) || empty($post_data['campaign_audio_cache'])) ? false : ( ($post_data['campaign_audio_cache'] == 1) ? true : false );
+			$campaigndata['campaign_attach_audio'] = (!isset($post_data['campaign_attach_audio']) || empty($post_data['campaign_attach_audio'])) ? false : ( ($post_data['campaign_attach_audio'] == 1) ? true : false );
+			$campaigndata['campaign_nolink_audio'] = (!isset($post_data['campaign_nolink_audio']) || empty($post_data['campaign_nolink_audio'])) ? false : ( ($post_data['campaign_nolink_audio'] == 1) ? true : false );
 			$campaigndata['campaign_customupload_audio'] = (!isset($post_data['campaign_customupload_audio']) || empty($post_data['campaign_customupload_audio'])) ? false : ( ($post_data['campaign_customupload_audio'] == 1) ? true : false );
-			if(!$campaigndata['campaign_audio_cache']) {
-				$campaigndata['campaign_attach_audio']		 = false;
-				$campaigndata['campaign_nolink_audio']		 = false;
+			if (!$campaigndata['campaign_audio_cache']) {
+				$campaigndata['campaign_attach_audio'] = false;
+				$campaigndata['campaign_nolink_audio'] = false;
 				$campaigndata['campaign_customupload_audio'] = false;
 			}
 
 			// *** Campaign Videos
-			$campaigndata['campaign_no_setting_video']	 = (!isset($post_data['campaign_no_setting_video']) || empty($post_data['campaign_no_setting_video'])) ? false : ( ($post_data['campaign_no_setting_video'] == 1) ? true : false );
-			$campaigndata['campaign_video_cache']		 = (!isset($post_data['campaign_video_cache']) || empty($post_data['campaign_video_cache'])) ? false : ( ($post_data['campaign_video_cache'] == 1) ? true : false );
-			$campaigndata['campaign_attach_video']		 = (!isset($post_data['campaign_attach_video']) || empty($post_data['campaign_attach_video'])) ? false : ( ($post_data['campaign_attach_video'] == 1) ? true : false );
-			$campaigndata['campaign_nolink_video']		 = (!isset($post_data['campaign_nolink_video']) || empty($post_data['campaign_nolink_video'])) ? false : ( ($post_data['campaign_nolink_video'] == 1) ? true : false );
+			$campaigndata['campaign_no_setting_video'] = (!isset($post_data['campaign_no_setting_video']) || empty($post_data['campaign_no_setting_video'])) ? false : ( ($post_data['campaign_no_setting_video'] == 1) ? true : false );
+			$campaigndata['campaign_video_cache'] = (!isset($post_data['campaign_video_cache']) || empty($post_data['campaign_video_cache'])) ? false : ( ($post_data['campaign_video_cache'] == 1) ? true : false );
+			$campaigndata['campaign_attach_video'] = (!isset($post_data['campaign_attach_video']) || empty($post_data['campaign_attach_video'])) ? false : ( ($post_data['campaign_attach_video'] == 1) ? true : false );
+			$campaigndata['campaign_nolink_video'] = (!isset($post_data['campaign_nolink_video']) || empty($post_data['campaign_nolink_video'])) ? false : ( ($post_data['campaign_nolink_video'] == 1) ? true : false );
 			$campaigndata['campaign_customupload_video'] = (!isset($post_data['campaign_customupload_video']) || empty($post_data['campaign_customupload_video'])) ? false : ( ($post_data['campaign_customupload_video'] == 1) ? true : false );
-			if(!$campaigndata['campaign_video_cache']) {
-				$campaigndata['campaign_attach_video']		 = false;
-				$campaigndata['campaign_nolink_video']		 = false;
+			if (!$campaigndata['campaign_video_cache']) {
+				$campaigndata['campaign_attach_video'] = false;
+				$campaigndata['campaign_nolink_video'] = false;
 				$campaigndata['campaign_customupload_video'] = false;
 			}
 
 			// *** Campaign Images
 			$campaigndata['campaign_no_setting_img'] = (!isset($post_data['campaign_no_setting_img']) || empty($post_data['campaign_no_setting_img'])) ? false : ( ($post_data['campaign_no_setting_img'] == 1) ? true : false );
-			$campaigndata['campaign_imgcache']		 = (!isset($post_data['campaign_imgcache']) || empty($post_data['campaign_imgcache'])) ? false : ( ($post_data['campaign_imgcache'] == 1) ? true : false );
-			$campaigndata['campaign_attach_img']	 = (!isset($post_data['campaign_attach_img']) || empty($post_data['campaign_attach_img'])) ? false : ( ($post_data['campaign_attach_img'] == 1) ? true : false );
-			$campaigndata['campaign_nolinkimg']		 = (!isset($post_data['campaign_nolinkimg']) || empty($post_data['campaign_nolinkimg'])) ? false : ( ($post_data['campaign_nolinkimg'] == 1) ? true : false );
-			$campaigndata['campaign_image_srcset']	 = (!isset($post_data['campaign_image_srcset']) || empty($post_data['campaign_image_srcset'])) ? false : ( ($post_data['campaign_image_srcset'] == 1) ? true : false );
-
+			$campaigndata['campaign_imgcache'] = (!isset($post_data['campaign_imgcache']) || empty($post_data['campaign_imgcache'])) ? false : ( ($post_data['campaign_imgcache'] == 1) ? true : false );
+			$campaigndata['campaign_attach_img'] = (!isset($post_data['campaign_attach_img']) || empty($post_data['campaign_attach_img'])) ? false : ( ($post_data['campaign_attach_img'] == 1) ? true : false );
+			$campaigndata['campaign_nolinkimg'] = (!isset($post_data['campaign_nolinkimg']) || empty($post_data['campaign_nolinkimg'])) ? false : ( ($post_data['campaign_nolinkimg'] == 1) ? true : false );
+			$campaigndata['campaign_image_srcset'] = (!isset($post_data['campaign_image_srcset']) || empty($post_data['campaign_image_srcset'])) ? false : ( ($post_data['campaign_image_srcset'] == 1) ? true : false );
 
 			$campaigndata['campaign_featuredimg'] = (!isset($post_data['campaign_featuredimg']) || empty($post_data['campaign_featuredimg'])) ? false : ( ($post_data['campaign_featuredimg'] == 1) ? true : false );
 			$campaigndata['campaign_fifu'] = (!isset($post_data['campaign_fifu']) || empty($post_data['campaign_fifu'])) ? false : ( ($post_data['campaign_fifu'] == 1) ? true : false );
 
 			$campaigndata['campaign_enable_featured_image_selector'] = (!isset($post_data['campaign_enable_featured_image_selector']) || empty($post_data['campaign_enable_featured_image_selector'])) ? false : ( ($post_data['campaign_enable_featured_image_selector'] == 1) ? true : false );
-			$campaigndata['campaign_featured_selector_index']		 = (!isset($post_data['campaign_featured_selector_index']) || empty($post_data['campaign_featured_selector_index'])) ? '0' : (int) $post_data['campaign_featured_selector_index'];
-			$campaigndata['campaign_featured_selector_ifno']		 = (!isset($post_data['campaign_featured_selector_ifno']) || empty($post_data['campaign_featured_selector_ifno'])) ? 'first' : sanitize_text_field($post_data['campaign_featured_selector_ifno']);
+			$campaigndata['campaign_featured_selector_index'] = (!isset($post_data['campaign_featured_selector_index']) || empty($post_data['campaign_featured_selector_index'])) ? '0' : (int) $post_data['campaign_featured_selector_index'];
+			$campaigndata['campaign_featured_selector_ifno'] = (!isset($post_data['campaign_featured_selector_ifno']) || empty($post_data['campaign_featured_selector_ifno'])) ? 'first' : sanitize_text_field($post_data['campaign_featured_selector_ifno']);
 
+			$campaigndata['campaign_rmfeaturedimg'] = (!isset($post_data['campaign_rmfeaturedimg']) || empty($post_data['campaign_rmfeaturedimg'])) ? false : ( ($post_data['campaign_rmfeaturedimg'] == 1) ? true : false );
+			$campaigndata['campaign_customupload'] = (!isset($post_data['campaign_customupload']) || empty($post_data['campaign_customupload'])) ? false : ( ($post_data['campaign_customupload'] == 1) ? true : false );
 
-			$campaigndata['campaign_rmfeaturedimg']	 = (!isset($post_data['campaign_rmfeaturedimg']) || empty($post_data['campaign_rmfeaturedimg'])) ? false : ( ($post_data['campaign_rmfeaturedimg'] == 1) ? true : false );
-			$campaigndata['campaign_customupload']	 = (!isset($post_data['campaign_customupload']) || empty($post_data['campaign_customupload'])) ? false : ( ($post_data['campaign_customupload'] == 1) ? true : false );
-
-
-
-			if(!$campaigndata['campaign_imgcache']) {
+			if (!$campaigndata['campaign_imgcache']) {
 				$campaigndata['campaign_attach_img'] = false;
-				$campaigndata['campaign_nolinkimg']	 = false;
-				if(!$campaigndata['campaign_featuredimg']) {
+				$campaigndata['campaign_nolinkimg'] = false;
+				if (!$campaigndata['campaign_featuredimg']) {
 					$campaigndata['campaign_customupload'] = false;
 				}
 			}
 			// *** Campaign Template
-			$campaigndata['campaign_enable_template']	 = (!isset($post_data['campaign_enable_template']) || empty($post_data['campaign_enable_template'])) ? false : ( ($post_data['campaign_enable_template'] == 1) ? true : false );
-			if(isset($post_data['campaign_template']))
-				$campaigndata['campaign_template']			 = $post_data['campaign_template'];
+			$campaigndata['campaign_enable_template'] = (!isset($post_data['campaign_enable_template']) || empty($post_data['campaign_enable_template'])) ? false : ( ($post_data['campaign_enable_template'] == 1) ? true : false );
+			if (isset($post_data['campaign_template']))
+				$campaigndata['campaign_template'] = $post_data['campaign_template'];
 			else {
-				$campaigndata['campaign_enable_template']	 = false;
-				$campaigndata['campaign_template']			 = '';
+				$campaigndata['campaign_enable_template'] = false;
+				$campaigndata['campaign_template'] = '';
 			}
 
 			// *** Processed posts count
-			$campaigndata['postscount']		 = (!isset($post_data['postscount']) ) ? 0 : (int) $post_data['postscount'];
-			$campaigndata['lastpostscount']	 = (!isset($post_data['lastpostscount']) ) ? 0 : (int) $post_data['lastpostscount'];
-			$campaigndata['lastrun']		 = (!isset($post_data['lastrun']) ) ? 0 : (int) $post_data['lastrun'];
-			$campaigndata['lastruntime']	 = (!isset($post_data['lastruntime']) ) ? 0 : $post_data['lastruntime'];  // can be string
+			$campaigndata['postscount'] = (!isset($post_data['postscount']) ) ? 0 : (int) $post_data['postscount'];
+			$campaigndata['lastpostscount'] = (!isset($post_data['lastpostscount']) ) ? 0 : (int) $post_data['lastpostscount'];
+			$campaigndata['lastrun'] = (!isset($post_data['lastrun']) ) ? 0 : (int) $post_data['lastrun'];
+			$campaigndata['lastruntime'] = (!isset($post_data['lastruntime']) ) ? 0 : $post_data['lastruntime'];  // can be string
 
 			$campaigndata['starttime'] = (!isset($post_data['starttime']) ) ? 0 : (int) $post_data['starttime'];
 
 			//campaign_categories & tags		
-			if(in_array('post_tag', $arrTaxonomies)) {
+			if (in_array('post_tag', $arrTaxonomies)) {
 				$campaigndata['campaign_tags'] = (!isset($post_data['campaign_tags']) ) ? '' : sanitize_text_field($post_data['campaign_tags']);
-			}else {
+			} else {
 				$campaigndata['campaign_tags'] = '';
 			}
 
@@ -930,111 +936,108 @@ if(!class_exists('WPeMatico_functions')) {
 
 			// Process the new categories if any and add them to the end of the array
 			# New categories
-			if(isset($post_data['campaign_newcat'])) {
-				foreach($post_data['campaign_newcat'] as $k => $on) {
+			if (isset($post_data['campaign_newcat'])) {
+				foreach ($post_data['campaign_newcat'] as $k => $on) {
 					$catname = $post_data['campaign_newcatname'][$k];
-					if(!empty($catname)) {
-						$catname		 = sanitize_text_field($catname);
+					if (!empty($catname)) {
+						$catname = sanitize_text_field($catname);
 						$arg_description = apply_filters('wpematico_addcat_description', __('Category Added in a WPeMatico Campaign', 'wpematico'), $catname);
-						if(isset($cfg['disable_categories_description']) && $cfg['disable_categories_description']) {
+						if (isset($cfg['disable_categories_description']) && $cfg['disable_categories_description']) {
 							$arg_description = '';
 						}
 
-						$arg							 = array('description' => $arg_description, 'parent' => "0");
-						$newcat							 = wp_insert_term($catname, "category", $arg);
-						$post_data['post_category'][]	 = (is_array($newcat)) ? $newcat['term_id'] : $newcat;
+						$arg = array('description' => $arg_description, 'parent' => "0");
+						$newcat = wp_insert_term($catname, "category", $arg);
+						$post_data['post_category'][] = (is_array($newcat)) ? $newcat['term_id'] : $newcat;
 					}
 				}
 			}
 			# All: Las elegidas + las nuevas ya agregadas
-			if(in_array('category', $arrTaxonomies)) {
+			if (in_array('category', $arrTaxonomies)) {
 				$campaigndata['campaign_categories'] = (!isset($post_data['post_category']) ) ? ( (!isset($post_data['campaign_categories']) ) ? array() : (array) $post_data['campaign_categories'] ) : (array) $post_data['post_category'];
-			}else {
+			} else {
 				$campaigndata['campaign_categories'] = array();
 			}
 
 			# Order Words to Category and strip the blank fields
 			//campaign_wrd2cat, campaign_wrd2cat_regex, campaign_wrd2cat_category
 			$campaign_wrd2cat = Array();
-			if(isset($post_data['campaign_wrd2cat']['word'])) {
+			if (isset($post_data['campaign_wrd2cat']['word'])) {
 				//for ($i = 0; $i <= count(@$campaign_wrd2cat['word']); $i++) {
-				foreach($post_data['campaign_wrd2cat']['word'] as $id => $value) {
+				foreach ($post_data['campaign_wrd2cat']['word'] as $id => $value) {
 					//$word = ( isset($post_data['_wp_http_referer']) ) ? addslashes($post_data['campaign_wrd2cat']['word'][$id]): $post_data['campaign_wrd2cat']['word'][$id];
-					$word		 = ($post_data['campaign_wrd2cat']['word'][$id]);
-					$title		 = (isset($post_data['campaign_wrd2cat']['title'][$id]) && $post_data['campaign_wrd2cat']['title'][$id] == 1) ? true : false;
-					$regex		 = (isset($post_data['campaign_wrd2cat']['regex'][$id]) && $post_data['campaign_wrd2cat']['regex'][$id] == 1) ? true : false;
-					$cases		 = (isset($post_data['campaign_wrd2cat']['cases'][$id]) && $post_data['campaign_wrd2cat']['cases'][$id] == 1) ? true : false;
-					$w2ccateg	 = (isset($post_data['campaign_wrd2cat']['w2ccateg'][$id]) && !empty($post_data['campaign_wrd2cat']['w2ccateg'][$id]) ) ? $post_data['campaign_wrd2cat']['w2ccateg'][$id] : '';
-					if(!empty($word)) {
-						$campaign_wrd2cat['word'][]		 = ($regex) ? $word : sanitize_text_field($word);
-						$campaign_wrd2cat['title'][]	 = $title;
-						$campaign_wrd2cat['regex'][]	 = $regex;
-						$campaign_wrd2cat['cases'][]	 = $cases;
-						$campaign_wrd2cat['w2ccateg'][]	 = sanitize_text_field($w2ccateg);
+					$word = ($post_data['campaign_wrd2cat']['word'][$id]);
+					$title = (isset($post_data['campaign_wrd2cat']['title'][$id]) && $post_data['campaign_wrd2cat']['title'][$id] == 1) ? true : false;
+					$regex = (isset($post_data['campaign_wrd2cat']['regex'][$id]) && $post_data['campaign_wrd2cat']['regex'][$id] == 1) ? true : false;
+					$cases = (isset($post_data['campaign_wrd2cat']['cases'][$id]) && $post_data['campaign_wrd2cat']['cases'][$id] == 1) ? true : false;
+					$w2ccateg = (isset($post_data['campaign_wrd2cat']['w2ccateg'][$id]) && !empty($post_data['campaign_wrd2cat']['w2ccateg'][$id]) ) ? $post_data['campaign_wrd2cat']['w2ccateg'][$id] : '';
+					if (!empty($word)) {
+						$campaign_wrd2cat['word'][] = ($regex) ? $word : sanitize_text_field($word);
+						$campaign_wrd2cat['title'][] = $title;
+						$campaign_wrd2cat['regex'][] = $regex;
+						$campaign_wrd2cat['cases'][] = $cases;
+						$campaign_wrd2cat['w2ccateg'][] = sanitize_text_field($w2ccateg);
 					}
 				}
 			}
-			$_wrd2cat							 = array('word' => array(''), 'title' => array(false), 'regex' => array(false), 'w2ccateg' => array(0), 'cases' => array(false));
-			$campaigndata['campaign_wrd2cat']	 = (!empty($campaign_wrd2cat) ) ? (array) $campaign_wrd2cat : (array) $_wrd2cat;
+			$_wrd2cat = array('word' => array(''), 'title' => array(false), 'regex' => array(false), 'w2ccateg' => array(0), 'cases' => array(false));
+			$campaigndata['campaign_wrd2cat'] = (!empty($campaign_wrd2cat) ) ? (array) $campaign_wrd2cat : (array) $_wrd2cat;
 
-			$campaigndata['campaign_w2c_only_use_a_category']	 = (!isset($post_data['campaign_w2c_only_use_a_category']) || empty($post_data['campaign_w2c_only_use_a_category'])) ? false : ( ($post_data['campaign_w2c_only_use_a_category'] == 1) ? true : false );
+			$campaigndata['campaign_w2c_only_use_a_category'] = (!isset($post_data['campaign_w2c_only_use_a_category']) || empty($post_data['campaign_w2c_only_use_a_category'])) ? false : ( ($post_data['campaign_w2c_only_use_a_category'] == 1) ? true : false );
 			$campaigndata['campaign_w2c_the_category_most_used'] = (!isset($post_data['campaign_w2c_the_category_most_used']) || empty($post_data['campaign_w2c_the_category_most_used'])) ? false : ( ($post_data['campaign_w2c_the_category_most_used'] == 1) ? true : false );
 
 			// *** Campaign Rewrites	
 			// Proceso los rewrites sacando los que estan en blanco
 //		$campaign_rewrites = Array();
 			$campaign_rewrites = ( isset($post_data['campaign_rewrites']) && !empty($post_data['campaign_rewrites']) ) ? $post_data['campaign_rewrites'] : Array();
-			if(isset($post_data['campaign_word_origin']) && is_array($post_data['campaign_word_origin'])) {
+			if (isset($post_data['campaign_word_origin']) && is_array($post_data['campaign_word_origin'])) {
 
-				foreach($post_data['campaign_word_origin'] as $id => $rewrite) {
-					$origin	 = wp_check_invalid_utf8($post_data['campaign_word_origin'][$id]);
-					$regex	 = $post_data['campaign_word_option_regex'][$id] == 1 ? true : false;
-					$title	 = $post_data['campaign_word_option_title'][$id] == 1 ? true : false;
+				foreach ($post_data['campaign_word_origin'] as $id => $rewrite) {
+					$origin = wp_check_invalid_utf8($post_data['campaign_word_origin'][$id]);
+					$regex = $post_data['campaign_word_option_regex'][$id] == 1 ? true : false;
+					$title = $post_data['campaign_word_option_title'][$id] == 1 ? true : false;
 					$rewrite = wp_check_invalid_utf8($post_data['campaign_word_rewrite'][$id]);
-					$relink	 = wp_check_invalid_utf8($post_data['campaign_word_relink'][$id]);
-					if(!empty($origin)) {
-						$campaign_rewrites['origin'][]	 = $origin;
-						$campaign_rewrites['regex'][]	 = $regex;
-						$campaign_rewrites['title'][]	 = $title;
-						$campaign_rewrites['rewrite'][]	 = $rewrite;
-						$campaign_rewrites['relink'][]	 = $relink;
+					$relink = wp_check_invalid_utf8($post_data['campaign_word_relink'][$id]);
+					if (!empty($origin)) {
+						$campaign_rewrites['origin'][] = $origin;
+						$campaign_rewrites['regex'][] = $regex;
+						$campaign_rewrites['title'][] = $title;
+						$campaign_rewrites['rewrite'][] = $rewrite;
+						$campaign_rewrites['relink'][] = $relink;
 					}
 				}
 			}
 			$campaigndata['campaign_rewrites'] = !empty($campaign_rewrites) ? (array) $campaign_rewrites : array('origin' => array(''), 'title' => array(false), 'regex' => array(false), 'rewrite' => array(''), 'relink' => array(''));
 
+			$campaigndata['campaign_youtube_embed'] = (!isset($post_data['campaign_youtube_embed']) || empty($post_data['campaign_youtube_embed'])) ? false : ( ($post_data['campaign_youtube_embed'] == 1) ? true : false );
+			$campaigndata['campaign_youtube_sizes'] = (!isset($post_data['campaign_youtube_sizes']) || empty($post_data['campaign_youtube_sizes'])) ? false : ( ($post_data['campaign_youtube_sizes'] == 1) ? true : false );
+			$campaigndata['campaign_youtube_width'] = (!isset($post_data['campaign_youtube_width']) ) ? 0 : (int) $post_data['campaign_youtube_width'];
+			$campaigndata['campaign_youtube_height'] = (!isset($post_data['campaign_youtube_height']) ) ? 0 : (int) $post_data['campaign_youtube_height'];
 
-			$campaigndata['campaign_youtube_embed']		 = (!isset($post_data['campaign_youtube_embed']) || empty($post_data['campaign_youtube_embed'])) ? false : ( ($post_data['campaign_youtube_embed'] == 1) ? true : false );
-			$campaigndata['campaign_youtube_sizes']		 = (!isset($post_data['campaign_youtube_sizes']) || empty($post_data['campaign_youtube_sizes'])) ? false : ( ($post_data['campaign_youtube_sizes'] == 1) ? true : false );
-			$campaigndata['campaign_youtube_width']		 = (!isset($post_data['campaign_youtube_width']) ) ? 0 : (int) $post_data['campaign_youtube_width'];
-			$campaigndata['campaign_youtube_height']	 = (!isset($post_data['campaign_youtube_height']) ) ? 0 : (int) $post_data['campaign_youtube_height'];
-				
-			$campaigndata['campaign_youtube_ign_image']			 = (!isset($post_data['campaign_youtube_ign_image']) || empty($post_data['campaign_youtube_ign_image'])) ? false : ( ($post_data['campaign_youtube_ign_image'] == 1) ? true : false );
-			$campaigndata['campaign_youtube_image_only_featured']= (!isset($post_data['campaign_youtube_image_only_featured']) || empty($post_data['campaign_youtube_image_only_featured'])) ? false : ( ($post_data['campaign_youtube_image_only_featured'] == 1) ? true : false );
+			$campaigndata['campaign_youtube_ign_image'] = (!isset($post_data['campaign_youtube_ign_image']) || empty($post_data['campaign_youtube_ign_image'])) ? false : ( ($post_data['campaign_youtube_ign_image'] == 1) ? true : false );
+			$campaigndata['campaign_youtube_image_only_featured'] = (!isset($post_data['campaign_youtube_image_only_featured']) || empty($post_data['campaign_youtube_image_only_featured'])) ? false : ( ($post_data['campaign_youtube_image_only_featured'] == 1) ? true : false );
 
 			$campaigndata['campaign_youtube_ign_description'] = (!isset($post_data['campaign_youtube_ign_description']) || empty($post_data['campaign_youtube_ign_description'])) ? false : ( ($post_data['campaign_youtube_ign_description'] == 1) ? true : false );
 
+			$campaigndata['campaign_no_setting_duplicate'] = (!isset($post_data['campaign_no_setting_duplicate']) || empty($post_data['campaign_no_setting_duplicate'])) ? false : ( ($post_data['campaign_no_setting_duplicate'] == 1) ? true : false );
+			$campaigndata['campaign_allowduplicates'] = (!isset($post_data['campaign_allowduplicates']) || empty($post_data['campaign_allowduplicates'])) ? false : ( ($post_data['campaign_allowduplicates'] == 1) ? true : false );
+			$campaigndata['campaign_allowduptitle'] = (!isset($post_data['campaign_allowduptitle']) || empty($post_data['campaign_allowduptitle'])) ? false : ( ($post_data['campaign_allowduptitle'] == 1) ? true : false );
+			$campaigndata['campaign_allowduphash'] = (!isset($post_data['campaign_allowduphash']) || empty($post_data['campaign_allowduphash'])) ? false : ( ($post_data['campaign_allowduphash'] == 1) ? true : false );
+			$campaigndata['campaign_add_ext_duplicate_filter_ms'] = (!isset($post_data['campaign_add_ext_duplicate_filter_ms']) || empty($post_data['campaign_add_ext_duplicate_filter_ms'])) ? false : ( ($post_data['campaign_add_ext_duplicate_filter_ms'] == 1) ? true : false );
+			$campaigndata['campaign_jumpduplicates'] = (!isset($post_data['campaign_jumpduplicates']) || empty($post_data['campaign_jumpduplicates'])) ? false : ( ($post_data['campaign_jumpduplicates'] == 1) ? true : false );
 
-			$campaigndata['campaign_no_setting_duplicate']			 = (!isset($post_data['campaign_no_setting_duplicate']) || empty($post_data['campaign_no_setting_duplicate'])) ? false : ( ($post_data['campaign_no_setting_duplicate'] == 1) ? true : false );
-			$campaigndata['campaign_allowduplicates']				 = (!isset($post_data['campaign_allowduplicates']) || empty($post_data['campaign_allowduplicates'])) ? false : ( ($post_data['campaign_allowduplicates'] == 1) ? true : false );
-			$campaigndata['campaign_allowduptitle']					 = (!isset($post_data['campaign_allowduptitle']) || empty($post_data['campaign_allowduptitle'])) ? false : ( ($post_data['campaign_allowduptitle'] == 1) ? true : false );
-			$campaigndata['campaign_allowduphash']					 = (!isset($post_data['campaign_allowduphash']) || empty($post_data['campaign_allowduphash'])) ? false : ( ($post_data['campaign_allowduphash'] == 1) ? true : false );
-			$campaigndata['campaign_add_ext_duplicate_filter_ms']	 = (!isset($post_data['campaign_add_ext_duplicate_filter_ms']) || empty($post_data['campaign_add_ext_duplicate_filter_ms'])) ? false : ( ($post_data['campaign_add_ext_duplicate_filter_ms'] == 1) ? true : false );
-			$campaigndata['campaign_jumpduplicates']				 = (!isset($post_data['campaign_jumpduplicates']) || empty($post_data['campaign_jumpduplicates'])) ? false : ( ($post_data['campaign_jumpduplicates'] == 1) ? true : false );
+			$campaigndata['campaign_bbpress_forum'] = (!isset($post_data['campaign_bbpress_forum']) || empty($post_data['campaign_bbpress_forum'])) ? 0 : (int) $post_data['campaign_bbpress_forum'];
+			$campaigndata['campaign_bbpress_topic'] = (!isset($post_data['campaign_bbpress_topic']) || empty($post_data['campaign_bbpress_topic'])) ? 0 : (int) $post_data['campaign_bbpress_topic'];
 
-			$campaigndata['campaign_bbpress_forum']	 = (!isset($post_data['campaign_bbpress_forum']) || empty($post_data['campaign_bbpress_forum'])) ? 0 : (int) $post_data['campaign_bbpress_forum'];
-			$campaigndata['campaign_bbpress_topic']	 = (!isset($post_data['campaign_bbpress_topic']) || empty($post_data['campaign_bbpress_topic'])) ? 0 : (int) $post_data['campaign_bbpress_topic'];
-
-
-			$campaigndata['campaign_xml_feed_url']		 = (isset($post_data['campaign_xml_feed_url']) && !empty($post_data['campaign_xml_feed_url']) ) ? esc_url_raw($post_data['campaign_xml_feed_url']) : '';
-			$campaigndata['campaign_xml_node']			 = (isset($post_data['campaign_xml_node']) && !empty($post_data['campaign_xml_node']) ) ? (array) $post_data['campaign_xml_node'] : array();
-			$campaigndata['campaign_xml_node_parent']	 = (isset($post_data['campaign_xml_node_parent']) && !empty($post_data['campaign_xml_node_parent']) ) ? (array) $post_data['campaign_xml_node_parent'] : array();
-			if($campaigndata['campaign_type'] == 'xml') {
-				$campaigndata['campaign_feeds']		 = array();
-				$campaigndata['campaign_feeds'][]	 = site_url('/wpematico-xml-feed/');
+			$campaigndata['campaign_xml_feed_url'] = (isset($post_data['campaign_xml_feed_url']) && !empty($post_data['campaign_xml_feed_url']) ) ? esc_url_raw($post_data['campaign_xml_feed_url']) : '';
+			$campaigndata['campaign_xml_node'] = (isset($post_data['campaign_xml_node']) && !empty($post_data['campaign_xml_node']) ) ? (array) $post_data['campaign_xml_node'] : array();
+			$campaigndata['campaign_xml_node_parent'] = (isset($post_data['campaign_xml_node_parent']) && !empty($post_data['campaign_xml_node_parent']) ) ? (array) $post_data['campaign_xml_node_parent'] : array();
+			if ($campaigndata['campaign_type'] == 'xml') {
+				$campaigndata['campaign_feeds'] = array();
+				$campaigndata['campaign_feeds'][] = site_url('/wpematico-xml-feed/');
 			}
 
-			if(has_filter('pro_check_campaigndata'))
+			if (has_filter('pro_check_campaigndata'))
 				$campaigndata = apply_filters('pro_check_campaigndata', $campaigndata, $post_data);
 			return $campaigndata;
 		}
@@ -1050,32 +1053,32 @@ if(!class_exists('WPeMatico_functions')) {
 		 * */
 		public static function update_campaign($post_id, $campaign = array()) {
 			$campaign['cronnextrun'] = (int) WPeMatico :: time_cron_next($campaign['cron']);
-			$campaign				 = apply_filters('wpematico_before_update_campaign', $campaign);
+			$campaign = apply_filters('wpematico_before_update_campaign', $campaign);
 
 			add_post_meta($post_id, 'postscount', $campaign['postscount'], true) or
-				update_post_meta($post_id, 'postscount', $campaign['postscount']);
+					update_post_meta($post_id, 'postscount', $campaign['postscount']);
 
 			add_post_meta($post_id, 'cronnextrun', $campaign['cronnextrun'], true) or
-				update_post_meta($post_id, 'cronnextrun', $campaign['cronnextrun']);
+					update_post_meta($post_id, 'cronnextrun', $campaign['cronnextrun']);
 
 			add_post_meta($post_id, 'lastrun', $campaign['lastrun'], true) or
-				update_post_meta($post_id, 'lastrun', $campaign['lastrun']);
+					update_post_meta($post_id, 'lastrun', $campaign['lastrun']);
 
 			// *** Campaign Rewrites	
 			// Proceso los rewrites agrego slashes	
-			if(isset($campaign['campaign_rewrites']['origin']))
-				for($i = 0; $i < count($campaign['campaign_rewrites']['origin']); $i++) {
-					$campaign['campaign_rewrites']['origin'][$i]	 = addslashes($campaign['campaign_rewrites']['origin'][$i]);
-					$campaign['campaign_rewrites']['rewrite'][$i]	 = addslashes($campaign['campaign_rewrites']['rewrite'][$i]);
-					$campaign['campaign_rewrites']['relink'][$i]	 = addslashes($campaign['campaign_rewrites']['relink'][$i]);
+			if (isset($campaign['campaign_rewrites']['origin']))
+				for ($i = 0; $i < count($campaign['campaign_rewrites']['origin']); $i++) {
+					$campaign['campaign_rewrites']['origin'][$i] = addslashes($campaign['campaign_rewrites']['origin'][$i]);
+					$campaign['campaign_rewrites']['rewrite'][$i] = addslashes($campaign['campaign_rewrites']['rewrite'][$i]);
+					$campaign['campaign_rewrites']['relink'][$i] = addslashes($campaign['campaign_rewrites']['relink'][$i]);
 				}
-			if(isset($campaign['campaign_wrd2cat']['word']))
-				for($i = 0; $i < count($campaign['campaign_wrd2cat']['word']); $i++) {
+			if (isset($campaign['campaign_wrd2cat']['word']))
+				for ($i = 0; $i < count($campaign['campaign_wrd2cat']['word']); $i++) {
 					$campaign['campaign_wrd2cat']['word'][$i] = addslashes($campaign['campaign_wrd2cat']['word'][$i]);
 				}
 
 			return add_post_meta($post_id, 'campaign_data', $campaign, true) or
-				update_post_meta($post_id, 'campaign_data', $campaign);
+					update_post_meta($post_id, 'campaign_data', $campaign);
 		}
 
 		/*		 * ********* 	 Funciones para procesar campañas ***************** */
@@ -1083,21 +1086,21 @@ if(!class_exists('WPeMatico_functions')) {
 		//DoJob
 		public static function wpematico_dojob($jobid) {
 			global $campaign_log_message;
-			$campaign_log_message	 = "";
-			if(empty($jobid))
+			$campaign_log_message = "";
+			if (empty($jobid))
 				return false;
 			require_once(dirname(__FILE__) . '/campaign_fetch.php');
-			$fetched				 = new wpematico_campaign_fetch($jobid);
+			$fetched = new wpematico_campaign_fetch($jobid);
 			unset($fetched);
 			return $campaign_log_message;
 		}
 
 		// Processes all campaigns
 		public static function processAll() {
-			$args		 = array('post_type' => 'wpematico', 'orderby' => 'ID', 'order' => 'ASC');
+			$args = array('post_type' => 'wpematico', 'orderby' => 'ID', 'order' => 'ASC');
 			$campaignsid = get_posts($args);
-			$msglogs	 = "";
-			foreach($campaignsid as $campaignid) {
+			$msglogs = "";
+			foreach ($campaignsid as $campaignid) {
 				@set_time_limit(0);
 				$msglogs .= WPeMatico :: wpematico_dojob($campaignid->ID);
 			}
@@ -1109,11 +1112,11 @@ if(!class_exists('WPeMatico_functions')) {
 		public static function wpematico_permalink($url) {
 			// if from admin panel
 			$post_id = url_to_postid($url);
-			if($post_id) {
+			if ($post_id) {
 				$campaign_id = (int) get_post_meta($post_id, 'wpe_campaignid', true);
-				if($campaign_id) {
+				if ($campaign_id) {
 					$campaign = self::get_campaign($campaign_id);
-					if(isset($campaign['campaign_linktosource']) && $campaign['campaign_linktosource'])
+					if (isset($campaign['campaign_linktosource']) && $campaign['campaign_linktosource'])
 						return get_post_meta($post_id, 'wpe_sourcepermalink', true);
 				}
 			}
@@ -1134,20 +1137,20 @@ if(!class_exists('WPeMatico_functions')) {
 			 * Allow send args from a single var $args easier to filter.
 			 * @since 1.8.0
 			 */
-			if(is_array($args) && isset($args['url'])) {
+			if (is_array($args) && isset($args['url'])) {
 				extract($args);
-			}else {
+			} else {
 				$url = $args;
 			}
 
-			if(!isset($disable_simplepie_notice)) {
+			if (!isset($disable_simplepie_notice)) {
 				$disable_simplepie_notice = false;
 			}
 
 			$cfg = get_option(WPeMatico :: OPTION_KEY);
-			if($cfg['force_mysimplepie']) {
-				if(class_exists('SimplePie')) {
-					if(empty($disable_simplepie_notice)) {
+			if ($cfg['force_mysimplepie']) {
+				if (class_exists('SimplePie')) {
+					if (empty($disable_simplepie_notice)) {
 						echo '<div id="message" class="notice notice-error is-dismissible"><p>' .
 						__('It seems that another plugin are opening Wordpress SimplePie before that WPeMatico can open its own library. This gives a PHP error on duplicated classes.', 'wpematico')
 						. '<br />' .
@@ -1156,47 +1159,46 @@ if(!class_exists('WPeMatico_functions')) {
 						__('Dismiss this notice.')
 						. '</span></button></div>';
 					}
-				}else {
+				} else {
 					require_once dirname(__FILE__) . '/lib/simple_pie_autoloader.php';
 				}
-			}else {
-				if(!class_exists('SimplePie')) {
-					if(is_file(ABSPATH . WPINC . '/class-simplepie.php'))
+			} else {
+				if (!class_exists('SimplePie')) {
+					if (is_file(ABSPATH . WPINC . '/class-simplepie.php'))
 						include_once( ABSPATH . WPINC . '/class-simplepie.php' );
-					else if(is_file(ABSPATH . 'wp-admin/includes/class-simplepie.php'))
+					else if (is_file(ABSPATH . 'wp-admin/includes/class-simplepie.php'))
 						include_once( ABSPATH . 'wp-admin/includes/class-simplepie.php' );
 					else
 						include_once( dirname(__FILE__) . '/lib/simple_pie_autoloader.php' );
 				}
 			}
-			$feed										 = new SimplePie();
-			$feed->timeout								 = apply_filters('wpe_simplepie_timeout', 130);
+			$feed = new SimplePie();
+			$feed->timeout = apply_filters('wpe_simplepie_timeout', 130);
 			$feed->enable_order_by_date($order_by_date);
 			$feed->force_feed($force_feed);
-			$user_agent									 = 'WPeMatico ' . (defined('SIMPLEPIE_NAME') ? SIMPLEPIE_NAME : '') . '/' . (defined('SIMPLEPIE_VERSION') ? SIMPLEPIE_VERSION : '') . ' (Feed Parser; ' . (defined('SIMPLEPIE_URL') ? SIMPLEPIE_URL : '') . '; Allow like Gecko) Build/' . (defined('SIMPLEPIE_BUILD') ? SIMPLEPIE_BUILD : '');
-			$user_agent									 = apply_filters('wpematico_simplepie_user_agent', $user_agent, $url);
+			$user_agent = 'WPeMatico ' . (defined('SIMPLEPIE_NAME') ? SIMPLEPIE_NAME : '') . '/' . (defined('SIMPLEPIE_VERSION') ? SIMPLEPIE_VERSION : '') . ' (Feed Parser; ' . (defined('SIMPLEPIE_URL') ? SIMPLEPIE_URL : '') . '; Allow like Gecko) Build/' . (defined('SIMPLEPIE_BUILD') ? SIMPLEPIE_BUILD : '');
+			$user_agent = apply_filters('wpematico_simplepie_user_agent', $user_agent, $url);
 			$feed->set_useragent($user_agent);
 			$feed->set_feed_url($url);
 //			$feed->feed_url								 = rawurldecode($feed->feed_url);
-			$feed->curl_options[CURLOPT_SSL_VERIFYHOST]	 = false;
-			$feed->curl_options[CURLOPT_SSL_VERIFYPEER]	 = false;
-
+			$feed->curl_options[CURLOPT_SSL_VERIFYHOST] = false;
+			$feed->curl_options[CURLOPT_SSL_VERIFYPEER] = false;
 
 			$feed->set_item_limit($max);
 			$feed->set_stupidly_fast($stupidly_fast);
-			if(!$stupidly_fast) {
-				if($cfg['simplepie_strip_htmltags']) {
-					$strip_htmltags			 = sanitize_text_field($cfg['strip_htmltags']);
-					$strip_htmltags			 = (isset($strip_htmltags) && empty($strip_htmltags) ) ? $strip_htmltags			 = array() : explode(',', $strip_htmltags);
-					$strip_htmltags			 = array_map('trim', $strip_htmltags);
+			if (!$stupidly_fast) {
+				if ($cfg['simplepie_strip_htmltags']) {
+					$strip_htmltags = sanitize_text_field($cfg['strip_htmltags']);
+					$strip_htmltags = (isset($strip_htmltags) && empty($strip_htmltags) ) ? $strip_htmltags = array() : explode(',', $strip_htmltags);
+					$strip_htmltags = array_map('trim', $strip_htmltags);
 					$feed->strip_htmltags($strip_htmltags);
-					$feed->strip_htmltags	 = $strip_htmltags;
+					$feed->strip_htmltags = $strip_htmltags;
 				}
-				if($cfg['simplepie_strip_attributes']) {
+				if ($cfg['simplepie_strip_attributes']) {
 					$feed->strip_attributes($cfg['strip_htmlattr']);
 				}
 			}
-			if(has_filter('wpematico_fetchfeed'))
+			if (has_filter('wpematico_fetchfeed'))
 				$feed = apply_filters('wpematico_fetchfeed', $feed, $url);
 			$feed->enable_cache(false);
 			$feed->init();
@@ -1211,56 +1213,56 @@ if(!class_exists('WPeMatico_functions')) {
 		 */
 		public static function Test_feed($args = '') {
 
-			if(is_array($args)) {
+			if (is_array($args)) {
 				extract($args);
 				$ajax = false;
-			}else {
-				if(!isset($_POST['url'])) {
+			} else {
+				if (!isset($_POST['url'])) {
 					return false;
 				}
 				// to test sanitizers
 				//$url	 = wp_sanitize_redirect($_POST['url']);
-				$url	 = esc_url_raw($_POST['url']);
-				$ajax	 = true;
+				$url = esc_url_raw($_POST['url']);
+				$ajax = true;
 			}
 			/**
 			 * @since 1.8.0
 			 * Added @fetch_feed_params to change parameters values before fetch the feed.
 			 */
 			$fetch_feed_params = array(
-				'url'			 => $url,
-				'stupidly_fast'	 => true,
-				'max'			 => 0,
-				'order_by_date'	 => false,
-				'force_feed'	 => false,
+				'url' => $url,
+				'stupidly_fast' => true,
+				'max' => 0,
+				'order_by_date' => false,
+				'force_feed' => false,
 			);
 
-			$fetch_feed_params	 = apply_filters('wpematico_fetch_feed_params_test', $fetch_feed_params, 0, $_POST);
-			$feed				 = self::fetchFeed($fetch_feed_params);
+			$fetch_feed_params = apply_filters('wpematico_fetch_feed_params_test', $fetch_feed_params, 0, $_POST);
+			$feed = self::fetchFeed($fetch_feed_params);
 
 			$errors = $feed->error(); // if no error returned
 			// Check if PRO version is installed and its required version
 //		$active_plugins = get_option( 'active_plugins' );
 //		$active_plugins_names = array_map('basename', $active_plugins );
 //		$is_pro_active = array_search( 'wpematicopro.php', $active_plugins_names );
-			if(wpematico_is_pro_active()) {
+			if (wpematico_is_pro_active()) {
 				$professional_notice = '';
-			}else {
+			} else {
 				$professional_notice = '<strong>' . __('You should use the Force Feed or Change User Agent features of ', 'wpematico') . '<a href="https://etruel.com/downloads/wpematico-professional/">WPeMatico Professional</a></strong>';
 			}
-			if($ajax) {
-				if(empty($errors)) {
+			if ($ajax) {
+				if (empty($errors)) {
 
 					$response['message'] = sprintf(__('The feed %s has been parsed successfully.', 'wpematico'), $url);
 					$response['message'] .= '<br/> <strong> ' . __('Feed Title:', 'wpematico') . '</strong> ' . $feed->get_title();
 					$response['message'] .= '<br/> <strong> ' . __('Generator:', 'wpematico') . '</strong> ' . self::get_generator_feed($feed);
 					$response['message'] .= '<br/> <strong> ' . __('Charset Enconding:', 'wpematico') . '</strong> ' . $feed->get_encoding();
 
-					foreach($feed->get_items() as $item) {
+					foreach ($feed->get_items() as $item) {
 						$response['message'] .= '<br/><hr/> <strong> ' . __('Last Item Title:', 'wpematico') . '</strong> ' . $item->get_title();
-						$description		 = $item->get_content();
-						$description		 = strip_tags($description);
-						if(strlen($description) > 53) {
+						$description = $item->get_content();
+						$description = strip_tags($description);
+						if (strlen($description) > 53) {
 							$description = mb_substr($description, 0, 50);
 							$description .= '...';
 						}
@@ -1269,15 +1271,15 @@ if(!class_exists('WPeMatico_functions')) {
 					}
 
 					$response['success'] = true;
-				}else {
+				} else {
 					$response['message'] = sprintf(__('The feed %s cannot be parsed. Simplepie said: %s', 'wpematico'), $url, $errors) . '<br />' . $professional_notice;
 					$response['success'] = false;
 				}
 				wp_send_json($response);  //echo json & die
-			}else {
-				if(empty($errors)) {
+			} else {
+				if (empty($errors)) {
 					printf(__('The feed %s has been parsed successfully.', 'wpematico'), $url);
-				}else {
+				} else {
 					printf(__('The feed %s cannot be parsed. Simplepie said: %s', 'wpematico'), $url, $errors) . '<br />' . $professional_notice;
 				}
 				return;
@@ -1285,29 +1287,29 @@ if(!class_exists('WPeMatico_functions')) {
 		}
 
 		public static function get_generator_feed($feed) {
-			$generator_text	 = __('Undetected', 'wpematico');
-			if($generator_tag	 = $feed->get_channel_tags('', 'generator')) {
+			$generator_text = __('Undetected', 'wpematico');
+			if ($generator_tag = $feed->get_channel_tags('', 'generator')) {
 				$generator_text = $generator_tag[0]['data'];
-			}else if($generator_tag = $feed->get_channel_tags(SIMPLEPIE_NAMESPACE_ATOM_10, 'generator')) {
+			} else if ($generator_tag = $feed->get_channel_tags(SIMPLEPIE_NAMESPACE_ATOM_10, 'generator')) {
 				$generator_text = $generator_tag[0]['data'];
-			}else if($generator_tag = $feed->get_channel_tags(SIMPLEPIE_NAMESPACE_ATOM_03, 'generator')) {
+			} else if ($generator_tag = $feed->get_channel_tags(SIMPLEPIE_NAMESPACE_ATOM_03, 'generator')) {
 				$generator_text = $generator_tag[0]['data'];
-			}else if($generator_tag = $feed->get_channel_tags(SIMPLEPIE_NAMESPACE_RDF, 'generator')) {
+			} else if ($generator_tag = $feed->get_channel_tags(SIMPLEPIE_NAMESPACE_RDF, 'generator')) {
 				$generator_text = $generator_tag[0]['data'];
-			}else if($generator_tag = $feed->get_channel_tags(SIMPLEPIE_NAMESPACE_RSS_20, 'generator')) {
+			} else if ($generator_tag = $feed->get_channel_tags(SIMPLEPIE_NAMESPACE_RSS_20, 'generator')) {
 				$generator_text = $generator_tag[0]['data'];
 			}
 			return $generator_text;
 		}
 
 		public static function get_slug_from_permalink($permalink) {
-			$slug		 = '';
-			$permalink	 = trim(parse_url($permalink, PHP_URL_PATH), '/');
-			$pieces		 = explode('/', $permalink);
+			$slug = '';
+			$permalink = trim(parse_url($permalink, PHP_URL_PATH), '/');
+			$pieces = explode('/', $permalink);
 			while (empty($slug) && count($pieces) > 0) {
 				$slug = array_pop($pieces);
 			}
-			if(empty($slug)) {
+			if (empty($slug)) {
 				$slug = str_replace('/', '-', $permalink);
 			}
 			return $slug;
@@ -1318,10 +1320,10 @@ if(!class_exists('WPeMatico_functions')) {
 
 		public static function filter_by_value($array, $index, $value) {
 			$newarray = array();
-			if(is_array($array) && count($array) > 0) {
-				foreach(array_keys($array) as $key) {
+			if (is_array($array) && count($array) > 0) {
+				foreach (array_keys($array) as $key) {
 					$temp[$key] = $array[$key][$index];
-					if($temp[$key] != $value) {
+					if ($temp[$key] != $value) {
 						$newarray[$key] = $array[$key];
 					}
 				}
@@ -1333,15 +1335,15 @@ if(!class_exists('WPeMatico_functions')) {
 		//Output: sort the array DESCENDING by group and then ASCENDING by surname. Notice the use of ! to reverse the sort order. 
 		public static function array_sort_func($a, $b = NULL) {
 			static $keys;
-			if($b === NULL)
+			if ($b === NULL)
 				return $keys = $a;
-			foreach($keys as $k) {
-				if(@$k[0] == '!') {
+			foreach ($keys as $k) {
+				if (@$k[0] == '!') {
 					$k = substr($k, 1);
-					if(@$a[$k] !== @$b[$k]) {
+					if (@$a[$k] !== @$b[$k]) {
 						return strcmp(@$b[$k], @$a[$k]);
 					}
-				}else if(@$a[$k] !== @$b[$k]) {
+				} else if (@$a[$k] !== @$b[$k]) {
 					return strcmp(@$a[$k], @$b[$k]);
 				}
 			}
@@ -1349,7 +1351,7 @@ if(!class_exists('WPeMatico_functions')) {
 		}
 
 		public static function array_sort(&$array) {
-			if(!$array)
+			if (!$array)
 				return false;
 			$keys = func_get_args();
 			array_shift($keys);
@@ -1361,36 +1363,36 @@ if(!class_exists('WPeMatico_functions')) {
 
 // ********************************** CRON FUNCTIONS
 		public static function cron_string($array_post) {
-			if($array_post['cronminutes'][0] == '*' or empty($array_post['cronminutes'])) {
-				if(!empty($array_post['cronminutes'][1])) {
+			if ($array_post['cronminutes'][0] == '*' or empty($array_post['cronminutes'])) {
+				if (!empty($array_post['cronminutes'][1])) {
 					$array_post['cronminutes'] = array('*/' . $array_post['cronminutes'][1]);
-				}else {
+				} else {
 					$array_post['cronminutes'] = array('*');
 				}
 			}
-			if($array_post['cronhours'][0] == '*' or empty($array_post['cronhours'])) {
-				if(!empty($array_post['cronhours'][1]))
+			if ($array_post['cronhours'][0] == '*' or empty($array_post['cronhours'])) {
+				if (!empty($array_post['cronhours'][1]))
 					$array_post['cronhours'] = array('*/' . $array_post['cronhours'][1]);
 				else
 					$array_post['cronhours'] = array('*');
 			}
-			if($array_post['cronmday'][0] == '*' or empty($array_post['cronmday'])) {
-				if(!empty($array_post['cronmday'][1]))
-					$array_post['cronmday']	 = array('*/' . $array_post['cronmday'][1]);
+			if ($array_post['cronmday'][0] == '*' or empty($array_post['cronmday'])) {
+				if (!empty($array_post['cronmday'][1]))
+					$array_post['cronmday'] = array('*/' . $array_post['cronmday'][1]);
 				else
-					$array_post['cronmday']	 = array('*');
+					$array_post['cronmday'] = array('*');
 			}
-			if($array_post['cronmon'][0] == '*' or empty($array_post['cronmon'])) {
-				if(!empty($array_post['cronmon'][1]))
-					$array_post['cronmon']	 = array('*/' . $array_post['cronmon'][1]);
+			if ($array_post['cronmon'][0] == '*' or empty($array_post['cronmon'])) {
+				if (!empty($array_post['cronmon'][1]))
+					$array_post['cronmon'] = array('*/' . $array_post['cronmon'][1]);
 				else
-					$array_post['cronmon']	 = array('*');
+					$array_post['cronmon'] = array('*');
 			}
-			if($array_post['cronwday'][0] == '*' or empty($array_post['cronwday'])) {
-				if(!empty($array_post['cronwday'][1]))
-					$array_post['cronwday']	 = array('*/' . $array_post['cronwday'][1]);
+			if ($array_post['cronwday'][0] == '*' or empty($array_post['cronwday'])) {
+				if (!empty($array_post['cronwday'][1]))
+					$array_post['cronwday'] = array('*/' . $array_post['cronwday'][1]);
 				else
-					$array_post['cronwday']	 = array('*');
+					$array_post['cronwday'] = array('*');
 			}
 			return implode(",", $array_post['cronminutes']) . ' ' . implode(",", $array_post['cronhours']) . ' ' . implode(",", $array_post['cronmday']) . ' ' . implode(",", $array_post['cronmon']) . ' ' . implode(",", $array_post['cronwday']);
 		}
@@ -1402,103 +1404,103 @@ if(!class_exists('WPeMatico_functions')) {
 			list($cronstr['minutes'], $cronstr['hours'], $cronstr['mday'], $cronstr['mon'], $cronstr['wday']) = explode(' ', $cronstring, 5);
 
 			//make arrys form string
-			foreach($cronstr as $key => $value) {
-				if(strstr($value, ','))
+			foreach ($cronstr as $key => $value) {
+				if (strstr($value, ','))
 					$cronarray[$key] = explode(',', $value);
 				else
 					$cronarray[$key] = array(0 => $value);
 			}
 			//make arrys complete with ranges and steps
-			foreach($cronarray as $cronarraykey => $cronarrayvalue) {
+			foreach ($cronarray as $cronarraykey => $cronarrayvalue) {
 				$cron[$cronarraykey] = array();
-				foreach($cronarrayvalue as $key => $value) {
+				foreach ($cronarrayvalue as $key => $value) {
 					//steps
-					$step	 = 1;
-					if(strstr($value, '/'))
+					$step = 1;
+					if (strstr($value, '/'))
 						list($value, $step) = explode('/', $value, 2);
 					//replase weekeday 7 with 0 for sundays
-					if($cronarraykey == 'wday')
-						$value	 = str_replace('7', '0', $value);
+					if ($cronarraykey == 'wday')
+						$value = str_replace('7', '0', $value);
 					//ranges
-					if(strstr($value, '-')) {
+					if (strstr($value, '-')) {
 						list($first, $last) = explode('-', $value, 2);
-						if(!is_numeric($first) or!is_numeric($last) or $last > 60 or $first > 60) //check
+						if (!is_numeric($first) or!is_numeric($last) or $last > 60 or $first > 60) //check
 							return false;
-						if($cronarraykey == 'minutes' and $step < 5)
+						if ($cronarraykey == 'minutes' and $step < 5)
 							$step = 5; //set step in num to 5 min.
 
-						$range	 = array();
-						for($i = $first; $i <= $last; $i = $i + $step)
+						$range = array();
+						for ($i = $first; $i <= $last; $i = $i + $step)
 							$range[] = $i;
 
 						$cron[$cronarraykey] = array_merge($cron[$cronarraykey], $range);
-					}elseif($value == '*') {
+					} elseif ($value == '*') {
 						$range = array();
-						if($cronarraykey == 'minutes') {
-							if($step < 5)
-								$step	 = 5; //set step in mum to 5 min.
-							for($i = 0; $i <= 59; $i = $i + $step)
+						if ($cronarraykey == 'minutes') {
+							if ($step < 5)
+								$step = 5; //set step in mum to 5 min.
+							for ($i = 0; $i <= 59; $i = $i + $step)
 								$range[] = $i;
 						}
-						if($cronarraykey == 'hours') {
-							for($i = 0; $i <= 23; $i = $i + $step)
+						if ($cronarraykey == 'hours') {
+							for ($i = 0; $i <= 23; $i = $i + $step)
 								$range[] = $i;
 						}
-						if($cronarraykey == 'mday') {
-							for($i = $step; $i <= 31; $i = $i + $step)
+						if ($cronarraykey == 'mday') {
+							for ($i = $step; $i <= 31; $i = $i + $step)
 								$range[] = $i;
 						}
-						if($cronarraykey == 'mon') {
-							for($i = $step; $i <= 12; $i = $i + $step)
+						if ($cronarraykey == 'mon') {
+							for ($i = $step; $i <= 12; $i = $i + $step)
 								$range[] = $i;
 						}
-						if($cronarraykey == 'wday') {
-							for($i = 0; $i <= 6; $i = $i + $step)
+						if ($cronarraykey == 'wday') {
+							for ($i = 0; $i <= 6; $i = $i + $step)
 								$range[] = $i;
 						}
 						$cron[$cronarraykey] = array_merge($cron[$cronarraykey], $range);
-					}else {
+					} else {
 						//Month names
-						if(strtolower($value) == 'jan')
-							$value				 = 1;
-						if(strtolower($value) == 'feb')
-							$value				 = 2;
-						if(strtolower($value) == 'mar')
-							$value				 = 3;
-						if(strtolower($value) == 'apr')
-							$value				 = 4;
-						if(strtolower($value) == 'may')
-							$value				 = 5;
-						if(strtolower($value) == 'jun')
-							$value				 = 6;
-						if(strtolower($value) == 'jul')
-							$value				 = 7;
-						if(strtolower($value) == 'aug')
-							$value				 = 8;
-						if(strtolower($value) == 'sep')
-							$value				 = 9;
-						if(strtolower($value) == 'oct')
-							$value				 = 10;
-						if(strtolower($value) == 'nov')
-							$value				 = 11;
-						if(strtolower($value) == 'dec')
-							$value				 = 12;
+						if (strtolower($value) == 'jan')
+							$value = 1;
+						if (strtolower($value) == 'feb')
+							$value = 2;
+						if (strtolower($value) == 'mar')
+							$value = 3;
+						if (strtolower($value) == 'apr')
+							$value = 4;
+						if (strtolower($value) == 'may')
+							$value = 5;
+						if (strtolower($value) == 'jun')
+							$value = 6;
+						if (strtolower($value) == 'jul')
+							$value = 7;
+						if (strtolower($value) == 'aug')
+							$value = 8;
+						if (strtolower($value) == 'sep')
+							$value = 9;
+						if (strtolower($value) == 'oct')
+							$value = 10;
+						if (strtolower($value) == 'nov')
+							$value = 11;
+						if (strtolower($value) == 'dec')
+							$value = 12;
 						//Week Day names
-						if(strtolower($value) == 'sun')
-							$value				 = 0;
-						if(strtolower($value) == 'mon')
-							$value				 = 1;
-						if(strtolower($value) == 'tue')
-							$value				 = 2;
-						if(strtolower($value) == 'wed')
-							$value				 = 3;
-						if(strtolower($value) == 'thu')
-							$value				 = 4;
-						if(strtolower($value) == 'fri')
-							$value				 = 5;
-						if(strtolower($value) == 'sat')
-							$value				 = 6;
-						if(!is_numeric($value) or $value > 60) //check
+						if (strtolower($value) == 'sun')
+							$value = 0;
+						if (strtolower($value) == 'mon')
+							$value = 1;
+						if (strtolower($value) == 'tue')
+							$value = 2;
+						if (strtolower($value) == 'wed')
+							$value = 3;
+						if (strtolower($value) == 'thu')
+							$value = 4;
+						if (strtolower($value) == 'fri')
+							$value = 5;
+						if (strtolower($value) == 'sat')
+							$value = 6;
+						if (!is_numeric($value) or $value > 60) //check
 							return false;
 						$cron[$cronarraykey] = array_merge($cron[$cronarraykey], array(0 => $value));
 					}
@@ -1507,13 +1509,13 @@ if(!class_exists('WPeMatico_functions')) {
 
 			//calc next timestamp
 			$currenttime = current_time('timestamp');
-			foreach(array(date('Y'), date('Y') + 1) as $year) {
-				foreach($cron['mon'] as $mon) {
-					foreach($cron['mday'] as $mday) {
-						foreach($cron['hours'] as $hours) {
-							foreach($cron['minutes'] as $minutes) {
+			foreach (array(date('Y'), date('Y') + 1) as $year) {
+				foreach ($cron['mon'] as $mon) {
+					foreach ($cron['mday'] as $mday) {
+						foreach ($cron['hours'] as $hours) {
+							foreach ($cron['minutes'] as $minutes) {
 								$timestamp = mktime($hours, $minutes, 0, $mon, $mday, $year);
-								if(in_array(date('w', $timestamp), $cron['wday']) and $timestamp > $currenttime) {
+								if (in_array(date('w', $timestamp), $cron['wday']) and $timestamp > $currenttime) {
 									return $timestamp;
 								}
 							}
@@ -1530,15 +1532,15 @@ if(!class_exists('WPeMatico_functions')) {
 		 * @return string Plugin version
 		 */
 		public static function plugin_get_version($file = '') {
-			if(empty($file))
-				$file					 = __FILE__;
-			if(!function_exists('get_plugins'))
+			if (empty($file))
+				$file = __FILE__;
+			if (!function_exists('get_plugins'))
 				require_once( ABSPATH . basename(admin_url()) . '/includes/plugin.php' );
-			$plugin_folder			 = get_plugins('/' . plugin_basename(dirname($file)));
-			$plugin_file			 = basename(( $file));
-			$plugin_info			 = array();
-			$plugin_info['Name']	 = $plugin_folder[$plugin_file]['Name'];
-			$plugin_info['Version']	 = $plugin_folder[$plugin_file]['Version'];
+			$plugin_folder = get_plugins('/' . plugin_basename(dirname($file)));
+			$plugin_file = basename(( $file));
+			$plugin_info = array();
+			$plugin_info['Name'] = $plugin_folder[$plugin_file]['Name'];
+			$plugin_info['Version'] = $plugin_folder[$plugin_file]['Version'];
 			return $plugin_info;
 		}
 
@@ -1571,20 +1573,20 @@ if(!class_exists('WPeMatico_functions')) {
 			 */
 			$data = apply_filters('wpematico_before_get_content', false, $aux, $url);
 
-			$defaults	 = array(
+			$defaults = array(
 				'timeout' => 15
 			);
-			$args		 = wp_parse_args($aux, $defaults);
+			$args = wp_parse_args($aux, $defaults);
 
-			if(!$data) { // if stil getting error on get file content try WP func, this may give timeouts 
+			if (!$data) { // if stil getting error on get file content try WP func, this may give timeouts 
 				$response = wp_remote_request($url, $args);
-				if(!is_wp_error($response)) {
-					if(isset($response['response']['code']) && 200 === $response['response']['code']) {
+				if (!is_wp_error($response)) {
+					if (isset($response['response']['code']) && 200 === $response['response']['code']) {
 						$data = wp_remote_retrieve_body($response);
-					}else {
+					} else {
 						trigger_error(__('Error with wp_remote_request:', 'wpematico') . print_r($response, 1), E_USER_NOTICE);
 					}
-				}else {
+				} else {
 					trigger_error(__('Error with wp_remote_get:', 'wpematico') . $response->get_error_message(), E_USER_NOTICE);
 				}
 			}
@@ -1594,16 +1596,16 @@ if(!class_exists('WPeMatico_functions')) {
 
 		public static function get_curl_version() {
 
-			if(!function_exists('curl_version')) {
+			if (!function_exists('curl_version')) {
 				return 0;
 			}
-			if(is_array($curl = curl_version())) {
+			if (is_array($curl = curl_version())) {
 				$curl = $curl['version'];
-			}elseif(substr($curl, 0, 5) === 'curl/') {
+			} elseif (substr($curl, 0, 5) === 'curl/') {
 				$curl = substr($curl, 5, strcspn($curl, "\x09\x0A\x0B\x0C\x0D", 5));
-			}elseif(substr($curl, 0, 8) === 'libcurl/') {
+			} elseif (substr($curl, 0, 8) === 'libcurl/') {
 				$curl = substr($curl, 8, strcspn($curl, "\x09\x0A\x0B\x0C\x0D", 8));
-			}else {
+			} else {
 				$curl = 0;
 			}
 
@@ -1611,10 +1613,10 @@ if(!class_exists('WPeMatico_functions')) {
 		}
 
 		public static function get_danger_options() {
-			$danger								 = get_option('WPeMatico_danger');
-			$danger['wpemdeleoptions']			 = (isset($danger['wpemdeleoptions']) && !empty($danger['wpemdeleoptions']) ) ? $danger['wpemdeleoptions'] : false;
-			$danger['wpemdelecampaigns']		 = (isset($danger['wpemdelecampaigns']) && !empty($danger['wpemdelecampaigns']) ) ? $danger['wpemdelecampaigns'] : false;
-			$danger['wpe_debug_logs_campaign']	 = (isset($danger['wpe_debug_logs_campaign']) && !empty($danger['wpe_debug_logs_campaign']) ) ? $danger['wpe_debug_logs_campaign'] : false;
+			$danger = get_option('WPeMatico_danger');
+			$danger['wpemdeleoptions'] = (isset($danger['wpemdeleoptions']) && !empty($danger['wpemdeleoptions']) ) ? $danger['wpemdeleoptions'] : false;
+			$danger['wpemdelecampaigns'] = (isset($danger['wpemdelecampaigns']) && !empty($danger['wpemdelecampaigns']) ) ? $danger['wpemdelecampaigns'] : false;
+			$danger['wpe_debug_logs_campaign'] = (isset($danger['wpe_debug_logs_campaign']) && !empty($danger['wpe_debug_logs_campaign']) ) ? $danger['wpe_debug_logs_campaign'] : false;
 
 			return $danger;
 		}
@@ -1628,15 +1630,15 @@ if(!class_exists('WPeMatico_functions')) {
 add_action('admin_init', 'wpematico_process_actions');
 
 function wpematico_process_actions() {
-	if(isset($_POST['wpematico-action'])) {
-		if(!is_user_logged_in())
+	if (isset($_POST['wpematico-action'])) {
+		if (!is_user_logged_in())
 			wp_die("Cheatin' uh?", "Closed today.");
 		$action = sanitize_text_field($_POST['wpematico-action']);
 		do_action('wpematico_' . $action, $_POST);
 	}
 
-	if(isset($_GET['wpematico-action'])) {
-		if(!is_user_logged_in())
+	if (isset($_GET['wpematico-action'])) {
+		if (!is_user_logged_in())
 			wp_die("Cheatin' uh?", "Closed today.");
 		$action = sanitize_text_field($_GET['wpematico-action']);
 		do_action('wpematico_' . $action, $_GET);
@@ -1654,29 +1656,29 @@ function wpematico_process_actions() {
 function wpematico_get_host() {
 	$host = false;
 
-	if(defined('WPE_APIKEY')) {
+	if (defined('WPE_APIKEY')) {
 		$host = 'WP Engine';
-	}elseif(defined('PAGELYBIN')) {
+	} elseif (defined('PAGELYBIN')) {
 		$host = 'Pagely';
-	}elseif(DB_HOST == 'localhost:/tmp/mysql5.sock') {
+	} elseif (DB_HOST == 'localhost:/tmp/mysql5.sock') {
 		$host = 'ICDSoft';
-	}elseif(DB_HOST == 'mysqlv5') {
+	} elseif (DB_HOST == 'mysqlv5') {
 		$host = 'NetworkSolutions';
-	}elseif(strpos(DB_HOST, 'ipagemysql.com') !== false) {
+	} elseif (strpos(DB_HOST, 'ipagemysql.com') !== false) {
 		$host = 'iPage';
-	}elseif(strpos(DB_HOST, 'ipowermysql.com') !== false) {
+	} elseif (strpos(DB_HOST, 'ipowermysql.com') !== false) {
 		$host = 'IPower';
-	}elseif(strpos(DB_HOST, '.gridserver.com') !== false) {
+	} elseif (strpos(DB_HOST, '.gridserver.com') !== false) {
 		$host = 'MediaTemple Grid';
-	}elseif(strpos(DB_HOST, '.pair.com') !== false) {
+	} elseif (strpos(DB_HOST, '.pair.com') !== false) {
 		$host = 'pair Networks';
-	}elseif(strpos(DB_HOST, '.stabletransit.com') !== false) {
+	} elseif (strpos(DB_HOST, '.stabletransit.com') !== false) {
 		$host = 'Rackspace Cloud';
-	}elseif(strpos(DB_HOST, '.sysfix.eu') !== false) {
+	} elseif (strpos(DB_HOST, '.sysfix.eu') !== false) {
 		$host = 'SysFix.eu Power Hosting';
-	}elseif(strpos($_SERVER['SERVER_NAME'], 'Flywheel') !== false) {
+	} elseif (strpos($_SERVER['SERVER_NAME'], 'Flywheel') !== false) {
 		$host = 'Flywheel';
-	}else {
+	} else {
 		// Adding a general fallback for data gathering
 		$host = 'DBH: ' . DB_HOST . ', SRV: ' . $_SERVER['SERVER_NAME'];
 	}
@@ -1693,10 +1695,10 @@ function wpematico_get_host() {
  * @return bool true if installed & active
  */
 function wpematico_is_pro_active() {  // Check if PRO version is installed & active
-	$active_plugins			 = get_option('active_plugins');
-	$active_plugins_names	 = array_map('basename', $active_plugins);
-	$is_pro_active			 = array_search('wpematicopro.php', $active_plugins_names);
-	if($is_pro_active !== FALSE) {
+	$active_plugins = get_option('active_plugins');
+	$active_plugins_names = array_map('basename', $active_plugins);
+	$is_pro_active = array_search('wpematicopro.php', $active_plugins_names);
+	if ($is_pro_active !== FALSE) {
 		return true;
 	}
 	return $is_pro_active;
@@ -1707,7 +1709,7 @@ add_action('wpematico_wp_ratings', 'wpematico_wp_ratings');
 function wpematico_wp_ratings() {
 	?><div class="postbox">
 		<h3 class="handle"><?php _e('5 Stars Ratings on Wordpress', 'wpematico'); ?></h3>
-		<?php if(get_option('wpem_hide_reviews')) : ?>
+		<?php if (get_option('wpem_hide_reviews')) : ?>
 			<div class="inside" style="max-height:300px;overflow-x: hidden;">
 				<p style="text-align: center;">
 					<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5" id="linkgo" class="button" target="_Blank" title="Click to see 5 stars Reviews on Wordpress"> Click to see 5 stars Reviews </a>
@@ -1732,10 +1734,10 @@ function wpematico_wp_ratings() {
 function array_multi_key_exists(array $arrNeedles, array $arrHaystack, $blnMatchAll = true) {
 	$blnFound = array_key_exists(array_shift($arrNeedles), $arrHaystack);
 
-	if($blnFound && (count($arrNeedles) == 0 || !$blnMatchAll))
+	if ($blnFound && (count($arrNeedles) == 0 || !$blnMatchAll))
 		return true;
 
-	if(!$blnFound && count($arrNeedles) == 0 || $blnMatchAll)
+	if (!$blnFound && count($arrNeedles) == 0 || $blnMatchAll)
 		return false;
 
 	return array_multi_key_exists($arrNeedles, $arrHaystack, $blnMatchAll);
@@ -1746,16 +1748,16 @@ function wpematico_joberrorhandler($errno, $errstr, $errfile, $errline) {
 	global $campaign_log_message, $jobwarnings, $joberrors;
 
 	//genrate timestamp
-	if(!version_compare(phpversion(), '6.9.0', '>')) { // PHP Version < 5.7 dirname 2nd 
-		if(!function_exists('memory_get_usage')) { // test if memory functions compiled in
+	if (!version_compare(phpversion(), '6.9.0', '>')) { // PHP Version < 5.7 dirname 2nd 
+		if (!function_exists('memory_get_usage')) { // test if memory functions compiled in
 			$timestamp = "<span style=\"background-color:c3c3c3;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile)) . basename($errfile) . "\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
-		}else {
+		} else {
 			$timestamp = "<span style=\"background-color:c3c3c3;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile)) . basename($errfile) . "|Mem: " . WPeMatico :: formatBytes(@memory_get_usage(true)) . "|Mem Max: " . WPeMatico :: formatBytes(@memory_get_peak_usage(true)) . "|Mem Limit: " . ini_get('memory_limit') . "]\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
 		}
-	}else {
-		if(!function_exists('memory_get_usage')) { // test if memory functions compiled in
+	} else {
+		if (!function_exists('memory_get_usage')) { // test if memory functions compiled in
 			$timestamp = "<span style=\"background-color:c3c3c3;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile, 2)) . basename($errfile) . "\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
-		}else {
+		} else {
 			$timestamp = "<span style=\"background-color:c3c3c3;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile, 2)) . basename($errfile) . "|Mem: " . WPeMatico :: formatBytes(@memory_get_usage(true)) . "|Mem Max: " . WPeMatico :: formatBytes(@memory_get_peak_usage(true)) . "|Mem Limit: " . ini_get('memory_limit') . "]\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
 		}
 	}
@@ -1763,45 +1765,45 @@ function wpematico_joberrorhandler($errno, $errstr, $errfile, $errline) {
 	switch ($errno) {
 		case E_NOTICE:
 		case E_USER_NOTICE:
-			$massage	 = $timestamp . "<span>" . $errstr . "</span>";
+			$massage = $timestamp . "<span>" . $errstr . "</span>";
 			break;
 		case E_WARNING:
 		case E_USER_WARNING:
 			$jobwarnings += 1;
-			$massage	 = $timestamp . "<span style=\"background-color:yellow;\">" . __('[WARNING]', 'wpematico') . " " . $errstr . "</span>";
+			$massage = $timestamp . "<span style=\"background-color:yellow;\">" . __('[WARNING]', 'wpematico') . " " . $errstr . "</span>";
 			break;
 		case E_ERROR:
 		case E_USER_ERROR:
-			$joberrors	 += 1;
-			$massage	 = $timestamp . "<span style=\"background-color:red;\">" . __('[ERROR]', 'wpematico') . " " . $errstr . "</span>";
+			$joberrors += 1;
+			$massage = $timestamp . "<span style=\"background-color:red;\">" . __('[ERROR]', 'wpematico') . " " . $errstr . "</span>";
 			break;
 		case E_DEPRECATED:
 		case E_USER_DEPRECATED:
-			$massage	 = $timestamp . "<span>" . __('[DEPRECATED]', 'wpematico') . " " . $errstr . "</span>";
+			$massage = $timestamp . "<span>" . __('[DEPRECATED]', 'wpematico') . " " . $errstr . "</span>";
 			break;
 		case E_STRICT:
-			$massage	 = $timestamp . "<span>" . __('[STRICT NOTICE]', 'wpematico') . " " . $errstr . "</span>";
+			$massage = $timestamp . "<span>" . __('[STRICT NOTICE]', 'wpematico') . " " . $errstr . "</span>";
 			break;
 		case E_RECOVERABLE_ERROR:
-			$massage	 = $timestamp . "<span>" . __('[RECOVERABLE ERROR]', 'wpematico') . " " . $errstr . "</span>";
+			$massage = $timestamp . "<span>" . __('[RECOVERABLE ERROR]', 'wpematico') . " " . $errstr . "</span>";
 			break;
 		default:
-			$massage	 = $timestamp . "<span>[" . $errno . "] " . $errstr . "</span>";
+			$massage = $timestamp . "<span>[" . $errno . "] " . $errstr . "</span>";
 			break;
 	}
 
-	if(!empty($massage)) {
+	if (!empty($massage)) {
 
 		$campaign_log_message .= $massage . "<br />\n";
 
-		if($errno == E_ERROR or $errno == E_CORE_ERROR or $errno == E_COMPILE_ERROR) {//Die on fatal php errors.
+		if ($errno == E_ERROR or $errno == E_CORE_ERROR or $errno == E_COMPILE_ERROR) {//Die on fatal php errors.
 			die("Fatal Error:" . $errno);
 		}
 		//300 is most webserver time limit. 0= max time! Give script 5 min. more to work.
 		@set_time_limit(300);
 		//true for no more php error hadling.
 		return true;
-	}else {
+	} else {
 		return false;
 	}
 }

@@ -3,7 +3,7 @@ Contributors: etruel, sniuk, khaztiel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,RSS to Post,Feed to Post,XML to post,autoblog,rss aggregator,Feed,rss to post,syndication,xml import,Post,Posts,aggregation,atom,bot,content,writing
 Requires at least: 4.1
-Tested up to: 5.7
+Tested up to: 5.7.1
 Requires PHP: 5.3
 Stable tag: trunk
 License: GPLv2 or later
@@ -236,6 +236,12 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
+= 2.6.9 May 5, 2021 =
+* Added new filters to allow use external functions to upload the images or remote files.
+* Added some campaign data in debug file to help with performance.
+* Fixes all warnings and notices in debug file.
+* Tested with WordPress 5.7.1
+
 = 2.6.8 Apr 8, 2021 =
 * Improved the post template feature on inserting {tags} in cursor position instead of the end of content.
 * Fixes custom user translation when he chooses a different of WordPress admin.
@@ -369,5 +375,5 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 
-= 2.6.8 =
-Fixes user translations, some CSS and JavaScript issues.
+= 2.6.9 =
+Improve debug file and adds new filters to upload images.

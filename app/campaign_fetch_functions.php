@@ -435,18 +435,19 @@ class wpematico_campaign_fetch_functions {
 					$imagen_dst		 = trailingslashit($upload_dir['path']) . $newimgname;
 					$imagen_dst_url	 = trailingslashit($upload_dir['url']) . $newimgname;
 					trigger_error('Filtering image extensions:' . $allowed, E_USER_NOTICE);
-					if(in_array(str_replace('.', '', strrchr(strtolower($imagen_dst), '.')), explode(',', $allowed))) {   // -------- Controlo extensiones permitidas
+					if(in_array(str_replace('.', '', strrchr(strtolower($imagen_dst), '.')), explode(',', $allowed))) {   // ----- check allowed extensions
 						trigger_error('Uploading media=' . $imagen_src . ' <b>to</b> image=' . $imagen_dst . '', E_USER_NOTICE);
+						// Check if try custom functions to upload files.
 						$newfile = ($options_images['customupload']) ? WPeMatico::save_file_from_url($imagen_src_real, $imagen_dst) : false;
-						if($newfile) { //subió
+						if($newfile) { //If <> false was uploaded
 							trigger_error('Uploaded media=' . $newfile, E_USER_NOTICE);
 							$imagen_dst				 = $newfile;
 							$imagen_dst_url			 = trailingslashit($upload_dir['url']) . basename($newfile);
 							$current_item['content'] = str_replace($imagen_src, $imagen_dst_url, $current_item['content']);
 							do_action('wpematico_new_image_url_uploaded', $imagen_dst_url, $imagen_src, $current_item, $campaign);
 							$img_new_url[]			 = $imagen_dst_url;
-						}else { // falló -> intento con otros
-							$bits = WPeMatico::wpematico_get_contents($imagen_src_real);
+						}else { // Upload fail -> try with others
+							$bits = WPeMatico::wpematico_get_contents($imagen_src_real); // Read the file
 							if(!$bits) {
 								// Remove the image if its upload fail.
 								trigger_error(__('Upload file failed:', 'wpematico') . $imagen_dst, E_USER_WARNING);
