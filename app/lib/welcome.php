@@ -110,23 +110,30 @@ class WPEMATICO_Welcome {
 				/*<![CDATA[*/
 				[class*="dashboard_page_"] #wpcontent { /*background: #fff;*/ padding: 0 24px; }
 				.wpe-flex{ display: flex; }
-				.about__header-navigation { background: #fff; color: #333;}
-				.about__section { background: #fff; }
-				.about__header { background-color: #222; }
-				.about__header-title p { color: #fff; }
+				.about__section { background: #fff; font-size: 1.2em; margin: 0;}
+				.about__section.mb-0{ margin-bottom: 0; }
+				.about__section a{ color: #222; }
+				.about__section a:hover{ color: #ef8e2f; }
+				.about__header { background-image: <?php echo 'url('.WPEMATICO_PLUGIN_URL . 'images/about-header.png)'; ?>; background-size: 80%; background-position: bottom right; padding-top: 3rem; background-color: #222; }
+				.about__header-title{ margin: 5rem 2rem 0;padding: 1em 0; }
+				.about__header-title p { margin: 0; padding: 0; font-size: 4em; color: #fff; line-height: 1; font-weight: 900; text-transform: uppercase; }
 				.about__header-title p span { color: #eee; }
-				.about__header-text { background: #ef8e2f; }
-				.about__header-text p { color: #fff; }
-				.about__header-navigation { border-color: #222 }
-				.about__header-navigation .nav-tab-active:active, .about__header-navigation .nav-tab-active:hover,
-				.about__header-navigation .nav-tab-active { color: #ef8e2f; border-color: #ef8e2f;}
+				.about__header-text { max-width: 25em; margin: 0 2rem 3rem; padding: 0; font-size: 1.5em; line-height: 1.4;}
+				.about__header-text p { color: #fff; margin-top: 0; }
+				.about__header-navigation { display: flex; justify-content: flex-start; background: #fff; color: #222; border-color: #222; padding-top: 0;}
+				.about__header-navigation .nav-tab{color: #222 ; margin: 0; padding: 24px 32px; float: none; font-size: 1.4em; line-height: 1; border-style: solid; background: 0 0; border-width: 0 0 3px; border-color: transparent;}
+				.about__header-navigation .nav-tab-active { margin-bottom: -3px; }
+				.about__header-navigation .nav-tab-active:active, .about__header-navigation .nav-tab-active:hover, .about__header-navigation .nav-tab-active { color: #ef8e2f; border-color: #ef8e2f;}
 				.about__header-navigation .nav-tab:active, .about__header-navigation .nav-tab:hover{ background: #f5f5f5; color: #ef8e2f; }
 				.about__container .has-accent-background-color { background: #ef8e2f; }
 				.about__container .has-subtle-background-color { background: #f9f9f9; }
-				.about__header-title .wpematico-badge { align-self: flex-end; margin-bottom: 20px; max-height: 80px; width: auto; }
+				.about__header-title .wpematico-badge { align-self: flex-end; margin-bottom: 10px; max-height: 80px; width: auto; }
 				.about__section.about__section_height { min-height: 560px; }
 				.about__section.about__section_height-2 { min-height: 400px; }
 				.about__section.is-feature { font-size: 1.4em; }
+				.about__container h1, .about__container h2, .about__container h3.is-larger-heading{
+					    margin-top: 0; margin-bottom: .5em; font-size: 1.75em; line-height: 1.2; font-weight: 600; }
+				.about__container h1.is-smaller-heading, .about__container h2.is-smaller-heading, .about__container h3 { margin-top: 0; font-size: 1.25em; font-weight: 700; }
 				.about__container .about__image { padding: 0 32px; }
 				.about__section .span-text { font-size: .9em; }
 				.feature-section a, .about__section p a { font-weight: 600; }
@@ -134,14 +141,35 @@ class WPEMATICO_Welcome {
 				.addon_block .addon_img img { display:block; max-width: 120px; height: auto; margin-right: 10px; }
 				.addon_block .addon_text { text-align: right;}
 				.addon_block .addon_text p { margin: 0; font-size: 13px; }
+				.about__section.has-2-columns, .about__section.has-3-columns, .about__section.has-4-columns, .about__section.has-overlap-style { display: grid; }
+				.about__section.has-2-columns{ -ms-grid-columns: 1fr 1fr; grid-template-columns: 1fr 1fr; }
+				.about__section.has-2-columns .column:nth-of-type(2n+1) { -ms-grid-column: 1; grid-column-start: 1; }
+				.about__section.has-2-columns .column:nth-of-type(2n) { -ms-grid-column: 2; grid-column-start: 2; }
+				.about__section .column.is-edge-to-edge{ color: #fff; padding: 0; }
+				.about__section + .about__section .column{ padding-top: 32px; }
+				.about__container .is-vertically-aligned-center{ align-self: center; }
+				@media all and ( max-width: 1035px ) {
+					.about__header { background-size: 95%; }
+				}
 				@media all and ( max-width: 782px ) {
-					.about__header-title .wpematico-badge{ display: none; }
+					.about__header{	background-image: none; }
+					.about__header-title{ margin-top: 0; padding-top: 0;}
+					.about__header-title p{ font-size: 3em; }
 				}
 				@media all and ( max-width: 782px ) and (min-width: 481px) {
 					.about__header-navigation .nav-tab{ padding: 24px 16px; }
 				}
 				@media all and ( max-width: 600px ) and (min-width: 481px) {
 					.about__header-navigation .nav-tab{ font-size: 1.1em; }
+				}
+				@media all and ( max-width: 600px ) {
+					.about__header-title p{ font-size: 2.25em; }
+					.about__section.has-2-columns, .about__section.has-2-columns.is-wider-left, .about__section.has-2-columns.is-wider-right, .about__section.has-3-columns{ display: block; padding-bottom: 16px; }
+					.about__section + .about__section .column{ padding-top: 16px; }
+					.about__section.has-2-columns .column:nth-of-type(n){ padding-top: 16px; padding-bottom: 16px; }
+					.about__header-navigation{ flex-direction: column; }
+					.about__header-navigation .nav-tab { float: none; display: block; margin-bottom: 0; padding: 16px 16px; border-left-width: 6px; border-bottom: none; }
+					.about__header-navigation .nav-tab-active { border-bottom: none; border-left-width: 6px; }
 				}
 				/*]]>*/
 			</style>
@@ -166,6 +194,13 @@ class WPEMATICO_Welcome {
 
 		list( $display_version ) = explode('-', WPEMATICO_VERSION);
 		?>
+		<div class="about__header-title">
+			<img class="wpematico-badge" src="<?php echo WPEMATICO_PLUGIN_URL . '/images/robotico_orange-75x130.png'; ?>" alt="<?php _e('WPeMatico', 'wpematico'); ?>" / >
+			<p>
+				<?php _e('WPeMatico'); ?>
+				<span><?php echo $display_version; ?></span>
+			</p>
+		</div>
 		<div class="about__header-text">
 			<p>
 				<?php
@@ -174,14 +209,6 @@ class WPEMATICO_Welcome {
 					$display_version
 				);
 				?>
-			</p>
-		</div>
-
-		<div class="about__header-title">
-			<img class="wpematico-badge" src="<?php echo WPEMATICO_PLUGIN_URL . '/images/robotico_orange-75x130.png'; ?>" alt="<?php _e('WPeMatico', 'wpematico'); ?>" / >
-			<p>
-				<?php _e('WPeMatico'); ?>
-				<span><?php echo $display_version; ?></span>
 			</p>
 		</div>
 		<?php
@@ -235,7 +262,7 @@ class WPEMATICO_Welcome {
 
 			<?php $this->subscription_form(); ?>
 
-			<hr />
+			<hr/>
 
 			<div class="about__section about__section_height has-2-columns">
 				<div class="column wpe-flex is-edge-to-edge has-accent-background-color">
@@ -342,7 +369,7 @@ class WPEMATICO_Welcome {
 				</div>
 			</div>
 
-			<hr />
+			<hr/>
 
 			<div class="about__section about__section_height has-2-columns has-subtle-background-color">
 				<h2 class="is-section-header"><?php _e('More Tweaks and Improvements.'); ?></h2>
@@ -406,9 +433,9 @@ class WPEMATICO_Welcome {
 				</div>
 			</div>
 
-			<hr />
+			<hr/>
 
-			<div class="about__section has-3-columns">
+			<div class="about__section has-3-columns mb-0">
 				<h2 class="is-section-header"><?php _e('Even More Developer Happiness', 'wpematico'); ?></h2>
 				<div class="column">
 					<h3><?php _e('JavaScript hooks', 'wpematico'); ?></h3>
@@ -423,7 +450,7 @@ class WPEMATICO_Welcome {
 					<p><?php _e('Get access to in-depth setup assistance. We\'ll dig in and do our absolute best to resolve issues for you. Any support that requires code or setup your site will need this service.', 'wpematico'); ?></p>
 				</div>
 			</div>
-			<div class="about__section has-3-columns">
+			<div class="about__section has-3-columns mb-0">
 				<div class="column">
 					<h3><?php _e('Nags updates individually for extensions', 'wpematico'); ?><span class="plugin-count" style="display: inline-block;background-color: #d54e21;color: #fff;font-size: 9px;line-height: 17px;font-weight: 600;margin: 1px 0 0 2px;vertical-align: top;-webkit-border-radius: 10px;border-radius: 10px;z-index: 26;padding: 0 6px;">1</span></h3>
 					<p><?php _e('A more clear nag update was added for the addons in the WPeMatico Extensions and Addons menu items.', 'wpematico'); ?></p>
@@ -433,12 +460,10 @@ class WPEMATICO_Welcome {
 					<p><?php _e("If you have any problem with WPeMatico item menu, Settings page or lost some plugin, we've put there a WPeMatico Section, to try to avoid weird behaviors made by some thirds plugins.", 'wpematico'); ?></p>
 				</div>
 				<div class="column">
-					<h3><a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" target="_blank"><?php _e('Rate 5 stars on Wordpress', 'wpematico'); ?></a><div class="wporg-ratings" title="5 out of 5 stars" style="color:#ffb900;float: right;"><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span></div></h3>
+					<h3><a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" target="_blank"><?php _e('Rate 5 stars on Wordpress', 'wpematico'); ?></a><div class="wporg-ratings" title="5 out of 5 stars" style="color:#ffb900;"><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span></div></h3>
 					<p><?php _e('We need your positive rating of 5 stars in WordPress. Your comment will be published on the bottom of the website and besides it will help making the plugin better.', 'wpematico'); ?></p>
 				</div>
 			</div>
-
-			<hr />
 
 		</div>
 		<?php
@@ -748,7 +773,7 @@ class WPEMATICO_Welcome {
 				<p><?php _e('WPeMatico continues to improve and innovate with each update, once again we include new features in order to improve the user experience and cover all their needs.', 'wpematico'); ?></p>
 				<p><?php _e('Choose which media files will be uploaded to your website by allowing or not their extension!','wpematico')?></p>
 				<p><?php _e('Can you imagine using the featured images without storing them on your own website? With this new version it\'s now possible! What are you waiting for to test it?', 'wpematico'); ?></p>
-				<h3><?php _e('NOTE: Featured Image From URL plugin is required for this functionality.', 'wpematico'); ?></h3>
+				<h3><strong><?php _e('NOTE: Featured Image From URL plugin is required for this functionality.', 'wpematico'); ?></strong></h3>
 				<p><?php _e('In addition to this, in this new version you can also create excerpts using the description tag of the items in the feed and you can even force the use of the original date of each post!', 'wpematico'); ?></p>
 			</div>
 			<?php if($suscripted_user === false) { ?>
