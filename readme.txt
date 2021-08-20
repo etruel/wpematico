@@ -2,9 +2,9 @@
 Contributors: etruel, sniuk, khaztiel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,RSS to Post,Feed to Post,XML to post,autoblog,rss aggregator,Feed,rss to post,syndication,xml import,Post,Posts,aggregation,atom,bot,content,writing
-Requires at least: 4.1
-Tested up to: 5.7.1
-Requires PHP: 5.3
+Requires at least: 4.7
+Tested up to: 5.8
+Requires PHP: 5.6
 Stable tag: trunk
 License: GPLv2 or later
 
@@ -236,6 +236,17 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
+= 2.6.10 Aug 19, 2021 =
+* Updated Author data.
+* Updated SimplePie Compatibility Test page.
+* Fixes some PHP notices.
+* Fixes banner styles in About page.
+* Removed PHP Safe mode calls as has been removed as of PHP 5.4
+* Custom Simplepie library and its option in Settings page will be removed in next version in favor of included in WP.
+* PHP Compatibility bump to 5.6 as required by Simplepie.
+* Compatibility with WordPress 5.8
+* Requires WordPress version bumps to 4.7
+
 = 2.6.9 May 5, 2021 =
 * Added new filters to allow use external functions to upload the images or remote files.
 * Added some campaign data in debug file to help with performance.
@@ -312,60 +323,6 @@ With a lot of changes, fixes and additions since 2.5 we have finally reach the 2
 
 > * **Enlarges the version required for the Professional addon to 2.6**
 
-= 2.5.3 May 09, 2020 =
-
-This version launches a series of changes, additions and new features working with standard feeds, Youtube and media file extensions, plus a few fixes.
-
-#### _Enhancements:_
-
-> * Added support in Settings screen to select images, audio y video extensions allowed to upload with WP mime types as guide.
-> * Added new options in Settings to allow show the Campaign ID in a new column in WordPress Posts (types) lists.
-> * Added new option in campaign to allow bypass the feed date required conditions.
-> * Added new free feature. We made WPeMatico compatible to work with Featured Image from URL plugin by Marcel Jacques Machado. (Thanks for the excellent plugin!)
-> * Improved Youtube campaign types by use [embed] WP shortcode or Youtube shared iframe.
-> * Added size with and height for inserted youtube videos. 
-> * Added option to fill the excerpt field with the description of the feed item.
-
-#### _Bugfixes:_
-
-> * Fixes notice Deprecated: Unparenthesized notice with PHP 7.4+.
-> * Changed Settings metabox name "Other Tools" to "WordPress Backend Tools" to better refer to what is it.
-> * Fix images URLs with entities like &amp;to get it with correct name and replace the original in content.
-
-#### _Recent (may break) changes:_
-
-> * Added support in Settings screen to select images, audio y video extensions allowed to upload with WP mime types as guide.
-> * Some improvements in the processing of upload images could have some unexpected behaviors on strange servers. (Weird but just to take a look.)
-> * **Enlarges the version required for the Professional addon to 2.6**
-
-= 2.5.2 Feb 13, 2020 =
-
-Fixes an issue with Youtube campaign type by ignoring "Copy the permalink from the source" option.
-
-= 2.5.1 Dec 22, 2019 =
-
-Fixes a problem when sanitize keys on licenses page and tweaks the style just for the About screen. 
-
-= 2.5 Dec 11, 2019 =
-
-Version 2.5 concludes a series of radical changes that we had started since version 2.4 in terms of plugin security. Also following a strict revision to follow the standards of Wordpress coding development.
-
-#### _Enhancements:_
-
-> * We have completely removed the use of cURL and own functions in favor of Wordpress file processing and functions to obtain remote files.
-> * We removed HTML entity decode contents by default before insert each post. You can activate the function again on Settings.
-
-#### _Bugfixes:_
-
-> * Fixes the loss of manually entered tags in the campaign when processing categories.
-
-#### _Recent (may break) changes:_
-
-> * Added an option in Settings to make HTML entity decode to the post contents before inserted to avoid possible xss from untrusted feed sources. Users who need (and want), can activate it from there. Props to [@nibiwodong](https://github.com/nibiwodong).
-> * The removed cURL in many functions could work a bit different for some servers.  You should take a look if the images uploads are working well and if not, you can select the Custom Uploads option in Settings.
-> * The external URL of CRON has changed since the previous version.  If your campaigns have been freezed for some time, it is because the Cron is not running.  Check out the settings for the new URL.
-> * **Enlarges the version required for the Professional addon to 2.4**
-
 = Earlier versions =
 For the changelog of earlier versions, please refer to changelog.md file or [the changelog on wpematico.com](https://www.wpematico.com/wpematico-changelog/).
 
@@ -375,5 +332,5 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 
-= 2.6.9 =
-Improve debug file and adds new filters to upload images.
+= 2.6.10 =
+Compatibility with WordPress 5.8.

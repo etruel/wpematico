@@ -718,7 +718,6 @@ function wpematico_debug_data() {
 		}
 
 		if (function_exists('ini_get')) {
-			$vars['safe_mode'] = ini_get('safe_mode');
 			$vars['allow_url_fopen'] = ini_get('allow_url_fopen');
 			$vars['memory'] = wpematico_let_to_num(ini_get('memory_limit'));
 			$vars['time_limit'] = ini_get('max_execution_time');
@@ -876,17 +875,6 @@ function wpematico_show_data_info() {
 							echo '<mark class="error">' . sprintf(__('%s - We recommend setting memory to at least', 'wpematico') . '<strong>128MB</strong>. <br />' . __('Please define memory limit in php.ini file.', 'wpematico'), size_format($memory), 'http://codex.wordpress.org/Editing_wp-config.php#Increasing_memory_allocated_to_PHP') . '</mark>';
 						} else {
 							echo '<mark class="yes">' . size_format($memory) . '</mark>';
-						}
-						?></td>
-				</tr>
-				<tr>
-					<td data-export-label="PHP Safe Mode"><?php _e('PHP Safe Mode:', 'wpematico'); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('The PHP safe mode is an attempt to solve the shared-server security problem. This feature has been DEPRECATED as of PHP 5.3.0 and REMOVED as of PHP 5.4.0.', 'wpematico') . '">[?]</a>'; ?></td>
-					<td><?php
-						if ($safe_mode) {
-							echo '<mark class="error">On - ' . sprintf(__('We recommend turn safe_mode "Off".', 'wpematico') . '<br />' . __('See: ', 'wpematico') . '<a href="%s" target="_blank">' . __('PHP: Safe Mode.', 'wpematico') . '</a>.', 'http://php.net/manual/en/features.safe-mode.php') . '</mark>';
-						} else {
-							echo '<mark class="yes">' . 'Off' . '</mark>';
 						}
 						?></td>
 				</tr>
@@ -1345,7 +1333,8 @@ function wpematico_show_data_info() {
 			<tr>
 				<td data-export-label="Compaings info"><?php _e('Total campaigns:', 'wpematico'); ?></td>
 				<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('Number of campaigns created.', 'wpematico') . '">[?]</a>'; ?></td>                    
-				<td><strong><?php echo $debug_data['campaigns_info'][0]['published_campaigns']; ?></strong></td>
+				<td><strong><?php echo isset($debug_data['campaigns_info'][0]['published_campaigns']) ? $debug_data['campaigns_info'][0]['published_campaigns'] : 0; 
+				?></strong></td>
 			</tr>
 			<tr>
 		<thead>
@@ -1509,7 +1498,6 @@ function wpematico_debug_info_get() {
 	$return .= 'PHP Time Limit:          ' . $time_limit . "\n";
 	$return .= 'PHP Memory Limit:        ' . size_format($memory) . "\n";
 //	$return .= 'Upload Max Filesize:     ' . $upload_max_filesize . "\n";
-	$return .= 'Safe Mode:               ' . ( $safe_mode ? 'Enabled' : 'Disabled' ) . "\n";
 	$return .= 'Allow URL fopen:         ' . ( $allow_url_fopen ? 'On' : 'Off' ) . "\n";
 	$return .= 'ini_set:         ' . ( $ini_set ? 'On' : 'Off' ) . "\n";
 	$return .= 'Disabled Functions:      ' . $disable_functions . "\n";
@@ -1609,7 +1597,8 @@ function wpematico_debug_info_get() {
 	$return = apply_filters('wpematico_sysinfo_after_wordpress_config', $return);
 
 	$return .= "\n" . '-- Campaigns Infos' . "\n\n";
-	$return .= "Total campaigns:    " . $debug_data['campaigns_info'][0]['published_campaigns'] . "\n\n";
+	$tcpg = isset($debug_data['campaigns_info'][0]['published_campaigns']) ? $debug_data['campaigns_info'][0]['published_campaigns'] : 0;
+	$return .= "Total campaigns:    " . $tcpg . "\n\n";
 	foreach (array_slice($debug_data['campaigns_info'], 1) as $campaign) {
 
 		$return .= 'Campaign ID:        ' . $campaign[0]['ID'] . "\n";

@@ -175,7 +175,8 @@ if(!class_exists('WPeMatico_Settings')) :
 												<a href="https://etruel.com" target="_Blank" title="<?php _e('WPeMatico Addons in etruel.com store', 'wpematico'); ?>">
 													<img class="logover" src="<?php echo WPeMatico :: $uri; ?>/images/etruelcom_ico.png" title="">	
 													<span id="wpematico-etruel">etruel.com</span><br>
-												</a><span id="wpematico-store"><?php _e('Addons store, FAQs and Support', 'wpematico'); ?></span>
+												</a><span id="wpematico-store"><?php _e('Addons store, FAQs', 'wpematico'); ?><br/>
+													<?php _e('and <b>Free</b> Support', 'wpematico'); ?></span>
 											</p>
 											<p><?php _e('Thanks for use and test this plugin.', 'wpematico'); ?></p>
 											<p></p>
@@ -207,7 +208,7 @@ if(!class_exists('WPeMatico_Settings')) :
 										<h2 style="background-color: yellow;" class="handle"><span class="dashicons dashicons-admin-settings"></span> <?php _e('Advanced Actions', 'wpematico'); ?></h2>
 										<div class="inside">
 											<p></p>
-											<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disablecheckfeeds'], true); ?> name="disablecheckfeeds" id="disablecheckfeeds" /> <?php _e('Disable "Check Feeds before Save"', 'wpematico'); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disablecheckfeeds']; ?>"></span>
+											<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disablecheckfeeds'], true); ?> name="disablecheckfeeds" id="disablecheckfeeds" /> <?php _e('Disable Check Feeds before Save', 'wpematico'); ?></label><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disablecheckfeeds']; ?>"></span>
 											<p></p>
 											<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enabledelhash'], true); ?> name="enabledelhash" id="enabledelhash" /><b>&nbsp;<?php _e('Enable "Del Hash"', 'wpematico'); ?></b></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enabledelhash']; ?>"></span>
 											<p></p>
@@ -542,6 +543,8 @@ if(!class_exists('WPeMatico_Settings')) :
 											}
 											?>
 											<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['force_mysimplepie'], true); ?> name="force_mysimplepie" id="force_mysimplepie" /> <?php _e('Force "Custom Simplepie Library"', 'wpematico'); ?></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['mysimplepie']; ?>"></span>
+											<br /><span class="coderr b LightPink"><?php echo __('The Custom Simplepie Library option will be removed from WPeMatico in the next release.', 'wpematico'); ?><br />
+														<?php _e('Please disable it to start using the Simplepie version included in WordPress.', 'wpematico'); ?></span><br />
 											<p></p>
 
 											<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['set_stupidly_fast'], true); ?> name="set_stupidly_fast" id="set_stupidly_fast"  onclick="jQuery('#simpie').show();"  /> <?php _e('Set Simplepie "stupidly fast"', 'wpematico'); ?></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['stupidly_fast']; ?>"></span>

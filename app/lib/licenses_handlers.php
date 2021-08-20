@@ -314,7 +314,9 @@ class wpematico_licenses_handlers {
 					'version' 	=> $args['api_data']['version'], 
 					'license' 	=> $license_key, 		
 					'item_name' => $args['api_data']['item_name'], 	
-					'author' 	=> $args['api_data']['author']
+					'author' 	=> $args['api_data']['author'],
+					'item_id' 	=> (empty($args['api_data']['item_id']) ? false : $args['api_data']['item_id']),
+					'beta' 		=> (empty($args['api_data']['beta']) ? false : $args['api_data']['beta']),
 				)
 			);
 			

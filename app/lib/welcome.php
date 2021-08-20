@@ -505,7 +505,7 @@ class WPEMATICO_Welcome {
 			<hr />
 
 			<div class="return-to-dashboard">
-				<a href="<?php echo esc_url(admin_url(add_query_arg(array('post_type' => 'wpematico', 'page' => 'wpematico-settings'), 'edit.php'))); ?>"><?php _e('Go to WPeMatico Settings', 'wpematico'); ?></a>
+				<a href="<?php echo esc_url(admin_url(add_query_arg(array('post_type' => 'wpematico', 'page' => 'wpematico_settings'), 'edit.php'))); ?>"><?php _e('Go to WPeMatico Settings', 'wpematico'); ?></a>
 			</div>
 		</div>
 		<?php
@@ -547,7 +547,7 @@ class WPEMATICO_Welcome {
 			<hr />
 
 			<div class="return-to-dashboard">
-				<a href="<?php echo esc_url(admin_url(add_query_arg(array('post_type' => 'wpematico', 'page' => 'wpematico-settings'), 'edit.php'))); ?>"><?php _e('Go to WPeMatico Settings', 'wpematico'); ?></a>
+				<a href="<?php echo esc_url(admin_url(add_query_arg(array('post_type' => 'wpematico', 'page' => 'wpematico_settings'), 'edit.php'))); ?>"><?php _e('Go to WPeMatico Settings', 'wpematico'); ?></a>
 			</div>
 		</div>
 		<?php

@@ -48,9 +48,10 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			set_error_handler('wpematico_joberrorhandler', E_ALL & ~E_NOTICE);
 		}
 
-		if (!version_compare(phpversion(), '5.3.0', '>')) { // PHP Version
-			wpematico_init_set('safe_mode', 'Off');   // deprecated after 5.3
-		}
+		// DEPRECATE by etruel on 2.6.10, will be deleted
+//		if (!version_compare(phpversion(), '5.3.0', '>')) { // PHP Version
+//			wpematico_init_set('safe_mode', 'Off');   // deprecated after 5.3
+//		}
 		wpematico_init_set('ignore_user_abort', 'On');
 
 		if (empty($campaign_id)) {
@@ -90,8 +91,9 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			do_action('Wpematico_init_fetching', $this->campaign);
 
 		//check max script execution tme
-		if (ini_get('safe_mode') or strtolower(ini_get('safe_mode')) == 'on' or ini_get('safe_mode') == '1')
-			trigger_error(sprintf(__('PHP Safe Mode is on!!! Max exec time is %1$d sec.', 'wpematico'), ini_get('max_execution_time')), E_USER_WARNING);
+		// DEPRECATE by etruel on 2.6.10, will be deleted		if (ini_get('safe_mode') or strtolower(ini_get('safe_mode')) == 'on' or ini_get('safe_mode') == '1')
+		trigger_error(sprintf(__('Max exec time is %1$d sec.', 'wpematico'), ini_get('max_execution_time')), E_USER_WARNING);
+
 		// check function for memorylimit
 		if (!function_exists('memory_get_usage')) {
 			ini_set('memory_limit', apply_filters('admin_memory_limit', '256M')); //Wordpress default

@@ -526,7 +526,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			return $messages;
 		}
 
-		public static function wpematico_action_link($id = 0, $context = 'display', $actionslug) {
+		public static function wpematico_action_link($id = 0, $context = 'display', $actionslug = '') {
 			global $post;
 			if (!$post == get_post($id))
 				return;
