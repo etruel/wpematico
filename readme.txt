@@ -236,8 +236,9 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
-= 2.6.11 Sep 13, 2021 =
+= 2.6.11 Sep 15, 2021 =
 * Fixes some PHP notices.
+* Updated PHP Compatibility checks to 5.6 version.
 
 = 2.6.10 Aug 19, 2021 =
 * Updated Author data.

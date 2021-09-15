@@ -3,7 +3,7 @@
  * Plugin Name: WPeMatico
  * Plugin URI: https://www.wpematico.com
  * Description: Create posts automatically from RSS/Atom feeds organized into campaigns with multiples filters.  If you like it, please rate it 5 stars.
- * Version: 2.6.10
+ * Version: 2.6.11
  * Author: Etruel Developments LLC
  * Author URI: https://etruel.com/wpematico/
  * Text Domain: wpematico
@@ -27,7 +27,7 @@ if (!class_exists('Main_WPeMatico')) {
 
 		private function setup_constants() {
 			if (!defined('WPEMATICO_VERSION'))
-				define('WPEMATICO_VERSION', '2.6.10');
+				define('WPEMATICO_VERSION', '2.6.11');
 			if (!defined('WPEMATICO_BASENAME'))
 				define('WPEMATICO_BASENAME', plugin_basename(__FILE__));
 			if (!defined('WPEMATICO_ROOTFILE'))
@@ -40,12 +40,12 @@ if (!class_exists('Main_WPeMatico')) {
 
 		public static function required_php_notice() {
 			$class = "error";
-			$message = '<b>WPeMatico:</b> ' . __('PHP 5.3.0 or higher needed!', 'wpematico') . '<br />';
+			$message = '<b>WPeMatico:</b> ' . __('PHP 5.6.0 or higher needed!', 'wpematico') . '<br />';
 			echo"<div class=\"$class\"> <p>$message</p></div>";
 		}
 
 		public static function instance() {
-			if (version_compare(phpversion(), '5.3.0', '<')) { // check PHP Version
+			if (version_compare(phpversion(), '5.6.0', '<')) { // check PHP Version
 				add_action('admin_notices', array(__CLASS__, 'required_php_notice'));
 				return false;
 			}
