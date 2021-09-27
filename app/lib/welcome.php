@@ -762,6 +762,7 @@ class WPEMATICO_Welcome {
 		</style>
 		<?php
 		$suscripted_user = get_option('wpematico_subscription_email_' . md5($current_user->ID), false);
+		if($suscripted_user === '' or $suscripted_user !== $current_user->data->user_email) $suscripted_user = false;
 		$classes		 = "";
 		if($suscripted_user === false) {
 			$classes = "about__section_height-2 has-2-columns";

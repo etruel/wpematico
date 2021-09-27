@@ -90,7 +90,7 @@ function wpe_addon_admin_menu() {
 	$page = add_submenu_page(
 		'plugins.php',
 		__( 'Add-ons', 'wpematico' ),
-		__( 'WPeMatico Add-ons', 'wpematico' ).' '.$count_menu,
+		__( 'WPeMatico Addons', 'wpematico' ).' '.$count_menu,
 		'manage_options',
 		'wpemaddons',
 		'add_admin_plugins_page'

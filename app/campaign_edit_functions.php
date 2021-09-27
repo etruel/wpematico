@@ -80,7 +80,7 @@ class WPeMatico_Campaign_edit_functions {
 	public static function bodyfeedURL($feed, $cfg, $i ) {
 		?>
 		<div class="feed_column" id="">
-			<input name="campaign_feeds[<?php echo $i; ?>]" type="text" value="<?php echo $feed ?>" class="large-text feedinput"/><a href="<?php echo $feed ?>" title="<?php _e('Open URL in a new browser tab', 'wpematico' ); ?>" target="_Blank" class="wpefeedlink"><span class="dashicons dashicons-external"></span></a>
+			<input name="campaign_feeds[<?php echo $i; ?>]" type="text" value="<?php echo esc_url($feed) ?>" class="large-text feedinput"/><a href="<?php echo esc_url($feed) ?>" title="<?php _e('Open URL in a new browser tab', 'wpematico' ); ?>" target="_Blank" class="wpefeedlink"><span class="dashicons dashicons-external"></span></a>
 		</div>
 		<?php
 	}

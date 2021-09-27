@@ -148,7 +148,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 	private function processFeed($feed, $kf) {
 		global $realcount;
 		@set_time_limit(0);
-		trigger_error('<span class="coderr b"><b>' . sprintf(__('Processing feed %s.', 'wpematico'), $feed) . '</b></span>', E_USER_NOTICE);   // Log
+		trigger_error('<span class="coderr b"><b>' . sprintf(__('Processing feed %s.', 'wpematico'), esc_html($feed)) . '</b></span>', E_USER_NOTICE);   // Log
 
 		$items = array();
 		$count = 0;

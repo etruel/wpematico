@@ -415,11 +415,11 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 						$simplepie =  WPeMatico::fetchFeed($fetch_feed_params);
 						if($simplepie->error()) {
 							$err_message = ($err_message != "") ? $err_message."<br />" : "" ;
-							$err_message .= sprintf(__('Feed %s could not be parsed. (SimplePie said: %s)',  'wpematico'),'<strong class="coderr">'. $feed. '</strong>', $simplepie->error());
+							$err_message .= sprintf(__('Feed %s could not be parsed. (SimplePie said: %s)',  'wpematico'),'<strong class="coderr">'. esc_html($feed) . '</strong>', $simplepie->error());
 						}
 					}else{
 						$err_message = ($err_message != "") ? $err_message."<br />" : "" ;
-						$err_message .= sprintf(__('Feed %s could not be parsed because has an space in url.', 'wpematico'),'<strong class="coderr">'. $feed. '</strong>');
+						$err_message .= sprintf(__('Feed %s could not be parsed because has an space in url.', 'wpematico'),'<strong class="coderr">' . esc_html($feed) . '</strong>');
 					}
 				}
 			}

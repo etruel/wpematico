@@ -236,6 +236,10 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
+= 2.6.12 Sep 27, 2021 =
+* Fixes a security bug only available for admins on Campaign editing screens.
+* Tweaks to the subscription form on the WPeMatico About welcome page.
+
 = 2.6.11 Sep 15, 2021 =
 * Fixes some PHP notices.
 * Updated PHP Compatibility checks to 5.6 version.
@@ -336,5 +340,5 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 
-= 2.6.11 =
-Compatibility with WordPress 5.8.1
+= 2.6.12 =
+Improves security on campaign editing screens.
