@@ -3,8 +3,6 @@
  * Welcome Page Class
  * @package     WPEMATICO
  * @subpackage  Admin/Welcome
- * @copyright   Copyright (c) 2015, Pippin Williamson
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.4
  */
 // Exit if accessed directly
@@ -24,7 +22,7 @@ class WPEMATICO_Welcome {
 	 * @var string The capability users should have to view the page
 	 */
 	public $minimum_capability	 = 'manage_options';
-	public $api_url_subscription = 'http://www.wpematico.com/wp-admin/admin-post.php?action=wpmapirest_importdata';
+	public $api_url_subscription = 'https://www.wpematico.com/wp-admin/admin-post.php?action=wpmapirest_importdata';
 
 	/**
 	 * Get things started
@@ -781,9 +779,9 @@ class WPEMATICO_Welcome {
 				<div class="column wpe-flex is-edge-to-edge has-accent-background-color">
 					<div class="about__image is-vertically-aligned-center">
 						<p></p>
-						<h2><strong><?php _e('Stay Informed!', 'wpematico'); ?></strong></h2>
+						<h2><strong><?php _e('Stay up to date!', 'wpematico'); ?></strong></h2>
 						<h3 class="wpsubscription_info"><?php _e('Subscribe to our Newsletter and be the first to receive our news.', 'wpematico'); ?> 
-							<?php _e('We send around 4 or 5 emails per year. Really.', 'wpematico'); ?></h3>
+							<?php _e('We send about 4 or 5 emails per year. Really.', 'wpematico'); ?></h3>
 						<form action="<?php echo admin_url('admin-post.php'); ?>" id="wpsubscription_form" method="post" class="wpcf7-form">
 							<input type="hidden" name="action" value="save_subscription_wpematico"/>
 							<?php wp_nonce_field('save_subscription_wpematico'); ?>

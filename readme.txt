@@ -239,6 +239,7 @@ You can send your files to e-mail wpematico [at] etruel.com
 = 2.6.12 Sep 27, 2021 =
 * Fixes a security bug only available for admins on Campaign editing screens.
 * Tweaks to the subscription form on the WPeMatico About welcome page.
+* Tweaks on the nags style in WPeMatico Addons menu item.
 
 = 2.6.11 Sep 15, 2021 =
 * Fixes some PHP notices.
