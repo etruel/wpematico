@@ -994,8 +994,9 @@ if (!class_exists('WPeMatico_functions')) {
 
 				foreach ($post_data['campaign_word_origin'] as $id => $rewrite) {
 					$origin = wp_check_invalid_utf8($post_data['campaign_word_origin'][$id]);
-					$regex = $post_data['campaign_word_option_regex'][$id] == 1 ? true : false;
-					$title = $post_data['campaign_word_option_title'][$id] == 1 ? true : false;
+					$regex = (isset($post_data['campaign_word_option_regex'][$id]) && $post_data['campaign_word_option_regex'][$id] == 1) ? true : false;
+					$title = (isset($post_data['campaign_word_option_title'][$id]) && $post_data['campaign_word_option_title'][$id] == 1) ? true : false;
+
 					$rewrite = wp_check_invalid_utf8($post_data['campaign_word_rewrite'][$id]);
 					$relink = wp_check_invalid_utf8($post_data['campaign_word_relink'][$id]);
 					if (!empty($origin)) {
