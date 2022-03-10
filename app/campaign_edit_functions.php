@@ -396,6 +396,7 @@ public static function template_box( $post ) {
 						$tags_array[] = '{feedtitle}';
 						$tags_array[] = '{feeddescription}';
 						$tags_array[] = '{feedlogo}';
+						$tags_array[] = '{feedfavicon}';
 						$tags_array[] = '{campaigntitle}';
 						$tags_array[] = '{campaignid}';
 						$tags_array[] = '{item_date}';
@@ -432,6 +433,7 @@ public static function template_box( $post ) {
 				<li><strong class="tag">{feedtitle}</strong> <?php _e('The feed title.', 'wpematico' ); ?> </li>
 				<li><strong class="tag">{feeddescription}</strong> <?php _e('The description of the feed.', 'wpematico' ); ?> </li>
 				<li><strong class="tag">{feedlogo}</strong> <?php _e('The feed\'s logo image URL.', 'wpematico' ); ?> </li>
+				<li><strong class="tag">{feedfavicon}</strong> <?php _e('The feed\'s Favicon URL.', 'wpematico' ); ?> </li>
 				<li><strong class="tag">{campaigntitle}</strong> <?php _e('This campaign title', 'wpematico' ); ?> </li>
 				<li><strong class="tag">{campaignid}</strong> <?php _e('This campaign ID.', 'wpematico' ); ?> </li>
 				<li><strong class="tag">{item_date}</strong> <?php _e('The date of the post item.', 'wpematico' ); ?> </li>

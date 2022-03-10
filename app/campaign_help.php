@@ -275,8 +275,9 @@ $helpcampaign = array(
 				'plustip' => '<b>' . __('Supported tags', 'wpematico' ) . '</b>
 				<p>' . __('A tag is a piece of text that gets replaced dynamically when the post is created. Currently, these tags are supported:', 'wpematico' ) . '</p>
 				<ul style=\'list-style-type: square;margin:0 0 5px 20px;font:0.92em "Lucida Grande","Verdana";\'>
-				  <li><strong>{content}</strong> ' . __('The feed item content.', 'wpematico' ) . ' </li>
 				  <li><strong>{title}</strong> ' . __('The feed item title.', 'wpematico' ) . ' </li>
+				  <li><strong>{content}</strong> ' . __('The feed item content.', 'wpematico' ) . ' </li>
+				  <li><strong>{itemcontent}</strong> ' . __('The feed item description.', 'wpematico' ) . ' </li>
 				  <li><strong>{image}</strong> ' . __('Put the featured image on content.', 'wpematico' ) . ' </li>
 				  <li><strong>{author}</strong> ' . __('The feed item author.', 'wpematico' ) . ' </li>
 				  <li><strong>{authorlink}</strong> ' . __('The feed item author link (If exist).', 'wpematico' ) . ' </li>
@@ -285,8 +286,11 @@ $helpcampaign = array(
 				  <li><strong>{feedtitle}</strong> ' . __('The feed title.', 'wpematico' ) . ' </li>
 				  <li><strong>{feeddescription}</strong> ' . __('The description of the feed.', 'wpematico' ) . ' </li>
 				  <li><strong>{feedlogo}</strong> ' . __('The feed\'s logo image URL.', 'wpematico' ) . ' </li>
+				  <li><strong>{feedfavicon}</strong> ' . __('The feed\'s Favicon URL.', 'wpematico' ) . ' </li>
 				  <li><strong>{campaigntitle}</strong> ' . __('This campaign title', 'wpematico' ) . ' </li>
 				  <li><strong>{campaignid}</strong> ' . __('This campaign ID.', 'wpematico' ) . ' </li>
+				  <li><strong>{item_date}</strong> ' . __('The date of the post item.', 'wpematico' ) . ' </li>
+				  <li><strong>{item_time}</strong> ' . __('The time of the post item.', 'wpematico' ) . ' </li>
 				</ul>
 				<p><b>' . __('Examples:', 'wpematico' ) . '</b></p>
 				<div id="tags_list_examples" style="display: block;">

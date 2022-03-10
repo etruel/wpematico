@@ -236,6 +236,12 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
+= 2.6.14 Mar 9, 2022 =
+* Added {feedfavicon} tag to post template feature.
+* Compatibility with PHP 8+
+* Compatibility with WordPress 5.9.1
+* Fixes [WARNING] Undefined array key on fetching.
+
 = 2.6.13 Jan 31, 2022 =
 * Compatibility with WordPress 5.9
 * Updated addons library updater.
@@ -346,5 +352,5 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 
-= 2.6.13 =
-Compatibility with WordPress 5.9
+= 2.6.14 =
+Minor fixes

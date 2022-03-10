@@ -734,10 +734,15 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		$featured_image_attach_id = 0;
 		$img_new_url = '';
 		if (!empty($this->current_item['nofeatimg'])) {
+			
 			trigger_error('<strong>' . __('Skip Featured Image.', 'wpematico') . '</strong>', E_USER_NOTICE);
+			
 		} else if (!empty($this->current_item['featured_image']) && (!$this->images_options['fifu'])) {
+			
 			trigger_error(__('Featuring Image Into Post.', 'wpematico'), E_USER_NOTICE);
-			if ($this->current_item['images'][0] != $this->current_item['featured_image']) {
+			
+			if (!isset($this->current_item['images'][0]) or ($this->current_item['images'][0] != $this->current_item['featured_image'])) {
+				
 				$itemUrl = $this->current_item['permalink'];
 				$imagen_src = $this->current_item['featured_image'];
 				//**** ecesaria para la featured ?	$imagen_src = apply_filters('wpematico_imagen_src', $imagen_src ); // allow strip parts 

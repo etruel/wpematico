@@ -176,6 +176,7 @@ class wpematico_campaign_fetch_functions {
 			'{feedtitle}'		 => $feed->get_title(),
 			'{feeddescription}'	 => $feed->get_description(),
 			'{feedlogo}'		 => $feed->get_image_url(),
+		    '{feedfavicon}'		 => apply_filters('wpematico_feed_get_favicon', $feed->get_favicon()), // <== 2.6.14 New by https://wordpress.org/support/topic/fetching-favicons/#post-15280216 
 			'{campaigntitle}'	 => get_the_title($campaign['ID']),
 			'{campaignid}'		 => $campaign['ID'],
 			'{item_date}'		 => (($current_item['date']) ? gmdate(get_option('date_format'), $current_item['date'] + (get_option('gmt_offset') * 3600)) : date_i18n(get_option('date_format'), current_time('timestamp'))),
