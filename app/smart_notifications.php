@@ -11,6 +11,7 @@ class wpe_smart_notifications {
 
 		add_action('admin_notices', array(__CLASS__, 'show_notice'));
 		add_action( 'wp_ajax_wpematico_close_notification', array(__CLASS__, 'close_notification') );
+		add_action( 'edit_form_after_title', array(__CLASS__, 'show_notice_wpematico') );
 	}
 	public static function close_notification() {
 		$current_numbers = self::get_number_of_campaigns_post();
@@ -98,7 +99,81 @@ class wpe_smart_notifications {
 				<br />
 			</div>
 		</div>
+		<?php
+	}
+	public static function show_notice_wpematico() {
+
+		global $post_type, $current_screen, $post; 
+		if( $post_type != 'wpematico' ) {
+			return;
+		}
+		if( $current_screen->id != 'wpematico'  ) {
+			return;
+		}
 		
+		if( $current_screen->id == 'wpematico' && $current_screen->parent_base == 'edit'  ) {
+			?>
+			<style>
+				#titlediv{
+					display: none;
+				}
+				.titledivshow {
+					display:initial !important;
+				}
+				.titledivshow input{
+					margin-top:10px !important;
+				}
+				.div-wpematico-smart-notification{
+					margin-right: 0px !important;
+				}
+				#smart-notification-title-link{
+					color: #ff0000
+				}
+				.div-wpematico-smart-notification{
+					border-left: 4px solid #ff0000 !important;
+				}
+
+			</style>
+			<?php
+		
+		}
+		wp_enqueue_style('campaigns-list', WPeMatico :: $uri . 'app/css/campaigns_list.css');
+		wp_enqueue_script('wpematico-campaign-list', WPeMatico :: $uri . 'app/js/campaign_list.js', array('jquery'), WPEMATICO_VERSION, true);
+		wp_enqueue_script('wpematico_campaign_wizard', WPeMatico::$uri .'app/js/campaign_wizard.js', array( 'jquery' ), WPEMATICO_VERSION, true );
+
+		?>
+		<div class="clear"></div>
+		<div class="div-wpematico-smart-notification">
+			<h3><a id="smart-notification-title-link" href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" target="_Blank"><?php _e( 'Check Feed Configuration', 'wpematico' ); ?></a>
+			 <span class="icon-minimize-div dashicons  dashicons-visibility" style="margin-right: 30px;" title="Close"></span>
+			 <span class="icon-close-div dashicons dashicons-no" title="Dismiss"></span></h3>
+			
+			 <div class="description-smart-notification">
+				<p class="parr-wpmatico-smart-notification">
+
+					<?php _e( 'Want to make sure your campaign settings are OK?', 'wpematico' );?>
+					<br>
+					<?php _e( 'Open the configuration wizard to see each metabox one by one.', 'wpematico' );?>
+					<br>
+					<br>
+					<a href="#wizard" class="button button-primary button-hero thickbox_open">Wizard</a>
+				</p>
+
+				<br />
+			</div>
+		</div>
+		<div id="titlediv" class="titledivshow">
+			<div id="titlewrap" >
+				<?php
+					$title_placeholder = apply_filters( 'enter_title_here', __( 'Add title' ), $post );
+				?>
+				<label class="screen-reader-text" id="title-prompt-text" for="title"><?php echo $title_placeholder; ?></label>
+				<input type="text" name="post_title" size="30" value="<?php echo esc_attr( $post->post_title ); ?>" id="title" spellcheck="true" autocomplete="off" />
+			</div>
+			<?php
+				wp_nonce_field( 'samplepermalink', 'samplepermalinknonce', false );
+			?>
+		</div><!-- /titlediv -->
 		<?php
 	}
 }
