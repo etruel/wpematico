@@ -27,7 +27,7 @@ function wpem_cron_callback() {
 	$args = array( 'post_type' => 'wpematico', 'orderby' => 'ID', 'order' => 'ASC', 'post_status' => 'publish', 'numberposts' => -1 );
 	$campaigns = get_posts( $args );
 	foreach( $campaigns as $post ) {
-		$cronnextrun = false;
+		$activated = false;
 		$cronnextrun = '';
 		$campaign = WPeMatico :: get_campaign( $post->ID );
 		$activated = $campaign['activated'];
