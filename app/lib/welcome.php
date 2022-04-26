@@ -112,10 +112,10 @@ class WPEMATICO_Welcome {
 				.about__section.mb-0{ margin-bottom: 0; }
 				.about__section a{ color: #222; }
 				.about__section a:hover{ color: #ef8e2f; }
-				.about__header { background-image: <?php echo 'url('.WPEMATICO_PLUGIN_URL . 'images/about-header.png)'; ?>; background-size: 80%; background-position: bottom right; padding-top: 3rem; background-color: #222; }
-				.about__header-title{ margin: 5rem 2rem 0;padding: 1em 0; }
-				.about__header-title p { margin: 0; padding: 0; font-size: 4em; color: #fff; line-height: 1; font-weight: 900; text-transform: uppercase; }
-				.about__header-title p span { color: #eee; }
+				.about__header-wpematico { background-image: <?php echo 'url('.WPEMATICO_PLUGIN_URL . 'images/about-header.png)'; ?>; background-size: 80%; background-position: bottom right; padding-top: 3rem; background-color: #222; background-repeat: no-repeat; position: relative; margin-bottom: 32px;}
+				.about__header-title-wpematico{ margin: 5rem 2rem 0;padding: 1em 0; }
+				.about__header-title-wpematico p { margin: 0; padding: 0; font-size: 4em; color: #fff; line-height: 1; font-weight: 900; text-transform: uppercase; }
+				.about__header-title-wpematico p span { color: #eee; }
 				.about__header-text { max-width: 25em; margin: 0 2rem 3rem; padding: 0; font-size: 1.5em; line-height: 1.4;}
 				.about__header-text p { color: #fff; margin-top: 0; }
 				.about__header-navigation { display: flex; justify-content: flex-start; background: #fff; color: #222; border-color: #222; padding-top: 0;}
@@ -123,16 +123,17 @@ class WPEMATICO_Welcome {
 				.about__header-navigation .nav-tab-active { margin-bottom: -3px; }
 				.about__header-navigation .nav-tab-active:active, .about__header-navigation .nav-tab-active:hover, .about__header-navigation .nav-tab-active { color: #ef8e2f; border-color: #ef8e2f;}
 				.about__header-navigation .nav-tab:active, .about__header-navigation .nav-tab:hover{ background: #f5f5f5; color: #ef8e2f; }
-				.about__container .has-accent-background-color { background: #ef8e2f; }
-				.about__container .has-subtle-background-color { background: #f9f9f9; }
-				.about__header-title .wpematico-badge { align-self: flex-end; margin-bottom: 10px; max-height: 80px; width: auto; }
+				.about__container-wpematico{ line-height: 1.4; color: #222; max-width: 1000px; margin: 24px auto; clear: both; --gap: 2rem;}
+				.about__container-wpematico .has-accent-background-color { background: #ef8e2f; }
+				.about__container-wpematico .has-subtle-background-color { background: #f9f9f9; }
+				.about__header-title-wpematico .wpematico-badge { align-self: flex-end; margin-bottom: 10px; max-height: 80px; width: auto; }
 				.about__section.about__section_height { min-height: 560px; }
 				.about__section.about__section_height-2 { min-height: 400px; }
 				.about__section.is-feature { font-size: 1.4em; }
-				.about__container h1, .about__container h2, .about__container h3.is-larger-heading{
+				.about__container-wpematico h1, .about__container-wpematico h2, .about__container-wpematico h3.is-larger-heading{
 					    margin-top: 0; margin-bottom: .5em; font-size: 1.75em; line-height: 1.2; font-weight: 600; }
-				.about__container h1.is-smaller-heading, .about__container h2.is-smaller-heading, .about__container h3 { margin-top: 0; font-size: 1.25em; font-weight: 700; }
-				.about__container .about__image { padding: 0 32px; }
+				.about__container-wpematico h1.is-smaller-heading, .about__container-wpematico h2.is-smaller-heading, .about__container-wpematico h3 { margin-top: 0; font-size: 1.25em; font-weight: 700; }
+				.about__container-wpematico .about__image { padding: 0 32px; }
 				.about__section .span-text { font-size: .9em; }
 				.feature-section a, .about__section p a { font-weight: 600; }
 				.addon_block { display: flex; margin-bottom: 1em;}
@@ -145,14 +146,14 @@ class WPEMATICO_Welcome {
 				.about__section.has-2-columns .column:nth-of-type(2n) { -ms-grid-column: 2; grid-column-start: 2; }
 				.about__section .column.is-edge-to-edge{ color: #fff; padding: 0; }
 				.about__section + .about__section .column{ padding-top: 32px; }
-				.about__container .is-vertically-aligned-center{ align-self: center; }
+				.about__container-wpematico .is-vertically-aligned-center{ align-self: center; }
 				@media all and ( max-width: 1035px ) {
 					.about__header { background-size: 95%; }
 				}
 				@media all and ( max-width: 782px ) {
 					.about__header{	background-image: none; }
-					.about__header-title{ margin-top: 0; padding-top: 0;}
-					.about__header-title p{ font-size: 3em; }
+					.about__header-title-wpematico{ margin-top: 0; padding-top: 0;}
+					.about__header-title-wpematico p{ font-size: 3em; }
 				}
 				@media all and ( max-width: 782px ) and (min-width: 481px) {
 					.about__header-navigation .nav-tab{ padding: 24px 16px; }
@@ -161,7 +162,7 @@ class WPEMATICO_Welcome {
 					.about__header-navigation .nav-tab{ font-size: 1.1em; }
 				}
 				@media all and ( max-width: 600px ) {
-					.about__header-title p{ font-size: 2.25em; }
+					.about__header-title-wpematico p{ font-size: 2.25em; }
 					.about__section.has-2-columns, .about__section.has-2-columns.is-wider-left, .about__section.has-2-columns.is-wider-right, .about__section.has-3-columns{ display: block; padding-bottom: 16px; }
 					.about__section + .about__section .column{ padding-top: 16px; }
 					.about__section.has-2-columns .column:nth-of-type(n){ padding-top: 16px; padding-bottom: 16px; }
@@ -192,7 +193,7 @@ class WPEMATICO_Welcome {
 
 		list( $display_version ) = explode('-', WPEMATICO_VERSION);
 		?>
-		<div class="about__header-title">
+		<div class="about__header-title-wpematico">
 			<img class="wpematico-badge" src="<?php echo WPEMATICO_PLUGIN_URL . '/images/robotico_orange-75x130.png'; ?>" alt="<?php _e('WPeMatico', 'wpematico'); ?>" / >
 			<p>
 				<?php _e('WPeMatico'); ?>
@@ -248,9 +249,9 @@ class WPEMATICO_Welcome {
 	 */
 	public function about_screen() {
 		?>
-		<div class="wrap about__container">
+		<div class="wrap about__container about__container-wpematico">
 
-			<div class="about__header">
+			<div class="about__header-wpematico">
 
 				<?php $this->welcome_message(); ?>
 
@@ -477,9 +478,9 @@ class WPEMATICO_Welcome {
 	public function changelog_screen() {
 		?>
 
-		<div class="wrap about__container">
+		<div class="wrap about__container about__container-wpematico">
 
-			<div class="about__header">
+			<div class="about__header-wpematico">
 
 				<?php $this->welcome_message(); ?>
 
@@ -519,9 +520,9 @@ class WPEMATICO_Welcome {
 	public function privacy_screen() {
 		?>
 
-		<div class="wrap about__container">
+		<div class="wrap about__container about__container-wpematico">
 
-			<div class="about__header">
+			<div class="about__header-wpematico">
 
 				<?php $this->welcome_message(); ?>
 
@@ -560,9 +561,9 @@ class WPEMATICO_Welcome {
 	 */
 	public function getting_started_screen() {
 		?>
-		<div class="wrap about__container">
+		<div class="wrap about__container about__container-wpematico">
 
-			<div class="about__header">
+			<div class="about__header-wpematico">
 
 				<?php $this->welcome_message(); ?>
 
