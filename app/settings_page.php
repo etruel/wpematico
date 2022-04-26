@@ -347,8 +347,15 @@ if(!class_exists('WPeMatico_Settings')) :
 											<p></p>
 											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['featuredimg'], true); ?> name="featuredimg" id="featuredimg" /><b>&nbsp;<label for="featuredimg"><?php _e('Set first image in content as Featured Image.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['featuredimg']; ?>"></span>
 											<br />
-											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['fifu'], true); ?> name="fifu" id="fifu" /><b>&nbsp;<label for="fifu"><?php _e('Use Featured Image from URL.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['fifu'].' '. __('See more info in Help tab above.','wpematico'); ?>"></span>
+											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['fifu'], (!defined( 'FIFU_PLUGIN_DIR' ) ? true : false )); ?> name="fifu" id="fifu"  <?php echo (!defined( 'FIFU_PLUGIN_DIR' ) ? 'disabled' : '') ?>/><b>&nbsp;<label for="fifu"><?php _e('Use Featured Image from URL.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['fifu'].' '. __('See more info in Help tab above.','wpematico'); ?>"></span>
 											<br />
+											<?php
+												if(!defined( 'FIFU_PLUGIN_DIR' )){
+													echo '<small>';
+													echo  __('Se requiere instalar y activar', 'wpematico') . ' <a href="https://wordpress.org/plugins/featured-image-from-url/" rel="nofollow" target="_Blank">' . __('Featured Image from URL', 'wpematico') . '</a> ' . __('plugin in WordPress repository.','wpematico');
+													echo '</small><br />';
+												}
+												?>
 											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['rmfeaturedimg'], true); ?> name="rmfeaturedimg" id="rmfeaturedimg" /><b>&nbsp;<label for="rmfeaturedimg"><?php _e('Remove Featured Image from content.', 'wpematico'); ?></label></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['rmfeaturedimg']; ?>"></span>
 											<p></p>
 											<div id="custom_uploads" style="<?php if(!$cfg['imgcache'] && !$cfg['featuredimg']) echo 'display:none;'; ?>">
