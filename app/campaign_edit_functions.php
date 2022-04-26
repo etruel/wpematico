@@ -509,7 +509,7 @@ public static function template_box( $post ) {
 			<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_fifu, (!defined( 'FIFU_PLUGIN_DIR' ) ? false : true ) ); ?> name="campaign_fifu" id="campaign_fifu" <?php echo (!defined( 'FIFU_PLUGIN_DIR' ) ? 'disabled' : '') ?>/><b>&nbsp;<label for="campaign_fifu"><?php _e('Use Featured Image from URL.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['fifu']; ?>"></span>
 			<br />
 			<?php
-				if(!is_plugin_active( 'featured-image-from-url/featured-image-from-url.php' )){
+				if(!defined( 'FIFU_PLUGIN_DIR' )){
 					echo '<small>';
 					echo  __('Se requiere instalar y activar', 'wpematico') . ' <a href="https://wordpress.org/plugins/featured-image-from-url/" rel="nofollow" target="_Blank">' . __('Featured Image from URL', 'wpematico') . '</a> ' . __('plugin in WordPress repository.','wpematico');
 					echo '</small><br />';
