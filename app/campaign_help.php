@@ -300,6 +300,10 @@ $helpcampaign = array(
 					<span>' . __('Also you can add a gallery with three columns with all thumbnails images clickables at the bottom of every content, but before source link and author name, the post template would look like this:', 'wpematico' ) . '</span>
 					<div class="code">{content}<br>[gallery link="file" columns="3"]<br>&lt;a href="{permalink}"&gt;' . __('Go to Source', 'wpematico' ) . '&lt;/a&gt;&lt;br /&gt;<br>Author: {author}</div>
 					<p><em>[gallery link="file" columns="3"]</em> ' . __('it\'s a WP shortcode for insert a gallery into the post.  You can use any shortcode here; will be processed by Wordpress.', 'wpematico' ) . '</p>
+					<p><ins>If you want to display all the media videos or audios</ins> in the content you could use the playlist shortcode 
+					that implements the functionality of displaying a collection of WordPress audio or video files in a post.</p>
+					<div class="code">[playlist type="video" style="dark"]</div>
+					<p>Read more about Post Template feature at <a title="How to use Post template feature" href="https://etruel.com/question/how-to-use-post-template-feature/" target="_blank">How to use Post template feature ?</a>.'. '</p>
 				</div>',
 		),
 	),

@@ -389,10 +389,10 @@ class WPEMATICO_Welcome {
 
 					<div class="addon_block">
 						<div class="addon_img">
-							<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/wpematico-premium-200x100.png'; ?>" alt="WPeMatico Premium Package" />
+							<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/wpematico-plus-200x100.jpg'; ?>" alt="WPeMatico Plus Membership" />
 						</div>
 						<div class="addon_text">
-							<p><?php _e('The', 'wpematico'); ?> <a href="https://etruel.com/downloads/wpematico-exporter/" target="_blank">WPeMatico Premium Package</a> 
+							<p><?php _e('The', 'wpematico'); ?> <a href="https://etruel.com/downloads/wpematico-plus/" target="_blank">WPeMatico Plus Membership</a> 
 								<?php _e('contains the five preferred add-Ons with the most wanted features for autoblogging with WordPress in a very easy professional way.', 'wpematico'); ?></p>
 						</div>
 					</div>
@@ -427,7 +427,7 @@ class WPEMATICO_Welcome {
 						</div>
 					</div>
 
-					<h5><a style="float:right;" href="https://etruel.com/starter-packages/" target="_blank"><?php _e('Starter Packages.', 'wpematico'); ?></a>
+					<h5><a style="float:right;" href="https://etruel.com/starter-memberships/" target="_blank"><?php _e('WPeMatico Starter Memberships.', 'wpematico'); ?></a>
 						<a style="float:left;" href="https://etruel.com/downloads/category/wpematico-add-ons/" target="_blank"><?php _e('All available Addons', 'wpematico'); ?></a></h5>
 				</div>
 			</div>

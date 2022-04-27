@@ -236,6 +236,15 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
+= 2.6.15 Apr XX, 2022 =
+* Improves options by checking activation of FIFU plugin on campaign/settings screens.
+* Added dismmissible banner to use the Wizard to edit campaigns.
+* Added [playlist] shortcode example to Post template feature to show all the audio/video media in post content.
+* Improves plugin images by reducing sizes.
+* Changed all instances of Packages by Memberships.
+* Fixes Wizard styles.
+* Fixes some warnings and notices on PHP 8.1+
+
 = 2.6.14 Mar 9, 2022 =
 * Added {feedfavicon} tag to post template feature.
 * Compatibility with PHP 8+

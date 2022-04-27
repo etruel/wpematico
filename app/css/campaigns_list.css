@@ -56,7 +56,7 @@ line-height: 1em;
 width: 110px;
 }
 
-.div-wpematico-smart-notification {
+.wpematico-smart-notification {
     background-color: white;
     padding: 10px;
     padding-top: 0px;
@@ -77,5 +77,5 @@ width: 110px;
     text-decoration: none !important;
 }
 .icon-close-div,.icon-minimize-div{position: absolute; top: 0; right: 0; font-size: 25px; margin-top: -5px; cursor: pointer;}
-.div-wpematico-smart-notification h3{color: #4C5054; position: relative; border-bottom: 1px solid #ccc; padding-bottom: 10px;}
+.wpematico-smart-notification h3{color: #4C5054; position: relative; border-bottom: 1px solid #ccc; padding-bottom: 10px;}
 .parr-wpmatico-smart-notification{padding-right: 10px;}

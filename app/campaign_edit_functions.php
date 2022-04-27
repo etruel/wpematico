@@ -448,6 +448,9 @@ public static function template_box( $post ) {
 				<span><?php _e('Also you can add a gallery with three columns with all thumbnails images clickables at the bottom of every content, but before source link and author name, the post template would look like this:', 'wpematico' ); ?></span>
 				<div class="code">{content}<br>[gallery link="file" columns="3"]<br>&lt;a href="{permalink}"&gt;<?php _e('Go to Source', 'wpematico' ); ?>&lt;/a&gt;&lt;br /&gt;<br>Author: {author}</div>
 				<p><em>[gallery link="file" columns="3"]</em> <?php _e('it\'s a WP shortcode for insert a gallery into the post.  You can use any shortcode here; will be processed by Wordpress.', 'wpematico' ); ?></p>
+					<p><ins> <?php _e('If you want to display all the media videos or audios</ins> in the content you could use the playlist shortcode that implements the functionality of displaying a collection of WordPress audio or video files in a post.', 'wpematico' ); ?></p>
+					<div class="code">[playlist type="video" style="dark"]</div>
+					<p><?php _e('Read more about Post Template feature at ', 'wpematico' ); ?><a title="<?php _e('How to use Post template feature ?', 'wpematico' ); ?>" href="https://etruel.com/question/how-to-use-post-template-feature/" target="_blank"><?php _e('How to use Post template feature ?', 'wpematico' ); ?></a>.</p>
 			</div>
 		</div>
 
