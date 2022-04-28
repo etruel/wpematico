@@ -115,40 +115,27 @@ class wpe_smart_notifications {
 			return;
 		}
 		?>
-		<style>
-			.wpematico-smart-notification{
-				margin-right: 0px !important;
-			}
-			#smart-notification-title-link{
-				color: #ff0000
-			}
-			.wpematico-smart-notification{
-				border-left: 4px solid #ff0000 !important;
-			}
-
-		</style>
 		<?php
-		wp_enqueue_style('campaigns-list', WPeMatico :: $uri . 'app/css/campaigns_list.css');
 //		wp_enqueue_script('wpematico-campaign-list', WPeMatico :: $uri . 'app/js/campaign_list.js', array('jquery'), WPEMATICO_VERSION, true);
 //		wp_enqueue_script('wpematico_campaign_wizard', WPeMatico::$uri .'app/js/campaign_wizard.js', array( 'jquery' ), WPEMATICO_VERSION, true );
 		?>
-		<div class="wpematico-smart-notification">
-			<h3><?php _e('Check all Campaign Options with Wizard', 'wpematico'); ?></h3>
-			<span class="icon-minimize-div dashicons  dashicons-visibility" style="margin-right: 30px;" title="Close"></span>
-			<span class="icon-close-div dashicons dashicons-no" title="Dismiss"></span></h3>
-
-		<div class="description-smart-notification">
-			<p class="parr-wpmatico-smart-notification">
-				<?php _e('Want to make sure your campaign settings are fine?', 'wpematico'); ?>
+		<div class="wpematico-smart-notification campagin_edit">
+			<h3>
+				<?php _e('Check all Campaign Options with Wizard', 'wpematico'); ?>
+				<span class="icon-close-div dashicons dashicons-no" title="Dismiss"></span>
+				<span class="icon-minimize-div dashicons  dashicons-visibility" title="Close"></span>
+			</h3>
+			<div class="description-smart-notification">
+				<p class="parr-wpmatico-smart-notification">
+					<?php _e('Want to make sure your campaign settings are fine?', 'wpematico'); ?>
+					<br>
+					<?php _e('Open the configuration wizard to see each metabox one by one.', 'wpematico'); ?>
+					<br>
+					<br>
+					<a href="#wizard" class="button button-primary button-hero thickbox_open">Wizard</a>
+				</p>
 				<br>
-				<?php _e('Open the configuration wizard to see each metabox one by one.', 'wpematico'); ?>
-				<br>
-				<br>
-				<a href="#wizard" class="button button-primary button-hero thickbox_open">Wizard</a>
-			</p>
-
-			<br />
-		</div>
+			</div>
 		</div>
 		<?php
 	}

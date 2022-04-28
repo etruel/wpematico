@@ -1520,3 +1520,45 @@ div#optionslayer-right {
 .div-danger-separator {
     margin-bottom: 40px;
 }
+
+.wpematico-smart-notification.campagin_edit {
+    background-color: #fff;
+    position: relative;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+    border: 1px solid #D9D9D9;
+    border-left: 4px solid #ff0000;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    margin: 5px 0 2px 0px;
+    padding: 1px 12px;
+    display: block;
+}
+.wpematico-smart-notification.campagin_edit h3{
+    color: #ff0000; 
+    position: relative; 
+    border-bottom: 1px solid #ccc; 
+    padding-bottom: 10px;
+}
+.wpematico-smart-notification.campagin_edit .description-smart-notification{
+    display: block;
+}
+.wpematico-smart-notification.campagin_edit #smart-notification-title-link {
+    text-decoration: none !important;
+}
+.wpematico-smart-notification.campagin_edit .icon-close-div,
+.wpematico-smart-notification.campagin_edit .icon-minimize-div{
+    color: #4C5054;
+    position: absolute; 
+    top: 0; 
+    right: 5px;
+    margin-top: -5px;
+    font-size: 25px; 
+    cursor: pointer;
+}
+.wpematico-smart-notification.campagin_edit .icon-close-div{
+    right: 35px;
+}
+.wpematico-smart-notification.campagin_edit .parr-wpmatico-smart-notification{
+    padding-right: 10px;
+}
