@@ -2877,44 +2877,37 @@ class SimplePie_Item
 
 			if ($enclosure = $this->get_item_tags(SIMPLEPIE_NAMESPACE_RSS_20, 'enclosure'))
 			{
-				
-				foreach($enclosure as $enclosureAll){
-					if (isset($enclosureAll['attribs']['']['url']))
+				if (isset($enclosure[0]['attribs']['']['url']))
+				{
+					// Attributes
+					$bitrate = null;
+					$channels = null;
+					$duration = null;
+					$expression = null;
+					$framerate = null;
+					$height = null;
+					$javascript = null;
+					$lang = null;
+					$length = null;
+					$medium = null;
+					$samplingrate = null;
+					$type = null;
+					$url = null;
+					$width = null;
+
+					$url = $this->sanitize($enclosure[0]['attribs']['']['url'], SIMPLEPIE_CONSTRUCT_IRI, $this->get_base($enclosure[0]));
+					if (isset($enclosure[0]['attribs']['']['type']))
 					{
-							// Attributes
-							$bitrate = null;
-							$channels = null;
-							$duration = null;
-							$expression = null;
-							$framerate = null;
-							$height = null;
-							$javascript = null;
-							$lang = null;
-							$length = null;
-							$medium = null;
-							$samplingrate = null;
-							$type = null;
-							$url = null;
-							$width = null;
-		
-							$url = $this->sanitize($enclosureAll['attribs']['']['url'], SIMPLEPIE_CONSTRUCT_IRI, $this->get_base($enclosureAll));
-							$url = $this->feed->sanitize->https_url($url);
-							if (isset($enclosureAll['attribs']['']['type']))
-							{
-								$type = $this->sanitize($enclosureAll['attribs']['']['type'], SIMPLEPIE_CONSTRUCT_TEXT);
-							}
-							if (isset($enclosureAll['attribs']['']['length']))
-							{
-								$length = intval($enclosureAll['attribs']['']['length']);
-							}
-		
-							// Since we don't have group or content for these, we'll just pass the '*_parent' variables directly to the constructor
-							$this->data['enclosures'][] = $this->registry->create('Enclosure', array($url, $type, $length, null, $bitrate, $captions_parent, $categories_parent, $channels, $copyrights_parent, $credits_parent, $description_parent, $duration_parent, $expression, $framerate, $hashes_parent, $height, $keywords_parent, $lang, $medium, $player_parent, $ratings_parent, $restrictions_parent, $samplingrate, $thumbnails_parent, $title_parent, $width));
-						
-							
-						}
+						$type = $this->sanitize($enclosure[0]['attribs']['']['type'], SIMPLEPIE_CONSTRUCT_TEXT);
 					}
-			 
+					if (isset($enclosure[0]['attribs']['']['length']))
+					{
+						$length = ceil($enclosure[0]['attribs']['']['length']);
+					}
+
+					// Since we don't have group or content for these, we'll just pass the '*_parent' variables directly to the constructor
+					$this->data['enclosures'][] = $this->registry->create('Enclosure', array($url, $type, $length, null, $bitrate, $captions_parent, $categories_parent, $channels, $copyrights_parent, $credits_parent, $description_parent, $duration_parent, $expression, $framerate, $hashes_parent, $height, $keywords_parent, $lang, $medium, $player_parent, $ratings_parent, $restrictions_parent, $samplingrate, $thumbnails_parent, $title_parent, $width));
+				}
 			}
 
 			if (sizeof($this->data['enclosures']) === 0 && ($url || $type || $length || $bitrate || $captions_parent || $categories_parent || $channels || $copyrights_parent || $credits_parent || $description_parent || $duration_parent || $expression || $framerate || $hashes_parent || $height || $keywords_parent || $lang || $medium || $player_parent || $ratings_parent || $restrictions_parent || $samplingrate || $thumbnails_parent || $title_parent || $width))

@@ -72,7 +72,7 @@ class wpe_smart_notifications {
 		$current_levels = self::get_levels_notifications($current_numbers);
 		$level_notifications = get_option('wpematico_level_snotifications', array(0, 0));
 
-		$show_notice = true;
+		$show_notice = false;
 		if ($current_levels[0] > $level_notifications[0] || $current_levels[1] > $level_notifications[1]) {
 			$show_notice = true;
 		}

@@ -176,6 +176,7 @@ class wpematico_campaign_fetch_functions {
 			'{feedtitle}'		 => $feed->get_title(),
 			'{feeddescription}'	 => $feed->get_description(),
 			'{feedlogo}'		 => $feed->get_image_url(),
+		    '{feedfavicon}'		 => apply_filters('wpematico_feed_get_favicon', $feed->get_favicon()), // <== 2.6.14 New by https://wordpress.org/support/topic/fetching-favicons/#post-15280216 
 			'{campaigntitle}'	 => get_the_title($campaign['ID']),
 			'{campaignid}'		 => $campaign['ID'],
 			'{item_date}'		 => (($current_item['date']) ? gmdate(get_option('date_format'), $current_item['date'] + (get_option('gmt_offset') * 3600)) : date_i18n(get_option('date_format'), current_time('timestamp'))),
@@ -890,11 +891,9 @@ class wpematico_campaign_fetch_functions {
 	function Get_Item_Audios($current_item, $campaign, $feed, $item, $options_audios) {
 		if($options_audios['audio_cache']) {
 			$current_item['audios'] = $this->parseAudios($current_item['content']);
-			
+
+
 			$current_item			 = apply_filters('wpematico_get_item_audios', $current_item, $campaign, $item, $options_audios);
-			 //var_export($current_item);
-			//die('asds7'); 
-			
 			//if( $this->cfg['nonstatic'] ) { 
 			//$current_item['audios'] = NoNStatic::find_audios($current_item, $campaign, $item, $options_audios);
 			//}
@@ -951,10 +950,8 @@ class wpematico_campaign_fetch_functions {
 	function Item_Audios(&$current_item, &$campaign, &$feed, &$item, $options_audios) {
 		if($options_audios['audio_cache']) {
 			$itemUrl = $this->current_item['permalink'];
-			
-			
+
 			if(sizeof($current_item['audios'])) { // If exist audios on content.
-				//var_export($current_item['audios']);
 				trigger_error('<b>' . __('Looking for audios in content.', 'wpematico') . '</b>', E_USER_NOTICE);
 				$audio_new_url_array = array();
 				foreach($current_item['audios'] as $audio_src) {
@@ -1022,7 +1019,6 @@ class wpematico_campaign_fetch_functions {
 				}
 				$current_item['audios'] = (array) $audio_new_url_array;
 			}  // // Si hay alguna imagen en el contenido
-			//die();
 		}else {
 			if(isset($current_item['audios']) && sizeof($current_item['audios'])) {
 				trigger_error('<b>' . __('Using remotely linked audios in content. No changes.', 'wpematico') . '</b>', E_USER_NOTICE);
