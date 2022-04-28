@@ -1372,16 +1372,16 @@ public static function feeds_box( $post ) {
 					<?php echo __('Next','wpematico'); ?> <i class="dashicons dashicons-arrow-right"></i>
 				</button>
 				</div>
-				<div class="wpematico_divider_list_wizard">
-					<span  class="dashicons dashicons-editor-help icon-wizard-help"></span>
-					<p style="color: white;margin-top: 0px;" class="help_wizard"> </p>
-				</div>
-
+				
 				<!--title default wizard-->
 				<div class="postbox" id="temp_postbox" style="height: 30vh; overflow-y:auto; border:6px solid #DB9667;">
 					<h2 class="hndle ui-sortable-handle temp_uisortable postbox-title" data-background-color="" style="color: black; padding: 10px; font-family: 'Roboto', sans-serif;">
 						<span></span>
 					</h2>
+					<div class="wpematico_divider_list_wizard">
+						<span  class="dashicons dashicons-editor-help icon-wizard-help"></span>
+						<p style="color: white;margin-top: 0px;" class="help_wizard"> </p>
+					</div>
 				</div>
 			</div>
 		<?php		
