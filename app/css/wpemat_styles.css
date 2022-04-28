@@ -1264,6 +1264,8 @@ div#optionslayer-right {
     padding: 0px 15px 0;
 }
 #thickbox_wizard .control-buttons {
+    display: flex;
+    align-items: center;
     font-size: 20px;
     position: absolute;
     z-index: 10;
@@ -1281,7 +1283,9 @@ div#optionslayer-right {
 }
 #next_wizard .dashicons,
 #prev_wizard .dashicons {
-    font-size: 30px;
+    font-size: 25px;
+    width: 25px;
+    height: 25px;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, .8);
 }
 #mailaddresslog {

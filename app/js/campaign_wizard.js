@@ -235,7 +235,7 @@ jQuery(document).ready(function($){
 			$(".help_wizard").text(' ');
 			$(".help_wizard").html($("." + wizard_class_array[cont_wizard]).find('h2 span:nth-child(2)').attr("title-heltip")).css('margin-top', '10px');
 			if ($(".help_wizard").text() != ' ') {
-				jjQuery('.wpematico_divider_list_wizard').show(); 
+				jQuery('.wpematico_divider_list_wizard').show(); 
 				jQuery('#thickbox_wizard .postbox').css({'height':'30vh'});
 							
 			} else {
