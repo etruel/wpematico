@@ -31,7 +31,7 @@ jQuery(document).ready(function($){
 		$cont_wizard = 0;
 		$(".postbox").each(function(i){
 						
-			if ($(this).find('h2 span').text().length>0  && jQuery(this).is(':visible') && !jQuery(this).is(':hidden')) {
+			if ($(this).find('h2').text().length>0  && jQuery(this).is(':visible') && !jQuery(this).is(':hidden')) {
 							
 				$(this).attr("wizard","wizard_metabox_"+$cont_wizard);
 				$(this).addClass("wizard_metabox_"+$cont_wizard);
