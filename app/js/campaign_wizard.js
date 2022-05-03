@@ -187,7 +187,7 @@ jQuery(document).ready(function($){
 	}
 	function events_wizard_popup_close() {
 		$(".title_wizard").find("#titlewrap").appendTo("#post-body-content #titlediv");
-		jQuery('#thickbox_wizard .postbox').css({'height':'30vh'});
+		//jQuery('#thickbox_wizard .postbox').css({'height':'30vh'});
 		$("#temp_postbox").find(">div.inside").each(function(i){
 			class_wizard = $(this).attr("wizard");
 			$(this).appendTo("."+class_wizard);						
@@ -236,11 +236,11 @@ jQuery(document).ready(function($){
 			$(".help_wizard").html($("." + wizard_class_array[cont_wizard]).find('h2 span:nth-child(2)').attr("title-heltip")).css('margin-top', '10px');
 			if ($(".help_wizard").text() != ' ') {
 				jQuery('.wpematico_divider_list_wizard').show(); 
-				jQuery('#thickbox_wizard .postbox').css({'height':'30vh'});
+				//jQuery('#thickbox_wizard .postbox').css({'height':'30vh'});
 							
 			} else {
 				jQuery('.wpematico_divider_list_wizard').hide(); 
-				jQuery('#thickbox_wizard .postbox').css({'height':'42vh'});
+				//jQuery('#thickbox_wizard .postbox').css({'height':'42vh'});
 			}
 			jQuery('#tiptip_holder').fadeOut();
 			if((cont_wizard+1)>=tam_array_metabox) $(this).hide(0);
@@ -263,11 +263,11 @@ jQuery(document).ready(function($){
 		$(".help_wizard").text($("." + wizard_class_array[cont_wizard]).find('h2 span:nth-child(2)').attr("title-heltip")).css('margin-top', '10px');
 		if ($(".help_wizard").text() != ' ') {
 			jQuery('.wpematico_divider_list_wizard').show(); 
-			jQuery('#thickbox_wizard .postbox').css({'height':'30vh'});
+			//jQuery('#thickbox_wizard .postbox').css({'height':'30vh'});
 							
 		} else {
 			jQuery('.wpematico_divider_list_wizard').hide(); 
-			jQuery('#thickbox_wizard .postbox').css({'height':'42vh'});
+			//jQuery('#thickbox_wizard .postbox').css({'height':'42vh'});
 		}
 		jQuery('#tiptip_holder').fadeOut();
 		if(cont_wizard<=0) $(this).hide(0);
@@ -295,11 +295,11 @@ jQuery(document).ready(function($){
 				$(".help_wizard").text($("." + wizard_class_array[cont_wizard]).find('h2 span:nth-child(2)').attr("title-heltip")).css('margin-top', '10px');
 				if ($(".help_wizard").text() != ' ') {
 					jQuery('.wpematico_divider_list_wizard').show(); 
-					jQuery('#thickbox_wizard .postbox').css({'height':'30vh'});
+					//jQuery('#thickbox_wizard .postbox').css({'height':'30vh'});
 								
 				} else {
 					jQuery('.wpematico_divider_list_wizard').hide(); 
-					jQuery('#thickbox_wizard .postbox').css({'height':'42vh'});
+					//jQuery('#thickbox_wizard .postbox').css({'height':'42vh'});
 				}
 				jQuery('#tiptip_holder').fadeOut();
 			});

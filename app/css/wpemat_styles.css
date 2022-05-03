@@ -1021,9 +1021,6 @@ div#optionslayer-right {
     }
 }
 @media screen and (max-width: 1000px) and (min-width: 700px) {
-    .help_wizard {
-        font-size: 18px !important;
-    }
     .closed_wizard {
         font-size: 10px !important;
     }
@@ -1089,9 +1086,6 @@ div#optionslayer-right {
     }
 }
 @media screen and (max-width: 699px) and (min-width: 220px) {
-    .help_wizard {
-        font-size: 12px !important;
-    }
     .closed_wizard {
         font-size: 10px !important;
     }
@@ -1188,21 +1182,32 @@ div#optionslayer-right {
     font-size: 30px !important;
     color: white;
 }
+.wpematico_divider_list_wizard {
+    display: flex;
+    align-items: flex-start;
+    background-color: #f1f1f1;
+    font-style: italic;
+    padding: 10px 15px;
+    color: #777;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
 .help_wizard {
-    font-size: 13px;
-    min-height: 60px;
+    align-self: center;
+    font-size: 14px;
     max-height: initial;
     overflow-y: auto;
     padding: 0;
-    color: #888888 !important;
+    margin: 0 !important;
+    color: #555;
 }
 .icon-wizard-help {
-    float: left;
     width: auto;
     height: auto;
-    color: #444;
-    margin-left: 0 !important;
-    font-size: 50px;
+    color: #bbb;
+    margin-left: 0;
+    margin-right: 5px;
+    font-size: 40px;
 }
 .closed_wizard {
     text-shadow: 1px 1px 1px #9E5729;
@@ -1238,7 +1243,7 @@ div#optionslayer-right {
 }
 #thickbox_wizard .postbox {
     padding: 15px;
-    margin: 0 15px 15px;
+    margin: 15px;
     background-color: #ffffff;
     border: 0 !important;
     box-sizing: border-box;
@@ -1248,20 +1253,21 @@ div#optionslayer-right {
     margin: 0;
     padding: 0;
     width: 100%;
-    margin-top: 10px;
     overflow: visible;
 }
 #thickbox_wizard .postbox #major-publishing-actions {
     background-color: #ffffff;
 }
 #thickbox_wizard .postbox h2 {
+    color: black; 
+    padding: 10px; 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
     box-sizing: border-box;
+    border: 1px solid #c3c4c7;
+    margin-top: 0;
 }
 #thickbox_wizard .postbox #campaign_type {
     height: auto;
-}
-.wpematico_divider_list_wizard {
-    padding: 0px 15px 0;
 }
 #thickbox_wizard .control-buttons {
     display: flex;

@@ -354,7 +354,7 @@ if(!class_exists('WPeMatico_Settings')) :
 											<?php
 												if(!$fifu_activated){
 													echo '<small >';
-													echo  __('Se requiere instalar y activar', 'wpematico') . ' <a href="https://wordpress.org/plugins/featured-image-from-url/" rel="nofollow" target="_Blank">' . __('Featured Image from URL', 'wpematico') . '</a> ' . __('plugin in WordPress repository.','wpematico');
+													echo  __('The', 'wpematico') . ' <a href="https://wordpress.org/plugins/featured-image-from-url/" rel="nofollow" target="_Blank">' . __('Featured Image from URL', 'wpematico') . '</a> ' . __('plugin needs to be installed and activated from the WordPress repository.','wpematico');
 													echo '</small><br />';
 												}
 												?>

@@ -516,7 +516,7 @@ public static function template_box( $post ) {
 			<?php
 				if(!$fifu_activated){
 					echo '<small>';
-					echo  __('Se requiere instalar y activar', 'wpematico') . ' <a href="https://wordpress.org/plugins/featured-image-from-url/" rel="nofollow" target="_Blank">' . __('Featured Image from URL', 'wpematico') . '</a> ' . __('plugin in WordPress repository.','wpematico');
+					echo  __('The', 'wpematico') . ' <a href="https://wordpress.org/plugins/featured-image-from-url/" rel="nofollow" target="_Blank">' . __('Featured Image from URL', 'wpematico') . '</a> ' . __('plugin needs to be installed and activated from the WordPress repository.','wpematico');
 					echo '</small><br />';
 				}
 			?>
@@ -1374,13 +1374,13 @@ public static function feeds_box( $post ) {
 				</div>
 				
 				<!--title default wizard-->
-				<div class="postbox" id="temp_postbox" style="height: 30vh; overflow-y:auto; border:6px solid #DB9667;">
-					<h2 class="hndle ui-sortable-handle temp_uisortable postbox-title" data-background-color="" style="color: black; padding: 10px; font-family: 'Roboto', sans-serif;">
+				<div class="postbox" id="temp_postbox">
+					<h2 class="hndle ui-sortable-handle temp_uisortable postbox-title" data-background-color="">
 						<span></span>
 					</h2>
 					<div class="wpematico_divider_list_wizard">
 						<span  class="dashicons dashicons-editor-help icon-wizard-help"></span>
-						<p style="color: white;margin-top: 0px;" class="help_wizard"> </p>
+						<p class="help_wizard"> </p>
 					</div>
 				</div>
 			</div>

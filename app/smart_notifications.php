@@ -79,11 +79,12 @@ class wpe_smart_notifications {
 		if (!$show_notice) {
 			return;
 		}
+		wp_enqueue_script('wpematico-smart-notifications', WPeMatico :: $uri . 'app/js/smart_notifications.js', array('jquery'), WPEMATICO_VERSION, true);
 		?>
 		<div class="clear"></div>
-		<div class="wpematico-smart-notification">
+		<div id="smart-notification-rate" class="wpematico-smart-notification">
 			<h3><a id="smart-notification-title-link" href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" target="_Blank"><?php _e('Rate 5 stars on Wordpress', 'wpematico'); ?></a>
-				<span class="icon-minimize-div dashicons  dashicons-visibility" style="margin-right: 30px;" title="Close"></span>
+				<span class="icon-minimize-div dashicons  dashicons-visibility" style="margin-right: 30px;" title="Close" data-target="#smart-notification-rate"></span>
 				<span class="icon-close-div dashicons dashicons-no" title="Dismiss"></span></h3>
 
 			<div class="description-smart-notification">
@@ -116,14 +117,13 @@ class wpe_smart_notifications {
 		}
 		?>
 		<?php
-//		wp_enqueue_script('wpematico-campaign-list', WPeMatico :: $uri . 'app/js/campaign_list.js', array('jquery'), WPEMATICO_VERSION, true);
-//		wp_enqueue_script('wpematico_campaign_wizard', WPeMatico::$uri .'app/js/campaign_wizard.js', array( 'jquery' ), WPEMATICO_VERSION, true );
+		wp_enqueue_script('wpematico-smart-notifications', WPeMatico :: $uri . 'app/js/smart_notifications.js', array('jquery'), WPEMATICO_VERSION, true);
 		?>
-		<div class="wpematico-smart-notification campagin_edit">
+		<div id="smart-notification-wizard" class="wpematico-smart-notification campagin_edit">
 			<h3>
 				<?php _e('Check all Campaign Options with Wizard', 'wpematico'); ?>
 				<span class="icon-close-div dashicons dashicons-no" title="Dismiss"></span>
-				<span class="icon-minimize-div dashicons  dashicons-visibility" title="Close"></span>
+				<span class="icon-minimize-div dashicons dashicons-visibility" title="Close" data-target="#smart-notification-wizard"></span>
 			</h3>
 			<div class="description-smart-notification">
 				<p class="parr-wpmatico-smart-notification">
