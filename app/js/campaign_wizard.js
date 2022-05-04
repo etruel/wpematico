@@ -231,7 +231,7 @@ jQuery(document).ready(function($){
 			//$(".temp_uisortable").css({'background-color':color_background_title_wizard});
 			$(".temp_uisortable").css('background-color',color_background_title_wizard);
 			//help line
-
+			$("#temp_postbox>h2>span>span.help_tip").css('display', 'none');
 			$(".help_wizard").text(' ');
 			$(".help_wizard").html($("." + wizard_class_array[cont_wizard]).find('h2 span:nth-child(2)').attr("title-heltip")).css('margin-top', '10px');
 			if ($(".help_wizard").text() != ' ') {
@@ -259,6 +259,7 @@ jQuery(document).ready(function($){
 		$(".temp_uisortable span").html($("." + wizard_class_array[cont_wizard]).find('h2 ').html());
 		$(".temp_uisortable").css('background-color',color_background_title_wizard);
 		//help line
+		$("#temp_postbox>h2>span>span.help_tip").css('display', 'none');
 		$(".help_wizard").text(' ');
 		$(".help_wizard").text($("." + wizard_class_array[cont_wizard]).find('h2 span:nth-child(2)').attr("title-heltip")).css('margin-top', '10px');
 		if ($(".help_wizard").text() != ' ') {
@@ -290,7 +291,7 @@ jQuery(document).ready(function($){
 				$(".temp_uisortable").css('background-color',color_background_title_wizard);
 
 
-				$(".help_tip").css('display', 'none');
+				$("#temp_postbox>h2>span>span.help_tip").css('display', 'none');
 				$(".help_wizard").html(' ');
 				$(".help_wizard").text($("." + wizard_class_array[cont_wizard]).find('h2 span:nth-child(2)').attr("title-heltip")).css('margin-top', '10px');
 				if ($(".help_wizard").text() != ' ') {
