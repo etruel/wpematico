@@ -349,7 +349,7 @@ if(!class_exists('WPeMatico_Settings')) :
 											<p></p>
 											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['featuredimg'], true); ?> name="featuredimg" id="featuredimg" /><b>&nbsp;<label for="featuredimg"><?php _e('Set first image in content as Featured Image.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['featuredimg']; ?>"></span>
 											<br />
-											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['fifu'], $fifu_activated ); ?> name="fifu" id="fifu"  <?php echo (!$fifu_activated ? 'disabled' : '') ?>/><b>&nbsp;<label for="fifu"><?php _e('Use Featured Image from URL.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['fifu'].' '. __('See more info in Help tab above.','wpematico'); ?>"></span>
+											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['fifu'], (!$fifu_activated) ? ((!$cfg['fifu']) ? true : false ) : true ); ?> name="fifu" id="fifu"  <?php echo (!$fifu_activated ? 'disabled' : '') ?>/><b>&nbsp;<label for="fifu"><?php _e('Use Featured Image from URL.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['fifu'].' '. __('See more info in Help tab above.','wpematico'); ?>"></span>
 											<br />
 											<?php
 												if(!$fifu_activated){
