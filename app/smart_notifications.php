@@ -11,6 +11,9 @@ class wpe_smart_notifications {
 
 	public static function init() {
 		add_action('admin_head', array(__CLASS__, 'admin_head'));
+		// dismiss AJAX calls
+		add_action('wp_ajax_wpematico_dismiss_wprate_notice', array(__CLASS__, 'dismiss_wprate_notice'));
+		add_action('wp_ajax_wpematico_dismiss_wizard_notice', array(__CLASS__, 'dismiss_wizard_notice'));
 	}
 
 	public static function admin_head() {
@@ -28,9 +31,6 @@ class wpe_smart_notifications {
 		// WPeMatico Notices
 		add_action('admin_notices', array(__CLASS__, 'show_wprate_notice'));
 		add_action('edit_form_top', array(__CLASS__, 'show_campaign_wizard_notice'));
-		// dismiss AJAX calls
-		add_action('wp_ajax_wpematico_dismiss_wprate_notice', array(__CLASS__, 'dismiss_wprate_notice'));
-		add_action('wp_ajax_wpematico_dismiss_wizard_notice', array(__CLASS__, 'dismiss_wizard_notice'));
 	}
 
 	public static function dismiss_wprate_notice() {
@@ -148,9 +148,6 @@ class wpe_smart_notifications {
 		if ($dismiss_wizard_notice) {
 			return;
 		}
-		?>
-		<?php
-		wp_enqueue_script('wpematico-smart-notifications', WPeMatico :: $uri . 'app/js/smart_notifications.js', array('jquery'), WPEMATICO_VERSION, true);
 		?>
 		<div id="smart-notification-wizard" class="wpematico-smart-notification campagin_edit">
 			<h3>
