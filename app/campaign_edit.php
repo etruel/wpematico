@@ -143,6 +143,8 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 					'xml_check_data_nonce' 				=> wp_create_nonce('wpematico-xml-check-data-nonce'),
 					'check_fields_nonce' 				=> wp_create_nonce('wpematico-check-fields-nonce'),
 					'run_now_edit_nonce' 				=> wp_create_nonce('wpematico-run-now-nonce'),
+					'Notification_Hidding'				=> __('Hidding...', 'wpematico'),
+					'Notification_Dismissed'			=> __('Closed forever', 'wpematico'),
 
 
 				);

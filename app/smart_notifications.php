@@ -9,20 +9,51 @@
  */
 class wpe_smart_notifications {
 
-	public static function hooks() {
-
-		add_action('admin_notices', array(__CLASS__, 'show_notice'));
-		add_action('wp_ajax_wpematico_close_notification', array(__CLASS__, 'close_notification'));
-		add_action('edit_form_top', array(__CLASS__, 'show_campaign_wizard_notice'));
+	public static function init() {
+		add_action('admin_head', array(__CLASS__, 'admin_head'));
 	}
 
-	public static function close_notification() {
+	public static function admin_head() {
+		global $post_type, $current_screen, $post;
+		//die ('<pre>AAA'. print_r($current_screen, 1).'</pre>');
+		if ($current_screen->post_type != 'wpematico') {
+			return;
+		}
+		wp_enqueue_script('wpematico-smart-notifications', WPeMatico :: $uri . 'app/js/smart_notifications.js', array('jquery'), WPEMATICO_VERSION, true);
+
+		self::hooks();
+	}
+
+	public static function hooks() {
+		// WPeMatico Notices
+		add_action('admin_notices', array(__CLASS__, 'show_wprate_notice'));
+		add_action('edit_form_top', array(__CLASS__, 'show_campaign_wizard_notice'));
+		// dismiss AJAX calls
+		add_action('wp_ajax_wpematico_dismiss_wprate_notice', array(__CLASS__, 'dismiss_wprate_notice'));
+		add_action('wp_ajax_wpematico_dismiss_wizard_notice', array(__CLASS__, 'dismiss_wizard_notice'));
+	}
+
+	public static function dismiss_wprate_notice() {
 		$current_numbers = self::get_number_of_campaigns_post();
 		$current_levels = self::get_levels_notifications($current_numbers);
 		update_option('wpematico_level_snotifications', $current_levels);
 	}
 
-	public static function get_number_of_campaigns_post() {
+	public static function dismiss_wizard_notice() {
+		update_option('wpematico_dismiss_wizard_notice', true);
+	}
+
+	/**
+	 * get_number_of_campaigns_post 
+	 * Numer of campaigns and posts fetched by all campaigns 
+	 * Current value of posts fetched can be reset to zero in each campaign. 
+	 * @global type $wpdb
+	 * @param type $return	string: array, 
+	 * 						campaings, count
+	 * 						fetched, posts, countpost
+	 * @return type
+	 */
+	public static function get_number_of_campaigns_post($return = "array") {
 		global $wpdb;
 		$ret = array(0, 0);
 		$check_sql = "SELECT COALESCE(SUM(meta_value), 0) as countpost, COUNT(*) as count FROM $wpdb->postmeta WHERE meta_key = 'postscount'";
@@ -35,7 +66,6 @@ class wpe_smart_notifications {
 	}
 
 	public static function get_levels_notifications($current_numbers) {
-
 
 		$cur_level_notification_campaigns = 0;
 		if ($current_numbers[0] > 7) {
@@ -60,7 +90,7 @@ class wpe_smart_notifications {
 		return $ret;
 	}
 
-	public static function show_notice() {
+	public static function show_wprate_notice() {
 		global $post_type, $current_screen;
 		if ($post_type != 'wpematico') {
 			return;
@@ -72,21 +102,23 @@ class wpe_smart_notifications {
 		$current_levels = self::get_levels_notifications($current_numbers);
 		$level_notifications = get_option('wpematico_level_snotifications', array(0, 0));
 
-		$show_notice = false;
+		$show_wprate_notice = false;
 		if ($current_levels[0] > $level_notifications[0] || $current_levels[1] > $level_notifications[1]) {
-			$show_notice = true;
+			$show_wprate_notice = true;
 		}
-		if (!$show_notice) {
+		if (!$show_wprate_notice) {
 			return;
 		}
-		wp_enqueue_script('wpematico-smart-notifications', WPeMatico :: $uri . 'app/js/smart_notifications.js', array('jquery'), WPEMATICO_VERSION, true);
 		?>
 		<div class="clear"></div>
 		<div id="smart-notification-rate" class="wpematico-smart-notification">
-			<h3><a id="smart-notification-title-link" href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" target="_Blank"><?php _e('Rate 5 stars on Wordpress', 'wpematico'); ?></a>
-				<span class="icon-minimize-div dashicons  dashicons-visibility" style="margin-right: 30px;" title="Close" data-target="#smart-notification-rate"></span>
-				<span class="icon-close-div dashicons dashicons-no" title="Dismiss"></span></h3>
-
+			<h3>
+				<a id="smart-notification-title-link" href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" target="_Blank">
+					<span class="notification-title"><?php _e('Rate 5 stars on Wordpress', 'wpematico'); ?></span>
+				</a>
+				<span class="icon-dismiss-div dashicons dashicons-no" title="Dismiss"></span>
+				<span class="icon-close-div dashicons dashicons-visibility" title="Close"></span>
+			</h3>
 			<div class="description-smart-notification">
 				<p class="parr-wpmatico-smart-notification">
 
@@ -108,11 +140,12 @@ class wpe_smart_notifications {
 
 	public static function show_campaign_wizard_notice() {
 		global $post_type, $current_screen, $post;
-		if ($post_type != 'wpematico') {
+		if ($current_screen->id != 'wpematico' || $current_screen->action == 'add') {
 			return;
 		}
-		//die ('<pre>'. print_r($current_screen, 1).'</pre>');
-		if ($current_screen->id != 'wpematico' || $current_screen->action == 'add') {
+		// User already dismissed
+		$dismiss_wizard_notice = get_option('wpematico_dismiss_wizard_notice', false);
+		if ($dismiss_wizard_notice) {
 			return;
 		}
 		?>
@@ -121,9 +154,9 @@ class wpe_smart_notifications {
 		?>
 		<div id="smart-notification-wizard" class="wpematico-smart-notification campagin_edit">
 			<h3>
-				<?php _e('Check all Campaign Options with Wizard', 'wpematico'); ?>
-				<span class="icon-close-div dashicons dashicons-no" title="Dismiss"></span>
-				<span class="icon-minimize-div dashicons dashicons-visibility" title="Close" data-target="#smart-notification-wizard"></span>
+				<span class="notification-title"><?php _e('Check all Campaign Options with the Wizard', 'wpematico'); ?></span>
+				<span class="icon-dismiss-div dashicons dashicons-no" title="Dismiss"></span>
+				<span class="icon-close-div dashicons dashicons-visibility" title="Close"></span>
 			</h3>
 			<div class="description-smart-notification">
 				<p class="parr-wpmatico-smart-notification">
@@ -142,5 +175,5 @@ class wpe_smart_notifications {
 
 }
 
-wpe_smart_notifications::hooks();
+wpe_smart_notifications::init();
 ?>

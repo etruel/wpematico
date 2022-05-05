@@ -3,7 +3,7 @@ Contributors: etruel, sniuk, khaztiel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,RSS to Post,Feed to Post,XML to post,autoblog,rss aggregator,Feed,rss to post,syndication,xml import,Post,Posts,aggregation,atom,bot,content,writing
 Requires at least: 4.7
-Tested up to: 5.9.1
+Tested up to: 5.9.3
 Requires PHP: 5.6
 Stable tag: trunk
 License: GPLv2 or later
@@ -236,14 +236,16 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
-= 2.6.15 Apr XX, 2022 =
+= 2.6.15 May 05, 2022 =
 * Improves options by checking activation of FIFU plugin on campaign/settings screens.
 * Added dismmissible banner to use the Wizard to edit campaigns.
 * Added [playlist] shortcode example to Post template feature to show all the audio/video media in post content.
+* Added tip on No campaigns situation to link to getting started page.
 * Improves plugin images by reducing sizes.
-* Changed all instances of Packages by Memberships.
+* Fixes style on welcome screen.
 * Fixes Wizard styles.
 * Fixes some warnings and notices on PHP 8.1+
+* Changed all instances of Packages by Memberships.
 
 = 2.6.14 Mar 9, 2022 =
 * Added {feedfavicon} tag to post template feature.
@@ -361,5 +363,5 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 
-= 2.6.14 =
-Minor fixes
+= 2.6.15 =
+Maintenance Release

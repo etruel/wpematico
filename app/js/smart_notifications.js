@@ -3,24 +3,40 @@ jQuery(document).ready(function ($) {
 	var icon_plus = 'dashicons-visibility';
 	var icon_dismis = 'dashicons-hidden';
 
-	//minimize action
-	$(".icon-minimize-div").click(function () {
-		target = $(this).data('target');
-		$(target).fadeOut();
+	//close action (hide)
+	$(".wpematico-smart-notification .icon-close-div").click(function () {
+		$('.wpematico-smart-notification .notification-title').text( wpematico_object.Notification_Hidding );
+		$(this).parent().parent().slideUp(500);
 	});
 
-	//dismiss action
-	$(".icon-close-div").click(function () {
+	//dismiss action wprate
+	$("#smart-notification-rate .icon-dismiss-div").click(function () {
+		$('.wpematico-smart-notification .notification-title').text(' *****  *****  ***** '+ wpematico_object.Notification_Dismissed+' *****  *****  ***** ');
 		$(this).parent().parent().slideUp(500);
-		wpematico_close_notification();
+		wpematico_dismiss_notice('wprate');
+	});
+
+	//dismiss action 
+	$("#smart-notification-wizard .icon-dismiss-div").click(function () {
+		$('.wpematico-smart-notification .notification-title').text(' *****  *****  ***** '+ wpematico_object.Notification_Dismissed+' *****  *****  ***** ');
+		$(this).parent().parent().slideUp(500);
+		wpematico_dismiss_notice('wizard');
 	});
 });
 
-function wpematico_close_notification() {
-	var data = {
-		'action': 'wpematico_close_notification',
-	};
-	// since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
+function wpematico_dismiss_notice($notify_id) {
+switch($notify_id) {
+  case 'wprate':
+    var data = {'action': 'wpematico_dismiss_wprate_notice'};
+    break;
+  case 'wizard':
+	  var data = {'action': 'wpematico_dismiss_wizard_notice'};
+    break;
+  default:
+	  //No AJAX
+	  var data = {'action': ''};
+}
+
 	jQuery.post(ajaxurl, data, function (response) {
 		//response
 	});

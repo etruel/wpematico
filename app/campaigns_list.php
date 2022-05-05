@@ -258,6 +258,8 @@ if (!class_exists('WPeMatico_Campaigns')) :
 				'text_password' => __('Password'),
 				'text_date' => __('Date'),
 				'run_now_list_nonce' => wp_create_nonce('wpematico-run-now-nonce'),
+				'Notification_Hidding' => __('Hidding...', 'wpematico'),
+				'Notification_Dismissed' => __('Dismissed', 'wpematico'),
 			);
 			wp_localize_script('wpematico-campaign-list', 'wpematico_object', $wpematico_object);
 		}
