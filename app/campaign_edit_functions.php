@@ -511,7 +511,7 @@ public static function template_box( $post ) {
 			<p></p>
 			<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_featuredimg, true); ?> name="campaign_featuredimg" id="campaign_featuredimg" /><b>&nbsp;<label for="campaign_featuredimg"><?php _e('Set first image in content as Featured Image.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['featuredimg']; ?>"></span>
 			<br />
-			<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_fifu, $fifu_activated ); ?> name="campaign_fifu" id="campaign_fifu" <?php echo (!$fifu_activated ? 'disabled' : '') ?>/><b>&nbsp;<label for="campaign_fifu"><?php _e('Use Featured Image from URL.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['fifu']; ?>"></span>
+			<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_fifu, (!$fifu_activated) ? ((!$campaign_fifu) ? true : false ) : true ); ?> name="campaign_fifu" id="campaign_fifu" <?php echo (!$fifu_activated ? 'disabled' : '') ?>/><b>&nbsp;<label for="campaign_fifu"><?php _e('Use Featured Image from URL.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['fifu']; ?>"></span>
 			<br />
 			<?php
 				if(!$fifu_activated){
