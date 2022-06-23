@@ -5,6 +5,10 @@ https://github.com/etruel/wpematico
 
 WPeMatico is autoblogging in the blink of an eye!  On complete autopilot WPeMatico gets new contents regularly for your site!
 
+The use of use WPeMatico, the Full Content add-on, and any other products or services provided by Etruel to infringe the intellectual property rights of third parties is prohibited;
+
+Users may be liable for copyright infringement if they use WPeMatico, the Full Content add-on, and any other products or services provided by Etruel to copy, reproduce, or republish content for which they do not have a valid license.
+
 **Description**
 
 WPeMatico is a very easy to use autoblogging plugin. Organized into campaigns, it publishes your posts automatically from the RSS/Atom feeds of your choice. 
