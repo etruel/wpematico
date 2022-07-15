@@ -3,7 +3,7 @@ Contributors: etruel, sniuk, khaztiel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,RSS to Post,Feed to Post,XML to post,autoblog,rss aggregator,Feed,rss to post,syndication,xml import,Post,Posts,aggregation,atom,bot,content,writing
 Requires at least: 4.7
-Tested up to: 6.0
+Tested up to: 6.0.1
 Requires PHP: 5.6
 Stable tag: trunk
 License: GPLv2 or later
@@ -236,6 +236,10 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
+= 2.6.16 Jul 15, 2022 =
+* Tweaks: Changed banners and icons.
+* Bumps to WordPress 6.0.1
+
 = 2.6.15 May 05, 2022 =
 * Compatibility with WordPress 6.0
 * Improves options by checking activation of FIFU plugin on campaign/settings screens.
@@ -364,5 +368,5 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 
-= 2.6.15 =
-Compatibility with WordPress 6.0
+= 2.6.16 =
+Compatibility with WordPress 6.0.1

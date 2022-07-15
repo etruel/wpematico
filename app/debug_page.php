@@ -365,7 +365,7 @@ function wpematico_status_rightcolumn() {
 					<p><b>WPeMatico</b> <?php echo WPEMATICO_VERSION; ?> Version</p>
 					<p class="icon_version">
 						<a href="http://www.wpematico.com" target="_Blank" title="<?php _e('Go to the new WPeMatico WebSite', 'wpematico'); ?>">
-							<img class="logover" src="<?php echo WPeMatico :: $uri; ?>images/icon-256x256.png" title="">
+							<img class="logover" src="<?php echo WPeMatico :: $uri; ?>images/icon-256x256.jpg" title="">
 							<span id="wpematico-website">WPeMatico Website</span><br>
 						</a><span id="wpematico-websiteinfo"><?php _e('Comments and Tutorials', 'wpematico'); ?></span>
 					</p>
