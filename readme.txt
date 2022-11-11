@@ -2,8 +2,8 @@
 Contributors: etruel, sniuk, khaztiel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,RSS to Post,Feed to Post,XML to post,autoblog,rss aggregator,Feed,rss to post,syndication,xml import,Post,Posts,aggregation,atom,bot,content,writing
-Requires at least: 4.7
-Tested up to: 6.0.1
+Requires at least: 4.8
+Tested up to: 6.1
 Requires PHP: 5.6
 Stable tag: trunk
 License: GPLv2 or later
@@ -236,6 +236,13 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
+= 2.6.17 Nov 8, 2022 =
+* Bump to WP 6.1
+* Tested with PHP 8.1.9
+* Now Requires at least WordPress 4.8
+* Improved performance on load plugins page for extensions.
+* Many styles tweaks to Extensions page. 
+
 = 2.6.16 Jul 15, 2022 =
 * Tweaks: Changed banners and icons.
 * Bumps to WordPress 6.0.1

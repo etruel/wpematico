@@ -1,9 +1,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: WPeMatico 2.6\n"
+"Project-Id-Version: WPeMatico 2.6.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-05 18:57-0300\n"
+"POT-Creation-Date: 2022-08-04 13:52-0300\n"
 "PO-Revision-Date: 2017-10-20 01:21-0300\n"
 "Last-Translator: Esteban <esteban@netmdp.com>\n"
 "Language-Team: Etruel Developments<translations@etruel.com>\n"
@@ -2879,7 +2879,7 @@ msgid "Starter Packages Page"
 msgstr ""
 
 #: wpematico/app/debug_page.php:423 wpematico/app/plugin_functions.php:123
-#: wpematico_fullcontent/wpematico_fullcontent.php:192
+#: wpematico_fullcontent/wpematico_fullcontent.php:191
 #: wpematico_professional/wpematicopro.php:307
 msgid "Support"
 msgstr ""
@@ -4085,7 +4085,7 @@ msgstr ""
 
 #: wpematico/app/lib/welcome.php:601 wpematico/app/plugin_functions.php:101
 #: wpematico/app/settings_tabs.php:17 wpematico/wpematico_class.php:302
-#: wpematico/wpematico_class.php:303 wpematico_fullcontent/wpematico_fullcontent.php:171
+#: wpematico/wpematico_class.php:303 wpematico_fullcontent/wpematico_fullcontent.php:170
 #: wpematico_professional/includes/prosettings.php:21
 #: wpematico_professional/wpematicopro.php:287
 msgid "Settings"
@@ -4388,7 +4388,7 @@ msgid "Go Perfect"
 msgstr ""
 
 #: wpematico/app/plugin_functions.php:124
-#: wpematico_fullcontent/wpematico_fullcontent.php:193
+#: wpematico_fullcontent/wpematico_fullcontent.php:192
 #: wpematico_professional/wpematicopro.php:308
 msgid "Rate Plugin"
 msgstr ""
@@ -5529,15 +5529,15 @@ msgstr ""
 msgid "It only takes a minute, \"click the button below\" to go to the form."
 msgstr ""
 
-#: wpematico/app/smart_notifications.php:157
+#: wpematico/app/smart_notifications.php:154
 msgid "Check all Campaign Options with the Wizard"
 msgstr ""
 
-#: wpematico/app/smart_notifications.php:163
+#: wpematico/app/smart_notifications.php:160
 msgid "Want to make sure your campaign settings are fine?"
 msgstr ""
 
-#: wpematico/app/smart_notifications.php:165
+#: wpematico/app/smart_notifications.php:162
 msgid "Open the configuration wizard to see each metabox one by one."
 msgstr ""
 
@@ -6360,38 +6360,38 @@ msgstr ""
 msgid "XPath as filesystem addressing."
 msgstr ""
 
-#: wpematico_fullcontent/wpematico_fullcontent.php:171
+#: wpematico_fullcontent/wpematico_fullcontent.php:170
 msgid "Go to Full Content Settings Page"
 msgstr ""
 
-#: wpematico_fullcontent/wpematico_fullcontent.php:191
+#: wpematico_fullcontent/wpematico_fullcontent.php:190
 #: wpematico_professional/wpematicopro.php:306
 msgid "etruel Store"
 msgstr ""
 
-#: wpematico_fullcontent/wpematico_fullcontent.php:215
+#: wpematico_fullcontent/wpematico_fullcontent.php:214
 msgid "You are using WPeMatico Full Content."
 msgstr ""
 
-#: wpematico_fullcontent/wpematico_fullcontent.php:216
+#: wpematico_fullcontent/wpematico_fullcontent.php:215
 msgid "Plugins <b>WPeMatico</b> must be activated!"
 msgstr ""
 
-#: wpematico_fullcontent/wpematico_fullcontent.php:217
+#: wpematico_fullcontent/wpematico_fullcontent.php:216
 #: wpematico_professional/wpematicopro.php:390
 msgid "Go to Activate Now"
 msgstr ""
 
-#: wpematico_fullcontent/wpematico_fullcontent.php:222
+#: wpematico_fullcontent/wpematico_fullcontent.php:221
 msgid "You are using WPeMatico Full Content, but doesn't exist class WPeMatico."
 msgstr ""
 
-#: wpematico_fullcontent/wpematico_fullcontent.php:223
-#: wpematico_fullcontent/wpematico_fullcontent.php:228
+#: wpematico_fullcontent/wpematico_fullcontent.php:222
+#: wpematico_fullcontent/wpematico_fullcontent.php:227
 msgid "Something is going wrong. Contact etruel.com support."
 msgstr ""
 
-#: wpematico_fullcontent/wpematico_fullcontent.php:227
+#: wpematico_fullcontent/wpematico_fullcontent.php:226
 msgid ""
 "You are using WPeMatico Full Content, but doesn't exist constant WPEMATICO_VERSION."
 msgstr ""

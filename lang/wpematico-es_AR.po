@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPeMatico 2.5\n"
+"Project-Id-Version: WPeMatico 2.6.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-05 18:57-0300\n"
-"PO-Revision-Date: 2022-05-05 18:59-0300\n"
+"POT-Creation-Date: 2022-08-04 13:52-0300\n"
+"PO-Revision-Date: 2022-08-05 17:03-0300\n"
 "Last-Translator: \n"
 "Language-Team: Español\n"
 "Language: es_ES\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.0\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
 "_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
@@ -96,11 +96,11 @@ msgstr "Descartar este aviso."
 
 #: wpematico/app/campaign_edit.php:120
 msgid "Type some feed URL."
-msgstr "Escriba alguna URL de feed."
+msgstr "Escribi alguna URL de feed."
 
 #: wpematico/app/campaign_edit.php:121
 msgid "Type some new Feed URL/s."
-msgstr "Escriba algunas URL de Feeds."
+msgstr "Escribi algunas URL de Feeds."
 
 #: wpematico/app/campaign_edit.php:122 wpematico/app/campaigns_list.php:255
 msgid "Running Campaign..."
@@ -116,7 +116,7 @@ msgstr "Guardar antes para ejecutar esta acción"
 
 #: wpematico/app/campaign_edit.php:125
 msgid "Are you sure you want to reset this campaign?"
-msgstr "¿Seguro que quieres reiniciar esta campaña?"
+msgstr "¿Seguro que queres reiniciar esta campaña?"
 
 #: wpematico/app/campaign_edit.php:126
 msgid ""
@@ -158,19 +158,15 @@ msgstr "Descripcion de campaña"
 
 #: wpematico/app/campaign_edit.php:142
 msgid "Here you can write some observations."
-msgstr "Aquí puedes escribir algunas observaciones."
+msgstr "Aquí podes escribir algunas observaciones."
 
 #: wpematico/app/campaign_edit.php:146 wpematico/app/campaigns_list.php:261
-#, fuzzy
-#| msgid "Loading..."
 msgid "Hidding..."
-msgstr "Cargando..."
+msgstr "Ocultando…"
 
 #: wpematico/app/campaign_edit.php:147
-#, fuzzy
-#| msgid "Closed"
 msgid "Closed forever"
-msgstr "Cerrado"
+msgstr "Cerrar para siempre"
 
 #: wpematico/app/campaign_edit.php:153
 #: wpematico/app/campaign_edit_functions.php:319
@@ -223,7 +219,7 @@ msgstr "Borrar este ítem"
 #: wpematico/app/campaign_edit_functions.php:328
 #: wpematico_professional/wpematicopro.php:1429
 msgid "Select category"
-msgstr "Seleccione una categoría"
+msgstr "Selecciona una categoría"
 
 #: wpematico/app/campaign_edit.php:185
 msgid "Please refresh your browser and try again."
@@ -246,12 +242,12 @@ msgstr "Al menos una URl de Feed debe ser completada."
 #: wpematico/app/campaign_edit.php:420
 #, php-format
 msgid "Feed %s could not be parsed. (SimplePie said: %s)"
-msgstr "El feed %s no puede ser leído. (SimplePie dice: %s)"
+msgstr "El feed %s no podes ser leído. (SimplePie dice: %s)"
 
 #: wpematico/app/campaign_edit.php:424
 #, php-format
 msgid "Feed %s could not be parsed because has an space in url."
-msgstr "El feed %s no puede ser analizado porque hay un espacio en la URL."
+msgstr "El feed %s no podes ser analizado porque hay un espacio en la URL."
 
 #: wpematico/app/campaign_edit_functions.php:23
 #: wpematico/app/campaigns_list.php:165 wpematico/app/campaigns_list.php:671
@@ -464,7 +460,7 @@ msgstr ""
 #: wpematico/app/campaign_edit_functions.php:376
 msgid "Modify, manage or add extra content to every post fetched."
 msgstr ""
-"Modifique, manipule o agregue contenido extra a cada publicación analizada."
+"Modifica, manipula o agrega contenido extra a cada publicación analizada."
 
 #: wpematico/app/campaign_edit_functions.php:379
 msgid "Use custom posts template"
@@ -484,12 +480,12 @@ msgstr "Etiquetas permitidas"
 
 #: wpematico/app/campaign_edit_functions.php:417
 msgid "Click to Show/Hide the examples"
-msgstr "Haga clic para Mostrar/Ocultar los ejemplos"
+msgstr "Hace clic para Mostrar/Ocultar los ejemplos"
 
 #: wpematico/app/campaign_edit_functions.php:418
 msgid "Click here to see more info of the template feature."
 msgstr ""
-"Haga clic aquí para ver más información de la característica plantilla."
+"Hace clic aquí para ver más información de la característica plantilla."
 
 #: wpematico/app/campaign_edit_functions.php:422
 #: wpematico/app/campaign_help.php:275
@@ -562,10 +558,8 @@ msgstr "URL del logo del feed."
 
 #: wpematico/app/campaign_edit_functions.php:436
 #: wpematico/app/campaign_help.php:289
-#, fuzzy
-#| msgid "The feed URL."
 msgid "The feed's Favicon URL."
-msgstr "La URL del feed."
+msgstr "La URL del Favicon del feed."
 
 #: wpematico/app/campaign_edit_functions.php:437
 #: wpematico/app/campaign_help.php:290
@@ -629,7 +623,7 @@ msgid ""
 "clickables at the bottom of every content, but before source link and author "
 "name, the post template would look like this:"
 msgstr ""
-"También puedes añadir una galería con tres columnas con todas las miniaturas "
+"También podes añadir una galería con tres columnas con todas las miniaturas "
 "de las imágenes en la parte inferior de cada contenido, y antes del enlace a "
 "la fuente y el nombre del autor, la plantilla de entrada se vería así:"
 
@@ -640,7 +634,7 @@ msgid ""
 "shortcode here; will be processed by Wordpress."
 msgstr ""
 "es un shortcode de Wordpress para insertar una galería de imágenes dentro "
-"del post.  Puedes usar cualquier shortcode aquí que será procesado por "
+"del post.  Podes usar cualquier shortcode aquí que será procesado por "
 "wordpress."
 
 #: wpematico/app/campaign_edit_functions.php:451
@@ -649,17 +643,17 @@ msgid ""
 "you could use the playlist shortcode that implements the functionality of "
 "displaying a collection of WordPress audio or video files in a post."
 msgstr ""
+"Si queres mostrar todos los vídeos o audios</ins> multimedia en el contenido "
+"podrías utilizar el shortcode playlist que implementa la funcionalidad de "
+"mostrar una colección de archivos de audio o vídeo de WordPress en un post."
 
 #: wpematico/app/campaign_edit_functions.php:453
 msgid "Read more about Post Template feature at "
-msgstr ""
+msgstr "Más información sobre la función de plantillas de correo en "
 
 #: wpematico/app/campaign_edit_functions.php:453
-#, fuzzy
-#| msgid "Click here to see more info of the template feature."
 msgid "How to use Post template feature ?"
-msgstr ""
-"Haga clic aquí para ver más información de la característica plantilla."
+msgstr "¿ Cómo usar la Plantilla de Post ?"
 
 #: wpematico/app/campaign_edit_functions.php:495
 #: wpematico/app/campaign_edit_functions.php:568
@@ -711,7 +705,7 @@ msgstr "Imagen destacada del URL"
 #: wpematico/app/settings_page.php:357
 msgid ""
 "plugin needs to be installed and activated from the WordPress repository."
-msgstr ""
+msgstr "debe ser instalado y activado desde el repositorio de WordPress."
 
 #: wpematico/app/campaign_edit_functions.php:523
 #: wpematico/app/campaign_help.php:166
@@ -803,7 +797,7 @@ msgstr "Permitir hashes duplicados (No recomendado)"
 #: wpematico/app/settings_page.php:607
 msgid "Add an extra duplicate filter by source permalink in meta field value."
 msgstr ""
-"Agregue un filtro duplicado adicional por enlace permanente de origen en el "
+"Agrega un filtro duplicado adicional por enlace permanente de origen en el "
 "valor del campo meta."
 
 #: wpematico/app/campaign_edit_functions.php:684
@@ -824,7 +818,7 @@ msgstr "Ordenar los elementos por Fecha antes del proceso."
 #: wpematico/app/campaign_edit_functions.php:726
 #: wpematico/app/campaign_help.php:28
 msgid "Use feed item date."
-msgstr "Use la fecha del feed."
+msgstr "Usa la fecha del feed."
 
 #: wpematico/app/campaign_edit_functions.php:729
 #: wpematico/app/campaign_help.php:36
@@ -899,7 +893,7 @@ msgstr "Copia el enlace permanente de la fuente."
 
 #: wpematico/app/campaign_edit_functions.php:803
 msgid "Avoid search redirection to source permalink."
-msgstr "Evite la redirección de búsqueda al enlace permanente de origen."
+msgstr "Evita la redirección de búsqueda al enlace permanente de origen."
 
 #: wpematico/app/campaign_edit_functions.php:817
 msgid "Every 5 minutes"
@@ -949,7 +943,7 @@ msgstr "Horarios preseleccionables."
 
 #: wpematico/app/campaign_edit_functions.php:915
 msgid "Select an option to change the values."
-msgstr "Seleccione una opción."
+msgstr "Selecciona una opción."
 
 #: wpematico/app/campaign_edit_functions.php:928
 msgid "Minutes: "
@@ -1085,7 +1079,7 @@ msgstr "Desplazar lista de feeds."
 
 #: wpematico/app/campaign_edit_functions.php:1120
 msgid "Use [embed] WP shortcode instead Youtube shared iframe."
-msgstr "Utilice [embed] código abreviado WP en lugar de YouTube shared iframe."
+msgstr "Usa [embed] código abreviado WP en lugar de YouTube shared iframe."
 
 #: wpematico/app/campaign_edit_functions.php:1121
 msgid "Change the sizes of the video frames."
@@ -1129,7 +1123,7 @@ msgid ""
 "\" page, \"Add New\", then install and activate the bbPress Plugin from "
 "Automattic."
 msgstr ""
-"Si quieres instalar el plugin de foros en tu sitio, ve a la página \"Plugins"
+"Si queres instalar el plugin de foros en tu sitio, ve a la página \"Plugins"
 "\", Agregar Nuevo, y luego instala y activa el Plugin bbPress de Automattic."
 
 #: wpematico/app/campaign_edit_functions.php:1147
@@ -1147,7 +1141,7 @@ msgstr "Foro"
 
 #: wpematico/app/campaign_edit_functions.php:1163
 msgid "- Create new forums -"
-msgstr "&mdash; Crear nuevos foros &mdash;"
+msgstr "- Crear nuevos foros -"
 
 #: wpematico/app/campaign_edit_functions.php:1170
 #: wpematico/app/campaign_edit_functions.php:1171
@@ -1156,7 +1150,7 @@ msgstr "Tópico"
 
 #: wpematico/app/campaign_edit_functions.php:1184
 msgid "- Create new topics -"
-msgstr "&mdash; Crear nuevos tópicos &mdash;"
+msgstr "- Crear nuevos tópicos -"
 
 #: wpematico/app/campaign_edit_functions.php:1201
 msgid "E-Mail-Adress:"
@@ -1172,7 +1166,7 @@ msgstr "Etiquetas:"
 
 #: wpematico/app/campaign_edit_functions.php:1215
 msgid "Enter comma separated list of Tags."
-msgstr "Ingrese las etiquetas separadas por comas."
+msgstr "Ingresa las etiquetas separadas por comas."
 
 #: wpematico/app/campaign_edit_functions.php:1239
 msgid "Add auto Categories"
@@ -1221,8 +1215,7 @@ msgid "Next"
 msgstr "Siguiente"
 
 #: wpematico/app/campaign_fetch.php:95
-#, fuzzy, php-format
-#| msgid "PHP Safe Mode is on!!! Max exec time is %1$d sec."
+#, php-format
 msgid "Max exec time is %1$d sec."
 msgstr ""
 "PHP Modo Seguro esta activado!!! Ejecución máxima de tiempo es %1$d segs."
@@ -1233,7 +1226,7 @@ msgid ""
 "Memory limit set to %1$s ,because can not use PHP: memory_get_usage() "
 "function to dynamically increase the Memory!"
 msgstr ""
-"Límite de Memoria configurado en %1$s, porque no se puede usar la función de "
+"Límite de Memoria configurado en %1$s, porque no se podes usar la función de "
 "PHP: memory_get_usage() para incrementar dinámicamente la memoria!"
 
 #: wpematico/app/campaign_fetch.php:110
@@ -1435,7 +1428,7 @@ msgstr "Procesando Post template."
 
 #: wpematico/app/campaign_fetch_functions.php:98
 msgid "Can't find the featured image to add to the content."
-msgstr "No se puede encontrar la imagen destacada para agregar al contenido."
+msgstr "No se podes encontrar la imagen destacada para agregar al contenido."
 
 #: wpematico/app/campaign_fetch_functions.php:211
 #, php-format
@@ -1508,7 +1501,7 @@ msgstr "Adjuntando archivo:"
 #: wpematico/app/campaign_fetch_functions.php:530
 #: wpematico_professional/includes/functions.php:323
 msgid "Sorry, your attach could not be inserted. Something wrong happened."
-msgstr "Lo sentimos, tu adjunto no pude ser insertado. Algo malo ha sucedido."
+msgstr "Lo sentimos, tu adjunto no pudo ser insertado. Algo salió mal."
 
 #: wpematico/app/campaign_fetch_functions.php:564
 msgid "Executing featured image selector..."
@@ -1609,7 +1602,7 @@ msgstr "Feeds URLs."
 
 #: wpematico/app/campaign_help.php:13
 msgid "You must type at least one feed url."
-msgstr "Debe escribir al menos una URL del feed."
+msgstr "Debes escribir al menos una URL del feed."
 
 #: wpematico/app/campaign_help.php:14
 msgid "(Less feeds equal less used resources when fetching)."
@@ -1618,7 +1611,7 @@ msgstr "(Menos feeds equivalen a menos recursos usados cuando se va a buscar)."
 #: wpematico/app/campaign_help.php:15
 msgid "Type the domain name to try to autodetect the feed url."
 msgstr ""
-"Escriba el nombre de dominio para intentar autodetectar la URL del feed."
+"Escribí el nombre de dominio para intentar autodetectar la URL del feed."
 
 #: wpematico/app/campaign_help.php:18
 msgid "Max items per Fetch."
@@ -1637,7 +1630,7 @@ msgstr ""
 
 #: wpematico/app/campaign_help.php:21
 msgid "Set it to 0 for unlimited."
-msgstr "Establézcalo en 0 para ilimitado."
+msgstr "Establece en 0 para ilimitado."
 
 #: wpematico/app/campaign_help.php:25
 msgid ""
@@ -1646,7 +1639,7 @@ msgid ""
 "oldest."
 msgstr ""
 "Recomendado para usar solo si los feeds no están ordenados por fecha. La "
-"campaña puede perder algunos elementos si el feed no está ordenado por "
+"campaña podes perder algunos elementos si el feed no está ordenado por "
 "fecha, desde el más reciente hasta el más antiguo."
 
 #: wpematico/app/campaign_help.php:29
@@ -1682,7 +1675,7 @@ msgid ""
 "Use the feed item date ignoring incoherent dates like past posts published "
 "after new ones."
 msgstr ""
-"Use la fecha del elemento del feed ignorando fechas incoherentes como "
+"Usa la fecha del elemento del feed ignorando fechas incoherentes como "
 "publicaciones anteriores publicadas después de otras nuevas."
 
 #: wpematico/app/campaign_help.php:41
@@ -1703,7 +1696,7 @@ msgstr "Esta opción permite usar el enlace permanente exacto de la fuente"
 
 #: wpematico/app/campaign_help.php:49
 msgid "Avoid Search redirection to source permalink."
-msgstr "Evite la redirección de búsqueda al enlace permanente de origen."
+msgstr "Evita la redirección de búsqueda al enlace permanente de origen."
 
 #: wpematico/app/campaign_help.php:50
 msgid ""
@@ -1718,13 +1711,13 @@ msgid ""
 "You can UNSELECT this if uses source permalinks and the obtained URLs are "
 "not the the originals."
 msgstr ""
-"Puede DESELECCIONAR esto si usa enlaces permanentes de origen y las URL "
+"Podes DESELECCIONAR esto si usa enlaces permanentes de origen y las URL "
 "obtenidas no son los originales."
 
 #: wpematico/app/campaign_help.php:52
 msgid "CHECK this option to improve fetching speed and performance."
 msgstr ""
-"MARQUE esta opción para mejorar la velocidad y el rendimiento de busqueda."
+"MARCA esta opción para mejorar la velocidad y el rendimiento de busqueda."
 
 #: wpematico/app/campaign_help.php:56
 msgid "Allows pinbacks and trackbacks in the posts created by this campaign."
@@ -1816,7 +1809,7 @@ msgstr "Feed de Canal de Videos y Feed de Videos de Usuario."
 
 #: wpematico/app/campaign_help.php:95
 msgid "Fill in the feed URL field in the standard way."
-msgstr "Complete el campo Feed URL de la manera estándar."
+msgstr "Completa el campo Feed URL de la manera estándar."
 
 #: wpematico/app/campaign_help.php:96
 msgid "For Youtube Channel as: "
@@ -1846,7 +1839,7 @@ msgstr "Usar [incrustar]"
 msgid ""
 "Use [embed] WordPress shortcode instead Youtube shared iframe html code."
 msgstr ""
-"Utilice el código abreviado de WordPress [incrustar] en lugar de Youtube "
+"Utiliza el código abreviado de WordPress [incrustar] en lugar de Youtube "
 "shared iframe html code."
 
 #: wpematico/app/campaign_help.php:104
@@ -1855,7 +1848,7 @@ msgid ""
 "to set of a maximum (but not fixed) width and height. This was added as of "
 "WordPress 2.9 and is used like this: "
 msgstr ""
-"La función Incrustar le permite ajustar elementos incrustados utilizando un "
+"La función Incrustar te permite ajustar elementos incrustados utilizando un "
 "código corto simple para establecer un ancho y una altura máximos (pero no "
 "fijos). Esto se agregó a partir de WordPress 2.9 y se usa así: "
 
@@ -1881,7 +1874,7 @@ msgid ""
 "bbPress Forum to publish new Topics inside it, according to the items in the "
 "feed."
 msgstr ""
-"Puedes NO seleccionar un foro para crear nuevos Foros o seleccionar un foro "
+"Podes NO seleccionar un foro para crear nuevos Foros o seleccionar un foro "
 "ya creado en bbPress para publicar nuevos tópicos dentro de ese foro, uno "
 "por cada ítem leído del feed."
 
@@ -1890,7 +1883,7 @@ msgid ""
 "You can also select a created Topic to publish all the items as replies of "
 "it."
 msgstr ""
-"También puedes seleccionar un tópico ya creado para publicar los ítems del "
+"También podes seleccionar un tópico ya creado para publicar los ítems del "
 "feed como respuestas de ese tópico."
 
 #: wpematico/app/campaign_help.php:122
@@ -1907,13 +1900,13 @@ msgid ""
 "min. of margin on WP-cron schedules.  If you set up an external cron en "
 "WPeMatico Settings, you'll get better preciseness."
 msgstr ""
-"Puede definir aquí en qué ocasiones desea obtener estos feeds. Esto tiene 5 "
+"Podes definir aquí en qué ocasiones desea obtener estos feeds. Esto tiene 5 "
 "min. de margen en los horarios WP-cron. Si configura un cron externo en la "
 "configuración de WPeMatico, obtendrá una mayor precisión."
 
 #: wpematico/app/campaign_help.php:125
 msgid "You can see some examples here:"
-msgstr "Puedes ver algunos ejemplos aquí:"
+msgstr "Podes ver algunos ejemplos aquí:"
 
 #: wpematico/app/campaign_help.php:125
 msgid "How to use the CRON scheduling ?"
@@ -1924,7 +1917,7 @@ msgid ""
 "Select a predefined scheduler to get a value easily for the cron. This value "
 "is not saved."
 msgstr ""
-"Seleccione un cronograma predefinido para obtener un valor fácilmente para "
+"Selecciona un cronograma predefinido para obtener un valor fácilmente para "
 "el cron. Este valor no se guarda."
 
 #: wpematico/app/campaign_help.php:130
@@ -1937,7 +1930,7 @@ msgstr ""
 msgid ""
 "Just select an option and the values will be shown in the fields at right."
 msgstr ""
-"Simplemente seleccione una opción y los valores se mostrarán en los campos "
+"Simplemente selecciona una opción y los valores se mostrarán en los campos "
 "de la derecha."
 
 #: wpematico/app/campaign_help.php:136
@@ -1980,7 +1973,7 @@ msgid ""
 msgstr ""
 "Todas las imágenes se adjuntarán a la publicación del propietario y se "
 "agregarán a la biblioteca de Wordpress Media; necesario para la Imagen "
-"Destacada, pero si ve que el proceso del trabajo es demasiado lento, puede "
+"Destacada, pero si ve que el proceso del trabajo es demasiado lento, podes "
 "desactivarlo aquí."
 
 #: wpematico/app/campaign_help.php:148 wpematico/app/settings_help.php:38
@@ -1993,13 +1986,13 @@ msgid ""
 "the &lt;img&gt;. Check this for don't link images from external sites."
 msgstr ""
 "Si se selecciona y la subida de la imagen da error, se eliminará el atributo "
-"'src' de la etiqueta &lt;img&gt;. Marque esto para no vincular imágenes de "
+"'src' de la etiqueta &lt;img&gt;. Marca esto para no vincular imágenes de "
 "sitios externos."
 
 #: wpematico/app/campaign_help.php:152
 #, php-format
 msgid "Use srcset attribute instead of src of %s tag."
-msgstr "Utilice el atributo srcset en lugar de src de %s de la etiqueta."
+msgstr "Utiliza el atributo srcset en lugar de src de %s de la etiqueta."
 
 #: wpematico/app/campaign_help.php:153 wpematico/app/settings_help.php:47
 #, php-format
@@ -2013,14 +2006,14 @@ msgstr ""
 
 #: wpematico/app/campaign_help.php:156 wpematico/app/settings_help.php:52
 msgid "Set first image on content as Featured Image."
-msgstr "Establezca la primera imagen en el contenido como Imagen destacada."
+msgstr "Establece la primera imagen en el contenido como Imagen destacada."
 
 #: wpematico/app/campaign_help.php:157 wpematico/app/settings_help.php:53
 msgid ""
 "Check this to set first image found on every content to be uploaded, "
 "attached and made Featured."
 msgstr ""
-"Verifique esto para establecer la primera imagen que se encuentra en cada "
+"Verifica esto para establecer la primera imagen que se encuentra en cada "
 "contenido que se subirá, adjuntará y se hará Destacada."
 
 #: wpematico/app/campaign_help.php:161 wpematico/app/settings_help.php:58
@@ -2028,13 +2021,13 @@ msgid ""
 "Check this to use Featured Image from URL plugin. Be sure it is installed "
 "and activated."
 msgstr ""
-"Marque esto para usar la Imagen destacada del complemento URL. Asegúrese de "
+"Marca esto para usar la Imagen destacada del complemento URL. Asegúrese de "
 "que esté instalado y activado."
 
 #: wpematico/app/campaign_help.php:162 wpematico/app/settings_help.php:54
 #: wpematico/app/settings_help.php:59
 msgid "Read about"
-msgstr "Leer acerca de"
+msgstr "Lee acerca de"
 
 #: wpematico/app/campaign_help.php:162 wpematico/app/settings_help.php:59
 msgid "plugin in WordPress repository."
@@ -2045,7 +2038,7 @@ msgid ""
 "Note if that plugin is not activated, WPeMatico will still save the meta "
 "fields in each post but does't show any featured image."
 msgstr ""
-"Tenga en cuenta que si ese complemento no está activado, WPeMatico seguirá "
+"Tene en cuenta que si ese complemento no está activado, WPeMatico seguirá "
 "guardando los metacampos en cada publicación pero no mostrará ninguna imagen "
 "destacada."
 
@@ -2054,13 +2047,13 @@ msgid ""
 "Check this to select a featured image, it doesn't matter what order it have "
 "in the content. You can choice the first, second or third image."
 msgstr ""
-"Marque esto para seleccionar una imagen destacada, no importa qué orden "
-"tenga en el contenido. Puede elegir la primera, segunda o tercera imagen."
+"Marca esto para seleccionar una imagen destacada, no importa qué orden tenga "
+"en el contenido. Popddes elegir la primera, segunda o tercera imagen."
 
 #: wpematico/app/campaign_help.php:172 wpematico/app/settings_help.php:64
 msgid "Check this to strip the Featured Image from the post content."
 msgstr ""
-"Verifique esto para quitar la Imagen destacada del contenido de la "
+"Verifica esto para quitar la Imagen destacada del contenido de la "
 "publicación."
 
 #: wpematico/app/campaign_help.php:175 wpematico/app/settings_help.php:68
@@ -2073,7 +2066,7 @@ msgid ""
 "function uploads the image \"as is\" from the original to use it inside the "
 "post."
 msgstr ""
-"Use esto en lugar de las funciones de Wordpress para mejorar el rendimiento. "
+"Usa esto en lugar de las funciones de Wordpress para mejorar el rendimiento. "
 "Esta función carga la imagen \"como es\" desde el original para usarla "
 "dentro de la publicación."
 
@@ -2081,7 +2074,7 @@ msgstr ""
 #: wpematico/app/campaign_help.php:223 wpematico/app/settings_help.php:70
 #: wpematico/app/settings_help.php:101 wpematico/app/settings_help.php:132
 msgid "This function may not work in all servers."
-msgstr "Esta función puede no funcionar en todos los servidores."
+msgstr "Esta función podes no funcionar en todos los servidores."
 
 #: wpematico/app/campaign_help.php:182
 msgid "Campaign Options For Audios."
@@ -2114,7 +2107,7 @@ msgid ""
 msgstr ""
 "Todos los audios se adjuntarán a la publicación del propietario y se "
 "agregarán a la biblioteca de Wordpress Media, pero si ve que el proceso del "
-"trabajo es demasiado lento, puede desactivarlo aquí."
+"trabajo es demasiado lento, podes desactivarlo aquí."
 
 #: wpematico/app/campaign_help.php:194 wpematico/app/settings_help.php:92
 msgid "Don't link external audios."
@@ -2126,7 +2119,7 @@ msgid ""
 "the &lt;audio&gt;. Check this for don't link audios from external sites."
 msgstr ""
 "Si se selecciona y la subida del audio da error, se eliminará el atributo "
-"'src' de la etiqueta &lt;audio&gt;. Marque esto para no vincular audios de "
+"'src' de la etiqueta &lt;audio&gt;. Marca esto para no vincular audios de "
 "sitios externos."
 
 #: wpematico/app/campaign_help.php:198 wpematico/app/settings_help.php:99
@@ -2139,7 +2132,7 @@ msgid ""
 "function uploads the audio \"as is\" from the original to use it inside the "
 "post."
 msgstr ""
-"Use esto en lugar de las funciones de Wordpress para mejorar el rendimiento. "
+"Usa esto en lugar de las funciones de Wordpress para mejorar el rendimiento. "
 "Esta función carga el audio \"como es\" desde el original para usarla dentro "
 "de la publicación."
 
@@ -2182,7 +2175,7 @@ msgid ""
 msgstr ""
 "Todos los videos se adjuntarán a la publicación del propietario y se "
 "agregarán a la biblioteca de Wordpress Media, pero si ve que el proceso del "
-"trabajo es demasiado lento, puede desactivarlo aquí."
+"trabajo es demasiado lento, podes desactivarlo aquí."
 
 #: wpematico/app/campaign_help.php:217 wpematico/app/settings_help.php:123
 msgid "Don't link external videos."
@@ -2195,7 +2188,7 @@ msgid ""
 "the %s. Check this for don't link videos from external sites."
 msgstr ""
 "Si se selecciona, y de la subida de vídeos obtener el error, a continuación, "
-"elimine el atributo \" src \" de la %s. Comprobar esto por no enlaces de "
+"elimina el atributo \" src \" de la %s. Comprobar esto por no enlaces de "
 "vídeos desde sitios externos."
 
 #: wpematico/app/campaign_help.php:221 wpematico/app/settings_help.php:130
@@ -2208,7 +2201,7 @@ msgid ""
 "function uploads the video \"as is\" from the original to use it inside the "
 "post."
 msgstr ""
-"Use esto en lugar de las funciones de Wordpress para mejorar el rendimiento. "
+"Usa esto en lugar de las funciones de Wordpress para mejorar el rendimiento. "
 "Esta función carga el video \"como es\" desde el original para usarla dentro "
 "de la publicación."
 
@@ -2224,7 +2217,7 @@ msgid ""
 msgstr ""
 "Cuando la campaña en ejecución encontró una publicación duplicada, el "
 "proceso se interrumpe porque se supone que todas las entradas seguidas "
-"también son duplicadas. Puede deshabilitar estos controles aquí."
+"también son duplicadas. Podes deshabilitar estos controles aquí."
 
 #: wpematico/app/campaign_help.php:236 wpematico/app/settings_help.php:199
 msgid ""
@@ -2232,7 +2225,7 @@ msgid ""
 "which may fail many times."
 msgstr ""
 "Comprobación de duplicados por hash es un impulso a la comprobación de "
-"duplicados por título, lo que puede fallar muchas veces."
+"duplicados por título, lo que podes fallar muchas veces."
 
 #: wpematico/app/campaign_help.php:237 wpematico/app/settings_help.php:200
 msgid "Allowing duplicated posts"
@@ -2292,7 +2285,7 @@ msgid ""
 "your site. This can be given by some non-standards feeds.  NOT RECOMMENDED."
 msgstr ""
 "Esta opción SÓLO se recomienda si continúa con problemas duplicados en su "
-"sitio. Esto puede ser dado por algunos feeds que no sean estándares. NO "
+"sitio. Esto podes ser dado por algunos feeds que no sean estándares. NO "
 "RECOMENDADO."
 
 #: wpematico/app/campaign_help.php:256
@@ -2300,7 +2293,7 @@ msgid ""
 "The XML campaign type provides the necessary tools to fetch the items in the "
 "XML files. As if the XMLs were RSS feeds."
 msgstr ""
-"Tenga en cuenta que si ese complemento no está activado, WPMatico afectado "
+"Tene en cuenta que si ese complemento no está activado, WPMatico afectado "
 "guardando los metacampos en cada publicación pero no requiere ninguna imagen "
 "destacada."
 
@@ -2315,7 +2308,7 @@ msgid ""
 "you should use the Parent Elements in the right column to indicate which "
 "parent the selected node belongs to."
 msgstr ""
-"Seleccione el nodo XML correspondiente a las propiedades de los elementos "
+"Selecciona el nodo XML correspondiente a las propiedades de los elementos "
 "del feed, como título, contenido, imagen, fecha, etc. Si el nodo XML "
 "seleccionado no es único, debe usar los Elementos principales en la columna "
 "de la derecha para indicar qué elemento primario es el nodo seleccionado "
@@ -2362,7 +2355,7 @@ msgid ""
 "You can use some tags that will be replaced for current value. See below the "
 "description and examples on how to use this feature."
 msgstr ""
-"Puede usar algunas etiquetas que se reemplazarán por el valor actual. Vea a "
+"Podes usar algunas etiquetas que se reemplazarán por el valor actual. Vea a "
 "continuación la descripción y ejemplos sobre cómo usar esta característica."
 
 #: wpematico/app/campaign_help.php:279
@@ -2392,9 +2385,10 @@ msgid ""
 "post to category \"Engines\", simply type \"motor\" in the \"Word\" field, "
 "and select \"Engine\" in Categories combo."
 msgstr ""
-"Si el contenido de la publicaión contiene la palabra \"motor\" y luego desea "
-"asignar la categoría de publicación \"Engines\", simplemente tipee \"motor\" "
-"en el campo \"Word\", y seleccione \"Engine\" en el combo de Categorías."
+"Si el contenido de la publicación contiene la palabra \"motor\" y luego "
+"desea asignar la categoría de publicación \"Engines\", simplemente tipee "
+"\"motor\" en el campo \"Word\", y selecciona \"Engine\" en el combo de "
+"Categorías."
 
 #: wpematico/app/campaign_help.php:316
 #: wpematico_professional/includes/prohelps.php:206
@@ -2415,7 +2409,7 @@ msgstr ""
 "Para usuarios avanzados, las expresiones regulares son compatibles. Usando "
 "esto te permitirá hacer reemplazos más potentes. Tome reemplazos de palabras "
 "múltiples, por ejemplo. En lugar de utilizar muchas cajas Word2Cat para "
-"asignar motores y automóviles a Engines, puede usar el operator | : (motor | "
+"asignar motores y automóviles a Engines, podes usar el operator | : (motor | "
 "car), también el campo acepta expresiones regulares sin parámetros, no debe "
 "indicar líneas múltiples o saltos de línea porque de forma predeterminada "
 "usa el campo de texto completo. Si desea que sea sensible a Mayúsculas y "
@@ -2431,7 +2425,7 @@ msgid ""
 "The rewrite feature allow you to replace words or phrases of the content "
 "with the text you specify."
 msgstr ""
-"La caracteristica de Re-Escritura le permite reemplazar palabras o frases "
+"La caracteristica de Re-Escritura te permite reemplazar palabras o frases "
 "del contenido con el texto que especifique."
 
 #: wpematico/app/campaign_help.php:324
@@ -2439,12 +2433,12 @@ msgid ""
 "Also can use this feature to make simple links from some words with origin "
 "and re-link fields."
 msgstr ""
-"También puede utilizar esta característica para hacer enlaces simples de "
+"También podes utilizar esta característica para hacer enlaces simples de "
 "algunas palabras con los campos de origen y re-vincularlos."
 
 #: wpematico/app/campaign_help.php:325
 msgid "For examples click on [?] below."
-msgstr "Para ver ejemplos, haga clic en [?] A continuación."
+msgstr "Para ver ejemplos, hace clic en [?] A continuación."
 
 #: wpematico/app/campaign_help.php:326
 msgid "Basic rewriting:"
@@ -2456,7 +2450,7 @@ msgid ""
 "\"origin field\", and butt in \"rewrite to\"."
 msgstr ""
 "Para reemplazar todas las apariciones de la palabra \"culo\" por \"trasero"
-"\", simplemente escriba \"culo\" en el \"origin field\", y \"trasero\" en el "
+"\", simplemente escribí \"culo\" en el \"origin field\", y \"trasero\" en el "
 "\"rewrite to\"."
 
 #: wpematico/app/campaign_help.php:328
@@ -2482,7 +2476,7 @@ msgid ""
 "If you want to find all occurrences of google and make them link to Google, "
 "just type google in the 'origin field' and "
 msgstr ""
-"Si desea buscar todas las apariciones de google y hacerlos enlace a Google, "
+"Si deseas buscar todas las apariciones de google y hacerlos enlace a Google, "
 "escribe google en el 'campo de origen' y "
 
 #: wpematico/app/campaign_help.php:331
@@ -2503,7 +2497,7 @@ msgstr ""
 "Para usuarios avanzados, expresiones regulares son permitidas. Su uso "
 "permite hacer reemplazos mas poderosos. Como por ejemplo el reemplazo de "
 "multiples palabras. En vez de usar muchas re-escrituras de la palabra culo y "
-"trasero, puede usar el operador | como ejemplo: (culo|trasero)."
+"trasero, podes usar el operador | como ejemplo: (culo|trasero)."
 
 #: wpematico/app/campaign_help.php:338
 msgid "Campaign Categories."
@@ -2514,7 +2508,7 @@ msgid ""
 "Add categories from the source post and/or assign already existing "
 "categories."
 msgstr ""
-"Agregue categorías de la publicación de origen y/o asigne categorías ya "
+"Agrega categorías de la publicación de origen y/o asigne categorías ya "
 "existentes."
 
 #: wpematico/app/campaign_help.php:342
@@ -2538,7 +2532,7 @@ msgid ""
 "If you select a category in this option, all automatically added categories "
 "will be children of the selected category."
 msgstr ""
-"Si selecciona una categoría en esta opción, todas las categorías agregadas "
+"Si seleccionas una categoría en esta opción, todas las categorías agregadas "
 "automáticamente serán hijas de la categoría seleccionada."
 
 #: wpematico/app/campaign_help.php:350
@@ -2548,7 +2542,7 @@ msgstr "Generación de etiquetas."
 #: wpematico/app/campaign_help.php:351
 msgid "You can insert here the tags for every post of this campaign."
 msgstr ""
-"Puede insertar aquí las etiquetas para cada publicación de esta campaña."
+"Podes insertar aquí las etiquetas para cada publicación de esta campaña."
 
 #: wpematico/app/campaign_help.php:354
 msgid "Campaign Post Format."
@@ -2559,7 +2553,7 @@ msgid ""
 "If your theme supports post formats you can select one for the posts of this "
 "campaign, otherwise left on Standard."
 msgstr ""
-"Si su tema admite formatos de publicación, puede seleccionar uno para las "
+"Si tu tema admite formatos de publicación, podes seleccionar uno para las "
 "entradas de esta campaña, que de lo contrario quedaría en Estándar."
 
 #: wpematico/app/campaign_help.php:360
@@ -2573,7 +2567,7 @@ msgid ""
 "of this campaign."
 msgstr ""
 "Se enviará un correo electrónico con los eventos de la campaña captados. "
-"También puede filtrar los correos electrónicos solo si se produce un error o "
+"También podes filtrar los correos electrónicos solo si se produce un error o "
 "se deja en blanco para no enviar correos electrónicos de esta campaña."
 
 #: wpematico/app/campaign_log.php:67
@@ -2647,10 +2641,14 @@ msgid ""
 "WARNING! WPeMatico Debug mode has been activated at Settings->System Status-"
 ">Danger Zone."
 msgstr ""
+"¡ATENCIÓN! El modo de depuración de WPeMatico ha sido activado en "
+"Configuración->Estado del sistema->Zona de peligro."
 
 #: wpematico/app/campaigns_list.php:72
 msgid "Be sure to deactivate it after your tests to avoid performance issues."
 msgstr ""
+"Asegúrese de desactivarlo después de las pruebas para evitar problemas de "
+"rendimiento."
 
 #: wpematico/app/campaigns_list.php:93
 msgid "Start campaigns"
@@ -2696,7 +2694,7 @@ msgstr "Fecha"
 
 #: wpematico/app/campaigns_list.php:262
 msgid "Dismissed"
-msgstr ""
+msgstr "Desestimado"
 
 #: wpematico/app/campaigns_list.php:274
 msgid "(Copy)"
@@ -2968,7 +2966,7 @@ msgid ""
 "Useful when you have more campaign types from Addons. You can hide the "
 "column in Screen Options Tab."
 msgstr ""
-"Útil cuando tiene más tipos de campaña de extensiones. Puede ocultar la "
+"Útil cuando tenes más tipos de campaña de extensiones. Podes ocultar la "
 "columna en la pestaña Opciones de pantalla."
 
 #: wpematico/app/campaigns_list_help.php:16
@@ -3004,12 +3002,12 @@ msgstr "Acciones rápidas en cada fila."
 #: wpematico/app/campaigns_list_help.php:25
 msgid "Like clicking in the name, open the campaign to edit its details."
 msgstr ""
-"Como hacer clic en el nombre, abra la campaña para editar sus detalles."
+"Como hacer clic en el nombre, abra la campaña para editar tus detalles."
 
 #: wpematico/app/campaigns_list_help.php:26
 msgid "Edit some main fields, without enter in the campaign editor."
 msgstr ""
-"Edite algunos campos principales, sin ingresar en el editor de campaña."
+"Edita algunos campos principales, sin ingresar en el editor de campaña."
 
 #: wpematico/app/campaigns_list_help.php:27
 msgid "Send the campaign to the trash."
@@ -3044,7 +3042,7 @@ msgid ""
 "Open a popup window to show the Last Log of the campaign. No other logs are "
 "saved."
 msgstr ""
-"Abra una ventana emergente para mostrar el último registro de la campaña. No "
+"Abrí una ventana emergente para mostrar el último registro de la campaña. No "
 "se guardan otros registros."
 
 #: wpematico/app/campaigns_list_help.php:32
@@ -3058,7 +3056,7 @@ msgid ""
 "imported later by the plugin in other Wordpress website."
 msgstr ""
 "Característica profesional. Exporta solo los datos de esta campaña a un "
-"archivo que el plugin puede importar más adelante en otro sitio web de "
+"archivo que el plugin podes importar más adelante en otro sitio web de "
 "Wordpress."
 
 #: wpematico/app/campaigns_list_help.php:37
@@ -3070,14 +3068,14 @@ msgid ""
 "You can select all or some campaigns by clicking in its checkbox in the "
 "first column."
 msgstr ""
-"Puede seleccionar todas o algunas campañas haciendo clic en su casilla de "
+"Podes seleccionar todas o algunas campañas haciendo clic en su casilla de "
 "verificación en la primera columna."
 
 #: wpematico/app/campaigns_list_help.php:40
 msgid ""
 "When click the orange button, the process starts and can take a long time."
 msgstr ""
-"Al hacer clic en el botón naranja, el proceso comienza y puede llevar mucho "
+"Al hacer clic en el botón naranja, el proceso comienza y podes llevar mucho "
 "tiempo."
 
 #: wpematico/app/campaigns_list_help.php:41
@@ -3114,7 +3112,7 @@ msgid ""
 "Select the campaigns, then select the bulk action and click the \"Apply\" "
 "Button."
 msgstr ""
-"Seleccione las campañas, luego seleccione la acción masiva y haga clic en el "
+"Selecciona las campañas, luego selecciona la acción masiva y hace clic en el "
 "botón \"Aplicar\"."
 
 #: wpematico/app/cron_functions.php:19 wpematico/app/lib/welcome.php:197
@@ -3135,7 +3133,7 @@ msgstr "Encabezados."
 #: wpematico/app/debug_page.php:63
 #, php-format
 msgid "The feed %s cannot be obtained."
-msgstr "El feed %s no se puede obtener."
+msgstr "El feed %s no se podes obtener."
 
 #: wpematico/app/debug_page.php:72
 msgid "Obtaining URL Contents with WP Remote Request."
@@ -3162,7 +3160,7 @@ msgstr "ERROR. Ver abajo para más detalles"
 #: wpematico/app/debug_page.php:129
 msgid "Paste a feed link here and the content will be shown on the textarea."
 msgstr ""
-"Pegue un enlace de feed aquí y el contenido se mostrará en el área de texto."
+"Pega un enlace de feed aquí y el contenido se mostrará en el área de texto."
 
 #: wpematico/app/debug_page.php:176
 msgid "Feed URL."
@@ -3198,10 +3196,8 @@ msgstr ""
 "ejecuta la campaña."
 
 #: wpematico/app/debug_page.php:228
-#, fuzzy
-#| msgid "Activate Debug Logs in Campaigns"
 msgid "Delete all Debug Logs in Campaigns"
-msgstr "Activar registros de depuración en campañas"
+msgstr "Activar todos los registros de depuración en campañas"
 
 #: wpematico/app/debug_page.php:231
 msgid "Save Settings"
@@ -3226,7 +3222,7 @@ msgid ""
 "plugins list."
 msgstr ""
 "Estas acciones seleccionadas se realizarán después de que el complemento "
-"WPeMatico se desactive y seleccione \"Eliminar\" en la fila WPeMatico desde "
+"WPeMatico se desactive y selecciona \"Eliminar\" en la fila WPeMatico desde "
 "complementos."
 
 #: wpematico/app/debug_page.php:313
@@ -3235,11 +3231,11 @@ msgstr "Obtener el informe del sistema"
 
 #: wpematico/app/debug_page.php:314
 msgid "Click the button to see and download the system report."
-msgstr "Haga clic en el botón para ver y descargar el informe del sistema."
+msgstr "Hacea clic en el botón para ver y descargar el informe del sistema."
 
 #: wpematico/app/debug_page.php:318
 msgid "Include also PHPInfo() if available."
-msgstr "Incluya también PHPInfo() si está disponible."
+msgstr "Incluye también PHPInfo() si está disponible."
 
 #: wpematico/app/debug_page.php:319
 msgid "Include also Last Campaigns Log."
@@ -3250,7 +3246,7 @@ msgid ""
 "To copy the system info, click below then press Ctrl + C (PC) or Cmd + C "
 "(Mac)."
 msgstr ""
-"Para copiar la información del sistema, haga clic a continuación y luego "
+"Para copiar la información del sistema, hace clic a continuación y luego "
 "presione Ctrl + C (PC) o Cmd + C (Mac)."
 
 #: wpematico/app/debug_page.php:360 wpematico/app/settings_page.php:164
@@ -3274,7 +3270,7 @@ msgstr "Acerca"
 
 #: wpematico/app/debug_page.php:367 wpematico/app/settings_page.php:171
 msgid "Go to the new WPeMatico WebSite"
-msgstr "Vaya al nuevo sitio web de WPeMatico"
+msgstr "Ve al nuevo sitio web de WPeMatico"
 
 #: wpematico/app/debug_page.php:370 wpematico/app/settings_page.php:174
 msgid "Comments and Tutorials"
@@ -3295,7 +3291,7 @@ msgstr "Gracias por usar y probar este plugin."
 #: wpematico/app/debug_page.php:380 wpematico/app/settings_page.php:185
 msgid "If you like this plugin, you can write a 5 star review on Wordpress."
 msgstr ""
-"Si te gusta este complemento, puedes escribir una reseña de 5 estrellas en "
+"Si te gusta este complemento, podes escribir una reseña de 5 estrellas en "
 "Wordpress."
 
 #: wpematico/app/debug_page.php:388
@@ -3327,22 +3323,22 @@ msgid "Starter Packages Page"
 msgstr "Página de paquetes de inicio"
 
 #: wpematico/app/debug_page.php:423 wpematico/app/plugin_functions.php:123
-#: wpematico_fullcontent/wpematico_fullcontent.php:192
+#: wpematico_fullcontent/wpematico_fullcontent.php:191
 #: wpematico_professional/wpematicopro.php:307
 msgid "Support"
 msgstr "Soporte"
 
 #: wpematico/app/debug_page.php:426 wpematico/app/settings_page.php:284
 msgid "Have some questions?"
-msgstr "Tienes algunas preguntas?"
+msgstr "Tenes algunas preguntas?"
 
 #: wpematico/app/debug_page.php:428 wpematico/app/settings_page.php:286
 msgid "You may find answers in our"
-msgstr "Puedes encontrar respuestas en nuestra"
+msgstr "Podes encontrar respuestas en nuestra"
 
 #: wpematico/app/debug_page.php:428 wpematico/app/settings_page.php:286
 msgid "You may"
-msgstr "Puedes"
+msgstr "Podes"
 
 #: wpematico/app/debug_page.php:428 wpematico/app/settings_page.php:286
 msgid "contact us"
@@ -3371,7 +3367,7 @@ msgstr "Translation friendly"
 msgid ""
 "Want to improve the texts or translate the plugin to your native language?"
 msgstr ""
-"¿Quiere mejorar los textos o traducir el complemento a su idioma nativo?"
+"¿Queres mejorar los textos o traducir el complemento a su idioma nativo?"
 
 #: wpematico/app/debug_page.php:459 wpematico/app/settings_page.php:317
 msgid "The Perfect Package"
@@ -3379,11 +3375,11 @@ msgstr "El paquete perfecto"
 
 #: wpematico/app/debug_page.php:509 wpematico/app/debug_page.php:511
 msgid "ERROR: Function disk_total_space() seems not to exist."
-msgstr ""
+msgstr "ERROR: La función disk_total_space() parece no existir."
 
 #: wpematico/app/debug_page.php:533 wpematico/app/debug_page.php:535
 msgid "ERROR: Function disk_free_space() seems not to exist."
-msgstr ""
+msgstr "ERROR: La función disk_total_space() parece no existir."
 
 #: wpematico/app/debug_page.php:760 wpematico/app/debug_page.php:764
 msgid "Server Environment"
@@ -3524,7 +3520,7 @@ msgstr "%s - se recomienda la configuración de la memoria de al menos"
 
 #: wpematico/app/debug_page.php:875
 msgid "Please define memory limit in php.ini file."
-msgstr "Por favor, defina el límite de memoria de php.en el archivo ini."
+msgstr "Por favor, defini el límite de memoria de php.en el archivo ini."
 
 #: wpematico/app/debug_page.php:882
 msgid "Allow URL fopen:"
@@ -3641,7 +3637,7 @@ msgstr "Usar cookies:"
 
 #: wpematico/app/debug_page.php:1050
 msgid "Use Only Cookies:"
-msgstr "Use solo cookies:"
+msgstr "Usa solo cookies:"
 
 #: wpematico/app/debug_page.php:1059 wpematico/app/debug_page.php:1063
 msgid "WordPress Environment"
@@ -3672,7 +3668,7 @@ msgid ""
 "WPeMatico was not fully tested in Multisite. Test it and give us your "
 "comments on the "
 msgstr ""
-"WPeMatico no era plenamente probado en varios sitios. Probarlo y darnos sus "
+"WPeMatico no era plenamente probado en varios sitios. Pruebalo y danos tus "
 "comentarios en el "
 
 #: wpematico/app/debug_page.php:1092
@@ -3728,8 +3724,8 @@ msgstr "%s - se recomienda la configuración de la memoria de al menos "
 #: wpematico/app/debug_page.php:1153
 msgid "Please define memory limit in wp-config.php file. To learn how, see: "
 msgstr ""
-"Por favor, defina el límite de memoria en wp-config.php archivo. Para "
-"conocer cómo hacerlo, consulte: "
+"Por favor, define el límite de memoria en wp-config.php archivo. Para "
+"conocer cómo hacerlo, consulta: "
 
 #: wpematico/app/debug_page.php:1153
 msgid "Increasing memory allocated to PHP."
@@ -3795,16 +3791,12 @@ msgid "Active Plugins"
 msgstr "Complementos activos"
 
 #: wpematico/app/debug_page.php:1325 wpematico/app/debug_page.php:1329
-#, fuzzy
-#| msgid "Campaigns"
 msgid "Campaigns Infos"
-msgstr "Campañas"
+msgstr "Información de campañas"
 
 #: wpematico/app/debug_page.php:1334
-#, fuzzy
-#| msgid "Start campaigns"
 msgid "Total campaigns:"
-msgstr "Iniciar campañas"
+msgstr "Iniciar campañas:"
 
 #: wpematico/app/debug_page.php:1371 wpematico/app/debug_page.php:1375
 msgid "Cron Schedules"
@@ -3823,16 +3815,12 @@ msgid "Hook"
 msgstr "Gancho"
 
 #: wpematico/app/debug_page.php:1436
-#, fuzzy
-#| msgid "Campaigns Imported."
 msgid "Campaigns Logs deleted."
 msgstr "Campañas importadas."
 
 #: wpematico/app/debug_page.php:1438
-#, fuzzy
-#| msgid "Delete all Campaigns."
 msgid "Failed on delete all campaigns Logs. "
-msgstr "Eliminar todas las campañas."
+msgstr "Eliminar todas las campañas. "
 
 #: wpematico/app/debug_page.php:1439
 msgid ""
@@ -3840,6 +3828,9 @@ msgid ""
 "if a log could not be deleted. You can also manually reset a campaign to "
 "delete its logs individually."
 msgstr ""
+"Esta advertencia podes aparecer si una campaña ya ha borrado los registros o "
+"si no se ha podido borrar un registro. También podes restablecer manualmente "
+"una campaña para eliminar tus registros individualmente."
 
 #: wpematico/app/debug_page.php:1445
 msgid "Actions to Uninstall saved."
@@ -3851,184 +3842,156 @@ msgstr "Las acciones se ejecutan cuando se desinstala el complemento."
 
 #: wpematico/app/js/wpematico_updates.js:454
 #: wpematico/app/js/wpematico_updates.js:462
-#, fuzzy, javascript-format
-#| msgid "Uploading media..."
+#, javascript-format
 msgctxt "plugin"
 msgid "Updating %s..."
-msgstr "Subiendo medios..."
+msgstr "Actualizando %s.."
 
 #: wpematico/app/js/wpematico_updates.js:470
 #: wpematico/app/js/wpematico_updates.js:476
 #: wpematico/app/js/wpematico_updates.js:1129
 #: wpematico/app/js/wpematico_updates.js:1134
-#, fuzzy
-#| msgid "Loading..."
 msgid "Updating..."
 msgstr "Cargando..."
 
 #: wpematico/app/js/wpematico_updates.js:525
-#, fuzzy, javascript-format
-#| msgid "Post date"
+#, javascript-format
 msgctxt "plugin"
 msgid "%s updated!"
-msgstr "Fecha de la publicación"
+msgstr "%s ¡Actualizado!"
 
 #: wpematico/app/js/wpematico_updates.js:529
 msgctxt "plugin"
 msgid "Updated!"
-msgstr ""
+msgstr "¡Actualizado!"
 
 #: wpematico/app/js/wpematico_updates.js:531
 #: wpematico/app/js/wpematico_updates.js:1195
-#, fuzzy
-#| msgid "The URL %s cannot be obtained successfully."
 msgid "Update completed successfully."
 msgstr "La URL %s no se ha podido obtener exitosamente."
 
 #: wpematico/app/js/wpematico_updates.js:564
 #: wpematico/app/js/wpematico_updates.js:1221
 #: wpematico/app/js/wpematico_updates.js:1882
-#, fuzzy, javascript-format
-#| msgid "Upload file failed:"
+#, javascript-format
 msgid "Update failed: %s"
-msgstr "Subida de archivos ha fallado:"
+msgstr "Actualización fallida: %s"
 
 #: wpematico/app/js/wpematico_updates.js:582
 #: wpematico/app/js/wpematico_updates.js:607
 #, javascript-format
 msgctxt "plugin"
 msgid "%s update failed."
-msgstr ""
+msgstr "%s actualización fallida."
 
 #: wpematico/app/js/wpematico_updates.js:598
 #: wpematico/app/js/wpematico_updates.js:1916
-#, fuzzy
-#| msgid "Upload file failed:"
 msgid "Update failed."
-msgstr "Subida de archivos ha fallado:"
+msgstr "Actualización fallida."
 
 #: wpematico/app/js/wpematico_updates.js:625
 msgid "Update Now"
-msgstr ""
+msgstr "Actualiza ahora"
 
 #: wpematico/app/js/wpematico_updates.js:660
 #: wpematico/app/js/wpematico_updates.js:674
 #: wpematico/app/js/wpematico_updates.js:1279
 #: wpematico/app/js/wpematico_updates.js:1292
-#, fuzzy
-#| msgid "Installed"
 msgid "Installing..."
-msgstr "Instalado"
+msgstr "Instalado."
 
 #: wpematico/app/js/wpematico_updates.js:670
 #, javascript-format
 msgctxt "plugin"
 msgid "Installing %s..."
-msgstr ""
+msgstr "Instalando %s..."
 
 #: wpematico/app/js/wpematico_updates.js:676
 #: wpematico/app/js/wpematico_updates.js:1294
 msgid "Installing... please wait."
-msgstr ""
+msgstr "Instalando... por favor espera."
 
 #: wpematico/app/js/wpematico_updates.js:706
-#, fuzzy, javascript-format
-#| msgid "Installed"
+#, javascript-format
 msgctxt "plugin"
 msgid "%s installed!"
-msgstr "Instalado"
+msgstr "%s ¡Instalado!"
 
 #: wpematico/app/js/wpematico_updates.js:710
-#, fuzzy
-#| msgid "Installed"
 msgctxt "plugin"
 msgid "Installed!"
-msgstr "Instalado"
+msgstr "¡Instalado!"
 
 #: wpematico/app/js/wpematico_updates.js:712
 #: wpematico/app/js/wpematico_updates.js:846
 #: wpematico/app/js/wpematico_updates.js:1333
 msgid "Installation completed successfully."
-msgstr ""
+msgstr "La instalación se ha completado con éxito."
 
 #: wpematico/app/js/wpematico_updates.js:730
-#, fuzzy, javascript-format
-#| msgid "Go to Activate Now"
+#, javascript-format
 msgctxt "plugin"
 msgid "Network Activate %s"
-msgstr "Ir a Activar ahora"
+msgstr "Red Activada %s"
 
 #: wpematico/app/js/wpematico_updates.js:734
-#, fuzzy
-#| msgid "Go to Activate Now"
 msgid "Network Activate"
-msgstr "Ir a Activar ahora"
+msgstr "Red Activada"
 
 #: wpematico/app/js/wpematico_updates.js:741
-#, fuzzy, javascript-format
-#| msgid "Activate License"
+#, javascript-format
 msgctxt "plugin"
 msgid "Activate %s"
-msgstr "Activar Licencia"
+msgstr "Activar Licencia %s"
 
 #: wpematico/app/js/wpematico_updates.js:745
 #: wpematico/app/js/wpematico_updates.js:1366
-#, fuzzy
-#| msgid "Activations"
 msgid "Activate"
-msgstr "Activaciones"
+msgstr "Activar"
 
 #: wpematico/app/js/wpematico_updates.js:777
 #: wpematico/app/js/wpematico_updates.js:865
 #: wpematico/app/js/wpematico_updates.js:1397
 #: wpematico/app/js/wpematico_updates.js:1887
-#, fuzzy, javascript-format
-#| msgid "Translation friendly"
+#, javascript-format
 msgid "Installation failed: %s"
-msgstr "Translation friendly"
+msgstr "Instalación fallida: %s"
 
 #: wpematico/app/js/wpematico_updates.js:801
-#, fuzzy, javascript-format
-#| msgid "Translation friendly"
+#, javascript-format
 msgctxt "plugin"
 msgid "%s installation failed"
-msgstr "Translation friendly"
+msgstr "%s instalación fallida"
 
 #: wpematico/app/js/wpematico_updates.js:805
 #: wpematico/app/js/wpematico_updates.js:1442
-#, fuzzy
-#| msgid "Translation friendly"
 msgid "Installation failed."
-msgstr "Translation friendly"
+msgstr "Instalación fallida."
 
 #: wpematico/app/js/wpematico_updates.js:828
 #, javascript-format
 msgid "Importer installed successfully. <a href=\"%s\">Run importer</a>"
 msgstr ""
+"Importación instalada exitosamente. <a href=\"%s\">Ejecutar importación</a>"
 
 #: wpematico/app/js/wpematico_updates.js:840
 #, javascript-format
 msgid "Run %s"
-msgstr ""
+msgstr "Ejecutar %s"
 
 #: wpematico/app/js/wpematico_updates.js:844
-#, fuzzy
-#| msgid "Cancel Import"
 msgid "Run Importer"
-msgstr "Cancelar Importación"
+msgstr "Ejecutar importación"
 
 #: wpematico/app/js/wpematico_updates.js:891
-#, fuzzy, javascript-format
-#| msgid "Installed"
+#, javascript-format
 msgctxt "plugin"
 msgid "Install %s now"
-msgstr "Instalado"
+msgstr "Instala %s ahora"
 
 #: wpematico/app/js/wpematico_updates.js:895
-#, fuzzy
-#| msgid "Installed"
 msgid "Install Now"
-msgstr "Instalado"
+msgstr "Instala ahora"
 
 #: wpematico/app/js/wpematico_updates.js:923
 #: wpematico/app/js/wpematico_updates.js:926
@@ -4037,119 +4000,109 @@ msgstr "Instalado"
 #: wpematico/app/js/wpematico_updates.js:1478
 #: wpematico/app/js/wpematico_updates.js:1481
 msgid "Deleting..."
-msgstr ""
+msgstr "Eliminando..."
 
 #: wpematico/app/js/wpematico_updates.js:1019
 msgid "No plugins are currently available."
-msgstr ""
+msgstr "No hay plugins disponibles actualmente."
 
 #: wpematico/app/js/wpematico_updates.js:1024
 msgctxt "plugin"
 msgid "Deleted!"
-msgstr ""
+msgstr "¡Eliminado!"
 
 #: wpematico/app/js/wpematico_updates.js:1133
 msgid "Updating... please wait."
-msgstr ""
+msgstr "Actualizando... por favor aguarda."
 
 #: wpematico/app/js/wpematico_updates.js:1158
 msgctxt "theme"
 msgid "Updated!"
-msgstr ""
+msgstr "¡Actualizado!"
 
 #: wpematico/app/js/wpematico_updates.js:1288
 #, javascript-format
 msgctxt "theme"
 msgid "Installing %s..."
-msgstr ""
+msgstr "Instalando %s..."
 
 #: wpematico/app/js/wpematico_updates.js:1327
-#, fuzzy, javascript-format
-#| msgid "Installed"
+#, javascript-format
 msgctxt "theme"
 msgid "%s installed!"
-msgstr "Instalado"
+msgstr "%s ¡Instalado!"
 
 #: wpematico/app/js/wpematico_updates.js:1331
-#, fuzzy
-#| msgid "Installed"
 msgctxt "theme"
 msgid "Installed!"
-msgstr "Instalado"
+msgstr "¡Instalado!"
 
 #: wpematico/app/js/wpematico_updates.js:1351
-#, fuzzy, javascript-format
-#| msgid "Go to Activate Now"
+#, javascript-format
 msgctxt "theme"
 msgid "Network Activate %s"
-msgstr "Ir a Activar ahora"
+msgstr "Red Activada %s"
 
 #: wpematico/app/js/wpematico_updates.js:1355
 msgid "Network Enable"
-msgstr ""
+msgstr "Habilitar la red"
 
 #: wpematico/app/js/wpematico_updates.js:1362
-#, fuzzy, javascript-format
-#| msgid "Activate License"
+#, javascript-format
 msgctxt "theme"
 msgid "Activate %s"
-msgstr "Activar Licencia"
+msgstr "Activar %s"
 
 #: wpematico/app/js/wpematico_updates.js:1377
 msgid "Live Preview"
-msgstr ""
+msgstr "Vista previa en vivo"
 
 #: wpematico/app/js/wpematico_updates.js:1438
-#, fuzzy, javascript-format
-#| msgid "Translation friendly"
+#, javascript-format
 msgctxt "theme"
 msgid "%s installation failed"
-msgstr "Translation friendly"
+msgstr "%s instalación fallida"
 
 #: wpematico/app/js/wpematico_updates.js:1544
 msgctxt "theme"
 msgid "Deleted!"
-msgstr ""
+msgstr "¡Eliminado!"
 
 #: wpematico/app/js/wpematico_updates.js:1566
 #: wpematico/app/js/wpematico_updates.js:1892
-#, fuzzy, javascript-format
-#| msgid "Deleting since word: %s."
+#, javascript-format
 msgid "Deletion failed: %s"
-msgstr "Borrando desde la palabra: %s."
+msgstr "Borrando desde la palabra: %s"
 
 #: wpematico/app/js/wpematico_updates.js:1859
-#, fuzzy
-#| msgid "Something goes wrong! See console!"
 msgid "Something went wrong."
-msgstr "¡Algo salió mal! ¡Mira la consola!"
+msgstr "¡Algo salió mal! ¡Mira la consola!."
 
 #: wpematico/app/js/wpematico_updates.js:1868
 msgid "An error has occurred. Please reload the page and try again."
 msgstr ""
+"Se ha producido un error. Por favor, recargue la página e inténtalo de nuevo."
 
 #: wpematico/app/js/wpematico_updates.js:1872
 msgid "Connection lost or the server is busy. Please try again later."
 msgstr ""
+"Se ha perdido la conexión o el servidor está ocupado. Por favor, inténtalo "
+"más tarde."
 
 #: wpematico/app/js/wpematico_updates.js:1940
 msgid "Updates may not complete if you navigate away from this page."
 msgstr ""
+"Es posible que las actualizaciones no se completen si se sale de esta página."
 
 #: wpematico/app/lib/EDD_SL_Plugin_Updater.php:235
 #, php-format
 msgid "%1$sView version %2$s details%3$s."
-msgstr ""
+msgstr "%1$sVer detalles %2$s de la versión%3$s."
 
 #: wpematico/app/lib/EDD_SL_Plugin_Updater.php:243
-#, fuzzy, php-format
-#| msgid ""
-#| "There is a new version of %1$s available. %2$sView version %3$s details"
-#| "%4$s or %5$supdate now%6$s."
+#, php-format
 msgid "%1$sView version %2$s details%3$s or %4$supdate now%5$s."
-msgstr ""
-"Hay una nueva versión de%1$ s disponible. %2$sVer versión%3$s detalles%4$so "
-"%5$sactualiza ahora%6$s."
+msgstr "%1$ s Ver versión %2$sdetalles%3$s o %4$sactualiza ahora%5$s."
 
 #: wpematico/app/lib/licenses_handlers.php:456
 #: wpematico/app/lib/licenses_handlers.php:616
@@ -4294,7 +4247,7 @@ msgstr "Privacidad"
 
 #: wpematico/app/lib/welcome.php:273
 msgid "Choose Media Mime Types."
-msgstr "Elija los tipos de medios Mime."
+msgstr "Elegí los tipos de medios Mime."
 
 #: wpematico/app/lib/welcome.php:275 wpematico/app/settings_page.php:374
 #: wpematico/app/settings_page.php:409 wpematico/app/settings_page.php:444
@@ -4307,7 +4260,7 @@ msgid ""
 "You can choose which media files will be uploaded to your website, you can "
 "add or remove the extensions you want and WPeMatico will do the rest."
 msgstr ""
-"Puede elegir qué archivos multimedia se cargarán en su sitio web, puede "
+"Podes elegir qué archivos multimedia se cargarán en su sitio web, podes "
 "agregar o eliminar las extensiones que desee y WPeMatico hará el resto."
 
 #: wpematico/app/lib/welcome.php:279
@@ -4316,7 +4269,7 @@ msgstr "Usar imagen destacada de URL."
 
 #: wpematico/app/lib/welcome.php:281
 msgid "Use the featured images without storing them on your own website."
-msgstr "Use las imágenes destacadas sin almacenarlas en su propio sitio web."
+msgstr "Usa las imágenes destacadas sin almacenarlas en su propio sitio web."
 
 #: wpematico/app/lib/welcome.php:283
 msgid ""
@@ -4324,7 +4277,7 @@ msgid ""
 "featured image from an external URL by activating the \"Use Featured Image "
 "from URL\" option from WPeMatico Settings or from each campaign."
 msgstr ""
-"Evite almacenar imágenes en su sitio, esta nueva característica le permite "
+"Evita almacenar imágenes en su sitio, esta nueva característica te permite "
 "usar la imagen destacada desde una URL externa activando la opción \"Usar "
 "imagen destacada desde la URL\" desde la Configuración de WPeMatico o desde "
 "cada campaña."
@@ -4345,7 +4298,7 @@ msgid ""
 "You can force the use of the original date of each feed item ignoring "
 "incoherent dates like past posts published after new ones."
 msgstr ""
-"Puede forzar el uso de la fecha original de cada elemento de feed ignorando "
+"Podes forzar el uso de la fecha original de cada elemento de feed ignorando "
 "fechas incoherentes como publicaciones anteriores publicadas después de "
 "otras nuevas."
 
@@ -4369,15 +4322,15 @@ msgstr "Estados de publicaciones personalizadas."
 
 #: wpematico/app/lib/welcome.php:301
 msgid "Post status allows you to organize your Posts."
-msgstr "El estado de la publicación le permite organizar sus publicaciones."
+msgstr "El estado de la publicación te permite organizar tus publicaciones."
 
 #: wpematico/app/lib/welcome.php:303
 msgid ""
 "Post status is an very useful editorial tool that allows you to organize "
 "your Posts based on their respective stages during the editorial workflow."
 msgstr ""
-"El estado de la publicación es una herramienta editorial muy útil que le "
-"permite organizar sus publicaciones según sus respectivas etapas durante el "
+"El estado de la publicación es una herramienta editorial muy útil que te "
+"permite organizar tus publicaciones según tus respectivas etapas durante el "
 "flujo de trabajo editorial."
 
 #: wpematico/app/lib/welcome.php:320
@@ -4394,7 +4347,7 @@ msgid ""
 "found in the XML tags.  A very important addition that will allow to import "
 "almost anything that come in XML format to WordPress Posts (types)."
 msgstr ""
-"Esta característica le permite configurar cada campaña con los campos que se "
+"Esta característica te permite configurar cada campaña con los campos que se "
 "encuentran en las etiquetas XML. Una adición muy importante que permitirá "
 "importar casi cualquier cosa que venga en formato XML a publicaciones "
 "(tipos) de WordPress."
@@ -4436,7 +4389,7 @@ msgid ""
 msgstr ""
 "Ahora tiene la posibilidad de elegir qué elementos de los feeds de YouTube "
 "se incluirán en la publicación, la imagen, la imagen destacada o la "
-"descripción, la sección de vista previa en el metabox le mostrará en tiempo "
+"descripción, la sección de vista previa en el metabox te mostrará en tiempo "
 "real."
 
 #: wpematico/app/lib/welcome.php:340
@@ -4444,7 +4397,7 @@ msgid ""
 "You can mark the selection options to see the possible results of the Post "
 "Template."
 msgstr ""
-"Puede marcar las opciones de selección para ver los posibles resultados de "
+"Podes marcar las opciones de selección para ver los posibles resultados de "
 "la plantilla de publicación."
 
 #: wpematico/app/lib/welcome.php:357
@@ -4467,7 +4420,7 @@ msgid ""
 "This new feature lets you view the list of the posts the campaign will fetch "
 "the next time it runs."
 msgstr ""
-"Esta nueva función le permite ver la lista de publicaciones que la campaña "
+"Esta nueva función te permite ver la lista de publicaciones que la campaña "
 "buscará la próxima vez que se ejecute."
 
 #: wpematico/app/lib/welcome.php:363
@@ -4476,7 +4429,7 @@ msgid ""
 "click in the title to see all its content like it will bring by WPeMatico "
 "plugin."
 msgstr ""
-"Puede ver el título, la imagen y un extracto de su contenido, pero puede "
+"Podes ver el título, la imagen y un extracto de su contenido, pero podes "
 "hacer clic en el título para ver todo su contenido como lo traerá el "
 "complemento WPeMatico."
 
@@ -4490,8 +4443,8 @@ msgid ""
 "to fetch.  This allow you to see if the campaign has pending items to "
 "publish from any feed inside it."
 msgstr ""
-"Cuando haga clic en el icono \"ojo\", se abrirá una ventana emergente para "
-"mostrarle los siguientes elementos a buscar. Esto le permite ver si la "
+"Cuando hagas clic en el icono \"ojo\", se abrirá una ventana emergente para "
+"mostrarle los siguientes elementos a buscar. Esto te permite ver si la "
 "campaña tiene elementos pendientes para publicar desde cualquier feed dentro "
 "de ella."
 
@@ -4581,15 +4534,13 @@ msgid ""
 "WPeMatico in order to create custom behavior in the execution of your "
 "campaigns."
 msgstr ""
-"es una extensión GRATUITA que le permite ejecutar acciones y filtros "
+"es una extensión GRATUITA que te permite ejecutar acciones y filtros "
 "proporcionados por WPeMatico para crear un comportamiento personalizado en "
-"la ejecución de sus campañas."
+"la ejecución de tus campañas."
 
 #: wpematico/app/lib/welcome.php:430
-#, fuzzy
-#| msgid "WPeMatico requires"
 msgid "WPeMatico Starter Memberships."
-msgstr "WPeMatico requiere"
+msgstr "Membresías iniciales de WPeMatico."
 
 #: wpematico/app/lib/welcome.php:431
 msgid "All available Addons"
@@ -4610,7 +4561,7 @@ msgid ""
 "filters in the code."
 msgstr ""
 "¡Hemos implementado los ganchos de JavaScript como acciones y filtros de "
-"WordPress! Puede realizar funciones para poner en cola los scripts y los "
+"WordPress! Podes realizar funciones para poner en cola los scripts y los "
 "enlaces a los filtros ya agregados en el código."
 
 #: wpematico/app/lib/welcome.php:444
@@ -4711,7 +4662,7 @@ msgid ""
 "Use the tips below to get started using WPeMatico. You will be up and "
 "running in no time!"
 msgstr ""
-"Use los siguientes consejos para empezar a usar WPeMatico. ¡Estarás listo y "
+"Usa los siguientes consejos para empezar a usar WPeMatico. ¡Estarás listo y "
 "funcionando en poco tiempo!"
 
 #: wpematico/app/lib/welcome.php:590
@@ -4758,7 +4709,7 @@ msgstr "Tenemos que añadir esta URL al campo RSS para recibir los artículos."
 #: wpematico/app/lib/welcome.php:601 wpematico/app/plugin_functions.php:101
 #: wpematico/app/settings_tabs.php:17 wpematico/wpematico_class.php:302
 #: wpematico/wpematico_class.php:303
-#: wpematico_fullcontent/wpematico_fullcontent.php:171
+#: wpematico_fullcontent/wpematico_fullcontent.php:170
 #: wpematico_professional/includes/prosettings.php:21
 #: wpematico_professional/wpematicopro.php:287
 msgid "Settings"
@@ -4813,9 +4764,9 @@ msgid ""
 "Add New and then fill out the campaign details."
 msgstr ""
 "El menú WPeMatico &rarr; All Campaigns es su punto de acceso para todos los "
-"aspectos de la creación y configuración de sus campañas de feed para obtener "
+"aspectos de la creación y configuración de tus campañas de feed para obtener "
 "los artículos e insertarlos como entradas o cualquier tipo de entrada "
-"personalizada. Para crear su primera campaña, simplemente haga clic en "
+"personalizada. Para crear su primera campaña, simplemente hace clic en "
 "Agregar nuevo y luego complete los detalles de la campaña."
 
 #: wpematico/app/lib/welcome.php:635
@@ -5006,14 +4957,14 @@ msgid ""
 msgstr ""
 "WPeMatico continúa mejorando e innovando con cada actualización, una vez más "
 "incluimos nuevas características con el fin de mejorar la experiencia del "
-"usuario y cubrir todas sus necesidades."
+"usuario y cubrir todas tus necesidades."
 
 #: wpematico/app/lib/welcome.php:774
 msgid ""
 "Choose which media files will be uploaded to your website by allowing or not "
 "their extension!"
 msgstr ""
-"Elija los archivos de medios de comunicación que se subirán a su sitio web "
+"Elegí los archivos de medios de comunicación que se subirán a su sitio web "
 "permitiendo o no su extensión!"
 
 #: wpematico/app/lib/welcome.php:775
@@ -5031,15 +4982,13 @@ msgid ""
 "the description tag of the items in the feed and you can even force the use "
 "of the original date of each post!"
 msgstr ""
-"Además, en esta nueva versión también puedes crear extractos usando la "
-"etiqueta de descripción de los artículos en el feed e incluso puedes forzar "
+"Además, en esta nueva versión también podes crear extractos usando la "
+"etiqueta de descripción de los artículos en el feed e incluso podes forzar "
 "el uso de la fecha original de cada post!"
 
 #: wpematico/app/lib/welcome.php:783
-#, fuzzy
-#| msgid "Stay Up to Date"
 msgid "Stay up to date!"
-msgstr "Mantente al día"
+msgstr "¡Mantente al día!"
 
 #: wpematico/app/lib/welcome.php:784
 msgid "Subscribe to our Newsletter and be the first to receive our news."
@@ -5047,8 +4996,6 @@ msgstr ""
 "Suscríbase a nuestro boletín y sea el primero en recibir nuestras noticias."
 
 #: wpematico/app/lib/welcome.php:785
-#, fuzzy
-#| msgid "We send around 4 or 5 emails per year. Really."
 msgid "We send about 4 or 5 emails per year. Really."
 msgstr "Enviamos alrededor de 4 o 5 correos electrónicos por año. En serio."
 
@@ -5090,7 +5037,7 @@ msgstr "No se encontró ningún registro de cambios válido."
 
 #: wpematico/app/lib/wp_ratings.php:31
 msgid "Can\\t connect to Wordpress Site"
-msgstr "No se puede conectar con el sitio de Wordpress"
+msgstr "No se podes conectar con el sitio de Wordpress"
 
 #: wpematico/app/notification_traslate.php:226
 #, php-format
@@ -5113,7 +5060,7 @@ msgid ""
 "%4$s to help complete the translation to %1$s!"
 msgstr ""
 "Estás usando WordPress en %1$s. Mientras que %2$s ha sido traducido a %1$s "
-"por %3$d%%, no ha sido enviado con el plugin todavía. ¡Puedes ayudar! "
+"por %3$d%%, no ha sido enviado con el plugin todavía. ¡Podes ayudar! "
 "¡Regístrate en %4$s para ayudar a completar la traducción a %1$s!"
 
 #: wpematico/app/notification_traslate.php:230
@@ -5125,7 +5072,7 @@ msgid ""
 msgstr ""
 "Estás usando WordPress en un lenguaje que no apoyamos todavía. Nos "
 "encantaría que %2$s se tradujera en ese idioma también, pero "
-"desafortunadamente, no es ahora mismo. ¡Puedes cambiar eso! Regístrate en "
+"desafortunadamente, no es ahora mismo. ¡Podes cambiar eso! Regístrate en "
 "%4$s para ayudar a traducirlo!"
 
 #: wpematico/app/plugin_functions.php:80
@@ -5149,7 +5096,7 @@ msgid "Go Perfect"
 msgstr "Ir perfecto"
 
 #: wpematico/app/plugin_functions.php:124
-#: wpematico_fullcontent/wpematico_fullcontent.php:193
+#: wpematico_fullcontent/wpematico_fullcontent.php:192
 #: wpematico_professional/wpematicopro.php:308
 msgid "Rate Plugin"
 msgstr "Valorar Plugin"
@@ -5171,7 +5118,7 @@ msgid ""
 "Set this features for all campaigns and can be overridden inside any "
 "campaign."
 msgstr ""
-"Establezca estas caracteristicas para todas las campañas y puede anularse "
+"Establece  estas caracteristicas para todas las campañas y podes anularse "
 "dentro de cualquier campaña."
 
 #: wpematico/app/settings_help.php:23
@@ -5195,7 +5142,7 @@ msgid ""
 msgstr ""
 "Si no está habilitado, todas las imágenes se vincularán al servidor del "
 "propietario de la imagen, pero también harán que su sitio web sea más rápido "
-"para sus visitantes."
+"para tus visitantes."
 
 #: wpematico/app/settings_help.php:26
 msgid "Caching all images"
@@ -5235,13 +5182,13 @@ msgstr ""
 msgid ""
 "If you see that the job process is too slowly you can deactivate this here."
 msgstr ""
-"Si ve que el proceso de trabajo es demasiado lento, puede desactivarlo aquí."
+"Si ve que el proceso de trabajo es demasiado lento, podes desactivarlo aquí."
 
 #: wpematico/app/settings_help.php:35 wpematico/app/settings_help.php:89
 #: wpematico/app/settings_help.php:120
 msgid "This feature may not work if you use the Custom Function for Uploads."
 msgstr ""
-"Esta característica puede no funcionar si usa la función Subida "
+"Esta característica podes no funcionar si usa la función Subida "
 "Personalizada."
 
 #: wpematico/app/settings_help.php:39 wpematico/app/settings_help.php:41
@@ -5258,7 +5205,7 @@ msgid ""
 "tag from the content. Check this to don't link images from external sites."
 msgstr ""
 "Si está seleccionado y la carga de imagen de error, a continuación, eliminar "
-"el %s etiqueta HTML a partir del contenido. Marque esta opción para no "
+"el %s etiqueta HTML a partir del contenido. Marca esta opción para no "
 "vincular imágenes desde sitios externos."
 
 #: wpematico/app/settings_help.php:42
@@ -5302,7 +5249,7 @@ msgid ""
 "Useful if you have double image in your posts pages or if you don't want to "
 "show the image in content for any reason."
 msgstr ""
-"Es útil si tiene doble imagen en las páginas de sus entradas o si no desea "
+"Es útil si tiene doble imagen en las páginas de tus entradas o si no desea "
 "mostrar la imagen en el contenido por algún motivo."
 
 #: wpematico/app/settings_help.php:71
@@ -5319,7 +5266,7 @@ msgid ""
 "can take too much resources if many images are uploaded at a time."
 msgstr ""
 "También desmarque esto si necesita todos los tamaños de imágenes de "
-"wordpress. El proceso de WP puede tomar demasiados recursos si se cargan "
+"wordpress. El proceso de WP podes tomar demasiados recursos si se cargan "
 "muchas imágenes a la vez."
 
 #: wpematico/app/settings_help.php:77
@@ -5343,7 +5290,7 @@ msgid ""
 msgstr ""
 "Si no está habilitado, todos los audios se vincularán al servidor del "
 "propietario del audio, pero también harán que su sitio web sea más rápido "
-"para sus visitantes."
+"para tus visitantes."
 
 #: wpematico/app/settings_help.php:80
 msgid "Caching all audios"
@@ -5376,7 +5323,7 @@ msgid ""
 "tag from the content. Check this to don't link audio from external sites."
 msgstr ""
 "Si está seleccionado y el audio de subida de error, a continuación, eliminar "
-"el %s etiqueta HTML a partir del contenido. Marque esta opción para no "
+"el %s etiqueta HTML a partir del contenido. Marca esta opción para no "
 "enlaces de audio desde sitios externos."
 
 #: wpematico/app/settings_help.php:96
@@ -5401,7 +5348,7 @@ msgid ""
 "can take too much resources if many audios are uploaded at a time."
 msgstr ""
 "También desmarque esto si necesita todos los tamaños de audios de wordpress. "
-"El proceso de WP puede tomar demasiados recursos si se cargan muchos audios "
+"El proceso de WP podes tomar demasiados recursos si se cargan muchos audios "
 "a la vez."
 
 #: wpematico/app/settings_help.php:108
@@ -5425,7 +5372,7 @@ msgid ""
 msgstr ""
 "Si no está habilitado, todos los videos se vincularán al servidor del "
 "propietario del video, pero también harán que su sitio web sea más rápido "
-"para sus visitantes."
+"para tus visitantes."
 
 #: wpematico/app/settings_help.php:111
 msgid "Caching all videos"
@@ -5458,7 +5405,7 @@ msgid ""
 "tag from the content. Check this to don't link videos from external sites."
 msgstr ""
 "Si está seleccionada y la subida de vídeos de error, a continuación, "
-"eliminar el %s etiqueta HTML a partir del contenido. Marque esta opción para "
+"eliminar el %s etiqueta HTML a partir del contenido. Marca esta opción para "
 "no enlaces de vídeos desde sitios externos."
 
 #: wpematico/app/settings_help.php:127
@@ -5483,7 +5430,7 @@ msgid ""
 "can take too much resources if many videos are uploaded at a time."
 msgstr ""
 "También desmarque esto si necesita todos los tamaños de videos de wordpress. "
-"El proceso de WP puede tomar demasiados recursos si se cargan muchos videos "
+"El proceso de WP podes tomar demasiados recursos si se cargan muchos videos "
 "a la vez."
 
 #: wpematico/app/settings_help.php:139
@@ -5495,7 +5442,7 @@ msgid ""
 "If you need these features in each campaign, you can activate them here. "
 "This is not recommended if you will not use the feature."
 msgstr ""
-"Si necesita estas características en cada campaña, puede activarlas aquí. No "
+"Si necesita estas características en cada campaña, podes activarlas aquí. No "
 "se recomienda si no va a usar la función."
 
 #: wpematico/app/settings_help.php:143
@@ -5521,7 +5468,7 @@ msgstr "Forzar Biblioteca Custom Simplepie."
 #: wpematico/app/settings_help.php:154
 msgid "Check this if you want to ignore Wordpress Simplepie library."
 msgstr ""
-"Active esto si quiere ignorar la librería Simplepie incluida en Wordpress."
+"Activa esto si quiere ignorar la librería Simplepie incluida en Wordpress."
 
 #: wpematico/app/settings_help.php:155
 msgid ""
@@ -5563,7 +5510,7 @@ msgid ""
 "otherwise you can change the allowed HTML tags and attributes from options "
 "below."
 msgstr ""
-"de lo contrario, puede cambiar las etiquetas y atributos HTML permitidos de "
+"de lo contrario, podes cambiar las etiquetas y atributos HTML permitidos de "
 "las opciones abajo."
 
 #: wpematico/app/settings_help.php:166
@@ -5577,7 +5524,7 @@ msgid ""
 "code like videos."
 msgstr ""
 "Por defecto, Simplepie quita estas etiquetas html del contenido del feed. "
-"Puede cambiar o permitir algunas etiquetas, por ejemplo, si desea permitir "
+"Podes cambiar o permitir algunas etiquetas, por ejemplo, si desea permitir "
 "iframes o incrustar códigos como videos."
 
 #: wpematico/app/settings_help.php:171
@@ -5590,7 +5537,7 @@ msgid ""
 "change it if you want to retain some of them or add more attributes to strip."
 msgstr ""
 "Simplepie también quita estos atributos de las etiquetas html en el "
-"contenido. Puede cambiarlo si desea conservar algunos de ellos o agregar más "
+"contenido. Podes cambiarlo si desea conservar algunos de ellos o agregar más "
 "atributos para quitar."
 
 #: wpematico/app/settings_help.php:178 wpematico/app/settings_help.php:185
@@ -5603,7 +5550,7 @@ msgid ""
 "may be some vulnerability in the source code."
 msgstr ""
 "NOTA: Es extremadamente peligroso permitir contenido sin filtrar porque "
-"puede haber varias vulnerabilidades en el código original."
+"podes haber varias vulnerabilidades en el código original."
 
 #: wpematico/app/settings_help.php:180
 msgid "See How WordPress Processes Post Content: "
@@ -5620,7 +5567,7 @@ msgstr ""
 
 #: wpematico/app/settings_help.php:182
 msgid "Use only with reliable sources."
-msgstr "Use solo con fuentes confiables."
+msgstr "Usa solo con fuentes confiables."
 
 #: wpematico/app/settings_help.php:186
 msgid ""
@@ -5628,7 +5575,7 @@ msgid ""
 "executed again until click \"Clear Campaign\"."
 msgstr ""
 "Cuando una campaña se está ejecutando y se ve interrumpida por algún "
-"problema, no se puede ejecutar nuevamente hasta que haga clic en \"Limpiar "
+"problema, no se podes ejecutar nuevamente hasta que hagas clic en \"Limpiar "
 "campaña\"."
 
 #: wpematico/app/settings_help.php:187
@@ -5637,7 +5584,7 @@ msgid ""
 "scheduled cron. A value of \"0\" ignore this, means that remain until user "
 "make click. "
 msgstr ""
-"Esta opción limpia la campaña después de este tiempo de espera y luego puede "
+"Esta opción limpia la campaña después de este tiempo de espera y luego podes "
 "volver a ejecutarse en el siguiente cron programado. Un valor de \"0\" "
 "ignora esto, significa que permanece hasta que el usuario haga clic. "
 
@@ -5647,7 +5594,7 @@ msgstr "Recomendado 300 Segundos. "
 
 #: wpematico/app/settings_help.php:192 wpematico/app/settings_page.php:595
 msgid "Add a throttle/delay in seconds after every post."
-msgstr "Agregue un acelerador/retraso en segundos después de cada publicación."
+msgstr "Agrega un acelerador/retraso en segundos después de cada publicación."
 
 #: wpematico/app/settings_help.php:193
 msgid ""
@@ -5656,7 +5603,7 @@ msgid ""
 "Leave on 0 if you don't have any problem."
 msgstr ""
 "Esta opción produce un retraso después de cada acción de insertar una "
-"publicación. Puede ser útil si desea dar un descanso al servidor mientras "
+"publicación. Podes ser útil si desea dar un descanso al servidor mientras "
 "obtiene muchas entradas. Deja en 0 si no tienes ningún problema."
 
 #: wpematico/app/settings_help.php:210 wpematico/app/settings_page.php:615
@@ -5718,14 +5665,14 @@ msgstr ""
 
 #: wpematico/app/settings_help.php:231
 msgid "Set a password to access the external CRON."
-msgstr "Establezca una contraseña para acceder al CRON externo."
+msgstr "Establece una contraseña para acceder al CRON externo."
 
 #: wpematico/app/settings_help.php:232
 msgid ""
 "Activate a code to allow or avoid the use of the external cron file.  "
 "Deactivated by default to backward compatibility, but strongly recommended."
 msgstr ""
-"Active un código para permitir o evitar el uso del archivo cron externo. "
+"Activa un código para permitir o evitar el uso del archivo cron externo. "
 "Desactivado por defecto para compatibilidad hacia atrás, pero muy "
 "recomendable."
 
@@ -5735,14 +5682,14 @@ msgstr "Si este campo no está marcado, la contraseña será ignorada."
 
 #: wpematico/app/settings_help.php:236
 msgid "Set a password to use the external CRON."
-msgstr "Establezca una contraseña para usar el CRON externo."
+msgstr "Establece  una contraseña para usar el CRON externo."
 
 #: wpematico/app/settings_help.php:237
 msgid ""
 "This will be the code used in the command to run the cron.  Can be any "
 "string you want to use as ?code=this_code.  Recommended."
 msgstr ""
-"Este será el código utilizado en el comando para ejecutar el cron. Puede ser "
+"Este será el código utilizado en el comando para ejecutar el cron. Podes ser "
 "cualquier cadena de texto que quiera usar como ?code=this_code. Recomendado."
 
 #: wpematico/app/settings_help.php:241
@@ -5755,7 +5702,7 @@ msgid ""
 "itself and all other plugins.  Not recommended unless you want to use an "
 "external Cron for your wordpress."
 msgstr ""
-"Marque esto para desactivar todas los horarios cron de Wordpress. Afecta a "
+"Marca esto para desactivar todas los horarios cron de Wordpress. Afecta a "
 "Wordpress y a todos los demás complementos. No recomendado a menos que desee "
 "utilizar un cron externo para su wordpress."
 
@@ -5836,7 +5783,7 @@ msgid ""
 msgstr ""
 "Solo una herramienta adicional para mostrar un botón para vaciar la carpeta "
 "de papelera en cada pantalla principal de la publicación personalizada. "
-"Puede ser entradas, páginas o selecciona lo que quieras."
+"Podes ser entradas, páginas o selecciona lo que quieras."
 
 #: wpematico/app/settings_help.php:274
 msgid "Disable WP Dashboard Widget"
@@ -5847,7 +5794,7 @@ msgid ""
 "Check this if you don't want to display the widget dashboard.  Anyway, only "
 "admins will see it."
 msgstr ""
-"Marque esto si no desea mostrar el tablero del widget. De todos modos, solo "
+"Marca esto si no desea mostrar el tablero del widget. De todos modos, solo "
 "los administradores lo verán."
 
 #: wpematico/app/settings_help.php:281
@@ -5859,7 +5806,7 @@ msgid ""
 "Check this if you don't want automatic check feed URLs before save every "
 "campaign."
 msgstr ""
-"Marque esto si no desea verificaciones automáticas de las URL del feed antes "
+"Marca esto si no desea verificaciones automáticas de las URL del feed antes "
 "de guardar cada campaña."
 
 #: wpematico/app/settings_help.php:285
@@ -5905,8 +5852,8 @@ msgid ""
 "if you can take a minute to %s write a 5 star review on Wordpress %s.  :-) "
 "thanks."
 msgstr ""
-"Si no puede mostrar los créditos de WPeMatico en sus entradas, realmente le "
-"agradecería si puede dedicar un minuto para %s escribir una reseña de 5 "
+"Si no podes mostrar los créditos de WPeMatico en tus entradas, realmente te "
+"agradecería si podes dedicar un minuto para %s escribir una reseña de 5 "
 "estrellas en Wordpress %s.  :-) gracias."
 
 #: wpematico/app/settings_help.php:300
@@ -5919,9 +5866,9 @@ msgid ""
 "created (auto)categories.  You could edit the past categories if you need to "
 "delete their descriptions."
 msgstr ""
-"Compruébelo para evitar las futuras descripciones \"Creado por WPeMatico\" "
-"de las (auto)categorías creadas.  Puedes editar las categorías pasadas si "
-"necesitas borrar sus descripciones."
+"Comprobalo para evitar las futuras descripciones \"Creado por WPeMatico\" de "
+"las (auto)categorías creadas.  Podes editar las categorías pasadas si "
+"necesitas borrar tus descripciones."
 
 #: wpematico/app/settings_help.php:304
 msgid "Disable Extensions feed page requests."
@@ -5932,7 +5879,7 @@ msgid ""
 "Check this to avoid the fetch of WPeMatico Addons from our downloads feed "
 "page."
 msgstr ""
-"Compruébalo para evitar que se busquen los complementos de WPeMatico en "
+"Comprobalo para evitar que se busquen los complementos de WPeMatico en "
 "nuestra página de descargas."
 
 #: wpematico/app/settings_help.php:306
@@ -5952,7 +5899,7 @@ msgid ""
 "If you want upload XML files to use them in the XML Campaign Type. Enable "
 "this feature allow the upload XMLs from media."
 msgstr ""
-"Si quieres subir archivos XML para usarlos en el tipo de campaña XML. Active "
+"Si queres subir archivos XML para usarlos en el tipo de campaña XML. Activa "
 "esta función para permitir la carga de XML desde los medios."
 
 #: wpematico/app/settings_help.php:313
@@ -5964,8 +5911,8 @@ msgid ""
 "Enable this feature if you need to decode HTML entities in feed content "
 "before publishing each post."
 msgstr ""
-"Habilite esta función si necesita decodificar entidades HTML en el contenido "
-"del feed antes de publicar cada entrada."
+"Habilita esta función si necesitas decodificar entidades HTML en el "
+"contenido del feed antes de publicar cada entrada."
 
 #: wpematico/app/settings_help.php:319
 msgid "Sender Email."
@@ -6017,7 +5964,7 @@ msgstr ""
 msgid ""
 "If you want a custom title for posts of a campaign, you can activate here."
 msgstr ""
-"Si desea un título personalizado para las entradas de una campaña, puede "
+"Si deseas un título personalizado para las entradas de una campaña, podes "
 "activarlo aquí."
 
 #: wpematico/app/settings_help.php:340
@@ -6027,15 +5974,14 @@ msgid ""
 "or leave empty."
 msgstr ""
 "Esta característica genera etiquetas automáticamente en cada publicación "
-"publicada, en la edición de la campaña puede deshabilitar la función "
+"publicada, en la edición de la campaña podes deshabilitar la función "
 "automática e ingresar manualmente una lista de etiquetas o dejarla en blanco."
 
 #: wpematico/app/settings_help.php:341
 #: wpematico_professional/includes/prosettings.php:211
 msgid "Add custom fields with values as templates on every post."
 msgstr ""
-"Agregue campos personalizados con valores como plantillas en cada "
-"publicación."
+"Agrega campos personalizados con valores como plantillas en cada publicación."
 
 #: wpematico/app/settings_help.php:342
 msgid ""
@@ -6051,7 +5997,7 @@ msgid ""
 "This option allow you assign an author per feed when editing campaign. If no "
 "choice any author, the campaign author will be taken."
 msgstr ""
-"Esta opción le permite asignar un autor por feed al editar la campaña. Si no "
+"Esta opción te permite asignar un autor por feed al editar la campaña. Si no "
 "se elige ningún autor, se tomará el autor de la campaña."
 
 #: wpematico/app/settings_help.php:344
@@ -6060,7 +6006,7 @@ msgid ""
 "On campaign edit you can import, copy and paste in a textarea field, a list "
 "of feed addresses with/out author names."
 msgstr ""
-"En la campaña de editar puede importar, copiar y pegar en un textarea campo, "
+"En la campaña de editar podes importar, copiar y pegar en un textarea campo, "
 "una lista de alimentar direcciones de entrada/salida los nombres de los "
 "autores."
 
@@ -6093,24 +6039,20 @@ msgid "WPeMatico settings"
 msgstr "Opciones WPeMatico"
 
 #: wpematico/app/settings_page.php:180
-#, fuzzy
-#| msgid "Addons store, FAQs and Support"
 msgid "Addons store, FAQs"
-msgstr "Complementos de la tienda, preguntas frecuentes y Soporte técnico"
+msgstr "Tienda de complementos, preguntas frecuentes y Soporte técnico"
 
 #: wpematico/app/settings_page.php:181
 msgid "and <b>Free</b> Support"
-msgstr ""
+msgstr "y <b>Soporte </b> gratuito"
 
 #: wpematico/app/settings_page.php:210
 msgid "Advanced Actions"
 msgstr "Advanced Actions"
 
 #: wpematico/app/settings_page.php:213
-#, fuzzy
-#| msgid "Disable Check Feeds before Save."
 msgid "Disable Check Feeds before Save"
-msgstr "Deshabilitar Revisar Feeds antes de Guardar."
+msgstr "Deshabilitar Revisar Feeds antes de Guardar"
 
 #: wpematico/app/settings_page.php:215
 msgid "Enable \"Del Hash\""
@@ -6135,7 +6077,7 @@ msgid ""
 "if you can take a minute to %s write a 5 star review on Wordpress %s. :) "
 "thanks."
 msgstr ""
-"Si no puedes mostrar los créditos de WPeMatico en tus mensajes, te "
+"Si no podes mostrar los créditos de WPeMatico en tus mensajes, te "
 "agradecería que te tomaras un minuto para %s escribir una reseña de 5 "
 "estrellas en Wordpress. %s. :) gracias."
 
@@ -6301,11 +6243,11 @@ msgstr "<b><i>Filtros de Imagen</i></b>."
 
 #: wpematico/app/settings_page.php:502
 msgid "\"Random Rewrites\" feature."
-msgstr "<b><i>Re-escrituras aleatorias</i></b>"
+msgstr "<b><i>Re-escrituras aleatorias</i></b>."
 
 #: wpematico/app/settings_page.php:504
 msgid "\"Deletes till the end of the line\" feature."
-msgstr "<b><i>Eliminar hasta el final de la línea</i></b>"
+msgstr "<b><i>Eliminar hasta el final de la línea</i></b>."
 
 #: wpematico/app/settings_page.php:516 wpematico/app/settings_page.php:582
 msgid "Advanced Fetching"
@@ -6317,7 +6259,7 @@ msgstr "(Configuración de SimplePie)"
 
 #: wpematico/app/settings_page.php:518
 msgid "Test if SimplePie library works well on your server:"
-msgstr "Pruebe si la biblioteca SimplePie funciona bien en su servidor:"
+msgstr "Proba si la biblioteca SimplePie funciona bien en su servidor:"
 
 #: wpematico/app/settings_page.php:524
 msgid "Click here"
@@ -6346,11 +6288,15 @@ msgid ""
 "The Custom Simplepie Library option will be removed from WPeMatico in the "
 "next release."
 msgstr ""
+"La opción de la biblioteca personalizada de Simplepie se eliminará de "
+"WPeMatico en la próxima versión."
 
 #: wpematico/app/settings_page.php:556
 msgid ""
 "Please disable it to start using the Simplepie version included in WordPress."
 msgstr ""
+"Por favor, desactívelo para empezar a utilizar la versión de Simplepie "
+"incluida en WordPress."
 
 #: wpematico/app/settings_page.php:559
 msgid "Set Simplepie \"stupidly fast\""
@@ -6389,9 +6335,9 @@ msgid ""
 "run again on next scheduled cron. A value of \"0\" ignore this, means that "
 "remain until user make click.  Recommended 300 Seconds."
 msgstr ""
-"Cuando se interrumpe una campaña, no puede ser ejecutada hasta que de Click "
+"Cuando se interrumpe una campaña, no podes ser ejecutada hasta que de Click "
 "en \\\"Limpiar campaña\\\".  Esta opción limpia la campaña despues del "
-"tiempo de espera entonces puede ser automáticamente ejecutada de nuevo.  "
+"tiempo de espera entonces podes ser automáticamente ejecutada de nuevo.  "
 "Valor igual a 0 ignora este campo y permance interrumpida hasta hacer click "
 "en Limpiar campaña.  Valos recomendado: 300 Segundos."
 
@@ -6420,7 +6366,7 @@ msgstr ""
 #: wpematico/app/settings_page.php:648
 msgid "Please change and use the URL below in all your cronjobs."
 msgstr ""
-"Por favor, cambie y utilice la siguiente URL en todos sus trabajos "
+"Por favor, cambia y utiliza la siguiente URL en todos tus trabajos "
 "cronometrados."
 
 #: wpematico/app/settings_page.php:650
@@ -6429,11 +6375,11 @@ msgstr "URL:"
 
 #: wpematico/app/settings_page.php:658
 msgid "Set a password to access the external CRON"
-msgstr "Establezca una contraseña para acceder el CRON externo"
+msgstr "Establece una contraseña para acceder el CRON externo"
 
 #: wpematico/app/settings_page.php:661
 msgid "Set a password to use the external CRON"
-msgstr "Establezca una contraseña para usar el CRON externo"
+msgstr "Establece una contraseña para usar el CRON externo"
 
 #: wpematico/app/settings_page.php:663
 msgid "Paste a generated a ramdon string."
@@ -6452,7 +6398,7 @@ msgid ""
 "To run the wordpress cron with external cron you can set up a cron job that "
 "calls:"
 msgstr ""
-"Para ejecutar el cron wordpress con cron externo puede configurar un cron "
+"Para ejecutar el cron wordpress con cron externo podes configurar un cron "
 "job que llame a:"
 
 #: wpematico/app/settings_page.php:675
@@ -6480,7 +6426,7 @@ msgid ""
 "You can find more info about WP Cron and also few steps to configure "
 "external crons:"
 msgstr ""
-"Puede encontrar más información sobre WP Cron y también algunos pasos para "
+"Podes encontrar más información sobre WP Cron y también algunos pasos para "
 "configurar crons externos:"
 
 #: wpematico/app/settings_page.php:681
@@ -6508,7 +6454,7 @@ msgstr ""
 
 #: wpematico/app/settings_page.php:722
 msgid "Select (custom) post types you want."
-msgstr "Seleccione los tipos de entradas (personalizadas) que desee."
+msgstr "Selecciona los tipos de entradas (personalizadas) que desee."
 
 #: wpematico/app/settings_page.php:751
 msgid "Disable \"WP Dashboard Widget\""
@@ -6566,17 +6512,17 @@ msgstr ""
 "Sólo toma un minuto, <strong> clic en el botón de abajo</fuerte> para ir al "
 "formulario."
 
-#: wpematico/app/smart_notifications.php:157
+#: wpematico/app/smart_notifications.php:154
 msgid "Check all Campaign Options with the Wizard"
-msgstr ""
+msgstr "Comproba todas las opciones de la campaña con el asistente"
 
-#: wpematico/app/smart_notifications.php:163
+#: wpematico/app/smart_notifications.php:160
 msgid "Want to make sure your campaign settings are fine?"
-msgstr ""
+msgstr "¿Queres asegurarte de que la configuración de tu campaña está bien?"
 
-#: wpematico/app/smart_notifications.php:165
+#: wpematico/app/smart_notifications.php:162
 msgid "Open the configuration wizard to see each metabox one by one."
-msgstr ""
+msgstr "Abrí el asistente de configuración para ver cada metabox uno por uno."
 
 #: wpematico/app/wp-backend-helpers.php:61 wpematico/wpematico_class.php:165
 msgid "Campaign"
@@ -6610,7 +6556,7 @@ msgstr "Del feed"
 
 #: wpematico/app/wp-backend-helpers.php:176
 msgid "Open the feed URL in the browser."
-msgstr "Abra la URL del feed en el navegador."
+msgstr "Abrí la URL del feed en el navegador."
 
 #: wpematico/app/wp-backend-helpers.php:181
 msgid "Source permalink"
@@ -6618,7 +6564,7 @@ msgstr "Enlace permanente de origen"
 
 #: wpematico/app/wp-backend-helpers.php:184
 msgid "Go to the source website to see the original content."
-msgstr "Vaya al sitio web de origen para ver el contenido original."
+msgstr "Dirigíte al sitio web de origen para ver el contenido original."
 
 #: wpematico/app/wp-backend-helpers.php:217
 msgid "WPeMatico Summary"
@@ -6681,7 +6627,7 @@ msgstr "Estás usando WPeMatico Professional demasiado viejo."
 
 #: wpematico/app/wpematico_functions.php:627
 msgid "Must install at least \"WPeMatico Professional\" "
-msgstr "Debe instalar al menos <b>WPeMatico Profesional</b> "
+msgstr "Debes instalar al menos <b>WPeMatico Profesional</b> "
 
 #: wpematico/app/wpematico_functions.php:628
 msgid "Go to upgrade Now"
@@ -6698,8 +6644,8 @@ msgstr "Categoría agregada por el Plugin WPeMatico"
 #: wpematico/app/wpematico_functions.php:1252
 msgid "You should use the Force Feed or Change User Agent features of "
 msgstr ""
-"Usted debe utilizar la Fuerza de Alimentación o Cambio de Agente de Usuario "
-"de las características de "
+"Debes utilizar la Fuerza de Alimentación o Cambio de Agente de Usuario de "
+"las características de "
 
 #: wpematico/app/wpematico_functions.php:1258
 msgid "Feed Title:"
@@ -6725,7 +6671,7 @@ msgstr "Descripción:"
 #: wpematico/app/wpematico_functions.php:1284
 #, php-format
 msgid "The feed %s cannot be parsed. Simplepie said: %s"
-msgstr "El feed %s no puede ser analizado. Simplepie dijo: %s"
+msgstr "El feed %s no podes ser analizado. Simplepie dijo: %s"
 
 #: wpematico/app/wpematico_functions.php:1291
 msgid "Undetected"
@@ -6839,35 +6785,31 @@ msgid "Select a XML node."
 msgstr "Seleccionar nodo XML."
 
 #: wpematico/wpematico.php:43
-#, fuzzy
-#| msgid "PHP 5.3.0 or higher needed!"
 msgid "PHP 5.6.0 or higher needed!"
-msgstr "- PHP 5.3.0 posterior requerido!"
+msgstr "PHP 5.6.0 o posterior requerido!"
 
 #: wpematico/wpematico_class.php:132
 msgid "Empty Trash"
 msgstr "Vaciar Papelera"
 
 #: wpematico/wpematico_class.php:150
-#, fuzzy
-#| msgid "There is no html in content."
 msgid "There is no campaigns yet."
-msgstr "No hay html en el contenido."
+msgstr "No hay campañas aún."
 
 #: wpematico/wpematico_class.php:152
 msgid "You need to create a campaign to begin using WPeMatico."
-msgstr ""
+msgstr "Necesitas crear una campaña para empezar a usar WPeMatico."
 
 #: wpematico/wpematico_class.php:154
 msgid ""
 "If you need help, check out the tips to get started with WPeMatico or just "
 msgstr ""
+"Si necesitas ayuda, consulta los consejos para empezar con WPeMatico o "
+"simplemente "
 
 #: wpematico/wpematico_class.php:155
-#, fuzzy
-#| msgid "Add New Campaign"
 msgid "add New Campaign"
-msgstr "Agregar nueva campaña"
+msgstr "agregar nueva campaña"
 
 #: wpematico/wpematico_class.php:164
 msgid "Campaigns"
@@ -6910,12 +6852,12 @@ msgid ""
 "Activate this setting if you can't see WPeMatico menu at left under Posts "
 "menu item."
 msgstr ""
-"Activa este ajuste si no puedes ver el menú de WPeMatico a la izquierda en "
-"el elemento de menú Posts."
+"Activa este ajuste si no podes ver el menú de WPeMatico a la izquierda en el "
+"elemento de menú Posts."
 
 #: wpematico/wpematico_class.php:225
 msgid "See local Addons in plugin list"
-msgstr "Vea las extensiones locales en la lista de plugins"
+msgstr "Mira las extensiones locales en la lista de plugins"
 
 #: wpematico/wpematico_class.php:231
 msgid ""
@@ -6935,14 +6877,14 @@ msgid ""
 "or can't read externals URLs."
 msgstr ""
 "Activa esta configuración si no ves la página de configuración de WPeMatico "
-"completa o no puedes leer las URL externas."
+"completa o no podes leer las URL externas."
 
 #: wpematico/wpematico_class.php:280
 msgid ""
 "If you don't see the WPeMatico Menu may be another plugin or a custom menu "
 "added by your theme are \"overwritten\" the WPeMatico menu position."
 msgstr ""
-"Si no ves el menú de WPeMatico puede ser otro plugin o un menú personalizado "
+"Si no ves el menú de WPeMatico podes ser otro plugin o un menú personalizado "
 "añadido por tu tema se \"sobrescriben\" la posición del menú de WPeMatico."
 
 #: wpematico/wpematico_class.php:281
@@ -6950,7 +6892,7 @@ msgid ""
 "Click the checkbox \"Reset Menu Position\" to show the menu on last position "
 "in your Wordpress menu."
 msgstr ""
-"Haz clic en la casilla \"Restablecer la posición del menú\" para mostrar el "
+"Hace clic en la casilla \"Restablecer la posición del menú\" para mostrar el "
 "menú en la última posición del menú de Wordpress."
 
 #: wpematico/wpematico_class.php:283
@@ -6958,16 +6900,16 @@ msgid ""
 "If you can't see well the WPeMatico Settings page is probable that you are "
 "having problems to read external wordpress web pages from your server."
 msgstr ""
-"Si no puedes ver bien la página de configuración de WPeMatico es probable "
-"que estés teniendo problemas para leer páginas web externas de wordpress "
-"desde tu servidor."
+"Si no podes ver bien la página de configuración de WPeMatico es probable que "
+"estés teniendo problemas para leer páginas web externas de wordpress desde "
+"tu servidor."
 
 #: wpematico/wpematico_class.php:284
 msgid ""
 "Click the checkbox \"Hide Reviews on Settings\" to avoid this and show just "
 "a link to Wordpress reviews page."
 msgstr ""
-"Haz clic en la casilla de verificación \"Ocultar reseñas en la configuración"
+"Hace clic en la casilla de verificación \"Ocultar reseñas en la configuración"
 "\" para evitar esto y muestra sólo un enlace a la página de reseñas de "
 "Wordpress."
 
@@ -6976,13 +6918,13 @@ msgid ""
 "You must click the Save Changes button at the bottom of the screen for new "
 "settings to take effect."
 msgstr ""
-"Debe hacer clic en el botón Guardar cambios en la parte inferior de la "
+"Debes hacer clic en el botón Guardar cambios en la parte inferior de la "
 "pantalla para que los nuevos ajustes surtan efecto."
 
 #: wpematico_fullcontent/inc/campaign_edit.php:42
 msgid "You cannot use this features with \"Youtube Fetcher\" campaign type."
 msgstr ""
-"No puedes usar estas características con el tipo de campaña \"Youtube Fetcher"
+"No podes usar estas características con el tipo de campaña \"Youtube Fetcher"
 "\"."
 
 #: wpematico_fullcontent/inc/campaign_edit.php:51
@@ -6992,7 +6934,7 @@ msgstr "Opciones de contenido completo"
 #: wpematico_fullcontent/inc/campaign_edit.php:60
 msgid "Get complete item content from the original item link"
 msgstr ""
-"Obtener el contenido completo del artículo desde el enlace del artículo "
+"Obtene el contenido completo del artículo desde el enlace del artículo "
 "original"
 
 #: wpematico_fullcontent/inc/campaign_edit.php:61
@@ -7025,7 +6967,7 @@ msgstr ""
 
 #: wpematico_fullcontent/inc/campaign_edit.php:73
 msgid "Use Open Graph for featured image"
-msgstr "Use el gráfico abierto para la imagen destacada"
+msgstr "Usa el gráfico abierto para la imagen destacada"
 
 #: wpematico_fullcontent/inc/campaign_edit.php:74
 msgid ""
@@ -7038,7 +6980,7 @@ msgstr ""
 
 #: wpematico_fullcontent/inc/campaign_edit.php:79
 msgid "Add it above the content."
-msgstr "Añádalo sobre el contenido."
+msgstr "Añadelo sobre el contenido."
 
 #: wpematico_fullcontent/inc/campaign_edit.php:80
 msgid ""
@@ -7055,7 +6997,7 @@ msgid ""
 "Do not add the og:image as featured and at the beginning of the post, "
 "<strong>if there are images in the content</strong>."
 msgstr ""
-"No añada la imagen og:image como aparece y al principio de la publicación, "
+"No añadas la imagen og:image como aparece y al principio de la publicación, "
 "<strong> si hay imágenes en el contenido</strong>."
 
 #: wpematico_fullcontent/inc/campaign_edit.php:91
@@ -7173,8 +7115,8 @@ msgid ""
 "You can try with \"autodetect_on_failure: yes\" or search another @class/@id "
 "that envelopes the content."
 msgstr ""
-"Puedes intentarlo con \"autodetect_on_failure: yes\" o buscar otro @class/"
-"@id que envuelva el contenido."
+"Podes intentarlo con \"autodetect_on_failure: yes\" o buscar otro @class/@id "
+"que envuelva el contenido."
 
 #: wpematico_fullcontent/inc/functions.php:123
 msgid ""
@@ -7198,11 +7140,11 @@ msgstr "¡No se pueden copiar archivos!"
 
 #: wpematico_fullcontent/inc/functions.php:198
 msgid "** Can't upload!"
-msgstr "** No se puede subir!"
+msgstr "** No se podes subir!"
 
 #: wpematico_fullcontent/inc/functions.php:201
 msgid "** Can't upload! Just .txt files allowed!"
-msgstr "** No se puede subir! ¡Sólo se permiten los archivos .txt!"
+msgstr "** No se podes subir! ¡Sólo se permiten los archivos .txt!"
 
 #: wpematico_fullcontent/inc/functions.php:209
 msgid ""
@@ -7218,7 +7160,7 @@ msgid ""
 "It's strongly recommended that you move your files to Wordpress uploads "
 "directory to don't loose your files later."
 msgstr ""
-"Se recomienda encarecidamente que mueva sus archivos al directorio de "
+"Se recomienda encarecidamente que muevas tus archivos al directorio de "
 "subidas de Wordpress para no perderlos más tarde."
 
 #: wpematico_fullcontent/inc/functions.php:275
@@ -7236,13 +7178,11 @@ msgstr "Clic para editar"
 
 #: wpematico_fullcontent/inc/functions.php:436
 msgid "Fetching Error"
-msgstr ""
+msgstr "Error de búsqueda"
 
 #: wpematico_fullcontent/inc/functions.php:445
-#, fuzzy
-#| msgid "Image URL:"
 msgid "Invalid image URL"
-msgstr "URL de la Imagen:"
+msgstr "URL de la Imagen invalida"
 
 #: wpematico_fullcontent/inc/getcontent.php:117
 #, php-format
@@ -7334,7 +7274,7 @@ msgstr "¡Hubo un error al cargar el archivo!"
 #: wpematico_fullcontent/inc/settings.php:64
 #: wpematico_fullcontent/inc/settings.php:116
 msgid "Select file to edit on right column."
-msgstr "Seleccione el archivo a editar en la columna derecha."
+msgstr "Selecciona el archivo a editar en la columna derecha."
 
 #: wpematico_fullcontent/inc/settings.php:53
 msgid "File loaded!"
@@ -7347,12 +7287,12 @@ msgstr "¡Archivo guardado!"
 #: wpematico_fullcontent/inc/settings.php:55
 msgid "Type new domain name (without \".txt\") and click \"Save as\" again!"
 msgstr ""
-"¡Escriba el nuevo nombre de dominio (sin \".txt\") y haga clic en \"Guardar "
+"¡Escribí el nuevo nombre de dominio (sin \".txt\") y hace clic en \"Guardar "
 "como\" de nuevo!"
 
 #: wpematico_fullcontent/inc/settings.php:56
 msgid "Type new domain name and click this button!"
-msgstr "¡Escriba el nuevo nombre de dominio y haga clic en este botón!"
+msgstr "¡Escribí el nuevo nombre de dominio y hace clic en este botón!"
 
 #: wpematico_fullcontent/inc/settings.php:57
 msgid "Wait... checking domain and saving..."
@@ -7368,7 +7308,7 @@ msgstr "¡Archivos movidos!"
 
 #: wpematico_fullcontent/inc/settings.php:61
 msgid "Reload the page before continue."
-msgstr "Recargue la página antes de continuar."
+msgstr "Recarga la página antes de continuar."
 
 #: wpematico_fullcontent/inc/settings.php:62
 msgid "Testing test_url... wait..."
@@ -7433,10 +7373,8 @@ msgid "Meta data"
 msgstr "Meta data"
 
 #: wpematico_fullcontent/inc/settings.php:183
-#, fuzzy
-#| msgid "Select a post type"
 msgid "Select Post Type"
-msgstr "Seleccione un tipo de publicación"
+msgstr "Selecciona un tipo de publicación"
 
 #: wpematico_fullcontent/inc/settings.php:212
 msgid "Config Files on Folder"
@@ -7456,7 +7394,7 @@ msgstr "Gracias por testear, usar y disfrutar este Plugin."
 msgid ""
 "If you like it and want to thank, you can write a 5 star review on Wordpress."
 msgstr ""
-"Si te gusta y quieres dar las gracias, puedes escribir una reseña de 5 "
+"Si te gusta y queres dar las gracias, podes escribir una reseña de 5 "
 "estrellas en Wordpress."
 
 #: wpematico_fullcontent/inc/settings.php:277
@@ -7464,7 +7402,7 @@ msgid ""
 "Domain does not exist. Please type a correct domain name without schema, ie: "
 "\"etruel.com\""
 msgstr ""
-"El dominio no existe. Por favor, escriba un nombre de dominio correcto sin "
+"El dominio no existe. Por favor, escribí un nombre de dominio correcto sin "
 "el esquema, es decir: \"etruel.com\""
 
 #: wpematico_fullcontent/inc/settings.php:283
@@ -7472,12 +7410,12 @@ msgid ""
 "File does not exist. Please type a correct domain name without schema, ie: "
 "\"etruel.com\"."
 msgstr ""
-"El archivo no existe. Por favor, escriba un nombre de dominio correcto sin "
+"El archivo no existe. Por favor, escribí un nombre de dominio correcto sin "
 "esquema, es decir: \"etruel.com\"."
 
 #: wpematico_fullcontent/inc/settings.php:288
 msgid "Can't save file!"
-msgstr "¡No se puede guardar el archivo!"
+msgstr "¡No se podes guardar el archivo!"
 
 #: wpematico_fullcontent/inc/settings.php:313
 msgid "Help and Tips"
@@ -7505,52 +7443,47 @@ msgstr "Tutorial XPath"
 msgid "XPath as filesystem addressing."
 msgstr "XPath como dirección del sistema de archivos."
 
-#: wpematico_fullcontent/wpematico_fullcontent.php:171
+#: wpematico_fullcontent/wpematico_fullcontent.php:170
 msgid "Go to Full Content Settings Page"
 msgstr "Ir a la página de configuración de contenido completo"
 
-#: wpematico_fullcontent/wpematico_fullcontent.php:191
+#: wpematico_fullcontent/wpematico_fullcontent.php:190
 #: wpematico_professional/wpematicopro.php:306
 msgid "etruel Store"
 msgstr "tienda etruel"
 
-#: wpematico_fullcontent/wpematico_fullcontent.php:215
+#: wpematico_fullcontent/wpematico_fullcontent.php:214
 msgid "You are using WPeMatico Full Content."
 msgstr "Estás usando el contenido completo de WPeMatico."
 
-#: wpematico_fullcontent/wpematico_fullcontent.php:216
+#: wpematico_fullcontent/wpematico_fullcontent.php:215
 msgid "Plugins <b>WPeMatico</b> must be activated!"
 msgstr "Complementos <b>WPeMatico</b> deben ser activados!"
 
-#: wpematico_fullcontent/wpematico_fullcontent.php:217
+#: wpematico_fullcontent/wpematico_fullcontent.php:216
 #: wpematico_professional/wpematicopro.php:390
 msgid "Go to Activate Now"
 msgstr "Ir a Activar ahora"
 
-#: wpematico_fullcontent/wpematico_fullcontent.php:222
+#: wpematico_fullcontent/wpematico_fullcontent.php:221
 msgid ""
 "You are using WPeMatico Full Content, but doesn't exist class WPeMatico."
 msgstr ""
 "Estás usando el contenido completo de WPeMatico, pero no existe la clase "
 "WPeMatico."
 
-#: wpematico_fullcontent/wpematico_fullcontent.php:223
-#: wpematico_fullcontent/wpematico_fullcontent.php:228
-#, fuzzy
-#| msgid "Something is going wrong. Contact etruel."
-msgid "Something is going wrong. Contact etruel.com support."
-msgstr "Algo salió mal. Contacta con Etruel."
-
+#: wpematico_fullcontent/wpematico_fullcontent.php:222
 #: wpematico_fullcontent/wpematico_fullcontent.php:227
-#, fuzzy
-#| msgid ""
-#| "You are using WPeMatico Full Content, but doesn't exist class WPeMatico."
+msgid "Something is going wrong. Contact etruel.com support."
+msgstr "Algo salió mal. Contacta con el soporte de etruel.com."
+
+#: wpematico_fullcontent/wpematico_fullcontent.php:226
 msgid ""
 "You are using WPeMatico Full Content, but doesn't exist constant "
 "WPEMATICO_VERSION."
 msgstr ""
 "Estás usando el contenido completo de WPeMatico, pero no existe la clase "
-"WPeMatico."
+"WPEMATICO_VERSION."
 
 #: wpematico_professional/includes/campaign_edit.php:110
 msgid "Get Date from xml tag."
@@ -7572,7 +7505,7 @@ msgstr "Usar feed de autor"
 #: wpematico_professional/includes/campaign_edit.php:593
 #: wpematico_professional/includes/prosettingsextra.php:71
 msgid "Select a term"
-msgstr "Seleccione un termino"
+msgstr "Selecciona un termino"
 
 #: wpematico_professional/includes/campaign_edit.php:300
 #: wpematico_professional/includes/campaign_edit.php:858
@@ -7597,7 +7530,7 @@ msgstr "Es Multipágina"
 
 #: wpematico_professional/includes/campaign_edit.php:380
 msgid "Check to use as a multipage feed."
-msgstr "Revise  para utilizarlo como un feed de varias páginas."
+msgstr "Revisa para utilizarlo como un feed de varias páginas."
 
 #: wpematico_professional/includes/campaign_edit.php:381
 msgid "This option allow to check multiple pages for feeds like "
@@ -7616,7 +7549,7 @@ msgstr ""
 
 #: wpematico_professional/includes/campaign_edit.php:387
 msgid "Click here to fix it automatically."
-msgstr "Haga clic aquí para arreglarlo automáticamente."
+msgstr "Hace clic aquí para arreglarlo automáticamente."
 
 #: wpematico_professional/includes/campaign_edit.php:405
 msgid "Check to force feed."
@@ -7637,12 +7570,12 @@ msgid ""
 "You can assign a name for this feed, also can be used later in the Post "
 "template as "
 msgstr ""
-"Puede asignar un nombre para este alimento, también puede ser utilizado más "
+"Podes asignar un nombre para este alimento, también podes ser utilizado más "
 "adelante en el Post de la plantilla como "
 
 #: wpematico_professional/includes/campaign_edit.php:441
 msgid "Check to use HTTP Cookies."
-msgstr "Comprueba si se usan cookies HTTP."
+msgstr "Comproba si se usan cookies HTTP."
 
 #: wpematico_professional/includes/campaign_edit.php:442
 msgid "This option enables the use of HTTP Cookies"
@@ -7650,7 +7583,7 @@ msgstr "Esta opción permite el uso de Cookies HTTP"
 
 #: wpematico_professional/includes/campaign_edit.php:475
 msgid "Select User Agent:"
-msgstr "Seleccione un agente de usuario:"
+msgstr "Selecciona un agente de usuario:"
 
 #: wpematico_professional/includes/campaign_edit.php:484
 msgid ""
@@ -7683,7 +7616,7 @@ msgstr "Añade mas."
 #: wpematico_professional/includes/campaign_edit.php:589
 #: wpematico_professional/includes/prosettingsextra.php:249
 msgid "Select a taxonomy"
-msgstr "Seleccione una taxonomía"
+msgstr "Selecciona una taxonomía"
 
 #: wpematico_professional/includes/campaign_edit.php:652
 #: wpematico_professional/includes/prohelps.php:212
@@ -7693,7 +7626,7 @@ msgstr "Saltar los mensajes con palabras en el nombre del autor."
 #: wpematico_professional/includes/campaign_edit.php:656
 #: wpematico_professional/wpematicopro.php:1475
 msgid "Must contain"
-msgstr "Debe contener"
+msgstr "Debes contener"
 
 #: wpematico_professional/includes/campaign_edit.php:658
 #: wpematico_professional/includes/campaign_edit.php:666
@@ -7712,7 +7645,7 @@ msgstr "RegEx:"
 #: wpematico_professional/includes/campaign_edit.php:664
 #: wpematico_professional/wpematicopro.php:1489
 msgid "Cannot contain:"
-msgstr "No puede contener:"
+msgstr "No podes contener:"
 
 #: wpematico_professional/includes/campaign_edit.php:715
 msgid "Determine what happens with duplicated image names"
@@ -7771,7 +7704,7 @@ msgstr "Habilitar el renombrador de imágenes"
 #: wpematico_professional/includes/core_settings.php:100
 #: wpematico_professional/includes/core_settings.php:181
 msgid "Rename the images to"
-msgstr "Cambie el nombre de las imágenes a"
+msgstr "Cambia el nombre de las imágenes a"
 
 #: wpematico_professional/includes/campaign_edit.php:744
 #: wpematico_professional/includes/campaign_edit.php:1014
@@ -7782,7 +7715,7 @@ msgid ""
 "Don't complete the extension of the file. This field is used to change the "
 "name and remains the same extension."
 msgstr ""
-"No complete la extensión del archivo. Este campo se utiliza para cambiar el "
+"No completes la extensión del archivo. Este campo se utiliza para cambiar el "
 "nombre y sigue siendo la misma extensión."
 
 #: wpematico_professional/includes/campaign_edit.php:745
@@ -7791,8 +7724,8 @@ msgid ""
 "You can use %s or %s and will be replaced on uploading the image. Wordpress "
 "adds a number at the end if the image name already exists."
 msgstr ""
-"Puedes usar %s o %s y será reemplazado al subir la imagen. WordPress añade "
-"un número al final si el nombre de la imagen ya existe."
+"Podes usar %s o %s y será reemplazado al subir la imagen. WordPress añade un "
+"número al final si el nombre de la imagen ya existe."
 
 #: wpematico_professional/includes/campaign_edit.php:753
 #: wpematico_professional/includes/campaign_edit.php:1025
@@ -7924,7 +7857,7 @@ msgstr "Decodificar las entidades html en los URL."
 #: wpematico_professional/includes/campaign_edit.php:1000
 #: wpematico_professional/includes/prohelps.php:337
 msgid "Follow redirections to find the audio file."
-msgstr "Siga las redirecciones para encontrar el archivo de audio."
+msgstr "Seguí las redirecciones para encontrar el archivo de audio."
 
 #: wpematico_professional/includes/campaign_edit.php:1009
 #: wpematico_professional/includes/core_settings.php:178
@@ -7940,7 +7873,7 @@ msgid ""
 "You can use %s or %s and will be replaced on uploading the audio. Wordpress "
 "adds a number at the end if the audio name already exists."
 msgstr ""
-"Puedes usar %s o %s y será reemplazado al subir el audio. WordPress añade un "
+"Podes usar %s o %s y será reemplazado al subir el audio. WordPress añade un "
 "número al final si el nombre del audio ya existe."
 
 #: wpematico_professional/includes/campaign_edit.php:1027
@@ -7987,7 +7920,7 @@ msgid ""
 "You can use %s or %s and will be replaced on uploading the video. Wordpress "
 "adds a number at the end if the video name already exists."
 msgstr ""
-"Puedes usar %s o %s y serán reemplazados al subir el video. WordPress añade "
+"Podes usar %s o %s y serán reemplazados al subir el video. WordPress añade "
 "un número al final si el nombre del vídeo ya existe."
 
 #: wpematico_professional/includes/campaign_edit.php:1143
@@ -8024,12 +7957,12 @@ msgid ""
 "You can write here the title for every post. All posts will be named with "
 "this field."
 msgstr ""
-"Puedes escribir aquí el título de cada publicación. Todas las publicaciones "
+"Podes escribir aquí el título de cada publicación. Todas las publicaciones "
 "serán nombrados con este campo."
 
 #: wpematico_professional/includes/campaign_edit.php:1186
 msgid "Now you can use "
-msgstr "Ahora usted puede utilizar "
+msgstr "Ahora podes utilizar "
 
 #: wpematico_professional/includes/campaign_edit.php:1186
 msgid "and "
@@ -8041,7 +7974,7 @@ msgstr "y será reemplazado en el título."
 
 #: wpematico_professional/includes/campaign_edit.php:1187
 msgid "If you don't use "
-msgstr "Si usted no usa "
+msgstr "Si no usas "
 
 #: wpematico_professional/includes/campaign_edit.php:1187
 msgid ""
@@ -8079,13 +8012,11 @@ msgstr "Habilitar el borrado hasta el final a partir de algunos caracteres"
 
 #: wpematico_professional/includes/campaign_edit.php:1221
 msgid "Add a custom delimiter:"
-msgstr ""
+msgstr "Añade un delimitador personalizado:"
 
 #: wpematico_professional/includes/campaign_edit.php:1225
-#, fuzzy
-#| msgid "Characters of end of sentence:"
 msgid "Characters of end of title:"
-msgstr "Personajes del final de la frase:"
+msgstr "Caracteres del final de la frase:"
 
 #: wpematico_professional/includes/campaign_edit.php:1229
 msgid "Keep characters (Do not delete their)"
@@ -8130,11 +8061,11 @@ msgstr "Comprobando las palabras clave en las categorías."
 
 #: wpematico_professional/includes/campaign_fetch.php:407
 msgid "Must contain: Found a keyword. Continuing..."
-msgstr "Debe contener: Encontré una palabra clave. Continuando..."
+msgstr "Debes contener: Encontré una palabra clave. Continuando..."
 
 #: wpematico_professional/includes/campaign_fetch.php:409
 msgid "Skiping: Must contain: Do not found any Keyword."
-msgstr "Saltando: Debe contener: No se encontró ninguna palabra clave."
+msgstr "Saltando: Debes contener: No se encontró ninguna palabra clave."
 
 #: wpematico_professional/includes/campaign_fetch.php:436
 #, php-format
@@ -8151,21 +8082,21 @@ msgstr ""
 #: wpematico_professional/includes/campaign_fetch.php:461
 #, php-format
 msgid "Must contain: Found regex %s. Continuing..."
-msgstr "Debe contener: Encontrado regex %s. Continuando..."
+msgstr "Debes contener: Encontrado regex %s. Continuando..."
 
 #: wpematico_professional/includes/campaign_fetch.php:463
 #, php-format
 msgid "Skiping: Must contain do not found regex %s."
-msgstr "Saltando: Debe contener: no se encuentra regex %s."
+msgstr "Saltando: Debes contener: no se encuentra regex %s."
 
 #: wpematico_professional/includes/campaign_fetch.php:508
 msgid "Cannot contain: Do not found all keywords. Continuing..."
 msgstr ""
-"No puede contener: No se encuentran todas las palabras clave. Continuando..."
+"No podes contener: No se encuentran todas las palabras clave. Continuando..."
 
 #: wpematico_professional/includes/campaign_fetch.php:510
 msgid "Skiping: Cannot contain: Found all Keywords."
-msgstr "Saltando: No puede contener: Encontré todas las palabras clave."
+msgstr "Saltando: No podes contener: Encontré todas las palabras clave."
 
 #: wpematico_professional/includes/campaign_fetch.php:536
 #, php-format
@@ -8182,12 +8113,12 @@ msgstr ""
 #: wpematico_professional/includes/campaign_fetch.php:560
 #, php-format
 msgid "Cannot contain: Not Found regex %s. Continuing..."
-msgstr "No puede contener: No se encontró regex %s. Continuando..."
+msgstr "No podes contener: No se encontró regex %s. Continuando..."
 
 #: wpematico_professional/includes/campaign_fetch.php:562
 #, php-format
 msgid "Skiping: Cannot contain: found regex %s."
-msgstr "Saltando: No puede contener: encontrado regex %s."
+msgstr "Saltando: No podes contener: encontrado regex %s."
 
 #: wpematico_professional/includes/campaign_fetch.php:589
 #, php-format
@@ -8224,7 +8155,7 @@ msgid ""
 "Processing Author Filtering: Cannot be executed because the author's name is "
 "empty."
 msgstr ""
-"Procesamiento de filtrado de autores: No se puede ejecutar porque el nombre "
+"Procesamiento de filtrado de autores: No se podes ejecutar porque el nombre "
 "del autor está vacío."
 
 #: wpematico_professional/includes/campaign_fetch.php:1022
@@ -8257,17 +8188,17 @@ msgstr "The author must contain: Found regex %s."
 #, php-format
 msgid "Author Cannot Contain: Found!: word %s, Skipping Post..."
 msgstr ""
-"El autor no puede contener:¡Encuéntralo!: palabra %s, saltarse el post..."
+"El autor no podes contener:¡Encuéntralo!: palabra %s, saltarse el post..."
 
 #: wpematico_professional/includes/campaign_fetch.php:1094
 #, php-format
 msgid "Author Cannot Contain: Not Found!: word %s Continuing..."
-msgstr "El autor no puede contener: ¡No encontrado!: palabra %s Continúa..."
+msgstr "El autor no podes contener: ¡No encontrado!: palabra %s Continúa..."
 
 #: wpematico_professional/includes/campaign_fetch.php:1101
 #, php-format
 msgid "Author Cannot Contain: Found regex %s, Skipping Post..."
-msgstr "El autor no puede contener: Encontré regex %s, Skipping Post..."
+msgstr "El autor no podes contener: Encontré regex %s, Skipping Post..."
 
 #: wpematico_professional/includes/campaign_fetch.php:1140
 msgid "Obtaining the characters at the end of the sentence of Better Excerpt."
@@ -8306,7 +8237,7 @@ msgstr "Imagen renombrado %s -> %s"
 
 #: wpematico_professional/includes/debug_page.php:66
 msgid "Select campaigns to include."
-msgstr "Seleccione las campañas a incluir."
+msgstr "Selecciona las campañas a incluir."
 
 #: wpematico_professional/includes/debug_page.php:71
 msgid "Check"
@@ -8343,7 +8274,7 @@ msgid ""
 "You can write here the new name for every audio uploaded to the posts. All "
 "audios will be renamed with this field."
 msgstr ""
-"Puedes escribir aquí el nuevo nombre para cada audio subido a los posts. "
+"Podes escribir aquí el nuevo nombre para cada audio subido a los posts. "
 "Todos los audios serán renombrados con este campo."
 
 #: wpematico_professional/includes/prohelps.php:22
@@ -8377,7 +8308,7 @@ msgid ""
 "You can write here the new name for every video uploaded to the posts. All "
 "videos will be renamed with this field."
 msgstr ""
-"Puedes escribir aquí el nuevo nombre para cada video subido a los posts. "
+"Podes escribir aquí el nuevo nombre para cada video subido a los posts. "
 "Todos los videos serán renombrados con este campo."
 
 #: wpematico_professional/includes/prohelps.php:35
@@ -8397,15 +8328,11 @@ msgid ""
 "function uploads the file by ranges \"as is\" from the original to use it "
 "inside the post."
 msgstr ""
-"Utilice esto en lugar de las funciones de Wordpress para mejorar el "
+"Utiliza esto en lugar de las funciones de Wordpress para mejorar el "
 "rendimiento. Esta función sube el archivo por rangos \"como está\" del "
 "original para usarlo dentro del post."
 
 #: wpematico_professional/includes/prohelps.php:56
-#, fuzzy
-#| msgid ""
-#| "Complete the Random Rewrites form by adding all comma-separated words, "
-#| "line by line."
 msgid ""
 "Complete the Ramdom Rewrites form by adding all comma-separated words, line "
 "by line."
@@ -8445,10 +8372,6 @@ msgid "lady, woman, female, girl"
 msgstr "señora, mujer, hembra, chica"
 
 #: wpematico_professional/includes/prohelps.php:63
-#, fuzzy
-#| msgid ""
-#| "If the text contains the word \"woman\" will be replaced by \"lady\", "
-#| "\"female\" or \"girl\" randomly."
 msgid ""
 "If the text contains the word \"woman\" will be replaced by \"lady\", "
 "\"female\" or \"girl\" ramdomly."
@@ -8488,7 +8411,7 @@ msgid ""
 "You can set in each campaign which feed item tag should be used to set the "
 "date of each post. The value must be compatible with the strtotime function."
 msgstr ""
-"Puede establecer en cada campaña qué etiqueta de artículo de feed debe "
+"Podes establecer en cada campaña qué etiqueta de artículo de feed debe "
 "usarse para fijar la fecha de cada envío. El valor debe ser compatible con "
 "la función strtotime."
 
@@ -8547,15 +8470,10 @@ msgstr ""
 "Borrar todo el contenido DESPUÉS de una palabra o frase hasta el final."
 
 #: wpematico_professional/includes/prohelps.php:127
-#, fuzzy
-#| msgid "Basics: "
 msgid "Basics:"
-msgstr "Conceptos básicos: "
+msgstr "Conceptos básicos:"
 
 #: wpematico_professional/includes/prohelps.php:128
-#, fuzzy
-#| msgid ""
-#| "Delete the phrase till the end of the line instead the end of the content."
 msgid ""
 "Delete from phrase allows you to strip a a portion of the content from a "
 "phrase to the end of the content."
@@ -8567,13 +8485,11 @@ msgid ""
 "A phrase or a word by line: The first phrase found in content will be used "
 "to strip the rest of the content including the phrase."
 msgstr ""
+"Una frase o una palabra por línea: La primera frase encontrada en el "
+"contenido se utilizará para eliminar el resto del contenido incluyendo la "
+"frase."
 
 #: wpematico_professional/includes/prohelps.php:131
-#, fuzzy
-#| msgid ""
-#| "Example: If the post content contain the word \"motor\" and then you want "
-#| "skip because you don&apos;t want posts about motors, simply type \"motor"
-#| "\" in the \"Words\" field (1 per line)."
 msgid ""
 "Example: If the post content contain the phrase \"This post was originally "
 "published on xxxxxx...\" and then you want to strip this because you "
@@ -8581,7 +8497,7 @@ msgid ""
 "published\"."
 msgstr ""
 "Ejemplo: Si el contenido del post contiene la palabra \"motor\" y luego "
-"quieres saltar porque no quieres posts sobre motores, simplemente escribe "
+"queres saltar porque no queres posts sobre motores, simplemente escribe "
 "\"motor\" en el campo \"Palabras\" (1 por línea)."
 
 #: wpematico_professional/includes/prohelps.php:137
@@ -8593,7 +8509,7 @@ msgstr "Mantén la frase"
 msgid ""
 "This option allows you to preserve the phrase found in the post content."
 msgstr ""
-"Esta opción le permite preservar la frase que se encuentra en el contenido "
+"Esta opción te permite preservar la frase que se encuentra en el contenido "
 "de la publicación."
 
 #: wpematico_professional/includes/prohelps.php:143
@@ -8605,7 +8521,7 @@ msgstr "Hasta el final de la línea"
 msgid ""
 "Delete the phrase till the end of the line instead the end of the content."
 msgstr ""
-"Borre la frase hasta el final de la línea en lugar del final del contenido."
+"Borra la frase hasta el final de la línea en lugar del final del contenido."
 
 #: wpematico_professional/includes/prohelps.php:149
 msgid "Flip Paragraphs"
@@ -8657,7 +8573,7 @@ msgid ""
 "Phrase feature above. Keep empty to ignore."
 msgstr ""
 "Encuentra la etiqueta de derecha a izquierda del contenido y la quita.  "
-"Funciona después de la característica Frase de arriba. Manténgalo vacío para "
+"Funciona después de la característica Frase de arriba. Mantenlo vacío para "
 "ignorarlo."
 
 #: wpematico_professional/includes/prohelps.php:172
@@ -8674,11 +8590,11 @@ msgid ""
 "with space."
 msgstr ""
 "Elimina todos los caracteres después de algunos caracteres o palabras. "
-"Separe todas las palabras con espacio."
+"Separa todas las palabras con espacio."
 
 #: wpematico_professional/includes/prohelps.php:189
 msgid "Add a custom delimiter"
-msgstr ""
+msgstr "Añadir un delimitador personalizado"
 
 #: wpematico_professional/includes/prohelps.php:190
 msgid ""
@@ -8686,13 +8602,17 @@ msgid ""
 "you can change the empty space to any other end-of-title symbol delimiter "
 "character.  E.g. #, and as a result you will get something similar to :#-#.#,"
 msgstr ""
+"El delimitador por defecto utiliza el espacio vacío, sin embargo, si tenes "
+"problemas podes cambiar el espacio vacío por cualquier otro carácter "
+"delimitador de símbolo de fin de título.  Por ejemplo, #, y como resultado "
+"obtendrá algo similar a :#-#.#,"
 
 #: wpematico_professional/includes/prohelps.php:200
 #: wpematico_professional/wpematicopro.php:1471
 msgid "Skip posts with words in content or words not in content."
 msgstr ""
-"Saltar los mensajes con palabras en el contenido o palabras no en el "
-"contenido."
+"Saltar los mensajes con palabras en el contenido o palabras que no están en "
+"el contenido."
 
 #: wpematico_professional/includes/prohelps.php:201
 #: wpematico_professional/includes/prohelps.php:213
@@ -8707,8 +8627,8 @@ msgid ""
 "its content, title or in its source categories. Leaves empty all fields to "
 "ignore."
 msgstr ""
-"La palabra clave de filtros le permite saltar de un exagerado post si tiene "
-"una palabra en su contenido, título o en sus categorías de fuentes. Deja "
+"La palabra clave de filtros te permite saltar de un exagerado post si tiene "
+"una palabra en su contenido, título o en tus categorías de fuentes. Deja "
 "vacía todos los campos de ignorar."
 
 #: wpematico_professional/includes/prohelps.php:203
@@ -8716,7 +8636,7 @@ msgid ""
 "Must Contain (Any Word): The three fields are checked and a word must be, at "
 "least, in one of them."
 msgstr ""
-"Debe Contener (Cualquier Palabra): Los tres campos están marcados y una "
+"Debes Contener (Cualquier Palabra): Los tres campos están marcados y una "
 "palabra debe ser, al menos, en uno de ellos."
 
 #: wpematico_professional/includes/prohelps.php:204
@@ -8724,8 +8644,8 @@ msgid ""
 "Must Contain (All Words): The three fields are checked at once and all the "
 "words must be in them."
 msgstr ""
-"Debe Contener (Todas las Palabras): Los tres campos son revisados a la vez y "
-"todas las palabras deben estar en ellos."
+"Debes Contener (Todas las Palabras): Los tres campos son revisados a la vez "
+"y todas las palabras deben estar en ellos."
 
 #: wpematico_professional/includes/prohelps.php:205
 msgid ""
@@ -8734,7 +8654,7 @@ msgid ""
 "in the \"Words\" field (1 per line)."
 msgstr ""
 "Ejemplo: Si el contenido del post contiene la palabra \"motor\" y luego "
-"quieres saltar porque no quieres posts sobre motores, simplemente escribe "
+"queres saltar porque no queres posts sobre motores, simplemente escribe "
 "\"motor\" en el campo \"Palabras\" (1 por línea)."
 
 #: wpematico_professional/includes/prohelps.php:207
@@ -8746,24 +8666,24 @@ msgid ""
 "add \"/i\" at the end of RegEx."
 msgstr ""
 "Para los usuarios avanzados, se admiten las expresiones regulares. Usar esto "
-"le permitirá hacer filtros más poderosos. Tomemos como ejemplo el filtro de "
+"te permitirá hacer filtros más poderosos. Tomemos como ejemplo el filtro de "
 "palabras múltiples. En lugar de usar muchas filas de palabras para asignar "
-"motor y coche a Motores, puedes usar el operador |: (motor|coche). Si "
-"quieres que en RegEx no se usen mayúsculas y minúsculas, agrega \"/i\" al "
-"final de RegEx."
+"motor y coche a Motores, podes usar el operador |: (motor|coche). Si queres "
+"que en RegEx no se usen mayúsculas y minúsculas, agrega \"/i\" al final de "
+"RegEx."
 
 #: wpematico_professional/includes/prohelps.php:214
 msgid ""
 "This allows you to skip a fetched post if it has a word in its author's "
 "name. Leaves empty all fields to ignore."
 msgstr ""
-"Esto le permite saltar de un exagerado post si tiene una palabra en el "
+"Esto te permite saltar de un exagerado post si tiene una palabra en el "
 "nombre de su autor. Deja vacía todos los campos de ignorar."
 
 #: wpematico_professional/includes/prohelps.php:215
 msgid "Must Contain: The author's name must have at least one of these words"
 msgstr ""
-"Debe Contener: El nombre del autor debe tener al menos una de estas palabras"
+"Debes Contener: El nombre del autor debe tener al menos una de estas palabras"
 
 #: wpematico_professional/includes/prohelps.php:216
 msgid "Example: "
@@ -8775,8 +8695,8 @@ msgid ""
 "because you don&apos;t want jose's posts, simply type \"jose\" in the \"Words"
 "\" field (1 per line)."
 msgstr ""
-"Si el nombre del autor del post contiene la palabra \"jose\" y luego quieres "
-"saltar porque no quieres los posts de jose, simplemente escribe \"jose\" en "
+"Si el nombre del autor del post contiene la palabra \"jose\" y luego queres "
+"saltar porque no queres los posts de jose, simplemente escribe \"jose\" en "
 "el campo \"Palabras\" (1 por línea)."
 
 #: wpematico_professional/includes/prohelps.php:219
@@ -8788,9 +8708,9 @@ msgid ""
 "\" at the end of RegEx."
 msgstr ""
 "Para los usuarios avanzados, se admiten las expresiones regulares. Usar esto "
-"le permitirá hacer filtros más poderosos. Tomemos como ejemplo el filtro de "
+"te permitirá hacer filtros más poderosos. Tomemos como ejemplo el filtro de "
 "palabras múltiples. En lugar de usar muchas filas de palabras para asignar a "
-"jose y maria, puedes usar el operador | : (jose|maria). Si quieres que en "
+"jose y maria, podes usar el operador | : (jose|maria). Si queres que en "
 "RegEx no se usen mayúsculas y minúsculas, agrega \"/i\" al final de RegEx."
 
 #: wpematico_professional/includes/prohelps.php:227
@@ -8809,7 +8729,7 @@ msgstr ""
 
 #: wpematico_professional/includes/prohelps.php:233
 msgid "Check the source image to determine the extension"
-msgstr "Revise la imagen de origen para determinar la extensión"
+msgstr "Revisa la imagen de origen para determinar la extensión"
 
 #: wpematico_professional/includes/prohelps.php:234
 msgid ""
@@ -8847,7 +8767,7 @@ msgid ""
 "You can write here the new name for every image uploaded to the posts. All "
 "images will be renamed with this field."
 msgstr ""
-"Puedes escribir aquí el nuevo nombre de cada imagen que se suba a los posts. "
+"Podes escribir aquí el nuevo nombre de cada imagen que se suba a los posts. "
 "Todas las imágenes serán renombradas con este campo."
 
 #: wpematico_professional/includes/prohelps.php:259
@@ -8880,9 +8800,9 @@ msgid ""
 "\t\t\t\t\t\tBe careful that the filters are not clogged with each other and "
 "miss all images."
 msgstr ""
-"<b>Basics:</b> Puedes permitir o saltar cada imagen en cada post depende de "
+"<b>Basics:</b> Podes permitir o saltar cada imagen en cada post depende de "
 "las dimensiones de la imagen.<br>\n"
-"\t\t\t\t\t\tDebe seleccionar el tipo de filtro y rellenar el ancho o el "
+"\t\t\t\t\t\tDebes seleccionar el tipo de filtro y rellenar el ancho o el "
 "tamaño de la altura en píxeles para permitir o saltar cada imagen.<br>\n"
 "\t\t\t\t\t\tCualquier imagen que no cumpla con un filtro será eliminada del "
 "contenido de la publicación.  (También su enlace de &lt;a href; si lo "
@@ -8896,7 +8816,7 @@ msgid ""
 "function uploads the audios by ranges \"as is\" from the original to use it "
 "inside the post."
 msgstr ""
-"Utilice esto en lugar de las funciones de Wordpress para mejorar el "
+"Utiliza esto en lugar de las funciones de Wordpress para mejorar el "
 "rendimiento. Esta función sube los audios por rangos \"como están\" desde "
 "original para usarlos dentro de la publicación."
 
@@ -8905,13 +8825,13 @@ msgid ""
 "Use this option to convert HTML entities to their corresponding characters "
 "in the URLs of the audios files."
 msgstr ""
-"Utilice esta opción para convertir las entidades HTML a sus caracteres "
+"Utiliza esta opción para convertir las entidades HTML a tus caracteres "
 "correspondientes en las URL de los archivos de audio."
 
 #: wpematico_professional/includes/prohelps.php:338
 msgid "Use this option to follow redirections to find the audio file."
 msgstr ""
-"Utilice esta opción para seguir las redirecciones para encontrar el archivo "
+"Utiliza esta opción para seguir las redirecciones para encontrar el archivo "
 "de audio."
 
 #: wpematico_professional/includes/prohelps.php:372
@@ -8920,7 +8840,7 @@ msgid ""
 "function uploads the video by ranges \"as is\" from the original to use it "
 "inside the post."
 msgstr ""
-"Utilice esto en lugar de las funciones de Wordpress para mejorar el "
+"Utiliza esto en lugar de las funciones de Wordpress para mejorar el "
 "rendimiento. Esta función sube el video por rangos \"como es\" del original "
 "para usarlo dentro de la publicación."
 
@@ -8929,13 +8849,13 @@ msgid ""
 "Use this option to convert HTML entities to their corresponding characters "
 "in the URLs of the videos files."
 msgstr ""
-"Utilice esta opción para convertir las entidades HTML a sus caracteres "
+"Utiliza esta opción para convertir las entidades HTML a tus caracteres "
 "correspondientes en las URL de los archivos de vídeo."
 
 #: wpematico_professional/includes/prohelps.php:386
 msgid "Use this option to follow redirections to find the video file."
 msgstr ""
-"Utilice esta opción para seguir las redirecciones para encontrar el archivo "
+"Utiliza esta opción para seguir las redirecciones para encontrar el archivo "
 "de vídeo."
 
 #: wpematico_professional/includes/prohelps.php:396
@@ -8957,8 +8877,8 @@ msgid ""
 "in the content are counted; then complete the amount to check to assign a "
 "special category."
 msgstr ""
-"Usted debe marcar \"Palabras\" campo si desea contar palabras, pero las "
-"cartas que en el contenido se cuentan; a continuación, completar la cantidad "
+"Debesrás marcar \"Palabras\" campo si desea contar palabras, pero las cartas "
+"que en el contenido se cuentan; a continuación, completar la cantidad "
 "comprobar para asignar una categoría especial."
 
 #: wpematico_professional/includes/prohelps.php:399
@@ -8995,12 +8915,12 @@ msgstr "Dejar vacío o de 0 a ignorar."
 #: wpematico_professional/includes/prohelps.php:437
 #: wpematico_professional/wpematicopro.php:1566
 msgid "Add custom fields with values as templates."
-msgstr "Agregue campos personalizados con valores como plantillas."
+msgstr "Agrega campos personalizados con valores como plantillas."
 
 #: wpematico_professional/includes/prohelps.php:439
 msgid "You must put the custom field name and its value in every field."
 msgstr ""
-"Usted debe poner el nombre del campo personalizado y su valor en cada campo."
+"Debes colocar el nombre del campo personalizado y su valor en cada campo."
 
 #: wpematico_professional/includes/prohelps.php:440
 msgid "Value: "
@@ -9009,7 +8929,7 @@ msgstr "Valor: "
 #: wpematico_professional/includes/prohelps.php:441
 msgid "You can use the same template fields like in box Post template."
 msgstr ""
-"Puede utilizar la misma plantilla campos como en la casilla de Correos de la "
+"Podes utilizar la misma plantilla campos como en la casilla de Correos de la "
 "plantilla."
 
 #: wpematico_professional/includes/prohelps.php:442
@@ -9019,7 +8939,7 @@ msgstr "Válido etiquetas de valor:"
 #: wpematico_professional/includes/prohelps.php:452
 msgid "Add custom feed tags to use on template or custom fields."
 msgstr ""
-"Agregue etiquetas de feed personalizadas para usar en plantillas o campos "
+"Agrega etiquetas de feed personalizadas para usar en plantillas o campos "
 "personalizados."
 
 #: wpematico_professional/includes/prohelps.php:453
@@ -9056,7 +8976,7 @@ msgid ""
 "visituser<br />www.thirthfeed.com/atom, wpuser<br />\n"
 "\t\t\t\t\t\t\t"
 msgstr ""
-"La lista debe ser una URL de feed por línea. Puede agregar un nombre de "
+"La lista debe ser una URL de feed por línea. Podes agregar un nombre de "
 "usuario de autor si la función \"Autor por feed\" está habilitada en la "
 "Configuración PRO. Si no existe, los usuarios se agregarán a los usuarios de "
 "WordPress. De lo contrario, tome el autor de la campaña. \n"
@@ -9066,16 +8986,10 @@ msgstr ""
 
 #: wpematico_professional/includes/prohelps.php:475
 #: wpematico_professional/wpematicopro.php:993
-#, fuzzy
-#| msgid "Activate Random Rewrites."
 msgid "Activate Ramdom Rewrites."
 msgstr "Activar escrituras aleatorias."
 
 #: wpematico_professional/includes/prohelps.php:476
-#, fuzzy
-#| msgid ""
-#| "Activate Random Rewrites. Will show the form to allow add all the lines "
-#| "with comma-separated words to be used."
 msgid ""
 "Activate Ramdom Rewrites. Will show the form to allow add all the lines with "
 "comma-separated words to be used."
@@ -9108,7 +9022,7 @@ msgid ""
 "\t\t\t\t\t\t\twill be replaced for one of the others of the same line.<br>\n"
 "\t\t\t\t\t\t\t"
 msgstr ""
-"Inserte en el formulario una lista de palabras separadas por comas que se "
+"Inserta en el formulario una lista de palabras separadas por comas que se "
 "utilizarán para reemplazar.<br>\t\t\t\t\t\t\tEsta lista se agregará a la "
 "lista general de reescritura al azar desde la pantalla Configuración.<br>\n"
 "\t\t\t\t\t\t\tLas palabras se buscarán línea por línea y, si se encuentra "
@@ -9117,13 +9031,6 @@ msgstr ""
 "\t\t\t\t\t\t\t"
 
 #: wpematico_professional/includes/prohelps.php:493
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\t\t\t\t\t\t\t<b>Example:</b><br>\n"
-#| "\t\t\t\t\t\t\t<b>lady, woman, female, girl</b><br>\n"
-#| "\t\t\t\t\t\t\tIf the text contains the word \"woman\" will be replaced by "
-#| "\"lady\", \"female\" or \"girl\" randomly."
 msgid ""
 "\n"
 "\t\t\t\t\t\t\t<b>Example:</b><br>\n"
@@ -9156,7 +9063,7 @@ msgid ""
 "If you need this feature in every campaign, you can activate here.  Not "
 "recommended if you will not use this."
 msgstr ""
-"Si necesitas esta característica en cada campaña, puedes activarla aquí. No "
+"Si necesitas esta característica en cada campaña, podes activarla aquí. No "
 "es recomendado hacerlo si no vas a usarla."
 
 #: wpematico_professional/includes/prosettings.php:153
@@ -9172,7 +9079,7 @@ msgid ""
 "If you want a custom title for posts of a campaign, you can activate here.  "
 "Not recommended if you will not use this."
 msgstr ""
-"Si necesitas esta característica en cada campaña, puedes activarla aquí. No "
+"Si necesitas esta característica en cada campaña, podes activarla aquí. No "
 "es recomendado hacerlo si no vas a usarla."
 
 #: wpematico_professional/includes/prosettings.php:167
@@ -9184,7 +9091,7 @@ msgid ""
 "This option allow you assign an author per feed when editing campaign.  If "
 "no choice any author, the campaign author will be taken."
 msgstr ""
-"Esta opción le permite asignar un autor por feed al editar la campaña. Si no "
+"Esta opción te permite asignar un autor por feed al editar la campaña. Si no "
 "hay elección de ningún autor, se tomará el autor de la campaña."
 
 #: wpematico_professional/includes/prosettings.php:173
@@ -9200,12 +9107,12 @@ msgid ""
 "On campaign edit you can set the fetching process to multipaged RSS feeds. "
 "Like "
 msgstr ""
-"En la campaña de editar puede establecer la obtención de proceso para "
+"En la campaña de editar podes establecer la obtención de proceso para "
 "multipaged feeds RSS. Como "
 
 #: wpematico_professional/includes/prosettings.php:191
 msgid "Enable \"Auto Tags\" feature."
-msgstr "Activar función <b><i>Título Personalizado</i></b>"
+msgstr "Activar función <b><i>Título Personalizado</i></b>."
 
 #: wpematico_professional/includes/prosettings.php:193
 msgid ""
@@ -9214,7 +9121,7 @@ msgid ""
 "empty."
 msgstr ""
 "Esta característica genera etiquetas automáticamente en cada publicación "
-"obtenida, en la edición de campaña puede deshabilitar la función automática "
+"obtenida, en la edición de campaña podes deshabilitar la función automática "
 "e ingresar manualmente una lista de etiquetas o dejarla vacía."
 
 #: wpematico_professional/includes/prosettings.php:199
@@ -9224,33 +9131,33 @@ msgstr "Etiquetas incorrectas que no se utilizarán en todas las publicaciones:"
 #: wpematico_professional/includes/prosettings.php:203
 msgid "Enter comma separated list of excluded Tags in all campaigns."
 msgstr ""
-"Ingrese una lista separada por comas de etiquetas excluidas en todas las "
+"Ingresa una lista separada por comas de etiquetas excluidas en todas las "
 "campañas."
 
 #: wpematico_professional/includes/prosettings.php:209
 msgid "Enable \"Custom Fields\" feature."
-msgstr "Activar función <b><i>Campos personalizados</i></b>"
+msgstr "Activar función <b><i>Campos personalizados</i></b>."
 
 #: wpematico_professional/includes/prosettings.php:217
 msgid "Enable \"Custom Feed Tags\" feature."
-msgstr "Activar <b><i>Etiquetas de feed personalizadas</i></b>"
+msgstr "Activar <b><i>Etiquetas de feed personalizadas</i></b>."
 
 #: wpematico_professional/includes/prosettings.php:219
 msgid ""
 "Add custom feed tags as template tags or custom field values on every post."
 msgstr ""
-"Agregue etiquetas de feed personalizadas como etiquetas de plantilla o "
+"Agrega etiquetas de feed personalizadas como etiquetas de plantilla o "
 "valores de campo personalizados en cada publicación."
 
 #: wpematico_professional/includes/prosettings.php:225
 msgid "Enable \"Image Filters\" feature."
-msgstr "Activar función <b><i>Filtros de imagen</i></b>"
+msgstr "Activar función <b><i>Filtros de imagen</i></b>."
 
 #: wpematico_professional/includes/prosettings.php:227
 msgid ""
 "You can allow or skip each image in every post depends on image dimensions."
 msgstr ""
-"Puede permitir u omitir cada imagen en cada publicación depende de las "
+"Podes permitir u omitir cada imagen en cada publicación depende de las "
 "dimensiones de la imagen."
 
 #: wpematico_professional/includes/prosettings.php:239
@@ -9302,10 +9209,8 @@ msgid "Enable \"Word 2 Taxonomy\" feature"
 msgstr "Activar función <b><i>Palabra a Taxonomía</i></b>"
 
 #: wpematico_professional/includes/prosettings.php:361
-#, fuzzy
-#| msgid "Enable \"Random Rewrites\" feature"
 msgid "Enable \"Ramdom Rewrites\" feature"
-msgstr "Activar función <b><i>Re-escritura aleatoria</i></b>"
+msgstr "Activar función <b><i>Re-escritura Aleatoria</i></b>"
 
 #: wpematico_professional/includes/prosettings.php:365
 msgid "Complete it in the "
@@ -9325,14 +9230,10 @@ msgstr "Seleccionar una taxonomía"
 
 #: wpematico_professional/includes/prosettingsextra.php:101
 #: wpematico_professional/wpematicopro.php:956
-#, fuzzy
-#| msgid "Random Rewrites"
 msgid "Ramdom Rewrites"
-msgstr "Reescrituras aleatorias"
+msgstr "Reescrituras Aleatorias"
 
 #: wpematico_professional/includes/prosettingsextra.php:137
-#, fuzzy
-#| msgid "Random Rewrites Settings"
 msgid "Ramdom Rewrites Settings"
 msgstr "Configuración de reescrituras aleatorias"
 
@@ -9343,7 +9244,7 @@ msgstr "Palabras para reescribir:"
 
 #: wpematico_professional/includes/prosettingsextra.php:143
 msgid "See tips in Help tab above right."
-msgstr "Vea los consejos en la pestaña Ayuda arriba a la derecha."
+msgstr "Mira los consejos en la pestaña Ayuda arriba a la derecha."
 
 #: wpematico_professional/includes/prosettingsextra.php:146
 #: wpematico_professional/wpematicopro.php:1003
@@ -9351,7 +9252,7 @@ msgid ""
 "Enter a comma-separated list of words for rewrites use each line for "
 "different rewriting patterns."
 msgstr ""
-"Ingrese una lista de palabras separadas por comas para reescrituras, use "
+"Ingresa una lista de palabras separadas por comas para reescrituras, usa "
 "cada línea para diferentes patrones de reescritura."
 
 #: wpematico_professional/includes/prosettingsextra.php:171
@@ -9366,7 +9267,7 @@ msgstr "Ha ocurrido un error."
 
 #: wpematico_professional/includes/prosettingsextra.php:245
 msgid "Select a post type"
-msgstr "Seleccione un tipo de publicación"
+msgstr "Selecciona un tipo de publicación"
 
 #: wpematico_professional/includes/xml-importer.php:197
 msgid "Post author"
@@ -9415,7 +9316,7 @@ msgstr "Está utilizando WPeMatico PRO, pero no existe la clase WPeMatico."
 #: wpematico_professional/wpematicopro.php:396
 #: wpematico_professional/wpematicopro.php:403
 msgid "Something is going wrong. May be PHP Version prior to 5.3"
-msgstr "Algo esta mal. Puede ser una versión PHP anterior a la 5.3"
+msgstr "Algo esta mal. Podes ser una versión PHP anterior a la 5.3"
 
 #: wpematico_professional/wpematicopro.php:448
 msgid "Add "
@@ -9428,7 +9329,7 @@ msgstr " los enlaces."
 #: wpematico_professional/wpematicopro.php:457
 #, php-format
 msgid "Add nofollow to links in: %s"
-msgstr "Agregue nofollow a los enlaces en: %s"
+msgstr "Agrega nofollow a los enlaces en: %s"
 
 #: wpematico_professional/wpematicopro.php:543
 msgid "Export and download Campaign"
@@ -9465,7 +9366,7 @@ msgstr "Error desconocido"
 
 #: wpematico_professional/wpematicopro.php:677
 msgid "Can't upload! Just .txt files allowed!"
-msgstr "No se puede cargar! Justo .txt archivos permitidos!"
+msgstr "No se podes cargar! Justo .txt archivos permitidos!"
 
 #: wpematico_professional/wpematicopro.php:729
 msgid "Campaigns Imported."
@@ -9476,14 +9377,11 @@ msgid "Export campaigns"
 msgstr "Exportar campañas"
 
 #: wpematico_professional/wpematicopro.php:761
-#, fuzzy
-#| msgid "Initiating Random Rewrites Process."
 msgid "Initiating Ramdom Rewrites Process."
 msgstr "Iniciando el proceso de reescritura de Random."
 
 #: wpematico_professional/wpematicopro.php:843
-#, fuzzy, php-format
-#| msgid "Words replaced by Random Rewrites: %s."
+#, php-format
 msgid "Words replaced by Ramdom Rewrites: %s."
 msgstr "Palabras reemplazadas por Random Rewrites: %s."
 
@@ -9552,7 +9450,7 @@ msgid ""
 "Type or paste a list of urls, authors.  When update the campaign, the list "
 "will be imported as campaign feeds"
 msgstr ""
-"Escriba o pegue una lista de URL, autores. Cuando actualice la campaña, la "
+"Escribí o pega una lista de URL, autores. Cuando actualice la campaña, la "
 "lista se importará como feeds de campaña"
 
 #: wpematico_professional/wpematicopro.php:1296
@@ -9590,7 +9488,7 @@ msgid ""
 "This allow you to ignore a post if below X words or letters in content.  "
 "Also allow assign a category to the post if greater than X words."
 msgstr ""
-"Esto le permite ignorar una publicación si es menor que X palabras o letras "
+"Esto te permite ignorar una publicación si es menor que X palabras o letras "
 "en el contenido. También permita asignar una categoría a la publicación si "
 "es mayor que X palabras."
 
@@ -9646,7 +9544,7 @@ msgstr "Todas estas palabras"
 #: wpematico_professional/wpematicopro.php:1521
 msgid "Add custom feed tags to use on template or custom fields"
 msgstr ""
-"Agregue etiquetas de feed personalizadas para usar en plantillas o campos "
+"Agrega etiquetas de feed personalizadas para usar en plantillas o campos "
 "personalizados"
 
 #: wpematico_professional/wpematicopro.php:1580
