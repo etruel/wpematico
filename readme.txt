@@ -236,12 +236,13 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
-= 2.6.17 Nov 8, 2022 =
+= 2.6.17 Nov 13, 2022 =
 * Bump to WP 6.1
 * Tested with PHP 8.1.9
 * Now Requires at least WordPress 4.8
 * Improved performance on load plugins page for extensions.
-* Many styles tweaks to Extensions page. 
+* Many styles tweaks to Extensions page.
+* Tweaks and fixes on System Status file. 
 
 = 2.6.16 Jul 15, 2022 =
 * Tweaks: Changed banners and icons.
@@ -375,5 +376,5 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 
-= 2.6.16 =
-Compatibility with WordPress 6.0.1
+= 2.6.17 =
+Compatibility with WordPress 6.1
