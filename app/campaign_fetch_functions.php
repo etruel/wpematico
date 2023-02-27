@@ -794,6 +794,12 @@ class wpematico_campaign_fetch_functions {
 
 	/*	 * * END Adds featured images from URLs instead of upload them * */
 
+	/**
+	 * Strip anchors links and replace them with the anchor text
+	 * @param type $text where search and replace
+	 * @param type $campaign 
+	 * @return type $text with replaced links.
+	 */
 	function strip_links($text, $campaign = array()) {
 		$tags = array();
 		if(!empty($campaign['campaign_strip_links_options'])) {

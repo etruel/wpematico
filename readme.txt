@@ -3,7 +3,7 @@ Contributors: etruel, sniuk, khaztiel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,RSS to Post,Feed to Post,XML to post,autoblog,rss aggregator,Feed,rss to post,syndication,xml import,Post,Posts,aggregation,atom,bot,content,writing
 Requires at least: 4.8
-Tested up to: 6.1
+Tested up to: 6.1.1
 Requires PHP: 5.6
 Stable tag: trunk
 License: GPLv2 or later
@@ -88,9 +88,6 @@ You can submit any bug in the [bugtracker](https://github.com/etruel/wpematico/i
 **[Better Excerpts](https://etruel.com/downloads/wpematico-better-excerpts/?utm_source=extension&utm_medium=description_tab&utm_content=wpematico-better-excerpts&utm_campaign=readme):** Makes excerpts with first post content sentence and other filters in front-end and also in feed contents.  Can be used to save the excerpts just for new posts of WPeMatico campaigns or to parse the excerpts of all posts of your site when shows them in your front-end page.
 
 ---
-**[WPeMatico Cache](https://etruel.com/downloads/wpematico-cache/?utm_source=extension&utm_medium=description_tab&utm_content=wpematico-cache&utm_campaign=readme):** Optimizes the websites speed thanks to processes and technologies that reduces the overload. Improving the velocity till 10x comparing with with other cache plugins for WordPress.
-
----
 **[Publish 2 Email](https://etruel.com/downloads/wpematico-publish-2-email/?utm_source=extension&utm_medium=description_tab&utm_content=wpematico-publish-2-email&utm_campaign=readme):** Very useful addon that allows publishing remotely by Wordpress *Post via email*, *Jetpack Post by Email* feature or plugins like *Postie*.  Sends the fetched posts to an email account. Each campaign allows send the posts to different email accounts.
 
 ---
@@ -109,6 +106,9 @@ You can submit any bug in the [bugtracker](https://github.com/etruel/wpematico/i
 > * We will even log directly into your site to find the problems.
 > * You can rest assured knowing that we are going to find an answer, no matter how long it takes.
 > * Includes the editing for a config file for *one* website for Full Content Add-on.
+
+---
+**[Flash Cache](https://wordpress.org/plugins/flash-cache/):** If you need a very good and WPeMatico compatible Cache plugin take a look at this FREE plugin. Improves the velocity till 10x comparing with with other cache plugins for WordPress.
 
 
 = Requirements =
@@ -236,6 +236,10 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
+= 2.6.18 Feb 27, 2023 =
+* Compatibility with WordPress 6.1.1
+* Fixes new year desfase hours in compaign crons.
+
 = 2.6.17 Nov 13, 2022 =
 * Bump to WP 6.1
 * Tested with PHP 8.1.9
@@ -376,5 +380,5 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 
-= 2.6.17 =
-Compatibility with WordPress 6.1
+= 2.6.18 =
+Compatibility with WordPress 6.1.1

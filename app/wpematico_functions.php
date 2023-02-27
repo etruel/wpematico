@@ -1509,14 +1509,15 @@ if (!class_exists('WPeMatico_functions')) {
 			}
 
 			//calc next timestamp
+			// We should use date_i18n here to avoid new year desfase ? https://wordpress.org/support/topic/wpematico-schedules-stop-til-jan-1-2023/
 			$currenttime = current_time('timestamp');
-			foreach (array(date('Y'), date('Y') + 1) as $year) {
+			foreach (array(date_i18n('Y'), date_i18n('Y') + 1) as $year) {
 				foreach ($cron['mon'] as $mon) {
 					foreach ($cron['mday'] as $mday) {
 						foreach ($cron['hours'] as $hours) {
 							foreach ($cron['minutes'] as $minutes) {
 								$timestamp = mktime($hours, $minutes, 0, $mon, $mday, $year);
-								if (in_array(date('w', $timestamp), $cron['wday']) and $timestamp > $currenttime) {
+								if (in_array(date_i18n('w', $timestamp), $cron['wday']) and $timestamp > $currenttime) {
 									return $timestamp;
 								}
 							}
