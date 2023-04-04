@@ -17,14 +17,9 @@ if (!defined('ABSPATH')) {
 	header('HTTP/1.1 403 Forbidden');
 	exit();
 }
-const URL_REVIEWS = 'https://wordpress.org/support/plugin/wpematico/reviews/?filter=5';
-
 if (!class_exists('WPeMatico_functions')) {
 	
 	class WPeMatico_functions {
-	//Constant defined for a condition and don't put the argunments in request
-	
-
 		public static $current_feed = ''; // The current feed that is running.
 
 		/**
@@ -1584,11 +1579,7 @@ if (!class_exists('WPeMatico_functions')) {
 			$args = wp_parse_args($aux, $defaults);
 
 			if (!$data) { // if stil getting error on get file content try WP func, this may give timeouts 
-				if($url == URL_REVIEWS){
-					$response = wp_remote_request($url);
-				}else{
-					$response = wp_remote_request($url, $args);
-				}
+					$response = wp_remote_request($url, array());
 				
 				if (!is_wp_error($response)) {
 					if (isset($response['response']['code']) && 200 === $response['response']['code']) {
@@ -1624,15 +1615,27 @@ if (!class_exists('WPeMatico_functions')) {
 
 		public static function get_danger_options() {
 			$danger = get_option('WPeMatico_danger');
-			if(isset($danger) && !empty($danger) && is_array($danger)){
+			//Function call for the better distribution of code
+			$getDanger = WPeMatico_functions::wpematico_get_danger_options($danger);
+
+			return $getDanger;
+		}
+
+		protected static function wpematico_get_danger_options($danger=false) : array
+		{
+			if(is_array($danger)){
 				$danger['wpemdeleoptions'] = (isset($danger['wpemdeleoptions']) && !empty($danger['wpemdeleoptions']) ) ? $danger['wpemdeleoptions'] : false;
 				$danger['wpemdelecampaigns'] = (isset($danger['wpemdelecampaigns']) && !empty($danger['wpemdelecampaigns']) ) ? $danger['wpemdelecampaigns'] : false;
 				$danger['wpe_debug_logs_campaign'] = (isset($danger['wpe_debug_logs_campaign']) && !empty($danger['wpe_debug_logs_campaign']) ) ? $danger['wpe_debug_logs_campaign'] : false;
+			}else{
+				$danger = [];
+				$danger['wpemdeleoptions'] = false;
+				$danger['wpemdelecampaigns'] = false;
+				$danger['wpe_debug_logs_campaign'] = false;
 			}
 
 			return $danger;
 		}
-
 	}
 
 	// Class WPeMatico_functions
