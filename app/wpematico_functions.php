@@ -1579,8 +1579,7 @@ if (!class_exists('WPeMatico_functions')) {
 			$args = wp_parse_args($aux, $defaults);
 
 			if (!$data) { // if stil getting error on get file content try WP func, this may give timeouts 
-					$response = wp_remote_request($url, array());
-				
+					$response = wp_remote_request($url, $args);
 				if (!is_wp_error($response)) {
 					if (isset($response['response']['code']) && 200 === $response['response']['code']) {
 						$data = wp_remote_retrieve_body($response);
@@ -1615,14 +1614,7 @@ if (!class_exists('WPeMatico_functions')) {
 
 		public static function get_danger_options() {
 			$danger = get_option('WPeMatico_danger');
-			//Function call for the better distribution of code
-			$getDanger = WPeMatico_functions::wpematico_get_danger_options($danger);
 
-			return $getDanger;
-		}
-
-		protected static function wpematico_get_danger_options($danger=false) : array
-		{
 			if(is_array($danger)){
 				$danger['wpemdeleoptions'] = (isset($danger['wpemdeleoptions']) && !empty($danger['wpemdeleoptions']) ) ? $danger['wpemdeleoptions'] : false;
 				$danger['wpemdelecampaigns'] = (isset($danger['wpemdelecampaigns']) && !empty($danger['wpemdelecampaigns']) ) ? $danger['wpemdelecampaigns'] : false;

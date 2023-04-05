@@ -66,14 +66,12 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			if ($post_type != 'wpematico')
 				return;
 			$danger_options = WPeMatico::get_danger_options();
-			if(is_array($danger_options)){
 				if ($danger_options['wpe_debug_logs_campaign']) {
 					$class = 'notice notice-warning notice-alt';
 					$message = __('WARNING! WPeMatico Debug mode has been activated at Settings->System Status->Danger Zone.', 'wpematico') . '<br />'
 							. __('Be sure to deactivate it after your tests to avoid performance issues.', 'wpematico');
 					printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), $message);
 				}
-			}
 		}
 
 		/**

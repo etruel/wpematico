@@ -18,14 +18,14 @@ $url = 'https://wordpress.org/support/plugin/wpematico/reviews/?filter=5';
 $cookie_jar = @tempnam('./tmp','cookie');
 $args = array(
 	'user-agent'=> "Mozilla/5.0 (Windows; U; Windows NT 5.1; rv:1.7.3) Gecko/20041001 Firefox/0.10.1",
-	'cookies'   => array($cookie_jar)
+	// 'cookies'   => array($cookie_jar)
 );
 
 $html = WPeMatico_functions::wpematico_get_contents($url, $args);
 //print_r( $html,1 ); //exit;
 
 // remove the cookie jar
-unlink($cookie_jar) /*or die("Can't unlink $cookie_jar")*/;
+// unlink($cookie_jar) /*or die("Can't unlink $cookie_jar")*/;
 
 if (!$html) {
 	echo '<div id="reviews">'.  __('Can\t connect to Wordpress Site', 'wpematico' ).'</div>';
