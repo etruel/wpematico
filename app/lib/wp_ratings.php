@@ -15,7 +15,7 @@ if ( !empty( $cached ) ) {
 }
 
 $url = 'https://wordpress.org/support/plugin/wpematico/reviews/?filter=5';
-$cookie_jar = @tempnam('./tmp','cookie');
+//$cookie_jar = @tempnam('./tmp','cookie');
 $args = array(
 	'user-agent'=> "Mozilla/5.0 (Windows; U; Windows NT 5.1; rv:1.7.3) Gecko/20041001 Firefox/0.10.1",
 	// 'cookies'   => array($cookie_jar)
