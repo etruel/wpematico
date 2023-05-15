@@ -118,6 +118,7 @@ function wpematico_row_meta($data, $page)	{
 	}
 
 	return array_merge(	$data,	array(
+		'<a href="https://github.com/etruel/wpematico" target="_blank"><b>GitHub</b></a>',
 		//'<a href="http://www.wpematico.com/wpematico/" target="_blank">' . __('Info & comments') . '</a>',
 		'<a href="'.  admin_url('plugins.php?page=wpemaddons').'" target="_self">' . __('Extensions') . '</a>',
 		'<a href="https://etruel.com/my-account/support/" target="_blank">' . __('Support') . '</a>',

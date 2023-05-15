@@ -254,9 +254,12 @@ jQuery(document).ready(function ($) {
 		$('div.feed_new_field').removeClass('feed_new_field');
 		$('div#feed_ID' + oldval).fadeIn();
 		$('input[name="campaign_feeds[' + oldval + ']"]').focus();
+		$('input[name="campaign_feeds[' + oldval + ']"]').attr('onkeyup', "addKeyUpEventToFeedInput(" + oldval + ");");
 		feed_new.attr('id', 'feed_ID' + newval);
 		//		$('input', feed_new).eq(0).attr('name','campaign_feeds['+ newval +']');
 		$('input[name*="campaign_feeds"]', feed_new).eq(0).attr('name', 'campaign_feeds[' + newval + ']');
+		$('input[name*="campaign_feeds"]', feed_new).eq(0).attr('onkeyup', "addKeyUpEventToFeedInput(" + newval + ");");
+
 		$('.deletefeed', feed_new).eq(0).attr('onclick', "delete_feed_url('#feed_ID" + newval + "');");
 		$('.deletefeed', feed_new).eq(0).attr('id', 'deletefeed_' + newval);
 		$('.deletefeed', feed_new).eq(0).attr('data', "#feed_ID" + newval);
@@ -942,3 +945,22 @@ function wpe_others_events($) {
 		disable_run_now();
 	});
 }
+function addKeyUpEventToFeedInput(feedIndex) {
+	var input = jQuery('input[name="campaign_feeds[' + feedIndex + ']"]');
+	var link = input.next();
+	var inputValue = input.val();
+	var url = link.attr('href');
+
+	// Check if the URL contains the feedlink parameter
+	if (url.includes('&feedlink=')) {
+		// Replace the existing value with the new inputValue
+		url = url.replace(/&feedlink=([^&]*)/, '&feedlink=' + encodeURIComponent(inputValue));
+	} else {
+		// Append the feedlink parameter with the inputValue
+		url += '&feedlink=' + encodeURIComponent(inputValue);
+	}
+
+	// Update the link's href attribute with the updated URL
+	link.attr('href', url);
+}
+

@@ -78,9 +78,10 @@ class WPeMatico_Campaign_edit_functions {
 	* @since 2.1
 	*/
 	public static function bodyfeedURL($feed, $cfg, $i ) {
+		$feedViewer = esc_url(admin_url("edit.php?post_type=wpematico&page=wpematico_settings&tab=debug_info&section=feed_viewer&feedlink="));
 		?>
 		<div class="feed_column" id="">
-			<input name="campaign_feeds[<?php echo $i; ?>]" type="text" value="<?php echo esc_url($feed) ?>" class="large-text feedinput"/><a href="<?php echo esc_url($feed) ?>" title="<?php _e('Open URL in a new browser tab', 'wpematico' ); ?>" target="_Blank" class="wpefeedlink"><span class="dashicons dashicons-external"></span></a>
+			<input name="campaign_feeds[<?php echo $i; ?>]" type="text" value="<?php echo esc_url($feed) ?>" class="large-text feedinput"/> <a href="<?= esc_url("$feedViewer") ?>" style="margin-right:1.5rem; margin-top:0.15rem; color:black" title="<?=__('Feed Viewer', 'wpematico')?>" id="href-eye" target="_Blank" class="wpefeedlink"><span class="dashicons dashicons-visibility"></span></a><a href="<?php echo esc_url($feed) ?>" title="<?php _e('Open URL in a new browser tab', 'wpematico' ); ?>" target="_Blank" class="wpefeedlink"><span class="dashicons dashicons-external"></span></a>
 		</div>
 		<?php
 	}
@@ -1047,7 +1048,7 @@ public static function feeds_box( $post ) {
 		</div>
 		<div id="feeds_list" class="maxhe290" data-callback="jQuery('#msgdrag').html('<?php _e('Update Campaign to save Feeds order', 'wpematico'  ); ?>').fadeIn();"> <!-- callback script to run on successful sort -->
 			<?php //foreach($campaign_feeds as $i => $feed): 
-			for ($i = 0; $i <= count(@$campaign_feeds); $i++) : ?>
+			for ($i = 0; $i <= count(@$campaign_feeds); $i++) { ?>
 			<?php $feed = @$campaign_feeds[$i]; ?>			
 			<?php $lastitem = $i==count(@$campaign_feeds); ?>			
 			<div id="feed_ID<?php echo $i; ?>" class="sortitem <?php if($lastitem) echo 'feed_new_field'; ?> " <?php if($lastitem) echo 'style="display:none;"'; ?> > <!-- sort item -->
@@ -1056,7 +1057,7 @@ public static function feeds_box( $post ) {
 				 * Action to print each column value
 				 * Complete since 2.1
 				 */
-				do_action('wpematico_campaign_feed_body_column',$feed,$cfg, $i); 
+				do_action('wpematico_campaign_feed_body_column',$feed,$cfg, $i);
 				?>
 				<div class="" id="feed_actions">
 					<?php do_action('wpematico_campaign_feed_actions_1',$feed,$cfg, $i); ?>
@@ -1066,7 +1067,7 @@ public static function feeds_box( $post ) {
 				</div>
 			</div>
 			<?php $a=$i;
-			endfor; ?>
+			}?>
 		</div>
 		<input id="feedfield_max" value="<?php echo $a; ?>" type="hidden" name="feedfield_max">
 		<?php do_action('wpematico_campaign_feed_panel'); ?>
