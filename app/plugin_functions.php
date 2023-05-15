@@ -100,6 +100,7 @@ function wpematico_action_links($data)	{
 	return array_merge(	$data,	array(
 		'<a href="edit.php?post_type=wpematico&page=wpematico_settings" title="' . __('Load WPeMatico Settings Page', 'wpematico' ) . '">' . __('Settings', 'wpematico' ) . '</a>',
 		'<a href="https://etruel.com/downloads/wpematico-perfect-package/" target="_Blank" title="' . __('Take a look at the all bundled Addons', 'wpematico' ) . '">' . __('Go Perfect', 'wpematico' ) . '</a>',
+		'<a href="https://github.com/etruel/wpematico" target="_blank"><b>GitHub</b></a>',
 //		'<a href="https://etruel.com/checkout?edd_action=add_to_cart&download_id=4313&edd_options[price_id]=2" target="_Blank" title="' . __('Buy all bundled Addons', 'wpematico' ) . '">' . __('Go Perfect', 'wpematico' ) . '</a>',
 	));
 }
@@ -118,7 +119,6 @@ function wpematico_row_meta($data, $page)	{
 	}
 
 	return array_merge(	$data,	array(
-		'<a href="https://github.com/etruel/wpematico" target="_blank"><b>GitHub</b></a>',
 		//'<a href="http://www.wpematico.com/wpematico/" target="_blank">' . __('Info & comments') . '</a>',
 		'<a href="'.  admin_url('plugins.php?page=wpemaddons').'" target="_self">' . __('Extensions') . '</a>',
 		'<a href="https://etruel.com/my-account/support/" target="_blank">' . __('Support') . '</a>',

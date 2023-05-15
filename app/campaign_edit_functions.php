@@ -78,10 +78,10 @@ class WPeMatico_Campaign_edit_functions {
 	* @since 2.1
 	*/
 	public static function bodyfeedURL($feed, $cfg, $i ) {
-		$feedViewer = esc_url(admin_url("edit.php?post_type=wpematico&page=wpematico_settings&tab=debug_info&section=feed_viewer&feedlink="));
+		$feedViewer = admin_url("edit.php?post_type=wpematico&page=wpematico_settings&tab=debug_info&section=feed_viewer&feedlink=$feed");
 		?>
 		<div class="feed_column" id="">
-			<input name="campaign_feeds[<?php echo $i; ?>]" type="text" value="<?php echo esc_url($feed) ?>" class="large-text feedinput"/> <a href="<?= esc_url("$feedViewer") ?>" style="margin-right:1.5rem; margin-top:0.15rem; color:black" title="<?=__('Feed Viewer', 'wpematico')?>" id="href-eye" target="_Blank" class="wpefeedlink"><span class="dashicons dashicons-visibility"></span></a><a href="<?php echo esc_url($feed) ?>" title="<?php _e('Open URL in a new browser tab', 'wpematico' ); ?>" target="_Blank" class="wpefeedlink"><span class="dashicons dashicons-external"></span></a>
+			<input name="campaign_feeds[<?php echo $i; ?>]" type="text" value="<?php echo (isset($feed)) ? esc_url($feed) : '';  ?>" class="large-text feedinput"/> <a href="<?php echo esc_url("$feedViewer") ?>" style="margin-right:1.5rem; margin-top:0.15rem; color:black" title="<?php echo __('Feed Viewer', 'wpematico')?>" id="href-eye" target="_Blank" class="wpefeedlink"><span class="dashicons dashicons-visibility"></span></a><a href="<?php echo (isset($feed)) ? esc_url($feed) : '';  ?>" title="<?php _e('Open URL in a new browser tab', 'wpematico' ); ?>" target="_Blank" class="wpefeedlink"><span class="dashicons dashicons-external"></span></a>
 		</div>
 		<?php
 	}
