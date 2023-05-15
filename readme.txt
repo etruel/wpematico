@@ -236,6 +236,10 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
+= 2.6.20 May 15, 2023 =
+* Add View feed content link in feed address field
+* Add GitHub link on plugin links
+
 = 2.6.19 Apr 5, 2023 =
 * Compatibility with WordPress 6.2
 * Fixes Settings blank page since WP 6.2.
