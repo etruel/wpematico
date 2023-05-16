@@ -3,7 +3,7 @@ jQuery(document).ready(function ($) {
 	var totalVal = $('#feedfield_max').val();
 	for (var index = 0; index < totalVal; index++) {
 		var input = $('input[name="campaign_feeds[' + index + ']"]');
-		input.attr('onkeyup', "addKeyUpEventToFeedInput(" + index + ");");
+		input.attr('onblur', "addKeyUpEventToFeedInput(" + index + ");");
 	}
 
 	$('#xml-campaign-check-data-btn').click(function (e) {
