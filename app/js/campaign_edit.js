@@ -4,7 +4,6 @@ jQuery(document).ready(function ($) {
 	for (var index = 0; index < totalVal; index++) {
 		var input = $('input[name="campaign_feeds[' + index + ']"]');
 		input.attr('onkeyup', "addKeyUpEventToFeedInput(" + index + ");");
-		console.log('Hopla: ', input);
 	}
 
 	$('#xml-campaign-check-data-btn').click(function (e) {
@@ -261,11 +260,11 @@ jQuery(document).ready(function ($) {
 		$('div.feed_new_field').removeClass('feed_new_field');
 		$('div#feed_ID' + oldval).fadeIn();
 		$('input[name="campaign_feeds[' + oldval + ']"]').focus();
-		$('input[name="campaign_feeds[' + oldval + ']"]').attr('onkeyup', "addKeyUpEventToFeedInput(" + oldval + ");");
+		$('input[name="campaign_feeds[' + oldval + ']"]').attr('onblur', "addKeyUpEventToFeedInput(" + oldval + ");");
 		feed_new.attr('id', 'feed_ID' + newval);
 		//		$('input', feed_new).eq(0).attr('name','campaign_feeds['+ newval +']');
 		$('input[name*="campaign_feeds"]', feed_new).eq(0).attr('name', 'campaign_feeds[' + newval + ']');
-		$('input[name*="campaign_feeds"]', feed_new).eq(0).attr('onkeyup', "addKeyUpEventToFeedInput(" + newval + ");");
+		$('input[name*="campaign_feeds"]', feed_new).eq(0).attr('onblur', "addKeyUpEventToFeedInput(" + newval + ");");
 
 		$('.deletefeed', feed_new).eq(0).attr('onclick', "delete_feed_url('#feed_ID" + newval + "');");
 		$('.deletefeed', feed_new).eq(0).attr('id', 'deletefeed_' + newval);
