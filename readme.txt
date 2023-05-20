@@ -3,7 +3,7 @@ Contributors: etruel, sniuk, khaztiel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,RSS to Post,Feed to Post,XML to post,autoblog,rss aggregator,Feed,rss to post,syndication,xml import,Post,Posts,aggregation,atom,bot,content,writing
 Requires at least: 4.8
-Tested up to: 6.2
+Tested up to: 6.2.2
 Requires PHP: 5.6
 Stable tag: trunk
 License: GPLv2 or later
@@ -236,9 +236,10 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
-= 2.6.20 May 15, 2023 =
-* Add View feed content link in feed address field
-* Add GitHub link on plugin links
+= 2.6.20 May 20, 2023 =
+* Bump to WP 6.2.2
+* Added 'View feed content' link inside feed address field.
+* Added GitHub link on plugin links to allow easy access to development version.
 
 = 2.6.19 Apr 5, 2023 =
 * Compatibility with WordPress 6.2

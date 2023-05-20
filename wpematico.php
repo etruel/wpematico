@@ -3,7 +3,7 @@
  * Plugin Name: WPeMatico
  * Plugin URI: https://www.wpematico.com
  * Description: Create posts automatically from RSS/Atom feeds organized into campaigns with multiples filters.  If you like it, please rate it 5 stars.
- * Version: 2.6.19
+ * Version: 2.6.20
  * Author: Etruel Developments LLC
  * Author URI: https://etruel.com/wpematico/
  * Text Domain: wpematico
