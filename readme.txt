@@ -390,5 +390,5 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 
-= 2.6.19 =
-Compatibility with WordPress 6.2
+= 2.6.20 =
+Compatibility with WordPress 6.2.2
