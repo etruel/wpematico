@@ -63,7 +63,7 @@ class wpematico_campaign_fetch_functions {
 		// take out links before apply template (if don't strip before html tags)
 		if($campaign['campaign_strip_links'] && !$campaign['campaign_striphtml']) {
 			trigger_error(__('Cleaning Links from content.', 'wpematico'), E_USER_NOTICE);
-			$current_item['content'] = $this->strip_links((string) $current_item['content'], $campaign);
+			$current_item['content'] = self::strip_links((string) $current_item['content'], $campaign);
 		}
 		
 		return $current_item;
@@ -109,6 +109,7 @@ class wpematico_campaign_fetch_functions {
 	}
 
 	public static function wpematico_campaign_rewrites($current_item, $campaign, $feed, $item){
+		global $cfg;
 		// Rewrite
 		//$rewrites = $campaign['campaign_rewrites'];
 		if(isset($campaign['campaign_rewrites']['origin']) && !empty($campaign['campaign_rewrites']['origin']))
@@ -132,8 +133,8 @@ class wpematico_campaign_fetch_functions {
 					$current_item['content'] = str_ireplace($origin, '<a href="' . stripslashes($campaign['campaign_rewrites']['relink'][$i]) . '">' . $origin . '</a>', $current_item['content']);
 			}
 		// End rewrite
-
-		if(!$this->cfg['disable_credits']) {
+		
+		if(!$cfg['disable_credits']) {
 			$current_item['content'] .= '<p class="wpematico_credit"><small>Powered by <a href="http://www.wpematico.com" target="_blank">WPeMatico</a></small></p>';
 		}
 
@@ -162,9 +163,7 @@ class wpematico_campaign_fetch_functions {
 
 		$current_item = apply_filters('wpematico_after_item_parsers', $current_item, $campaign, $feed, $item);
 		//if($current_item == -1 ) return -1; //Hack to allow skip the post in this instance
-
-		file_put_contents(get_home_path() . 'archivo.html', $current_item);
-		die();
+		
 		return $current_item;
 	}
 
@@ -813,7 +812,7 @@ class wpematico_campaign_fetch_functions {
 	 * @param type $campaign 
 	 * @return type $text with replaced links.
 	 */
-	function strip_links($text, $campaign = array()) {
+	public static function strip_links($text, $campaign = array()) {
 		$tags = array();
 		if(!empty($campaign['campaign_strip_links_options'])) {
 			foreach($campaign['campaign_strip_links_options'] as $k => $v) {
