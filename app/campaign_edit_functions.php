@@ -771,6 +771,9 @@ public static function options_box( $post ) {
 				<div id="div_campaign_strip_links_options" style="margin-left:15px;<?php echo (($campaign_strip_links)?'':'display:none;'); ?>">
 					<input class="checkbox" type="checkbox"<?php checked($campaign_strip_links_options['a'] ,true);?> name="campaign_strip_links_options[a]" value="1" id="campaign_strip_links_options_a"/> 
 					<label for="campaign_strip_links_options[a]"><?php echo __('Strip ', 'wpematico') . '&lt;a&gt;.'; ?></label> <br/>
+					<?php //This is a filter for add the two strip checks aditionals
+					do_action('wpematico_campaing_pro_strip_links', $campaign_strip_links_options);
+					?>
 					<input class="checkbox" type="checkbox"<?php checked($campaign_strip_links_options['iframe'] ,true);?> name="campaign_strip_links_options[iframe]" value="1" id="campaign_strip_links_options_iframe"/> 
 					<label for="campaign_strip_links_options[iframe]"><?php echo __('Strip ', 'wpematico') . '&lt;iframe&gt;.'; ?></label> <br/>
 					<input class="checkbox" type="checkbox"<?php checked($campaign_strip_links_options['script'] ,true);?> name="campaign_strip_links_options[script]" value="1" id="campaign_strip_links_options_script"/> 

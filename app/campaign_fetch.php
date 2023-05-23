@@ -123,6 +123,9 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		//hook to add actions and filter on init fetching
 		//add_action('Wpematico_init_fetching', array($this, 'wpematico_init_fetching') ); 
 		add_filter('wpematico_custom_chrset', array('WPeMatico_functions', 'detect_encoding_from_headers'), 999, 1);   // move all encoding functions to wpematico_campaign_fetch_functions
+		add_filter('wpematico_after_item_parsers', array('wpematico_campaign_fetch_functions', 'wpematico_strip_links'), 1, 4);
+		add_filter('wpematico_after_item_parsers', array('wpematico_campaign_fetch_functions', 'wpematico_template_parse'), 2, 4);
+		add_filter('wpematico_after_item_parsers', array('wpematico_campaign_fetch_functions', 'wpematico_campaign_rewrites'), 3, 4);
 
 		if ($this->campaign['campaign_type'] == "youtube") {
 			add_filter('wpematico_get_post_content_feed', array('wpematico_campaign_fetch_functions', 'wpematico_get_yt_rss_tags'), 999, 4);

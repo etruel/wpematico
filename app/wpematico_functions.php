@@ -843,8 +843,12 @@ if (!class_exists('WPeMatico_functions')) {
 			$campaigndata['avoid_search_redirection'] = (!isset($post_data['avoid_search_redirection']) || empty($post_data['avoid_search_redirection'])) ? false : ( ($post_data['avoid_search_redirection'] == 1) ? true : false );
 
 			$campaigndata['campaign_strip_links'] = (!isset($post_data['campaign_strip_links']) || empty($post_data['campaign_strip_links'])) ? false : ( ($post_data['campaign_strip_links'] == 1) ? true : false );
-			$campaigndata['campaign_strip_links_options'] = (!isset($post_data['campaign_strip_links_options']) || !is_array($post_data['campaign_strip_links_options'])) ? array('a' => true, 'script' => true, 'iframe' => true) : $post_data['campaign_strip_links_options'];
+			$campaigndata['campaign_strip_links_options'] = (!isset($post_data['campaign_strip_links_options']) || !is_array($post_data['campaign_strip_links_options'])) ? array('a' => true, 'strip_domain' => false, 'script' => true, 'iframe' => true) : $post_data['campaign_strip_links_options'];
+			
 			$campaigndata['campaign_strip_links_options']['a'] = (!isset($post_data['campaign_strip_links_options']['a']) || empty($post_data['campaign_strip_links_options']['a'])) ? false : ( ($post_data['campaign_strip_links_options']['a']) ? true : false );
+
+			$campaigndata['campaign_strip_links_options']['strip_domain'] = (!isset($post_data['campaign_strip_links_options']['strip_domain']) || empty($post_data['campaign_strip_links_options']['strip_domain'])) ? false : ( ($post_data['campaign_strip_links_options']['strip_domain']) ? true : false );
+
 			$campaigndata['campaign_strip_links_options']['script'] = (!isset($post_data['campaign_strip_links_options']['script']) || empty($post_data['campaign_strip_links_options']['script'])) ? false : ( ($post_data['campaign_strip_links_options']['script']) ? true : false );
 			$campaigndata['campaign_strip_links_options']['iframe'] = (!isset($post_data['campaign_strip_links_options']['iframe']) || empty($post_data['campaign_strip_links_options']['iframe'])) ? false : ( ($post_data['campaign_strip_links_options']['iframe']) ? true : false );
 
