@@ -291,8 +291,7 @@ jQuery(document).ready(function ($) {
 			$('#div_campaign_strip_links_options_pro_strip').fadeIn();
 		} else {
 			$('#div_campaign_strip_links_options_pro_strip').fadeOut();
-			$('#campaign_strip_links_options_strip_domain').attr('checked', false);
-			$('#campaign_strip_links_options_strip_less_whitelist').attr('checked', false);
+			$('#campaign_strip_links_options_strip_domain').prop('checked', false);
 		}
 	});
 
