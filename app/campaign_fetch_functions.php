@@ -828,7 +828,6 @@ class wpematico_campaign_fetch_functions {
 			foreach($campaign['campaign_strip_links_options'] as $k => $v) {
 				if($v) {
 					if($k != 'a' || $k != 'strip_domain'){
-						var_dump($k);
 						$tags[] = $k;
 					}
 				}
