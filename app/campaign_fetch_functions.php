@@ -60,8 +60,9 @@ class wpematico_campaign_fetch_functions {
 // End exclude filters
 
 	public static function wpematico_strip_links($current_item, $campaign, $feed, $item){
+
 		// take out links before apply template (if don't strip before html tags)
-		if($campaign['campaign_strip_links'] && !$campaign['campaign_striphtml']) {
+		if($campaign['campaign_strip_links'] && !$campaign['campaign_striphtml'] ) {
 			trigger_error(__('Cleaning Links from content.', 'wpematico'), E_USER_NOTICE);
 			$current_item['content'] = self::strip_links((string) $current_item['content'], $campaign);
 		}
@@ -71,7 +72,7 @@ class wpematico_campaign_fetch_functions {
 
 	public static function wpematico_strip_links_a($current_item, $campaign, $feed, $item){
 		// take out links before apply template (if don't strip before html tags)
-		if($campaign['campaign_strip_links'] && !$campaign['campaign_striphtml'] && $campaign['campaign_strip_links_options']['a']) {
+		if($campaign['campaign_strip_links'] && !$campaign['campaign_striphtml']) {
 			trigger_error(__('Cleaning Links from content.', 'wpematico'), E_USER_NOTICE);
 			$current_item['content'] = self::strip_links_a((string) $current_item['content'], $campaign);
 		}
@@ -143,7 +144,6 @@ class wpematico_campaign_fetch_functions {
 					$current_item['content'] = str_ireplace($origin, '<a href="' . stripslashes($campaign['campaign_rewrites']['relink'][$i]) . '">' . $origin . '</a>', $current_item['content']);
 			}
 		// End rewrite
-		
 		if(!$cfg['disable_credits']) {
 			$current_item['content'] .= '<p class="wpematico_credit"><small>Powered by <a href="http://www.wpematico.com" target="_blank">WPeMatico</a></small></p>';
 		}
@@ -827,16 +827,16 @@ class wpematico_campaign_fetch_functions {
 		if(!empty($campaign['campaign_strip_links_options'])) {
 			foreach($campaign['campaign_strip_links_options'] as $k => $v) {
 				if($v) {
-					if($k != 'a' || $k != 'strip_domain'){
+					if($k != 'a' && $k != 'strip_domain'){
 						$tags[] = $k;
 					}
 				}
 			}
 		}
-
-		if(empty($tags)) {
+		if(empty($tags) && !$campaign['campaign_strip_links_options']['a']) {
 			$tags = array('iframe', 'script');
 		}
+
 		$index_script = array_search('script', $tags);
 		if($index_script !== FALSE) {
 			$text = WPeMatico::strip_tags_content($text, '<script>', TRUE);
@@ -851,7 +851,21 @@ class wpematico_campaign_fetch_functions {
 	}
 
 	public static function strip_links_a($text, $campaign = array()) {
-		$tags = array('a');
+		$tags = array();
+		if(!empty($campaign['campaign_strip_links_options'])) {
+			foreach($campaign['campaign_strip_links_options'] as $k => $v) {
+				if($v) {
+					if($k != 'script' && $k != 'iframe'){
+						$tags[] = $k;
+					}
+				}
+			}
+		}
+		
+		if(empty($tags) && !$campaign['campaign_strip_links_options']['script'] && !$campaign['campaign_strip_links_options']['iframe']) {
+			$tags = array('a');
+		}
+		
 		foreach($tags as $tag) {
 			while (preg_match('/<' . $tag . '(|\W[^>]*)>(.*)<\/' . $tag . '>/iusU', $text, $found)) {
 				$text = str_replace($found[0], $found[2], $text);
