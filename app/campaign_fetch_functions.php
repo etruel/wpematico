@@ -69,6 +69,16 @@ class wpematico_campaign_fetch_functions {
 		return $current_item;
 	}
 
+	public static function wpematico_strip_links_a($current_item, $campaign, $feed, $item){
+		// take out links before apply template (if don't strip before html tags)
+		if($campaign['campaign_strip_links'] && !$campaign['campaign_striphtml'] && $campaign['campaign_strip_links_options']['a']) {
+			trigger_error(__('Cleaning Links from content.', 'wpematico'), E_USER_NOTICE);
+			$current_item['content'] = self::strip_links_a((string) $current_item['content'], $campaign);
+		}
+		
+		return $current_item;
+	}
+
 	public static function wpematico_template_parse($current_item, $campaign, $feed, $item){
 		// Template parse           
 		if($campaign['campaign_enable_template']) {
@@ -817,18 +827,32 @@ class wpematico_campaign_fetch_functions {
 		if(!empty($campaign['campaign_strip_links_options'])) {
 			foreach($campaign['campaign_strip_links_options'] as $k => $v) {
 				if($v) {
-					$tags[] = $k;
+					if($k != 'a'){
+						var_dump($k);
+						$tags[] = $k;
+					}
 				}
 			}
 		}
+
 		if(empty($tags)) {
-			$tags = array('a', 'iframe', 'script');
+			$tags = array('iframe', 'script');
 		}
 		$index_script = array_search('script', $tags);
 		if($index_script !== FALSE) {
 			$text = WPeMatico::strip_tags_content($text, '<script>', TRUE);
 			unset($tags[$index_script]);
 		}
+		foreach($tags as $tag) {
+			while (preg_match('/<' . $tag . '(|\W[^>]*)>(.*)<\/' . $tag . '>/iusU', $text, $found)) {
+				$text = str_replace($found[0], $found[2], $text);
+			}
+		}
+		return preg_replace('/(<(' . join('|', $tags) . ')(|\W.*)\/>)/iusU', '', $text);
+	}
+
+	public static function strip_links_a($text, $campaign = array()) {
+		$tags = array('a');
 		foreach($tags as $tag) {
 			while (preg_match('/<' . $tag . '(|\W[^>]*)>(.*)<\/' . $tag . '>/iusU', $text, $found)) {
 				$text = str_replace($found[0], $found[2], $text);
