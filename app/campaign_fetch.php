@@ -121,7 +121,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
 	public function set_actions_and_filters() {
 		//hook to add actions and filter on init fetching
-		//add_action('Wpematico_init_fetching', array($this, 'wpematico_init_fetching') ); 
+		//add_action('Wpematico_init_fetching', array($this, 'wpematico_init_fetching') ); +
+		add_filter('wpematico_custom_chrset', array('WPeMatico_functions', 'detect_encoding_from_headers'), 999, 1); // move all encoding functions to wpematico_campaign_fetch_functions
 		add_filter('wpematico_after_item_parsers', array('wpematico_campaign_fetch_functions', 'wpematico_strip_links_a'), 1, 4);
 		add_filter('wpematico_after_item_parsers', array('wpematico_campaign_fetch_functions', 'wpematico_strip_links'), 2, 4);
 		add_filter('wpematico_after_item_parsers', array('wpematico_campaign_fetch_functions', 'wpematico_template_parse'), 3, 4);
