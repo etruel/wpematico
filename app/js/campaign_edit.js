@@ -286,6 +286,24 @@ jQuery(document).ready(function ($) {
 			$('#div_campaign_strip_links').fadeIn();
 		}
 	});
+	$('#campaign_strip_links_options_a').change(function () {
+		if ($('#campaign_strip_links_options_a').is(':checked')) {
+			$('#div_campaign_strip_links_options_pro_strip').fadeIn();
+		} else {
+			$('#div_campaign_strip_links_options_pro_strip').fadeOut();
+			$('#campaign_strip_links_options_strip_domain').prop('checked', false);
+		}
+	});
+
+	$('#campaign_striphtml').change(function () {
+		if ($('#campaign_striphtml').is(':checked')) {
+			$('#campaign_strip_links').attr('checked', false);
+			$('#div_campaign_strip_links_options').fadeOut();
+			$('#div_campaign_strip_links').fadeOut();
+		} else {
+			$('#div_campaign_strip_links').fadeIn();
+		}
+	});
 	$('#campaign_feeddate').change(function () {
 		if ($('#campaign_feeddate').is(':checked')) {
 			$('#div_campaign_feeddate_options').fadeIn();
