@@ -56,11 +56,43 @@ class wpematico_campaign_fetch_functions {
 
 		return $skip;
 	}
+	// End exclude filters
+	
+	/**
+	 * Parses an item content
+	 *
+	 * @param   $current_item   array    Current post data to be saved
+	 * @param   $campaign       array    Current campaign data
+	 * @param   $feed           object    Feed database object
+	 * @param   $item           object    SimplePie_Item object
+	 */
+	function Item_parsers(&$current_item, &$campaign, &$feed, &$item, $count, $feedurl) {
+		$post_id		 = $this->campaign_id;
+		$current_item	 = apply_filters('wpematico_item_parsers', $current_item, $campaign, $feed, $item);
+		//if( $this->cfg['nonstatic'] ) { $current_item = NoNStatic :: content($current_item,$campaign,$item); }
+		if($current_item == -1)
+			return -1; // 
 
-// End exclude filters
+		// strip all HTML tags before apply filter wpematico_after_item_parsers
+		if($campaign['campaign_striphtml']) {
+			trigger_error(sprintf(__('Deleting html tags: %s', 'wpematico'), $item->get_title()), E_USER_NOTICE);
+			$current_item['content'] = strip_tags($current_item['content'], apply_filters('wpem_dont_strip_tags', ''));
+		}
+
+		if(!$cfg['disable_credits']) {
+			$current_item['content'] .= '<p class="wpematico_credit"><small>Powered by <a href="http://www.wpematico.com" target="_blank">WPeMatico</a></small></p>';
+		}
+
+		$current_item = apply_filters('wpematico_after_item_parsers', $current_item, $campaign, $feed, $item);
+		//if($current_item == -1 ) return -1; //Hack to allow skip the post in this instance
+		
+		return $current_item;
+	}
+
+	// End ParseItemContent
+
 
 	public static function wpematico_strip_links($current_item, $campaign, $feed, $item){
-
 		// take out links before apply template (if don't strip before html tags)
 		if($campaign['campaign_strip_links'] && !$campaign['campaign_striphtml'] ) {
 			trigger_error(__('Cleaning Links from content.', 'wpematico'), E_USER_NOTICE);
@@ -144,40 +176,10 @@ class wpematico_campaign_fetch_functions {
 					$current_item['content'] = str_ireplace($origin, '<a href="' . stripslashes($campaign['campaign_rewrites']['relink'][$i]) . '">' . $origin . '</a>', $current_item['content']);
 			}
 		// End rewrite
-		if(!$cfg['disable_credits']) {
-			$current_item['content'] .= '<p class="wpematico_credit"><small>Powered by <a href="http://www.wpematico.com" target="_blank">WPeMatico</a></small></p>';
-		}
 
 		return $current_item;
 	}
-	/**
-	 * Parses an item content
-	 *
-	 * @param   $current_item   array    Current post data to be saved
-	 * @param   $campaign       array    Current campaign data
-	 * @param   $feed           object    Feed database object
-	 * @param   $item           object    SimplePie_Item object
-	 */
-	function Item_parsers(&$current_item, &$campaign, &$feed, &$item, $count, $feedurl) {
-		$post_id		 = $this->campaign_id;
-		$current_item	 = apply_filters('wpematico_item_parsers', $current_item, $campaign, $feed, $item);
-		//if( $this->cfg['nonstatic'] ) { $current_item = NoNStatic :: content($current_item,$campaign,$item); }
-		if($current_item == -1)
-			return -1; // 
 
-		// strip all HTML tags before apply template 
-		if($campaign['campaign_striphtml']) {
-			trigger_error(sprintf(__('Deleting html tags: %s', 'wpematico'), $item->get_title()), E_USER_NOTICE);
-			$current_item['content'] = strip_tags($current_item['content'], apply_filters('wpem_dont_strip_tags', ''));
-		}
-
-		$current_item = apply_filters('wpematico_after_item_parsers', $current_item, $campaign, $feed, $item);
-		//if($current_item == -1 ) return -1; //Hack to allow skip the post in this instance
-		
-		return $current_item;
-	}
-
-// End ParseItemContent
 
 	public static function default_template_vars($vars, $current_item, $campaign, $feed, $item, $img_str) {
 		$autor		 = '';

@@ -236,10 +236,12 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
-= 2.6.20 May 20, 2023 =
+= 2.6.20 May 26, 2023 =
 * Bump to WP 6.2.2
 * Added 'View feed content' link inside feed address field.
 * Added GitHub link on plugin links to allow easy access to development version.
+* Added new filters and actions in the strip link options to enable new incoming functionalities.
+* Some improvements on fetching functions and parsers.
 
 = 2.6.19 Apr 5, 2023 =
 * Compatibility with WordPress 6.2
