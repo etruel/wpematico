@@ -67,6 +67,7 @@ class wpematico_campaign_fetch_functions {
 	 * @param   $item           object    SimplePie_Item object
 	 */
 	function Item_parsers(&$current_item, &$campaign, &$feed, &$item, $count, $feedurl) {
+		global $cfg;
 		$post_id		 = $this->campaign_id;
 		$current_item	 = apply_filters('wpematico_item_parsers', $current_item, $campaign, $feed, $item);
 		//if( $this->cfg['nonstatic'] ) { $current_item = NoNStatic :: content($current_item,$campaign,$item); }
@@ -152,7 +153,6 @@ class wpematico_campaign_fetch_functions {
 	}
 
 	public static function wpematico_campaign_rewrites($current_item, $campaign, $feed, $item){
-		global $cfg;
 		// Rewrite
 		//$rewrites = $campaign['campaign_rewrites'];
 		if(isset($campaign['campaign_rewrites']['origin']) && !empty($campaign['campaign_rewrites']['origin']))

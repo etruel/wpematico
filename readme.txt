@@ -236,6 +236,9 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
+= 2.6.20.1 May 26, 2023 =
+* Fixes print credits on posts contents.
+
 = 2.6.20 May 26, 2023 =
 * Bump to WP 6.2.2
 * Added 'View feed content' link inside feed address field.
