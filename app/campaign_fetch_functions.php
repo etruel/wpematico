@@ -1,4 +1,5 @@
 <?php
+
 /**
  * WPeMatico plugin for WordPress
  * campaign_fetch_functions 
@@ -12,13 +13,13 @@
  * @license   GPL v2 or later
  */
 // don't load directly
-if(!defined('ABSPATH')) {
+if (!defined('ABSPATH')) {
 	header('Status: 403 Forbidden');
 	header('HTTP/1.1 403 Forbidden');
 	exit();
 }
 
-if(class_exists('wpematico_campaign_fetch_functions'))
+if (class_exists('wpematico_campaign_fetch_functions'))
 	return;
 
 class wpematico_campaign_fetch_functions {
@@ -29,7 +30,7 @@ class wpematico_campaign_fetch_functions {
 		$permalink			 = self::getReadUrl($item->get_permalink(), $campaign);
 		$check_sql			 = "SELECT meta_value FROM $wpdb->postmeta WHERE meta_key = 'wpe_sourcepermalink' AND meta_value = %s LIMIT 1";
 		$permantlink_check	 = $wpdb->get_var($wpdb->prepare($check_sql, $permalink));
-		if($permantlink_check) {
+		if ($permantlink_check) {
 			$dev = true;
 		}
 		return $dev;
@@ -56,8 +57,9 @@ class wpematico_campaign_fetch_functions {
 
 		return $skip;
 	}
+
 	// End exclude filters
-	
+
 	/**
 	 * Parses an item content
 	 *
@@ -71,58 +73,58 @@ class wpematico_campaign_fetch_functions {
 		$post_id		 = $this->campaign_id;
 		$current_item	 = apply_filters('wpematico_item_parsers', $current_item, $campaign, $feed, $item);
 		//if( $this->cfg['nonstatic'] ) { $current_item = NoNStatic :: content($current_item,$campaign,$item); }
-		if($current_item == -1)
+		if ($current_item == -1)
 			return -1; // 
-
+			
 		// strip all HTML tags before apply filter wpematico_after_item_parsers
-		if($campaign['campaign_striphtml']) {
+		if ($campaign['campaign_striphtml']) {
 			trigger_error(sprintf(__('Deleting html tags: %s', 'wpematico'), $item->get_title()), E_USER_NOTICE);
 			$current_item['content'] = strip_tags($current_item['content'], apply_filters('wpem_dont_strip_tags', ''));
 		}
 
-		if(!$cfg['disable_credits']) {
+		if (!$cfg['disable_credits']) {
 			$current_item['content'] .= '<p class="wpematico_credit"><small>Powered by <a href="http://www.wpematico.com" target="_blank">WPeMatico</a></small></p>';
 		}
 
 		$current_item = apply_filters('wpematico_after_item_parsers', $current_item, $campaign, $feed, $item);
 		//if($current_item == -1 ) return -1; //Hack to allow skip the post in this instance
-		
+
 		return $current_item;
 	}
 
 	// End ParseItemContent
 
 
-	public static function wpematico_strip_links($current_item, $campaign, $feed, $item){
+	public static function wpematico_strip_links($current_item, $campaign, $feed, $item) {
 		// take out links before apply template (if don't strip before html tags)
-		if($campaign['campaign_strip_links'] && !$campaign['campaign_striphtml'] ) {
+		if ($campaign['campaign_strip_links'] && !$campaign['campaign_striphtml']) {
 			trigger_error(__('Cleaning Links from content.', 'wpematico'), E_USER_NOTICE);
 			$current_item['content'] = self::strip_links((string) $current_item['content'], $campaign);
 		}
-		
+
 		return $current_item;
 	}
 
-	public static function wpematico_strip_links_a($current_item, $campaign, $feed, $item){
+	public static function wpematico_strip_links_a($current_item, $campaign, $feed, $item) {
 		// take out links before apply template (if don't strip before html tags)
-		if($campaign['campaign_strip_links'] && !$campaign['campaign_striphtml']) {
+		if ($campaign['campaign_strip_links'] && !$campaign['campaign_striphtml']) {
 			trigger_error(__('Cleaning Links from content.', 'wpematico'), E_USER_NOTICE);
 			$current_item['content'] = self::strip_links_a((string) $current_item['content'], $campaign);
 		}
-		
+
 		return $current_item;
 	}
 
-	public static function wpematico_template_parse($current_item, $campaign, $feed, $item){
+	public static function wpematico_template_parse($current_item, $campaign, $feed, $item) {
 		// Template parse           
-		if($campaign['campaign_enable_template']) {
+		if ($campaign['campaign_enable_template']) {
 			trigger_error('<b>' . __('Parsing Post template.', 'wpematico') . '</b>', E_USER_NOTICE);
-			if(!empty($current_item['images'][0])) {
+			if (!empty($current_item['images'][0])) {
 				$img_str = "<img class=\"wpe_imgrss\" src=\"" . $current_item['images'][0] . "\">";  //Solo la imagen
-			}else {
-				if(!empty($current_item['featured_image'])) {
+			} else {
+				if (!empty($current_item['featured_image'])) {
 					$img_str = "<img class=\"wpe_imgrss\" src=\"" . $current_item['featured_image'] . "\">";  //Solo la imagen
-				}else {
+				} else {
 					trigger_error(__('Can\'t find the featured image to add to the content.'), E_USER_WARNING);
 					$img_str = '<!-- no image -->';
 				}
@@ -135,7 +137,7 @@ class wpematico_campaign_fetch_functions {
 			$template_vars	 = self::default_template_vars(array(), $current_item, $campaign, $feed, $item, $img_str);
 			$vars			 = array();
 			$replace		 = array();
-			foreach($template_vars as $tvar => $tvalue) {
+			foreach ($template_vars as $tvar => $tvalue) {
 				$vars[]		 = $tvar;
 				$replace[]	 = $tvalue;
 			}
@@ -152,27 +154,27 @@ class wpematico_campaign_fetch_functions {
 		return $current_item;
 	}
 
-	public static function wpematico_campaign_rewrites($current_item, $campaign, $feed, $item){
+	public static function wpematico_campaign_rewrites($current_item, $campaign, $feed, $item) {
 		// Rewrite
 		//$rewrites = $campaign['campaign_rewrites'];
-		if(isset($campaign['campaign_rewrites']['origin']) && !empty($campaign['campaign_rewrites']['origin']))
-			for($i = 0; $i < count($campaign['campaign_rewrites']['origin']); $i++) {
+		if (isset($campaign['campaign_rewrites']['origin']) && !empty($campaign['campaign_rewrites']['origin']))
+			for ($i = 0; $i < count($campaign['campaign_rewrites']['origin']); $i++) {
 				$on_title	 = ($campaign['campaign_rewrites']['title'][$i]) ? true : false;
 				$origin		 = stripslashes($campaign['campaign_rewrites']['origin'][$i]);
-				if(isset($campaign['campaign_rewrites']['rewrite'][$i])) {
+				if (isset($campaign['campaign_rewrites']['rewrite'][$i])) {
 					$reword = !empty($campaign['campaign_rewrites']['relink'][$i]) ? '<a href="' . stripslashes($campaign['campaign_rewrites']['relink'][$i]) . '">' . stripslashes($campaign['campaign_rewrites']['rewrite'][$i]) . '</a>' : stripslashes($campaign['campaign_rewrites']['rewrite'][$i]);
-					
-					if($campaign['campaign_rewrites']['regex'][$i]) {
-						if($on_title)
+
+					if ($campaign['campaign_rewrites']['regex'][$i]) {
+						if ($on_title)
 							$current_item['title']	 = preg_replace($origin, $reword, $current_item['title']);
 						else
 							$current_item['content'] = preg_replace($origin, $reword, $current_item['content']);
-					}else
-					if($on_title)
+					} else
+					if ($on_title)
 						$current_item['title']	 = str_ireplace($origin, $reword, $current_item['title']);
 					else
 						$current_item['content'] = str_ireplace($origin, $reword, $current_item['content']);
-				}else if(!empty($campaign['campaign_rewrites']['relink'][$i]))
+				} else if (!empty($campaign['campaign_rewrites']['relink'][$i]))
 					$current_item['content'] = str_ireplace($origin, '<a href="' . stripslashes($campaign['campaign_rewrites']['relink'][$i]) . '">' . $origin . '</a>', $current_item['content']);
 			}
 		// End rewrite
@@ -180,14 +182,22 @@ class wpematico_campaign_fetch_functions {
 		return $current_item;
 	}
 
-
 	public static function default_template_vars($vars, $current_item, $campaign, $feed, $item, $img_str) {
 		$autor		 = '';
 		$autorlink	 = '';
-		if($author		 = $item->get_author()) {
+		if ($author		 = $item->get_author()) {
 			$autor		 = $author->get_name();
 			$autorlink	 = $author->get_link();
 		}
+
+		$favicon = (method_exists($feed, "get_favicon")) ? $feed->get_favicon() : "";  // 2.6.20.2 xml or other custom feeds does not have icon or its method 
+
+		/**
+		 * wpematico_feed_get_favicon filter
+		 * Allow change the default favicon or assign one 
+		 * Parameter 1: image 
+		 */
+		$favicon = apply_filters('wpematico_feed_get_favicon', $favicon); // <== 2.6.14 New by https://wordpress.org/support/topic/fetching-favicons/#post-15280216 
 
 		$vars = array(
 			'{title}'			 => $current_item['title'],
@@ -200,13 +210,12 @@ class wpematico_campaign_fetch_functions {
 			'{feedtitle}'		 => $feed->get_title(),
 			'{feeddescription}'	 => $feed->get_description(),
 			'{feedlogo}'		 => $feed->get_image_url(),
-		    '{feedfavicon}'		 => apply_filters('wpematico_feed_get_favicon', $feed->get_favicon()), // <== 2.6.14 New by https://wordpress.org/support/topic/fetching-favicons/#post-15280216 
+			'{feedfavicon}'		 => $favicon,
 			'{campaigntitle}'	 => get_the_title($campaign['ID']),
 			'{campaignid}'		 => $campaign['ID'],
 			'{item_date}'		 => (($current_item['date']) ? gmdate(get_option('date_format'), $current_item['date'] + (get_option('gmt_offset') * 3600)) : date_i18n(get_option('date_format'), current_time('timestamp'))),
 			'{item_time}'		 => (($current_item['date']) ? gmdate(get_option('time_format'), $current_item['date'] + (get_option('gmt_offset') * 3600)) : date_i18n(get_option('time_format'), current_time('timestamp'))),
 		);
-
 
 		$template_vars = apply_filters('wpematico_add_template_vars', $vars, $current_item, $campaign, $feed, $item);
 
@@ -229,70 +238,70 @@ class wpematico_campaign_fetch_functions {
 		$w2c_only_use_a_category	 = $campaign['campaign_w2c_only_use_a_category'];
 		$w2c_the_category_most_used	 = $campaign['campaign_w2c_the_category_most_used'];
 		//Proceso Words to Category y si hay las agrego al array
-		if($this->cfg['enableword2cats']) {
-			if(isset($campaign['campaign_wrd2cat']['word']) && (!empty($campaign['campaign_wrd2cat']['word'][0]) ) && (!empty($campaign['campaign_wrd2cat']['w2ccateg'][0]) )
+		if ($this->cfg['enableword2cats']) {
+			if (isset($campaign['campaign_wrd2cat']['word']) && (!empty($campaign['campaign_wrd2cat']['word'][0]) ) && (!empty($campaign['campaign_wrd2cat']['w2ccateg'][0]) )
 			) {
 				trigger_error(sprintf(__('Processing Words to Category %s', 'wpematico'), $current_item['title']), E_USER_NOTICE);
 
-				for($i = 0; $i < count($campaign['campaign_wrd2cat']['word']); $i++) {
+				for ($i = 0; $i < count($campaign['campaign_wrd2cat']['word']); $i++) {
 					$foundit = false;
 					$word	 = stripslashes(htmlspecialchars_decode(@$campaign['campaign_wrd2cat']['word'][$i]));
-					if(isset($campaign['campaign_wrd2cat']['w2ccateg'][$i])) {
+					if (isset($campaign['campaign_wrd2cat']['w2ccateg'][$i])) {
 						$tocat = $campaign['campaign_wrd2cat']['w2ccateg'][$i];
-						if($campaign['campaign_wrd2cat']['regex'][$i]) {
-							if($campaign['campaign_wrd2cat']['title'][$i]) {
+						if ($campaign['campaign_wrd2cat']['regex'][$i]) {
+							if ($campaign['campaign_wrd2cat']['title'][$i]) {
 								$foundit = (preg_match($word, $current_item['title'])) ? true : false;
-							}else {
+							} else {
 								$foundit = (preg_match($word, $current_item['content'])) ? true : false;
 							}
-						}else {
-							if($campaign['campaign_wrd2cat']['cases'][$i]) {
-								if($campaign['campaign_wrd2cat']['title'][$i]) {
+						} else {
+							if ($campaign['campaign_wrd2cat']['cases'][$i]) {
+								if ($campaign['campaign_wrd2cat']['title'][$i]) {
 									$foundit = strpos($current_item['title'], $word);
-								}else {
+								} else {
 									$foundit = strpos($current_item['content'], $word);
 								}
-							}else {
-								if($campaign['campaign_wrd2cat']['title'][$i]) {
+							} else {
+								if ($campaign['campaign_wrd2cat']['title'][$i]) {
 									$foundit = stripos($current_item['title'], $word); //insensible a May/min
-								}else {
+								} else {
 									$foundit = stripos($current_item['content'], $word); //insensible a May/min
 								}
 							}
 						}
-						if($foundit !== false) {
+						if ($foundit !== false) {
 							trigger_error(sprintf(__('Found!: word %s to Cat_id %s', 'wpematico'), $word, $tocat), E_USER_NOTICE);
 							$new_categories[]		 = $tocat;
 							$new_categories_words[]	 = strtolower($word);
-						}else {
+						} else {
 							trigger_error(sprintf(__('Not found word %s', 'wpematico'), $word), E_USER_NOTICE);
 						}
 					}
 				}
 
-				if($w2c_only_use_a_category) {
-					if($w2c_the_category_most_used) {
+				if ($w2c_only_use_a_category) {
+					if ($w2c_the_category_most_used) {
 						trigger_error(__('Searching the category with more words.', 'wpematico'), E_USER_NOTICE);
 						$content_lower				 = strtolower($current_item['content']);
 						$current_words_count		 = 0;
 						$category_with_more_words	 = 0;
-						foreach($new_categories_words as $kw => $search_word) {
+						foreach ($new_categories_words as $kw => $search_word) {
 							$pieces_words	 = explode($search_word, $content_lower);
 							$words_count	 = count($pieces_words);
-							if($words_count > $current_words_count) {
+							if ($words_count > $current_words_count) {
 								$current_words_count = $words_count;
-								if(!empty($new_categories[$kw])) {
+								if (!empty($new_categories[$kw])) {
 									$category_with_more_words = $new_categories[$kw];
 								}
 							}
 						}
-						if(!empty($category_with_more_words)) {
+						if (!empty($category_with_more_words)) {
 							trigger_error(sprintf(__('The category with more words in content: %s', 'wpematico'), $category_with_more_words), E_USER_NOTICE);
 							$new_categories = array($category_with_more_words);
 						}
-					}else {
+					} else {
 						$new_categories = (isset($new_categories[0]) ? array($new_categories[0]) : array());
-						if(isset($new_categories[0])) {
+						if (isset($new_categories[0])) {
 							trigger_error(sprintf(__('Assign the first category: %s', 'wpematico'), $new_categories[0]), E_USER_NOTICE);
 						}
 					}
@@ -302,16 +311,16 @@ class wpematico_campaign_fetch_functions {
 			}
 		} // End Words to Category
 		//Tags
-		if(has_filter('wpematico_pretags'))
+		if (has_filter('wpematico_pretags'))
 			$current_item['campaign_tags'] = apply_filters('wpematico_pretags', $current_item, $item, $this->cfg);
-		if($this->cfg['nonstatic']) {
+		if ($this->cfg['nonstatic']) {
 			$current_item					 = NoNStatic :: postags($current_item, $campaign, $item);
 			$current_item['campaign_tags']	 = $current_item['tags'];
-		}else {
+		} else {
 			$current_item['campaign_tags'] = explode(',', $campaign['campaign_tags']);
 		}
 
-		if(has_filter('wpematico_postags')) {
+		if (has_filter('wpematico_postags')) {
 			$current_item['campaign_tags'] = apply_filters('wpematico_postags', $current_item, $item, $this->cfg);
 		}
 
@@ -336,8 +345,8 @@ class wpematico_campaign_fetch_functions {
 	 */
 	static function getRelativeUrl($baseUrl, $relative) {
 		$schemes = array('http', 'https', 'ftp');
-		foreach($schemes as $scheme) {
-			if(strpos($relative, "{$scheme}://") === 0) //if not relative
+		foreach ($schemes as $scheme) {
+			if (strpos($relative, "{$scheme}://") === 0) //if not relative
 				return $relative;
 		}
 
@@ -348,23 +357,23 @@ class wpematico_campaign_fetch_functions {
 		$resultPath			 = $basepathComponent;
 		$relativeComponent	 = explode('/', $relative);
 		$last				 = array_pop($relativeComponent);
-		foreach($relativeComponent as $com) {
-			if($com === '') {
+		foreach ($relativeComponent as $com) {
+			if ($com === '') {
 				$resultPath = array('');
-			}else if($com == '.') {
+			} else if ($com == '.') {
 				$cur = array_pop($resultPath);
-				if($cur === '') {
+				if ($cur === '') {
 					array_push($resultPath, $cur);
-				}else {
+				} else {
 					array_push($resultPath, '');
 				}
-			}else if($com == '..') {
-				if(count($resultPath) > 1)
+			} else if ($com == '..') {
+				if (count($resultPath) > 1)
 					array_pop($resultPath);
 				array_pop($resultPath);
 				array_push($resultPath, '');
-			}else {
-				if(count($resultPath) > 1)
+			} else {
+				if (count($resultPath) > 1)
 					array_pop($resultPath);
 				array_push($resultPath, $com);
 				array_push($resultPath, '');
@@ -384,17 +393,17 @@ class wpematico_campaign_fetch_functions {
 
 		//if is this same host return 
 		$urlInfo = parse_url($permalink);
-		if(empty($urlInfo['host'])) {
+		if (empty($urlInfo['host'])) {
 			return $permalink;
 		}
-		if($urlInfo['host'] == $_SERVER['SERVER_NAME']) {
+		if ($urlInfo['host'] == $_SERVER['SERVER_NAME']) {
 			return $permalink;
 		}
 
 		//search for redirections
-		if(!$campaign['avoid_search_redirection']) {
+		if (!$campaign['avoid_search_redirection']) {
 
-			if(version_compare(phpversion(), '5.3.0', '>=')) {
+			if (version_compare(phpversion(), '5.3.0', '>=')) {
 				stream_context_set_default(array(
 					'ssl' => array(
 						'verify_peer'		 => false,
@@ -404,14 +413,14 @@ class wpematico_campaign_fetch_functions {
 			}
 
 			$headers = get_headers($permalink);
-			foreach($headers as $header) {
+			foreach ($headers as $header) {
 				$parts = explode(':', $header, 2);
-				if(strtolower($parts[0]) == 'location') {
+				if (strtolower($parts[0]) == 'location') {
 					$location	 = trim($parts[1]);
 					$url_parts	 = parse_url($location);
-					if(!isset($url_parts['host']) && !isset($url_parts['scheme'])) {
+					if (!isset($url_parts['host']) && !isset($url_parts['scheme'])) {
 						$permalink_parts = parse_url($permalink);
-						if(isset($permalink_parts['host']) && isset($permalink_parts['scheme'])) {
+						if (isset($permalink_parts['host']) && isset($permalink_parts['scheme'])) {
 							$location = $permalink_parts['scheme'] . '://' . $permalink_parts['host'] . $location;
 						}
 					}
@@ -430,16 +439,16 @@ class wpematico_campaign_fetch_functions {
 	 * @param   $item           object    SimplePie_Item object
 	 */
 	function Item_images(&$current_item, &$campaign, &$feed, &$item, $options_images) {
-		if($options_images['imgcache']) {
+		if ($options_images['imgcache']) {
 			$itemUrl = $this->current_item['permalink'];
 
-			if(sizeof($current_item['images'])) { // Si hay alguna imagen en el contenido
+			if (sizeof($current_item['images'])) { // Si hay alguna imagen en el contenido
 				trigger_error('<b>' . __('Looking for images in content.', 'wpematico') . '</b>', E_USER_NOTICE);
 				//trigger_error(print_r($current_item['images'],true),E_USER_NOTICE);
 				$featured	 = false;
 				$img_new_url = array();
-				foreach($current_item['images'] as $imagen_src) {
-					if($options_images['featuredimg'] && $current_item['featured_image'] == $imagen_src) {
+				foreach ($current_item['images'] as $imagen_src) {
+					if ($options_images['featuredimg'] && $current_item['featured_image'] == $imagen_src) {
 						$featured = true;
 					}
 					$imagen_src		 = apply_filters('wpematico_imagen_src', $imagen_src); // allow strip parts 
@@ -460,58 +469,58 @@ class wpematico_campaign_fetch_functions {
 					$imagen_dst		 = trailingslashit($upload_dir['path']) . $newimgname;
 					$imagen_dst_url	 = trailingslashit($upload_dir['url']) . $newimgname;
 					trigger_error('Filtering image extensions:' . $allowed, E_USER_NOTICE);
-					if(in_array(str_replace('.', '', strrchr(strtolower($imagen_dst), '.')), explode(',', $allowed))) {   // ----- check allowed extensions
+					if (in_array(str_replace('.', '', strrchr(strtolower($imagen_dst), '.')), explode(',', $allowed))) {   // ----- check allowed extensions
 						trigger_error('Uploading media=' . $imagen_src . ' <b>to</b> image=' . $imagen_dst . '', E_USER_NOTICE);
 						// Check if try custom functions to upload files.
 						$newfile = ($options_images['customupload']) ? WPeMatico::save_file_from_url($imagen_src_real, $imagen_dst) : false;
-						if($newfile) { //If <> false was uploaded
+						if ($newfile) { //If <> false was uploaded
 							trigger_error('Uploaded media=' . $newfile, E_USER_NOTICE);
 							$imagen_dst				 = $newfile;
 							$imagen_dst_url			 = trailingslashit($upload_dir['url']) . basename($newfile);
 							$current_item['content'] = str_replace($imagen_src, $imagen_dst_url, $current_item['content']);
 							do_action('wpematico_new_image_url_uploaded', $imagen_dst_url, $imagen_src, $current_item, $campaign);
 							$img_new_url[]			 = $imagen_dst_url;
-						}else { // Upload fail -> try with others
+						} else { // Upload fail -> try with others
 							$bits = WPeMatico::wpematico_get_contents($imagen_src_real); // Read the file
-							if(!$bits) {
+							if (!$bits) {
 								// Remove the image if its upload fail.
 								trigger_error(__('Upload file failed:', 'wpematico') . $imagen_dst, E_USER_WARNING);
-								if($options_images['gralnolinkimg']) {
+								if ($options_images['gralnolinkimg']) {
 									//	trigger_error( __('Deleted media img.', 'wpematico' ),E_USER_WARNING);
 									$current_item['content'] = self::strip_Image_by_src($imagen_src, $current_item['content']);
 								}
-							}else {
+							} else {
 								$mirror = wp_upload_bits($newimgname, NULL, $bits);
-								if(!$mirror['error']) {
+								if (!$mirror['error']) {
 									trigger_error($mirror['url'], E_USER_NOTICE);
 									$current_item['content'] = str_replace($imagen_src, $mirror['url'], $current_item['content']);
 									do_action('wpematico_new_image_url_uploaded', $mirror['url'], $imagen_src, $current_item, $campaign);
 									$img_new_url[]			 = $mirror['url'];
-								}else {
+								} else {
 									trigger_error('wp_upload_bits error:' . print_r($mirror, true) . '.', E_USER_WARNING);
 									// Si no quiere linkar las img al server borro el link de la imagen
 									trigger_error(__('Upload file failed:', 'wpematico') . $imagen_dst, E_USER_WARNING);
-									if($options_images['gralnolinkimg']) {
+									if ($options_images['gralnolinkimg']) {
 										//	trigger_error( __('Deleted media img.', 'wpematico' ),E_USER_WARNING);
 										$current_item['content'] = self::strip_Image_by_src($imagen_src, $current_item['content']);
 									}
 								}
 							}
 						}
-					}else {
+					} else {
 						trigger_error(__('Extension not allowed: ', 'wpematico') . urldecode($imagen_dst_url), E_USER_WARNING);
-						if($options_images['gralnolinkimg']) { // Si no quiere linkar las img al server borro el link de la imagen
+						if ($options_images['gralnolinkimg']) { // Si no quiere linkar las img al server borro el link de la imagen
 							trigger_error(__('Stripped src.', 'wpematico'), E_USER_WARNING);
 							$current_item['content'] = self::strip_Image_by_src($imagen_src, $current_item['content']);
 						}
 					}
 				}
 				$current_item['images']			 = (array) $img_new_url;
-				if($featured)
+				if ($featured)
 					$current_item['featured_image']	 = $current_item['images'][0]; //change to new url
 			}  // // Si hay alguna imagen en el contenido
-		}else {
-			if(isset($current_item['images']) && sizeof($current_item['images'])) {
+		} else {
+			if (isset($current_item['images']) && sizeof($current_item['images'])) {
 				trigger_error('<b>' . __('Using remotely linked images in content. No changes.', 'wpematico') . '</b>', E_USER_NOTICE);
 			}
 			$current_item['images'] = array();
@@ -545,15 +554,15 @@ class wpematico_campaign_fetch_functions {
 			'post_mime_type' => $wp_filetype['type'],
 			'post_title'	 => preg_replace('/\.[^.]+$/', '', basename($filename)),
 			'post_content'	 => '',
-			'post_author'	 => get_post_field ('post_author', $postid),
+			'post_author'	 => get_post_field('post_author', $postid),
 			'post_status'	 => 'inherit'
 		);
 		trigger_error(__('Attaching file:') . $filename, E_USER_NOTICE);
 		$attach_id		 = wp_insert_attachment($attachment, $relfilename, $postid);
-		if(!$attach_id)
+		if (!$attach_id)
 			trigger_error(__('Sorry, your attach could not be inserted. Something wrong happened.') . print_r($filename, true), E_USER_WARNING);
 
-		if(!function_exists('wp_read_video_metadata') || !function_exists('wp_read_audio_metadata')) {
+		if (!function_exists('wp_read_video_metadata') || !function_exists('wp_read_audio_metadata')) {
 			require_once(ABSPATH . 'wp-admin/includes/media.php');
 		}
 		// must include the image.php file for the function wp_generate_attachment_metadata() to work
@@ -584,28 +593,28 @@ class wpematico_campaign_fetch_functions {
 	 * @since 1.7.2
 	 */
 	function featured_image_selector($current_item, $campaign, $feed, $item, $options_images) {
-		if(isset($campaign['campaign_enable_featured_image_selector']) && $campaign['campaign_enable_featured_image_selector']) {
+		if (isset($campaign['campaign_enable_featured_image_selector']) && $campaign['campaign_enable_featured_image_selector']) {
 			trigger_error('<b>' . __('Executing featured image selector...', 'wpematico') . '</b>', E_USER_NOTICE);
 			$index_selector = (int) $campaign['campaign_featured_selector_index'];
-			if(isset($current_item['images'][$index_selector])) {
+			if (isset($current_item['images'][$index_selector])) {
 				trigger_error('<b>' . sprintf(__('Featured image "%s": %s', 'wpematico'), $index_selector, $current_item['images'][$index_selector]) . '</b>', E_USER_NOTICE);
 				$current_item['featured_image'] = $current_item['images'][$index_selector];
-			}else {
+			} else {
 				trigger_error('<b>' . __('No image was found according to the selected index.', 'wpematico') . '</b>', E_USER_NOTICE);
 				$images_array = $current_item['images'];
-				if(isset($campaign['campaign_featured_selector_ifno']) && $campaign['campaign_featured_selector_ifno'] == 'first') {
+				if (isset($campaign['campaign_featured_selector_ifno']) && $campaign['campaign_featured_selector_ifno'] == 'first') {
 					$first_image = array_shift($images_array);
-					if(empty($first_image)) {
+					if (empty($first_image)) {
 						trigger_error('<b>' . __('The first image was not found in the content.', 'wpematico') . '</b>', E_USER_NOTICE);
-					}else {
+					} else {
 						trigger_error('<b>' . __('Using first image as the featured image.', 'wpematico') . '</b>', E_USER_NOTICE);
 						$current_item['featured_image'] = $first_image;
 					}
-				}else {
+				} else {
 					$last_image = array_pop($images_array);
-					if(empty($last_image)) {
+					if (empty($last_image)) {
 						trigger_error('<b>' . __('The last image was not found in the content.', 'wpematico') . '</b>', E_USER_NOTICE);
-					}else {
+					} else {
 						trigger_error('<b>' . __('Using last image as the featured image.', 'wpematico') . '</b>', E_USER_NOTICE);
 						$current_item['featured_image'] = $last_image;
 					}
@@ -622,19 +631,19 @@ class wpematico_campaign_fetch_functions {
 	 * @param   $item           object    SimplePie_Item object
 	 */
 	function Get_Item_images($current_item, $campaign, $feed, $item, $options_images) {
-		if($options_images['imgcache'] || $options_images['featuredimg']) {
+		if ($options_images['imgcache'] || $options_images['featuredimg']) {
 			//$ItemImages = apply_filters('wpematico_item_images', 'CORE', $current_item, $campaign, $feed, $item, $options_images);
 			$current_parser = apply_filters('wpematico_images_parser', 'default', $current_item, $campaign, $feed, $item, $options_images);
-			if($current_parser != 'default') {
+			if ($current_parser != 'default') {
 				$images = apply_filters('wpematico_images_parser_' . $current_parser, array(), $current_item, $campaign, $feed, $item, $options_images);
-			}else {
+			} else {
 				$images = $this->parseImages($current_item['content'], $options_images);
 			}
 
 			$current_item['images']	 = $images[2];  //List of image URLs
 			$current_item['content'] = $images[3];  //Replaced src by srcset(If exist and with larger images) in images.
 
-			if($this->cfg['nonstatic']) {
+			if ($this->cfg['nonstatic']) {
 				$current_item['images'] = NoNStatic::imgfind($current_item, $campaign, $item);
 			}
 			$current_item['images'] = array_values(array_unique($current_item['images']));
@@ -645,14 +654,14 @@ class wpematico_campaign_fetch_functions {
 			 */
 			$current_item = apply_filters('wpematico_get_item_images', $current_item, $campaign, $item, $options_images);
 
-			foreach($current_item['images'] as $ki => $image) {
+			foreach ($current_item['images'] as $ki => $image) {
 				$new_image_url = urldecode($current_item['images'][$ki]);
 
-				if(strpos($image, '//') === 0) {
+				if (strpos($image, '//') === 0) {
 					$new_image_url = 'http:' . $new_image_url;
 				}
 
-				if($new_image_url != $current_item['images'][$ki]) {
+				if ($new_image_url != $current_item['images'][$ki]) {
 					$current_item['content'] = str_replace($current_item['images'][$ki], $new_image_url, $current_item['content']);
 				}
 				$current_item['images'][$ki] = $new_image_url;
@@ -666,7 +675,6 @@ class wpematico_campaign_fetch_functions {
 	static function parseImages($text, $options_images = array()) {
 		$new_content = $text;
 
-
 		$pattern_img = apply_filters('wpematico_pattern_img', '/<img[^>]+>/i');
 		preg_match_all($pattern_img, $text, $result);
 		$imgstr		 = implode('', $result[0]);
@@ -674,32 +682,29 @@ class wpematico_campaign_fetch_functions {
 		preg_match_all('/<\s*img[^\>]*src\s*=\s*[\""\']?([^\""\'\s>]*)/', $imgstr, $out);
 		$out[2] = $out[1];
 
-
-
-
-		if(isset($options_images['image_srcset']) && $options_images['image_srcset']) {
+		if (isset($options_images['image_srcset']) && $options_images['image_srcset']) {
 			trigger_error(__("Getting srcset attribute...", 'wpematico'), E_USER_NOTICE);
 			$images_array = (empty($result[0]) ? array() : $result[0]);
 
-			foreach($images_array as $img_tag) {
+			foreach ($images_array as $img_tag) {
 				$src_with_srcset = WPeMatico::get_attribute_value('src', $img_tag);
-				if(in_array($src_with_srcset, $out[2])) {
+				if (in_array($src_with_srcset, $out[2])) {
 					$srcset_string	 = WPeMatico::get_attribute_value('srcset', $img_tag);
 					$pieces_srcset	 = explode(',', $srcset_string);
 					$max_width		 = 0;
 					$max_url		 = '';
-					foreach($pieces_srcset as $kps => $piece) {
+					foreach ($pieces_srcset as $kps => $piece) {
 						$piece				 = trim($piece);
 						$pieces_url_srcset	 = explode(' ', $piece);
 						$url_srcset			 = $pieces_url_srcset[0];
 						$with				 = intval($pieces_url_srcset[1]);
-						if($with > $max_width) {
+						if ($with > $max_width) {
 							$max_width	 = $with;
 							$max_url	 = $url_srcset;
 						}
 					}
 
-					if(($key_image = array_search($src_with_srcset, $out[2])) !== FALSE) {
+					if (($key_image = array_search($src_with_srcset, $out[2])) !== FALSE) {
 						$new_image_tag		 = preg_replace('/\s*src\s*=\s*(["\']).*?\1/', 'src="' . $max_url . '"', $img_tag);
 						$new_content		 = str_replace($img_tag, $new_image_tag, $new_content);
 						$out[2][$key_image]	 = $max_url;
@@ -709,28 +714,28 @@ class wpematico_campaign_fetch_functions {
 				}
 			}
 			$array_pictures = WPeMatico::get_tags('picture', $new_content);
-			foreach($array_pictures as $picture_tag) {
+			foreach ($array_pictures as $picture_tag) {
 				$array_sources = WPeMatico::get_tags('source', $picture_tag);
-				foreach($array_sources as $source_tag) {
+				foreach ($array_sources as $source_tag) {
 					$srcset_string = WPeMatico::get_attribute_value('srcset', $source_tag);
-					if(empty($srcset_string)) {
+					if (empty($srcset_string)) {
 						continue;
 					}
 					$pieces_srcset	 = explode(',', $srcset_string);
 					$max_width		 = 0;
 					$max_url		 = '';
-					foreach($pieces_srcset as $kps => $piece) {
+					foreach ($pieces_srcset as $kps => $piece) {
 						$piece				 = trim($piece);
 						$pieces_url_srcset	 = explode(' ', $piece);
 						$url_srcset			 = $pieces_url_srcset[0];
 						$with				 = intval($pieces_url_srcset[1]);
-						if($with > $max_width) {
+						if ($with > $max_width) {
 							$max_width	 = $with;
 							$max_url	 = $url_srcset;
 						}
 					}
 
-					if(!empty($max_url)) {
+					if (!empty($max_url)) {
 						$out[2][] = $max_url;
 					}
 				}
@@ -751,21 +756,21 @@ class wpematico_campaign_fetch_functions {
 		$img_src_real_scaped = addslashes($src);
 		$img_src_real_scaped = addcslashes($img_src_real_scaped, "?.+*");
 
-		if($withlink) {
+		if ($withlink) {
 			$imgtag			 = '|<a(.+?)><img(.+?)src=["\']' . $img_src_real_scaped . '["\'](.*?)><\/a>|';
 			$current_content = preg_replace($imgtag, '', $content);  //for tag img with a
-			if(is_null($current_content)) {
+			if (is_null($current_content)) {
 				trigger_error(sprintf(__("Link with image URI not found in src.", 'wpematico'), '"' . $src . '"'), E_USER_NOTICE);
-			}else {
+			} else {
 				$content = $current_content;
 				trigger_error(sprintf(__("Successfully removed with anchor link.", 'wpematico'), '"' . $src . '"'), E_USER_NOTICE);
 			}
 		}
 		$imgtag			 = '|<img(.+?)src=["\']' . $img_src_real_scaped . '["\'](.*?)>|';
 		$current_content = preg_replace($imgtag, '', $content);  //for tag img without a
-		if(is_null($current_content)) {
+		if (is_null($current_content)) {
 			trigger_error(sprintf(__("Image URI not found in src.", 'wpematico'), '"' . $src . '"'), E_USER_NOTICE);
-		}else {
+		} else {
 			$content = $current_content;
 			trigger_error(sprintf(__("Successfully removed.", 'wpematico'), '"' . $src . '"'), E_USER_NOTICE);
 		}
@@ -780,10 +785,10 @@ class wpematico_campaign_fetch_functions {
 		global $wpematico_fifu_meta;
 		trigger_error(__('Setting up Featured Image From Url', 'wpematico'), E_USER_NOTICE);
 		remove_action('save_post', 'fifu_save_properties');
-		if(!empty($featured_image) && empty($wpematico_fifu_meta)) {
+		if (!empty($featured_image) && empty($wpematico_fifu_meta)) {
 			trigger_error(__('Adding featured image post meta: ', 'wpematico') . $featured_image, E_USER_NOTICE);
 			$featured_image = html_entity_decode(urldecode($featured_image), ENT_NOQUOTES, 'UTF-8');
-			if(function_exists('fifu_is_on') && fifu_is_on('fifu_query_strings')) {
+			if (function_exists('fifu_is_on') && fifu_is_on('fifu_query_strings')) {
 				$featured_image = preg_replace('/\?.*/', '', $featured_image);
 			}
 			$wpematico_fifu_meta					 = array();
@@ -797,9 +802,9 @@ class wpematico_campaign_fetch_functions {
 
 	static function url_meta_set_featured_image_setmeta($current_item, $campaign) {
 		global $wpematico_fifu_meta;
-		if(!empty($wpematico_fifu_meta)) {
+		if (!empty($wpematico_fifu_meta)) {
 			$current_item['meta'] = $wpematico_fifu_meta;
-			add_filter('wpematico_featured_image_attach_id', function() {
+			add_filter('wpematico_featured_image_attach_id', function () {
 				return 1; // avoid log message No Featured image
 			}, 99, 0);
 			add_action('wpematico_inserted_post', array(__CLASS__, 'set_attachment_from_url'), 10, 3);
@@ -809,11 +814,11 @@ class wpematico_campaign_fetch_functions {
 
 	static function set_attachment_from_url($post_id, $campaign, $item) {
 		global $wpematico_fifu_meta;
-		if(!empty($wpematico_fifu_meta) && function_exists('fifu_dev_set_image')) {
+		if (!empty($wpematico_fifu_meta) && function_exists('fifu_dev_set_image')) {
 			trigger_error(__('Fifu save set attachment from URL.', 'wpematico'), E_USER_NOTICE);
 			fifu_dev_set_image($post_id, $wpematico_fifu_meta['fifu_image_url']);
 		}
-		$wpematico_fifu_meta	= array();
+		$wpematico_fifu_meta = array();
 	}
 
 	/*	 * * END Adds featured images from URLs instead of upload them * */
@@ -826,25 +831,25 @@ class wpematico_campaign_fetch_functions {
 	 */
 	public static function strip_links($text, $campaign = array()) {
 		$tags = array();
-		if(!empty($campaign['campaign_strip_links_options'])) {
-			foreach($campaign['campaign_strip_links_options'] as $k => $v) {
-				if($v) {
-					if($k != 'a' && $k != 'strip_domain'){
+		if (!empty($campaign['campaign_strip_links_options'])) {
+			foreach ($campaign['campaign_strip_links_options'] as $k => $v) {
+				if ($v) {
+					if ($k != 'a' && $k != 'strip_domain') {
 						$tags[] = $k;
 					}
 				}
 			}
 		}
-		if(empty($tags) && !$campaign['campaign_strip_links_options']['a']) {
+		if (empty($tags) && !$campaign['campaign_strip_links_options']['a']) {
 			$tags = array('iframe', 'script');
 		}
 
 		$index_script = array_search('script', $tags);
-		if($index_script !== FALSE) {
+		if ($index_script !== FALSE) {
 			$text = WPeMatico::strip_tags_content($text, '<script>', TRUE);
 			unset($tags[$index_script]);
 		}
-		foreach($tags as $tag) {
+		foreach ($tags as $tag) {
 			while (preg_match('/<' . $tag . '(|\W[^>]*)>(.*)<\/' . $tag . '>/iusU', $text, $found)) {
 				$text = str_replace($found[0], $found[2], $text);
 			}
@@ -854,21 +859,21 @@ class wpematico_campaign_fetch_functions {
 
 	public static function strip_links_a($text, $campaign = array()) {
 		$tags = array();
-		if(!empty($campaign['campaign_strip_links_options'])) {
-			foreach($campaign['campaign_strip_links_options'] as $k => $v) {
-				if($v) {
-					if($k != 'script' && $k != 'iframe'){
+		if (!empty($campaign['campaign_strip_links_options'])) {
+			foreach ($campaign['campaign_strip_links_options'] as $k => $v) {
+				if ($v) {
+					if ($k != 'script' && $k != 'iframe') {
 						$tags[] = $k;
 					}
 				}
 			}
 		}
-		
-		if(empty($tags) && !$campaign['campaign_strip_links_options']['script'] && !$campaign['campaign_strip_links_options']['iframe']) {
+
+		if (empty($tags) && !$campaign['campaign_strip_links_options']['script'] && !$campaign['campaign_strip_links_options']['iframe']) {
 			$tags = array('a');
 		}
-		
-		foreach($tags as $tag) {
+
+		foreach ($tags as $tag) {
 			while (preg_match('/<' . $tag . '(|\W[^>]*)>(.*)<\/' . $tag . '>/iusU', $text, $found)) {
 				$text = str_replace($found[0], $found[2], $text);
 			}
@@ -877,27 +882,27 @@ class wpematico_campaign_fetch_functions {
 	}
 
 	static function wpematico_get_yt_rss_tags($content, $campaign, $feed, $item) {
-		if(strpos($feed->feed_url, 'https://www.youtube.com/feeds/videos.xml') !== false) {
-			$ytvideoId	 = $item->get_item_tags('http://www.youtube.com/xml/schemas/2015', 'videoId');
+		if (strpos($feed->feed_url, 'https://www.youtube.com/feeds/videos.xml') !== false) {
+			$ytvideoId = $item->get_item_tags('http://www.youtube.com/xml/schemas/2015', 'videoId');
 			//iframe
-			if(!$campaign['campaign_youtube_embed'] && !$campaign['campaign_youtube_sizes']) {
-				$sizes = 'width="560" height="315"'; 
+			if (!$campaign['campaign_youtube_embed'] && !$campaign['campaign_youtube_sizes']) {
+				$sizes = 'width="560" height="315"';
 			}
-			if(!$campaign['campaign_youtube_embed'] && $campaign['campaign_youtube_sizes']) {
+			if (!$campaign['campaign_youtube_embed'] && $campaign['campaign_youtube_sizes']) {
 				$sizes = ' width="' . $campaign['campaign_youtube_width'] . '" height="' . $campaign['campaign_youtube_height'] . '"';
 			}
 			//embed
-			if($campaign['campaign_youtube_embed'] && $campaign['campaign_youtube_sizes']) {
+			if ($campaign['campaign_youtube_embed'] && $campaign['campaign_youtube_sizes']) {
 				$sizes = ' width="' . $campaign['campaign_youtube_width'] . '" height="' . $campaign['campaign_youtube_height'] . '"';
 			}
-			if($campaign['campaign_youtube_embed'] && !$campaign['campaign_youtube_sizes']) {
+			if ($campaign['campaign_youtube_embed'] && !$campaign['campaign_youtube_sizes']) {
 				$sizes = "";
 			}
-			
-			if($campaign['campaign_youtube_embed']) {
-				$video = "[embed$sizes]https://www.youtube.com/watch?v=". $ytvideoId[0]['data'] . "[/embed]";
-			}else {
-				$video = '<iframe '.$sizes.' src="https://www.youtube.com/embed/' . $ytvideoId[0]['data'] . '" frameborder="0" allowfullscreen></iframe>';
+
+			if ($campaign['campaign_youtube_embed']) {
+				$video = "[embed$sizes]https://www.youtube.com/watch?v=" . $ytvideoId[0]['data'] . "[/embed]";
+			} else {
+				$video = '<iframe ' . $sizes . ' src="https://www.youtube.com/embed/' . $ytvideoId[0]['data'] . '" frameborder="0" allowfullscreen></iframe>';
 			}
 			trigger_error(__("Parsing Youtube video and feed item contents.", 'wpematico'), E_USER_NOTICE);
 			$video		 = apply_filters('wpematico_yt_video', $video);
@@ -907,12 +912,12 @@ class wpematico_campaign_fetch_functions {
 			$description = apply_filters('wpematico_yt_description', $enclosures[0]->description);
 
 			$image_html = "<img src=\"$img\" alt=\"$title\"><br>";
-			if($campaign['campaign_youtube_ign_image']) {
+			if ($campaign['campaign_youtube_ign_image']) {
 				$image_html = "";
 			}
 
 			$description_html = "<p>$description</p>";
-			if($campaign['campaign_youtube_ign_description']) {
+			if ($campaign['campaign_youtube_ign_description']) {
 				$description_html = "";
 			}
 			$content = "$image_html $video $description_html";
@@ -921,13 +926,13 @@ class wpematico_campaign_fetch_functions {
 	}
 
 	public static function wpematico_get_yt_image($current_item, $campaign, $item, $options_images) {
-		if($campaign['campaign_youtube_ign_image']) {
-			if($campaign['campaign_youtube_image_only_featured']) {
+		if ($campaign['campaign_youtube_ign_image']) {
+			if ($campaign['campaign_youtube_image_only_featured']) {
 				$enclosures = $item->get_enclosures();
-				if(!empty($enclosures[0])) {
-					if(!empty($enclosures[0]->thumbnails[0])) {
+				if (!empty($enclosures[0])) {
+					if (!empty($enclosures[0]->thumbnails[0])) {
 						$img = apply_filters('wpematico_yt_thumbnails', $enclosures[0]->thumbnails[0]);
-						if(empty($current_item['images'])) {
+						if (empty($current_item['images'])) {
 							$current_item['images'][] = $img;
 						}
 					}
@@ -946,17 +951,16 @@ class wpematico_campaign_fetch_functions {
 	 * @since 1.7.0
 	 */
 	function Get_Item_Audios($current_item, $campaign, $feed, $item, $options_audios) {
-		if($options_audios['audio_cache']) {
+		if ($options_audios['audio_cache']) {
 			$current_item['audios'] = $this->parseAudios($current_item['content']);
-
 
 			$current_item			 = apply_filters('wpematico_get_item_audios', $current_item, $campaign, $item, $options_audios);
 			//if( $this->cfg['nonstatic'] ) { 
 			//$current_item['audios'] = NoNStatic::find_audios($current_item, $campaign, $item, $options_audios);
 			//}
 			$current_item['audios']	 = array_values(array_unique($current_item['audios']));
-			foreach($current_item['audios'] as $ki => $image) {
-				if(strpos($image, '//') === 0) {
+			foreach ($current_item['audios'] as $ki => $image) {
+				if (strpos($image, '//') === 0) {
 					$current_item['audios'][$ki] = 'http:' . $current_item['audios'][$ki];
 				}
 			}
@@ -976,7 +980,7 @@ class wpematico_campaign_fetch_functions {
 		@$dom->loadHTML($text);
 		$xpath	 = new DomXPath($dom);
 		$nodes	 = $xpath->query('//audio/source');
-		foreach($nodes as $node) {
+		foreach ($nodes as $node) {
 			$audios[] = $node->getAttribute('src');
 		}
 		return $audios;
@@ -1005,13 +1009,13 @@ class wpematico_campaign_fetch_functions {
 	 * @since 1.7.0
 	 */
 	function Item_Audios(&$current_item, &$campaign, &$feed, &$item, $options_audios) {
-		if($options_audios['audio_cache']) {
+		if ($options_audios['audio_cache']) {
 			$itemUrl = $this->current_item['permalink'];
 
-			if(sizeof($current_item['audios'])) { // If exist audios on content.
+			if (sizeof($current_item['audios'])) { // If exist audios on content.
 				trigger_error('<b>' . __('Looking for audios in content.', 'wpematico') . '</b>', E_USER_NOTICE);
 				$audio_new_url_array = array();
-				foreach($current_item['audios'] as $audio_src) {
+				foreach ($current_item['audios'] as $audio_src) {
 
 					trigger_error(__('Uploading media...', 'wpematico') . $audio_src, E_USER_NOTICE);
 					$audio_src_real	 = $this->getRelativeUrl($itemUrl, $audio_src);
@@ -1023,7 +1027,7 @@ class wpematico_campaign_fetch_functions {
 
 					// Compability with WP, Strip Query added by WP ShortCode
 					$audio_src_without_query = $audio_src_real;
-					if(substr($audio_src_without_query, -4) == '?_=1') {
+					if (substr($audio_src_without_query, -4) == '?_=1') {
 						$audio_src_without_query = str_replace('?_=1', '', $audio_src_without_query);
 					}
 					// Store audio.	
@@ -1033,42 +1037,42 @@ class wpematico_campaign_fetch_functions {
 					$audio_dst		 = trailingslashit($upload_dir['path']) . $new_audio_name;
 					$audio_dst_url	 = trailingslashit($upload_dir['url']) . $new_audio_name;
 					trigger_error('Filtering audio extensions:' . $allowed_audio, E_USER_NOTICE);
-					if(in_array(str_replace('.', '', strrchr(strtolower($audio_dst), '.')), explode(',', $allowed_audio))) {   // -------- Controlo extensiones permitidas
+					if (in_array(str_replace('.', '', strrchr(strtolower($audio_dst), '.')), explode(',', $allowed_audio))) {   // -------- Controlo extensiones permitidas
 						trigger_error('Uploading media=' . $audio_src . ' <b>to</b> audio_dst=' . $audio_dst . '', E_USER_NOTICE);
 						$newfile = false;
-						if($this->cfg['nonstatic'] && $options_audios['upload_ranges']) {
+						if ($this->cfg['nonstatic'] && $options_audios['upload_ranges']) {
 							$newfile = NoNStatic::partial_upload_file($audio_src_real, $audio_dst, $options_audios);
 						}
 
-						if($options_audios['customupload_audios'] && !$newfile) {
+						if ($options_audios['customupload_audios'] && !$newfile) {
 							$newfile = WPeMatico::save_file_from_url($audio_src_real, $audio_dst);
 						}
 
-						if($newfile) { //subió
+						if ($newfile) { //subió
 							trigger_error('Uploaded media=' . $newfile, E_USER_NOTICE);
 							$audio_dst				 = $newfile;
 							$audio_dst_url			 = trailingslashit($upload_dir['url']) . basename($newfile);
 							$current_item['content'] = str_replace($audio_src, $audio_dst_url, $current_item['content']);
 							$audio_new_url_array[]	 = $audio_dst_url;
-						}else { // falló -> intento con otros
+						} else { // falló -> intento con otros
 							$bits	 = WPeMatico::wpematico_get_contents($audio_src_real);
 							$mirror	 = wp_upload_bits($new_audio_name, NULL, $bits);
-							if(!$mirror['error']) {
+							if (!$mirror['error']) {
 								trigger_error($mirror['url'], E_USER_NOTICE);
 								$current_item['content'] = str_replace($audio_src, $mirror['url'], $current_item['content']);
 								$audio_new_url_array[]	 = $mirror['url'];
-							}else {
+							} else {
 								trigger_error('wp_upload_bits error:' . print_r($mirror, true) . '.', E_USER_WARNING);
 								// Si no quiere linkar los audios al server borro el link de la audio
 								trigger_error(__('Upload file failed:', 'wpematico') . $audio_dst, E_USER_WARNING);
-								if($options_audios['gralnolink_audio']) {
+								if ($options_audios['gralnolink_audio']) {
 									$current_item['content'] = $this->strip_Audio_by_src($audio_src, $current_item['content']);
 								}
 							}
 						}
-					}else {
+					} else {
 						trigger_error(__('Extension not allowed: ', 'wpematico') . urldecode($audio_dst_url), E_USER_WARNING);
-						if($options_audios['gralnolink_audio']) { // Si no quiere linkar las img al server borro el link de la imagen
+						if ($options_audios['gralnolink_audio']) { // Si no quiere linkar las img al server borro el link de la imagen
 							trigger_error(__('Stripped src.', 'wpematico'), E_USER_WARNING);
 							$current_item['content'] = $this->strip_Audio_by_src($audio_src, $current_item['content']);
 						}
@@ -1076,8 +1080,8 @@ class wpematico_campaign_fetch_functions {
 				}
 				$current_item['audios'] = (array) $audio_new_url_array;
 			}  // // Si hay alguna imagen en el contenido
-		}else {
-			if(isset($current_item['audios']) && sizeof($current_item['audios'])) {
+		} else {
+			if (isset($current_item['audios']) && sizeof($current_item['audios'])) {
 				trigger_error('<b>' . __('Using remotely linked audios in content. No changes.', 'wpematico') . '</b>', E_USER_NOTICE);
 			}
 			$current_item['audios'] = array();
@@ -1096,9 +1100,8 @@ class wpematico_campaign_fetch_functions {
 	 * @since 1.7.0
 	 */
 	function Get_Item_Videos($current_item, $campaign, $feed, $item, $options_videos) {
-		if($options_videos['video_cache']) {
+		if ($options_videos['video_cache']) {
 			$current_item['videos'] = $this->parseVideos($current_item['content']);
-
 
 			$current_item = apply_filters('wpematico_get_item_videos', $current_item, $campaign, $item, $options_videos);
 
@@ -1106,8 +1109,8 @@ class wpematico_campaign_fetch_functions {
 			//$current_item['videos'] = NoNStatic::find_videos($current_item, $campaign,$item, $options_videos);
 			//}
 			$current_item['videos'] = array_values(array_unique($current_item['videos']));
-			foreach($current_item['videos'] as $ki => $image) {
-				if(strpos($image, '//') === 0) {
+			foreach ($current_item['videos'] as $ki => $image) {
+				if (strpos($image, '//') === 0) {
 					$current_item['videos'][$ki] = 'http:' . $current_item['videos'][$ki];
 				}
 			}
@@ -1127,7 +1130,7 @@ class wpematico_campaign_fetch_functions {
 		@$dom->loadHTML($text);
 		$xpath	 = new DomXPath($dom);
 		$nodes	 = $xpath->query('//video/source');
-		foreach($nodes as $node) {
+		foreach ($nodes as $node) {
 			$videos[] = $node->getAttribute('src');
 		}
 		return $videos;
@@ -1156,13 +1159,13 @@ class wpematico_campaign_fetch_functions {
 	 * @since 1.7.0
 	 */
 	function Item_Videos(&$current_item, &$campaign, &$feed, &$item, $options_videos) {
-		if($options_videos['video_cache']) {
+		if ($options_videos['video_cache']) {
 			$itemUrl = $this->current_item['permalink'];
 
-			if(sizeof($current_item['videos'])) { // If exist videos on content.
+			if (sizeof($current_item['videos'])) { // If exist videos on content.
 				trigger_error('<b>' . __('Looking for videos in content.', 'wpematico') . '</b>', E_USER_NOTICE);
 				$video_new_url_array = array();
-				foreach($current_item['videos'] as $video_src) {
+				foreach ($current_item['videos'] as $video_src) {
 
 					trigger_error(__('Uploading media...', 'wpematico') . $video_src, E_USER_NOTICE);
 					$video_src_real	 = $this->getRelativeUrl($itemUrl, $video_src);
@@ -1174,7 +1177,7 @@ class wpematico_campaign_fetch_functions {
 
 					// Compability with WP, Strip Query added by WP ShortCode
 					$video_src_without_query = $video_src_real;
-					if(substr($video_src_without_query, -4) == '?_=1') {
+					if (substr($video_src_without_query, -4) == '?_=1') {
 						$video_src_without_query = str_replace('?_=1', '', $video_src_without_query);
 					}
 					// Store video.	
@@ -1184,43 +1187,43 @@ class wpematico_campaign_fetch_functions {
 					$video_dst		 = trailingslashit($upload_dir['path']) . $new_video_name;
 					$video_dst_url	 = trailingslashit($upload_dir['url']) . $new_video_name;
 					trigger_error('Filtering video extensions:' . $allowed_video, E_USER_NOTICE);
-					if(in_array(str_replace('.', '', strrchr(strtolower($video_dst), '.')), explode(',', $allowed_video))) {   // -------- Controlo extensiones permitidas
+					if (in_array(str_replace('.', '', strrchr(strtolower($video_dst), '.')), explode(',', $allowed_video))) {   // -------- Controlo extensiones permitidas
 						trigger_error('Uploading media=' . $video_src . ' <b>to</b> video_dst=' . $video_dst . '', E_USER_NOTICE);
 						$newfile = false;
 
-						if($this->cfg['nonstatic'] && $options_videos['upload_ranges']) {
+						if ($this->cfg['nonstatic'] && $options_videos['upload_ranges']) {
 							$newfile = NoNStatic::partial_upload_file($video_src_real, $video_dst, $options_videos);
 						}
 
-						if($options_videos['customupload_videos'] && !$newfile) {
+						if ($options_videos['customupload_videos'] && !$newfile) {
 							$newfile = WPeMatico::save_file_from_url($video_src_real, $video_dst);
 						}
 
-						if($newfile) { //subió
+						if ($newfile) { //subió
 							trigger_error('Uploaded media=' . $newfile, E_USER_NOTICE);
 							$video_dst				 = $newfile;
 							$video_dst_url			 = trailingslashit($upload_dir['url']) . basename($newfile);
 							$current_item['content'] = str_replace($video_src, $video_dst_url, $current_item['content']);
 							$video_new_url_array[]	 = $video_dst_url;
-						}else { // falló -> intento con otros
+						} else { // falló -> intento con otros
 							$bits	 = WPeMatico::wpematico_get_contents($video_src_real);
 							$mirror	 = wp_upload_bits($new_video_name, NULL, $bits);
-							if(!$mirror['error']) {
+							if (!$mirror['error']) {
 								trigger_error($mirror['url'], E_USER_NOTICE);
 								$current_item['content'] = str_replace($video_src, $mirror['url'], $current_item['content']);
 								$video_new_url_array[]	 = $mirror['url'];
-							}else {
+							} else {
 								trigger_error('wp_upload_bits error:' . print_r($mirror, true) . '.', E_USER_WARNING);
 								// Si no quiere linkar los videos al server borro el link de la video
 								trigger_error(__('Upload file failed:', 'wpematico') . $video_dst, E_USER_WARNING);
-								if($options_videos['gralnolink_video']) {
+								if ($options_videos['gralnolink_video']) {
 									$current_item['content'] = $this->strip_Video_by_src($video_src, $current_item['content']);
 								}
 							}
 						}
-					}else {
+					} else {
 						trigger_error(__('Extension not allowed: ', 'wpematico') . urldecode($video_dst_url), E_USER_WARNING);
-						if($options_videos['gralnolink_video']) { // Si no quiere linkar las img al server borro el link de la imagen
+						if ($options_videos['gralnolink_video']) { // Si no quiere linkar las img al server borro el link de la imagen
 							trigger_error(__('Stripped src.', 'wpematico'), E_USER_WARNING);
 							$current_item['content'] = $this->strip_Video_by_src($video_src, $current_item['content']);
 						}
@@ -1228,8 +1231,8 @@ class wpematico_campaign_fetch_functions {
 				}
 				$current_item['videos'] = (array) $video_new_url_array;
 			}  // // Si hay alguna imagen en el contenido
-		}else {
-			if(isset($current_item['videos']) && sizeof($current_item['videos'])) {
+		} else {
+			if (isset($current_item['videos']) && sizeof($current_item['videos'])) {
 				trigger_error('<b>' . __('Using remotely linked videos in content. No changes.', 'wpematico') . '</b>', E_USER_NOTICE);
 			}
 			$current_item['videos'] = array();

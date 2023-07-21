@@ -240,6 +240,7 @@ You can send your files to e-mail wpematico [at] etruel.com
 = 2.6.20.2 Jul 21, 2023 =
 * Bump to WP 6.3
 * New video on WordPress main plugin page.
+* Fixes get_favicon Fatal Error for XML campaign types (https://github.com/etruel/wpematico/issues/53)
 
 = 2.6.20.1 May 26, 2023 =
 * Fixes print credits on posts contents.
@@ -401,4 +402,4 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 == Upgrade Notice ==
 
 = 2.6.20 =
-Compatibility with WordPress 6.2.2
+Compatibility with WordPress 6.3
