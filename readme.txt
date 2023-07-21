@@ -3,7 +3,7 @@ Contributors: etruel, sniuk, khaztiel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,RSS to Post,Feed to Post,XML to post,autoblog,rss aggregator,Feed,rss to post,syndication,xml import,Post,Posts,aggregation,atom,bot,content,writing
 Requires at least: 4.8
-Tested up to: 6.2.2
+Tested up to: 6.3
 Requires PHP: 5.6
 Stable tag: trunk
 License: GPLv2 or later
@@ -15,7 +15,7 @@ WPeMatico is a very easy to use autoblogging plugin. Organized into campaigns, i
 
 This plugin offers you a nice interface following the WordPress standards that allows you to manage in every campaign all the feeds you import. In order to make your site more user-friendly, you can fetch contents from multiple feeds and arrange them according to categories.
 
-[youtube https://www.youtube.com/watch?v=N9wuKSbp1AE]
+[youtube https://www.youtube.com/watch?v=HjVcUzF-FYs]
 
 
 For XML and RSS fetching, it uses the Simplepie library included in Wordpress or forces to use the external library included in the plugin. As for image and files processing, it uses the core functions of Wordpress.
@@ -108,6 +108,7 @@ You can submit any bug in the [bugtracker](https://github.com/etruel/wpematico/i
 > * Includes the editing for a config file for *one* website for Full Content Add-on.
 
 ---
+
 **[Flash Cache](https://wordpress.org/plugins/flash-cache/):** If you need a very good and WPeMatico compatible Cache plugin take a look at this FREE plugin. Improves the velocity till 10x comparing with with other cache plugins for WordPress.
 
 
@@ -221,21 +222,25 @@ We want to thank the WordPress.org plugins moderators as they helped us by marki
 
 You can contribute with WPeMatico:
 
-Don't hesitate to [give your feedback](https://wordpress.org/support/view/plugin-reviews/wpematico#new-post). It will help making the plugin better. Other contributions (such as new translations or helping other users on the support forum) are welcome !
+Don't hesitate to [give your feedback](https://wordpress.org/support/view/plugin-reviews/wpematico#new-post). It will help making the plugin better.
 
-[nikolovtmw](https://bitbucket.org/nikolovtmw/) has reported the Deprecated Synchronous XMLHttpRequest and provided the code to solve it! Thanks!
+### Translations
 
-Features supported by Thomas from [Invade It](https://www.invadeit.co.th): Filter images by width or height.
+Many thanks to the generous efforts of our translators:
 
-Eli from [Eli the Computer Guy](https://www.elithecomputerguy.com/). There’s an excelent video on Youtube [Use WPeMatico to Create a Free WordPress AutoBlog for Legitimate Purposes](https://www.youtube.com/watch?v=CX22kAeUKY8) 
-Later I've added subtitles and added it above in this page.
+Romanian & Slovak --> Branco [WebHostingGeeks.com](https://webhostinggeeks.com/user-reviews/).  
 
-Branco [WebHostingGeeks.com](https://webhostinggeeks.com/user-reviews/).  Romanian & Slovak languages files.
+If you'd like to help out by translating this plugin, please [sign up for an account and dig in](https://translate.wordpress.org/projects/wp-plugins/wpematico).
 
 We are receiving tutorials in text, pdf, videos and ideas for current and new features. All are welcome. Thank you!
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
+
+= 2.6.20.2 Jul 21, 2023 =
+* Bump to WP 6.3
+* New video on WordPress main plugin page.
+
 = 2.6.20.1 May 26, 2023 =
 * Fixes print credits on posts contents.
 
