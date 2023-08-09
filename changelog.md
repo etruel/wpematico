@@ -27,7 +27,7 @@ This version launches a series of changes, additions and new features working wi
 
 =  Aug 09, 2023 =
 
-* Fix deprecated in the WpeMatico About screen 
+* Fixed deprecated in WPeMatico About screen
 
 = 2.5.2.7 May 09, 2020 =
 
