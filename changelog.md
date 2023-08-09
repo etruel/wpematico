@@ -25,6 +25,10 @@ This version launches a series of changes, additions and new features working wi
 > * Added support in Settings screen to select images, audio y video extensions allowed to upload with WP mime types as guide.
 > * **Enlarges the version required for the Professional addon to 2.6**
 
+=  Aug 09, 2023 =
+
+* Fix deprecated in the Wpematico About screen 
+
 = 2.5.2.7 May 09, 2020 =
 
 * Added option to fill the excerpt field with the description of the feed item. 
