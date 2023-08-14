@@ -171,7 +171,6 @@ function wpematico_activate_deactivate_plugins() {
 
 	// Get the querys params 
 	parse_str($parsed_url['query'], $query_params);
-	WPeMatico_functions::add_wp_notice('TTest');
 	$action = isset($query_params['action']) ? $query_params['action'] : '';
 	if(in_array($action, $accepted_actions)){
 		if($action === 'deactivate'){
