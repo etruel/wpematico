@@ -150,9 +150,9 @@ function WPeAddon_admin_head() {
 		<?php
 
 	}
-}
+}// WPeMatico_functions::add_wp_notice('Your plugin was activated successfully');
 
-add_action('admin_init', 'wpematico_activate_deactivate_plugins', 0);
+add_action('admin_init', 'wpematico_activate_deactivate_plugins', 2);
 
 function wpematico_activate_deactivate_plugins() {
 	global $plugins, $status, $wp_list_table;
@@ -160,16 +160,26 @@ function wpematico_activate_deactivate_plugins() {
 		define('WPEM_ADMIN_DIR', ABSPATH . basename(admin_url()));
 	}
 	$accepted_actions	 = array();
-	$accepted_actions[]	 = 'deactivate-selected';
-	$accepted_actions[]	 = 'activate-selected';
+	$accepted_actions[]	 = 'deactivate';
+	$accepted_actions[]	 = 'activate';
+	
+	// Get the current whole URL
+	$current_url = esc_url_raw(wp_unslash($_SERVER['REQUEST_URI']));
 
-	if (isset($_REQUEST['checked']) && isset($_REQUEST['page']) && $_REQUEST['page'] == 'wpemaddons' && in_array($_REQUEST['action'], $accepted_actions) !== false) {
-		$status			 = 'all';
-		$page			 = (!isset($page) or is_null($page)) ? 1 : $page;
-		$plugins['all']	 = get_plugins();
+	// Get the params and componets of the URL
+	$parsed_url = parse_url($current_url);
 
-		require WPEM_ADMIN_DIR . '/plugins.php';
-		exit;
+	// Get the querys params 
+	parse_str($parsed_url['query'], $query_params);
+	WPeMatico_functions::add_wp_notice('TTest');
+	$action = isset($query_params['action']) ? $query_params['action'] : '';
+	if(in_array($action, $accepted_actions)){
+		if($action === 'deactivate'){
+			WPeMatico_functions::add_wp_notice('The extension was desactivated successfully');
+		}
+		elseif($action === 'activate'){
+			WPeMatico_functions::add_wp_notice('The extension was activated successfully');
+		}
 	}
 }
 
