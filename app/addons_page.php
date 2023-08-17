@@ -150,9 +150,7 @@ function WPeAddon_admin_head() {
 		<?php
 
 	}
-}// WPeMatico_functions::add_wp_notice('Your plugin was activated successfully');
-
-add_action('admin_init', 'wpematico_activate_deactivate_plugins', 2);
+add_action('admin_init', 'wpematico_activate_deactivate_plugins', 0);
 
 function wpematico_activate_deactivate_plugins() {
 	global $plugins, $status, $wp_list_table;
@@ -170,7 +168,10 @@ function wpematico_activate_deactivate_plugins() {
 	$parsed_url = parse_url($current_url);
 
 	// Get the querys params 
-	parse_str($parsed_url['query'], $query_params);
+	if (isset($parsed_url['query'])) {
+		parse_str($parsed_url['query'], $query_params);
+		// Continue using $query_params
+	}
 	$action = isset($query_params['action']) ? $query_params['action'] : '';
 	if(in_array($action, $accepted_actions)){
 		if($action === 'deactivate'){
@@ -432,4 +433,5 @@ function read_wpem_addons($plugins) {
 	$plugins = array_merge_recursive($plugins, $cached);
 
 	return $plugins;
+}
 }
