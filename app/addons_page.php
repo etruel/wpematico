@@ -124,7 +124,6 @@ function WPeAddon_admin_head() {
 		?>
 		<script type="text/javascript">
 			jQuery(document).ready(function ($) {
-				$('.wrap h1').html('WPeMatico Add-Ons Plugins');
 				var $all = $('.subsubsub .all a').attr('href');
 				var $act = $('.subsubsub .active a').attr('href');
 				var $ina = $('.subsubsub .inactive a').attr('href');
@@ -182,28 +181,24 @@ function wpematico_activate_deactivate_plugins() {
 		}
 	}
 }
-
 function add_admin_plugins_page() {
-	if (!defined('WPEM_ADMIN_DIR')) {
-		define('WPEM_ADMIN_DIR', ABSPATH . basename(admin_url()));
-	}
-
-	if (!class_exists('WP_List_Table')) {
-		require_once WPEM_ADMIN_DIR . '/includes/class-wp-list-table.php';
-	}
-
+	global $s;
 	if (!class_exists('WP_Plugins_List_Table')) {
-		require WPEM_ADMIN_DIR . '/includes/class-wp-plugins-list-table.php';
-	}
-
-	global $plugins, $status, $wp_list_table;
-	$status			 = 'all';
-	$page			 = (!isset($page) or is_null($page)) ? 1 : $page;
-	$plugins['all']	 = get_plugins();
-	wp_update_plugins();
-	wp_clean_plugins_cache(false);
-	require WPEM_ADMIN_DIR . '/plugins.php';
-	exit;
+        require_once ABSPATH . 'wp-admin/includes/class-wp-plugins-list-table.php';
+    }
+	$s = '';
+    $plugins_list_table = new WP_Plugins_List_Table();
+    $plugins_list_table->prepare_items();
+    
+    echo '<div class="wrap">';
+    echo '<h1 class="wp-heading-inline">'.__('WPeMatico Add-Ons Plugins', 'wpematico').'</h1>';
+    
+    // Output the list table HTML
+    $plugins_list_table->views();
+    $plugins_list_table->search_box('Search Plugins', 'plugin-search-input');
+    $plugins_list_table->display();
+    
+    echo '</div>';
 }
 
 add_filter("manage_plugins_page_wpemaddons_columns", 'wpematico_addons_get_columns');
@@ -346,7 +341,8 @@ function wpematico_addons_row_actions($actions, $plugin_file, $plugin_data, $con
 }
 
 function wpematico_get_addons_maybe_fetch() {
-	$cached = get_transient('etruel_wpematico_addons_data');
+	// $cached = get_transient('etruel_wpematico_addons_data');
+	$cached = '';
 	if (!isset($cached) || !is_array($cached)) { // If no cache read source feed
 		$urls_addon	 = 'http://etruel.com/downloads/category/wpematico-add-ons/feed/';
 		$addonitems	 = WPeMatico::fetchFeed($urls_addon, true, 100);
