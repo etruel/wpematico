@@ -192,7 +192,7 @@ function add_admin_plugins_page() {
     
     echo '<div class="wrap">';
     echo '<h1 class="wp-heading-inline">'.__('WPeMatico Add-Ons Plugins', 'wpematico').'</h1>';
-    
+    echo '<hr class="wp-header-end">';
     // Output the list table HTML
     $plugins_list_table->views();
     $plugins_list_table->search_box('Search Plugins', 'plugin-search-input');
@@ -341,55 +341,56 @@ function wpematico_addons_row_actions($actions, $plugin_file, $plugin_data, $con
 }
 
 function wpematico_get_addons_maybe_fetch() {
-	$cached = get_transient('etruel_wpematico_addons_data');
+	$cached = '';
 	if (!isset($cached) || !is_array($cached)) { // If no cache read source feed
 		$urls_addon	 = 'http://etruel.com/downloads/category/wpematico-add-ons/feed/';
-		$addonitems	 = WPeMatico::fetchFeed($urls_addon, true, 100);
-
+		$addonitems	 = fetch_feed($urls_addon, true, 100);
 		$addon = array();
-		foreach ($addonitems->get_items() as $item) {
-			$itemtitle	 = $item->get_title();
-			$versions	 = $item->get_item_tags('', 'version');
-			$version	 = (is_array($versions)) ? $versions[0]['data'] : '';
-			$memberships = $item->get_item_tags('', 'membership');
-			$memberships = (is_array($memberships)) ? array_column($memberships, 'data') : [];
+		if(!is_wp_error($addonitems)){
+			foreach ($addonitems->get_items() as $item) {
+				$itemtitle	 = $item->get_title();
+				$versions	 = $item->get_item_tags('', 'version');
+				$version	 = (is_array($versions)) ? $versions[0]['data'] : '';
+				$memberships = $item->get_item_tags('', 'membership');
+				$memberships = (is_array($memberships)) ? array_column($memberships, 'data') : [];
 
-			$guid		 = $item->get_item_tags('', 'guid');
-			$guid		 = (is_array($guid)) ? $guid[0]['data'] : '';
-			$download_id = 0;
-			wp_parse_str($guid, $query);
-			if (isset($query) && !empty($query)) {
-				if (isset($query['p'])) {
-					$download_id = $query['p'];
+				$guid		 = $item->get_item_tags('', 'guid');
+				$guid		 = (is_array($guid)) ? $guid[0]['data'] : '';
+				$download_id = 0;
+				wp_parse_str($guid, $query);
+				if (isset($query) && !empty($query)) {
+					if (isset($query['p'])) {
+						$download_id = $query['p'];
+					}
 				}
-			}
 
-			$plugindirname			 = str_replace('-', '_', strtolower(sanitize_file_name($itemtitle)));
-			$img					 = $item->get_enclosure()->link;
-			$icon					 = "<img width=\"100\" src=\"$img\" alt=\"$itemtitle\">";
-			$addon[$plugindirname]	 = Array(
-				'Name'			 => $itemtitle,
-				'icon'			 => $icon,
-				'PluginURI'		 => $item->get_permalink(),
-				'buynowURI'		 => 'https://etruel.com/checkout?edd_action=add_to_cart&download_id=' . $download_id . '&edd_options[price_id]=2',
-				'Version'		 => $version, // $item->get_date('U'),
-				'Description'	 => $item->get_description(),
-				'Author'		 => 'Etruel Developments LLC',
-				'AuthorURI'		 => 'https://etruel.com',
-				'TextDomain'	 => '',
-				'DomainPath'	 => '',
-				'Network'		 => '',
-				'Title'			 => $itemtitle,
-				'AuthorName'	 => 'etruel',
-				'Remote'		 => true,
-				'memberships'	 => $memberships,
-				'id'			 => $download_id
-			);
+				$plugindirname			 = str_replace('-', '_', strtolower(sanitize_file_name($itemtitle)));
+				$img					 = $item->get_enclosure()->link;
+				$icon					 = "<img width=\"100\" src=\"$img\" alt=\"$itemtitle\">";
+				$addon[$plugindirname]	 = Array(
+					'Name'			 => $itemtitle,
+					'icon'			 => $icon,
+					'PluginURI'		 => $item->get_permalink(),
+					'buynowURI'		 => 'https://etruel.com/checkout?edd_action=add_to_cart&download_id=' . $download_id . '&edd_options[price_id]=2',
+					'Version'		 => $version, // $item->get_date('U'),
+					'Description'	 => $item->get_description(),
+					'Author'		 => 'Etruel Developments LLC',
+					'AuthorURI'		 => 'https://etruel.com',
+					'TextDomain'	 => '',
+					'DomainPath'	 => '',
+					'Network'		 => '',
+					'Title'			 => $itemtitle,
+					'AuthorName'	 => 'etruel',
+					'Remote'		 => true,
+					'memberships'	 => $memberships,
+					'id'			 => $download_id
+				);
+			}
+			$addons	 = apply_filters('etruel_wpematico_addons_array', array_filter($addon));
+			$length	 = apply_filters('etruel_wpematico_addons_transient_length', DAY_IN_SECONDS * 5);
+			set_transient('etruel_wpematico_addons_data', $addons, $length);
+			$cached	 = $addons;
 		}
-		$addons	 = apply_filters('etruel_wpematico_addons_array', array_filter($addon));
-		$length	 = apply_filters('etruel_wpematico_addons_transient_length', DAY_IN_SECONDS * 5);
-		set_transient('etruel_wpematico_addons_data', $addons, $length);
-		$cached	 = $addons;
 	}
 	return $cached;
 }
