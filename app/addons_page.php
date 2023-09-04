@@ -341,10 +341,10 @@ function wpematico_addons_row_actions($actions, $plugin_file, $plugin_data, $con
 }
 
 function wpematico_get_addons_maybe_fetch() {
-	$cached = '';
+	// $cached = get_transient('etruel_wpematico_addons_data');
 	if (!isset($cached) || !is_array($cached)) { // If no cache read source feed
 		$urls_addon	 = 'http://etruel.com/downloads/category/wpematico-add-ons/feed/';
-		$addonitems	 = fetch_feed($urls_addon, true, 100);
+		$addonitems	 = WPeMatico::fetchFeed($urls_addon, true, 200);
 		$addon = array();
 		if(!is_wp_error($addonitems)){
 			foreach ($addonitems->get_items() as $item) {
