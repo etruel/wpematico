@@ -341,7 +341,7 @@ function wpematico_addons_row_actions($actions, $plugin_file, $plugin_data, $con
 }
 
 function wpematico_get_addons_maybe_fetch() {
-	// $cached = get_transient('etruel_wpematico_addons_data');
+	$cached = get_transient('etruel_wpematico_addons_data');
 	if (!isset($cached) || !is_array($cached)) { // If no cache read source feed
 		$urls_addon	 = 'http://etruel.com/downloads/category/wpematico-add-ons/feed/';
 		$addonitems	 = WPeMatico::fetchFeed($urls_addon, true, 200);
