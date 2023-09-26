@@ -86,7 +86,10 @@ class WPEMATICO_Welcome {
 
 
 		// Now remove them from the menus so plugins that allow customizing the admin menu don't show them
-//		remove_submenu_page( 'index.php', 'wpematico-about' );
+		// remove_submenu_page( 'index.php', 'wpematico-about' );
+		remove_submenu_page('index.php', 'wpematico-changelog');
+		remove_submenu_page('index.php', 'wpematico-getting-started');
+		remove_submenu_page('index.php', 'wpematico-privacy');
 		
 	}
 	
@@ -173,9 +176,6 @@ class WPEMATICO_Welcome {
 			</style>
 			<?php
 		}
-		remove_submenu_page('index.php', 'wpematico-changelog');
-		remove_submenu_page('index.php', 'wpematico-getting-started');
-		remove_submenu_page('index.php', 'wpematico-privacy');
 	}
 
 	/**

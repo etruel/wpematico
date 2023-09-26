@@ -149,6 +149,7 @@ function WPeAddon_admin_head() {
 		<?php
 
 	}
+}
 add_action('admin_init', 'wpematico_activate_deactivate_plugins', 0);
 
 function wpematico_activate_deactivate_plugins() {
@@ -429,5 +430,4 @@ function read_wpem_addons($plugins) {
 	$plugins = array_merge_recursive($plugins, $cached);
 
 	return $plugins;
-}
 }
