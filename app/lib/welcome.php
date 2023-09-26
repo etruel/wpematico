@@ -86,10 +86,7 @@ class WPEMATICO_Welcome {
 
 
 		// Now remove them from the menus so plugins that allow customizing the admin menu don't show them
-		// remove_submenu_page( 'index.php', 'wpematico-about' );
-		remove_submenu_page('index.php', 'wpematico-changelog');
-		remove_submenu_page('index.php', 'wpematico-getting-started');
-		remove_submenu_page('index.php', 'wpematico-privacy');
+//		remove_submenu_page( 'index.php', 'wpematico-about' );
 		
 	}
 	
@@ -103,6 +100,10 @@ class WPEMATICO_Welcome {
 	 */
 	public function admin_head() {
 		global $current_screen;
+
+		remove_submenu_page('index.php', 'wpematico-changelog');
+		remove_submenu_page('index.php', 'wpematico-getting-started');
+		remove_submenu_page('index.php', 'wpematico-privacy');
 		//$current_screen = get_current_screen();
 		if (!is_null($current_screen) && ($current_screen->id == "dashboard_page_wpematico-about" || $current_screen->id == "dashboard_page_wpematico-getting-started" || $current_screen->id == "dashboard_page_wpematico-changelog" || $current_screen->id == "dashboard_page_wpematico-privacy")) {
 			?>
