@@ -343,7 +343,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		}
 
 		if($this->cfg['nonstatic']){
-			$this->current_item = apply_filters('wpematico_campaign_cut_custom_title', $this->current_item, $this->campaign, $item, $realcount);
+			$this->current_item = apply_filters('wpematico_get_post_title', $this->current_item, $this->campaign, $item, $realcount);
 		}else{
 			$this->current_item['title'] = esc_attr($this->current_item['title']);
 		}
