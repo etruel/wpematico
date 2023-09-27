@@ -692,7 +692,7 @@ if (!class_exists('WPeMatico_functions')) {
 		 * 	   ['text'] The Text to be displayed. Default = ''
 		 * 
 		 */
-		Public static function add_wp_notice($new_notice) {
+		public static function add_wp_notice($new_notice) {
 			if (is_string($new_notice))
 				$adm_notice['text'] = $new_notice;
 			else

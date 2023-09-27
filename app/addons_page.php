@@ -124,7 +124,6 @@ function WPeAddon_admin_head() {
 		?>
 		<script type="text/javascript">
 			jQuery(document).ready(function ($) {
-				$('.wrap h1').html('WPeMatico Add-Ons Plugins');
 				var $all = $('.subsubsub .all a').attr('href');
 				var $act = $('.subsubsub .active a').attr('href');
 				var $ina = $('.subsubsub .inactive a').attr('href');
@@ -151,7 +150,6 @@ function WPeAddon_admin_head() {
 
 	}
 }
-
 add_action('admin_init', 'wpematico_activate_deactivate_plugins', 0);
 
 function wpematico_activate_deactivate_plugins() {
@@ -160,40 +158,48 @@ function wpematico_activate_deactivate_plugins() {
 		define('WPEM_ADMIN_DIR', ABSPATH . basename(admin_url()));
 	}
 	$accepted_actions	 = array();
-	$accepted_actions[]	 = 'deactivate-selected';
-	$accepted_actions[]	 = 'activate-selected';
+	$accepted_actions[]	 = 'deactivate';
+	$accepted_actions[]	 = 'activate';
+	
+	// Get the current whole URL
+	$current_url = esc_url_raw(wp_unslash($_SERVER['REQUEST_URI']));
 
-	if (isset($_REQUEST['checked']) && isset($_REQUEST['page']) && $_REQUEST['page'] == 'wpemaddons' && in_array($_REQUEST['action'], $accepted_actions) !== false) {
-		$status			 = 'all';
-		$page			 = (!isset($page) or is_null($page)) ? 1 : $page;
-		$plugins['all']	 = get_plugins();
+	// Get the params and componets of the URL
+	$parsed_url = parse_url($current_url);
 
-		require WPEM_ADMIN_DIR . '/plugins.php';
-		exit;
+	// Get the querys params 
+	if (isset($parsed_url['query'])) {
+		parse_str($parsed_url['query'], $query_params);
+		// Continue using $query_params
+	}
+	$action = isset($query_params['action']) ? $query_params['action'] : '';
+	if(in_array($action, $accepted_actions)){
+		if($action === 'deactivate'){
+			WPeMatico_functions::add_wp_notice('The extension was desactivated successfully');
+		}
+		elseif($action === 'activate'){
+			WPeMatico_functions::add_wp_notice('The extension was activated successfully');
+		}
 	}
 }
-
 function add_admin_plugins_page() {
-	if (!defined('WPEM_ADMIN_DIR')) {
-		define('WPEM_ADMIN_DIR', ABSPATH . basename(admin_url()));
-	}
-
-	if (!class_exists('WP_List_Table')) {
-		require_once WPEM_ADMIN_DIR . '/includes/class-wp-list-table.php';
-	}
-
+	global $s;
 	if (!class_exists('WP_Plugins_List_Table')) {
-		require WPEM_ADMIN_DIR . '/includes/class-wp-plugins-list-table.php';
-	}
-
-	global $plugins, $status, $wp_list_table;
-	$status			 = 'all';
-	$page			 = (!isset($page) or is_null($page)) ? 1 : $page;
-	$plugins['all']	 = get_plugins();
-	wp_update_plugins();
-	wp_clean_plugins_cache(false);
-	require WPEM_ADMIN_DIR . '/plugins.php';
-	exit;
+        require_once ABSPATH . 'wp-admin/includes/class-wp-plugins-list-table.php';
+    }
+	$s = '';
+    $plugins_list_table = new WP_Plugins_List_Table();
+    $plugins_list_table->prepare_items();
+    
+    echo '<div class="wrap">';
+    echo '<h1 class="wp-heading-inline">'.__('WPeMatico Add-Ons Plugins', 'wpematico').'</h1>';
+    echo '<hr class="wp-header-end">';
+    // Output the list table HTML
+    $plugins_list_table->views();
+    $plugins_list_table->search_box('Search Plugins', 'plugin-search-input');
+    $plugins_list_table->display();
+    
+    echo '</div>';
 }
 
 add_filter("manage_plugins_page_wpemaddons_columns", 'wpematico_addons_get_columns');
@@ -339,52 +345,53 @@ function wpematico_get_addons_maybe_fetch() {
 	$cached = get_transient('etruel_wpematico_addons_data');
 	if (!isset($cached) || !is_array($cached)) { // If no cache read source feed
 		$urls_addon	 = 'http://etruel.com/downloads/category/wpematico-add-ons/feed/';
-		$addonitems	 = WPeMatico::fetchFeed($urls_addon, true, 100);
-
+		$addonitems	 = WPeMatico::fetchFeed($urls_addon, true, 200);
 		$addon = array();
-		foreach ($addonitems->get_items() as $item) {
-			$itemtitle	 = $item->get_title();
-			$versions	 = $item->get_item_tags('', 'version');
-			$version	 = (is_array($versions)) ? $versions[0]['data'] : '';
-			$memberships = $item->get_item_tags('', 'membership');
-			$memberships = (is_array($memberships)) ? array_column($memberships, 'data') : [];
+		if(!is_wp_error($addonitems)){
+			foreach ($addonitems->get_items() as $item) {
+				$itemtitle	 = $item->get_title();
+				$versions	 = $item->get_item_tags('', 'version');
+				$version	 = (is_array($versions)) ? $versions[0]['data'] : '';
+				$memberships = $item->get_item_tags('', 'membership');
+				$memberships = (is_array($memberships)) ? array_column($memberships, 'data') : [];
 
-			$guid		 = $item->get_item_tags('', 'guid');
-			$guid		 = (is_array($guid)) ? $guid[0]['data'] : '';
-			$download_id = 0;
-			wp_parse_str($guid, $query);
-			if (isset($query) && !empty($query)) {
-				if (isset($query['p'])) {
-					$download_id = $query['p'];
+				$guid		 = $item->get_item_tags('', 'guid');
+				$guid		 = (is_array($guid)) ? $guid[0]['data'] : '';
+				$download_id = 0;
+				wp_parse_str($guid, $query);
+				if (isset($query) && !empty($query)) {
+					if (isset($query['p'])) {
+						$download_id = $query['p'];
+					}
 				}
-			}
 
-			$plugindirname			 = str_replace('-', '_', strtolower(sanitize_file_name($itemtitle)));
-			$img					 = $item->get_enclosure()->link;
-			$icon					 = "<img width=\"100\" src=\"$img\" alt=\"$itemtitle\">";
-			$addon[$plugindirname]	 = Array(
-				'Name'			 => $itemtitle,
-				'icon'			 => $icon,
-				'PluginURI'		 => $item->get_permalink(),
-				'buynowURI'		 => 'https://etruel.com/checkout?edd_action=add_to_cart&download_id=' . $download_id . '&edd_options[price_id]=2',
-				'Version'		 => $version, // $item->get_date('U'),
-				'Description'	 => $item->get_description(),
-				'Author'		 => 'Etruel Developments LLC',
-				'AuthorURI'		 => 'https://etruel.com',
-				'TextDomain'	 => '',
-				'DomainPath'	 => '',
-				'Network'		 => '',
-				'Title'			 => $itemtitle,
-				'AuthorName'	 => 'etruel',
-				'Remote'		 => true,
-				'memberships'	 => $memberships,
-				'id'			 => $download_id
-			);
+				$plugindirname			 = str_replace('-', '_', strtolower(sanitize_file_name($itemtitle)));
+				$img					 = $item->get_enclosure()->link;
+				$icon					 = "<img width=\"100\" src=\"$img\" alt=\"$itemtitle\">";
+				$addon[$plugindirname]	 = Array(
+					'Name'			 => $itemtitle,
+					'icon'			 => $icon,
+					'PluginURI'		 => $item->get_permalink(),
+					'buynowURI'		 => 'https://etruel.com/checkout?edd_action=add_to_cart&download_id=' . $download_id . '&edd_options[price_id]=2',
+					'Version'		 => $version, // $item->get_date('U'),
+					'Description'	 => $item->get_description(),
+					'Author'		 => 'Etruel Developments LLC',
+					'AuthorURI'		 => 'https://etruel.com',
+					'TextDomain'	 => '',
+					'DomainPath'	 => '',
+					'Network'		 => '',
+					'Title'			 => $itemtitle,
+					'AuthorName'	 => 'etruel',
+					'Remote'		 => true,
+					'memberships'	 => $memberships,
+					'id'			 => $download_id
+				);
+			}
+			$addons	 = apply_filters('etruel_wpematico_addons_array', array_filter($addon));
+			$length	 = apply_filters('etruel_wpematico_addons_transient_length', DAY_IN_SECONDS * 5);
+			set_transient('etruel_wpematico_addons_data', $addons, $length);
+			$cached	 = $addons;
 		}
-		$addons	 = apply_filters('etruel_wpematico_addons_array', array_filter($addon));
-		$length	 = apply_filters('etruel_wpematico_addons_transient_length', DAY_IN_SECONDS * 5);
-		set_transient('etruel_wpematico_addons_data', $addons, $length);
-		$cached	 = $addons;
 	}
 	return $cached;
 }
