@@ -116,7 +116,7 @@ function WPeAddon_admin_scripts() {
     wp_enqueue_script('wpematico-update', WPeMatico::$uri . 'app/js/wpematico_updates.js', array('jquery', 'inline-edit-post'), WPEMATICO_VERSION, true);
 }
 
-add_action('admin_head', 'WPeAddon_admin_head');
+// add_action('admin_head', 'WPeAddon_admin_head');
 
 function WPeAddon_admin_head() {
     global $pagenow, $page_hook;
@@ -154,53 +154,73 @@ function WPeAddon_admin_head() {
 add_action('admin_init', 'wpematico_activate_deactivate_plugins', 0);
 
 function wpematico_activate_deactivate_plugins() {
-    global $plugins, $status, $wp_list_table;
-    if (!defined('WPEM_ADMIN_DIR')) {
-        define('WPEM_ADMIN_DIR', ABSPATH . basename(admin_url()));
-    }
-    $accepted_actions = array();
-    $accepted_actions[] = 'deactivate';
-    $accepted_actions[] = 'activate';
+	global $plugins, $status, $wp_list_table;
 
-    // Get the current whole URL
-    $current_url = esc_url_raw(wp_unslash($_SERVER['REQUEST_URI']));
+	if (!defined('WPEM_ADMIN_DIR')) {
+		define('WPEM_ADMIN_DIR', ABSPATH . basename(admin_url()));
+	}
+	$accepted_actions	 = array();
+	$accepted_actions[]	 = 'deactivate';
+	$accepted_actions[]	 = 'activate';
+	
+	// Get the current whole URL
+	$current_url = esc_url_raw(wp_unslash($_SERVER['REQUEST_URI']));
 
-    // Get the params and componets of the URL
-    $parsed_url = parse_url($current_url);
+	// Get the params and componets of the URL
+	$parsed_url = parse_url($current_url);
 
-    // Get the querys params 
+	$get_action = get_option('action_notice_wpematico_addons');
     if (isset($parsed_url['query'])) {
-        parse_str($parsed_url['query'], $query_params);
-        // Continue using $query_params
-    }
-    $action = isset($query_params['action']) ? $query_params['action'] : '';
-    if (in_array($action, $accepted_actions)) {
-        if ($action === 'deactivate') {
-            WPeMatico_functions::add_wp_notice('The extension was desactivated successfully');
-        } elseif ($action === 'activate') {
-            WPeMatico_functions::add_wp_notice('The extension was activated successfully');
+        if(strpos($current_url, 'wpemaddons') !== false || strpos($parsed_url['query'], 'wpematico') !== false){
+            if ($get_action === 'deactivate-addon') {
+                ?>
+                    <div id="message" class="updated notice is-dismissible"><p><?php _e( 'Addon deactivated.' , 'wpematico'); ?></p></div>
+                <?php
+                delete_option('action_notice_wpematico_addons');
+            } elseif ($get_action === 'activate-addon') {
+                ?>
+                    <div id="message" class="updated notice is-dismissible"><p><?php _e( 'Addon activated.', 'wpematico' ); ?></p></div>
+                <?php
+                delete_option('action_notice_wpematico_addons');
+            }
         }
     }
+	// Get the querys params 
+	if (isset($parsed_url['query'])) {
+		parse_str($parsed_url['query'], $query_params);
+		// Continue using $query_params
+        $action = isset($query_params['action']) ? $query_params['action'] : '';
+        if (strpos($parsed_url['query'], 'wpematico') !== false || strpos($parsed_url['query'], 'wpemaddons') !== false) {
+            if (in_array($action, $accepted_actions)) {
+                update_option('action_notice_wpematico_addons', $action . '-addon');
+            }
+        }
+	}
+
 }
 
 function add_admin_plugins_page() {
-    global $s;
-    if (!class_exists('WP_Plugins_List_Table')) {
-        require_once ABSPATH . 'wp-admin/includes/class-wp-plugins-list-table.php';
-    }
-    $s = '';
-    $plugins_list_table = new WP_Plugins_List_Table();
-    $plugins_list_table->prepare_items();
+	global $s, $plugins, $status, $wp_list_table;
 
-    echo '<div class="wrap">';
-    echo '<h1 class="wp-heading-inline">' . __('WPeMatico Add-Ons Plugins', 'wpematico') . '</h1>';
-    echo '<hr class="wp-header-end">';
-    // Output the list table HTML
-    $plugins_list_table->views();
-    $plugins_list_table->search_box('Search Plugins', 'plugin-search-input');
-    $plugins_list_table->display();
+	if (!defined('WPEM_ADMIN_DIR')) {
+		define('WPEM_ADMIN_DIR', ABSPATH . basename(admin_url()));
+	}
 
-    echo '</div>';
+	if (!class_exists('WP_List_Table')) {
+		require_once WPEM_ADMIN_DIR . '/includes/class-wp-list-table.php';
+	}
+
+	if (!class_exists('WP_Plugins_List_Table')) {
+		require WPEM_ADMIN_DIR . '/includes/class-wp-plugins-list-table.php';
+	}
+	$s = (!isset($s) || is_null($s)) ? '' : $s;
+	$status			 = 'all';
+	$page			 = (!isset($page) or is_null($page)) ? 1 : $page;
+	$plugins['all']	 = get_plugins();
+	wp_update_plugins();
+	wp_clean_plugins_cache(false);
+	require WPEM_ADMIN_DIR . '/plugins.php';
+	exit;
 }
 
 add_filter("manage_plugins_page_wpemaddons_columns", 'wpematico_addons_get_columns');
