@@ -202,10 +202,6 @@ function wpematico_activate_deactivate_plugins() {
 function add_admin_plugins_page() {
 	global $s, $plugins, $status, $wp_list_table;
 
-	if (!defined('WPEM_ADMIN_DIR')) {
-		define('WPEM_ADMIN_DIR', ABSPATH . basename(admin_url()));
-	}
-
 	if (!class_exists('WP_List_Table')) {
 		require_once WPEM_ADMIN_DIR . '/includes/class-wp-list-table.php';
 	}
@@ -213,14 +209,35 @@ function add_admin_plugins_page() {
 	if (!class_exists('WP_Plugins_List_Table')) {
 		require WPEM_ADMIN_DIR . '/includes/class-wp-plugins-list-table.php';
 	}
+
 	$s = (!isset($s) || is_null($s)) ? '' : $s;
 	$status			 = 'all';
 	$page			 = (!isset($page) or is_null($page)) ? 1 : $page;
 	$plugins['all']	 = get_plugins();
 	wp_update_plugins();
 	wp_clean_plugins_cache(false);
-	require WPEM_ADMIN_DIR . '/plugins.php';
-	exit;
+	$plugins_list_table = new WP_Plugins_List_Table();
+    $plugins_list_table->prepare_items();
+
+    echo '<div class="wrap">';
+    echo '<h1 class="wp-heading-inline">' . __('WPeMatico Add-Ons Plugins', 'wpematico') . '</h1>';
+    echo '<hr class="wp-header-end">';
+        // Output the list table HTML
+        $plugins_list_table->views();
+
+    echo '<form class="search-form search-plugins" method="get">';
+        $plugins_list_table->search_box('Search Plugins', 'plugin-search-input');
+    echo '</form>';
+    ?>
+        <form method="post" id="bulk-action-form">
+        <input type="hidden" name="plugin_status" value="<?php echo esc_attr( $status ); ?>" />
+        <input type="hidden" name="paged" value="<?php echo esc_attr( $page ); ?>" />
+    <?php
+        $plugins_list_table->display();
+    ?>
+        </form>
+    <?php
+    echo '</div>';
 }
 
 add_filter("manage_plugins_page_wpemaddons_columns", 'wpematico_addons_get_columns');
