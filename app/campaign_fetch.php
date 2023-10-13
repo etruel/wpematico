@@ -342,6 +342,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
             $this->current_item['title'] = WPeMatico::change_to_utf8($this->current_item['title']);
         }
 
+//		For next release 2.7
 //		$this->current_item = apply_filters('wpematico_get_post_title', $this->current_item, $this->campaign, $item, $realcount);
         if ($this->cfg['nonstatic']) {
             $this->current_item = NoNStatic :: title($this->current_item, $this->campaign, $item, $realcount);
@@ -741,6 +742,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         if (!empty($this->current_item['nofeatimg'])) {
 
             trigger_error('<strong>' . __('Skip Featured Image.', 'wpematico') . '</strong>', E_USER_NOTICE);
+			
         } else if (!empty($this->current_item['featured_image']) && (!$this->images_options['fifu'])) {
 
             trigger_error(__('Featuring Image Into Post.', 'wpematico'), E_USER_NOTICE);
