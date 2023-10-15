@@ -336,15 +336,18 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         $this->current_item['date'] = apply_filters('wpematico_get_feeddate', $itemdate, $this->current_item, $this->campaign, $feedurl, $item);
 
         // Item title
-        $this->current_item['title'] = $item->get_title();
+		$this->current_item['title'] = $item->get_title();
         $this->current_item['title'] = htmlspecialchars_decode($this->current_item['title']);
         if ($this->campaign['campaign_enable_convert_utf8']) {
             $this->current_item['title'] = WPeMatico::change_to_utf8($this->current_item['title']);
         }
+		/**
+		 * 	Since 2.7 
+		 * Allows parser the title by addons or external filters
+		 */
+		$this->current_item['title'] = apply_filters('wpematico_get_post_title', $this->current_item['title'], $this->current_item, $this->campaign, $item, $realcount);
 
-//		For next release 2.7
-//		$this->current_item = apply_filters('wpematico_get_post_title', $this->current_item, $this->campaign, $item, $realcount);
-        if ($this->cfg['nonstatic']) {
+        if (!$this->cfg['nonstatic']) {
             $this->current_item = NoNStatic :: title($this->current_item, $this->campaign, $item, $realcount);
         } else {
             $this->current_item['title'] = esc_attr($this->current_item['title']);
@@ -352,6 +355,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
         $this->current_item['title'] = html_entity_decode($this->current_item['title'], ENT_QUOTES | ENT_HTML401, 'UTF-8');
 
+		
         // Item author
         //if( $this->cfg['nonstatic'] ) { $this->current_item = NoNStatic :: author($this->current_item,$this->campaign, $feedurl, $item ); }else $this->current_item['author'] = $this->campaign['campaign_author'];
         $this->current_item['author'] = $this->campaign['campaign_author'];

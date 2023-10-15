@@ -237,9 +237,10 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
 
-= 2.6.21 Sep 27, 2023 =
+= 2.6.21 Oct 17, 2023 =
+* Improves compatibilities for titles with Professional and Facebook Fetcher addons.
 * Fixes few issues on Addons page and actions.
-* Fixes deprecated notices on Welcome, About pages.
+* Fixes deprecated notices on Welcome and About pages.
 
 = 2.6.20.2 Jul 21, 2023 =
 * Bump to WP 6.3
@@ -405,5 +406,4 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 
-= 2.6.20 =
-Compatibility with WordPress 6.3
+Compatibility with WordPress 6.3.2

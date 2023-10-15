@@ -1050,10 +1050,10 @@ public static function feeds_box( $post ) {
 			</div>
 		</div>
 		<div id="feeds_list" class="maxhe290" data-callback="jQuery('#msgdrag').html('<?php _e('Update Campaign to save Feeds order', 'wpematico'  ); ?>').fadeIn();"> <!-- callback script to run on successful sort -->
-			<?php //foreach($campaign_feeds as $i => $feed): 
-			for ($i = 0; $i <= count(@$campaign_feeds); $i++) { ?>
-			<?php $feed = @$campaign_feeds[$i]; ?>			
-			<?php $lastitem = $i==count(@$campaign_feeds); ?>			
+			<?php //foreach($campaign_feeds as $i => $feed):
+			for ($i = 0; $i <= count(@$campaign_feeds); $i++) {
+				$feed = isset($campaign_feeds[$i]) ? $campaign_feeds[$i] : '';
+				$lastitem = $i==count(@$campaign_feeds); ?>
 			<div id="feed_ID<?php echo $i; ?>" class="sortitem <?php if($lastitem) echo 'feed_new_field'; ?> " <?php if($lastitem) echo 'style="display:none;"'; ?> > <!-- sort item -->
 				<div class="sorthandle"> </div> <!-- sort handle -->
 				<?php /*
