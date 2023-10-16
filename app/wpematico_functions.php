@@ -1107,7 +1107,8 @@ if (!class_exists('WPeMatico_functions')) {
 			$campaignsid = get_posts($args);
 			$msglogs = "";
 			foreach ($campaignsid as $campaignid) {
-				@set_time_limit(0);
+			    wpematico_init_set('max_execution_time', 0);
+				
 				$msglogs .= WPeMatico :: wpematico_dojob($campaignid->ID);
 			}
 			return $msglogs;
