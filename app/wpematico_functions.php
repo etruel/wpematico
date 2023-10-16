@@ -1048,9 +1048,12 @@ if (!class_exists('WPeMatico_functions')) {
 		//************************* GUARDA CAMPAÑA *******************************************************
 
 		/**
-		 * save campaign data
-		 * Required @param   integer  $post_id    Campaign ID to load
-		 * 		  @param   boolean  $getfromdb  if set to true run get_post($post_ID) and retuirn object post
+		 * Save campaign data 
+		 * Each call calculate the next cron time and save it on the campaign cron field.
+		 * Some values for direct access or list columns are saved also individually.
+		 *  
+		 * Required @param   integer  $post_id    Campaign ID to save on.
+		 *			@param   array  $campaign	All the campaign data to save.
 		 * 
 		 * @return an array with campaign data 
 		 * */
@@ -1244,10 +1247,8 @@ if (!class_exists('WPeMatico_functions')) {
 			$feed = self::fetchFeed($fetch_feed_params);
 
 			$errors = $feed->error(); // if no error returned
+
 			// Check if PRO version is installed and its required version
-//		$active_plugins = get_option( 'active_plugins' );
-//		$active_plugins_names = array_map('basename', $active_plugins );
-//		$is_pro_active = array_search( 'wpematicopro.php', $active_plugins_names );
 			if (wpematico_is_pro_active()) {
 				$professional_notice = '';
 			} else {
@@ -1781,7 +1782,18 @@ function wpematico_init_set($index, $value, $log_only_fail = false) {
 }
 
 
-//function for PHP error handling
+/**
+ * function for PHP error handling saved as Campaign Logs.
+ * 
+ * @global string $campaign_log_message Currently log where to add next line. 
+ * @global int $jobwarnings Warnings quantity.
+ * @global int $joberrors Errors quantity.
+ * @param number $errno PHP constants error values.
+ * @param string $errstr PHP Error details.
+ * @param string $errfile File with error.
+ * @param type $errline Line of the error in previous file.
+ * @return bool True for no more php error hadling.
+ */
 function wpematico_joberrorhandler($errno, $errstr, $errfile, $errline) {
 	global $campaign_log_message, $jobwarnings, $joberrors;
 
@@ -1837,8 +1849,15 @@ function wpematico_joberrorhandler($errno, $errstr, $errfile, $errline) {
 		if ($errno == E_ERROR or $errno == E_CORE_ERROR or $errno == E_COMPILE_ERROR) {//Die on fatal php errors.
 			die("Fatal Error:" . $errno);
 		}
+		
 		//300 is most webserver time limit. 0= max time! Give script 5 min. more to work.
-		@set_time_limit(300);
+		//wpematico_init_set('max_execution_time',300);
+		//@set_time_limit(300);
+		
+		// Since 2.7
+		//  Testin restoring default value instead set it to 300
+		ini_restore('max_execution_time');
+		
 		//true for no more php error hadling.
 		return true;
 	} else {
