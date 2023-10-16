@@ -111,7 +111,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
                 break;
             }
             wpematico_init_set('max_execution_time', $campaign_timeout, true);
-            $postcount += $this->processFeed($feed, $kf);   #- ---- Proceso todos los feeds      
+            $postcount += $this->processFeed($feed, $kf);   #- ---- Run all feeds      
         }
 
         $this->fetched_posts += $postcount;
@@ -151,6 +151,9 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
      */
     private function processFeed($feed, $kf) {
         global $realcount;
+
+		var_dump(ini_get('disable_functions'));
+
         @set_time_limit(0);
         trigger_error('<span class="coderr b"><b>' . sprintf(__('Processing feed %s.', 'wpematico'), esc_html($feed)) . '</b></span>', E_USER_NOTICE);   // Log
 
@@ -901,7 +904,6 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
                     break;
             }
             $headers[] = 'Content-Type: text/html; charset=UTF-8';
-            //add_filter('wp_mail_content_type','wpe_change_content_type'); //function wpe_change_content_type(){ return 'text/html'; } 
 
             $to_mail = $this->campaign['mailaddresslog'];
 
@@ -938,19 +940,4 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
         return;
     }
-}
-
-//function wpe_change_content_type(){ return 'text/html'; }
-function wpematico_init_set($index, $value, $error_only_fail = false) {
-    //$oldvalue = ini_get($index);
-    $oldvalue = @ini_set($index, $value); //@return string the old value on success, <b>FALSE</b> on failure. 
-    if ($error_only_fail) {
-        if ($oldvalue === false) {
-            trigger_error(sprintf(__('Trying to set %s = %s: \'%s\' - Old value:%s.', 'wpematico'), $index, $value, (($oldvalue === FALSE) ? __('Failed', 'wpematico') : __('Success', 'wpematico')), $oldvalue), (($oldvalue === FALSE) ? E_USER_WARNING : E_USER_NOTICE));
-        }
-    } else {
-        trigger_error(sprintf(__('Trying to set %s = %s: \'%s\' - Old value:%s.', 'wpematico'), $index, $value, (($oldvalue === FALSE) ? __('Failed', 'wpematico') : __('Success', 'wpematico')), $oldvalue), (($oldvalue === FALSE) ? E_USER_WARNING : E_USER_NOTICE));
-    }
-
-    return $oldvalue;
 }

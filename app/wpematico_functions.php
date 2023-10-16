@@ -1754,6 +1754,33 @@ function array_multi_key_exists(array $arrNeedles, array $arrHaystack, $blnMatch
 	return array_multi_key_exists($arrNeedles, $arrHaystack, $blnMatchAll);
 }
 
+
+
+/**
+ * Alternative ini_set to trigger errors and changed values 
+ * 
+ * @param string $index	
+ * @param string|int|float|bool|null $value	<p>The new value for the option.</p>
+ * @param bool $log_only_fail <p>Trigger the WARNING only if fail to set the new value for the option.</p>
+ * @return string|false <p>Returns the old value on success, <b><code>false</code></b> on failure.</p>
+ */
+function wpematico_init_set($index, $value, $log_only_fail = false) {
+    $oldvalue = @ini_set($index, $value) or $oldvalue = FALSE; //@return string the old value on success, <b>FALSE</b> on failure. (after 'or' is by the @)
+    if ($log_only_fail) {
+        if ($oldvalue === false) {
+            trigger_error(sprintf(__('Trying to set %s = %s: \'%s\' - Old value:%s.', 'wpematico'), $index, $value, __('Failed', 'wpematico'), $oldvalue), E_USER_WARNING);
+        }
+    } else {
+        trigger_error(sprintf(__('Trying to set %s = %s: \'%s\' - Old value:%s.', 'wpematico'), $index, $value, 
+				(($oldvalue === FALSE) ? __('Failed', 'wpematico') : __('Success', 'wpematico')), 
+				$oldvalue), 
+				(($oldvalue === FALSE) ? E_USER_WARNING : E_USER_NOTICE));
+    }
+
+    return $oldvalue;
+}
+
+
 //function for PHP error handling
 function wpematico_joberrorhandler($errno, $errstr, $errfile, $errline) {
 	global $campaign_log_message, $jobwarnings, $joberrors;

@@ -237,6 +237,10 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
 
+= 2.7 Oct 30, 2023 =
+* Many code improvements
+
+
 = 2.6.21 Oct 17, 2023 =
 * Improves compatibilities for titles with Professional and Facebook Fetcher addons.
 * Fixes few issues on Addons page and actions.
