@@ -25,6 +25,161 @@ This version launches a series of changes, additions and new features working wi
 > * Added support in Settings screen to select images, audio y video extensions allowed to upload with WP mime types as guide.
 > * **Enlarges the version required for the Professional addon to 2.6**
 
+= 2.6.20.2 Jul 21, 2023 =
+* Bump to WP 6.3
+* New video on WordPress main plugin page.
+* Fixes get_favicon Fatal Error for XML campaign types (https://github.com/etruel/wpematico/issues/53)
+
+= 2.6.20.1 May 26, 2023 =
+* Fixes print credits on posts contents.
+
+= 2.6.20 May 26, 2023 =
+* Bump to WP 6.2.2
+* Added 'View feed content' link inside feed address field.
+* Added GitHub link on plugin links to allow easy access to development version.
+* Added new filters and actions in the strip link options to enable new incoming functionalities.
+* Some improvements on fetching functions and parsers.
+
+= 2.6.19 Apr 5, 2023 =
+* Compatibility with WordPress 6.2
+* Fixes Settings blank page since WP 6.2.
+* Fixes deprecated option for PHP 8.1
+
+= 2.6.18 Feb 27, 2023 =
+* Compatibility with WordPress 6.1.1
+* Fixes new year desfase hours in compaign crons.
+
+= 2.6.17 Nov 13, 2022 =
+* Bump to WP 6.1
+* Tested with PHP 8.1.9
+* Now Requires at least WordPress 4.8
+* Improved performance on load plugins page for extensions.
+* Many styles tweaks to Extensions page.
+* Tweaks and fixes on System Status file. 
+
+= 2.6.16 Jul 15, 2022 =
+* Tweaks: Changed banners and icons.
+* Bumps to WordPress 6.0.1
+
+= 2.6.15 May 05, 2022 =
+* Compatibility with WordPress 6.0
+* Improves options by checking activation of FIFU plugin on campaign/settings screens.
+* Added dismmissible banner to use the Wizard to edit campaigns.
+* Added [playlist] shortcode example to Post template feature to show all the audio/video media in post content.
+* Added tip on No campaigns situation to link to getting started page.
+* Improves plugin images by reducing sizes.
+* Fixes style on welcome screen.
+* Fixes Wizard styles.
+* Fixes some warnings and notices on PHP 8.1+
+* Changed all instances of Packages by Memberships.
+
+= 2.6.14 Mar 9, 2022 =
+* Added {feedfavicon} tag to post template feature.
+* Compatibility with PHP 8+
+* Compatibility with WordPress 5.9.1
+* Fixes [WARNING] Undefined array key on fetching.
+
+= 2.6.13 Jan 31, 2022 =
+* Compatibility with WordPress 5.9
+* Updated addons library updater.
+* Fixes two PHP warnings on saving campaign.
+
+= 2.6.12 Sep 27, 2021 =
+* Fixes a security bug only available for admins on Campaign editing screens.
+* Tweaks to the subscription form on the WPeMatico About welcome page.
+* Tweaks on the nags style in WPeMatico Addons menu item.
+
+= 2.6.11 Sep 15, 2021 =
+* Fixes some PHP notices.
+* Updated PHP Compatibility checks to 5.6 version.
+
+= 2.6.10 Aug 19, 2021 =
+* Updated Author data.
+* Updated SimplePie Compatibility Test page.
+* Fixes some PHP notices.
+* Fixes banner styles in About page.
+* Removed PHP Safe mode calls as has been removed as of PHP 5.4
+* Custom Simplepie library and its option in Settings page will be removed in next version in favor of included in WP.
+* PHP Compatibility bump to 5.6 as required by Simplepie.
+* Compatibility with WordPress 5.8
+* Requires WordPress version bumps to 4.7
+
+= 2.6.9 May 5, 2021 =
+* Added new filters to allow use external functions to upload the images or remote files.
+* Added some campaign data in debug file to help with performance.
+* Fixes all warnings and notices in debug file.
+* Tested with WordPress 5.7.1
+
+= 2.6.8 Apr 8, 2021 =
+* Improved the post template feature on inserting {tags} in cursor position instead of the end of content.
+* Fixes custom user translation when he chooses a different of WordPress admin.
+
+= 2.6.7 Feb 17, 2021 =
+* Added an option to allow to delete all debug logs of the campains in Debug Mode.
+* Fixes a bug on saving images with incorrect post author.
+* Fixes the issue #17 on php implode categories reported by diogenis1971 on Github.
+* Fixes the issue #18 Max items allways saving zero on bulk edit campaigns.
+* Some tweaks on campaigns options texts.
+
+= 2.6.6 Nov 25, 2020 =
+* Added a Warning notice at campaigns list on activating Debug mode.
+* Some tweaks on styles of categories metaboxes.
+* Some tweaks in the Debug screen with functions that do not work in Apache servers.
+* Fixes a bug at fetching when save meta fields if inserting a thirdparty posttype could lose its value.
+
+= 2.6.5 Sep 24, 2020 =
+* Fixes and improves compatibility on wpematico_updates javascript file for WordPress Plugins screen.
+
+= 2.6.4 Aug 20, 2020 =
+
+* Fixes lost categories on saving campaigns in WP 5.5.
+* Fixes an issue in campaigns quick and bulk edit for deprecated function in new jQuery.
+* Fixes few issues on printed strings.
+* Tweak styles on Welcome page to fit the new WordPress 5.5 styles
+* Improved many strings for easy translations.
+* Added many languages files. Some of them with automatic translations, but more easy to corrections.
+
+= 2.6.3 Jul 30, 2020 =
+
+* Ready for WordPress 5.5
+* Compatible with the latest Simplepie 1.5.5 which will be updated in Wordpress 5.5
+* We continue to improve the feed URL parsers when saving campaigns and on the feed reader screen.
+* Tweak many styles to fit the new WordPress 5.5
+* Improves the way to load the language files.
+* Updated .pot file to latest text strings.
+* Finished spanish translations.
+* Added and partially updated Romanian, Dutch, German, Russian, Chinese, Persian & Slovak languages files.
+
+= 2.6.2 Jul 22, 2020 =
+
+#### _Bugfixes:_
+
+* Fixes and improves uses of FIFU plugin to use their functions. 
+
+#### _Recent (may break) changes:_
+
+* Tweaks the feed URL parsers to include URLs with %20 in it.
+
+= 2.6.1 Jun 25, 2020 =
+
+* Tweaks on help texts on Featured Image from URL option in campaign.
+* Fixes a bug introduced in last update of FIFU 3.1.3 version.
+* Fixes some notices of null variables.
+* Fixes many notices Deprecated: Unparenthesized notice for PHP 7.4+.
+
+= 2.6 May 11, 2020 =
+
+With a lot of changes, fixes and additions since 2.5 we have finally reach the 2.6 version, working with _Featured Image From URL,_ new multimedia extensions, new embed shortcodes for YouTube campaign types, avoid date filters an so on.  Take a look at previous changelog for more details.
+
+#### _Bugfixes:_
+
+> * Corrects the bug with the Excerpts option in the latest version by not allowing posts to be published.
+> * {item_date} and {item_time} added to post template descriptions tags.
+
+#### _Recent (may break) changes:_
+
+> * **Enlarges the version required for the Professional addon to 2.6**
+
 =  Aug 09, 2023 =
 
 * Fixed deprecated in WPeMatico About screen

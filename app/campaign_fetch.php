@@ -48,10 +48,6 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
             set_error_handler('wpematico_joberrorhandler', E_ALL & ~E_NOTICE);
         }
 
-        // DEPRECATE by etruel on 2.6.10, will be deleted
-//		if (!version_compare(phpversion(), '5.3.0', '>')) { // PHP Version
-//			wpematico_init_set('safe_mode', 'Off');   // deprecated after 5.3
-//		}
         wpematico_init_set('ignore_user_abort', 'On');
 
         if (empty($campaign_id)) {
@@ -96,7 +92,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
         // check function for memorylimit
         if (!function_exists('memory_get_usage')) {
-            ini_set('memory_limit', apply_filters('admin_memory_limit', '256M')); //Wordpress default
+            wpematico_init_set('memory_limit', apply_filters('admin_memory_limit', '256M')); //Wordpress default
             trigger_error(sprintf(__('Memory limit set to %1$s ,because can not use PHP: memory_get_usage() function to dynamically increase the Memory!', 'wpematico'), ini_get('memory_limit')), E_USER_WARNING);
         }
         //run job parts
@@ -151,8 +147,6 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
      */
     private function processFeed($feed, $kf) {
         global $realcount;
-
-		var_dump(ini_get('disable_functions'));
 
         @set_time_limit(0);
         trigger_error('<span class="coderr b"><b>' . sprintf(__('Processing feed %s.', 'wpematico'), esc_html($feed)) . '</b></span>', E_USER_NOTICE);   // Log
