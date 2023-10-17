@@ -390,7 +390,7 @@ function wpematico_status_rightcolumn() {
 					</p>
 					<p></p>
 					<p style="text-align: center;">
-						<input type="button" class="button-primary" name="buypro" value="<?php _e('Buy PRO version online', 'wpematico'); ?>" onclick="window.open('https://etruel.com/downloads/wpematico-pro/');
+						<input type="button" class="button-primary" name="buypro" value="<?php _e('Buy Essentials online', 'wpematico'); ?>" onclick="window.open('https://etruel.com/downloads/wpematico-essentials/');
 								return false;"/>
 					</p>
 					<p></p>
