@@ -3,7 +3,7 @@ Contributors: etruel, sniuk, khaztiel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,RSS to Post,Feed to Post,XML to post,autoblog,rss aggregator,Feed,rss to post,syndication,xml import,Post,Posts,aggregation,atom,bot,content,writing
 Requires at least: 4.8
-Tested up to: 6.3.1
+Tested up to: 6.3.2
 Requires PHP: 5.6
 Stable tag: trunk
 License: GPLv2 or later
@@ -258,8 +258,10 @@ Version 2.7 focuses on code improvements and documentations follow the standards
 
 = 2.6.21 Oct 17, 2023 =
 * Improves compatibilities for titles with Professional and Facebook Fetcher addons.
+* Added new filter on get the title of each post to allow parsers on it.
 * Fixes few issues on Addons page and actions.
 * Fixes deprecated notices on Welcome and About pages.
+* Fixes all old links from PRO to Essentials Extensions.
 
 = Earlier versions =
 For the changelog of earlier versions, please refer to changelog.md file or [the changelog on wpematico.com](https://www.wpematico.com/wpematico-changelog/).

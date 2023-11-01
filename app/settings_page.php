@@ -195,7 +195,7 @@ if(!class_exists('WPeMatico_Settings')) :
 													Improve your Experience
 												</div>
 												<div id="improbuttons" style="text-align: center;padding-top: 0px;">
-													<input onmouseover="javascript:jQuery(this).addClass('button-primary');" onmouseout="javascript:jQuery(this).removeClass('button-primary');" class="button" name="buypro" value="GO PRO" onclick="javascript:window.open('https://etruel.com/downloads/wpematico-pro/');return false;" type="button">
+													<input onmouseover="javascript:jQuery(this).addClass('button-primary');" onmouseout="javascript:jQuery(this).removeClass('button-primary');" class="button" name="buypro" value="GO PRO" onclick="javascript:window.open('https://etruel.com/downloads/wpematico-essentials/');return false;" type="button">
 													&nbsp;
 													<input name="buypre" value="PREMIUM" onmouseover="javascript:jQuery(this).addClass('button-primary');" onmouseout="javascript:jQuery(this).removeClass('button-primary');" onclick="javascript:window.open('https://etruel.com/downloads/wpematico-premium/');return false;" class="button" type="button">
 													&nbsp;
@@ -253,7 +253,7 @@ if(!class_exists('WPeMatico_Settings')) :
 
 									<div id="promo-extended" class="postbox " >
 										<div class="ribbon"><span>HOT SALES</span></div>
-										<button type="button" class="handlediv" aria-expanded="true"><span class="screen-reader-text">Toggle panel: Pro version</span><span class="toggle-indicator" aria-hidden="true"></span></button>
+										<button type="button" class="handlediv" aria-expanded="true"><span class="screen-reader-text">Toggle panel: Essentials</span><span class="toggle-indicator" aria-hidden="true"></span></button>
 										<h2 class='hndle'><span>Starter Bundled Extensions</span></h2>
 										<div class="inside">
 											<div class="sidebar-promo worker" id="sidebar-promo">

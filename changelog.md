@@ -826,7 +826,7 @@ Version 2.5 concludes a series of radical changes that we had started since vers
 * Added help texts and tutorials on Wordpress Help tab on top-right corner to campaign and Settings Pages.
 * Added an option on Wordpress Settings->Writing to hide Wordpress Reviews metabox on Settings pages.
 * New Images and icons :-)
-* [PRO] must download versions 1.3 [PRO](https://etruel.com/downloads/wpematico-pro/)
+* [PRO] must download versions 1.3 [PRO](https://etruel.com/downloads/wpematico-essentials/)
 * FULL Content AddOn:
 *  Separated from PRO as new Add-On to obtain better performance. You must Download the new add-on!!
 *  Merged with TXT file Editor add-on for FREE, adds an editor for config files for every domain!
@@ -843,7 +843,7 @@ Version 2.5 concludes a series of radical changes that we had started since vers
 * Added a Section on Wordpress Settings->Writing to allow changes to WPeMatico Menu position.
 * Fixed metadata filters for unsaved custom fields. 
 * Better process an error response on wp_remote_request on non WP_error objects.
-* [PRO] you must download version 1.2.6 [PRO](https://etruel.com/downloads/wpematico-pro/)
+* [PRO] you must download version 1.2.6 [PRO](https://etruel.com/downloads/wpematico-essentials/)
 
 * [/PRO]
 
@@ -855,7 +855,7 @@ Version 2.5 concludes a series of radical changes that we had started since vers
 = 1.2.5.1 =
 * Fixed white screen on Settings page when uses PHP < 5.4
 * Added Wordpress filters to every item inserted on new posts. 
-* [PRO] you must download version 1.2.5.1 [PRO](https://etruel.com/downloads/wpematico-pro/)
+* [PRO] you must download version 1.2.5.1 [PRO](https://etruel.com/downloads/wpematico-essentials/)
 * Added 'Strip HTML Tags From Title' option to Campaign Custom Title Options.
 * [/PRO]
 
@@ -869,7 +869,7 @@ Version 2.5 concludes a series of radical changes that we had started since vers
 * Added .jpeg extension to allowed files to upload.
 * Fixed saving Word to category RegEx fields.
 * Fixed checking Regular expressions on save campaign.
-* [PRO] you must download 1.2.5 version [PRO](https://etruel.com/downloads/wpematico-pro/)
+* [PRO] you must download 1.2.5 version [PRO](https://etruel.com/downloads/wpematico-essentials/)
 * Fixes saving Keyword filters.
 * [/PRO]
 
@@ -886,7 +886,7 @@ Version 2.5 concludes a series of radical changes that we had started since vers
 * Added wpematico_img_src_url WP filter to allow modifications before downloads. (ex: to get full image instead of thumbnails)
 * Added Debug Info tab on Settings.
 * Removes smtp credentials values when selected PHP:mail as send method in Settings to avoid pass saving window on browser.
-* [PRO] you must download version 1.2.4 [PRO](https://etruel.com/downloads/wpematico-pro/)
+* [PRO] you must download version 1.2.4 [PRO](https://etruel.com/downloads/wpematico-essentials/)
 * Fixed - Author per feed url not saved.
 * Integrated PRO Settings and Licenses screens in tabs inside WPeMatico Settings item menu.
 * Fixed a bug with var that may delete tags in some cases.
@@ -930,7 +930,7 @@ Version 2.5 concludes a series of radical changes that we had started since vers
 * New: Default values on Settings to Sender email and name for logs.
 * Fixed: Better-sanitized image names before save using WP filters.
 * Fixed: dequeue script Autosave.
-* [PRO] must download version 1.2 [PRO](https://etruel.com/downloads/wpematico-pro/)
+* [PRO] must download version 1.2 [PRO](https://etruel.com/downloads/wpematico-essentials/)
 * New feature: License key to launch automatic upgrades.
 * Automatic Upgrades from wordpress plugins page.
 * Removed the hated requirement to upgrade: Remember deactivate PRO version before upgrade. That is not necessary now.
@@ -976,7 +976,7 @@ Version 2.5 concludes a series of radical changes that we had started since vers
 
 = 1.1.93 =
 * Some minor fixes. Droped many PHP notices.
-* [PRO] must download version 1.1.93 [PRO](https://etruel.com/downloads/wpematico-pro/)
+* [PRO] must download version 1.1.93 [PRO](https://etruel.com/downloads/wpematico-essentials/)
 * New feature: Filter Featured image by width or height on every post.
 * [/PRO]
 
@@ -984,7 +984,7 @@ Version 2.5 concludes a series of radical changes that we had started since vers
 * Tested with Wordpress 4.2alpha
 * Some minor fixes.
 * Some fixes and descriptions on Readme file :)
-* [PRO] must download version 1.1.92 [PRO](https://etruel.com/downloads/wpematico-pro/)
+* [PRO] must download version 1.1.92 [PRO](https://etruel.com/downloads/wpematico-essentials/)
 * New feature: Now you can filter images by width or height in new posts.
 * [/PRO]
 
@@ -1009,7 +1009,7 @@ Version 2.5 concludes a series of radical changes that we had started since vers
 * Fixes for duplicated image uploads that happened -in some cases- with PRO Version installed.
 * Fixes for some images sizes that were not generated when attaching files to posts.
 * Some minor changes.
-* [PRO] must download 1.1.7 version [PRO](https://etruel.com/downloads/wpematico-pro/)
+* [PRO] must download 1.1.7 version [PRO](https://etruel.com/downloads/wpematico-essentials/)
 * Fixes - + "rare" code removal that was displayed on log when fetching rss images.
 * Fixes - KeywordFilter when selecting both title and content for search on "any" field.
 * Added - file getcontent.php for custom edit and use with CURL if needed
