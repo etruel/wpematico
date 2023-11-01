@@ -1,30 +1,5 @@
 == Changelog ==
 
-= 2.5.3 May 09, 2020 =
-
-This version launches a series of changes, additions and new features working with standard feeds, Youtube and media file extensions, plus a few fixes.
-
-#### _Enhancements:_
-
-> * Added support in Settings screen to select images, audio y video extensions allowed to upload with WP mime types as guide.
-> * Added new options in Settings to allow show the Campaign ID in a new column in WordPress Posts (types) lists.
-> * Added new option in campaign to allow bypass the feed date required conditions.
-> * Added new free feature. We made WPeMatico compatible to work with Featured Image from URL plugin by Marcel Jacques Machado. (Thanks for the excellent plugin!)
-> * Improved Youtube campaign types by use [embed] WP shortcode or Youtube shared iframe.
-> * Added size with and height for inserted youtube videos. 
-> * Added option to fill the excerpt field with the description of the feed item.
-
-#### _Bugfixes:_
-
-> * Fixes notice Deprecated: Unparenthesized notice with PHP 7.4+.
-> * Changed Settings metabox name "Other Tools" to "WordPress Backend Tools" to better refer to what is it.
-> * Fix images URLs with entities like &amp;to get it with correct name and replace the original in content.
-
-#### _Recent (may break) changes:_
-
-> * Added support in Settings screen to select images, audio y video extensions allowed to upload with WP mime types as guide.
-> * **Enlarges the version required for the Professional addon to 2.6**
-
 = 2.6.20.2 Jul 21, 2023 =
 * Bump to WP 6.3
 * New video on WordPress main plugin page.
@@ -180,9 +155,30 @@ With a lot of changes, fixes and additions since 2.5 we have finally reach the 2
 
 > * **Enlarges the version required for the Professional addon to 2.6**
 
-=  Aug 09, 2023 =
+= 2.5.3 May 09, 2020 =
 
-* Fixed deprecated in WPeMatico About screen
+This version launches a series of changes, additions and new features working with standard feeds, Youtube and media file extensions, plus a few fixes.
+
+#### _Enhancements:_
+
+> * Added support in Settings screen to select images, audio y video extensions allowed to upload with WP mime types as guide.
+> * Added new options in Settings to allow show the Campaign ID in a new column in WordPress Posts (types) lists.
+> * Added new option in campaign to allow bypass the feed date required conditions.
+> * Added new free feature. We made WPeMatico compatible to work with Featured Image from URL plugin by Marcel Jacques Machado. (Thanks for the excellent plugin!)
+> * Improved Youtube campaign types by use [embed] WP shortcode or Youtube shared iframe.
+> * Added size with and height for inserted youtube videos. 
+> * Added option to fill the excerpt field with the description of the feed item.
+
+#### _Bugfixes:_
+
+> * Fixes notice Deprecated: Unparenthesized notice with PHP 7.4+.
+> * Changed Settings metabox name "Other Tools" to "WordPress Backend Tools" to better refer to what is it.
+> * Fix images URLs with entities like &amp;to get it with correct name and replace the original in content.
+
+#### _Recent (may break) changes:_
+
+> * Added support in Settings screen to select images, audio y video extensions allowed to upload with WP mime types as guide.
+> * **Enlarges the version required for the Professional addon to 2.6**
 
 = 2.5.2.7 May 09, 2020 =
 
