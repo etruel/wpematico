@@ -500,14 +500,7 @@ if(!class_exists('WPeMatico_Settings')) :
 										</button>
 										<h3 class="hndle"><span class="dashicons dashicons-chart-pie"></span> <span><?php _e('Advanced Fetching', 'wpematico'); ?> <?php _e('(SimplePie Settings)', 'wpematico'); ?></span></h3>
 										<div class="inside">
-											<p><b><?php _e('Test if SimplePie library works well on your server:', 'wpematico'); ?></b>
-												<a onclick="javascript:window.open(
-																	  '<?php echo WPeMatico :: $uri; ?>app/lib/sp_compatibility_test.php'
-																	  , 'SimplePie',
-																	  'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=630, height=600');
-																	return false;" 
-												   href="javascript:Void(0);">	<?php _e('Click here', 'wpematico'); ?></a>. <small> <?php _e('(open in popup)', 'wpematico'); ?></small>
-											</p>
+											
 											<p></p>
 											<?php
 											// $from_wordpress = true;
