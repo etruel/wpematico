@@ -706,10 +706,15 @@ a.wpelinks {
         border-top-color: #D3741C;
     }
 }
+#hlptrash .hlptrash-content{
+    max-height: 135px;
+    overflow-y: auto;
+    margin-top: 10px;
+}
 #roles {
-    margin: 10px 20px;
+    margin: 10px;
     width: 200px;
-    max-height: 125px;
+    max-height: 135px;
     overflow-y: auto;
 }
 #roles label {
@@ -1092,6 +1097,29 @@ div#optionslayer-right {
     .title_wizard {
         font-size: 0.8em !important;
         padding: 2px !important;
+    }
+}
+@media (max-width: 600px) {
+    #emptytrashdiv .insidesec{
+        width: 100%;
+        margin-right: 0 !important;
+        padding-right: 0 !important;
+        border-right: 0 !important;
+    }
+    #emptytrashdiv .insidesec:not(:last-child){
+        border-bottom: 1px solid lightgray;
+        margin-bottom: 15px;
+    }
+    #emptytrashdiv .insidesec #roles{
+        width: 100%;
+        margin: 10px 0;
+        padding-left: 10px;
+        box-sizing: border-box;
+    }
+    #emptytrashdiv #hlptrash .hlptrash-content > div,
+    #emptytrashdiv #roles label{
+        height: 20px;
+        margin-bottom: 5px !important;
     }
 }
 @media (max-width: 565px) {
