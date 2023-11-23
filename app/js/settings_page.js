@@ -77,11 +77,13 @@ jQuery(document).ready(function ($) {
 
 	jQuery('#set_stupidly_fast').click(function () {
 		if (false == jQuery('#set_stupidly_fast').is(':checked')) {
-			jQuery('#simpie').fadeIn();
+			jQuery('#simplepie_strip_attributes').removeAttr("disabled");
+			jQuery('#simplepie_strip_htmltags').removeAttr("disabled");
 		} else {
-			jQuery('#simplepie_strip_attributes').removeAttr("checked");
-			jQuery('#simplepie_strip_htmltags').removeAttr("checked");
-			jQuery('#simpie').fadeOut();
+			jQuery('#simplepie_strip_attributes').prop("checked", false);
+			jQuery('#simplepie_strip_htmltags').prop("checked", false);
+			jQuery('#simplepie_strip_attributes').attr("disabled", "disabled");
+			jQuery('#simplepie_strip_htmltags').attr("disabled", "disabled");
 		}
 	});
 	jQuery('#simplepie_strip_htmltags').click(function () {

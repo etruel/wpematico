@@ -1155,29 +1155,12 @@ if (!class_exists('WPeMatico_functions')) {
 			}
 
 			$cfg = get_option(WPeMatico :: OPTION_KEY);
-			if ($cfg['force_mysimplepie']) {
-				if (class_exists('SimplePie')) {
-					if (empty($disable_simplepie_notice)) {
-						echo '<div id="message" class="notice notice-error is-dismissible"><p>' .
-						__('It seems that another plugin are opening Wordpress SimplePie before that WPeMatico can open its own library. This gives a PHP error on duplicated classes.', 'wpematico')
-						. '<br />' .
-						__('You must disable the other plugin to allow Force WPeMatico Custom SimplePie library.')
-						. '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">' .
-						__('Dismiss this notice.')
-						. '</span></button></div>';
-					}
-				} else {
-					require_once dirname(__FILE__) . '/lib/simple_pie_autoloader.php';
-				}
-			} else {
-				if (!class_exists('SimplePie')) {
-					if (is_file(ABSPATH . WPINC . '/class-simplepie.php'))
-						include_once( ABSPATH . WPINC . '/class-simplepie.php' );
-					else if (is_file(ABSPATH . 'wp-admin/includes/class-simplepie.php'))
-						include_once( ABSPATH . 'wp-admin/includes/class-simplepie.php' );
-					else
-						include_once( dirname(__FILE__) . '/lib/simple_pie_autoloader.php' );
-				}
+			
+			if (!class_exists('SimplePie')) {
+				if (is_file(ABSPATH . WPINC . '/class-simplepie.php'))
+					include_once( ABSPATH . WPINC . '/class-simplepie.php' );
+				else if (is_file(ABSPATH . 'wp-admin/includes/class-simplepie.php'))
+					include_once( ABSPATH . 'wp-admin/includes/class-simplepie.php' );
 			}
 			$feed = new SimplePie();
 			$feed->timeout = apply_filters('wpe_simplepie_timeout', 130);

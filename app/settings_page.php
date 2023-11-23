@@ -111,28 +111,13 @@ if(!class_exists('WPeMatico_Settings')) :
 			$cfg = get_option(WPeMatico :: OPTION_KEY);
 			$cfg = apply_filters('wpematico_check_options', $cfg);
 
-			if($cfg['force_mysimplepie']) {
-				if(class_exists('SimplePie')) {
-					echo '<div id="message" class="notice notice-error is-dismissible"><p>' .
-					__('It seems that another plugin are opening Wordpress SimplePie before that WPeMatico can open its own library. This gives a PHP error on duplicated classes.', 'wpematico')
-					. '<br />' .
-					__('You must disable the other plugin to allow Force WPeMatico Custom SimplePie library.')
-					. '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">' .
-					__('Dismiss this notice.')
-					. '</span></button></div>';
-				}else {
-					include_once( dirname(__FILE__) . '/lib/simple_pie_autoloader.php' );
-				}
-			}else {
-				if(!class_exists('SimplePie')) {
-					if(is_file(ABSPATH . WPINC . '/class-simplepie.php'))
-						include_once( ABSPATH . WPINC . '/class-simplepie.php' );
-					else if(is_file(ABSPATH . 'wp-admin/includes/class-simplepie.php'))
-						include_once( ABSPATH . 'wp-admin/includes/class-simplepie.php' );
-					else
-						include_once( dirname(__FILE__) . '/lib/simple_pie_autoloader.php' );
-				}
+			if (!class_exists('SimplePie')) {
+				if (is_file(ABSPATH . WPINC . '/class-simplepie.php'))
+					include_once(ABSPATH . WPINC . '/class-simplepie.php');
+				else if (is_file(ABSPATH . 'wp-admin/includes/class-simplepie.php'))
+					include_once(ABSPATH . 'wp-admin/includes/class-simplepie.php');
 			}
+			
 			$simplepie				 = new SimplePie();
 			$simplepie->timeout		 = apply_filters('wpe_simplepie_timeout', 30);
 			$cfg['strip_htmltags']	 = (!($cfg['simplepie_strip_htmltags'])) ? implode(',', $simplepie->strip_htmltags) : $cfg['strip_htmltags'];
@@ -515,56 +500,36 @@ if(!class_exists('WPeMatico_Settings')) :
 										</button>
 										<h3 class="hndle"><span class="dashicons dashicons-chart-pie"></span> <span><?php _e('Advanced Fetching', 'wpematico'); ?> <?php _e('(SimplePie Settings)', 'wpematico'); ?></span></h3>
 										<div class="inside">
-											<p><b><?php _e('Test if SimplePie library works well on your server:', 'wpematico'); ?></b>
-												<a onclick="javascript:window.open(
-																	  '<?php echo WPeMatico :: $uri; ?>app/lib/sp_compatibility_test.php'
-																	  , 'SimplePie',
-																	  'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=630, height=600');
-																	return false;" 
-												   href="javascript:Void(0);">	<?php _e('Click here', 'wpematico'); ?></a>. <small> <?php _e('(open in popup)', 'wpematico'); ?></small>
-											</p>
+											
 											<p></p>
 											<?php
-											$from_wordpress = false;
-											if($cfg['force_mysimplepie']) {
-
-												include_once( dirname(__FILE__) . '/lib/simple_pie_autoloader.php' );
-											}else {
-												$from_wordpress = true;
-												if(!class_exists('SimplePie')) {
-													if(is_file(ABSPATH . WPINC . '/class-simplepie.php')) {
-														include_once( ABSPATH . WPINC . '/class-simplepie.php' );
-													}else if(is_file(ABSPATH . 'wp-admin/includes/class-simplepie.php')) {
-														include_once( ABSPATH . 'wp-admin/includes/class-simplepie.php' );
-													}else {
-														include_once( dirname(__FILE__) . '/lib/simple_pie_autoloader.php' );
-													}
+											// $from_wordpress = true;
+											if(!class_exists('SimplePie')) {
+												if(is_file(ABSPATH . WPINC . '/class-simplepie.php')) {
+													include_once( ABSPATH . WPINC . '/class-simplepie.php' );
+												}else if(is_file(ABSPATH . 'wp-admin/includes/class-simplepie.php')) {
+													include_once( ABSPATH . 'wp-admin/includes/class-simplepie.php' );
 												}
 											}
-											if($from_wordpress) {
-												echo '<p></p>
-										<code>' . sprintf(__('USING SimplePie %s included in Wordpress'), SIMPLEPIE_VERSION) . '</code>
-									  <p></p>';
-											}else {
-												echo '<p></p>
-										<code>' . sprintf(__('USING SimplePie %s included in WPeMatico Plugin'), SIMPLEPIE_VERSION) . ' </code>
-									  <p></p>';
-											}
+									// 		if($from_wordpress) {
+									// 			echo '<p></p>
+									// 	<code>' . sprintf(__('USING SimplePie %s included in Wordpress'), SIMPLEPIE_VERSION) . '</code>
+									//   <p></p>';
+									// 		}
 											?>
-											<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['force_mysimplepie'], true); ?> name="force_mysimplepie" id="force_mysimplepie" /> <?php _e('Force "Custom Simplepie Library"', 'wpematico'); ?></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['mysimplepie']; ?>"></span>
-											<br /><span class="coderr b LightPink"><?php echo __('The Custom Simplepie Library option will be removed from WPeMatico in the next release.', 'wpematico'); ?><br />
-														<?php _e('Please disable it to start using the Simplepie version included in WordPress.', 'wpematico'); ?></span><br />
-											<p></p>
+											
+											<!-- <?php // _e('Please disable it to start using the Simplepie version included in WordPress.', 'wpematico'); ?></span><br /> -->
+											<br>
 
-											<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['set_stupidly_fast'], true); ?> name="set_stupidly_fast" id="set_stupidly_fast"  onclick="jQuery('#simpie').show();"  /> <?php _e('Set Simplepie "stupidly fast"', 'wpematico'); ?></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['stupidly_fast']; ?>"></span>
+											<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['set_stupidly_fast'], true); ?> name="set_stupidly_fast" id="set_stupidly_fast"/> <?php _e('Set Simplepie "stupidly fast"', 'wpematico'); ?></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['stupidly_fast']; ?>"></span>
 											<p></p>
-											<div id="simpie" style="margin-left: 25px;<?php if($cfg['set_stupidly_fast']) echo 'display:none;'; ?>">
-												<input name="simplepie_strip_htmltags" id="simplepie_strip_htmltags" class="checkbox" value="1" type="checkbox" <?php checked($cfg['simplepie_strip_htmltags'], true); ?> />
+											<div id="simpie" style="margin-left: 25px;">
+												<input name="simplepie_strip_htmltags" id="simplepie_strip_htmltags" class="checkbox" value="1" type="checkbox" <?php checked($cfg['simplepie_strip_htmltags'], true); ?> <?php if($cfg['set_stupidly_fast']) echo 'disabled="disabled"'; ?> />
 												<label for="simplepie_strip_htmltags"><b><?php _e('Change SimplePie HTML tags to strip', 'wpematico'); ?></b></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['strip_htmltags']; ?>"></span>
 												<br />
 												<textarea style="width:500px;" <?php disabled($cfg['simplepie_strip_htmltags'], false, true); ?> name="strip_htmltags" id="strip_htmltags" ><?php echo esc_textarea($cfg['strip_htmltags']); ?></textarea>
 												<p></p>
-												<input name="simplepie_strip_attributes" id="simplepie_strip_attributes" class="checkbox" value="1" type="checkbox" <?php checked($cfg['simplepie_strip_attributes'], true); ?> />
+												<input name="simplepie_strip_attributes" id="simplepie_strip_attributes" class="checkbox" value="1" type="checkbox" <?php checked($cfg['simplepie_strip_attributes'], true); ?>  <?php if($cfg['set_stupidly_fast']) echo 'disabled="disabled"'; ?>/>
 												<label for="simplepie_strip_attributes"><b><?php _e('Change SimplePie HTML attributes to strip', 'wpematico'); ?></b></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['strip_htmlattr']; ?>"></span>
 												<br />
 												<textarea style="width:500px;" <?php disabled($cfg['simplepie_strip_attributes'], false, true); ?> name="strip_htmlattr" id="strip_htmlattr" ><?php echo esc_textarea($cfg['strip_htmlattr']); ?></textarea>
