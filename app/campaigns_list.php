@@ -286,7 +286,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 				'pinged' => $post->pinged,
 				'post_author' => @$post->author,
 				'post_content' => $post->post_content,
-				'post_excerpt' => $post->post_excerpt,
+				'post_excerpt' => isset($post->post_excerpt) ? $post->post_excerpt : '',
 				'post_mime_type' => $post->post_mime_type,
 				'post_parent' => $post->post_parent,
 				'post_password' => $post->post_password,

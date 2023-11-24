@@ -594,7 +594,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         $args = array(
             'post_title' => $this->current_item['title'],
             'post_content' => $this->current_item['content'],
-            'post_excerpt' => $this->current_item['excerpt'],
+            'post_excerpt' => isset($this->current_item['excerpt']) ? $this->current_item['excerpt'] : '',
             'post_name' => $this->current_item['slug'],
             'post_content_filtered' => apply_filters('wpem_parse_content_filtered', $this->current_item['content']),
             'post_status' => $this->current_item['posttype'],
