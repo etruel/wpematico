@@ -363,7 +363,7 @@ $helpcampaign = array(
 	)
 );
 $helpcampaign = apply_filters('wpematico_help_campaign', $helpcampaign);
-
+global $current_screen;
 $screen = $current_screen; //WP_Screen::get('wpematico_page_wpematico_settings ');
 foreach($helpcampaign as $key => $section){
 	$tabcontent = '';
