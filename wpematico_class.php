@@ -392,6 +392,7 @@ if (!class_exists('WPeMatico')) {
 			$images_allowed_ext			 = self::get_images_allowed_mimes(); //'jpg,gif,png,tif,bmp,jpeg';
 			$cfg['images_allowed_ext']	 = (!isset($options['images_allowed_ext'])) ? $images_allowed_ext : sanitize_text_field($options['images_allowed_ext']);
 			$cfg['images_allowed_ext']	 = str_replace(' ', '', $cfg['images_allowed_ext']);  // strip spaces from string
+			$cfg['enablemimetypes']		 = (!isset($options['enablemimetypes']) || empty($options['enablemimetypes'])) ? false : ( ($options['enablemimetypes'] == 1) ? true : false );
 			$cfg['featuredimg']			 = (!isset($options['featuredimg']) || empty($options['featuredimg'])) ? false : ( ($options['featuredimg'] == 1) ? true : false );
 			$cfg['rmfeaturedimg']		 = (!isset($options['rmfeaturedimg']) || empty($options['rmfeaturedimg'])) ? false : ( ($options['rmfeaturedimg'] == 1) ? true : false );
 

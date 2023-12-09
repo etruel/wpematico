@@ -71,6 +71,11 @@ function wpematico_helpsettings($dev = '') {
 				'plustip'	 => __('Try it at your own risk, if you see that the images are not loading, uncheck it.', 'wpematico') .
 				'<br />' . __('Also uncheck this if you need all sizes of wordpress images. The WP process can take too much resources if many images are uploaded at a time.', 'wpematico'),
 			),
+			'enablemimetypes'	=> array( 
+				'title' => __('Enable add other mime types.', 'wpematico' ),
+				'tip' => __('Use this instead of Wordpress functions to improve performance. This function upload the mime types does not avaliable in the wordpress media.', 'wpematico' ).
+					'<br />'. __('This function may not work in all servers.', 'wpematico' ),
+			),
 		),
 		'Audio Settings'	 => array(
 			'audio_cache'			 => array(

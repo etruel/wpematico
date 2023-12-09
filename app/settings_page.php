@@ -360,7 +360,7 @@ if(!class_exists('WPeMatico_Settings')) :
 													<?php _e('WordPress image mime types.', 'wpematico'); ?> <label class="description" id="images_allowed_ext-list" title="<?php _e('Click here to restore WP defaults.', 'wpematico') ?>" onclick="jQuery('#images_allowed_ext').val(jQuery(this).text());return false;"><?php echo $ext_list; ?></label><br/>
 													<?php _e('Recommended.', 'wpematico'); ?> <label class="description" id="images_allowed_ext-list" title="<?php _e('Click here to set recommended values.', 'wpematico') ?>" onclick="jQuery('#images_allowed_ext').val(jQuery(this).text());return false;"><?php echo "jpg,gif,png,tif,bmp,jpeg"; ?></label>
 												</p>
-
+												<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enablemimetypes'], true); ?> name="enablemimetypes" id="enablemimetypes" /><b>&nbsp;<label for="enablemimetypes"><?php _e('Enable add mime types.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablemimetypes']; ?>"></span>
 											</div>
 											<?php do_action('wpematico_settings_images', $cfg); ?>
 										</div>
@@ -781,6 +781,10 @@ if(!class_exists('WPeMatico_Settings')) :
 					if(!defined('ALTERNATE_WP_CRON')) {
 						define('ALTERNATE_WP_CRON', true);
 					}
+				}
+
+				if(isset($cfg['enablemimetypes']) && $cfg['enablemimetypes']){
+					
 				}
 
 				if(!(isset($cfg['dontruncron']) && $cfg['dontruncron'] )) {
