@@ -361,14 +361,6 @@ if(!class_exists('WPeMatico_Settings')) :
 													<?php _e('Recommended.', 'wpematico'); ?> <label class="description" id="images_allowed_ext-list" title="<?php _e('Click here to set recommended values.', 'wpematico') ?>" onclick="jQuery('#images_allowed_ext').val(jQuery(this).text());return false;"><?php echo "jpg,gif,png,tif,bmp,jpeg"; ?></label>
 												</p>
 												<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enablemimetypes'], true); ?> name="enablemimetypes" id="enablemimetypes" /><b>&nbsp;<label for="enablemimetypes"><?php _e('Enable add mime types.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablemimetypes']; ?>"></span>
-												<?php
-												$comma		 = _x(', ', 'mime delimiter');
-												$ext_to_edit = WPeMatico_functions::wpematico_get_mime_type_by_extension(array());
-												$ext_list	 = implode($comma, $ext_to_edit);
-												?>
-												<p class="description" id="new-mime-images_allowed_ext-desc">
-													<b><?php _e('Wpematico image mime types:', 'wpematico'); ?></b> <?php echo $ext_list; ?><br/>
-												</p>
 											</div>
 											<?php do_action('wpematico_settings_images', $cfg); ?>
 										</div>
