@@ -109,6 +109,38 @@ if (!class_exists('WPeMatico_functions')) {
 			return $string;
 		}
 
+		public static function wpematico_get_mime_type_by_extension($mime_types) {
+			$mime_types_img = array(
+				'ai'   => 'application/postscript',
+				'bmp'  => 'image/bmp',
+				'gif'  => 'image/gif',
+				'ico'  => 'image/x-icon',
+				'jpeg' => 'image/jpeg',
+				'jpg'  => 'image/jpeg',
+				'png'  => 'image/png',
+				'ps'   => 'application/postscript',
+				'psd'  => 'image/vnd.adobe.photoshop',
+				'svg'  => 'image/svg+xml',
+				'tif'  => 'image/tiff',
+				'tiff' => 'image/tiff',
+				'webp' => 'image/webp',
+			);
+			
+			// Additional image types
+			$additional_types = array(
+				'apng' => 'image/apng',
+				'avif' => 'image/avif',
+				'jfif' => 'image/jpeg',
+				'pjpeg' => 'image/jpeg',
+				'pjp' => 'image/jpeg',
+			);
+			
+			// Merge the additional types with the main list
+			$mime_types = array_merge($mime_types, $mime_types_img, $additional_types);
+		
+			// Return the MIME type if it exists, otherwise, return a default value
+			return apply_filters('wpematico_wp_mime_types', $mime_types);
+		}
 		/**
 		 * Static function get_enconding_from_url
 		 * This function get the encoding from headers of a URL.
