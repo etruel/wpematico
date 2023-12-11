@@ -132,9 +132,6 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
             add_filter('wpematico_get_post_content_feed', array('wpematico_campaign_fetch_functions', 'wpematico_get_yt_rss_tags'), 999, 4);
             add_filter('wpematico_get_item_images', array('wpematico_campaign_fetch_functions', 'wpematico_get_yt_image'), 999, 4);
         }
-        if($this->cfg['enablemimetypes']){
-            add_filter('upload_mimes', array($this, 'wpematico_get_mime_type_by_extension'));
-        }
         if ($this->cfg['add_extra_duplicate_filter_meta_source'] && !$this->cfg['disableccf']) {
             add_filter('wpematico_duplicates', array('wpematico_campaign_fetch_functions', 'WPeisDuplicatedMetaSource'), 10, 3);
         }
@@ -144,38 +141,6 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
             add_filter('wpematico_item_filters_pos_img', array('wpematico_campaign_fetch_functions', 'url_meta_set_featured_image_setmeta'), 999, 2);
         }
     }
-    public static function wpematico_get_mime_type_by_extension($mime_types) {
-		$mime_types_img = array(
-			'ai'   => 'application/postscript',
-			'bmp'  => 'image/bmp',
-			'gif'  => 'image/gif',
-			'ico'  => 'image/x-icon',
-			'jpeg' => 'image/jpeg',
-			'jpg'  => 'image/jpeg',
-			'png'  => 'image/png',
-			'ps'   => 'application/postscript',
-			'psd'  => 'image/vnd.adobe.photoshop',
-			'svg'  => 'image/svg+xml',
-			'tif'  => 'image/tiff',
-			'tiff' => 'image/tiff',
-			'webp' => 'image/webp',
-		);
-		
-		// Additional image types
-		$additional_types = array(
-			'apng' => 'image/apng',
-			'avif' => 'image/avif',
-			'jfif' => 'image/jpeg',
-			'pjpeg' => 'image/jpeg',
-			'pjp' => 'image/jpeg',
-		);
-		
-		// Merge the additional types with the main list
-		$mime_types = array_merge($mime_types, $mime_types_img, $additional_types);
-	
-		// Return the MIME type if it exists, otherwise, return a default value
-		return apply_filters('wpematico_wp_mime_types', $mime_types);
-	}
     /**
      * Processes every feed of a campaign
      * @param   $feed       URL string    Feed 

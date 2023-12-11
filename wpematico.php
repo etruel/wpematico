@@ -93,9 +93,13 @@ if (!class_exists('Main_WPeMatico')) {
 		}
 
 		private function hooks() {
+			global $cfg;
 			add_action('init', array('WPeMatico', 'init'));
 			add_action('the_permalink', array('WPeMatico', 'wpematico_permalink'));
 			add_filter('post_link', array('WPeMatico', 'wpematico_permalink'));
+			if($cfg['enablemimetypes']){
+				add_filter('upload_mimes', array('WPeMatico', 'wpematico_get_mime_type_by_extension'));
+			}
 		}
 
 		/**
