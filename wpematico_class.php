@@ -32,38 +32,6 @@ if (!class_exists('WPeMatico')) {
 			new self(TRUE);
 		}
 		
-		public static function wpematico_get_mime_type_by_extension($mime_types) {
-			$mime_types_img = array(
-				'ai'   => 'application/postscript',
-				'bmp'  => 'image/bmp',
-				'gif'  => 'image/gif',
-				'ico'  => 'image/x-icon',
-				'jpeg' => 'image/jpeg',
-				'jpg'  => 'image/jpeg',
-				'png'  => 'image/png',
-				'ps'   => 'application/postscript',
-				'psd'  => 'image/vnd.adobe.photoshop',
-				'svg'  => 'image/svg+xml',
-				'tif'  => 'image/tiff',
-				'tiff' => 'image/tiff',
-				'webp' => 'image/webp',
-			);
-			
-			// Additional image types
-			$additional_types = array(
-				'apng' => 'image/apng',
-				'avif' => 'image/avif',
-				'jfif' => 'image/jpeg',
-				'pjpeg' => 'image/jpeg',
-				'pjp' => 'image/jpeg',
-			);
-			
-			// Merge the additional types with the main list
-			$mime_types = array_merge($mime_types, $mime_types_img, $additional_types);
-		
-			// Return the MIME type if it exists, otherwise, return a default value
-			return apply_filters('wpematico_wp_mime_types', $mime_types);
-		}
 
 		/**
 		 * constructor
@@ -73,6 +41,7 @@ if (!class_exists('WPeMatico')) {
 		 * @return void
 		 */
 		public function __construct($hook_in = FALSE) {
+			global $cfg;
 			//Admin message
 			//add_action('admin_notices', array( &$this, 'wpematico_admin_notice' ) ); 
 			if (!$this->wpematico_env_checks())
@@ -98,6 +67,9 @@ if (!class_exists('WPeMatico')) {
 
 				add_filter('wpematico_check_campaigndata', array(__CLASS__, 'check_campaigndata'), 10, 1);
 				add_filter('wpematico_check_options', array(__CLASS__, 'check_options'), 10, 1);
+				if($cfg['enablemimetypes']){
+					self::wpematico_add_custom_mimetypes(array());
+				}
 			}
 			//add Empty Trash folder buttons
 			if ($this->options['emptytrashbutton']) {
@@ -124,7 +96,7 @@ if (!class_exists('WPeMatico')) {
 				}
 			}
 		}
-
+		
 		/**
 		 * Display empty trash button on list tables
 		 * @return void
@@ -472,6 +444,54 @@ if (!class_exists('WPeMatico')) {
 		 */
 		public function update_options() {
 			return update_option(self :: OPTION_KEY, $this->options);
+		}
+
+		public static function wpematico_get_mime_type_by_extension($extension) {
+			$mime_types_img = array(
+				'ai'   => 'application/postscript',
+				'bmp'  => 'image/bmp',
+				'gif'  => 'image/gif',
+				'ico'  => 'image/x-icon',
+				'jpeg' => 'image/jpeg',
+				'jpg'  => 'image/jpeg',
+				'png'  => 'image/png',
+				'ps'   => 'application/postscript',
+				'psd'  => 'image/vnd.adobe.photoshop',
+				'svg'  => 'image/svg+xml',
+				'tif'  => 'image/tiff',
+				'tiff' => 'image/tiff',
+				'webp' => 'image/webp',
+				'apng' => 'image/apng',
+				'avif' => 'image/avif',
+				'jfif' => 'image/jpeg',
+				'pjpeg' => 'image/jpeg',
+				'pjp' => 'image/jpeg',
+			);
+		
+			// Return the MIME type if it exists, otherwise, return a default value
+			return isset($mime_types_img[$extension]) ? $mime_types_img[$extension] : array();
+		}
+
+		public static function wpematico_add_custom_mimetypes($mimetypes){
+			global $cfg;
+			$allowed = (isset($cfg['images_allowed_ext']) && !empty($cfg['images_allowed_ext'])) ? $cfg['images_allowed_ext'] : 'jpg,gif,png,tif,bmp,jpeg';
+			$allowed = apply_filters('wpematico_allowext', $allowed);
+			$allowedArray = explode(',', $allowed);
+			
+			$allowedWP = explode(',', self::get_images_allowed_mimes());
+			
+			$arrayDiff = array_diff($allowedArray, $allowedWP);
+			
+			foreach ($arrayDiff as $diffExtension) {
+				$customMimeType = self::wpematico_get_mime_type_by_extension($diffExtension);
+				
+				if ($customMimeType) {
+					$mimetypes[$diffExtension] = $customMimeType;
+				}
+			}
+			add_filter('upload_mimes', function ($mimes) use ($mimetypes) {
+				return array_merge($mimes, $mimetypes);
+			});
 		}
 
 	}
