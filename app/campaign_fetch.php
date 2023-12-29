@@ -201,9 +201,16 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
                 }
             }
         }
-
-
-        foreach ($simplepie->get_items() as $item) {
+        $trueWhile = true;
+        $initialMemoryUsage = memory_get_usage();
+        $maxMemoryUsage = 64 * 1024 * 1024;
+        // Set your desired maximum memory usage in bytes 
+        $batchSize = $this->campaign['campaign_max'];
+        // Initial batch size 
+        $simplePieItems = $simplepie->get_items(0, $batchSize);
+        while($trueWhile){
+            
+        foreach ($simplePieItems as $item) {
             if ($prime) {
                 //with first item get the hash of the last item (new) that will be saved.
                 $this->lasthash[$feed] = md5($item->get_permalink());
@@ -260,7 +267,6 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
                 break;
             }
         }
-
         $campaign_timeout = (int) $this->cfg['campaign_timeout'];
         // Processes post stack
         $realcount = 0;
@@ -292,6 +298,18 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
                 $suma = "";
             }
         }
+            $currentMemoryUsage = memory_get_usage() - $initialMemoryUsage;
+            if ($currentMemoryUsage >= $maxMemoryUsage) {
+                // Reduce batch size if memory usage is too high 
+                $batchSize = max(1, $batchSize / 2);
+            }
+            $trueWhile = false;
+        }   
+
+        $simplepie->__destruct();
+        unset($items);
+        unset($simplepie);
+        
 
         if ($realcount) {
             trigger_error(sprintf(__('%s posts added', 'wpematico'), $realcount), E_USER_NOTICE);
