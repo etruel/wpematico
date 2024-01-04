@@ -3,9 +3,6 @@
 if (!function_exists('add_filter'))
 	exit;
 
-$cfg = get_option('WPeMatico_Options');
-$cfg = apply_filters('wpematico_check_options', $cfg);
-
 if (!class_exists('WPeMatico')) {
 
 	class WPeMatico extends WPeMatico_functions {
@@ -23,6 +20,11 @@ if (!class_exists('WPeMatico')) {
 
 		public static function init() {
 			global $cfg;
+
+			add_filter('wpematico_check_options', array(__CLASS__, 'check_options'), 10, 1);
+
+			$cfg = get_option('WPeMatico_Options');
+			$cfg = apply_filters('wpematico_check_options', $cfg);
 
 			$plugin_data	 = self::plugin_get_version(WPEMATICO_ROOTFILE);
 			self :: $name	 = $plugin_data['Name'];
@@ -71,7 +73,6 @@ if (!class_exists('WPeMatico')) {
 				wp_register_script('jquery-vsort', self ::$uri . 'app/js/jquery.vSort.min.js', array('jquery'));
 
 				add_filter('wpematico_check_campaigndata', array(__CLASS__, 'check_campaigndata'), 10, 1);
-				add_filter('wpematico_check_options', array(__CLASS__, 'check_options'), 10, 1);
 				
 			}
 			//add Empty Trash folder buttons
@@ -502,4 +503,3 @@ if (!class_exists('WPeMatico')) {
 
 	// Class WPeMatico
 }
-
