@@ -1129,6 +1129,19 @@ if (!class_exists('WPeMatico_functions')) {
 			return $url;
 		}
 
+		public static function wpematico_set_canonical($canonical_url, $post){
+			global $cfg;
+			
+			if(isset($cfg['wpematico_set_canonical']) && $cfg['wpematico_set_canonical']){
+				$wpe_sourcepermalink = get_post_meta($post->ID, 'wpe_sourcepermalink', true);
+				$wpematicoCanonical= apply_filters('wpematico_canonical_url', $wpe_sourcepermalink, $canonical_url, $post->ID);
+
+				return isset($wpematicoCanonical) ? $wpematicoCanonical : $canonical_url;
+			}
+
+			return $canonical_url;
+		}
+
 //*********************************************************************************************************
 
 		/**

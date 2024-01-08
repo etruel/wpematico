@@ -3,6 +3,9 @@
 if (!function_exists('add_filter'))
 	exit;
 
+// $cfg = get_option('WPeMatico_Options');
+// $cfg = apply_filters('wpematico_check_options', $cfg);
+
 if (!class_exists('WPeMatico')) {
 
 	class WPeMatico extends WPeMatico_functions {
@@ -19,12 +22,6 @@ if (!class_exists('WPeMatico')) {
 		public $options			 = array();
 
 		public static function init() {
-			global $cfg;
-
-			add_filter('wpematico_check_options', array(__CLASS__, 'check_options'), 10, 1);
-
-			$cfg = get_option('WPeMatico_Options');
-			$cfg = apply_filters('wpematico_check_options', $cfg);
 
 			$plugin_data	 = self::plugin_get_version(WPEMATICO_ROOTFILE);
 			self :: $name	 = $plugin_data['Name'];
@@ -34,10 +31,6 @@ if (!class_exists('WPeMatico')) {
 			self :: $basen	 = plugin_basename(WPEMATICO_ROOTFILE);
 
 			new self(TRUE);
-
-			if($cfg['enablemimetypes']){
-				self::wpematico_add_custom_mimetypes();
-			}
 		}
 		
 
@@ -49,10 +42,12 @@ if (!class_exists('WPeMatico')) {
 		 * @return void
 		 */
 		public function __construct($hook_in = FALSE) {
+			global $cfg;
 			//Admin message
 			//add_action('admin_notices', array( &$this, 'wpematico_admin_notice' ) ); 
 			if (!$this->wpematico_env_checks())
 				return;
+			
 			$this->load_options();
 
 			if ($this->options['nonstatic'] && !class_exists('NoNStatic')) {
@@ -73,12 +68,16 @@ if (!class_exists('WPeMatico')) {
 				wp_register_script('jquery-vsort', self ::$uri . 'app/js/jquery.vSort.min.js', array('jquery'));
 
 				add_filter('wpematico_check_campaigndata', array(__CLASS__, 'check_campaigndata'), 10, 1);
-				
+				add_filter('wpematico_check_options', array(__CLASS__, 'check_options'), 10, 1);
 			}
 			//add Empty Trash folder buttons
 			if ($this->options['emptytrashbutton']) {
 				// Add button to list table for all post types
 				add_action('restrict_manage_posts', array(&$this, 'add_button'), 90);
+			}
+			
+			if($cfg['enablemimetypes']){
+				self::wpematico_add_custom_mimetypes();
 			}
 			//Check timeout of running campaigns
 			if ($this->options['campaign_timeout'] > 0) {
@@ -333,6 +332,7 @@ if (!class_exists('WPeMatico')) {
 		 * @return void
 		 */
 		public function load_options() {
+			global $cfg;
 			$cfg = get_option(self :: OPTION_KEY);
 			if (!$cfg) {
 				/**
@@ -341,6 +341,7 @@ if (!class_exists('WPeMatico')) {
 				$default_options						 = array();
 				$default_options['set_stupidly_fast']	 = true;
 				$default_options['disable_credits']		 = true;
+				$default_options['wpematico_set_canonical'] = true;
 				$this->options							 = $this->check_options($default_options);
 				add_option(self :: OPTION_KEY, $this->options, '', 'yes');
 			} else {
@@ -375,6 +376,7 @@ if (!class_exists('WPeMatico')) {
 			$cfg['enableseelog']		 = (!isset($options['enableseelog']) || empty($options['enableseelog'])) ? false : ( ($options['enableseelog'] == 1) ? true : false );
 			$cfg['enablerewrite']		 = (!isset($options['enablerewrite']) || empty($options['enablerewrite'])) ? false : ( ($options['enablerewrite'] == 1) ? true : false );
 			$cfg['enableword2cats']		 = (!isset($options['enableword2cats']) || empty($options['enableword2cats'])) ? false : ( ($options['enableword2cats'] == 1) ? true : false );
+			$cfg['wpematico_set_canonical']	 = (!isset($options['wpematico_set_canonical']) || empty($options['wpematico_set_canonical'])) ? false : ( ($options['wpematico_set_canonical'] == 1) ? true : false );
 			$cfg['customupload']		 = (!isset($options['customupload']) || empty($options['customupload'])) ? false : ( ($options['customupload'] == 1) ? true : false );
 			$cfg['imgattach']			 = (!isset($options['imgattach']) || empty($options['imgattach'])) ? false : ( ($options['imgattach'] == 1) ? true : false );
 			$cfg['imgcache']			 = (!isset($options['imgcache']) || empty($options['imgcache'])) ? false : ( ($options['imgcache'] == 1) ? true : false );

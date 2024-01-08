@@ -141,7 +141,6 @@ if(!class_exists('WPeMatico_Settings')) :
 				wp_die("Cheatin' uh?", "Closed today.");
 			$cfg = get_option(WPeMatico :: OPTION_KEY);
 			$cfg = apply_filters('wpematico_check_options', $cfg);
-
 			if($cfg['force_mysimplepie']) {
 				if(class_exists('SimplePie')) {
 					echo '<div id="message" class="notice notice-error is-dismissible"><p>' .
@@ -530,7 +529,9 @@ if(!class_exists('WPeMatico_Settings')) :
 											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enableword2cats'], true); ?> name="enableword2cats" id="enableword2cats" /> <label for="enableword2cats"><?php _e('Enable "Words to Categories" feature', 'wpematico'); ?></label>
 											<span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enableword2cats']; ?>"></span>
 											<p></p>
-
+											<input class="checkbox" type="checkbox"<?php checked($cfg['wpematico_set_canonical'], true); ?> name="wpematico_set_canonical" value="1" id="wpematico_set_canonical"/> 
+											<label for="wpematico_set_canonical"><?php echo __('Use Canonical URL to Source site on post(type)', 'wpematico'); ?></label>
+											<span class="dashicons dashicons-warning help_tip" title="<?php // echo $helptip['wpematico_set_canonical']; ?>"></span>
 											<?php if(!wpematico_is_pro_active()) : ?>
 
 											</div>
@@ -841,6 +842,9 @@ if(!class_exists('WPeMatico_Settings')) :
 				/**
 				 * wpematico_check_options Filter to sanitize and strip all options fields 
 				 */
+
+				// var_dump($_POST);
+				// die();
 				$cfg				 = apply_filters('wpematico_check_options', $_POST);
 				if(!wpematico_is_pro_active())
 					$cfg['nonstatic']	 = false;
