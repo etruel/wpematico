@@ -325,12 +325,19 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
      * @return true si lo procesó
      */
     function processItem($feed, $item, $feedurl) {
-        global $wpdb, $realcount;
+        global $wpdb, $realcount, $wpematico_fifu_meta;
+        ;
         trigger_error(sprintf('<b>' . __('Processing item %s', 'wpematico'), $item->get_title() . '</b>'), E_USER_NOTICE);
         $this->current_item = array();
 
+        if(!empty($item->get_item_tags ('', 'link'))){
+            $permalink = $item->get_permalink();
+        }else{
+            $permalink = $item->get_id();
+        }
+
         // Get the source Permalink trying to redirect if is set.
-        $this->current_item['permalink'] = $this->getReadUrl($item->get_permalink(), $this->campaign);
+        $this->current_item['permalink'] = $this->getReadUrl( $permalink , $this->campaign);
         // First exclude filters
         if ($this->exclude_filters($this->current_item, $this->campaign, $feed, $item)) {
             return -1;  // resta este item del total 
