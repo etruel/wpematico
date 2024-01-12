@@ -184,7 +184,19 @@ if(!class_exists('WPeMatico_Settings')) :
 					?>
 					<div id="poststuff">
 						<?php
-						if(!get_option('wpematico_lastlog_disabled')): ?>
+						if(!get_option('wpematico_lastlog_disabled')): 
+
+						$fetch_feed_params = array(
+							'url' 			=> 'https://www.wpematico.com/releases/feed/',
+							'stupidly_fast' => true,
+							'max' 			=> 0,
+							'order_by_date' => true,
+							'force_feed' 	=> false,
+							'disable_simplepie_notice' => true,
+						);
+
+						$feed = WPeMatico::fetchFeed($fetch_feed_params);
+						?>
 						<div id="wpe_changelog-notice" class="wpe_changelog-notice">
 							<div class="wpe_changelog-header">
 								<div class="wpe_changelog-header-img">
@@ -193,18 +205,19 @@ if(!class_exists('WPeMatico_Settings')) :
 								<div class="wpe_changelog-header-content">
 									<h2>WPeMatico RSS Feed Fetcher</h2>
 									<p>Highlights of the new release</p>
-									<h4>Version <span>2.6.21</span></h4>
+									<h4>Version <span><?php echo WPEMATICO_VERSION ?></span></h4>
 								</div>
 							</div>
 							<div class="wpe_changelog-content">
 								<div class="wpe_changelog-list">
-									<ul>
-										<li>Improves compatibilities for titles with Professional and Facebook Fetcher addons.</li>
-										<li>Added new filter on get the title of each post to allow parsers on it.</li>
-										<li>Fixes few issues on Addons page and actions.</li>
-										<li>Fixes deprecated notices on Welcome and About pages.</li>
-										<li>Fixes all Old links from PRO to Essentials Extensions.</li>
-									</ul>
+									<?php foreach ($feed->get_items(0, 1) as $item) {
+										$description = $item->get_description();
+										$content = $item->get_content();
+
+										echo '<h3>' . $description . '</h3><br>';
+
+										echo $content;
+										} ?>
 								</div>
 								<p><a href="https://www.wpematico.com/releases/" class="button" target="_blank"><span class="dashicons dashicons-arrow-right-alt"></span> Read more on wpematico.com</a></p>
 								<br>
@@ -531,7 +544,7 @@ if(!class_exists('WPeMatico_Settings')) :
 											<p></p>
 											<input class="checkbox" type="checkbox"<?php checked($cfg['wpematico_set_canonical'], true); ?> name="wpematico_set_canonical" value="1" id="wpematico_set_canonical"/> 
 											<label for="wpematico_set_canonical"><?php echo __('Use Canonical URL to Source site on post(type)', 'wpematico'); ?></label>
-											<span class="dashicons dashicons-warning help_tip" title="<?php // echo $helptip['wpematico_set_canonical']; ?>"></span>
+											<span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['wpematico_set_canonical']; ?>"></span>
 											<?php if(!wpematico_is_pro_active()) : ?>
 
 											</div>

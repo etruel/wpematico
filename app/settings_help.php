@@ -76,6 +76,12 @@ function wpematico_helpsettings($dev = '') {
 				'tip' => __('Use this instead of Wordpress functions to improve performance. This function upload the mime types does not avaliable in the wordpress media.', 'wpematico' ).
 					'<br />'. __('This function may not work in all servers.', 'wpematico' ),
 			),
+			'wpematico_set_canonical'	=> array( 
+				'title' => __('Enable canonical url', 'wpematico' ),
+				'tip' => __('This option adds the canonical URL in the <head> section of each post with the original source link of the article. 
+				This indicates to search engines which is the preferred version of the page with similar or duplicated content to optimize SEO and avoid be penalized by them.', 'wpematico' ).
+					'<br />'. __('This function may not work in all servers.', 'wpematico' ),
+			),
 		),
 		'Audio Settings'	 => array(
 			'audio_cache'			 => array(

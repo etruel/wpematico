@@ -30,7 +30,8 @@ if (!class_exists('WPeMatico')) {
 			self :: $dir	 = plugin_dir_path(WPEMATICO_ROOTFILE);
 			self :: $basen	 = plugin_basename(WPEMATICO_ROOTFILE);
 
-			new self(TRUE);
+			$wpematico_instance = new self(TRUE);
+			$wpematico_instance->load_options();
 		}
 		
 
@@ -54,7 +55,7 @@ if (!class_exists('WPeMatico')) {
 				$this->options['nonstatic'] = false;
 				$this->update_options();
 			}
-
+			
 			$this->Create_campaigns_page();
 			if ($hook_in) {
 				add_action('admin_menu', array($this, 'admin_menu'));

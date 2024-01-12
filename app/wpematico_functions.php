@@ -858,7 +858,6 @@ if (!class_exists('WPeMatico_functions')) {
 			$campaigndata['campaign_get_excerpt'] = (!isset($post_data['campaign_get_excerpt']) || empty($post_data['campaign_get_excerpt'])) ? false : ( ($post_data['campaign_get_excerpt'] == 1) ? true : false );
 
 			$campaigndata['campaign_enable_convert_utf8'] = (!isset($post_data['campaign_enable_convert_utf8']) || empty($post_data['campaign_enable_convert_utf8'])) ? false : ( ($post_data['campaign_enable_convert_utf8'] == 1) ? true : false );
-
 			// *** Campaign Audios
 			$campaigndata['campaign_no_setting_audio'] = (!isset($post_data['campaign_no_setting_audio']) || empty($post_data['campaign_no_setting_audio'])) ? false : ( ($post_data['campaign_no_setting_audio'] == 1) ? true : false );
 			$campaigndata['campaign_audio_cache'] = (!isset($post_data['campaign_audio_cache']) || empty($post_data['campaign_audio_cache'])) ? false : ( ($post_data['campaign_audio_cache'] == 1) ? true : false );
@@ -1132,14 +1131,14 @@ if (!class_exists('WPeMatico_functions')) {
 		public static function wpematico_set_canonical($canonical_url, $post){
 			global $cfg;
 			
-			if(isset($cfg['wpematico_set_canonical']) && $cfg['wpematico_set_canonical']){
-				$wpe_sourcepermalink = get_post_meta($post->ID, 'wpe_sourcepermalink', true);
-				$wpematicoCanonical= apply_filters('wpematico_canonical_url', $wpe_sourcepermalink, $canonical_url, $post->ID);
+			$prev = $canonical_url;
 
-				return isset($wpematicoCanonical) ? $wpematicoCanonical : $canonical_url;
+			if (isset($cfg['wpematico_set_canonical']) && $cfg['wpematico_set_canonical']) {
+				$wpe_sourcepermalink = get_post_meta($post->ID, 'wpe_sourcepermalink', true);
+				$canonical_url = isset($wpe_sourcepermalink) ? $wpe_sourcepermalink : $canonical_url;
 			}
 
-			return $canonical_url;
+			return apply_filters('wpematico_canonical_url', $canonical_url, $prev, $post);
 		}
 
 //*********************************************************************************************************
