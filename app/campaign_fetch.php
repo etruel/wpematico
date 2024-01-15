@@ -306,7 +306,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
             $trueWhile = false;
         }   
 
-        $simplepie->__destruct();
+        if($this->campaign['campaign_type'] != 'xml')
+            $simplepie->__destruct();
         unset($items);
         unset($simplepie);
         
@@ -329,12 +330,12 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         trigger_error(sprintf('<b>' . __('Processing item %s', 'wpematico'), $item->get_title() . '</b>'), E_USER_NOTICE);
         $this->current_item = array();
 
-        if(!empty($item->get_item_tags ('', 'link'))){
+        if(!empty($item->get_item_tags ('', 'link')) || $this->campaign['campaign_type'] == 'youtube' || $this->campaign['campaign_type'] == 'xml'){
             $permalink = $item->get_permalink();
         }else{
             $permalink = $item->get_id();
         }
-
+       
         // Get the source Permalink trying to redirect if is set.
         $this->current_item['permalink'] = $this->getReadUrl( $permalink , $this->campaign);
         // First exclude filters
