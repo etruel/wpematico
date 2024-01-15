@@ -249,7 +249,6 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			wp_enqueue_script('wpematico-campaign-list', WPeMatico :: $uri . 'app/js/campaign_list.js', array('jquery'), WPEMATICO_VERSION, true);
 
 			$wpematico_object = array(
-				'image_run_loading' => get_bloginfo('wpurl') . '/wp-admin/images/wpspin_light.gif',
 				'date_format' => get_option('date_format') . ' ' . get_option('time_format'),
 				'i18n_date_format' => date_i18n(get_option('date_format') . '-' . get_option('time_format')),
 				'text_running_campaign' => __('Running Campaign...', 'wpematico'),
@@ -286,7 +285,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 				'pinged' => $post->pinged,
 				'post_author' => @$post->author,
 				'post_content' => $post->post_content,
-				'post_excerpt' => isset($post->post_excerpt) ? $post->post_excerpt : '',
+				'post_excerpt' => $post->post_excerpt,
 				'post_mime_type' => $post->post_mime_type,
 				'post_parent' => $post->post_parent,
 				'post_password' => $post->post_password,

@@ -154,9 +154,9 @@ function wpematico_helpsettings($dev = '') {
 			),
 			'wpematico_set_canonical'	=> array( 
 				'title' => __('Enable canonical url', 'wpematico' ),
-				'tip' => __('This option adds the canonical URL in the <head> section of each post with the original source link of the article. 
-				This indicates to search engines which is the preferred version of the page with similar or duplicated content to optimize SEO and avoid be penalized by them.', 'wpematico' ).
+				'tip' => __('This option adds the canonical URL in the <head> section of each post with the original source link of the article.', 'wpematico' ).
 					'<br />'. __('This function may not work in all servers.', 'wpematico' ),
+				'plustip' => __('This indicates to search engines which is the preferred version of the page with similar or duplicated content to optimize SEO and avoid be penalized by them.', 'wpematico').'<br />',
 			),
 		),
 		'SimplePie Settings' => array(

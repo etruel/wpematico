@@ -207,3 +207,16 @@ a:focus {
     border-radius: 2px;
     cursor: pointer;
 }
+
+.wpe_spinner:before {
+    animation: rotation 2s linear infinite;
+    display: block;
+}
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
