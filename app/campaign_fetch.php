@@ -306,7 +306,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
      * @return true si lo procesó
      */
     function processItem($feed, $item, $feedurl) {
-        global $wpdb, $realcount;
+        global $wpdb, $realcount, $wpematico_fifu_meta;
         trigger_error(sprintf('<b>' . __('Processing item %s', 'wpematico'), $item->get_title() . '</b>'), E_USER_NOTICE);
         $this->current_item = array();
 
@@ -422,9 +422,12 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
             }
         }
 
-
-        if ($options_images['rmfeaturedimg'] && !empty($this->current_item['featured_image'])) { // removes featured from content
-            $this->current_item['content'] = $this->strip_Image_by_src($this->current_item['featured_image'], $this->current_item['content']);
+        if ($options_images['rmfeaturedimg']) { // removes featured from content
+            if(!empty($this->current_item['featured_image'])){
+                $this->current_item['content'] = $this->strip_Image_by_src($this->current_item['featured_image'], $this->current_item['content']);
+            }elseif(!empty($wpematico_fifu_meta['fifu_image_url'])){
+                $this->current_item['content'] = $this->strip_Image_by_src($wpematico_fifu_meta['fifu_image_url'], $this->current_item['content']);
+            }
         }
 
         if ($this->cfg['nonstatic']) {
