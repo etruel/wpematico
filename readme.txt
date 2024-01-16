@@ -3,7 +3,7 @@ Contributors: etruel, sniuk, khaztiel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,RSS to Post,Feed to Post,XML to post,autoblog,rss aggregator,Feed,rss to post,syndication,xml import,Post,Posts,aggregation,atom,bot,content,writing
 Requires at least: 4.8
-Tested up to: 6.3.2
+Tested up to: 6.4.2
 Requires PHP: 5.6
 Stable tag: trunk
 License: GPLv2 or later
@@ -255,6 +255,14 @@ Version 2.7 focuses on code improvements and documentations follow the standards
 > * The titles feature was improved to use a new added filter 
 > * **Enlarges the version required for the Professional addon to 2.20**
 
+> See all detailed changelog at [wpematico Releases](https://wpematico.com/releases/)
+
+= 2.6.22 Jan 15, 2024 =
+* Improved compatibilities.
+* Fixes an issue on remove first image on content with Fifu option activated.
+* Stay tuned. We are preparing everything for the major update 2.7.
+* More details at [wpematico Releases](https://www.wpematico.com/2-6-22-jan-15-2024/)
+>>>>>>> master
 
 = 2.6.21 Oct 17, 2023 =
 * Improves compatibilities for titles with Professional and Facebook Fetcher addons.
@@ -272,4 +280,4 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 
-Compatibility with WordPress 6.3.2
+Fixes Fifu compatibility and bump to WP 6.4.X
