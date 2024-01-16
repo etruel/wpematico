@@ -211,12 +211,8 @@ if(!class_exists('WPeMatico_Settings')) :
 							<div class="wpe_changelog-content">
 								<div class="wpe_changelog-list">
 									<?php foreach ($feed->get_items(0, 1) as $item) {
-										$description = $item->get_description();
 										$content = $item->get_content();
-
-										echo '<h3>' . $description . '</h3><br>';
-
-										echo $content;
+										echo '<h3>' . $content . '</h3><br>';
 										} ?>
 								</div>
 								<p><a href="https://www.wpematico.com/releases/" class="button" target="_blank"><span class="dashicons dashicons-arrow-right-alt"></span> Read more on wpematico.com</a></p>
