@@ -184,6 +184,7 @@ if(!class_exists('WPeMatico_Settings')) :
 					?>
 					<div id="poststuff">
 						<?php
+						delete_option('wpematico_lastlog_disabled');
 						if(!get_option('wpematico_lastlog_disabled')): 
 
 						$fetch_feed_params = array(
@@ -211,8 +212,8 @@ if(!class_exists('WPeMatico_Settings')) :
 							<div class="wpe_changelog-content">
 								<div class="wpe_changelog-list">
 									<?php foreach ($feed->get_items(0, 1) as $item) {
-										$content = $item->get_content();
-										echo '<h3>' . $content . '</h3><br>';
+											$content = $item->get_content();
+											echo $content;
 										} ?>
 								</div>
 								<p><a href="https://www.wpematico.com/releases/" class="button" target="_blank"><span class="dashicons dashicons-arrow-right-alt"></span> Read more on wpematico.com</a></p>
