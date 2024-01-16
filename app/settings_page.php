@@ -184,7 +184,6 @@ if(!class_exists('WPeMatico_Settings')) :
 					?>
 					<div id="poststuff">
 						<?php
-						delete_option('wpematico_lastlog_disabled');
 						if(!get_option('wpematico_lastlog_disabled')): 
 
 						$fetch_feed_params = array(
