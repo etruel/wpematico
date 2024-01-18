@@ -206,6 +206,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
     //     $maxMemoryUsage = 64 * 1024 * 1024;
     //     // Set your desired maximum memory usage in bytes 
     //     $batchSize = $this->campaign['campaign_max'];
+    
+        
     //     // Initial batch size 
     //     $simplePieItems = $simplepie->get_items(0, $batchSize);
     //     while ($trueWhile) {
@@ -369,11 +371,12 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
             }
         }
     
-        $trueWhile = true;
-        $initialMemoryUsage = memory_get_usage();
-        $maxMemoryUsage = 64 * 1024 * 1024;
         $batchSize = $this->campaign['campaign_max'];
-        $simplePieItems = $simplepie->get_items(0, $batchSize);
+        if($batchSize == 0){
+            $simplePieItems = $simplepie->get_items();
+        }else{
+            $simplePieItems = $simplepie->get_items(0, $batchSize);
+        }
         $this->current_item = array();
         $campaign_timeout = (int) $this->cfg['campaign_timeout'];
         // Processes post stack
@@ -401,11 +404,6 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
                 continue;
             }
     
-            if ($realcount == $this->campaign['campaign_max']) {
-                trigger_error(sprintf(__('Campaign fetch limit reached at %s.', 'wpematico'), $this->campaign['campaign_max']), E_USER_NOTICE);
-                break;
-            }
-    
             // interrupt the script if timeout 
             if (current_time('timestamp') - $this->campaign['starttime'] >= $campaign_timeout) {
                 trigger_error(sprintf(__('Reached running timeout at %1$d sec.', 'wpematico'), $campaign_timeout), E_USER_WARNING);
@@ -431,10 +429,9 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
                 $suma = "";
             }
 
-            $currentMemoryUsage = memory_get_usage() - $initialMemoryUsage;
-            if ($currentMemoryUsage >= $maxMemoryUsage) {
-                // Reduce batch size if memory usage is too high 
-                $batchSize = max(1, $batchSize / 2);
+            if ($realcount == $this->campaign['campaign_max']) {
+                trigger_error(sprintf(__('Campaign fetch limit reached at %s.', 'wpematico'), $this->campaign['campaign_max']), E_USER_NOTICE);
+                break;
             }
         }
         if ($this->campaign['campaign_type'] != 'xml')
