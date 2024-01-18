@@ -141,28 +141,14 @@ if(!class_exists('WPeMatico_Settings')) :
 				wp_die("Cheatin' uh?", "Closed today.");
 			$cfg = get_option(WPeMatico :: OPTION_KEY);
 			$cfg = apply_filters('wpematico_check_options', $cfg);
-			if($cfg['force_mysimplepie']) {
-				if(class_exists('SimplePie')) {
-					echo '<div id="message" class="notice notice-error is-dismissible"><p>' .
-					__('It seems that another plugin are opening Wordpress SimplePie before that WPeMatico can open its own library. This gives a PHP error on duplicated classes.', 'wpematico')
-					. '<br />' .
-					__('You must disable the other plugin to allow Force WPeMatico Custom SimplePie library.')
-					. '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">' .
-					__('Dismiss this notice.')
-					. '</span></button></div>';
-				}else {
-					include_once( dirname(__FILE__) . '/lib/simple_pie_autoloader.php' );
-				}
-			}else {
-				if(!class_exists('SimplePie')) {
-					if(is_file(ABSPATH . WPINC . '/class-simplepie.php'))
-						include_once( ABSPATH . WPINC . '/class-simplepie.php' );
-					else if(is_file(ABSPATH . 'wp-admin/includes/class-simplepie.php'))
-						include_once( ABSPATH . 'wp-admin/includes/class-simplepie.php' );
-					else
-						include_once( dirname(__FILE__) . '/lib/simple_pie_autoloader.php' );
-				}
+			
+			if (!class_exists('SimplePie')) {
+				if (is_file(ABSPATH . WPINC . '/class-simplepie.php'))
+					include_once(ABSPATH . WPINC . '/class-simplepie.php');
+				else if (is_file(ABSPATH . 'wp-admin/includes/class-simplepie.php'))
+					include_once(ABSPATH . 'wp-admin/includes/class-simplepie.php');
 			}
+
 			$simplepie				 = new SimplePie();
 			$simplepie->timeout		 = apply_filters('wpe_simplepie_timeout', 30);
 			$cfg['strip_htmltags']	 = (!($cfg['simplepie_strip_htmltags'])) ? implode(',', $simplepie->strip_htmltags) : $cfg['strip_htmltags'];
@@ -591,18 +577,6 @@ if(!class_exists('WPeMatico_Settings')) :
 										</button>
 										<h3 class="hndle"><span class="dashicons dashicons-chart-pie"></span> <span><?php _e('Advanced Fetching', 'wpematico'); ?> <?php _e('(SimplePie Settings)', 'wpematico'); ?></span></h3>
 										<div class="inside">
-											<p><b><?php _e('Test if SimplePie library works well on your server:', 'wpematico'); ?></b>
-												<a onclick="javascript:window.open(
-																	  '<?php echo WPeMatico :: $uri; ?>app/lib/sp_compatibility_test.php'
-																	  , 'SimplePie',
-																	  'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=630, height=600');
-																	return false;" 
-												   href="javascript:Void(0);">	<?php _e('Click here', 'wpematico'); ?></a>. <small> <?php _e('(open in popup)', 'wpematico'); ?></small>
-											</p>
-											<p></p>
-											<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['force_mysimplepie'], true); ?> name="force_mysimplepie" id="force_mysimplepie" /> <?php _e('Force "Custom Simplepie Library"', 'wpematico'); ?></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['mysimplepie']; ?>"></span>
-											<br /><span class="coderr b LightPink"><?php echo __('The Custom Simplepie Library option will be removed from WPeMatico in the next release.', 'wpematico'); ?><br />
-														<?php _e('Please disable it to start using the Simplepie version included in WordPress.', 'wpematico'); ?></span><br />
 											<p></p>
 
 											<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['set_stupidly_fast'], true); ?> name="set_stupidly_fast" id="set_stupidly_fast"  onclick="jQuery('#simpie').show();"  /> <?php _e('Set Simplepie "stupidly fast"', 'wpematico'); ?></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['stupidly_fast']; ?>"></span>
