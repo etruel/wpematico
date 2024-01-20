@@ -202,12 +202,17 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         $trueWhile = true;
         $initialMemoryUsage = memory_get_usage();
         $maxMemoryUsage = 64 * 1024 * 1024;
-        // Set your desired maximum memory usage in bytes 
-        $batchSize = $this->campaign['campaign_max'];
-    
+
         
-        // Initial batch size 
-        $simplePieItems = $simplepie->get_items(0, $batchSize);
+        // Set your desired maximum memory usage in bytes 
+        $batchSize = ($duplicate_options['jumpduplicates']) ? 0 : $this->campaign['campaign_max'];
+        
+        if(empty($batchSize)){
+            $simplePieItems = $simplepie->get_items();
+        }else{
+            $simplePieItems = $simplepie->get_items(0, $batchSize);
+        }
+       
         while ($trueWhile) {
 
             foreach ($simplePieItems as $item) {
