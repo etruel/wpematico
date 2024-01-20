@@ -1534,7 +1534,7 @@ div#optionslayer-right {
     margin-bottom: 20px;
     margin-top: 5px;
     box-sizing: border-box;
-    margin: 5px 0 2px 0px;
+    margin: 5px 12px 2px 0px;
     padding: 1px 12px;
     display: block;
 }
@@ -1572,7 +1572,11 @@ div#optionslayer-right {
 .wpematico-smart-notification .parr-wpmatico-smart-notification{
     padding-right: 10px;
 }
-
+@media (min-width: 783px){
+    .wpematico-smart-notification {
+        margin-right: 20px;
+    }
+}
 /*Changelog Notice*/
 .wpe_changelog-notice{
     display: block;
