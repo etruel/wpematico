@@ -56,7 +56,7 @@ function run_now(c_ID) {
 	jQuery('html').css('cursor', 'wait');
 	jQuery('#post-' + c_ID + ' .state_buttons.dashicons-controls-play').addClass('green');
 	jQuery("div[id=fieldserror]").remove();
-	var msgdev = '<p><img width="16" src="' + wpematico_object.image_run_loading + '"> <span style="vertical-align: top;margin: 10px;">' + wpematico_object.text_running_campaign + '</span></p>';
+	var msgdev = '<p><span class="dashicons dashicons-admin-generic wpe_spinner"></span> <span style="vertical-align: top;">' + wpematico_object.text_running_campaign + '</span></p>';
 	jQuery(".subsubsub").before('<div id="fieldserror" class="updated fade">' + msgdev + '</div>');
 	var data = {
 		campaign_ID: c_ID,
@@ -98,7 +98,7 @@ function run_all() {
 
 	jQuery('html').css('cursor', 'wait');
 	jQuery('#fieldserror').remove();
-	var msgdev = '<p><img width="16" src="' + wpematico_object.image_run_loading + '"> <span style="vertical-align: top;margin: 10px;">' + wpematico_object.text_running_campaign + '</span></p>';
+	var msgdev = '<p><span class="dashicons dashicons-admin-generic wpe_spinner"></span> <span style="vertical-align: top;">' + wpematico_object.text_running_campaign + '</span></p>';
 	jQuery(".subsubsub").before('<div id="fieldserror" class="updated fade ajaxstop">' + msgdev + '</div>');
 	jQuery("input[name='post[]']:checked").each(function () {
 		var c_ID = jQuery(this).val();

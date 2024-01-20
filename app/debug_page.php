@@ -1063,6 +1063,29 @@ function wpematico_show_data_info() {
 				</td>
 			</tr>
 			<tr>
+				<td data-export-label="Simple Pie VERSION"><?php _e('Simple Pie VERSION:', 'wpematico'); ?></td>
+				<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('Minimum version required is 1.5.1.', 'wpematico') . '">[?]</a>'; ?></td>
+				<td><?php
+					$from_wordpress = false;
+					if(!class_exists('SimplePie')) {
+						if(is_file(ABSPATH . WPINC . '/class-simplepie.php')) {
+							include_once( ABSPATH . WPINC . '/class-simplepie.php' );
+							$from_wordpress = true;
+						}else if(is_file(ABSPATH . 'wp-admin/includes/class-simplepie.php')) {
+							include_once( ABSPATH . 'wp-admin/includes/class-simplepie.php' );
+							$from_wordpress = true;
+						}
+					}
+
+					if ($from_wordpress) {
+						echo '
+				<code>' . sprintf(__('USING SimplePie %s included in Wordpress'), SIMPLEPIE_VERSION) . '</code>
+			  ';
+					}
+					?>
+				</td>
+			</tr>
+			<tr>
 				<td data-export-label="Language WPLANG"><?php _e('Language WPLANG:', 'wpematico'); ?></td>
 				<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('The current language set in wp-config.php, WPLANG constant. Default = en_US', 'wpematico') . '">[?]</a>'; ?></td>
 				<td><?php echo get_locale() ?></td>

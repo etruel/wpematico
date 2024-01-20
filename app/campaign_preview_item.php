@@ -320,16 +320,16 @@ class wpematico_campaign_preview_item {
 					<?php endif; ?>
 					<button type="button" data-itemhash="<?php echo $item_hash; ?>" data-feed="<?php echo $feed; ?>" class="item_fetch cpanelbutton dashicons dashicons-welcome-add-page" title="<?php esc_attr_e('Fetch Now', 'wpematico'); ?>"></button>
 					<?php do_action('wpematico_preview_item_actions', $item); ?>
-					<img id="image_loading" style="display: none;" src="<?php echo admin_url('images/wpspin_light.gif'); ?>">
+					<span id="image_loading" style="display: none;" class="dashicons dashicons-admin-generic wpe_spinner"></span>
 				</div>
 				
 				<div id="preview-post-content">
 					<div class="preview-page-post-title">
-						<h2><img src="<?php echo admin_url('images/wpspin_light.gif'); ?>"> <?php _e('Loading post title...', 'wpematico'); ?></h2>
+						<h2><span class="dashicons dashicons-admin-generic wpe_spinner" style="margin-top: 8px;"></span> <?php _e('Loading post title...', 'wpematico'); ?></h2>
 					</div>
 					
 					<div id="preview-page-post-content">
-						<img src="<?php echo admin_url('images/wpspin_light.gif'); ?>"> <?php _e('Loading post content...', 'wpematico'); ?>
+						<span class="dashicons dashicons-admin-generic wpe_spinner"></span> <?php _e('Loading post content...', 'wpematico'); ?>
 					</div>
 
 				</div>

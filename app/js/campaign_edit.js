@@ -15,7 +15,7 @@ jQuery(document).ready(function ($) {
 
 		//$('#xml-campaign-input-nodes-container').html('<img src="' +  wpematico_object.image_run_loading + '">' + wpematico_object.text_loading);
 		$('#xml-campaign-input-nodes-container').html(
-				'<div id="message" class="updated notice notice-updated"><p>' + '<img src="' + wpematico_object.image_run_loading + '"> ' + wpematico_object.text_loading + '</p></div>'
+				'<div id="message" class="updated notice notice-updated"><p>' + '<span class="dashicons dashicons-admin-generic wpe_spinner"></span> ' + wpematico_object.text_loading + '</p></div>'
 				);
 		$('#xml-campaign-input-nodes-container').fadeIn();
 
@@ -212,7 +212,7 @@ jQuery(document).ready(function ($) {
 		$(this).addClass('green');
 		$('html').css('cursor', 'wait');
 		$('#fieldserror').remove();
-		msgdev = "<img width='12' src='" + wpematico_object.image_run_loading + "' class='mt2'> " + wpematico_object.text_running_campaign + "";
+		msgdev = "<span class='dashicons dashicons-admin-generic wpe_spinner'></span> " + wpematico_object.text_running_campaign + "";
 		$("#poststuff").prepend('<div id="fieldserror" class="updated fade he20">' + msgdev + '</div>');
 		c_ID = $('#post_ID').val();
 		var data = {
@@ -367,7 +367,7 @@ jQuery(document).ready(function ($) {
 		$(working).removeClass('dashicons-editor-spellcheck')
 				.removeClass("dashicons-thumbs-down red")
 				.removeClass("dashicons-thumbs-up green")
-				.addClass('ruedita');
+				.addClass('dashicons-admin-generic wpe_spinner');
 
 		if (feed !== "") {
 			$(item).attr('style', 'Background:#CCC;');
@@ -386,21 +386,21 @@ jQuery(document).ready(function ($) {
 					$("#poststuff").prepend('<div id="message" class="feederror notice notice-success is-dismissible"><p>' + response.message + '</p>' + dismiss + '</div>');
 					$(working).removeClass('dashicons-editor-spellcheck')
 							.removeClass("dashicons-thumbs-down red")
-							.removeClass("ruedita")
+							.removeClass("dashicons-admin-generic wpe_spinner")
 							.addClass('dashicons-thumbs-up green');
 				} else {
 					$(item).attr('style', 'Background:Red;');
 					$("#poststuff").prepend('<div id="message" class="feederror notice notice-error is-dismissible"><p>ERROR: ' + response.message + '</p>' + dismiss + '</div>');
 					$(working).removeClass('dashicons-editor-spellcheck')
 							.removeClass("dashicons-thumbs-up green")
-							.removeClass("ruedita")
+							.removeClass("dashicons-admin-generic wpe_spinner")
 							.addClass('dashicons-thumbs-down red');
 
 				}
 			});
 		} else {
 			alert(wpematico_object.text_type_some_feed_url);
-			$(working).removeClass('ruedita')
+			$(working).removeClass('dashicons-admin-generic wpe_spinner')
 					.removeClass("dashicons-thumbs-down red")
 					.removeClass("dashicons-thumbs-up green")
 					.addClass('dashicons-editor-spellcheck');
@@ -421,7 +421,7 @@ jQuery(document).ready(function ($) {
 				$(working).removeClass('dashicons-editor-spellcheck')
 						.removeClass("dashicons-thumbs-down red")
 						.removeClass("dashicons-thumbs-up green")
-						.addClass('ruedita');
+						.addClass('dashicons-admin-generic wpe_spinner');
 				$(item).attr('style', 'Background:#CCC;');
 				var data = {
 					action: "wpematico_test_feed",
@@ -438,14 +438,14 @@ jQuery(document).ready(function ($) {
 						$("#poststuff").prepend('<div id="message" class="feederror notice notice-success is-dismissible"><p>' + response.message + '</p>' + dismiss + '</div>');
 						$(working).removeClass('dashicons-editor-spellcheck')
 								.removeClass("dashicons-thumbs-down red")
-								.removeClass("ruedita")
+								.removeClass("dashicons-admin-generic wpe_spinner")
 								.addClass('dashicons-thumbs-up green');
 					} else {
 						$(item).attr('style', 'Background:Red;');
 						$("#poststuff").prepend('<div id="message" class="feederror notice notice-error is-dismissible"><p>ERROR: ' + response.message + '</p>' + dismiss + '</div>');
 						$(working).removeClass('dashicons-editor-spellcheck')
 								.removeClass("dashicons-thumbs-up green")
-								.removeClass("ruedita")
+								.removeClass("dashicons-admin-generic wpe_spinner")
 								.addClass('dashicons-thumbs-down red');
 					}
 					$(working).removeClass("spinner");

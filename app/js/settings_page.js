@@ -1,5 +1,19 @@
 jQuery(document).ready(function ($) {
-
+	$('#button_yes_changelog').on('click', function() {
+        // Set the value to true
+        var data = {
+            'action': 'process_button_click',
+            'value': true,
+			'nonce': ajax_object.nonce
+        };
+		jQuery.post(ajaxurl, data, function (response) {
+            if (response.success) {
+				$('#wpe_changelog-notice').hide();
+            }else{
+				console.log(response);
+			}
+        });
+    });
 	jQuery('#mailsndemail').blur(function () {
 		var x = jQuery(this).val();
 		var atpos = x.indexOf("@");

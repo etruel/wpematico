@@ -108,7 +108,6 @@ if (!class_exists('WPeMatico_functions')) {
 			}
 			return $string;
 		}
-
 		/**
 		 * Static function get_enconding_from_url
 		 * This function get the encoding from headers of a URL.
@@ -859,7 +858,6 @@ if (!class_exists('WPeMatico_functions')) {
 			$campaigndata['campaign_get_excerpt'] = (!isset($post_data['campaign_get_excerpt']) || empty($post_data['campaign_get_excerpt'])) ? false : ( ($post_data['campaign_get_excerpt'] == 1) ? true : false );
 
 			$campaigndata['campaign_enable_convert_utf8'] = (!isset($post_data['campaign_enable_convert_utf8']) || empty($post_data['campaign_enable_convert_utf8'])) ? false : ( ($post_data['campaign_enable_convert_utf8'] == 1) ? true : false );
-
 			// *** Campaign Audios
 			$campaigndata['campaign_no_setting_audio'] = (!isset($post_data['campaign_no_setting_audio']) || empty($post_data['campaign_no_setting_audio'])) ? false : ( ($post_data['campaign_no_setting_audio'] == 1) ? true : false );
 			$campaigndata['campaign_audio_cache'] = (!isset($post_data['campaign_audio_cache']) || empty($post_data['campaign_audio_cache'])) ? false : ( ($post_data['campaign_audio_cache'] == 1) ? true : false );
@@ -1128,6 +1126,19 @@ if (!class_exists('WPeMatico_functions')) {
 				}
 			}
 			return $url;
+		}
+
+		public static function wpematico_set_canonical($canonical_url, $post){
+			global $cfg;
+			
+			$prev = $canonical_url;
+
+			if (isset($cfg['wpematico_set_canonical']) && $cfg['wpematico_set_canonical']) {
+				$wpe_sourcepermalink = get_post_meta($post->ID, 'wpe_sourcepermalink', true);
+				$canonical_url = isset($wpe_sourcepermalink) ? $wpe_sourcepermalink : $canonical_url;
+			}
+
+			return apply_filters('wpematico_canonical_url', $canonical_url, $prev, $post);
 		}
 
 //*********************************************************************************************************
@@ -1784,15 +1795,15 @@ function wpematico_joberrorhandler($errno, $errstr, $errfile, $errline) {
 	//genrate timestamp
 	if (!version_compare(phpversion(), '6.9.0', '>')) { // PHP Version < 5.7 dirname 2nd 
 		if (!function_exists('memory_get_usage')) { // test if memory functions compiled in
-			$timestamp = "<span style=\"background-color:c3c3c3;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile)) . basename($errfile) . "\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
+			$timestamp = "<span style=\"background-color:#c3c3c3; padding: 0 5px;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile)) . basename($errfile) . "\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
 		} else {
-			$timestamp = "<span style=\"background-color:c3c3c3;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile)) . basename($errfile) . "|Mem: " . WPeMatico :: formatBytes(@memory_get_usage(true)) . "|Mem Max: " . WPeMatico :: formatBytes(@memory_get_peak_usage(true)) . "|Mem Limit: " . ini_get('memory_limit') . "]\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
+			$timestamp = "<span style=\"background-color:#c3c3c3; padding: 0 5px;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile)) . basename($errfile) . "|Mem: " . WPeMatico :: formatBytes(@memory_get_usage(true)) . "|Mem Max: " . WPeMatico :: formatBytes(@memory_get_peak_usage(true)) . "|Mem Limit: " . ini_get('memory_limit') . "]\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
 		}
 	} else {
 		if (!function_exists('memory_get_usage')) { // test if memory functions compiled in
-			$timestamp = "<span style=\"background-color:c3c3c3;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile, 2)) . basename($errfile) . "\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
+			$timestamp = "<span style=\"background-color:#c3c3c3; padding: 0 5px;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile, 2)) . basename($errfile) . "\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
 		} else {
-			$timestamp = "<span style=\"background-color:c3c3c3;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile, 2)) . basename($errfile) . "|Mem: " . WPeMatico :: formatBytes(@memory_get_usage(true)) . "|Mem Max: " . WPeMatico :: formatBytes(@memory_get_peak_usage(true)) . "|Mem Limit: " . ini_get('memory_limit') . "]\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
+			$timestamp = "<span style=\"background-color:#c3c3c3; padding: 0 5px;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile, 2)) . basename($errfile) . "|Mem: " . WPeMatico :: formatBytes(@memory_get_usage(true)) . "|Mem Max: " . WPeMatico :: formatBytes(@memory_get_peak_usage(true)) . "|Mem Limit: " . ini_get('memory_limit') . "]\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
 		}
 	}
 

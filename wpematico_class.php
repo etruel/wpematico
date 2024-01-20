@@ -3,8 +3,8 @@
 if (!function_exists('add_filter'))
 	exit;
 
-$cfg = get_option('WPeMatico_Options');
-$cfg = apply_filters('wpematico_check_options', $cfg);
+// $cfg = get_option('WPeMatico_Options');
+// $cfg = apply_filters('wpematico_check_options', $cfg);
 
 if (!class_exists('WPeMatico')) {
 
@@ -22,6 +22,7 @@ if (!class_exists('WPeMatico')) {
 		public $options			 = array();
 
 		public static function init() {
+
 			$plugin_data	 = self::plugin_get_version(WPEMATICO_ROOTFILE);
 			self :: $name	 = $plugin_data['Name'];
 			self :: $version = $plugin_data['Version'];
@@ -29,8 +30,10 @@ if (!class_exists('WPeMatico')) {
 			self :: $dir	 = plugin_dir_path(WPEMATICO_ROOTFILE);
 			self :: $basen	 = plugin_basename(WPEMATICO_ROOTFILE);
 
-			new self(TRUE);
+			$wpematico_instance = new self(TRUE);
+			$wpematico_instance->load_options();
 		}
+		
 
 		/**
 		 * constructor
@@ -40,17 +43,19 @@ if (!class_exists('WPeMatico')) {
 		 * @return void
 		 */
 		public function __construct($hook_in = FALSE) {
+			global $cfg;
 			//Admin message
 			//add_action('admin_notices', array( &$this, 'wpematico_admin_notice' ) ); 
 			if (!$this->wpematico_env_checks())
 				return;
+			
 			$this->load_options();
 
 			if ($this->options['nonstatic'] && !class_exists('NoNStatic')) {
 				$this->options['nonstatic'] = false;
 				$this->update_options();
 			}
-
+			
 			$this->Create_campaigns_page();
 			if ($hook_in) {
 				add_action('admin_menu', array($this, 'admin_menu'));
@@ -70,6 +75,10 @@ if (!class_exists('WPeMatico')) {
 			if ($this->options['emptytrashbutton']) {
 				// Add button to list table for all post types
 				add_action('restrict_manage_posts', array(&$this, 'add_button'), 90);
+			}
+			
+			if(isset($cfg['enablemimetypes']) && $cfg['enablemimetypes']){
+				self::wpematico_add_custom_mimetypes();
 			}
 			//Check timeout of running campaigns
 			if ($this->options['campaign_timeout'] > 0) {
@@ -91,7 +100,7 @@ if (!class_exists('WPeMatico')) {
 				}
 			}
 		}
-
+		
 		/**
 		 * Display empty trash button on list tables
 		 * @return void
@@ -324,6 +333,7 @@ if (!class_exists('WPeMatico')) {
 		 * @return void
 		 */
 		public function load_options() {
+			global $cfg;
 			$cfg = get_option(self :: OPTION_KEY);
 			if (!$cfg) {
 				/**
@@ -332,6 +342,7 @@ if (!class_exists('WPeMatico')) {
 				$default_options						 = array();
 				$default_options['set_stupidly_fast']	 = true;
 				$default_options['disable_credits']		 = true;
+				$default_options['wpematico_set_canonical'] = true;
 				$this->options							 = $this->check_options($default_options);
 				add_option(self :: OPTION_KEY, $this->options, '', 'yes');
 			} else {
@@ -366,6 +377,7 @@ if (!class_exists('WPeMatico')) {
 			$cfg['enableseelog']		 = (!isset($options['enableseelog']) || empty($options['enableseelog'])) ? false : ( ($options['enableseelog'] == 1) ? true : false );
 			$cfg['enablerewrite']		 = (!isset($options['enablerewrite']) || empty($options['enablerewrite'])) ? false : ( ($options['enablerewrite'] == 1) ? true : false );
 			$cfg['enableword2cats']		 = (!isset($options['enableword2cats']) || empty($options['enableword2cats'])) ? false : ( ($options['enableword2cats'] == 1) ? true : false );
+			$cfg['wpematico_set_canonical']	 = (!isset($options['wpematico_set_canonical']) || empty($options['wpematico_set_canonical'])) ? false : ( ($options['wpematico_set_canonical'] == 1) ? true : false );
 			$cfg['customupload']		 = (!isset($options['customupload']) || empty($options['customupload'])) ? false : ( ($options['customupload'] == 1) ? true : false );
 			$cfg['imgattach']			 = (!isset($options['imgattach']) || empty($options['imgattach'])) ? false : ( ($options['imgattach'] == 1) ? true : false );
 			$cfg['imgcache']			 = (!isset($options['imgcache']) || empty($options['imgcache'])) ? false : ( ($options['imgcache'] == 1) ? true : false );
@@ -392,6 +404,7 @@ if (!class_exists('WPeMatico')) {
 			$images_allowed_ext			 = self::get_images_allowed_mimes(); //'jpg,gif,png,tif,bmp,jpeg';
 			$cfg['images_allowed_ext']	 = (!isset($options['images_allowed_ext'])) ? $images_allowed_ext : sanitize_text_field($options['images_allowed_ext']);
 			$cfg['images_allowed_ext']	 = str_replace(' ', '', $cfg['images_allowed_ext']);  // strip spaces from string
+			$cfg['enablemimetypes']		 = (!isset($options['enablemimetypes']) || empty($options['enablemimetypes'])) ? false : ( ($options['enablemimetypes'] == 1) ? true : false );
 			$cfg['featuredimg']			 = (!isset($options['featuredimg']) || empty($options['featuredimg'])) ? false : ( ($options['featuredimg'] == 1) ? true : false );
 			$cfg['rmfeaturedimg']		 = (!isset($options['rmfeaturedimg']) || empty($options['rmfeaturedimg'])) ? false : ( ($options['rmfeaturedimg'] == 1) ? true : false );
 
@@ -440,8 +453,56 @@ if (!class_exists('WPeMatico')) {
 			return update_option(self :: OPTION_KEY, $this->options);
 		}
 
+		public static function wpematico_get_mime_type_by_extension($extension) {
+			$mime_types_img = array(
+				'ai'   => 'application/postscript, application/adobe.illustrator, application/illustrator',
+				'bmp'  => 'image/bmp',
+				'gif'  => 'image/gif',
+				'ico'  => 'image/x-icon',
+				'jpeg' => 'image/jpeg',
+				'jpg'  => 'image/jpeg',
+				'png'  => 'image/png',
+				'ps'   => 'application/postscript',
+				'psd'  => 'image/vnd.adobe.photoshop',
+				'svg'  => 'image/svg+xml',
+				'tif'  => 'image/tiff',
+				'tiff' => 'image/tiff',
+				'webp' => 'image/webp',
+				'apng' => 'image/apng',
+				'avif' => 'image/avif',
+				'jfif' => 'image/jpeg',
+				'pjpeg' => 'image/jpeg',
+				'pjp' => 'image/jpeg',
+			);
+		
+			// Return the MIME type if it exists, otherwise, return a default value
+			return isset($mime_types_img[$extension]) ? $mime_types_img[$extension] : array();
+		}
+
+		public static function wpematico_add_custom_mimetypes($mimetypes=array()){
+			global $cfg;
+			$allowed = (isset($cfg['images_allowed_ext']) && !empty($cfg['images_allowed_ext'])) ? $cfg['images_allowed_ext'] : 'jpg,gif,png,tif,bmp,jpeg';
+			$allowed = apply_filters('wpematico_allowext', $allowed);
+			$allowedArray = explode(',', $allowed);
+			
+			$allowedWP = explode(',', self::get_images_allowed_mimes());
+			
+			$arrayDiff = array_diff($allowedArray, $allowedWP);
+			
+			foreach ($arrayDiff as $diffExtension) {
+				$customMimeType = self::wpematico_get_mime_type_by_extension($diffExtension);
+				
+				if (!empty($customMimeType)) {
+					$mimetypes[$diffExtension] = $customMimeType;
+				}
+			}
+			add_filter('upload_mimes', function ($mimes) use ($mimetypes) {
+				$mimes = array_merge($mimes, $mimetypes);
+				return $mimes;
+			});
+		}
+
 	}
 
 	// Class WPeMatico
 }
-
