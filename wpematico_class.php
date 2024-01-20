@@ -77,7 +77,7 @@ if (!class_exists('WPeMatico')) {
 				add_action('restrict_manage_posts', array(&$this, 'add_button'), 90);
 			}
 			
-			if($cfg['enablemimetypes']){
+			if(isset($cfg['enablemimetypes']) && $cfg['enablemimetypes']){
 				self::wpematico_add_custom_mimetypes();
 			}
 			//Check timeout of running campaigns
