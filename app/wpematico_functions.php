@@ -1053,20 +1053,17 @@ if (!class_exists('WPeMatico_functions')) {
 		 * Required @param   integer  $post_id    Campaign ID to save on.
 		 *			@param   array  $campaign	All the campaign data to save.
 		 * 
-		 * @return an array with campaign data 
+		 * @return int|bool with campaign data 
 		 * */
 		public static function update_campaign($post_id, $campaign = array()) {
 			$campaign['cronnextrun'] = (int) WPeMatico :: time_cron_next($campaign['cron']);
 			$campaign = apply_filters('wpematico_before_update_campaign', $campaign);
 
-			add_post_meta($post_id, 'postscount', $campaign['postscount'], true) or
-					update_post_meta($post_id, 'postscount', $campaign['postscount']);
+			update_post_meta($post_id, 'postscount', $campaign['postscount']);
+	
+			update_post_meta($post_id, 'cronnextrun', $campaign['cronnextrun']);
 
-			add_post_meta($post_id, 'cronnextrun', $campaign['cronnextrun'], true) or
-					update_post_meta($post_id, 'cronnextrun', $campaign['cronnextrun']);
-
-			add_post_meta($post_id, 'lastrun', $campaign['lastrun'], true) or
-					update_post_meta($post_id, 'lastrun', $campaign['lastrun']);
+			update_post_meta($post_id, 'lastrun', $campaign['lastrun']);
 
 			// *** Campaign Rewrites	
 			// Proceso los rewrites agrego slashes	
@@ -1080,9 +1077,8 @@ if (!class_exists('WPeMatico_functions')) {
 				for ($i = 0; $i < count($campaign['campaign_wrd2cat']['word']); $i++) {
 					$campaign['campaign_wrd2cat']['word'][$i] = addslashes($campaign['campaign_wrd2cat']['word'][$i]);
 				}
-
-			return add_post_meta($post_id, 'campaign_data', $campaign, true) or
-					update_post_meta($post_id, 'campaign_data', $campaign);
+			
+			return update_post_meta($post_id, 'campaign_data', $campaign);
 		}
 
 		/*		 * ********* 	 Funciones para procesar campañas ***************** */
