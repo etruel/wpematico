@@ -721,7 +721,7 @@ if (!class_exists('WPeMatico_functions')) {
 		/**
 		 * Load all campaigns data
 		 * 
-		 * @return an array with all campaigns data 
+		 * @return array with all campaigns data 
 		 * */
 		public static function get_campaigns() {
 			$campaigns_data = array();
@@ -743,9 +743,9 @@ if (!class_exists('WPeMatico_functions')) {
 		/**
 		 * Load campaign data
 		 * Required @param   integer  $post_id    Campaign ID to load
-		 * 		  @param   boolean  $getfromdb  if set to true run get_post($post_ID) and retuirn object post
+		 * @param   boolean  $getfromdb  if set to true run get_post($post_ID) and retuirn object post
 		 * 
-		 * @return an array with campaign data 
+		 * @return array with campaign data 
 		 * */
 		public static function get_campaign($post_id, $getfromdb = false) {
 			if ($getfromdb) {
@@ -766,7 +766,7 @@ if (!class_exists('WPeMatico_functions')) {
 		 * Check campaign data
 		 * Required @param $campaigndata array with campaign data values
 		 * 
-		 * @return an array with campaign data fixed all empty values
+		 * @return array with campaign data fixed all empty values
 		 * */
 		/*		 * ************ CHECK DATA ************************************************ */
 		public static function check_campaigndata($post_data) {
@@ -1124,6 +1124,16 @@ if (!class_exists('WPeMatico_functions')) {
 			return $url;
 		}
 
+		/**
+		 * Set canonical url for the post
+		 *
+		 * @param   string    $canonical_url          canonical url to integrate in the <head> tag
+		 * @param   string    $wpe_sourcepermalink    url to integrate in the post
+		 * @param   WP_Post   $post                   wpematico's post 
+		 * @return  string    Canonical URL
+		 * @since 2.7
+		 * */
+
 		public static function wpematico_set_canonical($canonical_url, $post){
 			global $cfg;
 			
@@ -1133,7 +1143,7 @@ if (!class_exists('WPeMatico_functions')) {
 				$wpe_sourcepermalink = get_post_meta($post->ID, 'wpe_sourcepermalink', true);
 				$canonical_url = isset($wpe_sourcepermalink) ? $wpe_sourcepermalink : $canonical_url;
 			}
-
+			
 			return apply_filters('wpematico_canonical_url', $canonical_url, $prev, $post);
 		}
 
