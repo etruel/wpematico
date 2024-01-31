@@ -1756,6 +1756,23 @@ function array_multi_key_exists(array $arrNeedles, array $arrHaystack, $blnMatch
 	return array_multi_key_exists($arrNeedles, $arrHaystack, $blnMatchAll);
 }
 
+function wpematico_get_active_seo_plugin() {
+	// List of SEO plugins and their main files
+	$seo_array = array(
+		'yoast_seo' => 'wordpress-seo/wp-seo.php',
+		'all_in_one_seo' => 'all-in-one-seo-pack/all_in_one_seo_pack.php',
+	);
+	$seo_plugins = apply_filters('wpematico_seo_plugins', $seo_array);
+	// Verify if some SEO plugin is active
+	foreach ($seo_plugins as $slug => $main_file) {
+		if (is_plugin_active($main_file)) {
+			// Return the slug of the $seo_plugins
+			return $slug;
+		}
+	}
+	// If doens't exist or there aren't some SEO plugin active return false
+	return false;
+}
 
 
 /**
