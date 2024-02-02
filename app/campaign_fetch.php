@@ -216,7 +216,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         while ($trueWhile) {
 
             foreach ($simplePieItems as $item) {
-                if ($this->campaign['campaign_type'] == 'facebook' || !empty($item->get_item_tags('', 'link')) || $this->campaign['campaign_type'] == 'youtube' || $this->campaign['campaign_type'] == 'xml') {
+                if ($this->campaign['campaign_type'] == 'youtube' || $this->campaign['campaign_type'] == 'xml' || !empty($item->get_item_tags('', 'link'))) {
                     $permalink = $item->get_permalink();
                 } else {
                     $permalink = $item->get_id();
@@ -294,7 +294,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
                 // set timeout for rest of the items to Timeout setting less current run time
                 wpematico_init_set('max_execution_time', $campaign_timeout, true); // - ( current_time('timestamp') - $this->campaign['starttime'] ), true);
                 $realcount++;
-                if (!empty($item->get_item_tags('', 'link')) || $this->campaign['campaign_type'] == 'youtube' || $this->campaign['campaign_type'] == 'xml') {
+                if ( $this->campaign['campaign_type'] == 'youtube' || $this->campaign['campaign_type'] == 'xml' || !empty($item->get_item_tags('', 'link'))) {
                     $permalink = $item->get_permalink();
                 } else {
                     $permalink = $item->get_id();
