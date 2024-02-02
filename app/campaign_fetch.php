@@ -216,7 +216,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         while ($trueWhile) {
 
             foreach ($simplePieItems as $item) {
-                if (!empty($item->get_item_tags('', 'link')) || $this->campaign['campaign_type'] == 'youtube' || $this->campaign['campaign_type'] == 'xml') {
+                if ($this->campaign['campaign_type'] == 'facebook' || !empty($item->get_item_tags('', 'link')) || $this->campaign['campaign_type'] == 'youtube' || $this->campaign['campaign_type'] == 'xml') {
                     $permalink = $item->get_permalink();
                 } else {
                     $permalink = $item->get_id();
