@@ -1760,7 +1760,7 @@ function wpematico_get_active_seo_plugin() {
 	// List of SEO plugins and their main files
 	$seo_array = array(
 		'yoast_seo' => 'wordpress-seo/wp-seo.php',
-		'all_in_one_seo' => 'all-in-one-seo-pack/all_in_one_seo_pack.php',
+		// 'all_in_one_seo' => 'all-in-one-seo-pack/all_in_one_seo_pack.php',
 		'rank_math' => 'seo-by-rank-math/rank-math.php',
 		// Add more SEO plugins here
 	);
