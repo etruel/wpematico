@@ -199,10 +199,6 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
                 }
             }
         }
-        $trueWhile = true;
-        $initialMemoryUsage = memory_get_usage();
-        $maxMemoryUsage = 64 * 1024 * 1024;
-
         
         // Set your desired maximum memory usage in bytes 
         $batchSize = ($duplicate_options['jumpduplicates']) ? 0 : $this->campaign['campaign_max'];
@@ -212,125 +208,114 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         }else{
             $simplePieItems = $simplepie->get_items(0, $batchSize);
         }
-       
-        while ($trueWhile) {
 
-            foreach ($simplePieItems as $item) {
-                if ($this->campaign['campaign_type'] == 'youtube' || $this->campaign['campaign_type'] == 'xml' || !empty($item->get_item_tags('', 'link'))) {
-                    $permalink = $item->get_permalink();
-                } else {
-                    $permalink = $item->get_id();
-                }
-                            
-                // Get the source Permalink trying to redirect if is set.
-                $permalink = $this->getReadUrl($permalink, $this->campaign);
+        foreach ($simplePieItems as $item) {
+            if ($this->campaign['campaign_type'] == 'youtube' || $this->campaign['campaign_type'] == 'xml' || !empty($item->get_item_tags('', 'link'))) {
+                $permalink = $item->get_permalink();
+            } else {
+                $permalink = $item->get_id();
+            }
 
-                if ($prime) {
-                    //with first item get the hash of the last item (new) that will be saved.
-                    $this->lasthash[$feed] = md5($permalink );
-                    $prime = false;
-                }
+            // Get the source Permalink trying to redirect if is set.
+            $permalink = $this->getReadUrl($permalink, $this->campaign);
+
+            if ($prime) {
+                //with first item get the hash of the last item (new) that will be saved.
+                $this->lasthash[$feed] = md5($permalink);
+                $prime = false;
+            }
 
 
-                $this->currenthash[$feed] = md5($permalink); // el hash del item actual del feed feed 
-                if (!$duplicate_options['allowduplicates'] || !$duplicate_options['allowduptitle'] || !$duplicate_options['allowduphash'] || $duplicate_options['add_extra_duplicate_filter_meta_source']) {
-                    if (!$duplicate_options['allowduphash']) {
-                        // chequeo a la primer coincidencia sale del foreach
-                        $lasthashvar = '_lasthash_' . sanitize_file_name($feed);
-                        $hashvalue = get_post_meta($this->campaign_id, $lasthashvar, true);
-                        if (!isset($this->campaign[$feed]['lasthash']))
-                        $this->campaign[$feed]['lasthash'] = '';
+            $this->currenthash[$feed] = md5($permalink); // el hash del item actual del feed feed 
+            if (!$duplicate_options['allowduplicates'] || !$duplicate_options['allowduptitle'] || !$duplicate_options['allowduphash'] || $duplicate_options['add_extra_duplicate_filter_meta_source']) {
+                if (!$duplicate_options['allowduphash']) {
+                    // chequeo a la primer coincidencia sale del foreach
+                    $lasthashvar = '_lasthash_' . sanitize_file_name($feed);
+                    $hashvalue = get_post_meta($this->campaign_id, $lasthashvar, true);
+                    if (!isset($this->campaign[$feed]['lasthash']))
+                    $this->campaign[$feed]['lasthash'] = '';
 
-                        $dupi = ($this->campaign[$feed]['lasthash'] == $this->currenthash[$feed]) ||
-                            ($hashvalue == $this->currenthash[$feed]);
-                        if ($dupi) {
-                            trigger_error(sprintf(__('Found duplicated hash \'%s\'', 'wpematico'), $item->get_permalink()) . ': ' . $this->currenthash[$feed], E_USER_NOTICE);
-                            if (!$duplicate_options['jumpduplicates']) {
-                                trigger_error(__('Filtering duplicated posts.', 'wpematico'), E_USER_NOTICE);
-                                break;
-                            } else {
-                                trigger_error(__('Jumping duplicated post. Continuing.', 'wpematico'), E_USER_NOTICE);
-                                continue;
-                            }
-                        }
-
-                        if (!$duplicate_options['allowduphash'] && $duplicate_options['jumpduplicates']) {
-                            if (in_array($this->currenthash[$feed], $last_hashes)) {
-                                trigger_error(sprintf(__('Found duplicated hash of item \'%s\'', 'wpematico'), $item->get_permalink()) . ': ' . $this->currenthash[$feed], E_USER_NOTICE);
-                                trigger_error(__('Jumping duplicated post. Continuing.', 'wpematico'), E_USER_NOTICE);
-                                continue;
-                            }
+                    $dupi = ($this->campaign[$feed]['lasthash'] == $this->currenthash[$feed]) ||
+                        ($hashvalue == $this->currenthash[$feed]);
+                    if ($dupi) {
+                        trigger_error(sprintf(__('Found duplicated hash \'%s\'', 'wpematico'), $item->get_permalink()) . ': ' . $this->currenthash[$feed], E_USER_NOTICE);
+                        if (!$duplicate_options['jumpduplicates']) {
+                            trigger_error(__('Filtering duplicated posts.', 'wpematico'), E_USER_NOTICE);
+                            break;
+                        } else {
+                            trigger_error(__('Jumping duplicated post. Continuing.', 'wpematico'), E_USER_NOTICE);
+                            continue;
                         }
                     }
-                    if (!$duplicate_options['allowduptitle']) {
-                        if (WPeMatico::is_duplicated_item($this->campaign, $feed, $item)) {
-                            trigger_error(sprintf(__('Found duplicated title \'%s\'', 'wpematico'), $item->get_title()) . ': ' . $this->currenthash[$feed], E_USER_NOTICE);
-                            if (!$duplicate_options['jumpduplicates']) {
-                                trigger_error(__('Filtering duplicated posts.', 'wpematico'), E_USER_NOTICE);
-                                break;
-                            } else {
-                                trigger_error(__('Jumping duplicated post. Continuing.', 'wpematico'), E_USER_NOTICE);
-                                continue;
-                            }
+
+                    if (!$duplicate_options['allowduphash'] && $duplicate_options['jumpduplicates']) {
+                        if (in_array($this->currenthash[$feed], $last_hashes)) {
+                            trigger_error(sprintf(__('Found duplicated hash of item \'%s\'', 'wpematico'), $item->get_permalink()) . ': ' . $this->currenthash[$feed], E_USER_NOTICE);
+                            trigger_error(__('Jumping duplicated post. Continuing.', 'wpematico'), E_USER_NOTICE);
+                            continue;
                         }
                     }
                 }
-                $count++;
-                array_unshift($items, $item); // add at Post stack in correct order by date 		  
-                if ($count == $this->campaign['campaign_max']) {
-                    trigger_error(sprintf(__('Campaign fetch limit reached at %s.', 'wpematico'), $this->campaign['campaign_max']), E_USER_NOTICE);
-                    break;
+                if (!$duplicate_options['allowduptitle']) {
+                    if (WPeMatico::is_duplicated_item($this->campaign, $feed, $item)) {
+                        trigger_error(sprintf(__('Found duplicated title \'%s\'', 'wpematico'), $item->get_title()) . ': ' . $this->currenthash[$feed], E_USER_NOTICE);
+                        if (!$duplicate_options['jumpduplicates']) {
+                            trigger_error(__('Filtering duplicated posts.', 'wpematico'), E_USER_NOTICE);
+                            break;
+                        } else {
+                            trigger_error(__('Jumping duplicated post. Continuing.', 'wpematico'), E_USER_NOTICE);
+                            continue;
+                        }
+                    }
                 }
             }
-            $campaign_timeout = (int) $this->cfg['campaign_timeout'];
-            // Processes post stack
-            $realcount = 0;
-            foreach ($items as $item) {
-                // interrupt the script if timeout 
-                if (current_time('timestamp') - $this->campaign['starttime'] >= $campaign_timeout) {
-                    trigger_error(sprintf(__('Reached running timeout at %1$d sec.', 'wpematico'), $campaign_timeout), E_USER_WARNING);
-                    break;
-                }
-                // set timeout for rest of the items to Timeout setting less current run time
-                wpematico_init_set('max_execution_time', $campaign_timeout, true); // - ( current_time('timestamp') - $this->campaign['starttime'] ), true);
-                $realcount++;
-                if ( $this->campaign['campaign_type'] == 'youtube' || $this->campaign['campaign_type'] == 'xml' || !empty($item->get_item_tags('', 'link'))) {
-                    $permalink = $item->get_permalink();
-                } else {
-                    $permalink = $item->get_id();
-                }
-                            
-                // Get the source Permalink trying to redirect if is set.
-                $permalink = $this->getReadUrl($permalink, $this->campaign);
-                $this->current_item['permalink'] = $permalink;
-                $this->currenthash[$feed] = md5($permalink); // the hash of the current item feed 
-                $suma = $this->processItem($simplepie, $item, $feed);
-
-                $lasthashvar = '_lasthash_' . sanitize_file_name($feed);
-                $hashvalue = $this->currenthash[$feed];
-                add_post_meta($this->campaign_id, $lasthashvar, $hashvalue, true) or
-                    update_post_meta($this->campaign_id, $lasthashvar, $hashvalue);
-
-                if (!$duplicate_options['allowduphash'] && $duplicate_options['jumpduplicates']) {
-                    add_post_meta($this->campaign_id, $last_hashes_name, $hashvalue, false);
-                }
-
-
-                if (isset($suma) && is_int($suma)) {
-                    $realcount = $realcount + $suma;
-                    $suma = "";
-                }
+            $count++;
+            array_unshift($items, $item); // add at Post stack in correct order by date 		  
+            if ($count == $this->campaign['campaign_max']) {
+                trigger_error(sprintf(__('Campaign fetch limit reached at %s.', 'wpematico'), $this->campaign['campaign_max']), E_USER_NOTICE);
+                break;
             }
-            $currentMemoryUsage = memory_get_usage() - $initialMemoryUsage;
-            if ($currentMemoryUsage >= $maxMemoryUsage) {
-                // Reduce batch size if memory usage is too high 
-                $batchSize = max(1, $batchSize / 2);
-            }
-            $trueWhile = false;
         }
+        $campaign_timeout = (int) $this->cfg['campaign_timeout'];
+        // Processes post stack
+        $realcount = 0;
+        foreach ($items as $item) {
+            // interrupt the script if timeout 
+            if (current_time('timestamp') - $this->campaign['starttime'] >= $campaign_timeout) {
+                trigger_error(sprintf(__('Reached running timeout at %1$d sec.', 'wpematico'), $campaign_timeout), E_USER_WARNING);
+                break;
+            }
+            // set timeout for rest of the items to Timeout setting less current run time
+            wpematico_init_set('max_execution_time', $campaign_timeout, true); // - ( current_time('timestamp') - $this->campaign['starttime'] ), true);
+            $realcount++;
+            if ($this->campaign['campaign_type'] == 'youtube' || $this->campaign['campaign_type'] == 'xml' || !empty($item->get_item_tags('', 'link'))) {
+                $permalink = $item->get_permalink();
+            } else {
+                $permalink = $item->get_id();
+            }
 
-        if ($this->campaign['campaign_type'] != 'xml')
-            $simplepie->__destruct();
+            // Get the source Permalink trying to redirect if is set.
+            $permalink = $this->getReadUrl($permalink, $this->campaign);
+            $this->current_item['permalink'] = $permalink;
+            $this->currenthash[$feed] = md5($permalink); // the hash of the current item feed 
+            $suma = $this->processItem($simplepie, $item, $feed);
+
+            $lasthashvar = '_lasthash_' . sanitize_file_name($feed);
+            $hashvalue = $this->currenthash[$feed];
+            add_post_meta($this->campaign_id, $lasthashvar, $hashvalue, true) or
+                update_post_meta($this->campaign_id, $lasthashvar, $hashvalue);
+
+            if (!$duplicate_options['allowduphash'] && $duplicate_options['jumpduplicates']) {
+                add_post_meta($this->campaign_id, $last_hashes_name, $hashvalue, false);
+            }
+
+
+            if (isset($suma) && is_int($suma)) {
+                $realcount = $realcount + $suma;
+                $suma = "";
+            }
+        }
+           
         unset($items);
         unset($simplepie);
 
