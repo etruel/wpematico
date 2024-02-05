@@ -1762,6 +1762,7 @@ function wpematico_get_active_seo_plugin() {
 		'yoast_seo' => 'wordpress-seo/wp-seo.php',
 		// 'all_in_one_seo' => 'all-in-one-seo-pack/all_in_one_seo_pack.php',
 		'rank_math' => 'seo-by-rank-math/rank-math.php',
+		'seo_framework' => 'autodescription/autodescription.php',
 		// Add more SEO plugins here
 	);
 	$seo_plugins = apply_filters('wpematico_seo_plugins', $seo_array);
