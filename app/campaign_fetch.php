@@ -160,7 +160,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         $prime = true;
 
         // Access the feed
-        if ($this->campaign['campaign_type'] == "feed" or $this->campaign['campaign_type'] == "youtube" or $this->campaign['campaign_type'] == "bbpress" or $this->campaign['campaign_type'] == "googlo_news") {
+        if ($this->campaign['campaign_type'] == "feed" or $this->campaign['campaign_type'] == "youtube" or $this->campaign['campaign_type'] == "bbpress") {
             $wpe_url_feed = apply_filters('wpematico_simplepie_url', $feed, $kf, $this->campaign);
             /**
              * @since 1.8.0
@@ -177,7 +177,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
             $simplepie = WPeMatico::fetchFeed($fetch_feed_params);
         } else {
 
-            $simplepie = apply_filters('Wpematico_process_fetching', $this->campaign);
+            $simplepie = apply_filters('Wpematico_process_fetching', $this->campaign, $feed, $kf, $this->campaign);
         }
 
         $duplicate_options = WPeMatico::get_duplicate_options($this->cfg, $this->campaign);
