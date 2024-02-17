@@ -160,7 +160,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         $prime = true;
 
         // Access the feed
-        if ($this->campaign['campaign_type'] == "feed" or $this->campaign['campaign_type'] == "youtube" or $this->campaign['campaign_type'] == "bbpress") {
+        if ($this->campaign['campaign_type'] == "feed" or $this->campaign['campaign_type'] == "youtube" or $this->campaign['campaign_type'] == "bbpress" or $this->campaign['campaign_type'] == "googlo_news") {
             $wpe_url_feed = apply_filters('wpematico_simplepie_url', $feed, $kf, $this->campaign);
             /**
              * @since 1.8.0

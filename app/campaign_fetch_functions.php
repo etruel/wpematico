@@ -341,7 +341,7 @@ class wpematico_campaign_fetch_functions {
 	 * Get URL from relative path
 	 * @param $baseUrl base url
 	 * @param $relative relative url
-	 * @return absolute url version of relative url
+	 * @return string absolute url version of relative url
 	 */
 	static function getRelativeUrl($baseUrl, $relative) {
 		$schemes = array('http', 'https', 'ftp');
