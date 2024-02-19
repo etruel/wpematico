@@ -176,8 +176,22 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
             $fetch_feed_params = apply_filters('wpematico_fetch_feed_params', $fetch_feed_params, $kf, $this->campaign);
             $simplepie = WPeMatico::fetchFeed($fetch_feed_params);
         } else {
-
+            /**
+			 * DEPRECATED on 2.7 in favor of wpematico_custom_simplepie below. Will be removed on 2.8
+			 */
             $simplepie = apply_filters('Wpematico_process_fetching', $this->campaign, $feed, $kf, $this->campaign);
+
+            /**
+			 * wpematico_custom_simplepie 
+			 * Filter to make the custom simplepie objects for extra contents that does not have a feed.
+			 * @since 2.7
+			 * @param $simplepie as null or empty because is not used until now. Will be defined in the filter methods.
+			 * @param object  $this = wpematico_campaign_fetch
+			 * @param string  $feed
+			 * @param number  $kf
+			 * @return SimplePie Object
+			 */
+            $simplepie = apply_filters('wpematico_custom_simplepie', '', $this, $feed, $kf);
         }
 
         $duplicate_options = WPeMatico::get_duplicate_options($this->cfg, $this->campaign);
