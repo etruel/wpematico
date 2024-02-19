@@ -245,7 +245,8 @@ Version 2.7 focuses on code improvements and documentations follow the standards
 
 > * New WPeMatico Canonicals feature on Settings Page. *Activated by default* 
 > * Some minor cosmetic improvements.
-> * A new popup to see the last log ufter run the campaign. 
+> * A new popup to see the last log after run the campaign. 
+> * New 'wpematico_custom_simplepie' filter to correct an old incorrect behavior on 'Wpematico_process_fetching'.
 > * Many code improvements and commented functions.
 > * Changed all ini_set to custom function to allow log all the values.
 
