@@ -341,7 +341,7 @@ class wpematico_campaign_fetch_functions {
 	 * Get URL from relative path
 	 * @param $baseUrl base url
 	 * @param $relative relative url
-	 * @return absolute url version of relative url
+	 * @return string absolute url version of relative url
 	 */
 	static function getRelativeUrl($baseUrl, $relative) {
 		$schemes = array('http', 'https', 'ftp');
@@ -979,7 +979,7 @@ class wpematico_campaign_fetch_functions {
 		$dom	 = new DOMDocument();
 		@$dom->loadHTML($text);
 		$xpath	 = new DomXPath($dom);
-		$nodes	 = $xpath->query('//audio/source');
+		$nodes	 = $xpath->query('//audio | //audio/source');
 		foreach ($nodes as $node) {
 			$audios[] = $node->getAttribute('src');
 		}
@@ -1129,7 +1129,7 @@ class wpematico_campaign_fetch_functions {
 		$dom	 = new DOMDocument();
 		@$dom->loadHTML($text);
 		$xpath	 = new DomXPath($dom);
-		$nodes	 = $xpath->query('//video/source');
+		$nodes	 = $xpath->query('//video | //video/source');
 		foreach ($nodes as $node) {
 			$videos[] = $node->getAttribute('src');
 		}
