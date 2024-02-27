@@ -979,7 +979,7 @@ class wpematico_campaign_fetch_functions {
 		$dom	 = new DOMDocument();
 		@$dom->loadHTML($text);
 		$xpath	 = new DomXPath($dom);
-		$nodes	 = $xpath->query('//audio/source');
+		$nodes	 = $xpath->query('//audio | //audio/source');
 		foreach ($nodes as $node) {
 			$audios[] = $node->getAttribute('src');
 		}
@@ -1129,7 +1129,7 @@ class wpematico_campaign_fetch_functions {
 		$dom	 = new DOMDocument();
 		@$dom->loadHTML($text);
 		$xpath	 = new DomXPath($dom);
-		$nodes	 = $xpath->query('//video/source');
+		$nodes	 = $xpath->query('//video | //video/source');
 		foreach ($nodes as $node) {
 			$videos[] = $node->getAttribute('src');
 		}

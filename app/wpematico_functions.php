@@ -612,11 +612,9 @@ if (!class_exists('WPeMatico_functions')) {
 				$checks = false;
 			}
 			// Check if PRO version is installed and its required version
-			$active_plugins = get_option('active_plugins');
-			$active_plugins_names = array_map('basename', $active_plugins);
-			$is_pro_active = array_search('wpematicopro.php', $active_plugins_names);
+			$is_pro_active = wpematico_is_pro_active();
 			if ($is_pro_active !== FALSE) {
-				//$proplugin_data['Name']=  WPeMaticoPRO::NAME;
+				$active_plugins = get_option('active_plugins');
 				$plpath = trailingslashit(WP_PLUGIN_DIR) . $active_plugins[$is_pro_active];
 				$proplugin_data = self::plugin_get_version($plpath);
 				if ($proplugin_data['Name'] == 'WPeMatico Professional' && version_compare($proplugin_data['Version'], WPeMatico::PROREQUIRED, '<')) {
