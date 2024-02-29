@@ -465,6 +465,7 @@ class wpematico_campaign_fetch_functions {
 					///////////////***************************************************************************************////////////////////////
 					$newimgname		 = apply_filters('wpematico_newimgname', sanitize_file_name(urlencode(basename($imagen_src_real))), $current_item, $campaign, $item);  // new name here
 					// Primero intento con mi funcion mas rapida
+					$newimgname 	 = substr($newimgname , 0, 255);
 					$upload_dir		 = wp_upload_dir();
 					$imagen_dst		 = trailingslashit($upload_dir['path']) . $newimgname;
 					$imagen_dst_url	 = trailingslashit($upload_dir['url']) . $newimgname;
@@ -490,7 +491,11 @@ class wpematico_campaign_fetch_functions {
 									$current_item['content'] = self::strip_Image_by_src($imagen_src, $current_item['content']);
 								}
 							} else {
+								//here is the error
+
 								$mirror = wp_upload_bits($newimgname, NULL, $bits);
+
+
 								if (!$mirror['error']) {
 									trigger_error($mirror['url'], E_USER_NOTICE);
 									$current_item['content'] = str_replace($imagen_src, $mirror['url'], $current_item['content']);
