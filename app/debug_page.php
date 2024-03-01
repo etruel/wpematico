@@ -187,7 +187,7 @@ function wpematico_settings_section_feed_viewer() {
 													<?php _e('Get Feed and see here its contents.', 'wpematico'); ?>
 												</textarea>
 												<?php wp_nonce_field('wpematico-feedviewer'); ?>
-												<label onclick="jQuery('#wpematico-feedinfo').focus();
+												<label onclick="jQuery('#wpematico-feedinfo').trigger('focus');
 														jQuery('#wpematico-feedinfo').select()"><?php _e('SELECT ALL', 'wpematico'); ?></label>
 											</div>
 
@@ -330,7 +330,7 @@ function wpematico_settings_section_debug_file() {
 															  echo wpematico_debug_info_get();
 															  ?></textarea>
 												<?php wp_nonce_field('wpematico-settings'); ?>
-												<label onclick="jQuery('#debug-info-textarea').focus();
+												<label onclick="jQuery('#debug-info-textarea').trigger('focus');
 														jQuery('#debug-info-textarea').select()" ><?php _e('SELECT ALL', 'wpematico'); ?></label>
 											</div>
 										</form>

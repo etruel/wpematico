@@ -4,20 +4,20 @@ jQuery(document).ready(function ($) {
 	var icon_dismis = 'dashicons-hidden';
 
 	//close action (hide)
-	$(".wpematico-smart-notification .icon-close-div").click(function () {
+	$(".wpematico-smart-notification .icon-close-div").on("click", function () {
 		$('.wpematico-smart-notification .notification-title').text( wpematico_object.Notification_Hidding );
 		$(this).parent().parent().slideUp(500);
 	});
 
 	//dismiss action wprate
-	$("#smart-notification-rate .icon-dismiss-div").click(function () {
+	$("#smart-notification-rate .icon-dismiss-div").on("click", function () {
 		$('.wpematico-smart-notification .notification-title').text(' *****  *****  ***** '+ wpematico_object.Notification_Dismissed+' *****  *****  ***** ');
 		$(this).parent().parent().slideUp(500);
 		wpematico_dismiss_notice('wprate');
 	});
 
 	//dismiss action 
-	$("#smart-notification-wizard .icon-dismiss-div").click(function () {
+	$("#smart-notification-wizard .icon-dismiss-div").on("click", function () {
 		$('.wpematico-smart-notification .notification-title').text(' *****  *****  ***** '+ wpematico_object.Notification_Dismissed+' *****  *****  ***** ');
 		$(this).parent().parent().slideUp(500);
 		wpematico_dismiss_notice('wizard');
