@@ -303,17 +303,45 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			if (!empty($post_meta_keys)) {
 				foreach ($post_meta_keys as $meta_key) {
 					$meta_values = get_post_custom_values($meta_key, $post->ID);
+					
 					foreach ($meta_values as $meta_value) {
 						$meta_value = maybe_unserialize($meta_value);
+
 						add_post_meta($new_post_id, $meta_key, $meta_value);
+					}
+
+				}
+
+			}
+			$campaign_data = WPeMatico::get_campaign($new_post_id);
+			$campaign_data['activated'] = false;
+
+			foreach ($campaign_data as $key => $value) {
+				// Check if the key is a string and contains the literal string "regex"
+				if (is_string($key) && strpos($key, 'regex') !== false) {
+					//if the $value is string continue
+					if(is_string($value))
+						// Apply addslashes to the corresponding value
+						$campaign_data[$key] = addslashes($value);
+				}
+
+				// If the value is an array, recursively apply the logic
+				if (is_array($value)) {
+					foreach ($value as $subKey => $subValue) {
+						// Check if the subKey is a string and contains the literal string "regex"
+						if (is_string($subKey) && strpos($subKey, 'regex') !== false) {
+							//if the $subValue is string continue
+							if(is_string($subValue))
+								// Apply addslashes to the corresponding subValue
+								$campaign_data[$key][$subKey] = addslashes($subValue);
+						}
 					}
 				}
 			}
-			$campaign_data = WPeMatico :: get_campaign($new_post_id);
-			$campaign_data['activated'] = false;
 
-			WPeMatico :: update_campaign($new_post_id, $campaign_data);
-
+			WPeMatico::update_campaign($new_post_id, $campaign_data);
+			
+			
 			// If the copy is not a draft or a pending entry, we have to set a proper slug.
 			/* if ($new_post_status != 'draft' || $new_post_status != 'auto-draft' || $new_post_status != 'pending' ){
 			  $post_name = wp_unique_post_slug($post->post_name, $new_post_id, $new_post_status, $post->post_type, $new_post_parent);

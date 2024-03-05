@@ -25,7 +25,7 @@ jQuery(document).ready(function($){
 		$('#thickbox_wizard').css('margin-top',(window_height/2)-(div_height/2)).css('margin-left',(window_width /2)-(div_width/2) );
 	}
 
-	$(window).resize(function(){center_function_wizard();});
+	$(window).on("resize", function(){center_function_wizard();});
 
 	function each_metabox_wizard() {
 		$cont_wizard = 0;

@@ -238,9 +238,9 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 			});
 
 			var before_change = 'post';
-			$('input[name="campaign_customposttype"]').mouseup(function(){
+			$('input[name="campaign_customposttype"]').on("mouseup", function(){
 			    before_change = $('input[name="campaign_customposttype"]:checked').val();
-			}).change(function() {
+			}).on("change", function() {
 			    var needAlert = false;
 		        for(i in postTypesArray[before_change]) {
 		        	if (postTypesArray[before_change][i] != "" && postTypesArray[this.value].indexOf(postTypesArray[before_change][i]) < 0) {
@@ -306,7 +306,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 				}
 			}
 			
-			$('#campaign_type').change(function() {
+			$('#campaign_type').on("change", function() {
 				displayCTboxes();
 			});
 			

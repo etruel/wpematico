@@ -5,7 +5,7 @@ jQuery(document).ready(function($) {
 	startHookDesactivate();
 
 
-	jQuery('.inp_license_key').keyup(function(e) {
+	jQuery('.inp_license_key').on("keyup", function(e) {
 		inp_license_key(this);
 	});
 	jQuery(".inp_license_key").bind({
@@ -32,7 +32,7 @@ function inp_license_key(element, copy = false) {
 
 	jQuery('#td_license_status_' + plugin_name).html('<input id="' + plugin_name + '_btn_license_check" class="btn_license_check button-secondary" name="' + plugin_name + '_btn_license_check" type="button" value="' + wpematico_license_object.txt_check_license + '"/><div id="' + plugin_name + '_ajax_status_license" style="display:none;"></div>');
 	jQuery('#tr_license_status_' + plugin_name).fadeIn();
-	jQuery('.btn_license_check').click(function(e) {
+	jQuery('.btn_license_check').on("click", function(e) {
 		var plugin_name_check = this.id.replace('_btn_license_check', '');
 		jQuery(this).prop('disabled', true);
 		jQuery('#' + plugin_name_check + '_ajax_status_license').html('Checking key...');
@@ -65,7 +65,7 @@ function inp_license_key(element, copy = false) {
 }
 
 function startHookActivate() {
-	jQuery('.btn_license_activate').click(function(e) {
+	jQuery('.btn_license_activate').on("click", function(e) {
 		var plugin_name = this.id.replace('_btn_license_activate', '');
 		jQuery(this).prop('disabled', true);
 		jQuery('#' + plugin_name + '_ajax_status_license').html('Activating key...');
@@ -89,7 +89,7 @@ function startHookActivate() {
 }
 
 function startHookDesactivate() {
-	jQuery('.btn_license_deactivate').click(function(e) {
+	jQuery('.btn_license_deactivate').on("click", function(e) {
 		var plugin_name = this.id.replace('_btn_license_deactivate', '');
 		jQuery(this).prop('disabled', true);
 		jQuery('#' + plugin_name + '_ajax_status_license').html('Deactivating key...');

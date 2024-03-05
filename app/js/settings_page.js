@@ -14,7 +14,7 @@ jQuery(document).ready(function ($) {
 			}
         });
     });
-	jQuery('#mailsndemail').blur(function () {
+	jQuery('#mailsndemail').on( "blur", function () {
 		var x = jQuery(this).val();
 		var atpos = x.indexOf("@");
 		var dotpos = x.lastIndexOf(".");
@@ -27,14 +27,14 @@ jQuery(document).ready(function ($) {
 		}
 	});
 
-	jQuery('#imgcache').click(function () {
+	jQuery('#imgcache').on("click", function () {
 		if (true == jQuery('#imgcache').is(':checked')) {
 			jQuery('#nolinkimg').fadeIn();
 		} else {
 			jQuery('#nolinkimg').fadeOut();
 		}
 	});
-	jQuery('#audio_cache').click(function () {
+	jQuery('#audio_cache').on("click", function () {
 		if (true == jQuery('#audio_cache').is(':checked')) {
 			jQuery('#nolink_audio').fadeIn();
 			jQuery('#custom_uploads_audios').fadeIn();
@@ -44,7 +44,7 @@ jQuery(document).ready(function ($) {
 		}
 	});
 
-	jQuery('#video_cache').click(function () {
+	jQuery('#video_cache').on("click", function () {
 		if (true == jQuery('#video_cache').is(':checked')) {
 			jQuery('#nolink_video').fadeIn();
 			jQuery('#custom_uploads_videos').fadeIn();
@@ -54,7 +54,7 @@ jQuery(document).ready(function ($) {
 		}
 	});
 
-	jQuery('#imgcache, #featuredimg').click(function () {
+	jQuery('#imgcache, #featuredimg').on("click", function () {
 		if (true == jQuery('#imgcache').is(':checked') || true == jQuery('#featuredimg').is(':checked')) {
 			jQuery('#custom_uploads').fadeIn();
 		} else {
@@ -62,7 +62,7 @@ jQuery(document).ready(function ($) {
 		}
 	});
 
-	jQuery('#allowduplicates').click(function () {
+	jQuery('#allowduplicates').on("click", function () {
 		if (true == jQuery('#allowduplicates').is(':checked')) {
 			jQuery('#enadup').fadeIn();
 		} else {
@@ -71,7 +71,7 @@ jQuery(document).ready(function ($) {
 			jQuery('#enadup').fadeOut();
 		}
 	});
-	jQuery('#disabledashboard').click(function () {
+	jQuery('#disabledashboard').on("click", function () {
 		if (true == jQuery('#disabledashboard').is(':checked')) {
 			jQuery('#roles').fadeOut();
 			jQuery('#roleslabel').fadeOut();
@@ -81,7 +81,7 @@ jQuery(document).ready(function ($) {
 		}
 	});
 
-	jQuery('#disable_credits').click(function () {
+	jQuery('#disable_credits').on("click", function () {
 		if (jQuery('#disable_credits').is(':checked')) {
 			jQuery('#discredits').fadeIn();
 		} else {
@@ -89,7 +89,7 @@ jQuery(document).ready(function ($) {
 		}
 	});
 
-	jQuery('#set_stupidly_fast').click(function () {
+	jQuery('#set_stupidly_fast').on("click", function () {
 		if (false == jQuery('#set_stupidly_fast').is(':checked')) {
 			jQuery('#simplepie_strip_attributes').removeAttr("disabled");
 			jQuery('#simplepie_strip_htmltags').removeAttr("disabled");
@@ -100,21 +100,21 @@ jQuery(document).ready(function ($) {
 			jQuery('#simplepie_strip_htmltags').attr("disabled", "disabled");
 		}
 	});
-	jQuery('#simplepie_strip_htmltags').click(function () {
+	jQuery('#simplepie_strip_htmltags').on("click", function () {
 		if (false == jQuery('#simplepie_strip_htmltags').is(':checked')) {
 			jQuery('#strip_htmltags').attr('disabled', true);
 		} else {
 			jQuery('#strip_htmltags').removeAttr("disabled");
 		}
 	});
-	jQuery('#simplepie_strip_attributes').click(function () {
+	jQuery('#simplepie_strip_attributes').on("click", function () {
 		if (false == jQuery('#simplepie_strip_attributes').is(':checked')) {
 			jQuery('#strip_htmlattr').attr('disabled', true);
 		} else {
 			jQuery('#strip_htmlattr').removeAttr("disabled");
 		}
 	});
-	jQuery('#emptytrashbutton').click(function () {
+	jQuery('#emptytrashbutton').on("click", function () {
 		if (true == jQuery('#emptytrashbutton').is(':checked')) {
 			jQuery('#hlptrash').fadeIn();
 		} else {
@@ -122,7 +122,7 @@ jQuery(document).ready(function ($) {
 		}
 	});
 
-	jQuery('#campaign_in_postslist').click(function () {
+	jQuery('#campaign_in_postslist').on("click", function () {
 		if (true == jQuery('#campaign_in_postslist').is(':checked')) {
 			jQuery('#column_campaign_pos_field').fadeIn();
 		} else {
@@ -130,7 +130,7 @@ jQuery(document).ready(function ($) {
 		}
 	});
 
-	jQuery('#disableccf, #allowduptitle').change(function () {
+	jQuery('#disableccf, #allowduptitle').on("change", function () {
 		if (jQuery('#disableccf, #allowduptitle').is(':checked')) {
 			jQuery('#div_add_extra_duplicate_filter_meta_source').fadeOut();
 		} else {

@@ -2,7 +2,7 @@ jQuery(document).ready(function ($) {
 
 	theclock();
 
-	$('button[btn-href]').click(function (e) {
+	$('button[btn-href]').on("click", function (e) {
 		location.href = $(this).attr('btn-href');
 	});
 	$(document).on("click", 'button.state_buttons.dashicons-controls-play', function (e) {
@@ -32,7 +32,7 @@ jQuery(document).ready(function ($) {
 
 	$('#screen-meta-links').append('<div id="contextual-help-link-wrap" class="hide-if-no-js screen-meta-toggle"><button type="button" id="show-clock" class="button show-clock" aria-controls="clock-wrap" aria-expanded="false">' + wpematico_object.i18n_date_format + '</button></div>');
 
-	$("#cb-select-all-1, #cb-select-all-2").change(function () {
+	$("#cb-select-all-1, #cb-select-all-2").on("change", function () {
 		$("input[name='post[]']").each(function () {
 			if ($(this).is(':checked')) {
 				$("tr#post-" + $(this).val()).css('background-color', '#dbb27e');
@@ -41,7 +41,7 @@ jQuery(document).ready(function ($) {
 			}
 		});
 	});
-	$("input[name='post[]']").change(function () {
+	$("input[name='post[]']").on("change", function () {
 		if ($(this).is(':checked')) {
 			$("input[name='post[]']:checked").each(function () {
 				$("tr#post-" + $(this).val()).css('background-color', '#dbb27e');

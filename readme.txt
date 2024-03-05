@@ -1,11 +1,11 @@
-﻿=== WPeMatico RSS Feed Fetcher ===
+=== WPeMatico RSS Feed Fetcher ===
 Contributors: etruel, sniuk, khaztiel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
-Tags: RSS,XML,RSS to Post,Feed to Post,XML to post,autoblog,rss aggregator,Feed,rss to post,syndication,xml import,Post,Posts,aggregation,atom,bot,content,writing
+Tags: RSS,XML,rss to post,feed to post,rss aggregator
 Requires at least: 4.8
 Tested up to: 6.5
 Requires PHP: 5.6
-Stable tag: trunk
+Stable tag: 2.6.23
 License: GPLv2 or later
 
 WPeMatico is autoblogging in the blink of an eye!  On complete autopilot WPeMatico gets new contents regularly for your site!
@@ -105,11 +105,10 @@ You can submit any bug in the [bugtracker](https://github.com/etruel/wpematico/i
 > * Whatever the issue is, we will dig in and do our absolute best to resolve issues for you.
 > * We will even log directly into your site to find the problems.
 > * You can rest assured knowing that we are going to find an answer, no matter how long it takes.
-> * Includes the editing for a config file for *one* website for Full Content Add-on.
 
 ---
 
-**[Flash Cache](https://wordpress.org/plugins/flash-cache/):** If you need a very good and WPeMatico compatible Cache plugin take a look at this FREE plugin. Improves the velocity till 10x comparing with with other cache plugins for WordPress.
+**[Flash Cache](https://wordpress.org/plugins/flash-cache/):** If you need a very good and WPeMatico compatible Cache plugin take a look at this FREE plugin.
 
 
 = Requirements =
@@ -262,6 +261,10 @@ Version 2.7 focuses on code improvements and documentations follow the standards
 
 > See all detailed changelog at [wpematico Releases](https://wpematico.com/releases/)
 
+= 2.6.23 Feb 23, 2024 =
+* Bump to WP 6.5
+* Fixes the fetch and download of audio/video files from the content of feed items to the WordPress Media.
+
 = 2.6.22 Jan 15, 2024 =
 * Improved compatibilities.
 * Fixes an issue on remove first image on content with Fifu option activated.
@@ -283,5 +286,5 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 
 == Upgrade Notice ==
-
 Major Release. Upgrade functions will be executed to improve compatibilities.
+

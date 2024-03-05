@@ -612,11 +612,9 @@ if (!class_exists('WPeMatico_functions')) {
 				$checks = false;
 			}
 			// Check if PRO version is installed and its required version
-			$active_plugins = get_option('active_plugins');
-			$active_plugins_names = array_map('basename', $active_plugins);
-			$is_pro_active = array_search('wpematicopro.php', $active_plugins_names);
+			$is_pro_active = wpematico_is_pro_active();
 			if ($is_pro_active !== FALSE) {
-				//$proplugin_data['Name']=  WPeMaticoPRO::NAME;
+				$active_plugins = get_option('active_plugins');
 				$plpath = trailingslashit(WP_PLUGIN_DIR) . $active_plugins[$is_pro_active];
 				$proplugin_data = self::plugin_get_version($plpath);
 				if ($proplugin_data['Name'] == 'WPeMatico Professional' && version_compare($proplugin_data['Version'], WPeMatico::PROREQUIRED, '<')) {
@@ -721,7 +719,7 @@ if (!class_exists('WPeMatico_functions')) {
 		/**
 		 * Load all campaigns data
 		 * 
-		 * @return an array with all campaigns data 
+		 * @return array with all campaigns data 
 		 * */
 		public static function get_campaigns() {
 			$campaigns_data = array();
@@ -743,9 +741,9 @@ if (!class_exists('WPeMatico_functions')) {
 		/**
 		 * Load campaign data
 		 * Required @param   integer  $post_id    Campaign ID to load
-		 * 		  @param   boolean  $getfromdb  if set to true run get_post($post_ID) and retuirn object post
+		 * @param   boolean  $getfromdb  if set to true run get_post($post_ID) and retuirn object post
 		 * 
-		 * @return an array with campaign data 
+		 * @return array with campaign data 
 		 * */
 		public static function get_campaign($post_id, $getfromdb = false) {
 			if ($getfromdb) {
@@ -766,7 +764,7 @@ if (!class_exists('WPeMatico_functions')) {
 		 * Check campaign data
 		 * Required @param $campaigndata array with campaign data values
 		 * 
-		 * @return an array with campaign data fixed all empty values
+		 * @return array with campaign data fixed all empty values
 		 * */
 		/*		 * ************ CHECK DATA ************************************************ */
 		public static function check_campaigndata($post_data) {
@@ -1053,20 +1051,17 @@ if (!class_exists('WPeMatico_functions')) {
 		 * Required @param   integer  $post_id    Campaign ID to save on.
 		 *			@param   array  $campaign	All the campaign data to save.
 		 * 
-		 * @return an array with campaign data 
+		 * @return int|bool with campaign data 
 		 * */
 		public static function update_campaign($post_id, $campaign = array()) {
 			$campaign['cronnextrun'] = (int) WPeMatico :: time_cron_next($campaign['cron']);
 			$campaign = apply_filters('wpematico_before_update_campaign', $campaign);
 
-			add_post_meta($post_id, 'postscount', $campaign['postscount'], true) or
-					update_post_meta($post_id, 'postscount', $campaign['postscount']);
+			update_post_meta($post_id, 'postscount', $campaign['postscount']);
+	
+			update_post_meta($post_id, 'cronnextrun', $campaign['cronnextrun']);
 
-			add_post_meta($post_id, 'cronnextrun', $campaign['cronnextrun'], true) or
-					update_post_meta($post_id, 'cronnextrun', $campaign['cronnextrun']);
-
-			add_post_meta($post_id, 'lastrun', $campaign['lastrun'], true) or
-					update_post_meta($post_id, 'lastrun', $campaign['lastrun']);
+			update_post_meta($post_id, 'lastrun', $campaign['lastrun']);
 
 			// *** Campaign Rewrites	
 			// Proceso los rewrites agrego slashes	
@@ -1080,9 +1075,8 @@ if (!class_exists('WPeMatico_functions')) {
 				for ($i = 0; $i < count($campaign['campaign_wrd2cat']['word']); $i++) {
 					$campaign['campaign_wrd2cat']['word'][$i] = addslashes($campaign['campaign_wrd2cat']['word'][$i]);
 				}
-
-			return add_post_meta($post_id, 'campaign_data', $campaign, true) or
-					update_post_meta($post_id, 'campaign_data', $campaign);
+			
+			return update_post_meta($post_id, 'campaign_data', $campaign);
 		}
 
 		/*		 * ********* 	 Funciones para procesar campañas ***************** */
@@ -1128,6 +1122,16 @@ if (!class_exists('WPeMatico_functions')) {
 			return $url;
 		}
 
+		/**
+		 * Set canonical url for the post
+		 *
+		 * @param   string    $canonical_url          canonical url to integrate in the <head> tag
+		 * @param   string    $wpe_sourcepermalink    url to integrate in the post
+		 * @param   WP_Post   $post                   wpematico's post 
+		 * @return  string    Canonical URL
+		 * @since 2.7
+		 * */
+
 		public static function wpematico_set_canonical($canonical_url, $post){
 			global $cfg;
 			
@@ -1137,7 +1141,7 @@ if (!class_exists('WPeMatico_functions')) {
 				$wpe_sourcepermalink = get_post_meta($post->ID, 'wpe_sourcepermalink', true);
 				$canonical_url = isset($wpe_sourcepermalink) ? $wpe_sourcepermalink : $canonical_url;
 			}
-
+			
 			return apply_filters('wpematico_canonical_url', $canonical_url, $prev, $post);
 		}
 
@@ -1750,6 +1754,26 @@ function array_multi_key_exists(array $arrNeedles, array $arrHaystack, $blnMatch
 	return array_multi_key_exists($arrNeedles, $arrHaystack, $blnMatchAll);
 }
 
+function wpematico_get_active_seo_plugin() {
+	// List of SEO plugins and their main files
+	$seo_array = array(
+		'yoast_seo' => 'wordpress-seo/wp-seo.php',
+		// 'all_in_one_seo' => 'all-in-one-seo-pack/all_in_one_seo_pack.php',
+		'rank_math' => 'seo-by-rank-math/rank-math.php',
+		'seo_framework' => 'autodescription/autodescription.php',
+		// Add more SEO plugins here
+	);
+	$seo_plugins = apply_filters('wpematico_seo_plugins', $seo_array);
+	// Verify if some SEO plugin is active
+	foreach ($seo_plugins as $slug => $main_file) {
+		if (is_plugin_active($main_file)) {
+			// Return the slug of the $seo_plugins
+			return $slug;
+		}
+	}
+	// If doens't exist or there aren't some SEO plugin active return false
+	return false;
+}
 
 
 /**
