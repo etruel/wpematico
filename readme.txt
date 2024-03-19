@@ -1,4 +1,4 @@
-﻿=== WPeMatico RSS Feed Fetcher ===
+=== WPeMatico RSS Feed Fetcher ===
 Contributors: etruel, sniuk, khaztiel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,rss to post,feed to post,rss aggregator
@@ -236,12 +236,16 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
 
-= 2.7 Oct 30, 2023 =
+= 2.7 Mar 1, 2024 =
 
-Version 2.7 focuses on code improvements and documentations follow the standards of Wordpress coding development. 
+Version 2.7 focuses on code improvements and documentations follow the standards of Wordpress coding developments.
 
 #### _Enhancements:_
 
+> * New WPeMatico Canonicals feature on Settings Page. *Activated by default* 
+> * Some minor cosmetic improvements.
+> * A new popup to see the last log after run the campaign. 
+> * New 'wpematico_custom_simplepie' filter to correct an old incorrect behavior on 'Wpematico_process_fetching'.
 > * Many code improvements and commented functions.
 > * Changed all ini_set to custom function to allow log all the values.
 
@@ -251,7 +255,8 @@ Version 2.7 focuses on code improvements and documentations follow the standards
 
 #### _Recent (may break) changes:_
 
-> * The titles feature was improved to use a new added filter 
+> * The titles feature was improved to use a new added filter.
+> * On plugin update will be queued a process to upgrade each campaign to the newly way on hash creation to control post duplicates.
 > * **Enlarges the version required for the Professional addon to 2.20**
 
 > See all detailed changelog at [wpematico Releases](https://wpematico.com/releases/)
@@ -265,7 +270,6 @@ Version 2.7 focuses on code improvements and documentations follow the standards
 * Fixes an issue on remove first image on content with Fifu option activated.
 * Stay tuned. We are preparing everything for the major update 2.7.
 * More details at [wpematico Releases](https://www.wpematico.com/2-6-22-jan-15-2024/)
->>>>>>> master
 
 = 2.6.21 Oct 17, 2023 =
 * Improves compatibilities for titles with Professional and Facebook Fetcher addons.
@@ -275,12 +279,12 @@ Version 2.7 focuses on code improvements and documentations follow the standards
 * Fixes all old links from PRO to Essentials Extensions.
 
 = Earlier versions =
-For the changelog of earlier versions, please refer to changelog.md file or [the changelog on wpematico.com](https://www.wpematico.com/wpematico-changelog/).
+For the changelog of earlier versions, please refer to changelog.md file or [the changelog on wpematico.com](https://www.wpematico.com/releases/).
 
 = 0.1 Nov 17, 2010 =
 * initial release in WordPress Repository
 
 
 == Upgrade Notice ==
+Major Release. Upgrade functions will be executed to improve compatibilities.
 
-Fixes audio/video feed tags compatibility and bump to WP 6.5
