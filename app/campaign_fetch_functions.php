@@ -980,14 +980,18 @@ class wpematico_campaign_fetch_functions {
 	 * @since 1.7.0
 	 */
 	function parseAudios($text) {
+
 		$audios	 = array();
-		$dom	 = new DOMDocument();
-		@$dom->loadHTML($text);
-		$xpath	 = new DomXPath($dom);
-		$nodes	 = $xpath->query('//audio | //audio/source');
-		foreach ($nodes as $node) {
-			$audios[] = $node->getAttribute('src');
+		if(!empty($text)){
+			$dom	 = new DOMDocument();
+			@$dom->loadHTML($text);
+			$xpath	 = new DomXPath($dom);
+			$nodes	 = $xpath->query('//audio | //audio/source');
+			foreach ($nodes as $node) {
+				$audios[] = $node->getAttribute('src');
+			}
 		}
+		
 		return $audios;
 	}
 
@@ -1130,13 +1134,16 @@ class wpematico_campaign_fetch_functions {
 	 * @since 1.7.0
 	 */
 	function parseVideos($text) {
+		
 		$videos	 = array();
-		$dom	 = new DOMDocument();
-		@$dom->loadHTML($text);
-		$xpath	 = new DomXPath($dom);
-		$nodes	 = $xpath->query('//video | //video/source');
-		foreach ($nodes as $node) {
-			$videos[] = $node->getAttribute('src');
+		if(!empty($text)){
+			$dom	 = new DOMDocument();
+			@$dom->loadHTML($text);
+			$xpath	 = new DomXPath($dom);
+			$nodes	 = $xpath->query('//video | //video/source');
+			foreach ($nodes as $node) {
+				$videos[] = $node->getAttribute('src');
+			}
 		}
 		return $videos;
 	}

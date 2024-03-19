@@ -1343,6 +1343,8 @@ public static function feeds_box( $post ) {
 			$output = 'objects'; // names or objects, note names is the default
 			$operator = 'and'; // 'and' or 'or'
 			$post_types=get_post_types($args,$output,$operator);
+
+			do_action('wpematico_print_addicional_options', $campaign_data);
 			/* ?><pre><?php print_r($post_types); ?></pre><?php  */
 //			echo "<select name='campaign_customposttype' >";
 			foreach ($post_types  as $post_type_obj ) {
