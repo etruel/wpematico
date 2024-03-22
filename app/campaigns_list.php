@@ -706,7 +706,8 @@ if (!class_exists('WPeMatico_Campaigns')) :
 
 					break;
 				case 'status':
-					echo '<div id="campaign_posttype-' . $post_id . '" value="' . $campaign_data['campaign_posttype'] . '">' . get_post_type_object($campaign_data['campaign_customposttype'])->labels->singular_name . '<br />';
+					$get_post_type_object = isset(get_post_type_object($campaign_data['campaign_customposttype'])->labels->singular_name) ? get_post_type_object($campaign_data['campaign_customposttype'])->labels->singular_name : '';
+					echo '<div id="campaign_posttype-' . $post_id . '" value="' . $campaign_data['campaign_posttype'] . '">' . $get_post_type_object . '<br />';
 					echo '' . get_post_status_object($campaign_data['campaign_posttype'])->label . '</div>';
 					break;
 				case 'campaign_type':
