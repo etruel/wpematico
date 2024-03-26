@@ -5,7 +5,7 @@ Tags: RSS,XML,rss to post,feed to post,rss aggregator
 Requires at least: 4.8
 Tested up to: 6.5
 Requires PHP: 5.6
-Stable tag: 2.6.23
+Stable tag: 2.6.24
 License: GPLv2 or later
 
 WPeMatico is autoblogging in the blink of an eye!  On complete autopilot WPeMatico gets new contents regularly for your site!
