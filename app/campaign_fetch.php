@@ -191,8 +191,11 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			 * @param type number $kf
 			 * @return the created SimplePie Object
 			 */
-            $simplepie = apply_filters('wpematico_custom_simplepie', '', $this, $feed, $kf);
-
+            if(!empty($simplepie)){
+                $simplepie = apply_filters('wpematico_custom_simplepie', $simplepie, $this, $feed, $kf);
+            }else{
+                $simplepie = apply_filters('wpematico_custom_simplepie', '', $this, $feed, $kf);
+            }
         }
 
         $duplicate_options = WPeMatico::get_duplicate_options($this->cfg, $this->campaign);
