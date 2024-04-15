@@ -135,7 +135,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         if ($this->cfg['add_extra_duplicate_filter_meta_source'] && !$this->cfg['disableccf']) {
             add_filter('wpematico_duplicates', array('wpematico_campaign_fetch_functions', 'WPeisDuplicatedMetaSource'), 10, 3);
         }
-        if ($this->images_options['fifu']) {
+        if (isset($this->images_options['fifu']) && $this->images_options['fifu']) {
             add_filter('wpematico_set_featured_img', array('wpematico_campaign_fetch_functions', 'url_meta_set_featured_image'), 999, 2);
             add_filter('wpematico_get_featured_img', array('wpematico_campaign_fetch_functions', 'url_meta_set_featured_image'), 999, 2);
             add_filter('wpematico_item_filters_pos_img', array('wpematico_campaign_fetch_functions', 'url_meta_set_featured_image_setmeta'), 999, 2);
@@ -562,7 +562,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
             $arraycf = array(
                 'wpe_campaignid' => $this->campaign_id,
                 'wpe_feed' => $feed->feed_url,
-                'wpe_sourcepermalink' => $this->current_item['permalink'],
+                'wpe_sourcepermalink' => isset($this->current_item['permalink']) ? $this->current_item['permalink'] : ''
             );
             $this->current_item['meta'] = (isset($this->current_item['meta']) && !empty($this->current_item['meta']) ) ? array_merge($this->current_item['meta'], $arraycf) : $arraycf;
 
