@@ -242,19 +242,31 @@ Version 2.7 focuses on code improvements and documentations follow the standards
 
 #### _Enhancements:_
 
+> * New improved batch method to optimize performance on fetching processes.
 > * New WPeMatico Canonicals feature on Settings Page. *Activated by default* 
-> * Some minor cosmetic improvements.
 > * A new popup to see the last log after run the campaign. 
 > * New 'wpematico_custom_simplepie' filter to correct an old incorrect behavior on 'Wpematico_process_fetching'.
-> * Many code improvements and commented functions.
+> * Removed the custom Simplepie library of the Settings and the plugin (finally).
+> * A new improved Changelog on About page.
+> * A new dismissable banner to show the last changelog on Settings page.
+> * Some minor cosmetic improvements.
+> * Updated javascript vSort library to 1.2.2
 > * Changed all ini_set to custom function to allow log all the values.
+> * Added SimplePie version to System Status Page. 
+> * Many code improvements and commented functions.
 
 #### _Bugfixes:_
 
+< * Fixes on getting bad source permalink on some cases by empty feed tags.
+> * Fixes some malformed values saved on Copy Campaign Quick Action.
+> * Fixes some warnings on Campaigns List page. 
+> * Fixes some warnings and minor bugs on Preview campaign. 
 > * Fixes set_time_limit() ERROR on websites with function disabled.
+> * Fixes many deprecated messages on jQuery functions calls.
 
 #### _Recent (may break) changes:_
 
+> * New improved method to manage hashes of campaigns and permalinks on duplicated posts control.
 > * The titles feature was improved to use a new added filter.
 > * On plugin update will be queued a process to upgrade each campaign to the newly way on hash creation to control post duplicates.
 > * **Enlarges the version required for the Professional addon to 2.20**
