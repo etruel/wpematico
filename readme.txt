@@ -261,6 +261,10 @@ Version 2.7 focuses on code improvements and documentations follow the standards
 
 > See all detailed changelog at [wpematico Releases](https://wpematico.com/releases/)
 
+= 2.6.24 Mar 25, 2024 =
+* Improves compatibilities with WordPress 6.5
+* Fixes some PHP warnings on campaigns list.
+
 = 2.6.23 Feb 23, 2024 =
 * Bump to WP 6.5
 * Fixes the fetch and download of audio/video files from the content of feed items to the WordPress Media.
@@ -288,3 +292,4 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 == Upgrade Notice ==
 Major Release. Upgrade functions will be executed to improve compatibilities.
 
+Bump to WP 6.5 & minor fixes.
