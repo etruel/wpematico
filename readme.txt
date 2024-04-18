@@ -1,11 +1,11 @@
 === WPeMatico RSS Feed Fetcher ===
-Contributors: etruel, sniuk, khaztiel
+Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,rss to post,feed to post,rss aggregator
 Requires at least: 4.8
-Tested up to: 6.5
+Tested up to: 6.5.2
 Requires PHP: 5.6
-Stable tag: 2.6.23
+Stable tag: 2.7
 License: GPLv2 or later
 
 WPeMatico is autoblogging in the blink of an eye!  On complete autopilot WPeMatico gets new contents regularly for your site!
@@ -236,7 +236,7 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
 
-= 2.7 Mar 1, 2024 =
+= 2.7 May 1, 2024 =
 
 Version 2.7 focuses on code improvements and documentations follow the standards of Wordpress coding developments.
 
@@ -299,4 +299,3 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 Major Release. Upgrade functions will be executed to improve compatibilities.
-
