@@ -1632,6 +1632,49 @@ if (!class_exists('WPeMatico_functions')) {
 
 			return $danger;
 		}
+		public static function wpematico_export_settings($status = '') {
+			$nonce = (isset($_REQUEST['_wpnonce']) && !empty($_REQUEST['_wpnonce']) ) ? sanitize_text_field($_REQUEST['_wpnonce']) : '';
+			if (!wp_verify_nonce($nonce, 'wpematico-tools'))
+				wp_die('Are you sure?');
+			
+
+			$cfg = get_option(WPeMatico :: OPTION_KEY);
+			$cfg = apply_filters('wpematico_check_options', $cfg);
+
+			$settings_data_json = json_encode($cfg);
+			$settings_data_json = base64_encode($settings_data_json);
+
+			// Copy the post and insert it
+			if (isset($settings_data_json) && $settings_data_json != null) {
+				header('Content-type: text/plain');
+				header('Content-Disposition: attachment; filename="wpematico-settings.txt"');
+				print $settings_data_json;
+				die();
+			} else {
+				wp_die(esc_attr(__('Exporting failed', 'wpematico')));
+			}
+		}
+
+		public static function wpematico_import_settings() {
+			global $cfg;
+			$nonce = (isset($_REQUEST['_wpnonce']) && !empty($_REQUEST['_wpnonce']) ) ? sanitize_text_field($_REQUEST['_wpnonce']) : '';
+			if (!wp_verify_nonce($nonce, 'wpematico-tools'))
+				wp_die('Are you sure?');
+
+			if (in_array(str_replace('.', '', strrchr($_FILES['txtsettings']['name'], '.')), explode(',', 'txt')) && ($_FILES['txtsettings']['type'] == 'text/plain') && !$_FILES['txtsettings']['error']) {
+				$settings = file_get_contents($_FILES['txtsettings']['tmp_name']);
+				$settings = base64_decode($settings);
+				$settings = json_decode($settings, true);
+				$cfg = apply_filters('wpematico_check_options', $settings);
+				$cfg = update_option(WPeMatico :: OPTION_KEY, $settings);
+				WPeMatico::add_wp_notice(array('text' => __('Settings Imported.', 'wpematico'), 'below-h2' => false));
+				wp_redirect(admin_url('edit.php?post_type=wpematico&page=wpematico_tools&tab=tools'));
+			} else {
+				$message = __("Can't upload! Just .txt files allowed!", 'wpematico');
+				WPeMatico::add_wp_notice(array('text' => $message, 'below-h2' => false, 'error' => true));
+				wp_redirect(admin_url('edit.php?post_type=wpematico&page=wpematico_tools&tab=tools'));
+			}
+		}
 	}
 
 	// Class WPeMatico_functions

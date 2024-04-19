@@ -55,7 +55,8 @@ if (!class_exists('WPeMatico')) {
 				$this->options['nonstatic'] = false;
 				$this->update_options();
 			}
-			
+			add_action('admin_action_wpematico_export_settings', array($this, 'wpematico_export_settings'));
+			add_action('admin_action_wpematico_import_settings', array($this, 'wpematico_import_settings'));
 			$this->Create_campaigns_page();
 			if ($hook_in) {
 				add_action('admin_menu', array($this, 'admin_menu'));
@@ -315,6 +316,16 @@ if (!class_exists('WPeMatico')) {
 					'wpematico_settings_page'
 			);
 			add_action('admin_print_styles-' . $page, array('WPeMatico_Settings', 'styles'));
+
+			$page = add_submenu_page(
+				'edit.php?post_type=wpematico',
+				__('Tools', 'wpematico'),
+				__('Tools', 'wpematico'),
+				'manage_options',
+				'wpematico_tools',
+				'wpematico_tools_page'
+			);
+		add_action('admin_print_styles-' . $page, array('WPeMatico_Tools', 'styles'));
 		}
 
 		public function all_WP_admin_styles() {
