@@ -66,12 +66,12 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			if ($post_type != 'wpematico')
 				return;
 			$danger_options = WPeMatico::get_danger_options();
-				if ($danger_options['wpe_debug_logs_campaign']) {
-					$class = 'notice notice-warning notice-alt';
-					$message = __('WARNING! WPeMatico Debug mode has been activated at Settings->System Status->Danger Zone.', 'wpematico') . '<br />'
-							. __('Be sure to deactivate it after your tests to avoid performance issues.', 'wpematico');
-					printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), $message);
-				}
+			if ($danger_options['wpe_debug_logs_campaign']) {
+				$class	 = 'notice notice-warning notice-alt';
+				$message = __('WARNING! WPeMatico Debug mode has been activated at Settings->System Status->Danger Zone.', 'wpematico') . '<br />'
+						. __('Be sure to deactivate it after your tests to avoid performance issues.', 'wpematico');
+				printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), $message);
+			}
 		}
 
 		/**
@@ -89,10 +89,10 @@ if (!class_exists('WPeMatico_Campaigns')) :
 				}
 			}
 
-			$new_actions = array();
+			$new_actions					= array();
 			$new_actions['start_campaigns'] = __('Start campaigns', 'wpematico');
-			$new_actions['stop_campaigns'] = __('Stop campaigns', 'wpematico');
-			$actions = array_merge($new_actions, $actions);
+			$new_actions['stop_campaigns']	= __('Stop campaigns', 'wpematico');
+			$actions						= array_merge($new_actions, $actions);
 
 			return $actions;
 		}
@@ -156,10 +156,9 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			global $typenow, $wp_query, $current_user, $pagenow, $cfg;
 			if ($pagenow == 'edit.php' && is_admin() && $typenow == 'wpematico') {
 
-				$options = WPeMatico_Campaign_edit::campaign_type_options();
-				$readonly = ( count($options) == 1 ) ? 'disabled' : '';
+				$options	   = WPeMatico_Campaign_edit::campaign_type_options();
+				$readonly	   = ( count($options) == 1 ) ? 'disabled' : '';
 				$campaign_type = (isset($_GET['campaign_type']) && !empty($_GET['campaign_type']) ) ? sanitize_text_field($_GET['campaign_type']) : '';
-
 
 				$echoHtml = '<div style="display: inline-block;"><select id="campaign_type" ' . $readonly . ' name="campaign_type" style="display:inline;">';
 				$echoHtml .= '<option value=""' . selected('', $campaign_type, false) . '>' . __('Campaign Type', 'wpematico') . '</option>';
@@ -180,11 +179,11 @@ if (!class_exists('WPeMatico_Campaigns')) :
 
 				$filtering = false;
 				if (!empty($campaign_type)) {
-					$filtering = true;
+					$filtering	  = true;
 					$meta_query[] = array(
 						array(
-							'key' => 'campaign_data',
-							'value' => serialize($campaign_type),
+							'key'	  => 'campaign_data',
+							'value'	  => serialize($campaign_type),
 							'compare' => 'LIKE'
 						)
 					);
@@ -234,8 +233,8 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			global $post_type;
 			if ($post_type != 'wpematico')
 				return;
-			wp_enqueue_style('campaigns-list', WPeMatico :: $uri . 'app/css/campaigns_list.css');
-			wp_enqueue_style('wpematstyles', WPeMatico :: $uri . 'app/css/wpemat_styles.css');
+			wp_enqueue_style('campaigns-list', WPeMatico::$uri . 'app/css/campaigns_list.css');
+			wp_enqueue_style('wpematstyles', WPeMatico::$uri . 'app/css/wpemat_styles.css');
 		}
 
 		public static function list_admin_scripts() {
@@ -244,21 +243,21 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			if ($post_type != 'wpematico')
 				return;
 
-			wp_enqueue_script('wpematico-Date.phpformats', WPeMatico :: $uri . 'app/js/Date.phpformats.js', array('jquery'), '', true);
-			wp_enqueue_script('wpematico-bulk-quick-edit', WPeMatico :: $uri . 'app/js/bulk_quick_edit.js', array('jquery', 'inline-edit-post'), '', true);
-			wp_enqueue_script('wpematico-campaign-list', WPeMatico :: $uri . 'app/js/campaign_list.js', array('jquery'), WPEMATICO_VERSION, true);
+			wp_enqueue_script('wpematico-Date.phpformats', WPeMatico::$uri . 'app/js/Date.phpformats.js', array('jquery'), '', true);
+			wp_enqueue_script('wpematico-bulk-quick-edit', WPeMatico::$uri . 'app/js/bulk_quick_edit.js', array('jquery', 'inline-edit-post'), '', true);
+			wp_enqueue_script('wpematico-campaign-list', WPeMatico::$uri . 'app/js/campaign_list.js', array('jquery'), WPEMATICO_VERSION, true);
 
 			$wpematico_object = array(
-				'date_format' => get_option('date_format') . ' ' . get_option('time_format'),
-				'i18n_date_format' => date_i18n(get_option('date_format') . '-' . get_option('time_format')),
-				'text_running_campaign' => __('Running Campaign...', 'wpematico'),
+				'date_format'					=> get_option('date_format') . ' ' . get_option('time_format'),
+				'i18n_date_format'				=> date_i18n(get_option('date_format') . '-' . get_option('time_format')),
+				'text_running_campaign'			=> __('Running Campaign...', 'wpematico'),
 				'text_select_a_campaign_to_run' => __('Please select campaign(s) to Run.', 'wpematico'),
-				'text_slug' => __('Slug'),
-				'text_password' => __('Password'),
-				'text_date' => __('Date'),
-				'run_now_list_nonce' => wp_create_nonce('wpematico-run-now-nonce'),
-				'Notification_Hidding' => __('Hidding...', 'wpematico'),
-				'Notification_Dismissed' => __('Dismissed', 'wpematico'),
+				'text_slug'						=> __('Slug'),
+				'text_password'					=> __('Password'),
+				'text_date'						=> __('Date'),
+				'run_now_list_nonce'			=> wp_create_nonce('wpematico-run-now-nonce'),
+				'Notification_Hidding'			=> __('Hidding...', 'wpematico'),
+				'Notification_Dismissed'		=> __('Dismissed', 'wpematico'),
 			);
 			wp_localize_script('wpematico-campaign-list', 'wpematico_object', $wpematico_object);
 		}
@@ -278,23 +277,23 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			$status = 'publish';
 
 			$new_post = array(
-				'menu_order' => $post->menu_order,
-				'guid' => $post->guid,
+				'menu_order'	 => $post->menu_order,
+				'guid'			 => $post->guid,
 				'comment_status' => $post->comment_status,
-				'ping_status' => $post->ping_status,
-				'pinged' => $post->pinged,
-				'post_author' => @$post->author,
-				'post_content' => $post->post_content,
-				'post_excerpt' => $post->post_excerpt,
+				'ping_status'	 => $post->ping_status,
+				'pinged'		 => $post->pinged,
+				'post_author'	 => @$post->author,
+				'post_content'	 => $post->post_content,
+				'post_excerpt'	 => $post->post_excerpt,
 				'post_mime_type' => $post->post_mime_type,
-				'post_parent' => $post->post_parent,
-				'post_password' => $post->post_password,
-				'post_status' => $status,
-				'post_title' => $prefix . $post->post_title . $suffix,
-				'post_type' => $post->post_type,
-				'to_ping' => $post->to_ping,
-				'post_date' => $post->post_date,
-				'post_date_gmt' => get_gmt_from_date($post->post_date)
+				'post_parent'	 => $post->post_parent,
+				'post_password'	 => $post->post_password,
+				'post_status'	 => $status,
+				'post_title'	 => $prefix . $post->post_title . $suffix,
+				'post_type'		 => $post->post_type,
+				'to_ping'		 => $post->to_ping,
+				'post_date'		 => $post->post_date,
+				'post_date_gmt'	 => get_gmt_from_date($post->post_date)
 			);
 
 			$new_post_id = wp_insert_post($new_post);
@@ -303,25 +302,23 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			if (!empty($post_meta_keys)) {
 				foreach ($post_meta_keys as $meta_key) {
 					$meta_values = get_post_custom_values($meta_key, $post->ID);
-					
+
 					foreach ($meta_values as $meta_value) {
 						$meta_value = maybe_unserialize($meta_value);
 
 						add_post_meta($new_post_id, $meta_key, $meta_value);
 					}
-
 				}
-
 			}
-			$campaign_data = WPeMatico::get_campaign($new_post_id);
+			$campaign_data				= WPeMatico::get_campaign($new_post_id);
 			$campaign_data['activated'] = false;
 
 			foreach ($campaign_data as $key => $value) {
 				// Check if the key is a string and contains the literal string "regex"
 				if (is_string($key) && strpos($key, 'regex') !== false) {
 					//if the $value is string continue
-					if(is_string($value))
-						// Apply addslashes to the corresponding value
+					if (is_string($value))
+					// Apply addslashes to the corresponding value
 						$campaign_data[$key] = addslashes($value);
 				}
 
@@ -331,8 +328,8 @@ if (!class_exists('WPeMatico_Campaigns')) :
 						// Check if the subKey is a string and contains the literal string "regex"
 						if (is_string($subKey) && strpos($subKey, 'regex') !== false) {
 							//if the $subValue is string continue
-							if(is_string($subValue))
-								// Apply addslashes to the corresponding subValue
+							if (is_string($subValue))
+							// Apply addslashes to the corresponding subValue
 								$campaign_data[$key][$subKey] = addslashes($subValue);
 						}
 					}
@@ -340,8 +337,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			}
 
 			WPeMatico::update_campaign($new_post_id, $campaign_data);
-			
-			
+
 			// If the copy is not a draft or a pending entry, we have to set a proper slug.
 			/* if ($new_post_status != 'draft' || $new_post_status != 'auto-draft' || $new_post_status != 'pending' ){
 			  $post_name = wp_unique_post_slug($post->post_name, $new_post_id, $new_post_status, $post->post_type, $new_post_parent);
@@ -369,12 +365,12 @@ if (!class_exists('WPeMatico_Campaigns')) :
 				wp_die('Are you sure?');
 			}
 			// Get the original post
-			$id = (isset($_GET['post']) ? absint($_GET['post']) : absint($_POST['post']) );
+			$id	  = (isset($_GET['post']) ? absint($_GET['post']) : absint($_POST['post']) );
 			$post = get_post($id);
 
 			// Copy the post and insert it
 			if (isset($post) && $post != null) {
-				$new_id = self :: copy_duplicate_campaign($post, $status);
+				$new_id = self::copy_duplicate_campaign($post, $status);
 
 				if ($status == '') {
 					// Redirect to the post list screen
@@ -411,9 +407,9 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			// Get the original post
 			$id = (isset($_GET['post']) ? absint($_GET['post']) : absint($_POST['post']) );
 
-			$campaign_data = WPeMatico::get_campaign($id);
+			$campaign_data				= WPeMatico::get_campaign($id);
 			$campaign_data['activated'] = !$campaign_data['activated'];
-			WPeMatico :: update_campaign($id, $campaign_data);
+			WPeMatico::update_campaign($id, $campaign_data);
 
 			$notice = ($campaign_data['activated']) ? __('Campaign activated', 'wpematico') : __('Campaign Deactivated', 'wpematico');
 			WPeMatico::add_wp_notice(array('text' => $notice . ' <b>' . get_the_title($id) . '</b>', 'below-h2' => false));
@@ -441,12 +437,12 @@ if (!class_exists('WPeMatico_Campaigns')) :
 				wp_die('Are you sure?');
 			}
 			// Get the original post
-			$id = (isset($_GET['post']) ? absint($_GET['post']) : absint($_POST['post']) );
-			$campaign_data = WPeMatico :: get_campaign($id);
-			$campaign_data['postscount'] = 0;
+			$id								 = (isset($_GET['post']) ? absint($_GET['post']) : absint($_POST['post']) );
+			$campaign_data					 = WPeMatico::get_campaign($id);
+			$campaign_data['postscount']	 = 0;
 			$campaign_data['lastpostscount'] = 0;
-			$campaign_data['cronnextrun'] = WPeMatico :: time_cron_next($campaign_data['cron']); //set next run
-			WPeMatico :: update_campaign($id, $campaign_data);
+			$campaign_data['cronnextrun']	 = WPeMatico::time_cron_next($campaign_data['cron']); //set next run
+			WPeMatico::update_campaign($id, $campaign_data);
 			delete_post_meta($id, 'last_campaign_log');
 
 			WPeMatico::add_wp_notice(array('text' => __('Reset Campaign', 'wpematico') . ' <b>' . get_the_title($id) . '</b>', 'below-h2' => false));
@@ -473,11 +469,11 @@ if (!class_exists('WPeMatico_Campaigns')) :
 				wp_die('Are you sure?');
 			}
 			// Get the original post
-			$id = (isset($_GET['post']) ? absint($_GET['post']) : absint($_POST['post']) );
-			$campaign_data = WPeMatico :: get_campaign($id);
+			$id			   = (isset($_GET['post']) ? absint($_GET['post']) : absint($_POST['post']) );
+			$campaign_data = WPeMatico::get_campaign($id);
 			foreach ($campaign_data['campaign_feeds'] as $feed) { // Grabo el ultimo hash de cada feed con 0
 				$campaign_data[$feed]['lasthash'] = "0";
-				$lasthashvar = '_lasthash_' . sanitize_file_name($feed);
+				$lasthashvar					  = '_lasthash_' . sanitize_file_name($feed);
 				add_post_meta($id, $lasthashvar, "0", true) or
 						update_post_meta($id, $lasthashvar, "0");
 
@@ -511,14 +507,14 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			}
 
 			// Get the original post
-			$id = (isset($_GET['post']) ? absint($_GET['post']) : absint($_POST['post']) );
+			$id			   = (isset($_GET['post']) ? absint($_GET['post']) : absint($_POST['post']) );
 			$campaign_data = WPeMatico::get_campaign($id);
 
-			$campaign_data['cronnextrun'] = WPeMatico :: time_cron_next($campaign_data['cron']); //set next run
-			$campaign_data['stoptime'] = current_time('timestamp');
-			$campaign_data['lastrun'] = $campaign_data['starttime'];
+			$campaign_data['cronnextrun'] = WPeMatico::time_cron_next($campaign_data['cron']); //set next run
+			$campaign_data['stoptime']	  = current_time('timestamp');
+			$campaign_data['lastrun']	  = $campaign_data['starttime'];
 			$campaign_data['lastruntime'] = $campaign_data['stoptime'] - $campaign_data['starttime'];
-			$campaign_data['starttime'] = '';
+			$campaign_data['starttime']	  = '';
 
 			WPeMatico::update_campaign($id, $campaign_data);
 			WPeMatico::add_wp_notice(array('text' => __('Campaign cleared', 'wpematico') . ' <b>' . get_the_title($id) . '</b>', 'below-h2' => false));
@@ -536,17 +532,17 @@ if (!class_exists('WPeMatico_Campaigns')) :
 		public static function wpematico_updated_messages($messages) {
 			global $post, $post_ID;
 			$messages['wpematico'] = array(
-				0 => '', // Unused. Messages start at index 1.
-				1 => sprintf(__('Campaign updated.', 'wpematico')),
-				2 => __('Custom field updated.', 'wpematico'),
-				3 => __('Custom field deleted.', 'wpematico'),
-				4 => __('Campaign updated.', 'wpematico'),
+				0  => '', // Unused. Messages start at index 1.
+				1  => sprintf(__('Campaign updated.', 'wpematico')),
+				2  => __('Custom field updated.', 'wpematico'),
+				3  => __('Custom field deleted.', 'wpematico'),
+				4  => __('Campaign updated.', 'wpematico'),
 				/* translators: %s: date and time of the revision */
-				5 => isset($_GET['revision']) ? sprintf(__('Campaign restored to revision from %s'), wp_post_revision_title(absint($_GET['revision']), false)) : false,
-				6 => sprintf(__('Campaign published.', 'wpematico')),
-				7 => __('Campaign saved.'),
-				8 => sprintf(__('Campaign submitted.', 'wpematico')),
-				9 => sprintf(__('Campaign scheduled for: %s.') . '<a target="_blank" href="%s">' . __('Preview campaign') . '</a>',
+				5  => isset($_GET['revision']) ? sprintf(__('Campaign restored to revision from %s'), wp_post_revision_title(absint($_GET['revision']), false)) : false,
+				6  => sprintf(__('Campaign published.', 'wpematico')),
+				7  => __('Campaign saved.'),
+				8  => sprintf(__('Campaign submitted.', 'wpematico')),
+				9  => sprintf(__('Campaign scheduled for: %s.') . '<a target="_blank" href="%s">' . __('Preview campaign') . '</a>',
 						// translators: Publish box date format, see http://php.net/date
 						date_i18n(__('M j, Y @ G:i'), strtotime($post->post_date)), esc_url(get_permalink($post_ID))),
 				10 => sprintf(__('Campaign draft updated. ') . '<a target="_blank" href="%s">' . __('Preview campaign') . '</a>', esc_url(add_query_arg('preview', 'true', get_permalink($post_ID)))),
@@ -576,7 +572,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 					$action_name = "wpematico_clear_campaign";
 					break;
 			}
-			$nonce = wp_create_nonce('wpe-action-nonce');
+			$nonce	= wp_create_nonce('wpe-action-nonce');
 			if ('display' == $context)
 				$action = '?action=' . $action_name . '&amp;post=' . $post->ID . '&amp;nonce=' . $nonce;
 			else
@@ -594,59 +590,73 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			global $post, $post_type_object;
 			if ($post->post_type == 'wpematico') {
 				$can_edit_post = current_user_can('edit_post', $post->ID);
-				$cfg = get_option(WPeMatico :: OPTION_KEY);
+				$cfg		   = get_option(WPeMatico::OPTION_KEY);
 //	//		unset( $actions['edit'] );
 //			unset( $actions['view'] );
 //	//		unset( $actions['trash'] );
 //	//		unset( $actions['inline hide-if-no-js'] );
 //			unset( $actions['clone'] );
 //			unset( $actions['edit_as_new_draft'] );
-				$actions = array();
+				$actions	   = array();
 				if ($can_edit_post && 'trash' != $post->post_status) {
-					$actions['edit'] = '<a href="' . get_edit_post_link($post->ID, true) . '" title="' . esc_attr(__('Edit this item')) . '">' . __('Edit') . '</a>';
+					$actions['edit']				 = '<a href="' . get_edit_post_link($post->ID, true) . '" title="' . esc_attr(__('Edit this item')) . '">' . __('Edit') . '</a>';
 					$actions['inline hide-if-no-js'] = '<a href="#" class="editinline" title="' . esc_attr(__('Edit this item inline')) . '">' . __('Quick Edit') . '</a>';
 				}
 				if (current_user_can('delete_post', $post->ID)) {
 					if ('trash' == $post->post_status)
 						$actions['untrash'] = "<a title='" . esc_attr(__('Restore this item from the Trash')) . "' href='" . wp_nonce_url(admin_url(sprintf($post_type_object->_edit_link . '&amp;action=untrash', $post->ID)), 'untrash-post_' . $post->ID) . "'>" . __('Restore') . "</a>";
 					elseif (EMPTY_TRASH_DAYS)
-						$actions['trash'] = "<a class='submitdelete' title='" . esc_attr(__('Move this item to the Trash')) . "' href='" . get_delete_post_link($post->ID) . "'>" . __('Trash') . "</a>";
+						$actions['trash']	= "<a class='submitdelete' title='" . esc_attr(__('Move this item to the Trash')) . "' href='" . get_delete_post_link($post->ID) . "'>" . __('Trash') . "</a>";
 					if ('trash' == $post->post_status || !EMPTY_TRASH_DAYS)
-						$actions['delete'] = "<a class='submitdelete' title='" . esc_attr(__('Delete this item permanently')) . "' href='" . get_delete_post_link($post->ID, '', true) . "'>" . __('Delete Permanently') . "</a>";
+						$actions['delete']	= "<a class='submitdelete' title='" . esc_attr(__('Delete this item permanently')) . "' href='" . get_delete_post_link($post->ID, '', true) . "'>" . __('Delete Permanently') . "</a>";
 				}
 				if ('trash' != $post->post_status) {
 					//++++++Toggle
-					$campaign_data = WPeMatico :: get_campaign($post->ID);
-					$starttime = @$campaign_data['starttime'];
-					if (empty($starttime)) {
-						/* 					$acnow = (bool)$campaign_data['activated'];
-						  $atitle = ( $acnow ) ? esc_attr(__("Deactivate this campaign", 'wpematico')) : esc_attr(__("Activate schedule", 'wpematico'));
-						  $alink = ($acnow) ? __("Deactivate", 'wpematico'): __("Activate",'wpematico');
-						  $actions['toggle'] = '<a href="'.self :: wpematico_action_link( $post->ID , 'display','toggle').'" title="' . $atitle . '">' .  $alink . '</a>';
-						 */
-						//++++++Copy
-						$actions['copy'] = '<a href="' . self :: wpematico_action_link($post->ID, 'display', 'copy') . '" title="' . esc_attr(__("Clone this item", 'wpematico')) . '">' . __('Copy', 'wpematico') . '</a>';
-						//++++++Reset
-						$actions['reset'] = '<a href="' . self :: wpematico_action_link($post->ID, 'display', 'reset') . '" title="' . esc_attr(__("Reset post count", 'wpematico')) . '">' . __('Reset', 'wpematico') . '</a>';
-						//++++++runnow
-						//$actions['runnow'] = '<a href="JavaScript:run_now(' . $post->ID . ');" title="' . esc_attr(__("Run Once", 'wpematico')) . '">' .  __('Run Now', 'wpematico') . '</a>';
-						//++++++delhash
-						if (@$cfg['enabledelhash']) // Si está habilitado en settings, lo muestra 
-							$actions['delhash'] = '<a href="' . self :: wpematico_action_link($post->ID, 'display', 'delhash') . '" title="' . esc_attr(__("Delete hash code for duplicates", 'wpematico')) . '">' . __('Del Hash', 'wpematico') . '</a>';
-						//++++++seelog
-						if (@$cfg['enableseelog']) {   // Si está habilitado en settings, lo muestra 
-							$nonce = wp_create_nonce('clog-nonce');
-							$nombre = get_the_title($post->ID);
-							$actionurl = admin_url('admin-post.php?action=wpematico_campaign_log&p=' . $post->ID . '&_wpnonce=' . $nonce);
-							$actionjs = "javascript:window.open('$actionurl','$nombre','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=700, height=600');";
-
-							$actions['seelog'] = '<a href="#" onclick="' . $actionjs . ' return false;" title="' . esc_attr(__("See last log of campaign. (Open a PopUp window)", 'wpematico')) . '">' . __('See Log', 'wpematico') . '</a>';
-						}
-					} else {  // Está en ejecución o quedó a la mitad
+					$campaign_data = WPeMatico::get_campaign($post->ID);
+					
+					$brokenCampaign = false;
+					// Check if $campaign_data is a WP_Error object
+					if (is_wp_error($campaign_data)) {
+						$brokenCampaign = true;
+						// Remove Professional filters for quick actions to allow only trash the broken campaign
+						remove_filter('post_row_actions', array('NoNStatic', 'wpematico_quick_actions'), 30);
+						
+					}
+					if($brokenCampaign){
 						unset($actions['edit']);
 						unset($actions['inline hide-if-no-js']);
-						$actions['clear'] = '<a href="' . self :: wpematico_action_link($post->ID, 'display', 'clear') . '" title="' . esc_attr(__("Clear fetching and restore campaign", 'wpematico')) . '">' . __('Clear campaign', 'wpematico') . '</a>';
-					}
+					}else{
+						$starttime	   = @$campaign_data['starttime'];
+						if (empty($starttime)) {
+							/* 					$acnow = (bool)$campaign_data['activated'];
+							  $atitle = ( $acnow ) ? esc_attr(__("Deactivate this campaign", 'wpematico')) : esc_attr(__("Activate schedule", 'wpematico'));
+							  $alink = ($acnow) ? __("Deactivate", 'wpematico'): __("Activate",'wpematico');
+							  $actions['toggle'] = '<a href="'.self :: wpematico_action_link( $post->ID , 'display','toggle').'" title="' . $atitle . '">' .  $alink . '</a>';
+							 */
+							//++++++Copy
+							$actions['copy']	= '<a href="' . self::wpematico_action_link($post->ID, 'display', 'copy') . '" title="' . esc_attr(__("Clone this item", 'wpematico')) . '">' . __('Copy', 'wpematico') . '</a>';
+							//++++++Reset
+							$actions['reset']	= '<a href="' . self::wpematico_action_link($post->ID, 'display', 'reset') . '" title="' . esc_attr(__("Reset post count", 'wpematico')) . '">' . __('Reset', 'wpematico') . '</a>';
+							//++++++runnow
+							//$actions['runnow'] = '<a href="JavaScript:run_now(' . $post->ID . ');" title="' . esc_attr(__("Run Once", 'wpematico')) . '">' .  __('Run Now', 'wpematico') . '</a>';
+							//++++++delhash
+							if (@$cfg['enabledelhash']) // Si está habilitado en settings, lo muestra 
+								$actions['delhash'] = '<a href="' . self::wpematico_action_link($post->ID, 'display', 'delhash') . '" title="' . esc_attr(__("Delete hash code for duplicates", 'wpematico')) . '">' . __('Del Hash', 'wpematico') . '</a>';
+							//++++++seelog
+							if (@$cfg['enableseelog']) {   // Si está habilitado en settings, lo muestra 
+								$nonce	   = wp_create_nonce('clog-nonce');
+								$nombre	   = get_the_title($post->ID);
+								$actionurl = admin_url('admin-post.php?action=wpematico_campaign_log&p=' . $post->ID . '&_wpnonce=' . $nonce);
+								$actionjs  = "javascript:window.open('$actionurl','$nombre','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=700, height=600');";
+
+								$actions['seelog'] = '<a href="#" onclick="' . $actionjs . ' return false;" title="' . esc_attr(__("See last log of campaign. (Open a PopUp window)", 'wpematico')) . '">' . __('See Log', 'wpematico') . '</a>';
+							}
+						} else {  // Está en ejecución o quedó a la mitad
+							unset($actions['edit']);
+							unset($actions['inline hide-if-no-js']);
+							$actions['clear'] = '<a href="' . self::wpematico_action_link($post->ID, 'display', 'clear') . '" title="' . esc_attr(__("Clear fetching and restore campaign", 'wpematico')) . '">' . __('Clear campaign', 'wpematico') . '</a>';
+						}
+					} // else $brokenCampaign
 				}
 			}
 			return $actions;
@@ -655,22 +665,41 @@ if (!class_exists('WPeMatico_Campaigns')) :
 		static function inline_custom_fields($text) {
 			global $post, $pagenow;
 			if (($pagenow == 'edit.php' && isset($_GET['post_type']) && $_GET['post_type'] == 'wpematico' ) || ($pagenow == 'admin-ajax.php' && isset($post) && $post->post_type == 'wpematico' )) {
-				$campaign_data = WPeMatico :: get_campaign($post->ID);
-				/* Custom inline data for wpematico */
-				$campaign_max = $campaign_data['campaign_max'];
-				$campaign_feeddate = $campaign_data['campaign_feeddate'];
-				$campaign_author = $campaign_data['campaign_author'];
-				$campaign_linktosource = $campaign_data['campaign_linktosource'];
-				$campaign_commentstatus = $campaign_data['campaign_commentstatus'];
-				$campaign_allowpings = $campaign_data['campaign_allowpings'];
-				$campaign_woutfilter = $campaign_data['campaign_woutfilter'];
-				$campaign_strip_links = $campaign_data['campaign_strip_links'];
-				$campaign_customposttype = $campaign_data['campaign_customposttype'];
-				$campaign_posttype = $campaign_data['campaign_posttype'];
-				$campaign_post_format = (isset($campaign_data['campaign_post_format']) && !empty($campaign_data['campaign_post_format']) ) ? $campaign_data['campaign_post_format'] : '0';
-				$campaign_categories = (is_array($campaign_data['campaign_categories'])) ? $campaign_data['campaign_categories'] : array();
-				$campaign_tags = (isset($campaign_data['campaign_tags'])) ? $campaign_data['campaign_tags'] : '';
+				$campaign_data = WPeMatico::get_campaign($post->ID);
 
+				// Check if $campaign_data is a WP_Error object
+				if (is_wp_error($campaign_data)) {
+					// Handle error appropriately, possibly logging it and/or setting default values
+					// $errorCode = "23456";
+					// $errorMessage = "We'll just return here printing the error msg on its campaign row.";
+
+					$errorCode	  = $campaign_data->get_error_code();
+					$errorMessage = $campaign_data->get_error_message();
+
+					// We'll just return here printing the error msg on hidden div.
+					$text .= '</div>
+						<div class="post_id">' . $post->ID . '</div>
+						<div class="error_code">' . "Error retrieving campaign data: " . $errorMessage . '</div>
+						<div class="error_message">' . $errorMessage;
+					return $text;
+				}
+
+				/* Custom inline data for wpematico */
+				$campaign_max			 = $campaign_data['campaign_max'];
+				$campaign_feeddate		 = $campaign_data['campaign_feeddate'];
+				$campaign_author		 = $campaign_data['campaign_author'];
+				$campaign_linktosource	 = $campaign_data['campaign_linktosource'];
+				$campaign_commentstatus	 = $campaign_data['campaign_commentstatus'];
+				$campaign_allowpings	 = $campaign_data['campaign_allowpings'];
+				$campaign_woutfilter	 = $campaign_data['campaign_woutfilter'];
+				$campaign_strip_links	 = $campaign_data['campaign_strip_links'];
+				$campaign_customposttype = $campaign_data['campaign_customposttype'];
+				$campaign_posttype		 = $campaign_data['campaign_posttype'];
+				$campaign_post_format	 = (isset($campaign_data['campaign_post_format']) && !empty($campaign_data['campaign_post_format']) ) ? $campaign_data['campaign_post_format'] : '0';
+				$campaign_categories	 = (is_array($campaign_data['campaign_categories'])) ? $campaign_data['campaign_categories'] : array();
+				$campaign_tags			 = (isset($campaign_data['campaign_tags'])) ? $campaign_data['campaign_tags'] : '';
+
+				/* Concatenation of the $text variable with HTML elements and campaign data */
 				$text .= '</div>
 					<div class="post_id">' . $post->ID . '</div>
 					<div class="campaign_max">' . $campaign_max . '</div>
@@ -692,129 +721,155 @@ if (!class_exists('WPeMatico_Campaigns')) :
 
 		static function set_edit_wpematico_columns($columns) { //this function display the columns headings
 			return array(
-				'cb' => '<input type="checkbox" />',
-				'title' => __('Campaign Name', 'wpematico'),
-				'status' => __('Publish as', 'wpematico'),
+				'cb'			=> '<input type="checkbox" />',
+				'title'			=> __('Campaign Name', 'wpematico'),
+				'status'		=> __('Publish as', 'wpematico'),
 				'campaign_type' => __('Campaign Type', 'wpematico'),
-				'next' => __('Current State', 'wpematico'),
-				'last' => __('Last Run', 'wpematico'),
-				'count' => __('Posts', 'wpematico'),
+				'next'			=> __('Current State', 'wpematico'),
+				'last'			=> __('Last Run', 'wpematico'),
+				'count'			=> __('Posts', 'wpematico'),
 			);
 		}
 
 		static function custom_wpematico_column($column, $post_id) {
-			$cfg = get_option(WPeMatico :: OPTION_KEY);
-			$campaign_data = WPeMatico :: get_campaign($post_id);
-			switch ($column) {
-				case 'aaaaaaaaaa_name':
+			$cfg			= get_option(WPeMatico::OPTION_KEY);
+			$campaign_data	= WPeMatico::get_campaign($post_id);
+			$brokenCampaign = false;
 
-//			$taxonomy_names = get_object_taxonomies( $campaign_customposttype );
-//			foreach ( $taxonomy_names as $taxonomy_name) {
-//				$taxonomy = get_taxonomy( $taxonomy_name );
-//
-//				if ( $taxonomy->hierarchical && $taxonomy->show_ui ) {
-//
-//					$terms = get_object_term_cache( $post_id, $taxonomy_name );
-//					if ( false === $terms ) {
-//						$terms = wp_get_object_terms( $post_id, $taxonomy_name );
-//						wp_cache_add( $post_id, $terms, $taxonomy_name . '_relationships' );
-//					}
-//					$term_ids = empty( $terms ) ? array() : wp_list_pluck( $terms, 'term_id' );
-//
-//					echo '<div class="post_category" id="' . $taxonomy_name . '_' . $post_id . '">' . implode( ',', $campaign_categories ) . '</div>';
-//
-//				} elseif ( $taxonomy->show_ui ) {
-//
-//					echo '<div class="tags_input" id="'.$taxonomy_name.'_'.$post_id.'">'
-//						. esc_html( str_replace( ',', ', ', get_terms_to_edit( $post_id, $taxonomy_name ) ) ) . '</div>';
-//
-//				}
-//			}
-
-					break;
-				case 'status':
-					$get_post_type_object = isset(get_post_type_object($campaign_data['campaign_customposttype'])->labels->singular_name) ? get_post_type_object($campaign_data['campaign_customposttype'])->labels->singular_name : '';
-					echo '<div id="campaign_posttype-' . $post_id . '" value="' . $campaign_data['campaign_posttype'] . '">' . $get_post_type_object . '<br />';
-					echo '' . get_post_status_object($campaign_data['campaign_posttype'])->label . '</div>';
-					break;
-				case 'campaign_type':
-					$CampaignTypestr = WPeMatico_Campaign_edit::get_campaign_type_by_field($campaign_data['campaign_type']);
-					echo '<div class="center" id="campaign_type-' . $post_id . '" value="' . $campaign_data['campaign_type'] . '">' . str_replace(array(' (Default)', 'Fetcher'), '', $CampaignTypestr) . '</div>';
-					break;
-				case 'count':
-					$postscount = get_post_meta($post_id, 'postscount', true);
-					echo (isset($postscount) && !empty($postscount) ) ? $postscount : $campaign_data['postscount'];
-					break;
-				case 'next':   // 'Current State' column
-					$starttime = (isset($campaign_data['starttime']) && !empty($campaign_data['starttime']) ) ? $campaign_data['starttime'] : 0;
-					//print_r($campaign_data);
-					$activated = (bool) $campaign_data['activated'];
-					$atitle = ( $activated ) ? __("Stop and deactivate this campaign", 'wpematico') : __("Start/Activate Campaign Scheduler", 'wpematico');
-
-
-					// NEW BUTTONS
-					if ($starttime > 0) {  // Running play verde & grab rojo & stop gris
-						$runtime = current_time('timestamp') - $starttime;
-						if (($cfg['campaign_timeout'] <= $runtime) && ($cfg['campaign_timeout'] > 0)) {
-							$campaign_data['lastrun'] = $starttime;
-							$campaign_data['lastruntime'] = ' <span style="color:red;">Timeout: ' . $cfg['campaign_timeout'] . '</span>';
-							$campaign_data['starttime'] = '';
-							$campaign_data['lastpostscount'] = 0; //  posts procesados esta vez
-							WPeMatico :: update_campaign($post_id, $campaign_data);  //Save Campaign new data
-						}
-						$ltitle = __('Running since:', 'wpematico') . ' ' . $runtime . ' ' . __('sec.', 'wpematico');
-						$lbotones = '<button type="button" disabled class="state_buttons cpanelbutton dashicons dashicons-controls-play green"></button>';
-						if ($activated) { // Active play green & grab rojo & stop gris
-							$lbotones .= '<button type="button" disabled class="state_buttons cpanelbutton dashicons dashicons-update red"></button>'; // To activate
-						} else {  // Inactive play verde & grab black & stop grey
-							$lbotones .= '<button type="button" class="state_buttons cpanelbutton dashicons dashicons-update" btn-href="' . WPeMatico_Campaigns::wpematico_action_link($post_id, 'display', 'toggle') . '" title="' . $atitle . '"></button>'; // To activate
-						}
-
-						$lbotones .= '<button type="button" class="state_buttons cpanelbutton dashicons dashicons-controls-pause" btn-href="' . WPeMatico_Campaigns::wpematico_action_link($post_id, 'display', 'clear') . '" title="' . __('Break fetching and restore campaign', 'wpematico') . '"></button>'; // To deactivate
-					} elseif ($activated) { // Running play gris & grab rojo & stop gris
-						$cronnextrun = WPeMatico :: time_cron_next($campaign_data['cron']);
-						$cronnextrun = (isset($cronnextrun) && !empty($cronnextrun) && ($cronnextrun > 0 ) ) ? $cronnextrun : $campaign_data['cronnextrun'];
-						$ltitle = __('Next Run:', 'wpematico') . ' ' . date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $cronnextrun);
-						$lbotones = '<button type="button" class="state_buttons cpanelbutton dashicons dashicons-controls-play" title="' . esc_attr(__('Run Once', 'wpematico')) . '"></button>'; // To run now
-						$lbotones .= '<button type="button" disabled class="state_buttons cpanelbutton dashicons dashicons-update red"></button>'; // To stop
-						$lbotones .= '<button type="button" class="state_buttons cpanelbutton dashicons dashicons-controls-pause" btn-href="' . WPeMatico_Campaigns::wpematico_action_link($post_id, 'display', 'toggle') . '" title="' . $atitle . '"></button>'; // To deactivate
-					} else {  // Inactive play gris & grab gris & stop black
-						$ltitle = __('Inactive', 'wpematico');
-						$lbotones = '<button type="button" class="state_buttons cpanelbutton dashicons dashicons-controls-play" title="' . esc_attr(__('Run Once', 'wpematico')) . '"></button>'; // To run now
-						$lbotones .= '<button type="button" class="state_buttons cpanelbutton dashicons dashicons-update" btn-href="' . WPeMatico_Campaigns::wpematico_action_link($post_id, 'display', 'toggle') . '" title="' . $atitle . '"></button>'; // To activate
-						$lbotones .= '<button type="button" disabled class="state_buttons cpanelbutton dashicons dashicons-controls-pause grey"></button>'; // To stop
-					}
-
-
-					echo '<div class="row-actions2" title="' . $ltitle . '">' . $lbotones . '</div>';
-					break;
-				case 'last':
-					$lastrun = get_post_meta($post_id, 'lastrun', true);
-					$lastrun = (isset($lastrun) && !empty($lastrun) ) ? $lastrun : $campaign_data['lastrun'];
-					$lastruntime = (isset($campaign_data['lastruntime'])) ? $campaign_data['lastruntime'] : '';
-					if ($lastrun) {
-						echo date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $lastrun);
-						if (isset($lastruntime) && !empty($lastruntime)) {
-							echo ' : ' . __('Runtime:', 'wpematico') . ' <span id="lastruntime">' . $lastruntime . '</span> ' . __('sec.', 'wpematico');
-						}
-					} else {
-						echo __('None', 'wpematico');
-					}
-					$starttime = (isset($campaign_data['starttime']) && !empty($campaign_data['starttime']) ) ? $campaign_data['starttime'] : 0;
-					$activated = (bool) $campaign_data['activated'];
-					if ($starttime > 0) {  // Running play verde & grab rojo & stop gris
-						$runtime = current_time('timestamp') - $starttime;
-						$ltitle = __('Running since:', 'wpematico') . ' ' . $runtime . ' ' . __('sec.', 'wpematico');
-					} elseif ($activated) { // Running play gris & grab rojo & stop gris
-						$cronnextrun = get_post_meta($post_id, 'cronnextrun', true);
-						$cronnextrun = (isset($cronnextrun) && !empty($cronnextrun) && ($cronnextrun > 0 ) ) ? $cronnextrun : $campaign_data['cronnextrun'];
-						$ltitle = '<b>' . __('Next Run:', 'wpematico') . '</b> ' . date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $cronnextrun);
-					} else {  // Inactive play gris & grab gris & stop black
-						$ltitle = '';
-					}
-					echo "<div class=''>$ltitle</div>";
-					break;
+			// Check if $campaign_data is a WP_Error object
+			if (is_wp_error($campaign_data)) {
+				$brokenCampaign = true;
+				// Handle error appropriately, possibly logging it and/or setting default values
+				//$errorCode		= "23456";
+				//$errorMessage	= "We'll just return here printing the error msg on its campaign row.";
+				$errorCode		= $campaign_data->get_error_code();
+				$errorMessage	= $campaign_data->get_error_message();
 			}
+
+			if ($brokenCampaign) {
+				switch ($column) {
+
+					case 'name':
+					case 'title':
+						echo '<div class="error_code">' . "Error retrieving campaign data: " . $errorMessage . '</div><div class="error_message">' . $errorMessage . '</div>';
+
+						break;
+					case 'campaign_type':
+						echo '<div id="campaign_broken-' . $post_id . '" style="color:#b32d2e;" value="">' . __('Broken campaign :(', 'wpematico') . '</div>';
+
+						break;
+				}
+			} else {
+				switch ($column) {
+					case 'aaaaaaaaaa_name':
+
+						//			$taxonomy_names = get_object_taxonomies( $campaign_customposttype );
+						//			foreach ( $taxonomy_names as $taxonomy_name) {
+						//				$taxonomy = get_taxonomy( $taxonomy_name );
+						//
+						//				if ( $taxonomy->hierarchical && $taxonomy->show_ui ) {
+						//
+						//					$terms = get_object_term_cache( $post_id, $taxonomy_name );
+						//					if ( false === $terms ) {
+						//						$terms = wp_get_object_terms( $post_id, $taxonomy_name );
+						//						wp_cache_add( $post_id, $terms, $taxonomy_name . '_relationships' );
+						//					}
+						//					$term_ids = empty( $terms ) ? array() : wp_list_pluck( $terms, 'term_id' );
+						//
+						//					echo '<div class="post_category" id="' . $taxonomy_name . '_' . $post_id . '">' . implode( ',', $campaign_categories ) . '</div>';
+						//
+						//				} elseif ( $taxonomy->show_ui ) {
+						//
+						//					echo '<div class="tags_input" id="'.$taxonomy_name.'_'.$post_id.'">'
+						//						. esc_html( str_replace( ',', ', ', get_terms_to_edit( $post_id, $taxonomy_name ) ) ) . '</div>';
+						//
+						//				}
+						//			}
+
+						break;
+					case 'status':
+						$get_post_type_object = isset(get_post_type_object($campaign_data['campaign_customposttype'])->labels->singular_name) ? get_post_type_object($campaign_data['campaign_customposttype'])->labels->singular_name : '';
+						echo '<div id="campaign_posttype-' . $post_id . '" value="' . $campaign_data['campaign_posttype'] . '">' . $get_post_type_object . '<br />';
+						echo '' . get_post_status_object($campaign_data['campaign_posttype'])->label . '</div>';
+						break;
+					case 'campaign_type':
+						$CampaignTypestr	  = WPeMatico_Campaign_edit::get_campaign_type_by_field($campaign_data['campaign_type']);
+						echo '<div class="center" id="campaign_type-' . $post_id . '" value="' . $campaign_data['campaign_type'] . '">' . str_replace(array(' (Default)', 'Fetcher'), '', $CampaignTypestr) . '</div>';
+						break;
+					case 'count':
+						$postscount			  = get_post_meta($post_id, 'postscount', true);
+						echo (isset($postscount) && !empty($postscount) ) ? $postscount : $campaign_data['postscount'];
+						break;
+					case 'next':   // 'Current State' column
+						$starttime			  = (isset($campaign_data['starttime']) && !empty($campaign_data['starttime']) ) ? $campaign_data['starttime'] : 0;
+						//print_r($campaign_data);
+						$activated			  = (bool) $campaign_data['activated'];
+						$atitle				  = ( $activated ) ? __("Stop and deactivate this campaign", 'wpematico') : __("Start/Activate Campaign Scheduler", 'wpematico');
+
+						// NEW BUTTONS
+						if ($starttime > 0) {  // Running play verde & grab rojo & stop gris
+							$runtime = current_time('timestamp') - $starttime;
+							if (($cfg['campaign_timeout'] <= $runtime) && ($cfg['campaign_timeout'] > 0)) {
+								$campaign_data['lastrun']		 = $starttime;
+								$campaign_data['lastruntime']	 = ' <span style="color:red;">Timeout: ' . $cfg['campaign_timeout'] . '</span>';
+								$campaign_data['starttime']		 = '';
+								$campaign_data['lastpostscount'] = 0; //  posts procesados esta vez
+								WPeMatico::update_campaign($post_id, $campaign_data);  //Save Campaign new data
+							}
+							$ltitle	  = __('Running since:', 'wpematico') . ' ' . $runtime . ' ' . __('sec.', 'wpematico');
+							$lbotones = '<button type="button" disabled class="state_buttons cpanelbutton dashicons dashicons-controls-play green"></button>';
+							if ($activated) { // Active play green & grab rojo & stop gris
+								$lbotones .= '<button type="button" disabled class="state_buttons cpanelbutton dashicons dashicons-update red"></button>'; // To activate
+							} else {  // Inactive play verde & grab black & stop grey
+								$lbotones .= '<button type="button" class="state_buttons cpanelbutton dashicons dashicons-update" btn-href="' . WPeMatico_Campaigns::wpematico_action_link($post_id, 'display', 'toggle') . '" title="' . $atitle . '"></button>'; // To activate
+							}
+
+							$lbotones .= '<button type="button" class="state_buttons cpanelbutton dashicons dashicons-controls-pause" btn-href="' . WPeMatico_Campaigns::wpematico_action_link($post_id, 'display', 'clear') . '" title="' . __('Break fetching and restore campaign', 'wpematico') . '"></button>'; // To deactivate
+						} elseif ($activated) { // Running play gris & grab rojo & stop gris
+							$cronnextrun = WPeMatico::time_cron_next($campaign_data['cron']);
+							$cronnextrun = (isset($cronnextrun) && !empty($cronnextrun) && ($cronnextrun > 0 ) ) ? $cronnextrun : $campaign_data['cronnextrun'];
+							$ltitle		 = __('Next Run:', 'wpematico') . ' ' . date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $cronnextrun);
+							$lbotones	 = '<button type="button" class="state_buttons cpanelbutton dashicons dashicons-controls-play" title="' . esc_attr(__('Run Once', 'wpematico')) . '"></button>'; // To run now
+							$lbotones	 .= '<button type="button" disabled class="state_buttons cpanelbutton dashicons dashicons-update red"></button>'; // To stop
+							$lbotones	 .= '<button type="button" class="state_buttons cpanelbutton dashicons dashicons-controls-pause" btn-href="' . WPeMatico_Campaigns::wpematico_action_link($post_id, 'display', 'toggle') . '" title="' . $atitle . '"></button>'; // To deactivate
+						} else {  // Inactive play gris & grab gris & stop black
+							$ltitle	  = __('Inactive', 'wpematico');
+							$lbotones = '<button type="button" class="state_buttons cpanelbutton dashicons dashicons-controls-play" title="' . esc_attr(__('Run Once', 'wpematico')) . '"></button>'; // To run now
+							$lbotones .= '<button type="button" class="state_buttons cpanelbutton dashicons dashicons-update" btn-href="' . WPeMatico_Campaigns::wpematico_action_link($post_id, 'display', 'toggle') . '" title="' . $atitle . '"></button>'; // To activate
+							$lbotones .= '<button type="button" disabled class="state_buttons cpanelbutton dashicons dashicons-controls-pause grey"></button>'; // To stop
+						}
+
+
+						echo '<div class="row-actions2" title="' . $ltitle . '">' . $lbotones . '</div>';
+						break;
+					case 'last':
+						$lastrun	 = get_post_meta($post_id, 'lastrun', true);
+						$lastrun	 = (isset($lastrun) && !empty($lastrun) ) ? $lastrun : $campaign_data['lastrun'];
+						$lastruntime = (isset($campaign_data['lastruntime'])) ? $campaign_data['lastruntime'] : '';
+						if ($lastrun) {
+							echo date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $lastrun);
+							if (isset($lastruntime) && !empty($lastruntime)) {
+								echo ' : ' . __('Runtime:', 'wpematico') . ' <span id="lastruntime">' . $lastruntime . '</span> ' . __('sec.', 'wpematico');
+							}
+						} else {
+							echo __('None', 'wpematico');
+						}
+						$starttime = (isset($campaign_data['starttime']) && !empty($campaign_data['starttime']) ) ? $campaign_data['starttime'] : 0;
+						$activated = (bool) $campaign_data['activated'];
+						if ($starttime > 0) {  // Running play verde & grab rojo & stop gris
+							$runtime = current_time('timestamp') - $starttime;
+							$ltitle	 = __('Running since:', 'wpematico') . ' ' . $runtime . ' ' . __('sec.', 'wpematico');
+						} elseif ($activated) { // Running play gris & grab rojo & stop gris
+							$cronnextrun = get_post_meta($post_id, 'cronnextrun', true);
+							$cronnextrun = (isset($cronnextrun) && !empty($cronnextrun) && ($cronnextrun > 0 ) ) ? $cronnextrun : $campaign_data['cronnextrun'];
+							$ltitle		 = '<b>' . __('Next Run:', 'wpematico') . '</b> ' . date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $cronnextrun);
+						} else {  // Inactive play gris & grab gris & stop black
+							$ltitle = '';
+						}
+						echo "<div class=''>$ltitle</div>";
+						break;
+				} // switch $column
+			} // else brokenCampaign
 		}
 
 		// Make these columns sortable
@@ -822,8 +877,8 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			return array(
 				'title' => 'title',
 				'count' => 'count',
-				'next' => 'next',
-				'last' => 'last'
+				'next'	=> 'next',
+				'last'	=> 'last'
 			);
 		}
 
@@ -861,18 +916,20 @@ if (!class_exists('WPeMatico_Campaigns')) :
 		}
 
 		static function get_wpematico_categ_bulk_edit($post_id, $post_type) {
-			$post_id = ( isset($_POST['post_id']) && !empty($_POST['post_id']) ) ? absint($_POST['post_id']) : $post_id;
+			$post_id   = ( isset($_POST['post_id']) && !empty($_POST['post_id']) ) ? absint($_POST['post_id']) : $post_id;
 			$post_type = ( isset($_POST['campaign_posttype']) && !empty($_POST['campaign_posttype']) ) ? sanitize_text_field($_POST['campaign_posttype']) : $post_type;
 		}
 
 		public static function wpematico_add_to_quick_edit_custom_box($column_name, $post_type) {
-
-			$post = get_default_post_to_edit($post_type);
+			
+			if($post_type != 'wpematico') return;
+			
+			$post			  = get_default_post_to_edit($post_type);
 			$post_type_object = get_post_type_object('post');
 
-			$taxonomy_names = get_object_taxonomies('post');
+			$taxonomy_names			 = get_object_taxonomies('post');
 			$hierarchical_taxonomies = array();
-			$flat_taxonomies = array();
+			$flat_taxonomies		 = array();
 			foreach ($taxonomy_names as $taxonomy_name) {
 				$taxonomy = get_taxonomy($taxonomy_name);
 				if (!$taxonomy->show_ui)
@@ -881,7 +938,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 				if ($taxonomy->hierarchical)
 					$hierarchical_taxonomies[] = $taxonomy;
 				else
-					$flat_taxonomies[] = $taxonomy;
+					$flat_taxonomies[]		   = $taxonomy;
 			}
 
 			switch ($post_type) {
@@ -922,8 +979,8 @@ if (!class_exists('WPeMatico_Campaigns')) :
 												<select class="campaign_commentstatus" name="campaign_commentstatus">
 													<?php
 													$options = array(
-														'open' => __('Open', 'wpematico'),
-														'closed' => __('Closed', 'wpematico'),
+														'open'			  => __('Open', 'wpematico'),
+														'closed'		  => __('Closed', 'wpematico'),
 														'registered_only' => __('Registered only', 'wpematico')
 													);
 													foreach ($options as $key => $value) {
@@ -955,7 +1012,8 @@ if (!class_exists('WPeMatico_Campaigns')) :
 
 							<?php if (!class_exists('WPeMaticoPRO')) : ?>					
 								<?php if (count($hierarchical_taxonomies)) : ?>					
-									<fieldset class="inline-edit-col-center inline-edit-categories"><div class="inline-edit-col">
+									<fieldset class="inline-edit-col-center inline-edit-categories">
+										<div class="inline-edit-col">
 											<?php foreach ($hierarchical_taxonomies as $taxonomy) : ?>
 
 												<span class="title inline-edit-categories-label"><?php echo esc_html($taxonomy->labels->name) ?></span>
@@ -964,16 +1022,14 @@ if (!class_exists('WPeMatico_Campaigns')) :
 													<?php wp_terms_checklist(null, array('taxonomy' => $taxonomy->name)) ?>
 												</ul>
 
-											<?php endforeach; //$hierarchical_taxonomies as $taxonomy     ?>
+											<?php endforeach; //$hierarchical_taxonomies as $taxonomy      ?>
 										</div>
-
 									</fieldset>
 								<?php endif; // count( $hierarchical_taxonomies ) && !$bulk   ?>
+							<?php endif; // !class_exists('WPeMaticoPRO')      ?>
 
-							<?php endif; // !class_exists('WPeMaticoPRO')     ?>
-
-							<?php if (count($flat_taxonomies)) : ?>
-								<fieldset class="inline-edit-col-right">
+							<fieldset class="inline-edit-col-right">
+								<?php if (count($flat_taxonomies)) : ?>
 									<div class="inline-edit-col">
 										<?php foreach ($flat_taxonomies as $taxonomy) : ?>
 											<?php if (current_user_can($taxonomy->cap->assign_terms)) : ?>
@@ -983,89 +1039,91 @@ if (!class_exists('WPeMatico_Campaigns')) :
 												</label>
 											<?php endif; ?>
 										<?php endforeach; //$flat_taxonomies as $taxonomy    ?>
+									</div>
+								<?php endif; // count( $flat_taxonomies ) && !$bulk      ?>
 
-									<?php endif; // count( $flat_taxonomies ) && !$bulk     ?>
+								<div class="inline-edit-radiosbox">
+									<label>
+										<span class="title"><?php _e('Post type', 'wpematico'); ?></span>
+										<br/>
+										<span class="input-text"> 
+											<?php
+											$args		= array(
+												'public' => true
+											);
+											$output		= 'names'; // names or objects, note names is the default
+											$operator	= 'and'; // 'and' or 'or'
+											$post_types = get_post_types($args, $output, $operator);
+											foreach ($post_types as $posttype) {
+												if ($posttype == 'wpematico')
+													continue;
+												echo '<label><input type="radio" name="campaign_customposttype" value="' . $posttype . '" id="customtype_' . $posttype . '" /> ' . $posttype . '</label>';
+											}
+											?>
+										</span>
+									</label>
+								</div>
+								<div class="inline-edit-radiosbox">
+									<label>
+										<span class="title"><?php _e('Status', 'wpematico'); ?></span>
+										<br/>
+										<span class="input-text">
+											<?php
+											$status_domain = '';
+											$statuses	   = WPeMatico_functions::getAllStatuses();
+											foreach ($statuses as $key => $status) {
+												if ($status_domain != $status->label_count['domain']) {
+													$status_domain = $status->label_count['domain'];
+													echo "<b>$status_domain</b><br />";
+													//echo "<option disabled='disabled' value='' /> $status_domain</option>";
+												}
+												$status_name  = $status->name;
+												$status_label = $status->label;
+												/**
+												 * TODO: Allow Scheduled status with datime in the future by hours 
+												 */
+												if (in_array($status_name, array('future', '')))
+													continue;
 
-									<div class="inline-edit-radiosbox">
+												echo "<label><input type='radio' name='campaign_posttype' value='$status_name' /> $status_label</label>";
+												//echo "<option " . selected($status_name, $campaign_posttype, false) . " value='$status_name' /> $status_label</option>";
+											}
+											/* 	<label><input type="radio" name="campaign_posttype" value="publish" /> <?php _e('Published'); ?></label>
+											  <label><input type="radio" name="campaign_posttype" value="private" /> <?php _e('Private'); ?></label>
+											  <label><input type="radio" name="campaign_posttype" value="pending" /> <?php _e('Pending'); ?></label>
+											  <label><input type="radio" name="campaign_posttype" value="draft" /> <?php _e('Draft'); ?></label>
+											 */
+											?>
+										</span>
+									</label>
+								</div>
+								<?php
+								if (current_theme_supports('post-formats')) :
+									$post_formats = get_theme_support('post-formats');
+									?>
+									<div class="inline-edit-radiosbox qedscroll">
 										<label>
-											<span class="title"><?php _e('Post type', 'wpematico'); ?></span>
+											<span class="title" style="width: 100%;"><?php _e('Post Format', 'wpematico'); ?></span>
 											<br/>
 											<span class="input-text"> <?php
-												$args = array(
-													'public' => true
-												);
-												$output = 'names'; // names or objects, note names is the default
-												$operator = 'and'; // 'and' or 'or'
-												$post_types = get_post_types($args, $output, $operator);
-												foreach ($post_types as $posttype) {
-													if ($posttype == 'wpematico')
-														continue;
-													echo '<label><input type="radio" name="campaign_customposttype" value="' . $posttype . '" id="customtype_' . $posttype . '" /> ' . $posttype . '</label>';
-												}
-												?>
+												if (is_array($post_formats[0])) :
+													global $post, $campaign_data;
+													$campaign_post_format = (!isset($campaign_post_format) || empty($campaign_post_format) ) ? '0' : $campaign_data['campaign_post_format'];
+													?>
+													<div id="post-formats-select">
+														<label><input type="radio" name="campaign_post_format" class="post-format" id="post-format-0" value="0" /> <?php echo get_post_format_string('standard'); ?></label>
+														<?php foreach ($post_formats[0] as $format) : ?>
+															<label><input type="radio" name="campaign_post_format" class="post-format" id="post-format-<?php echo esc_attr($format); ?>" value="<?php echo esc_attr($format); ?>" /> <?php echo esc_html(get_post_format_string($format)); ?></label>
+														<?php endforeach; ?>
+													</div>
+												<?php endif; ?>
 											</span>
 										</label>
 									</div>
-									<div class="inline-edit-radiosbox">
-										<label>
-											<span class="title"><?php _e('Status', 'wpematico'); ?></span>
-											<br/>
-											<span class="input-text">
-												<?php
-												$status_domain = '';
-												$statuses = WPeMatico_functions::getAllStatuses();
-												foreach ($statuses as $key => $status) {
-													if ($status_domain != $status->label_count['domain']) {
-														$status_domain = $status->label_count['domain'];
-														echo "<b>$status_domain</b><br />";
-														//echo "<option disabled='disabled' value='' /> $status_domain</option>";
-													}
-													$status_name = $status->name;
-													$status_label = $status->label;
-													/**
-													 * TODO: Allow Scheduled status with datime in the future by hours 
-													 */
-													if (in_array($status_name, array('future', '')))
-														continue;
+								<?php endif; ?>
 
-													echo "<label><input type='radio' name='campaign_posttype' value='$status_name' /> $status_label</label>";
-													//echo "<option " . selected($status_name, $campaign_posttype, false) . " value='$status_name' /> $status_label</option>";
-												}
-												/* 											<label><input type="radio" name="campaign_posttype" value="publish" /> <?php _e('Published'); ?></label>
-												  <label><input type="radio" name="campaign_posttype" value="private" /> <?php _e('Private'); ?></label>
-												  <label><input type="radio" name="campaign_posttype" value="pending" /> <?php _e('Pending'); ?></label>
-												  <label><input type="radio" name="campaign_posttype" value="draft" /> <?php _e('Draft'); ?></label>
-												 */
-												?>
-											</span>
-										</label>
-									</div>
-									<?php
-									if (current_theme_supports('post-formats')) :
-										$post_formats = get_theme_support('post-formats');
-										?>
-										<div class="inline-edit-radiosbox qedscroll">
-											<label>
-												<span class="title" style="width: 100%;"><?php _e('Post Format', 'wpematico'); ?></span>
-												<br/>
-												<span class="input-text"> <?php
-													if (is_array($post_formats[0])) :
-														global $post, $campaign_data;
-														$campaign_post_format = (!isset($campaign_post_format) || empty($campaign_post_format) ) ? '0' : $campaign_data['campaign_post_format'];
-														?>
-														<div id="post-formats-select">
-															<label><input type="radio" name="campaign_post_format" class="post-format" id="post-format-0" value="0" /> <?php echo get_post_format_string('standard'); ?></label>
-															<?php foreach ($post_formats[0] as $format) : ?>
-																<label><input type="radio" name="campaign_post_format" class="post-format" id="post-format-<?php echo esc_attr($format); ?>" value="<?php echo esc_attr($format); ?>" /> <?php echo esc_html(get_post_format_string($format)); ?></label>
-																<?php endforeach; ?>
-														</div>
-													<?php endif; ?>
-												</span>
-											</label>
-										</div>
-									<?php endif; ?>
-								</div>
-							</fieldset><?php
+							</fieldset>
+							<?php
 							break;
 
 						case 'title': // No entra en title		
@@ -1079,7 +1137,8 @@ if (!class_exists('WPeMatico_Campaigns')) :
 							  </label>
 							  </div>
 							  </fieldset><?php
-							 */ break;
+							 */
+							break;
 					}
 					break;  //		case 'wpematico'
 			}
@@ -1087,7 +1146,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 
 		static function save_quick_edit_post($post_id) {
 			//wp_die('save_quick_edit_post'.print_r($_POST,1));
-			$slug = 'wpematico';
+			$slug  = 'wpematico';
 			if (!isset($_POST['post_type']) || ( $slug !== $_POST['post_type'] ))
 				return $post_id;
 			if (!current_user_can('edit_post', $post_id))
@@ -1100,22 +1159,22 @@ if (!class_exists('WPeMatico_Campaigns')) :
 
 			$nivelerror = error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
-			$campaign = WPeMatico :: get_campaign($post_id);
-			$posdata = $_POST;
+			$campaign							 = WPeMatico::get_campaign($post_id);
+			$posdata							 = $_POST;
 			// Fields in quick edit form
-			$campaign['campaign_max'] = (!isset($posdata['campaign_max']) ) ? 0 : absint($posdata['campaign_max']);
-			$campaign['campaign_author'] = (!isset($posdata['campaign_author']) ) ? 0 : absint($posdata['campaign_author']);
-			$campaign['campaign_commentstatus'] = (!isset($posdata['campaign_commentstatus']) ) ? 'closed' : sanitize_text_field($posdata['campaign_commentstatus']);
+			$campaign['campaign_max']			 = (!isset($posdata['campaign_max']) ) ? 0 : absint($posdata['campaign_max']);
+			$campaign['campaign_author']		 = (!isset($posdata['campaign_author']) ) ? 0 : absint($posdata['campaign_author']);
+			$campaign['campaign_commentstatus']	 = (!isset($posdata['campaign_commentstatus']) ) ? 'closed' : sanitize_text_field($posdata['campaign_commentstatus']);
 			$campaign['campaign_customposttype'] = (!isset($posdata['campaign_customposttype']) ) ? 'post' : sanitize_text_field($posdata['campaign_customposttype']);
-			$campaign['campaign_posttype'] = (!isset($posdata['campaign_posttype']) ) ? 'publish' : sanitize_text_field($posdata['campaign_posttype']);
-			$campaign['campaign_tags'] = (!isset($posdata['campaign_tags']) ) ? '' : sanitize_text_field($posdata['campaign_tags']);
+			$campaign['campaign_posttype']		 = (!isset($posdata['campaign_posttype']) ) ? 'publish' : sanitize_text_field($posdata['campaign_posttype']);
+			$campaign['campaign_tags']			 = (!isset($posdata['campaign_tags']) ) ? '' : sanitize_text_field($posdata['campaign_tags']);
 
 			//parse disabled checkfields that dont send any data
 			$campaign['campaign_feed_order_date'] = (!isset($posdata['campaign_feed_order_date']) || empty($posdata['campaign_feed_order_date'])) ? false : ( ($posdata['campaign_feed_order_date'] == 1) ? true : false );
-			$campaign['campaign_feeddate'] = (!isset($posdata['campaign_feeddate']) || empty($posdata['campaign_feeddate'])) ? false : ( ($posdata['campaign_feeddate'] == 1) ? true : false );
-			$campaign['campaign_allowpings'] = (!isset($posdata['campaign_allowpings']) || empty($posdata['campaign_allowpings'])) ? false : ( ($posdata['campaign_allowpings'] == 1) ? true : false );
-			$campaign['campaign_linktosource'] = (!isset($posdata['campaign_linktosource']) || empty($posdata['campaign_linktosource'])) ? false : ( ($posdata['campaign_linktosource'] == 1) ? true : false );
-			$campaign['campaign_strip_links'] = (!isset($posdata['campaign_strip_links']) || empty($posdata['campaign_strip_links'])) ? false : ( ($posdata['campaign_strip_links'] == 1) ? true : false );
+			$campaign['campaign_feeddate']		  = (!isset($posdata['campaign_feeddate']) || empty($posdata['campaign_feeddate'])) ? false : ( ($posdata['campaign_feeddate'] == 1) ? true : false );
+			$campaign['campaign_allowpings']	  = (!isset($posdata['campaign_allowpings']) || empty($posdata['campaign_allowpings'])) ? false : ( ($posdata['campaign_allowpings'] == 1) ? true : false );
+			$campaign['campaign_linktosource']	  = (!isset($posdata['campaign_linktosource']) || empty($posdata['campaign_linktosource'])) ? false : ( ($posdata['campaign_linktosource'] == 1) ? true : false );
+			$campaign['campaign_strip_links']	  = (!isset($posdata['campaign_strip_links']) || empty($posdata['campaign_strip_links'])) ? false : ( ($posdata['campaign_strip_links'] == 1) ? true : false );
 
 			// parse checked post categories
 			$campaign['post_category'] = array();
@@ -1131,7 +1190,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 
 			error_reporting($nivelerror);
 
-			WPeMatico :: update_campaign($post_id, $campaign);
+			WPeMatico::update_campaign($post_id, $campaign);
 
 			return $post_id;
 		}
@@ -1157,11 +1216,11 @@ if (!class_exists('WPeMatico_Campaigns')) :
 //				$arrayData['campaign_max'] = (!isset($_POST['campaign_max']) ) ? 0 : absint($_POST['campaign_max']);
 //				$arrayData['campaign_author'] = (!isset($_POST['campaign_author']) ) ? 0 : absint($_POST['campaign_author']);
 
-				$arrayData['campaign_feeddate'] = (!isset($_POST['campaign_feeddate']) || empty($_POST['campaign_feeddate'])) ? false : ( ($_POST['campaign_feeddate'] == 1) ? true : false );
+				$arrayData['campaign_feeddate']		 = (!isset($_POST['campaign_feeddate']) || empty($_POST['campaign_feeddate'])) ? false : ( ($_POST['campaign_feeddate'] == 1) ? true : false );
 				$arrayData['campaign_commentstatus'] = (!isset($_POST['campaign_commentstatus']) ) ? 'closed' : sanitize_text_field($_POST['campaign_commentstatus']);
-				$arrayData['campaign_allowpings'] = (!isset($_POST['campaign_allowpings']) || empty($_POST['campaign_allowpings'])) ? false : ( ($_POST['campaign_allowpings'] == 1) ? true : false );
-				$arrayData['campaign_linktosource'] = (!isset($_POST['campaign_linktosource']) || empty($_POST['campaign_linktosource'])) ? false : ( ($_POST['campaign_linktosource'] == 1) ? true : false );
-				$arrayData['campaign_strip_links'] = (!isset($_POST['campaign_strip_links']) || empty($_POST['campaign_strip_links'])) ? false : ( ($_POST['campaign_strip_links'] == 1) ? true : false );
+				$arrayData['campaign_allowpings']	 = (!isset($_POST['campaign_allowpings']) || empty($_POST['campaign_allowpings'])) ? false : ( ($_POST['campaign_allowpings'] == 1) ? true : false );
+				$arrayData['campaign_linktosource']	 = (!isset($_POST['campaign_linktosource']) || empty($_POST['campaign_linktosource'])) ? false : ( ($_POST['campaign_linktosource'] == 1) ? true : false );
+				$arrayData['campaign_strip_links']	 = (!isset($_POST['campaign_strip_links']) || empty($_POST['campaign_strip_links'])) ? false : ( ($_POST['campaign_strip_links'] == 1) ? true : false );
 
 				// taxonomies
 				$arrayData['post_category'] = array();
@@ -1173,10 +1232,10 @@ if (!class_exists('WPeMatico_Campaigns')) :
 
 				// update for each post ID
 				foreach ($post_ids as $post_id) {
-					$post_id = absint($post_id);
-					$campaign = WPeMatico :: get_campaign($post_id);
-					$campaign['campaign_max'] = (!isset($_POST['campaign_max']) || $_POST['campaign_max']==0 ) ? $campaign['campaign_max'] : absint($_POST['campaign_max']);
-					$campaign['campaign_author'] = (!isset($_POST['campaign_author']) || $_POST['campaign_author']==0 ) ? $campaign['campaign_author'] : absint($_POST['campaign_author']);
+					$post_id					 = absint($post_id);
+					$campaign					 = WPeMatico::get_campaign($post_id);
+					$campaign['campaign_max']	 = (!isset($_POST['campaign_max']) || $_POST['campaign_max'] == 0 ) ? $campaign['campaign_max'] : absint($_POST['campaign_max']);
+					$campaign['campaign_author'] = (!isset($_POST['campaign_author']) || $_POST['campaign_author'] == 0 ) ? $campaign['campaign_author'] : absint($_POST['campaign_author']);
 					foreach ($arrayData as $key => $dataEntry) {
 						$campaign[$key] = $dataEntry;
 					}
@@ -1186,11 +1245,10 @@ if (!class_exists('WPeMatico_Campaigns')) :
 						$campaign = apply_filters('wpematico_presave_campaign', $campaign);
 
 					// Grabo la campaña
-					WPeMatico :: update_campaign($post_id, $campaign);
+					WPeMatico::update_campaign($post_id, $campaign);
 				}
 			}
 		}
-
 	}
 
 	endif;
