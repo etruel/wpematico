@@ -681,7 +681,7 @@ if (!class_exists('WPeMatico_functions')) {
 
 		/** add_wp_notice
 		 * 
-		 * @param type mixed array/string  $new_notice 
+		 * @param  mixed $new_notice 
 		 * 	optional   ['user_ID'] to shows the notice default = currentuser
 		 * 	optional   ['error'] true or false to define style. Default = false
 		 * 	optional   ['is-dismissible'] true or false to hideable. Default = true
