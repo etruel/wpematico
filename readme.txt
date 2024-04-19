@@ -303,3 +303,5 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 Major Release. Upgrade functions will be executed to improve compatibilities.
+
+Bump to WP 6.5 & minor fixes.
