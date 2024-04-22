@@ -1641,7 +1641,7 @@ if (!class_exists('WPeMatico_functions')) {
 			$cfg = get_option(WPeMatico :: OPTION_KEY);
 			$cfg = apply_filters('wpematico_check_options', $cfg);
 			$export_settings[WPeMatico :: OPTION_KEY] = $cfg;
-			$export_settings = apply_filters('wpematico_check_options_export', $export_settings);
+			$export_settings = apply_filters('wpematico_export_options', $export_settings);
 			
 			$settings_data_json = json_encode($export_settings);
 			$settings_data_json = base64_encode($settings_data_json);
@@ -1667,6 +1667,8 @@ if (!class_exists('WPeMatico_functions')) {
 				$settings = base64_decode($settings);
 				$settings = json_decode($settings, true);
 
+				$settings[Wpematico::OPTION_KEY] = apply_filters('wpematico_check_options', $settings[Wpematico::OPTION_KEY]);
+				
 				foreach($settings as $settingKey => $value){
 					update_option($settingKey, $value);
 				}
