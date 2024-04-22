@@ -91,8 +91,9 @@ if (!class_exists('WPeMatico_Tools')) :
 		public static function tools_form()
 		{
 			global $cfg, $current_screen, $helptip;
-			
-			if(isset($_GET['section']) && $_GET['section'] == 'tools'):
+
+			if( isset($_GET['page']) && $_GET['page'] == 'wpematico_tools'):
+				if(!(isset($_GET['section']) && $_GET['section'] == 'feed_viewer')):
 		?>
 
 			<div class="wrap">
@@ -149,6 +150,7 @@ if (!class_exists('WPeMatico_Tools')) :
 			</div><!-- .wrap -->
 <?php
 	endif;
+endif;
 		}
 
 		public static function tools_help()
