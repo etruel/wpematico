@@ -91,7 +91,10 @@ if (!class_exists('WPeMatico_Tools')) :
 		public static function tools_form()
 		{
 			global $cfg, $current_screen, $helptip;
+			
+			if(isset($_GET['section']) && $_GET['section'] == 'tools'):
 		?>
+
 			<div class="wrap">
 				<?php
 				$nonce = wp_create_nonce('wpematico-tools');
@@ -145,6 +148,7 @@ if (!class_exists('WPeMatico_Tools')) :
 				?>
 			</div><!-- .wrap -->
 <?php
+	endif;
 		}
 
 		public static function tools_help()
