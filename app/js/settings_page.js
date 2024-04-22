@@ -4,7 +4,7 @@ jQuery(document).ready(function ($) {
         var data = {
             'action': 'process_button_click',
             'value': true,
-			'nonce': ajax_object.nonce
+			'nonce': wpematico_object.nonce
         };
 		jQuery.post(ajaxurl, data, function (response) {
             if (response.success) {

@@ -315,7 +315,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
             // Get the source Permalink trying to redirect if is set.
             $permalink = $this->getReadUrl($permalink, $this->campaign);
             $this->current_item['permalink'] = $permalink;
-            $this->currenthash[$feed] = md5($permalink); // the hash of the current item feed 
+            $this->currenthash[$this->feed_hash_key('currenthash', $feed)] = md5($permalink); // the hash of the current item feed 
             $suma = $this->processItem($simplepie, $item, $feed);
 
             $lasthashvar = '_lasthash_' . sanitize_file_name($feed);

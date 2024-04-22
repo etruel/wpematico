@@ -36,20 +36,19 @@ if (!class_exists('WPeMatico_Tools')) :
 			// Enqueue jQuery UI and autocomplete
 			wp_enqueue_script('jquery-ui-core');
 			wp_enqueue_script('jquery-ui-autocomplete');
+			// wp_enqueue_script('wpematico_tools_page', WPeMatico::$uri . 'app/js/tools_page.js', array('jquery', 'postbox'), WPEMATICO_VERSION, true);
+			// wp_localize_script('wpematico_tools_page', 'ajax_object', array(
+			// 	'nonce'    => wp_create_nonce('wpematico-tools-page-nonce')
+			// ));
+			// //			$allowedmimes = array_diff(explode(',', WPeMatico::get_images_allowed_mimes()), explode(',', $cfg['images_allowed_ext']));
+			// $wpematico_object = array(
+			// 	'text_invalid_email' => __('Invalid email.', 'wpematico'),
+			// 	//				'current_img_mimes'	 => $allowedmimes,
+			// );
+			// wp_localize_script('wpematico_tools_page', 'wpematico_object', $wpematico_object);
 
-			wp_enqueue_script('wpematico_tools_page', WPeMatico::$uri . 'app/js/tools_page.js', array('jquery', 'postbox'), WPEMATICO_VERSION, true);
-			wp_localize_script('wpematico_tools_page', 'ajax_object', array(
-				'nonce'    => wp_create_nonce('wpematico-tools-page-nonce')
-			));
-			//			$allowedmimes = array_diff(explode(',', WPeMatico::get_images_allowed_mimes()), explode(',', $cfg['images_allowed_ext']));
-			$wpematico_object = array(
-				'text_invalid_email' => __('Invalid email.', 'wpematico'),
-				//				'current_img_mimes'	 => $allowedmimes,
-			);
-			wp_localize_script('wpematico_tools_page', 'wpematico_object', $wpematico_object);
-
-			/* Add screen option: user can choose between 1 or 2 columns (default 2) */
-			//add_screen_option('layout_columns', array('max' => 2, 'default' => 2) );
+			// /* Add screen option: user can choose between 1 or 2 columns (default 2) */
+			// //add_screen_option('layout_columns', array('max' => 2, 'default' => 2) );
 		}
 
 		public static function wpematico_tools_head()

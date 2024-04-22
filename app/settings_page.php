@@ -64,13 +64,11 @@ if(!class_exists('WPeMatico_Settings')) :
 			wp_enqueue_script('jquery-ui-autocomplete');
 
 			wp_enqueue_script('wpematico_settings_page', WPeMatico::$uri . 'app/js/settings_page.js', array('jquery', 'postbox'), WPEMATICO_VERSION, true);
-			wp_localize_script('wpematico_settings_page', 'ajax_object', array(
-				'nonce'    => wp_create_nonce('wpematico-settings-page-nonce')
-			));
-//			$allowedmimes = array_diff(explode(',', WPeMatico::get_images_allowed_mimes()), explode(',', $cfg['images_allowed_ext']));
+			//			$allowedmimes = array_diff(explode(',', WPeMatico::get_images_allowed_mimes()), explode(',', $cfg['images_allowed_ext']));
 			$wpematico_object = array(
 				'text_invalid_email' => __('Invalid email.', 'wpematico'),
 //				'current_img_mimes'	 => $allowedmimes,
+				'nonce'    => wp_create_nonce('wpematico-settings-page-nonce')
 			);
 			wp_localize_script('wpematico_settings_page', 'wpematico_object', $wpematico_object);
 
