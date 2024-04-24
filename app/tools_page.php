@@ -85,72 +85,75 @@ if (!class_exists('WPeMatico_Tools')) :
 				}
 			</style>
 
-		<?php
+			<?php
 		}
 
 		public static function tools_form()
 		{
 			global $cfg, $current_screen, $helptip;
 
-			if( isset($_GET['page']) && $_GET['page'] == 'wpematico_tools'):
-				if(!(isset($_GET['section']) && $_GET['section'] == 'feed_viewer')):
-		?>
+			if (isset($_GET['page']) && $_GET['page'] == 'wpematico_tools') :
+				if (!(isset($_GET['section']) && $_GET['section'] == 'feed_viewer')) :
+			?>
 
-			<div class="wrap">
-				<?php
-				$nonce = wp_create_nonce('wpematico-tools');
-				$action_export = "wpematico_export_settings";
-				$action = '?action=' . $action_export . '&_wpnonce=' . $nonce;
-				$linkExport = admin_url("admin.php" . $action);
+					<div class="wrap">
+						<?php
+						$nonce = wp_create_nonce('wpematico-tools');
+						$action_export = "wpematico_export_settings";
+						$action = '?action=' . $action_export . '&_wpnonce=' . $nonce;
+						$linkExport = admin_url("admin.php" . $action);
 
-				$action_import = "wpematico_import_settings";
-				$action = '?action=' . $action_import . '&_wpnonce=' . $nonce;
-				$linkImport = admin_url("admin.php" . $action);
+						$action_import = "wpematico_import_settings";
+						$action = '?action=' . $action_import . '&_wpnonce=' . $nonce;
+						$linkImport = admin_url("admin.php" . $action);
 
-				$button_export = '<a href="' . $linkExport . '" class="button" title="' . esc_attr(__("Export and download settings", 'wpematico')) . '">' . __('Export Settings', 'wpematico') . '</a>';
-				?>
-				<div class="postbox">
-					<h3><span><?php echo __('Export Settings', 'wpematico') ?></span></h3>
-					<div class="inside">
-						<p><?php echo __('Export the Wpematico settings for this site as a .json file. This allows you to easily import the configuration into another site.', 'wpematico')  ?></p>
-						<p>
-							<?php echo $button_export; ?>
-						</p>
-					</div><!-- .inside -->
-				</div>
-				<form action="<?php echo $linkImport; ?>" id="importsettings" method='post' ENCTYPE='multipart/form-data'>
-					<?php wp_nonce_field('import-settings', 'wpemimport_nonce'); ?>
-					<div class="postbox">
-						<h3><span><?php echo __('Import Settings', 'wpematico') ?></span></h3>
-						<div class="inside">
-							<p><?php echo __('Import the Wpematico settings for this site.', 'wpematico')  ?></p>
-							<p>
-								<input type="hidden" name="wpematico-action" value="import_settings" />
-								<input style="display:none;" type="file" class="button" name='txtsettings' id='txtsettings'>
-								<a id="importcpg" class="button" href="Javascript:void(0);" title="<?php echo esc_attr(__("Upload and import a settings", 'wpematico')) ?>"><?php echo __('Import settings', 'wpematico') ?></a>
-								<script>
-									(function($) {
-										$('#importcpg').click(function() {
-											$('#txtsettings').click();
-										});
-										$('#txtsettings').change(function() {
-											$('#importsettings').submit();
-										});
-									})(jQuery);
-								</script>
-							</p>
-						</div><!-- .inside -->
-					</div>
+						$button_export = '<a href="' . $linkExport . '" class="button" title="' . esc_attr(__("Export and download settings", 'wpematico')) . '">' . __('Export Settings', 'wpematico') . '</a>';
+						?>
+						<div class="postbox">
+							<h3><span><?php echo __('Export Settings', 'wpematico') ?></span></h3>
+							<div class="inside">
+								<p><?php echo __('Export the Wpematico settings for this site as a .json file. This allows you to easily import the configuration into another site.', 'wpematico')  ?></p>
+								<p>
+									<?php echo $button_export; ?>
+								</p>
+							</div><!-- .inside -->
+						</div>
+						<form action="<?php echo $linkImport; ?>" id="importsettings" method='post' ENCTYPE='multipart/form-data'>
+							<?php wp_nonce_field('import-settings', 'wpemimport_nonce'); ?>
+							<div class="postbox">
+								<h3><span><?php echo __('Import Settings', 'wpematico') ?></span></h3>
+								<div class="inside">
+									<p><?php echo __('Import the Wpematico settings for this site.', 'wpematico')  ?></p>
+									<p>
+										<input type="hidden" name="wpematico-action" value="import_settings" />
+										<input style="display:none;" type="file" class="button" name='txtsettings' id='txtsettings'>
+										<a id="importcpg" class="button" href="Javascript:void(0);" title="<?php echo esc_attr(__("Upload and import a settings", 'wpematico')) ?>"><?php echo __('Import settings', 'wpematico') ?></a>
+										<script>
+											(function($) {
+												$('#importcpg').click(function() {
+													$('#txtsettings').click();
+												});
+												var message = "<?php echo __('The import will overwrite the current configuration of WPeMatico (and its addons), do you agree?', 'wpematico'); ?>"; 
+												$('#txtsettings').change(function() {
+													if (confirm(message)) {
+														$('#importsettings').submit();
+													}
+												});
+											})(jQuery);
+										</script>
+									</p>
+								</div><!-- .inside -->
+							</div>
 
-				</form>
+						</form>
 
-				<?php
+						<?php
 
-				?>
-			</div><!-- .wrap -->
+						?>
+					</div><!-- .wrap -->
 <?php
-	endif;
-endif;
+				endif;
+			endif;
 		}
 
 		public static function tools_help()
