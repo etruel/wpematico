@@ -1280,12 +1280,15 @@ class wpematico_campaign_fetch_functions {
 			
 			// Determine whether to skip the item
 			if ($only_shorts_enabled) {
-				trigger_error(__('Skipping standard videos...', 'wpematico'), E_USER_NOTICE);
 				// No skip if the URL exists (shorts video)
+				if(!$url_exists)
+					trigger_error(__('Skipping standard videos...', 'wpematico'), E_USER_NOTICE);
+
 				$skip = !$url_exists;
 			} elseif ($ignore_shorts_enabled) {
 				// Skip if the URL exists and ignoring shorts
-				trigger_error(__('Skipping Youtube Short...', 'wpematico'), E_USER_NOTICE);
+				if($url_exists)
+					trigger_error(__('Skipping Youtube Short...', 'wpematico'), E_USER_NOTICE);
 				$skip = $url_exists;
 			}
 		}
