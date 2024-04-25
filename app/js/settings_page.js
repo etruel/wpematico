@@ -34,6 +34,15 @@ jQuery(document).ready(function ($) {
 			jQuery('#nolinkimg').fadeOut();
 		}
 	});
+	
+	jQuery('#fifu').on("click", function () {
+		if (true == jQuery('#fifu').is(':checked')) {
+			jQuery('#fifu_extra_options').fadeIn();
+		} else {
+			jQuery('#fifu_extra_options').fadeOut();
+		}
+	});
+
 	jQuery('#audio_cache').on("click", function () {
 		if (true == jQuery('#audio_cache').is(':checked')) {
 			jQuery('#nolink_audio').fadeIn();

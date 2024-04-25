@@ -846,6 +846,52 @@ function wpe_others_events($) {
 		}
 	});
 
+	jQuery('#campaign_fifu').on("click", function () {
+		if (true == jQuery('#campaign_fifu').is(':checked')) {
+			jQuery('#fifu_campaign_extra_options').fadeIn();
+		} else {
+			jQuery('#fifu_campaign_extra_options').fadeOut();
+		}
+	});
+
+	$('.checkbox').change(function() {
+        // If campaign_youtube_only_shorts checkbox is checked
+        if ($('#campaign_youtube_only_shorts').is(':checked')) {
+            // Disable campaign_youtube_ign_shorts checkbox
+            $('#campaign_youtube_ign_shorts').prop('disabled', true);
+        } else {
+            // Enable campaign_youtube_ign_shorts checkbox
+            $('#campaign_youtube_ign_shorts').prop('disabled', false);
+        }
+        
+        // If campaign_youtube_ign_shorts checkbox is checked
+        if ($('#campaign_youtube_ign_shorts').is(':checked')) {
+            // Disable campaign_youtube_only_shorts checkbox
+            $('#campaign_youtube_only_shorts').prop('disabled', true);
+        } else {
+            // Enable campaign_youtube_only_shorts checkbox
+            $('#campaign_youtube_only_shorts').prop('disabled', false);
+        }
+    });
+
+	// If campaign_youtube_only_shorts checkbox is checked
+	if ($('#campaign_youtube_only_shorts').is(':checked')) {
+		// Disable campaign_youtube_ign_shorts checkbox
+		$('#campaign_youtube_ign_shorts').prop('disabled', true);
+	} else {
+		// Enable campaign_youtube_ign_shorts checkbox
+		$('#campaign_youtube_ign_shorts').prop('disabled', false);
+	}
+	
+	// If campaign_youtube_ign_shorts checkbox is checked
+	if ($('#campaign_youtube_ign_shorts').is(':checked')) {
+		// Disable campaign_youtube_only_shorts checkbox
+		$('#campaign_youtube_only_shorts').prop('disabled', true);
+	} else {
+		// Enable campaign_youtube_only_shorts checkbox
+		$('#campaign_youtube_only_shorts').prop('disabled', false);
+	}
+
 	jQuery('#campaign_no_setting_audio').on("click", function () {
 		if (true == jQuery('#campaign_no_setting_audio').is(':checked')) {
 			jQuery('#div_no_setting_audio').fadeIn();

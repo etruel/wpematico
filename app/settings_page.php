@@ -407,15 +407,6 @@ if(!class_exists('WPeMatico_Settings')) :
 											<p></p>
 											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['featuredimg'], true); ?> name="featuredimg" id="featuredimg" /><b>&nbsp;<label for="featuredimg"><?php _e('Set first image in content as Featured Image.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['featuredimg']; ?>"></span>
 											<br />
-											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['fifu'], (!$fifu_activated) ? ((!$cfg['fifu']) ? true : false ) : true ); ?> name="fifu" id="fifu"  <?php echo (!$fifu_activated ? 'disabled' : '') ?>/><b>&nbsp;<label for="fifu"><?php _e('Use Featured Image from URL.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['fifu'].' '. __('See more info in Help tab above.','wpematico'); ?>"></span>
-											<br />
-											<?php
-												if(!$fifu_activated){
-													echo '<small >';
-													echo  __('The', 'wpematico') . ' <a href="https://wordpress.org/plugins/featured-image-from-url/" rel="nofollow" target="_Blank">' . __('Featured Image from URL', 'wpematico') . '</a> ' . __('plugin needs to be installed and activated from the WordPress repository.','wpematico');
-													echo '</small><br />';
-												}
-												?>
 											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['rmfeaturedimg'], true); ?> name="rmfeaturedimg" id="rmfeaturedimg" /><b>&nbsp;<label for="rmfeaturedimg"><?php _e('Remove Featured Image from content.', 'wpematico'); ?></label></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['rmfeaturedimg']; ?>"></span>
 											<p></p>
 											<div id="custom_uploads" style="<?php if(!$cfg['imgcache'] && !$cfg['featuredimg']) echo 'display:none;'; ?>">
@@ -434,6 +425,20 @@ if(!class_exists('WPeMatico_Settings')) :
 													<?php _e('Recommended.', 'wpematico'); ?> <label class="description" id="images_allowed_ext-list" title="<?php _e('Click here to set recommended values.', 'wpematico') ?>" onclick="jQuery('#images_allowed_ext').val(jQuery(this).text());return false;"><?php echo "jpg,gif,png,tif,bmp,jpeg"; ?></label>
 												</p>
 												<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enablemimetypes'], true); ?> name="enablemimetypes" id="enablemimetypes" /><b>&nbsp;<label for="enablemimetypes"><?php _e('Enable add mime types.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablemimetypes']; ?>"></span>
+											</div>
+											<h3 class="subsection"><?php _e('Featured Image From URL', 'wpematico'); ?></h3>
+											<div id="fifu_options">
+												<p><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['fifu'], (!$fifu_activated) ? ((!$cfg['fifu']) ? true : false ) : true ); ?> name="fifu" id="fifu"  <?php echo (!$fifu_activated ? 'disabled' : '') ?>/><b>&nbsp;<label for="fifu"><?php _e('Use Featured Image from URL.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['fifu'].' '. __('See more info in Help tab above.','wpematico'); ?>"></span>
+												<br />
+												<?php
+													if(!$fifu_activated){
+														echo '<small >';
+														echo  __('The', 'wpematico') . ' <a href="https://wordpress.org/plugins/featured-image-from-url/" rel="nofollow" target="_Blank">' . __('Featured Image from URL', 'wpematico') . '</a> ' . __('plugin needs to be installed and activated from the WordPress repository.','wpematico');
+														echo '</small><br />';
+													}
+												?>
+												</p>
+												<div id="fifu_extra_options" style="padding-left: 20px;<?php if(!$cfg['fifu']) echo 'display:none;'; ?>""><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['fifu-video'], (!$fifu_activated) ? ((!$cfg['fifu-video']) ? true : false ) : true ); ?> name="fifu-video" id="fifu-video"/><b>&nbsp;<label for="fifu-video"><?php _e('Use video link as featured if available.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['fifu'].' '. __('See more info in Help tab above.','wpematico'); ?>"></span></div>
 											</div>
 											<?php do_action('wpematico_settings_images', $cfg); ?>
 										</div>

@@ -475,6 +475,7 @@ public static function template_box( $post ) {
 		$campaign_image_srcset					 = $campaign_data['campaign_image_srcset'];
 		$campaign_featuredimg					 = $campaign_data['campaign_featuredimg'];
 		$campaign_fifu							 = $campaign_data['campaign_fifu'];
+		$campaign_fifu_video					 = $campaign_data['campaign_fifu_video'];
 		$campaign_rmfeaturedimg					 = $campaign_data['campaign_rmfeaturedimg'];
 		$campaign_customupload					 = $campaign_data['campaign_customupload'];
 		$campaign_enable_featured_image_selector = $campaign_data['campaign_enable_featured_image_selector'];
@@ -487,6 +488,7 @@ public static function template_box( $post ) {
 			$campaign_image_srcset	 = $cfg['image_srcset'];
 			$campaign_featuredimg	 = $cfg['featuredimg'];
 			$campaign_fifu			 = $cfg['fifu'];
+			$campaign_fifu_video	 = $cfg['fifu-video'];
 			$campaign_rmfeaturedimg	 = $cfg['rmfeaturedimg'];
 			$campaign_customupload	 = $cfg['customupload'];
 		}
@@ -512,15 +514,6 @@ public static function template_box( $post ) {
 			<p></p>
 			<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_featuredimg, true); ?> name="campaign_featuredimg" id="campaign_featuredimg" /><b>&nbsp;<label for="campaign_featuredimg"><?php _e('Set first image in content as Featured Image.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['featuredimg']; ?>"></span>
 			<br />
-			<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_fifu, (!$fifu_activated) ? ((!$campaign_fifu) ? true : false ) : true ); ?> name="campaign_fifu" id="campaign_fifu" <?php echo (!$fifu_activated ? 'disabled' : '') ?>/><b>&nbsp;<label for="campaign_fifu"><?php _e('Use Featured Image from URL.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['fifu']; ?>"></span>
-			<br />
-			<?php
-				if(!$fifu_activated){
-					echo '<small>';
-					echo  __('The', 'wpematico') . ' <a href="https://wordpress.org/plugins/featured-image-from-url/" rel="nofollow" target="_Blank">' . __('Featured Image from URL', 'wpematico') . '</a> ' . __('plugin needs to be installed and activated from the WordPress repository.','wpematico');
-					echo '</small><br />';
-				}
-			?>
 			<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_enable_featured_image_selector,true); ?> name="campaign_enable_featured_image_selector" id="campaign_enable_featured_image_selector" /><b>&nbsp;<label for="campaign_enable_featured_image_selector"><?php _e('Enable featured image selector.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enable_featured_image_selector']; ?>"></span>
 				<div id="featured_img_selector_div" style="padding-left:20px; <?php if (!$campaign_enable_featured_image_selector) echo 'display:none;';?>">
 					<b><label for="featured_selector_index"><?php _e('Index to featured', 'wpematico' ); ?>:</label></b>
@@ -543,7 +536,24 @@ public static function template_box( $post ) {
 			<?php
 				do_action('wpematico_image_box_setting_after');
 			?>
+			<h3 class="subsection"><?php _e('Featured Image From URL', 'wpematico' ); ?></h3>
+			<div id="fifu_options_campaign">
+				<p><input class="checkbox" value="1" type="checkbox" <?php checked($campaign_fifu, (!$fifu_activated) ? ((!$campaign_fifu) ? true : false ) : true ); ?> name="campaign_fifu" id="campaign_fifu" <?php echo (!$fifu_activated ? 'disabled' : '') ?>/><b>&nbsp;<label for="campaign_fifu"><?php _e('Use Featured Image from URL.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['fifu']; ?>"></span>
+				<br />
+				<?php
+					if(!$fifu_activated){
+						echo '<small>';
+						echo  __('The', 'wpematico') . ' <a href="https://wordpress.org/plugins/featured-image-from-url/" rel="nofollow" target="_Blank">' . __('Featured Image from URL', 'wpematico') . '</a> ' . __('plugin needs to be installed and activated from the WordPress repository.','wpematico');
+						echo '</small><br />';
+					}
+				?>
+				</p>
+				<div id="fifu_campaign_extra_options" style="padding-left: 20px; <?php if (!$campaign_fifu) echo 'display:none;';?>"">
+					<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_fifu_video, (!$fifu_activated) ? ((!$campaign_fifu_video) ? true : false ) : true ); ?>  name="campaign_fifu_video" id="campaign_fifu_video" /><b>&nbsp;<label for="campaign_fifu_video"><?php _e('Use video link as featured if available.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['fifu']; ?>"></span>
+				</div>
+			</div>
 		</div>
+		<h3 class="subsection"><?php _e('Advanced Options', 'wpematico' ); ?></h3>
 		<?php
 		do_action('wpematico_image_box_out_setting');
 	}
@@ -1099,6 +1109,8 @@ public static function feeds_box( $post ) {
 		$campaign_youtube_ign_image = $campaign_data['campaign_youtube_ign_image'];
 		$campaign_youtube_image_only_featured = $campaign_data['campaign_youtube_image_only_featured'];
 		$campaign_youtube_ign_description = $campaign_data['campaign_youtube_ign_description'];
+		$campaign_youtube_only_shorts = $campaign_data['campaign_youtube_only_shorts'];;
+		$campaign_youtube_ign_shorts = $campaign_data['campaign_youtube_ign_shorts'];;
 		?><div class="ytpreview">
 			<h4 id="titlefeatured" style="display: <?php echo ($campaign_youtube_ign_image && !$campaign_youtube_image_only_featured)? 'none' : 'flex'; ?>;">Featured Image</h4>
 			<div class="featured-box" style="display: <?php echo ($campaign_youtube_ign_image && !$campaign_youtube_image_only_featured)? 'none' : 'flex'; ?>;">
@@ -1127,6 +1139,12 @@ public static function feeds_box( $post ) {
 				<label><?php echo __('Width:', 'wpematico'); ?> <input name="campaign_youtube_width" type="number" min="0" size="3" value="<?php echo $campaign_youtube_width; ?>" class="small-text" id="campaign_youtube_width"/></label><br />
 				<label><?php echo __('Height:', 'wpematico'); ?> <input name="campaign_youtube_height" type="number" min="0" size="3" value="<?php echo $campaign_youtube_height; ?>" class="small-text" id="campaign_youtube_height"/></label>
 			</div>
+			<p><strong><?php _e('Short videos options:', 'wpematico'); ?></strong></p>
+
+			<label><input class="checkbox" <?php checked($campaign_youtube_only_shorts, true); ?> type="checkbox" name="campaign_youtube_only_shorts" value="1" id="campaign_youtube_only_shorts"> <?php _e('Only get shorts videos', 'wpematico'); ?></label><br />
+
+			<label><input class="checkbox" <?php checked($campaign_youtube_ign_shorts, true); ?> type="checkbox" name="campaign_youtube_ign_shorts" value="1" id="campaign_youtube_ign_shorts"> <?php _e('Skip short videos', 'wpematico'); ?></label>
+
 			<p><strong><?php _e('Ignore:', 'wpematico'); ?></strong></p>
 			
 			<label><input class="checkbox" <?php checked($campaign_youtube_ign_image, true); ?> type="checkbox" name="campaign_youtube_ign_image" value="1" id="campaign_youtube_ign_image"> <?php _e('Image', 'wpematico'); ?></label><br />
@@ -1134,6 +1152,8 @@ public static function feeds_box( $post ) {
 				<label><input class="checkbox" <?php checked($campaign_youtube_image_only_featured, true); ?> type="checkbox" name="campaign_youtube_image_only_featured" value="1" id="campaign_youtube_image_only_featured"> <?php _e('Use only as featured image', 'wpematico'); ?></label><br />
 			</div>
 			<label><input class="checkbox" <?php checked($campaign_youtube_ign_description, true); ?> type="checkbox" name="campaign_youtube_ign_description" value="1" id="campaign_youtube_ign_description"> <?php _e('Hide description', 'wpematico'); ?></label><br />
+
+			
 		</div>
 		<?php
 	}

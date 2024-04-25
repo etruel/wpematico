@@ -205,6 +205,7 @@ if (!class_exists('WPeMatico_functions')) {
 			$options = array();
 			$options['imgcache'] = $settings['imgcache'];
 			$options['fifu'] = $settings['fifu'];
+			$options['fifu-video'] = $settings['fifu-video'];
 			$options['imgattach'] = $settings['imgattach'];
 			$options['gralnolinkimg'] = $settings['gralnolinkimg'];
 			$options['image_srcset'] = $settings['image_srcset'];
@@ -227,6 +228,7 @@ if (!class_exists('WPeMatico_functions')) {
 				$options['image_srcset'] = $campaign['campaign_image_srcset'];
 				$options['featuredimg'] = $campaign['campaign_featuredimg'];
 				$options['fifu'] = $campaign['campaign_fifu'];
+				$options['fifu-video'] = $campaign['campaign_fifu_video'];
 				$options['rmfeaturedimg'] = $campaign['campaign_rmfeaturedimg'];
 				$options['customupload'] = $campaign['campaign_customupload'];
 			}
@@ -890,6 +892,8 @@ if (!class_exists('WPeMatico_functions')) {
 			$campaigndata['campaign_featuredimg'] = (!isset($post_data['campaign_featuredimg']) || empty($post_data['campaign_featuredimg'])) ? false : ( ($post_data['campaign_featuredimg'] == 1) ? true : false );
 			$campaigndata['campaign_fifu'] = (!isset($post_data['campaign_fifu']) || empty($post_data['campaign_fifu'])) ? false : ( ($post_data['campaign_fifu'] == 1) ? true : false );
 
+			$campaigndata['campaign_fifu_video'] = (!isset($post_data['campaign_fifu_video']) || empty($post_data['campaign_fifu_video'])) ? false : ( ($post_data['campaign_fifu_video'] == 1) ? true : false );
+
 			$campaigndata['campaign_enable_featured_image_selector'] = (!isset($post_data['campaign_enable_featured_image_selector']) || empty($post_data['campaign_enable_featured_image_selector'])) ? false : ( ($post_data['campaign_enable_featured_image_selector'] == 1) ? true : false );
 			$campaigndata['campaign_featured_selector_index'] = (!isset($post_data['campaign_featured_selector_index']) || empty($post_data['campaign_featured_selector_index'])) ? '0' : (int) $post_data['campaign_featured_selector_index'];
 			$campaigndata['campaign_featured_selector_ifno'] = (!isset($post_data['campaign_featured_selector_ifno']) || empty($post_data['campaign_featured_selector_ifno'])) ? 'first' : sanitize_text_field($post_data['campaign_featured_selector_ifno']);
@@ -1017,6 +1021,10 @@ if (!class_exists('WPeMatico_functions')) {
 			$campaigndata['campaign_youtube_image_only_featured'] = (!isset($post_data['campaign_youtube_image_only_featured']) || empty($post_data['campaign_youtube_image_only_featured'])) ? false : ( ($post_data['campaign_youtube_image_only_featured'] == 1) ? true : false );
 
 			$campaigndata['campaign_youtube_ign_description'] = (!isset($post_data['campaign_youtube_ign_description']) || empty($post_data['campaign_youtube_ign_description'])) ? false : ( ($post_data['campaign_youtube_ign_description'] == 1) ? true : false );
+
+			$campaigndata['campaign_youtube_only_shorts'] = (!isset($post_data['campaign_youtube_only_shorts']) || empty($post_data['campaign_youtube_only_shorts'])) ? false : ( ($post_data['campaign_youtube_only_shorts'] == 1) ? true : false );
+
+			$campaigndata['campaign_youtube_ign_shorts'] = (!isset($post_data['campaign_youtube_ign_shorts']) || empty($post_data['campaign_youtube_ign_shorts'])) ? false : ( ($post_data['campaign_youtube_ign_shorts'] == 1) ? true : false );
 
 			$campaigndata['campaign_no_setting_duplicate'] = (!isset($post_data['campaign_no_setting_duplicate']) || empty($post_data['campaign_no_setting_duplicate'])) ? false : ( ($post_data['campaign_no_setting_duplicate'] == 1) ? true : false );
 			$campaigndata['campaign_allowduplicates'] = (!isset($post_data['campaign_allowduplicates']) || empty($post_data['campaign_allowduplicates'])) ? false : ( ($post_data['campaign_allowduplicates'] == 1) ? true : false );

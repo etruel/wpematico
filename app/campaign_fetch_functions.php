@@ -887,7 +887,7 @@ class wpematico_campaign_fetch_functions {
 	}
 
 	static function wpematico_get_yt_rss_tags($content, $campaign, $feed, $item) {
-		if (strpos($feed->feed_url, 'https://www.youtube.com/feeds/videos.xml') !== false) {
+		if (strpos($feed->feed_url, 'https://www.youtube.com/feeds/videos.xml') !== false) { 
 			$ytvideoId = $item->get_item_tags('http://www.youtube.com/xml/schemas/2015', 'videoId');
 			//iframe
 			if (!$campaign['campaign_youtube_embed'] && !$campaign['campaign_youtube_sizes']) {
@@ -1111,7 +1111,7 @@ class wpematico_campaign_fetch_functions {
 	function Get_Item_Videos($current_item, $campaign, $feed, $item, $options_videos) {
 		if ($options_videos['video_cache']) {
 			$current_item['videos'] = $this->parseVideos($current_item['content']);
-
+			
 			$current_item = apply_filters('wpematico_get_item_videos', $current_item, $campaign, $item, $options_videos);
 
 			//if( $this->cfg['nonstatic'] ) { 
@@ -1133,14 +1133,18 @@ class wpematico_campaign_fetch_functions {
 	 * @return  $videos 	array 	 Array of current videos on post content.
 	 * @since 1.7.0
 	 */
-	function parseVideos($text) {
+	function parseVideos($text, $wiframes = false) {
 		
 		$videos	 = array();
 		if(!empty($text)){
 			$dom	 = new DOMDocument();
 			@$dom->loadHTML($text);
 			$xpath	 = new DomXPath($dom);
-			$nodes	 = $xpath->query('//video | //video/source');
+			if(!$wiframes){
+				$nodes	 = $xpath->query('//video | //video/source');
+			}else{
+				$nodes	 = $xpath->query('//video | //video/source | //iframe');
+			}
 			foreach ($nodes as $node) {
 				$videos[] = $node->getAttribute('src');
 			}
@@ -1252,7 +1256,40 @@ class wpematico_campaign_fetch_functions {
 		return $current_item;
 	}
 
-// item videos
+	// item videos
+
+	public function wpematico_exclude_shorts($skip, $current_item, $campaign, $item){
+		// Extract YouTube video ID
+		$ytvideoId = $item->get_item_tags('http://www.youtube.com/xml/schemas/2015', 'videoId');
+	
+		if (!empty($ytvideoId)) {
+			$ytvideoId = $ytvideoId[0]['data'];
+			$url = "https://www.youtube.com/shorts/$ytvideoId";
+	
+			// Check if the campaign setting for only shorts is enabled
+			$only_shorts_enabled = !empty($campaign['campaign_youtube_only_shorts']);
+	
+			// Check if the campaign setting for ignoring shorts is enabled
+			$ignore_shorts_enabled = !empty($campaign['campaign_youtube_ign_shorts']);
+	
+			// Fetch headers
+			$headers = get_headers($url, 1);
+	
+			// Check if the URL exists (returns true)
+			$url_exists = strpos($headers[0], '200') !== false;
+			
+			// Determine whether to skip the item
+			if ($only_shorts_enabled) {
+				// No skip if the URL exists (shorts video)
+				$skip = !$url_exists;
+			} elseif ($ignore_shorts_enabled) {
+				// Skip if the URL exists and ignoring shorts
+				$skip = $url_exists;
+			}
+		}
+		// Default behavior: do not skip
+		return $skip;
+	}
 }
 
 // class

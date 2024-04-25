@@ -123,22 +123,23 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         //hook to add actions and filter on init fetching 
         //add_action('Wpematico_init_fetching', array(__CLASS__, 'my_wpematico_init_fetching') ); 
         add_filter('wpematico_custom_chrset', array('WPeMatico_functions', 'detect_encoding_from_headers'), 999, 1); // move all encoding functions to wpematico_campaign_fetch_functions
-        add_filter('wpematico_after_item_parsers', array('wpematico_campaign_fetch_functions', 'wpematico_strip_links_a'), 1, 4);
-        add_filter('wpematico_after_item_parsers', array('wpematico_campaign_fetch_functions', 'wpematico_strip_links'), 2, 4);
-        add_filter('wpematico_after_item_parsers', array('wpematico_campaign_fetch_functions', 'wpematico_template_parse'), 3, 4);
-        add_filter('wpematico_after_item_parsers', array('wpematico_campaign_fetch_functions', 'wpematico_campaign_rewrites'), 4, 4);
+        add_filter('wpematico_after_item_parsers', array($this, 'wpematico_strip_links_a'), 1, 4);
+        add_filter('wpematico_after_item_parsers', array($this, 'wpematico_strip_links'), 2, 4);
+        add_filter('wpematico_after_item_parsers', array($this, 'wpematico_template_parse'), 3, 4);
+        add_filter('wpematico_after_item_parsers', array($this, 'wpematico_campaign_rewrites'), 4, 4);
 
         if ($this->campaign['campaign_type'] == "youtube") {
-            add_filter('wpematico_get_post_content_feed', array('wpematico_campaign_fetch_functions', 'wpematico_get_yt_rss_tags'), 999, 4);
-            add_filter('wpematico_get_item_images', array('wpematico_campaign_fetch_functions', 'wpematico_get_yt_image'), 999, 4);
+            add_filter('wpematico_get_post_content_feed', array($this, 'wpematico_get_yt_rss_tags'), 999, 4);
+            add_filter('wpematico_get_item_images', array($this, 'wpematico_get_yt_image'), 999, 4);
+            add_filter('wpematico_excludes', array($this, 'wpematico_exclude_shorts'), 10, 4);
         }
         if ($this->cfg['add_extra_duplicate_filter_meta_source'] && !$this->cfg['disableccf']) {
-            add_filter('wpematico_duplicates', array('wpematico_campaign_fetch_functions', 'WPeisDuplicatedMetaSource'), 10, 3);
+            add_filter('wpematico_duplicates', array($this, 'WPeisDuplicatedMetaSource'), 10, 3);
         }
         if (isset($this->images_options['fifu']) && $this->images_options['fifu']) {
-            add_filter('wpematico_set_featured_img', array('wpematico_campaign_fetch_functions', 'url_meta_set_featured_image'), 999, 2);
-            add_filter('wpematico_get_featured_img', array('wpematico_campaign_fetch_functions', 'url_meta_set_featured_image'), 999, 2);
-            add_filter('wpematico_item_filters_pos_img', array('wpematico_campaign_fetch_functions', 'url_meta_set_featured_image_setmeta'), 999, 2);
+            add_filter('wpematico_set_featured_img', array($this, 'url_meta_set_featured_image'), 999, 2);
+            add_filter('wpematico_get_featured_img', array($this, 'url_meta_set_featured_image'), 999, 2);
+            add_filter('wpematico_item_filters_pos_img', array($this, 'url_meta_set_featured_image_setmeta'), 999, 2);
         }
     }
         /**
@@ -351,7 +352,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
      * @return true si lo procesó
      */
     function processItem($feed, $item, $feedurl) {
-        global $wpdb, $realcount,$wpematico_fifu_meta;
+        global $wpdb, $realcount,$wpematico_fifu_meta, $post;
         trigger_error(sprintf('<b>' . __('Processing item %s', 'wpematico'), $item->get_title() . '</b>'), E_USER_NOTICE);
         
         // First exclude filters
@@ -444,9 +445,9 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         $this->current_item = apply_filters('wpematico_item_filters_pre_video', $this->current_item, $this->campaign);
         //gets video array 
         $this->current_item = $this->Get_Item_Videos($this->current_item, $this->campaign, $feed, $item, $options_videos);
+
         // Uploads and changes img sources in content
         $this->current_item = $this->Item_Videos($this->current_item, $this->campaign, $feed, $item, $options_videos);
-
         //********* Parse and upload images
         /**
          * @since 1.7.0 
@@ -457,10 +458,17 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         //gets images array 
         $this->current_item = $this->Get_Item_images($this->current_item, $this->campaign, $feed, $item, $options_images);
         $this->current_item['featured_image'] = apply_filters('wpematico_set_featured_img', '', $this->current_item, $this->campaign, $feed, $item);
-
-        if ($options_images['featuredimg']) {
-            if (!empty($this->current_item['images'])) {
-                $this->current_item['featured_image'] = apply_filters('wpematico_get_featured_img', $this->current_item['images'][0], $this->current_item);
+        
+        if ($options_images['fifu-video']) {
+            $fifu_videos = !empty($this->current_item['videos']) ? $this->current_item['videos'] : $this->parseVideos($this->current_item['content'], true);
+            if (!empty($fifu_videos)) {
+                $this->current_item['featured_image'] = fifu_dev_set_video($this->campaign_id, $fifu_videos[0]);
+            }
+        }else{
+            if ($options_images['featuredimg']) {
+                if (!empty($this->current_item['images'])) {
+                    $this->current_item['featured_image'] = apply_filters('wpematico_get_featured_img', $this->current_item['images'][0], $this->current_item);
+                }
             }
         }
 
