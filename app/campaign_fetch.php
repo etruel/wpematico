@@ -462,7 +462,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         if ($options_images['fifu-video']) {
             $fifu_videos = !empty($this->current_item['videos']) ? $this->current_item['videos'] : $this->parseVideos($this->current_item['content'], true);
             if (!empty($fifu_videos)) {
-                $this->current_item['featured_image'] = fifu_dev_set_video($this->campaign_id, $fifu_videos[0]);
+                if(function_exists('fifu_dev_set_video'))
+                    $this->current_item['featured_image'] = fifu_dev_set_video($this->campaign_id, $fifu_videos[0]);
             }
         }else{
             if ($options_images['featuredimg']) {
