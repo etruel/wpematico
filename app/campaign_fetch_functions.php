@@ -830,9 +830,9 @@ class wpematico_campaign_fetch_functions {
 
 	/**
 	 * Strip anchors links and replace them with the anchor text
-	 * @param type $text where search and replace
-	 * @param type $campaign 
-	 * @return type $text with replaced links.
+	 * @param string $text where search and replace
+	 * @param array type $campaign 
+	 * @return string $text with replaced links.
 	 */
 	public static function strip_links($text, $campaign = array()) {
 		$tags = array();
@@ -1280,12 +1280,12 @@ class wpematico_campaign_fetch_functions {
 			
 			// Determine whether to skip the item
 			if ($only_shorts_enabled) {
-				trigger_error(__('Skipping standard videos...', 'wpematico'), E_USER_WARNING);
+				trigger_error(__('Skipping standard videos...', 'wpematico'), E_USER_NOTICE);
 				// No skip if the URL exists (shorts video)
 				$skip = !$url_exists;
 			} elseif ($ignore_shorts_enabled) {
 				// Skip if the URL exists and ignoring shorts
-				trigger_error(__('Skipping Youtube Short...', 'wpematico'), E_USER_WARNING);
+				trigger_error(__('Skipping Youtube Short...', 'wpematico'), E_USER_NOTICE);
 				$skip = $url_exists;
 			}
 		}

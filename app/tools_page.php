@@ -36,7 +36,7 @@ if (!class_exists('WPeMatico_Tools')) :
 			// Enqueue jQuery UI and autocomplete
 			wp_enqueue_script('jquery-ui-core');
 			wp_enqueue_script('jquery-ui-autocomplete');
-			wp_enqueue_script('wpematico_settings_page', WPeMatico::$uri . 'app/js/settings_page.js', array('jquery', 'postbox'), WPEMATICO_VERSION, true);
+			wp_enqueue_script('wpematico_settings_page', WPeMatico::$uri . 'app/js/tools_page.js', array('jquery', 'postbox'), WPEMATICO_VERSION, true);
 			// wp_localize_script('wpematico_tools_page', 'ajax_object', array(
 			// 	'nonce'    => wp_create_nonce('wpematico-tools-page-nonce')
 			// ));
@@ -137,6 +137,8 @@ if (!class_exists('WPeMatico_Tools')) :
 												$('#txtsettings').on('change',function() {
 													if (confirm(message)) {
 														$('#importsettings').trigger('submit');
+													}else{
+														$('#txtsettings').val('');
 													}
 												});
 											})(jQuery);

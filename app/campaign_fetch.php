@@ -187,10 +187,10 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			 * Filter to make the custom simplepie objects for extra contents that does not have a feed.
 			 * @since 2.7
 			 * @param $simplepie as null or empty because is not used until now. Will be defined in the filter methods.
-			 * @param type object $this = wpematico_campaign_fetch
-			 * @param type string $feed
-			 * @param type number $kf
-			 * @return the created SimplePie Object
+			 * @param object $this = wpematico_campaign_fetch
+			 * @param string $feed
+			 * @param number $kf
+			 * @return SimplePie Object created
 			 */
             if(!empty($simplepie)){
                 $simplepie = apply_filters('wpematico_custom_simplepie', $simplepie, $this, $feed, $kf);
