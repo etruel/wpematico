@@ -32,8 +32,7 @@ function wpematico_feed_viewer() {
 		return false;
 	}
 
-	if (!isset($_POST['_referer'])
-			or !strpos($_POST['_referer'], "post_type=wpematico&page=wpematico_tools&tab=debug_info&section=feed_viewer"))
+	if (!isset($_POST['_referer']) || !strpos($_POST['_referer'], "post_type=wpematico&page=wpematico_tools&tab=tools&section=feed_viewer") && !strpos($_POST['_referer'], "post_type=wpematico&page=wpematico_tools&section=feed_viewer"))
 		return false;
 
 	$url				 = esc_url_raw($_POST['url']);
@@ -172,7 +171,7 @@ function wpematico_tools_section_feed_viewer() {
 										});
 									</script>
 									<div id="seefeed" style="">
-										<form action="<?php echo esc_url(admin_url('edit.php?post_type=wpematico&page=wpematico_tools&tab=debug_info')); ?>" method="post" dir="ltr">
+										<form action="<?php echo esc_url(admin_url('edit.php?post_type=wpematico&page=wpematico_tools&tab=tools&section=feed_viewer')); ?>" method="post" dir="ltr">
 											<label><b><?php _e('Feed URL.', 'wpematico'); ?>
 													<input class="large-text" id="feedlink" value="" type="text" name="feedlink"/></b></label><br/>
 											<p class="bsubmit">

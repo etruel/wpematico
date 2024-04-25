@@ -349,7 +349,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
      * Processes an item: parses and filters
      * @param   $feed       object    Feed database object
      * @param   $item       object    SimplePie_Item object
-     * @return true si lo procesó
+     * @return bool true on success
      */
     function processItem($feed, $item, $feedurl) {
         global $wpdb, $realcount,$wpematico_fifu_meta, $post;
@@ -1011,7 +1011,5 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         $Suss = sprintf(__('Campaign fetched in %1s sec.', 'wpematico'), $this->campaign['lastruntime']) . '  ' . sprintf(__('Processed Posts: %s', 'wpematico'), $this->fetched_posts);
         $message = '<p>' . $Suss . '  <a href="JavaScript:void(0);" style="font-weight: bold; text-decoration:none; display:inline;" onclick="jQuery(\'#log_message_' . $this->campaign_id . '\').fadeToggle().addClass(\'active\'); jQuery(\'body\').addClass(\'wpe_modal_log-is-active\');">' . __('Show detailed Log', 'wpematico') . '.</a></p>';
         $campaign_log_message = $message . '<div id="log_message_' . $this->campaign_id . '" class="wpe_modal_log-box fade" style="display:none;"><div class="wpe_modal_log-body"><a href="JavaScript:void(0);" class="wpe_modal_log-close" onclick="jQuery(\'#log_message_' . $this->campaign_id . '\').fadeToggle().removeClass(\'active\'); jQuery(\'body\').removeClass(\'wpe_modal_log-is-active\');"><span class="dashicons dashicons-no-alt"></span></a><div class="wpe_modal_log-header"><h3>'. $this->campaign['campaign_title'] .' - #'. $this->campaign_id .'</h3></div><div class="wpe_modal_log-content">' . $campaign_log_message . '</div></div></div><span id="ret_lastruntime" style="display:none;">' . $this->campaign["lastruntime"] . '</span><span id="ret_lastposts" style="display:none;">' . $this->fetched_posts . '</span>';
-
-        return;
     }
 }

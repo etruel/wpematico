@@ -36,7 +36,7 @@ if (!class_exists('WPeMatico_Tools')) :
 			// Enqueue jQuery UI and autocomplete
 			wp_enqueue_script('jquery-ui-core');
 			wp_enqueue_script('jquery-ui-autocomplete');
-			// wp_enqueue_script('wpematico_tools_page', WPeMatico::$uri . 'app/js/tools_page.js', array('jquery', 'postbox'), WPEMATICO_VERSION, true);
+			wp_enqueue_script('wpematico_settings_page', WPeMatico::$uri . 'app/js/settings_page.js', array('jquery', 'postbox'), WPEMATICO_VERSION, true);
 			// wp_localize_script('wpematico_tools_page', 'ajax_object', array(
 			// 	'nonce'    => wp_create_nonce('wpematico-tools-page-nonce')
 			// ));
@@ -130,13 +130,13 @@ if (!class_exists('WPeMatico_Tools')) :
 										<a id="importcpg" class="button" href="Javascript:void(0);" title="<?php echo esc_attr(__("Upload and import a settings", 'wpematico')) ?>"><?php echo __('Import settings', 'wpematico') ?></a>
 										<script>
 											(function($) {
-												$('#importcpg').click(function() {
-													$('#txtsettings').click();
+												$('#importcpg').on('click',function() {
+													$('#txtsettings').trigger('click');
 												});
 												var message = "<?php echo __('The import will overwrite the current configuration of WPeMatico (and its addons), do you agree?', 'wpematico'); ?>"; 
-												$('#txtsettings').change(function() {
+												$('#txtsettings').on('change',function() {
 													if (confirm(message)) {
-														$('#importsettings').submit();
+														$('#importsettings').trigger('submit');
 													}
 												});
 											})(jQuery);
