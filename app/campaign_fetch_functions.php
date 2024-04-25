@@ -1258,7 +1258,7 @@ class wpematico_campaign_fetch_functions {
 
 	// item videos
 
-	public function wpematico_exclude_shorts($skip, $current_item, $campaign, $item){
+	public static function wpematico_exclude_shorts($skip, $current_item, $campaign, $item){
 		// Extract YouTube video ID
 		$ytvideoId = $item->get_item_tags('http://www.youtube.com/xml/schemas/2015', 'videoId');
 	
