@@ -78,8 +78,11 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         $this->campaign['starttime'] = current_time('timestamp'); //set start time for job
         $this->campaign['lastpostscount'] = 0; // Set it to zero now and assign value at end fetch.
 		
-        WPeMatico :: update_campaign($this->campaign_id, $this->campaign); //Save start time data
-
+        //optimize test v2.7
+        // WPeMatico :: update_campaign($this->campaign_id, $this->campaign); 
+        
+        //Save start time data
+        update_post_meta($this->campaign_id, 'lastrun', $this->campaign['lastrun']); 
 		// Current actions and filters to execute on this fetch  
 		$this->set_actions_and_filters();
 
@@ -144,8 +147,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
     }
         /**
          * Processes every feed of a campaign
-         * @param   $feed       URL string    Feed 
-         * @return  $realcount number the posts added
+         * @param   string $feed       URL string    Feed 
+         * @return  int    $realcount number the posts added
          */
     private function processFeed($feed, $kf){
         global $realcount;

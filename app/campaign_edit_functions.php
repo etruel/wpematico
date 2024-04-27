@@ -51,7 +51,7 @@ class WPeMatico_Campaign_edit_functions {
 		if( $cfg['nonstatic'] ) { NoNStatic :: meta_boxes($campaign_data, $cfg); }
 		// Publish Meta_box edited
 		add_action('post_submitbox_start', array( __CLASS__ ,'post_submitbox_start'), 10, 0); 
-		add_action('post_submitbox_start', array(__CLASS__, 'campaign_run_datails'), 11, 0);
+		add_action('post_submitbox_start', array(__CLASS__, 'campaign_run_details'), 11, 0);
 		//Feed URLs columns
 		add_action('wpematico_campaign_feed_header_column', array(__CLASS__, 'headerfeedURL'),10 );
 		add_action('wpematico_campaign_feed_body_column', array(__CLASS__, 'bodyfeedURL'),10,3 );
@@ -92,7 +92,7 @@ class WPeMatico_Campaign_edit_functions {
 	* @return void
 	* @since 1.8.0
 	*/
-	public static function campaign_run_datails() {
+	public static function campaign_run_details() {
 		global $post, $campaign_data;
 		$activated = (bool)$campaign_data['activated']; 
 		$lastrun = get_post_meta($post->ID, 'lastrun', true);
