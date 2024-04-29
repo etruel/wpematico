@@ -126,11 +126,11 @@ function run_all() {
 				jQuery("#lastruntime").attr('style', 'font-weight: bold;');
 			}
 			jQuery('#post-' + c_ID + ' .state_buttons.dashicons-controls-play').removeClass('green');
-
+		},
+		).done(function () {
+			jQuery('.ajaxstop').remove();
+			jQuery('html').css('cursor', 'auto');
 		});
-	}).ajaxStop(function () {
-		jQuery('html').css('cursor', 'auto');
-		jQuery('.ajaxstop').remove().ajaxStop();
 	});
 }
 
