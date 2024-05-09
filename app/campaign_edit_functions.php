@@ -474,8 +474,8 @@ public static function template_box( $post ) {
 		$campaign_attach_img					 = $campaign_data['campaign_attach_img'];
 		$campaign_image_srcset					 = $campaign_data['campaign_image_srcset'];
 		$campaign_featuredimg					 = $campaign_data['campaign_featuredimg'];
-		$campaign_fifu							 = $campaign_data['campaign_fifu'];
-		$campaign_fifu_video					 = $campaign_data['campaign_fifu_video'];
+		$campaign_fifu							 = ($fifu_activated) ? $campaign_data['campaign_fifu'] : false;
+		$campaign_fifu_video					 = ($fifu_activated) ? $campaign_data['campaign_fifu_video'] : false;
 		$campaign_rmfeaturedimg					 = $campaign_data['campaign_rmfeaturedimg'];
 		$campaign_customupload					 = $campaign_data['campaign_customupload'];
 		$campaign_enable_featured_image_selector = $campaign_data['campaign_enable_featured_image_selector'];
@@ -487,8 +487,8 @@ public static function template_box( $post ) {
 			$campaign_attach_img	 = $cfg['imgattach'];
 			$campaign_image_srcset	 = $cfg['image_srcset'];
 			$campaign_featuredimg	 = $cfg['featuredimg'];
-			$campaign_fifu			 = $cfg['fifu'];
-			$campaign_fifu_video	 = $cfg['fifu-video'];
+			$campaign_fifu			 = ($fifu_activated) ? $cfg['fifu'] : false;
+			$campaign_fifu_video	 = ($fifu_activated) ? $cfg['fifu-video'] : false;
 			$campaign_rmfeaturedimg	 = $cfg['rmfeaturedimg'];
 			$campaign_customupload	 = $cfg['customupload'];
 		}
