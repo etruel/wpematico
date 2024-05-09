@@ -4,7 +4,7 @@ jQuery(document).ready(function ($) {
         var data = {
             'action': 'process_button_click',
             'value': true,
-			'nonce': ajax_object.nonce
+			'nonce': wpematico_object.nonce
         };
 		jQuery.post(ajaxurl, data, function (response) {
             if (response.success) {
@@ -34,6 +34,15 @@ jQuery(document).ready(function ($) {
 			jQuery('#nolinkimg').fadeOut();
 		}
 	});
+	
+	jQuery('#fifu').on("click", function () {
+		if (true == jQuery('#fifu').is(':checked')) {
+			jQuery('#fifu_extra_options').fadeIn();
+		} else {
+			jQuery('#fifu_extra_options').fadeOut();
+		}
+	});
+
 	jQuery('#audio_cache').on("click", function () {
 		if (true == jQuery('#audio_cache').is(':checked')) {
 			jQuery('#nolink_audio').fadeIn();
@@ -170,28 +179,3 @@ jQuery(document).on('ready', function ($) {
 		}
 	});
 });
-// Function to retrieve parameter value from URL
-function getParameterValue(paramName) {
-	// Get the URL of the current page
-	var currentURL = window.location.href;
-	// Create a URL object
-	var url = new URL(currentURL);
-	// Get the search parameters from the URL
-	var searchParams = new URLSearchParams(url.search);
-	// Get the value of the specified parameter
-	var paramValue = searchParams.get(paramName);
-
-	return paramValue;
-}
-
-window.onload = function() {
-	var paramValue = getParameterValue("feedlink");
-
-		if (paramValue) {
-			// Parameter exists and has a value
-			document.getElementById("feedlink").value = paramValue;
-			setTimeout(function() {
-				jQuery("#getfeedbutton").trigger("click");
-			}, 500);
-		}
-};

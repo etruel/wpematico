@@ -78,8 +78,11 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         $this->campaign['starttime'] = current_time('timestamp'); //set start time for job
         $this->campaign['lastpostscount'] = 0; // Set it to zero now and assign value at end fetch.
 		
-        WPeMatico :: update_campaign($this->campaign_id, $this->campaign); //Save start time data
-
+        //optimize test v2.7
+        // WPeMatico :: update_campaign($this->campaign_id, $this->campaign); 
+        
+        //Save start time data
+        update_post_meta($this->campaign_id, 'lastrun', $this->campaign['lastrun']); 
 		// Current actions and filters to execute on this fetch  
 		$this->set_actions_and_filters();
 
@@ -131,9 +134,10 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         if ($this->campaign['campaign_type'] == "youtube") {
             add_filter('wpematico_get_post_content_feed', array('wpematico_campaign_fetch_functions', 'wpematico_get_yt_rss_tags'), 999, 4);
             add_filter('wpematico_get_item_images', array('wpematico_campaign_fetch_functions', 'wpematico_get_yt_image'), 999, 4);
+            add_filter('wpematico_excludes', array('wpematico_campaign_fetch_functions', 'wpematico_exclude_shorts'), 10, 4);
         }
         if ($this->cfg['add_extra_duplicate_filter_meta_source'] && !$this->cfg['disableccf']) {
-            add_filter('wpematico_duplicates', array('wpematico_campaign_fetch_functions', 'WPeisDuplicatedMetaSource'), 10, 3);
+            add_filter('wpematico_duplicates', array($this, 'WPeisDuplicatedMetaSource'), 10, 3);
         }
         if (isset($this->images_options['fifu']) && $this->images_options['fifu']) {
             add_filter('wpematico_set_featured_img', array('wpematico_campaign_fetch_functions', 'url_meta_set_featured_image'), 999, 2);
@@ -143,8 +147,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
     }
         /**
          * Processes every feed of a campaign
-         * @param   $feed       URL string    Feed 
-         * @return  $realcount number the posts added
+         * @param   string $feed       URL string    Feed 
+         * @return  int    $realcount number the posts added
          */
     private function processFeed($feed, $kf){
         global $realcount;
@@ -186,10 +190,10 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 			 * Filter to make the custom simplepie objects for extra contents that does not have a feed.
 			 * @since 2.7
 			 * @param $simplepie as null or empty because is not used until now. Will be defined in the filter methods.
-			 * @param type object $this = wpematico_campaign_fetch
-			 * @param type string $feed
-			 * @param type number $kf
-			 * @return the created SimplePie Object
+			 * @param object $this = wpematico_campaign_fetch
+			 * @param string $feed
+			 * @param number $kf
+			 * @return SimplePie Object created
 			 */
             if(!empty($simplepie)){
                 $simplepie = apply_filters('wpematico_custom_simplepie', $simplepie, $this, $feed, $kf);
@@ -315,7 +319,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
             // Get the source Permalink trying to redirect if is set.
             $permalink = $this->getReadUrl($permalink, $this->campaign);
             $this->current_item['permalink'] = $permalink;
-            $this->currenthash[$feed] = md5($permalink); // the hash of the current item feed 
+            $this->currenthash[$this->feed_hash_key('currenthash', $feed)] = md5($permalink); // the hash of the current item feed 
             $suma = $this->processItem($simplepie, $item, $feed);
 
             $lasthashvar = '_lasthash_' . sanitize_file_name($feed);
@@ -348,10 +352,10 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
      * Processes an item: parses and filters
      * @param   $feed       object    Feed database object
      * @param   $item       object    SimplePie_Item object
-     * @return true si lo procesó
+     * @return bool true on success
      */
     function processItem($feed, $item, $feedurl) {
-        global $wpdb, $realcount,$wpematico_fifu_meta;
+        global $wpdb, $realcount,$wpematico_fifu_meta, $post;
         trigger_error(sprintf('<b>' . __('Processing item %s', 'wpematico'), $item->get_title() . '</b>'), E_USER_NOTICE);
         
         // First exclude filters
@@ -444,9 +448,9 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         $this->current_item = apply_filters('wpematico_item_filters_pre_video', $this->current_item, $this->campaign);
         //gets video array 
         $this->current_item = $this->Get_Item_Videos($this->current_item, $this->campaign, $feed, $item, $options_videos);
+
         // Uploads and changes img sources in content
         $this->current_item = $this->Item_Videos($this->current_item, $this->campaign, $feed, $item, $options_videos);
-
         //********* Parse and upload images
         /**
          * @since 1.7.0 
@@ -457,10 +461,18 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         //gets images array 
         $this->current_item = $this->Get_Item_images($this->current_item, $this->campaign, $feed, $item, $options_images);
         $this->current_item['featured_image'] = apply_filters('wpematico_set_featured_img', '', $this->current_item, $this->campaign, $feed, $item);
-
-        if ($options_images['featuredimg']) {
-            if (!empty($this->current_item['images'])) {
-                $this->current_item['featured_image'] = apply_filters('wpematico_get_featured_img', $this->current_item['images'][0], $this->current_item);
+        
+        if ($options_images['fifu-video']) {
+            $fifu_videos = !empty($this->current_item['videos']) ? $this->current_item['videos'] : $this->parseVideos($this->current_item['content'], true);
+            if (!empty($fifu_videos)) {
+                if(function_exists('fifu_dev_set_video'))
+                    $this->current_item['featured_image'] = fifu_dev_set_video($this->campaign_id, $fifu_videos[0]);
+            }
+        }else{
+            if ($options_images['featuredimg']) {
+                if (!empty($this->current_item['images'])) {
+                    $this->current_item['featured_image'] = apply_filters('wpematico_get_featured_img', $this->current_item['images'][0], $this->current_item);
+                }
             }
         }
 
@@ -1002,7 +1014,5 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         $Suss = sprintf(__('Campaign fetched in %1s sec.', 'wpematico'), $this->campaign['lastruntime']) . '  ' . sprintf(__('Processed Posts: %s', 'wpematico'), $this->fetched_posts);
         $message = '<p>' . $Suss . '  <a href="JavaScript:void(0);" style="font-weight: bold; text-decoration:none; display:inline;" onclick="jQuery(\'#log_message_' . $this->campaign_id . '\').fadeToggle().addClass(\'active\'); jQuery(\'body\').addClass(\'wpe_modal_log-is-active\');">' . __('Show detailed Log', 'wpematico') . '.</a></p>';
         $campaign_log_message = $message . '<div id="log_message_' . $this->campaign_id . '" class="wpe_modal_log-box fade" style="display:none;"><div class="wpe_modal_log-body"><a href="JavaScript:void(0);" class="wpe_modal_log-close" onclick="jQuery(\'#log_message_' . $this->campaign_id . '\').fadeToggle().removeClass(\'active\'); jQuery(\'body\').removeClass(\'wpe_modal_log-is-active\');"><span class="dashicons dashicons-no-alt"></span></a><div class="wpe_modal_log-header"><h3>'. $this->campaign['campaign_title'] .' - #'. $this->campaign_id .'</h3></div><div class="wpe_modal_log-content">' . $campaign_log_message . '</div></div></div><span id="ret_lastruntime" style="display:none;">' . $this->campaign["lastruntime"] . '</span><span id="ret_lastposts" style="display:none;">' . $this->fetched_posts . '</span>';
-
-        return;
     }
 }

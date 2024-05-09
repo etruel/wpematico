@@ -18,7 +18,6 @@ function wpematico_get_settings_tabs() {
 	//allways Licenses and debug file at end
 	$tabs					 = apply_filters('wpematico_settings_tabs', $tabs);
 	$tabs['pro_licenses']	 = __('Licenses', 'wpematico');
-	$tabs['debug_info']		 = __('System Status', 'wpematico');
 
 	return $tabs;
 }
@@ -31,15 +30,6 @@ function wpematico_get_settings_tabs() {
  * @return      array with Settings tab sections
  */
 
-function wpematico_get_debug_info_sections() {
-	$sections = array();
-	$sections['debug_file']	 = __('Debug File', 'wpematico');
-	$sections['feed_viewer'] = __('Feed Viewer', 'wpematico');
-	$sections['danger_zone'] = __('Danger Zone', 'wpematico');
-	$sections = apply_filters('wpematico_get_debug_sections', $sections);
-
-	return $sections;
-}
 
 //Make Tabs calling actions and Sections if exist
 function wpematico_settings_page() {
@@ -51,7 +41,7 @@ function wpematico_settings_page() {
 	$get_sections= "wpematico_get_".$current_tab."_sections";
 	if(function_exists($get_sections)) {
 		//$sections = $get_sections();
-		add_action('wpematico_settings_tab_'.$current_tab, 'wpematico_print_tab_sections',0,1);
+		add_action('wpematico_settings_tab_'.$current_tab, 'wpematico_print_tab_tools_sections',0,1);
 
 	}
 	
@@ -83,7 +73,7 @@ function wpematico_settings_page() {
 }
 
 
-function wpematico_print_tab_sections() {
+function wpematico_print_tab_tools_sections() {
 	global $pagenow, $wp_roles, $current_user;
 	$current_tab = (isset($_GET['tab']) ) ? sanitize_text_field( $_GET['tab'] ) : 'settings';
 	$sections = array();

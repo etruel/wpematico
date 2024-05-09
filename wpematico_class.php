@@ -55,7 +55,8 @@ if (!class_exists('WPeMatico')) {
 				$this->options['nonstatic'] = false;
 				$this->update_options();
 			}
-			
+			add_action('admin_action_wpematico_export_settings', array($this, 'wpematico_export_settings'));
+			add_action('admin_action_wpematico_import_settings', array($this, 'wpematico_import_settings'));
 			$this->Create_campaigns_page();
 			if ($hook_in) {
 				add_action('admin_menu', array($this, 'admin_menu'));
@@ -315,6 +316,16 @@ if (!class_exists('WPeMatico')) {
 					'wpematico_settings_page'
 			);
 			add_action('admin_print_styles-' . $page, array('WPeMatico_Settings', 'styles'));
+
+			$page = add_submenu_page(
+				'edit.php?post_type=wpematico',
+				__('Tools', 'wpematico'),
+				__('Tools', 'wpematico'),
+				'manage_options',
+				'wpematico_tools',
+				'wpematico_tools_page'
+			);
+		add_action('admin_print_styles-' . $page, array('WPeMatico_Tools', 'styles'));
 		}
 
 		public function all_WP_admin_styles() {
@@ -381,7 +392,14 @@ if (!class_exists('WPeMatico')) {
 			$cfg['customupload']		 = (!isset($options['customupload']) || empty($options['customupload'])) ? false : ( ($options['customupload'] == 1) ? true : false );
 			$cfg['imgattach']			 = (!isset($options['imgattach']) || empty($options['imgattach'])) ? false : ( ($options['imgattach'] == 1) ? true : false );
 			$cfg['imgcache']			 = (!isset($options['imgcache']) || empty($options['imgcache'])) ? false : ( ($options['imgcache'] == 1) ? true : false );
-			$cfg['fifu']				 = (!isset($options['fifu']) || empty($options['fifu'])) ? false : ( ($options['fifu'] == 1) ? true : false );
+			if(defined( 'FIFU_PLUGIN_DIR' )){
+				$cfg['fifu']				 = (!isset($options['fifu']) || empty($options['fifu'])) ? false : ( ($options['fifu'] == 1) ? true : false );
+				$cfg['fifu-video']			 = (!isset($options['fifu-video']) || empty($options['fifu-video'])) ? false : ( ($options['fifu-video'] == 1) ? true : false );
+			}else{
+				$cfg['fifu']				 = false;
+				$cfg['fifu-video']			 = false;
+			}
+			
 			$cfg['gralnolinkimg']		 = (!isset($options['gralnolinkimg']) || empty($options['gralnolinkimg'])) ? false : ( ($options['gralnolinkimg'] == 1) ? true : false );
 			$cfg['image_srcset']		 = (!isset($options['image_srcset']) || empty($options['image_srcset'])) ? false : ( ($options['image_srcset'] == 1) ? true : false );
 
