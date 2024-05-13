@@ -619,6 +619,7 @@ if (!class_exists('WPeMatico_functions')) {
 				$active_plugins = get_option('active_plugins');
 				$plpath = trailingslashit(WP_PLUGIN_DIR) . $active_plugins[$is_pro_active];
 				$proplugin_data = self::plugin_get_version($plpath);
+
 				if ($proplugin_data['Name'] == 'WPeMatico Professional' && version_compare($proplugin_data['Version'], WPeMatico::PROREQUIRED, '<')) {
 					$message .= __('You are using WPeMatico Professional too old.', 'wpematico') . '<br />';
 					$message .= __('Must install at least "WPeMatico Professional" ' . WPeMatico::PROREQUIRED, 'wpematico');
@@ -1766,9 +1767,7 @@ function wpematico_is_pro_active() {  // Check if PRO version is installed & act
 	$active_plugins = get_option('active_plugins');
 	$active_plugins_names = array_map('basename', $active_plugins);
 	$is_pro_active = array_search('wpematicopro.php', $active_plugins_names);
-	if ($is_pro_active !== FALSE) {
-		return true;
-	}
+	
 	return $is_pro_active;
 }
 
