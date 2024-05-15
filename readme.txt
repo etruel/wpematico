@@ -236,7 +236,7 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
 
-= 2.7 May 1, 2024 =
+= 2.7 May 10, 2024 =
 
 Version 2.7 focuses on code improvements and documentations follow the standards of Wordpress coding developments.
 Recommended update it on testing enviroments before update on production websites.
@@ -246,7 +246,11 @@ Recommended update it on testing enviroments before update on production website
 > * New WPeMatico Canonicals feature on Settings Page. *Activated by default*
 > * New improved batch method to optimize performance on fetching processes.
 > * New improved method to check and show broken campaigns on the campaigns List.
+> * New Page Tools to group features useful for WPeMatico.
+> * New feature to avoid or include Shorts on YouTube Campaign types.
+> * New feature to export / import all the WPeMatico Settings.
 > * New popup to see the last log after run the campaign.
+> * New improvements in duplicate posts control by refining the hash codes.
 > * A new improved Changelog on About page.
 > * A new dismissable banner to show the last changelog on Settings page.
 > * Some minor cosmetic improvements.
