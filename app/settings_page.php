@@ -746,7 +746,7 @@ if(!class_exists('WPeMatico_Settings')) :
 												<br />
 												<div id="hlptrash" style="padding-left:20px; <?php if(!$cfg['emptytrashbutton']) echo 'display:none;'; ?>">
 													<?php _e('Select (custom) post types you want.', 'wpematico'); ?>
-													<br />
+													<div class="hlptrash-content">
 													<?php
 													// publicos y privados para que pueda mostrar el boton en todos
 													$args		 = array('public' => false);
@@ -770,7 +770,7 @@ if(!class_exists('WPeMatico_Settings')) :
 														echo ' /> ' . __($post_label) . ' (' . __($post_type) . ')</div>';
 													}
 													?>
-												</div><br /> 
+												</div></div><br /> 
 											</div>
 											<div id="enabledashboard" class="insidesec">
 
