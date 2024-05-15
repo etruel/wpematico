@@ -620,8 +620,11 @@ if (!class_exists('WPeMatico_functions')) {
 				$plpath = trailingslashit(WP_PLUGIN_DIR) . $active_plugins[$is_pro_active];
 				$proplugin_data = self::plugin_get_version($plpath);
 
+				$core_version = new ReflectionClass('WPeMaticoPRO');
+				$core_version = $core_version->getConstant('COREREQUIRED');
+
 				if ($proplugin_data['Name'] == 'WPeMatico Professional' && version_compare($proplugin_data['Version'], WPeMatico::PROREQUIRED, '<')) {
-					$message .= __('Your current version of WPeMatico Professional does not support WPeMatico ', 'wpematico') . WPeMaticoPRO::COREREQUIRED . '<br />';
+					$message .= __('Your current version of WPeMatico Professional does not support WPeMatico ', 'wpematico') . $core_version . '<br />';
 					$message .= __('Must install at least "WPeMatico Professional" ' . WPeMatico::PROREQUIRED, 'wpematico');
 					$message .= ' <a href="' . admin_url('plugins.php?page=wpemaddons') . '#wpematico-pro"> ' . __('Go to update Now', 'wpematico') . '</a>';
 					$message .= '<script type="text/javascript">jQuery(document).ready(function($){$("#wpematico-pro").css("backgroundColor","yellow");});</script>';
