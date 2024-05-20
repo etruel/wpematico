@@ -1764,13 +1764,18 @@ function wpematico_get_host() {
  * Returns if installed & active PRO VERSION
  *
  * @since 1.2.4
- * @return bool true if installed & active
+ * @return bool|int if installed & active
  */
-function wpematico_is_pro_active() {  // Check if PRO version is installed & active
+function wpematico_is_pro_active($returnbool = false) {  // Check if PRO version is installed & active
+	
+	if($returnbool){
+		return defined('WPEMATICOPRO_VERSION');
+	}
+
 	$active_plugins = get_option('active_plugins');
 	$active_plugins_names = array_map('basename', $active_plugins);
 	$is_pro_active = array_search('wpematicopro.php', $active_plugins_names);
-	
+
 	return $is_pro_active;
 }
 
