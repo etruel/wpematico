@@ -1816,3 +1816,13 @@ body.wpe_modal_log-is-active{
         font-size: 16px;
     }
 }
+/*Images metabox*/
+.wpe_pro-features p{
+    font-weight: 500;
+}
+.wpe_pro-features p:not(:first-child){
+    margin-top: 0;
+}
+.wpe_pro-features p .dashicons{
+    color: #d3741c;
+}
