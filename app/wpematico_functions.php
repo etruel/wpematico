@@ -619,10 +619,14 @@ if (!class_exists('WPeMatico_functions')) {
 				$active_plugins = get_option('active_plugins');
 				$plpath = trailingslashit(WP_PLUGIN_DIR) . $active_plugins[$is_pro_active];
 				$proplugin_data = self::plugin_get_version($plpath);
+
+				$core_version = new ReflectionClass('WPeMaticoPRO');
+				$core_version = $core_version->getConstant('WPEMSHOULD');
+
 				if ($proplugin_data['Name'] == 'WPeMatico Professional' && version_compare($proplugin_data['Version'], WPeMatico::PROREQUIRED, '<')) {
-					$message .= __('You are using WPeMatico Professional too old.', 'wpematico') . '<br />';
+					$message .= __('Your current version of WPeMatico Professional does not support WPeMatico ', 'wpematico') . $core_version . '<br />';
 					$message .= __('Must install at least "WPeMatico Professional" ' . WPeMatico::PROREQUIRED, 'wpematico');
-					$message .= ' <a href="' . admin_url('plugins.php?page=wpemaddons') . '#wpematico-pro"> ' . __('Go to upgrade Now', 'wpematico') . '</a>';
+					$message .= ' <a href="' . admin_url('plugins.php?page=wpemaddons') . '#wpematico-pro"> ' . __('Go to update Now', 'wpematico') . '</a>';
 					$message .= '<script type="text/javascript">jQuery(document).ready(function($){$("#wpematico-pro").css("backgroundColor","yellow");});</script>';
 					//Commented to allow access to the settings page
 					//$checks=false;
@@ -1760,15 +1764,18 @@ function wpematico_get_host() {
  * Returns if installed & active PRO VERSION
  *
  * @since 1.2.4
- * @return bool true if installed & active
+ * @return bool|int if installed & active
  */
-function wpematico_is_pro_active() {  // Check if PRO version is installed & active
+function wpematico_is_pro_active($returnbool = false) {  // Check if PRO version is installed & active
+	
+	if($returnbool){
+		return defined('WPEMATICOPRO_VERSION');
+	}
+
 	$active_plugins = get_option('active_plugins');
 	$active_plugins_names = array_map('basename', $active_plugins);
 	$is_pro_active = array_search('wpematicopro.php', $active_plugins_names);
-	if ($is_pro_active !== FALSE) {
-		return true;
-	}
+
 	return $is_pro_active;
 }
 
