@@ -621,7 +621,7 @@ if (!class_exists('WPeMatico_functions')) {
 				$proplugin_data = self::plugin_get_version($plpath);
 
 				$core_version = new ReflectionClass('WPeMaticoPRO');
-				$core_version = $core_version->getConstant('COREREQUIRED');
+				$core_version = $core_version->getConstant('WPEMSHOULD');
 
 				if ($proplugin_data['Name'] == 'WPeMatico Professional' && version_compare($proplugin_data['Version'], WPeMatico::PROREQUIRED, '<')) {
 					$message .= __('Your current version of WPeMatico Professional does not support WPeMatico ', 'wpematico') . $core_version . '<br />';
