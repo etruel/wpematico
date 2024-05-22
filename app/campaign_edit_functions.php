@@ -553,9 +553,17 @@ public static function template_box( $post ) {
 				</div>
 			</div>
 		</div>
-
+		
+		<?php 
+			if(wpematico_is_pro_active(true)):
+		?>
 		<h3 class="subsection"><?php _e('Advanced Options', 'wpematico' ); ?></h3>
 		<?php do_action('wpematico_image_box_out_setting'); ?>
+
+
+		<?php 
+			else:
+		?>
 		
 		<h3 class="subsection"><span class="dashicons dashicons-awards"></span> <?php _e('Do you need advanced features? Take a look at the', 'wpematico' ); ?> <a href="https://etruel.com/downloads/wpematico-professional/" target="_blank" style="text-decoration: none;"><?php _e('Professional addon', 'wpematico' ); ?><span class="dashicons dashicons-external"></span></a></h3>
 		<div class="wpe_pro-features">
@@ -570,6 +578,8 @@ public static function template_box( $post ) {
 			<p><span class="dashicons dashicons-yes"></span> <a href="https://etruel.com/downloads/wpematico-professional/" target="_blank" style="text-decoration: none;"><?php _e('and more...', 'wpematico' ); ?></a></p>
 		</div>
 		<?php
+
+			endif;
 	}
 	/**
 	* Static function audio_box
