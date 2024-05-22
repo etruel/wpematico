@@ -200,7 +200,7 @@ class WPeMatico_Campaign_edit_functions {
 	static function campaign_type_options() {
 		$options=array(
 			array( 'value'=> 'feed', 'text' => __('Feed Fetcher (Default)', 'wpematico' ), "show"=>array('feeds-box', 'audios-box','videos-box','cron-box','template-box', 'images-box') ),
-			array( 'value'=> 'youtube','text' => __('You Tube Fetcher', 'wpematico' ), "show"=>array('feeds-box','youtube-box') ),
+			array( 'value'=> 'youtube','text' => __('You Tube Fetcher', 'wpematico' ), "show"=>array('feeds-box','youtube-box', 'audios-box','videos-box', 'cron-box','template-box', 'images-box') ),
 			array( 'value'=> 'bbpress','text' => __('bbPress Forums', 'wpematico' ), "show"=>array('feeds-box','bbpress-box', 'audios-box','videos-box','cron-box','template-box', 'images-box') ),
 			array( 'value'=> 'xml','text' => __('XML Campaign Type', 'wpematico' ), "show"=>array('xml-campaign-box', 'audios-box','videos-box','cron-box','template-box', 'images-box') ),
 			);
