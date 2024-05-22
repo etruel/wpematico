@@ -553,9 +553,23 @@ public static function template_box( $post ) {
 				</div>
 			</div>
 		</div>
+
 		<h3 class="subsection"><?php _e('Advanced Options', 'wpematico' ); ?></h3>
+		<?php do_action('wpematico_image_box_out_setting'); ?>
+		
+		<h3 class="subsection"><span class="dashicons dashicons-awards"></span> <?php _e('Do you need advanced features? Take a look at the', 'wpematico' ); ?> <a href="https://etruel.com/downloads/wpematico-professional/" target="_blank" style="text-decoration: none;"><?php _e('Professional addon', 'wpematico' ); ?><span class="dashicons dashicons-external"></span></a></h3>
+		<div class="wpe_pro-features">
+			<p><span class="dashicons dashicons-yes"></span> <?php _e('Strip queries variables.', 'wpematico' ); ?></p>
+			<p><span class="dashicons dashicons-yes"></span> <?php _e('Determine image extension.', 'wpematico' ); ?></p>
+			<p><span class="dashicons dashicons-yes"></span> <?php _e('Image renamer.', 'wpematico' ); ?></p>
+			<p><span class="dashicons dashicons-yes"></span> <?php _e('Images from enclosure/media tags.', 'wpematico' ); ?></p>
+			<p><span class="dashicons dashicons-yes"></span> <?php _e('Strip all images from content.', 'wpematico' ); ?></p>
+			<p><span class="dashicons dashicons-yes"></span> <?php _e('Discard the Post if NO Images in Content.', 'wpematico' ); ?></p>
+			<p><span class="dashicons dashicons-yes"></span> <?php _e('Default Featured image if not found image on content.', 'wpematico' ); ?></p>
+			<p><span class="dashicons dashicons-yes"></span> <?php _e('Image filters allowing or skipping them by dimensions.', 'wpematico' ); ?></p>
+			<p><span class="dashicons dashicons-yes"></span> <a href="https://etruel.com/downloads/wpematico-professional/" target="_blank" style="text-decoration: none;"><?php _e('and more...', 'wpematico' ); ?></a></p>
+		</div>
 		<?php
-		do_action('wpematico_image_box_out_setting');
 	}
 	/**
 	* Static function audio_box
