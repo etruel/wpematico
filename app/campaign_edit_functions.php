@@ -1286,6 +1286,10 @@ public static function feeds_box( $post ) {
 			?>
 			<input class="checkbox" type="checkbox"<?php checked($campaign_autocats ,true);?> name="campaign_autocats" value="1" id="campaign_autocats"/> <b><?php echo '<label for="campaign_autocats">' . __('Add auto Categories', 'wpematico' ) . '</label>'; ?></b>
 			<span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['autocats']; ?>"></span>
+			<br/>
+
+			<?php do_action('wpematico_print_category_options', $campaign_data); ?>
+			
 			<div id="autocats_container" <?php if(!$campaign_autocats) echo 'style="display:none;"';?>>
 				<br/>
 				<b><?php echo '<label for="campaign_parent_autocats">' . __('Parent category to auto categories', 'wpematico' ) . '</label>'; ?></b>
