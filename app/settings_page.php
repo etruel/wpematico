@@ -372,10 +372,10 @@ if(!class_exists('WPeMatico_Settings')) :
 									</div>
 
 									<div class="postbox">
-										<h2 class="handle"><?php _e('The Perfect Package', 'wpematico'); ?></h2>
+										<h2 class="handle"><?php _e('Perfect Membership', 'wpematico'); ?></h2>
 										<div class="inside">
-											<p id="left1" onmouseover="jQuery(this).css('opacity', 0.9);this.style.backgroundColor = '#111'" onmouseout="jQuery(this).css('opacity', 0.5);this.style.backgroundColor = '#fff'" style="text-align:center;opacity: 0.5;border-radius: 14px 14px 0 0;"><a href="https://etruel.com/downloads/wpematico-perfect-package/" target="_Blank" title="Go to etruel WebSite"><img style="width: 100%;" src="https://etruel.com/wp-content/uploads/2018/08/wpematico-package.png" title=""></a><br />
-												WPeMatico The Perfect Package</p>
+											<p id="left1" onmouseover="jQuery(this).css('opacity', 0.9);this.style.backgroundColor = '#111'; this.style.color = '#fff'" onmouseout="jQuery(this).css('opacity', 0.5);this.style.backgroundColor = '#fff'; this.style.color = 'initial'" style="text-align:center;opacity: 0.5; transition: all .4s ease;"><a href="https://etruel.com/downloads/wpematico-perfect/" target="_Blank" title="Go to etruel WebSite"><img style="width: 100%;" src="https://etruel.com/wp-content/uploads/edd/2022/02/wpematico-perfect.jpg" title=""></a><br />
+												WPeMatico Perfect Membership</p>
 										</div>
 									</div>
 
