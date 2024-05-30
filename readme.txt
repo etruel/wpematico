@@ -3,8 +3,8 @@ Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,rss to post,feed to post,rss aggregator
 Requires at least: 4.8
-Tested up to: 6.5.2
-Requires PHP: 5.6
+Tested up to: 6.5.4
+Requires PHP: 7.0
 Stable tag: 2.7
 License: GPLv2 or later
 
@@ -236,9 +236,9 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
 
-= 2.7 May 10, 2024 =
+= 2.7 May 31, 2024 =
 
-Version 2.7 focuses on code improvements and documentations follow the standards of Wordpress coding developments.
+Major Version 2.7 focuses on code improvements and documentations follow the standards of Wordpress coding developments.
 Recommended update it on testing enviroments before update on production websites.
 
 #### _Enhancements:_
@@ -261,7 +261,7 @@ Recommended update it on testing enviroments before update on production website
 
 #### _Bugfixes:_
 
-< * Fixes on getting bad source permalink on some cases by empty feed tags.
+> * Fixes on getting bad source permalink on some cases by empty feed tags.
 > * Fixes some malformed values saved on Copy Campaign Quick Action.
 > * Fixes some issues and warnings on Campaigns List page.
 > * Fixes some warnings and minor bugs on Preview campaign. 
