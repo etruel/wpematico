@@ -291,7 +291,7 @@ if (!class_exists('WPeMatico_functions')) {
 
 		/**
 		 * @access public
-		 * @return $options Array all wp defaults image mime types plus added by custom filters in standard ways.
+		 * @return string $options  all wp defaults image mime types plus added by custom filters in standard ways.
 		 * @since 2.5.3
 		 */
 		public static function get_images_allowed_mimes() {

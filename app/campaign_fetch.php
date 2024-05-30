@@ -520,19 +520,21 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
                         if ($term !== 0 && $term !== null) {  // ya existe
                             trigger_error(__('Category exist: ', 'wpematico') . $catname, E_USER_NOTICE);
                         } else { //si no existe la creo
-                            trigger_error(__('Adding Category: ', 'wpematico') . $catname, E_USER_NOTICE);
-                            $parent_cat = "0";
-                            if (isset($this->campaign['campaign_parent_autocats']) && $this->campaign['campaign_parent_autocats'] > 0) {
-                                $parent_cat = $this->campaign['campaign_parent_autocats'];
-                            }
-                            $arg_description = __('Auto Added by WPeMatico', 'wpematico');
-                            if (isset($this->cfg['disable_categories_description']) && $this->cfg['disable_categories_description']) {
-                                $arg_description = '';
-                            }
-                            $arg_description = apply_filters('wpematico_addcat_description', $arg_description, $catname);
+                            if (!isset($this->campaign['campaign_local_category']) || !$this->campaign['campaign_local_category']) { //if this option doesn't exist, continue with the creation
+                                trigger_error(__('Adding Category: ', 'wpematico') . $catname, E_USER_NOTICE);
+                                $parent_cat = "0";
+                                if (isset($this->campaign['campaign_parent_autocats']) && $this->campaign['campaign_parent_autocats'] > 0) {
+                                    $parent_cat = $this->campaign['campaign_parent_autocats'];
+                                }
+                                $arg_description = __('Auto Added by WPeMatico', 'wpematico');
+                                if (isset($this->cfg['disable_categories_description']) && $this->cfg['disable_categories_description']) {
+                                    $arg_description = '';
+                                }
+                                $arg_description = apply_filters('wpematico_addcat_description', $arg_description, $catname);
 
-                            $arg = array('description' => $arg_description, 'parent' => $parent_cat);
-                            $term = wp_insert_term($catname, "category", $arg);
+                                $arg = array('description' => $arg_description, 'parent' => $parent_cat);
+                                $term = wp_insert_term($catname, "category", $arg);
+                            }
                         }
                         if (is_wp_error($term) || empty($term)) {
                             continue;

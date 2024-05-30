@@ -200,7 +200,7 @@ class WPeMatico_Campaign_edit_functions {
 	static function campaign_type_options() {
 		$options=array(
 			array( 'value'=> 'feed', 'text' => __('Feed Fetcher (Default)', 'wpematico' ), "show"=>array('feeds-box', 'audios-box','videos-box','cron-box','template-box', 'images-box') ),
-			array( 'value'=> 'youtube','text' => __('You Tube Fetcher', 'wpematico' ), "show"=>array('feeds-box','youtube-box') ),
+			array( 'value'=> 'youtube','text' => __('You Tube Fetcher', 'wpematico' ), "show"=>array('feeds-box','youtube-box', 'audios-box','videos-box', 'cron-box','template-box', 'images-box') ),
 			array( 'value'=> 'bbpress','text' => __('bbPress Forums', 'wpematico' ), "show"=>array('feeds-box','bbpress-box', 'audios-box','videos-box','cron-box','template-box', 'images-box') ),
 			array( 'value'=> 'xml','text' => __('XML Campaign Type', 'wpematico' ), "show"=>array('xml-campaign-box', 'audios-box','videos-box','cron-box','template-box', 'images-box') ),
 			);
@@ -553,9 +553,17 @@ public static function template_box( $post ) {
 				</div>
 			</div>
 		</div>
-
+		
+		<?php 
+			if(wpematico_is_pro_active(true)):
+		?>
 		<h3 class="subsection"><?php _e('Advanced Options', 'wpematico' ); ?></h3>
 		<?php do_action('wpematico_image_box_out_setting'); ?>
+
+
+		<?php 
+			else:
+		?>
 		
 		<h3 class="subsection"><span class="dashicons dashicons-awards"></span> <?php _e('Do you need advanced features? Take a look at the', 'wpematico' ); ?> <a href="https://etruel.com/downloads/wpematico-professional/" target="_blank" style="text-decoration: none;"><?php _e('Professional addon', 'wpematico' ); ?><span class="dashicons dashicons-external"></span></a></h3>
 		<div class="wpe_pro-features">
@@ -570,6 +578,8 @@ public static function template_box( $post ) {
 			<p><span class="dashicons dashicons-yes"></span> <a href="https://etruel.com/downloads/wpematico-professional/" target="_blank" style="text-decoration: none;"><?php _e('and more...', 'wpematico' ); ?></a></p>
 		</div>
 		<?php
+
+			endif;
 	}
 	/**
 	* Static function audio_box
@@ -1276,6 +1286,10 @@ public static function feeds_box( $post ) {
 			?>
 			<input class="checkbox" type="checkbox"<?php checked($campaign_autocats ,true);?> name="campaign_autocats" value="1" id="campaign_autocats"/> <b><?php echo '<label for="campaign_autocats">' . __('Add auto Categories', 'wpematico' ) . '</label>'; ?></b>
 			<span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['autocats']; ?>"></span>
+			<br/>
+
+			<?php do_action('wpematico_print_category_options', $campaign_data); ?>
+			
 			<div id="autocats_container" <?php if(!$campaign_autocats) echo 'style="display:none;"';?>>
 				<br/>
 				<b><?php echo '<label for="campaign_parent_autocats">' . __('Parent category to auto categories', 'wpematico' ) . '</label>'; ?></b>
