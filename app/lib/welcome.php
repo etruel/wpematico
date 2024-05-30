@@ -419,21 +419,21 @@ class WPEMATICO_Welcome {
 
 					<div class="addon_block">
 						<div class="addon_img">
-							<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/wpematico-plus-200x100.jpg'; ?>" alt="WPeMatico Premium Membership" />
+							<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/wpematico-premium-200x100.jpg'; ?>" alt="WPeMatico PREMIUM" />
 						</div>
 						<div class="addon_text">
-							<p><?php _e('The', 'wpematico'); ?> <a href="https://etruel.com/downloads/wpematico-premium/" target="_blank">WPeMatico Premium Membership</a> 
+							<p><?php _e('The', 'wpematico'); ?> <a href="https://etruel.com/downloads/wpematico-premium/" target="_blank">WPeMatico PREMIUM</a> 
 								<?php _e('contains the ten preferred add-Ons with the most wanted features for autoblogging with WordPress in a very easy professional way.', 'wpematico'); ?></p>
 						</div>
 					</div>
 
 					<div class="addon_block">
 						<div class="addon_img">
-							<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/wpematico-essentials-200x100.png'; ?>" alt="WPeMatico ESSENTIALS (Monthly)" />
+							<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/wpematico-plus-200x100.jpg'; ?>" alt="WPeMatico PLUS" />
 						</div>
 						<div class="addon_text">
-							<p><?php _e('The', 'wpematico'); ?> <a href="https://etruel.com/downloads/wpematico-essentials-monthly/" target="_blank">WPeMatico ESSENTIALS (Monthly)</a> 
-								<?php _e('A new monthly membership, you get a huge discount on WPeMatico Essentials, which includes WPeMatico Professional and Full Content addons.', 'wpematico'); ?></p>
+							<p><?php _e('The', 'wpematico'); ?> <a href="https://etruel.com/downloads/wpematico-plus/" target="_blank">WPeMatico PLUS</a> 
+								<?php _e('combines the five most requested add-ons with a lot of great features, simplifying WordPress autoblogging with professional ease.', 'wpematico'); ?></p>
 						</div>
 					</div>
 
