@@ -201,12 +201,12 @@ class wpe_smart_notifications {
 			</h3>
 			<div class="description-smart-notification">
 				<p class="parr-wpmatico-smart-notification">
-					<?php _e('We will soon reach one million downloads and we will celebrate it with the major version 2.7.', 'wpematico'); ?><br>
+					<?php _e('We will soon reach one million downloads and celebrate in style.', 'wpematico'); ?><br>
 					<br>
-					<?php _e('And not only that, but we are also prepared a big celebration for a whole month!', 'wpematico'); ?><br>
+					<?php _e('We\'ve prepared a big celebration with releases and gifts for a whole month!', 'wpematico'); ?><br>
 					<?php _e('In which we will release the new versions with many new free features, but we will also make many free gifts for all our community of WordPress users, customers and friends.', 'wpematico'); ?><br>
 					<br>
-					<?php _e('The month of June is coming strong! Don\'t miss it! Follow everything on this link!', 'wpematico'); ?>
+					<?php _e('June rules! Don\'t miss all the news! Follow everything on this link!', 'wpematico'); ?>
 					<br>
 					<br>
 					<a href="https://etruel.com/join-us-to-celebrate-the-million-downloads-month/" target="_blank" class="button button-primary button-hero">Millon Downloads Month</a>
