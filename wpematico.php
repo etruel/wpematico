@@ -3,7 +3,7 @@
  * Plugin Name: WPeMatico
  * Plugin URI: https://www.wpematico.com
  * Description: Create posts automatically from RSS/Atom feeds organized into campaigns with multiples filters.  If you like it, please rate it 5 stars.
- * Version: 2.6.25
+ * Version: 2.7
  * Author: Etruel Developments LLC
  * Author URI: https://etruel.com/wpematico/
  * Text Domain: wpematico
@@ -27,7 +27,7 @@ if (!class_exists('Main_WPeMatico')) {
 
 		private function setup_constants() {
 			if (!defined('WPEMATICO_VERSION'))
-				define('WPEMATICO_VERSION', '2.6.25');
+				define('WPEMATICO_VERSION', '2.7');
 			if (!defined('WPEMATICO_BASENAME'))
 				define('WPEMATICO_BASENAME', plugin_basename(__FILE__));
 			if (!defined('WPEMATICO_ROOTFILE'))
@@ -72,8 +72,10 @@ if (!class_exists('Main_WPeMatico')) {
 				require_once('app/campaign_edit.php');
 				require_once("app/settings_help.php");
 				require_once("app/settings_page.php");
+				require_once("app/tools_page.php");
 				require_once("app/debug_page.php");
 				require_once("app/settings_tabs.php");
+				require_once("app/tools_tabs.php");
 				require_once("app/addons_page.php");
 				require_once("app/notification_traslate.php");
 				require_once("app/smart_notifications.php");
@@ -96,6 +98,7 @@ if (!class_exists('Main_WPeMatico')) {
 			add_action('init', array('WPeMatico', 'init'));
 			add_action('the_permalink', array('WPeMatico', 'wpematico_permalink'));
 			add_filter('post_link', array('WPeMatico', 'wpematico_permalink'));
+			add_filter('get_canonical_url', array('WPeMatico_functions', 'wpematico_set_canonical'), 999999, 2);
 		}
 
 		/**

@@ -145,6 +145,7 @@ function wpematico_update_db_check() {
 		if ( !get_transient( '_wpematico_activation_redirect' ) ){ //just one time running
 	        wpematico_install( false );  // true will re-save all the campaigns 
 		}
+		delete_option('wpematico_lastlog_disabled');
     }
 }
 

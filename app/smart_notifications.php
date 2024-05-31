@@ -14,7 +14,6 @@ class wpe_smart_notifications {
 		// dismiss AJAX calls
 		add_action('wp_ajax_wpematico_dismiss_wprate_notice', array(__CLASS__, 'dismiss_wprate_notice'));
 		add_action('wp_ajax_wpematico_dismiss_wizard_notice', array(__CLASS__, 'dismiss_wizard_notice'));
-		
 		// temp. will be deleted on finish MDM
 		add_action('wp_ajax_wpematico_dismiss_mdm_notice', array(__CLASS__, 'dismiss_mdm_notice'));
 	}

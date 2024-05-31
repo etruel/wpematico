@@ -297,7 +297,7 @@ class wpe_notification_traslate {
 			}
 
 			//minimizar el div
-			$(".icon-minimizar-div").click(function(){
+			$(".icon-minimizar-div").on("click", function(){
 				$('.description-traslate').slideToggle(300);
 				if($(this).hasClass(icon_dismis)){
 					$(this).removeClass(icon_dismis);
@@ -311,7 +311,7 @@ class wpe_notification_traslate {
 					//save_icon_eyes(icon_dismis);
 				}
 			});
-			$(".icon-cerrar-div").click(function(){
+			$(".icon-cerrar-div").on("click", function(){
 				$(this).parent().parent().slideUp(500);
 				//ajax Icon Save
 				close_translate_notification();

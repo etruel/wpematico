@@ -108,34 +108,42 @@ class WPEMATICO_Welcome {
 			?>
 			<style type="text/css" media="screen">
 				/*<![CDATA[*/
-				[class*="dashboard_page_"] #wpcontent { /*background: #fff;*/ padding: 0 24px; }
+				[class*="dashboard_page_"] #wpcontent { background: #fff; padding: 0 24px; }
+				.br-16{ border-radius: 16px; }
 				.wpe-flex{ display: flex; }
 				.about__section { background: #fff; font-size: 1.2em; margin: 0;}
 				.about__section.mb-0{ margin-bottom: 0; }
 				.about__section a{ color: #222; }
 				.about__section a:hover{ color: #ef8e2f; }
-				.about__header-wpematico { background-image: <?php echo 'url('.WPEMATICO_PLUGIN_URL . 'images/about-header.png)'; ?>; background-size: 80%; background-position: bottom right; padding-top: 3rem; background-color: #222; background-repeat: no-repeat; position: relative; margin-bottom: 32px;}
-				.about__header-title-wpematico{ margin: 5rem 2rem 0;padding: 1em 0; }
+				.about__header-wpematico { background-image: <?php echo 'url('.WPEMATICO_PLUGIN_URL . 'images/about-header.png)'; ?>; background-size: 80%; background-position: center right; padding-top: 3rem; background-color: #222; background-repeat: no-repeat; border-radius: 16px; position: relative; }
+				.about__header-title-wpematico{ padding: 5rem 2rem 0; }
 				.about__header-title-wpematico p { margin: 0; padding: 0; font-size: 4em; color: #fff; line-height: 1; font-weight: 900; text-transform: uppercase; }
-				.about__header-title-wpematico p span { color: #eee; }
-				.about__header-text { max-width: 25em; margin: 0 2rem 3rem; padding: 0; font-size: 1.5em; line-height: 1.4;}
-				.about__header-text p { color: #fff; margin-top: 0; }
-				.about__header-navigation { display: flex; justify-content: flex-start; background: #fff; color: #222; border-color: #222; padding-top: 0;}
-				.about__header-navigation .nav-tab{color: #222 ; margin: 0; padding: 24px 32px; float: none; font-size: 1.4em; line-height: 1; border-style: solid; background: 0 0; border-width: 0 0 3px; border-color: transparent;}
+				.about__header-title-wpematico p span { color: #f2f2f2; }
+				.about__header-text { max-width: 25em; padding: 0 2rem 3rem; font-size: 1.5em; line-height: 1.4;}
+				.about__header-text p { color: #fff; margin: 0; }
+				.about__header-navigation { display: flex; justify-content: center; background: #fff; color: #222; border-bottom: 0; padding-top: 0;}
+				.about__header-navigation .nav-tab{color: #222 ; margin: 0; padding: 24px 32px; float: none; font-size: 1.4em; line-height: 1; border-style: solid; background: 0 0; border-width: 0 0 6px; border-color: transparent;}
 				.about__header-navigation .nav-tab-active { margin-bottom: -3px; }
 				.about__header-navigation .nav-tab-active:active, .about__header-navigation .nav-tab-active:hover, .about__header-navigation .nav-tab-active { color: #ef8e2f; border-color: #ef8e2f;}
-				.about__header-navigation .nav-tab:active, .about__header-navigation .nav-tab:hover{ background: #f5f5f5; color: #ef8e2f; }
-				.about__container-wpematico{ line-height: 1.4; color: #222; max-width: 1000px; margin: 24px auto; clear: both; --gap: 2rem;}
+				.about__header-navigation .nav-tab:active, .about__header-navigation .nav-tab:hover{ background: #ef8e2f; color: #fff; }
+				.about__container-wpematico { line-height: 1.4; color: #222; max-width: 1000px; margin: 24px auto; clear: both; --gap: 2rem;}
 				.about__container-wpematico .has-accent-background-color { background: #ef8e2f; }
-				.about__container-wpematico .has-subtle-background-color { background: #f9f9f9; }
+				.about__container-wpematico .has-subtle-background-color { background: #f2f2f2; }
 				.about__header-title-wpematico .wpematico-badge { align-self: flex-end; margin-bottom: 10px; max-height: 80px; width: auto; }
 				.about__section.about__section_height { min-height: 560px; }
 				.about__section.about__section_height-2 { min-height: 400px; }
 				.about__section.is-feature { font-size: 1.4em; }
-				.about__container-wpematico h1, .about__container-wpematico h2, .about__container-wpematico h3.is-larger-heading{
-					    margin-top: 0; margin-bottom: .5em; font-size: 1.75em; line-height: 1.2; font-weight: 600; }
-				.about__container-wpematico h1.is-smaller-heading, .about__container-wpematico h2.is-smaller-heading, .about__container-wpematico h3 { margin-top: 0; font-size: 1.25em; font-weight: 700; }
-				.about__container-wpematico .about__image { padding: 0 32px; }
+				.about__container-wpematico h1, .about__container-wpematico h2, .about__container-wpematico h3.is-larger-heading{ margin-top: 0; margin-bottom: .5em; font-size: 1.75em; line-height: 1.2; font-weight: 600; }
+				.about__container-wpematico h3{ font-size: 1.625rem; font-weight: 700; line-height: 1.4; }
+				.about__container-wpematico h1.is-smaller-heading, .about__container-wpematico h2.is-smaller-heading, .about__container-wpematico h3.is-smaller-heading, .about__container-wpematico h4 { margin-top: 0; font-size: 1.125rem; font-weight: 700; }
+				.about__container-wpematico h3.is-smaller-heading, .about__container-wpematico h4 { font-weight: 600 }
+				.about__container-wpematico .about__image { margin-bottom: 1.5em; }
+				.about__container-wpematico .about__image+h3{ margin-top: 0; }
+				.about__container-wpematico .about__image.icon{ display: inline-flex; justify-content: center; align-items: center; width: 48px; height: 48px; border-radius: 5px; background-color: #f2f2f2; }
+				.about__container-wpematico .has-subtle-background-color .about__image.icon{ background-color: #fff; }
+				.about__container-wpematico .about__newsletter { padding: 0 32px; }
+				.about__container-wpematico .is-section-header { padding: 32px; }
+				.about__container-wpematico .is-section-header.pb-0 { padding-bottom: 0; }
 				.about__section .span-text { font-size: .9em; }
 				.feature-section a, .about__section p a { font-weight: 600; }
 				.addon_block { display: flex; margin-bottom: 1em;}
@@ -147,7 +155,7 @@ class WPEMATICO_Welcome {
 				.about__section.has-2-columns .column:nth-of-type(2n+1) { -ms-grid-column: 1; grid-column-start: 1; }
 				.about__section.has-2-columns .column:nth-of-type(2n) { -ms-grid-column: 2; grid-column-start: 2; }
 				.about__section .column.is-edge-to-edge{ color: #fff; padding: 0; }
-				.about__section + .about__section .column{ padding-top: 32px; }
+				.about__section + .about__section .column{ padding: 32px; }
 				.about__container-wpematico .is-vertically-aligned-center{ align-self: center; }
 				@media all and ( max-width: 1035px ) {
 					.about__header { background-size: 95%; }
@@ -164,6 +172,7 @@ class WPEMATICO_Welcome {
 					.about__header-navigation .nav-tab{ font-size: 1.1em; }
 				}
 				@media all and ( max-width: 600px ) {
+					.about__header-wpematico { background-image: initial; }
 					.about__header-title-wpematico p{ font-size: 2.25em; }
 					.about__section.has-2-columns, .about__section.has-2-columns.is-wider-left, .about__section.has-2-columns.is-wider-right, .about__section.has-3-columns{ display: block; padding-bottom: 16px; }
 					.about__section + .about__section .column{ padding-top: 16px; }
@@ -257,175 +266,194 @@ class WPEMATICO_Welcome {
 
 				<?php $this->welcome_message(); ?>
 
-				<?php $this->tabs(); ?>
-
 			</div>
+
+			<?php $this->tabs(); ?>
 
 			<?php $this->subscription_form(); ?>
 
-			<hr/>
-
-			<div class="about__section about__section_height has-2-columns">
-				<div class="column wpe-flex is-edge-to-edge has-accent-background-color">
+			<div class="about__section has-2-columns">
+				<div class="wpe-flex column is-vertically-aligned-center">
 					<div class="about__image is-vertically-aligned-center">
-						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/media_ext.png'; ?>" alt="Use Featured Image From URL" style="max-height: 500px;" />
+						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/canonical.jpg'; ?>" alt="Implemented Canonical links for SEO!" />
 					</div>
 				</div>
 				<div class="column is-vertically-aligned-center">
-					<h2><?php _e('Choose Media Mime Types.', 'wpematico'); ?></h2>
+					<h3><?php _e('Implemented Canonical links for SEO!', 'wpematico'); ?></h3>
 
-					<h3><?php _e('Separate with commas the allowed mime types for WPeMatico Uploads.', 'wpematico'); ?></h3>
-
-					<p><?php _e('You can choose which media files will be uploaded to your website, you can add or remove the extensions you want and WPeMatico will do the rest.', 'wpematico'); ?></p>
-
-					<h2><?php _e('Use Featured Image From URL.', 'wpematico'); ?></h2>
-
-					<h3><?php _e('Use the featured images without storing them on your own website.', 'wpematico'); ?></h3>
-
-					<p><?php _e('Avoid storing images on your site, this new feature allows you to use the featured image from an external URL by activating the "Use Featured Image from URL" option from WPeMatico Settings or from each campaign.', 'wpematico'); ?></p>
-					<p></p>
-					<h3><?php _e('NOTE: Featured Image From URL plugin is required for this functionality.', 'wpematico'); ?></h3>
+					<p><?php _e('A new feature that allows to globally set the canonical link of each post (only created by WPeMatico) to the source site’s permalink, improving the SEO ranking of your website.', 'wpematico'); ?></p>
 				</div>
 			</div>
 
-			<div class="about__section about__section_height has-2-columns">
+			<div class="about__section has-2-columns">
 				<div class="column is-vertically-aligned-center">
-					<h2><?php _e('Force Item Date.', 'wpematico'); ?></h2>
-
-					<p><?php _e('You can force the use of the original date of each feed item ignoring incoherent dates like past posts published after new ones.', 'wpematico'); ?></p>
-
-					<h2><?php _e('Create Post Excerpt Automatically.', 'wpematico'); ?></h2>
-
-					<p><?php _e('By default WordPress creates the excerpts "on the fly" from the post content, WPeMatico allows to create them using the description tag of the items in the feed.', 'wpematico'); ?></p>
-
-					<h2><?php _e('Custom Posts Statuses.', 'wpematico'); ?></h2>
-
-					<h3><?php _e('Post status allows you to organize your Posts.', 'wpematico'); ?></h3>
-
-					<p><?php _e('Post status is an very useful editorial tool that allows you to organize your Posts based on their respective stages during the editorial workflow.', 'wpematico'); ?></p>
-
+					<h3><?php _e('New WPeMatico&#39;s Tools page added', 'wpematico'); ?></h3>
+					<p><?php _e('New Tools page to group features and functions that are not directly related to WPeMatico configuration and/or campaigns. You can also find here the System Status feature.', 'wpematico'); ?></p>
+					
+					<h3 class="is-smaller-heading"><?php _e('Added Export/import Settings backup!', 'wpematico'); ?></h3>
+					<p><?php _e('Find on the Tools page the new function to export and import WPeMatico and addons settings, to backup or export your settings to another website.', 'wpematico'); ?></p>
 				</div>
-				<div class="column wpe-flex is-edge-to-edge has-accent-background-color">
+				<div class="wpe-flex column is-vertically-aligned-center">
 					<div class="about__image is-vertically-aligned-center">
-						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/force_date-post_excerpt.png'; ?>" alt="Debug Mode" />
+						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/tools.jpg'; ?>" alt="New WPeMatico&#39;s Tools page added" />
 					</div>
 				</div>
 			</div>
 
-			<div class="about__section about__section_height has-2-columns">
-				<div class="column wpe-flex is-edge-to-edge has-accent-background-color">
-					<div class="about__image is-vertically-aligned-center">
-						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/xml_campaign.png'; ?>" alt="XML Campaign Type" />
+			<div class="about__section has-3-columns">
+				<div class="column">
+					<div class="about__image">
+						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/shorts.jpg'; ?>" alt="Avoid or include Shorts on YouTube Campaign type!" style="max-height: 500px;" />
+					</div>
+					<div class="about__content">
+						<h3 class="is-smaller-heading"><?php _e('Avoid or include Shorts on YouTube Campaign type!', 'wpematico'); ?></h3>
+
+						<p><?php _e('A new feature integrated into the YouTube campaign type, allows users to filter their YouTube feed to skip or only get short videos. Enhancing content relevance and personalization.', 'wpematico'); ?></p>
 					</div>
 				</div>
-				<div class="column is-vertically-aligned-center">
-					<h2><?php _e('A new Campaign Type for XML feeds.', 'wpematico'); ?></h2>
+				
+				<div class="column">
+					<div class="about__image">
+						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/hash.jpg'; ?>" alt="Improvements in duplicate control" />
+					</div>
+					<div class="about__content">
+						<h3 class="is-smaller-heading"><?php _e('Improvements in duplicate control', 'wpematico'); ?></h3>
 
-					<h3><?php _e('XML Campaign type to parse and fetch XML feeds', 'wpematico'); ?></h3>
-
-					<p><?php _e('This feature allows you to configure every campaign with the fields that are found in the XML tags.  A very important addition that will allow to import almost anything that come in XML format to WordPress Posts (types).', 'wpematico'); ?></p>
-
-					<p><?php _e('An option in Settings enables the upload of XML files in the WordPress Media Library in order to use its URL in the campaigns.', 'wpematico'); ?></p>
-
-					<p><?php _e('Also, using the addons as the Professional will allow overwriting the data of a campaign and add the author, categories and tags also from the XML tags.', 'wpematico'); ?></p>
-				</div>
-			</div>
-
-			<div class="about__section about__section_height has-2-columns">
-				<div class="column is-vertically-aligned-center">
-					<h2><?php _e('A new preview for the YouTube campaign.', 'wpematico'); ?></h2>
-
-					<h3><?php _e('This feature shows how the posts fetched from YouTube will look before that are created.', 'wpematico'); ?></h3>
-
-					<p><?php _e('Now you have the possibility to choose which elements of the YouTube feeds will be included in the post, the image, the featured image or the description, the preview section in the metabox will show you in real time.', 'wpematico'); ?></p>
-
-					<p><?php _e("You can mark the selection options to see the possible results of the Post Template.", 'wpematico'); ?></p>
-
-				</div>
-				<div class="column wpe-flex is-edge-to-edge has-accent-background-color">
-					<div class="about__image is-vertically-aligned-center">
-						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/yt-campaign.png'; ?>" alt="Preview for the YouTube campaign" />
+						<p><?php _e('Significant new improvements in duplicate posts control: by refining the hash code, we have improved the system&#39;s ability to identify and manage duplicate items much more effectively.', 'wpematico'); ?></p>
 					</div>
 				</div>
-			</div>
-
-			<div class="about__section about__section_height has-2-columns">
-				<div class="column wpe-flex is-edge-to-edge has-accent-background-color">
-					<div class="about__image is-vertically-aligned-center">
-						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/previewbutton.png'; ?>" alt="Campaign Preview" />
-					</div>
-				</div>
-				<div class="column is-vertically-aligned-center">
-					<h2><?php _e('A new Campaign Fetch Preview.', 'wpematico'); ?></h2>
-
-					<h3><?php _e('Introducing the Campaign Preview Feature', 'wpematico'); ?></h3>
-
-					<p><?php _e('The most visible change in version 1.9 is certainly the Campaign Preview.', 'wpematico'); ?><br />
-						<?php _e('This new feature lets you view the list of the posts the campaign will fetch the next time it runs.', 'wpematico'); ?><br />
-						<?php _e('You can see the title, image and an excerpt of its content, but you can click in the title to see all its content like it will bring by WPeMatico plugin.', 'wpematico'); ?></p>
-
-					<h3><?php _e('Using the Campaign Preview.', 'wpematico'); ?></h3>
-
-					<p><?php _e('When click in the “eye” icon, a popup will open to show you the next items to fetch.  This allow you to see if the campaign has pending items to publish from any feed inside it.', 'wpematico'); ?></p>
-				</div>
-			</div>
-
-			<hr/>
-
-			<div class="about__section about__section_height has-2-columns has-subtle-background-color">
-				<h2 class="is-section-header"><?php _e('More Tweaks and Improvements.'); ?></h2>
 
 				<div class="column">
-					<h3><?php _e('Better speed on uploading files.', 'wpematico'); ?></h3>
-					<p><?php _e("We've improved the functions and the ways used for pull the images and attach to the published post.", 'wpematico'); ?></p>
+					<div class="about__image">
+						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/performance.jpg'; ?>" alt="Much performance improvements" />
+					</div>
+					<div class="about__content">
+						<h3 class="is-smaller-heading"><?php _e('Much performance improvements', 'wpematico'); ?></h3>
 
-					<h3><?php _e('Better control on running campaigns manually.', 'wpematico'); ?></h3>
-					<p><?php _e('Until now if you run a campaign and give an error in the execution, the campaign would hangs up, but from now when fails, it will show an alert with the error message.', 'wpematico'); ?></p>
+						<p><?php _e('Some changes were made to the plugin’s code to improve the memory usage after fetching each post when campaigns are running, making the plugin faster and more efficient.', 'wpematico'); ?></p>
+					</div>
+				</div>
 
-					<h3><?php _e('More icons and cosmetics things.', 'wpematico'); ?></h3>
-					<p><?php _e("We're optimizing the screens to make them be more readable by humans, and also get more and better helps with examples and tips in the campaign editing or other screens.", 'wpematico'); ?></p>
-					<p><?php _e("Find tips by clicking in the \"Help\" tab in the top-right corner inside Wordpress admin screens.", 'wpematico'); ?></p>
+				<div class="column">
+					<div class="about__image">
+						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/mime_type.jpg'; ?>" alt="Modify the allowed mime types feature" />
+					</div>
+					<div class="about__content">
+						<h3 class="is-smaller-heading"><?php _e('Modify the allowed mime types feature', 'wpematico'); ?></h3>
+
+						<p><?php _e('A new feature that lets you upload of other mime types (during the campaign execution) that are not normally allowed by the WP library, giving you more flexibility over the media files.', 'wpematico'); ?></p>
+					</div>
+				</div>
+				
+				<div class="column">
+					<div class="about__image">
+						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/image_fetching.jpg'; ?>" alt="Enhancements in the image fetching" />
+					</div>
+					<div class="about__content">
+						<h3 class="is-smaller-heading"><?php _e('Enhancements in the image fetching', 'wpematico'); ?></h3>
+
+						<p><?php _e('New fixes and improvements to the SimplePie functions to allow fetching multiple images that are available in the <media>, <enclosure> and/or <image> tags of feed items.', 'wpematico'); ?></p>
+					</div>
+				</div>
+				
+				<div class="column">
+					<div class="about__image">
+						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/popup_log.jpg'; ?>" alt="New Popup layout for campaign logs" />
+					</div>
+					<div class="about__content">
+						<h3 class="is-smaller-heading"><?php _e('New Popup layout for campaign logs', 'wpematico'); ?></h3>
+
+						<p><?php _e('This improvement lets you see the logs of your campaigns in a modal window (from list and edit), with a better layout and readability, so you can analyze them more easily.', 'wpematico'); ?></p>
+					</div>
+				</div>
+				
+				<div class="column">
+					<div class="about__image">
+						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/design_style.jpg'; ?>" alt="Design and style improvements for better performance" />
+					</div>
+					<div class="about__content">
+						<h3 class="is-smaller-heading"><?php _e('Design and style improvements for better performance', 'wpematico'); ?></h3>
+
+						<p><?php _e('Some minor design and style improvements were made and gif were replaced by native wordpress dashicons for better performance, making the plugin more attractive and fast.', 'wpematico'); ?></p>
+					</div>
+				</div>
+				
+				<div class="column">
+					<div class="about__image">
+						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/log_banner.jpg'; ?>" alt="Banner to show the updates details" />
+					</div>
+					<div class="about__content">
+						<h3 class="is-smaller-heading"><?php _e('Banner to show the updates details', 'wpematico'); ?></h3>
+
+						<p><?php _e('A new banner designed to be visible on the WPeMatico&#39;s settings screen, to show a brief overview of the new changes in the version, keeping you informed and updated.', 'wpematico'); ?></p>
+					</div>
+				</div>
+				
+				<div class="column">
+					<div class="about__image">
+						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/fixes.jpg'; ?>" alt="Optimizations, fixes and improvements" />
+					</div>
+					<div class="about__content">
+						<h3 class="is-smaller-heading"><?php _e('Optimizations, fixes and improvements', 'wpematico'); ?></h3>
+
+						<p><?php _e('Fixes and improvements to many features to enhance WPeMatico&#39;s functionality. This update provides a more robust and efficient experience, ensuring smoother operation for all users.', 'wpematico'); ?></p>
+					</div>
+				</div>
+			</div>
+
+			<div class="about__section about__section_height has-2-columns has-subtle-background-color br-16">
+				<h3 class="is-section-header pb-0"><?php _e('More Tweaks and Improvements.'); ?></h3>
+
+				<div class="column">
+					<h3 class="is-smaller-heading"><?php _e('Campaign metafields optimization.', 'wpematico'); ?></h3>
+					<p><?php _e('The obtaining and saving of meta fields during the campaigns execution was optimized to avoid interrupting the event and breaking the campaign when there is too much data in it.', 'wpematico'); ?></p>
+					
+					<h3 class="is-smaller-heading"><?php _e('Removed SimplePie library.', 'wpematico'); ?></h3>
+					<p><?php _e("Continuing with WP standards. In this new version the Simplepie custom library has been removed to use exclusively the library included in WordPress to process RSS feeds.", 'wpematico'); ?></p>
+
+					<h3 class="is-smaller-heading"><?php _e('Addon page tweaks.', 'wpematico'); ?></h3>
+					<p><?php _e("We have fixed some bugs and improved the functionality of individual and bulk actions on the addon page.", 'wpematico'); ?></p>
 				</div>
 				<div class="column">
-					<h3><?php _e('WPeMatico Addons', 'wpematico'); ?></h3>
+					<h3 class="is-smaller-heading"><?php _e('WPeMatico Addons', 'wpematico'); ?></h3>
 
 					<div class="addon_block">
 						<div class="addon_img">
-							<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/wpematico-plus-200x100.jpg'; ?>" alt="WPeMatico Plus Membership" />
+							<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/wpematico-premium-200x100.jpg'; ?>" alt="WPeMatico PREMIUM" />
 						</div>
 						<div class="addon_text">
-							<p><?php _e('The', 'wpematico'); ?> <a href="https://etruel.com/downloads/wpematico-plus/" target="_blank">WPeMatico Plus Membership</a> 
-								<?php _e('contains the five preferred add-Ons with the most wanted features for autoblogging with WordPress in a very easy professional way.', 'wpematico'); ?></p>
+							<p><?php _e('The', 'wpematico'); ?> <a href="https://etruel.com/downloads/wpematico-premium/" target="_blank">WPeMatico PREMIUM</a> 
+								<?php _e('contains the ten preferred add-Ons with the most wanted features for autoblogging with WordPress in a very easy professional way.', 'wpematico'); ?></p>
 						</div>
 					</div>
 
 					<div class="addon_block">
 						<div class="addon_img">
-							<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/wpematico_manual_fetching-200x100.png'; ?>" alt="WPeMatico Manual Fetching" />
+							<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/wpematico-plus-200x100.jpg'; ?>" alt="WPeMatico PLUS" />
 						</div>
 						<div class="addon_text">
-							<p><?php _e('The', 'wpematico'); ?> <a href="https://etruel.com/downloads/wpematico-manual-fetching/" target="_blank">WPeMatico Manual Fetching</a> 
-								<?php _e('extends the Campaign Preview functionality to every feed individually and allows you to review and insert each item, one by one or in bulk mode.', 'wpematico'); ?></p>
+							<p><?php _e('The', 'wpematico'); ?> <a href="https://etruel.com/downloads/wpematico-plus/" target="_blank">WPeMatico PLUS</a> 
+								<?php _e('combines the five most requested add-ons with a lot of great features, simplifying WordPress autoblogging with professional ease.', 'wpematico'); ?></p>
 						</div>
 					</div>
 
 					<div class="addon_block">
 						<div class="addon_img">
-							<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/wpematico_ebay-200x100.png'; ?>" alt="WPeMatico eBay Campaign Type" />
+							<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/wpematico-rss-feed-reader-200x100.png'; ?>" alt="WPeMatico RSS Feed Reader" />
 						</div>
 						<div class="addon_text">
-							<p><?php _e('The', 'wpematico'); ?> <a href="https://etruel.com/downloads/ebay-campaign-type/" target="_blank">WPeMatico eBay Campaign Type</a>
-								<?php _e('uses eBay products in your site and publish them as posts or WooCommerce products by relating your eBay Parter Network Campaigns IDs.', 'wpematico'); ?></p>
+							<p><?php _e('The', 'wpematico'); ?> <a href="https://wordpress.org/plugins/wpematico-rss-feed-reader/" target="_blank">WPeMatico RSS Feed Reader</a> 
+								<?php _e('enhances the functionality of WPeMatico by allowing to read and display the RSS feed results on your WordPress site without creating the posts.', 'wpematico'); ?></p>
 						</div>
 					</div>
 
 					<div class="addon_block">
 						<div class="addon_img">
-							<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/wpematico-hooks_200x100.png'; ?>" alt="WPeMatico Custom Hooks" />
+							<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/wpematico-googlo-campaign-200x100.png'; ?>" alt="WPeMatico Googlo Campaign Type" />
 						</div>
 						<div class="addon_text">
-							<p><?php _e('The', 'wpematico'); ?> <a href="https://wordpress.org/plugins/wpematico-custom-hooks/" target="_blank">WPeMatico Custom Hooks</a> 
-								<?php _e('is a FREE addon that allows you to execute actions and filters provided by WPeMatico in order to create custom behavior in the execution of your campaigns.', 'wpematico'); ?></p>
+							<p><?php _e('The', 'wpematico'); ?> <a href="https://etruel.com/downloads/wpematico-googlo-campaign-type/" target="_blank">WPeMatico Googlo Campaign Type</a>
+								<?php _e('allows to parse each Google News feeds item’s link, simplify by reducing redirections and preserving the authenticity of the original news sources.', 'wpematico'); ?></p>
 						</div>
 					</div>
 
@@ -434,33 +462,51 @@ class WPEMATICO_Welcome {
 				</div>
 			</div>
 
-			<hr/>
-
-			<div class="about__section has-3-columns mb-0">
-				<h2 class="is-section-header"><?php _e('Even More Developer Happiness', 'wpematico'); ?></h2>
+			<div class="about__section has-2-columns mb-0">
+				<h3 class="is-section-header pb-0"><?php _e('Even More Developer Happiness', 'wpematico'); ?></h3>
 				<div class="column">
+					<div class="about__image icon">
+						<span class="dashicons dashicons-editor-code"></span>
+					</div>
 					<h3><?php _e('JavaScript hooks', 'wpematico'); ?></h3>
 					<p><?php _e("We've implemented the JavaScript hooks like WordPress actions and filters! You can make functions to enqueue the scripts and hooks to already added filters in the code.", 'wpematico'); ?></p>
 				</div>
 				<div class="column">
+					<div class="about__image icon">
+						<span class="dashicons dashicons-tickets-alt"></span>
+					</div>
 					<h3><a href="https://etruel.com/my-account/support/" target="_blank"><?php _e('Support ticket system for free', 'wpematico'); ?></a></h3>
 					<p><?php _e('Ask for any problem you may have and you\'ll get support for free. If it is necessay we will see into your website to solve your issue.', 'wpematico'); ?></p>
 				</div>
+			</div>
+			<div class="about__section has-2-columns mb-0">
 				<div class="column">
+					<div class="about__image icon">
+						<span class="dashicons dashicons-awards"></span>
+					</div>
 					<h3><a href="https://etruel.com/downloads/premium-support/" target="_blank"><?php _e('Premium Support', 'wpematico'); ?></a></h3>
 					<p><?php _e('Get access to in-depth setup assistance. We\'ll dig in and do our absolute best to resolve issues for you. Any support that requires code or setup your site will need this service.', 'wpematico'); ?></p>
 				</div>
-			</div>
-			<div class="about__section has-3-columns mb-0">
 				<div class="column">
+					<div class="about__image icon">
+						<span class="dashicons dashicons-update"></span>
+					</div>
 					<h3><?php _e('Nags updates individually for extensions', 'wpematico'); ?><span class="plugin-count" style="display: inline-block;background-color: #d54e21;color: #fff;font-size: 9px;line-height: 17px;font-weight: 600;margin: 1px 0 0 2px;vertical-align: top;-webkit-border-radius: 10px;border-radius: 10px;z-index: 26;padding: 0 6px;">1</span></h3>
 					<p><?php _e('A more clear nag update was added for the addons in the WPeMatico Extensions and Addons menu items.', 'wpematico'); ?></p>
 				</div>
+			</div>
+			<div class="about__section has-2-columns mb-0">
 				<div class="column">
+					<div class="about__image icon">
+						<span class="dashicons dashicons-admin-settings"></span>
+					</div>
 					<h3><?php _e('Hidden Options in Settings -> Writing', 'wpematico'); ?></h3>
 					<p><?php _e("If you have any problem with WPeMatico item menu, Settings page or lost some plugin, we've put there a WPeMatico Section, to try to avoid weird behaviors made by some thirds plugins.", 'wpematico'); ?></p>
 				</div>
 				<div class="column">
+					<div class="about__image icon">
+						<span class="dashicons dashicons-star-filled"></span>
+					</div>
 					<h3><a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" target="_blank"><?php _e('Rate 5 stars on Wordpress', 'wpematico'); ?></a><div class="wporg-ratings" title="5 out of 5 stars" style="color:#ffb900;"><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span></div></h3>
 					<p><?php _e('We need your positive rating of 5 stars in WordPress. Your comment will be published on the bottom of the website and besides it will help making the plugin better.', 'wpematico'); ?></p>
 				</div>
@@ -486,9 +532,9 @@ class WPEMATICO_Welcome {
 
 				<?php $this->welcome_message(); ?>
 
-				<?php $this->tabs(); ?>
-
 			</div>
+
+			<?php $this->tabs(); ?>
 
 			<div class="about__section">
 
@@ -528,9 +574,9 @@ class WPEMATICO_Welcome {
 
 				<?php $this->welcome_message(); ?>
 
-				<?php $this->tabs(); ?>
-
 			</div>
+
+			<?php $this->tabs(); ?>
 
 			<div class="about__section">
 
@@ -569,21 +615,19 @@ class WPEMATICO_Welcome {
 
 				<?php $this->welcome_message(); ?>
 
-				<?php $this->tabs(); ?>
-
 			</div>
+
+			<?php $this->tabs(); ?>
 
 			<div class="about__section is-feature">
 				<p class="about-description"><?php _e('Autoblogging in the blink of an eye! On complete autopilot WpeMatico gets new content regularly for your site!  WPeMatico is a very easy to use autoblogging plugin. Organized into campaigns, it publishes your posts automatically from the RSS/Atom feeds of your choice.', 'wpematico'); ?></p><br />
 				<p class="about-description"><?php _e('Use the tips below to get started using WPeMatico. You will be up and running in no time!', 'wpematico'); ?></p>
 			</div>
 
-			<hr />
-
 			<div class="about__section about__section_height has-2-columns">
-				<div class="column wpe-flex is-edge-to-edge has-accent-background-color">
+				<div class="column wpe-flex has-accent-background-color">
 					<div class="about__image is-vertically-aligned-center">
-						<div class="feature-section-media" style="max-height: 400px; overflow: hidden;">
+						<div class="feature-section-media" style="max-height: 400px; overflow: hidden; border-radius: 16px;">
 							<img src="<?php echo WPEMATICO_PLUGIN_URL . 'screenshot-5.jpg'; ?>" class="Fill in the Settings"/>
 						</div>
 					</div>
@@ -616,7 +660,7 @@ class WPEMATICO_Welcome {
 			</div>
 
 			<div class="about__section about__section_height has-2-columns">
-				<div class="column wpe-flex is-edge-to-edge has-accent-background-color">
+				<div class="column wpe-flex has-accent-background-color">
 					<div class="about__image is-vertically-aligned-center">
 						<div class="feature-section-media" style="max-height: 400px; overflow: hidden;">
 							<img src="<?php echo WPEMATICO_PLUGIN_URL . 'screenshot-6.jpg'; ?>" class="Creating Your First Campaign"/>
@@ -657,43 +701,57 @@ class WPEMATICO_Welcome {
 				</div>
 			</div>
 
-			<hr />
-
 			<div class="about__section has-2-columns has-subtle-background-color">
-				<h2 class="is-section-header"><?php _e('Need more Help?', 'wpematico'); ?></h2>
+				<h3 class="is-section-header"><?php _e('Need more Help?', 'wpematico'); ?></h3>
 				<div class="column">
-					<h3><?php _e('Phenomenal Support', 'wpematico'); ?></h3>
+					<div class="about__image icon">
+						<span class="dashicons dashicons-tickets-alt"></span>
+					</div>
+					<h4><?php _e('Phenomenal Support', 'wpematico'); ?></h4>
 					<p><?php echo __('We do our best to provide the best support we can. If you encounter a problem or have a question, simply open a ticket using our ', 'wpematico') . '<a target="_blank" href="https://etruel.com/my-account/support">' . __('support form', 'wpematico') . '</a>.'; ?></p>
 				</div>
 				<div class="column">
-					<h3><?php _e('Need Even Better Support?', 'wpematico'); ?></h3>
-					<p><?php echo __('Our ', 'wpematico') . '<a target="_blank" href="https://etruel.com/downloads/premium-support/">' . __('Premium Support', 'wpematico') . '</a>' . __('system is there for customers that need faster and/or more in-depth assistance.', 'wpematico'); ?></p>
+					<div class="about__image icon">
+						<span class="dashicons dashicons-awards"></span>
+					</div>
+					<h4><?php _e('Need Even Better Support?', 'wpematico'); ?></h4>
+					<p><?php echo __('Our ', 'wpematico') . '<a target="_blank" href="https://etruel.com/downloads/premium-support/">' . __('Premium Support', 'wpematico') . '</a> ' . __('system is there for customers that need faster and/or more in-depth assistance.', 'wpematico'); ?></p>
 				</div>
 			</div>
 			<div class="about__section has-2-columns has-subtle-background-color">
-				<h2 class="is-section-header"><?php _e('Stay Up to Date', 'wpematico'); ?></h2>
+				<h3 class="is-section-header"><?php _e('Stay Up to Date', 'wpematico'); ?></h3>
 				<div class="column">
-					<h3><?php _e('Get Notified of Extension Releases', 'wpematico'); ?></h3>
+					<div class="about__image icon">
+						<span class="dashicons dashicons-update"></span>
+					</div>
+					<h4><?php _e('Get Notified of Extension Releases', 'wpematico'); ?></h4>
 					<p><?php echo __('New extensions that make WPeMatico even more powerful are released nearly every single week. Subscribe to the newsletter to stay up to date with our latest releases. ', 'wpematico') . '<a href="http://eepurl.com/bX2ANz" target="_blank">' . __('Sign up now', 'wpematico') . '</a>' . __(' to ensure you do not miss a release!', 'wpematico'); ?></p>
 				</div>
 				<div class="column">
-					<h3><?php _e('Get Alerted About New Tutorials', 'wpematico'); ?></h3>
+					<div class="about__image icon">
+						<span class="dashicons dashicons-megaphone"></span>
+					</div>
+					<h4><?php _e('Get Alerted About New Tutorials', 'wpematico'); ?></h4>
 					<p><?php echo '<a href="http://eepurl.com/bX2ANz" target="_blank">' . __('Sign up now', 'wpematico') . '</a>' . __(' to hear about the latest tutorial releases that explain how to take WPeMatico further.', 'wpematico'); ?></p>
 				</div>
 			</div>
 			<div class="about__section has-2-columns has-subtle-background-color">
-				<h2 class="is-section-header"><?php _e('WPeMatico Add-ons', 'wpematico'); ?></h2>
+				<h3 class="is-section-header"><?php _e('WPeMatico Add-ons', 'wpematico'); ?></h3>
 				<div class="column">
-					<h3><?php _e('Extend the plugin features', 'wpematico'); ?></h3>
+					<div class="about__image icon">
+						<span class="dashicons dashicons-admin-plugins"></span>
+					</div>
+					<h4><?php _e('Extend the plugin features', 'wpematico'); ?></h4>
 					<p><?php _e('Add-on plugins are available that greatly extend the default functionality of WPeMatico. There are a Professional extension for extend the parsers of the feed contents, The Full Content add-on to scratch the source webpage looking to get the entire article, and many more.', 'wpematico'); ?></p>
 				</div>
 				<div class="column">
-					<h3><?php _e('Visit the Extension Store', 'wpematico'); ?></h3>
+					<div class="about__image icon">
+						<span class="dashicons dashicons-store"></span>
+					</div>
+					<h4><?php _e('Visit the Extension Store', 'wpematico'); ?></h4>
 					<p><?php echo '<a href="https://etruel.com/downloads" target="_blank">' . __('The etruel store', 'wpematico') . '</a>' . __('has a list of all available extensions for WPeMatico, also other Worpdress plugins, some of them for free. Including convenient category filters so you can find exactly what you are looking for.', 'wpematico'); ?></p>
 				</div>
 			</div>
-
-			<hr />
 
 		</div>
 		<?php
@@ -771,19 +829,19 @@ class WPEMATICO_Welcome {
 		?>
 		<div class="about__section <?php echo $classes; ?> subscription">
 			<div class="column is-vertically-aligned-center">
-				<h2><?php _e('Last News in This Version!', 'wpematico'); ?></h2>
-				<p><?php _e('WPeMatico continues to improve and innovate with each update, once again we include new features in order to improve the user experience and cover all their needs.', 'wpematico'); ?></p>
-				<p><?php _e('Choose which media files will be uploaded to your website by allowing or not their extension!','wpematico')?></p>
-				<p><?php _e('Can you imagine using the featured images without storing them on your own website? With this new version it\'s now possible! What are you waiting for to test it?', 'wpematico'); ?></p>
-				<h3><strong><?php _e('NOTE: Featured Image From URL plugin is required for this functionality.', 'wpematico'); ?></strong></h3>
-				<p><?php _e('In addition to this, in this new version you can also create excerpts using the description tag of the items in the feed and you can even force the use of the original date of each post!', 'wpematico'); ?></p>
+				<h3><?php _e('Welcome to WPeMatico 2.7!', 'wpematico'); ?></h3>
+				<p><?php _e('In this version, we’ve taken the autoblogging for WordPress to the next level. Our team has worked tirelessly to optimize performance and enhance the user experience.','wpematico')?></p>
+				<p><?php _e('Along with improvements in speed and efficiency, we incorporate the use of canonical URLs in the posts created by WPeMatico, ensuring the best SEO for your site.', 'wpematico'); ?></p>
+				<h3><?php _e('New WPeMatico addons.', 'wpematico'); ?></h3>
+				<p><?php _e('<strong>RSS Feed Reader</strong> which allows you to read and display RSS feeds using get_the_content() WP filter, page template or shortcodes directly on your site without creating posts.', 'wpematico'); ?></p>
+				<p><?php _e('<strong>Googlo Campaign Type</strong> included in our ESSENTIALs membership, which analyzes Google feed links more effectively to prevent broken links and redirects.', 'wpematico'); ?></p>
 			</div>
 			<?php if($suscripted_user === false) { ?>
-				<div class="column wpe-flex is-edge-to-edge has-accent-background-color">
-					<div class="about__image is-vertically-aligned-center">
+				<div class="column wpe-flex is-edge-to-edge has-accent-background-color br-16">
+					<div class="about__newsletter is-vertically-aligned-center">
 						<p></p>
-						<h2><strong><?php _e('Stay up to date!', 'wpematico'); ?></strong></h2>
-						<h3 class="wpsubscription_info"><?php _e('Subscribe to our Newsletter and be the first to receive our news.', 'wpematico'); ?> 
+						<h3><?php _e('Stay up to date!', 'wpematico'); ?></h3>
+						<h3 class="is-smaller-heading wpsubscription_info"><?php _e('Subscribe to our Newsletter and be the first to receive our news.', 'wpematico'); ?> 
 							<?php _e('We send about 4 or 5 emails per year. Really.', 'wpematico'); ?></h3>
 						<form action="<?php echo admin_url('admin-post.php'); ?>" id="wpsubscription_form" method="post" class="wpcf7-form">
 							<input type="hidden" name="action" value="save_subscription_wpematico"/>

@@ -2,7 +2,7 @@ jQuery(document).ready(function ($) {
 
 	theclock();
 
-	$('button[btn-href]').click(function (e) {
+	$('button[btn-href]').on("click", function (e) {
 		location.href = $(this).attr('btn-href');
 	});
 	$(document).on("click", 'button.state_buttons.dashicons-controls-play', function (e) {
@@ -32,7 +32,7 @@ jQuery(document).ready(function ($) {
 
 	$('#screen-meta-links').append('<div id="contextual-help-link-wrap" class="hide-if-no-js screen-meta-toggle"><button type="button" id="show-clock" class="button show-clock" aria-controls="clock-wrap" aria-expanded="false">' + wpematico_object.i18n_date_format + '</button></div>');
 
-	$("#cb-select-all-1, #cb-select-all-2").change(function () {
+	$("#cb-select-all-1, #cb-select-all-2").on("change", function () {
 		$("input[name='post[]']").each(function () {
 			if ($(this).is(':checked')) {
 				$("tr#post-" + $(this).val()).css('background-color', '#dbb27e');
@@ -41,7 +41,7 @@ jQuery(document).ready(function ($) {
 			}
 		});
 	});
-	$("input[name='post[]']").change(function () {
+	$("input[name='post[]']").on("change", function () {
 		if ($(this).is(':checked')) {
 			$("input[name='post[]']:checked").each(function () {
 				$("tr#post-" + $(this).val()).css('background-color', '#dbb27e');
@@ -56,7 +56,7 @@ function run_now(c_ID) {
 	jQuery('html').css('cursor', 'wait');
 	jQuery('#post-' + c_ID + ' .state_buttons.dashicons-controls-play').addClass('green');
 	jQuery("div[id=fieldserror]").remove();
-	var msgdev = '<p><img width="16" src="' + wpematico_object.image_run_loading + '"> <span style="vertical-align: top;margin: 10px;">' + wpematico_object.text_running_campaign + '</span></p>';
+	var msgdev = '<p><span class="dashicons dashicons-admin-generic wpe_spinner"></span> <span style="vertical-align: top;">' + wpematico_object.text_running_campaign + '</span></p>';
 	jQuery(".subsubsub").before('<div id="fieldserror" class="updated fade">' + msgdev + '</div>');
 	var data = {
 		campaign_ID: c_ID,
@@ -98,8 +98,9 @@ function run_all() {
 
 	jQuery('html').css('cursor', 'wait');
 	jQuery('#fieldserror').remove();
-	var msgdev = '<p><img width="16" src="' + wpematico_object.image_run_loading + '"> <span style="vertical-align: top;margin: 10px;">' + wpematico_object.text_running_campaign + '</span></p>';
-	jQuery(".subsubsub").before('<div id="fieldserror" class="updated fade ajaxstop">' + msgdev + '</div>');
+	var spinner = '<p><span class="dashicons dashicons-admin-generic wpe_spinner"></span> <span style="vertical-align: top;">' + wpematico_object.text_running_campaign + '</span></p>';
+	jQuery(".subsubsub").before('<div id="fieldserror" class="updated fade ajaxstop">' + spinner + '</div>');
+	var lengthEach = 0;
 	jQuery("input[name='post[]']:checked").each(function () {
 		var c_ID = jQuery(this).val();
 		jQuery('#post-' + c_ID + ' .state_buttons.dashicons-controls-play').addClass('green');
@@ -126,11 +127,15 @@ function run_all() {
 				jQuery("#lastruntime").attr('style', 'font-weight: bold;');
 			}
 			jQuery('#post-' + c_ID + ' .state_buttons.dashicons-controls-play').removeClass('green');
+		},
+		).done(function () {
+			lengthEach++;
+			if(jQuery("input[name='post[]']:checked").length == lengthEach){
+				jQuery('.ajaxstop').remove();
+				jQuery('html').css('cursor', 'auto');
 
+			}
 		});
-	}).ajaxStop(function () {
-		jQuery('html').css('cursor', 'auto');
-		jQuery('.ajaxstop').remove().ajaxStop();
 	});
 }
 

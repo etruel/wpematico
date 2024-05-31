@@ -20,6 +20,34 @@ if(!class_exists('WPeMatico_Settings')) :
 			add_action('wpematico_settings_tab_settings', array(__CLASS__, 'settings_form'));
 			add_action('admin_post_save_wpematico_settings', array(__CLASS__, 'settings_save'));
 			add_action('admin_init', array(__CLASS__, 'settings_help'));
+			add_action('wp_ajax_process_button_click', array(__CLASS__,'process_button_click'));
+			add_action('wp_ajax_nopriv_process_button_click', array(__CLASS__,'process_button_click'));
+		}
+
+		public static function process_button_click() {
+			// Verify the nonce
+			$nonce = isset($_POST['nonce']) ? sanitize_text_field(wp_unslash($_POST['nonce'])) : '';
+			if (!wp_verify_nonce($nonce, 'wpematico-settings-page-nonce')) {
+				wp_send_json_error(__('Permission check failed', 'wpematico'));
+			}
+		
+			// Retrieve the value from the AJAX request
+			$value = isset($_POST['value']) ? true : false;
+			$updateOption = false;
+			if($value)
+				$updateOption = update_option('wpematico_lastlog_disabled', $value);
+
+			if($updateOption){
+				// Process the value (you can customize this part)
+				$response = [
+					'message' => __('Processing successful', 'wpematico'),
+					'color' => 'success',
+				];
+				// Send the response back to the frontend
+				wp_send_json_success($response);
+			}else{
+				wp_send_json_error();
+			}
 		}
 
 		/**
@@ -36,10 +64,11 @@ if(!class_exists('WPeMatico_Settings')) :
 			wp_enqueue_script('jquery-ui-autocomplete');
 
 			wp_enqueue_script('wpematico_settings_page', WPeMatico::$uri . 'app/js/settings_page.js', array('jquery', 'postbox'), WPEMATICO_VERSION, true);
-//			$allowedmimes = array_diff(explode(',', WPeMatico::get_images_allowed_mimes()), explode(',', $cfg['images_allowed_ext']));
+			//			$allowedmimes = array_diff(explode(',', WPeMatico::get_images_allowed_mimes()), explode(',', $cfg['images_allowed_ext']));
 			$wpematico_object = array(
 				'text_invalid_email' => __('Invalid email.', 'wpematico'),
 //				'current_img_mimes'	 => $allowedmimes,
+				'nonce'    => wp_create_nonce('wpematico-settings-page-nonce')
 			);
 			wp_localize_script('wpematico_settings_page', 'wpematico_object', $wpematico_object);
 
@@ -110,29 +139,14 @@ if(!class_exists('WPeMatico_Settings')) :
 				wp_die("Cheatin' uh?", "Closed today.");
 			$cfg = get_option(WPeMatico :: OPTION_KEY);
 			$cfg = apply_filters('wpematico_check_options', $cfg);
-
-			if($cfg['force_mysimplepie']) {
-				if(class_exists('SimplePie')) {
-					echo '<div id="message" class="notice notice-error is-dismissible"><p>' .
-					__('It seems that another plugin are opening Wordpress SimplePie before that WPeMatico can open its own library. This gives a PHP error on duplicated classes.', 'wpematico')
-					. '<br />' .
-					__('You must disable the other plugin to allow Force WPeMatico Custom SimplePie library.')
-					. '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">' .
-					__('Dismiss this notice.')
-					. '</span></button></div>';
-				}else {
-					include_once( dirname(__FILE__) . '/lib/simple_pie_autoloader.php' );
-				}
-			}else {
-				if(!class_exists('SimplePie')) {
-					if(is_file(ABSPATH . WPINC . '/class-simplepie.php'))
-						include_once( ABSPATH . WPINC . '/class-simplepie.php' );
-					else if(is_file(ABSPATH . 'wp-admin/includes/class-simplepie.php'))
-						include_once( ABSPATH . 'wp-admin/includes/class-simplepie.php' );
-					else
-						include_once( dirname(__FILE__) . '/lib/simple_pie_autoloader.php' );
-				}
+			
+			if (!class_exists('SimplePie')) {
+				if (is_file(ABSPATH . WPINC . '/class-simplepie.php'))
+					include_once(ABSPATH . WPINC . '/class-simplepie.php');
+				else if (is_file(ABSPATH . 'wp-admin/includes/class-simplepie.php'))
+					include_once(ABSPATH . 'wp-admin/includes/class-simplepie.php');
 			}
+
 			$simplepie				 = new SimplePie();
 			$simplepie->timeout		 = apply_filters('wpe_simplepie_timeout', 30);
 			$cfg['strip_htmltags']	 = (!($cfg['simplepie_strip_htmltags'])) ? implode(',', $simplepie->strip_htmltags) : $cfg['strip_htmltags'];
@@ -153,6 +167,50 @@ if(!class_exists('WPeMatico_Settings')) :
 					wp_nonce_field('closedpostboxes', 'closedpostboxesnonce', false);
 					?>
 					<div id="poststuff">
+						<?php
+						if(!get_option('wpematico_lastlog_disabled')): 
+
+						$fetch_feed_params = array(
+							'url' 			=> 'https://www.wpematico.com/releases/feed/',
+							'stupidly_fast' => true,
+							'max' 			=> 0,
+							'order_by_date' => true,
+							'force_feed' 	=> false,
+							'disable_simplepie_notice' => true,
+						);
+
+						$feed = WPeMatico::fetchFeed($fetch_feed_params);
+						?>
+						<div id="wpe_changelog-notice" class="wpe_changelog-notice">
+							<div class="wpe_changelog-header">
+								<div class="wpe_changelog-header-img">
+									<img src="<?php echo WPeMatico :: $uri; ?>/images/robotico_orange-75x130.png" alt="">
+								</div>
+								<div class="wpe_changelog-header-content">
+									<h2>WPeMatico RSS Feed Fetcher</h2>
+									<p>Highlights of the new release</p>
+									<h4>Version <span><?php echo WPEMATICO_VERSION ?></span></h4>
+								</div>
+							</div>
+							<div class="wpe_changelog-content">
+								<div class="wpe_changelog-list">
+									<?php foreach ($feed->get_items(0, 1) as $item) {
+											$content = $item->get_content();
+											echo $content;
+										} ?>
+								</div>
+								<p><a href="https://www.wpematico.com/releases/" class="button" target="_blank"><span class="dashicons dashicons-arrow-right-alt"></span> Read more on wpematico.com</a></p>
+								<br>
+								<h3>Your opinion about WPeMatico is very important to us.</h3>
+								<p>By rating WPeMatico RSS Feed Fetcher, you help the plugin creators to improve their work and help other users to find the software they need. You can write your review on WordPress forum. Use the
+								language of your choice, we appreciate it!</p>
+								<p><a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" class="button" target="_blank"><span class="dashicons dashicons-star-filled"></span> Rate us on WordPress</a></p>
+								<div class="wpe_changelog-dismiss">
+									<a id="button_yes_changelog" class="button awesome"><span>YES!</span></a>
+								</div>
+							</div>
+						</div>
+						<?php endif; ?>
 						<div id="post-body" class="metabox-holder columns-<?php echo 1 == get_current_screen()->get_columns() ? '1' : '2'; ?>">
 							<div id="post-body-content">
 								<!-- #post-body-content -->
@@ -314,10 +372,10 @@ if(!class_exists('WPeMatico_Settings')) :
 									</div>
 
 									<div class="postbox">
-										<h2 class="handle"><?php _e('The Perfect Package', 'wpematico'); ?></h2>
+										<h2 class="handle"><?php _e('Perfect Membership', 'wpematico'); ?></h2>
 										<div class="inside">
-											<p id="left1" onmouseover="jQuery(this).css('opacity', 0.9);this.style.backgroundColor = '#111'" onmouseout="jQuery(this).css('opacity', 0.5);this.style.backgroundColor = '#fff'" style="text-align:center;opacity: 0.5;border-radius: 14px 14px 0 0;"><a href="https://etruel.com/downloads/wpematico-perfect-package/" target="_Blank" title="Go to etruel WebSite"><img style="width: 100%;" src="https://etruel.com/wp-content/uploads/2018/08/wpematico-package.png" title=""></a><br />
-												WPeMatico The Perfect Package</p>
+											<p id="left1" onmouseover="jQuery(this).css('opacity', 0.9);this.style.backgroundColor = '#111'; this.style.color = '#fff'" onmouseout="jQuery(this).css('opacity', 0.5);this.style.backgroundColor = '#fff'; this.style.color = 'initial'" style="text-align:center;opacity: 0.5; transition: all .4s ease;"><a href="https://etruel.com/downloads/wpematico-perfect/" target="_Blank" title="Go to etruel WebSite"><img style="width: 100%;" src="https://etruel.com/wp-content/uploads/edd/2022/02/wpematico-perfect.jpg" title=""></a><br />
+												WPeMatico Perfect Membership</p>
 										</div>
 									</div>
 
@@ -349,15 +407,6 @@ if(!class_exists('WPeMatico_Settings')) :
 											<p></p>
 											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['featuredimg'], true); ?> name="featuredimg" id="featuredimg" /><b>&nbsp;<label for="featuredimg"><?php _e('Set first image in content as Featured Image.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['featuredimg']; ?>"></span>
 											<br />
-											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['fifu'], (!$fifu_activated) ? ((!$cfg['fifu']) ? true : false ) : true ); ?> name="fifu" id="fifu"  <?php echo (!$fifu_activated ? 'disabled' : '') ?>/><b>&nbsp;<label for="fifu"><?php _e('Use Featured Image from URL.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['fifu'].' '. __('See more info in Help tab above.','wpematico'); ?>"></span>
-											<br />
-											<?php
-												if(!$fifu_activated){
-													echo '<small >';
-													echo  __('The', 'wpematico') . ' <a href="https://wordpress.org/plugins/featured-image-from-url/" rel="nofollow" target="_Blank">' . __('Featured Image from URL', 'wpematico') . '</a> ' . __('plugin needs to be installed and activated from the WordPress repository.','wpematico');
-													echo '</small><br />';
-												}
-												?>
 											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['rmfeaturedimg'], true); ?> name="rmfeaturedimg" id="rmfeaturedimg" /><b>&nbsp;<label for="rmfeaturedimg"><?php _e('Remove Featured Image from content.', 'wpematico'); ?></label></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['rmfeaturedimg']; ?>"></span>
 											<p></p>
 											<div id="custom_uploads" style="<?php if(!$cfg['imgcache'] && !$cfg['featuredimg']) echo 'display:none;'; ?>">
@@ -375,7 +424,21 @@ if(!class_exists('WPeMatico_Settings')) :
 													<?php _e('WordPress image mime types.', 'wpematico'); ?> <label class="description" id="images_allowed_ext-list" title="<?php _e('Click here to restore WP defaults.', 'wpematico') ?>" onclick="jQuery('#images_allowed_ext').val(jQuery(this).text());return false;"><?php echo $ext_list; ?></label><br/>
 													<?php _e('Recommended.', 'wpematico'); ?> <label class="description" id="images_allowed_ext-list" title="<?php _e('Click here to set recommended values.', 'wpematico') ?>" onclick="jQuery('#images_allowed_ext').val(jQuery(this).text());return false;"><?php echo "jpg,gif,png,tif,bmp,jpeg"; ?></label>
 												</p>
-
+												<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enablemimetypes'], true); ?> name="enablemimetypes" id="enablemimetypes" /><b>&nbsp;<label for="enablemimetypes"><?php _e('Enable add mime types.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablemimetypes']; ?>"></span>
+											</div>
+											<h3 class="subsection"><?php _e('Featured Image From URL', 'wpematico'); ?></h3>
+											<div id="fifu_options">
+												<p><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['fifu'], (!$fifu_activated) ? ((!$cfg['fifu']) ? true : false ) : true ); ?> name="fifu" id="fifu"  <?php echo (!$fifu_activated ? 'disabled' : '') ?>/><b>&nbsp;<label for="fifu"><?php _e('Use Featured Image from URL.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['fifu'].' '. __('See more info in Help tab above.','wpematico'); ?>"></span>
+												<br />
+												<?php
+													if(!$fifu_activated){
+														echo '<small >';
+														echo  __('The', 'wpematico') . ' <a href="https://wordpress.org/plugins/featured-image-from-url/" rel="nofollow" target="_Blank">' . __('Featured Image from URL', 'wpematico') . '</a> ' . __('plugin needs to be installed and activated from the WordPress repository.','wpematico');
+														echo '</small><br />';
+													}
+												?>
+												</p>
+												<div id="fifu_extra_options" style="padding-left: 20px;<?php if(!$cfg['fifu']) echo 'display:none;'; ?>""><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['fifu-video'], (!$fifu_activated) ? ((!$cfg['fifu-video']) ? true : false ) : true ); ?> name="fifu-video" id="fifu-video"/><b>&nbsp;<label for="fifu-video"><?php _e('Use video link as featured if available.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['fifu'].' '. __('See more info in Help tab above.','wpematico'); ?>"></span></div>
 											</div>
 											<?php do_action('wpematico_settings_images', $cfg); ?>
 										</div>
@@ -464,7 +527,9 @@ if(!class_exists('WPeMatico_Settings')) :
 											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enableword2cats'], true); ?> name="enableword2cats" id="enableword2cats" /> <label for="enableword2cats"><?php _e('Enable "Words to Categories" feature', 'wpematico'); ?></label>
 											<span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enableword2cats']; ?>"></span>
 											<p></p>
-
+											<input class="checkbox" type="checkbox"<?php checked($cfg['wpematico_set_canonical'], true); ?> name="wpematico_set_canonical" value="1" id="wpematico_set_canonical"/> 
+											<label for="wpematico_set_canonical"><?php echo __('Use Canonical URL to Source site on post(type)', 'wpematico'); ?></label>
+											<span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['wpematico_set_canonical']; ?>"></span>
 											<?php if(!wpematico_is_pro_active()) : ?>
 
 											</div>
@@ -515,45 +580,6 @@ if(!class_exists('WPeMatico_Settings')) :
 										</button>
 										<h3 class="hndle"><span class="dashicons dashicons-chart-pie"></span> <span><?php _e('Advanced Fetching', 'wpematico'); ?> <?php _e('(SimplePie Settings)', 'wpematico'); ?></span></h3>
 										<div class="inside">
-											<p><b><?php _e('Test if SimplePie library works well on your server:', 'wpematico'); ?></b>
-												<a onclick="javascript:window.open(
-																	  '<?php echo WPeMatico :: $uri; ?>app/lib/sp_compatibility_test.php'
-																	  , 'SimplePie',
-																	  'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=630, height=600');
-																	return false;" 
-												   href="javascript:Void(0);">	<?php _e('Click here', 'wpematico'); ?></a>. <small> <?php _e('(open in popup)', 'wpematico'); ?></small>
-											</p>
-											<p></p>
-											<?php
-											$from_wordpress = false;
-											if($cfg['force_mysimplepie']) {
-
-												include_once( dirname(__FILE__) . '/lib/simple_pie_autoloader.php' );
-											}else {
-												$from_wordpress = true;
-												if(!class_exists('SimplePie')) {
-													if(is_file(ABSPATH . WPINC . '/class-simplepie.php')) {
-														include_once( ABSPATH . WPINC . '/class-simplepie.php' );
-													}else if(is_file(ABSPATH . 'wp-admin/includes/class-simplepie.php')) {
-														include_once( ABSPATH . 'wp-admin/includes/class-simplepie.php' );
-													}else {
-														include_once( dirname(__FILE__) . '/lib/simple_pie_autoloader.php' );
-													}
-												}
-											}
-											if($from_wordpress) {
-												echo '<p></p>
-										<code>' . sprintf(__('USING SimplePie %s included in Wordpress'), SIMPLEPIE_VERSION) . '</code>
-									  <p></p>';
-											}else {
-												echo '<p></p>
-										<code>' . sprintf(__('USING SimplePie %s included in WPeMatico Plugin'), SIMPLEPIE_VERSION) . ' </code>
-									  <p></p>';
-											}
-											?>
-											<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['force_mysimplepie'], true); ?> name="force_mysimplepie" id="force_mysimplepie" /> <?php _e('Force "Custom Simplepie Library"', 'wpematico'); ?></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['mysimplepie']; ?>"></span>
-											<br /><span class="coderr b LightPink"><?php echo __('The Custom Simplepie Library option will be removed from WPeMatico in the next release.', 'wpematico'); ?><br />
-														<?php _e('Please disable it to start using the Simplepie version included in WordPress.', 'wpematico'); ?></span><br />
 											<p></p>
 
 											<label><input class="checkbox" value="1" type="checkbox" <?php checked($cfg['set_stupidly_fast'], true); ?> name="set_stupidly_fast" id="set_stupidly_fast"  onclick="jQuery('#simpie').show();"  /> <?php _e('Set Simplepie "stupidly fast"', 'wpematico'); ?></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['stupidly_fast']; ?>"></span>
@@ -720,7 +746,7 @@ if(!class_exists('WPeMatico_Settings')) :
 												<br />
 												<div id="hlptrash" style="padding-left:20px; <?php if(!$cfg['emptytrashbutton']) echo 'display:none;'; ?>">
 													<?php _e('Select (custom) post types you want.', 'wpematico'); ?>
-													<br />
+													<div class="hlptrash-content">
 													<?php
 													// publicos y privados para que pueda mostrar el boton en todos
 													$args		 = array('public' => false);
@@ -744,7 +770,7 @@ if(!class_exists('WPeMatico_Settings')) :
 														echo ' /> ' . __($post_label) . ' (' . __($post_type) . ')</div>';
 													}
 													?>
-												</div><br /> 
+												</div></div><br /> 
 											</div>
 											<div id="enabledashboard" class="insidesec">
 
@@ -772,8 +798,7 @@ if(!class_exists('WPeMatico_Settings')) :
 														?>
 													</div>
 												</div>
-
-												<br /> 
+												<br/> 
 											</div>
 										</div>
 									</div>				
@@ -803,6 +828,9 @@ if(!class_exists('WPeMatico_Settings')) :
 				/**
 				 * wpematico_check_options Filter to sanitize and strip all options fields 
 				 */
+
+				// var_dump($_POST);
+				// die();
 				$cfg				 = apply_filters('wpematico_check_options', $_POST);
 				if(!wpematico_is_pro_active())
 					$cfg['nonstatic']	 = false;

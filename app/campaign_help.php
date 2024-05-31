@@ -171,6 +171,11 @@ $helpcampaign = array(
 				'title' => __('Remove Featured Image from content.', 'wpematico' ),
 				'tip' => __('Check this to strip the Featured Image from the post content.', 'wpematico' ),
 		),
+		'enablemimetypes'	=> array( 
+			'title' => __('Enable add other mime types.', 'wpematico' ),
+			'tip' => __('Use this instead of Wordpress functions to improve performance. This function upload the mime types does not avaliable in the wordpress media.', 'wpematico' ).
+				'<br />'. __('This function may not work in all servers.', 'wpematico' ),
+		),
 		'customupload'	=> array( 
 				'title' => __('Custom Uploads for Images.', 'wpematico' ),
 				'tip' => __('Use this instead of Wordpress functions to improve performance. This function uploads the image "as is" from the original to use it inside the post.', 'wpematico' ).
@@ -363,7 +368,7 @@ $helpcampaign = array(
 	)
 );
 $helpcampaign = apply_filters('wpematico_help_campaign', $helpcampaign);
-
+global $current_screen;
 $screen = $current_screen; //WP_Screen::get('wpematico_page_wpematico_settings ');
 foreach($helpcampaign as $key => $section){
 	$tabcontent = '';
