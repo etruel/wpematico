@@ -112,7 +112,7 @@ if (!class_exists('WPeMatico_Tools')) :
 						<div class="postbox">
 							<h3><span><?php echo __('Export Settings', 'wpematico') ?></span></h3>
 							<div class="inside">
-								<p><?php echo __('Export the Wpematico settings for this site as a .json file. This allows you to easily import the configuration into another site.', 'wpematico')  ?></p>
+								<p><?php echo __('Export the WPeMatico settings for this site as a .json file. This allows you to easily import the configuration into another site.', 'wpematico')  ?></p>
 								<p>
 									<?php echo $button_export; ?>
 								</p>
@@ -123,7 +123,7 @@ if (!class_exists('WPeMatico_Tools')) :
 							<div class="postbox">
 								<h3><span><?php echo __('Import Settings', 'wpematico') ?></span></h3>
 								<div class="inside">
-									<p><?php echo __('Import the Wpematico settings for this site.', 'wpematico')  ?></p>
+									<p><?php echo __('Import the WPeMatico settings for this site.', 'wpematico')  ?></p>
 									<p>
 										<input type="hidden" name="wpematico-action" value="import_settings" />
 										<input style="display:none;" type="file" class="button" name='txtsettings' id='txtsettings'>
