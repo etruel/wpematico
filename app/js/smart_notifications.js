@@ -22,6 +22,13 @@ jQuery(document).ready(function ($) {
 		$(this).parent().parent().slideUp(500);
 		wpematico_dismiss_notice('wizard');
 	});
+
+	//dismiss action MDM
+	$("#smart-notification-mdm .icon-dismiss-div").click(function () {
+		//$('.wpematico-smart-notification .notification-title').text(' *****  *****  ***** '+ wpematico_object.Notification_Dismissed+' *****  *****  ***** ');
+		$(this).parent().parent().slideUp(500);
+		wpematico_dismiss_notice('mdm');
+	});
 });
 
 function wpematico_dismiss_notice($notify_id) {
@@ -31,6 +38,9 @@ switch($notify_id) {
     break;
   case 'wizard':
 	  var data = {'action': 'wpematico_dismiss_wizard_notice'};
+    break;
+  case 'mdm':
+	  var data = {'action': 'wpematico_dismiss_mdm_notice'};
     break;
   default:
 	  //No AJAX

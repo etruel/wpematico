@@ -14,7 +14,7 @@ class wpe_smart_notifications {
 		// dismiss AJAX calls
 		add_action('wp_ajax_wpematico_dismiss_wprate_notice', array(__CLASS__, 'dismiss_wprate_notice'));
 		add_action('wp_ajax_wpematico_dismiss_wizard_notice', array(__CLASS__, 'dismiss_wizard_notice'));
-
+		// temp. will be deleted on finish MDM
 		add_action('wp_ajax_wpematico_dismiss_mdm_notice', array(__CLASS__, 'dismiss_mdm_notice'));
 	}
 
@@ -180,10 +180,12 @@ class wpe_smart_notifications {
 	
 	public static function show_mdm_notice() {
 		global $post_type, $current_screen, $post;
-		if ($post_type != 'wpematico')
-				return;
-		if ($current_screen->id != 'wpematico' || $current_screen->action == 'add') {
-//			return;
+		if ($post_type != 'wpematico' 
+				&& strpos($current_screen->id, 'wpematico')!==false 
+				&& strpos($current_screen->id, 'wpemaddons')!==false 
+				&& ($current_screen->id != 'wpematico' || $current_screen->action == 'add') 
+			) {
+			return;
 		}
 		// User already dismissed
 		$dismiss_mdm_notice = get_option('wpematico_dismiss_mdm_notice', false);
@@ -191,7 +193,7 @@ class wpe_smart_notifications {
 			return;
 		}
 		?>
-		<div id="smart-notification-mdm" class="wpematico-smart-notification campagin_edit">
+		<div id="smart-notification-mdm" class="wpematico-smart-notification">
 			<h3>
 				<span class="notification-title"><?php _e('Last version on 2.6.x series!!', 'wpematico'); ?></span>
 				<span class="icon-dismiss-div dashicons dashicons-no" title="Dismiss"></span>
@@ -207,7 +209,7 @@ class wpe_smart_notifications {
 					<?php _e('The month of June is coming strong! Don\'t miss it! Follow everything on this link!', 'wpematico'); ?>
 					<br>
 					<br>
-					<a href="https://etruel.com/join-us-to-celebrate-the-million-downloads-month/" target="_blank" class="button button-primary button-hero" style="background-color: #d3741c; border-color: #d3741c; color: #fff;">Millon Downloads Month</a>
+					<a href="https://etruel.com/join-us-to-celebrate-the-million-downloads-month/" target="_blank" class="button button-primary button-hero">Millon Downloads Month</a>
 				</p>
 				<br>
 			</div>
