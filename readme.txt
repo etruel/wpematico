@@ -3,9 +3,9 @@ Contributors: etruel, sniuk, khaztiel
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,rss to post,feed to post,rss aggregator
 Requires at least: 4.8
-Tested up to: 6.5
+Tested up to: 6.5.4
 Requires PHP: 5.6
-Stable tag: 2.6.24
+Stable tag: 2.6.25
 License: GPLv2 or later
 
 WPeMatico is autoblogging in the blink of an eye!  On complete autopilot WPeMatico gets new contents regularly for your site!
@@ -238,6 +238,18 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 > See all detailed changelog at [wpematico Releases](https://wpematico.com/releases/)
 
+= 2.6.25 May 30, 2024 =
+
+* Added MDM notifications
+#### _Last version on 2.6.x series!!_
+
+We will soon reach one million downloads and we will celebrate it with the 2.7 major version.
+And not only that, but we are also prepared a big celebration for a whole month!
+In which we will release the new versions with many new free features,
+but we will also make many free gifts for all our community of WordPress users, customers and friends. 
+The month of June is coming strong! Don't miss it! Follow everything on this link!
+* [Millon Downloads Month](https://etruel.com/join-us-to-celebrate-the-million-downloads-month/)
+
 = 2.6.24 Mar 25, 2024 =
 * Improves compatibilities with WordPress 6.5
 * Fixes some PHP warnings on campaigns list.
@@ -423,4 +435,4 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 
-Bump to WP 6.5 & minor fixes.
+Preparing the Million Downloads Month following with the major version 2.7
