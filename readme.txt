@@ -236,10 +236,10 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
 
-= 2.7 May 31, 2024 =
+= 2.7 Jun 3, 2024 =
 
-Major Version 2.7 focuses on code improvements and documentations follow the standards of Wordpress coding developments.
-Recommended update it on testing enviroments before update on production websites.
+Major Version 2.7 focuses on code improvements and documentations follow the standards of WordPress coding developments.
+Recommended update it on testing environments before update on production websites.
 
 #### _Enhancements:_
 
@@ -275,7 +275,7 @@ Recommended update it on testing enviroments before update on production website
 > * New 'wpematico_custom_simplepie' filter to correct an old incorrect behavior on 'Wpematico_process_fetching'.
 > * The titles feature was improved to use a new added filter.
 > * On plugin update will be queued a process to upgrade each campaign to the newly way on hash creation to control post duplicates.
-> * **Enlarges the version required for the Professional addon to 2.20**
+> * NOTE: **Enlarges the version required for the Professional addon to 2.20**
 
 > See all detailed changelog at [wpematico Releases](https://wpematico.com/releases/)
 
