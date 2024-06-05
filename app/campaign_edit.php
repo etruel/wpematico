@@ -124,7 +124,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 					'text_save_before_execute_action' 	=> __('Save before to execute this action', 'wpematico'),
 					'text_confirm_reset_campaign'		=> __('Are you sure you want to reset this campaign?', 'wpematico'),
 					'text_confirm_delhash_campaign'		=> __('Are you sure you want to delete hash code for duplicates of this campaign?', 'wpematico'),
-					'text_fail_run_campaign'			=> sprintf(__('An error has occurred, this could be because the web server does not have all the requirements of WPeMatico please check your <a href="%s">System Status</a>, if everything is ok try again.', 'wpematico'), admin_url('edit.php?post_type=wpematico&page=wpematico_settings&tab=debug_info') ),
+					'text_fail_run_campaign'			=> sprintf(__('An error has occurred, this could be because the web server does not have all the requirements of WPeMatico please check your <a href="%s">System Status</a>, if everything is ok try again.', 'wpematico'), admin_url('edit.php?post_type=wpematico&page=wpematico_tools&tab=debug_info') ),
 					'text_wizard'						=> __('Wizard', 'wpematico'),
 					'text_loading'						=> __('Loading...', 'wpematico'),
 
