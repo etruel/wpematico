@@ -108,7 +108,6 @@ if (!class_exists('WPeMatico_functions')) {
 			}
 			return $string;
 		}
-
 		/**
 		 * Static function get_enconding_from_url
 		 * This function get the encoding from headers of a URL.
@@ -206,6 +205,7 @@ if (!class_exists('WPeMatico_functions')) {
 			$options = array();
 			$options['imgcache'] = $settings['imgcache'];
 			$options['fifu'] = $settings['fifu'];
+			$options['fifu-video'] = $settings['fifu-video'];
 			$options['imgattach'] = $settings['imgattach'];
 			$options['gralnolinkimg'] = $settings['gralnolinkimg'];
 			$options['image_srcset'] = $settings['image_srcset'];
@@ -228,6 +228,7 @@ if (!class_exists('WPeMatico_functions')) {
 				$options['image_srcset'] = $campaign['campaign_image_srcset'];
 				$options['featuredimg'] = $campaign['campaign_featuredimg'];
 				$options['fifu'] = $campaign['campaign_fifu'];
+				$options['fifu-video'] = $campaign['campaign_fifu_video'];
 				$options['rmfeaturedimg'] = $campaign['campaign_rmfeaturedimg'];
 				$options['customupload'] = $campaign['campaign_customupload'];
 			}
@@ -290,7 +291,7 @@ if (!class_exists('WPeMatico_functions')) {
 
 		/**
 		 * @access public
-		 * @return $options Array all wp defaults image mime types plus added by custom filters in standard ways.
+		 * @return string $options  all wp defaults image mime types plus added by custom filters in standard ways.
 		 * @since 2.5.3
 		 */
 		public static function get_images_allowed_mimes() {
@@ -618,10 +619,14 @@ if (!class_exists('WPeMatico_functions')) {
 				$active_plugins = get_option('active_plugins');
 				$plpath = trailingslashit(WP_PLUGIN_DIR) . $active_plugins[$is_pro_active];
 				$proplugin_data = self::plugin_get_version($plpath);
+
+				$core_version = new ReflectionClass('WPeMaticoPRO');
+				$core_version = $core_version->getConstant('WPEMSHOULD');
+
 				if ($proplugin_data['Name'] == 'WPeMatico Professional' && version_compare($proplugin_data['Version'], WPeMatico::PROREQUIRED, '<')) {
-					$message .= __('You are using WPeMatico Professional too old.', 'wpematico') . '<br />';
+					$message .= __('Your current version of WPeMatico Professional does not support WPeMatico ', 'wpematico') . $core_version . '<br />';
 					$message .= __('Must install at least "WPeMatico Professional" ' . WPeMatico::PROREQUIRED, 'wpematico');
-					$message .= ' <a href="' . admin_url('plugins.php?page=wpemaddons') . '#wpematico-pro"> ' . __('Go to upgrade Now', 'wpematico') . '</a>';
+					$message .= ' <a href="' . admin_url('plugins.php?page=wpemaddons') . '#wpematico-pro"> ' . __('Go to update Now', 'wpematico') . '</a>';
 					$message .= '<script type="text/javascript">jQuery(document).ready(function($){$("#wpematico-pro").css("backgroundColor","yellow");});</script>';
 					//Commented to allow access to the settings page
 					//$checks=false;
@@ -682,7 +687,7 @@ if (!class_exists('WPeMatico_functions')) {
 
 		/** add_wp_notice
 		 * 
-		 * @param type mixed array/string  $new_notice 
+		 * @param  mixed $new_notice 
 		 * 	optional   ['user_ID'] to shows the notice default = currentuser
 		 * 	optional   ['error'] true or false to define style. Default = false
 		 * 	optional   ['is-dismissible'] true or false to hideable. Default = true
@@ -720,7 +725,7 @@ if (!class_exists('WPeMatico_functions')) {
 		/**
 		 * Load all campaigns data
 		 * 
-		 * @return an array with all campaigns data 
+		 * @return array with all campaigns data 
 		 * */
 		public static function get_campaigns() {
 			$campaigns_data = array();
@@ -742,9 +747,9 @@ if (!class_exists('WPeMatico_functions')) {
 		/**
 		 * Load campaign data
 		 * Required @param   integer  $post_id    Campaign ID to load
-		 * 		  @param   boolean  $getfromdb  if set to true run get_post($post_ID) and retuirn object post
+		 * @param   boolean  $getfromdb  if set to true run get_post($post_ID) and retuirn object post
 		 * 
-		 * @return an array with campaign data 
+		 * @return array with campaign data 
 		 * */
 		public static function get_campaign($post_id, $getfromdb = false) {
 			if ($getfromdb) {
@@ -765,7 +770,7 @@ if (!class_exists('WPeMatico_functions')) {
 		 * Check campaign data
 		 * Required @param $campaigndata array with campaign data values
 		 * 
-		 * @return an array with campaign data fixed all empty values
+		 * @return array with campaign data fixed all empty values
 		 * */
 		/*		 * ************ CHECK DATA ************************************************ */
 		public static function check_campaigndata($post_data) {
@@ -857,7 +862,6 @@ if (!class_exists('WPeMatico_functions')) {
 			$campaigndata['campaign_get_excerpt'] = (!isset($post_data['campaign_get_excerpt']) || empty($post_data['campaign_get_excerpt'])) ? false : ( ($post_data['campaign_get_excerpt'] == 1) ? true : false );
 
 			$campaigndata['campaign_enable_convert_utf8'] = (!isset($post_data['campaign_enable_convert_utf8']) || empty($post_data['campaign_enable_convert_utf8'])) ? false : ( ($post_data['campaign_enable_convert_utf8'] == 1) ? true : false );
-
 			// *** Campaign Audios
 			$campaigndata['campaign_no_setting_audio'] = (!isset($post_data['campaign_no_setting_audio']) || empty($post_data['campaign_no_setting_audio'])) ? false : ( ($post_data['campaign_no_setting_audio'] == 1) ? true : false );
 			$campaigndata['campaign_audio_cache'] = (!isset($post_data['campaign_audio_cache']) || empty($post_data['campaign_audio_cache'])) ? false : ( ($post_data['campaign_audio_cache'] == 1) ? true : false );
@@ -891,6 +895,8 @@ if (!class_exists('WPeMatico_functions')) {
 
 			$campaigndata['campaign_featuredimg'] = (!isset($post_data['campaign_featuredimg']) || empty($post_data['campaign_featuredimg'])) ? false : ( ($post_data['campaign_featuredimg'] == 1) ? true : false );
 			$campaigndata['campaign_fifu'] = (!isset($post_data['campaign_fifu']) || empty($post_data['campaign_fifu'])) ? false : ( ($post_data['campaign_fifu'] == 1) ? true : false );
+
+			$campaigndata['campaign_fifu_video'] = (!isset($post_data['campaign_fifu_video']) || empty($post_data['campaign_fifu_video'])) ? false : ( ($post_data['campaign_fifu_video'] == 1) ? true : false );
 
 			$campaigndata['campaign_enable_featured_image_selector'] = (!isset($post_data['campaign_enable_featured_image_selector']) || empty($post_data['campaign_enable_featured_image_selector'])) ? false : ( ($post_data['campaign_enable_featured_image_selector'] == 1) ? true : false );
 			$campaigndata['campaign_featured_selector_index'] = (!isset($post_data['campaign_featured_selector_index']) || empty($post_data['campaign_featured_selector_index'])) ? '0' : (int) $post_data['campaign_featured_selector_index'];
@@ -1020,6 +1026,10 @@ if (!class_exists('WPeMatico_functions')) {
 
 			$campaigndata['campaign_youtube_ign_description'] = (!isset($post_data['campaign_youtube_ign_description']) || empty($post_data['campaign_youtube_ign_description'])) ? false : ( ($post_data['campaign_youtube_ign_description'] == 1) ? true : false );
 
+			$campaigndata['campaign_youtube_only_shorts'] = (!isset($post_data['campaign_youtube_only_shorts']) || empty($post_data['campaign_youtube_only_shorts'])) ? false : ( ($post_data['campaign_youtube_only_shorts'] == 1) ? true : false );
+
+			$campaigndata['campaign_youtube_ign_shorts'] = (!isset($post_data['campaign_youtube_ign_shorts']) || empty($post_data['campaign_youtube_ign_shorts'])) ? false : ( ($post_data['campaign_youtube_ign_shorts'] == 1) ? true : false );
+
 			$campaigndata['campaign_no_setting_duplicate'] = (!isset($post_data['campaign_no_setting_duplicate']) || empty($post_data['campaign_no_setting_duplicate'])) ? false : ( ($post_data['campaign_no_setting_duplicate'] == 1) ? true : false );
 			$campaigndata['campaign_allowduplicates'] = (!isset($post_data['campaign_allowduplicates']) || empty($post_data['campaign_allowduplicates'])) ? false : ( ($post_data['campaign_allowduplicates'] == 1) ? true : false );
 			$campaigndata['campaign_allowduptitle'] = (!isset($post_data['campaign_allowduptitle']) || empty($post_data['campaign_allowduptitle'])) ? false : ( ($post_data['campaign_allowduptitle'] == 1) ? true : false );
@@ -1046,24 +1056,24 @@ if (!class_exists('WPeMatico_functions')) {
 		//************************* GUARDA CAMPAÑA *******************************************************
 
 		/**
-		 * save campaign data
-		 * Required @param   integer  $post_id    Campaign ID to load
-		 * 		  @param   boolean  $getfromdb  if set to true run get_post($post_ID) and retuirn object post
+		 * Save campaign data 
+		 * Each call calculate the next cron time and save it on the campaign cron field.
+		 * Some values for direct access or list columns are saved also individually.
+		 *  
+		 * Required @param   integer  $post_id    Campaign ID to save on.
+		 *			@param   array  $campaign	All the campaign data to save.
 		 * 
-		 * @return an array with campaign data 
+		 * @return int|bool with campaign data 
 		 * */
 		public static function update_campaign($post_id, $campaign = array()) {
 			$campaign['cronnextrun'] = (int) WPeMatico :: time_cron_next($campaign['cron']);
 			$campaign = apply_filters('wpematico_before_update_campaign', $campaign);
 
-			add_post_meta($post_id, 'postscount', $campaign['postscount'], true) or
-					update_post_meta($post_id, 'postscount', $campaign['postscount']);
+			update_post_meta($post_id, 'postscount', $campaign['postscount']);
+	
+			update_post_meta($post_id, 'cronnextrun', $campaign['cronnextrun']);
 
-			add_post_meta($post_id, 'cronnextrun', $campaign['cronnextrun'], true) or
-					update_post_meta($post_id, 'cronnextrun', $campaign['cronnextrun']);
-
-			add_post_meta($post_id, 'lastrun', $campaign['lastrun'], true) or
-					update_post_meta($post_id, 'lastrun', $campaign['lastrun']);
+			update_post_meta($post_id, 'lastrun', $campaign['lastrun']);
 
 			// *** Campaign Rewrites	
 			// Proceso los rewrites agrego slashes	
@@ -1077,9 +1087,8 @@ if (!class_exists('WPeMatico_functions')) {
 				for ($i = 0; $i < count($campaign['campaign_wrd2cat']['word']); $i++) {
 					$campaign['campaign_wrd2cat']['word'][$i] = addslashes($campaign['campaign_wrd2cat']['word'][$i]);
 				}
-
-			return add_post_meta($post_id, 'campaign_data', $campaign, true) or
-					update_post_meta($post_id, 'campaign_data', $campaign);
+			
+			return update_post_meta($post_id, 'campaign_data', $campaign);
 		}
 
 		/*		 * ********* 	 Funciones para procesar campañas ***************** */
@@ -1102,7 +1111,8 @@ if (!class_exists('WPeMatico_functions')) {
 			$campaignsid = get_posts($args);
 			$msglogs = "";
 			foreach ($campaignsid as $campaignid) {
-				@set_time_limit(0);
+			    wpematico_init_set('max_execution_time', 0);
+				
 				$msglogs .= WPeMatico :: wpematico_dojob($campaignid->ID);
 			}
 			return $msglogs;
@@ -1122,6 +1132,29 @@ if (!class_exists('WPeMatico_functions')) {
 				}
 			}
 			return $url;
+		}
+
+		/**
+		 * Set canonical url for the post
+		 *
+		 * @param   string    $canonical_url          canonical url to integrate in the <head> tag
+		 * @param   string    $wpe_sourcepermalink    url to integrate in the post
+		 * @param   WP_Post   $post                   wpematico's post 
+		 * @return  string    Canonical URL
+		 * @since 2.7
+		 * */
+
+		public static function wpematico_set_canonical($canonical_url, $post){
+			global $cfg;
+			
+			$prev = $canonical_url;
+
+			if (isset($cfg['wpematico_set_canonical']) && $cfg['wpematico_set_canonical']) {
+				$wpe_sourcepermalink = get_post_meta($post->ID, 'wpe_sourcepermalink', true);
+				$canonical_url = isset($wpe_sourcepermalink) ? $wpe_sourcepermalink : $canonical_url;
+			}
+			
+			return apply_filters('wpematico_canonical_url', $canonical_url, $prev, $post);
 		}
 
 //*********************************************************************************************************
@@ -1149,29 +1182,12 @@ if (!class_exists('WPeMatico_functions')) {
 			}
 
 			$cfg = get_option(WPeMatico :: OPTION_KEY);
-			if ($cfg['force_mysimplepie']) {
-				if (class_exists('SimplePie')) {
-					if (empty($disable_simplepie_notice)) {
-						echo '<div id="message" class="notice notice-error is-dismissible"><p>' .
-						__('It seems that another plugin are opening Wordpress SimplePie before that WPeMatico can open its own library. This gives a PHP error on duplicated classes.', 'wpematico')
-						. '<br />' .
-						__('You must disable the other plugin to allow Force WPeMatico Custom SimplePie library.')
-						. '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">' .
-						__('Dismiss this notice.')
-						. '</span></button></div>';
-					}
-				} else {
-					require_once dirname(__FILE__) . '/lib/simple_pie_autoloader.php';
-				}
-			} else {
-				if (!class_exists('SimplePie')) {
-					if (is_file(ABSPATH . WPINC . '/class-simplepie.php'))
-						include_once( ABSPATH . WPINC . '/class-simplepie.php' );
-					else if (is_file(ABSPATH . 'wp-admin/includes/class-simplepie.php'))
-						include_once( ABSPATH . 'wp-admin/includes/class-simplepie.php' );
-					else
-						include_once( dirname(__FILE__) . '/lib/simple_pie_autoloader.php' );
-				}
+			
+			if (!class_exists('SimplePie')) {
+				if (is_file(ABSPATH . WPINC . '/class-simplepie.php'))
+					include_once( ABSPATH . WPINC . '/class-simplepie.php' );
+				else if (is_file(ABSPATH . 'wp-admin/includes/class-simplepie.php'))
+					include_once( ABSPATH . 'wp-admin/includes/class-simplepie.php' );
 			}
 			$feed = new SimplePie();
 			$feed->timeout = apply_filters('wpe_simplepie_timeout', 130);
@@ -1242,6 +1258,7 @@ if (!class_exists('WPeMatico_functions')) {
 			$feed = self::fetchFeed($fetch_feed_params);
 
 			$errors = $feed->error(); // if no error returned
+
 			// Check if PRO version is installed and its required version
 			if (wpematico_is_pro_active()) {
 				$professional_notice = '';
@@ -1627,6 +1644,55 @@ if (!class_exists('WPeMatico_functions')) {
 
 			return $danger;
 		}
+		public static function wpematico_export_settings($status = '') {
+			$nonce = (isset($_REQUEST['_wpnonce']) && !empty($_REQUEST['_wpnonce']) ) ? sanitize_text_field($_REQUEST['_wpnonce']) : '';
+			if (!wp_verify_nonce($nonce, 'wpematico-tools'))
+				wp_die('Are you sure?');
+			
+			$export_settings = array();
+			$cfg = get_option(WPeMatico :: OPTION_KEY);
+			$cfg = apply_filters('wpematico_check_options', $cfg);
+			$export_settings[WPeMatico :: OPTION_KEY] = $cfg;
+			$export_settings = apply_filters('wpematico_export_options', $export_settings);
+			
+			$settings_data_json = json_encode($export_settings);
+			$settings_data_json = base64_encode($settings_data_json);
+			
+			// Copy the post and insert it
+			if (isset($settings_data_json) && $settings_data_json != null) {
+				header('Content-type: text/plain');
+				header('Content-Disposition: attachment; filename="wpematico-settings.txt"');
+				print $settings_data_json;
+				die();
+			} else {
+				wp_die(esc_attr(__('Exporting failed', 'wpematico')));
+			}
+		}
+
+		public static function wpematico_import_settings() {
+			$nonce = (isset($_REQUEST['_wpnonce']) && !empty($_REQUEST['_wpnonce']) ) ? sanitize_text_field($_REQUEST['_wpnonce']) : '';
+			if (!wp_verify_nonce($nonce, 'wpematico-tools'))
+				wp_die('Are you sure?');
+
+			if (in_array(str_replace('.', '', strrchr($_FILES['txtsettings']['name'], '.')), explode(',', 'txt')) && ($_FILES['txtsettings']['type'] == 'text/plain') && !$_FILES['txtsettings']['error']) {
+				$settings = file_get_contents($_FILES['txtsettings']['tmp_name']);
+				$settings = base64_decode($settings);
+				$settings = json_decode($settings, true);
+
+				$settings[Wpematico::OPTION_KEY] = apply_filters('wpematico_check_options', $settings[Wpematico::OPTION_KEY]);
+				
+				foreach($settings as $settingKey => $value){
+					update_option($settingKey, $value);
+				}
+
+				WPeMatico::add_wp_notice(array('text' => __('Settings Imported.', 'wpematico'), 'below-h2' => false));
+				wp_redirect(admin_url('edit.php?post_type=wpematico&page=wpematico_tools&tab=tools'));
+			} else {
+				$message = __("Can't upload! Just .txt files allowed!", 'wpematico');
+				WPeMatico::add_wp_notice(array('text' => $message, 'below-h2' => false, 'error' => true));
+				wp_redirect(admin_url('edit.php?post_type=wpematico&page=wpematico_tools&tab=tools'));
+			}
+		}
 	}
 
 	// Class WPeMatico_functions
@@ -1698,15 +1764,18 @@ function wpematico_get_host() {
  * Returns if installed & active PRO VERSION
  *
  * @since 1.2.4
- * @return bool true if installed & active
+ * @return bool|int if installed & active
  */
-function wpematico_is_pro_active() {  // Check if PRO version is installed & active
+function wpematico_is_pro_active($returnbool = false) {  // Check if PRO version is installed & active
+	
+	if($returnbool){
+		return defined('WPEMATICOPRO_VERSION');
+	}
+
 	$active_plugins = get_option('active_plugins');
 	$active_plugins_names = array_map('basename', $active_plugins);
 	$is_pro_active = array_search('wpematicopro.php', $active_plugins_names);
-	if ($is_pro_active !== FALSE) {
-		return true;
-	}
+
 	return $is_pro_active;
 }
 
@@ -1749,22 +1818,80 @@ function array_multi_key_exists(array $arrNeedles, array $arrHaystack, $blnMatch
 	return array_multi_key_exists($arrNeedles, $arrHaystack, $blnMatchAll);
 }
 
-//function for PHP error handling
+function wpematico_get_active_seo_plugin() {
+	// List of SEO plugins and their main files
+	$seo_array = array(
+		'yoast_seo' => 'wordpress-seo/wp-seo.php',
+		// 'all_in_one_seo' => 'all-in-one-seo-pack/all_in_one_seo_pack.php',
+		'rank_math' => 'seo-by-rank-math/rank-math.php',
+		'seo_framework' => 'autodescription/autodescription.php',
+		// Add more SEO plugins here
+	);
+	$seo_plugins = apply_filters('wpematico_seo_plugins', $seo_array);
+	// Verify if some SEO plugin is active
+	foreach ($seo_plugins as $slug => $main_file) {
+		if (is_plugin_active($main_file)) {
+			// Return the slug of the $seo_plugins
+			return $slug;
+		}
+	}
+	// If doens't exist or there aren't some SEO plugin active return false
+	return false;
+}
+
+
+/**
+ * Alternative ini_set to trigger errors and changed values 
+ * 
+ * @param string $index	
+ * @param string|int|float|bool|null $value	<p>The new value for the option.</p>
+ * @param bool $log_only_fail <p>Trigger the WARNING only if fail to set the new value for the option.</p>
+ * @return string|false <p>Returns the old value on success, <b><code>false</code></b> on failure.</p>
+ */
+function wpematico_init_set($index, $value, $log_only_fail = false) {
+    $oldvalue = @ini_set($index, $value) or $oldvalue = FALSE; //@return string the old value on success, <b>FALSE</b> on failure. (after 'or' is by the @)
+    if ($log_only_fail) {
+        if ($oldvalue === false) {
+            trigger_error(sprintf(__('Trying to set %s = %s: \'%s\' - Old value:%s.', 'wpematico'), $index, $value, __('Failed', 'wpematico'), $oldvalue), E_USER_WARNING);
+        }
+    } else {
+        trigger_error(sprintf(__('Trying to set %s = %s: \'%s\' - Old value:%s.', 'wpematico'), $index, $value, 
+				(($oldvalue === FALSE) ? __('Failed', 'wpematico') : __('Success', 'wpematico')), 
+				$oldvalue), 
+				(($oldvalue === FALSE) ? E_USER_WARNING : E_USER_NOTICE));
+    }
+
+    return $oldvalue;
+}
+
+
+/**
+ * function for PHP error handling saved as Campaign Logs.
+ * 
+ * @global string $campaign_log_message Currently log where to add next line. 
+ * @global int $jobwarnings Warnings quantity.
+ * @global int $joberrors Errors quantity.
+ * @param number $errno PHP constants error values.
+ * @param string $errstr PHP Error details.
+ * @param string $errfile File with error.
+ * @param type $errline Line of the error in previous file.
+ * @return bool True for no more php error hadling.
+ */
 function wpematico_joberrorhandler($errno, $errstr, $errfile, $errline) {
 	global $campaign_log_message, $jobwarnings, $joberrors;
 
 	//genrate timestamp
 	if (!version_compare(phpversion(), '6.9.0', '>')) { // PHP Version < 5.7 dirname 2nd 
 		if (!function_exists('memory_get_usage')) { // test if memory functions compiled in
-			$timestamp = "<span style=\"background-color:c3c3c3;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile)) . basename($errfile) . "\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
+			$timestamp = "<span style=\"background-color:#c3c3c3; padding: 0 5px;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile)) . basename($errfile) . "\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
 		} else {
-			$timestamp = "<span style=\"background-color:c3c3c3;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile)) . basename($errfile) . "|Mem: " . WPeMatico :: formatBytes(@memory_get_usage(true)) . "|Mem Max: " . WPeMatico :: formatBytes(@memory_get_peak_usage(true)) . "|Mem Limit: " . ini_get('memory_limit') . "]\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
+			$timestamp = "<span style=\"background-color:#c3c3c3; padding: 0 5px;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile)) . basename($errfile) . "|Mem: " . WPeMatico :: formatBytes(@memory_get_usage(true)) . "|Mem Max: " . WPeMatico :: formatBytes(@memory_get_peak_usage(true)) . "|Mem Limit: " . ini_get('memory_limit') . "]\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
 		}
 	} else {
 		if (!function_exists('memory_get_usage')) { // test if memory functions compiled in
-			$timestamp = "<span style=\"background-color:c3c3c3;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile, 2)) . basename($errfile) . "\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
+			$timestamp = "<span style=\"background-color:#c3c3c3; padding: 0 5px;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile, 2)) . basename($errfile) . "\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
 		} else {
-			$timestamp = "<span style=\"background-color:c3c3c3;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile, 2)) . basename($errfile) . "|Mem: " . WPeMatico :: formatBytes(@memory_get_usage(true)) . "|Mem Max: " . WPeMatico :: formatBytes(@memory_get_peak_usage(true)) . "|Mem Limit: " . ini_get('memory_limit') . "]\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
+			$timestamp = "<span style=\"background-color:#c3c3c3; padding: 0 5px;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile, 2)) . basename($errfile) . "|Mem: " . WPeMatico :: formatBytes(@memory_get_usage(true)) . "|Mem Max: " . WPeMatico :: formatBytes(@memory_get_peak_usage(true)) . "|Mem Limit: " . ini_get('memory_limit') . "]\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
 		}
 	}
 
@@ -1805,8 +1932,15 @@ function wpematico_joberrorhandler($errno, $errstr, $errfile, $errline) {
 		if ($errno == E_ERROR or $errno == E_CORE_ERROR or $errno == E_COMPILE_ERROR) {//Die on fatal php errors.
 			die("Fatal Error:" . $errno);
 		}
+		
 		//300 is most webserver time limit. 0= max time! Give script 5 min. more to work.
-		@set_time_limit(300);
+		//wpematico_init_set('max_execution_time',300);
+		//@set_time_limit(300);
+		
+		// Since 2.7
+		//  Testin restoring default value instead set it to 300
+		ini_restore('max_execution_time');
+		
 		//true for no more php error hadling.
 		return true;
 	} else {

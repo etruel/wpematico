@@ -9,7 +9,7 @@ if (!defined('ABSPATH')) {
 add_action('admin_head', 'wpematico_debug_head');
 
 function wpematico_debug_head() {
-	if (( isset($_GET['page']) && $_GET['page'] == 'wpematico_settings' ) &&
+	if (( isset($_GET['page']) && $_GET['page'] == 'wpematico_tools' ) &&
 			( isset($_GET['post_type']) && $_GET['post_type'] == 'wpematico' ) &&
 			( isset($_GET['tab']) && $_GET['tab'] == 'debug_info' ) &&
 			(!isset($_GET['section']) or $_GET['section'] == 'debug_file' )) {
@@ -32,8 +32,7 @@ function wpematico_feed_viewer() {
 		return false;
 	}
 
-	if (!isset($_POST['_referer'])
-			or !strpos($_POST['_referer'], "post_type=wpematico&page=wpematico_settings&tab=debug_info&section=feed_viewer"))
+	if (!isset($_POST['_referer']) || !strpos($_POST['_referer'], "post_type=wpematico&page=wpematico_tools&tab=tools&section=feed_viewer") && !strpos($_POST['_referer'], "post_type=wpematico&page=wpematico_tools&section=feed_viewer"))
 		return false;
 
 	$url				 = esc_url_raw($_POST['url']);
@@ -106,9 +105,9 @@ function wpematico_feed_viewer() {
  * @since       1.2.4
  * @return      void
  */
-add_action('wpematico_settings_section_feed_viewer', 'wpematico_settings_section_feed_viewer');
+add_action('wpematico_tools_section_feed_viewer', 'wpematico_tools_section_feed_viewer');
 
-function wpematico_settings_section_feed_viewer() {
+function wpematico_tools_section_feed_viewer() {
 	//add_action('wp_ajax_wpematico_test_feed', array( 'WPeMatico', 'Test_feed'));
 	//https://www.ufirstfitness.com/category/general/rss
 	global $current_screen;
@@ -172,7 +171,7 @@ function wpematico_settings_section_feed_viewer() {
 										});
 									</script>
 									<div id="seefeed" style="">
-										<form action="<?php echo esc_url(admin_url('edit.php?post_type=wpematico&page=wpematico_settings&tab=debug_info')); ?>" method="post" dir="ltr">
+										<form action="<?php echo esc_url(admin_url('edit.php?post_type=wpematico&page=wpematico_tools&tab=tools&section=feed_viewer')); ?>" method="post" dir="ltr">
 											<label><b><?php _e('Feed URL.', 'wpematico'); ?>
 													<input class="large-text" id="feedlink" value="" type="text" name="feedlink"/></b></label><br/>
 											<p class="bsubmit">
@@ -187,7 +186,7 @@ function wpematico_settings_section_feed_viewer() {
 													<?php _e('Get Feed and see here its contents.', 'wpematico'); ?>
 												</textarea>
 												<?php wp_nonce_field('wpematico-feedviewer'); ?>
-												<label onclick="jQuery('#wpematico-feedinfo').focus();
+												<label onclick="jQuery('#wpematico-feedinfo').trigger('focus');
 														jQuery('#wpematico-feedinfo').select()"><?php _e('SELECT ALL', 'wpematico'); ?></label>
 											</div>
 
@@ -214,7 +213,7 @@ function wpematico_settings_section_feed_viewer() {
  * @since       1.2.4
  * @return      void
  */
-function wpematico_settings_section_danger_zone() {
+function wpematico_tools_section_danger_zone() {
 	global $current_screen;
 	if (!isset($current_screen))
 		wp_die("Cheatin' uh?", "Closed today.");
@@ -246,7 +245,7 @@ function wpematico_settings_section_danger_zone() {
 	<?php
 }
 
-add_action('wpematico_settings_section_danger_zone', 'wpematico_settings_section_danger_zone');
+add_action('wpematico_tools_section_danger_zone', 'wpematico_tools_section_danger_zone');
 
 function wpematico_FriendlyErrorType($type) {
 	switch ($type) {
@@ -290,7 +289,7 @@ function wpematico_FriendlyErrorType($type) {
  * @since       1.2.4
  * @return      void
  */
-function wpematico_settings_section_debug_file() {
+function wpematico_tools_section_debug_file() {
 	global $current_screen;
 	if (!isset($current_screen))
 		wp_die("Cheatin' uh?", "Closed today.");
@@ -314,7 +313,7 @@ function wpematico_settings_section_debug_file() {
 										<span class="system-report-msg"><?php _e('Click the button to see and download the system report.', 'wpematico'); ?></span>
 									</span>
 									<div id="debug-report" style="display: none;">
-										<form action="<?php echo esc_url(admin_url('edit.php?post_type=wpematico&page=wpematico_settings&tab=debug_info')); ?>" method="post" dir="ltr">
+										<form action="<?php echo esc_url(admin_url('edit.php?post_type=wpematico&page=wpematico_tools&tab=debug_info')); ?>" method="post" dir="ltr">
 											<label><input class="checkbox" value="1" type="checkbox" name="alsophpinfo" /> <?php _e('Include also PHPInfo() if available.', 'wpematico'); ?></label><br/>
 											<label><input class="checkbox" value="1" type="checkbox" checked="checked" name="alsocampaignslogs" /> <?php _e('Include also Last Campaigns Log.', 'wpematico'); ?></label><br/>
 											<?php do_action('wpematico_debug_page_form_options'); ?>
@@ -329,8 +328,8 @@ function wpematico_settings_section_debug_file() {
 														  ><?php
 															  echo wpematico_debug_info_get();
 															  ?></textarea>
-												<?php wp_nonce_field('wpematico-settings'); ?>
-												<label onclick="jQuery('#debug-info-textarea').focus();
+												<?php wp_nonce_field('wpematico-tools'); ?>
+												<label onclick="jQuery('#debug-info-textarea').trigger('focus');
 														jQuery('#debug-info-textarea').select()" ><?php _e('SELECT ALL', 'wpematico'); ?></label>
 											</div>
 										</form>
@@ -349,7 +348,7 @@ function wpematico_settings_section_debug_file() {
 	<?php
 }
 
-add_action('wpematico_settings_section_debug_file', 'wpematico_settings_section_debug_file');
+add_action('wpematico_tools_section_debug_file', 'wpematico_tools_section_debug_file');
 
 function wpematico_status_rightcolumn() {
 	?>
@@ -1063,6 +1062,29 @@ function wpematico_show_data_info() {
 				</td>
 			</tr>
 			<tr>
+				<td data-export-label="Simple Pie VERSION"><?php _e('Simple Pie VERSION:', 'wpematico'); ?></td>
+				<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('Minimum version required is 1.5.1.', 'wpematico') . '">[?]</a>'; ?></td>
+				<td><?php
+					$from_wordpress = false;
+					if(!class_exists('SimplePie')) {
+						if(is_file(ABSPATH . WPINC . '/class-simplepie.php')) {
+							include_once( ABSPATH . WPINC . '/class-simplepie.php' );
+							$from_wordpress = true;
+						}else if(is_file(ABSPATH . 'wp-admin/includes/class-simplepie.php')) {
+							include_once( ABSPATH . 'wp-admin/includes/class-simplepie.php' );
+							$from_wordpress = true;
+						}
+					}
+
+					if ($from_wordpress) {
+						echo '
+				<code>' . sprintf(__('USING SimplePie %s included in Wordpress'), SIMPLEPIE_VERSION) . '</code>
+			  ';
+					}
+					?>
+				</td>
+			</tr>
+			<tr>
 				<td data-export-label="Language WPLANG"><?php _e('Language WPLANG:', 'wpematico'); ?></td>
 				<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('The current language set in wp-config.php, WPLANG constant. Default = en_US', 'wpematico') . '">[?]</a>'; ?></td>
 				<td><?php echo get_locale() ?></td>
@@ -1410,7 +1432,7 @@ function wpematico_save_danger_data() {
 		if (update_option('WPeMatico_danger', $danger) or add_option('WPeMatico_danger', $danger)) {
 			WPeMatico::add_wp_notice(array('text' => __('Actions to Uninstall saved.', 'wpematico') . '<br>' . __('The actions are executed when the plugin is uninstalled.', 'wpematico'), 'below-h2' => false));
 		}
-		wp_redirect(admin_url('edit.php?post_type=wpematico&page=wpematico_settings&tab=debug_info&section=danger_zone'));
+		wp_redirect(admin_url('edit.php?post_type=wpematico&page=wpematico_tools&tab=debug_info&section=danger_zone'));
 	}
 }
 
@@ -1728,7 +1750,7 @@ function wpematico_debug_info_get() {
  * @return      void
  */
 function wpematico_debug_info_download() {
-	check_admin_referer('wpematico-settings');
+	check_admin_referer('wpematico-tools');
 	nocache_headers();
 
 	header('Content-Type: text/plain');
@@ -1788,7 +1810,7 @@ function wpematico_debug_info_download() {
 add_action('wpematico_download_debug_info', 'wpematico_debug_info_download');
 
 function wpematico_option_blacklisted($setting) {
-	// TODO: add other settings from premium modules
+	// TODO: add other tools from premium modules
 	$blacklisted = array(
 		'mailsendmail',
 		'mailsecure',

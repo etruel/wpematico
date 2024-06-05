@@ -14,6 +14,12 @@ class wpe_smart_notifications {
 		// dismiss AJAX calls
 		add_action('wp_ajax_wpematico_dismiss_wprate_notice', array(__CLASS__, 'dismiss_wprate_notice'));
 		add_action('wp_ajax_wpematico_dismiss_wizard_notice', array(__CLASS__, 'dismiss_wizard_notice'));
+		// temp. will be deleted on finish MDM
+		add_action('wp_ajax_wpematico_dismiss_mdm_notice', array(__CLASS__, 'dismiss_mdm_notice'));
+	}
+
+	public static function dismiss_mdm_notice() {
+		update_option('wpematico_dismiss_mdm_notice', true);
 	}
 
 	public static function admin_head() {
@@ -22,7 +28,7 @@ class wpe_smart_notifications {
 		if ($current_screen->post_type != 'wpematico') {
 			return;
 		}
-		wp_enqueue_script('wpematico-smart-notifications', WPeMatico :: $uri . 'app/js/smart_notifications.js', array('jquery'), WPEMATICO_VERSION, true);
+		wp_enqueue_script('wpematico-smart-notifications', WPeMatico::$uri . 'app/js/smart_notifications.js', array('jquery'), WPEMATICO_VERSION, true);
 
 		self::hooks();
 	}
@@ -31,11 +37,12 @@ class wpe_smart_notifications {
 		// WPeMatico Notices
 		add_action('admin_notices', array(__CLASS__, 'show_wprate_notice'));
 		add_action('edit_form_top', array(__CLASS__, 'show_campaign_wizard_notice'));
+		add_action('admin_notices', array(__CLASS__, 'show_mdm_notice'));
 	}
 
 	public static function dismiss_wprate_notice() {
 		$current_numbers = self::get_number_of_campaigns_post();
-		$current_levels = self::get_levels_notifications($current_numbers);
+		$current_levels	 = self::get_levels_notifications($current_numbers);
 		update_option('wpematico_level_snotifications', $current_levels);
 	}
 
@@ -55,8 +62,8 @@ class wpe_smart_notifications {
 	 */
 	public static function get_number_of_campaigns_post($return = "array") {
 		global $wpdb;
-		$ret = array(0, 0);
-		$check_sql = "SELECT COALESCE(SUM(meta_value), 0) as countpost, COUNT(*) as count FROM $wpdb->postmeta WHERE meta_key = 'postscount'";
+		$ret		  = array(0, 0);
+		$check_sql	  = "SELECT COALESCE(SUM(meta_value), 0) as countpost, COUNT(*) as count FROM $wpdb->postmeta WHERE meta_key = 'postscount'";
 		$results_data = $wpdb->get_results($check_sql);
 		if (!empty($results_data)) {
 			$ret[0] = $results_data[0]->count;
@@ -98,8 +105,8 @@ class wpe_smart_notifications {
 		if ($current_screen->id != 'edit-wpematico') {
 			return;
 		}
-		$current_numbers = self::get_number_of_campaigns_post();
-		$current_levels = self::get_levels_notifications($current_numbers);
+		$current_numbers	 = self::get_number_of_campaigns_post();
+		$current_levels		 = self::get_levels_notifications($current_numbers);
 		$level_notifications = get_option('wpematico_level_snotifications', array(0, 0));
 
 		$show_wprate_notice = false;
@@ -170,6 +177,46 @@ class wpe_smart_notifications {
 		<?php
 	}
 
+	
+	public static function show_mdm_notice() {
+		global $post_type, $current_screen, $post;
+		if ($post_type != 'wpematico' 
+				&& strpos($current_screen->id, 'wpematico')!==false 
+				&& strpos($current_screen->id, 'wpemaddons')!==false 
+				&& ($current_screen->id != 'wpematico' || $current_screen->action == 'add') 
+			) {
+			return;
+		}
+		// User already dismissed
+		$dismiss_mdm_notice = get_option('wpematico_dismiss_mdm_notice', false);
+		if ($dismiss_mdm_notice) {
+			return;
+		}
+		?>
+		<div id="smart-notification-mdm" class="wpematico-smart-notification">
+			<h3>
+				<span class="notification-title"><?php _e('Last version on 2.6.x series!!', 'wpematico'); ?></span>
+				<span class="icon-dismiss-div dashicons dashicons-no" title="Dismiss"></span>
+				<span class="icon-close-div dashicons dashicons-visibility" title="Close"></span>
+			</h3>
+			<div class="description-smart-notification">
+				<p class="parr-wpmatico-smart-notification">
+					<?php _e('We will soon reach one million downloads and celebrate in style.', 'wpematico'); ?><br>
+					<br>
+					<?php _e('We\'ve prepared a big celebration with releases and gifts for a whole month!', 'wpematico'); ?><br>
+					<?php _e('In which we will release the new versions with many new free features, but we will also make many free gifts for all our community of WordPress users, customers and friends.', 'wpematico'); ?><br>
+					<br>
+					<?php _e('June rules! Don\'t miss all the news! Follow everything on this link!', 'wpematico'); ?>
+					<br>
+					<br>
+					<a href="https://etruel.com/join-us-to-celebrate-the-million-downloads-month/" target="_blank" class="button button-primary button-hero">Millon Downloads Month</a>
+				</p>
+				<br>
+			</div>
+		</div>
+		<?php
+	}
+	
 }
 
 wpe_smart_notifications::init();
