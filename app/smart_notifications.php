@@ -193,23 +193,20 @@ class wpe_smart_notifications {
 			return;
 		}
 		?>
-		<div id="smart-notification-mdm" class="wpematico-smart-notification">
+		<div id="smart-notification-mdm" class="wpematico-smart-notification" style="border-color: #de3f12;">
 			<h3>
-				<span class="notification-title"><?php _e('Last version on 2.6.x series!!', 'wpematico'); ?></span>
+				<span class="notification-title"><?php _e('WPeMatico 2.7 series it\'s here!', 'wpematico'); ?></span>
 				<span class="icon-dismiss-div dashicons dashicons-no" title="Dismiss"></span>
 				<span class="icon-close-div dashicons dashicons-visibility" title="Close"></span>
 			</h3>
 			<div class="description-smart-notification">
 				<p class="parr-wpmatico-smart-notification">
-					<?php _e('We will soon reach one million downloads and celebrate in style.', 'wpematico'); ?><br>
+
+					<big><strong><?php _e('Join our giveaways to win “almost” FREE amazing prizes! 🎁', 'wpematico'); ?></strong></big><br>
 					<br>
-					<?php _e('We\'ve prepared a big celebration with releases and gifts for a whole month!', 'wpematico'); ?><br>
-					<?php _e('In which we will release the new versions with many new free features, but we will also make many free gifts for all our community of WordPress users, customers and friends.', 'wpematico'); ?><br>
+					<?php _e('MDM Giveaway will award 10 prizes on selected products available on etruel.com annual licenses discounted to $1.- ', 'wpematico'); ?><strong><?php _e('Yes! Just ONE Dollar!', 'wpematico'); ?></strong><br>
 					<br>
-					<?php _e('June rules! Don\'t miss all the news! Follow everything on this link!', 'wpematico'); ?>
-					<br>
-					<br>
-					<a href="https://etruel.com/join-us-to-celebrate-the-million-downloads-month/" target="_blank" class="button button-primary button-hero">Millon Downloads Month</a>
+					<a href="https://www.wpematico.com/giveaway/mdm/" target="_blank" class="button button-primary button-hero" style="background-color: #de3f12; border-color: #de3f12;font-weight: 700;">MORE INFO!</a>
 				</p>
 				<br>
 			</div>
