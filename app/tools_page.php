@@ -165,7 +165,7 @@ if (!class_exists('WPeMatico_Tools')) :
 				((isset($_GET['tab']) && $_GET['tab'] == 'tools') || !isset($_GET['tab']))
 			) {
 				$screen = WP_Screen::get('wpematico_page_wpematico_tools ');
-				foreach (wpematico_helpsettings() as $key => $section) {
+				foreach (wpematico_helptools() as $key => $section) {
 					$tabcontent = '';
 					foreach ($section as $section_key => $sdata) {
 						$helptip[$section_key]	 = htmlentities($sdata['tip']);
