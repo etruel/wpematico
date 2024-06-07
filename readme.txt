@@ -3,9 +3,9 @@ Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,rss to post,feed to post,rss aggregator
 Requires at least: 4.8
-Tested up to: 6.5.4
+Tested up to: 6.6
 Requires PHP: 7.0
-Stable tag: 2.7
+Stable tag: 2.7.1
 License: GPLv2 or later
 
 WPeMatico is autoblogging in the blink of an eye!  On complete autopilot WPeMatico gets new contents regularly for your site!
@@ -235,6 +235,13 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
+
+= 2.7.1 Jun 7, 2024 =
+* Bump to WP 6.6
+* Tweaks on responsive style on System Status page.
+* Fixes Help tab on Tools page showing bad contents.
+* Fixes bad links to System Status in the new Tools page on notices or errors
+* Fixes title banner for old version and [MDM Giveaway](https://www.wpematico.com/giveaway/mdm/).
 
 = 2.7 Jun 3, 2024 =
 
