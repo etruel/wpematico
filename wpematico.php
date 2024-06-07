@@ -71,6 +71,7 @@ if (!class_exists('Main_WPeMatico')) {
 				require_once("app/campaign_edit_functions.php");
 				require_once('app/campaign_edit.php');
 				require_once("app/settings_help.php");
+				require_once("app/tools_help.php");
 				require_once("app/settings_page.php");
 				require_once("app/tools_page.php");
 				require_once("app/debug_page.php");
