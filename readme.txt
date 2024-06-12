@@ -238,6 +238,7 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 = 2.7.2 Jun 12, 2024 =
 * Fixes call PHP ini_restore when the function is disabled in PHP.
+* Tweaks on the new Settings banner to show just the summary of the new release instead the entire content.
 * Fixes a wrong variable name.
 * Improves styles and fixes responsive on System Status page.
 * Makes the texts translatable on the screen and the help on the tools page.

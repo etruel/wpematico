@@ -110,7 +110,7 @@ if (!class_exists('WPeMatico_Tools')) :
 						$button_export = '<a href="' . $linkExport . '" class="button" title="' . esc_attr(__("Export and download settings", 'wpematico')) . '">' . __('Export Settings', 'wpematico') . '</a>';
 						?>
 						<div class="postbox">
-							<h3 class="hndle ui-sortable-handle"><span class="dashicons dashicons-download"></span> <span><?php echo __('Export Settings', 'wpematico') ?></span></h3>
+							<h3 class="hndle ui-sortable-handle"><span class="dashicons dashicons-arrow-up-alt"></span> <span><?php echo __('Export Settings', 'wpematico') ?></span></h3>
 							<div class="inside">
 								<p><?php echo __('Export the WPeMatico settings for this site as a .json file. This allows you to easily import the configuration into another site.', 'wpematico')  ?></p>
 								<p>
@@ -121,7 +121,7 @@ if (!class_exists('WPeMatico_Tools')) :
 						<form action="<?php echo $linkImport; ?>" id="importsettings" method='post' ENCTYPE='multipart/form-data'>
 							<?php wp_nonce_field('import-settings', 'wpemimport_nonce'); ?>
 							<div class="postbox">
-								<h3 class="hndle ui-sortable-handle"><span class="dashicons dashicons-upload"></span> <span><?php echo __('Import Settings', 'wpematico') ?></span></h3>
+								<h3 class="hndle ui-sortable-handle"><span class="dashicons dashicons-arrow-down-alt"></span> <span><?php echo __('Import Settings', 'wpematico') ?></span></h3>
 								<div class="inside">
 									<p><?php echo __('Import the WPeMatico settings for this site.', 'wpematico')  ?></p>
 									<p>
