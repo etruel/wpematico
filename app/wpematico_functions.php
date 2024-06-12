@@ -534,7 +534,7 @@ if (!class_exists('WPeMatico_functions')) {
 		}
 
 		/**
-		 * Static function get_tags
+		 * Static function get_tag
 		 * @access public
 		 * @return void
 		 * @since 1.7.1
@@ -1898,48 +1898,54 @@ function wpematico_joberrorhandler($errno, $errstr, $errfile, $errline) {
 	switch ($errno) {
 		case E_NOTICE:
 		case E_USER_NOTICE:
-			$massage = $timestamp . "<span>" . $errstr . "</span>";
+			$sMessage = $timestamp . "<span>" . $errstr . "</span>";
 			break;
 		case E_WARNING:
 		case E_USER_WARNING:
 			$jobwarnings += 1;
-			$massage = $timestamp . "<span style=\"background-color:yellow;\">" . __('[WARNING]', 'wpematico') . " " . $errstr . "</span>";
+			$$sMessage = $timestamp . "<span style=\"background-color:yellow;\">" . __('[WARNING]', 'wpematico') . " " . $errstr . "</span>";
 			break;
 		case E_ERROR:
 		case E_USER_ERROR:
 			$joberrors += 1;
-			$massage = $timestamp . "<span style=\"background-color:red;\">" . __('[ERROR]', 'wpematico') . " " . $errstr . "</span>";
+			$$sMessage = $timestamp . "<span style=\"background-color:red;\">" . __('[ERROR]', 'wpematico') . " " . $errstr . "</span>";
 			break;
 		case E_DEPRECATED:
 		case E_USER_DEPRECATED:
-			$massage = $timestamp . "<span>" . __('[DEPRECATED]', 'wpematico') . " " . $errstr . "</span>";
+			$$sMessage = $timestamp . "<span>" . __('[DEPRECATED]', 'wpematico') . " " . $errstr . "</span>";
 			break;
 		case E_STRICT:
-			$massage = $timestamp . "<span>" . __('[STRICT NOTICE]', 'wpematico') . " " . $errstr . "</span>";
+			$$sMessage = $timestamp . "<span>" . __('[STRICT NOTICE]', 'wpematico') . " " . $errstr . "</span>";
 			break;
 		case E_RECOVERABLE_ERROR:
-			$massage = $timestamp . "<span>" . __('[RECOVERABLE ERROR]', 'wpematico') . " " . $errstr . "</span>";
+			$$sMessage = $timestamp . "<span>" . __('[RECOVERABLE ERROR]', 'wpematico') . " " . $errstr . "</span>";
 			break;
 		default:
-			$massage = $timestamp . "<span>[" . $errno . "] " . $errstr . "</span>";
+			$$sMessage = $timestamp . "<span>[" . $errno . "] " . $errstr . "</span>";
 			break;
 	}
 
-	if (!empty($massage)) {
+	if (!empty($$sMessage)) {
 
-		$campaign_log_message .= $massage . "<br />\n";
+		$campaign_log_message .= $$sMessage . "<br />\n";
 
 		if ($errno == E_ERROR or $errno == E_CORE_ERROR or $errno == E_COMPILE_ERROR) {//Die on fatal php errors.
 			die("Fatal Error:" . $errno);
 		}
 		
-		//300 is most webserver time limit. 0= max time! Give script 5 min. more to work.
-		//wpematico_init_set('max_execution_time',300);
-		//@set_time_limit(300);
+		// Deprecated on 2.7
+		// wpematico_init_set('max_execution_time',300);
+		// @set_time_limit(300);
 		
-		// Since 2.7
-		//  Testin restoring default value instead set it to 300
-		ini_restore('max_execution_time');
+		// Since 2.7.2
+		if ( function_exists('ini_restore') ) {
+			//  Testin restoring default value instead set it to 300
+			ini_restore('max_execution_time');
+		}else { // ini_restore is not enabled
+			//300 is most webserver time limit. 0= max time! Give script 5 min. more to work.
+			wpematico_init_set('max_execution_time', 300);
+		}
+		
 		
 		//true for no more php error hadling.
 		return true;

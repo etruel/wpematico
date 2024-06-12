@@ -236,6 +236,10 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
 
+= 2.7.2 Jun X, 2024 =
+* Fixes call PHP ini_restore when the function is disabled in PHP.
+* Fixes a wrong variable name.
+
 = 2.7.1 Jun 7, 2024 =
 * Bump to WP 6.6
 * Tweaks on responsive style on System Status page.
