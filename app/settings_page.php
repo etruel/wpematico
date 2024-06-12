@@ -188,25 +188,24 @@ if(!class_exists('WPeMatico_Settings')) :
 								</div>
 								<div class="wpe_changelog-header-content">
 									<h2>WPeMatico RSS Feed Fetcher</h2>
-									<p>Highlights of the new release</p>
-									<h4>Version <span><?php echo WPEMATICO_VERSION ?></span></h4>
+									<p><?php _e('Highlights of the new release', 'wpematico'); ?></p>
+									<h4><?php _e('Version', 'wpematico'); ?> <span><?php echo WPEMATICO_VERSION ?></span></h4>
 								</div>
 							</div>
 							<div class="wpe_changelog-content">
 								<div class="wpe_changelog-list">
 									<?php foreach ($feed->get_items(0, 1) as $item) {
-											$content = $item->get_content();
+											$content = $item->get_description();
 											echo $content;
 										} ?>
 								</div>
-								<p><a href="https://www.wpematico.com/releases/" class="button" target="_blank"><span class="dashicons dashicons-arrow-right-alt"></span> Read more on wpematico.com</a></p>
+								<p><a href="https://www.wpematico.com/releases/" class="button" target="_blank"><span class="dashicons dashicons-arrow-right-alt"></span> <?php _e('Read more on wpematico.com', 'wpematico'); ?></a></p>
 								<br>
-								<h3>Your opinion about WPeMatico is very important to us.</h3>
-								<p>By rating WPeMatico RSS Feed Fetcher, you help the plugin creators to improve their work and help other users to find the software they need. You can write your review on WordPress forum. Use the
-								language of your choice, we appreciate it!</p>
-								<p><a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" class="button" target="_blank"><span class="dashicons dashicons-star-filled"></span> Rate us on WordPress</a></p>
+								<h3><?php _e('Your opinion about WPeMatico is very important to us.', 'wpematico'); ?></h3>
+								<p><?php _e('By rating WPeMatico RSS Feed Fetcher, you help the plugin creators to improve their work and help other users to find the software they need. You can write your review on WordPress forum. Use the language of your choice, we appreciate it!', 'wpematico'); ?></p>
+								<p><a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" class="button" target="_blank"><span class="dashicons dashicons-star-filled"></span> <?php _e('Rate us on WordPress', 'wpematico'); ?></a></p>
 								<div class="wpe_changelog-dismiss">
-									<a id="button_yes_changelog" class="button awesome"><span>YES!</span></a>
+									<a id="button_yes_changelog" class="button awesome"><span><?php _e('YES!', 'wpematico'); ?></span></a>
 								</div>
 							</div>
 						</div>
