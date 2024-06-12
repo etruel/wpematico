@@ -5,7 +5,7 @@ Tags: RSS,XML,rss to post,feed to post,rss aggregator
 Requires at least: 4.8
 Tested up to: 6.6
 Requires PHP: 7.0
-Stable tag: 2.7.1
+Stable tag: 2.7.2
 License: GPLv2 or later
 
 WPeMatico is autoblogging in the blink of an eye!  On complete autopilot WPeMatico gets new contents regularly for your site!
@@ -236,9 +236,12 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
 
-= 2.7.2 Jun X, 2024 =
+= 2.7.2 Jun 12, 2024 =
 * Fixes call PHP ini_restore when the function is disabled in PHP.
 * Fixes a wrong variable name.
+* Improves styles and fixes responsive on System Status page.
+* Makes the texts translatable on the screen and the help on the tools page.
+* Improves language files.
 
 = 2.7.1 Jun 7, 2024 =
 * Bump to WP 6.6
