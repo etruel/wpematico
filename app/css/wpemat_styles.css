@@ -1829,6 +1829,23 @@ body.wpe_modal_log-is-active{
     color: #d3741c;
 }
 /*System status*/
+.wpe_table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+.wpe_table-responsive .wpe_table{
+    width: 100%;
+    max-width: 100%;
+}
+.wpe_table-responsive .wpe_table td:nth-child(1) {
+    width: 200px;
+}
+.wpe_table td.help{
+    width: 30px;
+}
 @media (max-width: 991px){
     .wpematico-system-status-debug .get-system-status .debug-report{
         margin-bottom: .8em;

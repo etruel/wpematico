@@ -13,7 +13,7 @@ if(!defined('ABSPATH')) {
  */
 function wpematico_helptools($dev = '') {
 	$helptools	 = array(
-		'Global Settings'	 => array(
+		__('Global Settings', 'wpematico')	=> array(
 			'export_settings'	 => array(
 				'title'	 => __('Export Settings.', 'wpematico'),
 				'tip'	 => __('This feature allows you to export the configuration settings of WPeMatico and its addons for your current site into a .json file. The exported file contains all the relevant settings.', 'wpematico') . "<br />" .

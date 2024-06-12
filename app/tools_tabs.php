@@ -98,7 +98,7 @@ function wpematico_print_tab_sections() {
 	}
 	$current_section = (isset($_GET['section']) ) ? sanitize_text_field( $_GET['section'] ) : key($sections);
 	?>	
-	<div class="wrap">
+	<div class="wpe_wrap">
 		<h3 class="nav-section-wrapper">
 			<?php
 			$f = TRUE;
