@@ -232,15 +232,17 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         }
 
         foreach ($simplePieItems as $item) {
-            if ($this->campaign['campaign_type'] == 'youtube' || $this->campaign['campaign_type'] == 'xml' || !empty($item->get_item_tags('', 'link')) || $item->get_permalink()) {
+            
+            if ($item->get_permalink() || $this->campaign['campaign_type'] == 'youtube' || $this->campaign['campaign_type'] == 'xml' || !empty($item->get_item_tags('', 'link')) ) {
                 $permalink = $item->get_permalink();
             } else {
                 $permalink = $item->get_id();
             }
 
+           
             // Get the source Permalink trying to redirect if is set.
             $permalink = $this->getReadUrl($permalink, $this->campaign);
-
+            
             if ($prime) {
                 //with first item get the hash of the last item (new) that will be saved.
                 $this->lasthash[$this->feed_hash_key('lasthash', $feed)] = md5($permalink);
@@ -310,12 +312,11 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
             // set timeout for rest of the items to Timeout setting less current run time
             wpematico_init_set('max_execution_time', $campaign_timeout, true); // - ( current_time('timestamp') - $this->campaign['starttime'] ), true);
             $realcount++;
-            if ($this->campaign['campaign_type'] == 'youtube' || $this->campaign['campaign_type'] == 'xml' || !empty($item->get_item_tags('', 'link'))) {
+            if ($item->get_permalink() || $this->campaign['campaign_type'] == 'youtube' || $this->campaign['campaign_type'] == 'xml' || !empty($item->get_item_tags('', 'link'))) {
                 $permalink = $item->get_permalink();
             } else {
                 $permalink = $item->get_id();
             }
-
             // Get the source Permalink trying to redirect if is set.
             $permalink = $this->getReadUrl($permalink, $this->campaign);
             $this->current_item['permalink'] = $permalink;
