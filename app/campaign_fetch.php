@@ -232,7 +232,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         }
 
         foreach ($simplePieItems as $item) {
-            if ($this->campaign['campaign_type'] == 'youtube' || $this->campaign['campaign_type'] == 'xml' || !empty($item->get_item_tags('', 'link'))) {
+            if ($this->campaign['campaign_type'] == 'youtube' || $this->campaign['campaign_type'] == 'xml' || !empty($item->get_item_tags('', 'link')) || $item->get_permalink()) {
                 $permalink = $item->get_permalink();
             } else {
                 $permalink = $item->get_id();

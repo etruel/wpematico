@@ -332,6 +332,14 @@ if (!class_exists('WPeMatico_Campaigns')) :
 							// Apply addslashes to the corresponding subValue
 								$campaign_data[$key][$subKey] = addslashes($subValue);
 						}
+
+						if(is_array($campaign_data[$key][$subKey])){
+							$lastValue = $campaign_data[$key][$subKey];
+							foreach ($lastValue as $lastKey => $last ) {
+								if(strpos($last, '\\'))
+									$campaign_data[$key][$subKey][$lastKey] = addslashes($last);
+							}	
+						}
 					}
 				}
 			}

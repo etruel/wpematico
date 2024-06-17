@@ -1903,31 +1903,31 @@ function wpematico_joberrorhandler($errno, $errstr, $errfile, $errline) {
 		case E_WARNING:
 		case E_USER_WARNING:
 			$jobwarnings += 1;
-			$$sMessage = $timestamp . "<span style=\"background-color:yellow;\">" . __('[WARNING]', 'wpematico') . " " . $errstr . "</span>";
+			$sMessage = $timestamp . "<span style=\"background-color:yellow;\">" . __('[WARNING]', 'wpematico') . " " . $errstr . "</span>";
 			break;
 		case E_ERROR:
 		case E_USER_ERROR:
 			$joberrors += 1;
-			$$sMessage = $timestamp . "<span style=\"background-color:red;\">" . __('[ERROR]', 'wpematico') . " " . $errstr . "</span>";
+			$sMessage = $timestamp . "<span style=\"background-color:red;\">" . __('[ERROR]', 'wpematico') . " " . $errstr . "</span>";
 			break;
 		case E_DEPRECATED:
 		case E_USER_DEPRECATED:
-			$$sMessage = $timestamp . "<span>" . __('[DEPRECATED]', 'wpematico') . " " . $errstr . "</span>";
+			$sMessage = $timestamp . "<span>" . __('[DEPRECATED]', 'wpematico') . " " . $errstr . "</span>";
 			break;
 		case E_STRICT:
-			$$sMessage = $timestamp . "<span>" . __('[STRICT NOTICE]', 'wpematico') . " " . $errstr . "</span>";
+			$sMessage = $timestamp . "<span>" . __('[STRICT NOTICE]', 'wpematico') . " " . $errstr . "</span>";
 			break;
 		case E_RECOVERABLE_ERROR:
-			$$sMessage = $timestamp . "<span>" . __('[RECOVERABLE ERROR]', 'wpematico') . " " . $errstr . "</span>";
+			$sMessage = $timestamp . "<span>" . __('[RECOVERABLE ERROR]', 'wpematico') . " " . $errstr . "</span>";
 			break;
 		default:
-			$$sMessage = $timestamp . "<span>[" . $errno . "] " . $errstr . "</span>";
+			$sMessage = $timestamp . "<span>[" . $errno . "] " . $errstr . "</span>";
 			break;
 	}
 
-	if (!empty($$sMessage)) {
+	if (!empty($sMessage)) {
 
-		$campaign_log_message .= $$sMessage . "<br />\n";
+		$campaign_log_message .= $sMessage . "<br />\n";
 
 		if ($errno == E_ERROR or $errno == E_CORE_ERROR or $errno == E_COMPILE_ERROR) {//Die on fatal php errors.
 			die("Fatal Error:" . $errno);
