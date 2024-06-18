@@ -5,7 +5,7 @@ Tags: RSS,XML,rss to post,feed to post,rss aggregator
 Requires at least: 4.8
 Tested up to: 6.6
 Requires PHP: 7.0
-Stable tag: 2.7.2
+Stable tag: 2.7.3
 License: GPLv2 or later
 
 WPeMatico is autoblogging in the blink of an eye!  On complete autopilot WPeMatico gets new contents regularly for your site!
@@ -236,10 +236,11 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
 
-= 2.7.3 Jun 17, 2024 =
-* Tweaks for rdf:RDF feeds compatibility to get the permalink correctly.
-* Fixes on campaign logs.
-* Fixes for duplicate campaigns to avoid deleting the \ character.
+= 2.7.3 Jun 18, 2024 =
+* Improves RDF feeds compatibility.
+* Fixes an issue getting the source permalink.
+* Fixes an issue with $sMessage variable on campaign logs.
+* Fixes issues with "/" character on some fields when duplicate campaigns.
 * Added some warning texts for LiteSpeed servers on System Status Page.
 
 = 2.7.2 Jun 12, 2024 =
