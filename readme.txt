@@ -236,6 +236,12 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
 
+= 2.7.3 Jun 17, 2024 =
+* Tweaks for rdf:RDF feeds compatibility to get the permalink correctly.
+* Fixes on campaign logs.
+* Fixes for duplicate campaigns to avoid deleting the \ character.
+* Added some warning texts for LiteSpeed servers on System Status Page.
+
 = 2.7.2 Jun 12, 2024 =
 * Fixes call PHP ini_restore when the function is disabled in PHP.
 * Tweaks on the new Settings banner to show just the summary of the new release instead the entire content.
