@@ -777,7 +777,13 @@ function wpematico_show_data_info() {
 				<tr>
 					<td data-export-label="Server Info"><?php _e('Server Info:', 'wpematico'); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('Information about the web server that is currently hosting your site.', 'wpematico') . '">[?]</a>'; ?></td>
-					<td><strong><?php echo esc_html($_SERVER['SERVER_SOFTWARE']); ?></strong></td>
+					<td><strong><?php echo esc_html($_SERVER['SERVER_SOFTWARE']); ?></strong> 
+					<?php
+						if (strpos(strtolower($_SERVER['SERVER_SOFTWARE']), 'litespeed')) {
+							echo '<mark class="error">' . sprintf(__('Some users have reported some incompatibility issues when using %s', 'wpematico'), $_SERVER['SERVER_SOFTWARE']) . '</mark>';
+						}
+					?>
+					</td>
 				</tr>
 				<tr>
 					<td data-export-label="MySQL Version"><?php _e('MySQL Version:', 'wpematico'); ?></td>
