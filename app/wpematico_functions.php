@@ -1590,12 +1590,14 @@ if (!class_exists('WPeMatico_functions')) {
 			$data = apply_filters('wpematico_before_get_content', false, $aux, $url);
 
 			$defaults = array(
-				'timeout' => 15
+				'timeout' => 15,
+				'headers' => array(
+					'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+				),
 			);
 			$args = wp_parse_args($aux, $defaults);
-
 			if (!$data) { // if stil getting error on get file content try WP func, this may give timeouts 
-					$response = wp_remote_request($url, $args);
+					$response = wp_safe_remote_request($url, $args);
 				if (!is_wp_error($response)) {
 					if (isset($response['response']['code']) && 200 === $response['response']['code']) {
 						$data = wp_remote_retrieve_body($response);
