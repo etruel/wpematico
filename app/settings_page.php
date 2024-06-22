@@ -669,9 +669,7 @@ if(!class_exists('WPeMatico_Settings')) :
 												<?php _e('You must set up a cron job that calls:', 'wpematico'); ?><br />
 												<?php
 												if(!has_action('wpematico_cronjob')) {
-													?><span class="coderr b LightPink"><?php echo '<i>"app/wpe-cron.php"</i>' . __('WAS DEPRECATED and removed from WPeMatico for reasons beyond our control.', 'wpematico'); ?><br />
-														<?php _e('Please change and use the URL below in all your cronjobs.', 'wpematico'); ?></span><br />
-													<?php
+													echo '<br />';
 													_e('URL:', 'wpematico');
 												}else {
 													do_action('wpematico_cronjob');
