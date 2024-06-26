@@ -5,7 +5,7 @@ Tags: RSS,XML,rss to post,feed to post,rss aggregator
 Requires at least: 4.8
 Tested up to: 6.6
 Requires PHP: 7.0
-Stable tag: 2.7.3
+Stable tag: 2.7.4
 License: GPLv2 or later
 
 WPeMatico is autoblogging in the blink of an eye!  On complete autopilot WPeMatico gets new contents regularly for your site!
@@ -236,6 +236,11 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
 
+= 2.7.4 Jun 26, 2024 =
+* Fixes Extensions page by hidding it on WordPress Multisite.
+* Improves compatibilities con Professional AddOn to use feeds from sites with Cloudflare.
+* Removed deprecated texts of External Crons URls from Settings screen.
+
 = 2.7.3 Jun 18, 2024 =
 * Improves RDF feeds compatibility.
 * Fixes an issue getting the source permalink.
@@ -343,4 +348,4 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 
-Major Release. Recommended try in testing sites before update on production websites. 
+Minor Release. Fixes some issues and removed deprecated strings.
