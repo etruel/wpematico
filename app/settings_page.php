@@ -154,7 +154,10 @@ if(!class_exists('WPeMatico_Settings')) :
 			$cfg['mailsndemail']	 = (!($cfg['mailsndemail']) || empty($cfg['mailsndemail']) ) ? 'noreply@' . str_ireplace('www.', '', parse_url(get_option('siteurl'), PHP_URL_HOST)) : $cfg['mailsndemail'];
 			$cfg['mailsndname']		 = (!($cfg['mailsndname']) or empty($cfg['mailsndname']) ) ? 'WPeMatico Log' : $cfg['mailsndname'];
 			//$cfg['mailpass']		= (!($cfg['mailpass']) or empty($cfg['mailpass']) ) ? '' : bas 64_ d co d ($cfg['mailpass']);
-
+			$disable_extensions_feed = '';
+			if(defined('MULTISITE') && MULTISITE){
+				$disable_extensions_feed = 'disabled';
+			}
 			$helptip	 = wpematico_helpsettings('tips');
 			?>
 			<div class="wrap">
@@ -282,7 +285,7 @@ if(!class_exists('WPeMatico_Settings')) :
 											<p></p>
 											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disable_categories_description'], true); ?> name="disable_categories_description" id="disable_categories_description" /><b>&nbsp;<?php _e('Disable "Auto-Category description"', 'wpematico'); ?></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disable_categories_description']; ?>"></span>
 											<p></p>	
-											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disable_extensions_feed_page'], true); ?> name="disable_extensions_feed_page" id="disable_extensions_feed_page" /><b>&nbsp;<?php _e('Disable Extensions feed Page', 'wpematico'); ?></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disable_extensions_feed_page']; ?>"></span>
+											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disable_extensions_feed_page'], true); echo $disable_extensions_feed ?> name="disable_extensions_feed_page" id="disable_extensions_feed_page" /><b>&nbsp;<?php _e('Disable Extensions feed Page', 'wpematico'); ?></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disable_extensions_feed_page']; ?>"></span>
 											<p></p>	
 											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['entity_decode_html'], true); ?> name="entity_decode_html" id="entity_decode_html" /><b>&nbsp;<?php _e('HTML entity decode on publish.', 'wpematico'); ?></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['entity_decode_html']; ?>"></span>
 

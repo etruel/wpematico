@@ -1590,10 +1590,9 @@ if (!class_exists('WPeMatico_functions')) {
 			$data = apply_filters('wpematico_before_get_content', false, $aux, $url);
 
 			$defaults = array(
-				'timeout' => 15
+				'timeout' => 15,
 			);
 			$args = wp_parse_args($aux, $defaults);
-
 			if (!$data) { // if stil getting error on get file content try WP func, this may give timeouts 
 					$response = wp_remote_request($url, $args);
 				if (!is_wp_error($response)) {
