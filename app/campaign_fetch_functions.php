@@ -54,7 +54,6 @@ class wpematico_campaign_fetch_functions {
 		 * if( $this->cfg['nonstatic'] ) { $skip = NoNStatic :: exclfilters($current_item,$campaign,$item ); };  */
 
 		$skip = apply_filters('wpematico_excludes', $skip, $current_item, $campaign, $item);
-
 		return $skip;
 	}
 

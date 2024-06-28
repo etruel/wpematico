@@ -100,29 +100,29 @@ class wpematico_campaign_preview {
 		$posts_fetched = array();
 		$posts_next = array();
 		$breaked = false;
-
+		$wpematico_functions = new wpematico_campaign_fetch($campaign_id);
+		
 		foreach($simplepie->get_items() as $item) {
 			if($prime){
 				//with first item get the hash of the last item (new) that will be saved.
-				$lasthash[$feed] = md5($item->get_permalink()); 
+				$lasthash[$wpematico_functions->feed_hash_key('lasthash', $feed)] = md5($item->get_permalink()); 
 				$prime = false;
 			}
 			$item_hash = self::get_item_hash($item);
-			
 
-			$currenthash[$feed] = md5($item->get_permalink()); 
+			$currenthash[$wpematico_functions->feed_hash_key('currenthash', $feed)] = md5($item->get_permalink()); 
 			if( !$breaked && (!$duplicate_options['allowduplicates'] || !$duplicate_options['allowduptitle'] || !$duplicate_options['allowduphash']  || $duplicate_options['add_extra_duplicate_filter_meta_source']) ){
 				if( !$duplicate_options['allowduphash'] ){
 					// chequeo a la primer coincidencia sale del foreach
 					$lasthashvar = '_lasthash_'.sanitize_file_name($feed);
 					$hashvalue = get_post_meta($campaign_id, $lasthashvar, true );
-					if (!isset($campaign[$feed]['lasthash'] ) ) $campaign[$feed]['lasthash'] = '';
+					if (!isset($campaign[$wpematico_functions->feed_hash_key('campaign', $feed)]['lasthash'] ) ) $campaign[$wpematico_functions->feed_hash_key('campaign', $feed)]['lasthash'] = '';
 					
-					$dupi = ( $campaign[$feed]['lasthash'] == $currenthash[$feed] ) || 
-								( $hashvalue == $currenthash[$feed] ); 
+					$dupi = ( $campaign[$wpematico_functions->feed_hash_key('campaign', $feed)]['lasthash'] == $currenthash[$feed] ) || 
+								( $hashvalue == $currenthash[$wpematico_functions->feed_hash_key('currenthash', $feed)] ); 
 					if ($dupi) {
 						$posts_fetched[$item_hash] = true;
-						trigger_error(sprintf(__('Found duplicated hash \'%s\'', 'wpematico' ),$item->get_permalink()).': '.$currenthash[$feed] ,E_USER_NOTICE);
+						trigger_error(sprintf(__('Found duplicated hash \'%s\'', 'wpematico' ),$item->get_permalink()).': '.$currenthash[$wpematico_functions->feed_hash_key('currenthash', $feed)] ,E_USER_NOTICE);
 						if( !$duplicate_options['jumpduplicates'] ) {
 							trigger_error(__('Filtering duplicated posts.', 'wpematico' ),E_USER_NOTICE);
 							$breaked = true;
@@ -136,7 +136,10 @@ class wpematico_campaign_preview {
 				if( !$duplicate_options['allowduptitle'] ){
 					if(WPeMatico::is_duplicated_item($campaign, $feed, $item)) {
 						$posts_fetched[$item_hash] = true;
-						trigger_error(sprintf(__('Found duplicated title \'%s\'', 'wpematico' ),$item->get_title()).': '.$currenthash[$feed] ,E_USER_NOTICE);
+						
+						
+
+						trigger_error(sprintf(__('Found duplicated title \'%s\'', 'wpematico' ),$item->get_title()).': '.$currenthash[$wpematico_functions->feed_hash_key('currenthash', $feed)] ,E_USER_NOTICE);
 						if( !$duplicate_options['jumpduplicates'] ) {
 							trigger_error(__('Filtering duplicated posts.', 'wpematico' ),E_USER_NOTICE);
 							$breaked = true;
@@ -148,14 +151,9 @@ class wpematico_campaign_preview {
 					}
 				}
 
-			} else {
-				
-				
 			}
 			if($breaked && WPeMatico::is_duplicated_item($campaign, $feed, $item)) {
 				$posts_fetched[$item_hash] = true;
-			} else if ($breaked) {
-				
 			} else {
 				$posts_next[$item_hash] = true;
 			}
@@ -229,7 +227,6 @@ class wpematico_campaign_preview {
 			$simplepie = $feed_data['simplepie'];
 			foreach($simplepie->get_items() as $item) {
 				$item_hash = self::get_item_hash($item);
-				
 				if (empty($feed_data['next'][$item_hash])) {
 				  	continue;
 				}
@@ -240,7 +237,7 @@ class wpematico_campaign_preview {
 				}
 
 				$current_item = apply_filters('wpematico_item_pre_media', $current_item, $campaign, $simplepie, $item);
-				if ($current_item == -1) {
+				if (isset($current_item['SKIP']) && is_int($current_item['SKIP'])) {
 					continue;
 				}
 				
