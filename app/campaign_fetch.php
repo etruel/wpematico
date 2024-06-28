@@ -332,11 +332,11 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
                 add_post_meta($this->campaign_id, $last_hashes_name, $hashvalue, false);
             }
 
-
             if (isset($suma) && is_int($suma)) {
                 $realcount = $realcount + $suma;
                 $suma = "";
             }
+            $this->current_item = array();
         }
            
         unset($items);
@@ -422,9 +422,9 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
 
         $this->current_item = apply_filters('wpematico_item_pre_media', $this->current_item, $this->campaign, $feed, $item);
-        if ($this->current_item == -1) {
-            return -1;
-        }
+        
+        if (isset($this->current_item['SKIP']) && is_int($this->current_item['SKIP']))
+            return $this->current_item['SKIP'];
 
         /**
          * @since 1.7.0
@@ -491,15 +491,14 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         $this->current_item = apply_filters('wpematico_item_filters_pos_img', $this->current_item, $this->campaign);
 
         $this->current_item = apply_filters('wpematico_item_pos_media', $this->current_item, $this->campaign, $feed, $item);
-        if ($this->current_item == -1) {
-            return -1;
-        }
+        if (isset($this->current_item['SKIP']) && is_int($this->current_item['SKIP']))
+            return $this->current_item['SKIP'];
 
 
         //********** Do parses contents and titles
         $this->current_item = $this->Item_parsers($this->current_item, $this->campaign, $feed, $item, $realcount, $feedurl);
-        if ($this->current_item == -1)
-            return -1;
+        if (isset($this->current_item['SKIP']) && is_int($this->current_item['SKIP']))
+            return $this->current_item['SKIP'];
 
         // Primero proceso las categorias si las hay y las nuevas las agrego al final del array
         $this->current_item['categories'] = (array) $this->campaign['campaign_categories'];
