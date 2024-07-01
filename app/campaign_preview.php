@@ -157,7 +157,6 @@ class wpematico_campaign_preview {
 				$posts_next[$item_hash] = true;
 			}
 			$count++;	  
-			var_dump($count,  $campaign['campaign_max']);
 
 			if($count == $campaign['campaign_max']) {
 
