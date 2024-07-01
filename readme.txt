@@ -236,6 +236,13 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
 
+= 2.7.5 Jul 2, 2024 =
+* Improves all skipped posts due to different conditions in the fetching process.
+* Fixes the campaign preview feature to work well with Professional keyword feature.
+* Fixes array type variable treated as integer.
+* Removed MDM banner from campaigns list.
+* NOTE: **Enlarges the version required for the Professional addon to 2.21**
+
 = 2.7.4 Jun 26, 2024 =
 * Fixes Extensions page by hidding it on WordPress Multisite.
 * Improves compatibilities con Professional AddOn to use feeds from sites with Cloudflare.
@@ -348,4 +355,4 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 
-Minor Release. Fixes some issues and removed deprecated strings.
+Minor Release. Fixes some issues and few improvements.
