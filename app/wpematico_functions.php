@@ -1952,3 +1952,21 @@ function wpematico_joberrorhandler($errno, $errstr, $errfile, $errline) {
 		return false;
 	}
 }
+
+function wpematico_feed_hash_key($type, $feed, $feedHash = ''){
+	$feedHash = md5($feed);
+
+	if($type == 'campaign'){
+		if(isset($type[$feed]["lasthash"])){
+			$type[$feedHash]["lasthash"] = $type[$feed]["lasthash"];
+		}
+	}else{
+		if (isset($type[$feed])) {
+			$type[$feedHash] = $type[$feed];
+		}
+	}
+
+	$feedHash = isset($feedHash) ? $feedHash : $feed;
+	
+	return	$feedHash;
+}

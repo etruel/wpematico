@@ -54,7 +54,6 @@ class wpematico_campaign_fetch_functions {
 		 * if( $this->cfg['nonstatic'] ) { $skip = NoNStatic :: exclfilters($current_item,$campaign,$item ); };  */
 
 		$skip = apply_filters('wpematico_excludes', $skip, $current_item, $campaign, $item);
-
 		return $skip;
 	}
 
@@ -73,8 +72,8 @@ class wpematico_campaign_fetch_functions {
 		$post_id		 = $this->campaign_id;
 		$current_item	 = apply_filters('wpematico_item_parsers', $current_item, $campaign, $feed, $item);
 		//if( $this->cfg['nonstatic'] ) { $current_item = NoNStatic :: content($current_item,$campaign,$item); }
-		if ($current_item == -1)
-			return -1; // 
+		if (isset($current_item['SKIP']) && is_int($current_item['SKIP']))
+			return $current_item['SKIP'];
 			
 		// strip all HTML tags before apply filter wpematico_after_item_parsers
 		if ($campaign['campaign_striphtml']) {
