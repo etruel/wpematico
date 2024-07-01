@@ -15,7 +15,7 @@ class wpe_smart_notifications {
 		add_action('wp_ajax_wpematico_dismiss_wprate_notice', array(__CLASS__, 'dismiss_wprate_notice'));
 		add_action('wp_ajax_wpematico_dismiss_wizard_notice', array(__CLASS__, 'dismiss_wizard_notice'));
 		// temp. will be deleted on finish MDM
-		add_action('wp_ajax_wpematico_dismiss_mdm_notice', array(__CLASS__, 'dismiss_mdm_notice'));
+		//add_action('wp_ajax_wpematico_dismiss_mdm_notice', array(__CLASS__, 'dismiss_mdm_notice'));
 	}
 
 	public static function dismiss_mdm_notice() {
@@ -37,7 +37,7 @@ class wpe_smart_notifications {
 		// WPeMatico Notices
 		add_action('admin_notices', array(__CLASS__, 'show_wprate_notice'));
 		add_action('edit_form_top', array(__CLASS__, 'show_campaign_wizard_notice'));
-		add_action('admin_notices', array(__CLASS__, 'show_mdm_notice'));
+		//add_action('admin_notices', array(__CLASS__, 'show_mdm_notice'));
 	}
 
 	public static function dismiss_wprate_notice() {
