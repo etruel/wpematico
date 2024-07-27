@@ -480,7 +480,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			$id			   = (isset($_GET['post']) ? absint($_GET['post']) : absint($_POST['post']) );
 			$campaign_data = WPeMatico::get_campaign($id);
 			foreach ($campaign_data['campaign_feeds'] as $feed) { // Grabo el ultimo hash de cada feed con 0
-				$campaign_data[$feed]['lasthash'] = "0";
+				$campaign_data[wpematico_feed_hash_key('campaign', $feed)]['lasthash'] = "0";
 				$lasthashvar					  = '_lasthash_' . sanitize_file_name($feed);
 				add_post_meta($id, $lasthashvar, "0", true) or
 						update_post_meta($id, $lasthashvar, "0");
