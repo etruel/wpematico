@@ -14,8 +14,7 @@ class WPeMatico_XML_Importer {
 
     public static function hooks() {
         add_action('wp_ajax_wpematico_xml_check_data', array( __CLASS__, 'ajax_xml_check_data'));
-        add_filter('Wpematico_process_fetching', array(__CLASS__, 'process_fetching'), 10, 1);
-
+        add_filter('wpematico_custom_simplepie', array(__CLASS__, 'process_fetching'), 9, 4);
         add_filter('wpematico_get_item_images', array(__CLASS__, 'featured_image'), 10, 5);
         
         $options = get_option( WPeMatico::OPTION_KEY );
@@ -46,8 +45,8 @@ class WPeMatico_XML_Importer {
         $mime_types['xml'] = 'application/xml';
         return $mime_types;
     }
-    public static function process_fetching($campaign) {
-        
+    public static function process_fetching($simplepie, $class, $feed, $kf) {
+        $campaign = $class->campaign;
         if (is_array($campaign) && $campaign['campaign_type'] == 'xml') {
             
             if ( ! class_exists('WPeMatico_SimplePie')) {
@@ -199,7 +198,7 @@ class WPeMatico_XML_Importer {
             }
             return $simplepie;
         }
-        return $campaign;
+        return $simplepie;
     }
 
     public static function get_item_simplepie_data($item_node, $xml, $item_data = array()) {
@@ -336,6 +335,7 @@ class WPeMatico_XML_Importer {
         $fetch_feed_params = apply_filters('wpematico_xml_fetch_feed_params', $fetch_feed_params, 0, $campaign_data);
         $simplepie =  WPeMatico::fetchFeed($fetch_feed_params);
 		
+        
 		$simplepie_error = $simplepie->error();
         $xml_is_not_allowed = apply_filters('wpematico_xml_is_not_allowed', empty( $simplepie_error ), $campaign_data );
         if( $xml_is_not_allowed ) {

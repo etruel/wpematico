@@ -1968,5 +1968,5 @@ function wpematico_feed_hash_key($type, $feed, $feedHash = ''){
 
 	$feedHash = isset($feedHash) ? $feedHash : $feed;
 	
-	return	$feedHash;
+	return apply_filters('wpematico_feed_hash_key', $feedHash);
 }

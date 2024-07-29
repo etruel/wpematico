@@ -117,7 +117,7 @@ class wpematico_campaign_preview {
 					$hashvalue = get_post_meta($campaign_id, $lasthashvar, true );
 					if (!isset($campaign[wpematico_feed_hash_key('campaign', $feed)]['lasthash'] ) ) $campaign[wpematico_feed_hash_key('campaign', $feed)]['lasthash'] = '';
 					
-					$dupi = ( $campaign[wpematico_feed_hash_key('campaign', $feed)]['lasthash'] == $currenthash[$feed] ) || 
+					$dupi = ( $campaign[wpematico_feed_hash_key('campaign', $feed)]['lasthash'] == $currenthash[wpematico_feed_hash_key('currenthash', $feed)] ) || 
 								( $hashvalue == $currenthash[wpematico_feed_hash_key('currenthash', $feed)] ); 
 					if ($dupi) {
 						$posts_fetched[$item_hash] = true;
