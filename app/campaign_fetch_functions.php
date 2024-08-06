@@ -50,9 +50,6 @@ class wpematico_campaign_fetch_functions {
 		$post_id	 = $this->campaign_id;
 		$skip		 = false;
 
-		/* deprecated since 1.3.8.4
-		 * if( $this->cfg['nonstatic'] ) { $skip = NoNStatic :: exclfilters($current_item,$campaign,$item ); };  */
-
 		$skip = apply_filters('wpematico_excludes', $skip, $current_item, $campaign, $item);
 		return $skip;
 	}
@@ -71,7 +68,6 @@ class wpematico_campaign_fetch_functions {
 		global $cfg;
 		$post_id		 = $this->campaign_id;
 		$current_item	 = apply_filters('wpematico_item_parsers', $current_item, $campaign, $feed, $item);
-		//if( $this->cfg['nonstatic'] ) { $current_item = NoNStatic :: content($current_item,$campaign,$item); }
 		if (isset($current_item['SKIP']) && is_int($current_item['SKIP']))
 			return $current_item['SKIP'];
 			
@@ -312,17 +308,14 @@ class wpematico_campaign_fetch_functions {
 		//Tags
 		if (has_filter('wpematico_pretags'))
 			$current_item['campaign_tags'] = apply_filters('wpematico_pretags', $current_item, $item, $this->cfg);
-		if ($this->cfg['nonstatic']) {
-			$current_item					 = NoNStatic :: postags($current_item, $campaign, $item);
-			$current_item['campaign_tags']	 = $current_item['tags'];
-		} else {
-			$current_item['campaign_tags'] = explode(',', $campaign['campaign_tags']);
-		}
 
-		if (has_filter('wpematico_postags')) {
-			$current_item['campaign_tags'] = apply_filters('wpematico_postags', $current_item, $item, $this->cfg);
+		if (has_filter('wpematico_postags')) { //empezar por aca
+			/**
+			 * Modify filter to use in the wpematico professional, we add the $campaign parameter to use it.
+			 * @since 3.0
+			 */
+			$current_item['campaign_tags'] = apply_filters('wpematico_postags', $current_item, $item, $this->cfg, $campaign);
 		}
-
 		/**
 		 * wpematico_categories_after_filters
 		 * Filter the array of categories to be parsed before inserted into the database.
@@ -593,7 +586,7 @@ class wpematico_campaign_fetch_functions {
 	 */
 
 	/**
-	 * @return void
+	 * @return array
 	 * @since 1.7.2
 	 */
 	function featured_image_selector($current_item, $campaign, $feed, $item, $options_images) {
@@ -647,9 +640,14 @@ class wpematico_campaign_fetch_functions {
 			$current_item['images']	 = $images[2];  //List of image URLs
 			$current_item['content'] = $images[3];  //Replaced src by srcset(If exist and with larger images) in images.
 
-			if ($this->cfg['nonstatic']) {
-				$current_item['images'] = NoNStatic::imgfind($current_item, $campaign, $item);
-			}
+			/**
+			 * Deprecated @since 3.0
+			 */
+			// $current_item['images'] = WPeMaticoPRO_NoNStatic::imgfind($current_item, $campaign, $item);
+
+			$current_item = apply_filters('wpematico_pro_find_img', $current_item, $campaign, $item);
+
+
 			$current_item['images'] = array_values(array_unique($current_item['images']));
 
 			/**
@@ -959,9 +957,7 @@ class wpematico_campaign_fetch_functions {
 			$current_item['audios'] = $this->parseAudios($current_item['content']);
 
 			$current_item			 = apply_filters('wpematico_get_item_audios', $current_item, $campaign, $item, $options_audios);
-			//if( $this->cfg['nonstatic'] ) { 
-			//$current_item['audios'] = NoNStatic::find_audios($current_item, $campaign, $item, $options_audios);
-			//}
+
 			$current_item['audios']	 = array_values(array_unique($current_item['audios']));
 			foreach ($current_item['audios'] as $ki => $image) {
 				if (strpos($image, '//') === 0) {
@@ -1048,8 +1044,8 @@ class wpematico_campaign_fetch_functions {
 					if (in_array(str_replace('.', '', strrchr(strtolower($audio_dst), '.')), explode(',', $allowed_audio))) {   // -------- Controlo extensiones permitidas
 						trigger_error('Uploading media=' . $audio_src . ' <b>to</b> audio_dst=' . $audio_dst . '', E_USER_NOTICE);
 						$newfile = false;
-						if ($this->cfg['nonstatic'] && $options_audios['upload_ranges']) {
-							$newfile = NoNStatic::partial_upload_file($audio_src_real, $audio_dst, $options_audios);
+						if ($options_audios['upload_ranges']) {
+							$newfile = apply_filters('wpematico_partial_upload_file', $audio_dst, $audio_src_real, $options_audios);
 						}
 
 						if ($options_audios['customupload_audios'] && !$newfile) {
@@ -1113,9 +1109,6 @@ class wpematico_campaign_fetch_functions {
 			
 			$current_item = apply_filters('wpematico_get_item_videos', $current_item, $campaign, $item, $options_videos);
 
-			//if( $this->cfg['nonstatic'] ) { 
-			//$current_item['videos'] = NoNStatic::find_videos($current_item, $campaign,$item, $options_videos);
-			//}
 			$current_item['videos'] = array_values(array_unique($current_item['videos']));
 			foreach ($current_item['videos'] as $ki => $image) {
 				if (strpos($image, '//') === 0) {
@@ -1206,8 +1199,8 @@ class wpematico_campaign_fetch_functions {
 						trigger_error('Uploading media=' . $video_src . ' <b>to</b> video_dst=' . $video_dst . '', E_USER_NOTICE);
 						$newfile = false;
 
-						if ($this->cfg['nonstatic'] && $options_videos['upload_ranges']) {
-							$newfile = NoNStatic::partial_upload_file($video_src_real, $video_dst, $options_videos);
+						if ($options_videos['upload_ranges']) {
+							$newfile = apply_filters('wpematico_partial_upload_file', $video_dst, $video_src_real, $options_videos);
 						}
 
 						if ($options_videos['customupload_videos'] && !$newfile) {

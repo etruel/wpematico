@@ -313,7 +313,7 @@ if (!class_exists('WPeMatico_functions')) {
 
 		/**
 		 * @access public
-		 * @return $options Array all wp defaults video mime types plus added by custom filters in standard ways.
+		 * @return array $options all wp defaults video mime types plus added by custom filters in standard ways.
 		 * @since 2.5.3
 		 */
 		public static function get_audios_allowed_mimes() {
@@ -335,7 +335,7 @@ if (!class_exists('WPeMatico_functions')) {
 
 		/**
 		 * @access public
-		 * @return $options Array all wp defaults video mime types plus added by custom filters in standard ways.
+		 * @return array $options all wp defaults video mime types plus added by custom filters in standard ways.
 		 * @since 2.5.3
 		 */
 		public static function get_videos_allowed_mimes() {
@@ -362,7 +362,7 @@ if (!class_exists('WPeMatico_functions')) {
 		 * @access public
 		 * @param $url_origin String contain the URL of File will be uploaded.
 		 * @param $new_file String contain the Path of File where it will be saved.
-		 * @return String Path to file if uploaded, bool false if not success
+		 * @return string Path to file if uploaded, bool false if not success
 		 * @since 1.9.0
 		 */
 		public static function save_file_from_url($url_origin, $new_file) {
@@ -471,7 +471,9 @@ if (!class_exists('WPeMatico_functions')) {
 		/**
 		 * Static function get_attribute_value
 		 * @access public
-		 * @return $value String with value of HTML attribute.
+		 * @param string $atribute
+		 * @param string $string
+		 * @return string $value with value of HTML attribute.
 		 * @since 1.7.0
 		 */
 		public static function get_attribute_value($atribute, $string) {
@@ -517,7 +519,9 @@ if (!class_exists('WPeMatico_functions')) {
 		/**
 		 * Static function get_tags
 		 * @access public
-		 * @return void
+		 * @param string $tag
+		 * @param string $string
+		 * @return array
 		 * @since 1.7.1
 		 */
 		public static function get_tags($tag, $string) {
@@ -536,7 +540,7 @@ if (!class_exists('WPeMatico_functions')) {
 		/**
 		 * Static function get_tag
 		 * @access public
-		 * @return void
+		 * @return array|bool
 		 * @since 1.7.1
 		 */
 		public static function get_tag($tag, $string, $offset_start = 0) {
@@ -620,8 +624,7 @@ if (!class_exists('WPeMatico_functions')) {
 				$plpath = trailingslashit(WP_PLUGIN_DIR) . $active_plugins[$is_pro_active];
 				$proplugin_data = self::plugin_get_version($plpath);
 
-				$core_version = new ReflectionClass('WPeMaticoPRO');
-				$core_version = $core_version->getConstant('WPEMSHOULD');
+				$core_version = WPeMaticoPRO::$wpemshould;
 
 				if ($proplugin_data['Name'] == 'WPeMatico Professional' && version_compare($proplugin_data['Version'], WPeMatico::PROREQUIRED, '<')) {
 					$message .= __('Your current version of WPeMatico Professional does not support WPeMatico ', 'wpematico') . $core_version . '<br />';

@@ -48,7 +48,6 @@ class WPeMatico_Campaign_edit_functions {
 		if ($cfg['enablerewrite'])   // Si está habilitado en settings, lo muestra 
 		add_meta_box( 'rewrite-box', '<span class="dashicons dashicons-image-rotate-right"> </span> '.__('Rewrite options', 'wpematico' ). '<span class="dashicons dashicons-warning help_tip" title-heltip="'.$helptip['rewrites'].'" title="'. $helptip['rewrites'].'"></span>', array(  'WPeMatico_Campaign_edit'  ,'rewrite_box' ),'wpematico','normal', 'default' );
 		//***** Call nonstatic
-		if( $cfg['nonstatic'] ) { NoNStatic :: meta_boxes($campaign_data, $cfg); }
 		// Publish Meta_box edited
 		add_action('post_submitbox_start', array( __CLASS__ ,'post_submitbox_start'), 10, 0); 
 		add_action('post_submitbox_start', array(__CLASS__, 'campaign_run_details'), 11, 0);
@@ -456,7 +455,7 @@ public static function template_box( $post ) {
 		</div>
 
 	</div>
-		<?php //if( $cfg['nonstatic'] ) { NoNStatic :: last_html_tag($post, $cfg); } 
+		<?php //if( $cfg['nonstatic'] ) { WPeMaticoPRO_NoNStatic :: last_html_tag($post, $cfg); } 
 		do_action('wpematico_after_template_box',$post, $cfg);
 		?>
 		
@@ -962,7 +961,7 @@ public static function cron_box( $post ) {
 </div>
 <div id="cronboxes" class="ibfix vtop">
 	<?php @list($cronstr['minutes'],$cronstr['hours'],$cronstr['mday'],$cronstr['mon'],$cronstr['wday']) = explode(' ',$cron,5);    ?>
-	<div>
+	<div>ssssssssssssssssssss
 		<b><?php _e('Minutes: ','wpematico'); ?></b><br />
 		<?php 
 		if (strstr($cronstr['minutes'],'*/'))
@@ -1113,7 +1112,7 @@ public static function feeds_box( $post ) {
 		<a href="JavaScript:void(0);" class="button-primary add" id="addmorefeed" style="font-weight: bold; text-decoration: none;"> <?php _e('Add Feed', 'wpematico'  ); ?>.</a>
 		<span class="button-primary" id="checkfeeds" style="font-weight: bold; text-decoration: none;" ><?php _e('Check all feeds', 'wpematico' ); ?>.</span>
 		<?php do_action('wpematico_campaign_feed_panel_buttons'); ?>
-		<?php // if($cfg['nonstatic']){NoNStatic::bimport();} ?>
+		<?php // if($cfg['nonstatic']){WPeMaticoPRO_NoNStatic::bimport();} ?>
 		<div class="pbfeet right">
 			<?php _e('Displaying', 'wpematico' ); ?> <span id="pb-totalrecords" class="b"><?php echo $i-1; ?></span>&nbsp;<span id="pb-ptext">feeds </span>
 			<label id="scrollfeeds" class="iconbutton right dashicons dashicons-arrow-down-alt2" title="<?php _e('Display all feeds', 'wpematico' ); ?>" titleoff="<?php _e('Display all feeds', 'wpematico' ); ?>" titleon="<?php _e('Scroll feeds list.', 'wpematico' ); ?>"></label>
@@ -1257,11 +1256,13 @@ public static function feeds_box( $post ) {
 		global $post, $campaign_data, $cfg, $helptip;
 		$campaign_tags = $campaign_data['campaign_tags'];
 		
-		if( $cfg['nonstatic'] ) { NoNStatic :: protags($post); }  ?>
+			do_action('wpematico_protags', $post);
+		
+		?>
 		<p><b><?php echo '<label for="campaign_tags">' . __('Tags:', 'wpematico' ) . '</label>'; ?></b>
 		<textarea style="" class="large-text" id="campaign_tags" name="campaign_tags"><?php echo stripslashes($campaign_tags); ?></textarea><br />
 		<?php echo __('Enter comma separated list of Tags.', 'wpematico' ); ?></p>
-		<?php if( $cfg['nonstatic'] ) { NoNStatic :: protags1($post); }  ?>
+		<?php do_action('wpematico_protags_1', $post); ?>
 		<?php
 	}
 
