@@ -2,7 +2,7 @@
 Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,rss to post,feed to post,rss aggregator
-Stable tag: 2.7.5
+Stable tag: 2.7.6
 Tested up to: 6.6
 Requires at least: 4.8
 Requires PHP: 7.0
@@ -235,6 +235,12 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
+
+= 2.7.6 Aug 1, 2024 =
+* Improves XML importer process.
+* Improves the functions of feed hash for duplicated posts control.
+* Improves filter on creation of custom simplepie objects.
+* Added filter to allow skip batchsize for fetch feed items.
 
 = 2.7.5 Jul 2, 2024 =
 * Improves all skipped posts due to different conditions in the fetching process.
