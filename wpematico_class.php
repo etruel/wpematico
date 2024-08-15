@@ -51,7 +51,7 @@ if (!class_exists('WPeMatico')) {
 			
 			$this->load_options();
 
-			if ($this->options['nonstatic'] && !class_exists('WPeMaticoPRO_NoNStatic')) {
+			if ($this->options['nonstatic'] && !class_exists('WPeMaticoPRO_Helpers')) {
 				$this->options['nonstatic'] = false;
 				$this->update_options();
 			}

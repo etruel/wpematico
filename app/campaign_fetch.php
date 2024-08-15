@@ -400,7 +400,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         $this->current_item['title'] = html_entity_decode($this->current_item['title'], ENT_QUOTES | ENT_HTML401, 'UTF-8');
 		
         // Item author
-        //if( $this->cfg['nonstatic'] ) { $this->current_item = WPeMaticoPRO_NoNStatic :: author($this->current_item,$this->campaign, $feedurl, $item ); }else $this->current_item['author'] = $this->campaign['campaign_author'];
+        //if( $this->cfg['nonstatic'] ) { $this->current_item = WPeMaticoPRO_Helpers :: author($this->current_item,$this->campaign, $feedurl, $item ); }else $this->current_item['author'] = $this->campaign['campaign_author'];
         $this->current_item['author'] = $this->campaign['campaign_author'];
         $this->current_item = apply_filters('wpematico_get_author', $this->current_item, $this->campaign, $feedurl, $item);
 
@@ -931,7 +931,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
           }
          */
         $this->campaign = apply_filters('Wpematico_end_fetching', $this->campaign, $this->fetched_posts);
-        //if($this->cfg['nonstatic']){$this->campaign=WPeMaticoPRO_NoNStatic::ending($this->campaign,$this->fetched_posts);}
+        //if($this->cfg['nonstatic']){$this->campaign=WPeMaticoPRO_Helpers::ending($this->campaign,$this->fetched_posts);}
 
         WPeMatico :: update_campaign($this->campaign_id, $this->campaign);  //Save Campaign new data
 

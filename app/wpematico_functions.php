@@ -1956,6 +1956,14 @@ function wpematico_joberrorhandler($errno, $errstr, $errfile, $errline) {
 	}
 }
 
+/**
+ * function for feed hash.
+ * 
+ * @global string $type Currently type for the hash. 
+ * @param string $feed current feed to make the hash.
+ * @param string $feedHash feed already hashed.
+ * @return string
+ */
 function wpematico_feed_hash_key($type, $feed, $feedHash = ''){
 	$feedHash = md5($feed);
 

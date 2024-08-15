@@ -455,7 +455,7 @@ public static function template_box( $post ) {
 		</div>
 
 	</div>
-		<?php //if( $cfg['nonstatic'] ) { WPeMaticoPRO_NoNStatic :: last_html_tag($post, $cfg); } 
+		<?php //if( $cfg['nonstatic'] ) { WPeMaticoPRO_Helpers :: last_html_tag($post, $cfg); } 
 		do_action('wpematico_after_template_box',$post, $cfg);
 		?>
 		
@@ -1112,7 +1112,7 @@ public static function feeds_box( $post ) {
 		<a href="JavaScript:void(0);" class="button-primary add" id="addmorefeed" style="font-weight: bold; text-decoration: none;"> <?php _e('Add Feed', 'wpematico'  ); ?>.</a>
 		<span class="button-primary" id="checkfeeds" style="font-weight: bold; text-decoration: none;" ><?php _e('Check all feeds', 'wpematico' ); ?>.</span>
 		<?php do_action('wpematico_campaign_feed_panel_buttons'); ?>
-		<?php // if($cfg['nonstatic']){WPeMaticoPRO_NoNStatic::bimport();} ?>
+		<?php // if($cfg['nonstatic']){WPeMaticoPRO_Helpers::bimport();} ?>
 		<div class="pbfeet right">
 			<?php _e('Displaying', 'wpematico' ); ?> <span id="pb-totalrecords" class="b"><?php echo $i-1; ?></span>&nbsp;<span id="pb-ptext">feeds </span>
 			<label id="scrollfeeds" class="iconbutton right dashicons dashicons-arrow-down-alt2" title="<?php _e('Display all feeds', 'wpematico' ); ?>" titleoff="<?php _e('Display all feeds', 'wpematico' ); ?>" titleon="<?php _e('Scroll feeds list.', 'wpematico' ); ?>"></label>

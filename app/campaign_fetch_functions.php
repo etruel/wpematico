@@ -643,7 +643,7 @@ class wpematico_campaign_fetch_functions {
 			/**
 			 * Deprecated @since 3.0
 			 */
-			// $current_item['images'] = WPeMaticoPRO_NoNStatic::imgfind($current_item, $campaign, $item);
+			// $current_item['images'] = WPeMaticoPRO_Helpers::imgfind($current_item, $campaign, $item);
 
 			$current_item = apply_filters('wpematico_pro_find_img', $current_item, $campaign, $item);
 
