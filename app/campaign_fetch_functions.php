@@ -69,7 +69,7 @@ class wpematico_campaign_fetch_functions {
 		$post_id		 = $this->campaign_id;
 		$current_item	 = apply_filters('wpematico_item_parsers', $current_item, $campaign, $feed, $item);
 		if (isset($current_item['SKIP']) && is_int($current_item['SKIP']))
-			return $current_item['SKIP'];
+			return $current_item;
 			
 		// strip all HTML tags before apply filter wpematico_after_item_parsers
 		if ($campaign['campaign_striphtml']) {
