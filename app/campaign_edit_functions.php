@@ -961,7 +961,7 @@ public static function cron_box( $post ) {
 </div>
 <div id="cronboxes" class="ibfix vtop">
 	<?php @list($cronstr['minutes'],$cronstr['hours'],$cronstr['mday'],$cronstr['mon'],$cronstr['wday']) = explode(' ',$cron,5);    ?>
-	<div>ssssssssssssssssssss
+	<div>
 		<b><?php _e('Minutes: ','wpematico'); ?></b><br />
 		<?php 
 		if (strstr($cronstr['minutes'],'*/'))
