@@ -238,7 +238,7 @@ class wpematico_licenses_handlers {
 				if (empty($args['pro_licenser'])) {
 					$args['pro_licenser'] = array();
 					$args['pro_licenser']['api_url'] = 'https://etruel.com';
-					$args['pro_licenser']['plugin_file'] = WPeMaticoPRO::$dir.'wpematicopro.php';
+					$args['pro_licenser']['plugin_file'] = WPEMATICOPRO_DIR.'wpematicopro.php';
 					$args['pro_licenser']['api_data'] = array(
 															'version' 	=> WPEMATICOPRO_VERSION, 				// current version number
 															'item_name' => PRO_Licenser::NAME, 	// name of this plugin
