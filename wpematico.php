@@ -82,6 +82,7 @@ if (!class_exists('Main_WPeMatico')) {
 				require_once("app/smart_notifications.php");
 				require_once("app/wp-backend-helpers.php");
 				require_once('app/lib/licenses_handlers.php');
+				require_once('app/lib/update_class.php');
 				require_once("app/lib/welcome.php");
 				require_once('app/campaign_log.php');
 				require_once('app/campaign_preview.php');

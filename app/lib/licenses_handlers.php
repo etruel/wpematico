@@ -241,7 +241,7 @@ class wpematico_licenses_handlers {
 					$args['pro_licenser']['plugin_file'] = WPEMATICOPRO_DIR.'wpematicopro.php';
 					$args['pro_licenser']['api_data'] = array(
 															'version' 	=> WPEMATICOPRO_VERSION, 				// current version number
-															'item_name' => PRO_Licenser::NAME, 	// name of this plugin
+															'item_name' => WPEMATICOPRO_ITEM_NAME, 	// name of this plugin
 															'author' 	=> 'Esteban Truelsegaard'  // author of this plugin
 														);
 					

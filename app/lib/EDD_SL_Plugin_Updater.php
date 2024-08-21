@@ -9,18 +9,18 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Allows plugins to use their own update API.
  *
  * @author Easy Digital Downloads
- * @version 1.9.1
+ * @version 1.9.4
  */
 class EDD_SL_Plugin_Updater {
 
-	private $api_url              = '';
-	private $api_data             = array();
-	private $plugin_file          = '';
-	private $name                 = '';
-	private $slug                 = '';
-	private $version              = '';
-	private $wp_override          = false;
-	private $beta                 = false;
+	private $api_url     = '';
+	private $api_data    = array();
+	private $plugin_file = '';
+	private $name        = '';
+	private $slug        = '';
+	private $version     = '';
+	private $wp_override = false;
+	private $beta        = false;
 	private $failed_request_cache_key;
 
 	/**
@@ -41,7 +41,7 @@ class EDD_SL_Plugin_Updater {
 		$this->api_data                 = $_api_data;
 		$this->plugin_file              = $_plugin_file;
 		$this->name                     = plugin_basename( $_plugin_file );
-		$this->slug                     = basename( $_plugin_file, '.php' );
+		$this->slug                     = basename( dirname( $_plugin_file ) );
 		$this->version                  = $_api_data['version'];
 		$this->wp_override              = isset( $_api_data['wp_override'] ) ? (bool) $_api_data['wp_override'] : false;
 		$this->beta                     = ! empty( $this->api_data['beta'] ) ? true : false;
@@ -60,7 +60,6 @@ class EDD_SL_Plugin_Updater {
 
 		// Set up hooks.
 		$this->init();
-
 	}
 
 	/**
@@ -76,7 +75,6 @@ class EDD_SL_Plugin_Updater {
 		add_filter( 'plugins_api', array( $this, 'plugins_api_filter' ), 10, 3 );
 		add_action( 'after_plugin_row', array( $this, 'show_update_notification' ), 10, 2 );
 		add_action( 'admin_init', array( $this, 'show_changelog' ) );
-
 	}
 
 	/**
@@ -94,8 +92,6 @@ class EDD_SL_Plugin_Updater {
 	 */
 	public function check_update( $_transient_data ) {
 
-		global $pagenow;
-
 		if ( ! is_object( $_transient_data ) ) {
 			$_transient_data = new stdClass();
 		}
@@ -104,7 +100,7 @@ class EDD_SL_Plugin_Updater {
 			return $_transient_data;
 		}
 
-		$current = $this->get_repo_api_data();
+		$current = $this->get_update_transient_data();
 		if ( false !== $current && is_object( $current ) && isset( $current->new_version ) ) {
 			if ( version_compare( $this->version, $current->new_version, '<' ) ) {
 				$_transient_data->response[ $this->name ] = $current;
@@ -143,11 +139,79 @@ class EDD_SL_Plugin_Updater {
 			// This is required for your plugin to support auto-updates in WordPress 5.5.
 			$version_info->plugin = $this->name;
 			$version_info->id     = $this->name;
+			$version_info->tested = $this->get_tested_version( $version_info );
+			if ( ! isset( $version_info->requires ) ) {
+				$version_info->requires = '';
+			}
+			if ( ! isset( $version_info->requires_php ) ) {
+				$version_info->requires_php = '';
+			}
 
 			$this->set_version_info_cache( $version_info );
 		}
 
 		return $version_info;
+	}
+
+	/**
+	 * Gets a limited set of data from the API response.
+	 * This is used for the update_plugins transient.
+	 *
+	 * @since 3.8.12
+	 * @return \stdClass|false
+	 */
+	private function get_update_transient_data() {
+		$version_info = $this->get_repo_api_data();
+
+		if ( ! $version_info ) {
+			return false;
+		}
+
+		$limited_data               = new \stdClass();
+		$limited_data->slug         = $this->slug;
+		$limited_data->plugin       = $this->name;
+		$limited_data->url          = $version_info->url;
+		$limited_data->package      = $version_info->package;
+		$limited_data->icons        = $this->convert_object_to_array( $version_info->icons );
+		$limited_data->banners      = $this->convert_object_to_array( $version_info->banners );
+		$limited_data->new_version  = $version_info->new_version;
+		$limited_data->tested       = $version_info->tested;
+		$limited_data->requires     = $version_info->requires;
+		$limited_data->requires_php = $version_info->requires_php;
+
+		return $limited_data;
+	}
+
+	/**
+	 * Gets the plugin's tested version.
+	 *
+	 * @since 1.9.2
+	 * @param object $version_info
+	 * @return null|string
+	 */
+	private function get_tested_version( $version_info ) {
+
+		// There is no tested version.
+		if ( empty( $version_info->tested ) ) {
+			return null;
+		}
+
+		// Strip off extra version data so the result is x.y or x.y.z.
+		list( $current_wp_version ) = explode( '-', get_bloginfo( 'version' ) );
+
+		// The tested version is greater than or equal to the current WP version, no need to do anything.
+		if ( version_compare( $version_info->tested, $current_wp_version, '>=' ) ) {
+			return $version_info->tested;
+		}
+		$current_version_parts = explode( '.', $current_wp_version );
+		$tested_parts          = explode( '.', $version_info->tested );
+
+		// The current WordPress version is x.y.z, so update the tested version to match it.
+		if ( isset( $current_version_parts[2] ) && $current_version_parts[0] === $tested_parts[0] && $current_version_parts[1] === $tested_parts[1] ) {
+			$tested_parts[2] = $current_version_parts[2];
+		}
+
+		return implode( '.', $tested_parts );
 	}
 
 	/**
@@ -349,6 +413,10 @@ class EDD_SL_Plugin_Updater {
 			$_data->plugin = $this->name;
 		}
 
+		if ( ! isset( $_data->version ) && ! empty( $_data->new_version ) ) {
+			$_data->version = $_data->new_version;
+		}
+
 		return $_data;
 	}
 
@@ -389,7 +457,6 @@ class EDD_SL_Plugin_Updater {
 			$args['sslverify'] = $this->verify_ssl();
 		}
 		return $args;
-
 	}
 
 	/**
@@ -592,7 +659,6 @@ class EDD_SL_Plugin_Updater {
 		}
 
 		return $cache['value'];
-
 	}
 
 	/**
@@ -639,5 +705,4 @@ class EDD_SL_Plugin_Updater {
 
 		return 'edd_sl_' . md5( serialize( $string ) );
 	}
-
 }
