@@ -482,7 +482,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         }
 
         /**
-         * @since 3.0
+         * @since 2.7.7
          * Filter to put in content 1st image link
          */
 

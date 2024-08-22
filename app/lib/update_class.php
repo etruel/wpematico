@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 
 /**
  * Plugin_Update class
- * @since 3.0
+ * @since 2.7.7
  */
 class WPeMatico_Update{
 

@@ -1256,13 +1256,13 @@ public static function feeds_box( $post ) {
 		global $post, $campaign_data, $cfg, $helptip;
 		$campaign_tags = $campaign_data['campaign_tags'];
 		
-			do_action('wpematico_protags', $post);
+			do_action('wpematico_pre_tags_settings', $post);
 		
 		?>
 		<p><b><?php echo '<label for="campaign_tags">' . __('Tags:', 'wpematico' ) . '</label>'; ?></b>
 		<textarea style="" class="large-text" id="campaign_tags" name="campaign_tags"><?php echo stripslashes($campaign_tags); ?></textarea><br />
 		<?php echo __('Enter comma separated list of Tags.', 'wpematico' ); ?></p>
-		<?php do_action('wpematico_protags_1', $post); ?>
+		<?php do_action('wpematico_pos_tags_settings', $post); ?>
 		<?php
 	}
 

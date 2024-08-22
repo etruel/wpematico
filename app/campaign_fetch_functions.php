@@ -305,6 +305,7 @@ class wpematico_campaign_fetch_functions {
 				$current_item['categories'] = array_merge($current_item['categories'], $new_categories);
 			}
 		} // End Words to Category
+		$current_item['campaign_tags'] = explode(',', $campaign['campaign_tags']);
 		//Tags
 		if (has_filter('wpematico_pretags'))
 			$current_item['campaign_tags'] = apply_filters('wpematico_pretags', $current_item, $item, $this->cfg);
@@ -312,7 +313,7 @@ class wpematico_campaign_fetch_functions {
 		if (has_filter('wpematico_postags')) { //empezar por aca
 			/**
 			 * Modify filter to use in the wpematico professional, we add the $campaign parameter to use it.
-			 * @since 3.0
+			 * @since 2.7.7
 			 */
 			$current_item['campaign_tags'] = apply_filters('wpematico_postags', $current_item, $item, $this->cfg, $campaign);
 		}
@@ -639,11 +640,6 @@ class wpematico_campaign_fetch_functions {
 
 			$current_item['images']	 = $images[2];  //List of image URLs
 			$current_item['content'] = $images[3];  //Replaced src by srcset(If exist and with larger images) in images.
-
-			/**
-			 * Deprecated @since 3.0
-			 */
-			// $current_item['images'] = WPeMaticoPRO_Helpers::imgfind($current_item, $campaign, $item);
 
 			$current_item = apply_filters('wpematico_pro_find_img', $current_item, $campaign, $item);
 
