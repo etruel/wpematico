@@ -22,7 +22,6 @@ class WPeMatico_Update{
 	 */
 	public static function hooks() {
 		add_filter( 'site_transient_update_plugins', array(__CLASS__, 'maybe_disable_update'), 91, 1 );
-		add_filter( 'pre_set_site_transient_update_plugins', array(__CLASS__,'maybe_add_upgrade_notice'), 120, 1 );
 	}
 
 	/**
@@ -107,58 +106,6 @@ class WPeMatico_Update{
 		}
 
 		return ( ! empty( $transient->response[$plugin_file]->package ) );
-	}
-	/**
-	 * Add upgrade notice if needed, which is displayed on the Updates page (wp-admin/update-core.php)
-	 *
-	 * @param object $transient Original transient.
-	 * @return mixed
-	 */
-	public static function maybe_add_upgrade_notice( $transient ) {
-		$plugins_args = array();
-		$plugins_args = apply_filters('wpematico_plugins_updater_args', $plugins_args);
-		foreach($plugins_args as $plugin_name => $plugin_data){
-			$plugin_file = plugin_basename($plugin_data['plugin_file']);
-			if ( ! self::can_update(  $plugin_file, $transient) ) {
-
-				$before  = '';
-				$before .= esc_html__( 'Automatic updates are not available for'.$plugin_data['api'] .'.', 'wpematico' );
-				$message = '';
-				if(isset($transient->response[$plugin_file]->unavailability_reason ))
-					$message = self::get_update_message( $transient->response[$plugin_file]->unavailability_reason , $plugin_file);
-	
-				$message = $before . $message ;
-	
-				self::check_wpematico_professional_version($message);
-			}
-		}
-
-		return $transient;
-	}
-
-	/**
-	 * check_wpematico_professional_version
-	 * 
-	 * Checks if the WPeMatico free version is active and meets the minimum required version.
-	 * If not, displays an admin notice with the provided messages.
-	 *
-	 * @param string $before_message The message to display before the version notice.
-	 * @param string $after_message The message to display after the version notice.
-	 * @return void
-	 */
-
-	public static  function check_wpematico_professional_version($before_message = '', $after_message = '') {
-		// Check if free version is active
-		if (!defined('WPEMATICO_VERSION')) {
-			add_action('admin_notices',  function () use ($before_message, $after_message) {
-				printf(
-					'<div class="notice notice-error is-dismissible"><p>%s%s</p></div>',
-					$before_message,
-					$after_message
-				);;
-			});
-			return;
-		}
 	}
 
 	/**
