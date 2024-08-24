@@ -1572,7 +1572,7 @@ if (!class_exists('WPeMatico_functions')) {
 		 * @since 2.4.2
 		 * Removed all related to cURL in favor of wp_remote... functions 
 		 * @param string $url  URL to get content from
-		 * @param bool $arg if not bool used as $args: array('key'=>'value'), arguments to change defaults of wp_remote_request
+		 * @param bool|array $arg if not bool used as $args: array('key'=>'value'), arguments to change defaults of wp_remote_request
 		 * 
 		 * @since 1.2.4
 		 * @param string $url  URL to get content from
