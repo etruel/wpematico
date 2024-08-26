@@ -426,7 +426,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 				}
 			}
 		}
-		$err_message = apply_filters('wpematico_pro_check_error_message', $_POST, $err_message);
+		$err_message = apply_filters('wpematico_check_error_message',$err_message, $_POST);
 		
 		if($err_message =="" ) $err_message="1";  //NO ERROR
 		die($err_message); 
