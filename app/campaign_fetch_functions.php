@@ -641,7 +641,7 @@ class wpematico_campaign_fetch_functions {
 			$current_item['images']	 = $images[2];  //List of image URLs
 			$current_item['content'] = $images[3];  //Replaced src by srcset(If exist and with larger images) in images.
 
-			$current_item = apply_filters('wpematico_pro_find_img', $current_item, $campaign, $item);
+			$current_item = apply_filters('wpematico_find_img', $current_item, $campaign, $item);
 
 
 			$current_item['images'] = array_values(array_unique($current_item['images']));

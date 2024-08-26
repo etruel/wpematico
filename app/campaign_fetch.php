@@ -561,7 +561,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         $this->current_item = $this->Item_filters($this->current_item, $this->campaign, $feed, $item);
         $this->current_item = apply_filters('wpematico_pos_item_filters', $this->current_item, $this->campaign, $feed, $item);
 
-        $this->current_item = apply_filters('wpematico_pro_meta_custom', $this->current_item, $this->campaign, $feed, $item);
+        $this->current_item = apply_filters('wpematico_meta_custom', $this->current_item, $this->campaign, $feed, $item);
 
         if ($this->cfg['nonstatic'] && !empty($this->current_item['tags'])) {
             $this->current_item['campaign_tags'] = array_unique(array_merge($this->current_item['campaign_tags'], $this->current_item['tags']), SORT_REGULAR);
