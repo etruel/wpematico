@@ -19,8 +19,7 @@ if (!defined('ABSPATH')) {
     exit();
 }
 
-if (class_exists('wpematico_campaign_fetch'))
-    return;
+if (!class_exists('wpematico_campaign_fetch'))
 include_once("campaign_fetch_functions.php");
 
 class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
