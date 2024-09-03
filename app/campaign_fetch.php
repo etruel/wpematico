@@ -19,8 +19,7 @@ if (!defined('ABSPATH')) {
     exit();
 }
 
-if (class_exists('wpematico_campaign_fetch'))
-    return;
+if (!class_exists('wpematico_campaign_fetch'))
 include_once("campaign_fetch_functions.php");
 
 class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
@@ -400,7 +399,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         $this->current_item['title'] = html_entity_decode($this->current_item['title'], ENT_QUOTES | ENT_HTML401, 'UTF-8');
 		
         // Item author
-        //if( $this->cfg['nonstatic'] ) { $this->current_item = NoNStatic :: author($this->current_item,$this->campaign, $feedurl, $item ); }else $this->current_item['author'] = $this->campaign['campaign_author'];
+        //if( $this->cfg['nonstatic'] ) { $this->current_item = WPeMaticoPRO_Helpers :: author($this->current_item,$this->campaign, $feedurl, $item ); }else $this->current_item['author'] = $this->campaign['campaign_author'];
         $this->current_item['author'] = $this->campaign['campaign_author'];
         $this->current_item = apply_filters('wpematico_get_author', $this->current_item, $this->campaign, $feedurl, $item);
 
@@ -481,9 +480,13 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
             }
         }
 
-        if ($this->cfg['nonstatic']) {
-            $this->current_item['images'] = NoNStatic :: img1s($this->current_item, $this->campaign, $item);
-        }
+        /**
+         * @since 2.7.7
+         * Filter to put in content 1st image link
+         */
+
+         
+        $this->current_item = apply_filters('wpematico_put_first_img', $this->current_item, $this->campaign, $item);
 
         // Uploads and changes img sources in content
         $this->current_item = $this->Item_images($this->current_item, $this->campaign, $feed, $item, $options_images);
@@ -557,9 +560,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         $this->current_item = $this->Item_filters($this->current_item, $this->campaign, $feed, $item);
         $this->current_item = apply_filters('wpematico_pos_item_filters', $this->current_item, $this->campaign, $feed, $item);
 
-        if ($this->cfg['nonstatic']) {
-            $this->current_item = NoNStatic :: metaf($this->current_item, $this->campaign, $feed, $item);
-        }
+        $this->current_item = apply_filters('wpematico_meta_custom', $this->current_item, $this->campaign, $feed, $item);
 
         if ($this->cfg['nonstatic'] && !empty($this->current_item['tags'])) {
             $this->current_item['campaign_tags'] = array_unique(array_merge($this->current_item['campaign_tags'], $this->current_item['tags']), SORT_REGULAR);
@@ -929,7 +930,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
           }
          */
         $this->campaign = apply_filters('Wpematico_end_fetching', $this->campaign, $this->fetched_posts);
-        //if($this->cfg['nonstatic']){$this->campaign=NoNStatic::ending($this->campaign,$this->fetched_posts);}
+        //if($this->cfg['nonstatic']){$this->campaign=WPeMaticoPRO_Helpers::ending($this->campaign,$this->fetched_posts);}
 
         WPeMatico :: update_campaign($this->campaign_id, $this->campaign);  //Save Campaign new data
 

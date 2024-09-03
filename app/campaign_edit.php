@@ -43,7 +43,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 	}
 	public static function campaigns_admin_head_style() {
 		global $post, $campaign_data;
-		if($post->post_type != 'wpematico') return $post_id;
+		if($post->post_type != 'wpematico') return $post->ID;
 		?>
 <style type="text/css">
 	.postbox-header h2.hndle .dashicons{ margin-right: 5px; }
@@ -194,7 +194,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 	
 	public static function campaigns_admin_head() {
 		global $post,$campaign_data;
-		if($post->post_type != 'wpematico') return $post_id;
+		if($post->post_type != 'wpematico') return $post->ID;
 		$post->post_password = '';
 
 		$cfg = get_option(WPeMatico :: OPTION_KEY);
@@ -426,7 +426,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 				}
 			}
 		}
-		if($cfg['nonstatic']) {$err_message = NoNStatic::Checkp($_POST, $err_message);}
+		$err_message = apply_filters('wpematico_check_error_message',$err_message, $_POST);
 		
 		if($err_message =="" ) $err_message="1";  //NO ERROR
 		die($err_message); 

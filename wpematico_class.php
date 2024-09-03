@@ -11,7 +11,7 @@ if (!class_exists('WPeMatico')) {
 	class WPeMatico extends WPeMatico_functions {
 
 		const TEXTDOMAIN	 = 'wpematico';
-		const PROREQUIRED	 = '2.21';
+		const PROREQUIRED	 = '3.0';
 		const OPTION_KEY	 = 'WPeMatico_Options';
 
 		public static $name		 = '';
@@ -51,7 +51,7 @@ if (!class_exists('WPeMatico')) {
 			
 			$this->load_options();
 
-			if ($this->options['nonstatic'] && !class_exists('NoNStatic')) {
+			if ($this->options['nonstatic'] && !class_exists('WPeMaticoPRO_Helpers')) {
 				$this->options['nonstatic'] = false;
 				$this->update_options();
 			}

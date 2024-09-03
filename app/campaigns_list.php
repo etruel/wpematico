@@ -627,7 +627,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 					if (is_wp_error($campaign_data)) {
 						$brokenCampaign = true;
 						// Remove Professional filters for quick actions to allow only trash the broken campaign
-						remove_filter('post_row_actions', array('NoNStatic', 'wpematico_quick_actions'), 30);
+						remove_filter('post_row_actions', array('WPeMaticoPRO_Helpers', 'wpematico_quick_actions'), 30);
 						
 					}
 					if($brokenCampaign){
