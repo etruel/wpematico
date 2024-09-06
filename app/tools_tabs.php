@@ -17,7 +17,7 @@ function wpematico_get_tools_tabs() {
 	$tabs['tools']		 = __('Tools', 'wpematico');
 	$tabs['debug_info']		 = __('System Status', 'wpematico');
 
-	return apply_filters('wpematico_get_tools_tabs', $tabs);
+	return apply_filters('wpematico_tools_tabs', $tabs);
 }
 
 

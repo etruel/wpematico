@@ -305,10 +305,14 @@ class wpematico_campaign_fetch_functions {
 				$current_item['categories'] = array_merge($current_item['categories'], $new_categories);
 			}
 		} // End Words to Category
-		$current_item['campaign_tags'] = explode(',', $campaign['campaign_tags']);
+		
 		//Tags
 		if (has_filter('wpematico_pretags'))
 			$current_item['campaign_tags'] = apply_filters('wpematico_pretags', $current_item, $item, $this->cfg);
+
+		$tags = explode(',', $campaign['campaign_tags']);
+		
+		$current_item['campaign_tags'] = apply_filters('wpematico_tags', $tags , $current_item, $item, $this->cfg);
 
 		if (has_filter('wpematico_postags')) { //empezar por aca
 			/**
