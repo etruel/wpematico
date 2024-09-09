@@ -312,7 +312,7 @@ class wpematico_campaign_fetch_functions {
 
 		$tags = explode(',', $campaign['campaign_tags']);
 		
-		$current_item['campaign_tags'] = apply_filters('wpematico_tags', $tags , $current_item, $item, $this->cfg);
+		$current_item['campaign_tags'] = apply_filters('wpematico_tags', $tags , $current_item, $item, $this->cfg, $campaign);
 
 		if (has_filter('wpematico_postags')) { //empezar por aca
 			/**
