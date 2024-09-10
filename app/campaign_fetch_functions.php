@@ -74,7 +74,8 @@ class wpematico_campaign_fetch_functions {
 		// strip all HTML tags before apply filter wpematico_after_item_parsers
 		if ($campaign['campaign_striphtml']) {
 			trigger_error(sprintf(__('Deleting html tags: %s', 'wpematico'), $item->get_title()), E_USER_NOTICE);
-			$current_item['content'] = strip_tags($current_item['content'], apply_filters('wpem_dont_strip_tags', ''));
+			
+			$current_item['content'] = strip_tags($current_item['content'], apply_filters('wpematico_dont_strip_tags', '', $campaign));
 		}
 
 		if (!$cfg['disable_credits']) {
