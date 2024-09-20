@@ -571,11 +571,11 @@ class wpematico_campaign_fetch_functions {
 		// must include the image.php file for the function wp_generate_attachment_metadata() to work
 		require_once(ABSPATH . 'wp-admin/includes/image.php');
 		$attach_data = wp_generate_attachment_metadata($attach_id, $relfilename);
+		// $attach_data = apply_filters('wpematico_modify_attachment_data', $attach_data, $relfilename,  $attach_id);
 		wp_update_attachment_metadata($attach_id, $attach_data);
 
 		return $attach_id;
 	}
-
 	/* 	static function Item_parseimg(&$current_item, &$campaign, &$feed, &$item) {
 	  if ( stripos($current_item['content'], "[[[wpe1stimg]]]") !== FALSE ) {  // en el content
 	  if (isset( $current_item['images'][0] )) {
