@@ -387,7 +387,6 @@ class wpematico_campaign_fetch_functions {
 		$permalink	 = htmlspecialchars_decode($url);
 		// Colons in URL path segments get encoded by SimplePie, yet some sites expect them unencoded
 		$permalink	 = str_replace('%3A', ':', $permalink);
-		$permalink 	 = esc_url($permalink);
 		$permalink	 = apply_filters('wpepro_full_permalink', $permalink);
 
 		//if is this same host return 
