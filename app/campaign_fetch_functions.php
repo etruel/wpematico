@@ -74,7 +74,8 @@ class wpematico_campaign_fetch_functions {
 		// strip all HTML tags before apply filter wpematico_after_item_parsers
 		if ($campaign['campaign_striphtml']) {
 			trigger_error(sprintf(__('Deleting html tags: %s', 'wpematico'), $item->get_title()), E_USER_NOTICE);
-			$current_item['content'] = strip_tags($current_item['content'], apply_filters('wpem_dont_strip_tags', ''));
+			
+			$current_item['content'] = strip_tags($current_item['content'], apply_filters('wpematico_dont_strip_tags', '', $campaign));
 		}
 
 		if (!$cfg['disable_credits']) {
@@ -305,10 +306,14 @@ class wpematico_campaign_fetch_functions {
 				$current_item['categories'] = array_merge($current_item['categories'], $new_categories);
 			}
 		} // End Words to Category
-		$current_item['campaign_tags'] = explode(',', $campaign['campaign_tags']);
+		
 		//Tags
 		if (has_filter('wpematico_pretags'))
 			$current_item['campaign_tags'] = apply_filters('wpematico_pretags', $current_item, $item, $this->cfg);
+
+		$tags = explode(',', $campaign['campaign_tags']);
+		
+		$current_item['campaign_tags'] = apply_filters('wpematico_tags', $tags , $current_item, $item, $this->cfg, $campaign);
 
 		if (has_filter('wpematico_postags')) { //empezar por aca
 			/**
@@ -566,11 +571,11 @@ class wpematico_campaign_fetch_functions {
 		// must include the image.php file for the function wp_generate_attachment_metadata() to work
 		require_once(ABSPATH . 'wp-admin/includes/image.php');
 		$attach_data = wp_generate_attachment_metadata($attach_id, $relfilename);
+		// $attach_data = apply_filters('wpematico_modify_attachment_data', $attach_data, $relfilename,  $attach_id);
 		wp_update_attachment_metadata($attach_id, $attach_data);
 
 		return $attach_id;
 	}
-
 	/* 	static function Item_parseimg(&$current_item, &$campaign, &$feed, &$item) {
 	  if ( stripos($current_item['content'], "[[[wpe1stimg]]]") !== FALSE ) {  // en el content
 	  if (isset( $current_item['images'][0] )) {

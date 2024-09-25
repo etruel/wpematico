@@ -796,6 +796,8 @@ public static function options_box( $post ) {
 		<p><input class="checkbox" type="checkbox"<?php checked($campaign_striphtml,true);?> name="campaign_striphtml" value="1" id="campaign_striphtml"/>
 			<label for="campaign_striphtml"><?php echo __('Strip All HTML Tags', 'wpematico' ); ?></label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['striphtml']; ?>"></span>
 		</p>
+
+		<?php do_action('wpematico_striptags_tools',$campaign_data,$cfg);  ?>
 		
 		<div id="div_campaign_strip_links" style="<?php echo ((!$campaign_striphtml)?'':'display:none;'); ?>">
 			<p>
@@ -814,7 +816,6 @@ public static function options_box( $post ) {
 					<p class="description">
 						<?php _e('If you do not select an option, it will be assumed that all of them are selected..', 'wpematico' ); ?>
 					</p>
-					<?php do_action('wpematico_striptags_tools',$campaign_data,$cfg);  ?>
 				</div>
 			</p>
 		</div>
