@@ -2,7 +2,7 @@
 Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,rss to post,feed to post,rss aggregator
-Stable tag: 2.7.7
+Stable tag: 2.7.7.1
 Tested up to: 6.6.2
 Requires at least: 4.8
 Requires PHP: 7.0
@@ -236,7 +236,7 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
 
-= 2.7.7 Sep 26, 2024 =
+= 2.7.7.1 Sep 26, 2024 =
 
 This "almost" major Version 2.7.7 focuses on code and performance improvements together with the Full and Pro major versions.
 Recommended update it on testing environments before update on production websites.
