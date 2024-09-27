@@ -624,7 +624,7 @@ if (!class_exists('WPeMatico_functions')) {
 				$plpath = trailingslashit(WP_PLUGIN_DIR) . $active_plugins[$is_pro_active];
 				$proplugin_data = self::plugin_get_version($plpath);
 
-				$core_version = (property_exists('WPeMaticoPRO', 'wpemshould') ? WPeMaticoPRO::$wpemshould: '1.0' );
+				$core_version = (property_exists('WPeMaticoPRO', 'wpemshould') ? WPeMaticoPRO::$wpemshould: WPEMATICO_VERSION );
 
 				if ($proplugin_data['Name'] == 'WPeMatico Professional' && version_compare($proplugin_data['Version'], WPeMatico::PROREQUIRED, '<')) {
 					$message .= __('Your current version of WPeMatico Professional does not support WPeMatico ', 'wpematico') . $core_version . '<br />';
