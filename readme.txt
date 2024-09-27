@@ -2,8 +2,8 @@
 Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,rss to post,feed to post,rss aggregator
-Stable tag: 2.7.6
-Tested up to: 6.6
+Stable tag: 2.7.7
+Tested up to: 6.6.2
 Requires at least: 4.8
 Requires PHP: 7.0
 License: GPLv2 or later
@@ -70,7 +70,7 @@ You can submit any bug in the [bugtracker](https://github.com/etruel/wpematico/i
 **[Synchronizer](https://etruel.com/downloads/wpematico-synchronizer/?utm_source=extension&utm_medium=description_tab&utm_content=wpematico-synchronizer&utm_campaign=readme):** Allows you to keep updated the posts obtained, the synchronization process analyzes the content of the feed items and compares them with the post, if different it will be updated, including media files, authors, categories and tags.
 
 ---
-**[FULL Content](https://etruel.com/downloads/wpematico-full-content/?utm_source=extension&utm_medium=description_tab&utm_content=wpematico-full-content&utm_campaign=readme):** Takes the item permalink and scratches its web page to find the full content. Set the featured image from meta tags of source web page, Open Graph or Twitter images.  Also allows set up a configuration file for every domain pointing to what section of the web page must be obtained.
+**[Full Content](https://etruel.com/downloads/wpematico-full-content/?utm_source=extension&utm_medium=description_tab&utm_content=wpematico-full-content&utm_campaign=readme):** Takes the item permalink and scratches its web page to find the full content. Set the featured image from meta tags of source web page, Open Graph or Twitter images.  Also allows set up a configuration file for every domain pointing to what section of the web page must be obtained.
 
 ---
 **[Manual Fetching](https://etruel.com/downloads/wpematico-manual-fetching/?utm_source=extension&utm_medium=description_tab&utm_content=wpematico-manual-fetching&utm_campaign=readme):** Allows you to review and insert each item in the Campaign Preview feature, one by one or in bulk mode with just a click. You’ll see the items already parsed like will be published as posts with their images, audio and even videos.
@@ -236,6 +236,27 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
 
+= 2.7.7 Sep 26, 2024 =
+
+This "almost" major Version 2.7.7 focuses on code and performance improvements together with the Full and Pro major versions.
+Recommended update it on testing environments before update on production websites.
+
+#### _Recent (may break) changes if you use some of our extensions_
+
+* New major versions on Addons. *Do not update if does not meet the requirements below.*
+* Completed removal of obsolete NonStatic class in favor of WP filters and actions.
+* Added new filter "wpematico_tags" on processing post tags on fetching.
+* Added version controls to avoid errors by incompatibilities.
+* Added filter to allow add tabs on Tools page.
+* Fixes filter name to wpematico_tools_tabs added in last version.
+* Many tweaks and improvements in function comments.
+* Updated addons library updater and license handlers.
+* Fixes and tweaks some returned parameters on few functions.
+* NOTE: **Enlarges the version required for the [WPeMatico Professional](https://etruel.com/downloads/wpematico-professional/) addon to 3.0**
+* NOTE2: **Enlarges the version required for the [WPeMatico Full Content](https://etruel.com/downloads/wpematico-full-content/) addon to 2.8**
+
+> See all detailed changelog at [wpematico Releases](https://wpematico.com/releases/)
+
 = 2.7.6 Aug 1, 2024 =
 * Improves XML importer process.
 * Improves the functions of feed hash for duplicated posts control.
@@ -317,8 +338,6 @@ Recommended update it on testing environments before update on production websit
 > * On plugin update will be queued a process to upgrade each campaign to the newly way on hash creation to control post duplicates.
 > * NOTE: **Enlarges the version required for the Professional addon to 2.20**
 
-> See all detailed changelog at [wpematico Releases](https://wpematico.com/releases/)
-
 = 2.6.25 May 30, 2024 =
 
 * Added MDM notifications
@@ -361,4 +380,4 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 
-Minor Release. Fixes some issues and few improvements.
+Important Release. Read changelog before update if you use some of our addons.
