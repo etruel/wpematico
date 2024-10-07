@@ -138,54 +138,19 @@ class WPeMatico_backend_helpers {
 		}
 	}
 
-	/**
-	 * 
-	 * @param int $post_id
-	 * @param string $history_key
-	 * @param array $keys
-	 * @return array
-	 */
-	public static function wpematico_get_array_post_meta($post_id, $history_key = '', ...$keys){
-		$meta_data = [];
-		$meta_array = [];
-		if (!$meta_data = get_post_meta($post_id, $history_key)) {
-			// // Loop through each key and retrieve the corresponding meta data
-			foreach ($keys as $key) {
-				if ($key === 'featured_image_url') {
-					$meta_value = get_the_post_thumbnail_url($post_id) ? get_the_post_thumbnail_url($post_id) : '';
-				}else{
-					$meta_value = get_post_meta($post_id, $key, true);
-				}
-				// Store key-value pairs in the array (flatten structure)
-				$meta_array[$key] = $meta_value;  // No extra nesting
-			}
-			// Save the updated history in the post meta
-			add_post_meta($post_id, $history_key, $meta_array);
-			$meta_data[] = $meta_array;
-		}
-
-		return $meta_data;
-	}
 
 	public static function wpematico_info_metabox(){
 		global $post;
-		$meta_data = self::wpematico_get_array_post_meta($post->ID, '_wpematico_info_history', 'wpe_feed', 'wpe_sourcepermalink', 'featured_image_url');
-		$campaign_id = get_post_meta($post->ID, 'wpe_campaignid', true);
+		
+		$meta_data = apply_filters('wpematico_get_array_metadata', array(),$post->ID);
 
-		if (!empty($meta_data)) {
-			// Get the last key in the array
-			$last_key = array_key_last($meta_data);
-			// Get the value of the last key
-			$meta_values = $meta_data[$last_key];
+		$campaign_id = get_post_meta($post->ID, 'wpe_campaignid', true);
+		$title = get_the_title($campaign_id) ? get_the_title($campaign_id) : $campaign_id;
+		
+		if (empty($meta_data)) {
 			// Get the specific values from $meta_values
-			$feed = isset($meta_values['wpe_feed']) ? $meta_values['wpe_feed'] : '';
-			$source = isset($meta_values['wpe_sourcepermalink']) ? $meta_values['wpe_sourcepermalink'] : '';
-			$title = get_the_title($campaign_id) ? get_the_title($campaign_id) : $campaign_id;
-			$featured_image_url = isset($meta_values['featured_image_url']) ? $meta_values['featured_image_url'] : get_the_post_thumbnail_url();
-		} else {
-			$feed = '';
-			$source = '';
-			$title = '';
+			$meta_data['wpe_feed'] = get_post_meta($post->ID, 'wpe_feed', true);
+			$meta_data['wpe_sourcepermalink'] =  get_post_meta($post->ID, 'wpe_sourcepermalink', true);
 		}
 	
 		// Start rendering the HTML for the meta box
@@ -211,27 +176,25 @@ class WPeMatico_backend_helpers {
 			}
 		</style>
 		<?php
-		// Render the meta data table with editable fields
-		echo '<table class="wpematico-data-table">
-				<tr>
-					<td><b>' . __('Published by Campaign', 'wpematico') . ':</b></td>
-					<td><a title="' . __('Edit the campaign.', 'wpematico') . '" href="' . admin_url('post.php?post=' . $campaign_id . '&action=edit') . '" target="_blank">' . $title . '</a></td>
-				</tr>
-				<tr>
-					<td><b>' . __('From feed', 'wpematico') . ':</b></td>
-					<td><span id="wpe_feed" class="editable-field"><a title="' . __('Open the feed URL in the browser.', 'wpematico') . '" href="' . esc_url($feed) . '" rel="nofollow" target="_blank">' . esc_html($feed) . '</a></span></td>
-				</tr>
-				<tr>
-					<td><b>' . __('Source permalink', 'wpematico') . ':</b></td>
-					<td><span id="wpe_sourcepermalink" class="editable-field"><a title="' . __('Go to the source website to see the original content.', 'wpematico') . '" href="' . esc_url($source) . '" rel="nofollow" target="_blank">' . esc_html($source) . '</a></span></td>
-				</tr>
-				<tr>
-					<td><b>' . __('Featured Image URL', 'wpematico') . ':</b></td>
-					<td><span id="featured_image_url" class="editable-field"><a title="' . __('View the featured image.', 'wpematico') . '" href="' . esc_url($featured_image_url) . '" target="_blank">' . esc_html($featured_image_url) . '</a></span></td>
-				</tr>
-			</table>';
-		// Action to add buttons (Edit/Save, Undo)
-		do_action('wpematico_add_info_props', $meta_data);
+			// Render the meta data table with editable fields
+			echo '<table class="wpematico-data-table">
+			<tr>
+				<td><b>' . __('Published by Campaign', 'wpematico') . ':</b></td>
+				<td><a title="' . __('Edit the campaign.', 'wpematico') . '" href="' . admin_url('post.php?post=' . $campaign_id . '&action=edit') . '" target="_blank">' . $title . '</a></td>
+			</tr>
+			<tr>
+				<td><b>' . __('From feed', 'wpematico') . ':</b></td>
+				<td><span id="wpe_feed" class="editable-field"><a title="' . __('Open the feed URL in the browser.', 'wpematico') . '" href="' . esc_url($meta_data['wpe_feed']) . '" rel="nofollow" target="_blank">' . esc_html($meta_data['wpe_feed']) . '</a></span></td>
+			</tr>
+			<tr>
+				<td><b>' . __('Source permalink', 'wpematico') . ':</b></td>
+				<td><span id="wpe_sourcepermalink" class="editable-field"><a title="' . __('Go to the source website to see the original content.', 'wpematico') . '" href="' . esc_url($meta_data['wpe_sourcepermalink']) . '" rel="nofollow" target="_blank">' . esc_html($meta_data['wpe_sourcepermalink']) . '</a></span></td>
+			</tr>';
+
+			// Call the action to insert additional fields (like the featured image and buttons)
+			do_action('wpematico_add_info_props', $meta_data);
+
+			echo '</table>';
 	}
 
 	/**
