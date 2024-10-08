@@ -2,7 +2,7 @@
 Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,rss to post,feed to post,rss aggregator
-Stable tag: 2.7.7.1
+Stable tag: 2.7.8
 Tested up to: 6.6.2
 Requires at least: 4.8
 Requires PHP: 7.0
@@ -235,6 +235,12 @@ We are receiving tutorials in text, pdf, videos and ideas for current and new fe
 You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
+
+= 2.7.8 Oct 8, 2024 =
+
+* Improves compatibilities with [WPeMatico Synchronizer](https://etruel.com/downloads/wpematico-synchronizer/)
+* Tweaks on WPeMatico Info Metabox inside created posts to allow edit fields in Synchronizer extension. 
+* Fixes minor security issues in it. 
 
 = 2.7.7.1 Sep 26, 2024 =
 
