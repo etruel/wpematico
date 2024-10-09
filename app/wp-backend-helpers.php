@@ -7,6 +7,10 @@
  */
 class WPeMatico_backend_helpers {
 
+	/**
+	 * Summary of instance
+	 * @return void
+	 */
 	public static function instance() {
 		add_action('admin_init', array(__CLASS__, 'column_campaign'));
 		add_action('admin_init', array(__CLASS__, 'dashboard_widget'));
@@ -15,7 +19,7 @@ class WPeMatico_backend_helpers {
 
 	/**
 	 * column_campaign initial function to call the filters to make the campaign column
-	 * @global type $cfg
+	 * @global array $cfg
 	 * @since 2.5.3
 	 */
 	public static function column_campaign() {
@@ -134,13 +138,25 @@ class WPeMatico_backend_helpers {
 		}
 	}
 
-	public static function wpematico_info_metabox() {
+
+	public static function wpematico_info_metabox(){
 		global $post;
+		
+		$meta_data = apply_filters('wpematico_get_array_metadata', array(),$post->ID);
+
 		$campaign_id = get_post_meta($post->ID, 'wpe_campaignid', true);
-		$feed = get_post_meta($post->ID, 'wpe_feed', true);
-		$source = get_post_meta($post->ID, 'wpe_sourcepermalink', true);
+		$title = get_the_title($campaign_id) ? get_the_title($campaign_id) : $campaign_id;
+		
+		if (empty($meta_data)) {
+			// Get the specific values from $meta_values
+			$meta_data['wpe_feed'] = get_post_meta($post->ID, 'wpe_feed', true);
+			$meta_data['wpe_sourcepermalink'] =  get_post_meta($post->ID, 'wpe_sourcepermalink', true);
+		}
+	
+		// Start rendering the HTML for the meta box
 		echo '<span class="description">' . __('All links are no-follow and open in a new browser tab.', 'wpematico') . '</span>';
-		?><style type="text/css"> 
+		?>
+		<style type="text/css">
 			#wpematico-all-meta-box h2 {
 				background-color: orange;
 			}
@@ -158,38 +174,32 @@ class WPeMatico_backend_helpers {
 				height: 30px;
 				vertical-align: middle;
 			}
-		</style><?php
-		echo '<table class="wpematico-data-table">
+		</style>
+		<?php
+			// Render the meta data table with editable fields
+			echo '<table class="wpematico-data-table">
 			<tr>
-				<td>
-					<b>' . __('Published by Campaign', 'wpematico') . ':</b>
-				</td>
-				<td>
-					<a title="' . __('Edit the campaign.', 'wpematico') . '" href="' . admin_url('post.php?post=' . $campaign_id . '&action=edit') . '" target="_blank">' . get_the_title($campaign_id) . '</a>
-				</td>
+				<td><b>' . __('Published by Campaign', 'wpematico') . ':</b></td>
+				<td><a title="' . __('Edit the campaign.', 'wpematico') . '" href="' . admin_url('post.php?post=' . $campaign_id . '&action=edit') . '" target="_blank">' . $title . '</a></td>
 			</tr>
 			<tr>
-				<td>
-					<b>' . __('From feed', 'wpematico') . ':</b>
-				</td>
-				<td>
-					<a title="' . __('Open the feed URL in the browser.', 'wpematico') . '" href="' . $feed . '" rel="nofollow" target="_blank">' . $feed . '</a>
-				</td>
+				<td><b>' . __('From feed', 'wpematico') . ':</b></td>
+				<td><span id="wpe_feed" class="editable-field"><a title="' . __('Open the feed URL in the browser.', 'wpematico') . '" href="' . esc_url($meta_data['wpe_feed']) . '" rel="nofollow" target="_blank">' . esc_html($meta_data['wpe_feed']) . '</a></span></td>
 			</tr>
 			<tr>
-				<td>
-					<b>' . __('Source permalink', 'wpematico') . ':</b>
-				</td>
-				<td>
-					<a title="' . __('Go to the source website to see the original content.', 'wpematico') . '" href="' . $source . '" rel="nofollow" target="_blank">' . $source . '</a>
-				</td>
-			</tr>
-		</table>';
+				<td><b>' . __('Source permalink', 'wpematico') . ':</b></td>
+				<td><span id="wpe_sourcepermalink" class="editable-field"><a title="' . __('Go to the source website to see the original content.', 'wpematico') . '" href="' . esc_url($meta_data['wpe_sourcepermalink']) . '" rel="nofollow" target="_blank">' . esc_html($meta_data['wpe_sourcepermalink']) . '</a></span></td>
+			</tr>';
+
+			// Call the action to insert additional fields (like the featured image and buttons)
+			do_action('wpematico_add_info_props', $meta_data);
+
+			echo '</table>';
 	}
 
 	/**
 	 * Print Dashboard widget if allowed in Settings and the correct user role
-	 * @global type $cfg
+	 * @global array $cfg
 	 */
 	public static function dashboard_widget() {
 		global $cfg, $current_user;
@@ -288,4 +298,4 @@ class WPeMatico_backend_helpers {
 
 }
 
-$WPeMatico_backend_helpers = WPeMatico_backend_helpers::instance();
+WPeMatico_backend_helpers::instance();

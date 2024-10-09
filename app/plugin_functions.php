@@ -258,7 +258,7 @@ function wpematico_deactivate() {
  */
 function wpematico_uninstall() {
 	global $wpdb, $blog_id;
-	$danger = get_option( 'WPeMatico_danger');
+	$danger = get_option( 'WPeMatico_danger', array());
 	$danger['wpemdeleoptions']	 = (isset($danger['wpemdeleoptions']) && !empty($danger['wpemdeleoptions']) ) ? $danger['wpemdeleoptions'] : false;
 	$danger['wpemdelecampaigns'] = (isset($danger['wpemdelecampaigns']) && !empty($danger['wpemdelecampaigns']) ) ? $danger['wpemdelecampaigns'] : false;
 	if ( is_network_admin() && $danger['wpemdeleoptions'] ) {
