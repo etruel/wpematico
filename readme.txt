@@ -240,7 +240,8 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 * Improves compatibilities with [WPeMatico Synchronizer](https://etruel.com/downloads/wpematico-synchronizer/)
 * Tweaks on WPeMatico Info Metabox inside created posts to allow edit fields in Synchronizer extension. 
-* Fixes minor security issues in it. 
+* Fixes minor security issues. 
+* Fixes few PHP Deprecated notices.
 
 = 2.7.7.1 Sep 26, 2024 =
 
