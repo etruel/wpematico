@@ -221,7 +221,7 @@ if(!class_exists('WPeMatico_Settings')) :
 								<div id="side-sortables" class="meta-box-sortables ui-sortable">
 									<div id="wpem-about" class="postbox">
 										<button type="button" class="handlediv button-link" aria-expanded="true">
-											<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
+											<span class="screen-reader-text"><?php _e('Click to toggle', 'wpematico'); ?></span>
 											<span class="toggle-indicator" aria-hidden="true"></span>
 										</button>
 										<h2 class="hndle"><?php _e('About', 'wpematico'); ?></h2>
@@ -246,20 +246,18 @@ if(!class_exists('WPeMatico_Settings')) :
 											<style type="text/css">#linkrate:before { content: "\2605\2605\2605\2605\2605";font-size: 18px;}
 												#linkrate { font-size: 18px;}</style>
 											<p style="text-align: center;">
-												<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" id="linkrate" class="button" target="_Blank" title="Click here to rate plugin on Wordpress">  Rate </a>
+												<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" id="linkrate" class="button" target="_Blank" title="<?php esc_attr_e('Click here to rate plugin on Wordpress', 'wpematico'); ?>">  <?php esc_html_e('Rate', 'wpematico'); ?> </a>
 											</p>
 											<p></p>
 											<div id="improvescampaign" style="border: 1px #ccc solid;padding-bottom: 5px;" 
-												 onmouseover="javascript:jQuery('#improbuttons').stop().animate({paddingTop: '35px'}, 500);">
+												 onmouseover="javascript:jQuery('#improbuttons').stop().animate({paddingTop: '40px'}, 500);">
 												<div id="improlabel" style="position:absolute;padding-top: 5px;padding-bottom: 9px;background: #EB9600;margin: 0;color: #fff;text-align: center;text-shadow: #333 1px 1px 2px;width: 91%;font-size: initial;font-weight: bold;">
-													Improve your Experience
+													<?php _e('Improve your Experience', 'wpematico'); ?>
 												</div>
 												<div id="improbuttons" style="text-align: center;padding-top: 0px;">
-													<input onmouseover="javascript:jQuery(this).addClass('button-primary');" onmouseout="javascript:jQuery(this).removeClass('button-primary');" class="button" name="buypro" value="GO PRO" onclick="javascript:window.open('https://etruel.com/downloads/wpematico-essentials/');return false;" type="button">
-													&nbsp;
-													<input name="buypre" value="PREMIUM" onmouseover="javascript:jQuery(this).addClass('button-primary');" onmouseout="javascript:jQuery(this).removeClass('button-primary');" onclick="javascript:window.open('https://etruel.com/downloads/wpematico-premium/');return false;" class="button" type="button">
-													&nbsp;
-													<input class="button" name="buyper" value="PERFECT" onmouseover="javascript:jQuery(this).addClass('button-primary');" onmouseout="javascript:jQuery(this).removeClass('button-primary');" onclick="javascript:window.open('https://etruel.com/downloads/wpematico-perfect/');return false;" type="button">
+													<input title="<?php esc_attr_e('Pro-ready: Let’s get started!', 'wpematico'); ?>" onmouseover="javascript:jQuery(this).addClass('button-primary');" onmouseout="javascript:jQuery(this).removeClass('button-primary');" class="button" name="buypro" value="GO PRO" onclick="javascript:window.open('https://etruel.com/downloads/wpematico-essentials/');return false;" type="button">
+													<input title="<?php esc_attr_e('Leveling up: Premium mode!', 'wpematico'); ?>" name="buypre" value="PREMIUM" onmouseover="javascript:jQuery(this).addClass('button-primary');" onmouseout="javascript:jQuery(this).removeClass('button-primary');" onclick="javascript:window.open('https://etruel.com/downloads/wpematico-premium/');return false;" class="button" type="button">
+													<input title="<?php esc_attr_e('Kicking off your Pro level to Perfect!', 'wpematico'); ?>" class="button" name="buyper" value="PERFECT" onmouseover="javascript:jQuery(this).addClass('button-primary');" onmouseout="javascript:jQuery(this).removeClass('button-primary');" onclick="javascript:window.open('https://etruel.com/downloads/wpematico-perfect/');return false;" type="button">
 												</div>
 											</div>
 											<p></p>
@@ -280,7 +278,9 @@ if(!class_exists('WPeMatico_Settings')) :
 											<p></p>
 											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disable_credits'], true); ?> name="disable_credits" id="disable_credits" /><b>&nbsp;<?php _e('Disable "WPeMatico Credits"', 'wpematico'); ?></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disable_credits']; ?>"></span>
 											<span id="discredits" style="<?php echo ($cfg['disable_credits']) ? '' : 'display:none;' ?>"><br /><?php
-												printf(__('If you can\'t show the WPeMatico credits in your posts, I really appreciate if you can take a minute to %s write a 5 star review on Wordpress %s. :) thanks.', 'wpematico'), '<b><a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" target="_Blank" title="Open a new window">', '</a></b>');
+												/* translators: Link to WordPress Rate plugin page 1: open anchor link, 2: close anchor */
+												printf(__('If you can\'t show the WPeMatico credits in your posts, I really appreciate if you can take a minute to %1$s write a 5 star review on Wordpress %2$s. :) thanks.', 'wpematico'), 
+														'<b><a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" target="_Blank" title="Open a new window">', '</a></b>');
 												?></span>
 											<p></p>
 											<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['disable_categories_description'], true); ?> name="disable_categories_description" id="disable_categories_description" /><b>&nbsp;<?php _e('Disable "Auto-Category description"', 'wpematico'); ?></b> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['disable_categories_description']; ?>"></span>
@@ -299,7 +299,7 @@ if(!class_exists('WPeMatico_Settings')) :
 
 									<div id="wpem-email-settings" class="postbox">
 										<button type="button" class="handlediv button-link" aria-expanded="true">
-											<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
+											<span class="screen-reader-text"><?php _e('Click to toggle', 'wpematico'); ?></span>
 											<span class="toggle-indicator" aria-hidden="true"></span>
 										</button>
 										<h2 class="handle"><span class="dashicons dashicons-email-alt"></span> <?php _e('Sending e-Mails', 'wpematico'); ?></h2>
@@ -320,14 +320,15 @@ if(!class_exists('WPeMatico_Settings')) :
 												<h3><span class="dashicons dashicons-welcome-learn-more" style="font-size-adjust: 1;width: 50px;"></span><?php _e('Extended functionalities', 'wpematico'); ?></h3>
 												<p>
 													<?php
-													echo sprintf(__('Many AddOns make up the %s with the most wanted features.') . '  ', '<a href="https://etruel.com/starter-packages/" target="_blank" rel="noopener"><strong>Starter Packages</strong></a>');
+													/* translators: Link to Starter Memberships page */
+													echo sprintf(__('Many AddOns make up the %s with the most wanted features.', 'wpematico') . '  ', '<a href="https://etruel.com/starter-memberships/" target="_blank" rel="noopener"><strong>WPeMatico Extensions</strong></a>');
 													?> 
 													<span>
 														<?php _e('Lot of new features with contents, images, tags, filters, custom fields, custom feed tags and much more extends in the WPeMatico free plugin, going further than RSS feed limits and takes you to a new experience.', 'wpematico'); ?>
 													</span>
 												</p>
 												<p style="text-align: center;">
-													<a class="button button-primary" title="Features and prices" href="https://etruel.com/starter-packages/" target="_blank"><?php _e('Starter Packages Page', 'wpematico'); ?></a>
+													<a class="button button-primary" title="Features and prices" href="https://etruel.com/starter-memberships/" target="_blank"><?php _e('Pro status: Here we go!', 'wpematico'); ?></a>
 												</p>
 											</div>
 										</div>
@@ -376,7 +377,7 @@ if(!class_exists('WPeMatico_Settings')) :
 									<div class="postbox">
 										<h2 class="handle"><?php _e('Perfect Membership', 'wpematico'); ?></h2>
 										<div class="inside">
-											<p id="left1" onmouseover="jQuery(this).css('opacity', 0.9);this.style.backgroundColor = '#111'; this.style.color = '#fff'" onmouseout="jQuery(this).css('opacity', 0.5);this.style.backgroundColor = '#fff'; this.style.color = 'initial'" style="text-align:center;opacity: 0.5; transition: all .4s ease;"><a href="https://etruel.com/downloads/wpematico-perfect/" target="_Blank" title="Go to etruel WebSite"><img style="width: 100%;" src="https://etruel.com/wp-content/uploads/edd/2022/02/wpematico-perfect.jpg" title=""></a><br />
+											<p id="left1" onmouseover="jQuery(this).css('opacity', 0.9);this.style.backgroundColor = '#111'; this.style.color = '#fff'" onmouseout="jQuery(this).css('opacity', 0.5);this.style.backgroundColor = '#fff'; this.style.color = 'initial'" style="text-align:center;opacity: 0.5; transition: all .4s ease;"><a href="https://etruel.com/downloads/wpematico-perfect/" target="_Blank" title="Go to etruel WebSite"><img style="width: 100%;" src="<?php echo WPeMatico :: $uri; ?>/images/wpematico-perfect-200x100.jpg" title=""></a><br />
 												WPeMatico Perfect Membership</p>
 										</div>
 									</div>
@@ -386,14 +387,14 @@ if(!class_exists('WPeMatico_Settings')) :
 									</div>
 
 								</div>		<!-- #side-sortables -->
-							</div>		<!--  postbox-container-1 -->		
+							</div>		<!--  postbox-container-1 -->
 
 							<?php do_action('wpematico_setting_page_before'); ?>
 							<div id="postbox-container-2" class="postbox-container">
 								<div id="normal-sortables" class="meta-box-sortables ui-sortable">
 									<div id="imgs" class="postbox">
 										<button type="button" class="handlediv button-link" aria-expanded="true">
-											<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
+											<span class="screen-reader-text"><?php _e('Click to toggle', 'wpematico'); ?></span>
 											<span class="toggle-indicator" aria-hidden="true"></span>
 										</button>
 										<h3 class="hndle"><span class="dashicons dashicons-format-image"></span> <span><?php _e('Global Settings for Images', 'wpematico'); ?></span></h3>
@@ -415,11 +416,11 @@ if(!class_exists('WPeMatico_Settings')) :
 												<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['customupload'], true); ?> name="customupload" id="customupload" /><b>&nbsp;<label for="customupload"><?php _e('Use custom upload.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['customupload']; ?>"></span>
 												<p></p>
 												<?php
-												$comma		 = _x(',', 'mime delimiter');
+												$comma		 = _x(',', 'mime delimiter', 'default');
 												$ext_to_edit = (!is_string($cfg['images_allowed_ext'])) ? '' : $cfg['images_allowed_ext'];
 												$ext_list	 = WPeMatico::get_images_allowed_mimes();
 												?>
-												<label for="images_allowed_ext"><b><?php _e('Allowed image extensions to upload'); ?></b><br/>
+												<label for="images_allowed_ext"><b><?php _e('Allowed image extensions to upload', 'wpematico'); ?></b><br/>
 													<input type="text" class="regular-text" name="images_allowed_ext" id="images_allowed_ext" value="<?php echo str_replace(',', $comma, $ext_to_edit); ?>"/>
 												</label>
 												<p class="description" id="new-mime-images_allowed_ext-desc"><?php _e('Separate with commas the allowed mime types for WPeMatico Uploads.', 'wpematico'); ?><br /> 
@@ -448,7 +449,7 @@ if(!class_exists('WPeMatico_Settings')) :
 
 									<div id="imgs" class="postbox">
 										<button type="button" class="handlediv button-link" aria-expanded="true">
-											<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
+											<span class="screen-reader-text"><?php _e('Click to toggle', 'wpematico'); ?></span>
 											<span class="toggle-indicator" aria-hidden="true"></span>
 										</button>
 										<h3 class="hndle"><span class="dashicons dashicons-format-video"></span> <span><?php _e('Global Settings for Videos', 'wpematico'); ?></span></h3>
@@ -464,11 +465,11 @@ if(!class_exists('WPeMatico_Settings')) :
 												<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['customupload_videos'], true); ?> name="customupload_videos" id="customupload_videos" /><b>&nbsp;<label for="customupload_videos"><?php _e('Use custom upload.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['customupload_videos']; ?>"></span>
 												<p></p>
 												<?php
-												$comma		 = _x(',', 'mime delimiter');
+												$comma		 = _x(',', 'mime delimiter', 'default');
 												$ext_to_edit = (!is_string($cfg['video_allowed_ext'])) ? '' : $cfg['video_allowed_ext'];
 												$ext_list	 = WPeMatico::get_videos_allowed_mimes();
 												?>
-												<label for="video_allowed_ext"><b><?php _e('Allowed video extensions to upload'); ?></b><br/>
+												<label for="video_allowed_ext"><b><?php _e('Allowed video extensions to upload', 'wpematico'); ?></b><br/>
 													<input type="text" class="regular-text" name="video_allowed_ext" id="video_allowed_ext" value="<?php echo str_replace(',', $comma, $ext_to_edit); // textarea_escaped by esc_attr()          ?>"/>
 												</label>
 												<p class="description" id="new-mime-video_allowed_ext-desc"><?php _e('Separate with commas the allowed mime types for WPeMatico Uploads.', 'wpematico'); ?><br /> 
@@ -483,7 +484,7 @@ if(!class_exists('WPeMatico_Settings')) :
 
 									<div id="imgs" class="postbox">
 										<button type="button" class="handlediv button-link" aria-expanded="true">
-											<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
+											<span class="screen-reader-text"><?php _e('Click to toggle', 'wpematico'); ?></span>
 											<span class="toggle-indicator" aria-hidden="true"></span>
 										</button>
 										<h3 class="hndle"><span class="dashicons dashicons-format-audio"></span> <span><?php _e('Global Settings for Audios', 'wpematico'); ?></span></h3>
@@ -499,11 +500,11 @@ if(!class_exists('WPeMatico_Settings')) :
 												<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['customupload_audios'], true); ?> name="customupload_audios" id="customupload_audios" /><b>&nbsp;<label for="customupload_audios"><?php _e('Use custom upload.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['customupload_audios']; ?>"></span>
 												<p></p>
 												<?php
-												$comma		 = _x(',', 'mime delimiter');
+												$comma		 = _x(',', 'mime delimiter', 'default');
 												$ext_to_edit = (!is_string($cfg['audio_allowed_ext'])) ? '' : $cfg['audio_allowed_ext'];
 												$ext_list	 = WPeMatico::get_audios_allowed_mimes();
 												?>
-												<label for="audio_allowed_ext"><b><?php _e('Allowed audio extensions to upload'); ?></b><br />
+												<label for="audio_allowed_ext"><b><?php _e('Allowed audio extensions to upload', 'wpematico'); ?></b><br />
 													<input type="text" class="regular-text" name="audio_allowed_ext" id="audio_allowed_ext" value="<?php echo str_replace(',', $comma, $ext_to_edit); // textarea_escaped by esc_attr()          ?>" size="80" />
 												</label>
 												<p class="description" id="new-mime-audio_allowed_ext-desc"><?php _e('Separate with commas the allowed mime types for WPeMatico Uploads.', 'wpematico'); ?><br /> 
@@ -518,7 +519,7 @@ if(!class_exists('WPeMatico_Settings')) :
 
 									<div id="enablefeatures" class="postbox">
 										<button type="button" class="handlediv button-link" aria-expanded="true">
-											<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
+											<span class="screen-reader-text"><?php _e('Click to toggle', 'wpematico'); ?></span>
 											<span class="toggle-indicator" aria-hidden="true"></span>
 										</button>
 										<h3 class="hndle"><span><span class="dashicons dashicons-admin-settings"></span> <?php _e('Enable Features', 'wpematico'); ?></span><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablefeatures']; ?>"></span></h3>
@@ -539,7 +540,7 @@ if(!class_exists('WPeMatico_Settings')) :
 
 										<div id="PROfeatures" class="postbox">
 											<button type="button" class="handlediv button-link" aria-expanded="true">
-												<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
+												<span class="screen-reader-text"><?php _e('Click to toggle', 'wpematico'); ?></span>
 												<span class="toggle-indicator" aria-hidden="true"></span>
 											</button>
 											<h3 style="float:right; background-color: yellow;"><?php _e('Availables in addons at etruel.com.', 'wpematico'); ?></h3>
@@ -577,7 +578,7 @@ if(!class_exists('WPeMatico_Settings')) :
 
 									<div id="advancedfetching" class="postbox">
 										<button type="button" class="handlediv button-link" aria-expanded="true">
-											<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
+											<span class="screen-reader-text"><?php _e('Click to toggle', 'wpematico'); ?></span>
 											<span class="toggle-indicator" aria-hidden="true"></span>
 										</button>
 										<h3 class="hndle"><span class="dashicons dashicons-chart-pie"></span> <span><?php _e('Advanced Fetching', 'wpematico'); ?> <?php _e('(SimplePie Settings)', 'wpematico'); ?></span></h3>
@@ -604,7 +605,7 @@ if(!class_exists('WPeMatico_Settings')) :
 
 									<div id="advancedfetching" class="postbox">
 										<button type="button" class="handlediv button-link" aria-expanded="true">
-											<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
+											<span class="screen-reader-text"><?php _e('Click to toggle', 'wpematico'); ?></span>
 											<span class="toggle-indicator" aria-hidden="true"></span>
 										</button>
 										<h3 class="hndle"><span class="dashicons dashicons-admin-tools"></span> <span><?php _e('Advanced Fetching', 'wpematico'); ?></span></h3>
@@ -648,7 +649,7 @@ if(!class_exists('WPeMatico_Settings')) :
 
 									<div id="disablewpcron" class="postbox">
 										<button type="button" class="handlediv button-link" aria-expanded="true">
-											<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
+											<span class="screen-reader-text"><?php _e('Click to toggle', 'wpematico'); ?></span>
 											<span class="toggle-indicator" aria-hidden="true"></span>
 										</button>
 										<h3 class="hndle"><span class="dashicons dashicons-clock"></span> <span><?php _e('Cron and Scheduler Settings', 'wpematico'); ?></span></h3>
@@ -686,8 +687,8 @@ if(!class_exists('WPeMatico_Settings')) :
 												<label style="padding-left:20px;">
 													<?php _e('Set a password to use the external CRON', 'wpematico'); ?>: 
 													<input type="hidden" id="autocode" value="<?php echo substr(md5(time()), 0, 8); ?>"/> 
-													<a style="font-size: 2.2em;" title="<?php _e('Paste a generated a ramdon string.'); ?>" class='dashicons dashicons-migrate' onclick="Javascript: jQuery('#cron_code').val(jQuery('#autocode').val());" > &nbsp;&nbsp;</a> &nbsp;
-													<input name="cron_code" title="<?php _e('See text.'); ?>" id="cron_code" type="text" value="<?php echo esc_attr($cfg['cron_code']); ?>" class="standard-text" /> 
+													<a style="font-size: 2.2em;" title="<?php _e('Paste a generated a ramdon string.', 'wpematico'); ?>" class='dashicons dashicons-migrate' onclick="Javascript: jQuery('#cron_code').val(jQuery('#autocode').val());" > &nbsp;&nbsp;</a> &nbsp;
+													<input name="cron_code" title="<?php _e('See text.', 'wpematico'); ?>" id="cron_code" type="text" value="<?php echo esc_attr($cfg['cron_code']); ?>" class="standard-text" /> 
 													<?php /* <a class='dashicons dashicons-visibility' onclick="Javascript: jQuery('#cron_code').prop('type','text');" ></a> */ ?>
 												</label>  <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['cron_code']; ?>"></span>
 											</div>
@@ -716,7 +717,7 @@ if(!class_exists('WPeMatico_Settings')) :
 
 									<div id="emptytrashdiv" class="postbox">
 										<button type="button" class="handlediv button-link" aria-expanded="true">
-											<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
+											<span class="screen-reader-text"><?php _e('Click to toggle', 'wpematico'); ?></span>
 											<span class="toggle-indicator" aria-hidden="true"></span>
 										</button>
 										<h3 class="hndle"><span class="dashicons dashicons-hammer"></span> <span><?php _e('WordPress Backend Tools', 'wpematico'); ?></span></h3>
@@ -767,7 +768,7 @@ if(!class_exists('WPeMatico_Settings')) :
 														if(!isset($cpostypes[$post_type]))
 															$cpostypes[$post_type]	 = false;
 														checked($cpostypes[$post_type], true);
-														echo ' /> ' . __($post_label) . ' (' . __($post_type) . ')</div>';
+														echo ' /> ' . __($post_label, 'default') . ' (' . __($post_type, 'default') . ')</div>';
 													}
 													?>
 												</div></div><br /> 
@@ -784,7 +785,7 @@ if(!class_exists('WPeMatico_Settings')) :
 															$cfg['roles_widget'] = array("administrator" => "administrator");
 														$role_select		 = '<input type="hidden" name="roles_widget[administrator]" value="administrator" />';
 														foreach($wp_roles->role_names as $role => $name) {
-															$name = _x($name, 'wpematico');
+															$name = _x($name, 'wpematico', 'default');
 															if($role != 'administrator') {
 																if(array_search($role, $cfg['roles_widget'])) {
 																	$checked = 'checked="checked"';

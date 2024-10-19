@@ -38,10 +38,17 @@ class WPeMatico_XML_Importer {
         return $current_item;
     }
     public static function modify_post_mime_types($post_mime_types) {
-        $post_mime_types['application/xml'] = array( __( 'XMLs' ), __( 'Manage XMLs' ), _n_noop( 'XML <span class="count">(%s)</span>', 'XMLs <span class="count">(%s)</span>' ) );
-        return $post_mime_types;
-    }
-    public static function add_mime_types($mime_types) {
+			$post_mime_types['application/xml'] = array(
+				__('XMLs', 'wpematico'), 
+				__('Manage XMLs', 'wpematico'), 
+				/* translators: A counter. */
+				_n_noop('XML <span class="count">(%s)</span>', 'XMLs <span class="count">(%s)</span>', 'wpematico')
+			);
+			
+			return $post_mime_types;
+		}
+
+		public static function add_mime_types($mime_types) {
         $mime_types['xml'] = 'application/xml';
         return $mime_types;
     }

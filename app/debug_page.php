@@ -50,6 +50,7 @@ function wpematico_feed_viewer() {
 	$errors = $feed->error(); // if no error returned
 
 	if (empty($errors)) {
+				/* translators: %s The Feed URL */
 		$response['label']	 = sprintf(__('The feed %s has been parsed successfully.', 'wpematico'), $url);
 		$headers			 = $feed->data['headers'];
 		$response['label']	 .= '<br/><b>' . sprintf(__('Headers.', 'wpematico'), $url) . '</b>';
@@ -59,6 +60,7 @@ function wpematico_feed_viewer() {
 		$response['message'] = $feed->get_raw_data();
 		$response['success'] = true;
 	} else {
+		/* translators: %s The Feed URL */
 		$response['label']	 = sprintf(__('The feed %s cannot be obtained.', 'wpematico'), $url);
 //            $response['label'] .= '<br/>'.sprintf(__('Obtaining URL Contents.', 'wpematico'), $url);
 //            $feed = WPeMatico::wpematico_get_contents($url);
@@ -73,9 +75,11 @@ function wpematico_feed_viewer() {
 		if (!is_wp_error($feed)) {
 			if (isset($feed['response']['code'])) {
 				if (200 === $feed['response']['code']) {
+					/* translators: %s URL */
 					$response['label']	 .= '<br/>' . sprintf(__('The URL %s has been obtained.', 'wpematico'), $url);
 					$response['success'] = true;
 				} else {
+					/* translators: %s URL */
 					$response['label']	 .= '<br/>' . sprintf(__('The URL %s cannot be obtained successfully.', 'wpematico'), $url);
 					$response['success'] = false;
 				}
@@ -124,7 +128,7 @@ function wpematico_tools_section_feed_viewer() {
 						<tr>
 							<td colspan="3" data-export-label="WPeMatico Status">
 								<p class="text">
-									<?php _e('Paste a feed link here and the content will be shown on the textarea.'); ?>
+									<?php _e('Paste a feed link here and the content will be shown on the textarea.', 'wpematico'); ?>
 								</p>
 								<script type="text/javascript">
 									jQuery(document).ready(function ($) {
@@ -301,7 +305,7 @@ function wpematico_tools_section_debug_file() {
 						<tr>
 							<td colspan="3" data-export-label="WPeMatico Status">
 								<p class="text">
-									<?php esc_html_e('Use this file to get support on '); ?><a href="https://etruel.com/support/" target="_blank" rel="follow">etruel's website</a>.
+									<?php esc_html_e('Use this file to get support on ', 'wpematico'); ?><a href="https://etruel.com/support/" target="_blank" rel="follow">etruel's website</a>.
 								</p>
 								<span class="get-system-status">
 									<a href="javascript:" onclick='jQuery("#debug-report").slideDown();
@@ -351,7 +355,7 @@ function wpematico_status_rightcolumn() {
 		<div id="side-sortables" class="meta-box-sortables ui-sortable">
 			<div id="wpem-about" class="postbox">
 				<button type="button" class="handlediv button-link" aria-expanded="true">
-					<span class="screen-reader-text"><?php _e('Click to toggle'); ?></span>
+					<span class="screen-reader-text"><?php _e('Click to toggle', 'wpematico'); ?></span>
 					<span class="toggle-indicator" aria-hidden="true"></span>
 				</button>
 				<h2 class="hndle"><?php _e('About', 'wpematico'); ?></h2>
@@ -401,7 +405,8 @@ function wpematico_status_rightcolumn() {
 						<h3><span class="dashicons dashicons-welcome-learn-more" style="font-size-adjust: 1;width: 50px;"></span><?php _e('Extended functionalities', 'wpematico'); ?></h3>
 						<p>
 							<?php
-							echo sprintf(__('Many AddOns makes the %s with the most wanted functionalities.') . '  ', '<a href="https://etruel.com/starter-memberships/" target="_blank" rel="noopener"><strong>Starter Memberships</strong></a>');
+							/* translators: %s The URL to starter plans */
+							echo sprintf(__('Many AddOns makes the %s with the most wanted functionalities.', 'wpematico') . '  ', '<a href="https://etruel.com/starter-memberships/" target="_blank" rel="noopener"><strong>Starter Memberships</strong></a>');
 							?>
 							<span>
 								<?php _e('Lot of new features with contents, images, tags, filters, custom fields, custom feed tags and much more extends in the WPeMatico free plugin, going further than RSS feed limits and takes you to a new experience.', 'wpematico'); ?>
@@ -459,7 +464,7 @@ function wpematico_status_rightcolumn() {
 				<div class="inside">
 					<p id="left1" onmouseover="jQuery(this).css('opacity', 0.9);
 							this.style.backgroundColor = '#111'" onmouseout="jQuery(this).css('opacity', 0.5);
-									this.style.backgroundColor = '#fff'" style="text-align:center;opacity: 0.5;border-radius: 14px 14px 0 0;"><a href="https://etruel.com/downloads/wpematico-perfect/" target="_Blank" title="Go to etruel WebSite"><img style="width: 100%;" src="https://etruel.com/wp-content/uploads/edd/2022/02/wpematico-perfect.jpg" title=""></a><br />
+									this.style.backgroundColor = '#fff'" style="text-align:center;opacity: 0.5;border-radius: 14px 14px 0 0;"><a href="https://etruel.com/downloads/wpematico-perfect/" target="_Blank" title="Go to etruel WebSite"><img style="width: 100%;" src="<?php echo WPeMatico :: $uri; ?>/images/wpematico-perfect-200x100.jpg" title=""></a><br />
 						WPeMatico The Perfect Membership</p>
 				</div>
 			</div>
@@ -780,6 +785,7 @@ function wpematico_show_data_info() {
 					<td><strong><?php echo esc_html($_SERVER['SERVER_SOFTWARE']); ?></strong> 
 					<?php
 						if (strpos(strtolower($_SERVER['SERVER_SOFTWARE']), 'litespeed')) {
+							/* translators: %s The name of the Software of Server */
 							echo '<mark class="error">' . sprintf(__('Some users have reported some incompatibility issues when using %s', 'wpematico'), $_SERVER['SERVER_SOFTWARE']) . '</mark>';
 						}
 					?>
@@ -817,18 +823,30 @@ function wpematico_show_data_info() {
 				<?php if (stripos($_SERVER['SERVER_SOFTWARE'], 'apache') !== false && $apache_get_modules) : ?>
 					<tr>
 						<td data-export-label="Mod Rewrite"><?php _e('Mod Rewrite:', 'wpematico'); ?></td>
-						<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__('%s is required by %s.', 'wpematico'), 'Mod Rewrite', $cache_help)) . '">[?]</a>'; ?></td>
-						<td><?php echo ($m_rewrite_ok) ? '<mark class="yes">&#ff0000;</mark>' : '<mark class="' . (defined('WPEMATICO_CACHE_VERSION') ? 'error' : 'error-no-install' ) . '">' . sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'Mod Rewrite', 'some addons') . '</mark>'; ?></td>
+						<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . 
+							/* translators: %1$s apache module. %2$s plugin name  */
+							esc_attr( sprintf(__('%1$s is required by %2$s.', 'wpematico'), 'Mod Rewrite', $cache_help)) . '">[?]</a>'; ?></td>
+						<td><?php echo ($m_rewrite_ok) ? '<mark class="yes">&#ff0000;</mark>' : '<mark class="' . (defined('WPEMATICO_CACHE_VERSION') ? 'error' : 'error-no-install' ) . '">' . 
+							/* translators: %1$s apache module. %2$s plugin name  */
+								sprintf(__('%1$s is not installed on your server, but is recommended by %2$s.', 'wpematico'), 'Mod Rewrite', 'some addons') . '</mark>'; ?></td>
 					</tr>
 					<tr>
 						<td data-export-label="Mod Mime"><?php _e('Mod Mime:', 'wpematico'); ?></td>
-						<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__('%s is required by %s.', 'wpematico'), 'Mod Mime', $cache_help)) . '">[?]</a>'; ?></td>
-						<td><?php echo ($m_mime_ok) ? '<mark class="yes">&#ff0000;</mark>' : '<mark class="' . (defined('WPEMATICO_CACHE_VERSION') ? 'error' : 'error-no-install' ) . '">' . sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'Mod Rewrite', 'some addons') . '</mark>'; ?></td>
+						<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . 
+								/* translators: %1$s apache module. %2$s plugin name  */
+								esc_attr(sprintf(__('%1$s is required by %2$s.', 'wpematico'), 'Mod Mime', $cache_help)) . '">[?]</a>'; ?></td>
+						<td><?php echo ($m_mime_ok) ? '<mark class="yes">&#ff0000;</mark>' : '<mark class="' . (defined('WPEMATICO_CACHE_VERSION') ? 'error' : 'error-no-install' ) . '">' . 
+								/* translators: %1$s apache module. %2$s plugin name  */
+								sprintf(__('%1$s is not installed on your server, but is recommended by %2$s.', 'wpematico'), 'Mod Mime', 'some addons') . '</mark>'; ?></td>
 					</tr>
 					<tr>
 						<td data-export-label="Mod Deflate"><?php _e('Mod Deflate:', 'wpematico'); ?></td>
-						<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__('%s is required by %s.', 'wpematico'), 'Mod Deflate', $cache_help)) . '">[?]</a>'; ?></td>
-						<td><?php echo ($m_deflate_ok) ? '<mark class="yes">&#ff0000;</mark>' : '<mark class="' . (defined('WPEMATICO_CACHE_VERSION') ? 'error' : 'error-no-install' ) . '">' . sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'Mod Rewrite', 'some addons') . '</mark>'; ?></td>
+						<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . 
+								/* translators: %1$s apache module. %2$s plugin name  */
+								esc_attr(sprintf(__('%1$s is required by %2$s.', 'wpematico'), 'Mod Deflate', $cache_help)) . '">[?]</a>'; ?></td>
+						<td><?php echo ($m_deflate_ok) ? '<mark class="yes">&#ff0000;</mark>' : '<mark class="' . (defined('WPEMATICO_CACHE_VERSION') ? 'error' : 'error-no-install' ) . '">' . 
+								/* translators: %1$s apache module. %2$s plugin name  */
+								sprintf(__('%1$s is not installed on your server, but is recommended by %2$s.', 'wpematico'), 'Mod Deflate', 'some addons') . '</mark>'; ?></td>
 					</tr>
 				<?php endif; ?>
 			</tbody>
@@ -857,7 +875,12 @@ function wpematico_show_data_info() {
 						?>
 						<td><?php
 							if ($max_input_vars < $required_input_vars) {
-								echo '<mark class="error">' . sprintf(__('%s - Recommended Value: %s.', 'wpematico') . '<br />' . __('Max input vars limitation will truncate POST data such as menus. See: ', 'wpematico') . '<a href="%s" target="_blank">' . __('Increasing max input vars limit.', 'wpematico') . '</a>', $max_input_vars, '<strong>' . $required_input_vars . '</strong>', 'http://sevenspark.com/docs/ubermenu-3/faqs/menu-item-limit') . '</mark>';
+								echo '<mark class="error">' . 
+									/* translators: %1$s current value. %2$s Recommended Value. */
+									sprintf(__('%1$s - Recommended Value: %2$s.', 'wpematico') . '<br />' . __('Max input vars limitation could truncate POST data.', 'wpematico'), 
+											$max_input_vars, 
+											'<strong>' . $required_input_vars . '</strong>') . 
+									'</mark>';
 							} else {
 								echo '<mark class="yes">' . $max_input_vars . '</mark>';
 							}
@@ -868,7 +891,20 @@ function wpematico_show_data_info() {
 						<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('The amount of time (in seconds) that your site will spend on a single operation before timing out (to avoid server lockups)', 'wpematico') . '">[?]</a>'; ?></td>
 						<td><?php
 							if ($time_limit < 180 && $time_limit != 0) {
-								echo '<mark class="error">' . sprintf(__('%s - We recommend setting max execution time to at least 180. ', 'wpematico') . '<br />' . __('To give a campaign 5 minutes to run without timeouts, ', 'wpematico') . '<strong>300</strong>' . __('seconds of max execution time is required.', 'wpematico') . '<br />' . __('See: ', 'wpematico') . '<a href="%s" target="_blank">' . __('Increasing max execution to PHP', 'wpematico') . '</a>', $time_limit, 'http://codex.wordpress.org/Common_WordPress_Errors#Maximum_execution_time_exceeded') . '</mark>';
+								echo '<mark class="error">' . 
+										sprintf( 
+												/* translators: %1$s current Time limit value. %2$s URL. */
+												__('%1$s - We recommend setting max execution time to at least 180. ', 'wpematico') 
+												. '<br />' 
+												. __('To give a campaign 5 minutes to run without timeouts, ', 'wpematico') 
+												. '<strong>300</strong>' 
+												. __('seconds of max execution time is required.', 'wpematico') 
+												. '<br />'
+												. __('See: ', 'wpematico') 
+												. '<a href="%2$s" target="_blank">' . __('Increasing max execution to PHP', 'wpematico') . '</a>', 
+											$time_limit, 
+											'http://codex.wordpress.org/Common_WordPress_Errors#Maximum_execution_time_exceeded') . 
+									'</mark>';
 							} else {
 								echo '<mark class="yes">' . $time_limit . '</mark>';
 								if ($time_limit < 300 && $time_limit != 0) {
@@ -882,7 +918,14 @@ function wpematico_show_data_info() {
 						<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('The maximum amount of memory (RAM) that your PHP allows in this server.', 'wpematico') . '">[?]</a>'; ?></td>
 						<td><?php
 							if ($memory < 128000000) {
-								echo '<mark class="error">' . sprintf(__('%s - We recommend setting memory to at least', 'wpematico') . '<strong>128MB</strong>. <br />' . __('Please define memory limit in php.ini file.', 'wpematico'), size_format($memory), 'http://codex.wordpress.org/Editing_wp-config.php#Increasing_memory_allocated_to_PHP') . '</mark>';
+								echo '<mark class="error">' . sprintf(
+										/* translators: %1$s current PHP Memory limit value. %2$s URL. */
+										__('%s - We recommend setting memory to at least', 'wpematico') . '<strong>128MB</strong>'
+										. '<br />' 
+										. __('Please define memory limit in php.ini file.', 'wpematico'), 
+										size_format($memory), 
+										'http://codex.wordpress.org/Editing_wp-config.php#Increasing_memory_allocated_to_PHP') 
+								. '</mark>';
 							} else {
 								echo '<mark class="yes">' . size_format($memory) . '</mark>';
 							}
@@ -895,7 +938,15 @@ function wpematico_show_data_info() {
 							if ($allow_url_fopen) {
 								echo '<mark class="yes">' . 'On' . '</mark>';
 							} else {
-								echo '<mark class="error">Off - ' . sprintf(__('We recommend turn Allow URL fopen "On". ', 'wpematico') . '<br />' . __('See: ', 'wpematico') . '<a href="%s" target="_blank">' . __('PHP: Allow URL fopen.', 'wpematico') . '</a>.', 'http://php.net/manual/en/filesystem.configuration.php#ini.allow-url-fopen') . '</mark>';
+								echo '<mark class="error">Off - ' . sprintf(
+										__('We recommend turn Allow URL fopen "On". ', 'wpematico') 
+										. '<br />' 
+										. __('See: ', 'wpematico') 
+										. '<a href="%s" target="_blank">' 
+										. __('PHP: Allow URL fopen.', 'wpematico') 
+										. '</a>.', 
+										'http://php.net/manual/en/filesystem.configuration.php#ini.allow-url-fopen') 
+								. '</mark>';
 							}
 							?></td>
 					</tr>
@@ -906,7 +957,13 @@ function wpematico_show_data_info() {
 							if ($ini_set) {
 								echo '<mark class="yes">' . 'On' . '</mark>';
 							} else {
-								echo '<mark class="no">Off - ' . sprintf(__('We recommend to activate "set_ini()" in your server. ', 'wpematico') . '<br />' . __('See: ', 'wpematico') . '<a href="%s" target="_blank">PHP: ini_set. </a>.', 'http://php.net/manual/en/function.ini-set.php') . '</mark>';
+								echo '<mark class="no">Off - ' . sprintf(
+										__('We recommend to activate "set_ini()" in your server. ', 'wpematico') 
+										. '<br />' 
+										. __('See: ', 'wpematico') 
+										. '<a href="%s" target="_blank">PHP: ini_set. </a>.', 
+										'http://php.net/manual/en/function.ini-set.php') 
+								. '</mark>';
 							}
 							?></td>
 					</tr>
@@ -935,53 +992,87 @@ function wpematico_show_data_info() {
 				<?php ?>
 				<tr>
 					<td data-export-label="cURL (php.net/curl)"><?php _e('cURL (php.net/curl):', 'wpematico'); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__('%s is required by %s.', 'wpematico'), 'cURL (php.net/curl)', 'WPeMatico Core, ' . $professional_help . ', ' . $cache_help . ', ' . $mmf_help . ', ' . $polyglot_help)) . ' ' . ( version_compare(WPeMatico::get_curl_version(), '7.10.5', '>=') ? '' : '<br>' . __('A version lower than 7.10 will work fine, but will generate a PHP Warning each time it is used.', 'wpematico') ) . ' ">[?]</a>'; ?></td>
-					<td><?php echo ($curl_ok) ? ( ( version_compare(WPeMatico::get_curl_version(), '7.10.5', '>=') ) ? '<mark class="yes">' . WPeMatico::get_curl_version() . '</mark>' : '<mark class="error">' . WPeMatico::get_curl_version() . '</mark>' ) : '<mark class="error">' . sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'cURL (php.net/curl)', 'some addons and Simplepie') . '</mark>'; ?></td>
+					<td class="help"><?php 
+						/* translators: %1$s current value. %2$s Plugins list. */
+						echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__('%1$s is required by %2$s.', 'wpematico'), 'cURL (php.net/curl)', 'WPeMatico Core, ' . $professional_help . ', ' . $cache_help . ', ' . $mmf_help . ', ' . $polyglot_help)) . ' ' . ( version_compare(WPeMatico::get_curl_version(), '7.10.5', '>=') ? '' : '<br>' . __('A version lower than 7.10 will work fine, but will generate a PHP Warning each time it is used.', 'wpematico') ) . ' ">[?]</a>'; ?></td>
+					<td><?php 
+						/* translators: %1$s current value. %2$s Plugins list. */
+						echo ($curl_ok) ? ( ( version_compare(WPeMatico::get_curl_version(), '7.10.5', '>=') ) ? '<mark class="yes">' . WPeMatico::get_curl_version() . '</mark>' : '<mark class="error">' . WPeMatico::get_curl_version() . '</mark>' ) : '<mark class="error">' . sprintf(__('%1$s is not installed on your server, but is recommended by %2$s.', 'wpematico'), 'cURL (php.net/curl)', 'some addons and Simplepie') . '</mark>'; ?></td>
 				</tr>
 				<tr>
 					<td data-export-label="ZipArchive"><?php _e('ZipArchive:', 'wpematico'); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('ZipArchive is recommended. They can be used to import and export zip files.', 'wpematico') . '">[?]</a>'; ?></td>
-					<td><?php echo $ZipArchive ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">' . sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'ZipArchive', 'WPeMatico Core') . '</mark>'; ?></td>
+					<td><?php 
+						/* translators: %1$s current value. %2$s Plugins list. */
+						echo $ZipArchive ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">' . sprintf(__('%1$s is not installed on your server, but is recommended by %2$s.', 'wpematico'), 'ZipArchive', 'WPeMatico Core') . '</mark>'; ?></td>
 				</tr>
 				<tr>
 					<td data-export-label="DOMDocument"><?php _e('DOMDocument:', 'wpematico'); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__('%s is recommended by %s.', 'wpematico'), 'DOMDocument', 'WPeMatico Core')) . '">[?]</a>'; ?></td>
-					<td><?php echo $DOMDocument ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">' . sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'DOMDocument', 'some addons') . '</mark>'; ?></td>
+					<td class="help"><?php 
+						/* translators: %1$s current value. %2$s Plugins list. */
+						echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__('%1$s is recommended by %2$s.', 'wpematico'), 'DOMDocument', 'WPeMatico Core')) . '">[?]</a>'; ?></td>
+					<td><?php 
+						/* translators: %1$s current value. %2$s Plugins list. */
+						echo $DOMDocument ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">' . sprintf(__('%1$s is not installed on your server, but is recommended by %2$s.', 'wpematico'), 'DOMDocument', 'some addons') . '</mark>'; ?></td>
 				</tr>
 				<tr>
 					<td data-export-label="GD Library"><?php _e('GD Library:', 'wpematico'); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('WPeMatico uses this library to resize images and speed up your site\'s loading time', 'wpematico') . '">[?]</a>'; ?></td>
-					<td><?php echo $GD_ok ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">' . sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'GD', 'WPeMatico Core') . '</mark>'; ?></td>
+					<td><?php 
+						/* translators: %1$s current value. %2$s Plugins list. */
+						echo $GD_ok ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">' . sprintf(__('%1$s is not installed on your server, but is recommended by %2$s.', 'wpematico'), 'GD', 'WPeMatico Core') . '</mark>'; ?></td>
 				</tr>
 				<tr>
 					<td data-export-label="XML (php.net/xml)"><?php _e('XML (php.net/xml):', 'wpematico'); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('XML (php.net/xml) is required.', 'wpematico') . '">[?]</a>'; ?></td>
-					<td><?php echo ($xml_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">' . sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'XML (php.net/xml)', 'WPeMatico Core') . '</mark>'; ?></td>
+					<td><?php 
+						/* translators: %1$s current value. %2$s Plugins list. */
+						echo ($xml_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">' . sprintf(__('%1$s is not installed on your server, but is recommended by %2$s.', 'wpematico'), 'XML (php.net/xml)', 'WPeMatico Core') . '</mark>'; ?></td>
 				</tr>
 				<tr>
 					<td data-export-label="PCRE (php.net/pcre)"><?php _e('PCRE (php.net/pcre):', 'wpematico'); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__('%s is required by %s.', 'wpematico'), 'PCRE (php.net/pcre)', 'WPeMatico Core, ' . $professional_help . ', ' . $full_help . ', ' . $better_help . ', ' . $cache_help . ', ' . $chinese_help . ', ' . $facebook_help . ', ' . $mmf_help . ', ' . $thumbnail_help . ', ' . $thumbnail_help . '')) . '">[?]</a>'; ?></td>
-					<td><?php echo ($pcre_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">' . sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'PCRE (php.net/pcre)', 'some addons and WPeMatico Core') . '</mark>'; ?></td>
+					<td class="help"><?php 
+						/* translators: %1$s current value. %2$s Plugins list. */
+						echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__('%1$s is required by %2$s.', 'wpematico'), 'PCRE (php.net/pcre)', 'WPeMatico Core, ' . $professional_help . ', ' . $full_help . ', ' . $better_help . ', ' . $cache_help . ', ' . $chinese_help . ', ' . $facebook_help . ', ' . $mmf_help . ', ' . $thumbnail_help . ', ' . $thumbnail_help . '')) . '">[?]</a>'; ?></td>
+					<td><?php 
+						/* translators: %1$s current value. %2$s Plugins list. */
+						echo ($pcre_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">' . sprintf(__('%1$s is not installed on your server, but is recommended by %2$s.', 'wpematico'), 'PCRE (php.net/pcre)', 'some addons and WPeMatico Core') . '</mark>'; ?></td>
 				</tr>
 				<tr>
 					<td data-export-label="Zlib (php.net/zlib)"><?php _e('Zlib (php.net/zlib):', 'wpematico'); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__('%s is required by %s.', 'wpematico'), 'Zlib (php.net/zlib)', 'WPeMatico Core, ' . $cache_help)) . '">[?]</a>'; ?></td>
-					<td><?php echo ($zlib_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">' . sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'Zlib (php.net/zlib)', 'some addons and WPeMatico Core') . '</mark>'; ?></td>
+					<td class="help"><?php 
+						/* translators: %1$s current value. %2$s Plugins list. */
+						echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__('%1$s is required by %2$s.', 'wpematico'), 'Zlib (php.net/zlib)', 'WPeMatico Core, ' . $cache_help)) . '">[?]</a>'; ?></td>
+					<td><?php 
+						/* translators: %1$s current value. %2$s Plugins list. */
+						echo ($zlib_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">' . sprintf(__('%1$s is not installed on your server, but is recommended by %2$s.', 'wpematico'), 'Zlib (php.net/zlib)', 'some addons and WPeMatico Core') . '</mark>'; ?></td>
 				</tr>
 				<tr>
 					<td data-export-label="php.net/mbstring"><?php _e('php.net/mbstring:', 'wpematico'); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__('%s is required by %s.', 'wpematico'), 'php.net/mbstring', 'WPeMatico Core, ' . $full_help . ', ' . $chinese_help . ', ' . $mmf_help)) . '">[?]</a>'; ?></td>
-					<td><?php echo ($mbstring_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">' . sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'php.net/mbstring', 'some addons and WPeMatico Core') . '</mark>'; ?></td>
+					<td class="help"><?php 
+						/* translators: %1$s current value. %2$s Plugins list. */
+						echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__('%1$s is required by %2$s.', 'wpematico'), 'php.net/mbstring', 'WPeMatico Core, ' . $full_help . ', ' . $chinese_help . ', ' . $mmf_help)) . '">[?]</a>'; ?></td>
+					<td><?php 
+						/* translators: %1$s current value. %2$s Plugins list. */
+						echo ($mbstring_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">' . sprintf(__('%1$s is not installed on your server, but is recommended by %2$s.', 'wpematico'), 'php.net/mbstring', 'some addons and WPeMatico Core') . '</mark>'; ?></td>
 				</tr>
 				<tr>
 					<td data-export-label="iconv (php.net/iconv)"><?php _e('iconv (php.net/iconv):', 'wpematico'); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__('%s is required by %s.', 'wpematico'), 'iconv (php.net/iconv)', 'WPeMatico Core, ' . $full_help . ', ' . $mmf_help)) . '">[?]</a>'; ?></td>
-					<td><?php echo ($iconv_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">' . sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'iconv (php.net/iconv)', 'some addons and WPeMatico Core') . '</mark>'; ?></td>
+					<td class="help"><?php 
+						/* translators: %1$s current value. %2$s Plugins list. */
+						echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__('%1$s is required by %2$s.', 'wpematico'), 'iconv (php.net/iconv)', 'WPeMatico Core, ' . $full_help . ', ' . $mmf_help)) . '">[?]</a>'; ?></td>
+					<td><?php 
+						/* translators: %1$s current value. %2$s Plugins list. */
+						echo ($iconv_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">' . sprintf(__('%1$s is not installed on your server, but is recommended by %2$s.', 'wpematico'), 'iconv (php.net/iconv)', 'some addons and WPeMatico Core') . '</mark>'; ?></td>
 				</tr>
 				<tr>
 					<td data-export-label="OpenSSL (php.net/openssl)"><?php _e('OpenSSL (php.net/openssl):', 'wpematico'); ?></td>
-					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__('%s is required by %s.', 'wpematico'), 'OpenSSL (php.net/openssl)', $smtp_help)) . '">[?]</a>'; ?></td>
-					<td><?php echo ($ssl_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="' . (defined('WPESMTP_VERSION') ? 'error' : 'error-no-install' ) . '">' . sprintf(__('%s is not installed on your server, but is recommended by %s.', 'wpematico'), 'OpenSSL (php.net/openssl)', 'some addons') . '</mark>'; ?></td>
+					<td class="help"><?php 
+						/* translators: %1$s current value. %2$s Plugins list. */
+						echo '<a href="#" class="help_tip" data-tip="' . esc_attr(sprintf(__('%1$s is required by %2$s.', 'wpematico'), 'OpenSSL (php.net/openssl)', $smtp_help)) . '">[?]</a>'; ?></td>
+					<td><?php 
+						/* translators: %1$s current value. %2$s Plugins list. */
+						echo ($ssl_ok) ? '<mark class="yes">&#10004;</mark>' : '<mark class="' . (defined('WPESMTP_VERSION') ? 'error' : 'error-no-install' ) . '">' . sprintf(__('%1$s is not installed on your server, but is recommended by %2$s.', 'wpematico'), 'OpenSSL (php.net/openssl)', 'some addons') . '</mark>'; ?></td>
 				</tr>
 				<?php /* 			<tr>
 				<td data-export-label="mcrypt (php.net/mcrypt)"><?php _e('mcrypt (php.net/mcrypt):', 'wpematico'); ?></td>
@@ -1084,7 +1175,9 @@ function wpematico_show_data_info() {
 
 						if ($from_wordpress) {
 							echo '
-					<code>' . sprintf(__('USING SimplePie %s included in Wordpress'), SIMPLEPIE_VERSION) . '</code>
+					<code>' 
+							/* translators: %s Current SimplePie Version. */
+							. sprintf(__('USING SimplePie %s included in Wordpress', 'wpematico'), SIMPLEPIE_VERSION) . '</code>
 				';
 						}
 						?>
@@ -1144,6 +1237,7 @@ function wpematico_show_data_info() {
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__('The maximum amount of memory (RAM) that your site can use at one time.', 'wpematico') . '">[?]</a>'; ?></td>
 					<td><?php
 						if ($wp_memory < 128000000) {
+							/* translators: %s Current Memory in MB. */
 							echo '<mark class="no">' . sprintf(__('%s - We recommend setting memory to at least ', 'wpematico') . '<strong>128MB</strong>. <br />' . __('Please define memory limit in wp-config.php file. To learn how, see: ', 'wpematico') . '<a href="%s" target="_blank">' . __('Increasing memory allocated to PHP.', 'wpematico') . '</a>', size_format($wp_memory), 'https://wordpress.org/support/article/editing-wp-config-php/#increasing-memory-allocated-to-php') . '</mark>';
 						} else {
 							echo '<mark class="yes">' . size_format($wp_memory) . '</mark>';
@@ -1264,10 +1358,16 @@ function wpematico_show_data_info() {
 							<td><?php echo $plugin_name; ?></td>
 							<td class="help">&nbsp;<?php echo $plugin_data['Version']; ?>
 								<?php if (!empty($new_version)) : ?>
-									<strong><?php printf(__('(needs update - %s)', 'wpematico'), $new_version); ?></strong>
+									<strong><?php 
+									/* translators: %s New Version number. */
+										printf(__('(needs update - %s)', 'wpematico'), $new_version); ?>
+									</strong>
 								<?php endif; ?>
 							</td>
-							<td><?php printf(_x('by %s', 'by author', 'wpematico'), $plugin_data['Author']) . ' &ndash; ' . esc_html($plugin_data['Version']) . $version_string . $network_string; ?></td>
+							<td><?php 
+								/* translators: %s plugin author. */
+								printf(_x('by %s', 'by author', 'wpematico'), $plugin_data['Author']) . ' &ndash; ' . esc_html($plugin_data['Version']) . $version_string . $network_string; ?>
+							</td>
 						</tr>
 						<?php
 					}
@@ -1308,10 +1408,16 @@ function wpematico_show_data_info() {
 							<td><?php echo $plugin_name; ?></td>
 							<td class="help">&nbsp;<?php echo $plugin_data['Version']; ?>
 								<?php if (!empty($new_version)) : ?>
-									<strong><?php printf(__('(needs update - %s)', 'wpematico'), $new_version); ?></strong>
+									<strong><?php 
+										/* translators: %s New Version number. */
+										printf(__('(needs update - %s)', 'wpematico'), $new_version); ?>
+									</strong>
 								<?php endif; ?>
 							</td>
-							<td><?php printf(_x('by %s', 'by author', 'wpematico'), $plugin_data['Author']) . ' &ndash; ' . esc_html($plugin_data['Version']) . $version_string . $network_string; ?></td>
+							<td><?php 
+								/* translators: %s plugin author. */
+								printf(_x('by %s', 'by author', 'wpematico'), $plugin_data['Author']) . ' &ndash; ' . esc_html($plugin_data['Version']) . $version_string . $network_string; ?>
+							</td>
 						</tr>
 						<?php
 					}

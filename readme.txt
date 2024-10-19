@@ -2,7 +2,7 @@
 Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,rss to post,feed to post,rss aggregator
-Stable tag: 2.7.8
+Stable tag: 2.7.9
 Tested up to: 6.6.2
 Requires at least: 4.8
 Requires PHP: 7.0
@@ -236,6 +236,14 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
 
+= 2.7.9 Oct 18, 2024 =
+
+* Tweaks on links and few styles in Settings screen.
+* Tweaks a really lot for translators strings on almost all files to meet WordPress Standards.
+* Fixes few minor security issues.
+* Fixes few issues on System Status Page.
+* Fixes some texts and typos.
+
 = 2.7.8 Oct 8, 2024 =
 
 * Improves compatibilities with [WPeMatico Synchronizer](https://etruel.com/downloads/wpematico-synchronizer/)
@@ -387,4 +395,4 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 
-Important Release. Read changelog before update if you use some of our addons.
+Many tweaks on links and styles, translators strings, fixes few minor security issues, texts and typos.

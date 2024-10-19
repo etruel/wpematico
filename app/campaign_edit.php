@@ -124,6 +124,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 					'text_save_before_execute_action' 	=> __('Save before to execute this action', 'wpematico'),
 					'text_confirm_reset_campaign'		=> __('Are you sure you want to reset this campaign?', 'wpematico'),
 					'text_confirm_delhash_campaign'		=> __('Are you sure you want to delete hash code for duplicates of this campaign?', 'wpematico'),
+					/* translators: the link to WPeMatico System Status page. */
 					'text_fail_run_campaign'			=> sprintf(__('An error has occurred, this could be because the web server does not have all the requirements of WPeMatico please check your <a href="%s">System Status</a>, if everything is ok try again.', 'wpematico'), admin_url('edit.php?post_type=wpematico&page=wpematico_tools&tab=debug_info') ),
 					'text_wizard'						=> __('Wizard', 'wpematico'),
 					'text_loading'						=> __('Loading...', 'wpematico'),
@@ -136,7 +137,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 					'preview_campaign_action_url' 		=> $preview_campaign_action_url,
 					'update2save' 						=> __('Update Campaign to save changes.', 'wpematico' ),
 					'admin_url' 						=> admin_url('admin-post.php'),
-					'visibility_trans'  				=> __('Public'),
+					'visibility_trans'  				=> __('Public', 'wpematico'),
 					'visibility' 						=> 'public',
 					'description' 						=> __('Campaign Description', 'wpematico'),
 					'description_help' 					=> __('Here you can write some observations.', 'wpematico'),
@@ -345,6 +346,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 					if($regex) 
 						if(false === @preg_match($word, '')) {
 							$err_message = ($err_message != "") ? $err_message."<br />" : "" ;
+							/* translators: The value of the regex field with an error. */
 							$err_message .= sprintf(__('There\'s an error with the supplied RegEx expression in word: %s', 'wpematico'),'<span class="coderr">'.$word.'</span>');
 						}
 				}
@@ -362,6 +364,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 					if($regex) 
 						if(false === @preg_match($origin, '')) {
 							$err_message = ($err_message != "") ? $err_message."<br />" : "" ;
+							/* translators: The value of the regex field with an error. */
 							$err_message .= sprintf(__('There\'s an error with the supplied RegEx expression in ReWrite: %s', 'wpematico'),'<span class="coderr">'.$origin.'</span>');
 						}
 				}
@@ -417,10 +420,12 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 						$simplepie =  WPeMatico::fetchFeed($fetch_feed_params);
 						if($simplepie->error()) {
 							$err_message = ($err_message != "") ? $err_message."<br />" : "" ;
-							$err_message .= sprintf(__('Feed %s could not be parsed. (SimplePie said: %s)',  'wpematico'),'<strong class="coderr">'. esc_html($feed) . '</strong>', $simplepie->error());
+							/* translators: %1$s The feed URL with an error. %2$s Error message */
+							$err_message .= sprintf(__('Feed %1$s could not be parsed. (SimplePie said: %2$s)',  'wpematico'),'<strong class="coderr">'. esc_html($feed) . '</strong>', $simplepie->error());
 						}
 					}else{
 						$err_message = ($err_message != "") ? $err_message."<br />" : "" ;
+						/* translators: The feed URL with an error. */
 						$err_message .= sprintf(__('Feed %s could not be parsed because has an space in url.', 'wpematico'),'<strong class="coderr">' . esc_html($feed) . '</strong>');
 					}
 				}

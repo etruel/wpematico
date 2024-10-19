@@ -255,13 +255,17 @@ class WPeMatico_backend_helpers {
 					echo " <i><strong>" . $campaign_data['campaign_title'] . "</i></strong>, ";
 					echo date_i18n((get_option('date_format') . ' ' . get_option('time_format')), $campaign_data['lastrun']) . ', <i>';
 					if ($campaign_data['lastpostscount'] > 0)
+						/* translators: %s :integer. */
 						echo ' <span style="color:green;">' . sprintf(__('Processed Posts: %s', 'wpematico'), $campaign_data['lastpostscount']) . '</span>, ';
 					else
+						/* translators: %s :integer. */
 						echo ' <span style="color:red;">' . sprintf(__('Processed Posts: %s', 'wpematico'), '0') . '</span>, ';
 
 					if ($campaign_data['lastruntime'] < 10)
+						/* translators: %s :seconds (integer). */
 						echo ' <span style="color:green;">' . sprintf(__('Fetch done in %s sec.', 'wpematico'), $campaign_data['lastruntime']) . '</span>';
 					else
+						/* translators: %s :seconds (integer). */
 						echo ' <span style="color:red;">' . sprintf(__('Fetch done in %s sec.', 'wpematico'), $campaign_data['lastruntime']) . '</span>';
 				}
 				echo '</i></a><br />';

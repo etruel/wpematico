@@ -271,10 +271,10 @@ function wpematico_addons_get_columns() {
 
 	return array(
 		'cb'			 => !in_array($status, array('mustuse', 'dropins')) ? '<input type="checkbox" />' : '',
-		'icon'			 => __('Icon'),
-		'name'			 => __('Add On'),
-		'description'	 => __('Description'),
-		'buybutton'		 => __('Adquire'),
+		'icon'			 => __('Icon', 'wpematico'),
+		'name'			 => __('Add On', 'wpematico'),
+		'description'	 => __('Description', 'wpematico'),
+		'buybutton'		 => __('Adquire', 'wpematico'),
 	);
 }
 
@@ -399,7 +399,12 @@ function wpematico_showhide_addons($plugins) {
 
 function wpematico_addons_row_actions($actions, $plugin_file, $plugin_data, $context) {
 	$actions			 = array();
-	$actions['buynow']	 = '<a target="_Blank" class="edit" aria-label="' . esc_attr(sprintf(__('Go to %s WebPage', 'wpematico'), $plugin_data['Name'])) . '" title="' . esc_attr(sprintf(__('Open %s WebPage in new window.', 'wpematico'), $plugin_data['Name'])) . '" href="' . $plugin_data['PluginURI'] . '">' . __('Details', 'wpematico') . '</a>';
+	$actions['buynow']	 = '<a target="_Blank" class="edit" '
+			/* translators: %s WPeMatico Plugin Name */
+			. 'aria-label="' . esc_attr(sprintf(__('Go to %s WebPage', 'wpematico'), $plugin_data['Name'])) . '" '
+			/* translators: %s WPeMatico Plugin Name */
+			. 'title="' . esc_attr(sprintf(__('Open %s WebPage in new window.', 'wpematico'), $plugin_data['Name'])) . '" '
+			. 'href="' . $plugin_data['PluginURI'] . '">' . __('Details', 'wpematico') . '</a>';
 	return $actions;
 }
 

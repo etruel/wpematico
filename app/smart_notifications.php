@@ -131,7 +131,9 @@ class wpe_smart_notifications {
 
 					<?php _e('The WPeMatico team work hard to offer you excellent tools for autoblogging.', 'wpematico'); ?>
 					<br>
-					<?php printf(__('So we would love you to write a %s in WordPress if you appreciate our plugin.', 'wpematico'), '<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" id="link2rate" target="_Blank"><strong>5-star review</strong></a>'); ?>
+					<?php 					
+					/* translators: 5-star review linked to WP rate page. */
+					printf(__('So we would love you to write a %s in WordPress if you appreciate our plugin.', 'wpematico'), '<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" id="link2rate" target="_Blank"><strong>5-star review</strong></a>'); ?>
 					<br>
 					<?php _e('It only takes a minute, "click the button below" to go to the form.', 'wpematico'); ?>
 					<br>

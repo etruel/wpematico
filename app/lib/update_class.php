@@ -137,9 +137,12 @@ class WPeMatico_Update{
 		}
 
 		$unavailability_reasons = [
-			'update_free'    => esc_html__( "Please update the free version before updating $plugin_name. ", 'wpematico' ),
-			'core_required'  => esc_html__( "Please the free version is required to run the $plugin_name. ", 'wpematico' ),
-			'required_license'  => esc_html__( "Please update your license to get the lastest version of $plugin_name. ", 'wpematico' ),
+			/* translators: %s Plugin Name */
+			'update_free'    => sprintf(esc_html__( "Please update the free version before updating %s. ", 'wpematico' ), $plugin_name),
+			/* translators: %s Plugin Name */
+			'core_required'  => sprintf(esc_html__( "Please the free version is required to run the %s. ", 'wpematico' ), $plugin_name),
+			/* translators: %s Plugin Name */
+			'required_license'  => sprintf(esc_html__( "Please update your license to get the lastest version of %s. ", 'wpematico' ), $plugin_name),
 		];
 
 		if ( isset( $unavailability_reasons[ $reason ] ) ) {

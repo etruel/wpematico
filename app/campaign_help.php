@@ -75,7 +75,8 @@ $helpcampaign = array(
 		'striphtml' => array( 
 			'title' => __('Strip All HTML Tags.', 'wpematico' ),
 			'tip' => __('Remove all HTML from original content', 'wpematico' ).'<br>'.
-				sprintf(__('NOTE that also strip images %s and links %s', 'wpematico' ), '&lt;img&gt;', '&lt;a&gt;.'),
+				/* translators: %1$s and %2$s html tags <img> and <a>. */
+				sprintf(__('NOTE that also strip images %1$s and links %2$s', 'wpematico' ), '&lt;img&gt;', '&lt;a&gt;.'),
 		),
 		'striplinks' => array( 
 			'title' => __('Strip links from content.', 'wpematico' ),
@@ -138,6 +139,7 @@ $helpcampaign = array(
 		),
 		'imgcache' => array( 
 				'title' => __('Cache images.', 'wpematico' ),
+				/* translators: %s html tag <img>. */
 				'tip' => sprintf(__('All images found in %s tags in content will be uploaded to your current WP Upload Folder and replaced urls in content. Otherwise remains links to source hosting server.', 'wpematico' ), '&lt;img&gt;'),
 		),
 		'imgattach'	=> array( 
@@ -149,7 +151,9 @@ $helpcampaign = array(
 				'tip' => __('If selected and image upload get error, then delete the \'src\' attribute of the &lt;img&gt;. Check this for don\'t link images from external sites.', 'wpematico' ),
 		),
 		'image_srcset' => array( 
+				/* translators: %s html tag <img>. */
 				'title' => sprintf(__('Use srcset attribute instead of src of %s tag.', 'wpematico' ), '&lt;img&gt;'),
+				/* translators: %s html tag <img>. */
 				'tip'   => sprintf(__('Selecting this option searches the srcset attribute if it exists, it searches for the larger image to overwrite the src attribute of the %s tag.', 'wpematico' ), '&lt;img&gt;'),	
 		),
 		'featuredimg' => array( 
@@ -189,6 +193,7 @@ $helpcampaign = array(
 		),
 		'audio_cache' => array( 
 				'title' => __('Cache audios.', 'wpematico' ),
+				/* translators: %s html tag <audio>. */
 				'tip' => sprintf(__('All audios found in %s tags in content will be uploaded to your current WP Upload Folder and replaced urls in content . Otherwise remains links to source hosting server.', 'wpematico' ), '&lt;audio&gt;'),
 		),
 		'audio_attach'	=> array( 
@@ -212,6 +217,7 @@ $helpcampaign = array(
 		),
 		'video_cache' => array( 
 				'title' => __('Cache videos.', 'wpematico' ),
+				/* translators: %s html tag <video>. */
 				'tip' => sprintf(__('All videos found in %s tags in content will be uploaded to your current WP Upload Folder and replaced urls in content . Otherwise remains links to source hosting server.', 'wpematico' ), '&lt;video&gt;'),
 		),
 		'video_attach'	=> array( 
@@ -220,6 +226,7 @@ $helpcampaign = array(
 		),
 		'gralnolink_video' => array( 
 				'title' => __('Don\'t link external videos.', 'wpematico' ),
+				/* translators: %s html tag <video>. */
 				'tip' => sprintf(__('If selected and video upload get error, then delete the \'src\' attribute of the %s. Check this for don\'t link videos from external sites.', 'wpematico' ), '&lt;video&gt;. '),
 		),
 		'customupload_videos'	=> array( 

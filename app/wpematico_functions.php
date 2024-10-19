@@ -87,7 +87,8 @@ if (!class_exists('WPeMatico_functions')) {
 			//  http://wordpress.stackexchange.com/a/72691/65771
 			//  https://codex.wordpress.org/Function_Reference/get_page_by_title
 
-			$dupmsg = ($dev) ? __('Yes') : __('No');
+			$dupmsg = ($dev) ? __('Yes', 'wpematico') : __('No', 'wpematico');
+			/* translators: the title of the post. */
 			trigger_error(sprintf(__('Checking duplicated title \'%s\'', 'wpematico'), $title) . ': ' . $dupmsg, E_USER_NOTICE);
 
 			return $dev;
@@ -453,6 +454,7 @@ if (!class_exists('WPeMatico_functions')) {
 					unlink($download_file);
 				} else {
 					//third try to obtain the file 
+					/* translators: the previous error message. */
 					trigger_error(sprintf(__('Download error: %s Using an alternate download method...', 'wpematico'), $download_file->get_error_message()), E_USER_WARNING);
 					$origin_content = WPeMatico::wpematico_get_contents($url_origin, array());
 				}
@@ -628,7 +630,8 @@ if (!class_exists('WPeMatico_functions')) {
 
 				if ($proplugin_data['Name'] == 'WPeMatico Professional' && version_compare($proplugin_data['Version'], WPeMatico::PROREQUIRED, '<')) {
 					$message .= __('Your current version of WPeMatico Professional does not support WPeMatico ', 'wpematico') . $core_version . '<br />';
-					$message .= __('Must install at least "WPeMatico Professional" ' . WPeMatico::PROREQUIRED, 'wpematico');
+					/* translators: the required version of WPeMatico Professional. */
+					$message .= sprintf(__('Must install at least WPeMatico Professional %s', 'wpematico'), WPeMatico::PROREQUIRED);
 					$message .= ' <a href="' . admin_url('plugins.php?page=wpemaddons') . '#wpematico-pro"> ' . __('Go to update Now', 'wpematico') . '</a>';
 					$message .= '<script type="text/javascript">jQuery(document).ready(function($){$("#wpematico-pro").css("backgroundColor","yellow");});</script>';
 					//Commented to allow access to the settings page
@@ -1270,7 +1273,7 @@ if (!class_exists('WPeMatico_functions')) {
 			}
 			if ($ajax) {
 				if (empty($errors)) {
-
+					/* translators: the tested Feed URL. */
 					$response['message'] = sprintf(__('The feed %s has been parsed successfully.', 'wpematico'), $url);
 					$response['message'] .= '<br/> <strong> ' . __('Feed Title:', 'wpematico') . '</strong> ' . $feed->get_title();
 					$response['message'] .= '<br/> <strong> ' . __('Generator:', 'wpematico') . '</strong> ' . self::get_generator_feed($feed);
@@ -1290,15 +1293,18 @@ if (!class_exists('WPeMatico_functions')) {
 
 					$response['success'] = true;
 				} else {
-					$response['message'] = sprintf(__('The feed %s cannot be parsed. Simplepie said: %s', 'wpematico'), $url, $errors) . '<br />' . $professional_notice;
+					/* translators: %1$s the tested Feed URL. %2$s SimplePie error message. */
+					$response['message'] = sprintf(__('The feed %1$s cannot be parsed. Simplepie said: %2$s', 'wpematico'), $url, $errors) . '<br />' . $professional_notice;
 					$response['success'] = false;
 				}
 				wp_send_json($response);  //echo json & die
 			} else {
 				if (empty($errors)) {
+					/* translators: the tested Feed URL. */
 					printf(__('The feed %s has been parsed successfully.', 'wpematico'), $url);
 				} else {
-					printf(__('The feed %s cannot be parsed. Simplepie said: %s', 'wpematico'), $url, $errors) . '<br />' . $professional_notice;
+					/* translators: %1$s the tested Feed URL. %2$s SimplePie error message. */
+					printf(__('The feed %1$s cannot be parsed. Simplepie said: %2$s', 'wpematico'), $url, $errors) . '<br />' . $professional_notice;
 				}
 				return;
 			}
@@ -1852,15 +1858,31 @@ function wpematico_get_active_seo_plugin() {
  */
 function wpematico_init_set($index, $value, $log_only_fail = false) {
     $oldvalue = @ini_set($index, $value) or $oldvalue = FALSE; //@return string the old value on success, <b>FALSE</b> on failure. (after 'or' is by the @)
+	
+	/* translators: %1$s the tested Feed URL. 
+	 * %1$s ini option to change. 
+	 * %2$s The new value for the option. 
+	 * %3$s Operation result. Success or Failed.
+	 * %4$s Old previous value returned on fail. 
+	 */
+	$error_msg = __('Trying to set %1$s = %2$s: \'%3$s\' - Old value: %4$s.', 'wpematico');
+	
     if ($log_only_fail) {
         if ($oldvalue === false) {
-            trigger_error(sprintf(__('Trying to set %s = %s: \'%s\' - Old value:%s.', 'wpematico'), $index, $value, __('Failed', 'wpematico'), $oldvalue), E_USER_WARNING);
+            trigger_error(sprintf($error_msg, 
+					$index, //%1$s
+					$value, //%2$s
+					__('Failed', 'wpematico'), //%3$s
+					$oldvalue //%4$s
+				), E_USER_WARNING);
         }
     } else {
-        trigger_error(sprintf(__('Trying to set %s = %s: \'%s\' - Old value:%s.', 'wpematico'), $index, $value, 
-				(($oldvalue === FALSE) ? __('Failed', 'wpematico') : __('Success', 'wpematico')), 
-				$oldvalue), 
-				(($oldvalue === FALSE) ? E_USER_WARNING : E_USER_NOTICE));
+        trigger_error(sprintf($error_msg, 
+				$index, //%1$s
+				$value, //%2$s
+				(($oldvalue === FALSE) ? __('Failed', 'wpematico') : __('Success', 'wpematico')), //%3$s
+				$oldvalue //%4$s
+			), (($oldvalue === FALSE) ? E_USER_WARNING : E_USER_NOTICE));
     }
 
     return $oldvalue;
@@ -1882,7 +1904,7 @@ function wpematico_init_set($index, $value, $log_only_fail = false) {
 function wpematico_joberrorhandler($errno, $errstr, $errfile, $errline) {
 	global $campaign_log_message, $jobwarnings, $joberrors;
 
-	//genrate timestamp
+	//Generate timestamp
 	if (!version_compare(phpversion(), '6.9.0', '>')) { // PHP Version < 5.7 dirname 2nd 
 		if (!function_exists('memory_get_usage')) { // test if memory functions compiled in
 			$timestamp = "<span style=\"background-color:#c3c3c3; padding: 0 5px;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile)) . basename($errfile) . "\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";

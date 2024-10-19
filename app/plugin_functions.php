@@ -120,8 +120,8 @@ function wpematico_row_meta($data, $page)	{
 
 	return array_merge(	$data,	array(
 		//'<a href="http://www.wpematico.com/wpematico/" target="_blank">' . __('Info & comments') . '</a>',
-		'<a href="'.  admin_url('plugins.php?page=wpemaddons').'" target="_self">' . __('Extensions') . '</a>',
-		'<a href="https://etruel.com/my-account/support/" target="_blank">' . __('Support') . '</a>',
+		'<a href="'.  admin_url('plugins.php?page=wpemaddons').'" target="_self">' . __('Extensions', 'wpematico' ) . '</a>',
+		'<a href="https://etruel.com/my-account/support/" target="_blank">' . __('Support', 'wpematico' ) . '</a>',
 		'<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" target="_Blank" title="Rate 5 stars on Wordpress.org">' . __('Rate Plugin', 'wpematico' ) . '</a>',
 		'<strong><a href="https://etruel.com/downloads/wpematico-essentials/" target="_Blank" title="' . __('Take a look at the Essentials features', 'wpematico' ) . '">' . __('Go PRO', 'wpematico' ) . '</a></strong>',
 //		'<p>' . __('Activated Extensions:', 'wpematico' ) . '</p>',

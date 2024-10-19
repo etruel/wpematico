@@ -16,7 +16,7 @@ function wpematico_intervals($schedules) {
 	$schedule = apply_filters('wpematico_cron_schedule_values', 
 		array(	
 			'interval' => apply_filters('wpematico_cron_schedule_interval', '300'), 
-			'display' => __('WPeMatico')
+			'display' => __('WPeMatico', 'wpematico')
 		)
 	);
 	$schedules['wpematico_int'] = $schedule;

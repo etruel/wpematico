@@ -121,6 +121,7 @@ class wpematico_campaign_preview {
 								( $hashvalue == $currenthash[wpematico_feed_hash_key('currenthash', $feed)] ); 
 					if ($dupi) {
 						$posts_fetched[$item_hash] = true;
+						/* translators: %s duplicated permalink url */
 						trigger_error(sprintf(__('Found duplicated hash \'%s\'', 'wpematico' ),$item->get_permalink()).': '.$currenthash[wpematico_feed_hash_key('currenthash', $feed)] ,E_USER_NOTICE);
 						if( !$duplicate_options['jumpduplicates'] ) {
 							trigger_error(__('Filtering duplicated posts.', 'wpematico' ),E_USER_NOTICE);
@@ -138,6 +139,7 @@ class wpematico_campaign_preview {
 						
 						
 
+						/* translators: %s duplicated title and hash */
 						trigger_error(sprintf(__('Found duplicated title \'%s\'', 'wpematico' ),$item->get_title()).': '.$currenthash[wpematico_feed_hash_key('currenthash', $feed)] ,E_USER_NOTICE);
 						if( !$duplicate_options['jumpduplicates'] ) {
 							trigger_error(__('Filtering duplicated posts.', 'wpematico' ),E_USER_NOTICE);
@@ -160,6 +162,7 @@ class wpematico_campaign_preview {
 
 			if($count == $campaign['campaign_max']) {
 
+				/* translators: %s Campaign max fetch input value */
 				trigger_error(sprintf(__('Campaign fetch limit reached at %s.', 'wpematico' ), $campaign['campaign_max']),E_USER_NOTICE);
 				$breaked = true;
 				continue;
@@ -315,7 +318,10 @@ class wpematico_campaign_preview {
 			    <?php wp_nonce_field('wpematico_bulk_actions'); ?> 
 
 				<div class="feed-title">
-					<h2><?php echo get_the_title($campaign_id).': '.sprintf(__('Next Posts(%s)'), $campaign_post_type_name); ?></h2>
+					<h2><?php 
+						/* translators: %s Title with Posttype name */
+						echo get_the_title($campaign_id).': '.sprintf(__('Next Posts(%s)', 'wpematico'), $campaign_post_type_name); 
+					?></h2>
 				</div>
 				
 				<div class="table-responsive">
