@@ -110,12 +110,14 @@ if (!class_exists('WPeMatico_Campaigns')) :
 					foreach ($post_ids as $post_id) {
 						self::bulk_toggle_campaign($post_id, 'activate');
 					}
+					/* translators: %s Integer. Number of activated campaigns */
 					WPeMatico::add_wp_notice(array('text' => sprintf(__('%s Campaigns activated', 'wpematico'), count($post_ids)), 'below-h2' => false));
 					break;
 				case 'stop_campaigns':
 					foreach ($post_ids as $post_id) {
 						self::bulk_toggle_campaign($post_id, 'deactivate');
 					}
+					/* translators: %s Integer. Number of deactivated campaigns */
 					WPeMatico::add_wp_notice(array('text' => sprintf(__('%s Campaigns deactivated', 'wpematico'), count($post_ids)), 'below-h2' => false));
 					break;
 			}
@@ -252,9 +254,9 @@ if (!class_exists('WPeMatico_Campaigns')) :
 				'i18n_date_format'				=> date_i18n(get_option('date_format') . '-' . get_option('time_format')),
 				'text_running_campaign'			=> __('Running Campaign...', 'wpematico'),
 				'text_select_a_campaign_to_run' => __('Please select campaign(s) to Run.', 'wpematico'),
-				'text_slug'						=> __('Slug'),
-				'text_password'					=> __('Password'),
-				'text_date'						=> __('Date'),
+				'text_slug'						=> __('Slug', 'wpematico'),
+				'text_password'					=> __('Password', 'wpematico'),
+				'text_date'						=> __('Date', 'wpematico'),
 				'run_now_list_nonce'			=> wp_create_nonce('wpematico-run-now-nonce'),
 				'Notification_Hidding'			=> __('Hidding...', 'wpematico'),
 				'Notification_Dismissed'		=> __('Dismissed', 'wpematico'),
@@ -541,19 +543,22 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			global $post, $post_ID;
 			$messages['wpematico'] = array(
 				0  => '', // Unused. Messages start at index 1.
-				1  => sprintf(__('Campaign updated.', 'wpematico')),
+				1  => __('Campaign updated.', 'wpematico'),
 				2  => __('Custom field updated.', 'wpematico'),
 				3  => __('Custom field deleted.', 'wpematico'),
 				4  => __('Campaign updated.', 'wpematico'),
 				/* translators: %s: date and time of the revision */
-				5  => isset($_GET['revision']) ? sprintf(__('Campaign restored to revision from %s'), wp_post_revision_title(absint($_GET['revision']), false)) : false,
-				6  => sprintf(__('Campaign published.', 'wpematico')),
-				7  => __('Campaign saved.'),
-				8  => sprintf(__('Campaign submitted.', 'wpematico')),
-				9  => sprintf(__('Campaign scheduled for: %s.') . '<a target="_blank" href="%s">' . __('Preview campaign') . '</a>',
+				5  => isset($_GET['revision']) ? sprintf(__('Campaign restored to revision from %s', 'wpematico'), wp_post_revision_title(absint($_GET['revision']), false)) : false,
+				6  => __('Campaign published.', 'wpematico'),
+				7  => __('Campaign saved.', 'wpematico'),
+				8  => __('Campaign submitted.', 'wpematico'),
+						// translators: %1$s date as string, %2$s Preview campaign Link
+				9  => sprintf(__('Campaign scheduled for: %1$s.', 'wpematico') . '<a target="_blank" href="%2$s">' . __('Preview campaign', 'wpematico') . '</a>',
 						// translators: Publish box date format, see http://php.net/date
-						date_i18n(__('M j, Y @ G:i'), strtotime($post->post_date)), esc_url(get_permalink($post_ID))),
-				10 => sprintf(__('Campaign draft updated. ') . '<a target="_blank" href="%s">' . __('Preview campaign') . '</a>', esc_url(add_query_arg('preview', 'true', get_permalink($post_ID)))),
+						date_i18n( __('M j, Y @ G:i', 'wpematico'), strtotime($post->post_date) ), 
+						esc_url(add_query_arg('preview', 'true', get_permalink($post_ID))) ),
+						// translators: %s Preview campaign Link
+				10 => sprintf(__('Campaign draft updated. ', 'wpematico') . '<a target="_blank" href="%s">' . __('Preview campaign', 'wpematico') . '</a>', esc_url(add_query_arg('preview', 'true', get_permalink($post_ID)))),
 			);
 
 			return $messages;
@@ -607,16 +612,16 @@ if (!class_exists('WPeMatico_Campaigns')) :
 //			unset( $actions['edit_as_new_draft'] );
 				$actions	   = array();
 				if ($can_edit_post && 'trash' != $post->post_status) {
-					$actions['edit']				 = '<a href="' . get_edit_post_link($post->ID, true) . '" title="' . esc_attr(__('Edit this item')) . '">' . __('Edit') . '</a>';
-					$actions['inline hide-if-no-js'] = '<a href="#" class="editinline" title="' . esc_attr(__('Edit this item inline')) . '">' . __('Quick Edit') . '</a>';
+					$actions['edit']				 = '<a href="' . get_edit_post_link($post->ID, true) . '" title="' . esc_attr(__('Edit this item', 'wpematico')) . '">' . __('Edit', 'wpematico') . '</a>';
+					$actions['inline hide-if-no-js'] = '<a href="#" class="editinline" title="' . esc_attr(__('Edit this item inline', 'wpematico')) . '">' . __('Quick Edit', 'wpematico') . '</a>';
 				}
 				if (current_user_can('delete_post', $post->ID)) {
 					if ('trash' == $post->post_status)
-						$actions['untrash'] = "<a title='" . esc_attr(__('Restore this item from the Trash')) . "' href='" . wp_nonce_url(admin_url(sprintf($post_type_object->_edit_link . '&amp;action=untrash', $post->ID)), 'untrash-post_' . $post->ID) . "'>" . __('Restore') . "</a>";
+						$actions['untrash'] = "<a title='" . esc_attr(__('Restore this item from the Trash', 'wpematico')) . "' href='" . wp_nonce_url(admin_url(sprintf($post_type_object->_edit_link . '&amp;action=untrash', $post->ID)), 'untrash-post_' . $post->ID) . "'>" . __('Restore', 'wpematico') . "</a>";
 					elseif (EMPTY_TRASH_DAYS)
-						$actions['trash']	= "<a class='submitdelete' title='" . esc_attr(__('Move this item to the Trash')) . "' href='" . get_delete_post_link($post->ID) . "'>" . __('Trash') . "</a>";
+						$actions['trash']	= "<a class='submitdelete' title='" . esc_attr(__('Move this item to the Trash', 'wpematico')) . "' href='" . get_delete_post_link($post->ID) . "'>" . __('Trash', 'wpematico') . "</a>";
 					if ('trash' == $post->post_status || !EMPTY_TRASH_DAYS)
-						$actions['delete']	= "<a class='submitdelete' title='" . esc_attr(__('Delete this item permanently')) . "' href='" . get_delete_post_link($post->ID, '', true) . "'>" . __('Delete Permanently') . "</a>";
+						$actions['delete']	= "<a class='submitdelete' title='" . esc_attr(__('Delete this item permanently', 'wpematico')) . "' href='" . get_delete_post_link($post->ID, '', true) . "'>" . __('Delete Permanently', 'wpematico') . "</a>";
 				}
 				if ('trash' != $post->post_status) {
 					//++++++Toggle

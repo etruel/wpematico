@@ -64,7 +64,9 @@ class campaign_logs {
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		</head>
 		<body>
-		<h1><?php printf(__('Last Log of Campaign %s: %s', 'wpematico'), $post_id, get_the_title($post_id)); ?> </h1>
+		<h1><?php 
+		/* translators: %1$s Campaign ID. %2$s Campaign Name */
+		printf(__('Last Log of Campaign %1$s: %2$s', 'wpematico'), $post_id, get_the_title($post_id)); ?> </h1>
 		<?php
 		echo $log;
 

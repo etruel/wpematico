@@ -139,7 +139,7 @@ if (!class_exists('WPeMatico')) {
 			if (!$display)
 				return;
 			?><div class="alignright empty_trash"><?php
-			submit_button(__('Empty Trash'), 'apply', 'delete_all', false, array('onClick' => "jQuery('.post_status_page').val('trash');"));
+			submit_button(__('Empty Trash', 'wpematico'), 'apply', 'delete_all', false, array('onClick' => "jQuery('.post_status_page').val('trash');"));
 			?></div><?php
 		}
 
@@ -286,7 +286,7 @@ if (!class_exists('WPeMatico')) {
 			if ('options-writing' === $screen->base) {
 				$screen->add_help_tab(array(
 					'id'		 => 'wpematico',
-					'title'		 => __('WPeMatico'),
+					'title'		 => 'WPeMatico',
 					'content'	 => '<p>' . __('If you don\'t see the WPeMatico Menu may be another plugin or a custom menu added by your theme are "overwritten" the WPeMatico menu position.', 'wpematico') . '<br />' .
 					'' . __('Click the checkbox "Reset Menu Position" to show the menu on last position in your Wordpress menu.', 'wpematico') . '</p>' .
 					'<p></p>' .
@@ -295,7 +295,7 @@ if (!class_exists('WPeMatico')) {
 					'<p></p>' .
 					'<p><a href="http://www.wpematico.com" target="_blank">WPeMatico WebPage</a>  -  <a href="https://etruel.com/downloads/category/wpematico-add-ons/" target="_blank">WPeMatico Add-Ons</a>  -  <a href="https://etruel.com/support/" target="_blank">etruel\'s Custom Support</a></p>' .
 					'<p></p>' .
-					'<p>' . __('You must click the Save Changes button at the bottom of the screen for new settings to take effect.') . '</p>',
+					'<p>' . __('You must click the Save Changes button at the bottom of the screen for new settings to take effect.', 'wpematico') . '</p>',
 				));
 			}
 		}

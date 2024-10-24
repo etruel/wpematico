@@ -95,7 +95,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         // check function for memorylimit
         if (!function_exists('memory_get_usage')) {
             wpematico_init_set('memory_limit', apply_filters('admin_memory_limit', '256M')); //Wordpress default
-            trigger_error(sprintf(__('Memory limit set to %1$s ,because can not use PHP: memory_get_usage() function to dynamically increase the Memory!', 'wpematico'), ini_get('memory_limit')), E_USER_WARNING);
+			/* translators: %s Mb memory */
+			trigger_error(sprintf(__('Memory limit set to %1$s ,because can not use PHP: memory_get_usage() function to dynamically increase the Memory!', 'wpematico'), ini_get('memory_limit')), E_USER_WARNING);
         }
         //run job parts
         $postcount = 0;
@@ -105,6 +106,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
             WPeMatico::$current_feed = $feed;
             // interrupt the script if timeout 
             if (current_time('timestamp') - $this->campaign['starttime'] >= $campaign_timeout) {
+			/* translators: %s Decimal, seconds  */
                 trigger_error(sprintf(__('Ending feed, reached running timeout at %1$d sec.', 'wpematico'), $campaign_timeout), E_USER_WARNING);
                 break;
             }
@@ -156,6 +158,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         //		  $campaign_timeout = (int) $this->cfg['campaign_timeout'];
         //        wpematico_init_set('max_execution_time', $campaign_timeout);
 
+		/* translators: %s Feed Url */
         trigger_error('<span class="coderr b"><b>' . sprintf(__('Processing feed %s.', 'wpematico'), esc_html($feed)) . '</b></span>', E_USER_NOTICE);   // Log
 
         $items = array();
@@ -262,6 +265,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
                     $dupi = ($this->campaign[wpematico_feed_hash_key('campaign', $feed)]['lasthash'] == $this->currenthash[wpematico_feed_hash_key('currenthash', $feed)]) ||
                         ($hashvalue == $this->currenthash[wpematico_feed_hash_key('currenthash', $feed)]);
                     if ($dupi) {
+						/* translators: %s post permalink and hash */
                         trigger_error(sprintf(__('Found duplicated hash \'%s\'', 'wpematico'), $item->get_permalink()) . ': ' . $this->currenthash[wpematico_feed_hash_key('currenthash', $feed)], E_USER_NOTICE);
                         if (!$duplicate_options['jumpduplicates']) {
                             trigger_error(__('Filtering duplicated posts.', 'wpematico'), E_USER_NOTICE);
@@ -274,6 +278,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
                     if (!$duplicate_options['allowduphash'] && $duplicate_options['jumpduplicates']) {
                         if (in_array($this->currenthash[wpematico_feed_hash_key('currenthash', $feed)], $last_hashes)) {
+							/* translators: %s post permalink and hash */
                             trigger_error(sprintf(__('Found duplicated hash of item \'%s\'', 'wpematico'), $item->get_permalink()) . ': ' . $this->currenthash[wpematico_feed_hash_key('currenthash', $feed)], E_USER_NOTICE);
                             trigger_error(__('Jumping duplicated post. Continuing.', 'wpematico'), E_USER_NOTICE);
                             continue;
@@ -282,6 +287,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
                 }
                 if (!$duplicate_options['allowduptitle']) {
                     if (WPeMatico::is_duplicated_item($this->campaign, $feed, $item)) {
+						/* translators: %s post title and hash */
                         trigger_error(sprintf(__('Found duplicated title \'%s\'', 'wpematico'), $item->get_title()) . ': ' . $this->currenthash[wpematico_feed_hash_key('currenthash', $feed)], E_USER_NOTICE);
                         if (!$duplicate_options['jumpduplicates']) {
                             trigger_error(__('Filtering duplicated posts.', 'wpematico'), E_USER_NOTICE);
@@ -296,6 +302,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
             $count++;
             array_unshift($items, $item); // add at Post stack in correct order by date 		  
             if ($count == $this->campaign['campaign_max']) {
+				/* translators: %s post title and hash */
                 trigger_error(sprintf(__('Campaign fetch limit reached at %s.', 'wpematico'), $this->campaign['campaign_max']), E_USER_NOTICE);
                 break;
             }
@@ -306,6 +313,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         foreach ($items as $item) {
             // interrupt the script if timeout 
             if (current_time('timestamp') - $this->campaign['starttime'] >= $campaign_timeout) {
+				/* translators: %s Decimal. Timeout Seconds */
                 trigger_error(sprintf(__('Reached running timeout at %1$d sec.', 'wpematico'), $campaign_timeout), E_USER_WARNING);
                 break;
             }
@@ -343,6 +351,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         unset($simplepie);
 
         if ($realcount) {
+			/* translators: %s Decimal. Number of published posts */
             trigger_error(sprintf(__('%s posts added', 'wpematico'), $realcount), E_USER_NOTICE);
         }
 
@@ -357,6 +366,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
      */
     function processItem($feed, $item, $feedurl) {
         global $wpdb, $realcount,$wpematico_fifu_meta, $post;
+		/* translators: %s Current item title  */
         trigger_error(sprintf('<b>' . __('Processing item %s', 'wpematico'), $item->get_title() . '</b>'), E_USER_NOTICE);
         
         // First exclude filters
@@ -934,6 +944,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
         WPeMatico :: update_campaign($this->campaign_id, $this->campaign);  //Save Campaign new data
 
+		/* translators: %s Decimal. Seconds */
         trigger_error(sprintf(__('Campaign fetched in %s sec.', 'wpematico'), $this->campaign['lastruntime']), E_USER_NOTICE);
     }
 
@@ -986,7 +997,10 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
             add_post_meta($this->campaign_id, 'last_campaign_log', $campaign_log_message, false);
         }
 
-        $Suss = sprintf(__('Campaign fetched in %1s sec.', 'wpematico'), $this->campaign['lastruntime']) . '  ' . sprintf(__('Processed Posts: %s', 'wpematico'), $this->fetched_posts);
+		/* translators: %s Decimal. Seconds */
+        $Suss = sprintf(__('Campaign fetched in %1s sec.', 'wpematico'), $this->campaign['lastruntime']) . '  ' . 
+				/* translators: %s Decimal. Number of inserted posts */
+				sprintf(__('Processed Posts: %s', 'wpematico'), $this->fetched_posts);
         $message = '<p>' . $Suss . '  <a href="JavaScript:void(0);" style="font-weight: bold; text-decoration:none; display:inline;" onclick="jQuery(\'#log_message_' . $this->campaign_id . '\').fadeToggle().addClass(\'active\'); jQuery(\'body\').addClass(\'wpe_modal_log-is-active\');">' . __('Show detailed Log', 'wpematico') . '.</a></p>';
         $campaign_log_message = $message . '<div id="log_message_' . $this->campaign_id . '" class="wpe_modal_log-box fade" style="display:none;"><div class="wpe_modal_log-body"><a href="JavaScript:void(0);" class="wpe_modal_log-close" onclick="jQuery(\'#log_message_' . $this->campaign_id . '\').fadeToggle().removeClass(\'active\'); jQuery(\'body\').removeClass(\'wpe_modal_log-is-active\');"><span class="dashicons dashicons-no-alt"></span></a><div class="wpe_modal_log-header"><h3>'. $this->campaign['campaign_title'] .' - #'. $this->campaign_id .'</h3></div><div class="wpe_modal_log-content">' . $campaign_log_message . '</div></div></div><span id="ret_lastruntime" style="display:none;">' . $this->campaign["lastruntime"] . '</span><span id="ret_lastposts" style="display:none;">' . $this->fetched_posts . '</span>';
     }

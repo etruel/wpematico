@@ -223,13 +223,33 @@ class wpe_notification_traslate {
 		}
 
 		if (self::$translation_exists && self::$translation_loaded && self::$percent_translated < 90 ) {
-			$message = __( 'As you can see, there is a translation of this plugin in %1$s. This translation is currently %3$d%% complete. We need your help to make it complete and to fix any errors. Please register at %4$s to help complete the translation to %1$s!', self::$textdomain );
+			/* translators: %1$s the tested Feed URL. 
+			* %1$s plugin locale. 
+			* %2$s plugin name. 
+			* %3$d percent translated.
+			* %4$s registration_link. 
+			*/
+			$message = __( 'As you can see, there is a translation of this plugin in %1$s. This translation is currently %3$d%% complete. We need your help to make it complete and to fix any errors. Please register at %4$s to help complete the translation to %1$s!', 'wpematico' );
 		} else if ( ! self::$translation_loaded && self::$translation_exists ) {
-			$message = __( 'You\'re using WordPress in %1$s. While %2$s has been translated to %1$s for %3$d%%, it\'s not been shipped with the plugin yet. You can help! Register at %4$s to help complete the translation to %1$s!', self::$textdomain );
+			/* translators: %1$s the tested Feed URL. 
+			* %1$s plugin locale. 
+			* %2$s plugin name. 
+			* %3$d percent translated.
+			* %4$s registration_link. 
+			*/
+			$message = __( 'You\'re using WordPress in %1$s. While %2$s has been translated to %1$s for %3$d%%, it\'s not been shipped with the plugin yet. You can help! Register at %4$s to help complete the translation to %1$s!', 'wpematico' );
 		} else if ( ! self::$translation_exists ) {
-			$message = __( 'You\'re using WordPress in a language we don\'t support yet. We\'d love for %2$s to be translated in that language too, but unfortunately, it isn\'t right now. You can change that! Register at %4$s to help translate it!', self::$textdomain );
+			/* translators: %1$s the tested Feed URL. 
+			* %1$s plugin locale. 
+			* %2$s plugin name. 
+			* %3$d percent translated.
+			* %4$s registration_link. 
+			*/
+			$message = __( 'You\'re using WordPress in a language we don\'t support yet. We\'d love for %2$s to be translated in that language too, but unfortunately, it isn\'t right now. You can change that! Register at %4$s to help translate it!', 'wpematico' );
 		}
 
+		
+		/* translators: %1$s plugin_translate_link. %2$s plugin_name_translate */
 		$registration_link = sprintf( '<a href="%1$s">%2$s</a>', esc_url(self::$plugin_translate_link), esc_html(self::$plugin_name_translate) );
 		$message           = sprintf( $message, esc_html(self::$locale_name ), esc_html(self::$plugin_name),  self::$percent_translated, $registration_link );
 

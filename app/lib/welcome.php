@@ -205,16 +205,16 @@ class WPEMATICO_Welcome {
 		list( $display_version ) = explode('-', WPEMATICO_VERSION);
 		?>
 		<div class="about__header-title-wpematico">
-			<img class="wpematico-badge" src="<?php echo WPEMATICO_PLUGIN_URL . '/images/robotico_orange-75x130.png'; ?>" alt="<?php _e('WPeMatico', 'wpematico'); ?>" / >
+			<img class="wpematico-badge" src="<?php echo WPEMATICO_PLUGIN_URL . '/images/robotico_orange-75x130.png'; ?>" alt="WPeMatico" />
 			<p>
-				<?php _e('WPeMatico'); ?>
-				<span><?php echo $display_version; ?></span>
+				WPeMatico <span><?php echo $display_version; ?></span>
 			</p>
 		</div>
 		<div class="about__header-text">
 			<p>
 				<?php
 				_e('Thank you for updating to the latest version!', 'wpematico');
+				/* translators: %s WPeMatico Version */
 				printf(	'<br />'.__('WPeMatico %s is ready to make your autoblogging faster, safer, and better!', 'wpematico'),
 					$display_version
 				);
@@ -234,7 +234,7 @@ class WPEMATICO_Welcome {
 	public function tabs() {
 		$selected = isset($_GET['page']) ? sanitize_text_field($_GET['page']) : 'wpematico-about';
 		?>
-		<nav class="about__header-navigation nav-tab-wrapper wp-clearfix" aria-label="<?php esc_attr_e('Secondary menu'); ?>">
+		<nav class="about__header-navigation nav-tab-wrapper wp-clearfix" aria-label="<?php esc_attr_e('Secondary menu', 'wpematico'); ?>">
 			<a class="nav-tab <?php echo $selected == 'wpematico-about' ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url(admin_url(add_query_arg(array('page' => 'wpematico-about'), 'index.php'))); ?>">
 				<?php _e("What's New", 'wpematico'); ?>
 			</a>
@@ -402,7 +402,7 @@ class WPEMATICO_Welcome {
 			</div>
 
 			<div class="about__section about__section_height has-2-columns has-subtle-background-color br-16">
-				<h3 class="is-section-header pb-0"><?php _e('More Tweaks and Improvements.'); ?></h3>
+				<h3 class="is-section-header pb-0"><?php _e('More Tweaks and Improvements.', 'wpematico'); ?></h3>
 
 				<div class="column">
 					<h3 class="is-smaller-heading"><?php _e('Campaign metafields optimization.', 'wpematico'); ?></h3>
@@ -670,7 +670,10 @@ class WPEMATICO_Welcome {
 				<div class="column is-vertically-aligned-center">
 					<h2><?php _e('Creating Your First Campaign', 'wpematico'); ?></h2>
 
-					<h3><a href="<?php echo admin_url('post-new.php?post_type=wpematico') ?>"><?php printf(__('%s &rarr; Add New', 'wpematico'), 'WPeMatico'); ?></a></h3>
+					<h3><a href="<?php echo admin_url('post-new.php?post_type=wpematico') ?>"><?php 
+						/* translators: %s WPeMatico Plugin Name */
+						printf( __('%s &rarr; Add New', 'wpematico'), 'WPeMatico' ); 
+					?></a></h3>
 
 					<p><?php printf(__('The WPeMatico All Campaigns menu is your access point for all aspects of your Feed campaigns creation and setup to fetch the items and insert them as posts or any Custom Post Type. To create your first campaign, simply click Add New and then fill out the campaign details.', 'wpematico')); ?></p>
 				</div>

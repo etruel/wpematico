@@ -270,7 +270,7 @@ class wpematico_licenses_handlers {
 			$html_addons = '
 			<div class="postbox-license">
 			<div class="inside">
-			<h2><span class="dashicons-before dashicons-admin-plugins"></span>'.__($plugin_title_name.' License', 'wpematico').'</h2>
+			<h2><span class="dashicons-before dashicons-admin-plugins"></span>' . $plugin_title_name . __(' License', 'wpematico').'</h2>
 			<div class="plugin-img">
 				<img src="">
 			</div>
