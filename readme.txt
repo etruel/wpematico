@@ -2,8 +2,8 @@
 Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,rss to post,feed to post,rss aggregator
-Stable tag: 2.7.9
-Tested up to: 6.6.2
+Stable tag: 2.7.10
+Tested up to: 6.7
 Requires at least: 4.8
 Requires PHP: 7.0
 License: GPLv2 or later
@@ -64,6 +64,9 @@ You can submit any bug in the [bugtracker](https://github.com/etruel/wpematico/i
  
 #### With lots of amazing and professional features to work with images and content parsers and filters.
  
+**NEW [GPT Spinner Add-on](https://etruel.com/downloads/wpematico-gpt-spinner/):** The extension most requested by all of you is finally here! Revolutionize your content and images with re-written contents.
+
+---
 **[Professional Add-on](https://etruel.com/downloads/wpematico-professional/?utm_source=extension&utm_medium=description_tab&utm_content=wpematico-professional&utm_campaign=readme):** Extends WPeMatico with a lot of advanced and new features to parse and filter feed items contents, filters for featured, media, enclosure and in-content images, automatic tags generation, inserts custom fields with every post and much more.
 
 ---
@@ -236,6 +239,14 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 == Changelog ==
 
+> See all detailed changelog at [wpematico Releases](https://wpematico.com/releases/)
+
+= 2.7.10 Oct 31, 2024 =
+
+* Tested with WordPress 6.7
+* Introducing new Add-on: [WPeMatico GPT Spinner](https://etruel.com/downloads/wpematico-gpt-spinner/)
+* More improvements for translators strings.
+
 = 2.7.9 Oct 18, 2024 =
 
 * Tweaks on links and few styles in Settings screen.
@@ -269,8 +280,6 @@ Recommended update it on testing environments before update on production websit
 * Fixes and tweaks some returned parameters on few functions.
 * NOTE: **Enlarges the version required for the [WPeMatico Professional](https://etruel.com/downloads/wpematico-professional/) addon to 3.0**
 * NOTE2: **Enlarges the version required for the [WPeMatico Full Content](https://etruel.com/downloads/wpematico-full-content/) addon to 2.8**
-
-> See all detailed changelog at [wpematico Releases](https://wpematico.com/releases/)
 
 = 2.7.6 Aug 1, 2024 =
 * Improves XML importer process.
@@ -395,4 +404,4 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 
-Many tweaks on links and styles, translators strings, fixes few minor security issues, texts and typos.
+Many tweaks on translators strings, fixes few minor security issues, texts and typos.
