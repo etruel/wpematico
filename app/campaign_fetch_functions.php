@@ -73,6 +73,7 @@ class wpematico_campaign_fetch_functions {
 			
 		// strip all HTML tags before apply filter wpematico_after_item_parsers
 		if ($campaign['campaign_striphtml']) {
+			// translators: The title of the processed post.
 			trigger_error(sprintf(__('Deleting html tags: %s', 'wpematico'), $item->get_title()), E_USER_NOTICE);
 			
 			$current_item['content'] = strip_tags($current_item['content'], apply_filters('wpematico_dont_strip_tags', '', $campaign));
@@ -121,7 +122,7 @@ class wpematico_campaign_fetch_functions {
 				if (!empty($current_item['featured_image'])) {
 					$img_str = "<img class=\"wpe_imgrss\" src=\"" . $current_item['featured_image'] . "\">";  //Solo la imagen
 				} else {
-					trigger_error(__('Can\'t find the featured image to add to the content.'), E_USER_WARNING);
+					trigger_error(__('Can\'t find the featured image to add to the content.', 'wpematico'), E_USER_WARNING);
 					$img_str = '<!-- no image -->';
 				}
 			}
@@ -237,6 +238,7 @@ class wpematico_campaign_fetch_functions {
 		if ($this->cfg['enableword2cats']) {
 			if (isset($campaign['campaign_wrd2cat']['word']) && (!empty($campaign['campaign_wrd2cat']['word'][0]) ) && (!empty($campaign['campaign_wrd2cat']['w2ccateg'][0]) )
 			) {
+				// translators: The title of the processed post.
 				trigger_error(sprintf(__('Processing Words to Category %s', 'wpematico'), $current_item['title']), E_USER_NOTICE);
 
 				for ($i = 0; $i < count($campaign['campaign_wrd2cat']['word']); $i++) {
@@ -266,10 +268,12 @@ class wpematico_campaign_fetch_functions {
 							}
 						}
 						if ($foundit !== false) {
-							trigger_error(sprintf(__('Found!: word %s to Cat_id %s', 'wpematico'), $word, $tocat), E_USER_NOTICE);
+							// translators: %1$s Word found. %2$s Category ID 
+							trigger_error(sprintf(__('Found!: word %1$s to Cat_id %2$s', 'wpematico'), $word, $tocat), E_USER_NOTICE);
 							$new_categories[]		 = $tocat;
 							$new_categories_words[]	 = strtolower($word);
 						} else {
+							// translators: The word not found
 							trigger_error(sprintf(__('Not found word %s', 'wpematico'), $word), E_USER_NOTICE);
 						}
 					}
@@ -292,12 +296,14 @@ class wpematico_campaign_fetch_functions {
 							}
 						}
 						if (!empty($category_with_more_words)) {
+							// translators: The Category 
 							trigger_error(sprintf(__('The category with more words in content: %s', 'wpematico'), $category_with_more_words), E_USER_NOTICE);
 							$new_categories = array($category_with_more_words);
 						}
 					} else {
 						$new_categories = (isset($new_categories[0]) ? array($new_categories[0]) : array());
 						if (isset($new_categories[0])) {
+							// translators: Category ID 
 							trigger_error(sprintf(__('Assign the first category: %s', 'wpematico'), $new_categories[0]), E_USER_NOTICE);
 						}
 					}
@@ -560,10 +566,10 @@ class wpematico_campaign_fetch_functions {
 			'post_author'	 => get_post_field('post_author', $postid),
 			'post_status'	 => 'inherit'
 		);
-		trigger_error(__('Attaching file:') . $filename, E_USER_NOTICE);
+		trigger_error(__('Attaching file:', 'wpematico') . $filename, E_USER_NOTICE);
 		$attach_id		 = wp_insert_attachment($attachment, $relfilename, $postid);
 		if (!$attach_id)
-			trigger_error(__('Sorry, your attach could not be inserted. Something wrong happened.') . print_r($filename, true), E_USER_WARNING);
+			trigger_error(__('Sorry, the attachment could not be inserted. An error has occurred.', 'wpematico') . print_r($filename, true), E_USER_WARNING);
 
 		if (!function_exists('wp_read_video_metadata') || !function_exists('wp_read_audio_metadata')) {
 			require_once(ABSPATH . 'wp-admin/includes/media.php');
@@ -576,6 +582,7 @@ class wpematico_campaign_fetch_functions {
 
 		return $attach_id;
 	}
+	
 	/* 	static function Item_parseimg(&$current_item, &$campaign, &$feed, &$item) {
 	  if ( stripos($current_item['content'], "[[[wpe1stimg]]]") !== FALSE ) {  // en el content
 	  if (isset( $current_item['images'][0] )) {
@@ -600,7 +607,8 @@ class wpematico_campaign_fetch_functions {
 			trigger_error('<b>' . __('Executing featured image selector...', 'wpematico') . '</b>', E_USER_NOTICE);
 			$index_selector = (int) $campaign['campaign_featured_selector_index'];
 			if (isset($current_item['images'][$index_selector])) {
-				trigger_error('<b>' . sprintf(__('Featured image "%s": %s', 'wpematico'), $index_selector, $current_item['images'][$index_selector]) . '</b>', E_USER_NOTICE);
+				// translators: %1$s image Index.  %2$s Image Url
+				trigger_error('<b>' . sprintf(__('Featured image "%1$s": %2$s', 'wpematico'), $index_selector, $current_item['images'][$index_selector]) . '</b>', E_USER_NOTICE);
 				$current_item['featured_image'] = $current_item['images'][$index_selector];
 			} else {
 				trigger_error('<b>' . __('No image was found according to the selected index.', 'wpematico') . '</b>', E_USER_NOTICE);
@@ -711,7 +719,7 @@ class wpematico_campaign_fetch_functions {
 						$new_image_tag		 = preg_replace('/\s*src\s*=\s*(["\']).*?\1/', 'src="' . $max_url . '"', $img_tag);
 						$new_content		 = str_replace($img_tag, $new_image_tag, $new_content);
 						$out[2][$key_image]	 = $max_url;
-						/* Translator: %s: URL of a image URL value */
+						/* Translators: %s: URL of a image URL value */
 						trigger_error(sprintf(__("Overriding src attribute with value: %s from srcset.", 'wpematico'), $src_with_srcset), E_USER_NOTICE);
 					}
 				}
@@ -755,6 +763,7 @@ class wpematico_campaign_fetch_functions {
 	/*	 * * Delete images for its src	 */
 
 	static function strip_Image_by_src($src, $content, $withlink = true) {
+		/* Translators: %s: URL of a image URL src value */
 		trigger_error(sprintf(__("Removing: %s from content.", 'wpematico'), '"' . $src . '"'), E_USER_NOTICE);
 		$img_src_real_scaped = addslashes($src);
 		$img_src_real_scaped = addcslashes($img_src_real_scaped, "?.+*");
@@ -995,6 +1004,7 @@ class wpematico_campaign_fetch_functions {
 	 * @since 1.7.0
 	 */
 	function strip_Audio_by_src($src, $content) {
+		/* Translators: %s: URL of the audio URL value */
 		trigger_error(sprintf(__("Removing: %s from content.", 'wpematico'), '"' . $src . '"'), E_USER_NOTICE);
 		$audio_src_real_scaped	 = addslashes($src);
 		$audio_src_real_scaped	 = addcslashes($audio_src_real_scaped, "?.+*");
@@ -1149,6 +1159,7 @@ class wpematico_campaign_fetch_functions {
 	 * @since 1.7.0
 	 */
 	function strip_Video_by_src($src, $content) {
+		/* Translators: %s: URL of the video URL value */
 		trigger_error(sprintf(__("Removing: %s from content.", 'wpematico'), '"' . $src . '"'), E_USER_NOTICE);
 		$video_src_real_scaped	 = addslashes($src);
 		$video_src_real_scaped	 = addcslashes($video_src_real_scaped, "?.+*");
