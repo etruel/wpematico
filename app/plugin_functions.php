@@ -81,7 +81,8 @@ function wpematico_update_row( $file, $plugin_data ) {
 	echo '<tr id="wpematico_addons_row" class="plugin-update-tr active" data-slug="wpematico-active-extensions">';
 	echo '<td class="plugin-update colspanchange" colspan="5">';
 	echo '<div class="notice inline notice-success notice-alt">';
-	echo '<a href="'.  admin_url('plugins.php?page=wpemaddons').'" target="_self">' . __('Installed Extensions:', 'wpematico' ).'</a>' . $installed ;
+	$allowed_tags = array('span' => array('class' => array(), 'id' => array()),'p'=> array());
+	echo '<a href="'. esc_attr(admin_url('plugins.php?page=wpemaddons')).'" target="_self" title="' . esc_attr__('Open Extensions plugins page:', 'wpematico' ).'">' . esc_html__('Installed Extensions:', 'wpematico' ).'</a>' . wp_kses($installed, $allowed_tags);
 	echo '</div>';
 	echo '</td>';
 	echo '</tr>';

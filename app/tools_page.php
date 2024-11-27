@@ -107,33 +107,34 @@ if (!class_exists('WPeMatico_Tools')) :
 						$action = '?action=' . $action_import . '&_wpnonce=' . $nonce;
 						$linkImport = admin_url("admin.php" . $action);
 
-						$button_export = '<a href="' . $linkExport . '" class="button" title="' . esc_attr(__("Export and download settings", 'wpematico')) . '">' . __('Export Settings', 'wpematico') . '</a>';
+						//$button_export = '<a href="' . $linkExport . '" class="button" title="' . esc_attr(__("Export and download settings", 'wpematico')) . '">' . esc_html__('Export Settings', 'wpematico') . '</a>';
 						?>
 						<div class="postbox">
-							<h3 class="hndle ui-sortable-handle"><span class="dashicons dashicons-arrow-up-alt"></span> <span><?php echo __('Export Settings', 'wpematico') ?></span></h3>
+							<h3 class="hndle ui-sortable-handle"><span class="dashicons dashicons-arrow-up-alt"></span> <span><?php esc_html_e('Export Settings', 'wpematico') ?></span></h3>
 							<div class="inside">
-								<p><?php echo __('Export the WPeMatico settings for this site as a .json file. This allows you to easily import the configuration into another site.', 'wpematico')  ?></p>
+								<p><?php esc_html_e('Export the WPeMatico settings for this site as a .json file. This allows you to easily import the configuration into another site.', 'wpematico')  ?></p>
 								<p>
-									<?php echo $button_export; ?>
+									<?php //echo $button_export; ?>
+									<?php echo '<a href="' . esc_attr($linkExport) . '" class="button" title="' . esc_attr__("Export and download settings", 'wpematico') . '">' . esc_html__('Export Settings', 'wpematico') . '</a>'; ?>
 								</p>
 							</div><!-- .inside -->
 						</div>
-						<form action="<?php echo $linkImport; ?>" id="importsettings" method='post' ENCTYPE='multipart/form-data'>
+						<form action="<?php echo esc_attr($linkImport); ?>" id="importsettings" method='post' ENCTYPE='multipart/form-data'>
 							<?php wp_nonce_field('import-settings', 'wpemimport_nonce'); ?>
 							<div class="postbox">
-								<h3 class="hndle ui-sortable-handle"><span class="dashicons dashicons-arrow-down-alt"></span> <span><?php echo __('Import Settings', 'wpematico') ?></span></h3>
+								<h3 class="hndle ui-sortable-handle"><span class="dashicons dashicons-arrow-down-alt"></span> <span><?php esc_html_e('Import Settings', 'wpematico') ?></span></h3>
 								<div class="inside">
-									<p><?php echo __('Import the WPeMatico settings for this site.', 'wpematico')  ?></p>
+									<p><?php esc_html_e('Import the WPeMatico settings for this site.', 'wpematico')  ?></p>
 									<p>
 										<input type="hidden" name="wpematico-action" value="import_settings" />
 										<input style="display:none;" type="file" class="button" name='txtsettings' id='txtsettings'>
-										<a id="importcpg" class="button" href="Javascript:void(0);" title="<?php echo esc_attr(__("Upload and import a settings", 'wpematico')) ?>"><?php echo __('Import settings', 'wpematico') ?></a>
+										<a id="importcpg" class="button" href="Javascript:void(0);" title="<?php esc_attr_e("Upload and import a settings", 'wpematico') ?>"><?php esc_html_e('Import settings', 'wpematico') ?></a>
 										<script>
 											(function($) {
 												$('#importcpg').on('click',function() {
 													$('#txtsettings').trigger('click');
 												});
-												var message = "<?php echo __('The import will overwrite the current configuration of WPeMatico (and its addons), do you agree?', 'wpematico'); ?>"; 
+												var message = "<?php esc_attr_e('The import will overwrite the current configuration of WPeMatico (and its addons), do you agree?', 'wpematico'); ?>"; 
 												$('#txtsettings').on('change',function() {
 													if (confirm(message)) {
 														$('#importsettings').trigger('submit');

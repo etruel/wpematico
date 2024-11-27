@@ -241,6 +241,13 @@ You can send your files to e-mail wpematico [at] etruel.com
 
 > See all detailed changelog at [wpematico Releases](https://wpematico.com/releases/)
 
+= 2.7.11 Nov 27, 2024 =
+
+* Tested with WordPress 6.7.1
+* Fixes minor security issues.
+* More improvements for translators strings.
+
+
 = 2.7.10 Oct 31, 2024 =
 
 * Tested with WordPress 6.7
