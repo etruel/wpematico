@@ -2,7 +2,7 @@
 Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,rss to post,feed to post,rss aggregator
-Stable tag: 2.7.10
+Stable tag: 2.7.11
 Tested up to: 6.7
 Requires at least: 4.8
 Requires PHP: 7.0
