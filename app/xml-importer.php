@@ -39,8 +39,8 @@ class WPeMatico_XML_Importer {
     }
     public static function modify_post_mime_types($post_mime_types) {
 			$post_mime_types['application/xml'] = array(
-				__('XMLs', 'wpematico'), 
-				__('Manage XMLs', 'wpematico'), 
+				esc_html__('XMLs', 'wpematico'), 
+				esc_html__('Manage XMLs', 'wpematico'), 
 				/* translators: A counter. */
 				_n_noop('XML <span class="count">(%s)</span>', 'XMLs <span class="count">(%s)</span>', 'wpematico')
 			);
@@ -274,12 +274,12 @@ class WPeMatico_XML_Importer {
         $campaign_xml_node = $campaign_data['campaign_xml_node'];
         
 		?>
-		<label for="campaign_xml_feed_url"><?php _e('URL of XML', 'wpematico' ); ?></label>
-        <input type="text" class="regular-text" id="campaign_xml_feed_url" value="<?php echo $campaign_xml_feed_url; ?>" name="campaign_xml_feed_url">
+		<label for="campaign_xml_feed_url"><?php esc_html_e('URL of XML', 'wpematico' ); ?></label>
+        <input type="text" class="regular-text" id="campaign_xml_feed_url" value="<?php echo esc_attr($campaign_xml_feed_url); ?>" name="campaign_xml_feed_url">
         <?php do_action('wpematico_xml_main_inputs'); ?>
 		<div class="xml-campaign-check-data-container">
 			<br>
-            <button class="button" type="button" id="xml-campaign-check-data-btn"><?php _e('Check data', 'wpematico' ); ?></button>
+            <button class="button" type="button" id="xml-campaign-check-data-btn"><?php esc_html_e('Check data', 'wpematico' ); ?></button>
         </div>
 
         <div id="xml-campaign-input-nodes-container" <?php echo ( empty($campaign_xml_node) ? 'style="display:none;"' : ''); ?>>
@@ -306,7 +306,7 @@ class WPeMatico_XML_Importer {
         $xml_url = ( !empty( $_REQUEST['xml_feed'] ) ? $_REQUEST['xml_feed'] : '' ); 
 
         if ( empty( $xml_url ) ) {
-             wp_die('<div id="message" class="error notice notice-error is-dismissible"><p>' . __('Error: Empty feed URL.', 'wpematico') . '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>' ); 
+             wp_die('<div id="message" class="error notice notice-error is-dismissible"><p>' . esc_html__('Error: Empty feed URL.', 'wpematico') . '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>' ); 
         }
         $campaign_data = array(
             'campaign_xml_feed_url'     => $xml_url,
@@ -346,8 +346,8 @@ class WPeMatico_XML_Importer {
 		$simplepie_error = $simplepie->error();
         $xml_is_not_allowed = apply_filters('wpematico_xml_is_not_allowed', empty( $simplepie_error ), $campaign_data );
         if( $xml_is_not_allowed ) {
-             //wp_die(__('The file is a RSS feed that must use <strong>Feed Fetcher</strong> campaign type instead of XML.', 'wpematico')); 
-            echo '<div id="message" class="error notice notice-error is-dismissible"><p>' . __('The file is a RSS feed that must use "Feed Fetcher" campaign type instead of XML.', 'wpematico') . '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>'; 
+             //wp_die(esc_html__('The file is a RSS feed that must use <strong>Feed Fetcher</strong> campaign type instead of XML.', 'wpematico')); 
+            echo '<div id="message" class="error notice notice-error is-dismissible"><p>' . esc_html__('The file is a RSS feed that must use "Feed Fetcher" campaign type instead of XML.', 'wpematico') . '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>'; 
             if ( wp_doing_ajax() ) {
                 die();
             }
@@ -367,7 +367,7 @@ class WPeMatico_XML_Importer {
         }
 
         if ( empty( $data_xml ) ) {
-            echo '<div id="message" class="error notice notice-error is-dismissible"><p>' . __('The XML file has no data or is empty.', 'wpematico') . '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>'; 
+            echo '<div id="message" class="error notice notice-error is-dismissible"><p>' . esc_html__('The XML file has no data or is empty.', 'wpematico') . '</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>'; 
             if ( wp_doing_ajax() ) {
                 die();
             }
@@ -388,37 +388,37 @@ class WPeMatico_XML_Importer {
         <br>
         <table class="table_check_data_xml">
             <tr>
-                <td><strong><?php _e('Properties', 'wpematico' ); ?></strong></td>
-                <td><strong><?php _e('Elements of XML', 'wpematico' ); echo '<span class="dashicons dashicons-warning help_tip" title-heltip="'.$helptip['Elements of XML'].'"  title="'. $helptip['Elements of XML'].'"></span>'; ?></strong></td>
-                <td><strong><?php _e('Parent Element', 'wpematico' ); echo '<span class="dashicons dashicons-warning help_tip" title-heltip="'.$helptip['Parent Element'].'"  title="'. $helptip['Parent Element'].'"></span>'; ?></strong></td>
+                <td><strong><?php esc_html_e('Properties', 'wpematico' ); ?></strong></td>
+                <td><strong><?php esc_html_e('Elements of XML', 'wpematico' ); echo '<span class="dashicons dashicons-warning help_tip" title-heltip="'.esc_attr($helptip['Elements of XML']).'"  title="'. esc_attr($helptip['Elements of XML']).'"></span>'; ?></strong></td>
+                <td><strong><?php esc_html_e('Parent Element', 'wpematico' ); echo '<span class="dashicons dashicons-warning help_tip" title-heltip="'.esc_attr($helptip['Parent Element']).'"  title="'. esc_attr($helptip['Parent Element']).'"></span>'; ?></strong></td>
                 
             </tr>
             <tr>
-                <td><?php _e('Post title', 'wpematico' ); ?></td>
+                <td><?php esc_html_e('Post title', 'wpematico' ); ?></td>
                 <td><?php self::get_select_node_html('post_title', ( !empty( $campaign_xml_node['post_title'] ) ? $campaign_xml_node['post_title'] : '' )  ); ?></td>
                 <td><?php self::get_select_node_html('post_title', ( !empty( $campaign_xml_node_parent['post_title'] ) ? $campaign_xml_node_parent['post_title'] : '' ),  'campaign_xml_node_parent', false  ); ?></td>
             </tr>
             <tr>
-                <td><?php _e('Post content', 'wpematico' ); ?></td>
+                <td><?php esc_html_e('Post content', 'wpematico' ); ?></td>
                 <td><?php self::get_select_node_html('post_content', ( !empty( $campaign_xml_node['post_content'] ) ? $campaign_xml_node['post_content'] : '' )  ); ?></td>
                 <td><?php self::get_select_node_html('post_content', ( !empty( $campaign_xml_node_parent['post_content'] ) ? $campaign_xml_node_parent['post_content'] : '' ),  'campaign_xml_node_parent', false  ); ?></td>
                
             </tr>
 
             <tr>
-                <td><?php _e('Post permalink', 'wpematico' ); ?></td>
+                <td><?php esc_html_e('Post permalink', 'wpematico' ); ?></td>
                 <td><?php self::get_select_node_html('post_permalink', ( !empty( $campaign_xml_node['post_permalink'] ) ? $campaign_xml_node['post_permalink'] : '' )  ); ?></td>
                 <td><?php self::get_select_node_html('post_permalink', ( !empty( $campaign_xml_node_parent['post_permalink'] ) ? $campaign_xml_node_parent['post_permalink'] : '' ),  'campaign_xml_node_parent', false  ); ?></td>
             </tr>
 
             <tr>
-                <td><?php _e('Post date', 'wpematico' ); ?></td>
+                <td><?php esc_html_e('Post date', 'wpematico' ); ?></td>
                 <td><?php self::get_select_node_html('post_date', ( !empty( $campaign_xml_node['post_date'] ) ? $campaign_xml_node['post_date'] : '' )  ); ?></td>
                 <td><?php self::get_select_node_html('post_date', ( !empty( $campaign_xml_node_parent['post_date'] ) ? $campaign_xml_node_parent['post_date'] : '' ),  'campaign_xml_node_parent', false  ); ?></td>
             </tr>
 
             <tr>
-                <td><?php _e('Post image', 'wpematico' ); ?></td>
+                <td><?php esc_html_e('Post image', 'wpematico' ); ?></td>
                 <td><?php self::get_select_node_html('post_image', ( !empty( $campaign_xml_node['post_image'] ) ? $campaign_xml_node['post_image'] : '' )  ); ?></td>
                 <td><?php self::get_select_node_html('post_image', ( !empty( $campaign_xml_node_parent['post_image'] ) ? $campaign_xml_node_parent['post_image'] : '' ),  'campaign_xml_node_parent', false  ); ?></td>
             </tr>
@@ -430,22 +430,22 @@ class WPeMatico_XML_Importer {
 
     public static function get_select_node_html($input, $value, $input_name = 'campaign_xml_node', $use_atributes = true) {
         ?>
-        <select name="<?php echo $input_name; ?>[<?php echo $input; ?>]" id="<?php echo $input_name; ?><?php echo $input; ?>" class="<?php echo $input_name; ?>">
-            <option value=""><?php _e('Select a XML node.', 'wpematico' ); ?></option>
+        <select name="<?php esc_attr_e($input_name); ?>[<?php esc_attr_e($input); ?>]" id="<?php esc_attr_e($input_name); ?><?php esc_attr_e($input); ?>" class="<?php esc_attr_e($input_name); ?>">
+            <option value=""><?php esc_html_e('Select a XML node.', 'wpematico' ); ?></option>
             <?php
             $first_node_select = "";
             foreach ( self::$xmlnodes as $nodekey => $nodecount ) : ?>
                 <?php if ( $first_node_select == '' ) : $first_node_select = $nodecount['key']; endif; ?>
-                <option value="<?php echo $nodecount['key']; ?>" <?php selected($nodecount['key'], $value, true); ?> >
-                    <?php echo $nodecount['name'].' ('.$nodecount['count'].') '.$nodecount['key'].''; ?>
+                <option value="<?php esc_attr_e($nodecount['key']); ?>" <?php selected($nodecount['key'], $value, true); ?> >
+                    <?php esc_html_e($nodecount['name'].' ('.$nodecount['count'].') '.$nodecount['key'].''); ?>
                 </option>
 
             <?php
                 if ( $use_atributes ) :   
                     foreach ( self::$xmlnodes[$nodekey]['attributes'] as $atr_key => $attr ) : 
                 ?>
-                        <option value="<?php echo $nodecount['key']. '/@'. $atr_key; ?>" <?php selected($nodecount['key'] . '/@'. $atr_key, $value, true); ?> >
-                            <?php echo '- ' . $nodecount['name'].' ('.$nodecount['count'].') '.$nodecount['key']. '/@'. $atr_key; ?>
+                        <option value="<?php esc_attr_e($nodecount['key']. '/@'. $atr_key); ?>" <?php selected($nodecount['key'] . '/@'. $atr_key, $value, true); ?> >
+                            <?php esc_html_e('- ' . $nodecount['name'].' ('.$nodecount['count'].') '.$nodecount['key']. '/@'. $atr_key); ?>
                         </option>
             <?php
                     endforeach;
