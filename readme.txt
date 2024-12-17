@@ -12,12 +12,12 @@ WPeMatico is autoblogging in the blink of an eye!  On complete autopilot WPeMati
 
 == Description ==
 
-WPeMatico is a powerful and user-friendly WordPress plugin that automates the importing of RSS feeds to create posts. It is designed for autoblogging, content curation, and news aggregation, allowing you to easily manage and publish content from multiple sources.
+WPeMatico is a powerful and user-friendly WordPress plugin that automates the importing of RSS feeds and XML Files to create posts. It is designed for autoblogging, content curation, and news aggregation, allowing you to easily manage and publish content from multiple sources.
 
 [youtube https://www.youtube.com/watch?v=HjVcUzF-FYs]
 
 ---
-With WPeMatico, you can sit back while the plugin automatically fetches content from your chosen RSS feeds and posts them on your website. Customize settings for categories, post types, images, and more to fully control your autoblogging experience.
+With WPeMatico, you can sit back while the plugin automatically fetches content from your chosen RSS feeds and XML Files and posts them on your website. Customize settings for categories, post types, images, and more to fully control your autoblogging experience.
 
 ## 🤖 Discover WPeMatico's Autoblogging Power ##
 
@@ -54,6 +54,9 @@ With WPeMatico, you can sit back while the plugin automatically fetches content 
 
 Enhance your WPeMatico experience with powerful addons that give you full control over your imported content, images, feeds, and more.
 
+* **NEW [GPT Spinner Add-on](https://etruel.com/downloads/wpematico-gpt-spinner/?utm_source=extension&utm_medium=description_tab&utm_content=wpematico-gpt-spinner&utm_campaign=readme):** The extension most requested by all of you is finally here! Revolutionize your content and images with re-written contents.
+
+---
 * **[Professional Add-on](https://etruel.com/downloads/wpematico-professional/?utm_source=extension&utm_medium=description_tab&utm_content=wpematico-professional&utm_campaign=readme):** Expand WPeMatico with advanced parsing and filtering for media, images, tags, and custom fields. Automate complex feed management tasks effortlessly.
 
 ---
