@@ -871,6 +871,13 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
                     $attachid = $this->insertfileasattach($this->current_item['featured_image'], $post_id);
                 }
                 set_post_thumbnail($post_id, $attachid);
+
+                // Now, save attributes like alt, title, etc., to the WordPress media
+                if(isset($this->current_item['image_attributes'])){
+                    $this->set_image_attributes($this->current_item, $attachid);
+                    array_shift($this->current_item['image_attributes']);  //deletes featured image attributes from array to avoid double upload below
+                }
+                
                 $featured_image_attach_id = $attachid;
                 //add_post_meta($post_id, '_thumbnail_id', $attachid);
             } else {
@@ -889,6 +896,10 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
                     trigger_error(__('Attaching images', 'wpematico') . ": " . sizeof($this->current_item['images']), E_USER_NOTICE);
                     foreach ($this->current_item['images'] as $imagen_src) {
                         $attachid = $this->insertfileasattach($imagen_src, $post_id);
+                        if(!empty($this->current_item['image_attributes'])){
+                            $this->set_image_attributes($this->current_item, $attachid);
+                            array_shift($this->current_item['image_attributes']);
+                        }
                     }
                 }
             }

@@ -473,6 +473,7 @@ public static function template_box( $post ) {
 		$campaign_attach_img					 = $campaign_data['campaign_attach_img'];
 		$campaign_image_srcset					 = $campaign_data['campaign_image_srcset'];
 		$campaign_featuredimg					 = $campaign_data['campaign_featuredimg'];
+		$campaign_attr_images   				 = $campaign_data['campaign_attr_images'];
 		$campaign_fifu							 = ($fifu_activated) ? $campaign_data['campaign_fifu'] : false;
 		$campaign_fifu_video					 = ($fifu_activated) ? $campaign_data['campaign_fifu_video'] : false;
 		$campaign_rmfeaturedimg					 = $campaign_data['campaign_rmfeaturedimg'];
@@ -486,6 +487,7 @@ public static function template_box( $post ) {
 			$campaign_attach_img	 = $cfg['imgattach'];
 			$campaign_image_srcset	 = $cfg['image_srcset'];
 			$campaign_featuredimg	 = $cfg['featuredimg'];
+			$campaign_attr_images    = $cfg['save_attr_images'];
 			$campaign_fifu			 = ($fifu_activated) ? $cfg['fifu'] : false;
 			$campaign_fifu_video	 = ($fifu_activated) ? $cfg['fifu-video'] : false;
 			$campaign_rmfeaturedimg	 = $cfg['rmfeaturedimg'];
@@ -550,7 +552,9 @@ public static function template_box( $post ) {
 				<div id="fifu_campaign_extra_options" style="padding-left: 20px; <?php if (!$campaign_fifu) echo 'display:none;';?>"">
 					<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_fifu_video, (!$fifu_activated) ? ((!$campaign_fifu_video) ? true : false ) : true ); ?>  name="campaign_fifu_video" id="campaign_fifu_video" /><b>&nbsp;<label for="campaign_fifu_video"><?php _e('Use video link as featured if available.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['fifu']; ?>"></span>
 				</div>
+				
 			</div>
+			<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_attr_images, true); ?>  name="campaign_attr_images" id="campaign_attr_images" /><b>&nbsp;<label for="campaign_attr_images"><?php _e('Enable save image attributes.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['save_attr_images']; ?>"></span>
 		</div>
 		
 		<?php 

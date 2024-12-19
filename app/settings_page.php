@@ -427,7 +427,10 @@ if(!class_exists('WPeMatico_Settings')) :
 													<?php _e('WordPress image mime types.', 'wpematico'); ?> <label class="description" id="images_allowed_ext-list" title="<?php _e('Click here to restore WP defaults.', 'wpematico') ?>" onclick="jQuery('#images_allowed_ext').val(jQuery(this).text());return false;"><?php echo $ext_list; ?></label><br/>
 													<?php _e('Recommended.', 'wpematico'); ?> <label class="description" id="images_allowed_ext-list" title="<?php _e('Click here to set recommended values.', 'wpematico') ?>" onclick="jQuery('#images_allowed_ext').val(jQuery(this).text());return false;"><?php echo "jpg,gif,png,tif,bmp,jpeg"; ?></label>
 												</p>
-												<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enablemimetypes'], true); ?> name="enablemimetypes" id="enablemimetypes" /><b>&nbsp;<label for="enablemimetypes"><?php _e('Enable add mime types.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablemimetypes']; ?>"></span>
+												<p>
+													<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enablemimetypes'], true); ?> name="enablemimetypes" id="enablemimetypes" /><b>&nbsp;<label for="enablemimetypes"><?php _e('Enable add mime types.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['enablemimetypes']; ?>"></span>
+												</p>
+												<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['save_attr_images'], true); ?> name="save_attr_images" id="save_attr_images" /><b>&nbsp;<label for="save_attr_images"><?php _e('Enable save image attributes.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['save_attr_images']; ?>"></span>
 											</div>
 											<h3 class="subsection"><?php _e('Featured Image From URL', 'wpematico'); ?></h3>
 											<div id="fifu_options">
@@ -830,8 +833,6 @@ if(!class_exists('WPeMatico_Settings')) :
 				 * wpematico_check_options Filter to sanitize and strip all options fields 
 				 */
 
-				// var_dump($_POST);
-				// die();
 				$cfg				 = apply_filters('wpematico_check_options', $_POST);
 				if(!wpematico_is_pro_active())
 					$cfg['nonstatic']	 = false;
