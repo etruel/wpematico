@@ -537,6 +537,10 @@ public static function template_box( $post ) {
 			<?php
 				do_action('wpematico_image_box_setting_after');
 			?>
+			<h3 class="subsection"><?php _e('Image Attributes', 'wpematico' ); ?></h3>
+			<div id="images_attributes_campaign">
+				<p><input class="checkbox" value="1" type="checkbox" <?php checked($campaign_attr_images, true); ?>  name="campaign_attr_images" id="campaign_attr_images" /><b>&nbsp;<label for="campaign_attr_images"><?php _e('Enable save image attributes.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['save_attr_images']; ?>"></span></p>
+			</div>
 			<h3 class="subsection"><?php _e('Featured Image From URL', 'wpematico' ); ?></h3>
 			<div id="fifu_options_campaign">
 				<p><input class="checkbox" value="1" type="checkbox" <?php checked($campaign_fifu, (!$fifu_activated) ? ((!$campaign_fifu) ? true : false ) : true ); ?> name="campaign_fifu" id="campaign_fifu" <?php echo (!$fifu_activated ? 'disabled' : '') ?>/><b>&nbsp;<label for="campaign_fifu"><?php _e('Use Featured Image from URL.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['fifu']; ?>"></span>
@@ -554,7 +558,6 @@ public static function template_box( $post ) {
 				</div>
 				
 			</div>
-			<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_attr_images, true); ?>  name="campaign_attr_images" id="campaign_attr_images" /><b>&nbsp;<label for="campaign_attr_images"><?php _e('Enable save image attributes.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['save_attr_images']; ?>"></span>
 		</div>
 		
 		<?php 
