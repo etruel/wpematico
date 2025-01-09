@@ -821,12 +821,20 @@ function wpe_others_events($) {
 			jQuery('#div_no_setting_img').fadeOut();
 		}
 	});
-
+	
 	jQuery('#campaign_imgcache').on("click", function () {
 		if (true == jQuery('#campaign_imgcache').is(':checked')) {
 			jQuery('#nolinkimg').fadeIn();
 		} else {
 			jQuery('#nolinkimg').fadeOut();
+		}
+	});
+
+	jQuery('#campaign_attach_img').on("click", function () {
+		if (true == jQuery('#campaign_attach_img').is(':checked')) {
+			jQuery('.campaign_attr_image_p').fadeIn();
+		} else {
+			jQuery('.campaign_attr_image_p').fadeOut();
 		}
 	});
 	jQuery('#campaign_enable_featured_image_selector').on("click", function () {

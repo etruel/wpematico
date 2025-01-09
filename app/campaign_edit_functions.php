@@ -506,6 +506,8 @@ public static function template_box( $post ) {
 			<div id="nolinkimg" style="margin-left: 20px; <?php if (!$campaign_imgcache) echo 'display:none;';?>">
 				
 				<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_attach_img,true); ?> name="campaign_attach_img" id="campaign_attach_img" /><b>&nbsp;<label for="campaign_attach_img"><?php _e('Attach Images to posts.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['imgattach']; ?>"></span><br/>
+
+				<p class="campaign_attr_image_p" style="padding-left:20px; margin-top:-2px; <?php if(!$campaign_attach_img) echo 'display:none;'; ?>"><input class="checkbox" value="1" type="checkbox" <?php checked($campaign_attr_images, true); ?>  name="campaign_attr_images" id="campaign_attr_images" /><b>&nbsp;<label for="campaign_attr_images"><?php _e('Save Image attributes on WP Media.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['save_attr_images']; ?>"></span></p>
 				
 				<input name="campaign_nolinkimg" id="campaign_nolinkimg" class="checkbox" value="1" type="checkbox" <?php checked($campaign_nolinkimg,true); ?> /><label for="campaign_nolinkimg"><?php _e('Remove link to source images', 'wpematico' ); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['gralnolinkimg']; ?>"></span><br/>
 				
