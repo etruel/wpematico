@@ -175,7 +175,7 @@ function handle_feedback_submission() {
     $headers = ['From: ' . get_bloginfo('name') . ' <wordpress@' . parse_url(home_url(), PHP_URL_HOST) . '>'];
 
     // Send the email
-    if (wp_mail($to, $subject, $message, $headers)) {
+    if ($reason == 'skipped' || wp_mail($to, $subject, $message, $headers)) {
         // Deactivate the plugin
         deactivate_plugins('wpematico/wpematico.php'); // Specify your plugin's path here
 

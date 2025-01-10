@@ -830,8 +830,8 @@ function wpe_others_events($) {
 		}
 	});
 
-	jQuery('#campaign_attach_img').on("click", function () {
-		if (true == jQuery('#campaign_attach_img').is(':checked')) {
+	jQuery('#campaign_imgcache').on("click", function () {
+		if (true == jQuery('#campaign_imgcache').is(':checked')) {
 			jQuery('.campaign_attr_image_p').fadeIn();
 		} else {
 			jQuery('.campaign_attr_image_p').fadeOut();

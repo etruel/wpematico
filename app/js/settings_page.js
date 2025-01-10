@@ -35,8 +35,8 @@ jQuery(document).ready(function ($) {
 		}
 	});
 
-	jQuery('#imgattach').on("click", function () {
-		if (true == jQuery('#imgattach').is(':checked')) {
+	jQuery('#imgcache').on("click", function () {
+		if (true == jQuery('#imgcache').is(':checked')) {
 			jQuery('.attr_image_p').fadeIn();
 		} else {
 			jQuery('.attr_image_p').fadeOut();
