@@ -526,15 +526,30 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
                  */
                 $autocats = apply_filters('wpematico_before_insert_autocats', $autocats, $this);
                 trigger_error(__('Assigning Auto Categories.', 'wpematico'), E_USER_NOTICE);
+                
+                if($this->campaign['campaign_category_limit']){
+                    // Retrieve the category limit from the campaign settings
+                    $category_limit = $this->campaign['max_categories'];
+                }
+                
+        
+                // Limit the number of categories to create based on the limit set
+                $counter = 0;
+        
                 foreach ($autocats as $id => $catego) {
+                    // Stop processing categories once the limit is reached
+                    if (isset($category_limit) && $category_limit > 0 && $counter >= $category_limit) {
+                        break; // Exit the loop once the limit is reached
+                    }
+        
                     $catname = $catego->term;
                     if (!empty($catname)) {
                         //$this->current_item['categories'][] = wp_create_category($catname);  //Si ya existe devuelve el ID existente  // wp_insert_category(array('cat_name' => $catname));  //
                         $term = term_exists($catname, 'category');
-                        if ($term !== 0 && $term !== null) {  // ya existe
+                        if ($term !== 0 && $term !== null) {  // already exists
                             trigger_error(__('Category exist: ', 'wpematico') . $catname, E_USER_NOTICE);
-                        } else { //si no existe la creo
-                            if (!isset($this->campaign['campaign_local_category']) || !$this->campaign['campaign_local_category']) { //if this option doesn't exist, continue with the creation
+                        } else { //if it doesn't exist, create it
+                            if (!isset($this->campaign['campaign_local_category']) || !$this->campaign['campaign_local_category']) { // if this option doesn't exist, continue with the creation
                                 trigger_error(__('Adding Category: ', 'wpematico') . $catname, E_USER_NOTICE);
                                 $parent_cat = "0";
                                 if (isset($this->campaign['campaign_parent_autocats']) && $this->campaign['campaign_parent_autocats'] > 0) {
@@ -545,7 +560,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
                                     $arg_description = '';
                                 }
                                 $arg_description = apply_filters('wpematico_addcat_description', $arg_description, $catname);
-
+        
                                 $arg = array('description' => $arg_description, 'parent' => $parent_cat);
                                 $term = wp_insert_term($catname, "category", $arg);
                             }
@@ -554,6 +569,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
                             continue;
                         }
                         $this->current_item['categories'][] = $term['term_id'];
+                        // Increment the counter after successfully creating a category
+                        $counter++;
                     }
                 }
             }

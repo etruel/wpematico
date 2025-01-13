@@ -951,6 +951,10 @@ if (!class_exists('WPeMatico_functions')) {
 
 			$campaigndata['campaign_autocats'] = (!isset($post_data['campaign_autocats']) || empty($post_data['campaign_autocats'])) ? false : ( ($post_data['campaign_autocats'] == 1) ? true : false );
 
+			$campaigndata['campaign_category_limit'] = (!isset($post_data['campaign_category_limit']) || empty($post_data['campaign_category_limit'])) ? false : ( ($post_data['campaign_category_limit'] == 1) ? true : false );
+
+			$campaigndata['max_categories'] = (!isset($post_data['max_categories']) || empty($post_data['max_categories'])) ? 5 : (int) $post_data['max_categories'];
+
 			$campaigndata['campaign_parent_autocats'] = (!isset($post_data['campaign_parent_autocats']) || empty($post_data['campaign_parent_autocats'])) ? -1 : (int) $post_data['campaign_parent_autocats'];
 
 			// Process the new categories if any and add them to the end of the array

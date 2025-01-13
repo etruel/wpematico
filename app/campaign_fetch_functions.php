@@ -525,8 +525,15 @@ class wpematico_campaign_fetch_functions {
 					}
 				}
 				$current_item['images']			 = (array) $img_new_url;
-				if ($featured)
-					$current_item['featured_image']	 = $current_item['images'][0]; //change to new url
+				if ($featured){
+					if (isset($current_item['images'][0])) {
+						$current_item['featured_image'] = $current_item['images'][0];
+					} else {
+						// Handle the case where there's no image
+						// For example, you can assign a default image or leave it empty
+						$current_item['featured_image'] = '';  // or some default value like 'default.jpg'
+					}
+				}
 			}  // // Si hay alguna imagen en el contenido
 		} else {
 			if (isset($current_item['images']) && sizeof($current_item['images'])) {
