@@ -490,7 +490,9 @@ jQuery(document).ready(function ($) {
  
 	 // Trigger the changes on page load to initialize visibility based on saved settings
 	 if ($('#campaign_autocats').is(':checked')) {
-		 $('#campaign_category_limit').show();
+		$('#campaign_category_limit').prop('disabled', false);
+	 }else{
+		$('#campaign_category_limit').prop('disabled', true);
 	 }
  
 	 if ($('#campaign_category_limit').is(':checked')) {

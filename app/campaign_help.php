@@ -359,6 +359,10 @@ $helpcampaign = array(
 				'title' => __('Add auto Categories.', 'wpematico' ),
 				'tip' => __('If categories are found on source item, these categories will be added to the post; If category does not exist, then will be created.', 'wpematico' ),
 		),
+		'category_limit' => array( 
+				'title' => __('Limit of Categories.', 'wpematico' ),
+				'tip' => __('Set a maximum limit for the number of new categories that can be created in each fetch.', 'wpematico' ),
+		),
 		'parent_autocats' => array( 
 				'title' => __('Parent category to auto categories.', 'wpematico' ),
 				'tip' => __('If you select a category in this option, all automatically added categories will be children of the selected category.', 'wpematico' ),

@@ -692,7 +692,7 @@ class wpematico_campaign_fetch_functions {
 			}
 
 			$current_item['images']	 = $images[2];  //List of image URLs
-		
+			
 			if(isset($images['image_attributes']))
 				$current_item['image_attributes'] = $images['image_attributes'];
 
@@ -732,13 +732,12 @@ class wpematico_campaign_fetch_functions {
 		$out = array(); // This will store the extracted values to be returned
 		
 		
-		
 		// Get all <img> tags using a pattern that matches any <img> tag
 		$pattern_img = apply_filters('wpematico_pattern_img', '/<img[^>]+>/i');
 		preg_match_all($pattern_img, $text, $result);
 		
 		$imgstr = implode('', $result[0]);
-
+		
 		if ($options_images['save_attr_images']) {
 			// Get all <figcaption> tags (captions) from the text
 			preg_match_all('/<figure[^>]*>.*?<\/figure>/is', $text, $figure_matches);
@@ -748,6 +747,8 @@ class wpematico_campaign_fetch_functions {
 			$images = $matches[1]; // Full attributes string inside the img tag
 
 			$image_attributes_array = []; // To store image attributes
+			
+			$out[2] = array();
 
 			// Loop through each <img> tag and extract its attributes
 			foreach ($images as $index_img => $img_attributes) {
@@ -787,7 +788,8 @@ class wpematico_campaign_fetch_functions {
 				}
 				
 				$new_content = apply_filters('wpematico_filter_attr_images', $new_content, $attributes);
-				$out[2][] = $attributes['src'];
+				$out[2] = wp_parse_args(array($attributes['src']));
+				
 				// Store attributes in the image_attributes_array
 				$image_attributes_array[] = $attributes; // Append the attributes array for this image tag
 			}
