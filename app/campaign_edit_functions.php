@@ -1295,12 +1295,12 @@ public static function feeds_box( $post ) {
 			?>
 			<input class="checkbox" type="checkbox"<?php checked($campaign_autocats ,true);?> name="campaign_autocats" value="1" id="campaign_autocats"/> 
 			<b><?php echo '<label for="campaign_autocats">' . __('Add auto Categories', 'wpematico' ) . '</label>'; ?></b>
-			<span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['category_limit']; ?>"></span>
+			<span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['autocats']; ?>"></span>
 			<br/>
 
 			<input style="margin-left:15px;" class="checkbox" type="checkbox" name="campaign_category_limit" value="1" id="campaign_category_limit" <?php checked($campaign_category_limit, true); ?>> 
 			<b><label for="campaign_category_limit">Enable max categories to create</label></b>
-			<span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['autocats']; ?>"></span>
+			<span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['category_limit']; ?>"></span>
 				<p style="margin-left:38px; margin-top: 0;" id="max_categories_wrapper">
 					<input name="max_categories" type="number" min="1" size="3" value="<?php echo isset($max_categories) ? esc_attr($max_categories) : 5; ?>" class="small-text" id="max_categories" data-np-intersection-state="visible"> 
 				</p>
