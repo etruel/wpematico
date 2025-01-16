@@ -362,7 +362,7 @@ function wpematico_addons_custom_columns($column_name, $plugin_file, $plugin_dat
 
 add_filter('all_plugins', 'wpematico_showhide_addons');
 
-function wpematico_showhide_addons($plugins) {
+function wpematico_showhide_addons($plugins, $filter = false) {
 	global $current_screen;
 	if (function_exists('wp_plugin_update_rows')) {
 		wp_plugin_update_rows();
@@ -388,6 +388,19 @@ function wpematico_showhide_addons($plugins) {
 			foreach ($plugins as $key => $value) {
 				if (strpos($key, 'wpematico_') !== FALSE) {
 					unset($plugins[$key]);
+				}
+			}
+		}
+
+		if ($filter) {
+			$plugins = apply_filters('etruel_wpematico_addons_array', read_wpem_addons($plugins), 10, 1);
+			foreach ($plugins as $key => $value) {
+				if (strpos($key, 'wpematico_') === FALSE) {
+					unset($plugins[$key]);
+				} else {
+					if (isset($plugins[$key]['Remote'])) {
+						add_filter("plugin_action_links_{$key}", 'wpematico_addons_row_actions', 15, 4);
+					}
 				}
 			}
 		}
@@ -467,7 +480,7 @@ function wpematico_get_addons_maybe_fetch() {
 
 /**
  * Return the array of plugins plus WPeMatico Add-on found on etruel.com website
- * @param type $plugins array of current plugins
+ * @param array $plugins current plugins
  */
 function read_wpem_addons($plugins) {
 
@@ -498,3 +511,50 @@ function read_wpem_addons($plugins) {
 
 	return $plugins;
 }
+
+add_filter('views_plugins', function($views) {
+
+	$show_on_plugin_page = get_option('wpem_show_locally_addons', false);
+
+	if($show_on_plugin_page){
+		$active_addons_count = 0;
+
+		$all_plugins = get_plugins(); // Get all installed plugins
+		$wpematico_addons  = wpematico_showhide_addons($all_plugins, true);
+		
+		foreach ($wpematico_addons as $key => $addon) {
+			if (is_plugin_active($key)) {
+				$active_addons_count++;
+			}
+		}
+
+		$wpematico_link = '<a href="'. admin_url('plugins.php?wpematico_addons=active') .'" class="wpelinks">'.__('WPeMatico Addons Active ', 'wpematico'). '<span class="count">(' . $active_addons_count . ')</span></a>';
+		$views['wpematico-addons-active'] = $wpematico_link; // Add custom link to the list
+	}else{
+		$wpematico_link = '<a href="'. admin_url('plugins.php?plugin_status=active&page=wpemaddons') .'" class="wpelinks">'.__('WPeMatico Addons Active', 'wpematico') . '<span class="dashicons dashicons-external"></span></a>';
+		$views['wpematico-addons-active'] = $wpematico_link; // Add custom link to the list
+	}
+    
+    return $views;
+});
+
+add_action('pre_current_active_plugins', function() {
+    if (isset($_GET['wpematico_addons']) && $_GET['wpematico_addons'] == 'active') {
+        global $wp_list_table;
+		$all_plugins = get_plugins(); // Get all installed plugins
+		$wpematico_addons  = wpematico_showhide_addons($all_plugins, true);
+		$wpematico_active_addons = array();
+		foreach ($wpematico_addons as $key => $addon) {
+			// Check if the plugin is active
+			if (is_plugin_active($key)) {
+				// Step 5: Add the active addon to the active addons array
+				$wpematico_active_addons[] = $key;  // Store the plugin path (e.g., wpematico-addon-1/wpematico-addon-1.php)
+			}
+		}
+		
+        // Filter the plugins list to show only WPeMatico addons
+        $wp_list_table->items = array_filter($wp_list_table->items, function($plugin_data, $plugin_file) use ($wpematico_active_addons) {
+            return in_array($plugin_file, $wpematico_active_addons, true);
+        }, ARRAY_FILTER_USE_BOTH);
+    }
+});
