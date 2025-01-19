@@ -1023,7 +1023,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 								</div>
 							</fieldset>	
 
-							<?php if (!class_exists('WPeMaticoPRO')) : ?>					
+							<?php if (class_exists('WPeMaticoPRO')) : ?>					
 								<?php if (count($hierarchical_taxonomies)) : ?>					
 									<fieldset class="inline-edit-col-center inline-edit-categories">
 										<div class="inline-edit-col">
@@ -1031,7 +1031,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 
 												<span class="title inline-edit-categories-label"><?php echo esc_html($taxonomy->labels->name) ?></span>
 												<input type="hidden" name="<?php echo ( $taxonomy->name == 'category' ) ? 'post_category[]' : 'tax_input[' . esc_attr($taxonomy->name) . '][]'; ?>" value="0" />
-												<ul class="cat-checklist <?php echo esc_attr($taxonomy->name) ?>-checklist">
+												<ul class="cat-checklist <?php echo esc_attr($taxonomy->name) ?>-checklist <?php echo ( $taxonomy->name == 'category' ) ? 'wpematico-category' : 'other-category'; ?>">
 													<?php wp_terms_checklist(null, array('taxonomy' => $taxonomy->name)) ?>
 												</ul>
 
