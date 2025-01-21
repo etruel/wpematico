@@ -1,5 +1,5 @@
 jQuery(document).ready(function ($) {
-
+	
 	theclock();
 
 	$('button[btn-href]').on("click", function (e) {
@@ -53,91 +53,104 @@ jQuery(document).ready(function ($) {
 });
 
 function run_now(c_ID) {
-	jQuery('html').css('cursor', 'wait');
-	jQuery('#post-' + c_ID + ' .state_buttons.dashicons-controls-play').addClass('green');
-	jQuery("div[id=fieldserror]").remove();
-	var msgdev = '<p><span class="dashicons dashicons-admin-generic wpe_spinner"></span> <span style="vertical-align: top;">' + wpematico_object.text_running_campaign + '</span></p>';
-	jQuery(".subsubsub").before('<div id="fieldserror" class="updated fade">' + msgdev + '</div>');
-	var data = {
-		campaign_ID: c_ID,
-		action: "wpematico_run",
-		nonce: wpematico_object.run_now_list_nonce
-	};
-	jQuery.post(ajaxurl, data, function (msgdev) { //si todo ok devuelve LOG sino 0
-		jQuery('#fieldserror').remove();
-		if (msgdev.substring(0, 5) == 'ERROR') {
-			jQuery(".subsubsub").before('<div id="fieldserror" class="error fade">' + msgdev + '</div>');
-		} else {
-			jQuery(".subsubsub").before('<div id="fieldserror" class="updated fade">' + msgdev + '</div>');
-			var floor = Math.floor;
-			var bef_posts = floor(jQuery("tr#post-" + c_ID + " > .count").html());
-			var ret_posts = floor(bef_posts + floor(jQuery("#ret_lastposts").html()));
-			if (bef_posts == ret_posts) {
-				jQuery("tr#post-" + c_ID + " > .count").attr('style', 'font-weight: bold;color:#555;');
-			} else {
-				jQuery("tr#post-" + c_ID + " > .count").attr('style', 'font-weight: bold;color:#F00;');
-			}
-			jQuery("tr#post-" + c_ID + " > .count").html(ret_posts.toString());
-			jQuery("#lastruntime").html(jQuery("#ret_lastruntime").html());
-			jQuery("#lastruntime").attr('style', 'font-weight: bold;');
-		}
-		jQuery('html').css('cursor', 'auto');
-		jQuery('#post-' + c_ID + ' .state_buttons.dashicons-controls-play').removeClass('green');
-	});
+    jQuery('html').css('cursor', 'wait');
+    jQuery('#post-' + c_ID + ' .state_buttons.dashicons-controls-play').addClass('green');
+    jQuery("div[id=fieldserror]").remove();
+    var msgdev = '<p><span class="dashicons dashicons-admin-generic wpe_spinner"></span> <span style="vertical-align: top;">' + wpematico_object.text_running_campaign + '</span></p>';
+
+    // Find the td where the campaign name is located and append the message inside it
+    jQuery('#post-' + c_ID + ' td.title.column-title').append('<div id="fieldserror" class="updated fade">' + msgdev + '</div>');
+
+    var data = {
+        campaign_ID: c_ID,
+        action: "wpematico_run",
+        nonce: wpematico_object.run_now_list_nonce
+    };
+    jQuery.post(ajaxurl, data, function (msgdev) { //si todo ok devuelve LOG sino 0
+        jQuery('#fieldserror').remove();
+        if (msgdev.substring(0, 5) == 'ERROR') {
+            jQuery('#post-' + c_ID + ' td.title.column-title').append('<div id="fieldserror" class="error fade">' + msgdev + '</div>');
+        } else {
+            jQuery('#post-' + c_ID + ' td.title.column-title').append('<div id="fieldserror" class="updated fade">' + msgdev + '</div>');
+            var floor = Math.floor;
+            var bef_posts = floor(jQuery("tr#post-" + c_ID + " > .count").html());
+            var ret_posts = floor(bef_posts + floor(jQuery("#ret_lastposts").html()));
+            if (bef_posts == ret_posts) {
+                jQuery("tr#post-" + c_ID + " > .count").attr('style', 'font-weight: bold;color:#555;');
+            } else {
+                jQuery("tr#post-" + c_ID + " > .count").attr('style', 'font-weight: bold;color:#F00;');
+            }
+            jQuery("tr#post-" + c_ID + " > .count").html(ret_posts.toString());
+            jQuery("#lastruntime").html(jQuery("#ret_lastruntime").html());
+            jQuery("#lastruntime").attr('style', 'font-weight: bold;');
+        }
+        jQuery('html').css('cursor', 'auto');
+        jQuery('#post-' + c_ID + ' .state_buttons.dashicons-controls-play').removeClass('green');
+    });
 }
+
 
 function run_all() {
-	var selectedItems = 0;
-	jQuery("input[name='post[]']:checked").each(function () {
-		selectedItems++;
-	});
-	if (selectedItems == 0) {
-		alert(wpematico_object.text_select_a_campaign_to_run);
-		return false;
-	}
+    var selectedItems = 0;
+    jQuery("input[name='post[]']:checked").each(function () {
+        selectedItems++;
+    });
+    if (selectedItems == 0) {
+        alert(wpematico_object.text_select_a_campaign_to_run);
+        return false;
+    }
 
-	jQuery('html').css('cursor', 'wait');
-	jQuery('#fieldserror').remove();
-	var spinner = '<p><span class="dashicons dashicons-admin-generic wpe_spinner"></span> <span style="vertical-align: top;">' + wpematico_object.text_running_campaign + '</span></p>';
-	jQuery(".subsubsub").before('<div id="fieldserror" class="updated fade ajaxstop">' + spinner + '</div>');
-	var lengthEach = 0;
-	jQuery("input[name='post[]']:checked").each(function () {
-		var c_ID = jQuery(this).val();
-		jQuery('#post-' + c_ID + ' .state_buttons.dashicons-controls-play').addClass('green');
-		var data = {
-			campaign_ID: c_ID,
-			action: "wpematico_run",
-			nonce: wpematico_object.run_now_list_nonce
-		};
-		jQuery.post(ajaxurl, data, function (msgdev) { //si todo ok devuelve LOG sino 0
-			if (msgdev.substring(0, 5) == 'ERROR') {
-				jQuery(".subsubsub").before('<div id="fieldserror" class="error fade">' + msgdev + '</div>');
-			} else {
-				jQuery(".subsubsub").before('<div id="fieldserror" class="updated fade">' + msgdev + '</div>');
-				var floor = Math.floor;
-				var bef_posts = floor(jQuery("tr#post-" + c_ID + " > .count").html());
-				var ret_posts = floor(bef_posts + floor(jQuery('#log_message_' + c_ID).next().next("#ret_lastposts").html()));
-				if (bef_posts == ret_posts) {
-					jQuery("tr#post-" + c_ID + " > .count").attr('style', 'font-weight: bold;color:#555;');
-				} else {
-					jQuery("tr#post-" + c_ID + " > .count").attr('style', 'font-weight: bold;color:#F00;');
-				}
-				jQuery("tr#post-" + c_ID + " > .count").html(ret_posts.toString());
-				jQuery("#lastruntime").html(jQuery("#ret_lastruntime").html());
-				jQuery("#lastruntime").attr('style', 'font-weight: bold;');
-			}
-			jQuery('#post-' + c_ID + ' .state_buttons.dashicons-controls-play').removeClass('green');
-		},
-		).done(function () {
-			lengthEach++;
-			if(jQuery("input[name='post[]']:checked").length == lengthEach){
-				jQuery('.ajaxstop').remove();
-				jQuery('html').css('cursor', 'auto');
+    jQuery('html').css('cursor', 'wait');
+    var lengthEach = 0;
+    
+    // Process each selected campaign
+    jQuery("input[name='post[]']:checked").each(function () {
+        var c_ID = jQuery(this).val();
+        jQuery('#post-' + c_ID + ' .state_buttons.dashicons-controls-play').addClass('green');
 
-			}
-		});
-	});
+        // Create a unique message container for each campaign
+        var messageContainerId = 'fieldserror_' + c_ID;
+        var spinner = '<p><span class="dashicons dashicons-admin-generic wpe_spinner"></span> <span style="vertical-align: top;">' + wpematico_object.text_running_campaign + '</span></p>';
+        jQuery('#post-' + c_ID + ' td.title.column-title').append('<div id="' + messageContainerId + '" class="updated fade ajaxstop">' + spinner + '</div>');
+
+        var data = {
+            campaign_ID: c_ID,
+            action: "wpematico_run",
+            nonce: wpematico_object.run_now_list_nonce
+        };
+
+        jQuery.post(ajaxurl, data, function (msgdev) {
+            var currentMessageContainer = '#fieldserror_' + c_ID;
+            jQuery(currentMessageContainer).remove(); // Remove previous message before showing new one
+
+            if (msgdev.substring(0, 5) == 'ERROR') {
+                jQuery('#post-' + c_ID + ' td.title.column-title').append('<div id="' + messageContainerId + '" class="error fade">' + msgdev + '</div>');
+            } else {
+                jQuery('#post-' + c_ID + ' td.title.column-title').append('<div id="' + messageContainerId + '" class="updated fade">' + msgdev + '</div>');
+                var floor = Math.floor;
+                var bef_posts = floor(jQuery("tr#post-" + c_ID + " > .count").html());
+                var ret_posts = floor(bef_posts + floor(jQuery('#log_message_' + c_ID).next().next("#ret_lastposts").html()));
+                if (bef_posts == ret_posts) {
+                    jQuery("tr#post-" + c_ID + " > .count").attr('style', 'font-weight: bold;color:#555;');
+                } else {
+                    jQuery("tr#post-" + c_ID + " > .count").attr('style', 'font-weight: bold;color:#F00;');
+                }
+                jQuery("tr#post-" + c_ID + " > .count").html(ret_posts.toString());
+                jQuery("#lastruntime").html(jQuery("#ret_lastruntime").html());
+                jQuery("#lastruntime").attr('style', 'font-weight: bold;');
+            }
+
+            jQuery('#post-' + c_ID + ' .state_buttons.dashicons-controls-play').removeClass('green');
+        }).done(function () {
+            lengthEach++;
+            if (jQuery("input[name='post[]']:checked").length == lengthEach) {
+                jQuery('.ajaxstop').remove();
+                jQuery('html').css('cursor', 'auto');
+            }
+        });
+    });
 }
+
 
 function theclock() {
 	nowdate = new Date();
