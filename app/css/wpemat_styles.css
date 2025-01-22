@@ -1828,6 +1828,39 @@ body.wpe_modal_log-is-active{
 .wpe_pro-features p .dashicons{
     color: #d3741c;
 }
+/*Campaign list*/
+.wp-list-table tbody tr th.check-column{
+    padding-left: 6px;
+}
+.wp-list-table tbody .type-wpematico.wpe_campaign_active th.check-column{
+    padding-left: 2px;
+}
+.wp-list-table tr .check-column #cb-select-all-1{
+    margin-left: 12px;
+}
+.wp-list-table .wpe_campaign-running-tr .campaign-running{
+    padding: 0;
+}
+.wp-list-table .wpe_campaign-running-tr .campaign-running .notice{
+    margin: 5px 20px 15px 40px;
+    padding: 10px;
+}
+.wp-list-table .wpe_campaign-running-tr .campaign-running .notice p{
+    margin: 0;
+    padding: 0;
+}
+.wp-list-table .type-wpematico.wpe_campaign_active{
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+.wp-list-table .wpe_campaign-running-tr{
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+.wp-list-table .type-wpematico.wpe_campaign_active th, .wp-list-table .wpe_campaign-running-tr td{
+    border-left: 4px solid #72aee6;
+}
+.wp-list-table .type-wpematico.wpe_campaign_active th, .wp-list-table .type-wpematico.wpe_campaign_active td, .wp-list-table .wpe_campaign-running-tr td{
+    background-color: #f0f6fc;
+}
 /*System status*/
 .wpe_table-responsive {
     display: block;
