@@ -55,11 +55,11 @@ jQuery(document).ready(function ($) {
 function run_now(c_ID) {
     jQuery('html').css('cursor', 'wait');
     jQuery('#post-' + c_ID + ' .state_buttons.dashicons-controls-play').addClass('green');
-    jQuery("div[id=fieldserror]").remove();
+    jQuery('#campaign-running-' + c_ID + '.wpe_campaign-running-tr').remove();
     var msgdev = '<p><span class="dashicons dashicons-admin-generic wpe_spinner"></span> <span style="vertical-align: top;">' + wpematico_object.text_running_campaign + '</span></p>';
 
     // Find the td where the campaign name is located and append the message inside it
-    jQuery('#post-' + c_ID + ' td.title.column-title').append('<div id="fieldserror" class="updated fade">' + msgdev + '</div>');
+    jQuery('#post-' + c_ID ).after('<tr class="wpe_campaign-running-tr" id="campaign-running-' + c_ID + '"><td colspan="7" class="campaign-running"><div id="fieldserror" class="updated fade">' + msgdev + '</div></td></tr>');
 
     var data = {
         campaign_ID: c_ID,
@@ -67,11 +67,12 @@ function run_now(c_ID) {
         nonce: wpematico_object.run_now_list_nonce
     };
     jQuery.post(ajaxurl, data, function (msgdev) { //si todo ok devuelve LOG sino 0
-        jQuery('#fieldserror').remove();
+        jQuery('#campaign-running-' + c_ID + '.wpe_campaign-running-tr').remove();
+        
         if (msgdev.substring(0, 5) == 'ERROR') {
-            jQuery('#post-' + c_ID + ' td.title.column-title').append('<div id="fieldserror" class="error fade">' + msgdev + '</div>');
+            jQuery('#post-' + c_ID ).after('<tr class="wpe_campaign-running-tr" id="campaign-running-' + c_ID + '"><td colspan="7" class="campaign-running"><div id="fieldserror" class="updated fade">' + msgdev + '</div></td></tr>');
         } else {
-            jQuery('#post-' + c_ID + ' td.title.column-title').append('<div id="fieldserror" class="updated fade">' + msgdev + '</div>');
+            jQuery('#post-' + c_ID ).after('<tr class="wpe_campaign-running-tr" id="campaign-running-' + c_ID + '"><td colspan="7" class="campaign-running"><div id="fieldserror" class="updated fade">' + msgdev + '</div></td></tr>');
             var floor = Math.floor;
             var bef_posts = floor(jQuery("tr#post-" + c_ID + " > .count").html());
             var ret_posts = floor(bef_posts + floor(jQuery("#ret_lastposts").html()));
@@ -107,11 +108,12 @@ function run_all() {
     jQuery("input[name='post[]']:checked").each(function () {
         var c_ID = jQuery(this).val();
         jQuery('#post-' + c_ID + ' .state_buttons.dashicons-controls-play').addClass('green');
+        jQuery('#campaign-running-' + c_ID + '.wpe_campaign-running-tr').remove();
 
         // Create a unique message container for each campaign
         var messageContainerId = 'fieldserror_' + c_ID;
         var spinner = '<p><span class="dashicons dashicons-admin-generic wpe_spinner"></span> <span style="vertical-align: top;">' + wpematico_object.text_running_campaign + '</span></p>';
-        jQuery('#post-' + c_ID + ' td.title.column-title').append('<div id="' + messageContainerId + '" class="updated fade ajaxstop">' + spinner + '</div>');
+        jQuery('#post-' + c_ID ).after('<tr class="wpe_campaign-running-tr" id="campaign-running-' + c_ID + '"><td colspan="7" class="campaign-running"><div id="' + messageContainerId + '" class="updated fade ajaxstop">' + spinner + '</div></td></tr>');
 
         var data = {
             campaign_ID: c_ID,
@@ -120,13 +122,11 @@ function run_all() {
         };
 
         jQuery.post(ajaxurl, data, function (msgdev) {
-            var currentMessageContainer = '#fieldserror_' + c_ID;
-            jQuery(currentMessageContainer).remove(); // Remove previous message before showing new one
-
+            jQuery('#campaign-running-' + c_ID + '.wpe_campaign-running-tr').remove();
             if (msgdev.substring(0, 5) == 'ERROR') {
-                jQuery('#post-' + c_ID + ' td.title.column-title').append('<div id="' + messageContainerId + '" class="error fade">' + msgdev + '</div>');
+                jQuery('#post-' + c_ID ).after('<tr class="wpe_campaign-running-tr" id="campaign-running-' + c_ID + '"><td colspan="7" class="campaign-running"><div id="' + messageContainerId + '" class="updated fade">' + msgdev + '</div></td></tr>');
             } else {
-                jQuery('#post-' + c_ID + ' td.title.column-title').append('<div id="' + messageContainerId + '" class="updated fade">' + msgdev + '</div>');
+                jQuery('#post-' + c_ID ).after('<tr class="wpe_campaign-running-tr" id="campaign-running-' + c_ID + '"><td colspan="7" class="campaign-running"><div id="' + messageContainerId + '" class="updated fade">' + msgdev + '</div></td></tr>');
                 var floor = Math.floor;
                 var bef_posts = floor(jQuery("tr#post-" + c_ID + " > .count").html());
                 var ret_posts = floor(bef_posts + floor(jQuery('#log_message_' + c_ID).next().next("#ret_lastposts").html()));
