@@ -1,5 +1,8 @@
 jQuery(document).ready(function ($) {
-	
+   
+	// Clear any existing content in the inline-edit-col before appending new content
+    $('.inline-edit-categories .inline-edit-col').html('');
+        
 	theclock();
 
 	$('button[btn-href]').on("click", function (e) {

@@ -1,5 +1,4 @@
 (function($) {
-
 	// we create a copy of the WP inline edit post function
 	var $wp_inline_edit = inlineEditPost.edit;
 	
@@ -9,14 +8,12 @@
 		// "call" the original WP edit function
 		// we don't want to leave WordPress hanging
 		$wp_inline_edit.apply( this, arguments );
-		
 		// get the post ID
 		var $post_id = 0;
 		if ( typeof( id ) == 'object' )
 			$post_id = parseInt( this.getId( id ) );
 			
 		if ( $post_id > 0 ) {
-		
 			// define the edit row
                     var $edit_row = $( '#edit-' + $post_id );
                     var $wc_inline_data = $('#inline_' + $post_id );
@@ -68,12 +65,13 @@
 
                  	// hierarchical categories
                     var $campaign_categories = $wc_inline_data.find('.campaign_categories').text();
-                        $('ul.category-checklist :checkbox').val($campaign_categories.split(','));
+					$('ul.category-checklist :checkbox').val($campaign_categories.split(','));
                         
                     var $campaign_tags = $wc_inline_data.find('.campaign_tags').text();
                         $edit_row.find( 'textarea[name="campaign_tags"]' ).text( $campaign_tags );
 
-
+						custom_type($campaign_customposttype,$post_id, $campaign_categories);
+						custom_tags($campaign_customposttype,$post_id);
 			// get the release date and set the release date
 //			var $release_date = $( '#release_date-' + $post_id ).text();
 //			$edit_row.find( 'input[name="release_date"]' ).val( $release_date );
@@ -81,12 +79,65 @@
 			// get the film rating and set the film rating
 //			var $film_rating = $( '#film_rating-' + $post_id ).text();
 //			$edit_row.find( 'select[name="film_rating"]' ).val( $film_rating );
-			
+
+			// Listen to changes on radio buttons
+			$('[name=campaign_customposttype]').on('change', function () {
+				var postType = $(this).val();
+				custom_type(postType, $post_id, $campaign_categories);
+				custom_tags(postType, $post_id); // Fetch and display tags for the new post type
+			});
 		}
 		
 	};
+	 
 	
-    
+    function custom_type(postType, post_id = 0){
+        // Make the AJAX request
+        $.ajax({
+            url: ajaxurl, // WordPress-provided AJAX URL
+            type: 'POST',
+            data: {
+                action: 'fetch_taxonomies', // Action for the PHP handler
+                post_type: postType, // Selected post type
+				post_id: post_id,
+            },
+            beforeSend: function () {
+                // Optional: Add a loader or clear the container
+                $('#taxonomies_container').html('<p>Loading taxonomies...</p>');
+            },
+            success: function (response) {
+                // Replace the taxonomies container content with the response
+                $('#taxonomies_container').html(response);
+            },
+            error: function (xhr, status, error) {
+                console.error('Error fetching taxonomies:', error);
+                $('#taxonomies_container').html('<p>Failed to load taxonomies. Please try again.</p>');
+            },
+        });
+    }
+
+	function custom_tags(postType, post_id = 0) {
+		// Make the AJAX request for tags
+		$.ajax({
+			url: ajaxurl, // WordPress-provided AJAX URL
+			type: 'POST',
+			data: {
+				action: 'fetch_tags', // Action for the PHP handler
+				post_type: postType, // Selected post type
+				post_id: post_id
+			},
+			beforeSend: function () {
+				$('#tags_container').html('<p>Loading tags...</p>'); // Optional loading message
+			},
+			success: function (response) {
+				$('#tags_container').html(response); // Insert tags
+			},
+			error: function (xhr, status, error) {
+				console.error('Error fetching tags:', error);
+				$('#tags_container').html('<p>Failed to load tags. Please try again.</p>');
+			},
+		});
+	}
         
 //        $( '#inline-edit' ).on( 'click', function() {
 //		var $post_id = 0;

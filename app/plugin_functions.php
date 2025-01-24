@@ -455,3 +455,130 @@ function wpematico_uninstall() {
 		}
 	}
 }
+
+add_action('wp_ajax_fetch_taxonomies', 'fetch_taxonomies');
+add_action('wp_ajax_nopriv_fetch_taxonomies', 'fetch_taxonomies');
+
+function fetch_taxonomies() {
+    if (!isset($_POST['post_type'], $_POST['post_id'])) {
+        wp_die('No post type or post ID provided.');
+    }
+
+    $post_type = sanitize_text_field($_POST['post_type']);
+    $post_id = intval($_POST['post_id']); // Ensure post ID is an integer
+    $taxonomies = get_object_taxonomies($post_type, 'objects');
+	
+    if (!empty($taxonomies)) {
+        foreach ($taxonomies as $taxonomy) {
+            if ($taxonomy->hierarchical) { // Only show hierarchical taxonomies
+                echo '<span class="title inline-edit-categories-label">' . esc_html($taxonomy->labels->name) . '</span>';
+                echo '<input type="hidden" name="tax_input[' . esc_attr($taxonomy->name) . '][]" value="0" />'; // Default value 0
+                echo '<ul class="cat-checklist ' . esc_attr($taxonomy->name) . '-checklist">';
+                get_campaign_tax($taxonomy->name);
+                echo '</ul>';
+            }
+        }
+    }
+
+    wp_die(); // Properly terminate the AJAX request
+}
+
+add_action('wp_ajax_fetch_tags', 'fetch_tags');
+add_action('wp_ajax_nopriv_fetch_tags', 'fetch_tags');
+
+function fetch_tags() {
+    if (!isset($_POST['post_type'])) {
+        wp_die('No post type provided.');
+    }
+
+    $post_type = sanitize_text_field($_POST['post_type']);
+
+    // Get the taxonomies for the selected post type
+    $taxonomy_names = get_object_taxonomies($post_type);
+    $flat_taxonomies = array();
+    
+    foreach ($taxonomy_names as $taxonomy_name) {
+        $taxonomy = get_taxonomy($taxonomy_name);
+        if (!$taxonomy->show_ui)
+            continue;
+
+        if (!$taxonomy->hierarchical)
+            $flat_taxonomies[] = $taxonomy;
+    }
+
+    // Output taxonomies
+    $html = '';
+    
+    if (count($flat_taxonomies)) {
+		
+        foreach ($flat_taxonomies as $taxonomy) {
+            if (current_user_can($taxonomy->cap->assign_terms)) {
+				$current_tags = get_campaign_tags($taxonomy->name);
+
+                // Create a label for each taxonomy with a textarea for the tags
+                $html .= '<label class="inline-edit-tags">';
+                $html .= '<span class="title">' . esc_html($taxonomy->labels->name) . '</span>';
+                $html .= '<textarea cols="22" rows="1" name="campaign_tags" class="tax_input_' . esc_attr($taxonomy->name) . '">'. $current_tags .'</textarea>';
+                $html .= '</label>';
+            }
+        }
+    }
+
+    echo $html;
+    wp_die(); // Properly terminate the AJAX request
+}
+
+
+/**
+ * Summary of get_campaign_tags
+ * @param mixed $taxonomy_name
+ * @return string
+ */
+function get_campaign_tags($taxonomy_name) {
+    if (!isset($_POST['post_id'])) {
+        wp_send_json_error();
+    }
+	if($taxonomy_name != 'post_tag'){
+		$current_tags = get_the_terms($_POST['post_id'], $taxonomy_name);
+		$all_tags = array();
+
+		if ($current_tags && !is_wp_error($current_tags)) {
+			foreach ($current_tags as $tag) {
+				$all_tags[] = $tag->name;
+			}
+
+			$current_tags = implode(',', $all_tags);
+		}
+	}else{
+		$campaign_data = get_post_meta($_POST['post_id'], 'campaign_data');
+		$campaign_data = (isset($campaign_data[0])) ? $campaign_data[0] : array(0);
+		$tags = apply_filters('wpematico_check_campaigndata', $campaign_data);
+		$current_tags = $tags['campaign_tags'];
+	}
+   	return  $current_tags;
+	
+}
+
+function get_campaign_tax($taxonomy_name) {
+    if (!isset($_POST['post_id'])) {
+        wp_send_json_error();
+    }
+	if($taxonomy_name == 'category'){
+		$campaign_data = get_post_meta($_POST['post_id'], 'campaign_data');
+		$campaign_data = (isset($campaign_data[0])) ? $campaign_data[0] : array(0);
+		$tags = apply_filters('wpematico_check_campaigndata', $campaign_data);
+		$current_tax = $tags['campaign_categories'];
+
+		// Check the terms for the post
+		wp_terms_checklist($_POST['post_id'], $args = array(
+			'taxonomy' => $taxonomy_name,
+			'descendants_and_self' => 0,
+			'selected_cats' => array_map('intval', $current_tax),
+			'popular_cats' => false,
+			'walker' => null,
+			'checked_ontop' => true
+		));
+	}else{
+		wp_terms_checklist($_POST['post_id'], array('taxonomy' => $taxonomy_name));
+	}
+}
