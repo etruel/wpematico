@@ -514,12 +514,19 @@ function fetch_tags() {
         foreach ($flat_taxonomies as $taxonomy) {
             if (current_user_can($taxonomy->cap->assign_terms)) {
 				$current_tags = get_campaign_tags($taxonomy->name);
-
-                // Create a label for each taxonomy with a textarea for the tags
-                $html .= '<label class="inline-edit-tags">';
-                $html .= '<span class="title">' . esc_html($taxonomy->labels->name) . '</span>';
-                $html .= '<textarea cols="22" rows="1" name="campaign_tags" class="tax_input_' . esc_attr($taxonomy->name) . '">'. $current_tags .'</textarea>';
-                $html .= '</label>';
+				if($taxonomy->name != 'post_tag'){
+					// Create a label for each taxonomy with a textarea for the tags
+					$html .= '<label class="inline-edit-tags">';
+					$html .= '<span class="title">' . esc_html($taxonomy->labels->name) . '</span>';
+					$html .= '<textarea cols="22" rows="1" name="tax_input['.$taxonomy->name.']" class="tax_input_' . esc_attr($taxonomy->name) . '">'. $current_tags .'</textarea>';
+					$html .= '</label>';
+				}else{
+					// Create a label for each taxonomy with a textarea for the tags
+					$html .= '<label class="inline-edit-tags">';
+					$html .= '<span class="title">' . esc_html($taxonomy->labels->name) . '</span>';
+					$html .= '<textarea cols="22" rows="1" name="campaign_tags" class="tax_input_' . esc_attr($taxonomy->name) . '">'. $current_tags .'</textarea>';
+					$html .= '</label>';
+				}
             }
         }
     }
