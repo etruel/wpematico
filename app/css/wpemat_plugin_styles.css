@@ -63,6 +63,10 @@ body.wpe_modal_log-is-active{
     overflow-y: auto;
     line-height: 1.5;
 }
+.wpe_modal_log-box .wpe_modal_log-body .wpe_modal_log-content #feedback_form .form_footer{
+    margin-top: 15px;
+    text-align: right;
+}
 @media (min-width: 768px) {
     .wpe_modal_log-box.active .wpe_modal_log-body .wpe_modal_log-content{
         font-size: 16px;

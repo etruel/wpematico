@@ -457,7 +457,6 @@ function wpematico_uninstall() {
 }
 
 add_action('wp_ajax_fetch_taxonomies', 'fetch_taxonomies');
-add_action('wp_ajax_nopriv_fetch_taxonomies', 'fetch_taxonomies');
 
 function fetch_taxonomies() {
     if (!isset($_POST['post_type'], $_POST['post_id'])) {
@@ -484,7 +483,6 @@ function fetch_taxonomies() {
 }
 
 add_action('wp_ajax_fetch_tags', 'fetch_tags');
-add_action('wp_ajax_nopriv_fetch_tags', 'fetch_tags');
 
 function fetch_tags() {
     if (!isset($_POST['post_type'])) {

@@ -1023,18 +1023,48 @@ if (!class_exists('WPeMatico_Campaigns')) :
 								</div>
 							</fieldset>	
 							
-											
+							<?php if(defined('WPEMATICOPRO_VERSION')): ?>		
 							<fieldset class="inline-edit-col-center inline-edit-categories">
 								<div class="inline-edit-col" id="taxonomies_container">
 										<!-- Div to add the taxonomies -->
 								</div>
 							</fieldset>
+							<?php else: ?>	
+								<?php if (count($hierarchical_taxonomies)) : ?>					
+									<fieldset class="inline-edit-col-center inline-edit-categories">
+										<div class="inline-edit-col">
+											<?php foreach ($hierarchical_taxonomies as $taxonomy) : ?>
 
+												<span class="title inline-edit-categories-label"><?php echo esc_html($taxonomy->labels->name) ?></span>
+												<input type="hidden" name="<?php echo ( $taxonomy->name == 'category' ) ? 'post_category[]' : 'tax_input[' . esc_attr($taxonomy->name) . '][]'; ?>" value="0" />
+												<ul class="cat-checklist <?php echo esc_attr($taxonomy->name) ?>-checklist">
+													<?php wp_terms_checklist(null, array('taxonomy' => $taxonomy->name)) ?>
+												</ul>
+
+											<?php endforeach; //$hierarchical_taxonomies as $taxonomy      ?>
+										</div>
+									</fieldset>
+								<?php endif; // count( $hierarchical_taxonomies ) && !$bulk   ?>
+							<?php endif; ?>	
 							<fieldset class="inline-edit-col-right">
+								<?php if(defined('WPEMATICOPRO_VERSION')): ?>	
 									<div class="inline-edit-col" id="tags_container">
 										<!-- Div to add the tags -->
 									</div>
-
+								<?php else: ?>
+										<?php if (count($flat_taxonomies)) : ?>
+											<div class="inline-edit-col">
+												<?php foreach ($flat_taxonomies as $taxonomy) : ?>
+													<?php if (current_user_can($taxonomy->cap->assign_terms)) : ?>
+														<label class="inline-edit-tags">
+															<span class="title"><?php echo esc_html($taxonomy->labels->name) ?></span>
+															<textarea cols="22" rows="1" name="campaign_tags" class="tax_input_<?php echo esc_attr($taxonomy->name) ?>"></textarea>
+														</label>
+													<?php endif; ?>
+												<?php endforeach; //$flat_taxonomies as $taxonomy    ?>
+											</div>
+										<?php endif; // count( $flat_taxonomies ) && !$bulk      ?>
+								<?php endif; ?>	
 								<div class="inline-edit-radiosbox">
 									<label>
 										<span class="title"><?php _e('Post type', 'wpematico'); ?></span>
