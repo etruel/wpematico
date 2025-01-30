@@ -44,6 +44,7 @@ function admin_footer(){
 	?>
 	<div id="wpe_feedback" class="wpe_modal_log-box fade" style="display:none;">
 		<div class="wpe_modal_log-body">
+			<a id="skip_feedback" style="color:lightgray" href="#"><?php _e('Skip & deactivate', 'wpematico') ?></a>
 			<a href="JavaScript:void(0);" class="wpe_modal_log-close" onclick="jQuery('#wpe_feedback').fadeToggle().removeClass('active'); jQuery('body').removeClass('wpe_modal_log-is-active');">
 				<span class="dashicons dashicons-no-alt"></span>
 			</a>
@@ -83,8 +84,6 @@ function admin_footer(){
 					</label>
 					<div class="form_footer">
 						<button id="send_feedback" type="submit" class="button"><?php _e('Send & deactivate', 'wpematico') ?></button>
-						<button id="skip_feedback" type="button" class="button"><?php _e('Skip & deactivate', 'wpematico') ?></button>
-						<button id="cancel_feedback" type="button" class="button" onclick="jQuery('#wpe_feedback').fadeToggle().removeClass('active'); jQuery('body').removeClass('wpe_modal_log-is-active');"><?php _e('Cancel', 'wpematico') ?></button>
 					</div>
 				</form>
 			</div>

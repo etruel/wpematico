@@ -531,7 +531,7 @@ add_filter('views_plugins', function($views) {
 		$wpematico_link = '<a href="'. admin_url('plugins.php?wpematico_addons=active') .'" class="wpelinks">'.__('WPeMatico Addons Active ', 'wpematico'). '<span class="count">(' . $active_addons_count . ')</span></a>';
 		$views['wpematico-addons-active'] = $wpematico_link; // Add custom link to the list
 	}else{
-		$wpematico_link = '<a href="'. admin_url('plugins.php?plugin_status=active&page=wpemaddons') .'" class="wpelinks" target="_blank">'.__('WPeMatico Addons Active ', 'wpematico') . '<span class="dashicons dashicons-external"></span></a>';
+		$wpematico_link = '<a href="'. admin_url('plugins.php?plugin_status=active&page=wpemaddons') .'" class="wpelinks" target="_top">'.__('WPeMatico Addons Active ', 'wpematico') . '<span class="dashicons dashicons-external"></span></a>';
 		$views['wpematico-addons-active'] = $wpematico_link; // Add custom link to the list
 	}
     
