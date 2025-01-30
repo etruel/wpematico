@@ -93,30 +93,7 @@
 	
     function custom_type(postType, post_id = 0){
 		if ($('#taxonomies_container').length) {
-			// Clear any existing content in the inline-edit-col before appending new content
-			$('.inline-edit-categories .inline-edit-col').html('');
-			// Make the AJAX request
-			$.ajax({
-				url: ajaxurl, // WordPress-provided AJAX URL
-				type: 'POST',
-				data: {
-					action: 'fetch_taxonomies', // Action for the PHP handler
-					post_type: postType, // Selected post type
-					post_id: post_id,
-				},
-				beforeSend: function () {
-					// Optional: Add a loader or clear the container
-					$('#taxonomies_container').html('<p>Loading taxonomies...</p>');
-				},
-				success: function (response) {
-					// Replace the taxonomies container content with the response
-					$('#taxonomies_container').html(response);
-				},
-				error: function (xhr, status, error) {
-					console.error('Error fetching taxonomies:', error);
-					$('#taxonomies_container').html('<p>Failed to load taxonomies. Please try again.</p>');
-				},
-			});
+			js_apply_filters('wpematico_load_custom_type', postType, post_id);
 		}else{
 			if(postType != 'post'){
 				$('.inline-edit-categories .inline-edit-col').hide();
@@ -128,27 +105,7 @@
 
 	function custom_tags(postType, post_id = 0) {
 		if ($('#tags_container').length) {
-
-			// Make the AJAX request for tags
-			$.ajax({
-				url: ajaxurl, // WordPress-provided AJAX URL
-				type: 'POST',
-				data: {
-					action: 'fetch_tags', // Action for the PHP handler
-					post_type: postType, // Selected post type
-					post_id: post_id
-				},
-				beforeSend: function () {
-					$('#tags_container').html('<p>Loading tags...</p>'); // Optional loading message
-				},
-				success: function (response) {
-					$('#tags_container').html(response); // Insert tags
-				},
-				error: function (xhr, status, error) {
-					console.error('Error fetching tags:', error);
-					$('#tags_container').html('<p>Failed to load tags. Please try again.</p>');
-				},
-			});
+			js_apply_filters('wpematico_load_tags', postType, post_id);
 		}else{
 			if(postType != 'post'){
 				$('.inline-edit-col .inline-edit-tags').hide();

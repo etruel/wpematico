@@ -247,6 +247,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 
 			wp_enqueue_script('wpematico-Date.phpformats', WPeMatico::$uri . 'app/js/Date.phpformats.js', array('jquery'), '', true);
 			wp_enqueue_script('wpematico-bulk-quick-edit', WPeMatico::$uri . 'app/js/bulk_quick_edit.js', array('jquery', 'inline-edit-post'), '', true);
+			wp_enqueue_script('wpematico-wpe-hooks', WPeMatico::$uri . 'app/js/wpe_hooks.js', array(), '', true);
 			wp_enqueue_script('wpematico-campaign-list', WPeMatico::$uri . 'app/js/campaign_list.js', array('jquery'), WPEMATICO_VERSION, true);
 
 			$wpematico_object = array(
