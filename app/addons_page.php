@@ -528,10 +528,10 @@ add_filter('views_plugins', function($views) {
 			}
 		}
 
-		$wpematico_link = '<a href="'. admin_url('plugins.php?wpematico_addons=active') .'" class="wpelinks">'.__('WPeMatico Addons Active ', 'wpematico'). '<span class="count">(' . $active_addons_count . ')</span></a>';
+		$wpematico_link = '<a href="'. admin_url('plugins.php?wpematico_addons=addons') .'" class="wpelinks">'.__('WPeMatico Addons ', 'wpematico'). '<span class="count">(' . $active_addons_count . ')</span></a>';
 		$views['wpematico-addons-active'] = $wpematico_link; // Add custom link to the list
 	}else{
-		$wpematico_link = '<a href="'. admin_url('plugins.php?plugin_status=active&page=wpemaddons') .'" class="wpelinks" target="_top">'.__('WPeMatico Addons Active ', 'wpematico') . '<span class="dashicons dashicons-external"></span></a>';
+		$wpematico_link = '<a href="'. admin_url('plugins.php?plugin_status=active&page=wpemaddons') .'" class="wpelinks" target="_top">'.__('WPeMatico Addons', 'wpematico') . '</a>';
 		$views['wpematico-addons-active'] = $wpematico_link; // Add custom link to the list
 	}
     
@@ -556,5 +556,19 @@ add_action('pre_current_active_plugins', function() {
         $wp_list_table->items = array_filter($wp_list_table->items, function($plugin_data, $plugin_file) use ($wpematico_active_addons) {
             return in_array($plugin_file, $wpematico_active_addons, true);
         }, ARRAY_FILTER_USE_BOTH);
-    }
+    }elseif(isset($_GET['wpematico_addons']) && $_GET['wpematico_addons'] == 'addons'){
+		global $wp_list_table;
+		$all_plugins = get_plugins(); // Get all installed plugins
+		$wpematico_addons  = wpematico_showhide_addons($all_plugins, true);
+		$wpematico_active_addons = array();
+		foreach ($wpematico_addons as $key => $addon) {
+			// Check if the plugin is active
+			$wpematico_active_addons[] = $key;  // Store the plugin path (e.g., wpematico-addon-1/wpematico-addon-1.php)
+		}
+		
+        // Filter the plugins list to show only WPeMatico addons
+        $wp_list_table->items = array_filter($wp_list_table->items, function($plugin_data, $plugin_file) use ($wpematico_active_addons) {
+            return in_array($plugin_file, $wpematico_active_addons, true);
+        }, ARRAY_FILTER_USE_BOTH);
+	}
 });
