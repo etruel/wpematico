@@ -1898,3 +1898,73 @@ body.wpe_modal_log-is-active{
         margin-right: 0;
     }
 }
+#wpematico-galerias-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.image-folder {
+    margin-top: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.gallery-row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Espacio entre las columnas de las galerías */
+}
+
+/* Estilo para cada columna de la galería */
+.gallery-column {
+    width: 30%;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #a5eded;
+    background: linear-gradient(to bottom, #bc9595, #f2ba70);
+
+    border-radius: 5px;
+}
+.gallery-column input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.remove-image {
+    background: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+.remove-gallery {
+    margin-top: 10px;
+    background: red;
+    color: white;
+    border: none;  /* Elimina el borde */
+    border-radius: 25px;  /* Redondea los bordes del botón */
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+  .image-folder img{
+    width: 0px;
+    flex-grow: 1;
+    object-fit: cover;
+    opacity: .8;
+    transition: .5s ease;
+    height: 120px;
+  }
+  .image-folder img:hover{
+    cursor: crosshair;
+    width: 200px;
+    height: 120px;
+    opacity: 1;
+    filter: contrast(150%);
+  }
+ 
