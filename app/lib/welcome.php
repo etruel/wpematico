@@ -854,15 +854,22 @@ class WPEMATICO_Welcome {
 				<div class="column wpe-flex is-edge-to-edge has-accent-background-color br-16">
 					<div class="about__newsletter is-vertically-aligned-center">
 						<p></p>
-						<h3><?php _e('Stay up to date!', 'wpematico'); ?></h3>
-						<h3 class="is-smaller-heading wpsubscription_info"><?php _e('Subscribe to our Newsletter and be the first to receive our news.', 'wpematico'); ?> 
-							<?php _e('We send about 4 or 5 emails per year. Really.', 'wpematico'); ?></h3>
+						<h3><?php _e('Stay Ahead with Exclusive Updates!', 'wpematico'); ?></h3>
+						<h3 class="is-smaller-heading wpsubscription_info">
+							<?php _e('Join our newsletter and be the first to hear about exciting updates, new features, and special offers.', 'wpematico'); ?> 
+						</h3>
+						<h3 class="is-smaller-heading wpsubscription_info">
+							<?php _e('No spam—just valuable insights straight to your inbox, about 4-5 times a year. Stay in the loop and never miss out!', 'wpematico'); ?> 
+						</h3>
+						<h3 class="is-smaller-heading wpsubscription_info">
+							<?php _e('Subscribe now!', 'wpematico'); ?> 
+						</h3>
 						<form action="<?php echo admin_url('admin-post.php'); ?>" id="wpsubscription_form" method="post" class="wpcf7-form">
 							<input type="hidden" name="action" value="save_subscription_wpematico"/>
 							<?php wp_nonce_field('save_subscription_wpematico'); ?>
 							<div class="two-form-group">
 								<div class="form-group">
-									<label><?php _e("Name", "wpematico"); ?></label>
+									<label><?php echo esc_html__("Name", "wpematico").' '. esc_html__("(optional)", "wpematico"); ?></label>
 									<input type="text" id="" name="wpematico_subscription[fname]" value="<?php echo $current_user->user_firstname; ?>" size="40" class="form-control" placeholder="<?php _e("First Name", "wpematico"); ?>">
 								</div>
 								<div class="form-group">
@@ -871,7 +878,7 @@ class WPEMATICO_Welcome {
 							</div>
 
 							<div class="form-group">
-								<label><?php _e("Email", "wpematico"); ?> <span>(*)</span></label>
+								<label><?php esc_html_e("Email", "wpematico"); ?> <span>(*)</span></label>
 								<input type="text" id="" name="wpematico_subscription[email]" value="<?php echo $current_user->user_email; ?>" size="40" class="form-control" placeholder="<?php _e("Email", "wpematico"); ?>">
 							</div>
 
@@ -1046,7 +1053,7 @@ class WPEMATICO_Welcome {
 			$readme = '<p>' . __('No valid changelog was found.', 'wpematico') . '</p>';
 		}else {
 			$readme	 = WPeMatico_functions::wpematico_get_contents($file);
-			$readme	 = explode('Privacy terms =', $readme);
+			$readme	 = explode('Privacy terms ##', $readme);
 			$readme	 = end($readme);
 			$readme	 = explode('== Installation ==', $readme);
 			$readme	 = $readme[0];
