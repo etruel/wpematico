@@ -526,15 +526,30 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
                  */
                 $autocats = apply_filters('wpematico_before_insert_autocats', $autocats, $this);
                 trigger_error(__('Assigning Auto Categories.', 'wpematico'), E_USER_NOTICE);
+                
+                if($this->campaign['campaign_category_limit']){
+                    // Retrieve the category limit from the campaign settings
+                    $category_limit = $this->campaign['max_categories'];
+                }
+                
+        
+                // Limit the number of categories to create based on the limit set
+                $counter = 0;
+        
                 foreach ($autocats as $id => $catego) {
+                    // Stop processing categories once the limit is reached
+                    if (isset($category_limit) && $category_limit > 0 && $counter >= $category_limit) {
+                        break; // Exit the loop once the limit is reached
+                    }
+        
                     $catname = $catego->term;
                     if (!empty($catname)) {
                         //$this->current_item['categories'][] = wp_create_category($catname);  //Si ya existe devuelve el ID existente  // wp_insert_category(array('cat_name' => $catname));  //
                         $term = term_exists($catname, 'category');
-                        if ($term !== 0 && $term !== null) {  // ya existe
+                        if ($term !== 0 && $term !== null) {  // already exists
                             trigger_error(__('Category exist: ', 'wpematico') . $catname, E_USER_NOTICE);
-                        } else { //si no existe la creo
-                            if (!isset($this->campaign['campaign_local_category']) || !$this->campaign['campaign_local_category']) { //if this option doesn't exist, continue with the creation
+                        } else { //if it doesn't exist, create it
+                            if (!isset($this->campaign['campaign_local_category']) || !$this->campaign['campaign_local_category']) { // if this option doesn't exist, continue with the creation
                                 trigger_error(__('Adding Category: ', 'wpematico') . $catname, E_USER_NOTICE);
                                 $parent_cat = "0";
                                 if (isset($this->campaign['campaign_parent_autocats']) && $this->campaign['campaign_parent_autocats'] > 0) {
@@ -545,7 +560,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
                                     $arg_description = '';
                                 }
                                 $arg_description = apply_filters('wpematico_addcat_description', $arg_description, $catname);
-
+        
                                 $arg = array('description' => $arg_description, 'parent' => $parent_cat);
                                 $term = wp_insert_term($catname, "category", $arg);
                             }
@@ -554,6 +569,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
                             continue;
                         }
                         $this->current_item['categories'][] = $term['term_id'];
+                        // Increment the counter after successfully creating a category
+                        $counter++;
                     }
                 }
             }
@@ -871,6 +888,13 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
                     $attachid = $this->insertfileasattach($this->current_item['featured_image'], $post_id);
                 }
                 set_post_thumbnail($post_id, $attachid);
+
+                // Now, save attributes like alt, title, etc., to the WordPress media
+                if(isset($this->current_item['image_attributes'])){
+                    $this->set_image_attributes($this->current_item, $attachid);
+                    array_shift($this->current_item['image_attributes']);  //deletes featured image attributes from array to avoid double upload below
+                }
+                
                 $featured_image_attach_id = $attachid;
                 //add_post_meta($post_id, '_thumbnail_id', $attachid);
             } else {
@@ -889,6 +913,10 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
                     trigger_error(__('Attaching images', 'wpematico') . ": " . sizeof($this->current_item['images']), E_USER_NOTICE);
                     foreach ($this->current_item['images'] as $imagen_src) {
                         $attachid = $this->insertfileasattach($imagen_src, $post_id);
+                        if(!empty($this->current_item['image_attributes'])){
+                            $this->set_image_attributes($this->current_item, $attachid);
+                            array_shift($this->current_item['image_attributes']);
+                        }
                     }
                 }
             }
@@ -1001,7 +1029,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         $Suss = sprintf(__('Campaign fetched in %1s sec.', 'wpematico'), $this->campaign['lastruntime']) . '  ' . 
 				/* translators: %s Decimal. Number of inserted posts */
 				sprintf(__('Processed Posts: %s', 'wpematico'), $this->fetched_posts);
-        $message = '<p>' . $Suss . '  <a href="JavaScript:void(0);" style="font-weight: bold; text-decoration:none; display:inline;" onclick="jQuery(\'#log_message_' . $this->campaign_id . '\').fadeToggle().addClass(\'active\'); jQuery(\'body\').addClass(\'wpe_modal_log-is-active\');">' . __('Show detailed Log', 'wpematico') . '.</a></p>';
+        $message = '<p>' . $Suss . '  <a href="JavaScript:void(0);" style="font-weight: bold; text-decoration:none; display:inline;" onclick="jQuery(\'#log_message_' . $this->campaign_id . '\').fadeToggle().addClass(\'active\'); jQuery(\'body\').addClass(\'wpe_modal_log-is-active\');"><span class="dashicons dashicons-info-outline" title="'. __('Show detailed Log', 'wpematico') . '"></span>.</a></p>';
         $campaign_log_message = $message . '<div id="log_message_' . $this->campaign_id . '" class="wpe_modal_log-box fade" style="display:none;"><div class="wpe_modal_log-body"><a href="JavaScript:void(0);" class="wpe_modal_log-close" onclick="jQuery(\'#log_message_' . $this->campaign_id . '\').fadeToggle().removeClass(\'active\'); jQuery(\'body\').removeClass(\'wpe_modal_log-is-active\');"><span class="dashicons dashicons-no-alt"></span></a><div class="wpe_modal_log-header"><h3>'. $this->campaign['campaign_title'] .' - #'. $this->campaign_id .'</h3></div><div class="wpe_modal_log-content">' . $campaign_log_message . '</div></div></div><span id="ret_lastruntime" style="display:none;">' . $this->campaign["lastruntime"] . '</span><span id="ret_lastposts" style="display:none;">' . $this->fetched_posts . '</span>';
     }
 }

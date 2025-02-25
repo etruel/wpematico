@@ -180,6 +180,11 @@ $helpcampaign = array(
 			'tip' => __('Use this instead of Wordpress functions to improve performance. This function upload the mime types does not avaliable in the wordpress media.', 'wpematico' ).
 				'<br />'. __('This function may not work in all servers.', 'wpematico' ),
 		),
+		'save_attr_images'	=> array( 
+			'title' => __('Enable save the image attributes (caption, alt, title) in the media library.', 'wpematico' ),
+			'tip' => __('Use this instead of Wordpress functions to improve performance. This function upload the atributes in the media library.', 'wpematico' ).
+				'<br />'. __('This function may not work in all servers.', 'wpematico' ),
+		),
 		'customupload'	=> array( 
 				'title' => __('Custom Uploads for Images.', 'wpematico' ),
 				'tip' => __('Use this instead of Wordpress functions to improve performance. This function uploads the image "as is" from the original to use it inside the post.', 'wpematico' ).
@@ -353,6 +358,10 @@ $helpcampaign = array(
 		'autocats' => array( 
 				'title' => __('Add auto Categories.', 'wpematico' ),
 				'tip' => __('If categories are found on source item, these categories will be added to the post; If category does not exist, then will be created.', 'wpematico' ),
+		),
+		'category_limit' => array( 
+				'title' => __('Limit of Categories.', 'wpematico' ),
+				'tip' => __('Set a maximum limit for the number of new categories that can be created in each fetch.', 'wpematico' ),
 		),
 		'parent_autocats' => array( 
 				'title' => __('Parent category to auto categories.', 'wpematico' ),

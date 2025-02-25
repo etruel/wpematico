@@ -247,6 +247,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 
 			wp_enqueue_script('wpematico-Date.phpformats', WPeMatico::$uri . 'app/js/Date.phpformats.js', array('jquery'), '', true);
 			wp_enqueue_script('wpematico-bulk-quick-edit', WPeMatico::$uri . 'app/js/bulk_quick_edit.js', array('jquery', 'inline-edit-post'), '', true);
+			wp_enqueue_script('wpematico-wpe-hooks', WPeMatico::$uri . 'app/js/wpe_hooks.js', array(), '', true);
 			wp_enqueue_script('wpematico-campaign-list', WPeMatico::$uri . 'app/js/campaign_list.js', array('jquery'), WPEMATICO_VERSION, true);
 
 			$wpematico_object = array(
@@ -1022,8 +1023,14 @@ if (!class_exists('WPeMatico_Campaigns')) :
 									</div>
 								</div>
 							</fieldset>	
-
-							<?php if (!class_exists('WPeMaticoPRO')) : ?>					
+							
+							<?php if(defined('WPEMATICOPRO_VERSION')): ?>		
+							<fieldset class="inline-edit-col-center inline-edit-categories">
+								<div class="inline-edit-col" id="taxonomies_container">
+										<!-- Div to add the taxonomies -->
+								</div>
+							</fieldset>
+							<?php else: ?>	
 								<?php if (count($hierarchical_taxonomies)) : ?>					
 									<fieldset class="inline-edit-col-center inline-edit-categories">
 										<div class="inline-edit-col">
@@ -1039,22 +1046,26 @@ if (!class_exists('WPeMatico_Campaigns')) :
 										</div>
 									</fieldset>
 								<?php endif; // count( $hierarchical_taxonomies ) && !$bulk   ?>
-							<?php endif; // !class_exists('WPeMaticoPRO')      ?>
-
+							<?php endif; ?>	
 							<fieldset class="inline-edit-col-right">
-								<?php if (count($flat_taxonomies)) : ?>
-									<div class="inline-edit-col">
-										<?php foreach ($flat_taxonomies as $taxonomy) : ?>
-											<?php if (current_user_can($taxonomy->cap->assign_terms)) : ?>
-												<label class="inline-edit-tags">
-													<span class="title"><?php echo esc_html($taxonomy->labels->name) ?></span>
-													<textarea cols="22" rows="1" name="campaign_tags" class="tax_input_<?php echo esc_attr($taxonomy->name) ?>"></textarea>
-												</label>
-											<?php endif; ?>
-										<?php endforeach; //$flat_taxonomies as $taxonomy    ?>
+								<?php if(defined('WPEMATICOPRO_VERSION')): ?>	
+									<div class="inline-edit-col" id="tags_container">
+										<!-- Div to add the tags -->
 									</div>
-								<?php endif; // count( $flat_taxonomies ) && !$bulk      ?>
-
+								<?php else: ?>
+										<?php if (count($flat_taxonomies)) : ?>
+											<div class="inline-edit-col">
+												<?php foreach ($flat_taxonomies as $taxonomy) : ?>
+													<?php if (current_user_can($taxonomy->cap->assign_terms)) : ?>
+														<label class="inline-edit-tags">
+															<span class="title"><?php echo esc_html($taxonomy->labels->name) ?></span>
+															<textarea cols="22" rows="1" name="campaign_tags" class="tax_input_<?php echo esc_attr($taxonomy->name) ?>"></textarea>
+														</label>
+													<?php endif; ?>
+												<?php endforeach; //$flat_taxonomies as $taxonomy    ?>
+											</div>
+										<?php endif; // count( $flat_taxonomies ) && !$bulk      ?>
+								<?php endif; ?>	
 								<div class="inline-edit-radiosbox">
 									<label>
 										<span class="title"><?php _e('Post type', 'wpematico'); ?></span>

@@ -1828,6 +1828,39 @@ body.wpe_modal_log-is-active{
 .wpe_pro-features p .dashicons{
     color: #d3741c;
 }
+/*Campaign list*/
+.wp-list-table tbody tr th.check-column{
+    padding-left: 6px;
+}
+.wp-list-table tbody .type-wpematico.wpe_campaign_active th.check-column{
+    padding-left: 2px;
+}
+.wp-list-table tr .check-column #cb-select-all-1{
+    margin-left: 12px;
+}
+.wp-list-table .wpe_campaign-running-tr .campaign-running{
+    padding: 0;
+}
+.wp-list-table .wpe_campaign-running-tr .campaign-running .notice{
+    margin: 5px 20px 15px 40px;
+    padding: 10px;
+}
+.wp-list-table .wpe_campaign-running-tr .campaign-running .notice p{
+    margin: 0;
+    padding: 0;
+}
+.wp-list-table .type-wpematico.wpe_campaign_active{
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+.wp-list-table .wpe_campaign-running-tr{
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+.wp-list-table .type-wpematico.wpe_campaign_active th, .wp-list-table .wpe_campaign-running-tr td{
+    border-left: 4px solid #72aee6;
+}
+.wp-list-table .type-wpematico.wpe_campaign_active th, .wp-list-table .type-wpematico.wpe_campaign_active td, .wp-list-table .wpe_campaign-running-tr td{
+    background-color: #f0f6fc;
+}
 /*System status*/
 .wpe_table-responsive {
     display: block;
@@ -1865,3 +1898,73 @@ body.wpe_modal_log-is-active{
         margin-right: 0;
     }
 }
+#wpematico-galerias-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.image-folder {
+    margin-top: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.gallery-row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Espacio entre las columnas de las galerías */
+}
+
+/* Estilo para cada columna de la galería */
+.gallery-column {
+    width: 30%;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #a5eded;
+    background: linear-gradient(to bottom, #bc9595, #f2ba70);
+
+    border-radius: 5px;
+}
+.gallery-column input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.remove-image {
+    background: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+.remove-gallery {
+    margin-top: 10px;
+    background: red;
+    color: white;
+    border: none;  /* Elimina el borde */
+    border-radius: 25px;  /* Redondea los bordes del botón */
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+  .image-folder img{
+    width: 0px;
+    flex-grow: 1;
+    object-fit: cover;
+    opacity: .8;
+    transition: .5s ease;
+    height: 120px;
+  }
+  .image-folder img:hover{
+    cursor: crosshair;
+    width: 200px;
+    height: 120px;
+    opacity: 1;
+    filter: contrast(150%);
+  }
+ 

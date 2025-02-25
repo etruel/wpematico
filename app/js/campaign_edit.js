@@ -463,6 +463,41 @@ jQuery(document).ready(function ($) {
 	});
 	
 	word2cats_events();
+
+	 // Initially hide max category input
+	 $('#max_categories_wrapper').hide();
+
+	 // Toggle visibility based on campaign_autocats checkbox
+	 $('#campaign_autocats').change(function() {
+		 if ($(this).is(':checked')) {
+			 $('#campaign_category_limit').prop('disabled', false); // Enable the category limit checkbox when autocats is checked
+			 $('#campaign_category_limit').show();
+		 } else {
+			 $('#campaign_category_limit').prop('disabled', true); // Disable it when autocats is not checked
+			 $('#campaign_category_limit').prop('checked', false); // Uncheck it
+			 $('#max_categories_wrapper').hide(); // Hide max categories input
+		 }
+	 });
+ 
+	 // Toggle visibility of max_categories based on campaign_category_limit checkbox
+	 $('#campaign_category_limit').change(function() {
+		 if ($(this).is(':checked')) {
+			 $('#max_categories_wrapper').show(); // Show max categories input
+		 } else {
+			 $('#max_categories_wrapper').hide(); // Hide max categories input
+		 }
+	 });
+ 
+	 // Trigger the changes on page load to initialize visibility based on saved settings
+	 if ($('#campaign_autocats').is(':checked')) {
+		$('#campaign_category_limit').prop('disabled', false);
+	 }else{
+		$('#campaign_category_limit').prop('disabled', true);
+	 }
+ 
+	 if ($('#campaign_category_limit').is(':checked')) {
+		 $('#max_categories_wrapper').show();
+	 }
 });
 
 function wpematico_events_xml_campaign($) {
@@ -821,12 +856,20 @@ function wpe_others_events($) {
 			jQuery('#div_no_setting_img').fadeOut();
 		}
 	});
-
+	
 	jQuery('#campaign_imgcache').on("click", function () {
 		if (true == jQuery('#campaign_imgcache').is(':checked')) {
 			jQuery('#nolinkimg').fadeIn();
 		} else {
 			jQuery('#nolinkimg').fadeOut();
+		}
+	});
+
+	jQuery('#campaign_imgcache').on("click", function () {
+		if (true == jQuery('#campaign_imgcache').is(':checked')) {
+			jQuery('.campaign_attr_image_p').fadeIn();
+		} else {
+			jQuery('.campaign_attr_image_p').fadeOut();
 		}
 	});
 	jQuery('#campaign_enable_featured_image_selector').on("click", function () {

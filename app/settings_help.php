@@ -80,6 +80,11 @@ function wpematico_helpsettings($dev = '') {
 				'tip' => __('Use this instead of Wordpress functions to improve performance. This function upload the mime types does not avaliable in the wordpress media.', 'wpematico' ).
 					'<br />'. __('This function may not work in all servers.', 'wpematico' ),
 			),
+			'save_attr_images'	=> array( 
+				'title' => __('Enable save the image attributes (caption, alt, title) in the media library.', 'wpematico' ),
+				'tip' => __('Use this instead of Wordpress functions to improve performance. This function upload the atributes in the media library.', 'wpematico' ).
+					'<br />'. __('This function may not work in all servers.', 'wpematico' ),
+			),
 		),
 		'Audio Settings'	 => array(
 			'audio_cache'			 => array(

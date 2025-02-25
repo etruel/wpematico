@@ -525,8 +525,15 @@ class wpematico_campaign_fetch_functions {
 					}
 				}
 				$current_item['images']			 = (array) $img_new_url;
-				if ($featured)
-					$current_item['featured_image']	 = $current_item['images'][0]; //change to new url
+				if ($featured){
+					if (isset($current_item['images'][0])) {
+						$current_item['featured_image'] = $current_item['images'][0];
+					} else {
+						// Handle the case where there's no image
+						// For example, you can assign a default image or leave it empty
+						$current_item['featured_image'] = '';  // or some default value like 'default.jpg'
+					}
+				}
 			}  // // Si hay alguna imagen en el contenido
 		} else {
 			if (isset($current_item['images']) && sizeof($current_item['images'])) {
@@ -634,6 +641,38 @@ class wpematico_campaign_fetch_functions {
 		}
 		return $current_item;
 	}
+	
+	function set_image_attributes($current_item, $attach_id){
+		$attributes = apply_filters('wpematico_set_image_attributes', $current_item['image_attributes'][0], $attach_id);
+		$attachment_post = [];
+		if ($attach_id) {
+			// Update alt attribute
+			if (isset($attributes['alt'])) {
+				update_post_meta($attach_id, '_wp_attachment_image_alt', $attributes['alt']);
+			}
+
+			// Update title attribute
+			if (isset($attributes['title'])) {
+				// Update the post title (this is what will appear in the media library)
+				$attachment_post = array(
+					'ID' => $attach_id,
+					'post_title' => $attributes['title'],
+				);
+			}
+
+			if(isset($attributes['caption'])){
+				$attachment_post = wp_parse_args(array(
+					'ID' => $attach_id,
+					'post_excerpt' => $attributes['caption'],
+				), $attachment_post);
+			}
+			// You can add more attributes here if needed
+
+			if(!empty($attachment_post))
+				// Update the post in the database
+				wp_update_post($attachment_post);
+		}
+	}
 
 	/**
 	 * Filters images, upload and replace on text item content
@@ -642,6 +681,7 @@ class wpematico_campaign_fetch_functions {
 	 * @param   $item           object    SimplePie_Item object
 	 */
 	function Get_Item_images($current_item, $campaign, $feed, $item, $options_images) {
+		
 		if ($options_images['imgcache'] || $options_images['featuredimg']) {
 			//$ItemImages = apply_filters('wpematico_item_images', 'CORE', $current_item, $campaign, $feed, $item, $options_images);
 			$current_parser = apply_filters('wpematico_images_parser', 'default', $current_item, $campaign, $feed, $item, $options_images);
@@ -652,6 +692,10 @@ class wpematico_campaign_fetch_functions {
 			}
 
 			$current_item['images']	 = $images[2];  //List of image URLs
+			
+			if(isset($images['image_attributes']))
+				$current_item['image_attributes'] = $images['image_attributes'];
+
 			$current_item['content'] = $images[3];  //Replaced src by srcset(If exist and with larger images) in images.
 
 			$current_item = apply_filters('wpematico_find_img', $current_item, $campaign, $item);
@@ -685,45 +729,110 @@ class wpematico_campaign_fetch_functions {
 
 	static function parseImages($text, $options_images = array()) {
 		$new_content = $text;
-
+		$out = array(); // This will store the extracted values to be returned
+		
+		
+		// Get all <img> tags using a pattern that matches any <img> tag
 		$pattern_img = apply_filters('wpematico_pattern_img', '/<img[^>]+>/i');
 		preg_match_all($pattern_img, $text, $result);
-		$imgstr		 = implode('', $result[0]);
+		
+		$imgstr = implode('', $result[0]);
+		
+		if ($options_images['save_attr_images']) {
+			// Get all <figcaption> tags (captions) from the text
+			preg_match_all('/<figure[^>]*>.*?<\/figure>/is', $text, $figure_matches);
+			// Capture all attributes from <img> tag
+			preg_match_all('/<\s*img\s+([^>]+)\s*\/?>/i', $imgstr, $matches);
 
-		preg_match_all('/<\s*img[^\>]*src\s*=\s*[\""\']?([^\""\'\s>]*)/', $imgstr, $out);
-		$out[2] = $out[1];
+			$images = $matches[1]; // Full attributes string inside the img tag
 
-		if (isset($options_images['image_srcset']) && $options_images['image_srcset']) {
-			trigger_error(__("Getting srcset attribute...", 'wpematico'), E_USER_NOTICE);
-			$images_array = (empty($result[0]) ? array() : $result[0]);
+			$image_attributes_array = []; // To store image attributes
+			
+			$out[2] = array();
 
-			foreach ($images_array as $img_tag) {
-				$src_with_srcset = WPeMatico::get_attribute_value('src', $img_tag);
-				if (in_array($src_with_srcset, $out[2])) {
-					$srcset_string	 = WPeMatico::get_attribute_value('srcset', $img_tag);
-					$pieces_srcset	 = explode(',', $srcset_string);
-					$max_width		 = 0;
-					$max_url		 = '';
-					foreach ($pieces_srcset as $kps => $piece) {
-						$piece				 = trim($piece);
-						$pieces_url_srcset	 = explode(' ', $piece);
-						$url_srcset			 = $pieces_url_srcset[0];
-						$with				 = intval($pieces_url_srcset[1]);
-						if ($with > $max_width) {
-							$max_width	 = $with;
-							$max_url	 = $url_srcset;
+			// Loop through each <img> tag and extract its attributes
+			foreach ($images as $index_img => $img_attributes) {
+				$img_tag = $matches[0][$index_img];
+
+				// Extract all attribute-value pairs (e.g., src="...", alt="...")
+				preg_match_all('/(\w+)\s*=\s*["\']([^"\']+)["\']/', $img_attributes, $attrs);
+				$attributes = [];
+				foreach ($attrs[1] as $index => $attr_name) {
+					$attributes[$attr_name] = $attrs[2][$index];
+				}
+
+				// Check if the image is within a <figure> tag and associate a caption
+				$caption = '';
+				// Check if the image has a valid src attribute
+				if (isset($attributes['src'])) {
+					foreach ($figure_matches[0] as $figure_tag) {
+						// Extraer el <img> y <figcaption> de cada <figure>
+						preg_match('/<img[^>]+src=["\']([^"\']+)["\'][^>]*>/', $figure_tag, $img_match);
+						preg_match('/<figcaption[^>]*>(.*?)<\/figcaption>/is', $figure_tag, $caption_match);
+
+						// Si encontramos la etiqueta <img> y el atributo 'src'
+						if (isset($img_match[1])) {
+							$image_src = $img_match[1];
+
+							// Ahora comparamos el src de la imagen con el src que recibimos en $attributes['src']
+							if (isset($attributes['src']) && $image_src === $attributes['src']) {
+								$caption = !empty($caption_match) ? $caption_match[1] : ''; // Si existe un caption lo asignamos
+							}
 						}
 					}
 
+					// If a caption was found, associate it with the image
+					if (!empty($caption)) {
+						$attributes['caption'] = $caption; // Add caption to attributes
+					}
+				}
+				
+				$new_content = apply_filters('wpematico_filter_attr_images', $new_content, $attributes);
+				$out[2] = wp_parse_args(array($attributes['src']));
+				
+				// Store attributes in the image_attributes_array
+				$image_attributes_array[] = $attributes; // Append the attributes array for this image tag
+			}
+			// Save the image attributes to $out
+			$out['image_attributes'] = $image_attributes_array;
+		} else {
+			// Original src matching code for older logic (if required)
+			preg_match_all('/<\s*img[^\>]*src\s*=\s*[\""\']?([^\""\'\s>]*)/', $imgstr, $out);
+			$out[2] = $out[1];
+		}
+		// If 'image_srcset' is set in options_images, process the srcset attribute
+		if (isset($options_images['image_srcset']) && $options_images['image_srcset']) {
+			trigger_error(__("Getting srcset attribute...", 'wpematico'), E_USER_NOTICE);
+			$images_array = (empty($result[0]) ? array() : $result[0]);
+			
+			foreach ($images_array as $img_tag) {
+				$src_with_srcset = WPeMatico::get_attribute_value('src', $img_tag);
+				if (in_array($src_with_srcset, $out[2])) {
+					$srcset_string = WPeMatico::get_attribute_value('srcset', $img_tag);
+					$pieces_srcset = explode(',', $srcset_string);
+					$max_width = 0;
+					$max_url = '';
+					foreach ($pieces_srcset as $kps => $piece) {
+						$piece = trim($piece);
+						$pieces_url_srcset = explode(' ', $piece);
+						$url_srcset = $pieces_url_srcset[0];
+						$with = intval($pieces_url_srcset[1]);
+						if ($with > $max_width) {
+							$max_width = $with;
+							$max_url = $url_srcset;
+						}
+					}
+			
 					if (($key_image = array_search($src_with_srcset, $out[2])) !== FALSE) {
-						$new_image_tag		 = preg_replace('/\s*src\s*=\s*(["\']).*?\1/', 'src="' . $max_url . '"', $img_tag);
-						$new_content		 = str_replace($img_tag, $new_image_tag, $new_content);
-						$out[2][$key_image]	 = $max_url;
-						/* Translators: %s: URL of a image URL value */
+						$new_image_tag = preg_replace('/\s*src\s*=\s*(["\']).*?\1/', 'src="' . $max_url . '"', $img_tag);
+						$new_content = str_replace($img_tag, $new_image_tag, $new_content);
+						$out[2][$key_image] = $max_url;
 						trigger_error(sprintf(__("Overriding src attribute with value: %s from srcset.", 'wpematico'), $src_with_srcset), E_USER_NOTICE);
 					}
 				}
 			}
+			
+			// Process <picture> and <source> elements for srcset values
 			$array_pictures = WPeMatico::get_tags('picture', $new_content);
 			foreach ($array_pictures as $picture_tag) {
 				$array_sources = WPeMatico::get_tags('source', $picture_tag);
@@ -732,31 +841,32 @@ class wpematico_campaign_fetch_functions {
 					if (empty($srcset_string)) {
 						continue;
 					}
-					$pieces_srcset	 = explode(',', $srcset_string);
-					$max_width		 = 0;
-					$max_url		 = '';
+					$pieces_srcset = explode(',', $srcset_string);
+					$max_width = 0;
+					$max_url = '';
 					foreach ($pieces_srcset as $kps => $piece) {
-						$piece				 = trim($piece);
-						$pieces_url_srcset	 = explode(' ', $piece);
-						$url_srcset			 = $pieces_url_srcset[0];
-						$with				 = intval($pieces_url_srcset[1]);
+						$piece = trim($piece);
+						$pieces_url_srcset = explode(' ', $piece);
+						$url_srcset = $pieces_url_srcset[0];
+						$with = intval($pieces_url_srcset[1]);
 						if ($with > $max_width) {
-							$max_width	 = $with;
-							$max_url	 = $url_srcset;
+							$max_width = $with;
+							$max_url = $url_srcset;
 						}
 					}
-
+			
 					if (!empty($max_url)) {
 						$out[2][] = $max_url;
 					}
 				}
 			}
 		}
-
-
-		preg_match_all('/<link rel=\"(.+?)\" type=\"image\/jpg\" href=\"(.+?)\"(.+?)\/>/', $text, $out2); // for rel=enclosure
-		array_push($out, $out2);  // sum all items to array 
-		$out[3] = $new_content;
+		// Process <link> tags with rel="enclosure" (if needed)
+		preg_match_all('/<link rel="(.+?)" type="image\/jpg" href="(.+?)"(.+?)\/>/', $text, $out2); 
+		
+		array_push($out, $out2);  // Add all items to the $out array
+		$out[3] = $new_content;  // Store the updated content with modified image tags
+		
 		return $out;
 	}
 

@@ -203,6 +203,7 @@ if (!class_exists('WPeMatico_functions')) {
 		 * @since 1.7.0
 		 */
 		public static function get_images_options($settings = array(), $campaign = array()) {
+			
 			$options = array();
 			$options['imgcache'] = $settings['imgcache'];
 			$options['fifu'] = $settings['fifu'];
@@ -210,7 +211,7 @@ if (!class_exists('WPeMatico_functions')) {
 			$options['imgattach'] = $settings['imgattach'];
 			$options['gralnolinkimg'] = $settings['gralnolinkimg'];
 			$options['image_srcset'] = $settings['image_srcset'];
-
+			$options['save_attr_images'] = $settings['save_attr_images'];
 			$options['featuredimg'] = $settings['featuredimg'];
 			$options['rmfeaturedimg'] = $settings['rmfeaturedimg'];
 			$options['customupload'] = $settings['customupload'];
@@ -227,6 +228,7 @@ if (!class_exists('WPeMatico_functions')) {
 				$options['imgattach'] = $campaign['campaign_attach_img'];
 				$options['gralnolinkimg'] = $campaign['campaign_nolinkimg'];
 				$options['image_srcset'] = $campaign['campaign_image_srcset'];
+				$options['save_attr_images'] = $campaign['campaign_attr_images'];
 				$options['featuredimg'] = $campaign['campaign_featuredimg'];
 				$options['fifu'] = $campaign['campaign_fifu'];
 				$options['fifu-video'] = $campaign['campaign_fifu_video'];
@@ -234,6 +236,8 @@ if (!class_exists('WPeMatico_functions')) {
 				$options['customupload'] = $campaign['campaign_customupload'];
 			}
 			$options = apply_filters('wpematico_images_options', $options, $settings, $campaign);
+
+			
 			return $options;
 		}
 
@@ -904,6 +908,9 @@ if (!class_exists('WPeMatico_functions')) {
 
 			$campaigndata['campaign_fifu_video'] = (!isset($post_data['campaign_fifu_video']) || empty($post_data['campaign_fifu_video'])) ? false : ( ($post_data['campaign_fifu_video'] == 1) ? true : false );
 
+
+			$campaigndata['campaign_attr_images'] = (!isset($post_data['campaign_attr_images']) || empty($post_data['campaign_attr_images'])) ? false : ( ($post_data['campaign_attr_images'] == 1) ? true : false );
+
 			$campaigndata['campaign_enable_featured_image_selector'] = (!isset($post_data['campaign_enable_featured_image_selector']) || empty($post_data['campaign_enable_featured_image_selector'])) ? false : ( ($post_data['campaign_enable_featured_image_selector'] == 1) ? true : false );
 			$campaigndata['campaign_featured_selector_index'] = (!isset($post_data['campaign_featured_selector_index']) || empty($post_data['campaign_featured_selector_index'])) ? '0' : (int) $post_data['campaign_featured_selector_index'];
 			$campaigndata['campaign_featured_selector_ifno'] = (!isset($post_data['campaign_featured_selector_ifno']) || empty($post_data['campaign_featured_selector_ifno'])) ? 'first' : sanitize_text_field($post_data['campaign_featured_selector_ifno']);
@@ -943,6 +950,10 @@ if (!class_exists('WPeMatico_functions')) {
 			}
 
 			$campaigndata['campaign_autocats'] = (!isset($post_data['campaign_autocats']) || empty($post_data['campaign_autocats'])) ? false : ( ($post_data['campaign_autocats'] == 1) ? true : false );
+
+			$campaigndata['campaign_category_limit'] = (!isset($post_data['campaign_category_limit']) || empty($post_data['campaign_category_limit'])) ? false : ( ($post_data['campaign_category_limit'] == 1) ? true : false );
+
+			$campaigndata['max_categories'] = (!isset($post_data['max_categories']) || empty($post_data['max_categories'])) ? 5 : (int) $post_data['max_categories'];
 
 			$campaigndata['campaign_parent_autocats'] = (!isset($post_data['campaign_parent_autocats']) || empty($post_data['campaign_parent_autocats'])) ? -1 : (int) $post_data['campaign_parent_autocats'];
 

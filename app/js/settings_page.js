@@ -34,6 +34,14 @@ jQuery(document).ready(function ($) {
 			jQuery('#nolinkimg').fadeOut();
 		}
 	});
+
+	jQuery('#imgcache').on("click", function () {
+		if (true == jQuery('#imgcache').is(':checked')) {
+			jQuery('.attr_image_p').fadeIn();
+		} else {
+			jQuery('.attr_image_p').fadeOut();
+		}
+	});
 	
 	jQuery('#fifu').on("click", function () {
 		if (true == jQuery('#fifu').is(':checked')) {

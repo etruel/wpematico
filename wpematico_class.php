@@ -423,6 +423,7 @@ if (!class_exists('WPeMatico')) {
 			$cfg['images_allowed_ext']	 = (!isset($options['images_allowed_ext'])) ? $images_allowed_ext : sanitize_text_field($options['images_allowed_ext']);
 			$cfg['images_allowed_ext']	 = str_replace(' ', '', $cfg['images_allowed_ext']);  // strip spaces from string
 			$cfg['enablemimetypes']		 = (!isset($options['enablemimetypes']) || empty($options['enablemimetypes'])) ? false : ( ($options['enablemimetypes'] == 1) ? true : false );
+			$cfg['save_attr_images']		 = (!isset($options['save_attr_images']) || empty($options['save_attr_images'])) ? false : ( ($options['save_attr_images'] == 1) ? true : false );
 			$cfg['featuredimg']			 = (!isset($options['featuredimg']) || empty($options['featuredimg'])) ? false : ( ($options['featuredimg'] == 1) ? true : false );
 			$cfg['rmfeaturedimg']		 = (!isset($options['rmfeaturedimg']) || empty($options['rmfeaturedimg'])) ? false : ( ($options['rmfeaturedimg'] == 1) ? true : false );
 

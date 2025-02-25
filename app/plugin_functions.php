@@ -22,8 +22,172 @@ add_filter(	'plugin_row_meta', 'wpematico_row_meta',10,2);
 add_filter(	'plugin_action_links_' . WPEMATICO_BASENAME, 'wpematico_action_links');
 add_action( "after_plugin_row_" . WPEMATICO_BASENAME, 'wpematico_update_row', 10, 2 );
 add_action( 'admin_head', 'WPeMatico_plugins_admin_head' );
+add_action('admin_footer', 'admin_footer');
+add_action('admin_print_styles-plugins.php', 'admin_styles');
+add_action('admin_print_styles-plugins.php', 'admin_styles');
+add_action('wp_ajax_handle_feedback_submission', 'handle_feedback_submission');
 
-function WPeMatico_plugins_admin_head(){
+
+function admin_styles() {
+	global $pagenow, $page_hook;
+	if($pagenow=='plugins.php' && !isset($_GET['page'])){
+		wp_register_style('WPematStylesheetPlugins', WPEMATICO_PLUGIN_URL . 'app/css/wpemat_plugin_styles.css');
+		wp_enqueue_style( 'WPematStylesheetPlugins' );
+	}
+    
+}
+
+function admin_footer(){
+	global $pagenow, $page_hook;
+
+	if($pagenow=='plugins.php' && !isset($_GET['page'])){	
+	?>
+	<div id="wpe_feedback" class="wpe_modal_log-box fade" style="display:none;">
+		<div class="wpe_modal_log-body">
+			<a id="skip_feedback" style="color:lightgray" href="#"><?php _e('Skip & deactivate', 'wpematico') ?></a>
+			<a href="JavaScript:void(0);" class="wpe_modal_log-close" onclick="jQuery('#wpe_feedback').fadeToggle().removeClass('active'); jQuery('body').removeClass('wpe_modal_log-is-active');">
+				<span class="dashicons dashicons-no-alt"></span>
+			</a>
+			<div class="wpe_modal_log-header">
+				<h3><?php _e('QUICK FEEDBACK', 'wpematico') ?></h3>
+			</div>
+			<div class="wpe_modal_log-content">
+				<h3><?php _e("If you have a moment, please let us know why you're deactivating:", 'wpematico') ?></h3>
+				<form id="feedback_form">
+					<label>
+						<input type="radio" name="deactivation_reason" value="short_period" required>
+						<?php _e('I only needed the plugin for a short period', 'wpematico') ?>
+					</label><br>
+					<label>
+						<input type="radio" name="deactivation_reason" value="no_longer_needed">
+						<?php _e('I no longer need the plugin', 'wpematico') ?>
+					</label><br>
+					<label>
+						<input type="radio" name="deactivation_reason" value="stopped_working">
+						<?php _e('The plugin suddenly stopped working', 'wpematico') ?>
+					</label><br>
+					<label>
+						<input type="radio" name="deactivation_reason" value="broke_site">
+						<?php _e('The plugin broke my site', 'wpematico') ?>
+					</label><br>
+					<label>
+						<input type="radio" name="deactivation_reason" value="better_plugin">
+						<?php _e('I found a better plugin', 'wpematico') ?>
+					</label><br>
+					<label>
+						<input type="radio" name="deactivation_reason" value="temporary_deactivation">
+						<?php _e("It's a temporary deactivation - I'm troubleshooting an issue", 'wpematico') ?>
+					</label><br>
+					<label>
+						<input type="radio" name="deactivation_reason" value="other">
+						<?php _e('Other', 'wpematico') ?>
+					</label>
+					<div class="form_footer">
+						<button id="send_feedback" type="submit" class="button"><?php _e('Send & deactivate', 'wpematico') ?></button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		jQuery('#deactivate-wpematico').on('click', function(e){
+			e.preventDefault();
+			jQuery('#wpe_feedback').fadeToggle().addClass('active');
+			jQuery('body').addClass('wpe_modal_log-is-active');
+		});
+		
+		jQuery('#feedback_form').on('submit', function(e) {
+        e.preventDefault(); // Prevent form from submitting the default way
+        var reason = jQuery('input[name="deactivation_reason"]:checked').val(); // Get the selected reason
+
+        // Send AJAX request to the server
+        jQuery.ajax({
+            url: ajaxurl, // WordPress AJAX URL
+            type: 'POST',
+            data: {
+                action: 'handle_feedback_submission', // The PHP function to handle the feedback
+                reason: reason
+            },
+            success: function(response) {
+                if(response.success) {
+                    // Close the feedback modal
+                    jQuery('#wpe_feedback').fadeToggle().removeClass('active');
+                    jQuery('body').removeClass('wpe_modal_log-is-active');
+
+                    // Reload the page and display the success message
+                    alert(response.data.message); // Display the success message
+                    location.reload(); // Reload the page
+                } else {
+                    alert('Error: ' + response.data); // Handle errors, if any
+                }
+            },
+            error: function() {
+                alert('An unexpected error occurred.');
+            }
+        });
+    });
+
+    jQuery('#skip_feedback').on('click', function() {
+       // Send AJAX request to the server
+	   jQuery.ajax({
+            url: ajaxurl, // WordPress AJAX URL
+            type: 'POST',
+            data: {
+                action: 'handle_feedback_submission', // The PHP function to handle the feedback
+                reason: 'skipped'
+            },
+            success: function(response) {
+                if(response.success) {
+                    // Close the feedback modal
+                    jQuery('#wpe_feedback').fadeToggle().removeClass('active');
+                    jQuery('body').removeClass('wpe_modal_log-is-active');
+
+                    // Reload the page and display the success message
+                    alert(response.data.message); // Display the success message
+                    location.reload(); // Reload the page
+                } else {
+                    alert('Error: ' + response.data); // Handle errors, if any
+                }
+            },
+            error: function() {
+                alert('An unexpected error occurred.');
+            }
+        });
+    });
+    </script>
+    <?php
+    }
+}
+function handle_feedback_submission() {
+    // Check if the user has permission to deactivate plugins
+    if (!current_user_can('activate_plugins')) {
+        wp_send_json_error('Unauthorized user.');
+    }
+
+    // Get the feedback reason from the form
+    $reason = isset($_POST['reason']) ? sanitize_text_field($_POST['reason']) : '';
+
+    // Prepare the email
+    $to = 'hello@etruel.com';
+    $subject = 'Plugin Deactivation Feedback';
+    $message = "A user deactivated the plugin for the following reason: " . $reason;
+    $headers = ['From: ' . get_bloginfo('name') . ' <wordpress@' . parse_url(home_url(), PHP_URL_HOST) . '>'];
+
+    // Send the email
+    if ($reason == 'skipped' || wp_mail($to, $subject, $message, $headers)) {
+        // Deactivate the plugin
+        deactivate_plugins('wpematico/wpematico.php'); // Specify your plugin's path here
+
+        // Return success message
+        wp_send_json_success(['message' => 'Deactivate successfully']);
+    } else {
+        // Return error message if email fails
+        wp_send_json_error('Failed to send email.');
+    }
+}
+
+
+function WPeMatico_plugins_admin_head(): void{
 	global $pagenow, $page_hook;
 	if($pagenow=='plugins.php'){
 	?>
@@ -288,5 +452,137 @@ function wpematico_uninstall() {
 		foreach( $campaigns as $post ) {
 			wp_delete_post( $post->ID, true);  // forces delete to avoid trash
 		}
+	}
+}
+
+add_action('wp_ajax_fetch_taxonomies', 'fetch_taxonomies');
+
+function fetch_taxonomies() {
+    if (!isset($_POST['post_type'], $_POST['post_id'])) {
+        wp_die('No post type or post ID provided.');
+    }
+
+    $post_type = sanitize_text_field($_POST['post_type']);
+    $post_id = intval($_POST['post_id']); // Ensure post ID is an integer
+    $taxonomies = get_object_taxonomies($post_type, 'objects');
+	
+    if (!empty($taxonomies)) {
+        foreach ($taxonomies as $taxonomy) {
+            if ($taxonomy->hierarchical) { // Only show hierarchical taxonomies
+                echo '<span class="title inline-edit-categories-label">' . esc_html($taxonomy->labels->name) . '</span>';
+                echo '<input type="hidden" name="tax_input[' . esc_attr($taxonomy->name) . '][]" value="0" />'; // Default value 0
+                echo '<ul class="cat-checklist ' . esc_attr($taxonomy->name) . '-checklist">';
+                get_campaign_tax($taxonomy->name);
+                echo '</ul>';
+            }
+        }
+    }
+
+    wp_die(); // Properly terminate the AJAX request
+}
+
+add_action('wp_ajax_fetch_tags', 'fetch_tags');
+
+function fetch_tags() {
+    if (!isset($_POST['post_type'])) {
+        wp_die('No post type provided.');
+    }
+
+    $post_type = sanitize_text_field($_POST['post_type']);
+
+    // Get the taxonomies for the selected post type
+    $taxonomy_names = get_object_taxonomies($post_type);
+    $flat_taxonomies = array();
+    
+    foreach ($taxonomy_names as $taxonomy_name) {
+        $taxonomy = get_taxonomy($taxonomy_name);
+        if (!$taxonomy->show_ui)
+            continue;
+
+        if (!$taxonomy->hierarchical)
+            $flat_taxonomies[] = $taxonomy;
+    }
+
+    // Output taxonomies
+    $html = '';
+    
+    if (count($flat_taxonomies)) {
+		
+        foreach ($flat_taxonomies as $taxonomy) {
+            if (current_user_can($taxonomy->cap->assign_terms)) {
+				$current_tags = get_campaign_tags($taxonomy->name);
+				if($taxonomy->name != 'post_tag'){
+					// Create a label for each taxonomy with a textarea for the tags
+					$html .= '<label class="inline-edit-tags">';
+					$html .= '<span class="title">' . esc_html($taxonomy->labels->name) . '</span>';
+					$html .= '<textarea cols="22" rows="1" name="tax_input['.$taxonomy->name.']" class="tax_input_' . esc_attr($taxonomy->name) . '">'. $current_tags .'</textarea>';
+					$html .= '</label>';
+				}else{
+					// Create a label for each taxonomy with a textarea for the tags
+					$html .= '<label class="inline-edit-tags">';
+					$html .= '<span class="title">' . esc_html($taxonomy->labels->name) . '</span>';
+					$html .= '<textarea cols="22" rows="1" name="campaign_tags" class="tax_input_' . esc_attr($taxonomy->name) . '">'. $current_tags .'</textarea>';
+					$html .= '</label>';
+				}
+            }
+        }
+    }
+
+    echo $html;
+    wp_die(); // Properly terminate the AJAX request
+}
+
+
+/**
+ * Summary of get_campaign_tags
+ * @param mixed $taxonomy_name
+ * @return string
+ */
+function get_campaign_tags($taxonomy_name) {
+    if (!isset($_POST['post_id'])) {
+        wp_send_json_error();
+    }
+	if($taxonomy_name != 'post_tag'){
+		$current_tags = get_the_terms($_POST['post_id'], $taxonomy_name);
+		$all_tags = array();
+
+		if ($current_tags && !is_wp_error($current_tags)) {
+			foreach ($current_tags as $tag) {
+				$all_tags[] = $tag->name;
+			}
+
+			$current_tags = implode(',', $all_tags);
+		}
+	}else{
+		$campaign_data = get_post_meta($_POST['post_id'], 'campaign_data');
+		$campaign_data = (isset($campaign_data[0])) ? $campaign_data[0] : array(0);
+		$tags = apply_filters('wpematico_check_campaigndata', $campaign_data);
+		$current_tags = $tags['campaign_tags'];
+	}
+   	return  $current_tags;
+	
+}
+
+function get_campaign_tax($taxonomy_name) {
+    if (!isset($_POST['post_id'])) {
+        wp_send_json_error();
+    }
+	if($taxonomy_name == 'category'){
+		$campaign_data = get_post_meta($_POST['post_id'], 'campaign_data');
+		$campaign_data = (isset($campaign_data[0])) ? $campaign_data[0] : array(0);
+		$tags = apply_filters('wpematico_check_campaigndata', $campaign_data);
+		$current_tax = $tags['campaign_categories'];
+
+		// Check the terms for the post
+		wp_terms_checklist($_POST['post_id'], $args = array(
+			'taxonomy' => $taxonomy_name,
+			'descendants_and_self' => 0,
+			'selected_cats' => array_map('intval', $current_tax),
+			'popular_cats' => false,
+			'walker' => null,
+			'checked_ontop' => true
+		));
+	}else{
+		wp_terms_checklist($_POST['post_id'], array('taxonomy' => $taxonomy_name));
 	}
 }

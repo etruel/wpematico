@@ -473,6 +473,7 @@ public static function template_box( $post ) {
 		$campaign_attach_img					 = $campaign_data['campaign_attach_img'];
 		$campaign_image_srcset					 = $campaign_data['campaign_image_srcset'];
 		$campaign_featuredimg					 = $campaign_data['campaign_featuredimg'];
+		$campaign_attr_images   				 = $campaign_data['campaign_attr_images'];
 		$campaign_fifu							 = ($fifu_activated) ? $campaign_data['campaign_fifu'] : false;
 		$campaign_fifu_video					 = ($fifu_activated) ? $campaign_data['campaign_fifu_video'] : false;
 		$campaign_rmfeaturedimg					 = $campaign_data['campaign_rmfeaturedimg'];
@@ -486,6 +487,7 @@ public static function template_box( $post ) {
 			$campaign_attach_img	 = $cfg['imgattach'];
 			$campaign_image_srcset	 = $cfg['image_srcset'];
 			$campaign_featuredimg	 = $cfg['featuredimg'];
+			$campaign_attr_images    = $cfg['save_attr_images'];
 			$campaign_fifu			 = ($fifu_activated) ? $cfg['fifu'] : false;
 			$campaign_fifu_video	 = ($fifu_activated) ? $cfg['fifu-video'] : false;
 			$campaign_rmfeaturedimg	 = $cfg['rmfeaturedimg'];
@@ -504,8 +506,10 @@ public static function template_box( $post ) {
 			<div id="nolinkimg" style="margin-left: 20px; <?php if (!$campaign_imgcache) echo 'display:none;';?>">
 				
 				<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_attach_img,true); ?> name="campaign_attach_img" id="campaign_attach_img" /><b>&nbsp;<label for="campaign_attach_img"><?php _e('Attach Images to posts.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['imgattach']; ?>"></span><br/>
+
+				<p class="campaign_attr_image_p" style="margin-top:-2px; <?php if(!$campaign_attach_img) echo 'display:none;'; ?>"><input class="checkbox" value="1" type="checkbox" <?php checked($campaign_attr_images, true); ?>  name="campaign_attr_images" id="campaign_attr_images" /><b>&nbsp;<label for="campaign_attr_images"><?php _e('Save Image attributes on WP Media.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['save_attr_images']; ?>"></span></p>
 				
-				<input name="campaign_nolinkimg" id="campaign_nolinkimg" class="checkbox" value="1" type="checkbox" <?php checked($campaign_nolinkimg,true); ?> /><label for="campaign_nolinkimg"><?php _e('Remove link to source images', 'wpematico' ); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['gralnolinkimg']; ?>"></span><br/>
+				<input name="campaign_nolinkimg" id="campaign_nolinkimg" class="checkbox" value="1" type="checkbox" <?php checked($campaign_nolinkimg,true); ?> />&nbsp;<label for="campaign_nolinkimg"><?php _e('Remove link to source images', 'wpematico' ); ?></label> <span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['gralnolinkimg']; ?>"></span><br/>
 				
 				<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_image_srcset,true); ?> name="campaign_image_srcset" id="campaign_image_srcset" /><b>&nbsp;<label for="campaign_image_srcset"><?php esc_attr_e('Use srcset attribute instead of src of <img> tag.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['image_srcset']; ?>"></span><br/>
 				
@@ -550,6 +554,7 @@ public static function template_box( $post ) {
 				<div id="fifu_campaign_extra_options" style="padding-left: 20px; <?php if (!$campaign_fifu) echo 'display:none;';?>"">
 					<input class="checkbox" value="1" type="checkbox" <?php checked($campaign_fifu_video, (!$fifu_activated) ? ((!$campaign_fifu_video) ? true : false ) : true ); ?>  name="campaign_fifu_video" id="campaign_fifu_video" /><b>&nbsp;<label for="campaign_fifu_video"><?php _e('Use video link as featured if available.', 'wpematico' ); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['fifu']; ?>"></span>
 				</div>
+				
 			</div>
 		</div>
 		
@@ -1274,7 +1279,8 @@ public static function feeds_box( $post ) {
 		$campaign_categories = $campaign_data['campaign_categories'];
 		$campaign_autocats = $campaign_data['campaign_autocats'];
 		$campaign_parent_autocats = $campaign_data['campaign_parent_autocats'];
-
+		$campaign_category_limit = $campaign_data['campaign_category_limit'];
+		$max_categories =  $campaign_data['max_categories'];
 //get_categories()
 		$args = array(
 			'descendants_and_self' => 0,
@@ -1287,8 +1293,17 @@ public static function feeds_box( $post ) {
 
 //$aa = wp_terms_checklist( 0, $args );
 			?>
-			<input class="checkbox" type="checkbox"<?php checked($campaign_autocats ,true);?> name="campaign_autocats" value="1" id="campaign_autocats"/> <b><?php echo '<label for="campaign_autocats">' . __('Add auto Categories', 'wpematico' ) . '</label>'; ?></b>
+			<input class="checkbox" type="checkbox"<?php checked($campaign_autocats ,true);?> name="campaign_autocats" value="1" id="campaign_autocats"/> 
+			<b><?php echo '<label for="campaign_autocats">' . __('Add auto Categories', 'wpematico' ) . '</label>'; ?></b>
 			<span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['autocats']; ?>"></span>
+			<br/>
+
+			<input style="margin-left:15px;" class="checkbox" type="checkbox" name="campaign_category_limit" value="1" id="campaign_category_limit" <?php checked($campaign_category_limit, true); ?>> 
+			<b><label for="campaign_category_limit">Enable max categories to create</label></b>
+			<span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['category_limit']; ?>"></span>
+				<p style="margin-left:38px; margin-top: 0;" id="max_categories_wrapper">
+					<input name="max_categories" type="number" min="1" size="3" value="<?php echo isset($max_categories) ? esc_attr($max_categories) : 5; ?>" class="small-text" id="max_categories" data-np-intersection-state="visible"> 
+				</p>
 			<br/>
 
 			<?php do_action('wpematico_print_category_options', $campaign_data); ?>
