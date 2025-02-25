@@ -1,7 +1,7 @@
 === WPeMatico RSS Feed Fetcher ===
 Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
-Tags: RSS,XML,rss to post,feed to post,rss aggregator
+Tags: RSS,XML,rss to blog,feed to post,rss aggregator
 Stable tag: 2.7.11
 Tested up to: 6.7
 Requires at least: 4.8
@@ -29,7 +29,7 @@ With WPeMatico, you can sit back while the plugin automatically fetches content 
 * **Import Multimedia**: Automatically import images, audio, and video from your feeds, ensuring rich media content for your site.
 * **Feed Auto Discovery**: Simply enter a website URL, and WPeMatico will automatically discover available RSS feeds, making the setup process faster and easier. (Thanks Simplepie!)
 
-## 🌐 External Integrations with WPeMatico ##
+## 🌐 External Integrations with WPeMatico (and FREE) ##
 
 * **Featured Image from URL**: Seamlessly integrate with the _Featured Image from URL_ plugin to automatically set external images as featured images in your posts.
 * **Custom Cron Jobs**: Easily configure WPeMatico to work with server-based or third-party cron services for more flexible automation and scheduling.
@@ -412,4 +412,4 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 
-Many tweaks on links and styles, translators strings, fixes few minor security issues, texts and typos.
+Major version. Make backup before update! See changelog for tweaks and improvements in this version.
