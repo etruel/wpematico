@@ -275,32 +275,110 @@ class WPEMATICO_Welcome {
 			<div class="about__section has-2-columns">
 				<div class="wpe-flex column is-vertically-aligned-center">
 					<div class="about__image is-vertically-aligned-center">
-						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/canonical.jpg'; ?>" alt="Implemented Canonical links for SEO!" />
+						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/image-attributes.jpg'; ?>" alt="Save image attributes on upload" />
 					</div>
 				</div>
 				<div class="column is-vertically-aligned-center">
-					<h3><?php _e('Implemented Canonical links for SEO!', 'wpematico'); ?></h3>
-
-					<p><?php _e('A new feature that allows to globally set the canonical link of each post (only created by WPeMatico) to the source site’s permalink, improving the SEO ranking of your website.', 'wpematico'); ?></p>
+					<h3><?php _e('Save image attributes on upload', 'wpematico'); ?></h3>
+					<p><?php _e('Now, WPeMatico enhances image uploads by automatically copying original attributes like alt text, title, and caption when adding images to the WordPress Media Library.', 'wpematico'); ?></p>
+					<p><?php _e('This not only improves SEO but also streamlines content management by allowing you to reuse images across multiple posts while retaining their original attributes.', 'wpematico'); ?></p>
 				</div>
 			</div>
 
 			<div class="about__section has-2-columns">
 				<div class="column is-vertically-aligned-center">
-					<h3><?php _e('New WPeMatico&#39;s Tools page added', 'wpematico'); ?></h3>
-					<p><?php _e('New Tools page to group features and functions that are not directly related to WPeMatico configuration and/or campaigns. You can also find here the System Status feature.', 'wpematico'); ?></p>
-					
-					<h3 class="is-smaller-heading"><?php _e('Added Export/import Settings backup!', 'wpematico'); ?></h3>
-					<p><?php _e('Find on the Tools page the new function to export and import WPeMatico and addons settings, to backup or export your settings to another website.', 'wpematico'); ?></p>
+					<h3><?php _e('Auto-created categories control', 'wpematico'); ?></h3>
+					<p><?php _e('At the request of our users, we’ve added a new feature that allows you to set a maximum limit on the number of automatically generated categories.', 'wpematico'); ?></p>
+					<p><?php _e('Many poorly structured feeds include dozens of different categories per item, which can clutter your site. With this improvement, you can maintain better organization and keep your site clean and manageable.', 'wpematico'); ?></p>
 				</div>
 				<div class="wpe-flex column is-vertically-aligned-center">
 					<div class="about__image is-vertically-aligned-center">
-						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/tools.jpg'; ?>" alt="New WPeMatico&#39;s Tools page added" />
+						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/max-categories.jpg'; ?>" alt="New WPeMatico&#39;s tools page added" />
 					</div>
 				</div>
 			</div>
 
+			<div class="about__section has-2-columns">
+				<div class="wpe-flex column is-vertically-aligned-center">
+					<div class="about__image is-vertically-aligned-center">
+						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/quick-edit.jpg'; ?>" alt="Better Quick Edit and Taxonomy Support" />
+					</div>
+				</div>
+				<div class="column is-vertically-aligned-center">
+					<h3><?php _e('Better Quick Edit and Taxonomy Support', 'wpematico'); ?></h3>
+					<p><?php _e('We’ve improved compatibility with the Professional 3.0.3 version, optimizing taxonomy management within WPeMatico campaigns for Custom Post Types. The functionality is now smoother and more efficient with the enhanced code.', 'wpematico'); ?></p>
+					<p><?php _e('The Quick Edit option for each campaign has also been optimized, allowing faster and more convenient editing of taxonomies directly from the panel without needing to access the full editor.', 'wpematico'); ?></p>
+				</div>
+			</div>
+
 			<div class="about__section has-3-columns">
+				
+				<div class="column">
+					<div class="about__image">
+						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/campaign-notification.jpg'; ?>" alt="Improved campaign execution notifications" />
+					</div>
+					<div class="about__content">
+						<h3 class="is-smaller-heading"><?php _e('Improved campaign execution notifications', 'wpematico'); ?></h3>
+
+						<p><?php _e('A new improvement shows execution messages directly below the campaign title, providing clear and organized feedback during AJAX campaign runs.', 'wpematico'); ?></p>
+					</div>
+				</div>
+				
+				<div class="column">
+					<div class="about__image">
+						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/popup-deactivate.jpg'; ?>" alt="New Popup layout for campaign logs" />
+					</div>
+					<div class="about__content">
+						<h3 class="is-smaller-heading"><?php _e('New popup feedback for plugin deactivation', 'wpematico'); ?></h3>
+
+						<p><?php _e('Our goal is to keep improving our plugins, so we have added a popup window that appears when the plugin is deactivated, allowing users to easily submit their feedback.', 'wpematico'); ?></p>
+					</div>
+				</div>
+
+				<div class="column">
+					<div class="about__image">
+						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/performance.jpg'; ?>" alt="Much performance improvements" />
+					</div>
+					<div class="about__content">
+						<h3 class="is-smaller-heading"><?php _e('General performance improvements', 'wpematico'); ?></h3>
+
+						<p><?php _e('Several enhancements have been made to optimize the plugin’s overall performance, resulting in significantly improved efficiency and faster processing speeds.', 'wpematico'); ?></p>
+					</div>
+				</div>
+				
+				<div class="column">
+					<div class="about__image">
+						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/canonical.jpg'; ?>" alt="Implemented Canonical links for SEO!" />
+					</div>
+					<div class="about__content">
+						<h3 class="is-smaller-heading"><?php _e('Implemented Canonical links for SEO!', 'wpematico'); ?></h3>
+
+						<p><?php _e('A new feature that allows to globally set the canonical link of each post (only created by WPeMatico) to the source site’s permalink, improving the SEO ranking of your website.', 'wpematico'); ?></p>
+					</div>
+				</div>
+
+				<div class="column">
+					<div class="about__image">
+						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/tools.jpg'; ?>" alt="New WPeMatico&#39;s Tools page added" />
+					</div>
+					<div class="about__content">
+						<h3 class="is-smaller-heading"><?php _e('New WPeMatico&#39;s Tools page added', 'wpematico'); ?></h3>
+
+						<p><?php _e('New Tools page to group features and functions that are not directly related to WPeMatico configuration and/or campaigns. You can also find here the System Status feature.', 'wpematico'); ?></p>
+					</div>
+				</div>
+
+				<div class="column">
+					<div class="about__image">
+						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/export-import.jpg'; ?>" alt="Added Export/import Settings backup!" style="max-height: 500px;" />
+					</div>
+					<div class="about__content">
+						<h3 class="is-smaller-heading"><?php _e('Added Export/import Settings backup!', 'wpematico'); ?></h3>
+
+						<p><?php _e('Find on the Tools page the new function to export and import WPeMatico and addons settings, to backup or export your settings to another website.', 'wpematico'); ?></p>
+					</div>
+				</div>
+				
 				<div class="column">
 					<div class="about__image">
 						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/shorts.jpg'; ?>" alt="Avoid or include Shorts on YouTube Campaign type!" style="max-height: 500px;" />
@@ -325,17 +403,6 @@ class WPEMATICO_Welcome {
 
 				<div class="column">
 					<div class="about__image">
-						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/performance.jpg'; ?>" alt="Much performance improvements" />
-					</div>
-					<div class="about__content">
-						<h3 class="is-smaller-heading"><?php _e('Much performance improvements', 'wpematico'); ?></h3>
-
-						<p><?php _e('Some changes were made to the plugin’s code to improve the memory usage after fetching each post when campaigns are running, making the plugin faster and more efficient.', 'wpematico'); ?></p>
-					</div>
-				</div>
-
-				<div class="column">
-					<div class="about__image">
 						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/mime_type.jpg'; ?>" alt="Modify the allowed mime types feature" />
 					</div>
 					<div class="about__content">
@@ -344,86 +411,41 @@ class WPEMATICO_Welcome {
 						<p><?php _e('A new feature that lets you upload of other mime types (during the campaign execution) that are not normally allowed by the WP library, giving you more flexibility over the media files.', 'wpematico'); ?></p>
 					</div>
 				</div>
-				
-				<div class="column">
-					<div class="about__image">
-						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/image_fetching.jpg'; ?>" alt="Enhancements in the image fetching" />
-					</div>
-					<div class="about__content">
-						<h3 class="is-smaller-heading"><?php _e('Enhancements in the image fetching', 'wpematico'); ?></h3>
-
-						<p><?php _e('New fixes and improvements to the SimplePie functions to allow fetching multiple images that are available in the <media>, <enclosure> and/or <image> tags of feed items.', 'wpematico'); ?></p>
-					</div>
-				</div>
-				
-				<div class="column">
-					<div class="about__image">
-						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/popup_log.jpg'; ?>" alt="New Popup layout for campaign logs" />
-					</div>
-					<div class="about__content">
-						<h3 class="is-smaller-heading"><?php _e('New Popup layout for campaign logs', 'wpematico'); ?></h3>
-
-						<p><?php _e('This improvement lets you see the logs of your campaigns in a modal window (from list and edit), with a better layout and readability, so you can analyze them more easily.', 'wpematico'); ?></p>
-					</div>
-				</div>
-				
-				<div class="column">
-					<div class="about__image">
-						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/design_style.jpg'; ?>" alt="Design and style improvements for better performance" />
-					</div>
-					<div class="about__content">
-						<h3 class="is-smaller-heading"><?php _e('Design and style improvements for better performance', 'wpematico'); ?></h3>
-
-						<p><?php _e('Some minor design and style improvements were made and gif were replaced by native wordpress dashicons for better performance, making the plugin more attractive and fast.', 'wpematico'); ?></p>
-					</div>
-				</div>
-				
-				<div class="column">
-					<div class="about__image">
-						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/log_banner.jpg'; ?>" alt="Banner to show the updates details" />
-					</div>
-					<div class="about__content">
-						<h3 class="is-smaller-heading"><?php _e('Banner to show the updates details', 'wpematico'); ?></h3>
-
-						<p><?php _e('A new banner designed to be visible on the WPeMatico&#39;s settings screen, to show a brief overview of the new changes in the version, keeping you informed and updated.', 'wpematico'); ?></p>
-					</div>
-				</div>
-				
-				<div class="column">
-					<div class="about__image">
-						<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/fixes.jpg'; ?>" alt="Optimizations, fixes and improvements" />
-					</div>
-					<div class="about__content">
-						<h3 class="is-smaller-heading"><?php _e('Optimizations, fixes and improvements', 'wpematico'); ?></h3>
-
-						<p><?php _e('Fixes and improvements to many features to enhance WPeMatico&#39;s functionality. This update provides a more robust and efficient experience, ensuring smoother operation for all users.', 'wpematico'); ?></p>
-					</div>
-				</div>
 			</div>
 
 			<div class="about__section about__section_height has-2-columns has-subtle-background-color br-16">
 				<h3 class="is-section-header pb-0"><?php _e('More Tweaks and Improvements.', 'wpematico'); ?></h3>
 
 				<div class="column">
-					<h3 class="is-smaller-heading"><?php _e('Campaign metafields optimization.', 'wpematico'); ?></h3>
-					<p><?php _e('The obtaining and saving of meta fields during the campaigns execution was optimized to avoid interrupting the event and breaking the campaign when there is too much data in it.', 'wpematico'); ?></p>
-					
-					<h3 class="is-smaller-heading"><?php _e('Removed SimplePie library.', 'wpematico'); ?></h3>
-					<p><?php _e("Continuing with WP standards. In this new version the Simplepie custom library has been removed to use exclusively the library included in WordPress to process RSS feeds.", 'wpematico'); ?></p>
+				<h3 class="is-smaller-heading"><?php _e('Introducing the GPT Spinner Addon', 'wpematico'); ?></h3>
+				<p><?php _e('The new GPT Spinner is now included in all memberships, enhancing your content automation. With advanced AI capabilities, it automatically rewrites and generates unique posts from your RSS feed, giving you greater flexibility and content quality.', 'wpematico'); ?></p>
 
-					<h3 class="is-smaller-heading"><?php _e('Addon page tweaks.', 'wpematico'); ?></h3>
-					<p><?php _e("We have fixed some bugs and improved the functionality of individual and bulk actions on the addon page.", 'wpematico'); ?></p>
+				<h3 class="is-smaller-heading"><?php _e('AI Etruel Rewriter API Integration', 'wpematico'); ?></h3>
+				<p><?php _e('The AI Etruel Rewriter API is now available, designed to optimize and transform content seamlessly. Perfect for improving your automated posts and boosting SEO, this API ensures that your content always stands out.', 'wpematico'); ?></p>
+
+				<h3 class="is-smaller-heading"><?php _e('More Optimizations and Performance Enhancements', 'wpematico'); ?></h3>
+				<p><?php _e('We’ve further optimized campaign execution, ensuring smoother performance and improved stability when handling large amounts of data.', 'wpematico'); ?></p>
 				</div>
 				<div class="column">
 					<h3 class="is-smaller-heading"><?php _e('WPeMatico Addons', 'wpematico'); ?></h3>
 
 					<div class="addon_block">
 						<div class="addon_img">
-							<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/wpematico-premium-200x100.jpg'; ?>" alt="WPeMatico PREMIUM" />
+							<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/wpematico-essentials-200x100.jpg'; ?>" alt="WPeMatico ESSENTIAL Monthly" />
 						</div>
 						<div class="addon_text">
-							<p><?php _e('The', 'wpematico'); ?> <a href="https://etruel.com/downloads/wpematico-premium/" target="_blank">WPeMatico PREMIUM</a> 
-								<?php _e('contains the ten preferred add-Ons with the most wanted features for autoblogging with WordPress in a very easy professional way.', 'wpematico'); ?></p>
+							<p><?php _e('The', 'wpematico'); ?> <a href="https://etruel.com/downloads/wpematico-essentials-monthly/" target="_blank">WPeMatico ESSENTIALS Monthly</a> 
+							<?php _e('includes powerful addons such as Professional and Full Content, which allow you to enhance autoblogging with advanced features.', 'wpematico'); ?></p>
+						</div>
+					</div>
+
+					<div class="addon_block">
+						<div class="addon_img">
+							<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/ai-etruel-rewriter-api-200x100.jpg'; ?>" alt="AI Etruel Rewriter API" />
+						</div>
+						<div class="addon_text">
+						<p><?php _e('The', 'wpematico'); ?> <a href="https://etruel.com/downloads/ai-etruel-rewriter-api/" target="_blank">AI Etruel Rewriter API</a> 
+						<?php _e('integrates seamlessly with GPT Spinner, allowing you to rewrite and enhance your content with advanced AI, ensuring originality and improved engagement.', 'wpematico'); ?></p>
 						</div>
 					</div>
 
@@ -444,16 +466,6 @@ class WPEMATICO_Welcome {
 						<div class="addon_text">
 							<p><?php _e('The', 'wpematico'); ?> <a href="https://wordpress.org/plugins/wpematico-rss-feed-reader/" target="_blank">WPeMatico RSS Feed Reader</a> 
 								<?php _e('enhances the functionality of WPeMatico by allowing to read and display the RSS feed results on your WordPress site without creating the posts.', 'wpematico'); ?></p>
-						</div>
-					</div>
-
-					<div class="addon_block">
-						<div class="addon_img">
-							<img src="<?php echo WPEMATICO_PLUGIN_URL . '/images/wpematico-googlo-campaign-200x100.png'; ?>" alt="WPeMatico Googlo Campaign Type" />
-						</div>
-						<div class="addon_text">
-							<p><?php _e('The', 'wpematico'); ?> <a href="https://etruel.com/downloads/wpematico-googlo-campaign-type/" target="_blank">WPeMatico Googlo Campaign Type</a>
-								<?php _e('allows to parse each Google News feeds item’s link, simplify by reducing redirections and preserving the authenticity of the original news sources.', 'wpematico'); ?></p>
 						</div>
 					</div>
 
@@ -653,7 +665,6 @@ class WPEMATICO_Welcome {
 					<div class="about__image is-vertically-aligned-center">
 						<div class="feature-section-media" style="max-height: 400px; overflow: hidden;">
 							<img src="<?php echo WPEMATICO_PLUGIN_URL . 'screenshot-7.jpg'; ?>" class="Fill in the Settings"/>
-							<p style="text-align:center; color: #fff; margin:1em 0 0;"><?php _e('Testing SimplePie library', 'wpematico'); ?></p>
 						</div>
 					</div>
 				</div>
@@ -832,26 +843,33 @@ class WPEMATICO_Welcome {
 		?>
 		<div class="about__section <?php echo $classes; ?> subscription">
 			<div class="column is-vertically-aligned-center">
-				<h3><?php _e('Welcome to WPeMatico 2.7!', 'wpematico'); ?></h3>
-				<p><?php _e('In this version, we’ve taken the autoblogging for WordPress to the next level. Our team has worked tirelessly to optimize performance and enhance the user experience.','wpematico')?></p>
-				<p><?php _e('Along with improvements in speed and efficiency, we incorporate the use of canonical URLs in the posts created by WPeMatico, ensuring the best SEO for your site.', 'wpematico'); ?></p>
-				<h3><?php _e('New WPeMatico addons.', 'wpematico'); ?></h3>
-				<p><?php _e('<strong>RSS Feed Reader</strong> which allows you to read and display RSS feeds using get_the_content() WP filter, page template or shortcodes directly on your site without creating posts.', 'wpematico'); ?></p>
-				<p><?php _e('<strong>Googlo Campaign Type</strong> included in our ESSENTIALs membership, which analyzes Google feed links more effectively to prevent broken links and redirects.', 'wpematico'); ?></p>
+				<h3><?php _e('Welcome to WPeMatico 2.8!', 'wpematico'); ?></h3>
+				<p><?php _e('Robotico has brought artificial intelligence to WPeMatico! This is a major breakthrough for autoblogging, allowing you to generate unique, optimized, and automatically rewritten content to enhance SEO.','wpematico')?></p>
+				<p><?php _e('Now, with smarter tools, you can organize and boost your posts like never before, achieving better results with less effort.', 'wpematico'); ?></p>
+				<h3><?php _e('New content creation tools', 'wpematico'); ?></h3>
+				<p><a href="https://etruel.com/downloads/wpematico-gpt-spinner" target="_blank" style="color: #ef8e2f; font-weight: 700; text-decoration: none; border-bottom: 2px solid #ef8e2f;">GPT Spinner</a> <?php _e('Addon allows you to rewrite and enhance your content automatically using advanced AI integrations, offering greater flexibility and creativity for your posts.', 'wpematico'); ?></p>
+				<p><a href="https://etruel.com/downloads/ai-etruel-rewriter-api/" target="_blank" style="color: #ef8e2f; font-weight: 700; text-decoration: none; border-bottom: 2px solid #ef8e2f;">AI Etruel Rewriter API</a> <?php _e('is a powerful service for text rewriting, providing seamless integration with your campaigns to create unique and engaging content effortlessly.', 'wpematico'); ?></p>
 			</div>
 			<?php if($suscripted_user === false) { ?>
 				<div class="column wpe-flex is-edge-to-edge has-accent-background-color br-16">
 					<div class="about__newsletter is-vertically-aligned-center">
 						<p></p>
-						<h3><?php _e('Stay up to date!', 'wpematico'); ?></h3>
-						<h3 class="is-smaller-heading wpsubscription_info"><?php _e('Subscribe to our Newsletter and be the first to receive our news.', 'wpematico'); ?> 
-							<?php _e('We send about 4 or 5 emails per year. Really.', 'wpematico'); ?></h3>
+						<h3><?php _e('Stay Ahead with Exclusive Updates!', 'wpematico'); ?></h3>
+						<h3 class="is-smaller-heading wpsubscription_info">
+							<?php _e('Join our newsletter and be the first to hear about exciting updates, new features, and special offers.', 'wpematico'); ?> 
+						</h3>
+						<h3 class="is-smaller-heading wpsubscription_info">
+							<?php _e('No spam—just valuable insights straight to your inbox, about 4-5 times a year. Stay in the loop and never miss out!', 'wpematico'); ?> 
+						</h3>
+						<h3 class="is-smaller-heading wpsubscription_info">
+							<?php _e('Subscribe now!', 'wpematico'); ?> 
+						</h3>
 						<form action="<?php echo admin_url('admin-post.php'); ?>" id="wpsubscription_form" method="post" class="wpcf7-form">
 							<input type="hidden" name="action" value="save_subscription_wpematico"/>
 							<?php wp_nonce_field('save_subscription_wpematico'); ?>
 							<div class="two-form-group">
 								<div class="form-group">
-									<label><?php _e("Name", "wpematico"); ?></label>
+									<label><?php echo esc_html__("Name", "wpematico").' '. esc_html__("(optional)", "wpematico"); ?></label>
 									<input type="text" id="" name="wpematico_subscription[fname]" value="<?php echo $current_user->user_firstname; ?>" size="40" class="form-control" placeholder="<?php _e("First Name", "wpematico"); ?>">
 								</div>
 								<div class="form-group">
@@ -860,7 +878,7 @@ class WPEMATICO_Welcome {
 							</div>
 
 							<div class="form-group">
-								<label><?php _e("Email", "wpematico"); ?> <span>(*)</span></label>
+								<label><?php esc_html_e("Email", "wpematico"); ?> <span>(*)</span></label>
 								<input type="text" id="" name="wpematico_subscription[email]" value="<?php echo $current_user->user_email; ?>" size="40" class="form-control" placeholder="<?php _e("Email", "wpematico"); ?>">
 							</div>
 
@@ -1035,7 +1053,7 @@ class WPEMATICO_Welcome {
 			$readme = '<p>' . __('No valid changelog was found.', 'wpematico') . '</p>';
 		}else {
 			$readme	 = WPeMatico_functions::wpematico_get_contents($file);
-			$readme	 = explode('Privacy terms =', $readme);
+			$readme	 = explode('Privacy terms ##', $readme);
 			$readme	 = end($readme);
 			$readme	 = explode('== Installation ==', $readme);
 			$readme	 = $readme[0];
