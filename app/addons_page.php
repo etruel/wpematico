@@ -570,3 +570,48 @@ add_action('pre_current_active_plugins', function() {
         }, ARRAY_FILTER_USE_BOTH);
 	}
 });
+
+
+
+add_action('admin_init', 'manage_old_addons');
+
+function wpematico_get_old_addons(){
+	$addons = array();
+	return apply_filters('wpematico_get_old_addons', $addons); 
+}
+
+/**
+ * Deactivates the legacy extension.
+ *
+ * @since 3.1.1
+ * @return void
+ */
+function manage_old_addons(){
+	foreach (wpematico_get_old_addons() as $extension) {
+
+		add_action("plugin_action_links_{$extension['basename']}",  function($links, $plugin_file) use ($extension){
+			$links['activate'] = $extension['action_link'];
+			return $links;
+		}, 10, 2);
+
+		if (! is_plugin_active($extension['basename'])) {
+			continue;
+		}
+		if (wpematico_should_deactivate($extension['basename'])) {
+
+			// $this->maybe_do_notification( $extension );
+
+			if (! empty($extension['on_deactivate']) && is_callable($extension['on_deactivate'])) { //if the addon has some action before deactivate
+				add_action("deactivate_{$extension['basename']}", $extension['on_deactivate']);
+			}
+			deactivate_plugins($extension['basename']);
+		}
+		if (! empty($extension['option'])) {
+			delete_option($extension['option']);
+		}
+	}
+}
+
+function wpematico_should_deactivate($basename){
+	return true;
+}
