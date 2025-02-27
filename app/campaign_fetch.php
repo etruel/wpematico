@@ -890,7 +890,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
                 set_post_thumbnail($post_id, $attachid);
 
                 // Now, save attributes like alt, title, etc., to the WordPress media
-                if(isset($this->current_item['image_attributes'])){
+                if(isset($this->current_item['image_attributes']) && !empty($this->current_item['image_attributes'])){
                     $this->set_image_attributes($this->current_item, $attachid);
                     array_shift($this->current_item['image_attributes']);  //deletes featured image attributes from array to avoid double upload below
                 }
