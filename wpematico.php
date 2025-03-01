@@ -27,7 +27,7 @@ if (!class_exists('Main_WPeMatico')) {
 
 		private function setup_constants() {
 			if (!defined('WPEMATICO_VERSION'))
-				define('WPEMATICO_VERSION', '2.7.11');
+				define('WPEMATICO_VERSION', '2.8');
 			if (!defined('WPEMATICO_BASENAME'))
 				define('WPEMATICO_BASENAME', plugin_basename(__FILE__));
 			if (!defined('WPEMATICO_ROOTFILE'))
@@ -56,7 +56,6 @@ if (!class_exists('Main_WPeMatico')) {
 				self::$instance = new Main_WPeMatico();
 				self::$instance->setup_constants();
 				self::$instance->includes();
-				add_action( 'plugins_loaded', array( self::$instance, 'load_textdomain' ) );
 				self::$instance->hooks();
 				self::$instance->setup_cron();
 			}
@@ -100,6 +99,7 @@ if (!class_exists('Main_WPeMatico')) {
 
 		private function hooks() {
 			add_action('init', array('WPeMatico', 'init'));
+			add_action('init', array( self::$instance, 'load_textdomain' ) );
 			add_action('the_permalink', array('WPeMatico', 'wpematico_permalink'));
 			add_filter('post_link', array('WPeMatico', 'wpematico_permalink'));
 			add_filter('get_canonical_url', array('WPeMatico_functions', 'wpematico_set_canonical'), 999999, 2);
