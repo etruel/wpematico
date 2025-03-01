@@ -1,5 +1,38 @@
 == Changelog ==
 
+= 2.6.25 May 30, 2024 =
+
+* Added MDM notifications
+#### _Last version on 2.6.x series!!_
+
+We will soon reach one million downloads and we will celebrate it with the 2.7 major version.
+And not only that, but we are also prepared a big celebration for a whole month!
+In which we will release the new versions with many new free features,
+but we will also make many free gifts for all our community of WordPress users, customers and friends. 
+The month of June is coming strong! Don't miss it! Follow everything on this link!
+* [Millon Downloads Month](https://etruel.com/join-us-to-celebrate-the-million-downloads-month/)
+
+= 2.6.24 Mar 25, 2024 =
+* Improves compatibilities with WordPress 6.5
+* Fixes some PHP warnings on campaigns list.
+
+= 2.6.23 Feb 23, 2024 =
+* Bump to WP 6.5
+* Fixes the fetch and download of audio/video files from the content of feed items to the WordPress Media.
+
+= 2.6.22 Jan 15, 2024 =
+* Improved compatibilities.
+* Fixes an issue on remove first image on content with Fifu option activated.
+* Stay tuned. We are preparing everything for the major update 2.7.
+* More details at [wpematico Releases](https://www.wpematico.com/2-6-22-jan-15-2024/)
+
+= 2.6.21 Oct 17, 2023 =
+* Improves compatibilities for titles with Professional and Facebook Fetcher addons.
+* Added new filter on get the title of each post to allow parsers on it.
+* Fixes few issues on Addons page and actions.
+* Fixes deprecated notices on Welcome and About pages.
+* Fixes all old links from PRO to Essentials Extensions.
+
 = 2.6.20.2 Jul 21, 2023 =
 * Bump to WP 6.3
 * New video on WordPress main plugin page.

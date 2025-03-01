@@ -2,8 +2,8 @@
 Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,rss to blog,feed to post,rss aggregator
-Stable tag: 2.7.11
-Tested up to: 6.7
+Stable tag: 2.8
+Tested up to: 6.7.2
 Requires at least: 4.8
 Requires PHP: 7.0
 License: GPLv2 or later
@@ -243,6 +243,49 @@ You can send your files to e-mail WPeMatico [at] etruel.com
 
 > See all detailed changelog at [WPeMatico Releases](https://wpematico.com/releases/)
 
+= 2.8 Mar 1, 2025 =
+
+Major Version 2.8 focuses on **highly requested features** and **new functionalities** designed for future (but near) general improvements.
+Recommended to test it in a staging environment before updating production websites.
+
+#### _Enhancements:_
+
+> * **New feature to retrieve image attributes and store them in WP Media.**  
+>   Now, image attributes such as alt text, captions, and metadata will be fetched and saved along with the images in WordPress Media Library.  
+
+> * **New feature to limit the number of automatically created categories.**  
+>   Allows better control over taxonomy creation, preventing excessive automatic category generation.  
+
+> * **New direct link to WPeMatico extensions from the plugins page.**  
+>   Easily discover and manage premium add-ons for enhanced functionality.
+
+> * **New feedback form when deactivating the plugin.**  
+>   Users can now provide insights and reasons for deactivation, helping improve WPeMatico.
+
+> * **New functionality to integrate features from discontinued addons into the free core.**
+>   Some features previously exclusive to Pro addons will now be gradually included in the free version.
+
+> * **Quick Edit improvements: Added taxonomy support for custom post types in campaigns.**
+>   Now, users can assign taxonomies directly in the Quick Edit feature for better campaign organization.
+
+> * **Improved campaign execution notifications from the campaign list.**
+>   Enhances visibility and user experience when running campaigns manually.
+
+> * Various **UI/UX cosmetic improvements**.  
+
+> * **Tested with WordPress 6.7.2** to ensure full compatibility.  
+
+#### _Bugfixes:_
+
+> * Fixes Notice: Function _load_textdomain_just_in_time was called incorrectly.
+> * Fixes **several security issues** to enhance plugin stability and safety.
+
+
+#### _Recent (may break) changes:_
+
+> * NOTE: **Enlarges the version required for the [WPeMatico Professional](https://etruel.com/downloads/wpematico-professional/) addon to 3.1**  
+> * NOTE2: **Enlarges the version required for the [WPeMatico GPT Spinner](https://etruel.com/downloads/wpematico-gpt-spinner/) addon to 2.0**  
+
 = 2.7.11 Nov 27, 2024 =
 
 * Tested with WordPress 6.7.1
@@ -369,39 +412,6 @@ Recommended update it on testing environments before update on production websit
 > * The titles feature was improved to use a new added filter.
 > * On plugin update will be queued a process to upgrade each campaign to the newly way on hash creation to control post duplicates.
 > * NOTE: **Enlarges the version required for the Professional addon to 2.20**
-
-= 2.6.25 May 30, 2024 =
-
-* Added MDM notifications
-#### _Last version on 2.6.x series!!_
-
-We will soon reach one million downloads and we will celebrate it with the 2.7 major version.
-And not only that, but we are also prepared a big celebration for a whole month!
-In which we will release the new versions with many new free features,
-but we will also make many free gifts for all our community of WordPress users, customers and friends. 
-The month of June is coming strong! Don't miss it! Follow everything on this link!
-* [Millon Downloads Month](https://etruel.com/join-us-to-celebrate-the-million-downloads-month/)
-
-= 2.6.24 Mar 25, 2024 =
-* Improves compatibilities with WordPress 6.5
-* Fixes some PHP warnings on campaigns list.
-
-= 2.6.23 Feb 23, 2024 =
-* Bump to WP 6.5
-* Fixes the fetch and download of audio/video files from the content of feed items to the WordPress Media.
-
-= 2.6.22 Jan 15, 2024 =
-* Improved compatibilities.
-* Fixes an issue on remove first image on content with Fifu option activated.
-* Stay tuned. We are preparing everything for the major update 2.7.
-* More details at [wpematico Releases](https://www.wpematico.com/2-6-22-jan-15-2024/)
-
-= 2.6.21 Oct 17, 2023 =
-* Improves compatibilities for titles with Professional and Facebook Fetcher addons.
-* Added new filter on get the title of each post to allow parsers on it.
-* Fixes few issues on Addons page and actions.
-* Fixes deprecated notices on Welcome and About pages.
-* Fixes all old links from PRO to Essentials Extensions.
 
 = Earlier versions =
 For the changelog of earlier versions, please refer to changelog.md file or [the changelog on wpematico.com](https://www.wpematico.com/releases/).
