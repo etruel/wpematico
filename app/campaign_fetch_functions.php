@@ -788,7 +788,7 @@ class wpematico_campaign_fetch_functions {
 				}
 				
 				$new_content = apply_filters('wpematico_filter_attr_images', $new_content, $attributes);
-				$out[2] = wp_parse_args(array($attributes['src']));
+				$out[2] = wp_parse_args(array($attributes['src']), $out[2]);
 				
 				// Store attributes in the image_attributes_array
 				$image_attributes_array[] = $attributes; // Append the attributes array for this image tag

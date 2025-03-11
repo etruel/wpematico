@@ -403,7 +403,7 @@ if(!class_exists('WPeMatico_Settings')) :
 											<div id="nolinkimg" style="padding-left:20px; <?php if(!$cfg['imgcache']) echo 'display:none;'; ?>">
 												<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['imgattach'], true); ?> name="imgattach" id="imgattach" /><b>&nbsp;<label for="imgattach"><?php _e('Attach Images to posts.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['imgattach']; ?>"></span>
 												<br/>
-												<p class="attr_image_p" style="margin-top:-2px; <?php if(!$cfg['imgattach']) echo 'display:none;'; ?>">
+												<p class="attr_image_p" style="margin-top:-2px;">
 													<input class="checkbox"  value="1" type="checkbox" <?php checked($cfg['save_attr_images'], true); ?> name="save_attr_images" id="save_attr_images" /><b>&nbsp;<label for="save_attr_images"><?php _e('Save Image attributes on WP Media.', 'wpematico'); ?></label></b><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['save_attr_images']; ?>"></span>
 												</p>
 												<input name="gralnolinkimg" id="gralnolinkimg" class="checkbox" value="1" type="checkbox" <?php checked($cfg['gralnolinkimg'], true); ?> />&nbsp;<label for="gralnolinkimg"><?php _e('Remove link to source images', 'wpematico'); ?></label><span class="dashicons dashicons-warning help_tip" title="<?php echo $helptip['gralnolinkimg']; ?>"></span>
