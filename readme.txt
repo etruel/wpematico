@@ -244,7 +244,7 @@ You can send your files to e-mail WPeMatico [at] etruel.com
 > See all detailed changelog at [WPeMatico Releases](https://wpematico.com/releases/)
 
 = 2.8.1 Mar 21, 2025 =
-
+> * Fixed images save with specials characters.
 > * Fixed images fetched from the enclosure being skipped during processing.
 > * Fixed featured image assignment issue where the last image was being assigned instead of the first one.
 > * Fixed visibility issue with the "Save Image attributes on WP Media" option, which was hidden unintentionally.
