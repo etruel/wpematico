@@ -467,13 +467,7 @@ class wpematico_campaign_fetch_functions {
 					$allowed		 = apply_filters('wpematico_allowext', $allowed);
 					//Fetch and Store the Image	
 					///////////////***************************************************************************************////////////////////////
-					$basename = rawurldecode(basename($imagen_src_real)); // Decodifica caracteres especiales
-					$ext = pathinfo($basename, PATHINFO_EXTENSION); // Obtiene la extensión original
-					$filename = pathinfo($basename, PATHINFO_FILENAME); // Obtiene el nombre sin extensión
-					$newimgname = apply_filters('wpematico_newimgname', sanitize_file_name($filename), $current_item, $campaign, $item);
-					if (!empty($ext)) {
-						$newimgname .= '.' . $ext; // Asegura que la extensión se conserve
-					}
+					$newimgname		 = apply_filters('wpematico_newimgname', sanitize_file_name(rawurldecode(basename($imagen_src_real))), $current_item, $campaign, $item);  // new name here
 					// Primero intento con mi funcion mas rapida
 					$newimgname 	 = substr($newimgname , 0, 255);
 					$upload_dir		 = wp_upload_dir();
