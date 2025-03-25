@@ -469,7 +469,7 @@ class wpematico_campaign_fetch_functions {
 					///////////////***************************************************************************************////////////////////////
 					$newimgname		 = apply_filters('wpematico_newimgname', sanitize_file_name(urlencode(basename($imagen_src_real))), $current_item, $campaign, $item);  // new name here
 					// Primero intento con mi funcion mas rapida
-					$newimgname 	 = substr($newimgname , 0, 255);
+					$newimgname 	 = mb_substr($newimgname , 0, 255);
 					$upload_dir		 = wp_upload_dir();
 					$imagen_dst		 = trailingslashit($upload_dir['path']) . $newimgname;
 					$imagen_dst_url	 = trailingslashit($upload_dir['url']) . $newimgname;
@@ -788,7 +788,7 @@ class wpematico_campaign_fetch_functions {
 				}
 				
 				$new_content = apply_filters('wpematico_filter_attr_images', $new_content, $attributes);
-				$out[2] = wp_parse_args(array($attributes['src']));
+				$out[2] = wp_parse_args(array($attributes['src']), $out[2]);
 				
 				// Store attributes in the image_attributes_array
 				$image_attributes_array[] = $attributes; // Append the attributes array for this image tag

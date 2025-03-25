@@ -481,7 +481,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
                 }
             }
         }
-
+       
         if ($options_images['rmfeaturedimg']) { // removes featured from content
             if(!empty($this->current_item['featured_image'])){
                 $this->current_item['content'] = $this->strip_Image_by_src($this->current_item['featured_image'], $this->current_item['content']);
@@ -489,7 +489,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
                 $this->current_item['content'] = $this->strip_Image_by_src($wpematico_fifu_meta['fifu_image_url'], $this->current_item['content']);
             }
         }
-
+        
         /**
          * @since 2.7.7
          * Filter to put in content 1st image link

@@ -66,10 +66,22 @@ function admin_footer(){
 						<input type="radio" name="deactivation_reason" value="stopped_working">
 						<?php _e('The plugin suddenly stopped working', 'wpematico') ?>
 					</label><br>
+					<div id="stopped_working_div" style="margin-left:40px; display: none;">
+						<label>
+							<b><?php esc_html_e('Write what is the real problem', 'wpematico') ?> <a style="font-size: smaller;" href="https://etruel.com/my-account/support/" target="_blank" rel="noopener noreferrer">https://etruel.com/my-account/support/</a></b>
+						</label for="stoppworking_reason"><br>
+						<textarea name="explicit_reason" id="stopped_working_reason"></textarea>
+					</div>
 					<label>
-						<input type="radio" name="deactivation_reason" value="broke_site">
+						<input type="radio" name="deactivation_reason" value="broke_site" id="broke_site_radio">
 						<?php _e('The plugin broke my site', 'wpematico') ?>
 					</label><br>
+					<div id="broke_site_div" style="margin-left:40px; display: none;">
+						<label>
+							<b><?php esc_html_e('Write what is the real problem', 'wpematico') ?> <a style="font-size: smaller;" href="https://etruel.com/my-account/support/" target="_blank" rel="noopener noreferrer">https://etruel.com/my-account/support/</a></b>
+						</label for="broke_site_reason"><br>
+						<textarea name="explicit_reason" id="broke_site_reason"></textarea>
+					</div>
 					<label>
 						<input type="radio" name="deactivation_reason" value="better_plugin">
 						<?php _e('I found a better plugin', 'wpematico') ?>
@@ -82,6 +94,12 @@ function admin_footer(){
 						<input type="radio" name="deactivation_reason" value="other">
 						<?php _e('Other', 'wpematico') ?>
 					</label>
+					<div id="other_reason_div" style="margin-left:40px; display: none;">
+						<label>
+							<b><?php esc_html_e('Write what is the real problem', 'wpematico') ?> <a style="font-size: smaller;" href="https://etruel.com/my-account/support/" target="_blank" rel="noopener noreferrer">https://etruel.com/my-account/support/</a></b>
+						</label for="other_reason"><br>
+						<textarea name="explicit_reason" id="other_reason"></textarea>
+					</div>
 					<div class="form_footer">
 						<button id="send_feedback" type="submit" class="button"><?php _e('Send & deactivate', 'wpematico') ?></button>
 					</div>
@@ -95,10 +113,39 @@ function admin_footer(){
 			jQuery('#wpe_feedback').fadeToggle().addClass('active');
 			jQuery('body').addClass('wpe_modal_log-is-active');
 		});
+
+		jQuery('[name=deactivation_reason]').on("change", function () {
+			if (jQuery('input[name="deactivation_reason"]:checked').val() == 'broke_site') {
+				jQuery('#broke_site_div').fadeIn();
+				jQuery('#stopped_working_div').fadeOut();
+				jQuery('#other_reason_div').fadeOut();
+			} else if(jQuery('input[name="deactivation_reason"]:checked').val() == 'stopped_working') {
+				jQuery('#stopped_working_div').fadeIn();
+				jQuery('#broke_site_div').fadeOut();
+				jQuery('#other_reason_div').fadeOut();
+			} else if(jQuery('input[name="deactivation_reason"]:checked').val() == 'other') {
+				jQuery('#stopped_working_div').fadeOut();
+				jQuery('#broke_site_div').fadeOut();
+				jQuery('#other_reason_div').fadeIn();
+			}else{
+				jQuery('#stopped_working_div').fadeOut();
+				jQuery('#stopped_working_div').fadeOut();
+				jQuery('#other_reason_div').fadeOut();
+			}
+		});
 		
 		jQuery('#feedback_form').on('submit', function(e) {
         e.preventDefault(); // Prevent form from submitting the default way
         var reason = jQuery('input[name="deactivation_reason"]:checked').val(); // Get the selected reason
+		var explicit_reason = '';
+
+		if (reason === 'stopped_working') {
+        explicit_reason = jQuery('#stopped_working_reason').val();
+		} else if (reason === 'broke_site') {
+			explicit_reason = jQuery('#broke_site_reason').val();
+		} else if (reason === 'other') {
+			explicit_reason = jQuery('#other_reason').val();
+		}
 
         // Send AJAX request to the server
         jQuery.ajax({
@@ -106,7 +153,8 @@ function admin_footer(){
             type: 'POST',
             data: {
                 action: 'handle_feedback_submission', // The PHP function to handle the feedback
-                reason: reason
+                reason: reason,
+				explicit_reason: explicit_reason
             },
             success: function(response) {
                 if(response.success) {
@@ -166,11 +214,12 @@ function handle_feedback_submission() {
 
     // Get the feedback reason from the form
     $reason = isset($_POST['reason']) ? sanitize_text_field($_POST['reason']) : '';
-
+	$explicit_reason = isset($_POST['explicit_reason']) ? sanitize_text_field($_POST['explicit_reason']) : '';
     // Prepare the email
     $to = 'hello@etruel.com';
     $subject = 'Plugin Deactivation Feedback';
     $message = "A user deactivated the plugin for the following reason: " . $reason;
+	$message .= "The user wrote the following $explicit_reason";
     $headers = ['From: ' . get_bloginfo('name') . ' <wordpress@' . parse_url(home_url(), PHP_URL_HOST) . '>'];
 
     // Send the email

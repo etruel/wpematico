@@ -2,7 +2,7 @@
 Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,rss to blog,feed to post,rss aggregator
-Stable tag: 2.8
+Stable tag: 2.8.1
 Tested up to: 6.7.2
 Requires at least: 4.8
 Requires PHP: 7.0
@@ -242,6 +242,13 @@ You can send your files to e-mail WPeMatico [at] etruel.com
 == Changelog ==
 
 > See all detailed changelog at [WPeMatico Releases](https://wpematico.com/releases/)
+
+= 2.8.1 Mar 21, 2025 =
+> * Fixed images save with specials characters.
+> * Fixed images fetched from the enclosure being skipped during processing.
+> * Fixed featured image assignment issue where the last image was being assigned instead of the first one.
+> * Fixed visibility issue with the "Save Image attributes on WP Media" option, which was hidden unintentionally.
+> * Improves deactivate feedback popup notifications for better user experience and clarity.
 
 = 2.8 Mar 1, 2025 =
 
