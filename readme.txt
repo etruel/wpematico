@@ -243,12 +243,13 @@ You can send your files to e-mail WPeMatico [at] etruel.com
 
 > See all detailed changelog at [WPeMatico Releases](https://wpematico.com/releases/)
 
-= 2.8.1 Mar 21, 2025 =
-> * Fixed images save with specials characters.
-> * Fixed images fetched from the enclosure being skipped during processing.
-> * Fixed featured image assignment issue where the last image was being assigned instead of the first one.
-> * Fixed visibility issue with the "Save Image attributes on WP Media" option, which was hidden unintentionally.
-> * Improves deactivate feedback popup notifications for better user experience and clarity.
+= 2.8.1 Mar 25, 2025 =
+
+* **Fixed few bugs incorporated in the last version.**
+* Fixes images fetched from the enclosure being skipped during processing on Professional Extension.
+* Fixes featured image assignment issue where the last image was being assigned instead of the first one.
+* Fixes visibility issue with the "Save Image attributes on WP Media" option, which was hidden unintentionally.
+* Improves feedback popup notifications for better user experience.
 
 = 2.8 Mar 1, 2025 =
 
@@ -286,7 +287,6 @@ Recommended to test it in a staging environment before updating production websi
 
 > * Fixes Notice: Function _load_textdomain_just_in_time was called incorrectly.
 > * Fixes **several security issues** to enhance plugin stability and safety.
-
 
 #### _Recent (may break) changes:_
 
@@ -429,4 +429,4 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 
-Major version. Make backup before update! See changelog for tweaks and improvements in this version.
+Fixes few bugs about images incorporated in the last version.

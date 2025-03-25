@@ -468,8 +468,11 @@ class wpematico_campaign_fetch_functions {
 					//Fetch and Store the Image	
 					///////////////***************************************************************************************////////////////////////
 					$newimgname		 = apply_filters('wpematico_newimgname', sanitize_file_name(urlencode(basename($imagen_src_real))), $current_item, $campaign, $item);  // new name here
-					// Primero intento con mi funcion mas rapida
-					$newimgname 	 = mb_substr($newimgname , 0, 255);
+					
+					// We need to cut the number of characters in the name to avoid upload errors by OS limits. 
+					$newimgname 	 = mb_substr($newimgname , 0, 245);
+					
+					// First I try my fastest function
 					$upload_dir		 = wp_upload_dir();
 					$imagen_dst		 = trailingslashit($upload_dir['path']) . $newimgname;
 					$imagen_dst_url	 = trailingslashit($upload_dir['url']) . $newimgname;
@@ -788,6 +791,9 @@ class wpematico_campaign_fetch_functions {
 				}
 				
 				$new_content = apply_filters('wpematico_filter_attr_images', $new_content, $attributes);
+				
+				// Merges the new 'src' attribute with existing $out[2] values, preserving previous entries.
+				// wp_parse_args() instead of array_merge() as this did strange things.
 				$out[2] = wp_parse_args(array($attributes['src']), $out[2]);
 				
 				// Store attributes in the image_attributes_array

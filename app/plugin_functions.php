@@ -49,58 +49,50 @@ function admin_footer(){
 				<span class="dashicons dashicons-no-alt"></span>
 			</a>
 			<div class="wpe_modal_log-header">
-				<h3><?php _e('QUICK FEEDBACK', 'wpematico') ?></h3>
+				<h3><?php esc_html_e('Quick Feedback', 'wpematico') ?></h3>
 			</div>
 			<div class="wpe_modal_log-content">
-				<h3><?php _e("If you have a moment, please let us know why you're deactivating:", 'wpematico') ?></h3>
+				<h3><?php esc_html_e("We’d love to know why you're deactivating. Your feedback helps us improve!", 'wpematico') ?></h3>
 				<form id="feedback_form">
 					<label>
 						<input type="radio" name="deactivation_reason" value="short_period" required>
-						<?php _e('I only needed the plugin for a short period', 'wpematico') ?>
-					</label><br>
-					<label>
-						<input type="radio" name="deactivation_reason" value="no_longer_needed">
-						<?php _e('I no longer need the plugin', 'wpematico') ?>
-					</label><br>
-					<label>
-						<input type="radio" name="deactivation_reason" value="stopped_working">
-						<?php _e('The plugin suddenly stopped working', 'wpematico') ?>
-					</label><br>
-					<div id="stopped_working_div" style="margin-left:40px; display: none;">
-						<label>
-							<b><?php esc_html_e('Write what is the real problem', 'wpematico') ?> <a style="font-size: smaller;" href="https://etruel.com/my-account/support/" target="_blank" rel="noopener noreferrer">https://etruel.com/my-account/support/</a></b>
-						</label for="stoppworking_reason"><br>
-						<textarea name="explicit_reason" id="stopped_working_reason"></textarea>
-					</div>
-					<label>
-						<input type="radio" name="deactivation_reason" value="broke_site" id="broke_site_radio">
-						<?php _e('The plugin broke my site', 'wpematico') ?>
-					</label><br>
-					<div id="broke_site_div" style="margin-left:40px; display: none;">
-						<label>
-							<b><?php esc_html_e('Write what is the real problem', 'wpematico') ?> <a style="font-size: smaller;" href="https://etruel.com/my-account/support/" target="_blank" rel="noopener noreferrer">https://etruel.com/my-account/support/</a></b>
-						</label for="broke_site_reason"><br>
-						<textarea name="explicit_reason" id="broke_site_reason"></textarea>
-					</div>
-					<label>
-						<input type="radio" name="deactivation_reason" value="better_plugin">
-						<?php _e('I found a better plugin', 'wpematico') ?>
+						<?php esc_html_e('✅ I only needed the plugin temporarily', 'wpematico') ?>
 					</label><br>
 					<label>
 						<input type="radio" name="deactivation_reason" value="temporary_deactivation">
-						<?php _e("It's a temporary deactivation - I'm troubleshooting an issue", 'wpematico') ?>
+						<?php esc_html_e('🔧 I’m troubleshooting an issue and will likely reactivate it', 'wpematico') ?>
+					</label><br>
+					<label>
+						<input type="radio" name="deactivation_reason" value="stopped_working">
+						<?php esc_html_e("⚡ The plugin isn’t working as expected (we can help fix it!)", 'wpematico') ?>
+					</label><br>
+					<label>
+						<input type="radio" name="deactivation_reason" value="broke_site" id="broke_site_radio">
+						<?php esc_html_e('❌ The plugin caused issues on my site (let us know so we can resolve them)', 'wpematico') ?>
+					</label><br>
+					<label>
+						<input type="radio" name="deactivation_reason" value="another_plugin">
+						<?php esc_html_e('🔄 I’m switching to another plugin (tell us what’s missing, and we may add it!)', 'wpematico') ?>
+					</label><br>
+					<label>
+						<input type="radio" name="deactivation_reason" value="no_longer_needed">
+						<?php esc_html_e('🤷 I no longer need it', 'wpematico') ?>
 					</label><br>
 					<label>
 						<input type="radio" name="deactivation_reason" value="other">
-						<?php _e('Other', 'wpematico') ?>
+						<?php esc_html_e('📝 Other', 'wpematico') ?>
 					</label>
 					<div id="other_reason_div" style="margin-left:40px; display: none;">
-						<label>
-							<b><?php esc_html_e('Write what is the real problem', 'wpematico') ?> <a style="font-size: smaller;" href="https://etruel.com/my-account/support/" target="_blank" rel="noopener noreferrer">https://etruel.com/my-account/support/</a></b>
-						</label for="other_reason"><br>
-						<textarea name="explicit_reason" id="other_reason"></textarea>
+						<label for="other_reason">
+							<b><?php esc_html_e('Tell us more about your experience: (Optional)', 'wpematico') ?></b>
+						</label><br>
+						<textarea name="explicit_reason" id="other_reason" style="width: 100%;"></textarea>
 					</div>
 					<div class="form_footer">
+						<div style="float: left; margin-left: 20px;"><?php printf( esc_html__('💡 Remember, we offer FREE support on %s.', 'wpematico'),
+							'<a href="https://etruel.com/my-account/support/" target="_blank" rel="noopener noreferrer" class="support-link">' . esc_html__('Our Site', 'wpematico') . '</a>');
+							esc_html_e(' – we’re happy to help!', 'wpematico'); ?>
+						</div>
 						<button id="send_feedback" type="submit" class="button"><?php _e('Send & deactivate', 'wpematico') ?></button>
 					</div>
 				</form>
@@ -115,93 +107,79 @@ function admin_footer(){
 		});
 
 		jQuery('[name=deactivation_reason]').on("change", function () {
-			if (jQuery('input[name="deactivation_reason"]:checked').val() == 'broke_site') {
-				jQuery('#broke_site_div').fadeIn();
-				jQuery('#stopped_working_div').fadeOut();
-				jQuery('#other_reason_div').fadeOut();
-			} else if(jQuery('input[name="deactivation_reason"]:checked').val() == 'stopped_working') {
-				jQuery('#stopped_working_div').fadeIn();
-				jQuery('#broke_site_div').fadeOut();
-				jQuery('#other_reason_div').fadeOut();
-			} else if(jQuery('input[name="deactivation_reason"]:checked').val() == 'other') {
-				jQuery('#stopped_working_div').fadeOut();
-				jQuery('#broke_site_div').fadeOut();
-				jQuery('#other_reason_div').fadeIn();
-			}else{
-				jQuery('#stopped_working_div').fadeOut();
-				jQuery('#stopped_working_div').fadeOut();
-				jQuery('#other_reason_div').fadeOut();
+			var $otherReasonDiv = jQuery('#other_reason_div');
+			$otherReasonDiv.hide();
+			
+			let selected = jQuery('input[name="deactivation_reason"]:checked').val();
+			let tellmore = ['stopped_working', 'broke_site', 'another_plugin', 'no_longer_needed', 'other'];
+			
+			if (tellmore.includes(selected)) {
+				// Move the div immediately after the selected radio label
+				$otherReasonDiv.insertAfter(jQuery(this).closest('label'));
+				$otherReasonDiv.fadeIn();
 			}
 		});
 		
 		jQuery('#feedback_form').on('submit', function(e) {
-        e.preventDefault(); // Prevent form from submitting the default way
-        var reason = jQuery('input[name="deactivation_reason"]:checked').val(); // Get the selected reason
-		var explicit_reason = '';
+			e.preventDefault(); // Prevent form from submitting the default way
+			var reason = jQuery('input[name="deactivation_reason"]:checked').val(); // Get the selected reason
+			var explicit_reason = jQuery('#other_reason').val();
 
-		if (reason === 'stopped_working') {
-        explicit_reason = jQuery('#stopped_working_reason').val();
-		} else if (reason === 'broke_site') {
-			explicit_reason = jQuery('#broke_site_reason').val();
-		} else if (reason === 'other') {
-			explicit_reason = jQuery('#other_reason').val();
-		}
+			// Send AJAX request to the server
+			jQuery.ajax({
+				url: ajaxurl, // WordPress AJAX URL
+				type: 'POST',
+				data: {
+					action: 'handle_feedback_submission', // The PHP function to handle the feedback
+					reason: reason,
+					explicit_reason: explicit_reason
+				},
+				success: function(response) {
+					if(response.success) {
+						// Close the feedback modal
+						jQuery('#wpe_feedback').fadeToggle().removeClass('active');
+						jQuery('body').removeClass('wpe_modal_log-is-active');
 
-        // Send AJAX request to the server
-        jQuery.ajax({
-            url: ajaxurl, // WordPress AJAX URL
-            type: 'POST',
-            data: {
-                action: 'handle_feedback_submission', // The PHP function to handle the feedback
-                reason: reason,
-				explicit_reason: explicit_reason
-            },
-            success: function(response) {
-                if(response.success) {
-                    // Close the feedback modal
-                    jQuery('#wpe_feedback').fadeToggle().removeClass('active');
-                    jQuery('body').removeClass('wpe_modal_log-is-active');
+						// Reload the page and display the success message
+						alert(response.data.message); // Display the success message
+						location.reload(); // Reload the page
+					} else {
+						alert('Error: ' + response.data); // Handle errors, if any
+					}
+				},
+				error: function() {
+					alert('An unexpected error occurred.');
+				}
+			});
+		});
 
-                    // Reload the page and display the success message
-                    alert(response.data.message); // Display the success message
-                    location.reload(); // Reload the page
-                } else {
-                    alert('Error: ' + response.data); // Handle errors, if any
-                }
-            },
-            error: function() {
-                alert('An unexpected error occurred.');
-            }
-        });
-    });
+		jQuery('#skip_feedback').on('click', function() {
+		   // Send AJAX request to the server
+		   jQuery.ajax({
+				url: ajaxurl, // WordPress AJAX URL
+				type: 'POST',
+				data: {
+					action: 'handle_feedback_submission', // The PHP function to handle the feedback
+					reason: 'skipped'
+				},
+				success: function(response) {
+					if(response.success) {
+						// Close the feedback modal
+						jQuery('#wpe_feedback').fadeToggle().removeClass('active');
+						jQuery('body').removeClass('wpe_modal_log-is-active');
 
-    jQuery('#skip_feedback').on('click', function() {
-       // Send AJAX request to the server
-	   jQuery.ajax({
-            url: ajaxurl, // WordPress AJAX URL
-            type: 'POST',
-            data: {
-                action: 'handle_feedback_submission', // The PHP function to handle the feedback
-                reason: 'skipped'
-            },
-            success: function(response) {
-                if(response.success) {
-                    // Close the feedback modal
-                    jQuery('#wpe_feedback').fadeToggle().removeClass('active');
-                    jQuery('body').removeClass('wpe_modal_log-is-active');
-
-                    // Reload the page and display the success message
-                    alert(response.data.message); // Display the success message
-                    location.reload(); // Reload the page
-                } else {
-                    alert('Error: ' + response.data); // Handle errors, if any
-                }
-            },
-            error: function() {
-                alert('An unexpected error occurred.');
-            }
-        });
-    });
+						// Reload the page and display the success message
+						alert(response.data.message); // Display the success message
+						location.reload(); // Reload the page
+					} else {
+						alert('Error: ' + response.data); // Handle errors, if any
+					}
+				},
+				error: function() {
+					alert('An unexpected error occurred.');
+				}
+			});
+		});
     </script>
     <?php
     }
@@ -228,7 +206,7 @@ function handle_feedback_submission() {
         deactivate_plugins('wpematico/wpematico.php'); // Specify your plugin's path here
 
         // Return success message
-        wp_send_json_success(['message' => 'Deactivate successfully']);
+        wp_send_json_success(['message' => esc_html__('Deactivated successfully','wpematico') ]);
     } else {
         // Return error message if email fails
         wp_send_json_error('Failed to send email.');
