@@ -197,7 +197,7 @@ function handle_feedback_submission() {
     $to = 'hello@etruel.com';
     $subject = 'Plugin Deactivation Feedback';
     $message = "A user deactivated the plugin for the following reason: " . $reason;
-	$message .= "The user wrote the following $explicit_reason";
+	$message .= "\n\nThe user wrote the following $explicit_reason";
     $headers = ['From: ' . get_bloginfo('name') . ' <wordpress@' . parse_url(home_url(), PHP_URL_HOST) . '>'];
 
     // Send the email
