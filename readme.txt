@@ -243,6 +243,11 @@ You can send your files to e-mail WPeMatico [at] etruel.com
 
 > See all detailed changelog at [WPeMatico Releases](https://wpematico.com/releases/)
 
+= 2.8.2 Abr 1, 2025 =
+
+* Fixed when uploading images with Chinese characters.
+* Fix the content of the feedback email on plugin deactivate.
+
 = 2.8.1 Mar 25, 2025 =
 
 * **Fixed few bugs incorporated in the last version.**

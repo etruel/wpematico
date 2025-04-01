@@ -44,7 +44,7 @@ if (!class_exists('WPeMatico_functions')) {
 			$filename = preg_replace('/[^\p{L}\p{N}_-]/u', '', $filename);
 		
 			// Trim the filename to 240 characters while ensuring UTF-8 encoding
-			$filename = mb_substr($filename, 0, 240, 'UTF-8');
+			$filename = mb_substr($filename, 0, apply_filters('wpematico_trim_imglegth', 200), 'UTF-8');
 		
 			// Ensure the extension remains intact
 			$newimgname = !empty($ext) ? "{$filename}.{$ext}" : $basename;
