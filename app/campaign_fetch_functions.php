@@ -22,7 +22,7 @@ if (!defined('ABSPATH')) {
 if (class_exists('wpematico_campaign_fetch_functions'))
 	return;
 
-class wpematico_campaign_fetch_functions {
+class wpematico_campaign_fetch_functions extends WPeMatico_functions {
 
 	public static function WPeisDuplicatedMetaSource($dev, $campaign, $item) {
 		global $wpdb;
@@ -457,30 +457,27 @@ class wpematico_campaign_fetch_functions {
 					}
 					$imagen_src		 = apply_filters('wpematico_imagen_src', $imagen_src); // allow strip parts 
 					trigger_error(__('Uploading media...', 'wpematico') . $imagen_src, E_USER_NOTICE);
+					
 					$imagen_src_real = $this->getRelativeUrl($itemUrl, $imagen_src);
-					// Strip all white space on images URLs.	
-					$imagen_src_real = str_replace(' ', '%20', $imagen_src_real);
-					// Fix images URLs with entities like &amp;	to get it with correct name and remain the original in images array.
-					$imagen_src_real = html_entity_decode($imagen_src_real);
-					$imagen_src_real = apply_filters('wpematico_img_src_url', $imagen_src_real); // original source
+					$imagen_src_real = $this->parse_src_image($imagen_src_real);
 					$allowed		 = (isset($this->cfg['images_allowed_ext']) && !empty($this->cfg['images_allowed_ext']) ) ? $this->cfg['images_allowed_ext'] : 'jpg,gif,png,tif,bmp,jpeg';
 					$allowed		 = apply_filters('wpematico_allowext', $allowed);
 					//Fetch and Store the Image	
 					///////////////***************************************************************************************////////////////////////
-					$newimgname		 = apply_filters('wpematico_newimgname', sanitize_file_name(urlencode(basename($imagen_src_real))), $current_item, $campaign, $item);  // new name here
-					
-					// We need to cut the number of characters in the name to avoid upload errors by OS limits. 
-					$newimgname 	 = mb_substr($newimgname , 0, 245);
+					$newimgname = $this->parse_dst_image($imagen_src_real, $current_item, $campaign, $item);
 					
 					// First I try my fastest function
 					$upload_dir		 = wp_upload_dir();
 					$imagen_dst		 = trailingslashit($upload_dir['path']) . $newimgname;
 					$imagen_dst_url	 = trailingslashit($upload_dir['url']) . $newimgname;
 					trigger_error('Filtering image extensions:' . $allowed, E_USER_NOTICE);
+					
 					if (in_array(str_replace('.', '', strrchr(strtolower($imagen_dst), '.')), explode(',', $allowed))) {   // ----- check allowed extensions
 						trigger_error('Uploading media=' . $imagen_src . ' <b>to</b> image=' . $imagen_dst . '', E_USER_NOTICE);
 						// Check if try custom functions to upload files.
 						$newfile = ($options_images['customupload']) ? WPeMatico::save_file_from_url($imagen_src_real, $imagen_dst) : false;
+
+						
 						if ($newfile) { //If <> false was uploaded
 							trigger_error('Uploaded media=' . $newfile, E_USER_NOTICE);
 							$imagen_dst				 = $newfile;
@@ -490,6 +487,7 @@ class wpematico_campaign_fetch_functions {
 							$img_new_url[]			 = $imagen_dst_url;
 						} else { // Upload fail -> try with others
 							$bits = WPeMatico::wpematico_get_contents($imagen_src_real); // Read the file
+							
 							if (!$bits) {
 								// Remove the image if its upload fail.
 								trigger_error(__('Upload file failed:', 'wpematico') . $imagen_dst, E_USER_WARNING);
@@ -498,13 +496,10 @@ class wpematico_campaign_fetch_functions {
 									$current_item['content'] = self::strip_Image_by_src($imagen_src, $current_item['content']);
 								}
 							} else {
-								//here is the error
-
 								$mirror = wp_upload_bits($newimgname, NULL, $bits);
-
-
+								
 								if (!$mirror['error']) {
-									trigger_error($mirror['url'], E_USER_NOTICE);
+									trigger_error($mirror['url'], E_USER_NOTICE);								
 									$current_item['content'] = str_replace($imagen_src, $mirror['url'], $current_item['content']);
 									do_action('wpematico_new_image_url_uploaded', $mirror['url'], $imagen_src, $current_item, $campaign);
 									$img_new_url[]			 = $mirror['url'];

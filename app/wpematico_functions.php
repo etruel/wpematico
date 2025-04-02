@@ -20,6 +20,39 @@ if (!defined('ABSPATH')) {
 if (!class_exists('WPeMatico_functions')) {
 	
 	class WPeMatico_functions {
+
+		public function parse_src_image($imagen_src_real) {
+			// Decode URL encoding to properly handle spaces and special characters
+			$imagen_src_real = rawurldecode($imagen_src_real);
+		
+			// Replace spaces with %20 to keep URLs valid
+			$imagen_src_real = str_replace(' ', '%20', $imagen_src_real);
+			
+			// Apply WordPress sanitization
+			return apply_filters('wpematico_img_src_url', esc_url_raw($imagen_src_real));
+		}
+		
+		public function parse_dst_image($imagen_src_real, $current_item, $campaign, $item) {
+			// Decode URL to handle special characters correctly
+			$basename = rawurldecode(basename($imagen_src_real));
+		
+			// Extract extension and filename
+			$ext = pathinfo($basename, PATHINFO_EXTENSION);
+			$filename = pathinfo($basename, PATHINFO_FILENAME);
+		
+			// Allow Chinese characters, letters, numbers, underscores, and dashes
+			$filename = preg_replace('/[^\p{L}\p{N}_-]/u', '', $filename);
+		
+			// Trim the filename to 240 characters while ensuring UTF-8 encoding
+			$filename = mb_substr($filename, 0, apply_filters('wpematico_trim_imglegth', 200), 'UTF-8');
+		
+			// Ensure the extension remains intact
+			$newimgname = !empty($ext) ? "{$filename}.{$ext}" : $basename;
+		
+			// Apply WordPress sanitization and return the new filename
+			return apply_filters('wpematico_newimgname', sanitize_file_name($newimgname), $current_item, $campaign, $item);
+		}
+
 		public static $current_feed = ''; // The current feed that is running.
 
 		/**
