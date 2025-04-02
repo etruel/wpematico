@@ -243,10 +243,12 @@ You can send your files to e-mail WPeMatico [at] etruel.com
 
 > See all detailed changelog at [WPeMatico Releases](https://wpematico.com/releases/)
 
-= 2.8.2 Abr 1, 2025 =
+= 2.8.2 Abr 2, 2025 =
 
-* Fixed when uploading images with Chinese characters.
-* Fix the content of the feedback email on plugin deactivate.
+* Enhanced image upload handling and processing for improved reliability.
+* Refined feedback email content when the plugin is deactivated.
+* Replaced custom function with WordPress native `attachment_url_to_postid` for better compatibility and performance.
+* NOTE: **Enlarges the version required for the [WPeMatico Professional](https://etruel.com/downloads/wpematico-professional/) addon to 3.2**  
 
 = 2.8.1 Mar 25, 2025 =
 

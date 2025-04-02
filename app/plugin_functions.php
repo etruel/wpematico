@@ -198,7 +198,7 @@ function handle_feedback_submission() {
     $subject = 'Plugin Deactivation Feedback';
     $message = "A user deactivated the plugin for the following reason: " . $reason;
 	if($explicit_reason != '')
-		$message .= "\n\nThe user wrote the following $explicit_reason";
+		$message .= "\n\nThe user wrote: $explicit_reason";
 	
     $headers = ['From: ' . get_bloginfo('name') . ' <wordpress@' . parse_url(home_url(), PHP_URL_HOST) . '>'];
 

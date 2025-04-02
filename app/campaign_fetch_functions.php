@@ -22,7 +22,7 @@ if (!defined('ABSPATH')) {
 if (class_exists('wpematico_campaign_fetch_functions'))
 	return;
 
-class wpematico_campaign_fetch_functions extends WPeMatico_functions {
+class wpematico_campaign_fetch_functions {
 
 	public static function WPeisDuplicatedMetaSource($dev, $campaign, $item) {
 		global $wpdb;
@@ -446,7 +446,7 @@ class wpematico_campaign_fetch_functions extends WPeMatico_functions {
 		if ($options_images['imgcache']) {
 			$itemUrl = $this->current_item['permalink'];
 
-			if (sizeof($current_item['images'])) { // Si hay alguna imagen en el contenido
+			if (sizeof($current_item['images'])) { // If there is at least one image in the content
 				trigger_error('<b>' . __('Looking for images in content.', 'wpematico') . '</b>', E_USER_NOTICE);
 				//trigger_error(print_r($current_item['images'],true),E_USER_NOTICE);
 				$featured	 = false;
@@ -459,56 +459,66 @@ class wpematico_campaign_fetch_functions extends WPeMatico_functions {
 					trigger_error(__('Uploading media...', 'wpematico') . $imagen_src, E_USER_NOTICE);
 					
 					$imagen_src_real = $this->getRelativeUrl($itemUrl, $imagen_src);
+					
+					// Parse the original name on url to get the file correctly 
 					$imagen_src_real = $this->parse_src_image($imagen_src_real);
+					
 					$allowed		 = (isset($this->cfg['images_allowed_ext']) && !empty($this->cfg['images_allowed_ext']) ) ? $this->cfg['images_allowed_ext'] : 'jpg,gif,png,tif,bmp,jpeg';
 					$allowed		 = apply_filters('wpematico_allowext', $allowed);
-					//Fetch and Store the Image	
-					///////////////***************************************************************************************////////////////////////
+					
+					// Parse the destiny filename to store the file correctly on WP media or system directory
 					$newimgname = $this->parse_dst_image($imagen_src_real, $current_item, $campaign, $item);
 					
-					// First I try my fastest function
+					// Proceed with the Fetch and Store the Image
 					$upload_dir		 = wp_upload_dir();
 					$imagen_dst		 = trailingslashit($upload_dir['path']) . $newimgname;
 					$imagen_dst_url	 = trailingslashit($upload_dir['url']) . $newimgname;
 					trigger_error('Filtering image extensions:' . $allowed, E_USER_NOTICE);
 					
-					if (in_array(str_replace('.', '', strrchr(strtolower($imagen_dst), '.')), explode(',', $allowed))) {   // ----- check allowed extensions
+					// Check for allowed extensions
+					if (in_array(str_replace('.', '', strrchr(strtolower($imagen_dst), '.')), explode(',', $allowed))) {
 						trigger_error('Uploading media=' . $imagen_src . ' <b>to</b> image=' . $imagen_dst . '', E_USER_NOTICE);
-						// Check if try custom functions to upload files.
-						$newfile = ($options_images['customupload']) ? WPeMatico::save_file_from_url($imagen_src_real, $imagen_dst) : false;
-
 						
-						if ($newfile) { //If <> false was uploaded
+						// First I try my fastest function
+						$newfile = ($options_images['customupload']) ? WPeMatico::save_file_from_url($imagen_src_real, $imagen_dst) : false;
+						if ($newfile) { // uploaded
 							trigger_error('Uploaded media=' . $newfile, E_USER_NOTICE);
 							$imagen_dst				 = $newfile;
 							$imagen_dst_url			 = trailingslashit($upload_dir['url']) . basename($newfile);
 							$current_item['content'] = str_replace($imagen_src, $imagen_dst_url, $current_item['content']);
 							do_action('wpematico_new_image_url_uploaded', $imagen_dst_url, $imagen_src, $current_item, $campaign);
 							$img_new_url[]			 = $imagen_dst_url;
-						} else { // Upload fail -> try with others
+							
+						} else { // Upload fail 
+							// try other methods
 							$bits = WPeMatico::wpematico_get_contents($imagen_src_real); // Read the file
 							
-							if (!$bits) {
-								// Remove the image if its upload fail.
-								trigger_error(__('Upload file failed:', 'wpematico') . $imagen_dst, E_USER_WARNING);
+							if (!$bits) { //Reading errors
+								// Actions if give nothing or getting errors 
+								trigger_error(__('Failed to obtain file:', 'wpematico') . $imagen_src_real, E_USER_WARNING);
+								// Remove the image from content if its upload fail and no link to source.
 								if ($options_images['gralnolinkimg']) {
-									//	trigger_error( __('Deleted media img.', 'wpematico' ),E_USER_WARNING);
+									//	trigger_error( __('Remove img tag from content.', 'wpematico' ),E_USER_NOTICE);
 									$current_item['content'] = self::strip_Image_by_src($imagen_src, $current_item['content']);
 								}
 							} else {
-								$mirror = wp_upload_bits($newimgname, NULL, $bits);
-								
-								if (!$mirror['error']) {
-									trigger_error($mirror['url'], E_USER_NOTICE);								
+								// Obtained -> Try to upload
+								$mirror = wp_upload_bits($newimgname, NULL, $bits);								
+								if (!$mirror['error']) { // Upload well 
+									trigger_error($mirror['url'], E_USER_NOTICE);
+									
+									// Replace the image src from content if its upload well.
 									$current_item['content'] = str_replace($imagen_src, $mirror['url'], $current_item['content']);
 									do_action('wpematico_new_image_url_uploaded', $mirror['url'], $imagen_src, $current_item, $campaign);
-									$img_new_url[]			 = $mirror['url'];
-								} else {
-									trigger_error('wp_upload_bits error:' . print_r($mirror, true) . '.', E_USER_WARNING);
-									// Si no quiere linkar las img al server borro el link de la imagen
-									trigger_error(__('Upload file failed:', 'wpematico') . $imagen_dst, E_USER_WARNING);
+									
+									$img_new_url[] = $mirror['url'];
+								} else { // Uploading errors
+									//trigger_error('wp_upload_bits error:' . print_r($mirror, true) . '.', E_USER_WARNING);
+									trigger_error(__('Save image file failed:', 'wpematico') . $imagen_dst, E_USER_WARNING);
+									
+									// Remove the image from content if its upload fail and no link to source.
 									if ($options_images['gralnolinkimg']) {
-										//	trigger_error( __('Deleted media img.', 'wpematico' ),E_USER_WARNING);
+										//	trigger_error( __('Remove img tag from content.', 'wpematico' ),E_USER_NOTICE);
 										$current_item['content'] = self::strip_Image_by_src($imagen_src, $current_item['content']);
 									}
 								}
@@ -516,7 +526,8 @@ class wpematico_campaign_fetch_functions extends WPeMatico_functions {
 						}
 					} else {
 						trigger_error(__('Extension not allowed: ', 'wpematico') . urldecode($imagen_dst_url), E_USER_WARNING);
-						if ($options_images['gralnolinkimg']) { // Si no quiere linkar las img al server borro el link de la imagen
+						// Remove the image from content if it is not allowed and no link to source.
+						if ($options_images['gralnolinkimg']) { 
 							trigger_error(__('Stripped src.', 'wpematico'), E_USER_WARNING);
 							$current_item['content'] = self::strip_Image_by_src($imagen_src, $current_item['content']);
 						}
@@ -532,8 +543,8 @@ class wpematico_campaign_fetch_functions extends WPeMatico_functions {
 						$current_item['featured_image'] = '';  // or some default value like 'default.jpg'
 					}
 				}
-			}  // // Si hay alguna imagen en el contenido
-		} else {
+			}  // END If there is at least one image in the content
+		} else {  // If no cache images (not upload to current WordPress
 			if (isset($current_item['images']) && sizeof($current_item['images'])) {
 				trigger_error('<b>' . __('Using remotely linked images in content. No changes.', 'wpematico') . '</b>', E_USER_NOTICE);
 			}
@@ -544,15 +555,16 @@ class wpematico_campaign_fetch_functions extends WPeMatico_functions {
 
 // item images
 
-	/**
-	 *  // retrieves the attachment ID from the file URL
-	 *  @return integer The attach ID of the image. If not exists return false.
-	 */
-	function get_attach_id_from_url($image_url) {
-		global $wpdb;
-		$attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $image_url));
-		return ($attachment[0] > 0) ? $attachment[0] : FALSE;
-	}
+// Deprecated custom function in favor of WP native attachment_url_to_postid Apr 2, 2025
+//	/**
+//	 *  // retrieves the attachment ID from the file URL
+//	 *  @return integer The attach ID of the image. If not exists return false.
+//	 */
+//	function get_attach_id_from_url($image_url) {
+//		global $wpdb;
+//		$attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $image_url));
+//		return ($attachment[0] > 0) ? $attachment[0] : FALSE;
+//	}
 
 	/**
 	 *  attach a file or image to a post with its post_id  
@@ -672,6 +684,40 @@ class wpematico_campaign_fetch_functions extends WPeMatico_functions {
 		}
 	}
 
+	public function parse_src_image($imagen_src_real) {
+		// Decode URL encoding to properly handle spaces and special characters
+		$imagen_src_real = rawurldecode($imagen_src_real);
+
+		// Replace spaces with %20 to keep URLs valid
+		$imagen_src_real = str_replace(' ', '%20', $imagen_src_real);
+
+		// Apply WordPress sanitization
+		return apply_filters('wpematico_img_src_url', esc_url_raw($imagen_src_real));
+	}
+
+	public function parse_dst_image($imagen_src_real, $current_item, $campaign, $item) {
+		// Decode URL to handle special characters correctly
+		$basename = rawurldecode(basename($imagen_src_real));
+
+		// Extract extension and filename
+		$ext = pathinfo($basename, PATHINFO_EXTENSION);
+		$filename = pathinfo($basename, PATHINFO_FILENAME);
+
+		// Allow Chinese characters, letters, numbers, underscores, and dashes
+		$filename = preg_replace('/[^\p{L}\p{N}_-]/u', '', $filename);
+
+		// We need to trim the number of characters in the filename to avoid upload errors by OS limits, while ensuring UTF-8 encoding. 
+		// Trim the filename to 200 (because windows?)
+		$filename = mb_substr($filename, 0, apply_filters('wpematico_trim_img_name', 200), 'UTF-8');
+
+		// Ensure the extension remains intact
+		$newimgname = !empty($ext) ? "{$filename}.{$ext}" : $basename;
+
+		// Apply WordPress sanitization and return the new filename
+		return apply_filters('wpematico_newimgname', sanitize_file_name($newimgname), $current_item, $campaign, $item);
+	}
+
+	
 	/**
 	 * Filters images, upload and replace on text item content
 	 * @param   $current_item   array    Current post data to be saved
