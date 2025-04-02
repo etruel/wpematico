@@ -436,4 +436,4 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 
-Fixes few bugs about images incorporated in the last version.
+Fixes few bugs and few improvements with images handling.
