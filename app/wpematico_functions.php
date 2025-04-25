@@ -1901,6 +1901,26 @@ function wpematico_init_set($index, $value, $log_only_fail = false) {
 }
 
 
+function wpematico_register_error_handler($errno, $errstr, $errfile, $errline) {
+	if (strpos($errfile, WPEMATICO_PLUGIN_DIR) === 0 ) {
+		return false;
+	}
+	
+	wpematico_log("LOG-{$errno}: {$errstr} in {$errfile} on line {$errline}");
+	
+	return false; // Let PHP also handle the error normally
+}
+
+if (!function_exists('wpematico_log')) {
+	function wpematico_log($message) {
+		$log_file = WPEMATICO_PLUGIN_DIR . '/wpematico_debug.log';
+		$datetime = current_time('Y-m-d H:i:s');
+		$entry = "[{$datetime}] {$message}\n";
+
+		file_put_contents($log_file, $entry, FILE_APPEND | LOCK_EX);
+	}
+}
+
 /**
  * function for PHP error handling saved as Campaign Logs.
  * 

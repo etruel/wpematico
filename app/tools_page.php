@@ -16,18 +16,84 @@ if (!class_exists('WPeMatico_Tools')) :
 	class WPeMatico_Tools
 	{
 
-		public static function hooks()
-		{
-			add_action('wpematico_tools_tab_tools', array(__CLASS__, 'tools_form'));
-			add_action('admin_init', array(__CLASS__, 'tools_help'));
+		public static function hooks(){
+			add_action('wpematico_tools_tab_tools', [__CLASS__, 'tools_form']);
+			add_action('wpematico_tools_tab_debug_log', [__CLASS__, 'debug_log_file']);
+			add_action('admin_init', [__CLASS__, 'tools_help']);
+			add_action('admin_post_save_wpematico_debug_settings', [__CLASS__, 'save_debug_log_file']);
+			add_action('wp_ajax_download_wpematico_log', [__CLASS__, 'download_debug_log']); 
+		}
+
+		public static function debug_log_file(){
+			$cfg = apply_filters('wpematico_check_options', get_option(WPeMatico::OPTION_KEY));
+			$log_file = WPEMATICO_PLUGIN_DIR . '/wpematico_debug.log';
+			$log_exists = file_exists($log_file);
+
+			if (!empty($_POST['clear_log']) && $log_exists) {
+				@file_put_contents($log_file, '');
+				$log_exists = false;
+			}
+
+			$log_content = $log_exists ? file_get_contents($log_file) : '';
+
+			echo '<h2>' . esc_html__('Debug Log', 'wpematico') . '</h2>';
+			echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
+			wp_nonce_field('save_wpematico_debug_settings_nonce', 'wpematico_debug_nonce');
+			echo '<label>';
+			echo '<input type="checkbox" name="wpematico_debug_mode" value="1" ' . checked(!empty($cfg['wpematico_debug_log_file']), true, false) . ' />';
+			echo esc_html__('Enable Debug Log', 'wpematico');
+			echo '</label><br><br>';
+			echo '<input type="hidden" name="action" value="save_wpematico_debug_settings" />';
+			submit_button(esc_html__('Save settings', 'wpematico'), 'primary', 'save_wpematico_debug_settings', false);
+			echo '</form><br>';
+
+			if (!empty($cfg['wpematico_debug_log_file'])) {
+				echo '<form method="post">';
+				echo '<textarea readonly rows="20" style="width:100%; font-family: monospace;">' . esc_textarea($log_content) . '</textarea><br><br>';
+				echo '<button type="submit" name="clear_log" class="button">' . esc_html__('Clear Log', 'wpematico') . '</button> ';
+				if ($log_content) {
+					echo '<a href="' . esc_url(admin_url('admin-ajax.php?action=download_wpematico_log')) . '" class="button button-primary">';
+					echo esc_html__('Download Log', 'wpematico') . '</a>';
+				} else {
+					echo '<p><em>' . esc_html__('No log file found yet.', 'wpematico') . '</em></p>';
+				}
+				echo '</form>';
+			}
+		}
+
+		public static function save_debug_log_file(){
+			if (!empty($_POST['wpematico_debug_nonce']) && wp_verify_nonce($_POST['wpematico_debug_nonce'], 'save_wpematico_debug_settings_nonce')) {
+				$cfg = apply_filters('wpematico_check_options', get_option(WPeMatico::OPTION_KEY));
+				$cfg['wpematico_debug_log_file'] = !empty($_POST['wpematico_debug_mode']) ? 1 : 0;
+
+				if (update_option(WPeMatico::OPTION_KEY, $cfg)) {
+					WPeMatico::add_wp_notice(['text' => esc_html__('Settings saved.', 'wpematico'), 'below-h2' => false]);
+				}
+			} else {
+				WPeMatico::add_wp_notice(['text' => esc_html__('Settings not saved.', 'wpematico'), 'below-h2' => false]);
+			}
+			wp_redirect(admin_url('edit.php?post_type=wpematico&page=wpematico_tools&tab=debug_log'));
+			exit;
+		}
+
+		public static function download_debug_log(){
+			$log_file = WPEMATICO_PLUGIN_DIR . '/wpematico_debug.log';
+
+			if (!file_exists($log_file)) {
+				wp_die(esc_html__('Log file not found.', 'wpematico'), '', ['response' => 404]);
+			}
+
+			header('Content-Type: text/plain');
+			header('Content-Disposition: attachment; filename="wpematico_debug.log"');
+			readfile($log_file);
+			exit;
 		}
 
 
 		/**
 		 * 		Called by function admin_menu() on wpematico_class
 		 */
-		public static function styles()
-		{
+		public static function styles(){
 			global $cfg;
 			wp_enqueue_style('WPematStylesheet');
 			wp_enqueue_script('WPemattiptip');
@@ -51,8 +117,7 @@ if (!class_exists('WPeMatico_Tools')) :
 			// //add_screen_option('layout_columns', array('max' => 2, 'default' => 2) );
 		}
 
-		public static function wpematico_tools_head()
-		{
+		public static function wpematico_tools_head(){
 ?>
 			<style type="text/css">
 				.insidesec {
@@ -88,8 +153,7 @@ if (!class_exists('WPeMatico_Tools')) :
 			<?php
 		}
 
-		public static function tools_form()
-		{
+		public static function tools_form(){
 			global $cfg, $current_screen, $helptip;
 
 			if (isset($_GET['page']) && $_GET['page'] == 'wpematico_tools') :
@@ -159,8 +223,7 @@ if (!class_exists('WPeMatico_Tools')) :
 			endif;
 		}
 
-		public static function tools_help()
-		{
+		public static function tools_help(){
 			if ((isset($_GET['page']) && $_GET['page'] == 'wpematico_tools') &&
 				(isset($_GET['post_type']) && $_GET['post_type'] == 'wpematico') &&
 				((isset($_GET['tab']) && $_GET['tab'] == 'tools') || !isset($_GET['tab']))
