@@ -51,6 +51,7 @@ if (!class_exists('WPeMatico_Tools')) :
 				echo '<form method="post">';
 				echo '<textarea readonly rows="20" style="width:100%; font-family: monospace;">' . esc_textarea($log_content) . '</textarea><br><br>';
 				echo '<button type="submit" name="clear_log" class="button">' . esc_html__('Clear Log', 'wpematico') . '</button> ';
+				echo '<input type="hidden" name="clear_log" value="1" />';
 				if ($log_content) {
 					echo '<a href="' . esc_url(admin_url('admin-ajax.php?action=download_wpematico_log')) . '" class="button button-primary">';
 					echo esc_html__('Download Log', 'wpematico') . '</a>';
