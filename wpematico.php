@@ -56,9 +56,7 @@ if (!class_exists('Main_WPeMatico')) {
 
 		public static function instance() {
 
-			$cookie = wp_validate_auth_cookie();
-
-			if ( !is_user_logged_in() && !$cookie && !current_user_can('administrator') ) {
+			if ( !is_user_logged_in() && !current_user_can('administrator') ) {
 				add_action('admin_notices', array(__CLASS__, 'required_admin_notice'));
 				return false;
 			}
