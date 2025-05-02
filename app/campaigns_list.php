@@ -1228,7 +1228,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 		 * This is the WordPress AJAX function that will handle and save your data.
 		 */
 		function manage_wpematico_save_bulk_edit() {
-			if ( !is_user_logged_in() && !current_user_can('administrator') ) {
+			if ( !is_user_logged_in() && !current_user_can('manage_options') ) {
 				add_action('admin_notices', array(__CLASS__, 'required_admin_notice'));
 				wp_send_json_error(__('You do not have sufficient permissions to access this page.', 'wpematico'));
 			}
