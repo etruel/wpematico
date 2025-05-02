@@ -101,7 +101,7 @@ if (!class_exists('Main_WPeMatico')) {
 
 		private function hooks() {
 			add_action('init', array('WPeMatico', 'init'));
-			add_action('init', array( self::$instance, 'load_textdomain' ) );
+			add_action('admin_init', array( self::$instance, 'load_textdomain' ) );
 			add_action('the_permalink', array('WPeMatico', 'wpematico_permalink'));
 			add_filter('post_link', array('WPeMatico', 'wpematico_permalink'));
 			add_filter('get_canonical_url', array('WPeMatico_functions', 'wpematico_set_canonical'), 999999, 2);
