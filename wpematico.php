@@ -46,20 +46,9 @@ if (!class_exists('Main_WPeMatico')) {
 			<?php
 		}
 
-		public static function required_admin_notice() {
-			?>
-			<div class="error"> <p>
-				<b>WPeMatico:</b> <?php esc_html_e('You are not allowed to use wpematico, cheater!', 'wpematico'); ?><br />
-			</p></div>
-			<?php
-		}
 
 		public static function instance() {
 
-			if ( !is_user_logged_in() && !current_user_can('administrator') ) {
-				add_action('admin_notices', array(__CLASS__, 'required_admin_notice'));
-				return false;
-			}
 			if (version_compare(phpversion(), '5.6.0', '<')) { // check PHP Version
 				add_action('admin_notices', array(__CLASS__, 'required_php_notice'));
 				return false;
