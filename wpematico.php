@@ -46,7 +46,9 @@ if (!class_exists('Main_WPeMatico')) {
 			<?php
 		}
 
+
 		public static function instance() {
+
 			if (version_compare(phpversion(), '5.6.0', '<')) { // check PHP Version
 				add_action('admin_notices', array(__CLASS__, 'required_php_notice'));
 				return false;
@@ -99,7 +101,7 @@ if (!class_exists('Main_WPeMatico')) {
 
 		private function hooks() {
 			add_action('init', array('WPeMatico', 'init'));
-			add_action('init', array( self::$instance, 'load_textdomain' ) );
+			add_action('admin_init', array( self::$instance, 'load_textdomain' ) );
 			add_action('the_permalink', array('WPeMatico', 'wpematico_permalink'));
 			add_filter('post_link', array('WPeMatico', 'wpematico_permalink'));
 			add_filter('get_canonical_url', array('WPeMatico_functions', 'wpematico_set_canonical'), 999999, 2);

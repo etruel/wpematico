@@ -68,7 +68,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			$danger_options = WPeMatico::get_danger_options();
 			if ($danger_options['wpe_debug_logs_campaign']) {
 				$class	 = 'notice notice-warning notice-alt';
-				$message = __('WARNING! WPeMatico Debug mode has been activated at Settings->System Status->Danger Zone.', 'wpematico') . '<br />'
+				$message = __('WARNING! WPeMatico Debug mode has been activated at Tools->System Status->Danger Zone.', 'wpematico') . '<br />'
 						. __('Be sure to deactivate it after your tests to avoid performance issues.', 'wpematico');
 				printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), $message);
 			}
@@ -1228,6 +1228,11 @@ if (!class_exists('WPeMatico_Campaigns')) :
 		 * This is the WordPress AJAX function that will handle and save your data.
 		 */
 		function manage_wpematico_save_bulk_edit() {
+			if ( !is_user_logged_in() && !current_user_can('manage_options') ) {
+				add_action('admin_notices', array(__CLASS__, 'required_admin_notice'));
+				wp_send_json_error(__('You do not have sufficient permissions to access this page.', 'wpematico'));
+			}
+
 			// we need the post IDs
 			$post_ids = ( isset($_POST['post_ids']) && !empty($_POST['post_ids']) ) ? $_POST['post_ids'] : NULL;
 			// if we have post IDs
