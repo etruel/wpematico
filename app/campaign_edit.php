@@ -65,7 +65,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 	#rewrite-box h2.hndle, #rewrite-box .postbox-header {background: #ffb3be; }
 	#fullcontent-box h2.hndle, #fullcontent-box .postbox-header {background: #006100;	color: white; }
 	#submitdiv h2.hndle, #submitdiv .postbox-header {background: #0085ba;	color: white; }
-	.ruedita{background: url(<?php echo admin_url('images/spinner.gif'); ?>) no-repeat 4px !important;}
+	.ruedita{background: url(<?php echo esc_url( admin_url('images/spinner.gif') ); ?>) no-repeat 4px !important;}
 	<?php
 		$CampaignTypesArray =  self::campaign_type_options();
 		$CampaignType = $campaign_data['campaign_type'];
@@ -73,7 +73,8 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 			$cttype = (object)$type;
 			foreach ($cttype->show as $show) {   // first hide all 
 				if($CampaignType != $cttype->value) {
-					echo "#$show {display: none;}";
+					//echo "#$show {display: none;}";
+					echo '#' . esc_attr( $show ) . ' {display: none;}';
 				}
 			}
 		}
@@ -81,10 +82,12 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 			$cttype = (object)$type;
 			foreach ($cttype->show as $show) {     // shows these CT metaboxes
 				if($CampaignType == $cttype->value) {
-					echo "#$show {display: block;}";
+					//echo "#$show {display: block;}";
+					echo '#' . esc_attr( $show ) . ' {display: block;}';
 					if(isset($cttype->hide) ) {  // tiene que ocultar algun metabox ? NOT Tested seems can't be recovered later
 						foreach ($cttype->hide as $hide) {  //process only the hide of selected type 
-							echo "#$hide {display: none;}";
+							echo '#' . esc_attr( $hide ) . ' {display: none;}';
+							//echo "#$hide {display: none;}";
 						}
 					}
 				}
@@ -183,13 +186,13 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		
 		$nonce = (isset($_POST['nonce'])) ?  sanitize_text_field($_POST['nonce']) : '';
         if ( ! wp_verify_nonce($nonce, 'wpematico-run-now-nonce') ) {
-           die(__('Please refresh your browser and try again.', 'wpematico')); 
+           die( esc_html__('Please refresh your browser and try again.', 'wpematico') ); 
         }
 		
 		
 		if(!isset($_POST['campaign_ID'])) die('ERROR: ID no encontrado.'); 
 		$campaign_ID = absint($_POST['campaign_ID']);
-		echo substr( WPeMatico :: wpematico_dojob( $campaign_ID ) , 0, -1); // borro el ultimo caracter que es un 0
+		echo wp_kses_post( substr( WPeMatico :: wpematico_dojob( $campaign_ID ) , 0, -1) ); // borro el ultimo caracter que es un 0
 		return ''; 
 	}
 	
