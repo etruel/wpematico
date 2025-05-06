@@ -261,6 +261,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 				'run_now_list_nonce'			=> wp_create_nonce('wpematico-run-now-nonce'),
 				'Notification_Hidding'			=> __('Hidding...', 'wpematico'),
 				'Notification_Dismissed'		=> __('Dismissed', 'wpematico'),
+				'campaigns_list_nonce'		=> wp_create_nonce('wpematico-campaigns-list-nonce'),
 			);
 			wp_localize_script('wpematico-campaign-list', 'wpematico_object', $wpematico_object);
 		}
@@ -1227,10 +1228,9 @@ if (!class_exists('WPeMatico_Campaigns')) :
 		 * Your javascript will run an AJAX function to save your data.
 		 * This is the WordPress AJAX function that will handle and save your data.
 		 */
-		function manage_wpematico_save_bulk_edit() {
-			if ( !is_user_logged_in() && !current_user_can('manage_options') ) {
-				add_action('admin_notices', array(__CLASS__, 'required_admin_notice'));
-				wp_send_json_error(__('You do not have sufficient permissions to access this page.', 'wpematico'));
+		static function manage_wpematico_save_bulk_edit() {
+			if ( !is_user_logged_in() || !current_user_can('manage_options') || !isset($_POST['wpnonce']) || !wp_verify_nonce($_POST['wpnonce'], 'wpematico-campaigns-list-nonce') ) {
+				wp_send_json_error(__('Security check invalid.', 'wpematico'), 400);
 			}
 
 			// we need the post IDs
@@ -1276,6 +1276,11 @@ if (!class_exists('WPeMatico_Campaigns')) :
 					// Grabo la campaña
 					WPeMatico::update_campaign($post_id, $campaign);
 				}
+				// Send success message
+				wp_send_json_success(__('Campaigns updated successfully.', 'wpematico'), 200);
+			} else {
+				// No hay post_ids, no se hace nada
+				wp_send_json_error(__('No post IDs found.', 'wpematico'), 400);
 			}
 		}
 	}

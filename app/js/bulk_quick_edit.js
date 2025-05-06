@@ -138,7 +138,8 @@
 	});
 
         
-    $( '#bulk_edit' ).on( 'click', function() {
+    $( '#bulk_edit' ).on( 'click', function(e) {
+		e.preventDefault();
 		// define the bulk edit row
 		var $bulk_row = $( '#bulk-edit' );
 		
@@ -157,16 +158,14 @@
 		var $campaign_linktosource = $bulk_row.find( 'input[name="campaign_linktosource"]:checked' ).length;
 		var $campaign_strip_links = $bulk_row.find( 'input[name="campaign_strip_links"]:checked' ).length;
 		var $post_category = $bulk_row.find('input[name="post_category[]"]:checked').map(function(){return $(this).val();}).get();
-		
+		var $wpnonce = wpematico_object.campaigns_list_nonce; // get the nonce from the global object
 		// save the data
 		$.ajax({
-			url: ajaxurl, // this is a variable that WordPress has already defined for us
+			url: ajaxurl,
 			type: 'POST',
-			async: false,
-			cache: false,
 			data: {
-				action: 'manage_wpematico_save_bulk_edit', // this is the name of our WP AJAX function that we'll set up next
-				post_ids: $post_ids, // and these are the 2 parameters we're passing to our function
+				action: 'manage_wpematico_save_bulk_edit',
+				post_ids: $post_ids,
 				campaign_max: $campaign_max,
 				campaign_author: $campaign_author,
 				campaign_feeddate: $campaign_feeddate,
@@ -174,7 +173,20 @@
 				campaign_allowpings: $campaign_allowpings,
 				campaign_linktosource: $campaign_linktosource,
 				campaign_strip_links: $campaign_strip_links,
-				post_category: $post_category
+				post_category: $post_category,
+				wpnonce: $wpnonce
+			},
+			success: function(response) {
+				// Handle 200 OK
+				// Optionally update UI or trigger events here
+				location.reload();
+			},
+			error: function(xhr) {
+				$('#bulk-edit .inline-edit-status').remove();
+				if (xhr.responseJSON && xhr.responseJSON.data) {
+					// Show the error message sent with wp_send_json_error
+					$('#bulk-edit .inline-edit-save').prepend('<div class="inline-edit-status error"><p>' + xhr.responseJSON.data + '</p></div>');
+				}
 			}
 		});
 		
