@@ -145,8 +145,8 @@
 		
 		// get the selected post ids that are being edited
 		var $post_ids = new Array();
-		$bulk_row.find( '#bulk-titles' ).children().each( function() {
-			$post_ids.push( $( this ).attr( 'id' ).replace( /^(ttle)/i, '' ) );
+		$('input[name="post[]"]:checked').each(function() {
+			$post_ids.push($(this).val());
 		});
 		
 		// get the custom fields

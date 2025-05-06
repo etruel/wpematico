@@ -1228,59 +1228,52 @@ if (!class_exists('WPeMatico_Campaigns')) :
 		 * This is the WordPress AJAX function that will handle and save your data.
 		 */
 		static function manage_wpematico_save_bulk_edit() {
-			if ( !is_user_logged_in() || !current_user_can('manage_options') || !isset($_POST['wpnonce']) || !wp_verify_nonce($_POST['wpnonce'], 'wpematico-campaigns-list-nonce') ) {
-				wp_send_json_error(__('Security check invalid.', 'wpematico'), 400);
+			// Verify user permissions and nonce
+			if (!is_user_logged_in() || !current_user_can('manage_options') || !isset($_POST['wpnonce']) || !wp_verify_nonce($_POST['wpnonce'], 'wpematico-campaigns-list-nonce')) {
+				wp_send_json_error(__('Security check failed.', 'wpematico'), 403);
 			}
 
-			// we need the post IDs
-			$post_ids = ( isset($_POST['post_ids']) && !empty($_POST['post_ids']) ) ? $_POST['post_ids'] : NULL;
-			// if we have post IDs
-			if (!empty($post_ids) && is_array($post_ids)) {
-				$arrayData = array();
-				// text or number fields
-				if ($_POST['campaign_max']) {
-					$arrayData['campaign_max'] = absint($_POST['campaign_max']);
+			// Retrieve post IDs
+			$post_ids = isset($_POST['post_ids']) && is_array($_POST['post_ids']) ? array_map('absint', $_POST['post_ids']) : null;
+
+			if (empty($post_ids)) {
+				wp_send_json_error(__('No post IDs provided.', 'wpematico'), 400);
+			}
+
+			// Prepare data to update
+			$update_data = array(
+				'campaign_max'         => isset($_POST['campaign_max']) ? absint($_POST['campaign_max']) : null,
+				'campaign_feeddate'    => !empty($_POST['campaign_feeddate']),
+				'campaign_commentstatus' => isset($_POST['campaign_commentstatus']) ? sanitize_text_field($_POST['campaign_commentstatus']) : null,
+				'campaign_allowpings'  => !empty($_POST['campaign_allowpings']),
+				'campaign_linktosource' => !empty($_POST['campaign_linktosource']),
+				'campaign_strip_links' => !empty($_POST['campaign_strip_links']),
+				'post_category'        => isset($_POST['post_category']) && is_array($_POST['post_category']) ? array_map('absint', $_POST['post_category']) : array(),
+			);
+
+			// Update each campaign
+			foreach ($post_ids as $post_id) {
+				$campaign = WPeMatico::get_campaign($post_id);
+
+				if (is_wp_error($campaign)) {
+					continue; // Skip if campaign data is invalid
 				}
-//				$arrayData['campaign_max'] = (!isset($_POST['campaign_max']) ) ? 0 : absint($_POST['campaign_max']);
-//				$arrayData['campaign_author'] = (!isset($_POST['campaign_author']) ) ? 0 : absint($_POST['campaign_author']);
 
-				$arrayData['campaign_feeddate']		 = (!isset($_POST['campaign_feeddate']) || empty($_POST['campaign_feeddate'])) ? false : ( ($_POST['campaign_feeddate'] == 1) ? true : false );
-				$arrayData['campaign_commentstatus'] = (!isset($_POST['campaign_commentstatus']) ) ? 'closed' : sanitize_text_field($_POST['campaign_commentstatus']);
-				$arrayData['campaign_allowpings']	 = (!isset($_POST['campaign_allowpings']) || empty($_POST['campaign_allowpings'])) ? false : ( ($_POST['campaign_allowpings'] == 1) ? true : false );
-				$arrayData['campaign_linktosource']	 = (!isset($_POST['campaign_linktosource']) || empty($_POST['campaign_linktosource'])) ? false : ( ($_POST['campaign_linktosource'] == 1) ? true : false );
-				$arrayData['campaign_strip_links']	 = (!isset($_POST['campaign_strip_links']) || empty($_POST['campaign_strip_links'])) ? false : ( ($_POST['campaign_strip_links'] == 1) ? true : false );
-
-				// taxonomies
-				$arrayData['post_category'] = array();
-				if (isset($_POST['post_category']) && is_array($_POST['post_category'])) {
-					foreach ($_POST['post_category'] as $term_id) {
-						$arrayData['post_category'][] = absint($term_id);
+				// Update campaign data
+				foreach ($update_data as $key => $value) {
+					if (!is_null($value)) {
+						$campaign[$key] = $value;
 					}
 				}
 
-				// update for each post ID
-				foreach ($post_ids as $post_id) {
-					$post_id					 = absint($post_id);
-					$campaign					 = WPeMatico::get_campaign($post_id);
-					$campaign['campaign_max']	 = (!isset($_POST['campaign_max']) || $_POST['campaign_max'] == 0 ) ? $campaign['campaign_max'] : absint($_POST['campaign_max']);
-					$campaign['campaign_author'] = (!isset($_POST['campaign_author']) || $_POST['campaign_author'] == 0 ) ? $campaign['campaign_author'] : absint($_POST['campaign_author']);
-					foreach ($arrayData as $key => $dataEntry) {
-						$campaign[$key] = $dataEntry;
-					}
-
-					$campaign = apply_filters('wpematico_check_campaigndata', $campaign);
-					if (has_filter('wpematico_presave_campaign'))
-						$campaign = apply_filters('wpematico_presave_campaign', $campaign);
-
-					// Grabo la campaña
-					WPeMatico::update_campaign($post_id, $campaign);
-				}
-				// Send success message
-				wp_send_json_success(__('Campaigns updated successfully.', 'wpematico'), 200);
-			}else{
-				// No hay post_ids, no se hace nada
-				wp_send_json_error(__('No post IDs found.', 'wpematico'), 400);
+				// Apply filters and save campaign
+				$campaign = apply_filters('wpematico_check_campaigndata', $campaign);
+				$campaign = apply_filters('wpematico_presave_campaign', $campaign);
+				WPeMatico::update_campaign($post_id, $campaign);
 			}
+			WPeMatico::add_wp_notice([ 'text' => __('Campaigns updated successfully.', 'wpematico'), 'below-h2' => false]);
+			// Send success response
+			wp_send_json_success(__('Campaigns updated successfully.', 'wpematico'), 200);
 		}
 	}
 
