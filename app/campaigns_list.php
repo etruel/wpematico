@@ -1275,11 +1275,6 @@ if (!class_exists('WPeMatico_Campaigns')) :
 					// Grabo la campaña
 					WPeMatico::update_campaign($post_id, $campaign);
 				}
-				// Send success message
-				wp_send_json_success(__('Campaigns updated successfully.', 'wpematico'), 200);
-			}else{
-				// No hay post_ids, no se hace nada
-				wp_send_json_error(__('No post IDs found.', 'wpematico'), 400);
 			}
 			
 		}
