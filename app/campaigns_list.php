@@ -1242,16 +1242,17 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			}
 
 			// Prepare data to update
-			$update_data = array(
-				'campaign_max'         => isset($_POST['campaign_max']) ? absint($_POST['campaign_max']) : null,
-				'campaign_feeddate'    => !empty($_POST['campaign_feeddate']),
-				'campaign_commentstatus' => isset($_POST['campaign_commentstatus']) ? sanitize_text_field($_POST['campaign_commentstatus']) : 'closed',
-				'campaign_allowpings'  => !empty($_POST['campaign_allowpings']),
+			$update_data = [
+				'campaign_max'          => isset($_POST['campaign_max']) ? absint($_POST['campaign_max']) : null,
+				'campaign_feeddate'     => !empty($_POST['campaign_feeddate']),
+				'campaign_commentstatus'=> isset($_POST['campaign_commentstatus']) ? sanitize_text_field($_POST['campaign_commentstatus']) : 'closed',
+				'campaign_allowpings'   => !empty($_POST['campaign_allowpings']),
 				'campaign_linktosource' => !empty($_POST['campaign_linktosource']),
-				'campaign_strip_links' => !empty($_POST['campaign_strip_links']),
-				'post_category'        => isset($_POST['post_category']) && is_array($_POST['post_category']) ? array_map('absint', $_POST['post_category']) : array(),
-			);
-
+				'campaign_strip_links'  => !empty($_POST['campaign_strip_links']),
+				'post_category'         => isset($_POST['post_category']) && is_array($_POST['post_category']) ? array_map('absint', $_POST['post_category']) : [],
+				'campaign_author'       => isset($_POST['campaign_author']) ? absint($_POST['campaign_author']) : 0,
+			];
+			
 			// Update each campaign
 			foreach ($post_ids as $post_id) {
 				$campaign = WPeMatico::get_campaign($post_id);
