@@ -1245,7 +1245,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			$update_data = array(
 				'campaign_max'         => isset($_POST['campaign_max']) ? absint($_POST['campaign_max']) : null,
 				'campaign_feeddate'    => !empty($_POST['campaign_feeddate']),
-				'campaign_commentstatus' => isset($_POST['campaign_commentstatus']) ? sanitize_text_field($_POST['campaign_commentstatus']) : null,
+				'campaign_commentstatus' => isset($_POST['campaign_commentstatus']) ? sanitize_text_field($_POST['campaign_commentstatus']) : 'closed',
 				'campaign_allowpings'  => !empty($_POST['campaign_allowpings']),
 				'campaign_linktosource' => !empty($_POST['campaign_linktosource']),
 				'campaign_strip_links' => !empty($_POST['campaign_strip_links']),
