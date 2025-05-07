@@ -163,6 +163,7 @@
 		$.ajax({
 			url: ajaxurl,
 			type: 'POST',
+ 			cache: false,
 			data: {
 				action: 'manage_wpematico_save_bulk_edit',
 				post_ids: $post_ids,

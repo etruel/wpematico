@@ -68,9 +68,9 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			$danger_options = WPeMatico::get_danger_options();
 			if ($danger_options['wpe_debug_logs_campaign']) {
 				$class	 = 'notice notice-warning notice-alt';
-				$message = __('WARNING! WPeMatico Debug mode has been activated at Tools->System Status->Danger Zone.', 'wpematico') . '<br />'
-						. __('Be sure to deactivate it after your tests to avoid performance issues.', 'wpematico');
-				printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), $message);
+				$message = esc_html__('WARNING! WPeMatico Debug mode has been activated at Tools->System Status->Danger Zone.', 'wpematico') . '<br />'
+						. esc_html__('Be sure to deactivate it after your tests to avoid performance issues.', 'wpematico');
+				printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), $message); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 		}
 
@@ -158,18 +158,23 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			global $typenow, $wp_query, $current_user, $pagenow, $cfg;
 			if ($pagenow == 'edit.php' && is_admin() && $typenow == 'wpematico') {
 
-				$options	   = WPeMatico_Campaign_edit::campaign_type_options();
-				$readonly	   = ( count($options) == 1 ) ? 'disabled' : '';
+				$options = WPeMatico_Campaign_edit::campaign_type_options();
+				$readonly = ( count($options) == 1 ) ? 'disabled' : '';
 				$campaign_type = (isset($_GET['campaign_type']) && !empty($_GET['campaign_type']) ) ? sanitize_text_field($_GET['campaign_type']) : '';
-
-				$echoHtml = '<div style="display: inline-block;"><select id="campaign_type" ' . $readonly . ' name="campaign_type" style="display:inline;">';
-				$echoHtml .= '<option value=""' . selected('', $campaign_type, false) . '>' . __('Campaign Type', 'wpematico') . '</option>';
-				foreach ($options as $key => $option) {
-					$echoHtml .= '<option value="' . $option["value"] . '"' . selected($option["value"], $campaign_type, false) . '>' . $option["text"] . '</option>';
-				}
-				$echoHtml .= '</select></div>';
-
-				echo $echoHtml;
+				?>
+				<div style="display: inline-block;">
+					<select id="campaign_type" name="campaign_type" style="display:inline;" <?php echo esc_attr($readonly); ?>>
+						<option value="" <?php selected('', $campaign_type); ?>>
+							<?php esc_html_e('Campaign Type', 'wpematico'); ?>
+						</option>
+						<?php foreach ($options as $key => $option) : ?>
+							<option value="<?php echo esc_attr($option['value']); ?>" <?php selected($option['value'], $campaign_type); ?>>
+								<?php echo esc_html($option['text']); ?>
+							</option>
+						<?php endforeach; ?>
+					</select>
+				</div>
+				<?php
 			}
 		}
 
@@ -210,7 +215,9 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			if (!current_user_can(get_post_type_object($typenow)->cap->edit_others_posts))
 				return;
 
-			echo '<div style="margin: 1px 5px 0 0; float: left; background-color: #EB9600; color: #fff; border-color: #b97600 #b97600 #b97600; box-shadow: 0 1px 0 #b97600; text-decoration: none; text-shadow: 0 -1px 1px #b97600,1px 0 1px #b97600,0 1px 1px #b97600,-1px 0 1px #b97600;" id="run_all" onclick="run_all();" class="button">' . __('Run Selected Campaigns', 'wpematico') . ' <span style="line-height: 1.4em;" class="dashicons dashicons-controls-forward"></span></div>';
+			?><div style="margin: 1px 5px 0 0; float: left; background-color: #EB9600; color: #fff; border-color: #b97600 #b97600 #b97600; box-shadow: 0 1px 0 #b97600; text-decoration: none; text-shadow: 0 -1px 1px #b97600,1px 0 1px #b97600,0 1px 1px #b97600,-1px 0 1px #b97600;" id="run_all" onclick="run_all();" class="button">
+				<?php esc_html_e('Run Selected Campaigns', 'wpematico'); ?> <span style="line-height: 1.4em;" class="dashicons dashicons-controls-forward"></span>
+			</div><?php
 			//self::bulk_actions($which);
 		}
 
@@ -367,7 +374,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 
 		public static function wpematico_copy_campaign($status = '') {
 			if (!( isset($_GET['post']) || isset($_POST['post']) || ( isset($_REQUEST['action']) && 'wpematico_copy_campaign' == $_REQUEST['action'] ) )) {
-				wp_die(__('No campaign ID has been supplied!', 'wpematico'));
+				wp_die(esc_html__('No campaign ID has been supplied!', 'wpematico'));
 			}
 			$nonce = '';
 			if (isset($_REQUEST['nonce'])) {
@@ -394,7 +401,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 				exit;
 			} else {
 				$post_type_obj = get_post_type_object($post->post_type);
-				wp_die(esc_attr(__('Copy campaign failed, could not find original:', 'wpematico')) . ' ' . $id);
+				wp_die( esc_html__('Copy campaign failed, could not find original:', 'wpematico') . ' ' . esc_html($id) );
 			}
 		}
 
@@ -407,7 +414,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 		 */
 		public static function wpematico_toggle_campaign($status = '') {
 			if (!( isset($_GET['post']) || isset($_POST['post']) || ( isset($_REQUEST['action']) && 'wpematico_toggle_campaign' == $_REQUEST['action'] ) )) {
-				wp_die(__('No campaign ID has been supplied!', 'wpematico'));
+				wp_die(esc_html__('No campaign ID has been supplied!', 'wpematico'));
 			}
 			$nonce = '';
 			if (isset($_REQUEST['nonce'])) {
@@ -439,7 +446,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 		/**		 * ***********ACCION RESET 	 */
 		public static function wpematico_reset_campaign($status = '') {
 			if (!( isset($_GET['post']) || isset($_POST['post']) || ( isset($_REQUEST['action']) && 'wpematico_reset_campaign' == $_REQUEST['action'] ) )) {
-				wp_die(__('No campaign ID has been supplied!', 'wpematico'));
+				wp_die(esc_html__('No campaign ID has been supplied!', 'wpematico'));
 			}
 			$nonce = '';
 			if (isset($_REQUEST['nonce'])) {
@@ -471,7 +478,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 		/**		 * ***********ACCION DELHASH	 	 */
 		public static function wpematico_delhash_campaign() {
 			if (!( isset($_GET['post']) || isset($_POST['post']) || ( isset($_REQUEST['action']) && 'wpematico_delhash_campaign' == $_REQUEST['action'] ) )) {
-				wp_die(__('No campaign ID has been supplied!', 'wpematico'));
+				wp_die(esc_html__('No campaign ID has been supplied!', 'wpematico'));
 			}
 			$nonce = '';
 			if (isset($_REQUEST['nonce'])) {
@@ -508,7 +515,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 		/**		 * ***********ACCION CLEAR: ABORT CAMPAIGN	 	 */
 		public static function wpematico_clear_campaign() {
 			if (!( isset($_GET['post']) || isset($_POST['post']) || ( isset($_REQUEST['action']) && 'wpematico_clear_campaign' == $_REQUEST['action'] ) )) {
-				wp_die(__('No campaign ID has been supplied!', 'wpematico'));
+				wp_die(esc_html__('No campaign ID has been supplied!', 'wpematico'));
 			}
 			$nonce = '';
 			if (isset($_REQUEST['nonce'])) {
@@ -766,11 +773,12 @@ if (!class_exists('WPeMatico_Campaigns')) :
 
 					case 'name':
 					case 'title':
-						echo '<div class="error_code">' . "Error retrieving campaign data: " . $errorMessage . '</div><div class="error_message">' . $errorMessage . '</div>';
-
+						?><div class="error_code"><?php echo esc_html__("Error retrieving campaign data: ", 'wpematico') . esc_html($errorCode); ?></div>
+						<div class="error_message"><?php esc_html_e($errorMessage); ?></div><?php
 						break;
+
 					case 'campaign_type':
-						echo '<div id="campaign_broken-' . $post_id . '" style="color:#b32d2e;" value="">' . __('Broken campaign :(', 'wpematico') . '</div>';
+						echo '<div id="campaign_broken-' . esc_html($post_id) . '" style="color:#b32d2e;" value="">' . esc_html__('Broken campaign :(', 'wpematico') . '</div>';
 
 						break;
 				}
@@ -804,16 +812,16 @@ if (!class_exists('WPeMatico_Campaigns')) :
 						break;
 					case 'status':
 						$get_post_type_object = isset(get_post_type_object($campaign_data['campaign_customposttype'])->labels->singular_name) ? get_post_type_object($campaign_data['campaign_customposttype'])->labels->singular_name : '';
-						echo '<div id="campaign_posttype-' . $post_id . '" value="' . $campaign_data['campaign_posttype'] . '">' . $get_post_type_object . '<br />';
-						echo '' . get_post_status_object($campaign_data['campaign_posttype'])->label . '</div>';
+						echo '<div id="campaign_posttype-' . esc_html($post_id) . '" value="' . esc_attr($campaign_data['campaign_posttype']) . '">' . esc_html($get_post_type_object) . '<br />';
+						echo '' . esc_html__(get_post_status_object($campaign_data['campaign_posttype'])->label) . '</div>';
 						break;
 					case 'campaign_type':
 						$CampaignTypestr	  = WPeMatico_Campaign_edit::get_campaign_type_by_field($campaign_data['campaign_type']);
-						echo '<div class="center" id="campaign_type-' . $post_id . '" value="' . $campaign_data['campaign_type'] . '">' . str_replace(array(' (Default)', 'Fetcher'), '', $CampaignTypestr) . '</div>';
+						echo '<div class="center" id="campaign_type-' . esc_html($post_id) . '" value="' . esc_attr__($campaign_data['campaign_type']) . '">' . esc_html(str_replace(array(' (Default)', 'Fetcher'), '', $CampaignTypestr)) . '</div>';
 						break;
 					case 'count':
 						$postscount			  = get_post_meta($post_id, 'postscount', true);
-						echo (isset($postscount) && !empty($postscount) ) ? $postscount : $campaign_data['postscount'];
+						echo (isset($postscount) && !empty($postscount) ) ? esc_html($postscount) : esc_html($campaign_data['postscount']);
 						break;
 					case 'next':   // 'Current State' column
 						$starttime			  = (isset($campaign_data['starttime']) && !empty($campaign_data['starttime']) ) ? $campaign_data['starttime'] : 0;
@@ -855,19 +863,19 @@ if (!class_exists('WPeMatico_Campaigns')) :
 						}
 
 
-						echo '<div class="row-actions2" title="' . $ltitle . '">' . $lbotones . '</div>';
+						echo '<div class="row-actions2" title="' . esc_attr($ltitle) . '">' . esc_html($lbotones) . '</div>';
 						break;
 					case 'last':
 						$lastrun	 = get_post_meta($post_id, 'lastrun', true);
 						$lastrun	 = (isset($lastrun) && !empty($lastrun) ) ? $lastrun : $campaign_data['lastrun'];
 						$lastruntime = (isset($campaign_data['lastruntime'])) ? $campaign_data['lastruntime'] : '';
 						if ($lastrun) {
-							echo date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $lastrun);
+							echo esc_html(date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $lastrun));
 							if (isset($lastruntime) && !empty($lastruntime)) {
-								echo ' : ' . __('Runtime:', 'wpematico') . ' <span id="lastruntime">' . $lastruntime . '</span> ' . __('sec.', 'wpematico');
+								echo ' : ' . esc_html__('Runtime:', 'wpematico') . ' <span id="lastruntime">' . esc_html($lastruntime) . '</span> ' . esc_html__('sec.', 'wpematico');
 							}
 						} else {
-							echo __('None', 'wpematico');
+							echo esc_html__('None', 'wpematico');
 						}
 						$starttime = (isset($campaign_data['starttime']) && !empty($campaign_data['starttime']) ) ? $campaign_data['starttime'] : 0;
 						$activated = (bool) $campaign_data['activated'];
@@ -881,8 +889,11 @@ if (!class_exists('WPeMatico_Campaigns')) :
 						} else {  // Inactive play gris & grab gris & stop black
 							$ltitle = '';
 						}
-						echo "<div class=''>$ltitle</div>";
+						
+						?><div class=''><?php echo esc_html($ltitle); ?></div><?php
+						
 						break;
+						
 				} // switch $column
 			} // else brokenCampaign
 		}
@@ -968,28 +979,28 @@ if (!class_exists('WPeMatico_Campaigns')) :
 							?>
 							<fieldset class="" id="optionscampaign" style="display:none;">
 								<div class="inline-edit-col">
-									<h4><?php _e('Campaign Options', 'wpematico'); ?></h4>
+									<h4><?php esc_html_e('Campaign Options', 'wpematico'); ?></h4>
 									<div class="inline-edit-group">
 										<label class="alignleft">
-											<span class="field-title"><?php _e('Max items to create on each fetch:', 'wpematico'); ?></span>
+											<span class="field-title"><?php esc_html_e('Max items to create on each fetch:', 'wpematico'); ?></span>
 											<span class="input-text">
 												<input type="number" min="0" size="3" name="campaign_max" class="campaign_max small-text" value="">
 											</span>
 										</label>
 										<label class="alignleft">
 											<input type="checkbox" name="campaign_feeddate" value="1">
-											<span class="checkbox-title"><?php _e('Use feed date', 'wpematico'); ?></span>
+											<span class="checkbox-title"><?php esc_html_e('Use feed date', 'wpematico'); ?></span>
 										</label> 
 									</div>
 									<div class="inline-edit-group">						
 										<label class="alignleft inline-edit-col">
-											<span class="authortitle"><?php _e('Author:', 'wpematico'); ?></span>
+											<span class="authortitle"><?php esc_html_e('Author:', 'wpematico'); ?></span>
 											<span class="input-text">
 												<?php wp_dropdown_users(array('name' => 'campaign_author')); ?>
 											</span>
 										</label>
 										<label class="alignleft inline-edit-col">
-											<span class="commenttitle"><?php _e('Discussion options:', 'wpematico'); ?></span>
+											<span class="commenttitle"><?php esc_html_e('Discussion options:', 'wpematico'); ?></span>
 											<span class="input-text">
 												<select class="campaign_commentstatus" name="campaign_commentstatus">
 													<?php
@@ -999,7 +1010,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 														'registered_only' => __('Registered only', 'wpematico')
 													);
 													foreach ($options as $key => $value) {
-														echo '<option value="' . esc_attr($key) . '">' . $value . '</option>';
+														echo '<option value="' . esc_attr($key) . '">' . esc_html($value) . '</option>';
 													}
 													?>
 												</select>
@@ -1010,15 +1021,15 @@ if (!class_exists('WPeMatico_Campaigns')) :
 									<div class="inline-edit-group">
 										<label class="alignleft">
 											<input type="checkbox" name="campaign_allowpings" value="1">
-											<span class="checkbox-title"><?php _e('Allow pings?', 'wpematico'); ?>&nbsp;</span>
+											<span class="checkbox-title"><?php esc_html_e('Allow pings?', 'wpematico'); ?>&nbsp;</span>
 										</label>
 										<label class="alignleft">
 											<input type="checkbox" name="campaign_linktosource" value="1">
-											<span class="checkbox-title"><?php _e('Post title links to source?', 'wpematico'); ?>&nbsp;&nbsp;</span>
+											<span class="checkbox-title"><?php esc_html_e('Post title links to source?', 'wpematico'); ?>&nbsp;&nbsp;</span>
 										</label>
 										<label class="alignleft">
 											<input type="checkbox" name="campaign_strip_links" value="1">
-											<span class="checkbox-title"><?php _e('Strip links from content', 'wpematico'); ?></span>
+											<span class="checkbox-title"><?php esc_html_e('Strip links from content', 'wpematico'); ?></span>
 										</label>
 										<br class="clear" />
 									</div>
@@ -1069,7 +1080,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 								<?php endif; ?>	
 								<div class="inline-edit-radiosbox">
 									<label>
-										<span class="title"><?php _e('Post type', 'wpematico'); ?></span>
+										<span class="title"><?php esc_html_e('Post type', 'wpematico'); ?></span>
 										<br/>
 										<span class="input-text"> 
 											<?php
@@ -1082,7 +1093,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 											foreach ($post_types as $posttype) {
 												if ($posttype == 'wpematico')
 													continue;
-												echo '<label><input type="radio" name="campaign_customposttype" value="' . $posttype . '" id="customtype_' . $posttype . '" /> ' . $posttype . '</label>';
+												echo '<label><input type="radio" name="campaign_customposttype" value="' . esc_attr($posttype) . '" id="customtype_' . esc_attr($posttype) . '" /> ' . esc_html($posttype) . '</label>';
 											}
 											?>
 										</span>
@@ -1090,7 +1101,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 								</div>
 								<div class="inline-edit-radiosbox">
 									<label>
-										<span class="title"><?php _e('Status', 'wpematico'); ?></span>
+										<span class="title"><?php esc_html_e('Status', 'wpematico'); ?></span>
 										<br/>
 										<span class="input-text">
 											<?php
@@ -1099,7 +1110,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 											foreach ($statuses as $key => $status) {
 												if ($status_domain != $status->label_count['domain']) {
 													$status_domain = $status->label_count['domain'];
-													echo "<b>$status_domain</b><br />";
+													echo "<b>" .esc_html($status_domain) . "</b><br />";
 													//echo "<option disabled='disabled' value='' /> $status_domain</option>";
 												}
 												$status_name  = $status->name;
@@ -1110,7 +1121,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 												if (in_array($status_name, array('future', '')))
 													continue;
 
-												echo "<label><input type='radio' name='campaign_posttype' value='$status_name' /> $status_label</label>";
+												echo "<label><input type='radio' name='campaign_posttype' value='" . esc_attr($status_name) . "' /> " . esc_html($status_label) . "</label>";
 												//echo "<option " . selected($status_name, $campaign_posttype, false) . " value='$status_name' /> $status_label</option>";
 											}
 											/* 	<label><input type="radio" name="campaign_posttype" value="publish" /> <?php _e('Published'); ?></label>
@@ -1128,7 +1139,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 									?>
 									<div class="inline-edit-radiosbox qedscroll">
 										<label>
-											<span class="title" style="width: 100%;"><?php _e('Post Format', 'wpematico'); ?></span>
+											<span class="title" style="width: 100%;"><?php esc_html_e('Post Format', 'wpematico'); ?></span>
 											<br/>
 											<span class="input-text"> <?php
 												if (is_array($post_formats[0])) :
@@ -1136,7 +1147,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 													$campaign_post_format = (!isset($campaign_post_format) || empty($campaign_post_format) ) ? '0' : $campaign_data['campaign_post_format'];
 													?>
 													<div id="post-formats-select">
-														<label><input type="radio" name="campaign_post_format" class="post-format" id="post-format-0" value="0" /> <?php echo get_post_format_string('standard'); ?></label>
+														<label><input type="radio" name="campaign_post_format" class="post-format" id="post-format-0" value="0" /> <?php echo esc_html(get_post_format_string('standard')); ?></label>
 														<?php foreach ($post_formats[0] as $format) : ?>
 															<label><input type="radio" name="campaign_post_format" class="post-format" id="post-format-<?php echo esc_attr($format); ?>" value="<?php echo esc_attr($format); ?>" /> <?php echo esc_html(get_post_format_string($format)); ?></label>
 														<?php endforeach; ?>
