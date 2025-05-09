@@ -243,11 +243,12 @@ You can send your files to e-mail WPeMatico [at] etruel.com
 
 > See all detailed changelog at [WPeMatico Releases](https://wpematico.com/releases/)
 
-= 2.8.4 May 8, 2025 =
-* Fixes Bulk edit process was not saving the data correctly.
-* Fixes CSRF vulnerability on saving campaigns.
-* Improves standard JSON response in some AJAX methods.
-* Many sanitizations and security improvements.
+= 2.8.4 May 9, 2025 =
+* Fixed broken HTML formatting in campaign log messages.
+* Fixed issue where Bulk Edit actions were not saving data correctly.
+* Resolved CSRF vulnerability when saving campaigns.
+* Improved consistency of JSON responses in various AJAX methods.
+* Applied multiple input sanitization and overall security enhancements.
 
 = 2.8.3 May 2, 2025 =
 * Fixes Broken Access Control vulnerability on campaign save action. Thanks to domiee13 and Patchstack!
