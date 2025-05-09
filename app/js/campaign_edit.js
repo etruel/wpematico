@@ -738,20 +738,19 @@ function events_submit_post($) {
 			};
 			data = js_apply_filters('wpematico_checkfields_data', data);
 
-			$.post(ajaxurl, data, function (todok) { //si todo ok devuelve 1 sino el error
-				if (todok != 1) {
+			$.post(ajaxurl, data, function (response) {
+				if (!response.success) {
 					error = true;
-					msg = todok;
+					msg = response.data.message || 'Unknown error.';
 					$('#fieldserror').remove();
 					$("#poststuff").prepend('<div id="fieldserror" class="error fade">ERROR: ' + msg + '</div>');
-					$('#wpcontent .ajax-loading').attr('style', ' visibility: hidden;');
+					$('#wpcontent .ajax-loading').css('visibility', 'hidden');
 					$spinner.removeClass('is-active');
 					$submitButtons.removeClass('disabled');
 				} else {
 					$formpost.data('campaign_valid', true);
 					error = false; //then submit campaign
-					$('.w2ccases').removeAttr('disabled'); //si todo bien habilito los check para que los tome el php
-					//$formpost.submit();
+					$('.w2ccases').removeAttr('disabled'); //if everything is ok, enable the checks to be taken by PHP
 					$submitButtons.removeClass('disabled');
 					$('#publish').trigger("click");
 					setTimeout(function () {

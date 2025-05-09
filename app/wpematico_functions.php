@@ -88,9 +88,9 @@ if (!class_exists('WPeMatico_functions')) {
 			//  http://wordpress.stackexchange.com/a/72691/65771
 			//  https://codex.wordpress.org/Function_Reference/get_page_by_title
 
-			$dupmsg = ($dev) ? __('Yes', 'wpematico') : __('No', 'wpematico');
+			$dupmsg = ($dev) ? esc_html__('Yes', 'wpematico') : esc_html__('No', 'wpematico');
 			/* translators: the title of the post. */
-			trigger_error(sprintf(__('Checking duplicated title \'%s\'', 'wpematico'), $title) . ': ' . $dupmsg, E_USER_NOTICE);
+			trigger_error(sprintf(esc_html__('Checking duplicated title \'%s\'', 'wpematico'), $title) . ': ' . $dupmsg, E_USER_NOTICE); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 			return $dev;
 		}
@@ -460,7 +460,7 @@ if (!class_exists('WPeMatico_functions')) {
 				} else {
 					//third try to obtain the file 
 					/* translators: the previous error message. */
-					trigger_error(sprintf(__('Download error: %s Using an alternate download method...', 'wpematico'), $download_file->get_error_message()), E_USER_WARNING);
+					trigger_error(sprintf(esc_html__('Download error: %s Using an alternate download method...', 'wpematico'), wp_kses_post( $download_file->get_error_message()) ), E_USER_WARNING); 
 					$origin_content = WPeMatico::wpematico_get_contents($url_origin, array());
 				}
 			}
@@ -670,7 +670,7 @@ if (!class_exists('WPeMatico_functions')) {
 				//send response to admin notice : ejemplo con la función dentro del add_action
 				add_action('admin_notices', function () use ($wpematico_admin_message) {
 					//echo '<div class="error"><p>', esc_html($wpematico_admin_message), '</p></div>';
-					echo $wpematico_admin_message;
+					echo wp_kses_post( $wpematico_admin_message );
 				});
 			}
 			return $checks;
@@ -1281,7 +1281,7 @@ if (!class_exists('WPeMatico_functions')) {
 			if (wpematico_is_pro_active()) {
 				$professional_notice = '';
 			} else {
-				$professional_notice = '<strong>' . __('You should use the Force Feed or Change User Agent features of ', 'wpematico') . '<a href="https://etruel.com/downloads/wpematico-professional/">WPeMatico Professional</a></strong>';
+				$professional_notice = '<strong>' . esc_html__('You should use the Force Feed or Change User Agent features of ', 'wpematico') . '<a href="https://etruel.com/downloads/wpematico-professional/">WPeMatico Professional</a></strong>';
 			}
 			if ($ajax) {
 				if (empty($errors)) {
@@ -1306,17 +1306,17 @@ if (!class_exists('WPeMatico_functions')) {
 					$response['success'] = true;
 				} else {
 					/* translators: %1$s the tested Feed URL. %2$s SimplePie error message. */
-					$response['message'] = sprintf(__('The feed %1$s cannot be parsed. Simplepie said: %2$s', 'wpematico'), $url, $errors) . '<br />' . $professional_notice;
+					$response['message'] = sprintf(esc_html__('The feed %1$s cannot be parsed. Simplepie said: %2$s', 'wpematico'), esc_url($url), wp_kses_post($errors) ) . '<br />' . $professional_notice;
 					$response['success'] = false;
 				}
 				wp_send_json($response);  //echo json & die
 			} else {
 				if (empty($errors)) {
 					/* translators: the tested Feed URL. */
-					printf(__('The feed %s has been parsed successfully.', 'wpematico'), $url);
+					printf(esc_html__('The feed %s has been parsed successfully.', 'wpematico'),esc_url($url));				
 				} else {
 					/* translators: %1$s the tested Feed URL. %2$s SimplePie error message. */
-					printf(__('The feed %1$s cannot be parsed. Simplepie said: %2$s', 'wpematico'), $url, $errors) . '<br />' . $professional_notice;
+					printf( esc_html__('The feed %1$s cannot be parsed. Simplepie said: %2$s', 'wpematico'), esc_url($url), wp_kses_post($errors) ) . '<br />' . $professional_notice;
 				}
 				return;
 			}
@@ -1620,10 +1620,10 @@ if (!class_exists('WPeMatico_functions')) {
 					if (isset($response['response']['code']) && 200 === $response['response']['code']) {
 						$data = wp_remote_retrieve_body($response);
 					} else {
-						trigger_error(__('Error with wp_remote_request:', 'wpematico') . print_r($response, 1), E_USER_NOTICE);
+						trigger_error(esc_html__('Error with wp_remote_request:', 'wpematico') . print_r($response, 1), E_USER_NOTICE); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					}
 				} else {
-					trigger_error(__('Error with wp_remote_get:', 'wpematico') . $response->get_error_message(), E_USER_NOTICE);
+					trigger_error(esc_html__('Error with wp_remote_get:', 'wpematico') . $response->get_error_message(), E_USER_NOTICE); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				}
 			}
 
@@ -1682,7 +1682,7 @@ if (!class_exists('WPeMatico_functions')) {
 			if (isset($settings_data_json) && $settings_data_json != null) {
 				header('Content-type: text/plain');
 				header('Content-Disposition: attachment; filename="wpematico-settings.txt"');
-				print $settings_data_json;
+				print $settings_data_json; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				die();
 			} else {
 				wp_die(esc_attr(__('Exporting failed', 'wpematico')));
@@ -1803,7 +1803,7 @@ add_action('wpematico_wp_ratings', 'wpematico_wp_ratings');
 
 function wpematico_wp_ratings() {
 	?><div class="postbox">
-		<h3 class="handle"><?php _e('5 Stars Ratings on Wordpress', 'wpematico'); ?></h3>
+		<h3 class="handle"><?php esc_html_e('5 Stars Ratings on Wordpress', 'wpematico'); ?></h3>
 		<?php if (get_option('wpem_hide_reviews')) : ?>
 			<div class="inside" style="max-height:300px;overflow-x: hidden;">
 				<p style="text-align: center;">
@@ -1871,31 +1871,31 @@ function wpematico_get_active_seo_plugin() {
 function wpematico_init_set($index, $value, $log_only_fail = false) {
     $oldvalue = @ini_set($index, $value) or $oldvalue = FALSE; //@return string the old value on success, <b>FALSE</b> on failure. (after 'or' is by the @)
 	
-	/* translators: %1$s the tested Feed URL. 
+	/* translators:
 	 * %1$s ini option to change. 
 	 * %2$s The new value for the option. 
 	 * %3$s Operation result. Success or Failed.
 	 * %4$s Old previous value returned on fail. 
 	 */
-	$error_msg = __('Trying to set %1$s = %2$s: \'%3$s\' - Old value: %4$s.', 'wpematico');
-	
-    if ($log_only_fail) {
-        if ($oldvalue === false) {
-            trigger_error(sprintf($error_msg, 
-					$index, //%1$s
-					$value, //%2$s
-					__('Failed', 'wpematico'), //%3$s
-					$oldvalue //%4$s
-				), E_USER_WARNING);
-        }
-    } else {
-        trigger_error(sprintf($error_msg, 
-				$index, //%1$s
-				$value, //%2$s
-				(($oldvalue === FALSE) ? __('Failed', 'wpematico') : __('Success', 'wpematico')), //%3$s
-				$oldvalue //%4$s
-			), (($oldvalue === FALSE) ? E_USER_WARNING : E_USER_NOTICE));
-    }
+	$error_msg = esc_html__('Trying to set %1$s = %2$s: \'%3$s\' - Old value: %4$s.', 'wpematico');
+
+	if ($log_only_fail) {
+		if ($oldvalue === false) {
+			trigger_error(sprintf($error_msg, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				esc_html($index), //%1$s
+				esc_html($value), //%2$s
+				esc_html__('Failed', 'wpematico'), //%3$s
+				esc_html($oldvalue) //%4$s
+			), E_USER_WARNING);
+		}
+	} else {
+		trigger_error(sprintf($error_msg, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			esc_html($index), //%1$s
+			esc_html($value), //%2$s
+			($oldvalue === false ? esc_html__('Failed', 'wpematico') : esc_html__('Success', 'wpematico')), //%3$s
+			esc_html($oldvalue) //%4$s
+		), ($oldvalue === false ? E_USER_WARNING : E_USER_NOTICE));
+	}
 
     return $oldvalue;
 }
@@ -1966,7 +1966,7 @@ function wpematico_joberrorhandler($errno, $errstr, $errfile, $errline) {
 		$campaign_log_message .= $sMessage . "<br />\n";
 
 		if ($errno == E_ERROR or $errno == E_CORE_ERROR or $errno == E_COMPILE_ERROR) {//Die on fatal php errors.
-			die("Fatal Error:" . $errno);
+			die("Fatal Error:" . esc_html($errno));
 		}
 		
 		// Deprecated on 2.7

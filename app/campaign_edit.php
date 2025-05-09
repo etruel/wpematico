@@ -213,7 +213,8 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 				$args = array();
 				$postTypesArr =  get_post_types($args);
 				foreach ($postTypesArr as $postType) {
-					echo "postTypesArray['$postType'] = ['" . implode("','", get_object_taxonomies($postType)) . "'];";
+//					echo "postTypesArray['$postType'] = ['" . implode("','", get_object_taxonomies($postType)) . "'];";
+					echo "postTypesArray['".esc_js( $postType )."'] = ['" . implode("','", array_map( 'esc_js', get_object_taxonomies($postType) ) ) . "'];\n";
 				}
 			?>
 			var arrayTaxonomiesIds = {post_format: 'post_format-box', category: 'category-box', post_tag: 'post_tag-box'};			
@@ -436,8 +437,14 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		}
 		$err_message = apply_filters('wpematico_check_error_message',$err_message, $_POST);
 		
-		if($err_message =="" ) $err_message="1";  //NO ERROR
-		die($err_message); 
+		if ( empty( $err_message ) ) {
+			wp_send_json_success(); // Return: { success: true }
+		} else {
+			wp_send_json_error( array(
+				'message' => wp_kses_post( $err_message ), // sanitized
+			) );
+		}
+		
 	}
 	/**
 	* Static function save_campaigndata
