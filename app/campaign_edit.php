@@ -182,17 +182,17 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		wp_localize_script('wpematico_campaign_edit', 'wpematico_object', $wpematico_object);
 	}
 
-	function RunNowX() {
+	public function RunNowX() {
 		
-		$nonce = (isset($_POST['nonce'])) ?  sanitize_text_field($_POST['nonce']) : '';
-        if ( ! wp_verify_nonce($nonce, 'wpematico-run-now-nonce') ) {
-           die( esc_html__('Please refresh your browser and try again.', 'wpematico') ); 
-        }
+		$nonce = isset($_POST['nonce']) ? sanitize_text_field($_POST['nonce']) : '';
+		if ( ! wp_verify_nonce($nonce, 'wpematico-run-now-nonce') ) {
+		   die( esc_html__('Please refresh your browser and try again.', 'wpematico') ); 
+		}
 		
 		
 		if(!isset($_POST['campaign_ID'])) die('ERROR: ID no encontrado.'); 
 		$campaign_ID = absint($_POST['campaign_ID']);
-		echo wp_kses_post( substr( WPeMatico :: wpematico_dojob( $campaign_ID ) , 0, -1) ); // borro el ultimo caracter que es un 0
+		echo  substr( WPeMatico :: wpematico_dojob( $campaign_ID ) , 0, -1) ; // borro el ultimo caracter que es un 0
 		return ''; 
 	}
 	

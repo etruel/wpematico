@@ -74,6 +74,7 @@ function run_now(c_ID) {
             jQuery('#post-' + c_ID ).after('<tr class="wpe_campaign-running-tr" id="campaign-running-' + c_ID + '"><td colspan="7" class="campaign-running"><div id="fieldserror" class="notice notice-alt notice-error fade">' + msgdev + '</div></td></tr>');
         } else {
             jQuery('#post-' + c_ID ).after('<tr class="wpe_campaign-running-tr" id="campaign-running-' + c_ID + '"><td colspan="7" class="campaign-running"><div id="fieldserror" class="notice notice-alt notice-success fade">' + msgdev + '</div></td></tr>');
+            console.log(msgdev);
             var floor = Math.floor;
             var bef_posts = floor(jQuery("tr#post-" + c_ID + " > .count").html());
             var ret_posts = floor(bef_posts + floor(jQuery("#ret_lastposts").html()));
