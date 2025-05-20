@@ -72,9 +72,14 @@ class WPeMatico_backend_helpers {
 	public static function posts_custom_id_columns($column_name, $post_id) {
 		if ($column_name === 'post_campaign') {
 			// get campaign id from post
-			$wpe_campaignid = get_post_meta($post_id, 'wpe_campaignid', 1);
-			$link = '<a title="' . __('Edit campaign', 'wpematico') . ' \'' . get_the_title($wpe_campaignid) . '\'" href="' . admin_url('post.php?post=' . $wpe_campaignid . '&action=edit') . '">' . $wpe_campaignid . '</a>';
-			echo $link;
+			$wpe_campaignid = get_post_meta($post_id, 'wpe_campaignid', true);
+			$link = sprintf(
+				'<a title="%s" href="%s">%d</a>',
+				esc_attr( sprintf( __('Edit campaign', 'wpematico') . " '%s'", get_the_title( $wpe_campaignid ) ) ),
+				esc_url( admin_url( 'post.php?post=' . $wpe_campaignid . '&action=edit' ) ),
+				(int) $wpe_campaignid
+			);			
+			echo wp_kses_post($link);
 		}
 	}
 
@@ -154,7 +159,7 @@ class WPeMatico_backend_helpers {
 		}
 	
 		// Start rendering the HTML for the meta box
-		echo '<span class="description">' . __('All links are no-follow and open in a new browser tab.', 'wpematico') . '</span>';
+		echo '<span class="description">' . esc_html__('All links are no-follow and open in a new browser tab.', 'wpematico') . '</span>';
 		?>
 		<style type="text/css">
 			#wpematico-all-meta-box h2 {
@@ -179,16 +184,16 @@ class WPeMatico_backend_helpers {
 			// Render the meta data table with editable fields
 			echo '<table class="wpematico-data-table">
 			<tr>
-				<td><b>' . __('Published by Campaign', 'wpematico') . ':</b></td>
-				<td><a title="' . __('Edit the campaign.', 'wpematico') . '" href="' . admin_url('post.php?post=' . $campaign_id . '&action=edit') . '" target="_blank">' . $title . '</a></td>
+				<td><b>' . esc_html__('Published by Campaign', 'wpematico') . ':</b></td>
+				<td><a title="' . esc_attr__('Edit the campaign.', 'wpematico') . '" href="' . esc_url( admin_url('post.php?post=' . $campaign_id . '&action=edit') ) . '" target="_blank">' . esc_html($title) . '</a></td>
 			</tr>
 			<tr>
-				<td><b>' . __('From feed', 'wpematico') . ':</b></td>
-				<td><span id="wpe_feed" class="editable-field"><a title="' . __('Open the feed URL in the browser.', 'wpematico') . '" href="' . esc_url($meta_data['wpe_feed']) . '" rel="nofollow" target="_blank">' . esc_html($meta_data['wpe_feed']) . '</a></span></td>
+				<td><b>' . esc_html__('From feed', 'wpematico') . ':</b></td>
+				<td><span id="wpe_feed" class="editable-field"><a title="' . esc_attr__('Open the feed URL in the browser.', 'wpematico') . '" href="' . esc_url($meta_data['wpe_feed']) . '" rel="nofollow" target="_blank">' . esc_html($meta_data['wpe_feed']) . '</a></span></td>
 			</tr>
 			<tr>
-				<td><b>' . __('Source permalink', 'wpematico') . ':</b></td>
-				<td><span id="wpe_sourcepermalink" class="editable-field"><a title="' . __('Go to the source website to see the original content.', 'wpematico') . '" href="' . esc_url($meta_data['wpe_sourcepermalink']) . '" rel="nofollow" target="_blank">' . esc_html($meta_data['wpe_sourcepermalink']) . '</a></span></td>
+				<td><b>' . esc_html__('Source permalink', 'wpematico') . ':</b></td>
+				<td><span id="wpe_sourcepermalink" class="editable-field"><a title="' . esc_attr__('Go to the source website to see the original content.', 'wpematico') . '" href="' . esc_url($meta_data['wpe_sourcepermalink']) . '" rel="nofollow" target="_blank">' . esc_html($meta_data['wpe_sourcepermalink']) . '</a></span></td>
 			</tr>';
 
 			// Call the action to insert additional fields (like the featured image and buttons)
@@ -224,7 +229,7 @@ class WPeMatico_backend_helpers {
 
 	//add dashboard widget
 	public static function wpematico_add_dashboard() {
-		wp_add_dashboard_widget('wpematico_widget', __('WPeMatico Summary', 'wpematico'), array(__CLASS__, 'wpematico_dashboard_widget'));
+		wp_add_dashboard_widget('wpematico_widget', esc_html__('WPeMatico Summary', 'wpematico'), array(__CLASS__, 'wpematico_dashboard_widget'));
 	}
 
 	//Dashboard widget
@@ -243,30 +248,31 @@ class WPeMatico_backend_helpers {
 			}
 		</style><?php
 		echo '<div style="color:white; background-color: #f57900;border: 1px solid #DDDDDD; height: 20px; margin: -10px -10px 2px; padding: 5px 10px 0px;">';
-		echo '<strong>' . __('Last five Processed Campaigns:', 'wpematico') . '</strong>';
-		echo '<span style="float:right;"><a href="' . admin_url('edit.php?post_type=wpematico') . '" title="' . __('Go to Campaigns List', 'wpematico') . '">' . __('See All', 'wpematico') . '</span></div>';
+		echo '<strong>' . esc_html__('Last five Processed Campaigns:', 'wpematico') . '</strong>';
+		echo '<span style="float:right;"><a href="' . esc_url( admin_url('edit.php?post_type=wpematico') ) . '" title="' . esc_attr__('Go to Campaigns List', 'wpematico') . '">' . esc_html__('See All', 'wpematico') . '</span></div>';
 		@$campaigns2 = WPeMatico::filter_by_value($campaigns, 'lastrun', '');
 		WPeMatico::array_sort($campaigns2, '!lastrun');
 		if (is_array($campaigns2)) {
 			$count = 0;
 			foreach ($campaigns2 as $key => $campaign_data) {
-				echo '<a href="' . admin_url('post.php?post=' . $campaign_data['ID'] . '&action=edit') . '" title="' . __('Edit Campaign', 'wpematico') . '">';
+				echo '<a href="' . esc_url(admin_url('post.php?post=' . $campaign_data['ID'] . '&action=edit')) . '" title="' . esc_attr__('Edit Campaign', 'wpematico') . '">';
 				if ($campaign_data['lastrun']) {
-					echo " <i><strong>" . $campaign_data['campaign_title'] . "</i></strong>, ";
-					echo date_i18n((get_option('date_format') . ' ' . get_option('time_format')), $campaign_data['lastrun']) . ', <i>';
+					echo " <i><strong>" . esc_html($campaign_data['campaign_title']) . "</i></strong>, ";
+					echo esc_html(date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $campaign_data['lastrun'])) . ', <i>';
+
 					if ($campaign_data['lastpostscount'] > 0)
-						/* translators: %s :integer. */
-						echo ' <span style="color:green;">' . sprintf(__('Processed Posts: %s', 'wpematico'), $campaign_data['lastpostscount']) . '</span>, ';
+					/* translators: %s :integer. */
+						echo ' <span style="color:green;">' . sprintf(esc_html__('Processed Posts: %s', 'wpematico'), esc_html($campaign_data['lastpostscount'])) . '</span>, ';
 					else
-						/* translators: %s :integer. */
-						echo ' <span style="color:red;">' . sprintf(__('Processed Posts: %s', 'wpematico'), '0') . '</span>, ';
+					/* translators: %s :integer. */
+						echo ' <span style="color:red;">' . sprintf(esc_html__('Processed Posts: %s', 'wpematico'), '0') . '</span>, ';
 
 					if ($campaign_data['lastruntime'] < 10)
-						/* translators: %s :seconds (integer). */
-						echo ' <span style="color:green;">' . sprintf(__('Fetch done in %s sec.', 'wpematico'), $campaign_data['lastruntime']) . '</span>';
+					/* translators: %s :seconds (integer). */
+						echo ' <span style="color:green;">' . sprintf(esc_html__('Fetch done in %s sec.', 'wpematico'), esc_html($campaign_data['lastruntime'])) . '</span>';
 					else
-						/* translators: %s :seconds (integer). */
-						echo ' <span style="color:red;">' . sprintf(__('Fetch done in %s sec.', 'wpematico'), $campaign_data['lastruntime']) . '</span>';
+					/* translators: %s :seconds (integer). */
+						echo ' <span style="color:red;">' . sprintf(esc_html__('Fetch done in %s sec.', 'wpematico'), esc_html($campaign_data['lastruntime'])) . '</span>';
 				}
 				echo '</i></a><br />';
 				$count++;
@@ -277,26 +283,26 @@ class WPeMatico_backend_helpers {
 		unset($campaigns2);
 		echo '<br />';
 		echo '<div style="color:white; background-color: #f57900;border: 1px solid #DDDDDD; height: 20px; margin: -10px -10px 2px; padding: 5px 10px 0px;">';
-		echo '<strong>' . __('Next Scheduled Campaigns:', 'wpematico') . '</strong>';
+		echo '<strong>' . esc_html__('Next Scheduled Campaigns:', 'wpematico') . '</strong>';
 		echo '</div>';
 		echo '<ul style="list-style: circle inside none; margin-top: 2px; margin-left: 9px;">';
 		WPeMatico::array_sort($campaigns, 'cronnextrun');
 		foreach ($campaigns as $key => $campaign_data) {
 			if ($campaign_data['activated']) {
-				echo '<li><a href="' . admin_url('post.php?post=' . $campaign_data['ID'] . '&action=edit') . '" title="' . __('Edit Campaign', 'wpematico') . '">';
-				echo '<strong>' . $campaign_data['campaign_title'] . '</strong>, ';
+				echo '<li><a href="' . esc_url( admin_url('post.php?post=' . $campaign_data['ID'] . '&action=edit') ) . '" title="' . esc_attr__('Edit Campaign', 'wpematico') . '">';
+				echo '<strong>' . esc_html($campaign_data['campaign_title']) . '</strong>, ';
 				if ($campaign_data['starttime'] > 0 and empty($campaign_data['stoptime'])) {
 					$runtime = current_time('timestamp') - $campaign_data['starttime'];
-					echo __('Running since:', 'wpematico') . ' ' . $runtime . ' ' . __('sec.', 'wpematico');
+					echo esc_html__('Running since:', 'wpematico') . ' ' . esc_html($runtime) . ' ' . esc_html__('sec.', 'wpematico');
 				} elseif ($campaign_data['activated']) {
-					echo date_i18n((get_option('date_format') . ' ' . get_option('time_format')), $campaign_data['cronnextrun']);
+					echo esc_html(date_i18n((get_option('date_format') . ' ' . get_option('time_format')), $campaign_data['cronnextrun']));
 				}
 				echo '</a></li>';
 			}
 		}
 		$campaigns = WPeMatico::filter_by_value($campaigns, 'activated', '');
 		if (empty($campaigns))
-			echo '<i>' . __('None', 'wpematico') . '</i><br />';
+			echo '<i>' . esc_html__('None', 'wpematico') . '</i><br />';
 		echo '</ul>';
 	}
 
