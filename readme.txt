@@ -246,6 +246,7 @@ You can send your files to e-mail WPeMatico [at] etruel.com
 = 2.8.5 May 19, 2025 =
 
 * Applied multiple input sanitization and overall security enhancements.
+* Fixes a image URL in Settings screen.
 
 = 2.8.4 May 9, 2025 =
 
