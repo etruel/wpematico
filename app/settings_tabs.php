@@ -59,7 +59,7 @@ function wpematico_settings_page() {
 					), $tab_url);
 
 				$active = $current_tab == $tab_id ? ' nav-tab-active' : '';
-				echo '<a href="' . esc_url($tab_url) . '" title="' . esc_attr(sanitize_text_field($tab_name)) . '" class="nav-tab' . $active . '">' . ( $tab_name ) . '</a>';
+				echo '<a href="' . esc_url($tab_url) . '" title="' . esc_attr(sanitize_text_field($tab_name)) . '" class="nav-tab' . esc_attr($active) . '">' . wp_kses_post( $tab_name ) . '</a>';
 			}
 			?>
 		</h2>
@@ -96,7 +96,7 @@ function wpematico_print_tab_tools_sections() {
 				else
 					$f		 = FALSE;
 				$active	 = $current_section == $section_id ? ' nav-section-active' : '';
-				echo '<a href="' . esc_url($section_url) . '" title="' . esc_attr($section_name) . '" class="nav-section' . $active . '">' . ( $section_name ) . '</a>';
+				echo '<a href="' . esc_url($section_url) . '" title="' . esc_attr($section_name) . '" class="nav-section' . esc_attr($active) . '">' . wp_kses_post( $section_name ) . '</a>';
 			}
 			?>
 		</h3>

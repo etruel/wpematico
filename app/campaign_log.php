@@ -66,8 +66,14 @@ class campaign_logs {
 		<body>
 		<h1><?php 
 		/* translators: %1$s Campaign ID. %2$s Campaign Name */
-		printf(__('Last Log of Campaign %1$s: %2$s', 'wpematico'), $post_id, get_the_title($post_id)); ?> </h1>
+		printf(
+			esc_html__('Last Log of Campaign %1$s: %2$s', 'wpematico'),
+			esc_html($post_id),
+			esc_html(get_the_title($post_id))
+		);
+		?> </h1>
 		<?php
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo $log;
 
 		?></body>

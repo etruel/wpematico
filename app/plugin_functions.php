@@ -44,7 +44,7 @@ function admin_footer(){
 	?>
 	<div id="wpe_feedback" class="wpe_modal_log-box fade" style="display:none;">
 		<div class="wpe_modal_log-body">
-			<a id="skip_feedback" style="color:lightgray" href="#"><?php _e('Skip & deactivate', 'wpematico') ?></a>
+			<a id="skip_feedback" style="color:lightgray" href="#"><?php esc_html_e('Skip & deactivate', 'wpematico') ?></a>
 			<a href="JavaScript:void(0);" class="wpe_modal_log-close" onclick="jQuery('#wpe_feedback').fadeToggle().removeClass('active'); jQuery('body').removeClass('wpe_modal_log-is-active');">
 				<span class="dashicons dashicons-no-alt"></span>
 			</a>
@@ -93,7 +93,7 @@ function admin_footer(){
 							'<a href="https://etruel.com/my-account/support/" target="_blank" rel="noopener noreferrer" class="support-link">' . esc_html__('Our Site', 'wpematico') . '</a>');
 							esc_html_e(' – we’re happy to help!', 'wpematico'); ?>
 						</div>
-						<button id="send_feedback" type="submit" class="button"><?php _e('Send & deactivate', 'wpematico') ?></button>
+						<button id="send_feedback" type="submit" class="button"><?php esc_html_e('Send & deactivate', 'wpematico') ?></button>
 					</div>
 				</form>
 			</div>
@@ -534,30 +534,30 @@ function fetch_tags() {
 
     // Output taxonomies
     $html = '';
-    
-    if (count($flat_taxonomies)) {
+
+	if (count($flat_taxonomies)) {
 		
-        foreach ($flat_taxonomies as $taxonomy) {
-            if (current_user_can($taxonomy->cap->assign_terms)) {
+		foreach ($flat_taxonomies as $taxonomy) {
+			if (current_user_can($taxonomy->cap->assign_terms)) {
 				$current_tags = get_campaign_tags($taxonomy->name);
 				if($taxonomy->name != 'post_tag'){
 					// Create a label for each taxonomy with a textarea for the tags
 					$html .= '<label class="inline-edit-tags">';
 					$html .= '<span class="title">' . esc_html($taxonomy->labels->name) . '</span>';
-					$html .= '<textarea cols="22" rows="1" name="tax_input['.$taxonomy->name.']" class="tax_input_' . esc_attr($taxonomy->name) . '">'. $current_tags .'</textarea>';
+					$html .= '<textarea cols="22" rows="1" name="tax_input['.esc_attr($taxonomy->name).']" class="tax_input_' . esc_attr($taxonomy->name) . '">'. esc_textarea( $current_tags ) .'</textarea>';
 					$html .= '</label>';
 				}else{
 					// Create a label for each taxonomy with a textarea for the tags
 					$html .= '<label class="inline-edit-tags">';
 					$html .= '<span class="title">' . esc_html($taxonomy->labels->name) . '</span>';
-					$html .= '<textarea cols="22" rows="1" name="campaign_tags" class="tax_input_' . esc_attr($taxonomy->name) . '">'. $current_tags .'</textarea>';
+					$html .= '<textarea cols="22" rows="1" name="campaign_tags" class="tax_input_' . esc_attr($taxonomy->name) . '">'. esc_textarea( $current_tags ) .'</textarea>';
 					$html .= '</label>';
 				}
-            }
-        }
-    }
-
-    echo $html;
+			}
+		}
+	}
+	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	echo $html;
     wp_die(); // Properly terminate the AJAX request
 }
 

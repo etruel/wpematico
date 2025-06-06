@@ -2,7 +2,7 @@
 Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,rss to blog,feed to post,rss aggregator
-Stable tag: 2.8.3
+Stable tag: 2.8.5
 Tested up to: 6.8.1
 Requires at least: 4.8
 Requires PHP: 7.0
@@ -243,7 +243,21 @@ You can send your files to e-mail WPeMatico [at] etruel.com
 
 > See all detailed changelog at [WPeMatico Releases](https://wpematico.com/releases/)
 
+= 2.8.5 May 19, 2025 =
+
+* Applied multiple input sanitization and overall security enhancements.
+* Fixes an image URL in Settings screen.
+
+= 2.8.4 May 9, 2025 =
+
+* Fixed broken HTML formatting in campaign log messages.
+* Fixed issue where Bulk Edit actions were not saving data correctly.
+* Resolved CSRF vulnerability when saving campaigns.
+* Improved consistency of JSON responses in various AJAX methods.
+* Applied multiple input sanitization and overall security enhancements.
+
 = 2.8.3 May 2, 2025 =
+
 * Fixes Broken Access Control vulnerability on campaign save action. Thanks to domiee13 and Patchstack!
 * Fixes in strings returned by the campaign edit screen. 
 * Fixes few texts on Notices.
@@ -441,4 +455,4 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 
-Fixes few bugs and a vulnerability report.
+Applied multiple input sanitization and overall security enhancements.

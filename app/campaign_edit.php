@@ -182,17 +182,19 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		wp_localize_script('wpematico_campaign_edit', 'wpematico_object', $wpematico_object);
 	}
 
-	function RunNowX() {
+	public function RunNowX() {
 		
-		$nonce = (isset($_POST['nonce'])) ?  sanitize_text_field($_POST['nonce']) : '';
-        if ( ! wp_verify_nonce($nonce, 'wpematico-run-now-nonce') ) {
-           die( esc_html__('Please refresh your browser and try again.', 'wpematico') ); 
-        }
+		$nonce = isset($_POST['nonce']) ? sanitize_text_field($_POST['nonce']) : '';
+		if ( ! wp_verify_nonce($nonce, 'wpematico-run-now-nonce') ) {
+		   die( esc_html__('Please refresh your browser and try again.', 'wpematico') ); 
+		}
 		
 		
 		if(!isset($_POST['campaign_ID'])) die('ERROR: ID no encontrado.'); 
 		$campaign_ID = absint($_POST['campaign_ID']);
-		echo wp_kses_post( substr( WPeMatico :: wpematico_dojob( $campaign_ID ) , 0, -1) ); // borro el ultimo caracter que es un 0
+		// Already sanitized on wpematico_dojob
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo  substr( WPeMatico :: wpematico_dojob( $campaign_ID ) , 0, -1) ; // borro el ultimo caracter que es un 0
 		return ''; 
 	}
 	
@@ -213,7 +215,8 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 				$args = array();
 				$postTypesArr =  get_post_types($args);
 				foreach ($postTypesArr as $postType) {
-					echo "postTypesArray['$postType'] = ['" . implode("','", get_object_taxonomies($postType)) . "'];";
+//					echo "postTypesArray['$postType'] = ['" . implode("','", get_object_taxonomies($postType)) . "'];";
+					echo "postTypesArray['".esc_js( $postType )."'] = ['" . implode("','", array_map( 'esc_js', get_object_taxonomies($postType) ) ) . "'];\n";
 				}
 			?>
 			var arrayTaxonomiesIds = {post_format: 'post_format-box', category: 'category-box', post_tag: 'post_tag-box'};			
@@ -436,8 +439,14 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		}
 		$err_message = apply_filters('wpematico_check_error_message',$err_message, $_POST);
 		
-		if($err_message =="" ) $err_message="1";  //NO ERROR
-		die($err_message); 
+		if ( empty( $err_message ) ) {
+			wp_send_json_success(); // Return: { success: true }
+		} else {
+			wp_send_json_error( array(
+				'message' => wp_kses_post( $err_message ), // sanitized
+			) );
+		}
+		
 	}
 	/**
 	* Static function save_campaigndata

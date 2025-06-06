@@ -276,14 +276,14 @@ class wpe_notification_traslate {
 ?>	
 <!--#########################HTML STRUCTURE#############################-->	
 	<div id="post-body">
-		<div class="div-wpmatico-traslate" style="<?php print($style_wpmatico_traslate); ?>">
+		<div class="div-wpmatico-traslate" style="<?php esc_attr_e($style_wpmatico_traslate); ?>">
 			<h3>Translations of WPeMatico
-			 <span class="icon-minimizar-div  <?php print($class_iconeyes); ?>" style="margin-right: 30px;" ></span>
+			 <span class="icon-minimizar-div  <?php esc_attr_e($class_iconeyes); ?>" style="margin-right: 30px;" ></span>
 			 <span class="icon-cerrar-div dashicons dashicons-no"></span></h3>
 			
-			 <div class="description-traslate" style="<?php print($style_wpmatico_traslate_div); ?>">
-				<p class="parr-wpmatico-traslate"><?php echo $message; ?></p>
-				<img class="img-wpmatico-traslate" src="<?php echo WPeMatico :: $uri ; ?>/images/icon-512x512.jpg" title=""></a><br />
+			 <div class="description-traslate" style="<?php esc_attr_e($style_wpmatico_traslate_div); ?>">
+				<p class="parr-wpmatico-traslate"><?php echo wp_kses_post($message); ?></p>
+				<img class="img-wpmatico-traslate" src="<?php echo esc_url(WPeMatico :: $uri) ; ?>images/icon-256x256.jpg" title=""></a><br />
 			</div>
 		</div>
 	</div>

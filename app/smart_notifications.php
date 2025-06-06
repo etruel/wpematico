@@ -121,7 +121,7 @@ class wpe_smart_notifications {
 		<div id="smart-notification-rate" class="wpematico-smart-notification">
 			<h3>
 				<a id="smart-notification-title-link" href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" target="_Blank">
-					<span class="notification-title"><?php _e('Rate 5 stars on Wordpress', 'wpematico'); ?></span>
+					<span class="notification-title"><?php esc_html_e('Rate 5 stars on Wordpress', 'wpematico'); ?></span>
 				</a>
 				<span class="icon-dismiss-div dashicons dashicons-no" title="Dismiss"></span>
 				<span class="icon-close-div dashicons dashicons-visibility" title="Close"></span>
@@ -129,13 +129,13 @@ class wpe_smart_notifications {
 			<div class="description-smart-notification">
 				<p class="parr-wpmatico-smart-notification">
 
-					<?php _e('The WPeMatico team work hard to offer you excellent tools for autoblogging.', 'wpematico'); ?>
+					<?php esc_html_e('The WPeMatico team work hard to offer you excellent tools for autoblogging.', 'wpematico'); ?>
 					<br>
 					<?php 					
 					/* translators: 5-star review linked to WP rate page. */
-					printf(__('So we would love you to write a %s in WordPress if you appreciate our plugin.', 'wpematico'), '<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" id="link2rate" target="_Blank"><strong>5-star review</strong></a>'); ?>
+					printf(esc_html__('So we would love you to write a %s in WordPress if you appreciate our plugin.', 'wpematico'), '<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" id="link2rate" target="_Blank"><strong>5-star review</strong></a>'); ?>
 					<br>
-					<?php _e('It only takes a minute, "click the button below" to go to the form.', 'wpematico'); ?>
+					<?php esc_html_e('It only takes a minute, "click the button below" to go to the form.', 'wpematico'); ?>
 					<br>
 					<br>
 					<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5#new-post" id="linkrate" class="button button-primary button-hero" target="_Blank" title="Click here to rate plugin on Wordpress">Rate us</a>
@@ -160,15 +160,15 @@ class wpe_smart_notifications {
 		?>
 		<div id="smart-notification-wizard" class="wpematico-smart-notification campagin_edit">
 			<h3>
-				<span class="notification-title"><?php _e('Check all Campaign Options with the Wizard', 'wpematico'); ?></span>
+				<span class="notification-title"><?php esc_html_e('Check all Campaign Options with the Wizard', 'wpematico'); ?></span>
 				<span class="icon-dismiss-div dashicons dashicons-no" title="Dismiss"></span>
 				<span class="icon-close-div dashicons dashicons-visibility" title="Close"></span>
 			</h3>
 			<div class="description-smart-notification">
 				<p class="parr-wpmatico-smart-notification">
-					<?php _e('Want to make sure your campaign settings are fine?', 'wpematico'); ?>
+					<?php esc_html_e('Want to make sure your campaign settings are fine?', 'wpematico'); ?>
 					<br>
-					<?php _e('Open the configuration wizard to see each metabox one by one.', 'wpematico'); ?>
+					<?php esc_html_e('Open the configuration wizard to see each metabox one by one.', 'wpematico'); ?>
 					<br>
 					<br>
 					<a href="#wizard" class="button button-primary button-hero thickbox_open">Wizard</a>
@@ -179,7 +179,9 @@ class wpe_smart_notifications {
 		<?php
 	}
 
-	
+	/**
+	 * It is not currently showing, saved for another major event.
+	 */
 	public static function show_mdm_notice() {
 		global $post_type, $current_screen, $post;
 		if ($post_type != 'wpematico' 
@@ -197,16 +199,16 @@ class wpe_smart_notifications {
 		?>
 		<div id="smart-notification-mdm" class="wpematico-smart-notification" style="border-color: #de3f12;">
 			<h3>
-				<span class="notification-title"><?php _e('WPeMatico 2.7 series it\'s here!', 'wpematico'); ?></span>
+				<span class="notification-title"><?php esc_html_e('WPeMatico 2.7 series it\'s here!', 'wpematico'); ?></span>
 				<span class="icon-dismiss-div dashicons dashicons-no" title="Dismiss"></span>
 				<span class="icon-close-div dashicons dashicons-visibility" title="Close"></span>
 			</h3>
 			<div class="description-smart-notification">
 				<p class="parr-wpmatico-smart-notification">
 
-					<big><strong><?php _e('Join our giveaways to win “almost” FREE amazing prizes! 🎁', 'wpematico'); ?></strong></big><br>
+					<big><strong><?php esc_html_e('Join our giveaways to win “almost” FREE amazing prizes! 🎁', 'wpematico'); ?></strong></big><br>
 					<br>
-					<?php _e('MDM Giveaway will award 10 prizes on selected products available on etruel.com annual licenses discounted to $1.- ', 'wpematico'); ?><strong><?php _e('Yes! Just ONE Dollar!', 'wpematico'); ?></strong><br>
+					<?php esc_html_e('MDM Giveaway will award 10 prizes on selected products available on etruel.com annual licenses discounted to $1.- ', 'wpematico'); ?><strong><?php esc_html_e('Yes! Just ONE Dollar!', 'wpematico'); ?></strong><br>
 					<br>
 					<a href="https://www.wpematico.com/giveaway/mdm/" target="_blank" class="button button-primary button-hero" style="background-color: #de3f12; border-color: #de3f12;font-weight: 700;">MORE INFO!</a>
 				</p>
