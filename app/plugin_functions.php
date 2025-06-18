@@ -615,3 +615,36 @@ function get_campaign_tax($taxonomy_name) {
 		wp_terms_checklist($_POST['post_id'], array('taxonomy' => $taxonomy_name));
 	}
 }
+
+function wpematico_register_error_handler($errno, $errstr, $errfile, $errline) {
+	
+	wpematico_log("LOG-{$errno}: {$errstr} in {$errfile} on line {$errline}");
+	
+	return false; // Let PHP also handle the error normally
+}
+
+function wpematico_log($message) {
+	$upload_dir = wpematico_get_upload_dir();
+
+	$filename = wp_hash(home_url('/')) . '-wpematico-debug.log';
+	$file     = trailingslashit($upload_dir) . $filename;
+	if (! file_exists($file)) {
+		@touch($file);
+	}
+
+	$datetime = current_time('Y-m-d H:i:s');
+	$entry = "[{$datetime}] {$message}\n";
+
+	file_put_contents($file, $entry, FILE_APPEND | LOCK_EX);
+}
+
+/**
+ * Get the full path to the current WPeMatico debug log file.
+ *
+ * @return string Full file path to the debug log.
+ */
+function wpematico_get_log_file_path() {
+	$upload_dir = wpematico_get_upload_dir();
+	$filename = wp_hash(home_url('/')) . '-wpematico-debug.log';
+	return trailingslashit($upload_dir) . $filename;
+}

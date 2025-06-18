@@ -26,7 +26,7 @@ if (!class_exists('WPeMatico_Tools')) :
 
 		public static function debug_log_file(){
 			$cfg = apply_filters('wpematico_check_options', get_option(WPeMatico::OPTION_KEY));
-			$log_file = WPEMATICO_PLUGIN_DIR . '/wpematico_debug.log';
+			$log_file = wpematico_get_log_file_path();
 			$log_exists = file_exists($log_file);
 
 			if (!empty($_POST['clear_log']) && $log_exists) {
@@ -36,6 +36,11 @@ if (!class_exists('WPeMatico_Tools')) :
 
 			$log_content = $log_exists ? file_get_contents($log_file) : '';
 
+			echo '<div style="background:rgb(197, 197, 197); padding: 20px; border-radius: 4px;">';
+			echo '<p>' . esc_html__('When debug mode is enabled, specific information will be shown here.', 'wpematico') . 
+				' (<a href="https://wpematico.com/docs/how-to-use-wpematico_log/" target="_blank">' . 
+				esc_html__('Learn how to use the wpematico_log() function', 'wpematico') . 
+				'</a>)</p>';
 			echo '<h2>' . esc_html__('Debug Log', 'wpematico') . '</h2>';
 			echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
 			wp_nonce_field('save_wpematico_debug_settings_nonce', 'wpematico_debug_nonce');
@@ -48,18 +53,20 @@ if (!class_exists('WPeMatico_Tools')) :
 			echo '</form><br>';
 
 			if (!empty($cfg['wpematico_debug_log_file'])) {
-				echo '<form method="post">';
-				echo '<textarea readonly rows="20" style="width:100%; font-family: monospace;">' . esc_textarea($log_content) . '</textarea><br><br>';
+				echo '<form method="post" id="wpematico-debug-log">';
+				echo '<textarea name="wpematico_debug_log_content" readonly rows="20" style="width:100%; font-family: monospace;">' . esc_textarea($log_content) . '</textarea><br><br>';
 				echo '<button type="submit" name="clear_log" class="button">' . esc_html__('Clear Log', 'wpematico') . '</button> ';
 				echo '<input type="hidden" name="clear_log" value="1" />';
 				if ($log_content) {
 					echo '<a href="' . esc_url(admin_url('admin-ajax.php?action=download_wpematico_log')) . '" class="button button-primary">';
-					echo esc_html__('Download Log', 'wpematico') . '</a>';
+					echo esc_html__('Download Log', 'wpematico') . '</a> ';
+					submit_button( __( 'Copy to Clipboard', 'wpematico' ), 'secondary', 'wpematico-copy-debug-log', false, array( 'onclick' => "this.form['wpematico_debug_log_content'].focus();this.form['wpematico_debug_log_content'].select();document.execCommand('copy');return false;" ) );
 				} else {
 					echo '<p><em>' . esc_html__('No log file found yet.', 'wpematico') . '</em></p>';
 				}
 				echo '</form>';
 			}
+			echo '</div>';
 		}
 
 		public static function save_debug_log_file(){
@@ -78,7 +85,7 @@ if (!class_exists('WPeMatico_Tools')) :
 		}
 
 		public static function download_debug_log(){
-			$log_file = WPEMATICO_PLUGIN_DIR . '/wpematico_debug.log';
+			$log_file = wpematico_get_log_file_path();
 
 			if (!file_exists($log_file)) {
 				wp_die(esc_html__('Log file not found.', 'wpematico'), '', ['response' => 404]);
