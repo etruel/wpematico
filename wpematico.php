@@ -139,6 +139,10 @@ if (!class_exists('Main_WPeMatico')) {
 					wp_schedule_event(time(), 'wpematico_int', 'wpematico_cron');
 				}
 			}
+        
+			// if($cfg['wpematico_debug_log_file']){
+			// 	set_error_handler('wpematico_register_error_handler', E_ALL & ~E_NOTICE);
+			// }
 		}
 
 		/**

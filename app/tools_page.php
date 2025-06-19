@@ -26,6 +26,11 @@ if (!class_exists('WPeMatico_Tools')) :
 
 		public static function debug_log_file(){
 			$cfg = apply_filters('wpematico_check_options', get_option(WPeMatico::OPTION_KEY));
+
+			if (empty($cfg['wpematico_debug_log_file'])) {
+				echo '<div class="notice notice-warning"><p>' . esc_html__('Debug mode is not enabled. Please enable it in the WPeMatico settings to view the debug log.', 'wpematico') . '</p></div>';
+				return;
+			}
 			$log_file = wpematico_get_log_file_path();
 			$log_exists = file_exists($log_file);
 
@@ -41,18 +46,9 @@ if (!class_exists('WPeMatico_Tools')) :
 				' (<a href="https://wpematico.com/docs/how-to-use-wpematico_log/" target="_blank">' . 
 				esc_html__('Learn how to use the wpematico_log() function', 'wpematico') . 
 				'</a>)</p>';
-			echo '<h2>' . esc_html__('Debug Log', 'wpematico') . '</h2>';
-			echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
-			wp_nonce_field('save_wpematico_debug_settings_nonce', 'wpematico_debug_nonce');
-			echo '<label>';
-			echo '<input type="checkbox" name="wpematico_debug_mode" value="1" ' . checked(!empty($cfg['wpematico_debug_log_file']), true, false) . ' />';
-			echo esc_html__('Enable Debug Log', 'wpematico');
-			echo '</label><br><br>';
-			echo '<input type="hidden" name="action" value="save_wpematico_debug_settings" />';
-			submit_button(esc_html__('Save settings', 'wpematico'), 'primary', 'save_wpematico_debug_settings', false);
-			echo '</form><br>';
+			echo '<h2>' . esc_html__('Code Logs', 'wpematico') . '</h2>';
+			
 
-			if (!empty($cfg['wpematico_debug_log_file'])) {
 				echo '<form method="post" id="wpematico-debug-log">';
 				echo '<textarea name="wpematico_debug_log_content" readonly rows="20" style="width:100%; font-family: monospace;">' . esc_textarea($log_content) . '</textarea><br><br>';
 				echo '<button type="submit" name="clear_log" class="button">' . esc_html__('Clear Log', 'wpematico') . '</button> ';
@@ -65,7 +61,6 @@ if (!class_exists('WPeMatico_Tools')) :
 					echo '<p><em>' . esc_html__('No log file found yet.', 'wpematico') . '</em></p>';
 				}
 				echo '</form>';
-			}
 			echo '</div>';
 		}
 
@@ -80,7 +75,7 @@ if (!class_exists('WPeMatico_Tools')) :
 			} else {
 				WPeMatico::add_wp_notice(['text' => esc_html__('Settings not saved.', 'wpematico'), 'below-h2' => false]);
 			}
-			wp_redirect(admin_url('edit.php?post_type=wpematico&page=wpematico_tools&tab=debug_log'));
+			wp_redirect(admin_url('edit.php?post_type=wpematico&page=wpematico_tools&tab=debug_info&section=danger_zone'));
 			exit;
 		}
 
