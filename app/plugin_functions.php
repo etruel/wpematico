@@ -624,6 +624,12 @@ function wpematico_register_error_handler($errno, $errstr, $errfile, $errline) {
 }
 
 function wpematico_log($message) {
+	$cfg = WPeMatico::get_danger_options();
+
+	if (empty($cfg['wpematico_debug_log_file'])) {
+		return;
+	}
+
 	$upload_dir = wpematico_get_upload_dir();
 
 	$filename = wp_hash(home_url('/')) . '-wpematico-debug.log';

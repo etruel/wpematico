@@ -20,12 +20,11 @@ if (!class_exists('WPeMatico_Tools')) :
 			add_action('wpematico_tools_tab_tools', [__CLASS__, 'tools_form']);
 			add_action('wpematico_tools_tab_debug_log', [__CLASS__, 'debug_log_file']);
 			add_action('admin_init', [__CLASS__, 'tools_help']);
-			add_action('admin_post_save_wpematico_debug_settings', [__CLASS__, 'save_debug_log_file']);
 			add_action('wp_ajax_download_wpematico_log', [__CLASS__, 'download_debug_log']); 
 		}
 
 		public static function debug_log_file(){
-			$cfg = apply_filters('wpematico_check_options', get_option(WPeMatico::OPTION_KEY));
+			$cfg = WPeMatico::get_danger_options();
 
 			if (empty($cfg['wpematico_debug_log_file'])) {
 				echo '<div class="notice notice-warning"><p>' . esc_html__('Debug mode is not enabled. Please enable it in the WPeMatico settings to view the debug log.', 'wpematico') . '</p></div>';
@@ -62,21 +61,6 @@ if (!class_exists('WPeMatico_Tools')) :
 				}
 				echo '</form>';
 			echo '</div>';
-		}
-
-		public static function save_debug_log_file(){
-			if (!empty($_POST['wpematico_debug_nonce']) && wp_verify_nonce($_POST['wpematico_debug_nonce'], 'save_wpematico_debug_settings_nonce')) {
-				$cfg = apply_filters('wpematico_check_options', get_option(WPeMatico::OPTION_KEY));
-				$cfg['wpematico_debug_log_file'] = !empty($_POST['wpematico_debug_mode']) ? 1 : 0;
-
-				if (update_option(WPeMatico::OPTION_KEY, $cfg)) {
-					WPeMatico::add_wp_notice(['text' => esc_html__('Settings saved.', 'wpematico'), 'below-h2' => false]);
-				}
-			} else {
-				WPeMatico::add_wp_notice(['text' => esc_html__('Settings not saved.', 'wpematico'), 'below-h2' => false]);
-			}
-			wp_redirect(admin_url('edit.php?post_type=wpematico&page=wpematico_tools&tab=debug_info&section=danger_zone'));
-			exit;
 		}
 
 		public static function download_debug_log(){

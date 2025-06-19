@@ -223,17 +223,15 @@ function wpematico_tools_section_danger_zone() {
 		wp_die("Cheatin' uh?", "Closed today.");
 	$danger = WPeMatico::get_danger_options();
 	?>
-	<form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
-		<?php wp_nonce_field('save_wpematico_debug_settings_nonce', 'wpematico_debug_nonce'); ?>
-		<label>
-			<input type="checkbox" name="wpematico_debug_mode" value="1" <?php checked(!empty($cfg['wpematico_debug_log_file']), true); ?> />
-			<?php esc_html_e('Enable WPeMatico Logs', 'wpematico'); ?>
-		</label><br><br>
-		<input type="hidden" name="action" value="save_wpematico_debug_settings" />
-		<?php submit_button(esc_html__('Save settings', 'wpematico'), 'primary', 'save_wpematico_debug_settings', false); ?>
-	</form><br>
 	<form action="<?php echo admin_url('admin-post.php'); ?>" method="post" dir="ltr">
 		<h3><?php _e('Debug Mode', 'wpematico'); ?></h3>
+
+		<label>
+			<input type="checkbox" name="wpematico_debug_mode" value="1" <?php checked(!empty($danger['wpematico_debug_log_file']), true); ?> />
+			<?php esc_html_e('Enable WPeMatico Logs', 'wpematico'); ?>
+		</label><br><br>
+		
+
 		<label><input id="wpe_debug_logs_campaign" class="checkbox" value="1" type="checkbox" <?php checked($danger['wpe_debug_logs_campaign'], true); ?> name="wpe_debug_logs_campaign" /> <?php _e('Activate Debug Logs in Campaigns', 'wpematico'); ?></label><br/>
 		<p class="description">
 			<?php _e('This action will save all the logs from each campaign instead only the last one, to allow follow all actions and behaviors when campaign runs.', 'wpematico'); ?>
@@ -1560,6 +1558,8 @@ function wpematico_save_danger_data() {
 				}
 			}
 		}
+		
+		$danger['wpematico_debug_log_file'] = !empty($_POST['wpematico_debug_mode']) ? 1 : 0;
 
 		if (update_option('WPeMatico_danger', $danger) or add_option('WPeMatico_danger', $danger)) {
 			WPeMatico::add_wp_notice(array('text' => __('Actions to Uninstall saved.', 'wpematico') . '<br>' . __('The actions are executed when the plugin is uninstalled.', 'wpematico'), 'below-h2' => false));

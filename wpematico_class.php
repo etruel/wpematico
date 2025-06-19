@@ -462,8 +462,6 @@ if (!class_exists('WPeMatico')) {
 			}else{
 				$cfg['disable_extensions_feed_page'] = (!isset($options['disable_extensions_feed_page']) || empty($options['disable_extensions_feed_page'])) ? false : ( ($options['disable_extensions_feed_page'] == 1) ? true : false );
 			}
-
-			$cfg['wpematico_debug_log_file'] = (!isset($options['wpematico_debug_log_file']) || empty($options['wpematico_debug_log_file'])) ? false : ( ($options['wpematico_debug_log_file'] == 1) ? true : false );
 				
 			//Disable Extensions feed Page. 
 			return apply_filters('wpematico_more_options', $cfg, $options);

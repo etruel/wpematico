@@ -1655,6 +1655,7 @@ if (!class_exists('WPeMatico_functions')) {
 				$danger['wpemdeleoptions'] = (isset($danger['wpemdeleoptions']) && !empty($danger['wpemdeleoptions']) ) ? $danger['wpemdeleoptions'] : false;
 				$danger['wpemdelecampaigns'] = (isset($danger['wpemdelecampaigns']) && !empty($danger['wpemdelecampaigns']) ) ? $danger['wpemdelecampaigns'] : false;
 				$danger['wpe_debug_logs_campaign'] = (isset($danger['wpe_debug_logs_campaign']) && !empty($danger['wpe_debug_logs_campaign']) ) ? $danger['wpe_debug_logs_campaign'] : false;
+				$danger['wpematico_debug_log_file'] = (isset($danger['wpematico_debug_log_file']) && !empty($danger['wpematico_debug_log_file']) ) ? $danger['wpematico_debug_log_file'] : false;
 			}else{
 				$danger = [];
 				$danger['wpemdeleoptions'] = false;
