@@ -42,7 +42,7 @@ if (!class_exists('WPeMatico_Tools')) :
 
 			echo '<div style="background:rgb(197, 197, 197); padding: 20px; border-radius: 4px;">';
 			echo '<p>' . esc_html__('When debug mode is enabled, specific information will be shown here.', 'wpematico') . 
-				' (<a href="https://wpematico.com/docs/how-to-use-wpematico_log/" target="_blank">' . 
+				' (<a href="https://etruel.com/question/how-to-use-wpematico-log/" target="_blank">' . 
 				esc_html__('Learn how to use the wpematico_log() function', 'wpematico') . 
 				'</a>)</p>';
 			echo '<h2>' . esc_html__('Code Logs', 'wpematico') . '</h2>';
