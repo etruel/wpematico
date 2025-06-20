@@ -24,13 +24,13 @@ if (!class_exists('WPeMatico_Tools')) :
 		}
 
 		public static function debug_log_file(){
-			$cfg = WPeMatico::get_danger_options();
+			$danger = WPeMatico::get_danger_options();
 
-			if (empty($cfg['wpematico_debug_log_file'])) {
+			if (empty($danger['wpematico_debug_log_file'])) {
 				echo '<div class="notice notice-warning"><p>' . esc_html__('Debug mode is not enabled. Please enable it in the WPeMatico settings to view the debug log.', 'wpematico') . '</p></div>';
 				return;
 			}
-			$log_file = wpematico_get_log_file_path();
+			$log_file = wpematico_get_log_file_path(); 
 			$log_exists = file_exists($log_file);
 
 			if (!empty($_POST['clear_log']) && $log_exists) {

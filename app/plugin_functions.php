@@ -616,17 +616,10 @@ function get_campaign_tax($taxonomy_name) {
 	}
 }
 
-function wpematico_register_error_handler($errno, $errstr, $errfile, $errline) {
-	
-	wpematico_log("LOG-{$errno}: {$errstr} in {$errfile} on line {$errline}");
-	
-	return false; // Let PHP also handle the error normally
-}
-
 function wpematico_log($message) {
-	$cfg = WPeMatico::get_danger_options();
+	$danger = WPeMatico::get_danger_options();
 
-	if (empty($cfg['wpematico_debug_log_file'])) {
+	if (empty($danger['wpematico_debug_log_file'])) {
 		return;
 	}
 
