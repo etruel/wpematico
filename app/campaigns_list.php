@@ -1230,6 +1230,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 
 			return $post_id;
 		}
+
 		/**
 		 * Saving the 'Bulk Edit' data is a little trickier because we have
 		 * to get JavaScript involved. WordPress saves their bulk edit data
