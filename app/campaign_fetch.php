@@ -51,12 +51,12 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         } else {
             set_error_handler('wpematico_joberrorhandler', E_ALL & ~E_NOTICE);
         }
-
-        $this->campaign_id = $campaign_id;   //set campaign id
-        $this->campaign = WPeMatico :: get_campaign($this->campaign_id);
-
+        
+        
         $this->cfg = get_option(WPeMatico :: OPTION_KEY);
         $this->cfg = apply_filters('wpematico_check_options', $this->cfg);
+        $this->campaign_id = $campaign_id;   //set campaign id
+        $this->campaign = WPeMatico :: get_campaign($this->campaign_id);
 
         $this->images_options = WPeMatico::get_images_options($this->cfg, $this->campaign);
         $this->audios_options = WPeMatico::get_audios_options($this->cfg, $this->campaign);

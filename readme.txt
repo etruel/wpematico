@@ -2,7 +2,7 @@
 Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,rss to blog,feed to post,rss aggregator
-Stable tag: 2.8.5
+Stable tag: 2.9
 Tested up to: 6.8.1
 Requires at least: 4.8
 Requires PHP: 7.0
@@ -242,6 +242,10 @@ You can send your files to e-mail WPeMatico [at] etruel.com
 == Changelog ==
 
 > See all detailed changelog at [WPeMatico Releases](https://wpematico.com/releases/)
+
+= 2.9 Jun 19, 2025 =
+
+* Create the debug code to developers or customers use it
 
 = 2.8.5 May 19, 2025 =
 
