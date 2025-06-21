@@ -19,7 +19,6 @@ if (!defined('ABSPATH')) {
 	exit();
 }
 
-
 if (class_exists('wpematico_campaign_fetch_functions'))
 	return;
 
