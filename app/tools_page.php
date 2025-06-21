@@ -16,18 +16,71 @@ if (!class_exists('WPeMatico_Tools')) :
 	class WPeMatico_Tools
 	{
 
-		public static function hooks()
-		{
-			add_action('wpematico_tools_tab_tools', array(__CLASS__, 'tools_form'));
-			add_action('admin_init', array(__CLASS__, 'tools_help'));
+		public static function hooks(){
+			add_action('wpematico_tools_tab_tools', [__CLASS__, 'tools_form']);
+			add_action('wpematico_tools_tab_debug_log', [__CLASS__, 'debug_log_file']);
+			add_action('admin_init', [__CLASS__, 'tools_help']);
+			add_action('wp_ajax_download_wpematico_log', [__CLASS__, 'download_debug_log']); 
+		}
+
+		public static function debug_log_file(){
+			$danger = WPeMatico::get_danger_options();
+
+			if (empty($danger['wpematico_debug_log_file'])) {
+				echo '<div class="notice notice-warning"><p>' . esc_html__('Debug mode is not enabled. Please enable it in the WPeMatico settings to view the debug log.', 'wpematico') . '</p></div>';
+				return;
+			}
+			$log_file = wpematico_get_log_file_path(); 
+			$log_exists = file_exists($log_file);
+
+			if (!empty($_POST['clear_log']) && $log_exists) {
+				@file_put_contents($log_file, '');
+				$log_exists = false;
+			}
+
+			$log_content = $log_exists ? file_get_contents($log_file) : '';
+
+			echo '<div style="background:rgb(197, 197, 197); padding: 20px; border-radius: 4px;">';
+			echo '<p>' . esc_html__('When debug mode is enabled, specific information will be shown here.', 'wpematico') . 
+				' (<a href="https://etruel.com/question/how-to-use-wpematico-log/" target="_blank">' . 
+				esc_html__('Learn how to use the wpematico_log() function', 'wpematico') . 
+				'</a>)</p>';
+			echo '<h2>' . esc_html__('Code Logs', 'wpematico') . '</h2>';
+			
+
+				echo '<form method="post" id="wpematico-debug-log">';
+				echo '<textarea name="wpematico_debug_log_content" readonly rows="20" style="width:100%; font-family: monospace;">' . esc_textarea($log_content) . '</textarea><br><br>';
+				echo '<button type="submit" name="clear_log" class="button">' . esc_html__('Clear Log', 'wpematico') . '</button> ';
+				echo '<input type="hidden" name="clear_log" value="1" />';
+				if ($log_content) {
+					echo '<a href="' . esc_url(admin_url('admin-ajax.php?action=download_wpematico_log')) . '" class="button button-primary">';
+					echo esc_html__('Download Log', 'wpematico') . '</a> ';
+					submit_button( __( 'Copy to Clipboard', 'wpematico' ), 'secondary', 'wpematico-copy-debug-log', false, array( 'onclick' => "this.form['wpematico_debug_log_content'].focus();this.form['wpematico_debug_log_content'].select();document.execCommand('copy');return false;" ) );
+				} else {
+					echo '<p><em>' . esc_html__('No log file found yet.', 'wpematico') . '</em></p>';
+				}
+				echo '</form>';
+			echo '</div>';
+		}
+
+		public static function download_debug_log(){
+			$log_file = wpematico_get_log_file_path();
+
+			if (!file_exists($log_file)) {
+				wp_die(esc_html__('Log file not found.', 'wpematico'), '', ['response' => 404]);
+			}
+
+			header('Content-Type: text/plain');
+			header('Content-Disposition: attachment; filename="wpematico_debug.log"');
+			readfile($log_file);
+			exit;
 		}
 
 
 		/**
 		 * 		Called by function admin_menu() on wpematico_class
 		 */
-		public static function styles()
-		{
+		public static function styles(){
 			global $cfg;
 			wp_enqueue_style('WPematStylesheet');
 			wp_enqueue_script('WPemattiptip');
@@ -51,8 +104,7 @@ if (!class_exists('WPeMatico_Tools')) :
 			// //add_screen_option('layout_columns', array('max' => 2, 'default' => 2) );
 		}
 
-		public static function wpematico_tools_head()
-		{
+		public static function wpematico_tools_head(){
 ?>
 			<style type="text/css">
 				.insidesec {
@@ -88,8 +140,7 @@ if (!class_exists('WPeMatico_Tools')) :
 			<?php
 		}
 
-		public static function tools_form()
-		{
+		public static function tools_form(){
 			global $cfg, $current_screen, $helptip;
 
 			if (isset($_GET['page']) && $_GET['page'] == 'wpematico_tools') :
@@ -159,8 +210,7 @@ if (!class_exists('WPeMatico_Tools')) :
 			endif;
 		}
 
-		public static function tools_help()
-		{
+		public static function tools_help(){
 			if ((isset($_GET['page']) && $_GET['page'] == 'wpematico_tools') &&
 				(isset($_GET['post_type']) && $_GET['post_type'] == 'wpematico') &&
 				((isset($_GET['tab']) && $_GET['tab'] == 'tools') || !isset($_GET['tab']))

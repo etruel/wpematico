@@ -216,12 +216,22 @@ function wpematico_tools_section_feed_viewer() {
  */
 function wpematico_tools_section_danger_zone() {
 	global $current_screen;
+
+	$cfg = apply_filters('wpematico_check_options', get_option(WPeMatico::OPTION_KEY));
+
 	if (!isset($current_screen))
 		wp_die("Cheatin' uh?", "Closed today.");
 	$danger = WPeMatico::get_danger_options();
 	?>
 	<form action="<?php echo admin_url('admin-post.php'); ?>" method="post" dir="ltr">
 		<h3><?php _e('Debug Mode', 'wpematico'); ?></h3>
+
+		<label>
+			<input type="checkbox" name="wpematico_debug_mode" value="1" <?php checked(!empty($danger['wpematico_debug_log_file']), true); ?> />
+			<?php esc_html_e('Enable WPeMatico Logs', 'wpematico'); ?>
+		</label><br><br>
+		
+
 		<label><input id="wpe_debug_logs_campaign" class="checkbox" value="1" type="checkbox" <?php checked($danger['wpe_debug_logs_campaign'], true); ?> name="wpe_debug_logs_campaign" /> <?php _e('Activate Debug Logs in Campaigns', 'wpematico'); ?></label><br/>
 		<p class="description">
 			<?php _e('This action will save all the logs from each campaign instead only the last one, to allow follow all actions and behaviors when campaign runs.', 'wpematico'); ?>
@@ -1548,6 +1558,8 @@ function wpematico_save_danger_data() {
 				}
 			}
 		}
+		
+		$danger['wpematico_debug_log_file'] = !empty($_POST['wpematico_debug_mode']) ? 1 : 0;
 
 		if (update_option('WPeMatico_danger', $danger) or add_option('WPeMatico_danger', $danger)) {
 			WPeMatico::add_wp_notice(array('text' => __('Actions to Uninstall saved.', 'wpematico') . '<br>' . __('The actions are executed when the plugin is uninstalled.', 'wpematico'), 'below-h2' => false));
