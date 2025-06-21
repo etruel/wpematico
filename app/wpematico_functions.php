@@ -1661,6 +1661,7 @@ if (!class_exists('WPeMatico_functions')) {
 				$danger['wpemdeleoptions'] = false;
 				$danger['wpemdelecampaigns'] = false;
 				$danger['wpe_debug_logs_campaign'] = false;
+				$danger['wpematico_debug_log_file'] = false;
 			}
 
 			return $danger;
