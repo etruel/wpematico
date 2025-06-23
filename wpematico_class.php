@@ -457,14 +457,13 @@ if (!class_exists('WPeMatico')) {
 			$cfg['enable_xml_upload']				 = (!isset($options['enable_xml_upload']) || empty($options['enable_xml_upload'])) ? false : ( ($options['enable_xml_upload'] == 1) ? true : false );
 			$cfg['entity_decode_html']				 = (!isset($options['entity_decode_html']) || empty($options['entity_decode_html'])) ? false : ( ($options['entity_decode_html'] == 1) ? true : false );
 
+			//Disable Extensions feed Page. 
 			if(defined('MULTISITE') && MULTISITE){
 				$cfg['disable_extensions_feed_page'] = true;
 			}else{
 				$cfg['disable_extensions_feed_page'] = (!isset($options['disable_extensions_feed_page']) || empty($options['disable_extensions_feed_page'])) ? false : ( ($options['disable_extensions_feed_page'] == 1) ? true : false );
-
 			}
 				
-			//Disable Extensions feed Page. 
 			return apply_filters('wpematico_more_options', $cfg, $options);
 		}
 
