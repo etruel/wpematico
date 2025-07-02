@@ -1655,11 +1655,13 @@ if (!class_exists('WPeMatico_functions')) {
 				$danger['wpemdeleoptions'] = (isset($danger['wpemdeleoptions']) && !empty($danger['wpemdeleoptions']) ) ? $danger['wpemdeleoptions'] : false;
 				$danger['wpemdelecampaigns'] = (isset($danger['wpemdelecampaigns']) && !empty($danger['wpemdelecampaigns']) ) ? $danger['wpemdelecampaigns'] : false;
 				$danger['wpe_debug_logs_campaign'] = (isset($danger['wpe_debug_logs_campaign']) && !empty($danger['wpe_debug_logs_campaign']) ) ? $danger['wpe_debug_logs_campaign'] : false;
+				$danger['wpematico_debug_log_file'] = (isset($danger['wpematico_debug_log_file']) && !empty($danger['wpematico_debug_log_file']) ) ? $danger['wpematico_debug_log_file'] : false;
 			}else{
 				$danger = [];
 				$danger['wpemdeleoptions'] = false;
 				$danger['wpemdelecampaigns'] = false;
 				$danger['wpe_debug_logs_campaign'] = false;
+				$danger['wpematico_debug_log_file'] = false;
 			}
 
 			return $danger;
@@ -1901,6 +1903,7 @@ function wpematico_init_set($index, $value, $log_only_fail = false) {
 }
 
 
+
 /**
  * function for PHP error handling saved as Campaign Logs.
  * 
@@ -2014,4 +2017,17 @@ function wpematico_feed_hash_key($type, $feed, $feedHash = ''){
 	$feedHash = isset($feedHash) ? $feedHash : $feed;
 	
 	return apply_filters('wpematico_feed_hash_key', $feedHash);
+}
+
+function wpematico_get_upload_dir() {
+	$wp_upload_dir = wp_upload_dir();
+	$wpematico_dir       = 'wpematico';
+	$path          = $wp_upload_dir['basedir'] . '/' . $wpematico_dir;
+	$retval        = apply_filters( 'wpematico_get_upload_dir', $path );
+
+	// Make sure the directory exists
+	wp_mkdir_p( $retval );
+
+	// Return, possibly filtered
+	return $retval;
 }

@@ -2,7 +2,7 @@
 Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,rss to blog,feed to post,rss aggregator
-Stable tag: 2.8.5
+Stable tag: 2.8.6
 Tested up to: 6.8.1
 Requires at least: 4.8
 Requires PHP: 7.0
@@ -243,6 +243,11 @@ You can send your files to e-mail WPeMatico [at] etruel.com
 
 > See all detailed changelog at [WPeMatico Releases](https://wpematico.com/releases/)
 
+= 2.8.6 – Jun 21, 2025 =
+
+* 🛠️ **New Debug Logs Tool!** Easily track what’s happening under the hood of WPeMatico with a dedicated log viewer in the Tools menu. Perfect for developers and advanced users. [Learn how to use it.](https://etruel.com/question/how-to-use-wpematico-log/)
+* ✅ Implemented **WP_Filesystem** for safer and more WordPress-compliant file operations.
+
 = 2.8.5 May 19, 2025 =
 
 * Applied multiple input sanitization and overall security enhancements.
@@ -455,4 +460,4 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 
-Applied multiple input sanitization and overall security enhancements.
+Recommended update: New debug logs tool added for developers and advanced users. Includes safer file handling via WP_Filesystem.

@@ -216,12 +216,23 @@ function wpematico_tools_section_feed_viewer() {
  */
 function wpematico_tools_section_danger_zone() {
 	global $current_screen;
+
 	if (!isset($current_screen))
 		wp_die("Cheatin' uh?", "Closed today.");
 	$danger = WPeMatico::get_danger_options();
 	?>
 	<form action="<?php echo admin_url('admin-post.php'); ?>" method="post" dir="ltr">
 		<h3><?php _e('Debug Mode', 'wpematico'); ?></h3>
+
+		<label>
+			<input type="checkbox" name="wpematico_debug_mode" value="1" <?php checked(!empty($danger['wpematico_debug_log_file']), true); ?> />
+			<?php esc_html_e('Enable WPeMatico Logs', 'wpematico'); ?>
+		</label><br>
+		<p class="description">
+			<?php _e('This action will activate the function', 'wpematico'); ?> <code>wpematico_log("Custom log message");</code> <?php _e('and its panel in a new tab to follow log messages inside the code.', 'wpematico'); ?>
+		</p>
+		
+
 		<label><input id="wpe_debug_logs_campaign" class="checkbox" value="1" type="checkbox" <?php checked($danger['wpe_debug_logs_campaign'], true); ?> name="wpe_debug_logs_campaign" /> <?php _e('Activate Debug Logs in Campaigns', 'wpematico'); ?></label><br/>
 		<p class="description">
 			<?php _e('This action will save all the logs from each campaign instead only the last one, to allow follow all actions and behaviors when campaign runs.', 'wpematico'); ?>
@@ -1515,45 +1526,71 @@ function wpematico_show_data_info() {
 add_action('admin_post_set_danger_data', 'wpematico_save_danger_data');
 
 function wpematico_save_danger_data() {
-	if ('POST' === $_SERVER['REQUEST_METHOD']) {
-		check_admin_referer('wpematico-danger');
+	if ('POST' !== $_SERVER['REQUEST_METHOD']) {
+		return;
+	}
 
-		$danger['wpemdeleoptions']			 = (isset($_POST['wpemdeleoptions']) && !empty($_POST['wpemdeleoptions']) ) ? true : false;
-		$danger['wpemdelecampaigns']		 = (isset($_POST['wpemdelecampaigns']) && !empty($_POST['wpemdelecampaigns']) ) ? true : false;
-		$danger['wpe_debug_logs_campaign']	 = (isset($_POST['wpe_debug_logs_campaign']) && !empty($_POST['wpe_debug_logs_campaign']) ) ? true : false;
+	check_admin_referer('wpematico-danger');
 
-		if (!$danger['wpe_debug_logs_campaign']) {
-			$olddanger = WPeMatico::get_danger_options();
-			if ($olddanger['wpe_debug_logs_campaign'] and (isset($_POST['wpe_delete_debug_logs_campaign']) && !empty($_POST['wpe_delete_debug_logs_campaign']) )) {
-				$args		 = array(
-					'orderby'		 => 'ID',
-					'order'			 => 'ASC',
-					'post_type'		 => 'wpematico',
-					'numberposts'	 => -1
-				);
-				$deletedAll	 = TRUE;
-				$campaigns	 = get_posts($args);
-				foreach ($campaigns as $post):
-					$deleted = delete_post_meta($post->ID, 'last_campaign_log');
-					if (!$deleted) {
-						$deletedAll = FALSE;
-					}
-				endforeach;
-//				$deleted = delete_metadata( 'wpematico', null, 'last_campaign_log', false, true );
-				if ($deletedAll) {
-					WPeMatico::add_wp_notice(array('text' => __('Campaigns Logs deleted.', 'wpematico'), 'below-h2' => false));
-				} else {
-					WPeMatico::add_wp_notice(array('text'		 => __('Failed on delete all campaigns Logs. ', 'wpematico') . '<br/>'
-						. __('This warning may appear if a campaign had already been deleted the logs or if a log could not be deleted. You can also manually reset a campaign to delete its logs individually.', 'wpematico'), 'below-h2'	 => false));
-				}
+	$danger = [
+		'wpemdeleoptions'          => !empty($_POST['wpemdeleoptions']),
+		'wpemdelecampaigns'        => !empty($_POST['wpemdelecampaigns']),
+		'wpematico_debug_log_file' => !empty($_POST['wpematico_debug_mode']),
+		'wpe_debug_logs_campaign'  => !empty($_POST['wpe_debug_logs_campaign']),
+	];
+
+	$olddanger = WPeMatico::get_danger_options();
+
+	// If wpe_debug_logs_campaign is deactivated and were asked to delete logs
+	if (!$danger['wpe_debug_logs_campaign']
+		&& !empty($olddanger['wpe_debug_logs_campaign'])
+		&& !empty($_POST['wpe_delete_debug_logs_campaign'])) {
+		
+		$args = array(
+			'orderby'     => 'ID',
+			'order'       => 'ASC',
+			'post_type'   => 'wpematico',
+			'numberposts' => -1,
+		);
+		
+		$deletedAll = true;
+		$campaigns = get_posts($args);
+		
+		foreach ($campaigns as $post) {
+			if (!delete_post_meta($post->ID, 'last_campaign_log')) {
+				$deletedAll = false;
 			}
 		}
-
-		if (update_option('WPeMatico_danger', $danger) or add_option('WPeMatico_danger', $danger)) {
-			WPeMatico::add_wp_notice(array('text' => __('Actions to Uninstall saved.', 'wpematico') . '<br>' . __('The actions are executed when the plugin is uninstalled.', 'wpematico'), 'below-h2' => false));
-		}
-		wp_redirect(admin_url('edit.php?post_type=wpematico&page=wpematico_tools&tab=debug_info&section=danger_zone'));
+		
+		WPeMatico::add_wp_notice(array(
+			'text' => $deletedAll
+				? __('Campaigns Logs deleted.', 'wpematico')
+				: __('Failed on delete all campaigns Logs. ', 'wpematico') . '<br/>' .
+				  __('This warning may appear if a campaign had already been deleted the logs or if a log could not be deleted. You can also manually reset a campaign to delete its logs individually.', 'wpematico'),
+			'below-h2' => false
+		));
 	}
+
+	// Save new options
+	if (update_option('WPeMatico_danger', $danger) || add_option('WPeMatico_danger', $danger)) {
+		if (
+			(!$olddanger['wpematico_debug_log_file'] && $danger['wpematico_debug_log_file']) ||
+			(!$olddanger['wpe_debug_logs_campaign'] && $danger['wpe_debug_logs_campaign'])
+		) {
+			WPeMatico::add_wp_notice(array(
+				'text' => __('The Logs were activated.', 'wpematico'),
+				'below-h2' => false
+			));
+		} else {
+			WPeMatico::add_wp_notice(array(
+				'text' => __('Actions to Uninstall saved.', 'wpematico') . '<br>' . __('The actions are executed when the plugin is uninstalled.', 'wpematico'),
+				'below-h2' => false
+			));
+		}
+	}
+
+	wp_redirect(admin_url('edit.php?post_type=wpematico&page=wpematico_tools&tab=debug_info&section=danger_zone'));
+	exit;
 }
 
 /**

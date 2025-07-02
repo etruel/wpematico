@@ -16,6 +16,11 @@ function wpematico_get_tools_tabs() {
 	$tabs					 = array();
 	$tabs['tools']		 = __('Tools', 'wpematico');
 	$tabs['debug_info']		 = __('System Status', 'wpematico');
+	$danger = WPeMatico::get_danger_options();
+
+	if(!empty($danger['wpematico_debug_log_file'])) {
+		$tabs['debug_log'] = __('Logs', 'wpematico');
+	}
 
 	return apply_filters('wpematico_tools_tabs', $tabs);
 }
@@ -27,6 +32,18 @@ function wpematico_get_tools_tabs() {
  * @since       2.3.9
  * @return      array with Settings tab sections
  */
+//function wpematico_get_debug_log_sections() {
+//	$danger = WPeMatico::get_danger_options();
+//	$sections = array();
+//
+//	if(!empty($danger['wpematico_debug_log_file'])) {
+//		$sections['debug_log_file']	 = __('Debug Log File', 'wpematico');
+//		$sections = apply_filters('wpematico_get_debug_sections', $sections);
+//	}
+//		
+//	return $sections;
+//
+//}
 
 function wpematico_get_debug_info_sections() {
 	$sections = array();
