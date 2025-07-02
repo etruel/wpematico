@@ -22,13 +22,12 @@ add_filter(	'plugin_row_meta', 'wpematico_row_meta',10,2);
 add_filter(	'plugin_action_links_' . WPEMATICO_BASENAME, 'wpematico_action_links');
 add_action( "after_plugin_row_" . WPEMATICO_BASENAME, 'wpematico_update_row', 10, 2 );
 add_action( 'admin_head', 'WPeMatico_plugins_admin_head' );
-add_action('admin_footer', 'admin_footer');
-add_action('admin_print_styles-plugins.php', 'admin_styles');
-add_action('admin_print_styles-plugins.php', 'admin_styles');
-add_action('wp_ajax_handle_feedback_submission', 'handle_feedback_submission');
+add_action('admin_footer', 'wff_admin_footer');
+add_action('admin_print_styles-plugins.php', 'wff_admin_styles');
+add_action('wp_ajax_handle_feedback_submission', 'wff_handle_feedback_submission');
 
 
-function admin_styles() {
+function wff_admin_styles() {
 	global $pagenow, $page_hook;
 	if($pagenow=='plugins.php' && !isset($_GET['page'])){
 		wp_register_style('WPematStylesheetPlugins', WPEMATICO_PLUGIN_URL . 'app/css/wpemat_plugin_styles.css');
@@ -37,7 +36,7 @@ function admin_styles() {
     
 }
 
-function admin_footer(){
+function wff_admin_footer(){
 	global $pagenow, $page_hook;
 
 	if($pagenow=='plugins.php' && !isset($_GET['page'])){	
@@ -184,7 +183,7 @@ function admin_footer(){
     <?php
     }
 }
-function handle_feedback_submission() {
+function wff_handle_feedback_submission() {
     // Check if the user has permission to deactivate plugins
     if (!current_user_can('activate_plugins')) {
         wp_send_json_error('Unauthorized user.');
