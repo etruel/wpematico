@@ -243,6 +243,10 @@ You can send your files to e-mail WPeMatico [at] etruel.com
 
 > See all detailed changelog at [WPeMatico Releases](https://wpematico.com/releases/)
 
+= 2.8.7 – Jul 3, 2025 =
+
+* Fix some functions to be a better handle with the WordPress filters and actions.
+
 = 2.8.6 – Jun 21, 2025 =
 
 * 🛠️ **New Debug Logs Tool!** Easily track what’s happening under the hood of WPeMatico with a dedicated log viewer in the Tools menu. Perfect for developers and advanced users. [Learn how to use it.](https://etruel.com/question/how-to-use-wpematico-log/)
