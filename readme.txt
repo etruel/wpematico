@@ -245,12 +245,12 @@ You can send your files to e-mail WPeMatico [at] etruel.com
 
 = 2.8.7 – Jul 3, 2025 =
 
-* Fix some functions to be a better handle with the WordPress filters and actions.
+* Refactored few missed internal function names with a prefix to avoid naming conflicts with other plugins.
 
 = 2.8.6 – Jun 21, 2025 =
 
-* 🛠️ **New Debug Logs Tool!** Easily track what’s happening under the hood of WPeMatico with a dedicated log viewer in the Tools menu. Perfect for developers and advanced users. [Learn how to use it.](https://etruel.com/question/how-to-use-wpematico-log/)
-* ✅ Implemented **WP_Filesystem** for safer and more WordPress-compliant file operations.
+* **New Debug Logs Tool!** Easily track what’s happening under the hood of WPeMatico with a dedicated log viewer in the Tools menu. Perfect for developers and advanced users. [Learn how to use it.](https://etruel.com/question/how-to-use-wpematico-log/)
+* Implemented **WP_Filesystem** for safer and more WordPress-compliant file operations.
 
 = 2.8.5 May 19, 2025 =
 
@@ -464,4 +464,4 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 == Upgrade Notice ==
 
-Recommended update: New debug logs tool added for developers and advanced users. Includes safer file handling via WP_Filesystem.
+Avoid plugin conflicts – update now!
