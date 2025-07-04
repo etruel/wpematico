@@ -47,7 +47,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		
         //set function for PHP user defined error handling
         if (defined('WP_DEBUG') and WP_DEBUG) {
-            set_error_handler('wpematico_joberrorhandler', E_ALL | E_STRICT);
+            set_error_handler('wpematico_joberrorhandler', E_ALL );
         } else {
             set_error_handler('wpematico_joberrorhandler', E_ALL & ~E_NOTICE);
         }
