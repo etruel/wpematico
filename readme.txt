@@ -471,4 +471,4 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 
 == Upgrade Notice ==
-
+**Fixes CSRF vulnerability** in plugin deactivation feedback system.
