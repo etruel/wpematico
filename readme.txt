@@ -2,7 +2,7 @@
 Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,rss to blog,feed to post,rss aggregator
-Stable tag: 2.8.8
+Stable tag: 2.8.9
 Tested up to: 6.8.2
 Requires at least: 4.8
 Requires PHP: 7.0
@@ -242,6 +242,9 @@ You can send your files to e-mail WPeMatico [at] etruel.com
 == Changelog ==
 
 > See all detailed changelog at [WPeMatico Releases](https://wpematico.com/releases/)
+
+= 2.8.9 – Ago 3, 2025 =
+* Improved actions in the campaign list
 
 = 2.8.8 – Jul 24, 2025 =
 * **Fixes CSRF vulnerability** in plugin deactivation feedback system (reported by Wordfence).

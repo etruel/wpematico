@@ -863,7 +863,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 						}
 
 
-						echo '<div class="row-actions2" title="' . esc_attr($ltitle) . '">' . wp_kses_post($lbotones) . '</div>';
+						echo '<div class="row-actions2" title="' . esc_attr($ltitle) . '">' . $lbotones . '</div>';
 						break;
 					case 'last':
 						$lastrun	 = get_post_meta($post_id, 'lastrun', true);
@@ -885,7 +885,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 						} elseif ($activated) { // Running play gris & grab rojo & stop gris
 							$cronnextrun = get_post_meta($post_id, 'cronnextrun', true);
 							$cronnextrun = (isset($cronnextrun) && !empty($cronnextrun) && ($cronnextrun > 0 ) ) ? $cronnextrun : $campaign_data['cronnextrun'];
-							$ltitle		 = '<b>' . __('Next Run:', 'wpematico') . '</b> ' . date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $cronnextrun);
+							$ltitle		 =  __('Next Run: ', 'wpematico')  . date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $cronnextrun);
 						} else {  // Inactive play gris & grab gris & stop black
 							$ltitle = '';
 						}
