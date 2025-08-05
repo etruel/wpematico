@@ -55,6 +55,8 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			// just in campaign list
 			add_filter('bulk_actions-edit-wpematico', array(__CLASS__, 'bulk_actions'), 10, 1);
 			add_action('restrict_manage_posts', array(__CLASS__, 'run_selected_campaigns'), 1, 2);
+			add_filter('wp_kses_allowed_html', array(__CLASS__, 'custom_wpematico_kses_rules'), 10, 2);
+
 		}
 
 		/**
@@ -889,8 +891,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 						} else {  // Inactive play gris & grab gris & stop black
 							$ltitle = '';
 						}
-						
-						?><div class=''><?php echo esc_html($ltitle); ?></div><?php
+						?><div class=''><?php echo wp_kses_post($ltitle); ?></div><?php
 						
 						break;
 						
@@ -908,6 +909,21 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			);
 		}
 
+		static function custom_wpematico_kses_rules($tags, $context) {
+			if ($context === 'post') {
+				global $pagenow, $post_type;
+				if ('edit.php' != $pagenow || $post_type != 'wpematico')
+					return;
+				$tags['button']['btn-href'] = true;  // Permitir btn-href  // ESTO EN 2.9 DEBE ELIMINARSE cambiando los btn-href de los js a data-href
+				$tags['button']['data-href'] = true;  // Permitir data-href
+				$tags['button']['title'] = true;      // Asegurar atributo title
+				$tags['button']['disabled'] = true;   // Permitir disabled
+				$tags['button']['type'] = true;       // Permitir type
+				$tags['button']['class'] = true;      // Permitir class
+			}
+			return $tags;
+		}
+		
 		public static function column_orderby($query) {
 			global $pagenow, $post_type;
 			$orderby = $query->get('orderby');

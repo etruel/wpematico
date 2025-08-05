@@ -2,7 +2,7 @@
 Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,rss to blog,feed to post,rss aggregator
-Stable tag: 2.8.8
+Stable tag: 2.8.9
 Tested up to: 6.8.2
 Requires at least: 4.8
 Requires PHP: 7.0
@@ -243,6 +243,11 @@ You can send your files to e-mail WPeMatico [at] etruel.com
 
 > See all detailed changelog at [WPeMatico Releases](https://wpematico.com/releases/)
 
+= 2.8.9 – Ago 4, 2025 =
+* Fixes a issue with improperly sanitized action buttons in the campaign list.
+* Fixes wrong sanitized html "Next Run" column in the campaign list.
+* Improves errors handling function on campaigns fetching process and logs.
+
 = 2.8.8 – Jul 24, 2025 =
 * **Fixes CSRF vulnerability** in plugin deactivation feedback system (reported by Wordfence).
 * Only applies to users with the “activate plugins” capability.
@@ -471,4 +476,4 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 
 == Upgrade Notice ==
-**Fixes CSRF vulnerability** in plugin deactivation feedback system.
+**Fixes action buttons** in campaigns list.
