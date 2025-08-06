@@ -244,6 +244,7 @@ You can send your files to e-mail WPeMatico [at] etruel.com
 > See all detailed changelog at [WPeMatico Releases](https://wpematico.com/releases/)
 
 = 2.8.10 – Aug 6, 2025 =
+* Improvement of the filters used to load the list of campaigns.
 * Fixes an issue incorporated in the latest release that slowed down the connection on campaign edit.
 * Fixes typos.
 

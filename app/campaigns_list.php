@@ -21,6 +21,9 @@ if (!class_exists('WPeMatico_Campaigns')) :
             add_action('admin_action_wpematico_delhash_campaign', array(__CLASS__, 'wpematico_delhash_campaign'));
             add_action('in_admin_header', array(__CLASS__, 'campaigns_list_help'));
 
+            add_action('wp_ajax_manage_wpematico_save_bulk_edit', array(__CLASS__, 'manage_wpematico_save_bulk_edit'));
+            add_action('wp_ajax_get_wpematico_categ_bulk_edit', array(__CLASS__, 'get_wpematico_categ_bulk_edit'));
+
             // Hooks specific to campaigns list view
             add_action('admin_init', array(__CLASS__, 'register_list_hooks'));
         }
@@ -38,7 +41,6 @@ if (!class_exists('WPeMatico_Campaigns')) :
             // Bulk actions
             add_filter('bulk_actions-edit-wpematico', array(__CLASS__, 'bulk_actions'), 10, 1);
             add_filter('handle_bulk_actions-edit-wpematico', array(__CLASS__, 'bulk_action_handler'), 10, 3);
-            add_filter('editable_slug', array(__CLASS__, 'inline_custom_fields'), 999, 1);
 
             // Columns & sorting
             add_filter('manage_edit-wpematico_columns', array(__CLASS__, 'set_edit_wpematico_columns'));
@@ -63,60 +65,12 @@ if (!class_exists('WPeMatico_Campaigns')) :
 
             // Quick & bulk edit
             add_action('quick_edit_custom_box', array(__CLASS__, 'wpematico_add_to_quick_edit_custom_box'), 10, 2);
-            add_action('wp_ajax_manage_wpematico_save_bulk_edit', array(__CLASS__, 'manage_wpematico_save_bulk_edit'));
-            add_action('wp_ajax_get_wpematico_categ_bulk_edit', array(__CLASS__, 'get_wpematico_categ_bulk_edit'));
+            add_filter('editable_slug', array(__CLASS__, 'inline_custom_fields'), 999, 1);
 
             // Run campaigns button
             add_action('restrict_manage_posts', array(__CLASS__, 'run_selected_campaigns'), 1, 2);
         }
 			
-			
-			
-//			add_filter('handle_bulk_actions-edit-wpematico', array(__CLASS__, 'bulk_action_handler'), 10, 3);
-//
-//			add_filter('manage_edit-wpematico_columns', array(__CLASS__, 'set_edit_wpematico_columns'));
-//			add_action('manage_wpematico_posts_custom_column', array(__CLASS__, 'custom_wpematico_column'), 10, 2);
-//			add_filter('post_row_actions', array(__CLASS__, 'wpematico_quick_actions'), 10, 2);
-//			add_filter("manage_edit-wpematico_sortable_columns", array(__CLASS__, "sortable_columns"));
-//			add_action('pre_get_posts', array(__CLASS__, 'column_orderby'));
-//
-//			add_action('restrict_manage_posts', array(__CLASS__, 'custom_filters'));
-//			add_action('pre_get_posts', array(__CLASS__, 'query_set_custom_filters'));
-//
-//			// Messages 
-//			add_filter('post_updated_messages', array(__CLASS__, 'wpematico_updated_messages'));
-//
-//			//Admin message for Danger Options
-//			add_action('admin_notices', array(__CLASS__, 'wpematico_debug_notice'));
-//
-//			//LIST FILTER ACTIONS 
-//			add_filter('views_edit-wpematico', array(__CLASS__, 'my_views_filter'));
-//			add_filter('disable_months_dropdown', array(__CLASS__, 'disable_list_filters'), 10, 2);
-//			add_filter('disable_categories_dropdown', array(__CLASS__, 'disable_list_filters'), 10, 2);
-//
-//			add_action('admin_print_styles-edit.php', array(__CLASS__, 'list_admin_styles'));
-//			add_action('admin_print_scripts-edit.php', array(__CLASS__, 'list_admin_scripts'));
-//			//QUICK ACTIONS
-//			add_action('admin_action_wpematico_copy_campaign', array(__CLASS__, 'wpematico_copy_campaign'));
-//			add_action('admin_action_wpematico_toggle_campaign', array(__CLASS__, 'wpematico_toggle_campaign'));
-//			add_action('admin_action_wpematico_reset_campaign', array(__CLASS__, 'wpematico_reset_campaign'));
-//			add_action('admin_action_wpematico_clear_campaign', array(__CLASS__, 'wpematico_clear_campaign'));
-//
-//			add_action('admin_action_wpematico_delhash_campaign', array(__CLASS__, 'wpematico_delhash_campaign'));
-//
-//			add_filter('editable_slug', array(__CLASS__, 'inline_custom_fields'), 999, 1);
-//			//CUSTOM BULK & EDIT ACTIONS
-//			add_action('quick_edit_custom_box', array(__CLASS__, 'wpematico_add_to_quick_edit_custom_box'), 10, 2);
-//			add_action('wp_ajax_manage_wpematico_save_bulk_edit', array(__CLASS__, 'manage_wpematico_save_bulk_edit'));
-//			add_action('wp_ajax_get_wpematico_categ_bulk_edit', array(__CLASS__, 'get_wpematico_categ_bulk_edit'));
-//
-//			add_action('in_admin_header', array(__CLASS__, 'campaigns_list_help'));
-//
-//			// just in campaign list
-//			add_filter('bulk_actions-edit-wpematico', array(__CLASS__, 'bulk_actions'), 10, 1);
-//			add_action('restrict_manage_posts', array(__CLASS__, 'run_selected_campaigns'), 1, 2);
-//			add_filter('wp_kses_allowed_html', array(__CLASS__, 'custom_wpematico_kses_rules'), 10, 2);
-
 		/**
 		 * 
 		 * @param type $actions
