@@ -44,7 +44,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 		if (empty($campaign_id)) {
             return false; // If campaign is empty return false.
         }
-		
+
 		//set function for PHP user defined error handling
 		if (defined('WP_DEBUG') && WP_DEBUG) {
 			set_error_handler('wpematico_joberrorhandler', E_ALL | E_DEPRECATED); // Maximum visibility

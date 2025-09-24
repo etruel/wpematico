@@ -28,7 +28,6 @@ if (!class_exists('Main_WPeMatico')) {
 		private function setup_constants() {
 			if (!defined('WPEMATICO_VERSION'))
 				define('WPEMATICO_VERSION', '2.8.10');
-
 			if (!defined('WPEMATICO_BASENAME'))
 				define('WPEMATICO_BASENAME', plugin_basename(__FILE__));
 			if (!defined('WPEMATICO_ROOTFILE'))
