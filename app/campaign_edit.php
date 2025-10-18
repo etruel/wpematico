@@ -119,6 +119,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		$preview_campaign_action_url = admin_url('admin-post.php?action=wpematico_campaign_preview&p='.$post->ID.'&_wpnonce=' . wp_create_nonce('campaign-preview-nonce'));
 
 		$wpematico_object = array(
+					'test_nonce' 							=> wp_create_nonce('wpematico_test_feed_nonce'),
 					'text_dismiss_this_notice'			=> __('Dismiss this notice.', 'wpematico'),
 					'text_type_some_feed_url' 			=> __('Type some feed URL.', 'wpematico'),
 					'text_type_some_new_feed_urls' 		=> __('Type some new Feed URL/s.', 'wpematico'),

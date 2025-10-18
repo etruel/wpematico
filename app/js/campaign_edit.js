@@ -372,6 +372,7 @@ jQuery(document).ready(function ($) {
 			$(item).attr('style', 'Background:#CCC;');
 			var data = {
 				action: "wpematico_test_feed",
+				nonce: wpematico_object.test_nonce,
 				url: feed,
 				'cookie': encodeURIComponent(document.cookie)
 			};
@@ -424,6 +425,7 @@ jQuery(document).ready(function ($) {
 				$(item).attr('style', 'Background:#CCC;');
 				var data = {
 					action: "wpematico_test_feed",
+					nonce: wpematico_object.test_nonce,
 					url: feed,
 					'cookie': encodeURIComponent(document.cookie)
 				};
