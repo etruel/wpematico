@@ -1248,6 +1248,34 @@ if (!class_exists('WPeMatico_functions')) {
 		 */
 		public static function Test_feed($args = '') {
 
+			// Add capability check
+			if (!current_user_can('manage_options')) {
+				wp_send_json_error('Insufficient permissions');
+				return;
+			}
+
+			// Add nonce validation for AJAX requests
+			if ( empty( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'wpematico_test_feed_nonce' ) ) {
+				wp_send_json_error( 'Invalid nonce' );
+				return;
+			}
+
+			if(!isset($_POST['url'])){
+				wp_send_json_error('Missing URL parameter');
+				return;
+			}
+
+			$url = esc_url_raw($_POST['url']);
+			// Validate that the URL doesn't point to private/internal IP ranges
+			$parsed_url = parse_url($url);
+			if ($parsed_url && isset($parsed_url['host'])) {
+				$ip = gethostbyname($parsed_url['host']);
+				if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) === false) {
+					wp_send_json_error('Invalid URL: Private IP addresses are not allowed');
+					return;
+				}
+			}
+
 			if (is_array($args)) {
 				extract($args);
 				$ajax = false;

@@ -661,6 +661,8 @@ class WPeMatico_SimplePie_Enclosure {
 
 endif;
 
-
+if(!defined('WPEMATICO_NAMESPACE_RSS_20')){
+	define('WPEMATICO_NAMESPACE_RSS_20', '');
+}
 
 ?>
