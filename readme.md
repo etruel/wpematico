@@ -49,17 +49,16 @@ If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/
 
 
 ### [Add-ons](https://etruel.com):
+* [GPT Spinner](https://etruel.com/downloads/wpematico-gpt-spinner/)
 * [Professional Add-on](https://etruel.com/downloads/wpematico-professional/)
 * [FULL Content](https://etruel.com/downloads/wpematico-full-content/)
 * [Manual Fetching](https://etruel.com/downloads/wpematico-manual-fetching/)
 * [Make me Feed "Good"](https://etruel.com/downloads/wpematico-make-feed-good/)
 * [Facebook Fetcher](https://etruel.com/downloads/wpematico-facebook-fetcher/)
-* [Thumbnail Scratcher](https://etruel.com/downloads/wpematico-thumbnail-scratcher/)
 * [Better Excerpts](https://etruel.com/downloads/wpematico-better-excerpts/)
 * [Publish 2 Email](https://etruel.com/downloads/wpematico-publish-2-email/)
 * [Polylang](https://wordpress.org/plugins/wpematico-polylang/)
 * [Categories 2 Tags](https://etruel.com/downloads/wpematico-cats2tags/)
-* [WPeMatico SMTP](https://etruel.com/downloads/wpematico-smtp/)
 * [Chinese tags](https://etruel.com/downloads/wpematico/chinese-tags)
 
 
