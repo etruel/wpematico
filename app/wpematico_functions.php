@@ -1024,10 +1024,10 @@ if (!class_exists('WPeMatico_functions')) {
 					$rewrite = wp_check_invalid_utf8($post_data['campaign_word_rewrite'][$id] ?? '');
 					$relink  = wp_check_invalid_utf8($post_data['campaign_word_relink'][$id] ?? '');
 
-					// ✅ Sanitizar para evitar XSS
-					$origin  = sanitize_textarea_field(wp_kses($origin, array()));
-					$rewrite = sanitize_textarea_field(wp_kses($rewrite, array()));
-					$relink  = sanitize_textarea_field(wp_kses($relink, array()));
+					// Sanitizar para evitar XSS
+					$origin  = wp_kses_post($origin);
+					$rewrite = wp_kses_post($rewrite);
+					$relink  = wp_kses_post($relink);
 
 					$regex = (isset($post_data['campaign_word_option_regex'][$id]) && $post_data['campaign_word_option_regex'][$id] == 1) ? true : false;
 					$title = (isset($post_data['campaign_word_option_title'][$id]) && $post_data['campaign_word_option_title'][$id] == 1) ? true : false;
