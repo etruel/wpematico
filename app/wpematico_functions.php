@@ -929,7 +929,7 @@ if (!class_exists('WPeMatico_functions')) {
 			// *** Campaign Template
 			$campaigndata['campaign_enable_template'] = (!isset($post_data['campaign_enable_template']) || empty($post_data['campaign_enable_template'])) ? false : ( ($post_data['campaign_enable_template'] == 1) ? true : false );
 			if (isset($post_data['campaign_template']))
-				$campaigndata['campaign_template'] = $post_data['campaign_template'];
+    			$campaigndata['campaign_template'] = wp_kses_post( wp_unslash( $post_data['campaign_template'] ) );
 			else {
 				$campaigndata['campaign_enable_template'] = false;
 				$campaigndata['campaign_template'] = '';
@@ -1012,26 +1012,47 @@ if (!class_exists('WPeMatico_functions')) {
 
 			// *** Campaign Rewrites	
 			// Proceso los rewrites sacando los que estan en blanco
-//		$campaign_rewrites = Array();
-			$campaign_rewrites = ( isset($post_data['campaign_rewrites']) && !empty($post_data['campaign_rewrites']) ) ? $post_data['campaign_rewrites'] : Array();
+			//		$campaign_rewrites = Array();
+			$campaign_rewrites = (isset($post_data['campaign_rewrites']) && !empty($post_data['campaign_rewrites'])) ? $post_data['campaign_rewrites'] : array();
+
 			if (isset($post_data['campaign_word_origin']) && is_array($post_data['campaign_word_origin'])) {
 
-				foreach ($post_data['campaign_word_origin'] as $id => $rewrite) {
-					$origin = wp_check_invalid_utf8($post_data['campaign_word_origin'][$id]);
+				foreach ($post_data['campaign_word_origin'] as $id => $origin_raw) {
+
+					// Verificar UTF-8
+					$origin  = wp_check_invalid_utf8($origin_raw);
+					$rewrite = wp_check_invalid_utf8($post_data['campaign_word_rewrite'][$id] ?? '');
+					$relink  = wp_check_invalid_utf8($post_data['campaign_word_relink'][$id] ?? '');
+
+					// ✅ Sanitizar para evitar XSS
+					$origin  = sanitize_textarea_field(wp_kses($origin, array()));
+					$rewrite = sanitize_textarea_field(wp_kses($rewrite, array()));
+					$relink  = sanitize_textarea_field(wp_kses($relink, array()));
+
 					$regex = (isset($post_data['campaign_word_option_regex'][$id]) && $post_data['campaign_word_option_regex'][$id] == 1) ? true : false;
 					$title = (isset($post_data['campaign_word_option_title'][$id]) && $post_data['campaign_word_option_title'][$id] == 1) ? true : false;
 
-					$rewrite = wp_check_invalid_utf8($post_data['campaign_word_rewrite'][$id]);
-					$relink = wp_check_invalid_utf8($post_data['campaign_word_relink'][$id]);
+					// Validar regex (opcional)
+					if ($regex) {
+						set_error_handler(function () {}, E_WARNING);
+						$is_valid = @preg_match($origin, '');
+						restore_error_handler();
+						if ($is_valid === false) {
+							$regex = false; // ignorar regex inválida
+						}
+					}
+
+					// Solo guardar si origin no está vacío
 					if (!empty($origin)) {
-						$campaign_rewrites['origin'][] = $origin;
-						$campaign_rewrites['regex'][] = $regex;
-						$campaign_rewrites['title'][] = $title;
+						$campaign_rewrites['origin'][]  = $origin;
+						$campaign_rewrites['regex'][]   = $regex;
+						$campaign_rewrites['title'][]   = $title;
 						$campaign_rewrites['rewrite'][] = $rewrite;
-						$campaign_rewrites['relink'][] = $relink;
+						$campaign_rewrites['relink'][]  = $relink;
 					}
 				}
 			}
+
 			$campaigndata['campaign_rewrites'] = !empty($campaign_rewrites) ? (array) $campaign_rewrites : array('origin' => array(''), 'title' => array(false), 'regex' => array(false), 'rewrite' => array(''), 'relink' => array(''));
 
 			$campaigndata['campaign_youtube_embed'] = (!isset($post_data['campaign_youtube_embed']) || empty($post_data['campaign_youtube_embed'])) ? false : ( ($post_data['campaign_youtube_embed'] == 1) ? true : false );

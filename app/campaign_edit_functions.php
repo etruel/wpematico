@@ -256,15 +256,15 @@ public static function rewrite_box( $post ) {
 							<label class="left-important"><input name="campaign_word_option_title[<?php echo $i; ?>]" class="campaign_word_option_title" class="checkbox" value="1" type="checkbox"<?php checked($campaign_rewrites['title'][$i],true) ?> onclick="relink=jQuery(this).parent().parent().children('#rw3');if(true==jQuery(this).is(':checked')) relink.fadeOut(); else relink.fadeIn();"/><?php _e('Title','wpematico') ?></label>
 							&nbsp;<label class="left-important"><input name="campaign_word_option_regex[<?php echo $i; ?>]" class="campaign_word_option_regex" class="checkbox" value="1" type="checkbox"<?php checked($campaign_rewrites['regex'][$i],true) ?> /><?php _e('RegEx','wpematico') ?></label>
 						</div>
-						<textarea class="large-text he35 campaign_word_origin" name="campaign_word_origin[<?php echo $i; ?>]" /><?php echo stripslashes($campaign_rewrites['origin'][$i]) ?></textarea>
+						<textarea class="large-text he35 campaign_word_origin" name="campaign_word_origin[<?php echo $i; ?>]" /><?php echo esc_textarea(stripslashes($campaign_rewrites['origin'][$i])) ?></textarea>
 					</div>
 					<div class="wi28-inline left-important p4">
 						<?php _e('Rewrite to:','wpematico') ?>
-						<textarea class="large-text he35" id="campaign_word_rewrite" name="campaign_word_rewrite[<?php echo $i; ?>]" /><?php echo stripslashes($campaign_rewrites['rewrite'][$i]) ?></textarea>
+						<textarea class="large-text he35" id="campaign_word_rewrite" name="campaign_word_rewrite[<?php echo $i; ?>]" /><?php echo esc_textarea(stripslashes($campaign_rewrites['rewrite'][$i])) ?></textarea>
 					</div>
 					<div id="rw3" class="wi28-inline left-important p4">
 						<?php _e('ReLink to:','wpematico') ?>
-						<textarea class="large-text he35" id="campaign_word_relink" name="campaign_word_relink[<?php echo $i; ?>]" /><?php echo stripslashes($campaign_rewrites['relink'][$i]) ?></textarea>
+						<textarea class="large-text he35" id="campaign_word_relink" name="campaign_word_relink[<?php echo $i; ?>]" /><?php echo esc_textarea(stripslashes($campaign_rewrites['relink'][$i])) ?></textarea>
 					</div>
 					<div class="rowactions-rewrite">
 						<span class="" id="w2cactions">
@@ -379,7 +379,7 @@ public static function template_box( $post ) {
 				<input name="campaign_enable_template" id="campaign_enable_template" class="checkbox" value="1" type="checkbox"<?php checked($campaign_enable_template,true) ?> /> <?php _e('Use custom posts template', 'wpematico' ) ?>
 			</label>
 			<div id="postemplatearea" style="<?php echo (checked($campaign_enable_template,true))?'':'display:none'; ?>">
-				<textarea class="widefat" rows="5" id="campaign_template" name="campaign_template" /><?php echo stripslashes($campaign_template) ?></textarea><br/>
+				<textarea class="widefat" rows="5" id="campaign_template" name="campaign_template"><?php echo esc_textarea( stripslashes( $campaign_template ) ); ?></textarea><br/>
 				<span class="description"><?php _e('{content} must exist in the template if you want to see the content in your post. Works after the features above.', 'wpematico' ); ?></span>
 				<p class="he20" id="tags_note" class="note left"><?php _e('Allowed tags', 'wpematico' ); ?>: </p>
 				<p id="tags_list" style="border-left: 3px solid #EEEEEE; color: #999999; font-size: 11px; padding-left: 6px;margin-top: 0;">
