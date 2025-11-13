@@ -243,8 +243,9 @@ You can send your files to e-mail WPeMatico [at] etruel.com
 
 > See all detailed changelog at [WPeMatico Releases](https://wpematico.com/releases/)
 
-= 2.8.13 – Nov 11, 2025 =
+= 2.8.13 – Nov 13, 2025 =
 * **Fixes vulnerability** reported by WPScan in the campaign edit screen.
+* Other minor fixes.
 
 = 2.8.12 – Oct 23, 2025 =
 * **Fixes Authenticated (Subscriber+) Server-Side Request Forgery** (reported by Wordfence).

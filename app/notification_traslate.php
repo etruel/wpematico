@@ -282,7 +282,7 @@ class wpe_notification_traslate {
 			 <span class="icon-cerrar-div dashicons dashicons-no"></span></h3>
 			
 			 <div class="description-traslate" style="<?php esc_attr_e($style_wpmatico_traslate_div); ?>">
-				<p class="parr-wpmatico-traslate"><?php echo wp_kses_post($message); ?></p>
+				<p class="parr-wpmatico-traslate"><?php echo $message; ?></p>
 				<img class="img-wpmatico-traslate" src="<?php echo esc_url(WPeMatico :: $uri) ; ?>images/icon-256x256.jpg" title=""></a><br />
 			</div>
 		</div>
