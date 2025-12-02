@@ -2,8 +2,8 @@
 Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS,XML,rss to blog,feed to post,rss aggregator
-Stable tag: 2.8.13
-Tested up to: 6.8.3
+Stable tag: 2.8.14
+Tested up to: 6.9
 Requires at least: 4.8
 Requires PHP: 7.0
 License: GPLv2 or later
@@ -242,6 +242,9 @@ You can send your files to e-mail WPeMatico [at] etruel.com
 == Changelog ==
 
 > See all detailed changelog at [WPeMatico Releases](https://wpematico.com/releases/)
+
+= 2.8.14 – Dec 1, 2025 =
+Confirmed WordPress 6.9 compatibility.
 
 = 2.8.13 – Nov 13, 2025 =
 * **Fixes vulnerability** reported by WPScan in the campaign edit screen.
@@ -493,4 +496,4 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 
 == Upgrade Notice ==
-Fixes vulnerability.
+Confirmed WordPress 6.9 compatibility.
