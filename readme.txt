@@ -244,7 +244,7 @@ You can send your files to e-mail WPeMatico [at] etruel.com
 > See all detailed changelog at [WPeMatico Releases](https://wpematico.com/releases/)
 
 = 2.8.14 – Dec 1, 2025 =
-Confirmed WordPress 6.9 compatibility.
+* Confirmed WordPress 6.9 compatibility.
 
 = 2.8.13 – Nov 13, 2025 =
 * **Fixes vulnerability** reported by WPScan in the campaign edit screen.
