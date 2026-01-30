@@ -696,6 +696,8 @@ class wpematico_campaign_fetch_functions {
 	}
 
 	public function parse_dst_image($imagen_src_real, $current_item, $campaign, $item) {
+		//Filter before parse (just to facebook)
+		$imagen_src_real = apply_filters('wpematico_img_src_before_parse', $imagen_src_real, $current_item, $campaign, $item);
 		// Decode URL to handle special characters correctly
 		$basename = rawurldecode(basename($imagen_src_real));
 
