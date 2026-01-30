@@ -162,8 +162,8 @@ class WPeMatico_backend_helpers {
 		echo '<span class="description">' . esc_html__('All links are no-follow and open in a new browser tab.', 'wpematico') . '</span>';
 		?>
 		<style type="text/css">
-			#wpematico-all-meta-box h2 {
-				background-color: orange;
+			#wpematico-all-meta-box .postbox-header {
+				background-color: #eb9600;
 			}
 			.wpematico-data-table a {
 				text-decoration: none;

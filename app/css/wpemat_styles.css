@@ -827,6 +827,9 @@ ul#categories li .children {
 #fieldserror {
     padding: 10px;
 }
+#fieldserror p{
+    margin: 0;
+}
 .wpefeedlink {
     position: absolute;
     padding: 1px 1px 5px;

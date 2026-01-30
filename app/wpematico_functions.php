@@ -670,7 +670,31 @@ if (!class_exists('WPeMatico_functions')) {
 				//send response to admin notice : ejemplo con la función dentro del add_action
 				add_action('admin_notices', function () use ($wpematico_admin_message) {
 					//echo '<div class="error"><p>', esc_html($wpematico_admin_message), '</p></div>';
-					echo wp_kses_post( $wpematico_admin_message );
+					$allowed_html = array(
+						'div' => array(
+							'id' => array(),
+							'class' => array(),
+						),
+						'p' => array(),
+						'b' => array(),
+						'strong' => array(),
+						'em' => array(),
+						'i' => array(),
+						'br' => array(),
+						'a' => array(
+							'href' => array(),
+							'target' => array(),
+							'rel' => array(),
+						),
+						'button' => array(
+							'type' => array(),
+							'class' => array(),
+						),
+						'span' => array(
+							'class' => array(),
+						),
+					);
+					echo wp_kses( $wpematico_admin_message, $allowed_html );
 				});
 			}
 			return $checks;
