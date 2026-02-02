@@ -243,13 +243,15 @@ You can send your files to e-mail WPeMatico [at] etruel.com
 
 > See all detailed changelog at [WPeMatico Releases](https://wpematico.com/releases/)
 
-= 2.8.15 – Jan 30, 2026 =
-* Added filter hook for Facebook Fetcher addon image processing.
-* Fixes admin notice on settings page.
-* Minor style tweaks.
+= 2.8.15 – Feb 2, 2026 =
+> _General maintenance and stability improvements._
+* New image processing filter for developers and advanced customizations.
+* Fixed a styling issue in admin notices when saving settings.
+* Minor UI and style improvements across the plugin.
+* Improved image processing reliability when using the [Facebook Fetcher](https://etruel.com/downloads/wpematico-facebook-fetcher/) Addon (bug fix).
 
 = 2.8.14 – Dec 1, 2025 =
-* Confirmed WordPress 6.9 compatibility.
+Confirmed compatibility with WordPress 6.9.
 
 = 2.8.13 – Nov 13, 2025 =
 * **Fixes vulnerability** reported by WPScan in the campaign edit screen.
@@ -501,4 +503,4 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 
 == Upgrade Notice ==
-Confirmed WordPress 6.9 compatibility.
+General maintenance and stability improvements.
