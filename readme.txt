@@ -1,7 +1,7 @@
 === WPeMatico RSS Feed Fetcher ===
 Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU 
-Tags: RSS, XML, rss to blog, feed to post, rss aggregator, content curation
+Tags: RSS, XML, feed to post, rss aggregator, content curation
 Stable tag: 2.8.19
 Tested up to: 7.0
 Requires at least: 4.8
