@@ -2,7 +2,7 @@
 Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU 
 Tags: RSS, XML, rss to blog, feed to post, rss aggregator, content curation
-Stable tag: 2.8.18
+Stable tag: 2.8.19
 Tested up to: 7.0
 Requires at least: 4.8
 Requires PHP: 7.0
@@ -213,6 +213,12 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 == Changelog ==
 
 > View complete release history at [WPeMatico Releases](https://wpematico.com/releases/)
+
+= 2.8.19 – May 29, 2026 =
+> _Scheduling bug fix._
+* **Fixed:** Campaigns stopped running automatically after updating to 2.8.17. Users with the "Use Alternate WP Cron" or "Disable WPeMatico schedulings" options enabled in WPeMatico Settings were most affected — scheduled campaigns would only run if triggered manually.
+* **Fixed:** PHP notice logged on some sites during plugin load, related to cron schedule registration.
+* **Fixed:** PHP deprecation notice on PHP 8.1+ when displaying admin notifications for the first time.
 
 = 2.8.18 – May 28, 2026 =
 > _Security fix and stability improvements._
@@ -493,4 +499,4 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 
 == Upgrade Notice ==
-Security fix: Reflected XSS vulnerability in the Feed Viewer tool. Recommended update for all users.
+Scheduling bug fix. Recommended update for all users.

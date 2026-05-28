@@ -740,7 +740,7 @@ if (!class_exists('WPeMatico_functions')) {
 			$adm_notice['is-dismissible'] = (!isset($new_notice['is-dismissible'])) ? true : $new_notice['is-dismissible'];
 			$adm_notice['user_ID'] = (!isset($new_notice['user_ID'])) ? get_current_user_id() : $new_notice['user_ID'];
 
-			$notice = get_option('wpematico_notices');
+			$notice = get_option('wpematico_notices', array());
 			$notice[] = $adm_notice;
 			update_option('wpematico_notices', $notice);
 		}

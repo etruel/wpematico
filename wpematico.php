@@ -3,7 +3,7 @@
  * Plugin Name: WPeMatico
  * Plugin URI: https://www.wpematico.com
  * Description: Create posts automatically from RSS/Atom feeds organized into campaigns with multiples filters.  If you like it, please rate it 5 stars.
- * Version: 2.8.18
+ * Version: 2.8.19
  * Author: Etruel Developments LLC
  * Author URI: https://etruel.com/wpematico/
  * Text Domain: wpematico
@@ -27,7 +27,7 @@ if (!class_exists('Main_WPeMatico')) {
 
 		private function setup_constants() {
 			if (!defined('WPEMATICO_VERSION'))
-				define('WPEMATICO_VERSION', '2.8.18');
+				define('WPEMATICO_VERSION', '2.8.19');
 			
 			if (!defined('WPEMATICO_BASENAME'))
 				define('WPEMATICO_BASENAME', plugin_basename(__FILE__));
@@ -60,6 +60,7 @@ if (!class_exists('Main_WPeMatico')) {
 				self::$instance->setup_constants();
 				self::$instance->includes();
 				self::$instance->hooks();
+				self::$instance->setup_cron();
 			}
 			return self::$instance;
 		}
@@ -102,7 +103,6 @@ if (!class_exists('Main_WPeMatico')) {
 		private function hooks() {
 			add_action('init', array('WPeMatico', 'init'));
 			add_action('init', array(self::$instance, 'load_textdomain'));
-			add_action('init', array($this, 'setup_cron'));
 			add_action('the_permalink', array('WPeMatico', 'wpematico_permalink'));
 			add_filter('post_link', array('WPeMatico', 'wpematico_permalink'));
 			add_filter('get_canonical_url', array('WPeMatico_functions', 'wpematico_set_canonical'), 999999, 2);
@@ -116,27 +116,24 @@ if (!class_exists('Main_WPeMatico')) {
 		 * @return      void
 		 */
 		public function setup_cron() {
-			global $cfg;
-			//Disable WP_Cron
-			if (isset($cfg['disablewpcron']) && $cfg['disablewpcron']) {
-				if (!defined('DISABLE_WP_CRON')) {
-					define('DISABLE_WP_CRON', true);
-				}
+			$options = get_option( WPeMatico::OPTION_KEY, array() );
+
+			if ( !empty( $options['disablewpcron'] ) && !defined( 'DISABLE_WP_CRON' ) ) {
+				define( 'DISABLE_WP_CRON', true );
 			}
-			if (isset($cfg['enable_alternate_wp_cron']) && $cfg['enable_alternate_wp_cron']) {
-				if (!defined('ALTERNATE_WP_CRON')) {
-					define('ALTERNATE_WP_CRON', true);
-				}
+			if ( !empty( $options['enable_alternate_wp_cron'] ) && !defined( 'ALTERNATE_WP_CRON' ) ) {
+				define( 'ALTERNATE_WP_CRON', true );
 			}
-			if (isset($cfg['dontruncron']) && $cfg['dontruncron']) {
-				wp_clear_scheduled_hook('wpematico_cron');
-			} else {
-				add_filter('cron_schedules', 'wpematico_intervals'); //add cron intervals
-				add_action('wpematico_cron', 'wpem_cron_callback');  //Actions for Cron job
-				//test if cron active
-				if (!wp_next_scheduled('wpematico_cron')) {
-					wp_schedule_event(time(), 'wpematico_int', 'wpematico_cron');
-				}
+			if ( !empty( $options['dontruncron'] ) ) {
+				wp_clear_scheduled_hook( 'wpematico_cron' );
+				return;
+			}
+
+			add_filter( 'cron_schedules', 'wpematico_intervals' );
+			add_action( 'wpematico_cron', 'wpem_cron_callback' );
+
+			if ( ! wp_next_scheduled( 'wpematico_cron' ) ) {
+				wp_schedule_event( time(), 'wpematico_int', 'wpematico_cron' );
 			}
 		}
 
