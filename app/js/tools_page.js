@@ -17,10 +17,14 @@ jQuery(document).ready(function ($) {
 	var paramValue = getParameterValue("feedlink");
 
 	if (paramValue) {
-		// Parameter exists and has a value
-		document.getElementById("feedlink").value = paramValue;
-		setTimeout(function () {
-			jQuery("#getfeedbutton").trigger("click");
-		}, 500);
+		try {
+			var parsedUrl = new URL(paramValue);
+			if (parsedUrl.protocol === 'http:' || parsedUrl.protocol === 'https:') {
+				document.getElementById("feedlink").value = paramValue;
+				setTimeout(function () {
+					jQuery("#getfeedbutton").trigger("click");
+				}, 500);
+			}
+		} catch (e) {}
 	}
 });

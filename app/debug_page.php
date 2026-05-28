@@ -55,7 +55,7 @@ function wpematico_feed_viewer() {
 		$headers			 = $feed->data['headers'];
 		$response['label']	 .= '<br/><b>' . sprintf(__('Headers.', 'wpematico'), $url) . '</b>';
 		foreach ($headers as $key => $value) {
-			$response['label'] .= "<br/>$key => $value";
+			$response['label'] .= '<br/>' . esc_html( $key ) . ' => ' . esc_html( $value );
 		}
 		$response['message'] = $feed->get_raw_data();
 		$response['success'] = true;
@@ -90,7 +90,7 @@ function wpematico_feed_viewer() {
 			$response['label']	 .= "<br/>Code => " . wp_remote_retrieve_response_code($feed) . ' - ' . wp_remote_retrieve_response_message($feed);
 			$headers			 = wp_remote_retrieve_headers($feed);
 			foreach ($headers as $key => $value) {
-				$response['label'] .= "<br/>$key => $value";
+				$response['label'] .= '<br/>' . esc_html( $key ) . ' => ' . esc_html( $value );
 			}
 			$response['message'] = wp_remote_retrieve_body($feed);
 		} else {  //has errors
@@ -184,8 +184,8 @@ function wpematico_tools_section_feed_viewer() {
 											<p id="headersresponse">Fill in a Feed URL and click the Get Feed Button.
 											</p>
 										</div>
-										<div style="min-width: 650px;">
-											<textarea readonly="readonly" id="wpematico-feedinfo" name="wpematico-feedinfo" style="width: 100%;min-height: 370px;">
+										<div style="width: 100%; box-sizing: border-box;">
+											<textarea readonly="readonly" id="wpematico-feedinfo" name="wpematico-feedinfo" style="width: 100%;min-height: 370px; box-sizing: border-box;">
 												<?php _e('Get Feed and see here its contents.', 'wpematico'); ?>
 											</textarea>
 											<?php wp_nonce_field('wpematico-feedviewer'); ?>

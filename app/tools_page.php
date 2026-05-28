@@ -68,17 +68,18 @@ if (!class_exists('WPeMatico_Tools')) :
 			echo '<h2>' . esc_html__( 'WPeMatico code Logs', 'wpematico' ) . '</h2>';
 
 			echo '<form method="post">';
-			$nonce = wp_nonce_field('wpematico_debug_log_clear', 'wpematico_debug_log_nonce', false);
+			wp_nonce_field('wpematico_debug_log_clear', 'wpematico_debug_log_nonce', false);
+			$download_nonce = wp_create_nonce('wpematico_debug_log_clear');
 
 			echo '<textarea name="wpematico_debug_log_content" readonly rows="20" style="width:100%; font-family: monospace;">' . esc_textarea( $log_content ) . '</textarea><br><br>';
 
 				submit_button( __( 'Clear Log', 'wpematico' ), 'delete', 'clear_log', false );
 			if ( $log_content ) {
 				echo '&nbsp;';
-				
+
 				printf(
 					'<a href="%s" class="button button-primary">%s</a>&nbsp;',
-					esc_url( admin_url( 'admin-ajax.php?action=download_wpematico_log&nonce=' . $nonce ) ),
+					esc_url( admin_url( 'admin-ajax.php?action=download_wpematico_log&nonce=' . $download_nonce ) ),
 					esc_html__( 'Download Log', 'wpematico' )
 				);
 				submit_button( __( 'Copy to Clipboard', 'wpematico' ), 'secondary', 'copy_debug_log', false, array(
@@ -132,7 +133,7 @@ if (!class_exists('WPeMatico_Tools')) :
 
 		public static function download_debug_log(){
 
-			if (!current_user_can('manage_options') || !wp_verify_nonce($_POST['nonce'], 'wpematico_debug_log_clear')) {
+			if (!current_user_can('manage_options') || !wp_verify_nonce($_GET['nonce'], 'wpematico_debug_log_clear')) {
 				exit;
 			}
 			$log_file = wpematico_get_log_file_path();

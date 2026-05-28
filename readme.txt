@@ -2,7 +2,7 @@
 Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU 
 Tags: RSS, XML, rss to blog, feed to post, rss aggregator, content curation
-Stable tag: 2.8.17
+Stable tag: 2.8.18
 Tested up to: 7.0
 Requires at least: 4.8
 Requires PHP: 7.0
@@ -214,17 +214,24 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 
 > View complete release history at [WPeMatico Releases](https://wpematico.com/releases/)
 
+= 2.8.18 – May 28, 2026 =
+> _Security fix and stability improvements._
+* **Fixed:** Reflected XSS vulnerability in the Feed Viewer tool — HTTP response headers are now properly escaped before output. Thanks to the responsible disclosure report.
+* **Fixed:** Download Log button now correctly triggers the file download instead of redirecting to a blank page.
+* **Improved:** Feed Viewer layout is now fully responsive and no longer overlaps the sidebar at medium screen widths.
+* **Improved:** URL validation added before auto-triggering the Feed Viewer from the `feedlink` URL parameter.
+
 = 2.8.17 – Mar 19, 2026 =
 * Improved loading of the plugin's hooks.
 * Fixes a bug related to clearing the debug logs.
 
 = 2.8.16 – Mar 4, 2026 =
 > _Critical bug fix for category hierarchy and WordPress 7.0 compatibility._
-* **Fixed**: Auto-categories now correctly respect parent category settings when multiple campaigns use similar category names. Previously, categories with identical names from different feeds could be incorrectly assigned or merged.
-* **Improved**: Enhanced category detection logic to properly verify parent-child relationships before assignment or creation.
-* **Improved**: Better handling of slug conflicts when WordPress automatically generates unique slugs for categories with duplicate names.
-* **Improved**: Layout in Categories Metabox with parents and childrens categories inside campaign editing screen.
-* **Fixed**: Layout compatibility issues with WordPress 7.0 styling changes in campaign edit screens. Ensures proper display and functionality of campaign interfaces with the upcoming WordPress release.
+* **Fixed:** Auto-categories now correctly respect parent category settings when multiple campaigns use similar category names. Previously, categories with identical names from different feeds could be incorrectly assigned or merged.
+* **Improved:** Enhanced category detection logic to properly verify parent-child relationships before assignment or creation.
+* **Improved:** Better handling of slug conflicts when WordPress automatically generates unique slugs for categories with duplicate names.
+* **Improved:** Layout in Categories Metabox with parents and childrens categories inside campaign editing screen.
+* **Fixed:** Layout compatibility issues with WordPress 7.0 styling changes in campaign edit screens. Ensures proper display and functionality of campaign interfaces with the upcoming WordPress release.
 
 = 2.8.15 – Feb 2, 2026 =
 > _General maintenance and stability improvements._
@@ -486,4 +493,4 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 
 == Upgrade Notice ==
-General maintenance and stability improvements.
+Security fix: Reflected XSS vulnerability in the Feed Viewer tool. Recommended update for all users.
