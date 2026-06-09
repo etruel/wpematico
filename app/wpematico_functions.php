@@ -2107,3 +2107,42 @@ function wpematico_get_upload_dir() {
 	// Return, possibly filtered
 	return $retval;
 }
+
+/**
+ * Write a timestamped entry to the WPeMatico debug log file.
+ * No-op when the debug log option is disabled in Danger Zone settings.
+ * Defined here (outside is_admin()) so addons can call it during WP-Cron.
+ *
+ * @param string $message Message to log.
+ */
+function wpematico_log( $message ) {
+	$danger = WPeMatico::get_danger_options();
+
+	if ( empty( $danger['wpematico_debug_log_file'] ) ) {
+		return;
+	}
+
+	$upload_dir = wpematico_get_upload_dir();
+	$filename   = wp_hash( home_url( '/' ) ) . '-wpematico-debug.log';
+	$file       = trailingslashit( $upload_dir ) . $filename;
+
+	if ( ! file_exists( $file ) ) {
+		@touch( $file );
+	}
+
+	$datetime = current_time( 'Y-m-d H:i:s' );
+	$entry    = "[{$datetime}] {$message}\n";
+
+	file_put_contents( $file, $entry, FILE_APPEND | LOCK_EX );
+}
+
+/**
+ * Get the full path to the current WPeMatico debug log file.
+ *
+ * @return string Full file path to the debug log.
+ */
+function wpematico_get_log_file_path() {
+	$upload_dir = wpematico_get_upload_dir();
+	$filename   = wp_hash( home_url( '/' ) ) . '-wpematico-debug.log';
+	return trailingslashit( $upload_dir ) . $filename;
+}

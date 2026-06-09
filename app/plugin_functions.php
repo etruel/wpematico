@@ -640,34 +640,5 @@ function get_campaign_tax($taxonomy_name) {
 	}
 }
 
-function wpematico_log($message) {
-	$danger = WPeMatico::get_danger_options();
-
-	if (empty($danger['wpematico_debug_log_file'])) {
-		return;
-	}
-
-	$upload_dir = wpematico_get_upload_dir();
-
-	$filename = wp_hash(home_url('/')) . '-wpematico-debug.log';
-	$file	  = trailingslashit($upload_dir) . $filename;
-	if (!file_exists($file)) {
-		@touch($file);
-	}
-
-	$datetime = current_time('Y-m-d H:i:s');
-	$entry	  = "[{$datetime}] {$message}\n";
-
-	file_put_contents($file, $entry, FILE_APPEND | LOCK_EX);
-}
-
-/**
- * Get the full path to the current WPeMatico debug log file.
- *
- * @return string Full file path to the debug log.
- */
-function wpematico_get_log_file_path() {
-	$upload_dir = wpematico_get_upload_dir();
-	$filename	= wp_hash(home_url('/')) . '-wpematico-debug.log';
-	return trailingslashit($upload_dir) . $filename;
-}
+// wpematico_log() and wpematico_get_log_file_path() are defined in wpematico_functions.php
+// so they are available both in admin and during WP-Cron (outside is_admin()).
