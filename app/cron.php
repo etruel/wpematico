@@ -82,7 +82,7 @@ if ( ! class_exists( 'WPeMatico_Cron' ) )  {
 				$cronnextrun = $campaign['cronnextrun'];
 				if ( !$activated )
 					continue;
-				if ( $cronnextrun <= current_time('timestamp') || $dontruncron ) {
+				if ( $cronnextrun <= time() || $dontruncron ) {
 					if($cfg['logexternalcron']) {
 						@$file_handle = fopen($filedir.sanitize_file_name($post->post_title.".txt.log"), "w+");  //wpemextcron.txt.log
 						$msg = 'Running WPeMatico external WP-Cron'."\n";

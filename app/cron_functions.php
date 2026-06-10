@@ -34,7 +34,7 @@ function wpem_cron_callback() {
 		$cronnextrun = $campaign['cronnextrun'];
 		if ( !$activated )
 			continue;
-		if ( $cronnextrun <= current_time('timestamp') ) {
+		if ( $cronnextrun <= time() ) {
 			WPeMatico :: wpematico_dojob( $post->ID );
 		}
 	}

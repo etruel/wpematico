@@ -274,6 +274,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			$wpematico_object = array(
 				'date_format'					=> get_option('date_format') . ' ' . get_option('time_format'),
 				'i18n_date_format'				=> date_i18n(get_option('date_format') . '-' . get_option('time_format')),
+				'wp_timezone_offset_seconds'	=> wp_timezone()->getOffset( new DateTime( 'now', new DateTimeZone( 'UTC' ) ) ),
 				'text_running_campaign'			=> __('Running Campaign...', 'wpematico'),
 				'text_select_a_campaign_to_run' => __('Please select campaign(s) to Run.', 'wpematico'),
 				'text_slug'						=> __('Slug', 'wpematico'),
@@ -544,7 +545,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			$campaign_data = WPeMatico::get_campaign($id);
 
 			$campaign_data['cronnextrun'] = WPeMatico::time_cron_next($campaign_data['cron']); //set next run
-			$campaign_data['stoptime']	  = current_time('timestamp');
+			$campaign_data['stoptime']	  = time();
 			$campaign_data['lastrun']	  = $campaign_data['starttime'];
 			$campaign_data['lastruntime'] = $campaign_data['stoptime'] - $campaign_data['starttime'];
 			$campaign_data['starttime']	  = '';
@@ -845,7 +846,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 
 						// NEW BUTTONS
 						if ($starttime > 0) {  // Running play verde & grab rojo & stop gris
-							$runtime = current_time('timestamp') - $starttime;
+							$runtime = time() - $starttime;
 							if (($cfg['campaign_timeout'] <= $runtime) && ($cfg['campaign_timeout'] > 0)) {
 								$campaign_data['lastrun']		 = $starttime;
 								$campaign_data['lastruntime']	 = ' <span style="color:red;">Timeout: ' . $cfg['campaign_timeout'] . '</span>';
@@ -894,7 +895,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 						$starttime = (isset($campaign_data['starttime']) && !empty($campaign_data['starttime']) ) ? $campaign_data['starttime'] : 0;
 						$activated = (bool) $campaign_data['activated'];
 						if ($starttime > 0) {  // Running play verde & grab rojo & stop gris
-							$runtime = current_time('timestamp') - $starttime;
+							$runtime = time() - $starttime;
 							$ltitle	 = __('Running since:', 'wpematico') . ' ' . $runtime . ' ' . __('sec.', 'wpematico');
 						} elseif ($activated) { // Running play gris & grab rojo & stop gris
 							$cronnextrun = get_post_meta($post_id, 'cronnextrun', true);

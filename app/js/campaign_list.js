@@ -155,9 +155,11 @@ function run_all() {
 
 
 function theclock() {
-	nowdate = new Date();
-	now = nowdate.format(wpematico_object.date_format);
-	char = (nowdate.getSeconds() % 2 == 0) ? ' ' : ':';
-	jQuery('#show-clock').html(now.replace(':', char));
-	setTimeout("theclock()", 1000);
+	var browserOffsetMs = new Date().getTimezoneOffset() * 60000;
+	var wpOffsetMs      = parseInt( wpematico_object.wp_timezone_offset_seconds ) * 1000;
+	var nowdate         = new Date( Date.now() + browserOffsetMs + wpOffsetMs );
+	now  = nowdate.format( wpematico_object.date_format );
+	char = ( nowdate.getSeconds() % 2 == 0 ) ? ' ' : ':';
+	jQuery( '#show-clock' ).html( now.replace( ':', char ) );
+	setTimeout( 'theclock()', 1000 );
 }

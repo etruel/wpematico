@@ -74,7 +74,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
             add_action('wpematico_inserted_post', array('WPeMatico', 'throttling_inserted_post'));
 
         //Set job start settings
-        $this->campaign['starttime'] = current_time('timestamp'); //set start time for job
+        $this->campaign['starttime'] = time(); //set start time for job (UTC)
         $this->campaign['lastpostscount'] = 0; // Set it to zero now and assign value at end fetch.
 		
         //optimize test v2.7
@@ -105,7 +105,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         foreach ($this->feeds as $kf => $feed) {
             WPeMatico::$current_feed = $feed;
             // interrupt the script if timeout 
-            if (current_time('timestamp') - $this->campaign['starttime'] >= $campaign_timeout) {
+            if (time() - $this->campaign['starttime'] >= $campaign_timeout) {
 			/* translators: %s Decimal, seconds  */
                 trigger_error(sprintf(__('Ending feed, reached running timeout at %1$d sec.', 'wpematico'), $campaign_timeout), E_USER_WARNING);
                 break;
@@ -312,7 +312,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         $realcount = 0;
         foreach ($items as $item) {
             // interrupt the script if timeout 
-            if (current_time('timestamp') - $this->campaign['starttime'] >= $campaign_timeout) {
+            if (time() - $this->campaign['starttime'] >= $campaign_timeout) {
 				/* translators: %s Decimal. Timeout Seconds */
                 trigger_error(sprintf(__('Reached running timeout at %1$d sec.', 'wpematico'), $campaign_timeout), E_USER_WARNING);
                 break;
@@ -380,7 +380,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         }
         if (!$this->campaign['campaign_feeddate_forced']) {
             if ($this->campaign['campaign_feeddate']) {
-                if (($itemdate > $this->campaign['lastrun'] && $itemdate < current_time('timestamp', 1))) {
+                if (($itemdate > $this->campaign['lastrun'] && $itemdate < time())) {
                     trigger_error(__('Assigning original date to post.', 'wpematico') . "($itemdate)", E_USER_NOTICE);
                 } else {
                     $itemdate = null;
@@ -1031,7 +1031,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
     private function fetch_end() {
         $this->campaign['lastrun'] = $this->campaign['starttime'];
-        $this->campaign['lastruntime'] = current_time('timestamp') - $this->campaign['starttime'];
+        $this->campaign['lastruntime'] = time() - $this->campaign['starttime'];
         $this->campaign['starttime'] = '';
         $this->campaign['postscount'] += $this->fetched_posts; // Suma los posts procesados
         $this->campaign['lastpostscount'] = $this->fetched_posts; //  posts procesados esta vez

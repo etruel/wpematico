@@ -106,7 +106,7 @@ class WPeMatico_Campaign_edit_functions {
 			$activated = (bool)$campaign_data['activated']; 
 			$atitle = ( $activated ) ? __('Stop and deactivate this campaign', 'wpematico') : __('Start/Activate Campaign Scheduler', 'wpematico');
 			if ($starttime>0) {  // Running play verde & grab rojo & stop gris
-				$runtime=current_time('timestamp')-$starttime;
+				$runtime=time()-$starttime;
 
 				$lbotones = '<button type="button" disabled class="cpanelbutton dashicons dashicons-controls-play green"></button>';
 				if ($activated) { // Active play green & grab rojo & stop gris
