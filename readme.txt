@@ -216,7 +216,7 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 
 = 2.8.20 – June 10, 2026 =
 
-> _Reliability scheduling update for addon users — recommended for everyone._
+> _Reliability scheduling update for non-UTC WordPress timezone users — recommended for everyone._
 
 > ⚠️ **Addon version requirements updated:** This release requires **[WPeMatico Professional 3.5](https://etruel.com/downloads/wpematico-professional/)** or higher and **[GPT Spinner 3.5.1](https://etruel.com/downloads/wpematico-gpt-spinner/)** or higher. If you use either addon, update them alongside this release to ensure full compatibility. Older addon versions will trigger an admin notice asking you to upgrade.
 
@@ -226,7 +226,7 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 * **Fixed:** "Last Run" and "Next Run" dates in the campaign list and campaign edit screen now consistently display in the WordPress-configured timezone, regardless of the server's PHP timezone.
 * **Fixed:** The admin bar clock in the campaigns list now shows time in the WordPress timezone instead of the browser's local timezone, so it matches the dates displayed in the table.
 * **Fixed:** Item date filtering during feed fetch used inconsistent time sources, which could cause valid items to be skipped on sites with a non-UTC WordPress timezone.
-* **Improved:** On update from 2.8.19 or earlier, existing campaign timestamps are automatically migrated to UTC so all schedules stay correct after upgrading.
+* **Improved:** On update from 2.8.19 or earlier, existing campaign timestamps are automatically updated so all schedules stay correct after upgrading.
 
 = 2.8.19 – May 29, 2026 =
 > _Scheduling bug fix._

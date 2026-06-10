@@ -1475,8 +1475,8 @@ function wpematico_show_data_info() {
 								<td><?php echo $campaign[0]['campaign_posttype'] ?></td>
 								<td><?php echo count($campaign[0]['campaign_feeds']) ?></td>
 								<td><?php echo $campaign[0]['campaign_max'] ?></td>
-								<td><?php echo date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $campaign[0]['lastrun']) ?></td>
-								<td><?php echo date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $campaign[0]['cronnextrun']) ?></td>
+								<td><?php echo wp_date(get_option('date_format') . ' ' . get_option('time_format'), $campaign[0]['lastrun']) ?></td>
+								<td><?php echo wp_date(get_option('date_format') . ' ' . get_option('time_format'), $campaign[0]['cronnextrun']) ?></td>
 							</tr>
 						<?php } ?>
 					</tbody>
@@ -1508,7 +1508,7 @@ function wpematico_show_data_info() {
 						foreach ($cron_info as $key => $schedule) {
 							?>
 							<tr>
-								<td><?php echo esc_html(date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $time)); ?></td>
+								<td><?php echo esc_html(wp_date(get_option('date_format') . ' ' . get_option('time_format'), $time)); ?></td>
 								<td><?php echo esc_html(( isset($schedule['schedule']) && isset($schedules[$schedule['schedule']]) && isset($schedules[$schedule['schedule']]['display']) ) ? $schedules[$schedule['schedule']]['display'] : '' ); ?> </td>
 								<td><?php echo esc_html($hook); ?></td>
 							</tr>
@@ -1754,8 +1754,8 @@ function wpematico_debug_info_get() {
 		$return	 .= 'Campaign Status:    ' . $campaign[0]['campaign_posttype'] . "\n";
 		$return	 .= 'Number of feeds:    ' . count($campaign[0]['campaign_feeds']) . "\n";
 		$return	 .= 'Max items:          ' . $campaign[0]['campaign_max'] . "\n";
-		$return	 .= 'Last Run:           ' . date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $campaign[0]['lastrun']) . "\n";
-		$return	 .= 'Next Run:           ' . date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $campaign[0]['cronnextrun']) . "\n\n";
+		$return	 .= 'Last Run:           ' . wp_date(get_option('date_format') . ' ' . get_option('time_format'), $campaign[0]['lastrun']) . "\n";
+		$return	 .= 'Next Run:           ' . wp_date(get_option('date_format') . ' ' . get_option('time_format'), $campaign[0]['cronnextrun']) . "\n\n";
 	}
 
 	$return = apply_filters('wpematico_sysinfo_after_campaigns_infos', $return);
@@ -1821,7 +1821,7 @@ function wpematico_debug_info_get() {
 		foreach ($cron_array as $time => $cron) {
 			foreach ($cron as $hook => $cron_info) {
 				foreach ($cron_info as $key => $schedule) {
-					$return	 .= esc_html(date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $time));
+					$return	 .= esc_html(wp_date(get_option('date_format') . ' ' . get_option('time_format'), $time));
 					$return	 .= ': ';
 					$return	 .= esc_html((isset($schedule['schedule']) && isset($schedules[$schedule['schedule']]) && isset($schedules[$schedule['schedule']]['display'])) ? $schedules[$schedule['schedule']]['display'] : '');
 					$return	 .= ': ';

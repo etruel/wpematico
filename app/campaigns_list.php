@@ -866,7 +866,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 						} elseif ($activated) { // Running play gris & grab rojo & stop gris
 							$cronnextrun = WPeMatico::time_cron_next($campaign_data['cron']);
 							$cronnextrun = (isset($cronnextrun) && !empty($cronnextrun) && ($cronnextrun > 0 ) ) ? $cronnextrun : $campaign_data['cronnextrun'];
-							$ltitle		 = __('Next Run:', 'wpematico') . ' ' . date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $cronnextrun);
+							$ltitle		 = __('Next Run:', 'wpematico') . ' ' . wp_date(get_option('date_format') . ' ' . get_option('time_format'), $cronnextrun);
 							$lbotones	 = '<button type="button" class="state_buttons cpanelbutton dashicons dashicons-controls-play" title="' . esc_attr(__('Run Once', 'wpematico')) . '"></button>'; // To run now
 							$lbotones	 .= '<button type="button" disabled class="state_buttons cpanelbutton dashicons dashicons-update red"></button>'; // To stop
 							$lbotones	 .= '<button type="button" class="state_buttons cpanelbutton dashicons dashicons-controls-pause" btn-href="' . WPeMatico_Campaigns::wpematico_action_link($post_id, 'display', 'toggle') . '" title="' . $atitle . '"></button>'; // To deactivate
@@ -885,7 +885,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 						$lastrun	 = (isset($lastrun) && !empty($lastrun) ) ? $lastrun : $campaign_data['lastrun'];
 						$lastruntime = (isset($campaign_data['lastruntime'])) ? $campaign_data['lastruntime'] : '';
 						if ($lastrun) {
-							echo esc_html(date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $lastrun));
+							echo esc_html(wp_date(get_option('date_format') . ' ' . get_option('time_format'), $lastrun));
 							if (isset($lastruntime) && !empty($lastruntime)) {
 								echo ' : ' . esc_html__('Runtime:', 'wpematico') . ' <span id="lastruntime">' . esc_html($lastruntime) . '</span> ' . esc_html__('sec.', 'wpematico');
 							}
@@ -900,7 +900,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 						} elseif ($activated) { // Running play gris & grab rojo & stop gris
 							$cronnextrun = get_post_meta($post_id, 'cronnextrun', true);
 							$cronnextrun = (isset($cronnextrun) && !empty($cronnextrun) && ($cronnextrun > 0 ) ) ? $cronnextrun : $campaign_data['cronnextrun'];
-							$ltitle		 = '<b>' . __('Next Run:', 'wpematico') . '</b> ' . date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $cronnextrun);
+							$ltitle		 = '<b>' . __('Next Run:', 'wpematico') . '</b> ' . wp_date(get_option('date_format') . ' ' . get_option('time_format'), $cronnextrun);
 						} else {  // Inactive play gris & grab gris & stop black
 							$ltitle = '';
 						}

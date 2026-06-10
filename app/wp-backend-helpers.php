@@ -258,7 +258,7 @@ class WPeMatico_backend_helpers {
 				echo '<a href="' . esc_url(admin_url('post.php?post=' . $campaign_data['ID'] . '&action=edit')) . '" title="' . esc_attr__('Edit Campaign', 'wpematico') . '">';
 				if ($campaign_data['lastrun']) {
 					echo " <i><strong>" . esc_html($campaign_data['campaign_title']) . "</i></strong>, ";
-					echo esc_html(date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $campaign_data['lastrun'])) . ', <i>';
+					echo esc_html(wp_date(get_option('date_format') . ' ' . get_option('time_format'), $campaign_data['lastrun'])) . ', <i>';
 
 					if ($campaign_data['lastpostscount'] > 0)
 					/* translators: %s :integer. */
@@ -295,7 +295,7 @@ class WPeMatico_backend_helpers {
 					$runtime = time() - $campaign_data['starttime'];
 					echo esc_html__('Running since:', 'wpematico') . ' ' . esc_html($runtime) . ' ' . esc_html__('sec.', 'wpematico');
 				} elseif ($campaign_data['activated']) {
-					echo esc_html(date_i18n((get_option('date_format') . ' ' . get_option('time_format')), $campaign_data['cronnextrun']));
+					echo esc_html(wp_date((get_option('date_format') . ' ' . get_option('time_format')), $campaign_data['cronnextrun']));
 				}
 				echo '</a></li>';
 			}

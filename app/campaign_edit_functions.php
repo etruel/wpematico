@@ -139,14 +139,14 @@ class WPeMatico_Campaign_edit_functions {
 				?>
 				<tr>
 					<td><?php _e('Next Run:', 'wpematico'); ?></td>
-					<td><b class="red"><?php echo date_i18n( get_option('date_format').' '. get_option('time_format'), $cronnextrun ); ?></b></td>
+					<td><b class="red"><?php echo wp_date( get_option('date_format').' '. get_option('time_format'), $cronnextrun ); ?></b></td>
 				</tr>
 				<?php endif; ?>
 				<?php 
 				if ($lastrun) : ?>
 				<tr>
 					<td><?php _e('Last Runtime:', 'wpematico'); ?></td>
-					<td><?php echo date_i18n( get_option('date_format').' '. get_option('time_format'), $lastrun ); ?></td>
+					<td><?php echo wp_date( get_option('date_format').' '. get_option('time_format'), $lastrun ); ?></td>
 				</tr>
 				<tr>
 					<td><?php _e('Taken time:', 'wpematico'); ?></td>
@@ -947,7 +947,7 @@ public static function cron_box( $post ) {
 	/* translators: %s Link to WikiPedia 'Cron'  */
 	printf(__('Working as %s job schedule:', 'wpematico'), '<a href="http://wikipedia.org/wiki/Cron" target="_blank">Cron</a>'); 
 	echo ' <i>'.$cron.'</i> <br />'; 
-	_e('Next runtime:', 'wpematico' ); echo ' '.date_i18n( (get_option('date_format').' '.get_option('time_format') ),WPeMatico :: time_cron_next($cron) );
+	_e('Next runtime:', 'wpematico' ); echo ' '.wp_date( (get_option('date_format').' '.get_option('time_format') ),WPeMatico :: time_cron_next($cron) );
 		//_e('Next runtime:', 'wpematico' ); echo ' '.date('D, M j Y H:i',WPeMatico :: time_cron_next($cron));
 	?>
 	<p>
