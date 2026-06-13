@@ -365,54 +365,74 @@ add_action('plugins_loaded', 'wpematico_update_db_check');
 function wpematico_update_db_check() {
 	if (version_compare(WPEMATICO_VERSION, get_option('wpematico_db_version'), '>')) { // check if updated (WILL SAVE new version on welcome )
 		if (!get_transient('_wpematico_activation_redirect')) { //just one time running
-			// Re-save all campaigns when upgrading from < 2.8.20 to fix stored timestamps to UTC.
-			$needs_campaign_update = (bool) get_option('wpematico_db_version') &&
-				version_compare(get_option('wpematico_db_version'), '2.8.20', '<');
-			wpematico_install($needs_campaign_update);
+			wpematico_install(get_option('wpematico_db_version'));
 		}
 		delete_option('wpematico_lastlog_disabled');
 	}
 }
 
-function wpematico_install($update_campaigns = false) {
-	if ($update_campaigns) {
-		//tweaks old campaigns data, now saves meta for columns
-		$campaigns_data = array();
-		$args			= array(
+/**
+ * Runs on plugin activation and on each version update.
+ * Each versioned migration block checks $old_db_version to decide whether to run.
+ * This correctly handles version-skipping: upgrading from 2.8.18 to 2.8.22 will
+ * apply all intermediate migrations in order.
+ *
+ * On fresh activation, called with no argument ($old_db_version = ''), so no
+ * migration blocks run — only the version option is written.
+ *
+ * To add a future migration: copy the 2.8.20 block, change the version gate and
+ * implement the campaign loop body. Keep the raw get_post_meta / update_post_meta
+ * pattern — never use get_campaign() + update_campaign() here, as check_campaigndata
+ * strips addon fields and causes permanent data loss.
+ *
+ * @param string $old_db_version  The wpematico_db_version value before this update.
+ */
+function wpematico_install($old_db_version = '') {
+
+	// --- Migration: 2.8.20 — fix stored timestamps from local-time to real UTC ----------
+	// Old code stored current_time('timestamp') = time() + gmt_offset in lastrun.
+	// New code stores time() (real UTC). Subtract the offset on upgrade so schedules stay correct.
+	// Also recalculates cronnextrun via the now UTC-based time_cron_next().
+	if ($old_db_version && version_compare($old_db_version, '2.8.20', '<')) {
+		$offset    = (int) round(get_option('gmt_offset') * 3600);
+		$args      = array(
 			'orderby'	  => 'ID',
 			'order'		  => 'ASC',
 			'post_type'	  => 'wpematico',
-			'numberposts' => -1
+			'numberposts' => -1,
 		);
-		if (!has_filter('wpematico_check_campaigndata')) {
-			add_filter('wpematico_check_campaigndata', array('WPeMatico', 'check_campaigndata'), 10, 1);
-		}
-		add_filter('wpematico_check_campaigndata', 'wpematico_campaign_compatibilty_after', 99, 1);
-
-		// Migrate lastrun timestamps: old code stored current_time('timestamp') = time() + gmt_offset.
-		// New code stores time() (real UTC). Subtract the offset so existing values become correct UTC.
-		$offset          = (int) round( get_option('gmt_offset') * 3600 );
-		$db_version      = get_option('wpematico_db_version');
-		$needs_ts_fix    = $offset !== 0 && $db_version &&
-			version_compare($db_version, '2.8.20', '<');
-
 		$campaigns = get_posts($args);
-		foreach ($campaigns as $post):
-			$campaigndata = WPeMatico::get_campaign($post->ID);
-			if ($needs_ts_fix && isset($campaigndata['lastrun']) && (int) $campaigndata['lastrun'] > 0) {
-				$campaigndata['lastrun'] = (int) $campaigndata['lastrun'] - $offset;
-				update_post_meta($post->ID, 'lastrun', $campaigndata['lastrun']);
+		foreach ($campaigns as $post) {
+			// Read raw campaign_data WITHOUT passing through check_campaigndata.
+			// check_campaigndata rebuilds the array from scratch and strips all addon fields
+			// (GPT-Spinner, FullContent, etc.), causing permanent data loss when saved back.
+			$raw = get_post_meta($post->ID, 'campaign_data', true);
+			if (!is_array($raw)) {
+				$raw = array();
 			}
-			// update_campaign() recalculates cronnextrun via the fixed time_cron_next() (UTC).
-			WPeMatico::update_campaign($post->ID, $campaigndata);
-		endforeach;
+
+			if ($offset !== 0 && isset($raw['lastrun']) && (int) $raw['lastrun'] > 0) {
+				$raw['lastrun'] = (int) $raw['lastrun'] - $offset;
+				update_post_meta($post->ID, 'lastrun', $raw['lastrun']);
+			}
+
+			$cron               = isset($raw['cron']) ? $raw['cron'] : '0 3 * * *';
+			$raw['cronnextrun'] = (int) WPeMatico::time_cron_next($cron);
+			update_post_meta($post->ID, 'cronnextrun', $raw['cronnextrun']);
+
+			// Save campaign_data with all fields intact, preserving addon settings.
+			update_post_meta($post->ID, 'campaign_data', $raw);
+		}
 	}
+	// --- End migration 2.8.20 -----------------------------------------------------------
+
+	// Add future per-version migrations here following the same pattern:
+	// if ($old_db_version && version_compare($old_db_version, '2.8.XX', '<')) { ... }
 
 	$version = rtrim(WPEMATICO_VERSION, '.0');
 	$v		 = explode('.', $version);
-	// Redirect to welcome page only in Major Updates
+	// Redirect to welcome page only on major version updates (e.g. 2.9)
 	if (count($v) <= 2) {
-		// Add the transient to redirect 
 		set_transient('_wpematico_activation_redirect', true, 120); // After two minutes lost welcome screen
 	} else {
 		update_option('wpematico_db_version', WPEMATICO_VERSION, false);

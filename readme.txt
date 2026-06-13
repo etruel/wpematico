@@ -2,7 +2,7 @@
 Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU 
 Tags: RSS, XML, feed to post, rss aggregator, content curation
-Stable tag: 2.8.20
+Stable tag: 2.8.21
 Tested up to: 7.0
 Requires at least: 4.8
 Requires PHP: 7.0
@@ -213,6 +213,14 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 == Changelog ==
 
 > View complete release history at [WPeMatico Releases](https://wpematico.com/releases/)
+
+= 2.8.21 – June 13, 2026 =
+
+> _Recommended update for all users — essential for users running WPeMatico addons (GPT Spinner, Professional, FullContent, or others)._
+
+* **Fixed:** Campaign data integrity during upgrades is now fully guaranteed — all per-campaign addon settings are preserved correctly across updates, regardless of which addons are active.
+* **Improved:** The upgrade migration system has been redesigned to handle version-skipping gracefully. Users who update from older releases directly to a newer version now receive all intermediate migrations in the correct order, without data loss.
+* **Note:** Some users who upgraded to 2.8.20 while running addons may have seen addon settings revert to defaults in their campaigns. This release resolves the underlying cause. If you were affected, our support team is ready to help — visit [etruel.com/my-account/support/](https://etruel.com/my-account/support/) and we'll get you sorted quickly.
 
 = 2.8.20 – June 10, 2026 =
 
