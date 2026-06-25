@@ -101,9 +101,9 @@ class WPeMatico_Campaign_edit_functions {
 		$postscount = get_post_meta($post->ID, 'postscount', true);
 		$lastpostscount = get_post_meta($post->ID, 'lastpostscount', true);
 		
-		$starttime = (isset($campaign_data['starttime']) && !empty($campaign_data['starttime']) ) ? $campaign_data['starttime'] : 0 ; 
+		$starttime = WPeMatico::get_campaign_running_since($post->ID);  // run lock drives running state (2.8.22)
 			//print_r($campaign_data);
-			$activated = (bool)$campaign_data['activated']; 
+			$activated = (bool)$campaign_data['activated'];
 			$atitle = ( $activated ) ? __('Stop and deactivate this campaign', 'wpematico') : __('Start/Activate Campaign Scheduler', 'wpematico');
 			if ($starttime>0) {  // Running play verde & grab rojo & stop gris
 				$runtime=time()-$starttime;

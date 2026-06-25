@@ -35,6 +35,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
     private $lasthash = array();
     private $currenthash = array();
     public $current_item = array();
+    private $aborted = false;  // true when the run was skipped because the campaign was already running (2.8.22)
 
     public function __construct($campaign_id) {
         global $wpdb, $campaign_log_message, $jobwarnings, $joberrors;
@@ -55,6 +56,22 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         $this->campaign_id = $campaign_id;   //set campaign id
         $this->campaign = WPeMatico :: get_campaign($this->campaign_id);
 
+        // --- Anti-duplicate run lock (2.8.22) ---
+        // Atomically claim the campaign before doing any work. If it is already
+        // running (a concurrent/overlapping cron pass, or a manual run while a cron
+        // run is in progress), abort without processing to avoid duplicate posts.
+        if (!WPeMatico :: claim_campaign($this->campaign_id)) {
+            $this->aborted = true;
+            $running_since = WPeMatico :: get_campaign_running_since($this->campaign_id);
+            /* translators: %d seconds */
+            trigger_error(sprintf(__('Campaign skipped: already running since %d sec ago.', 'wpematico'), max(0, time() - $running_since)), E_USER_NOTICE);
+            restore_error_handler();
+            return false;
+        }
+        // Claimed: advance the next scheduled run immediately so a concurrent cron
+        // pass (which has not advanced cronnextrun yet) does not re-take this campaign.
+        update_post_meta($this->campaign_id, 'cronnextrun', (int) WPeMatico :: time_cron_next($this->campaign['cron']));
+
         $this->cfg = get_option(WPeMatico :: OPTION_KEY);
         $this->cfg = apply_filters('wpematico_check_options', $this->cfg);
 
@@ -74,11 +91,9 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
             add_action('wpematico_inserted_post', array('WPeMatico', 'throttling_inserted_post'));
 
         //Set job start settings
-        $this->campaign['starttime'] = time(); //set start time for job (UTC)
+        $this->campaign['starttime'] = time(); //set start time for job (UTC). The persisted run claim lives in the FETCH_LOCK_META meta (see claim_campaign above).
         $this->campaign['lastpostscount'] = 0; // Set it to zero now and assign value at end fetch.
 		
-        //optimize test v2.7
-        // WPeMatico :: update_campaign($this->campaign_id, $this->campaign); 
         
         //Save start time data
         update_post_meta($this->campaign_id, 'lastrun', $this->campaign['lastrun']); 
@@ -1045,12 +1060,19 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
         WPeMatico :: update_campaign($this->campaign_id, $this->campaign);  //Save Campaign new data
 
+        // Release the run lock: the campaign finished and can run again. (2.8.22)
+        WPeMatico :: release_campaign($this->campaign_id);
+
 		/* translators: %s Decimal. Seconds */
         trigger_error(sprintf(__('Campaign fetched in %s sec.', 'wpematico'), $this->campaign['lastruntime']), E_USER_NOTICE);
     }
 
     public function __destruct() {
         global $campaign_log_message, $joberrors;
+        // Run was skipped because the campaign was already running: nothing to finalize. (2.8.22)
+        if ($this->aborted) {
+            return;
+        }
         //Send mail with log
         $sendmail = false;
         if ($joberrors > 0 and $this->campaign['mailerroronly'] and !empty($this->campaign['mailaddresslog']))

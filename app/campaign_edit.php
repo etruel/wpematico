@@ -191,8 +191,14 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		}
 		
 		
-		if(!isset($_POST['campaign_ID'])) die('ERROR: ID no encontrado.'); 
+		if(!isset($_POST['campaign_ID'])) die('ERROR: ID no encontrado.');
 		$campaign_ID = absint($_POST['campaign_ID']);
+		// Block a manual run while the campaign is already running (cron or another manual run). (2.8.22)
+		if ( WPeMatico :: is_campaign_running($campaign_ID) ) {
+			$running_since = max(0, time() - WPeMatico :: get_campaign_running_since($campaign_ID));
+			/* translators: %d seconds */
+			die( 'ERROR: ' . esc_html(sprintf(__('This campaign is already running (since %d sec ago). Wait until it finishes or use "Clear Campaign".', 'wpematico'), $running_since)) );
+		}
 		// Already sanitized on wpematico_dojob
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo  substr( WPeMatico :: wpematico_dojob( $campaign_ID ) , 0, -1) ; // borro el ultimo caracter que es un 0

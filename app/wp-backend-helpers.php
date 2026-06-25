@@ -291,8 +291,9 @@ class WPeMatico_backend_helpers {
 			if ($campaign_data['activated']) {
 				echo '<li><a href="' . esc_url( admin_url('post.php?post=' . $campaign_data['ID'] . '&action=edit') ) . '" title="' . esc_attr__('Edit Campaign', 'wpematico') . '">';
 				echo '<strong>' . esc_html($campaign_data['campaign_title']) . '</strong>, ';
-				if ($campaign_data['starttime'] > 0 and empty($campaign_data['stoptime'])) {
-					$runtime = time() - $campaign_data['starttime'];
+				$running_since = WPeMatico::get_campaign_running_since($campaign_data['ID']);  // run lock drives running state (2.8.22)
+				if ($running_since > 0) {
+					$runtime = time() - $running_since;
 					echo esc_html__('Running since:', 'wpematico') . ' ' . esc_html($runtime) . ' ' . esc_html__('sec.', 'wpematico');
 				} elseif ($campaign_data['activated']) {
 					echo esc_html(wp_date((get_option('date_format') . ' ' . get_option('time_format')), $campaign_data['cronnextrun']));

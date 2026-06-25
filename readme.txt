@@ -2,7 +2,7 @@
 Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU 
 Tags: RSS, XML, feed to post, rss aggregator, content curation
-Stable tag: 2.8.21
+Stable tag: 2.8.22
 Tested up to: 7.0
 Requires at least: 4.8
 Requires PHP: 7.0
@@ -213,6 +213,15 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 == Changelog ==
 
 > View complete release history at [WPeMatico Releases](https://wpematico.com/releases/)
+
+= 2.8.22 =
+
+> _Recommended update for all users — fixes rare duplicate posts and stuck "running" campaigns, especially on busy sites with many campaigns or addons (GPT Spinner, Professional, FullContent)._
+
+* **Fixed:** Eliminated rare duplicate published posts caused by overlapping cron passes re-taking a campaign that was still being processed. Each campaign is now atomically claimed at the start of its run, and its next scheduled run is advanced immediately so a concurrent cron pass can no longer fetch the same items twice.
+* **Improved:** Added a global anti-overlap lock so two WP-Cron passes never iterate campaigns in parallel.
+* **Improved:** The "Running" indicator in the campaigns list, editor and dashboard now reflects the real run state during scheduled (cron) runs, not only manual runs. Orphaned locks left by an interrupted run (timeout, out-of-memory) auto-clear after the "Timeout running campaign" setting, or can be released manually with "Clear/Break Campaign".
+* **Improved:** A manual run is now blocked with a clear message while the same campaign is already running.
 
 = 2.8.21 – June 13, 2026 =
 

@@ -551,6 +551,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			$campaign_data['starttime']	  = '';
 
 			WPeMatico::update_campaign($id, $campaign_data);
+			WPeMatico::release_campaign($id);  // release the run lock so the campaign can run again (2.8.22)
 			WPeMatico::add_wp_notice(array('text' => __('Campaign cleared', 'wpematico') . ' <b>' . get_the_title($id) . '</b>', 'below-h2' => false));
 
 			// Redirect to the post list screen
@@ -839,7 +840,8 @@ if (!class_exists('WPeMatico_Campaigns')) :
 						echo (isset($postscount) && !empty($postscount) ) ? esc_html($postscount) : esc_html($campaign_data['postscount']);
 						break;
 					case 'next':   // 'Current State' column
-						$starttime			  = (isset($campaign_data['starttime']) && !empty($campaign_data['starttime']) ) ? $campaign_data['starttime'] : 0;
+						// Running state is driven by the run lock (auto-clears stale/orphaned locks). (2.8.22)
+						$starttime			  = WPeMatico::get_campaign_running_since($post_id);
 						//print_r($campaign_data);
 						$activated			  = (bool) $campaign_data['activated'];
 						$atitle				  = ( $activated ) ? __("Stop and deactivate this campaign", 'wpematico') : __("Start/Activate Campaign Scheduler", 'wpematico');
@@ -847,13 +849,6 @@ if (!class_exists('WPeMatico_Campaigns')) :
 						// NEW BUTTONS
 						if ($starttime > 0) {  // Running play verde & grab rojo & stop gris
 							$runtime = time() - $starttime;
-							if (($cfg['campaign_timeout'] <= $runtime) && ($cfg['campaign_timeout'] > 0)) {
-								$campaign_data['lastrun']		 = $starttime;
-								$campaign_data['lastruntime']	 = ' <span style="color:red;">Timeout: ' . $cfg['campaign_timeout'] . '</span>';
-								$campaign_data['starttime']		 = '';
-								$campaign_data['lastpostscount'] = 0; //  posts procesados esta vez
-								WPeMatico::update_campaign($post_id, $campaign_data);  //Save Campaign new data
-							}
 							$ltitle	  = __('Running since:', 'wpematico') . ' ' . $runtime . ' ' . __('sec.', 'wpematico');
 							$lbotones = '<button type="button" disabled class="state_buttons cpanelbutton dashicons dashicons-controls-play green"></button>';
 							if ($activated) { // Active play green & grab rojo & stop gris
@@ -892,7 +887,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
 						} else {
 							echo esc_html__('None', 'wpematico');
 						}
-						$starttime = (isset($campaign_data['starttime']) && !empty($campaign_data['starttime']) ) ? $campaign_data['starttime'] : 0;
+						$starttime = WPeMatico::get_campaign_running_since($post_id);
 						$activated = (bool) $campaign_data['activated'];
 						if ($starttime > 0) {  // Running play verde & grab rojo & stop gris
 							$runtime = time() - $starttime;
