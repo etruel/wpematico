@@ -371,7 +371,7 @@ if (!class_exists('WPeMatico_functions')) {
 		 * @return string Path to file if uploaded, bool false if not success
 		 * @since 1.9.0
 		 */
-		public static function save_file_from_url($url_origin, $new_file) {
+		public static function save_file_from_url($url_origin, $new_file, $type = '') {
 			/**
 			 * Beta: Filter to avoid run these methods by using an external function through the filter.
 			 * The function should read the $url_origin and save it as $new_file and return the file path as string.
@@ -442,7 +442,14 @@ if (!class_exists('WPeMatico_functions')) {
 			}
 			if (empty($origin_content)) {
 				// first try if no 'direct' method
-				$download_file = download_url($url_origin);  // 300 seconds timeout by default 
+				// Type-aware total-transfer timeout. The default (60s) protects the common case —
+				// images, downloaded by core and by many addons that call this with 2 args — so a
+				// dead/black-hole URL can't hang the fetch for WP's default 300s. Only audio/video,
+				// which can legitimately need long transfers, opt into 300s by passing $type. Any
+				// other case is adjustable through the filter without editing callers. (2.8.22)
+				$dl_timeout = ($type === 'audio' || $type === 'video') ? 300 : 60;
+				$dl_timeout = (int) apply_filters('wpematico_download_url_timeout', $dl_timeout, $type, $url_origin, $new_file);
+				$download_file = download_url($url_origin, $dl_timeout);
 				if (!is_wp_error($download_file)) {
 					/**
 					 * if success we try to move the file instead get and put contents to improve performance.  

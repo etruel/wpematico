@@ -214,14 +214,16 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 
 > View complete release history at [WPeMatico Releases](https://wpematico.com/releases/)
 
-= 2.8.22 – June 25, 2026 =
+= 2.8.22 – June 26, 2026 =
 
-> _Recommended update for all users — fixes rare duplicate posts and stuck "running" campaigns, especially on busy sites with many campaigns or addons (GPT Spinner, Professional, FullContent)._
+> _Recommended update for all users — fixes rare duplicate posts and stuck "running" campaigns, especially on busy sites with many campaigns or addons (GPT Spinner, Professional, Full Content)._
 
-* **Fixed:** Eliminated rare duplicate published posts caused by overlapping cron passes re-taking a campaign that was still being processed. Each campaign is now atomically claimed at the start of its run, and its next scheduled run is advanced immediately so a concurrent cron pass can no longer fetch the same items twice.
-* **Improved:** Added a global anti-overlap lock so two WP-Cron passes never iterate campaigns in parallel.
+* **Fixed:** Eliminated rare duplicate published posts caused by overlapping cron passes re-taking a campaign that was still being processed. Each campaign is now claimed at the start of its run and its next run is scheduled immediately, so a concurrent cron pass can no longer fetch the same items twice.
+* **Fixed:** Campaigns no longer freeze for several minutes when a source image is broken or unresponsive. Image downloads now give up quickly and move on, while audio and video keep a longer allowance so large media still downloads completely.
+* **Improved:** When several campaigns share the same schedule, they now run in a fair order — the most overdue first — so no campaign keeps getting skipped while slower ones run. A campaign that is still running is reliably skipped instead of being started a second time.
 * **Improved:** The "Running" indicator in the campaigns list, editor and dashboard now reflects the real run state during scheduled (cron) runs, not only manual runs. Orphaned locks left by an interrupted run (timeout, out-of-memory) auto-clear after the "Timeout running campaign" setting, or can be released manually with "Clear/Break Campaign".
 * **Improved:** A manual run is now blocked with a clear message while the same campaign is already running.
+* **External:** The Full Content add-on no longer stalls a campaign when a source's featured or social image is slow or unreachable — it now times out quickly and continues, keeping your scheduled runs flowing.
 
 = 2.8.21 – June 13, 2026 =
 

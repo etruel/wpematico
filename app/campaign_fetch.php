@@ -70,7 +70,13 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         }
         // Claimed: advance the next scheduled run immediately so a concurrent cron
         // pass (which has not advanced cronnextrun yet) does not re-take this campaign.
-        update_post_meta($this->campaign_id, 'cronnextrun', (int) WPeMatico :: time_cron_next($this->campaign['cron']));
+        // cronnextrun lives in two places (the standalone post_meta used for cheap reads
+        // and the copy inside the campaign_data array); update both here so they stay in
+        // sync from the start of the run, not only at fetch_end. (2.8.22)
+        $next_cronrun = (int) WPeMatico :: time_cron_next($this->campaign['cron']);
+        update_post_meta($this->campaign_id, 'cronnextrun', $next_cronrun);
+        $this->campaign['cronnextrun'] = $next_cronrun;
+        update_post_meta($this->campaign_id, 'campaign_data', $this->campaign);
 
         $this->cfg = get_option(WPeMatico :: OPTION_KEY);
         $this->cfg = apply_filters('wpematico_check_options', $this->cfg);

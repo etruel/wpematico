@@ -1219,7 +1219,7 @@ class wpematico_campaign_fetch_functions {
 						}
 
 						if ($options_audios['customupload_audios'] && !$newfile) {
-							$newfile = WPeMatico::save_file_from_url($audio_src_real, $audio_dst);
+							$newfile = WPeMatico::save_file_from_url($audio_src_real, $audio_dst, 'audio');
 						}
 
 						if ($newfile) { //subió
@@ -1375,7 +1375,7 @@ class wpematico_campaign_fetch_functions {
 						}
 
 						if ($options_videos['customupload_videos'] && !$newfile) {
-							$newfile = WPeMatico::save_file_from_url($video_src_real, $video_dst);
+							$newfile = WPeMatico::save_file_from_url($video_src_real, $video_dst, 'video');
 						}
 
 						if ($newfile) { //subió
