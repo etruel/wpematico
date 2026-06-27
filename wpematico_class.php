@@ -11,7 +11,7 @@ if (!class_exists('WPeMatico')) {
 	class WPeMatico extends WPeMatico_functions {
 
 		const TEXTDOMAIN	 = 'wpematico';
-		const PROREQUIRED	 = '3.5';
+		const PROREQUIRED	 = '3.6';
 		const OPTION_KEY	 = 'WPeMatico_Options';
 
 		public static $name		 = '';

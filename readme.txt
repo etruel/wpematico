@@ -214,7 +214,7 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 
 > View complete release history at [WPeMatico Releases](https://wpematico.com/releases/)
 
-= 2.8.22 – June 26, 2026 =
+= 2.8.22 – June 27, 2026 =
 
 > _Recommended update for all users — fixes rare duplicate posts and stuck "running" campaigns, especially on busy sites with many campaigns or addons (GPT Spinner, Professional, Full Content)._
 
@@ -224,6 +224,8 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 * **Improved:** The "Running" indicator in the campaigns list, editor and dashboard now reflects the real run state during scheduled (cron) runs, not only manual runs. Orphaned locks left by an interrupted run (timeout, out-of-memory) auto-clear after the "Timeout running campaign" setting, or can be released manually with "Clear/Break Campaign".
 * **Improved:** A manual run is now blocked with a clear message while the same campaign is already running.
 * **External:** The Full Content add-on no longer stalls a campaign when a source's featured or social image is slow or unreachable — it now times out quickly and continues, keeping your scheduled runs flowing.
+* **Fixed:** Closed another rare source of duplicate posts — if a run was interrupted (timeout or out-of-memory) after a post was inserted but before it was recorded as fetched (most likely during heavy per-item image processing), the next run could re-insert it. Items are now recorded as fetched before that heavy work, so an interrupted run can no longer create a duplicate.
+* **Important:** WPeMatico Professional **3.6 or higher** is now required. Earlier Professional versions could stall scheduled runs when "Draw post title on featured image" was enabled. Please update the Professional add-on after updating the core.
 
 = 2.8.21 – June 13, 2026 =
 

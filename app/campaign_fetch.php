@@ -349,9 +349,9 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
             // Get the source Permalink trying to redirect if is set.
             $permalink = $this->getReadUrl($permalink, $this->campaign);
             $this->current_item['permalink'] = $permalink;
-            $this->currenthash[wpematico_feed_hash_key('currenthash', $feed)] = md5($permalink); // the hash of the current item feed 
-            $suma = $this->processItem($simplepie, $item, $feed);
+            $this->currenthash[wpematico_feed_hash_key('currenthash', $feed)] = md5($permalink); // the hash of the current item feed
 
+            // Persist the dedup hash before processItem so an interrupted run can't re-insert the item.
             $lasthashvar = '_lasthash_' . sanitize_file_name($feed);
             $hashvalue = $this->currenthash[wpematico_feed_hash_key('currenthash', $feed)];
             add_post_meta($this->campaign_id, $lasthashvar, $hashvalue, true) or
@@ -360,6 +360,8 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
             if (!$duplicate_options['allowduphash'] && $duplicate_options['jumpduplicates']) {
                 add_post_meta($this->campaign_id, $last_hashes_name, $hashvalue, false);
             }
+
+            $suma = $this->processItem($simplepie, $item, $feed);
 
             if (isset($suma) && is_int($suma)) {
                 $realcount = $realcount + $suma;
@@ -389,7 +391,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
         global $wpdb, $realcount,$wpematico_fifu_meta, $post;
 		/* translators: %s Current item title  */
         trigger_error(sprintf('<b>' . __('Processing item %s', 'wpematico'), $item->get_title() . '</b>'), E_USER_NOTICE);
-        
+
         // First exclude filters
         if ($this->exclude_filters($this->current_item, $this->campaign, $feed, $item)) {
             return -1;  // resta este item del total 
@@ -453,7 +455,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
 
 
         $this->current_item = apply_filters('wpematico_item_pre_media', $this->current_item, $this->campaign, $feed, $item);
-        
+
         if (isset($this->current_item['SKIP']) && is_int($this->current_item['SKIP']))
             return $this->current_item['SKIP'];
 
@@ -473,7 +475,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
          */
         $options_videos = WPeMatico::get_videos_options($this->cfg, $this->campaign);
         $this->current_item = apply_filters('wpematico_item_filters_pre_video', $this->current_item, $this->campaign);
-        //gets video array 
+        //gets video array
         $this->current_item = $this->Get_Item_Videos($this->current_item, $this->campaign, $feed, $item, $options_videos);
 
         // Uploads and changes img sources in content
@@ -485,7 +487,7 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
          */
         $options_images = WPeMatico::get_images_options($this->cfg, $this->campaign);
         $this->current_item = apply_filters('wpematico_item_filters_pre_img', $this->current_item, $this->campaign);
-        //gets images array 
+        //gets images array
         $this->current_item = $this->Get_Item_images($this->current_item, $this->campaign, $feed, $item, $options_images);
         $this->current_item['featured_image'] = apply_filters('wpematico_set_featured_img', '', $this->current_item, $this->campaign, $feed, $item);
         
