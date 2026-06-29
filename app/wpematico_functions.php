@@ -645,7 +645,6 @@ if (!class_exists('WPeMatico_functions')) {
 					/* translators: the required version of WPeMatico Professional. */
 					$message .= sprintf(__('Must install at least WPeMatico Professional %s', 'wpematico'), WPeMatico::PROREQUIRED);
 					$message .= ' <a href="' . admin_url('plugins.php?page=wpemaddons') . '#wpematico-pro"> ' . __('Go to update Now', 'wpematico') . '</a>';
-					$message .= '<script type="text/javascript">jQuery(document).ready(function($){$("#wpematico-pro").css("backgroundColor","yellow");});</script>';
 					//Commented to allow access to the settings page
 					//$checks=false;
 				}
