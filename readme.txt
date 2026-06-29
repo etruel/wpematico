@@ -214,7 +214,7 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 
 > View complete release history at [WPeMatico Releases](https://wpematico.com/releases/)
 
-= 2.8.22 – June 26, 2026 =
+= 2.8.22 – June 29, 2026 =
 
 > _Recommended update for all users — fixes rare duplicate posts and stuck "running" campaigns, especially on busy sites with many campaigns or addons (GPT Spinner, Professional, Full Content)._
 
