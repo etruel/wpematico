@@ -223,9 +223,9 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 * **Improved:** When several campaigns share the same schedule, they now run in a fair order — the most overdue first — so no campaign keeps getting skipped while slower ones run. A campaign that is still running is reliably skipped instead of being started a second time.
 * **Improved:** The "Running" indicator in the campaigns list, editor and dashboard now reflects the real run state during scheduled (cron) runs, not only manual runs. Orphaned locks left by an interrupted run (timeout, out-of-memory) auto-clear after the "Timeout running campaign" setting, or can be released manually with "Clear/Break Campaign".
 * **Improved:** A manual run is now blocked with a clear message while the same campaign is already running.
-* **External:** The Full Content add-on no longer stalls a campaign when a source's featured or social image is slow or unreachable — it now times out quickly and continues, keeping your scheduled runs flowing.
 * **Fixed:** Closed another rare source of duplicate posts — if a run was interrupted (timeout or out-of-memory) after a post was inserted but before it was recorded as fetched (most likely during heavy per-item image processing), the next run could re-insert it. Items are now recorded as fetched before that heavy work, so an interrupted run can no longer create a duplicate.
 * **Fixed:** The "Professional add-on is out of date" admin notice no longer shows leftover script code as plain text. The highlight effect was removed so the notice now reads cleanly.
+* **External:** The Full Content add-on no longer stalls a campaign when a source's featured or social image is slow or unreachable — it now times out quickly and continues, keeping your scheduled runs flowing.
 * **Important:** WPeMatico Professional **3.6 or higher** is now required. Earlier Professional versions could stall scheduled runs when "Draw post title on featured image" was enabled. Please update the Professional add-on after updating the core.
 
 = 2.8.21 – June 13, 2026 =
