@@ -400,6 +400,9 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			}
 			// Get the original post
 			$id	  = (isset($_GET['post']) ? absint($_GET['post']) : absint($_POST['post']) );
+			if ( ! current_user_can( 'edit_post', $id ) ) {
+				wp_die( esc_html__( 'You are not allowed to do this.', 'wpematico' ) );
+			}
 			$post = get_post($id);
 
 			// Copy the post and insert it
@@ -415,7 +418,6 @@ if (!class_exists('WPeMatico_Campaigns')) :
 				}
 				exit;
 			} else {
-				$post_type_obj = get_post_type_object($post->post_type);
 				wp_die( esc_html__('Copy campaign failed, could not find original:', 'wpematico') . ' ' . esc_html($id) );
 			}
 		}
@@ -440,6 +442,9 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			}
 			// Get the original post
 			$id = (isset($_GET['post']) ? absint($_GET['post']) : absint($_POST['post']) );
+			if ( ! current_user_can( 'edit_post', $id ) ) {
+				wp_die( esc_html__( 'You are not allowed to do this.', 'wpematico' ) );
+			}
 
 			$campaign_data				= WPeMatico::get_campaign($id);
 			$campaign_data['activated'] = !$campaign_data['activated'];
@@ -472,6 +477,9 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			}
 			// Get the original post
 			$id								 = (isset($_GET['post']) ? absint($_GET['post']) : absint($_POST['post']) );
+			if ( ! current_user_can( 'edit_post', $id ) ) {
+				wp_die( esc_html__( 'You are not allowed to do this.', 'wpematico' ) );
+			}
 			$campaign_data					 = WPeMatico::get_campaign($id);
 			$campaign_data['postscount']	 = 0;
 			$campaign_data['lastpostscount'] = 0;
@@ -504,6 +512,9 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			}
 			// Get the original post
 			$id			   = (isset($_GET['post']) ? absint($_GET['post']) : absint($_POST['post']) );
+			if ( ! current_user_can( 'edit_post', $id ) ) {
+				wp_die( esc_html__( 'You are not allowed to do this.', 'wpematico' ) );
+			}
 			$campaign_data = WPeMatico::get_campaign($id);
 			foreach ($campaign_data['campaign_feeds'] as $feed) { // Grabo el ultimo hash de cada feed con 0
 				$campaign_data[wpematico_feed_hash_key('campaign', $feed)]['lasthash'] = "0";
@@ -542,6 +553,9 @@ if (!class_exists('WPeMatico_Campaigns')) :
 
 			// Get the original post
 			$id			   = (isset($_GET['post']) ? absint($_GET['post']) : absint($_POST['post']) );
+			if ( ! current_user_can( 'edit_post', $id ) ) {
+				wp_die( esc_html__( 'You are not allowed to do this.', 'wpematico' ) );
+			}
 			$campaign_data = WPeMatico::get_campaign($id);
 
 			$campaign_data['cronnextrun'] = WPeMatico::time_cron_next($campaign_data['cron']); //set next run
