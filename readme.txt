@@ -2,8 +2,8 @@
 Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU 
 Tags: RSS, XML, feed to post, rss aggregator, content curation
-Stable tag: 2.8.22
-Tested up to: 7.0
+Stable tag: 2.8.23
+Tested up to: 7.1
 Requires at least: 4.8
 Requires PHP: 7.0
 License: GPLv2 or later
@@ -213,6 +213,14 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 == Changelog ==
 
 > View complete release history at [WPeMatico Releases](https://wpematico.com/releases/)
+
+= 2.8.23 =
+
+> _Recommended security update for all users. Tested up to WordPress 7.1._
+
+* **Security:** Hardened permission checks on campaign actions (run now, copy, activate/deactivate, reset, delete hashes and clear/break). Each action now verifies the current user's capability on the target campaign, in addition to the existing security nonce validation.
+* **Fixed:** PHP 8.1 warning ("attempt to read property on null") when copying a campaign whose original could not be found.
+* **Improved:** Confirmed compatibility with WordPress 7.1.
 
 = 2.8.22 – June 29, 2026 =
 

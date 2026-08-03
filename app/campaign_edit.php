@@ -193,6 +193,9 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		
 		if(!isset($_POST['campaign_ID'])) die('ERROR: ID no encontrado.');
 		$campaign_ID = absint($_POST['campaign_ID']);
+		if ( ! current_user_can( 'edit_post', $campaign_ID ) ) {
+			die( 'ERROR: ' . esc_html__( 'You are not allowed to do this.', 'wpematico' ) );
+		}
 		// Block a manual run while the campaign is already running (cron or another manual run). (2.8.22)
 		if ( WPeMatico :: is_campaign_running($campaign_ID) ) {
 			$running_since = max(0, time() - WPeMatico :: get_campaign_running_since($campaign_ID));
@@ -343,8 +346,11 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 
 		$nonce = (isset($_POST['nonce'])) ? sanitize_text_field($_POST['nonce']) : '';
         if (!wp_verify_nonce($nonce, 'wpematico-check-fields-nonce')) {
-           die('1'); 
+           die('1');
         }
+		if ( ! current_user_can( 'edit_posts' ) ) {
+			die('1');
+		}
 		$cfg = get_option(WPeMatico::OPTION_KEY);
 		$err_message = "";
 		if( isset( $_POST['campaign_wrd2cat']) ) {
