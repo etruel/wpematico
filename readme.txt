@@ -214,7 +214,7 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 
 > View complete release history at [WPeMatico Releases](https://wpematico.com/releases/)
 
-= 2.8.23 =
+= 2.8.23 – Aug 3, 2026 ==
 
 > _Recommended security update for all users. Tested up to WordPress 7.1._
 
