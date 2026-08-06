@@ -208,7 +208,9 @@ class wpematico_campaign_preview {
 		$campaign = WPeMatico::get_campaign($campaign_id);
 
 		if (defined('WP_DEBUG') and WP_DEBUG){
-			set_error_handler('wpematico_joberrorhandler',E_ALL | E_STRICT);
+			// E_ALL already includes E_STRICT since PHP 5.4, and PHP 8.4 deprecated the
+			// constant, so referencing it here only produced a deprecation notice. (2.8.24)
+			set_error_handler('wpematico_joberrorhandler',E_ALL);
 		}else{
 			set_error_handler('wpematico_joberrorhandler',E_ALL & ~E_NOTICE);
 		}

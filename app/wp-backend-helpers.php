@@ -267,12 +267,22 @@ class WPeMatico_backend_helpers {
 					/* translators: %s :integer. */
 						echo ' <span style="color:red;">' . sprintf(esc_html__('Processed Posts: %s', 'wpematico'), '0') . '</span>, ';
 
-					if ($campaign_data['lastruntime'] < 10)
+					// Cast before comparing: lastruntime used to be able to hold markup instead
+					// of a number, which made this comparison always fall in the red branch and
+					// printed the raw markup as text. It is numeric-only since 2.8.24.
+					$lastruntime = (int) $campaign_data['lastruntime'];
+					if ($lastruntime < 10)
 					/* translators: %s :seconds (integer). */
-						echo ' <span style="color:green;">' . sprintf(esc_html__('Fetch done in %s sec.', 'wpematico'), esc_html($campaign_data['lastruntime'])) . '</span>';
+						echo ' <span style="color:green;">' . sprintf(esc_html__('Fetch done in %s sec.', 'wpematico'), esc_html($lastruntime)) . '</span>';
 					else
 					/* translators: %s :seconds (integer). */
-						echo ' <span style="color:red;">' . sprintf(esc_html__('Fetch done in %s sec.', 'wpematico'), esc_html($campaign_data['lastruntime'])) . '</span>';
+						echo ' <span style="color:red;">' . sprintf(esc_html__('Fetch done in %s sec.', 'wpematico'), esc_html($lastruntime)) . '</span>';
+
+					$last_timeout = WPeMatico::get_campaign_last_timeout($campaign_data['ID']);
+					if (!empty($last_timeout)) {
+						/* translators: %s :seconds (integer). */
+						echo ', <span style="color:red;">' . sprintf(esc_html__('Timed out after %s sec.', 'wpematico'), esc_html($last_timeout['runtime'])) . '</span>';
+					}
 				}
 				echo '</i></a><br />';
 				$count++;

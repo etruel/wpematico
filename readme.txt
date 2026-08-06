@@ -2,7 +2,7 @@
 Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU 
 Tags: RSS, XML, feed to post, rss aggregator, content curation
-Stable tag: 2.8.23
+Stable tag: 2.8.24
 Tested up to: 7.1
 Requires at least: 4.8
 Requires PHP: 7.0
@@ -214,7 +214,22 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 
 > View complete release history at [WPeMatico Releases](https://wpematico.com/releases/)
 
-= 2.8.23 – Aug 3, 2026 ==
+= 2.8.24 – Aug 6, 2026 =
+
+> _Recommended update for all users — performance and stability improvements, especially on installations with a large number of campaigns._
+
+* **Fixed:** Fixes a fatal error that could break a site on installations with a lot of campaigns. Campaign data is no longer read on every page request, which also lowers memory usage and speeds up the whole site, front end included.
+* **Improved:** Campaign logs are now capped at the last 10 runs per campaign when "Activate Debug Logs in Campaigns" is enabled, keeping the database lean.
+* **New:** Campaigns now report when a run was interrupted by the server — "Timed out after N sec." in the campaigns list and in the campaign control panel — so an incomplete run is easy to spot at a glance.
+* **Improved:** The "Clear campaign" action is now available in the campaigns list hover menu while a campaign is running, next to the existing button in the Current State column.
+* **Improved:** "Clear campaign" now reports the real duration of the interrupted run in the Last run column.
+* **Improved:** Polished the Last run column and the dashboard widget display after an interrupted run.
+* **Fixed:** Multipage feeds (Professional's "Check to use as a multipage feed") no longer repeat the same post several times when the source website ignores the pagination parameter. Repeated items are detected and discarded, so the campaign imports one post per real item and its max items quota is spent on new content only.
+* **Improved:** Multipage feeds now stop requesting further pages as soon as a page brings nothing new, and report it in the campaign log — fewer requests to the source and a clear hint when a site does not really paginate.
+* **Improved:** Removed the "Fetching multiple feeds with single SimplePie instance is deprecated" notice from the campaign log on multipage feeds, and made the feature ready for future WordPress versions where that old mode will be gone.
+* **Fixed:** PHP 8.4 compatibility — the plugin no longer fills the server error log with "Constant E_STRICT is deprecated" notices when opening the System Status page, exporting the system report, or while a campaign or a feed preview is running.
+
+= 2.8.23 – Aug 3, 2026 =
 
 > _Recommended security update for all users. Tested up to WordPress 7.1._
 

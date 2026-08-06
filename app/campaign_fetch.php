@@ -1126,6 +1126,17 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
                     update_post_meta($this->campaign_id, 'last_campaign_log', $campaign_log_message);
         } else {
             add_post_meta($this->campaign_id, 'last_campaign_log', $campaign_log_message, false);
+            // Keep only the last N runs. This meta used to grow one row per run with no bound,
+            // and every row holds a full HTML log, so on a busy site it inflated postmeta enough
+            // to exhaust the memory limit on any query priming the campaign meta cache. (2.8.24)
+            $max_campaign_logs = (int) apply_filters('wpematico_max_campaign_logs', 10, $this->campaign_id);
+            if ($max_campaign_logs > 0) {
+                $campaign_logs = get_post_meta($this->campaign_id, 'last_campaign_log', false);
+                while (is_array($campaign_logs) && sizeof($campaign_logs) > $max_campaign_logs) {
+                    $old_log = array_shift($campaign_logs);  // oldest first (meta_id ASC)
+                    delete_post_meta($this->campaign_id, 'last_campaign_log', $old_log);
+                }
+            }
         }
 
 		/* translators: %s Decimal. Seconds */

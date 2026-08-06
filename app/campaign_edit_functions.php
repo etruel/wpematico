@@ -102,6 +102,8 @@ class WPeMatico_Campaign_edit_functions {
 		$lastpostscount = get_post_meta($post->ID, 'lastpostscount', true);
 		
 		$starttime = WPeMatico::get_campaign_running_since($post->ID);  // run lock drives running state (2.8.22)
+		// Reading the lock above also clears it when stale and records the timeout. (2.8.24)
+		$last_timeout = WPeMatico::get_campaign_last_timeout($post->ID);
 			//print_r($campaign_data);
 			$activated = (bool)$campaign_data['activated'];
 			$atitle = ( $activated ) ? __('Stop and deactivate this campaign', 'wpematico') : __('Start/Activate Campaign Scheduler', 'wpematico');
@@ -150,7 +152,20 @@ class WPeMatico_Campaign_edit_functions {
 				</tr>
 				<tr>
 					<td><?php _e('Taken time:', 'wpematico'); ?></td>
-					<td><span id="lastruntime"><?php echo $lastruntime; ?></span> <?php _e('sec.', 'wpematico' ); ?></td>
+					<td><span id="lastruntime"><?php echo esc_html($lastruntime); ?></span> <?php _e('sec.', 'wpematico' ); ?></td>
+				</tr>
+				<?php endif; ?>
+				<?php if ($starttime <= 0 && !empty($last_timeout)) : ?>
+				<tr>
+					<td><?php _e('Run status:', 'wpematico'); ?></td>
+					<td><span class="wpe_run_timeout" style="color:red;"><?php
+						/* translators: %1$s Seconds the dead run had been holding the lock. %2$s Date and time it was detected. */
+						echo esc_html(sprintf(
+							__('Timed out after %1$s sec. on %2$s', 'wpematico'),
+							$last_timeout['runtime'],
+							wp_date(get_option('date_format') . ' ' . get_option('time_format'), $last_timeout['time'])
+						));
+					?></span></td>
 				</tr>
 				<?php endif; ?>
 				<tr>

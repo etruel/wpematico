@@ -235,7 +235,7 @@ function wpematico_tools_section_danger_zone() {
 
 		<label><input id="wpe_debug_logs_campaign" class="checkbox" value="1" type="checkbox" <?php checked($danger['wpe_debug_logs_campaign'], true); ?> name="wpe_debug_logs_campaign" /> <?php _e('Activate Debug Logs in Campaigns', 'wpematico'); ?></label><br/>
 		<p class="description">
-			<?php _e('This action will save all the logs from each campaign instead only the last one, to allow follow all actions and behaviors when campaign runs.', 'wpematico'); ?>
+			<?php _e('This action will save the logs of the last 10 runs of each campaign instead of only the last one, to allow follow all actions and behaviors when campaign runs.', 'wpematico'); ?>
 			<br/><label id="deledebug" style="margin-left: 20px; display: none;"><input id="wpe_delete_debug_logs_campaign" class="checkbox" value="1" checked type="checkbox" name="wpe_delete_debug_logs_campaign" /> <?php _e('Delete all Debug Logs in Campaigns', 'wpematico'); ?></label>
 		</p>
 
@@ -283,7 +283,11 @@ function wpematico_FriendlyErrorType($type) {
 			return 'E_USER_WARNING';
 		case E_USER_NOTICE: // 1024 //
 			return 'E_USER_NOTICE';
-		case E_STRICT: // 2048 //
+		// Literal 2048 instead of E_STRICT: PHP 8.4 deprecated the constant itself, and a
+		// case label is evaluated on every call that does not match an earlier one, so just
+		// naming it here emitted "Constant E_STRICT is deprecated". Nothing raises 2048 since
+		// PHP 8.0; the mapping is kept for legacy values. (2.8.24)
+		case 2048: // E_STRICT //
 			return 'E_STRICT';
 		case E_RECOVERABLE_ERROR: // 4096 //
 			return 'E_RECOVERABLE_ERROR';

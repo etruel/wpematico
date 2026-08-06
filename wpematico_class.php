@@ -11,7 +11,7 @@ if (!class_exists('WPeMatico')) {
 	class WPeMatico extends WPeMatico_functions {
 
 		const TEXTDOMAIN	 = 'wpematico';
-		const PROREQUIRED	 = '3.6';
+		const PROREQUIRED	 = '3.6.1';
 		const OPTION_KEY	 = 'WPeMatico_Options';
 
 		public static $name		 = '';
@@ -81,25 +81,13 @@ if (!class_exists('WPeMatico')) {
 			if(isset($cfg['enablemimetypes']) && $cfg['enablemimetypes']){
 				self::wpematico_add_custom_mimetypes();
 			}
-			//Check timeout of running campaigns
-			if ($this->options['campaign_timeout'] > 0) {
-				$args		 = array('post_type' => 'wpematico', 'orderby' => 'ID', 'order' => 'ASC', 'numberposts' => -1);
-				$campaigns	 = get_posts($args);
-				foreach ($campaigns as $post) {
-					$campaign	 = $this->get_campaign($post->ID);
-					$starttime	 = @$campaign['starttime'];
-					if ($starttime > 0) {
-						$runtime = current_time('timestamp') - $starttime;
-						if (($this->options['campaign_timeout'] <= $runtime)) {
-							$campaign['lastrun']		 = $starttime;
-							$campaign['lastruntime']	 = ' <span style="color:red;">Timeout: ' . $this->options['campaign_timeout'] . '</span>';
-							$campaign['starttime']		 = '';
-							$campaign['lastpostscount']	 = 0;
-							$this->update_campaign($post->ID, $campaign);  //Save Campaign new data
-						}
-					}
-				}
-			}
+			// Note: the legacy "check timeout of running campaigns" sweep that used to live here
+			// was removed in 2.8.24. It ran a get_posts('numberposts' => -1) on EVERY request
+			// (init fires on frontend, admin, AJAX, REST and cron), which primed the whole
+			// postmeta cache of every campaign and could exhaust the memory limit on sites with
+			// many campaigns. It was also dead code: 'starttime' is never persisted with a value
+			// greater than zero, so the loop never did any work. Stale run locks are now cleared
+			// on demand, per campaign, by WPeMatico::get_campaign_running_since(). (2.8.22)
 		}
 		
 		/**
