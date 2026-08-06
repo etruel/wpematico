@@ -558,14 +558,22 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			}
 			$campaign_data = WPeMatico::get_campaign($id);
 
+			// Take the real start of the run from the lock BEFORE releasing it. The legacy
+			// in-array 'starttime' is always 0, which used to leave lastrun empty and
+			// lastruntime holding a full timestamp ("Runtime: 1785000000 sec."). (2.8.24)
+			// All timestamps here are real UTC (time()), rendered later with wp_date().
+			$starttime					  = WPeMatico::get_campaign_running_since($id);
 			$campaign_data['cronnextrun'] = WPeMatico::time_cron_next($campaign_data['cron']); //set next run
 			$campaign_data['stoptime']	  = time();
-			$campaign_data['lastrun']	  = $campaign_data['starttime'];
-			$campaign_data['lastruntime'] = $campaign_data['stoptime'] - $campaign_data['starttime'];
+			if ($starttime > 0) {
+				$campaign_data['lastrun']	  = $starttime;
+				$campaign_data['lastruntime'] = $campaign_data['stoptime'] - $starttime;
+			}
 			$campaign_data['starttime']	  = '';
 
 			WPeMatico::update_campaign($id, $campaign_data);
 			WPeMatico::release_campaign($id);  // release the run lock so the campaign can run again (2.8.22)
+			WPeMatico::clear_campaign_last_timeout($id);  // manually cleared: drop any stale timeout marker (2.8.24)
 			WPeMatico::add_wp_notice(array('text' => __('Campaign cleared', 'wpematico') . ' <b>' . get_the_title($id) . '</b>', 'below-h2' => false));
 
 			// Redirect to the post list screen
@@ -678,7 +686,10 @@ if (!class_exists('WPeMatico_Campaigns')) :
 						unset($actions['edit']);
 						unset($actions['inline hide-if-no-js']);
 					}else{
-						$starttime	   = @$campaign_data['starttime'];
+						// Running state is driven by the run lock, not by the legacy in-array
+						// 'starttime' (never persisted with a value > 0, so this branch was dead
+						// and "Clear campaign" never showed up in the row actions). (2.8.24)
+						$starttime	   = WPeMatico::get_campaign_running_since($post->ID);
 						if (empty($starttime)) {
 							/* 					$acnow = (bool)$campaign_data['activated'];
 							  $atitle = ( $acnow ) ? esc_attr(__("Deactivate this campaign", 'wpematico')) : esc_attr(__("Activate schedule", 'wpematico'));
@@ -901,8 +912,10 @@ if (!class_exists('WPeMatico_Campaigns')) :
 						} else {
 							echo esc_html__('None', 'wpematico');
 						}
-						$starttime = WPeMatico::get_campaign_running_since($post_id);
-						$activated = (bool) $campaign_data['activated'];
+						// Reading the lock first also clears it when stale and records the timeout. (2.8.24)
+						$starttime	  = WPeMatico::get_campaign_running_since($post_id);
+						$activated	  = (bool) $campaign_data['activated'];
+						$last_timeout = WPeMatico::get_campaign_last_timeout($post_id);
 						if ($starttime > 0) {  // Running play verde & grab rojo & stop gris
 							$runtime = time() - $starttime;
 							$ltitle	 = __('Running since:', 'wpematico') . ' ' . $runtime . ' ' . __('sec.', 'wpematico');
@@ -914,7 +927,16 @@ if (!class_exists('WPeMatico_Campaigns')) :
 							$ltitle = '';
 						}
 						?><div class=''><?php echo wp_kses_post($ltitle); ?></div><?php
-						
+						if ($starttime <= 0 && !empty($last_timeout)) {
+							/* translators: %1$s Seconds the dead run had been holding the lock. %2$s Date and time it was detected. */
+							$timeout_text = sprintf(
+								__('Timed out after %1$s sec. on %2$s', 'wpematico'),
+								$last_timeout['runtime'],
+								wp_date(get_option('date_format') . ' ' . get_option('time_format'), $last_timeout['time'])
+							);
+							echo '<div class="wpe_run_timeout" style="color:red;">' . esc_html($timeout_text) . '</div>';
+						}
+
 						break;
 						
 				} // switch $column

@@ -1132,6 +1132,17 @@ if (!class_exists('WPeMatico_functions')) {
 		const FETCH_LOCK_META = 'wpe_fetch_lock';
 
 		/**
+		 * Meta key holding the last detected run timeout for a campaign.
+		 * Stores array('time' => UTC timestamp when the stale lock was cleared,
+		 * 'runtime' => seconds the dead run had been holding the lock).
+		 * Written by get_campaign_running_since() when it auto-clears an orphaned lock,
+		 * i.e. when a run died (fatal, OOM, kill) before reaching fetch_end().
+		 * Cleared on the next successful claim so it only ever reflects the last run.
+		 * @since 2.8.24
+		 */
+		const LAST_TIMEOUT_META = 'wpe_last_timeout';
+
+		/**
 		 * Time to live (seconds) for a campaign run lock.
 		 * Reuses the existing "Timeout running campaign" setting (campaign_timeout):
 		 * after this many seconds an orphaned lock (run died before releasing) is
@@ -1172,12 +1183,49 @@ if (!class_exists('WPeMatico_functions')) {
 				}
 			}
 			$ttl = self::get_fetch_lock_ttl();
+			// Elapsed time: time() on both sides (both are real UTC timestamps).
 			if ($ttl > 0 && (time() - $lock) >= $ttl) {
-				// Stale/orphaned lock: clear it so the campaign can run again.
+				// Stale/orphaned lock: the run died before reaching fetch_end() (fatal, OOM,
+				// kill, server max_execution_time). Clear it so the campaign can run again and
+				// leave a trace, otherwise the recovery is completely silent and the campaign
+				// keeps showing the previous successful run as if nothing had happened. (2.8.24)
 				delete_post_meta($campaign_id, self::FETCH_LOCK_META);
+				update_post_meta($campaign_id, self::LAST_TIMEOUT_META, array(
+					'time'	  => time(),		// stored as real UTC timestamp; display with wp_date()
+					'runtime' => time() - $lock,
+				));
 				return 0;
 			}
 			return $lock;
+		}
+
+		/**
+		 * Returns the last detected run timeout for a campaign, or an empty array if the
+		 * last run did not time out.
+		 *
+		 * @param  int $campaign_id
+		 * @return array  array('time' => int UTC timestamp, 'runtime' => int seconds) or array().
+		 * @since 2.8.24
+		 */
+		public static function get_campaign_last_timeout($campaign_id) {
+			$timeout = get_post_meta($campaign_id, self::LAST_TIMEOUT_META, true);
+			if (empty($timeout) || !is_array($timeout) || empty($timeout['time'])) {
+				return array();
+			}
+			return array(
+				'time'	  => (int) $timeout['time'],
+				'runtime' => (isset($timeout['runtime'])) ? (int) $timeout['runtime'] : 0,
+			);
+		}
+
+		/**
+		 * Clears the last run timeout marker of a campaign.
+		 *
+		 * @param  int $campaign_id
+		 * @since 2.8.24
+		 */
+		public static function clear_campaign_last_timeout($campaign_id) {
+			delete_post_meta($campaign_id, self::LAST_TIMEOUT_META);
 		}
 
 		/**
@@ -1211,7 +1259,10 @@ if (!class_exists('WPeMatico_functions')) {
 			}
 			$claimed = false;
 			if (!self::is_campaign_running($campaign_id)) {
-				update_post_meta($campaign_id, self::FETCH_LOCK_META, time());
+				update_post_meta($campaign_id, self::FETCH_LOCK_META, time()); // real UTC timestamp
+				// A new run starts: drop the timeout marker of the previous one so the UI only
+				// ever reports the outcome of the last run. (2.8.24)
+				self::clear_campaign_last_timeout($campaign_id);
 				$claimed = true;
 			}
 			if ($db_lock === '1') {
@@ -1366,6 +1417,20 @@ if (!class_exists('WPeMatico_functions')) {
 				else if (is_file(ABSPATH . 'wp-admin/includes/class-simplepie.php'))
 					include_once( ABSPATH . 'wp-admin/includes/class-simplepie.php' );
 			}
+
+			/**
+			 * Multipage / multifeed: $url may be an array of URLs (the PRO "use as a multipage
+			 * feed" option returns ?paged=1..N through the wpematico_simplepie_url filter).
+			 * Handing that array to SimplePie::set_feed_url() triggers an E_USER_DEPRECATED
+			 * since SimplePie 1.9.0 and, worse, a source that ignores the pagination parameter
+			 * returns the same items on every page, which used to be published several times.
+			 * Fetch one instance per page and merge/deduplicate here instead. (2.8.24)
+			 */
+			if (is_array($url)) {
+				$base_args = (is_array($args) && isset($args['url'])) ? $args : array();
+				return self::fetch_multifeed($url, $base_args, $stupidly_fast, $max, $order_by_date, $force_feed);
+			}
+
 			$feed = new SimplePie();
 			$feed->timeout = apply_filters('wpe_simplepie_timeout', 130);
 			$feed->enable_order_by_date($order_by_date);
@@ -1399,6 +1464,122 @@ if (!class_exists('WPeMatico_functions')) {
 			$feed->handle_content_type();
 
 			return $feed;
+		}
+
+		/**
+		 * Fetches a list of feed URLs as a single logical feed.
+		 *
+		 * Used for multipage feeds (?paged=1..N). One SimplePie instance is created per URL —
+		 * which is what SimplePie 1.9+ asks for, so no deprecation notice is emitted — and the
+		 * items are merged with SimplePie::merge_items() and then deduplicated by permalink.
+		 *
+		 * The deduplication is the part that matters: many sources ignore the pagination
+		 * parameter and answer every page with the same content, so without it the first item
+		 * gets published as many times as pages were requested, consuming the campaign quota.
+		 * Pagination is also stopped as soon as a page brings nothing new, so a non-paginating
+		 * source costs one extra request instead of N.
+		 *
+		 * @param   array    $urls           List of feed URLs to fetch, in order.
+		 * @param   array    $base_args      Original $args of fetchFeed(), reused per URL.
+		 * @param   boolean  $stupidly_fast
+		 * @param   integer  $max            Item limit per page.
+		 * @param   boolean  $order_by_date
+		 * @param   boolean  $force_feed
+		 * @return  SimplePie  The first page object, carrying the merged deduplicated items.
+		 * @since 2.8.24
+		 */
+		protected static function fetch_multifeed($urls, $base_args = array(), $stupidly_fast = false, $max = 0, $order_by_date = false, $force_feed = false) {
+			$urls = array_values(array_unique(array_filter((array) $urls)));
+			if (empty($urls)) {
+				return new SimplePie();  // nothing to fetch: empty feed, no items, no fatal.
+			}
+
+			$objects = array();
+			$seen	 = array();
+			foreach ($urls as $page => $single_url) {
+				$single_args		= $base_args;
+				$single_args['url'] = $single_url;
+				$object				= static::fetchFeed($single_args, $stupidly_fast, $max, $order_by_date, $force_feed);
+				// The wpematico_fetchfeed filter could return anything; only keep real feeds.
+				if (!($object instanceof SimplePie)) {
+					continue;
+				}
+				$objects[] = $object;
+
+				// Count how many identifiers this page contributes that we had not seen yet.
+				$new_items = 0;
+				foreach ($object->get_items(0, $max) as $item) {
+					$key = static::get_feed_item_key($item);
+					if ($key === '' || !isset($seen[$key])) {
+						if ($key !== '') {
+							$seen[$key] = true;
+						}
+						$new_items++;
+					}
+				}
+				if ($page > 0 && $new_items === 0) {
+					/* translators: %1$d Page number. %2$s Feed URL. */
+					trigger_error(sprintf(__('Multipage feed: page %1$d of %2$s returned no new items, stopping pagination. The source may not support the pagination parameter.', 'wpematico'), $page + 1, $single_url), E_USER_NOTICE);
+					break;
+				}
+			}
+
+			if (empty($objects)) {
+				return new SimplePie();
+			}
+
+			// Let SimplePie do the merge and the date sorting, exactly as its multifeed mode
+			// would, but over instances we created one per URL (no deprecated code path).
+			$merged = (count($objects) > 1) ? SimplePie::merge_items($objects, 0, 0, $max) : $objects[0]->get_items(0, $max);
+
+			$items	 = array();
+			$seen	 = array();
+			$dropped = 0;
+			foreach ($merged as $item) {
+				$key = static::get_feed_item_key($item);
+				if ($key !== '') {
+					if (isset($seen[$key])) {
+						$dropped++;
+						continue;
+					}
+					$seen[$key] = true;
+				}
+				$items[] = $item;
+			}
+			if ($dropped > 0) {
+				/* translators: %d Number of repeated items discarded. */
+				trigger_error(sprintf(__('Multipage feed: discarded %d repeated items found across pages.', 'wpematico'), $dropped), E_USER_NOTICE);
+			}
+
+			// Carry the merged list on the first page object so the caller keeps a normal
+			// SimplePie to work with (get_title(), error(), get_items(), ...). Presetting
+			// data['items'] makes get_items() return this list instead of re-parsing or
+			// re-merging; ordered_items must go or a stale sorted copy would win.
+			$feed = $objects[0];
+			$feed->data['items'] = $items;
+			unset($feed->data['ordered_items']);
+
+			return $feed;
+		}
+
+		/**
+		 * Identifier used to tell two feed items apart: the permalink, or the item id when the
+		 * item has no link. Returns an empty string when the item cannot be identified, in
+		 * which case the caller must keep it rather than risk discarding a legitimate item.
+		 *
+		 * @param   SimplePie_Item  $item
+		 * @return  string
+		 * @since 2.8.24
+		 */
+		protected static function get_feed_item_key($item) {
+			if (!is_object($item) || !method_exists($item, 'get_permalink')) {
+				return '';
+			}
+			$key = $item->get_permalink();
+			if (empty($key) && method_exists($item, 'get_id')) {
+				$key = $item->get_id();
+			}
+			return (empty($key)) ? '' : md5($key);
 		}
 
 		/**
@@ -2142,7 +2323,10 @@ function wpematico_joberrorhandler($errno, $errstr, $errfile, $errline) {
 		case E_USER_DEPRECATED:
 			$sMessage = $timestamp . "<span>" . __('[DEPRECATED]', 'wpematico') . " " . $errstr . "</span>";
 			break;
-		case E_STRICT:
+		// Literal 2048 instead of E_STRICT: PHP 8.4 deprecated the constant itself, and this
+		// case is evaluated on every trapped error, so naming it here spammed the server log
+		// with "Constant E_STRICT is deprecated" from inside the error handler. (2.8.24)
+		case 2048: // E_STRICT //
 			$sMessage = $timestamp . "<span>" . __('[STRICT NOTICE]', 'wpematico') . " " . $errstr . "</span>";
 			break;
 		case E_RECOVERABLE_ERROR:
