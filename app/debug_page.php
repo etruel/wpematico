@@ -116,7 +116,7 @@ function wpematico_tools_section_feed_viewer() {
 	//https://www.ufirstfitness.com/category/general/rss
 	global $current_screen;
 	if (!isset($current_screen))
-		wp_die("Cheatin' uh?", "Closed today.");
+		wp_die(esc_html__('Invalid request.', 'wpematico'), esc_html__('Invalid request', 'wpematico'), array('response' => 400));
 	?>
 	<div id="poststuff">
 		<div id="post-body" class="metabox-holder columns-<?php echo 1 == get_current_screen()->get_columns() ? '1' : '2'; ?>">
@@ -218,7 +218,7 @@ function wpematico_tools_section_danger_zone() {
 	global $current_screen;
 
 	if (!isset($current_screen))
-		wp_die("Cheatin' uh?", "Closed today.");
+		wp_die(esc_html__('Invalid request.', 'wpematico'), esc_html__('Invalid request', 'wpematico'), array('response' => 400));
 	$danger = WPeMatico::get_danger_options();
 	?>
 	<form action="<?php echo admin_url('admin-post.php'); ?>" method="post" dir="ltr">
@@ -308,7 +308,7 @@ function wpematico_FriendlyErrorType($type) {
 function wpematico_tools_section_debug_file() {
 	global $current_screen;
 	if (!isset($current_screen))
-		wp_die("Cheatin' uh?", "Closed today.");
+		wp_die(esc_html__('Invalid request.', 'wpematico'), esc_html__('Invalid request', 'wpematico'), array('response' => 400));
 	?>
 	<div id="poststuff">
 		<div id="post-body" class="metabox-holder columns-<?php echo 1 == get_current_screen()->get_columns() ? '1' : '2'; ?>">
@@ -1534,6 +1534,11 @@ function wpematico_save_danger_data() {
 		return;
 	}
 
+	// These options are administrator territory.
+	if (!current_user_can('manage_options')) {
+		wp_die(esc_html__('You are not allowed to do this.', 'wpematico'), esc_html__('Permission denied', 'wpematico'), array('response' => 403));
+	}
+
 	check_admin_referer('wpematico-danger');
 
 	$danger = [
@@ -1911,6 +1916,10 @@ function wpematico_debug_info_get() {
  * @return      void
  */
 function wpematico_debug_info_download() {
+	// System information is administrator territory.
+	if (!current_user_can('manage_options')) {
+		wp_die(esc_html__('You are not allowed to do this.', 'wpematico'), esc_html__('Permission denied', 'wpematico'), array('response' => 403));
+	}
 	check_admin_referer('wpematico-tools');
 	nocache_headers();
 

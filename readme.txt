@@ -2,7 +2,7 @@
 Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU 
 Tags: RSS, XML, feed to post, rss aggregator, content curation
-Stable tag: 2.8.24
+Stable tag: 2.8.25
 Tested up to: 7.1
 Requires at least: 4.8
 Requires PHP: 7.0
@@ -213,6 +213,15 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 == Changelog ==
 
 > View complete release history at [WPeMatico Releases](https://wpematico.com/releases/)
+
+= 2.8.25 – Aug 15, 2026 =
+
+> _Recommended security update for all users._
+
+* **Security:** Hardened permission checks on the plugin settings, tools and system status screens. Importing and exporting settings, saving the plugin settings, the Danger Zone options and the system information download now verify the current user's capability, in addition to the existing security nonce validation.
+* **Security:** WPeMatico internal actions now require the capability that matches the action being run. Add-ons can declare the capability their own actions need through the new `wpematico_action_capability` filter.
+* **Security:** Importing a settings file now only restores options belonging to WPeMatico and its active add-ons, and rejects files that are not a valid settings export. The list can be extended with the new `wpematico_importable_option_keys` filter.
+* **Improved:** Clearer, translatable messages when an action is not permitted.
 
 = 2.8.24 – Aug 6, 2026 =
 

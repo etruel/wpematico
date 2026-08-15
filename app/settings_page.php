@@ -21,10 +21,13 @@ if(!class_exists('WPeMatico_Settings')) :
 			add_action('admin_post_save_wpematico_settings', array(__CLASS__, 'settings_save'));
 			add_action('admin_init', array(__CLASS__, 'settings_help'));
 			add_action('wp_ajax_process_button_click', array(__CLASS__,'process_button_click'));
-			add_action('wp_ajax_nopriv_process_button_click', array(__CLASS__,'process_button_click'));
 		}
 
 		public static function process_button_click() {
+			// This setting belongs to the plugin settings screen.
+			if (!current_user_can('manage_options')) {
+				wp_send_json_error(__('Permission check failed', 'wpematico'));
+			}
 			// Verify the nonce
 			$nonce = isset($_POST['nonce']) ? sanitize_text_field(wp_unslash($_POST['nonce'])) : '';
 			if (!wp_verify_nonce($nonce, 'wpematico-settings-page-nonce')) {
@@ -110,7 +113,7 @@ if(!class_exists('WPeMatico_Settings')) :
 		public static function wpematicopro_licenses() {
 			global $current_screen;
 			if(!isset($current_screen))
-				wp_die("Cheatin' uh?", "Closed today.");
+				wp_die(esc_html__('Invalid request.', 'wpematico'), esc_html__('Invalid request', 'wpematico'), array('response' => 400));
 			?>
 			<div id="licenses">
 				<div class="postbox ">
@@ -134,9 +137,13 @@ if(!class_exists('WPeMatico_Settings')) :
 		public static function settings_form() {
 			global $cfg, $current_screen, $helptip;
 			$fifu_activated = defined( 'FIFU_PLUGIN_DIR' );
-			
+
+			// The settings form is rendered for administrators only.
+			if(!current_user_can('manage_options'))
+				return;
+
 			if(!isset($current_screen))
-				wp_die("Cheatin' uh?", "Closed today.");
+				wp_die(esc_html__('Invalid request.', 'wpematico'), esc_html__('Invalid request', 'wpematico'), array('response' => 400));
 			$cfg = get_option(WPeMatico :: OPTION_KEY);
 			$cfg = apply_filters('wpematico_check_options', $cfg);
 			
@@ -825,8 +832,9 @@ if(!class_exists('WPeMatico_Settings')) :
 
 		public static function settings_save() {
 			if('POST' === $_SERVER['REQUEST_METHOD']) {
-				if(!is_user_logged_in())
-					wp_die("<h3>Cheatin' uh?</h3>", "Closed today.");
+				// Site settings are administrator territory.
+				if(!current_user_can('manage_options'))
+					wp_die(esc_html__('You are not allowed to do this.', 'wpematico'), esc_html__('Permission denied', 'wpematico'), array('response' => 403));
 				check_admin_referer('wpematico-settings');
 				$errlev = error_reporting();
 				error_reporting(E_ALL & ~E_NOTICE);  // deactive notices by _POST vars

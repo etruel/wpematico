@@ -2036,17 +2036,33 @@ if (!class_exists('WPeMatico_functions')) {
 
 			return $danger;
 		}
+		/**
+		 * Returns the WPeMatico settings handled by this site, keyed by option name.
+		 * Shared by the settings exporter and importer.
+		 *
+		 * @since 2.8.25
+		 * @return array
+		 */
+		public static function get_exportable_settings() {
+			$export_settings							= array();
+			$cfg										= get_option(WPeMatico :: OPTION_KEY);
+			$cfg										= apply_filters('wpematico_check_options', $cfg);
+			$export_settings[WPeMatico :: OPTION_KEY]	= $cfg;
+
+			return apply_filters('wpematico_export_options', $export_settings);
+		}
+
 		public static function wpematico_export_settings($status = '') {
+			// Site settings are administrator territory.
+			if (!current_user_can('manage_options')) {
+				wp_die(esc_html__('You are not allowed to do this.', 'wpematico'), esc_html__('Permission denied', 'wpematico'), array('response' => 403));
+			}
 			$nonce = (isset($_REQUEST['_wpnonce']) && !empty($_REQUEST['_wpnonce']) ) ? sanitize_text_field($_REQUEST['_wpnonce']) : '';
 			if (!wp_verify_nonce($nonce, 'wpematico-tools'))
 				wp_die('Are you sure?');
-			
-			$export_settings = array();
-			$cfg = get_option(WPeMatico :: OPTION_KEY);
-			$cfg = apply_filters('wpematico_check_options', $cfg);
-			$export_settings[WPeMatico :: OPTION_KEY] = $cfg;
-			$export_settings = apply_filters('wpematico_export_options', $export_settings);
-			
+
+			$export_settings = self::get_exportable_settings();
+
 			$settings_data_json = json_encode($export_settings);
 			$settings_data_json = base64_encode($settings_data_json);
 			
@@ -2062,28 +2078,63 @@ if (!class_exists('WPeMatico_functions')) {
 		}
 
 		public static function wpematico_import_settings() {
+			// Site settings are administrator territory.
+			if (!current_user_can('manage_options')) {
+				wp_die(esc_html__('You are not allowed to do this.', 'wpematico'), esc_html__('Permission denied', 'wpematico'), array('response' => 403));
+			}
 			$nonce = (isset($_REQUEST['_wpnonce']) && !empty($_REQUEST['_wpnonce']) ) ? sanitize_text_field($_REQUEST['_wpnonce']) : '';
 			if (!wp_verify_nonce($nonce, 'wpematico-tools'))
 				wp_die('Are you sure?');
 
-			if (in_array(str_replace('.', '', strrchr($_FILES['txtsettings']['name'], '.')), explode(',', 'txt')) && ($_FILES['txtsettings']['type'] == 'text/plain') && !$_FILES['txtsettings']['error']) {
-				$settings = file_get_contents($_FILES['txtsettings']['tmp_name']);
-				$settings = base64_decode($settings);
-				$settings = json_decode($settings, true);
+			$redirect	 = admin_url('edit.php?post_type=wpematico&page=wpematico_tools&tab=tools');
+			$upload		 = isset($_FILES['txtsettings']) ? $_FILES['txtsettings'] : array();
+			$filetype	 = ( !empty($upload['name']) ) ? wp_check_filetype($upload['name'], array('txt' => 'text/plain')) : array('ext' => false);
 
-				$settings[Wpematico::OPTION_KEY] = apply_filters('wpematico_check_options', $settings[Wpematico::OPTION_KEY]);
-				
-				foreach($settings as $settingKey => $value){
-					update_option($settingKey, $value);
-				}
-
-				WPeMatico::add_wp_notice(array('text' => __('Settings Imported.', 'wpematico'), 'below-h2' => false));
-				wp_redirect(admin_url('edit.php?post_type=wpematico&page=wpematico_tools&tab=tools'));
-			} else {
+			if (empty($upload['tmp_name']) || !empty($upload['error']) || 'txt' !== $filetype['ext'] || !is_uploaded_file($upload['tmp_name'])) {
 				$message = __("Can't upload! Just .txt files allowed!", 'wpematico');
 				WPeMatico::add_wp_notice(array('text' => $message, 'below-h2' => false, 'error' => true));
-				wp_redirect(admin_url('edit.php?post_type=wpematico&page=wpematico_tools&tab=tools'));
+				wp_redirect($redirect);
+				return;
 			}
+
+			$settings = file_get_contents($upload['tmp_name']);
+			$settings = base64_decode($settings, true);
+			$settings = ( false === $settings ) ? null : json_decode($settings, true);
+
+			if (!is_array($settings) || empty($settings)) {
+				$message = __("Can't import! The file is not a valid WPeMatico settings file.", 'wpematico');
+				WPeMatico::add_wp_notice(array('text' => $message, 'below-h2' => false, 'error' => true));
+				wp_redirect($redirect);
+				return;
+			}
+
+			if (isset($settings[WPeMatico::OPTION_KEY])) {
+				$settings[WPeMatico::OPTION_KEY] = apply_filters('wpematico_check_options', $settings[WPeMatico::OPTION_KEY]);
+			}
+
+			// Import only the option keys this site itself exports, so a settings file can
+			// never write anything outside of WPeMatico and its active addons.
+			$importable	 = array_keys(self::get_exportable_settings());
+			$importable	 = apply_filters('wpematico_importable_option_keys', $importable, $settings);
+			$imported	 = 0;
+
+			foreach ($settings as $settingKey => $value) {
+				if (!in_array($settingKey, $importable, true)) {
+					continue;
+				}
+				update_option($settingKey, $value);
+				$imported++;
+			}
+
+			if (!$imported) {
+				$message = __("Can't import! The file has no settings belonging to WPeMatico or its active addons.", 'wpematico');
+				WPeMatico::add_wp_notice(array('text' => $message, 'below-h2' => false, 'error' => true));
+				wp_redirect($redirect);
+				return;
+			}
+
+			WPeMatico::add_wp_notice(array('text' => __('Settings Imported.', 'wpematico'), 'below-h2' => false));
+			wp_redirect($redirect);
 		}
 	}
 
@@ -2095,18 +2146,52 @@ add_action('admin_init', 'wpematico_process_actions');
 
 function wpematico_process_actions() {
 	if (isset($_POST['wpematico-action'])) {
-		if (!is_user_logged_in())
-			wp_die("Cheatin' uh?", "Closed today.");
-		$action = sanitize_text_field($_POST['wpematico-action']);
-		do_action('wpematico_' . $action, $_POST);
+		wpematico_dispatch_action(sanitize_text_field($_POST['wpematico-action']), $_POST);
 	}
 
 	if (isset($_GET['wpematico-action'])) {
-		if (!is_user_logged_in())
-			wp_die("Cheatin' uh?", "Closed today.");
-		$action = sanitize_text_field($_GET['wpematico-action']);
-		do_action('wpematico_' . $action, $_GET);
+		wpematico_dispatch_action(sanitize_text_field($_GET['wpematico-action']), $_GET);
 	}
+}
+
+/**
+ * Capability required to run a given wpematico-action.
+ * Actions are administrative by default. Addons can declare their own
+ * requirement through the wpematico_action_capability filter.
+ *
+ * @since 2.8.25
+ * @param string $action Action name, without the wpematico_ prefix.
+ * @return string Capability name.
+ */
+function wpematico_get_action_capability($action) {
+	$capabilities = array(
+		// Importing a campaign only needs the rights to create campaigns.
+		'import_campaign' => 'edit_posts',
+	);
+
+	$capability = isset($capabilities[$action]) ? $capabilities[$action] : 'manage_options';
+
+	return apply_filters('wpematico_action_capability', $capability, $action);
+}
+
+/**
+ * Runs a wpematico-action for the current user.
+ *
+ * @since 2.8.25
+ * @param string $action  Action name, without the wpematico_ prefix.
+ * @param array  $request Request data handed over to the action.
+ * @return void
+ */
+function wpematico_dispatch_action($action, $request) {
+	if (empty($action) || !preg_match('/^[A-Za-z0-9_\-]+$/', $action)) {
+		return;
+	}
+
+	if (!is_user_logged_in() || !current_user_can(wpematico_get_action_capability($action))) {
+		wp_die(esc_html__('You are not allowed to do this.', 'wpematico'), esc_html__('Permission denied', 'wpematico'), array('response' => 403));
+	}
+
+	do_action('wpematico_' . $action, $request);
 }
 
 /**

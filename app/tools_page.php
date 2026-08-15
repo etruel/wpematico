@@ -215,6 +215,11 @@ if (!class_exists('WPeMatico_Tools')) :
 		public static function tools_form(){
 			global $cfg, $current_screen, $helptip;
 
+			// Tools are rendered for administrators only.
+			if (!current_user_can('manage_options')) {
+				return;
+			}
+
 			if (isset($_GET['page']) && $_GET['page'] == 'wpematico_tools') :
 				if (!(isset($_GET['section']) && $_GET['section'] == 'feed_viewer')) :
 			?>
