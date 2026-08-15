@@ -567,4 +567,4 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 
 == Upgrade Notice ==
-Scheduling bug fix. Recommended update for all users.
+Recommended security fix. Recommended update for all users.
