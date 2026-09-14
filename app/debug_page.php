@@ -239,6 +239,16 @@ function wpematico_tools_section_danger_zone() {
 			<br/><label id="deledebug" style="margin-left: 20px; display: none;"><input id="wpe_delete_debug_logs_campaign" class="checkbox" value="1" checked type="checkbox" name="wpe_delete_debug_logs_campaign" /> <?php _e('Delete all Debug Logs in Campaigns', 'wpematico'); ?></label>
 		</p>
 
+		<div class="div-danger-separator"></div>
+		<h3><?php _e('Feed Addresses', 'wpematico'); ?></h3>
+
+		<label><input id="wpe_allow_internal_feeds" class="checkbox" value="1" type="checkbox" <?php checked($danger['wpe_allow_internal_feeds'], true); ?> name="wpe_allow_internal_feeds" /> <?php _e('Allow feeds on private and local addresses', 'wpematico'); ?></label><br/>
+		<p class="description">
+			<?php _e('By default campaigns only fetch feeds published on the public internet. Enable this if this site reads feeds from its own network, from an intranet server or from localhost, for example while developing.', 'wpematico'); ?>
+			<br/>
+			<?php _e('Feeds hosted on this same site are always allowed and do not need this option.', 'wpematico'); ?>
+		</p>
+
 		<?php submit_button(__('Save Settings', 'wpematico'), 'primary', false); ?>
 		<div class="div-danger-separator"></div>
 
@@ -1546,6 +1556,7 @@ function wpematico_save_danger_data() {
 		'wpemdelecampaigns'        => !empty($_POST['wpemdelecampaigns']),
 		'wpematico_debug_log_file' => !empty($_POST['wpematico_debug_mode']),
 		'wpe_debug_logs_campaign'  => !empty($_POST['wpe_debug_logs_campaign']),
+		'wpe_allow_internal_feeds' => !empty($_POST['wpe_allow_internal_feeds']),
 	];
 
 	$olddanger = WPeMatico::get_danger_options();

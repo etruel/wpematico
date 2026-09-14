@@ -65,7 +65,9 @@ $helpcampaign = array(
 		),
 		'postsauthor' => array( 
 			'title' => __('Author.', 'wpematico' ),
-			'tip' => __('The posts created by this campaign will be assigned to this author.', 'wpematico' ),
+			'tip' => __('The posts created by this campaign will be assigned to this author.', 'wpematico' ).'<br>'.
+				__('If your user is not allowed to assign posts to other users, the campaign is saved with your own user as the author.', 'wpematico' ),
+			'plustip' => __('The author and the post status are saved as your own user is entitled to set them, because the campaign runs later on its schedule, when nobody is logged in. A user who cannot publish posts saves the campaign with the status Pending review, and a user who cannot assign posts to other users saves it under their own name. The campaign screen reports it right after saving, so the value you see is always the one that will be used. Administrators and editors are not affected.', 'wpematico' ),
 		),
 		'get_excerpt' => array( 
 			'title' => __('Fill Excerpt with item description field.', 'wpematico' ),

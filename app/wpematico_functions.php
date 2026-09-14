@@ -899,6 +899,10 @@ if (!class_exists('WPeMatico_functions')) {
 			$campaigndata['campaign_commentstatus'] = (!isset($post_data['campaign_commentstatus']) ) ? 'closed' : sanitize_text_field($post_data['campaign_commentstatus']);
 			$campaigndata['campaign_allowpings'] = (!isset($post_data['campaign_allowpings']) || empty($post_data['campaign_allowpings'])) ? false : ( ($post_data['campaign_allowpings'] == 1) ? true : false );
 			$campaigndata['campaign_woutfilter'] = (!isset($post_data['campaign_woutfilter']) || empty($post_data['campaign_woutfilter'])) ? false : ( ($post_data['campaign_woutfilter'] == 1) ? true : false );
+			// Whether this campaign may store the content of its items as the feed sends it.
+			// Written by wpematico_apply_campaign_editing_rights() when the campaign is saved;
+			// true when absent, so campaigns that predate it keep importing content unchanged.
+			$campaigndata['campaign_unfiltered_html'] = (!isset($post_data['campaign_unfiltered_html'])) ? true : (bool) $post_data['campaign_unfiltered_html'];
 			$campaigndata['campaign_striphtml'] = (!isset($post_data['campaign_striphtml']) || empty($post_data['campaign_striphtml'])) ? false : ( ($post_data['campaign_striphtml'] == 1) ? true : false );
 			$campaigndata['campaign_get_excerpt'] = (!isset($post_data['campaign_get_excerpt']) || empty($post_data['campaign_get_excerpt'])) ? false : ( ($post_data['campaign_get_excerpt'] == 1) ? true : false );
 
@@ -1388,6 +1392,242 @@ if (!class_exists('WPeMatico_functions')) {
 //*********************************************************************************************************
 
 		/**
+		 * Resolves a feed URL to the address that should be requested.
+		 *
+		 * A feed is an http:// or https:// address on the public internet. The URL is returned
+		 * normalized the way SimplePie normalizes it, so the result is what to hand to
+		 * SimplePie: feed://, podcast:// and itpc:// become http://, and a bare host name gets
+		 * http:// prepended. A local filesystem path is not a feed address, and neither is a
+		 * host that resolves to a loopback, private, link-local or reserved address; both come
+		 * back as a WP_Error whose message is ready to show.
+		 *
+		 * Two ways to reach an internal address when a site needs it:
+		 *
+		 *  - site wide, with "Allow feeds on private and local addresses" in Tools > Danger Zone;
+		 *  - one feed at a time, with the wpematico_allow_internal_feeds filter.
+		 *
+		 * The site's own host needs neither and is always allowed, so the XML campaign type and
+		 * add-ons that publish feeds on this same installation work on a local or intranet site.
+		 *
+		 * A host that cannot be resolved from this process is allowed through: the resolver
+		 * available here is not necessarily the one that serves the request, so only an address
+		 * positively identified as internal is refused.
+		 *
+		 * @since 2.8.26
+		 * @param   string  $url  Feed URL, as stored in the campaign.
+		 * @return  string|WP_Error  Normalized URL to fetch, or WP_Error carrying the reason.
+		 */
+		public static function validate_feed_url($url) {
+			static $checked = array();
+
+			$key = (string) $url;
+			if (array_key_exists($key, $checked)) {
+				return $checked[$key];
+			}
+			$checked[$key] = self::check_feed_url($key);
+
+			return $checked[$key];
+		}
+
+		/**
+		 * Does the work for validate_feed_url(), which caches the verdict per URL.
+		 *
+		 * @since 2.8.26
+		 * @param   string  $url
+		 * @return  string|WP_Error
+		 */
+		protected static function check_feed_url($url) {
+			// Control characters are not part of a URL.
+			$url = trim(preg_replace('/[\x00-\x1F\x7F]/', '', $url));
+			if ('' === $url) {
+				return new WP_Error('wpematico_feed_url_empty', __('The feed URL is empty.', 'wpematico'));
+			}
+
+			$url = self::normalize_feed_url($url);
+			if (is_wp_error($url)) {
+				return $url;
+			}
+
+			$parts	= wp_parse_url($url);
+			$scheme = (is_array($parts) && !empty($parts['scheme'])) ? strtolower($parts['scheme']) : '';
+			$host	= (is_array($parts) && !empty($parts['host'])) ? trim($parts['host'], '.') : '';
+			if (('http' !== $scheme && 'https' !== $scheme) || '' === $host) {
+				/* translators: %s Feed URL. */
+				return new WP_Error('wpematico_feed_url_invalid', sprintf(__('%s is not a valid feed address. A feed must be an http:// or https:// URL.', 'wpematico'), $url));
+			}
+
+			// Feeds published by this same installation, such as the XML campaign type and the
+			// feeds some add-ons generate, are always fetchable.
+			if (in_array(strtolower($host), self::get_own_hosts(), true)) {
+				return $url;
+			}
+
+			// Site-wide opt-in, for installations that read feeds from their own network.
+			// Answered before resolving anything, so it costs nothing when it is on.
+			$danger = self::get_danger_options();
+			if (!empty($danger['wpe_allow_internal_feeds'])) {
+				return $url;
+			}
+
+			$internal_ip = self::resolve_internal_ip($host);
+			if (null === $internal_ip) {
+				return $url;
+			}
+
+			/**
+			 * Allows fetching a feed that lives on a private, loopback or reserved address.
+			 *
+			 * Only called for a destination already identified as internal, so returning true
+			 * is the per-feed equivalent of the "Allow feeds on private and local addresses"
+			 * option in Tools > Danger Zone.
+			 *
+			 * @since 2.8.26
+			 * @param  boolean  $allow  False by default.
+			 * @param  string   $url    Normalized feed URL.
+			 * @param  string   $host   Host of the feed URL.
+			 * @param  string   $ip     Internal address the host resolved to.
+			 */
+			if (apply_filters('wpematico_allow_internal_feeds', false, $url, $host, $internal_ip)) {
+				return $url;
+			}
+
+			/* translators: %1$s Feed URL. %2$s IP address. */
+			return new WP_Error('wpematico_feed_url_internal', sprintf(__('%1$s points to %2$s, an address on this server\'s own network. If that is intended, enable "Allow feeds on private and local addresses" in WPeMatico > Tools > Danger Zone.', 'wpematico'), $url, $internal_ip));
+		}
+
+		/**
+		 * Applies the scheme normalization SimplePie applies in Misc::fix_protocol(): feed://,
+		 * podcast:// and itpc:// URLs become http://, and a bare "example.com/feed" gets
+		 * http:// prepended, so URLs entered in either shape keep working.
+		 *
+		 * A path to a file on this server is not a feed address and comes back as a WP_Error.
+		 *
+		 * @since 2.8.26
+		 * @param   string  $url
+		 * @return  string|WP_Error
+		 */
+		protected static function normalize_feed_url($url) {
+			if (preg_match('#^([a-z][a-z0-9+.\-]*)://#i', $url, $matches)) {
+				$scheme = strtolower($matches[1]);
+				if ('http' !== $scheme && 'https' !== $scheme) {
+					return 'http://' . substr($url, strlen($matches[0]));
+				}
+
+				return $url;
+			}
+
+			if (self::is_local_path($url)) {
+				/* translators: %s Feed URL. */
+				return new WP_Error('wpematico_feed_url_local_path', sprintf(__('%s looks like a file on this server, not a feed address. A feed must be an http:// or https:// URL.', 'wpematico'), $url));
+			}
+
+			return 'http://' . ltrim($url, '/');
+		}
+
+		/**
+		 * Whether a scheme-less feed URL is really a path on this server's filesystem.
+		 *
+		 * @since 2.8.26
+		 * @param   string  $url
+		 * @return  boolean
+		 */
+		protected static function is_local_path($url) {
+			// Absolute, relative, UNC and Windows drive paths.
+			if (preg_match('#^(/|\./|\.\./|\\\\|[a-zA-Z]:[\\\\/])#', $url)) {
+				return true;
+			}
+
+			// Anything else that names a readable file. This is the condition SimplePie uses to
+			// tell a local file from a host name.
+			return (bool) @file_exists($url);
+		}
+
+		/**
+		 * Hosts that always count as this installation.
+		 *
+		 * @since 2.8.26
+		 * @return  array  Lower case host names.
+		 */
+		protected static function get_own_hosts() {
+			$hosts = array(
+				wp_parse_url(home_url(), PHP_URL_HOST),
+				wp_parse_url(site_url(), PHP_URL_HOST),
+			);
+			$hosts = array_filter(array_map('strtolower', array_filter($hosts)));
+
+			return array_values(array_unique($hosts));
+		}
+
+		/**
+		 * Resolves a host and reports the first internal address it points to.
+		 *
+		 * Returns null both when the host is external and when it cannot be resolved here, so
+		 * a DNS failure never blocks a fetch. Only IPv4 records are resolved, which is what
+		 * gethostbynamel() offers; an IP literal of either family is classified directly.
+		 *
+		 * @since 2.8.26
+		 * @param   string  $host
+		 * @return  string|null  The internal address, or null when there is nothing to refuse.
+		 */
+		protected static function resolve_internal_ip($host) {
+			$addresses = array();
+			if (filter_var($host, FILTER_VALIDATE_IP)) {
+				$addresses[] = $host;
+			} elseif (preg_match('#^\[(.+)\]$#', $host, $matches) && filter_var($matches[1], FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
+				$addresses[] = $matches[1];
+			} else {
+				$resolved = @gethostbynamel($host);
+				if (is_array($resolved)) {
+					$addresses = $resolved;
+				}
+			}
+
+			foreach ($addresses as $address) {
+				if (self::is_internal_ip($address)) {
+					return $address;
+				}
+			}
+
+			return null;
+		}
+
+		/**
+		 * Whether an address belongs to a range a feed fetch has no business reaching.
+		 *
+		 * @since 2.8.26
+		 * @param   string  $ip
+		 * @return  boolean
+		 */
+		protected static function is_internal_ip($ip) {
+			if (!filter_var($ip, FILTER_VALIDATE_IP)) {
+				return true;  // Not an address at all.
+			}
+
+			// Covers loopback, the private ranges, link-local (169.254.0.0/16), 0.0.0.0/8 and
+			// the reserved space, for IPv4 and IPv6 alike.
+			if (false === filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE)) {
+				return true;
+			}
+
+			// Ranges filter_var() does not know about.
+			$parts = explode('.', $ip);
+			if (4 === count($parts)) {
+				$parts = array_map('intval', $parts);
+				if (100 === $parts[0] && 64 <= $parts[1] && 127 >= $parts[1]) {
+					return true;  // 100.64.0.0/10, carrier grade NAT.
+				}
+				if (192 === $parts[0] && 0 === $parts[1] && 0 === $parts[2]) {
+					return true;  // 192.0.0.0/24, IETF protocol assignments.
+				}
+				if (224 <= $parts[0] && 239 >= $parts[0]) {
+					return true;  // 224.0.0.0/4, multicast.
+				}
+			}
+
+			return false;
+		}
+
+		/**
 		 * Parses a feed with SimplePie
 		 *
 		 * @param   boolean     $stupidly_fast    Set fast mode. Best for checks
@@ -1430,6 +1670,26 @@ if (!class_exists('WPeMatico_functions')) {
 				$base_args = (is_array($args) && isset($args['url'])) ? $args : array();
 				return self::fetch_multifeed($url, $base_args, $stupidly_fast, $max, $order_by_date, $force_feed);
 			}
+
+			/**
+			 * Every feed WPeMatico reads passes through here — campaign runs, the campaign and
+			 * item previews, the XML node check, the feed viewer and the feed test — so the
+			 * address rule lives in one place. Multipage feeds included: fetch_multifeed()
+			 * fetches each of its pages through this same method. (2.8.26)
+			 */
+			$validated_url = self::validate_feed_url($url);
+			if (is_wp_error($validated_url)) {
+				/* translators: %s Reason the feed was not fetched. */
+				trigger_error(sprintf(__('Feed not fetched: %s', 'wpematico'), esc_html($validated_url->get_error_message())), E_USER_WARNING);  // Log
+				// Callers keep a normal SimplePie to work with: get_items() returns an empty
+				// list, so the feed is skipped, and error() carries the reason.
+				$feed		 = new SimplePie();
+				$feed->error = $validated_url->get_error_message();
+
+				return $feed;
+			}
+			// Request the same string that was checked.
+			$url = $validated_url;
 
 			$feed = new SimplePie();
 			$feed->timeout = apply_filters('wpe_simplepie_timeout', 130);
@@ -2026,12 +2286,14 @@ if (!class_exists('WPeMatico_functions')) {
 				$danger['wpemdelecampaigns'] = (isset($danger['wpemdelecampaigns']) && !empty($danger['wpemdelecampaigns']) ) ? $danger['wpemdelecampaigns'] : false;
 				$danger['wpe_debug_logs_campaign'] = (isset($danger['wpe_debug_logs_campaign']) && !empty($danger['wpe_debug_logs_campaign']) ) ? $danger['wpe_debug_logs_campaign'] : false;
 				$danger['wpematico_debug_log_file'] = (isset($danger['wpematico_debug_log_file']) && !empty($danger['wpematico_debug_log_file']) ) ? $danger['wpematico_debug_log_file'] : false;
+				$danger['wpe_allow_internal_feeds'] = (isset($danger['wpe_allow_internal_feeds']) && !empty($danger['wpe_allow_internal_feeds']) ) ? $danger['wpe_allow_internal_feeds'] : false;
 			}else{
 				$danger = [];
 				$danger['wpemdeleoptions'] = false;
 				$danger['wpemdelecampaigns'] = false;
 				$danger['wpe_debug_logs_campaign'] = false;
 				$danger['wpematico_debug_log_file'] = false;
+				$danger['wpe_allow_internal_feeds'] = false;
 			}
 
 			return $danger;
@@ -2192,6 +2454,151 @@ function wpematico_dispatch_action($action, $request) {
 	}
 
 	do_action('wpematico_' . $action, $request);
+}
+
+/**
+ * Whether a campaign may store the content of its items exactly as the feed sends it.
+ *
+ * Imported content keeps its embeds, scripts and markup only for campaigns whose last editor
+ * was allowed to post unfiltered HTML; for any other campaign the content goes through the
+ * same filter WordPress applies to that user's own posts. Campaigns saved before this rule
+ * existed answer true, so nothing they import changes.
+ *
+ * @since 2.8.26
+ * @param array $campaign Campaign data.
+ * @return boolean
+ */
+function wpematico_campaign_allows_unfiltered_html($campaign) {
+	$allowed = !isset($campaign['campaign_unfiltered_html']) || (bool) $campaign['campaign_unfiltered_html'];
+
+	/**
+	 * Filters whether this campaign stores the content of its items unfiltered.
+	 *
+	 * @since 2.8.26
+	 * @param boolean $allowed
+	 * @param array   $campaign
+	 */
+	return (bool) apply_filters('wpematico_campaign_allows_unfiltered_html', $allowed, $campaign);
+}
+
+/**
+ * Applies the editing user's publishing rights to the post status and the post author a
+ * campaign assigns to the posts it imports.
+ *
+ * A campaign run happens on WP-Cron, where nobody is logged in, so the two fields are
+ * settled here instead: while a campaign is being saved and the user making the choice is
+ * known. A user who cannot publish the campaign's post type gets `pending`, and a user who
+ * cannot edit other people's posts is recorded as the author. Both changes are reported
+ * back as an admin notice, so the value shown next time is never a surprise.
+ *
+ * Call it from the places that save a campaign, never from `wpematico_check_campaigndata`:
+ * that filter also runs on every read, including during cron.
+ *
+ * @since 2.8.26
+ * @param array $campaign Campaign data about to be saved.
+ * @return array The campaign data to store.
+ */
+function wpematico_apply_campaign_editing_rights($campaign) {
+	$post_type_name = (!empty($campaign['campaign_customposttype'])) ? $campaign['campaign_customposttype'] : 'post';
+	$post_type		= get_post_type_object($post_type_name);
+	if (empty($post_type) || empty($post_type->cap)) {
+		return $campaign;
+	}
+
+	// Statuses a user without publishing rights may choose.
+	$unpublished = apply_filters('wpematico_unpublished_post_statuses', array('draft', 'pending'), $campaign);
+
+	if (isset($campaign['campaign_posttype'])
+		&& !in_array($campaign['campaign_posttype'], (array) $unpublished, true)
+		&& !current_user_can($post_type->cap->publish_posts)) {
+
+		$campaign['campaign_posttype'] = 'pending';
+		WPeMatico :: add_wp_notice(array(
+			'text'		=> esc_html__('Imported posts will be saved as pending review, because your user cannot publish posts.', 'wpematico'),
+			'below-h2'	=> false,
+		));
+	}
+
+	if (isset($campaign['campaign_author'])
+		&& (int) $campaign['campaign_author'] !== get_current_user_id()
+		&& !current_user_can($post_type->cap->edit_others_posts)) {
+
+		$campaign['campaign_author'] = get_current_user_id();
+		WPeMatico :: add_wp_notice(array(
+			'text'		=> esc_html__('Imported posts will be attributed to you, because your user cannot assign posts to other users.', 'wpematico'),
+			'below-h2'	=> false,
+		));
+	}
+
+	// Content is stored as the feed sends it only for a campaign whose editor may post
+	// unfiltered HTML; read back by wpematico_campaign_allows_unfiltered_html().
+	$could_store_unfiltered	= (!isset($campaign['campaign_unfiltered_html']) || (bool) $campaign['campaign_unfiltered_html']);
+	$may_store_unfiltered	= current_user_can('unfiltered_html');
+	$campaign['campaign_unfiltered_html'] = $may_store_unfiltered;
+
+	if ($could_store_unfiltered && !$may_store_unfiltered) {
+		WPeMatico :: add_wp_notice(array(
+			'text'		=> esc_html__('Imported content will be filtered the same way WordPress filters your own posts, because your user cannot post unfiltered HTML. Some embeds may not be kept.', 'wpematico'),
+			'below-h2'	=> false,
+		));
+	}
+
+	return $campaign;
+}
+
+/**
+ * Nonce action for a link to a campaign screen, tied to the campaign it was made for.
+ *
+ * Every place that builds such a link calls this, so the action string used to create a
+ * nonce and the one used to check it are always the same.
+ *
+ * @since 2.8.26
+ * @param string $nonce_action Base action name.
+ * @param int    $campaign_id  Campaign the link points at.
+ * @return string
+ */
+function wpematico_campaign_screen_nonce_action($nonce_action, $campaign_id) {
+	return $nonce_action . '_' . (int) $campaign_id;
+}
+
+/**
+ * Resolves the campaign a screen was asked for and authorizes the request.
+ *
+ * Used by the screens that show the data of a single campaign — its run log and its
+ * preview. Reads the campaign id from the request, requires a nonce created for that
+ * campaign through wpematico_campaign_screen_nonce_action(), and requires edit_post on it.
+ * Ends the request with wp_die() when any of the three does not hold, so a caller that gets
+ * a return value can use it directly.
+ *
+ * @since 2.8.26
+ * @param string $nonce_action Base nonce action; the campaign id is appended to it.
+ * @param array  $id_keys      Request keys holding the campaign id, tried in order.
+ * @param string $nonce_key    Request key holding the nonce.
+ * @return int The campaign id this request is allowed to work with.
+ */
+function wpematico_verify_campaign_screen_request($nonce_action, $id_keys = array('p', 'post_ID'), $nonce_key = '_wpnonce') {
+	$campaign_id = 0;
+	foreach ((array) $id_keys as $id_key) {
+		if (isset($_REQUEST[$id_key])) {
+			$campaign_id = absint($_REQUEST[$id_key]);
+			break;
+		}
+	}
+
+	if (empty($campaign_id) || 'wpematico' !== get_post_type($campaign_id)) {
+		wp_die(esc_html__('The campaign is invalid.', 'wpematico'), esc_html__('Invalid request', 'wpematico'), array('response' => 400));
+	}
+
+	$nonce = isset($_REQUEST[$nonce_key]) ? sanitize_text_field(wp_unslash($_REQUEST[$nonce_key])) : '';
+	if (!wp_verify_nonce($nonce, wpematico_campaign_screen_nonce_action($nonce_action, $campaign_id))) {
+		wp_die(esc_html__('This link is no longer valid. Please reload the campaign and try again.', 'wpematico'), esc_html__('Security check', 'wpematico'), array('response' => 403));
+	}
+
+	if (!current_user_can('edit_post', $campaign_id)) {
+		wp_die(esc_html__('You are not allowed to do this.', 'wpematico'), esc_html__('Permission denied', 'wpematico'), array('response' => 403));
+	}
+
+	return $campaign_id;
 }
 
 /**

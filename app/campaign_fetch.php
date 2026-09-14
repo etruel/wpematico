@@ -784,10 +784,25 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
             $args = apply_filters('wpematico_pre_insert_post', $args, $this->campaign);
 
         if (apply_filters('wpematico_allow_insertpost', true, $this, $args)) {
-            remove_filter('content_save_pre', 'wp_filter_post_kses');
-//			remove_filter('content_filtered_save_pre', 'wp_filter_post_kses');
+            // Feed content keeps its markup for campaigns allowed to store unfiltered HTML.
+            // The previous state of the filter is restored right after the insert, so this
+            // decision never reaches anything else saved during the same request. (2.8.26)
+            $unfiltered_html = wpematico_campaign_allows_unfiltered_html($this->campaign);
+            $kses_was_active = (false !== has_filter('content_save_pre', 'wp_filter_post_kses'));
+            if ($unfiltered_html && $kses_was_active) {
+                remove_filter('content_save_pre', 'wp_filter_post_kses');
+//			    remove_filter('content_filtered_save_pre', 'wp_filter_post_kses');
+            }
+
             $post_id = wp_insert_post($args);
 
+            if ($unfiltered_html && $kses_was_active) {
+                add_filter('content_save_pre', 'wp_filter_post_kses');
+            }
+
+            // "Post Content Unfiltered" stays the administrator's call: enabling it in the
+            // plugin settings is what lets the users who edit campaigns keep the content of
+            // their items exactly as the feed sends it.
             if ($this->cfg['woutfilter'] && $this->campaign['campaign_woutfilter']) {
                 global $wpdb, $wp_locale, $current_blog;
                 $table_name = $wpdb->prefix . "posts";
@@ -852,8 +867,6 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
             }
         }
 
-
-        add_filter('content_save_pre', 'wp_filter_post_kses');
 
         if (!empty($this->current_item['categories'])) { //Adds to campaign logs the categories added
             $wpe_categories_added = wp_get_object_terms($post_id, 'category');

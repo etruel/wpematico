@@ -2,7 +2,7 @@
 Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU 
 Tags: RSS, XML, feed to post, rss aggregator, content curation
-Stable tag: 2.8.25
+Stable tag: 2.8.26
 Tested up to: 7.1
 Requires at least: 4.8
 Requires PHP: 7.0
@@ -213,6 +213,22 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 == Changelog ==
 
 > View complete release history at [WPeMatico Releases](https://wpematico.com/releases/)
+
+= 2.8.26 – Sep 14, 2026 =
+
+> _**Recommended security update for all users.**_
+> _Please note a change when editing campaigns: the post status and the post author a campaign assigns are now saved as the user editing it is entitled to set them. A user who cannot publish posts saves the campaign with "Pending review", and a user who cannot assign posts to other users saves it under their own name; both are reported on screen right after saving. The same applies to how much of the feed markup is kept. Campaigns edited by administrators and editors keep working exactly as before._
+
+* **Improved:** Campaigns fetch feeds published on the public internet. Sites that read feeds from their own network, from an intranet server or from localhost can allow it with the new "Allow feeds on private and local addresses" option in WPeMatico > Tools > Danger Zone. Feeds hosted on this same site keep working with no configuration needed.
+* **Improved:** Feed addresses are now checked before every fetch, so a feed address that is not a valid `http://` or `https://` URL is reported clearly in the campaign log instead of failing later with a confusing parser message.
+* **New:** New `wpematico_allow_internal_feeds` filter, to allow one particular feed on a private address without turning on the site-wide option.
+* **Improved:** Opening a campaign's run log or its preview now checks that you are allowed to work with that campaign, and the links to both screens are tied to the campaign they were created for. The "See Log" action in the campaigns list is shown only to users who can open the campaign.
+* **Improved:** The item preview and the XML node reader follow the same rule: the item preview is served to users who can edit the campaign it belongs to, and reading an XML source to list its nodes requires the rights to create campaigns.
+* **Improved:** Imported content keeps the markup the feed sends, embeds included, for campaigns edited by a user entitled to post unfiltered HTML, which is the case for administrators and editors. A campaign last edited by a user without that right imports its content filtered the same way WordPress filters that user's own posts, and says so on screen when the campaign is saved. Campaigns created before this release keep importing content exactly as they did.
+* **Fixed:** The content filter WordPress applies when saving a post is now restored right after each imported post is inserted, and only when it was in place to begin with. A manual run no longer leaves a filter behind that the user it belongs to never had, so nothing else saved during the same request is affected by how a campaign imports its content.
+* **Improved:** A campaign now records the post status and the post author that the user editing it is entitled to choose: a user who cannot publish gets "Pending review", and a user who cannot assign posts to other people is recorded as the author. Both are reported on screen when they happen, and administrators and editors work exactly as before.
+* **Improved:** The "Word to Category" field is escaped when a campaign is reopened, so a word or a regular expression that contains markup is shown exactly as it was typed. Regular expressions keep matching as before: the value is stored untouched and only its display changes. Words also appear escaped in the campaign log and in the RegEx validation message.
+* **Improved:** The campaign and item previews escape everything they display, so a feed that carries unusual markup is shown as text instead of being applied to the preview page. Regular feed content — formatting, images, links, lists, tables and video embeds — keeps rendering as before, and the tag list can be extended with the new `wpematico_preview_item_allowed_html` filter.
 
 = 2.8.25 – Aug 15, 2026 =
 

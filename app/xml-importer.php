@@ -294,13 +294,20 @@ class WPeMatico_XML_Importer {
 	}
 
     public static function ajax_xml_check_data() {
+        // Reading an XML source to list its nodes is part of building a campaign, so it is
+        // answered for users who can create or edit campaigns. The address itself is resolved
+        // by WPeMatico::validate_feed_url() inside fetchFeed(). (2.8.26)
+        if (!current_user_can('edit_posts')) {
+            wp_die(esc_html__('You are not allowed to do this.', 'wpematico'), esc_html__('Permission denied', 'wpematico'), array('response' => 403));
+        }
+
         $nonce = '';
         if (isset($_REQUEST['nonce'])) {
             $nonce = sanitize_text_field($_REQUEST['nonce']);
         }
         
         if (!wp_verify_nonce($nonce, 'wpematico-xml-check-data-nonce')) {
-            wp_die('Security check'); 
+            wp_die(esc_html__('Invalid request.', 'wpematico'), esc_html__('Invalid request', 'wpematico'), array('response' => 400));
         }
 
         $xml_url = ( !empty( $_REQUEST['xml_feed'] ) ? $_REQUEST['xml_feed'] : '' ); 

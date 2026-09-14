@@ -32,18 +32,8 @@ class campaign_logs {
 	* @since version
 	*/
 	public static function print_log() {
-		$nonce = !empty($_REQUEST['_wpnonce']) ? sanitize_text_field($_REQUEST['_wpnonce']) : '';
-		if(!wp_verify_nonce($nonce, 'clog-nonce') ) {
-			wp_die('Are you sure?'); 
-		} 
-
-		if ( isset( $_GET['p'] ) ) {
-		 	$post_id = $post_ID = absint($_GET['p']);
-		} elseif ( isset( $_POST['post_ID'] ) ) {
-		 	$post_id = $post_ID = absint($_POST['post_ID']);
-		} else {
-		 	$post_id = $post_ID = 0;
-		}
+		// Campaign logs are shown to users who can edit the campaign. (2.8.26)
+		$post_id = $post_ID = wpematico_verify_campaign_screen_request('clog-nonce');
 		$log = '';
 		$danger_options = WPeMatico::get_danger_options();
 		if ( ! $danger_options['wpe_debug_logs_campaign'] ) {
