@@ -189,22 +189,11 @@ class wpematico_campaign_preview {
 	* @since 1.9
 	*/
 	public static function print_preview() {
-		$nonce = '';
-		if (isset($_REQUEST['_wpnonce'])) {
-			$nonce = sanitize_text_field($_REQUEST['_wpnonce']);
-		}
-		
-		if (!wp_verify_nonce($nonce, 'campaign-preview-nonce')) {
-		    wp_die('Security check'); 
-		} 
+		// The preview is shown to users who can edit the campaign. (2.8.26)
+		$campaign_id = wpematico_verify_campaign_screen_request('campaign-preview-nonce');
 
 		self::$cfg = get_option(WPeMatico::OPTION_KEY);
 
-		
-		$campaign_id = absint($_REQUEST['p']);
-		if (empty($campaign_id)) {
-			wp_die(__('The campaign is invalid.', 'wpematico'));
-		} 
 		$campaign = WPeMatico::get_campaign($campaign_id);
 
 		if (defined('WP_DEBUG') and WP_DEBUG){
@@ -340,7 +329,7 @@ class wpematico_campaign_preview {
 				  	</thead>
 				  	<tbody>
 				  		<?php 
-				  			$return_url = urlencode(admin_url('admin-post.php?action=wpematico_campaign_preview&p='.$campaign_id.'&_wpnonce=' . wp_create_nonce('campaign-preview-nonce')));
+				  			$return_url = urlencode(admin_url('admin-post.php?action=wpematico_campaign_preview&p='.$campaign_id.'&_wpnonce=' . wp_create_nonce(wpematico_campaign_screen_nonce_action('campaign-preview-nonce', $campaign_id))));
 				  			foreach($post_to_show as $item) : 
 				  				
 				  				
@@ -361,27 +350,27 @@ class wpematico_campaign_preview {
 				  				}
 				  				$feed_url =  urlencode($item->get_feed()->feed_url);
 				  				$item_hash = self::get_item_hash($item);
-				  				$nonce_item = wp_create_nonce('campaign-preview-item-nonce');
+				  				$nonce_item = wp_create_nonce(wpematico_campaign_screen_nonce_action('campaign-preview-item-nonce', $campaign_id));
 				  				$post_link_preview = admin_url('admin-post.php?action=wpematico_campaign_preview_item&_wpnonce='.$nonce_item.'&campaign='.$campaign_id.'&item_hash='.$item_hash.'&feed='.$feed_url.'&return_url='.$return_url);
 
 
 
 				  			?>
-						    <tr id="tr_item_<?php echo $item_hash; ?>" class="feed-nextfetch">
+						    <tr id="tr_item_<?php echo esc_attr($item_hash); ?>" class="feed-nextfetch">
 						    	<td>
 						    		
 						    	</td>
 						    	<td>
-						    		<a href="<?php echo $post_link_preview; ?>" id="pfeed-id"><?php echo esc_html($title); ?></a>
-						    		<span id="pfeed-date"><?php echo $item->get_date(); ?></span>
+						    		<a href="<?php echo esc_url($post_link_preview); ?>" id="pfeed-id"><?php echo esc_html($title); ?></a>
+						    		<span id="pfeed-date"><?php echo esc_html($item->get_date()); ?></span>
 						    		<p><?php echo esc_html($description); ?></p>
 
 						    	</td>
 						    	<td>
-						    		<span id="status_item_<?php echo $item_hash; ?>" class="status nextfetch"><?php echo  __('Next fetch', 'wpematico'); ?></span>
+						    		<span id="status_item_<?php echo esc_attr($item_hash); ?>" class="status nextfetch"><?php echo  __('Next fetch', 'wpematico'); ?></span>
 						    	</td>
 						    	<td>
-						    		<button type="button" data-itemhash="<?php echo $item_hash; ?>" data-feed="<?php echo $feed_url; ?>" class="item_fetch cpanelbutton dashicons dashicons-welcome-add-page" title="<?php esc_attr_e('Fetch Now', 'wpematico'); ?>"></button>
+						    		<button type="button" data-itemhash="<?php echo esc_attr($item_hash); ?>" data-feed="<?php echo esc_attr($feed_url); ?>" class="item_fetch cpanelbutton dashicons dashicons-welcome-add-page" title="<?php esc_attr_e('Fetch Now', 'wpematico'); ?>"></button>
 						    		<?php do_action('wpematico_preview_campaign_item_actions', $item); ?>
 						    	</td>
 						    </tr>

@@ -706,8 +706,9 @@ if (!class_exists('WPeMatico_Campaigns')) :
 							if (@$cfg['enabledelhash']) // Si está habilitado en settings, lo muestra 
 								$actions['delhash'] = '<a href="' . self::wpematico_action_link($post->ID, 'display', 'delhash') . '" title="' . esc_attr(__("Delete hash code for duplicates", 'wpematico')) . '">' . __('Del Hash', 'wpematico') . '</a>';
 							//++++++seelog
-							if (@$cfg['enableseelog']) {   // Si está habilitado en settings, lo muestra 
-								$nonce	   = wp_create_nonce('clog-nonce');
+							// Offered to users who can edit the campaign. (2.8.26)
+							if (@$cfg['enableseelog'] && $can_edit_post) {   // Si está habilitado en settings, lo muestra 
+								$nonce	   = wp_create_nonce(wpematico_campaign_screen_nonce_action('clog-nonce', $post->ID));
 								$nombre	   = get_the_title($post->ID);
 								$actionurl = admin_url('admin-post.php?action=wpematico_campaign_log&p=' . $post->ID . '&_wpnonce=' . $nonce);
 								$actionjs  = "javascript:window.open('$actionurl','$nombre','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=700, height=600');";
@@ -1286,6 +1287,10 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			$campaign = apply_filters('wpematico_check_campaigndata', $campaign);
 
 			error_reporting($nivelerror);
+
+			// The status and the author of the imported posts are settled against the rights of
+			// the user saving the campaign. (2.8.26)
+			$campaign = wpematico_apply_campaign_editing_rights($campaign);
 
 			WPeMatico::update_campaign($post_id, $campaign);
 

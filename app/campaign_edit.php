@@ -115,8 +115,8 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		
 
 		$name_campaign = get_the_title($post->ID);
-		$see_logs_action_url = admin_url('admin-post.php?action=wpematico_campaign_log&p='.$post->ID.'&_wpnonce=' . wp_create_nonce('clog-nonce'));
-		$preview_campaign_action_url = admin_url('admin-post.php?action=wpematico_campaign_preview&p='.$post->ID.'&_wpnonce=' . wp_create_nonce('campaign-preview-nonce'));
+		$see_logs_action_url = admin_url('admin-post.php?action=wpematico_campaign_log&p='.$post->ID.'&_wpnonce=' . wp_create_nonce(wpematico_campaign_screen_nonce_action('clog-nonce', $post->ID)));
+		$preview_campaign_action_url = admin_url('admin-post.php?action=wpematico_campaign_preview&p='.$post->ID.'&_wpnonce=' . wp_create_nonce(wpematico_campaign_screen_nonce_action('campaign-preview-nonce', $post->ID)));
 
 		$wpematico_object = array(
 					'test_nonce' 							=> wp_create_nonce('wpematico_test_feed_nonce'),
@@ -366,7 +366,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 						if(false === @preg_match($word, '')) {
 							$err_message = ($err_message != "") ? $err_message."<br />" : "" ;
 							/* translators: The value of the regex field with an error. */
-							$err_message .= sprintf(__('There\'s an error with the supplied RegEx expression in word: %s', 'wpematico'),'<span class="coderr">'.$word.'</span>');
+							$err_message .= sprintf(__('There\'s an error with the supplied RegEx expression in word: %s', 'wpematico'),'<span class="coderr">'.esc_html($word).'</span>');
 						}
 				}
 			}
@@ -384,7 +384,7 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 						if(false === @preg_match($origin, '')) {
 							$err_message = ($err_message != "") ? $err_message."<br />" : "" ;
 							/* translators: The value of the regex field with an error. */
-							$err_message .= sprintf(__('There\'s an error with the supplied RegEx expression in ReWrite: %s', 'wpematico'),'<span class="coderr">'.$origin.'</span>');
+							$err_message .= sprintf(__('There\'s an error with the supplied RegEx expression in ReWrite: %s', 'wpematico'),'<span class="coderr">'.esc_html($origin).'</span>');
 						}
 				}
 			}
@@ -498,6 +498,10 @@ class WPeMatico_Campaign_edit extends WPeMatico_Campaign_edit_functions {
 		 * wpematico_check_campaigndata Filter to sanitize and strip all fields 
 		 */
 		$campaign = apply_filters('wpematico_check_campaigndata', $_POST);
+
+		// The status and the author of the imported posts are settled against the rights of
+		// the user saving the campaign. (2.8.26)
+		$campaign = wpematico_apply_campaign_editing_rights($campaign);
  
 		error_reporting($nivelerror);
 

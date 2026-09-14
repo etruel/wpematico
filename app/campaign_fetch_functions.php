@@ -269,12 +269,12 @@ class wpematico_campaign_fetch_functions {
 						}
 						if ($foundit !== false) {
 							// translators: %1$s Word found. %2$s Category ID 
-							trigger_error(sprintf(__('Found!: word %1$s to Cat_id %2$s', 'wpematico'), $word, $tocat), E_USER_NOTICE);
+							trigger_error(sprintf(__('Found!: word %1$s to Cat_id %2$s', 'wpematico'), esc_html($word), esc_html($tocat)), E_USER_NOTICE);
 							$new_categories[]		 = $tocat;
 							$new_categories_words[]	 = strtolower($word);
 						} else {
 							// translators: The word not found
-							trigger_error(sprintf(__('Not found word %s', 'wpematico'), $word), E_USER_NOTICE);
+							trigger_error(sprintf(__('Not found word %s', 'wpematico'), esc_html($word)), E_USER_NOTICE);
 						}
 					}
 				}

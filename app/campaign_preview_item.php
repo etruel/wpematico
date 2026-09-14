@@ -137,24 +137,11 @@ class wpematico_campaign_preview_item {
 	* @since 1.9
 	*/
 	public static function ajax_get_item_post() {
-		$nonce = '';
-		if (isset($_REQUEST['nonce_get_item'])) {
-			$nonce = sanitize_text_field($_REQUEST['nonce_get_item']);
-		}
-		
-		if (!wp_verify_nonce($nonce, 'campaign-preview-get-item')) {
-		    status_header(404);
-		    die(__('Security check.', 'wpematico'));
-		} 
+		// The item preview is served to users who can edit the campaign. (2.8.26)
+		$campaign_id = wpematico_verify_campaign_screen_request('campaign-preview-get-item', array('campaign_id'), 'nonce_get_item');
 
 		self::$cfg = get_option(WPeMatico::OPTION_KEY);
 
-		
-		$campaign_id = absint($_REQUEST['campaign_id']);
-		if (empty($campaign_id)) {
-			status_header(404);
-			die(__('The campaign is invalid.', 'wpematico'));
-		} 
 		$campaign = WPeMatico::get_campaign($campaign_id);
 
 		if (empty($_REQUEST['item_hash'])) {
@@ -178,11 +165,11 @@ class wpematico_campaign_preview_item {
 		}
 		?>
 		<div class="preview-page-post-title">
-			<h2><?php echo self::$current_item_args['post_title']; ?></h2>
+			<h2><?php echo esc_html(self::$current_item_args['post_title']); ?></h2>
 		</div>
 		
 		<div id="preview-page-post-content">
-			<?php echo self::$current_item_args['post_content']; ?>
+			<?php echo wp_kses(self::$current_item_args['post_content'], self::allowed_preview_html()); ?>
 		</div>
 		<?php
 
@@ -191,6 +178,42 @@ class wpematico_campaign_preview_item {
 	}
 
 	
+	/**
+	* Static function allowed_preview_html
+	* HTML the item preview renders. Starts from the tag set WordPress allows in a post and
+	* adds the iframe used by video embeds, so a preview looks like the post it describes.
+	* Extend it with the wpematico_preview_item_allowed_html filter.
+	* @access public
+	* @return array Tags and attributes, in wp_kses() format.
+	* @since 2.8.26
+	*/
+	public static function allowed_preview_html() {
+		$allowed			= wp_kses_allowed_html('post');
+		$allowed['iframe']	= array(
+			'src'			 => true,
+			'width'			 => true,
+			'height'		 => true,
+			'title'			 => true,
+			'class'			 => true,
+			'id'			 => true,
+			'name'			 => true,
+			// Video services wrap the player in a positioned box and put the geometry in a
+			// style attribute; wp_kses() runs it through safecss_filter_attr().
+			'style'			 => true,
+			'frameborder'	 => true,
+			'scrolling'		 => true,
+			'marginwidth'	 => true,
+			'marginheight'	 => true,
+			'loading'		 => true,
+			'referrerpolicy' => true,
+			'sandbox'		 => true,
+			'allow'			 => true,
+			'allowfullscreen' => true,
+		);
+
+		return apply_filters('wpematico_preview_item_allowed_html', $allowed);
+	}
+
 	/**
 	* Static function styles
 	* @access public
@@ -226,22 +249,11 @@ class wpematico_campaign_preview_item {
 	* @since 1.9
 	*/
 	public static function print_preview_item() {
-		$nonce = '';
-		if (isset($_REQUEST['_wpnonce'])) {
-			$nonce = sanitize_text_field($_REQUEST['_wpnonce']);
-		}
-		
-		if (!wp_verify_nonce($nonce, 'campaign-preview-item-nonce')) {
-		    wp_die('Security check'); 
-		} 
+		// The item preview is shown to users who can edit the campaign. (2.8.26)
+		$campaign_id = wpematico_verify_campaign_screen_request('campaign-preview-item-nonce', array('campaign'));
 
 		self::$cfg = get_option(WPeMatico::OPTION_KEY);
 
-		
-		$campaign_id = absint($_REQUEST['campaign']);
-		if (empty($campaign_id)) {
-			wp_die(__('The campaign is invalid.', 'wpematico'));
-		} 
 		$campaign = WPeMatico::get_campaign($campaign_id);
 
 		if (empty($_REQUEST['item_hash'])) {
@@ -312,15 +324,15 @@ class wpematico_campaign_preview_item {
 
 
 		<div id="preview-page">
-			<input type="hidden" id="campaign_id" name="campaign_id" value="<?php echo $campaign_id; ?>"/>
-			<input type="hidden" id="feed" name="feed" value="<?php echo $feed; ?>"/>
-			<input type="hidden" id="item_hash" name="item_hash" value="<?php echo $item_hash; ?>"/>
-			<input type="hidden" id="nonce_get_item" name="nonce_get_item" value="<?php echo wp_create_nonce('campaign-preview-get-item'); ?>"/>
+			<input type="hidden" id="campaign_id" name="campaign_id" value="<?php echo esc_attr($campaign_id); ?>"/>
+			<input type="hidden" id="feed" name="feed" value="<?php echo esc_attr($feed); ?>"/>
+			<input type="hidden" id="item_hash" name="item_hash" value="<?php echo esc_attr($item_hash); ?>"/>
+			<input type="hidden" id="nonce_get_item" name="nonce_get_item" value="<?php echo esc_attr(wp_create_nonce(wpematico_campaign_screen_nonce_action('campaign-preview-get-item', $campaign_id))); ?>"/>
 				<div id="preview-post-actions">
 					<?php if (!empty($_REQUEST['return_url'])) : ?>
 						<a href="<?php echo esc_url($_REQUEST['return_url']); ?>" class="button">Back</a>
 					<?php endif; ?>
-					<button type="button" data-itemhash="<?php echo $item_hash; ?>" data-feed="<?php echo $feed; ?>" class="item_fetch cpanelbutton dashicons dashicons-welcome-add-page" title="<?php esc_attr_e('Fetch Now', 'wpematico'); ?>"></button>
+					<button type="button" data-itemhash="<?php echo esc_attr($item_hash); ?>" data-feed="<?php echo esc_attr($feed); ?>" class="item_fetch cpanelbutton dashicons dashicons-welcome-add-page" title="<?php esc_attr_e('Fetch Now', 'wpematico'); ?>"></button>
 					<?php do_action('wpematico_preview_item_actions', $item); ?>
 					<span id="image_loading" style="display: none;" class="dashicons dashicons-admin-generic wpe_spinner"></span>
 				</div>

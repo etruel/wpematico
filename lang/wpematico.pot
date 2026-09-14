@@ -1,9 +1,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: WPeMatico 2.6.x\n"
+"Project-Id-Version: WPeMatico 2.8.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-12 16:51-0400\n"
+"POT-Creation-Date: 2026-09-13 17:29-0300\n"
 "PO-Revision-Date: 2017-10-20 01:21-0300\n"
 "Last-Translator: Esteban <esteban@netmdp.com>\n"
 "Language-Team: Etruel Developments<translations@etruel.com>\n"
@@ -8636,4 +8636,1128 @@ msgstr ""
 #: wpematico_professional/wpematicopro.php:2687
 #, php-format
 msgid "There's an error with the supplied RegEx expression in Keyword exclude filter: %s"
+msgstr ""
+
+#: wpematico/app/plugin_functions.php:92
+msgid " – we’re happy to help!"
+msgstr ""
+
+#: wpematico/app/debug_page.php:905
+#, php-format
+msgid "%1$s - Recommended Value: %2$s."
+msgstr ""
+
+#: wpematico/app/debug_page.php:922
+#, php-format
+msgid "%1$s - We recommend setting max execution time to at least 180. "
+msgstr ""
+
+#: wpematico/app/debug_page.php:856
+#: wpematico/app/debug_page.php:865
+#: wpematico/app/debug_page.php:874
+#: wpematico/app/debug_page.php:1025
+#: wpematico/app/debug_page.php:1032
+#: wpematico/app/debug_page.php:1041
+#: wpematico/app/debug_page.php:1048
+#: wpematico/app/debug_page.php:1055
+#: wpematico/app/debug_page.php:1064
+#: wpematico/app/debug_page.php:1073
+#: wpematico/app/debug_page.php:1082
+#: wpematico/app/debug_page.php:1091
+#, php-format
+msgid "%1$s is not installed on your server, but is recommended by %2$s."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1038
+#, php-format
+msgid "%1$s is recommended by %2$s."
+msgstr ""
+
+#: wpematico/app/debug_page.php:853
+#: wpematico/app/debug_page.php:862
+#: wpematico/app/debug_page.php:871
+#: wpematico/app/debug_page.php:1022
+#: wpematico/app/debug_page.php:1061
+#: wpematico/app/debug_page.php:1070
+#: wpematico/app/debug_page.php:1079
+#: wpematico/app/debug_page.php:1088
+#: wpematico/app/debug_page.php:1097
+#, php-format
+msgid "%1$s is required by %2$s."
+msgstr ""
+
+#: wpematico/app/wpematico_functions.php:1495
+#, php-format
+msgid ""
+"%1$s points to %2$s, an address on this server's own network. If that is "
+"intended, enable \"Allow feeds on private and local addresses\" in "
+"WPeMatico > Tools > Danger Zone."
+msgstr ""
+
+#: wpematico/app/wpematico_functions.php:1456
+#, php-format
+msgid ""
+"%s is not a valid feed address. A feed must be an http:// or https:// "
+"URL."
+msgstr ""
+
+#: wpematico/app/wpematico_functions.php:1521
+#, php-format
+msgid ""
+"%s looks like a file on this server, not a feed address. A feed must be "
+"an http:// or https:// URL."
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:323
+msgid ""
+"A new improvement shows execution messages directly below the campaign "
+"title, providing clear and organized feedback during AJAX campaign runs."
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:423
+msgid "AI Etruel Rewriter API Integration"
+msgstr ""
+
+#: wpematico/app/campaigns_list.php:695
+msgid "Activate schedule"
+msgstr ""
+
+#: wpematico/app/plugin_functions.php:351
+msgid "Activated Extensions:"
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:850
+msgid ""
+"Addon allows you to rewrite and enhance your content automatically using "
+"advanced AI integrations, offering greater flexibility and creativity "
+"for your posts."
+msgstr ""
+
+#: wpematico/app/debug_page.php:245
+msgid "Allow feeds on private and local addresses"
+msgstr ""
+
+#: wpematico/app/campaign_fetch.php:649
+msgid "Assigned category to post: "
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:291
+msgid ""
+"At the request of our users, we’ve added a new feature that allows you "
+"to set a maximum limit on the number of automatically generated "
+"categories."
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:290
+msgid "Auto-created categories control"
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:308
+msgid "Better Quick Edit and Taxonomy Support"
+msgstr ""
+
+#: wpematico/app/addons_page.php:323
+msgid "Buy"
+msgstr ""
+
+#: wpematico/app/plugin_functions.php:329
+msgid "Buy all bundled Addons"
+msgstr ""
+
+#: wpematico/app/debug_page.php:247
+msgid ""
+"By default campaigns only fetch feeds published on the public internet. "
+"Enable this if this site reads feeds from its own network, from an "
+"intranet server or from localhost, for example while developing."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1473
+msgid "Campaign ID"
+msgstr ""
+
+#: wpematico/app/debug_page.php:1476
+msgid "Campaign Status"
+msgstr ""
+
+#: wpematico/app/campaigns_list.php:603
+#, php-format
+msgid "Campaign scheduled for: %1$s."
+msgstr ""
+
+#: wpematico/app/campaign_fetch.php:67
+#, php-format
+msgid "Campaign skipped: already running since %d sec ago."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1474
+msgid "Campaign type"
+msgstr ""
+
+#: wpematico/app/campaigns_list.php:1353
+#: wpematico/app/campaigns_list.php:1355
+msgid "Campaigns updated successfully."
+msgstr ""
+
+#: wpematico/app/wpematico_functions.php:2392
+msgid ""
+"Can't import! The file has no settings belonging to WPeMatico or its "
+"active addons."
+msgstr ""
+
+#: wpematico/app/wpematico_functions.php:2367
+msgid "Can't import! The file is not a valid WPeMatico settings file."
+msgstr ""
+
+#: wpematico/app/campaign_fetch.php:608
+msgid "Category exists with correct parent: "
+msgstr ""
+
+#: wpematico/app/tools_page.php:76
+#: wpematico/app/tools_page.php:121
+msgid "Clear Log"
+msgstr ""
+
+#: wpematico/app/settings_page.php:256
+msgid "Click here to rate plugin on Wordpress"
+msgstr ""
+
+#: wpematico/app/tools_page.php:116
+msgid "Code Logs"
+msgstr ""
+
+#: wpematico/app/tools_page.php:85
+#: wpematico/app/tools_page.php:126
+msgid "Copy to Clipboard"
+msgstr ""
+
+#: wpematico/app/campaign_fetch.php:652
+msgid "Could not assign category: "
+msgstr ""
+
+#: wpematico/app/campaign_fetch.php:639
+msgid "Created category: "
+msgstr ""
+
+#: wpematico/app/campaigns_list.php:696
+msgid "Deactivate"
+msgstr ""
+
+#: wpematico/app/campaigns_list.php:695
+msgid "Deactivate this campaign"
+msgstr ""
+
+#: wpematico/app/plugin_functions.php:241
+msgid "Deactivated successfully"
+msgstr ""
+
+#: wpematico/app/tools_tabs.php:40
+msgid "Debug Log File"
+msgstr ""
+
+#: wpematico/app/tools_page.php:32
+#: wpematico/app/tools_page.php:98
+msgid ""
+"Debug mode is not enabled. Please enable it in the WPeMatico settings to "
+"view the debug log."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1334
+msgid ""
+"Defines a period of time in which only one cronjob will be fired. Since "
+"WordPress 3.3. Value: time in seconds (Default: 60)."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1294
+msgid "Displays whether or not WordPress is in Debug Mode."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1314
+msgid ""
+"Displays whether or not WordPress is showing in its site all warnings "
+"and errors reported by its Debug Mode."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1304
+msgid "Displays whether or not WordPress is writing its Debug in a file."
+msgstr ""
+
+#: wpematico/app/tools_page.php:83
+#: wpematico/app/tools_page.php:125
+msgid "Download Log"
+msgstr ""
+
+#: wpematico/app/debug_page.php:229
+msgid "Enable WPeMatico Logs"
+msgstr ""
+
+#: wpematico/app/campaign_help.php:186
+#: wpematico/app/settings_help.php:84
+msgid ""
+"Enable save the image attributes (caption, alt, title) in the media "
+"library."
+msgstr ""
+
+#: wpematico/app/debug_page.php:961
+msgid ""
+"Enables the URL-aware fopen wrappers that enable accessing URL object "
+"like files."
+msgstr ""
+
+#: wpematico/app/campaigns_list.php:818
+msgid "Error retrieving campaign data: "
+msgstr ""
+
+#: wpematico/app/campaign_edit_functions.php:889
+msgid "Every half an hour"
+msgstr ""
+
+#: wpematico/app/campaign_fetch.php:641
+msgid "Failed to create category: "
+msgstr ""
+
+#: wpematico/app/campaign_fetch.php:970
+#: wpematico/app/campaign_fetch_functions.php:498
+msgid "Failed to obtain file:"
+msgstr ""
+
+#: wpematico/app/campaign_fetch_functions.php:628
+#, php-format
+msgid "Featured image \"%1$s\": %2$s"
+msgstr ""
+
+#: wpematico/app/campaign_edit.php:443
+#, php-format
+msgid "Feed %1$s could not be parsed. (SimplePie said: %2$s)"
+msgstr ""
+
+#: wpematico/app/debug_page.php:243
+msgid "Feed Addresses"
+msgstr ""
+
+#: wpematico/app/wpematico_functions.php:1683
+#, php-format
+msgid "Feed not fetched: %s"
+msgstr ""
+
+#: wpematico/app/debug_page.php:249
+msgid ""
+"Feeds hosted on this same site are always allowed and do not need this "
+"option."
+msgstr ""
+
+#: wpematico/app/campaign_preview.php:373
+#: wpematico/app/campaign_preview_item.php:335
+msgid "Fetch Now"
+msgstr ""
+
+#: wpematico/app/debug_page.php:1284
+msgid ""
+"FileSystem Method is used for WordPress' own automatic updates feature. "
+"Most common value is \"direct\"."
+msgstr ""
+
+#: wpematico/app/campaign_fetch.php:592
+msgid "Found category under parent: "
+msgstr ""
+
+#: wpematico/app/campaign_fetch_functions.php:272
+#, php-format
+msgid "Found!: word %1$s to Cat_id %2$s"
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:343
+msgid "General performance improvements"
+msgstr ""
+
+#: wpematico/app/settings_help.php:322
+#, php-format
+msgid ""
+"If you can't show the WPeMatico credits in your posts, I really "
+"appreciate if you can take a minute to %1$s write a 5 star review on "
+"Wordpress %2$s.  :-) thanks."
+msgstr ""
+
+#: wpematico/app/settings_page.php:289
+#, php-format
+msgid ""
+"If you can't show the WPeMatico credits in your posts, I really "
+"appreciate if you can take a minute to %1$s write a 5 star review on "
+"Wordpress %2$s. :) thanks."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1327
+msgid ""
+"If you deactivates the cron function you should use WPeMatico in manual "
+"mode or with an external cron."
+msgstr ""
+
+#: wpematico/app/campaign_help.php:69
+msgid ""
+"If your user is not allowed to assign posts to other users, the campaign "
+"is saved with your own user as the author."
+msgstr ""
+
+#: wpematico/app/wpematico_functions.php:2541
+msgid ""
+"Imported content will be filtered the same way WordPress filters your "
+"own posts, because your user cannot post unfiltered HTML. Some embeds "
+"may not be kept."
+msgstr ""
+
+#: wpematico/app/wpematico_functions.php:2528
+msgid ""
+"Imported posts will be attributed to you, because your user cannot "
+"assign posts to other users."
+msgstr ""
+
+#: wpematico/app/wpematico_functions.php:2517
+msgid ""
+"Imported posts will be saved as pending review, because your user cannot "
+"publish posts."
+msgstr ""
+
+#: wpematico/app/settings_page.php:262
+msgid "Improve your Experience"
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:321
+msgid "Improved campaign execution notifications"
+msgstr ""
+
+#: wpematico/app/debug_page.php:803
+msgid "Information about the hosting provider of your site."
+msgstr ""
+
+#: wpematico/app/debug_page.php:809
+msgid "Information about the web server that is currently hosting your site."
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:420
+msgid "Introducing the GPT Spinner Addon"
+msgstr ""
+
+#: wpematico/app/debug_page.php:119
+#: wpematico/app/debug_page.php:221
+#: wpematico/app/debug_page.php:321
+#: wpematico/app/settings_page.php:116
+#: wpematico/app/settings_page.php:146
+#: wpematico/app/wpematico_functions.php:2589
+#: wpematico/app/xml-importer.php:310
+msgid "Invalid request"
+msgstr ""
+
+#: wpematico/app/debug_page.php:119
+#: wpematico/app/debug_page.php:221
+#: wpematico/app/debug_page.php:321
+#: wpematico/app/settings_page.php:116
+#: wpematico/app/settings_page.php:146
+#: wpematico/app/xml-importer.php:310
+msgid "Invalid request."
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:859
+msgid ""
+"Join our newsletter and be the first to hear about exciting updates, new "
+"features, and special offers."
+msgstr ""
+
+#: wpematico/app/settings_page.php:267
+msgid "Kicking off your Pro level to Perfect!"
+msgstr ""
+
+#: wpematico/app/campaign_log.php:60
+#, php-format
+msgid "Last Log of Campaign %1$s: %2$s"
+msgstr ""
+
+#: wpematico/app/tools_page.php:64
+#: wpematico/app/tools_page.php:114
+msgid "Learn how to use the wpematico_log() function"
+msgstr ""
+
+#: wpematico/app/settings_page.php:266
+msgid "Leveling up: Premium mode!"
+msgstr ""
+
+#: wpematico/app/campaign_help.php:365
+msgid "Limit of Categories."
+msgstr ""
+
+#: wpematico/app/tools_page.php:142
+msgid "Log file not found."
+msgstr ""
+
+#: wpematico/app/tools_tabs.php:22
+msgid "Logs"
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:292
+msgid ""
+"Many poorly structured feeds include dozens of different categories per "
+"item, which can clutter your site. With this improvement, you can "
+"maintain better organization and keep your site clean and manageable."
+msgstr ""
+
+#: wpematico/app/campaign_fetch.php:93
+#, php-format
+msgid "Max exec time is %1$d sec."
+msgstr ""
+
+#: wpematico/app/debug_page.php:905
+msgid "Max input vars limitation could truncate POST data."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1478
+msgid "Max items"
+msgstr ""
+
+#: wpematico/app/debug_page.php:1188
+msgid "Minimum version required is 1.5.1."
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:426
+msgid "More Optimizations and Performance Enhancements"
+msgstr ""
+
+#: wpematico/app/wpematico_functions.php:1811
+#, php-format
+msgid "Multipage feed: discarded %d repeated items found across pages."
+msgstr ""
+
+#: wpematico/app/wpematico_functions.php:1782
+#, php-format
+msgid ""
+"Multipage feed: page %1$d of %2$s returned no new items, stopping "
+"pagination. The source may not support the pagination parameter."
+msgstr ""
+
+#: wpematico/app/wpematico_functions.php:646
+#, php-format
+msgid "Must install at least WPeMatico Professional %s"
+msgstr ""
+
+#: wpematico/app/campaign_help.php:81
+#, php-format
+msgid "NOTE that also strip images %1$s and links %2$s"
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:849
+msgid "New content creation tools"
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:332
+msgid "New popup feedback for plugin deactivation"
+msgstr ""
+
+#: wpematico/app/debug_page.php:1480
+msgid "Next Run"
+msgstr ""
+
+#: wpematico/wpematico_class.php:142
+msgid "No campaign found"
+msgstr ""
+
+#: wpematico/app/tools_page.php:89
+#: wpematico/app/tools_page.php:128
+msgid "No log file found yet."
+msgstr ""
+
+#: wpematico/app/campaigns_list.php:1318
+msgid "No post IDs provided."
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:862
+msgid ""
+"No spam—just valuable insights straight to your inbox, about 4-5 times a "
+"year. Stay in the loop and never miss out!"
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:283
+msgid ""
+"Now, WPeMatico enhances image uploads by automatically copying original "
+"attributes like alt text, title, and caption when adding images to the "
+"WordPress Media Library."
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:848
+msgid ""
+"Now, with smarter tools, you can organize and boost your posts like "
+"never before, achieving better results with less effort."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1466
+msgid "Number of campaigns created."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1477
+msgid "Number of feeds"
+msgstr ""
+
+#: wpematico/app/debug_page.php:65
+msgid "Obtaining URL Contents."
+msgstr ""
+
+#: wpematico/app/plugin_functions.php:309
+msgid "Open Extensions plugins page:"
+msgstr ""
+
+#: wpematico/app/plugin_functions.php:91
+msgid "Our Site"
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:334
+msgid ""
+"Our goal is to keep improving our plugins, so we have added a popup "
+"window that appears when the plugin is deactivated, allowing users to "
+"easily submit their feedback."
+msgstr ""
+
+#: wpematico/wpematico.php:45
+msgid "PHP 7.0 or higher needed!"
+msgstr ""
+
+#: wpematico/app/debug_page.php:1110
+msgid ""
+"PHP Session Configuration. "
+"http://php.net/manual/es/reserved.variables.session.php"
+msgstr ""
+
+#: wpematico/app/debug_page.php:997
+msgid "PHP disabled functions to avoid potential unknown vulnerabilities."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1009
+msgid "PHP error_reporting — Shows which PHP errors are currently reported. "
+msgstr ""
+
+#: wpematico/app/debug_page.php:1549
+#: wpematico/app/debug_page.php:1932
+#: wpematico/app/settings_page.php:837
+#: wpematico/app/wpematico_functions.php:2320
+#: wpematico/app/wpematico_functions.php:2345
+#: wpematico/app/wpematico_functions.php:2453
+#: wpematico/app/wpematico_functions.php:2598
+#: wpematico/app/xml-importer.php:301
+msgid "Permission denied"
+msgstr ""
+
+#: wpematico/app/lib/update_class.php:143
+#, php-format
+msgid "Please the free version is required to run the %s. "
+msgstr ""
+
+#: wpematico/app/lib/update_class.php:141
+#, php-format
+msgid "Please update the free version before updating %s. "
+msgstr ""
+
+#: wpematico/app/lib/update_class.php:145
+#, php-format
+msgid "Please update your license to get the lastest version of %s. "
+msgstr ""
+
+#: wpematico/app/settings_page.php:338
+msgid "Pro status: Here we go!"
+msgstr ""
+
+#: wpematico/app/settings_page.php:265
+msgid "Pro-ready: Let’s get started!"
+msgstr ""
+
+#: wpematico/app/plugin_functions.php:49
+msgid "Quick Feedback"
+msgstr ""
+
+#: wpematico/app/settings_page.php:256
+msgid "Rate"
+msgstr ""
+
+#: wpematico/app/debug_page.php:1279
+msgid "Registered Post Status by different custom post types or plugins."
+msgstr ""
+
+#: wpematico/app/campaign_fetch_functions.php:501
+#: wpematico/app/campaign_fetch_functions.php:521
+msgid "Remove img tag from content."
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:847
+msgid ""
+"Robotico has brought artificial intelligence to WPeMatico! This is a "
+"major breakthrough for autoblogging, allowing you to generate unique, "
+"optimized, and automatically rewritten content to enhance SEO."
+msgstr ""
+
+#: wpematico/app/campaigns_list.php:704
+msgid "Run Now"
+msgstr ""
+
+#: wpematico/app/campaign_edit_functions.php:160
+msgid "Run status:"
+msgstr ""
+
+#: wpematico/app/campaign_fetch.php:978
+msgid "Save Featured image file failed:"
+msgstr ""
+
+#: wpematico/app/campaign_edit_functions.php:525
+#: wpematico/app/settings_page.php:414
+msgid "Save Image attributes on WP Media."
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:282
+msgid "Save image attributes on upload"
+msgstr ""
+
+#: wpematico/app/campaign_fetch_functions.php:517
+msgid "Save image file failed:"
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:237
+msgid "Secondary menu"
+msgstr ""
+
+#: wpematico/app/campaigns_list.php:1311
+msgid "Security check failed."
+msgstr ""
+
+#: wpematico/app/plugin_functions.php:95
+msgid "Send & deactivate"
+msgstr ""
+
+#: wpematico/app/campaign_help.php:366
+msgid ""
+"Set a maximum limit for the number of new categories that can be created "
+"in each fetch."
+msgstr ""
+
+#: wpematico/app/debug_page.php:980
+msgid ""
+"Sets the value of a PHP configuration option.  The configuration option "
+"will keep this new value during the script's execution, and will be "
+"restored at the script's ending. "
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:345
+msgid ""
+"Several enhancements have been made to optimize the plugin’s overall "
+"performance, resulting in significantly improved efficiency and faster "
+"processing speeds."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1002
+msgid "Shows or hide all the PHP errors and warnings in your script."
+msgstr ""
+
+#: wpematico/app/plugin_functions.php:44
+msgid "Skip & deactivate"
+msgstr ""
+
+#: wpematico/app/debug_page.php:814
+#, php-format
+msgid "Some users have reported some incompatibility issues when using %s"
+msgstr ""
+
+#: wpematico/app/campaign_fetch_functions.php:589
+msgid "Sorry, the attachment could not be inserted. An error has occurred."
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:857
+msgid "Stay Ahead with Exclusive Updates!"
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:865
+msgid "Subscribe now!"
+msgstr ""
+
+#: wpematico/app/plugin_functions.php:84
+msgid "Tell us more about your experience: (Optional)"
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:424
+msgid ""
+"The AI Etruel Rewriter API is now available, designed to optimize and "
+"transform content seamlessly. Perfect for improving your automated posts "
+"and boosting SEO, this API ensures that your content always stands out."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1601
+msgid "The Logs were activated."
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:310
+msgid ""
+"The Quick Edit option for each campaign has also been optimized, "
+"allowing faster and more convenient editing of taxonomies directly from "
+"the panel without needing to access the full editor."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1121
+msgid "The Session Cookie Path."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1116
+msgid "The Session Name."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1126
+msgid "The Session Save Path."
+msgstr ""
+
+#: wpematico/app/debug_page.php:72
+#, php-format
+msgid "The URL %s cannot be obtained."
+msgstr ""
+
+#: wpematico/app/debug_page.php:68
+#, php-format
+msgid "The URL <strong>%s</strong> has been obtained successfully."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1161
+msgid "The URL of your site's homepage."
+msgstr ""
+
+#: wpematico/app/debug_page.php:916
+msgid ""
+"The amount of time (in seconds) that your site will spend on a single "
+"operation before timing out (to avoid server lockups)"
+msgstr ""
+
+#: wpematico/app/campaign_help.php:70
+msgid ""
+"The author and the post status are saved as your own user is entitled to "
+"set them, because the campaign runs later on its schedule, when nobody "
+"is logged in. A user who cannot publish posts saves the campaign with "
+"the status Pending review, and a user who cannot assign posts to other "
+"users saves it under their own name. The campaign screen reports it "
+"right after saving, so the value you see is always the one that will be "
+"used. Administrators and editors are not affected."
+msgstr ""
+
+#: wpematico/app/debug_page.php:845
+msgid "The available space on filesystem or disk partition."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1324
+msgid "The cron function of WordPress."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1213
+msgid ""
+"The current language set in wp-config.php, WPLANG constant. Default = "
+"en_US"
+msgstr ""
+
+#: wpematico/app/debug_page.php:1218
+msgid "The current language used by WordPress. Default = English"
+msgstr ""
+
+#: wpematico/app/wpematico_functions.php:1940
+#: wpematico/app/wpematico_functions.php:1950
+#, php-format
+msgid "The feed %1$s cannot be parsed. Simplepie said: %2$s"
+msgstr ""
+
+#: wpematico/app/wpematico_functions.php:1443
+msgid "The feed URL is empty."
+msgstr ""
+
+#: wpematico/app/xml-importer.php:356
+msgid ""
+"The file is a RSS feed that must use <strong>Feed Fetcher</strong> "
+"campaign type instead of XML."
+msgstr ""
+
+#: wpematico/app/debug_page.php:893
+msgid "The largest file size that can be contained in one post."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1274
+msgid ""
+"The largest file size that can be uploaded to your WordPress "
+"installation."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1156
+msgid "The local users' browser information."
+msgstr ""
+
+#: wpematico/app/debug_page.php:943
+msgid "The maximum amount of memory (RAM) that your PHP allows in this server."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1262
+msgid "The maximum amount of memory (RAM) that your site can use at one time."
+msgstr ""
+
+#: wpematico/app/debug_page.php:898
+msgid ""
+"The maximum number of variables your server can use for a single "
+"function to avoid overloads."
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:421
+msgid ""
+"The new GPT Spinner is now included in all memberships, enhancing your "
+"content automation. With advanced AI capabilities, it automatically "
+"rewrites and generates unique posts from your RSS feed, giving you "
+"greater flexibility and content quality."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1257
+msgid "The prefix of the DB tables names."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1166
+#: wpematico/app/debug_page.php:1224
+msgid "The root URL of your site."
+msgstr ""
+
+#: wpematico/app/debug_page.php:839
+msgid "The total size of a filesystem or disk partition."
+msgstr ""
+
+#: wpematico/app/debug_page.php:821
+msgid "The version of MySQL installed on your hosting server."
+msgstr ""
+
+#: wpematico/app/debug_page.php:828
+msgid "The version of PHP installed on your hosting server."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1171
+#: wpematico/app/debug_page.php:1229
+msgid "The version of WordPress installed on your site."
+msgstr ""
+
+#: wpematico/app/debug_page.php:232
+msgid "This action will activate the function"
+msgstr ""
+
+#: wpematico/app/debug_page.php:238
+msgid ""
+"This action will save the logs of the last 10 runs of each campaign "
+"instead of only the last one, to allow follow all actions and behaviors "
+"when campaign runs."
+msgstr ""
+
+#: wpematico/app/campaign_edit.php:203
+#, php-format
+msgid ""
+"This campaign is already running (since %d sec ago). Wait until it "
+"finishes or use \"Clear Campaign\"."
+msgstr ""
+
+#: wpematico/app/wpematico_functions.php:2594
+msgid "This link is no longer valid. Please reload the campaign and try again."
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:284
+msgid ""
+"This not only improves SEO but also streamlines content management by "
+"allowing you to reuse images across multiple posts while retaining their "
+"original attributes."
+msgstr ""
+
+#: wpematico/app/campaign_edit_functions.php:164
+#: wpematico/app/campaigns_list.php:934
+#, php-format
+msgid "Timed out after %1$s sec. on %2$s"
+msgstr ""
+
+#: wpematico/app/wp-backend-helpers.php:284
+#, php-format
+msgid "Timed out after %s sec."
+msgstr ""
+
+#: wpematico/app/wpematico_functions.php:2744
+#, php-format
+msgid "Trying to set %1$s = %2$s: '%3$s' - Old value: %4$s."
+msgstr ""
+
+#: wpematico/app/campaign_fetch.php:1010
+msgid "Upload featured image failed:"
+msgstr ""
+
+#: wpematico/app/debug_page.php:1131
+msgid "Use Cookies."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1136
+msgid "Use Only Cookies."
+msgstr ""
+
+#: wpematico/app/campaign_edit_functions.php:529
+#: wpematico/app/settings_page.php:418
+msgid "Use srcset attribute instead of src of <img> tag."
+msgstr ""
+
+#: wpematico/app/debug_page.php:333
+msgid "Use this file to get support on "
+msgstr ""
+
+#: wpematico/app/campaign_help.php:187
+#: wpematico/app/settings_help.php:85
+msgid ""
+"Use this instead of Wordpress functions to improve performance. This "
+"function upload the atributes in the media library."
+msgstr ""
+
+#: wpematico/app/campaigns_list.php:85
+msgid ""
+"WARNING! WPeMatico Debug mode has been activated at Tools->System "
+"Status->Danger Zone."
+msgstr ""
+
+#: wpematico/app/addons_page.php:529
+msgid "WPeMatico Addons "
+msgstr ""
+
+#: wpematico/app/tools_page.php:68
+msgid "WPeMatico code Logs"
+msgstr ""
+
+#: wpematico/app/debug_page.php:1045
+msgid ""
+"WPeMatico uses this library to resize images and speed up your site's "
+"loading time"
+msgstr ""
+
+#: wpematico/app/debug_page.php:1252
+msgid ""
+"WPeMatico uses this method to communicate with the different RSS feeds "
+"and remote websites"
+msgstr ""
+
+#: wpematico/app/debug_page.php:1247
+msgid ""
+"WPeMatico uses this method to communicate with the different RSS feeds "
+"and remote websites."
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:846
+msgid "Welcome to WPeMatico 2.8!"
+msgstr ""
+
+#: wpematico/app/plugin_functions.php:52
+msgid ""
+"We’d love to know why you're deactivating. Your feedback helps us "
+"improve!"
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:427
+msgid ""
+"We’ve further optimized campaign execution, ensuring smoother "
+"performance and improved stability when handling large amounts of data."
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:309
+msgid ""
+"We’ve improved compatibility with the Professional 3.0.3 version, "
+"optimizing taxonomy management within WPeMatico campaigns for Custom "
+"Post Types. The functionality is now smoother and more efficient with "
+"the enhanced code."
+msgstr ""
+
+#: wpematico/app/tools_page.php:60
+#: wpematico/app/tools_page.php:112
+msgid "When debug mode is enabled, specific information will be shown here."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1176
+msgid "Whether or not you have WordPress Multisite enabled."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1234
+msgid "Wordpress option Show On Front."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1052
+msgid "XML (php.net/xml) is required."
+msgstr ""
+
+#: wpematico/app/campaign_edit.php:197
+#: wpematico/app/campaigns_list.php:404
+#: wpematico/app/campaigns_list.php:446
+#: wpematico/app/campaigns_list.php:481
+#: wpematico/app/campaigns_list.php:516
+#: wpematico/app/campaigns_list.php:557
+#: wpematico/app/debug_page.php:1549
+#: wpematico/app/debug_page.php:1932
+#: wpematico/app/settings_page.php:837
+#: wpematico/app/wpematico_functions.php:2320
+#: wpematico/app/wpematico_functions.php:2345
+#: wpematico/app/wpematico_functions.php:2453
+msgid "You are not allowed to do this."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1029
+msgid ""
+"ZipArchive is recommended. They can be used to import and export zip "
+"files."
+msgstr ""
+
+#: wpematico/app/debug_page.php:232
+msgid "and its panel in a new tab to follow log messages inside the code."
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:438
+msgid ""
+"includes powerful addons such as Professional and Full Content, which "
+"allow you to enhance autoblogging with advanced features."
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:448
+msgid ""
+"integrates seamlessly with GPT Spinner, allowing you to rewrite and "
+"enhance your content with advanced AI, ensuring originality and improved "
+"engagement."
+msgstr ""
+
+#: wpematico/app/lib/welcome.php:851
+msgid ""
+"is a powerful service for text rewriting, providing seamless integration "
+"with your campaigns to create unique and engaging content effortlessly."
+msgstr ""
+
+#: wpematico/app/debug_page.php:1103
+msgid "mcrypt (php.net/mcrypt):"
+msgstr ""
+
+#: wpematico/app/plugin_functions.php:64
+msgid "⚡ The plugin isn’t working as expected (we can help fix it!)"
+msgstr ""
+
+#: wpematico/app/plugin_functions.php:56
+msgid "✅ I only needed the plugin temporarily"
+msgstr ""
+
+#: wpematico/app/plugin_functions.php:68
+msgid ""
+"❌ The plugin caused issues on my site (let us know so we can resolve "
+"them)"
+msgstr ""
+
+#: wpematico/app/plugin_functions.php:90
+#, php-format
+msgid "💡 Remember, we offer FREE support on %s."
+msgstr ""
+
+#: wpematico/app/plugin_functions.php:80
+msgid "📝 Other"
+msgstr ""
+
+#: wpematico/app/plugin_functions.php:72
+msgid ""
+"🔄 I’m switching to another plugin (tell us what’s missing, and we may "
+"add it!)"
+msgstr ""
+
+#: wpematico/app/plugin_functions.php:60
+msgid "🔧 I’m troubleshooting an issue and will likely reactivate it"
+msgstr ""
+
+#: wpematico/app/plugin_functions.php:76
+msgid "🤷 I no longer need it"
 msgstr ""
