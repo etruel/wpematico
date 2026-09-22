@@ -836,8 +836,16 @@ if (!class_exists('WPeMatico_functions')) {
 
 			$campaigndata['campaign_type'] = (!isset($post_data['campaign_type']) ) ? 'feed' : sanitize_text_field($post_data['campaign_type']);
 
-			$campaigndata['campaign_posttype'] = (!isset($post_data['campaign_posttype']) ) ? 'publish' : sanitize_text_field($post_data['campaign_posttype']);
-			$campaigndata['campaign_customposttype'] = (!isset($post_data['campaign_customposttype']) ) ? 'post' : sanitize_text_field($post_data['campaign_customposttype']);
+			// Both name a post status and a post type, which WordPress registers as keys, so
+			// the campaign stores them in the one spelling those names can have. (2.8.27)
+			$campaigndata['campaign_posttype'] = (!isset($post_data['campaign_posttype']) ) ? 'publish' : sanitize_key($post_data['campaign_posttype']);
+			$campaigndata['campaign_customposttype'] = (!isset($post_data['campaign_customposttype']) ) ? 'post' : sanitize_key($post_data['campaign_customposttype']);
+			if (empty($campaigndata['campaign_posttype'])) {
+				$campaigndata['campaign_posttype'] = 'publish';
+			}
+			if (empty($campaigndata['campaign_customposttype'])) {
+				$campaigndata['campaign_customposttype'] = 'post';
+			}
 			$arrTaxonomies = get_object_taxonomies($campaigndata['campaign_customposttype']);
 			if (in_array('post_format', $arrTaxonomies)) {
 				$campaigndata['campaign_post_format'] = (!isset($post_data['campaign_post_format']) ) ? '0' : sanitize_text_field($post_data['campaign_post_format']);
@@ -1426,6 +1434,12 @@ if (!class_exists('WPeMatico_functions')) {
 			}
 			$checked[$key] = self::check_feed_url($key);
 
+			// The address that comes back is the one actually requested, and it is asked
+			// about again when the request is built. Answer that from here.
+			if (!is_wp_error($checked[$key]) && !array_key_exists($checked[$key], $checked)) {
+				$checked[$checked[$key]] = $checked[$key];
+			}
+
 			return $checked[$key];
 		}
 
@@ -1457,8 +1471,9 @@ if (!class_exists('WPeMatico_functions')) {
 			}
 
 			// Feeds published by this same installation, such as the XML campaign type and the
-			// feeds some add-ons generate, are always fetchable.
-			if (in_array(strtolower($host), self::get_own_hosts(), true)) {
+			// feeds some add-ons generate, are always fetchable. This is the site answering on
+			// the address it is reached at, so the port is part of what identifies it.
+			if (in_array(self::host_port_key($host, $parts, $scheme), self::get_own_hosts(), true)) {
 				return $url;
 			}
 
@@ -1543,19 +1558,48 @@ if (!class_exists('WPeMatico_functions')) {
 		}
 
 		/**
-		 * Hosts that always count as this installation.
+		 * Addresses that always count as this installation: the host WordPress is reached at,
+		 * on the ports a web site answers on — the one the site URL names, and the two default
+		 * web ports, so a site published over http also reaches itself over https.
+		 *
+		 * Another port on the same machine is another service, and reaching it is not what
+		 * publishing a feed on this installation means.
 		 *
 		 * @since 2.8.26
-		 * @return  array  Lower case host names.
+		 * @return  array  Lower case "host:port" keys.
 		 */
 		protected static function get_own_hosts() {
-			$hosts = array(
-				wp_parse_url(home_url(), PHP_URL_HOST),
-				wp_parse_url(site_url(), PHP_URL_HOST),
-			);
-			$hosts = array_filter(array_map('strtolower', array_filter($hosts)));
+			$hosts = array();
+			foreach (array(home_url(), site_url()) as $own_url) {
+				$parts = wp_parse_url($own_url);
+				if (empty($parts['host'])) {
+					continue;
+				}
+				$scheme = (!empty($parts['scheme'])) ? strtolower($parts['scheme']) : '';
+				$host	= strtolower(trim($parts['host'], '.'));
 
-			return array_values(array_unique($hosts));
+				$hosts[] = self::host_port_key($host, $parts, $scheme);
+				$hosts[] = $host . ':80';
+				$hosts[] = $host . ':443';
+			}
+
+			return array_values(array_unique(array_filter($hosts)));
+		}
+
+		/**
+		 * Builds the "host:port" key the two functions above compare, with the port the
+		 * scheme implies when the URL does not name one.
+		 *
+		 * @since 2.8.27
+		 * @param   string  $host    Host name.
+		 * @param   array   $parts   Result of wp_parse_url() for the same URL.
+		 * @param   string  $scheme  Lower case scheme.
+		 * @return  string
+		 */
+		protected static function host_port_key($host, $parts, $scheme) {
+			$port = (is_array($parts) && !empty($parts['port'])) ? (int) $parts['port'] : (('https' === $scheme) ? 443 : 80);
+
+			return strtolower(trim($host, '.')) . ':' . $port;
 		}
 
 		/**
@@ -1570,25 +1614,36 @@ if (!class_exists('WPeMatico_functions')) {
 		 * @return  string|null  The internal address, or null when there is nothing to refuse.
 		 */
 		protected static function resolve_internal_ip($host) {
+			static $resolved_hosts = array();
+
+			$key = strtolower($host);
+			if (array_key_exists($key, $resolved_hosts)) {
+				return $resolved_hosts[$key];
+			}
+
 			$addresses = array();
 			if (filter_var($host, FILTER_VALIDATE_IP)) {
 				$addresses[] = $host;
 			} elseif (preg_match('#^\[(.+)\]$#', $host, $matches) && filter_var($matches[1], FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
 				$addresses[] = $matches[1];
 			} else {
+				// One lookup per host and per request: a multipage feed asks about the same
+				// host once per page, and a cron pass often reads several feeds of one site.
 				$resolved = @gethostbynamel($host);
 				if (is_array($resolved)) {
 					$addresses = $resolved;
 				}
 			}
 
+			$resolved_hosts[$key] = null;
 			foreach ($addresses as $address) {
 				if (self::is_internal_ip($address)) {
-					return $address;
+					$resolved_hosts[$key] = $address;
+					break;
 				}
 			}
 
-			return null;
+			return $resolved_hosts[$key];
 		}
 
 		/**
@@ -1601,6 +1656,13 @@ if (!class_exists('WPeMatico_functions')) {
 		protected static function is_internal_ip($ip) {
 			if (!filter_var($ip, FILTER_VALIDATE_IP)) {
 				return true;  // Not an address at all.
+			}
+
+			// An IPv6 address can carry an IPv4 one inside it and reach exactly what that
+			// address reaches, so it is classified as the address it stands for.
+			$embedded = self::embedded_ipv4($ip);
+			if (null !== $embedded) {
+				return self::is_internal_ip($embedded);
 			}
 
 			// Covers loopback, the private ranges, link-local (169.254.0.0/16), 0.0.0.0/8 and
@@ -1619,12 +1681,70 @@ if (!class_exists('WPeMatico_functions')) {
 				if (192 === $parts[0] && 0 === $parts[1] && 0 === $parts[2]) {
 					return true;  // 192.0.0.0/24, IETF protocol assignments.
 				}
+				if (192 === $parts[0] && 0 === $parts[1] && 2 === $parts[2]) {
+					return true;  // 192.0.2.0/24, documentation.
+				}
+				if (192 === $parts[0] && 88 === $parts[1] && 99 === $parts[2]) {
+					return true;  // 192.88.99.0/24, 6to4 relay anycast.
+				}
+				if (198 === $parts[0] && (18 === $parts[1] || 19 === $parts[1])) {
+					return true;  // 198.18.0.0/15, benchmarking.
+				}
+				if (198 === $parts[0] && 51 === $parts[1] && 100 === $parts[2]) {
+					return true;  // 198.51.100.0/24, documentation.
+				}
+				if (203 === $parts[0] && 0 === $parts[1] && 113 === $parts[2]) {
+					return true;  // 203.0.113.0/24, documentation.
+				}
 				if (224 <= $parts[0] && 239 >= $parts[0]) {
 					return true;  // 224.0.0.0/4, multicast.
 				}
+			} elseif (preg_match('/^fe[c-f][0-9a-f]:/i', $ip)) {
+				return true;  // fec0::/10, site local.
 			}
 
 			return false;
+		}
+
+		/**
+		 * The IPv4 address an IPv6 address stands for, when it carries one: IPv4 mapped
+		 * (::ffff:0:0/96) and compatible addresses, the NAT64 well known prefix (64:ff9b::/96)
+		 * and 6to4 (2002::/16). Null for an address that is only IPv6.
+		 *
+		 * @since 2.8.27
+		 * @param   string  $ip
+		 * @return  string|null
+		 */
+		protected static function embedded_ipv4($ip) {
+			if (!filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
+				return null;
+			}
+
+			$packed = @inet_pton($ip);
+			if (false === $packed || 16 !== strlen($packed)) {
+				return null;
+			}
+
+			$bytes	= array_values(unpack('C*', $packed));
+			$ipv4	= null;
+			$prefix = implode('.', array_slice($bytes, 0, 8));
+
+			if ('0.0.0.0.0.0.0.0' === $prefix && (255 === $bytes[10] && 255 === $bytes[11] || 0 === $bytes[8] + $bytes[9] + $bytes[10] + $bytes[11])) {
+				$ipv4 = array_slice($bytes, 12, 4);  // ::ffff:a.b.c.d and ::a.b.c.d
+			} elseif (0 === $bytes[0] && 100 === $bytes[1] && 255 === $bytes[2] && 155 === $bytes[3]) {
+				$ipv4 = array_slice($bytes, 12, 4);  // 64:ff9b::a.b.c.d
+			} elseif (32 === $bytes[0] && 2 === $bytes[1]) {
+				$ipv4 = array_slice($bytes, 2, 4);   // 2002:a.b.c.d::
+			}
+
+			if (null === $ipv4) {
+				return null;
+			}
+
+			$ipv4 = implode('.', $ipv4);
+
+			// ::/96 also holds the unspecified address and ::1, which are not IPv4 at all.
+			return ('0.0.0.0' === $ipv4 || '0.0.0.1' === $ipv4) ? null : $ipv4;
 		}
 
 		/**
@@ -1719,11 +1839,54 @@ if (!class_exists('WPeMatico_functions')) {
 			}
 			if (has_filter('wpematico_fetchfeed'))
 				$feed = apply_filters('wpematico_fetchfeed', $feed, $url);
+
+			/**
+			 * A feed that answers with a redirect is read from the address it points to, and
+			 * that address is resolved by the same rule as the one stored in the campaign.
+			 * Registered after the filter above, so it also covers a feed object an add-on
+			 * built for itself. (2.8.27)
+			 */
+			self::set_feed_http_layer($feed);
+
 			$feed->enable_cache(false);
 			$feed->init();
 			$feed->handle_content_type();
 
 			return $feed;
+		}
+
+		/**
+		 * Points a SimplePie instance at the HTTP layer that resolves every address it asks
+		 * for, redirects included.
+		 *
+		 * SimplePie follows a redirect by building a new request, so each hop is a request of
+		 * its own and passes through WPeMatico_SimplePie_File. cURL is told not to follow
+		 * redirects on its own, which is what keeps every hop visible on the releases that
+		 * used to hand that job over to it. The number of requests is the same either way.
+		 *
+		 * @since 2.8.27
+		 * @param   object  $feed  SimplePie instance, or whatever an add-on returned in its place.
+		 * @return  void
+		 */
+		protected static function set_feed_http_layer($feed) {
+			if (!is_object($feed) || !method_exists($feed, 'get_registry')) {
+				return;
+			}
+
+			require_once(WPEMATICO_PLUGIN_DIR . 'app/lib/class-wpematico-simplepie-file.php');
+			if (!class_exists('WPeMatico_SimplePie_File', false)) {
+				return;
+			}
+
+			// SimplePie 1.8 renamed the types its registry knows; both names are answered.
+			$type = class_exists('SimplePie\\File') ? 'SimplePie\\File' : 'File';
+			if (!$feed->get_registry()->register($type, 'WPeMatico_SimplePie_File', true)) {
+				return;
+			}
+
+			if (isset($feed->curl_options) && is_array($feed->curl_options)) {
+				$feed->curl_options[CURLOPT_FOLLOWLOCATION] = false;
+			}
 		}
 
 		/**
@@ -2499,8 +2662,20 @@ function wpematico_campaign_allows_unfiltered_html($campaign) {
  * @return array The campaign data to store.
  */
 function wpematico_apply_campaign_editing_rights($campaign) {
-	$post_type_name = (!empty($campaign['campaign_customposttype'])) ? $campaign['campaign_customposttype'] : 'post';
-	$post_type		= get_post_type_object($post_type_name);
+	// The post type is resolved first and in the spelling WordPress registers it under, so
+	// every decision below is taken against the type the imported posts will really have.
+	// A type no plugin is registering right now — one whose plugin is momentarily off — is
+	// judged by the rights over ordinary posts, so the campaign keeps the type it targets
+	// and the user's rights are still the ones that decide. (2.8.27)
+	$post_type_name = (!empty($campaign['campaign_customposttype'])) ? sanitize_key($campaign['campaign_customposttype']) : 'post';
+	if (isset($campaign['campaign_customposttype'])) {
+		$campaign['campaign_customposttype'] = $post_type_name;
+	}
+
+	$post_type = get_post_type_object($post_type_name);
+	if (empty($post_type) || empty($post_type->cap)) {
+		$post_type = get_post_type_object('post');
+	}
 	if (empty($post_type) || empty($post_type->cap)) {
 		return $campaign;
 	}

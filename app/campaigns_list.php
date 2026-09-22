@@ -1263,8 +1263,8 @@ if (!class_exists('WPeMatico_Campaigns')) :
 			$campaign['campaign_max']			 = (!isset($posdata['campaign_max']) ) ? 0 : absint($posdata['campaign_max']);
 			$campaign['campaign_author']		 = (!isset($posdata['campaign_author']) ) ? 0 : absint($posdata['campaign_author']);
 			$campaign['campaign_commentstatus']	 = (!isset($posdata['campaign_commentstatus']) ) ? 'closed' : sanitize_text_field($posdata['campaign_commentstatus']);
-			$campaign['campaign_customposttype'] = (!isset($posdata['campaign_customposttype']) ) ? 'post' : sanitize_text_field($posdata['campaign_customposttype']);
-			$campaign['campaign_posttype']		 = (!isset($posdata['campaign_posttype']) ) ? 'publish' : sanitize_text_field($posdata['campaign_posttype']);
+			$campaign['campaign_customposttype'] = (!isset($posdata['campaign_customposttype']) ) ? 'post' : sanitize_key($posdata['campaign_customposttype']);
+			$campaign['campaign_posttype']		 = (!isset($posdata['campaign_posttype']) ) ? 'publish' : sanitize_key($posdata['campaign_posttype']);
 			$campaign['campaign_tags']			 = (!isset($posdata['campaign_tags']) ) ? '' : sanitize_text_field($posdata['campaign_tags']);
 
 			//parse disabled checkfields that dont send any data
@@ -1347,6 +1347,11 @@ if (!class_exists('WPeMatico_Campaigns')) :
 
 				// Apply filters and save campaign
 				$campaign = apply_filters('wpematico_check_campaigndata', $campaign);
+
+				// The status and the author of the imported posts are settled against the
+				// rights of the user saving the campaign, as on every other campaign save.
+				$campaign = wpematico_apply_campaign_editing_rights($campaign);
+
 				$campaign = apply_filters('wpematico_presave_campaign', $campaign);
 				WPeMatico::update_campaign($post_id, $campaign);
 			}

@@ -2,7 +2,7 @@
 Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU 
 Tags: RSS, XML, feed to post, rss aggregator, content curation
-Stable tag: 2.8.26
+Stable tag: 2.8.27
 Tested up to: 7.1
 Requires at least: 4.8
 Requires PHP: 7.0
@@ -213,6 +213,16 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 == Changelog ==
 
 > View complete release history at [WPeMatico Releases](https://wpematico.com/releases/)
+
+= 2.8.27 – Sep 22, 2026 =
+
+> _**Recommended security update for all users.**_
+
+* **Improved:** A feed that answers with a redirect is now read from the address it points to only when that address is one a feed may live on, the same rule the address stored in the campaign goes through. Feeds that move to another address, to `https://` or to a syndication service keep working exactly as before, and the campaign log names the address it stopped at when one of them leads somewhere a feed cannot be fetched from.
+* **Improved:** The addresses a feed may not live on now also cover the ranges reserved for documentation, benchmarking and network transition, and the IPv6 forms that stand for an IPv4 address. Sites that read feeds from their own network keep doing so with the "Allow feeds on private and local addresses" option in WPeMatico > Tools > Danger Zone, or one feed at a time with the `wpematico_allow_internal_feeds` filter.
+* **Improved:** Feeds published by this same site are fetched with no configuration, as before, on the addresses a site answers on.
+* **Improved:** The post type a campaign publishes to is now stored in the one spelling WordPress registers it under, so the post status, the post author and the markup an imported post keeps are always settled against that type and the rights of the user saving the campaign. Bulk editing campaigns follows the same rule as editing one. Campaigns edited by administrators and editors keep working exactly as before.
+* **Improved:** Feed addresses are resolved once per host and per run, so a campaign with several feeds on the same site, and a multipage feed, do less work than before.
 
 = 2.8.26 – Sep 14, 2026 =
 
