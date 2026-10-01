@@ -1,0 +1,1188 @@
+<?php
+
+/**
+ * WPeMatico plugin for WordPress
+ * campaign_fetch
+ * Contains all the methods to run manually or scheduled campaign.
+
+ * @requires  campaign_fetch_functions
+ * @package   wpematico
+ * @link      https://github.com/etruel/wpematico
+ * @author    Esteban Truelsegaard <etruel@etruel.com>
+ * @copyright 2006-2018 Esteban Truelsegaard
+ * @license   GPL v2 or later
+ */
+// don't load directly
+if (!defined('ABSPATH')) {
+    header('Status: 403 Forbidden');
+    header('HTTP/1.1 403 Forbidden');
+    exit();
+}
+
+if (!class_exists('wpematico_campaign_fetch'))
+include_once("campaign_fetch_functions.php");
+
+class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
+
+    public $cfg = array();
+    public $campaign_id = 0;  // $post_id of campaign
+    public $campaign = array();
+    public $images_options = array();
+    public $audios_options = array();
+    public $videos_options = array();
+    private $feeds = array();
+    private $fetched_posts = 0;
+    private $lasthash = array();
+    private $currenthash = array();
+    public $current_item = array();
+    private $aborted = false;  // true when the run was skipped because the campaign was already running (2.9)
+
+    public function __construct($campaign_id) {
+        global $wpdb, $campaign_log_message, $jobwarnings, $joberrors;
+        $jobwarnings = 0;
+        $joberrors = 0;
+
+		if (empty($campaign_id)) {
+            return false; // If campaign is empty return false.
+        }
+		
+		//set function for PHP user defined error handling
+		if (defined('WP_DEBUG') && WP_DEBUG) {
+			set_error_handler('wpematico_joberrorhandler', E_ALL | E_DEPRECATED); // Maximum visibility
+		} else {
+			set_error_handler('wpematico_joberrorhandler', E_ALL & ~(E_NOTICE | E_DEPRECATED));
+		}
+
+        $this->campaign_id = $campaign_id;   //set campaign id
+        $this->campaign = WPeMatico :: get_campaign($this->campaign_id);
+
+        // --- Anti-duplicate run lock ---
+        // Atomically claim the campaign before doing any work. If it is already
+        // running (a concurrent/overlapping cron pass, or a manual run while a cron
+        // run is in progress), abort without processing to avoid duplicate posts.
+        if (!WPeMatico :: claim_campaign($this->campaign_id)) {
+            $this->aborted = true;
+            $running_since = WPeMatico :: get_campaign_running_since($this->campaign_id);
+            /* translators: %d seconds */
+            trigger_error(sprintf(__('Campaign skipped: already running since %d sec ago.', 'wpematico'), max(0, time() - $running_since)), E_USER_NOTICE);
+            restore_error_handler();
+            return false;
+        }
+        // Claimed: advance the next scheduled run immediately so a concurrent cron
+        // pass (which has not advanced cronnextrun yet) does not re-take this campaign.
+        // cronnextrun lives in two places (the standalone post_meta used for cheap reads
+        // and the copy inside the campaign_data array); update both here so they stay in
+        // sync from the start of the run, not only at fetch_end.
+        $next_cronrun = (int) WPeMatico :: time_cron_next($this->campaign['cron']);
+        update_post_meta($this->campaign_id, 'cronnextrun', $next_cronrun);
+        $this->campaign['cronnextrun'] = $next_cronrun;
+        update_post_meta($this->campaign_id, 'campaign_data', $this->campaign);
+
+        $this->cfg = get_option(WPeMatico :: OPTION_KEY);
+        $this->cfg = apply_filters('wpematico_check_options', $this->cfg);
+
+        $this->images_options = WPeMatico::get_images_options($this->cfg, $this->campaign);
+        $this->audios_options = WPeMatico::get_audios_options($this->cfg, $this->campaign);
+        $this->videos_options = WPeMatico::get_videos_options($this->cfg, $this->campaign);
+
+        $campaign_timeout = (int) $this->cfg['campaign_timeout'];
+
+        wpematico_init_set('ignore_user_abort', 'On');
+        wpematico_init_set('max_execution_time', $campaign_timeout);
+		
+//        trigger_error(sprintf(__('Max exec time is %1$d sec.', 'wpematico'), ini_get('max_execution_time')), E_USER_WARNING);
+
+		// Adds a delay after each inserted post
+		if ((int) $this->cfg['throttle'] > 0)
+            add_action('wpematico_inserted_post', array('WPeMatico', 'throttling_inserted_post'));
+
+        //Set job start settings
+        $this->campaign['starttime'] = time(); //set start time for job (UTC). The persisted run claim lives in the FETCH_LOCK_META meta (see claim_campaign above).
+        $this->campaign['lastpostscount'] = 0; // Set it to zero now and assign value at end fetch.
+		
+        
+        //Save start time data
+        update_post_meta($this->campaign_id, 'lastrun', $this->campaign['lastrun']); 
+		// Current actions and filters to execute on this fetch  
+		$this->set_actions_and_filters();
+
+		/** 
+		 * Wpematico_init_fetching action
+		 * Mostly used to add more filters to be executed later on fetching process. 
+		 */
+        if (has_action('Wpematico_init_fetching'))
+            do_action('Wpematico_init_fetching', $this->campaign);
+
+        // check function for memorylimit
+        if (!function_exists('memory_get_usage')) {
+            wpematico_init_set('memory_limit', apply_filters('admin_memory_limit', '256M')); //WordPress default
+			/* translators: %s Mb memory */
+			trigger_error(sprintf(__('Memory limit set to %1$s ,because can not use PHP: memory_get_usage() function to dynamically increase the Memory!', 'wpematico'), ini_get('memory_limit')), E_USER_WARNING);
+        }
+        //run job parts
+        $postcount = 0;
+        $this->feeds = $this->campaign['campaign_feeds']; // Feeds of this campaign.
+
+        foreach ($this->feeds as $kf => $feed) {
+            WPeMatico::$current_feed = $feed;
+            // interrupt the script if timeout 
+            if (time() - $this->campaign['starttime'] >= $campaign_timeout) {
+			/* translators: %s Decimal, seconds  */
+                trigger_error(sprintf(__('Ending feed, reached running timeout at %1$d sec.', 'wpematico'), $campaign_timeout), E_USER_WARNING);
+                break;
+            }
+			// Reset the timer setting again the max_execution_time
+            wpematico_init_set('max_execution_time', $campaign_timeout, true);
+            $postcount += $this->processFeed($feed, $kf);   #- ---- Run all feeds      
+        }
+
+        $this->fetched_posts += $postcount;
+
+        $this->fetch_end(); // if everything was ok, call fetch_end and end class
+    }
+
+	/**
+	 * Current actions and filters to execute on each fetch
+	 */
+    public function set_actions_and_filters() {
+        //hook to add actions and filter on init fetching 
+        //add_action('Wpematico_init_fetching', array(__CLASS__, 'my_wpematico_init_fetching') ); 
+        add_filter('wpematico_custom_chrset', array('WPeMatico_functions', 'detect_encoding_from_headers'), 999, 1); // move all encoding functions to wpematico_campaign_fetch_functions
+        add_filter('wpematico_after_item_parsers', array('wpematico_campaign_fetch_functions', 'wpematico_strip_links_a'), 1, 4);
+        add_filter('wpematico_after_item_parsers', array('wpematico_campaign_fetch_functions', 'wpematico_strip_links'), 2, 4);
+        add_filter('wpematico_after_item_parsers', array('wpematico_campaign_fetch_functions', 'wpematico_template_parse'), 3, 4);
+        add_filter('wpematico_after_item_parsers', array('wpematico_campaign_fetch_functions', 'wpematico_campaign_rewrites'), 4, 4);
+
+        if ($this->campaign['campaign_type'] == "youtube") {
+            add_filter('wpematico_get_post_content_feed', array('wpematico_campaign_fetch_functions', 'wpematico_get_yt_rss_tags'), 999, 4);
+            add_filter('wpematico_get_item_images', array('wpematico_campaign_fetch_functions', 'wpematico_get_yt_image'), 999, 4);
+            add_filter('wpematico_excludes', array('wpematico_campaign_fetch_functions', 'wpematico_exclude_shorts'), 10, 4);
+        }
+        if ($this->cfg['add_extra_duplicate_filter_meta_source'] && !$this->cfg['disableccf']) {
+            add_filter('wpematico_duplicates', array($this, 'WPeisDuplicatedMetaSource'), 10, 3);
+        }
+        if (isset($this->images_options['fifu']) && $this->images_options['fifu']) {
+            add_filter('wpematico_set_featured_img', array('wpematico_campaign_fetch_functions', 'url_meta_set_featured_image'), 999, 2);
+            add_filter('wpematico_get_featured_img', array('wpematico_campaign_fetch_functions', 'url_meta_set_featured_image'), 999, 2);
+            add_filter('wpematico_item_filters_pos_img', array('wpematico_campaign_fetch_functions', 'url_meta_set_featured_image_setmeta'), 999, 2);
+        }
+    }
+        /**
+         * Processes every feed of a campaign
+         * @param   string $feed       URL string    Feed 
+         * @return  int    $realcount number the posts added
+         */
+    private function processFeed($feed, $kf){
+        global $realcount;
+
+        //        @set_time_limit(0);
+        //		  $campaign_timeout = (int) $this->cfg['campaign_timeout'];
+        //        wpematico_init_set('max_execution_time', $campaign_timeout);
+
+		/* translators: %s Feed Url */
+        trigger_error('<span class="coderr b"><b>' . sprintf(__('Processing feed %s.', 'wpematico'), esc_html($feed)) . '</b></span>', E_USER_NOTICE);   // Log
+
+        $items = array();
+        $count = 0;
+        $prime = true;
+
+        /**
+         * Open the feed exactly as every other screen opens it.
+         *
+         * The type list (wpematico_rss_campaign_types), wpematico_simplepie_url, the
+         * deprecated Wpematico_process_fetching path and wpematico_custom_simplepie all
+         * live in WPeMatico::open_campaign_feed() now -- this used to be one of five
+         * copies of the same block, each free to drift from the others.
+         */
+        $simplepie = WPeMatico::open_campaign_feed($feed, $this->campaign, array(
+            'params_filter' => 'wpematico_fetch_feed_params',
+            'feed_key'      => $kf,
+            'fetch_obj'     => $this,
+            'stupidly_fast' => $this->cfg['set_stupidly_fast'],
+            'max'           => $this->campaign['campaign_max'],
+            'order_by_date' => $this->campaign['campaign_feed_order_date'],
+            'force_feed'    => false,
+        ));
+
+        $duplicate_options = WPeMatico::get_duplicate_options($this->cfg, $this->campaign);
+
+        do_action('Wpematico_process_fetching_' . $this->campaign['campaign_type'], $this);  // Wpematico_process_fetching_feed
+
+        // Read unconditionally by item_duplicate_state() below, and only filled when the
+        // campaign jumps duplicates.
+        $last_hashes = array();
+
+        if (!$duplicate_options['allowduphash'] && $duplicate_options['jumpduplicates']) {
+            $last_hashes_name = '_lasthashes_' . sanitize_file_name($feed);
+            $last_hashes = get_post_meta($this->campaign_id, $last_hashes_name, false);
+            if (empty($last_hashes)) {
+                $last_hashes = array();
+            }
+            $max_duplicated_hashes_count = apply_filters('wpematico_max_duplicated_hashes_count', 20, $this->campaign_id, $feed);
+
+            while (sizeof($last_hashes) > $max_duplicated_hashes_count) {
+                $old_hash = array_shift($last_hashes);
+                if (!empty($old_hash)) {
+                    delete_post_meta($this->campaign_id, $last_hashes_name, $old_hash);
+                }
+            }
+        }
+        
+        // Set your desired maximum memory usage in bytes 
+        $batchSize = apply_filters( 'wpematico_fetch_batchsize' , ($duplicate_options['jumpduplicates']) ? 0 : $this->campaign['campaign_max']);
+        
+        if(empty($batchSize)){
+            $simplePieItems = $simplepie->get_items();
+        }else{
+            $simplePieItems = $simplepie->get_items(0, $batchSize);
+        }
+
+        foreach ($simplePieItems as $item) {
+            
+            if ($item->get_permalink() || $this->campaign['campaign_type'] == 'youtube' || $this->campaign['campaign_type'] == 'xml' || !empty($item->get_item_tags('', 'link')) ) {
+                $permalink = $item->get_permalink();
+            } else {
+                $permalink = $item->get_id();
+            }
+
+           
+            // Get the source Permalink trying to redirect if is set.
+            $permalink = $this->getReadUrl($permalink, $this->campaign);
+            
+            if ($prime) {
+                //with first item get the hash of the last item (new) that will be saved.
+                $this->lasthash[wpematico_feed_hash_key('lasthash', $feed)] = md5($permalink);
+                $prime = false;
+            }
+
+
+            $this->currenthash[wpematico_feed_hash_key('currenthash', $feed)] = md5($permalink); // the hash of the current item feed
+
+            // One decision, shared with the preview screens: see
+            // WPeMatico::item_duplicate_state(). What to do about it is still ours.
+            $duplicate = WPeMatico::item_duplicate_state(
+                $this->campaign_id,
+                $this->campaign,
+                $feed,
+                $item,
+                $duplicate_options,
+                $this->currenthash[wpematico_feed_hash_key('currenthash', $feed)],
+                $last_hashes
+            );
+            if ('' !== $duplicate) {
+                // 'hashes' is the ring of already seen hashes, which only exists while
+                // jumping duplicates -- it never stops the run, it skips one item.
+                if ('hashes' === $duplicate || $duplicate_options['jumpduplicates']) {
+                    trigger_error(__('Jumping duplicated post. Continuing.', 'wpematico'), E_USER_NOTICE);
+                    continue;
+                }
+                trigger_error(__('Filtering duplicated posts.', 'wpematico'), E_USER_NOTICE);
+                break;
+            }
+
+            $count++;
+            array_unshift($items, $item); // add at Post stack in correct order by date 		  
+            if ($count == $this->campaign['campaign_max']) {
+				/* translators: %s post title and hash */
+                trigger_error(sprintf(__('Campaign fetch limit reached at %s.', 'wpematico'), $this->campaign['campaign_max']), E_USER_NOTICE);
+                break;
+            }
+        }
+        $campaign_timeout = (int) $this->cfg['campaign_timeout'];
+        // Processes post stack
+        $realcount = 0;
+        foreach ($items as $item) {
+            // interrupt the script if timeout 
+            if (time() - $this->campaign['starttime'] >= $campaign_timeout) {
+				/* translators: %s Decimal. Timeout Seconds */
+                trigger_error(sprintf(__('Reached running timeout at %1$d sec.', 'wpematico'), $campaign_timeout), E_USER_WARNING);
+                break;
+            }
+            // set timeout for rest of the items to Timeout setting less current run time
+            wpematico_init_set('max_execution_time', $campaign_timeout, true); // - ( current_time('timestamp') - $this->campaign['starttime'] ), true);
+            $realcount++;
+            if ($item->get_permalink() || $this->campaign['campaign_type'] == 'youtube' || $this->campaign['campaign_type'] == 'xml' || !empty($item->get_item_tags('', 'link'))) {
+                $permalink = $item->get_permalink();
+            } else {
+                $permalink = $item->get_id();
+            }
+            // Get the source Permalink trying to redirect if is set.
+            $permalink = $this->getReadUrl($permalink, $this->campaign);
+            $this->current_item['permalink'] = $permalink;
+            $this->currenthash[wpematico_feed_hash_key('currenthash', $feed)] = md5($permalink); // the hash of the current item feed
+
+            // Persist the dedup hash before processItem so an interrupted run can't re-insert the item.
+            $lasthashvar = '_lasthash_' . sanitize_file_name($feed);
+            $hashvalue = $this->currenthash[wpematico_feed_hash_key('currenthash', $feed)];
+            add_post_meta($this->campaign_id, $lasthashvar, $hashvalue, true) or
+                update_post_meta($this->campaign_id, $lasthashvar, $hashvalue);
+
+            if (!$duplicate_options['allowduphash'] && $duplicate_options['jumpduplicates']) {
+                add_post_meta($this->campaign_id, $last_hashes_name, $hashvalue, false);
+            }
+
+            $suma = $this->processItem($simplepie, $item, $feed);
+
+            if (isset($suma) && is_int($suma)) {
+                $realcount = $realcount + $suma;
+                $suma = "";
+            }
+            $this->current_item = array();
+        }
+           
+        unset($items);
+        unset($simplepie);
+
+        if ($realcount) {
+			/* translators: %s Decimal. Number of published posts */
+            trigger_error(sprintf(__('%s posts added', 'wpematico'), $realcount), E_USER_NOTICE);
+        }
+
+        return $realcount;
+    }
+
+    /**
+     * Processes an item: parses and filters
+     * @param   $feed       object    Feed database object
+     * @param   $item       object    SimplePie_Item object
+     * @return bool true on success
+     */
+    function processItem($feed, $item, $feedurl) {
+        global $wpdb, $realcount,$wpematico_fifu_meta, $post;
+		/* translators: %s Current item title  */
+        trigger_error(sprintf('<b>' . __('Processing item %s', 'wpematico'), $item->get_title() . '</b>'), E_USER_NOTICE);
+        
+        // First exclude filters
+        if ($this->exclude_filters($this->current_item, $this->campaign, $feed, $item)) {
+            return -1;  // Subtracts this item from the total.
+        }
+        // Item date
+        $itemdate = null;  // current date
+        if ($this->campaign['campaign_feeddate']) {
+            $itemdate = $item->get_date('U');
+        }
+        if (!$this->campaign['campaign_feeddate_forced']) {
+            if ($this->campaign['campaign_feeddate']) {
+                if (($itemdate > $this->campaign['lastrun'] && $itemdate < time())) {
+                    trigger_error(__('Assigning original date to post.', 'wpematico') . "($itemdate)", E_USER_NOTICE);
+                } else {
+                    $itemdate = null;
+                    trigger_error(__('Original date out of range.  Assigning current date to post.', 'wpematico'), E_USER_NOTICE);
+                }
+            }
+        } else {
+            trigger_error(__('Forced original date to post.', 'wpematico') . "($itemdate)", E_USER_NOTICE);
+        }
+        $this->current_item['date'] = apply_filters('wpematico_get_feeddate', $itemdate, $this->current_item, $this->campaign, $feedurl, $item);
+
+        // Item title
+		$this->current_item['title'] = $item->get_title();
+        $this->current_item['title'] = htmlspecialchars_decode($this->current_item['title']);
+        if ($this->campaign['campaign_enable_convert_utf8']) {
+            $this->current_item['title'] = WPeMatico::change_to_utf8($this->current_item['title']);
+        }
+		/**
+		 * 	Since 2.7 
+		 * Allows parser the title by addons or external filters
+		 */
+		$this->current_item['title'] = apply_filters('wpematico_get_post_title', $this->current_item['title'], $this->current_item, $this->campaign, $item, $realcount);
+
+        $this->current_item['title'] = esc_attr($this->current_item['title']);
+
+        $this->current_item['title'] = html_entity_decode($this->current_item['title'], ENT_QUOTES | ENT_HTML401, 'UTF-8');
+		
+        // Item author
+        //if( $this->cfg['nonstatic'] ) { $this->current_item = WPeMaticoPRO_Helpers :: author($this->current_item,$this->campaign, $feedurl, $item ); }else $this->current_item['author'] = $this->campaign['campaign_author'];
+        $this->current_item['author'] = $this->campaign['campaign_author'];
+        $this->current_item = apply_filters('wpematico_get_author', $this->current_item, $this->campaign, $feedurl, $item);
+
+        // Item content
+        $this->current_item['content'] = apply_filters('wpematico_get_post_content_feed', $item->get_content(), $this->campaign, $feed, $item);
+        // Item excerpt
+        $this->current_item['excerpt'] = '';
+        if ($this->campaign['campaign_get_excerpt']) {
+            $this->current_item['excerpt'] = apply_filters('wpematico_get_post_excerpt_feed', $item->get_description(), $this->campaign, $feed, $item);
+        }
+        $this->current_item = apply_filters('wpematico_get_post_content', $this->current_item, $this->campaign, $feed, $item);
+
+        if ($this->campaign['campaign_enable_convert_utf8']) {
+            $this->current_item['content'] = WPeMatico::change_to_utf8($this->current_item['content']);
+        }
+
+        if ($this->cfg['entity_decode_html']) {
+            $this->current_item['content'] = html_entity_decode($this->current_item['content'], ENT_COMPAT | ENT_HTML401, 'UTF-8');
+        }
+
+
+        $this->current_item = apply_filters('wpematico_item_pre_media', $this->current_item, $this->campaign, $feed, $item);
+        
+        if (isset($this->current_item['SKIP']) && is_int($this->current_item['SKIP']))
+            return $this->current_item['SKIP'];
+
+        /**
+         * @since 1.7.0
+         * Parse and upload audio
+         */
+        $options_audios = WPeMatico::get_audios_options($this->cfg, $this->campaign);
+        $this->current_item = apply_filters('wpematico_item_filters_pre_audio', $this->current_item, $this->campaign);
+        $this->current_item = $this->Get_Item_Audios($this->current_item, $this->campaign, $feed, $item, $options_audios);
+        // Uploads and changes img sources in content
+        $this->current_item = $this->Item_Audios($this->current_item, $this->campaign, $feed, $item, $options_audios);
+
+        /**
+         * @since 1.7.0
+         * Parse and upload video
+         */
+        $options_videos = WPeMatico::get_videos_options($this->cfg, $this->campaign);
+        $this->current_item = apply_filters('wpematico_item_filters_pre_video', $this->current_item, $this->campaign);
+        //gets video array 
+        $this->current_item = $this->Get_Item_Videos($this->current_item, $this->campaign, $feed, $item, $options_videos);
+
+        // Uploads and changes img sources in content
+        $this->current_item = $this->Item_Videos($this->current_item, $this->campaign, $feed, $item, $options_videos);
+        //********* Parse and upload images
+        /**
+         * @since 1.7.0 
+         * Get image options.
+         */
+        $options_images = WPeMatico::get_images_options($this->cfg, $this->campaign);
+        $this->current_item = apply_filters('wpematico_item_filters_pre_img', $this->current_item, $this->campaign);
+        //gets images array 
+        $this->current_item = $this->Get_Item_images($this->current_item, $this->campaign, $feed, $item, $options_images);
+        $this->current_item['featured_image'] = apply_filters('wpematico_set_featured_img', '', $this->current_item, $this->campaign, $feed, $item);
+        if ($options_images['fifu-video']) {
+            $fifu_videos = !empty($this->current_item['videos']) ? $this->current_item['videos'] : $this->parseVideos($this->current_item['content'], true);
+            if (!empty($fifu_videos)) {
+                if(function_exists('fifu_dev_set_video'))
+                    $this->current_item['featured_image'] = fifu_dev_set_video($this->campaign_id, $fifu_videos[0]);
+            }
+        }else{
+            if ($options_images['featuredimg']) {
+                if (!empty($this->current_item['images'])) {
+                    $this->current_item['featured_image'] = apply_filters('wpematico_get_featured_img', $this->current_item['images'][0], $this->current_item);
+                }elseif (!empty($this->current_item['featured_image'])) {
+                    $this->current_item['featured_image'] = apply_filters('wpematico_get_featured_img', $this->current_item['featured_image'], $this->current_item);
+                }
+            }
+        }
+       
+        if ($options_images['rmfeaturedimg']) { // removes featured from content
+            if(!empty($this->current_item['featured_image'])){
+                $this->current_item['content'] = $this->strip_Image_by_src($this->current_item['featured_image'], $this->current_item['content']);
+            }elseif(!empty($wpematico_fifu_meta['fifu_image_url'])){
+                $this->current_item['content'] = $this->strip_Image_by_src($wpematico_fifu_meta['fifu_image_url'], $this->current_item['content']);
+            }
+        }
+        
+        /**
+         * @since 2.7.7
+         * Filter to put in content 1st image link
+         */
+
+         
+        $this->current_item = apply_filters('wpematico_put_first_img', $this->current_item, $this->campaign, $item);
+
+        // Uploads and changes img sources in content
+        $this->current_item = $this->Item_images($this->current_item, $this->campaign, $feed, $item, $options_images);
+        $this->current_item = $this->featured_image_selector($this->current_item, $this->campaign, $feed, $item, $options_images);
+
+        $this->current_item = apply_filters('wpematico_item_filters_pos_img', $this->current_item, $this->campaign);
+
+        $this->current_item = apply_filters('wpematico_item_pos_media', $this->current_item, $this->campaign, $feed, $item);
+        if (isset($this->current_item['SKIP']) && is_int($this->current_item['SKIP']))
+            return $this->current_item['SKIP'];
+
+
+        //********** Do parses contents and titles
+        $this->current_item = $this->Item_parsers($this->current_item, $this->campaign, $feed, $item, $realcount, $feedurl);
+        if (isset($this->current_item['SKIP']) && is_int($this->current_item['SKIP']))
+            return $this->current_item['SKIP'];
+
+        // Campaign categories first; the auto ones are appended to the array.
+        $this->current_item['categories'] = (array) $this->campaign['campaign_categories'];
+        if ($this->campaign['campaign_autocats']) {
+            if ($autocats = $item->get_categories()) {
+                /**
+                 * wpematico_before_insert_autocats
+                 * Filters the array of categories obtained by simplepie to be parsed before inserted into the database.
+                 * @since 2.1.2
+                 * @param array $autocats The array of categories names.
+                 */
+                $autocats = apply_filters('wpematico_before_insert_autocats', $autocats, $this);
+                trigger_error(__('Assigning Auto Categories.', 'wpematico'), E_USER_NOTICE);
+                
+                if($this->campaign['campaign_category_limit']){
+                    // Retrieve the category limit from the campaign settings
+                    $category_limit = $this->campaign['max_categories'];
+                }
+                
+        
+                // Limit the number of categories to create based on the limit set
+                $counter = 0;
+        
+                foreach ($autocats as $id => $catego) {
+                    // Stop processing categories once the limit is reached
+                    if (isset($category_limit) && $category_limit > 0 && $counter >= $category_limit) {
+                        break; // Exit the loop once the limit is reached
+                    }
+        
+                    $catname = $catego->term;
+                    if (!empty($catname)) {
+                        
+                        // Define the father of the campaign
+                        $parent_cat = 0;
+                        if (isset($this->campaign['campaign_parent_autocats']) && $this->campaign['campaign_parent_autocats'] > 0) {
+                            $parent_cat = intval($this->campaign['campaign_parent_autocats']);
+                        }
+                        
+                        // Search for category by name WITHIN the specific parent
+                        $term_id = false;
+                        
+                        // Method 1: Find all child categories of the parent with that name
+                        if ($parent_cat > 0) {
+                            $child_terms = get_terms(array(
+                                'taxonomy' => 'category',
+                                'name' => $catname,
+                                'parent' => $parent_cat,
+                                'hide_empty' => false,
+                                'fields' => 'ids'
+                            ));
+                            
+                            if (!is_wp_error($child_terms) && !empty($child_terms)) {
+                                $term_id = intval($child_terms[0]);
+                                trigger_error(__('Found category under parent: ', 'wpematico') . $catname . ' (ID: ' . $term_id . ')', E_USER_NOTICE);
+                            }
+                        }
+                        
+                        // Method 2: If no specific parent was found, search globally
+                        if (!$term_id) {
+                            $term_check = term_exists($catname, 'category');
+                            if ($term_check && !is_wp_error($term_check)) {
+                                $found_term_id = is_array($term_check) ? $term_check['term_id'] : $term_check;
+                                $found_term = get_term($found_term_id, 'category');
+                                
+                                // Verify that it is under the correct parent
+                                if ($found_term && !is_wp_error($found_term)) {
+                                    if ($parent_cat == 0 || $found_term->parent == $parent_cat) {
+                                        // It is the correct category (without parent or with the correct parent).
+                                        $term_id = $found_term_id;
+                                        trigger_error(__('Category exists with correct parent: ', 'wpematico') . $catname, E_USER_NOTICE);
+                                    } else {
+                                        // It exists but with a different parent - we need to create a new one
+                                        trigger_error(__('Category exists with different parent (ID: ' . $found_term->parent . '), will create new under parent: ' . $parent_cat . ': ', 'wpematico') . $catname, E_USER_NOTICE);
+                                        $term_id = false; // Force creation
+                                    }
+                                }
+                            }
+                        }
+                        
+                        // If no valid category was found, create a new one.
+                        if (!$term_id) {
+                            /**
+                             * wpematico_create_autocat
+                             * Whether a category found in the feed may be created when it does not exist yet.
+                             * Return false to assign only categories already present in the site.
+                             * @since 2.9
+                             * @param bool   $create     Default true.
+                             * @param string $catname    The category name coming from the feed.
+                             * @param int    $parent_cat Parent category it would be created under, 0 for none.
+                             * @param array  $campaign   The campaign data.
+                             */
+                            if (apply_filters('wpematico_create_autocat', true, $catname, $parent_cat, $this->campaign)) {
+                                trigger_error(__('Adding Category: ', 'wpematico') . $catname . ' under parent ID: ' . $parent_cat, E_USER_NOTICE);
+                                
+                                $arg_description = __('Auto Added by WPeMatico', 'wpematico');
+                                if (isset($this->cfg['disable_categories_description']) && $this->cfg['disable_categories_description']) {
+                                    $arg_description = '';
+                                }
+                                $arg_description = apply_filters('wpematico_addcat_description', $arg_description, $catname);
+        
+                                $arg = array(
+                                    'description' => $arg_description, 
+                                    'parent' => $parent_cat
+                                    // We do NOT define slugs—we let WP generate them automatically.
+                                );
+                                
+                                $new_term = wp_insert_term($catname, "category", $arg);
+                                
+                                if (!is_wp_error($new_term) && isset($new_term['term_id'])) {
+                                    $term_id = intval($new_term['term_id']);
+                                    trigger_error(__('Created category: ', 'wpematico') . $catname . ' with ID: ' . $term_id . ' and slug: ' . (isset($new_term['slug']) ? $new_term['slug'] : 'auto-generated'), E_USER_NOTICE);
+                                } else {
+                                    trigger_error(__('Failed to create category: ', 'wpematico') . $catname . ' Error: ' . (is_wp_error($new_term) ? $new_term->get_error_message() : 'unknown'), E_USER_WARNING);
+                                }
+                            }
+                        }
+                        
+                        // Assign the category to the post
+                        if ($term_id) {
+                            $this->current_item['categories'][] = $term_id;
+                            trigger_error(__('Assigned category to post: ', 'wpematico') . $catname . ' (ID: ' . $term_id . ')', E_USER_NOTICE);
+                            $counter++;
+                        } else {
+                            trigger_error(__('Could not assign category: ', 'wpematico') . $catname, E_USER_WARNING);
+                        }
+                    }
+                }
+            }
+        }
+
+        $this->current_item['posttype'] = $this->campaign['campaign_posttype'];
+        $this->current_item['allowpings'] = $this->campaign['campaign_allowpings'];
+        $this->current_item['commentstatus'] = $this->campaign['campaign_commentstatus'];
+        $this->current_item['customposttype'] = $this->campaign['campaign_customposttype'];
+
+        $this->current_item['campaign_post_format'] = $this->campaign['campaign_post_format'];
+
+        //********** Do filters
+        $this->current_item = $this->Item_filters($this->current_item, $this->campaign, $feed, $item);
+        $this->current_item = apply_filters('wpematico_pos_item_filters', $this->current_item, $this->campaign, $feed, $item);
+
+        $this->current_item = apply_filters('wpematico_meta_custom', $this->current_item, $this->campaign, $feed, $item);
+
+        if ($this->cfg['nonstatic'] && !empty($this->current_item['tags'])) {
+            $this->current_item['campaign_tags'] = array_unique(array_merge($this->current_item['campaign_tags'], $this->current_item['tags']), SORT_REGULAR);
+        }
+
+        // Meta
+        if (isset($this->cfg['disableccf']) && $this->cfg['disableccf']) {
+            $this->current_item['meta'] = array();
+        } else {
+            $arraycf = array(
+                'wpe_campaignid' => $this->campaign_id,
+                'wpe_feed' => $feed->feed_url,
+                'wpe_sourcepermalink' => isset($this->current_item['permalink']) ? $this->current_item['permalink'] : ''
+            );
+            $this->current_item['meta'] = (isset($this->current_item['meta']) && !empty($this->current_item['meta']) ) ? array_merge($this->current_item['meta'], $arraycf) : $arraycf;
+
+            /**
+             * wpem_meta_data
+             * Filter the array of meta fields to be parsed before attached to the post.
+             * @since 1.3
+             * @param array $this->current_item['meta']  The array of meta fields: name => value.
+             */
+            $this->current_item['meta'] = apply_filters('wpem_meta_data', $this->current_item['meta']);
+        }
+
+        if ($this->campaign['campaign_type'] == 'bbpress') {
+            if (empty($this->campaign['campaign_bbpress_forum'])) {
+                $this->current_item['customposttype'] = 'forum';
+            } else {
+                $this->current_item['customposttype'] = 'topic';
+                if (!empty($this->campaign['campaign_bbpress_topic'])) {
+                    $this->current_item['customposttype'] = 'reply';
+                }
+            }
+        }
+
+
+
+        $this->current_item['customposttype'] = (isset($this->current_item['customposttype']) && !empty($this->current_item['customposttype']) ) ? $this->current_item['customposttype'] : 'post';
+        $this->current_item['commentstatus'] = (isset($this->current_item['commentstatus']) && !empty($this->current_item['commentstatus']) ) ? $this->current_item['commentstatus'] : 'open';
+
+        $images = $this->current_item['images'];
+        $campaign_tags = $this->current_item['campaign_tags'];
+        $post_format = $this->current_item['campaign_post_format'];
+
+        $this->current_item['date_formated'] = ($this->current_item['date']) ? gmdate('Y-m-d H:i:s', $this->current_item['date'] + (get_option('gmt_offset') * 3600)) : null;
+
+        $truecontent = '';
+        if ($this->cfg['woutfilter'] && $this->campaign['campaign_woutfilter']) {
+            $truecontent = $this->current_item['content'];
+            $this->current_item['content'] = '';
+        }
+
+        if ($this->campaign['copy_permanlink_source'] && $this->campaign['campaign_type'] != 'youtube') {
+            $this->current_item['slug'] = WPeMatico::get_slug_from_permalink($item->get_permalink());
+        } else {
+            $this->current_item['slug'] = sanitize_title($this->current_item['title']);
+        }
+
+        /**
+         * wpematico_post_parent
+         * Filters the parent post assigned to the item, before the campaign type has its say.
+         * @since 2.9
+         * @param int    $post_parent  Parent post ID. Default 0.
+         * @param array  $current_item The item being processed.
+         * @param array  $campaign     The campaign data.
+         * @param object $item         The SimplePie item.
+         */
+        $this->current_item['post_parent'] = apply_filters('wpematico_post_parent', 0, $this->current_item, $this->campaign, $item);
+
+        if ($this->campaign['campaign_type'] == 'bbpress') {
+            if ($this->current_item['customposttype'] == 'topic') {
+                $this->current_item['post_parent'] = $this->campaign['campaign_bbpress_forum'];
+            }
+            if ($this->current_item['customposttype'] == 'reply') {
+                $this->current_item['post_parent'] = $this->campaign['campaign_bbpress_topic'];
+            }
+        }
+        $this->current_item['title'] = apply_filters('wpem_parse_title', $this->current_item['title']);
+        $this->current_item['content'] = apply_filters('wpem_parse_content', $this->current_item['content']);
+        $this->current_item['excerpt'] = apply_filters('wpem_parse_excerpt', $this->current_item['excerpt']);
+        $this->current_item['slug'] = apply_filters('wpem_parse_name', $this->current_item['slug']);
+        $this->current_item['date_formated'] = apply_filters('wpem_parse_date', $this->current_item['date_formated']);
+        $this->current_item['posttype'] = apply_filters('wpem_parse_status', $this->current_item['posttype']);
+        $this->current_item['customposttype'] = apply_filters('wpem_parse_post_type', $this->current_item['customposttype']);
+        $this->current_item['author'] = apply_filters('wpem_parse_authorid', $this->current_item['author']);
+        $this->current_item['commentstatus'] = apply_filters('wpem_parse_comment_status', $this->current_item['commentstatus']);
+        $this->current_item['post_parent'] = apply_filters('wpem_parse_parent', $this->current_item['post_parent']);
+
+        $args = array(
+            'post_title' => $this->current_item['title'],
+            'post_content' => $this->current_item['content'],
+            'post_excerpt' => isset($this->current_item['excerpt']) ? $this->current_item['excerpt'] : '',
+            'post_name' => $this->current_item['slug'],
+            'post_content_filtered' => apply_filters('wpem_parse_content_filtered', $this->current_item['content']),
+            'post_status' => $this->current_item['posttype'],
+            'post_type' => $this->current_item['customposttype'],
+            'post_author' => $this->current_item['author'],
+            'post_date' => $this->current_item['date_formated'],
+            'comment_status' => $this->current_item['commentstatus'],
+            'post_parent' => $this->current_item['post_parent'],
+            'ping_status' => ($this->current_item['allowpings']) ? "open" : "closed"
+        );
+
+        if (!empty($this->current_item['categories']) && is_object_in_taxonomy($args['post_type'], 'category')) {
+            if (empty($args['post_category'])) {
+                $args['post_category'] = array();
+            }
+            $args['post_category'] = $this->current_item['categories'];
+        }
+
+        if (!empty($this->current_item['campaign_tags']) && is_object_in_taxonomy($args['post_type'], 'post_tag')) {
+            if (empty($args['tags_input'])) {
+                $args['tags_input'] = array();
+            }
+            $args['tags_input'] = $this->current_item['campaign_tags'];
+        }
+
+        if (has_filter('wpematico_pre_insert_post'))
+            $args = apply_filters('wpematico_pre_insert_post', $args, $this->campaign);
+
+        // $item travels with it: an add-on that takes the insert over has to call
+        // postProcessItem() with the feed item, and the fetch object holds no property
+        // carrying it.
+        if (apply_filters('wpematico_allow_insertpost', true, $this, $args, $item)) {
+            // Feed content keeps its markup for campaigns allowed to store unfiltered HTML.
+            // The previous state of the filter is restored right after the insert, so this
+            // decision never reaches anything else saved during the same request.
+            $unfiltered_html = wpematico_campaign_allows_unfiltered_html($this->campaign);
+            $kses_was_active = (false !== has_filter('content_save_pre', 'wp_filter_post_kses'));
+            if ($unfiltered_html && $kses_was_active) {
+                remove_filter('content_save_pre', 'wp_filter_post_kses');
+//			    remove_filter('content_filtered_save_pre', 'wp_filter_post_kses');
+            }
+
+            $post_id = wp_insert_post($args);
+
+            if ($unfiltered_html && $kses_was_active) {
+                add_filter('content_save_pre', 'wp_filter_post_kses');
+            }
+
+            // "Post Content Unfiltered" stays the administrator's call: enabling it in the
+            // plugin settings is what lets the users who edit campaigns keep the content of
+            // their items exactly as the feed sends it.
+            if ($this->cfg['woutfilter'] && $this->campaign['campaign_woutfilter']) {
+                global $wpdb, $wp_locale, $current_blog;
+                $table_name = $wpdb->prefix . "posts";
+                $blog_id = @$current_blog->blog_id;
+                $this->current_item['content'] = $truecontent;
+                trigger_error('** ' . __('Adding unfiltered content', 'wpematico') . ' **', E_USER_NOTICE);
+                $wpdb->update($table_name, array('post_content' => $this->current_item['content'], 'post_content_filtered' => $this->current_item['content']), array('ID' => $post_id));
+            }
+
+            $this->postProcessItem($post_id, $item);
+
+            // If pingback/trackbacks
+            if ($this->campaign['campaign_allowpings']) {
+                trigger_error(__('Processing item pingbacks', 'wpematico'), E_USER_NOTICE);
+                require_once(ABSPATH . WPINC . '/comment.php');
+                pingback($this->current_item['content'], $post_id);
+            }
+            // wpematico_allow_insertpost
+        } else {
+            /**
+             * What the item counts for when a filter blocked core's insert.
+             *
+             * -1 subtracts it from the run's total, which is right when nothing was
+             * published. An add-on that inserts the post itself returns 0, so the item
+             * keeps the +1 it already got.
+             *
+             * @since 2.9
+             * @param int                     $count Default -1.
+             * @param wpematico_campaign_fetch $this  The fetch object.
+             * @param array                   $args  The wp_insert_post() args.
+             * @param object                  $item  The feed item.
+             */
+            return (int) apply_filters('wpematico_blocked_insert_count', -1, $this, $args, $item);
+        }
+    }
+
+    function postProcessItem($post_id, $item) {
+
+        $options_images = WPeMatico::get_images_options($this->cfg, $this->campaign);
+
+        if ($this->campaign['campaign_type'] == 'bbpress') {
+
+
+            if ($this->current_item['customposttype'] == 'topic') {
+
+                if (function_exists('bbp_bump_forum_topic_count') && function_exists('bbp_update_forum_last_active_time')) {
+                    bbp_bump_forum_topic_count($this->campaign['campaign_bbpress_forum']);
+
+                    bbp_update_forum_last_active_time($this->campaign['campaign_bbpress_forum'], current_time('mysql'));
+                    bbp_update_forum_last_topic_id($this->campaign['campaign_bbpress_forum'], $post_id);
+                    bbp_update_forum_last_reply_id($this->campaign['campaign_bbpress_forum'], $post_id);
+                    bbp_update_forum_last_active_id($this->campaign['campaign_bbpress_forum'], $post_id);
+                    bbp_update_topic_last_active_time($post_id, current_time('mysql'));
+                }
+
+                $this->current_item['meta']['_bbp_forum_id'] = $this->campaign['campaign_bbpress_forum'];
+                $this->current_item['meta']['_bbp_topic_id'] = $post_id;
+                $this->current_item['meta']['_bbp_reply_count'] = 0;
+            }
+            if ($this->current_item['customposttype'] == 'reply') {
+
+                if (function_exists('bbp_bump_topic_reply_count') && function_exists('bbp_update_topic_last_active_time')) {
+
+                    bbp_bump_forum_reply_count($this->campaign['campaign_bbpress_forum']);
+                    bbp_update_forum_last_active_time($this->campaign['campaign_bbpress_forum'], current_time('mysql'));
+                    bbp_update_forum_last_active_id($this->campaign['campaign_bbpress_forum'], $this->campaign['campaign_bbpress_topic']);
+
+                    bbp_bump_topic_reply_count($this->campaign['campaign_bbpress_topic']);
+                    bbp_update_topic_last_active_time($this->campaign['campaign_bbpress_topic'], current_time('mysql'));
+                    bbp_update_topic_last_active_id($this->campaign['campaign_bbpress_topic'], $post_id);
+                }
+
+                $this->current_item['meta']['_bbp_forum_id'] = $this->campaign['campaign_bbpress_forum'];
+                $this->current_item['meta']['_bbp_topic_id'] = $this->campaign['campaign_bbpress_topic'];
+            }
+        }
+
+
+        if (!empty($this->current_item['categories'])) { //Adds to campaign logs the categories added
+            $wpe_categories_added = wp_get_object_terms($post_id, 'category');
+            $aaa = '';
+            foreach ($wpe_categories_added AS $wpe_category_added) {
+                $aaa .= $wpe_category_added->term_id . ', ';
+            }
+            if (!empty($aaa)) {
+                $aaa = rtrim($aaa, ', ');
+                trigger_error(__("Categories added: ", 'wpematico') . $aaa, E_USER_NOTICE);
+            }
+        }
+
+        if (!empty($this->current_item['campaign_tags'])) { //Adds to campaign logs the post tags added
+            $wpe_tags_added = wp_get_object_terms($post_id, 'post_tag');
+            $aaa = '';
+            foreach ($wpe_tags_added AS $wpe_tag_added) {
+                $aaa .= $wpe_tag_added->term_id . ', ';
+            }
+            if (!empty($aaa)) {
+                $aaa = rtrim($aaa, ', ');
+                trigger_error(__("Tags added: ", 'wpematico') . $aaa, E_USER_NOTICE);
+            }
+        } else if (has_action('wpematico_chinese_tags')) {
+            do_action('wpematico_chinese_tags', $post_id, $this->current_item['content'], $this->campaign);
+        }
+
+        $post_format = $this->current_item['campaign_post_format'];
+
+        if (!empty($post_format)) { //inserto post format
+            //$aaa = wp_set_post_terms( $post_id, $category, 'post_format');
+            $aaa = set_post_format($post_id, $post_format);
+            if (!empty($aaa))
+                trigger_error(__("Post format added: ", 'wpematico') . $post_format, E_USER_NOTICE);
+        }
+
+
+
+        // insert PostMeta
+        foreach ($this->current_item['meta'] as $key => $value) {
+            add_post_meta($post_id, $key, $value, true) or
+                    update_post_meta($post_id, $key, $value);
+        }
+
+        if (has_action('wpematico_inserted_post'))
+            do_action('wpematico_inserted_post', $post_id, $this->campaign, $item);
+
+
+        // Attaching images uploaded to created post in media library 
+        // Featured Image
+        $featured_image_attach_id = 0;
+        $img_new_url = '';
+        if (!empty($this->current_item['nofeatimg'])) {
+
+            trigger_error('<strong>' . __('Skip Featured Image.', 'wpematico') . '</strong>', E_USER_NOTICE);
+			
+        } else if (!empty($this->current_item['featured_image']) && (!$this->images_options['fifu'])) {
+
+            trigger_error(__('Featuring Image Into Post.', 'wpematico'), E_USER_NOTICE);
+
+            if (!isset($this->current_item['images'][0]) or ($this->current_item['images'][0] != $this->current_item['featured_image'])) {
+
+                $itemUrl = $this->current_item['permalink'];
+                $imagen_src = $this->current_item['featured_image'];
+				
+                $imagen_src_real = $this->getRelativeUrl($itemUrl, $imagen_src);
+				
+                // Parse the original name on url to get the file correctly 
+                $imagen_src_real = $this->parse_src_image($imagen_src_real);
+
+                $allowed = (isset($this->cfg['images_allowed_ext']) && !empty($this->cfg['images_allowed_ext']) ) ? $this->cfg['images_allowed_ext'] : 'jpg,gif,png,tif,bmp,jpeg';
+                $allowed = apply_filters('wpematico_allowext', $allowed);
+                
+                // Parse the destiny filename to store the file correctly on WP media or system directory
+                $newimgname = $this->parse_dst_image($imagen_src_real, $this->current_item, $this->campaign, $item);
+                
+                // Proceed with the Fetch and Store the Image
+                $upload_dir = wp_upload_dir();
+                $imagen_dst = trailingslashit($upload_dir['path']) . $newimgname;
+                $imagen_dst_url = trailingslashit($upload_dir['url']) . $newimgname;
+                $img_new_url = "";
+               
+				// Check for allowed extensions
+                if (in_array(str_replace('.', '', strrchr(strtolower($imagen_dst), '.')), explode(',', $allowed))) {
+                    trigger_error('Uploading media=' . $imagen_src . ' <b>to</b> imagen_dst=' . $imagen_dst . '', E_USER_NOTICE);
+					
+					// First I try my fastest function
+                    $newfile = ($options_images['customupload']) ? WPeMatico::save_file_from_url($imagen_src_real, $imagen_dst) : false;
+                    if ($newfile) { // uploaded
+                        trigger_error('Uploaded media=' . $newfile, E_USER_NOTICE);
+                        $imagen_dst = $newfile;
+                        $imagen_dst_url = trailingslashit($upload_dir['url']) . basename($newfile);
+                        $img_new_url = $imagen_dst_url;
+						
+                    } else { // Upload failed 
+						// try other methods
+                        $bits = WPeMatico::wpematico_get_contents($imagen_src_real); // Read the file
+						
+						if (!$bits) { //Reading errors
+							// Actions if give nothing or getting errors 
+							trigger_error(__('Failed to obtain file:', 'wpematico') . $imagen_src_real, E_USER_WARNING);
+						}else{
+							// Obtained -> Try to upload
+							$mirror = wp_upload_bits($newimgname, NULL, $bits);
+							if (!$mirror['error']) { // Upload well 
+								trigger_error($mirror['url'], E_USER_NOTICE);
+								$img_new_url = $mirror['url'];
+							} else { // Uploading errors
+								trigger_error(__('Save Featured image file failed:', 'wpematico') . $imagen_dst, E_USER_WARNING);
+							}
+	                    }
+                    }
+                }
+            } else { // The image[0] was already uploaded with the images in the content, do not upload it again
+                $img_new_url = $this->current_item['featured_image'];
+            }
+            if (!empty($img_new_url)) {
+                $this->current_item['featured_image'] = $img_new_url;
+                array_shift($this->current_item['images']);  //deletes featured image from array to avoid double upload below
+                $attachid = false;
+                if (!$options_images['imgattach']) {
+                    // Get previously uploaded attach IDs, false if not exist.  (Just attach once/first time)
+					
+                    // $attachid = $this->get_attach_id_from_url($this->current_item['featured_image']); 
+                    $attachid = attachment_url_to_postid($this->current_item['featured_image']);
+                }
+                if ($attachid == false) {
+                    $attachid = $this->insertfileasattach($this->current_item['featured_image'], $post_id);
+                }
+                set_post_thumbnail($post_id, $attachid);
+
+                // Now, save attributes like alt, title, etc., to the WordPress media
+                if(isset($this->current_item['image_attributes']) && !empty($this->current_item['image_attributes'])){
+                    $this->set_image_attributes($this->current_item, $attachid);
+                    array_shift($this->current_item['image_attributes']);  //deletes featured image attributes from array to avoid double upload below
+                }
+                
+                $featured_image_attach_id = $attachid;
+                //add_post_meta($post_id, '_thumbnail_id', $attachid);
+            } else {
+                //trigger_error( __('Upload featured image failed:', 'wpematico' ).$imagen_dst,E_USER_WARNING);
+            }
+        }
+        $featured_image_attach_id = apply_filters('wpematico_featured_image_attach_id', $featured_image_attach_id, $post_id, $this->current_item, $this->campaign, $item);
+        if ($featured_image_attach_id == 0) {
+            trigger_error(__('The post has no featured image.', 'wpematico'), E_USER_WARNING);
+        }
+
+        // Attach files in post content previously uploaded
+        if ($options_images['imgcache'] && $options_images['imgattach']) {
+            if (is_array($this->current_item['images'])) {
+                if (sizeof($this->current_item['images'])) { // If there is any image.
+                    trigger_error(__('Attaching images', 'wpematico') . ": " . sizeof($this->current_item['images']), E_USER_NOTICE);
+                    foreach ($this->current_item['images'] as $imagen_src) {
+                        $attachid = $this->insertfileasattach($imagen_src, $post_id);
+                        if(!empty($this->current_item['image_attributes'])){
+                            $this->set_image_attributes($this->current_item, $attachid);
+                            array_shift($this->current_item['image_attributes']);
+                        }
+                    }
+                }
+            }
+        }
+
+
+        /**
+         * Attach audios to post
+         * @since 1.7.0
+         */
+        $options_audios = WPeMatico::get_audios_options($this->cfg, $this->campaign);
+        if ($options_audios['audio_cache'] && $options_audios['audio_attach']) {
+            if (is_array($this->current_item['audios'])) {
+                if (sizeof($this->current_item['audios'])) { // if exist a audio.
+                    trigger_error(__('Attaching audios', 'wpematico') . ": " . sizeof($this->current_item['audios']), E_USER_NOTICE);
+                    foreach ($this->current_item['audios'] as $audio_src) {
+                        $attachid = $this->insertfileasattach($audio_src, $post_id);
+                    }
+                }
+            }
+        }
+
+        /**
+         * Attach videos to post
+         * @since 1.7.0
+         */
+        $options_videos = WPeMatico::get_videos_options($this->cfg, $this->campaign);
+        if ($options_videos['video_cache'] && $options_videos['video_attach']) {
+            if (is_array($this->current_item['videos'])) {
+                if (sizeof($this->current_item['videos'])) { // if exist a video.
+                    trigger_error(__('Attaching videos', 'wpematico') . ": " . sizeof($this->current_item['videos']), E_USER_NOTICE);
+                    foreach ($this->current_item['videos'] as $video_src) {
+                        $attachid = $this->insertfileasattach($video_src, $post_id);
+                    }
+                }
+            }
+        }
+    }
+
+    private function fetch_end() {
+        $this->campaign['lastrun'] = $this->campaign['starttime'];
+        $this->campaign['lastruntime'] = time() - $this->campaign['starttime'];
+        $this->campaign['starttime'] = '';
+        $this->campaign['postscount'] += $this->fetched_posts; // Adds up the processed posts.
+        $this->campaign['lastpostscount'] = $this->fetched_posts; // Posts processed this time.
+
+        /* 		foreach($this->campaign['campaign_feeds'] as $feed) {    // Saves the last hash of each feed
+          @$this->campaign[$feed]['lasthash'] = $this->lasthash[$feed]; // to check duplicates by the hash of the original permalink
+          }
+         */
+        $this->campaign = apply_filters('Wpematico_end_fetching', $this->campaign, $this->fetched_posts);
+        //if($this->cfg['nonstatic']){$this->campaign=WPeMaticoPRO_Helpers::ending($this->campaign,$this->fetched_posts);}
+
+        WPeMatico :: update_campaign($this->campaign_id, $this->campaign);  //Save Campaign new data
+
+        // Release the run lock: the campaign finished and can run again.
+        WPeMatico :: release_campaign($this->campaign_id);
+
+		/* translators: %s Decimal. Seconds */
+        trigger_error(sprintf(__('Campaign fetched in %s sec.', 'wpematico'), $this->campaign['lastruntime']), E_USER_NOTICE);
+    }
+
+    public function __destruct() {
+        global $campaign_log_message, $joberrors;
+        // Run was skipped because the campaign was already running: nothing to finalize.
+        if ($this->aborted) {
+            return;
+        }
+        //Send mail with log
+        $sendmail = false;
+        if ($joberrors > 0 and $this->campaign['mailerroronly'] and !empty($this->campaign['mailaddresslog']))
+            $sendmail = true;
+        if (!$this->campaign['mailerroronly'] and !empty($this->campaign['mailaddresslog']))
+            $sendmail = true;
+        if ($sendmail) {
+            switch ($this->cfg['mailmethod']) {
+                case 'SMTP':
+                    do_action('wpematico_smtp_email');
+                    break;
+                default:
+                    $headers[] = 'From: ' . $this->cfg['mailsndname'] . ' <' . $this->cfg['mailsndemail'] . '>';
+                    //$headers[] = 'Cc: John Q Codex <jqc@wordpress.org>';
+                    //$headers[] = 'Cc: iluvwp@wordpress.org'; // note you can just use a simple email address
+                    break;
+            }
+            $headers[] = 'Content-Type: text/html; charset=UTF-8';
+
+            $to_mail = $this->campaign['mailaddresslog'];
+
+            $subject = __('WPeMatico Log ', 'wpematico') . ' ' . current_time('Y-m-d H:i') . ': ' . $this->campaign['campaign_title'];
+
+            $mailbody = "WPeMatico Log" . "\n";
+            $mailbody .= __("Campaign Name:", 'wpematico') . " " . $this->campaign['campaign_title'] . "\n";
+            if (!empty($joberrors))
+                $mailbody .= __("Errors:", 'wpematico') . " " . $joberrors . "\n";
+            if (!empty($jobwarnings))
+                $mailbody .= __("Warnings:", 'wpematico') . " " . $jobwarnings . "\n";
+
+            $mailbody .= "\n" . $campaign_log_message;
+            $mailbody .= "\n\n\n<hr>";
+            $mailbody .= __("WPeMatico by ", "wpematico") . "<a href='https://etruel.com'>etruel</a> \n";
+
+            wp_mail($to_mail, $subject, $mailbody, $headers, '');
+        }
+
+        $danger_options = WPeMatico::get_danger_options();
+
+        if (!$danger_options['wpe_debug_logs_campaign']) {
+            // Save last log as meta field in campaign, replace if exist
+            add_post_meta($this->campaign_id, 'last_campaign_log', $campaign_log_message, true) or
+                    update_post_meta($this->campaign_id, 'last_campaign_log', $campaign_log_message);
+        } else {
+            add_post_meta($this->campaign_id, 'last_campaign_log', $campaign_log_message, false);
+            // Keep only the last N runs. This meta used to grow one row per run with no bound,
+            // and every row holds a full HTML log, so on a busy site it inflated postmeta enough
+            // to exhaust the memory limit on any query priming the campaign meta cache.
+            $max_campaign_logs = (int) apply_filters('wpematico_max_campaign_logs', 10, $this->campaign_id);
+            if ($max_campaign_logs > 0) {
+                $campaign_logs = get_post_meta($this->campaign_id, 'last_campaign_log', false);
+                while (is_array($campaign_logs) && sizeof($campaign_logs) > $max_campaign_logs) {
+                    $old_log = array_shift($campaign_logs);  // oldest first (meta_id ASC)
+                    delete_post_meta($this->campaign_id, 'last_campaign_log', $old_log);
+                }
+            }
+        }
+
+		/* translators: %s Decimal. Seconds */
+        $Suss = sprintf(__('Campaign fetched in %1s sec.', 'wpematico'), $this->campaign['lastruntime']) . '  ' .
+				/* translators: %s Decimal. Number of inserted posts */
+				/**
+				 * Filter the "Processed Posts" segment of the fetch-result summary line.
+				 *
+				 * Defaults to the number of inserted posts. A campaign type that inserts
+				 * none (the RSS Feed Reader, say) would always show 0, and hooks this to
+				 * report a meaningful count instead.
+				 *
+				 * @param string $summary       Rendered summary text (default "Processed Posts: N").
+				 * @param array  $campaign      Current campaign data array.
+				 * @param int    $fetched_posts Number of posts inserted in this run.
+				 */
+				apply_filters('wpematico_fetch_posts_summary', sprintf(__('Processed Posts: %s', 'wpematico'), $this->fetched_posts), $this->campaign, $this->fetched_posts);
+        $message = '<p>' . $Suss . '  <a href="JavaScript:void(0);" style="font-weight: bold; text-decoration:none; display:inline;" onclick="jQuery(\'#log_message_' . $this->campaign_id . '\').fadeToggle().addClass(\'active\'); jQuery(\'body\').addClass(\'wpe_modal_log-is-active\');"><span class="dashicons dashicons-info-outline" title="'. __('Show detailed Log', 'wpematico') . '"></span>.</a></p>';
+        $campaign_log_message = $message . '<div id="log_message_' . $this->campaign_id . '" class="wpe_modal_log-box fade" style="display:none;"><div class="wpe_modal_log-body"><a href="JavaScript:void(0);" class="wpe_modal_log-close" onclick="jQuery(\'#log_message_' . $this->campaign_id . '\').fadeToggle().removeClass(\'active\'); jQuery(\'body\').removeClass(\'wpe_modal_log-is-active\');"><span class="dashicons dashicons-no-alt"></span></a><div class="wpe_modal_log-header"><h3>'. $this->campaign['campaign_title'] .' - #'. $this->campaign_id .'</h3></div><div class="wpe_modal_log-content">' . $campaign_log_message . '</div></div></div><span id="ret_lastruntime" style="display:none;">' . $this->campaign["lastruntime"] . '</span><span id="ret_lastposts" style="display:none;">' . $this->fetched_posts . '</span>' . $this->count_cell_marker();
+    }
+
+    /**
+     * The figure the "Posts" column shows for this campaign after the run, so the list
+     * can update it without a reload. The column is filtered, so it cannot be derived
+     * from the inserted posts alone.
+     *
+     * AJAX only: nothing else reads it, and wpematico_campaign_count_column is a
+     * list-table filter a third party may hook something costly to — not a cost to
+     * carry into a cron pass over many campaigns.
+     */
+    private function count_cell_marker() {
+        if (!wp_doing_ajax()) {
+            return '';
+        }
+
+        $countcell = apply_filters('wpematico_campaign_count_column', array(
+            'count' => get_post_meta($this->campaign_id, 'postscount', true),
+            'title' => __('Posts imported by this campaign.', 'wpematico'),
+                ), $this->campaign, $this->campaign_id);
+
+        return '<span class="ret_countcell" style="display:none;">' . esc_html($countcell['count']) . '</span>';
+    }
+}

@@ -1,0 +1,392 @@
+/*
+ * The WPeMatico sidebar boxes, shared by the Settings screen and Tools > System Status.
+ * Scoped to .wpematico_sidebar so any screen can render them; the two-column layout of
+ * the Settings screen stays in wpemat_settings.css.
+ */
+.wpematico_sidebar .text-center{
+	text-align: center;
+}
+.wpematico_sidebar .postbox .wpematico-hndle,
+.wpematico_sidebar .postbox .handle{
+	font-size: 14px;
+	padding: 8px 12px;
+	margin: 0;
+	line-height: 1.4;
+	cursor: initial;
+	border-bottom: 1px solid #ccd0d4;
+}
+.wpematico_sidebar #improvescampaign{
+	border: 1px solid #b5bfc9;
+	border-left: 3px solid #f08804;
+	border-radius: 5px;
+}
+/* A rule down the side instead of a filled bar: the same brand signal at a
+   fraction of the weight, so it does not become a second colour header in the
+   column. */
+.wpematico_sidebar #improlabel{
+	padding: 9px 12px;
+	font-weight: 600;
+	font-size: 13px;
+	color: #1d2327;
+	border-bottom: 1px solid #f0f0f1;
+}
+.wpematico_sidebar #improbuttons{
+	padding: 15px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+.wpematico_sidebar #improbuttons .button{
+	flex: 0 0 50%;
+	max-width: calc(50% - 5px);
+	font-weight: 600;
+	width: 100%;
+	text-align: center;
+}
+.wpematico_sidebar #improbuttons .button:hover{
+	background-color: #F08804;
+	border-color: #F08804;
+	color: #fff;
+}
+.wpematico_sidebar .wpematico_rating{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+	margin-top: 15px;
+}
+.wpematico_sidebar .wpematico_rating .wpematico_rating-stars{
+	display: flex;
+	justify-content: center;
+	gap: 5px;
+}
+.wpematico_sidebar .wpematico_rating .wpematico_rating-stars span{
+	font-size: 24px;
+	width: 24px;
+    height: 24px;
+	color: #f2d105;
+}
+.wpematico_sidebar .wpematico_rating .button{
+	padding: 10px 30px;
+	font-size: 16px;
+	border-radius: 30px;
+	line-height: 1;
+	font-weight: 600;
+	margin: 10px auto 0;
+}
+.wpematico_sidebar h3{
+	margin: 1em 0 .5em;
+}
+.wpematico_sidebar h3 .dashicons{
+	font-size: 28px;
+	width: 28px;
+	height: 28px;
+}
+.wpematico_sidebar #reviews{
+	max-height: 300px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	margin: 0;
+}
+
+/* ---------------------------------------------------------------------------
+ * The WPeMatico box.
+ *
+ * Two shapes of the same component, picked in about(): the first box of the
+ * column carries the filled header, anything below it the native grey one. That
+ * is why an addon box and this one never both paint a colour header.
+ * ------------------------------------------------------------------------- */
+.wpematico_sidebar .wpem-about-hero{
+	overflow: hidden;
+}
+.wpematico_sidebar .wpem-about-header{
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 14px 16px;
+	/* The plugin's own orange, the one #improbuttons and the menu already carry. */
+	background: linear-gradient(135deg, #7a4402 0%, #ea7308 55%, #f08804 100%);
+	color: #fff;
+}
+.wpematico_sidebar .wpem-about-mark{
+	flex: 0 0 auto;
+	width: 28px;
+	height: auto;
+}
+.wpematico_sidebar .wpem-about-name{
+	flex: 1 1 auto;
+	line-height: 1.25;
+	min-width: 0;
+}
+.wpematico_sidebar .wpem-about-name strong{
+	display: block;
+	font-size: 14px;
+}
+.wpematico_sidebar .wpem-about-name span{
+	display: block;
+	font-size: 12px;
+	opacity: .85;
+}
+.wpematico_sidebar .wpem-about-version{
+	flex: 0 0 auto;
+	padding: 3px 9px;
+	border-radius: 10px;
+	background: rgba(255, 255, 255, .16);
+	font-size: 11px;
+	font-weight: 600;
+	white-space: nowrap;
+}
+/* The plain header still has to say whose version that is, and say it in the
+   plugin's own orange -- otherwise the pill reads as belonging to the addon box
+   above. The mark and the tint are the whole colour budget of this variant. */
+.wpematico_sidebar .wpem-about:not(.wpem-about-hero) .wpematico-hndle{
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+.wpematico_sidebar .wpem-about:not(.wpem-about-hero) .wpem-about-mark{
+	width: 20px;
+	height: auto;
+}
+.wpematico_sidebar .wpem-about-title{
+	flex: 1 1 auto;
+	min-width: 0;
+}
+.wpematico_sidebar .wpem-about:not(.wpem-about-hero) .wpem-about-version{
+	background: #fdf1e0;
+	border: 1px solid #f0b46a;
+	color: #8a4a02;
+	font-weight: 600;
+}
+
+.wpematico_sidebar .wpem-about-links{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.wpematico_sidebar .wpem-about-links li{
+	border-bottom: 1px solid #f0f0f1;
+}
+.wpematico_sidebar .wpem-about-links li:last-child{
+	border-bottom: 0;
+}
+.wpematico_sidebar .wpem-about-links a{
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 9px 2px;
+	text-decoration: none;
+}
+.wpematico_sidebar .wpem-about-links .dashicons{
+	flex: 0 0 auto;
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+	line-height: 1;
+	color: #8c8f94;
+}
+.wpematico_sidebar .wpem-about-links a:hover .dashicons{
+	color: #f08804;
+}
+.wpematico_sidebar .wpem-about-link-text{
+	line-height: 1.3;
+	min-width: 0;
+}
+.wpematico_sidebar .wpem-about-link-text strong{
+	display: block;
+	font-size: 13px;
+}
+.wpematico_sidebar .wpem-about-link-text span{
+	display: block;
+	font-size: 12px;
+	color: #646970;
+}
+
+/* ---------------------------------------------------------------------------
+ * Perfect Membership box.
+ * The reactor at the centre and one dot per extension going round it: the
+ * picture says what the claim says. Everything is drawn, so there is no image
+ * to request and nothing to go soft on a retina screen.
+ * The colours are fixed on purpose -- the card is a dark panel of its own
+ * inside a light screen and does not follow the admin colour scheme.
+ * ------------------------------------------------------------------------ */
+.wpematico_sidebar .wpem-perfect .inside{
+	padding: 0;
+	margin: 0;
+}
+.wpematico_sidebar .wpem-perfect__card{
+	display: block;
+	position: relative;
+	overflow: hidden;
+	padding: 20px 18px 22px;
+	text-align: center;
+	text-decoration: none;
+	background: radial-gradient(112% 82% at 50% 24%, #2e2118 0%, #1a1310 52%, #0e0b09 100%);
+	box-shadow: inset 0 0 0 1px rgba(239, 142, 47, .20);
+}
+.wpematico_sidebar .wpem-perfect__card:focus{
+	outline: 2px solid #ef8e2f;
+	outline-offset: -2px;
+	box-shadow: none;
+}
+
+/* --- the reactor and its orbit --- */
+.wpematico_sidebar .wpem-perfect__stage{
+	display: block;
+	position: relative;
+	width: 128px;
+	height: 128px;
+	margin: 0 auto 14px;
+}
+/* The light the reactor throws on the panel. */
+.wpematico_sidebar .wpem-perfect__stage::before{
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 190px;
+	height: 190px;
+	transform: translate(-50%, -50%);
+	background: radial-gradient(closest-side, rgba(239, 142, 47, .30), rgba(239, 142, 47, 0) 100%);
+	opacity: .8;
+	transition: opacity .35s ease;
+}
+.wpematico_sidebar .wpem-perfect__orbit{
+	position: relative;
+	display: block;
+	animation: wpem-perfect-orbit 44s linear infinite;
+}
+.wpematico_sidebar .wpem-perfect__orbit-path{
+	fill: none;
+	stroke: rgba(239, 142, 47, .18);
+	stroke-width: 1;
+}
+/* One dot per extension. The dash pattern is written by PHP from their number,
+   so adding an extension is a constant, not a redraw. */
+.wpematico_sidebar .wpem-perfect__orbit-dots{
+	fill: none;
+	stroke: #ef8e2f;
+	stroke-width: 5;
+	stroke-linecap: round;
+	transition: stroke .35s ease;
+}
+.wpematico_sidebar .wpem-perfect__core{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	display: block;
+	width: 46px;
+	height: 46px;
+	transform: translate(-50%, -50%);
+	filter: drop-shadow(0 0 10px rgba(239, 142, 47, .55));
+	transition: filter .35s ease, transform .35s ease;
+}
+.wpematico_sidebar .wpem-perfect__core svg{
+	display: block;
+}
+.wpematico_sidebar .wpem-perfect__card:hover .wpem-perfect__stage::before,
+.wpematico_sidebar .wpem-perfect__card:focus .wpem-perfect__stage::before{
+	opacity: 1;
+}
+.wpematico_sidebar .wpem-perfect__card:hover .wpem-perfect__orbit-dots,
+.wpematico_sidebar .wpem-perfect__card:focus .wpem-perfect__orbit-dots{
+	stroke: #ffb45e;
+}
+.wpematico_sidebar .wpem-perfect__card:hover .wpem-perfect__core,
+.wpematico_sidebar .wpem-perfect__card:focus .wpem-perfect__core{
+	transform: translate(-50%, -50%) scale(1.07);
+	filter: drop-shadow(0 0 16px rgba(255, 180, 94, .8));
+}
+@keyframes wpem-perfect-orbit{
+	to{ transform: rotate(360deg); }
+}
+
+/* --- the claim --- */
+.wpematico_sidebar .wpem-perfect__claim{
+	display: block;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	text-transform: uppercase;
+	line-height: 1.45;
+	letter-spacing: .16em;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, .6);
+}
+.wpematico_sidebar .wpem-perfect__claim-1,
+.wpematico_sidebar .wpem-perfect__claim-2{
+	display: block;
+}
+.wpematico_sidebar .wpem-perfect__claim-1{
+	font-size: 15px;
+	color: #f6e6d2;
+}
+.wpematico_sidebar .wpem-perfect__claim-2{
+	font-size: 13px;
+	color: #ef8e2f;
+}
+.wpematico_sidebar .wpem-perfect__sub{
+	display: block;
+	margin: 12px auto 16px;
+	max-width: 200px;
+	font-size: 12px;
+	line-height: 1.6;
+	color: #a2968a;
+}
+.wpematico_sidebar .wpem-perfect__cta{
+	display: inline-block;
+	padding: 7px 18px;
+	border: 1px solid #ef8e2f;
+	border-radius: 3px;
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: .06em;
+	text-transform: uppercase;
+	color: #ef8e2f;
+	transition: background-color .25s ease, color .25s ease, border-color .25s ease;
+}
+.wpematico_sidebar .wpem-perfect__card:hover .wpem-perfect__cta,
+.wpematico_sidebar .wpem-perfect__card:focus .wpem-perfect__cta{
+	background-color: #ef8e2f;
+	border-color: #ef8e2f;
+	color: #17120c;
+}
+
+@media (prefers-reduced-motion: reduce){
+	.wpematico_sidebar .wpem-perfect__orbit{
+		animation: none;
+	}
+	.wpematico_sidebar .wpem-perfect__core,
+	.wpematico_sidebar .wpem-perfect__orbit-dots,
+	.wpematico_sidebar .wpem-perfect__stage::before,
+	.wpematico_sidebar .wpem-perfect__cta{
+		transition: none;
+	}
+	.wpematico_sidebar .wpem-perfect__card:hover .wpem-perfect__core{
+		transform: translate(-50%, -50%);
+	}
+}
+
+/* Robotico looking over the bottom edge of the card. Decorative only: the card
+   crops him, he never takes a click, and the claim keeps the middle. */
+.wpematico_sidebar .wpem-perfect__mascot{
+	position: absolute;
+	right: -4px;
+	bottom: -18px;
+	width: 62px;
+	height: auto;
+	opacity: .92;
+	transform: rotate(-7deg);
+	transform-origin: 50% 100%;
+	pointer-events: none;
+	transition: transform .35s ease, opacity .35s ease;
+}
+.wpematico_sidebar .wpem-perfect__card:hover .wpem-perfect__mascot,
+.wpematico_sidebar .wpem-perfect__card:focus .wpem-perfect__mascot{
+	opacity: 1;
+	transform: rotate(-7deg) translateY(-6px);
+}
+@media (prefers-reduced-motion: reduce){
+	.wpematico_sidebar .wpem-perfect__mascot{
+		transition: none;
+	}
+	.wpematico_sidebar .wpem-perfect__card:hover .wpem-perfect__mascot{
+		transform: rotate(-7deg);
+	}
+}

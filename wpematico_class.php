@@ -10,30 +10,66 @@ if (!class_exists('WPeMatico')) {
 
 	class WPeMatico extends WPeMatico_functions {
 
-		const TEXTDOMAIN	 = 'wpematico';
-		const PROREQUIRED	 = '3.6.1';
-		const OPTION_KEY	 = 'WPeMatico_Options';
+		const TEXTDOMAIN  = 'wpematico';
+		const PROREQUIRED = '3.7';
+		const OPTION_KEY  = 'WPeMatico_Options';
 
-		public static $name		 = '';
-		public static $version	 = '';
+		/**
+		 * Minimum addon version this core needs, keyed by the addon's `Plugin Name` header.
+		 *
+		 * Keyed by name and not by folder on purpose: the same addon ships from
+		 * etruel.com and from wp.org under different folder names.
+		 *
+		 * Every live addon is listed at the release published with 2.9. Those releases
+		 * run on 2.8.27 too, so they can reach a site before its core moves to 2.9. An
+		 * older addon keeps its license screen and its one-click update, and loses only
+		 * its features, until it is updated.
+		 *
+		 * @see WPeMatico_functions::check_addons_versions()
+		 */
+		const ADDONS_REQUIRED = array(
+			'WPeMatico Professional'		=> self::PROREQUIRED,
+			'WPeMatico Better Excerpts'		=> '3.6',
+			'WPeMatico Custom Hooks'		=> '1.4',
+			'WPeMatico Exporter'			=> '1.6',
+			'WPeMatico Facebook Fetcher'	=> '3.4',
+			'WPeMatico Full Content'		=> '2.9.4',
+			'WPeMatico GPT Spinner'			=> '3.5.2',
+			'WPeMatico Make me Feed Good'	=> '2.13',
+			'WPeMatico Manual Fetching'		=> '1.2',
+			'WPeMatico Office Campaign Type' => '1.6',
+			'WPeMatico Polyglot'			=> '1.7',
+			'WPeMatico Polylang'			=> '1.1.2',
+			'WPeMatico Publish 2 Email'		=> '1.6',
+			'WPeMatico RSS Feed Reader'		=> '2.0.0',
+			'WPeMatico Synchronizer'		=> '2.3',
+		);
+
+		public static $name	   = '';
+		public static $version = '';
 		public static $basen;/** Plugin basename * @var string	 */
-		public static $uri		 = '';
-		public static $dir		 = '';/** filesystem path to the plugin with trailing slash */
-		public $options			 = array();
+		public static $uri	   = '';
+		public static $dir	   = '';/** filesystem path to the plugin with trailing slash */
+		public $options		   = array();
 
 		public static function init() {
 
-			$plugin_data	 = self::plugin_get_version(WPEMATICO_ROOTFILE);
-			self :: $name	 = $plugin_data['Name'];
-			self :: $version = $plugin_data['Version'];
-			self :: $uri	 = plugin_dir_url(WPEMATICO_ROOTFILE);
-			self :: $dir	 = plugin_dir_path(WPEMATICO_ROOTFILE);
-			self :: $basen	 = plugin_basename(WPEMATICO_ROOTFILE);
+			$plugin_data   = self::plugin_get_version(WPEMATICO_ROOTFILE);
+			self::$name	   = $plugin_data['Name'];
+			self::$version = $plugin_data['Version'];
+			self::$uri	   = plugin_dir_url(WPEMATICO_ROOTFILE);
+			self::$dir	   = plugin_dir_path(WPEMATICO_ROOTFILE);
+			self::$basen   = plugin_basename(WPEMATICO_ROOTFILE);
+
+			// Outside the constructor on purpose: it bails on !is_admin(), so registering
+			// the normalizers there left cron and the frontend reading raw stored data
+			// (no defaults, no addon fields). They belong to every context.
+			add_filter('wpematico_check_campaigndata', array(__CLASS__, 'check_campaigndata'), 10, 2);
+			add_filter('wpematico_check_options', array(__CLASS__, 'check_options'), 10, 1);
 
 			$wpematico_instance = new self(TRUE);
 			$wpematico_instance->load_options();
 		}
-		
 
 		/**
 		 * constructor
@@ -48,7 +84,7 @@ if (!class_exists('WPeMatico')) {
 			//add_action('admin_notices', array( &$this, 'wpematico_admin_notice' ) ); 
 			if (!$this->wpematico_env_checks())
 				return;
-			
+
 			$this->load_options();
 
 			if ($this->options['nonstatic'] && !class_exists('WPeMaticoPRO_Helpers')) {
@@ -65,31 +101,25 @@ if (!class_exists('WPeMatico')) {
 				add_action('admin_print_styles', array($this, 'all_WP_admin_styles'));
 				add_action('in_admin_header', array($this, 'writing_settings_help'));
 
-				wp_register_style('WPematStylesheet', self :: $uri . 'app/css/wpemat_styles.css');
-				wp_register_script('WPemattiptip', self :: $uri . 'app/js/jquery.tipTip.minified.js', 'jQuery');
-				wp_register_script('jquery-vsort', self ::$uri . 'app/js/jquery.vSort.min.js', array('jquery'));
-
-				add_filter('wpematico_check_campaigndata', array(__CLASS__, 'check_campaigndata'), 10, 1);
-				add_filter('wpematico_check_options', array(__CLASS__, 'check_options'), 10, 1);
+				wp_register_style('WPematStylesheet', self::$uri . 'assets/css/wpemat_styles.css', array('wffmodalpop'), WPEMATICO_VERSION);
+				wp_register_script('WPemattiptip', self::$uri . 'assets/js/jquery.tipTip.minified.js', 'jQuery');
+				wp_register_script('jquery-vsort', self::$uri . 'assets/js/jquery.vSort.min.js', array('jquery'));
 			}
 			//add Empty Trash folder buttons
 			if ($this->options['emptytrashbutton']) {
 				// Add button to list table for all post types
 				add_action('restrict_manage_posts', array(&$this, 'add_button'), 90);
 			}
-			
-			if(isset($cfg['enablemimetypes']) && $cfg['enablemimetypes']){
+
+			if (isset($cfg['enablemimetypes']) && $cfg['enablemimetypes']) {
 				self::wpematico_add_custom_mimetypes();
 			}
-			// Note: the legacy "check timeout of running campaigns" sweep that used to live here
-			// was removed in 2.8.24. It ran a get_posts('numberposts' => -1) on EVERY request
-			// (init fires on frontend, admin, AJAX, REST and cron), which primed the whole
-			// postmeta cache of every campaign and could exhaust the memory limit on sites with
-			// many campaigns. It was also dead code: 'starttime' is never persisted with a value
-			// greater than zero, so the loop never did any work. Stale run locks are now cleared
-			// on demand, per campaign, by WPeMatico::get_campaign_running_since(). (2.8.22)
+			// NOTE: the legacy "Check timeout of running campaigns" scan (which looped all
+			// campaigns on every admin load to clear a stale 'starttime') was removed.
+			// Stale/orphaned run locks are now auto-cleared on read by
+			// WPeMatico::get_campaign_running_since() (see the campaign run lock helpers).
 		}
-		
+
 		/**
 		 * Display empty trash button on list tables
 		 * @return void
@@ -112,10 +142,10 @@ if (!class_exists('WPeMatico')) {
 			if (0 == intval(wp_count_posts($typenow, 'readable')->trash))
 				return;
 
-			$display	 = false;
-			$args		 = array();
-			$output		 = 'names'; // names or objects
-			$post_types	 = get_post_types($args, $output);
+			$display	= false;
+			$args		= array();
+			$output		= 'names'; // names or objects
+			$post_types = get_post_types($args, $output);
 			foreach ($post_types as $post_t) {
 				if ($post_t != $typenow)
 					continue;
@@ -127,8 +157,8 @@ if (!class_exists('WPeMatico')) {
 			if (!$display)
 				return;
 			?><div class="alignright empty_trash"><?php
-			submit_button(__('Empty Trash', 'wpematico'), 'apply', 'delete_all', false, array('onClick' => "jQuery('.post_status_page').val('trash');"));
-			?></div><?php
+				submit_button(__('Empty Trash', 'wpematico'), 'apply', 'delete_all', false, array('onClick' => "jQuery('.post_status_page').val('trash');"));
+				?></div><?php
 		}
 
 		/**
@@ -140,12 +170,12 @@ if (!class_exists('WPeMatico')) {
 		public static function Create_campaigns_page() {
 
 			//$NotCampaignsBanner = __('No campaign found', 'wpematico');
-			$NotCampaignsBanner	 = "
+			$NotCampaignsBanner = "
 			<div class=\"wpematico-smart-notification\">
 			<div class=\"description-smart-notification\">
 				<p class=\"parr-wpmatico-smart-notification\">
 					<br>
-					<strong>" . __('There is no campaigns yet.', 'wpematico') . "</strong>
+					<strong>" . __('There are no campaigns yet.', 'wpematico') . "</strong>
 					<br>
 					" . __('You need to create a campaign to begin using WPeMatico.', 'wpematico') . "
 					<br>
@@ -158,7 +188,7 @@ if (!class_exists('WPeMatico')) {
 				<br>
 			</div>
 			</div>";
-			$labels				 = array(
+			$labels				= array(
 				'name'				 => __('Campaigns', 'wpematico'),
 				'singular_name'		 => __('Campaign', 'wpematico'),
 				'add_new'			 => __('Add New', 'wpematico'),
@@ -172,24 +202,23 @@ if (!class_exists('WPeMatico')) {
 				'not_found_in_trash' => __('No Campaign found in Trash', 'wpematico'),
 				'parent_item_colon'	 => '',
 				'menu_name'			 => 'WPeMatico');
-			$args				 = array(
-				'labels'				 => $labels,
+			$args				= array(
+				'labels'			   => $labels,
 				//'public' => true,
-				'public'				 => false,
-				'exclude_from_search'	 => true,
-				'publicly_queryable'	 => false,
-				'show_ui'				 => true,
-				'show_in_menu'			 => true,
-				'query_var'				 => true,
-				'rewrite'				 => true,
-				'capability_type'		 => 'post',
-				'has_archive'			 => true,
-				'hierarchical'			 => false,
-				'menu_position'			 => (get_option('wpem_menu_position')) ? 999 : 7,
-				'menu_icon'				 => self :: $uri . '/images/robotico_orange-25x25.png',
-				'register_meta_box_cb'	 => array('WPeMatico_Campaign_edit', 'create_meta_boxes'),
-				'map_meta_cap'			 => true,
-				'supports'				 => array('title', 'excerpt'));
+				'public'			   => false,
+				'exclude_from_search'  => true,
+				'publicly_queryable'   => false,
+				'show_ui'			   => true,
+				'show_in_menu'		   => false, //'wpematico_dashboard',
+				'query_var'			   => true,
+				'rewrite'			   => true,
+				'capability_type'	   => 'post',
+				'has_archive'		   => true,
+				'hierarchical'		   => false,
+//				'menu_position'			 => (get_option('wpem_menu_position')) ? 999 : 7,
+				'register_meta_box_cb' => array('WPeMatico_Campaign_edit', 'create_meta_boxes'),
+				'map_meta_cap'		   => true,
+				'supports'			   => array('title', 'excerpt'));
 			register_post_type('wpematico', $args);
 		}
 
@@ -202,7 +231,10 @@ if (!class_exists('WPeMatico')) {
 		 * @return void
 		 */
 		public function admin_init() {
-			$sect_title = '<img src="' . self :: $uri . '/images/robotico_orange-50x50.png' . '" style="margin: 0pt 2px -2px 0pt;">' . ' WPeMatico ' . WPEMATICO_VERSION;
+			$sect_title = '<span style="display:flex;align-items:center;gap:14px;">'
+					. '<span style="flex:0 0 auto;display:flex;">' . wpematico_logo_svg(56) . '</span>'
+					. '<span>WPeMatico ' . WPEMATICO_VERSION . '</span>'
+					. '</span>';
 			add_settings_section('wpematico', $sect_title, array($this, 'writing_settings'), 'writing');
 			register_setting('writing', 'wpem_menu_position'); //, 'sanitize_callback' );
 			register_setting('writing', 'wpem_show_locally_addons'); //, 'sanitize_callback' );
@@ -214,8 +246,8 @@ if (!class_exists('WPeMatico')) {
 					'writing',
 					'wpematico',
 					array(//The array of arguments to pass to the callback.
-						'id'			 => 'wpem_menu_position',
-						'description'	 => __('Activate this setting if you can\'t see WPeMatico menu at left under Posts menu item.', 'wpematico')
+						'id'		  => 'wpem_menu_position',
+						'description' => __('Turn this on if the WPeMatico menu does not appear in the admin menu.', 'wpematico')
 					)
 			);
 			add_settings_field(
@@ -225,8 +257,8 @@ if (!class_exists('WPeMatico')) {
 					'writing',
 					'wpematico',
 					array(//The array of arguments to pass to the callback.
-						'id'			 => 'wpem_show_locally_addons',
-						'description'	 => __('Activate this setting if you have problems with the addons page to see them in your plugin page like any other plugin.', 'wpematico')
+						'id'		  => 'wpem_show_locally_addons',
+						'description' => __('Turn this on to list the add-ons on your Plugins page, like any other plugin.', 'wpematico')
 					)
 			);
 			add_settings_field(
@@ -236,14 +268,14 @@ if (!class_exists('WPeMatico')) {
 					'writing',
 					'wpematico',
 					array(//The array of arguments to pass to the callback. In this case, just a description.
-						'id'			 => 'wpem_hide_reviews',
-						'description'	 => __('Activate this setting if you don\'t see the WPeMatico Settings page complete or can\'t read externals URLs.', 'wpematico'),
+						'id'		  => 'wpem_hide_reviews',
+						'description' => __('Turn this on if the Settings page comes out incomplete because your server cannot read external addresses.', 'wpematico'),
 					)
 			);
 		}
 
 		/**
-		 * Wordpress writing settings 
+		 * WordPress writing settings 
 		 *
 		 * @access public
 		 * @return void
@@ -264,7 +296,7 @@ if (!class_exists('WPeMatico')) {
 		}
 
 		/**
-		 * Add to Wordpress writing settings help
+		 * Add to WordPress writing settings help
 		 *
 		 * @access public
 		 * @return void
@@ -273,13 +305,13 @@ if (!class_exists('WPeMatico')) {
 			$screen = get_current_screen();
 			if ('options-writing' === $screen->base) {
 				$screen->add_help_tab(array(
-					'id'		 => 'wpematico',
-					'title'		 => 'WPeMatico',
-					'content'	 => '<p>' . __('If you don\'t see the WPeMatico Menu may be another plugin or a custom menu added by your theme are "overwritten" the WPeMatico menu position.', 'wpematico') . '<br />' .
-					'' . __('Click the checkbox "Reset Menu Position" to show the menu on last position in your Wordpress menu.', 'wpematico') . '</p>' .
+					'id'	  => 'wpematico',
+					'title'	  => 'WPeMatico',
+					'content' => '<p>' . __('If the WPeMatico menu is missing, another plugin or your theme has taken its position.', 'wpematico') . '<br />' .
+					'' . __('Tick "Reset Menu Position" to move the menu to the end of the WordPress menu.', 'wpematico') . '</p>' .
 					'<p></p>' .
-					'<p>' . __('If you can\'t see well the WPeMatico Settings page is probable that you are having problems to read external wordpress web pages from your server.', 'wpematico') . '<br />' .
-					'' . __('Click the checkbox "Hide Reviews on Settings" to avoid this and show just a link to Wordpress reviews page.', 'wpematico') . '</p>' .
+					'<p>' . __('A Settings page that does not render fully usually means your server cannot reach external pages.', 'wpematico') . '<br />' .
+					'' . __('Tick "Hide Reviews on Settings" to show a plain link to the reviews page instead.', 'wpematico') . '</p>' .
 					'<p></p>' .
 					'<p><a href="http://www.wpematico.com" target="_blank">WPeMatico WebPage</a>  -  <a href="https://etruel.com/downloads/category/wpematico-add-ons/" target="_blank">WPeMatico Add-Ons</a>  -  <a href="https://etruel.com/support/" target="_blank">etruel\'s Custom Support</a></p>' .
 					'<p></p>' .
@@ -295,31 +327,97 @@ if (!class_exists('WPeMatico')) {
 		 * @return void
 		 */
 		public function admin_menu() {
+			$page = add_menu_page(
+					__('WPeMatico', 'wpematico'),
+					__('WPeMatico', 'wpematico'),
+					'manage_options',
+					'wpematico_dashboard',
+					['\WPeMatico\Module\Dashboard', 'render_dashboard_page'],
+					'none', // Painted by wpematico_menu_icon_style(), see plugin_functions.php.
+					(get_option('wpem_menu_position')) ? 999 : 7
+			);
+			add_action('admin_print_styles-' . $page, array('\WPeMatico\Module\Dashboard', 'dashboard_styles'));
+
 			$page = add_submenu_page(
-					'edit.php?post_type=wpematico',
+					'wpematico_dashboard',
+					__('WPeMatico Dashboard', 'wpematico'),
+					__('Dashboard', 'wpematico'),
+					'manage_options',
+					'wpematico_dashboard',
+					['\WPeMatico\Module\Dashboard', 'render_dashboard_page'],
+			);
+			add_action('admin_print_styles-' . $page, array('\WPeMatico\Module\Dashboard', 'dashboard_styles'));
+			
+			$page = add_submenu_page(
+					'wpematico_dashboard',
+					__('Campaigns', 'wpematico'),
+					__('Campaigns', 'wpematico'),
+					'manage_options',
+					'edit.php?post_type=wpematico'
+			);
+//			$page = add_submenu_page(
+//					'wpematico_dashboard',
+//					__('Add New', 'wpematico'),
+//					__('Add Campaign', 'wpematico'),
+//					'manage_options',
+//					'post-new.php?post_type=wpematico'
+//			);
+			
+			$page = add_submenu_page(
+					'wpematico_dashboard',
 					__('Settings', 'wpematico'),
 					__('Settings', 'wpematico'),
 					'manage_options',
 					'wpematico_settings',
-					'wpematico_settings_page'
+					['WPeMatico_Settings', 'settings_header']
 			);
 			add_action('admin_print_styles-' . $page, array('WPeMatico_Settings', 'styles'));
+			add_action('load-' . $page, array('WPeMatico_Settings', 'validate_request'));
 
 			$page = add_submenu_page(
-				'edit.php?post_type=wpematico',
-				__('Tools', 'wpematico'),
-				__('Tools', 'wpematico'),
-				'manage_options',
-				'wpematico_tools',
-				'wpematico_tools_page'
+					'wpematico_dashboard',
+					__('Tools', 'wpematico'),
+					__('Tools', 'wpematico'),
+					'manage_options',
+					'wpematico_tools',
+					'wpematico_tools_page'
 			);
-		add_action('admin_print_styles-' . $page, array('WPeMatico_Tools', 'styles'));
+			add_action('admin_print_styles-' . $page, array('WPeMatico_Tools', 'styles'));
+			add_action('load-' . $page, function() {
+				WPeMatico::validate_screen_request('wpematico_tools', wpematico_get_tools_tabs(), 'tools');
+			});
+
+			$update_wpematico_addons = wpematico_get_addons_update();
+			$count_menu				 = '';
+			if (!empty($update_wpematico_addons) && $update_wpematico_addons > 0) {
+				$count_menu = "<span class='update-plugins count-{$update_wpematico_addons}' style='position: absolute;	margin-left: 5px;'><span class='plugin-count'>" . number_format_i18n($update_wpematico_addons) . "</span></span>";
+			}
+			$page = add_submenu_page(
+					'plugins.php',
+					__('Add-ons', 'wpematico'),
+					__('WPeMatico Addons', 'wpematico') . ' ' . $count_menu,
+					'manage_options',
+					'wpemaddons',
+					'add_admin_plugins_page'
+			);
+			add_action('admin_print_scripts-' . $page, 'WPeAddon_admin_scripts');
+			$page = add_submenu_page(
+					'wpematico_dashboard',
+					__('Add-ons', 'wpematico'),
+					'<span style="color:#7cc048"> ' . __('Extensions', 'wpematico') . '</span> ' . $count_menu,
+					'manage_options',
+					'plugins.php?page=wpemaddons'
+			);
 		}
 
 		public function all_WP_admin_styles() {
 			?><style type="text/css">
-				.menu-icon-wpematico img {
-					margin-top: -5px;
+				.menu-icon-wpematico .wp-menu-image img {
+					width: 20px;
+					height: 20px;
+					padding: 7px 0 !important;
+					margin: 0 !important;
+					box-sizing: content-box;
 				}
 			</style><?php
 		}
@@ -333,17 +431,17 @@ if (!class_exists('WPeMatico')) {
 		 */
 		public function load_options() {
 			global $cfg;
-			$cfg = get_option(self :: OPTION_KEY);
+			$cfg = get_option(self::OPTION_KEY);
 			if (!$cfg) {
 				/**
 				 * Default values at 1st time
 				 */
-				$default_options						 = array();
-				$default_options['set_stupidly_fast']	 = true;
-				$default_options['disable_credits']		 = true;
+				$default_options							= array();
+				$default_options['set_stupidly_fast']		= true;
+				$default_options['disable_credits']			= true;
 				$default_options['wpematico_set_canonical'] = true;
-				$this->options							 = $this->check_options($default_options);
-				add_option(self :: OPTION_KEY, $this->options, '', 'yes');
+				$this->options								= $this->check_options($default_options);
+				add_option(self::OPTION_KEY, $this->options, '', 'yes');
 			} else {
 				$this->options = $this->check_options($cfg);
 			}
@@ -361,97 +459,98 @@ if (!class_exists('WPeMatico')) {
 			$cfg['mailuser']	 = (!isset($options['mailuser'])) ? '' : sanitize_text_field($options['mailuser']);
 			$cfg['mailpass']	 = (!isset($options['mailpass'])) ? '' : sanitize_text_field($options['mailpass']);
 
-			$cfg['disabledashboard']		 = (!isset($options['disabledashboard']) || empty($options['disabledashboard'])) ? false : ( ($options['disabledashboard'] == 1) ? true : false );
+			$cfg['disabledashboard']		 = (!isset($options['disabledashboard']) || empty($options['disabledashboard'])) ? false : (($options['disabledashboard'] == 1) ? true : false);
 			$cfg['roles_widget']			 = (!isset($options['roles_widget']) || !is_array($options['roles_widget'])) ? array("administrator" => "administrator") : $options['roles_widget'];
-			$cfg['dontruncron']				 = (!isset($options['dontruncron']) || empty($options['dontruncron'])) ? false : ( ($options['dontruncron'] == 1) ? true : false );
-			$cfg['enable_alternate_wp_cron'] = (!isset($options['enable_alternate_wp_cron']) || empty($options['enable_alternate_wp_cron'])) ? false : ( ($options['enable_alternate_wp_cron'] == 1) ? true : false );
+			$cfg['dontruncron']				 = (!isset($options['dontruncron']) || empty($options['dontruncron'])) ? false : (($options['dontruncron'] == 1) ? true : false);
+			$cfg['enable_alternate_wp_cron'] = (!isset($options['enable_alternate_wp_cron']) || empty($options['enable_alternate_wp_cron'])) ? false : (($options['enable_alternate_wp_cron'] == 1) ? true : false);
 
-			$cfg['disablewpcron']		 = (!isset($options['disablewpcron']) || empty($options['disablewpcron'])) ? false : ( ($options['disablewpcron'] == 1) ? true : false );
-			$cfg['set_cron_code']		 = (!isset($options['set_cron_code']) || empty($options['set_cron_code'])) ? false : ( ($options['set_cron_code'] == 1) ? true : false );
-			$cfg['cron_code']			 = (!isset($options['cron_code'])) ? '' : sanitize_text_field($options['cron_code']);
-			$cfg['logexternalcron']		 = (!isset($options['logexternalcron']) || empty($options['logexternalcron'])) ? false : ( ($options['logexternalcron'] == 1) ? true : false );
-			$cfg['disable_credits']		 = (!isset($options['disable_credits']) || empty($options['disable_credits'])) ? false : ( ($options['disable_credits'] == 1) ? true : false );
-			$cfg['disablecheckfeeds']	 = (!isset($options['disablecheckfeeds']) || empty($options['disablecheckfeeds'])) ? false : ( ($options['disablecheckfeeds'] == 1) ? true : false );
-			$cfg['enabledelhash']		 = (!isset($options['enabledelhash']) || empty($options['enabledelhash'])) ? false : ( ($options['enabledelhash'] == 1) ? true : false );
-			$cfg['enableseelog']		 = (!isset($options['enableseelog']) || empty($options['enableseelog'])) ? false : ( ($options['enableseelog'] == 1) ? true : false );
-			$cfg['enablerewrite']		 = (!isset($options['enablerewrite']) || empty($options['enablerewrite'])) ? false : ( ($options['enablerewrite'] == 1) ? true : false );
-			$cfg['enableword2cats']		 = (!isset($options['enableword2cats']) || empty($options['enableword2cats'])) ? false : ( ($options['enableword2cats'] == 1) ? true : false );
-			$cfg['wpematico_set_canonical']	 = (!isset($options['wpematico_set_canonical']) || empty($options['wpematico_set_canonical'])) ? false : ( ($options['wpematico_set_canonical'] == 1) ? true : false );
-			$cfg['customupload']		 = (!isset($options['customupload']) || empty($options['customupload'])) ? false : ( ($options['customupload'] == 1) ? true : false );
-			$cfg['imgattach']			 = (!isset($options['imgattach']) || empty($options['imgattach'])) ? false : ( ($options['imgattach'] == 1) ? true : false );
-			$cfg['imgcache']			 = (!isset($options['imgcache']) || empty($options['imgcache'])) ? false : ( ($options['imgcache'] == 1) ? true : false );
-			if(defined( 'FIFU_PLUGIN_DIR' )){
-				$cfg['fifu']				 = (!isset($options['fifu']) || empty($options['fifu'])) ? false : ( ($options['fifu'] == 1) ? true : false );
-				$cfg['fifu-video']			 = (!isset($options['fifu-video']) || empty($options['fifu-video'])) ? false : ( ($options['fifu-video'] == 1) ? true : false );
-			}else{
-				$cfg['fifu']				 = false;
-				$cfg['fifu-video']			 = false;
+			$cfg['disablewpcron']			= (!isset($options['disablewpcron']) || empty($options['disablewpcron'])) ? false : (($options['disablewpcron'] == 1) ? true : false);
+			$cfg['set_cron_code']			= (!isset($options['set_cron_code']) || empty($options['set_cron_code'])) ? false : (($options['set_cron_code'] == 1) ? true : false);
+			$cfg['cron_code']				= (!isset($options['cron_code'])) ? '' : sanitize_text_field($options['cron_code']);
+			$cfg['logexternalcron']			= (!isset($options['logexternalcron']) || empty($options['logexternalcron'])) ? false : (($options['logexternalcron'] == 1) ? true : false);
+			$cfg['disable_credits']			= (!isset($options['disable_credits']) || empty($options['disable_credits'])) ? false : (($options['disable_credits'] == 1) ? true : false);
+			$cfg['disablecheckfeeds']		= (!isset($options['disablecheckfeeds']) || empty($options['disablecheckfeeds'])) ? false : (($options['disablecheckfeeds'] == 1) ? true : false);
+			$cfg['enabledelhash']			= (!isset($options['enabledelhash']) || empty($options['enabledelhash'])) ? false : (($options['enabledelhash'] == 1) ? true : false);
+			$cfg['enableseelog']			= (!isset($options['enableseelog']) || empty($options['enableseelog'])) ? false : (($options['enableseelog'] == 1) ? true : false);
+			$cfg['enablerewrite']			= (!isset($options['enablerewrite']) || empty($options['enablerewrite'])) ? false : (($options['enablerewrite'] == 1) ? true : false);
+			$cfg['enableword2cats']			= (!isset($options['enableword2cats']) || empty($options['enableword2cats'])) ? false : (($options['enableword2cats'] == 1) ? true : false);
+			$cfg['enable_vimeo']			= (!isset($options['enable_vimeo']) || empty($options['enable_vimeo'])) ? false : (($options['enable_vimeo'] == 1) ? true : false);
+			$cfg['wpematico_set_canonical'] = (!isset($options['wpematico_set_canonical']) || empty($options['wpematico_set_canonical'])) ? false : (($options['wpematico_set_canonical'] == 1) ? true : false);
+			$cfg['customupload']			= (!isset($options['customupload']) || empty($options['customupload'])) ? false : (($options['customupload'] == 1) ? true : false);
+			$cfg['imgattach']				= (!isset($options['imgattach']) || empty($options['imgattach'])) ? false : (($options['imgattach'] == 1) ? true : false);
+			$cfg['imgcache']				= (!isset($options['imgcache']) || empty($options['imgcache'])) ? false : (($options['imgcache'] == 1) ? true : false);
+			if (defined('FIFU_PLUGIN_DIR')) {
+				$cfg['fifu']	   = (!isset($options['fifu']) || empty($options['fifu'])) ? false : (($options['fifu'] == 1) ? true : false);
+				$cfg['fifu-video'] = (!isset($options['fifu-video']) || empty($options['fifu-video'])) ? false : (($options['fifu-video'] == 1) ? true : false);
+			} else {
+				$cfg['fifu']	   = false;
+				$cfg['fifu-video'] = false;
 			}
-			
-			$cfg['gralnolinkimg']		 = (!isset($options['gralnolinkimg']) || empty($options['gralnolinkimg'])) ? false : ( ($options['gralnolinkimg'] == 1) ? true : false );
-			$cfg['image_srcset']		 = (!isset($options['image_srcset']) || empty($options['image_srcset'])) ? false : ( ($options['image_srcset'] == 1) ? true : false );
 
-			$cfg['audio_attach']		 = (!isset($options['audio_attach']) || empty($options['audio_attach'])) ? false : ( ($options['audio_attach'] == 1) ? true : false );
-			$cfg['audio_cache']			 = (!isset($options['audio_cache']) || empty($options['audio_cache'])) ? false : ( ($options['audio_cache'] == 1) ? true : false );
-			$cfg['gralnolink_audio']	 = (!isset($options['gralnolink_audio']) || empty($options['gralnolink_audio'])) ? false : ( ($options['gralnolink_audio'] == 1) ? true : false );
-			$cfg['customupload_audios']	 = (!isset($options['customupload_audios']) || empty($options['customupload_audios'])) ? false : ( ($options['customupload_audios'] == 1) ? true : false );
-			$audio_allowed_ext			 = self::get_audios_allowed_mimes(); //'mp4';
-			$cfg['audio_allowed_ext']	 = (!isset($options['audio_allowed_ext'])) ? $audio_allowed_ext : sanitize_text_field($options['audio_allowed_ext']);
-			$cfg['audio_allowed_ext']	 = str_replace(' ', '', $cfg['audio_allowed_ext']);  // strip spaces from string			
+			$cfg['gralnolinkimg'] = (!isset($options['gralnolinkimg']) || empty($options['gralnolinkimg'])) ? false : (($options['gralnolinkimg'] == 1) ? true : false);
+			$cfg['image_srcset']  = (!isset($options['image_srcset']) || empty($options['image_srcset'])) ? false : (($options['image_srcset'] == 1) ? true : false);
 
-			$cfg['video_attach']		 = (!isset($options['video_attach']) || empty($options['video_attach'])) ? false : ( ($options['video_attach'] == 1) ? true : false );
-			$cfg['video_cache']			 = (!isset($options['video_cache']) || empty($options['video_cache'])) ? false : ( ($options['video_cache'] == 1) ? true : false );
-			$cfg['gralnolink_video']	 = (!isset($options['gralnolink_video']) || empty($options['gralnolink_video'])) ? false : ( ($options['gralnolink_video'] == 1) ? true : false );
-			$cfg['customupload_videos']	 = (!isset($options['customupload_videos']) || empty($options['customupload_videos'])) ? false : ( ($options['customupload_videos'] == 1) ? true : false );
-			$video_allowed_ext			 = self::get_videos_allowed_mimes(); //'mp4';
-			$cfg['video_allowed_ext']	 = (!isset($options['video_allowed_ext'])) ? $video_allowed_ext : sanitize_text_field($options['video_allowed_ext']);
-			$cfg['video_allowed_ext']	 = str_replace(' ', '', $cfg['video_allowed_ext']);  // strip spaces from string			
+			$cfg['audio_attach']		= (!isset($options['audio_attach']) || empty($options['audio_attach'])) ? false : (($options['audio_attach'] == 1) ? true : false);
+			$cfg['audio_cache']			= (!isset($options['audio_cache']) || empty($options['audio_cache'])) ? false : (($options['audio_cache'] == 1) ? true : false);
+			$cfg['gralnolink_audio']	= (!isset($options['gralnolink_audio']) || empty($options['gralnolink_audio'])) ? false : (($options['gralnolink_audio'] == 1) ? true : false);
+			$cfg['customupload_audios'] = (!isset($options['customupload_audios']) || empty($options['customupload_audios'])) ? false : (($options['customupload_audios'] == 1) ? true : false);
+			$audio_allowed_ext			= self::get_audios_allowed_mimes(); //'mp4';
+			$cfg['audio_allowed_ext']	= (!isset($options['audio_allowed_ext'])) ? $audio_allowed_ext : sanitize_text_field($options['audio_allowed_ext']);
+			$cfg['audio_allowed_ext']	= str_replace(' ', '', $cfg['audio_allowed_ext']);  // strip spaces from string			
 
-			$images_allowed_ext			 = self::get_images_allowed_mimes(); //'jpg,gif,png,tif,bmp,jpeg';
-			$cfg['images_allowed_ext']	 = (!isset($options['images_allowed_ext'])) ? $images_allowed_ext : sanitize_text_field($options['images_allowed_ext']);
-			$cfg['images_allowed_ext']	 = str_replace(' ', '', $cfg['images_allowed_ext']);  // strip spaces from string
-			$cfg['enablemimetypes']		 = (!isset($options['enablemimetypes']) || empty($options['enablemimetypes'])) ? false : ( ($options['enablemimetypes'] == 1) ? true : false );
-			$cfg['save_attr_images']		 = (!isset($options['save_attr_images']) || empty($options['save_attr_images'])) ? false : ( ($options['save_attr_images'] == 1) ? true : false );
-			$cfg['featuredimg']			 = (!isset($options['featuredimg']) || empty($options['featuredimg'])) ? false : ( ($options['featuredimg'] == 1) ? true : false );
-			$cfg['rmfeaturedimg']		 = (!isset($options['rmfeaturedimg']) || empty($options['rmfeaturedimg'])) ? false : ( ($options['rmfeaturedimg'] == 1) ? true : false );
+			$cfg['video_attach']		= (!isset($options['video_attach']) || empty($options['video_attach'])) ? false : (($options['video_attach'] == 1) ? true : false);
+			$cfg['video_cache']			= (!isset($options['video_cache']) || empty($options['video_cache'])) ? false : (($options['video_cache'] == 1) ? true : false);
+			$cfg['gralnolink_video']	= (!isset($options['gralnolink_video']) || empty($options['gralnolink_video'])) ? false : (($options['gralnolink_video'] == 1) ? true : false);
+			$cfg['customupload_videos'] = (!isset($options['customupload_videos']) || empty($options['customupload_videos'])) ? false : (($options['customupload_videos'] == 1) ? true : false);
+			$video_allowed_ext			= self::get_videos_allowed_mimes(); //'mp4';
+			$cfg['video_allowed_ext']	= (!isset($options['video_allowed_ext'])) ? $video_allowed_ext : sanitize_text_field($options['video_allowed_ext']);
+			$cfg['video_allowed_ext']	= str_replace(' ', '', $cfg['video_allowed_ext']);  // strip spaces from string			
 
-			$cfg['force_mysimplepie']			 = (!isset($options['force_mysimplepie']) || empty($options['force_mysimplepie'])) ? false : ( ($options['force_mysimplepie'] == 1) ? true : false );
-			$cfg['set_stupidly_fast']			 = (!isset($options['set_stupidly_fast']) || empty($options['set_stupidly_fast'])) ? false : ( ($options['set_stupidly_fast'] == 1) ? true : false );
-			$cfg['simplepie_strip_htmltags']	 = (!isset($options['simplepie_strip_htmltags']) || empty($options['simplepie_strip_htmltags'])) ? false : ( ($options['simplepie_strip_htmltags'] == 1) ? true : false );
-			$cfg['simplepie_strip_attributes']	 = (!isset($options['simplepie_strip_attributes']) || empty($options['simplepie_strip_attributes'])) ? false : ( ($options['simplepie_strip_attributes'] == 1) ? true : false );
-			$cfg['strip_htmltags']				 = (!isset($options['strip_htmltags'])) ? '' : sanitize_text_field($options['strip_htmltags']);
-			$cfg['strip_htmlattr']				 = (!isset($options['strip_htmlattr'])) ? '' : sanitize_text_field($options['strip_htmlattr']);
+			$images_allowed_ext		   = self::get_images_allowed_mimes(); //'jpg,gif,png,tif,bmp,jpeg';
+			$cfg['images_allowed_ext'] = (!isset($options['images_allowed_ext'])) ? $images_allowed_ext : sanitize_text_field($options['images_allowed_ext']);
+			$cfg['images_allowed_ext'] = str_replace(' ', '', $cfg['images_allowed_ext']);  // strip spaces from string
+			$cfg['enablemimetypes']	   = (!isset($options['enablemimetypes']) || empty($options['enablemimetypes'])) ? false : (($options['enablemimetypes'] == 1) ? true : false);
+			$cfg['save_attr_images']   = (!isset($options['save_attr_images']) || empty($options['save_attr_images'])) ? false : (($options['save_attr_images'] == 1) ? true : false);
+			$cfg['featuredimg']		   = (!isset($options['featuredimg']) || empty($options['featuredimg'])) ? false : (($options['featuredimg'] == 1) ? true : false);
+			$cfg['rmfeaturedimg']	   = (!isset($options['rmfeaturedimg']) || empty($options['rmfeaturedimg'])) ? false : (($options['rmfeaturedimg'] == 1) ? true : false);
 
-			$cfg['woutfilter']		 = (!isset($options['woutfilter']) || empty($options['woutfilter'])) ? false : ( ($options['woutfilter'] == 1) ? true : false );
-			$cfg['campaign_timeout'] = (!isset($options['campaign_timeout']) ) ? 300 : (int) $options['campaign_timeout'];
-			$cfg['throttle']		 = (!isset($options['throttle']) ) ? 0 : (int) $options['throttle'];
-			$cfg['allowduplicates']	 = (!isset($options['allowduplicates']) || empty($options['allowduplicates'])) ? false : ( ($options['allowduplicates'] == 1) ? true : false );
-			$cfg['allowduptitle']	 = (!isset($options['allowduptitle']) || empty($options['allowduptitle'])) ? false : ( ($options['allowduptitle'] == 1) ? true : false );
-			$cfg['allowduphash']	 = (!isset($options['allowduphash']) || empty($options['allowduphash'])) ? false : ( ($options['allowduphash'] == 1) ? true : false );
-			$cfg['jumpduplicates']	 = (!isset($options['jumpduplicates']) || empty($options['jumpduplicates'])) ? false : ( ($options['jumpduplicates'] == 1) ? true : false );
-			$cfg['disableccf']		 = (!isset($options['disableccf']) || empty($options['disableccf'])) ? false : ( ($options['disableccf'] == 1) ? true : false );
+			$cfg['force_mysimplepie']		   = (!isset($options['force_mysimplepie']) || empty($options['force_mysimplepie'])) ? false : (($options['force_mysimplepie'] == 1) ? true : false);
+			$cfg['set_stupidly_fast']		   = (!isset($options['set_stupidly_fast']) || empty($options['set_stupidly_fast'])) ? false : (($options['set_stupidly_fast'] == 1) ? true : false);
+			$cfg['simplepie_strip_htmltags']   = (!isset($options['simplepie_strip_htmltags']) || empty($options['simplepie_strip_htmltags'])) ? false : (($options['simplepie_strip_htmltags'] == 1) ? true : false);
+			$cfg['simplepie_strip_attributes'] = (!isset($options['simplepie_strip_attributes']) || empty($options['simplepie_strip_attributes'])) ? false : (($options['simplepie_strip_attributes'] == 1) ? true : false);
+			$cfg['strip_htmltags']			   = (!isset($options['strip_htmltags'])) ? '' : sanitize_text_field($options['strip_htmltags']);
+			$cfg['strip_htmlattr']			   = (!isset($options['strip_htmlattr'])) ? '' : sanitize_text_field($options['strip_htmlattr']);
 
-			$cfg['add_extra_duplicate_filter_meta_source'] = (!isset($options['add_extra_duplicate_filter_meta_source']) || empty($options['add_extra_duplicate_filter_meta_source'])) ? false : ( ($options['add_extra_duplicate_filter_meta_source'] == 1) ? true : false );
+			$cfg['woutfilter']		 = (!isset($options['woutfilter']) || empty($options['woutfilter'])) ? false : (($options['woutfilter'] == 1) ? true : false);
+			$cfg['campaign_timeout'] = (!isset($options['campaign_timeout'])) ? 300 : (int) $options['campaign_timeout'];
+			$cfg['throttle']		 = (!isset($options['throttle'])) ? 0 : (int) $options['throttle'];
+			$cfg['allowduplicates']	 = (!isset($options['allowduplicates']) || empty($options['allowduplicates'])) ? false : (($options['allowduplicates'] == 1) ? true : false);
+			$cfg['allowduptitle']	 = (!isset($options['allowduptitle']) || empty($options['allowduptitle'])) ? false : (($options['allowduptitle'] == 1) ? true : false);
+			$cfg['allowduphash']	 = (!isset($options['allowduphash']) || empty($options['allowduphash'])) ? false : (($options['allowduphash'] == 1) ? true : false);
+			$cfg['jumpduplicates']	 = (!isset($options['jumpduplicates']) || empty($options['jumpduplicates'])) ? false : (($options['jumpduplicates'] == 1) ? true : false);
+			$cfg['disableccf']		 = (!isset($options['disableccf']) || empty($options['disableccf'])) ? false : (($options['disableccf'] == 1) ? true : false);
 
-			$cfg['nonstatic']		 = (!isset($options['nonstatic']) || empty($options['nonstatic'])) ? false : ( ($options['nonstatic'] == 1) ? true : false );
-			$cfg['emptytrashbutton'] = (!isset($options['emptytrashbutton']) || empty($options['emptytrashbutton'])) ? false : ( ($options['emptytrashbutton'] == 1) ? true : false );
+			$cfg['add_extra_duplicate_filter_meta_source'] = (!isset($options['add_extra_duplicate_filter_meta_source']) || empty($options['add_extra_duplicate_filter_meta_source'])) ? false : (($options['add_extra_duplicate_filter_meta_source'] == 1) ? true : false);
+
+			$cfg['nonstatic']		 = (!isset($options['nonstatic']) || empty($options['nonstatic'])) ? false : (($options['nonstatic'] == 1) ? true : false);
+			$cfg['emptytrashbutton'] = (!isset($options['emptytrashbutton']) || empty($options['emptytrashbutton'])) ? false : (($options['emptytrashbutton'] == 1) ? true : false);
 			$cfg['cpt_trashbutton']	 = (!isset($options['cpt_trashbutton']) || !is_array($options['cpt_trashbutton'])) ? array('post' => 1, 'page' => 1) : $options['cpt_trashbutton'];
 
-			$cfg['campaign_in_postslist']				 = (!isset($options['campaign_in_postslist']) || empty($options['campaign_in_postslist'])) ? false : ( ($options['campaign_in_postslist'] == 1) ? true : false );
-			$cfg['column_campaign_pos']					 = (!isset($options['column_campaign_pos']) ) ? 2 : (int) $options['column_campaign_pos'];
-			$cfg['disable_metaboxes_wpematico_posts']	 = (!isset($options['disable_metaboxes_wpematico_posts']) || empty($options['disable_metaboxes_wpematico_posts'])) ? false : ( ($options['disable_metaboxes_wpematico_posts'] == 1) ? true : false );
+			$cfg['campaign_in_postslist']			  = (!isset($options['campaign_in_postslist']) || empty($options['campaign_in_postslist'])) ? false : (($options['campaign_in_postslist'] == 1) ? true : false);
+			$cfg['column_campaign_pos']				  = (!isset($options['column_campaign_pos'])) ? 2 : (int) $options['column_campaign_pos'];
+			$cfg['disable_metaboxes_wpematico_posts'] = (!isset($options['disable_metaboxes_wpematico_posts']) || empty($options['disable_metaboxes_wpematico_posts'])) ? false : (($options['disable_metaboxes_wpematico_posts'] == 1) ? true : false);
 
-			$cfg['disable_categories_description']	 = (!isset($options['disable_categories_description']) || empty($options['disable_categories_description'])) ? false : ( ($options['disable_categories_description'] == 1) ? true : false );
-			$cfg['enable_xml_upload']				 = (!isset($options['enable_xml_upload']) || empty($options['enable_xml_upload'])) ? false : ( ($options['enable_xml_upload'] == 1) ? true : false );
-			$cfg['entity_decode_html']				 = (!isset($options['entity_decode_html']) || empty($options['entity_decode_html'])) ? false : ( ($options['entity_decode_html'] == 1) ? true : false );
+			$cfg['disable_categories_description'] = (!isset($options['disable_categories_description']) || empty($options['disable_categories_description'])) ? false : (($options['disable_categories_description'] == 1) ? true : false);
+			$cfg['enable_xml_upload']			   = (!isset($options['enable_xml_upload']) || empty($options['enable_xml_upload'])) ? false : (($options['enable_xml_upload'] == 1) ? true : false);
+			$cfg['entity_decode_html']			   = (!isset($options['entity_decode_html']) || empty($options['entity_decode_html'])) ? false : (($options['entity_decode_html'] == 1) ? true : false);
+
+			if (defined('MULTISITE') && MULTISITE) {
+				$cfg['disable_extensions_feed_page'] = true;
+			} else {
+				$cfg['disable_extensions_feed_page'] = (!isset($options['disable_extensions_feed_page']) || empty($options['disable_extensions_feed_page'])) ? false : (($options['disable_extensions_feed_page'] == 1) ? true : false);
+			}
 
 			//Disable Extensions feed Page. 
-			if(defined('MULTISITE') && MULTISITE){
-				$cfg['disable_extensions_feed_page'] = true;
-			}else{
-				$cfg['disable_extensions_feed_page'] = (!isset($options['disable_extensions_feed_page']) || empty($options['disable_extensions_feed_page'])) ? false : ( ($options['disable_extensions_feed_page'] == 1) ? true : false );
-			}
-				
 			return apply_filters('wpematico_more_options', $cfg, $options);
 		}
 
@@ -462,48 +561,48 @@ if (!class_exists('WPeMatico')) {
 		 * @return bool True, if option was changed
 		 */
 		public function update_options() {
-			return update_option(self :: OPTION_KEY, $this->options);
+			return update_option(self::OPTION_KEY, $this->options);
 		}
 
 		public static function wpematico_get_mime_type_by_extension($extension) {
 			$mime_types_img = array(
-				'ai'   => 'application/postscript, application/adobe.illustrator, application/illustrator',
-				'bmp'  => 'image/bmp',
-				'gif'  => 'image/gif',
-				'ico'  => 'image/x-icon',
-				'jpeg' => 'image/jpeg',
-				'jpg'  => 'image/jpeg',
-				'png'  => 'image/png',
-				'ps'   => 'application/postscript',
-				'psd'  => 'image/vnd.adobe.photoshop',
-				'svg'  => 'image/svg+xml',
-				'tif'  => 'image/tiff',
-				'tiff' => 'image/tiff',
-				'webp' => 'image/webp',
-				'apng' => 'image/apng',
-				'avif' => 'image/avif',
-				'jfif' => 'image/jpeg',
+				'ai'	=> 'application/postscript, application/adobe.illustrator, application/illustrator',
+				'bmp'	=> 'image/bmp',
+				'gif'	=> 'image/gif',
+				'ico'	=> 'image/x-icon',
+				'jpeg'	=> 'image/jpeg',
+				'jpg'	=> 'image/jpeg',
+				'png'	=> 'image/png',
+				'ps'	=> 'application/postscript',
+				'psd'	=> 'image/vnd.adobe.photoshop',
+				'svg'	=> 'image/svg+xml',
+				'tif'	=> 'image/tiff',
+				'tiff'	=> 'image/tiff',
+				'webp'	=> 'image/webp',
+				'apng'	=> 'image/apng',
+				'avif'	=> 'image/avif',
+				'jfif'	=> 'image/jpeg',
 				'pjpeg' => 'image/jpeg',
-				'pjp' => 'image/jpeg',
+				'pjp'	=> 'image/jpeg',
 			);
-		
+
 			// Return the MIME type if it exists, otherwise, return a default value
 			return isset($mime_types_img[$extension]) ? $mime_types_img[$extension] : array();
 		}
 
-		public static function wpematico_add_custom_mimetypes($mimetypes=array()){
+		public static function wpematico_add_custom_mimetypes($mimetypes = array()) {
 			global $cfg;
-			$allowed = (isset($cfg['images_allowed_ext']) && !empty($cfg['images_allowed_ext'])) ? $cfg['images_allowed_ext'] : 'jpg,gif,png,tif,bmp,jpeg';
-			$allowed = apply_filters('wpematico_allowext', $allowed);
+			$allowed	  = (isset($cfg['images_allowed_ext']) && !empty($cfg['images_allowed_ext'])) ? $cfg['images_allowed_ext'] : 'jpg,gif,png,tif,bmp,jpeg';
+			$allowed	  = apply_filters('wpematico_allowext', $allowed);
 			$allowedArray = explode(',', $allowed);
-			
+
 			$allowedWP = explode(',', self::get_images_allowed_mimes());
-			
+
 			$arrayDiff = array_diff($allowedArray, $allowedWP);
-			
+
 			foreach ($arrayDiff as $diffExtension) {
 				$customMimeType = self::wpematico_get_mime_type_by_extension($diffExtension);
-				
+
 				if (!empty($customMimeType)) {
 					$mimetypes[$diffExtension] = $customMimeType;
 				}
@@ -513,7 +612,6 @@ if (!class_exists('WPeMatico')) {
 				return $mimes;
 			});
 		}
-
 	}
 
 	// Class WPeMatico

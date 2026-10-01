@@ -1,0 +1,237 @@
+/* The list table is table-layout:fixed, so every column has to be accounted for
+   or the ones left out are squeezed to nothing — campaign_type had no width and
+   ended up a few pixels wide, printing its header one letter per line. Shares,
+   not pixels, so they hold at any width.
+
+   Scoped to the table on purpose: WP names each header cell after its column key,
+   and those are ordinary ids that anything else on the screen can carry too. The
+   unscoped #campaign_type was also hitting the campaign type filter above the
+   table, squeezing that select to 14% of its box — about the width of its arrow. */
+.wp-list-table #title {width:27%;}
+.wp-list-table #status {width:9%;}
+.wp-list-table #campaign_type, .column-campaign_type {width:14%;}
+.wp-list-table #next, .column-next, .row-actions2 {width:20%;}
+.wp-list-table #last {width:23%;}
+.wp-list-table #count {width:7%;}
+
+/* Break between words, never inside one. */
+.wp-list-table thead th,
+.wp-list-table tfoot th {
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+/* The three state buttons belong on one line. */
+.column-next {
+    white-space: nowrap;
+}
+
+.he20{height:20px;}
+.he35{height:35px;}
+.mt2{margin-top:2px;}
+
+/* Quick Edit / Bulk Edit columns.
+   Core floats three fieldsets with fixed percentages. This screen adds its own
+   category and options fieldsets (and the PRO taxonomies one, empty until its
+   script fills it), so the percentages added up to well over 100% and the last
+   fieldset dropped below the others, stretching the form down the page. Flex
+   with wrap keeps them side by side and reflows a whole column at a time. */
+.inline-edit-row .inline-edit-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0 20px;
+}
+.inline-edit-row .inline-edit-wrapper > fieldset {
+    float: none !important;
+    width: auto !important;
+    min-width: 0;
+    max-width: 100%;
+    margin: 0 !important;
+    flex: 1 1 260px;
+}
+.inline-edit-row .inline-edit-wrapper > fieldset.inline-edit-col-left {
+    flex: 3 1 340px;
+}
+/* Categories and the PRO taxonomies box: only as wide as they need, so an empty
+   one costs nothing. */
+.inline-edit-row .inline-edit-wrapper > fieldset.inline-edit-col-center {
+    flex: 0 1 auto;
+}
+/* Legend and the buttons row always span the full width. */
+.inline-edit-row .inline-edit-wrapper > .inline-edit-legend,
+.inline-edit-row .inline-edit-wrapper > .submit {
+    flex: 1 0 100%;
+}
+
+.inline-edit-col {
+    border: 0px !important;
+}
+
+/* Campaign Options: every field with its label on top, laid out in as many
+   columns as fit, and the checkboxes on their own row. Beats one fixed-width
+   label per line, which pushed the form down the page. */
+.inline-edit-group.wpematico-quick-fields {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px 16px;
+    align-items: end;
+    margin-bottom: 10px;
+}
+.inline-edit-group.wpematico-quick-fields > label {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    margin: 0;
+    line-height: 1.4;
+}
+.inline-edit-group.wpematico-quick-fields > label > span.title {
+    width: auto;
+    float: none;
+    line-height: 1.4;
+}
+.inline-edit-group.wpematico-quick-fields select,
+.inline-edit-group.wpematico-quick-fields input {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+}
+
+.inline-edit-group.wpematico-quick-checks {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2px 20px;
+}
+.inline-edit-group.wpematico-quick-checks > label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* Anything else still using the old float layout. */
+.inline-edit-col .inline-edit-group label.alignleft {
+    width: auto;
+    float: none;
+    margin: 0;
+}
+
+.inline-edit-row .inline-edit-wrapper > fieldset.inline-edit-col-right {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 8px;
+}
+.inline-edit-col-right > .inline-edit-col {
+    flex: 1 1 100%;
+}
+
+.inline-edit-row fieldset label, .inline-edit-row fieldset span.inline-edit-categories-label {
+  margin: .0em 0;
+  line-height: 2;
+}
+.inline-edit-row fieldset label span.title, span.title.inline-edit-categories-label {
+  line-height: 2;
+  font-weight: bold;
+}
+.wpelinks:hover {
+    text-decoration-line: underline;
+    color: #d3741c;
+}
+.wpelinks {
+    color: #d3741c;
+}
+/* Bulk Edit campaign options. Core's label layout floats a 5em title, too narrow
+   for names like "Title links to source", and one option per line turns seven
+   controls into a column the user has to scroll. Label above its control, laid
+   out in as many columns as fit. */
+/* Bulk Edit: the options span the full width, under the other columns, so ten
+   dropdowns lay out in a row or two instead of a tall column beside an empty
+   half. The tag boxes core prints inside this fieldset are moved out by the
+   script, which turns them into columns of their own. */
+.inline-edit-row .inline-edit-wrapper > fieldset.wpematico-bulk-options {
+    flex: 1 1 100%;
+}
+.inline-edit-row .inline-edit-wrapper > .inline-edit-tags-wrap {
+    flex: 1 1 240px;
+    min-width: 0;
+}
+/* Grows with the campaigns it lists instead of always reserving twelve rows. */
+#bulk-edit #bulk-titles {
+    height: auto;
+    max-height: 182px;
+}
+/* Same for the category checklist, in both Quick Edit and Bulk Edit. */
+.inline-edit-row .inline-edit-categories .cat-checklist {
+    height: auto;
+    min-height: 3em;
+    max-height: 14em;
+}
+/* The tag boxes, once pulled out, follow the same label-on-top shape as the
+   rest of the form. */
+.inline-edit-row .inline-edit-wrapper > .inline-edit-tags-wrap label.inline-edit-tags {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    margin: 0;
+}
+.inline-edit-row .inline-edit-wrapper > .inline-edit-tags-wrap label.inline-edit-tags > span.title {
+    width: auto;
+    float: none;
+    margin: 0;
+}
+.inline-edit-row .inline-edit-wrapper > .inline-edit-tags-wrap textarea {
+    width: 100%;
+    margin: 0;
+}
+.wpematico-bulk-options > .inline-edit-col {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 8px 20px;
+    align-items: end;
+}
+.wpematico-bulk-options > .inline-edit-col > h4 {
+    grid-column: 1 / -1;
+    margin: 0;
+}
+.wpematico-bulk-options > .inline-edit-col > label {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    margin: 0;
+    float: none;
+    clear: none;
+}
+.wpematico-bulk-options > .inline-edit-col > label > span.title {
+    flex: none;
+    width: auto;
+    float: none;
+    line-height: 1.4;
+}
+.wpematico-bulk-options > .inline-edit-col > label > span.input-text-wrap {
+    margin-left: 0;
+}
+.wpematico-bulk-options > .inline-edit-col select,
+.wpematico-bulk-options > .inline-edit-col input {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* The site clock sits next to Screen Options and Help, so it has to look like
+   them: same tab, minus the disclosure arrow, since it opens nothing. */
+#screen-meta-links #wpematico-clock-link-wrap {
+    float: left;
+    margin: 0 0 0 6px;
+}
+#screen-meta-links #show-clock {
+    padding: 0 12px;
+    cursor: default;
+    font-variant-numeric: tabular-nums;
+}
+#screen-meta-links #show-clock:after {
+    content: none;
+}

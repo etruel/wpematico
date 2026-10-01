@@ -1,0 +1,197 @@
+/* ============================================================
+   WPeMatico – License Manager Cards
+   ============================================================ */
+
+/* Card grid — two columns side by side with top spacing */
+.wpe-licenses-form {
+	padding-top: 16px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	align-items: flex-start;
+}
+
+/* License card — flex child, min 320px so two fit side-by-side in most admin layouts */
+.postbox-license {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 6px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .06);
+	overflow: hidden;
+	flex: 1 1 320px;
+	min-width: 0;
+}
+
+/* Card header */
+.postbox-license h2 {
+	background: #2c3338;
+	border-bottom: 3px solid #f0b849;
+	border-radius: 5px 5px 0 0;
+	color: #f0f0f1;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 14px;
+	font-weight: 600;
+	letter-spacing: .1px;
+	margin: 0;
+	padding: 13px 18px;
+}
+
+.postbox-license h2 [class*="dashicons"] {
+	color: #f0b849;
+	font-size: 20px;
+	height: 20px;
+	width: 20px;
+	line-height: 1;
+	flex-shrink: 0;
+}
+
+/* Card body — using .wpe-license-body to avoid collision with WP .inside */
+.postbox-license .wpe-license-body {
+	padding: 18px 22px 20px;
+}
+
+/* ── License Key field ─────────────────────────────────────── */
+.wpe-lk-field {
+	margin-bottom: 4px;
+}
+
+.wpe-lk-label {
+	display: block;
+	font-weight: 600;
+	font-size: 13px;
+	color: #2c3338;
+	margin-bottom: 6px;
+}
+
+/* Override .wpematico_container input[type="text"] { max-width: 75% } from wpemat_settings.css */
+.wpematico_container .postbox-license .inp_license_key,
+.postbox-license .inp_license_key {
+	display: block;
+	width: 100%;
+	max-width: none;
+	box-sizing: border-box;
+	font-family: 'Courier New', Courier, monospace;
+	font-size: 13px;
+	letter-spacing: .5px;
+}
+
+.wpe-lk-hint {
+	display: block;
+	font-size: 12px;
+	color: #8c8f94;
+	font-style: italic;
+	margin-top: 5px;
+}
+
+/* ── Status section ────────────────────────────────────────── */
+.wpe-status-section {
+	border-top: 1px solid #f0f0f1;
+	margin-top: 16px;
+	padding-top: 14px;
+}
+
+.wpe-status-subtitle {
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: .6px;
+	color: #8c8f94;
+	margin-bottom: 8px;
+}
+
+.wpe-status-row p {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin: 0 0 10px;
+}
+
+/* Status icons */
+.validcheck::before  { content: "\2714"; color: #00a32a; font-size: 16px; font-weight: 700; margin-right: 2px; vertical-align: middle; }
+.renewcheck::before  { content: "\26A0"; color: #d63638; font-size: 16px; margin-right: 2px; vertical-align: middle; }
+.warningcheck::before { content: "\26A0"; color: #dba617; font-size: 16px; margin-right: 2px; vertical-align: middle; }
+
+/* ── License meta info box ─────────────────────────────────── */
+.postbox-license .license-meta-info {
+	background: #f6f7f7;
+	border: 1px solid #e2e4e7;
+	border-radius: 4px;
+	color: #50575e;
+	font-size: 12px;
+	line-height: 2;
+	padding: 10px 14px;
+}
+
+.postbox-license .license-meta-info strong {
+	color: #2c3338;
+	display: inline-block;
+	min-width: 110px;
+}
+
+.postbox-license .license-meta-info code {
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-radius: 3px;
+	font-size: 11px;
+	padding: 1px 5px;
+}
+
+/* Notice rows inside meta (no activations / renew warning) */
+.postbox-license .wpe-license-notice {
+	margin-bottom: 6px;
+}
+
+.postbox-license .wpe-license-notice a {
+	color: #d63638;
+}
+
+/* Account links */
+.postbox-license .wpe-license-links {
+	border-top: 1px solid #e2e4e7;
+	margin-top: 6px;
+	padding-top: 6px;
+	font-size: 12px;
+}
+
+.postbox-license .wpe-license-links a {
+	color: #2271b1;
+	text-decoration: none;
+}
+
+.postbox-license .wpe-license-links a:hover {
+	text-decoration: underline;
+}
+
+/* ── Action buttons ────────────────────────────────────────── */
+.postbox-license .btn_license_deactivate.button-secondary {
+	color: #d63638;
+	border-color: #f5a8a9;
+}
+.postbox-license .btn_license_deactivate.button-secondary:hover {
+	background: #d63638;
+	border-color: #d63638;
+	color: #fff;
+}
+.postbox-license .btn_license_activate.button-secondary {
+	color: #00a32a;
+	border-color: #7ad47f;
+}
+.postbox-license .btn_license_activate.button-secondary:hover {
+	background: #00a32a;
+	border-color: #00a32a;
+	color: #fff;
+}
+
+/* AJAX check-license feedback */
+.license-check-valid    { color: #00a32a; font-size: 13px; font-weight: 600; }
+.license-check-invalid  { color: #d63638; font-size: 13px; font-weight: 600; }
+.license-check-mismatch { color: #996800; font-size: 13px; font-weight: 600; }
+
+/* Empty-state message */
+.wpe-licenses-empty {
+	padding: 8px 0;
+	color: #50575e;
+}
