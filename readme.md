@@ -3,6 +3,12 @@ https://github.com/etruel/wpematico
 
 **Repository for in-development version of WPeMatico Wordpress Plugin**
 
+**Installing from GitHub**
+
+Download the `wpematico-*.zip` file attached to a [release](https://github.com/etruel/wpematico/releases) and upload it in Plugins > Add New > Upload Plugin. That file unpacks into the `wpematico/` folder, which is the one WordPress and every add-on expect, so it updates the copy you already have.
+
+The *Source code* archives and the green *Download ZIP* button unpack into a differently named folder, and WordPress would install that as a second plugin beside the first. Use the release file.
+
 WPeMatico is autoblogging in the blink of an eye!  On complete autopilot WPeMatico gets new contents regularly for your site!
 
 The use of use WPeMatico, the Full Content add-on, and any other products or services provided by Etruel to infringe the intellectual property rights of third parties is prohibited;
@@ -49,16 +55,17 @@ If you like WPeMatico, please [Rate 5 Stars](https://wordpress.org/support/view/
 
 
 ### [Add-ons](https://etruel.com):
-* [GPT Spinner](https://etruel.com/downloads/wpematico-gpt-spinner/)
 * [Professional Add-on](https://etruel.com/downloads/wpematico-professional/)
 * [FULL Content](https://etruel.com/downloads/wpematico-full-content/)
 * [Manual Fetching](https://etruel.com/downloads/wpematico-manual-fetching/)
 * [Make me Feed "Good"](https://etruel.com/downloads/wpematico-make-feed-good/)
 * [Facebook Fetcher](https://etruel.com/downloads/wpematico-facebook-fetcher/)
+* [Thumbnail Scratcher](https://etruel.com/downloads/wpematico-thumbnail-scratcher/)
 * [Better Excerpts](https://etruel.com/downloads/wpematico-better-excerpts/)
 * [Publish 2 Email](https://etruel.com/downloads/wpematico-publish-2-email/)
 * [Polylang](https://wordpress.org/plugins/wpematico-polylang/)
 * [Categories 2 Tags](https://etruel.com/downloads/wpematico-cats2tags/)
+* [WPeMatico SMTP](https://etruel.com/downloads/wpematico-smtp/)
 * [Chinese tags](https://etruel.com/downloads/wpematico/chinese-tags)
 
 

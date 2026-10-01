@@ -1,0 +1,3768 @@
+<?php
+/**
+ * WPeMatico plugin for WordPress
+ * wpematico_functions
+ * Contains all the auxiliary methods and functions to be called for the plugin inside WordPress pages.
+
+ * @requires  campaign_fetch_functions
+ * @package   wpematico
+ * @link      https://github.com/etruel/wpematico
+ * @author    Esteban Truelsegaard <etruel@etruel.com>
+ * @copyright 2006-2019 Esteban Truelsegaard
+ * @license   GPL v2 or later
+ */
+// don't load directly 
+if (!defined('ABSPATH')) {
+	header('Status: 403 Forbidden');
+	header('HTTP/1.1 403 Forbidden');
+	exit();
+}
+if (!class_exists('WPeMatico_functions')) {
+
+	class WPeMatico_functions {
+
+		public static $current_feed = ''; // The current feed that is running.
+
+		/**
+		 * @access public
+		 * @return $dev Bool true on duplicate item.
+		 * @since 1.9
+		 */
+		public static function is_duplicated_item($campaign, $feed, $item) {
+			// Post slugs must be unique across all posts.
+			global $wpdb, $wp_rewrite;
+			$post_ID	= 0;
+			$cpost_type = $campaign['campaign_customposttype'];
+			$dev		= false;
+
+			$wfeeds = $wp_rewrite->feeds;
+			if (!is_array($wfeeds))
+				$wfeeds = array();
+			$title	= $item->get_title();
+
+			$title = htmlspecialchars_decode($title);
+			if ($campaign['campaign_enable_convert_utf8']) {
+				$title = WPeMatico::change_to_utf8($title);
+			}
+
+			$title = esc_attr($title);
+			$title = html_entity_decode($title, ENT_QUOTES | ENT_HTML401, 'UTF-8');
+			if ($campaign['copy_permanlink_source']) {
+				$permalink = $item->get_permalink();
+				$slug	   = self::get_slug_from_permalink($permalink);
+			} else {
+				$slug = sanitize_title($title);
+			}
+
+			$exist_post_on_db = false;
+			/**
+			 * Deprecated since 1.6 in favor of a query improved by db indexes
+			  //$check_sql = "SELECT post_name FROM $wpdb->posts WHERE post_name = %s AND post_type = %s AND ID != %d LIMIT 1";
+			  //$post_name_check = $wpdb->get_var( $wpdb->prepare( $check_sql, $slug, $cpost_type, $post_ID ) );
+			  if ($exist_post_on_db || in_array( $slug, $wfeeds ) || apply_filters( 'wp_unique_post_slug_is_bad_flat_slug', false, $slug, $cpost_type ) ) {
+			  $dev = true;
+			  }
+			 */
+			$check_sql		  = "SELECT ID, post_name, post_type FROM $wpdb->posts WHERE post_name = %s LIMIT 1";
+			$post_name_check  = $wpdb->get_results($wpdb->prepare($check_sql, $slug));
+			if (!empty($post_name_check)) {
+				if ($post_name_check[0]->ID == 0 || $cpost_type == $post_name_check[0]->post_type) {
+					$exist_post_on_db = true;
+				}
+			}
+
+			if ($exist_post_on_db) {
+				$dev = true;
+			} else {
+				if (in_array($slug, $wfeeds)) {
+					$dev = true;
+				} else {
+					if (apply_filters('wp_unique_post_slug_is_bad_flat_slug', false, $slug, $cpost_type)) {
+						$dev = true;
+					}
+				}
+			}
+
+			if (has_filter('wpematico_duplicates'))
+				$dev = apply_filters('wpematico_duplicates', $dev, $campaign, $item);
+			//  http://wordpress.stackexchange.com/a/72691/65771
+			//  https://codex.wordpress.org/Function_Reference/get_page_by_title
+
+			$dupmsg = ($dev) ? esc_html__('Yes', 'wpematico') : esc_html__('No', 'wpematico');
+			/* translators: the title of the post. */
+			trigger_error(sprintf(esc_html__('Checking duplicated title \'%s\'', 'wpematico'), $title) . ': ' . $dupmsg, E_USER_NOTICE); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+
+			return $dev;
+		}
+
+		/**
+		 * Static function change_to_utf8
+		 * This function convert a string to UTF-8 if its has a different encoding.
+		 * @access public
+		 * @param $string String to convert to UTF-8
+		 * @return $string String with UTF-8 encoding.
+		 * @since 1.9.0
+		 */
+		public static function change_to_utf8($string) {
+			$from = apply_filters('wpematico_custom_chrset', mb_detect_encoding($string, "auto"));
+			if ($from && $from != 'UTF-8') {
+				$string = mb_convert_encoding($string, 'UTF-8', $from);
+			}
+			return $string;
+		}
+
+		/**
+		 * Static function get_enconding_from_url
+		 * This function get the encoding from headers of a URL.
+		 * @access public
+		 * @param $url String with an URL
+		 * @return $encoding String with the encoding of the URL.
+		 * @since 1.9.1
+		 */
+		public static function get_enconding_from_header($url) {
+			static $encoding_hosts = array();
+			if (empty($encoding_hosts)) {
+				$encoding_hosts = get_transient('wpematico_encoding_hosts');
+				if ($encoding_hosts === false) {
+					$encoding_hosts = array();
+				}
+			}
+
+			$parsed_url = parse_url($url);
+			$host		= (isset($parsed_url['host']) ? $parsed_url['host'] : time());
+
+			if (!isset($encoding_hosts[$host])) {
+				/**
+				 * First checks encoding in the feed file attribute on first line
+				 * if not found find in their headers
+				 */
+				$encoding = '';
+				$response = wp_remote_get(esc_url_raw($url));
+				if (!empty($response)) {
+					$body = wp_remote_retrieve_body($response);
+					$lin1 = strtok($body, PHP_EOL);
+					if (preg_match('/.+?encoding\s?=\s?[\"\'].*?(.+?)[\"\']/s', $lin1, $m)) {
+						$encoding = $m[1];
+					}
+				}
+				if ($encoding === '') {
+					$content_type = wp_remote_retrieve_header($response, 'content-type');
+					if (!empty($content_type)) {
+						if (preg_match("#.+?/.+?;\\s?charset\\s?=\\s?(.+)#i", $content_type, $m)) {
+							$encoding = $m[1];
+						}
+					}
+				}
+				$encoding_hosts[$host] = strtoupper($encoding);
+				set_transient('wpematico_encoding_hosts', $encoding_hosts, (HOUR_IN_SECONDS * 6));
+			}
+			return $encoding_hosts[$host];
+		}
+
+		/**
+		 * Static function detect_encoding_from_headers
+		 * This function filter the input encoding used in change_to_utf8
+		 * @access public
+		 * @param $from String with the input encoding 
+		 * @return $from String with the input encoding that maybe is from HTTP headers.
+		 * @since 1.9.1
+		 */
+		public static function detect_encoding_from_headers($from) {
+			if (strtoupper($from) == 'ASCII') {
+				$from = WPeMatico::get_enconding_from_header(WPeMatico::$current_feed);
+			}
+			return $from;
+		}
+
+		/**
+		 * @access public
+		 * @return $options Array of current duplicate settings.
+		 * @since 2.0
+		 */
+		public static function get_duplicate_options($settings = array(), $campaign = array()) {
+			$options										   = array();
+			$options['allowduplicates']						   = $settings['allowduplicates'];
+			$options['allowduptitle']						   = $settings['allowduptitle'];
+			$options['allowduphash']						   = $settings['allowduphash'];
+			$options['jumpduplicates']						   = $settings['jumpduplicates'];
+			$options['add_extra_duplicate_filter_meta_source'] = $settings['add_extra_duplicate_filter_meta_source'];
+
+			if (isset($campaign['campaign_no_setting_duplicate']) && $campaign['campaign_no_setting_duplicate']) {
+
+				$options['allowduplicates']						   = $campaign['campaign_allowduplicates'];
+				$options['allowduptitle']						   = $campaign['campaign_allowduptitle'];
+				$options['allowduphash']						   = $campaign['campaign_allowduphash'];
+				$options['jumpduplicates']						   = $campaign['campaign_jumpduplicates'];
+				$options['add_extra_duplicate_filter_meta_source'] = $campaign['campaign_add_ext_duplicate_filter_ms'];
+			}
+			$options = apply_filters('wpematico_duplicate_options', $options, $settings, $campaign);
+			return $options;
+		}
+
+		/**
+		 * @access public
+		 * @return $options Array of current images settings.
+		 * @since 1.7.0
+		 */
+		public static function get_images_options($settings = array(), $campaign = array()) {
+
+			$options					 = array();
+			$options['imgcache']		 = $settings['imgcache'];
+			$options['fifu']			 = $settings['fifu'];
+			$options['fifu-video']		 = $settings['fifu-video'];
+			$options['imgattach']		 = $settings['imgattach'];
+			$options['gralnolinkimg']	 = $settings['gralnolinkimg'];
+			$options['image_srcset']	 = $settings['image_srcset'];
+			$options['save_attr_images'] = $settings['save_attr_images'];
+			$options['featuredimg']		 = $settings['featuredimg'];
+			$options['rmfeaturedimg']	 = $settings['rmfeaturedimg'];
+			$options['customupload']	 = $settings['customupload'];
+			if (!$options['imgcache']) {
+				$options['imgattach']	  = false;
+				$options['gralnolinkimg'] = false;
+				$options['image_srcset']  = false;
+				if (!$options['featuredimg']) {
+					$options['customupload'] = false;
+				}
+			}
+			if (isset($campaign['campaign_no_setting_img']) && $campaign['campaign_no_setting_img']) {
+				$options['imgcache']		 = $campaign['campaign_imgcache'];
+				$options['imgattach']		 = $campaign['campaign_attach_img'];
+				$options['gralnolinkimg']	 = $campaign['campaign_nolinkimg'];
+				$options['image_srcset']	 = $campaign['campaign_image_srcset'];
+				$options['save_attr_images'] = $campaign['campaign_attr_images'];
+				$options['featuredimg']		 = $campaign['campaign_featuredimg'];
+				$options['fifu']			 = $campaign['campaign_fifu'];
+				$options['fifu-video']		 = $campaign['campaign_fifu_video'];
+				$options['rmfeaturedimg']	 = $campaign['campaign_rmfeaturedimg'];
+				$options['customupload']	 = $campaign['campaign_customupload'];
+			}
+			$options = apply_filters('wpematico_images_options', $options, $settings, $campaign);
+
+			return $options;
+		}
+
+		/**
+		 * @access public
+		 * @return $options Array of current audios settings.
+		 * @since 1.7.0
+		 */
+		public static function get_audios_options($settings = array(), $campaign = array()) {
+
+			$options						= array();
+			$options['audio_cache']			= $settings['audio_cache'];
+			$options['audio_attach']		= $settings['audio_attach'];
+			$options['gralnolink_audio']	= $settings['gralnolink_audio'];
+			$options['customupload_audios'] = $settings['customupload_audios'];
+			if (!$options['audio_cache']) {
+				$options['audio_attach']		= false;
+				$options['gralnolink_audio']	= false;
+				$options['customupload_audios'] = false;
+			}
+			if (isset($campaign['campaign_no_setting_audio']) && $campaign['campaign_no_setting_audio']) {
+				$options['audio_cache']			= $campaign['campaign_audio_cache'];
+				$options['audio_attach']		= $campaign['campaign_attach_audio'];
+				$options['gralnolink_audio']	= $campaign['campaign_nolink_audio'];
+				$options['customupload_audios'] = $campaign['campaign_customupload_audio'];
+			}
+			$options = apply_filters('wpematico_audios_options', $options, $settings, $campaign);
+			return $options;
+		}
+
+		/**
+		 * @access public
+		 * @return $options Array of current videos settings.
+		 * @since 1.7.0
+		 */
+		public static function get_videos_options($settings = array(), $campaign = array()) {
+			$options						= array();
+			$options['video_cache']			= $settings['video_cache'];
+			$options['video_attach']		= $settings['video_attach'];
+			$options['gralnolink_video']	= $settings['gralnolink_video'];
+			$options['customupload_videos'] = $settings['customupload_videos'];
+			if (!$options['video_cache']) {
+				$options['video_attach']		= false;
+				$options['gralnolink_video']	= false;
+				$options['customupload_videos'] = false;
+			}
+			if (isset($campaign['campaign_no_setting_video']) && $campaign['campaign_no_setting_video']) {
+				$options['video_cache']			= $campaign['campaign_video_cache'];
+				$options['video_attach']		= $campaign['campaign_attach_video'];
+				$options['gralnolink_video']	= $campaign['campaign_nolink_video'];
+				$options['customupload_videos'] = $campaign['campaign_customupload_video'];
+			}
+			$options = apply_filters('wpematico_videos_options', $options, $settings, $campaign);
+			return $options;
+		}
+
+		/**
+		 * @access public
+		 * @return string $options  all wp defaults image mime types plus added by custom filters in standard ways.
+		 * @since 2.5.3
+		 */
+		public static function get_images_allowed_mimes() {
+			$mime_types = get_allowed_mime_types();
+			$return		= '';
+			foreach ($mime_types as $key => $mime) {
+				// Validate image types and replace | by ,
+				if (strpos($mime, 'image/') !== false) {
+					$return .= str_replace('|', ',', "$key,");
+				}
+			}
+			//Deletes last chr if a ,
+			$return = (substr($return, -1) == ",") ? substr($return, 0, -1) : $return;
+			/**
+			 * $return has array of all wp defaults image mime types plus added by custom filters in standard ways
+			 */
+			return apply_filters('get_wpematico_images_allowed_mimes', $return);
+		}
+
+		/**
+		 * @access public
+		 * @return array $options all wp defaults video mime types plus added by custom filters in standard ways.
+		 * @since 2.5.3
+		 */
+		public static function get_audios_allowed_mimes() {
+			$mime_types = get_allowed_mime_types();
+			$return		= '';
+			foreach ($mime_types as $key => $mime) {
+				// Validate audio types and replace | by ,
+				if (strpos($mime, 'audio/') !== false) {
+					$return .= str_replace('|', ',', "$key,");
+				}
+			}
+			//Deletes last chr if a ,
+			$return = (substr($return, -1) == ",") ? substr($return, 0, -1) : $return;
+			/**
+			 * $return has all wp defaults audio mime types plus added by custom filters in standard ways
+			 */
+			return apply_filters('get_wpematico_audios_allowed_mimes', $return);
+		}
+
+		/**
+		 * @access public
+		 * @return array $options all wp defaults video mime types plus added by custom filters in standard ways.
+		 * @since 2.5.3
+		 */
+		public static function get_videos_allowed_mimes() {
+			$mime_types = get_allowed_mime_types();
+			$return		= '';
+			foreach ($mime_types as $key => $mime) {
+				// Validate video types and replace | by ,
+				if (strpos($mime, 'video/') !== false) {
+					$return .= str_replace('|', ',', "$key,");
+				}
+			}
+			//Deletes last chr if a ,
+			$return = (substr($return, -1) == ",") ? substr($return, 0, -1) : $return;
+			/**
+			 * $return has all wp defaults video mime types plus added by custom filters in standard ways
+			 */
+			return apply_filters('get_wpematico_videos_allowed_mimes', $return);
+		}
+
+		/**
+		 * get All Statuses without domains
+		 * @global type $wp_post_statuses
+		 * @param type $statuses
+		 * @return type array
+		 */
+		static function getAllStatuses($statuses = array()) {
+			global $wp_post_statuses;
+			$statuses = array_filter($wp_post_statuses, function ($object) {
+				if ($object->label_count['domain'] == '')
+					return true;
+			});
+			$args = apply_filters('wpematico_statuses_args', array(
+//			'_builtin'                  => 1,
+				'show_in_admin_status_list' => 1,
+				'show_in_admin_all_list'	=> 1,
+			));
+			return apply_filters('wpematico_campaign_statuses', wp_filter_object_list($statuses, $args));
+		}
+		
+		/**
+		 * save_file_from_url 
+		 * Try several ways to download a file by url with filters to rename the local file
+		 * 
+		 * @access public
+		 * @param $url_origin String contain the URL of File will be uploaded.
+		 * @param $new_file String contain the Path of File where it will be saved.
+		 * @return string Path to file if uploaded, bool false if not success
+		 * @since 1.9.0
+		 */
+		public static function save_file_from_url($url_origin, $new_file, $type = '') {
+			/**
+			 * Beta: Filter to avoid run these methods by using an external function through the filter.
+			 * The function should read the $url_origin and save it as $new_file and return the file path as string.
+			 * If return false will continue trying to upload with the following methods below (see $allow_continue)
+			 */
+			$file_path = apply_filters('wpematico_user_custom_upload', false, $url_origin, $new_file);
+			if ($file_path !== false) {
+				return $file_path;  // Return path of the already uploaded file
+			} else {
+				/**
+				 * Beta: Continuing prior filter if it returned false.
+				 * Description: Allow or avoid continue trying with the below methods.
+				 * False to avoid continue and return false as the file was not uploaded.
+				 * True to skip this and follow the own custom uploads methods below.
+				 */
+				$allow_continue = apply_filters('wpematico_user_custom_upload_continue', true, $url_origin, $new_file);
+				if (!$allow_continue)
+					return false;  // Return 
+			}
+
+			/**
+			 * Filter to avoid download and return just the new name as it was downloaded.
+			 */
+			$dest_file = apply_filters('wpematico_overwrite_file', $new_file);
+			if ($dest_file === FALSE)
+				return $new_file;  // Don't upload it and return the name like it was uploaded
+			$new_file  = $dest_file;
+			$i		   = 1;
+			while (file_exists($new_file)) {
+				$file_extension = strrchr($new_file, '.'); //Will return .JPEG
+				if ($i == 1) {
+					$file_name = substr($new_file, 0, strlen($new_file) - strlen($file_extension));
+					$new_file  = $file_name . "-$i" . $file_extension;
+				} else {
+					$file_name = substr($new_file, 0, strlen($new_file) - strlen($file_extension) - strlen("-$i"));
+					$new_file  = $file_name . "-$i" . $file_extension;
+				}
+				$i++;
+			}
+
+			global $wp_filesystem;
+			/* checks if exists $wp_filesystem */
+			if (empty($wp_filesystem) || !isset($GLOBALS['wp_filesystem']) || !is_object($GLOBALS['wp_filesystem'])) {
+
+				if (file_exists(ABSPATH . '/wp-admin/includes/file.php')) {
+					include_once(ABSPATH . '/wp-admin/includes/file.php');
+				}
+				$upload_dir = wp_upload_dir();
+				$context	= trailingslashit($upload_dir['path']); /* Used by request_filesystem_credentials to verify the folder permissions if it needs credentials. */
+
+				ob_start();
+				$creds = request_filesystem_credentials('edit.php?post_type=wpematico', '', false, $context);
+				ob_end_clean();
+
+				if ($creds === false) {
+					return false;
+				}
+				$init = WP_Filesystem($creds, $context);
+				if (!$init)
+					return false;
+			}
+
+			$origin_content = '';
+			$wrote			= false;
+			// $wp_filesystem->get_contents in 'direct' method allows url downloads, other methods should work only on local files
+			if (defined('FS_METHOD') && FS_METHOD == 'direct') {
+				$origin_content = $wp_filesystem->get_contents($url_origin);
+			}
+			if (empty($origin_content)) {
+				// first try if no 'direct' method
+				// Type-aware total-transfer timeout. The default (60s) protects the common case —
+				// images, downloaded by core and by many addons that call this with 2 args — so a
+				// dead/black-hole URL can't hang the fetch for WP's default 300s. Only audio/video,
+				// which can legitimately need long transfers, opt into 300s by passing $type. Any
+				// other case is adjustable through the filter without editing callers.
+				$dl_timeout = ($type === 'audio' || $type === 'video') ? 300 : 60;
+				$dl_timeout = (int) apply_filters('wpematico_download_url_timeout', $dl_timeout, $type, $url_origin, $new_file);
+				$download_file = download_url($url_origin, $dl_timeout);
+				if (!is_wp_error($download_file)) {
+					/**
+					 * if success we try to move the file instead get and put contents to improve performance.  
+					 * (copy and unlink pasted from wp->file.php line 868~ )
+					 */
+					$move_new_file = @copy($download_file, $new_file);
+					if (false === $move_new_file) {
+						$origin_content = $wp_filesystem->get_contents($download_file);
+					} else {
+						//Successfully moved
+						$origin_content = '';
+						$wrote			= true;
+					}
+					unlink($download_file);
+				} else {
+					//third try to obtain the file 
+					/* translators: the previous error message. */
+					trigger_error(sprintf(esc_html__('Download error: %s Using an alternate download method...', 'wpematico'), wp_kses_post($download_file->get_error_message())), E_USER_WARNING);
+					$origin_content = WPeMatico::wpematico_get_contents($url_origin, array());
+				}
+			}
+
+			if (!empty($origin_content)) {
+				$wrote = $wp_filesystem->put_contents($new_file, $origin_content);
+
+				if (!$wrote) {
+					unlink($new_file);
+				}
+			}
+			return ($wrote) ? $new_file : false;
+		}
+
+		/**
+		 * Static function get_attribute_value
+		 * @access public
+		 * @param string $atribute
+		 * @param string $string
+		 * @return string $value with value of HTML attribute.
+		 * @since 1.7.0
+		 */
+		public static function get_attribute_value($atribute, $string) {
+			$value				  = '';
+			$attribute_patterns	  = array();
+			$attribute_patterns[] = $atribute . '=';
+			$attribute_patterns[] = $atribute . ' = ';
+			$attribute_patterns[] = $atribute . '= ';
+			$attribute_patterns[] = $atribute . ' =';
+			$pos_var			  = false;
+			$index_pattern		  = -1;
+			foreach ($attribute_patterns as $kp => $pattern) {
+				$pos_var	   = strpos($string, $pattern);
+				$index_pattern = $kp;
+				if ($pos_var !== false) {
+					break;
+				}
+			}
+			if ($pos_var === false) {
+				return $value;
+			}
+			$len_pattern	= strlen($attribute_patterns[$index_pattern]);
+			$pos_offset_one = strpos($string, '"', $pos_var + $len_pattern + 1);
+			$pos_offset		= $pos_offset_one;
+			$pos_offset_two = strpos($string, "'", $pos_var + $len_pattern + 1);
+			if ($pos_offset_one === false) {
+				$pos_offset_one = PHP_INT_MAX;
+			}
+			if ($pos_offset_two === false) {
+				$pos_offset_two = PHP_INT_MAX;
+			}
+
+			if ($pos_offset_two < $pos_offset_one) {
+				$pos_offset = $pos_offset_two;
+			}
+			$offset_substr = ($pos_offset - ($pos_var + $len_pattern));
+			$value		   = substr($string, $pos_var + $len_pattern, $offset_substr);
+			$value		   = str_replace('"', '', $value);
+			$value		   = str_replace("'", '', $value);
+			return $value;
+		}
+
+		/**
+		 * Static function get_tags
+		 * @access public
+		 * @param string $tag
+		 * @param string $string
+		 * @return array
+		 * @since 1.7.1
+		 */
+		public static function get_tags($tag, $string) {
+			$tags_content	= array();
+			$current_offset = 0;
+			do {
+				$tag_return = self::get_tag($tag, $string, $current_offset);
+				if ($tag_return) {
+					$tags_content[] = $tag_return[1];
+					$current_offset = $tag_return[0];
+				}
+			} while ($tag_return !== false);
+			return $tags_content;
+		}
+
+		/**
+		 * Static function get_tag
+		 * @access public
+		 * @return array|bool
+		 * @since 1.7.1
+		 */
+		public static function get_tag($tag, $string, $offset_start = 0) {
+			$value			= '';
+			$tag_patterns	= array();
+			$tag_patterns[] = '<' . $tag;
+			$tag_patterns[] = '< ' . $tag;
+			$pos_var		= false;
+			$index_pattern	= -1;
+			foreach ($tag_patterns as $kp => $pattern) {
+				$pos_var	   = strpos($string, $pattern, $offset_start);
+				$index_pattern = $kp;
+				if ($pos_var !== false) {
+					break;
+				}
+			}
+			if ($pos_var === false) {
+				return false;
+			}
+			$tag_end_patterns	= array();
+			$tag_end_patterns[] = '</' . $tag . '>';
+			$tag_end_patterns[] = '</ ' . $tag . '>';
+			$tag_end_patterns[] = '/>';
+			$tag_end_patterns[] = '/ >';
+
+			$pos_offset_end	   = false;
+			$index_pattern_end = -1;
+			$len_pattern	   = strlen($tag_patterns[$index_pattern]);
+			foreach ($tag_end_patterns as $kp => $pattern) {
+				$pos_offset_end	   = strpos($string, $pattern, $pos_var + $len_pattern + 2);
+				$index_pattern_end = $kp;
+				if ($pos_offset_end !== false) {
+					break;
+				}
+			}
+
+			if ($pos_offset_end === false) {
+				return false;
+			}
+
+			$value = substr($string, $pos_var, $pos_offset_end);
+			return array($pos_offset_end, $value);
+		}
+
+		public static function strip_tags_content($text, $tags = '', $invert = FALSE) {
+
+			preg_match_all('/<(.+?)[\s]*\/?[\s]*>/si', trim($tags), $tags);
+			$tags = array_unique($tags[1]);
+
+			if (is_array($tags) AND count($tags) > 0) {
+				if ($invert == FALSE) {
+					return preg_replace('@<(?!(?:' . implode('|', $tags) . ')\b)(\w+)\b.*?>.*?</\1>@si', '', $text);
+				} else {
+					return preg_replace('@<(' . implode('|', $tags) . ')\b.*?>.*?</\1>@si', '', $text);
+				}
+			} elseif ($invert == FALSE) {
+				return preg_replace('@<(\w+)\b.*?>.*?</\1>@si', '', $text);
+			}
+			return $text;
+		}
+
+		public static function wpematico_env_checks() {
+			global $wp_version, $user_ID;
+			$message				 = $wpematico_admin_message = '';
+			$message				 = '';
+			$checks					 = true;
+			if (!is_admin())
+				return false;
+			if (version_compare($wp_version, '3.9', '<')) { // check WP Version
+				$message .= __('- WordPress 3.9 or higher needed!', 'wpematico') . '<br />';
+				$checks	 = false;
+			}
+			if (version_compare(phpversion(), '5.3.0', '<')) { // check PHP Version
+				$message .= __('- PHP 5.3.0 or higher needed!', 'wpematico') . '<br />';
+				$checks	 = false;
+			}
+			// Addons too old for this core. Warns only: it never sets $checks = false,
+			// so the settings page stays reachable to update from.
+			$message .= self::check_addons_versions();
+
+			if (wp_next_scheduled('wpematico_cron') != 0 and wp_next_scheduled('wpematico_cron') > (time() + 360)) {  //check cron jobs work
+				$message .= __("- WP-Cron don't working please check it!", 'wpematico') . '<br />';
+			}
+			//Print message if one
+			if (!empty($message))
+				$wpematico_admin_message = '<div id="message" class="error fade"><strong>WPeMatico:</strong><br />' . $message . '</div>';
+
+//		$notice = delete_option('wpematico_notices');
+//			$notice = get_option('wpematico_notices');
+//			if (!empty($notice)) {
+//				foreach ($notice as $key => $mess) {
+//					if ($mess['user_ID'] == $user_ID) {
+//						$class					 = (($mess['type']=="warning") ? "notice notice-warning" : (($mess['error']) ? "notice notice-error" : "notice notice-success") );
+//						$class					 .= ($mess['is-dismissible']) ? " is-dismissible" : "";
+//						$class					 .= ($mess['below-h2']) ? " below-h2" : "";
+//						$wpematico_admin_message .= '<div id="notice" class="' . $class . '"><p>' . $mess['text'] . '</p></div>';
+//						unset($notice[$key]);
+//					}
+//				}
+//				update_option('wpematico_notices', $notice);
+//			}
+			self::process_wp_notices(['option_name'  => 'wpematico_notices']);
+
+			if (!empty($wpematico_admin_message)) {
+				//send response to admin notice : example with the function inside the add_action
+				add_action('admin_notices', function () use ($wpematico_admin_message) {
+					echo wp_kses_post($wpematico_admin_message);
+				});
+			}
+			return $checks;
+		}
+
+		/**
+		 * Prints the stored notices.
+		 * 
+		 * @param array $args Configuration arguments.
+		 */
+		static function process_wp_notices($args = []) {
+			// Defaults.
+			$defaults = [
+				'option_name'	 => 'wpematico_notices',
+				'user_id'		 => get_current_user_id(),
+				'default_type'	 => 'success',
+				'error_override' => true,
+				'auto_delete'	 => true
+			];
+
+			$args = wp_parse_args($args, $defaults);
+
+			// Every stored notice.
+			$all_notices = get_option($args['option_name'], []);
+			if (empty($all_notices))
+				return;
+
+			$output	 = '';
+			$updated = false;
+
+			foreach ($all_notices as $key => $notice) {
+				
+				// Is this notice meant for this user?
+				if (!empty($notice['user_ID']) && $notice['user_ID'] != $args['user_id']) {
+					continue;
+				}
+
+				// Notice type, error taking precedence over type.
+				$notice_type = $args['default_type'];
+				if ($args['error_override'] && isset($notice['error']) && $notice['error']) {
+					$notice_type = 'error';
+				} elseif (!empty($notice['type'])) {
+					$notice_type = $notice['type'];
+				}
+
+				// Validate the notice type.
+				$valid_types = ['error', 'warning', 'success', 'info'];
+				if (!in_array($notice_type, $valid_types)) {
+					$notice_type = $args['default_type'];
+				}
+
+				// CSS classes.
+				$classes = [
+					'notice',
+					'notice-' . $notice_type,
+					(!empty($notice['is-dismissible'])) ? 'is-dismissible' : '',
+					(!empty($notice['below-h2'])) ? 'below-h2' : '',
+					(!empty($notice['custom_class'])) ? esc_attr($notice['custom_class']) : ''
+				];
+
+				// Drop the empty ones and join.
+				$class_str = implode(' ', array_filter($classes));
+
+				// Notice markup.
+				$output .= sprintf(
+						'<div class="%s"><p>%s</p></div>',
+						esc_attr($class_str),
+						wp_kses_post($notice['text'])
+				);
+
+				// Mark for removal when auto_delete is on.
+				if ($args['auto_delete']) {
+					unset($all_notices[$key]);
+					$updated = true;
+				}
+			}
+
+			// Save the option when notices were removed.
+			if ($updated) {
+				if (empty($all_notices)) {
+					delete_option($args['option_name']);
+				} else {
+					update_option($args['option_name'], $all_notices);
+				}
+			}
+
+			// Print the notices when there is anything to show.
+			if (!empty($output)) {
+				add_action('admin_notices', function () use ($output) {
+					echo $output;
+				});
+			}
+		}
+
+		/** add_wp_notice
+		 * 
+		 * @param mixed $new_notice 
+		 * 	optional   ['user_ID'] to shows the notice default = currentuser,
+		 * 	optional   ['error'] true or false to define style. Default = false,
+		 * 	optional   ['is-dismissible'] true or false to hideable. Default = true,
+		 * 	optional   ['below-h2'] true or false to shows above page Title. Default = true,
+		 * 	   ['text'] The Text to be displayed. Default = ''.
+		 * 
+		 */
+		public static function add_wp_notice($new_notice) {
+			if (is_string($new_notice))
+				$adm_notice['text']			  = $new_notice;
+			else
+				$adm_notice['text']			  = (!isset($new_notice['text'])) ? '' : $new_notice['text'];
+			$adm_notice['type']			  = (!isset($new_notice['type'])) ? 'success' : $new_notice['type'];
+			$adm_notice['error']		  = (!isset($new_notice['error'])) ? false : $new_notice['error'];
+			$adm_notice['below-h2']		  = (!isset($new_notice['below-h2'])) ? true : $new_notice['below-h2'];
+			$adm_notice['is-dismissible'] = (!isset($new_notice['is-dismissible'])) ? true : $new_notice['is-dismissible'];
+			$adm_notice['user_ID']		  = (!isset($new_notice['user_ID'])) ? get_current_user_id() : $new_notice['user_ID'];
+
+			$notice	  = get_option('wpematico_notices', array());
+			$notice[] = $adm_notice;
+			update_option('wpematico_notices', $notice);
+		}
+
+		//file size
+		public static function formatBytes($bytes, $precision = 2) {
+			$units = array('B', 'KB', 'MB', 'GB', 'TB');
+			$bytes = max($bytes, 0);
+			$pow   = floor(($bytes ? log($bytes) : 0) / log(1024));
+			$pow   = min($pow, count($units) - 1);
+			$bytes /= pow(1024, $pow);
+			return round($bytes, $precision) . ' ' . $units[$pow];
+		}
+
+		//************************* CARGA CAMPAÑASS *******************************************************
+
+		/**
+		 * Load all campaigns data
+		 * 
+		 * @return array with all campaigns data 
+		 * */
+		public static function get_campaigns() {
+			$campaigns_data = array();
+			$args			= array(
+				'orderby'	  => 'ID',
+				'order'		  => 'ASC',
+				'post_type'	  => 'wpematico',
+				'numberposts' => -1
+			);
+			$campaigns		= get_posts($args);
+			foreach ($campaigns as $post):
+				$campaigns_data[] = self::get_campaign($post->ID);
+			endforeach;
+			return $campaigns_data;
+		}
+
+		//************************* LOAD CAMPAIGN *******************************************************
+
+		/**
+		 * Load campaign data
+		 * Required @param   integer  $post_id    Campaign ID to load
+		 * @param   boolean  $getfromdb  if set to true run get_post($post_ID) and retuirn object post
+		 * 
+		 * @return array with campaign data 
+		 * */
+		public static function get_campaign($post_id, $getfromdb = false) {
+			if ($getfromdb) {
+				$campaign = get_post($post_id);
+			}
+			$campaign_data = get_post_meta($post_id, 'campaign_data');
+			$campaign_data = (isset($campaign_data[0])) ? $campaign_data[0] : array(0);
+			/**
+			 * wpematico_check_campaigndata Filter to sanitize and strip all fields 
+			 */
+			$campaign_data = apply_filters('wpematico_check_campaigndata', $campaign_data);
+			return $campaign_data;
+		}
+
+		//************************* Check campaign data *************************************
+
+		/**
+		 * Fields that only exist on the input side: check_campaigndata() consumes them
+		 * to build other fields and never stores them (post_category builds
+		 * campaign_categories, campaign_word_* build campaign_rewrites, cron* build
+		 * cron). They must not travel into campaign_data through the non strict merge:
+		 * a stored post_category would win over campaign_categories on every later read.
+		 */
+		const INPUT_ONLY_FIELDS = array(
+			'_wp_http_referer',
+			'campaign_id',
+			'post_category',
+			'campaign_newcat',
+			'campaign_newcatname',
+			'campaign_word_origin',
+			'campaign_word_rewrite',
+			'campaign_word_relink',
+			'campaign_word_option_regex',
+			'campaign_word_option_title',
+			'cronminutes',
+			'cronhours',
+			'cronmday',
+			'cronmon',
+			'cronwday',
+		);
+
+		/**
+		 * Check campaign data
+		 *
+		 * Two jobs, two modes. Saving takes untrusted input ($_POST) and keeps the
+		 * historical whitelist. Reading takes data that was already sanitized when it
+		 * was written, so it only fills in defaults and keeps the rest — stripping
+		 * there would delete the fields of whatever addon is not loaded right now.
+		 *
+		 * Required @param $post_data array with campaign data values
+		 * 			@param bool $strict TRUE for the save path (whitelist, drops unknown
+		 * 			fields), FALSE for the read path (keeps unclaimed fields).
+		 *
+		 * @return array with campaign data fixed all empty values
+		 * */
+		/*		 * ************ CHECK DATA ************************************************ */
+		public static function check_campaigndata($post_data, $strict = false) {
+			global $post, $cfg;
+			if (is_null($cfg))
+				$cfg = get_option(WPeMatico::OPTION_KEY);
+
+			$campaigndata = array();
+			if (isset($post_data['ID']) && !empty($post_data['ID'])) {
+				$campaigndata['ID'] = (int) $post_data['ID'];
+			} elseif (isset($post_data['campaign_id']) && !empty($post_data['campaign_id'])) {
+				$campaigndata['ID'] = (int) $post_data['campaign_id'];
+			} elseif (isset($post->ID) && $post->ID > 0) {
+				$campaigndata['ID'] = $post->ID;
+			} else {
+				$campaigndata['ID'] = 0;
+			}
+
+
+			//$campaigndata['campaign_id'] = $post_id;
+			$campaigndata['campaign_title'] = (isset($post_data['campaign_title']) && !empty($post_data['campaign_title'])) ? sanitize_text_field($post_data['campaign_title']) : get_the_title($campaigndata['ID']);
+
+			$campaigndata['campaign_type'] = (!isset($post_data['campaign_type'])) ? 'feed' : sanitize_text_field($post_data['campaign_type']);
+
+			// Both name a post status and a post type, which WordPress registers as keys, so
+			// the campaign stores them in the one spelling those names can have.
+			$campaigndata['campaign_posttype']		 = (!isset($post_data['campaign_posttype'])) ? 'publish' : sanitize_key($post_data['campaign_posttype']);
+			$campaigndata['campaign_customposttype'] = (!isset($post_data['campaign_customposttype'])) ? 'post' : sanitize_key($post_data['campaign_customposttype']);
+			if (empty($campaigndata['campaign_posttype'])) {
+				$campaigndata['campaign_posttype'] = 'publish';
+			}
+			if (empty($campaigndata['campaign_customposttype'])) {
+				$campaigndata['campaign_customposttype'] = 'post';
+			}
+			$arrTaxonomies							 = get_object_taxonomies($campaigndata['campaign_customposttype']);
+			if (in_array('post_format', $arrTaxonomies)) {
+				$campaigndata['campaign_post_format'] = (!isset($post_data['campaign_post_format'])) ? '0' : sanitize_text_field($post_data['campaign_post_format']);
+			} else {
+				$campaigndata['campaign_post_format'] = '0';
+			}
+			$campaigndata['activated'] = (!isset($post_data['activated']) || empty($post_data['activated'])) ? false : (($post_data['activated'] == 1) ? true : false);
+
+			$campaigndata['campaign_feed_order_date'] = (!isset($post_data['campaign_feed_order_date']) || empty($post_data['campaign_feed_order_date'])) ? false : (($post_data['campaign_feed_order_date'] == 1) ? true : false);
+			$campaigndata['campaign_feeddate']		  = (!isset($post_data['campaign_feeddate']) || empty($post_data['campaign_feeddate'])) ? false : (($post_data['campaign_feeddate'] == 1) ? true : false);
+			$campaigndata['campaign_feeddate_forced'] = (!isset($post_data['campaign_feeddate_forced']) || empty($post_data['campaign_feeddate_forced'])) ? false : (($post_data['campaign_feeddate_forced'] == 1) ? true : false);
+
+			$campaign_feeds = array();
+			$all_feeds		= (isset($post_data['campaign_feeds']) && !empty($post_data['campaign_feeds'])) ? $post_data['campaign_feeds'] : Array();
+
+			if (!empty($all_feeds) && is_array($all_feeds)) {  // Walk the feeds, dropping the blank ones.
+				foreach ($all_feeds as $id => $feedname) {
+					if (!empty($feedname))
+						$campaign_feeds[] = $feedname;
+				}
+			}
+			$campaigndata['campaign_feeds'] = (array) $campaign_feeds;
+
+			$campaigndata['cron'] = (!isset($post_data['cronminutes'])) ? ((!isset($post_data['cron'])) ? '0 3 * * *' : $post_data['cron']) : WPeMatico::cron_string($post_data);
+
+			$campaigndata['cronnextrun'] = (isset($post_data['cronnextrun']) && !empty($post_data['cronnextrun'])) ? (int) $post_data['cronnextrun'] : (int) WPeMatico::time_cron_next($campaigndata['cron']);
+
+			// Email address to send campaign logs.
+			$campaigndata['mailerroronly']	= (!isset($post_data['mailerroronly']) || empty($post_data['mailerroronly'])) ? false : (($post_data['mailerroronly'] == 1) ? true : false);
+			$campaigndata['mailaddresslog'] = (!isset($post_data['mailaddresslog'])) ? '' : sanitize_email($post_data['mailaddresslog']);
+
+			// *** Campaign Options
+			$campaigndata['campaign_max']		   = (!isset($post_data['campaign_max'])) ? 5 : (int) $post_data['campaign_max'];
+			$campaigndata['campaign_author']	   = (!isset($post_data['campaign_author'])) ? 0 : (int) $post_data['campaign_author'];
+			$campaigndata['campaign_linktosource'] = (!isset($post_data['campaign_linktosource']) || empty($post_data['campaign_linktosource'])) ? false : (($post_data['campaign_linktosource'] == 1) ? true : false);
+
+			if (!isset($post_data['copy_permanlink_source']) || empty($post_data['copy_permanlink_source'])) {
+				$campaigndata['copy_permanlink_source'] = false;
+			} else {
+				if ($post_data['copy_permanlink_source'] == 1) {
+					$campaigndata['copy_permanlink_source'] = ($post_data['campaign_type'] != 'youtube') ? true : false;
+				} else {
+					$campaigndata['copy_permanlink_source'] = false;
+				}
+			}
+
+			$campaigndata['avoid_search_redirection'] = (!isset($post_data['avoid_search_redirection']) || empty($post_data['avoid_search_redirection'])) ? false : (($post_data['avoid_search_redirection'] == 1) ? true : false);
+
+			$campaigndata['campaign_strip_links']		  = (!isset($post_data['campaign_strip_links']) || empty($post_data['campaign_strip_links'])) ? false : (($post_data['campaign_strip_links'] == 1) ? true : false);
+			$campaigndata['campaign_strip_links_options'] = (!isset($post_data['campaign_strip_links_options']) || !is_array($post_data['campaign_strip_links_options'])) ? array('a' => true, 'strip_domain' => false, 'script' => true, 'iframe' => true) : $post_data['campaign_strip_links_options'];
+
+			$campaigndata['campaign_strip_links_options']['a'] = (!isset($post_data['campaign_strip_links_options']['a']) || empty($post_data['campaign_strip_links_options']['a'])) ? false : (($post_data['campaign_strip_links_options']['a']) ? true : false);
+
+			$campaigndata['campaign_strip_links_options']['strip_domain'] = (!isset($post_data['campaign_strip_links_options']['strip_domain']) || empty($post_data['campaign_strip_links_options']['strip_domain'])) ? false : (($post_data['campaign_strip_links_options']['strip_domain']) ? true : false);
+
+			$campaigndata['campaign_strip_links_options']['script'] = (!isset($post_data['campaign_strip_links_options']['script']) || empty($post_data['campaign_strip_links_options']['script'])) ? false : (($post_data['campaign_strip_links_options']['script']) ? true : false);
+			$campaigndata['campaign_strip_links_options']['iframe'] = (!isset($post_data['campaign_strip_links_options']['iframe']) || empty($post_data['campaign_strip_links_options']['iframe'])) ? false : (($post_data['campaign_strip_links_options']['iframe']) ? true : false);
+
+			$campaigndata['campaign_commentstatus'] = (!isset($post_data['campaign_commentstatus'])) ? 'closed' : sanitize_text_field($post_data['campaign_commentstatus']);
+			$campaigndata['campaign_allowpings']	= (!isset($post_data['campaign_allowpings']) || empty($post_data['campaign_allowpings'])) ? false : (($post_data['campaign_allowpings'] == 1) ? true : false);
+			$campaigndata['campaign_woutfilter']	= (!isset($post_data['campaign_woutfilter']) || empty($post_data['campaign_woutfilter'])) ? false : (($post_data['campaign_woutfilter'] == 1) ? true : false);
+			// Whether this campaign may store the content of its items as the feed sends it.
+			// Written by wpematico_apply_campaign_editing_rights() when the campaign is saved;
+			// true when absent, so campaigns that predate it keep importing content unchanged.
+			$campaigndata['campaign_unfiltered_html'] = (!isset($post_data['campaign_unfiltered_html'])) ? true : (bool) $post_data['campaign_unfiltered_html'];
+			$campaigndata['campaign_striphtml']		= (!isset($post_data['campaign_striphtml']) || empty($post_data['campaign_striphtml'])) ? false : (($post_data['campaign_striphtml'] == 1) ? true : false);
+			$campaigndata['campaign_get_excerpt']	= (!isset($post_data['campaign_get_excerpt']) || empty($post_data['campaign_get_excerpt'])) ? false : (($post_data['campaign_get_excerpt'] == 1) ? true : false);
+
+			$campaigndata['campaign_enable_convert_utf8'] = (!isset($post_data['campaign_enable_convert_utf8']) || empty($post_data['campaign_enable_convert_utf8'])) ? false : (($post_data['campaign_enable_convert_utf8'] == 1) ? true : false);
+			// *** Campaign Audios
+			$campaigndata['campaign_no_setting_audio']	  = (!isset($post_data['campaign_no_setting_audio']) || empty($post_data['campaign_no_setting_audio'])) ? false : (($post_data['campaign_no_setting_audio'] == 1) ? true : false);
+			$campaigndata['campaign_audio_cache']		  = (!isset($post_data['campaign_audio_cache']) || empty($post_data['campaign_audio_cache'])) ? false : (($post_data['campaign_audio_cache'] == 1) ? true : false);
+			$campaigndata['campaign_attach_audio']		  = (!isset($post_data['campaign_attach_audio']) || empty($post_data['campaign_attach_audio'])) ? false : (($post_data['campaign_attach_audio'] == 1) ? true : false);
+			$campaigndata['campaign_nolink_audio']		  = (!isset($post_data['campaign_nolink_audio']) || empty($post_data['campaign_nolink_audio'])) ? false : (($post_data['campaign_nolink_audio'] == 1) ? true : false);
+			$campaigndata['campaign_customupload_audio']  = (!isset($post_data['campaign_customupload_audio']) || empty($post_data['campaign_customupload_audio'])) ? false : (($post_data['campaign_customupload_audio'] == 1) ? true : false);
+			if (!$campaigndata['campaign_audio_cache']) {
+				$campaigndata['campaign_attach_audio']		 = false;
+				$campaigndata['campaign_nolink_audio']		 = false;
+				$campaigndata['campaign_customupload_audio'] = false;
+			}
+
+			// *** Campaign Videos
+			$campaigndata['campaign_no_setting_video']	 = (!isset($post_data['campaign_no_setting_video']) || empty($post_data['campaign_no_setting_video'])) ? false : (($post_data['campaign_no_setting_video'] == 1) ? true : false);
+			$campaigndata['campaign_video_cache']		 = (!isset($post_data['campaign_video_cache']) || empty($post_data['campaign_video_cache'])) ? false : (($post_data['campaign_video_cache'] == 1) ? true : false);
+			$campaigndata['campaign_attach_video']		 = (!isset($post_data['campaign_attach_video']) || empty($post_data['campaign_attach_video'])) ? false : (($post_data['campaign_attach_video'] == 1) ? true : false);
+			$campaigndata['campaign_nolink_video']		 = (!isset($post_data['campaign_nolink_video']) || empty($post_data['campaign_nolink_video'])) ? false : (($post_data['campaign_nolink_video'] == 1) ? true : false);
+			$campaigndata['campaign_customupload_video'] = (!isset($post_data['campaign_customupload_video']) || empty($post_data['campaign_customupload_video'])) ? false : (($post_data['campaign_customupload_video'] == 1) ? true : false);
+			if (!$campaigndata['campaign_video_cache']) {
+				$campaigndata['campaign_attach_video']		 = false;
+				$campaigndata['campaign_nolink_video']		 = false;
+				$campaigndata['campaign_customupload_video'] = false;
+			}
+
+			// *** Campaign Images
+			$campaigndata['campaign_no_setting_img'] = (!isset($post_data['campaign_no_setting_img']) || empty($post_data['campaign_no_setting_img'])) ? false : (($post_data['campaign_no_setting_img'] == 1) ? true : false);
+			$campaigndata['campaign_imgcache']		 = (!isset($post_data['campaign_imgcache']) || empty($post_data['campaign_imgcache'])) ? false : (($post_data['campaign_imgcache'] == 1) ? true : false);
+			$campaigndata['campaign_attach_img']	 = (!isset($post_data['campaign_attach_img']) || empty($post_data['campaign_attach_img'])) ? false : (($post_data['campaign_attach_img'] == 1) ? true : false);
+			$campaigndata['campaign_nolinkimg']		 = (!isset($post_data['campaign_nolinkimg']) || empty($post_data['campaign_nolinkimg'])) ? false : (($post_data['campaign_nolinkimg'] == 1) ? true : false);
+			$campaigndata['campaign_image_srcset']	 = (!isset($post_data['campaign_image_srcset']) || empty($post_data['campaign_image_srcset'])) ? false : (($post_data['campaign_image_srcset'] == 1) ? true : false);
+
+			$campaigndata['campaign_featuredimg'] = (!isset($post_data['campaign_featuredimg']) || empty($post_data['campaign_featuredimg'])) ? false : (($post_data['campaign_featuredimg'] == 1) ? true : false);
+			$campaigndata['campaign_fifu']		  = (!isset($post_data['campaign_fifu']) || empty($post_data['campaign_fifu'])) ? false : (($post_data['campaign_fifu'] == 1) ? true : false);
+
+			$campaigndata['campaign_fifu_video'] = (!isset($post_data['campaign_fifu_video']) || empty($post_data['campaign_fifu_video'])) ? false : (($post_data['campaign_fifu_video'] == 1) ? true : false);
+
+			$campaigndata['campaign_attr_images'] = (!isset($post_data['campaign_attr_images']) || empty($post_data['campaign_attr_images'])) ? false : (($post_data['campaign_attr_images'] == 1) ? true : false);
+
+			$campaigndata['campaign_enable_featured_image_selector'] = (!isset($post_data['campaign_enable_featured_image_selector']) || empty($post_data['campaign_enable_featured_image_selector'])) ? false : (($post_data['campaign_enable_featured_image_selector'] == 1) ? true : false);
+			$campaigndata['campaign_featured_selector_index']		 = (!isset($post_data['campaign_featured_selector_index']) || empty($post_data['campaign_featured_selector_index'])) ? '0' : (int) $post_data['campaign_featured_selector_index'];
+			$campaigndata['campaign_featured_selector_ifno']		 = (!isset($post_data['campaign_featured_selector_ifno']) || empty($post_data['campaign_featured_selector_ifno'])) ? 'first' : sanitize_text_field($post_data['campaign_featured_selector_ifno']);
+
+			$campaigndata['campaign_rmfeaturedimg'] = (!isset($post_data['campaign_rmfeaturedimg']) || empty($post_data['campaign_rmfeaturedimg'])) ? false : (($post_data['campaign_rmfeaturedimg'] == 1) ? true : false);
+			$campaigndata['campaign_customupload']	= (!isset($post_data['campaign_customupload']) || empty($post_data['campaign_customupload'])) ? false : (($post_data['campaign_customupload'] == 1) ? true : false);
+
+			if (!$campaigndata['campaign_imgcache']) {
+				$campaigndata['campaign_attach_img'] = false;
+				$campaigndata['campaign_nolinkimg']	 = false;
+				if (!$campaigndata['campaign_featuredimg']) {
+					$campaigndata['campaign_customupload'] = false;
+				}
+			}
+			// *** Campaign Template
+			$campaigndata['campaign_enable_template'] = (!isset($post_data['campaign_enable_template']) || empty($post_data['campaign_enable_template'])) ? false : (($post_data['campaign_enable_template'] == 1) ? true : false);
+			if (isset($post_data['campaign_template']))
+				$campaigndata['campaign_template']		  = $post_data['campaign_template'];
+			else {
+				$campaigndata['campaign_enable_template'] = false;
+				$campaigndata['campaign_template']		  = '';
+			}
+
+			// *** Processed posts count
+			$campaigndata['postscount']		= (!isset($post_data['postscount'])) ? 0 : (int) $post_data['postscount'];
+			$campaigndata['lastpostscount'] = (!isset($post_data['lastpostscount'])) ? 0 : (int) $post_data['lastpostscount'];
+			$campaigndata['lastrun']		= (!isset($post_data['lastrun'])) ? 0 : (int) $post_data['lastrun'];
+			$campaigndata['lastruntime']	= (!isset($post_data['lastruntime'])) ? 0 : $post_data['lastruntime'];  // can be string
+
+			$campaigndata['starttime'] = (!isset($post_data['starttime'])) ? 0 : (int) $post_data['starttime'];
+
+			//campaign_categories & tags		
+			if (in_array('post_tag', $arrTaxonomies)) {
+				$campaigndata['campaign_tags'] = (!isset($post_data['campaign_tags'])) ? '' : sanitize_text_field($post_data['campaign_tags']);
+			} else {
+				$campaigndata['campaign_tags'] = '';
+			}
+
+			$campaigndata['campaign_autocats'] = (!isset($post_data['campaign_autocats']) || empty($post_data['campaign_autocats'])) ? false : (($post_data['campaign_autocats'] == 1) ? true : false);
+
+			$campaigndata['campaign_category_limit'] = (!isset($post_data['campaign_category_limit']) || empty($post_data['campaign_category_limit'])) ? false : (($post_data['campaign_category_limit'] == 1) ? true : false);
+
+			$campaigndata['max_categories'] = (!isset($post_data['max_categories']) || empty($post_data['max_categories'])) ? 5 : (int) $post_data['max_categories'];
+
+			$campaigndata['campaign_parent_autocats'] = (!isset($post_data['campaign_parent_autocats']) || empty($post_data['campaign_parent_autocats'])) ? -1 : (int) $post_data['campaign_parent_autocats'];
+
+			// Process the new categories if any and add them to the end of the array
+			# New categories
+			if (isset($post_data['campaign_newcat'])) {
+				foreach ($post_data['campaign_newcat'] as $k => $on) {
+					$catname = $post_data['campaign_newcatname'][$k];
+					if (!empty($catname)) {
+						$catname		 = sanitize_text_field($catname);
+						$arg_description = apply_filters('wpematico_addcat_description', __('Category Added in a WPeMatico Campaign', 'wpematico'), $catname);
+						if (isset($cfg['disable_categories_description']) && $cfg['disable_categories_description']) {
+							$arg_description = '';
+						}
+
+						$arg						  = array('description' => $arg_description, 'parent' => "0");
+						$newcat						  = wp_insert_term($catname, "category", $arg);
+						$post_data['post_category'][] = (is_array($newcat)) ? $newcat['term_id'] : $newcat;
+					}
+				}
+			}
+			# All: the chosen ones plus the newly added.
+			if (in_array('category', $arrTaxonomies)) {
+				$campaigndata['campaign_categories'] = (!isset($post_data['post_category'])) ? ((!isset($post_data['campaign_categories'])) ? array() : (array) $post_data['campaign_categories']) : (array) $post_data['post_category'];
+			} else {
+				$campaigndata['campaign_categories'] = array();
+			}
+
+			# Order Words to Category and strip the blank fields
+			//campaign_wrd2cat, campaign_wrd2cat_regex, campaign_wrd2cat_category
+			$campaign_wrd2cat = Array();
+			if (isset($post_data['campaign_wrd2cat']['word'])) {
+				//for ($i = 0; $i <= count(@$campaign_wrd2cat['word']); $i++) {
+				foreach ($post_data['campaign_wrd2cat']['word'] as $id => $value) {
+					//$word = ( isset($post_data['_wp_http_referer']) ) ? addslashes($post_data['campaign_wrd2cat']['word'][$id]): $post_data['campaign_wrd2cat']['word'][$id];
+					$word	  = ($post_data['campaign_wrd2cat']['word'][$id]);
+					$title	  = (isset($post_data['campaign_wrd2cat']['title'][$id]) && $post_data['campaign_wrd2cat']['title'][$id] == 1) ? true : false;
+					$regex	  = (isset($post_data['campaign_wrd2cat']['regex'][$id]) && $post_data['campaign_wrd2cat']['regex'][$id] == 1) ? true : false;
+					$cases	  = (isset($post_data['campaign_wrd2cat']['cases'][$id]) && $post_data['campaign_wrd2cat']['cases'][$id] == 1) ? true : false;
+					$w2ccateg = (isset($post_data['campaign_wrd2cat']['w2ccateg'][$id]) && !empty($post_data['campaign_wrd2cat']['w2ccateg'][$id])) ? $post_data['campaign_wrd2cat']['w2ccateg'][$id] : '';
+					if (!empty($word)) {
+						$campaign_wrd2cat['word'][]		= ($regex) ? $word : sanitize_text_field($word);
+						$campaign_wrd2cat['title'][]	= $title;
+						$campaign_wrd2cat['regex'][]	= $regex;
+						$campaign_wrd2cat['cases'][]	= $cases;
+						$campaign_wrd2cat['w2ccateg'][] = sanitize_text_field($w2ccateg);
+					}
+				}
+			}
+			$_wrd2cat						  = array('word' => array(''), 'title' => array(false), 'regex' => array(false), 'w2ccateg' => array(0), 'cases' => array(false));
+			$campaigndata['campaign_wrd2cat'] = (!empty($campaign_wrd2cat)) ? (array) $campaign_wrd2cat : (array) $_wrd2cat;
+
+			$campaigndata['campaign_w2c_only_use_a_category']	 = (!isset($post_data['campaign_w2c_only_use_a_category']) || empty($post_data['campaign_w2c_only_use_a_category'])) ? false : (($post_data['campaign_w2c_only_use_a_category'] == 1) ? true : false);
+			$campaigndata['campaign_w2c_the_category_most_used'] = (!isset($post_data['campaign_w2c_the_category_most_used']) || empty($post_data['campaign_w2c_the_category_most_used'])) ? false : (($post_data['campaign_w2c_the_category_most_used'] == 1) ? true : false);
+
+			// *** Campaign Rewrites	
+			$campaign_rewrites = (isset($post_data['campaign_rewrites']) && !empty($post_data['campaign_rewrites'])) ? $post_data['campaign_rewrites'] : array();
+
+			if (isset($post_data['campaign_word_origin']) && is_array($post_data['campaign_word_origin'])) {
+
+				foreach ($post_data['campaign_word_origin'] as $id => $origin_raw) {
+
+					// Verify UTF-8
+					$origin  = wp_check_invalid_utf8($origin_raw);
+					$rewrite = wp_check_invalid_utf8($post_data['campaign_word_rewrite'][$id] ?? '');
+					$relink  = wp_check_invalid_utf8($post_data['campaign_word_relink'][$id] ?? '');
+
+					// Sanitize to prevent XSS
+					$origin  = wp_kses_post($origin);
+					$rewrite = wp_kses_post($rewrite);
+					$relink  = wp_kses_post($relink);
+
+					$regex = (isset($post_data['campaign_word_option_regex'][$id]) && $post_data['campaign_word_option_regex'][$id] == 1) ? true : false;
+					$title = (isset($post_data['campaign_word_option_title'][$id]) && $post_data['campaign_word_option_title'][$id] == 1) ? true : false;
+
+					// Validate regex (optional)
+					if ($regex) {
+						set_error_handler(function () {}, E_WARNING);
+						$is_valid = @preg_match($origin, '');
+						restore_error_handler();
+						if ($is_valid === false) {
+							$regex = false; // ignorar regex inválida
+						}
+					}
+
+					// Just save if origin is not empty
+					if (!empty($origin)) {
+						$campaign_rewrites['origin'][]  = $origin;
+						$campaign_rewrites['regex'][]   = $regex;
+						$campaign_rewrites['title'][]   = $title;
+						$campaign_rewrites['rewrite'][] = $rewrite;
+						$campaign_rewrites['relink'][]  = $relink;
+					}
+				}
+			}
+
+			$campaigndata['campaign_rewrites'] = !empty($campaign_rewrites) ? (array) $campaign_rewrites : array('origin' => array(''), 'title' => array(false), 'regex' => array(false), 'rewrite' => array(''), 'relink' => array(''));
+
+			$campaigndata['campaign_youtube_embed']	 = (!isset($post_data['campaign_youtube_embed']) || empty($post_data['campaign_youtube_embed'])) ? false : (($post_data['campaign_youtube_embed'] == 1) ? true : false);
+			$campaigndata['campaign_youtube_sizes']	 = (!isset($post_data['campaign_youtube_sizes']) || empty($post_data['campaign_youtube_sizes'])) ? false : (($post_data['campaign_youtube_sizes'] == 1) ? true : false);
+			$campaigndata['campaign_youtube_width']	 = (!isset($post_data['campaign_youtube_width'])) ? 0 : (int) $post_data['campaign_youtube_width'];
+			$campaigndata['campaign_youtube_height'] = (!isset($post_data['campaign_youtube_height'])) ? 0 : (int) $post_data['campaign_youtube_height'];
+
+			$campaigndata['campaign_youtube_ign_image']			  = (!isset($post_data['campaign_youtube_ign_image']) || empty($post_data['campaign_youtube_ign_image'])) ? false : (($post_data['campaign_youtube_ign_image'] == 1) ? true : false);
+			$campaigndata['campaign_youtube_image_only_featured'] = (!isset($post_data['campaign_youtube_image_only_featured']) || empty($post_data['campaign_youtube_image_only_featured'])) ? false : (($post_data['campaign_youtube_image_only_featured'] == 1) ? true : false);
+
+			$campaigndata['campaign_youtube_ign_description'] = (!isset($post_data['campaign_youtube_ign_description']) || empty($post_data['campaign_youtube_ign_description'])) ? false : (($post_data['campaign_youtube_ign_description'] == 1) ? true : false);
+
+			$campaigndata['campaign_youtube_only_shorts'] = (!isset($post_data['campaign_youtube_only_shorts']) || empty($post_data['campaign_youtube_only_shorts'])) ? false : (($post_data['campaign_youtube_only_shorts'] == 1) ? true : false);
+
+			$campaigndata['campaign_youtube_ign_shorts'] = (!isset($post_data['campaign_youtube_ign_shorts']) || empty($post_data['campaign_youtube_ign_shorts'])) ? false : (($post_data['campaign_youtube_ign_shorts'] == 1) ? true : false);
+
+			$campaigndata['campaign_no_setting_duplicate']		  = (!isset($post_data['campaign_no_setting_duplicate']) || empty($post_data['campaign_no_setting_duplicate'])) ? false : (($post_data['campaign_no_setting_duplicate'] == 1) ? true : false);
+			$campaigndata['campaign_allowduplicates']			  = (!isset($post_data['campaign_allowduplicates']) || empty($post_data['campaign_allowduplicates'])) ? false : (($post_data['campaign_allowduplicates'] == 1) ? true : false);
+			$campaigndata['campaign_allowduptitle']				  = (!isset($post_data['campaign_allowduptitle']) || empty($post_data['campaign_allowduptitle'])) ? false : (($post_data['campaign_allowduptitle'] == 1) ? true : false);
+			$campaigndata['campaign_allowduphash']				  = (!isset($post_data['campaign_allowduphash']) || empty($post_data['campaign_allowduphash'])) ? false : (($post_data['campaign_allowduphash'] == 1) ? true : false);
+			$campaigndata['campaign_add_ext_duplicate_filter_ms'] = (!isset($post_data['campaign_add_ext_duplicate_filter_ms']) || empty($post_data['campaign_add_ext_duplicate_filter_ms'])) ? false : (($post_data['campaign_add_ext_duplicate_filter_ms'] == 1) ? true : false);
+			$campaigndata['campaign_jumpduplicates']			  = (!isset($post_data['campaign_jumpduplicates']) || empty($post_data['campaign_jumpduplicates'])) ? false : (($post_data['campaign_jumpduplicates'] == 1) ? true : false);
+
+			$campaigndata['campaign_bbpress_forum'] = (!isset($post_data['campaign_bbpress_forum']) || empty($post_data['campaign_bbpress_forum'])) ? 0 : (int) $post_data['campaign_bbpress_forum'];
+			$campaigndata['campaign_bbpress_topic'] = (!isset($post_data['campaign_bbpress_topic']) || empty($post_data['campaign_bbpress_topic'])) ? 0 : (int) $post_data['campaign_bbpress_topic'];
+
+			$campaigndata['campaign_xml_feed_url']	  = (isset($post_data['campaign_xml_feed_url']) && !empty($post_data['campaign_xml_feed_url'])) ? esc_url_raw($post_data['campaign_xml_feed_url']) : '';
+			$campaigndata['campaign_xml_node']		  = (isset($post_data['campaign_xml_node']) && !empty($post_data['campaign_xml_node'])) ? (array) $post_data['campaign_xml_node'] : array();
+			$campaigndata['campaign_xml_node_parent'] = (isset($post_data['campaign_xml_node_parent']) && !empty($post_data['campaign_xml_node_parent'])) ? (array) $post_data['campaign_xml_node_parent'] : array();
+			if ($campaigndata['campaign_type'] == 'xml') {
+				$campaigndata['campaign_feeds']	  = array();
+				$campaigndata['campaign_feeds'][] = site_url('/wpematico-xml-feed/');
+			}
+
+			/**
+			 * wpematico_campaign_addon_fields Lets an addon add its own campaign fields
+			 * and their defaults, deriving them from $post_data.
+			 * Replaces pro_check_campaigndata, still fired right after with the same
+			 * signature for the addons already published against it.
+			 */
+			$campaigndata = apply_filters('wpematico_campaign_addon_fields', $campaigndata, $post_data);
+
+			if (has_filter('pro_check_campaigndata'))
+				$campaigndata = apply_filters('pro_check_campaigndata', $campaigndata, $post_data);
+
+			if (!$strict && is_array($post_data)) {
+				$campaigndata += array_diff_key($post_data, array_flip(self::INPUT_ONLY_FIELDS));
+			}
+			return $campaigndata;
+		}
+
+		//************************* CAMPAIGN RUN LOCK ***************************************************
+		/**
+		 * Meta key holding the "running" claim for a campaign.
+		 * Stores the UTC timestamp (time()) when the run started. Empty/0 means not running.
+		 * Drives both the anti-duplicate lock and the "running" indicator on the list.
+		 */
+		const FETCH_LOCK_META = 'wpe_fetch_lock';
+
+		/**
+		 * Meta key holding the last detected run timeout for a campaign.
+		 * Stores array('time' => UTC timestamp when the stale lock was cleared,
+		 * 'runtime' => seconds the dead run had been holding the lock).
+		 * Written by get_campaign_running_since() when it auto-clears an orphaned lock,
+		 * i.e. when a run died (fatal, OOM, kill) before reaching fetch_end().
+		 * Cleared on the next successful claim so it only ever reflects the last run.
+		 */
+		const LAST_TIMEOUT_META = 'wpe_last_timeout';
+
+		/**
+		 * Time to live (seconds) for a campaign run lock.
+		 * Reuses the existing "Timeout running campaign" setting (campaign_timeout):
+		 * after this many seconds an orphaned lock (run died before releasing) is
+		 * considered stale and auto-cleared so the campaign can run again.
+		 * A value of 0 means the lock never auto-expires (must be cleared manually
+		 * via "Clear Campaign"), matching the documented behavior of that setting.
+		 *
+		 * @param  array $campaign  Optional campaign data (for the filter).
+		 * @return int   TTL in seconds (0 = no auto-expiry).
+		 */
+		public static function get_fetch_lock_ttl($campaign = array()) {
+			$cfg = get_option(WPeMatico :: OPTION_KEY);
+			$ttl = (isset($cfg['campaign_timeout'])) ? (int) $cfg['campaign_timeout'] : 300;
+			if ($ttl < 0) {
+				$ttl = 0;
+			}
+			return (int) apply_filters('wpematico_fetch_lock_ttl', $ttl, $campaign);
+		}
+
+		/**
+		 * Returns the timestamp since a campaign run is in progress, or 0 if not running.
+		 * Auto-clears a stale lock (older than the TTL) and returns 0 in that case.
+		 * Falls back to the legacy in-array 'starttime' for backward compatibility.
+		 *
+		 * @param  int $campaign_id
+		 * @return int  UTC timestamp the run started, or 0 if not currently running.
+		 */
+		public static function get_campaign_running_since($campaign_id) {
+			$lock = (int) get_post_meta($campaign_id, self::FETCH_LOCK_META, true);
+			if ($lock <= 0) {
+				// Backward-compat: honor a legacy persisted starttime if present.
+				$campaign = self::get_campaign($campaign_id);
+				$lock = (isset($campaign['starttime']) && !empty($campaign['starttime'])) ? (int) $campaign['starttime'] : 0;
+				if ($lock <= 0) {
+					return 0;
+				}
+			}
+			$ttl = self::get_fetch_lock_ttl();
+			// Elapsed time: time() on both sides (both are real UTC timestamps).
+			if ($ttl > 0 && (time() - $lock) >= $ttl) {
+				// Stale/orphaned lock: the run died before reaching fetch_end() (fatal, OOM,
+				// kill, server max_execution_time). Clear it so the campaign can run again and
+				// leave a trace, otherwise the recovery is completely silent and the campaign
+				// keeps showing the previous successful run as if nothing had happened.
+				delete_post_meta($campaign_id, self::FETCH_LOCK_META);
+				update_post_meta($campaign_id, self::LAST_TIMEOUT_META, array(
+					'time'	  => time(),		// stored as real UTC timestamp; display with wp_date()
+					'runtime' => time() - $lock,
+				));
+				return 0;
+			}
+			return $lock;
+		}
+
+		/**
+		 * Returns the last detected run timeout for a campaign, or an empty array if the
+		 * last run did not time out.
+		 *
+		 * @param  int $campaign_id
+		 * @return array  array('time' => int UTC timestamp, 'runtime' => int seconds) or array().
+		 */
+		public static function get_campaign_last_timeout($campaign_id) {
+			$timeout = get_post_meta($campaign_id, self::LAST_TIMEOUT_META, true);
+			if (empty($timeout) || !is_array($timeout) || empty($timeout['time'])) {
+				return array();
+			}
+			return array(
+				'time'	  => (int) $timeout['time'],
+				'runtime' => (isset($timeout['runtime'])) ? (int) $timeout['runtime'] : 0,
+			);
+		}
+
+		/**
+		 * Clears the last run timeout marker of a campaign.
+		 *
+		 * @param  int $campaign_id
+		 */
+		public static function clear_campaign_last_timeout($campaign_id) {
+			delete_post_meta($campaign_id, self::LAST_TIMEOUT_META);
+		}
+
+		/**
+		 * Whether a campaign run is currently in progress.
+		 *
+		 * @param  int $campaign_id
+		 * @return bool
+		 */
+		public static function is_campaign_running($campaign_id) {
+			return self::get_campaign_running_since($campaign_id) > 0;
+		}
+
+		/**
+		 * Atomically claim a campaign for a run. Sets the run lock if and only if the
+		 * campaign is not already running. Uses a MySQL named lock (GET_LOCK, non
+		 * blocking) to close the check-and-set race window, degrading gracefully when
+		 * the host does not support it.
+		 *
+		 * @param  int $campaign_id
+		 * @return bool  true if claimed (caller may run), false if already running.
+		 */
+		public static function claim_campaign($campaign_id) {
+			global $wpdb;
+			$lock_name = 'wpe_claim_' . (int) $campaign_id;
+			// Non-blocking MySQL named lock: '1' acquired, '0' busy, null = unsupported.
+			$db_lock = $wpdb->get_var($wpdb->prepare("SELECT GET_LOCK(%s, 0)", $lock_name));
+			if ($db_lock === '0') {
+				return false; // Another process is in the critical section right now.
+			}
+			$claimed = false;
+			if (!self::is_campaign_running($campaign_id)) {
+				update_post_meta($campaign_id, self::FETCH_LOCK_META, time()); // real UTC timestamp
+				// A new run starts: drop the timeout marker of the previous one so the UI only
+				// ever reports the outcome of the last run.
+				self::clear_campaign_last_timeout($campaign_id);
+				$claimed = true;
+			}
+			if ($db_lock === '1') {
+				$wpdb->query($wpdb->prepare("SELECT RELEASE_LOCK(%s)", $lock_name));
+			}
+			return $claimed;
+		}
+
+		/**
+		 * Release a campaign run lock.
+		 *
+		 * @param  int $campaign_id
+		 */
+		public static function release_campaign($campaign_id) {
+			delete_post_meta($campaign_id, self::FETCH_LOCK_META);
+		}
+
+		//************************* SAVE CAMPAIGN *******************************************************
+
+		/**
+		 * Save campaign data
+		 * Each call calculate the next cron time and save it on the campaign cron field.
+		 * Some values for direct access or list columns are saved also individually.
+		 *
+		 * Stored fields the caller does not carry are kept, not deleted, because that
+		 * array lacks the fields of any addon deactivated at the time. The caller's
+		 * values always win. $replace writes verbatim instead, and is the only way to
+		 * actually remove a field (uninstall routines, cleanup tools).
+		 *
+		 * Required @param   integer  $post_id    Campaign ID to save on.
+		 * 			@param   array  $campaign	All the campaign data to save.
+		 * 			@param   bool   $replace	Skip the union and overwrite.
+		 *
+		 * @return int|bool with campaign data
+		 * */
+		public static function update_campaign($post_id, $campaign = array(), $replace = false) {
+			if (!$replace) {
+				$stored = get_post_meta($post_id, 'campaign_data', true);
+				if (is_array($stored)) {
+					$campaign = $campaign + $stored;
+				}
+			}
+
+			$campaign['cronnextrun'] = (int) WPeMatico::time_cron_next($campaign['cron']);
+			$campaign				 = apply_filters('wpematico_before_update_campaign', $campaign);
+
+			update_post_meta($post_id, 'postscount', $campaign['postscount']);
+
+			update_post_meta($post_id, 'cronnextrun', $campaign['cronnextrun']);
+
+			update_post_meta($post_id, 'lastrun', $campaign['lastrun']);
+
+			// Individual meta as well, so "how many campaigns are on" is one query
+			// instead of unserializing every campaign_data. Read by the dashboard
+			// widget and available to the campaigns list.
+			update_post_meta($post_id, 'activated', !empty($campaign['activated']) ? 1 : 0);
+
+			// The dashboard chart counts imported posts, so it is stale the moment a
+			// run ends -- and fetch_end() comes through here. Deleted by name because
+			// WPeMatico_Dashboard_Widgets is admin-only and this also runs in cron.
+			delete_transient('wpematico_dashboard_chart');
+
+			// *** Campaign Rewrites	
+			// Walk the rewrites, adding slashes.
+			if (isset($campaign['campaign_rewrites']['origin']))
+				for ($i = 0; $i < count($campaign['campaign_rewrites']['origin']); $i++) {
+					$campaign['campaign_rewrites']['origin'][$i]  = addslashes($campaign['campaign_rewrites']['origin'][$i]);
+					$campaign['campaign_rewrites']['rewrite'][$i] = addslashes($campaign['campaign_rewrites']['rewrite'][$i]);
+					$campaign['campaign_rewrites']['relink'][$i]  = addslashes($campaign['campaign_rewrites']['relink'][$i]);
+				}
+			if (isset($campaign['campaign_wrd2cat']['word']))
+				for ($i = 0; $i < count($campaign['campaign_wrd2cat']['word']); $i++) {
+					$campaign['campaign_wrd2cat']['word'][$i] = addslashes($campaign['campaign_wrd2cat']['word'][$i]);
+				}
+
+			return update_post_meta($post_id, 'campaign_data', $campaign);
+		}
+
+		/*		 * ********* 	 Campaign processing functions ***************** */
+
+		//DoJob
+		public static function wpematico_dojob($jobid) {
+			global $campaign_log_message;
+			$campaign_log_message = "";
+			if (empty($jobid))
+				return false;
+			require_once(dirname(__FILE__) . '/campaign_fetch.php');
+			$fetched			  = new wpematico_campaign_fetch($jobid);
+			unset($fetched);
+			return $campaign_log_message;
+		}
+
+		// Processes all campaigns
+		public static function processAll() {
+			$args		 = array('post_type' => 'wpematico', 'orderby' => 'ID', 'order' => 'ASC');
+			$campaignsid = get_posts($args);
+			$msglogs	 = "";
+			foreach ($campaignsid as $campaignid) {
+				wpematico_init_set('max_execution_time', 0);
+
+				$msglogs .= WPeMatico::wpematico_dojob($campaignid->ID);
+			}
+			return $msglogs;
+		}
+
+		//Permalink to Source
+		/*		 * * Determines what the title has to link to   * @return string new text   * */
+		public static function wpematico_permalink($url) {
+			// if from admin panel
+			$post_id = url_to_postid($url);
+			if ($post_id) {
+				$campaign_id = (int) get_post_meta($post_id, 'wpe_campaignid', true);
+				if ($campaign_id) {
+					$campaign = self::get_campaign($campaign_id);
+					if (isset($campaign['campaign_linktosource']) && $campaign['campaign_linktosource'])
+						return get_post_meta($post_id, 'wpe_sourcepermalink', true);
+				}
+			}
+			return $url;
+		}
+
+		/**
+		 * Set canonical url for the post
+		 *
+		 * @param   string    $canonical_url          canonical url to integrate in the <head> tag
+		 * @param   string    $wpe_sourcepermalink    url to integrate in the post
+		 * @param   WP_Post   $post                   wpematico's post 
+		 * @return  string    Canonical URL
+		 * @since 2.7
+		 * */
+		public static function wpematico_set_canonical($canonical_url, $post) {
+			global $cfg;
+
+			$prev = $canonical_url;
+
+			if (isset($cfg['wpematico_set_canonical']) && $cfg['wpematico_set_canonical']) {
+				$wpe_sourcepermalink = get_post_meta($post->ID, 'wpe_sourcepermalink', true);
+				$canonical_url		 = isset($wpe_sourcepermalink) ? $wpe_sourcepermalink : $canonical_url;
+			}
+
+			return apply_filters('wpematico_canonical_url', $canonical_url, $prev, $post);
+		}
+
+//*********************************************************************************************************
+
+		/**
+		 * Opens one feed of a campaign the way a run opens it.
+		 *
+		 * ★ This block used to be copy-pasted in five places -- the fetch engine, both
+		 * preview screens and twice in the Manual Fetching addon -- each with its own
+		 * hardcoded list of the campaign types that are read as a plain feed. So a type
+		 * added later (Vimeo) worked in a run and broke everywhere else, and every screen
+		 * had to be found and fixed one by one. There is one copy now, and it is the
+		 * engine's: whatever answers `wpematico_rss_campaign_types` is read as a feed,
+		 * through `wpematico_simplepie_url`, everywhere at once.
+		 *
+		 * The screen only says which filter names its own parameters -- that is the whole
+		 * difference between a run, a preview and a page check, and it is what keeps
+		 * `wpematico_preview_fetch_feed_params` and friends working for the addons that
+		 * hook them.
+		 *
+		 * @since 2.9
+		 * @param string $feed     The feed URL as the campaign holds it.
+		 * @param array  $campaign Campaign data.
+		 * @param array  $args     params_filter, feed_key, fetch_obj and the fetchFeed flags.
+		 * @return SimplePie Always an object, never a feed and never null.
+		 */
+		public static function open_campaign_feed($feed, $campaign, $args = array()) {
+			$args = wp_parse_args($args, array(
+				'params_filter'				 => 'wpematico_fetch_feed_params',
+				'feed_key'					 => 0,
+				'fetch_obj'					 => null,
+				'stupidly_fast'				 => true,
+				'max'						 => 0,
+				'order_by_date'				 => false,
+				'force_feed'				 => false,
+				'disable_simplepie_notice'	 => false,
+			));
+
+			$campaign_type		 = isset($campaign['campaign_type']) ? $campaign['campaign_type'] : 'feed';
+			$rss_campaign_types	 = apply_filters('wpematico_rss_campaign_types', array('feed', 'youtube', 'bbpress'));
+
+			if (in_array($campaign_type, (array) $rss_campaign_types, true)) {
+				$fetch_feed_params = array(
+					// The address a campaign holds is not always the feed itself.
+					'url'			 => apply_filters('wpematico_simplepie_url', $feed, $args['feed_key'], $campaign),
+					'stupidly_fast'	 => $args['stupidly_fast'],
+					'max'			 => $args['max'],
+					'order_by_date'	 => $args['order_by_date'],
+					'force_feed'	 => $args['force_feed'],
+				);
+				if ($args['disable_simplepie_notice']) {
+					$fetch_feed_params['disable_simplepie_notice'] = true;
+				}
+				if (!empty($args['params_filter'])) {
+					$fetch_feed_params = apply_filters($args['params_filter'], $fetch_feed_params, $args['feed_key'], $campaign);
+				}
+
+				return self::fetchFeed($fetch_feed_params);
+			}
+
+			/**
+			 * DEPRECATED on 2.7 in favor of wpematico_custom_simplepie below.
+			 *
+			 * ★ Kept through 2.9 only so add-ons published against 2.8 keep fetching;
+			 * every add-on we ship hooks wpematico_custom_simplepie on 2.9 and this one
+			 * only on older cores. REMOVE IT IN 3.0, along with the <2.9 branch each
+			 * add-on keeps for it.
+			 *
+			 * Seeded with the campaign, so with no listeners it hands back the campaign
+			 * *array* -- which is why every caller of this branch has to check the type of
+			 * what it got before treating it as a feed.
+			 */
+			$simplepie = apply_filters('Wpematico_process_fetching', $campaign, $feed, $args['feed_key'], $campaign);
+
+			if (empty($simplepie) || !is_object($simplepie)) {
+				// WordPress only loads SimplePie inside fetch_feed(), which this branch
+				// never calls.
+				if (!class_exists('SimplePie\SimplePie', false)) {
+					require_once ABSPATH . WPINC . '/class-simplepie.php';
+				}
+				$simplepie = new SimplePie();
+			}
+
+			return apply_filters('wpematico_custom_simplepie', $simplepie, $args['fetch_obj'], $feed, $args['feed_key']);
+		}
+
+		/**
+		 * Why this item would not be imported again, or '' when it is new.
+		 *
+		 * ★ The run and the preview each had their own copy of this decision, and they
+		 * had drifted: the preview never looked at the `_lasthashes_` ring that "Jump
+		 * duplicates" fills, and it hashed the raw feed permalink while the run hashes
+		 * the one getReadUrl() resolves -- so on any feed whose links redirect, the
+		 * preview announced items the run had already published.
+		 *
+		 * The caller still decides what to do with the answer: the run breaks or skips,
+		 * the preview paints the row. The "Found duplicated..." line is logged here
+		 * because it says what was found; "Filtering"/"Jumping" stays with whoever
+		 * decides.
+		 *
+		 * @since 2.9
+		 * @param int    $campaign_id
+		 * @param array  $campaign
+		 * @param string $feed
+		 * @param object $item           SimplePie item.
+		 * @param array  $options        get_duplicate_options().
+		 * @param string $permalink_hash md5 of the permalink, resolved as the run resolves it.
+		 * @param array  $last_hashes    Contents of the _lasthashes_ ring, when there is one.
+		 * @return string 'hash', 'hashes', 'title' or '' when the item is new.
+		 */
+		public static function item_duplicate_state($campaign_id, $campaign, $feed, $item, $options, $permalink_hash, $last_hashes = array()) {
+			if ($options['allowduplicates'] && $options['allowduptitle'] && $options['allowduphash'] && !$options['add_extra_duplicate_filter_meta_source']) {
+				return '';
+			}
+
+			if (!$options['allowduphash']) {
+				$stored	 = $campaign_id ? get_post_meta($campaign_id, '_lasthash_' . sanitize_file_name($feed), true) : '';
+				$key	 = wpematico_feed_hash_key('campaign', $feed);
+				$known	 = isset($campaign[$key]['lasthash']) ? $campaign[$key]['lasthash'] : '';
+
+				if ($known == $permalink_hash || $stored == $permalink_hash) {
+					/* translators: %s post permalink and hash */
+					trigger_error(sprintf(__('Found duplicated hash \'%s\'', 'wpematico'), $item->get_permalink()) . ': ' . $permalink_hash, E_USER_NOTICE);
+					return 'hash';
+				}
+
+				if ($options['jumpduplicates'] && !empty($last_hashes) && in_array($permalink_hash, $last_hashes)) {
+					/* translators: %s post permalink and hash */
+					trigger_error(sprintf(__('Found duplicated hash of item \'%s\'', 'wpematico'), $item->get_permalink()) . ': ' . $permalink_hash, E_USER_NOTICE);
+					return 'hashes';
+				}
+			}
+
+			if (!$options['allowduptitle'] && self::is_duplicated_item($campaign, $feed, $item)) {
+				/* translators: %s post title and hash */
+				trigger_error(sprintf(__('Found duplicated title \'%s\'', 'wpematico'), $item->get_title()) . ': ' . $permalink_hash, E_USER_NOTICE);
+				return 'title';
+			}
+
+			return '';
+		}
+
+		/**
+		 * Resolves a feed URL to the address that should be requested.
+		 *
+		 * A feed is an http:// or https:// address on the public internet. The URL is returned
+		 * normalized the way SimplePie normalizes it, so the result is what to hand to
+		 * SimplePie: feed://, podcast:// and itpc:// become http://, and a bare host name gets
+		 * http:// prepended. A local filesystem path is not a feed address, and neither is a
+		 * host that resolves to a loopback, private, link-local or reserved address; both come
+		 * back as a WP_Error whose message is ready to show.
+		 *
+		 * Two ways to reach an internal address when a site needs it:
+		 *
+		 *  - site wide, with "Allow feeds on private and local addresses" in Tools > Danger Zone;
+		 *  - one feed at a time, with the wpematico_allow_internal_feeds filter.
+		 *
+		 * The site's own host needs neither and is always allowed, so the XML campaign type and
+		 * add-ons that publish feeds on this same installation work on a local or intranet site.
+		 *
+		 * A host that cannot be resolved from this process is allowed through: the resolver
+		 * available here is not necessarily the one that serves the request, so only an address
+		 * positively identified as internal is refused.
+		 *
+		 * @since 2.8.26
+		 * @param   string  $url  Feed URL, as stored in the campaign.
+		 * @return  string|WP_Error  Normalized URL to fetch, or WP_Error carrying the reason.
+		 */
+		public static function validate_feed_url($url) {
+			static $checked = array();
+
+			$key = (string) $url;
+			if (array_key_exists($key, $checked)) {
+				return $checked[$key];
+			}
+			$checked[$key] = self::check_feed_url($key);
+
+			// The address that comes back is the one actually requested, and it is asked
+			// about again when the request is built. Answer that from here.
+			if (!is_wp_error($checked[$key]) && !array_key_exists($checked[$key], $checked)) {
+				$checked[$checked[$key]] = $checked[$key];
+			}
+
+			return $checked[$key];
+		}
+
+		/**
+		 * Does the work for validate_feed_url(), which caches the verdict per URL.
+		 *
+		 * @since 2.8.26
+		 * @param   string  $url
+		 * @return  string|WP_Error
+		 */
+		protected static function check_feed_url($url) {
+			// Control characters are not part of a URL.
+			$url = trim(preg_replace('/[\x00-\x1F\x7F]/', '', $url));
+			if ('' === $url) {
+				return new WP_Error('wpematico_feed_url_empty', __('The feed URL is empty.', 'wpematico'));
+			}
+
+			$url = self::normalize_feed_url($url);
+			if (is_wp_error($url)) {
+				return $url;
+			}
+
+			$parts	= wp_parse_url($url);
+			$scheme = (is_array($parts) && !empty($parts['scheme'])) ? strtolower($parts['scheme']) : '';
+			$host	= (is_array($parts) && !empty($parts['host'])) ? trim($parts['host'], '.') : '';
+			if (('http' !== $scheme && 'https' !== $scheme) || '' === $host) {
+				/* translators: %s Feed URL. */
+				return new WP_Error('wpematico_feed_url_invalid', sprintf(__('%s is not a valid feed address. A feed must be an http:// or https:// URL.', 'wpematico'), $url));
+			}
+
+			// Feeds published by this same installation, such as the XML campaign type and the
+			// feeds some add-ons generate, are always fetchable. This is the site answering on
+			// the address it is reached at, so the port is part of what identifies it.
+			if (in_array(self::host_port_key($host, $parts, $scheme), self::get_own_hosts(), true)) {
+				return $url;
+			}
+
+			// Site-wide opt-in, for installations that read feeds from their own network.
+			// Answered before resolving anything, so it costs nothing when it is on.
+			$danger = self::get_danger_options();
+			if (!empty($danger['wpe_allow_internal_feeds'])) {
+				return $url;
+			}
+
+			$internal_ip = self::resolve_internal_ip($host);
+			if (null === $internal_ip) {
+				return $url;
+			}
+
+			/**
+			 * Allows fetching a feed that lives on a private, loopback or reserved address.
+			 *
+			 * Only called for a destination already identified as internal, so returning true
+			 * is the per-feed equivalent of the "Allow feeds on private and local addresses"
+			 * option in Tools > Danger Zone.
+			 *
+			 * @since 2.8.26
+			 * @param  boolean  $allow  False by default.
+			 * @param  string   $url    Normalized feed URL.
+			 * @param  string   $host   Host of the feed URL.
+			 * @param  string   $ip     Internal address the host resolved to.
+			 */
+			if (apply_filters('wpematico_allow_internal_feeds', false, $url, $host, $internal_ip)) {
+				return $url;
+			}
+
+			/* translators: %1$s Feed URL. %2$s IP address. */
+			return new WP_Error('wpematico_feed_url_internal', sprintf(__('%1$s points to %2$s, an address on this server\'s own network. If that is intended, enable "Allow feeds on private and local addresses" in WPeMatico > Tools > Danger Zone.', 'wpematico'), $url, $internal_ip));
+		}
+
+		/**
+		 * Applies the scheme normalization SimplePie applies in Misc::fix_protocol(): feed://,
+		 * podcast:// and itpc:// URLs become http://, and a bare "example.com/feed" gets
+		 * http:// prepended, so URLs entered in either shape keep working.
+		 *
+		 * A path to a file on this server is not a feed address and comes back as a WP_Error.
+		 *
+		 * @since 2.8.26
+		 * @param   string  $url
+		 * @return  string|WP_Error
+		 */
+		protected static function normalize_feed_url($url) {
+			if (preg_match('#^([a-z][a-z0-9+.\-]*)://#i', $url, $matches)) {
+				$scheme = strtolower($matches[1]);
+				if ('http' !== $scheme && 'https' !== $scheme) {
+					return 'http://' . substr($url, strlen($matches[0]));
+				}
+
+				return $url;
+			}
+
+			if (self::is_local_path($url)) {
+				/* translators: %s Feed URL. */
+				return new WP_Error('wpematico_feed_url_local_path', sprintf(__('%s looks like a file on this server, not a feed address. A feed must be an http:// or https:// URL.', 'wpematico'), $url));
+			}
+
+			return 'http://' . ltrim($url, '/');
+		}
+
+		/**
+		 * Whether a scheme-less feed URL is really a path on this server's filesystem.
+		 *
+		 * @since 2.8.26
+		 * @param   string  $url
+		 * @return  boolean
+		 */
+		protected static function is_local_path($url) {
+			// Absolute, relative, UNC and Windows drive paths.
+			if (preg_match('#^(/|\./|\.\./|\\\\|[a-zA-Z]:[\\\\/])#', $url)) {
+				return true;
+			}
+
+			// Anything else that names a readable file. This is the condition SimplePie uses to
+			// tell a local file from a host name.
+			return (bool) @file_exists($url);
+		}
+
+		/**
+		 * Addresses that always count as this installation: the host WordPress is reached at,
+		 * on the ports a web site answers on — the one the site URL names, and the two default
+		 * web ports, so a site published over http also reaches itself over https.
+		 *
+		 * Another port on the same machine is another service, and reaching it is not what
+		 * publishing a feed on this installation means.
+		 *
+		 * @since 2.8.26
+		 * @return  array  Lower case "host:port" keys.
+		 */
+		protected static function get_own_hosts() {
+			$hosts = array();
+			foreach (array(home_url(), site_url()) as $own_url) {
+				$parts = wp_parse_url($own_url);
+				if (empty($parts['host'])) {
+					continue;
+				}
+				$scheme = (!empty($parts['scheme'])) ? strtolower($parts['scheme']) : '';
+				$host	= strtolower(trim($parts['host'], '.'));
+
+				$hosts[] = self::host_port_key($host, $parts, $scheme);
+				$hosts[] = $host . ':80';
+				$hosts[] = $host . ':443';
+			}
+
+			return array_values(array_unique(array_filter($hosts)));
+		}
+
+		/**
+		 * Builds the "host:port" key the two functions above compare, with the port the
+		 * scheme implies when the URL does not name one.
+		 *
+		 * @param   string  $host    Host name.
+		 * @param   array   $parts   Result of wp_parse_url() for the same URL.
+		 * @param   string  $scheme  Lower case scheme.
+		 * @return  string
+		 */
+		protected static function host_port_key($host, $parts, $scheme) {
+			$port = (is_array($parts) && !empty($parts['port'])) ? (int) $parts['port'] : (('https' === $scheme) ? 443 : 80);
+
+			return strtolower(trim($host, '.')) . ':' . $port;
+		}
+
+		/**
+		 * Resolves a host and reports the first internal address it points to.
+		 *
+		 * Returns null both when the host is external and when it cannot be resolved here, so
+		 * a DNS failure never blocks a fetch. Only IPv4 records are resolved, which is what
+		 * gethostbynamel() offers; an IP literal of either family is classified directly.
+		 *
+		 * @since 2.8.26
+		 * @param   string  $host
+		 * @return  string|null  The internal address, or null when there is nothing to refuse.
+		 */
+		protected static function resolve_internal_ip($host) {
+			static $resolved_hosts = array();
+
+			$key = strtolower($host);
+			if (array_key_exists($key, $resolved_hosts)) {
+				return $resolved_hosts[$key];
+			}
+
+			$addresses = array();
+			if (filter_var($host, FILTER_VALIDATE_IP)) {
+				$addresses[] = $host;
+			} elseif (preg_match('#^\[(.+)\]$#', $host, $matches) && filter_var($matches[1], FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
+				$addresses[] = $matches[1];
+			} else {
+				// One lookup per host and per request: a multipage feed asks about the same
+				// host once per page, and a cron pass often reads several feeds of one site.
+				$resolved = @gethostbynamel($host);
+				if (is_array($resolved)) {
+					$addresses = $resolved;
+				}
+			}
+
+			$resolved_hosts[$key] = null;
+			foreach ($addresses as $address) {
+				if (self::is_internal_ip($address)) {
+					$resolved_hosts[$key] = $address;
+					break;
+				}
+			}
+
+			return $resolved_hosts[$key];
+		}
+
+		/**
+		 * Whether an address belongs to a range a feed fetch has no business reaching.
+		 *
+		 * @since 2.8.26
+		 * @param   string  $ip
+		 * @return  boolean
+		 */
+		protected static function is_internal_ip($ip) {
+			if (!filter_var($ip, FILTER_VALIDATE_IP)) {
+				return true;  // Not an address at all.
+			}
+
+			// An IPv6 address can carry an IPv4 one inside it and reach exactly what that
+			// address reaches, so it is classified as the address it stands for.
+			$embedded = self::embedded_ipv4($ip);
+			if (null !== $embedded) {
+				return self::is_internal_ip($embedded);
+			}
+
+			// Covers loopback, the private ranges, link-local (169.254.0.0/16), 0.0.0.0/8 and
+			// the reserved space, for IPv4 and IPv6 alike.
+			if (false === filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE)) {
+				return true;
+			}
+
+			// Ranges filter_var() does not know about.
+			$parts = explode('.', $ip);
+			if (4 === count($parts)) {
+				$parts = array_map('intval', $parts);
+				if (100 === $parts[0] && 64 <= $parts[1] && 127 >= $parts[1]) {
+					return true;  // 100.64.0.0/10, carrier grade NAT.
+				}
+				if (192 === $parts[0] && 0 === $parts[1] && 0 === $parts[2]) {
+					return true;  // 192.0.0.0/24, IETF protocol assignments.
+				}
+				if (192 === $parts[0] && 0 === $parts[1] && 2 === $parts[2]) {
+					return true;  // 192.0.2.0/24, documentation.
+				}
+				if (192 === $parts[0] && 88 === $parts[1] && 99 === $parts[2]) {
+					return true;  // 192.88.99.0/24, 6to4 relay anycast.
+				}
+				if (198 === $parts[0] && (18 === $parts[1] || 19 === $parts[1])) {
+					return true;  // 198.18.0.0/15, benchmarking.
+				}
+				if (198 === $parts[0] && 51 === $parts[1] && 100 === $parts[2]) {
+					return true;  // 198.51.100.0/24, documentation.
+				}
+				if (203 === $parts[0] && 0 === $parts[1] && 113 === $parts[2]) {
+					return true;  // 203.0.113.0/24, documentation.
+				}
+				if (224 <= $parts[0] && 239 >= $parts[0]) {
+					return true;  // 224.0.0.0/4, multicast.
+				}
+			} elseif (preg_match('/^fe[c-f][0-9a-f]:/i', $ip)) {
+				return true;  // fec0::/10, site local.
+			}
+
+			return false;
+		}
+
+		/**
+		 * The IPv4 address an IPv6 address stands for, when it carries one: IPv4 mapped
+		 * (::ffff:0:0/96) and compatible addresses, the NAT64 well known prefix (64:ff9b::/96)
+		 * and 6to4 (2002::/16). Null for an address that is only IPv6.
+		 *
+		 * @param   string  $ip
+		 * @return  string|null
+		 */
+		protected static function embedded_ipv4($ip) {
+			if (!filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
+				return null;
+			}
+
+			$packed = @inet_pton($ip);
+			if (false === $packed || 16 !== strlen($packed)) {
+				return null;
+			}
+
+			$bytes	= array_values(unpack('C*', $packed));
+			$ipv4	= null;
+			$prefix = implode('.', array_slice($bytes, 0, 8));
+
+			if ('0.0.0.0.0.0.0.0' === $prefix && (255 === $bytes[10] && 255 === $bytes[11] || 0 === $bytes[8] + $bytes[9] + $bytes[10] + $bytes[11])) {
+				$ipv4 = array_slice($bytes, 12, 4);  // ::ffff:a.b.c.d and ::a.b.c.d
+			} elseif (0 === $bytes[0] && 100 === $bytes[1] && 255 === $bytes[2] && 155 === $bytes[3]) {
+				$ipv4 = array_slice($bytes, 12, 4);  // 64:ff9b::a.b.c.d
+			} elseif (32 === $bytes[0] && 2 === $bytes[1]) {
+				$ipv4 = array_slice($bytes, 2, 4);   // 2002:a.b.c.d::
+			}
+
+			if (null === $ipv4) {
+				return null;
+			}
+
+			$ipv4 = implode('.', $ipv4);
+
+			// ::/96 also holds the unspecified address and ::1, which are not IPv4 at all.
+			return ('0.0.0.0' === $ipv4 || '0.0.0.1' === $ipv4) ? null : $ipv4;
+		}
+
+		/**
+		 * Parses a feed with SimplePie
+		 *
+		 * @param   boolean     $stupidly_fast    Set fast mode. Best for checks
+		 * @param   integer     $max              Limit of items to fetch
+		 * @return  SimplePie_Item    Feed object
+		 * */
+		public static function fetchFeed($args, $stupidly_fast = false, $max = 0, $order_by_date = false, $force_feed = false) {  # SimplePie
+			/**
+			 * Allow send args from a single var $args easier to filter.
+			 * @since 1.8.0
+			 */
+			if (is_array($args) && isset($args['url'])) {
+				extract($args);
+			} else {
+				$url = $args;
+			}
+
+			if (!isset($disable_simplepie_notice)) {
+				$disable_simplepie_notice = false;
+			}
+
+			$cfg = get_option(WPeMatico::OPTION_KEY);
+
+			if (!class_exists('SimplePie')) {
+				if (is_file(ABSPATH . WPINC . '/class-simplepie.php'))
+					include_once(ABSPATH . WPINC . '/class-simplepie.php');
+				else if (is_file(ABSPATH . 'wp-admin/includes/class-simplepie.php'))
+					include_once(ABSPATH . 'wp-admin/includes/class-simplepie.php');
+			}
+
+			/**
+			 * Multipage / multifeed: $url may be an array of URLs (the PRO "use as a multipage
+			 * feed" option returns ?paged=1..N through the wpematico_simplepie_url filter).
+			 * Handing that array to SimplePie::set_feed_url() triggers an E_USER_DEPRECATED
+			 * since SimplePie 1.9.0 and, worse, a source that ignores the pagination parameter
+			 * returns the same items on every page, which used to be published several times.
+			 * Fetch one instance per page and merge/deduplicate here instead.
+			 */
+			if (is_array($url)) {
+				$base_args = (is_array($args) && isset($args['url'])) ? $args : array();
+				return self::fetch_multifeed($url, $base_args, $stupidly_fast, $max, $order_by_date, $force_feed);
+			}
+
+			/**
+			 * Every feed WPeMatico reads passes through here -- campaign runs, the campaign and
+			 * item previews, the XML node check, the feed viewer and the feed test -- so the
+			 * address rule lives in one place. Multipage feeds included: fetch_multifeed()
+			 * fetches each of its pages through this same method.
+			 */
+			$validated_url = self::validate_feed_url($url);
+			if (is_wp_error($validated_url)) {
+				/* translators: %s Reason the feed was not fetched. */
+				trigger_error(sprintf(__('Feed not fetched: %s', 'wpematico'), esc_html($validated_url->get_error_message())), E_USER_WARNING);  // Log
+				// Callers keep a normal SimplePie to work with: get_items() returns an empty
+				// list, so the feed is skipped, and error() carries the reason.
+				$feed		 = new SimplePie();
+				$feed->error = $validated_url->get_error_message();
+
+				return $feed;
+			}
+			// Request the same string that was checked.
+			$url = $validated_url;
+
+			$feed										= new SimplePie();
+			$feed->timeout								= apply_filters('wpe_simplepie_timeout', 130);
+			$feed->enable_order_by_date($order_by_date);
+			$feed->force_feed($force_feed);
+			$user_agent									= 'WPeMatico ' . (defined('SIMPLEPIE_NAME') ? SIMPLEPIE_NAME : '') . '/' . (defined('SIMPLEPIE_VERSION') ? SIMPLEPIE_VERSION : '') . ' (Feed Parser; ' . (defined('SIMPLEPIE_URL') ? SIMPLEPIE_URL : '') . '; Allow like Gecko) Build/' . (defined('SIMPLEPIE_BUILD') ? SIMPLEPIE_BUILD : '');
+			$user_agent									= apply_filters('wpematico_simplepie_user_agent', $user_agent, $url);
+			$feed->set_useragent($user_agent);
+			$feed->set_feed_url($url);
+//			$feed->feed_url								 = rawurldecode($feed->feed_url);
+			$feed->curl_options[CURLOPT_SSL_VERIFYHOST] = false;
+			$feed->curl_options[CURLOPT_SSL_VERIFYPEER] = false;
+
+			$feed->set_item_limit($max);
+			$feed->set_stupidly_fast($stupidly_fast);
+			if (!$stupidly_fast) {
+				if ($cfg['simplepie_strip_htmltags']) {
+					$strip_htmltags		  = sanitize_text_field($cfg['strip_htmltags']);
+					$strip_htmltags		  = (isset($strip_htmltags) && empty($strip_htmltags)) ? $strip_htmltags		  = array() : explode(',', $strip_htmltags);
+					$strip_htmltags		  = array_map('trim', $strip_htmltags);
+					$feed->strip_htmltags($strip_htmltags);
+					$feed->strip_htmltags = $strip_htmltags;
+				}
+				if ($cfg['simplepie_strip_attributes']) {
+					$feed->strip_attributes($cfg['strip_htmlattr']);
+				}
+			}
+			if (has_filter('wpematico_fetchfeed'))
+				$feed = apply_filters('wpematico_fetchfeed', $feed, $url);
+
+			/**
+			 * A feed that answers with a redirect is read from the address it points to, and
+			 * that address is resolved by the same rule as the one stored in the campaign.
+			 * Registered after the filter above, so it also covers a feed object an add-on
+			 * built for itself.
+			 */
+			self::set_feed_http_layer($feed);
+
+			$feed->enable_cache(false);
+			$feed->init();
+			$feed->handle_content_type();
+
+			return $feed;
+		}
+
+		/**
+		 * Points a SimplePie instance at the HTTP layer that resolves every address it asks
+		 * for, redirects included.
+		 *
+		 * SimplePie follows a redirect by building a new request, so each hop is a request of
+		 * its own and passes through WPeMatico_SimplePie_File. cURL is told not to follow
+		 * redirects on its own, which is what keeps every hop visible on the releases that
+		 * used to hand that job over to it. The number of requests is the same either way.
+		 *
+		 * @param   object  $feed  SimplePie instance, or whatever an add-on returned in its place.
+		 * @return  void
+		 */
+		protected static function set_feed_http_layer($feed) {
+			if (!is_object($feed) || !method_exists($feed, 'get_registry')) {
+				return;
+			}
+
+			require_once(WPEMATICO_PLUGIN_DIR . 'includes/lib/class-wpematico-simplepie-file.php');
+			if (!class_exists('WPeMatico_SimplePie_File', false)) {
+				return;
+			}
+
+			// SimplePie 1.8 renamed the types its registry knows; both names are answered.
+			$type = class_exists('SimplePie\\File') ? 'SimplePie\\File' : 'File';
+			if (!$feed->get_registry()->register($type, 'WPeMatico_SimplePie_File', true)) {
+				return;
+			}
+
+			if (isset($feed->curl_options) && is_array($feed->curl_options)) {
+				$feed->curl_options[CURLOPT_FOLLOWLOCATION] = false;
+			}
+		}
+
+		/**
+		 * Fetches a list of feed URLs as a single logical feed.
+		 *
+		 * Used for multipage feeds (?paged=1..N). One SimplePie instance per URL, as
+		 * SimplePie 1.9+ asks for, merged with SimplePie::merge_items().
+		 *
+		 * ★ Deduplicated by permalink, and stopped as soon as a page brings nothing new:
+		 * many sources ignore the pagination parameter and answer every page with the
+		 * same content, which would publish the first item once per page requested.
+		 *
+		 * @param   array    $urls           List of feed URLs to fetch, in order.
+		 * @param   array    $base_args      Original $args of fetchFeed(), reused per URL.
+		 * @param   boolean  $stupidly_fast
+		 * @param   integer  $max            Item limit per page.
+		 * @param   boolean  $order_by_date
+		 * @param   boolean  $force_feed
+		 * @return  SimplePie  The first page object, carrying the merged deduplicated items.
+		 */
+		protected static function fetch_multifeed($urls, $base_args = array(), $stupidly_fast = false, $max = 0, $order_by_date = false, $force_feed = false) {
+			$urls = array_values(array_unique(array_filter((array) $urls)));
+			if (empty($urls)) {
+				return new SimplePie();  // nothing to fetch: empty feed, no items, no fatal.
+			}
+
+			$objects = array();
+			$seen	 = array();
+			foreach ($urls as $page => $single_url) {
+				$single_args		= $base_args;
+				$single_args['url'] = $single_url;
+				$object				= static::fetchFeed($single_args, $stupidly_fast, $max, $order_by_date, $force_feed);
+				// The wpematico_fetchfeed filter could return anything; only keep real feeds.
+				if (!($object instanceof SimplePie)) {
+					continue;
+				}
+				$objects[] = $object;
+
+				// Count how many identifiers this page contributes that we had not seen yet.
+				$new_items = 0;
+				foreach ($object->get_items(0, $max) as $item) {
+					$key = static::get_feed_item_key($item);
+					if ($key === '' || !isset($seen[$key])) {
+						if ($key !== '') {
+							$seen[$key] = true;
+						}
+						$new_items++;
+					}
+				}
+				if ($page > 0 && $new_items === 0) {
+					/* translators: %1$d Page number. %2$s Feed URL. */
+					trigger_error(sprintf(__('Multipage feed: page %1$d of %2$s returned no new items, stopping pagination. The source may not support the pagination parameter.', 'wpematico'), $page + 1, $single_url), E_USER_NOTICE);
+					break;
+				}
+			}
+
+			if (empty($objects)) {
+				return new SimplePie();
+			}
+
+			// Let SimplePie do the merge and the date sorting, exactly as its multifeed mode
+			// would, but over instances we created one per URL (no deprecated code path).
+			$merged = (count($objects) > 1) ? SimplePie::merge_items($objects, 0, 0, $max) : $objects[0]->get_items(0, $max);
+
+			$items	 = array();
+			$seen	 = array();
+			$dropped = 0;
+			foreach ($merged as $item) {
+				$key = static::get_feed_item_key($item);
+				if ($key !== '') {
+					if (isset($seen[$key])) {
+						$dropped++;
+						continue;
+					}
+					$seen[$key] = true;
+				}
+				$items[] = $item;
+			}
+			if ($dropped > 0) {
+				/* translators: %d Number of repeated items discarded. */
+				trigger_error(sprintf(__('Multipage feed: discarded %d repeated items found across pages.', 'wpematico'), $dropped), E_USER_NOTICE);
+			}
+
+			// Carry the merged list on the first page object so the caller keeps a normal
+			// SimplePie to work with (get_title(), error(), get_items(), ...). Presetting
+			// data['items'] makes get_items() return this list instead of re-parsing or
+			// re-merging; ordered_items must go or a stale sorted copy would win.
+			$feed = $objects[0];
+			$feed->data['items'] = $items;
+			unset($feed->data['ordered_items']);
+
+			return $feed;
+		}
+
+		/**
+		 * Identifier used to tell two feed items apart: the permalink, or the item id when the
+		 * item has no link. Returns an empty string when the item cannot be identified, in
+		 * which case the caller must keep it rather than risk discarding a legitimate item.
+		 *
+		 * @param   SimplePie_Item  $item
+		 * @return  string
+		 */
+		protected static function get_feed_item_key($item) {
+			if (!is_object($item) || !method_exists($item, 'get_permalink')) {
+				return '';
+			}
+			$key = $item->get_permalink();
+			if (empty($key) && method_exists($item, 'get_id')) {
+				$key = $item->get_id();
+			}
+			return (empty($key)) ? '' : md5($key);
+		}
+
+		/**
+		 * Tests a feed
+		 *
+		 */
+		public static function Test_feed($args = '') {
+
+			// Add capability check
+			if (!current_user_can('manage_options')) {
+				wp_send_json_error('Insufficient permissions');
+				return;
+			}
+
+			// Add nonce validation for AJAX requests
+			if ( empty( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'wpematico_test_feed_nonce' ) ) {
+				wp_send_json_error( 'Invalid nonce' );
+				return;
+			}
+
+			if(!isset($_POST['url'])){
+				wp_send_json_error('Missing URL parameter');
+				return;
+			}
+
+			// The destination is settled by validate_feed_url() inside fetchFeed(), the one
+			// place every fetch goes through. Nothing here may decide it again: a second rule
+			// drifts from the Danger Zone option and from the own-host allowance.
+
+			if (is_array($args)) {
+				extract($args);
+				$ajax = false;
+			} else {
+				if (!isset($_POST['url'])) {
+					return false;
+				}
+				// to test sanitizers
+				//$url	 = wp_sanitize_redirect($_POST['url']);
+				$url = esc_url_raw($_POST['url']);
+				$ajax = true;
+			}
+			/**
+			 * @since 1.8.0
+			 * Added @fetch_feed_params to change parameters values before fetch the feed.
+			 */
+			$fetch_feed_params = array(
+				'url' => $url,
+				'stupidly_fast' => true,
+				'max' => 0,
+				'order_by_date' => false,
+				'force_feed' => false,
+			);
+
+			$fetch_feed_params = apply_filters('wpematico_fetch_feed_params_test', $fetch_feed_params, 0, $_POST);
+
+			// A campaign type may hold an address that is not the feed itself -- a Vimeo
+			// profile, channel or group is a web page. The filter above turns it into the
+			// feed the campaign really fetches; test that one and report it, or the check
+			// button marks a working source red for parsing the page it was handed.
+			$typed = $url;
+			$url   = (isset($fetch_feed_params['url']) && is_string($fetch_feed_params['url'])) ? $fetch_feed_params['url'] : $url;
+			$resolved_note = ($url === $typed) ? '' :
+					'<br />' . sprintf(
+							/* translators: %s The feed URL the pasted address resolves to. */
+							esc_html__('The address resolves to the feed %s, which is the one this campaign fetches.', 'wpematico'),
+							'<code>' . esc_html($url) . '</code>'
+					);
+
+			$feed = self::fetchFeed($fetch_feed_params);
+
+			$errors = $feed->error(); // if no error returned
+
+			// Check if PRO version is installed and its required version
+			if (wpematico_is_pro_active()) {
+				$professional_notice = '';
+			} else {
+				$professional_notice = '<strong>' . esc_html__('A feed that answers only to a browser can still be read with the Force Feed or Change User Agent features of ', 'wpematico') . '<a href="https://etruel.com/downloads/wpematico-professional/">WPeMatico Professional</a></strong>';
+			}
+			if ($ajax) {
+				if (empty($errors)) {
+					/* translators: the tested Feed URL. */
+					$response['message'] = sprintf(__('The feed %s has been parsed successfully.', 'wpematico'), $typed);
+					$response['message'] .= $resolved_note;
+					$response['message'] .= '<br/> <strong> ' . __('Feed Title:', 'wpematico') . '</strong> ' . $feed->get_title();
+					$response['message'] .= '<br/> <strong> ' . __('Generator:', 'wpematico') . '</strong> ' . self::get_generator_feed($feed);
+					$response['message'] .= '<br/> <strong> ' . __('Character encoding:', 'wpematico') . '</strong> ' . $feed->get_encoding();
+
+					foreach ($feed->get_items() as $item) {
+						$response['message'] .= '<br/><hr/> <strong> ' . __('Last Item Title:', 'wpematico') . '</strong> ' . $item->get_title();
+						$description = $item->get_content();
+						$description = strip_tags($description);
+						if (strlen($description) > 53) {
+							$description = mb_substr($description, 0, 50);
+							$description .= '...';
+						}
+						$response['message'] .= '<br/> <strong> ' . __('Description:', 'wpematico') . '</strong> ' . $description;
+						break;
+					}
+
+					$response['success'] = true;
+				} else {
+					/* translators: %1$s the tested Feed URL. %2$s SimplePie error message. */
+					$response['message'] = sprintf(esc_html__('The feed %1$s cannot be parsed. SimplePie said: %2$s', 'wpematico'), esc_url($typed), wp_kses_post($errors) ) . $resolved_note . '<br />' . $professional_notice;
+					$response['success'] = false;
+				}
+				wp_send_json($response);  //echo json & die
+			} else {
+				if (empty($errors)) {
+					/* translators: the tested Feed URL. */
+					printf(esc_html__('The feed %s has been parsed successfully.', 'wpematico'),esc_url($typed));				
+				} else {
+					/* translators: %1$s the tested Feed URL. %2$s SimplePie error message. */
+					printf( esc_html__('The feed %1$s cannot be parsed. SimplePie said: %2$s', 'wpematico'), esc_url($typed), wp_kses_post($errors) ) . '<br />' . $professional_notice;
+				}
+				return;
+			}
+		}
+
+		public static function get_generator_feed($feed) {
+			$generator_text = __('Undetected', 'wpematico');
+			if ($generator_tag	= $feed->get_channel_tags('', 'generator')) {
+				$generator_text = $generator_tag[0]['data'];
+			} else if ($generator_tag = $feed->get_channel_tags(SIMPLEPIE_NAMESPACE_ATOM_10, 'generator')) {
+				$generator_text = $generator_tag[0]['data'];
+			} else if ($generator_tag = $feed->get_channel_tags(SIMPLEPIE_NAMESPACE_ATOM_03, 'generator')) {
+				$generator_text = $generator_tag[0]['data'];
+			} else if ($generator_tag = $feed->get_channel_tags(SIMPLEPIE_NAMESPACE_RDF, 'generator')) {
+				$generator_text = $generator_tag[0]['data'];
+			} else if ($generator_tag = $feed->get_channel_tags(SIMPLEPIE_NAMESPACE_RSS_20, 'generator')) {
+				$generator_text = $generator_tag[0]['data'];
+			}
+			return $generator_text;
+		}
+
+		public static function get_slug_from_permalink($permalink) {
+			$slug	   = '';
+			$permalink = trim(parse_url($permalink, PHP_URL_PATH), '/');
+			$pieces	   = explode('/', $permalink);
+			while (empty($slug) && count($pieces) > 0) {
+				$slug = array_pop($pieces);
+			}
+			if (empty($slug)) {
+				$slug = str_replace('/', '-', $permalink);
+			}
+			return $slug;
+		}
+
+		################### ARRAYS FUNCS
+		/*		 * filtering an array   */
+
+		public static function filter_by_value($array, $index, $value) {
+			$newarray = array();
+			if (is_array($array) && count($array) > 0) {
+				foreach (array_keys($array) as $key) {
+					$temp[$key] = $array[$key][$index];
+					if ($temp[$key] != $value) {
+						$newarray[$key] = $array[$key];
+					}
+				}
+			}
+			return $newarray;
+		}
+
+		//Example: array_sort($my_array,'!group','surname');
+		//Output: sort the array DESCENDING by group and then ASCENDING by surname. Notice the use of ! to reverse the sort order. 
+		public static function array_sort_func($a, $b = NULL) {
+			static $keys;
+			if ($b === NULL)
+				return $keys = $a;
+			foreach ($keys as $k) {
+				if (@$k[0] == '!') {
+					$k = substr($k, 1);
+					if (@$a[$k] !== @$b[$k]) {
+						return strcmp(@$b[$k], @$a[$k]);
+					}
+				} else if (@$a[$k] !== @$b[$k]) {
+					return strcmp(@$a[$k], @$b[$k]);
+				}
+			}
+			return 0;
+		}
+
+		public static function array_sort(&$array) {
+			if (!$array)
+				return false;
+			$keys = func_get_args();
+			array_shift($keys);
+			self::array_sort_func($keys);
+			usort($array, array(__CLASS__, "array_sort_func"));
+		}
+
+		################### END ARRAYS FUNCS
+
+// ********************************** CRON FUNCTIONS
+		public static function cron_string($array_post) {
+			if ($array_post['cronminutes'][0] == '*' or empty($array_post['cronminutes'])) {
+				if (!empty($array_post['cronminutes'][1])) {
+					$array_post['cronminutes'] = array('*/' . $array_post['cronminutes'][1]);
+				} else {
+					$array_post['cronminutes'] = array('*');
+				}
+			}
+			if ($array_post['cronhours'][0] == '*' or empty($array_post['cronhours'])) {
+				if (!empty($array_post['cronhours'][1]))
+					$array_post['cronhours'] = array('*/' . $array_post['cronhours'][1]);
+				else
+					$array_post['cronhours'] = array('*');
+			}
+			if ($array_post['cronmday'][0] == '*' or empty($array_post['cronmday'])) {
+				if (!empty($array_post['cronmday'][1]))
+					$array_post['cronmday'] = array('*/' . $array_post['cronmday'][1]);
+				else
+					$array_post['cronmday'] = array('*');
+			}
+			if ($array_post['cronmon'][0] == '*' or empty($array_post['cronmon'])) {
+				if (!empty($array_post['cronmon'][1]))
+					$array_post['cronmon'] = array('*/' . $array_post['cronmon'][1]);
+				else
+					$array_post['cronmon'] = array('*');
+			}
+			if ($array_post['cronwday'][0] == '*' or empty($array_post['cronwday'])) {
+				if (!empty($array_post['cronwday'][1]))
+					$array_post['cronwday'] = array('*/' . $array_post['cronwday'][1]);
+				else
+					$array_post['cronwday'] = array('*');
+			}
+			return implode(",", $array_post['cronminutes']) . ' ' . implode(",", $array_post['cronhours']) . ' ' . implode(",", $array_post['cronmday']) . ' ' . implode(",", $array_post['cronmon']) . ' ' . implode(",", $array_post['cronwday']);
+		}
+
+		//******************************************************************************
+		//Calcs next run for a cron string as timestamp
+		public static function time_cron_next($cronstring) {
+			//Cronstring zerlegen
+			list($cronstr['minutes'], $cronstr['hours'], $cronstr['mday'], $cronstr['mon'], $cronstr['wday']) = explode(' ', $cronstring, 5);
+
+			//make arrys form string
+			foreach ($cronstr as $key => $value) {
+				if (strstr($value, ','))
+					$cronarray[$key] = explode(',', $value);
+				else
+					$cronarray[$key] = array(0 => $value);
+			}
+			//make arrys complete with ranges and steps
+			foreach ($cronarray as $cronarraykey => $cronarrayvalue) {
+				$cron[$cronarraykey] = array();
+				foreach ($cronarrayvalue as $key => $value) {
+					//steps
+					$step  = 1;
+					if (strstr($value, '/'))
+						list($value, $step) = explode('/', $value, 2);
+					//replase weekeday 7 with 0 for sundays
+					if ($cronarraykey == 'wday')
+						$value = str_replace('7', '0', $value);
+					//ranges
+					if (strstr($value, '-')) {
+						list($first, $last) = explode('-', $value, 2);
+						if (!is_numeric($first) or !is_numeric($last) or $last > 60 or $first > 60) //check
+							return false;
+						if ($cronarraykey == 'minutes' and $step < 5)
+							$step = 5; //set step in num to 5 min.
+
+						$range	 = array();
+						for ($i = $first; $i <= $last; $i = $i + $step)
+							$range[] = $i;
+
+						$cron[$cronarraykey] = array_merge($cron[$cronarraykey], $range);
+					} elseif ($value == '*') {
+						$range = array();
+						if ($cronarraykey == 'minutes') {
+							if ($step < 5)
+								$step	 = 5; //set step in mum to 5 min.
+							for ($i = 0; $i <= 59; $i = $i + $step)
+								$range[] = $i;
+						}
+						if ($cronarraykey == 'hours') {
+							for ($i = 0; $i <= 23; $i = $i + $step)
+								$range[] = $i;
+						}
+						if ($cronarraykey == 'mday') {
+							for ($i = $step; $i <= 31; $i = $i + $step)
+								$range[] = $i;
+						}
+						if ($cronarraykey == 'mon') {
+							for ($i = $step; $i <= 12; $i = $i + $step)
+								$range[] = $i;
+						}
+						if ($cronarraykey == 'wday') {
+							for ($i = 0; $i <= 6; $i = $i + $step)
+								$range[] = $i;
+						}
+						$cron[$cronarraykey] = array_merge($cron[$cronarraykey], $range);
+					} else {
+						//Month names
+						if (strtolower($value) == 'jan')
+							$value				 = 1;
+						if (strtolower($value) == 'feb')
+							$value				 = 2;
+						if (strtolower($value) == 'mar')
+							$value				 = 3;
+						if (strtolower($value) == 'apr')
+							$value				 = 4;
+						if (strtolower($value) == 'may')
+							$value				 = 5;
+						if (strtolower($value) == 'jun')
+							$value				 = 6;
+						if (strtolower($value) == 'jul')
+							$value				 = 7;
+						if (strtolower($value) == 'aug')
+							$value				 = 8;
+						if (strtolower($value) == 'sep')
+							$value				 = 9;
+						if (strtolower($value) == 'oct')
+							$value				 = 10;
+						if (strtolower($value) == 'nov')
+							$value				 = 11;
+						if (strtolower($value) == 'dec')
+							$value				 = 12;
+						//Week Day names
+						if (strtolower($value) == 'sun')
+							$value				 = 0;
+						if (strtolower($value) == 'mon')
+							$value				 = 1;
+						if (strtolower($value) == 'tue')
+							$value				 = 2;
+						if (strtolower($value) == 'wed')
+							$value				 = 3;
+						if (strtolower($value) == 'thu')
+							$value				 = 4;
+						if (strtolower($value) == 'fri')
+							$value				 = 5;
+						if (strtolower($value) == 'sat')
+							$value				 = 6;
+						if (!is_numeric($value) or $value > 60) //check
+							return false;
+						$cron[$cronarraykey] = array_merge($cron[$cronarraykey], array(0 => $value));
+					}
+				}
+			}
+
+			//calc next timestamp — all calculations in real UTC to avoid server-timezone vs WP-timezone drift.
+			$currenttime = time();
+			foreach (array(gmdate('Y'), gmdate('Y') + 1) as $year) {
+				foreach ($cron['mon'] as $mon) {
+					foreach ($cron['mday'] as $mday) {
+						foreach ($cron['hours'] as $hours) {
+							foreach ($cron['minutes'] as $minutes) {
+								$timestamp = gmmktime($hours, $minutes, 0, $mon, $mday, $year);
+								if (in_array(gmdate('w', $timestamp), $cron['wday']) and $timestamp > $currenttime) {
+									return $timestamp;
+								}
+							}
+						}
+					}
+				}
+			}
+			return false;
+		}
+
+		/** Cached result of get_outdated_addons(). */
+		const OUTDATED_ADDONS_TRANSIENT = 'wpematico_outdated_addons';
+
+		/**
+		 * Active addons older than what WPeMatico::ADDONS_REQUIRED demands.
+		 *
+		 * Walks the active plugins whose path contains "wpematico" instead of calling
+		 * get_plugins(), which would scan and parse every plugin installed on the site.
+		 * Cached because this runs on the frontend and in cron too, and invalidated from
+		 * Main_WPeMatico::hooks() whenever a plugin is activated, deactivated or updated.
+		 *
+		 * @return array plugin file => array('name', 'version', 'required')
+		 */
+		public static function get_outdated_addons() {
+			$required = WPeMatico::ADDONS_REQUIRED;
+			if (empty($required))
+				return array();
+
+			$cached = get_transient(self::OUTDATED_ADDONS_TRANSIENT);
+			if (is_array($cached))
+				return $cached;
+
+			if (!function_exists('get_plugin_data'))
+				require_once(ABSPATH . 'wp-admin/includes/plugin.php');
+
+			$outdated = array();
+			foreach ((array) get_option('active_plugins', array()) as $plugin_file) {
+				if (stripos($plugin_file, 'wpematico') === false)
+					continue;
+
+				$plugin_path = trailingslashit(WP_PLUGIN_DIR) . $plugin_file;
+				if (!is_readable($plugin_path))
+					continue;
+
+				// $markup and $translate off: this only compares versions, and translating
+				// would load every addon's textdomain just to build a header array.
+				$data = get_plugin_data($plugin_path, false, false);
+				$name = isset($data['Name']) ? $data['Name'] : '';
+
+				if (!isset($required[$name]) || empty($data['Version']))
+					continue;
+
+				if (version_compare($data['Version'], $required[$name], '<')) {
+					$outdated[$plugin_file] = array(
+						'name'     => $name,
+						'version'  => $data['Version'],
+						'required' => $required[$name],
+					);
+				}
+			}
+
+			set_transient(self::OUTDATED_ADDONS_TRANSIENT, $outdated, HOUR_IN_SECONDS);
+			return $outdated;
+		}
+
+		/** Drops the cache above. Hooked to the plugin lifecycle. */
+		public static function flush_outdated_addons_cache() {
+			delete_transient(self::OUTDATED_ADDONS_TRANSIENT);
+		}
+
+		/**
+		 * Turns off the features of every addon too old for this core, without
+		 * deactivating it.
+		 *
+		 * A notice is not enough — an outdated addon fatals mid-fetch, where nobody is
+		 * watching — and deactivating it would cost the client the license screen and
+		 * the one-click update they need to fix it.
+		 *
+		 * So the plugin stays active, visible and updatable, and what gets removed is
+		 * every callback it registered on WPeMatico's own hooks. Its licensing and
+		 * update code, which hooks WordPress and not us, is untouched.
+		 */
+		public static function disable_outdated_addons_features() {
+			$outdated = self::get_outdated_addons();
+			if (empty($outdated))
+				return;
+
+			$dirs = array();
+			foreach ($outdated as $plugin_file => $info) {
+				$dir = trailingslashit(WP_PLUGIN_DIR) . trailingslashit(dirname($plugin_file));
+				$dirs[] = $dir;
+				// Reflection reports the path with symlinks resolved, which is not the
+				// path the plugin was included from when the addon folder is a symlink.
+				$real = realpath($dir);
+				if ($real && trailingslashit($real) !== $dir)
+					$dirs[] = trailingslashit($real);
+			}
+
+			self::strip_callbacks_from_dirs($dirs);
+		}
+
+		/**
+		 * Removes every callback defined inside $dirs from WPeMatico's own hooks.
+		 *
+		 * Scoped to our hooks on purpose: stripping WordPress hooks would take the EDD
+		 * updater and the license screen down with the features.
+		 */
+		private static function strip_callbacks_from_dirs(array $dirs) {
+			global $wp_filter;
+			if (empty($wp_filter) || empty($dirs))
+				return;
+
+			// Everything documented in the hooks API is wpematico_*, Wpematico_*, wpem_*
+			// or get_wpematico_*; pro_check_campaigndata is the one legacy name outside
+			// that pattern.
+			$extra = array('pro_check_campaigndata');
+
+			// Licensing and updates must survive, or the client loses the one screen
+			// that lets them fix this. Every addon registers its license and its EDD
+			// updater through wpematico_plugins_updater_args, and the other three keep
+			// it listed on the Add-Ons page. Deliberately not filterable: this is the
+			// line between "features off" and "cannot be repaired".
+			$keep = array(
+				'wpematico_plugins_updater_args',
+				'wpematico_get_old_addons',
+				'etruel_wpematico_addons_array',
+				'etruel_wpematico_addons_transient_length',
+			);
+
+			foreach ($wp_filter as $hook_name => $hook) {
+				if (in_array($hook_name, $keep, true))
+					continue;
+				if (stripos($hook_name, 'wpem') === false && !in_array($hook_name, $extra, true))
+					continue;
+				if (!isset($hook->callbacks) || !is_array($hook->callbacks))
+					continue;
+
+				foreach ($hook->callbacks as $priority => $callbacks) {
+					foreach ($callbacks as $registered) {
+						$file = self::get_callback_file($registered['function']);
+						if ($file === '')
+							continue;
+
+						foreach ($dirs as $dir) {
+							if (strpos($file, $dir) === 0) {
+								remove_filter($hook_name, $registered['function'], $priority);
+								break;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		/**
+		 * Absolute path of the file a hook callback was defined in.
+		 *
+		 * @return string Empty when it cannot be resolved (internal function, bad callable).
+		 */
+		private static function get_callback_file($callback) {
+			try {
+				if ($callback instanceof Closure) {
+					$ref = new ReflectionFunction($callback);
+				} elseif (is_array($callback) && count($callback) === 2) {
+					$ref = new ReflectionMethod(is_object($callback[0]) ? get_class($callback[0]) : $callback[0], $callback[1]);
+				} elseif (is_string($callback) && strpos($callback, '::') !== false) {
+					$ref = new ReflectionMethod($callback);
+				} elseif (is_string($callback) && function_exists($callback)) {
+					$ref = new ReflectionFunction($callback);
+				} elseif (is_object($callback) && method_exists($callback, '__invoke')) {
+					$ref = new ReflectionMethod($callback, '__invoke');
+				} else {
+					return '';
+				}
+			} catch (Throwable $e) {
+				return '';
+			}
+
+			$file = $ref->getFileName();
+			return ($file === false) ? '' : $file;
+		}
+
+		/**
+		 * Explains which addons are running with their features off, and how to fix it.
+		 *
+		 * @return string HTML message, empty when every addon meets the table.
+		 */
+		public static function check_addons_versions() {
+			$outdated = self::get_outdated_addons();
+			if (empty($outdated))
+				return '';
+
+			$message = '';
+			foreach ($outdated as $info) {
+				/* translators: 1: addon name, 2: installed addon version, 3: WPeMatico version, 4: required addon version. */
+				$message .= sprintf(
+						__('- %1$s %2$s is not compatible with WPeMatico %3$s, so its features have been turned off to keep your campaigns running. Update it to %4$s or higher to enable them again.', 'wpematico'),
+						$info['name'],
+						$info['version'],
+						WPEMATICO_VERSION,
+						$info['required']
+					)
+					. ' <a href="' . esc_url(admin_url('plugins.php?page=wpemaddons')) . '"> ' . __('Go to update Now', 'wpematico') . '</a><br />';
+			}
+			return $message;
+		}
+
+		/**
+		 * Returns current plugin version.
+		 *
+		 * @return string Plugin version
+		 */
+		public static function plugin_get_version($file = '') {
+			if (empty($file))
+				$file					= __FILE__;
+			if (!function_exists('get_plugins'))
+				require_once(ABSPATH . basename(admin_url()) . '/includes/plugin.php');
+			$plugin_folder			= get_plugins('/' . plugin_basename(dirname($file)));
+			$plugin_file			= basename(($file));
+			$plugin_info			= array();
+			$plugin_info['Name']	= $plugin_folder[$plugin_file]['Name'];
+			$plugin_info['Version'] = $plugin_folder[$plugin_file]['Version'];
+			return $plugin_info;
+		}
+
+		public static function throttling_inserted_post($post_id = 0, $campaign = array()) {
+			global $cfg;
+			sleep($cfg['throttle']);
+		}
+
+		/**
+		 * @since 2.4.2
+		 * Removed all related to cURL in favor of wp_remote... functions 
+		 * @param string $url  URL to get content from
+		 * @param bool|array $arg if not bool used as $args: array('key'=>'value'), arguments to change defaults of wp_remote_request
+		 * 
+		 * @since 1.2.4
+		 * @param string $url  URL to get content from
+		 * @param bool $curl if exist, force to use CURL. Default true. DEPRECATED
+		 * @param bool $curl if not bool used as $args: array('key'=>'value')
+		 * 
+		 * @return mixed String Content or False if error on get remote file content.
+		 */
+		public static function wpematico_get_contents($url, $arg = true) {
+			/**
+			 * Filter to allow change the default parameters for wp_remote_request below.
+			 */
+			$aux = apply_filters('wpematico_get_contents_request_params', $arg, $url);
+
+			/**
+			 * Filter to allow change the $data or any other action before make the URL request
+			 */
+			$data = apply_filters('wpematico_before_get_content', false, $aux, $url);
+
+			$defaults = array(
+				'timeout' => 15,
+			);
+			$args	  = wp_parse_args($aux, $defaults);
+			if (!$data) { // if stil getting error on get file content try WP func, this may give timeouts 
+				$response = wp_remote_request($url, $args);
+				if (!is_wp_error($response)) {
+					if (isset($response['response']['code']) && 200 === $response['response']['code']) {
+						$data = wp_remote_retrieve_body($response);
+					} else {
+						trigger_error(esc_html__('Error with wp_remote_request:', 'wpematico') . print_r($response, 1), E_USER_NOTICE); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					}
+				} else {
+					trigger_error(esc_html__('Error with wp_remote_get:', 'wpematico') . $response->get_error_message(), E_USER_NOTICE); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				}
+			}
+
+			return $data;
+		}
+
+		public static function get_curl_version() {
+
+			if (!function_exists('curl_version')) {
+				return 0;
+			}
+			if (is_array($curl = curl_version())) {
+				$curl = $curl['version'];
+			} elseif (substr($curl, 0, 5) === 'curl/') {
+				$curl = substr($curl, 5, strcspn($curl, "\x09\x0A\x0B\x0C\x0D", 5));
+			} elseif (substr($curl, 0, 8) === 'libcurl/') {
+				$curl = substr($curl, 8, strcspn($curl, "\x09\x0A\x0B\x0C\x0D", 8));
+			} else {
+				$curl = 0;
+			}
+
+			return $curl;
+		}
+
+		/**
+		 * Sections of a tab: a tab declares them by defining
+		 * wpematico_get_{tab}_sections(). The name is the whole contract.
+		 *
+		 * @since 2.9
+		 * @param string $tab
+		 * @return array
+		 */
+		public static function tab_sections($tab) {
+			$get_sections = 'wpematico_get_' . $tab . '_sections';
+			return function_exists($get_sections) ? (array) $get_sections() : array();
+		}
+
+		/**
+		 * Send an unknown tab or section of a tabbed screen back to the default.
+		 *
+		 * Call from load-{$page_hook}: late enough that every tab and section an addon
+		 * registers is declared, early enough that nothing has been printed.
+		 *
+		 * @since 2.9
+		 * @param string $page        The screen's page slug.
+		 * @param array  $tabs        Tabs the screen actually has.
+		 * @param string $default_tab The tab an absent one falls back to.
+		 * @return void
+		 */
+		public static function validate_screen_request($page, $tabs, $default_tab) {
+			if (!current_user_can('manage_options'))
+				return;
+
+			$tab = isset($_GET['tab']) ? sanitize_text_field(wp_unslash($_GET['tab'])) : '';
+
+			// An unknown tab leaves nothing to resolve the section against.
+			if ('' !== $tab && !isset($tabs[$tab])) {
+				wp_safe_redirect(add_query_arg(array('page' => $page), admin_url('admin.php')));
+				exit;
+			}
+
+			$section  = isset($_GET['section']) ? sanitize_text_field(wp_unslash($_GET['section'])) : '';
+			$sections = self::tab_sections('' === $tab ? $default_tab : $tab);
+
+			if ('' !== $section && !isset($sections[$section])) {
+				// The tab with no section in the URL is its default section.
+				$target = array('page' => $page);
+				if ('' !== $tab)
+					$target['tab'] = $tab;
+				wp_safe_redirect(add_query_arg($target, admin_url('admin.php')));
+				exit;
+			}
+		}
+
+		/**
+		 * The section being rendered. An unknown one falls back to the tab's first, so
+		 * the screen still renders when validate_screen_request() has not run.
+		 *
+		 * @since 2.9
+		 * @param string $tab
+		 * @param array|null $sections
+		 * @return string
+		 */
+		public static function current_screen_section($tab, $sections = null) {
+			if (null === $sections)
+				$sections = self::tab_sections($tab);
+			if (empty($sections))
+				return '';
+			$section = isset($_GET['section']) ? sanitize_text_field(wp_unslash($_GET['section'])) : '';
+			return isset($sections[$section]) ? $section : key($sections);
+		}
+
+		public static function get_danger_options() {
+			$danger = get_option('WPeMatico_danger');
+
+			if (is_array($danger)) {
+				$danger['wpemdeleoptions']		   = (isset($danger['wpemdeleoptions']) && !empty($danger['wpemdeleoptions'])) ? $danger['wpemdeleoptions'] : false;
+				$danger['wpemdelecampaigns']	   = (isset($danger['wpemdelecampaigns']) && !empty($danger['wpemdelecampaigns'])) ? $danger['wpemdelecampaigns'] : false;
+				$danger['wpe_debug_logs_campaign'] = (isset($danger['wpe_debug_logs_campaign']) && !empty($danger['wpe_debug_logs_campaign'])) ? $danger['wpe_debug_logs_campaign'] : false;
+				$danger['wpe_allow_internal_feeds'] = (isset($danger['wpe_allow_internal_feeds']) && !empty($danger['wpe_allow_internal_feeds'])) ? $danger['wpe_allow_internal_feeds'] : false;
+			} else {
+				$danger							   = [];
+				$danger['wpemdeleoptions']		   = false;
+				$danger['wpemdelecampaigns']	   = false;
+				$danger['wpe_debug_logs_campaign'] = false;
+				$danger['wpe_allow_internal_feeds'] = false;
+			}
+
+			return $danger;
+		}
+
+		/**
+		 * Returns the WPeMatico settings handled by this site, keyed by option name.
+		 * Shared by the settings exporter and importer.
+		 *
+		 * @return array
+		 */
+		public static function get_exportable_settings() {
+			$export_settings						= array();
+			$cfg									= get_option(WPeMatico::OPTION_KEY);
+			$cfg									= apply_filters('wpematico_check_options', $cfg);
+			$export_settings[WPeMatico::OPTION_KEY] = $cfg;
+
+			return apply_filters('wpematico_export_options', $export_settings);
+		}
+
+		public static function wpematico_export_settings($status = '') {
+			// Site settings are administrator territory.
+			if (!current_user_can('manage_options')) {
+				wp_die(esc_html__('You are not allowed to do this.', 'wpematico'), esc_html__('Permission denied', 'wpematico'), array('response' => 403));
+			}
+			$nonce = (isset($_REQUEST['_wpnonce']) && !empty($_REQUEST['_wpnonce'])) ? sanitize_text_field($_REQUEST['_wpnonce']) : '';
+			if (!wp_verify_nonce($nonce, 'wpematico-tools'))
+				wp_die('Are you sure?');
+
+			$export_settings = self::get_exportable_settings();
+
+			$settings_data_json = json_encode($export_settings);
+			$settings_data_json = base64_encode($settings_data_json);
+
+			// Copy the post and insert it
+			if (isset($settings_data_json) && $settings_data_json != null) {
+				header('Content-type: text/plain');
+				header('Content-Disposition: attachment; filename="wpematico-settings.txt"');
+				print $settings_data_json; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				die();
+			} else {
+				wp_die(esc_attr(__('Exporting failed', 'wpematico')));
+			}
+		}
+
+		public static function wpematico_import_settings() {
+			// Site settings are administrator territory.
+			if (!current_user_can('manage_options')) {
+				wp_die(esc_html__('You are not allowed to do this.', 'wpematico'), esc_html__('Permission denied', 'wpematico'), array('response' => 403));
+			}
+			$nonce = (isset($_REQUEST['_wpnonce']) && !empty($_REQUEST['_wpnonce'])) ? sanitize_text_field($_REQUEST['_wpnonce']) : '';
+			if (!wp_verify_nonce($nonce, 'wpematico-tools'))
+				wp_die('Are you sure?');
+
+			$redirect = admin_url('admin.php?page=wpematico_tools&tab=tools');
+			$upload	  = isset($_FILES['txtsettings']) ? $_FILES['txtsettings'] : array();
+			$filetype = (!empty($upload['name'])) ? wp_check_filetype($upload['name'], array('txt' => 'text/plain')) : array('ext' => false);
+
+			if (empty($upload['tmp_name']) || !empty($upload['error']) || 'txt' !== $filetype['ext'] || !is_uploaded_file($upload['tmp_name'])) {
+				$message = __("Can't upload! Just .txt files allowed!", 'wpematico');
+				WPeMatico::add_wp_notice(array('text' => $message, 'below-h2' => false, 'error' => true));
+				wp_redirect($redirect);
+				return;
+			}
+
+			$settings = file_get_contents($upload['tmp_name']);
+			$settings = base64_decode($settings, true);
+			$settings = (false === $settings) ? null : json_decode($settings, true);
+
+			if (!is_array($settings) || empty($settings)) {
+				$message = __("Can't import! The file is not a valid WPeMatico settings file.", 'wpematico');
+				WPeMatico::add_wp_notice(array('text' => $message, 'below-h2' => false, 'error' => true));
+				wp_redirect($redirect);
+				return;
+			}
+
+			if (isset($settings[WPeMatico::OPTION_KEY])) {
+				$settings[WPeMatico::OPTION_KEY] = apply_filters('wpematico_check_options', $settings[WPeMatico::OPTION_KEY]);
+			}
+
+			// Import only the option keys this site itself exports, so a settings file can
+			// never write anything outside of WPeMatico and its active addons.
+			$importable = array_keys(self::get_exportable_settings());
+			$importable = apply_filters('wpematico_importable_option_keys', $importable, $settings);
+			$imported	= 0;
+
+			foreach ($settings as $settingKey => $value) {
+				if (!in_array($settingKey, $importable, true)) {
+					continue;
+				}
+				update_option($settingKey, $value);
+				$imported++;
+			}
+
+			if (!$imported) {
+				$message = __("Can't import! The file has no settings belonging to WPeMatico or its active addons.", 'wpematico');
+				WPeMatico::add_wp_notice(array('text' => $message, 'below-h2' => false, 'error' => true));
+				wp_redirect($redirect);
+				return;
+			}
+
+			WPeMatico::add_wp_notice(array('text' => __('Settings Imported.', 'wpematico'), 'below-h2' => false));
+			wp_redirect($redirect);
+		}
+
+		public static function wpematico_get_mime_type_by_extension($extension) {
+			$mime_types_img = array(
+				'ai'	=> 'application/postscript, application/adobe.illustrator, application/illustrator',
+				'bmp'	=> 'image/bmp',
+				'gif'	=> 'image/gif',
+				'ico'	=> 'image/x-icon',
+				'jpeg'	=> 'image/jpeg',
+				'jpg'	=> 'image/jpeg',
+				'png'	=> 'image/png',
+				'ps'	=> 'application/postscript',
+				'psd'	=> 'image/vnd.adobe.photoshop',
+				'svg'	=> 'image/svg+xml',
+				'tif'	=> 'image/tiff',
+				'tiff'	=> 'image/tiff',
+				'webp'	=> 'image/webp',
+				'apng'	=> 'image/apng',
+				'avif'	=> 'image/avif',
+				'jfif'	=> 'image/jpeg',
+				'pjpeg' => 'image/jpeg',
+				'pjp'	=> 'image/jpeg',
+			);
+
+			// Return the MIME type if it exists, otherwise, return a default value
+			return isset($mime_types_img[$extension]) ? $mime_types_img[$extension] : array();
+		}
+
+		public static function wpematico_add_custom_mimetypes($mimetypes = array()) {
+			global $cfg;
+			$allowed	  = (isset($cfg['images_allowed_ext']) && !empty($cfg['images_allowed_ext'])) ? $cfg['images_allowed_ext'] : 'jpg,gif,png,tif,bmp,jpeg';
+			$allowed	  = apply_filters('wpematico_allowext', $allowed);
+			$allowedArray = explode(',', $allowed);
+
+			$allowedWP = explode(',', self::get_images_allowed_mimes());
+
+			$arrayDiff = array_diff($allowedArray, $allowedWP);
+
+			foreach ($arrayDiff as $diffExtension) {
+				$customMimeType = self::wpematico_get_mime_type_by_extension($diffExtension);
+
+				if (!empty($customMimeType)) {
+					$mimetypes[$diffExtension] = $customMimeType;
+				}
+			}
+			add_filter('upload_mimes', function ($mimes) use ($mimetypes) {
+				$mimes = array_merge($mimes, $mimetypes);
+				return $mimes;
+			});
+		}
+
+		/**
+		 * Display empty trash button on list tables
+		 * @return void
+		 */
+		public function add_button() {
+			global $typenow, $post_type, $pagenow, $wp_post_types;
+			// Don't show on comments list table
+			if ('edit-comments.php' == $pagenow)
+				return;
+			// Don't show on trash page
+			if (isset($_REQUEST['post_status']) && $_REQUEST['post_status'] == 'trash')
+				return;
+			// Don't show if current user is not allowed to edit other's posts for this post type
+			if (empty($typenow))
+				$typenow = $post_type;
+			// Don't show if current user is not allowed to edit other's posts for this post type
+			if (!current_user_can(get_post_type_object($typenow)->cap->edit_others_posts))
+				return;
+			// Don't show if there are no items in the trash for this post type
+			if (0 == intval(wp_count_posts($typenow, 'readable')->trash))
+				return;
+
+			$display	= false;
+			$args		= array();
+			$output		= 'names'; // names or objects
+			$post_types = get_post_types($args, $output);
+			foreach ($post_types as $post_t) {
+				if ($post_t != $typenow)
+					continue;
+				if (isset($this->options['cpt_trashbutton'][$post_t]) && $this->options['cpt_trashbutton'][$post_t]) {
+					$display = true;
+				}
+			}
+
+			if (!$display)
+				return;
+			?><div class="alignright empty_trash"><?php
+				submit_button(__('Empty Trash', 'wpematico'), 'apply', 'delete_all', false, array('onClick' => "jQuery('.post_status_page').val('trash');"));
+				?></div><?php
+		}
+	}
+
+	// Class WPeMatico_functions
+}  // if Class exist
+
+/* * ***** FUNCTIONS  ********** */
+add_action('admin_init', 'wpematico_process_actions');
+
+function wpematico_process_actions() {
+	if (isset($_POST['wpematico-action'])) {
+		wpematico_dispatch_action(sanitize_text_field($_POST['wpematico-action']), $_POST);
+	}
+
+	if (isset($_GET['wpematico-action'])) {
+		wpematico_dispatch_action(sanitize_text_field($_GET['wpematico-action']), $_GET);
+	}
+}
+
+/**
+ * Capability required to run a given wpematico-action.
+ * Actions are administrative by default. Addons can declare their own
+ * requirement through the wpematico_action_capability filter.
+ *
+ * @param string $action Action name, without the wpematico_ prefix.
+ * @return string Capability name.
+ */
+function wpematico_get_action_capability($action) {
+	$capabilities = array(
+		// Importing a campaign only needs the rights to create campaigns.
+		'import_campaign' => 'edit_posts',
+	);
+
+	$capability = isset($capabilities[$action]) ? $capabilities[$action] : 'manage_options';
+
+	return apply_filters('wpematico_action_capability', $capability, $action);
+}
+
+/**
+ * Runs a wpematico-action for the current user.
+ *
+ * @param string $action  Action name, without the wpematico_ prefix.
+ * @param array  $request Request data handed over to the action.
+ * @return void
+ */
+function wpematico_dispatch_action($action, $request) {
+	if (empty($action) || !preg_match('/^[A-Za-z0-9_\-]+$/', $action)) {
+		return;
+	}
+
+	if (!is_user_logged_in() || !current_user_can(wpematico_get_action_capability($action))) {
+		wp_die(esc_html__('You are not allowed to do this.', 'wpematico'), esc_html__('Permission denied', 'wpematico'), array('response' => 403));
+	}
+
+	do_action('wpematico_' . $action, $request);
+}
+
+/**
+ * Whether a campaign may store the content of its items exactly as the feed sends it.
+ *
+ * Imported content keeps its embeds, scripts and markup only for campaigns whose last editor
+ * was allowed to post unfiltered HTML; for any other campaign the content goes through the
+ * same filter WordPress applies to that user's own posts. Campaigns saved before this rule
+ * existed answer true, so nothing they import changes.
+ *
+ * @since 2.8.26
+ * @param array $campaign Campaign data.
+ * @return boolean
+ */
+function wpematico_campaign_allows_unfiltered_html($campaign) {
+	$allowed = !isset($campaign['campaign_unfiltered_html']) || (bool) $campaign['campaign_unfiltered_html'];
+
+	/**
+	 * Filters whether this campaign stores the content of its items unfiltered.
+	 *
+	 * @since 2.8.26
+	 * @param boolean $allowed
+	 * @param array   $campaign
+	 */
+	return (bool) apply_filters('wpematico_campaign_allows_unfiltered_html', $allowed, $campaign);
+}
+
+/**
+ * Whether the item being processed is going to be shown instead of published.
+ *
+ * A preview runs the whole per-item pipeline and then blocks the insert, so an add-on
+ * whose work is expensive or not repeatable -- a paid API, a rewrite -- asks this first,
+ * or the preview shows something the publish would not produce.
+ *
+ * Each preview screen answers for itself through the filter.
+ *
+ * @since 2.9
+ * @return boolean
+ */
+function wpematico_is_previewing_item() {
+	/**
+	 * Filters whether this run is a preview.
+	 *
+	 * @since 2.9
+	 * @param boolean $previewing
+	 */
+	return (bool) apply_filters('wpematico_previewing_item', false);
+}
+
+/**
+ * Applies the editing user's publishing rights to the post status and the post author a
+ * campaign assigns to the posts it imports.
+ *
+ * A campaign run happens on WP-Cron, where nobody is logged in, so the two fields are
+ * settled here instead: while a campaign is being saved and the user making the choice is
+ * known. A user who cannot publish the campaign's post type gets `pending`, and a user who
+ * cannot edit other people's posts is recorded as the author. Both changes are reported
+ * back as an admin notice, so the value shown next time is never a surprise.
+ *
+ * Call it from the places that save a campaign, never from `wpematico_check_campaigndata`:
+ * that filter also runs on every read, including during cron.
+ *
+ * @since 2.8.26
+ * @param array $campaign Campaign data about to be saved.
+ * @return array The campaign data to store.
+ */
+function wpematico_apply_campaign_editing_rights($campaign) {
+	// The post type is resolved first and in the spelling WordPress registers it under, so
+	// every decision below is taken against the type the imported posts will really have.
+	// A type no plugin is registering right now — one whose plugin is momentarily off — is
+	// judged by the rights over ordinary posts, so the campaign keeps the type it targets
+	// and the user's rights are still the ones that decide.
+	$post_type_name = (!empty($campaign['campaign_customposttype'])) ? sanitize_key($campaign['campaign_customposttype']) : 'post';
+	if (isset($campaign['campaign_customposttype'])) {
+		$campaign['campaign_customposttype'] = $post_type_name;
+	}
+
+	$post_type = get_post_type_object($post_type_name);
+	if (empty($post_type) || empty($post_type->cap)) {
+		$post_type = get_post_type_object('post');
+	}
+	if (empty($post_type) || empty($post_type->cap)) {
+		return $campaign;
+	}
+
+	// Statuses a user without publishing rights may choose.
+	$unpublished = apply_filters('wpematico_unpublished_post_statuses', array('draft', 'pending'), $campaign);
+
+	if (isset($campaign['campaign_posttype'])
+		&& !in_array($campaign['campaign_posttype'], (array) $unpublished, true)
+		&& !current_user_can($post_type->cap->publish_posts)) {
+
+		$campaign['campaign_posttype'] = 'pending';
+		WPeMatico :: add_wp_notice(array(
+			'text'		=> esc_html__('Imported posts will be saved as pending review, because your user cannot publish posts.', 'wpematico'),
+			'below-h2'	=> false,
+		));
+	}
+
+	if (isset($campaign['campaign_author'])
+		&& (int) $campaign['campaign_author'] !== get_current_user_id()
+		&& !current_user_can($post_type->cap->edit_others_posts)) {
+
+		$campaign['campaign_author'] = get_current_user_id();
+		WPeMatico :: add_wp_notice(array(
+			'text'		=> esc_html__('Imported posts will be attributed to you, because your user cannot assign posts to other users.', 'wpematico'),
+			'below-h2'	=> false,
+		));
+	}
+
+	// Content is stored as the feed sends it only for a campaign whose editor may post
+	// unfiltered HTML; read back by wpematico_campaign_allows_unfiltered_html().
+	$could_store_unfiltered	= (!isset($campaign['campaign_unfiltered_html']) || (bool) $campaign['campaign_unfiltered_html']);
+	$may_store_unfiltered	= current_user_can('unfiltered_html');
+	$campaign['campaign_unfiltered_html'] = $may_store_unfiltered;
+
+	if ($could_store_unfiltered && !$may_store_unfiltered) {
+		WPeMatico :: add_wp_notice(array(
+			'text'		=> esc_html__('Imported content will be filtered the same way WordPress filters your own posts, because your user cannot post unfiltered HTML. Some embeds may not be kept.', 'wpematico'),
+			'below-h2'	=> false,
+		));
+	}
+
+	return $campaign;
+}
+
+/**
+ * Nonce action for a link to a campaign screen, tied to the campaign it was made for.
+ *
+ * Every place that builds such a link calls this, so the action string used to create a
+ * nonce and the one used to check it are always the same.
+ *
+ * @since 2.8.26
+ * @param string $nonce_action Base action name.
+ * @param int    $campaign_id  Campaign the link points at.
+ * @return string
+ */
+function wpematico_campaign_screen_nonce_action($nonce_action, $campaign_id) {
+	return $nonce_action . '_' . (int) $campaign_id;
+}
+
+/**
+ * Resolves the campaign a screen was asked for and authorizes the request.
+ *
+ * Used by the screens that show the data of a single campaign -- its run log and its
+ * preview. Reads the campaign id from the request, requires a nonce created for that
+ * campaign through wpematico_campaign_screen_nonce_action(), and requires edit_post on it.
+ * Ends the request with wp_die() when any of the three does not hold, so a caller that gets
+ * a return value can use it directly.
+ *
+ * @since 2.8.26
+ * @param string $nonce_action Base nonce action; the campaign id is appended to it.
+ * @param array  $id_keys      Request keys holding the campaign id, tried in order.
+ * @param string $nonce_key    Request key holding the nonce.
+ * @return int The campaign id this request is allowed to work with.
+ */
+function wpematico_verify_campaign_screen_request($nonce_action, $id_keys = array('p', 'post_ID'), $nonce_key = '_wpnonce') {
+	$campaign_id = 0;
+	foreach ((array) $id_keys as $id_key) {
+		if (isset($_REQUEST[$id_key])) {
+			$campaign_id = absint($_REQUEST[$id_key]);
+			break;
+		}
+	}
+
+	if (empty($campaign_id) || 'wpematico' !== get_post_type($campaign_id)) {
+		wp_die(esc_html__('The campaign is invalid.', 'wpematico'), esc_html__('Invalid request', 'wpematico'), array('response' => 400));
+	}
+
+	$nonce = isset($_REQUEST[$nonce_key]) ? sanitize_text_field(wp_unslash($_REQUEST[$nonce_key])) : '';
+	if (!wp_verify_nonce($nonce, wpematico_campaign_screen_nonce_action($nonce_action, $campaign_id))) {
+		wp_die(esc_html__('This link is no longer valid. Please reload the campaign and try again.', 'wpematico'), esc_html__('Security check', 'wpematico'), array('response' => 403));
+	}
+
+	if (!current_user_can('edit_post', $campaign_id)) {
+		wp_die(esc_html__('You are not allowed to do this.', 'wpematico'), esc_html__('Permission denied', 'wpematico'), array('response' => 403));
+	}
+
+	return $campaign_id;
+}
+
+/**
+ * The minimum PHP version this plugin requires, read from its own "Requires PHP" header.
+ *
+ * That header is what WordPress itself enforces, so reading it keeps a single source
+ * of truth for the requirement.
+ *
+ * @since 2.9
+ * @return string
+ */
+function wpematico_required_php() {
+	static $required = null;
+
+	if (null === $required) {
+		$data	  = get_file_data(WPEMATICO_ROOTFILE, array('RequiresPHP' => 'Requires PHP'));
+		$required = !empty($data['RequiresPHP']) ? $data['RequiresPHP'] : '7.0';
+	}
+
+	return $required;
+}
+
+/**
+ * Identifies the hosting provider of this site, for the System Status report.
+ *
+ * Each host is matched on a signal it sets about itself: a constant, an environment
+ * variable or a server variable under its control. When none matches, returns a short
+ * description of the server instead, so the line is still useful in a support ticket.
+ *
+ * @since 1.2.4
+ * @since 2.9 Rewritten around per-host signals, and made filterable.
+ * @return string Host name, or a short description of the server when it is not a known one.
+ */
+function wpematico_get_host() {
+	static $host = null;
+
+	if (null !== $host) {
+		return $host;
+	}
+
+	$server = static function ($key) {
+		return isset($_SERVER[$key]) ? (string) $_SERVER[$key] : '';
+	};
+
+	$known = array(
+		'WordPress.com'	   => defined('IS_WPCOM') || defined('IS_ATOMIC'),
+		'WP Engine'		   => defined('WPE_APIKEY') || defined('IS_WPE') || false !== getenv('IS_WPE'),
+		'Pressable'		   => defined('IS_PRESSABLE'),
+		'Pagely'		   => defined('PAGELYBIN'),
+		'Pantheon'		   => defined('PANTHEON_ENVIRONMENT') || false !== getenv('PANTHEON_ENVIRONMENT'),
+		'Kinsta'		   => defined('KINSTA_CACHE_ZONE') || '' !== $server('KINSTA_CACHE_ZONE'),
+		'Flywheel'		   => defined('FLYWHEEL_CONFIG_DIR') || defined('FLYWHEEL_PLUGIN_DIR'),
+		'GoDaddy'		   => defined('GD_SYSTEM_PLUGIN_DIR'),
+		'Cloudways'		   => '' !== $server('cw_allowed_ip'),
+		'SiteGround'	   => defined('SITEGROUND_OPTIMIZER_VERSION') || false !== strpos($server('SERVER_ADMIN'), 'siteground'),
+		'DreamHost'		   => false !== strpos($server('SERVER_ADMIN'), 'dreamhost'),
+		'Local (by WP Engine)' => false !== strpos($server('GS_LIB'), 'lightning-services')
+			|| false !== strpos($server('MAGICK_CODER_MODULE_PATH'), 'lightning-services'),
+	);
+
+	foreach ($known as $name => $matched) {
+		if ($matched) {
+			$host = $name;
+			break;
+		}
+	}
+
+	if (null === $host) {
+		// Nothing recognised: report what can be seen of the server instead.
+		$bits = array_filter(array(
+			$server('SERVER_SOFTWARE'),
+			defined('DB_HOST') && 'localhost' !== DB_HOST ? 'DB: ' . DB_HOST : '',
+			$server('SERVER_NAME'),
+		));
+		$host = $bits ? __('Not detected', 'wpematico') . ' (' . implode(', ', $bits) . ')' : __('Not detected', 'wpematico');
+	}
+
+	/**
+	 * Filters the detected hosting provider.
+	 *
+	 * Use it to name a host this function does not recognise.
+	 *
+	 * @since 2.9
+	 * @param string $host
+	 */
+	$host = (string) apply_filters('wpematico_get_host', $host);
+
+	return $host;
+}
+
+/**
+ * wpematico_is_pro_active
+ *
+ * Returns if installed & active PRO VERSION
+ *
+ * @since 1.2.4
+ * @return bool|int if installed & active
+ */
+function wpematico_is_pro_active($returnbool = false) {  // Check if PRO version is installed & active
+	if ($returnbool) {
+		return defined('WPEMATICOPRO_VERSION');
+	}
+
+	$active_plugins		  = get_option('active_plugins');
+	$active_plugins_names = array_map('basename', $active_plugins);
+	$is_pro_active		  = array_search('wpematicopro.php', $active_plugins_names);
+
+	return $is_pro_active;
+}
+
+add_action('wpematico_wp_ratings', 'wpematico_wp_ratings');
+
+function wpematico_wp_ratings() {
+	?><div class="postbox">
+		<h3 class="wpematico-hndle"><?php esc_html_e('5 Stars Ratings on WordPress', 'wpematico'); ?></h3>
+	<?php if (get_option('wpem_hide_reviews')) : ?>
+			<div class="inside">
+				<p style="text-align: center;">
+					<a href="https://wordpress.org/support/view/plugin-reviews/wpematico?filter=5&rate=5" id="linkgo" class="button" target="_Blank" title="Click to see 5 stars Reviews on WordPress"> Click to see 5 stars Reviews </a>
+				</p>
+			</div>
+			<?php else: ?>
+			<div class="inside" style="margin-bottom: 0;">
+			<?php require_once('lib/wp_ratings.php'); ?>
+			</div>
+	<?php endif; ?>
+	</div>
+	<?php
+}
+
+/**
+ * array_multi_key_exists	http://php.net/manual/es/function.array-key-exists.php#106449
+ * @param array $arrNeedles
+ * @param array $arrHaystack
+ * @param type $blnMatchAll
+ * @return boolean
+ */
+function array_multi_key_exists(array $arrNeedles, array $arrHaystack, $blnMatchAll = true) {
+	$blnFound = array_key_exists(array_shift($arrNeedles), $arrHaystack);
+
+	if ($blnFound && (count($arrNeedles) == 0 || !$blnMatchAll))
+		return true;
+
+	if (!$blnFound && count($arrNeedles) == 0 || $blnMatchAll)
+		return false;
+
+	return array_multi_key_exists($arrNeedles, $arrHaystack, $blnMatchAll);
+}
+
+function wpematico_get_active_seo_plugin() {
+	// List of SEO plugins and their main files
+	$seo_array	 = array(
+		'yoast_seo'		=> 'wordpress-seo/wp-seo.php',
+		// 'all_in_one_seo' => 'all-in-one-seo-pack/all_in_one_seo_pack.php',
+		'rank_math'		=> 'seo-by-rank-math/rank-math.php',
+		'seo_framework' => 'autodescription/autodescription.php',
+			// Add more SEO plugins here
+	);
+	$seo_plugins = apply_filters('wpematico_seo_plugins', $seo_array);
+	// Verify if some SEO plugin is active
+	foreach ($seo_plugins as $slug => $main_file) {
+		if (is_plugin_active($main_file)) {
+			// Return the slug of the $seo_plugins
+			return $slug;
+		}
+	}
+	// If doens't exist or there aren't some SEO plugin active return false
+	return false;
+}
+
+/**
+ * Alternative ini_set to trigger errors and changed values 
+ * 
+ * @param string $index	
+ * @param string|int|float|bool|null $value	<p>The new value for the option.</p>
+ * @param bool $log_only_fail <p>Trigger the WARNING only if fail to set the new value for the option.</p>
+ * @return string|false <p>Returns the old value on success, <b><code>false</code></b> on failure.</p>
+ */
+function wpematico_init_set($index, $value, $log_only_fail = false) {
+	$oldvalue = @ini_set($index, $value) or $oldvalue = FALSE; //@return string the old value on success, <b>FALSE</b> on failure. (after 'or' is by the @)
+
+	/* translators:
+	 * %1$s ini option to change. 
+	 * %2$s The new value for the option. 
+	 * %3$s Operation result. Success or Failed.
+	 * %4$s Old previous value returned on fail. 
+	 */
+	$error_msg = esc_html__('Trying to set %1$s = %2$s: \'%3$s\' - Old value: %4$s.', 'wpematico');
+
+	if ($log_only_fail) {
+		if ($oldvalue === false) {
+			trigger_error(sprintf($error_msg, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+							esc_html($index), //%1$s
+							esc_html($value), //%2$s
+							esc_html__('Failed', 'wpematico'), //%3$s
+							esc_html($oldvalue) //%4$s
+					), E_USER_WARNING);
+		}
+	} else {
+		trigger_error(sprintf($error_msg, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+						esc_html($index), //%1$s
+						esc_html($value), //%2$s
+						($oldvalue === false ? esc_html__('Failed', 'wpematico') : esc_html__('Success', 'wpematico')), //%3$s
+						esc_html($oldvalue) //%4$s
+				), ($oldvalue === false ? E_USER_WARNING : E_USER_NOTICE));
+	}
+
+	return $oldvalue;
+}
+
+/**
+ * function for PHP error handling saved as Campaign Logs.
+ * 
+ * @global string $campaign_log_message Currently log where to add next line. 
+ * @global int $jobwarnings Warnings quantity.
+ * @global int $joberrors Errors quantity.
+ * @param number $errno PHP constants error values.
+ * @param string $errstr PHP Error details.
+ * @param string $errfile File with error.
+ * @param type $errline Line of the error in previous file.
+ * @return bool True for no more php error hadling.
+ */
+function wpematico_joberrorhandler($errno, $errstr, $errfile, $errline) {
+	global $campaign_log_message, $jobwarnings, $joberrors;
+
+	//Generate timestamp
+	if (!version_compare(phpversion(), '6.9.0', '>')) { // PHP Version < 5.7 dirname 2nd 
+		if (!function_exists('memory_get_usage')) { // test if memory functions compiled in
+			$timestamp = "<span style=\"background-color:#c3c3c3; padding: 0 5px;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile)) . basename($errfile) . "\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
+		} else {
+			$timestamp = "<span style=\"background-color:#c3c3c3; padding: 0 5px;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile)) . basename($errfile) . "|Mem: " . WPeMatico::formatBytes(@memory_get_usage(true)) . "|Mem Max: " . WPeMatico::formatBytes(@memory_get_peak_usage(true)) . "|Mem Limit: " . ini_get('memory_limit') . "]\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
+		}
+	} else {
+		if (!function_exists('memory_get_usage')) { // test if memory functions compiled in
+			$timestamp = "<span style=\"background-color:#c3c3c3; padding: 0 5px;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile, 2)) . basename($errfile) . "\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
+		} else {
+			$timestamp = "<span style=\"background-color:#c3c3c3; padding: 0 5px;\" title=\"[Line: " . $errline . "|File: " . trailingslashit(dirname($errfile, 2)) . basename($errfile) . "|Mem: " . WPeMatico::formatBytes(@memory_get_usage(true)) . "|Mem Max: " . WPeMatico::formatBytes(@memory_get_peak_usage(true)) . "|Mem Limit: " . ini_get('memory_limit') . "]\">" . date_i18n('Y-m-d H:i.s') . ":</span> ";
+		}
+	}
+
+	switch ($errno) {
+		case E_NOTICE:
+		case E_USER_NOTICE:
+			$sMessage	 = $timestamp . "<span>" . $errstr . "</span>";
+			break;
+		case E_WARNING:
+		case E_USER_WARNING:
+			$jobwarnings += 1;
+			$sMessage	 = $timestamp . "<span style=\"background-color:yellow;\">" . __('[WARNING]', 'wpematico') . " " . $errstr . "</span>";
+			break;
+		case E_ERROR:
+		case E_USER_ERROR:
+			$joberrors	 += 1;
+			$sMessage	 = $timestamp . "<span style=\"background-color:red;\">" . __('[ERROR]', 'wpematico') . " " . $errstr . "</span>";
+			break;
+		case E_DEPRECATED:
+		case E_USER_DEPRECATED:
+			$sMessage	 = $timestamp . "<span>" . __('[DEPRECATED]', 'wpematico') . " " . $errstr . "</span>";
+			break;
+		// Literal 2048 instead of E_STRICT: PHP 8.4 deprecated the constant itself, and this
+		// case is evaluated on every trapped error, so naming it here spammed the server log
+		// with "Constant E_STRICT is deprecated" from inside the error handler.
+		case 2048: // E_STRICT //
+			$sMessage	 = $timestamp . "<span>" . __('[STRICT NOTICE]', 'wpematico') . " " . $errstr . "</span>";
+			break;
+		case E_RECOVERABLE_ERROR:
+			$sMessage	 = $timestamp . "<span>" . __('[RECOVERABLE ERROR]', 'wpematico') . " " . $errstr . "</span>";
+			break;
+		default:
+			$sMessage	 = $timestamp . "<span>[" . $errno . "] " . $errstr . "</span>";
+			break;
+	}
+
+	if (!empty($sMessage)) {
+
+		$campaign_log_message .= $sMessage . "<br />\n";
+
+		if ($errno == E_ERROR or $errno == E_CORE_ERROR or $errno == E_COMPILE_ERROR) {//Die on fatal php errors.
+			die("Fatal Error:" . esc_html($errno));
+		}
+
+		// Deprecated on 2.7
+		// wpematico_init_set('max_execution_time',300);
+		// @set_time_limit(300);
+		// Since 2.7.2
+		if (function_exists('ini_restore')) {
+			//  Testin restoring default value instead set it to 300
+			ini_restore('max_execution_time');
+		} else { // ini_restore is not enabled
+			//300 is most webserver time limit. 0= max time! Give script 5 min. more to work.
+			wpematico_init_set('max_execution_time', 300);
+		}
+
+
+		//true for no more php error hadling.
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/**
+ * function for feed hash.
+ * 
+ * @global string $type Currently type for the hash. 
+ * @param string $feed current feed to make the hash.
+ * @param string $feedHash feed already hashed.
+ * @return string
+ */
+function wpematico_feed_hash_key($type, $feed, $feedHash = '') {
+	$feedHash = md5($feed);
+
+	if ($type == 'campaign') {
+		if (isset($type[$feed]["lasthash"])) {
+			$type[$feedHash]["lasthash"] = $type[$feed]["lasthash"];
+		}
+	} else {
+		if (isset($type[$feed])) {
+			$type[$feedHash] = $type[$feed];
+		}
+	}
+
+	$feedHash = isset($feedHash) ? $feedHash : $feed;
+
+	return apply_filters('wpematico_feed_hash_key', $feedHash);
+}
+
+function wpematico_get_upload_dir() {
+	$wp_upload_dir = wp_upload_dir();
+	$wpematico_dir       = 'wpematico';
+	$path          = $wp_upload_dir['basedir'] . '/' . $wpematico_dir;
+	$retval        = apply_filters( 'wpematico_get_upload_dir', $path );
+
+	// Make sure the directory exists
+	wp_mkdir_p( $retval );
+
+	// Return, possibly filtered
+	return $retval;
+}
+
+/**
+ * Write a timestamped entry to the WPeMatico debug log file.
+ * No-op when the debug log option is disabled in Danger Zone settings.
+ * Defined here (outside is_admin()) so addons can call it during WP-Cron.
+ *
+ * @param string $message Message to log.
+ */
+function wpematico_log( $message ) {
+	$danger = WPeMatico::get_danger_options();
+
+	if ( empty( $danger['wpematico_debug_log_file'] ) ) {
+		return;
+	}
+
+	$upload_dir = wpematico_get_upload_dir();
+	$filename   = wp_hash( home_url( '/' ) ) . '-wpematico-debug.log';
+	$file       = trailingslashit( $upload_dir ) . $filename;
+
+	if ( ! file_exists( $file ) ) {
+		@touch( $file );
+	}
+
+	$datetime = current_time( 'Y-m-d H:i:s' );
+	$entry    = "[{$datetime}] {$message}\n";
+
+	file_put_contents( $file, $entry, FILE_APPEND | LOCK_EX );
+}
+
+/**
+ * Get the full path to the current WPeMatico debug log file.
+ *
+ * @return string Full file path to the debug log.
+ */
+function wpematico_get_log_file_path() {
+	$upload_dir = wpematico_get_upload_dir();
+	$filename   = wp_hash( home_url( '/' ) ) . '-wpematico-debug.log';
+	return trailingslashit( $upload_dir ) . $filename;
+}

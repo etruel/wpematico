@@ -1,8 +1,8 @@
 === WPeMatico RSS Feed Fetcher ===
 Contributors: etruel, khaztiel, gerarjos14, sniuk
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU 
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS, XML, feed to post, rss aggregator, content curation
-Stable tag: 2.8.27
+Stable tag: 2.9
 Tested up to: 7.1
 Requires at least: 4.8
 Requires PHP: 7.0
@@ -212,7 +212,81 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 
 == Changelog ==
 
-> View complete release history at [WPeMatico Releases](https://wpematico.com/releases/)
+> See all detailed changelog at [WPeMatico Releases](https://wpematico.com/releases/)
+
+= 2.9 – Sep 30, 2026 =
+
+Major Version 2.9 renews **the whole interface** and lays the **foundations for 3.0**: a Dashboard to switch every feature on and off, a Settings screen that explains every option, new tools to inspect feeds and to move in from other plugins, and WPeMatico in eleven languages together with all its extensions.
+Recommended to test it in a staging environment before updating production websites, and to **update your WPeMatico add-ons first** (see below).
+
+#### _New features:_
+
+> * **A Dashboard for every feature.**
+>   One card per feature, grouped by what it does (Images, SEO, Campaign Types, Content Parsers, Third party…). Each card says what its switch will do before you touch it, installs the free plugins it needs from WordPress.org, starts an add-on you already own, and reads the very same setting as the checkbox on the Settings screen.
+
+> * **New campaign type: Vimeo.**
+>   Publish the videos of a Vimeo user, channel or group: paste the address and the campaign finds its feed on its own. Each post gets the title, the thumbnail, the player and the description, with the thumbnail stored in the Media Library and ready to be the featured image. Formerly a paid add-on, now part of WPeMatico; switch it on from its card in the Dashboard.
+
+> * **Migration Toolkit: move in from Feedzy RSS Feeds and WP RSS Aggregator.**
+>   Imports their feeds as WPeMatico campaigns, with their filters, fallback images, translations and rewrites carried to the matching add-on, and adopts the posts they already published so nothing is published twice. Pages that embed WP RSS Aggregator displays get their shortcode swapped with one click. It stays off until you need it, and WPeMatico lets you know when it finds something to import.
+
+> * **WPeMatico speaks eleven languages, and so does every extension.**
+>   Spanish with its eleven regional variants, German, French, Dutch, Greek, Persian, Russian, Slovak, Romanian, Arabic and Chinese: every screen, tooltip, Help tab and campaign log line, for the plugin and for all fifteen extensions.
+
+> * **Two dashboard widgets.**
+>   **WPeMatico Summary** opens with posts today, active campaigns, next run and posts all time, over a seven-day chart, with the detail behind three tabs: Recent, Up next and Needs a look. **WPeMatico News** brings the latest from the blog, cached so it never slows your dashboard down.
+
+> * **Feed List and Feed Viewer in Tools.**
+>   Feed List shows every feed of every campaign in a native WordPress list, with search, sorting and paging. Feed Viewer inspects any address and tells you what came back: a feed and its items, a page that is not a feed, or the reason it could not be reached.
+
+> * **Guided tours.**  
+>   The first time you open each WPeMatico screen, a short tour shows where everything is and what to do first. Skip it, end it, or turn the tours off for your user, and replay any of them from the Help tab.
+
+#### _Enhancements:_
+
+> * **WPeMatico has its own menu.**
+>   Dashboard, Campaigns, Settings, Tools and Extensions sit together under the WPeMatico entry of the admin menu.
+
+> * **Every setting says what it does.**
+>   A short name for each option, one or two sentences on what turning it on changes, and the full detail in the Help tab of each screen. Settings is split into sections, keeps you in the section you saved, and each extension has its own tab with its own sidebar.
+
+> * **Campaigns list: Quick Edit and Bulk Edit on one screen.**
+>   Quick Edit fits in a third of the space and writes only what its form shows. Bulk Edit sets post type, status, post format and the campaign options on many campaigns at once, and every field starts at **— No change —**, so only what you pick is applied. The campaign type filter narrows the list to that type.
+
+> * **Campaign Preview works on every campaign type**, lists exactly the items the next run will publish, and leaves paid rewriting services alone: the text is rewritten once, when the post is published.
+
+> * **XML campaigns read sitemaps, Atom files and any namespaced XML**, and an unreadable file is reported in the campaign log.
+
+> * **System Status opens instantly and tells the truth.**
+>   The connection test runs once the page is up, the checks follow what WPeMatico really requires, the hosting provider is recognised (WP Engine, Kinsta, SiteGround, Cloudways, Local and more), and a new check names the HTML Tidy builds that break imported text.
+
+> * **Add-Ons page.**
+>   The free add-ons install from WordPress.org right there, every membership is listed, search narrows the list as you type, every bulk action reports its result, and the page opens in seconds even when the store is slow to answer.
+
+> * **Add-ons update after WPeMatico, never before it**, and every screen that shows an update says why one is waiting: the licence state, with a renewal link that carries your key, or the WPeMatico update that has to go first. Turning an add-on's automatic updates on turns WPeMatico's on too.
+
+> * **Campaign settings belong to their add-on.** Editing a campaign while an add-on is deactivated keeps every setting that add-on stored, ready for when it comes back.
+
+> * **"Delete all data" leaves nothing behind**: every option and cached value WPeMatico owns, licence keys included. Your licences stay active in your account at the store.
+
+> * **About and Getting Started rewritten for 2.9**, with Getting Started taking you to a running campaign in three steps.
+
+> * Various **UI/UX improvements** throughout: vector logo, one colour scheme for the Settings menu, list tables that follow WordPress 7, readable System Status tables.
+
+> * **Tested with WordPress 7.1** to ensure full compatibility.
+
+#### _For developers:_
+
+> * **Campaign types live one per file** under `includes/campaign-types/`, built only on the public hooks. A type whose source is a feed declares itself in `wpematico_rss_campaign_types` and inherits the whole standard fetch; `wpematico_custom_simplepie` works on its own for the rest.
+> * **Modules**: register a Dashboard card with the `wpematico_modules` filter; `option` or `pro_option` bind the card to a setting.
+> * **Campaign fields**: `wpematico_campaign_addon_fields` (`pro_check_campaigndata` keeps firing), `wpematico_check_campaigndata` takes a `$strict` argument for saving, and `WPeMatico::update_campaign()` keeps stored fields unless `$replace` is passed.
+> * New filters: `wpematico_post_parent`, `wpematico_create_autocat`, `wpematico_blocked_insert_count`, `wpematico_fetch_posts_summary`, `wpematico_campaign_count_column`, `wpematico_campaign_count_row_meta_keys`, `wpematico_sidebar_widgets`, `wpematico_settings_widgets`, `wpematico_vimeo_metabox_options`, `wpematico_get_host`, `wpematico_addons_feed_timeout`. `wpematico_allow_insertpost` also receives the feed item, and `wpematico_is_previewing_item()` tells an extension that the item is going to the screen and not to the database.
+
+#### _Recent (may break) changes:_
+
+> * NOTE: **WPeMatico 2.9 needs the add-on versions released with it.** Update your add-ons before updating WPeMatico: Professional 3.7, Full Content 2.9.4, Better Excerpts 3.6, Custom Hooks 1.4, Exporter 1.6, Facebook Fetcher 3.4, GPT Spinner 3.5.2, Make me Feed Good 2.13, Manual Fetching 1.2, Office Campaign Type 1.6, Polyglot 1.7, Polylang 1.1.2, Publish 2 Email 1.6, RSS Feed Reader 2.0.0 and Synchronizer 2.3. They also run on WPeMatico 2.8.27. An older add-on stays active, with its licence screen and its update button, and its features resume as soon as it is updated.
+> * NOTE2: **The WPeMatico screens moved to their own menu**, so bookmarks to its Settings or Tools pages need saving again.
+> * NOTE3: **The plugin files moved** from `app/` to `includes/` and `assets/`. Custom code that loads a WPeMatico file by its path needs the new one.
 
 = 2.8.27 – Sep 22, 2026 =
 
@@ -309,7 +383,7 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 * **Improved:** On update from 2.8.19 or earlier, existing campaign timestamps are automatically updated so all schedules stay correct after upgrading.
 
 = 2.8.19 – May 29, 2026 =
-> _Scheduling bug fix._
+> _Urgent Scheduling bug fix._
 * **Fixed:** Campaigns stopped running automatically after updating to 2.8.17. Users with the "Use Alternate WP Cron" or "Disable WPeMatico schedulings" options enabled in WPeMatico Settings were most affected — scheduled campaigns would only run if triggered manually.
 * **Fixed:** PHP notice logged on some sites during plugin load, related to cron schedule registration.
 * **Fixed:** PHP deprecation notice on PHP 8.1+ when displaying admin notifications for the first time.
@@ -458,133 +532,6 @@ Recommended to test it in a staging environment before updating production websi
 > * NOTE: **Enlarges the version required for the [WPeMatico Professional](https://etruel.com/downloads/wpematico-professional/) addon to 3.1**  
 > * NOTE2: **Enlarges the version required for the [WPeMatico GPT Spinner](https://etruel.com/downloads/wpematico-gpt-spinner/) addon to 2.0**  
 
-= 2.7.11 Nov 27, 2024 =
-
-* Tested with WordPress 6.7.1
-* Fixes minor security issues.
-* More improvements for translators strings.
-
-= 2.7.10 Oct 31, 2024 =
-
-* Tested with WordPress 6.7
-* Introducing new Add-on: [WPeMatico GPT Spinner](https://etruel.com/downloads/wpematico-gpt-spinner/)
-* More improvements for translators strings.
-
-= 2.7.9 Oct 18, 2024 =
-
-* Tweaks on links and few styles in Settings screen.
-* Tweaks a really lot for translators strings on almost all files to meet WordPress Standards.
-* Fixes few minor security issues.
-* Fixes few issues on System Status Page.
-* Fixes some texts and typos.
-
-= 2.7.8 Oct 8, 2024 =
-
-* Improves compatibilities with [WPeMatico Synchronizer](https://etruel.com/downloads/wpematico-synchronizer/)
-* Tweaks on WPeMatico Info Metabox inside created posts to allow edit fields in Synchronizer extension. 
-* Fixes minor security issues. 
-* Fixes few PHP Deprecated notices.
-
-= 2.7.7.1 Sep 26, 2024 =
-
-This "almost" major Version 2.7.7 focuses on code and performance improvements together with the Full and Pro major versions.
-Recommended update it on testing environments before update on production websites.
-
-#### _Recent (may break) changes if you use some of our extensions_
-
-* New major versions on Addons. *Do not update if does not meet the requirements below.*
-* Completed removal of obsolete NonStatic class in favor of WP filters and actions.
-* Added new filter "wpematico_tags" on processing post tags on fetching.
-* Added version controls to avoid errors by incompatibilities.
-* Added filter to allow add tabs on Tools page.
-* Fixes filter name to wpematico_tools_tabs added in last version.
-* Many tweaks and improvements in function comments.
-* Updated addons library updater and license handlers.
-* Fixes and tweaks some returned parameters on few functions.
-* NOTE: **Enlarges the version required for the [WPeMatico Professional](https://etruel.com/downloads/wpematico-professional/) addon to 3.0**
-* NOTE2: **Enlarges the version required for the [WPeMatico Full Content](https://etruel.com/downloads/wpematico-full-content/) addon to 2.8**
-
-= 2.7.6 Aug 1, 2024 =
-* Improves XML importer process.
-* Improves the functions of feed hash for duplicated posts control.
-* Improves filter on creation of custom simplepie objects.
-* Added filter to allow skip batchsize for fetch feed items.
-
-= 2.7.5 Jul 2, 2024 =
-* Improves all skipped posts due to different conditions in the fetching process.
-* Fixes the campaign preview feature to work well with Professional keyword feature.
-* Fixes array type variable treated as integer.
-* Removed MDM banner from campaigns list.
-* NOTE: **Enlarges the version required for the Professional addon to 2.21**
-
-= 2.7.4 Jun 26, 2024 =
-* Fixes Extensions page by hidding it on WordPress Multisite.
-* Improves compatibilities con Professional AddOn to use feeds from sites with Cloudflare.
-* Removed deprecated texts of External Crons URls from Settings screen.
-
-= 2.7.3 Jun 18, 2024 =
-* Improves RDF feeds compatibility.
-* Fixes an issue getting the source permalink.
-* Fixes an issue with $sMessage variable on campaign logs.
-* Fixes issues with "/" character on some fields when duplicate campaigns.
-* Added some warning texts for LiteSpeed servers on System Status Page.
-
-= 2.7.2 Jun 12, 2024 =
-* Fixes call PHP ini_restore when the function is disabled in PHP.
-* Tweaks on the new Settings banner to show just the summary of the new release instead the entire content.
-* Fixes a wrong variable name.
-* Improves styles and fixes responsive on System Status page.
-* Makes the texts translatable on the screen and the help on the tools page.
-* Improves language files.
-
-= 2.7.1 Jun 7, 2024 =
-* Bump to WP 6.6
-* Tweaks on responsive style on System Status page.
-* Fixes Help tab on Tools page showing bad contents.
-* Fixes bad links to System Status in the new Tools page on notices or errors
-* Fixes title banner for old version and [MDM Giveaway](https://www.wpematico.com/giveaway/mdm/).
-
-= 2.7 Jun 3, 2024 =
-
-Major Version 2.7 focuses on code improvements and documentations follow the standards of WordPress coding developments.
-Recommended update it on testing environments before update on production websites.
-
-#### _Enhancements:_
-
-> * New WPeMatico Canonicals feature on Settings Page. *Activated by default*
-> * New improved batch method to optimize performance on fetching processes.
-> * New improved method to check and show broken campaigns on the campaigns List.
-> * New Page Tools to group features useful for WPeMatico.
-> * New feature to avoid or include Shorts on YouTube Campaign types.
-> * New feature to export / import all the WPeMatico Settings.
-> * New popup to see the last log after run the campaign.
-> * New improvements in duplicate posts control by refining the hash codes.
-> * A new improved Changelog on About page.
-> * A new dismissable banner to show the last changelog on Settings page.
-> * Some minor cosmetic improvements.
-> * Updated javascript vSort library to 1.2.2
-> * Changed all ini_set to custom function to allow log all the values.
-> * Added SimplePie version to System Status Page.
-> * Many code improvements and commented functions.
-
-#### _Bugfixes:_
-
-> * Fixes on getting bad source permalink on some cases by empty feed tags.
-> * Fixes some malformed values saved on Copy Campaign Quick Action.
-> * Fixes some issues and warnings on Campaigns List page.
-> * Fixes some warnings and minor bugs on Preview campaign. 
-> * Fixes set_time_limit() ERROR on websites with function disabled.
-> * Fixes many deprecated messages on jQuery functions calls.
-
-#### _Recent (may break) changes:_
-
-> * Removed the custom Simplepie library of the Settings and the plugin (finally).
-> * New improved method to manage hashes of campaigns and permalinks on duplicated posts control.
-> * New 'wpematico_custom_simplepie' filter to correct an old incorrect behavior on 'Wpematico_process_fetching'.
-> * The titles feature was improved to use a new added filter.
-> * On plugin update will be queued a process to upgrade each campaign to the newly way on hash creation to control post duplicates.
-> * NOTE: **Enlarges the version required for the Professional addon to 2.20**
-
 = Earlier versions =
 For the changelog of earlier versions, please refer to changelog.md file or [the changelog on wpematico.com](https://www.wpematico.com/releases/).
 
@@ -593,4 +540,6 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 
 == Upgrade Notice ==
-Recommended security fix. Recommended update for all users.
+
+= 2.9 =
+Major update. Update your WPeMatico add-ons first: WPeMatico 2.9 needs the add-on versions released with it, which also run on WPeMatico 2.8.27.

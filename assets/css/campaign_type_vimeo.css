@@ -1,0 +1,97 @@
+/* Vimeo campaign type — everything scoped to its own box: the preview uses generic
+   words (featured, image, video) that would otherwise collide on a screen full of
+   metaboxes. */
+#vimeo-box h2.hndle,
+#vimeo-box .postbox-header {
+	background: #00adef;
+	color: #fff;
+}
+#vimeo-box .inside {
+	display: flex;
+	align-items: center;
+}
+#vimeo-box .wpe-vimeo-preview {
+	border: 1px lightgray solid;
+	padding: 10px;
+	margin: 7px 1rem 7px 0;
+	color: gray;
+	width: 150px;
+	min-width: 150px;
+	box-sizing: border-box;
+}
+#vimeo-box .wpe-vimeo-preview .dashicons {
+	font-size: 2em;
+	display: block;
+	color: #fff;
+	height: initial;
+	width: initial;
+}
+#vimeo-box .wpe-vimeo-preview h4 {
+	margin: 0;
+	font-weight: 400;
+	font-size: .85em;
+}
+#vimeo-box .wpe-vimeo-post-title {
+	color: #000;
+	font-weight: bold;
+}
+#vimeo-box .wpe-vimeo-description {
+	font-size: 9px;
+	line-height: 1;
+}
+#vimeo-box .wpe-vimeo-featured,
+#vimeo-box .wpe-vimeo-image,
+#vimeo-box .wpe-vimeo-video {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	margin: 0 0 .25rem;
+}
+#vimeo-box .wpe-vimeo-featured,
+#vimeo-box .wpe-vimeo-image {
+	background-color: #8cd6f3;
+}
+#vimeo-box .wpe-vimeo-featured {
+	width: 60%;
+	height: 35px;
+}
+#vimeo-box .wpe-vimeo-featured .dashicons {
+	font-size: 1.5em;
+}
+#vimeo-box .wpe-vimeo-image {
+	width: 75%;
+	height: 50px;
+}
+#vimeo-box .wpe-vimeo-video {
+	height: 50px;
+	background-color: #aaa;
+}
+#vimeo-box .wpe-vimeo-video .dashicons {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 25px;
+	height: 25px;
+	border: 2px solid #fff;
+	border-radius: 50%;
+	font-size: 1.5em;
+}
+#vimeo-box .wpe-vimeo-options {
+	width: 100%;
+}
+/* The API controls with no Professional installed: readable, plainly inert. */
+#vimeo-box .wpe-vimeo-api-disabled {
+	color: #787c82;
+	cursor: default;
+}
+
+@media (max-width: 500px) {
+	#vimeo-box .inside {
+		flex-direction: column;
+		align-items: initial;
+	}
+	#vimeo-box .inside .wpe-vimeo-preview {
+		order: 2;
+	}
+}

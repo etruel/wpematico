@@ -1,0 +1,560 @@
+/* Tabs Navigation */
+.wpematico-migration-tabs {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.wpematico-tabs-header {
+    display: flex;
+    background: #f6f7f7;
+    border-bottom: 1px solid #c3c4c7;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+}
+
+.wpematico-tabs-header::-webkit-scrollbar {
+    height: 6px;
+}
+
+.wpematico-tabs-header::-webkit-scrollbar-thumb {
+    background: #c3c4c7;
+    border-radius: 3px;
+}
+
+.wpematico-tab-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border: none;
+    background: transparent;
+    color: #646970;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.wpematico-tab-button:hover {
+    color: #2271b1;
+    background: #f0f6fc;
+}
+
+.wpematico-tab-button.is-active {
+    color: #2271b1;
+    background: #fff;
+    border-bottom-color: #2271b1;
+    font-weight: 600;
+}
+
+.wpematico-tab-button .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    color: #9ca3af;
+}
+
+.wpematico-tab-button.is-active .dashicons {
+    color: #2271b1;
+}
+
+/* Tab Content */
+.wpematico-tabs-body {
+    padding: 25px;
+    background: #fff;
+}
+
+.wpematico-tab-content {
+    display: none;
+}
+
+.wpematico-tab-content.is-active {
+    display: block;
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Options List */
+.wpematico-options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.wpematico-option-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    position: relative;
+    padding: 8px 0;
+}
+
+.wpematico-option-item:hover {
+    background: #f6f7f7;
+    margin: 0 -25px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.wpematico-option-item input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.wpematico-checkmark {
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border: 2px solid #c3c4c7;
+    border-radius: 3px;
+    flex-shrink: 0;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.wpematico-option-item:hover .wpematico-checkmark {
+    border-color: #2271b1;
+}
+
+.wpematico-option-item input:checked ~ .wpematico-checkmark {
+    background: #2271b1;
+    border-color: #2271b1;
+}
+
+.wpematico-option-item input:checked ~ .wpematico-checkmark:after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 4px;
+    height: 9px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.wpematico-option-item input:disabled ~ .wpematico-checkmark {
+    background: #f0f0f1;
+}
+
+.wpematico-option-item input:disabled ~ .wpematico-checkmark:after {
+    border-color: #a7aaad;
+}
+
+.wpematico-option-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #3c434a;
+    user-select: none;
+}
+
+/* An option's explanatory note keeps a line of its own: as a flex sibling it
+   competed with the label for the row and broke it in two on narrow screens.
+   Only the rows that carry a note wrap — wrapping every row sends the (?) of a
+   long label down to a line of its own on a phone. */
+.wpematico-option-label.has-note {
+    flex-wrap: wrap;
+}
+
+.wpematico-option-note {
+    flex-basis: 100%;
+    margin: 0;
+    color: #646970;
+}
+
+.wpematico-option-item input:disabled ~ .wpematico-option-label {
+    color: #a7aaad;
+}
+
+/* Highlighted Option */
+.wpematico-option-highlight {
+    background: #f0f6fc;
+    border-left: 3px solid #2271b1;
+    margin: 10px -25px;
+    padding: 12px 25px;
+}
+
+.wpematico-option-highlight:hover {
+    background: #c5d9ed;
+    /* Keep the highlight's own spacing so it doesn't jump on hover. */
+    margin: 10px -25px;
+    padding: 12px 25px;
+}
+
+/* Help Tip */
+.wpematico-help-tip {
+    color: #a7aaad;
+    cursor: help;
+    display: inline-flex;
+    align-items: center;
+}
+
+.wpematico-help-tip:hover {
+    color: #2271b1;
+}
+
+.wpematico-help-tip .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+}
+
+/* Action Buttons */
+.wpematico-action-buttons {
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid #f0f0f1;
+}
+
+.wpematico-action-buttons .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    padding: 0 24px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 3px;
+    transition: all 0.2s;
+}
+
+.wpematico-action-buttons .button-primary {
+    background: #2271b1;
+    border-color: #2271b1;
+    color: #fff;
+}
+
+.wpematico-action-buttons .button-primary:hover {
+    background: #135e96;
+    border-color: #135e96;
+}
+
+.wpematico-action-buttons .button:not(.button-primary):not(.wpematico-clean-btn) {
+    background: #f6f7f7;
+    border-color: #c3c4c7;
+    color: #3c434a;
+}
+
+.wpematico-action-buttons .button:not(.button-primary):not(.wpematico-clean-btn):hover {
+    background: #f0f0f1;
+    border-color: #a7aaad;
+}
+
+.wpematico-action-buttons .wpematico-clean-btn {
+    background: #fff;
+    color: #d63638;
+    border-color: #d63638;
+}
+
+.wpematico-action-buttons .wpematico-clean-btn:hover {
+    background: #d63638;
+    color: #fff;
+}
+
+/* Modal */
+.wpematico-modal {
+    display: none;
+    position: fixed;
+    z-index: 100000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.wpematico-modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    border-radius: 4px;
+    max-width: 500px;
+    animation: modalFadeIn 0.3s;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Box header, intro & layout helpers */
+.wpematico-migration-toolkit-box .hndle {
+    border-bottom: 1px solid #c3c4c7;
+    padding-bottom: 12px;
+}
+
+.wpematico-migration-intro {
+    margin-bottom: 20px;
+    color: #646970;
+}
+
+.wpematico-import-title {
+    margin: 0 0 15px;
+    color: #1d2327;
+}
+
+.wpematico-manual-select {
+    margin-bottom: 20px;
+    max-width: 400px;
+}
+
+.wpematico-manual-options {
+    margin-top: 10px;
+}
+
+.wpematico-no-plugins-detected {
+    margin-bottom: 20px;
+}
+
+/* Disabled option + "coming soon" badge */
+.wpematico-option-item.is-disabled {
+    opacity: 0.7;
+    cursor: default;
+}
+
+.wpematico-badge-soon {
+    display: inline-block;
+    font-size: 11px;
+    line-height: 1;
+    padding: 3px 6px;
+    margin-left: 6px;
+    background: #f0f0f1;
+    color: #646970;
+    border-radius: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+/* "Requires {addon}" badge on locked optional imports */
+.wpematico-badge-addon {
+    display: inline-block;
+    font-size: 11px;
+    line-height: 1;
+    padding: 3px 6px;
+    margin-left: 6px;
+    background: #fcf0e4;
+    color: #8a4b00;
+    border-radius: 9px;
+}
+
+/* Note shown when at least one optional import is locked by a missing addon */
+.wpematico-optional-note {
+    margin: 4px 0 0 30px;
+    color: #646970;
+    font-style: italic;
+}
+
+.wpematico-optional-note .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    vertical-align: text-bottom;
+    color: #2271b1;
+}
+
+/* Action button icons */
+.wpematico-action-buttons .button .dashicons {
+    font-size: 16px;
+    line-height: 1;
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+}
+
+.wpematico-action-buttons .button + .button {
+    margin-left: 10px;
+}
+
+/* Feedback */
+.wpematico-feedback-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #f0f0f1;
+}
+
+/* Modal structure */
+.wpematico-modal-large {
+    max-width: 800px !important;
+}
+
+.wpematico-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid #f0f0f1;
+}
+
+.wpematico-modal-header h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.wpematico-modal-close {
+    cursor: pointer;
+    color: #646970;
+}
+
+.wpematico-modal-close:hover {
+    color: #d63638;
+}
+
+.wpematico-modal-body {
+    padding: 20px;
+}
+
+.wpematico-modal-footer {
+    padding: 16px 20px;
+    border-top: 1px solid #f0f0f1;
+    text-align: right;
+}
+
+.migration-progress,
+.preview-loading {
+    text-align: center;
+    padding: 20px;
+}
+
+.migration-progress .spinner,
+.preview-loading .spinner {
+    float: none;
+    margin: 0 auto 10px;
+}
+
+.migration-status {
+    color: #646970;
+    margin: 0;
+}
+
+/* Responsive */
+@media screen and (max-width: 782px) {
+    .wpematico-tabs-header {
+        flex-wrap: wrap;
+    }
+    
+    .wpematico-tab-button {
+        flex: 1 1 auto;
+        justify-content: center;
+        padding: 10px 15px;
+        font-size: 13px;
+    }
+    
+    .wpematico-option-item:hover {
+        margin: 0 -15px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    .wpematico-option-highlight {
+        margin: 10px -15px;
+        padding: 12px 15px;
+    }
+    
+    .wpematico-action-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .wpematico-action-buttons .button {
+        width: 100%;
+        margin-left: 0 !important;
+    }
+    
+    .wpematico-modal-content {
+        margin: 20% 10px;
+        width: auto;
+    }
+}
+/* RSS Feed Reader requirement (WP RSS Aggregator display-only feeds) */
+.wpematico-reader-requirement {
+    margin: 12px 0 4px;
+    padding: 10px 12px;
+}
+.wpematico-reader-requirement p {
+    margin: 6px 0;
+}
+.wpematico-reader-requirement .dashicons-info-outline {
+    color: #dba617;
+    vertical-align: text-bottom;
+    margin-right: 4px;
+}
+.wpematico-install-reader-btn {
+    display: inline-flex;
+    align-items: center;
+}
+.wpematico-install-reader-btn .dashicons {
+    line-height: 1;
+    margin-right: 4px;
+}
+.wpematico-reader-or {
+    margin-left: 10px;
+    color: #646970;
+    font-size: 13px;
+}
+
+/* Reason shown next to a disabled Import button (nothing to import yet) */
+.wpematico-import-gate-reason {
+    margin-left: 12px;
+    color: #646970;
+    font-size: 13px;
+    line-height: 1.3;
+}
+
+/* Source breakdown line (WP RSS Aggregator: campaigns vs reader campaigns) */
+.wpematico-source-breakdown {
+    margin: 4px 0 8px;
+    font-style: normal;
+}
+.wpematico-source-breakdown .dashicons {
+    color: #2271b1;
+    vertical-align: text-bottom;
+    margin-right: 4px;
+}
+
+/* Replace WP RSS Aggregator shortcodes table (Migration Toolkit, WPRA tab) */
+.wpematico-shortcode-scan {
+    margin-top: 22px;
+    padding-top: 16px;
+    border-top: 1px solid #dcdcde;
+}
+.wpematico-shortcode-title {
+    margin: 0 0 4px;
+}
+.wpematico-shortcode-title .dashicons {
+    color: #2271b1;
+    vertical-align: text-bottom;
+    margin-right: 4px;
+}
+.wpematico-shortcode-table {
+    margin-top: 10px;
+}
+.wpematico-shortcode-table code {
+    font-size: 12px;
+    word-break: break-all;
+}
+.wpematico-shortcode-ptype {
+    display: inline-block;
+    margin-left: 6px;
+    color: #646970;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+.wpematico-shortcode-action .dashicons-yes-alt {
+    vertical-align: text-bottom;
+}

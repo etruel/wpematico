@@ -1,5 +1,132 @@
 == Changelog ==
 
+= 2.7.11 Nov 27, 2024 =
+
+* Tested with WordPress 6.7.1
+* Fixes minor security issues.
+* More improvements for translators strings.
+
+= 2.7.10 Oct 31, 2024 =
+
+* Tested with WordPress 6.7
+* Introducing new Add-on: [WPeMatico GPT Spinner](https://etruel.com/downloads/wpematico-gpt-spinner/)
+* More improvements for translators strings.
+
+= 2.7.9 Oct 18, 2024 =
+
+* Tweaks on links and few styles in Settings screen.
+* Tweaks a really lot for translators strings on almost all files to meet WordPress Standards.
+* Fixes few minor security issues.
+* Fixes few issues on System Status Page.
+* Fixes some texts and typos.
+
+= 2.7.8 Oct 8, 2024 =
+
+* Improves compatibilities with [WPeMatico Synchronizer](https://etruel.com/downloads/wpematico-synchronizer/)
+* Tweaks on WPeMatico Info Metabox inside created posts to allow edit fields in Synchronizer extension. 
+* Fixes minor security issues. 
+* Fixes few PHP Deprecated notices.
+
+= 2.7.7.1 Sep 26, 2024 =
+
+This "almost" major Version 2.7.7 focuses on code and performance improvements together with the Full and Pro major versions.
+Recommended update it on testing environments before update on production websites.
+
+#### _Recent (may break) changes if you use some of our extensions_
+
+* New major versions on Addons. *Do not update if does not meet the requirements below.*
+* Completed removal of obsolete NonStatic class in favor of WP filters and actions.
+* Added new filter "wpematico_tags" on processing post tags on fetching.
+* Added version controls to avoid errors by incompatibilities.
+* Added filter to allow add tabs on Tools page.
+* Fixes filter name to wpematico_tools_tabs added in last version.
+* Many tweaks and improvements in function comments.
+* Updated addons library updater and license handlers.
+* Fixes and tweaks some returned parameters on few functions.
+* NOTE: **Enlarges the version required for the [WPeMatico Professional](https://etruel.com/downloads/wpematico-professional/) addon to 3.0**
+* NOTE2: **Enlarges the version required for the [WPeMatico Full Content](https://etruel.com/downloads/wpematico-full-content/) addon to 2.8**
+
+= 2.7.6 Aug 1, 2024 =
+* Improves XML importer process.
+* Improves the functions of feed hash for duplicated posts control.
+* Improves filter on creation of custom simplepie objects.
+* Added filter to allow skip batchsize for fetch feed items.
+
+= 2.7.5 Jul 2, 2024 =
+* Improves all skipped posts due to different conditions in the fetching process.
+* Fixes the campaign preview feature to work well with Professional keyword feature.
+* Fixes array type variable treated as integer.
+* Removed MDM banner from campaigns list.
+* NOTE: **Enlarges the version required for the Professional addon to 2.21**
+
+= 2.7.4 Jun 26, 2024 =
+* Fixes Extensions page by hidding it on WordPress Multisite.
+* Improves compatibilities con Professional AddOn to use feeds from sites with Cloudflare.
+* Removed deprecated texts of External Crons URls from Settings screen.
+
+= 2.7.3 Jun 18, 2024 =
+* Improves RDF feeds compatibility.
+* Fixes an issue getting the source permalink.
+* Fixes an issue with $sMessage variable on campaign logs.
+* Fixes issues with "/" character on some fields when duplicate campaigns.
+* Added some warning texts for LiteSpeed servers on System Status Page.
+
+= 2.7.2 Jun 12, 2024 =
+* Fixes call PHP ini_restore when the function is disabled in PHP.
+* Tweaks on the new Settings banner to show just the summary of the new release instead the entire content.
+* Fixes a wrong variable name.
+* Improves styles and fixes responsive on System Status page.
+* Makes the texts translatable on the screen and the help on the tools page.
+* Improves language files.
+
+= 2.7.1 Jun 7, 2024 =
+* Bump to WP 6.6
+* Tweaks on responsive style on System Status page.
+* Fixes Help tab on Tools page showing bad contents.
+* Fixes bad links to System Status in the new Tools page on notices or errors
+* Fixes title banner for old version and [MDM Giveaway](https://www.wpematico.com/giveaway/mdm/).
+
+= 2.7 Jun 3, 2024 =
+
+Major Version 2.7 focuses on code improvements and documentations follow the standards of WordPress coding developments.
+Recommended update it on testing environments before update on production websites.
+
+#### _Enhancements:_
+
+> * New WPeMatico Canonicals feature on Settings Page. *Activated by default*
+> * New improved batch method to optimize performance on fetching processes.
+> * New improved method to check and show broken campaigns on the campaigns List.
+> * New Page Tools to group features useful for WPeMatico.
+> * New feature to avoid or include Shorts on YouTube Campaign types.
+> * New feature to export / import all the WPeMatico Settings.
+> * New popup to see the last log after run the campaign.
+> * New improvements in duplicate posts control by refining the hash codes.
+> * A new improved Changelog on About page.
+> * A new dismissable banner to show the last changelog on Settings page.
+> * Some minor cosmetic improvements.
+> * Updated javascript vSort library to 1.2.2
+> * Changed all ini_set to custom function to allow log all the values.
+> * Added SimplePie version to System Status Page.
+> * Many code improvements and commented functions.
+
+#### _Bugfixes:_
+
+> * Fixes on getting bad source permalink on some cases by empty feed tags.
+> * Fixes some malformed values saved on Copy Campaign Quick Action.
+> * Fixes some issues and warnings on Campaigns List page.
+> * Fixes some warnings and minor bugs on Preview campaign. 
+> * Fixes set_time_limit() ERROR on websites with function disabled.
+> * Fixes many deprecated messages on jQuery functions calls.
+
+#### _Recent (may break) changes:_
+
+> * Removed the custom Simplepie library of the Settings and the plugin (finally).
+> * New improved method to manage hashes of campaigns and permalinks on duplicated posts control.
+> * New 'wpematico_custom_simplepie' filter to correct an old incorrect behavior on 'Wpematico_process_fetching'.
+> * The titles feature was improved to use a new added filter.
+> * On plugin update will be queued a process to upgrade each campaign to the newly way on hash creation to control post duplicates.
+> * NOTE: **Enlarges the version required for the Professional addon to 2.20**
+
 = 2.6.25 May 30, 2024 =
 
 * Added MDM notifications

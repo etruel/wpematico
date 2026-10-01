@@ -1,0 +1,731 @@
+/*------------------------------------------------------------------------------
+  WPeMatico Welcome screens: What's New, Getting Started, Changelog, Privacy.
+
+  Self-contained on purpose. These screens used to borrow the classes of
+  WordPress' own about.css (.about__section, .column, .has-2-columns, ...),
+  and core rewrites that file on major releases, so every WordPress update
+  could break the layout. Everything the screens need is declared here under
+  the wpem-about prefix; the only core classes still used are the ones that
+  have been stable for over a decade (wrap, button, dashicons).
+
+  The layout mirrors wp-admin/about.php (WordPress 7.1): same grid, gaps and
+  type scale, with the WPeMatico colours.
+
+   1.0 Screen
+   2.0 Container and tokens
+   3.0 Layout: sections and columns
+   4.0 Typography and elements
+   5.0 Header and navigation
+   6.0 Plugin blocks: add-ons, newsletter, changelog
+   7.0 Media queries
+------------------------------------------------------------------------------*/
+
+/* 1.0 - Screen ------------------------------------------------------------- */
+
+.dashboard_page_wpematico-about #wpcontent,
+.dashboard_page_wpematico-getting-started #wpcontent,
+.dashboard_page_wpematico-changelog #wpcontent,
+.dashboard_page_wpematico-privacy #wpcontent {
+	background: #fff;
+	padding: 0 24px;
+}
+
+/* 2.0 - Container and tokens ----------------------------------------------- */
+
+.wpem-about {
+	/* Section backgrounds */
+	--wpem-background: #222;
+	--wpem-subtle-background: #f4f4f4;
+
+	/* Header: deep blue so the orange of Robotico and of the stripe reads on it */
+	--wpem-header-background: #14213d;
+	--wpem-header-shade: #1b2c52;
+
+	/* Text */
+	--wpem-text: #1e1e1e;
+	--wpem-text-light: #fff;
+
+	/* Brand: orange for surfaces, a darker orange for text links (readable on white) */
+	--wpem-accent: #ef8e2f;
+	--wpem-link: #c05d00;
+	--wpem-rule: #ececec;
+
+	/* Navigation */
+	--wpem-nav-background: #fff;
+	--wpem-nav-color: var(--wpem-text);
+	--wpem-nav-current: var(--wpem-link);
+
+	--wpem-radius: 0.5rem;
+	--wpem-gap: 2rem;
+
+	max-width: 1000px;
+	margin: 24px auto;
+	clear: both;
+	line-height: 1.4;
+	color: var(--wpem-text);
+}
+
+.wpem-about div.updated,
+.wpem-about div.error,
+.wpem-about .notice {
+	display: none !important;
+}
+
+/* 3.0 - Layout: sections and columns --------------------------------------- */
+
+.wpem-about__section {
+	background: transparent;
+	clear: both;
+	margin: 0;
+	font-size: 1.125rem;
+	line-height: 1.55;
+}
+
+.wpem-about__section--2-columns,
+.wpem-about__section--3-columns {
+	display: grid;
+}
+
+.wpem-about__section--2-columns {
+	grid-template-columns: 1fr 1fr;
+}
+
+.wpem-about__section--2-columns.wpem-about__section--wider-left {
+	grid-template-columns: 3fr 2fr;
+}
+
+.wpem-about__section--2-columns.wpem-about__section--wider-right {
+	grid-template-columns: 2fr 3fr;
+}
+
+.wpem-about__section--3-columns {
+	grid-template-columns: repeat(3, 1fr);
+	font-size: 1rem;
+}
+
+.wpem-about__section--gutters {
+	gap: var(--wpem-gap);
+	margin-bottom: var(--wpem-gap);
+}
+
+.wpem-about__section--feature {
+	padding: var(--wpem-gap);
+	font-size: 1.6em;
+}
+
+.wpem-about__section--feature p {
+	margin: 0;
+}
+
+.wpem-about__section--feature p + p {
+	margin-top: calc(var(--wpem-gap) / 2);
+}
+
+.wpem-about__section--subtle {
+	background-color: var(--wpem-subtle-background);
+	border-radius: var(--wpem-radius);
+}
+
+.wpem-about__section--accent {
+	color: var(--wpem-text-light);
+	background-color: var(--wpem-accent);
+	border-radius: var(--wpem-radius);
+}
+
+.wpem-about__column {
+	padding: var(--wpem-gap);
+	min-width: 0;
+}
+
+.wpem-about__column--no-left {
+	padding-left: 0;
+}
+
+.wpem-about__column--no-right {
+	padding-right: 0;
+}
+
+.wpem-about__column--edge {
+	padding: 0;
+}
+
+.wpem-about__column--top {
+	align-self: start;
+}
+
+.wpem-about__column--center {
+	align-self: center;
+}
+
+.wpem-about__column--aligncenter {
+	text-align: center;
+}
+
+.wpem-about__column--span-2 {
+	grid-column-end: span 2;
+}
+
+.wpem-about__column p:first-of-type {
+	margin-top: 0;
+}
+
+.wpem-about__column p:last-of-type {
+	margin-bottom: 0;
+}
+
+.wpem-about__section-header {
+	grid-column-start: 1;
+	grid-column-end: -1;
+	margin-bottom: 0;
+	padding: var(--wpem-gap) var(--wpem-gap) 0;
+}
+
+.wpem-about__section + .wpem-about__section .wpem-about__section-header {
+	padding-bottom: var(--wpem-gap);
+}
+
+/* Section header alone in a container. */
+.wpem-about__section .wpem-about__section-header:first-child:last-child {
+	padding: 0;
+}
+
+/* 4.0 - Typography and elements -------------------------------------------- */
+
+.wpem-about h1 {
+	padding: 0;
+}
+
+.wpem-about h1,
+.wpem-about h2 {
+	margin-top: 0;
+	margin-bottom: calc(0.5 * var(--wpem-gap));
+	font-size: 2rem;
+	font-weight: 700;
+	line-height: 1.16;
+}
+
+.wpem-about h3 {
+	margin-top: 0;
+	margin-bottom: calc(0.5 * var(--wpem-gap));
+	font-size: 1.625rem;
+	font-weight: 700;
+	line-height: 1.4;
+}
+
+.wpem-about h4,
+.wpem-about h3.wpem-about__heading--small {
+	margin-top: 0;
+	font-size: 1.125rem;
+	font-weight: 600;
+	line-height: 1.6;
+}
+
+.wpem-about h1,
+.wpem-about h2,
+.wpem-about h3,
+.wpem-about h4 {
+	text-wrap: pretty;
+	color: inherit;
+}
+
+.wpem-about p {
+	text-wrap: pretty;
+	font-size: inherit;
+	line-height: inherit;
+}
+
+.wpem-about .wpem-about__subheading {
+	margin-top: 0;
+	margin-bottom: 1rem;
+	font-size: 1.5rem;
+	font-weight: 300;
+	line-height: 1.6;
+}
+
+.wpem-about__section a {
+	color: var(--wpem-link);
+	text-decoration: underline;
+}
+
+.wpem-about__section a:hover,
+.wpem-about__section a:active,
+.wpem-about__section a:focus {
+	color: var(--wpem-link);
+	text-decoration: none;
+}
+
+.wpem-about__section--accent a,
+.wpem-about__section--accent a:hover,
+.wpem-about__section--accent a:active,
+.wpem-about__section--accent a:focus {
+	color: var(--wpem-text-light);
+}
+
+.wpem-about__section a.button.button-hero {
+	padding-top: 1.1875rem;
+	padding-bottom: 1.1875rem;
+	font-size: 1.5rem;
+	line-height: 1.4;
+	white-space: normal;
+	text-wrap: pretty;
+	text-decoration: none;
+}
+
+.wpem-about__section a.button.button-primary {
+	color: #fff;
+	background: var(--wpem-accent);
+	border-color: var(--wpem-accent);
+}
+
+.wpem-about__section a.button.button-primary:hover,
+.wpem-about__section a.button.button-primary:focus {
+	color: #fff;
+	background: #d97a1f;
+	border-color: #d97a1f;
+}
+
+.wpem-about ul {
+	list-style: disc;
+	margin-left: calc(var(--wpem-gap) / 2);
+}
+
+.wpem-about li {
+	margin-bottom: 0.5rem;
+}
+
+.wpem-about img {
+	margin: 0;
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+.wpem-about code {
+	font-size: inherit;
+}
+
+.wpem-about__image {
+	margin: 0;
+}
+
+.wpem-about__image img {
+	max-width: 100%;
+	width: 100%;
+	height: auto;
+	border-radius: var(--wpem-radius);
+}
+
+.wpem-about__image + h3,
+.wpem-about__image + h4 {
+	margin-top: calc(0.75 * var(--wpem-gap));
+}
+
+/* A dashicon in a soft square, used by the columns without a screenshot. */
+.wpem-about__image--icon {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	width: 48px;
+	height: 48px;
+	border-radius: var(--wpem-radius);
+	background-color: var(--wpem-subtle-background);
+	color: var(--wpem-text);
+}
+
+.wpem-about__image--icon .dashicons {
+	font-size: 28px;
+	width: 28px;
+	height: 28px;
+}
+
+.wpem-about__section--subtle .wpem-about__image--icon {
+	background-color: #fff;
+}
+
+.wpem-about hr {
+	margin: calc(var(--wpem-gap) / 2) var(--wpem-gap);
+	height: 0;
+	border: none;
+	border-top: 6px solid var(--wpem-rule);
+}
+
+.wpem-about hr.wpem-about__hr--large {
+	margin: var(--wpem-gap) auto;
+}
+
+.wpem-about hr.wpem-about__hr--invisible {
+	border: none;
+}
+
+.wpem-about__return {
+	margin: 30px 0 0 -5px;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.wpem-about__return a {
+	text-decoration: none;
+	padding: 0 5px;
+}
+
+/* 5.0 - Header and navigation ---------------------------------------------- */
+
+.wpem-about__header {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-end;
+	box-sizing: border-box;
+	padding: calc(var(--wpem-gap) * 1.5);
+	padding-right: 26rem; /* Space for Robotico. */
+	min-height: clamp(10rem, 25vw, 18.75rem);
+	border-radius: var(--wpem-radius);
+	background-image:
+		url(../../images/about-header.png),
+		linear-gradient(115deg,
+			var(--wpem-header-background) 0%, var(--wpem-header-background) 52%,
+			var(--wpem-accent) 52%, var(--wpem-accent) 62%,
+			var(--wpem-header-shade) 62%, var(--wpem-header-shade) 74%,
+			var(--wpem-header-background) 74%);
+	background-repeat: no-repeat, no-repeat;
+	background-position: right bottom, center;
+	background-size: contain, cover;
+	background-color: var(--wpem-header-background);
+	color: var(--wpem-text-light);
+	margin-bottom: 0.25rem;
+}
+
+.wpem-about__badge {
+	display: block;
+	max-height: 80px;
+	width: auto;
+	margin: 0 0 1rem;
+}
+
+.wpem-about__header-title {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+.wpem-about__header-title h1 {
+	margin: 0;
+	padding: 0;
+	/* Fluid font size scales on browser size 960px - 1200px. */
+	font-size: clamp(2rem, 20vw - 9rem, 4rem);
+	line-height: 1;
+	font-weight: 600;
+	color: var(--wpem-text-light);
+}
+
+.wpem-about__header-text {
+	box-sizing: border-box;
+	max-width: 26em;
+	margin: 1rem 0 0;
+	padding: 0;
+	font-size: 1.6rem;
+	line-height: 1.15;
+	color: var(--wpem-text-light);
+}
+
+.wpem-about__header-text p {
+	margin: 0;
+}
+
+.wpem-about__nav {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding-top: 0;
+	margin-bottom: var(--wpem-gap);
+	background: var(--wpem-nav-background);
+	color: var(--wpem-nav-color);
+	border-bottom: 3px solid transparent;
+}
+
+.wpem-about__nav-tab {
+	box-sizing: border-box;
+	display: inline-block;
+	margin: 0;
+	padding: calc(var(--wpem-gap) * 0.75) var(--wpem-gap);
+	float: none;
+	font-size: 1.4em;
+	font-weight: 600;
+	line-height: 1;
+	text-decoration: none;
+	border-width: 0 0 3px;
+	border-style: solid;
+	border-color: transparent;
+	background: transparent;
+	color: inherit;
+}
+
+.wpem-about__nav-tab:hover,
+.wpem-about__nav-tab:active {
+	background-color: var(--wpem-nav-current);
+	color: var(--wpem-text-light);
+	border-radius: var(--wpem-radius);
+}
+
+.wpem-about__nav-tab:focus {
+	box-shadow: none;
+	outline: 2px solid var(--wpem-nav-current);
+	outline-offset: -2px;
+}
+
+.wpem-about__nav-tab--active {
+	margin-bottom: -3px;
+	color: var(--wpem-nav-current);
+	border-width: 0 0 6px;
+	border-color: var(--wpem-nav-current);
+}
+
+.wpem-about__nav-tab--active:hover,
+.wpem-about__nav-tab--active:active {
+	background-color: var(--wpem-nav-current);
+	color: var(--wpem-text-light);
+	border-color: var(--wpem-nav-current);
+	border-radius: var(--wpem-radius);
+}
+
+/* 6.0 - Plugin blocks: add-ons, newsletter, changelog ---------------------- */
+
+.wpem-about__addon {
+	display: flex;
+	align-items: flex-start;
+	gap: 1rem;
+	margin-bottom: 1rem;
+	font-size: 1rem;
+}
+
+.wpem-about__addon-img img {
+	display: block;
+	width: 120px;
+	max-width: 120px;
+	height: auto;
+	border-radius: calc(var(--wpem-radius) / 2);
+}
+
+.wpem-about__addon-text p {
+	margin: 0;
+}
+
+.wpem-about__addon-links {
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	margin: 1.5rem 0 0;
+	font-size: 1rem;
+	font-weight: 600;
+}
+
+/* Newsletter form (accent column). */
+.wpem-about__newsletter label {
+	display: block;
+	margin-bottom: 0.5em;
+	font-size: 1rem;
+	font-weight: 600;
+	color: var(--wpem-text-light);
+}
+
+.wpem-about__newsletter-row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	gap: 0 15px;
+}
+
+.wpem-about__newsletter-row .wpem-about__newsletter-field {
+	flex: 1 1 40%;
+	min-width: 0;
+}
+
+.wpem-about__newsletter-field {
+	margin-bottom: 1em;
+}
+
+.wpem-about__newsletter input[type="text"] {
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 7.5px 15px;
+	border-radius: calc(var(--wpem-radius) / 2);
+	border: 2px solid #d3741c;
+	box-shadow: none !important;
+}
+
+.wpem-about__newsletter-submit {
+	margin-top: 1.5rem;
+	text-align: right;
+}
+
+.wpem-about__newsletter-submit .button-primary {
+	padding: 10px 20px;
+	border-radius: calc(var(--wpem-radius) / 2);
+	font-size: 15px;
+	background: var(--wpem-background);
+	border-color: var(--wpem-background);
+}
+
+.wpem-about__newsletter-submit .button-primary:hover {
+	background: #111;
+	border-color: #111;
+}
+
+/* Changelog parsed from readme.txt. */
+.wpem-about__changelog h2,
+.wpem-about__changelog h3,
+.wpem-about__changelog h4 {
+	margin-top: 1.5em;
+	font-size: 1.125rem;
+}
+
+.wpem-about__changelog ul {
+	margin-left: 1.5rem;
+}
+
+/* 7.0 - Media queries ------------------------------------------------------ */
+
+@media screen and (max-width: 1035px) {
+	.wpem-about__header {
+		background-size: auto 100%, cover;
+	}
+}
+
+@media screen and (max-width: 960px) {
+	.wpem-about__header {
+		padding-right: 21rem;
+	}
+
+	.wpem-about__nav-tab {
+		padding: calc(var(--wpem-gap) * 0.75) calc(var(--wpem-gap) * 0.5);
+	}
+}
+
+@media screen and (max-width: 782px) {
+	.dashboard_page_wpematico-about.auto-fold #wpcontent,
+	.dashboard_page_wpematico-getting-started.auto-fold #wpcontent,
+	.dashboard_page_wpematico-changelog.auto-fold #wpcontent,
+	.dashboard_page_wpematico-privacy.auto-fold #wpcontent {
+		padding-left: 24px;
+	}
+
+	.wpem-about__section--2-columns.wpem-about__section--wider-left,
+	.wpem-about__section--2-columns.wpem-about__section--wider-right,
+	.wpem-about__section--3-columns {
+		grid-template-columns: 1fr;
+		margin-bottom: calc(var(--wpem-gap) / 2);
+	}
+
+	.wpem-about__column {
+		padding-top: var(--wpem-gap);
+		padding-bottom: var(--wpem-gap);
+	}
+
+	.wpem-about__section--3-columns .wpem-about__column {
+		padding-top: calc(var(--wpem-gap) / 2);
+		padding-bottom: calc(var(--wpem-gap) / 2);
+	}
+
+	/* Collapsed to one column: nothing should sit indented from the rest. */
+	.wpem-about__section--3-columns .wpem-about__column,
+	.wpem-about__section--wider-left .wpem-about__column,
+	.wpem-about__section--wider-right .wpem-about__column {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.wpem-about__column--span-2 {
+		grid-column-end: auto;
+	}
+
+	.wpem-about__header {
+		padding: var(--wpem-gap);
+		padding-right: 17rem;
+	}
+
+	.wpem-about__header-text {
+		margin-top: 0.5rem;
+		font-size: 1.4em;
+	}
+
+	.wpem-about__nav-tab {
+		margin-top: 0;
+		margin-right: 0;
+		font-size: 1.2em;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.wpem-about__section--2-columns {
+		grid-template-columns: 1fr;
+		margin-bottom: var(--wpem-gap);
+	}
+
+	/* Text first, screenshot second, whichever side it was on. */
+	.wpem-about__section--2-columns:not(.wpem-about__section--wider-left, .wpem-about__section--wider-right) .wpem-about__column:has(img) {
+		order: 1;
+	}
+
+	.wpem-about__section--2-columns:not(.wpem-about__section--wider-left, .wpem-about__section--wider-right) .wpem-about__column:not(:has(img)) {
+		order: 0;
+	}
+
+	.wpem-about__section--2-columns .wpem-about__column {
+		padding-top: calc(var(--wpem-gap) / 2);
+		padding-bottom: calc(var(--wpem-gap) / 2);
+	}
+
+	.wpem-about__column--no-left {
+		padding-right: 0;
+	}
+
+	.wpem-about__column--no-right {
+		padding-left: 0;
+	}
+
+	.wpem-about__header {
+		min-height: auto;
+		padding-right: var(--wpem-gap);
+		background-image: none;
+	}
+
+	.wpem-about__nav {
+		display: block;
+	}
+
+	.wpem-about__nav-tab {
+		display: block;
+		margin-bottom: 0;
+		padding: calc(var(--wpem-gap) / 2);
+		border-left-width: 6px;
+		border-bottom: none;
+	}
+
+	.wpem-about__nav-tab--active {
+		border-bottom: none;
+		border-left-width: 6px;
+	}
+
+	.wpem-about__addon-links {
+		flex-direction: column;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.wpem-about__section--feature .wpem-about__column,
+	.wpem-about__section-header {
+		padding: 0;
+	}
+
+	.wpem-about__section--feature {
+		font-size: 1.4em;
+	}
+
+	.wpem-about h1,
+	.wpem-about h2 {
+		font-size: 2em;
+	}
+}

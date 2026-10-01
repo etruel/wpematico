@@ -1,0 +1,633 @@
+/* Modal Log */
+.wpe_modal_log-box .wpe_modal_log-body{
+    background-color: #fff;
+    padding: 0px;
+    max-width: 80%;
+    border-radius: 5px;
+    margin: 0 auto;
+    position: relative;
+}
+
+#wpe-site-checkout-content {
+    width: 100%;
+    height: 100%;
+    max-width: 85%;
+    max-height: 85%;
+}
+
+.wpe-iframe-container {
+    width: 100%;
+    height: 100%;
+}
+
+/* ======================== */
+/* MAIN STRUCTURE           */
+/* ======================== */
+.wpematico-dashboard-container {
+    margin: 10px;
+    padding: 20px;
+    background: #f1f1f1;
+}
+
+/* ======================== */
+/* MODULES LISTING          */
+/* ======================== */
+.wpematico-modules-grid {
+    margin: 0;
+}
+
+.modules-title {
+    font-size: 1.8em;
+    color: #23282d;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #0073aa;
+}
+
+.modules-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* ======================== */
+/* MODULE CARDS             */
+/* ======================== */
+.wpematico-module-card {
+    position: relative;
+    background: #fff;
+    border: 1px solid #bbb;
+    border-radius: 7px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    min-height: 270px;
+    overflow: visible;
+    z-index: 1;
+}
+
+.wpematico-module-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+    z-index: 20;
+}
+
+.wpematico-module-card.active {
+    border-left: 4px solid #ff9100;  /* #00a32a */
+    animation: pulse-active 1.5s ease;
+}
+
+@keyframes pulse-active {
+    0% { box-shadow: 0 0 0 0 rgba(0, 163, 42, 0.5); }
+    70% { box-shadow: 0 0 0 10px rgba(0, 163, 42, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 163, 42, 0); }
+}
+
+/* Card header */
+.module-header {
+    align-items: flex-start;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.module-icon {
+    font-size: 24px;
+    margin: 0 auto;
+    color: #0073aa;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f6fc;
+    border-radius: 50%;
+}
+
+.module-info {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.module-info h3 {
+    margin: 10px auto 0;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #23282d;
+}
+
+.module-category {
+    display: inline-block;
+    background: #f0f6fc;
+    color: #0073aa;
+    font-size: 0.75em;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 3px;
+    margin-top: 3px;
+    text-transform: uppercase;
+}
+
+/* Filter styling */
+.filterbymodule {
+    display: inline-block;
+    margin: 0 5px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filterbymodule:hover {
+    background-color: #e0e0e0;
+    border-color: #ccc;
+}
+
+.filterbymodule.active {
+    background-color: #0073aa;
+    color: white;
+    border-color: #005177;
+}
+
+.filterbymodule.active:hover {
+    background-color: #006799;
+}
+
+.filterbymodule:focus {
+    outline: 2px solid #0073aa;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 3px rgba(0, 115, 170, 0.3);
+}
+
+/* Special badges */
+.module-badges {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    gap: 5px;
+}
+
+.module-badge {
+    font-size: 0.7em;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    position: relative;
+}
+
+/* PRO badge - Blue gradient */
+.badge-pro {
+    color: white;
+    background: linear-gradient(335deg, #6599cd, #4a7cb4, #3a6aa8, #2a589c);
+}
+
+/* Installed badge - lighter blue, so "you already have this" reads apart from
+   the darker blue of a PRO addon you do not own yet. */
+.badge-installed {
+    color: #123a5c;
+    background: linear-gradient(335deg, #cfe8fb, #b3d9f7, #9ccdf3, #8ac3f0);
+    border: 1px solid #7ab5e4;
+}
+
+/* FREE badge - Green gradient */
+.badge-free {
+    color: white;
+    background: linear-gradient(335deg, #4db385, #399673, #2e8960, #237c4e);
+}
+
+/* AddOn badge - Orange gradient */
+.badge-addon {
+    color: white;
+    background: linear-gradient(335deg, #f08804, #d87b03, #c06e02, #a86101);
+}
+
+/* NEW badge - Yellow gradient */
+.badge-new {
+    color: #333;
+    background: linear-gradient(335deg, #ffcc00, #e6b800, #cca300, #b38f00);
+}
+
+/* Tooltip styling */
+.module-badge:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    background: #23282d;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    text-transform: none;
+    z-index: 1000;
+    bottom: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: 200px;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.4;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.module-badge:hover::after {
+    opacity: 1;
+}
+
+.module-badge:hover::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #23282d;
+    bottom: calc(100%);
+    z-index: 1001;
+    pointer-events: none;
+}
+
+/* Card body */
+.module-description {
+    flex-grow: 1;
+    margin-bottom: 15px;
+}
+
+.module-description p {
+    margin: 0;
+    color: #646970;
+    line-height: 1.5;
+}
+
+/* Card footer: its own quiet strip at the foot of the card, edge to edge. */
+.module-footer {
+    position: relative;
+    margin: auto -20px -20px;
+    padding: 12px 18px;
+    background: #fafbfc;
+    border-top: 1px solid #e9ecef;
+    border-radius: 0 0 6px 6px;
+    min-height: 32px;
+}
+
+.module-actions {
+    display: flex;
+    /* Buttons pack left, the switch is pushed right by its own auto margin below.
+       ★ It has to be the switch that carries the auto margin, not the buttons: an
+       auto margin *before* the wrap point eats the free space of the line, which
+       with flex-wrap on drops the switch to a second row even when everything
+       fits comfortably. */
+    justify-content: flex-start;
+    align-items: center;
+    /* 8px, not 10: at four columns Settings + Install + the switch came to three
+       pixels more than the card could hold, and the ellipsis below was quietly
+       eating the label to make it "fit". */
+    gap: 8px;
+    /* ★ A label that grows must push the row onto a second line, never be cut.
+       At four columns a card is 266px wide, and a footer carrying Settings + the
+       install button fits with exactly ten pixels to spare — which "Installing…"
+       eats whole. Anything longer, and every translation of it is, would hit the
+       ellipsis below with no warning. */
+    flex-wrap: wrap;
+    row-gap: 8px;
+}
+
+.module-actions .wpematico-switch {
+    margin-left: auto;
+}
+
+.module-actions .button {
+    /* Sized by its own label, on the left, with the switch across from it.
+       Stretching them to fill the row is what made the footer look heavy. */
+    flex: 0 0 auto;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    /* WP 7 gives .button a 32px line-height, which blew these up to 44px tall
+       and pushed them against the bottom of the card. */
+    line-height: 26px;
+    height: 28px;
+    padding: 0 12px;
+    min-height: 0;
+    border-radius: 6px;
+    box-shadow: none;
+    box-sizing: border-box;
+    white-space: nowrap;
+    /* The ellipsis is the last resort, for a label no layout could hold. With the
+       row able to wrap it is reached far less often, so it may take the whole
+       width of the card before it starts cutting: 60% used to clip "Installing…"
+       on a narrow card while half the footer sat empty. */
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.module-actions .button:hover {
+    box-shadow: none;
+}
+
+/* Secondary actions (Settings, Install): quiet, so the switch and the GET IT
+   button are the only things asking for attention in the strip. */
+.module-actions .module-settings {
+    background: #fff;
+    border-color: #dcdfe3;
+    color: #3c434a;
+}
+
+.module-actions .module-settings:hover,
+.module-actions .module-settings:focus {
+    background: #f6f7f7;
+    border-color: #c3c7cb;
+    color: #1d2327;
+}
+
+/* Install: free, and it is an action on this site, so it gets the green of the
+   FREE badge and an icon that says "download" at a glance. */
+.module-actions .button.button-install {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #2e8960;
+    border-color: #2e8960;
+    color: #fff;
+}
+
+.module-actions .button.button-install:hover,
+.module-actions .button.button-install:focus {
+    background: #237c4e;
+    border-color: #237c4e;
+    color: #fff;
+}
+
+.module-actions .button.button-install .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    line-height: 1;
+}
+
+/* While installing: core's `.button.installing` draws the spinning update icon
+   in the :before, so the button needs no spinner of its own — it only has to
+   stop looking clickable. */
+.module-actions .button.button-install.installing {
+    cursor: default;
+    /* The aria-disabled the JS sets brings core's grey `color` with !important,
+       which over the green fill left the label barely readable. */
+    color: #fff !important;
+    background: #4a9c78;
+    border-color: #4a9c78;
+}
+
+.module-actions .button.button-install.installing:before {
+    /* Core's red reads as an error over the green fill. */
+    color: #fff;
+    font-size: 16px;
+    line-height: 26px;
+}
+
+/* Notices */
+.module-disabled-notice, .module-notice {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    background: #fff8e5;
+    padding: 10px;
+    border: 1px solid #ffb900;
+    border-radius: 4px;
+    z-index: 10;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.module-notice {
+    background: #c2f2fe;
+    border-color: #00ccff;
+}
+
+/* ======================== */
+/* ESSENTIALS CARD          */
+/* ======================== */
+.essentials-box {
+    border-color: #161e28;
+    background: #253142;
+}
+
+.modules-container .wpematico-module-card.essentials-box {
+    border-color: #161e28;
+    background:#253142;
+}
+
+.modules-container .wpematico-module-card.essentials-box i {
+    background:#161e28;
+}
+
+.modules-container .wpematico-module-card.essentials-box a {
+    text-decoration:none;
+}
+
+.modules-container .wpematico-module-card.essentials-box a:focus {
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow:none;
+}
+
+.modules-container .wpematico-module-card.essentials-box header h3 {
+    color:#f7d070;
+}
+
+.modules-container .wpematico-module-card.essentials-box ul {
+    line-height: 1;
+    margin-bottom: 0;
+    text-align: left;
+    color:#a2aab5;
+}
+
+.modules-container .wpematico-module-card.essentials-box ul li:before {
+    font-family: dashicons;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    content: "";
+    text-align: center;
+    vertical-align: middle;
+    color: #161e28;
+    border-radius: 10px;
+    background:#9ce2b6;
+}
+
+.modules-container .wpematico-module-card.essentials-box ul li:last-child {
+    margin-bottom:0;
+}
+
+/* The shared footer strip is a light one; on the dark card it has to be dark too. */
+.modules-container .wpematico-module-card.essentials-box .module-footer {
+    background: #1b2431;
+    border-top-color: #161e28;
+}
+
+.modules-container .wpematico-module-card.essentials-box .status {
+    text-align: center;
+    border-color: #161e28;
+}
+
+.modules-container .wpematico-module-card.essentials-box .status .button {
+    font-weight: 600;
+    line-height: 30px;
+    float: none;
+    padding: 0 24px;
+    text-transform: uppercase;
+    color: #5a4000;
+    border-color: #f7d070;
+    background:#f7d070;
+}
+
+.wpematico-module-card.essentials-box .module-actions .button {
+    flex-grow: 1;
+    text-align: center;
+}
+
+/* ======================== */
+/* SPECIFIC ELEMENTS        */
+/* ======================== */
+/* PRO button: flat and calm, the gradient read as a banner more than a button */
+.button-pro {
+    background: #3a6aa8 !important;
+    border-color: #3a6aa8 !important;
+    color: #fff !important;
+}
+
+.button-pro:hover,
+.button-pro:focus {
+    background: #2a589c !important;
+    border-color: #2a589c !important;
+    color: #fff !important;
+}
+
+/* Toggle switch */
+.wpematico-switch {
+    position: relative;
+    display: inline-block;
+    width: 42px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
+/* The real checkbox never shows. WP 7 styles input[type=checkbox]:disabled with
+   more specificity than a bare `.wpematico-switch input`, and was painting a
+   16x2 blue bar at 0.7 opacity inside the track — the stray line on every
+   blocked switch. Matched per state, and taken out of the flow so it cannot
+   push anything either. */
+.wpematico-switch input[type="checkbox"],
+.wpematico-switch input[type="checkbox"]:checked,
+.wpematico-switch input[type="checkbox"]:disabled,
+.wpematico-switch input[type="checkbox"]:disabled:checked {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    box-shadow: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.wpematico-switch input[type="checkbox"]:before,
+.wpematico-switch input[type="checkbox"]:checked:before {
+    content: none;
+}
+
+.wpematico-switch .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Off is a light grey. The old near-black read as a filled, "on" control. */
+    background-color: #d3d8dd;
+    transition: background-color .2s ease;
+    border-radius: 999px;
+}
+
+.wpematico-switch .slider.disabled {
+    background-color: #e6e9ec;
+    /* Faded, so "cannot be changed" reads apart from a plain off switch. */
+    opacity: .65;
+    cursor: not-allowed;
+}
+
+.wpematico-switch .slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    bottom: 3px;
+    background-color: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    transition: transform .2s ease;
+    border-radius: 50%;
+}
+
+.wpematico-switch .slider.disabled:before {
+    box-shadow: none;
+}
+
+.wpematico-switch input:checked + .slider {
+    background-color: #F08804;
+}
+
+.wpematico-switch input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+.wpematico-switch input:focus-visible + .slider {
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(240, 136, 4, 0.55);
+}
+
+.module-footer:hover .module-disabled-notice,
+.module-footer:hover .module-notice {
+    display: block;
+    opacity: 1;
+    transition: opacity 0.3s ease, display 0s 0.1s;
+}
+
+@media (prefers-color-scheme: dark) {
+    .filterbymodule:focus {
+        outline-color: #00a0d2;
+    }
+}
+
+/* ======================== */
+/* RESPONSIVE DESIGN        */
+/* ======================== */
+@media (max-width: 782px) {
+    .modules-container {
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    }
+    
+    .module-disabled-notice, 
+    .module-notice {
+        position: static;
+        margin-top: 10px;
+        display: block;
+        opacity: 1;
+    }
+    
+    .module-badge:hover::after {
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 150px;
+    }
+}
