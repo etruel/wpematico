@@ -214,7 +214,7 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 
 > See all detailed changelog at [WPeMatico Releases](https://wpematico.com/releases/)
 
-= 2.9 – Sep 30, 2026 =
+= 2.9 – Oct 8, 2026 =
 
 Major Version 2.9 renews **the whole interface** and lays the **foundations for 3.0**: a Dashboard to switch every feature on and off, a Settings screen that explains every option, new tools to inspect feeds and to move in from other plugins, and WPeMatico in eleven languages together with all its extensions.
 Recommended to test it in a staging environment before updating production websites, and to **update your WPeMatico add-ons first** (see below).
