@@ -36,6 +36,7 @@ With WPeMatico, you can finally reclaim your time while the plugin works tireles
 * **bbPress Forum Support**: Automatically publish forums, topics, and replies directly into your bbPress-powered community sites.
 * **Custom XML Feeds**: Import and publish content from any custom XML feed by mapping fields to your specific content needs.
 * **YouTube Integration**: Automatically publish videos from YouTube playlists, channels, and user feeds—keep your site fresh with video content.
+* **Vimeo Integration**: Automatically publish videos from Vimeo users, channels, and groups—just paste the address and each post gets its player, thumbnail, and description.
 * **Multilingual Publishing**: Full support for multilingual sites using Polylang. Requires **Polylang** + [WPeMatico Polylang](https://wordpress.org/plugins/wpematico-polylang/?utm_source=extension&utm_medium=description_tab&utm_content=wpematico-polylang&utm_campaign=readme) for complete compatibility.
 
 ### 🚀 Perfect For You If:
@@ -72,7 +73,7 @@ Supercharge your WPeMatico experience with professional addons that give you **c
 * **[Polyglot](https://etruel.com/downloads/wpematico-polyglot/?utm_source=extension&utm_medium=description_tab&utm_content=wpematico-polyglot&utm_campaign=readme)**: Automatically translate posts into 100+ languages before publishing. Perfect for building global, multilingual content sites.
 
 ---
-* **[Make me Feed "Good"](https://etruel.com/downloads/wpematico-make-feed-good/?utm_source=extension&utm_medium=description_tab&utm_content=wpematico-make-feed-good&utm_campaign=readme)**: Generate custom RSS 2.0 feeds from any website—even those without native RSS support. Curate content from any source on the web.
+* **[Make me Feed "Good"](https://etruel.com/downloads/wpematico-make-me-feed-good/?utm_source=extension&utm_medium=description_tab&utm_content=wpematico-make-feed-good&utm_campaign=readme)**: Generate custom RSS 2.0 feeds from any website—even those without native RSS support. Curate content from any source on the web.
 
 ---
 * **[Facebook Fetcher](https://etruel.com/downloads/wpematico-facebook-fetcher/?utm_source=extension&utm_medium=description_tab&utm_content=wpematico-facebook-fetcher&utm_campaign=readme)**: Import posts, images, and comments from your own Facebook pages directly into WordPress, including full-resolution images and commenter details.
@@ -84,7 +85,19 @@ Supercharge your WPeMatico experience with professional addons that give you **c
 * **[Publish 2 Email](https://etruel.com/downloads/wpematico-publish-2-email/?utm_source=extension&utm_medium=description_tab&utm_content=wpematico-publish-2-email&utm_campaign=readme)**: Send fetched posts to email addresses using WordPress "Post via Email" or plugins like Postie. Ideal for remote publishing and email-to-blog workflows.
 
 ---
+* **[Exporter](https://etruel.com/downloads/wpematico-exporter/?utm_source=extension&utm_medium=description_tab&utm_content=wpematico-exporter&utm_campaign=readme)**: Export the posts of your site to a file on a schedule. You write the template, so it can be XML, JSON or CSV, saved on your server or sent over FTP, SFTP or SSH.
+
+---
+* **[Office Campaign Type](https://etruel.com/downloads/wpematico-office-campaign-type/?utm_source=extension&utm_medium=description_tab&utm_content=wpematico-office-campaign-type&utm_campaign=readme)**: Publish posts from office documents hosted or uploaded in a folder on your server.
+
+---
 * **[WPeMatico Polylang](https://wordpress.org/plugins/wpematico-polylang/?utm_source=extension&utm_medium=description_tab&utm_content=wpematico-polylang&utm_campaign=readme)**: Assign posts to specific Polylang languages for streamlined translation workflows. Free integration with Polylang and Lingotek.
+
+---
+* **[WPeMatico RSS Feed Reader](https://wordpress.org/plugins/wpematico-rss-feed-reader/?utm_source=extension&utm_medium=description_tab&utm_content=wpematico-rss-feed-reader&utm_campaign=readme)**: Print the contents of any feed on your pages, posts and widgets, without creating posts. Free on WordPress.org.
+
+---
+* **[WPeMatico Custom Hooks](https://wordpress.org/plugins/wpematico-custom-hooks/?utm_source=extension&utm_medium=description_tab&utm_content=wpematico-custom-hooks&utm_campaign=readme)**: Run your own PHP on the WPeMatico actions and filters, right from the WordPress admin. Free on WordPress.org.
 
 ---
 ## 🛟 World-Class Support at Your Fingertips ##
