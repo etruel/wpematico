@@ -170,13 +170,14 @@ This plugin was originally inspired by WP-o-Matic and early versions of BackWPUp
 
 == Screenshots ==
 
-1. Dashboard Widget and WPeMatico menu integration.
-2. Campaigns list table with key metrics and quick actions.
+1. The WPeMatico Dashboard: one card per feature, to switch on only what your site uses.
+2. Campaigns list with the state, last run and published posts of every campaign, and quick actions to run them.
 3. Inline Quick Edit for rapid campaign adjustments.
-4. Contextual Help tabs integrated into WordPress.
-5. Comprehensive Settings Page.
-6. Campaign Editor with full configuration options.
-7. SimplePie Requirements Tests for troubleshooting.
+4. Campaign Editor: feeds, options, campaign type and control panel.
+5. Settings, split into sections, with every option explained.
+6. Feed Viewer in Tools: inspect any feed address and see what it answers.
+7. System Status, to check what your server offers.
+8. The settings of an add-on live in their own tab: here GPT Spinner, a premium extension that rewrites text and creates images with AI.
 
 == Frequently Asked Questions ==
 

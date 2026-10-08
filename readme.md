@@ -64,15 +64,7 @@ The **System Status** screen inside the plugin lists everything else it checks o
 
 ## Installation
 
-### From WordPress.org (recommended)
-
-In your WordPress admin go to **Plugins → Add New**, search for `WPeMatico`, then **Install Now** and **Activate**.
-
-### From GitHub
-
-Download the `wpematico-*.zip` file attached to a [release](https://github.com/etruel/wpematico/releases) and upload it in **Plugins → Add New → Upload Plugin**. That file unpacks into the `wpematico/` folder, which is the one WordPress and every add-on expect, so it updates the copy you already have.
-
-The *Source code* archives and the green *Download ZIP* button unpack into a differently named folder, and WordPress would install that as a second plugin beside the first. Use the release file.
+In your WordPress admin go to **Plugins → Add New**, search for `WPeMatico`, then **Install Now** and **Activate**. You can also download it from its [page on WordPress.org](https://wordpress.org/plugins/wpematico/).
 
 ### First steps
 
