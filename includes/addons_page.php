@@ -1521,7 +1521,30 @@ function wpematico_get_old_addons(){
 		);
 	}
 
+	// The Google News campaign type is part of core from 2.9.1.
+	$googlo_news = wpematico_installed_addon_file('WPeMatico Googlo News');
+	if ('' !== $googlo_news) {
+		$addons['wpematico_googlo_news'] = array(
+			'action_link'	=> __('Inactive &mdash; Now part of WPeMatico', 'wpematico'),
+			'basename'		=> $googlo_news,
+			'on_deactivate' => 'wpematico_enable_googlenews_campaign_type',
+		);
+	}
+
 	return apply_filters('wpematico_get_old_addons', $addons); 
+}
+
+/**
+ * Turns the Google News campaign type on, so a site that had the Googlo News addon
+ * keeps its campaigns running.
+ */
+function wpematico_enable_googlenews_campaign_type() {
+	$cfg = get_option(WPeMatico::OPTION_KEY, array());
+	if (!is_array($cfg) || !empty($cfg['enable_googlenews'])) {
+		return;
+	}
+	$cfg['enable_googlenews'] = true;
+	update_option(WPeMatico::OPTION_KEY, $cfg);
 }
 
 /**

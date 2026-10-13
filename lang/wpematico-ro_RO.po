@@ -42,9 +42,9 @@ msgid ""
 "which version of WPeMatico it needs, rather than run against a core that "
 "cannot support it."
 msgstr ""
-"Un supliment mai nou decât pluginul principal își dezactivează propriile "
-"funcții și spune de ce versiune de WPeMatico are nevoie, în loc să ruleze pe "
-"un nucleu care nu îl poate susține."
+"Un supliment mai nou decât modulul principal își dezactivează propriile "
+"funcționalități și spune de ce versiune de WPeMatico are nevoie, în loc să "
+"ruleze pe un nucleu care nu îl poate susține."
 
 #: includes/addons_help.php:105
 msgid "No update showing when you expect one."
@@ -102,10 +102,10 @@ msgid ""
 "&rsaquo; Writing &rsaquo; \"See local Addons in plugin list\" puts them back "
 "among the other plugins; this screen works the same either way."
 msgstr ""
-"Suplimentele WPeMatico sunt ascunse implicit din lista principală de "
-"pluginuri. Setări &rsaquo; Scriere &rsaquo; „Arată suplimentele locale în "
-"lista de pluginuri” le readuce printre celelalte; acest ecran funcționează "
-"la fel în ambele cazuri."
+"Suplimentele WPeMatico sunt ascunse implicit din lista principală de module. "
+"Setări &rsaquo; Scriere &rsaquo; „Arată suplimentele locale în lista de "
+"module” le readuce printre celelalte; acest ecran funcționează la fel în "
+"ambele cazuri."
 
 #: includes/addons_help.php:36
 msgid "The views, the counter and the search box."
@@ -164,7 +164,7 @@ msgid ""
 msgstr ""
 "Instalat, fără altă acțiune, înseamnă că opțiunea nu poate fi oferită aici: "
 "fie acest site nu rulează deloc actualizări automate, fie utilizatorul tău "
-"nu are dreptul să actualizeze pluginuri."
+"nu are dreptul să actualizeze module."
 
 #: includes/addons_help.php:48 includes/campaigns_list_help.php:91
 msgid "Bulk actions."
@@ -178,7 +178,7 @@ msgid ""
 msgstr ""
 "Selectează rânduri și aplică Activează, Dezactivează, Șterge sau acțiunile "
 "pentru actualizări automate. Sunt chiar acțiunile WordPress, aplicate exact "
-"ca pe ecranul Pluginuri."
+"ca pe ecranul Module."
 
 #: includes/addons_help.php:50
 msgid ""
@@ -220,7 +220,7 @@ msgid ""
 "WordPress emails the site administrator after it installs an update, and "
 "when one fails."
 msgstr ""
-"WordPress îi trimite e-mail administratorului sitului după ce instalează o "
+"WordPress îi trimite email administratorului sitului după ce instalează o "
 "actualizare și când una eșuează."
 
 #: includes/addons_help.php:61
@@ -233,7 +233,7 @@ msgid ""
 "While WPeMatico has an update pending, add-on updates wait — by hand and "
 "automatically alike."
 msgstr ""
-"Un supliment extinde pluginul principal, deci nu este niciodată instalat "
+"Un supliment extinde modulul principal, deci nu este niciodată instalat "
 "înaintea lui. Cât timp WPeMatico are o actualizare în așteptare, "
 "actualizările suplimentelor așteaptă — și manual, și automat."
 
@@ -245,7 +245,7 @@ msgid ""
 msgstr ""
 "De aceea, activarea actualizărilor automate pentru un supliment le activează "
 "și pentru WPeMatico: cu amândouă pornite, suplimentul se instalează imediat "
-"după pluginul principal, fără supraveghere."
+"după modulul principal, fără supraveghere."
 
 #: includes/addons_help.php:64
 msgid ""
@@ -360,7 +360,7 @@ msgid ""
 msgstr ""
 "Comutatorul rămâne cum este și nu sosește nicio actualizare, fiindcă "
 "magazinul nu servește niciuna pentru o licență expirată. Rândul și "
-"notificarea de actualizare a pluginului spun despre ce licență e vorba și ce "
+"notificarea de actualizare a modulului spun despre ce licență e vorba și ce "
 "lipsește."
 
 #: includes/addons_help.php:93
@@ -377,17 +377,17 @@ msgid ""
 "plugins of the site; and the Plugins list, when the Writing setting above is "
 "on."
 msgstr ""
-"Acest ecran, sub fiecare supliment; Panou &rsaquo; Actualizări, împreună cu "
-"toate pluginurile sitului; și lista de pluginuri, când setarea de la Scriere "
-"de mai sus este activă."
+"Acest ecran, sub fiecare supliment; Panou control &rsaquo; Actualizări, "
+"împreună cu toate modulele sitului; și lista de module, când setarea de la "
+"Scriere de mai sus este activă."
 
 #: includes/addons_help.php:97
 msgid ""
 "On Dashboard &rsaquo; Updates an add-on that is waiting cannot be selected, "
 "so a bulk update does not attempt what it cannot install."
 msgstr ""
-"În Panou &rsaquo; Actualizări un supliment care așteaptă nu poate fi bifat, "
-"ca o actualizare în masă să nu încerce ceea ce nu poate instala."
+"În Panou control &rsaquo; Actualizări un supliment care așteaptă nu poate fi "
+"bifat, ca o actualizare în masă să nu încerce ceea ce nu poate instala."
 
 #: includes/addons_page.php:1016
 msgid "Go to %s WebPage"
@@ -411,7 +411,7 @@ msgstr "Inactiv &mdash; acum face parte din WPeMatico"
 
 #: includes/addons_page.php:337
 msgid "WPeMatico Add-Ons Plugins"
-msgstr "Pluginuri supliment WPeMatico"
+msgstr "Module supliment WPeMatico"
 
 #: includes/addons_page.php:364 includes/addons_page.php:366
 msgid "Search Add-Ons"
@@ -419,7 +419,7 @@ msgstr "Caută suplimente"
 
 #: includes/addons_page.php:365
 msgid "Add-on name, feature…"
-msgstr "Nume de supliment, funcție…"
+msgstr "Nume de supliment, funcționalitate…"
 
 #: includes/addons_page.php:424
 msgid "Showing %1$s of %2$s."
@@ -455,11 +455,11 @@ msgstr "Instalează acum"
 
 #: includes/addons_page.php:583
 msgid "See Plugins"
-msgstr "Vezi pluginurile"
+msgstr "Vezi modulele"
 
 #: includes/addons_page.php:584
 msgid "See plugins in membership at etruel's store"
-msgstr "Vezi pluginurile din abonament în magazinul etruel"
+msgstr "Vezi modulele din abonament în magazinul etruel"
 
 #: includes/addons_page.php:587
 msgid "Purchase"
@@ -511,7 +511,7 @@ msgstr ""
 
 #: includes/addons_page.php:902
 msgid "The plugin could not be activated because it triggered a fatal error."
-msgstr "Pluginul nu a putut fi activat fiindcă a provocat o eroare fatală."
+msgstr "Modulul nu a putut fi activat fiindcă a provocat o eroare fatală."
 
 #: includes/addons_page.php:916
 msgid "Deletion failed:"
@@ -615,7 +615,7 @@ msgstr "API Vimeo"
 
 #: includes/campaign-types/vimeo.php:395
 msgid "PRO Feature"
-msgstr "Funcție PRO"
+msgstr "Funcționalitate PRO"
 
 #: includes/campaign-types/vimeo.php:399
 msgid "Fetch through the Vimeo API instead of the feed."
@@ -744,7 +744,7 @@ msgstr "Alege categoria"
 
 #: includes/campaign_edit.php:192
 msgid "Please refresh your browser and try again."
-msgstr "Reîmprospătează browserul și încearcă din nou."
+msgstr "Reîmprospătează navigatorul și încearcă din nou."
 
 #: includes/campaign_edit.php:199 includes/campaigns_list.php:444
 #: includes/campaigns_list.php:486 includes/campaigns_list.php:521
@@ -870,7 +870,7 @@ msgstr "Derulează lista de fluxuri"
 
 #: includes/campaign_edit_functions.php:1232
 msgid "Use the [embed] shortcode instead of the YouTube iframe"
-msgstr "Folosește shortcode-ul [embed] în loc de iframe-ul YouTube"
+msgstr "Folosește scurtcodul [embed] în loc de iframe-ul YouTube"
 
 #: includes/campaign_edit_functions.php:1233
 msgid "Set the player size"
@@ -966,7 +966,7 @@ msgstr "Rulează o dată"
 
 #: includes/campaign_edit_functions.php:1321
 msgid "Email address:"
-msgstr "Adresă de e-mail:"
+msgstr "Adresă de email:"
 
 #: includes/campaign_edit_functions.php:1323
 msgid "Only email me when something fails"
@@ -1115,7 +1115,7 @@ msgid ""
 "Replace words or phrases with your own text, or turn a word into a link."
 msgstr ""
 "Înlocuiește cuvinte sau expresii cu textul tău, ori transformă un cuvânt în "
-"link."
+"legătură."
 
 #: includes/campaign_edit_functions.php:28
 msgid "Send log"
@@ -1234,7 +1234,8 @@ msgstr "Clic pentru a arăta/ascunde exemplele"
 
 #: includes/campaign_edit_functions.php:483
 msgid "Click here to see more info of the template feature."
-msgstr "Clic aici pentru mai multe informații despre funcția de șablon."
+msgstr ""
+"Clic aici pentru mai multe informații despre funcționalitatea de șablon."
 
 #: includes/campaign_edit_functions.php:487 includes/campaign_help.php:275
 msgid "Supported tags"
@@ -1323,7 +1324,8 @@ msgstr "Exemple:"
 #: includes/campaign_edit_functions.php:510 includes/campaign_help.php:297
 msgid "To close every post with a link to the source and the author name:"
 msgstr ""
-"Ca fiecare articol să se încheie cu un link către sursă și numele autorului:"
+"Ca fiecare articol să se încheie cu o legătură către sursă și numele "
+"autorului:"
 
 #: includes/campaign_edit_functions.php:511
 #: includes/campaign_edit_functions.php:514 includes/campaign_help.php:298
@@ -1338,7 +1340,7 @@ msgstr "devine conținutul elementului din flux"
 #: includes/campaign_edit_functions.php:512 includes/campaign_help.php:299
 msgid ""
 "the address of the original article, which turns it into a working link, and"
-msgstr "adresa articolului original, ceea ce îl face un link real, și"
+msgstr "adresa articolului original, ceea ce îl face o legătură reală, și"
 
 #: includes/campaign_edit_functions.php:512 includes/campaign_help.php:299
 msgid "the author of the feed item."
@@ -1349,7 +1351,7 @@ msgid ""
 "To add a gallery of three columns with every image of the post, above that "
 "link:"
 msgstr ""
-"Ca să adaugi deasupra acelui link o galerie pe trei coloane cu toate "
+"Ca să adaugi deasupra acelei legături o galerie pe trei coloane cu toate "
 "imaginile articolului:"
 
 #: includes/campaign_edit_functions.php:515 includes/campaign_help.php:302
@@ -1357,15 +1359,15 @@ msgid ""
 "is the WordPress gallery shortcode. Any shortcode works here: WordPress runs "
 "it when the post is displayed."
 msgstr ""
-"este shortcode-ul de galerie al WordPress. Aici funcționează orice "
-"shortcode: WordPress îl rulează când afișează articolul."
+"este scurtcodul de galerie al WordPress. Aici funcționează orice scurtcod: "
+"WordPress îl rulează când afișează articolul."
 
 #: includes/campaign_edit_functions.php:516 includes/campaign_help.php:303
 msgid ""
 "To show the videos or audios of the post as a player, the playlist shortcode "
 "does the same for media files:"
 msgstr ""
-"Ca să arăți videoclipurile sau sunetele articolului ca player, shortcode-ul "
+"Ca să arăți videoclipurile sau sunetele articolului ca player, scurtcodul "
 "playlist face același lucru cu fișierele media:"
 
 #: includes/campaign_edit_functions.php:518 includes/campaign_help.php:305
@@ -1456,7 +1458,8 @@ msgstr "Featured Image from URL"
 
 #: includes/campaign_edit_functions.php:621
 msgid "Use the video link as featured when available"
-msgstr "Folosește linkul videoclipului ca imagine reprezentativă, când există"
+msgstr ""
+"Folosește legătura videoclipului ca imagine reprezentativă, când există"
 
 #: includes/campaign_edit_functions.php:630
 msgid "Advanced Options"
@@ -1464,7 +1467,7 @@ msgstr "Opțiuni avansate"
 
 #: includes/campaign_edit_functions.php:638
 msgid "Do you need advanced features? Take a look at the"
-msgstr "Ai nevoie de funcții avansate? Aruncă o privire la"
+msgstr "Ai nevoie de funcționalități avansate? Aruncă o privire la"
 
 #: includes/campaign_edit_functions.php:638
 msgid "Professional addon"
@@ -1567,7 +1570,7 @@ msgstr "Permite hash-uri duplicate (nerecomandat)"
 #: includes/campaign_edit_functions.php:784 includes/campaign_help.php:249
 #: includes/settings/help.php:218 includes/settings/page.php:526
 msgid "Also check duplicates by source permalink"
-msgstr "Verifică duplicatele și după permalinkul sursei"
+msgstr "Verifică duplicatele și după legătura permanentă a sursei"
 
 #: includes/campaign_edit_functions.php:789 includes/campaign_help.php:243
 #: includes/settings/help.php:207 includes/settings/page.php:535
@@ -1616,7 +1619,7 @@ msgstr "Elimină toate etichetele HTML"
 
 #: includes/campaign_edit_functions.php:876 includes/campaign_help.php:84
 msgid "Strip links from the content"
-msgstr "Scoate linkurile din conținut"
+msgstr "Scoate legăturile din conținut"
 
 #: includes/campaign_edit_functions.php:879
 #: includes/campaign_edit_functions.php:884
@@ -1643,11 +1646,11 @@ msgstr ""
 
 #: includes/campaign_edit_functions.php:906 includes/campaign_help.php:48
 msgid "Copy the permalink from the source"
-msgstr "Copiază permalinkul sursei"
+msgstr "Copiază legătura permanentă a sursei"
 
 #: includes/campaign_edit_functions.php:912 includes/campaign_help.php:52
 msgid "Do not follow redirects to find the permalink"
-msgstr "Nu urmări redirecționările pentru permalink"
+msgstr "Nu urmări redirecționările pentru legătura permanentă"
 
 #: includes/campaign_edit_functions.php:92 includes/class-tour-helper.php:193
 #: includes/feed_viewer_help.php:30 includes/tools_tabs.php:65
@@ -2036,8 +2039,8 @@ msgid ""
 "Wraps the video in the WordPress [embed] shortcode instead of the iframe "
 "YouTube shares."
 msgstr ""
-"Înfășoară videoclipul în shortcode-ul [embed] al WordPress în loc de iframe-"
-"ul pe care îl dă YouTube."
+"Înfășoară videoclipul în scurtcodul [embed] al WordPress în loc de iframe-ul "
+"pe care îl dă YouTube."
 
 #: includes/campaign_help.php:103
 msgid ""
@@ -2114,9 +2117,9 @@ msgid ""
 "Every image in an %s tag is saved to your Uploads folder and the content "
 "points at your copy. Off, the images stay on the source server."
 msgstr ""
-"Fiecare imagine dintr-o etichetă %s se salvează în folderul tău de "
-"încărcări, iar conținutul trimite la copia ta. Oprit, imaginile rămân pe "
-"serverul sursei."
+"Fiecare imagine dintr-o etichetă %s se salvează în dosarul tău de încărcări, "
+"iar conținutul trimite la copia ta. Oprit, imaginile rămân pe serverul "
+"sursei."
 
 #: includes/campaign_help.php:140
 msgid ""
@@ -2166,7 +2169,7 @@ msgstr ""
 #: includes/campaign_help.php:160 includes/settings/help.php:55
 #: includes/settings/help.php:60
 msgid "Read about"
-msgstr "Citește despre pluginul"
+msgstr "Citește despre modulul"
 
 #: includes/campaign_help.php:160 includes/settings/help.php:60
 msgid "plugin in WordPress repository."
@@ -2242,7 +2245,7 @@ msgid ""
 "Every audio in an %s tag is saved to your Uploads folder and the content "
 "points at your copy. Off, the files stay on the source server."
 msgstr ""
-"Fiecare sunet dintr-o etichetă %s se salvează în folderul tău de încărcări, "
+"Fiecare sunet dintr-o etichetă %s se salvează în dosarul tău de încărcări, "
 "iar conținutul trimite la copia ta. Oprit, fișierele rămân pe serverul "
 "sursei."
 
@@ -2292,7 +2295,7 @@ msgid ""
 "Every video in a %s tag is saved to your Uploads folder and the content "
 "points at your copy. Video files are heavy: they fill your disk fast."
 msgstr ""
-"Fiecare videoclip dintr-o etichetă %s se salvează în folderul tău de "
+"Fiecare videoclip dintr-o etichetă %s se salvează în dosarul tău de "
 "încărcări, iar conținutul trimite la copia ta. Videoclipurile sunt grele: "
 "îți umplu discul repede."
 
@@ -2523,7 +2526,7 @@ msgid ""
 "word into a link. Click [?] below for examples."
 msgstr ""
 "Înlocuiește cuvinte sau expresii din conținut cu textul tău și poate "
-"transforma un cuvânt în link. Apasă [?] mai jos pentru exemple."
+"transforma un cuvânt în legătură. Apasă [?] mai jos pentru exemple."
 
 #: includes/campaign_help.php:323
 msgid "Basic rewriting:"
@@ -2558,8 +2561,8 @@ msgid ""
 "To turn every mention of google into a link to Google, type google in the "
 "origin field and %s in the 'relink to' field."
 msgstr ""
-"Ca fiecare pomenire a lui google să devină link către Google, scrie google "
-"în câmpul de origine și %s în câmpul „leagă la”."
+"Ca fiecare pomenire a lui google să devină legătură către Google, scrie "
+"google în câmpul de origine și %s în câmpul „leagă la”."
 
 #: includes/campaign_help.php:329
 msgid "Regular expressions"
@@ -2648,7 +2651,7 @@ msgstr "nu este în viitor."
 
 #: includes/campaign_help.php:361
 msgid "Log by email"
-msgstr "Jurnal pe e-mail"
+msgstr "Jurnal pe email"
 
 #: includes/campaign_help.php:362
 msgid ""
@@ -2656,7 +2659,7 @@ msgid ""
 "went wrong, or leave the field empty for no email at all."
 msgstr ""
 "Îți trimite ce s-a întâmplat la fiecare rulare. Poți cere doar când ceva a "
-"mers prost, sau lăsa câmpul gol ca să nu primești niciun e-mail."
+"mers prost, sau lăsa câmpul gol ca să nu primești niciun email."
 
 #: includes/campaign_help.php:40
 msgid ""
@@ -2684,7 +2687,8 @@ msgstr ""
 #: includes/campaign_help.php:49
 msgid "Your post keeps the exact permalink the source article has."
 msgstr ""
-"Articolul tău păstrează exact permalinkul pe care îl are articolul sursă."
+"Articolul tău păstrează exact legătura permanentă pe care o are articolul "
+"sursă."
 
 #: includes/campaign_help.php:53
 msgid ""
@@ -2772,12 +2776,12 @@ msgstr ""
 msgid ""
 "The content is saved as plain text. Images %1$s and links %2$s go with it."
 msgstr ""
-"Conținutul se salvează ca text simplu. Imaginile %1$s și linkurile %2$s "
+"Conținutul se salvează ca text simplu. Imaginile %1$s și legăturile %2$s "
 "pleacă odată cu el."
 
 #: includes/campaign_help.php:85
 msgid "Links stop being clickable; their text stays in place."
-msgstr "Linkurile nu mai pot fi apăsate; textul lor rămâne pe loc."
+msgstr "Legăturile nu mai pot fi apăsate; textul lor rămâne pe loc."
 
 #: includes/campaign_help.php:89
 msgid ""
@@ -2856,7 +2860,7 @@ msgstr "Preia acum"
 
 #: includes/campaign_preview.php:46 includes/campaign_preview_item.php:276
 msgid "This action comes with the Manual Fetching add-on."
-msgstr "Această acțiune vine cu extensia Manual Fetching."
+msgstr "Această acțiune vine cu suplimentul Manual Fetching."
 
 #: includes/campaign_preview_item.php:187
 #: includes/campaign_preview_item.php:303
@@ -3240,7 +3244,7 @@ msgid ""
 "Useful when add-ons give you more campaign types. You can hide this column "
 "in Screen Options."
 msgstr ""
-"Util când extensiile îți dau mai multe tipuri de campanie. Poți ascunde "
+"Util când suplimentele îți dau mai multe tipuri de campanie. Poți ascunde "
 "această coloană din Opțiuni ecran."
 
 #: includes/campaigns_list_help.php:31
@@ -3318,8 +3322,8 @@ msgid ""
 "Professional feature. Exports this campaign to a file you can import into "
 "another WordPress site."
 msgstr ""
-"Funcție Professional. Exportă această campanie într-un fișier pe care îl "
-"poți importa pe alt site WordPress."
+"Funcționalitate Professional. Exportă această campanie într-un fișier pe "
+"care îl poți importa pe alt site WordPress."
 
 #: includes/campaigns_list_help.php:73
 msgid "Run Multiple Campaigns at once."
@@ -3365,7 +3369,9 @@ msgstr "Fluxuri"
 msgid ""
 "Add the feed addresses this campaign reads. Check all feeds tells you "
 "whether each one answers."
-msgstr "Adaugă adresele fluxurilor pe care le citește această campanie. „Verifică toate fluxurile” îți spune dacă fiecare răspunde."
+msgstr ""
+"Adaugă adresele fluxurilor pe care le citește această campanie. „Verifică "
+"toate fluxurile” îți spune dacă fiecare răspunde."
 
 #: includes/class-tour-helper.php:111
 msgid "Campaign type"
@@ -3375,7 +3381,9 @@ msgstr "Tipul campaniei"
 msgid ""
 "Feed is the usual choice. Other types read XML files, YouTube or Vimeo, and "
 "more come with the extensions."
-msgstr "Feed este alegerea obișnuită. Alte tipuri citesc fișiere XML, YouTube sau Vimeo, iar extensiile aduc și altele."
+msgstr ""
+"Feed este alegerea obișnuită. Alte tipuri citesc fișiere XML, YouTube sau "
+"Vimeo, iar extensiile aduc și altele."
 
 #: includes/class-tour-helper.php:118 includes/debug_page.php:3025
 #: includes/debug_page.php:3521
@@ -3393,7 +3401,9 @@ msgstr "Asistentul"
 #: includes/class-tour-helper.php:126
 msgid ""
 "Prefer a guided path? The Wizard walks you through every box, one by one."
-msgstr "Preferi să fii ghidat? Asistentul te poartă prin fiecare casetă, una câte una."
+msgstr ""
+"Preferi să fii ghidat? Asistentul te poartă prin fiecare casetă, una câte "
+"una."
 
 #: includes/class-tour-helper.php:134
 msgid "Settings menu"
@@ -3403,7 +3413,9 @@ msgstr "Meniul setărilor"
 msgid ""
 "General, Advanced and Backend Tools hold WPeMatico's settings. Each "
 "extension adds its own tab below them."
-msgstr "General, Avansat și Unelte de backend conțin setările WPeMatico. Fiecare extensie își adaugă dedesubt propria filă."
+msgstr ""
+"General, Avansat și Unelte de backend conțin setările WPeMatico. Fiecare "
+"extensie își adaugă dedesubt propria filă."
 
 #: includes/class-tour-helper.php:141
 msgid "Boxes"
@@ -3411,7 +3423,9 @@ msgstr "Casete"
 
 #: includes/class-tour-helper.php:142
 msgid "Collapse a box from its header or drag it to sort the screen your way."
-msgstr "Restrânge o casetă din antetul ei sau trage-o ca să ordonezi ecranul după gustul tău."
+msgstr ""
+"Restrânge o casetă din antetul ei sau trage-o ca să ordonezi ecranul după "
+"gustul tău."
 
 #: includes/class-tour-helper.php:148
 msgid "Save"
@@ -3425,17 +3439,21 @@ msgstr "Salvează secțiunea în care te afli. Celelalte păstrează ce aveau."
 msgid ""
 "Every option has a (?) with a short explanation, and the Help tab has the "
 "whole story."
-msgstr "Fiecare opțiune are un (?) cu o explicație scurtă, iar fila Ajutor are toată povestea."
+msgstr ""
+"Fiecare opțiune are un (?) cu o explicație scurtă, iar fila Ajutor are toată "
+"povestea."
 
 #: includes/class-tour-helper.php:161
 msgid "Extra features"
-msgstr "Funcții suplimentare"
+msgstr "Funcționalități suplimentare"
 
 #: includes/class-tour-helper.php:162
 msgid ""
 "Switch on content rewriting, words to categories, canonical URLs and the "
 "other optional features."
-msgstr "Pornește rescrierea conținutului, cuvintele în categorii, URL-urile canonice și celelalte funcții opționale."
+msgstr ""
+"Pornește rescrierea conținutului, cuvintele în categorii, URL-urile canonice "
+"și celelalte funcționalități opționale."
 
 #: includes/class-tour-helper.php:168
 msgid "Advanced actions"
@@ -3443,7 +3461,9 @@ msgstr "Acțiuni avansate"
 
 #: includes/class-tour-helper.php:169
 msgid "Feed checks, logs, XML uploads and other behaviour for every campaign."
-msgstr "Verificarea fluxurilor, jurnale, încărcări XML și alte comportamente pentru toate campaniile."
+msgstr ""
+"Verificarea fluxurilor, jurnale, încărcări XML și alte comportamente pentru "
+"toate campaniile."
 
 #: includes/class-tour-helper.php:177
 msgid "Your admin screens"
@@ -3453,7 +3473,9 @@ msgstr "Ecranele tale de administrare"
 msgid ""
 "Choose the campaign columns, the boxes of the campaign editor, the dashboard "
 "widgets and these guided tours."
-msgstr "Alege coloanele campaniilor, casetele editorului de campanie, widgeturile panoului și aceste tururi ghidate."
+msgstr ""
+"Alege coloanele campaniilor, casetele editorului de campanie, piesele "
+"panoului și aceste tururi ghidate."
 
 #: includes/class-tour-helper.php:186 includes/feed_list_help.php:29
 #: includes/tools_page.php:452 includes/tools_tabs.php:64
@@ -3465,13 +3487,17 @@ msgstr "Lista de fluxuri"
 msgid ""
 "Every feed of every campaign in one list, with its campaign, its status and "
 "its last run."
-msgstr "Fiecare flux al fiecărei campanii într-o singură listă, cu campania lui, starea lui și ultima rulare."
+msgstr ""
+"Fiecare flux al fiecărei campanii într-o singură listă, cu campania lui, "
+"starea lui și ultima rulare."
 
 #: includes/class-tour-helper.php:194
 msgid ""
 "Paste any address to see what it really returns: a feed, a page that is not "
 "one, or why it cannot be reached."
-msgstr "Lipește orice adresă ca să vezi ce returnează de fapt: un flux, o pagină care nu e un flux sau de ce nu poate fi accesată."
+msgstr ""
+"Lipește orice adresă ca să vezi ce returnează de fapt: un flux, o pagină "
+"care nu e un flux sau de ce nu poate fi accesată."
 
 #: includes/class-tour-helper.php:200 includes/tools_help.php:37
 #: includes/tools_tabs.php:68
@@ -3492,7 +3518,9 @@ msgstr "Trusă de migrare"
 msgid ""
 "Bring your feeds over from Feedzy or WP RSS Aggregator, with the posts they "
 "already published."
-msgstr "Adu-ți fluxurile din Feedzy sau WP RSS Aggregator, împreună cu articolele pe care le-au publicat deja."
+msgstr ""
+"Adu-ți fluxurile din Feedzy sau WP RSS Aggregator, împreună cu articolele pe "
+"care le-au publicat deja."
 
 #: includes/class-tour-helper.php:214 includes/tools_tabs.php:18
 msgid "System"
@@ -3502,12 +3530,17 @@ msgstr "Sistem"
 msgid ""
 "Status gathers the site and server details support will ask for. Danger Zone "
 "holds debug logging and what uninstalling removes."
-msgstr "Starea adună datele site-ului și ale serverului pe care le va cere asistența. Zona periculoasă conține jurnalul de depanare și ce șterge dezinstalarea."
+msgstr ""
+"Starea adună datele site-ului și ale serverului pe care le va cere "
+"asistența. Zona periculoasă conține jurnalul de depanare și ce șterge "
+"dezinstalarea."
 
 #: includes/class-tour-helper.php:225
 msgid ""
 "Every WPeMatico add-on, installed or not. The free ones install from here."
-msgstr "Fiecare add-on WPeMatico, instalat sau nu. Cele gratuite se instalează de aici."
+msgstr ""
+"Fiecare supliment WPeMatico, instalat sau nu. Cele gratuite se instalează de "
+"aici."
 
 #: includes/class-tour-helper.php:231
 msgid "Activate and license"
@@ -3517,7 +3550,9 @@ msgstr "Activare și licență"
 msgid ""
 "Activate what you have, and enter its licence in Settings › Licenses to "
 "receive its updates."
-msgstr "Activează ce ai și introdu licența în Setări › Licențe ca să primești actualizările."
+msgstr ""
+"Activează ce ai și introdu licența în Setări › Licențe ca să primești "
+"actualizările."
 
 #: includes/class-tour-helper.php:244
 msgid "Runs the campaign once, now."
@@ -3527,7 +3562,9 @@ msgstr "Rulează campania o dată, acum."
 msgid ""
 "Turns its schedule on, so it runs on its own. It shows red while the "
 "schedule is on."
-msgstr "Pornește programarea ei, ca să ruleze singură. Iconița e roșie cât timp programarea e pornită."
+msgstr ""
+"Pornește programarea ei, ca să ruleze singură. Iconița e roșie cât timp "
+"programarea e pornită."
 
 #: includes/class-tour-helper.php:246
 msgid "Turns the schedule off, or stops a run in progress."
@@ -3556,7 +3593,9 @@ msgstr "Ai nevoie de mai mult?"
 #: includes/class-tour-helper.php:40
 msgid ""
 "The Help tab at the top of every WPeMatico screen explains it in detail."
-msgstr "Fila Ajutor, în partea de sus a fiecărui ecran WPeMatico, explică totul în detaliu."
+msgstr ""
+"Fila Ajutor, în partea de sus a fiecărui ecran WPeMatico, explică totul în "
+"detaliu."
 
 #: includes/class-tour-helper.php:49 includes/lib/welcome.php:64
 msgid "Welcome to WPeMatico"
@@ -3569,22 +3608,26 @@ msgstr "Totul e aici: Panou, Campanii, Setări, Unelte și Extensii."
 
 #: includes/class-tour-helper.php:56
 msgid "One card per feature"
-msgstr "O cartelă pentru fiecare funcție"
+msgstr "O cartelă pentru fiecare funcționalitate"
 
 #: includes/class-tour-helper.php:57
 msgid ""
 "Filter them by what they do: images, SEO, campaign types, parsers and more."
-msgstr "Filtrează-le după ce fac: imagini, SEO, tipuri de campanie, parsere și altele."
+msgstr ""
+"Filtrează-le după ce fac: imagini, SEO, tipuri de campanie, parsere și "
+"altele."
 
 #: includes/class-tour-helper.php:63
 msgid "Switch features on and off"
-msgstr "Pornește și oprește funcții"
+msgstr "Pornește și oprește funcționalități"
 
 #: includes/class-tour-helper.php:64
 msgid ""
 "Each card says what its switch will do before you touch it, and installs "
 "whatever it needs."
-msgstr "Fiecare cartelă îți spune ce va face comutatorul ei înainte să-l atingi și instalează ce îi trebuie."
+msgstr ""
+"Fiecare cartelă îți spune ce va face comutatorul ei înainte să-l atingi și "
+"instalează ce îi trebuie."
 
 #: includes/class-tour-helper.php:70
 msgid "Your first campaign"
@@ -3594,7 +3637,9 @@ msgstr "Prima ta campanie"
 msgid ""
 "A campaign reads one or more feeds and publishes their items as posts. Start "
 "here."
-msgstr "O campanie citește unul sau mai multe fluxuri și publică elementele lor ca articole. Începe de aici."
+msgstr ""
+"O campanie citește unul sau mai multe fluxuri și publică elementele lor ca "
+"articole. Începe de aici."
 
 #: includes/class-tour-helper.php:79 includes/lib/welcome.php:595
 msgid "Add a campaign"
@@ -3764,7 +3809,7 @@ msgid ""
 "%1$s failed. Some plugins features may not work. Please contact your hosting "
 "provider and make sure that %2$s is not blocked."
 msgstr ""
-"%1$s a eșuat. Unele funcții ale pluginului s-ar putea să nu meargă. "
+"%1$s a eșuat. Unele funcționalități ale modulului s-ar putea să nu meargă. "
 "Contactează-ți furnizorul de găzduire și asigură-te că %2$s nu este blocat."
 
 #: includes/debug_page.php:124
@@ -3773,7 +3818,7 @@ msgstr "Fluxul %s nu poate fi obținut."
 
 #: includes/debug_page.php:128
 msgid "Parser says:"
-msgstr "Analizorul spune:"
+msgstr "Interpretorul spune:"
 
 #: includes/debug_page.php:130
 msgid "Obtaining URL Contents with WP Remote Request."
@@ -4215,11 +4260,11 @@ msgstr "Mediul WordPress"
 
 #: includes/debug_page.php:2323
 msgid "User Browser:"
-msgstr "Browserul utilizatorului:"
+msgstr "Navigatorul utilizatorului:"
 
 #: includes/debug_page.php:2325
 msgid "The browser you are using right now."
-msgstr "Browserul pe care îl folosești acum."
+msgstr "Navigatorul pe care îl folosești acum."
 
 #: includes/debug_page.php:2333
 msgid "Home URL:"
@@ -4487,11 +4532,11 @@ msgstr ""
 
 #: includes/debug_page.php:2727 includes/debug_page.php:2737
 msgid "Must-Use Plugins"
-msgstr "Pluginuri must-use"
+msgstr "Module must-use"
 
 #: includes/debug_page.php:2771 includes/debug_page.php:2873
 msgid "Visit plugin homepage"
-msgstr "Vizitează pagina pluginului"
+msgstr "Vizitează pagina modulului"
 
 #: includes/debug_page.php:278
 msgid "Feed found by autodiscovery"
@@ -4512,7 +4557,7 @@ msgstr "Cod HTTP"
 
 #: includes/debug_page.php:2827 includes/debug_page.php:2837
 msgid "Active Plugins"
-msgstr "Pluginuri active"
+msgstr "Module active"
 
 #. translators: %s: number of campaigns on the site.
 #: includes/debug_page.php:2940
@@ -4593,7 +4638,7 @@ msgid ""
 "The request could not be completed. Check the browser console and your "
 "server error log."
 msgstr ""
-"Cererea nu a putut fi finalizată. Verifică consola browserului și jurnalul "
+"Cererea nu a putut fi finalizată. Verifică consola navigatorului și jurnalul "
 "de erori al serverului."
 
 #: includes/debug_page.php:414
@@ -4646,9 +4691,9 @@ msgid ""
 "Please contact your hosting provider and make sure that https://etruel.com/"
 "downloads/feed/ is not blocked."
 msgstr ""
-"Conexiunea la etruel.com a eșuat. Unele funcții ale pluginului s-ar putea să "
-"nu meargă. Contactează-ți furnizorul de găzduire și asigură-te că https://"
-"etruel.com/downloads/feed/ nu este blocat."
+"Conexiunea la etruel.com a eșuat. Unele funcționalități ale modulului s-ar "
+"putea să nu meargă. Contactează-ți furnizorul de găzduire și asigură-te că "
+"https://etruel.com/downloads/feed/ nu este blocat."
 
 #: includes/debug_page.php:724
 msgid "The check could not be completed."
@@ -4792,8 +4837,8 @@ msgstr ""
 msgid ""
 "Open URL loads the address in a new browser tab, as your browser sees it."
 msgstr ""
-"„Deschide adresa” încarcă adresa într-o filă nouă, așa cum o vede browserul "
-"tău."
+"„Deschide adresa” încarcă adresa într-o filă nouă, așa cum o vede "
+"navigatorul tău."
 
 #: includes/feed_list_help.php:62
 msgid "Searching and filtering."
@@ -4911,7 +4956,7 @@ msgid ""
 "Requests the URL with the same parser, user agent and timeouts the campaigns "
 "use, so what you see here is what a campaign would receive."
 msgstr ""
-"Cere adresa cu același analizor, același user agent și aceleași limite de "
+"Cere adresa cu același interpretor, același user agent și aceleași limite de "
 "timp pe care le folosesc campaniile, deci ce vezi aici este ce ar primi o "
 "campanie."
 
@@ -4972,9 +5017,9 @@ msgid ""
 "page to show you what is really there. The reason given by the parser is "
 "printed first."
 msgstr ""
-"Analizorul a respins conținutul, așa că adresa a fost cerută din nou ca "
-"pagină obișnuită, ca să vezi ce este de fapt acolo. Motivul dat de analizor "
-"este afișat primul."
+"Interpretorul a respins conținutul, așa că adresa a fost cerută din nou ca "
+"pagină obișnuită, ca să vezi ce este de fapt acolo. Motivul dat de "
+"interpretor este afișat primul."
 
 #: includes/feed_viewer_help.php:58
 msgid ""
@@ -4994,7 +5039,7 @@ msgid ""
 msgstr ""
 "Multe situri răspund cu 200 și cu o pagină „activează JavaScript” sau anti-"
 "robot; acel conținut din casetă este sursa care blochează cititorii "
-"automați, nu o defecțiune a pluginului."
+"automați, nu o defecțiune a modulului."
 
 #: includes/feed_viewer_help.php:62
 msgid "Red result: the URL could not be reached."
@@ -5097,7 +5142,7 @@ msgstr "Actualizează acum."
 
 #: includes/lib/EDD_SL_Plugin_Updater.php:565
 msgid "You do not have permission to install plugin updates"
-msgstr "Nu ai permisiunea să instalezi actualizări de pluginuri"
+msgstr "Nu ai permisiunea să instalezi actualizări de module"
 
 #: includes/lib/licenses_handlers.php:281
 #: includes/lib/licenses_handlers.php:453
@@ -5209,8 +5254,8 @@ msgid ""
 "%1$s needs WPeMatico %2$s or newer. Its features stay off until WPeMatico is "
 "updated."
 msgstr ""
-"%1$s are nevoie de WPeMatico %2$s sau mai nou. Funcțiile lui rămân oprite "
-"până când WPeMatico este actualizat."
+"%1$s are nevoie de WPeMatico %2$s sau mai nou. Funcționalitățile lui rămân "
+"oprite până când WPeMatico este actualizat."
 
 #: includes/lib/update_reasons.php:128
 msgid "%s updates once its license key is saved on this site."
@@ -5299,7 +5344,7 @@ msgid ""
 "the plugin it extends."
 msgstr ""
 "Acum se actualizează automat și WPeMatico, ca %s să nu se actualizeze "
-"niciodată înaintea pluginului pe care îl extinde."
+"niciodată înaintea modulului pe care îl extinde."
 
 #. translators: %d: Number of add-ons.
 #: includes/lib/update_reasons.php:197
@@ -5310,13 +5355,13 @@ msgid_plural ""
 "WPeMatico does not update automatically, so the %d add-ons that do will stay "
 "on their current version until you update WPeMatico."
 msgstr[0] ""
-"WPeMatico nu se actualizează automat, așa că %d extensie care o face va "
+"WPeMatico nu se actualizează automat, așa că %d supliment care o face va "
 "rămâne pe versiunea actuală până actualizezi WPeMatico."
 msgstr[1] ""
-"WPeMatico nu se actualizează automat, așa că %d extensii care o fac vor "
+"WPeMatico nu se actualizează automat, așa că %d suplimente care o fac vor "
 "rămâne pe versiunea actuală până actualizezi WPeMatico."
 msgstr[2] ""
-"WPeMatico nu se actualizează automat, așa că %d de extensii care o fac vor "
+"WPeMatico nu se actualizează automat, așa că %d de suplimente care o fac vor "
 "rămâne pe versiunea actuală până actualizezi WPeMatico."
 
 #: includes/lib/welcome.php:151
@@ -5344,7 +5389,7 @@ msgstr "Ce e nou"
 
 #: includes/lib/welcome.php:191
 msgid "Changelog"
-msgstr "Jurnal de modificări"
+msgstr "Istoric modificări"
 
 #: includes/lib/welcome.php:192
 msgid "Privacy"
@@ -5366,20 +5411,22 @@ msgid ""
 "now free, and a new Migration Toolkit brings your feeds over from other RSS "
 "plugins. And everything feels faster."
 msgstr ""
-"WPeMatico 2.9 este cea mai mare actualizare din ultimii ani. Un Panou nou "
-"pune principalele funcții ale pluginului și ale suplimentelor lui în spatele "
-"unui singur comutator, setările și uneltele au fost reconstruite de la zero, "
-"campaniile Vimeo sunt acum gratuite, iar o nouă Trusă de migrare îți aduce "
-"fluxurile din alte pluginuri RSS. Și totul pare mai rapid."
+"WPeMatico 2.9 este cea mai mare actualizare din ultimii ani. Un Panou de "
+"control nou pune principalele funcționalități ale modulului și ale "
+"suplimentelor lui în spatele unui singur comutator, setările și uneltele au "
+"fost reconstruite de la zero, campaniile Vimeo sunt acum gratuite, iar o "
+"nouă Trusă de migrare îți aduce fluxurile din alte module RSS. Și totul pare "
+"mai rapid."
 
 #: includes/lib/welcome.php:270
 msgid "One Dashboard for the features you use most"
-msgstr "Un Panou pentru funcțiile pe care le folosești cel mai des"
+msgstr ""
+"Un Panou de control pentru funcționalitățile pe care le folosești cel mai des"
 
 #: includes/lib/welcome.php:272
 msgid "Every feature of the plugin and its add-ons, as a card with a switch."
 msgstr ""
-"Fiecare funcție a pluginului și a suplimentelor lui, ca un card cu un "
+"Fiecare funcționalitate a modulului și a suplimentelor lui, ca un card cu un "
 "comutator."
 
 #: includes/lib/welcome.php:273
@@ -5389,18 +5436,19 @@ msgid ""
 "add-on, and the card and the setting behind it are the same switch."
 msgstr ""
 "Filtrează după categorie ca să găsești ce îți trebuie și pornește-o chiar "
-"acolo. Fiecare card îți spune dacă funcția este deja instalată, gratuită sau "
-"parte dintr-un supliment, iar cardul și setarea din spatele lui sunt același "
-"comutator."
+"acolo. Fiecare card îți spune dacă funcționalitatea este deja instalată, "
+"gratuită sau parte dintr-un supliment, iar cardul și setarea din spatele lui "
+"sunt același comutator."
 
 #: includes/lib/welcome.php:275 includes/lib/welcome.php:651
 msgid "Open the Dashboard"
-msgstr "Deschide Panoul"
+msgstr "Deschide Panoul de control"
 
 #: includes/lib/welcome.php:278
 msgid "The WPeMatico Dashboard: a grid of feature cards, each with a switch"
 msgstr ""
-"Panoul WPeMatico: o grilă de carduri de funcții, fiecare cu un comutator"
+"Panoul de control WPeMatico: o grilă de carduri de funcționalități, fiecare "
+"cu un comutator"
 
 #: includes/lib/welcome.php:284
 msgid "The new Settings screen, with its side menu"
@@ -5450,7 +5498,8 @@ msgstr ""
 
 #: includes/lib/welcome.php:303
 msgid "Switch on the Plugin Importers card in the Dashboard to get started."
-msgstr "Pornește cardul Importatori de pluginuri din Panou ca să începi."
+msgstr ""
+"Pornește cardul Importatori de module din Panoul de control ca să începi."
 
 #: includes/lib/welcome.php:306
 msgid "The Migration Toolkit, with the feeds it found on the site"
@@ -5483,12 +5532,12 @@ msgid ""
 "Switch it on from its card in the Dashboard, or in Settings → Advanced → "
 "Enable Features."
 msgstr ""
-"Pornește-l din cardul lui din Panou, sau din Setări → Avansat → Activează "
-"funcții."
+"Pornește-l din cardul lui din Panoul de control, sau din Setări → Avansat → "
+"Activează funcționalități."
 
 #: includes/lib/welcome.php:326
 msgid "Your campaigns at a glance, on the WordPress dashboard"
-msgstr "Campaniile tale dintr-o privire, pe panoul WordPress"
+msgstr "Campaniile tale dintr-o privire, pe panoul de control WordPress"
 
 #: includes/lib/welcome.php:328
 msgid ""
@@ -5510,7 +5559,7 @@ msgstr ""
 
 #: includes/lib/welcome.php:333
 msgid "The WPeMatico Summary widget on the WordPress dashboard"
-msgstr "Piesa Rezumat WPeMatico pe panoul WordPress"
+msgstr "Piesa Rezumat WPeMatico pe panoul de control WordPress"
 
 #: includes/lib/welcome.php:341
 msgid "More in 2.9"
@@ -5593,18 +5642,18 @@ msgid ""
 "that need the new core wait, and a notice says which version puts it right."
 msgstr ""
 "Un supliment rămas în urmă continuă să meargă și să se actualizeze; așteaptă "
-"doar funcțiile care au nevoie de noul nucleu, iar o notificare spune ce "
-"versiune rezolvă situația."
+"doar funcționalitățile care au nevoie de noul nucleu, iar o notificare spune "
+"ce versiune rezolvă situația."
 
 #: includes/lib/welcome.php:398
 msgid "The complete changelog"
-msgstr "Jurnalul complet de modificări"
+msgstr "Istoricul complet al modificărilor"
 
 #: includes/lib/welcome.php:402
 msgid "For the complete list of changes in WPeMatico %s, read the changelog."
 msgstr ""
-"Pentru lista completă a schimbărilor din WPeMatico %s, citește jurnalul de "
-"modificări."
+"Pentru lista completă a schimbărilor din WPeMatico %s, citește istoricul "
+"modificărilor."
 
 #: includes/lib/welcome.php:407
 msgid "See everything new"
@@ -5620,8 +5669,8 @@ msgid ""
 "the source instead of the RSS snippet, keyword filters, custom titles, "
 "translation, AI rewriting, and much more."
 msgstr ""
-"Suplimentele și abonamentele extind pluginul gratuit: articolul complet de "
-"la sursă în locul fragmentului RSS, filtre după cuvinte-cheie, titluri "
+"Suplimentele și abonamentele extind modulul gratuit: articolul complet de la "
+"sursă în locul fragmentului RSS, filtre după cuvinte-cheie, titluri "
 "personalizate, traducere, rescriere cu IA și multe altele."
 
 #: includes/lib/welcome.php:420
@@ -5643,7 +5692,7 @@ msgstr "Toate suplimentele disponibile"
 #: includes/lib/welcome.php:432 includes/lib/welcome.php:442
 #: includes/lib/welcome.php:452
 msgid "The"
-msgstr "Pluginul"
+msgstr "Modulul"
 
 #: includes/lib/welcome.php:433
 msgid ""
@@ -5651,16 +5700,16 @@ msgid ""
 "you to enhance autoblogging with advanced features."
 msgstr ""
 "include suplimente puternice, precum Professional și Full Content, care îți "
-"îmbogățesc autoblogging-ul cu funcții avansate."
+"îmbogățesc autoblogging-ul cu funcționalități avansate."
 
 #: includes/lib/welcome.php:443
 msgid ""
 "combines the five most requested add-ons with a lot of great features, "
 "simplifying WordPress autoblogging with professional ease."
 msgstr ""
-"combină cele cinci suplimente cele mai cerute cu o mulțime de funcții "
-"grozave, simplificând autoblogging-ul în WordPress cu lejeritate "
-"profesionistă."
+"combină cele cinci suplimente cele mai cerute cu o mulțime de "
+"funcționalități grozave, simplificând autoblogging-ul în WordPress cu "
+"lejeritate profesionistă."
 
 #: includes/lib/welcome.php:453
 msgid ""
@@ -5672,7 +5721,7 @@ msgstr ""
 
 #: includes/lib/welcome.php:462
 msgid "The free"
-msgstr "Pluginul gratuit"
+msgstr "Modulul gratuit"
 
 #: includes/lib/welcome.php:463
 msgid ""
@@ -5691,8 +5740,8 @@ msgid ""
 "Your 5-star rating helps other people find the plugin, and your comment "
 "helps us make it better."
 msgstr ""
-"Cele 5 stele ale tale îi ajută pe alții să găsească pluginul, iar "
-"comentariul tău ne ajută să-l facem mai bun."
+"Cele 5 stele ale tale îi ajută pe alții să găsească modulul, iar comentariul "
+"tău ne ajută să-l facem mai bun."
 
 #: includes/lib/welcome.php:481 includes/lib/welcome.php:696
 msgid "Support ticket system for free"
@@ -5717,7 +5766,7 @@ msgstr ""
 
 #: includes/lib/welcome.php:489 includes/lib/welcome.php:733
 msgid "Go to WPeMatico Dashboard"
-msgstr "Mergi la Panoul WPeMatico"
+msgstr "Mergi la Panoul de control WPeMatico"
 
 #: includes/lib/welcome.php:490 includes/lib/welcome.php:525
 #: includes/lib/welcome.php:559
@@ -5844,7 +5893,8 @@ msgid ""
 msgstr ""
 "Lista de campanii arată starea, ultima rulare și numărul de articole ale "
 "fiecărei campanii, iar pe oricare o poți rula sau pune pe pauză din rândul "
-"ei. Piesa Rezumat WPeMatico pune același lucru pe panoul tău WordPress."
+"ei. Piesa Rezumat WPeMatico pune același lucru pe Panoul de control tău "
+"WordPress."
 
 #: includes/lib/welcome.php:643
 msgid "Open the Campaigns"
@@ -5852,7 +5902,7 @@ msgstr "Deschide Campaniile"
 
 #: includes/lib/welcome.php:649
 msgid "Switch on more features"
-msgstr "Pornește mai multe funcții"
+msgstr "Pornește mai multe funcționalități"
 
 #: includes/lib/welcome.php:65
 msgid "WPeMatico About"
@@ -5864,9 +5914,9 @@ msgid ""
 "types such as YouTube, Vimeo or Feeds XML, and extras such as Download "
 "Images or Canonical URLs."
 msgstr ""
-"Panoul transformă fiecare funcție într-un card cu comutator: alte tipuri de "
-"campanie precum YouTube, Vimeo sau Feeds XML, și extraopțiuni precum "
-"Descarcă imaginile sau URL-urile canonice."
+"Panoul de control transformă fiecare funcționalitate într-un card cu "
+"comutator: alte tipuri de campanie precum YouTube, Vimeo sau Feeds XML, și "
+"extraopțiuni precum Descarcă imaginile sau URL-urile canonice."
 
 #: includes/lib/welcome.php:657
 msgid "The settings behind every campaign"
@@ -5912,7 +5962,7 @@ msgstr ""
 
 #: includes/lib/welcome.php:683
 msgid "Coming from another RSS plugin?"
-msgstr "Vii de la alt plugin RSS?"
+msgstr "Vii de la alt modul RSS?"
 
 #: includes/lib/welcome.php:684
 msgid ""
@@ -5960,7 +6010,7 @@ msgstr "Suplimente WPeMatico"
 
 #: includes/lib/welcome.php:716
 msgid "Extend the plugin"
-msgstr "Extinde pluginul"
+msgstr "Extinde modulul"
 
 #: includes/lib/welcome.php:717
 msgid ""
@@ -6004,7 +6054,7 @@ msgstr ""
 
 #: includes/lib/welcome.php:73 includes/lib/welcome.php:74
 msgid "WPeMatico Changelog"
-msgstr "Jurnalul de modificări WPeMatico"
+msgstr "Istoricul modificărilor WPeMatico"
 
 #: includes/lib/welcome.php:761
 msgid "Stay ahead with exclusive updates"
@@ -6015,7 +6065,7 @@ msgid ""
 "Join our newsletter and be the first to hear about new features, new add-ons "
 "and special offers."
 msgstr ""
-"Abonează-te la buletinul nostru și află primul despre funcții noi, "
+"Abonează-te la buletinul nostru și află primul despre funcționalități noi, "
 "suplimente noi și oferte speciale."
 
 #: includes/lib/welcome.php:763
@@ -6043,7 +6093,7 @@ msgstr "Nume de familie"
 
 #: includes/lib/welcome.php:781 includes/lib/welcome.php:782
 msgid "Email"
-msgstr "E-mail"
+msgstr "Email"
 
 #: includes/lib/welcome.php:786
 msgid "Subscribe"
@@ -6060,7 +6110,7 @@ msgstr "Abonare salvată"
 
 #: includes/lib/welcome.php:844
 msgid "No valid changelog was found."
-msgstr "Nu a fost găsit niciun jurnal de modificări valid."
+msgstr "Nu a fost găsit niciun Istoric modificări valid."
 
 #: includes/lib/welcome.php:91 includes/lib/welcome.php:92
 msgid "WPeMatico Privacy"
@@ -6090,7 +6140,7 @@ msgstr "Suplimentul nu a putut fi instalat."
 msgid ""
 "This will migrate all campaigns from the selected plugin to WPeMatico. "
 "Continue?"
-msgstr "Asta va migra toate campaniile pluginului ales în WPeMatico. Continui?"
+msgstr "Asta va migra toate campaniile modulului ales în WPeMatico. Continui?"
 
 #: includes/migration/class-migration-manager.php:192
 msgid "Migration completed successfully!"
@@ -6110,7 +6160,7 @@ msgstr "Te rugăm să aștepți..."
 
 #: includes/migration/class-migration-manager.php:196
 msgid "Original plugin has been automatically deactivated."
-msgstr "Pluginul original a fost dezactivat automat."
+msgstr "Modulul original a fost dezactivat automat."
 
 #: includes/migration/class-migration-manager.php:197
 msgid "Replace WP RSS Aggregator shortcodes"
@@ -6166,7 +6216,7 @@ msgstr "Permisiuni insuficiente."
 #: includes/migration/class-migration-manager.php:234
 #: includes/migration/class-migration-manager.php:403
 msgid "Invalid plugin selected."
-msgstr "Plugin selectat nevalid."
+msgstr "Modul selectat nevalid."
 
 #: includes/migration/class-migration-manager.php:247
 #: includes/migration/class-migration-manager.php:410
@@ -6234,7 +6284,7 @@ msgstr ""
 
 #: includes/migration/class-migration-manager.php:910
 msgid "There is nothing to import from this plugin."
-msgstr "Nu este nimic de importat din acest plugin."
+msgstr "Nu este nimic de importat din acest modul."
 
 #: includes/migration/class-migration-manager.php:945
 msgid "Imported from %s"
@@ -6268,7 +6318,7 @@ msgstr[2] ""
 
 #: includes/migration/detect.php:241
 msgid "Enable Plugin Importers"
-msgstr "Activează Importatorii de pluginuri"
+msgstr "Activează Importatorii de module"
 
 #. translators: %s: comma-separated list of source plugin names.
 #: includes/migration/detect.php:244
@@ -6279,14 +6329,14 @@ msgid_plural ""
 "WPeMatico found feeds from these plugins on this site: %s. Enable the Plugin "
 "Importers module to bring them over as campaigns."
 msgstr[0] ""
-"WPeMatico a găsit pe acest site fluxuri de la %s. Activează modulul "
+"WPeMatico a găsit pe acest site fluxuri de la %s. Activează extensia "
 "Importatori de module ca să le aduci sub formă de campanii."
 msgstr[1] ""
 "WPeMatico a găsit pe acest site fluxuri de la aceste module: %s. Activează "
-"modulul Importatori de module ca să le aduci sub formă de campanii."
+"extensia Importatori de module ca să le aduci sub formă de campanii."
 msgstr[2] ""
 "WPeMatico a găsit pe acest site fluxuri de la aceste module: %s. Activează "
-"modulul Importatori de module ca să le aduci sub formă de campanii."
+"extensia Importatori de module ca să le aduci sub formă de campanii."
 
 #: includes/migration/detect.php:260
 msgid "WPeMatico Migration Toolkit"
@@ -6300,14 +6350,14 @@ msgstr "Trusa de migrare."
 msgid ""
 "Recreates the feeds of another RSS importing plugin as WPeMatico campaigns."
 msgstr ""
-"Recreează fluxurile altui plugin de import RSS ca niște campanii WPeMatico."
+"Recreează fluxurile altui modul de import RSS ca niște campanii WPeMatico."
 
 #: includes/migration/help.php:33
 msgid ""
 "Each detected plugin gets its own tab; nothing is changed in the source "
 "plugin, so you can import, compare the result, and only then retire it."
 msgstr ""
-"Fiecare plugin detectat primește fila lui; în pluginul sursă nu se schimbă "
+"Fiecare modul detectat primește fila lui; în modulul sursă nu se schimbă "
 "nimic, deci poți importa, compara rezultatul și abia apoi să-l retragi."
 
 #: includes/migration/help.php:34
@@ -6328,7 +6378,7 @@ msgid ""
 "with its feed URLs, limits, post type, categories, author and schedule "
 "mapped to the equivalent WPeMatico settings."
 msgstr ""
-"Se face întotdeauna: fiecare flux al pluginului sursă devine o campanie "
+"Se face întotdeauna: fiecare flux al modulului sursă devine o campanie "
 "WPeMatico, cu adresele de flux, limitele, tipul de conținut, categoriile, "
 "autorul și programarea puse în corespondență cu setările WPeMatico "
 "echivalente."
@@ -6370,7 +6420,7 @@ msgid ""
 "exactly as the source plugin had them."
 msgstr ""
 "Bifat (implicit), acele fluxuri rămân împreună în acea singură campanie, "
-"exact cum le avea pluginul sursă."
+"exact cum le avea modulul sursă."
 
 #: includes/migration/help.php:46
 msgid ""
@@ -6382,7 +6432,7 @@ msgstr ""
 
 #: includes/migration/help.php:49
 msgid "Optional feature imports."
-msgstr "Importuri opționale de funcții."
+msgstr "Importuri opționale de funcționalități."
 
 #: includes/migration/help.php:50
 msgid ""
@@ -6392,7 +6442,7 @@ msgid ""
 msgstr ""
 "Setările avansate ale sursei (filtre după cuvinte-cheie, imagine de rezervă, "
 "traducere automată, rescrierea conținutului) sunt recreate pe suplimentul "
-"WPeMatico care oferă aceeași funcție."
+"WPeMatico care oferă aceeași funcționalitate."
 
 #: includes/migration/help.php:51
 msgid ""
@@ -6413,7 +6463,7 @@ msgstr ""
 
 #: includes/migration/help.php:55
 msgid "Adopt the posts already published by this plugin."
-msgstr "Adoptă articolele deja publicate de acest plugin."
+msgstr "Adoptă articolele deja publicate de acest modul."
 
 #: includes/migration/help.php:56
 msgid ""
@@ -6421,9 +6471,9 @@ msgid ""
 "posts to their new campaign so WPeMatico knows the items were already "
 "imported and does not publish them a second time."
 msgstr ""
-"Pluginul sursă publică, probabil, de ceva vreme. Asta leagă acele articole "
-"de noua lor campanie, ca WPeMatico să știe că elementele au fost deja "
-"importate și să nu le publice a doua oară."
+"Modulul sursă publică, probabil, de ceva vreme. Asta leagă acele articole de "
+"noua lor campanie, ca WPeMatico să știe că elementele au fost deja importate "
+"și să nu le publice a doua oară."
 
 #: includes/migration/help.php:57
 msgid ""
@@ -6466,7 +6516,7 @@ msgstr ""
 
 #: includes/migration/help.php:66
 msgid "Deactivate the source plugin after import."
-msgstr "Dezactivează pluginul sursă după import."
+msgstr "Dezactivează modulul sursă după import."
 
 #: includes/migration/help.php:67
 msgid ""
@@ -6474,8 +6524,8 @@ msgid ""
 "with its own add-ons, so both plugins do not import the same feeds in "
 "parallel."
 msgstr ""
-"Odată ce migrarea reușește, pluginul original este dezactivat, împreună cu "
-"propriile lui suplimente, ca cele două pluginuri să nu importe în paralel "
+"Odată ce migrarea reușește, modulul original este dezactivat, împreună cu "
+"propriile lui suplimente, ca cele două module să nu importe în paralel "
 "aceleași fluxuri."
 
 #: includes/migration/help.php:68
@@ -6510,7 +6560,7 @@ msgid ""
 "the WPeMatico shortcode that replaces each one, and a button to swap it in "
 "place."
 msgstr ""
-"După import, paginile care încă încorporează vechiul plugin sunt listate cu "
+"După import, paginile care încă încorporează vechiul modul sunt listate cu "
 "scurtcodul WPeMatico care îl înlocuiește pe fiecare și un buton care face "
 "schimbul pe loc."
 
@@ -6530,10 +6580,10 @@ msgid ""
 "want the migrated campaigns to skip the posts the previous plugin already "
 "published."
 msgstr ""
-"„Dezactivează câmpurile personalizate ale pluginului” este activ în setările "
+"„Dezactivează câmpurile personalizate ale modulului” este activ în setările "
 "WPeMatico, deci articolele importate nu pot fi verificate față de legătura "
 "permanentă a sursei. Dezactiveaz-o dacă vrei ca campaniile migrate să sară "
-"peste articolele publicate deja de pluginul anterior."
+"peste articolele publicate deja de modulul anterior."
 
 #: includes/migration/importers/class-migrator-base.php:642
 msgid ""
@@ -6563,7 +6613,7 @@ msgstr[2] ""
 
 #: includes/migration/importers/class-migrator-base.php:690
 msgid "another plugin"
-msgstr "alt plugin"
+msgstr "alt modul"
 
 #: includes/migration/importers/class-migrator-base.php:767
 msgid "Imported campaign"
@@ -6696,14 +6746,14 @@ msgid_plural ""
 "Skipped %d display-only feeds: install the WPeMatico RSS Feed Reader addon "
 "and run the migration again to import them."
 msgstr[0] ""
-"S-a sărit %d flux doar de afișare: instalează extensia WPeMatico RSS Feed "
+"S-a sărit %d flux doar de afișare: instalează suplimentul WPeMatico RSS Feed "
 "Reader și rulează migrarea din nou ca să-l imporți."
 msgstr[1] ""
-"S-au sărit %d fluxuri doar de afișare: instalează extensia WPeMatico RSS "
+"S-au sărit %d fluxuri doar de afișare: instalează suplimentul WPeMatico RSS "
 "Feed Reader și rulează migrarea din nou ca să le imporți."
 msgstr[2] ""
-"S-au sărit %d de fluxuri doar de afișare: instalează extensia WPeMatico RSS "
-"Feed Reader și rulează migrarea din nou ca să le imporți."
+"S-au sărit %d de fluxuri doar de afișare: instalează suplimentul WPeMatico "
+"RSS Feed Reader și rulează migrarea din nou ca să le imporți."
 
 #. translators: %d: number of campaigns imported deactivated.
 #: includes/migration/importers/class-migrator-wp-rss-aggregator.php:144
@@ -6783,7 +6833,7 @@ msgstr[2] "Preia %d de articole publicate deja de acest modul"
 
 #: includes/migration/views/migration-box.php:131
 msgid "Deactivate the source plugin after import"
-msgstr "Dezactivează pluginul sursă după import"
+msgstr "Dezactivează modulul sursă după import"
 
 #: includes/migration/views/migration-box.php:148
 msgid ""
@@ -6792,7 +6842,7 @@ msgid ""
 "fields."
 msgstr ""
 "Poți importa acum și fără suplimentul necesar — nu se pierde niciun fel de "
-"date din sursă. Instalează suplimentul mai târziu și reimportă acest plugin "
+"date din sursă. Instalează suplimentul mai târziu și reimportă acest modul "
 "ca să completezi câmpurile lipsă."
 
 #: includes/migration/views/migration-box.php:166
@@ -6800,7 +6850,7 @@ msgid ""
 "Moving from another RSS importing plugin? Select it below to recreate its "
 "feeds as WPeMatico campaigns in a couple of clicks."
 msgstr ""
-"Vii de la alt plugin de import RSS? Alege-l mai jos ca să-i recreezi "
+"Vii de la alt modul de import RSS? Alege-l mai jos ca să-i recreezi "
 "fluxurile ca niște campanii WPeMatico din câteva clicuri."
 
 #: includes/migration/views/migration-box.php:182
@@ -6890,17 +6940,17 @@ msgid_plural ""
 "WPeMatico RSS Feed Reader addon to import them — without it there is nothing "
 "to import."
 msgstr[0] ""
-"Acest flux doar afișează elemente (nu creează articole). Adaugă extensia "
+"Acest flux doar afișează elemente (nu creează articole). Adaugă suplimentul "
 "gratuită WPeMatico RSS Feed Reader ca să-l imporți — fără ea nu e nimic de "
 "importat."
 msgstr[1] ""
 "Toate cele %d fluxuri doar afișează elemente (nu creează articole). Adaugă "
-"extensia gratuită WPeMatico RSS Feed Reader ca să le imporți — fără ea nu e "
-"nimic de importat."
+"suplimentul gratuită WPeMatico RSS Feed Reader ca să le imporți — fără ea nu "
+"e nimic de importat."
 msgstr[2] ""
 "Toate cele %d de fluxuri doar afișează elemente (nu creează articole). "
-"Adaugă extensia gratuită WPeMatico RSS Feed Reader ca să le imporți — fără "
-"ea nu e nimic de importat."
+"Adaugă suplimentul gratuită WPeMatico RSS Feed Reader ca să le imporți — "
+"fără ea nu e nimic de importat."
 
 #: includes/migration/views/migration-box.php:308
 msgid ""
@@ -6911,13 +6961,13 @@ msgid_plural ""
 "them you need the free WPeMatico RSS Feed Reader addon."
 msgstr[0] ""
 "%d dintre aceste fluxuri doar afișează elemente (nu creează articole). Ca să-"
-"l imporți îți trebuie extensia gratuită WPeMatico RSS Feed Reader."
+"l imporți îți trebuie suplimentul gratuită WPeMatico RSS Feed Reader."
 msgstr[1] ""
 "%d dintre aceste fluxuri doar afișează elemente (nu creează articole). Ca să "
-"le imporți îți trebuie extensia gratuită WPeMatico RSS Feed Reader."
+"le imporți îți trebuie suplimentul gratuită WPeMatico RSS Feed Reader."
 msgstr[2] ""
 "%d dintre aceste fluxuri doar afișează elemente (nu creează articole). Ca să "
-"le imporți îți trebuie extensia gratuită WPeMatico RSS Feed Reader."
+"le imporți îți trebuie suplimentul gratuită WPeMatico RSS Feed Reader."
 
 #: includes/migration/views/migration-box.php:324
 msgid "Activate RSS Feed Reader"
@@ -6941,21 +6991,21 @@ msgstr "Previzualizează"
 
 #: includes/migration/views/migration-box.php:361
 msgid "Other plugin"
-msgstr "Alt plugin"
+msgstr "Alt modul"
 
 #: includes/migration/views/migration-box.php:363
 msgid ""
 "No data from a supported plugin was found on this site. Set up feeds in a "
 "supported plugin and its importer will show up here automatically."
 msgstr ""
-"Pe acest sit nu s-au găsit date de la vreun plugin acceptat. Configurează "
-"fluxuri într-un plugin acceptat și importatorul lui va apărea aici automat."
+"Pe acest sit nu s-au găsit date de la vreun modul acceptat. Configurează "
+"fluxuri într-un modul acceptat și importatorul lui va apărea aici automat."
 
 #: includes/migration/views/migration-box.php:365
 msgid ""
 "Missing a plugin you want to migrate from? Let us know and we may add it."
 msgstr ""
-"Îți lipsește pluginul din care vrei să migrezi? Spune-ne și poate îl adăugăm."
+"Îți lipsește modulul din care vrei să migrezi? Spune-ne și poate îl adăugăm."
 
 #: includes/migration/views/migration-box.php:369
 msgid "Request integration"
@@ -7008,7 +7058,7 @@ msgstr ""
 
 #: includes/migration/views/migration-box.php:68
 msgid "the source plugin"
-msgstr "pluginul sursă"
+msgstr "modulul sursă"
 
 #: includes/migration/views/migration-box.php:73
 msgid "Keep the feeds of a group together in one campaign"
@@ -7041,12 +7091,12 @@ msgstr "Folosit implicit ca tip de campanie Preluare flux."
 
 #: includes/module/actions.php:147
 msgid "Plugin Importers"
-msgstr "Importatori de pluginuri"
+msgstr "Importatori de module"
 
 #: includes/module/actions.php:148
 msgid ""
 "Bring the feeds and settings of another RSS importing plugin into WPeMatico."
-msgstr "Adu în WPeMatico fluxurile și setările altui plugin de import RSS."
+msgstr "Adu în WPeMatico fluxurile și setările altui modul de import RSS."
 
 #: includes/module/actions.php:155
 msgid "bbPress"
@@ -7074,7 +7124,7 @@ msgid ""
 "Downloads the video and audio files of each item into the WordPress uploads "
 "folder."
 msgstr ""
-"Descarcă fișierele video și audio ale fiecărui element în folderul de "
+"Descarcă fișierele video și audio ale fiecărui element în dosarul de "
 "încărcări al WordPress."
 
 #: includes/module/actions.php:175
@@ -7169,22 +7219,21 @@ msgid ""
 "Each campaign can override it, and the Featured Image from URL module "
 "decides whether the image is downloaded or linked."
 msgstr ""
-"Fiecare campanie poate schimba asta, iar modulul Imagine reprezentativă "
+"Fiecare campanie poate schimba asta, iar extensia Imagine reprezentativă "
 "dintr-un URL decide dacă imaginea e descărcată sau doar legată."
 
 #: includes/module/actions.php:241
 msgid "Email Notifications"
-msgstr "Notificări pe e-mail"
+msgstr "Notificări pe email"
 
 #: includes/module/actions.php:242
 msgid "Get an email report every time a campaign finishes a run."
 msgstr ""
-"Primește un raport pe e-mail de fiecare dată când o campanie termină o "
-"rulare."
+"Primește un raport pe email de fiecare dată când o campanie termină o rulare."
 
 #: includes/module/actions.php:248
 msgid "Deactivate in each campaign by clearing the email field."
-msgstr "Dezactivează în fiecare campanie golind câmpul de e-mail."
+msgstr "Dezactivează în fiecare campanie golind câmpul de email."
 
 #: includes/module/actions.php:251
 msgid "Random Galleries"
@@ -7221,12 +7270,12 @@ msgstr ""
 
 #: includes/module/actions.php:310
 msgid "Turning this off deactivates the %s plugin."
-msgstr "Dacă oprești asta, pluginul %s se dezactivează."
+msgstr "Dacă oprești asta, modulul %s se dezactivează."
 
 #: includes/module/actions.php:312
 msgid "The plugin is installed but not running. Turning this on activates %s."
 msgstr ""
-"Pluginul este instalat, dar nu rulează. Dacă pornești asta, se activează %s."
+"Modulul este instalat, dar nu rulează. Dacă pornești asta, se activează %s."
 
 #: includes/module/actions.php:318
 msgid ""
@@ -7246,16 +7295,16 @@ msgstr ""
 msgid ""
 "%s is installed but not active. Turn it on and this module becomes available."
 msgstr ""
-"%s este instalat, dar nu este activ. Pornește-l și acest modul devine "
-"disponibil."
+"%s este instalat, dar nu este activ. Pornește-l și această extensie devine "
+"disponibilă."
 
 #: includes/module/actions.php:420
 msgid "It also needs the free %s plugin."
-msgstr "Are nevoie și de pluginul gratuit %s."
+msgstr "Are nevoie și de modulul gratuit %s."
 
 #: includes/module/actions.php:440
 msgid "Needs the free %s plugin, which is not installed yet."
-msgstr "Necesită pluginul gratuit %s, care nu este încă instalat."
+msgstr "Necesită modulul gratuit %s, care nu este încă instalat."
 
 #: includes/module/actions.php:441 includes/module/dashboard.php:62
 #: includes/module/manager.php:194
@@ -7273,7 +7322,7 @@ msgstr ""
 
 #: includes/module/actions.php:522
 msgid "Installs the free WP Delete Post Copies plugin from WordPress.org."
-msgstr "Instalează pluginul gratuit WP Delete Post Copies de pe WordPress.org."
+msgstr "Instalează modulul gratuit WP Delete Post Copies de pe WordPress.org."
 
 #: includes/module/actions.php:526
 msgid "WPeMatico Polylang"
@@ -7288,7 +7337,7 @@ msgstr ""
 
 #: includes/module/actions.php:532
 msgid "Installs the free WPeMatico Polylang plugin from WordPress.org."
-msgstr "Instalează pluginul gratuit WPeMatico Polylang de pe WordPress.org."
+msgstr "Instalează modulul gratuit WPeMatico Polylang de pe WordPress.org."
 
 #: includes/module/actions.php:539
 msgid ""
@@ -7313,7 +7362,7 @@ msgstr ""
 #: includes/module/actions.php:550
 msgid "Installs the free WPeMatico RSS Feed Reader plugin from WordPress.org."
 msgstr ""
-"Instalează pluginul gratuit WPeMatico RSS Feed Reader de pe WordPress.org."
+"Instalează modulul gratuit WPeMatico RSS Feed Reader de pe WordPress.org."
 
 #: includes/module/actions.php:551
 msgid "Requires WPeMatico RSS Feed Reader"
@@ -7347,7 +7396,7 @@ msgid ""
 "WPeMatico stores the image URL on each post; that plugin is what turns it "
 "into the featured image WordPress shows."
 msgstr ""
-"WPeMatico salvează adresa imaginii pe fiecare articol; acel plugin este cel "
+"WPeMatico salvează adresa imaginii pe fiecare articol; acel modul este cel "
 "care o transformă în imaginea reprezentativă pe care o arată WordPress."
 
 #: includes/module/actions.php:589
@@ -7370,8 +7419,8 @@ msgid ""
 "The addon extends that free plugin, the same one the Delete Duplicates card "
 "installs."
 msgstr ""
-"Suplimentul extinde acel plugin gratuit, același pe care îl instalează "
-"cardul Șterge duplicatele."
+"Suplimentul extinde acel modul gratuit, același pe care îl instalează cardul "
+"Șterge duplicatele."
 
 #: includes/module/actions.php:609
 msgid "Polyglot"
@@ -7426,7 +7475,7 @@ msgstr ""
 
 #: includes/module/actions.php:653
 msgid "A Professional feature, you can activate it here."
-msgstr "O funcție Professional, pe care o poți activa aici."
+msgstr "O funcționalitate Professional, pe care o poți activa aici."
 
 #: includes/module/actions.php:657
 msgid "Keyword Filtering"
@@ -7476,7 +7525,7 @@ msgstr "Necesită suplimentul „Make Me Feed”"
 
 #: includes/module/actions.php:703
 msgid "Publish To Email"
-msgstr "Publicare prin e-mail"
+msgstr "Publicare prin email"
 
 #: includes/module/actions.php:704
 msgid ""
@@ -7548,7 +7597,7 @@ msgid ""
 "defines, by download, folder, FTP or SSH."
 msgstr ""
 "Exportă-ți articolele într-un fișier, după un program, în formatul definit "
-"de șablonul tău, prin descărcare, folder, FTP sau SSH."
+"de șablonul tău, prin descărcare, dosar, FTP sau SSH."
 
 #: includes/module/actions.php:759
 msgid "Requires Exporter addon"
@@ -7563,7 +7612,7 @@ msgid ""
 "Publish posts from the .docx and PDF files in a folder of your server, with "
 "their text and their images."
 msgstr ""
-"Publică articole din fișierele .docx și PDF dintr-un folder de pe serverul "
+"Publică articole din fișierele .docx și PDF dintr-un dosar de pe serverul "
 "tău, cu textul și imaginile lor."
 
 #: includes/module/actions.php:771
@@ -7600,7 +7649,7 @@ msgstr "WPeMatico %s"
 
 #: includes/module/dashboard.php:31
 msgid "Modules"
-msgstr "Module"
+msgstr "Extensii"
 
 #: includes/module/dashboard.php:33
 msgid "System Status"
@@ -7620,15 +7669,15 @@ msgstr "Eroare de conexiune"
 
 #: includes/module/dashboard.php:59
 msgid "Module error: "
-msgstr "Eroare de modul: "
+msgstr "Eroare de extensie: "
 
 #: includes/module/dashboard.php:60
 msgid "Do you want to install this plugin?"
-msgstr "Vrei să instalezi acest plugin?"
+msgstr "Vrei să instalezi acest modul?"
 
 #: includes/module/dashboard.php:61
 msgid "Do you want to activate the plugin after installation?"
-msgstr "Vrei să activezi pluginul după instalare?"
+msgstr "Vrei să activezi modulul după instalare?"
 
 #: includes/module/dashboard.php:63
 msgid "Installing…"
@@ -7640,7 +7689,7 @@ msgstr "OK"
 
 #: includes/module/dashboard.php:69
 msgid "This will deactivate the plugin %s. Continue?"
-msgstr "Asta va dezactiva pluginul %s. Continui?"
+msgstr "Asta va dezactiva modulul %s. Continui?"
 
 #: includes/module/dashboard.php:85 includes/lib/EDD_SL_Plugin_Updater.php:565
 msgid "Error"
@@ -7656,7 +7705,7 @@ msgstr "Nu ai permisiunea de a accesa această pagină."
 
 #: includes/module/manager.php:106
 msgid "Available Modules"
-msgstr "Module disponibile"
+msgstr "Extensii disponibile"
 
 #: includes/module/manager.php:107
 msgid "Show All"
@@ -7664,7 +7713,7 @@ msgstr "Arată tot"
 
 #: includes/module/manager.php:145
 msgid "Free plugin available in WordPress.org repository"
-msgstr "Plugin gratuit disponibil în depozitul WordPress.org"
+msgstr "Modul gratuit disponibil în depozitul WordPress.org"
 
 #: includes/module/manager.php:146
 msgid "Professional addon is available at etruel.com"
@@ -7672,11 +7721,11 @@ msgstr "Suplimentul Professional este disponibil pe etruel.com"
 
 #: includes/module/manager.php:147
 msgid "New feature recently added"
-msgstr "Funcție adăugată recent"
+msgstr "Funcționalitate adăugată recent"
 
 #: includes/module/manager.php:148
 msgid "Experimental feature - use with caution"
-msgstr "Funcție experimentală — folosește-o cu prudență"
+msgstr "Funcționalitate experimentală — folosește-o cu prudență"
 
 #: includes/module/manager.php:150
 msgid "Additional functionality available by AddOn at etruel.com"
@@ -7686,7 +7735,7 @@ msgstr "Funcționalitate suplimentară, disponibilă ca supliment pe etruel.com"
 msgid ""
 "The plugin is installed on this site: use the switch to turn it on or off"
 msgstr ""
-"Pluginul este instalat pe acest sit: folosește comutatorul ca să-l pornești "
+"Modulul este instalat pe acest sit: folosește comutatorul ca să-l pornești "
 "sau să-l oprești"
 
 #: includes/module/manager.php:157
@@ -7694,7 +7743,7 @@ msgid ""
 "Part of an addon you already have: the switch turns the feature on or off"
 msgstr ""
 "Face parte dintr-un supliment pe care îl ai deja: comutatorul pornește sau "
-"oprește funcția"
+"oprește funcționalitatea"
 
 #: includes/module/manager.php:219
 msgid "GET IT"
@@ -7702,39 +7751,39 @@ msgstr "IA-L"
 
 #: includes/module/manager.php:227
 msgid "Toggle %s module"
-msgstr "Comută modulul %s"
+msgstr "Comută extensia %s"
 
 #: includes/module/manager.php:272
 msgid "Invalid module"
-msgstr "Modul nevalid"
+msgstr "Extensie nevalidă"
 
 #: includes/module/manager.php:279
 msgid "This module cannot be changed here."
-msgstr "Acest modul nu poate fi schimbat de aici."
+msgstr "Această extensie nu poate fi schimbată de aici."
 
 #: includes/module/manager.php:300
 msgid "Module updated"
-msgstr "Modul actualizat"
+msgstr "Extensie actualizată"
 
 #: includes/module/manager.php:309
 msgid "You do not have permission to install plugins"
-msgstr "Nu ai permisiunea să instalezi pluginuri"
+msgstr "Nu ai permisiunea să instalezi module"
 
 #: includes/module/manager.php:320
 msgid "Invalid plugin URL"
-msgstr "Adresă de plugin nevalidă"
+msgstr "Adresă de modul nevalidă"
 
 #: includes/module/manager.php:325
 msgid "Only plugins from the WordPress.org repository can be installed here."
-msgstr "Aici pot fi instalate doar pluginuri din depozitul WordPress.org."
+msgstr "Aici pot fi instalate doar module din depozitul WordPress.org."
 
 #: includes/module/manager.php:344
 msgid "Plugin activated successfully."
-msgstr "Plugin activat cu succes."
+msgstr "Modul activat cu succes."
 
 #: includes/module/manager.php:351
 msgid "Plugin already installed. Activation skipped."
-msgstr "Plugin deja instalat. Activarea a fost sărită."
+msgstr "Modul deja instalat. Activarea a fost sărită."
 
 #: includes/module/manager.php:360
 msgid ""
@@ -7747,20 +7796,20 @@ msgstr ""
 #: includes/module/manager.php:388
 msgid "Plugin installation failed: invalid package or could not extract files."
 msgstr ""
-"Instalarea pluginului a eșuat: pachet nevalid sau fișierele nu au putut fi "
+"Instalarea modulului a eșuat: pachet nevalid sau fișierele nu au putut fi "
 "extrase."
 
 #: includes/module/manager.php:397
 msgid "Plugin installation failed: destination directory missing."
-msgstr "Instalarea pluginului a eșuat: lipsește folderul de destinație."
+msgstr "Instalarea modulului a eșuat: lipsește folderul de destinație."
 
 #: includes/module/manager.php:412
 msgid "Plugin installed but main file was not found."
-msgstr "Plugin instalat, dar fișierul principal nu a fost găsit."
+msgstr "Modul instalat, dar fișierul principal nu a fost găsit."
 
 #: includes/module/manager.php:42
 msgid "Core Feature"
-msgstr "Funcție de bază"
+msgstr "Funcționalitate de bază"
 
 #: includes/module/manager.php:43
 msgid "External Tools"
@@ -7768,7 +7817,7 @@ msgstr "Unelte externe"
 
 #: includes/module/manager.php:433
 msgid "Plugin installed and activated successfully."
-msgstr "Plugin instalat și activat cu succes."
+msgstr "Modul instalat și activat cu succes."
 
 #: includes/module/manager.php:44
 msgid "Content Parsers"
@@ -7776,7 +7825,7 @@ msgstr "Analizoare de conținut"
 
 #: includes/module/manager.php:442
 msgid "Plugin installed successfully. Activation skipped."
-msgstr "Plugin instalat cu succes. Activarea a fost sărită."
+msgstr "Modul instalat cu succes. Activarea a fost sărită."
 
 #: includes/module/manager.php:45
 msgid "Images"
@@ -7831,8 +7880,8 @@ msgid ""
 "Unlock advanced features and show all the settings and options inside "
 "campaigns."
 msgstr ""
-"Deblochează funcțiile avansate și arată toate setările și opțiunile din "
-"campanii."
+"Deblochează funcționalitățile avansate și arată toate setările și opțiunile "
+"din campanii."
 
 #: includes/module/manager.php:98
 msgid "Used by default until version 3.0 which will include Easy Mode.😉"
@@ -7845,7 +7894,7 @@ msgid ""
 "complete and to fix any errors. Please register at %4$s to help complete the "
 "translation to %1$s!"
 msgstr ""
-"După cum vezi, există o traducere a acestui plugin în %1$s. Traducerea este "
+"După cum vezi, există o traducere a acestui modul în %1$s. Traducerea este "
 "acum completă în proporție de %3$d%%. Avem nevoie de ajutorul tău ca să o "
 "terminăm și să corectăm erorile. Înregistrează-te pe %4$s ca să ajuți la "
 "finalizarea traducerii în %1$s!"
@@ -7857,7 +7906,7 @@ msgid ""
 "%4$s to help complete the translation to %1$s!"
 msgstr ""
 "Folosești WordPress în %1$s. Deși %2$s este tradus în %1$s în proporție de "
-"%3$d%%, traducerea nu este încă livrată cu pluginul. Poți ajuta! "
+"%3$d%%, traducerea nu este încă livrată cu modulul. Poți ajuta! "
 "Înregistrează-te pe %4$s ca să ajuți la finalizarea traducerii în %1$s!"
 
 #: includes/notification_traslate.php:248
@@ -7908,7 +7957,7 @@ msgstr "Încarcă pagina de setări WPeMatico"
 
 #: includes/plugin_functions.php:340
 msgid "Take a look at all the bundled add-ons"
-msgstr "Aruncă o privire peste toate extensiile din pachet"
+msgstr "Aruncă o privire peste toate suplimentele din pachet"
 
 #: includes/plugin_functions.php:340 includes/settings/widgets.php:377
 msgid "Go Perfect"
@@ -7920,11 +7969,11 @@ msgstr "Asistență"
 
 #: includes/plugin_functions.php:362
 msgid "Rate Plugin"
-msgstr "Evaluează pluginul"
+msgstr "Evaluează modulul"
 
 #: includes/plugin_functions.php:363
 msgid "Take a look at the Essentials features"
-msgstr "Aruncă o privire la funcțiile Essentials"
+msgstr "Aruncă o privire la funcționalitățile Essentials"
 
 #: includes/plugin_functions.php:363
 msgid "Go PRO"
@@ -7947,7 +7996,7 @@ msgstr ""
 
 #: includes/plugin_functions.php:69
 msgid "✅ I only needed the plugin temporarily"
-msgstr "✅ Am avut nevoie de plugin doar temporar"
+msgstr "✅ Am avut nevoie de modul doar temporar"
 
 #: includes/plugin_functions.php:73
 msgid "🔧 I’m troubleshooting an issue and will likely reactivate it"
@@ -7955,18 +8004,18 @@ msgstr "🔧 Caut cauza unei probleme și probabil îl voi reactiva"
 
 #: includes/plugin_functions.php:77
 msgid "⚡ The plugin isn’t working as expected (we can help fix it!)"
-msgstr "⚡ Pluginul nu funcționează cum mă așteptam (putem să-l reparăm!)"
+msgstr "⚡ Modulul nu funcționează cum mă așteptam (putem să-l reparăm!)"
 
 #: includes/plugin_functions.php:81
 msgid ""
 "❌ The plugin caused issues on my site (let us know so we can resolve them)"
-msgstr "❌ Pluginul mi-a creat probleme pe sit (spune-ne, ca să le rezolvăm)"
+msgstr "❌ Modulul mi-a creat probleme pe sit (spune-ne, ca să le rezolvăm)"
 
 #: includes/plugin_functions.php:85
 msgid ""
 "🔄 I’m switching to another plugin (tell us what’s missing, and we may add "
 "it!)"
-msgstr "🔄 Trec la alt plugin (spune-ne ce lipsește și poate adăugăm!)"
+msgstr "🔄 Trec la alt modul (spune-ne ce lipsește și poate adăugăm!)"
 
 #: includes/plugin_functions.php:89
 msgid "🤷 I no longer need it"
@@ -8010,7 +8059,7 @@ msgstr ""
 
 #: includes/settings/help.php:104
 msgid "If the audio sits inside an %s tag, that link is removed as well."
-msgstr "Dacă sunetul se află într-o etichetă %s, se scoate și acel link."
+msgstr "Dacă sunetul se află într-o etichetă %s, se scoate și acea legătură."
 
 #: includes/settings/help.php:109
 msgid "Turn it off if the audios stop playing."
@@ -8026,7 +8075,7 @@ msgid ""
 "your Uploads folder. Off, videos stay on the source server."
 msgstr ""
 "O copie a fiecărui videoclip din elementul fluxului (doar în etichete %s) se "
-"salvează în folderul tău de încărcări. Oprit, videoclipurile rămân pe "
+"salvează în dosarul tău de încărcări. Oprit, videoclipurile rămân pe "
 "serverul sursei."
 
 #: includes/settings/help.php:121
@@ -8055,7 +8104,8 @@ msgstr ""
 
 #: includes/settings/help.php:133
 msgid "If the video sits inside an %s tag, that link is removed as well."
-msgstr "Dacă videoclipul se află într-o etichetă %s, se scoate și acel link."
+msgstr ""
+"Dacă videoclipul se află într-o etichetă %s, se scoate și acea legătură."
 
 #: includes/settings/help.php:138
 msgid "Turn it off if the videos stop playing."
@@ -8063,7 +8113,7 @@ msgstr "Oprește-l dacă videoclipurile nu mai pornesc."
 
 #: includes/settings/help.php:143
 msgid "Enable features"
-msgstr "Activează funcții"
+msgstr "Activează funcționalități"
 
 #: includes/settings/help.php:144
 msgid ""
@@ -8249,8 +8299,9 @@ msgid ""
 "Saves database space and costs you the source permalink, the campaign each "
 "post came from and every bulk action based on it."
 msgstr ""
-"Economisește spațiu în baza de date și te costă permalinkul sursei, campania "
-"din care a venit fiecare articol și orice acțiune în masă bazată pe ele."
+"Economisește spațiu în baza de date și te costă legătura permanentă a "
+"sursei, campania din care a venit fiecare articol și orice acțiune în masă "
+"bazată pe ele."
 
 #: includes/settings/help.php:215
 msgid ""
@@ -8334,7 +8385,7 @@ msgid ""
 "Writes a \"campaign title.txt.log\" file in the uploads folder with the "
 "steps of each external cron run. Useful while you set the cron up."
 msgstr ""
-"Scrie în folderul de încărcări un fișier „titlul campaniei.txt.log” cu pașii "
+"Scrie în dosarul de încărcări un fișier „titlul campaniei.txt.log” cu pașii "
 "fiecărei rulări a cronului extern. Util cât timp îl configurezi."
 
 #: includes/settings/help.php:25 includes/settings/help.php:86
@@ -8379,11 +8430,11 @@ msgstr ""
 
 #: includes/settings/help.php:267 includes/settings/page.php:966
 msgid "Hide the WP dashboard widget"
-msgstr "Ascunde widgetul din panoul WP"
+msgstr "Ascunde piesa din panoul de control WP"
 
 #: includes/settings/help.php:268
 msgid "Removes the WPeMatico widget from the WordPress dashboard."
-msgstr "Scoate widgetul WPeMatico din panoul WordPress."
+msgstr "Scoate piesa WPeMatico din panoul de control WordPress."
 
 #: includes/settings/help.php:273 includes/settings/page.php:757
 msgid "Do not check feeds before saving"
@@ -8407,9 +8458,9 @@ msgid ""
 "Adds a link on the campaigns list that clears the duplicate hashes of every "
 "feed in a campaign, so its items can be published again."
 msgstr ""
-"Adaugă în lista de campanii un link care șterge hash-urile de duplicate ale "
-"tuturor fluxurilor unei campanii, ca elementele ei să poată fi publicate din "
-"nou."
+"Adaugă în lista de campanii o legătură care șterge hash-urile de duplicate "
+"ale tuturor fluxurilor unei campanii, ca elementele ei să poată fi publicate "
+"din nou."
 
 #: includes/settings/help.php:281 includes/settings/page.php:775
 msgid "Enable \"See last log\""
@@ -8418,7 +8469,7 @@ msgstr "Activează „Vezi ultimul jurnal”"
 #: includes/settings/help.php:282
 msgid "Adds a link on the campaigns list that opens the log of the last run."
 msgstr ""
-"Adaugă în lista de campanii un link care deschide jurnalul ultimei rulări."
+"Adaugă în lista de campanii o legătură care deschide jurnalul ultimei rulări."
 
 #: includes/settings/help.php:285 includes/settings/page.php:793
 msgid "Hide the WPeMatico credits"
@@ -8454,7 +8505,7 @@ msgstr "Nu încărca pagina de extensii"
 
 #: includes/settings/help.php:298
 msgid "The Extensions menu stops asking our site for the add-on catalogue."
-msgstr "Meniul Extensii nu mai cere catalogul de pe site-ul nostru."
+msgstr "Meniul Suplimente nu mai cere catalogul de pe site-ul nostru."
 
 #: includes/settings/help.php:299
 msgid ""
@@ -8468,7 +8519,7 @@ msgid ""
 "your Uploads folder. Off, images stay on the source server."
 msgstr ""
 "O copie a fiecărei imagini din elementul fluxului (doar în etichete %s) se "
-"salvează în folderul tău de încărcări. Oprit, imaginile rămân pe serverul "
+"salvează în dosarul tău de încărcări. Oprit, imaginile rămân pe serverul "
 "sursei."
 
 #: includes/settings/help.php:302 includes/settings/page.php:784
@@ -8507,11 +8558,11 @@ msgstr ""
 
 #: includes/settings/help.php:312
 msgid "Sender email"
-msgstr "E-mailul expeditorului"
+msgstr "Emailul expeditorului"
 
 #: includes/settings/help.php:313
 msgid "The address every email from this plugin is sent from."
-msgstr "Adresa de la care pleacă fiecare e-mail al acestui modul."
+msgstr "Adresa de la care pleacă fiecare email al acestui modul."
 
 #: includes/settings/help.php:316
 msgid "Sender name"
@@ -8523,7 +8574,7 @@ msgstr "Numele afișat lângă acea adresă în căsuța ta poștală."
 
 #: includes/settings/help.php:329
 msgid "Features available with the Professional add-on."
-msgstr "Funcții disponibile cu extensia Professional."
+msgstr "Funcționalități disponibile cu suplimentul Professional."
 
 #: includes/settings/help.php:330
 msgid ""
@@ -8566,8 +8617,8 @@ msgid ""
 "Full Content is the add-on that fetches the whole article from the source "
 "site when the feed only carries a summary."
 msgstr ""
-"Full Content este extensia care aduce articolul întreg de pe site-ul sursă "
-"atunci când fluxul poartă doar un rezumat."
+"Full Content este suplimentul care aduce articolul întreg de pe site-ul "
+"sursă atunci când fluxul poartă doar un rezumat."
 
 #: includes/settings/help.php:336
 msgid ""
@@ -8612,7 +8663,7 @@ msgstr ""
 
 #: includes/settings/help.php:43
 msgid "If the image sits inside an %s tag, that link is removed as well."
-msgstr "Dacă imaginea se află într-o etichetă %s, se scoate și acel link."
+msgstr "Dacă imaginea se află într-o etichetă %s, se scoate și acea legătură."
 
 #: includes/settings/help.php:50
 msgid "Images with no srcset attribute are processed as usual."
@@ -8671,7 +8722,7 @@ msgid ""
 "your Uploads folder. Off, audios stay on the source server."
 msgstr ""
 "O copie a fiecărui sunet din elementul fluxului (doar în etichete %s) se "
-"salvează în folderul tău de încărcări. Oprit, sunetele rămân pe serverul "
+"salvează în dosarul tău de încărcări. Oprit, sunetele rămân pe serverul "
 "sursei."
 
 #: includes/settings/help.php:92
@@ -8698,7 +8749,9 @@ msgstr "Tururi ghidate"
 msgid ""
 "Shows a short tour the first time you open each WPeMatico screen. Only for "
 "your user."
-msgstr "Arată un tur scurt prima dată când deschizi fiecare ecran WPeMatico. Doar pentru utilizatorul tău."
+msgstr ""
+"Arată un tur scurt prima dată când deschizi fiecare ecran WPeMatico. Doar "
+"pentru utilizatorul tău."
 
 #: includes/settings/page.php:1034
 msgid "Highlights of the new release"
@@ -8723,7 +8776,7 @@ msgid ""
 "can write your review on WordPress forum. Use the language of your choice, "
 "we appreciate it!"
 msgstr ""
-"Evaluând WPeMatico RSS Feed Fetcher, îi ajuți pe creatorii pluginului să-și "
+"Evaluând WPeMatico RSS Feed Fetcher, îi ajuți pe creatorii modulului să-și "
 "îmbunătățească munca și pe alți utilizatori să găsească programul de care au "
 "nevoie. Îți poți scrie recenzia pe forumul WordPress, în limba pe care o "
 "preferi — o apreciem!"
@@ -8757,7 +8810,7 @@ msgid ""
 "This is where you would enter the license keys for one of our premium "
 "plugins, should you activate one."
 msgstr ""
-"Aici introduci cheile de licență pentru unul dintre pluginurile noastre "
+"Aici introduci cheile de licență pentru unul dintre modulele noastre "
 "premium, dacă activezi vreunul."
 
 #: includes/settings/page.php:134 includes/lib/licenses_handlers.php:320
@@ -8922,7 +8975,7 @@ msgstr "aici"
 
 #: includes/settings/page.php:686
 msgid "Enable Features"
-msgstr "Activează funcții"
+msgstr "Activează funcționalități"
 
 #: includes/settings/page.php:693
 msgid "Enable \"Rewrite\""
@@ -8955,15 +9008,15 @@ msgstr "Acțiuni avansate"
 
 #: includes/settings/page.php:77
 msgid "Invalid email."
-msgstr "E-mail nevalid."
+msgstr "Email nevalid."
 
 #: includes/settings/page.php:843
 msgid "Sending e-Mails"
-msgstr "Trimiterea e-mailurilor"
+msgstr "Trimiterea emailurilor"
 
 #: includes/settings/page.php:848
 msgid "Sender email:"
-msgstr "E-mailul expeditorului:"
+msgstr "Emailul expeditorului:"
 
 #: includes/settings/page.php:854
 msgid "Sender name:"
@@ -8983,7 +9036,7 @@ msgstr "Tipurile de conținut cărora li se aplică"
 
 #: includes/settings/page.php:972
 msgid "Roles that see the dashboard widget:"
-msgstr "Rolurile care văd widgetul:"
+msgstr "Rolurile care văd piesa:"
 
 #: includes/settings/widgets.php:173
 msgid "Making autoblogging easy"
@@ -8999,7 +9052,7 @@ msgstr "Recenzii și ghiduri"
 
 #: includes/settings/widgets.php:200
 msgid "Addons store, FAQs and free support"
-msgstr "Magazin de extensii, întrebări frecvente și suport gratuit"
+msgstr "Magazin de suplimente, întrebări frecvente și suport gratuit"
 
 #: includes/settings/widgets.php:208
 msgid "Improve your Experience"
@@ -9023,7 +9076,7 @@ msgstr "PREMIUM"
 
 #: includes/settings/widgets.php:213
 msgid "Most powerfull addons"
-msgstr "Cele mai puternice extensii"
+msgstr "Cele mai puternice suplimente"
 
 #: includes/settings/widgets.php:213
 msgid "PLUS"
@@ -9064,7 +9117,7 @@ msgstr "Funcționalități extinse"
 
 #: includes/settings/widgets.php:267
 msgid "Many AddOns make up the %s with the most wanted features."
-msgstr "Multe extensii compun %s cu cele mai cerute funcționalități."
+msgstr "Multe suplimente compun %s cu cele mai cerute funcționalități."
 
 #: includes/settings/widgets.php:271
 msgid ""
@@ -9717,8 +9770,8 @@ msgid ""
 "A feed that answers only to a browser can still be read with the Force Feed "
 "or Change User Agent features of "
 msgstr ""
-"Un flux care răspunde doar unui browser tot poate fi citit cu funcțiile "
-"Force Feed sau Change User Agent din "
+"Un flux care răspunde doar unui navigator tot poate fi citit cu "
+"funcționalitățile Force Feed sau Change User Agent din "
 
 #: includes/wpematico_functions.php:2325
 msgid "Feed Title:"
@@ -10057,7 +10110,8 @@ msgstr "Arată modulele locale în lista de module"
 msgid ""
 "Turn this on to list the add-ons on your Plugins page, like any other plugin."
 msgstr ""
-"Pornește asta ca extensiile să apară în pagina ta Module, ca orice alt modul."
+"Pornește asta ca suplimentele să apară în pagina ta Module, ca orice alt "
+"modul."
 
 #: wpematico_class.php:266
 msgid "Hide Reviews on Settings"
@@ -10098,8 +10152,8 @@ msgid ""
 "Tick \"Hide Reviews on Settings\" to show a plain link to the reviews page "
 "instead."
 msgstr ""
-"Bifează „Ascunde recenziile din Setări” ca să se afișeze în locul lor un "
-"simplu link către pagina de recenzii."
+"Bifează „Ascunde recenziile din Setări” ca să se afișeze în locul lor o "
+"simplă legătură către pagina de recenzii."
 
 #: wpematico_class.php:318
 msgid ""
@@ -10119,7 +10173,7 @@ msgstr "Panou WPeMatico"
 
 #: wpematico_class.php:344 includes/module/dashboard.php:106
 msgid "Dashboard"
-msgstr "Panou"
+msgstr "Panou control"
 
 #: wpematico_class.php:368 wpematico_class.php:369
 #: includes/dashboard-widgets.php:554 includes/plugin_functions.php:339
@@ -10135,11 +10189,11 @@ msgstr "Unelte"
 
 #: wpematico_class.php:397 wpematico_class.php:406
 msgid "Add-ons"
-msgstr "Extensii"
+msgstr "Suplimente"
 
 #: wpematico_class.php:398 includes/addons_page.php:1461
 msgid "WPeMatico Addons"
-msgstr "Extensii WPeMatico"
+msgstr "Suplimente WPeMatico"
 
 #: wpematico_class.php:407 includes/class-tour-helper.php:224
 #: includes/plugin_functions.php:360

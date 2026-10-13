@@ -308,7 +308,20 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
             }
             // Get the source Permalink trying to redirect if is set.
             $permalink = $this->getReadUrl($permalink, $this->campaign);
-            $this->current_item['permalink'] = $permalink;
+            /**
+             * The address an item about to be published is read from and linked to.
+             *
+             * Applied once per item, past the duplicate check, and it leaves the
+             * item's hash alone: a campaign type or an add-on may point the post at
+             * another address without the item being taken for a new one.
+             *
+             * @since 2.9.1
+             * @param string $permalink
+             * @param object $item     SimplePie item.
+             * @param array  $campaign
+             * @param string $feed
+             */
+            $this->current_item['permalink'] = apply_filters('wpematico_item_permalink', $permalink, $item, $this->campaign, $feed);
             $this->currenthash[wpematico_feed_hash_key('currenthash', $feed)] = md5($permalink); // the hash of the current item feed
 
             // Persist the dedup hash before processItem so an interrupted run can't re-insert the item.

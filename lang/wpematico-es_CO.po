@@ -795,7 +795,7 @@ msgstr "De trabajo como: %s programación del trabajo:"
 
 #: includes/campaign_edit_functions.php:1016
 msgid "Next runtime:"
-msgstr "Próxima ejecución:"
+msgstr "Siguiente ejecución:"
 
 #: includes/campaign_edit_functions.php:1021 includes/campaign_help.php:124
 msgid "Preset schedules"
@@ -851,7 +851,7 @@ msgstr "Activar la programación"
 
 #: includes/campaign_edit_functions.php:1185
 msgid "Add Feed"
-msgstr "Agregar Feed"
+msgstr "Añadir Feed"
 
 #: includes/campaign_edit_functions.php:1186
 msgid "Check all feeds"
@@ -1003,7 +1003,7 @@ msgstr "Categorías actuales"
 
 #: includes/campaign_edit_functions.php:1423
 msgid "Quick add"
-msgstr "Agregar rápidamente"
+msgstr "Añadir rápidamente"
 
 #: includes/campaign_edit_functions.php:1440 includes/campaign_preview.php:401
 #: includes/campaigns_list.php:1193 includes/campaigns_list.php:1396
@@ -1120,7 +1120,7 @@ msgstr ""
 
 #: includes/campaign_edit_functions.php:28
 msgid "Send log"
-msgstr "Enviar informe"
+msgstr "Enviar registro"
 
 #: includes/campaign_edit_functions.php:283
 msgid "Origin:"
@@ -1231,11 +1231,11 @@ msgstr "Opciones de Palabra a Categoría"
 
 #: includes/campaign_edit_functions.php:482
 msgid "Click to Show/Hide the examples"
-msgstr "Pulsa para mostrar u ocultar los ejemplos"
+msgstr "Haz clic para mostrar u ocultar los ejemplos"
 
 #: includes/campaign_edit_functions.php:483
 msgid "Click here to see more info of the template feature."
-msgstr "Pulsa aquí para saber más sobre las plantillas."
+msgstr "Haz clic aquí para saber más sobre las plantillas."
 
 #: includes/campaign_edit_functions.php:487 includes/campaign_help.php:275
 msgid "Supported tags"
@@ -1685,7 +1685,7 @@ msgstr "Campaña ejecutada en %s seg."
 
 #: includes/campaign_fetch.php:1111
 msgid "WPeMatico Log "
-msgstr "Informe WPeMatico "
+msgstr "Registro WPeMatico "
 
 #: includes/campaign_fetch.php:1114
 msgid "Campaign Name:"
@@ -1713,7 +1713,7 @@ msgstr "Entradas procesadas: %s"
 
 #: includes/campaign_fetch.php:1163
 msgid "Show detailed Log"
-msgstr "Mostrar informe detallado"
+msgstr "Mostrar registro detallado"
 
 #: includes/campaign_fetch.php:1183 includes/campaigns_list.php:922
 msgid "Posts imported by this campaign."
@@ -1754,7 +1754,7 @@ msgstr "Se alcanzó el tiempo máximo de ejecución a los %1$d s."
 
 #: includes/campaign_fetch.php:338
 msgid "%s posts added"
-msgstr "%s entradas agregadas"
+msgstr "%s entradas añadidas"
 
 #: includes/campaign_fetch.php:353
 msgid "Processing item %s"
@@ -1786,11 +1786,11 @@ msgstr "La categoría existe con la superior correcta: "
 
 #: includes/campaign_fetch.php:592
 msgid "Adding Category: "
-msgstr "Agregando Categoría: "
+msgstr "Añadiendo Categoría: "
 
 #: includes/campaign_fetch.php:594
 msgid "Auto Added by WPeMatico"
-msgstr "Auto Agregado por WPeMatico"
+msgstr "Auto Añadido por WPeMatico"
 
 #: includes/campaign_fetch.php:610
 msgid "Created category: "
@@ -1814,7 +1814,7 @@ msgstr "Campaña omitida: ya se está ejecutando desde hace %d s."
 
 #: includes/campaign_fetch.php:791
 msgid "Adding unfiltered content"
-msgstr "** Agregando contenido sin filtrar **"
+msgstr "** Añadiendo contenido sin filtrar **"
 
 #: includes/campaign_fetch.php:799
 msgid "Processing item pingbacks"
@@ -1822,15 +1822,15 @@ msgstr "Procesando pingbacks"
 
 #: includes/campaign_fetch.php:872
 msgid "Categories added: "
-msgstr "Categorías agregadas: "
+msgstr "Categorías añadidas: "
 
 #: includes/campaign_fetch.php:884
 msgid "Tags added: "
-msgstr "Etiquetas agregadas: "
+msgstr "Etiquetas añadidas: "
 
 #: includes/campaign_fetch.php:896
 msgid "Post format added: "
-msgstr "Formato de entrada agregados: "
+msgstr "Formato de entrada añadidos: "
 
 #: includes/campaign_fetch.php:917
 msgid "Skip Featured Image."
@@ -1866,7 +1866,7 @@ msgstr "Buscando audios en el contenido."
 
 #: includes/campaign_fetch_functions.php:125
 msgid "Can't find the featured image to add to the content."
-msgstr "No se puede encontrar la imagen destacada para agregar al contenido."
+msgstr "No se puede encontrar la imagen destacada para añadir al contenido."
 
 #: includes/campaign_fetch_functions.php:1252
 #: includes/campaign_fetch_functions.php:1408
@@ -1925,7 +1925,7 @@ msgstr "Buscando imágenes en contenido."
 #: includes/campaign_fetch_functions.php:1205
 #: includes/campaign_fetch_functions.php:1360
 msgid "Uploading media..."
-msgstr "Subiendo medios..."
+msgstr "Subiendo multimedia..."
 
 #: includes/campaign_fetch_functions.php:529
 msgid "Save image file failed:"
@@ -2019,11 +2019,11 @@ msgstr "Eliminado con éxito."
 
 #: includes/campaign_fetch_functions.php:968
 msgid "Setting up Featured Image From Url"
-msgstr "Configuración de imagen destacada de la URL"
+msgstr "Ajustes de imagen destacada de la URL"
 
 #: includes/campaign_fetch_functions.php:971
 msgid "Adding featured image post meta: "
-msgstr "Agregando meta de entrada de imagen destacada: "
+msgstr "Añadiendo meta de entrada de imagen destacada: "
 
 #: includes/campaign_fetch_functions.php:98
 #: includes/campaign_fetch_functions.php:108
@@ -2126,7 +2126,7 @@ msgid ""
 "Each downloaded image is added to the Media library and attached to its "
 "post. Needed for the featured image; turn it off if the run is too slow."
 msgstr ""
-"Cada imagen descargada se añade a la biblioteca de medios y se adjunta a su "
+"Cada imagen descargada se añade a la biblioteca multimedia y se adjunta a su "
 "entrada. Hace falta para la imagen destacada; desactívalo si la ejecución es "
 "muy lenta."
 
@@ -2209,7 +2209,7 @@ msgid ""
 "Uploads files whose type the Media library does not accept by default. It "
 "does not work on every server."
 msgstr ""
-"Sube archivos cuyo tipo la biblioteca de medios no acepta por defecto. No "
+"Sube archivos cuyo tipo la biblioteca multimedia no acepta por defecto. No "
 "funciona en todos los servidores."
 
 #: includes/campaign_help.php:178 includes/settings/help.php:79
@@ -2217,7 +2217,7 @@ msgid ""
 "Keeps the caption, alt text and title that came with the image in the Media "
 "library."
 msgstr ""
-"Conserva en la biblioteca de medios la leyenda, el texto alternativo y el "
+"Conserva en la biblioteca multimedia la leyenda, el texto alternativo y el "
 "título que traía la imagen."
 
 #: includes/campaign_help.php:181 includes/settings/help.php:69
@@ -2254,7 +2254,7 @@ msgid ""
 "Each downloaded audio is added to the Media library and attached to its "
 "post. Turn it off if the run is too slow."
 msgstr ""
-"Cada audio descargado se añade a la biblioteca de medios y se adjunta a su "
+"Cada audio descargado se añade a la biblioteca multimedia y se adjunta a su "
 "entrada. Desactívalo si la ejecución es muy lenta."
 
 #: includes/campaign_help.php:20
@@ -2302,7 +2302,7 @@ msgid ""
 "Each downloaded video is added to the Media library and attached to its "
 "post. Turn it off if the run is too slow."
 msgstr ""
-"Cada vídeo descargado se añade a la biblioteca de medios y se adjunta a su "
+"Cada vídeo descargado se añade a la biblioteca multimedia y se adjunta a su "
 "entrada. Desactívalo si la ejecución es muy lenta."
 
 #: includes/campaign_help.php:222
@@ -2835,7 +2835,7 @@ msgstr "Feed de vista previa de WPeMatico"
 
 #: includes/campaign_preview.php:389
 msgid "Next Posts(%s)"
-msgstr "Próximas entradas(%s)"
+msgstr "Siguientes entradas(%s)"
 
 #: includes/campaign_preview.php:400
 msgid "Post"
@@ -2977,7 +2977,7 @@ msgstr "No hay nada que cambiar: todas las opciones quedaron en «Sin cambios».
 
 #: includes/campaigns_list.php:1639 includes/campaigns_list.php:1641
 msgid "Campaigns updated successfully."
-msgstr "Campañas actualizadas correctamente."
+msgstr "Campañas actualizadas con éxito."
 
 #: includes/campaigns_list.php:167
 msgid "%s Campaigns deactivated"
@@ -3157,7 +3157,7 @@ msgstr ""
 
 #: includes/campaigns_list.php:756 includes/campaigns_list_help.php:61
 msgid "See Log"
-msgstr "Ver reporte"
+msgstr "Ver registro"
 
 #: includes/campaigns_list.php:761
 msgid "Clear fetching and restore campaign"
@@ -3258,7 +3258,7 @@ msgid ""
 "campaign also shows when it runs next."
 msgstr ""
 "Cuándo se ejecutó la campaña por última vez y cuántos segundos tardó. Una "
-"campaña activada muestra además cuándo se ejecuta la próxima vez."
+"campaña activada muestra además cuándo se ejecuta la siguiente vez."
 
 #: includes/campaigns_list_help.php:35
 msgid ""
@@ -3369,7 +3369,9 @@ msgstr "Feeds"
 msgid ""
 "Add the feed addresses this campaign reads. Check all feeds tells you "
 "whether each one answers."
-msgstr "Añade las direcciones de los feeds que lee esta campaña. «Comprobar todos los feeds» te dice si cada uno responde."
+msgstr ""
+"Añade las direcciones de los feeds que lee esta campaña. «Comprobar todos "
+"los feeds» te dice si cada uno responde."
 
 #: includes/class-tour-helper.php:111
 msgid "Campaign type"
@@ -3379,7 +3381,9 @@ msgstr "Tipo de campaña"
 msgid ""
 "Feed is the usual choice. Other types read XML files, YouTube or Vimeo, and "
 "more come with the extensions."
-msgstr "Feed es la opción habitual. Otros tipos leen archivos XML, YouTube o Vimeo, y las extensiones suman más."
+msgstr ""
+"Feed es la opción habitual. Otros tipos leen archivos XML, YouTube o Vimeo, "
+"y las extensiones suman más."
 
 #: includes/class-tour-helper.php:118 includes/debug_page.php:3025
 #: includes/debug_page.php:3521
@@ -3397,7 +3401,8 @@ msgstr "El Asistente"
 #: includes/class-tour-helper.php:126
 msgid ""
 "Prefer a guided path? The Wizard walks you through every box, one by one."
-msgstr "¿Prefieres que te guíen? El Asistente recorre cada caja contigo, una por una."
+msgstr ""
+"¿Prefieres que te guíen? El Asistente recorre cada caja contigo, una por una."
 
 #: includes/class-tour-helper.php:134
 msgid "Settings menu"
@@ -3407,7 +3412,9 @@ msgstr "Menú de ajustes"
 msgid ""
 "General, Advanced and Backend Tools hold WPeMatico's settings. Each "
 "extension adds its own tab below them."
-msgstr "General, Avanzado y Herramientas del panel guardan los ajustes de WPeMatico. Cada extensión suma su propia pestaña debajo."
+msgstr ""
+"General, Avanzado y Herramientas del panel guardan los ajustes de WPeMatico. "
+"Cada extensión suma su propia pestaña debajo."
 
 #: includes/class-tour-helper.php:141
 msgid "Boxes"
@@ -3415,7 +3422,9 @@ msgstr "Cajas"
 
 #: includes/class-tour-helper.php:142
 msgid "Collapse a box from its header or drag it to sort the screen your way."
-msgstr "Pliega una caja desde su cabecera o arrástrala para ordenar la pantalla a tu gusto."
+msgstr ""
+"Pliega una caja desde su cabecera o arrástrala para ordenar la pantalla a tu "
+"gusto."
 
 #: includes/class-tour-helper.php:148
 msgid "Save"
@@ -3429,7 +3438,9 @@ msgstr "Guarda la sección en la que estás. Las demás conservan lo que tenían
 msgid ""
 "Every option has a (?) with a short explanation, and the Help tab has the "
 "whole story."
-msgstr "Cada opción tiene un (?) con una explicación breve, y la pestaña Ayuda tiene la historia completa."
+msgstr ""
+"Cada opción tiene un (?) con una explicación breve, y la pestaña Ayuda tiene "
+"la historia completa."
 
 #: includes/class-tour-helper.php:161
 msgid "Extra features"
@@ -3439,7 +3450,9 @@ msgstr "Funciones adicionales"
 msgid ""
 "Switch on content rewriting, words to categories, canonical URLs and the "
 "other optional features."
-msgstr "Activa la reescritura de contenido, las palabras a categorías, las URL canónicas y las demás funciones opcionales."
+msgstr ""
+"Activa la reescritura de contenido, las palabras a categorías, las URL "
+"canónicas y las demás funciones opcionales."
 
 #: includes/class-tour-helper.php:168
 msgid "Advanced actions"
@@ -3447,7 +3460,9 @@ msgstr "Acciones avanzadas"
 
 #: includes/class-tour-helper.php:169
 msgid "Feed checks, logs, XML uploads and other behaviour for every campaign."
-msgstr "Comprobación de feeds, registros, subida de XML y otros comportamientos de todas las campañas."
+msgstr ""
+"Comprobación de feeds, registros, subida de XML y otros comportamientos de "
+"todas las campañas."
 
 #: includes/class-tour-helper.php:177
 msgid "Your admin screens"
@@ -3457,7 +3472,9 @@ msgstr "Tus pantallas del panel"
 msgid ""
 "Choose the campaign columns, the boxes of the campaign editor, the dashboard "
 "widgets and these guided tours."
-msgstr "Elige las columnas de las campañas, las cajas del editor de campañas, los widgets del escritorio y estos recorridos guiados."
+msgstr ""
+"Elige las columnas de las campañas, las cajas del editor de campañas, los "
+"widgets del escritorio y estos recorridos guiados."
 
 #: includes/class-tour-helper.php:186 includes/feed_list_help.php:29
 #: includes/tools_page.php:452 includes/tools_tabs.php:64
@@ -3469,13 +3486,17 @@ msgstr "Lista de feeds"
 msgid ""
 "Every feed of every campaign in one list, with its campaign, its status and "
 "its last run."
-msgstr "Todos los feeds de todas las campañas en una sola lista, con su campaña, su estado y su última ejecución."
+msgstr ""
+"Todos los feeds de todas las campañas en una sola lista, con su campaña, su "
+"estado y su última ejecución."
 
 #: includes/class-tour-helper.php:194
 msgid ""
 "Paste any address to see what it really returns: a feed, a page that is not "
 "one, or why it cannot be reached."
-msgstr "Pega cualquier dirección para ver qué devuelve en realidad: un feed, una página que no lo es, o por qué no se puede alcanzar."
+msgstr ""
+"Pega cualquier dirección para ver qué devuelve en realidad: un feed, una "
+"página que no lo es, o por qué no se puede alcanzar."
 
 #: includes/class-tour-helper.php:200 includes/tools_help.php:37
 #: includes/tools_tabs.php:68
@@ -3496,7 +3517,9 @@ msgstr "Kit de migración"
 msgid ""
 "Bring your feeds over from Feedzy or WP RSS Aggregator, with the posts they "
 "already published."
-msgstr "Trae tus feeds desde Feedzy o WP RSS Aggregator, con las entradas que ya publicaron."
+msgstr ""
+"Trae tus feeds desde Feedzy o WP RSS Aggregator, con las entradas que ya "
+"publicaron."
 
 #: includes/class-tour-helper.php:214 includes/tools_tabs.php:18
 msgid "System"
@@ -3506,12 +3529,17 @@ msgstr "Sistema"
 msgid ""
 "Status gathers the site and server details support will ask for. Danger Zone "
 "holds debug logging and what uninstalling removes."
-msgstr "Estado reúne los datos del sitio y del servidor que te pedirá el soporte. Zona de peligro guarda el registro de depuración y lo que borra la desinstalación."
+msgstr ""
+"Estado reúne los datos del sitio y del servidor que te pedirá el soporte. "
+"Zona de peligro guarda el registro de depuración y lo que borra la "
+"desinstalación."
 
 #: includes/class-tour-helper.php:225
 msgid ""
 "Every WPeMatico add-on, installed or not. The free ones install from here."
-msgstr "Todos los add-ons de WPeMatico, instalados o no. Los gratuitos se instalan desde aquí."
+msgstr ""
+"Todos los add-ons de WPeMatico, instalados o no. Los gratuitos se instalan "
+"desde aquí."
 
 #: includes/class-tour-helper.php:231
 msgid "Activate and license"
@@ -3521,7 +3549,9 @@ msgstr "Activación y licencia"
 msgid ""
 "Activate what you have, and enter its licence in Settings › Licenses to "
 "receive its updates."
-msgstr "Activa lo que tienes e introduce su licencia en Ajustes › Licencias para recibir sus actualizaciones."
+msgstr ""
+"Activa lo que tienes e introduce su licencia en Ajustes › Licencias para "
+"recibir sus actualizaciones."
 
 #: includes/class-tour-helper.php:244
 msgid "Runs the campaign once, now."
@@ -3531,7 +3561,9 @@ msgstr "Ejecuta la campaña una vez, ahora."
 msgid ""
 "Turns its schedule on, so it runs on its own. It shows red while the "
 "schedule is on."
-msgstr "Activa su programación, para que se ejecute por su cuenta. Se ve en rojo mientras la programación está activa."
+msgstr ""
+"Activa su programación, para que se ejecute por su cuenta. Se ve en rojo "
+"mientras la programación está activa."
 
 #: includes/class-tour-helper.php:246
 msgid "Turns the schedule off, or stops a run in progress."
@@ -3560,7 +3592,9 @@ msgstr "¿Necesitas más?"
 #: includes/class-tour-helper.php:40
 msgid ""
 "The Help tab at the top of every WPeMatico screen explains it in detail."
-msgstr "La pestaña Ayuda, arriba en cada pantalla de WPeMatico, lo explica en detalle."
+msgstr ""
+"La pestaña Ayuda, arriba en cada pantalla de WPeMatico, lo explica en "
+"detalle."
 
 #: includes/class-tour-helper.php:49 includes/lib/welcome.php:64
 msgid "Welcome to WPeMatico"
@@ -3569,7 +3603,8 @@ msgstr "Bienvenido a WPeMatico"
 #: includes/class-tour-helper.php:50
 msgid ""
 "Everything lives here: Dashboard, Campaigns, Settings, Tools and Extensions."
-msgstr "Todo está aquí: Escritorio, Campañas, Ajustes, Herramientas y Extensiones."
+msgstr ""
+"Todo está aquí: Escritorio, Campañas, Ajustes, Herramientas y Extensiones."
 
 #: includes/class-tour-helper.php:56
 msgid "One card per feature"
@@ -3578,7 +3613,9 @@ msgstr "Una tarjeta por función"
 #: includes/class-tour-helper.php:57
 msgid ""
 "Filter them by what they do: images, SEO, campaign types, parsers and more."
-msgstr "Fíltralas por lo que hacen: imágenes, SEO, tipos de campaña, analizadores y más."
+msgstr ""
+"Fíltralas por lo que hacen: imágenes, SEO, tipos de campaña, analizadores y "
+"más."
 
 #: includes/class-tour-helper.php:63
 msgid "Switch features on and off"
@@ -3588,7 +3625,9 @@ msgstr "Activa y desactiva funciones"
 msgid ""
 "Each card says what its switch will do before you touch it, and installs "
 "whatever it needs."
-msgstr "Cada tarjeta te dice qué hará su interruptor antes de que lo toques, e instala lo que necesite."
+msgstr ""
+"Cada tarjeta te dice qué hará su interruptor antes de que lo toques, e "
+"instala lo que necesite."
 
 #: includes/class-tour-helper.php:70
 msgid "Your first campaign"
@@ -3598,7 +3637,9 @@ msgstr "Tu primera campaña"
 msgid ""
 "A campaign reads one or more feeds and publishes their items as posts. Start "
 "here."
-msgstr "Una campaña lee uno o más feeds y publica sus elementos como entradas. Empieza aquí."
+msgstr ""
+"Una campaña lee uno o más feeds y publica sus elementos como entradas. "
+"Empieza aquí."
 
 #: includes/class-tour-helper.php:79 includes/lib/welcome.php:595
 msgid "Add a campaign"
@@ -3606,7 +3647,9 @@ msgstr "Crear una campaña"
 
 #: includes/class-tour-helper.php:80
 msgid "Give it a name, paste a feed address and choose where the posts go."
-msgstr "Ponle un nombre, pega la dirección de un feed y elige adónde van las entradas."
+msgstr ""
+"Ponle un nombre, pega la dirección de un feed y elige adónde van las "
+"entradas."
 
 #: includes/class-tour-helper.php:86
 msgid "Run, schedule or pause"
@@ -3622,7 +3665,9 @@ msgstr "Qué hizo cada campaña"
 
 #: includes/class-tour-helper.php:95
 msgid "When it last ran, how long it took and how many posts it has published."
-msgstr "Cuándo se ejecutó por última vez, cuánto tardó y cuántas entradas ha publicado."
+msgstr ""
+"Cuándo se ejecutó por última vez, cuánto tardó y cuántas entradas ha "
+"publicado."
 
 #: includes/dashboard-widgets.php:456
 msgid "in %s"
@@ -3647,7 +3692,7 @@ msgstr "Activas / total"
 
 #: includes/dashboard-widgets.php:497
 msgid "Next run"
-msgstr "Próxima ejecución"
+msgstr "Siguiente ejecución"
 
 #: includes/dashboard-widgets.php:501
 msgid "Posts all time"
@@ -3659,7 +3704,7 @@ msgstr "Recientes"
 
 #: includes/dashboard-widgets.php:510
 msgid "Up next"
-msgstr "Próximas"
+msgstr "Siguientes"
 
 #: includes/dashboard-widgets.php:513
 msgid "Needs a look"
@@ -3761,7 +3806,7 @@ msgstr "Comprobando la conexión con etruel.com…"
 #: includes/debug_page.php:113 includes/wpematico_functions.php:2323
 #: includes/wpematico_functions.php:2351
 msgid "The feed %s has been parsed successfully."
-msgstr "La fuente %s se a analizado correctamente."
+msgstr "La fuente %s se ha analizado con éxito."
 
 #. translators: %1$s: PHP function name. %2$s: the URL that could not be reached.
 #: includes/debug_page.php:1133
@@ -3851,7 +3896,7 @@ msgstr "%1$s - WPeMatico necesita PHP %2$s o superior."
 
 #: includes/debug_page.php:159
 msgid "The URL %s cannot be obtained successfully."
-msgstr "La URL %s no se ha podido obtener exitosamente."
+msgstr "La URL %s no se ha podido obtener con éxito."
 
 #: includes/debug_page.php:1602
 msgid "Disk Total Space:"
@@ -3986,7 +4031,7 @@ msgstr "La memoria (RAM) máxima que permite PHP en este servidor."
 #. translators: %1$s current PHP Memory limit value. %2$s URL.
 #: includes/debug_page.php:1846
 msgid "%s - We recommend setting memory to at least"
-msgstr "%s - se recomienda la configuración de la memoria de al menos"
+msgstr "%s - se recomiendan unos ajustes de la memoria de al menos"
 
 #: includes/debug_page.php:1850
 msgid "Please define memory limit in php.ini file."
@@ -4289,7 +4334,7 @@ msgstr ""
 
 #: includes/debug_page.php:2447
 msgid "Language Setting:"
-msgstr "Configuración de idioma:"
+msgstr "Ajustes de idioma:"
 
 #: includes/debug_page.php:2449
 msgid "The current language used by WordPress. Default = English"
@@ -4357,7 +4402,7 @@ msgstr "La memoria (RAM) máxima que puede usar tu sitio a la vez."
 
 #: includes/debug_page.php:2545
 msgid "%s - We recommend setting memory to at least "
-msgstr "%s - se recomienda la configuración de la memoria de al menos "
+msgstr "%s - se recomiendan unos ajustes de la memoria de al menos "
 
 #: includes/debug_page.php:2545
 msgid "Please define memory limit in wp-config.php file. To learn how, see: "
@@ -4531,7 +4576,7 @@ msgstr "Máx. de ítems"
 
 #: includes/debug_page.php:2963
 msgid "Next Run"
-msgstr "Próxima ejecución"
+msgstr "Siguiente ejecución"
 
 #: includes/debug_page.php:3003 includes/debug_page.php:3013
 msgid "Cron Schedules"
@@ -4539,7 +4584,7 @@ msgstr "Horarios Cron"
 
 #: includes/debug_page.php:3021 includes/debug_page.php:3517
 msgid "Next due"
-msgstr "Próximo vencimiento"
+msgstr "Siguiente vencimiento"
 
 #: includes/debug_page.php:3029 includes/debug_page.php:3525
 msgid "Hook"
@@ -4572,7 +4617,7 @@ msgstr "Permiso denegado"
 
 #: includes/debug_page.php:374 includes/debug_page.php:411
 msgid "Fill in a Feed URL and click the Get Feed Button."
-msgstr "Escribe la URL de un feed y pulsa el botón «Obtener feed»."
+msgstr "Escribe la URL de un feed y haz clic en el botón «Obtener feed»."
 
 #: includes/debug_page.php:378
 msgid "Get Feed and see here its contents."
@@ -4620,7 +4665,7 @@ msgstr "Obtener el informe del sistema"
 
 #: includes/debug_page.php:641
 msgid "Click the button to see and download the system report."
-msgstr "Pulsa el botón para ver y descargar el informe del sistema."
+msgstr "Haz clic en el botón para ver y descargar el informe del sistema."
 
 #: includes/debug_page.php:649
 msgid "Include also PHPInfo() if available."
@@ -4835,9 +4880,9 @@ msgid ""
 "Click any underlined column header to sort by it, and again to reverse the "
 "order. Sorting applies to the whole list, not only to the page on screen."
 msgstr ""
-"Pulsa en cualquier cabecera subrayada para ordenar por ella, y otra vez para "
-"invertir el orden. La ordenación se aplica a toda la lista, no solo a la "
-"página que ves."
+"Haz clic en cualquier cabecera subrayada para ordenar por ella, y otra vez "
+"para invertir el orden. La ordenación se aplica a toda la lista, no solo a "
+"la página que ves."
 
 #: includes/feed_list_help.php:70
 msgid ""
@@ -5147,7 +5192,7 @@ msgid ""
 "No activations left. Click here to manage the sites you've activated "
 "licenses on."
 msgstr ""
-"No quedan activaciones. Pulsa aquí para gestionar los sitios donde has "
+"No quedan activaciones. Haz clic aquí para gestionar los sitios donde has "
 "activado licencias."
 
 #: includes/lib/licenses_handlers.php:400
@@ -5503,7 +5548,7 @@ msgid ""
 "latest from the blog one glance away."
 msgstr ""
 "El widget «Resumen de WPeMatico», rehecho, muestra las entradas de hoy, las "
-"campañas activas, la próxima ejecución y el total histórico. Un segundo "
+"campañas activas, la siguiente ejecución y el total histórico. Un segundo "
 "widget, «Novedades de WPeMatico», deja lo último del blog a un vistazo."
 
 #: includes/lib/welcome.php:333
@@ -5716,7 +5761,7 @@ msgstr "Ir al escritorio de WPeMatico"
 #: includes/lib/welcome.php:490 includes/lib/welcome.php:525
 #: includes/lib/welcome.php:559
 msgid "Go to WPeMatico Settings"
-msgstr "Ir a Configuración de WPeMatico"
+msgstr "Ir a Ajustes de WPeMatico"
 
 #: includes/lib/welcome.php:515
 msgid "Full Changelog"
@@ -6041,7 +6086,7 @@ msgstr "Apellido"
 
 #: includes/lib/welcome.php:781 includes/lib/welcome.php:782
 msgid "Email"
-msgstr "Email"
+msgstr "Correo electrónico"
 
 #: includes/lib/welcome.php:786
 msgid "Subscribe"
@@ -7112,7 +7157,7 @@ msgstr "Descargar imágenes"
 #: includes/module/actions.php:223
 msgid "Download the images of each item into the WordPress Media Library."
 msgstr ""
-"Descarga las imágenes de cada ítem a la biblioteca de medios de WordPress."
+"Descarga las imágenes de cada ítem a la biblioteca multimedia de WordPress."
 
 #: includes/module/actions.php:228
 msgid ""
@@ -7304,7 +7349,7 @@ msgid ""
 "it takes up no space in your Media Library."
 msgstr ""
 "La imagen se enlaza desde su sitio de origen en vez de descargarse, así que "
-"no ocupa espacio en tu biblioteca de medios."
+"no ocupa espacio en tu biblioteca multimedia."
 
 #: includes/module/actions.php:578
 msgid ""
@@ -7697,7 +7742,7 @@ msgstr "Aquí solo se pueden instalar plugins del repositorio de WordPress.org."
 
 #: includes/module/manager.php:344
 msgid "Plugin activated successfully."
-msgstr "Plugin activado correctamente."
+msgstr "Plugin activado con éxito."
 
 #: includes/module/manager.php:351
 msgid "Plugin already installed. Activation skipped."
@@ -7735,7 +7780,7 @@ msgstr "Herramientas externas"
 
 #: includes/module/manager.php:433
 msgid "Plugin installed and activated successfully."
-msgstr "Plugin instalado y activado correctamente."
+msgstr "Plugin instalado y activado con éxito."
 
 #: includes/module/manager.php:44
 msgid "Content Parsers"
@@ -7743,7 +7788,7 @@ msgstr "Procesado de contenido"
 
 #: includes/module/manager.php:442
 msgid "Plugin installed successfully. Activation skipped."
-msgstr "Plugin instalado correctamente. No se activó."
+msgstr "Plugin instalado con éxito. No se activó."
 
 #: includes/module/manager.php:45
 msgid "Images"
@@ -7856,7 +7901,7 @@ msgstr "Enviar y desactivar"
 
 #: includes/plugin_functions.php:254
 msgid "Deactivated successfully"
-msgstr "Desactivado correctamente"
+msgstr "Desactivado con éxito"
 
 #: includes/plugin_functions.php:317
 msgid "None."
@@ -8010,7 +8055,7 @@ msgid ""
 "Every downloaded video is added to the Media library and attached to its "
 "post."
 msgstr ""
-"Cada vídeo descargado se añade a la biblioteca de medios y se adjunta a su "
+"Cada vídeo descargado se añade a la biblioteca multimedia y se adjunta a su "
 "entrada."
 
 #: includes/settings/help.php:131
@@ -8183,7 +8228,7 @@ msgid ""
 "300."
 msgstr ""
 "Una campaña interrumpida a medias queda marcada como en ejecución hasta que "
-"pasen estos segundos; después vuelve a ejecutarse en su próxima "
+"pasen estos segundos; después vuelve a ejecutarse en su siguiente "
 "programación. Recomendado: 300."
 
 #: includes/settings/help.php:194
@@ -8386,7 +8431,7 @@ msgstr ""
 
 #: includes/settings/help.php:281 includes/settings/page.php:775
 msgid "Enable \"See last log\""
-msgstr "Activar <b><i>Ver Último Reporte</i></b>"
+msgstr "Activar <b><i>Ver Último Registro</i></b>"
 
 #: includes/settings/help.php:282
 msgid "Adds a link on the campaigns list that opens the log of the last run."
@@ -8458,7 +8503,7 @@ msgid ""
 "Lets you upload XML files to the Media library, to use them in an XML "
 "campaign."
 msgstr ""
-"Te deja subir archivos XML a la biblioteca de medios, para usarlos en una "
+"Te deja subir archivos XML a la biblioteca multimedia, para usarlos en una "
 "campaña XML."
 
 #: includes/settings/help.php:306 includes/settings/page.php:830
@@ -8567,7 +8612,7 @@ msgid ""
 "Every downloaded image is added to the Media library and attached to its "
 "post. Needed for the featured image."
 msgstr ""
-"Cada imagen descargada se añade a la biblioteca de medios y se adjunta a su "
+"Cada imagen descargada se añade a la biblioteca multimedia y se adjunta a su "
 "entrada. Hace falta para la imagen destacada."
 
 #: includes/settings/help.php:36 includes/settings/help.php:97
@@ -8663,7 +8708,7 @@ msgid ""
 "Every downloaded audio is added to the Media library and attached to its "
 "post."
 msgstr ""
-"Cada audio descargado se añade a la biblioteca de medios y se adjunta a su "
+"Cada audio descargado se añade a la biblioteca multimedia y se adjunta a su "
 "entrada."
 
 #: includes/settings/page.php:1001
@@ -8674,7 +8719,9 @@ msgstr "Recorridos guiados"
 msgid ""
 "Shows a short tour the first time you open each WPeMatico screen. Only for "
 "your user."
-msgstr "Muestra un recorrido breve la primera vez que abres cada pantalla de WPeMatico. Solo para tu usuario."
+msgstr ""
+"Muestra un recorrido breve la primera vez que abres cada pantalla de "
+"WPeMatico. Solo para tu usuario."
 
 #: includes/settings/page.php:1034
 msgid "Highlights of the new release"
@@ -8718,11 +8765,11 @@ msgstr "Ajustes generales"
 
 #: includes/settings/page.php:1175 includes/settings/page.php:1201
 msgid "Save settings"
-msgstr "Guardar Opciones"
+msgstr "Guardar ajustes"
 
 #: includes/settings/page.php:1301
 msgid "Settings saved."
-msgstr "Opciones guardadas."
+msgstr "Ajustes guardados."
 
 #: includes/settings/page.php:1324
 msgid "License keys saved."
@@ -8746,11 +8793,11 @@ msgstr "Mira algunas extensiones de WPeMatico en"
 #: includes/settings/page.php:683 includes/settings/page.php:747
 #: includes/settings/page.php:840 includes/settings/page.php:886
 msgid "Click to toggle"
-msgstr "Click para mostrar/ocultar"
+msgstr "Clic para mostrar/ocultar"
 
 #: includes/settings/page.php:167
 msgid "Global Settings for Images"
-msgstr "Configuración global para Imágenes"
+msgstr "Ajustes globales para Imágenes"
 
 #: includes/settings/page.php:251
 msgid "Allowed image extensions"
@@ -8792,7 +8839,7 @@ msgstr ""
 
 #: includes/settings/page.php:292
 msgid "Global Settings for Videos"
-msgstr "Configuración global para Videos"
+msgstr "Ajustes globales para Videos"
 
 #: includes/settings/page.php:32 includes/settings/page.php:37
 msgid "Permission check failed"
@@ -8808,7 +8855,7 @@ msgstr "Tipos de vídeo de WordPress:"
 
 #: includes/settings/page.php:356
 msgid "Global Settings for Audios"
-msgstr "Configuración global para Audios"
+msgstr "Ajustes globales para Audios"
 
 #: includes/settings/page.php:404
 msgid "Allowed audio extensions"
@@ -8852,7 +8899,7 @@ msgstr "Procesamiento con éxito"
 
 #: includes/settings/page.php:557
 msgid "Cron and Scheduler Settings"
-msgstr "Configuración de Cron y Cronograma"
+msgstr "Ajustes de Cron y Cronograma"
 
 #: includes/settings/page.php:587
 msgid "Set up a cron job that calls:"
@@ -8934,7 +8981,7 @@ msgstr "Correo electrónico inválido."
 
 #: includes/settings/page.php:843
 msgid "Sending e-Mails"
-msgstr "Enviando E-mails"
+msgstr "Enviando Correos electrónicos"
 
 #: includes/settings/page.php:848
 msgid "Sender email:"
@@ -9079,8 +9126,9 @@ msgstr "con solicitudes de personalización y sugerencias."
 #: includes/settings/widgets.php:299
 msgid ""
 "Please visit our website to learn about our free and premium services at"
-msgstr "Visita nuestra web para conocer nuestros servicios gratuitos y de pago en"
+msgstr ""
 "Visita nuestra web para conocer nuestros servicios gratuitos y de pago "
+"enVisita nuestra web para conocer nuestros servicios gratuitos y de pago "
 "enVisita nuestra web para conocer nuestros servicios gratuitos y de pago "
 "enVisita nuestra web para conocer nuestros servicios gratuitos y de pago en"
 
@@ -9165,7 +9213,7 @@ msgstr "Repasa todas las opciones de la campaña con el asistente"
 
 #: includes/smart_notifications.php:169
 msgid "Want to make sure your campaign settings are fine?"
-msgstr "¿Quieres asegurarte de que la configuración de tu campaña está bien?"
+msgstr "¿Quieres asegurarte de que los ajustes de tu campaña están bien?"
 
 #: includes/smart_notifications.php:171
 msgid "The wizard walks you through the boxes one by one."
@@ -9195,7 +9243,7 @@ msgstr "¡Sí! ¡Sólo UN Dólar!"
 
 #: includes/tools_help.php:39
 msgid "Export Settings."
-msgstr "Exportar configuraciones."
+msgstr "Exportar ajustes."
 
 #: includes/tools_help.php:40
 msgid ""
@@ -9215,7 +9263,7 @@ msgstr ""
 
 #: includes/tools_help.php:44
 msgid "Import Settings."
-msgstr "Importar Configuraciones."
+msgstr "Importar Ajustes."
 
 #: includes/tools_help.php:46
 msgid ""
@@ -9235,35 +9283,35 @@ msgstr ""
 
 #: includes/tools_page.php:1274 includes/tools_page.php:1280
 msgid "Export Settings"
-msgstr "Exportar configuraciones"
+msgstr "Exportar ajustes"
 
 #: includes/tools_page.php:1276
 msgid ""
 "Export the WPeMatico settings for this site as a .json file. This allows you "
 "to easily import the configuration into another site."
 msgstr ""
-"Exporte la configuración de WPeMatico para este sitio como un archivo .json. "
-"Esto le permite importar fácilmente la configuración en otro sitio."
+"Exporte los ajustes de WPeMatico para este sitio como un archivo .json. Esto "
+"le permite importar fácilmente los ajustes en otro sitio."
 
 #: includes/tools_page.php:1280
 msgid "Export and download settings"
-msgstr "Exportar y descargar configuraciones"
+msgstr "Exportar y descargar ajustes"
 
 #: includes/tools_page.php:1287
 msgid "Import Settings"
-msgstr "Importar configuración"
+msgstr "Importar ajustes"
 
 #: includes/tools_page.php:1289
 msgid "Import the WPeMatico settings for this site."
-msgstr "Importar la configuración de WPeMatico para este sitio."
+msgstr "Importar los ajustes de WPeMatico para este sitio."
 
 #: includes/tools_page.php:1293
 msgid "Upload and import a settings"
-msgstr "Cargar e importar una configuración"
+msgstr "Cargar e importar unos ajustes"
 
 #: includes/tools_page.php:1293
 msgid "Import settings"
-msgstr "Importar configuraciones"
+msgstr "Importar ajustes"
 
 #: includes/tools_page.php:1299
 msgid ""
@@ -9621,7 +9669,7 @@ msgstr "Vaya al sitio web de origen para ver el contenido original."
 
 #: includes/wpematico_functions.php:1093
 msgid "Category Added in a WPeMatico Campaign"
-msgstr "Categoría agregada por el Plugin WPeMatico"
+msgstr "Categoría añadida por el Plugin WPeMatico"
 
 #: includes/wpematico_functions.php:1626
 msgid "Found duplicated hash '%s'"
@@ -9770,7 +9818,7 @@ msgstr ""
 
 #: includes/wpematico_functions.php:3065
 msgid "Settings Imported."
-msgstr "Configuración Importada."
+msgstr "Ajustes importados."
 
 #: includes/wpematico_functions.php:3306
 msgid ""
@@ -9965,7 +10013,7 @@ msgstr ""
 
 #: wpematico_class.php:183
 msgid "add New Campaign"
-msgstr "agregar nueva campaña"
+msgstr "añadir nueva campaña"
 
 #: wpematico_class.php:186 includes/lib/welcome.php:190
 msgid "Getting Started"
@@ -9983,11 +10031,11 @@ msgstr "Campaña"
 
 #: wpematico_class.php:194
 msgid "Add New"
-msgstr "Agregar"
+msgstr "Añadir"
 
 #: wpematico_class.php:195
 msgid "Add New Campaign"
-msgstr "Agregar nueva campaña"
+msgstr "Añadir nueva campaña"
 
 #: wpematico_class.php:196
 msgid "Edit Campaign"

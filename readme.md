@@ -51,7 +51,7 @@ A **campaign** groups one or more sources with everything that decides how their
 * **Tools**: Feed List, Feed Viewer, Export / Import, and a **Migration Toolkit** that imports campaigns from Feedzy RSS Feeds and WP RSS Aggregator.
 * **System Status**, to check what the server offers.
 * Contextual Help tabs and guided tours on every screen.
-* Translated into Spanish, German, French, Dutch, Greek, Persian, Russian, Slovak, Romanian, Arabic and Chinese.
+* Translated into Spanish, German, French, Dutch, Greek, Persian, Russian, Slovak, Romanian, Arabic, Chinese, Japanese, Brazilian Portuguese, Italian, Polish, Turkish and Vietnamese.
 
 ## Requirements
 

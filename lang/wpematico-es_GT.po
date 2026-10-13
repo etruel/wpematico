@@ -3761,7 +3761,7 @@ msgstr "Comprobando la conexión con etruel.com…"
 #: includes/debug_page.php:113 includes/wpematico_functions.php:2323
 #: includes/wpematico_functions.php:2351
 msgid "The feed %s has been parsed successfully."
-msgstr "La fuente %s se a analizado correctamente."
+msgstr "La fuente %s se ha analizado correctamente."
 
 #. translators: %1$s: PHP function name. %2$s: the URL that could not be reached.
 #: includes/debug_page.php:1133

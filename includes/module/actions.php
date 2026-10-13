@@ -190,6 +190,15 @@ class Actions {
 				'notice'   => __('Adds Vimeo to the Campaign Type list. Paste the address of the profile, channel or group and the campaign finds its feed on its own.', 'wpematico'),
 				'option'	   => 'enable_vimeo',
 			],
+			'googlenews'		  => [
+				'title'	   => __('Google News', 'wpematico'),
+				'desc'	   => __('Publish the news of a Google News search, topic or publication.', 'wpematico'),
+				'icon'	   => 'media-document',
+				'type'	   => 'standard',
+				'category' => ['campaign', 'core'],
+				'notice'   => __('Adds Google News to the Campaign Type list. Paste the address of the search, topic or publication and the campaign finds its feed on its own.', 'wpematico'),
+				'option'	   => 'enable_googlenews',
+			],
 			'youtube'			  => [
 				'title'			=> __('YouTube', 'wpematico'),
 				'desc'			=> __('Import videos from YouTube channels.', 'wpematico'),

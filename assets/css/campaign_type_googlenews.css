@@ -1,0 +1,26 @@
+/* Google News campaign type — the four colours of its header, scoped to its own box. */
+#googlenews-box .postbox-header {
+	background: #4285f4;
+	background: linear-gradient(115deg, #4285f4 0, #4285f4 64%, #fbbc04 64%, #fbbc04 76%, #ea4335 76%, #ea4335 88%, #34a853 88%);
+}
+#googlenews-box h2.hndle {
+	background: transparent;
+	color: #fff;
+}
+#googlenews-box .postbox-header .handle-actions button,
+#googlenews-box .postbox-header .handle-actions .toggle-indicator {
+	color: #fff;
+}
+#googlenews-box .wpe-googlenews-icon {
+	display: inline-block;
+	width: 32px;
+	height: 20px;
+	margin-right: 6px;
+	vertical-align: middle;
+	background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 38 24'%3E%3Cpath d='M15.3 6.7A7.5 7.5 0 1 0 17.5 12H10.5' fill='none' stroke='%23fff' stroke-width='3'/%3E%3Cpath d='M23 5.5h14v3H23zM23 10.5h14v3H23zM23 15.5h14v3H23z' fill='%23fff'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+/* The Professional control with no Professional installed: readable, plainly inert. */
+#googlenews-box .wpe-googlenews-disabled {
+	color: #787c82;
+	cursor: default;
+}

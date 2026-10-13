@@ -96,6 +96,8 @@ if (!class_exists('WPeMatico')) {
 			$this->Create_campaigns_page();
 			if ($hook_in) {
 				add_action('admin_menu', array($this, 'admin_menu'));
+				add_filter('parent_file', array($this, 'campaign_editor_parent_file'));
+				add_filter('submenu_file', array($this, 'campaign_editor_submenu_file'));
 				add_action('admin_init', array($this, 'admin_init'));
 
 				add_action('admin_print_styles', array($this, 'all_WP_admin_styles'));
@@ -410,6 +412,28 @@ if (!class_exists('WPeMatico')) {
 			);
 		}
 
+		/**
+		 * The campaign editor belongs to the Campaigns entry of the WPeMatico menu.
+		 * WordPress finds the parent of a screen by its own address, and the editor's
+		 * (post.php, post-new.php) is not an entry of any menu.
+		 *
+		 * @param string $parent_file
+		 * @return string
+		 */
+		public function campaign_editor_parent_file($parent_file) {
+			return self::is_campaign_editor() ? 'wpematico_dashboard' : $parent_file;
+		}
+
+		public function campaign_editor_submenu_file($submenu_file) {
+			return self::is_campaign_editor() ? 'edit.php?post_type=wpematico' : $submenu_file;
+		}
+
+		private static function is_campaign_editor() {
+			$screen = function_exists('get_current_screen') ? get_current_screen() : null;
+
+			return $screen && 'post' === $screen->base && 'wpematico' === $screen->post_type;
+		}
+
 		public function all_WP_admin_styles() {
 			?><style type="text/css">
 				.menu-icon-wpematico .wp-menu-image img {
@@ -475,6 +499,7 @@ if (!class_exists('WPeMatico')) {
 			$cfg['enablerewrite']			= (!isset($options['enablerewrite']) || empty($options['enablerewrite'])) ? false : (($options['enablerewrite'] == 1) ? true : false);
 			$cfg['enableword2cats']			= (!isset($options['enableword2cats']) || empty($options['enableword2cats'])) ? false : (($options['enableword2cats'] == 1) ? true : false);
 			$cfg['enable_vimeo']			= (!isset($options['enable_vimeo']) || empty($options['enable_vimeo'])) ? false : (($options['enable_vimeo'] == 1) ? true : false);
+			$cfg['enable_googlenews']		= !empty($options['enable_googlenews']);
 			$cfg['wpematico_set_canonical'] = (!isset($options['wpematico_set_canonical']) || empty($options['wpematico_set_canonical'])) ? false : (($options['wpematico_set_canonical'] == 1) ? true : false);
 			$cfg['customupload']			= (!isset($options['customupload']) || empty($options['customupload'])) ? false : (($options['customupload'] == 1) ? true : false);
 			$cfg['imgattach']				= (!isset($options['imgattach']) || empty($options['imgattach'])) ? false : (($options['imgattach'] == 1) ? true : false);

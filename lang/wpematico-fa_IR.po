@@ -42,7 +42,7 @@ msgid ""
 "cannot support it."
 msgstr ""
 "افزودنی‌ای که از افزونهٔ اصلی تازه‌تر باشد، امکانات خودش را خاموش می‌کند و "
-"می‌گوید به کدام نسخهٔ WPeMatico نیاز دارد، به‌جای اینکه روی هسته‌ای اجرا شود که "
+"می‌گوید به کدام نگارش WPeMatico نیاز دارد، به‌جای اینکه روی هسته‌ای اجرا شود که "
 "از آن پشتیبانی نمی‌کند."
 
 #: includes/addons_help.php:105
@@ -92,7 +92,7 @@ msgid ""
 "An installed add-on shows its version and the actions it accepts; one that "
 "is only at the store shows what it costs or which membership includes it."
 msgstr ""
-"افزودنی نصب‌شده نسخه و کارهای ممکن خود را نشان می‌دهد؛ افزودنی‌ای که فقط در "
+"افزودنی نصب‌شده نگارش و کارهای ممکن خود را نشان می‌دهد؛ افزودنی‌ای که فقط در "
 "فروشگاه است، بهای خود یا عضویتی را که شامل آن است نشان می‌دهد."
 
 #: includes/addons_help.php:33
@@ -200,8 +200,8 @@ msgid ""
 "hours after it is published."
 msgstr ""
 "در آن لحظه هیچ اتفاقی نمی‌افتد. وردپرس روزی حدود دو بار به‌روزرسانی‌ها را بررسی "
-"و بر پایهٔ زمان‌بندی خودش نصب می‌کند، پس نسخهٔ تازه ممکن است ساعت‌ها پس از انتشار "
-"برسد."
+"و بر پایهٔ زمان‌بندی خودش نصب می‌کند، پس نگارش تازه ممکن است ساعت‌ها پس از "
+"انتشار برسد."
 
 #: includes/addons_help.php:57
 msgid ""
@@ -250,7 +250,7 @@ msgid ""
 msgstr ""
 "می‌توانید دوباره به‌روزرسانی خودکار WPeMatico را خاموش کنید، کسی جلودارتان "
 "نیست — اما آنگاه افزودنی‌هایش تا زمانی که WPeMatico را دستی به‌روز کنید روی "
-"نسخهٔ خود می‌مانند. این صفحه در چنین حالتی همین را می‌گوید."
+"نگارش خود می‌مانند. این صفحه در چنین حالتی همین را می‌گوید."
 
 #: includes/addons_help.php:67
 msgid "An add-on that is waiting says so."
@@ -282,7 +282,7 @@ msgid ""
 "one with automatic updates disabled by a constant, does not run them either."
 msgstr ""
 "برخی میزبان‌ها خودشان به‌روزرسانی‌ها را مدیریت می‌کنند، و سایتی که زیر کنترل "
-"نسخه است، یا به‌روزرسانی خودکارش با یک ثابت خاموش شده، آن‌ها را اجرا نمی‌کند."
+"نگارش است، یا به‌روزرسانی خودکارش با یک ثابت خاموش شده، آن‌ها را اجرا نمی‌کند."
 
 #: includes/addons_help.php:74
 msgid ""
@@ -290,7 +290,7 @@ msgid ""
 "until it is updated by hand."
 msgstr ""
 "آنجا این کلید نمایش داده نمی‌شود. ردیف می‌گوید افزودنی تا به‌روزرسانی دستی روی "
-"نسخهٔ خود می‌ماند."
+"نگارش خود می‌ماند."
 
 #: includes/addons_help.php:77 includes/settings/functions.php:46
 msgid "Licenses"
@@ -517,7 +517,7 @@ msgstr "افزودنی‌های انتخاب‌شده حذف شدند."
 
 #: includes/campaign-types/vimeo.php:258
 msgid "Parsing Vimeo video and feed item contents."
-msgstr "پردازش ویدیوهای Vimeo و محتوای آیتم‌های خوراک."
+msgstr "پردازش ویدئوهای Vimeo و محتوای آیتم‌های خوراک."
 
 #: includes/campaign-types/vimeo.php:284
 msgid "Vimeo Campaign Type."
@@ -535,14 +535,14 @@ msgstr ""
 msgid ""
 "Each item brings the title, the thumbnail, the player and the short "
 "description."
-msgstr "هر آیتم عنوان، بندانگشتی، پخش‌کننده و توضیح کوتاه را با خود می‌آورد."
+msgstr "هر مورد عنوان، بندانگشتی، پخش‌کننده و توضیح کوتاه را با خود می‌آورد."
 
 #: includes/campaign-types/vimeo.php:290
 msgid ""
 "Vimeo publishes only the last 10 videos of each one, so a campaign that runs "
 "often enough never misses any."
 msgstr ""
-"Vimeo تنها ۱۰ ویدیوی آخر هرکدام را منتشر می‌کند، پس کمپینی که به‌اندازهٔ کافی "
+"Vimeo تنها ۱۰ ویدئوی آخر هرکدام را منتشر می‌کند، پس کمپینی که به‌اندازهٔ کافی "
 "پرتکرار اجرا شود چیزی را از دست نمی‌دهد."
 
 #: includes/campaign-types/vimeo.php:293
@@ -554,15 +554,15 @@ msgid ""
 "Wrap the video in the WordPress [embed] shortcode instead of the iframe "
 "Vimeo shares."
 msgstr ""
-"قرار دادن ویدیو در کدکوتاه [embed] وردپرس به‌جای iframe‌ای که Vimeo می‌دهد."
+"قرار دادن ویدئو در کدکوتاه [embed] وردپرس به‌جای iframe‌ای که Vimeo می‌دهد."
 
 #: includes/campaign-types/vimeo.php:297
 msgid "Video sizes."
-msgstr "اندازهٔ ویدیو."
+msgstr "اندازهٔ ویدئو."
 
 #: includes/campaign-types/vimeo.php:298
 msgid "Width and height of the video frame in the post."
-msgstr "پهنا و بلندای قاب ویدیو در نوشته."
+msgstr "پهنا و بلندای قاب ویدئو در نوشته."
 
 #: includes/campaign-types/vimeo.php:299
 msgid "Leave them at 0 (zero) to keep it responsive."
@@ -574,7 +574,7 @@ msgstr "گزینه‌های کمپین Vimeo"
 
 #: includes/campaign-types/vimeo.php:337
 msgid "Featured Image"
-msgstr "تصویر شاخص"
+msgstr "تصویر ویژه"
 
 #: includes/campaign-types/vimeo.php:341
 msgid "Post Title"
@@ -582,7 +582,7 @@ msgstr "عنوان نوشته"
 
 #: includes/campaign-types/vimeo.php:349
 msgid "The short description of the video, as published on Vimeo."
-msgstr "توضیح کوتاه ویدیو، همان‌گونه که در Vimeo منتشر شده."
+msgstr "توضیح کوتاه ویدئو، همان‌گونه که در Vimeo منتشر شده."
 
 #: includes/campaign-types/vimeo.php:356
 msgid "Use the [embed] WordPress shortcode instead of the Vimeo iframe."
@@ -590,11 +590,11 @@ msgstr "استفاده از کدکوتاه [embed] وردپرس به‌جای if
 
 #: includes/campaign-types/vimeo.php:358
 msgid "Change the size of the video frame."
-msgstr "تغییر اندازهٔ قاب ویدیو."
+msgstr "تغییر اندازهٔ قاب ویدئو."
 
 #: includes/campaign-types/vimeo.php:367
 msgid "Use it only as featured image"
-msgstr "فقط به‌عنوان تصویر شاخص به کار برود"
+msgstr "فقط به‌عنوان تصویر ویژه به کار برود"
 
 #: includes/campaign-types/vimeo.php:394
 msgid "Vimeo API"
@@ -614,8 +614,8 @@ msgid ""
 "asks for instead of the last 10, in the order you choose, and your private "
 "and unlisted ones."
 msgstr ""
-"Professional ویمیو را از راه API آن می‌خواند: به تعداد محدودیت آیتم‌ها ویدیو "
-"به‌جای ۱۰ تای آخر، به ترتیبی که بخواهید، همراه با ویدیوهای خصوصی و فهرست‌نشدهٔ "
+"Professional ویمیو را از راه API آن می‌خواند: به تعداد محدودیت آیتم‌ها ویدئو "
+"به‌جای ۱۰ تای آخر، به ترتیبی که بخواهید، همراه با ویدئوهای خصوصی و فهرست‌نشدهٔ "
 "شما."
 
 #: includes/campaign-types/vimeo.php:55 includes/module/actions.php:185
@@ -874,7 +874,7 @@ msgstr "بلندا:"
 
 #: includes/campaign_edit_functions.php:1238
 msgid "Short videos options:"
-msgstr "گزینه‌های ویدیوهای کوتاه:"
+msgstr "گزینه‌های ویدئوهای کوتاه:"
 
 #: includes/campaign_edit_functions.php:1240
 msgid "Only shorts"
@@ -896,7 +896,7 @@ msgstr "تصویر"
 
 #: includes/campaign_edit_functions.php:1248
 msgid "Use only as featured image"
-msgstr "فقط به‌عنوان تصویر شاخص به کار برود"
+msgstr "فقط به‌عنوان تصویر ویژه به کار برود"
 
 #: includes/campaign_edit_functions.php:1250
 msgid "Hide description"
@@ -919,8 +919,8 @@ msgid ""
 "Pick a forum and each item becomes a topic inside it. Pick none and each "
 "item creates its own forum."
 msgstr ""
-"یک انجمن برگزینید تا هر آیتم در آن یک موضوع شود. اگر هیچ‌کدام را برنگزینید، "
-"هر آیتم انجمن خودش را می‌سازد."
+"یک انجمن برگزینید تا هر مورد در آن یک موضوع شود. اگر هیچ‌کدام را برنگزینید، "
+"هر مورد انجمن خودش را می‌سازد."
 
 #: includes/campaign_edit_functions.php:1269
 #: includes/campaign_edit_functions.php:1270
@@ -1176,7 +1176,7 @@ msgstr "گزینه‌های صدا"
 
 #: includes/campaign_edit_functions.php:41
 msgid "Options for videos"
-msgstr "گزینه‌های ویدیو"
+msgstr "گزینه‌های ویدئو"
 
 #: includes/campaign_edit_functions.php:43
 msgid "Duplicate controls"
@@ -1190,7 +1190,7 @@ msgstr ""
 
 #: includes/campaign_edit_functions.php:444
 msgid "Use custom posts template"
-msgstr "استفاده از الگوی سفارشی نوشته"
+msgstr "استفاده از قالب سفارشی نوشته"
 
 #: includes/campaign_edit_functions.php:448
 msgid ""
@@ -1206,7 +1206,7 @@ msgstr "برچسب‌های مجاز"
 
 #: includes/campaign_edit_functions.php:45
 msgid "Post Template"
-msgstr "الگوی نوشته"
+msgstr "قالب نوشته"
 
 #: includes/campaign_edit_functions.php:47
 msgid "Word to Category options"
@@ -1218,7 +1218,7 @@ msgstr "برای نمایش/پنهان کردن نمونه‌ها کلیک کن�
 
 #: includes/campaign_edit_functions.php:483
 msgid "Click here to see more info of the template feature."
-msgstr "برای آگاهی بیشتر دربارهٔ قابلیت الگو اینجا کلیک کنید."
+msgstr "برای آگاهی بیشتر دربارهٔ قابلیت قالب اینجا کلیک کنید."
 
 #: includes/campaign_edit_functions.php:487 includes/campaign_help.php:275
 msgid "Supported tags"
@@ -1238,7 +1238,7 @@ msgstr "گزینه‌های بازنویسی"
 
 #: includes/campaign_edit_functions.php:490 includes/campaign_help.php:278
 msgid "The feed item title."
-msgstr "عنوان آیتم خوراک."
+msgstr "عنوان مورد خوراک."
 
 #: includes/campaign_edit_functions.php:491
 msgid "The parsed post content."
@@ -1246,23 +1246,23 @@ msgstr "محتوای پردازش‌شدهٔ نوشته."
 
 #: includes/campaign_edit_functions.php:492 includes/campaign_help.php:280
 msgid "The feed item description."
-msgstr "توضیح آیتم خوراک."
+msgstr "توضیح مورد خوراک."
 
 #: includes/campaign_edit_functions.php:493 includes/campaign_help.php:281
 msgid "Put the featured image on content."
-msgstr "گذاشتن تصویر شاخص در محتوا."
+msgstr "گذاشتن تصویر ویژه در محتوا."
 
 #: includes/campaign_edit_functions.php:494 includes/campaign_help.php:282
 msgid "The feed item author."
-msgstr "نویسندهٔ آیتم خوراک."
+msgstr "نویسندهٔ مورد خوراک."
 
 #: includes/campaign_edit_functions.php:495 includes/campaign_help.php:283
 msgid "The feed item author link (If exist)."
-msgstr "پیوند نویسندهٔ آیتم خوراک (اگر باشد)."
+msgstr "پیوند نویسندهٔ مورد خوراک (اگر باشد)."
 
 #: includes/campaign_edit_functions.php:496 includes/campaign_help.php:284
 msgid "The feed item permalink."
-msgstr "پیوند یکتای آیتم خوراک."
+msgstr "پیوند یکتای مورد خوراک."
 
 #: includes/campaign_edit_functions.php:497 includes/campaign_help.php:285
 msgid "The feed URL."
@@ -1294,11 +1294,11 @@ msgstr "شناسهٔ این کمپین."
 
 #: includes/campaign_edit_functions.php:504 includes/campaign_help.php:292
 msgid "The date of the post item."
-msgstr "تاریخ آیتم."
+msgstr "تاریخ مورد."
 
 #: includes/campaign_edit_functions.php:505 includes/campaign_help.php:293
 msgid "The time of the post item."
-msgstr "زمان آیتم."
+msgstr "زمان مورد."
 
 #: includes/campaign_edit_functions.php:508 includes/campaign_help.php:295
 msgid "Examples:"
@@ -1316,7 +1316,7 @@ msgstr "رفتن به منبع"
 
 #: includes/campaign_edit_functions.php:512 includes/campaign_help.php:299
 msgid "becomes the feed item content"
-msgstr "جای خود را به متن آیتم خوراک می‌دهد"
+msgstr "جای خود را به متن مورد خوراک می‌دهد"
 
 #: includes/campaign_edit_functions.php:512 includes/campaign_help.php:299
 msgid ""
@@ -1325,7 +1325,7 @@ msgstr "به نشانی مقالهٔ اصلی، که آن را به پیوندی
 
 #: includes/campaign_edit_functions.php:512 includes/campaign_help.php:299
 msgid "the author of the feed item."
-msgstr "به نویسندهٔ آیتم خوراک."
+msgstr "به نویسندهٔ مورد خوراک."
 
 #: includes/campaign_edit_functions.php:513 includes/campaign_help.php:300
 msgid ""
@@ -1346,7 +1346,7 @@ msgid ""
 "To show the videos or audios of the post as a player, the playlist shortcode "
 "does the same for media files:"
 msgstr ""
-"برای نمایش ویدیوها یا صداهای نوشته به‌صورت پخش‌کننده، کدکوتاه playlist همین "
+"برای نمایش ویدئوها یا صداهای نوشته به‌صورت پخش‌کننده، کدکوتاه playlist همین "
 "کار را با پرونده‌های رسانه‌ای می‌کند:"
 
 #: includes/campaign_edit_functions.php:518 includes/campaign_help.php:305
@@ -1391,11 +1391,11 @@ msgstr "خواندن ویژگی srcset برچسب <img>"
 #: includes/campaign_edit_functions.php:583 includes/campaign_help.php:154
 #: includes/settings/help.php:53 includes/settings/page.php:221
 msgid "Set the first image as featured"
-msgstr "نخستین تصویر به‌عنوان تصویر شاخص"
+msgstr "نخستین تصویر به‌عنوان تصویر ویژه"
 
 #: includes/campaign_edit_functions.php:585 includes/campaign_help.php:164
 msgid "Choose which image is the featured one"
-msgstr "انتخاب اینکه کدام تصویر شاخص باشد"
+msgstr "انتخاب اینکه کدام تصویر ویژه باشد"
 
 #: includes/campaign_edit_functions.php:587
 msgid "Use image number"
@@ -1408,7 +1408,7 @@ msgstr "اگر چنین تصویری نبود"
 #: includes/campaign_edit_functions.php:598 includes/campaign_help.php:169
 #: includes/settings/help.php:64 includes/settings/page.php:230
 msgid "Remove the featured image from the content"
-msgstr "برداشتن تصویر شاخص از متن"
+msgstr "برداشتن تصویر ویژه از متن"
 
 #: includes/campaign_edit_functions.php:601
 #: includes/campaign_edit_functions.php:693
@@ -1437,7 +1437,7 @@ msgstr "Featured Image from URL"
 
 #: includes/campaign_edit_functions.php:621
 msgid "Use the video link as featured when available"
-msgstr "استفاده از پیوند ویدیو به‌عنوان تصویر شاخص، در صورت وجود"
+msgstr "استفاده از پیوند ویدئو به‌عنوان تصویر ویژه، در صورت وجود"
 
 #: includes/campaign_edit_functions.php:630
 msgid "Advanced Options"
@@ -1445,7 +1445,7 @@ msgstr "گزینه‌های پیشرفته"
 
 #: includes/campaign_edit_functions.php:638
 msgid "Do you need advanced features? Take a look at the"
-msgstr "به قابلیت‌های پیشرفته نیاز دارید؟ نگاهی بیندازید به"
+msgstr "به امکانات پیشرفته نیاز دارید؟ نگاهی بیندازید به"
 
 #: includes/campaign_edit_functions.php:638
 msgid "Professional addon"
@@ -1477,7 +1477,7 @@ msgstr "کنار گذاشتن نوشته وقتی متن تصویری ندارد
 
 #: includes/campaign_edit_functions.php:646
 msgid "A default featured image when the content brings none."
-msgstr "یک تصویر شاخص پیش‌فرض وقتی متن هیچ تصویری نمی‌آورد."
+msgstr "یک تصویر ویژه پیش‌فرض وقتی متن هیچ تصویری نمی‌آورد."
 
 #: includes/campaign_edit_functions.php:647
 msgid "Keep or skip images by their dimensions."
@@ -1510,17 +1510,17 @@ msgstr "نشانی خوراک"
 #: includes/campaign_edit_functions.php:727 includes/campaign_help.php:211
 #: includes/settings/help.php:118 includes/settings/page.php:299
 msgid "Store videos locally"
-msgstr "ذخیرهٔ ویدیوها روی سایت خودتان"
+msgstr "ذخیرهٔ ویدئوها روی سایت خودتان"
 
 #: includes/campaign_edit_functions.php:731 includes/campaign_help.php:216
 #: includes/settings/help.php:124 includes/settings/page.php:307
 msgid "Attach videos to posts"
-msgstr "پیوست ویدیوها به نوشته‌ها"
+msgstr "پیوست ویدئوها به نوشته‌ها"
 
 #: includes/campaign_edit_functions.php:734 includes/campaign_help.php:220
 #: includes/settings/help.php:129 includes/settings/page.php:316
 msgid "Remove link to source videos"
-msgstr "حذف پیوند به ویدیوهای منبع"
+msgstr "حذف پیوند به ویدئوهای منبع"
 
 #: includes/campaign_edit_functions.php:775 includes/campaign_help.php:237
 #: includes/settings/help.php:201 includes/settings/page.php:498
@@ -1533,7 +1533,7 @@ msgid ""
 "To publish items that share a title, use \"Allow duplicate titles\" and "
 "leave this one alone."
 msgstr ""
-"با خاموش بودن هر دو کنترل، هر آیتم در هر اجرا دوباره منتشر می‌شود، بی‌پایان. "
+"با خاموش بودن هر دو کنترل، هر مورد در هر اجرا دوباره منتشر می‌شود، بی‌پایان. "
 "برای انتشار آیتم‌هایی با عنوان یکسان از «اجازهٔ عنوان‌های تکراری» استفاده کنید "
 "و این یکی را رها کنید."
 
@@ -1557,7 +1557,7 @@ msgstr "ادامهٔ خواندن پس از یک تکراری"
 
 #: includes/campaign_edit_functions.php:823 includes/campaign_help.php:23
 msgid "Max items per fetch"
-msgstr "بیشینهٔ آیتم در هر اجرا"
+msgstr "بیشینهٔ مورد در هر اجرا"
 
 #: includes/campaign_edit_functions.php:827 includes/campaign_help.php:27
 msgid "Order the items by date first"
@@ -1565,11 +1565,11 @@ msgstr "نخست مرتب‌سازی آیتم‌ها بر پایهٔ تاریخ"
 
 #: includes/campaign_edit_functions.php:831 includes/campaign_help.php:31
 msgid "Use the feed item date"
-msgstr "استفاده از تاریخ آیتم خوراک"
+msgstr "استفاده از تاریخ مورد خوراک"
 
 #: includes/campaign_edit_functions.php:834 includes/campaign_help.php:39
 msgid "Force the item date"
-msgstr "اجبار تاریخ آیتم"
+msgstr "اجبار تاریخ مورد"
 
 #: includes/campaign_edit_functions.php:841 includes/campaign_help.php:57
 msgid "Pingbacks and trackbacks"
@@ -1641,7 +1641,7 @@ msgstr "گشودن نشانی در زبانهٔ تازه"
 
 #: includes/campaign_fetch.php:1008
 msgid "The post has no featured image."
-msgstr "این نوشته تصویر شاخص ندارد."
+msgstr "این نوشته تصویر ویژه ندارد."
 
 #: includes/campaign_fetch.php:1015
 msgid "Attaching images"
@@ -1653,7 +1653,7 @@ msgstr "در حال پیوست کردن صداها"
 
 #: includes/campaign_fetch.php:1052
 msgid "Attaching videos"
-msgstr "در حال پیوست کردن ویدیوها"
+msgstr "در حال پیوست کردن ویدئوها"
 
 #: includes/campaign_fetch.php:1081
 msgid "Campaign fetched in %s sec."
@@ -1733,7 +1733,7 @@ msgstr "%s نوشته افزوده شد"
 
 #: includes/campaign_fetch.php:353
 msgid "Processing item %s"
-msgstr "در حال پردازش آیتم %s"
+msgstr "در حال پردازش مورد %s"
 
 #: includes/campaign_fetch.php:367
 msgid "Assigning original date to post."
@@ -1793,7 +1793,7 @@ msgstr "افزودن محتوای پالایش‌نشده"
 
 #: includes/campaign_fetch.php:799
 msgid "Processing item pingbacks"
-msgstr "پردازش بازتاب‌های آیتم"
+msgstr "پردازش بازتاب‌های مورد"
 
 #: includes/campaign_fetch.php:872
 msgid "Categories added: "
@@ -1809,11 +1809,11 @@ msgstr "قالب نوشتهٔ افزوده‌شده: "
 
 #: includes/campaign_fetch.php:917
 msgid "Skip Featured Image."
-msgstr "از تصویر شاخص گذشتیم."
+msgstr "از تصویر ویژه گذشتیم."
 
 #: includes/campaign_fetch.php:921
 msgid "Featuring Image Into Post."
-msgstr "گذاشتن تصویر شاخص برای نوشته."
+msgstr "گذاشتن تصویر ویژه برای نوشته."
 
 #: includes/campaign_fetch.php:963 includes/campaign_fetch_functions.php:510
 msgid "Failed to obtain file:"
@@ -1821,7 +1821,7 @@ msgstr "دریافت فایل ناموفق بود:"
 
 #: includes/campaign_fetch.php:971
 msgid "Save Featured image file failed:"
-msgstr "ذخیرهٔ فایل تصویر شاخص ناموفق بود:"
+msgstr "ذخیرهٔ فایل تصویر ویژه ناموفق بود:"
 
 #: includes/campaign_fetch_functions.php:1000
 msgid "Fifu save set attachment from URL."
@@ -1829,11 +1829,11 @@ msgstr "Fifu پیوست را از نشانی ذخیره می‌کند."
 
 #: includes/campaign_fetch_functions.php:1089
 msgid "Parsing Youtube video and feed item contents."
-msgstr "پردازش ویدیوی یوتیوب و محتوای آیتم خوراک."
+msgstr "پردازش ویدئوی یوتیوب و محتوای مورد خوراک."
 
 #: includes/campaign_fetch_functions.php:118
 msgid "Parsing Post template."
-msgstr "پردازش الگوی نوشته."
+msgstr "پردازش قالب نوشته."
 
 #: includes/campaign_fetch_functions.php:1201
 msgid "Looking for audios in content."
@@ -1841,7 +1841,7 @@ msgstr "جستجوی صدا در محتوا."
 
 #: includes/campaign_fetch_functions.php:125
 msgid "Can't find the featured image to add to the content."
-msgstr "تصویر شاخص برای افزودن به محتوا پیدا نشد."
+msgstr "تصویر ویژه برای افزودن به محتوا پیدا نشد."
 
 #: includes/campaign_fetch_functions.php:1252
 #: includes/campaign_fetch_functions.php:1408
@@ -1854,15 +1854,15 @@ msgstr "صداها در محتوا به‌صورت پیوند بیرونی می�
 
 #: includes/campaign_fetch_functions.php:1356
 msgid "Looking for videos in content."
-msgstr "جستجوی ویدیو در محتوا."
+msgstr "جستجوی ویدئو در محتوا."
 
 #: includes/campaign_fetch_functions.php:1426
 msgid "Using remotely linked videos in content. No changes."
-msgstr "ویدیوها در محتوا به‌صورت پیوند بیرونی می‌مانند. بدون تغییر."
+msgstr "ویدئوها در محتوا به‌صورت پیوند بیرونی می‌مانند. بدون تغییر."
 
 #: includes/campaign_fetch_functions.php:1459
 msgid "Skipping standard videos..."
-msgstr "گذشتن از ویدیوهای معمولی…"
+msgstr "گذشتن از ویدئوهای معمولی…"
 
 #: includes/campaign_fetch_functions.php:1465
 msgid "Skipping Youtube Short..."
@@ -1932,11 +1932,11 @@ msgstr "متأسفانه پیوست درج نشد. خطایی رخ داد."
 
 #: includes/campaign_fetch_functions.php:636
 msgid "Executing featured image selector..."
-msgstr "اجرای گزینشگر تصویر شاخص…"
+msgstr "اجرای گزینشگر تصویر ویژه…"
 
 #: includes/campaign_fetch_functions.php:640
 msgid "Featured image \"%1$s\": %2$s"
-msgstr "تصویر شاخص «%1$s»: %2$s"
+msgstr "تصویر ویژه «%1$s»: %2$s"
 
 #: includes/campaign_fetch_functions.php:643
 msgid "No image was found according to the selected index."
@@ -1948,7 +1948,7 @@ msgstr "نخستین تصویر در محتوا پیدا نشد."
 
 #: includes/campaign_fetch_functions.php:650
 msgid "Using first image as the featured image."
-msgstr "نخستین تصویر به‌عنوان تصویر شاخص به کار می‌رود."
+msgstr "نخستین تصویر به‌عنوان تصویر ویژه به کار می‌رود."
 
 #: includes/campaign_fetch_functions.php:656
 msgid "The last image was not found in the content."
@@ -1956,7 +1956,7 @@ msgstr "آخرین تصویر در محتوا پیدا نشد."
 
 #: includes/campaign_fetch_functions.php:658
 msgid "Using last image as the featured image."
-msgstr "آخرین تصویر به‌عنوان تصویر شاخص به کار می‌رود."
+msgstr "آخرین تصویر به‌عنوان تصویر ویژه به کار می‌رود."
 
 #: includes/campaign_fetch_functions.php:77
 msgid "Deleting html tags: %s"
@@ -1998,7 +1998,7 @@ msgstr "در حال برپاسازی Featured Image From Url"
 
 #: includes/campaign_fetch_functions.php:971
 msgid "Adding featured image post meta: "
-msgstr "افزودن فرادادهٔ تصویر شاخص: "
+msgstr "افزودن فرادادهٔ تصویر ویژه: "
 
 #: includes/campaign_fetch_functions.php:98
 #: includes/campaign_fetch_functions.php:108
@@ -2014,7 +2014,7 @@ msgid ""
 "Wraps the video in the WordPress [embed] shortcode instead of the iframe "
 "YouTube shares."
 msgstr ""
-"ویدیو را در کدکوتاه [embed] وردپرس می‌پیچد، به‌جای آی‌فریمی که یوتیوب می‌دهد."
+"ویدئو را در کدکوتاه [embed] وردپرس می‌پیچد، به‌جای آی‌فریمی که یوتیوب می‌دهد."
 
 #: includes/campaign_help.php:103
 msgid ""
@@ -2026,7 +2026,7 @@ msgstr ""
 
 #: includes/campaign_help.php:106
 msgid "Video size"
-msgstr "اندازهٔ ویدیو"
+msgstr "اندازهٔ ویدئو"
 
 #: includes/campaign_help.php:107
 msgid ""
@@ -2045,11 +2045,11 @@ msgid ""
 "each item creates its own forum."
 msgstr ""
 "انجمنی برگزینید تا آیتم‌های خوراک به‌صورت موضوع در آن منتشر شوند، یا هیچ‌کدام "
-"را برنگزینید تا هر آیتم انجمن خودش را بسازد."
+"را برنگزینید تا هر مورد انجمن خودش را بسازد."
 
 #: includes/campaign_help.php:114
 msgid "Picking a topic instead publishes every item as a reply to it."
-msgstr "اگر به‌جای آن موضوعی برگزینید، هر آیتم به‌صورت پاسخی در آن منتشر می‌شود."
+msgstr "اگر به‌جای آن موضوعی برگزینید، هر مورد به‌صورت پاسخی در آن منتشر می‌شود."
 
 #: includes/campaign_help.php:120
 msgid ""
@@ -2098,7 +2098,7 @@ msgid ""
 "post. Needed for the featured image; turn it off if the run is too slow."
 msgstr ""
 "هر تصویر دریافت‌شده به کتابخانهٔ رسانه می‌رود و به نوشته‌اش پیوست می‌شود. برای "
-"تصویر شاخص لازم است؛ اگر اجرا خیلی کند است خاموشش کنید."
+"تصویر ویژه لازم است؛ اگر اجرا خیلی کند است خاموشش کنید."
 
 #: includes/campaign_help.php:145
 msgid ""
@@ -2124,14 +2124,14 @@ msgid ""
 "The first image found in the content is downloaded, attached and set as the "
 "featured image."
 msgstr ""
-"نخستین تصویر موجود در متن دریافت، پیوست و به‌عنوان تصویر شاخص تعیین می‌شود."
+"نخستین تصویر موجود در متن دریافت، پیوست و به‌عنوان تصویر ویژه تعیین می‌شود."
 
 #: includes/campaign_help.php:159 includes/settings/help.php:59
 msgid ""
 "Hands the featured image to the Featured Image from URL plugin, which serves "
 "it from the source server. Install and activate that plugin first."
 msgstr ""
-"تصویر شاخص را به افزونهٔ Featured Image from URL می‌سپارد که آن را از سرور "
+"تصویر ویژه را به افزونهٔ Featured Image from URL می‌سپارد که آن را از سرور "
 "منبع می‌دهد. نخست آن افزونه را نصب و فعال کنید."
 
 #: includes/campaign_help.php:160 includes/settings/help.php:55
@@ -2149,7 +2149,7 @@ msgid ""
 "featured image is shown."
 msgstr ""
 "با غیرفعال بودن آن افزونه، WPeMatico همچنان فیلدهای متای خود را می‌نویسد، اما "
-"هیچ تصویر شاخصی نمایش داده نمی‌شود."
+"هیچ تصویر ویژهی نمایش داده نمی‌شود."
 
 #: includes/campaign_help.php:165
 msgid ""
@@ -2164,7 +2164,7 @@ msgid ""
 "The image used as featured is stripped from the post content, so your theme "
 "does not show it twice."
 msgstr ""
-"تصویری که شاخص شده از متن نوشته برداشته می‌شود تا پوسته‌تان آن را دو بار نشان "
+"تصویری که ویژه شده از متن نوشته برداشته می‌شود تا پوسته‌تان آن را دو بار نشان "
 "ندهد."
 
 #: includes/campaign_help.php:173 includes/settings/help.php:74
@@ -2254,22 +2254,22 @@ msgstr ""
 
 #: includes/campaign_help.php:207
 msgid "Video options for this campaign"
-msgstr "گزینه‌های ویدیوی این کمپین"
+msgstr "گزینه‌های ویدئوی این کمپین"
 
 #: includes/campaign_help.php:213
 msgid ""
 "Every video in a %s tag is saved to your Uploads folder and the content "
 "points at your copy. Video files are heavy: they fill your disk fast."
 msgstr ""
-"هر ویدیوی درون برچسب %s در پوشهٔ بارگذاری‌های شما ذخیره می‌شود و متن به نسخهٔ "
-"شما اشاره می‌کند. ویدیوها سنگین‌اند: دیسک را زود پر می‌کنند."
+"هر ویدئوی درون برچسب %s در پوشهٔ بارگذاری‌های شما ذخیره می‌شود و متن به نسخهٔ "
+"شما اشاره می‌کند. ویدئوها سنگین‌اند: دیسک را زود پر می‌کنند."
 
 #: includes/campaign_help.php:217
 msgid ""
 "Each downloaded video is added to the Media library and attached to its "
 "post. Turn it off if the run is too slow."
 msgstr ""
-"هر ویدیوی دریافت‌شده به کتابخانهٔ رسانه می‌رود و به نوشته‌اش پیوست می‌شود. اگر "
+"هر ویدئوی دریافت‌شده به کتابخانهٔ رسانه می‌رود و به نوشته‌اش پیوست می‌شود. اگر "
 "اجرا خیلی کند است خاموشش کنید."
 
 #: includes/campaign_help.php:222
@@ -2277,19 +2277,19 @@ msgid ""
 "When a video cannot be downloaded, its %s tag is removed instead of pointing "
 "at the source site."
 msgstr ""
-"وقتی ویدیویی دریافت نشود، برچسب %s آن برداشته می‌شود، به‌جای آنکه به سایت منبع "
+"وقتی ویدئویی دریافت نشود، برچسب %s آن برداشته می‌شود، به‌جای آنکه به سایت منبع "
 "اشاره کند."
 
 #: includes/campaign_help.php:225 includes/settings/help.php:136
 msgid "Use custom upload for videos"
-msgstr "بارگذاری ویژه برای ویدیوها"
+msgstr "بارگذاری ویژه برای ویدئوها"
 
 #: includes/campaign_help.php:226 includes/settings/help.php:137
 msgid ""
 "Saves the video exactly as it comes from the source, skipping WordPress. "
 "Faster, but it does not work on every server."
 msgstr ""
-"ویدیو را دقیقاً همان‌گونه که از منبع می‌آید ذخیره می‌کند، بی‌آنکه از وردپرس "
+"ویدئو را دقیقاً همان‌گونه که از منبع می‌آید ذخیره می‌کند، بی‌آنکه از وردپرس "
 "بگذرد. سریع‌تر است، اما روی هر سروری کار نمی‌کند."
 
 #: includes/campaign_help.php:232
@@ -2301,7 +2301,7 @@ msgid ""
 "Turns off both duplicate checks, so every item is published again on every "
 "run. Almost never what you want."
 msgstr ""
-"هر دو کنترل تکراری را خاموش می‌کند، پس هر آیتم در هر اجرا دوباره منتشر می‌شود. "
+"هر دو کنترل تکراری را خاموش می‌کند، پس هر مورد در هر اجرا دوباره منتشر می‌شود. "
 "تقریباً هیچ‌گاه آنچه می‌خواهید نیست."
 
 #: includes/campaign_help.php:239 includes/settings/help.php:203
@@ -2313,7 +2313,7 @@ msgid ""
 "the post title, and a hash of the last item address the campaign read. The "
 "hash is the reliable one; titles alone fail often."
 msgstr ""
-"عنوان نوشته، و هشی از نشانی آخرین آیتمی که کمپین خوانده است. هش همان "
+"عنوان نوشته، و هشی از نشانی آخرین موردی که کمپین خوانده است. هش همان "
 "قابل‌اعتماد است؛ عنوان به‌تنهایی اغلب شکست می‌خورد."
 
 #: includes/campaign_help.php:24
@@ -2321,7 +2321,7 @@ msgid ""
 "How many items to take from each feed above. Between 3 and 5, running more "
 "often, loses fewer items than a big number run rarely. Use 0 for no limit."
 msgstr ""
-"از هر خوراک بالا چند آیتم برداشته شود. ۳ تا ۵ با اجرای پرتکرارتر، آیتم کمتری "
+"از هر خوراک بالا چند مورد برداشته شود. ۳ تا ۵ با اجرای پرتکرارتر، مورد کمتری "
 "از دست می‌دهد تا عددی بزرگ با اجرای کم. ۰ یعنی بی‌حد."
 
 #: includes/campaign_help.php:240
@@ -2352,22 +2352,22 @@ msgid ""
 "already published."
 msgstr ""
 "آیتم‌های خوراک از تازه به کهنه می‌آیند، پس کمپین از بالا می‌خواند و در نخستین "
-"آیتمی که از پیش دارد می‌ایستد: هرچه زیر آن است کهنه‌تر و منتشرشده است."
+"موردی که از پیش دارد می‌ایستد: هرچه زیر آن است کهنه‌تر و منتشرشده است."
 
 #: includes/campaign_help.php:246 includes/settings/help.php:210
 msgid ""
 "The hash only covers the last item read, so on a feed where the title check "
 "works poorly this option can publish the same item twice."
 msgstr ""
-"هش تنها آخرین آیتم خوانده‌شده را پوشش می‌دهد، پس در خوراکی که کنترل عنوان خوب "
-"کار نمی‌کند این گزینه می‌تواند یک آیتم را دو بار منتشر کند."
+"هش تنها آخرین مورد خوانده‌شده را پوشش می‌دهد، پس در خوراکی که کنترل عنوان خوب "
+"کار نمی‌کند این گزینه می‌تواند یک مورد را دو بار منتشر کند."
 
 #: includes/campaign_help.php:250 includes/settings/help.php:219
 msgid ""
 "One more query per item. Turn it on only if you still get duplicates, which "
 "happens with feeds that do not follow the standard."
 msgstr ""
-"یک پرس‌وجوی بیشتر برای هر آیتم. تنها وقتی روشنش کنید که هنوز تکراری می‌گیرید؛ "
+"یک پرس‌وجوی بیشتر برای هر مورد. تنها وقتی روشنش کنید که هنوز تکراری می‌گیرید؛ "
 "این با خوراک‌هایی رخ می‌دهد که استاندارد را رعایت نمی‌کنند."
 
 #: includes/campaign_help.php:257
@@ -2389,7 +2389,7 @@ msgid ""
 "image, date. When a node name appears more than once, name its parent in the "
 "right column."
 msgstr ""
-"گره XML دربردارندهٔ هر ویژگی آیتم را برگزینید: عنوان، متن، تصویر، تاریخ. وقتی "
+"گره XML دربردارندهٔ هر ویژگی مورد را برگزینید: عنوان، متن، تصویر، تاریخ. وقتی "
 "نام گرهی بیش از یک بار بیاید، در ستون راست مادرش را نام ببرید."
 
 #: includes/campaign_help.php:266 includes/xml-importer.php:460
@@ -2418,15 +2418,15 @@ msgstr ""
 
 #: includes/campaign_help.php:279
 msgid "The feed item content."
-msgstr "محتوای آیتم خوراک."
+msgstr "محتوای مورد خوراک."
 
 #: includes/campaign_help.php:28
 msgid ""
 "Only for feeds that do not come newest first. On those, the campaign would "
 "otherwise stop early and lose items."
 msgstr ""
-"تنها برای خوراک‌هایی که با تازه‌ترین آیتم آغاز نمی‌شوند. در آن‌ها کمپین زود "
-"می‌ایستد و آیتم از دست می‌دهد."
+"تنها برای خوراک‌هایی که با تازه‌ترین مورد آغاز نمی‌شوند. در آن‌ها کمپین زود "
+"می‌ایستد و مورد از دست می‌دهد."
 
 #: includes/campaign_help.php:311 includes/settings/help.php:147
 #: includes/module/actions.php:204
@@ -2552,14 +2552,14 @@ msgid ""
 "Assign categories of your own to every post, take the ones the source item "
 "carries, or both."
 msgstr ""
-"به هر نوشته دسته‌های خودتان را بدهید، دسته‌های آیتم منبع را بگیرید، یا هر دو."
+"به هر نوشته دسته‌های خودتان را بدهید، دسته‌های مورد منبع را بگیرید، یا هر دو."
 
 #: includes/campaign_help.php:340
 msgid ""
 "The categories the source item carries are added to the post, and created on "
 "your site if they do not exist yet."
 msgstr ""
-"دسته‌هایی که آیتم منبع دارد به نوشته افزوده می‌شوند و اگر هنوز نباشند روی سایت "
+"دسته‌هایی که مورد منبع دارد به نوشته افزوده می‌شوند و اگر هنوز نباشند روی سایت "
 "شما ساخته می‌شوند."
 
 #: includes/campaign_help.php:343
@@ -2712,7 +2712,7 @@ msgid ""
 "The description field of the item is saved as the post excerpt. Otherwise "
 "WordPress builds the excerpt from the content."
 msgstr ""
-"فیلد توضیح آیتم به‌عنوان چکیدهٔ نوشته ذخیره می‌شود. وگرنه وردپرس چکیده را از "
+"فیلد توضیح مورد به‌عنوان چکیدهٔ نوشته ذخیره می‌شود. وگرنه وردپرس چکیده را از "
 "متن می‌سازد."
 
 #: includes/campaign_help.php:76
@@ -2751,7 +2751,7 @@ msgid ""
 "the title, the image, the embedded video and the description."
 msgstr ""
 "نشانی خوراک یک کانال، کاربر یا فهرست پخش را بنویسید. کمپین عنوان، تصویر، "
-"ویدیوی جاسازی‌شده و توضیح را برمی‌دارد."
+"ویدئوی جاسازی‌شده و توضیح را برمی‌دارد."
 
 #: includes/campaign_help.php:96
 msgid "For a YouTube channel: "
@@ -2814,7 +2814,7 @@ msgstr "این کار با افزودنی Manual Fetching می‌آید."
 #: includes/campaign_preview_item.php:187
 #: includes/campaign_preview_item.php:303
 msgid "The item is invalid."
-msgstr "آیتم نامعتبر است."
+msgstr "مورد نامعتبر است."
 
 #: includes/campaign_preview_item.php:194
 #: includes/campaign_preview_item.php:310
@@ -2823,7 +2823,7 @@ msgstr "خوراک نامعتبر است."
 
 #: includes/campaign_preview_item.php:202
 msgid "The item could not be previewed."
-msgstr "پیش‌نمایش آیتم ممکن نشد."
+msgstr "پیش‌نمایش مورد ممکن نشد."
 
 #: includes/campaign_preview_item.php:396
 msgid "Loading post title..."
@@ -2839,7 +2839,7 @@ msgstr "گزینه‌های کمپین"
 
 #: includes/campaigns_list.php:1156 includes/campaigns_list.php:1350
 msgid "Items per fetch"
-msgstr "آیتم در هر دریافت"
+msgstr "مورد در هر دریافت"
 
 #: includes/campaigns_list.php:1164 includes/campaigns_list.php:1369
 msgid "Discussion"
@@ -3246,7 +3246,7 @@ msgid ""
 "Every campaign saves a hash of the last feed item it fetched, to avoid "
 "duplicates. This deletes it, so those items can be fetched again."
 msgstr ""
-"هر کمپین هشِ آخرین آیتم دریافتی را نگه می‌دارد تا از تکراری‌ها پرهیز کند. این "
+"هر کمپین هشِ آخرین مورد دریافتی را نگه می‌دارد تا از تکراری‌ها پرهیز کند. این "
 "آن را پاک می‌کند، پس آن آیتم‌ها دوباره دریافت‌شدنی‌اند."
 
 #: includes/campaigns_list_help.php:61
@@ -3307,7 +3307,9 @@ msgstr "خوراک‌ها"
 msgid ""
 "Add the feed addresses this campaign reads. Check all feeds tells you "
 "whether each one answers."
-msgstr "نشانی خوراک‌هایی را که این کمپین می‌خواند اضافه کنید. «بررسی همهٔ خوراک‌ها» به شما می‌گوید هر کدام پاسخ می‌دهد یا نه."
+msgstr ""
+"نشانی خوراک‌هایی را که این کمپین می‌خواند اضافه کنید. «بررسی همهٔ خوراک‌ها» به "
+"شما می‌گوید هر کدام پاسخ می‌دهد یا نه."
 
 #: includes/class-tour-helper.php:111
 msgid "Campaign type"
@@ -3317,7 +3319,9 @@ msgstr "نوع کمپین"
 msgid ""
 "Feed is the usual choice. Other types read XML files, YouTube or Vimeo, and "
 "more come with the extensions."
-msgstr "Feed انتخاب معمول است. نوع‌های دیگر پرونده‌های XML، یوتیوب یا Vimeo را می‌خوانند و افزودنی‌ها نوع‌های بیشتری می‌آورند."
+msgstr ""
+"Feed انتخاب معمول است. نوع‌های دیگر پرونده‌های XML، یوتیوب یا Vimeo را "
+"می‌خوانند و افزودنی‌ها نوع‌های بیشتری می‌آورند."
 
 #: includes/class-tour-helper.php:118 includes/debug_page.php:3025
 #: includes/debug_page.php:3521
@@ -3335,7 +3339,9 @@ msgstr "جادوگر"
 #: includes/class-tour-helper.php:126
 msgid ""
 "Prefer a guided path? The Wizard walks you through every box, one by one."
-msgstr "راهنمایی گام‌به‌گام را ترجیح می‌دهید؟ جادوگر شما را از همهٔ جعبه‌ها، یکی‌یکی، عبور می‌دهد."
+msgstr ""
+"راهنمایی گام‌به‌گام را ترجیح می‌دهید؟ جادوگر شما را از همهٔ جعبه‌ها، یکی‌یکی، عبور "
+"می‌دهد."
 
 #: includes/class-tour-helper.php:134
 msgid "Settings menu"
@@ -3345,7 +3351,9 @@ msgstr "فهرست تنظیمات"
 msgid ""
 "General, Advanced and Backend Tools hold WPeMatico's settings. Each "
 "extension adds its own tab below them."
-msgstr "عمومی، پیشرفته و ابزارهای مدیریت تنظیمات WPeMatico را در خود دارند. هر افزودنی زبانهٔ خودش را زیر آن‌ها اضافه می‌کند."
+msgstr ""
+"عمومی، پیشرفته و ابزارهای مدیریت تنظیمات WPeMatico را در خود دارند. هر "
+"افزودنی زبانهٔ خودش را زیر آن‌ها اضافه می‌کند."
 
 #: includes/class-tour-helper.php:141
 msgid "Boxes"
@@ -3353,7 +3361,9 @@ msgstr "جعبه‌ها"
 
 #: includes/class-tour-helper.php:142
 msgid "Collapse a box from its header or drag it to sort the screen your way."
-msgstr "یک جعبه را از سرتیترش جمع کنید یا آن را بکشید تا صفحه را به سلیقهٔ خود مرتب کنید."
+msgstr ""
+"یک جعبه را از سرتیترش جمع کنید یا آن را بکشید تا صفحه را به سلیقهٔ خود مرتب "
+"کنید."
 
 #: includes/class-tour-helper.php:148
 msgid "Save"
@@ -3361,7 +3371,9 @@ msgstr "ذخیره"
 
 #: includes/class-tour-helper.php:149
 msgid "Saves the section you are in. The others keep what they had."
-msgstr "بخشی را که در آن هستید ذخیره می‌کند. بخش‌های دیگر همان که داشتند را نگه می‌دارند."
+msgstr ""
+"بخشی را که در آن هستید ذخیره می‌کند. بخش‌های دیگر همان که داشتند را نگه "
+"می‌دارند."
 
 #: includes/class-tour-helper.php:155
 msgid ""
@@ -3371,13 +3383,15 @@ msgstr "هر گزینه یک (?) با توضیحی کوتاه دارد و زبا
 
 #: includes/class-tour-helper.php:161
 msgid "Extra features"
-msgstr "ویژگی‌های بیشتر"
+msgstr "امکانات بیشتر"
 
 #: includes/class-tour-helper.php:162
 msgid ""
 "Switch on content rewriting, words to categories, canonical URLs and the "
 "other optional features."
-msgstr "بازنویسی محتوا، واژه‌ها به دسته‌ها، نشانی‌های متعارف و دیگر ویژگی‌های اختیاری را روشن کنید."
+msgstr ""
+"بازنویسی محتوا، واژه‌ها به دسته‌ها، نشانی‌های متعارف و دیگر امکانات اختیاری را "
+"روشن کنید."
 
 #: includes/class-tour-helper.php:168
 msgid "Advanced actions"
@@ -3395,7 +3409,9 @@ msgstr "صفحه‌های مدیریت شما"
 msgid ""
 "Choose the campaign columns, the boxes of the campaign editor, the dashboard "
 "widgets and these guided tours."
-msgstr "ستون‌های کمپین‌ها، جعبه‌های ویرایشگر کمپین، ابزارک‌های پیشخوان و همین راهنماهای گام‌به‌گام را انتخاب کنید."
+msgstr ""
+"ستون‌های کمپین‌ها، جعبه‌های ویرایشگر کمپین، ابزارک‌های پیشخوان و همین راهنماهای "
+"گام‌به‌گام را انتخاب کنید."
 
 #: includes/class-tour-helper.php:186 includes/feed_list_help.php:29
 #: includes/tools_page.php:452 includes/tools_tabs.php:64
@@ -3407,13 +3423,16 @@ msgstr "فهرست خوراک‌ها"
 msgid ""
 "Every feed of every campaign in one list, with its campaign, its status and "
 "its last run."
-msgstr "همهٔ خوراک‌های همهٔ کمپین‌ها در یک فهرست، با کمپین، وضعیت و آخرین اجرای هر کدام."
+msgstr ""
+"همهٔ خوراک‌های همهٔ کمپین‌ها در یک فهرست، با کمپین، وضعیت و آخرین اجرای هر کدام."
 
 #: includes/class-tour-helper.php:194
 msgid ""
 "Paste any address to see what it really returns: a feed, a page that is not "
 "one, or why it cannot be reached."
-msgstr "هر نشانی‌ای را بچسبانید تا ببینید واقعاً چه برمی‌گرداند: یک خوراک، صفحه‌ای که خوراک نیست، یا اینکه چرا در دسترس نیست."
+msgstr ""
+"هر نشانی‌ای را بچسبانید تا ببینید واقعاً چه برمی‌گرداند: یک خوراک، صفحه‌ای که "
+"خوراک نیست، یا اینکه چرا در دسترس نیست."
 
 #: includes/class-tour-helper.php:200 includes/tools_help.php:37
 #: includes/tools_tabs.php:68
@@ -3434,7 +3453,9 @@ msgstr "جعبه‌ابزار مهاجرت"
 msgid ""
 "Bring your feeds over from Feedzy or WP RSS Aggregator, with the posts they "
 "already published."
-msgstr "خوراک‌هایتان را از Feedzy یا WP RSS Aggregator بیاورید، همراه با نوشته‌هایی که پیش‌تر منتشر کرده‌اند."
+msgstr ""
+"خوراک‌هایتان را از Feedzy یا WP RSS Aggregator بیاورید، همراه با نوشته‌هایی که "
+"پیش‌تر منتشر کرده‌اند."
 
 #: includes/class-tour-helper.php:214 includes/tools_tabs.php:18
 msgid "System"
@@ -3444,12 +3465,16 @@ msgstr "سامانه"
 msgid ""
 "Status gathers the site and server details support will ask for. Danger Zone "
 "holds debug logging and what uninstalling removes."
-msgstr "وضعیت، اطلاعات سایت و سرور را که پشتیبانی خواهد خواست گرد می‌آورد. ناحیهٔ خطر گزارش اشکال‌زدایی و آنچه حذف افزونه پاک می‌کند را در خود دارد."
+msgstr ""
+"وضعیت، اطلاعات سایت و سرور را که پشتیبانی خواهد خواست گرد می‌آورد. ناحیهٔ خطر "
+"گزارش اشکال‌زدایی و آنچه حذف افزونه پاک می‌کند را در خود دارد."
 
 #: includes/class-tour-helper.php:225
 msgid ""
 "Every WPeMatico add-on, installed or not. The free ones install from here."
-msgstr "همهٔ افزودنی‌های WPeMatico، نصب‌شده یا نه. افزودنی‌های رایگان از همین‌جا نصب می‌شوند."
+msgstr ""
+"همهٔ افزودنی‌های WPeMatico، نصب‌شده یا نه. افزودنی‌های رایگان از همین‌جا نصب "
+"می‌شوند."
 
 #: includes/class-tour-helper.php:231
 msgid "Activate and license"
@@ -3459,7 +3484,9 @@ msgstr "فعال‌سازی و پروانه"
 msgid ""
 "Activate what you have, and enter its licence in Settings › Licenses to "
 "receive its updates."
-msgstr "آنچه دارید را فعال کنید و پروانه‌اش را در تنظیمات › پروانه‌ها وارد کنید تا به‌روزرسانی‌هایش را دریافت کنید."
+msgstr ""
+"آنچه دارید را فعال کنید و پروانه‌اش را در تنظیمات › پروانه‌ها وارد کنید تا "
+"به‌روزرسانی‌هایش را دریافت کنید."
 
 #: includes/class-tour-helper.php:244
 msgid "Runs the campaign once, now."
@@ -3469,7 +3496,9 @@ msgstr "کمپین را یک بار، همین حالا، اجرا می‌کند
 msgid ""
 "Turns its schedule on, so it runs on its own. It shows red while the "
 "schedule is on."
-msgstr "زمان‌بندی‌اش را روشن می‌کند تا خودکار اجرا شود. تا وقتی زمان‌بندی روشن است قرمز دیده می‌شود."
+msgstr ""
+"زمان‌بندی‌اش را روشن می‌کند تا خودکار اجرا شود. تا وقتی زمان‌بندی روشن است قرمز "
+"دیده می‌شود."
 
 #: includes/class-tour-helper.php:246
 msgid "Turns the schedule off, or stops a run in progress."
@@ -3516,17 +3545,21 @@ msgstr "یک کارت برای هر ویژگی"
 #: includes/class-tour-helper.php:57
 msgid ""
 "Filter them by what they do: images, SEO, campaign types, parsers and more."
-msgstr "آن‌ها را بر اساس کاری که می‌کنند فیلتر کنید: تصویرها، سئو، نوع‌های کمپین، تجزیه‌گرها و بیشتر."
+msgstr ""
+"آن‌ها را بر اساس کاری که می‌کنند فیلتر کنید: تصویرها، سئو، نوع‌های کمپین، "
+"تجزیه‌گرها و بیشتر."
 
 #: includes/class-tour-helper.php:63
 msgid "Switch features on and off"
-msgstr "روشن و خاموش کردن ویژگی‌ها"
+msgstr "روشن و خاموش کردن امکانات"
 
 #: includes/class-tour-helper.php:64
 msgid ""
 "Each card says what its switch will do before you touch it, and installs "
 "whatever it needs."
-msgstr "هر کارت پیش از آنکه به کلیدش دست بزنید می‌گوید چه خواهد کرد، و هر چه لازم دارد را نصب می‌کند."
+msgstr ""
+"هر کارت پیش از آنکه به کلیدش دست بزنید می‌گوید چه خواهد کرد، و هر چه لازم "
+"دارد را نصب می‌کند."
 
 #: includes/class-tour-helper.php:70
 msgid "Your first campaign"
@@ -3536,7 +3569,9 @@ msgstr "نخستین کمپین شما"
 msgid ""
 "A campaign reads one or more feeds and publishes their items as posts. Start "
 "here."
-msgstr "یک کمپین یک یا چند خوراک را می‌خواند و موارد آن‌ها را به‌صورت نوشته منتشر می‌کند. از این‌جا شروع کنید."
+msgstr ""
+"یک کمپین یک یا چند خوراک را می‌خواند و موارد آن‌ها را به‌صورت نوشته منتشر "
+"می‌کند. از این‌جا شروع کنید."
 
 #: includes/class-tour-helper.php:79 includes/lib/welcome.php:595
 msgid "Add a campaign"
@@ -3544,7 +3579,8 @@ msgstr "افزودن کمپین"
 
 #: includes/class-tour-helper.php:80
 msgid "Give it a name, paste a feed address and choose where the posts go."
-msgstr "نامی به آن بدهید، نشانی یک خوراک را بچسبانید و انتخاب کنید نوشته‌ها کجا بروند."
+msgstr ""
+"نامی به آن بدهید، نشانی یک خوراک را بچسبانید و انتخاب کنید نوشته‌ها کجا بروند."
 
 #: includes/class-tour-helper.php:86
 msgid "Run, schedule or pause"
@@ -3706,8 +3742,8 @@ msgid ""
 "%1$s failed. Some plugins features may not work. Please contact your hosting "
 "provider and make sure that %2$s is not blocked."
 msgstr ""
-"%1$s ناموفق بود. ممکن است برخی قابلیت‌های افزونه کار نکنند. با میزبان خود "
-"تماس بگیرید و مطمئن شوید %2$s مسدود نیست."
+"%1$s ناموفق بود. ممکن است برخی امکانات افزونه کار نکنند. با میزبان خود تماس "
+"بگیرید و مطمئن شوید %2$s مسدود نیست."
 
 #: includes/debug_page.php:124
 msgid "The feed %s cannot be obtained."
@@ -3767,19 +3803,19 @@ msgstr "نشانی %s گرفته شد."
 
 #: includes/debug_page.php:1561
 msgid "MySQL Version:"
-msgstr "نسخهٔ MySQL:"
+msgstr "نگارش MySQL:"
 
 #: includes/debug_page.php:1563
 msgid "The version of MySQL installed on your hosting server."
-msgstr "نسخهٔ MySQL نصب‌شده روی سرور شما."
+msgstr "نگارش MySQL نصب‌شده روی سرور شما."
 
 #: includes/debug_page.php:1575
 msgid "PHP Version:"
-msgstr "نسخهٔ PHP:"
+msgstr "نگارش PHP:"
 
 #: includes/debug_page.php:1577
 msgid "The version of PHP installed on your hosting server."
-msgstr "نسخهٔ PHP نصب‌شده روی سرور شما."
+msgstr "نگارش PHP نصب‌شده روی سرور شما."
 
 #. translators: %1$s: the PHP version running. %2$s: the minimum PHP version WPeMatico needs.
 #: includes/debug_page.php:1585
@@ -4173,11 +4209,11 @@ msgstr "نشانی ریشهٔ سایت شما."
 
 #: includes/debug_page.php:2353
 msgid "WP Version:"
-msgstr "نسخهٔ وردپرس:"
+msgstr "نگارش وردپرس:"
 
 #: includes/debug_page.php:2355 includes/debug_page.php:2471
 msgid "The version of WordPress installed on your site."
-msgstr "نسخهٔ وردپرس نصب‌شده روی سایت شما."
+msgstr "نگارش وردپرس نصب‌شده روی سایت شما."
 
 #: includes/debug_page.php:2363
 msgid "WP Multisite:"
@@ -4200,11 +4236,11 @@ msgstr "انجمن‌ها"
 
 #: includes/debug_page.php:2387
 msgid "Simple Pie VERSION:"
-msgstr "نسخهٔ SimplePie:"
+msgstr "نگارش SimplePie:"
 
 #: includes/debug_page.php:2389
 msgid "Minimum version required is 1.5.1."
-msgstr "کمینهٔ نسخهٔ لازم ۱.۵.۱ است."
+msgstr "کمینهٔ نگارش لازم ۱.۵.۱ است."
 
 #: includes/debug_page.php:2423
 msgid "USING SimplePie %s included in WordPress"
@@ -4456,7 +4492,7 @@ msgstr "گونه"
 
 #: includes/debug_page.php:2959
 msgid "Max items"
-msgstr "بیشینهٔ آیتم"
+msgstr "بیشینهٔ مورد"
 
 #: includes/debug_page.php:2963
 msgid "Next Run"
@@ -4570,7 +4606,7 @@ msgid ""
 "Please contact your hosting provider and make sure that https://etruel.com/"
 "downloads/feed/ is not blocked."
 msgstr ""
-"اتصال به etruel.com ناموفق بود. ممکن است برخی قابلیت‌های افزونه کار نکنند. با "
+"اتصال به etruel.com ناموفق بود. ممکن است برخی امکانات افزونه کار نکنند. با "
 "میزبان خود تماس بگیرید و مطمئن شوید https://etruel.com/downloads/feed/ مسدود "
 "نیست."
 
@@ -4856,7 +4892,7 @@ msgid ""
 "Zero items means the feed is valid but empty right now: a campaign on it "
 "would fetch nothing until the source publishes again."
 msgstr ""
-"صفر آیتم یعنی خوراک معتبر اما اکنون خالی است: کمپینی روی آن تا انتشار دوبارهٔ "
+"صفر مورد یعنی خوراک معتبر اما اکنون خالی است: کمپینی روی آن تا انتشار دوبارهٔ "
 "منبع چیزی نمی‌گیرد."
 
 #: includes/feed_viewer_help.php:52
@@ -4987,7 +5023,7 @@ msgstr ""
 #. translators: the plugin name.
 #: includes/lib/EDD_SL_Plugin_Updater.php:300
 msgid "There is a new version of %1$s available."
-msgstr "نسخهٔ تازه‌ای از %1$s در دسترس است."
+msgstr "نگارش تازه‌ای از %1$s در دسترس است."
 
 #: includes/lib/EDD_SL_Plugin_Updater.php:306
 msgid "Contact your network administrator to install the update."
@@ -4996,11 +5032,11 @@ msgstr "برای نصب به‌روزرسانی با مدیر شبکه تماس 
 #. translators: 1. opening anchor tag, do not translate 2. the new plugin version 3. closing anchor tag, do not translate.
 #: includes/lib/EDD_SL_Plugin_Updater.php:311
 msgid "%1$sView version %2$s details%3$s."
-msgstr "%1$sدیدن جزئیات نسخهٔ %2$s%3$s."
+msgstr "%1$sدیدن جزئیات نگارش %2$s%3$s."
 
 #: includes/lib/EDD_SL_Plugin_Updater.php:319
 msgid "%1$sView version %2$s details%3$s or %4$supdate now%5$s."
-msgstr "%1$sدیدن جزئیات نسخهٔ %2$s%3$s یا %4$sبه‌روزرسانی هم‌اکنون%5$s."
+msgstr "%1$sدیدن جزئیات نگارش %2$s%3$s یا %4$sبه‌روزرسانی هم‌اکنون%5$s."
 
 #: includes/lib/EDD_SL_Plugin_Updater.php:330
 msgid "Update now."
@@ -5118,8 +5154,8 @@ msgid ""
 "%1$s needs WPeMatico %2$s or newer. Its features stay off until WPeMatico is "
 "updated."
 msgstr ""
-"%1$s به WPeMatico %2$s یا تازه‌تر نیاز دارد. قابلیت‌هایش تا به‌روزرسانی "
-"WPeMatico خاموش می‌مانند."
+"%1$s به WPeMatico %2$s یا تازه‌تر نیاز دارد. امکاناتش تا به‌روزرسانی WPeMatico "
+"خاموش می‌مانند."
 
 #: includes/lib/update_reasons.php:128
 msgid "%s updates once its license key is saved on this site."
@@ -5193,7 +5229,7 @@ msgid ""
 "Automatic updates are turned off on this site, so %s keeps its current "
 "version until it is updated by hand."
 msgstr ""
-"به‌روزرسانی خودکار در این سایت خاموش است، پس %s تا به‌روزرسانی دستی روی نسخهٔ "
+"به‌روزرسانی خودکار در این سایت خاموش است، پس %s تا به‌روزرسانی دستی روی نگارش "
 "کنونی می‌ماند."
 
 #: includes/lib/update_reasons.php:191
@@ -5214,22 +5250,22 @@ msgid_plural ""
 "on their current version until you update WPeMatico."
 msgstr[0] ""
 "WPeMatico خودکار به‌روزرسانی نمی‌شود، پس %d افزودنی که چنین می‌کند تا زمانی که "
-"WPeMatico را به‌روزرسانی نکنید روی نسخهٔ کنونی‌اش می‌ماند."
+"WPeMatico را به‌روزرسانی نکنید روی نگارش کنونی‌اش می‌ماند."
 msgstr[1] ""
 "WPeMatico خودکار به‌روزرسانی نمی‌شود، پس %d افزودنی که چنین می‌کنند تا زمانی که "
-"WPeMatico را به‌روزرسانی نکنید روی نسخهٔ کنونی‌شان می‌مانند."
+"WPeMatico را به‌روزرسانی نکنید روی نگارش کنونی‌شان می‌مانند."
 
 #: includes/lib/welcome.php:151
 msgid ""
 "WPeMatico could not update the version in your database. Please if your "
 "website has an object cache disable it."
 msgstr ""
-"WPeMatico نتوانست نسخه را در پایگاه دادهٔ شما به‌روز کند. اگر سایتتان حافظهٔ "
+"WPeMatico نتوانست نگارش را در پایگاه دادهٔ شما به‌روز کند. اگر سایتتان حافظهٔ "
 "نهان شیء دارد، آن را خاموش کنید."
 
 #: includes/lib/welcome.php:167
 msgid "Thank you for updating to the latest version!"
-msgstr "سپاس که به تازه‌ترین نسخه به‌روزرسانی کردید!"
+msgstr "سپاس که به تازه‌ترین نگارش به‌روزرسانی کردید!"
 
 #: includes/lib/welcome.php:169
 msgid ""
@@ -5266,13 +5302,13 @@ msgid ""
 "plugins. And everything feels faster."
 msgstr ""
 "WPeMatico 2.9 بزرگ‌ترین به‌روزرسانی سال‌های اخیر است. پیشخوانی تازه مهم‌ترین "
-"قابلیت‌های افزونه و افزودنی‌هایش را پشت یک کلید می‌گذارد، تنظیمات و ابزارها از "
+"امکانات افزونه و افزودنی‌هایش را پشت یک کلید می‌گذارد، تنظیمات و ابزارها از "
 "پایه بازسازی شده‌اند، کمپین‌های Vimeo اکنون رایگان‌اند، و جعبه‌ابزار تازهٔ مهاجرت "
 "خوراک‌های شما را از دیگر افزونه‌های RSS می‌آورد. و همه‌چیز سریع‌تر حس می‌شود."
 
 #: includes/lib/welcome.php:270
 msgid "One Dashboard for the features you use most"
-msgstr "یک پیشخوان برای قابلیت‌هایی که بیشتر به کار می‌برید"
+msgstr "یک پیشخوان برای امکاناتی که بیشتر به کار می‌برید"
 
 #: includes/lib/welcome.php:272
 msgid "Every feature of the plugin and its add-ons, as a card with a switch."
@@ -5370,14 +5406,14 @@ msgid ""
 msgstr ""
 "نشانی یک کاربر، کانال یا گروه Vimeo را بچسبانید و کمپین خودش خوراک را "
 "می‌یابد: عنوان، بندانگشتی، پخش‌کننده و توضیح، همراه کلیدهایی برای جاسازی، "
-"اندازهٔ قاب و تصویر شاخص."
+"اندازهٔ قاب و تصویر ویژه."
 
 #: includes/lib/welcome.php:320
 msgid ""
 "Switch it on from its card in the Dashboard, or in Settings → Advanced → "
 "Enable Features."
 msgstr ""
-"از کارتش در پیشخوان روشنش کنید، یا در تنظیمات ← پیشرفته ← فعال کردن قابلیت‌ها."
+"از کارتش در پیشخوان روشنش کنید، یا در تنظیمات ← پیشرفته ← فعال کردن امکانات."
 
 #: includes/lib/welcome.php:326
 msgid "Your campaigns at a glance, on the WordPress dashboard"
@@ -5482,8 +5518,8 @@ msgid ""
 "An add-on that falls behind keeps running and updating; only the features "
 "that need the new core wait, and a notice says which version puts it right."
 msgstr ""
-"افزودنی‌ای که عقب بماند همچنان کار می‌کند و به‌روز می‌شود؛ تنها قابلیت‌هایی که به "
-"هستهٔ تازه نیاز دارند منتظر می‌مانند، و آگاهی‌ای می‌گوید کدام نسخه آن را درست "
+"افزودنی‌ای که عقب بماند همچنان کار می‌کند و به‌روز می‌شود؛ تنها امکاناتی که به "
+"هستهٔ تازه نیاز دارند منتظر می‌مانند، و آگاهی‌ای می‌گوید کدام نگارش آن را درست "
 "می‌کند."
 
 #: includes/lib/welcome.php:398
@@ -5539,14 +5575,14 @@ msgid ""
 "you to enhance autoblogging with advanced features."
 msgstr ""
 "افزودنی‌های نیرومندی مانند Professional و Full Content را در بر دارد که "
-"وبلاگ‌نویسی خودکار را با قابلیت‌های پیشرفته توانمند می‌کنند."
+"وبلاگ‌نویسی خودکار را با امکانات پیشرفته توانمند می‌کنند."
 
 #: includes/lib/welcome.php:443
 msgid ""
 "combines the five most requested add-ons with a lot of great features, "
 "simplifying WordPress autoblogging with professional ease."
 msgstr ""
-"پنج افزودنی پرتقاضا را با انبوهی از قابلیت‌های عالی گرد می‌آورد و وبلاگ‌نویسی "
+"پنج افزودنی پرتقاضا را با انبوهی از امکانات عالی گرد می‌آورد و وبلاگ‌نویسی "
 "خودکار در وردپرس را با آسودگی حرفه‌ای ساده می‌کند."
 
 #: includes/lib/welcome.php:453
@@ -5671,7 +5707,7 @@ msgstr "۲. بگویید نوشته‌ها کجا بروند و هر چند وق
 
 #: includes/lib/welcome.php:609
 msgid "The defaults already work: one published post per feed item."
-msgstr "پیش‌فرض‌ها همین حالا کار می‌کنند: یک نوشتهٔ منتشرشده برای هر آیتم خوراک."
+msgstr "پیش‌فرض‌ها همین حالا کار می‌کنند: یک نوشتهٔ منتشرشده برای هر مورد خوراک."
 
 #: includes/lib/welcome.php:610
 msgid ""
@@ -5681,7 +5717,7 @@ msgid ""
 "Published if you want to review first — and the schedule that decides how "
 "often the campaign runs."
 msgstr ""
-"در «گزینه‌های این کمپین» تعیین می‌کنید در هر اجرا چند آیتم آورده شود، نویسندهٔ "
+"در «گزینه‌های این کمپین» تعیین می‌کنید در هر اجرا چند مورد آورده شود، نویسندهٔ "
 "نوشته‌های تازه کیست و با محتوایشان چه شود. در کادر «انتشار» کنار آن، وضعیت و "
 "گونهٔ نوشته — پیش‌نویس به‌جای منتشرشده اگر می‌خواهید نخست بازبینی کنید — و "
 "زمان‌بندی‌ای که تعیین می‌کند کمپین هر چند وقت اجرا شود."
@@ -5734,7 +5770,7 @@ msgstr "گشودن کمپین‌ها"
 
 #: includes/lib/welcome.php:649
 msgid "Switch on more features"
-msgstr "قابلیت‌های بیشتری را روشن کنید"
+msgstr "امکانات بیشتری را روشن کنید"
 
 #: includes/lib/welcome.php:65
 msgid "WPeMatico About"
@@ -5760,7 +5796,7 @@ msgid ""
 "scheduler that runs your campaigns, and the Backend Tools, such as the "
 "Campaign column in your post lists."
 msgstr ""
-"تنظیمات چیزهای سراسری را نگه می‌دارد: اینکه با تصویرها و ویدیوها چه شود، "
+"تنظیمات چیزهای سراسری را نگه می‌دارد: اینکه با تصویرها و ویدئوها چه شود، "
 "زمان‌بندی که کمپین‌هایتان را اجرا می‌کند، و ابزارهای مدیریت، مانند ستون «کمپین» "
 "در فهرست نوشته‌هایتان."
 
@@ -5775,7 +5811,7 @@ msgid ""
 "read."
 msgstr ""
 "هر نشانی را در نمایشگر خوراک بچسبانید تا بگوید خوراک هست یا نه، قالبش چیست و "
-"چند آیتم دارد — یا دلیل واقعی اینکه چرا خوانده نمی‌شود."
+"چند مورد دارد — یا دلیل واقعی اینکه چرا خوانده نمی‌شود."
 
 #: includes/lib/welcome.php:676
 msgid "The answers are next to the options"
@@ -5895,7 +5931,7 @@ msgid ""
 "Join our newsletter and be the first to hear about new features, new add-ons "
 "and special offers."
 msgstr ""
-"به خبرنامهٔ ما بپیوندید و نخستین کسی باشید که از قابلیت‌های تازه، افزودنی‌های "
+"به خبرنامهٔ ما بپیوندید و نخستین کسی باشید که از امکانات تازه، افزودنی‌های "
 "تازه و پیشنهادهای ویژه باخبر می‌شود."
 
 #: includes/lib/welcome.php:763
@@ -6137,10 +6173,10 @@ msgid_plural ""
 "WPeMatico found feeds from these plugins on this site: %s. Import them as "
 "campaigns and you can drop the other plugins."
 msgstr[0] ""
-"WPeMatico در این تارنما خوراک‌هایی از %s یافت. آن‌ها را به‌عنوان کمپین درون‌ریزی "
+"WPeMatico در این سایت خوراک‌هایی از %s یافت. آن‌ها را به‌عنوان کمپین درون‌ریزی "
 "کنید تا بتوانید افزونهٔ دیگر را کنار بگذارید."
 msgstr[1] ""
-"WPeMatico در این تارنما خوراک‌هایی از این افزونه‌ها یافت: %s. آن‌ها را به‌عنوان "
+"WPeMatico در این سایت خوراک‌هایی از این افزونه‌ها یافت: %s. آن‌ها را به‌عنوان "
 "کمپین درون‌ریزی کنید تا بتوانید افزونه‌های دیگر را کنار بگذارید."
 
 #: includes/migration/detect.php:241
@@ -6156,10 +6192,10 @@ msgid_plural ""
 "WPeMatico found feeds from these plugins on this site: %s. Enable the Plugin "
 "Importers module to bring them over as campaigns."
 msgstr[0] ""
-"WPeMatico در این تارنما خوراک‌هایی از %s یافت. برای آوردن آن‌ها به‌عنوان کمپین، "
+"WPeMatico در این سایت خوراک‌هایی از %s یافت. برای آوردن آن‌ها به‌عنوان کمپین، "
 "ماژول درون‌ریزهای افزونه را فعال کنید."
 msgstr[1] ""
-"WPeMatico در این تارنما خوراک‌هایی از این افزونه‌ها یافت: %s. برای آوردن آن‌ها "
+"WPeMatico در این سایت خوراک‌هایی از این افزونه‌ها یافت: %s. برای آوردن آن‌ها "
 "به‌عنوان کمپین، ماژول درون‌ریزهای افزونه را فعال کنید."
 
 #: includes/migration/detect.php:260
@@ -6467,12 +6503,12 @@ msgstr ""
 #: includes/migration/importers/class-migrator-feedzy-rss-feeds.php:351
 #: includes/migration/importers/class-migrator-wp-rss-aggregator.php:269
 msgid "Import fallback featured image"
-msgstr "درون‌ریزی تصویر شاخص جایگزین"
+msgstr "درون‌ریزی تصویر ویژه جایگزین"
 
 #: includes/migration/importers/class-migrator-feedzy-rss-feeds.php:352
 msgid "Uses Feedzy's default thumbnail as the campaign default featured image."
 msgstr ""
-"بندانگشتی پیش‌فرض Feedzy را به‌عنوان تصویر شاخص پیش‌فرض کمپین به کار می‌برد."
+"بندانگشتی پیش‌فرض Feedzy را به‌عنوان تصویر ویژه پیش‌فرض کمپین به کار می‌برد."
 
 #: includes/migration/importers/class-migrator-feedzy-rss-feeds.php:358
 msgid "Import auto-translation"
@@ -6597,7 +6633,7 @@ msgid ""
 "Uses the source's fallback featured image as the campaign default featured "
 "image."
 msgstr ""
-"تصویر شاخص جایگزین منبع را به‌عنوان تصویر شاخص پیش‌فرض کمپین به کار می‌برد."
+"تصویر ویژه جایگزین منبع را به‌عنوان تصویر ویژه پیش‌فرض کمپین به کار می‌برد."
 
 #: includes/migration/importers/class-migrator-wp-rss-aggregator.php:276
 msgid "Import full content from truncated feeds"
@@ -6901,18 +6937,18 @@ msgstr "در یک کمپین با برگزیدن گونهٔ آن فعالش کن
 
 #: includes/module/actions.php:165
 msgid "Video Campaigns"
-msgstr "کمپین‌های ویدیویی"
+msgstr "کمپین‌های ویدئویی"
 
 #: includes/module/actions.php:166
 msgid "Create campaigns that publish video content."
-msgstr "کمپین‌هایی بسازید که محتوای ویدیویی منتشر می‌کنند."
+msgstr "کمپین‌هایی بسازید که محتوای ویدئویی منتشر می‌کنند."
 
 #: includes/module/actions.php:170
 msgid ""
 "Downloads the video and audio files of each item into the WordPress uploads "
 "folder."
 msgstr ""
-"پرونده‌های ویدیویی و صوتی هر آیتم را در پوشهٔ بارگذاری وردپرس دانلود می‌کند."
+"پرونده‌های ویدئویی و صوتی هر مورد را در پوشهٔ بارگذاری وردپرس دانلود می‌کند."
 
 #: includes/module/actions.php:175
 msgid "Feeds XML"
@@ -6929,7 +6965,7 @@ msgstr ""
 
 #: includes/module/actions.php:186
 msgid "Publish the videos of a Vimeo user, channel or group."
-msgstr "ویدیوهای یک کاربر، کانال یا گروه Vimeo را منتشر کنید."
+msgstr "ویدئوهای یک کاربر، کانال یا گروه Vimeo را منتشر کنید."
 
 #: includes/module/actions.php:190
 msgid ""
@@ -6941,7 +6977,7 @@ msgstr ""
 
 #: includes/module/actions.php:195
 msgid "Import videos from YouTube channels."
-msgstr "ویدیوها را از کانال‌های یوتیوب درون‌ریزی کنید."
+msgstr "ویدئوها را از کانال‌های یوتیوب درون‌ریزی کنید."
 
 #: includes/module/actions.php:205
 msgid ""
@@ -6975,7 +7011,7 @@ msgstr "دانلود تصویرها"
 
 #: includes/module/actions.php:223
 msgid "Download the images of each item into the WordPress Media Library."
-msgstr "تصویرهای هر آیتم را در کتابخانهٔ رسانهٔ وردپرس دانلود کنید."
+msgstr "تصویرهای هر مورد را در کتابخانهٔ رسانهٔ وردپرس دانلود کنید."
 
 #: includes/module/actions.php:228
 msgid ""
@@ -6986,14 +7022,14 @@ msgstr ""
 
 #: includes/module/actions.php:231
 msgid "Featured Images"
-msgstr "تصویرهای شاخص"
+msgstr "تصویرهای ویژه"
 
 #: includes/module/actions.php:232
 msgid ""
 "Give every imported post a featured image, taken from the first image of the "
 "item."
 msgstr ""
-"به هر نوشتهٔ درون‌ریزی‌شده تصویر شاخصی بدهید که از نخستین تصویر آیتم گرفته "
+"به هر نوشتهٔ درون‌ریزی‌شده تصویر ویژهی بدهید که از نخستین تصویر مورد گرفته "
 "می‌شود."
 
 #: includes/module/actions.php:237
@@ -7001,7 +7037,7 @@ msgid ""
 "Each campaign can override it, and the Featured Image from URL module "
 "decides whether the image is downloaded or linked."
 msgstr ""
-"هر کمپین می‌تواند آن را بازنویسی کند، و ماژول «تصویر شاخص از نشانی» تعیین "
+"هر کمپین می‌تواند آن را بازنویسی کند، و ماژول «تصویر ویژه از نشانی» تعیین "
 "می‌کند تصویر دانلود شود یا پیوند بخورد."
 
 #: includes/module/actions.php:241
@@ -7025,7 +7061,7 @@ msgid ""
 "Group images by topic and give each post a featured image picked at random "
 "from its gallery."
 msgstr ""
-"تصویرها را بر پایهٔ موضوع گروه کنید و به هر نوشته تصویر شاخصی بدهید که تصادفی "
+"تصویرها را بر پایهٔ موضوع گروه کنید و به هر نوشته تصویر ویژهی بدهید که تصادفی "
 "از گالری‌اش برداشته می‌شود."
 
 #: includes/module/actions.php:258 includes/module/actions.php:269
@@ -7142,14 +7178,14 @@ msgstr "نیازمند WPeMatico RSS Feed Reader"
 #: includes/module/actions.php:561
 msgid ""
 "Use the image at its original URL as featured image, without downloading it."
-msgstr "استفاده از تصویر در نشانی اصلی‌اش به‌عنوان تصویر شاخص، بدون دانلود آن."
+msgstr "استفاده از تصویر در نشانی اصلی‌اش به‌عنوان تصویر ویژه، بدون دانلود آن."
 
 #: includes/module/actions.php:568
 msgid ""
 "Featured Images is off, so nothing picks the image to link — unless an addon "
 "such as Professional or Full Content supplies one."
 msgstr ""
-"«تصویرهای شاخص» خاموش است، پس چیزی تصویری را برای پیوند برنمی‌گزیند — مگر "
+"«تصویرهای ویژه» خاموش است، پس چیزی تصویری را برای پیوند برنمی‌گزیند — مگر "
 "افزودنی‌ای مانند Professional یا Full Content آن را بدهد."
 
 #: includes/module/actions.php:569
@@ -7166,7 +7202,7 @@ msgid ""
 "into the featured image WordPress shows."
 msgstr ""
 "WPeMatico نشانی تصویر را روی هر نوشته ذخیره می‌کند؛ آن افزونه است که آن را به "
-"تصویر شاخصی که وردپرس نشان می‌دهد تبدیل می‌کند."
+"تصویر ویژهی که وردپرس نشان می‌دهد تبدیل می‌کند."
 
 #: includes/module/actions.php:589
 msgid "Auto Delete"
@@ -7251,7 +7287,7 @@ msgstr "پالایش کلیدواژه"
 msgid ""
 "Keep or skip each item by the keywords found in its title or its content."
 msgstr ""
-"هر آیتم را بر پایهٔ کلیدواژه‌های عنوان یا محتوایش نگه دارید یا از آن بگذرید."
+"هر مورد را بر پایهٔ کلیدواژه‌های عنوان یا محتوایش نگه دارید یا از آن بگذرید."
 
 #: includes/module/actions.php:668
 msgid "Facebook Source"
@@ -7359,7 +7395,7 @@ msgid ""
 "Export your posts to a file on a schedule, in the format your template "
 "defines, by download, folder, FTP or SSH."
 msgstr ""
-"نوشته‌هایتان را بر پایهٔ زمان‌بندی و در قالبی که الگویتان تعیین می‌کند، با "
+"نوشته‌هایتان را بر پایهٔ زمان‌بندی و در قالبی که قالبتان تعیین می‌کند، با "
 "دانلود، پوشه، FTP یا SSH به پرونده برون‌بری کنید."
 
 #: includes/module/actions.php:759
@@ -7635,12 +7671,11 @@ msgid ""
 "Unlock advanced features and show all the settings and options inside "
 "campaigns."
 msgstr ""
-"قابلیت‌های پیشرفته را باز کنید و همهٔ تنظیمات و گزینه‌های درون کمپین‌ها را "
-"ببینید."
+"امکانات پیشرفته را باز کنید و همهٔ تنظیمات و گزینه‌های درون کمپین‌ها را ببینید."
 
 #: includes/module/manager.php:98
 msgid "Used by default until version 3.0 which will include Easy Mode.😉"
-msgstr "تا نسخهٔ ۳.۰ که حالت ساده را می‌آورد، به‌طور پیش‌فرض به کار می‌رود. 😉"
+msgstr "تا نگارش ۳.۰ که حالت ساده را می‌آورد، به‌طور پیش‌فرض به کار می‌رود. 😉"
 
 #: includes/notification_traslate.php:232
 msgid ""
@@ -7727,7 +7762,7 @@ msgstr "امتیاز به افزونه"
 
 #: includes/plugin_functions.php:363
 msgid "Take a look at the Essentials features"
-msgstr "نگاهی به قابلیت‌های Essentials بیندازید"
+msgstr "نگاهی به امکانات Essentials بیندازید"
 
 #: includes/plugin_functions.php:363
 msgid "Go PRO"
@@ -7820,49 +7855,49 @@ msgstr "اگر صداها دیگر پخش نشدند خاموشش کنید."
 
 #: includes/settings/help.php:114
 msgid "Global settings for videos"
-msgstr "تنظیمات کلی ویدیو"
+msgstr "تنظیمات کلی ویدئو"
 
 #: includes/settings/help.php:120
 msgid ""
 "A copy of every video found in the feed item (only in %s tags) is saved to "
 "your Uploads folder. Off, videos stay on the source server."
 msgstr ""
-"نسخه‌ای از هر ویدیوی آیتم خوراک (تنها در برچسب‌های %s) در پوشهٔ بارگذاری‌های شما "
-"ذخیره می‌شود. خاموش، ویدیوها روی سرور منبع می‌مانند."
+"نسخه‌ای از هر ویدئوی مورد خوراک (تنها در برچسب‌های %s) در پوشهٔ بارگذاری‌های شما "
+"ذخیره می‌شود. خاموش، ویدئوها روی سرور منبع می‌مانند."
 
 #: includes/settings/help.php:121
 msgid ""
 "Video files are heavy: storing them locally fills your disk fast. Each "
 "campaign can set this on its own."
 msgstr ""
-"ویدیوها سنگین‌اند: ذخیرهٔ محلی دیسک را زود پر می‌کند. هر کمپین می‌تواند خودش "
+"ویدئوها سنگین‌اند: ذخیرهٔ محلی دیسک را زود پر می‌کند. هر کمپین می‌تواند خودش "
 "تصمیم بگیرد."
 
 #: includes/settings/help.php:125
 msgid ""
 "Every downloaded video is added to the Media library and attached to its "
 "post."
-msgstr "هر ویدیوی دریافت‌شده به کتابخانهٔ رسانه می‌رود و به نوشته‌اش پیوست می‌شود."
+msgstr "هر ویدئوی دریافت‌شده به کتابخانهٔ رسانه می‌رود و به نوشته‌اش پیوست می‌شود."
 
 #: includes/settings/help.php:131
 msgid ""
 "When a video cannot be downloaded, its %s tag is removed from the content "
 "instead of pointing at the source site."
 msgstr ""
-"وقتی ویدیویی دریافت نشود، برچسب %s آن از متن برداشته می‌شود، به‌جای آنکه به "
+"وقتی ویدئویی دریافت نشود، برچسب %s آن از متن برداشته می‌شود، به‌جای آنکه به "
 "سایت منبع اشاره کند."
 
 #: includes/settings/help.php:133
 msgid "If the video sits inside an %s tag, that link is removed as well."
-msgstr "اگر ویدیو درون برچسب %s باشد، آن پیوند هم برداشته می‌شود."
+msgstr "اگر ویدئو درون برچسب %s باشد، آن پیوند هم برداشته می‌شود."
 
 #: includes/settings/help.php:138
 msgid "Turn it off if the videos stop playing."
-msgstr "اگر ویدیوها دیگر پخش نشدند خاموشش کنید."
+msgstr "اگر ویدئوها دیگر پخش نشدند خاموشش کنید."
 
 #: includes/settings/help.php:143
 msgid "Enable features"
-msgstr "فعال‌سازی قابلیت‌ها"
+msgstr "فعال‌سازی امکانات"
 
 #: includes/settings/help.php:144
 msgid ""
@@ -7886,7 +7921,7 @@ msgid ""
 "channel or group. Paste the address and the campaign finds its feed on its "
 "own."
 msgstr ""
-"Vimeo را به فهرست گونه‌های کمپین می‌افزاید تا ویدیوهای یک کاربر، کانال یا گروه "
+"Vimeo را به فهرست گونه‌های کمپین می‌افزاید تا ویدئوهای یک کاربر، کانال یا گروه "
 "Vimeo را منتشر کنید. نشانی را بچسبانید و کمپین خوراکش را خودش می‌یابد."
 
 #: includes/settings/help.php:157
@@ -7894,7 +7929,7 @@ msgid ""
 "Vimeo publishes the last 10 videos of each one. Leave this off if you do not "
 "use Vimeo: the campaign type is not loaded at all."
 msgstr ""
-"Vimeo از هرکدام ۱۰ ویدیوی آخر را منتشر می‌کند. اگر از Vimeo استفاده نمی‌کنید "
+"Vimeo از هرکدام ۱۰ ویدئوی آخر را منتشر می‌کند. اگر از Vimeo استفاده نمی‌کنید "
 "این را خاموش بگذارید: گونهٔ کمپین اصلاً بارگذاری نمی‌شود."
 
 #: includes/settings/help.php:160 includes/settings/page.php:737
@@ -7926,8 +7961,8 @@ msgid ""
 "Ignores the SimplePie that ships with WordPress. You only need this if that "
 "version gives you trouble."
 msgstr ""
-"SimplePie همراه وردپرس را نادیده می‌گیرد. تنها وقتی لازم است که آن نسخه دردسر "
-"بسازد."
+"SimplePie همراه وردپرس را نادیده می‌گیرد. تنها وقتی لازم است که آن نگارش "
+"دردسر بسازد."
 
 #: includes/settings/help.php:171 includes/settings/page.php:428
 msgid "Set SimplePie \"stupidly fast\""
@@ -7961,7 +7996,7 @@ msgid ""
 "through, for example iframe to keep embedded videos."
 msgstr ""
 "SimplePie این برچسب‌ها را از متن خوراک برمی‌دارد. یکی را از فهرست بیرون "
-"بیاورید تا بگذرد، برای نمونه iframe برای نگه‌داشتن ویدیوهای جاسازی‌شده."
+"بیاورید تا بگذرد، برای نمونه iframe برای نگه‌داشتن ویدئوهای جاسازی‌شده."
 
 #: includes/settings/help.php:180 includes/settings/page.php:446
 msgid "HTML attributes SimplePie strips"
@@ -8053,7 +8088,7 @@ msgid ""
 "By default each published post carries three custom fields with the campaign "
 "and the source item. Turning this on does not delete the ones already saved."
 msgstr ""
-"به‌طور پیش‌فرض هر نوشتهٔ منتشرشده سه فیلد دلخواه با کمپین و آیتم منبع دارد. "
+"به‌طور پیش‌فرض هر نوشتهٔ منتشرشده سه فیلد دلخواه با کمپین و مورد منبع دارد. "
 "روشن کردن این گزینه آن‌هایی را که ذخیره شده‌اند پاک نمی‌کند."
 
 #: includes/settings/help.php:224 includes/settings/page.php:573
@@ -8259,7 +8294,7 @@ msgid ""
 "A copy of every image found in the feed item (only in %s tags) is saved to "
 "your Uploads folder. Off, images stay on the source server."
 msgstr ""
-"نسخه‌ای از هر تصویر آیتم خوراک (تنها در برچسب‌های %s) در پوشهٔ بارگذاری‌های شما "
+"نسخه‌ای از هر تصویر مورد خوراک (تنها در برچسب‌های %s) در پوشهٔ بارگذاری‌های شما "
 "ذخیره می‌شود. خاموش، تصویرها روی سرور منبع می‌مانند."
 
 #: includes/settings/help.php:302 includes/settings/page.php:784
@@ -8314,19 +8349,19 @@ msgstr "نامی که در صندوق ورودی‌تان کنار آن نشان
 
 #: includes/settings/help.php:329
 msgid "Features available with the Professional add-on."
-msgstr "قابلیت‌هایی که با افزودنی Professional در دسترس‌اند."
+msgstr "امکاناتی که با افزودنی Professional در دسترس‌اند."
 
 #: includes/settings/help.php:330
 msgid ""
 "Publish or skip an item depending on the keywords found in its title or "
 "content."
-msgstr "انتشار یا رد کردن آیتم بر پایهٔ کلیدواژه‌های عنوان یا متن آن."
+msgstr "انتشار یا رد کردن مورد بر پایهٔ کلیدواژه‌های عنوان یا متن آن."
 
 #: includes/settings/help.php:331
 msgid ""
 "Cut, publish or skip an item depending on how many words or letters its "
 "content has."
-msgstr "بریدن، انتشار یا رد کردن آیتم بر پایهٔ شمار واژه‌ها یا حروف متن آن."
+msgstr "بریدن، انتشار یا رد کردن مورد بر پایهٔ شمار واژه‌ها یا حروف متن آن."
 
 #: includes/settings/help.php:332
 msgid ""
@@ -8375,7 +8410,7 @@ msgid ""
 "post. Needed for the featured image."
 msgstr ""
 "هر تصویر دریافت‌شده به کتابخانهٔ رسانه می‌رود و به نوشته‌اش پیوست می‌شود. برای "
-"تصویر شاخص لازم است."
+"تصویر ویژه لازم است."
 
 #: includes/settings/help.php:36 includes/settings/help.php:97
 #: includes/settings/help.php:126
@@ -8415,14 +8450,14 @@ msgstr ""
 
 #: includes/settings/help.php:65
 msgid "The image used as featured is stripped from the post content."
-msgstr "تصویری که شاخص شده از متن نوشته برداشته می‌شود."
+msgstr "تصویری که ویژه شده از متن نوشته برداشته می‌شود."
 
 #: includes/settings/help.php:66
 msgid ""
 "Useful when your theme already prints the featured image and you would "
 "otherwise see it twice."
 msgstr ""
-"وقتی سودمند است که پوسته‌تان تصویر شاخص را از پیش نشان می‌دهد و وگرنه آن را دو "
+"وقتی سودمند است که پوسته‌تان تصویر ویژه را از پیش نشان می‌دهد و وگرنه آن را دو "
 "بار می‌دیدید."
 
 #: includes/settings/help.php:71
@@ -8452,7 +8487,7 @@ msgid ""
 "A copy of every audio found in the feed item (only in %s tags) is saved to "
 "your Uploads folder. Off, audios stay on the source server."
 msgstr ""
-"نسخه‌ای از هر صدای آیتم خوراک (تنها در برچسب‌های %s) در پوشهٔ بارگذاری‌های شما "
+"نسخه‌ای از هر صدای مورد خوراک (تنها در برچسب‌های %s) در پوشهٔ بارگذاری‌های شما "
 "ذخیره می‌شود. خاموش، صداها روی سرور منبع می‌مانند."
 
 #: includes/settings/help.php:92
@@ -8477,7 +8512,9 @@ msgstr "راهنماهای گام‌به‌گام"
 msgid ""
 "Shows a short tour the first time you open each WPeMatico screen. Only for "
 "your user."
-msgstr "نخستین باری که هر صفحهٔ WPeMatico را باز می‌کنید، راهنمایی کوتاه نشان می‌دهد. فقط برای کاربر شما."
+msgstr ""
+"نخستین باری که هر صفحهٔ WPeMatico را باز می‌کنید، راهنمایی کوتاه نشان می‌دهد. "
+"فقط برای کاربر شما."
 
 #: includes/settings/page.php:1034
 msgid "Highlights of the new release"
@@ -8485,7 +8522,7 @@ msgstr "برجسته‌های نسخهٔ تازه"
 
 #: includes/settings/page.php:1035 includes/lib/licenses_handlers.php:405
 msgid "Version"
-msgstr "نسخه"
+msgstr "نگارش"
 
 #: includes/settings/page.php:1047
 msgid "Read more on wpematico.com"
@@ -8588,13 +8625,13 @@ msgid ""
 "nothing picks the image to link &mdash; unless an addon such as Professional "
 "or Full Content supplies one."
 msgstr ""
-"گزینهٔ &ldquo;نخستین تصویر محتوا به‌عنوان تصویر شاخص.&rdquo; خاموش است، پس "
+"گزینهٔ &ldquo;نخستین تصویر محتوا به‌عنوان تصویر ویژه.&rdquo; خاموش است، پس "
 "چیزی تصویری را برای پیوند برنمی‌گزیند &mdash; مگر افزودنی‌ای مانند "
 "Professional یا Full Content آن را بدهد."
 
 #: includes/settings/page.php:292
 msgid "Global Settings for Videos"
-msgstr "تنظیمات سراسری ویدیوها"
+msgstr "تنظیمات سراسری ویدئوها"
 
 #: includes/settings/page.php:32 includes/settings/page.php:37
 msgid "Permission check failed"
@@ -8602,11 +8639,11 @@ msgstr "بررسی دسترسی ناموفق بود"
 
 #: includes/settings/page.php:340
 msgid "Allowed video extensions"
-msgstr "پسوندهای مجاز ویدیو"
+msgstr "پسوندهای مجاز ویدئو"
 
 #: includes/settings/page.php:343
 msgid "WordPress video types:"
-msgstr "گونه‌های ویدیوی وردپرس:"
+msgstr "گونه‌های ویدئوی وردپرس:"
 
 #: includes/settings/page.php:356
 msgid "Global Settings for Audios"
@@ -8697,7 +8734,7 @@ msgstr "اینجا"
 
 #: includes/settings/page.php:686
 msgid "Enable Features"
-msgstr "فعال کردن قابلیت‌ها"
+msgstr "فعال کردن امکانات"
 
 #: includes/settings/page.php:693
 msgid "Enable \"Rewrite\""
@@ -8720,8 +8757,8 @@ msgid ""
 "Reading Vimeo through its API — past the 10-video cap of the feed, with "
 "sorting and your private videos — comes with Professional."
 msgstr ""
-"خواندن Vimeo از راه API آن — فراتر از سقف ۱۰ ویدیوی خوراک، با مرتب‌سازی و "
-"ویدیوهای خصوصی شما — همراه Professional می‌آید."
+"خواندن Vimeo از راه API آن — فراتر از سقف ۱۰ ویدئوی خوراک، با مرتب‌سازی و "
+"ویدئوهای خصوصی شما — همراه Professional می‌آید."
 
 #: includes/settings/page.php:750
 msgid "Advanced Actions"
@@ -8877,7 +8914,7 @@ msgstr "برای درخواست سفارشی‌سازی و پیشنهادها."
 #: includes/settings/widgets.php:299
 msgid ""
 "Please visit our website to learn about our free and premium services at"
-msgstr "برای دیدن خدمات رایگان و ویژهٔ ما به تارنمای ما سر بزنید در"
+msgstr "برای دیدن خدمات رایگان و ویژهٔ ما به سایتی ما سر بزنید در"
 
 #: includes/settings/widgets.php:318
 msgid "Languages"
@@ -8993,14 +9030,14 @@ msgid ""
 "contains all the relevant settings."
 msgstr ""
 "این امکان به شما اجازه می‌دهد تنظیمات WPeMatico و افزودنی‌هایش را برای این "
-"تارنما در یک پروندهٔ ‎.json برون‌بری کنید. پرونده همهٔ تنظیمات مربوطه را دارد."
+"سایت در یک پروندهٔ ‎.json برون‌بری کنید. پرونده همهٔ تنظیمات مربوطه را دارد."
 
 #: includes/tools_help.php:41
 msgid ""
 "It's useful when you want to replicate the same setup from one site to "
 "another."
 msgstr ""
-"وقتی می‌خواهید همان پیکربندی را از یک تارنما روی تارنمای دیگر بازسازی کنید "
+"وقتی می‌خواهید همان پیکربندی را از یک سایت روی سایتی دیگر بازسازی کنید "
 "کاربردی است."
 
 #: includes/tools_help.php:44
@@ -9012,7 +9049,7 @@ msgid ""
 "This is helpful when you want to quickly set up WPeMatico on a new site "
 "using a configuration that you've previously exported."
 msgstr ""
-"وقتی می‌خواهید WPeMatico را به‌سرعت روی تارنمای تازه‌ای با پیکربندی‌ای که پیش‌تر "
+"وقتی می‌خواهید WPeMatico را به‌سرعت روی سایتی تازه‌ای با پیکربندی‌ای که پیش‌تر "
 "برون‌بری کرده‌اید راه بیندازید کمک می‌کند."
 
 #: includes/tools_help.php:47
@@ -9020,7 +9057,7 @@ msgid ""
 "Make sure to have the .json file ready (exported from another site) before "
 "using this feature."
 msgstr ""
-"پیش از استفاده از این امکان مطمئن شوید پروندهٔ ‎.json (برون‌بری‌شده از تارنمای "
+"پیش از استفاده از این امکان مطمئن شوید پروندهٔ ‎.json (برون‌بری‌شده از سایتی "
 "دیگر) آماده است."
 
 #: includes/tools_page.php:1274 includes/tools_page.php:1280
@@ -9032,8 +9069,8 @@ msgid ""
 "Export the WPeMatico settings for this site as a .json file. This allows you "
 "to easily import the configuration into another site."
 msgstr ""
-"تنظیمات WPeMatico این تارنما را در پروندهٔ ‎.json برون‌بری کنید. این‌گونه "
-"به‌سادگی می‌توانید آن‌ها را در تارنمای دیگری درون‌ریزی کنید."
+"تنظیمات WPeMatico این سایت را در پروندهٔ ‎.json برون‌بری کنید. این‌گونه به‌سادگی "
+"می‌توانید آن‌ها را در سایتی دیگری درون‌ریزی کنید."
 
 #: includes/tools_page.php:1280
 msgid "Export and download settings"
@@ -9045,7 +9082,7 @@ msgstr "درون‌ریزی تنظیمات"
 
 #: includes/tools_page.php:1289
 msgid "Import the WPeMatico settings for this site."
-msgstr "تنظیمات WPeMatico را برای این تارنما درون‌ریزی کنید."
+msgstr "تنظیمات WPeMatico را برای این سایت درون‌ریزی کنید."
 
 #: includes/tools_page.php:1293
 msgid "Upload and import a settings"
@@ -9128,8 +9165,8 @@ msgid ""
 "Every feed URL configured on this site, with the campaign that imports it. "
 "One row per feed."
 msgstr ""
-"هر نشانی خوراکی که در این تارنما تعریف شده، همراه با کمپینی که آن را "
-"درون‌ریزی می‌کند. هر خوراک در یک سطر."
+"هر نشانی خوراکی که در این سایت تعریف شده، همراه با کمپینی که آن را درون‌ریزی "
+"می‌کند. هر خوراک در یک سطر."
 
 #: includes/tools_page.php:461
 msgid ""
@@ -9220,7 +9257,7 @@ msgid ""
 "server or from localhost, for example while developing."
 msgstr ""
 "کمپین‌ها به‌صورت پیش‌فرض تنها خوراک‌هایی را می‌گیرند که روی اینترنت عمومی منتشر "
-"شده‌اند. اگر این تارنما خوراک‌هایی را از شبکهٔ خودش، از یک سرور داخلی یا از "
+"شده‌اند. اگر این سایت خوراک‌هایی را از شبکهٔ خودش، از یک سرور داخلی یا از "
 "localhost می‌خواند، مثلاً هنگام توسعه، این را فعال کنید."
 
 #: includes/tools_page.php:729
@@ -9228,7 +9265,7 @@ msgid ""
 "Feeds hosted on this same site are always allowed and do not need this "
 "option."
 msgstr ""
-"خوراک‌هایی که روی همین تارنما میزبانی می‌شوند همیشه مجازند و به این گزینه نیاز "
+"خوراک‌هایی که روی همین سایت میزبانی می‌شوند همیشه مجازند و به این گزینه نیاز "
 "ندارند."
 
 #: includes/tools_page.php:73
@@ -9402,7 +9439,7 @@ msgstr "پیوند یکتای منبع"
 
 #: includes/wp-backend-helpers.php:196
 msgid "Go to the source website to see the original content."
-msgstr "رفتن به تارنمای منبع برای دیدن محتوای اصلی."
+msgstr "رفتن به سایتی منبع برای دیدن محتوای اصلی."
 
 #: includes/wpematico_functions.php:1093
 msgid "Category Added in a WPeMatico Campaign"
@@ -9476,7 +9513,7 @@ msgid ""
 "A feed that answers only to a browser can still be read with the Force Feed "
 "or Change User Agent features of "
 msgstr ""
-"خوراکی که تنها به مرورگر پاسخ می‌دهد باز هم با قابلیت‌های Force Feed یا Change "
+"خوراکی که تنها به مرورگر پاسخ می‌دهد باز هم با امکانات Force Feed یا Change "
 "User Agent از "
 
 #: includes/wpematico_functions.php:2325

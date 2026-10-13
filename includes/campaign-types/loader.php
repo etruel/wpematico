@@ -27,7 +27,8 @@ if (!class_exists('WPeMatico_Campaign_Types')) :
 		 */
 		public static function registry() {
 			return apply_filters('wpematico_core_campaign_types', array(
-				'vimeo' => 'enable_vimeo',
+				'vimeo'		  => 'enable_vimeo',
+				'googlo_news' => 'enable_googlenews',
 			));
 		}
 

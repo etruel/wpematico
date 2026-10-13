@@ -31,7 +31,8 @@ msgstr "手动更新。"
 msgid ""
 "Update WPeMatico first, then the add-ons. The links offered on each screen "
 "already follow that order."
-msgstr "先更新 WPeMatico，再更新扩展。各个界面提供的链接已经按这个顺序排列。"
+msgstr ""
+"先更新 WPeMatico，再更新附加组件。各个界面提供的链接已经按这个顺序排列。"
 
 #: includes/addons_help.php:102
 msgid ""
@@ -39,8 +40,8 @@ msgid ""
 "which version of WPeMatico it needs, rather than run against a core that "
 "cannot support it."
 msgstr ""
-"比主插件更新的扩展会关闭自身功能，并说明它需要哪个版本的 WPeMatico，而不是在"
-"无法支持它的内核上运行。"
+"比主插件更新的附加组件会关闭自身功能，并说明它需要哪个版本的 WPeMatico，而不"
+"是在无法支持它的内核上运行。"
 
 #: includes/addons_help.php:105
 msgid "No update showing when you expect one."
@@ -61,7 +62,7 @@ msgstr "更多信息："
 
 #: includes/addons_help.php:161
 msgid "Add-ons at the store"
-msgstr "商店中的扩展"
+msgstr "商店中的附加组件"
 
 #: includes/addons_help.php:162
 msgid "Frequently asked questions"
@@ -69,7 +70,7 @@ msgstr "常见问题"
 
 #: includes/addons_help.php:28
 msgid "Add-Ons"
-msgstr "扩展"
+msgstr "附加组件"
 
 #: includes/addons_help.php:30
 msgid "What this screen lists."
@@ -79,14 +80,15 @@ msgstr "本界面列出什么。"
 msgid ""
 "Two things at once: the add-ons installed on this site, and the ones "
 "published at the store that are not installed yet."
-msgstr "两类内容：本站已安装的扩展，以及商店已发布但尚未安装的扩展。"
+msgstr "两类内容：本站已安装的附加组件，以及商店已发布但尚未安装的附加组件。"
 
 #: includes/addons_help.php:32
 msgid ""
 "An installed add-on shows its version and the actions it accepts; one that "
 "is only at the store shows what it costs or which membership includes it."
 msgstr ""
-"已安装的扩展显示版本及可用操作；仅在商店中的扩展显示价格或包含它的会员套餐。"
+"已安装的附加组件显示版本及可用操作；仅在商店中的附加组件显示价格或包含它的会"
+"员套餐。"
 
 #: includes/addons_help.php:33
 msgid ""
@@ -94,8 +96,9 @@ msgid ""
 "&rsaquo; Writing &rsaquo; \"See local Addons in plugin list\" puts them back "
 "among the other plugins; this screen works the same either way."
 msgstr ""
-"WPeMatico 扩展默认不在插件列表中显示。设置 &rsaquo; 撰写 &rsaquo; “在插件列表"
-"中显示本地扩展”可让它们回到其他插件之间；无论哪种方式，本界面的用法都一样。"
+"WPeMatico 附加组件默认不在插件列表中显示。设置 &rsaquo; 撰写 &rsaquo; “在插件"
+"列表中显示本地附加组件”可让它们回到其他插件之间；无论哪种方式，本界面的用法都"
+"一样。"
 
 #: includes/addons_help.php:36
 msgid "The views, the counter and the search box."
@@ -113,7 +116,7 @@ msgstr ""
 msgid ""
 "The number beside \"WPeMatico Addons\" in the menu is how many installed add-"
 "ons have an update waiting."
-msgstr "菜单中“WPeMatico Addons”旁的数字，表示有多少已安装扩展有待更新。"
+msgstr "菜单中“WPeMatico Addons”旁的数字，表示有多少已安装附加组件有待更新。"
 
 #: includes/addons_help.php:39
 msgid ""
@@ -131,15 +134,15 @@ msgid ""
 "Activate starts an add-on that is installed and stopped. Enable auto-updates "
 "appears once it is running and its license is valid."
 msgstr ""
-"“启用”会启动已安装但停用的扩展。扩展运行且许可证有效后，才会出现“开启自动更"
-"新”。"
+"“启用”会启动已安装但停用的附加组件。附加组件运行且许可证有效后，才会出现“开启"
+"自动更新”。"
 
 #: includes/addons_help.php:44
 msgid ""
 "Add license, Renew license, Activate license and Check license each point at "
 "one precise thing: hover the button and it says which."
 msgstr ""
-"“添加许可证”“续期许可证”“激活许可证”和“检查许可证”各自指向一件具体的事：把鼠"
+"“添加许可证”“续期许可证”“启用许可证”和“检查许可证”各自指向一件具体的事：把鼠"
 "标停在按钮上就会说明是哪一件。"
 
 #: includes/addons_help.php:45
@@ -169,8 +172,8 @@ msgid ""
 "An add-on can only be deleted while it is deactivated, and WPeMatico itself "
 "cannot be deactivated while an add-on depends on it."
 msgstr ""
-"扩展只有在停用状态下才能删除，而只要还有扩展依赖 WPeMatico，就无法停用 "
-"WPeMatico 本身。"
+"附加组件只有在停用状态下才能删除，而只要还有附加组件依赖 WPeMatico，就无法停"
+"用 WPeMatico 本身。"
 
 #: includes/addons_help.php:53
 msgid "Automatic updates"
@@ -213,8 +216,8 @@ msgid ""
 "While WPeMatico has an update pending, add-on updates wait — by hand and "
 "automatically alike."
 msgstr ""
-"扩展是对主插件的扩充，因此绝不会先于它安装。只要 WPeMatico 还有待安装的更新，"
-"扩展的更新就会等待——手动和自动都一样。"
+"附加组件是对主插件的扩充，因此绝不会先于它安装。只要 WPeMatico 还有待安装的更"
+"新，附加组件的更新就会等待——手动和自动都一样。"
 
 #: includes/addons_help.php:63
 msgid ""
@@ -222,8 +225,8 @@ msgid ""
 "WPeMatico as well: with both on, the add-on installs right after the core "
 "plugin, unattended."
 msgstr ""
-"因此，为扩展开启自动更新也会为 WPeMatico 开启：两者都开启时，扩展会在主插件之"
-"后立即自动安装。"
+"因此，为附加组件开启自动更新也会为 WPeMatico 开启：两者都开启时，附加组件会在"
+"主插件之后立即自动安装。"
 
 #: includes/addons_help.php:64
 msgid ""
@@ -231,12 +234,12 @@ msgid ""
 "ons stay on the version they have until you update WPeMatico by hand. This "
 "screen says so when that is the case."
 msgstr ""
-"你可以再把 WPeMatico 的自动更新关掉，没有人阻止——但那样它的扩展会一直停留在当"
-"前版本，直到你手动更新 WPeMatico。出现这种情况时本界面会加以说明。"
+"你可以再把 WPeMatico 的自动更新关掉，没有人阻止——但那样它的附加组件会一直停留"
+"在当前版本，直到你手动更新 WPeMatico。出现这种情况时本界面会加以说明。"
 
 #: includes/addons_help.php:67
 msgid "An add-on that is waiting says so."
-msgstr "等待中的扩展会说明原因。"
+msgstr "等待中的附加组件会说明原因。"
 
 #: includes/addons_help.php:68
 msgid ""
@@ -250,7 +253,8 @@ msgstr ""
 msgid ""
 "Updating WPeMatico clears it: the next check installs the add-on with no "
 "further action."
-msgstr "更新 WPeMatico 即可解除等待：下一次检查就会安装该扩展，无需其他操作。"
+msgstr ""
+"更新 WPeMatico 即可解除等待：下一次检查就会安装该附加组件，无需其他操作。"
 
 #: includes/addons_help.php:72
 msgid "Sites where they cannot run."
@@ -268,7 +272,8 @@ msgstr ""
 msgid ""
 "The toggle is not offered there. The row says the add-on keeps its version "
 "until it is updated by hand."
-msgstr "这类站点不会显示该开关。该行会说明扩展将保持当前版本，直到手动更新。"
+msgstr ""
+"这类站点不会显示该开关。该行会说明附加组件将保持当前版本，直到手动更新。"
 
 #: includes/addons_help.php:77 includes/settings/functions.php:46
 msgid "Licenses"
@@ -284,14 +289,14 @@ msgid ""
 "activated on it, and not expired. Keys are entered in WPeMatico &rsaquo; "
 "Settings &rsaquo; Licenses."
 msgstr ""
-"付费扩展在其许可证密钥已保存于本站、已在本站激活且未过期时，可以收到更新。密"
-"钥在 WPeMatico &rsaquo; 设置 &rsaquo; 许可证中填写。"
+"付费附加组件在其许可证密钥已保存于本站、已在本站启用且未过期时，可以收到更"
+"新。密钥在 WPeMatico &rsaquo; 设置 &rsaquo; 许可证中填写。"
 
 #: includes/addons_help.php:81
 msgid ""
 "An add-on with no valid license keeps working. What it stops receiving is "
 "updates, including the security ones."
-msgstr "没有有效许可证的扩展仍会继续工作，只是不再收到更新，包括安全更新。"
+msgstr "没有有效许可证的附加组件仍会继续工作，只是不再收到更新，包括安全更新。"
 
 #: includes/addons_help.php:84
 msgid "Each state, and what resolves it."
@@ -303,7 +308,7 @@ msgid ""
 "activate it there, which is also where a site you no longer use can be "
 "released."
 msgstr ""
-"未保存密钥：在许可证界面填写。未在本站激活：在那里激活；不再使用的站点也可以"
+"未保存密钥：在许可证界面填写。未在本站启用：在那里启用；不再使用的站点也可以"
 "在那里释放。"
 
 #: includes/addons_help.php:86
@@ -342,16 +347,16 @@ msgid ""
 "plugins of the site; and the Plugins list, when the Writing setting above is "
 "on."
 msgstr ""
-"本界面每个扩展下方；仪表盘 &rsaquo; 更新，与本站所有插件一起；以及插件列表，"
-"前提是上面提到的“撰写”设置已开启。"
+"本界面每个附加组件下方；仪表盘 &rsaquo; 更新，与本站所有插件一起；以及插件列"
+"表，前提是上面提到的“撰写”设置已开启。"
 
 #: includes/addons_help.php:97
 msgid ""
 "On Dashboard &rsaquo; Updates an add-on that is waiting cannot be selected, "
 "so a bulk update does not attempt what it cannot install."
 msgstr ""
-"在仪表盘 &rsaquo; 更新中，等待中的扩展无法勾选，以免批量更新去尝试无法安装的"
-"内容。"
+"在仪表盘 &rsaquo; 更新中，等待中的附加组件无法勾选，以免批量更新去尝试无法安"
+"装的内容。"
 
 #: includes/addons_page.php:1016
 msgid "Go to %s WebPage"
@@ -367,7 +372,7 @@ msgstr "详情"
 
 #: includes/addons_page.php:1458
 msgid "WPeMatico Addons "
-msgstr "WPeMatico 扩展 "
+msgstr "WPeMatico 附加组件 "
 
 #: includes/addons_page.php:1516
 msgid "Inactive &mdash; Now part of WPeMatico"
@@ -375,15 +380,15 @@ msgstr "未启用 &mdash; 现已并入 WPeMatico"
 
 #: includes/addons_page.php:337
 msgid "WPeMatico Add-Ons Plugins"
-msgstr "WPeMatico 扩展插件"
+msgstr "WPeMatico 附加组件插件"
 
 #: includes/addons_page.php:364 includes/addons_page.php:366
 msgid "Search Add-Ons"
-msgstr "搜索扩展"
+msgstr "搜索附加组件"
 
 #: includes/addons_page.php:365
 msgid "Add-on name, feature…"
-msgstr "扩展名称、功能…"
+msgstr "附加组件名称、功能…"
 
 #: includes/addons_page.php:424
 msgid "Showing %1$s of %2$s."
@@ -391,7 +396,7 @@ msgstr "显示 %2$s 项中的 %1$s 项。"
 
 #: includes/addons_page.php:425
 msgid "No add-ons match your search."
-msgstr "没有扩展与你的搜索匹配。"
+msgstr "没有附加组件与你的搜索匹配。"
 
 #: includes/addons_page.php:491
 msgid "Icon"
@@ -399,7 +404,7 @@ msgstr "图标"
 
 #: includes/addons_page.php:492
 msgid "Add On"
-msgstr "扩展"
+msgstr "附加组件"
 
 #: includes/addons_page.php:493 includes/campaign-types/vimeo.php:369
 msgid "Description"
@@ -462,7 +467,7 @@ msgstr "续期许可证"
 
 #: includes/addons_page.php:782 includes/addons_page.php:790
 msgid "Activate license"
-msgstr "激活许可证"
+msgstr "启用许可证"
 
 #: includes/addons_page.php:783
 msgid "Check license"
@@ -470,7 +475,7 @@ msgstr "检查许可证"
 
 #: includes/addons_page.php:788
 msgid "Activate this addon's license to enable automatic updates"
-msgstr "激活该扩展的许可证以启用自动更新"
+msgstr "启用该附加组件的许可证以启用自动更新"
 
 #: includes/addons_page.php:902
 msgid "The plugin could not be activated because it triggered a fatal error."
@@ -482,15 +487,15 @@ msgstr "删除失败："
 
 #: includes/addons_page.php:922
 msgid "The selected add-on has been deleted."
-msgstr "选中的扩展已删除。"
+msgstr "选中的附加组件已删除。"
 
 #: includes/addons_page.php:923
 msgid "The selected add-ons have been deleted."
-msgstr "选中的扩展已删除。"
+msgstr "选中的附加组件已删除。"
 
 #: includes/campaign-types/vimeo.php:258
 msgid "Parsing Vimeo video and feed item contents."
-msgstr "解析 Vimeo 视频和订阅项内容。"
+msgstr "解析 Vimeo 视频和 Feed 项目内容。"
 
 #: includes/campaign-types/vimeo.php:284
 msgid "Vimeo Campaign Type."
@@ -500,7 +505,7 @@ msgstr "Vimeo 采集任务类型。"
 msgid ""
 "Paste the address of a Vimeo user, channel or group and the campaign finds "
 "its feed on its own:"
-msgstr "粘贴 Vimeo 用户、频道或群组的地址，采集任务会自行找到对应的订阅源："
+msgstr "粘贴 Vimeo 用户、频道或群组的地址，采集任务会自行找到对应的 Feed："
 
 #: includes/campaign-types/vimeo.php:289
 msgid ""
@@ -544,7 +549,7 @@ msgstr "Vimeo 采集任务选项"
 
 #: includes/campaign-types/vimeo.php:337
 msgid "Featured Image"
-msgstr "特色图片"
+msgstr "精选图片"
 
 #: includes/campaign-types/vimeo.php:341
 msgid "Post Title"
@@ -564,7 +569,7 @@ msgstr "更改视频框的尺寸。"
 
 #: includes/campaign-types/vimeo.php:367
 msgid "Use it only as featured image"
-msgstr "仅用作特色图片"
+msgstr "仅用作精选图片"
 
 #: includes/campaign-types/vimeo.php:394
 msgid "Vimeo API"
@@ -576,7 +581,7 @@ msgstr "PRO 功能"
 
 #: includes/campaign-types/vimeo.php:399
 msgid "Fetch through the Vimeo API instead of the feed."
-msgstr "通过 Vimeo API 采集，而不是通过订阅源。"
+msgstr "通过 Vimeo API 采集，而不是通过 Feed。"
 
 #: includes/campaign-types/vimeo.php:402
 msgid ""
@@ -584,7 +589,7 @@ msgid ""
 "asks for instead of the last 10, in the order you choose, and your private "
 "and unlisted ones."
 msgstr ""
-"Professional 通过 Vimeo 的 API 读取内容：按条目上限获取相应数量的视频，而不只"
+"Professional 通过 Vimeo 的 API 读取内容：按项目上限获取相应数量的视频，而不只"
 "是最近 10 个，可自行选择排序，还包括你的私有和不公开视频。"
 
 #: includes/campaign-types/vimeo.php:55 includes/module/actions.php:185
@@ -597,11 +602,11 @@ msgstr "忽略此提示。"
 
 #: includes/campaign_edit.php:126
 msgid "Type at least one feed address."
-msgstr "至少填写一个订阅源地址。"
+msgstr "至少填写一个 Feed 地址。"
 
 #: includes/campaign_edit.php:127
 msgid "Type the new feed addresses."
-msgstr "填写新的订阅源地址。"
+msgstr "填写新的 Feed 地址。"
 
 #: includes/campaign_edit.php:128 includes/campaigns_list.php:315
 msgid "Running Campaign..."
@@ -723,19 +728,19 @@ msgstr "词语中提供的正则表达式有误：%s"
 
 #: includes/campaign_edit.php:455
 msgid "There's an error with the supplied RegEx expression in ReWrite: %s"
-msgstr "替换规则中提供的正则表达式有误：%s"
+msgstr "重写规则中提供的正则表达式有误：%s"
 
 #: includes/campaign_edit.php:488
 msgid "At least one feed URL must be filled."
-msgstr "至少要填写一个订阅源网址。"
+msgstr "至少要填写一个 Feed 网址。"
 
 #: includes/campaign_edit.php:512
 msgid "Feed %1$s could not be parsed. (SimplePie said: %2$s)"
-msgstr "无法解析订阅源 %1$s。（SimplePie 提示：%2$s）"
+msgstr "无法解析 Feed %1$s。（SimplePie 提示：%2$s）"
 
 #: includes/campaign_edit.php:517
 msgid "Feed %s could not be parsed: its address has a space in it."
-msgstr "无法读取订阅源 %s：地址里含有空格。"
+msgstr "无法读取 Feed %s：地址里含有空格。"
 
 #: includes/campaign_edit_functions.php:1010 includes/campaign_help.php:119
 msgid "Activate scheduling"
@@ -787,11 +792,11 @@ msgstr "星期："
 
 #: includes/campaign_edit_functions.php:1158
 msgid "Update Campaign to save Feeds order"
-msgstr "请更新采集任务以保存订阅源顺序"
+msgstr "请更新采集任务以保存 Feed 顺序"
 
 #: includes/campaign_edit_functions.php:1173
 msgid "Check if this feed works"
-msgstr "检查此订阅源是否可用"
+msgstr "检查此 Feed 是否可用"
 
 #: includes/campaign_edit_functions.php:118 includes/campaigns_list.php:931
 msgid "Stop and deactivate this campaign"
@@ -799,15 +804,15 @@ msgstr "停止并停用此采集任务"
 
 #: includes/campaign_edit_functions.php:118
 msgid "Activate the schedule"
-msgstr "启用计划任务"
+msgstr "启用定时任务"
 
 #: includes/campaign_edit_functions.php:1185
 msgid "Add Feed"
-msgstr "添加订阅源"
+msgstr "添加 Feed"
 
 #: includes/campaign_edit_functions.php:1186
 msgid "Check all feeds"
-msgstr "检查全部订阅源"
+msgstr "检查全部 Feed"
 
 #: includes/campaign_edit_functions.php:1190
 msgid "Displaying"
@@ -815,15 +820,15 @@ msgstr "显示"
 
 #: includes/campaign_edit_functions.php:1191
 msgid "Display all feeds"
-msgstr "显示全部订阅源"
+msgstr "显示全部 Feed"
 
 #: includes/campaign_edit_functions.php:1191
 msgid "Scroll the feeds list"
-msgstr "滚动订阅源列表"
+msgstr "滚动 Feed 列表"
 
 #: includes/campaign_edit_functions.php:1232
 msgid "Use the [embed] shortcode instead of the YouTube iframe"
-msgstr "使用 [embed] 短代码，替代 YouTube 的 iframe"
+msgstr "使用 [embed] 简码，替代 YouTube 的 iframe"
 
 #: includes/campaign_edit_functions.php:1233
 msgid "Set the player size"
@@ -863,7 +868,7 @@ msgstr "图片"
 
 #: includes/campaign_edit_functions.php:1248
 msgid "Use only as featured image"
-msgstr "仅用作特色图片"
+msgstr "仅用作精选图片"
 
 #: includes/campaign_edit_functions.php:1250
 msgid "Hide description"
@@ -915,7 +920,7 @@ msgstr "运行一次"
 
 #: includes/campaign_edit_functions.php:1321
 msgid "Email address:"
-msgstr "电子邮件地址："
+msgstr "邮箱地址："
 
 #: includes/campaign_edit_functions.php:1323
 msgid "Only email me when something fails"
@@ -943,7 +948,7 @@ msgstr "自动分类的上级分类"
 
 #: includes/campaign_edit_functions.php:1384
 msgid "No parent category"
-msgstr "无父分类"
+msgstr "无上级分类"
 
 #: includes/campaign_edit_functions.php:1408
 msgid "Current Categories"
@@ -1031,7 +1036,7 @@ msgstr "预览采集任务"
 
 #: includes/campaign_edit_functions.php:225
 msgid "Feed (default)"
-msgstr "订阅源（默认）"
+msgstr "Feed（默认）"
 
 #: includes/campaign_edit_functions.php:226 includes/module/actions.php:194
 msgid "YouTube"
@@ -1079,15 +1084,15 @@ msgstr "标题"
 
 #: includes/campaign_edit_functions.php:30
 msgid "Feeds for this Campaign"
-msgstr "本采集任务的订阅源"
+msgstr "本采集任务的 Feed"
 
 #: includes/campaign_edit_functions.php:31
 msgid "YouTube feeds for this Campaign"
-msgstr "本采集任务的 YouTube 订阅源"
+msgstr "本采集任务的 YouTube Feed"
 
 #: includes/campaign_edit_functions.php:313
 msgid "Rewrite to:"
-msgstr "替换为："
+msgstr "重写为："
 
 #: includes/campaign_edit_functions.php:322
 msgid "ReLink to:"
@@ -1146,7 +1151,7 @@ msgstr "重复内容控制"
 #: includes/campaign_edit_functions.php:441
 msgid ""
 "Build every post around the text the feed brings, adding content of your own."
-msgstr "以订阅源带来的正文为基础，加入你自己的内容来组织每篇文章。"
+msgstr "以 Feed 带来的正文为基础，加入你自己的内容来组织每篇文章。"
 
 #: includes/campaign_edit_functions.php:444
 msgid "Use custom posts template"
@@ -1157,7 +1162,7 @@ msgid ""
 "{content} has to be in the template, or the post is published without the "
 "text from the feed. The template is applied after the options above."
 msgstr ""
-"模板里必须有 {content}，否则文章会缺少订阅源的正文。模板在上面这些选项之后生"
+"模板里必须有 {content}，否则文章会缺少 Feed 的正文。模板在上面这些选项之后生"
 "效。"
 
 #: includes/campaign_edit_functions.php:449
@@ -1192,11 +1197,11 @@ msgstr "标记是一段在创建文章时被动态替换的文本。目前支持
 
 #: includes/campaign_edit_functions.php:49
 msgid "Rewrite options"
-msgstr "替换选项"
+msgstr "重写选项"
 
 #: includes/campaign_edit_functions.php:490 includes/campaign_help.php:278
 msgid "The feed item title."
-msgstr "订阅项的标题。"
+msgstr "Feed 项目的标题。"
 
 #: includes/campaign_edit_functions.php:491
 msgid "The parsed post content."
@@ -1204,43 +1209,43 @@ msgstr "解析后的文章内容。"
 
 #: includes/campaign_edit_functions.php:492 includes/campaign_help.php:280
 msgid "The feed item description."
-msgstr "订阅项的描述。"
+msgstr "Feed 项目的描述。"
 
 #: includes/campaign_edit_functions.php:493 includes/campaign_help.php:281
 msgid "Put the featured image on content."
-msgstr "把特色图片放入正文。"
+msgstr "把精选图片放入正文。"
 
 #: includes/campaign_edit_functions.php:494 includes/campaign_help.php:282
 msgid "The feed item author."
-msgstr "订阅项的作者。"
+msgstr "Feed 项目的作者。"
 
 #: includes/campaign_edit_functions.php:495 includes/campaign_help.php:283
 msgid "The feed item author link (If exist)."
-msgstr "订阅项作者的链接（如果有）。"
+msgstr "Feed 项目作者的链接（如果有）。"
 
 #: includes/campaign_edit_functions.php:496 includes/campaign_help.php:284
 msgid "The feed item permalink."
-msgstr "订阅项的固定链接。"
+msgstr "Feed 项目的固定链接。"
 
 #: includes/campaign_edit_functions.php:497 includes/campaign_help.php:285
 msgid "The feed URL."
-msgstr "订阅源网址。"
+msgstr "Feed 网址。"
 
 #: includes/campaign_edit_functions.php:498 includes/campaign_help.php:286
 msgid "The feed title."
-msgstr "订阅源标题。"
+msgstr "Feed 标题。"
 
 #: includes/campaign_edit_functions.php:499 includes/campaign_help.php:287
 msgid "The description of the feed."
-msgstr "订阅源的描述。"
+msgstr "Feed 的描述。"
 
 #: includes/campaign_edit_functions.php:500 includes/campaign_help.php:288
 msgid "The feed's logo image URL."
-msgstr "订阅源标志图片的网址。"
+msgstr "Feed 标志图片的网址。"
 
 #: includes/campaign_edit_functions.php:501 includes/campaign_help.php:289
 msgid "The feed's Favicon URL."
-msgstr "订阅源的 Favicon 网址。"
+msgstr "Feed 的 Favicon 网址。"
 
 #: includes/campaign_edit_functions.php:502 includes/campaign_help.php:290
 msgid "This campaign title"
@@ -1252,11 +1257,11 @@ msgstr "本采集任务的 ID。"
 
 #: includes/campaign_edit_functions.php:504 includes/campaign_help.php:292
 msgid "The date of the post item."
-msgstr "该条目的日期。"
+msgstr "该项目的日期。"
 
 #: includes/campaign_edit_functions.php:505 includes/campaign_help.php:293
 msgid "The time of the post item."
-msgstr "该条目的时间。"
+msgstr "该项目的时间。"
 
 #: includes/campaign_edit_functions.php:508 includes/campaign_help.php:295
 msgid "Examples:"
@@ -1274,7 +1279,7 @@ msgstr "前往来源"
 
 #: includes/campaign_edit_functions.php:512 includes/campaign_help.php:299
 msgid "becomes the feed item content"
-msgstr "会替换成条目的正文"
+msgstr "会替换成项目的正文"
 
 #: includes/campaign_edit_functions.php:512 includes/campaign_help.php:299
 msgid ""
@@ -1283,7 +1288,7 @@ msgstr "替换成原文地址，于是它成为可点击的链接，而"
 
 #: includes/campaign_edit_functions.php:512 includes/campaign_help.php:299
 msgid "the author of the feed item."
-msgstr "替换成条目的作者。"
+msgstr "替换成项目的作者。"
 
 #: includes/campaign_edit_functions.php:513 includes/campaign_help.php:300
 msgid ""
@@ -1296,15 +1301,14 @@ msgid ""
 "is the WordPress gallery shortcode. Any shortcode works here: WordPress runs "
 "it when the post is displayed."
 msgstr ""
-"是 WordPress 的画廊短代码。这里任何短代码都可用：WordPress 会在显示文章时执行"
-"它。"
+"是 WordPress 的画廊简码。这里任何简码都可用：WordPress 会在显示文章时执行它。"
 
 #: includes/campaign_edit_functions.php:516 includes/campaign_help.php:303
 msgid ""
 "To show the videos or audios of the post as a player, the playlist shortcode "
 "does the same for media files:"
 msgstr ""
-"若想把文章里的视频或音频以播放器呈现，playlist 短代码对媒体文件起同样作用："
+"若想把文章里的视频或音频以播放器呈现，playlist 简码对媒体文件起同样作用："
 
 #: includes/campaign_edit_functions.php:518 includes/campaign_help.php:305
 msgid "Read more at"
@@ -1348,11 +1352,11 @@ msgstr "读取 <img> 标签的 srcset 属性"
 #: includes/campaign_edit_functions.php:583 includes/campaign_help.php:154
 #: includes/settings/help.php:53 includes/settings/page.php:221
 msgid "Set the first image as featured"
-msgstr "把第一张图片设为特色图片"
+msgstr "把第一张图片设为精选图片"
 
 #: includes/campaign_edit_functions.php:585 includes/campaign_help.php:164
 msgid "Choose which image is the featured one"
-msgstr "指定哪一张图片作为特色图片"
+msgstr "指定哪一张图片作为精选图片"
 
 #: includes/campaign_edit_functions.php:587
 msgid "Use image number"
@@ -1365,7 +1369,7 @@ msgstr "若没有这张图片"
 #: includes/campaign_edit_functions.php:598 includes/campaign_help.php:169
 #: includes/settings/help.php:64 includes/settings/page.php:230
 msgid "Remove the featured image from the content"
-msgstr "从正文中移除特色图片"
+msgstr "从正文中移除精选图片"
 
 #: includes/campaign_edit_functions.php:601
 #: includes/campaign_edit_functions.php:693
@@ -1394,7 +1398,7 @@ msgstr "Featured Image from URL"
 
 #: includes/campaign_edit_functions.php:621
 msgid "Use the video link as featured when available"
-msgstr "若有视频链接，用它作为特色图片"
+msgstr "若有视频链接，用它作为精选图片"
 
 #: includes/campaign_edit_functions.php:630
 msgid "Advanced Options"
@@ -1406,7 +1410,7 @@ msgstr "需要更高级的功能吗？看看"
 
 #: includes/campaign_edit_functions.php:638
 msgid "Professional addon"
-msgstr "Professional 扩展"
+msgstr "Professional 附加组件"
 
 #: includes/campaign_edit_functions.php:640
 msgid "Strip query variables."
@@ -1414,7 +1418,7 @@ msgstr "去掉网址中的查询参数。"
 
 #: includes/campaign_edit_functions.php:641
 msgid "Determine image extension."
-msgstr "判定图片扩展名。"
+msgstr "判定图片附加组件名。"
 
 #: includes/campaign_edit_functions.php:642
 msgid "Image renamer."
@@ -1434,7 +1438,7 @@ msgstr "正文没有图片时丢弃该文章。"
 
 #: includes/campaign_edit_functions.php:646
 msgid "A default featured image when the content brings none."
-msgstr "正文没有图片时使用的默认特色图片。"
+msgstr "正文没有图片时使用的默认精选图片。"
 
 #: includes/campaign_edit_functions.php:647
 msgid "Keep or skip images by their dimensions."
@@ -1462,7 +1466,7 @@ msgstr "移除指向来源音频的链接"
 #: includes/campaign_edit_functions.php:70 includes/tools_page.php:495
 #: includes/tools_page.php:664
 msgid "Feed URL"
-msgstr "订阅源网址"
+msgstr "Feed 网址"
 
 #: includes/campaign_edit_functions.php:727 includes/campaign_help.php:211
 #: includes/settings/help.php:118 includes/settings/page.php:299
@@ -1517,15 +1521,15 @@ msgstr "每次运行最多采集条数"
 
 #: includes/campaign_edit_functions.php:827 includes/campaign_help.php:27
 msgid "Order the items by date first"
-msgstr "先按日期排序条目"
+msgstr "先按日期排序项目"
 
 #: includes/campaign_edit_functions.php:831 includes/campaign_help.php:31
 msgid "Use the feed item date"
-msgstr "使用条目自带的日期"
+msgstr "使用项目自带的日期"
 
 #: includes/campaign_edit_functions.php:834 includes/campaign_help.php:39
 msgid "Force the item date"
-msgstr "强制使用条目日期"
+msgstr "强制使用项目日期"
 
 #: includes/campaign_edit_functions.php:841 includes/campaign_help.php:57
 msgid "Pingbacks and trackbacks"
@@ -1545,7 +1549,7 @@ msgstr "作者："
 
 #: includes/campaign_edit_functions.php:864 includes/campaign_help.php:74
 msgid "Fill the excerpt from the feed"
-msgstr "用订阅源内容填写摘要"
+msgstr "用 Feed 内容填写摘要"
 
 #: includes/campaign_edit_functions.php:868 includes/campaign_help.php:79
 msgid "Strip all HTML tags"
@@ -1588,7 +1592,7 @@ msgstr "不跟随跳转去寻找固定链接"
 #: includes/campaign_edit_functions.php:92 includes/class-tour-helper.php:193
 #: includes/feed_viewer_help.php:30 includes/tools_tabs.php:65
 msgid "Feed Viewer"
-msgstr "订阅源查看器"
+msgstr "Feed 查看器"
 
 #: includes/campaign_edit_functions.php:92 includes/tools_page.php:544
 #: includes/tools_page.php:546
@@ -1597,7 +1601,7 @@ msgstr "在新标签页中打开网址"
 
 #: includes/campaign_fetch.php:1008
 msgid "The post has no featured image."
-msgstr "该文章没有特色图片。"
+msgstr "该文章没有精选图片。"
 
 #: includes/campaign_fetch.php:1015
 msgid "Attaching images"
@@ -1661,11 +1665,11 @@ msgstr ""
 
 #: includes/campaign_fetch.php:131
 msgid "Ending feed, reached running timeout at %1$d sec."
-msgstr "结束该订阅源：已达到 %1$d 秒的运行时限。"
+msgstr "结束该 Feed：已达到 %1$d 秒的运行时限。"
 
 #: includes/campaign_fetch.php:183
 msgid "Processing feed %s."
-msgstr "正在处理订阅源 %s。"
+msgstr "正在处理 Feed %s。"
 
 #: includes/campaign_fetch.php:276
 msgid "Jumping duplicated post. Continuing."
@@ -1689,7 +1693,7 @@ msgstr "新增 %s 篇文章"
 
 #: includes/campaign_fetch.php:353
 msgid "Processing item %s"
-msgstr "正在处理条目 %s"
+msgstr "正在处理项目 %s"
 
 #: includes/campaign_fetch.php:367
 msgid "Assigning original date to post."
@@ -1709,11 +1713,11 @@ msgstr "正在分配自动分类。"
 
 #: includes/campaign_fetch.php:553
 msgid "Found category under parent: "
-msgstr "在父分类下找到分类："
+msgstr "在上级分类下找到分类："
 
 #: includes/campaign_fetch.php:569
 msgid "Category exists with correct parent: "
-msgstr "分类已存在且父分类正确："
+msgstr "分类已存在且上级分类正确："
 
 #: includes/campaign_fetch.php:592
 msgid "Adding Category: "
@@ -1749,7 +1753,7 @@ msgstr "正在添加未过滤内容"
 
 #: includes/campaign_fetch.php:799
 msgid "Processing item pingbacks"
-msgstr "正在处理条目的 pingback"
+msgstr "正在处理项目的 pingback"
 
 #: includes/campaign_fetch.php:872
 msgid "Categories added: "
@@ -1765,11 +1769,11 @@ msgstr "已添加文章形式："
 
 #: includes/campaign_fetch.php:917
 msgid "Skip Featured Image."
-msgstr "跳过特色图片。"
+msgstr "跳过精选图片。"
 
 #: includes/campaign_fetch.php:921
 msgid "Featuring Image Into Post."
-msgstr "正在为文章设置特色图片。"
+msgstr "正在为文章设置精选图片。"
 
 #: includes/campaign_fetch.php:963 includes/campaign_fetch_functions.php:510
 msgid "Failed to obtain file:"
@@ -1777,7 +1781,7 @@ msgstr "无法获取文件："
 
 #: includes/campaign_fetch.php:971
 msgid "Save Featured image file failed:"
-msgstr "保存特色图片文件失败："
+msgstr "保存精选图片文件失败："
 
 #: includes/campaign_fetch_functions.php:1000
 msgid "Fifu save set attachment from URL."
@@ -1785,7 +1789,7 @@ msgstr "Fifu 从网址保存附件。"
 
 #: includes/campaign_fetch_functions.php:1089
 msgid "Parsing Youtube video and feed item contents."
-msgstr "正在解析 YouTube 视频和订阅项内容。"
+msgstr "正在解析 YouTube 视频和 Feed 项目内容。"
 
 #: includes/campaign_fetch_functions.php:118
 msgid "Parsing Post template."
@@ -1797,7 +1801,7 @@ msgstr "正在内容中查找音频。"
 
 #: includes/campaign_fetch_functions.php:125
 msgid "Can't find the featured image to add to the content."
-msgstr "找不到要加入内容的特色图片。"
+msgstr "找不到要加入内容的精选图片。"
 
 #: includes/campaign_fetch_functions.php:1252
 #: includes/campaign_fetch_functions.php:1408
@@ -1866,7 +1870,7 @@ msgstr "保存图片文件失败："
 #: includes/campaign_fetch_functions.php:1259
 #: includes/campaign_fetch_functions.php:1415
 msgid "Extension not allowed: "
-msgstr "不允许的扩展名："
+msgstr "不允许的附加组件名："
 
 #: includes/campaign_fetch_functions.php:543
 #: includes/campaign_fetch_functions.php:1261
@@ -1888,11 +1892,11 @@ msgstr "抱歉，无法插入附件，发生了错误。"
 
 #: includes/campaign_fetch_functions.php:636
 msgid "Executing featured image selector..."
-msgstr "正在执行特色图片选择器…"
+msgstr "正在执行精选图片选择器…"
 
 #: includes/campaign_fetch_functions.php:640
 msgid "Featured image \"%1$s\": %2$s"
-msgstr "特色图片“%1$s”：%2$s"
+msgstr "精选图片“%1$s”：%2$s"
 
 #: includes/campaign_fetch_functions.php:643
 msgid "No image was found according to the selected index."
@@ -1904,7 +1908,7 @@ msgstr "内容中未找到第一张图片。"
 
 #: includes/campaign_fetch_functions.php:650
 msgid "Using first image as the featured image."
-msgstr "使用第一张图片作为特色图片。"
+msgstr "使用第一张图片作为精选图片。"
 
 #: includes/campaign_fetch_functions.php:656
 msgid "The last image was not found in the content."
@@ -1912,7 +1916,7 @@ msgstr "内容中未找到最后一张图片。"
 
 #: includes/campaign_fetch_functions.php:658
 msgid "Using last image as the featured image."
-msgstr "使用最后一张图片作为特色图片。"
+msgstr "使用最后一张图片作为精选图片。"
 
 #: includes/campaign_fetch_functions.php:77
 msgid "Deleting html tags: %s"
@@ -1954,7 +1958,7 @@ msgstr "正在设置 Featured Image From Url"
 
 #: includes/campaign_fetch_functions.php:971
 msgid "Adding featured image post meta: "
-msgstr "正在添加特色图片的文章元数据："
+msgstr "正在添加精选图片的文章元数据："
 
 #: includes/campaign_fetch_functions.php:98
 #: includes/campaign_fetch_functions.php:108
@@ -1969,7 +1973,7 @@ msgstr "使用 [embed]"
 msgid ""
 "Wraps the video in the WordPress [embed] shortcode instead of the iframe "
 "YouTube shares."
-msgstr "把视频包进 WordPress 的 [embed] 短代码，替代 YouTube 提供的 iframe。"
+msgstr "把视频包进 WordPress 的 [embed] 简码，替代 YouTube 提供的 iframe。"
 
 #: includes/campaign_help.php:103
 msgid ""
@@ -1996,7 +2000,7 @@ msgstr "bbPress 采集类型如何工作"
 msgid ""
 "Pick a forum to publish the feed items as topics inside it, or pick none and "
 "each item creates its own forum."
-msgstr "选定一个版块，把条目作为主题发布其中；也可以不选，让每条内容自建版块。"
+msgstr "选定一个版块，把项目作为主题发布其中；也可以不选，让每条内容自建版块。"
 
 #: includes/campaign_help.php:114
 msgid "Picking a topic instead publishes every item as a reply to it."
@@ -2038,15 +2042,15 @@ msgid ""
 "Every image in an %s tag is saved to your Uploads folder and the content "
 "points at your copy. Off, the images stay on the source server."
 msgstr ""
-"%s 标签里的每张图片都会保存到你的上传目录，正文指向你的副本。关闭时图片仍留在"
-"来源服务器上。"
+"%s 标签里的每张图片都会保存到你的上传文件夹，正文指向你的副本。关闭时图片仍留"
+"在来源服务器上。"
 
 #: includes/campaign_help.php:140
 msgid ""
 "Each downloaded image is added to the Media library and attached to its "
 "post. Needed for the featured image; turn it off if the run is too slow."
 msgstr ""
-"每张下载的图片都会进入媒体库并附加到所属文章。特色图片需要它；若运行太慢可以"
+"每张下载的图片都会进入媒体库并附加到所属文章。精选图片需要它；若运行太慢可以"
 "关掉。"
 
 #: includes/campaign_help.php:145
@@ -2069,14 +2073,14 @@ msgstr "取 srcset 中列出的最大图片，作为 %s 标签的 src。"
 msgid ""
 "The first image found in the content is downloaded, attached and set as the "
 "featured image."
-msgstr "正文中的第一张图片会被下载、附加，并设为特色图片。"
+msgstr "正文中的第一张图片会被下载、附加，并设为精选图片。"
 
 #: includes/campaign_help.php:159 includes/settings/help.php:59
 msgid ""
 "Hands the featured image to the Featured Image from URL plugin, which serves "
 "it from the source server. Install and activate that plugin first."
 msgstr ""
-"把特色图片交给 Featured Image from URL 插件，由它从来源服务器提供。请先安装并"
+"把精选图片交给 Featured Image from URL 插件，由它从来源服务器提供。请先安装并"
 "启用该插件。"
 
 #: includes/campaign_help.php:160 includes/settings/help.php:55
@@ -2092,7 +2096,7 @@ msgstr "（位于 WordPress 官方仓库）。"
 msgid ""
 "With that plugin inactive, WPeMatico still writes its meta fields, but no "
 "featured image is shown."
-msgstr "该插件未启用时，WPeMatico 仍会写入自己的元字段，但不会显示特色图片。"
+msgstr "该插件未启用时，WPeMatico 仍会写入自己的元字段，但不会显示精选图片。"
 
 #: includes/campaign_help.php:165
 msgid ""
@@ -2104,7 +2108,7 @@ msgstr "按图片在正文中的位置来选——第一张、第二张、第三
 msgid ""
 "The image used as featured is stripped from the post content, so your theme "
 "does not show it twice."
-msgstr "用作特色图片的那张会从正文中移除，避免主题重复显示。"
+msgstr "用作精选图片的那张会从正文中移除，避免主题重复显示。"
 
 #: includes/campaign_help.php:173 includes/settings/help.php:74
 #: includes/settings/page.php:264
@@ -2139,15 +2143,15 @@ msgstr "本采集任务的音频选项"
 
 #: includes/campaign_help.php:19
 msgid "Feed addresses"
-msgstr "订阅源地址"
+msgstr "Feed 地址"
 
 #: includes/campaign_help.php:191
 msgid ""
 "Every audio in an %s tag is saved to your Uploads folder and the content "
 "points at your copy. Off, the files stay on the source server."
 msgstr ""
-"%s 标签里的每个音频都会保存到你的上传目录，正文指向你的副本。关闭时文件仍留在"
-"来源服务器上。"
+"%s 标签里的每个音频都会保存到你的上传文件夹，正文指向你的副本。关闭时文件仍留"
+"在来源服务器上。"
 
 #: includes/campaign_help.php:195
 msgid ""
@@ -2160,8 +2164,8 @@ msgid ""
 "At least one address is needed. Type a domain name and WPeMatico looks for "
 "its feed. The fewer feeds a campaign has, the less each run costs."
 msgstr ""
-"至少需要一个地址。填写域名，WPeMatico 会自动找到它的订阅源。采集任务的订阅源"
-"越少，每次运行的开销越小。"
+"至少需要一个地址。填写域名，WPeMatico 会自动找到它的 Feed。采集任务的 Feed 越"
+"少，每次运行的开销越小。"
 
 #: includes/campaign_help.php:200
 msgid ""
@@ -2188,8 +2192,8 @@ msgid ""
 "Every video in a %s tag is saved to your Uploads folder and the content "
 "points at your copy. Video files are heavy: they fill your disk fast."
 msgstr ""
-"%s 标签里的每个视频都会保存到你的上传目录，正文指向你的副本。视频体积大，很快"
-"会占满硬盘。"
+"%s 标签里的每个视频都会保存到你的上传文件夹，正文指向你的副本。视频体积大，很"
+"快会占满硬盘。"
 
 #: includes/campaign_help.php:217
 msgid ""
@@ -2241,7 +2245,7 @@ msgid ""
 "How many items to take from each feed above. Between 3 and 5, running more "
 "often, loses fewer items than a big number run rarely. Use 0 for no limit."
 msgstr ""
-"从上面每个订阅源取多少条。取 3 到 5 条但运行得更频繁，比取一大批却很少运行丢"
+"从上面每个 Feed 取多少条。取 3 到 5 条但运行得更频繁，比取一大批却很少运行丢"
 "失得更少。填 0 表示不限。"
 
 #: includes/campaign_help.php:240
@@ -2270,15 +2274,15 @@ msgid ""
 "stops at the first item it already has: everything below it is older and "
 "already published."
 msgstr ""
-"订阅源的条目按从新到旧排列，采集任务自上而下读取，遇到第一条已有的内容就停"
-"止：下面的都更旧，且早已发布。"
+"Feed 的项目按从新到旧排列，采集任务自上而下读取，遇到第一条已有的内容就停止："
+"下面的都更旧，且早已发布。"
 
 #: includes/campaign_help.php:246 includes/settings/help.php:210
 msgid ""
 "The hash only covers the last item read, so on a feed where the title check "
 "works poorly this option can publish the same item twice."
 msgstr ""
-"哈希只覆盖最后读到的一条，因此在标题检查不灵的订阅源上，这个选项可能把同一条"
+"哈希只覆盖最后读到的一条，因此在标题检查不灵的 Feed 上，这个选项可能把同一条"
 "内容发布两次。"
 
 #: includes/campaign_help.php:250 includes/settings/help.php:219
@@ -2286,7 +2290,7 @@ msgid ""
 "One more query per item. Turn it on only if you still get duplicates, which "
 "happens with feeds that do not follow the standard."
 msgstr ""
-"每条内容多一次查询。只有在仍然出现重复时才开启——这通常发生在不守规范的订阅源"
+"每条内容多一次查询。只有在仍然出现重复时才开启——这通常发生在不守规范的 Feed "
 "上。"
 
 #: includes/campaign_help.php:257
@@ -2295,7 +2299,7 @@ msgstr "XML 采集类型"
 
 #: includes/campaign_help.php:258
 msgid "Reads the items of an XML file as if the file were an RSS feed."
-msgstr "把 XML 文件里的条目当作 RSS 订阅源来读取。"
+msgstr "把 XML 文件里的项目当作 RSS Feed 来读取。"
 
 #: includes/campaign_help.php:262 includes/xml-importer.php:459
 msgid "Elements of the XML"
@@ -2307,19 +2311,19 @@ msgid ""
 "image, date. When a node name appears more than once, name its parent in the "
 "right column."
 msgstr ""
-"选择承载条目各项内容的 XML 节点：标题、正文、图片、日期。若某个节点名出现多"
-"次，请在右栏指明它的父节点。"
+"选择承载项目各项内容的 XML 节点：标题、正文、图片、日期。若某个节点名出现多"
+"次，请在右栏指明它的上级节点。"
 
 #: includes/campaign_help.php:266 includes/xml-importer.php:460
 msgid "Parent element"
-msgstr "父元素"
+msgstr "上级元素"
 
 #: includes/campaign_help.php:267
 msgid ""
 "Tells WPeMatico which of the repeated nodes to read. It has to be the parent "
 "of the node picked on the left."
 msgstr ""
-"告诉 WPeMatico 该读取重复节点中的哪一个。它必须是左侧所选节点的父节点。"
+"告诉 WPeMatico 该读取重复节点中的哪一个。它必须是左侧所选节点的上级节点。"
 
 #: includes/campaign_help.php:273
 msgid "Enable the post template"
@@ -2330,20 +2334,19 @@ msgid ""
 "Build the content of each post around the text the feed brings: add your own "
 "text, images or campaign data before it is saved."
 msgstr ""
-"以订阅源带来的正文为基础组织每篇文章：在保存前加入你自己的文字、图片或采集任"
+"以 Feed 带来的正文为基础组织每篇文章：在保存前加入你自己的文字、图片或采集任"
 "务数据。"
 
 #: includes/campaign_help.php:279
 msgid "The feed item content."
-msgstr "订阅项的内容。"
+msgstr "Feed 项目的内容。"
 
 #: includes/campaign_help.php:28
 msgid ""
 "Only for feeds that do not come newest first. On those, the campaign would "
 "otherwise stop early and lose items."
 msgstr ""
-"仅适用于不是按从新到旧排列的订阅源。在那些源上，采集任务会过早停止并漏掉内"
-"容。"
+"仅适用于不是按从新到旧排列的 Feed。在那些源上，采集任务会过早停止并漏掉内容。"
 
 #: includes/campaign_help.php:311 includes/settings/help.php:147
 #: includes/module/actions.php:204
@@ -2387,11 +2390,11 @@ msgstr ""
 msgid ""
 "Each post keeps the date it has in the feed, instead of the moment WPeMatico "
 "published it."
-msgstr "每篇文章保留它在订阅源中的日期，而不是 WPeMatico 发布它的时刻。"
+msgstr "每篇文章保留它在 Feed 中的日期，而不是 WPeMatico 发布它的时刻。"
 
 #: includes/campaign_help.php:321 includes/settings/help.php:151
 msgid "Rewrite"
-msgstr "改写"
+msgstr "重写"
 
 #: includes/campaign_help.php:322
 msgid ""
@@ -2403,7 +2406,7 @@ msgstr ""
 
 #: includes/campaign_help.php:323
 msgid "Basic rewriting:"
-msgstr "基本替换："
+msgstr "基本重写："
 
 #: includes/campaign_help.php:324
 msgid ""
@@ -2444,7 +2447,7 @@ msgstr "正则表达式"
 msgid ""
 "Badly built feeds carry impossible dates, so the feed date is used only when:"
 msgstr ""
-"做得不好的订阅源会带上不可能的日期，因此只有在满足以下条件时才采用订阅源日"
+"做得不好的 Feed 会带上不可能的日期，因此只有在满足以下条件时才采用 Feed 日"
 "期："
 
 #: includes/campaign_help.php:330
@@ -2463,13 +2466,13 @@ msgstr "分类"
 msgid ""
 "Assign categories of your own to every post, take the ones the source item "
 "carries, or both."
-msgstr "给每篇文章指定你自己的分类，或沿用来源条目自带的分类，或两者兼用。"
+msgstr "给每篇文章指定你自己的分类，或沿用来源项目自带的分类，或两者兼用。"
 
 #: includes/campaign_help.php:340
 msgid ""
 "The categories the source item carries are added to the post, and created on "
 "your site if they do not exist yet."
-msgstr "来源条目自带的分类会加到文章上；若站点上还没有，就会新建。"
+msgstr "来源项目自带的分类会加到文章上；若站点上还没有，就会新建。"
 
 #: includes/campaign_help.php:343
 msgid "Limit of categories"
@@ -2527,7 +2530,7 @@ msgstr "把每次运行的情况发给你。也可以只在出错时才发，或
 msgid ""
 "Takes the feed date whatever it says, including old items arriving after "
 "newer ones."
-msgstr "无论订阅源写的是什么日期都照用，包括排在新内容之后到达的旧内容。"
+msgstr "无论 Feed 写的是什么日期都照用，包括排在新内容之后到达的旧内容。"
 
 #: includes/campaign_help.php:44
 msgid ""
@@ -2549,7 +2552,7 @@ msgstr "你的文章沿用来源文章完全相同的固定链接。"
 msgid ""
 "The address in the feed is taken as it comes, without following its "
 "redirects to the final article."
-msgstr "订阅源里的地址照原样使用，不跟随跳转直至最终文章。"
+msgstr "Feed 里的地址照原样使用，不跟随跳转直至最终文章。"
 
 #: includes/campaign_help.php:54
 msgid ""
@@ -2566,7 +2569,7 @@ msgid ""
 "Title and content are converted to UTF-8 when the feed sends them in another "
 "encoding. Fixes feeds that arrive full of strange characters."
 msgstr ""
-"当订阅源用其他编码发送时，把标题和正文转换为 UTF-8。可修复满是乱码的订阅源。"
+"当 Feed 用其他编码发送时，把标题和正文转换为 UTF-8。可修复满是乱码的 Feed。"
 
 #: includes/campaign_help.php:65
 msgid "Comments"
@@ -2604,13 +2607,13 @@ msgstr ""
 msgid ""
 "The description field of the item is saved as the post excerpt. Otherwise "
 "WordPress builds the excerpt from the content."
-msgstr "把条目的描述字段保存为文章摘要。否则由 WordPress 从正文生成摘要。"
+msgstr "把项目的描述字段保存为文章摘要。否则由 WordPress 从正文生成摘要。"
 
 #: includes/campaign_help.php:76
 msgid ""
 "Feeds with no description of their own send the content in that field, so "
 "you may end up with the same text twice."
-msgstr "没有独立描述的订阅源会把正文放进那个字段，于是同样的文字可能出现两次。"
+msgstr "没有独立描述的 Feed 会把正文放进那个字段，于是同样的文字可能出现两次。"
 
 #: includes/campaign_help.php:81
 msgid ""
@@ -2626,19 +2629,19 @@ msgid ""
 "The feed content is saved exactly as it arrives, past the WordPress filters "
 "and with its scripts. Use it only with sources you trust."
 msgstr ""
-"订阅源的正文按原样保存，绕过 WordPress 的过滤器，脚本也一并保留。只用于你信任"
+"Feed 的正文按原样保存，绕过 WordPress 的过滤器，脚本也一并保留。只用于你信任"
 "的来源。"
 
 #: includes/campaign_help.php:94
 msgid "YouTube feed addresses"
-msgstr "YouTube 订阅源地址"
+msgstr "YouTube Feed 地址"
 
 #: includes/campaign_help.php:95
 msgid ""
 "Type the feed address of a channel, a user or a playlist. The campaign takes "
 "the title, the image, the embedded video and the description."
 msgstr ""
-"填写频道、用户或播放列表的订阅源地址。采集任务会取标题、图片、内嵌视频和描"
+"填写频道、用户或播放列表的 Feed 地址。采集任务会取标题、图片、内嵌视频和描"
 "述。"
 
 #: includes/campaign_help.php:96
@@ -2672,7 +2675,7 @@ msgstr "你没有足够权限预览此采集任务。"
 
 #: includes/campaign_preview.php:362 includes/campaign_preview_item.php:353
 msgid "WPeMatico Preview Feed"
-msgstr "WPeMatico 订阅源预览"
+msgstr "WPeMatico Feed 预览"
 
 #: includes/campaign_preview.php:389
 msgid "Next Posts(%s)"
@@ -2697,21 +2700,21 @@ msgstr "立即采集"
 
 #: includes/campaign_preview.php:46 includes/campaign_preview_item.php:276
 msgid "This action comes with the Manual Fetching add-on."
-msgstr "此操作随 Manual Fetching 扩展提供。"
+msgstr "此操作随 Manual Fetching 附加组件提供。"
 
 #: includes/campaign_preview_item.php:187
 #: includes/campaign_preview_item.php:303
 msgid "The item is invalid."
-msgstr "该条目无效。"
+msgstr "该项目无效。"
 
 #: includes/campaign_preview_item.php:194
 #: includes/campaign_preview_item.php:310
 msgid "The feed is invalid."
-msgstr "该订阅源无效。"
+msgstr "该 Feed 无效。"
 
 #: includes/campaign_preview_item.php:202
 msgid "The item could not be previewed."
-msgstr "无法预览该条目。"
+msgstr "无法预览该项目。"
 
 #: includes/campaign_preview_item.php:396
 msgid "Loading post title..."
@@ -2727,7 +2730,7 @@ msgstr "采集任务选项"
 
 #: includes/campaigns_list.php:1156 includes/campaigns_list.php:1350
 msgid "Items per fetch"
-msgstr "每次采集的条目数"
+msgstr "每次采集的项目数"
 
 #: includes/campaigns_list.php:1164 includes/campaigns_list.php:1369
 msgid "Discussion"
@@ -2757,7 +2760,7 @@ msgstr "测试完成后请务必关闭，以免影响性能。"
 
 #: includes/campaigns_list.php:1239 includes/campaigns_list.php:1340
 msgid "Use feed date"
-msgstr "使用订阅源日期"
+msgstr "使用 Feed 日期"
 
 #: includes/campaigns_list.php:1243 includes/campaigns_list.php:1341
 msgid "Allow pings"
@@ -3075,7 +3078,7 @@ msgstr "每条新内容发布时使用的内容类型和状态。"
 msgid ""
 "Useful when add-ons give you more campaign types. You can hide this column "
 "in Screen Options."
-msgstr "当扩展为你带来更多采集类型时很有用。可在「显示选项」中隐藏此列。"
+msgstr "当附加组件为你带来更多采集类型时很有用。可在「显示选项」中隐藏此列。"
 
 #: includes/campaigns_list_help.php:31
 msgid ""
@@ -3125,7 +3128,7 @@ msgid ""
 "Every campaign saves a hash of the last feed item it fetched, to avoid "
 "duplicates. This deletes it, so those items can be fetched again."
 msgstr ""
-"每个采集任务都会保存最后采集条目的哈希以避免重复。此操作将其清除，那些条目便"
+"每个采集任务都会保存最后采集项目的哈希以避免重复。此操作将其清除，那些项目便"
 "可再次采集。"
 
 #: includes/campaigns_list_help.php:61
@@ -3175,13 +3178,14 @@ msgstr "选择采集任务，选定操作，然后点击「应用」。"
 
 #: includes/class-tour-helper.php:104 includes/debug_page.php:2957
 msgid "Feeds"
-msgstr "订阅源"
+msgstr "Feed"
 
 #: includes/class-tour-helper.php:105
 msgid ""
 "Add the feed addresses this campaign reads. Check all feeds tells you "
 "whether each one answers."
-msgstr "添加此采集任务读取的订阅源地址。“检查全部订阅源”会告诉你每个订阅源是否有响应。"
+msgstr ""
+"添加此采集任务读取的 Feed 地址。“检查全部 Feed”会告诉你每个 Feed 是否有响应。"
 
 #: includes/class-tour-helper.php:111
 msgid "Campaign type"
@@ -3191,7 +3195,9 @@ msgstr "采集任务类型"
 msgid ""
 "Feed is the usual choice. Other types read XML files, YouTube or Vimeo, and "
 "more come with the extensions."
-msgstr "Feed 是最常用的选择。其他类型可读取 XML 文件、YouTube 或 Vimeo，扩展还会带来更多类型。"
+msgstr ""
+"Feed 是最常用的选择。其他类型可读取 XML 文件、YouTube 或 Vimeo，附加组件还会"
+"带来更多类型。"
 
 #: includes/class-tour-helper.php:118 includes/debug_page.php:3025
 #: includes/debug_page.php:3521
@@ -3219,7 +3225,9 @@ msgstr "设置菜单"
 msgid ""
 "General, Advanced and Backend Tools hold WPeMatico's settings. Each "
 "extension adds its own tab below them."
-msgstr "常规、高级和后台工具中是 WPeMatico 的设置。每个扩展会在下方添加自己的选项卡。"
+msgstr ""
+"常规、高级和后端工具中是 WPeMatico 的设置。每个附加组件会在下方添加自己的选项"
+"卡。"
 
 #: includes/class-tour-helper.php:141
 msgid "Boxes"
@@ -3251,7 +3259,7 @@ msgstr "额外功能"
 msgid ""
 "Switch on content rewriting, words to categories, canonical URLs and the "
 "other optional features."
-msgstr "开启内容改写、词语转分类、规范网址及其他可选功能。"
+msgstr "开启内容重写、词语转分类、规范网址及其他可选功能。"
 
 #: includes/class-tour-helper.php:168
 msgid "Advanced actions"
@@ -3259,7 +3267,7 @@ msgstr "高级操作"
 
 #: includes/class-tour-helper.php:169
 msgid "Feed checks, logs, XML uploads and other behaviour for every campaign."
-msgstr "订阅源检查、日志、XML 上传以及所有采集任务的其他行为。"
+msgstr "Feed 检查、日志、XML 上传以及所有采集任务的其他行为。"
 
 #: includes/class-tour-helper.php:177
 msgid "Your admin screens"
@@ -3269,25 +3277,29 @@ msgstr "你的后台界面"
 msgid ""
 "Choose the campaign columns, the boxes of the campaign editor, the dashboard "
 "widgets and these guided tours."
-msgstr "选择采集任务的列、采集任务编辑器的框、面板小工具以及这些引导教程。"
+msgstr "选择采集任务的列、采集任务编辑器的框、仪表盘小工具以及这些引导教程。"
 
 #: includes/class-tour-helper.php:186 includes/feed_list_help.php:29
 #: includes/tools_page.php:452 includes/tools_tabs.php:64
 #: includes/lib/welcome.php:350
 msgid "Feed List"
-msgstr "订阅源列表"
+msgstr "Feed 列表"
 
 #: includes/class-tour-helper.php:187
 msgid ""
 "Every feed of every campaign in one list, with its campaign, its status and "
 "its last run."
-msgstr "所有采集任务的所有订阅源集中在一个列表中，并显示所属采集任务、状态和最近一次运行。"
+msgstr ""
+"所有采集任务的所有 Feed 集中在一个列表中，并显示所属采集任务、状态和最近一次"
+"运行。"
 
 #: includes/class-tour-helper.php:194
 msgid ""
 "Paste any address to see what it really returns: a feed, a page that is not "
 "one, or why it cannot be reached."
-msgstr "粘贴任意地址，查看它实际返回的内容：订阅源、并非订阅源的页面，或无法访问的原因。"
+msgstr ""
+"粘贴任意地址，查看它实际返回的内容：Feed、并非 Feed 的页面，或无法访问的原"
+"因。"
 
 #: includes/class-tour-helper.php:200 includes/tools_help.php:37
 #: includes/tools_tabs.php:68
@@ -3308,7 +3320,7 @@ msgstr "迁移工具箱"
 msgid ""
 "Bring your feeds over from Feedzy or WP RSS Aggregator, with the posts they "
 "already published."
-msgstr "从 Feedzy 或 WP RSS Aggregator 迁入你的订阅源，连同它们已发布的文章。"
+msgstr "从 Feedzy 或 WP RSS Aggregator 迁入你的 Feed，连同它们已发布的文章。"
 
 #: includes/class-tour-helper.php:214 includes/tools_tabs.php:18
 msgid "System"
@@ -3318,7 +3330,9 @@ msgstr "系统"
 msgid ""
 "Status gathers the site and server details support will ask for. Danger Zone "
 "holds debug logging and what uninstalling removes."
-msgstr "状态汇总了支持人员会询问的站点和服务器信息。危险区域包含调试日志以及卸载时会删除的内容。"
+msgstr ""
+"状态汇总了支持人员会询问的站点和服务器信息。危险区域包含调试日志以及卸载时会"
+"删除的内容。"
 
 #: includes/class-tour-helper.php:225
 msgid ""
@@ -3327,13 +3341,13 @@ msgstr "所有 WPeMatico 插件，无论是否已安装。免费插件可在此�
 
 #: includes/class-tour-helper.php:231
 msgid "Activate and license"
-msgstr "激活与许可证"
+msgstr "启用与许可证"
 
 #: includes/class-tour-helper.php:232
 msgid ""
 "Activate what you have, and enter its licence in Settings › Licenses to "
 "receive its updates."
-msgstr "激活你拥有的插件，并在 设置 › 许可证 中输入其许可证以接收更新。"
+msgstr "启用你拥有的插件，并在 设置 › 许可证 中输入其许可证以接收更新。"
 
 #: includes/class-tour-helper.php:244
 msgid "Runs the campaign once, now."
@@ -3381,7 +3395,7 @@ msgstr "欢迎使用 WPeMatico"
 #: includes/class-tour-helper.php:50
 msgid ""
 "Everything lives here: Dashboard, Campaigns, Settings, Tools and Extensions."
-msgstr "一切都在这里：面板、采集任务、设置、工具和扩展。"
+msgstr "一切都在这里：仪表盘、采集任务、设置、工具和附加组件。"
 
 #: includes/class-tour-helper.php:56
 msgid "One card per feature"
@@ -3410,7 +3424,7 @@ msgstr "你的第一个采集任务"
 msgid ""
 "A campaign reads one or more feeds and publishes their items as posts. Start "
 "here."
-msgstr "采集任务读取一个或多个订阅源，并将其中的条目发布为文章。从这里开始。"
+msgstr "采集任务读取一个或多个 Feed，并将其中的项目发布为文章。从这里开始。"
 
 #: includes/class-tour-helper.php:79 includes/lib/welcome.php:595
 msgid "Add a campaign"
@@ -3418,7 +3432,7 @@ msgstr "新建采集任务"
 
 #: includes/class-tour-helper.php:80
 msgid "Give it a name, paste a feed address and choose where the posts go."
-msgstr "为它命名，粘贴一个订阅源地址，并选择文章发布到哪里。"
+msgstr "为它命名，粘贴一个 Feed 地址，并选择文章发布到哪里。"
 
 #: includes/class-tour-helper.php:86
 msgid "Run, schedule or pause"
@@ -3532,7 +3546,7 @@ msgstr "暂无新内容"
 
 #: includes/dashboard-widgets.php:76
 msgid "WPeMatico Summary"
-msgstr "WPeMatico 概览"
+msgstr "WPeMatico 摘要"
 
 #: includes/dashboard-widgets.php:77
 msgid "WPeMatico News"
@@ -3563,7 +3577,7 @@ msgstr "升级 Pro"
 #: includes/debug_page.php:104
 msgid ""
 "The address resolves to the feed %s, which is the one a campaign fetches."
-msgstr "该地址解析到订阅源 %s，也正是采集任务所抓取的地址。"
+msgstr "该地址解析到 Feed %s，也正是采集任务所抓取的地址。"
 
 #: includes/debug_page.php:1126
 msgid "Checking the connection to etruel.com…"
@@ -3572,7 +3586,7 @@ msgstr "正在检查与 etruel.com 的连接…"
 #: includes/debug_page.php:113 includes/wpematico_functions.php:2323
 #: includes/wpematico_functions.php:2351
 msgid "The feed %s has been parsed successfully."
-msgstr "订阅源 %s 已成功解析。"
+msgstr "Feed %s 已成功解析。"
 
 #. translators: %1$s: PHP function name. %2$s: the URL that could not be reached.
 #: includes/debug_page.php:1133
@@ -3584,7 +3598,7 @@ msgstr ""
 
 #: includes/debug_page.php:124
 msgid "The feed %s cannot be obtained."
-msgstr "无法获取订阅源 %s。"
+msgstr "无法获取 Feed %s。"
 
 #: includes/debug_page.php:128
 msgid "Parser says:"
@@ -3904,7 +3918,7 @@ msgid ""
 "show a line break between all words. Ask your host to update libtidy."
 msgstr ""
 "换行功能异常（libtidy %s）。该构建忽略 “wrap: 0”，会在每个词后断行。用 Full "
-"Content 扩展导入的文章将在所有词之间出现换行。请让主机商更新 libtidy。"
+"Content 附加组件导入的文章将在所有词之间出现换行。请让主机商更新 libtidy。"
 
 #: includes/debug_page.php:2088
 msgid "GD Library:"
@@ -3941,7 +3955,7 @@ msgstr "php.net/mbstring："
 msgid ""
 "[ ... truncated by the Feed Viewer at %s. The campaign still reads the whole "
 "feed. ]"
-msgstr "[ … 订阅源查看器在 %s 处截断。采集任务仍会读取整个订阅源。 ]"
+msgstr "[ … Feed 查看器在 %s 处截断。采集任务仍会读取整个 Feed。 ]"
 
 #: includes/debug_page.php:2186
 msgid "iconv (php.net/iconv):"
@@ -4109,7 +4123,7 @@ msgstr "WP Remote Get："
 msgid ""
 "WPeMatico uses this method to communicate with the different RSS feeds and "
 "remote websites."
-msgstr "WPeMatico 用此方法与各类 RSS 订阅源和远程网站通信。"
+msgstr "WPeMatico 用此方法与各类 RSS Feed 和远程网站通信。"
 
 #: includes/debug_page.php:2515
 msgid "WP Remote Post:"
@@ -4119,7 +4133,7 @@ msgstr "WP Remote Post："
 msgid ""
 "WPeMatico uses this method to communicate with the different RSS feeds and "
 "remote websites"
-msgstr "WPeMatico 用此方法与各类 RSS 订阅源和远程网站通信"
+msgstr "WPeMatico 用此方法与各类 RSS Feed 和远程网站通信"
 
 #: includes/debug_page.php:2525
 msgid "Table Prefix:"
@@ -4234,7 +4248,7 @@ msgstr "WP Cron Lock Timeout："
 
 #: includes/debug_page.php:268
 msgid "Items"
-msgstr "条目"
+msgstr "项目"
 
 #: includes/debug_page.php:2681
 msgid ""
@@ -4250,7 +4264,7 @@ msgstr "Alternate WP Cron："
 
 #: includes/debug_page.php:270
 msgid "(valid feed, but it is empty right now)"
-msgstr "（订阅源有效，但目前为空）"
+msgstr "（Feed 有效，但目前为空）"
 
 #: includes/debug_page.php:2701
 msgid ""
@@ -4270,7 +4284,7 @@ msgstr "访问插件主页"
 
 #: includes/debug_page.php:278
 msgid "Feed found by autodiscovery"
-msgstr "通过自动发现找到的订阅源"
+msgstr "通过自动发现找到的 Feed"
 
 #: includes/debug_page.php:2789 includes/debug_page.php:2891
 msgid "update to %s"
@@ -4304,7 +4318,7 @@ msgstr "类型"
 
 #: includes/debug_page.php:2959
 msgid "Max items"
-msgstr "最大条目数"
+msgstr "最大项目数"
 
 #: includes/debug_page.php:2963
 msgid "Next Run"
@@ -4328,16 +4342,16 @@ msgstr "响应头。"
 
 #: includes/debug_page.php:353
 msgid "Paste a feed link here and the content will be shown on the textarea."
-msgstr "在此粘贴订阅源链接，内容会显示在文本框中。"
+msgstr "在此粘贴 Feed 链接，内容会显示在文本框中。"
 
 #: includes/debug_page.php:359 includes/feed_list_help.php:37
 #: includes/feed_viewer_help.php:38
 msgid "Feed URL."
-msgstr "订阅源网址。"
+msgstr "Feed 网址。"
 
 #: includes/debug_page.php:366
 msgid "Get Feed"
-msgstr "获取订阅源"
+msgstr "获取 Feed"
 
 #: includes/debug_page.php:3712 includes/wpematico_functions.php:2987
 #: includes/wpematico_functions.php:3012 includes/wpematico_functions.php:3208
@@ -4348,11 +4362,11 @@ msgstr "没有权限"
 
 #: includes/debug_page.php:374 includes/debug_page.php:411
 msgid "Fill in a Feed URL and click the Get Feed Button."
-msgstr "填写订阅源网址，然后点击“获取订阅源”按钮。"
+msgstr "填写 Feed 网址，然后点击“获取 Feed”按钮。"
 
 #: includes/debug_page.php:378
 msgid "Get Feed and see here its contents."
-msgstr "获取订阅源，并在此查看其内容。"
+msgstr "获取 Feed，并在此查看其内容。"
 
 #: includes/debug_page.php:383 includes/debug_page.php:681
 msgid "SELECT ALL"
@@ -4429,7 +4443,7 @@ msgstr "你没有足够权限使用此工具。"
 
 #: includes/debug_page.php:82
 msgid "Enter a valid feed URL starting with http:// or https://"
-msgstr "请输入以 http:// 或 https:// 开头的有效订阅源网址"
+msgstr "请输入以 http:// 或 https:// 开头的有效 Feed 网址"
 
 #: includes/debug_page.php:844 includes/debug_page.php:848
 msgid "ERROR: disk_total_space() is not available on this server."
@@ -4441,15 +4455,15 @@ msgstr "错误：此服务器上没有 disk_free_space()。"
 
 #: includes/feed_list_help.php:31
 msgid "What the Feed List shows."
-msgstr "订阅源列表显示什么。"
+msgstr "Feed 列表显示什么。"
 
 #: includes/feed_list_help.php:32
 msgid ""
 "Every feed URL configured on this site, one row per feed, no matter which "
 "campaign holds it. A campaign with five feeds appears in five rows."
 msgstr ""
-"本站配置的每一个订阅源网址，每个订阅源一行，无论它属于哪个采集任务。含五个订"
-"阅源的采集任务会占五行。"
+"本站配置的每一个 Feed 网址，每个 Feed 一行，无论它属于哪个采集任务。含五个 "
+"Feed 的采集任务会占五行。"
 
 #: includes/feed_list_help.php:33
 msgid ""
@@ -4458,7 +4472,7 @@ msgid ""
 "twice."
 msgstr ""
 "它能回答采集任务列表回答不了的问题：某个网址是否已在采集、属于哪个采集任务，"
-"以及同一个订阅源是否被添加了两次。"
+"以及同一个 Feed 是否被添加了两次。"
 
 #: includes/feed_list_help.php:34
 msgid ""
@@ -4489,7 +4503,7 @@ msgid ""
 "The campaign this feed belongs to. The name links to its edit screen, where "
 "the feed can be changed or removed."
 msgstr ""
-"该订阅源所属的采集任务。名称链接到其编辑界面，可在那里更改或删除该订阅源。"
+"该 Feed 所属的采集任务。名称链接到其编辑界面，可在那里更改或删除该 Feed。"
 
 #: includes/feed_list_help.php:46
 msgid "Status."
@@ -4501,8 +4515,8 @@ msgid ""
 "Feeds are not activated one by one: the state belongs to the campaign, so "
 "every row of the same campaign shows the same value."
 msgstr ""
-"采集任务是否启用，也就是调度器是否会运行它。订阅源不能逐个启用：状态属于采集"
-"任务，因此同一任务的所有行都显示相同的值。"
+"采集任务是否启用，也就是调度器是否会运行它。Feed 不能逐个启用：状态属于采集任"
+"务，因此同一任务的所有行都显示相同的值。"
 
 #: includes/feed_list_help.php:48
 msgid ""
@@ -4520,7 +4534,7 @@ msgid ""
 "per-feed one. \"Never\" means it has not run since it was created or since "
 "its log was cleared."
 msgstr ""
-"采集任务最近一次完成运行的时间——同样是整个任务的值，而不是单个订阅源的。“从"
+"采集任务最近一次完成运行的时间——同样是整个任务的值，而不是单个 Feed 的。“从"
 "未”表示自创建以来或自日志被清除以来它没有运行过。"
 
 #: includes/feed_list_help.php:53
@@ -4537,14 +4551,14 @@ msgstr "操作。"
 
 #: includes/feed_list_help.php:57
 msgid "Edit campaign opens the campaign that holds this feed."
-msgstr "“编辑采集任务”会打开包含该订阅源的采集任务。"
+msgstr "“编辑采集任务”会打开包含该 Feed 的采集任务。"
 
 #: includes/feed_list_help.php:58
 msgid ""
 "Inspect in Feed Viewer requests the URL and shows the raw answer, which is "
 "the fastest way to tell a broken feed from a broken campaign."
 msgstr ""
-"“在订阅源查看器中检查”会请求该网址并显示原始响应，这是区分订阅源出问题还是采"
+"“在 Feed 查看器中检查”会请求该网址并显示原始响应，这是区分 Feed 出问题还是采"
 "集任务出问题的最快方式。"
 
 #: includes/feed_list_help.php:59
@@ -4562,7 +4576,7 @@ msgid ""
 "the page you are looking at — useful to spot one feed among the ones already "
 "on screen."
 msgstr ""
-"搜索框在两个层面起作用。输入时会立即隐藏当前页面上的行——便于在已显示的订阅源"
+"搜索框在两个层面起作用。输入时会立即隐藏当前页面上的行——便于在已显示的 Feed "
 "中找出某一个。"
 
 #: includes/feed_list_help.php:64
@@ -4571,15 +4585,15 @@ msgid ""
 "all pages, and the list is rebuilt with the matches: the counter, the pages "
 "and the sorting all apply to the result."
 msgstr ""
-"按回车或点击按钮则会搜索全站所有订阅源、跨越所有页面，并用匹配结果重建列表："
-"计数、分页和排序都会针对结果生效。"
+"按回车或点击按钮则会搜索全站所有 Feed、跨越所有页面，并用匹配结果重建列表：计"
+"数、分页和排序都会针对结果生效。"
 
 #: includes/feed_list_help.php:65
 msgid ""
 "It matches the feed URL and the campaign name. Esc clears the instant "
 "filter, and \"Clear search\" undoes the global one."
 msgstr ""
-"匹配范围是订阅源网址和采集任务名称。Esc 清除即时筛选，“清除搜索”撤销全局搜"
+"匹配范围是 Feed 网址和采集任务名称。Esc 清除即时筛选，“清除搜索”撤销全局搜"
 "索。"
 
 #: includes/feed_list_help.php:68
@@ -4602,7 +4616,7 @@ msgstr "每页显示多少行，可在本界面右上角的“显示选项”中
 
 #: includes/feed_viewer_help.php:32
 msgid "What the Feed Viewer is for."
-msgstr "订阅源查看器的用途。"
+msgstr "Feed 查看器的用途。"
 
 #: includes/feed_viewer_help.php:33
 msgid ""
@@ -4618,7 +4632,7 @@ msgid ""
 "nothing and you need to know whether the problem is the source, the network "
 "or the campaign settings."
 msgstr ""
-"在把订阅源加入采集任务之前使用它；或者当采集任务什么都采不到，而你需要判断问"
+"在把 Feed 加入采集任务之前使用它；或者当采集任务什么都采不到，而你需要判断问"
 "题出在源、网络还是采集任务设置时使用。"
 
 #: includes/feed_viewer_help.php:35
@@ -4632,7 +4646,7 @@ msgid ""
 "Paste the address of the feed itself (it usually ends in /feed/, /rss, .xml "
 "or similar), not the address of the site that publishes it."
 msgstr ""
-"请粘贴订阅源本身的地址（通常以 /feed/、/rss、.xml 之类结尾），而不是发布它的"
+"请粘贴 Feed 本身的地址（通常以 /feed/、/rss、.xml 之类结尾），而不是发布它的"
 "网站地址。"
 
 #: includes/feed_viewer_help.php:40
@@ -4640,7 +4654,7 @@ msgid ""
 "Only http:// and https:// addresses are accepted. If the feed needs a key or "
 "a token, include it in the URL just as the campaign would use it."
 msgstr ""
-"只接受 http:// 和 https:// 地址。如果订阅源需要密钥或令牌，请像采集任务那样把"
+"只接受 http:// 和 https:// 地址。如果 Feed 需要密钥或令牌，请像采集任务那样把"
 "它包含在网址中。"
 
 #: includes/feed_viewer_help.php:41
@@ -4648,11 +4662,11 @@ msgid ""
 "Arriving from the eye icon of a campaign feed, or from the Feed List, fills "
 "this field in and fetches it right away."
 msgstr ""
-"从采集任务订阅源的眼睛图标或订阅源列表进入时，该字段会自动填入并立即抓取。"
+"从采集任务 Feed 的眼睛图标或 Feed 列表进入时，该字段会自动填入并立即抓取。"
 
 #: includes/feed_viewer_help.php:44
 msgid "Get Feed."
-msgstr "获取订阅源。"
+msgstr "获取 Feed。"
 
 #: includes/feed_viewer_help.php:45
 msgid ""
@@ -4670,7 +4684,7 @@ msgstr "结果是一条带摘要和响应头的彩色提示，下方的框中是
 
 #: includes/feed_viewer_help.php:49
 msgid "Green result: the feed was parsed."
-msgstr "绿色结果：订阅源解析成功。"
+msgstr "绿色结果：Feed 解析成功。"
 
 #: includes/feed_viewer_help.php:50
 msgid ""
@@ -4678,15 +4692,15 @@ msgid ""
 "and how many items it carries, and the box shows the XML as the source sent "
 "it."
 msgstr ""
-"该网址是有效的 RSS 或 Atom 订阅源。摘要会说明其格式、标题和条目数量，框中显示"
-"源站发送的原始 XML。"
+"该网址是有效的 RSS 或 Atom Feed。摘要会说明其格式、标题和项目数量，框中显示源"
+"站发送的原始 XML。"
 
 #: includes/feed_viewer_help.php:51
 msgid ""
 "Zero items means the feed is valid but empty right now: a campaign on it "
 "would fetch nothing until the source publishes again."
 msgstr ""
-"条目数为零表示订阅源有效但目前为空：在源站再次发布之前，基于它的采集任务什么"
+"项目数为零表示 Feed 有效但目前为空：在源站再次发布之前，基于它的采集任务什么"
 "都取不到。"
 
 #: includes/feed_viewer_help.php:52
@@ -4695,8 +4709,8 @@ msgid ""
 "a feed, and the site advertised one: that is the address to use, because a "
 "site may stop advertising it at any time."
 msgstr ""
-"出现“通过自动发现找到的订阅源”这一行，说明你粘贴的是页面而非订阅源，而网站声"
-"明了一个：应当使用那个地址，因为网站随时可能不再声明它。"
+"出现“通过自动发现找到的 Feed”这一行，说明你粘贴的是页面而非 Feed，而网站声明"
+"了一个：应当使用那个地址，因为网站随时可能不再声明它。"
 
 #: includes/feed_viewer_help.php:53
 msgid ""
@@ -4708,7 +4722,7 @@ msgstr ""
 
 #: includes/feed_viewer_help.php:56
 msgid "Yellow result: it answers, but it is not a feed."
-msgstr "黄色结果：有响应，但不是订阅源。"
+msgstr "黄色结果：有响应，但不是 Feed。"
 
 #: includes/feed_viewer_help.php:57
 msgid ""
@@ -4725,8 +4739,8 @@ msgid ""
 "page instead of its feed. Codes 401 or 403 mean the source is refusing the "
 "request, and 404 that the address no longer exists."
 msgstr ""
-"HTTP 状态码 200 且框中是 HTML，说明你粘贴的是页面地址而不是它的订阅源。401 "
-"或 403 表示源站拒绝了请求，404 表示该地址已不存在。"
+"HTTP 状态码 200 且框中是 HTML，说明你粘贴的是页面地址而不是它的 Feed。401 或 "
+"403 表示源站拒绝了请求，404 表示该地址已不存在。"
 
 #: includes/feed_viewer_help.php:59
 msgid ""
@@ -4748,7 +4762,7 @@ msgid ""
 "problem with the feed."
 msgstr ""
 "请求从未得到响应，因此框中显示的是网络错误而不是内容。问题出在你的服务器与源"
-"站之间，而不是订阅源本身。"
+"站之间，而不是 Feed 本身。"
 
 #: includes/feed_viewer_help.php:64
 msgid ""
@@ -4764,7 +4778,7 @@ msgid ""
 "If several unrelated feeds fail the same way, check the outgoing request "
 "tests on the Tools &rsaquo; System tab before blaming the sources."
 msgstr ""
-"如果多个互不相关的订阅源都以同样方式失败，请先查看工具 &rsaquo; 系统标签页中"
+"如果多个互不相关的 Feed 都以同样方式失败，请先查看工具 &rsaquo; 系统标签页中"
 "的出站请求测试，再去怪罪源站。"
 
 #: includes/feed_viewer_help.php:68
@@ -4777,7 +4791,7 @@ msgid ""
 "content-type (a feed should be xml, not html), last-modified and etag, which "
 "tell you how fresh the content is."
 msgstr ""
-"源站对自身响应的说明。值得关注的是 content-type（订阅源应为 xml 而非 html）、"
+"源站对自身响应的说明。值得关注的是 content-type（Feed 应为 xml 而非 html）、"
 "last-modified 和 etag，它们说明内容的新旧程度。"
 
 #: includes/feed_viewer_help.php:70
@@ -4798,14 +4812,14 @@ msgid ""
 "tags you expect — full content, images, categories, custom fields — before "
 "setting a campaign to use them."
 msgstr ""
-"完整且未经改动的响应。在把采集任务配置为使用某些标签之前，先读一读它，确认订"
-"阅源确实带有你期望的内容——正文全文、图片、分类、自定义字段。"
+"完整且未经改动的响应。在把采集任务配置为使用某些标签之前，先读一读它，确认 "
+"Feed 确实带有你期望的内容——正文全文、图片、分类、自定义字段。"
 
 #: includes/feed_viewer_help.php:75
 msgid ""
 "Use Copy to put it on the clipboard; it is what our support team asks for "
 "when a feed behaves strangely."
-msgstr "点“复制”把它放进剪贴板；当订阅源表现异常时，我们的支持团队正是要这个。"
+msgstr "点“复制”把它放进剪贴板；当 Feed 表现异常时，我们的支持团队正是要这个。"
 
 #. translators: the plugin name.
 #: includes/lib/EDD_SL_Plugin_Updater.php:300
@@ -4856,7 +4870,7 @@ msgstr "已过期"
 
 #: includes/lib/licenses_handlers.php:356
 msgid "Activate License"
-msgstr "激活许可证"
+msgstr "启用许可证"
 
 #: includes/lib/licenses_handlers.php:363
 msgid " License"
@@ -4878,7 +4892,7 @@ msgstr "终身"
 msgid ""
 "No activations left. Click here to manage the sites you've activated "
 "licenses on."
-msgstr "没有剩余的激活次数。点击这里管理已激活许可证的站点。"
+msgstr "没有剩余的启用次数。点击这里管理已启用许可证的站点。"
 
 #: includes/lib/licenses_handlers.php:400
 msgid "Renew your license to continue receiving updates and support."
@@ -4886,7 +4900,7 @@ msgstr "续期许可证，以继续获得更新和支持。"
 
 #: includes/lib/licenses_handlers.php:403
 msgid "Activations"
-msgstr "激活次数"
+msgstr "启用次数"
 
 #: includes/lib/licenses_handlers.php:403
 msgid "left"
@@ -4915,7 +4929,7 @@ msgstr "延长"
 #: includes/lib/licenses_handlers.php:443
 #: includes/lib/licenses_handlers.php:451
 msgid "Activated for updates"
-msgstr "已为更新激活"
+msgstr "已为更新启用"
 
 #: includes/lib/update_reasons.php:112
 msgid "%1$s updates right after WPeMatico: install WPeMatico %2$s first."
@@ -4965,11 +4979,11 @@ msgstr "续期你的许可证"
 msgid ""
 "The license of %s is not activated on this site, so it receives no updates "
 "here."
-msgstr "%s 的许可证未在本站激活，因此这里收不到更新。"
+msgstr "%s 的许可证未在本站启用，因此这里收不到更新。"
 
 #: includes/lib/update_reasons.php:157
 msgid "Activate this site"
-msgstr "激活本站"
+msgstr "启用本站"
 
 #: includes/lib/update_reasons.php:162
 msgid ""
@@ -5020,8 +5034,8 @@ msgid_plural ""
 "WPeMatico does not update automatically, so the %d add-ons that do will stay "
 "on their current version until you update WPeMatico."
 msgstr[0] ""
-"WPeMatico 不会自动更新，因此会自动更新的 %d 个扩展将停留在当前版本，直到你更"
-"新 WPeMatico。"
+"WPeMatico 不会自动更新，因此会自动更新的 %d 个附加组件将停留在当前版本，直到"
+"你更新 WPeMatico。"
 
 #: includes/lib/welcome.php:151
 msgid ""
@@ -5045,7 +5059,7 @@ msgstr "新增内容"
 
 #: includes/lib/welcome.php:191
 msgid "Changelog"
-msgstr "更新日志"
+msgstr "变更日志"
 
 #: includes/lib/welcome.php:192
 msgid "Privacy"
@@ -5067,17 +5081,17 @@ msgid ""
 "now free, and a new Migration Toolkit brings your feeds over from other RSS "
 "plugins. And everything feels faster."
 msgstr ""
-"WPeMatico 2.9 是多年来最大的一次更新。全新的仪表板把插件及其扩展的重要功能都"
-"放到一个开关之后，设置与工具彻底重写，Vimeo 采集任务现已免费，全新的迁移工具"
-"箱可把你的订阅源从其他 RSS 插件搬过来。而且一切都更快了。"
+"WPeMatico 2.9 是多年来最大的一次更新。全新的仪表盘把插件及其附加组件的重要功"
+"能都放到一个开关之后，设置与工具彻底重写，Vimeo 采集任务现已免费，全新的迁移"
+"工具箱可把你的 Feed 从其他 RSS 插件搬过来。而且一切都更快了。"
 
 #: includes/lib/welcome.php:270
 msgid "One Dashboard for the features you use most"
-msgstr "一个仪表板，管你最常用的功能"
+msgstr "一个仪表盘，管你最常用的功能"
 
 #: includes/lib/welcome.php:272
 msgid "Every feature of the plugin and its add-ons, as a card with a switch."
-msgstr "插件及其扩展的每项功能，都是一张带开关的卡片。"
+msgstr "插件及其附加组件的每项功能，都是一张带开关的卡片。"
 
 #: includes/lib/welcome.php:273
 msgid ""
@@ -5086,15 +5100,15 @@ msgid ""
 "add-on, and the card and the setting behind it are the same switch."
 msgstr ""
 "按类别筛选找到所需功能，就地打开。每张卡片都会告诉你该功能是否已安装、是否免"
-"费，或属于某个扩展；卡片和它背后的设置是同一个开关。"
+"费，或属于某个附加组件；卡片和它背后的设置是同一个开关。"
 
 #: includes/lib/welcome.php:275 includes/lib/welcome.php:651
 msgid "Open the Dashboard"
-msgstr "打开仪表板"
+msgstr "打开仪表盘"
 
 #: includes/lib/welcome.php:278
 msgid "The WPeMatico Dashboard: a grid of feature cards, each with a switch"
-msgstr "WPeMatico 仪表板：由功能卡片组成的网格，每张都带开关"
+msgstr "WPeMatico 仪表盘：由功能卡片组成的网格，每张都带开关"
 
 #: includes/lib/welcome.php:284
 msgid "The new Settings screen, with its side menu"
@@ -5114,7 +5128,7 @@ msgid ""
 "option that depends on another one now tells you so instead of silently "
 "doing nothing."
 msgstr ""
-"“常规”“高级”和“后台工具”取代了原来那一长页，依赖其他选项的设置现在会明说，而"
+"“常规”“高级”和“后端工具”取代了原来那一长页，依赖其他选项的设置现在会明说，而"
 "不是悄无声息地不起作用。"
 
 #: includes/lib/welcome.php:292 includes/lib/welcome.php:659
@@ -5123,11 +5137,11 @@ msgstr "打开设置"
 
 #: includes/lib/welcome.php:298
 msgid "Bring your feeds from Feedzy or WP RSS Aggregator"
-msgstr "把订阅源从 Feedzy 或 WP RSS Aggregator 搬过来"
+msgstr "把 Feed 从 Feedzy 或 WP RSS Aggregator 搬过来"
 
 #: includes/lib/welcome.php:300
 msgid "The new Migration Toolkit recreates your feeds as WPeMatico campaigns."
-msgstr "全新的迁移工具箱会把你的订阅源重建为 WPeMatico 采集任务。"
+msgstr "全新的迁移工具箱会把你的 Feed 重建为 WPeMatico 采集任务。"
 
 #: includes/lib/welcome.php:301
 msgid ""
@@ -5136,16 +5150,16 @@ msgid ""
 "Campaigns arrive deactivated, so nothing publishes until you decide."
 msgstr ""
 "它在改动任何东西之前先告诉你将要创建什么，并带着计划、内容类型、状态、作者和"
-"分类导入每个订阅源。采集任务导入后处于停用状态，因此在你决定之前不会发布任何"
-"内容。"
+"分类导入每个 Feed。采集任务导入后处于停用状态，因此在你决定之前不会发布任何内"
+"容。"
 
 #: includes/lib/welcome.php:303
 msgid "Switch on the Plugin Importers card in the Dashboard to get started."
-msgstr "在仪表板中打开“插件导入器”卡片即可开始。"
+msgstr "在仪表盘中打开“插件导入器”卡片即可开始。"
 
 #: includes/lib/welcome.php:306
 msgid "The Migration Toolkit, with the feeds it found on the site"
-msgstr "迁移工具箱，以及它在站点上找到的订阅源"
+msgstr "迁移工具箱，以及它在站点上找到的 Feed"
 
 #: includes/lib/welcome.php:312
 msgid "The Vimeo box of a campaign"
@@ -5157,7 +5171,7 @@ msgstr "Vimeo 采集任务现已免费"
 
 #: includes/lib/welcome.php:317
 msgid "It was a paid add-on. Now it is built into WPeMatico."
-msgstr "它曾是付费扩展，现在已内置于 WPeMatico。"
+msgstr "它曾是付费附加组件，现在已内置于 WPeMatico。"
 
 #: includes/lib/welcome.php:318
 msgid ""
@@ -5165,14 +5179,14 @@ msgid ""
 "the feed on its own: title, thumbnail, player and description, with switches "
 "for the embed, the frame size and the featured image."
 msgstr ""
-"粘贴 Vimeo 用户、频道或群组的地址，采集任务就会自行找到订阅源：标题、缩略图、"
-"播放器和描述，并带有嵌入方式、画框尺寸和特色图片的开关。"
+"粘贴 Vimeo 用户、频道或群组的地址，采集任务就会自行找到 Feed：标题、缩略图、"
+"播放器和描述，并带有嵌入方式、画框尺寸和精选图片的开关。"
 
 #: includes/lib/welcome.php:320
 msgid ""
 "Switch it on from its card in the Dashboard, or in Settings → Advanced → "
 "Enable Features."
-msgstr "在仪表板的卡片上开启，或在“设置 → 高级 → 启用功能”中开启。"
+msgstr "在仪表盘的卡片上开启，或在“设置 → 高级 → 启用功能”中开启。"
 
 #: includes/lib/welcome.php:326
 msgid "Your campaigns at a glance, on the WordPress dashboard"
@@ -5190,12 +5204,12 @@ msgid ""
 "the next run and all-time posts. A second widget, WPeMatico News, keeps the "
 "latest from the blog one glance away."
 msgstr ""
-"重建后的“WPeMatico 概览”小工具显示今日文章、启用中的采集任务、下次运行和累计"
+"重建后的“WPeMatico 摘要”小工具显示今日文章、启用中的采集任务、下次运行和累计"
 "文章数。第二个小工具“WPeMatico 动态”把博客最新内容放在一眼可见的地方。"
 
 #: includes/lib/welcome.php:333
 msgid "The WPeMatico Summary widget on the WordPress dashboard"
-msgstr "WordPress 仪表盘上的“WPeMatico 概览”小工具"
+msgstr "WordPress 仪表盘上的“WPeMatico 摘要”小工具"
 
 #: includes/lib/welcome.php:341
 msgid "More in 2.9"
@@ -5206,8 +5220,8 @@ msgid ""
 "Tools now opens on a table with every feed of the site: search it, sort it, "
 "and jump to the campaign or to the Feed Viewer."
 msgstr ""
-"“工具”现在以一张包含全站所有订阅源的表格开场：可搜索、可排序，并能直接跳转到"
-"采集任务或订阅源查看器。"
+"“工具”现在以一张包含全站所有 Feed 的表格开场：可搜索、可排序，并能直接跳转到"
+"采集任务或 Feed 查看器。"
 
 #: includes/lib/welcome.php:352 includes/lib/welcome.php:670
 msgid "Open the Tools"
@@ -5215,15 +5229,15 @@ msgstr "打开工具"
 
 #: includes/lib/welcome.php:358
 msgid "The Feed Viewer, rebuilt"
-msgstr "订阅源查看器，重新打造"
+msgstr "Feed 查看器，重新打造"
 
 #: includes/lib/welcome.php:359
 msgid ""
 "It reports format, title, item count and HTTP code, finds the feed when you "
 "paste a page, and gives you the real reason a request failed."
 msgstr ""
-"它会报告格式、标题、条目数和 HTTP 状态码；当你粘贴的是页面时会找出订阅源，并"
-"给出请求失败的真正原因。"
+"它会报告格式、标题、项目数和 HTTP 状态码；当你粘贴的是页面时会找出 Feed，并给"
+"出请求失败的真正原因。"
 
 #: includes/lib/welcome.php:365
 msgid "System Status opens instantly"
@@ -5239,17 +5253,17 @@ msgstr ""
 
 #: includes/lib/welcome.php:375
 msgid "The Add-ons page installs the free ones"
-msgstr "扩展页面会自行安装免费扩展"
+msgstr "附加组件页面会自行安装免费附加组件"
 
 #: includes/lib/welcome.php:376
 msgid ""
 "The free add-ons install with one click, the ones you already have offer "
 "Activate, and the memberships are listed at last."
-msgstr "免费扩展一键安装，已有的会显示“启用”，会员套餐也终于列了出来。"
+msgstr "免费附加组件一键安装，已有的会显示“启用”，会员套餐也终于列了出来。"
 
 #: includes/lib/welcome.php:377
 msgid "Open the Extensions"
-msgstr "打开扩展"
+msgstr "打开附加组件"
 
 #: includes/lib/welcome.php:383
 msgid "Campaign Preview for every campaign type"
@@ -5261,7 +5275,7 @@ msgid ""
 "every campaign type — Vimeo and the types an add-on registers included."
 msgstr ""
 "它向采集引擎提出的问题与真实运行完全相同，因此适用于所有采集任务类型——包括 "
-"Vimeo 和扩展注册的类型。"
+"Vimeo 和附加组件注册的类型。"
 
 #: includes/lib/welcome.php:390
 msgid "Updates that never pull the rug"
@@ -5272,16 +5286,16 @@ msgid ""
 "An add-on that falls behind keeps running and updating; only the features "
 "that need the new core wait, and a notice says which version puts it right."
 msgstr ""
-"落后的扩展仍可运行和更新；只有需要新内核的功能才会等待，并有提示说明哪个版本"
-"能解决问题。"
+"落后的附加组件仍可运行和更新；只有需要新内核的功能才会等待，并有提示说明哪个"
+"版本能解决问题。"
 
 #: includes/lib/welcome.php:398
 msgid "The complete changelog"
-msgstr "完整更新日志"
+msgstr "完整变更日志"
 
 #: includes/lib/welcome.php:402
 msgid "For the complete list of changes in WPeMatico %s, read the changelog."
-msgstr "WPeMatico %s 的完整改动清单，请查看更新日志。"
+msgstr "WPeMatico %s 的完整改动清单，请查看变更日志。"
 
 #: includes/lib/welcome.php:407
 msgid "See everything new"
@@ -5297,14 +5311,16 @@ msgid ""
 "the source instead of the RSS snippet, keyword filters, custom titles, "
 "translation, AI rewriting, and much more."
 msgstr ""
-"扩展和会员套餐让这个免费插件更进一步：从来源获取全文而不只是 RSS 摘要、关键词"
-"筛选、自定义标题、翻译、AI 改写等等。"
+"附加组件和会员套餐让这个免费插件更进一步：从来源获取全文而不只是 RSS 摘要、关"
+"键词筛选、自定义标题、翻译、AI 重写等等。"
 
 #: includes/lib/welcome.php:420
 msgid ""
 "The new Dashboard shows the main ones as cards, so you can see what an add-"
 "on would switch on before you get it."
-msgstr "新的仪表板把主要扩展做成卡片，让你在购买前就能看到某个扩展会开启什么。"
+msgstr ""
+"新的仪表盘把主要附加组件做成卡片，让你在购买前就能看到某个附加组件会开启什"
+"么。"
 
 #: includes/lib/welcome.php:422
 msgid "WPeMatico Starter Memberships"
@@ -5312,7 +5328,7 @@ msgstr "WPeMatico Starter 会员套餐"
 
 #: includes/lib/welcome.php:423
 msgid "All available add-ons"
-msgstr "全部可用扩展"
+msgstr "全部可用附加组件"
 
 #: includes/lib/welcome.php:432 includes/lib/welcome.php:442
 #: includes/lib/welcome.php:452
@@ -5324,22 +5340,23 @@ msgid ""
 "includes powerful add-ons such as Professional and Full Content, which allow "
 "you to enhance autoblogging with advanced features."
 msgstr ""
-"包含 Professional 和 Full Content 等强大扩展，让自动采集获得更高级的能力。"
+"包含 Professional 和 Full Content 等强大附加组件，让自动采集获得更高级的能"
+"力。"
 
 #: includes/lib/welcome.php:443
 msgid ""
 "combines the five most requested add-ons with a lot of great features, "
 "simplifying WordPress autoblogging with professional ease."
 msgstr ""
-"把最受欢迎的五个扩展与大量出色功能结合起来，让 WordPress 自动采集变得专业而轻"
-"松。"
+"把最受欢迎的五个附加组件与大量出色功能结合起来，让 WordPress 自动采集变得专业"
+"而轻松。"
 
 #: includes/lib/welcome.php:453
 msgid ""
 "integrates seamlessly with GPT Spinner, allowing you to rewrite and enhance "
 "your content with advanced AI, ensuring originality and improved engagement."
 msgstr ""
-"与 GPT Spinner 无缝配合，用先进的 AI 改写并提升你的内容，保证原创性、提高吸引"
+"与 GPT Spinner 无缝配合，用先进的 AI 重写并提升你的内容，保证原创性、提高吸引"
 "力。"
 
 #: includes/lib/welcome.php:462
@@ -5351,8 +5368,8 @@ msgid ""
 "reads and displays the RSS feed results on your WordPress site without "
 "creating the posts. Install it from the Extensions page."
 msgstr ""
-"会读取 RSS 订阅源并在你的 WordPress 站点上展示结果，而不创建文章。可从扩展页"
-"面安装。"
+"会读取 RSS Feed 并在你的 WordPress 站点上展示结果，而不创建文章。可从附加组件"
+"页面安装。"
 
 #: includes/lib/welcome.php:474
 msgid "Rate WPeMatico 5 stars on WordPress.org"
@@ -5385,7 +5402,7 @@ msgstr "面向需要更快或更深入协助的客户。"
 
 #: includes/lib/welcome.php:489 includes/lib/welcome.php:733
 msgid "Go to WPeMatico Dashboard"
-msgstr "前往 WPeMatico 仪表板"
+msgstr "前往 WPeMatico 仪表盘"
 
 #: includes/lib/welcome.php:490 includes/lib/welcome.php:525
 #: includes/lib/welcome.php:559
@@ -5394,7 +5411,7 @@ msgstr "前往 WPeMatico 设置"
 
 #: includes/lib/welcome.php:515
 msgid "Full Changelog"
-msgstr "完整更新日志"
+msgstr "完整变更日志"
 
 #: includes/lib/welcome.php:549
 msgid "Privacy terms"
@@ -5407,13 +5424,13 @@ msgid ""
 "autopilot. Three steps and your first campaign is running; everything else "
 "can wait until it is."
 msgstr ""
-"WPeMatico 会按计划读取你选定的 RSS 和 Atom 订阅源，并把其中的条目全自动发布为"
-"文章——或任意内容类型。三步之后第一个采集任务就在运行了；其余的都可以等它跑起"
-"来再说。"
+"WPeMatico 会按计划读取你选定的 RSS 和 Atom Feed，并把其中的项目全自动发布为文"
+"章——或任意内容类型。三步之后第一个采集任务就在运行了；其余的都可以等它跑起来"
+"再说。"
 
 #: includes/lib/welcome.php:589
 msgid "1. Add the campaign and its feed"
-msgstr "1. 新建采集任务并添加订阅源"
+msgstr "1. 新建采集任务并添加 Feed"
 
 #: includes/lib/welcome.php:591
 msgid "WPeMatico → Campaigns → Add New Campaign."
@@ -5426,9 +5443,9 @@ msgid ""
 "feed. The eye icon beside the feed reads it right there, so you know it "
 "works before you save. One campaign can carry as many feeds as you want."
 msgstr ""
-"给采集任务取个名字，把订阅源地址粘贴到“订阅源”面板——WordPress 博客通常是站点"
-"地址后加 /feed。订阅源旁的眼睛图标会当场读取它，让你在保存前就知道能否使用。"
-"一个采集任务可以包含任意多个订阅源。"
+"给采集任务取个名字，把 Feed 地址粘贴到“Feed”面板——WordPress 博客通常是站点地"
+"址后加 /feed。Feed 旁的眼睛图标会当场读取它，让你在保存前就知道能否使用。一个"
+"采集任务可以包含任意多个 Feed。"
 
 #: includes/lib/welcome.php:594
 msgid ""
@@ -5438,7 +5455,7 @@ msgstr "如果你希望有人引导，“向导”按钮会带你逐个面板走
 
 #: includes/lib/welcome.php:598
 msgid "The campaign editor, with the Feeds box"
-msgstr "采集任务编辑器及“订阅源”面板"
+msgstr "采集任务编辑器及“Feed”面板"
 
 #: includes/lib/welcome.php:604
 msgid "The campaign options: post type, status, author and categories"
@@ -5450,7 +5467,7 @@ msgstr "2. 指定文章去向和运行频率"
 
 #: includes/lib/welcome.php:609
 msgid "The defaults already work: one published post per feed item."
-msgstr "默认值就已经可用：每个订阅项生成一篇已发布的文章。"
+msgstr "默认值就已经可用：每个 Feed 项目生成一篇已发布的文章。"
 
 #: includes/lib/welcome.php:610
 msgid ""
@@ -5460,7 +5477,7 @@ msgid ""
 "Published if you want to review first — and the schedule that decides how "
 "often the campaign runs."
 msgstr ""
-"在“本采集任务的选项”中设置每次运行取多少条目、新文章的作者，以及如何处理其内"
+"在“本采集任务的选项”中设置每次运行取多少项目、新文章的作者，以及如何处理其内"
 "容。旁边的“发布”面板里有状态和内容类型——想先审核就选草稿而非发布——以及决定运"
 "行频率的计划。"
 
@@ -5479,7 +5496,7 @@ msgid ""
 "how long it took and how many posts it fetched. From there on the campaign "
 "runs on its own, on the schedule you set."
 msgstr ""
-"“预览”会显示采集任务将带回的条目，但不发布任何内容。“立即运行”执行一次，随后"
+"“预览”会显示采集任务将带回的项目，但不发布任何内容。“立即运行”执行一次，随后"
 "面板会告诉你运行时间、耗时以及采集到的文章数。此后采集任务就按你设定的计划自"
 "行运行。"
 
@@ -5502,7 +5519,7 @@ msgid ""
 "Summary widget puts the same on your WordPress dashboard."
 msgstr ""
 "采集任务列表显示每个任务的状态、上次运行和文章数量，你也可以直接在行内运行或"
-"暂停任何一个。“WPeMatico 概览”小工具把同样的信息放到你的 WordPress 仪表盘上。"
+"暂停任何一个。“WPeMatico 摘要”小工具把同样的信息放到你的 WordPress 仪表盘上。"
 
 #: includes/lib/welcome.php:643
 msgid "Open the Campaigns"
@@ -5522,7 +5539,7 @@ msgid ""
 "types such as YouTube, Vimeo or Feeds XML, and extras such as Download "
 "Images or Canonical URLs."
 msgstr ""
-"仪表板把每项功能都变成带开关的卡片：YouTube、Vimeo 或 Feeds XML 等其他采集任"
+"仪表盘把每项功能都变成带开关的卡片：YouTube、Vimeo 或 Feeds XML 等其他采集任"
 "务类型，以及下载图片、规范链接等附加功能。"
 
 #: includes/lib/welcome.php:657
@@ -5535,12 +5552,12 @@ msgid ""
 "scheduler that runs your campaigns, and the Backend Tools, such as the "
 "Campaign column in your post lists."
 msgstr ""
-"“设置”里是全局性的内容：图片和视频如何处理、运行采集任务的调度器，以及后台工"
+"“设置”里是全局性的内容：图片和视频如何处理、运行采集任务的调度器，以及后端工"
 "具，例如文章列表中的“采集任务”列。"
 
 #: includes/lib/welcome.php:668
 msgid "Test a feed before you use it"
-msgstr "使用前先测试订阅源"
+msgstr "使用前先测试 Feed"
 
 #: includes/lib/welcome.php:669
 msgid ""
@@ -5548,8 +5565,8 @@ msgid ""
 "its format and how many items it carries — or the real reason it cannot be "
 "read."
 msgstr ""
-"把任意地址粘贴到订阅源查看器，它会告诉你这是不是订阅源、什么格式、包含多少条"
-"目——或者无法读取的真正原因。"
+"把任意地址粘贴到 Feed 查看器，它会告诉你这是不是 Feed、什么格式、包含多少项目"
+"——或者无法读取的真正原因。"
 
 #: includes/lib/welcome.php:676
 msgid "The answers are next to the options"
@@ -5573,7 +5590,7 @@ msgid ""
 "The Migration Toolkit recreates the feeds of Feedzy or WP RSS Aggregator as "
 "WPeMatico campaigns, deactivated until you decide to start them."
 msgstr ""
-"迁移工具箱会把 Feedzy 或 WP RSS Aggregator 的订阅源重建为 WPeMatico 采集任"
+"迁移工具箱会把 Feedzy 或 WP RSS Aggregator 的 Feed 重建为 WPeMatico 采集任"
 "务，并保持停用，直到你决定启动它们。"
 
 #: includes/lib/welcome.php:691
@@ -5606,7 +5623,7 @@ msgstr "服务面向需要更快或更深入协助的客户，包括直接在你
 
 #: includes/lib/welcome.php:711
 msgid "WPeMatico add-ons"
-msgstr "WPeMatico 扩展"
+msgstr "WPeMatico 附加组件"
 
 #: includes/lib/welcome.php:716
 msgid "Extend the plugin"
@@ -5619,23 +5636,24 @@ msgid ""
 "the complete article from the source page instead of the RSS snippet; and "
 "there are add-ons for translation, AI rewriting, images and more."
 msgstr ""
-"扩展让 WPeMatico 走得更远：Professional 为每个采集任务增加关键词筛选、自定义"
-"标题、标签等众多选项；Full Content 从来源页面抓取全文而不只是 RSS 摘要；此外"
-"还有用于翻译、AI 改写、图片等方面的扩展。"
+"附加组件让 WPeMatico 走得更远：Professional 为每个采集任务增加关键词筛选、自"
+"定义标题、标签等众多选项；Full Content 从来源页面抓取全文而不只是 RSS 摘要；"
+"此外还有用于翻译、AI 重写、图片等方面的附加组件。"
 
 #: includes/lib/welcome.php:723
 msgid "Find them in Extensions"
-msgstr "在“扩展”中找到它们"
+msgstr "在“附加组件”中找到它们"
 
 #: includes/lib/welcome.php:724
 msgid "WPeMatico → Extensions"
-msgstr "WPeMatico → 扩展"
+msgstr "WPeMatico → 附加组件"
 
 #: includes/lib/welcome.php:724
 msgid ""
 "lists every add-on and membership, installs the free ones in one click and "
 "keeps the ones you own up to date. The"
-msgstr "列出所有扩展和会员套餐，一键安装免费扩展，并让你已拥有的保持最新。"
+msgstr ""
+"列出所有附加组件和会员套餐，一键安装免费附加组件，并让你已拥有的保持最新。"
 
 #: includes/lib/welcome.php:724
 msgid "etruel store"
@@ -5649,7 +5667,7 @@ msgstr "提供完整目录，并可按类别筛选，帮你精准找到所需。
 
 #: includes/lib/welcome.php:73 includes/lib/welcome.php:74
 msgid "WPeMatico Changelog"
-msgstr "WPeMatico 更新日志"
+msgstr "WPeMatico 变更日志"
 
 #: includes/lib/welcome.php:761
 msgid "Stay ahead with exclusive updates"
@@ -5659,7 +5677,7 @@ msgstr "独家消息，抢先一步"
 msgid ""
 "Join our newsletter and be the first to hear about new features, new add-ons "
 "and special offers."
-msgstr "订阅我们的通讯，第一时间了解新功能、新扩展和特别优惠。"
+msgstr "订阅我们的通讯，第一时间了解新功能、新附加组件和特别优惠。"
 
 #: includes/lib/welcome.php:763
 msgid ""
@@ -5702,7 +5720,7 @@ msgstr "订阅已保存"
 
 #: includes/lib/welcome.php:844
 msgid "No valid changelog was found."
-msgstr "未找到有效的更新日志。"
+msgstr "未找到有效的变更日志。"
 
 #: includes/lib/welcome.php:91 includes/lib/welcome.php:92
 msgid "WPeMatico Privacy"
@@ -5726,7 +5744,7 @@ msgstr "正在启用 RSS Feed Reader…"
 
 #: includes/migration/class-migration-manager.php:190
 msgid "Could not install the addon."
-msgstr "无法安装该扩展。"
+msgstr "无法安装该附加组件。"
 
 #: includes/migration/class-migration-manager.php:191
 msgid ""
@@ -5831,8 +5849,8 @@ msgid ""
 "Import feed sources from WP RSS Aggregator. Feeds that create posts become "
 "campaigns; display-only feeds become RSS Feed Reader campaigns."
 msgstr ""
-"从 WP RSS Aggregator 导入订阅源。会创建文章的订阅源变成采集任务；仅用于展示的"
-"订阅源变成 RSS Feed Reader 采集任务。"
+"从 WP RSS Aggregator 导入 Feed。会创建文章的 Feed 变成采集任务；仅用于展示的 "
+"Feed 变成 RSS Feed Reader 采集任务。"
 
 #: includes/migration/class-migration-manager.php:648
 msgid "(no title)"
@@ -5840,11 +5858,11 @@ msgstr "（无标题）"
 
 #: includes/migration/class-migration-manager.php:675
 msgid "Shows all feeds — pick a campaign shortcode manually."
-msgstr "显示全部订阅源——请手动选择一个采集任务简码。"
+msgstr "显示全部 Feed——请手动选择一个采集任务简码。"
 
 #: includes/migration/class-migration-manager.php:676
 msgid "Combines several feeds — replace it manually."
-msgstr "合并了多个订阅源——请手动替换。"
+msgstr "合并了多个 Feed——请手动替换。"
 
 #: includes/migration/class-migration-manager.php:682
 msgid "No migrated campaign matches this source yet — import it first."
@@ -5852,23 +5870,23 @@ msgstr "尚无已迁移的采集任务与该来源匹配——请先导入它。
 
 #: includes/migration/class-migration-manager.php:684
 msgid "This feed now creates posts, so it has no display shortcode."
-msgstr "该订阅源现在会创建文章，因此没有展示用简码。"
+msgstr "该 Feed 现在会创建文章，因此没有展示用简码。"
 
 #: includes/migration/class-migration-manager.php:76
 msgid ""
 "Import the Feedzy import jobs as campaigns. A job whose source is a feed "
 "group brings every feed of that group into its campaign."
 msgstr ""
-"把 Feedzy 的导入任务导入为采集任务。若某个任务的来源是订阅源分组，则该分组的"
-"每个订阅源都会进入它的采集任务。"
+"把 Feedzy 的导入任务导入为采集任务。若某个任务的来源是 Feed 分组，则该分组的"
+"每个 Feed 都会进入它的采集任务。"
 
 #: includes/migration/class-migration-manager.php:901
 msgid ""
 "Nothing to import yet: these feeds only display items. Install the RSS Feed "
 "Reader addon above to import them."
 msgstr ""
-"暂时没有可导入的内容：这些订阅源只展示条目。请先安装上面的 RSS Feed Reader 扩"
-"展再导入。"
+"暂时没有可导入的内容：这些 Feed 只展示项目。请先安装上面的 RSS Feed Reader 附"
+"加组件再导入。"
 
 #: includes/migration/class-migration-manager.php:910
 msgid "There is nothing to import from this plugin."
@@ -5895,8 +5913,8 @@ msgid_plural ""
 "WPeMatico found feeds from these plugins on this site: %s. Import them as "
 "campaigns and you can drop the other plugins."
 msgstr[0] ""
-"WPeMatico 在本站点发现了来自这些插件的订阅源：%s。把它们导入为采集任务，你就"
-"可以放弃其他插件了。"
+"WPeMatico 在本站点发现了来自这些插件的 Feed：%s。把它们导入为采集任务，你就可"
+"以放弃其他插件了。"
 
 #: includes/migration/detect.php:241
 msgid "Enable Plugin Importers"
@@ -5911,8 +5929,8 @@ msgid_plural ""
 "WPeMatico found feeds from these plugins on this site: %s. Enable the Plugin "
 "Importers module to bring them over as campaigns."
 msgstr[0] ""
-"WPeMatico 在本站点发现了来自这些插件的订阅源：%s。启用“插件导入器”模块即可把"
-"它们转为采集任务。"
+"WPeMatico 在本站点发现了来自这些插件的 Feed：%s。启用“插件导入器”模块即可把它"
+"们转为采集任务。"
 
 #: includes/migration/detect.php:260
 msgid "WPeMatico Migration Toolkit"
@@ -5925,7 +5943,7 @@ msgstr "迁移工具箱。"
 #: includes/migration/help.php:32
 msgid ""
 "Recreates the feeds of another RSS importing plugin as WPeMatico campaigns."
-msgstr "把另一个 RSS 导入插件的订阅源重建为 WPeMatico 采集任务。"
+msgstr "把另一个 RSS 导入插件的 Feed 重建为 WPeMatico 采集任务。"
 
 #: includes/migration/help.php:33
 msgid ""
@@ -5943,7 +5961,7 @@ msgstr "重复导入是安全的：已迁移过的来源会更新原有采集任
 
 #: includes/migration/help.php:37
 msgid "Import campaigns &amp; feeds."
-msgstr "导入采集任务与订阅源。"
+msgstr "导入采集任务与 Feed。"
 
 #: includes/migration/help.php:38
 msgid ""
@@ -5951,7 +5969,7 @@ msgid ""
 "with its feed URLs, limits, post type, categories, author and schedule "
 "mapped to the equivalent WPeMatico settings."
 msgstr ""
-"总会执行：源插件的每个订阅源都会变成一个 WPeMatico 采集任务，其订阅源网址、数"
+"总会执行：源插件的每个 Feed 都会变成一个 WPeMatico 采集任务，其 Feed 网址、数"
 "量上限、内容类型、分类、作者和计划都会映射到 WPeMatico 中对应的设置。"
 
 #: includes/migration/help.php:39
@@ -5963,15 +5981,15 @@ msgstr ""
 
 #: includes/migration/help.php:42
 msgid "Keep the feeds of a group together in one campaign."
-msgstr "把一个分组的订阅源放在同一个采集任务里。"
+msgstr "把一个分组的 Feed 放在同一个采集任务里。"
 
 #: includes/migration/help.php:43
 msgid ""
 "A feed group is only a named list of feeds. What becomes a campaign is the "
 "import job that uses it (in Feedzy, a row of its Import Posts screen)."
 msgstr ""
-"订阅源分组只是一份命名的订阅源清单。真正变成采集任务的，是使用它的那个导入任"
-"务（在 Feedzy 中，就是 Import Posts 界面里的一行）。"
+"Feed 分组只是一份命名的 Feed 清单。真正变成采集任务的，是使用它的那个导入任务"
+"（在 Feedzy 中，就是 Import Posts 界面里的一行）。"
 
 #: includes/migration/help.php:44
 msgid ""
@@ -5980,14 +5998,14 @@ msgid ""
 "import."
 msgstr ""
 "所以，只有当某个任务以该分组为来源时，分组才会被导入，而该任务的采集任务会包"
-"含分组中的每个订阅源。没有任何任务使用的分组就没有可导入的内容。"
+"含分组中的每个 Feed。没有任何任务使用的分组就没有可导入的内容。"
 
 #: includes/migration/help.php:45
 msgid ""
 "Checked (the default), those feeds stay together in that single campaign, "
 "exactly as the source plugin had them."
 msgstr ""
-"勾选时（默认），这些订阅源会一起留在那一个采集任务中，与源插件中的组织方式完"
+"勾选时（默认），这些 Feed 会一起留在那一个采集任务中，与源插件中的组织方式完"
 "全一致。"
 
 #: includes/migration/help.php:46
@@ -5995,7 +6013,7 @@ msgid ""
 "Unchecked, each feed of the group becomes its own campaign, which is handy "
 "when you want different settings or schedules per feed."
 msgstr ""
-"不勾选时，分组中的每个订阅源各自成为一个采集任务，方便你为不同订阅源设置不同"
+"不勾选时，分组中的每个 Feed 各自成为一个采集任务，方便你为不同 Feed 设置不同"
 "的选项或计划。"
 
 #: includes/migration/help.php:49
@@ -6008,24 +6026,24 @@ msgid ""
 "translation, content rewriting) are recreated on the WPeMatico addon that "
 "provides the same feature."
 msgstr ""
-"来源的高级设置（关键词筛选、备用图片、自动翻译、内容改写）会在提供相同功能的 "
-"WPeMatico 扩展中重建。"
+"来源的高级设置（关键词筛选、备用图片、自动翻译、内容重写）会在提供相同功能的 "
+"WPeMatico 附加组件中重建。"
 
 #: includes/migration/help.php:51
 msgid ""
 "A checkbox only appears when the source really has that data. If the addon "
 "it needs is not active the checkbox is shown disabled, naming the addon."
 msgstr ""
-"只有当来源确实存在这类数据时，才会出现相应复选框。如果所需扩展未启用，复选框"
-"会显示为禁用状态，并注明是哪个扩展。"
+"只有当来源确实存在这类数据时，才会出现相应复选框。如果所需附加组件未启用，复"
+"选框会显示为禁用状态，并注明是哪个附加组件。"
 
 #: includes/migration/help.php:52
 msgid ""
 "You can import now without that addon — no source data is lost. Install it "
 "later and run the import again to fill in the missing fields."
 msgstr ""
-"没有那个扩展你现在也可以导入——不会丢失任何来源数据。之后安装它并重新导入，即"
-"可补上缺失的字段。"
+"没有那个附加组件你现在也可以导入——不会丢失任何来源数据。之后安装它并重新导"
+"入，即可补上缺失的字段。"
 
 #: includes/migration/help.php:55
 msgid "Adopt the posts already published by this plugin."
@@ -6038,7 +6056,7 @@ msgid ""
 "imported and does not publish them a second time."
 msgstr ""
 "源插件很可能已经发布了一段时间。此项会把那些文章关联到新的采集任务，让 "
-"WPeMatico 知道这些条目已经导入过，不会再发布第二次。"
+"WPeMatico 知道这些项目已经导入过，不会再发布第二次。"
 
 #: includes/migration/help.php:57
 msgid ""
@@ -6063,8 +6081,8 @@ msgid ""
 "Feeds that only display items (they never created posts) become RSS Feed "
 "Reader campaigns, which show the items they have already fetched."
 msgstr ""
-"只展示条目（从未创建文章）的订阅源会变成 RSS Feed Reader 采集任务，用于显示它"
-"们已经抓取到的条目。"
+"只展示项目（从未创建文章）的 Feed 会变成 RSS Feed Reader 采集任务，用于显示它"
+"们已经抓取到的项目。"
 
 #: includes/migration/help.php:63
 msgid ""
@@ -6085,8 +6103,8 @@ msgid ""
 "with its own add-ons, so both plugins do not import the same feeds in "
 "parallel."
 msgstr ""
-"迁移一旦成功，原插件连同它自己的扩展都会被停用，以免两个插件并行采集同样的订"
-"阅源。"
+"迁移一旦成功，原插件连同它自己的附加组件都会被停用，以免两个插件并行采集同样"
+"的 Feed。"
 
 #: includes/migration/help.php:68
 msgid ""
@@ -6106,7 +6124,7 @@ msgid ""
 "URLs, post type and status — without writing anything. The migration can be "
 "started from that same window."
 msgstr ""
-"列出此次导入将创建的内容——每个采集任务一行，包含其订阅源网址、内容类型和状态"
+"列出此次导入将创建的内容——每个采集任务一行，包含其 Feed 网址、内容类型和状态"
 "——但不写入任何数据。也可以直接在该窗口中开始迁移。"
 
 #: includes/migration/help.php:75
@@ -6127,7 +6145,7 @@ msgid ""
 "Embeds that do not map to a single migrated feed — those showing all feeds, "
 "or combining several — are listed too, but must be replaced by hand."
 msgstr ""
-"无法对应到某个已迁移订阅源的嵌入——显示全部订阅源或合并多个订阅源的那些——也会"
+"无法对应到某个已迁移 Feed 的嵌入——显示全部 Feed 或合并多个 Feed 的那些——也会"
 "列出，但必须手动替换。"
 
 #: includes/migration/importers/class-migrator-base.php:621
@@ -6195,11 +6213,11 @@ msgstr ""
 #: includes/migration/importers/class-migrator-feedzy-rss-feeds.php:351
 #: includes/migration/importers/class-migrator-wp-rss-aggregator.php:269
 msgid "Import fallback featured image"
-msgstr "导入备用特色图片"
+msgstr "导入备用精选图片"
 
 #: includes/migration/importers/class-migrator-feedzy-rss-feeds.php:352
 msgid "Uses Feedzy's default thumbnail as the campaign default featured image."
-msgstr "把 Feedzy 的默认缩略图用作采集任务的默认特色图片。"
+msgstr "把 Feedzy 的默认缩略图用作采集任务的默认精选图片。"
 
 #: includes/migration/importers/class-migrator-feedzy-rss-feeds.php:358
 msgid "Import auto-translation"
@@ -6207,7 +6225,7 @@ msgstr "导入自动翻译"
 
 #: includes/migration/importers/class-migrator-feedzy-rss-feeds.php:359
 msgid "Recreates Feedzy auto-translation with the Polyglot addon."
-msgstr "用 Polyglot 扩展重建 Feedzy 的自动翻译。"
+msgstr "用 Polyglot 附加组件重建 Feedzy 的自动翻译。"
 
 #: includes/migration/importers/class-migrator-feedzy-rss-feeds.php:363
 msgid ""
@@ -6220,11 +6238,11 @@ msgstr ""
 #: includes/migration/importers/class-migrator-feedzy-rss-feeds.php:366
 #: includes/migration/importers/class-migrator-wp-rss-aggregator.php:283
 msgid "Import content rewrite"
-msgstr "导入内容改写"
+msgstr "导入内容重写"
 
 #: includes/migration/importers/class-migrator-feedzy-rss-feeds.php:367
 msgid "Recreates Feedzy content rewrite with the GPT Spinner addon."
-msgstr "用 GPT Spinner 扩展重建 Feedzy 的内容改写。"
+msgstr "用 GPT Spinner 附加组件重建 Feedzy 的内容重写。"
 
 #: includes/migration/importers/class-migrator-feedzy-rss-feeds.php:371
 msgid ""
@@ -6237,7 +6255,7 @@ msgstr ""
 
 #: includes/migration/importers/class-migrator-feedzy-rss-feeds.php:462
 msgid "Feed %1$d of %2$d"
-msgstr "第 %1$d 个订阅源，共 %2$d 个"
+msgstr "第 %1$d 个 Feed，共 %2$d 个"
 
 #: includes/migration/importers/class-migrator-feedzy-rss-feeds.php:465
 #: includes/migration/importers/class-migrator-wp-rss-aggregator.php:1044
@@ -6251,7 +6269,7 @@ msgstr "于 %s 从 Feedzy 导入"
 
 #: includes/migration/importers/class-migrator-wp-rss-aggregator.php:1043
 msgid "Imported feed"
-msgstr "已导入的订阅源"
+msgstr "已导入的 Feed"
 
 #. translators: %s: import date/time.
 #: includes/migration/importers/class-migrator-wp-rss-aggregator.php:1055
@@ -6260,7 +6278,7 @@ msgstr "于 %s 从 WP RSS Aggregator 导入"
 
 #: includes/migration/importers/class-migrator-wp-rss-aggregator.php:116
 msgid "No feed sources found to migrate."
-msgstr "未找到可迁移的订阅源。"
+msgstr "未找到可迁移的 Feed。"
 
 #: includes/migration/importers/class-migrator-wp-rss-aggregator.php:1219
 msgid ""
@@ -6268,12 +6286,12 @@ msgid ""
 "Aggregator and let it migrate your feeds to v5 first, then run this "
 "migration."
 msgstr ""
-"WP RSS Aggregator 的订阅源仍是旧的（v4）格式。请先打开 WP RSS Aggregator，让"
-"它把订阅源迁移到 v5，然后再执行本次迁移。"
+"WP RSS Aggregator 的 Feed 仍是旧的（v4）格式。请先打开 WP RSS Aggregator，让"
+"它把 Feed 迁移到 v5，然后再执行本次迁移。"
 
 #: includes/migration/importers/class-migrator-wp-rss-aggregator.php:1221
 msgid "No WP RSS Aggregator feed sources found."
-msgstr "未找到 WP RSS Aggregator 的订阅源。"
+msgstr "未找到 WP RSS Aggregator 的 Feed。"
 
 #. translators: %d: number of skipped display-only feeds.
 #: includes/migration/importers/class-migrator-wp-rss-aggregator.php:131
@@ -6284,8 +6302,8 @@ msgid_plural ""
 "Skipped %d display-only feeds: install the WPeMatico RSS Feed Reader addon "
 "and run the migration again to import them."
 msgstr[0] ""
-"已跳过 %d 个仅用于展示的订阅源：请安装 WPeMatico RSS Feed Reader 扩展，然后重"
-"新运行迁移以导入它们。"
+"已跳过 %d 个仅用于展示的 Feed：请安装 WPeMatico RSS Feed Reader 附加组件，然"
+"后重新运行迁移以导入它们。"
 
 #. translators: %d: number of campaigns imported deactivated.
 #: includes/migration/importers/class-migrator-wp-rss-aggregator.php:144
@@ -6298,7 +6316,7 @@ msgid_plural ""
 "<strong>create posts</strong>, so they were imported deactivated. Review "
 "them and activate their scheduling when you are ready."
 msgstr[0] ""
-"原本在 WP RSS Aggregator 中运行的 %d 个订阅源变成了会<strong>创建文章</"
+"原本在 WP RSS Aggregator 中运行的 %d 个 Feed 变成了会<strong>创建文章</"
 "strong>的采集任务，因此导入后处于停用状态。请检查它们，准备好后再启用其计划。"
 
 #: includes/migration/importers/class-migrator-wp-rss-aggregator.php:262
@@ -6312,23 +6330,24 @@ msgstr ""
 msgid ""
 "Uses the source's fallback featured image as the campaign default featured "
 "image."
-msgstr "把来源的备用特色图片用作采集任务的默认特色图片。"
+msgstr "把来源的备用精选图片用作采集任务的默认精选图片。"
 
 #: includes/migration/importers/class-migrator-wp-rss-aggregator.php:276
 msgid "Import full content from truncated feeds"
-msgstr "从截断的订阅源导入全文"
+msgstr "从截断的 Feed 导入全文"
 
 #: includes/migration/importers/class-migrator-wp-rss-aggregator.php:277
 msgid ""
 "Recreates WP RSS Aggregator's full-text import with the WPeMatico Full "
 "Content addon."
-msgstr "用 WPeMatico Full Content 扩展重建 WP RSS Aggregator 的全文导入。"
+msgstr "用 WPeMatico Full Content 附加组件重建 WP RSS Aggregator 的全文导入。"
 
 #: includes/migration/importers/class-migrator-wp-rss-aggregator.php:284
 msgid ""
 "Recreates WP RSS Aggregator's spin/AI rewrite with the WPeMatico GPT Spinner "
 "addon."
-msgstr "用 WPeMatico GPT Spinner 扩展重建 WP RSS Aggregator 的伪原创/AI 改写。"
+msgstr ""
+"用 WPeMatico GPT Spinner 附加组件重建 WP RSS Aggregator 的伪原创/AI 重写。"
 
 #: includes/migration/importers/class-migrator-wp-rss-aggregator.php:288
 msgid ""
@@ -6354,15 +6373,15 @@ msgid ""
 "Install the addon later and re-import this plugin to fill in the missing "
 "fields."
 msgstr ""
-"没有所需扩展你现在也可以导入——不会丢失任何来源数据。之后安装该扩展并重新导入"
-"这个插件，即可补上缺失的字段。"
+"没有所需附加组件你现在也可以导入——不会丢失任何来源数据。之后安装该附加组件并"
+"重新导入这个插件，即可补上缺失的字段。"
 
 #: includes/migration/views/migration-box.php:166
 msgid ""
 "Moving from another RSS importing plugin? Select it below to recreate its "
 "feeds as WPeMatico campaigns in a couple of clicks."
 msgstr ""
-"从别的 RSS 导入插件迁移过来？在下面选择它，几次点击即可把它的订阅源重建为 "
+"从别的 RSS 导入插件迁移过来？在下面选择它，几次点击即可把它的 Feed 重建为 "
 "WPeMatico 采集任务。"
 
 #: includes/migration/views/migration-box.php:182
@@ -6438,8 +6457,8 @@ msgid_plural ""
 "WPeMatico RSS Feed Reader addon to import them — without it there is nothing "
 "to import."
 msgstr[0] ""
-"这 %d 个订阅源都只展示条目（不会创建文章）。请添加免费的 WPeMatico RSS Feed "
-"Reader 扩展以导入它们——没有它就无内容可导入。"
+"这 %d 个 Feed 都只展示项目（不会创建文章）。请添加免费的 WPeMatico RSS Feed "
+"Reader 附加组件以导入它们——没有它就无内容可导入。"
 
 #: includes/migration/views/migration-box.php:308
 msgid ""
@@ -6449,8 +6468,8 @@ msgid_plural ""
 "%d of these feeds only display items (they do not create posts). To import "
 "them you need the free WPeMatico RSS Feed Reader addon."
 msgstr[0] ""
-"其中 %d 个订阅源只展示条目（不会创建文章）。要导入它们，你需要免费的 "
-"WPeMatico RSS Feed Reader 扩展。"
+"其中 %d 个 Feed 只展示项目（不会创建文章）。要导入它们，你需要免费的 "
+"WPeMatico RSS Feed Reader 附加组件。"
 
 #: includes/migration/views/migration-box.php:324
 msgid "Activate RSS Feed Reader"
@@ -6462,7 +6481,7 @@ msgstr "安装并启用 RSS Feed Reader"
 
 #: includes/migration/views/migration-box.php:330
 msgid "…or import now and skip the display-only feeds."
-msgstr "…或者现在就导入，跳过仅用于展示的订阅源。"
+msgstr "…或者现在就导入，跳过仅用于展示的 Feed。"
 
 #: includes/migration/views/migration-box.php:340
 msgid "Import"
@@ -6481,8 +6500,8 @@ msgid ""
 "No data from a supported plugin was found on this site. Set up feeds in a "
 "supported plugin and its importer will show up here automatically."
 msgstr ""
-"本站未发现任何受支持插件的数据。在受支持的插件中配置订阅源，它的导入器就会自"
-"动出现在这里。"
+"本站未发现任何受支持插件的数据。在受支持的插件中配置 Feed，它的导入器就会自动"
+"出现在这里。"
 
 #: includes/migration/views/migration-box.php:365
 msgid ""
@@ -6520,7 +6539,7 @@ msgstr "正在加载预览…"
 
 #: includes/migration/views/migration-box.php:420
 msgid "Feed URL(s)"
-msgstr "订阅源网址"
+msgstr "Feed 网址"
 
 #: includes/migration/views/migration-box.php:431
 msgid "Start migration"
@@ -6528,13 +6547,13 @@ msgstr "开始迁移"
 
 #: includes/migration/views/migration-box.php:59
 msgid "Import campaigns &amp; feeds"
-msgstr "导入采集任务与订阅源"
+msgstr "导入采集任务与 Feed"
 
 #: includes/migration/views/migration-box.php:62
 msgid ""
 "Campaigns that create posts are imported deactivated, whether or not the "
 "feed was running."
-msgstr "会创建文章的采集任务一律以停用状态导入，无论原订阅源是否在运行。"
+msgstr "会创建文章的采集任务一律以停用状态导入，无论原 Feed 是否在运行。"
 
 #: includes/migration/views/migration-box.php:68
 msgid "the source plugin"
@@ -6542,7 +6561,7 @@ msgstr "源插件"
 
 #: includes/migration/views/migration-box.php:73
 msgid "Keep the feeds of a group together in one campaign"
-msgstr "把一个分组的订阅源放在同一个采集任务里"
+msgstr "把一个分组的 Feed 放在同一个采集任务里"
 
 #: includes/migration/views/migration-box.php:78
 msgid ""
@@ -6550,7 +6569,7 @@ msgid ""
 "own. Unchecked, each feed of the group becomes its own campaign."
 msgstr ""
 "分组是通过使用它的 %s 导入任务被导入的，绝不会单独导入。不勾选时，分组中的每"
-"个订阅源各自成为一个采集任务。"
+"个 Feed 各自成为一个采集任务。"
 
 #: includes/migration/views/migration-box.php:96
 msgid "Requires %s"
@@ -6558,7 +6577,7 @@ msgstr "需要 %s"
 
 #: includes/module/actions.php:137
 msgid "Feed to Post"
-msgstr "订阅源转文章"
+msgstr "Feed 转文章"
 
 #: includes/module/actions.php:138
 msgid "AutoBlogging: Automated content curation system."
@@ -6566,7 +6585,7 @@ msgstr "自动采集：自动化的内容整理系统。"
 
 #: includes/module/actions.php:144
 msgid "Used by default as Feed Fetcher Campaign Type."
-msgstr "默认作为“订阅源采集”这一采集任务类型使用。"
+msgstr "默认作为“Feed 采集”这一采集任务类型使用。"
 
 #: includes/module/actions.php:147
 msgid "Plugin Importers"
@@ -6575,7 +6594,7 @@ msgstr "插件导入器"
 #: includes/module/actions.php:148
 msgid ""
 "Bring the feeds and settings of another RSS importing plugin into WPeMatico."
-msgstr "把其他 RSS 导入插件的订阅源和设置搬进 WPeMatico。"
+msgstr "把其他 RSS 导入插件的 Feed 和设置搬进 WPeMatico。"
 
 #: includes/module/actions.php:155
 msgid "bbPress"
@@ -6601,7 +6620,7 @@ msgstr "创建发布视频内容的采集任务。"
 msgid ""
 "Downloads the video and audio files of each item into the WordPress uploads "
 "folder."
-msgstr "把每个条目的视频和音频文件下载到 WordPress 的上传目录。"
+msgstr "把每个项目的视频和音频文件下载到 WordPress 的上传文件夹。"
 
 #: includes/module/actions.php:175
 msgid "Feeds XML"
@@ -6609,7 +6628,7 @@ msgstr "Feeds XML"
 
 #: includes/module/actions.php:176
 msgid "Import content from XML feeds with custom structures."
-msgstr "从结构自定义的 XML 订阅源导入内容。"
+msgstr "从结构自定义的 XML Feed 导入内容。"
 
 #: includes/module/actions.php:181
 msgid "Adds the XML file type to the ones WordPress accepts on upload."
@@ -6625,7 +6644,7 @@ msgid ""
 "channel or group and the campaign finds its feed on its own."
 msgstr ""
 "把 Vimeo 加入采集任务类型列表。粘贴个人主页、频道或群组的地址，采集任务会自行"
-"找到其订阅源。"
+"找到其 Feed。"
 
 #: includes/module/actions.php:195
 msgid "Import videos from YouTube channels."
@@ -6661,7 +6680,7 @@ msgstr "下载图片"
 
 #: includes/module/actions.php:223
 msgid "Download the images of each item into the WordPress Media Library."
-msgstr "把每个条目的图片下载到 WordPress 媒体库。"
+msgstr "把每个项目的图片下载到 WordPress 媒体库。"
 
 #: includes/module/actions.php:228
 msgid ""
@@ -6671,20 +6690,20 @@ msgstr "在此开启；尺寸、质量和命名选项在设置页面中。"
 
 #: includes/module/actions.php:231
 msgid "Featured Images"
-msgstr "特色图片"
+msgstr "精选图片"
 
 #: includes/module/actions.php:232
 msgid ""
 "Give every imported post a featured image, taken from the first image of the "
 "item."
-msgstr "为每篇导入的文章配一张特色图片，取自条目的第一张图片。"
+msgstr "为每篇导入的文章配一张精选图片，取自项目的第一张图片。"
 
 #: includes/module/actions.php:237
 msgid ""
 "Each campaign can override it, and the Featured Image from URL module "
 "decides whether the image is downloaded or linked."
 msgstr ""
-"每个采集任务都可以覆盖此设置，而“来自网址的特色图片”模块决定图片是下载还是直"
+"每个采集任务都可以覆盖此设置，而“来自网址的精选图片”模块决定图片是下载还是直"
 "接链接。"
 
 #: includes/module/actions.php:241
@@ -6707,21 +6726,21 @@ msgstr "随机相册"
 msgid ""
 "Group images by topic and give each post a featured image picked at random "
 "from its gallery."
-msgstr "按主题给图片分组，并为每篇文章从其相册中随机挑一张特色图片。"
+msgstr "按主题给图片分组，并为每篇文章从其相册中随机挑一张精选图片。"
 
 #: includes/module/actions.php:258 includes/module/actions.php:269
 #: includes/module/actions.php:652 includes/module/actions.php:664
 #: includes/module/actions.php:687
 msgid "Available in the Professional addon."
-msgstr "在 Professional 扩展中提供。"
+msgstr "在 Professional 附加组件中提供。"
 
 #: includes/module/actions.php:261
 msgid "Random Rewrites"
-msgstr "随机改写"
+msgstr "随机重写"
 
 #: includes/module/actions.php:262
 msgid "Rewrite custom words randomly as synonyms."
-msgstr "把指定词语随机改写为同义词。"
+msgstr "把指定词语随机重写为同义词。"
 
 #: includes/module/actions.php:266
 msgid ""
@@ -6744,7 +6763,7 @@ msgstr "%s 尚未安装。可从这里免费安装，之后此开关便可开启
 
 #: includes/module/actions.php:322
 msgid "Needs the %s addon. Get it at etruel.com and this switch enables it."
-msgstr "需要 %s 扩展。在 etruel.com 获取后，此开关即可启用它。"
+msgstr "需要 %s 附加组件。在 etruel.com 获取后，此开关即可启用它。"
 
 #: includes/module/actions.php:361 includes/module/actions.php:435
 msgid ""
@@ -6794,17 +6813,18 @@ msgid ""
 "The addon files each imported post under a language, and languages only "
 "exist while Polylang runs."
 msgstr ""
-"该扩展会把每篇导入文章归到某种语言下，而语言只有在 Polylang 运行时才存在。"
+"该附加组件会把每篇导入文章归到某种语言下，而语言只有在 Polylang 运行时才存"
+"在。"
 
 #: includes/module/actions.php:544
 msgid "RSS Items Aggregator"
-msgstr "RSS 条目聚合器"
+msgstr "RSS 项目聚合器"
 
 #: includes/module/actions.php:545
 msgid ""
 "Also known as RSS Feed Reader: shows the items of several feeds inside one "
 "post or page."
-msgstr "也称 RSS Feed Reader：在一篇文章或页面中显示多个订阅源的条目。"
+msgstr "也称 RSS Feed Reader：在一篇文章或页面中显示多个 Feed 的项目。"
 
 #: includes/module/actions.php:550
 msgid "Installs the free WPeMatico RSS Feed Reader plugin from WordPress.org."
@@ -6817,15 +6837,15 @@ msgstr "需要 WPeMatico RSS Feed Reader"
 #: includes/module/actions.php:561
 msgid ""
 "Use the image at its original URL as featured image, without downloading it."
-msgstr "直接使用原始网址上的图片作为特色图片，不下载它。"
+msgstr "直接使用原始网址上的图片作为精选图片，不下载它。"
 
 #: includes/module/actions.php:568
 msgid ""
 "Featured Images is off, so nothing picks the image to link — unless an addon "
 "such as Professional or Full Content supplies one."
 msgstr ""
-"“特色图片”已关闭，因此没有任何环节去挑选要链接的图片——除非有 Professional 或 "
-"Full Content 这类扩展提供。"
+"“精选图片”已关闭，因此没有任何环节去挑选要链接的图片——除非有 Professional 或 "
+"Full Content 这类附加组件提供。"
 
 #: includes/module/actions.php:569
 msgid ""
@@ -6838,7 +6858,7 @@ msgid ""
 "WPeMatico stores the image URL on each post; that plugin is what turns it "
 "into the featured image WordPress shows."
 msgstr ""
-"WPeMatico 会把图片网址保存在每篇文章上；把它变成 WordPress 显示的特色图片，靠"
+"WPeMatico 会把图片网址保存在每篇文章上；把它变成 WordPress 显示的精选图片，靠"
 "的是那个插件。"
 
 #: includes/module/actions.php:589
@@ -6852,13 +6872,13 @@ msgstr "所选分类中的文章达到设定的时长后自动删除。"
 
 #: includes/module/actions.php:596
 msgid "Helpful if you want to remove stale or old items automatically."
-msgstr "如果你想自动清理过时或陈旧的条目，这很有用。"
+msgstr "如果你想自动清理过时或陈旧的项目，这很有用。"
 
 #: includes/module/actions.php:604
 msgid ""
 "The addon extends that free plugin, the same one the Delete Duplicates card "
 "installs."
-msgstr "该扩展基于那个免费插件，也就是“删除重复文章”卡片所安装的那一个。"
+msgstr "该附加组件基于那个免费插件，也就是“删除重复文章”卡片所安装的那一个。"
 
 #: includes/module/actions.php:609
 msgid "Polyglot"
@@ -6872,7 +6892,7 @@ msgstr "用多种免费或付费翻译引擎之一翻译采集到的内容。"
 
 #: includes/module/actions.php:617
 msgid "Requires WPeMatico Polyglot addon"
-msgstr "需要 WPeMatico Polyglot 扩展"
+msgstr "需要 WPeMatico Polyglot 附加组件"
 
 #: includes/module/actions.php:621
 msgid "GPT Spinner AI"
@@ -6880,11 +6900,11 @@ msgstr "GPT Spinner AI"
 
 #: includes/module/actions.php:622
 msgid "Rewrite the fetched content automatically through an AI or spinner API."
-msgstr "通过 AI 或伪原创 API 自动改写采集到的内容。"
+msgstr "通过 AI 或伪原创 API 自动重写采集到的内容。"
 
 #: includes/module/actions.php:629
 msgid "Requires AI addon"
-msgstr "需要 AI 扩展"
+msgstr "需要 AI 附加组件"
 
 #: includes/module/actions.php:633
 msgid "Full Contents"
@@ -6896,7 +6916,7 @@ msgstr "启用从每个来源网站提取全文。"
 
 #: includes/module/actions.php:641
 msgid "Requires WPeMatico Full Content addon"
-msgstr "需要 WPeMatico Full Content 扩展"
+msgstr "需要 WPeMatico Full Content 附加组件"
 
 #: includes/module/actions.php:645
 msgid "Bulk Add Sources"
@@ -6905,7 +6925,7 @@ msgstr "批量添加来源"
 #: includes/module/actions.php:646
 msgid ""
 "Paste or upload a list of feeds to add many sources to a campaign at once."
-msgstr "粘贴或上传一份订阅源清单，一次为采集任务添加许多来源。"
+msgstr "粘贴或上传一份 Feed 清单，一次为采集任务添加许多来源。"
 
 #: includes/module/actions.php:653
 msgid "A Professional feature, you can activate it here."
@@ -6918,7 +6938,7 @@ msgstr "关键词筛选"
 #: includes/module/actions.php:658
 msgid ""
 "Keep or skip each item by the keywords found in its title or its content."
-msgstr "根据标题或内容中的关键词，保留或跳过每个条目。"
+msgstr "根据标题或内容中的关键词，保留或跳过每个项目。"
 
 #: includes/module/actions.php:668
 msgid "Facebook Source"
@@ -6930,7 +6950,7 @@ msgstr "从 Facebook 主页和群组导入内容。"
 
 #: includes/module/actions.php:676
 msgid "Requires Facebook Campaign addon"
-msgstr "需要 Facebook Campaign 扩展"
+msgstr "需要 Facebook Campaign 附加组件"
 
 #: includes/module/actions.php:680
 msgid "Export/Import Campaigns"
@@ -6947,11 +6967,11 @@ msgstr "Feed Creator"
 #: includes/module/actions.php:692
 msgid ""
 "Generate custom RSS feeds from external webpages to fetch with WPeMatico."
-msgstr "从外部网页生成自定义 RSS 订阅源，供 WPeMatico 采集。"
+msgstr "从外部网页生成自定义 RSS Feed，供 WPeMatico 采集。"
 
 #: includes/module/actions.php:699
 msgid "Requires \"Make Me Feed\" addon"
-msgstr "需要 “Make Me Feed” 扩展"
+msgstr "需要 “Make Me Feed” 附加组件"
 
 #: includes/module/actions.php:703
 msgid "Publish To Email"
@@ -6967,7 +6987,7 @@ msgstr ""
 
 #: includes/module/actions.php:711
 msgid "Requires Email Campaign addon"
-msgstr "需要 Email Campaign 扩展"
+msgstr "需要 Email Campaign 附加组件"
 
 #: includes/module/actions.php:715
 msgid "Better Excerpts"
@@ -6982,7 +7002,7 @@ msgstr ""
 
 #: includes/module/actions.php:723
 msgid "Requires Better Excerpts addon"
-msgstr "需要 Better Excerpts 扩展"
+msgstr "需要 Better Excerpts 附加组件"
 
 #: includes/module/actions.php:727
 msgid "Synchronizer"
@@ -6996,7 +7016,7 @@ msgstr "当来源文章有变动时更新已导入的文章，而不是再发布
 
 #: includes/module/actions.php:735
 msgid "Requires Synchronizer addon"
-msgstr "需要 Synchronizer 扩展"
+msgstr "需要 Synchronizer 附加组件"
 
 #: includes/module/actions.php:739
 msgid "Manual Fetching"
@@ -7006,11 +7026,11 @@ msgstr "手动采集"
 msgid ""
 "See the items each feed will bring, and publish the ones you choose one by "
 "one or in bulk."
-msgstr "查看每个订阅源将带来哪些条目，并逐条或批量发布你挑选的内容。"
+msgstr "查看每个 Feed 将带来哪些项目，并逐条或批量发布你挑选的内容。"
 
 #: includes/module/actions.php:747
 msgid "Requires Manual Fetching addon"
-msgstr "需要 Manual Fetching 扩展"
+msgstr "需要 Manual Fetching 附加组件"
 
 #: includes/module/actions.php:751
 msgid "Exporter"
@@ -7026,7 +7046,7 @@ msgstr ""
 
 #: includes/module/actions.php:759
 msgid "Requires Exporter addon"
-msgstr "需要 Exporter 扩展"
+msgstr "需要 Exporter 附加组件"
 
 #: includes/module/actions.php:763
 msgid "Office"
@@ -7040,11 +7060,11 @@ msgstr "用服务器某个文件夹中的 .docx 和 PDF 文件发布文章，连
 
 #: includes/module/actions.php:771
 msgid "Requires Office Campaign addon"
-msgstr "需要 Office Campaign 扩展"
+msgstr "需要 Office Campaign 附加组件"
 
 #: includes/module/actions.php:779
 msgid "Rewrite Rules"
-msgstr "改写规则"
+msgstr "重写规则"
 
 #: includes/module/actions.php:780
 msgid "Search and replace words or HTML in the fetched content, per campaign."
@@ -7137,7 +7157,7 @@ msgstr "WordPress.org 仓库中提供的免费插件"
 
 #: includes/module/manager.php:146
 msgid "Professional addon is available at etruel.com"
-msgstr "Professional 扩展可在 etruel.com 获取"
+msgstr "Professional 附加组件可在 etruel.com 获取"
 
 #: includes/module/manager.php:147
 msgid "New feature recently added"
@@ -7149,7 +7169,7 @@ msgstr "实验性功能——请谨慎使用"
 
 #: includes/module/manager.php:150
 msgid "Additional functionality available by AddOn at etruel.com"
-msgstr "附加功能，可在 etruel.com 以扩展形式获取"
+msgstr "附加功能，可在 etruel.com 以附加组件形式获取"
 
 #: includes/module/manager.php:151
 msgid ""
@@ -7159,7 +7179,7 @@ msgstr "该插件已安装在本站：用开关将其打开或关闭"
 #: includes/module/manager.php:157
 msgid ""
 "Part of an addon you already have: the switch turns the feature on or off"
-msgstr "属于你已拥有的扩展：开关用于打开或关闭该功能"
+msgstr "属于你已拥有的附加组件：开关用于打开或关闭该功能"
 
 #: includes/module/manager.php:219
 msgid "GET IT"
@@ -7351,11 +7371,11 @@ msgstr "无。"
 
 #: includes/plugin_functions.php:322
 msgid "Open Extensions plugins page:"
-msgstr "打开扩展插件页面："
+msgstr "打开附加组件插件页面："
 
 #: includes/plugin_functions.php:322
 msgid "Installed Extensions:"
-msgstr "已安装的扩展："
+msgstr "已安装的附加组件："
 
 #: includes/plugin_functions.php:339
 msgid "Load WPeMatico Settings Page"
@@ -7363,7 +7383,7 @@ msgstr "加载 WPeMatico 设置页面"
 
 #: includes/plugin_functions.php:340
 msgid "Take a look at all the bundled add-ons"
-msgstr "看看套装中的全部扩展"
+msgstr "看看套装中的全部附加组件"
 
 #: includes/plugin_functions.php:340 includes/settings/widgets.php:377
 msgid "Go Perfect"
@@ -7443,7 +7463,7 @@ msgstr "高级"
 
 #: includes/settings/functions.php:30
 msgid "Backend Tools"
-msgstr "后台工具"
+msgstr "后端工具"
 
 #: includes/settings/functions.php:58
 msgid "Hide/Show menu."
@@ -7476,8 +7496,8 @@ msgid ""
 "A copy of every video found in the feed item (only in %s tags) is saved to "
 "your Uploads folder. Off, videos stay on the source server."
 msgstr ""
-"条目中的每个视频（仅限 %s 标签内）都会复制一份到你的上传目录。关闭时视频仍留"
-"在来源服务器上。"
+"项目中的每个视频（仅限 %s 标签内）都会复制一份到你的上传文件夹。关闭时视频仍"
+"留在来源服务器上。"
 
 #: includes/settings/help.php:121
 msgid ""
@@ -7530,7 +7550,7 @@ msgid ""
 "own."
 msgstr ""
 "把 Vimeo 加入采集类型列表，用于发布某个 Vimeo 用户、频道或群组的视频。粘贴地"
-"址，采集任务会自行找到它的订阅源。"
+"址，采集任务会自行找到它的 Feed。"
 
 #: includes/settings/help.php:157
 msgid ""
@@ -7575,8 +7595,7 @@ msgid ""
 "SimplePie gives up most of its sanitizing in exchange for speed: the feed "
 "content arrives with no parsers and no filters."
 msgstr ""
-"SimplePie 为了速度放弃了大部分净化：订阅源内容不经解析器、也不经过滤器就送"
-"达。"
+"SimplePie 为了速度放弃了大部分净化：Feed 内容不经解析器、也不经过滤器就送达。"
 
 #: includes/settings/help.php:173
 msgid ""
@@ -7584,7 +7603,7 @@ msgid ""
 "through. Use it only with feeds you trust; otherwise set the allowed tags "
 "and attributes below."
 msgstr ""
-"正文不会被删减：所有 HTML、样式和脚本都会通过。只用于你信任的订阅源；否则请在"
+"正文不会被删减：所有 HTML、样式和脚本都会通过。只用于你信任的 Feed；否则请在"
 "下面设定允许的标签和属性。"
 
 #: includes/settings/help.php:176 includes/settings/page.php:436
@@ -7596,7 +7615,7 @@ msgid ""
 "SimplePie removes these tags from the feed content. Take one out to let it "
 "through, for example iframe to keep embedded videos."
 msgstr ""
-"SimplePie 会从订阅源正文中移除这些标签。把某个移出列表即可放行，例如保留 "
+"SimplePie 会从 Feed 正文中移除这些标签。把某个移出列表即可放行，例如保留 "
 "iframe 以留住内嵌视频。"
 
 #: includes/settings/help.php:180 includes/settings/page.php:446
@@ -7620,7 +7639,7 @@ msgid ""
 "Adds a switch to every campaign that stores the feed content exactly as it "
 "comes, scripts included. Use it only with sources you trust."
 msgstr ""
-"为每个采集任务加一个开关，把订阅源正文按原样保存，脚本也一并保留。只用于你信"
+"为每个采集任务加一个开关，把 Feed 正文按原样保存，脚本也一并保留。只用于你信"
 "任的来源。"
 
 #: includes/settings/help.php:188
@@ -7685,12 +7704,12 @@ msgid ""
 "By default each published post carries three custom fields with the campaign "
 "and the source item. Turning this on does not delete the ones already saved."
 msgstr ""
-"默认情况下，每篇发布的文章都带有三个自定义字段，记录采集任务和来源条目。开启"
+"默认情况下，每篇发布的文章都带有三个自定义字段，记录采集任务和来源项目。开启"
 "此项不会删除已保存的字段。"
 
 #: includes/settings/help.php:224 includes/settings/page.php:573
 msgid "Disable WPeMatico schedules"
-msgstr "停用 WPeMatico 的计划任务"
+msgstr "停用 WPeMatico 的定时任务"
 
 #: includes/settings/help.php:225
 msgid ""
@@ -7732,7 +7751,7 @@ msgid ""
 "Stops every scheduled task on the site, WordPress own and other plugins "
 "included. Only do this if an external cron takes over."
 msgstr ""
-"停止站点上所有的计划任务，包括 WordPress 自身和其他插件的。只有在改由外部 "
+"停止站点上所有的定时任务，包括 WordPress 自身和其他插件的。只有在改由外部 "
 "cron 接手时才这样做。"
 
 #: includes/settings/help.php:24
@@ -7748,7 +7767,7 @@ msgid ""
 "Some servers block the way WordPress triggers its schedules. This constant "
 "works around it on almost any server."
 msgstr ""
-"有些服务器会阻断 WordPress 触发计划任务的方式。这个常量几乎在任何服务器上都能"
+"有些服务器会阻断 WordPress 触发定时任务的方式。这个常量几乎在任何服务器上都能"
 "绕开该问题。"
 
 #: includes/settings/help.php:245 includes/settings/page.php:657
@@ -7760,8 +7779,8 @@ msgid ""
 "Writes a \"campaign title.txt.log\" file in the uploads folder with the "
 "steps of each external cron run. Useful while you set the cron up."
 msgstr ""
-"在上传目录里写入「采集任务标题.txt.log」文件，记录每次外部 cron 运行的步骤。"
-"配置 cron 期间很有用。"
+"在上传文件夹里写入「采集任务标题.txt.log」文件，记录每次外部 cron 运行的步"
+"骤。配置 cron 期间很有用。"
 
 #: includes/settings/help.php:25 includes/settings/help.php:86
 #: includes/settings/help.php:115
@@ -7810,14 +7829,14 @@ msgstr "从 WordPress 仪表盘移除 WPeMatico 小工具。"
 
 #: includes/settings/help.php:273 includes/settings/page.php:757
 msgid "Do not check feeds before saving"
-msgstr "保存前不检查订阅源"
+msgstr "保存前不检查 Feed"
 
 #: includes/settings/help.php:274
 msgid ""
 "Saving a campaign no longer tests each feed address first. The campaign "
 "saves faster and a broken address goes unnoticed until it runs."
 msgstr ""
-"保存采集任务时不再逐一测试订阅源地址。保存更快，但失效地址要等到运行时才会被"
+"保存采集任务时不再逐一测试 Feed 地址。保存更快，但失效地址要等到运行时才会被"
 "发现。"
 
 #: includes/settings/help.php:277 includes/settings/page.php:766
@@ -7829,7 +7848,7 @@ msgid ""
 "Adds a link on the campaigns list that clears the duplicate hashes of every "
 "feed in a campaign, so its items can be published again."
 msgstr ""
-"在采集任务列表中加入一个链接，清除该任务所有订阅源的重复哈希，使其内容可以再"
+"在采集任务列表中加入一个链接，清除该任务所有 Feed 的重复哈希，使其内容可以再"
 "次发布。"
 
 #: includes/settings/help.php:281 includes/settings/page.php:775
@@ -7870,25 +7889,25 @@ msgstr ""
 
 #: includes/settings/help.php:297 includes/settings/page.php:821
 msgid "Do not load the Extensions page"
-msgstr "不加载扩展页面"
+msgstr "不加载附加组件页面"
 
 #: includes/settings/help.php:298
 msgid "The Extensions menu stops asking our site for the add-on catalogue."
-msgstr "「扩展」菜单不再向我们的站点请求扩展目录。"
+msgstr "「附加组件」菜单不再向我们的站点请求附加组件目录。"
 
 #: includes/settings/help.php:299
 msgid ""
 "You will see an empty page, or only the extensions you already have "
 "installed."
-msgstr "你会看到空白页面，或只看到已安装的扩展。"
+msgstr "你会看到空白页面，或只看到已安装的附加组件。"
 
 #: includes/settings/help.php:30
 msgid ""
 "A copy of every image found in the feed item (only in %s tags) is saved to "
 "your Uploads folder. Off, images stay on the source server."
 msgstr ""
-"条目中的每张图片（仅限 %s 标签内）都会复制一份到你的上传目录。关闭时图片仍留"
-"在来源服务器上。"
+"项目中的每张图片（仅限 %s 标签内）都会复制一份到你的上传文件夹。关闭时图片仍"
+"留在来源服务器上。"
 
 #: includes/settings/help.php:302 includes/settings/page.php:784
 msgid "Enable XML uploads"
@@ -7909,7 +7928,7 @@ msgid ""
 "Turns entities such as &amp;amp; back into their character before the post "
 "is saved. Useful with feeds that encode the content twice."
 msgstr ""
-"在保存文章前把 &amp;amp; 这类实体还原为字符。适用于把内容编码了两次的订阅源。"
+"在保存文章前把 &amp;amp; 这类实体还原为字符。适用于把内容编码了两次的 Feed。"
 
 #: includes/settings/help.php:31
 msgid ""
@@ -7938,7 +7957,7 @@ msgstr "在你的收件箱里显示在该地址旁边的名称。"
 
 #: includes/settings/help.php:329
 msgid "Features available with the Professional add-on."
-msgstr "Professional 扩展提供的功能。"
+msgstr "Professional 附加组件提供的功能。"
 
 #: includes/settings/help.php:330
 msgid ""
@@ -7972,26 +7991,26 @@ msgstr "为每篇文章添加自定义字段，其值为模板标签。"
 msgid ""
 "Full Content is the add-on that fetches the whole article from the source "
 "site when the feed only carries a summary."
-msgstr "当订阅源只提供摘要时，Full Content 这个扩展会从来源站点取回全文。"
+msgstr "当 Feed 只提供摘要时，Full Content 这个附加组件会从来源站点取回全文。"
 
 #: includes/settings/help.php:336
 msgid ""
 "Set an author per feed when editing a campaign. Feeds with no author of "
 "their own use the campaign author."
 msgstr ""
-"编辑采集任务时为每个订阅源设定作者。没有独立作者的订阅源沿用采集任务的作者。"
+"编辑采集任务时为每个 Feed 设定作者。没有独立作者的 Feed 沿用采集任务的作者。"
 
 #: includes/settings/help.php:337
 msgid ""
 "Paste a list of feed addresses, with or without author names, straight into "
 "the campaign."
-msgstr "把一批订阅源地址（可带或不带作者名）直接粘贴进采集任务。"
+msgstr "把一批 Feed 地址（可带或不带作者名）直接粘贴进采集任务。"
 
 #: includes/settings/help.php:35
 msgid ""
 "Every downloaded image is added to the Media library and attached to its "
 "post. Needed for the featured image."
-msgstr "每张下载的图片都会进入媒体库并附加到所属文章。特色图片需要它。"
+msgstr "每张下载的图片都会进入媒体库并附加到所属文章。精选图片需要它。"
 
 #: includes/settings/help.php:36 includes/settings/help.php:97
 #: includes/settings/help.php:126
@@ -8026,13 +8045,13 @@ msgstr "该插件未启用时，WPeMatico 仍会写入自己的元字段，其�
 
 #: includes/settings/help.php:65
 msgid "The image used as featured is stripped from the post content."
-msgstr "用作特色图片的那张会从文章正文中移除。"
+msgstr "用作精选图片的那张会从文章正文中移除。"
 
 #: includes/settings/help.php:66
 msgid ""
 "Useful when your theme already prints the featured image and you would "
 "otherwise see it twice."
-msgstr "当主题已经显示特色图片、否则你会看到两次时很有用。"
+msgstr "当主题已经显示精选图片、否则你会看到两次时很有用。"
 
 #: includes/settings/help.php:71
 msgid ""
@@ -8058,8 +8077,8 @@ msgid ""
 "A copy of every audio found in the feed item (only in %s tags) is saved to "
 "your Uploads folder. Off, audios stay on the source server."
 msgstr ""
-"条目中的每个音频（仅限 %s 标签内）都会复制一份到你的上传目录。关闭时音频仍留"
-"在来源服务器上。"
+"项目中的每个音频（仅限 %s 标签内）都会复制一份到你的上传文件夹。关闭时音频仍"
+"留在来源服务器上。"
 
 #: includes/settings/help.php:92
 msgid ""
@@ -8083,7 +8102,8 @@ msgstr "引导教程"
 msgid ""
 "Shows a short tour the first time you open each WPeMatico screen. Only for "
 "your user."
-msgstr "首次打开每个 WPeMatico 界面时显示一段简短的引导教程。仅对你的用户生效。"
+msgstr ""
+"首次打开每个 WPeMatico 界面时显示一段简短的引导教程。仅对你的用户生效。"
 
 #: includes/settings/page.php:1034
 msgid "Highlights of the new release"
@@ -8144,7 +8164,7 @@ msgstr "如果你启用了我们的某个高级插件，就在这里填写它的
 
 #: includes/settings/page.php:134 includes/lib/licenses_handlers.php:320
 msgid "See some of the WPeMatico Add-ons in the"
-msgstr "在此查看部分 WPeMatico 扩展："
+msgstr "在此查看部分 WPeMatico 附加组件："
 
 #: includes/settings/page.php:164 includes/settings/page.php:289
 #: includes/settings/page.php:353 includes/settings/page.php:418
@@ -8160,12 +8180,12 @@ msgstr "图片的全局设置"
 
 #: includes/settings/page.php:251
 msgid "Allowed image extensions"
-msgstr "允许的图片扩展名"
+msgstr "允许的图片附加组件名"
 
 #: includes/settings/page.php:254 includes/settings/page.php:342
 #: includes/settings/page.php:407
 msgid "Separate the allowed extensions with commas."
-msgstr "允许的扩展名之间用逗号隔开。"
+msgstr "允许的附加组件名之间用逗号隔开。"
 
 #: includes/settings/page.php:255
 msgid "WordPress image types:"
@@ -8192,8 +8212,8 @@ msgid ""
 "nothing picks the image to link &mdash; unless an addon such as Professional "
 "or Full Content supplies one."
 msgstr ""
-"&ldquo;把内容中的第一张图片设为特色图片。&rdquo;已关闭，因此没有任何环节去挑"
-"选要链接的图片 &mdash; 除非有 Professional 或 Full Content 这类扩展提供。"
+"&ldquo;把内容中的第一张图片设为精选图片。&rdquo;已关闭，因此没有任何环节去挑"
+"选要链接的图片 &mdash; 除非有 Professional 或 Full Content 这类附加组件提供。"
 
 #: includes/settings/page.php:292
 msgid "Global Settings for Videos"
@@ -8205,7 +8225,7 @@ msgstr "权限校验失败"
 
 #: includes/settings/page.php:340
 msgid "Allowed video extensions"
-msgstr "允许的视频扩展名"
+msgstr "允许的视频附加组件名"
 
 #: includes/settings/page.php:343
 msgid "WordPress video types:"
@@ -8217,7 +8237,7 @@ msgstr "音频的全局设置"
 
 #: includes/settings/page.php:404
 msgid "Allowed audio extensions"
-msgstr "允许的音频扩展名"
+msgstr "允许的音频附加组件名"
 
 #: includes/settings/page.php:408
 msgid "WordPress audio types:"
@@ -8235,7 +8255,7 @@ msgstr "高级采集"
 msgid ""
 "Dangerous: the content is stored exactly as the feed sends it, scripts "
 "included."
-msgstr "危险：正文会按订阅源发来的原样保存，脚本也一并保留。"
+msgstr "危险：正文会按 Feed 发来的原样保存，脚本也一并保留。"
 
 #: includes/settings/page.php:478
 msgid "Timeout for a running campaign:"
@@ -8303,7 +8323,7 @@ msgstr "启用功能"
 
 #: includes/settings/page.php:693
 msgid "Enable \"Rewrite\""
-msgstr "启用「改写」"
+msgstr "启用「重写」"
 
 #: includes/settings/page.php:702
 msgid "Enable \"Words to Categories\""
@@ -8322,8 +8342,8 @@ msgid ""
 "Reading Vimeo through its API — past the 10-video cap of the feed, with "
 "sorting and your private videos — comes with Professional."
 msgstr ""
-"通过 Vimeo 的 API 读取内容——突破订阅源 10 个视频的上限，支持排序并包含你的私"
-"有视频——需要 Professional。"
+"通过 Vimeo 的 API 读取内容——突破 Feed 10 个视频的上限，支持排序并包含你的私有"
+"视频——需要 Professional。"
 
 #: includes/settings/page.php:750
 msgid "Advanced Actions"
@@ -8375,7 +8395,7 @@ msgstr "评价与指南"
 
 #: includes/settings/widgets.php:200
 msgid "Addons store, FAQs and free support"
-msgstr "扩展商店、常见问题与免费支持"
+msgstr "附加组件商店、常见问题与免费支持"
 
 #: includes/settings/widgets.php:208
 msgid "Improve your Experience"
@@ -8399,7 +8419,7 @@ msgstr "PREMIUM"
 
 #: includes/settings/widgets.php:213
 msgid "Most powerfull addons"
-msgstr "最强大的扩展"
+msgstr "最强大的附加组件"
 
 #: includes/settings/widgets.php:213
 msgid "PLUS"
@@ -8439,7 +8459,7 @@ msgstr "扩展功能"
 
 #: includes/settings/widgets.php:267
 msgid "Many AddOns make up the %s with the most wanted features."
-msgstr "众多扩展共同组成了 %s，带来最受欢迎的功能。"
+msgstr "众多附加组件共同组成了 %s，带来最受欢迎的功能。"
 
 #: includes/settings/widgets.php:271
 msgid ""
@@ -8447,7 +8467,7 @@ msgid ""
 "custom feed tags and much more extends in the WPeMatico free plugin, going "
 "further than RSS feed limits and takes you to a new experience."
 msgstr ""
-"内容、图片、标签、过滤器、自定义字段、自定义订阅源标签等数十项新功能扩展了免"
+"内容、图片、标签、过滤器、自定义字段、自定义 Feed 标签等数十项新功能扩展了免"
 "费的 WPeMatico 插件，突破 RSS 的限制，带你进入全新的体验。"
 
 #: includes/settings/widgets.php:274
@@ -8522,11 +8542,11 @@ msgstr "一份会员"
 
 #: includes/settings/widgets.php:374
 msgid "to rule them all"
-msgstr "统御所有扩展"
+msgstr "统御所有附加组件"
 
 #: includes/settings/widgets.php:376
 msgid "Every WPeMatico extension, one licence, one renewal."
-msgstr "所有 WPeMatico 扩展，一份授权，一次续费。"
+msgstr "所有 WPeMatico 附加组件，一份授权，一次续费。"
 
 #: includes/smart_notifications.php:124
 msgid "Rate 5 stars on WordPress"
@@ -8587,8 +8607,8 @@ msgid ""
 "and its addons for your current site into a .json file. The exported file "
 "contains all the relevant settings."
 msgstr ""
-"此功能可将本站点的 WPeMatico 及其扩展的设置导出为 .json 文件，其中包含所有相"
-"关设置。"
+"此功能可将本站点的 WPeMatico 及其附加组件的设置导出为 .json 文件，其中包含所"
+"有相关设置。"
 
 #: includes/tools_help.php:41
 msgid ""
@@ -8647,13 +8667,13 @@ msgstr "导入设置"
 msgid ""
 "The import will overwrite the current configuration of WPeMatico (and its "
 "addons), do you agree?"
-msgstr "导入会覆盖当前的 WPeMatico（及其扩展）配置。你同意吗？"
+msgstr "导入会覆盖当前的 WPeMatico（及其附加组件）配置。你同意吗？"
 
 #. translators: %s Number of feeds, already formatted.
 #: includes/tools_page.php:256
 msgid "%s feed"
 msgid_plural "%s feeds"
-msgstr[0] "%s 个订阅源"
+msgstr[0] "%s 个 Feed"
 
 #: includes/tools_page.php:263
 msgid "First page"
@@ -8681,20 +8701,20 @@ msgstr "最后一页"
 
 #: includes/tools_page.php:289
 msgid "Search feeds:"
-msgstr "搜索订阅源："
+msgstr "搜索 Feed："
 
 #: includes/tools_page.php:291
 msgid "Filter feeds..."
-msgstr "筛选订阅源…"
+msgstr "筛选 Feed…"
 
 #: includes/tools_page.php:292
 msgid "Search feeds"
-msgstr "搜索订阅源"
+msgstr "搜索 Feed"
 
 #: includes/tools_page.php:303
 msgid "%1$s feed matches %2$s"
 msgid_plural "%1$s feeds match %2$s"
-msgstr[0] "%1$s 个订阅源匹配 %2$s"
+msgstr[0] "%1$s 个 Feed 匹配 %2$s"
 
 #: includes/tools_page.php:308
 msgid "Clear search"
@@ -8712,12 +8732,12 @@ msgstr "你没有足够权限访问此页面。"
 msgid ""
 "Every feed URL configured on this site, with the campaign that imports it. "
 "One row per feed."
-msgstr "本站点定义的每一个订阅源地址，以及导入它的采集任务。每个订阅源一行。"
+msgstr "本站点定义的每一个 Feed 地址，以及导入它的采集任务。每个 Feed 一行。"
 
 #: includes/tools_page.php:461
 msgid ""
 "No feeds found. Add a feed URL to a campaign and it will be listed here."
-msgstr "未找到订阅源。向某个采集任务添加订阅源地址后，它就会出现在这里。"
+msgstr "未找到 Feed。向某个采集任务添加 Feed 地址后，它就会出现在这里。"
 
 #: includes/tools_page.php:499
 msgid "Show more details"
@@ -8742,7 +8762,7 @@ msgstr "编辑采集任务"
 
 #: includes/tools_page.php:539 includes/tools_page.php:541
 msgid "Inspect this feed in the Feed Viewer"
-msgstr "在订阅源查看器中检查此订阅源"
+msgstr "在 Feed 查看器中检查此 Feed"
 
 #: includes/tools_page.php:582
 msgid "Showing %1$s of %2$s on this page."
@@ -8750,7 +8770,7 @@ msgstr "本页显示 %2$s 中的 %1$s 个。"
 
 #: includes/tools_page.php:584
 msgid "Press Enter to search all %s feeds."
-msgstr "按 Enter 可在全部 %s 个订阅源中搜索。"
+msgstr "按 Enter 可在全部 %s 个 Feed 中搜索。"
 
 #: includes/tools_page.php:707
 msgid "Debug Mode"
@@ -8787,11 +8807,11 @@ msgstr "删除所有采集任务的调试日志"
 
 #: includes/tools_page.php:723
 msgid "Feed Addresses"
-msgstr "订阅源地址"
+msgstr "Feed 地址"
 
 #: includes/tools_page.php:725
 msgid "Allow feeds on private and local addresses"
-msgstr "允许使用私有和本地地址的订阅源"
+msgstr "允许使用私有和本地地址的 Feed"
 
 #: includes/tools_page.php:727
 msgid ""
@@ -8799,18 +8819,18 @@ msgid ""
 "Enable this if this site reads feeds from its own network, from an intranet "
 "server or from localhost, for example while developing."
 msgstr ""
-"默认情况下，采集任务只抓取发布在公共互联网上的订阅源。如果本站点要读取自身网"
-"络、内网服务器或 localhost 上的订阅源（例如开发时），请启用此项。"
+"默认情况下，采集任务只抓取发布在公共互联网上的 Feed。如果本站点要读取自身网"
+"络、内网服务器或 localhost 上的 Feed（例如开发时），请启用此项。"
 
 #: includes/tools_page.php:729
 msgid ""
 "Feeds hosted on this same site are always allowed and do not need this "
 "option."
-msgstr "托管在本站点自身上的订阅源始终允许，不需要此选项。"
+msgstr "托管在本站点自身上的 Feed 始终允许，不需要此选项。"
 
 #: includes/tools_page.php:73
 msgid "Number of feeds per page:"
-msgstr "每页显示的订阅源数量："
+msgstr "每页显示的 Feed 数量："
 
 #: includes/tools_page.php:732
 msgid "Save Settings"
@@ -8874,11 +8894,11 @@ msgstr "采集任务调试日志已停用。"
 
 #: includes/tools_page.php:800
 msgid "Feeds on private and local addresses are now allowed."
-msgstr "现已允许使用私有和本地地址的订阅源。"
+msgstr "现已允许使用私有和本地地址的 Feed。"
 
 #: includes/tools_page.php:801
 msgid "Campaigns fetch feeds published on the public internet only."
-msgstr "采集任务只抓取发布在公共互联网上的订阅源。"
+msgstr "采集任务只抓取发布在公共互联网上的 Feed。"
 
 #: includes/tools_page.php:804
 msgid "Delete Options on Uninstall saved."
@@ -8964,11 +8984,11 @@ msgstr "编辑该采集任务。"
 
 #: includes/wp-backend-helpers.php:191
 msgid "From feed"
-msgstr "来自订阅源"
+msgstr "来自 Feed"
 
 #: includes/wp-backend-helpers.php:192
 msgid "Open the feed URL in the browser."
-msgstr "在浏览器中打开订阅源地址。"
+msgstr "在浏览器中打开 Feed 地址。"
 
 #: includes/wp-backend-helpers.php:195
 msgid "Source permalink"
@@ -8988,7 +9008,7 @@ msgstr "发现重复哈希“%s”"
 
 #: includes/wpematico_functions.php:1632
 msgid "Found duplicated hash of item '%s'"
-msgstr "发现重复的条目哈希“%s”"
+msgstr "发现重复的项目哈希“%s”"
 
 #: includes/wpematico_functions.php:1639
 msgid "Found duplicated title '%s'"
@@ -8996,12 +9016,12 @@ msgstr "发现重复标题“%s”"
 
 #: includes/wpematico_functions.php:1701
 msgid "The feed URL is empty."
-msgstr "订阅源地址为空。"
+msgstr "Feed 地址为空。"
 
 #: includes/wpematico_functions.php:1714
 msgid ""
 "%s is not a valid feed address. A feed must be an http:// or https:// URL."
-msgstr "%s 不是有效的订阅源地址。订阅源必须是 http:// 或 https:// 地址。"
+msgstr "%s 不是有效的 Feed 地址。Feed 必须是 http:// 或 https:// 地址。"
 
 #: includes/wpematico_functions.php:1754
 msgid ""
@@ -9010,50 +9030,50 @@ msgid ""
 "> Tools > Danger Zone."
 msgstr ""
 "%1$s 指向 %2$s，这是本服务器自身网络内的地址。如果这是你的本意，请在 "
-"WPeMatico > 工具 > 危险区域中启用“允许使用私有和本地地址的订阅源”。"
+"WPeMatico > 工具 > 危险区域中启用“允许使用私有和本地地址的 Feed”。"
 
 #: includes/wpematico_functions.php:1780
 msgid ""
 "%s looks like a file on this server, not a feed address. A feed must be an "
 "http:// or https:// URL."
 msgstr ""
-"%s 看起来是本服务器上的一个文件，而不是订阅源地址。订阅源必须是 http:// 或 "
+"%s 看起来是本服务器上的一个文件，而不是 Feed 地址。Feed 必须是 http:// 或 "
 "https:// 地址。"
 
 #: includes/wpematico_functions.php:2045
 #: includes/lib/class-wpematico-simplepie-file.php:70
 msgid "Feed not fetched: %s"
-msgstr "未能获取订阅源：%s"
+msgstr "未能获取 Feed：%s"
 
 #: includes/wpematico_functions.php:2182
 msgid ""
 "Multipage feed: page %1$d of %2$s returned no new items, stopping "
 "pagination. The source may not support the pagination parameter."
 msgstr ""
-"多页订阅源：%2$s 的第 %1$d 页没有带来新条目，分页停止。来源可能不支持分页参"
+"多页 Feed：%2$s 的第 %1$d 页没有带来新项目，分页停止。来源可能不支持分页参"
 "数。"
 
 #: includes/wpematico_functions.php:2211
 msgid "Multipage feed: discarded %d repeated items found across pages."
-msgstr "多页订阅源：已丢弃在不同页面上重复出现的 %d 个条目。"
+msgstr "多页 Feed：已丢弃在不同页面上重复出现的 %d 个项目。"
 
 #. translators: %s The feed URL the pasted address resolves to.
 #: includes/wpematico_functions.php:2306
 msgid ""
 "The address resolves to the feed %s, which is the one this campaign fetches."
-msgstr "该地址指向订阅源 %s，也就是此采集任务抓取的订阅源。"
+msgstr "该地址指向 Feed %s，也就是此采集任务抓取的 Feed。"
 
 #: includes/wpematico_functions.php:2318
 msgid ""
 "A feed that answers only to a browser can still be read with the Force Feed "
 "or Change User Agent features of "
 msgstr ""
-"只对浏览器作答的订阅源，仍可借助以下扩展的「强制订阅源」或「更改 User Agent」"
-"功能读取： "
+"只对浏览器作答的 Feed，仍可借助以下附加组件的「强制 Feed」或「更改 User "
+"Agent」功能读取： "
 
 #: includes/wpematico_functions.php:2325
 msgid "Feed Title:"
-msgstr "订阅源标题："
+msgstr "Feed 标题："
 
 #: includes/wpematico_functions.php:2326
 msgid "Generator:"
@@ -9065,7 +9085,7 @@ msgstr "字符编码："
 
 #: includes/wpematico_functions.php:2330
 msgid "Last Item Title:"
-msgstr "最新条目标题："
+msgstr "最新项目标题："
 
 #: includes/wpematico_functions.php:2337
 msgid "Description:"
@@ -9073,7 +9093,7 @@ msgstr "描述："
 
 #: includes/wpematico_functions.php:2344 includes/wpematico_functions.php:2354
 msgid "The feed %1$s cannot be parsed. SimplePie said: %2$s"
-msgstr "无法解析订阅源 %1$s。SimplePie 提示：%2$s"
+msgstr "无法解析 Feed %1$s。SimplePie 提示：%2$s"
 
 #: includes/wpematico_functions.php:2361
 msgid "Undetected"
@@ -9116,7 +9136,7 @@ msgstr "无法导入！该文件不是有效的 WPeMatico 设置文件。"
 msgid ""
 "Can't import! The file has no settings belonging to WPeMatico or its active "
 "addons."
-msgstr "无法导入！该文件不包含属于 WPeMatico 或其已启用扩展的设置。"
+msgstr "无法导入！该文件不包含属于 WPeMatico 或其已启用附加组件的设置。"
 
 #: includes/wpematico_functions.php:3065
 msgid "Settings Imported."
@@ -9229,12 +9249,12 @@ msgstr "检查数据"
 
 #: includes/xml-importer.php:376
 msgid "Error: the feed address is empty."
-msgstr "错误：订阅源地址为空。"
+msgstr "错误：Feed 地址为空。"
 
 #: includes/xml-importer.php:417
 msgid ""
 "This file is an RSS feed: use the \"Feed\" campaign type instead of XML."
-msgstr "这个文件是 RSS 订阅源：请使用「订阅源」采集类型，而不是 XML。"
+msgstr "这个文件是 RSS Feed：请使用「Feed」采集类型，而不是 XML。"
 
 #: includes/xml-importer.php:42
 msgid "XMLs"
@@ -9368,7 +9388,7 @@ msgstr "在插件列表中显示本地插件"
 #: wpematico_class.php:261
 msgid ""
 "Turn this on to list the add-ons on your Plugins page, like any other plugin."
-msgstr "开启此项后，扩展会像其他插件一样列在你的插件页面上。"
+msgstr "开启此项后，附加组件会像其他插件一样列在你的插件页面上。"
 
 #: wpematico_class.php:266
 msgid "Hide Reviews on Settings"
@@ -9416,11 +9436,11 @@ msgstr "WPeMatico"
 
 #: wpematico_class.php:343
 msgid "WPeMatico Dashboard"
-msgstr "WPeMatico 面板"
+msgstr "WPeMatico 仪表盘"
 
 #: wpematico_class.php:344 includes/module/dashboard.php:106
 msgid "Dashboard"
-msgstr "面板"
+msgstr "仪表盘"
 
 #: wpematico_class.php:368 wpematico_class.php:369
 #: includes/dashboard-widgets.php:554 includes/plugin_functions.php:339
@@ -9436,16 +9456,16 @@ msgstr "工具"
 
 #: wpematico_class.php:397 wpematico_class.php:406
 msgid "Add-ons"
-msgstr "扩展"
+msgstr "附加组件"
 
 #: wpematico_class.php:398 includes/addons_page.php:1461
 msgid "WPeMatico Addons"
-msgstr "WPeMatico 扩展"
+msgstr "WPeMatico 附加组件"
 
 #: wpematico_class.php:407 includes/class-tour-helper.php:224
 #: includes/plugin_functions.php:360
 msgid "Extensions"
-msgstr "扩展"
+msgstr "附加组件"
 
 #~ msgid "Click here to access Campaigns, Settings, Tools, and Extensions."
 #~ msgstr "点击这里进入采集任务、设置、工具和扩展。"

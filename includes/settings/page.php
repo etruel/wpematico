@@ -733,6 +733,18 @@ if (!class_exists('WPeMatico_Settings')) :
 							<div class="wpematico_form-row">
 								<div class="wpematico_form-column">
 									<div class="wpematico_switch wpematico_switch-horizontal">
+										<input class="checkbox" value="1" type="checkbox" <?php checked($cfg['enable_googlenews'], true); ?> name="enable_googlenews" id="enable_googlenews" />
+										<label for="enable_googlenews"><?php _e('Enable the Google News campaign type', 'wpematico'); ?></label>
+									</div>
+									<p class="description"><?php echo html_entity_decode($helptip['enable_googlenews'], ENT_QUOTES | ENT_HTML401, 'UTF-8'); ?></p>
+									<?php if (!wpematico_is_pro_active()) : ?>
+										<p class="description"><span class="wpematico_badge-pro"><?php esc_html_e('PRO', 'wpematico'); ?></span> <?php esc_html_e('Linking each post to the article on the publication\'s own site, so Full Content reads it, comes with Professional.', 'wpematico'); ?></p>
+									<?php endif; ?>
+								</div>
+							</div>
+							<div class="wpematico_form-row">
+								<div class="wpematico_form-column">
+									<div class="wpematico_switch wpematico_switch-horizontal">
 										<input class="checkbox" type="checkbox"<?php checked($cfg['wpematico_set_canonical'], true); ?> name="wpematico_set_canonical" value="1" id="wpematico_set_canonical"/> 
 										<label for="wpematico_set_canonical"><?php echo __('Canonical URL to the source', 'wpematico'); ?></label>
 									</div>

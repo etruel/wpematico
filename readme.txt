@@ -2,7 +2,7 @@
 Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS, XML, feed to post, rss aggregator, content curation
-Stable tag: 2.9
+Stable tag: 2.9.1
 Tested up to: 7.1
 Requires at least: 4.8
 Requires PHP: 7.0
@@ -140,7 +140,7 @@ If WPeMatico saves you time and effort, please **[Rate Us 5 Stars ⭐⭐⭐⭐�
 
 This plugin was originally inspired by WP-o-Matic and early versions of BackWPUp (circa 2009-2010). Special thanks to those pioneering developers.
 
-**License**: GNU General Public License v3 or later. This is free software; you can redistribute and/or modify it under the GPL terms.
+**License**: GNU General Public License v2 or later. This is free software; you can redistribute and/or modify it under the GPL terms.
 
 **Extensions**: Works with free and premium addons available on our website.
 
@@ -227,6 +227,14 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 == Changelog ==
 
 > See all detailed changelog at [WPeMatico Releases](https://wpematico.com/releases/)
+
+= 2.9.1 – Oct 12, 2026 =
+
+* **New:** Google News campaign type. Publish the news of a Google News search, topic or publication: paste the address from your browser and the campaign finds its feed on its own. Each post gets the headline as the publication wrote it, and the name and the address of the publication are saved with the post and ready for the post template as `{source_name}` and `{source_url}`. Switch it on from its card in the Dashboard. With WPeMatico Professional each post links to the article on the publication's own site.
+* **New:** Six more languages. WPeMatico now also speaks Japanese, Brazilian Portuguese, Italian, Polish, Turkish and Vietnamese: every screen, tooltip, Help tab and campaign log line.
+* **Improved:** German, French, Dutch, Greek, Persian, Slovak, Romanian, Arabic, Chinese and the Latin American Spanish translations now use the official WordPress wording of each language, so WPeMatico reads like the rest of your admin.
+* **Improved:** The WPeMatico menu stays open on Campaigns while you edit a campaign.
+* **For developers:** the `wpematico_item_permalink` filter sets the address a post is read from and linked to, once per item about to be published.
 
 = 2.9 – Oct 8, 2026 =
 

@@ -432,7 +432,7 @@ msgstr "Ninguna extensión coincide con tu búsqueda."
 
 #: includes/addons_page.php:491
 msgid "Icon"
-msgstr "Icono"
+msgstr "Ícono"
 
 #: includes/addons_page.php:492
 msgid "Add On"
@@ -529,7 +529,7 @@ msgstr "Se borraron las extensiones seleccionadas."
 
 #: includes/campaign-types/vimeo.php:258
 msgid "Parsing Vimeo video and feed item contents."
-msgstr "Analizando el vídeo de Vimeo y el contenido del ítem."
+msgstr "Analizando el video de Vimeo y el contenido del ítem."
 
 #: includes/campaign-types/vimeo.php:284
 msgid "Vimeo Campaign Type."
@@ -556,7 +556,7 @@ msgid ""
 "Vimeo publishes only the last 10 videos of each one, so a campaign that runs "
 "often enough never misses any."
 msgstr ""
-"Vimeo publica solo los últimos 10 vídeos de cada uno, así que una campaña "
+"Vimeo publica solo los últimos 10 videos de cada uno, así que una campaña "
 "que se ejecute con frecuencia no se pierde ninguno."
 
 #: includes/campaign-types/vimeo.php:293
@@ -568,16 +568,16 @@ msgid ""
 "Wrap the video in the WordPress [embed] shortcode instead of the iframe "
 "Vimeo shares."
 msgstr ""
-"Envuelve el vídeo en el shortcode [embed] de WordPress en vez de usar el "
+"Envuelve el video en el shortcode [embed] de WordPress en vez de usar el "
 "iframe que comparte Vimeo."
 
 #: includes/campaign-types/vimeo.php:297
 msgid "Video sizes."
-msgstr "Tamaño del vídeo."
+msgstr "Tamaño del video."
 
 #: includes/campaign-types/vimeo.php:298
 msgid "Width and height of the video frame in the post."
-msgstr "Ancho y alto del marco del vídeo en la entrada."
+msgstr "Ancho y alto del marco del video en la entrada."
 
 #: includes/campaign-types/vimeo.php:299
 msgid "Leave them at 0 (zero) to keep it responsive."
@@ -597,7 +597,7 @@ msgstr "Título de la entrada"
 
 #: includes/campaign-types/vimeo.php:349
 msgid "The short description of the video, as published on Vimeo."
-msgstr "La descripción corta del vídeo, tal como se publicó en Vimeo."
+msgstr "La descripción corta del video, tal como se publicó en Vimeo."
 
 #: includes/campaign-types/vimeo.php:356
 msgid "Use the [embed] WordPress shortcode instead of the Vimeo iframe."
@@ -605,7 +605,7 @@ msgstr "Usar el shortcode [embed] de WordPress en vez del iframe de Vimeo."
 
 #: includes/campaign-types/vimeo.php:358
 msgid "Change the size of the video frame."
-msgstr "Cambiar el tamaño del marco del vídeo."
+msgstr "Cambiar el tamaño del marco del video."
 
 #: includes/campaign-types/vimeo.php:367
 msgid "Use it only as featured image"
@@ -629,7 +629,7 @@ msgid ""
 "asks for instead of the last 10, in the order you choose, and your private "
 "and unlisted ones."
 msgstr ""
-"Professional lee Vimeo a través de su API: tantos vídeos como pida el límite "
+"Professional lee Vimeo a través de su API: tantos videos como pida el límite "
 "de ítems en vez de los últimos 10, en el orden que elijas, y también los "
 "privados y los no listados."
 
@@ -889,7 +889,7 @@ msgstr "Alto:"
 
 #: includes/campaign_edit_functions.php:1238
 msgid "Short videos options:"
-msgstr "Opciones de vídeos cortos:"
+msgstr "Opciones de videos cortos:"
 
 #: includes/campaign_edit_functions.php:1240
 msgid "Only shorts"
@@ -1368,7 +1368,7 @@ msgid ""
 "To show the videos or audios of the post as a player, the playlist shortcode "
 "does the same for media files:"
 msgstr ""
-"Para mostrar los vídeos o audios de la entrada como un reproductor, el "
+"Para mostrar los videos o audios de la entrada como un reproductor, el "
 "shortcode playlist hace lo mismo con los archivos multimedia:"
 
 #: includes/campaign_edit_functions.php:518 includes/campaign_help.php:305
@@ -1459,7 +1459,7 @@ msgstr "Imagen destacada del URL"
 
 #: includes/campaign_edit_functions.php:621
 msgid "Use the video link as featured when available"
-msgstr "Usar el enlace del vídeo como destacado cuando exista"
+msgstr "Usar el enlace del video como destacado cuando exista"
 
 #: includes/campaign_edit_functions.php:630
 msgid "Advanced Options"
@@ -1532,12 +1532,12 @@ msgstr "URL para el canal"
 #: includes/campaign_edit_functions.php:727 includes/campaign_help.php:211
 #: includes/settings/help.php:118 includes/settings/page.php:299
 msgid "Store videos locally"
-msgstr "Guardar los vídeos en tu sitio"
+msgstr "Guardar los videos en tu sitio"
 
 #: includes/campaign_edit_functions.php:731 includes/campaign_help.php:216
 #: includes/settings/help.php:124 includes/settings/page.php:307
 msgid "Attach videos to posts"
-msgstr "Adjuntar los vídeos a las entradas"
+msgstr "Adjuntar los videos a las entradas"
 
 #: includes/campaign_edit_functions.php:734 includes/campaign_help.php:220
 #: includes/settings/help.php:129 includes/settings/page.php:316
@@ -2039,7 +2039,7 @@ msgid ""
 "Wraps the video in the WordPress [embed] shortcode instead of the iframe "
 "YouTube shares."
 msgstr ""
-"Envuelve el vídeo en el shortcode [embed] de WordPress en lugar del iframe "
+"Envuelve el video en el shortcode [embed] de WordPress en lugar del iframe "
 "que comparte YouTube."
 
 #: includes/campaign_help.php:103
@@ -2052,7 +2052,7 @@ msgstr ""
 
 #: includes/campaign_help.php:106
 msgid "Video size"
-msgstr "Tamaño del vídeo"
+msgstr "Tamaño del video"
 
 #: includes/campaign_help.php:107
 msgid ""
@@ -2287,22 +2287,22 @@ msgstr ""
 
 #: includes/campaign_help.php:207
 msgid "Video options for this campaign"
-msgstr "Opciones de vídeos de esta campaña"
+msgstr "Opciones de videos de esta campaña"
 
 #: includes/campaign_help.php:213
 msgid ""
 "Every video in a %s tag is saved to your Uploads folder and the content "
 "points at your copy. Video files are heavy: they fill your disk fast."
 msgstr ""
-"Cada vídeo que esté en una etiqueta %s se guarda en tu carpeta de subidas y "
-"el contenido apunta a tu copia. Los vídeos pesan: llenan tu disco rápido."
+"Cada video que esté en una etiqueta %s se guarda en tu carpeta de subidas y "
+"el contenido apunta a tu copia. Los videos pesan: llenan tu disco rápido."
 
 #: includes/campaign_help.php:217
 msgid ""
 "Each downloaded video is added to the Media library and attached to its "
 "post. Turn it off if the run is too slow."
 msgstr ""
-"Cada vídeo descargado se añade a la biblioteca de medios y se adjunta a su "
+"Cada video descargado se añade a la biblioteca de medios y se adjunta a su "
 "entrada. Desactívalo si la ejecución es muy lenta."
 
 #: includes/campaign_help.php:222
@@ -2310,19 +2310,19 @@ msgid ""
 "When a video cannot be downloaded, its %s tag is removed instead of pointing "
 "at the source site."
 msgstr ""
-"Cuando un vídeo no se puede descargar, se quita su etiqueta %s en lugar de "
+"Cuando un video no se puede descargar, se quita su etiqueta %s en lugar de "
 "apuntar al sitio de origen."
 
 #: includes/campaign_help.php:225 includes/settings/help.php:136
 msgid "Use custom upload for videos"
-msgstr "Usar la subida propia para vídeos"
+msgstr "Usar la subida propia para videos"
 
 #: includes/campaign_help.php:226 includes/settings/help.php:137
 msgid ""
 "Saves the video exactly as it comes from the source, skipping WordPress. "
 "Faster, but it does not work on every server."
 msgstr ""
-"Guarda el vídeo tal como viene del origen, sin pasar por WordPress. Es más "
+"Guarda el video tal como viene del origen, sin pasar por WordPress. Es más "
 "rápido, pero no funciona en todos los servidores."
 
 #: includes/campaign_help.php:232
@@ -2797,7 +2797,7 @@ msgid ""
 "the title, the image, the embedded video and the description."
 msgstr ""
 "Escribe la dirección del feed de un canal, un usuario o una lista de "
-"reproducción. La campaña toma el título, la imagen, el vídeo incrustado y la "
+"reproducción. La campaña toma el título, la imagen, el video incrustado y la "
 "descripción."
 
 #: includes/campaign_help.php:96
@@ -3369,7 +3369,9 @@ msgstr "Feeds"
 msgid ""
 "Add the feed addresses this campaign reads. Check all feeds tells you "
 "whether each one answers."
-msgstr "Añade las direcciones de los feeds que lee esta campaña. «Comprobar todos los feeds» te dice si cada uno responde."
+msgstr ""
+"Añade las direcciones de los feeds que lee esta campaña. «Comprobar todos "
+"los feeds» te dice si cada uno responde."
 
 #: includes/class-tour-helper.php:111
 msgid "Campaign type"
@@ -3379,7 +3381,9 @@ msgstr "Tipo de campaña"
 msgid ""
 "Feed is the usual choice. Other types read XML files, YouTube or Vimeo, and "
 "more come with the extensions."
-msgstr "Feed es la opción habitual. Otros tipos leen archivos XML, YouTube o Vimeo, y las extensiones suman más."
+msgstr ""
+"Feed es la opción habitual. Otros tipos leen archivos XML, YouTube o Vimeo, "
+"y las extensiones suman más."
 
 #: includes/class-tour-helper.php:118 includes/debug_page.php:3025
 #: includes/debug_page.php:3521
@@ -3397,7 +3401,8 @@ msgstr "El Asistente"
 #: includes/class-tour-helper.php:126
 msgid ""
 "Prefer a guided path? The Wizard walks you through every box, one by one."
-msgstr "¿Prefieres que te guíen? El Asistente recorre cada caja contigo, una por una."
+msgstr ""
+"¿Prefieres que te guíen? El Asistente recorre cada caja contigo, una por una."
 
 #: includes/class-tour-helper.php:134
 msgid "Settings menu"
@@ -3407,7 +3412,9 @@ msgstr "Menú de ajustes"
 msgid ""
 "General, Advanced and Backend Tools hold WPeMatico's settings. Each "
 "extension adds its own tab below them."
-msgstr "General, Avanzado y Herramientas del panel guardan los ajustes de WPeMatico. Cada extensión suma su propia pestaña debajo."
+msgstr ""
+"General, Avanzado y Herramientas del panel guardan los ajustes de WPeMatico. "
+"Cada extensión suma su propia pestaña debajo."
 
 #: includes/class-tour-helper.php:141
 msgid "Boxes"
@@ -3415,7 +3422,9 @@ msgstr "Cajas"
 
 #: includes/class-tour-helper.php:142
 msgid "Collapse a box from its header or drag it to sort the screen your way."
-msgstr "Pliega una caja desde su cabecera o arrástrala para ordenar la pantalla a tu gusto."
+msgstr ""
+"Pliega una caja desde su cabecera o arrástrala para ordenar la pantalla a tu "
+"gusto."
 
 #: includes/class-tour-helper.php:148
 msgid "Save"
@@ -3429,7 +3438,9 @@ msgstr "Guarda la sección en la que estás. Las demás conservan lo que tenían
 msgid ""
 "Every option has a (?) with a short explanation, and the Help tab has the "
 "whole story."
-msgstr "Cada opción tiene un (?) con una explicación breve, y la pestaña Ayuda tiene la historia completa."
+msgstr ""
+"Cada opción tiene un (?) con una explicación breve, y la pestaña Ayuda tiene "
+"la historia completa."
 
 #: includes/class-tour-helper.php:161
 msgid "Extra features"
@@ -3439,7 +3450,9 @@ msgstr "Funciones adicionales"
 msgid ""
 "Switch on content rewriting, words to categories, canonical URLs and the "
 "other optional features."
-msgstr "Activa la reescritura de contenido, las palabras a categorías, las URL canónicas y las demás funciones opcionales."
+msgstr ""
+"Activa la reescritura de contenido, las palabras a categorías, las URL "
+"canónicas y las demás funciones opcionales."
 
 #: includes/class-tour-helper.php:168
 msgid "Advanced actions"
@@ -3447,7 +3460,9 @@ msgstr "Acciones avanzadas"
 
 #: includes/class-tour-helper.php:169
 msgid "Feed checks, logs, XML uploads and other behaviour for every campaign."
-msgstr "Comprobación de feeds, registros, subida de XML y otros comportamientos de todas las campañas."
+msgstr ""
+"Comprobación de feeds, registros, subida de XML y otros comportamientos de "
+"todas las campañas."
 
 #: includes/class-tour-helper.php:177
 msgid "Your admin screens"
@@ -3457,7 +3472,9 @@ msgstr "Tus pantallas del panel"
 msgid ""
 "Choose the campaign columns, the boxes of the campaign editor, the dashboard "
 "widgets and these guided tours."
-msgstr "Elige las columnas de las campañas, las cajas del editor de campañas, los widgets del escritorio y estos recorridos guiados."
+msgstr ""
+"Elige las columnas de las campañas, las cajas del editor de campañas, los "
+"widgets del escritorio y estos recorridos guiados."
 
 #: includes/class-tour-helper.php:186 includes/feed_list_help.php:29
 #: includes/tools_page.php:452 includes/tools_tabs.php:64
@@ -3469,13 +3486,17 @@ msgstr "Lista de feeds"
 msgid ""
 "Every feed of every campaign in one list, with its campaign, its status and "
 "its last run."
-msgstr "Todos los feeds de todas las campañas en una sola lista, con su campaña, su estado y su última ejecución."
+msgstr ""
+"Todos los feeds de todas las campañas en una sola lista, con su campaña, su "
+"estado y su última ejecución."
 
 #: includes/class-tour-helper.php:194
 msgid ""
 "Paste any address to see what it really returns: a feed, a page that is not "
 "one, or why it cannot be reached."
-msgstr "Pega cualquier dirección para ver qué devuelve en realidad: un feed, una página que no lo es, o por qué no se puede alcanzar."
+msgstr ""
+"Pega cualquier dirección para ver qué devuelve en realidad: un feed, una "
+"página que no lo es, o por qué no se puede alcanzar."
 
 #: includes/class-tour-helper.php:200 includes/tools_help.php:37
 #: includes/tools_tabs.php:68
@@ -3496,7 +3517,9 @@ msgstr "Kit de migración"
 msgid ""
 "Bring your feeds over from Feedzy or WP RSS Aggregator, with the posts they "
 "already published."
-msgstr "Trae tus feeds desde Feedzy o WP RSS Aggregator, con las entradas que ya publicaron."
+msgstr ""
+"Trae tus feeds desde Feedzy o WP RSS Aggregator, con las entradas que ya "
+"publicaron."
 
 #: includes/class-tour-helper.php:214 includes/tools_tabs.php:18
 msgid "System"
@@ -3506,12 +3529,17 @@ msgstr "Sistema"
 msgid ""
 "Status gathers the site and server details support will ask for. Danger Zone "
 "holds debug logging and what uninstalling removes."
-msgstr "Estado reúne los datos del sitio y del servidor que te pedirá el soporte. Zona de peligro guarda el registro de depuración y lo que borra la desinstalación."
+msgstr ""
+"Estado reúne los datos del sitio y del servidor que te pedirá el soporte. "
+"Zona de peligro guarda el registro de depuración y lo que borra la "
+"desinstalación."
 
 #: includes/class-tour-helper.php:225
 msgid ""
 "Every WPeMatico add-on, installed or not. The free ones install from here."
-msgstr "Todos los add-ons de WPeMatico, instalados o no. Los gratuitos se instalan desde aquí."
+msgstr ""
+"Todos los add-ons de WPeMatico, instalados o no. Los gratuitos se instalan "
+"desde aquí."
 
 #: includes/class-tour-helper.php:231
 msgid "Activate and license"
@@ -3521,7 +3549,9 @@ msgstr "Activación y licencia"
 msgid ""
 "Activate what you have, and enter its licence in Settings › Licenses to "
 "receive its updates."
-msgstr "Activa lo que tienes e introduce su licencia en Ajustes › Licencias para recibir sus actualizaciones."
+msgstr ""
+"Activa lo que tienes e introduce su licencia en Ajustes › Licencias para "
+"recibir sus actualizaciones."
 
 #: includes/class-tour-helper.php:244
 msgid "Runs the campaign once, now."
@@ -3531,7 +3561,9 @@ msgstr "Ejecuta la campaña una vez, ahora."
 msgid ""
 "Turns its schedule on, so it runs on its own. It shows red while the "
 "schedule is on."
-msgstr "Activa su programación, para que se ejecute por su cuenta. Se ve en rojo mientras la programación está activa."
+msgstr ""
+"Activa su programación, para que se ejecute por su cuenta. Se ve en rojo "
+"mientras la programación está activa."
 
 #: includes/class-tour-helper.php:246
 msgid "Turns the schedule off, or stops a run in progress."
@@ -3560,7 +3592,9 @@ msgstr "¿Necesitas más?"
 #: includes/class-tour-helper.php:40
 msgid ""
 "The Help tab at the top of every WPeMatico screen explains it in detail."
-msgstr "La pestaña Ayuda, arriba en cada pantalla de WPeMatico, lo explica en detalle."
+msgstr ""
+"La pestaña Ayuda, arriba en cada pantalla de WPeMatico, lo explica en "
+"detalle."
 
 #: includes/class-tour-helper.php:49 includes/lib/welcome.php:64
 msgid "Welcome to WPeMatico"
@@ -3569,7 +3603,8 @@ msgstr "Bienvenido a WPeMatico"
 #: includes/class-tour-helper.php:50
 msgid ""
 "Everything lives here: Dashboard, Campaigns, Settings, Tools and Extensions."
-msgstr "Todo está aquí: Escritorio, Campañas, Ajustes, Herramientas y Extensiones."
+msgstr ""
+"Todo está aquí: Escritorio, Campañas, Ajustes, Herramientas y Extensiones."
 
 #: includes/class-tour-helper.php:56
 msgid "One card per feature"
@@ -3578,7 +3613,9 @@ msgstr "Una tarjeta por función"
 #: includes/class-tour-helper.php:57
 msgid ""
 "Filter them by what they do: images, SEO, campaign types, parsers and more."
-msgstr "Fíltralas por lo que hacen: imágenes, SEO, tipos de campaña, analizadores y más."
+msgstr ""
+"Fíltralas por lo que hacen: imágenes, SEO, tipos de campaña, analizadores y "
+"más."
 
 #: includes/class-tour-helper.php:63
 msgid "Switch features on and off"
@@ -3588,7 +3625,9 @@ msgstr "Activa y desactiva funciones"
 msgid ""
 "Each card says what its switch will do before you touch it, and installs "
 "whatever it needs."
-msgstr "Cada tarjeta te dice qué hará su interruptor antes de que lo toques, e instala lo que necesite."
+msgstr ""
+"Cada tarjeta te dice qué hará su interruptor antes de que lo toques, e "
+"instala lo que necesite."
 
 #: includes/class-tour-helper.php:70
 msgid "Your first campaign"
@@ -3598,7 +3637,9 @@ msgstr "Tu primera campaña"
 msgid ""
 "A campaign reads one or more feeds and publishes their items as posts. Start "
 "here."
-msgstr "Una campaña lee uno o más feeds y publica sus elementos como entradas. Empieza aquí."
+msgstr ""
+"Una campaña lee uno o más feeds y publica sus elementos como entradas. "
+"Empieza aquí."
 
 #: includes/class-tour-helper.php:79 includes/lib/welcome.php:595
 msgid "Add a campaign"
@@ -3606,7 +3647,9 @@ msgstr "Crear una campaña"
 
 #: includes/class-tour-helper.php:80
 msgid "Give it a name, paste a feed address and choose where the posts go."
-msgstr "Ponle un nombre, pega la dirección de un feed y elige adónde van las entradas."
+msgstr ""
+"Ponle un nombre, pega la dirección de un feed y elige adónde van las "
+"entradas."
 
 #: includes/class-tour-helper.php:86
 msgid "Run, schedule or pause"
@@ -3622,7 +3665,9 @@ msgstr "Qué hizo cada campaña"
 
 #: includes/class-tour-helper.php:95
 msgid "When it last ran, how long it took and how many posts it has published."
-msgstr "Cuándo se ejecutó por última vez, cuánto tardó y cuántas entradas ha publicado."
+msgstr ""
+"Cuándo se ejecutó por última vez, cuánto tardó y cuántas entradas ha "
+"publicado."
 
 #: includes/dashboard-widgets.php:456
 msgid "in %s"
@@ -3761,7 +3806,7 @@ msgstr "Comprobando la conexión con etruel.com…"
 #: includes/debug_page.php:113 includes/wpematico_functions.php:2323
 #: includes/wpematico_functions.php:2351
 msgid "The feed %s has been parsed successfully."
-msgstr "La fuente %s se a analizado correctamente."
+msgstr "La fuente %s se ha analizado correctamente."
 
 #. translators: %1$s: PHP function name. %2$s: the URL that could not be reached.
 #: includes/debug_page.php:1133
@@ -4897,7 +4942,7 @@ msgid ""
 "Arriving from the eye icon of a campaign feed, or from the Feed List, fills "
 "this field in and fetches it right away."
 msgstr ""
-"Si llegas desde el icono del ojo de un feed de campaña, o desde la lista de "
+"Si llegas desde el ícono del ojo de un feed de campaña, o desde la lista de "
 "feeds, este campo viene relleno y se consulta al momento."
 
 #: includes/feed_viewer_help.php:44
@@ -5755,7 +5800,7 @@ msgid ""
 msgstr ""
 "Ponle nombre a la campaña y pega la dirección del feed en la caja «Feeds»: "
 "en un blog de WordPress suele ser la dirección del sitio seguida de /feed. "
-"El icono del ojo que hay al lado lo lee ahí mismo, así sabes que funciona "
+"El ícono del ojo que hay al lado lo lee ahí mismo, así sabes que funciona "
 "antes de guardar. Una campaña puede llevar tantos feeds como quieras."
 
 #: includes/lib/welcome.php:594
@@ -5874,7 +5919,7 @@ msgid ""
 "scheduler that runs your campaigns, and the Backend Tools, such as the "
 "Campaign column in your post lists."
 msgstr ""
-"En «Ajustes» está todo lo global: qué se hace con las imágenes y los vídeos, "
+"En «Ajustes» está todo lo global: qué se hace con las imágenes y los videos, "
 "el programador que ejecuta tus campañas, y las herramientas del panel, como "
 "la columna «Campaña» en tus listas de entradas."
 
@@ -7033,18 +7078,18 @@ msgstr "Actívalo en una campaña eligiendo su tipo de campaña."
 
 #: includes/module/actions.php:165
 msgid "Video Campaigns"
-msgstr "Campañas de vídeo"
+msgstr "Campañas de video"
 
 #: includes/module/actions.php:166
 msgid "Create campaigns that publish video content."
-msgstr "Crea campañas que publican contenido en vídeo."
+msgstr "Crea campañas que publican contenido en video."
 
 #: includes/module/actions.php:170
 msgid ""
 "Downloads the video and audio files of each item into the WordPress uploads "
 "folder."
 msgstr ""
-"Descarga los archivos de vídeo y audio de cada ítem a la carpeta de subidas "
+"Descarga los archivos de video y audio de cada ítem a la carpeta de subidas "
 "de WordPress."
 
 #: includes/module/actions.php:175
@@ -7061,7 +7106,7 @@ msgstr "Añade el tipo de archivo XML a los que WordPress acepta al subir."
 
 #: includes/module/actions.php:186
 msgid "Publish the videos of a Vimeo user, channel or group."
-msgstr "Publica los vídeos de un usuario, canal o grupo de Vimeo."
+msgstr "Publica los videos de un usuario, canal o grupo de Vimeo."
 
 #: includes/module/actions.php:190
 msgid ""
@@ -7073,7 +7118,7 @@ msgstr ""
 
 #: includes/module/actions.php:195
 msgid "Import videos from YouTube channels."
-msgstr "Importa vídeos de canales de YouTube."
+msgstr "Importa videos de canales de YouTube."
 
 #: includes/module/actions.php:205
 msgid ""
@@ -7987,22 +8032,22 @@ msgstr "Desactívalo si los audios dejan de reproducirse."
 
 #: includes/settings/help.php:114
 msgid "Global settings for videos"
-msgstr "Ajustes generales de vídeos"
+msgstr "Ajustes generales de videos"
 
 #: includes/settings/help.php:120
 msgid ""
 "A copy of every video found in the feed item (only in %s tags) is saved to "
 "your Uploads folder. Off, videos stay on the source server."
 msgstr ""
-"Se guarda en tu carpeta de subidas una copia de cada vídeo del ítem del feed "
-"(solo en etiquetas %s). Apagado, los vídeos siguen en el servidor de origen."
+"Se guarda en tu carpeta de subidas una copia de cada video del ítem del feed "
+"(solo en etiquetas %s). Apagado, los videos siguen en el servidor de origen."
 
 #: includes/settings/help.php:121
 msgid ""
 "Video files are heavy: storing them locally fills your disk fast. Each "
 "campaign can set this on its own."
 msgstr ""
-"Los vídeos pesan: guardarlos en tu sitio llena el disco rápido. Cada campaña "
+"Los videos pesan: guardarlos en tu sitio llena el disco rápido. Cada campaña "
 "puede decidirlo por su cuenta."
 
 #: includes/settings/help.php:125
@@ -8010,7 +8055,7 @@ msgid ""
 "Every downloaded video is added to the Media library and attached to its "
 "post."
 msgstr ""
-"Cada vídeo descargado se añade a la biblioteca de medios y se adjunta a su "
+"Cada video descargado se añade a la biblioteca de medios y se adjunta a su "
 "entrada."
 
 #: includes/settings/help.php:131
@@ -8018,17 +8063,17 @@ msgid ""
 "When a video cannot be downloaded, its %s tag is removed from the content "
 "instead of pointing at the source site."
 msgstr ""
-"Cuando un vídeo no se puede descargar, se quita su etiqueta %s del contenido "
+"Cuando un video no se puede descargar, se quita su etiqueta %s del contenido "
 "en lugar de apuntar al sitio de origen."
 
 #: includes/settings/help.php:133
 msgid "If the video sits inside an %s tag, that link is removed as well."
 msgstr ""
-"Si el vídeo está dentro de una etiqueta %s, ese enlace también se quita."
+"Si el video está dentro de una etiqueta %s, ese enlace también se quita."
 
 #: includes/settings/help.php:138
 msgid "Turn it off if the videos stop playing."
-msgstr "Desactívalo si los vídeos dejan de reproducirse."
+msgstr "Desactívalo si los videos dejan de reproducirse."
 
 #: includes/settings/help.php:143
 msgid "Enable features"
@@ -8057,7 +8102,7 @@ msgid ""
 "channel or group. Paste the address and the campaign finds its feed on its "
 "own."
 msgstr ""
-"Añade Vimeo a la lista de tipos de campaña, para publicar los vídeos de un "
+"Añade Vimeo a la lista de tipos de campaña, para publicar los videos de un "
 "usuario, canal o grupo de Vimeo. Pega la dirección y la campaña encuentra su "
 "feed sola."
 
@@ -8066,7 +8111,7 @@ msgid ""
 "Vimeo publishes the last 10 videos of each one. Leave this off if you do not "
 "use Vimeo: the campaign type is not loaded at all."
 msgstr ""
-"Vimeo publica los últimos 10 vídeos de cada uno. Déjalo apagado si no usas "
+"Vimeo publica los últimos 10 videos de cada uno. Déjalo apagado si no usas "
 "Vimeo: el tipo de campaña ni siquiera se carga."
 
 #: includes/settings/help.php:160 includes/settings/page.php:737
@@ -8133,7 +8178,7 @@ msgid ""
 "through, for example iframe to keep embedded videos."
 msgstr ""
 "SimplePie quita estas etiquetas del contenido del feed. Saca una de la lista "
-"para dejarla pasar, por ejemplo iframe para conservar los vídeos incrustados."
+"para dejarla pasar, por ejemplo iframe para conservar los videos incrustados."
 
 #: includes/settings/help.php:180 includes/settings/page.php:446
 msgid "HTML attributes SimplePie strips"
@@ -8674,7 +8719,9 @@ msgstr "Recorridos guiados"
 msgid ""
 "Shows a short tour the first time you open each WPeMatico screen. Only for "
 "your user."
-msgstr "Muestra un recorrido breve la primera vez que abres cada pantalla de WPeMatico. Solo para tu usuario."
+msgstr ""
+"Muestra un recorrido breve la primera vez que abres cada pantalla de "
+"WPeMatico. Solo para tu usuario."
 
 #: includes/settings/page.php:1034
 msgid "Highlights of the new release"
@@ -8800,11 +8847,11 @@ msgstr "Error en la comprobación de permisos"
 
 #: includes/settings/page.php:340
 msgid "Allowed video extensions"
-msgstr "Extensiones de vídeo permitidas"
+msgstr "Extensiones de video permitidas"
 
 #: includes/settings/page.php:343
 msgid "WordPress video types:"
-msgstr "Tipos de vídeo de WordPress:"
+msgstr "Tipos de video de WordPress:"
 
 #: includes/settings/page.php:356
 msgid "Global Settings for Audios"
@@ -8921,8 +8968,8 @@ msgid ""
 "Reading Vimeo through its API — past the 10-video cap of the feed, with "
 "sorting and your private videos — comes with Professional."
 msgstr ""
-"Leer Vimeo por su API —más allá del tope de 10 vídeos del feed, con "
-"ordenación y tus vídeos privados— viene con Professional."
+"Leer Vimeo por su API —más allá del tope de 10 videos del feed, con "
+"ordenación y tus videos privados— viene con Professional."
 
 #: includes/settings/page.php:750
 msgid "Advanced Actions"
@@ -9079,8 +9126,9 @@ msgstr "con solicitudes de personalización y sugerencias."
 #: includes/settings/widgets.php:299
 msgid ""
 "Please visit our website to learn about our free and premium services at"
-msgstr "Visita nuestra web para conocer nuestros servicios gratuitos y de pago en"
+msgstr ""
 "Visita nuestra web para conocer nuestros servicios gratuitos y de pago "
+"enVisita nuestra web para conocer nuestros servicios gratuitos y de pago "
 "enVisita nuestra web para conocer nuestros servicios gratuitos y de pago "
 "enVisita nuestra web para conocer nuestros servicios gratuitos y de pago en"
 

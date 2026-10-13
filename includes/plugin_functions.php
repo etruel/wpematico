@@ -454,6 +454,13 @@ function wpematico_install($old_db_version = '') {
 	}
 	// --- End migration 2.9 ------------------------------------------------------------------
 
+	// Google News is a campaign type of core from 2.9.1: a site with the Googlo News
+	// addon installed gets it switched on.
+	if ($old_db_version && version_compare($old_db_version, '2.9.1', '<')
+			&& function_exists('wpematico_installed_addon_file') && '' !== wpematico_installed_addon_file('WPeMatico Googlo News')) {
+		wpematico_enable_googlenews_campaign_type();
+	}
+
 	// Add future per-version migrations here following the same pattern:
 	// if ($old_db_version && version_compare($old_db_version, '2.9.X', '<')) { ... }
 

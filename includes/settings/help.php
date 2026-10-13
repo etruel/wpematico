@@ -156,6 +156,11 @@ function wpematico_helpsettings($dev = '') {
 				'tip'	 => __('Adds Vimeo to the campaign type list, to publish the videos of a Vimeo user, channel or group. Paste the address and the campaign finds its feed on its own.', 'wpematico'),
 				'plustip' => __('Vimeo publishes the last 10 videos of each one. Leave this off if you do not use Vimeo: the campaign type is not loaded at all.', 'wpematico'),
 			),
+			'enable_googlenews'	 => array(
+				'title'	 => __('Google News campaign type', 'wpematico'),
+				'tip'	 => __('Adds Google News to the campaign type list, to publish the news of a search, a topic or a publication. Paste the address and the campaign finds its feed on its own.', 'wpematico'),
+				'plustip' => __('Each item brings the headline, the date and the name of the publication, and links to Google News. Leave this off if you do not use Google News: the campaign type is not loaded at all.', 'wpematico'),
+			),
 			'wpematico_set_canonical'	=> array(
 				'title' => __('Canonical URL to the source', 'wpematico' ),
 				'tip' => __('Each imported post declares the original article as its canonical URL. It does not work on every server.', 'wpematico' ),

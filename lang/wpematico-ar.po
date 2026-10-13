@@ -42,8 +42,8 @@ msgid ""
 "which version of WPeMatico it needs, rather than run against a core that "
 "cannot support it."
 msgstr ""
-"الإضافة الأحدث من الإضافة الأساسية تُعطِّل مزاياها وتذكر إصدار WPeMatico الذي "
-"تحتاجه، بدل أن تعمل مع نواة لا تستطيع دعمها."
+"الإضافة الأحدث من الإضافة الأساسية تُعطِّل مزاياها وتذكر نسخة WPeMatico التي "
+"تحتاجها، بدل أن تعمل مع نواة لا تستطيع دعمها."
 
 #: includes/addons_help.php:105
 msgid "No update showing when you expect one."
@@ -83,7 +83,7 @@ msgid ""
 "Two things at once: the add-ons installed on this site, and the ones "
 "published at the store that are not installed yet."
 msgstr ""
-"أمران معًا: الإضافات المثبَّتة على هذا الموقع، وتلك المنشورة في المتجر ولم تُثبَّت "
+"أمران معًا: الإضافات المنصَّبة على هذا الموقع، وتلك المنشورة في المتجر ولم تُنصَّب "
 "بعد."
 
 #: includes/addons_help.php:32
@@ -91,7 +91,7 @@ msgid ""
 "An installed add-on shows its version and the actions it accepts; one that "
 "is only at the store shows what it costs or which membership includes it."
 msgstr ""
-"الإضافة المثبَّتة تعرض إصدارها والإجراءات المتاحة لها؛ أما الموجودة في المتجر "
+"الإضافة المنصَّبة تعرض نسختها والإجراءات المتاحة لها؛ أما الموجودة في المتجر "
 "فقط فتعرض سعرها أو العضوية التي تتضمنها."
 
 #: includes/addons_help.php:33
@@ -113,7 +113,7 @@ msgid ""
 "Active, Inactive and the rest count only what is installed, so the store "
 "catalogue appears under All and in search results only."
 msgstr ""
-"«مفعَّلة» و«معطَّلة» وبقية العروض تحصي المثبَّت فقط، لذلك لا يظهر كتالوج المتجر "
+"«مفعَّلة» و«معطَّلة» وبقية العروض تحصي المنصَّب فقط، لذلك لا يظهر كتالوج المتجر "
 "إلا في «الكل» وفي نتائج البحث."
 
 #: includes/addons_help.php:38
@@ -121,7 +121,7 @@ msgid ""
 "The number beside \"WPeMatico Addons\" in the menu is how many installed add-"
 "ons have an update waiting."
 msgstr ""
-"الرقم بجوار «WPeMatico Addons» في القائمة هو عدد الإضافات المثبَّتة التي لها "
+"الرقم بجوار «WPeMatico Addons» في القائمة هو عدد الإضافات المنصَّبة التي لها "
 "تحديث بانتظارها."
 
 #: includes/addons_help.php:39
@@ -141,7 +141,7 @@ msgid ""
 "Activate starts an add-on that is installed and stopped. Enable auto-updates "
 "appears once it is running and its license is valid."
 msgstr ""
-"«تفعيل» يشغّل إضافة مثبَّتة ومتوقفة. ويظهر «تفعيل التحديثات التلقائية» متى كانت "
+"«تفعيل» يشغّل إضافة منصَّبة ومتوقفة. ويظهر «تفعيل التحديثات التلقائية» متى كانت "
 "تعمل ورخصتها صالحة."
 
 #: includes/addons_help.php:44
@@ -158,7 +158,7 @@ msgid ""
 "either this site runs no automatic updates at all, or your user cannot "
 "update plugins."
 msgstr ""
-"«مثبَّتة» دون أي إجراء آخر تعني أن المفتاح لا يمكن عرضه هنا: إما أن هذا الموقع "
+"«منصَّبة» دون أي إجراء آخر تعني أن المفتاح لا يمكن عرضه هنا: إما أن هذا الموقع "
 "لا يجري تحديثات تلقائية إطلاقًا، أو أن مستخدمك لا يملك صلاحية تحديث الإضافات."
 
 #: includes/addons_help.php:48 includes/campaigns_list_help.php:91
@@ -197,7 +197,7 @@ msgid ""
 "hours after it is published."
 msgstr ""
 "لا يحدث شيء في تلك اللحظة. يفحص ووردبريس التحديثات مرتين يوميًا تقريبًا "
-"ويثبّتها وفق جدوله الخاص، لذا قد يصل إصدار جديد بعد ساعات من نشره."
+"وينصّبها وفق جدوله الخاص، لذا قد تصل نسخة جديدة بعد ساعات من نشرها."
 
 #: includes/addons_help.php:57
 msgid ""
@@ -224,7 +224,7 @@ msgid ""
 "While WPeMatico has an update pending, add-on updates wait — by hand and "
 "automatically alike."
 msgstr ""
-"الإضافة توسّع الإضافة الأساسية، لذلك لا تُثبَّت قبلها أبدًا. وما دام تحديث "
+"الإضافة توسّع الإضافة الأساسية، لذلك لا تُنصَّب قبلها أبدًا. وما دام تحديث "
 "WPeMatico معلّقًا، تنتظر تحديثات الإضافات — يدويًا وتلقائيًا على السواء."
 
 #: includes/addons_help.php:63
@@ -234,7 +234,7 @@ msgid ""
 "plugin, unattended."
 msgstr ""
 "لهذا فإن تفعيل التحديثات التلقائية لإضافة يفعّلها لـ WPeMatico أيضًا: فمع "
-"تفعيلهما معًا تُثبَّت الإضافة بعد الإضافة الأساسية مباشرة ودون تدخّل."
+"تفعيلهما معًا تُنصَّب الإضافة بعد الإضافة الأساسية مباشرة ودون تدخّل."
 
 #: includes/addons_help.php:64
 msgid ""
@@ -243,7 +243,7 @@ msgid ""
 "screen says so when that is the case."
 msgstr ""
 "يمكنك إيقاف تحديثات WPeMatico التلقائية مجددًا، ولا شيء يمنعك — لكن إضافاته "
-"ستبقى عندئذٍ على إصدارها حتى تحدّث WPeMatico يدويًا. وتنبّهك هذه الشاشة حين يحدث "
+"ستبقى عندئذٍ على نسختها حتى تحدّث WPeMatico يدويًا. وتنبّهك هذه الشاشة حين يحدث "
 "ذلك."
 
 #: includes/addons_help.php:67
@@ -262,7 +262,7 @@ msgid ""
 "Updating WPeMatico clears it: the next check installs the add-on with no "
 "further action."
 msgstr ""
-"تحديث WPeMatico يحلّ الأمر: الفحص التالي يثبّت الإضافة دون أي إجراء إضافي."
+"تحديث WPeMatico يحلّ الأمر: الفحص التالي ينصّب الإضافة دون أي إجراء إضافي."
 
 #: includes/addons_help.php:72
 msgid "Sites where they cannot run."
@@ -274,14 +274,14 @@ msgid ""
 "one with automatic updates disabled by a constant, does not run them either."
 msgstr ""
 "بعض شركات الاستضافة تدير التحديثات بنفسها، كما أن الموقع الخاضع لنظام إدارة "
-"إصدارات، أو الذي عُطِّلت فيه التحديثات التلقائية بثابت برمجي، لا ينفّذها أيضًا."
+"نُسخ، أو الذي عُطِّلت فيه التحديثات التلقائية بثابت برمجي، لا ينفّذها أيضًا."
 
 #: includes/addons_help.php:74
 msgid ""
 "The toggle is not offered there. The row says the add-on keeps its version "
 "until it is updated by hand."
 msgstr ""
-"لا يُعرض المفتاح هناك. ويذكر الصف أن الإضافة تبقى على إصدارها حتى تُحدَّث يدويًا."
+"لا يُعرض المفتاح هناك. ويذكر الصف أن الإضافة تبقى على نسختها حتى تُحدَّث يدويًا."
 
 #: includes/addons_help.php:77 includes/settings/functions.php:46
 msgid "Licenses"
@@ -431,7 +431,7 @@ msgstr "تثبيت %s من WordPress.org مجانًا"
 
 #: includes/addons_page.php:575
 msgid "Install now"
-msgstr "ثبِّت الآن"
+msgstr "نصِّب الآن"
 
 #: includes/addons_page.php:583
 msgid "See Plugins"
@@ -466,7 +466,7 @@ msgstr "عرض التفاصيل والأسعار في متجر etruel"
 #: includes/module/dashboard.php:55 includes/module/manager.php:130
 #: includes/module/manager.php:151 includes/module/manager.php:156
 msgid "Installed"
-msgstr "مثبَّتة"
+msgstr "منصَّبة"
 
 #: includes/addons_page.php:780
 msgid "Add license"
@@ -530,8 +530,8 @@ msgid ""
 "Vimeo publishes only the last 10 videos of each one, so a campaign that runs "
 "often enough never misses any."
 msgstr ""
-"ينشر Vimeo آخر 10 فيديوهات فقط لكل مصدر، لذا فالحملة التي تعمل بوتيرة كافية "
-"لا تفوّت أيًّا منها."
+"ينشر Vimeo آخر 10 مقاطع فيديو فقط لكل مصدر، لذا فالحملة التي تعمل بوتيرة "
+"كافية لا تفوّت أيًّا منها."
 
 #: includes/campaign-types/vimeo.php:293
 msgid "Use [embed]."
@@ -542,7 +542,7 @@ msgid ""
 "Wrap the video in the WordPress [embed] shortcode instead of the iframe "
 "Vimeo shares."
 msgstr ""
-"وضع الفيديو داخل الكود المختصر [embed] في ووردبريس بدل إطار iframe الذي "
+"وضع الفيديو داخل الكود القصير [embed] في ووردبريس بدل إطار iframe الذي "
 "يشاركه Vimeo."
 
 #: includes/campaign-types/vimeo.php:297
@@ -575,7 +575,7 @@ msgstr "الوصف المختصر للفيديو كما هو منشور على V
 
 #: includes/campaign-types/vimeo.php:356
 msgid "Use the [embed] WordPress shortcode instead of the Vimeo iframe."
-msgstr "استخدام الكود المختصر [embed] في ووردبريس بدل إطار Vimeo."
+msgstr "استخدام الكود القصير [embed] في ووردبريس بدل إطار Vimeo."
 
 #: includes/campaign-types/vimeo.php:358
 msgid "Change the size of the video frame."
@@ -603,9 +603,9 @@ msgid ""
 "asks for instead of the last 10, in the order you choose, and your private "
 "and unlisted ones."
 msgstr ""
-"تقرأ إضافة Professional من Vimeo عبر واجهته البرمجية: عدد الفيديوهات الذي "
-"يطلبه حد العناصر بدل آخر 10 فقط، بالترتيب الذي تختاره، مع فيديوهاتك الخاصة "
-"وغير المدرجة."
+"تقرأ إضافة Professional من Vimeo عبر واجهته البرمجية: عدد مقاطع الفيديو الذي "
+"يطلبه حد العناصر بدل آخر 10 فقط، بالترتيب الذي تختاره، مع مقاطع فيديوك "
+"الخاصة وغير المدرجة."
 
 #: includes/campaign-types/vimeo.php:55 includes/module/actions.php:185
 msgid "Vimeo"
@@ -844,7 +844,7 @@ msgstr "تمرير قائمة التغذيات"
 
 #: includes/campaign_edit_functions.php:1232
 msgid "Use the [embed] shortcode instead of the YouTube iframe"
-msgstr "استخدام الرمز المختصر [embed] بدل إطار يوتيوب"
+msgstr "استخدام الكود القصير [embed] بدل إطار يوتيوب"
 
 #: includes/campaign_edit_functions.php:1233
 msgid "Set the player size"
@@ -862,7 +862,7 @@ msgstr "الارتفاع:"
 
 #: includes/campaign_edit_functions.php:1238
 msgid "Short videos options:"
-msgstr "خيارات الفيديوهات القصيرة:"
+msgstr "خيارات مقاطع الفيديو القصيرة:"
 
 #: includes/campaign_edit_functions.php:1240
 msgid "Only shorts"
@@ -892,13 +892,13 @@ msgstr "إخفاء الوصف"
 
 #: includes/campaign_edit_functions.php:1264
 msgid "This campaign type needs the bbPress plugin installed and active."
-msgstr "يحتاج هذا النوع من الحملات إلى إضافة bbPress مثبّتة ومفعّلة."
+msgstr "يحتاج هذا النوع من الحملات إلى إضافة bbPress منصّبة ومفعّلة."
 
 #: includes/campaign_edit_functions.php:1265
 msgid ""
 "Install it from Plugins &rsaquo; Add New, activate it, and come back to this "
 "campaign."
-msgstr "ثبّتها من الإضافات &rsaquo; أضف جديدة، فعّلها ثم عُد إلى هذه الحملة."
+msgstr "نصّبها من الإضافات &rsaquo; أضف جديدة، فعّلها ثم عُد إلى هذه الحملة."
 
 #: includes/campaign_edit_functions.php:1267
 msgid ""
@@ -942,7 +942,7 @@ msgstr "البريد الإلكتروني:"
 
 #: includes/campaign_edit_functions.php:1323
 msgid "Only email me when something fails"
-msgstr "راسلني فقط عند حدوث خطأ"
+msgstr "راسلني بالبريد الإلكتروني فقط عند حدوث خطأ"
 
 #: includes/campaign_edit_functions.php:1335
 msgid "Tags:"
@@ -1072,7 +1072,7 @@ msgstr "نوع الحملة"
 
 #: includes/campaign_edit_functions.php:25
 msgid "Campaign Posts Format"
-msgstr "تنسيق مقالات الحملة"
+msgstr "صيغة مقالات الحملة"
 
 #: includes/campaign_edit_functions.php:26
 msgid "Campaign Categories"
@@ -1320,15 +1320,15 @@ msgid ""
 "is the WordPress gallery shortcode. Any shortcode works here: WordPress runs "
 "it when the post is displayed."
 msgstr ""
-"هو الرمز المختصر للمعرض في ووردبريس. يعمل هنا أي رمز مختصر: ينفّذه ووردبريس "
-"عند عرض المقالة."
+"هو الكود القصير للمعرض في ووردبريس. يعمل هنا أي كود قصير: ينفّذه ووردبريس عند "
+"عرض المقالة."
 
 #: includes/campaign_edit_functions.php:516 includes/campaign_help.php:303
 msgid ""
 "To show the videos or audios of the post as a player, the playlist shortcode "
 "does the same for media files:"
 msgstr ""
-"لعرض مقاطع الفيديو أو الصوت في المقالة كمشغّل، يفعل الرمز المختصر playlist "
+"لعرض مقاطع الفيديو أو الصوت في المقالة كمشغّل، يفعل الكود القصير playlist "
 "الشيء نفسه مع ملفات الوسائط:"
 
 #: includes/campaign_edit_functions.php:518 includes/campaign_help.php:305
@@ -1410,7 +1410,7 @@ msgstr "استخدام Featured Image from URL"
 
 #: includes/campaign_edit_functions.php:615
 msgid "%s has to be installed and activated for this to work."
-msgstr "لكي يعمل هذا يجب أن يكون %s مثبّتًا ومفعّلًا."
+msgstr "لكي يعمل هذا يجب أن يكون %s منصّبًا ومفعّلًا."
 
 #: includes/campaign_edit_functions.php:615 includes/campaign_help.php:160
 #: includes/settings/help.php:60 includes/module/actions.php:560
@@ -1502,7 +1502,7 @@ msgstr "إرفاق مقاطع الفيديو بالمقالات"
 #: includes/campaign_edit_functions.php:734 includes/campaign_help.php:220
 #: includes/settings/help.php:129 includes/settings/page.php:316
 msgid "Remove link to source videos"
-msgstr "إزالة الرابط إلى فيديوهات المصدر"
+msgstr "إزالة الرابط إلى مقاطع فيديو المصدر"
 
 #: includes/campaign_edit_functions.php:775 includes/campaign_help.php:237
 #: includes/settings/help.php:201 includes/settings/page.php:498
@@ -1634,7 +1634,7 @@ msgstr "إرفاق الملفات الصوتية"
 
 #: includes/campaign_fetch.php:1052
 msgid "Attaching videos"
-msgstr "إرفاق الفيديوهات"
+msgstr "إرفاق مقاطع الفيديو"
 
 #: includes/campaign_fetch.php:1081
 msgid "Campaign fetched in %s sec."
@@ -1786,7 +1786,7 @@ msgstr "الوسوم المضافة: "
 
 #: includes/campaign_fetch.php:896
 msgid "Post format added: "
-msgstr "تنسيق المقالة المضاف: "
+msgstr "صيغة المقالة المضافة: "
 
 #: includes/campaign_fetch.php:917
 msgid "Skip Featured Image."
@@ -1835,15 +1835,15 @@ msgstr "تبقى الملفات الصوتية مرتبطة من مصدر خار
 
 #: includes/campaign_fetch_functions.php:1356
 msgid "Looking for videos in content."
-msgstr "البحث عن فيديوهات في المحتوى."
+msgstr "البحث عن مقاطع فيديو في المحتوى."
 
 #: includes/campaign_fetch_functions.php:1426
 msgid "Using remotely linked videos in content. No changes."
-msgstr "تبقى الفيديوهات مرتبطة من مصدر خارجي في المحتوى. لا تغييرات."
+msgstr "تبقى مقاطع الفيديو مرتبطة من مصدر خارجي في المحتوى. لا تغييرات."
 
 #: includes/campaign_fetch_functions.php:1459
 msgid "Skipping standard videos..."
-msgstr "تخطّي الفيديوهات العادية…"
+msgstr "تخطّي مقاطع الفيديو العادية…"
 
 #: includes/campaign_fetch_functions.php:1465
 msgid "Skipping Youtube Short..."
@@ -1995,7 +1995,7 @@ msgid ""
 "Wraps the video in the WordPress [embed] shortcode instead of the iframe "
 "YouTube shares."
 msgstr ""
-"يلفّ الفيديو في الرمز المختصر [embed] في ووردبريس بدل الإطار الذي يشاركه "
+"يلفّ الفيديو في الكود القصير [embed] في ووردبريس بدل الإطار الذي يشاركه "
 "يوتيوب."
 
 #: includes/campaign_help.php:103
@@ -2109,7 +2109,7 @@ msgid ""
 "it from the source server. Install and activate that plugin first."
 msgstr ""
 "يسلّم الصورة البارزة إلى إضافة Featured Image from URL التي تقدّمها من خادم "
-"المصدر. ثبّت تلك الإضافة وفعّلها أولًا."
+"المصدر. نصّب تلك الإضافة وفعّلها أولًا."
 
 #: includes/campaign_help.php:160 includes/settings/help.php:55
 #: includes/settings/help.php:60
@@ -2451,7 +2451,7 @@ msgid ""
 "Replaces words or phrases in the content with your own text, and can turn a "
 "word into a link. Click [?] below for examples."
 msgstr ""
-"يستبدل كلمات أو عبارات في المحتوى بنصك، ويمكنه تحويل كلمة إلى رابط. اضغط [?] "
+"يستبدل كلمات أو عبارات في المحتوى بنصك، ويمكنه تحويل كلمة إلى رابط. انقر [?] "
 "أدناه لأمثلة."
 
 #: includes/campaign_help.php:323
@@ -2558,7 +2558,7 @@ msgstr "وسوم تُضاف إلى كل مقالة من هذه الحملة."
 #: includes/campaign_help.php:355 includes/campaigns_list.php:1226
 #: includes/campaigns_list.php:1415
 msgid "Post format"
-msgstr "تنسيق المقالة"
+msgstr "صيغة المقالة"
 
 #: includes/campaign_help.php:356
 msgid ""
@@ -2573,7 +2573,7 @@ msgstr "ألّا يكون في المستقبل."
 
 #: includes/campaign_help.php:361
 msgid "Log by email"
-msgstr "سجل بالبريد"
+msgstr "سجل بالبريد الإلكتروني"
 
 #: includes/campaign_help.php:362
 msgid ""
@@ -2697,8 +2697,8 @@ msgid ""
 "The feed content is saved exactly as it arrives, past the WordPress filters "
 "and with its scripts. Use it only with sources you trust."
 msgstr ""
-"يُحفظ محتوى التغذية كما يصل تمامًا، بعيدًا عن مرشّحات ووردبريس ومع سكربتاته. "
-"استخدمه فقط مع مصادر تثق بها."
+"يُحفظ محتوى التغذية كما يصل تمامًا، بعيدًا عن عوامل تصفية ووردبريس ومع "
+"سكربتاته. استخدمه فقط مع مصادر تثق بها."
 
 #: includes/campaign_help.php:94
 msgid "YouTube feed addresses"
@@ -3020,7 +3020,7 @@ msgstr "تحرير سريع"
 
 #: includes/campaigns_list.php:707
 msgid "Restore this item from the Trash"
-msgstr "استعادة هذا العنصر من المهملات"
+msgstr "استعادة هذا العنصر من سلة المهملات"
 
 #: includes/campaigns_list.php:707
 msgid "Restore"
@@ -3028,11 +3028,11 @@ msgstr "استعادة"
 
 #: includes/campaigns_list.php:709
 msgid "Move this item to the Trash"
-msgstr "نقل هذا العنصر إلى المهملات"
+msgstr "نقل هذا العنصر إلى سلة المهملات"
 
 #: includes/campaigns_list.php:709 includes/campaigns_list_help.php:53
 msgid "Trash"
-msgstr "المهملات"
+msgstr "سلة المهملات"
 
 #: includes/campaigns_list.php:711
 msgid "Delete this item permanently"
@@ -3183,7 +3183,7 @@ msgstr "يغيّر الحقول الرئيسية من دون فتح محرّر �
 
 #: includes/campaigns_list_help.php:53
 msgid "Send the campaign to the trash."
-msgstr "إرسال الحملة إلى المهملات."
+msgstr "إرسال الحملة إلى سلة المهملات."
 
 #: includes/campaigns_list_help.php:55
 msgid ""
@@ -3244,11 +3244,11 @@ msgstr "يغيّر التحرير الجماعي الحقول الرئيسية �
 
 #: includes/campaigns_list_help.php:97
 msgid "\"Send to Trash\" removes all the selected campaigns in one go."
-msgstr "«نقل إلى المهملات» يزيل كل الحملات المحدّدة دفعة واحدة."
+msgstr "«نقل إلى سلة المهملات» يزيل كل الحملات المحدّدة دفعة واحدة."
 
 #: includes/campaigns_list_help.php:99
 msgid "Select the campaigns, choose the action and click Apply."
-msgstr "حدّد الحملات، اختر الإجراء، ثم اضغط تطبيق."
+msgstr "حدّد الحملات، اختر الإجراء، ثم انقر تطبيق."
 
 #: includes/class-tour-helper.php:104 includes/debug_page.php:2957
 msgid "Feeds"
@@ -3258,7 +3258,9 @@ msgstr "التغذيات"
 msgid ""
 "Add the feed addresses this campaign reads. Check all feeds tells you "
 "whether each one answers."
-msgstr "أضف عناوين التغذيات التي تقرؤها هذه الحملة. يخبرك «فحص كل التغذيات» إن كانت كل واحدة منها تستجيب."
+msgstr ""
+"أضف عناوين التغذيات التي تقرؤها هذه الحملة. يخبرك «فحص كل التغذيات» إن كانت "
+"كل واحدة منها تستجيب."
 
 #: includes/class-tour-helper.php:111
 msgid "Campaign type"
@@ -3268,7 +3270,9 @@ msgstr "نوع الحملة"
 msgid ""
 "Feed is the usual choice. Other types read XML files, YouTube or Vimeo, and "
 "more come with the extensions."
-msgstr "Feed هو الخيار المعتاد. أنواع أخرى تقرأ ملفات XML أو يوتيوب أو Vimeo، والإضافات تجلب المزيد."
+msgstr ""
+"Feed هو الخيار المعتاد. أنواع أخرى تقرأ ملفات XML أو يوتيوب أو Vimeo، "
+"والإضافات تجلب المزيد."
 
 #: includes/class-tour-helper.php:118 includes/debug_page.php:3025
 #: includes/debug_page.php:3521
@@ -3296,7 +3300,9 @@ msgstr "قائمة الإعدادات"
 msgid ""
 "General, Advanced and Backend Tools hold WPeMatico's settings. Each "
 "extension adds its own tab below them."
-msgstr "تحتوي عام ومتقدم وأدوات الواجهة الخلفية على إعدادات WPeMatico. وتضيف كل إضافة تبويبها الخاص تحتها."
+msgstr ""
+"تحتوي عام ومتقدم وأدوات الواجهة الخلفية على إعدادات WPeMatico. وتضيف كل "
+"إضافة تبويبها الخاص تحتها."
 
 #: includes/class-tour-helper.php:141
 msgid "Boxes"
@@ -3328,7 +3334,9 @@ msgstr "ميزات إضافية"
 msgid ""
 "Switch on content rewriting, words to categories, canonical URLs and the "
 "other optional features."
-msgstr "فعّل إعادة صياغة المحتوى والكلمات إلى تصنيفات والروابط القانونية وبقية الميزات الاختيارية."
+msgstr ""
+"فعّل إعادة صياغة المحتوى والكلمات إلى تصنيفات والروابط القانونية وبقية "
+"الميزات الاختيارية."
 
 #: includes/class-tour-helper.php:168
 msgid "Advanced actions"
@@ -3346,7 +3354,9 @@ msgstr "شاشات الإدارة الخاصة بك"
 msgid ""
 "Choose the campaign columns, the boxes of the campaign editor, the dashboard "
 "widgets and these guided tours."
-msgstr "اختر أعمدة الحملات وصناديق محرر الحملة وودجات اللوحة وهذه الجولات الإرشادية."
+msgstr ""
+"اختر أعمدة الحملات وصناديق محرر الحملة وودجات لوحة التحكم وهذه الجولات "
+"الإرشادية."
 
 #: includes/class-tour-helper.php:186 includes/feed_list_help.php:29
 #: includes/tools_page.php:452 includes/tools_tabs.php:64
@@ -3364,7 +3374,9 @@ msgstr "كل تغذية لكل حملة في قائمة واحدة، مع حمل
 msgid ""
 "Paste any address to see what it really returns: a feed, a page that is not "
 "one, or why it cannot be reached."
-msgstr "الصق أي عنوان لترى ما يعيده فعلًا: تغذية، أو صفحة ليست تغذية، أو سبب تعذر الوصول إليه."
+msgstr ""
+"الصق أي عنوان لترى ما يعيده فعلًا: تغذية، أو صفحة ليست تغذية، أو سبب تعذر "
+"الوصول إليه."
 
 #: includes/class-tour-helper.php:200 includes/tools_help.php:37
 #: includes/tools_tabs.php:68
@@ -3385,7 +3397,8 @@ msgstr "أدوات الانتقال"
 msgid ""
 "Bring your feeds over from Feedzy or WP RSS Aggregator, with the posts they "
 "already published."
-msgstr "انقل تغذياتك من Feedzy أو WP RSS Aggregator، مع المقالات التي نشرتها بالفعل."
+msgstr ""
+"انقل تغذياتك من Feedzy أو WP RSS Aggregator، مع المقالات التي نشرتها بالفعل."
 
 #: includes/class-tour-helper.php:214 includes/tools_tabs.php:18
 msgid "System"
@@ -3395,12 +3408,14 @@ msgstr "النظام"
 msgid ""
 "Status gathers the site and server details support will ask for. Danger Zone "
 "holds debug logging and what uninstalling removes."
-msgstr "تجمع الحالة بيانات الموقع والخادم التي سيطلبها الدعم. وتحتوي منطقة الخطر على سجل التصحيح وما يحذفه إلغاء التثبيت."
+msgstr ""
+"تجمع الحالة بيانات الموقع والخادم التي سيطلبها الدعم. وتحتوي منطقة الخطر على "
+"سجل التصحيح وما يحذفه إلغاء التثبيت."
 
 #: includes/class-tour-helper.php:225
 msgid ""
 "Every WPeMatico add-on, installed or not. The free ones install from here."
-msgstr "كل إضافات WPeMatico، مثبتة أو غير مثبتة. المجانية منها تُثبَّت من هنا."
+msgstr "كل إضافات WPeMatico، منصبة أو غير منصبة. المجانية منها تُنصَّب من هنا."
 
 #: includes/class-tour-helper.php:231
 msgid "Activate and license"
@@ -3420,7 +3435,8 @@ msgstr "يشغّل الحملة مرة واحدة، الآن."
 msgid ""
 "Turns its schedule on, so it runs on its own. It shows red while the "
 "schedule is on."
-msgstr "يفعّل جدولتها لتعمل من تلقاء نفسها. يظهر باللون الأحمر ما دامت الجدولة مفعّلة."
+msgstr ""
+"يفعّل جدولتها لتعمل من تلقاء نفسها. يظهر باللون الأحمر ما دامت الجدولة مفعّلة."
 
 #: includes/class-tour-helper.php:246
 msgid "Turns the schedule off, or stops a run in progress."
@@ -3458,7 +3474,7 @@ msgstr "مرحبًا بك في WPeMatico"
 #: includes/class-tour-helper.php:50
 msgid ""
 "Everything lives here: Dashboard, Campaigns, Settings, Tools and Extensions."
-msgstr "كل شيء هنا: اللوحة والحملات والإعدادات والأدوات والإضافات."
+msgstr "كل شيء هنا: لوحة التحكم والحملات والإعدادات والأدوات والإضافات."
 
 #: includes/class-tour-helper.php:56
 msgid "One card per feature"
@@ -3477,7 +3493,7 @@ msgstr "تشغيل الميزات وإيقافها"
 msgid ""
 "Each card says what its switch will do before you touch it, and installs "
 "whatever it needs."
-msgstr "تخبرك كل بطاقة بما سيفعله مفتاحها قبل أن تلمسه، وتثبّت ما تحتاج إليه."
+msgstr "تخبرك كل بطاقة بما سيفعله مفتاحها قبل أن تلمسه، وتنصّب ما تحتاج إليه."
 
 #: includes/class-tour-helper.php:70
 msgid "Your first campaign"
@@ -3718,19 +3734,19 @@ msgstr "تم الحصول على العنوان %s."
 
 #: includes/debug_page.php:1561
 msgid "MySQL Version:"
-msgstr "إصدار MySQL:"
+msgstr "نسخة MySQL:"
 
 #: includes/debug_page.php:1563
 msgid "The version of MySQL installed on your hosting server."
-msgstr "إصدار MySQL المثبَّت على خادمك."
+msgstr "نسخة MySQL المنصَّب على خادمك."
 
 #: includes/debug_page.php:1575
 msgid "PHP Version:"
-msgstr "إصدار PHP:"
+msgstr "نسخة PHP:"
 
 #: includes/debug_page.php:1577
 msgid "The version of PHP installed on your hosting server."
-msgstr "إصدار PHP المثبَّت على خادمك."
+msgstr "نسخة PHP المنصَّب على خادمك."
 
 #. translators: %1$s: the PHP version running. %2$s: the minimum PHP version WPeMatico needs.
 #: includes/debug_page.php:1585
@@ -3781,7 +3797,7 @@ msgstr "%1$s مطلوب لـ %2$s."
 #: includes/debug_page.php:2178 includes/debug_page.php:2200
 #: includes/debug_page.php:2222
 msgid "%1$s is not installed on your server, but is recommended by %2$s."
-msgstr "%1$s غير مثبَّت على خادمك، لكن %2$s يوصي به."
+msgstr "%1$s غير منصَّب على خادمك، لكن %2$s يوصي به."
 
 #: includes/debug_page.php:1652
 msgid "Mod Mime:"
@@ -3974,7 +3990,7 @@ msgstr ""
 
 #: includes/debug_page.php:2062
 msgid "Not installed (not needed unless you use Full Content)."
-msgstr "غير مثبَّت (لا يلزم إلا إذا كنت تستخدم Full Content)."
+msgstr "غير منصَّب (لا يلزم إلا إذا كنت تستخدم Full Content)."
 
 #. translators: %s: the libtidy release date reported by the server.
 #: includes/debug_page.php:2074
@@ -4114,11 +4130,11 @@ msgstr "العنوان الجذر لموقعك."
 
 #: includes/debug_page.php:2353
 msgid "WP Version:"
-msgstr "إصدار ووردبريس:"
+msgstr "نسخة ووردبريس:"
 
 #: includes/debug_page.php:2355 includes/debug_page.php:2471
 msgid "The version of WordPress installed on your site."
-msgstr "إصدار ووردبريس المثبَّت على موقعك."
+msgstr "نسخة ووردبريس المنصَّب على موقعك."
 
 #: includes/debug_page.php:2363
 msgid "WP Multisite:"
@@ -4140,11 +4156,11 @@ msgstr "المنتديات"
 
 #: includes/debug_page.php:2387
 msgid "Simple Pie VERSION:"
-msgstr "إصدار SimplePie:"
+msgstr "نسخة SimplePie:"
 
 #: includes/debug_page.php:2389
 msgid "Minimum version required is 1.5.1."
-msgstr "أدنى إصدار مطلوب هو 1.5.1."
+msgstr "أدنى نسخة مطلوبة هي 1.5.1."
 
 #: includes/debug_page.php:2423
 msgid "USING SimplePie %s included in WordPress"
@@ -5019,12 +5035,12 @@ msgstr "مفعَّلة للتحديثات"
 
 #: includes/lib/update_reasons.php:112
 msgid "%1$s updates right after WPeMatico: install WPeMatico %2$s first."
-msgstr "يُحدَّث %1$s مباشرة بعد WPeMatico: ثبّت أولًا WPeMatico %2$s."
+msgstr "يُحدَّث %1$s مباشرة بعد WPeMatico: نصّب أولًا WPeMatico %2$s."
 
 #: includes/lib/update_reasons.php:114
 msgid ""
 "%s updates right after WPeMatico: install the pending WPeMatico update first."
-msgstr "يُحدَّث %s مباشرة بعد WPeMatico: ثبّت أولًا تحديث WPeMatico المعلّق."
+msgstr "يُحدَّث %s مباشرة بعد WPeMatico: نصّب أولًا تحديث WPeMatico المعلّق."
 
 #: includes/lib/update_reasons.php:116 includes/lib/update_reasons.php:123
 #: includes/lib/update_reasons.php:181 includes/lib/update_reasons.php:206
@@ -5186,7 +5202,7 @@ msgid ""
 "now free, and a new Migration Toolkit brings your feeds over from other RSS "
 "plugins. And everything feels faster."
 msgstr ""
-"‏WPeMatico 2.9 هو أكبر تحديث منذ سنوات. لوحة جديدة تضع أهم مزايا الإضافة "
+"‏WPeMatico 2.9 هو أكبر تحديث منذ سنوات. لوحة تحكم جديدة تضع أهم مزايا الإضافة "
 "وإضافاتها خلف مفتاح واحد، وأعيد بناء الإعدادات والأدوات من الصفر، وصارت "
 "حملات Vimeo مجانية، وجاءت أدوات ترحيل جديدة تنقل تغذياتك من إضافات RSS "
 "الأخرى. وكل شيء صار أسرع."
@@ -5206,11 +5222,11 @@ msgid ""
 "add-on, and the card and the setting behind it are the same switch."
 msgstr ""
 "رشّح حسب الفئة لتجد ما تحتاجه وفعّله من مكانه. تخبرك كل بطاقة إن كانت الميزة "
-"مثبَّتة أو مجانية أو جزءًا من إضافة، والبطاقة والإعداد خلفها مفتاح واحد."
+"منصَّبة أو مجانية أو جزءًا من إضافة، والبطاقة والإعداد خلفها مفتاح واحد."
 
 #: includes/lib/welcome.php:275 includes/lib/welcome.php:651
 msgid "Open the Dashboard"
-msgstr "افتح اللوحة"
+msgstr "افتح لوحة التحكم"
 
 #: includes/lib/welcome.php:278
 msgid "The WPeMatico Dashboard: a grid of feature cards, each with a switch"
@@ -5260,7 +5276,7 @@ msgstr ""
 
 #: includes/lib/welcome.php:303
 msgid "Switch on the Plugin Importers card in the Dashboard to get started."
-msgstr "فعّل بطاقة «مستوردات الإضافات» في اللوحة للبدء."
+msgstr "فعّل بطاقة «مستوردات الإضافات» في لوحة التحكم للبدء."
 
 #: includes/lib/welcome.php:306
 msgid "The Migration Toolkit, with the feeds it found on the site"
@@ -5292,7 +5308,8 @@ msgstr ""
 msgid ""
 "Switch it on from its card in the Dashboard, or in Settings → Advanced → "
 "Enable Features."
-msgstr "فعّلها من بطاقتها في اللوحة، أو من الإعدادات ← متقدم ← تفعيل المزايا."
+msgstr ""
+"فعّلها من بطاقتها في لوحة التحكم، أو من الإعدادات ← متقدم ← تفعيل المزايا."
 
 #: includes/lib/welcome.php:326
 msgid "Your campaigns at a glance, on the WordPress dashboard"
@@ -5310,13 +5327,13 @@ msgid ""
 "the next run and all-time posts. A second widget, WPeMatico News, keeps the "
 "latest from the blog one glance away."
 msgstr ""
-"مربع «ملخص WPeMatico» المعاد بناؤه يعرض مقالات اليوم والحملات النشطة "
+"ودجت «ملخص WPeMatico» المعاد بناؤه يعرض مقالات اليوم والحملات النشطة "
 "والتشغيل التالي وإجمالي المقالات. ومربع ثانٍ، «أخبار WPeMatico»، يبقي جديد "
 "المدونة على مرمى نظرة."
 
 #: includes/lib/welcome.php:333
 msgid "The WPeMatico Summary widget on the WordPress dashboard"
-msgstr "مربع «ملخص WPeMatico» على لوحة تحكم ووردبريس"
+msgstr "ودجت «ملخص WPeMatico» على لوحة تحكم ووردبريس"
 
 #: includes/lib/welcome.php:341
 msgid "More in 2.9"
@@ -5360,14 +5377,14 @@ msgstr ""
 
 #: includes/lib/welcome.php:375
 msgid "The Add-ons page installs the free ones"
-msgstr "صفحة الإضافات تثبّت المجانية منها"
+msgstr "صفحة الإضافات تنصّب المجانية منها"
 
 #: includes/lib/welcome.php:376
 msgid ""
 "The free add-ons install with one click, the ones you already have offer "
 "Activate, and the memberships are listed at last."
 msgstr ""
-"تُثبَّت الإضافات المجانية بنقرة واحدة، وما تملكه منها يعرض «تفعيل»، وأخيرًا صارت "
+"تُنصَّب الإضافات المجانية بنقرة واحدة، وما تملكه منها يعرض «تفعيل»، وأخيرًا صارت "
 "العضويات مدرجة."
 
 #: includes/lib/welcome.php:377
@@ -5421,15 +5438,16 @@ msgid ""
 "translation, AI rewriting, and much more."
 msgstr ""
 "الإضافات والعضويات توسّع الإضافة المجانية: المقال الكامل من المصدر بدل مقتطف "
-"RSS، ومرشّحات الكلمات المفتاحية، والعناوين المخصصة، والترجمة، وإعادة الكتابة "
-"بالذكاء الاصطناعي، وأكثر من ذلك بكثير."
+"RSS، وعوامل تصفية الكلمات المفتاحية، والعناوين المخصصة، والترجمة، وإعادة "
+"الكتابة بالذكاء الاصطناعي، وأكثر من ذلك بكثير."
 
 #: includes/lib/welcome.php:420
 msgid ""
 "The new Dashboard shows the main ones as cards, so you can see what an add-"
 "on would switch on before you get it."
 msgstr ""
-"وتعرض اللوحة الجديدة أبرزها كبطاقات، فترى ما ستفعّله الإضافة قبل أن تقتنيها."
+"وتعرض لوحة التحكم الجديدة أبرزها كبطاقات، فترى ما ستفعّله الإضافة قبل أن "
+"تقتنيها."
 
 #: includes/lib/welcome.php:422
 msgid "WPeMatico Starter Memberships"
@@ -5477,7 +5495,7 @@ msgid ""
 "reads and displays the RSS feed results on your WordPress site without "
 "creating the posts. Install it from the Extensions page."
 msgstr ""
-"تقرأ تغذيات RSS وتعرض نتائجها في موقعك دون إنشاء مقالات. ثبّتها من صفحة "
+"تقرأ تغذيات RSS وتعرض نتائجها في موقعك دون إنشاء مقالات. نصّبها من صفحة "
 "الامتدادات."
 
 #: includes/lib/welcome.php:474
@@ -5631,7 +5649,7 @@ msgid ""
 "Summary widget puts the same on your WordPress dashboard."
 msgstr ""
 "تعرض قائمة الحملات حالة كل حملة وآخر تشغيل وعدد مقالاتها، ويمكنك تشغيل أي "
-"منها أو إيقافها من صفها. ومربع «ملخص WPeMatico» يضع الشيء نفسه على لوحة تحكم "
+"منها أو إيقافها من صفها. وودجت «ملخص WPeMatico» يضع الشيء نفسه على لوحة تحكم "
 "ووردبريس."
 
 #: includes/lib/welcome.php:643
@@ -5652,8 +5670,8 @@ msgid ""
 "types such as YouTube, Vimeo or Feeds XML, and extras such as Download "
 "Images or Canonical URLs."
 msgstr ""
-"تحوّل اللوحة كل ميزة إلى بطاقة بمفتاح: أنواع حملات أخرى مثل يوتيوب و Vimeo و "
-"Feeds XML، وإضافات مثل تنزيل الصور أو الروابط المعيارية."
+"تحوّل لوحة التحكم كل ميزة إلى بطاقة بمفتاح: أنواع حملات أخرى مثل يوتيوب و "
+"Vimeo و Feeds XML، وإضافات مثل تنزيل الصور أو الروابط المعيارية."
 
 #: includes/lib/welcome.php:657
 msgid "The settings behind every campaign"
@@ -5665,7 +5683,7 @@ msgid ""
 "scheduler that runs your campaigns, and the Backend Tools, such as the "
 "Campaign column in your post lists."
 msgstr ""
-"تحوي الإعدادات ما هو عام: كيف تُعالَج الصور والفيديوهات، والمجدول الذي يشغّل "
+"تحوي الإعدادات ما هو عام: كيف تُعالَج الصور ومقاطع الفيديو، والمجدول الذي يشغّل "
 "حملاتك، وأدوات الواجهة الخلفية، مثل عمود الحملة في قوائم مقالاتك."
 
 #: includes/lib/welcome.php:668
@@ -5753,10 +5771,10 @@ msgid ""
 "the complete article from the source page instead of the RSS snippet; and "
 "there are add-ons for translation, AI rewriting, images and more."
 msgstr ""
-"تأخذ الإضافات WPeMatico أبعد: فـ Professional يضيف لكل حملة مرشّحات كلمات "
-"مفتاحية وعناوين مخصصة ووسومًا وخيارات كثيرة غيرها؛ و Full Content يجلب المقال "
-"الكامل من صفحة المصدر بدل مقتطف RSS؛ وهناك إضافات للترجمة وإعادة الكتابة "
-"بالذكاء الاصطناعي والصور وغيرها."
+"تأخذ الإضافات WPeMatico أبعد: فـ Professional يضيف لكل حملة عوامل تصفية "
+"كلمات مفتاحية وعناوين مخصصة ووسومًا وخيارات كثيرة غيرها؛ و Full Content يجلب "
+"المقال الكامل من صفحة المصدر بدل مقتطف RSS؛ وهناك إضافات للترجمة وإعادة "
+"الكتابة بالذكاء الاصطناعي والصور وغيرها."
 
 #: includes/lib/welcome.php:723
 msgid "Find them in Extensions"
@@ -5771,7 +5789,7 @@ msgid ""
 "lists every add-on and membership, installs the free ones in one click and "
 "keeps the ones you own up to date. The"
 msgstr ""
-"تُدرِج كل إضافة وعضوية، وتثبّت المجانية بنقرة واحدة، وتبقي ما تملكه محدَّثًا. و"
+"تُدرِج كل إضافة وعضوية، وتنصّب المجانية بنقرة واحدة، وتبقي ما تملكه محدَّثًا. و"
 
 #: includes/lib/welcome.php:724
 msgid "etruel store"
@@ -5781,7 +5799,7 @@ msgstr "متجر etruel"
 msgid ""
 "has the full catalogue, with category filters to find exactly what you are "
 "looking for."
-msgstr "فيه الكتالوج الكامل، مع مرشّحات فئات لتجد بالضبط ما تبحث عنه."
+msgstr "فيه الكتالوج الكامل، مع عوامل تصفية فئات لتجد بالضبط ما تبحث عنه."
 
 #: includes/lib/welcome.php:73 includes/lib/welcome.php:74
 msgid "WPeMatico Changelog"
@@ -5965,7 +5983,7 @@ msgstr "بديل غير صالح."
 
 #: includes/migration/class-migration-manager.php:470
 msgid "The shortcode was not found in this content (it may have changed)."
-msgstr "لم يُعثر على الكود المختصر في هذا المحتوى (ربما تغيّر)."
+msgstr "لم يُعثر على الكود القصير في هذا المحتوى (ربما تغيّر)."
 
 #: includes/migration/class-migration-manager.php:63
 msgid ""
@@ -6008,7 +6026,7 @@ msgid ""
 "Nothing to import yet: these feeds only display items. Install the RSS Feed "
 "Reader addon above to import them."
 msgstr ""
-"لا شيء لاستيراده بعد: هذه التغذيات تعرض العناصر فقط. ثبّت إضافة RSS Feed "
+"لا شيء لاستيراده بعد: هذه التغذيات تعرض العناصر فقط. نصّب إضافة RSS Feed "
 "Reader أعلاه لاستيرادها."
 
 #: includes/migration/class-migration-manager.php:910
@@ -6179,9 +6197,9 @@ msgid ""
 "translation, content rewriting) are recreated on the WPeMatico addon that "
 "provides the same feature."
 msgstr ""
-"تُعاد إعدادات المصدر المتقدمة (مرشّحات الكلمات المفتاحية، والصورة البديلة، "
-"والترجمة التلقائية، وإعادة كتابة المحتوى) على إضافة WPeMatico التي توفّر "
-"الميزة نفسها."
+"تُعاد إعدادات المصدر المتقدمة (عوامل تصفية الكلمات المفتاحية، والصورة "
+"البديلة، والترجمة التلقائية، وإعادة كتابة المحتوى) على إضافة WPeMatico التي "
+"توفّر الميزة نفسها."
 
 #: includes/migration/help.php:51
 msgid ""
@@ -6196,7 +6214,7 @@ msgid ""
 "You can import now without that addon — no source data is lost. Install it "
 "later and run the import again to fill in the missing fields."
 msgstr ""
-"يمكنك الاستيراد الآن بدون تلك الإضافة — ولا تضيع أي بيانات من المصدر. ثبّتها "
+"يمكنك الاستيراد الآن بدون تلك الإضافة — ولا تضيع أي بيانات من المصدر. نصّبها "
 "لاحقًا وأعد الاستيراد لملء الحقول الناقصة."
 
 #: includes/migration/help.php:55
@@ -6247,7 +6265,7 @@ msgid ""
 "import them stopped and fetch later yourself."
 msgstr ""
 "اترك الخيار مفعَّلًا وسيفعّلها الاستيراد ويجلب محتواها مرة واحدة، فيعرض الكود "
-"المختصر البديل شيئًا فورًا. وألغِه لاستيرادها متوقفة وجلبها لاحقًا بنفسك."
+"القصير البديل شيئًا فورًا. وألغِه لاستيرادها متوقفة وجلبها لاحقًا بنفسك."
 
 #: includes/migration/help.php:66
 msgid "Deactivate the source plugin after import."
@@ -6357,12 +6375,12 @@ msgstr "رُحِّلت %d حملة بنجاح."
 #: includes/migration/importers/class-migrator-feedzy-rss-feeds.php:343
 #: includes/migration/importers/class-migrator-wp-rss-aggregator.php:261
 msgid "Import keyword filters"
-msgstr "استيراد مرشّحات الكلمات المفتاحية"
+msgstr "استيراد عوامل تصفية الكلمات المفتاحية"
 
 #: includes/migration/importers/class-migrator-feedzy-rss-feeds.php:344
 msgid "Maps Feedzy include/exclude keywords to WPeMatico keyword filters."
 msgstr ""
-"يطابق كلمات التضمين والاستبعاد في Feedzy مع مرشّحات الكلمات المفتاحية في "
+"يطابق كلمات التضمين والاستبعاد في Feedzy مع عوامل تصفية الكلمات المفتاحية في "
 "WPeMatico."
 
 #: includes/migration/importers/class-migrator-feedzy-rss-feeds.php:348
@@ -6372,7 +6390,7 @@ msgid ""
 "settings</strong> so the imported filters run."
 msgstr ""
 "<strong>فُعِّلت تصفية الكلمات المفتاحية في إعدادات WPeMatico Professional</"
-"strong> كي تعمل المرشّحات المستوردة."
+"strong> كي تعمل عوامل التصفية المستوردة."
 
 #: includes/migration/importers/class-migrator-feedzy-rss-feeds.php:351
 #: includes/migration/importers/class-migrator-wp-rss-aggregator.php:269
@@ -6468,22 +6486,22 @@ msgid_plural ""
 "Skipped %d display-only feeds: install the WPeMatico RSS Feed Reader addon "
 "and run the migration again to import them."
 msgstr[0] ""
-"تُخطّيت %d تغذية للعرض فقط: ثبّت إضافة WPeMatico RSS Feed Reader وأعد تشغيل "
+"تُخطّيت %d تغذية للعرض فقط: نصّب إضافة WPeMatico RSS Feed Reader وأعد تشغيل "
 "النقل لاستيرادها."
 msgstr[1] ""
-"تُخطّيت %d تغذية للعرض فقط: ثبّت إضافة WPeMatico RSS Feed Reader وأعد تشغيل "
+"تُخطّيت %d تغذية للعرض فقط: نصّب إضافة WPeMatico RSS Feed Reader وأعد تشغيل "
 "النقل لاستيرادها."
 msgstr[2] ""
-"تُخطّيت %d تغذيتان للعرض فقط: ثبّت إضافة WPeMatico RSS Feed Reader وأعد تشغيل "
+"تُخطّيت %d تغذيتان للعرض فقط: نصّب إضافة WPeMatico RSS Feed Reader وأعد تشغيل "
 "النقل لاستيرادهما."
 msgstr[3] ""
-"تُخطّيت %d تغذيات للعرض فقط: ثبّت إضافة WPeMatico RSS Feed Reader وأعد تشغيل "
+"تُخطّيت %d تغذيات للعرض فقط: نصّب إضافة WPeMatico RSS Feed Reader وأعد تشغيل "
 "النقل لاستيرادها."
 msgstr[4] ""
-"تُخطّيت %d تغذية للعرض فقط: ثبّت إضافة WPeMatico RSS Feed Reader وأعد تشغيل "
+"تُخطّيت %d تغذية للعرض فقط: نصّب إضافة WPeMatico RSS Feed Reader وأعد تشغيل "
 "النقل لاستيرادها."
 msgstr[5] ""
-"تُخطّيت %d تغذية للعرض فقط: ثبّت إضافة WPeMatico RSS Feed Reader وأعد تشغيل "
+"تُخطّيت %d تغذية للعرض فقط: نصّب إضافة WPeMatico RSS Feed Reader وأعد تشغيل "
 "النقل لاستيرادها."
 
 #. translators: %d: number of campaigns imported deactivated.
@@ -6520,7 +6538,7 @@ msgid ""
 "Maps WP RSS Aggregator import automations to WPeMatico include/exclude "
 "keyword filters."
 msgstr ""
-"يطابق أتمتة الاستيراد في WP RSS Aggregator مع مرشّحات التضمين والاستبعاد "
+"يطابق أتمتة الاستيراد في WP RSS Aggregator مع عوامل تصفية التضمين والاستبعاد "
 "بالكلمات المفتاحية في WPeMatico."
 
 #: includes/migration/importers/class-migrator-wp-rss-aggregator.php:270
@@ -6580,7 +6598,7 @@ msgid ""
 "fields."
 msgstr ""
 "يمكنك الاستيراد الآن دون الإضافة المطلوبة — ولا تضيع أي بيانات من المصدر. "
-"ثبّت الإضافة لاحقًا وأعد استيراد هذه الإضافة لملء الحقول الناقصة."
+"نصّب الإضافة لاحقًا وأعد استيراد هذه الإضافة لملء الحقول الناقصة."
 
 #: includes/migration/views/migration-box.php:166
 msgid ""
@@ -6907,7 +6925,7 @@ msgstr "يضيف نوع الملف XML إلى الأنواع التي يقبله
 
 #: includes/module/actions.php:186
 msgid "Publish the videos of a Vimeo user, channel or group."
-msgstr "انشر فيديوهات مستخدم أو قناة أو مجموعة على Vimeo."
+msgstr "انشر مقاطع فيديو مستخدم أو قناة أو مجموعة على Vimeo."
 
 #: includes/module/actions.php:190
 msgid ""
@@ -6919,7 +6937,7 @@ msgstr ""
 
 #: includes/module/actions.php:195
 msgid "Import videos from YouTube channels."
-msgstr "استورد الفيديوهات من قنوات يوتيوب."
+msgstr "استورد مقاطع الفيديو من قنوات يوتيوب."
 
 #: includes/module/actions.php:205
 msgid ""
@@ -6983,7 +7001,7 @@ msgstr "إشعارات البريد"
 
 #: includes/module/actions.php:242
 msgid "Get an email report every time a campaign finishes a run."
-msgstr "احصل على تقرير بالبريد كلما أنهت حملة تشغيلها."
+msgstr "احصل على تقرير بالبريد الإلكتروني كلما أنهت حملة تشغيلها."
 
 #: includes/module/actions.php:248
 msgid "Deactivate in each campaign by clearing the email field."
@@ -7025,13 +7043,13 @@ msgstr "إيقاف هذا يعطّل الإضافة %s."
 
 #: includes/module/actions.php:312
 msgid "The plugin is installed but not running. Turning this on activates %s."
-msgstr "الإضافة مثبَّتة لكنها لا تعمل. تفعيل هذا يفعّل %s."
+msgstr "الإضافة منصَّبة لكنها لا تعمل. تفعيل هذا يفعّل %s."
 
 #: includes/module/actions.php:318
 msgid ""
 "%s is not installed yet. Install it from here, free, and this switch turns "
 "it on."
-msgstr "%s غير مثبَّتة بعد. ثبّتها من هنا مجانًا، وعندها يفعّلها هذا المفتاح."
+msgstr "%s غير منصَّبة بعد. نصّبها من هنا مجانًا، وعندها يفعّلها هذا المفتاح."
 
 #: includes/module/actions.php:322
 msgid "Needs the %s addon. Get it at etruel.com and this switch enables it."
@@ -7041,7 +7059,7 @@ msgstr ""
 #: includes/module/actions.php:361 includes/module/actions.php:435
 msgid ""
 "%s is installed but not active. Turn it on and this module becomes available."
-msgstr "%s مثبَّتة لكنها غير مفعّلة. فعّلها وستصير هذه الوحدة متاحة."
+msgstr "%s منصَّبة لكنها غير مفعّلة. فعّلها وستصير هذه الوحدة متاحة."
 
 #: includes/module/actions.php:420
 msgid "It also needs the free %s plugin."
@@ -7049,7 +7067,7 @@ msgstr "ويحتاج أيضًا إلى الإضافة المجانية %s."
 
 #: includes/module/actions.php:440
 msgid "Needs the free %s plugin, which is not installed yet."
-msgstr "يحتاج إلى الإضافة المجانية %s، وهي غير مثبَّتة بعد."
+msgstr "يحتاج إلى الإضافة المجانية %s، وهي غير منصَّبة بعد."
 
 #: includes/module/actions.php:441 includes/module/dashboard.php:62
 #: includes/module/manager.php:194
@@ -7066,7 +7084,7 @@ msgstr "ابحث تلقائيًا عن المقالات المكررة بالا�
 
 #: includes/module/actions.php:522
 msgid "Installs the free WP Delete Post Copies plugin from WordPress.org."
-msgstr "يثبّت الإضافة المجانية WP Delete Post Copies من WordPress.org."
+msgstr "ينصّب الإضافة المجانية WP Delete Post Copies من WordPress.org."
 
 #: includes/module/actions.php:526
 msgid "WPeMatico Polylang"
@@ -7080,7 +7098,7 @@ msgstr ""
 
 #: includes/module/actions.php:532
 msgid "Installs the free WPeMatico Polylang plugin from WordPress.org."
-msgstr "يثبّت الإضافة المجانية WPeMatico Polylang من WordPress.org."
+msgstr "ينصّب الإضافة المجانية WPeMatico Polylang من WordPress.org."
 
 #: includes/module/actions.php:539
 msgid ""
@@ -7103,7 +7121,7 @@ msgstr ""
 
 #: includes/module/actions.php:550
 msgid "Installs the free WPeMatico RSS Feed Reader plugin from WordPress.org."
-msgstr "يثبّت الإضافة المجانية WPeMatico RSS Feed Reader من WordPress.org."
+msgstr "ينصّب الإضافة المجانية WPeMatico RSS Feed Reader من WordPress.org."
 
 #: includes/module/actions.php:551
 msgid "Requires WPeMatico RSS Feed Reader"
@@ -7155,7 +7173,7 @@ msgid ""
 "The addon extends that free plugin, the same one the Delete Duplicates card "
 "installs."
 msgstr ""
-"تبني الإضافة على تلك الإضافة المجانية نفسها التي تثبّتها بطاقة «حذف "
+"تبني الإضافة على تلك الإضافة المجانية نفسها التي تنصّبها بطاقة «حذف "
 "التكرارات»."
 
 #: includes/module/actions.php:609
@@ -7460,7 +7478,7 @@ msgstr "وظيفة إضافية متاحة كإضافة في etruel.com"
 #: includes/module/manager.php:151
 msgid ""
 "The plugin is installed on this site: use the switch to turn it on or off"
-msgstr "الإضافة مثبَّتة في هذا الموقع: استخدم المفتاح لتشغيلها أو إيقافها"
+msgstr "الإضافة منصَّبة في هذا الموقع: استخدم المفتاح لتشغيلها أو إيقافها"
 
 #: includes/module/manager.php:157
 msgid ""
@@ -7505,7 +7523,7 @@ msgstr "فُعِّلت الإضافة بنجاح."
 
 #: includes/module/manager.php:351
 msgid "Plugin already installed. Activation skipped."
-msgstr "الإضافة مثبَّتة مسبقًا. تم تخطي التفعيل."
+msgstr "الإضافة منصَّبة مسبقًا. تم تخطي التفعيل."
 
 #: includes/module/manager.php:360
 msgid ""
@@ -7525,7 +7543,7 @@ msgstr "فشل تثبيت الإضافة: مجلد الوجهة مفقود."
 
 #: includes/module/manager.php:412
 msgid "Plugin installed but main file was not found."
-msgstr "ثُبِّتت الإضافة لكن لم يُعثر على ملفها الرئيسي."
+msgstr "نُصِّبت الإضافة لكن لم يُعثر على ملفها الرئيسي."
 
 #: includes/module/manager.php:42
 msgid "Core Feature"
@@ -7537,7 +7555,7 @@ msgstr "أدوات خارجية"
 
 #: includes/module/manager.php:433
 msgid "Plugin installed and activated successfully."
-msgstr "ثُبِّتت الإضافة وفُعِّلت بنجاح."
+msgstr "نُصِّبت الإضافة وفُعِّلت بنجاح."
 
 #: includes/module/manager.php:44
 msgid "Content Parsers"
@@ -7545,7 +7563,7 @@ msgstr "محلّلات المحتوى"
 
 #: includes/module/manager.php:442
 msgid "Plugin installed successfully. Activation skipped."
-msgstr "ثُبِّتت الإضافة بنجاح. تم تخطي التفعيل."
+msgstr "نُصِّبت الإضافة بنجاح. تم تخطي التفعيل."
 
 #: includes/module/manager.php:45
 msgid "Images"
@@ -7665,7 +7683,7 @@ msgstr "فتح صفحة الامتدادات:"
 
 #: includes/plugin_functions.php:322
 msgid "Installed Extensions:"
-msgstr "الامتدادات المثبَّتة:"
+msgstr "الامتدادات المنصَّبة:"
 
 #: includes/plugin_functions.php:339
 msgid "Load WPeMatico Settings Page"
@@ -7853,8 +7871,8 @@ msgid ""
 "Vimeo publishes the last 10 videos of each one. Leave this off if you do not "
 "use Vimeo: the campaign type is not loaded at all."
 msgstr ""
-"ينشر Vimeo آخر 10 فيديوهات لكل مصدر. اترك هذا معطَّلًا إن كنت لا تستخدم Vimeo: "
-"عندها لا يُحمَّل نوع الحملة أصلًا."
+"ينشر Vimeo آخر 10 مقاطع فيديو لكل مصدر. اترك هذا معطَّلًا إن كنت لا تستخدم "
+"Vimeo: عندها لا يُحمَّل نوع الحملة أصلًا."
 
 #: includes/settings/help.php:160 includes/settings/page.php:737
 msgid "Canonical URL to the source"
@@ -7898,7 +7916,7 @@ msgid ""
 "content arrives with no parsers and no filters."
 msgstr ""
 "تتخلّى SimplePie عن معظم تنقيتها مقابل السرعة: يصل محتوى التغذية بلا محلّلات "
-"وبلا مرشّحات."
+"وبلا عوامل تصفية."
 
 #: includes/settings/help.php:173
 msgid ""
@@ -7935,7 +7953,7 @@ msgstr ""
 
 #: includes/settings/help.php:186 includes/settings/page.php:470
 msgid "Let campaigns skip the content filters"
-msgstr "السماح للحملات بتخطّي مرشّحات المحتوى"
+msgstr "السماح للحملات بتخطّي عوامل تصفية المحتوى"
 
 #: includes/settings/help.php:187
 msgid ""
@@ -8119,11 +8137,11 @@ msgstr "يزيل صندوق WPeMatico الذي يبيّن من أين جاءت �
 
 #: includes/settings/help.php:263 includes/settings/page.php:925
 msgid "Empty trash button on the lists"
-msgstr "زر إفراغ المهملات في القوائم"
+msgstr "زر إفراغ سلة المهملات في القوائم"
 
 #: includes/settings/help.php:264
 msgid "Adds a button to empty the trash on the post types you choose."
-msgstr "يضيف زرًا لإفراغ المهملات في أنواع المحتوى التي تختارها."
+msgstr "يضيف زرًا لإفراغ سلة المهملات في أنواع المحتوى التي تختارها."
 
 #: includes/settings/help.php:267 includes/settings/page.php:966
 msgid "Hide the WP dashboard widget"
@@ -8205,7 +8223,7 @@ msgstr "تتوقف قائمة الإضافات عن طلب الفهرس من م�
 msgid ""
 "You will see an empty page, or only the extensions you already have "
 "installed."
-msgstr "سترى صفحة فارغة، أو الإضافات التي ثبّتها من قبل فقط."
+msgstr "سترى صفحة فارغة، أو الإضافات التي نصّبها من قبل فقط."
 
 #: includes/settings/help.php:30
 msgid ""
@@ -8420,7 +8438,8 @@ msgstr "الجولات الإرشادية"
 msgid ""
 "Shows a short tour the first time you open each WPeMatico screen. Only for "
 "your user."
-msgstr "تعرض جولة قصيرة عند فتحك لكل شاشة من شاشات WPeMatico لأول مرة. لمستخدمك فقط."
+msgstr ""
+"تعرض جولة قصيرة عند فتحك لكل شاشة من شاشات WPeMatico لأول مرة. لمستخدمك فقط."
 
 #: includes/settings/page.php:1034
 msgid "Highlights of the new release"
@@ -8428,7 +8447,7 @@ msgstr "أبرز ما في الإصدار الجديد"
 
 #: includes/settings/page.php:1035 includes/lib/licenses_handlers.php:405
 msgid "Version"
-msgstr "الإصدار"
+msgstr "النسخة"
 
 #: includes/settings/page.php:1047
 msgid "Read more on wpematico.com"
@@ -8511,7 +8530,7 @@ msgstr "أنواع صور ووردبريس:"
 #: includes/settings/page.php:255 includes/settings/page.php:343
 #: includes/settings/page.php:408
 msgid "Click to restore the WordPress defaults."
-msgstr "اضغط لاستعادة قيم ووردبريس الافتراضية."
+msgstr "انقر لاستعادة قيم ووردبريس الافتراضية."
 
 #: includes/settings/page.php:256 includes/settings/page.php:344
 #: includes/settings/page.php:409
@@ -8521,7 +8540,7 @@ msgstr "المستحسن:"
 #: includes/settings/page.php:256 includes/settings/page.php:344
 #: includes/settings/page.php:409
 msgid "Click to use the recommended values."
-msgstr "اضغط لاستخدام القيم المستحسنة."
+msgstr "انقر لاستخدام القيم المستحسنة."
 
 #: includes/settings/page.php:280
 msgid ""
@@ -8605,7 +8624,7 @@ msgstr "العنوان:"
 
 #: includes/settings/page.php:613
 msgid "Click to use this random code."
-msgstr "اضغط لاستخدام هذا الرمز العشوائي."
+msgstr "انقر لاستخدام هذا الرمز العشوائي."
 
 #: includes/settings/page.php:614
 msgid "Any text you like."
@@ -8660,8 +8679,8 @@ msgid ""
 "Reading Vimeo through its API — past the 10-video cap of the feed, with "
 "sorting and your private videos — comes with Professional."
 msgstr ""
-"قراءة Vimeo عبر واجهته البرمجية — أبعد من حدّ العشرة فيديوهات في التغذية، مع "
-"الترتيب وفيديوهاتك الخاصة — تأتي مع Professional."
+"قراءة Vimeo عبر واجهته البرمجية — أبعد من حدّ العشرة مقاطع فيديو في التغذية، "
+"مع الترتيب ومقاطع فيديوك الخاصة — تأتي مع Professional."
 
 #: includes/settings/page.php:750
 msgid "Advanced Actions"
@@ -8765,7 +8784,7 @@ msgstr "إذا أعجبتك هذه الإضافة، يمكنك كتابة مرا
 
 #: includes/settings/widgets.php:245
 msgid "Click here to rate plugin on WordPress"
-msgstr "اضغط هنا لتقييم الإضافة على ووردبريس"
+msgstr "انقر هنا لتقييم الإضافة على ووردبريس"
 
 #: includes/settings/widgets.php:245
 msgid "Rate on WordPress"
@@ -8785,9 +8804,9 @@ msgid ""
 "custom feed tags and much more extends in the WPeMatico free plugin, going "
 "further than RSS feed limits and takes you to a new experience."
 msgstr ""
-"عشرات الميزات الجديدة للمحتوى والصور والوسوم والمرشّحات والحقول المخصّصة ووسوم "
-"التغذية الخاصة بك وغيرها الكثير توسّع إضافة WPeMatico المجانية، وتتجاوز حدود "
-"RSS، وتنقلك إلى تجربة جديدة."
+"عشرات الميزات الجديدة للمحتوى والصور والوسوم وعوامل التصفية والحقول المخصّصة "
+"ووسوم التغذية الخاصة بك وغيرها الكثير توسّع إضافة WPeMatico المجانية، وتتجاوز "
+"حدود RSS، وتنقلك إلى تجربة جديدة."
 
 #: includes/settings/widgets.php:274
 msgid "Pro status: Here we go!"
@@ -8882,7 +8901,7 @@ msgstr "لذلك سنسعد كثيرًا إن كتبت %s على ووردبري�
 
 #: includes/smart_notifications.php:138
 msgid "It only takes a minute: click the button below to open the form."
-msgstr "لا يستغرق سوى دقيقة: اضغط الزر أدناه ليُفتح النموذج."
+msgstr "لا يستغرق سوى دقيقة: انقر الزر أدناه ليُفتح النموذج."
 
 #: includes/smart_notifications.php:163
 msgid "Check all Campaign Options with the Wizard"
@@ -9656,7 +9675,7 @@ msgstr "يتطلّب PHP 7.0 أو أحدث!"
 
 #: wpematico_class.php:160 includes/wpematico_functions.php:3155
 msgid "Empty Trash"
-msgstr "إفراغ المهملات"
+msgstr "إفراغ سلة المهملات"
 
 #: wpematico_class.php:178
 msgid "There are no campaigns yet."
@@ -9719,7 +9738,7 @@ msgstr "البحث عن حملة"
 
 #: wpematico_class.php:202
 msgid "No Campaign found in Trash"
-msgstr "لم يُعثر على حملة في المهملات"
+msgstr "لم يُعثر على حملة في سلة المهملات"
 
 #: wpematico_class.php:244
 msgid "Reset Menu Position"
@@ -9792,7 +9811,7 @@ msgstr "لوحة WPeMatico"
 
 #: wpematico_class.php:344 includes/module/dashboard.php:106
 msgid "Dashboard"
-msgstr "اللوحة"
+msgstr "لوحة التحكم"
 
 #: wpematico_class.php:368 wpematico_class.php:369
 #: includes/dashboard-widgets.php:554 includes/plugin_functions.php:339

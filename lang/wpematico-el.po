@@ -593,7 +593,7 @@ msgstr "Επιλογές καμπάνιας Vimeo"
 
 #: includes/campaign-types/vimeo.php:337
 msgid "Featured Image"
-msgstr "Επιλεγμένη εικόνα"
+msgstr "Χαρακτηριστική εικόνα"
 
 #: includes/campaign-types/vimeo.php:341
 msgid "Post Title"
@@ -614,7 +614,7 @@ msgstr "Αλλαγή του μεγέθους του πλαισίου βίντε�
 
 #: includes/campaign-types/vimeo.php:367
 msgid "Use it only as featured image"
-msgstr "Χρήση μόνο ως επιλεγμένη εικόνα"
+msgstr "Χρήση μόνο ως χαρακτηριστική εικόνα"
 
 #: includes/campaign-types/vimeo.php:394
 msgid "Vimeo API"
@@ -918,7 +918,7 @@ msgstr "Εικόνα"
 
 #: includes/campaign_edit_functions.php:1248
 msgid "Use only as featured image"
-msgstr "Χρήση μόνο ως επιλεγμένη εικόνα"
+msgstr "Χρήση μόνο ως χαρακτηριστική εικόνα"
 
 #: includes/campaign_edit_functions.php:1250
 msgid "Hide description"
@@ -1278,7 +1278,7 @@ msgstr "Η περιγραφή του στοιχείου της ροής."
 
 #: includes/campaign_edit_functions.php:493 includes/campaign_help.php:281
 msgid "Put the featured image on content."
-msgstr "Τοποθέτηση της επιλεγμένης εικόνας μέσα στο περιεχόμενο."
+msgstr "Τοποθέτηση της χαρακτηριστικής εικόνας μέσα στο περιεχόμενο."
 
 #: includes/campaign_edit_functions.php:494 includes/campaign_help.php:282
 msgid "The feed item author."
@@ -1423,11 +1423,11 @@ msgstr "Ανάγνωση του χαρακτηριστικού srcset της ε�
 #: includes/campaign_edit_functions.php:583 includes/campaign_help.php:154
 #: includes/settings/help.php:53 includes/settings/page.php:221
 msgid "Set the first image as featured"
-msgstr "Η πρώτη εικόνα ως προβεβλημένη"
+msgstr "Η πρώτη εικόνα ως χαρακτηριστική"
 
 #: includes/campaign_edit_functions.php:585 includes/campaign_help.php:164
 msgid "Choose which image is the featured one"
-msgstr "Επιλογή του ποια εικόνα είναι η προβεβλημένη"
+msgstr "Επιλογή του ποια εικόνα είναι η χαρακτηριστική"
 
 #: includes/campaign_edit_functions.php:587
 msgid "Use image number"
@@ -1440,7 +1440,7 @@ msgstr "Αν δεν υπάρχει τέτοια εικόνα"
 #: includes/campaign_edit_functions.php:598 includes/campaign_help.php:169
 #: includes/settings/help.php:64 includes/settings/page.php:230
 msgid "Remove the featured image from the content"
-msgstr "Αφαίρεση της προβεβλημένης εικόνας από το περιεχόμενο"
+msgstr "Αφαίρεση της χαρακτηριστικής εικόνας από το περιεχόμενο"
 
 #: includes/campaign_edit_functions.php:601
 #: includes/campaign_edit_functions.php:693
@@ -1469,7 +1469,7 @@ msgstr "Featured Image from URL"
 
 #: includes/campaign_edit_functions.php:621
 msgid "Use the video link as featured when available"
-msgstr "Χρήση του συνδέσμου του βίντεο ως προβεβλημένη εικόνα όταν υπάρχει"
+msgstr "Χρήση του συνδέσμου του βίντεο ως χαρακτηριστική εικόνα όταν υπάρχει"
 
 #: includes/campaign_edit_functions.php:630
 msgid "Advanced Options"
@@ -1510,7 +1510,8 @@ msgstr "Απόρριψη του άρθρου όταν το περιεχόμεν�
 #: includes/campaign_edit_functions.php:646
 msgid "A default featured image when the content brings none."
 msgstr ""
-"Μια προεπιλεγμένη προβεβλημένη εικόνα όταν το περιεχόμενο δεν φέρνει καμία."
+"Μια προχαρακτηριστική χαρακτηριστική εικόνα όταν το περιεχόμενο δεν φέρνει "
+"καμία."
 
 #: includes/campaign_edit_functions.php:647
 msgid "Keep or skip images by their dimensions."
@@ -1676,7 +1677,7 @@ msgstr "Άνοιγμα της διεύθυνσης σε νέα καρτέλα"
 
 #: includes/campaign_fetch.php:1008
 msgid "The post has no featured image."
-msgstr "Το άρθρο δεν έχει επιλεγμένη εικόνα."
+msgstr "Το άρθρο δεν έχει χαρακτηριστική εικόνα."
 
 #: includes/campaign_fetch.php:1015
 msgid "Attaching images"
@@ -1846,11 +1847,11 @@ msgstr "Μορφή άρθρου που προστέθηκε: "
 
 #: includes/campaign_fetch.php:917
 msgid "Skip Featured Image."
-msgstr "Παράλειψη επιλεγμένης εικόνας."
+msgstr "Παράλειψη χαρακτηριστικής εικόνας."
 
 #: includes/campaign_fetch.php:921
 msgid "Featuring Image Into Post."
-msgstr "Ορισμός της επιλεγμένης εικόνας του άρθρου."
+msgstr "Ορισμός της χαρακτηριστικής εικόνας του άρθρου."
 
 #: includes/campaign_fetch.php:963 includes/campaign_fetch_functions.php:510
 msgid "Failed to obtain file:"
@@ -1858,7 +1859,7 @@ msgstr "Αποτυχία λήψης του αρχείου:"
 
 #: includes/campaign_fetch.php:971
 msgid "Save Featured image file failed:"
-msgstr "Αποτυχία αποθήκευσης του αρχείου της επιλεγμένης εικόνας:"
+msgstr "Αποτυχία αποθήκευσης του αρχείου της χαρακτηριστικής εικόνας:"
 
 #: includes/campaign_fetch_functions.php:1000
 msgid "Fifu save set attachment from URL."
@@ -1878,7 +1879,7 @@ msgstr "Αναζήτηση ήχων στο περιεχόμενο."
 
 #: includes/campaign_fetch_functions.php:125
 msgid "Can't find the featured image to add to the content."
-msgstr "Δεν βρέθηκε η επιλεγμένη εικόνα για προσθήκη στο περιεχόμενο."
+msgstr "Δεν βρέθηκε η χαρακτηριστική εικόνα για προσθήκη στο περιεχόμενο."
 
 #: includes/campaign_fetch_functions.php:1252
 #: includes/campaign_fetch_functions.php:1408
@@ -1973,11 +1974,11 @@ msgstr "Δυστυχώς, το συνημμένο δεν μπόρεσε να ε�
 
 #: includes/campaign_fetch_functions.php:636
 msgid "Executing featured image selector..."
-msgstr "Εκτέλεση του επιλογέα επιλεγμένης εικόνας…"
+msgstr "Εκτέλεση του επιλογέα χαρακτηριστικής εικόνας…"
 
 #: includes/campaign_fetch_functions.php:640
 msgid "Featured image \"%1$s\": %2$s"
-msgstr "Επιλεγμένη εικόνα «%1$s»: %2$s"
+msgstr "Χαρακτηριστική εικόνα «%1$s»: %2$s"
 
 #: includes/campaign_fetch_functions.php:643
 msgid "No image was found according to the selected index."
@@ -1989,7 +1990,7 @@ msgstr "Η πρώτη εικόνα δεν βρέθηκε στο περιεχόμ
 
 #: includes/campaign_fetch_functions.php:650
 msgid "Using first image as the featured image."
-msgstr "Χρησιμοποιείται η πρώτη εικόνα ως επιλεγμένη."
+msgstr "Χρησιμοποιείται η πρώτη εικόνα ως χαρακτηριστική."
 
 #: includes/campaign_fetch_functions.php:656
 msgid "The last image was not found in the content."
@@ -1997,7 +1998,7 @@ msgstr "Η τελευταία εικόνα δεν βρέθηκε στο περι
 
 #: includes/campaign_fetch_functions.php:658
 msgid "Using last image as the featured image."
-msgstr "Χρησιμοποιείται η τελευταία εικόνα ως επιλεγμένη."
+msgstr "Χρησιμοποιείται η τελευταία εικόνα ως χαρακτηριστική."
 
 #: includes/campaign_fetch_functions.php:77
 msgid "Deleting html tags: %s"
@@ -2039,7 +2040,7 @@ msgstr "Ρύθμιση του Featured Image From Url"
 
 #: includes/campaign_fetch_functions.php:971
 msgid "Adding featured image post meta: "
-msgstr "Προσθήκη μεταδεδομένου επιλεγμένης εικόνας: "
+msgstr "Προσθήκη μεταδεδομένου χαρακτηριστικής εικόνας: "
 
 #: includes/campaign_fetch_functions.php:98
 #: includes/campaign_fetch_functions.php:108
@@ -2064,7 +2065,7 @@ msgid ""
 "size you set."
 msgstr ""
 "Το WordPress προσαρμόζει τότε τον player στο πλάτος που του δίνει το θέμα "
-"σου, μέχρι το μέγεθος που ορίζεις."
+"εμφάνισής σου, μέχρι το μέγεθος που ορίζεις."
 
 #: includes/campaign_help.php:106
 msgid "Video size"
@@ -2118,7 +2119,7 @@ msgid ""
 "Pick one and the fields on the right are filled in for you, ready to edit. "
 "The preset itself is not saved."
 msgstr ""
-"Διάλεξε ένα και τα πεδία δεξιά συμπληρώνονται, έτοιμα για επεξεργασία. Το "
+"Διάλεξε ένα και τα πεδία δεξιά συμπληρώνονται, έτοιμα για τροποποίηση. Το "
 "ίδιο το έτοιμο πρόγραμμα δεν αποθηκεύεται."
 
 #: includes/campaign_help.php:130
@@ -2145,8 +2146,8 @@ msgid ""
 "post. Needed for the featured image; turn it off if the run is too slow."
 msgstr ""
 "Κάθε εικόνα που κατεβαίνει μπαίνει στη βιβλιοθήκη πολυμέσων και "
-"επισυνάπτεται στο άρθρο της. Χρειάζεται για την προβεβλημένη εικόνα· κλείσ’ "
-"το αν η εκτέλεση είναι πολύ αργή."
+"επισυνάπτεται στο άρθρο της. Χρειάζεται για την χαρακτηριστική εικόνα· "
+"κλείσ’ το αν η εκτέλεση είναι πολύ αργή."
 
 #: includes/campaign_help.php:145
 msgid ""
@@ -2174,15 +2175,15 @@ msgid ""
 "featured image."
 msgstr ""
 "Η πρώτη εικόνα που βρίσκεται στο περιεχόμενο κατεβαίνει, επισυνάπτεται και "
-"ορίζεται ως προβεβλημένη."
+"ορίζεται ως χαρακτηριστική."
 
 #: includes/campaign_help.php:159 includes/settings/help.php:59
 msgid ""
 "Hands the featured image to the Featured Image from URL plugin, which serves "
 "it from the source server. Install and activate that plugin first."
 msgstr ""
-"Αφήνει την προβεβλημένη εικόνα στο πρόσθετο Featured Image from URL, που τη "
-"σερβίρει από τον διακομιστή της πηγής. Εγκατάστησε και ενεργοποίησε πρώτα "
+"Αφήνει την χαρακτηριστική εικόνα στο πρόσθετο Featured Image from URL, που "
+"τη σερβίρει από τον διακομιστή της πηγής. Εγκατάστησε και ενεργοποίησε πρώτα "
 "εκείνο το πρόσθετο."
 
 #: includes/campaign_help.php:160 includes/settings/help.php:55
@@ -2200,7 +2201,7 @@ msgid ""
 "featured image is shown."
 msgstr ""
 "Με εκείνο το πρόσθετο ανενεργό, το WPeMatico γράφει πάλι τα meta πεδία του, "
-"αλλά δεν εμφανίζεται καμία προβεβλημένη εικόνα."
+"αλλά δεν εμφανίζεται καμία χαρακτηριστική εικόνα."
 
 #: includes/campaign_help.php:165
 msgid ""
@@ -2215,8 +2216,8 @@ msgid ""
 "The image used as featured is stripped from the post content, so your theme "
 "does not show it twice."
 msgstr ""
-"Η εικόνα που χρησιμοποιείται ως προβεβλημένη αφαιρείται από το περιεχόμενο, "
-"ώστε το θέμα σου να μην τη δείχνει δύο φορές."
+"Η εικόνα που χρησιμοποιείται ως χαρακτηριστική αφαιρείται από το "
+"περιεχόμενο, ώστε το θέμα εμφάνισής σου να μην τη δείχνει δύο φορές."
 
 #: includes/campaign_help.php:173 includes/settings/help.php:74
 #: includes/settings/page.php:264
@@ -2664,8 +2665,8 @@ msgid ""
 "The post format for this campaign, if your theme supports formats. Leave it "
 "on Standard if it does not."
 msgstr ""
-"Η μορφή άρθρου αυτής της καμπάνιας, αν το θέμα σου υποστηρίζει μορφές. "
-"Αλλιώς άφησέ το στο Standard."
+"Η μορφή άρθρου αυτής της καμπάνιας, αν το θέμα εμφάνισής σου υποστηρίζει "
+"μορφές. Αλλιώς άφησέ το στο Standard."
 
 #: includes/campaign_help.php:36
 msgid "it is not in the future."
@@ -3121,19 +3122,19 @@ msgstr "Το προσχέδιο της καμπάνιας ενημερώθηκε
 
 #: includes/campaigns_list.php:702
 msgid "Edit this item"
-msgstr "Επεξεργασία αυτού του στοιχείου"
+msgstr "Τροποποίηση αυτού του στοιχείου"
 
 #: includes/campaigns_list.php:702 includes/campaigns_list_help.php:49
 msgid "Edit"
-msgstr "Επεξεργασία"
+msgstr "Τροποποίηση"
 
 #: includes/campaigns_list.php:703
 msgid "Edit this item inline"
-msgstr "Άμεση επεξεργασία αυτού του στοιχείου"
+msgstr "Άμεση τροποποίηση αυτού του στοιχείου"
 
 #: includes/campaigns_list.php:703 includes/campaigns_list_help.php:51
 msgid "Quick Edit"
-msgstr "Γρήγορη επεξεργασία"
+msgstr "Γρήγορη τροποποίηση"
 
 #: includes/campaigns_list.php:707
 msgid "Restore this item from the Trash"
@@ -3378,7 +3379,7 @@ msgstr ""
 #: includes/campaigns_list_help.php:95
 msgid "Bulk Edit changes the main fields of every campaign you select at once."
 msgstr ""
-"Η μαζική επεξεργασία αλλάζει τα βασικά πεδία όλων των καμπανιών που "
+"Η μαζική τροποποίηση αλλάζει τα βασικά πεδία όλων των καμπανιών που "
 "διαλέγεις με τη μία."
 
 #: includes/campaigns_list_help.php:97
@@ -3397,7 +3398,9 @@ msgstr "Ροές"
 msgid ""
 "Add the feed addresses this campaign reads. Check all feeds tells you "
 "whether each one answers."
-msgstr "Προσθέστε τις διευθύνσεις των ροών που διαβάζει αυτή η καμπάνια. Το «Έλεγχος όλων των ροών» σας λέει αν απαντά η καθεμία."
+msgstr ""
+"Προσθέστε τις διευθύνσεις των ροών που διαβάζει αυτή η καμπάνια. Το «Έλεγχος "
+"όλων των ροών» σας λέει αν απαντά η καθεμία."
 
 #: includes/class-tour-helper.php:111
 msgid "Campaign type"
@@ -3407,7 +3410,9 @@ msgstr "Τύπος καμπάνιας"
 msgid ""
 "Feed is the usual choice. Other types read XML files, YouTube or Vimeo, and "
 "more come with the extensions."
-msgstr "Το Feed είναι η συνηθισμένη επιλογή. Άλλοι τύποι διαβάζουν αρχεία XML, YouTube ή Vimeo, και οι επεκτάσεις προσθέτουν κι άλλους."
+msgstr ""
+"Το Feed είναι η συνηθισμένη επιλογή. Άλλοι τύποι διαβάζουν αρχεία XML, "
+"YouTube ή Vimeo, και οι επεκτάσεις προσθέτουν κι άλλους."
 
 #: includes/class-tour-helper.php:118 includes/debug_page.php:3025
 #: includes/debug_page.php:3521
@@ -3425,7 +3430,8 @@ msgstr "Ο Οδηγός"
 #: includes/class-tour-helper.php:126
 msgid ""
 "Prefer a guided path? The Wizard walks you through every box, one by one."
-msgstr "Προτιμάτε καθοδήγηση; Ο Οδηγός σας περνά από κάθε πλαίσιο, ένα προς ένα."
+msgstr ""
+"Προτιμάτε καθοδήγηση; Ο Οδηγός σας περνά από κάθε πλαίσιο, ένα προς ένα."
 
 #: includes/class-tour-helper.php:134
 msgid "Settings menu"
@@ -3435,7 +3441,9 @@ msgstr "Μενού ρυθμίσεων"
 msgid ""
 "General, Advanced and Backend Tools hold WPeMatico's settings. Each "
 "extension adds its own tab below them."
-msgstr "Τα Γενικά, Προχωρημένα και Εργαλεία διαχείρισης περιέχουν τις ρυθμίσεις του WPeMatico. Κάθε επέκταση προσθέτει από κάτω τη δική της καρτέλα."
+msgstr ""
+"Τα Γενικά, Προχωρημένα και Εργαλεία διαχείρισης περιέχουν τις ρυθμίσεις του "
+"WPeMatico. Κάθε επέκταση προσθέτει από κάτω τη δική της καρτέλα."
 
 #: includes/class-tour-helper.php:141
 msgid "Boxes"
@@ -3443,7 +3451,9 @@ msgstr "Πλαίσια"
 
 #: includes/class-tour-helper.php:142
 msgid "Collapse a box from its header or drag it to sort the screen your way."
-msgstr "Συμπτύξτε ένα πλαίσιο από την κεφαλίδα του ή σύρετέ το για να οργανώσετε την οθόνη όπως θέλετε."
+msgstr ""
+"Συμπτύξτε ένα πλαίσιο από την κεφαλίδα του ή σύρετέ το για να οργανώσετε την "
+"οθόνη όπως θέλετε."
 
 #: includes/class-tour-helper.php:148
 msgid "Save"
@@ -3451,13 +3461,16 @@ msgstr "Αποθήκευση"
 
 #: includes/class-tour-helper.php:149
 msgid "Saves the section you are in. The others keep what they had."
-msgstr "Αποθηκεύει την ενότητα στην οποία βρίσκεστε. Οι άλλες κρατούν ό,τι είχαν."
+msgstr ""
+"Αποθηκεύει την ενότητα στην οποία βρίσκεστε. Οι άλλες κρατούν ό,τι είχαν."
 
 #: includes/class-tour-helper.php:155
 msgid ""
 "Every option has a (?) with a short explanation, and the Help tab has the "
 "whole story."
-msgstr "Κάθε επιλογή έχει ένα (?) με μια σύντομη εξήγηση, και η καρτέλα Βοήθεια έχει όλη την ιστορία."
+msgstr ""
+"Κάθε επιλογή έχει ένα (?) με μια σύντομη εξήγηση, και η καρτέλα Βοήθεια έχει "
+"όλη την ιστορία."
 
 #: includes/class-tour-helper.php:161
 msgid "Extra features"
@@ -3467,7 +3480,9 @@ msgstr "Επιπλέον λειτουργίες"
 msgid ""
 "Switch on content rewriting, words to categories, canonical URLs and the "
 "other optional features."
-msgstr "Ενεργοποιήστε την αναδιατύπωση περιεχομένου, τις λέξεις σε κατηγορίες, τα κανονικά URL και τις άλλες προαιρετικές λειτουργίες."
+msgstr ""
+"Ενεργοποιήστε την αναδιατύπωση περιεχομένου, τις λέξεις σε κατηγορίες, τα "
+"κανονικά URL και τις άλλες προαιρετικές λειτουργίες."
 
 #: includes/class-tour-helper.php:168
 msgid "Advanced actions"
@@ -3475,7 +3490,9 @@ msgstr "Προχωρημένες ενέργειες"
 
 #: includes/class-tour-helper.php:169
 msgid "Feed checks, logs, XML uploads and other behaviour for every campaign."
-msgstr "Έλεγχοι ροών, αρχεία καταγραφής, μεταφορτώσεις XML και άλλη συμπεριφορά για όλες τις καμπάνιες."
+msgstr ""
+"Έλεγχοι ροών, αρχεία καταγραφής, μεταφορτώσεις XML και άλλη συμπεριφορά για "
+"όλες τις καμπάνιες."
 
 #: includes/class-tour-helper.php:177
 msgid "Your admin screens"
@@ -3485,7 +3502,9 @@ msgstr "Οι οθόνες διαχείρισής σας"
 msgid ""
 "Choose the campaign columns, the boxes of the campaign editor, the dashboard "
 "widgets and these guided tours."
-msgstr "Επιλέξτε τις στήλες των καμπανιών, τα πλαίσια του επεξεργαστή καμπάνιας, τα widget του πίνακα και αυτές τις ξεναγήσεις."
+msgstr ""
+"Επιλέξτε τις στήλες των καμπανιών, τα πλαίσια του επεξεργαστή καμπάνιας, τα "
+"widget του πίνακα και αυτές τις ξεναγήσεις."
 
 #: includes/class-tour-helper.php:186 includes/feed_list_help.php:29
 #: includes/tools_page.php:452 includes/tools_tabs.php:64
@@ -3497,13 +3516,17 @@ msgstr "Λίστα ροών"
 msgid ""
 "Every feed of every campaign in one list, with its campaign, its status and "
 "its last run."
-msgstr "Κάθε ροή κάθε καμπάνιας σε μία λίστα, με την καμπάνια της, την κατάστασή της και την τελευταία της εκτέλεση."
+msgstr ""
+"Κάθε ροή κάθε καμπάνιας σε μία λίστα, με την καμπάνια της, την κατάστασή της "
+"και την τελευταία της εκτέλεση."
 
 #: includes/class-tour-helper.php:194
 msgid ""
 "Paste any address to see what it really returns: a feed, a page that is not "
 "one, or why it cannot be reached."
-msgstr "Επικολλήστε οποιαδήποτε διεύθυνση για να δείτε τι επιστρέφει πραγματικά: μια ροή, μια σελίδα που δεν είναι ροή, ή γιατί δεν είναι προσβάσιμη."
+msgstr ""
+"Επικολλήστε οποιαδήποτε διεύθυνση για να δείτε τι επιστρέφει πραγματικά: μια "
+"ροή, μια σελίδα που δεν είναι ροή, ή γιατί δεν είναι προσβάσιμη."
 
 #: includes/class-tour-helper.php:200 includes/tools_help.php:37
 #: includes/tools_tabs.php:68
@@ -3512,7 +3535,9 @@ msgstr "Εξαγωγή / εισαγωγή"
 
 #: includes/class-tour-helper.php:201
 msgid "Move your settings to another site. Campaigns are not included."
-msgstr "Μεταφέρετε τις ρυθμίσεις σας σε άλλον ιστότοπο. Οι καμπάνιες δεν περιλαμβάνονται."
+msgstr ""
+"Μεταφέρετε τις ρυθμίσεις σας σε άλλον ιστότοπο. Οι καμπάνιες δεν "
+"περιλαμβάνονται."
 
 #: includes/class-tour-helper.php:207 includes/tools_tabs.php:72
 #: includes/migration/help.php:29
@@ -3524,7 +3549,9 @@ msgstr "Εργαλειοθήκη μετάβασης"
 msgid ""
 "Bring your feeds over from Feedzy or WP RSS Aggregator, with the posts they "
 "already published."
-msgstr "Φέρτε τις ροές σας από το Feedzy ή το WP RSS Aggregator, μαζί με τα άρθρα που έχουν ήδη δημοσιεύσει."
+msgstr ""
+"Φέρτε τις ροές σας από το Feedzy ή το WP RSS Aggregator, μαζί με τα άρθρα "
+"που έχουν ήδη δημοσιεύσει."
 
 #: includes/class-tour-helper.php:214 includes/tools_tabs.php:18
 msgid "System"
@@ -3534,12 +3561,17 @@ msgstr "Σύστημα"
 msgid ""
 "Status gathers the site and server details support will ask for. Danger Zone "
 "holds debug logging and what uninstalling removes."
-msgstr "Η Κατάσταση συγκεντρώνει τα στοιχεία ιστότοπου και διακομιστή που θα ζητήσει η υποστήριξη. Η Ζώνη κινδύνου περιέχει την καταγραφή αποσφαλμάτωσης και ό,τι αφαιρεί η απεγκατάσταση."
+msgstr ""
+"Η Κατάσταση συγκεντρώνει τα στοιχεία ιστότοπου και διακομιστή που θα ζητήσει "
+"η υποστήριξη. Η Ζώνη κινδύνου περιέχει την καταγραφή αποσφαλμάτωσης και ό,τι "
+"αφαιρεί η απεγκατάσταση."
 
 #: includes/class-tour-helper.php:225
 msgid ""
 "Every WPeMatico add-on, installed or not. The free ones install from here."
-msgstr "Κάθε πρόσθετο του WPeMatico, εγκατεστημένο ή όχι. Τα δωρεάν εγκαθίστανται από εδώ."
+msgstr ""
+"Κάθε πρόσθετο του WPeMatico, εγκατεστημένο ή όχι. Τα δωρεάν εγκαθίστανται "
+"από εδώ."
 
 #: includes/class-tour-helper.php:231
 msgid "Activate and license"
@@ -3549,7 +3581,9 @@ msgstr "Ενεργοποίηση και άδεια"
 msgid ""
 "Activate what you have, and enter its licence in Settings › Licenses to "
 "receive its updates."
-msgstr "Ενεργοποιήστε ό,τι έχετε και εισαγάγετε την άδειά του στις Ρυθμίσεις › Άδειες για να λαμβάνετε τις ενημερώσεις του."
+msgstr ""
+"Ενεργοποιήστε ό,τι έχετε και εισαγάγετε την άδειά του στις Ρυθμίσεις › "
+"Άδειες για να λαμβάνετε τις ενημερώσεις του."
 
 #: includes/class-tour-helper.php:244
 msgid "Runs the campaign once, now."
@@ -3559,7 +3593,9 @@ msgstr "Εκτελεί την καμπάνια μία φορά, τώρα."
 msgid ""
 "Turns its schedule on, so it runs on its own. It shows red while the "
 "schedule is on."
-msgstr "Ενεργοποιεί τον προγραμματισμό της, ώστε να εκτελείται μόνη της. Φαίνεται κόκκινο όσο ο προγραμματισμός είναι ενεργός."
+msgstr ""
+"Ενεργοποιεί τον προγραμματισμό της, ώστε να εκτελείται μόνη της. Φαίνεται "
+"κόκκινο όσο ο προγραμματισμός είναι ενεργός."
 
 #: includes/class-tour-helper.php:246
 msgid "Turns the schedule off, or stops a run in progress."
@@ -3588,7 +3624,9 @@ msgstr "Χρειάζεστε κάτι ακόμη;"
 #: includes/class-tour-helper.php:40
 msgid ""
 "The Help tab at the top of every WPeMatico screen explains it in detail."
-msgstr "Η καρτέλα Βοήθεια, στο πάνω μέρος κάθε οθόνης του WPeMatico, το εξηγεί αναλυτικά."
+msgstr ""
+"Η καρτέλα Βοήθεια, στο πάνω μέρος κάθε οθόνης του WPeMatico, το εξηγεί "
+"αναλυτικά."
 
 #: includes/class-tour-helper.php:49 includes/lib/welcome.php:64
 msgid "Welcome to WPeMatico"
@@ -3597,7 +3635,9 @@ msgstr "Καλώς ήρθατε στο WPeMatico"
 #: includes/class-tour-helper.php:50
 msgid ""
 "Everything lives here: Dashboard, Campaigns, Settings, Tools and Extensions."
-msgstr "Όλα είναι εδώ: Πίνακας, Καμπάνιες, Ρυθμίσεις, Εργαλεία και Επεκτάσεις."
+msgstr ""
+"Όλα είναι εδώ: Πίνακας Ελέγχου, Καμπάνιες, Ρυθμίσεις, Εργαλεία και "
+"Επεκτάσεις."
 
 #: includes/class-tour-helper.php:56
 msgid "One card per feature"
@@ -3606,7 +3646,9 @@ msgstr "Μία κάρτα ανά λειτουργία"
 #: includes/class-tour-helper.php:57
 msgid ""
 "Filter them by what they do: images, SEO, campaign types, parsers and more."
-msgstr "Φιλτράρετέ τες ανάλογα με το τι κάνουν: εικόνες, SEO, τύποι καμπάνιας, αναλυτές και άλλα."
+msgstr ""
+"Φιλτράρετέ τες ανάλογα με το τι κάνουν: εικόνες, SEO, τύποι καμπάνιας, "
+"αναλυτές και άλλα."
 
 #: includes/class-tour-helper.php:63
 msgid "Switch features on and off"
@@ -3616,7 +3658,9 @@ msgstr "Ενεργοποίηση και απενεργοποίηση λειτο�
 msgid ""
 "Each card says what its switch will do before you touch it, and installs "
 "whatever it needs."
-msgstr "Κάθε κάρτα σας λέει τι θα κάνει ο διακόπτης της πριν τον αγγίξετε, και εγκαθιστά ό,τι χρειάζεται."
+msgstr ""
+"Κάθε κάρτα σας λέει τι θα κάνει ο διακόπτης της πριν τον αγγίξετε, και "
+"εγκαθιστά ό,τι χρειάζεται."
 
 #: includes/class-tour-helper.php:70
 msgid "Your first campaign"
@@ -3626,7 +3670,9 @@ msgstr "Η πρώτη σας καμπάνια"
 msgid ""
 "A campaign reads one or more feeds and publishes their items as posts. Start "
 "here."
-msgstr "Μια καμπάνια διαβάζει μία ή περισσότερες ροές και δημοσιεύει τα στοιχεία τους ως άρθρα. Ξεκινήστε εδώ."
+msgstr ""
+"Μια καμπάνια διαβάζει μία ή περισσότερες ροές και δημοσιεύει τα στοιχεία "
+"τους ως άρθρα. Ξεκινήστε εδώ."
 
 #: includes/class-tour-helper.php:79 includes/lib/welcome.php:595
 msgid "Add a campaign"
@@ -3634,7 +3680,9 @@ msgstr "Προσθήκη καμπάνιας"
 
 #: includes/class-tour-helper.php:80
 msgid "Give it a name, paste a feed address and choose where the posts go."
-msgstr "Δώστε της ένα όνομα, επικολλήστε τη διεύθυνση μιας ροής και επιλέξτε πού πηγαίνουν τα άρθρα."
+msgstr ""
+"Δώστε της ένα όνομα, επικολλήστε τη διεύθυνση μιας ροής και επιλέξτε πού "
+"πηγαίνουν τα άρθρα."
 
 #: includes/class-tour-helper.php:86
 msgid "Run, schedule or pause"
@@ -3650,7 +3698,9 @@ msgstr "Τι έκανε κάθε καμπάνια"
 
 #: includes/class-tour-helper.php:95
 msgid "When it last ran, how long it took and how many posts it has published."
-msgstr "Πότε εκτελέστηκε τελευταία φορά, πόσο κράτησε και πόσα άρθρα έχει δημοσιεύσει."
+msgstr ""
+"Πότε εκτελέστηκε τελευταία φορά, πόσο κράτησε και πόσα άρθρα έχει "
+"δημοσιεύσει."
 
 #: includes/dashboard-widgets.php:456
 msgid "in %s"
@@ -4345,7 +4395,7 @@ msgstr "Δομή μόνιμων συνδέσμων:"
 
 #: includes/debug_page.php:2469
 msgid "Active Theme:"
-msgstr "Ενεργό θέμα:"
+msgstr "Ενεργό θέμα εμφάνισης:"
 
 #: includes/debug_page.php:2479
 msgid "Show On Front:"
@@ -4774,7 +4824,7 @@ msgid ""
 "the feed can be changed or removed."
 msgstr ""
 "Η καμπάνια στην οποία ανήκει αυτή η ροή. Το όνομα οδηγεί στην οθόνη "
-"επεξεργασίας της, όπου η ροή μπορεί να αλλάξει ή να αφαιρεθεί."
+"τροποποίησης της, όπου η ροή μπορεί να αλλάξει ή να αφαιρεθεί."
 
 #: includes/feed_list_help.php:46
 msgid "Status."
@@ -4828,7 +4878,7 @@ msgstr "Ενέργειες."
 #: includes/feed_list_help.php:57
 msgid "Edit campaign opens the campaign that holds this feed."
 msgstr ""
-"Το «Επεξεργασία καμπάνιας» ανοίγει την καμπάνια στην οποία ανήκει αυτή η ροή."
+"Το «Τροποποίηση καμπάνιας» ανοίγει την καμπάνια στην οποία ανήκει αυτή η ροή."
 
 #: includes/feed_list_help.php:58
 msgid ""
@@ -5426,7 +5476,7 @@ msgid ""
 "plugins. And everything feels faster."
 msgstr ""
 "Το WPeMatico 2.9 είναι η μεγαλύτερη ενημέρωση εδώ και χρόνια. Ένας νέος "
-"Πίνακας βάζει τις σημαντικότερες λειτουργίες του πρόσθετου και των "
+"Πίνακας Ελέγχου βάζει τις σημαντικότερες λειτουργίες του πρόσθετου και των "
 "επεκτάσεών του πίσω από έναν διακόπτη, οι ρυθμίσεις και τα εργαλεία "
 "ξαναχτίστηκαν από την αρχή, οι καμπάνιες Vimeo είναι πλέον δωρεάν, και μια "
 "νέα Εργαλειοθήκη μετάβασης φέρνει τις ροές σας από άλλα πρόσθετα RSS. Και "
@@ -5434,7 +5484,8 @@ msgstr ""
 
 #: includes/lib/welcome.php:270
 msgid "One Dashboard for the features you use most"
-msgstr "Ένας Πίνακας για τις λειτουργίες που χρησιμοποιείτε περισσότερο"
+msgstr ""
+"Ένας Πίνακας Ελέγχου για τις λειτουργίες που χρησιμοποιείτε περισσότερο"
 
 #: includes/lib/welcome.php:272
 msgid "Every feature of the plugin and its add-ons, as a card with a switch."
@@ -5454,12 +5505,13 @@ msgstr ""
 
 #: includes/lib/welcome.php:275 includes/lib/welcome.php:651
 msgid "Open the Dashboard"
-msgstr "Άνοιγμα του Πίνακα"
+msgstr "Άνοιγμα του Πίνακα Ελέγχου"
 
 #: includes/lib/welcome.php:278
 msgid "The WPeMatico Dashboard: a grid of feature cards, each with a switch"
 msgstr ""
-"Ο Πίνακας του WPeMatico: πλέγμα με κάρτες λειτουργιών, καθεμιά με διακόπτη"
+"Ο Πίνακας Ελέγχου του WPeMatico: πλέγμα με κάρτες λειτουργιών, καθεμιά με "
+"διακόπτη"
 
 #: includes/lib/welcome.php:284
 msgid "The new Settings screen, with its side menu"
@@ -5513,7 +5565,8 @@ msgstr ""
 #: includes/lib/welcome.php:303
 msgid "Switch on the Plugin Importers card in the Dashboard to get started."
 msgstr ""
-"Ενεργοποιήστε την κάρτα «Εισαγωγείς πρόσθετων» στον Πίνακα για να ξεκινήσετε."
+"Ενεργοποιήστε την κάρτα «Εισαγωγείς πρόσθετων» στον Πίνακα Ελέγχου για να "
+"ξεκινήσετε."
 
 #: includes/lib/welcome.php:306
 msgid "The Migration Toolkit, with the feeds it found on the site"
@@ -5540,14 +5593,14 @@ msgstr ""
 "Επικολλήστε τη διεύθυνση ενός χρήστη, καναλιού ή ομάδας του Vimeo και η "
 "καμπάνια βρίσκει μόνη της τη ροή: τίτλος, μικρογραφία, αναπαραγωγή και "
 "περιγραφή, με διακόπτες για το embed, το μέγεθος του πλαισίου και την "
-"επιλεγμένη εικόνα."
+"χαρακτηριστική εικόνα."
 
 #: includes/lib/welcome.php:320
 msgid ""
 "Switch it on from its card in the Dashboard, or in Settings → Advanced → "
 "Enable Features."
 msgstr ""
-"Ενεργοποιήστε το από την κάρτα του στον Πίνακα ή στις Ρυθμίσεις → "
+"Ενεργοποιήστε το από την κάρτα του στον Πίνακα Ελέγχου ή στις Ρυθμίσεις → "
 "Προχωρημένες → Ενεργοποίηση λειτουργιών."
 
 #: includes/lib/welcome.php:326
@@ -5695,7 +5748,7 @@ msgid ""
 "The new Dashboard shows the main ones as cards, so you can see what an add-"
 "on would switch on before you get it."
 msgstr ""
-"Ο νέος Πίνακας δείχνει τις βασικές ως κάρτες, ώστε να δείτε τι θα "
+"Ο νέος Πίνακας Ελέγχου δείχνει τις βασικές ως κάρτες, ώστε να δείτε τι θα "
 "ενεργοποιούσε μια επέκταση πριν την αποκτήσετε."
 
 #: includes/lib/welcome.php:422
@@ -5782,7 +5835,7 @@ msgstr "υπάρχει για πελάτες που χρειάζονται τα�
 
 #: includes/lib/welcome.php:489 includes/lib/welcome.php:733
 msgid "Go to WPeMatico Dashboard"
-msgstr "Μετάβαση στον Πίνακα του WPeMatico"
+msgstr "Μετάβαση στον Πίνακα Ελέγχου του WPeMatico"
 
 #: includes/lib/welcome.php:490 includes/lib/welcome.php:525
 #: includes/lib/welcome.php:559
@@ -5933,9 +5986,9 @@ msgid ""
 "types such as YouTube, Vimeo or Feeds XML, and extras such as Download "
 "Images or Canonical URLs."
 msgstr ""
-"Ο Πίνακας κάνει κάθε λειτουργία κάρτα με διακόπτη: άλλους τύπους καμπάνιας "
-"όπως YouTube, Vimeo ή Feeds XML, και έξτρα όπως η λήψη εικόνων ή οι "
-"κανονικές διευθύνσεις."
+"Ο Πίνακας Ελέγχου κάνει κάθε λειτουργία κάρτα με διακόπτη: άλλους τύπους "
+"καμπάνιας όπως YouTube, Vimeo ή Feeds XML, και έξτρα όπως η λήψη εικόνων ή "
+"οι κανονικές διευθύνσεις."
 
 #: includes/lib/welcome.php:657
 msgid "The settings behind every campaign"
@@ -6675,13 +6728,13 @@ msgstr ""
 #: includes/migration/importers/class-migrator-feedzy-rss-feeds.php:351
 #: includes/migration/importers/class-migrator-wp-rss-aggregator.php:269
 msgid "Import fallback featured image"
-msgstr "Εισαγωγή εφεδρικής επιλεγμένης εικόνας"
+msgstr "Εισαγωγή εφεδρικής χαρακτηριστικής εικόνας"
 
 #: includes/migration/importers/class-migrator-feedzy-rss-feeds.php:352
 msgid "Uses Feedzy's default thumbnail as the campaign default featured image."
 msgstr ""
-"Χρησιμοποιεί την προεπιλεγμένη μικρογραφία του Feedzy ως προεπιλεγμένη "
-"επιλεγμένη εικόνα της καμπάνιας."
+"Χρησιμοποιεί την προχαρακτηριστική μικρογραφία του Feedzy ως "
+"προχαρακτηριστική χαρακτηριστική εικόνα της καμπάνιας."
 
 #: includes/migration/importers/class-migrator-feedzy-rss-feeds.php:358
 msgid "Import auto-translation"
@@ -6809,8 +6862,8 @@ msgid ""
 "Uses the source's fallback featured image as the campaign default featured "
 "image."
 msgstr ""
-"Χρησιμοποιεί την εφεδρική επιλεγμένη εικόνα της πηγής ως προεπιλεγμένη "
-"επιλεγμένη εικόνα της καμπάνιας."
+"Χρησιμοποιεί την εφεδρική χαρακτηριστική εικόνα της πηγής ως "
+"προχαρακτηριστική χαρακτηριστική εικόνα της καμπάνιας."
 
 #: includes/migration/importers/class-migrator-wp-rss-aggregator.php:276
 msgid "Import full content from truncated feeds"
@@ -7093,7 +7146,7 @@ msgstr "Autoblogging: αυτοματοποιημένο σύστημα επιμέ
 
 #: includes/module/actions.php:144
 msgid "Used by default as Feed Fetcher Campaign Type."
-msgstr "Χρησιμοποιείται εξ ορισμού ως τύπος καμπάνιας «Λήψη ροής»."
+msgstr "Χρησιμοποιείται από προεπιλογή ως τύπος καμπάνιας «Λήψη ροής»."
 
 #: includes/module/actions.php:147
 msgid "Plugin Importers"
@@ -7214,23 +7267,23 @@ msgstr ""
 
 #: includes/module/actions.php:231
 msgid "Featured Images"
-msgstr "Επιλεγμένες εικόνες"
+msgstr "Χαρακτηριστικές εικόνες"
 
 #: includes/module/actions.php:232
 msgid ""
 "Give every imported post a featured image, taken from the first image of the "
 "item."
 msgstr ""
-"Δώστε σε κάθε εισαγόμενο άρθρο μια επιλεγμένη εικόνα, από την πρώτη εικόνα "
-"του στοιχείου."
+"Δώστε σε κάθε εισαγόμενο άρθρο μια χαρακτηριστική εικόνα, από την πρώτη "
+"εικόνα του στοιχείου."
 
 #: includes/module/actions.php:237
 msgid ""
 "Each campaign can override it, and the Featured Image from URL module "
 "decides whether the image is downloaded or linked."
 msgstr ""
-"Κάθε καμπάνια μπορεί να το παρακάμψει, και το άρθρωμα «Επιλεγμένη εικόνα από "
-"URL» αποφασίζει αν η εικόνα κατεβαίνει ή απλώς συνδέεται."
+"Κάθε καμπάνια μπορεί να το παρακάμψει, και το άρθρωμα «Χαρακτηριστική εικόνα "
+"από URL» αποφασίζει αν η εικόνα κατεβαίνει ή απλώς συνδέεται."
 
 #: includes/module/actions.php:241
 msgid "Email Notifications"
@@ -7254,8 +7307,8 @@ msgid ""
 "Group images by topic and give each post a featured image picked at random "
 "from its gallery."
 msgstr ""
-"Ομαδοποιήστε εικόνες ανά θέμα και δώστε σε κάθε άρθρο μια επιλεγμένη εικόνα "
-"που επιλέγεται τυχαία από τη συλλογή του."
+"Ομαδοποιήστε εικόνες ανά θέμα και δώστε σε κάθε άρθρο μια χαρακτηριστική "
+"εικόνα που επιλέγεται τυχαία από τη συλλογή του."
 
 #: includes/module/actions.php:258 includes/module/actions.php:269
 #: includes/module/actions.php:652 includes/module/actions.php:664
@@ -7384,17 +7437,17 @@ msgstr "Απαιτεί το WPeMatico RSS Feed Reader"
 msgid ""
 "Use the image at its original URL as featured image, without downloading it."
 msgstr ""
-"Χρήση της εικόνας στη δική της αρχική διεύθυνση ως επιλεγμένης, χωρίς λήψη "
-"της."
+"Χρήση της εικόνας στη δική της αρχική διεύθυνση ως χαρακτηριστικής, χωρίς "
+"λήψη της."
 
 #: includes/module/actions.php:568
 msgid ""
 "Featured Images is off, so nothing picks the image to link — unless an addon "
 "such as Professional or Full Content supplies one."
 msgstr ""
-"Οι επιλεγμένες εικόνες είναι απενεργοποιημένες, οπότε τίποτα δεν διαλέγει "
-"την εικόνα που θα συνδεθεί — εκτός αν την προσφέρει μια επέκταση όπως το "
-"Professional ή το Full Content."
+"Οι χαρακτηριστικές εικόνες είναι απενεργοποιημένες, οπότε τίποτα δεν "
+"διαλέγει την εικόνα που θα συνδεθεί — εκτός αν την προσφέρει μια επέκταση "
+"όπως το Professional ή το Full Content."
 
 #: includes/module/actions.php:569
 msgid ""
@@ -7410,7 +7463,8 @@ msgid ""
 "into the featured image WordPress shows."
 msgstr ""
 "Το WPeMatico αποθηκεύει τη διεύθυνση της εικόνας σε κάθε άρθρο· εκείνο το "
-"πρόσθετο είναι που την κάνει την επιλεγμένη εικόνα που δείχνει το WordPress."
+"πρόσθετο είναι που την κάνει την χαρακτηριστική εικόνα που δείχνει το "
+"WordPress."
 
 #: includes/module/actions.php:589
 msgid "Auto Delete"
@@ -7903,7 +7957,7 @@ msgstr ""
 #: includes/module/manager.php:98
 msgid "Used by default until version 3.0 which will include Easy Mode.😉"
 msgstr ""
-"Χρησιμοποιείται εξ ορισμού μέχρι την έκδοση 3.0, που θα φέρει την Εύκολη "
+"Χρησιμοποιείται από προεπιλογή μέχρι την έκδοση 3.0, που θα φέρει την Εύκολη "
 "λειτουργία. 😉"
 
 #: includes/notification_traslate.php:232
@@ -8353,7 +8407,7 @@ msgstr ""
 
 #: includes/settings/help.php:228 includes/settings/page.php:607
 msgid "Ask for a password on the external cron"
-msgstr "Να ζητείται κωδικός στο εξωτερικό cron"
+msgstr "Να ζητείται συνθηματικό στο εξωτερικό cron"
 
 #: includes/settings/help.php:229
 msgid ""
@@ -8365,11 +8419,11 @@ msgstr ""
 
 #: includes/settings/help.php:230
 msgid "While this is off, the password below is ignored."
-msgstr "Όσο αυτό είναι κλειστό, ο κωδικός παρακάτω αγνοείται."
+msgstr "Όσο αυτό είναι κλειστό, το συνθηματικό παρακάτω αγνοείται."
 
 #: includes/settings/help.php:233
 msgid "External cron password"
-msgstr "Κωδικός του εξωτερικού cron"
+msgstr "Συνθηματικό του εξωτερικού cron"
 
 #: includes/settings/help.php:234
 msgid "Any text you like. It travels in the cron address as ?code=your_code."
@@ -8678,7 +8732,7 @@ msgid ""
 "post. Needed for the featured image."
 msgstr ""
 "Κάθε εικόνα που κατεβαίνει μπαίνει στη βιβλιοθήκη πολυμέσων και "
-"επισυνάπτεται στο άρθρο της. Χρειάζεται για την προβεβλημένη εικόνα."
+"επισυνάπτεται στο άρθρο της. Χρειάζεται για την χαρακτηριστική εικόνα."
 
 #: includes/settings/help.php:36 includes/settings/help.php:97
 #: includes/settings/help.php:126
@@ -8721,7 +8775,7 @@ msgstr ""
 #: includes/settings/help.php:65
 msgid "The image used as featured is stripped from the post content."
 msgstr ""
-"Η εικόνα που χρησιμοποιείται ως προβεβλημένη αφαιρείται από το περιεχόμενο "
+"Η εικόνα που χρησιμοποιείται ως χαρακτηριστική αφαιρείται από το περιεχόμενο "
 "του άρθρου."
 
 #: includes/settings/help.php:66
@@ -8729,8 +8783,8 @@ msgid ""
 "Useful when your theme already prints the featured image and you would "
 "otherwise see it twice."
 msgstr ""
-"Χρήσιμο όταν το θέμα σου δείχνει ήδη την προβεβλημένη εικόνα και αλλιώς θα "
-"την έβλεπες δύο φορές."
+"Χρήσιμο όταν το θέμα εμφάνισής σου δείχνει ήδη την χαρακτηριστική εικόνα και "
+"αλλιώς θα την έβλεπες δύο φορές."
 
 #: includes/settings/help.php:71
 msgid ""
@@ -8788,7 +8842,9 @@ msgstr "Ξεναγήσεις"
 msgid ""
 "Shows a short tour the first time you open each WPeMatico screen. Only for "
 "your user."
-msgstr "Εμφανίζει μια σύντομη ξενάγηση την πρώτη φορά που ανοίγετε κάθε οθόνη του WPeMatico. Μόνο για τον δικό σας χρήστη."
+msgstr ""
+"Εμφανίζει μια σύντομη ξενάγηση την πρώτη φορά που ανοίγετε κάθε οθόνη του "
+"WPeMatico. Μόνο για τον δικό σας χρήστη."
 
 #: includes/settings/page.php:1034
 msgid "Highlights of the new release"
@@ -8900,7 +8956,7 @@ msgid ""
 "nothing picks the image to link &mdash; unless an addon such as Professional "
 "or Full Content supplies one."
 msgstr ""
-"Το &ldquo;Η πρώτη εικόνα του περιεχομένου να γίνεται επιλεγμένη "
+"Το &ldquo;Η πρώτη εικόνα του περιεχομένου να γίνεται χαρακτηριστική "
 "εικόνα.&rdquo; είναι ανενεργό, οπότε τίποτα δεν διαλέγει την εικόνα που θα "
 "συνδεθεί &mdash; εκτός αν την προσφέρει μια επέκταση όπως το Professional ή "
 "το Full Content."
@@ -9195,11 +9251,12 @@ msgstr "για αιτήματα προσαρμογής και προτάσεις
 #: includes/settings/widgets.php:299
 msgid ""
 "Please visit our website to learn about our free and premium services at"
-msgstr "Επισκεφθείτε τον ιστότοπό μας για τις δωρεάν και τις premium υπηρεσίες μας στο"
+msgstr ""
 "Επισκεφθείτε τον ιστότοπό μας για τις δωρεάν και τις premium υπηρεσίες μας "
 "στοΕπισκεφθείτε τον ιστότοπό μας για τις δωρεάν και τις premium υπηρεσίες "
 "μας στοΕπισκεφθείτε τον ιστότοπό μας για τις δωρεάν και τις premium "
-"υπηρεσίες μας στο"
+"υπηρεσίες μας στοΕπισκεφθείτε τον ιστότοπό μας για τις δωρεάν και τις "
+"premium υπηρεσίες μας στο"
 
 #: includes/settings/widgets.php:318
 msgid "Languages"
@@ -9488,7 +9545,7 @@ msgstr "Ποτέ"
 #: includes/tools_page.php:533 includes/tools_page.php:535
 #: includes/wp-backend-helpers.php:78
 msgid "Edit campaign"
-msgstr "Επεξεργασία καμπάνιας"
+msgstr "Τροποποίηση καμπάνιας"
 
 #: includes/tools_page.php:539 includes/tools_page.php:541
 msgid "Inspect this feed in the Feed Viewer"
@@ -9552,10 +9609,10 @@ msgid ""
 "Enable this if this site reads feeds from its own network, from an intranet "
 "server or from localhost, for example while developing."
 msgstr ""
-"Εξ ορισμού οι καμπάνιες λαμβάνουν μόνο ροές που δημοσιεύονται στο δημόσιο "
-"διαδίκτυο. Ενεργοποιήστε το αν αυτός ο ιστότοπος διαβάζει ροές από το δικό "
-"του δίκτυο, από διακομιστή intranet ή από το localhost, π.χ. κατά την "
-"ανάπτυξη."
+"Από προεπιλογή οι καμπάνιες λαμβάνουν μόνο ροές που δημοσιεύονται στο "
+"δημόσιο διαδίκτυο. Ενεργοποιήστε το αν αυτός ο ιστότοπος διαβάζει ροές από "
+"το δικό του δίκτυο, από διακομιστή intranet ή από το localhost, π.χ. κατά "
+"την ανάπτυξη."
 
 #: includes/tools_page.php:729
 msgid ""
@@ -9724,7 +9781,7 @@ msgstr "Δημοσιεύτηκε από την καμπάνια"
 
 #: includes/wp-backend-helpers.php:188
 msgid "Edit the campaign."
-msgstr "Επεξεργασία της καμπάνιας."
+msgstr "Τροποποίηση της καμπάνιας."
 
 #: includes/wp-backend-helpers.php:191
 msgid "From feed"
@@ -10121,7 +10178,7 @@ msgstr "Προσθήκη νέας καμπάνιας"
 
 #: wpematico_class.php:196
 msgid "Edit Campaign"
-msgstr "Επεξεργασία καμπάνιας"
+msgstr "Τροποποίηση καμπάνιας"
 
 #: wpematico_class.php:197
 msgid "New Campaign"
@@ -10181,8 +10238,8 @@ msgid ""
 "If the WPeMatico menu is missing, another plugin or your theme has taken its "
 "position."
 msgstr ""
-"Αν λείπει το μενού του WPeMatico, κάποιο άλλο πρόσθετο ή το θέμα σου πήρε τη "
-"θέση του."
+"Αν λείπει το μενού του WPeMatico, κάποιο άλλο πρόσθετο ή το θέμα εμφάνισής "
+"σου πήρε τη θέση του."
 
 #: wpematico_class.php:311
 msgid ""
@@ -10222,11 +10279,11 @@ msgstr "WPeMatico"
 
 #: wpematico_class.php:343
 msgid "WPeMatico Dashboard"
-msgstr "Πίνακας WPeMatico"
+msgstr "Πίνακας Ελέγχου WPeMatico"
 
 #: wpematico_class.php:344 includes/module/dashboard.php:106
 msgid "Dashboard"
-msgstr "Πίνακας"
+msgstr "Πίνακας Ελέγχου"
 
 #: wpematico_class.php:368 wpematico_class.php:369
 #: includes/dashboard-widgets.php:554 includes/plugin_functions.php:339
