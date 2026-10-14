@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPeMatico 2.9\n"
 "Report-Msgid-Bugs-To: https://etruel.com/my-account/support/\n"
-"POT-Creation-Date: 2026-10-01 01:06+0000\n"
+"POT-Creation-Date: 2026-10-14 19:25+0000\n"
 "PO-Revision-Date: 2026-09-26 21:08\n"
 "Last-Translator: Etruel Developments <translations@etruel.com>\n"
 "Language-Team: Etruel Developments <translations@etruel.com>\n"
@@ -162,7 +162,7 @@ msgid ""
 "update plugins."
 msgstr ""
 "Nainštalované bez ďalšej akcie znamená, že prepínač tu nemožno ponúknuť: buď "
-"táto webová stránka nespúšťa žiadne automatické aktualizácie, alebo váš "
+"táto webová stránka nespúšťa žiadne automatické aktualizácie, alebo váte "
 "používateľ nesmie aktualizovať pluginy."
 
 #: includes/addons_help.php:48 includes/campaigns_list_help.php:91
@@ -401,7 +401,7 @@ msgstr "Podrobnosti"
 msgid "WPeMatico Addons "
 msgstr "Doplnky WPeMatica "
 
-#: includes/addons_page.php:1516
+#: includes/addons_page.php:1516 includes/addons_page.php:1528
 msgid "Inactive &mdash; Now part of WPeMatico"
 msgstr "Neaktívny &mdash; teraz je súčasťou WPeMatica"
 
@@ -469,8 +469,8 @@ msgstr "Kúpiť v obchode etruel"
 msgid "Activate %s on this site"
 msgstr "Aktivovať %s na tejto webovej stránke"
 
-#: includes/addons_page.php:744 includes/module/actions.php:362
-#: includes/module/actions.php:436 includes/module/dashboard.php:64
+#: includes/addons_page.php:744 includes/module/actions.php:371
+#: includes/module/actions.php:445 includes/module/dashboard.php:64
 msgid "Activate"
 msgstr "Aktivovať"
 
@@ -478,7 +478,7 @@ msgstr "Aktivovať"
 msgid "See details and prices on etruel's store"
 msgstr "Zobraziť podrobnosti a ceny v obchode etruel"
 
-#: includes/addons_page.php:762 includes/module/actions.php:305
+#: includes/addons_page.php:762 includes/module/actions.php:314
 #: includes/module/dashboard.php:55 includes/module/manager.php:130
 #: includes/module/manager.php:151 includes/module/manager.php:156
 msgid "Installed"
@@ -520,6 +520,102 @@ msgstr "Vybraný doplnok bol vymazaný."
 #: includes/addons_page.php:923
 msgid "The selected add-ons have been deleted."
 msgstr "Vybrané doplnky boli vymazané."
+
+#: includes/campaign-types/googlo_news.php:174
+msgid "%s is not a Google News address."
+msgstr "%s nie je adresa Google News."
+
+#: includes/campaign-types/googlo_news.php:327
+msgid "Google News Campaign Type."
+msgstr "Typ kampane Google News."
+
+#: includes/campaign-types/googlo_news.php:328
+msgid ""
+"Paste the address of a Google News search, topic or publication as your "
+"browser shows it, and the campaign finds its feed on its own:"
+msgstr ""
+"Vložte adresu vyhľadávania, témy alebo média Google News tak, ako ju ukazuje "
+"váš prehliadač, a kampaň si jeho zdroj nájde sama:"
+
+#: includes/campaign-types/googlo_news.php:332
+msgid ""
+"Each item brings the headline, the date and the name of the publication, and "
+"links to Google News."
+msgstr ""
+"Každá položka prináša titulok, dátum a názov média a odkazuje na Google News."
+
+#: includes/campaign-types/googlo_news.php:333
+msgid ""
+"The name and the address of the publication are saved with each post, and "
+"the post template takes them as {source_name} and {source_url}."
+msgstr ""
+"Názov a adresa média sa uložia s každým článkom a šablóna článku ich preberá "
+"ako {source_name} a {source_url}."
+
+#: includes/campaign-types/googlo_news.php:336
+msgid "Publication in the title."
+msgstr "Médium v nadpise."
+
+#: includes/campaign-types/googlo_news.php:337
+msgid ""
+"Google News ends every headline with the name of the publication. The "
+"campaign takes it off; tick this to keep it."
+msgstr ""
+"Google News končí každý titulok názvom média. Kampaň ho odstráni; "
+"začiarknite toto, ak ho chcete ponechať."
+
+#: includes/campaign-types/googlo_news.php:340
+msgid "Related coverage."
+msgstr "Súvisiace spravodajstvo."
+
+#: includes/campaign-types/googlo_news.php:341
+msgid ""
+"On a topic, Google News lists other articles about the same story under each "
+"headline. Tick this to add that list to the post."
+msgstr ""
+"Pri téme Google News uvádza pod každým titulkom ďalšie články o tej istej "
+"udalosti. Začiarknite toto, ak chcete tento zoznam pridať do článku."
+
+#: includes/campaign-types/googlo_news.php:352
+msgid "Google News Campaign Options"
+msgstr "Možnosti kampane Google News"
+
+#: includes/campaign-types/googlo_news.php:373
+msgid "Keep the name of the publication at the end of the title"
+msgstr "Ponechať názov média na konci nadpisu"
+
+#: includes/campaign-types/googlo_news.php:375
+msgid "Add the related coverage Google News lists under the headline"
+msgstr "Pridať súvisiace spravodajstvo, ktoré Google News uvádza pod titulkom"
+
+#: includes/campaign-types/googlo_news.php:390
+msgid "Original article"
+msgstr "Pôvodný článok"
+
+#: includes/campaign-types/googlo_news.php:391
+#: includes/campaign-types/vimeo.php:395
+msgid "PRO Feature"
+msgstr "Funkcia PRO"
+
+#: includes/campaign-types/googlo_news.php:395
+msgid "Link each post to the article on the publication's own site"
+msgstr "Prepojiť každý článok s článkom na vlastnej stránke média"
+
+#: includes/campaign-types/googlo_news.php:399
+msgid "Skip the item when its article is not found"
+msgstr "Preskočiť položku, keď sa jej článok nenájde"
+
+#: includes/campaign-types/googlo_news.php:402
+msgid ""
+"Professional looks each headline up on the site of its publication, so the "
+"source link, the canonical URL and Full Content work on the article itself."
+msgstr ""
+"Professional vyhľadá každý titulok na stránke jeho média, aby odkaz na "
+"zdroj, kanonická URL a Full Content pracovali so samotným článkom."
+
+#: includes/campaign-types/googlo_news.php:61 includes/module/actions.php:194
+msgid "Google News"
+msgstr "Google News"
 
 #: includes/campaign-types/vimeo.php:258
 msgid "Parsing Vimeo video and feed item contents."
@@ -607,10 +703,6 @@ msgstr "Použiť len ako ilustračný obrázok"
 msgid "Vimeo API"
 msgstr "Vimeo API"
 
-#: includes/campaign-types/vimeo.php:395
-msgid "PRO Feature"
-msgstr "Funkcia PRO"
-
 #: includes/campaign-types/vimeo.php:399
 msgid "Fetch through the Vimeo API instead of the feed."
 msgstr "Sťahovať cez Vimeo API namiesto feedu."
@@ -635,11 +727,11 @@ msgstr "Zavrieť toto upozornenie."
 
 #: includes/campaign_edit.php:126
 msgid "Type at least one feed address."
-msgstr "Zadaj aspoň jednu adresu feedu."
+msgstr "Zadajte aspoň jednu adresu feedu."
 
 #: includes/campaign_edit.php:127
 msgid "Type the new feed addresses."
-msgstr "Zadaj nové adresy feedov."
+msgstr "Zadajte nové adresy feedov."
 
 #: includes/campaign_edit.php:128 includes/campaigns_list.php:315
 msgid "Running Campaign..."
@@ -647,11 +739,11 @@ msgstr "Kampaň prebieha…"
 
 #: includes/campaign_edit.php:129
 msgid "Save the campaign before running it"
-msgstr "Ulož kampaň pred jej spustením"
+msgstr "Uložte kampaň pred jej spustením"
 
 #: includes/campaign_edit.php:130
 msgid "Save the campaign before this action"
-msgstr "Ulož kampaň pred touto akciou"
+msgstr "Uložte kampaň pred touto akciou"
 
 #: includes/campaign_edit.php:131
 msgid "Are you sure you want to reset this campaign?"
@@ -682,7 +774,7 @@ msgstr "Načítava sa…"
 
 #: includes/campaign_edit.php:144
 msgid "Update the campaign to save your changes."
-msgstr "Aktualizuj kampaň, aby sa zmeny uložili."
+msgstr "Aktualizujte kampaň, aby sa zmeny uložili."
 
 #: includes/campaign_edit.php:146
 msgid "Public"
@@ -694,7 +786,7 @@ msgstr "Popis kampane"
 
 #: includes/campaign_edit.php:149
 msgid "Notes for yourself about this campaign."
-msgstr "Poznámky pre teba k tejto kampani."
+msgstr "Poznámky pre vás k tejto kampani."
 
 #: includes/campaign_edit.php:153 includes/campaigns_list.php:321
 msgid "Hiding..."
@@ -745,7 +837,7 @@ msgstr "Obnovte stránku v prehliadači a skúste to znova."
 #: includes/debug_page.php:1096 includes/debug_page.php:3712
 #: includes/wpematico_functions.php:2987 includes/wpematico_functions.php:3012
 #: includes/wpematico_functions.php:3208 includes/wpematico_functions.php:3387
-#: includes/xml-importer.php:361 includes/settings/page.php:1265
+#: includes/xml-importer.php:361 includes/settings/page.php:1277
 msgid "You are not allowed to do this."
 msgstr "Na toto nemáte oprávnenie."
 
@@ -795,7 +887,7 @@ msgstr "Prednastavené rozvrhy"
 
 #: includes/campaign_edit_functions.php:1025
 msgid "Pick one to fill in the fields below."
-msgstr "Vyber si jeden a polia nižšie sa vyplnia."
+msgstr "Vyberte si jeden a polia nižšie sa vyplnia."
 
 #: includes/campaign_edit_functions.php:1038
 msgid "Minutes: "
@@ -918,15 +1010,15 @@ msgid ""
 "Install it from Plugins &rsaquo; Add New, activate it, and come back to this "
 "campaign."
 msgstr ""
-"Nainštaluj ho cez Pluginy &rsaquo; Pridať nový, aktivuj ho a vráť sa k tejto "
-"kampani."
+"Nainštalujte ho cez Pluginy &rsaquo; Pridať nový, aktivujte ho a vráťte sa k "
+"tejto kampani."
 
 #: includes/campaign_edit_functions.php:1267
 msgid ""
 "Pick a forum and each item becomes a topic inside it. Pick none and each "
 "item creates its own forum."
 msgstr ""
-"Vyber fórum a každá položka sa v ňom stane témou. Ak žiadne nevyberieš, "
+"Vyberte fórum a každá položka sa v ňom stane témou. Ak žiadne nevyberiete, "
 "každá položka si vytvorí vlastné fórum."
 
 #: includes/campaign_edit_functions.php:1269
@@ -1077,7 +1169,7 @@ msgstr "Náhľad kampane"
 msgid "Feed (default)"
 msgstr "Feed (predvolené)"
 
-#: includes/campaign_edit_functions.php:226 includes/module/actions.php:194
+#: includes/campaign_edit_functions.php:226 includes/module/actions.php:203
 msgid "YouTube"
 msgstr "YouTube"
 
@@ -1107,7 +1199,7 @@ msgstr "Generovanie značiek"
 msgid ""
 "Replace words or phrases with your own text, or turn a word into a link."
 msgstr ""
-"Nahradí slová alebo slovné spojenia tvojím textom, alebo zo slova spraví "
+"Nahradí slová alebo slovné spojenia vaším textom, alebo zo slova spraví "
 "odkaz."
 
 #: includes/campaign_edit_functions.php:28
@@ -1193,7 +1285,8 @@ msgstr "Kontrola duplicít"
 msgid ""
 "Build every post around the text the feed brings, adding content of your own."
 msgstr ""
-"Postav každý článok okolo textu, ktorý prinesie feed, a pridaj vlastný obsah."
+"Postav každý článok okolo textu, ktorý prinesie feed, a pridajte vlastný "
+"obsah."
 
 #: includes/campaign_edit_functions.php:444
 msgid "Use custom posts template"
@@ -1339,7 +1432,7 @@ msgid ""
 "To add a gallery of three columns with every image of the post, above that "
 "link:"
 msgstr ""
-"Ak chceš nad ten odkaz pridať galériu s tromi stĺpcami a všetkými obrázkami "
+"Ak chcete nad ten odkaz pridať galériu s tromi stĺpcami a všetkými obrázkami "
 "článku:"
 
 #: includes/campaign_edit_functions.php:515 includes/campaign_help.php:302
@@ -1355,7 +1448,7 @@ msgid ""
 "To show the videos or audios of the post as a player, the playlist shortcode "
 "does the same for media files:"
 msgstr ""
-"Ak chceš videá alebo zvuky článku ukázať ako prehrávač, shortcode playlist "
+"Ak chcete videá alebo zvuky článku ukázať ako prehrávač, shortcode playlist "
 "robí to isté s mediálnymi súbormi:"
 
 #: includes/campaign_edit_functions.php:518 includes/campaign_help.php:305
@@ -1440,7 +1533,7 @@ msgid "%s has to be installed and activated for this to work."
 msgstr "%s musí byť nainštalovaný a aktívny, aby to fungovalo."
 
 #: includes/campaign_edit_functions.php:615 includes/campaign_help.php:160
-#: includes/settings/help.php:60 includes/module/actions.php:560
+#: includes/settings/help.php:60 includes/module/actions.php:569
 msgid "Featured Image from URL"
 msgstr "Featured Image from URL"
 
@@ -1532,7 +1625,7 @@ msgid "Remove link to source videos"
 msgstr "Odstrániť odkaz na zdrojové videá"
 
 #: includes/campaign_edit_functions.php:775 includes/campaign_help.php:237
-#: includes/settings/help.php:201 includes/settings/page.php:498
+#: includes/settings/help.php:206 includes/settings/page.php:498
 msgid "Allow duplicate posts"
 msgstr "Povoliť duplicitné články"
 
@@ -1543,8 +1636,8 @@ msgid ""
 "leave this one alone."
 msgstr ""
 "S oboma kontrolami vypnutými sa každá položka publikuje znova pri každom "
-"spustení, donekonečna. Ak chceš publikovať položky s rovnakým názvom, použi "
-"„Povoliť duplicitné názvy“ a túto voľbu nechaj na pokoji."
+"spustení, donekonečna. Ak chcete publikovať položky s rovnakým názvom, "
+"použite „Povoliť duplicitné názvy“ a túto voľbu nechajte na pokoji."
 
 #: includes/campaign_edit_functions.php:779 includes/settings/page.php:506
 msgid "Allow duplicate titles"
@@ -1555,12 +1648,12 @@ msgid "Allow duplicate hashes (not recommended)"
 msgstr "Povoliť duplicitné hashe (neodporúča sa)"
 
 #: includes/campaign_edit_functions.php:784 includes/campaign_help.php:249
-#: includes/settings/help.php:218 includes/settings/page.php:526
+#: includes/settings/help.php:223 includes/settings/page.php:526
 msgid "Also check duplicates by source permalink"
 msgstr "Kontrolovať duplicity aj podľa trvalého odkazu zdroja"
 
 #: includes/campaign_edit_functions.php:789 includes/campaign_help.php:243
-#: includes/settings/help.php:207 includes/settings/page.php:535
+#: includes/settings/help.php:212 includes/settings/page.php:535
 msgid "Keep reading past a duplicate"
 msgstr "Čítať ďalej aj po duplicite"
 
@@ -1616,7 +1709,7 @@ msgstr "Odstrániť "
 
 #: includes/campaign_edit_functions.php:888
 msgid "With none selected, all of them apply."
-msgstr "Ak nevyberieš žiadny, platia všetky."
+msgstr "Ak nevyberiete žiadny, platia všetky."
 
 #: includes/campaign_edit_functions.php:896 includes/campaign_help.php:88
 msgid "Store the content unfiltered"
@@ -1648,61 +1741,57 @@ msgstr "Prehliadač feedov"
 msgid "Open URL in a new browser tab"
 msgstr "Otvoriť adresu na novej karte prehliadača"
 
-#: includes/campaign_fetch.php:1008
+#: includes/campaign_fetch.php:1028
 msgid "The post has no featured image."
 msgstr "Článok nemá ilustračný obrázok."
 
-#: includes/campaign_fetch.php:1015
+#: includes/campaign_fetch.php:1035
 msgid "Attaching images"
 msgstr "Pripájajú sa obrázky"
 
-#: includes/campaign_fetch.php:1036
+#: includes/campaign_fetch.php:1056
 msgid "Attaching audios"
 msgstr "Pripájajú sa zvuky"
 
-#: includes/campaign_fetch.php:1052
+#: includes/campaign_fetch.php:1072
 msgid "Attaching videos"
 msgstr "Pripájajú sa videá"
 
-#: includes/campaign_fetch.php:1081
+#: includes/campaign_fetch.php:1101
 msgid "Campaign fetched in %s sec."
 msgstr "Kampaň prebehla za %s s."
 
-#: includes/campaign_fetch.php:1111
+#: includes/campaign_fetch.php:1131
 msgid "WPeMatico Log "
 msgstr "Záznam WPeMatico "
 
-#: includes/campaign_fetch.php:1114
+#: includes/campaign_fetch.php:1134
 msgid "Campaign Name:"
 msgstr "Názov kampane:"
 
-#: includes/campaign_fetch.php:1116
+#: includes/campaign_fetch.php:1136
 msgid "Errors:"
 msgstr "Chyby:"
 
-#: includes/campaign_fetch.php:1118
+#: includes/campaign_fetch.php:1138
 msgid "Warnings:"
 msgstr "Upozornenia:"
 
-#: includes/campaign_fetch.php:1122
+#: includes/campaign_fetch.php:1142
 msgid "WPeMatico by "
 msgstr "WPeMatico od "
 
-#: includes/campaign_fetch.php:1149
+#: includes/campaign_fetch.php:1169
 msgid "Campaign fetched in %1s sec."
 msgstr "Kampaň prebehla za %1s s."
 
-#: includes/campaign_fetch.php:1162
+#: includes/campaign_fetch.php:1182
 msgid "Processed Posts: %s"
 msgstr "Spracované články: %s"
 
-#: includes/campaign_fetch.php:1163
+#: includes/campaign_fetch.php:1183
 msgid "Show detailed Log"
 msgstr "Zobraziť podrobný záznam"
-
-#: includes/campaign_fetch.php:1183 includes/campaigns_list.php:922
-msgid "Posts imported by this campaign."
-msgstr "Články, ktoré importovala táto kampaň."
 
 #: includes/campaign_fetch.php:120
 msgid ""
@@ -1711,6 +1800,10 @@ msgid ""
 msgstr ""
 "Pamäťový limit bol nastavený na %1$s, pretože na dynamické zvýšenie pamäte "
 "nemožno použiť funkciu PHP memory_get_usage()!"
+
+#: includes/campaign_fetch.php:1203 includes/campaigns_list.php:922
+msgid "Posts imported by this campaign."
+msgstr "Články, ktoré importovala táto kampaň."
 
 #: includes/campaign_fetch.php:131
 msgid "Ending feed, reached running timeout at %1$d sec."
@@ -1736,59 +1829,59 @@ msgstr "Limit sťahovania kampane dosiahnutý pri %s."
 msgid "Reached running timeout at %1$d sec."
 msgstr "Dosiahol sa časový limit behu %1$d s."
 
-#: includes/campaign_fetch.php:338
+#: includes/campaign_fetch.php:351
 msgid "%s posts added"
 msgstr "Pridaných článkov: %s"
 
-#: includes/campaign_fetch.php:353
+#: includes/campaign_fetch.php:366
 msgid "Processing item %s"
 msgstr "Spracúva sa položka %s"
 
-#: includes/campaign_fetch.php:367
+#: includes/campaign_fetch.php:380
 msgid "Assigning original date to post."
 msgstr "Článku sa priraďuje pôvodný dátum."
 
-#: includes/campaign_fetch.php:370
+#: includes/campaign_fetch.php:383
 msgid "Original date out of range.  Assigning current date to post."
 msgstr "Pôvodný dátum je mimo rozsahu. Článku sa priraďuje aktuálny dátum."
 
-#: includes/campaign_fetch.php:374
+#: includes/campaign_fetch.php:387
 msgid "Forced original date to post."
 msgstr "Článku bol vnútený pôvodný dátum."
 
-#: includes/campaign_fetch.php:512
+#: includes/campaign_fetch.php:525
 msgid "Assigning Auto Categories."
 msgstr "Priraďujú sa automatické kategórie."
 
-#: includes/campaign_fetch.php:553
+#: includes/campaign_fetch.php:566
 msgid "Found category under parent: "
 msgstr "Nájdená kategória pod nadradenou: "
 
-#: includes/campaign_fetch.php:569
+#: includes/campaign_fetch.php:582
 msgid "Category exists with correct parent: "
 msgstr "Kategória existuje so správnou nadradenou: "
 
-#: includes/campaign_fetch.php:592
+#: includes/campaign_fetch.php:605
 msgid "Adding Category: "
 msgstr "Pridáva sa kategória: "
 
-#: includes/campaign_fetch.php:594
+#: includes/campaign_fetch.php:607
 msgid "Auto Added by WPeMatico"
 msgstr "Automaticky pridané pluginom WPeMatico"
 
-#: includes/campaign_fetch.php:610
+#: includes/campaign_fetch.php:623
 msgid "Created category: "
 msgstr "Kategória vytvorená: "
 
-#: includes/campaign_fetch.php:612
+#: includes/campaign_fetch.php:625
 msgid "Failed to create category: "
 msgstr "Kategóriu sa nepodarilo vytvoriť: "
 
-#: includes/campaign_fetch.php:620
+#: includes/campaign_fetch.php:633
 msgid "Assigned category to post: "
 msgstr "Kategória priradená článku: "
 
-#: includes/campaign_fetch.php:623
+#: includes/campaign_fetch.php:636
 msgid "Could not assign category: "
 msgstr "Kategóriu sa nepodarilo priradiť: "
 
@@ -1796,174 +1889,179 @@ msgstr "Kategóriu sa nepodarilo priradiť: "
 msgid "Campaign skipped: already running since %d sec ago."
 msgstr "Kampaň preskočená: beží už %d s."
 
-#: includes/campaign_fetch.php:791
+#: includes/campaign_fetch.php:811
 msgid "Adding unfiltered content"
 msgstr "Pridáva sa nefiltrovaný obsah"
 
-#: includes/campaign_fetch.php:799
+#: includes/campaign_fetch.php:819
 msgid "Processing item pingbacks"
 msgstr "Spracúvajú sa pingbacky položky"
 
-#: includes/campaign_fetch.php:872
+#: includes/campaign_fetch.php:892
 msgid "Categories added: "
 msgstr "Pridané kategórie: "
 
-#: includes/campaign_fetch.php:884
+#: includes/campaign_fetch.php:904
 msgid "Tags added: "
 msgstr "Pridané značky: "
 
-#: includes/campaign_fetch.php:896
+#: includes/campaign_fetch.php:916
 msgid "Post format added: "
 msgstr "Pridaný formát článku: "
 
-#: includes/campaign_fetch.php:917
+#: includes/campaign_fetch.php:937
 msgid "Skip Featured Image."
 msgstr "Ilustračný obrázok sa preskakuje."
 
-#: includes/campaign_fetch.php:921
+#: includes/campaign_fetch.php:941
 msgid "Featuring Image Into Post."
 msgstr "Nastavuje sa ilustračný obrázok článku."
 
-#: includes/campaign_fetch.php:963 includes/campaign_fetch_functions.php:510
+#: includes/campaign_fetch.php:983 includes/campaign_fetch_functions.php:514
 msgid "Failed to obtain file:"
 msgstr "Súbor sa nepodarilo získať:"
 
-#: includes/campaign_fetch.php:971
+#: includes/campaign_fetch.php:991
 msgid "Save Featured image file failed:"
 msgstr "Uloženie súboru ilustračného obrázka zlyhalo:"
 
-#: includes/campaign_fetch_functions.php:1000
+#: includes/campaign_fetch_functions.php:1004
 msgid "Fifu save set attachment from URL."
 msgstr "Fifu ukladá prílohu z adresy URL."
 
-#: includes/campaign_fetch_functions.php:1089
+#: includes/campaign_fetch_functions.php:102
+#: includes/campaign_fetch_functions.php:112
+msgid "Cleaning Links from content."
+msgstr "Z obsahu sa čistia odkazy."
+
+#: includes/campaign_fetch_functions.php:1093
 msgid "Parsing Youtube video and feed item contents."
 msgstr "Spracúva sa video YouTube a obsah položky feedu."
 
-#: includes/campaign_fetch_functions.php:118
-msgid "Parsing Post template."
-msgstr "Spracúva sa šablóna článku."
-
-#: includes/campaign_fetch_functions.php:1201
+#: includes/campaign_fetch_functions.php:1205
 msgid "Looking for audios in content."
 msgstr "Hľadajú sa zvuky v obsahu."
 
-#: includes/campaign_fetch_functions.php:125
-msgid "Can't find the featured image to add to the content."
-msgstr "Ilustračný obrázok na pridanie do obsahu sa nenašiel."
+#: includes/campaign_fetch_functions.php:122
+msgid "Parsing Post template."
+msgstr "Spracúva sa šablóna článku."
 
-#: includes/campaign_fetch_functions.php:1252
-#: includes/campaign_fetch_functions.php:1408
+#: includes/campaign_fetch_functions.php:1256
+#: includes/campaign_fetch_functions.php:1412
 msgid "Upload file failed:"
 msgstr "Nahranie súboru zlyhalo:"
 
-#: includes/campaign_fetch_functions.php:1270
+#: includes/campaign_fetch_functions.php:1274
 msgid "Using remotely linked audios in content. No changes."
 msgstr "Zvuky v obsahu zostávajú odkázané externe. Bez zmien."
 
-#: includes/campaign_fetch_functions.php:1356
+#: includes/campaign_fetch_functions.php:129
+msgid "Can't find the featured image to add to the content."
+msgstr "Ilustračný obrázok na pridanie do obsahu sa nenašiel."
+
+#: includes/campaign_fetch_functions.php:1360
 msgid "Looking for videos in content."
 msgstr "Hľadajú sa videá v obsahu."
 
-#: includes/campaign_fetch_functions.php:1426
+#: includes/campaign_fetch_functions.php:1430
 msgid "Using remotely linked videos in content. No changes."
 msgstr "Videá v obsahu zostávajú odkázané externe. Bez zmien."
 
-#: includes/campaign_fetch_functions.php:1459
+#: includes/campaign_fetch_functions.php:1463
 msgid "Skipping standard videos..."
 msgstr "Bežné videá sa preskakujú…"
 
-#: includes/campaign_fetch_functions.php:1465
+#: includes/campaign_fetch_functions.php:1469
 msgid "Skipping Youtube Short..."
 msgstr "YouTube Short sa preskakuje…"
 
-#: includes/campaign_fetch_functions.php:242
+#: includes/campaign_fetch_functions.php:246
 msgid "Processing Words to Category %s"
 msgstr "Spracúvajú sa slová do kategórie %s"
 
-#: includes/campaign_fetch_functions.php:272
+#: includes/campaign_fetch_functions.php:276
 msgid "Found!: word %1$s to Cat_id %2$s"
 msgstr "Nájdené!: slovo %1$s do kategórie č. %2$s"
 
-#: includes/campaign_fetch_functions.php:277
+#: includes/campaign_fetch_functions.php:281
 msgid "Not found word %s"
 msgstr "Slovo %s sa nenašlo"
 
-#: includes/campaign_fetch_functions.php:284
+#: includes/campaign_fetch_functions.php:288
 msgid "Searching the category with more words."
 msgstr "Hľadá sa kategória s najviac slovami."
 
-#: includes/campaign_fetch_functions.php:300
+#: includes/campaign_fetch_functions.php:304
 msgid "The category with more words in content: %s"
 msgstr "Kategória s najviac slovami v obsahu: %s"
 
-#: includes/campaign_fetch_functions.php:307
+#: includes/campaign_fetch_functions.php:311
 msgid "Assign the first category: %s"
 msgstr "Priraďuje sa prvá kategória: %s"
 
-#: includes/campaign_fetch_functions.php:462
+#: includes/campaign_fetch_functions.php:466
 msgid "Looking for images in content."
 msgstr "Hľadajú sa obrázky v obsahu."
 
-#: includes/campaign_fetch_functions.php:471
-#: includes/campaign_fetch_functions.php:1205
-#: includes/campaign_fetch_functions.php:1360
+#: includes/campaign_fetch_functions.php:475
+#: includes/campaign_fetch_functions.php:1209
+#: includes/campaign_fetch_functions.php:1364
 msgid "Uploading media..."
 msgstr "Nahrávajú sa médiá…"
 
-#: includes/campaign_fetch_functions.php:529
+#: includes/campaign_fetch_functions.php:533
 msgid "Save image file failed:"
 msgstr "Uloženie obrázkového súboru zlyhalo:"
 
-#: includes/campaign_fetch_functions.php:540
-#: includes/campaign_fetch_functions.php:1259
-#: includes/campaign_fetch_functions.php:1415
+#: includes/campaign_fetch_functions.php:544
+#: includes/campaign_fetch_functions.php:1263
+#: includes/campaign_fetch_functions.php:1419
 msgid "Extension not allowed: "
 msgstr "Prípona nie je povolená: "
 
-#: includes/campaign_fetch_functions.php:543
-#: includes/campaign_fetch_functions.php:1261
-#: includes/campaign_fetch_functions.php:1417
+#: includes/campaign_fetch_functions.php:547
+#: includes/campaign_fetch_functions.php:1265
+#: includes/campaign_fetch_functions.php:1421
 msgid "Stripped src."
 msgstr "Atribút src bol vyčistený."
 
-#: includes/campaign_fetch_functions.php:561
+#: includes/campaign_fetch_functions.php:565
 msgid "Using remotely linked images in content. No changes."
 msgstr "Obrázky v obsahu zostávajú odkázané externe. Bez zmien."
 
-#: includes/campaign_fetch_functions.php:598
+#: includes/campaign_fetch_functions.php:602
 msgid "Attaching file:"
 msgstr "Pripája sa súbor:"
 
-#: includes/campaign_fetch_functions.php:601
+#: includes/campaign_fetch_functions.php:605
 msgid "Sorry, the attachment could not be inserted. An error has occurred."
 msgstr "Prílohu sa nepodarilo vložiť. Vyskytla sa chyba."
 
-#: includes/campaign_fetch_functions.php:636
+#: includes/campaign_fetch_functions.php:640
 msgid "Executing featured image selector..."
 msgstr "Spúšťa sa výber ilustračného obrázka…"
 
-#: includes/campaign_fetch_functions.php:640
+#: includes/campaign_fetch_functions.php:644
 msgid "Featured image \"%1$s\": %2$s"
 msgstr "Ilustračný obrázok „%1$s“: %2$s"
 
-#: includes/campaign_fetch_functions.php:643
+#: includes/campaign_fetch_functions.php:647
 msgid "No image was found according to the selected index."
 msgstr "Na vybranom poradí sa nenašiel žiadny obrázok."
 
-#: includes/campaign_fetch_functions.php:648
+#: includes/campaign_fetch_functions.php:652
 msgid "The first image was not found in the content."
 msgstr "Prvý obrázok sa v obsahu nenašiel."
 
-#: includes/campaign_fetch_functions.php:650
+#: includes/campaign_fetch_functions.php:654
 msgid "Using first image as the featured image."
 msgstr "Ako ilustračný sa použije prvý obrázok."
 
-#: includes/campaign_fetch_functions.php:656
+#: includes/campaign_fetch_functions.php:660
 msgid "The last image was not found in the content."
 msgstr "Posledný obrázok sa v obsahu nenašiel."
 
-#: includes/campaign_fetch_functions.php:658
+#: includes/campaign_fetch_functions.php:662
 msgid "Using last image as the featured image."
 msgstr "Ako ilustračný sa použije posledný obrázok."
 
@@ -1971,48 +2069,43 @@ msgstr "Ako ilustračný sa použije posledný obrázok."
 msgid "Deleting html tags: %s"
 msgstr "Mažú sa značky HTML: %s"
 
-#: includes/campaign_fetch_functions.php:865
+#: includes/campaign_fetch_functions.php:869
 msgid "Getting srcset attribute..."
 msgstr "Načítava sa atribút srcset…"
 
-#: includes/campaign_fetch_functions.php:890
+#: includes/campaign_fetch_functions.php:894
 msgid "Overriding src attribute with value: %s from srcset."
 msgstr "Atribút src sa prepisuje hodnotou %s zo srcset."
 
-#: includes/campaign_fetch_functions.php:937
-#: includes/campaign_fetch_functions.php:1178
-#: includes/campaign_fetch_functions.php:1333
+#: includes/campaign_fetch_functions.php:941
+#: includes/campaign_fetch_functions.php:1182
+#: includes/campaign_fetch_functions.php:1337
 msgid "Removing: %s from content."
 msgstr "Z obsahu sa odstraňuje %s."
 
-#: includes/campaign_fetch_functions.php:945
+#: includes/campaign_fetch_functions.php:949
 msgid "Link with image URI not found in src."
 msgstr "Odkaz s URI obrázka sa v src nenašiel."
 
-#: includes/campaign_fetch_functions.php:948
+#: includes/campaign_fetch_functions.php:952
 msgid "Successfully removed with anchor link."
 msgstr "Úspešne odstránené aj s odkazom."
 
-#: includes/campaign_fetch_functions.php:954
+#: includes/campaign_fetch_functions.php:958
 msgid "Image URI not found in src."
 msgstr "URI obrázka sa v src nenašlo."
 
-#: includes/campaign_fetch_functions.php:957
+#: includes/campaign_fetch_functions.php:961
 msgid "Successfully removed."
 msgstr "Úspešne odstránené."
 
-#: includes/campaign_fetch_functions.php:968
+#: includes/campaign_fetch_functions.php:972
 msgid "Setting up Featured Image From Url"
 msgstr "Nastavuje sa Featured Image From Url"
 
-#: includes/campaign_fetch_functions.php:971
+#: includes/campaign_fetch_functions.php:975
 msgid "Adding featured image post meta: "
 msgstr "Pridáva sa metapoložka ilustračného obrázka: "
-
-#: includes/campaign_fetch_functions.php:98
-#: includes/campaign_fetch_functions.php:108
-msgid "Cleaning Links from content."
-msgstr "Z obsahu sa čistia odkazy."
 
 #: includes/campaign_help.php:101
 msgid "Use [embed]"
@@ -2031,8 +2124,8 @@ msgid ""
 "WordPress then fits the player to the width your theme gives it, up to the "
 "size you set."
 msgstr ""
-"WordPress potom prispôsobí prehrávač šírke, ktorú mu dá tvoja téma, až do "
-"veľkosti, ktorú nastavíš."
+"WordPress potom prispôsobí prehrávač šírke, ktorú mu dá vaša téma, až do "
+"veľkosti, ktorú nastavíte."
 
 #: includes/campaign_help.php:106
 msgid "Video size"
@@ -2043,7 +2136,7 @@ msgid ""
 "Width and height of the player in the post. Leave both at 0 to let it adapt "
 "to the screen."
 msgstr ""
-"Šírka a výška prehrávača v článku. Nechaj obe na 0, nech sa prispôsobí "
+"Šírka a výška prehrávača v článku. Nechajte obe na 0, nech sa prispôsobí "
 "obrazovke."
 
 #: includes/campaign_help.php:112
@@ -2055,21 +2148,22 @@ msgid ""
 "Pick a forum to publish the feed items as topics inside it, or pick none and "
 "each item creates its own forum."
 msgstr ""
-"Vyber fórum, aby sa položky feedu publikovali ako témy v ňom, alebo žiadne "
+"Vyberte fórum, aby sa položky feedu publikovali ako témy v ňom, alebo žiadne "
 "nevyber a každá položka si vytvorí vlastné fórum."
 
 #: includes/campaign_help.php:114
 msgid "Picking a topic instead publishes every item as a reply to it."
 msgstr ""
-"Ak namiesto toho vyberieš tému, každá položka sa v nej publikuje ako odpoveď."
+"Ak namiesto toho vyberiete tému, každá položka sa v nej publikuje ako "
+"odpoveď."
 
 #: includes/campaign_help.php:120
 msgid ""
 "The campaign runs on its own, at the times you set below. WP-cron fires "
 "within about 5 minutes of the hour; an external cron is exact."
 msgstr ""
-"Kampaň beží sama, v časoch, ktoré nastavíš nižšie. WP-cron sa spúšťa s asi 5-"
-"minútovou rezervou; externý cron je presný."
+"Kampaň beží sama, v časoch, ktoré nastavíte nižšie. WP-cron sa spúšťa s asi "
+"5-minútovou rezervou; externý cron je presný."
 
 #: includes/campaign_help.php:121
 msgid "You can see some examples here:"
@@ -2084,7 +2178,7 @@ msgid ""
 "Pick one and the fields on the right are filled in for you, ready to edit. "
 "The preset itself is not saved."
 msgstr ""
-"Vyber si jeden a polia vpravo sa vyplnia, pripravené na úpravu. Samotný "
+"Vyberte si jeden a polia vpravo sa vyplnia, pripravené na úpravu. Samotný "
 "rozvrh sa neukladá."
 
 #: includes/campaign_help.php:130
@@ -2101,8 +2195,8 @@ msgid ""
 "Every image in an %s tag is saved to your Uploads folder and the content "
 "points at your copy. Off, the images stay on the source server."
 msgstr ""
-"Každý obrázok v značke %s sa uloží do tvojho priečinka nahratých súborov a "
-"obsah ukazuje na tvoju kópiu. Vypnuté, obrázky zostávajú na serveri zdroja."
+"Každý obrázok v značke %s sa uloží do vášho priečinka nahratých súborov a "
+"obsah ukazuje na vašu kópiu. Vypnuté, obrázky zostávajú na serveri zdroja."
 
 #: includes/campaign_help.php:140
 msgid ""
@@ -2110,7 +2204,7 @@ msgid ""
 "post. Needed for the featured image; turn it off if the run is too slow."
 msgstr ""
 "Každý stiahnutý obrázok sa pridá do knižnice médií a pripojí k svojmu "
-"článku. Potrebné pre ilustračný obrázok; vypni to, ak je spustenie príliš "
+"článku. Potrebné pre ilustračný obrázok; vypnite to, ak je spustenie príliš "
 "pomalé."
 
 #: includes/campaign_help.php:145
@@ -2145,7 +2239,7 @@ msgid ""
 "it from the source server. Install and activate that plugin first."
 msgstr ""
 "Prenechá ilustračný obrázok pluginu Featured Image from URL, ktorý ho "
-"servíruje zo servera zdroja. Najprv ten plugin nainštaluj a aktivuj."
+"servíruje zo servera zdroja. Najprv ten plugin nainštalujte a aktivujte."
 
 #: includes/campaign_help.php:160 includes/settings/help.php:55
 #: includes/settings/help.php:60
@@ -2169,7 +2263,7 @@ msgid ""
 "Pick the image by its position in the content -- the first, the second, the "
 "third -- instead of always taking the first."
 msgstr ""
-"Vyber obrázok podľa jeho poradia v obsahu – prvý, druhý, tretí – namiesto "
+"Vyberte obrázok podľa jeho poradia v obsahu – prvý, druhý, tretí – namiesto "
 "toho, aby sa vždy bral prvý."
 
 #: includes/campaign_help.php:170
@@ -2177,8 +2271,8 @@ msgid ""
 "The image used as featured is stripped from the post content, so your theme "
 "does not show it twice."
 msgstr ""
-"Obrázok použitý ako ilustračný sa odstráni z obsahu článku, aby ho tvoja "
-"téma neukázala dvakrát."
+"Obrázok použitý ako ilustračný sa odstráni z obsahu článku, aby ho vaša téma "
+"neukázala dvakrát."
 
 #: includes/campaign_help.php:173 includes/settings/help.php:74
 #: includes/settings/page.php:264
@@ -2225,8 +2319,8 @@ msgid ""
 "Every audio in an %s tag is saved to your Uploads folder and the content "
 "points at your copy. Off, the files stay on the source server."
 msgstr ""
-"Každý zvuk v značke %s sa uloží do tvojho priečinka nahratých súborov a "
-"obsah ukazuje na tvoju kópiu. Vypnuté, súbory zostávajú na serveri zdroja."
+"Každý zvuk v značke %s sa uloží do vášho priečinka nahratých súborov a obsah "
+"ukazuje na vašu kópiu. Vypnuté, súbory zostávajú na serveri zdroja."
 
 #: includes/campaign_help.php:195
 msgid ""
@@ -2234,14 +2328,14 @@ msgid ""
 "post. Turn it off if the run is too slow."
 msgstr ""
 "Každý stiahnutý zvuk sa pridá do knižnice médií a pripojí k svojmu článku. "
-"Vypni to, ak je spustenie príliš pomalé."
+"Vypnite to, ak je spustenie príliš pomalé."
 
 #: includes/campaign_help.php:20
 msgid ""
 "At least one address is needed. Type a domain name and WPeMatico looks for "
 "its feed. The fewer feeds a campaign has, the less each run costs."
 msgstr ""
-"Treba aspoň jednu adresu. Napíš názov domény a WPeMatico jej feed vyhľadá. "
+"Treba aspoň jednu adresu. Napíšte názov domény a WPeMatico jej feed vyhľadá. "
 "Čím menej feedov kampaň má, tým menej stojí každé spustenie."
 
 #: includes/campaign_help.php:200
@@ -2273,8 +2367,8 @@ msgid ""
 "Every video in a %s tag is saved to your Uploads folder and the content "
 "points at your copy. Video files are heavy: they fill your disk fast."
 msgstr ""
-"Každé video v značke %s sa uloží do tvojho priečinka nahratých súborov a "
-"obsah ukazuje na tvoju kópiu. Videá sú ťažké: disk sa zaplní rýchlo."
+"Každé video v značke %s sa uloží do vášho priečinka nahratých súborov a "
+"obsah ukazuje na vašu kópiu. Videá sú ťažké: disk sa zaplní rýchlo."
 
 #: includes/campaign_help.php:217
 msgid ""
@@ -2282,7 +2376,7 @@ msgid ""
 "post. Turn it off if the run is too slow."
 msgstr ""
 "Každé stiahnuté video sa pridá do knižnice médií a pripojí k svojmu článku. "
-"Vypni to, ak je spustenie príliš pomalé."
+"Vypnite to, ak je spustenie príliš pomalé."
 
 #: includes/campaign_help.php:222
 msgid ""
@@ -2308,19 +2402,19 @@ msgstr ""
 msgid "Duplicate options for this campaign"
 msgstr "Nastavenia duplicít tejto kampane"
 
-#: includes/campaign_help.php:238 includes/settings/help.php:202
+#: includes/campaign_help.php:238 includes/settings/help.php:207
 msgid ""
 "Turns off both duplicate checks, so every item is published again on every "
 "run. Almost never what you want."
 msgstr ""
 "Vypne obe kontroly duplicít, takže každá položka sa pri každom spustení "
-"publikuje znova. Takmer nikdy to nie je to, čo chceš."
+"publikuje znova. Takmer nikdy to nie je to, čo chcete."
 
-#: includes/campaign_help.php:239 includes/settings/help.php:203
+#: includes/campaign_help.php:239 includes/settings/help.php:208
 msgid "The two checks"
 msgstr "Dve kontroly"
 
-#: includes/campaign_help.php:239 includes/settings/help.php:203
+#: includes/campaign_help.php:239 includes/settings/help.php:208
 msgid ""
 "the post title, and a hash of the last item address the campaign read. The "
 "hash is the reliable one; titles alone fail often."
@@ -2341,11 +2435,11 @@ msgid ""
 "With both off, the same items come in for ever. To publish items that share "
 "a title, use \"Allow duplicate titles\" and leave the hash check on."
 msgstr ""
-"Keď sú obe vypnuté, tie isté položky prichádzajú donekonečna. Ak chceš "
-"publikovať položky s rovnakým názvom, použi „Povoliť duplicitné názvy“ a "
-"kontrolu podľa hashu nechaj zapnutú."
+"Keď sú obe vypnuté, tie isté položky prichádzajú donekonečna. Ak chcete "
+"publikovať položky s rovnakým názvom, použite „Povoliť duplicitné názvy“ a "
+"kontrolu podľa hashu nechajte zapnutú."
 
-#: includes/campaign_help.php:244 includes/settings/help.php:208
+#: includes/campaign_help.php:244 includes/settings/help.php:213
 msgid ""
 "The campaign skips each duplicate and keeps looking for new items, instead "
 "of stopping at the first one. Not recommended."
@@ -2353,11 +2447,11 @@ msgstr ""
 "Kampaň preskočí každú duplicitu a hľadá ďalšie nové položky namiesto toho, "
 "aby sa zastavila pri prvej. Neodporúča sa."
 
-#: includes/campaign_help.php:245 includes/settings/help.php:209
+#: includes/campaign_help.php:245 includes/settings/help.php:214
 msgid "How it works"
 msgstr "Ako to funguje"
 
-#: includes/campaign_help.php:245 includes/settings/help.php:209
+#: includes/campaign_help.php:245 includes/settings/help.php:214
 msgid ""
 "feed items come ordered newest first, so the campaign reads from the top and "
 "stops at the first item it already has: everything below it is older and "
@@ -2367,7 +2461,7 @@ msgstr ""
 "zhora a zastaví sa pri prvej položke, ktorú už má: všetko pod ňou je staršie "
 "a už publikované."
 
-#: includes/campaign_help.php:246 includes/settings/help.php:210
+#: includes/campaign_help.php:246 includes/settings/help.php:215
 msgid ""
 "The hash only covers the last item read, so on a feed where the title check "
 "works poorly this option can publish the same item twice."
@@ -2375,12 +2469,12 @@ msgstr ""
 "Hash pokrýva len poslednú prečítanú položku, takže pri feede, kde kontrola "
 "podľa názvu funguje zle, môže táto voľba publikovať tú istú položku dvakrát."
 
-#: includes/campaign_help.php:250 includes/settings/help.php:219
+#: includes/campaign_help.php:250 includes/settings/help.php:224
 msgid ""
 "One more query per item. Turn it on only if you still get duplicates, which "
 "happens with feeds that do not follow the standard."
 msgstr ""
-"Jeden dopyt navyše na položku. Zapni to iba vtedy, keď ti duplicity stále "
+"Jeden dopyt navyše na položku. Zapnite to iba vtedy, keď vám duplicity stále "
 "chodia – stáva sa to pri feedoch, ktoré nedodržiavajú štandard."
 
 #: includes/campaign_help.php:257
@@ -2401,7 +2495,7 @@ msgid ""
 "image, date. When a node name appears more than once, name its parent in the "
 "right column."
 msgstr ""
-"Vyber uzol XML, ktorý drží jednotlivé vlastnosti položky: názov, obsah, "
+"Vyberte uzol XML, ktorý drží jednotlivé vlastnosti položky: názov, obsah, "
 "obrázok, dátum. Keď sa názov uzla objaví viackrát, uveď v pravom stĺpci jeho "
 "rodiča."
 
@@ -2426,8 +2520,8 @@ msgid ""
 "Build the content of each post around the text the feed brings: add your own "
 "text, images or campaign data before it is saved."
 msgstr ""
-"Postav obsah každého článku okolo textu, ktorý prinesie feed: pridaj vlastný "
-"text, obrázky alebo údaje kampane, kým sa uloží."
+"Postav obsah každého článku okolo textu, ktorý prinesie feed: pridajte "
+"vlastný text, obrázky alebo údaje kampane, kým sa uloží."
 
 #: includes/campaign_help.php:279
 msgid "The feed item content."
@@ -2442,7 +2536,7 @@ msgstr ""
 "kampaň zastavila priskoro a stratila položky."
 
 #: includes/campaign_help.php:311 includes/settings/help.php:147
-#: includes/module/actions.php:204
+#: includes/module/actions.php:213
 msgid "Words to Categories"
 msgstr "Slová do kategórií"
 
@@ -2460,8 +2554,8 @@ msgid ""
 "To file every post that mentions \"motor\" under the category \"Engines\", "
 "type motor in the Word field and pick Engines in the categories list."
 msgstr ""
-"Ak chceš do kategórie „Motory“ zaradiť každý článok, ktorý spomína „motor“, "
-"napíš motor do poľa Slovo a vyber Motory v zozname kategórií."
+"Ak chcete do kategórie „Motory“ zaradiť každý článok, ktorý spomína „motor“, "
+"napíšte motor do poľa Slovo a vyberte Motory v zozname kategórií."
 
 #: includes/campaign_help.php:315
 msgid "Regular Expressions"
@@ -2475,10 +2569,10 @@ msgid ""
 "it runs over the whole field. To match regardless of case, leave the 'Case "
 "sensitive' box below unchecked."
 msgstr ""
-"Podporované sú regulárne výrazy, čo ti ušetrí jedno políčko na slovo: "
+"Podporované sú regulárne výrazy, čo vám ušetrí jedno políčko na slovo: "
 "namiesto políčka pre motor a ďalšieho pre auto, oboch smerujúcich do Motory, "
-"použi operátor | – (motor|auto). Výraz píš bez oddeľovačov a prepínačov; "
-"platí na celé pole. Ak nemá záležať na veľkosti písmen, nechaj políčko "
+"použite operátor | – (motor|auto). Výraz píšte bez oddeľovačov a prepínačov; "
+"platí na celé pole. Ak nemá záležať na veľkosti písmen, nechajte políčko "
 "„Rozlišovať veľkosť písmen“ nižšie nezaškrtnuté."
 
 #: includes/campaign_help.php:32
@@ -2498,8 +2592,8 @@ msgid ""
 "Replaces words or phrases in the content with your own text, and can turn a "
 "word into a link. Click [?] below for examples."
 msgstr ""
-"Nahradí slová alebo slovné spojenia v obsahu tvojím textom a zo slova môže "
-"spraviť odkaz. Príklady nájdeš po kliknutí na [?] nižšie."
+"Nahradí slová alebo slovné spojenia v obsahu vaším textom a zo slova môže "
+"spraviť odkaz. Príklady nájdete po kliknutí na [?] nižšie."
 
 #: includes/campaign_help.php:323
 msgid "Basic rewriting:"
@@ -2510,8 +2604,8 @@ msgid ""
 "To replace every \"ass\" with \"butt\", type ass in the origin field and "
 "butt in \"rewrite to\"."
 msgstr ""
-"Ak chceš nahradiť každé „ass“ za „butt“, napíš ass do poľa pôvodu a butt do "
-"„prepísať na“."
+"Ak chcete nahradiť každé „ass“ za „butt“, napíšte ass do poľa pôvodu a butt "
+"do „prepísať na“."
 
 #: includes/campaign_help.php:325
 msgid "Title:"
@@ -2523,7 +2617,7 @@ msgid ""
 "on the content only. Add the same rewrite twice to cover both."
 msgstr ""
 "So zaškrtnutým „Názov“ sa nahrádza len v názve, bez zaškrtnutia len v "
-"obsahu. Pridaj ten istý prepis dvakrát, aby si pokryl oboje."
+"obsahu. Pridajte ten istý prepis dvakrát, aby ste pokryli oboje."
 
 #: includes/campaign_help.php:327
 msgid "Relinking:"
@@ -2534,7 +2628,7 @@ msgid ""
 "To turn every mention of google into a link to Google, type google in the "
 "origin field and %s in the 'relink to' field."
 msgstr ""
-"Ak chceš, aby sa každá zmienka o google zmenila na odkaz na Google, napíš "
+"Ak chcete, aby sa každá zmienka o google zmenila na odkaz na Google, napíšte "
 "google do poľa pôvodu a %s do poľa „odkázať na“."
 
 #: includes/campaign_help.php:329
@@ -2553,8 +2647,8 @@ msgid ""
 "Regular expressions are supported, which saves you one box per word: to "
 "replace both ass and arse with butt, use the | operator -- (ass|arse)."
 msgstr ""
-"Podporované sú regulárne výrazy, čo ti ušetrí jedno políčko na slovo: ak "
-"chceš nahradiť ass aj arse za butt, použi operátor | – (ass|arse)."
+"Podporované sú regulárne výrazy, čo vám ušetrí jedno políčko na slovo: ak "
+"chcete nahradiť ass aj arse za butt, použite operátor | – (ass|arse)."
 
 #: includes/campaign_help.php:335
 msgid "Categories"
@@ -2574,7 +2668,7 @@ msgid ""
 "your site if they do not exist yet."
 msgstr ""
 "Kategórie, ktoré nesie zdrojová položka, sa pridajú k článku a vytvoria sa "
-"na tvojej webovej stránke, ak ešte neexistujú."
+"na vašej webovej stránke, ak ešte neexistujú."
 
 #: includes/campaign_help.php:343
 msgid "Limit of categories"
@@ -2589,8 +2683,8 @@ msgid ""
 "Every category created by this campaign hangs from the one you pick here, "
 "instead of sitting at the top level."
 msgstr ""
-"Každá kategória, ktorú táto kampaň vytvorí, visí pod tou, ktorú tu vyberieš, "
-"namiesto toho, aby stála na najvyššej úrovni."
+"Každá kategória, ktorú táto kampaň vytvorí, visí pod tou, ktorú tu "
+"vyberiete, namiesto toho, aby stála na najvyššej úrovni."
 
 #: includes/campaign_help.php:35
 msgid "it is not further in the past than the campaign frequency, and"
@@ -2614,7 +2708,7 @@ msgid ""
 "The post format for this campaign, if your theme supports formats. Leave it "
 "on Standard if it does not."
 msgstr ""
-"Formát článku tejto kampane, ak tvoja téma formáty podporuje. Inak nechaj "
+"Formát článku tejto kampane, ak vaša téma formáty podporuje. Inak nechajte "
 "Štandardný."
 
 #: includes/campaign_help.php:36
@@ -2630,7 +2724,7 @@ msgid ""
 "Sends you what happened on each run. You can ask for it only when something "
 "went wrong, or leave the field empty for no email at all."
 msgstr ""
-"Pošle ti, čo sa pri každom spustení stalo. Môžeš si ho vyžiadať len vtedy, "
+"Pošle vám, čo sa pri každom spustení stalo. Môžete si ho vyžiadať len vtedy, "
 "keď sa niečo pokazilo, alebo nechať pole prázdne a nedostávať nič."
 
 #: includes/campaign_help.php:40
@@ -2646,7 +2740,7 @@ msgid ""
 "The title of each post points at the original article instead of at your own "
 "post."
 msgstr ""
-"Názov každého článku ukazuje na pôvodný článok namiesto na tvoj vlastný."
+"Názov každého článku ukazuje na pôvodný článok namiesto na váte vlastný."
 
 #: includes/campaign_help.php:45
 msgid ""
@@ -2659,7 +2753,7 @@ msgstr ""
 #: includes/campaign_help.php:49
 msgid "Your post keeps the exact permalink the source article has."
 msgstr ""
-"Tvoj článok si ponechá presne ten trvalý odkaz, ktorý má zdrojový článok."
+"Váte článok si ponechá presne ten trvalý odkaz, ktorý má zdrojový článok."
 
 #: includes/campaign_help.php:53
 msgid ""
@@ -2674,7 +2768,7 @@ msgid ""
 "Leave it on for speed. Turn it off when the permalinks you get are not the "
 "original ones."
 msgstr ""
-"Kvôli rýchlosti to nechaj zapnuté. Vypni to, keď trvalé odkazy, ktoré "
+"Kvôli rýchlosti to nechajte zapnuté. Vypnite to, keď trvalé odkazy, ktoré "
 "dostávaš, nie sú tie pôvodné."
 
 #: includes/campaign_help.php:58
@@ -2717,7 +2811,7 @@ msgid ""
 "the value you see is always the one that will be used. Administrators and "
 "editors are not affected."
 msgstr ""
-"Autor aj stav článku sa ukladajú tak, ako ich váš používateľ smie nastaviť, "
+"Autor aj stav článku sa ukladajú tak, ako ich váte používateľ smie nastaviť, "
 "pretože kampaň beží neskôr podľa svojho plánu, keď nikto nie je prihlásený. "
 "Používateľ, ktorý nemôže publikovať, uloží kampaň so stavom Čaká na "
 "kontrolu, a ten, kto nemôže priraďovať články iným, ju uloží na svoje meno. "
@@ -2737,8 +2831,8 @@ msgid ""
 "Feeds with no description of their own send the content in that field, so "
 "you may end up with the same text twice."
 msgstr ""
-"Feedy bez vlastného popisu posielajú v tomto poli obsah, takže môžeš skončiť "
-"s tým istým textom dvakrát."
+"Feedy bez vlastného popisu posielajú v tomto poli obsah, takže môžete "
+"skončiť s tým istým textom dvakrát."
 
 #: includes/campaign_help.php:81
 msgid ""
@@ -2755,7 +2849,7 @@ msgid ""
 "and with its scripts. Use it only with sources you trust."
 msgstr ""
 "Obsah feedu sa uloží presne tak, ako príde, mimo filtrov WordPressu a so "
-"svojimi skriptmi. Používaj to len pri zdrojoch, ktorým dôveruješ."
+"svojimi skriptmi. Používaj to len pri zdrojoch, ktorým dôverujete."
 
 #: includes/campaign_help.php:94
 msgid "YouTube feed addresses"
@@ -2766,8 +2860,8 @@ msgid ""
 "Type the feed address of a channel, a user or a playlist. The campaign takes "
 "the title, the image, the embedded video and the description."
 msgstr ""
-"Napíš adresu kanála, používateľa alebo zoznamu skladieb. Kampaň vezme názov, "
-"obrázok, vložené video a popis."
+"Napíšte adresu kanála, používateľa alebo zoznamu skladieb. Kampaň vezme "
+"názov, obrázok, vložené video a popis."
 
 #: includes/campaign_help.php:96
 msgid "For a YouTube channel: "
@@ -2794,11 +2888,11 @@ msgid "Filtering out duplicates."
 msgstr "Odfiltrovávajú sa duplicity."
 
 #: includes/campaign_preview.php:251 includes/campaign_preview_item.php:178
-#: includes/campaign_preview_item.php:295
+#: includes/campaign_preview_item.php:274
 msgid "You do not have sufficient permissions to preview this campaign."
 msgstr "Nemáte dostatočné oprávnenia na náhľad tejto kampane."
 
-#: includes/campaign_preview.php:362 includes/campaign_preview_item.php:353
+#: includes/campaign_preview.php:362 includes/campaign_preview_item.php:332
 msgid "WPeMatico Preview Feed"
 msgstr "WPeMatico – náhľad feedu"
 
@@ -2819,21 +2913,21 @@ msgstr "Akcie"
 msgid "Next fetch"
 msgstr "Ďalšie sťahovanie"
 
-#: includes/campaign_preview.php:450 includes/campaign_preview_item.php:378
+#: includes/campaign_preview.php:450 includes/campaign_preview_item.php:357
 msgid "Fetch Now"
 msgstr "Stiahnuť teraz"
 
-#: includes/campaign_preview.php:46 includes/campaign_preview_item.php:276
+#: includes/campaign_preview.php:46 includes/campaign_preview_item.php:255
 msgid "This action comes with the Manual Fetching add-on."
 msgstr "Táto akcia prichádza s rozšírením Manual Fetching."
 
 #: includes/campaign_preview_item.php:187
-#: includes/campaign_preview_item.php:303
+#: includes/campaign_preview_item.php:282
 msgid "The item is invalid."
 msgstr "Položka je neplatná."
 
 #: includes/campaign_preview_item.php:194
-#: includes/campaign_preview_item.php:310
+#: includes/campaign_preview_item.php:289
 msgid "The feed is invalid."
 msgstr "Feed je neplatný."
 
@@ -2841,11 +2935,11 @@ msgstr "Feed je neplatný."
 msgid "The item could not be previewed."
 msgstr "Položku sa nepodarilo zobraziť."
 
-#: includes/campaign_preview_item.php:396
+#: includes/campaign_preview_item.php:375
 msgid "Loading post title..."
 msgstr "Načítava sa názov článku…"
 
-#: includes/campaign_preview_item.php:400
+#: includes/campaign_preview_item.php:379
 msgid "Loading post content..."
 msgstr "Načítava sa obsah článku…"
 
@@ -3197,7 +3291,7 @@ msgstr "Stĺpce."
 #: includes/campaigns_list_help.php:25
 msgid "The name you gave it. Hover to show the quick actions underneath."
 msgstr ""
-"Názov, ktorý si jej dal. Prejdi naň myšou a pod ním sa ukážu rýchle akcie."
+"Názov, ktorý si jej dal. Prejdite naň myšou a pod ním sa ukážu rýchle akcie."
 
 #: includes/campaigns_list_help.php:27
 msgid "The post type and status every new entry is published with."
@@ -3208,7 +3302,7 @@ msgid ""
 "Useful when add-ons give you more campaign types. You can hide this column "
 "in Screen Options."
 msgstr ""
-"Užitočné, keď ti rozšírenia dajú viac typov kampaní. Tento stĺpec môžeš "
+"Užitočné, keď vám rozšírenia dajú viac typov kampaní. Tento stĺpec môžete "
 "skryť v Nastaveniach obrazovky."
 
 #: includes/campaigns_list_help.php:31
@@ -3284,7 +3378,7 @@ msgid ""
 "Professional feature. Exports this campaign to a file you can import into "
 "another WordPress site."
 msgstr ""
-"Funkcia Professional. Vyexportuje túto kampaň do súboru, ktorý môžeš "
+"Funkcia Professional. Vyexportuje túto kampaň do súboru, ktorý môžete "
 "importovať na inej webovej stránke WordPress."
 
 #: includes/campaigns_list_help.php:73
@@ -3294,7 +3388,7 @@ msgstr "Spustenie viacerých kampaní naraz."
 #: includes/campaigns_list_help.php:77
 msgid "Tick the checkbox in the first column of each campaign you want to run."
 msgstr ""
-"Zaškrtni políčko v prvom stĺpci pri každej kampani, ktorú chceš spustiť."
+"Zaškrtnite políčko v prvom stĺpci pri každej kampani, ktorú chcete spustiť."
 
 #: includes/campaigns_list_help.php:79
 msgid "The orange button starts the run, which can take a long time."
@@ -3318,7 +3412,7 @@ msgstr "„Presunúť do koša“ odstráni všetky vybrané kampane naraz."
 
 #: includes/campaigns_list_help.php:99
 msgid "Select the campaigns, choose the action and click Apply."
-msgstr "Vyber kampane, zvoľ akciu a klikni na Použiť."
+msgstr "Vyberte kampane, zvoľte akciu a kliknite na Použiť."
 
 #: includes/class-tour-helper.php:104 includes/debug_page.php:2957
 msgid "Feeds"
@@ -3920,7 +4014,7 @@ msgstr "PHP Max Input Vars:"
 
 #: includes/debug_page.php:1746
 msgid "How many variables your server accepts in a single request."
-msgstr "Koľko premenných prijme tvoj server v jednej požiadavke."
+msgstr "Koľko premenných prijme váte server v jednej požiadavke."
 
 #: includes/debug_page.php:1760
 msgid "%1$s - Recommended Value: %2$s."
@@ -3939,7 +4033,7 @@ msgid ""
 "How many seconds your site may spend on a single operation before the server "
 "stops it."
 msgstr ""
-"Koľko sekúnd môže tvoja webová stránka stráviť jednou operáciou, kým ju "
+"Koľko sekúnd môže vaša webová stránka stráviť jednou operáciou, kým ju "
 "server ukončí."
 
 #. translators: %1$s current Time limit value. %2$s URL.
@@ -3958,7 +4052,7 @@ msgstr "sekúnd maximálneho času behu je potrebných."
 #: includes/debug_page.php:1806 includes/debug_page.php:1888
 #: includes/debug_page.php:1926
 msgid "See: "
-msgstr "Pozri: "
+msgstr "Pozrite: "
 
 #: includes/debug_page.php:1808
 msgid "Increasing max execution to PHP"
@@ -4021,7 +4115,7 @@ msgstr ""
 
 #: includes/debug_page.php:1922
 msgid "We recommend enabling ini_set() on your server. "
-msgstr "Odporúčame povoliť ini_set() na tvojom serveri. "
+msgstr "Odporúčame povoliť ini_set() na vašom serveri. "
 
 #: includes/debug_page.php:1942
 msgid "PHP Disabled Functions:"
@@ -4037,7 +4131,7 @@ msgstr "PHP Display Errors:"
 
 #: includes/debug_page.php:1954
 msgid "Shows or hides the PHP errors and warnings of your site."
-msgstr "Zobrazuje alebo skrýva chyby a varovania PHP tvojej stránky."
+msgstr "Zobrazuje alebo skrýva chyby a varovania PHP vašej stránky."
 
 #: includes/debug_page.php:1956
 msgid "On"
@@ -4556,7 +4650,7 @@ msgstr "Stiahnuť feed"
 #: includes/debug_page.php:3712 includes/wpematico_functions.php:2987
 #: includes/wpematico_functions.php:3012 includes/wpematico_functions.php:3208
 #: includes/wpematico_functions.php:3387 includes/xml-importer.php:361
-#: includes/settings/page.php:1265 includes/module/manager.php:265
+#: includes/settings/page.php:1277 includes/module/manager.php:265
 msgid "Permission denied"
 msgstr "Prístup zamietnutý"
 
@@ -4590,13 +4684,13 @@ msgstr "Skopírované do schránky."
 
 #: includes/debug_page.php:607 includes/tools_page.php:702
 #: includes/xml-importer.php:370 includes/settings/page.php:124
-#: includes/settings/page.php:1119
+#: includes/settings/page.php:1131
 msgid "Invalid request."
 msgstr "Neplatná požiadavka."
 
 #: includes/debug_page.php:607 includes/tools_page.php:702
 #: includes/wpematico_functions.php:3378 includes/xml-importer.php:370
-#: includes/settings/page.php:124 includes/settings/page.php:1119
+#: includes/settings/page.php:124 includes/settings/page.php:1131
 msgid "Invalid request"
 msgstr "Neplatná požiadavka"
 
@@ -4780,7 +4874,7 @@ msgid ""
 "Open URL loads the address in a new browser tab, as your browser sees it."
 msgstr ""
 "„Otvoriť adresu“ načíta adresu na novej karte prehliadača, tak ako ju vidí "
-"váš prehliadač."
+"váte prehliadač."
 
 #: includes/feed_list_help.php:62
 msgid "Searching and filtering."
@@ -5318,8 +5412,8 @@ msgstr "Ďakujeme, že ste aktualizovali na najnovšiu verziu!"
 msgid ""
 "WPeMatico %s is ready to make your autoblogging faster, safer, and better!"
 msgstr ""
-"WPeMatico %s je pripravený spraviť váš autoblogging rýchlejším, bezpečnejším "
-"a lepším!"
+"WPeMatico %s je pripravený spraviť váte autoblogging rýchlejším, "
+"bezpečnejším a lepším!"
 
 #: includes/lib/welcome.php:189
 msgid "What's New"
@@ -5663,7 +5757,7 @@ msgid ""
 "Your 5-star rating helps other people find the plugin, and your comment "
 "helps us make it better."
 msgstr ""
-"Vašich 5 hviezdičiek pomôže ostatným nájsť plugin a váš komentár pomôže nám "
+"Vašich 5 hviezdičiek pomôže ostatným nájsť plugin a váte komentár pomôže nám "
 "robiť ho lepším."
 
 #: includes/lib/welcome.php:481 includes/lib/welcome.php:696
@@ -5903,7 +5997,7 @@ msgid ""
 "problem or have a question, simply open a ticket using our "
 msgstr ""
 "Snažíme sa poskytovať čo najlepšiu podporu. Ak narazíte na problém alebo "
-"máte otázku, jednoducho otvorte ticket cez náš "
+"máte otázku, jednoducho otvorte ticket cez náte "
 
 #: includes/lib/welcome.php:697
 msgid "support form"
@@ -7023,7 +7117,7 @@ msgstr "bbPress"
 msgid "Publish the curated content as forum topics, or as replies to them."
 msgstr "Zverejňujte pripravený obsah ako témy fóra alebo ako odpovede v nich."
 
-#: includes/module/actions.php:162 includes/module/actions.php:201
+#: includes/module/actions.php:162 includes/module/actions.php:210
 msgid "Enable it in a campaign by choosing its Campaign Type."
 msgstr "Zapnite to v kampani výberom jej typu."
 
@@ -7068,29 +7162,41 @@ msgstr ""
 "skupiny a kampaň si zdroj nájde sama."
 
 #: includes/module/actions.php:195
+msgid "Publish the news of a Google News search, topic or publication."
+msgstr "Zverejňujte správy z vyhľadávania, témy alebo média Google News."
+
+#: includes/module/actions.php:199
+msgid ""
+"Adds Google News to the Campaign Type list. Paste the address of the search, "
+"topic or publication and the campaign finds its feed on its own."
+msgstr ""
+"Pridá Google News do zoznamu typov kampaní. Vložte adresu vyhľadávania, témy "
+"alebo média a kampaň si zdroj nájde sama."
+
+#: includes/module/actions.php:204
 msgid "Import videos from YouTube channels."
 msgstr "Importujte videá z kanálov YouTube."
 
-#: includes/module/actions.php:205
+#: includes/module/actions.php:214
 msgid ""
 "Assign categories automatically from the words found in the curated content."
 msgstr ""
 "Priraďujte kategórie automaticky podľa slov nájdených v pripravenom obsahu."
 
-#: includes/module/actions.php:209
+#: includes/module/actions.php:218
 msgid "Set the words and the category each one maps to in the Settings page."
 msgstr "Slová a kategóriu pre každé z nich nastavíte na stránke Nastavenia."
 
-#: includes/module/actions.php:213
+#: includes/module/actions.php:222
 msgid "Canonical URLs"
 msgstr "Kanonické URL"
 
-#: includes/module/actions.php:214
+#: includes/module/actions.php:223
 msgid ""
 "Credit the original article with a canonical URL on every imported post."
 msgstr "Uveďte pôvodný článok kanonickou adresou v každom importovanom článku."
 
-#: includes/module/actions.php:218
+#: includes/module/actions.php:227
 msgid ""
 "Tells search engines which is the original article, so the copy is not "
 "judged as duplicate content."
@@ -7098,15 +7204,15 @@ msgstr ""
 "Povie vyhľadávačom, ktorý článok je pôvodný, aby sa kópia nepovažovala za "
 "duplicitný obsah."
 
-#: includes/module/actions.php:222
+#: includes/module/actions.php:231
 msgid "Download Images"
 msgstr "Sťahovať obrázky"
 
-#: includes/module/actions.php:223
+#: includes/module/actions.php:232
 msgid "Download the images of each item into the WordPress Media Library."
 msgstr "Sťahujte obrázky každej položky do knižnice médií WordPressu."
 
-#: includes/module/actions.php:228
+#: includes/module/actions.php:237
 msgid ""
 "Turn it on here; the size, quality and naming options are in the Settings "
 "page."
@@ -7114,11 +7220,11 @@ msgstr ""
 "Zapnite to tu; možnosti veľkosti, kvality a pomenovania sú na stránke "
 "Nastavenia."
 
-#: includes/module/actions.php:231
+#: includes/module/actions.php:240
 msgid "Featured Images"
 msgstr "Ilustračné obrázky"
 
-#: includes/module/actions.php:232
+#: includes/module/actions.php:241
 msgid ""
 "Give every imported post a featured image, taken from the first image of the "
 "item."
@@ -7126,7 +7232,7 @@ msgstr ""
 "Dajte každému importovanému článku ilustračný obrázok, vzatý z prvého "
 "obrázka položky."
 
-#: includes/module/actions.php:237
+#: includes/module/actions.php:246
 msgid ""
 "Each campaign can override it, and the Featured Image from URL module "
 "decides whether the image is downloaded or linked."
@@ -7134,23 +7240,23 @@ msgstr ""
 "Každá kampaň to môže prebiť a modul Ilustračný obrázok z URL rozhoduje, či "
 "sa obrázok stiahne alebo len odkáže."
 
-#: includes/module/actions.php:241
+#: includes/module/actions.php:250
 msgid "Email Notifications"
 msgstr "E-mailové upozornenia"
 
-#: includes/module/actions.php:242
+#: includes/module/actions.php:251
 msgid "Get an email report every time a campaign finishes a run."
 msgstr "Dostávajte e-mailovú správu vždy, keď kampaň dokončí beh."
 
-#: includes/module/actions.php:248
+#: includes/module/actions.php:257
 msgid "Deactivate in each campaign by clearing the email field."
 msgstr "V každej kampani to vypnete vyprázdnením poľa s e-mailom."
 
-#: includes/module/actions.php:251
+#: includes/module/actions.php:260
 msgid "Random Galleries"
 msgstr "Náhodné galérie"
 
-#: includes/module/actions.php:252
+#: includes/module/actions.php:261
 msgid ""
 "Group images by topic and give each post a featured image picked at random "
 "from its gallery."
@@ -7158,36 +7264,36 @@ msgstr ""
 "Zoskupte obrázky podľa témy a dajte každému článku ilustračný obrázok "
 "vybraný náhodne z jeho galérie."
 
-#: includes/module/actions.php:258 includes/module/actions.php:269
-#: includes/module/actions.php:652 includes/module/actions.php:664
-#: includes/module/actions.php:687
+#: includes/module/actions.php:267 includes/module/actions.php:278
+#: includes/module/actions.php:661 includes/module/actions.php:673
+#: includes/module/actions.php:696
 msgid "Available in the Professional addon."
 msgstr "Dostupné v doplnku Professional."
 
-#: includes/module/actions.php:261
+#: includes/module/actions.php:270
 msgid "Random Rewrites"
 msgstr "Náhodné prepisy"
 
-#: includes/module/actions.php:262
+#: includes/module/actions.php:271
 msgid "Rewrite custom words randomly as synonyms."
 msgstr "Prepisujte zvolené slová náhodne synonymami."
 
-#: includes/module/actions.php:266
+#: includes/module/actions.php:275
 msgid ""
 "You must complete the words separated by comma and per line in the textarea."
 msgstr ""
 "Do textového poľa musíte zadať slová oddelené čiarkami, jeden riadok pre "
 "každú skupinu."
 
-#: includes/module/actions.php:310
+#: includes/module/actions.php:319
 msgid "Turning this off deactivates the %s plugin."
 msgstr "Vypnutím tohto sa deaktivuje plugin %s."
 
-#: includes/module/actions.php:312
+#: includes/module/actions.php:321
 msgid "The plugin is installed but not running. Turning this on activates %s."
 msgstr "Plugin je nainštalovaný, ale nebeží. Zapnutím tohto sa aktivuje %s."
 
-#: includes/module/actions.php:318
+#: includes/module/actions.php:327
 msgid ""
 "%s is not installed yet. Install it from here, free, and this switch turns "
 "it on."
@@ -7195,59 +7301,59 @@ msgstr ""
 "%s ešte nie je nainštalovaný. Nainštalujte ho odtiaľto zadarmo a tento "
 "prepínač ho zapne."
 
-#: includes/module/actions.php:322
+#: includes/module/actions.php:331
 msgid "Needs the %s addon. Get it at etruel.com and this switch enables it."
 msgstr ""
 "Vyžaduje doplnok %s. Získajte ho na etruel.com a tento prepínač ho zapne."
 
-#: includes/module/actions.php:361 includes/module/actions.php:435
+#: includes/module/actions.php:370 includes/module/actions.php:444
 msgid ""
 "%s is installed but not active. Turn it on and this module becomes available."
 msgstr ""
 "%s je nainštalovaný, ale nie je aktívny. Zapnite ho a tento modul bude "
 "dostupný."
 
-#: includes/module/actions.php:420
+#: includes/module/actions.php:429
 msgid "It also needs the free %s plugin."
 msgstr "Potrebuje aj bezplatný plugin %s."
 
-#: includes/module/actions.php:440
+#: includes/module/actions.php:449
 msgid "Needs the free %s plugin, which is not installed yet."
 msgstr "Vyžaduje bezplatný plugin %s, ktorý ešte nie je nainštalovaný."
 
-#: includes/module/actions.php:441 includes/module/dashboard.php:62
+#: includes/module/actions.php:450 includes/module/dashboard.php:62
 #: includes/module/manager.php:194
 msgid "Install"
 msgstr "Nainštalovať"
 
-#: includes/module/actions.php:516
+#: includes/module/actions.php:525
 msgid "Delete Duplicates"
 msgstr "Mazanie duplicít"
 
-#: includes/module/actions.php:517
+#: includes/module/actions.php:526
 msgid "Automatically search and delete duplicated posts by name or content."
 msgstr ""
 "Automaticky vyhľadajte a zmažte duplicitné články podľa názvu alebo obsahu."
 
-#: includes/module/actions.php:522
+#: includes/module/actions.php:531
 msgid "Installs the free WP Delete Post Copies plugin from WordPress.org."
 msgstr "Nainštaluje bezplatný plugin WP Delete Post Copies z WordPress.org."
 
-#: includes/module/actions.php:526
+#: includes/module/actions.php:535
 msgid "WPeMatico Polylang"
 msgstr "WPeMatico Polylang"
 
-#: includes/module/actions.php:527
+#: includes/module/actions.php:536
 msgid ""
 "Assigns the imported posts to the right language on sites running Polylang."
 msgstr ""
 "Na stránkach s Polylangom priraďuje importované články správnemu jazyku."
 
-#: includes/module/actions.php:532
+#: includes/module/actions.php:541
 msgid "Installs the free WPeMatico Polylang plugin from WordPress.org."
 msgstr "Nainštaluje bezplatný plugin WPeMatico Polylang z WordPress.org."
 
-#: includes/module/actions.php:539
+#: includes/module/actions.php:548
 msgid ""
 "The addon files each imported post under a language, and languages only "
 "exist while Polylang runs."
@@ -7255,11 +7361,11 @@ msgstr ""
 "Doplnok zaraďuje každý importovaný článok pod jazyk a jazyky existujú len "
 "dovtedy, kým beží Polylang."
 
-#: includes/module/actions.php:544
+#: includes/module/actions.php:553
 msgid "RSS Items Aggregator"
 msgstr "Zberač položiek RSS"
 
-#: includes/module/actions.php:545
+#: includes/module/actions.php:554
 msgid ""
 "Also known as RSS Feed Reader: shows the items of several feeds inside one "
 "post or page."
@@ -7267,21 +7373,21 @@ msgstr ""
 "Známy aj ako RSS Feed Reader: zobrazí položky viacerých feedov v jednom "
 "článku alebo na jednej stránke."
 
-#: includes/module/actions.php:550
+#: includes/module/actions.php:559
 msgid "Installs the free WPeMatico RSS Feed Reader plugin from WordPress.org."
 msgstr ""
 "Nainštaluje bezplatný plugin WPeMatico RSS Feed Reader z WordPress.org."
 
-#: includes/module/actions.php:551
+#: includes/module/actions.php:560
 msgid "Requires WPeMatico RSS Feed Reader"
 msgstr "Vyžaduje WPeMatico RSS Feed Reader"
 
-#: includes/module/actions.php:561
+#: includes/module/actions.php:570
 msgid ""
 "Use the image at its original URL as featured image, without downloading it."
 msgstr "Použiť obrázok na jeho pôvodnej adrese ako ilustračný, bez sťahovania."
 
-#: includes/module/actions.php:568
+#: includes/module/actions.php:577
 msgid ""
 "Featured Images is off, so nothing picks the image to link — unless an addon "
 "such as Professional or Full Content supplies one."
@@ -7289,7 +7395,7 @@ msgstr ""
 "Ilustračné obrázky sú vypnuté, takže nič nevyberá obrázok na odkázanie — "
 "pokiaľ ho nedodá doplnok ako Professional či Full Content."
 
-#: includes/module/actions.php:569
+#: includes/module/actions.php:578
 msgid ""
 "The image is linked from its original site instead of being downloaded, so "
 "it takes up no space in your Media Library."
@@ -7297,7 +7403,7 @@ msgstr ""
 "Obrázok sa odkazuje z pôvodnej stránky namiesto sťahovania, takže nezaberá "
 "miesto vo vašej knižnici médií."
 
-#: includes/module/actions.php:578
+#: includes/module/actions.php:587
 msgid ""
 "WPeMatico stores the image URL on each post; that plugin is what turns it "
 "into the featured image WordPress shows."
@@ -7305,21 +7411,21 @@ msgstr ""
 "WPeMatico ukladá adresu obrázka ku každému článku; až ten plugin z nej "
 "spraví ilustračný obrázok, ktorý WordPress zobrazí."
 
-#: includes/module/actions.php:589
+#: includes/module/actions.php:598
 msgid "Auto Delete"
 msgstr "Automatické mazanie"
 
-#: includes/module/actions.php:590
+#: includes/module/actions.php:599
 msgid ""
 "Delete the posts of the categories you choose once they reach a given age."
 msgstr "Mažte články vybraných kategórií, len čo dosiahnu určitý vek."
 
-#: includes/module/actions.php:596
+#: includes/module/actions.php:605
 msgid "Helpful if you want to remove stale or old items automatically."
 msgstr ""
 "Hodí sa, ak chcete staré alebo neaktuálne položky odstraňovať automaticky."
 
-#: includes/module/actions.php:604
+#: includes/module/actions.php:613
 msgid ""
 "The addon extends that free plugin, the same one the Delete Duplicates card "
 "installs."
@@ -7327,11 +7433,11 @@ msgstr ""
 "Doplnok rozširuje ten bezplatný plugin, ten istý, ktorý inštaluje karta "
 "Mazanie duplicít."
 
-#: includes/module/actions.php:609
+#: includes/module/actions.php:618
 msgid "Polyglot"
 msgstr "Polyglot"
 
-#: includes/module/actions.php:610
+#: includes/module/actions.php:619
 msgid ""
 "Translate the fetched content with any of several free and paid translation "
 "engines."
@@ -7339,101 +7445,101 @@ msgstr ""
 "Prekladajte stiahnutý obsah ktorýmkoľvek z viacerých bezplatných aj "
 "platených prekladových nástrojov."
 
-#: includes/module/actions.php:617
+#: includes/module/actions.php:626
 msgid "Requires WPeMatico Polyglot addon"
 msgstr "Vyžaduje doplnok WPeMatico Polyglot"
 
-#: includes/module/actions.php:621
+#: includes/module/actions.php:630
 msgid "GPT Spinner AI"
 msgstr "GPT Spinner AI"
 
-#: includes/module/actions.php:622
+#: includes/module/actions.php:631
 msgid "Rewrite the fetched content automatically through an AI or spinner API."
 msgstr ""
 "Prepisujte stiahnutý obsah automaticky cez API umelej inteligencie alebo "
 "spinnera."
 
-#: includes/module/actions.php:629
+#: includes/module/actions.php:638
 msgid "Requires AI addon"
 msgstr "Vyžaduje doplnok s umelou inteligenciou"
 
-#: includes/module/actions.php:633
+#: includes/module/actions.php:642
 msgid "Full Contents"
 msgstr "Celý obsah"
 
-#: includes/module/actions.php:634
+#: includes/module/actions.php:643
 msgid "Enable full content extraction from each source website."
 msgstr "Zapnite získavanie celého obsahu z každej zdrojovej stránky."
 
-#: includes/module/actions.php:641
+#: includes/module/actions.php:650
 msgid "Requires WPeMatico Full Content addon"
 msgstr "Vyžaduje doplnok WPeMatico Full Content"
 
-#: includes/module/actions.php:645
+#: includes/module/actions.php:654
 msgid "Bulk Add Sources"
 msgstr "Hromadné pridávanie zdrojov"
 
-#: includes/module/actions.php:646
+#: includes/module/actions.php:655
 msgid ""
 "Paste or upload a list of feeds to add many sources to a campaign at once."
 msgstr ""
 "Vložte alebo nahrajte zoznam feedov a pridajte do kampane veľa zdrojov naraz."
 
-#: includes/module/actions.php:653
+#: includes/module/actions.php:662
 msgid "A Professional feature, you can activate it here."
 msgstr "Funkcia Professional, môžete ju zapnúť tu."
 
-#: includes/module/actions.php:657
+#: includes/module/actions.php:666
 msgid "Keyword Filtering"
 msgstr "Filtrovanie podľa kľúčových slov"
 
-#: includes/module/actions.php:658
+#: includes/module/actions.php:667
 msgid ""
 "Keep or skip each item by the keywords found in its title or its content."
 msgstr ""
 "Ponechajte alebo preskočte každú položku podľa kľúčových slov v jej názve "
 "alebo obsahu."
 
-#: includes/module/actions.php:668
+#: includes/module/actions.php:677
 msgid "Facebook Source"
 msgstr "Zdroj Facebook"
 
-#: includes/module/actions.php:669
+#: includes/module/actions.php:678
 msgid "Import content from Facebook profiles and groups."
 msgstr "Importujte obsah z profilov a skupín na Facebooku."
 
-#: includes/module/actions.php:676
+#: includes/module/actions.php:685
 msgid "Requires Facebook Campaign addon"
 msgstr "Vyžaduje doplnok Facebook Campaign"
 
-#: includes/module/actions.php:680
+#: includes/module/actions.php:689
 msgid "Export/Import Campaigns"
 msgstr "Export/import kampaní"
 
-#: includes/module/actions.php:681
+#: includes/module/actions.php:690
 msgid "Migrate campaigns between sites."
 msgstr "Presúvajte kampane medzi stránkami."
 
-#: includes/module/actions.php:691
+#: includes/module/actions.php:700
 msgid "Feed Creator"
 msgstr "Feed Creator"
 
-#: includes/module/actions.php:692
+#: includes/module/actions.php:701
 msgid ""
 "Generate custom RSS feeds from external webpages to fetch with WPeMatico."
 msgstr ""
 "Vytvárajte vlastné RSS feedy z externých webových stránok, ktoré potom "
 "WPeMatico stiahne."
 
-#: includes/module/actions.php:699
+#: includes/module/actions.php:708
 msgid "Requires \"Make Me Feed\" addon"
 msgstr "Vyžaduje doplnok „Make Me Feed“"
 
-#: includes/module/actions.php:703
+#: includes/module/actions.php:712
 msgid "Publish To Email"
 msgstr "Zverejňovanie e-mailom"
 
-#: includes/module/actions.php:704
+#: includes/module/actions.php:713
 msgid ""
 "Mail each post of a campaign to an address that publishes it, instead of "
 "publishing it here or as well as here."
@@ -7441,15 +7547,15 @@ msgstr ""
 "Pošlite každý článok kampane na adresu, ktorá ho zverejní — namiesto "
 "zverejnenia tu alebo popri ňom."
 
-#: includes/module/actions.php:711
+#: includes/module/actions.php:720
 msgid "Requires Email Campaign addon"
 msgstr "Vyžaduje doplnok Email Campaign"
 
-#: includes/module/actions.php:715
+#: includes/module/actions.php:724
 msgid "Better Excerpts"
 msgstr "Lepšie zhrnutia"
 
-#: includes/module/actions.php:716
+#: includes/module/actions.php:725
 msgid ""
 "Cut the excerpt at the length you set and back to the end of the last whole "
 "sentence, never mid-word."
@@ -7457,15 +7563,15 @@ msgstr ""
 "Skráťte zhrnutie na nastavenú dĺžku a späť po koniec poslednej celej vety, "
 "nikdy uprostred slova."
 
-#: includes/module/actions.php:723
+#: includes/module/actions.php:732
 msgid "Requires Better Excerpts addon"
 msgstr "Vyžaduje doplnok Better Excerpts"
 
-#: includes/module/actions.php:727
+#: includes/module/actions.php:736
 msgid "Synchronizer"
 msgstr "Synchronizer"
 
-#: includes/module/actions.php:728
+#: includes/module/actions.php:737
 msgid ""
 "Update the posts you already imported when the source article changes, "
 "instead of publishing a duplicate."
@@ -7473,15 +7579,15 @@ msgstr ""
 "Aktualizujte už importované články, keď sa zdrojový článok zmení, namiesto "
 "zverejnenia duplicitu."
 
-#: includes/module/actions.php:735
+#: includes/module/actions.php:744
 msgid "Requires Synchronizer addon"
 msgstr "Vyžaduje doplnok Synchronizer"
 
-#: includes/module/actions.php:739
+#: includes/module/actions.php:748
 msgid "Manual Fetching"
 msgstr "Ručné sťahovanie"
 
-#: includes/module/actions.php:740
+#: includes/module/actions.php:749
 msgid ""
 "See the items each feed will bring, and publish the ones you choose one by "
 "one or in bulk."
@@ -7489,15 +7595,15 @@ msgstr ""
 "Pozrite, aké položky prinesie každý feed, a zvolené zverejnite po jednej "
 "alebo hromadne."
 
-#: includes/module/actions.php:747
+#: includes/module/actions.php:756
 msgid "Requires Manual Fetching addon"
 msgstr "Vyžaduje doplnok Manual Fetching"
 
-#: includes/module/actions.php:751
+#: includes/module/actions.php:760
 msgid "Exporter"
 msgstr "Exporter"
 
-#: includes/module/actions.php:752
+#: includes/module/actions.php:761
 msgid ""
 "Export your posts to a file on a schedule, in the format your template "
 "defines, by download, folder, FTP or SSH."
@@ -7505,15 +7611,15 @@ msgstr ""
 "Exportujte svoje články do súboru podľa plánu, vo formáte, ktorý určuje vaša "
 "šablóna, stiahnutím, do priečinka, cez FTP alebo SSH."
 
-#: includes/module/actions.php:759
+#: includes/module/actions.php:768
 msgid "Requires Exporter addon"
 msgstr "Vyžaduje doplnok Exporter"
 
-#: includes/module/actions.php:763
+#: includes/module/actions.php:772
 msgid "Office"
 msgstr "Office"
 
-#: includes/module/actions.php:764
+#: includes/module/actions.php:773
 msgid ""
 "Publish posts from the .docx and PDF files in a folder of your server, with "
 "their text and their images."
@@ -7521,32 +7627,32 @@ msgstr ""
 "Zverejňujte články zo súborov .docx a PDF v priečinku na vašom serveri, aj s "
 "textom a obrázkami."
 
-#: includes/module/actions.php:771
+#: includes/module/actions.php:780
 msgid "Requires Office Campaign addon"
 msgstr "Vyžaduje doplnok Office Campaign"
 
-#: includes/module/actions.php:779
+#: includes/module/actions.php:788
 msgid "Rewrite Rules"
 msgstr "Pravidlá prepisu"
 
-#: includes/module/actions.php:780
+#: includes/module/actions.php:789
 msgid "Search and replace words or HTML in the fetched content, per campaign."
 msgstr ""
 "Vyhľadávajte a nahrádzajte slová alebo HTML v stiahnutom obsahu, pre každú "
 "kampaň zvlášť."
 
-#: includes/module/actions.php:787
+#: includes/module/actions.php:796
 msgid "Customer Support"
 msgstr "Zákaznícka podpora"
 
-#: includes/module/actions.php:788
+#: includes/module/actions.php:797
 msgid ""
 "Free setup assistance and troubleshooting, or step up to Premium Support."
 msgstr ""
 "Bezplatná pomoc s nastavením a riešením problémov, alebo prejdite na "
 "prémiovú podporu."
 
-#: includes/module/actions.php:796
+#: includes/module/actions.php:805
 msgid "Requires registration at etruel.com"
 msgstr "Vyžaduje registráciu na etruel.com"
 
@@ -7863,7 +7969,7 @@ msgstr "Načítať stránku nastavení WPeMatica"
 
 #: includes/plugin_functions.php:340
 msgid "Take a look at all the bundled add-ons"
-msgstr "Pozri sa na všetky rozšírenia v balíku"
+msgstr "Pozrite sa na všetky rozšírenia v balíku"
 
 #: includes/plugin_functions.php:340 includes/settings/widgets.php:377
 msgid "Go Perfect"
@@ -7972,7 +8078,7 @@ msgstr "Ak je zvuk vnútri značky %s, odstráni sa aj ten odkaz."
 
 #: includes/settings/help.php:109
 msgid "Turn it off if the audios stop playing."
-msgstr "Vypni to, ak sa zvuky prestanú prehrávať."
+msgstr "Vypnite to, ak sa zvuky prestanú prehrávať."
 
 #: includes/settings/help.php:114
 msgid "Global settings for videos"
@@ -7983,7 +8089,7 @@ msgid ""
 "A copy of every video found in the feed item (only in %s tags) is saved to "
 "your Uploads folder. Off, videos stay on the source server."
 msgstr ""
-"Kópia každého videa z položky feedu (len v značkách %s) sa uloží do tvojho "
+"Kópia každého videa z položky feedu (len v značkách %s) sa uloží do vášho "
 "priečinka nahratých súborov. Vypnuté, videá zostávajú na serveri zdroja."
 
 #: includes/settings/help.php:121
@@ -8015,7 +8121,7 @@ msgstr "Ak je video vnútri značky %s, odstráni sa aj ten odkaz."
 
 #: includes/settings/help.php:138
 msgid "Turn it off if the videos stop playing."
-msgstr "Vypni to, ak sa videá prestanú prehrávať."
+msgstr "Vypnite to, ak sa videá prestanú prehrávať."
 
 #: includes/settings/help.php:143
 msgid "Enable features"
@@ -8025,7 +8131,7 @@ msgstr "Zapnúť funkcie"
 msgid ""
 "Each one adds its own box to every campaign. Leave off what you do not use."
 msgstr ""
-"Každá pridá do všetkých kampaní vlastný box. Čo nepoužívaš, nechaj vypnuté."
+"Každá pridá do všetkých kampaní vlastný box. Čo nepoužívaš, nechajte vypnuté."
 
 #: includes/settings/help.php:152
 msgid ""
@@ -8042,8 +8148,8 @@ msgid ""
 "channel or group. Paste the address and the campaign finds its feed on its "
 "own."
 msgstr ""
-"Pridá Vimeo do zoznamu typov kampaní, aby si mohol publikovať videá "
-"používateľa, kanála alebo skupiny na Vimeu. Vlož adresu a kampaň si kanál "
+"Pridá Vimeo do zoznamu typov kampaní, aby ste mohli publikovať videá "
+"používateľa, kanála alebo skupiny na Vimeu. Vložte adresu a kampaň si kanál "
 "nájde sama."
 
 #: includes/settings/help.php:157
@@ -8054,11 +8160,34 @@ msgstr ""
 "Vimeo zverejňuje posledných 10 videí z každého zdroja. Ak Vimeo nepoužívate, "
 "nechajte to vypnuté: typ kampane sa vôbec nenačíta."
 
-#: includes/settings/help.php:160 includes/settings/page.php:737
+#: includes/settings/help.php:160
+msgid "Google News campaign type"
+msgstr "Typ kampane Google News"
+
+#: includes/settings/help.php:161
+msgid ""
+"Adds Google News to the campaign type list, to publish the news of a search, "
+"a topic or a publication. Paste the address and the campaign finds its feed "
+"on its own."
+msgstr ""
+"Pridá Google News do zoznamu typov kampaní, aby ste mohli publikovať správy "
+"z vyhľadávania, témy alebo média. Vložte adresu a kampaň si kanál nájde sama."
+
+#: includes/settings/help.php:162
+msgid ""
+"Each item brings the headline, the date and the name of the publication, and "
+"links to Google News. Leave this off if you do not use Google News: the "
+"campaign type is not loaded at all."
+msgstr ""
+"Každá položka prináša titulok, dátum a názov média a odkazuje na Google "
+"News. Ak Google News nepoužívate, nechajte to vypnuté: typ kampane sa vôbec "
+"nenačíta."
+
+#: includes/settings/help.php:165 includes/settings/page.php:749
 msgid "Canonical URL to the source"
 msgstr "Kanonická adresa na zdroj"
 
-#: includes/settings/help.php:161
+#: includes/settings/help.php:166
 msgid ""
 "Each imported post declares the original article as its canonical URL. It "
 "does not work on every server."
@@ -8066,31 +8195,31 @@ msgstr ""
 "Každý importovaný článok uvedie pôvodný článok ako svoju kanonickú adresu. "
 "Nefunguje na každom serveri."
 
-#: includes/settings/help.php:162
+#: includes/settings/help.php:167
 msgid ""
 "This tells search engines which copy of the article is the one to index, so "
 "your site is not penalised for duplicated content."
 msgstr ""
-"Vyhľadávačom to povie, ktorú kópiu článku majú indexovať, aby tvoja webová "
+"Vyhľadávačom to povie, ktorú kópiu článku majú indexovať, aby vaša webová "
 "stránka nebola penalizovaná za duplicitný obsah."
 
-#: includes/settings/help.php:167
+#: includes/settings/help.php:172
 msgid "Force the bundled SimplePie library"
 msgstr "Vynútiť priloženú knižnicu SimplePie"
 
-#: includes/settings/help.php:168
+#: includes/settings/help.php:173
 msgid ""
 "Ignores the SimplePie that ships with WordPress. You only need this if that "
 "version gives you trouble."
 msgstr ""
-"Ignoruje SimplePie, ktorá prichádza s WordPressom. Potrebuješ to len vtedy, "
-"ak ti tá verzia robí problémy."
+"Ignoruje SimplePie, ktorá prichádza s WordPressom. Potrebujete to len vtedy, "
+"ak vám tá verzia robí problémy."
 
-#: includes/settings/help.php:171 includes/settings/page.php:428
+#: includes/settings/help.php:176 includes/settings/page.php:428
 msgid "Set SimplePie \"stupidly fast\""
 msgstr "Nastaviť SimplePie na „stupidly fast“"
 
-#: includes/settings/help.php:172
+#: includes/settings/help.php:177
 msgid ""
 "SimplePie gives up most of its sanitizing in exchange for speed: the feed "
 "content arrives with no parsers and no filters."
@@ -8098,53 +8227,53 @@ msgstr ""
 "SimplePie sa vzdá takmer všetkého čistenia výmenou za rýchlosť: obsah feedu "
 "príde bez parserov a bez filtrov."
 
-#: includes/settings/help.php:173
+#: includes/settings/help.php:178
 msgid ""
 "Nothing is stripped from the content: all HTML, styles and scripts come "
 "through. Use it only with feeds you trust; otherwise set the allowed tags "
 "and attributes below."
 msgstr ""
 "Z obsahu sa nič neodstráni: prejde všetko HTML, štýly aj skripty. Používaj "
-"to len pri feedoch, ktorým dôveruješ; inak nastav nižšie povolené značky a "
-"atribúty."
+"to len pri feedoch, ktorým dôverujete; inak nastavte nižšie povolené značky "
+"a atribúty."
 
-#: includes/settings/help.php:176 includes/settings/page.php:436
+#: includes/settings/help.php:181 includes/settings/page.php:436
 msgid "HTML tags SimplePie strips"
 msgstr "Značky HTML, ktoré SimplePie odstraňuje"
 
-#: includes/settings/help.php:177
+#: includes/settings/help.php:182
 msgid ""
 "SimplePie removes these tags from the feed content. Take one out to let it "
 "through, for example iframe to keep embedded videos."
 msgstr ""
-"SimplePie odstraňuje tieto značky z obsahu feedu. Vyber jednu zo zoznamu, "
+"SimplePie odstraňuje tieto značky z obsahu feedu. Vyberte jednu zo zoznamu, "
 "nech prejde, napríklad iframe kvôli vloženým videám."
 
-#: includes/settings/help.php:180 includes/settings/page.php:446
+#: includes/settings/help.php:185 includes/settings/page.php:446
 msgid "HTML attributes SimplePie strips"
 msgstr "Atribúty HTML, ktoré SimplePie odstraňuje"
 
-#: includes/settings/help.php:181
+#: includes/settings/help.php:186
 msgid ""
 "SimplePie removes these attributes from the tags in the content. Take one "
 "out to keep it, or add more to strip."
 msgstr ""
-"SimplePie odstraňuje aj tieto atribúty zo značiek v obsahu. Vyber jeden, "
-"nech zostane, alebo pridaj ďalšie."
+"SimplePie odstraňuje aj tieto atribúty zo značiek v obsahu. Vyberte jeden, "
+"nech zostane, alebo pridajte ďalšie."
 
-#: includes/settings/help.php:186 includes/settings/page.php:470
+#: includes/settings/help.php:191 includes/settings/page.php:470
 msgid "Let campaigns skip the content filters"
 msgstr "Nech kampane môžu obísť filtre obsahu"
 
-#: includes/settings/help.php:187
+#: includes/settings/help.php:192
 msgid ""
 "Adds a switch to every campaign that stores the feed content exactly as it "
 "comes, scripts included. Use it only with sources you trust."
 msgstr ""
 "Pridá do každej kampane prepínač, ktorý uloží obsah feedu presne tak, ako "
-"príde, aj so skriptmi. Používaj to len pri zdrojoch, ktorým dôveruješ."
+"príde, aj so skriptmi. Používaj to len pri zdrojoch, ktorým dôverujete."
 
-#: includes/settings/help.php:188
+#: includes/settings/help.php:193
 msgid ""
 "WordPress inserts the post as usual and the content is then written straight "
 "to the database, past every filter."
@@ -8152,15 +8281,15 @@ msgstr ""
 "WordPress vloží článok ako obvykle a obsah sa potom zapíše priamo do "
 "databázy, mimo každého filtra."
 
-#: includes/settings/help.php:189
+#: includes/settings/help.php:194
 msgid "See How WordPress Processes Post Content: "
 msgstr "Pozrite „How WordPress Processes Post Content“: "
 
-#: includes/settings/help.php:192
+#: includes/settings/help.php:197
 msgid "Timeout for a running campaign"
 msgstr "Časový limit bežiacej kampane"
 
-#: includes/settings/help.php:193
+#: includes/settings/help.php:198
 msgid ""
 "A campaign interrupted halfway stays marked as running until this many "
 "seconds have passed; then it runs again on its next schedule. Recommended: "
@@ -8169,44 +8298,44 @@ msgstr ""
 "Kampaň prerušená v polovici zostane označená ako bežiaca toľko sekúnd; potom "
 "sa spustí znova pri ďalšom rozvrhu. Odporúčané: 300."
 
-#: includes/settings/help.php:194
+#: includes/settings/help.php:199
 msgid "Set 0 to keep it blocked until you click \"Clear campaign\" yourself."
 msgstr ""
-"Nastav 0, nech zostane zablokovaná, kým sám neklikneš na „Uvoľniť kampaň“."
+"Nastavte 0, nech zostane zablokovaná, kým sám nekliknete na „Uvoľniť kampaň“."
 
-#: includes/settings/help.php:197
+#: includes/settings/help.php:202
 msgid "Pause after every post"
 msgstr "Pauza po každom článku"
 
-#: includes/settings/help.php:198
+#: includes/settings/help.php:203
 msgid ""
 "Waits this many seconds after inserting each post, to give the server a "
 "break on long runs. Leave 0 unless you have trouble."
 msgstr ""
 "Po vložení každého článku počká toľko sekúnd, aby server pri dlhých behoch "
-"trochu vydýchol. Nechaj 0, ak nemáš problémy."
+"trochu vydýchol. Nechajte 0, ak nemáte problémy."
 
-#: includes/settings/help.php:204
+#: includes/settings/help.php:209
 msgid ""
 "To publish items that share a title, use \"Allow duplicate titles\" instead "
 "and leave the hash check on."
 msgstr ""
-"Ak chceš publikovať položky s rovnakým názvom, použi „Povoliť duplicitné "
-"názvy“ a kontrolu podľa hashu nechaj zapnutú."
+"Ak chcete publikovať položky s rovnakým názvom, použite „Povoliť duplicitné "
+"názvy“ a kontrolu podľa hashu nechajte zapnutú."
 
-#: includes/settings/help.php:213 includes/settings/page.php:544
+#: includes/settings/help.php:218 includes/settings/page.php:544
 msgid "Do not save the plugin custom fields"
 msgstr "Neukladať vlastné polia pluginu"
 
-#: includes/settings/help.php:214
+#: includes/settings/help.php:219
 msgid ""
 "Saves database space and costs you the source permalink, the campaign each "
 "post came from and every bulk action based on it."
 msgstr ""
-"Ušetrí miesto v databáze a stojí ťa trvalý odkaz zdroja, informáciu, z "
+"Ušetrí miesto v databáze a stojí vás trvalý odkaz zdroja, informáciu, z "
 "ktorej kampane článok prišiel, a každú hromadnú akciu, ktorá na tom stojí."
 
-#: includes/settings/help.php:215
+#: includes/settings/help.php:220
 msgid ""
 "By default each published post carries three custom fields with the campaign "
 "and the source item. Turning this on does not delete the ones already saved."
@@ -8214,11 +8343,11 @@ msgstr ""
 "Štandardne nesie každý publikovaný článok tri vlastné polia s kampaňou a "
 "zdrojovou položkou. Zapnutie tejto voľby už uložené polia nevymaže."
 
-#: includes/settings/help.php:224 includes/settings/page.php:573
+#: includes/settings/help.php:229 includes/settings/page.php:573
 msgid "Disable WPeMatico schedules"
 msgstr "Vypnúť rozvrhy WPeMatica"
 
-#: includes/settings/help.php:225
+#: includes/settings/help.php:230
 msgid ""
 "No campaign runs on its own any more. You run them by hand or from an "
 "external cron, which is the recommended setup."
@@ -8226,11 +8355,11 @@ msgstr ""
 "Žiadna kampaň už nebeží sama. Spúšťaš ich ručne alebo z externého cronu, čo "
 "je odporúčané."
 
-#: includes/settings/help.php:228 includes/settings/page.php:607
+#: includes/settings/help.php:233 includes/settings/page.php:607
 msgid "Ask for a password on the external cron"
 msgstr "Pýtať heslo pri externom crone"
 
-#: includes/settings/help.php:229
+#: includes/settings/help.php:234
 msgid ""
 "Only a request carrying the code runs your campaigns. Off by default for "
 "backward compatibility, and strongly recommended."
@@ -8238,23 +8367,27 @@ msgstr ""
 "Kampane spustí len požiadavka, ktorá nesie kód. Štandardne vypnuté kvôli "
 "spätnej kompatibilite, ale veľmi odporúčané."
 
-#: includes/settings/help.php:230
+#: includes/settings/help.php:235
 msgid "While this is off, the password below is ignored."
 msgstr "Kým je toto vypnuté, heslo nižšie sa ignoruje."
 
-#: includes/settings/help.php:233
+#: includes/settings/help.php:238
 msgid "External cron password"
 msgstr "Heslo externého cronu"
 
-#: includes/settings/help.php:234
+#: includes/settings/help.php:239
 msgid "Any text you like. It travels in the cron address as ?code=your_code."
-msgstr "Akýkoľvek text. V adrese cronu cestuje ako ?code=tvoj_kod."
+msgstr "Akýkoľvek text. V adrese cronu cestuje ako ?code=vas_kod."
 
-#: includes/settings/help.php:237 includes/settings/page.php:627
+#: includes/settings/help.php:24
+msgid "Global settings for images"
+msgstr "Všeobecné nastavenia obrázkov"
+
+#: includes/settings/help.php:242 includes/settings/page.php:627
 msgid "Disable all WP_Cron"
 msgstr "Vypnúť celý WP_Cron"
 
-#: includes/settings/help.php:238
+#: includes/settings/help.php:243
 msgid ""
 "Stops every scheduled task on the site, WordPress own and other plugins "
 "included. Only do this if an external cron takes over."
@@ -8262,15 +8395,11 @@ msgstr ""
 "Zastaví všetky plánované úlohy stránky, vrátane úloh WordPressu a iných "
 "pluginov. Sprav to len vtedy, ak to preberie externý cron."
 
-#: includes/settings/help.php:24
-msgid "Global settings for images"
-msgstr "Všeobecné nastavenia obrázkov"
-
-#: includes/settings/help.php:241 includes/settings/page.php:564
+#: includes/settings/help.php:246 includes/settings/page.php:564
 msgid "Use ALTERNATE_WP_CRON"
 msgstr "Použiť ALTERNATE_WP_CRON"
 
-#: includes/settings/help.php:242
+#: includes/settings/help.php:247
 msgid ""
 "Some servers block the way WordPress triggers its schedules. This constant "
 "works around it on almost any server."
@@ -8278,69 +8407,70 @@ msgstr ""
 "Niektoré servery blokujú spôsob, akým WordPress spúšťa svoje rozvrhy. Táto "
 "konštanta to obíde takmer na každom serveri."
 
-#: includes/settings/help.php:245 includes/settings/page.php:657
-msgid "Log file for the external cron"
-msgstr "Súbor záznamu pre externý cron"
-
-#: includes/settings/help.php:246
-msgid ""
-"Writes a \"campaign title.txt.log\" file in the uploads folder with the "
-"steps of each external cron run. Useful while you set the cron up."
-msgstr ""
-"Zapíše do priečinka nahratých súborov súbor „názov kampane.txt.log“ s krokmi "
-"každého behu externého cronu. Užitočné, kým ho nastavuješ."
-
 #: includes/settings/help.php:25 includes/settings/help.php:86
 #: includes/settings/help.php:115
 msgid "These apply to every campaign, and each campaign can override them."
 msgstr "Platia pre každú kampaň a každá kampaň ich môže prepísať."
 
-#: includes/settings/help.php:251 includes/settings/page.php:896
+#: includes/settings/help.php:250 includes/settings/page.php:657
+msgid "Log file for the external cron"
+msgstr "Súbor záznamu pre externý cron"
+
+#: includes/settings/help.php:251
+msgid ""
+"Writes a \"campaign title.txt.log\" file in the uploads folder with the "
+"steps of each external cron run. Useful while you set the cron up."
+msgstr ""
+"Zapíše do priečinka nahratých súborov súbor „názov kampane.txt.log“ s krokmi "
+"každého behu externého cronu. Užitočné, kým ho nastavujete."
+
+#: includes/settings/help.php:256 includes/settings/page.php:908
 msgid "Campaign column in the posts lists"
 msgstr "Stĺpec kampane v zoznamoch článkov"
 
-#: includes/settings/help.php:252
+#: includes/settings/help.php:257
 msgid "Adds a column showing which campaign published each post."
 msgstr "Pridá stĺpec, ktorý ukazuje, ktorá kampaň publikovala každý článok."
 
-#: includes/settings/help.php:255 includes/settings/page.php:903
+#: includes/settings/help.php:260 includes/settings/page.php:915
 msgid "Position of that column"
 msgstr "Poloha tohto stĺpca"
 
-#: includes/settings/help.php:256
+#: includes/settings/help.php:261
 msgid "Where the campaign column sits among the others."
 msgstr "Kde stĺpec kampane stojí medzi ostatnými."
 
-#: includes/settings/help.php:259 includes/settings/page.php:916
+#: includes/settings/help.php:264 includes/settings/page.php:928
 msgid "Hide the campaign box in the post editor"
 msgstr "Skryť box kampane v editore článku"
 
-#: includes/settings/help.php:260
+#: includes/settings/help.php:265
 msgid "Removes the WPeMatico box that shows where an imported post came from."
 msgstr ""
 "Odstráni box WPeMatica, ktorý ukazuje, odkiaľ importovaný článok prišiel."
 
-#: includes/settings/help.php:263 includes/settings/page.php:925
+#: includes/settings/help.php:268 includes/settings/page.php:937
 msgid "Empty trash button on the lists"
 msgstr "Tlačidlo na vyprázdnenie koša v zoznamoch"
 
-#: includes/settings/help.php:264
+#: includes/settings/help.php:269
 msgid "Adds a button to empty the trash on the post types you choose."
-msgstr "Pridá tlačidlo na vyprázdnenie koša pri typoch obsahu, ktoré vyberieš."
+msgstr ""
+"Pridá tlačidlo na vyprázdnenie koša pri typoch obsahu, ktoré vyberiete."
 
-#: includes/settings/help.php:267 includes/settings/page.php:966
+#: includes/settings/help.php:272 includes/settings/page.php:978
 msgid "Hide the WP dashboard widget"
 msgstr "Skryť widget na nástenke"
 
-#: includes/settings/help.php:268
+#: includes/settings/help.php:273
 msgid "Removes the WPeMatico widget from the WordPress dashboard."
 msgstr "Odstráni widget WPeMatica z nástenky WordPressu."
 
-#: includes/settings/help.php:273 includes/settings/page.php:757
+#: includes/settings/help.php:278 includes/settings/page.php:769
 msgid "Do not check feeds before saving"
 msgstr "Nekontrolovať feedy pred uložením"
 
-#: includes/settings/help.php:274
+#: includes/settings/help.php:279
 msgid ""
 "Saving a campaign no longer tests each feed address first. The campaign "
 "saves faster and a broken address goes unnoticed until it runs."
@@ -8348,11 +8478,11 @@ msgstr ""
 "Pri ukladaní kampane sa už netestuje každá adresa feedu. Kampaň sa uloží "
 "rýchlejšie a pokazená adresa zostane nepovšimnutá až do spustenia."
 
-#: includes/settings/help.php:277 includes/settings/page.php:766
+#: includes/settings/help.php:282 includes/settings/page.php:778
 msgid "Enable \"Del hash\""
 msgstr "Zapnúť „Vymazať hash“"
 
-#: includes/settings/help.php:278
+#: includes/settings/help.php:283
 msgid ""
 "Adds a link on the campaigns list that clears the duplicate hashes of every "
 "feed in a campaign, so its items can be published again."
@@ -8360,88 +8490,77 @@ msgstr ""
 "Pridá do zoznamu kampaní odkaz, ktorý vymaže hashe duplicít všetkých feedov "
 "kampane, aby sa jej položky dali publikovať znova."
 
-#: includes/settings/help.php:281 includes/settings/page.php:775
+#: includes/settings/help.php:286 includes/settings/page.php:787
 msgid "Enable \"See last log\""
 msgstr "Zapnúť „Zobraziť posledný záznam“"
 
-#: includes/settings/help.php:282
+#: includes/settings/help.php:287
 msgid "Adds a link on the campaigns list that opens the log of the last run."
 msgstr ""
 "Pridá do zoznamu kampaní odkaz, ktorý otvorí záznam posledného spustenia."
 
-#: includes/settings/help.php:285 includes/settings/page.php:793
+#: includes/settings/help.php:290 includes/settings/page.php:805
 msgid "Hide the WPeMatico credits"
 msgstr "Skryť kredity WPeMatica"
 
-#: includes/settings/help.php:286
+#: includes/settings/help.php:291
 msgid "I would really appreciate you leaving the credits on."
 msgstr "Veľmi by som ocenil, keby si kredity nechal zapnuté."
 
-#: includes/settings/help.php:288 includes/settings/page.php:800
+#: includes/settings/help.php:293 includes/settings/page.php:812
 msgid ""
 "If you cannot show them, a minute of your time to %1$s write a 5 star review "
 "on WordPress %2$s means just as much. :-) Thanks."
 msgstr ""
-"Ak ich ukázať nemôžeš, minúta tvojho času na %1$s päťhviezdičkovú recenziu "
+"Ak ich ukázať nemôžete, minúta vášho času na %1$s päťhviezdičkovú recenziu "
 "na WordPresse %2$s znamená rovnako veľa. :-) Ďakujem."
 
-#: includes/settings/help.php:293 includes/settings/page.php:811
+#: includes/settings/help.php:298 includes/settings/page.php:823
 msgid "No description on auto categories"
 msgstr "Bez popisu pri automatických kategóriách"
 
-#: includes/settings/help.php:294
+#: includes/settings/help.php:299
 msgid ""
 "Categories created from now on are left without the \"Created by WPeMatico\" "
 "description. The ones already created keep theirs until you edit them."
 msgstr ""
 "Kategórie vytvorené odteraz zostanú bez popisu „Created by WPeMatico“. Tie "
-"už vytvorené si svoj ponechajú, kým ich neupravíš."
-
-#: includes/settings/help.php:297 includes/settings/page.php:821
-msgid "Do not load the Extensions page"
-msgstr "Nenačítavať stránku rozšírení"
-
-#: includes/settings/help.php:298
-msgid "The Extensions menu stops asking our site for the add-on catalogue."
-msgstr "Menu Rozšírenia si prestane pýtať katalóg z našej stránky."
-
-#: includes/settings/help.php:299
-msgid ""
-"You will see an empty page, or only the extensions you already have "
-"installed."
-msgstr ""
-"Uvidíš prázdnu stránku alebo len rozšírenia, ktoré už máš nainštalované."
+"už vytvorené si svoj ponechajú, kým ich neupravíte."
 
 #: includes/settings/help.php:30
 msgid ""
 "A copy of every image found in the feed item (only in %s tags) is saved to "
 "your Uploads folder. Off, images stay on the source server."
 msgstr ""
-"Kópia každého obrázka z položky feedu (len v značkách %s) sa uloží do tvojho "
+"Kópia každého obrázka z položky feedu (len v značkách %s) sa uloží do vášho "
 "priečinka nahratých súborov. Vypnuté, obrázky zostávajú na serveri zdroja."
 
-#: includes/settings/help.php:302 includes/settings/page.php:784
+#: includes/settings/help.php:302 includes/settings/page.php:833
+msgid "Do not load the Extensions page"
+msgstr "Nenačítavať stránku rozšírení"
+
+#: includes/settings/help.php:303
+msgid "The Extensions menu stops asking our site for the add-on catalogue."
+msgstr "Menu Rozšírenia si prestane pýtať katalóg z našej stránky."
+
+#: includes/settings/help.php:304
+msgid ""
+"You will see an empty page, or only the extensions you already have "
+"installed."
+msgstr ""
+"Uvidíte prázdnu stránku alebo len rozšírenia, ktoré už máte nainštalované."
+
+#: includes/settings/help.php:307 includes/settings/page.php:796
 msgid "Enable XML uploads"
 msgstr "Povoliť nahrávanie XML"
 
-#: includes/settings/help.php:303
+#: includes/settings/help.php:308
 msgid ""
 "Lets you upload XML files to the Media library, to use them in an XML "
 "campaign."
 msgstr ""
-"Umožní ti nahrávať súbory XML do knižnice médií a používať ich v XML kampani."
-
-#: includes/settings/help.php:306 includes/settings/page.php:830
-msgid "Decode HTML entities on publish"
-msgstr "Dekódovať entity HTML pri publikovaní"
-
-#: includes/settings/help.php:307
-msgid ""
-"Turns entities such as &amp;amp; back into their character before the post "
-"is saved. Useful with feeds that encode the content twice."
-msgstr ""
-"Premení entity ako &amp;amp; späť na ich znak, kým sa článok uloží. Užitočné "
-"pri feedoch, ktoré obsah kódujú dvakrát."
+"Umožní vám nahrávať súbory XML do knižnice médií a používať ich v XML "
+"kampani."
 
 #: includes/settings/help.php:31
 msgid ""
@@ -8449,31 +8568,43 @@ msgid ""
 "you lose the image the day the source removes it. Each campaign can set this "
 "on its own."
 msgstr ""
-"Odkazovanie na server zdroja šetrí miesto a zrýchľuje tvoje stránky, ale o "
-"obrázok prídeš v deň, keď ho zdroj odstráni. Každá kampaň si to môže "
+"Odkazovanie na server zdroja šetrí miesto a zrýchľuje vaše stránky, ale o "
+"obrázok prídete v deň, keď ho zdroj odstráni. Každá kampaň si to môže "
 "nastaviť sama."
 
+#: includes/settings/help.php:311 includes/settings/page.php:842
+msgid "Decode HTML entities on publish"
+msgstr "Dekódovať entity HTML pri publikovaní"
+
 #: includes/settings/help.php:312
+msgid ""
+"Turns entities such as &amp;amp; back into their character before the post "
+"is saved. Useful with feeds that encode the content twice."
+msgstr ""
+"Premení entity ako &amp;amp; späť na ich znak, kým sa článok uloží. Užitočné "
+"pri feedoch, ktoré obsah kódujú dvakrát."
+
+#: includes/settings/help.php:317
 msgid "Sender email"
 msgstr "E-mail odosielateľa"
 
-#: includes/settings/help.php:313
+#: includes/settings/help.php:318
 msgid "The address every email from this plugin is sent from."
 msgstr "Adresa, z ktorej odchádza každý e-mail tohto pluginu."
 
-#: includes/settings/help.php:316
+#: includes/settings/help.php:321
 msgid "Sender name"
 msgstr "Meno odosielateľa"
 
-#: includes/settings/help.php:317
+#: includes/settings/help.php:322
 msgid "The name shown next to that address in your inbox."
-msgstr "Meno zobrazené vedľa tejto adresy v tvojej schránke."
+msgstr "Meno zobrazené vedľa tejto adresy v vašej schránke."
 
-#: includes/settings/help.php:329
+#: includes/settings/help.php:334
 msgid "Features available with the Professional add-on."
 msgstr "Funkcie dostupné s rozšírením Professional."
 
-#: includes/settings/help.php:330
+#: includes/settings/help.php:335
 msgid ""
 "Publish or skip an item depending on the keywords found in its title or "
 "content."
@@ -8481,7 +8612,7 @@ msgstr ""
 "Publikovať alebo preskočiť položku podľa kľúčových slov v jej názve alebo "
 "obsahu."
 
-#: includes/settings/help.php:331
+#: includes/settings/help.php:336
 msgid ""
 "Cut, publish or skip an item depending on how many words or letters its "
 "content has."
@@ -8489,25 +8620,25 @@ msgstr ""
 "Skrátiť, publikovať alebo preskočiť položku podľa toho, koľko slov alebo "
 "písmen má jej obsah."
 
-#: includes/settings/help.php:332
+#: includes/settings/help.php:337
 msgid ""
 "Build the title of every post of a campaign from a template of your own."
 msgstr "Zostaviť názov každého článku kampane podľa vlastnej šablóny."
 
-#: includes/settings/help.php:333
+#: includes/settings/help.php:338
 msgid ""
 "Generates the tags of every post automatically. Each campaign can turn that "
 "off and use a list of tags you write instead."
 msgstr ""
 "Generuje značky každého článku automaticky. Každá kampaň to môže vypnúť a "
-"použiť zoznam značiek, ktorý napíšeš."
+"použiť zoznam značiek, ktorý napíšete."
 
-#: includes/settings/help.php:334
+#: includes/settings/help.php:339
 msgid "Add custom fields, with template tags as their value, to every post."
 msgstr ""
 "Pridá do každého článku vlastné polia, ktorých hodnotou sú značky šablóny."
 
-#: includes/settings/help.php:335
+#: includes/settings/help.php:340
 msgid ""
 "Full Content is the add-on that fetches the whole article from the source "
 "site when the feed only carries a summary."
@@ -8515,20 +8646,20 @@ msgstr ""
 "Full Content je rozšírenie, ktoré stiahne celý článok zo zdrojovej stránky, "
 "keď feed nesie len zhrnutie."
 
-#: includes/settings/help.php:336
+#: includes/settings/help.php:341
 msgid ""
 "Set an author per feed when editing a campaign. Feeds with no author of "
 "their own use the campaign author."
 msgstr ""
-"Pri úprave kampane nastav autora pre každý feed. Feedy bez vlastného autora "
-"použijú autora kampane."
+"Pri úprave kampane nastavte autora pre každý feed. Feedy bez vlastného "
+"autora použijú autora kampane."
 
-#: includes/settings/help.php:337
+#: includes/settings/help.php:342
 msgid ""
 "Paste a list of feed addresses, with or without author names, straight into "
 "the campaign."
 msgstr ""
-"Vlož zoznam adries feedov, s menami autorov alebo bez nich, priamo do "
+"Vložte zoznam adries feedov, s menami autorov alebo bez nich, priamo do "
 "kampane."
 
 #: includes/settings/help.php:35
@@ -8545,8 +8676,8 @@ msgid ""
 "Turn it off if the run is too slow. It has no effect when custom upload is "
 "on."
 msgstr ""
-"Vypni to, ak je spustenie príliš pomalé. Keď je zapnuté vlastné nahrávanie, "
-"nemá to účinok."
+"Vypnite to, ak je spustenie príliš pomalé. Keď je zapnuté vlastné "
+"nahrávanie, nemá to účinok."
 
 #: includes/settings/help.php:41
 msgid ""
@@ -8585,7 +8716,7 @@ msgid ""
 "Useful when your theme already prints the featured image and you would "
 "otherwise see it twice."
 msgstr ""
-"Užitočné, keď tvoja téma ilustračný obrázok už zobrazuje a inak by si ho "
+"Užitočné, keď vaša téma ilustračný obrázok už zobrazuje a inak by si ho "
 "videl dvakrát."
 
 #: includes/settings/help.php:71
@@ -8594,17 +8725,17 @@ msgid ""
 "all its image sizes. Generating them costs a lot of resources when many "
 "images arrive at once."
 msgstr ""
-"Vypni to, ak obrázky prestanú pribúdať, alebo ak potrebuješ, aby WordPress "
-"vytvoril všetky svoje veľkosti obrázkov. Ich tvorba stojí veľa zdrojov, keď "
-"príde veľa obrázkov naraz."
+"Vypnite to, ak obrázky prestanú pribúdať, alebo ak potrebujete, aby "
+"WordPress vytvoril všetky svoje veľkosti obrázkov. Ich tvorba stojí veľa "
+"zdrojov, keď príde veľa obrázkov naraz."
 
 #: includes/settings/help.php:80
 msgid ""
 "It adds one query per image, so turn it off if the run is too slow. It does "
 "not work on every server."
 msgstr ""
-"Pridá jeden dopyt na obrázok, takže to vypni, ak je spustenie príliš pomalé. "
-"Nefunguje na každom serveri."
+"Pridá jeden dopyt na obrázok, takže to vypnite, ak je spustenie príliš "
+"pomalé. Nefunguje na každom serveri."
 
 #: includes/settings/help.php:85
 msgid "Global settings for audios"
@@ -8615,7 +8746,7 @@ msgid ""
 "A copy of every audio found in the feed item (only in %s tags) is saved to "
 "your Uploads folder. Off, audios stay on the source server."
 msgstr ""
-"Kópia každého zvuku z položky feedu (len v značkách %s) sa uloží do tvojho "
+"Kópia každého zvuku z položky feedu (len v značkách %s) sa uloží do vášho "
 "priečinka nahratých súborov. Vypnuté, zvuky zostávajú na serveri zdroja."
 
 #: includes/settings/help.php:92
@@ -8623,7 +8754,7 @@ msgid ""
 "Linking to the source server saves space, but you lose the file the day the "
 "source removes it. Each campaign can set this on its own."
 msgstr ""
-"Odkazovanie na server zdroja šetrí miesto, ale o súbor prídeš v deň, keď ho "
+"Odkazovanie na server zdroja šetrí miesto, ale o súbor prídete v deň, keď ho "
 "zdroj odstráni. Každá kampaň si to môže nastaviť sama."
 
 #: includes/settings/help.php:96
@@ -8633,11 +8764,11 @@ msgid ""
 msgstr ""
 "Každý stiahnutý zvuk sa pridá do knižnice médií a pripojí k svojmu článku."
 
-#: includes/settings/page.php:1001
+#: includes/settings/page.php:1013
 msgid "Guided tours"
 msgstr "Prehliadky"
 
-#: includes/settings/page.php:1003
+#: includes/settings/page.php:1015
 msgid ""
 "Shows a short tour the first time you open each WPeMatico screen. Only for "
 "your user."
@@ -8645,23 +8776,23 @@ msgstr ""
 "Zobrazí krátku prehliadku, keď prvýkrát otvoríte každú obrazovku WPeMatico. "
 "Iba pre vášho používateľa."
 
-#: includes/settings/page.php:1034
+#: includes/settings/page.php:1046
 msgid "Highlights of the new release"
 msgstr "Najdôležitejšie z novej verzie"
 
-#: includes/settings/page.php:1035 includes/lib/licenses_handlers.php:405
+#: includes/settings/page.php:1047 includes/lib/licenses_handlers.php:405
 msgid "Version"
 msgstr "Verzia"
 
-#: includes/settings/page.php:1047
+#: includes/settings/page.php:1059
 msgid "Read more on wpematico.com"
 msgstr "Viac na wpematico.com"
 
-#: includes/settings/page.php:1049
+#: includes/settings/page.php:1061
 msgid "Your opinion about WPeMatico is very important to us."
-msgstr "Váš názor na WPeMatico je pre nás veľmi dôležitý."
+msgstr "Váte názor na WPeMatico je pre nás veľmi dôležitý."
 
-#: includes/settings/page.php:1050
+#: includes/settings/page.php:1062
 msgid ""
 "By rating WPeMatico RSS Feed Fetcher, you help the plugin creators to "
 "improve their work and help other users to find the software they need. You "
@@ -8672,29 +8803,25 @@ msgstr ""
 "a ostatným používateľom nájsť softvér, ktorý potrebujú. Recenziu môžete "
 "napísať na fóre WordPressu v jazyku, ktorý vám vyhovuje — vážime si to!"
 
-#: includes/settings/page.php:1051
+#: includes/settings/page.php:1063
 msgid "Rate us on WordPress"
 msgstr "Ohodnoťte nás na WordPresse"
 
-#: includes/settings/page.php:1053
+#: includes/settings/page.php:1065
 msgid "YES!"
 msgstr "ÁNO!"
 
-#: includes/settings/page.php:1074
+#: includes/settings/page.php:1086
 msgid "General Settings"
 msgstr "Všeobecné nastavenia"
 
-#: includes/settings/page.php:1175 includes/settings/page.php:1201
+#: includes/settings/page.php:1187 includes/settings/page.php:1213
 msgid "Save settings"
 msgstr "Uložiť nastavenia"
 
-#: includes/settings/page.php:1301
+#: includes/settings/page.php:1313
 msgid "Settings saved."
 msgstr "Nastavenia uložené."
-
-#: includes/settings/page.php:1324
-msgid "License keys saved."
-msgstr "Licenčné kľúče uložené."
 
 #: includes/settings/page.php:133 includes/lib/licenses_handlers.php:319
 msgid ""
@@ -8704,6 +8831,10 @@ msgstr ""
 "Sem zadáte licenčné kľúče niektorého z našich prémiových pluginov, ak nejaký "
 "aktivujete."
 
+#: includes/settings/page.php:1336
+msgid "License keys saved."
+msgstr "Licenčné kľúče uložené."
+
 #: includes/settings/page.php:134 includes/lib/licenses_handlers.php:320
 msgid "See some of the WPeMatico Add-ons in the"
 msgstr "Pozrite si niektoré doplnky WPeMatica v"
@@ -8711,8 +8842,8 @@ msgstr "Pozrite si niektoré doplnky WPeMatica v"
 #: includes/settings/page.php:164 includes/settings/page.php:289
 #: includes/settings/page.php:353 includes/settings/page.php:418
 #: includes/settings/page.php:460 includes/settings/page.php:554
-#: includes/settings/page.php:683 includes/settings/page.php:747
-#: includes/settings/page.php:840 includes/settings/page.php:886
+#: includes/settings/page.php:683 includes/settings/page.php:759
+#: includes/settings/page.php:852 includes/settings/page.php:898
 msgid "Click to toggle"
 msgstr "Kliknutím rozbalíte alebo zbalíte"
 
@@ -8736,7 +8867,7 @@ msgstr "Typy obrázkov vo WordPresse:"
 #: includes/settings/page.php:255 includes/settings/page.php:343
 #: includes/settings/page.php:408
 msgid "Click to restore the WordPress defaults."
-msgstr "Klikni a vrátia sa predvolené hodnoty WordPressu."
+msgstr "Kliknite a vrátia sa predvolené hodnoty WordPressu."
 
 #: includes/settings/page.php:256 includes/settings/page.php:344
 #: includes/settings/page.php:409
@@ -8746,7 +8877,7 @@ msgstr "Odporúčané:"
 #: includes/settings/page.php:256 includes/settings/page.php:344
 #: includes/settings/page.php:409
 msgid "Click to use the recommended values."
-msgstr "Klikni a použijú sa odporúčané hodnoty."
+msgstr "Kliknite a použijú sa odporúčané hodnoty."
 
 #: includes/settings/page.php:280
 msgid ""
@@ -8823,7 +8954,7 @@ msgstr "Nastavenia cronu a plánovača"
 
 #: includes/settings/page.php:587
 msgid "Set up a cron job that calls:"
-msgstr "Nastav cron úlohu, ktorá volá:"
+msgstr "Nastavte cron úlohu, ktorá volá:"
 
 #: includes/settings/page.php:592
 msgid "URL:"
@@ -8831,7 +8962,7 @@ msgstr "URL:"
 
 #: includes/settings/page.php:613
 msgid "Click to use this random code."
-msgstr "Klikni a použije sa tento náhodný kód."
+msgstr "Kliknite a použije sa tento náhodný kód."
 
 #: includes/settings/page.php:614
 msgid "Any text you like."
@@ -8840,7 +8971,7 @@ msgstr "Akýkoľvek text."
 #: includes/settings/page.php:634
 msgid "To run the WordPress cron from outside, set up a cron job that calls:"
 msgstr ""
-"Ak chceš spúšťať cron WordPressu zvonku, nastav cron úlohu, ktorá volá:"
+"Ak chcete spúšťať cron WordPressu zvonku, nastavte cron úlohu, ktorá volá:"
 
 #: includes/settings/page.php:636
 msgid "or URL:"
@@ -8878,7 +9009,7 @@ msgstr "Zapnúť „Slová do kategórií“"
 msgid "Enable the Vimeo campaign type"
 msgstr "Zapnúť typ kampane Vimeo"
 
-#: includes/settings/page.php:724
+#: includes/settings/page.php:724 includes/settings/page.php:741
 msgid "PRO"
 msgstr "PRO"
 
@@ -8890,7 +9021,19 @@ msgstr ""
 "Čítanie Vimea cez jeho API — za hranicou 10 videí z feedu, s triedením a "
 "vašimi súkromnými videami — prichádza s Professional."
 
-#: includes/settings/page.php:750
+#: includes/settings/page.php:737
+msgid "Enable the Google News campaign type"
+msgstr "Zapnúť typ kampane Google News"
+
+#: includes/settings/page.php:741
+msgid ""
+"Linking each post to the article on the publication's own site, so Full "
+"Content reads it, comes with Professional."
+msgstr ""
+"Prepojenie každého článku s článkom na vlastnej stránke média, aby ho Full "
+"Content prečítal, prichádza s Professional."
+
+#: includes/settings/page.php:762
 msgid "Advanced Actions"
 msgstr "Pokročilé akcie"
 
@@ -8898,31 +9041,31 @@ msgstr "Pokročilé akcie"
 msgid "Invalid email."
 msgstr "Neplatný e-mail."
 
-#: includes/settings/page.php:843
+#: includes/settings/page.php:855
 msgid "Sending e-Mails"
 msgstr "Odosielanie e-mailov"
 
-#: includes/settings/page.php:848
+#: includes/settings/page.php:860
 msgid "Sender email:"
 msgstr "E-mail odosielateľa:"
 
-#: includes/settings/page.php:854
+#: includes/settings/page.php:866
 msgid "Sender name:"
 msgstr "Meno odosielateľa:"
 
-#: includes/settings/page.php:861
+#: includes/settings/page.php:873
 msgid "Sendmail path:"
 msgstr "Cesta k Sendmailu:"
 
-#: includes/settings/page.php:889
+#: includes/settings/page.php:901
 msgid "WordPress Backend Tools"
 msgstr "Nástroje správy WordPressu"
 
-#: includes/settings/page.php:931
+#: includes/settings/page.php:943
 msgid "Post types it applies to"
 msgstr "Typy obsahu, na ktoré sa to vzťahuje"
 
-#: includes/settings/page.php:972
+#: includes/settings/page.php:984
 msgid "Roles that see the dashboard widget:"
 msgstr "Role, ktoré vidia widget:"
 
@@ -8984,7 +9127,7 @@ msgstr "Ohodnoťte nás"
 
 #: includes/settings/widgets.php:235
 msgid "Thanks for using our plugin"
-msgstr "Ďakujeme, že používate náš plugin"
+msgstr "Ďakujeme, že používate náte plugin"
 
 #: includes/settings/widgets.php:236
 msgid "If you like this plugin, you can write a 5-star review on WordPress."
@@ -8994,7 +9137,7 @@ msgstr ""
 
 #: includes/settings/widgets.php:245
 msgid "Click here to rate plugin on WordPress"
-msgstr "Klikni sem a ohodnoť plugin na WordPresse"
+msgstr "Kliknite sem a ohodnoťte plugin na WordPresse"
 
 #: includes/settings/widgets.php:245
 msgid "Rate on WordPress"
@@ -9062,27 +9205,27 @@ msgstr "Priateľský k prekladom"
 
 #: includes/settings/widgets.php:323
 msgid "WPeMatico speaks your language"
-msgstr "WPeMatico hovorí tvojím jazykom"
+msgstr "WPeMatico hovorí vaším jazykom"
 
 #: includes/settings/widgets.php:324
 msgid ""
 "Ready in %1$s languages. The plugin follows whatever language you set in "
 "WordPress."
 msgstr ""
-"Pripravené v %1$s jazykoch. Plugin sa riadi jazykom, ktorý si nastavil vo "
+"Pripravené v %1$s jazykoch. Plugin sa riadi jazykom, ktorý ste nastavili vo "
 "WordPresse."
 
 #: includes/settings/widgets.php:326
 msgid "Miss your language?"
-msgstr "Chýba ten tvoj?"
+msgstr "Chýba ten váte?"
 
 #: includes/settings/widgets.php:327
 msgid ""
 "Yours is not among them? Ask for it. Tell us which language you work in and "
 "we will put WPeMatico into it."
 msgstr ""
-"Ten tvoj medzi nimi nie je? Vypýtaj si ho. Napíš nám, v akom jazyku "
-"pracuješ, a WPeMatico doň preložíme."
+"Ten váte medzi nimi nie je? Vypýtaj si ho. Napíšte nám, v akom jazyku "
+"pracujete, a WPeMatico doň preložíme."
 
 #: includes/settings/widgets.php:329
 msgid "Ask for your language"
@@ -9106,25 +9249,25 @@ msgstr "Každé rozšírenie WPeMatica, jedna licencia, jedno obnovenie."
 
 #: includes/smart_notifications.php:124
 msgid "Rate 5 stars on WordPress"
-msgstr "Daj 5 hviezdičiek na WordPresse"
+msgstr "Dajte 5 hviezdičiek na WordPresse"
 
 #: includes/smart_notifications.php:132
 msgid ""
 "The WPeMatico team works hard to give you excellent tools for autoblogging."
 msgstr ""
-"Tím WPeMatica tvrdo pracuje, aby ti dal vynikajúce nástroje na "
+"Tím WPeMatica tvrdo pracuje, aby vám dal vynikajúce nástroje na "
 "autoblogovanie."
 
 #: includes/smart_notifications.php:136
 msgid ""
 "So we would love you to write a %s in WordPress if you appreciate our plugin."
 msgstr ""
-"Preto nás veľmi poteší, ak napíšete %s na WordPresse, pokiaľ si náš plugin "
+"Preto nás veľmi poteší, ak napíšete %s na WordPresse, pokiaľ si náte plugin "
 "ceníte."
 
 #: includes/smart_notifications.php:138
 msgid "It only takes a minute: click the button below to open the form."
-msgstr "Trvá to len minútu: klikni na tlačidlo nižšie a otvorí sa formulár."
+msgstr "Trvá to len minútu: kliknite na tlačidlo nižšie a otvorí sa formulár."
 
 #: includes/smart_notifications.php:163
 msgid "Check all Campaign Options with the Wizard"
@@ -9136,7 +9279,7 @@ msgstr "Chcete sa uistiť, že nastavenia vašej kampane sú v poriadku?"
 
 #: includes/smart_notifications.php:171
 msgid "The wizard walks you through the boxes one by one."
-msgstr "Sprievodca ťa prevedie boxmi jedným po druhom."
+msgstr "Sprievodca vás prevedie boxmi jedným po druhom."
 
 #: includes/smart_notifications.php:202
 msgid "WPeMatico 2.7 series it's here!"
@@ -9740,15 +9883,15 @@ msgid ""
 "Imported posts will be saved as pending review, because your user cannot "
 "publish posts."
 msgstr ""
-"Importované príspevky sa uložia na schválenie, pretože váš používateľ nemôže "
-"publikovať príspevky."
+"Importované príspevky sa uložia na schválenie, pretože váte používateľ "
+"nemôže publikovať príspevky."
 
 #: includes/wpematico_functions.php:3317
 msgid ""
 "Imported posts will be attributed to you, because your user cannot assign "
 "posts to other users."
 msgstr ""
-"Importované príspevky budú priradené vám, pretože váš používateľ nemôže "
+"Importované príspevky budú priradené vám, pretože váte používateľ nemôže "
 "priraďovať príspevky iným používateľom."
 
 #: includes/wpematico_functions.php:3330
@@ -9758,7 +9901,7 @@ msgid ""
 "kept."
 msgstr ""
 "Importovaný obsah bude filtrovaný tak, ako WordPress filtruje vaše vlastné "
-"príspevky, pretože váš používateľ nemôže publikovať nefiltrované HTML. "
+"príspevky, pretože váte používateľ nemôže publikovať nefiltrované HTML. "
 "Niektoré vloženia sa nemusia zachovať."
 
 #: includes/wpematico_functions.php:3378
@@ -9852,7 +9995,7 @@ msgstr "Chyba: adresa feedu je prázdna."
 #: includes/xml-importer.php:417
 msgid ""
 "This file is an RSS feed: use the \"Feed\" campaign type instead of XML."
-msgstr "Tento súbor je RSS feed: použi typ kampane „Feed“ namiesto XML."
+msgstr "Tento súbor je RSS feed: použite typ kampane „Feed“ namiesto XML."
 
 #: includes/xml-importer.php:42
 msgid "XMLs"
@@ -9900,144 +10043,144 @@ msgstr "Obrázok príspevku"
 
 #: includes/xml-importer.php:501
 msgid "Select an XML node."
-msgstr "Vyber uzol XML."
+msgstr "Vyberte uzol XML."
 
 #: wpematico.php:52
 msgid "PHP 7.0 or higher needed!"
 msgstr "Vyžaduje PHP 7.0 alebo novšie!"
 
-#: wpematico_class.php:160 includes/wpematico_functions.php:3155
+#: wpematico_class.php:162 includes/wpematico_functions.php:3155
 msgid "Empty Trash"
 msgstr "Vyprázdniť kôš"
 
-#: wpematico_class.php:178
+#: wpematico_class.php:180
 msgid "There are no campaigns yet."
 msgstr "Zatiaľ nie sú žiadne kampane."
 
-#: wpematico_class.php:180
+#: wpematico_class.php:182
 msgid "You need to create a campaign to begin using WPeMatico."
 msgstr "Aby ste mohli začať používať WPeMatico, musíte vytvoriť kampaň."
 
-#: wpematico_class.php:182
+#: wpematico_class.php:184
 msgid ""
 "If you need help, check out the tips to get started with WPeMatico or just "
 msgstr ""
 "Ak potrebujete pomoc, pozrite si tipy pre začiatok s WPeMaticom alebo "
 "jednoducho "
 
-#: wpematico_class.php:183
+#: wpematico_class.php:185
 msgid "add New Campaign"
 msgstr "pridajte novú kampaň"
 
-#: wpematico_class.php:186 includes/lib/welcome.php:190
+#: wpematico_class.php:188 includes/lib/welcome.php:190
 msgid "Getting Started"
 msgstr "Začíname"
 
-#: wpematico_class.php:192 wpematico_class.php:353 wpematico_class.php:354
+#: wpematico_class.php:194 wpematico_class.php:355 wpematico_class.php:356
 #: includes/dashboard-widgets.php:552 includes/debug_page.php:2927
 msgid "Campaigns"
 msgstr "Kampane"
 
-#: wpematico_class.php:193 includes/tools_page.php:501
+#: wpematico_class.php:195 includes/tools_page.php:501
 #: includes/tools_page.php:665 includes/wp-backend-helpers.php:65
 msgid "Campaign"
 msgstr "Kampaň"
 
-#: wpematico_class.php:194
+#: wpematico_class.php:196
 msgid "Add New"
 msgstr "Pridať novú"
 
-#: wpematico_class.php:195
+#: wpematico_class.php:197
 msgid "Add New Campaign"
 msgstr "Pridať novú kampaň"
 
-#: wpematico_class.php:196
+#: wpematico_class.php:198
 msgid "Edit Campaign"
 msgstr "Upraviť kampaň"
 
-#: wpematico_class.php:197
+#: wpematico_class.php:199
 msgid "New Campaign"
 msgstr "Nová kampaň"
 
-#: wpematico_class.php:198
+#: wpematico_class.php:200
 msgid "All Campaigns"
 msgstr "Všetky kampane"
 
-#: wpematico_class.php:199
+#: wpematico_class.php:201
 msgid "View Campaign"
 msgstr "Zobraziť kampaň"
 
-#: wpematico_class.php:200
+#: wpematico_class.php:202
 msgid "Search Campaign"
 msgstr "Hľadať kampaň"
 
-#: wpematico_class.php:202
+#: wpematico_class.php:204
 msgid "No Campaign found in Trash"
 msgstr "V koši sa nenašla žiadna kampaň"
 
-#: wpematico_class.php:244
+#: wpematico_class.php:246
 msgid "Reset Menu Position"
 msgstr "Obnoviť pozíciu menu"
 
-#: wpematico_class.php:250
+#: wpematico_class.php:252
 msgid "Turn this on if the WPeMatico menu does not appear in the admin menu."
-msgstr "Zapni to, ak sa menu WPeMatica neobjaví v administrátorskom menu."
+msgstr "Zapnite to, ak sa menu WPeMatica neobjaví v administrátorskom menu."
 
-#: wpematico_class.php:255
+#: wpematico_class.php:257
 msgid "See local Addons in plugin list"
 msgstr "Zobraziť lokálne pluginy v zozname pluginov"
 
-#: wpematico_class.php:261
+#: wpematico_class.php:263
 msgid ""
 "Turn this on to list the add-ons on your Plugins page, like any other plugin."
 msgstr ""
-"Zapni to, nech sa rozšírenia vypisujú na tvojej stránke Pluginy, ako každý "
+"Zapnite to, nech sa rozšírenia vypisujú na vašej stránke Pluginy, ako každý "
 "iný plugin."
 
-#: wpematico_class.php:266
+#: wpematico_class.php:268
 msgid "Hide Reviews on Settings"
 msgstr "Skryť recenzie v nastaveniach"
 
-#: wpematico_class.php:272
+#: wpematico_class.php:274
 msgid ""
 "Turn this on if the Settings page comes out incomplete because your server "
 "cannot read external addresses."
 msgstr ""
-"Zapni to, ak stránka nastavení vychádza neúplná, pretože tvoj server nevie "
+"Zapnite to, ak stránka nastavení vychádza neúplná, pretože váte server nevie "
 "čítať externé adresy."
 
-#: wpematico_class.php:310
+#: wpematico_class.php:312
 msgid ""
 "If the WPeMatico menu is missing, another plugin or your theme has taken its "
 "position."
 msgstr ""
-"Ak menu WPeMatica chýba, jeho miesto zabral iný plugin alebo tvoja téma."
+"Ak menu WPeMatica chýba, jeho miesto zabral iný plugin alebo vaša téma."
 
-#: wpematico_class.php:311
+#: wpematico_class.php:313
 msgid ""
 "Tick \"Reset Menu Position\" to move the menu to the end of the WordPress "
 "menu."
 msgstr ""
-"Zaškrtni „Obnoviť polohu menu“, nech sa menu presunie na koniec menu "
+"Zaškrtnite „Obnoviť polohu menu“, nech sa menu presunie na koniec menu "
 "WordPressu."
 
-#: wpematico_class.php:313
+#: wpematico_class.php:315
 msgid ""
 "A Settings page that does not render fully usually means your server cannot "
 "reach external pages."
 msgstr ""
-"Stránka nastavení, ktorá sa nezobrazí celá, zvyčajne znamená, že tvoj server "
+"Stránka nastavení, ktorá sa nezobrazí celá, zvyčajne znamená, že váte server "
 "nedosiahne na externé stránky."
 
-#: wpematico_class.php:314
+#: wpematico_class.php:316
 msgid ""
 "Tick \"Hide Reviews on Settings\" to show a plain link to the reviews page "
 "instead."
 msgstr ""
-"Zaškrtni „Skryť recenzie v nastaveniach“, nech sa namiesto nich zobrazí "
+"Zaškrtnite „Skryť recenzie v nastaveniach“, nech sa namiesto nich zobrazí "
 "jednoduchý odkaz na stránku recenzií."
 
-#: wpematico_class.php:318
+#: wpematico_class.php:320
 msgid ""
 "You must click the Save Changes button at the bottom of the screen for new "
 "settings to take effect."
@@ -10045,39 +10188,39 @@ msgstr ""
 "Aby nové nastavenia začali platiť, musíte dole na obrazovke stlačiť tlačidlo "
 "Uložiť zmeny."
 
-#: wpematico_class.php:331 wpematico_class.php:332
+#: wpematico_class.php:333 wpematico_class.php:334
 msgid "WPeMatico"
 msgstr "WPeMatico"
 
-#: wpematico_class.php:343
+#: wpematico_class.php:345
 msgid "WPeMatico Dashboard"
 msgstr "Nástenka WPeMatico"
 
-#: wpematico_class.php:344 includes/module/dashboard.php:106
+#: wpematico_class.php:346 includes/module/dashboard.php:106
 msgid "Dashboard"
 msgstr "Nástenka"
 
-#: wpematico_class.php:368 wpematico_class.php:369
+#: wpematico_class.php:370 wpematico_class.php:371
 #: includes/dashboard-widgets.php:554 includes/plugin_functions.php:339
-#: includes/settings/functions.php:43 includes/settings/page.php:1078
-#: includes/settings/page.php:1151 includes/module/dashboard.php:32
+#: includes/settings/functions.php:43 includes/settings/page.php:1090
+#: includes/settings/page.php:1163 includes/module/dashboard.php:32
 #: includes/module/manager.php:187
 msgid "Settings"
 msgstr "Nastavenia"
 
-#: wpematico_class.php:379 wpematico_class.php:380 includes/tools_tabs.php:17
+#: wpematico_class.php:381 wpematico_class.php:382 includes/tools_tabs.php:17
 msgid "Tools"
 msgstr "Nástroje"
 
-#: wpematico_class.php:397 wpematico_class.php:406
+#: wpematico_class.php:399 wpematico_class.php:408
 msgid "Add-ons"
 msgstr "Rozšírenia"
 
-#: wpematico_class.php:398 includes/addons_page.php:1461
+#: wpematico_class.php:400 includes/addons_page.php:1461
 msgid "WPeMatico Addons"
 msgstr "Rozšírenia WPeMatica"
 
-#: wpematico_class.php:407 includes/class-tour-helper.php:224
+#: wpematico_class.php:409 includes/class-tour-helper.php:224
 #: includes/plugin_functions.php:360
 msgid "Extensions"
 msgstr "Rozšírenia"

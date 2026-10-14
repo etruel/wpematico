@@ -228,13 +228,20 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 
 > See all detailed changelog at [WPeMatico Releases](https://wpematico.com/releases/)
 
-= 2.9.1 – Oct 12, 2026 =
+= 2.9.1 – Oct 14, 2026 =
 
+> _**Recommended security update for all users.**_
+> _With the default settings, the content of every imported post now follows the same HTML rules WordPress applies to the posts of your authors. Text, images, galleries, videos, audio, tables and formatting are published as the feed sends them; scripts, forms and inline SVG icons inside the feed content are left out, and social network posts keep their official embed. Your post template and your rewrites are published exactly as you wrote them._
+
+* **Security:** Imported content is checked against the HTML WordPress allows in a post, the same way for a scheduled run, an external cron or a manual "Run Now". This covers the content, the title, the excerpt and every post template tag that carries text from the feed, and the campaign log shows the titles and addresses it quotes from feeds as plain text.
+* **Improved:** Posts from social networks inside a feed's content — X, Instagram, Threads, TikTok, Bluesky, Reddit, Pinterest, Tumblr and Facebook — are published with each network's official embed.
+* **Performance:** Images that the source site loads lazily are published with their real address, so every visit loads each image with a single request.
 * **New:** Google News campaign type. Publish the news of a Google News search, topic or publication: paste the address from your browser and the campaign finds its feed on its own. Each post gets the headline as the publication wrote it, and the name and the address of the publication are saved with the post and ready for the post template as `{source_name}` and `{source_url}`. Switch it on from its card in the Dashboard. With WPeMatico Professional each post links to the article on the publication's own site.
 * **New:** Six more languages. WPeMatico now also speaks Japanese, Brazilian Portuguese, Italian, Polish, Turkish and Vietnamese: every screen, tooltip, Help tab and campaign log line.
 * **Improved:** German, French, Dutch, Greek, Persian, Slovak, Romanian, Arabic, Chinese and the Latin American Spanish translations now use the official WordPress wording of each language, so WPeMatico reads like the rest of your admin.
 * **Improved:** The WPeMatico menu stays open on Campaigns while you edit a campaign.
 * **For developers:** the `wpematico_item_permalink` filter sets the address a post is read from and linked to, once per item about to be published.
+* **For developers:** the `wpematico_feed_allowed_html` filter sets the tags and attributes an imported post keeps, and `wpematico_feed_embed_scripts` the social network scripts it may load.
 
 = 2.9 – Oct 8, 2026 =
 
@@ -562,6 +569,9 @@ For the changelog of earlier versions, please refer to changelog.md file or [the
 
 
 == Upgrade Notice ==
+
+= 2.9.1 =
+Recommended security update. Using WPeMatico Full Content or GPT Spinner? Update them first: WPeMatico 2.9.1 works with Full Content 2.9.5 and GPT Spinner 3.5.3 or later.
 
 = 2.9 =
 Major update. Update your WPeMatico add-ons first: WPeMatico 2.9 needs the add-on versions released with it, which also run on WPeMatico 2.8.27.

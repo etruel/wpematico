@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPeMatico 2.9\n"
 "Report-Msgid-Bugs-To: https://etruel.com/my-account/support/\n"
-"POT-Creation-Date: 2026-10-01 01:06+0000\n"
+"POT-Creation-Date: 2026-10-14 19:25+0000\n"
 "PO-Revision-Date: 2026-09-26 21:08\n"
 "Last-Translator: Etruel Developments <translations@etruel.com>\n"
 "Language-Team: Etruel Developments <translations@etruel.com>\n"
@@ -409,7 +409,7 @@ msgstr "Λεπτομέρειες"
 msgid "WPeMatico Addons "
 msgstr "Πρόσθετα WPeMatico "
 
-#: includes/addons_page.php:1516
+#: includes/addons_page.php:1516 includes/addons_page.php:1528
 msgid "Inactive &mdash; Now part of WPeMatico"
 msgstr "Ανενεργό &mdash; πλέον μέρος του WPeMatico"
 
@@ -477,8 +477,8 @@ msgstr "Αγορά από το κατάστημα του etruel"
 msgid "Activate %s on this site"
 msgstr "Ενεργοποίηση του %s σε αυτόν τον ιστότοπο"
 
-#: includes/addons_page.php:744 includes/module/actions.php:362
-#: includes/module/actions.php:436 includes/module/dashboard.php:64
+#: includes/addons_page.php:744 includes/module/actions.php:371
+#: includes/module/actions.php:445 includes/module/dashboard.php:64
 msgid "Activate"
 msgstr "Ενεργοποίηση"
 
@@ -486,7 +486,7 @@ msgstr "Ενεργοποίηση"
 msgid "See details and prices on etruel's store"
 msgstr "Δείτε λεπτομέρειες και τιμές στο κατάστημα του etruel"
 
-#: includes/addons_page.php:762 includes/module/actions.php:305
+#: includes/addons_page.php:762 includes/module/actions.php:314
 #: includes/module/dashboard.php:55 includes/module/manager.php:130
 #: includes/module/manager.php:151 includes/module/manager.php:156
 msgid "Installed"
@@ -530,6 +530,106 @@ msgstr "Το επιλεγμένο πρόσθετο διαγράφηκε."
 #: includes/addons_page.php:923
 msgid "The selected add-ons have been deleted."
 msgstr "Τα επιλεγμένα πρόσθετα διαγράφηκαν."
+
+#: includes/campaign-types/googlo_news.php:174
+msgid "%s is not a Google News address."
+msgstr "Το %s δεν είναι διεύθυνση του Google News."
+
+#: includes/campaign-types/googlo_news.php:327
+msgid "Google News Campaign Type."
+msgstr "Τύπος καμπάνιας Google News."
+
+#: includes/campaign-types/googlo_news.php:328
+msgid ""
+"Paste the address of a Google News search, topic or publication as your "
+"browser shows it, and the campaign finds its feed on its own:"
+msgstr ""
+"Επικολλήστε τη διεύθυνση μιας αναζήτησης, ενός θέματος ή ενός μέσου του "
+"Google News όπως τη δείχνει το πρόγραμμα περιήγησής σας, και η καμπάνια "
+"βρίσκει μόνη της τη ροή:"
+
+#: includes/campaign-types/googlo_news.php:332
+msgid ""
+"Each item brings the headline, the date and the name of the publication, and "
+"links to Google News."
+msgstr ""
+"Κάθε στοιχείο φέρνει τον τίτλο, την ημερομηνία και το όνομα του μέσου, και "
+"συνδέει στο Google News."
+
+#: includes/campaign-types/googlo_news.php:333
+msgid ""
+"The name and the address of the publication are saved with each post, and "
+"the post template takes them as {source_name} and {source_url}."
+msgstr ""
+"Το όνομα και η διεύθυνση του μέσου αποθηκεύονται με κάθε άρθρο, και το "
+"πρότυπο του άρθρου τα παίρνει ως {source_name} και {source_url}."
+
+#: includes/campaign-types/googlo_news.php:336
+msgid "Publication in the title."
+msgstr "Μέσο στον τίτλο."
+
+#: includes/campaign-types/googlo_news.php:337
+msgid ""
+"Google News ends every headline with the name of the publication. The "
+"campaign takes it off; tick this to keep it."
+msgstr ""
+"Το Google News τελειώνει κάθε τίτλο με το όνομα του μέσου. Η καμπάνια το "
+"αφαιρεί· επιλέξτε αυτό για να το κρατήσετε."
+
+#: includes/campaign-types/googlo_news.php:340
+msgid "Related coverage."
+msgstr "Σχετική κάλυψη."
+
+#: includes/campaign-types/googlo_news.php:341
+msgid ""
+"On a topic, Google News lists other articles about the same story under each "
+"headline. Tick this to add that list to the post."
+msgstr ""
+"Σε ένα θέμα, το Google News παραθέτει κάτω από κάθε τίτλο άλλα άρθρα για την "
+"ίδια είδηση. Επιλέξτε αυτό για να προστεθεί αυτή η λίστα στο άρθρο."
+
+#: includes/campaign-types/googlo_news.php:352
+msgid "Google News Campaign Options"
+msgstr "Επιλογές καμπάνιας Google News"
+
+#: includes/campaign-types/googlo_news.php:373
+msgid "Keep the name of the publication at the end of the title"
+msgstr "Διατήρηση του ονόματος του μέσου στο τέλος του τίτλου"
+
+#: includes/campaign-types/googlo_news.php:375
+msgid "Add the related coverage Google News lists under the headline"
+msgstr ""
+"Προσθήκη της σχετικής κάλυψης που παραθέτει το Google News κάτω από τον τίτλο"
+
+#: includes/campaign-types/googlo_news.php:390
+msgid "Original article"
+msgstr "Αρχικό άρθρο"
+
+#: includes/campaign-types/googlo_news.php:391
+#: includes/campaign-types/vimeo.php:395
+msgid "PRO Feature"
+msgstr "Λειτουργία PRO"
+
+#: includes/campaign-types/googlo_news.php:395
+msgid "Link each post to the article on the publication's own site"
+msgstr "Σύνδεση κάθε άρθρου με το άρθρο στον ιστότοπο του μέσου"
+
+#: includes/campaign-types/googlo_news.php:399
+msgid "Skip the item when its article is not found"
+msgstr "Παράλειψη του στοιχείου όταν δεν βρίσκεται το άρθρο του"
+
+#: includes/campaign-types/googlo_news.php:402
+msgid ""
+"Professional looks each headline up on the site of its publication, so the "
+"source link, the canonical URL and Full Content work on the article itself."
+msgstr ""
+"Το Professional αναζητά κάθε τίτλο στον ιστότοπο του μέσου του, ώστε ο "
+"σύνδεσμος πηγής, το κανονικό URL και το Full Content να δουλεύουν πάνω στο "
+"ίδιο το άρθρο."
+
+#: includes/campaign-types/googlo_news.php:61 includes/module/actions.php:194
+msgid "Google News"
+msgstr "Google News"
 
 #: includes/campaign-types/vimeo.php:258
 msgid "Parsing Vimeo video and feed item contents."
@@ -620,10 +720,6 @@ msgstr "Χρήση μόνο ως χαρακτηριστική εικόνα"
 msgid "Vimeo API"
 msgstr "API του Vimeo"
 
-#: includes/campaign-types/vimeo.php:395
-msgid "PRO Feature"
-msgstr "Λειτουργία PRO"
-
 #: includes/campaign-types/vimeo.php:399
 msgid "Fetch through the Vimeo API instead of the feed."
 msgstr "Λήψη μέσω του API του Vimeo αντί για τη ροή."
@@ -648,11 +744,11 @@ msgstr "Απόρριψη αυτής της ειδοποίησης."
 
 #: includes/campaign_edit.php:126
 msgid "Type at least one feed address."
-msgstr "Γράψε τουλάχιστον μία διεύθυνση ροής."
+msgstr "Γράψτε τουλάχιστον μία διεύθυνση ροής."
 
 #: includes/campaign_edit.php:127
 msgid "Type the new feed addresses."
-msgstr "Γράψε τις νέες διευθύνσεις ροής."
+msgstr "Γράψτε τις νέες διευθύνσεις ροής."
 
 #: includes/campaign_edit.php:128 includes/campaigns_list.php:315
 msgid "Running Campaign..."
@@ -660,11 +756,11 @@ msgstr "Εκτέλεση καμπάνιας…"
 
 #: includes/campaign_edit.php:129
 msgid "Save the campaign before running it"
-msgstr "Αποθήκευσε την καμπάνια πριν την εκτελέσεις"
+msgstr "Αποθηκεύστε την καμπάνια πριν την εκτελέσεις"
 
 #: includes/campaign_edit.php:130
 msgid "Save the campaign before this action"
-msgstr "Αποθήκευσε την καμπάνια πριν από αυτή την ενέργεια"
+msgstr "Αποθηκεύστε την καμπάνια πριν από αυτή την ενέργεια"
 
 #: includes/campaign_edit.php:131
 msgid "Are you sure you want to reset this campaign?"
@@ -697,7 +793,7 @@ msgstr "Φόρτωση…"
 
 #: includes/campaign_edit.php:144
 msgid "Update the campaign to save your changes."
-msgstr "Ενημέρωσε την καμπάνια για να αποθηκευτούν οι αλλαγές σου."
+msgstr "Ενημερώστε την καμπάνια για να αποθηκευτούν οι αλλαγές σας."
 
 #: includes/campaign_edit.php:146
 msgid "Public"
@@ -709,7 +805,7 @@ msgstr "Περιγραφή καμπάνιας"
 
 #: includes/campaign_edit.php:149
 msgid "Notes for yourself about this campaign."
-msgstr "Σημειώσεις δικές σου για αυτή την καμπάνια."
+msgstr "Σημειώσεις δικές σας για αυτή την καμπάνια."
 
 #: includes/campaign_edit.php:153 includes/campaigns_list.php:321
 msgid "Hiding..."
@@ -760,7 +856,7 @@ msgstr "Ανανεώστε τον περιηγητή σας και δοκιμά�
 #: includes/debug_page.php:1096 includes/debug_page.php:3712
 #: includes/wpematico_functions.php:2987 includes/wpematico_functions.php:3012
 #: includes/wpematico_functions.php:3208 includes/wpematico_functions.php:3387
-#: includes/xml-importer.php:361 includes/settings/page.php:1265
+#: includes/xml-importer.php:361 includes/settings/page.php:1277
 msgid "You are not allowed to do this."
 msgstr "Δεν επιτρέπεται να το κάνετε αυτό."
 
@@ -810,7 +906,7 @@ msgstr "Έτοιμα προγράμματα"
 
 #: includes/campaign_edit_functions.php:1025
 msgid "Pick one to fill in the fields below."
-msgstr "Διάλεξε ένα και τα πεδία παρακάτω συμπληρώνονται."
+msgstr "Διαλέξτε ένα και τα πεδία παρακάτω συμπληρώνονται."
 
 #: includes/campaign_edit_functions.php:1038
 msgid "Minutes: "
@@ -935,7 +1031,7 @@ msgid ""
 "Install it from Plugins &rsaquo; Add New, activate it, and come back to this "
 "campaign."
 msgstr ""
-"Εγκατάστησέ το από Πρόσθετα &rsaquo; Προσθήκη νέου, ενεργοποίησέ το και "
+"Εγκαταστήστε το από Πρόσθετα &rsaquo; Προσθήκη νέου, ενεργοποιήστε το και "
 "γύρνα σε αυτή την καμπάνια."
 
 #: includes/campaign_edit_functions.php:1267
@@ -943,8 +1039,8 @@ msgid ""
 "Pick a forum and each item becomes a topic inside it. Pick none and each "
 "item creates its own forum."
 msgstr ""
-"Διάλεξε ένα φόρουμ και κάθε στοιχείο γίνεται θέμα μέσα του. Αν δεν διαλέξεις "
-"κανένα, κάθε στοιχείο φτιάχνει το δικό του φόρουμ."
+"Διαλέξτε ένα φόρουμ και κάθε στοιχείο γίνεται θέμα μέσα του. Αν δεν "
+"διαλέξεις κανένα, κάθε στοιχείο φτιάχνει το δικό του φόρουμ."
 
 #: includes/campaign_edit_functions.php:1269
 #: includes/campaign_edit_functions.php:1270
@@ -988,7 +1084,7 @@ msgstr "Ετικέτες:"
 
 #: includes/campaign_edit_functions.php:1337
 msgid "Separate the tags with commas."
-msgstr "Χώρισε τις ετικέτες με κόμματα."
+msgstr "Χωρίστε τις ετικέτες με κόμματα."
 
 #: includes/campaign_edit_functions.php:1363 includes/campaign_help.php:339
 msgid "Add auto categories"
@@ -1094,7 +1190,7 @@ msgstr "Προεπισκόπηση καμπάνιας"
 msgid "Feed (default)"
 msgstr "Ροή (προεπιλογή)"
 
-#: includes/campaign_edit_functions.php:226 includes/module/actions.php:194
+#: includes/campaign_edit_functions.php:226 includes/module/actions.php:203
 msgid "YouTube"
 msgstr "YouTube"
 
@@ -1124,7 +1220,7 @@ msgstr "Δημιουργία ετικετών"
 msgid ""
 "Replace words or phrases with your own text, or turn a word into a link."
 msgstr ""
-"Αντικαθιστά λέξεις ή φράσεις με δικό σου κείμενο, ή μετατρέπει μια λέξη σε "
+"Αντικαθιστά λέξεις ή φράσεις με δικό σας κείμενο, ή μετατρέπει μια λέξη σε "
 "σύνδεσμο."
 
 #: includes/campaign_edit_functions.php:28
@@ -1212,8 +1308,8 @@ msgstr "Έλεγχος διπλότυπων"
 msgid ""
 "Build every post around the text the feed brings, adding content of your own."
 msgstr ""
-"Χτίσε κάθε άρθρο γύρω από το κείμενο που φέρνει η ροή, προσθέτοντας δικό σου "
-"περιεχόμενο."
+"Χτίστε κάθε άρθρο γύρω από το κείμενο που φέρνει η ροή, προσθέτοντας δικό "
+"σας περιεχόμενο."
 
 #: includes/campaign_edit_functions.php:444
 msgid "Use custom posts template"
@@ -1362,7 +1458,7 @@ msgid ""
 "To add a gallery of three columns with every image of the post, above that "
 "link:"
 msgstr ""
-"Για να προσθέσεις πάνω από αυτόν τον σύνδεσμο μια συλλογή τριών στηλών με "
+"Για να προσθέσετε πάνω από αυτόν τον σύνδεσμο μια συλλογή τριών στηλών με "
 "όλες τις εικόνες του άρθρου:"
 
 #: includes/campaign_edit_functions.php:515 includes/campaign_help.php:302
@@ -1378,12 +1474,12 @@ msgid ""
 "To show the videos or audios of the post as a player, the playlist shortcode "
 "does the same for media files:"
 msgstr ""
-"Για να δείξεις τα βίντεο ή τους ήχους του άρθρου σαν player, το shortcode "
+"Για να δείξετε τα βίντεο ή τους ήχους του άρθρου σαν player, το shortcode "
 "playlist κάνει το ίδιο με τα αρχεία πολυμέσων:"
 
 #: includes/campaign_edit_functions.php:518 includes/campaign_help.php:305
 msgid "Read more at"
-msgstr "Διάβασε περισσότερα στο"
+msgstr "Διαβάστε περισσότερα στο"
 
 #: includes/campaign_edit_functions.php:518 includes/campaign_help.php:305
 msgid "How to use the Post template feature"
@@ -1463,7 +1559,7 @@ msgid "%s has to be installed and activated for this to work."
 msgstr "Το %s πρέπει να είναι εγκατεστημένο και ενεργό για να δουλέψει αυτό."
 
 #: includes/campaign_edit_functions.php:615 includes/campaign_help.php:160
-#: includes/settings/help.php:60 includes/module/actions.php:560
+#: includes/settings/help.php:60 includes/module/actions.php:569
 msgid "Featured Image from URL"
 msgstr "Featured Image from URL"
 
@@ -1557,7 +1653,7 @@ msgid "Remove link to source videos"
 msgstr "Αφαίρεση του συνδέσμου προς τα βίντεο της πηγής"
 
 #: includes/campaign_edit_functions.php:775 includes/campaign_help.php:237
-#: includes/settings/help.php:201 includes/settings/page.php:498
+#: includes/settings/help.php:206 includes/settings/page.php:498
 msgid "Allow duplicate posts"
 msgstr "Να επιτρέπονται διπλότυπα άρθρα"
 
@@ -1568,8 +1664,8 @@ msgid ""
 "leave this one alone."
 msgstr ""
 "Με τους δύο ελέγχους κλειστούς, κάθε στοιχείο δημοσιεύεται ξανά σε κάθε "
-"εκτέλεση, για πάντα. Για να δημοσιεύεις στοιχεία με ίδιο τίτλο, "
-"χρησιμοποίησε το «Να επιτρέπονται διπλότυποι τίτλοι» και άφησε αυτό ήσυχο."
+"εκτέλεση, για πάντα. Για να δημοσιεύετε στοιχεία με ίδιο τίτλο, "
+"χρησιμοποιήστε το «Να επιτρέπονται διπλότυποι τίτλοι» και αφήστε αυτό ήσυχο."
 
 #: includes/campaign_edit_functions.php:779 includes/settings/page.php:506
 msgid "Allow duplicate titles"
@@ -1580,12 +1676,12 @@ msgid "Allow duplicate hashes (not recommended)"
 msgstr "Να επιτρέπονται διπλότυπα hash (δεν συνιστάται)"
 
 #: includes/campaign_edit_functions.php:784 includes/campaign_help.php:249
-#: includes/settings/help.php:218 includes/settings/page.php:526
+#: includes/settings/help.php:223 includes/settings/page.php:526
 msgid "Also check duplicates by source permalink"
 msgstr "Έλεγχος διπλοτύπων και με τον μόνιμο σύνδεσμο της πηγής"
 
 #: includes/campaign_edit_functions.php:789 includes/campaign_help.php:243
-#: includes/settings/help.php:207 includes/settings/page.php:535
+#: includes/settings/help.php:212 includes/settings/page.php:535
 msgid "Keep reading past a duplicate"
 msgstr "Συνέχεια ανάγνωσης μετά από διπλότυπο"
 
@@ -1675,61 +1771,57 @@ msgstr "Προβολή ροής"
 msgid "Open URL in a new browser tab"
 msgstr "Άνοιγμα της διεύθυνσης σε νέα καρτέλα"
 
-#: includes/campaign_fetch.php:1008
+#: includes/campaign_fetch.php:1028
 msgid "The post has no featured image."
 msgstr "Το άρθρο δεν έχει χαρακτηριστική εικόνα."
 
-#: includes/campaign_fetch.php:1015
+#: includes/campaign_fetch.php:1035
 msgid "Attaching images"
 msgstr "Επισύναψη εικόνων"
 
-#: includes/campaign_fetch.php:1036
+#: includes/campaign_fetch.php:1056
 msgid "Attaching audios"
 msgstr "Επισύναψη ήχων"
 
-#: includes/campaign_fetch.php:1052
+#: includes/campaign_fetch.php:1072
 msgid "Attaching videos"
 msgstr "Επισύναψη βίντεο"
 
-#: includes/campaign_fetch.php:1081
+#: includes/campaign_fetch.php:1101
 msgid "Campaign fetched in %s sec."
 msgstr "Η καμπάνια ολοκληρώθηκε σε %s δευτ."
 
-#: includes/campaign_fetch.php:1111
+#: includes/campaign_fetch.php:1131
 msgid "WPeMatico Log "
 msgstr "Καταγραφή WPeMatico "
 
-#: includes/campaign_fetch.php:1114
+#: includes/campaign_fetch.php:1134
 msgid "Campaign Name:"
 msgstr "Όνομα καμπάνιας:"
 
-#: includes/campaign_fetch.php:1116
+#: includes/campaign_fetch.php:1136
 msgid "Errors:"
 msgstr "Σφάλματα:"
 
-#: includes/campaign_fetch.php:1118
+#: includes/campaign_fetch.php:1138
 msgid "Warnings:"
 msgstr "Προειδοποιήσεις:"
 
-#: includes/campaign_fetch.php:1122
+#: includes/campaign_fetch.php:1142
 msgid "WPeMatico by "
 msgstr "WPeMatico από "
 
-#: includes/campaign_fetch.php:1149
+#: includes/campaign_fetch.php:1169
 msgid "Campaign fetched in %1s sec."
 msgstr "Η καμπάνια ολοκληρώθηκε σε %1s δευτ."
 
-#: includes/campaign_fetch.php:1162
+#: includes/campaign_fetch.php:1182
 msgid "Processed Posts: %s"
 msgstr "Άρθρα που επεξεργάστηκαν: %s"
 
-#: includes/campaign_fetch.php:1163
+#: includes/campaign_fetch.php:1183
 msgid "Show detailed Log"
 msgstr "Εμφάνιση αναλυτικής καταγραφής"
-
-#: includes/campaign_fetch.php:1183 includes/campaigns_list.php:922
-msgid "Posts imported by this campaign."
-msgstr "Άρθρα που εισήγαγε αυτή η καμπάνια."
 
 #: includes/campaign_fetch.php:120
 msgid ""
@@ -1738,6 +1830,10 @@ msgid ""
 msgstr ""
 "Το όριο μνήμης ορίστηκε σε %1$s, επειδή δεν μπορεί να χρησιμοποιηθεί η "
 "συνάρτηση PHP memory_get_usage() για δυναμική αύξηση της μνήμης!"
+
+#: includes/campaign_fetch.php:1203 includes/campaigns_list.php:922
+msgid "Posts imported by this campaign."
+msgstr "Άρθρα που εισήγαγε αυτή η καμπάνια."
 
 #: includes/campaign_fetch.php:131
 msgid "Ending feed, reached running timeout at %1$d sec."
@@ -1763,61 +1859,61 @@ msgstr "Συμπληρώθηκε το όριο λήψης της καμπάνι�
 msgid "Reached running timeout at %1$d sec."
 msgstr "Συμπληρώθηκε το όριο χρόνου εκτέλεσης στα %1$d δευτ."
 
-#: includes/campaign_fetch.php:338
+#: includes/campaign_fetch.php:351
 msgid "%s posts added"
 msgstr "Προστέθηκαν %s άρθρα"
 
-#: includes/campaign_fetch.php:353
+#: includes/campaign_fetch.php:366
 msgid "Processing item %s"
 msgstr "Επεξεργασία του στοιχείου %s"
 
-#: includes/campaign_fetch.php:367
+#: includes/campaign_fetch.php:380
 msgid "Assigning original date to post."
 msgstr "Απόδοση της αρχικής ημερομηνίας στο άρθρο."
 
-#: includes/campaign_fetch.php:370
+#: includes/campaign_fetch.php:383
 msgid "Original date out of range.  Assigning current date to post."
 msgstr ""
 "Η αρχική ημερομηνία είναι εκτός ορίων. Αποδίδεται η τρέχουσα ημερομηνία στο "
 "άρθρο."
 
-#: includes/campaign_fetch.php:374
+#: includes/campaign_fetch.php:387
 msgid "Forced original date to post."
 msgstr "Επιβλήθηκε η αρχική ημερομηνία στο άρθρο."
 
-#: includes/campaign_fetch.php:512
+#: includes/campaign_fetch.php:525
 msgid "Assigning Auto Categories."
 msgstr "Απόδοση αυτόματων κατηγοριών."
 
-#: includes/campaign_fetch.php:553
+#: includes/campaign_fetch.php:566
 msgid "Found category under parent: "
 msgstr "Βρέθηκε κατηγορία κάτω από τη γονική: "
 
-#: includes/campaign_fetch.php:569
+#: includes/campaign_fetch.php:582
 msgid "Category exists with correct parent: "
 msgstr "Η κατηγορία υπάρχει με τη σωστή γονική: "
 
-#: includes/campaign_fetch.php:592
+#: includes/campaign_fetch.php:605
 msgid "Adding Category: "
 msgstr "Προσθήκη κατηγορίας: "
 
-#: includes/campaign_fetch.php:594
+#: includes/campaign_fetch.php:607
 msgid "Auto Added by WPeMatico"
 msgstr "Προστέθηκε αυτόματα από το WPeMatico"
 
-#: includes/campaign_fetch.php:610
+#: includes/campaign_fetch.php:623
 msgid "Created category: "
 msgstr "Δημιουργήθηκε κατηγορία: "
 
-#: includes/campaign_fetch.php:612
+#: includes/campaign_fetch.php:625
 msgid "Failed to create category: "
 msgstr "Αποτυχία δημιουργίας κατηγορίας: "
 
-#: includes/campaign_fetch.php:620
+#: includes/campaign_fetch.php:633
 msgid "Assigned category to post: "
 msgstr "Αποδόθηκε κατηγορία στο άρθρο: "
 
-#: includes/campaign_fetch.php:623
+#: includes/campaign_fetch.php:636
 msgid "Could not assign category: "
 msgstr "Δεν ήταν δυνατή η απόδοση της κατηγορίας: "
 
@@ -1825,178 +1921,183 @@ msgstr "Δεν ήταν δυνατή η απόδοση της κατηγορία
 msgid "Campaign skipped: already running since %d sec ago."
 msgstr "Η καμπάνια παραλείφθηκε: εκτελείται ήδη εδώ και %d δευτ."
 
-#: includes/campaign_fetch.php:791
+#: includes/campaign_fetch.php:811
 msgid "Adding unfiltered content"
 msgstr "Προσθήκη μη φιλτραρισμένου περιεχομένου"
 
-#: includes/campaign_fetch.php:799
+#: includes/campaign_fetch.php:819
 msgid "Processing item pingbacks"
 msgstr "Επεξεργασία των pingbacks του στοιχείου"
 
-#: includes/campaign_fetch.php:872
+#: includes/campaign_fetch.php:892
 msgid "Categories added: "
 msgstr "Κατηγορίες που προστέθηκαν: "
 
-#: includes/campaign_fetch.php:884
+#: includes/campaign_fetch.php:904
 msgid "Tags added: "
 msgstr "Ετικέτες που προστέθηκαν: "
 
-#: includes/campaign_fetch.php:896
+#: includes/campaign_fetch.php:916
 msgid "Post format added: "
 msgstr "Μορφή άρθρου που προστέθηκε: "
 
-#: includes/campaign_fetch.php:917
+#: includes/campaign_fetch.php:937
 msgid "Skip Featured Image."
 msgstr "Παράλειψη χαρακτηριστικής εικόνας."
 
-#: includes/campaign_fetch.php:921
+#: includes/campaign_fetch.php:941
 msgid "Featuring Image Into Post."
 msgstr "Ορισμός της χαρακτηριστικής εικόνας του άρθρου."
 
-#: includes/campaign_fetch.php:963 includes/campaign_fetch_functions.php:510
+#: includes/campaign_fetch.php:983 includes/campaign_fetch_functions.php:514
 msgid "Failed to obtain file:"
 msgstr "Αποτυχία λήψης του αρχείου:"
 
-#: includes/campaign_fetch.php:971
+#: includes/campaign_fetch.php:991
 msgid "Save Featured image file failed:"
 msgstr "Αποτυχία αποθήκευσης του αρχείου της χαρακτηριστικής εικόνας:"
 
-#: includes/campaign_fetch_functions.php:1000
+#: includes/campaign_fetch_functions.php:1004
 msgid "Fifu save set attachment from URL."
 msgstr "Το Fifu αποθηκεύει το συνημμένο από τη διεύθυνση URL."
 
-#: includes/campaign_fetch_functions.php:1089
+#: includes/campaign_fetch_functions.php:102
+#: includes/campaign_fetch_functions.php:112
+msgid "Cleaning Links from content."
+msgstr "Καθαρισμός συνδέσμων από το περιεχόμενο."
+
+#: includes/campaign_fetch_functions.php:1093
 msgid "Parsing Youtube video and feed item contents."
 msgstr "Ανάλυση βίντεο YouTube και περιεχομένου του στοιχείου της ροής."
 
-#: includes/campaign_fetch_functions.php:118
-msgid "Parsing Post template."
-msgstr "Ανάλυση του προτύπου άρθρου."
-
-#: includes/campaign_fetch_functions.php:1201
+#: includes/campaign_fetch_functions.php:1205
 msgid "Looking for audios in content."
 msgstr "Αναζήτηση ήχων στο περιεχόμενο."
 
-#: includes/campaign_fetch_functions.php:125
-msgid "Can't find the featured image to add to the content."
-msgstr "Δεν βρέθηκε η χαρακτηριστική εικόνα για προσθήκη στο περιεχόμενο."
+#: includes/campaign_fetch_functions.php:122
+msgid "Parsing Post template."
+msgstr "Ανάλυση του προτύπου άρθρου."
 
-#: includes/campaign_fetch_functions.php:1252
-#: includes/campaign_fetch_functions.php:1408
+#: includes/campaign_fetch_functions.php:1256
+#: includes/campaign_fetch_functions.php:1412
 msgid "Upload file failed:"
 msgstr "Αποτυχία μεταφόρτωσης αρχείου:"
 
-#: includes/campaign_fetch_functions.php:1270
+#: includes/campaign_fetch_functions.php:1274
 msgid "Using remotely linked audios in content. No changes."
 msgstr ""
 "Οι ήχοι παραμένουν συνδεδεμένοι απομακρυσμένα στο περιεχόμενο. Καμία αλλαγή."
 
-#: includes/campaign_fetch_functions.php:1356
+#: includes/campaign_fetch_functions.php:129
+msgid "Can't find the featured image to add to the content."
+msgstr "Δεν βρέθηκε η χαρακτηριστική εικόνα για προσθήκη στο περιεχόμενο."
+
+#: includes/campaign_fetch_functions.php:1360
 msgid "Looking for videos in content."
 msgstr "Αναζήτηση βίντεο στο περιεχόμενο."
 
-#: includes/campaign_fetch_functions.php:1426
+#: includes/campaign_fetch_functions.php:1430
 msgid "Using remotely linked videos in content. No changes."
 msgstr ""
 "Τα βίντεο παραμένουν συνδεδεμένα απομακρυσμένα στο περιεχόμενο. Καμία αλλαγή."
 
-#: includes/campaign_fetch_functions.php:1459
+#: includes/campaign_fetch_functions.php:1463
 msgid "Skipping standard videos..."
 msgstr "Παράλειψη κανονικών βίντεο…"
 
-#: includes/campaign_fetch_functions.php:1465
+#: includes/campaign_fetch_functions.php:1469
 msgid "Skipping Youtube Short..."
 msgstr "Παράλειψη YouTube Short…"
 
-#: includes/campaign_fetch_functions.php:242
+#: includes/campaign_fetch_functions.php:246
 msgid "Processing Words to Category %s"
 msgstr "Επεξεργασία λέξεων προς κατηγορία %s"
 
-#: includes/campaign_fetch_functions.php:272
+#: includes/campaign_fetch_functions.php:276
 msgid "Found!: word %1$s to Cat_id %2$s"
 msgstr "Βρέθηκε!: λέξη %1$s προς κατηγορία %2$s"
 
-#: includes/campaign_fetch_functions.php:277
+#: includes/campaign_fetch_functions.php:281
 msgid "Not found word %s"
 msgstr "Δεν βρέθηκε η λέξη %s"
 
-#: includes/campaign_fetch_functions.php:284
+#: includes/campaign_fetch_functions.php:288
 msgid "Searching the category with more words."
 msgstr "Αναζήτηση της κατηγορίας με τις περισσότερες λέξεις."
 
-#: includes/campaign_fetch_functions.php:300
+#: includes/campaign_fetch_functions.php:304
 msgid "The category with more words in content: %s"
 msgstr "Η κατηγορία με τις περισσότερες λέξεις στο περιεχόμενο: %s"
 
-#: includes/campaign_fetch_functions.php:307
+#: includes/campaign_fetch_functions.php:311
 msgid "Assign the first category: %s"
 msgstr "Απόδοση της πρώτης κατηγορίας: %s"
 
-#: includes/campaign_fetch_functions.php:462
+#: includes/campaign_fetch_functions.php:466
 msgid "Looking for images in content."
 msgstr "Αναζήτηση εικόνων στο περιεχόμενο."
 
-#: includes/campaign_fetch_functions.php:471
-#: includes/campaign_fetch_functions.php:1205
-#: includes/campaign_fetch_functions.php:1360
+#: includes/campaign_fetch_functions.php:475
+#: includes/campaign_fetch_functions.php:1209
+#: includes/campaign_fetch_functions.php:1364
 msgid "Uploading media..."
 msgstr "Μεταφόρτωση πολυμέσων…"
 
-#: includes/campaign_fetch_functions.php:529
+#: includes/campaign_fetch_functions.php:533
 msgid "Save image file failed:"
 msgstr "Αποτυχία αποθήκευσης του αρχείου εικόνας:"
 
-#: includes/campaign_fetch_functions.php:540
-#: includes/campaign_fetch_functions.php:1259
-#: includes/campaign_fetch_functions.php:1415
+#: includes/campaign_fetch_functions.php:544
+#: includes/campaign_fetch_functions.php:1263
+#: includes/campaign_fetch_functions.php:1419
 msgid "Extension not allowed: "
 msgstr "Μη επιτρεπτή κατάληξη: "
 
-#: includes/campaign_fetch_functions.php:543
-#: includes/campaign_fetch_functions.php:1261
-#: includes/campaign_fetch_functions.php:1417
+#: includes/campaign_fetch_functions.php:547
+#: includes/campaign_fetch_functions.php:1265
+#: includes/campaign_fetch_functions.php:1421
 msgid "Stripped src."
 msgstr "Καθαρίστηκε το src."
 
-#: includes/campaign_fetch_functions.php:561
+#: includes/campaign_fetch_functions.php:565
 msgid "Using remotely linked images in content. No changes."
 msgstr ""
 "Οι εικόνες παραμένουν συνδεδεμένες απομακρυσμένα στο περιεχόμενο. Καμία "
 "αλλαγή."
 
-#: includes/campaign_fetch_functions.php:598
+#: includes/campaign_fetch_functions.php:602
 msgid "Attaching file:"
 msgstr "Επισύναψη αρχείου:"
 
-#: includes/campaign_fetch_functions.php:601
+#: includes/campaign_fetch_functions.php:605
 msgid "Sorry, the attachment could not be inserted. An error has occurred."
 msgstr "Δυστυχώς, το συνημμένο δεν μπόρεσε να εισαχθεί. Παρουσιάστηκε σφάλμα."
 
-#: includes/campaign_fetch_functions.php:636
+#: includes/campaign_fetch_functions.php:640
 msgid "Executing featured image selector..."
 msgstr "Εκτέλεση του επιλογέα χαρακτηριστικής εικόνας…"
 
-#: includes/campaign_fetch_functions.php:640
+#: includes/campaign_fetch_functions.php:644
 msgid "Featured image \"%1$s\": %2$s"
 msgstr "Χαρακτηριστική εικόνα «%1$s»: %2$s"
 
-#: includes/campaign_fetch_functions.php:643
+#: includes/campaign_fetch_functions.php:647
 msgid "No image was found according to the selected index."
 msgstr "Δεν βρέθηκε εικόνα στον επιλεγμένο δείκτη."
 
-#: includes/campaign_fetch_functions.php:648
+#: includes/campaign_fetch_functions.php:652
 msgid "The first image was not found in the content."
 msgstr "Η πρώτη εικόνα δεν βρέθηκε στο περιεχόμενο."
 
-#: includes/campaign_fetch_functions.php:650
+#: includes/campaign_fetch_functions.php:654
 msgid "Using first image as the featured image."
 msgstr "Χρησιμοποιείται η πρώτη εικόνα ως χαρακτηριστική."
 
-#: includes/campaign_fetch_functions.php:656
+#: includes/campaign_fetch_functions.php:660
 msgid "The last image was not found in the content."
 msgstr "Η τελευταία εικόνα δεν βρέθηκε στο περιεχόμενο."
 
-#: includes/campaign_fetch_functions.php:658
+#: includes/campaign_fetch_functions.php:662
 msgid "Using last image as the featured image."
 msgstr "Χρησιμοποιείται η τελευταία εικόνα ως χαρακτηριστική."
 
@@ -2004,48 +2105,43 @@ msgstr "Χρησιμοποιείται η τελευταία εικόνα ως �
 msgid "Deleting html tags: %s"
 msgstr "Διαγραφή ετικετών HTML: %s"
 
-#: includes/campaign_fetch_functions.php:865
+#: includes/campaign_fetch_functions.php:869
 msgid "Getting srcset attribute..."
 msgstr "Ανάγνωση του χαρακτηριστικού srcset…"
 
-#: includes/campaign_fetch_functions.php:890
+#: includes/campaign_fetch_functions.php:894
 msgid "Overriding src attribute with value: %s from srcset."
 msgstr "Το χαρακτηριστικό src αντικαθίσταται με την τιμή %s από το srcset."
 
-#: includes/campaign_fetch_functions.php:937
-#: includes/campaign_fetch_functions.php:1178
-#: includes/campaign_fetch_functions.php:1333
+#: includes/campaign_fetch_functions.php:941
+#: includes/campaign_fetch_functions.php:1182
+#: includes/campaign_fetch_functions.php:1337
 msgid "Removing: %s from content."
 msgstr "Αφαίρεση του %s από το περιεχόμενο."
 
-#: includes/campaign_fetch_functions.php:945
+#: includes/campaign_fetch_functions.php:949
 msgid "Link with image URI not found in src."
 msgstr "Δεν βρέθηκε στο src σύνδεσμος με το URI της εικόνας."
 
-#: includes/campaign_fetch_functions.php:948
+#: includes/campaign_fetch_functions.php:952
 msgid "Successfully removed with anchor link."
 msgstr "Αφαιρέθηκε με επιτυχία, μαζί με τον σύνδεσμο."
 
-#: includes/campaign_fetch_functions.php:954
+#: includes/campaign_fetch_functions.php:958
 msgid "Image URI not found in src."
 msgstr "Δεν βρέθηκε το URI της εικόνας στο src."
 
-#: includes/campaign_fetch_functions.php:957
+#: includes/campaign_fetch_functions.php:961
 msgid "Successfully removed."
 msgstr "Αφαιρέθηκε με επιτυχία."
 
-#: includes/campaign_fetch_functions.php:968
+#: includes/campaign_fetch_functions.php:972
 msgid "Setting up Featured Image From Url"
 msgstr "Ρύθμιση του Featured Image From Url"
 
-#: includes/campaign_fetch_functions.php:971
+#: includes/campaign_fetch_functions.php:975
 msgid "Adding featured image post meta: "
 msgstr "Προσθήκη μεταδεδομένου χαρακτηριστικής εικόνας: "
-
-#: includes/campaign_fetch_functions.php:98
-#: includes/campaign_fetch_functions.php:108
-msgid "Cleaning Links from content."
-msgstr "Καθαρισμός συνδέσμων από το περιεχόμενο."
 
 #: includes/campaign_help.php:101
 msgid "Use [embed]"
@@ -2065,7 +2161,7 @@ msgid ""
 "size you set."
 msgstr ""
 "Το WordPress προσαρμόζει τότε τον player στο πλάτος που του δίνει το θέμα "
-"εμφάνισής σου, μέχρι το μέγεθος που ορίζεις."
+"εμφάνισής σας, μέχρι το μέγεθος που ορίζετε."
 
 #: includes/campaign_help.php:106
 msgid "Video size"
@@ -2076,7 +2172,7 @@ msgid ""
 "Width and height of the player in the post. Leave both at 0 to let it adapt "
 "to the screen."
 msgstr ""
-"Πλάτος και ύψος του player στο άρθρο. Άφησε και τα δύο στο 0 για να "
+"Πλάτος και ύψος του player στο άρθρο. Αφήστε και τα δύο στο 0 για να "
 "προσαρμόζεται στην οθόνη."
 
 #: includes/campaign_help.php:112
@@ -2088,7 +2184,7 @@ msgid ""
 "Pick a forum to publish the feed items as topics inside it, or pick none and "
 "each item creates its own forum."
 msgstr ""
-"Διάλεξε ένα φόρουμ για να δημοσιεύονται τα στοιχεία της ροής ως θέματα μέσα "
+"Διαλέξτε ένα φόρουμ για να δημοσιεύονται τα στοιχεία της ροής ως θέματα μέσα "
 "του, ή μη διαλέξεις κανένα και κάθε στοιχείο θα φτιάχνει το δικό του φόρουμ."
 
 #: includes/campaign_help.php:114
@@ -2102,7 +2198,7 @@ msgid ""
 "The campaign runs on its own, at the times you set below. WP-cron fires "
 "within about 5 minutes of the hour; an external cron is exact."
 msgstr ""
-"Η καμπάνια τρέχει μόνη της, στις ώρες που ορίζεις παρακάτω. Το WP-cron "
+"Η καμπάνια τρέχει μόνη της, στις ώρες που ορίζετε παρακάτω. Το WP-cron "
 "ενεργοποιείται με περιθώριο περίπου 5 λεπτών· ένα εξωτερικό cron είναι "
 "ακριβές."
 
@@ -2119,7 +2215,7 @@ msgid ""
 "Pick one and the fields on the right are filled in for you, ready to edit. "
 "The preset itself is not saved."
 msgstr ""
-"Διάλεξε ένα και τα πεδία δεξιά συμπληρώνονται, έτοιμα για τροποποίηση. Το "
+"Διαλέξτε ένα και τα πεδία δεξιά συμπληρώνονται, έτοιμα για τροποποίηση. Το "
 "ίδιο το έτοιμο πρόγραμμα δεν αποθηκεύεται."
 
 #: includes/campaign_help.php:130
@@ -2137,7 +2233,7 @@ msgid ""
 "points at your copy. Off, the images stay on the source server."
 msgstr ""
 "Κάθε εικόνα σε ετικέτα %s αποθηκεύεται στον φάκελο μεταφορτώσεων και το "
-"περιεχόμενο δείχνει στο δικό σου αντίγραφο. Κλειστό, οι εικόνες μένουν στον "
+"περιεχόμενο δείχνει στο δικό σας αντίγραφο. Κλειστό, οι εικόνες μένουν στον "
 "διακομιστή της πηγής."
 
 #: includes/campaign_help.php:140
@@ -2183,8 +2279,8 @@ msgid ""
 "it from the source server. Install and activate that plugin first."
 msgstr ""
 "Αφήνει την χαρακτηριστική εικόνα στο πρόσθετο Featured Image from URL, που "
-"τη σερβίρει από τον διακομιστή της πηγής. Εγκατάστησε και ενεργοποίησε πρώτα "
-"εκείνο το πρόσθετο."
+"τη σερβίρει από τον διακομιστή της πηγής. Εγκαταστήστε και ενεργοποιήστε "
+"πρώτα εκείνο το πρόσθετο."
 
 #: includes/campaign_help.php:160 includes/settings/help.php:55
 #: includes/settings/help.php:60
@@ -2208,7 +2304,7 @@ msgid ""
 "Pick the image by its position in the content -- the first, the second, the "
 "third -- instead of always taking the first."
 msgstr ""
-"Διάλεξε την εικόνα από τη θέση της στο περιεχόμενο —πρώτη, δεύτερη, τρίτη— "
+"Διαλέξτε την εικόνα από τη θέση της στο περιεχόμενο —πρώτη, δεύτερη, τρίτη— "
 "αντί να παίρνεται πάντα η πρώτη."
 
 #: includes/campaign_help.php:170
@@ -2217,7 +2313,7 @@ msgid ""
 "does not show it twice."
 msgstr ""
 "Η εικόνα που χρησιμοποιείται ως χαρακτηριστική αφαιρείται από το "
-"περιεχόμενο, ώστε το θέμα εμφάνισής σου να μην τη δείχνει δύο φορές."
+"περιεχόμενο, ώστε το θέμα εμφάνισής σας να μην τη δείχνει δύο φορές."
 
 #: includes/campaign_help.php:173 includes/settings/help.php:74
 #: includes/settings/page.php:264
@@ -2266,7 +2362,7 @@ msgid ""
 "points at your copy. Off, the files stay on the source server."
 msgstr ""
 "Κάθε ήχος σε ετικέτα %s αποθηκεύεται στον φάκελο μεταφορτώσεων και το "
-"περιεχόμενο δείχνει στο δικό σου αντίγραφο. Κλειστό, τα αρχεία μένουν στον "
+"περιεχόμενο δείχνει στο δικό σας αντίγραφο. Κλειστό, τα αρχεία μένουν στον "
 "διακομιστή της πηγής."
 
 #: includes/campaign_help.php:195
@@ -2282,9 +2378,9 @@ msgid ""
 "At least one address is needed. Type a domain name and WPeMatico looks for "
 "its feed. The fewer feeds a campaign has, the less each run costs."
 msgstr ""
-"Χρειάζεται τουλάχιστον μία διεύθυνση. Γράψε ένα όνομα τομέα και το WPeMatico "
-"ψάχνει τη ροή του. Όσο λιγότερες ροές έχει μια καμπάνια, τόσο λιγότερο "
-"κοστίζει κάθε εκτέλεση."
+"Χρειάζεται τουλάχιστον μία διεύθυνση. Γράψτε ένα όνομα τομέα και το "
+"WPeMatico ψάχνει τη ροή του. Όσο λιγότερες ροές έχει μια καμπάνια, τόσο "
+"λιγότερο κοστίζει κάθε εκτέλεση."
 
 #: includes/campaign_help.php:200
 msgid ""
@@ -2316,8 +2412,8 @@ msgid ""
 "points at your copy. Video files are heavy: they fill your disk fast."
 msgstr ""
 "Κάθε βίντεο σε ετικέτα %s αποθηκεύεται στον φάκελο μεταφορτώσεων και το "
-"περιεχόμενο δείχνει στο δικό σου αντίγραφο. Τα βίντεο είναι βαριά: γεμίζουν "
-"γρήγορα τον δίσκο σου."
+"περιεχόμενο δείχνει στο δικό σας αντίγραφο. Τα βίντεο είναι βαριά: γεμίζουν "
+"γρήγορα τον δίσκο σας."
 
 #: includes/campaign_help.php:217
 msgid ""
@@ -2351,25 +2447,25 @@ msgstr ""
 msgid "Duplicate options for this campaign"
 msgstr "Επιλογές διπλοτύπων αυτής της καμπάνιας"
 
-#: includes/campaign_help.php:238 includes/settings/help.php:202
+#: includes/campaign_help.php:238 includes/settings/help.php:207
 msgid ""
 "Turns off both duplicate checks, so every item is published again on every "
 "run. Almost never what you want."
 msgstr ""
 "Κλείνει και τους δύο ελέγχους διπλοτύπων, οπότε κάθε στοιχείο δημοσιεύεται "
-"ξανά σε κάθε εκτέλεση. Σχεδόν ποτέ δεν είναι αυτό που θέλεις."
+"ξανά σε κάθε εκτέλεση. Σχεδόν ποτέ δεν είναι αυτό που θέλετε."
 
-#: includes/campaign_help.php:239 includes/settings/help.php:203
+#: includes/campaign_help.php:239 includes/settings/help.php:208
 msgid "The two checks"
 msgstr "Οι δύο έλεγχοι"
 
-#: includes/campaign_help.php:239 includes/settings/help.php:203
+#: includes/campaign_help.php:239 includes/settings/help.php:208
 msgid ""
 "the post title, and a hash of the last item address the campaign read. The "
 "hash is the reliable one; titles alone fail often."
 msgstr ""
 "ο τίτλος του άρθρου, και ένα hash της διεύθυνσης του τελευταίου στοιχείου "
-"που διάβασε η καμπάνια. Το hash είναι το αξιόπιστο· ο τίτλος μόνος του "
+"που διαβάστε η καμπάνια. Το hash είναι το αξιόπιστο· ο τίτλος μόνος του "
 "αποτυγχάνει συχνά."
 
 #: includes/campaign_help.php:24
@@ -2379,7 +2475,7 @@ msgid ""
 msgstr ""
 "Πόσα στοιχεία να παίρνονται από κάθε ροή παραπάνω. Από 3 ως 5, με πιο συχνές "
 "εκτελέσεις, χάνει λιγότερα στοιχεία από έναν μεγάλο αριθμό που τρέχει "
-"σπάνια. Βάλε 0 για κανένα όριο."
+"σπάνια. Βάλτε 0 για κανένα όριο."
 
 #: includes/campaign_help.php:240
 msgid ""
@@ -2387,10 +2483,10 @@ msgid ""
 "a title, use \"Allow duplicate titles\" and leave the hash check on."
 msgstr ""
 "Με τους δύο κλειστούς, τα ίδια στοιχεία έρχονται ξανά και ξανά. Για να "
-"δημοσιεύεις στοιχεία με ίδιο τίτλο, χρησιμοποίησε το «Να επιτρέπονται "
-"διπλότυποι τίτλοι» και άφησε ενεργό τον έλεγχο με hash."
+"δημοσιεύετε στοιχεία με ίδιο τίτλο, χρησιμοποιήστε το «Να επιτρέπονται "
+"διπλότυποι τίτλοι» και αφήστε ενεργό τον έλεγχο με hash."
 
-#: includes/campaign_help.php:244 includes/settings/help.php:208
+#: includes/campaign_help.php:244 includes/settings/help.php:213
 msgid ""
 "The campaign skips each duplicate and keeps looking for new items, instead "
 "of stopping at the first one. Not recommended."
@@ -2398,11 +2494,11 @@ msgstr ""
 "Η καμπάνια προσπερνά κάθε διπλότυπο και συνεχίζει να ψάχνει νέα στοιχεία, "
 "αντί να σταματά στο πρώτο. Δεν συνιστάται."
 
-#: includes/campaign_help.php:245 includes/settings/help.php:209
+#: includes/campaign_help.php:245 includes/settings/help.php:214
 msgid "How it works"
 msgstr "Πώς δουλεύει"
 
-#: includes/campaign_help.php:245 includes/settings/help.php:209
+#: includes/campaign_help.php:245 includes/settings/help.php:214
 msgid ""
 "feed items come ordered newest first, so the campaign reads from the top and "
 "stops at the first item it already has: everything below it is older and "
@@ -2412,7 +2508,7 @@ msgstr ""
 "καμπάνια διαβάζει από πάνω και σταματά στο πρώτο στοιχείο που έχει ήδη: ό,τι "
 "ακολουθεί είναι παλαιότερο και ήδη δημοσιευμένο."
 
-#: includes/campaign_help.php:246 includes/settings/help.php:210
+#: includes/campaign_help.php:246 includes/settings/help.php:215
 msgid ""
 "The hash only covers the last item read, so on a feed where the title check "
 "works poorly this option can publish the same item twice."
@@ -2421,13 +2517,13 @@ msgstr ""
 "όπου ο έλεγχος με τον τίτλο δουλεύει άσχημα αυτή η επιλογή μπορεί να "
 "δημοσιεύσει το ίδιο στοιχείο δύο φορές."
 
-#: includes/campaign_help.php:250 includes/settings/help.php:219
+#: includes/campaign_help.php:250 includes/settings/help.php:224
 msgid ""
 "One more query per item. Turn it on only if you still get duplicates, which "
 "happens with feeds that do not follow the standard."
 msgstr ""
-"Ένα ερώτημα παραπάνω ανά στοιχείο. Ενεργοποίησέ το μόνο αν εξακολουθείς να "
-"έχεις διπλότυπα, κάτι που συμβαίνει με ροές που δεν ακολουθούν το πρότυπο."
+"Ένα ερώτημα παραπάνω ανά στοιχείο. Ενεργοποιήστε το μόνο αν εξακολουθείτε να "
+"έχετε διπλότυπα, κάτι που συμβαίνει με ροές που δεν ακολουθούν το πρότυπο."
 
 #: includes/campaign_help.php:257
 msgid "XML campaign type"
@@ -2447,9 +2543,9 @@ msgid ""
 "image, date. When a node name appears more than once, name its parent in the "
 "right column."
 msgstr ""
-"Διάλεξε τον κόμβο XML που κρατά κάθε ιδιότητα ενός στοιχείου: τίτλο, "
+"Διαλέξτε τον κόμβο XML που κρατά κάθε ιδιότητα ενός στοιχείου: τίτλο, "
 "περιεχόμενο, εικόνα, ημερομηνία. Όταν ένα όνομα κόμβου εμφανίζεται πάνω από "
-"μία φορά, όρισε τον γονέα του στη δεξιά στήλη."
+"μία φορά, ορίστε τον γονέα του στη δεξιά στήλη."
 
 #: includes/campaign_help.php:266 includes/xml-importer.php:460
 msgid "Parent element"
@@ -2461,7 +2557,7 @@ msgid ""
 "of the node picked on the left."
 msgstr ""
 "Λέει στο WPeMatico ποιον από τους επαναλαμβανόμενους κόμβους να διαβάσει. "
-"Πρέπει να είναι ο γονέας του κόμβου που διάλεξες αριστερά."
+"Πρέπει να είναι ο γονέας του κόμβου που διαλέξατε αριστερά."
 
 #: includes/campaign_help.php:273
 msgid "Enable the post template"
@@ -2472,8 +2568,9 @@ msgid ""
 "Build the content of each post around the text the feed brings: add your own "
 "text, images or campaign data before it is saved."
 msgstr ""
-"Χτίσε το περιεχόμενο κάθε άρθρου γύρω από το κείμενο που φέρνει η ροή: "
-"πρόσθεσε δικό σου κείμενο, εικόνες ή δεδομένα της καμπάνιας πριν αποθηκευτεί."
+"Χτίστε το περιεχόμενο κάθε άρθρου γύρω από το κείμενο που φέρνει η ροή: "
+"προσθέστε δικό σας κείμενο, εικόνες ή δεδομένα της καμπάνιας πριν "
+"αποθηκευτεί."
 
 #: includes/campaign_help.php:279
 msgid "The feed item content."
@@ -2488,7 +2585,7 @@ msgstr ""
 "σταματούσε νωρίς και θα έχανε στοιχεία."
 
 #: includes/campaign_help.php:311 includes/settings/help.php:147
-#: includes/module/actions.php:204
+#: includes/module/actions.php:213
 msgid "Words to Categories"
 msgstr "Λέξεις σε κατηγορίες"
 
@@ -2509,7 +2606,7 @@ msgid ""
 "type motor in the Word field and pick Engines in the categories list."
 msgstr ""
 "Για να μπαίνει στην κατηγορία «Κινητήρες» κάθε άρθρο που αναφέρει «μοτέρ», "
-"γράψε μοτέρ στο πεδίο Λέξη και διάλεξε Κινητήρες στη λίστα κατηγοριών."
+"γράψτε μοτέρ στο πεδίο Λέξη και διαλέξτε Κινητήρες στη λίστα κατηγοριών."
 
 #: includes/campaign_help.php:315
 msgid "Regular Expressions"
@@ -2523,11 +2620,11 @@ msgid ""
 "it runs over the whole field. To match regardless of case, leave the 'Case "
 "sensitive' box below unchecked."
 msgstr ""
-"Υποστηρίζονται κανονικές εκφράσεις, που σου γλιτώνουν ένα πλαίσιο ανά λέξη: "
+"Υποστηρίζονται κανονικές εκφράσεις, που σας γλιτώνουν ένα πλαίσιο ανά λέξη: "
 "αντί για ένα πλαίσιο για μοτέρ και ένα για αυτοκίνητο, και τα δύο προς "
-"Κινητήρες, χρησιμοποίησε τον τελεστή | — (μοτέρ|αυτοκίνητο). Γράψε την "
+"Κινητήρες, χρησιμοποιήστε τον τελεστή | — (μοτέρ|αυτοκίνητο). Γράψτε την "
 "έκφραση χωρίς οριοθέτες ή σημαίες· εφαρμόζεται σε όλο το πεδίο. Για να μην "
-"ξεχωρίζει πεζά-κεφαλαία, άφησε ασημείωτο το πλαίσιο «Διάκριση πεζών-"
+"ξεχωρίζει πεζά-κεφαλαία, αφήστε ασημείωτο το πλαίσιο «Διάκριση πεζών-"
 "κεφαλαίων» παρακάτω."
 
 #: includes/campaign_help.php:32
@@ -2547,7 +2644,7 @@ msgid ""
 "Replaces words or phrases in the content with your own text, and can turn a "
 "word into a link. Click [?] below for examples."
 msgstr ""
-"Αντικαθιστά λέξεις ή φράσεις του περιεχομένου με δικό σου κείμενο, και "
+"Αντικαθιστά λέξεις ή φράσεις του περιεχομένου με δικό σας κείμενο, και "
 "μπορεί να κάνει μια λέξη σύνδεσμο. Πάτα το [?] παρακάτω για παραδείγματα."
 
 #: includes/campaign_help.php:323
@@ -2559,7 +2656,7 @@ msgid ""
 "To replace every \"ass\" with \"butt\", type ass in the origin field and "
 "butt in \"rewrite to\"."
 msgstr ""
-"Για να αντικαταστήσεις κάθε «ass» με «butt», γράψε ass στο πεδίο προέλευσης "
+"Για να αντικαταστήσετε κάθε «ass» με «butt», γράψτε ass στο πεδίο προέλευσης "
 "και butt στο «επανεγγραφή σε»."
 
 #: includes/campaign_help.php:325
@@ -2572,8 +2669,8 @@ msgid ""
 "on the content only. Add the same rewrite twice to cover both."
 msgstr ""
 "Με σημειωμένο το «Τίτλος» η αντικατάσταση γίνεται μόνο στον τίτλο, και χωρίς "
-"σημείωση μόνο στο περιεχόμενο. Πρόσθεσε την ίδια επανεγγραφή δύο φορές για "
-"να καλύψεις και τα δύο."
+"σημείωση μόνο στο περιεχόμενο. Προσθέστε την ίδια επανεγγραφή δύο φορές για "
+"να καλύψετε και τα δύο."
 
 #: includes/campaign_help.php:327
 msgid "Relinking:"
@@ -2584,7 +2681,7 @@ msgid ""
 "To turn every mention of google into a link to Google, type google in the "
 "origin field and %s in the 'relink to' field."
 msgstr ""
-"Για να γίνεται κάθε αναφορά στο google σύνδεσμος προς το Google, γράψε "
+"Για να γίνεται κάθε αναφορά στο google σύνδεσμος προς το Google, γράψτε "
 "google στο πεδίο προέλευσης και %s στο πεδίο «σύνδεση προς»."
 
 #: includes/campaign_help.php:329
@@ -2603,8 +2700,8 @@ msgid ""
 "Regular expressions are supported, which saves you one box per word: to "
 "replace both ass and arse with butt, use the | operator -- (ass|arse)."
 msgstr ""
-"Υποστηρίζονται κανονικές εκφράσεις, που σου γλιτώνουν ένα πλαίσιο ανά λέξη: "
-"για να αντικαταστήσεις ass και arse με butt, χρησιμοποίησε τον τελεστή | — "
+"Υποστηρίζονται κανονικές εκφράσεις, που σας γλιτώνουν ένα πλαίσιο ανά λέξη: "
+"για να αντικαταστήσετε ass και arse με butt, χρησιμοποιήστε τον τελεστή | — "
 "(ass|arse)."
 
 #: includes/campaign_help.php:335
@@ -2616,7 +2713,7 @@ msgid ""
 "Assign categories of your own to every post, take the ones the source item "
 "carries, or both."
 msgstr ""
-"Απόδωσε σε κάθε άρθρο δικές σου κατηγορίες, πάρε αυτές που φέρνει το "
+"Αποδώστε σε κάθε άρθρο δικές σας κατηγορίες, πάρτε αυτές που φέρνει το "
 "στοιχείο της πηγής, ή και τα δύο."
 
 #: includes/campaign_help.php:340
@@ -2625,7 +2722,7 @@ msgid ""
 "your site if they do not exist yet."
 msgstr ""
 "Οι κατηγορίες που φέρνει το στοιχείο της πηγής προστίθενται στο άρθρο, και "
-"δημιουργούνται στον ιστότοπό σου αν δεν υπάρχουν ακόμα."
+"δημιουργούνται στον ιστότοπό σας αν δεν υπάρχουν ακόμα."
 
 #: includes/campaign_help.php:343
 msgid "Limit of categories"
@@ -2641,7 +2738,7 @@ msgid ""
 "instead of sitting at the top level."
 msgstr ""
 "Κάθε κατηγορία που δημιουργεί αυτή η καμπάνια κρέμεται από αυτή που "
-"διαλέγεις εδώ, αντί να μένει στο πρώτο επίπεδο."
+"διαλέγετε εδώ, αντί να μένει στο πρώτο επίπεδο."
 
 #: includes/campaign_help.php:35
 msgid "it is not further in the past than the campaign frequency, and"
@@ -2665,8 +2762,8 @@ msgid ""
 "The post format for this campaign, if your theme supports formats. Leave it "
 "on Standard if it does not."
 msgstr ""
-"Η μορφή άρθρου αυτής της καμπάνιας, αν το θέμα εμφάνισής σου υποστηρίζει "
-"μορφές. Αλλιώς άφησέ το στο Standard."
+"Η μορφή άρθρου αυτής της καμπάνιας, αν το θέμα εμφάνισής σας υποστηρίζει "
+"μορφές. Αλλιώς αφήστε το στο Standard."
 
 #: includes/campaign_help.php:36
 msgid "it is not in the future."
@@ -2681,8 +2778,8 @@ msgid ""
 "Sends you what happened on each run. You can ask for it only when something "
 "went wrong, or leave the field empty for no email at all."
 msgstr ""
-"Σου στέλνει τι έγινε σε κάθε εκτέλεση. Μπορείς να το ζητάς μόνο όταν κάτι "
-"πήγε στραβά, ή να αφήσεις το πεδίο κενό για να μη στέλνεται κανένα email."
+"Σας στέλνει τι έγινε σε κάθε εκτέλεση. Μπορείτε να το ζητάτε μόνο όταν κάτι "
+"πήγε στραβά, ή να αφήσετε το πεδίο κενό για να μη στέλνεται κανένα email."
 
 #: includes/campaign_help.php:40
 msgid ""
@@ -2696,7 +2793,7 @@ msgstr ""
 msgid ""
 "The title of each post points at the original article instead of at your own "
 "post."
-msgstr "Ο τίτλος κάθε άρθρου δείχνει στο αρχικό άρθρο αντί για το δικό σου."
+msgstr "Ο τίτλος κάθε άρθρου δείχνει στο αρχικό άρθρο αντί για το δικό σας."
 
 #: includes/campaign_help.php:45
 msgid ""
@@ -2709,7 +2806,7 @@ msgstr ""
 #: includes/campaign_help.php:49
 msgid "Your post keeps the exact permalink the source article has."
 msgstr ""
-"Το άρθρο σου κρατά ακριβώς τον μόνιμο σύνδεσμο που έχει το άρθρο της πηγής."
+"Το άρθρο σας κρατά ακριβώς τον μόνιμο σύνδεσμο που έχει το άρθρο της πηγής."
 
 #: includes/campaign_help.php:53
 msgid ""
@@ -2724,8 +2821,8 @@ msgid ""
 "Leave it on for speed. Turn it off when the permalinks you get are not the "
 "original ones."
 msgstr ""
-"Άφησέ το ενεργό για ταχύτητα. Κλείσ’ το όταν οι μόνιμοι σύνδεσμοι που "
-"παίρνεις δεν είναι οι αρχικοί."
+"Αφήστε το ενεργό για ταχύτητα. Κλείσ’ το όταν οι μόνιμοι σύνδεσμοι που "
+"παίρνετε δεν είναι οι αρχικοί."
 
 #: includes/campaign_help.php:58
 msgid "Allows pingbacks and trackbacks on the posts this campaign publishes."
@@ -2790,7 +2887,7 @@ msgid ""
 "you may end up with the same text twice."
 msgstr ""
 "Ροές χωρίς δική τους περιγραφή στέλνουν το περιεχόμενο σε εκείνο το πεδίο, "
-"οπότε μπορεί να καταλήξεις με το ίδιο κείμενο δύο φορές."
+"οπότε μπορεί να καταλήξετε με το ίδιο κείμενο δύο φορές."
 
 #: includes/campaign_help.php:81
 msgid ""
@@ -2809,7 +2906,7 @@ msgid ""
 "and with its scripts. Use it only with sources you trust."
 msgstr ""
 "Το περιεχόμενο της ροής αποθηκεύεται ακριβώς όπως φτάνει, πέρα από τα φίλτρα "
-"του WordPress και με τα scripts του. Χρησιμοποίησέ το μόνο με πηγές που "
+"του WordPress και με τα scripts του. Χρησιμοποιήστε το μόνο με πηγές που "
 "εμπιστεύεσαι."
 
 #: includes/campaign_help.php:94
@@ -2821,7 +2918,7 @@ msgid ""
 "Type the feed address of a channel, a user or a playlist. The campaign takes "
 "the title, the image, the embedded video and the description."
 msgstr ""
-"Γράψε τη διεύθυνση ροής ενός καναλιού, ενός χρήστη ή μιας λίστας "
+"Γράψτε τη διεύθυνση ροής ενός καναλιού, ενός χρήστη ή μιας λίστας "
 "αναπαραγωγής. Η καμπάνια παίρνει τον τίτλο, την εικόνα, το ενσωματωμένο "
 "βίντεο και την περιγραφή."
 
@@ -2850,11 +2947,11 @@ msgid "Filtering out duplicates."
 msgstr "Φιλτράρισμα των διπλοτύπων."
 
 #: includes/campaign_preview.php:251 includes/campaign_preview_item.php:178
-#: includes/campaign_preview_item.php:295
+#: includes/campaign_preview_item.php:274
 msgid "You do not have sufficient permissions to preview this campaign."
 msgstr "Δεν έχετε επαρκή δικαιώματα για προεπισκόπηση αυτής της καμπάνιας."
 
-#: includes/campaign_preview.php:362 includes/campaign_preview_item.php:353
+#: includes/campaign_preview.php:362 includes/campaign_preview_item.php:332
 msgid "WPeMatico Preview Feed"
 msgstr "WPeMatico – Προεπισκόπηση ροής"
 
@@ -2875,21 +2972,21 @@ msgstr "Ενέργειες"
 msgid "Next fetch"
 msgstr "Επόμενη λήψη"
 
-#: includes/campaign_preview.php:450 includes/campaign_preview_item.php:378
+#: includes/campaign_preview.php:450 includes/campaign_preview_item.php:357
 msgid "Fetch Now"
 msgstr "Λήψη τώρα"
 
-#: includes/campaign_preview.php:46 includes/campaign_preview_item.php:276
+#: includes/campaign_preview.php:46 includes/campaign_preview_item.php:255
 msgid "This action comes with the Manual Fetching add-on."
 msgstr "Αυτή η ενέργεια έρχεται με το πρόσθετο Manual Fetching."
 
 #: includes/campaign_preview_item.php:187
-#: includes/campaign_preview_item.php:303
+#: includes/campaign_preview_item.php:282
 msgid "The item is invalid."
 msgstr "Το στοιχείο δεν είναι έγκυρο."
 
 #: includes/campaign_preview_item.php:194
-#: includes/campaign_preview_item.php:310
+#: includes/campaign_preview_item.php:289
 msgid "The feed is invalid."
 msgstr "Η ροή δεν είναι έγκυρη."
 
@@ -2897,11 +2994,11 @@ msgstr "Η ροή δεν είναι έγκυρη."
 msgid "The item could not be previewed."
 msgstr "Το στοιχείο δεν μπόρεσε να προεπισκοπηθεί."
 
-#: includes/campaign_preview_item.php:396
+#: includes/campaign_preview_item.php:375
 msgid "Loading post title..."
 msgstr "Φόρτωση τίτλου άρθρου…"
 
-#: includes/campaign_preview_item.php:400
+#: includes/campaign_preview_item.php:379
 msgid "Loading post content..."
 msgstr "Φόρτωση περιεχομένου άρθρου…"
 
@@ -3256,8 +3353,8 @@ msgstr "Στήλες."
 #: includes/campaigns_list_help.php:25
 msgid "The name you gave it. Hover to show the quick actions underneath."
 msgstr ""
-"Το όνομα που της έδωσες. Πέρασε από πάνω το ποντίκι για να δεις τις γρήγορες "
-"ενέργειες από κάτω."
+"Το όνομα που της δώσατε. Περάστε από πάνω το ποντίκι για να δείτε τις "
+"γρήγορες ενέργειες από κάτω."
 
 #: includes/campaigns_list_help.php:27
 msgid "The post type and status every new entry is published with."
@@ -3270,8 +3367,8 @@ msgid ""
 "Useful when add-ons give you more campaign types. You can hide this column "
 "in Screen Options."
 msgstr ""
-"Χρήσιμο όταν τα πρόσθετα σού δίνουν περισσότερους τύπους καμπάνιας. Μπορείς "
-"να κρύψεις αυτή τη στήλη από τις Επιλογές οθόνης."
+"Χρήσιμο όταν τα πρόσθετα σού δίνουν περισσότερους τύπους καμπάνιας. Μπορείτε "
+"να κρύψετε αυτή τη στήλη από τις Επιλογές οθόνης."
 
 #: includes/campaigns_list_help.php:31
 msgid ""
@@ -3302,12 +3399,12 @@ msgstr "Γρήγορες ενέργειες σε κάθε γραμμή."
 
 #: includes/campaigns_list_help.php:49
 msgid "Opens the campaign, the same as clicking its name."
-msgstr "Ανοίγει την καμπάνια, το ίδιο με το να πατήσεις το όνομά της."
+msgstr "Ανοίγει την καμπάνια, το ίδιο με το να πατήσετε το όνομά της."
 
 #: includes/campaigns_list_help.php:51
 msgid "Change the main fields without opening the campaign editor."
 msgstr ""
-"Άλλαξε τα βασικά πεδία χωρίς να ανοίξεις τον επεξεργαστή της καμπάνιας."
+"Αλλάξτε τα βασικά πεδία χωρίς να ανοίξετε τον επεξεργαστή της καμπάνιας."
 
 #: includes/campaigns_list_help.php:53
 msgid "Send the campaign to the trash."
@@ -3351,8 +3448,8 @@ msgid ""
 "Professional feature. Exports this campaign to a file you can import into "
 "another WordPress site."
 msgstr ""
-"Λειτουργία του Professional. Εξάγει αυτή την καμπάνια σε αρχείο που μπορείς "
-"να εισαγάγεις σε άλλον ιστότοπο WordPress."
+"Λειτουργία του Professional. Εξάγει αυτή την καμπάνια σε αρχείο που μπορείτε "
+"να εισαγάγετε σε άλλον ιστότοπο WordPress."
 
 #: includes/campaigns_list_help.php:73
 msgid "Run Multiple Campaigns at once."
@@ -3361,7 +3458,7 @@ msgstr "Εκτέλεση πολλών καμπανιών μαζί."
 #: includes/campaigns_list_help.php:77
 msgid "Tick the checkbox in the first column of each campaign you want to run."
 msgstr ""
-"Σημείωσε το πλαίσιο στην πρώτη στήλη κάθε καμπάνιας που θέλεις να τρέξει."
+"Σημειώστε το πλαίσιο στην πρώτη στήλη κάθε καμπάνιας που θέλετε να τρέξει."
 
 #: includes/campaigns_list_help.php:79
 msgid "The orange button starts the run, which can take a long time."
@@ -3380,7 +3477,7 @@ msgstr ""
 msgid "Bulk Edit changes the main fields of every campaign you select at once."
 msgstr ""
 "Η μαζική τροποποίηση αλλάζει τα βασικά πεδία όλων των καμπανιών που "
-"διαλέγεις με τη μία."
+"διαλέγετε με τη μία."
 
 #: includes/campaigns_list_help.php:97
 msgid "\"Send to Trash\" removes all the selected campaigns in one go."
@@ -3388,7 +3485,7 @@ msgstr "Το «Διαγραφή» αφαιρεί με τη μία όλες τι�
 
 #: includes/campaigns_list_help.php:99
 msgid "Select the campaigns, choose the action and click Apply."
-msgstr "Διάλεξε τις καμπάνιες, διάλεξε την ενέργεια και πάτα Εφαρμογή."
+msgstr "Διαλέξτε τις καμπάνιες, διαλέξτε την ενέργεια και πάτα Εφαρμογή."
 
 #: includes/class-tour-helper.php:104 includes/debug_page.php:2957
 msgid "Feeds"
@@ -4005,7 +4102,7 @@ msgstr "PHP Max Input Vars:"
 
 #: includes/debug_page.php:1746
 msgid "How many variables your server accepts in a single request."
-msgstr "Πόσες μεταβλητές δέχεται ο διακομιστής σου σε ένα αίτημα."
+msgstr "Πόσες μεταβλητές δέχεται ο διακομιστής σας σε ένα αίτημα."
 
 #: includes/debug_page.php:1760
 msgid "%1$s - Recommended Value: %2$s."
@@ -4024,7 +4121,7 @@ msgid ""
 "How many seconds your site may spend on a single operation before the server "
 "stops it."
 msgstr ""
-"Πόσα δευτερόλεπτα μπορεί να περάσει ο ιστότοπός σου σε μία μόνο ενέργεια "
+"Πόσα δευτερόλεπτα μπορεί να περάσει ο ιστότοπός σας σε μία μόνο ενέργεια "
 "πριν τη σταματήσει ο διακομιστής."
 
 #. translators: %1$s current Time limit value. %2$s URL.
@@ -4089,7 +4186,7 @@ msgstr ""
 
 #: includes/debug_page.php:1884
 msgid "We recommend turning Allow URL fopen on. "
-msgstr "Συνιστούμε να ανοίξεις το Allow URL fopen. "
+msgstr "Συνιστούμε να ανοίξετε το Allow URL fopen. "
 
 #: includes/debug_page.php:1892
 msgid "PHP: Allow URL fopen."
@@ -4109,7 +4206,7 @@ msgstr ""
 
 #: includes/debug_page.php:1922
 msgid "We recommend enabling ini_set() on your server. "
-msgstr "Συνιστούμε να επιτραπεί η ini_set() στον διακομιστή σου. "
+msgstr "Συνιστούμε να επιτραπεί η ini_set() στον διακομιστή σας. "
 
 #: includes/debug_page.php:1942
 msgid "PHP Disabled Functions:"
@@ -4128,7 +4225,7 @@ msgstr "PHP Display Errors:"
 #: includes/debug_page.php:1954
 msgid "Shows or hides the PHP errors and warnings of your site."
 msgstr ""
-"Δείχνει ή κρύβει τα σφάλματα και τις προειδοποιήσεις PHP του ιστότοπού σου."
+"Δείχνει ή κρύβει τα σφάλματα και τις προειδοποιήσεις PHP του ιστότοπού σας."
 
 #: includes/debug_page.php:1956
 msgid "On"
@@ -4311,7 +4408,7 @@ msgstr "Περιηγητής χρήστη:"
 
 #: includes/debug_page.php:2325
 msgid "The browser you are using right now."
-msgstr "Ο περιηγητής που χρησιμοποιείς αυτή τη στιγμή."
+msgstr "Ο περιηγητής που χρησιμοποιείτε αυτή τη στιγμή."
 
 #: includes/debug_page.php:2333
 msgid "Home URL:"
@@ -4663,7 +4760,7 @@ msgstr "Λήψη ροής"
 #: includes/debug_page.php:3712 includes/wpematico_functions.php:2987
 #: includes/wpematico_functions.php:3012 includes/wpematico_functions.php:3208
 #: includes/wpematico_functions.php:3387 includes/xml-importer.php:361
-#: includes/settings/page.php:1265 includes/module/manager.php:265
+#: includes/settings/page.php:1277 includes/module/manager.php:265
 msgid "Permission denied"
 msgstr "Δεν επιτρέπεται"
 
@@ -4697,13 +4794,13 @@ msgstr "Αντιγράφηκε στο πρόχειρο."
 
 #: includes/debug_page.php:607 includes/tools_page.php:702
 #: includes/xml-importer.php:370 includes/settings/page.php:124
-#: includes/settings/page.php:1119
+#: includes/settings/page.php:1131
 msgid "Invalid request."
 msgstr "Μη έγκυρο αίτημα."
 
 #: includes/debug_page.php:607 includes/tools_page.php:702
 #: includes/wpematico_functions.php:3378 includes/xml-importer.php:370
-#: includes/settings/page.php:124 includes/settings/page.php:1119
+#: includes/settings/page.php:124 includes/settings/page.php:1131
 msgid "Invalid request"
 msgstr "Μη έγκυρο αίτημα"
 
@@ -6310,7 +6407,7 @@ msgstr "Μη έγκυρη αντικατάσταση."
 
 #: includes/migration/class-migration-manager.php:470
 msgid "The shortcode was not found in this content (it may have changed)."
-msgstr "Το shortcode δεν βρέθηκε σε αυτό το περιεχόμενο (μπορεί να άλλαξε)."
+msgstr "Το shortcode δεν βρέθηκε σε αυτό το περιεχόμενο (μπορεί να αλλάξτε)."
 
 #: includes/migration/class-migration-manager.php:63
 msgid ""
@@ -7169,7 +7266,7 @@ msgstr ""
 "Δημοσιεύστε το επιμελημένο περιεχόμενο ως θέματα φόρουμ ή ως απαντήσεις σε "
 "αυτά."
 
-#: includes/module/actions.php:162 includes/module/actions.php:201
+#: includes/module/actions.php:162 includes/module/actions.php:210
 msgid "Enable it in a campaign by choosing its Campaign Type."
 msgstr "Ενεργοποιήστε το σε μια καμπάνια επιλέγοντας τον τύπο καμπάνιας της."
 
@@ -7216,31 +7313,46 @@ msgstr ""
 "προφίλ, του καναλιού ή της ομάδας και η καμπάνια βρίσκει μόνη της τη ροή."
 
 #: includes/module/actions.php:195
+msgid "Publish the news of a Google News search, topic or publication."
+msgstr ""
+"Δημοσιεύστε τις ειδήσεις μιας αναζήτησης, ενός θέματος ή ενός μέσου του "
+"Google News."
+
+#: includes/module/actions.php:199
+msgid ""
+"Adds Google News to the Campaign Type list. Paste the address of the search, "
+"topic or publication and the campaign finds its feed on its own."
+msgstr ""
+"Προσθέτει το Google News στη λίστα τύπων καμπάνιας. Επικολλήστε τη διεύθυνση "
+"της αναζήτησης, του θέματος ή του μέσου και η καμπάνια βρίσκει μόνη της τη "
+"ροή."
+
+#: includes/module/actions.php:204
 msgid "Import videos from YouTube channels."
 msgstr "Εισαγάγετε βίντεο από κανάλια του YouTube."
 
-#: includes/module/actions.php:205
+#: includes/module/actions.php:214
 msgid ""
 "Assign categories automatically from the words found in the curated content."
 msgstr ""
 "Αποδώστε κατηγορίες αυτόματα από τις λέξεις που βρίσκονται στο επιμελημένο "
 "περιεχόμενο."
 
-#: includes/module/actions.php:209
+#: includes/module/actions.php:218
 msgid "Set the words and the category each one maps to in the Settings page."
 msgstr "Ορίστε τις λέξεις και την κατηγορία της καθεμιάς στη σελίδα Ρυθμίσεων."
 
-#: includes/module/actions.php:213
+#: includes/module/actions.php:222
 msgid "Canonical URLs"
 msgstr "Κανονικές διευθύνσεις"
 
-#: includes/module/actions.php:214
+#: includes/module/actions.php:223
 msgid ""
 "Credit the original article with a canonical URL on every imported post."
 msgstr ""
 "Αποδώστε το αρχικό άρθρο με κανονική διεύθυνση σε κάθε εισαγόμενο άρθρο."
 
-#: includes/module/actions.php:218
+#: includes/module/actions.php:227
 msgid ""
 "Tells search engines which is the original article, so the copy is not "
 "judged as duplicate content."
@@ -7248,16 +7360,16 @@ msgstr ""
 "Λέει στις μηχανές αναζήτησης ποιο είναι το αρχικό άρθρο, ώστε το αντίγραφο "
 "να μη θεωρηθεί διπλότυπο περιεχόμενο."
 
-#: includes/module/actions.php:222
+#: includes/module/actions.php:231
 msgid "Download Images"
 msgstr "Λήψη εικόνων"
 
-#: includes/module/actions.php:223
+#: includes/module/actions.php:232
 msgid "Download the images of each item into the WordPress Media Library."
 msgstr ""
 "Κατεβάστε τις εικόνες κάθε στοιχείου στη βιβλιοθήκη πολυμέσων του WordPress."
 
-#: includes/module/actions.php:228
+#: includes/module/actions.php:237
 msgid ""
 "Turn it on here; the size, quality and naming options are in the Settings "
 "page."
@@ -7265,11 +7377,11 @@ msgstr ""
 "Ενεργοποιήστε το εδώ· οι επιλογές μεγέθους, ποιότητας και ονομασίας είναι "
 "στη σελίδα Ρυθμίσεων."
 
-#: includes/module/actions.php:231
+#: includes/module/actions.php:240
 msgid "Featured Images"
 msgstr "Χαρακτηριστικές εικόνες"
 
-#: includes/module/actions.php:232
+#: includes/module/actions.php:241
 msgid ""
 "Give every imported post a featured image, taken from the first image of the "
 "item."
@@ -7277,7 +7389,7 @@ msgstr ""
 "Δώστε σε κάθε εισαγόμενο άρθρο μια χαρακτηριστική εικόνα, από την πρώτη "
 "εικόνα του στοιχείου."
 
-#: includes/module/actions.php:237
+#: includes/module/actions.php:246
 msgid ""
 "Each campaign can override it, and the Featured Image from URL module "
 "decides whether the image is downloaded or linked."
@@ -7285,24 +7397,24 @@ msgstr ""
 "Κάθε καμπάνια μπορεί να το παρακάμψει, και το άρθρωμα «Χαρακτηριστική εικόνα "
 "από URL» αποφασίζει αν η εικόνα κατεβαίνει ή απλώς συνδέεται."
 
-#: includes/module/actions.php:241
+#: includes/module/actions.php:250
 msgid "Email Notifications"
 msgstr "Ειδοποιήσεις email"
 
-#: includes/module/actions.php:242
+#: includes/module/actions.php:251
 msgid "Get an email report every time a campaign finishes a run."
 msgstr ""
 "Λάβετε αναφορά με email κάθε φορά που μια καμπάνια ολοκληρώνει μια εκτέλεση."
 
-#: includes/module/actions.php:248
+#: includes/module/actions.php:257
 msgid "Deactivate in each campaign by clearing the email field."
 msgstr "Απενεργοποιήστε το σε κάθε καμπάνια αδειάζοντας το πεδίο του email."
 
-#: includes/module/actions.php:251
+#: includes/module/actions.php:260
 msgid "Random Galleries"
 msgstr "Τυχαίες συλλογές"
 
-#: includes/module/actions.php:252
+#: includes/module/actions.php:261
 msgid ""
 "Group images by topic and give each post a featured image picked at random "
 "from its gallery."
@@ -7310,38 +7422,38 @@ msgstr ""
 "Ομαδοποιήστε εικόνες ανά θέμα και δώστε σε κάθε άρθρο μια χαρακτηριστική "
 "εικόνα που επιλέγεται τυχαία από τη συλλογή του."
 
-#: includes/module/actions.php:258 includes/module/actions.php:269
-#: includes/module/actions.php:652 includes/module/actions.php:664
-#: includes/module/actions.php:687
+#: includes/module/actions.php:267 includes/module/actions.php:278
+#: includes/module/actions.php:661 includes/module/actions.php:673
+#: includes/module/actions.php:696
 msgid "Available in the Professional addon."
 msgstr "Διαθέσιμο στην επέκταση Professional."
 
-#: includes/module/actions.php:261
+#: includes/module/actions.php:270
 msgid "Random Rewrites"
 msgstr "Τυχαίες αντικαταστάσεις"
 
-#: includes/module/actions.php:262
+#: includes/module/actions.php:271
 msgid "Rewrite custom words randomly as synonyms."
 msgstr "Αντικαταστήστε επιλεγμένες λέξεις τυχαία με συνώνυμα."
 
-#: includes/module/actions.php:266
+#: includes/module/actions.php:275
 msgid ""
 "You must complete the words separated by comma and per line in the textarea."
 msgstr ""
 "Πρέπει να συμπληρώσετε τις λέξεις χωρισμένες με κόμμα, μία γραμμή για κάθε "
 "ομάδα, στο πλαίσιο κειμένου."
 
-#: includes/module/actions.php:310
+#: includes/module/actions.php:319
 msgid "Turning this off deactivates the %s plugin."
 msgstr "Αν το απενεργοποιήσετε, απενεργοποιείται το πρόσθετο %s."
 
-#: includes/module/actions.php:312
+#: includes/module/actions.php:321
 msgid "The plugin is installed but not running. Turning this on activates %s."
 msgstr ""
 "Το πρόσθετο είναι εγκατεστημένο αλλά δεν τρέχει. Αν το ενεργοποιήσετε, "
 "ενεργοποιείται το %s."
 
-#: includes/module/actions.php:318
+#: includes/module/actions.php:327
 msgid ""
 "%s is not installed yet. Install it from here, free, and this switch turns "
 "it on."
@@ -7349,62 +7461,62 @@ msgstr ""
 "Το %s δεν είναι ακόμη εγκατεστημένο. Εγκαταστήστε το από εδώ, δωρεάν, και "
 "αυτός ο διακόπτης θα το ενεργοποιήσει."
 
-#: includes/module/actions.php:322
+#: includes/module/actions.php:331
 msgid "Needs the %s addon. Get it at etruel.com and this switch enables it."
 msgstr ""
 "Χρειάζεται την επέκταση %s. Αποκτήστε την στο etruel.com και αυτός ο "
 "διακόπτης θα την ενεργοποιήσει."
 
-#: includes/module/actions.php:361 includes/module/actions.php:435
+#: includes/module/actions.php:370 includes/module/actions.php:444
 msgid ""
 "%s is installed but not active. Turn it on and this module becomes available."
 msgstr ""
 "Το %s είναι εγκατεστημένο αλλά ανενεργό. Ενεργοποιήστε το και αυτό το "
 "άρθρωμα θα γίνει διαθέσιμο."
 
-#: includes/module/actions.php:420
+#: includes/module/actions.php:429
 msgid "It also needs the free %s plugin."
 msgstr "Χρειάζεται επίσης το δωρεάν πρόσθετο %s."
 
-#: includes/module/actions.php:440
+#: includes/module/actions.php:449
 msgid "Needs the free %s plugin, which is not installed yet."
 msgstr "Χρειάζεται το δωρεάν πρόσθετο %s, που δεν είναι ακόμη εγκατεστημένο."
 
-#: includes/module/actions.php:441 includes/module/dashboard.php:62
+#: includes/module/actions.php:450 includes/module/dashboard.php:62
 #: includes/module/manager.php:194
 msgid "Install"
 msgstr "Εγκατάσταση"
 
-#: includes/module/actions.php:516
+#: includes/module/actions.php:525
 msgid "Delete Duplicates"
 msgstr "Διαγραφή διπλότυπων"
 
-#: includes/module/actions.php:517
+#: includes/module/actions.php:526
 msgid "Automatically search and delete duplicated posts by name or content."
 msgstr ""
 "Αναζητήστε και διαγράψτε αυτόματα διπλότυπα άρθρα κατά όνομα ή περιεχόμενο."
 
-#: includes/module/actions.php:522
+#: includes/module/actions.php:531
 msgid "Installs the free WP Delete Post Copies plugin from WordPress.org."
 msgstr ""
 "Εγκαθιστά το δωρεάν πρόσθετο WP Delete Post Copies από το WordPress.org."
 
-#: includes/module/actions.php:526
+#: includes/module/actions.php:535
 msgid "WPeMatico Polylang"
 msgstr "WPeMatico Polylang"
 
-#: includes/module/actions.php:527
+#: includes/module/actions.php:536
 msgid ""
 "Assigns the imported posts to the right language on sites running Polylang."
 msgstr ""
 "Αποδίδει τα εισαγόμενα άρθρα στη σωστή γλώσσα σε ιστότοπους που τρέχουν "
 "Polylang."
 
-#: includes/module/actions.php:532
+#: includes/module/actions.php:541
 msgid "Installs the free WPeMatico Polylang plugin from WordPress.org."
 msgstr "Εγκαθιστά το δωρεάν πρόσθετο WPeMatico Polylang από το WordPress.org."
 
-#: includes/module/actions.php:539
+#: includes/module/actions.php:548
 msgid ""
 "The addon files each imported post under a language, and languages only "
 "exist while Polylang runs."
@@ -7412,11 +7524,11 @@ msgstr ""
 "Η επέκταση κατατάσσει κάθε εισαγόμενο άρθρο σε μια γλώσσα, και οι γλώσσες "
 "υπάρχουν μόνο όσο τρέχει το Polylang."
 
-#: includes/module/actions.php:544
+#: includes/module/actions.php:553
 msgid "RSS Items Aggregator"
 msgstr "Συλλέκτης στοιχείων RSS"
 
-#: includes/module/actions.php:545
+#: includes/module/actions.php:554
 msgid ""
 "Also known as RSS Feed Reader: shows the items of several feeds inside one "
 "post or page."
@@ -7424,23 +7536,23 @@ msgstr ""
 "Γνωστό και ως RSS Feed Reader: δείχνει τα στοιχεία πολλών ροών μέσα σε ένα "
 "άρθρο ή σελίδα."
 
-#: includes/module/actions.php:550
+#: includes/module/actions.php:559
 msgid "Installs the free WPeMatico RSS Feed Reader plugin from WordPress.org."
 msgstr ""
 "Εγκαθιστά το δωρεάν πρόσθετο WPeMatico RSS Feed Reader από το WordPress.org."
 
-#: includes/module/actions.php:551
+#: includes/module/actions.php:560
 msgid "Requires WPeMatico RSS Feed Reader"
 msgstr "Απαιτεί το WPeMatico RSS Feed Reader"
 
-#: includes/module/actions.php:561
+#: includes/module/actions.php:570
 msgid ""
 "Use the image at its original URL as featured image, without downloading it."
 msgstr ""
 "Χρήση της εικόνας στη δική της αρχική διεύθυνση ως χαρακτηριστικής, χωρίς "
 "λήψη της."
 
-#: includes/module/actions.php:568
+#: includes/module/actions.php:577
 msgid ""
 "Featured Images is off, so nothing picks the image to link — unless an addon "
 "such as Professional or Full Content supplies one."
@@ -7449,7 +7561,7 @@ msgstr ""
 "διαλέγει την εικόνα που θα συνδεθεί — εκτός αν την προσφέρει μια επέκταση "
 "όπως το Professional ή το Full Content."
 
-#: includes/module/actions.php:569
+#: includes/module/actions.php:578
 msgid ""
 "The image is linked from its original site instead of being downloaded, so "
 "it takes up no space in your Media Library."
@@ -7457,7 +7569,7 @@ msgstr ""
 "Η εικόνα συνδέεται από τον αρχικό της ιστότοπο αντί να κατεβαίνει, οπότε δεν "
 "πιάνει χώρο στη βιβλιοθήκη πολυμέσων σας."
 
-#: includes/module/actions.php:578
+#: includes/module/actions.php:587
 msgid ""
 "WPeMatico stores the image URL on each post; that plugin is what turns it "
 "into the featured image WordPress shows."
@@ -7466,22 +7578,22 @@ msgstr ""
 "πρόσθετο είναι που την κάνει την χαρακτηριστική εικόνα που δείχνει το "
 "WordPress."
 
-#: includes/module/actions.php:589
+#: includes/module/actions.php:598
 msgid "Auto Delete"
 msgstr "Αυτόματη διαγραφή"
 
-#: includes/module/actions.php:590
+#: includes/module/actions.php:599
 msgid ""
 "Delete the posts of the categories you choose once they reach a given age."
 msgstr ""
 "Διαγράψτε τα άρθρα των κατηγοριών που επιλέγετε μόλις φτάσουν μια δεδομένη "
 "ηλικία."
 
-#: includes/module/actions.php:596
+#: includes/module/actions.php:605
 msgid "Helpful if you want to remove stale or old items automatically."
 msgstr "Χρήσιμο αν θέλετε να φεύγουν αυτόματα τα παλιά ή ξεπερασμένα στοιχεία."
 
-#: includes/module/actions.php:604
+#: includes/module/actions.php:613
 msgid ""
 "The addon extends that free plugin, the same one the Delete Duplicates card "
 "installs."
@@ -7489,11 +7601,11 @@ msgstr ""
 "Η επέκταση βασίζεται σε εκείνο το δωρεάν πρόσθετο, το ίδιο που εγκαθιστά η "
 "κάρτα «Διαγραφή διπλότυπων»."
 
-#: includes/module/actions.php:609
+#: includes/module/actions.php:618
 msgid "Polyglot"
 msgstr "Polyglot"
 
-#: includes/module/actions.php:610
+#: includes/module/actions.php:619
 msgid ""
 "Translate the fetched content with any of several free and paid translation "
 "engines."
@@ -7501,102 +7613,102 @@ msgstr ""
 "Μεταφράστε το περιεχόμενο που λαμβάνεται με οποιαδήποτε από τις πολλές "
 "δωρεάν και επί πληρωμή μηχανές μετάφρασης."
 
-#: includes/module/actions.php:617
+#: includes/module/actions.php:626
 msgid "Requires WPeMatico Polyglot addon"
 msgstr "Απαιτεί την επέκταση WPeMatico Polyglot"
 
-#: includes/module/actions.php:621
+#: includes/module/actions.php:630
 msgid "GPT Spinner AI"
 msgstr "GPT Spinner AI"
 
-#: includes/module/actions.php:622
+#: includes/module/actions.php:631
 msgid "Rewrite the fetched content automatically through an AI or spinner API."
 msgstr ""
 "Αναδιατυπώστε αυτόματα το περιεχόμενο που λαμβάνεται μέσω ενός API τεχνητής "
 "νοημοσύνης ή spinner."
 
-#: includes/module/actions.php:629
+#: includes/module/actions.php:638
 msgid "Requires AI addon"
 msgstr "Απαιτεί την επέκταση ΤΝ"
 
-#: includes/module/actions.php:633
+#: includes/module/actions.php:642
 msgid "Full Contents"
 msgstr "Πλήρες περιεχόμενο"
 
-#: includes/module/actions.php:634
+#: includes/module/actions.php:643
 msgid "Enable full content extraction from each source website."
 msgstr "Ενεργοποιήστε την εξαγωγή πλήρους περιεχομένου από κάθε ιστότοπο-πηγή."
 
-#: includes/module/actions.php:641
+#: includes/module/actions.php:650
 msgid "Requires WPeMatico Full Content addon"
 msgstr "Απαιτεί την επέκταση WPeMatico Full Content"
 
-#: includes/module/actions.php:645
+#: includes/module/actions.php:654
 msgid "Bulk Add Sources"
 msgstr "Μαζική προσθήκη πηγών"
 
-#: includes/module/actions.php:646
+#: includes/module/actions.php:655
 msgid ""
 "Paste or upload a list of feeds to add many sources to a campaign at once."
 msgstr ""
 "Επικολλήστε ή ανεβάστε μια λίστα ροών για να προσθέσετε πολλές πηγές σε μια "
 "καμπάνια με τη μία."
 
-#: includes/module/actions.php:653
+#: includes/module/actions.php:662
 msgid "A Professional feature, you can activate it here."
 msgstr "Δυνατότητα του Professional, μπορείτε να την ενεργοποιήσετε εδώ."
 
-#: includes/module/actions.php:657
+#: includes/module/actions.php:666
 msgid "Keyword Filtering"
 msgstr "Φιλτράρισμα λέξεων-κλειδιών"
 
-#: includes/module/actions.php:658
+#: includes/module/actions.php:667
 msgid ""
 "Keep or skip each item by the keywords found in its title or its content."
 msgstr ""
 "Κρατήστε ή παραλείψτε κάθε στοιχείο ανάλογα με τις λέξεις-κλειδιά στον τίτλο "
 "ή στο περιεχόμενό του."
 
-#: includes/module/actions.php:668
+#: includes/module/actions.php:677
 msgid "Facebook Source"
 msgstr "Πηγή Facebook"
 
-#: includes/module/actions.php:669
+#: includes/module/actions.php:678
 msgid "Import content from Facebook profiles and groups."
 msgstr "Εισαγάγετε περιεχόμενο από προφίλ και ομάδες του Facebook."
 
-#: includes/module/actions.php:676
+#: includes/module/actions.php:685
 msgid "Requires Facebook Campaign addon"
 msgstr "Απαιτεί την επέκταση Facebook Campaign"
 
-#: includes/module/actions.php:680
+#: includes/module/actions.php:689
 msgid "Export/Import Campaigns"
 msgstr "Εξαγωγή/εισαγωγή καμπανιών"
 
-#: includes/module/actions.php:681
+#: includes/module/actions.php:690
 msgid "Migrate campaigns between sites."
 msgstr "Μεταφέρετε καμπάνιες ανάμεσα σε ιστότοπους."
 
-#: includes/module/actions.php:691
+#: includes/module/actions.php:700
 msgid "Feed Creator"
 msgstr "Feed Creator"
 
-#: includes/module/actions.php:692
+#: includes/module/actions.php:701
 msgid ""
 "Generate custom RSS feeds from external webpages to fetch with WPeMatico."
 msgstr ""
 "Δημιουργήστε προσαρμοσμένες ροές RSS από εξωτερικές ιστοσελίδες, για να τις "
 "λαμβάνει το WPeMatico."
 
-#: includes/module/actions.php:699
+#: includes/module/actions.php:708
 msgid "Requires \"Make Me Feed\" addon"
 msgstr "Απαιτεί την επέκταση «Make Me Feed»"
 
-#: includes/module/actions.php:703
+#: includes/module/actions.php:712
 msgid "Publish To Email"
 msgstr "Δημοσίευση με email"
 
-#: includes/module/actions.php:704
+#: includes/module/actions.php:713
 msgid ""
 "Mail each post of a campaign to an address that publishes it, instead of "
 "publishing it here or as well as here."
@@ -7604,15 +7716,15 @@ msgstr ""
 "Στείλτε κάθε άρθρο μιας καμπάνιας σε μια διεύθυνση που το δημοσιεύει, αντί "
 "να δημοσιεύεται εδώ — ή και μαζί με εδώ."
 
-#: includes/module/actions.php:711
+#: includes/module/actions.php:720
 msgid "Requires Email Campaign addon"
 msgstr "Απαιτεί την επέκταση Email Campaign"
 
-#: includes/module/actions.php:715
+#: includes/module/actions.php:724
 msgid "Better Excerpts"
 msgstr "Καλύτερα αποσπάσματα"
 
-#: includes/module/actions.php:716
+#: includes/module/actions.php:725
 msgid ""
 "Cut the excerpt at the length you set and back to the end of the last whole "
 "sentence, never mid-word."
@@ -7620,15 +7732,15 @@ msgstr ""
 "Κόψτε το απόσπασμα στο μήκος που ορίζετε και πίσω ως το τέλος της τελευταίας "
 "ολόκληρης πρότασης, ποτέ στη μέση λέξης."
 
-#: includes/module/actions.php:723
+#: includes/module/actions.php:732
 msgid "Requires Better Excerpts addon"
 msgstr "Απαιτεί την επέκταση Better Excerpts"
 
-#: includes/module/actions.php:727
+#: includes/module/actions.php:736
 msgid "Synchronizer"
 msgstr "Synchronizer"
 
-#: includes/module/actions.php:728
+#: includes/module/actions.php:737
 msgid ""
 "Update the posts you already imported when the source article changes, "
 "instead of publishing a duplicate."
@@ -7636,15 +7748,15 @@ msgstr ""
 "Ενημερώστε τα άρθρα που έχετε ήδη εισαγάγει όταν αλλάζει το άρθρο-πηγή, αντί "
 "να δημοσιεύεται διπλότυπο."
 
-#: includes/module/actions.php:735
+#: includes/module/actions.php:744
 msgid "Requires Synchronizer addon"
 msgstr "Απαιτεί την επέκταση Synchronizer"
 
-#: includes/module/actions.php:739
+#: includes/module/actions.php:748
 msgid "Manual Fetching"
 msgstr "Χειροκίνητη λήψη"
 
-#: includes/module/actions.php:740
+#: includes/module/actions.php:749
 msgid ""
 "See the items each feed will bring, and publish the ones you choose one by "
 "one or in bulk."
@@ -7652,15 +7764,15 @@ msgstr ""
 "Δείτε τα στοιχεία που θα φέρει κάθε ροή και δημοσιεύστε όσα επιλέξετε, ένα-"
 "ένα ή μαζικά."
 
-#: includes/module/actions.php:747
+#: includes/module/actions.php:756
 msgid "Requires Manual Fetching addon"
 msgstr "Απαιτεί την επέκταση Manual Fetching"
 
-#: includes/module/actions.php:751
+#: includes/module/actions.php:760
 msgid "Exporter"
 msgstr "Exporter"
 
-#: includes/module/actions.php:752
+#: includes/module/actions.php:761
 msgid ""
 "Export your posts to a file on a schedule, in the format your template "
 "defines, by download, folder, FTP or SSH."
@@ -7668,15 +7780,15 @@ msgstr ""
 "Εξαγάγετε τα άρθρα σας σε αρχείο βάσει προγράμματος, στη μορφή που ορίζει το "
 "πρότυπό σας, με λήψη, φάκελο, FTP ή SSH."
 
-#: includes/module/actions.php:759
+#: includes/module/actions.php:768
 msgid "Requires Exporter addon"
 msgstr "Απαιτεί την επέκταση Exporter"
 
-#: includes/module/actions.php:763
+#: includes/module/actions.php:772
 msgid "Office"
 msgstr "Office"
 
-#: includes/module/actions.php:764
+#: includes/module/actions.php:773
 msgid ""
 "Publish posts from the .docx and PDF files in a folder of your server, with "
 "their text and their images."
@@ -7684,32 +7796,32 @@ msgstr ""
 "Δημοσιεύστε άρθρα από τα αρχεία .docx και PDF ενός φακέλου του διακομιστή "
 "σας, με το κείμενο και τις εικόνες τους."
 
-#: includes/module/actions.php:771
+#: includes/module/actions.php:780
 msgid "Requires Office Campaign addon"
 msgstr "Απαιτεί την επέκταση Office Campaign"
 
-#: includes/module/actions.php:779
+#: includes/module/actions.php:788
 msgid "Rewrite Rules"
 msgstr "Κανόνες αντικατάστασης"
 
-#: includes/module/actions.php:780
+#: includes/module/actions.php:789
 msgid "Search and replace words or HTML in the fetched content, per campaign."
 msgstr ""
 "Αναζητήστε και αντικαταστήστε λέξεις ή HTML στο περιεχόμενο που λαμβάνεται, "
 "ανά καμπάνια."
 
-#: includes/module/actions.php:787
+#: includes/module/actions.php:796
 msgid "Customer Support"
 msgstr "Υποστήριξη πελατών"
 
-#: includes/module/actions.php:788
+#: includes/module/actions.php:797
 msgid ""
 "Free setup assistance and troubleshooting, or step up to Premium Support."
 msgstr ""
 "Δωρεάν βοήθεια στη ρύθμιση και στην επίλυση προβλημάτων, ή αναβαθμίστε στην "
 "υποστήριξη Premium."
 
-#: includes/module/actions.php:796
+#: includes/module/actions.php:805
 msgid "Requires registration at etruel.com"
 msgstr "Απαιτεί εγγραφή στο etruel.com"
 
@@ -8030,7 +8142,7 @@ msgstr "Φόρτωση της σελίδας ρυθμίσεων του WPeMatico
 
 #: includes/plugin_functions.php:340
 msgid "Take a look at all the bundled add-ons"
-msgstr "Ρίξε μια ματιά σε όλα τα πρόσθετα του πακέτου"
+msgstr "Ρίξτε μια ματιά σε όλα τα πρόσθετα του πακέτου"
 
 #: includes/plugin_functions.php:340 includes/settings/widgets.php:377
 msgid "Go Perfect"
@@ -8083,8 +8195,8 @@ msgstr "⚡ Το πρόσθετο δεν δουλεύει όπως περίμε�
 msgid ""
 "❌ The plugin caused issues on my site (let us know so we can resolve them)"
 msgstr ""
-"❌ Το πρόσθετο δημιούργησε προβλήματα στον ιστότοπό μου (πείτε μας για να τα "
-"λύσουμε)"
+"❌ Το πρόσθετο δημιουργήστε προβλήματα στον ιστότοπό μου (πείτε μας για να "
+"τα λύσουμε)"
 
 #: includes/plugin_functions.php:85
 msgid ""
@@ -8160,7 +8272,7 @@ msgid ""
 "Video files are heavy: storing them locally fills your disk fast. Each "
 "campaign can set this on its own."
 msgstr ""
-"Τα βίντεο είναι βαριά: αποθηκευμένα τοπικά γεμίζουν γρήγορα τον δίσκο σου. "
+"Τα βίντεο είναι βαριά: αποθηκευμένα τοπικά γεμίζουν γρήγορα τον δίσκο σας. "
 "Κάθε καμπάνια μπορεί να το ορίσει μόνη της."
 
 #: includes/settings/help.php:125
@@ -8197,8 +8309,8 @@ msgstr "Ενεργοποίηση λειτουργιών"
 msgid ""
 "Each one adds its own box to every campaign. Leave off what you do not use."
 msgstr ""
-"Καθεμιά προσθέτει το δικό της πλαίσιο σε κάθε καμπάνια. Άφησε κλειστές όσες "
-"δεν χρησιμοποιείς."
+"Καθεμιά προσθέτει το δικό της πλαίσιο σε κάθε καμπάνια. Αφήστε κλειστές όσες "
+"δεν χρησιμοποιείτε."
 
 #: includes/settings/help.php:152
 msgid ""
@@ -8215,9 +8327,9 @@ msgid ""
 "channel or group. Paste the address and the campaign finds its feed on its "
 "own."
 msgstr ""
-"Προσθέτει το Vimeo στη λίστα τύπων καμπάνιας, για να δημοσιεύεις τα βίντεο "
-"ενός χρήστη, καναλιού ή ομάδας Vimeo. Επικόλλησε τη διεύθυνση και η καμπάνια "
-"βρίσκει μόνη της τη ροή."
+"Προσθέτει το Vimeo στη λίστα τύπων καμπάνιας, για να δημοσιεύετε τα βίντεο "
+"ενός χρήστη, καναλιού ή ομάδας Vimeo. Επικολλήστε τη διεύθυνση και η "
+"καμπάνια βρίσκει μόνη της τη ροή."
 
 #: includes/settings/help.php:157
 msgid ""
@@ -8227,11 +8339,35 @@ msgstr ""
 "Το Vimeo δημοσιεύει τα 10 τελευταία βίντεο του καθενός. Αφήστε το ανενεργό "
 "αν δεν χρησιμοποιείτε Vimeo: ο τύπος καμπάνιας δεν φορτώνεται καθόλου."
 
-#: includes/settings/help.php:160 includes/settings/page.php:737
+#: includes/settings/help.php:160
+msgid "Google News campaign type"
+msgstr "Τύπος καμπάνιας Google News"
+
+#: includes/settings/help.php:161
+msgid ""
+"Adds Google News to the campaign type list, to publish the news of a search, "
+"a topic or a publication. Paste the address and the campaign finds its feed "
+"on its own."
+msgstr ""
+"Προσθέτει το Google News στη λίστα τύπων καμπάνιας, για να δημοσιεύετε τις "
+"ειδήσεις μιας αναζήτησης, ενός θέματος ή ενός μέσου. Επικολλήστε τη "
+"διεύθυνση και η καμπάνια βρίσκει μόνη της τη ροή."
+
+#: includes/settings/help.php:162
+msgid ""
+"Each item brings the headline, the date and the name of the publication, and "
+"links to Google News. Leave this off if you do not use Google News: the "
+"campaign type is not loaded at all."
+msgstr ""
+"Κάθε στοιχείο φέρνει τον τίτλο, την ημερομηνία και το όνομα του μέσου, και "
+"συνδέει στο Google News. Αφήστε το ανενεργό αν δεν χρησιμοποιείτε Google "
+"News: ο τύπος καμπάνιας δεν φορτώνεται καθόλου."
+
+#: includes/settings/help.php:165 includes/settings/page.php:749
 msgid "Canonical URL to the source"
 msgstr "Κανονική διεύθυνση προς την πηγή"
 
-#: includes/settings/help.php:161
+#: includes/settings/help.php:166
 msgid ""
 "Each imported post declares the original article as its canonical URL. It "
 "does not work on every server."
@@ -8239,31 +8375,31 @@ msgstr ""
 "Κάθε εισαγόμενο άρθρο δηλώνει το αρχικό άρθρο ως κανονική του διεύθυνση. Δεν "
 "δουλεύει σε κάθε διακομιστή."
 
-#: includes/settings/help.php:162
+#: includes/settings/help.php:167
 msgid ""
 "This tells search engines which copy of the article is the one to index, so "
 "your site is not penalised for duplicated content."
 msgstr ""
 "Αυτό λέει στις μηχανές αναζήτησης ποιο αντίγραφο του άρθρου να "
-"ευρετηριάσουν, ώστε ο ιστότοπός σου να μην τιμωρείται για διπλό περιεχόμενο."
+"ευρετηριάσουν, ώστε ο ιστότοπός σας να μην τιμωρείται για διπλό περιεχόμενο."
 
-#: includes/settings/help.php:167
+#: includes/settings/help.php:172
 msgid "Force the bundled SimplePie library"
 msgstr "Επιβολή της ενσωματωμένης βιβλιοθήκης SimplePie"
 
-#: includes/settings/help.php:168
+#: includes/settings/help.php:173
 msgid ""
 "Ignores the SimplePie that ships with WordPress. You only need this if that "
 "version gives you trouble."
 msgstr ""
-"Αγνοεί τη SimplePie που έρχεται με το WordPress. Το χρειάζεσαι μόνο αν "
+"Αγνοεί τη SimplePie που έρχεται με το WordPress. Το χρειάζεστε μόνο αν "
 "εκείνη η έκδοση σού δημιουργεί πρόβλημα."
 
-#: includes/settings/help.php:171 includes/settings/page.php:428
+#: includes/settings/help.php:176 includes/settings/page.php:428
 msgid "Set SimplePie \"stupidly fast\""
 msgstr "Ρύθμιση της SimplePie σε «stupidly fast»"
 
-#: includes/settings/help.php:172
+#: includes/settings/help.php:177
 msgid ""
 "SimplePie gives up most of its sanitizing in exchange for speed: the feed "
 "content arrives with no parsers and no filters."
@@ -8272,54 +8408,54 @@ msgstr ""
 "της ταχύτητας: το περιεχόμενο της ροής φτάνει χωρίς αναλυτές και χωρίς "
 "φίλτρα."
 
-#: includes/settings/help.php:173
+#: includes/settings/help.php:178
 msgid ""
 "Nothing is stripped from the content: all HTML, styles and scripts come "
 "through. Use it only with feeds you trust; otherwise set the allowed tags "
 "and attributes below."
 msgstr ""
 "Δεν αφαιρείται τίποτα από το περιεχόμενο: περνούν όλη η HTML, τα στυλ και τα "
-"scripts. Χρησιμοποίησέ το μόνο με ροές που εμπιστεύεσαι· αλλιώς όρισε "
+"scripts. Χρησιμοποιήστε το μόνο με ροές που εμπιστεύεσαι· αλλιώς ορίστε "
 "παρακάτω τις επιτρεπόμενες ετικέτες και ιδιότητες."
 
-#: includes/settings/help.php:176 includes/settings/page.php:436
+#: includes/settings/help.php:181 includes/settings/page.php:436
 msgid "HTML tags SimplePie strips"
 msgstr "Ετικέτες HTML που αφαιρεί η SimplePie"
 
-#: includes/settings/help.php:177
+#: includes/settings/help.php:182
 msgid ""
 "SimplePie removes these tags from the feed content. Take one out to let it "
 "through, for example iframe to keep embedded videos."
 msgstr ""
-"Η SimplePie αφαιρεί αυτές τις ετικέτες από το περιεχόμενο της ροής. Βγάλε "
-"μία για να περνά, π.χ. την iframe για να κρατήσεις τα ενσωματωμένα βίντεο."
+"Η SimplePie αφαιρεί αυτές τις ετικέτες από το περιεχόμενο της ροής. Βγάλτε "
+"μία για να περνά, π.χ. την iframe για να κρατήσετε τα ενσωματωμένα βίντεο."
 
-#: includes/settings/help.php:180 includes/settings/page.php:446
+#: includes/settings/help.php:185 includes/settings/page.php:446
 msgid "HTML attributes SimplePie strips"
 msgstr "Ιδιότητες HTML που αφαιρεί η SimplePie"
 
-#: includes/settings/help.php:181
+#: includes/settings/help.php:186
 msgid ""
 "SimplePie removes these attributes from the tags in the content. Take one "
 "out to keep it, or add more to strip."
 msgstr ""
 "Η SimplePie αφαιρεί επίσης αυτές τις ιδιότητες από τις ετικέτες του "
-"περιεχομένου. Βγάλε μία για να την κρατήσεις, ή πρόσθεσε κι άλλες."
+"περιεχομένου. Βγάλτε μία για να την κρατήσετε, ή προσθέστε κι άλλες."
 
-#: includes/settings/help.php:186 includes/settings/page.php:470
+#: includes/settings/help.php:191 includes/settings/page.php:470
 msgid "Let campaigns skip the content filters"
 msgstr "Να μπορούν οι καμπάνιες να παρακάμπτουν τα φίλτρα περιεχομένου"
 
-#: includes/settings/help.php:187
+#: includes/settings/help.php:192
 msgid ""
 "Adds a switch to every campaign that stores the feed content exactly as it "
 "comes, scripts included. Use it only with sources you trust."
 msgstr ""
 "Προσθέτει σε κάθε καμπάνια έναν διακόπτη που αποθηκεύει το περιεχόμενο της "
-"ροής ακριβώς όπως έρχεται, με τα scripts του. Χρησιμοποίησέ το μόνο με πηγές "
-"που εμπιστεύεσαι."
+"ροής ακριβώς όπως έρχεται, με τα scripts του. Χρησιμοποιήστε το μόνο με "
+"πηγές που εμπιστεύεσαι."
 
-#: includes/settings/help.php:188
+#: includes/settings/help.php:193
 msgid ""
 "WordPress inserts the post as usual and the content is then written straight "
 "to the database, past every filter."
@@ -8327,15 +8463,15 @@ msgstr ""
 "Το WordPress εισάγει το άρθρο κανονικά και μετά το περιεχόμενο γράφεται "
 "κατευθείαν στη βάση δεδομένων, πέρα από κάθε φίλτρο."
 
-#: includes/settings/help.php:189
+#: includes/settings/help.php:194
 msgid "See How WordPress Processes Post Content: "
 msgstr "Δείτε το «How WordPress Processes Post Content»: "
 
-#: includes/settings/help.php:192
+#: includes/settings/help.php:197
 msgid "Timeout for a running campaign"
 msgstr "Χρονικό όριο για καμπάνια που τρέχει"
 
-#: includes/settings/help.php:193
+#: includes/settings/help.php:198
 msgid ""
 "A campaign interrupted halfway stays marked as running until this many "
 "seconds have passed; then it runs again on its next schedule. Recommended: "
@@ -8345,46 +8481,47 @@ msgstr ""
 "δευτερόλεπτα· μετά ξανατρέχει στον επόμενο προγραμματισμό της. Συνιστάται: "
 "300."
 
-#: includes/settings/help.php:194
+#: includes/settings/help.php:199
 msgid "Set 0 to keep it blocked until you click \"Clear campaign\" yourself."
 msgstr ""
-"Βάλε 0 για να μένει μπλοκαρισμένη ώσπου να πατήσεις εσύ «Αποδέσμευση "
+"Βάλτε 0 για να μένει μπλοκαρισμένη ώσπου να πατήσετε εσείς «Αποδέσμευση "
 "καμπάνιας»."
 
-#: includes/settings/help.php:197
+#: includes/settings/help.php:202
 msgid "Pause after every post"
 msgstr "Παύση μετά από κάθε άρθρο"
 
-#: includes/settings/help.php:198
+#: includes/settings/help.php:203
 msgid ""
 "Waits this many seconds after inserting each post, to give the server a "
 "break on long runs. Leave 0 unless you have trouble."
 msgstr ""
 "Περιμένει τόσα δευτερόλεπτα μετά την εισαγωγή κάθε άρθρου, για να παίρνει "
-"ανάσα ο διακομιστής στις μεγάλες εκτελέσεις. Άφησε 0 εκτός αν έχεις πρόβλημα."
+"ανάσα ο διακομιστής στις μεγάλες εκτελέσεις. Αφήστε 0 εκτός αν έχετε "
+"πρόβλημα."
 
-#: includes/settings/help.php:204
+#: includes/settings/help.php:209
 msgid ""
 "To publish items that share a title, use \"Allow duplicate titles\" instead "
 "and leave the hash check on."
 msgstr ""
-"Για να δημοσιεύεις στοιχεία με ίδιο τίτλο, χρησιμοποίησε το «Να επιτρέπονται "
-"διπλότυποι τίτλοι» και άφησε ενεργό τον έλεγχο με hash."
+"Για να δημοσιεύετε στοιχεία με ίδιο τίτλο, χρησιμοποιήστε το «Να "
+"επιτρέπονται διπλότυποι τίτλοι» και αφήστε ενεργό τον έλεγχο με hash."
 
-#: includes/settings/help.php:213 includes/settings/page.php:544
+#: includes/settings/help.php:218 includes/settings/page.php:544
 msgid "Do not save the plugin custom fields"
 msgstr "Να μην αποθηκεύονται τα προσαρμοσμένα πεδία του πρόσθετου"
 
-#: includes/settings/help.php:214
+#: includes/settings/help.php:219
 msgid ""
 "Saves database space and costs you the source permalink, the campaign each "
 "post came from and every bulk action based on it."
 msgstr ""
-"Εξοικονομεί χώρο στη βάση δεδομένων και σου στοιχίζει τον μόνιμο σύνδεσμο "
+"Εξοικονομεί χώρο στη βάση δεδομένων και σας στοιχίζει τον μόνιμο σύνδεσμο "
 "της πηγής, την καμπάνια από την οποία ήρθε κάθε άρθρο και κάθε μαζική "
 "ενέργεια που στηρίζεται σε αυτό."
 
-#: includes/settings/help.php:215
+#: includes/settings/help.php:220
 msgid ""
 "By default each published post carries three custom fields with the campaign "
 "and the source item. Turning this on does not delete the ones already saved."
@@ -8393,49 +8530,53 @@ msgstr ""
 "την καμπάνια και το στοιχείο της πηγής. Ενεργοποιώντας το δεν σβήνονται όσα "
 "έχουν ήδη αποθηκευτεί."
 
-#: includes/settings/help.php:224 includes/settings/page.php:573
+#: includes/settings/help.php:229 includes/settings/page.php:573
 msgid "Disable WPeMatico schedules"
 msgstr "Απενεργοποίηση των προγραμματισμών του WPeMatico"
 
-#: includes/settings/help.php:225
+#: includes/settings/help.php:230
 msgid ""
 "No campaign runs on its own any more. You run them by hand or from an "
 "external cron, which is the recommended setup."
 msgstr ""
-"Καμία καμπάνια δεν τρέχει πια μόνη της. Τις τρέχεις με το χέρι ή από "
+"Καμία καμπάνια δεν τρέχει πια μόνη της. Τις τρέχετε με το χέρι ή από "
 "εξωτερικό cron, που είναι και το συνιστώμενο."
 
-#: includes/settings/help.php:228 includes/settings/page.php:607
+#: includes/settings/help.php:233 includes/settings/page.php:607
 msgid "Ask for a password on the external cron"
 msgstr "Να ζητείται συνθηματικό στο εξωτερικό cron"
 
-#: includes/settings/help.php:229
+#: includes/settings/help.php:234
 msgid ""
 "Only a request carrying the code runs your campaigns. Off by default for "
 "backward compatibility, and strongly recommended."
 msgstr ""
-"Μόνο ένα αίτημα που φέρνει τον κωδικό εκτελεί τις καμπάνιες σου. Κλειστό από "
+"Μόνο ένα αίτημα που φέρνει τον κωδικό εκτελεί τις καμπάνιες σας. Κλειστό από "
 "προεπιλογή για συμβατότητα, και ιδιαίτερα συνιστώμενο."
 
-#: includes/settings/help.php:230
+#: includes/settings/help.php:235
 msgid "While this is off, the password below is ignored."
 msgstr "Όσο αυτό είναι κλειστό, το συνθηματικό παρακάτω αγνοείται."
 
-#: includes/settings/help.php:233
+#: includes/settings/help.php:238
 msgid "External cron password"
 msgstr "Συνθηματικό του εξωτερικού cron"
 
-#: includes/settings/help.php:234
+#: includes/settings/help.php:239
 msgid "Any text you like. It travels in the cron address as ?code=your_code."
 msgstr ""
-"Όποιο κείμενο θέλεις. Ταξιδεύει στη διεύθυνση του cron ως ?"
+"Όποιο κείμενο θέλετε. Ταξιδεύει στη διεύθυνση του cron ως ?"
 "code=ο_κωδικός_σου."
 
-#: includes/settings/help.php:237 includes/settings/page.php:627
+#: includes/settings/help.php:24
+msgid "Global settings for images"
+msgstr "Γενικές ρυθμίσεις για τις εικόνες"
+
+#: includes/settings/help.php:242 includes/settings/page.php:627
 msgid "Disable all WP_Cron"
 msgstr "Απενεργοποίηση όλου του WP_Cron"
 
-#: includes/settings/help.php:238
+#: includes/settings/help.php:243
 msgid ""
 "Stops every scheduled task on the site, WordPress own and other plugins "
 "included. Only do this if an external cron takes over."
@@ -8444,15 +8585,11 @@ msgstr ""
 "WordPress και των άλλων πρόσθετων. Κάν’ το μόνο αν αναλαμβάνει ένα εξωτερικό "
 "cron."
 
-#: includes/settings/help.php:24
-msgid "Global settings for images"
-msgstr "Γενικές ρυθμίσεις για τις εικόνες"
-
-#: includes/settings/help.php:241 includes/settings/page.php:564
+#: includes/settings/help.php:246 includes/settings/page.php:564
 msgid "Use ALTERNATE_WP_CRON"
 msgstr "Χρήση του ALTERNATE_WP_CRON"
 
-#: includes/settings/help.php:242
+#: includes/settings/help.php:247
 msgid ""
 "Some servers block the way WordPress triggers its schedules. This constant "
 "works around it on almost any server."
@@ -8461,73 +8598,73 @@ msgstr ""
 "ενεργοποιεί τους προγραμματισμούς του. Αυτή η σταθερά το παρακάμπτει σχεδόν "
 "σε κάθε διακομιστή."
 
-#: includes/settings/help.php:245 includes/settings/page.php:657
-msgid "Log file for the external cron"
-msgstr "Αρχείο καταγραφής για το εξωτερικό cron"
-
-#: includes/settings/help.php:246
-msgid ""
-"Writes a \"campaign title.txt.log\" file in the uploads folder with the "
-"steps of each external cron run. Useful while you set the cron up."
-msgstr ""
-"Γράφει ένα αρχείο «τίτλος καμπάνιας.txt.log» στον φάκελο μεταφορτώσεων με τα "
-"βήματα κάθε εκτέλεσης του εξωτερικού cron. Χρήσιμο όσο στήνεις το cron."
-
 #: includes/settings/help.php:25 includes/settings/help.php:86
 #: includes/settings/help.php:115
 msgid "These apply to every campaign, and each campaign can override them."
 msgstr "Ισχύουν για κάθε καμπάνια, και κάθε καμπάνια μπορεί να τις αλλάξει."
 
-#: includes/settings/help.php:251 includes/settings/page.php:896
+#: includes/settings/help.php:250 includes/settings/page.php:657
+msgid "Log file for the external cron"
+msgstr "Αρχείο καταγραφής για το εξωτερικό cron"
+
+#: includes/settings/help.php:251
+msgid ""
+"Writes a \"campaign title.txt.log\" file in the uploads folder with the "
+"steps of each external cron run. Useful while you set the cron up."
+msgstr ""
+"Γράφει ένα αρχείο «τίτλος καμπάνιας.txt.log» στον φάκελο μεταφορτώσεων με τα "
+"βήματα κάθε εκτέλεσης του εξωτερικού cron. Χρήσιμο όσο στήνετε το cron."
+
+#: includes/settings/help.php:256 includes/settings/page.php:908
 msgid "Campaign column in the posts lists"
 msgstr "Στήλη καμπάνιας στις λίστες άρθρων"
 
-#: includes/settings/help.php:252
+#: includes/settings/help.php:257
 msgid "Adds a column showing which campaign published each post."
 msgstr "Προσθέτει μια στήλη που δείχνει ποια καμπάνια δημοσίευσε κάθε άρθρο."
 
-#: includes/settings/help.php:255 includes/settings/page.php:903
+#: includes/settings/help.php:260 includes/settings/page.php:915
 msgid "Position of that column"
 msgstr "Θέση αυτής της στήλης"
 
-#: includes/settings/help.php:256
+#: includes/settings/help.php:261
 msgid "Where the campaign column sits among the others."
 msgstr "Πού βρίσκεται η στήλη της καμπάνιας ανάμεσα στις άλλες."
 
-#: includes/settings/help.php:259 includes/settings/page.php:916
+#: includes/settings/help.php:264 includes/settings/page.php:928
 msgid "Hide the campaign box in the post editor"
 msgstr "Απόκρυψη του πλαισίου καμπάνιας στον επεξεργαστή άρθρων"
 
-#: includes/settings/help.php:260
+#: includes/settings/help.php:265
 msgid "Removes the WPeMatico box that shows where an imported post came from."
 msgstr ""
 "Αφαιρεί το πλαίσιο του WPeMatico που δείχνει από πού ήρθε ένα εισαγόμενο "
 "άρθρο."
 
-#: includes/settings/help.php:263 includes/settings/page.php:925
+#: includes/settings/help.php:268 includes/settings/page.php:937
 msgid "Empty trash button on the lists"
 msgstr "Κουμπί αδειάσματος κάδου στις λίστες"
 
-#: includes/settings/help.php:264
+#: includes/settings/help.php:269
 msgid "Adds a button to empty the trash on the post types you choose."
 msgstr ""
 "Προσθέτει ένα κουμπί για άδειασμα του κάδου στους τύπους περιεχομένου που "
-"διαλέγεις."
+"διαλέγετε."
 
-#: includes/settings/help.php:267 includes/settings/page.php:966
+#: includes/settings/help.php:272 includes/settings/page.php:978
 msgid "Hide the WP dashboard widget"
 msgstr "Απόκρυψη της μικροεφαρμογής στον πίνακα ελέγχου"
 
-#: includes/settings/help.php:268
+#: includes/settings/help.php:273
 msgid "Removes the WPeMatico widget from the WordPress dashboard."
 msgstr ""
 "Αφαιρεί τη μικροεφαρμογή του WPeMatico από τον πίνακα ελέγχου του WordPress."
 
-#: includes/settings/help.php:273 includes/settings/page.php:757
+#: includes/settings/help.php:278 includes/settings/page.php:769
 msgid "Do not check feeds before saving"
 msgstr "Να μην ελέγχονται οι ροές πριν την αποθήκευση"
 
-#: includes/settings/help.php:274
+#: includes/settings/help.php:279
 msgid ""
 "Saving a campaign no longer tests each feed address first. The campaign "
 "saves faster and a broken address goes unnoticed until it runs."
@@ -8536,11 +8673,11 @@ msgstr ""
 "καμπάνια αποθηκεύεται πιο γρήγορα, και μια χαλασμένη διεύθυνση περνά "
 "απαρατήρητη ως την εκτέλεση."
 
-#: includes/settings/help.php:277 includes/settings/page.php:766
+#: includes/settings/help.php:282 includes/settings/page.php:778
 msgid "Enable \"Del hash\""
 msgstr "Ενεργοποίηση του «Διαγραφή hash»"
 
-#: includes/settings/help.php:278
+#: includes/settings/help.php:283
 msgid ""
 "Adds a link on the campaigns list that clears the duplicate hashes of every "
 "feed in a campaign, so its items can be published again."
@@ -8549,59 +8686,44 @@ msgstr ""
 "όλων των ροών μιας καμπάνιας, ώστε τα στοιχεία της να μπορούν να "
 "ξαναδημοσιευτούν."
 
-#: includes/settings/help.php:281 includes/settings/page.php:775
+#: includes/settings/help.php:286 includes/settings/page.php:787
 msgid "Enable \"See last log\""
 msgstr "Ενεργοποίηση του «Δείτε την τελευταία καταγραφή»"
 
-#: includes/settings/help.php:282
+#: includes/settings/help.php:287
 msgid "Adds a link on the campaigns list that opens the log of the last run."
 msgstr ""
 "Προσθέτει στη λίστα καμπανιών έναν σύνδεσμο που ανοίγει την καταγραφή της "
 "τελευταίας εκτέλεσης."
 
-#: includes/settings/help.php:285 includes/settings/page.php:793
+#: includes/settings/help.php:290 includes/settings/page.php:805
 msgid "Hide the WPeMatico credits"
 msgstr "Απόκρυψη των credits του WPeMatico"
 
-#: includes/settings/help.php:286
+#: includes/settings/help.php:291
 msgid "I would really appreciate you leaving the credits on."
 msgstr "Θα το εκτιμούσα πολύ αν άφηνες τα credits ενεργά."
 
-#: includes/settings/help.php:288 includes/settings/page.php:800
+#: includes/settings/help.php:293 includes/settings/page.php:812
 msgid ""
 "If you cannot show them, a minute of your time to %1$s write a 5 star review "
 "on WordPress %2$s means just as much. :-) Thanks."
 msgstr ""
-"Αν δεν μπορείς να τα δείξεις, ένα λεπτό από τον χρόνο σου για %1$s μια "
+"Αν δεν μπορείτε να τα δείξετε, ένα λεπτό από τον χρόνο σας για %1$s μια "
 "αξιολόγηση 5 αστέρων στο WordPress %2$s αξίζει το ίδιο. :-) Ευχαριστώ."
 
-#: includes/settings/help.php:293 includes/settings/page.php:811
+#: includes/settings/help.php:298 includes/settings/page.php:823
 msgid "No description on auto categories"
 msgstr "Χωρίς περιγραφή στις αυτόματες κατηγορίες"
 
-#: includes/settings/help.php:294
+#: includes/settings/help.php:299
 msgid ""
 "Categories created from now on are left without the \"Created by WPeMatico\" "
 "description. The ones already created keep theirs until you edit them."
 msgstr ""
 "Οι κατηγορίες που δημιουργούνται από δω και πέρα μένουν χωρίς την περιγραφή "
 "«Created by WPeMatico». Όσες έχουν ήδη δημιουργηθεί κρατούν τη δική τους "
-"ώσπου να τις επεξεργαστείς."
-
-#: includes/settings/help.php:297 includes/settings/page.php:821
-msgid "Do not load the Extensions page"
-msgstr "Να μη φορτώνεται η σελίδα Επεκτάσεων"
-
-#: includes/settings/help.php:298
-msgid "The Extensions menu stops asking our site for the add-on catalogue."
-msgstr "Το μενού Επεκτάσεις σταματά να ζητά τον κατάλογο από τον ιστότοπό μας."
-
-#: includes/settings/help.php:299
-msgid ""
-"You will see an empty page, or only the extensions you already have "
-"installed."
-msgstr ""
-"Θα δεις μια άδεια σελίδα, ή μόνο τις επεκτάσεις που έχεις ήδη εγκαταστήσει."
+"ώσπου να τις επεξεργαστείτε."
 
 #: includes/settings/help.php:30
 msgid ""
@@ -8612,30 +8734,32 @@ msgstr ""
 "στοιχείου της ροής (μόνο σε ετικέτες %s). Κλειστό, οι εικόνες μένουν στον "
 "διακομιστή της πηγής."
 
-#: includes/settings/help.php:302 includes/settings/page.php:784
+#: includes/settings/help.php:302 includes/settings/page.php:833
+msgid "Do not load the Extensions page"
+msgstr "Να μη φορτώνεται η σελίδα Επεκτάσεων"
+
+#: includes/settings/help.php:303
+msgid "The Extensions menu stops asking our site for the add-on catalogue."
+msgstr "Το μενού Επεκτάσεις σταματά να ζητά τον κατάλογο από τον ιστότοπό μας."
+
+#: includes/settings/help.php:304
+msgid ""
+"You will see an empty page, or only the extensions you already have "
+"installed."
+msgstr ""
+"Θα δείτε μια άδεια σελίδα, ή μόνο τις επεκτάσεις που έχετε ήδη εγκαταστήσει."
+
+#: includes/settings/help.php:307 includes/settings/page.php:796
 msgid "Enable XML uploads"
 msgstr "Να επιτρέπεται η μεταφόρτωση XML"
 
-#: includes/settings/help.php:303
+#: includes/settings/help.php:308
 msgid ""
 "Lets you upload XML files to the Media library, to use them in an XML "
 "campaign."
 msgstr ""
-"Σου επιτρέπει να ανεβάζεις αρχεία XML στη βιβλιοθήκη πολυμέσων, για να τα "
-"χρησιμοποιείς σε καμπάνια XML."
-
-#: includes/settings/help.php:306 includes/settings/page.php:830
-msgid "Decode HTML entities on publish"
-msgstr "Αποκωδικοποίηση οντοτήτων HTML κατά τη δημοσίευση"
-
-#: includes/settings/help.php:307
-msgid ""
-"Turns entities such as &amp;amp; back into their character before the post "
-"is saved. Useful with feeds that encode the content twice."
-msgstr ""
-"Μετατρέπει οντότητες όπως το &amp;amp; πίσω στον χαρακτήρα τους πριν "
-"αποθηκευτεί το άρθρο. Χρήσιμο με ροές που κωδικοποιούν το περιεχόμενο δύο "
-"φορές."
+"Σας επιτρέπει να ανεβάζετε αρχεία XML στη βιβλιοθήκη πολυμέσων, για να τα "
+"χρησιμοποιείτε σε καμπάνια XML."
 
 #: includes/settings/help.php:31
 msgid ""
@@ -8644,31 +8768,44 @@ msgid ""
 "on its own."
 msgstr ""
 "Ο σύνδεσμος προς τον διακομιστή της πηγής εξοικονομεί χώρο και κάνει τις "
-"σελίδες σου πιο γρήγορες, αλλά χάνεις την εικόνα τη μέρα που η πηγή τη "
+"σελίδες σας πιο γρήγορες, αλλά χάνετε την εικόνα τη μέρα που η πηγή τη "
 "σβήνει. Κάθε καμπάνια μπορεί να το ορίσει μόνη της."
 
+#: includes/settings/help.php:311 includes/settings/page.php:842
+msgid "Decode HTML entities on publish"
+msgstr "Αποκωδικοποίηση οντοτήτων HTML κατά τη δημοσίευση"
+
 #: includes/settings/help.php:312
+msgid ""
+"Turns entities such as &amp;amp; back into their character before the post "
+"is saved. Useful with feeds that encode the content twice."
+msgstr ""
+"Μετατρέπει οντότητες όπως το &amp;amp; πίσω στον χαρακτήρα τους πριν "
+"αποθηκευτεί το άρθρο. Χρήσιμο με ροές που κωδικοποιούν το περιεχόμενο δύο "
+"φορές."
+
+#: includes/settings/help.php:317
 msgid "Sender email"
 msgstr "Email αποστολέα"
 
-#: includes/settings/help.php:313
+#: includes/settings/help.php:318
 msgid "The address every email from this plugin is sent from."
 msgstr "Η διεύθυνση από την οποία στέλνεται κάθε email αυτού του πρόσθετου."
 
-#: includes/settings/help.php:316
+#: includes/settings/help.php:321
 msgid "Sender name"
 msgstr "Όνομα αποστολέα"
 
-#: includes/settings/help.php:317
+#: includes/settings/help.php:322
 msgid "The name shown next to that address in your inbox."
 msgstr ""
-"Το όνομα που φαίνεται δίπλα σε εκείνη τη διεύθυνση στα εισερχόμενά σου."
+"Το όνομα που φαίνεται δίπλα σε εκείνη τη διεύθυνση στα εισερχόμενά σας."
 
-#: includes/settings/help.php:329
+#: includes/settings/help.php:334
 msgid "Features available with the Professional add-on."
 msgstr "Λειτουργίες που έρχονται με το πρόσθετο Professional."
 
-#: includes/settings/help.php:330
+#: includes/settings/help.php:335
 msgid ""
 "Publish or skip an item depending on the keywords found in its title or "
 "content."
@@ -8676,7 +8813,7 @@ msgstr ""
 "Δημοσίευση ή απόρριψη ενός στοιχείου ανάλογα με τις λέξεις-κλειδιά στον "
 "τίτλο ή στο περιεχόμενό του."
 
-#: includes/settings/help.php:331
+#: includes/settings/help.php:336
 msgid ""
 "Cut, publish or skip an item depending on how many words or letters its "
 "content has."
@@ -8684,25 +8821,25 @@ msgstr ""
 "Κόψιμο, δημοσίευση ή απόρριψη ενός στοιχείου ανάλογα με το πόσες λέξεις ή "
 "γράμματα έχει το περιεχόμενό του."
 
-#: includes/settings/help.php:332
+#: includes/settings/help.php:337
 msgid ""
 "Build the title of every post of a campaign from a template of your own."
-msgstr "Δημιουργία του τίτλου κάθε άρθρου μιας καμπάνιας από δικό σου πρότυπο."
+msgstr "Δημιουργία του τίτλου κάθε άρθρου μιας καμπάνιας από δικό σας πρότυπο."
 
-#: includes/settings/help.php:333
+#: includes/settings/help.php:338
 msgid ""
 "Generates the tags of every post automatically. Each campaign can turn that "
 "off and use a list of tags you write instead."
 msgstr ""
 "Δημιουργεί αυτόματα τις ετικέτες κάθε άρθρου. Κάθε καμπάνια μπορεί να το "
-"κλείσει και να χρησιμοποιήσει μια λίστα ετικετών που γράφεις εσύ."
+"κλείσει και να χρησιμοποιήσει μια λίστα ετικετών που γράφετε εσείς."
 
-#: includes/settings/help.php:334
+#: includes/settings/help.php:339
 msgid "Add custom fields, with template tags as their value, to every post."
 msgstr ""
 "Προσθέτει σε κάθε άρθρο προσαρμοσμένα πεδία με ετικέτες προτύπου ως τιμή."
 
-#: includes/settings/help.php:335
+#: includes/settings/help.php:340
 msgid ""
 "Full Content is the add-on that fetches the whole article from the source "
 "site when the feed only carries a summary."
@@ -8710,20 +8847,20 @@ msgstr ""
 "Το Full Content είναι το πρόσθετο που φέρνει ολόκληρο το άρθρο από τον "
 "ιστότοπο της πηγής όταν η ροή κουβαλά μόνο περίληψη."
 
-#: includes/settings/help.php:336
+#: includes/settings/help.php:341
 msgid ""
 "Set an author per feed when editing a campaign. Feeds with no author of "
 "their own use the campaign author."
 msgstr ""
-"Όρισε συντάκτη ανά ροή κατά την επεξεργασία μιας καμπάνιας. Οι ροές χωρίς "
+"Ορίστε συντάκτη ανά ροή κατά την επεξεργασία μιας καμπάνιας. Οι ροές χωρίς "
 "δικό τους συντάκτη παίρνουν τον συντάκτη της καμπάνιας."
 
-#: includes/settings/help.php:337
+#: includes/settings/help.php:342
 msgid ""
 "Paste a list of feed addresses, with or without author names, straight into "
 "the campaign."
 msgstr ""
-"Επικόλλησε μια λίστα διευθύνσεων ροής, με ή χωρίς ονόματα συντακτών, "
+"Επικολλήστε μια λίστα διευθύνσεων ροής, με ή χωρίς ονόματα συντακτών, "
 "κατευθείαν στην καμπάνια."
 
 #: includes/settings/help.php:35
@@ -8783,7 +8920,7 @@ msgid ""
 "Useful when your theme already prints the featured image and you would "
 "otherwise see it twice."
 msgstr ""
-"Χρήσιμο όταν το θέμα εμφάνισής σου δείχνει ήδη την χαρακτηριστική εικόνα και "
+"Χρήσιμο όταν το θέμα εμφάνισής σας δείχνει ήδη την χαρακτηριστική εικόνα και "
 "αλλιώς θα την έβλεπες δύο φορές."
 
 #: includes/settings/help.php:71
@@ -8792,7 +8929,7 @@ msgid ""
 "all its image sizes. Generating them costs a lot of resources when many "
 "images arrive at once."
 msgstr ""
-"Κλείσ’ το αν οι εικόνες σταματήσουν να εμφανίζονται, ή αν χρειάζεσαι το "
+"Κλείσ’ το αν οι εικόνες σταματήσουν να εμφανίζονται, ή αν χρειάζεστε το "
 "WordPress να φτιάχνει όλα τα μεγέθη εικόνας. Η δημιουργία τους κοστίζει "
 "πολλούς πόρους όταν φτάνουν πολλές εικόνες μαζί."
 
@@ -8822,7 +8959,7 @@ msgid ""
 "Linking to the source server saves space, but you lose the file the day the "
 "source removes it. Each campaign can set this on its own."
 msgstr ""
-"Ο σύνδεσμος προς τον διακομιστή της πηγής εξοικονομεί χώρο, αλλά χάνεις το "
+"Ο σύνδεσμος προς τον διακομιστή της πηγής εξοικονομεί χώρο, αλλά χάνετε το "
 "αρχείο τη μέρα που η πηγή το σβήνει. Κάθε καμπάνια μπορεί να το ορίσει μόνη "
 "της."
 
@@ -8834,11 +8971,11 @@ msgstr ""
 "Κάθε ήχος που κατεβαίνει μπαίνει στη βιβλιοθήκη πολυμέσων και επισυνάπτεται "
 "στο άρθρο του."
 
-#: includes/settings/page.php:1001
+#: includes/settings/page.php:1013
 msgid "Guided tours"
 msgstr "Ξεναγήσεις"
 
-#: includes/settings/page.php:1003
+#: includes/settings/page.php:1015
 msgid ""
 "Shows a short tour the first time you open each WPeMatico screen. Only for "
 "your user."
@@ -8846,23 +8983,23 @@ msgstr ""
 "Εμφανίζει μια σύντομη ξενάγηση την πρώτη φορά που ανοίγετε κάθε οθόνη του "
 "WPeMatico. Μόνο για τον δικό σας χρήστη."
 
-#: includes/settings/page.php:1034
+#: includes/settings/page.php:1046
 msgid "Highlights of the new release"
 msgstr "Τα σημαντικότερα της νέας έκδοσης"
 
-#: includes/settings/page.php:1035 includes/lib/licenses_handlers.php:405
+#: includes/settings/page.php:1047 includes/lib/licenses_handlers.php:405
 msgid "Version"
 msgstr "Έκδοση"
 
-#: includes/settings/page.php:1047
+#: includes/settings/page.php:1059
 msgid "Read more on wpematico.com"
 msgstr "Διαβάστε περισσότερα στο wpematico.com"
 
-#: includes/settings/page.php:1049
+#: includes/settings/page.php:1061
 msgid "Your opinion about WPeMatico is very important to us."
 msgstr "Η γνώμη σας για το WPeMatico είναι πολύ σημαντική για εμάς."
 
-#: includes/settings/page.php:1050
+#: includes/settings/page.php:1062
 msgid ""
 "By rating WPeMatico RSS Feed Fetcher, you help the plugin creators to "
 "improve their work and help other users to find the software they need. You "
@@ -8874,29 +9011,25 @@ msgstr ""
 "χρειάζονται. Γράψτε την κριτική σας στο φόρουμ του WordPress, στη γλώσσα που "
 "θέλετε — το εκτιμούμε!"
 
-#: includes/settings/page.php:1051
+#: includes/settings/page.php:1063
 msgid "Rate us on WordPress"
 msgstr "Βαθμολογήστε μας στο WordPress"
 
-#: includes/settings/page.php:1053
+#: includes/settings/page.php:1065
 msgid "YES!"
 msgstr "ΝΑΙ!"
 
-#: includes/settings/page.php:1074
+#: includes/settings/page.php:1086
 msgid "General Settings"
 msgstr "Γενικές ρυθμίσεις"
 
-#: includes/settings/page.php:1175 includes/settings/page.php:1201
+#: includes/settings/page.php:1187 includes/settings/page.php:1213
 msgid "Save settings"
 msgstr "Αποθήκευση ρυθμίσεων"
 
-#: includes/settings/page.php:1301
+#: includes/settings/page.php:1313
 msgid "Settings saved."
 msgstr "Οι ρυθμίσεις αποθηκεύτηκαν."
-
-#: includes/settings/page.php:1324
-msgid "License keys saved."
-msgstr "Τα κλειδιά αδειών αποθηκεύτηκαν."
 
 #: includes/settings/page.php:133 includes/lib/licenses_handlers.php:319
 msgid ""
@@ -8906,6 +9039,10 @@ msgstr ""
 "Εδώ βάζετε τα κλειδιά αδειών για κάποιο από τα premium πρόσθετά μας, αν "
 "ενεργοποιήσετε κάποιο."
 
+#: includes/settings/page.php:1336
+msgid "License keys saved."
+msgstr "Τα κλειδιά αδειών αποθηκεύτηκαν."
+
 #: includes/settings/page.php:134 includes/lib/licenses_handlers.php:320
 msgid "See some of the WPeMatico Add-ons in the"
 msgstr "Δείτε μερικές από τις επεκτάσεις του WPeMatico στο"
@@ -8913,8 +9050,8 @@ msgstr "Δείτε μερικές από τις επεκτάσεις του WPeM
 #: includes/settings/page.php:164 includes/settings/page.php:289
 #: includes/settings/page.php:353 includes/settings/page.php:418
 #: includes/settings/page.php:460 includes/settings/page.php:554
-#: includes/settings/page.php:683 includes/settings/page.php:747
-#: includes/settings/page.php:840 includes/settings/page.php:886
+#: includes/settings/page.php:683 includes/settings/page.php:759
+#: includes/settings/page.php:852 includes/settings/page.php:898
 msgid "Click to toggle"
 msgstr "Πατήστε για εναλλαγή"
 
@@ -8924,12 +9061,12 @@ msgstr "Καθολικές ρυθμίσεις για εικόνες"
 
 #: includes/settings/page.php:251
 msgid "Allowed image extensions"
-msgstr "Επιτρεπόμενες καταλήξεις εικόνων"
+msgstr "Επιτρεπόμενες καταλήξετε εικόνων"
 
 #: includes/settings/page.php:254 includes/settings/page.php:342
 #: includes/settings/page.php:407
 msgid "Separate the allowed extensions with commas."
-msgstr "Χώρισε τις επιτρεπόμενες καταλήξεις με κόμματα."
+msgstr "Χωρίστε τις επιτρεπόμενες καταλήξετε με κόμματα."
 
 #: includes/settings/page.php:255
 msgid "WordPress image types:"
@@ -8971,7 +9108,7 @@ msgstr "Ο έλεγχος δικαιωμάτων απέτυχε"
 
 #: includes/settings/page.php:340
 msgid "Allowed video extensions"
-msgstr "Επιτρεπόμενες καταλήξεις βίντεο"
+msgstr "Επιτρεπόμενες καταλήξετε βίντεο"
 
 #: includes/settings/page.php:343
 msgid "WordPress video types:"
@@ -8983,7 +9120,7 @@ msgstr "Καθολικές ρυθμίσεις για ήχους"
 
 #: includes/settings/page.php:404
 msgid "Allowed audio extensions"
-msgstr "Επιτρεπόμενες καταλήξεις ήχου"
+msgstr "Επιτρεπόμενες καταλήξετε ήχου"
 
 #: includes/settings/page.php:408
 msgid "WordPress audio types:"
@@ -9027,7 +9164,7 @@ msgstr "Ρυθμίσεις cron και χρονοπρογραμματιστή"
 
 #: includes/settings/page.php:587
 msgid "Set up a cron job that calls:"
-msgstr "Στήσε μια εργασία cron που καλεί:"
+msgstr "Στήστε μια εργασία cron που καλεί:"
 
 #: includes/settings/page.php:592
 msgid "URL:"
@@ -9039,12 +9176,12 @@ msgstr "Πάτα για να χρησιμοποιηθεί αυτός ο τυχα
 
 #: includes/settings/page.php:614
 msgid "Any text you like."
-msgstr "Όποιο κείμενο θέλεις."
+msgstr "Όποιο κείμενο θέλετε."
 
 #: includes/settings/page.php:634
 msgid "To run the WordPress cron from outside, set up a cron job that calls:"
 msgstr ""
-"Για να τρέχει το cron του WordPress από έξω, στήσε μια εργασία cron που "
+"Για να τρέχει το cron του WordPress από έξω, στήστε μια εργασία cron που "
 "καλεί:"
 
 #: includes/settings/page.php:636
@@ -9083,7 +9220,7 @@ msgstr "Ενεργοποίηση των «Λέξεων σε κατηγορίες
 msgid "Enable the Vimeo campaign type"
 msgstr "Ενεργοποίηση του τύπου καμπάνιας Vimeo"
 
-#: includes/settings/page.php:724
+#: includes/settings/page.php:724 includes/settings/page.php:741
 msgid "PRO"
 msgstr "PRO"
 
@@ -9095,7 +9232,19 @@ msgstr ""
 "Η ανάγνωση του Vimeo μέσω του API του — πέρα από το όριο των 10 βίντεο της "
 "ροής, με ταξινόμηση και τα ιδιωτικά σας βίντεο — έρχεται με το Professional."
 
-#: includes/settings/page.php:750
+#: includes/settings/page.php:737
+msgid "Enable the Google News campaign type"
+msgstr "Ενεργοποίηση του τύπου καμπάνιας Google News"
+
+#: includes/settings/page.php:741
+msgid ""
+"Linking each post to the article on the publication's own site, so Full "
+"Content reads it, comes with Professional."
+msgstr ""
+"Η σύνδεση κάθε άρθρου με το άρθρο στον ιστότοπο του μέσου, ώστε να το "
+"διαβάζει το Full Content, έρχεται με το Professional."
+
+#: includes/settings/page.php:762
 msgid "Advanced Actions"
 msgstr "Προχωρημένες ενέργειες"
 
@@ -9103,31 +9252,31 @@ msgstr "Προχωρημένες ενέργειες"
 msgid "Invalid email."
 msgstr "Μη έγκυρο email."
 
-#: includes/settings/page.php:843
+#: includes/settings/page.php:855
 msgid "Sending e-Mails"
 msgstr "Αποστολή email"
 
-#: includes/settings/page.php:848
+#: includes/settings/page.php:860
 msgid "Sender email:"
 msgstr "Email αποστολέα:"
 
-#: includes/settings/page.php:854
+#: includes/settings/page.php:866
 msgid "Sender name:"
 msgstr "Όνομα αποστολέα:"
 
-#: includes/settings/page.php:861
+#: includes/settings/page.php:873
 msgid "Sendmail path:"
 msgstr "Διαδρομή Sendmail:"
 
-#: includes/settings/page.php:889
+#: includes/settings/page.php:901
 msgid "WordPress Backend Tools"
 msgstr "Εργαλεία διαχείρισης WordPress"
 
-#: includes/settings/page.php:931
+#: includes/settings/page.php:943
 msgid "Post types it applies to"
 msgstr "Τύποι περιεχομένου στους οποίους ισχύει"
 
-#: includes/settings/page.php:972
+#: includes/settings/page.php:984
 msgid "Roles that see the dashboard widget:"
 msgstr "Ρόλοι που βλέπουν τη μικροεφαρμογή:"
 
@@ -9199,7 +9348,7 @@ msgstr ""
 
 #: includes/settings/widgets.php:245
 msgid "Click here to rate plugin on WordPress"
-msgstr "Πάτα εδώ για να αξιολογήσεις το πρόσθετο στο WordPress"
+msgstr "Πάτα εδώ για να αξιολογήσετε το πρόσθετο στο WordPress"
 
 #: includes/settings/widgets.php:245
 msgid "Rate on WordPress"
@@ -9268,31 +9417,31 @@ msgstr "Φιλικό στη μετάφραση"
 
 #: includes/settings/widgets.php:323
 msgid "WPeMatico speaks your language"
-msgstr "Το WPeMatico μιλάει τη γλώσσα σου"
+msgstr "Το WPeMatico μιλάει τη γλώσσα σας"
 
 #: includes/settings/widgets.php:324
 msgid ""
 "Ready in %1$s languages. The plugin follows whatever language you set in "
 "WordPress."
 msgstr ""
-"Έτοιμο σε %1$s γλώσσες. Το πρόσθετο ακολουθεί τη γλώσσα που έχεις ορίσει στο "
+"Έτοιμο σε %1$s γλώσσες. Το πρόσθετο ακολουθεί τη γλώσσα που έχετε ορίσει στο "
 "WordPress."
 
 #: includes/settings/widgets.php:326
 msgid "Miss your language?"
-msgstr "Λείπει η δική σου;"
+msgstr "Λείπει η δική σας;"
 
 #: includes/settings/widgets.php:327
 msgid ""
 "Yours is not among them? Ask for it. Tell us which language you work in and "
 "we will put WPeMatico into it."
 msgstr ""
-"Η δική σου δεν είναι ανάμεσά τους; Ζήτα την. Πες μας σε ποια γλώσσα "
-"δουλεύεις και θα βάλουμε το WPeMatico σε αυτήν."
+"Η δική σας δεν είναι ανάμεσά τους; Ζήτα την. Πείτε μας σε ποια γλώσσα "
+"δουλεύετε και θα βάλουμε το WPeMatico σε αυτήν."
 
 #: includes/settings/widgets.php:329
 msgid "Ask for your language"
-msgstr "Ζήτα τη γλώσσα σου"
+msgstr "Ζήτα τη γλώσσα σας"
 
 #: includes/settings/widgets.php:360
 msgid "Perfect Membership"
@@ -9312,13 +9461,13 @@ msgstr "Κάθε επέκταση του WPeMatico, μία άδεια, μία α
 
 #: includes/smart_notifications.php:124
 msgid "Rate 5 stars on WordPress"
-msgstr "Βάλε 5 αστέρια στο WordPress"
+msgstr "Βάλτε 5 αστέρια στο WordPress"
 
 #: includes/smart_notifications.php:132
 msgid ""
 "The WPeMatico team works hard to give you excellent tools for autoblogging."
 msgstr ""
-"Η ομάδα του WPeMatico δουλεύει σκληρά για να σου δίνει εξαιρετικά εργαλεία "
+"Η ομάδα του WPeMatico δουλεύει σκληρά για να σας δίνει εξαιρετικά εργαλεία "
 "autoblogging."
 
 #: includes/smart_notifications.php:136
@@ -10001,7 +10150,7 @@ msgstr "Δεν εντοπίστηκε"
 
 #: includes/wpematico_functions.php:3505
 msgid "5 Stars Ratings on WordPress"
-msgstr "Αξιολογήσεις 5 αστέρων στο WordPress"
+msgstr "Αξιολογήσετε 5 αστέρων στο WordPress"
 
 #: includes/wpematico_functions.php:3578
 msgid "Trying to set %1$s = %2$s: '%3$s' - Old value: %4$s."
@@ -10075,7 +10224,7 @@ msgstr "Σφάλμα: η διεύθυνση της ροής είναι κενή.
 msgid ""
 "This file is an RSS feed: use the \"Feed\" campaign type instead of XML."
 msgstr ""
-"Αυτό το αρχείο είναι ροή RSS: χρησιμοποίησε τον τύπο καμπάνιας «Ροή» αντί "
+"Αυτό το αρχείο είναι ροή RSS: χρησιμοποιήστε τον τύπο καμπάνιας «Ροή» αντί "
 "για XML."
 
 #: includes/xml-importer.php:42
@@ -10123,149 +10272,149 @@ msgstr "Εικόνα άρθρου"
 
 #: includes/xml-importer.php:501
 msgid "Select an XML node."
-msgstr "Διάλεξε έναν κόμβο XML."
+msgstr "Διαλέξτε έναν κόμβο XML."
 
 #: wpematico.php:52
 msgid "PHP 7.0 or higher needed!"
 msgstr "Χρειάζεται PHP 7.0 ή νεότερη!"
 
-#: wpematico_class.php:160 includes/wpematico_functions.php:3155
+#: wpematico_class.php:162 includes/wpematico_functions.php:3155
 msgid "Empty Trash"
 msgstr "Άδειασμα διαγραμμένων"
 
-#: wpematico_class.php:178
+#: wpematico_class.php:180
 msgid "There are no campaigns yet."
 msgstr "Δεν υπάρχουν ακόμα καμπάνιες."
 
-#: wpematico_class.php:180
+#: wpematico_class.php:182
 msgid "You need to create a campaign to begin using WPeMatico."
 msgstr ""
 "Πρέπει να δημιουργήσετε μια καμπάνια για να αρχίσετε να χρησιμοποιείτε το "
 "WPeMatico."
 
-#: wpematico_class.php:182
+#: wpematico_class.php:184
 msgid ""
 "If you need help, check out the tips to get started with WPeMatico or just "
 msgstr ""
 "Αν χρειάζεστε βοήθεια, δείτε τις συμβουλές για να ξεκινήσετε με το WPeMatico "
 "ή απλώς "
 
-#: wpematico_class.php:183
+#: wpematico_class.php:185
 msgid "add New Campaign"
 msgstr "προσθέστε νέα καμπάνια"
 
-#: wpematico_class.php:186 includes/lib/welcome.php:190
+#: wpematico_class.php:188 includes/lib/welcome.php:190
 msgid "Getting Started"
 msgstr "Ξεκινώντας"
 
-#: wpematico_class.php:192 wpematico_class.php:353 wpematico_class.php:354
+#: wpematico_class.php:194 wpematico_class.php:355 wpematico_class.php:356
 #: includes/dashboard-widgets.php:552 includes/debug_page.php:2927
 msgid "Campaigns"
 msgstr "Καμπάνιες"
 
-#: wpematico_class.php:193 includes/tools_page.php:501
+#: wpematico_class.php:195 includes/tools_page.php:501
 #: includes/tools_page.php:665 includes/wp-backend-helpers.php:65
 msgid "Campaign"
 msgstr "Καμπάνια"
 
-#: wpematico_class.php:194
+#: wpematico_class.php:196
 msgid "Add New"
 msgstr "Προσθήκη νέας"
 
-#: wpematico_class.php:195
+#: wpematico_class.php:197
 msgid "Add New Campaign"
 msgstr "Προσθήκη νέας καμπάνιας"
 
-#: wpematico_class.php:196
+#: wpematico_class.php:198
 msgid "Edit Campaign"
 msgstr "Τροποποίηση καμπάνιας"
 
-#: wpematico_class.php:197
+#: wpematico_class.php:199
 msgid "New Campaign"
 msgstr "Νέα καμπάνια"
 
-#: wpematico_class.php:198
+#: wpematico_class.php:200
 msgid "All Campaigns"
 msgstr "Όλες οι καμπάνιες"
 
-#: wpematico_class.php:199
+#: wpematico_class.php:201
 msgid "View Campaign"
 msgstr "Προβολή καμπάνιας"
 
-#: wpematico_class.php:200
+#: wpematico_class.php:202
 msgid "Search Campaign"
 msgstr "Αναζήτηση καμπάνιας"
 
-#: wpematico_class.php:202
+#: wpematico_class.php:204
 msgid "No Campaign found in Trash"
 msgstr "Δεν βρέθηκε καμπάνια στα διαγραμμένα"
 
-#: wpematico_class.php:244
+#: wpematico_class.php:246
 msgid "Reset Menu Position"
 msgstr "Επαναφορά θέσης μενού"
 
-#: wpematico_class.php:250
+#: wpematico_class.php:252
 msgid "Turn this on if the WPeMatico menu does not appear in the admin menu."
 msgstr ""
-"Ενεργοποίησέ το αν το μενού του WPeMatico δεν εμφανίζεται στο μενού "
+"Ενεργοποιήστε το αν το μενού του WPeMatico δεν εμφανίζεται στο μενού "
 "διαχείρισης."
 
-#: wpematico_class.php:255
+#: wpematico_class.php:257
 msgid "See local Addons in plugin list"
 msgstr "Εμφάνιση τοπικών πρόσθετων στη λίστα πρόσθετων"
 
-#: wpematico_class.php:261
+#: wpematico_class.php:263
 msgid ""
 "Turn this on to list the add-ons on your Plugins page, like any other plugin."
 msgstr ""
-"Ενεργοποίησέ το για να εμφανίζονται οι επεκτάσεις στη σελίδα Πρόσθετα, όπως "
+"Ενεργοποιήστε το για να εμφανίζονται οι επεκτάσεις στη σελίδα Πρόσθετα, όπως "
 "κάθε άλλο πρόσθετο."
 
-#: wpematico_class.php:266
+#: wpematico_class.php:268
 msgid "Hide Reviews on Settings"
 msgstr "Απόκρυψη κριτικών στις ρυθμίσεις"
 
-#: wpematico_class.php:272
+#: wpematico_class.php:274
 msgid ""
 "Turn this on if the Settings page comes out incomplete because your server "
 "cannot read external addresses."
 msgstr ""
-"Ενεργοποίησέ το αν η σελίδα ρυθμίσεων βγαίνει ελλιπής επειδή ο διακομιστής "
-"σου δεν μπορεί να διαβάσει εξωτερικές διευθύνσεις."
+"Ενεργοποιήστε το αν η σελίδα ρυθμίσεων βγαίνει ελλιπής επειδή ο διακομιστής "
+"σας δεν μπορεί να διαβάσει εξωτερικές διευθύνσεις."
 
-#: wpematico_class.php:310
+#: wpematico_class.php:312
 msgid ""
 "If the WPeMatico menu is missing, another plugin or your theme has taken its "
 "position."
 msgstr ""
 "Αν λείπει το μενού του WPeMatico, κάποιο άλλο πρόσθετο ή το θέμα εμφάνισής "
-"σου πήρε τη θέση του."
+"σας πήρε τη θέση του."
 
-#: wpematico_class.php:311
+#: wpematico_class.php:313
 msgid ""
 "Tick \"Reset Menu Position\" to move the menu to the end of the WordPress "
 "menu."
 msgstr ""
-"Σημείωσε το «Επαναφορά θέσης μενού» για να πάει το μενού στο τέλος του μενού "
-"του WordPress."
+"Σημειώστε το «Επαναφορά θέσης μενού» για να πάει το μενού στο τέλος του "
+"μενού του WordPress."
 
-#: wpematico_class.php:313
+#: wpematico_class.php:315
 msgid ""
 "A Settings page that does not render fully usually means your server cannot "
 "reach external pages."
 msgstr ""
 "Μια σελίδα ρυθμίσεων που δεν εμφανίζεται ολόκληρη συνήθως σημαίνει ότι ο "
-"διακομιστής σου δεν φτάνει σε εξωτερικές σελίδες."
+"διακομιστής σας δεν φτάνει σε εξωτερικές σελίδες."
 
-#: wpematico_class.php:314
+#: wpematico_class.php:316
 msgid ""
 "Tick \"Hide Reviews on Settings\" to show a plain link to the reviews page "
 "instead."
 msgstr ""
-"Σημείωσε το «Απόκρυψη αξιολογήσεων στις Ρυθμίσεις» για να εμφανίζεται στη "
+"Σημειώστε το «Απόκρυψη αξιολογήσεων στις Ρυθμίσεις» για να εμφανίζεται στη "
 "θέση τους ένας απλός σύνδεσμος προς τη σελίδα αξιολογήσεων."
 
-#: wpematico_class.php:318
+#: wpematico_class.php:320
 msgid ""
 "You must click the Save Changes button at the bottom of the screen for new "
 "settings to take effect."
@@ -10273,39 +10422,39 @@ msgstr ""
 "Πρέπει να πατήσετε το κουμπί Αποθήκευση αλλαγών στο κάτω μέρος της οθόνης "
 "για να ισχύσουν οι νέες ρυθμίσεις."
 
-#: wpematico_class.php:331 wpematico_class.php:332
+#: wpematico_class.php:333 wpematico_class.php:334
 msgid "WPeMatico"
 msgstr "WPeMatico"
 
-#: wpematico_class.php:343
+#: wpematico_class.php:345
 msgid "WPeMatico Dashboard"
 msgstr "Πίνακας Ελέγχου WPeMatico"
 
-#: wpematico_class.php:344 includes/module/dashboard.php:106
+#: wpematico_class.php:346 includes/module/dashboard.php:106
 msgid "Dashboard"
 msgstr "Πίνακας Ελέγχου"
 
-#: wpematico_class.php:368 wpematico_class.php:369
+#: wpematico_class.php:370 wpematico_class.php:371
 #: includes/dashboard-widgets.php:554 includes/plugin_functions.php:339
-#: includes/settings/functions.php:43 includes/settings/page.php:1078
-#: includes/settings/page.php:1151 includes/module/dashboard.php:32
+#: includes/settings/functions.php:43 includes/settings/page.php:1090
+#: includes/settings/page.php:1163 includes/module/dashboard.php:32
 #: includes/module/manager.php:187
 msgid "Settings"
 msgstr "Ρυθμίσεις"
 
-#: wpematico_class.php:379 wpematico_class.php:380 includes/tools_tabs.php:17
+#: wpematico_class.php:381 wpematico_class.php:382 includes/tools_tabs.php:17
 msgid "Tools"
 msgstr "Εργαλεία"
 
-#: wpematico_class.php:397 wpematico_class.php:406
+#: wpematico_class.php:399 wpematico_class.php:408
 msgid "Add-ons"
 msgstr "Πρόσθετα"
 
-#: wpematico_class.php:398 includes/addons_page.php:1461
+#: wpematico_class.php:400 includes/addons_page.php:1461
 msgid "WPeMatico Addons"
 msgstr "Πρόσθετα WPeMatico"
 
-#: wpematico_class.php:407 includes/class-tour-helper.php:224
+#: wpematico_class.php:409 includes/class-tour-helper.php:224
 #: includes/plugin_functions.php:360
 msgid "Extensions"
 msgstr "Επεκτάσεις"

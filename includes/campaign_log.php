@@ -63,8 +63,7 @@ class campaign_logs {
 		);
 		?> </h1>
 		<?php
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo $log;
+		echo wp_kses($log, wpematico_log_allowed_html());
 
 		?></body>
 		</html> 

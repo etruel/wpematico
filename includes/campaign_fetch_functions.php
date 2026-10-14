@@ -83,6 +83,10 @@ class wpematico_campaign_fetch_functions {
 			$current_item['content'] .= '<p class="wpematico_credit"><small>Powered by <a href="http://www.wpematico.com" target="_blank">WPeMatico</a></small></p>';
 		}
 
+		// What the feed and the parsers brought is sanitized here: after the media, before
+		// the post template adds the campaign's own markup.
+		$current_item['content'] = WPeMatico_Feed_HTML::content($current_item['content'], $campaign);
+
 		$current_item = apply_filters('wpematico_after_item_parsers', $current_item, $campaign, $feed, $item);
 		//if($current_item == -1 ) return -1; //Hack to allow skip the post in this instance
 
@@ -117,10 +121,10 @@ class wpematico_campaign_fetch_functions {
 		if ($campaign['campaign_enable_template']) {
 			trigger_error('<b>' . __('Parsing Post template.', 'wpematico') . '</b>', E_USER_NOTICE);
 			if (!empty($current_item['images'][0])) {
-				$img_str = "<img class=\"wpe_imgrss\" src=\"" . $current_item['images'][0] . "\">";  // The image only.
+				$img_str = "<img class=\"wpe_imgrss\" src=\"" . esc_url($current_item['images'][0]) . "\">";  // The image only.
 			} else {
 				if (!empty($current_item['featured_image'])) {
-					$img_str = "<img class=\"wpe_imgrss\" src=\"" . $current_item['featured_image'] . "\">";  // The image only.
+					$img_str = "<img class=\"wpe_imgrss\" src=\"" . esc_url($current_item['featured_image']) . "\">";  // The image only.
 				} else {
 					trigger_error(__('Can\'t find the featured image to add to the content.', 'wpematico'), E_USER_WARNING);
 					$img_str = '<!-- no image -->';
@@ -216,7 +220,7 @@ class wpematico_campaign_fetch_functions {
 
 		$template_vars = apply_filters('wpematico_add_template_vars', $vars, $current_item, $campaign, $feed, $item);
 
-		return $template_vars;
+		return WPeMatico_Feed_HTML::template_vars($template_vars, $campaign);
 	}
 
 	/**

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPeMatico 2.9\n"
 "Report-Msgid-Bugs-To: https://etruel.com/my-account/support/\n"
-"POT-Creation-Date: 2026-10-01 01:06+0000\n"
+"POT-Creation-Date: 2026-10-14 19:25+0000\n"
 "PO-Revision-Date: 2026-10-13 00:02+0000\n"
 "Last-Translator: Etruel Developments <translations@etruel.com>\n"
 "Language-Team: Etruel Developments <translations@etruel.com>\n"
@@ -57,7 +57,7 @@ msgid ""
 "site's sources right away."
 msgstr ""
 "WordPress przechowuje w pamięci podręcznej odpowiedź dotyczącą aktualizacji "
-"przez kilka godzin. \"Sprawdź ponownie\" u góry ekranu Kokpit &rsaquo; "
+"przez kilka godzin. „Sprawdź ponownie” u góry ekranu Kokpit &rsaquo; "
 "Aktualizacje od razu odpytuje sklep i źródła tej witryny."
 
 #: includes/addons_help.php:160
@@ -103,7 +103,7 @@ msgid ""
 "among the other plugins; this screen works the same either way."
 msgstr ""
 "Dodatki WPeMatico są domyślnie ukryte na głównej liście wtyczek. Ustawienia "
-"&rsaquo; Pisanie &rsaquo; \"Pokaż lokalne dodatki na liście wtyczek\" "
+"&rsaquo; Pisanie &rsaquo; „Pokaż lokalne dodatki na liście wtyczek” "
 "przywraca je między pozostałe wtyczki; ten ekran działa tak samo w obu "
 "przypadkach."
 
@@ -125,8 +125,8 @@ msgid ""
 "The number beside \"WPeMatico Addons\" in the menu is how many installed add-"
 "ons have an update waiting."
 msgstr ""
-"Liczba obok \"Dodatki WPeMatico\" w menu to liczba zainstalowanych dodatków "
-"z oczekującą aktualizacją."
+"Liczba obok „Dodatki WPeMatico” w menu to liczba zainstalowanych dodatków z "
+"oczekującą aktualizacją."
 
 #: includes/addons_help.php:39
 msgid ""
@@ -406,7 +406,7 @@ msgstr "Szczegóły"
 msgid "WPeMatico Addons "
 msgstr "Dodatki WPeMatico "
 
-#: includes/addons_page.php:1516
+#: includes/addons_page.php:1516 includes/addons_page.php:1528
 msgid "Inactive &mdash; Now part of WPeMatico"
 msgstr "Wyłączony &mdash; teraz część WPeMatico"
 
@@ -474,8 +474,8 @@ msgstr "Przejdź do zakupu w sklepie etruel"
 msgid "Activate %s on this site"
 msgstr "Włącz %s w tej witrynie"
 
-#: includes/addons_page.php:744 includes/module/actions.php:362
-#: includes/module/actions.php:436 includes/module/dashboard.php:64
+#: includes/addons_page.php:744 includes/module/actions.php:371
+#: includes/module/actions.php:445 includes/module/dashboard.php:64
 msgid "Activate"
 msgstr "Włącz"
 
@@ -483,7 +483,7 @@ msgstr "Włącz"
 msgid "See details and prices on etruel's store"
 msgstr "Zobacz szczegóły i ceny w sklepie etruel"
 
-#: includes/addons_page.php:762 includes/module/actions.php:305
+#: includes/addons_page.php:762 includes/module/actions.php:314
 #: includes/module/dashboard.php:55 includes/module/manager.php:130
 #: includes/module/manager.php:151 includes/module/manager.php:156
 msgid "Installed"
@@ -524,6 +524,103 @@ msgstr "Wybrany dodatek został usunięty."
 #: includes/addons_page.php:923
 msgid "The selected add-ons have been deleted."
 msgstr "Wybrane dodatki zostały usunięte."
+
+#: includes/campaign-types/googlo_news.php:174
+msgid "%s is not a Google News address."
+msgstr "%s nie jest adresem Google News."
+
+#: includes/campaign-types/googlo_news.php:327
+msgid "Google News Campaign Type."
+msgstr "Rodzaj kampanii Google News."
+
+#: includes/campaign-types/googlo_news.php:328
+msgid ""
+"Paste the address of a Google News search, topic or publication as your "
+"browser shows it, and the campaign finds its feed on its own:"
+msgstr ""
+"Wklej adres wyszukiwania, tematu lub serwisu Google News tak, jak pokazuje "
+"go twoja przeglądarka, a kampania sama znajdzie kanał informacyjny:"
+
+#: includes/campaign-types/googlo_news.php:332
+msgid ""
+"Each item brings the headline, the date and the name of the publication, and "
+"links to Google News."
+msgstr ""
+"Każdy element przynosi nagłówek, datę i nazwę serwisu oraz prowadzi do "
+"Google News."
+
+#: includes/campaign-types/googlo_news.php:333
+msgid ""
+"The name and the address of the publication are saved with each post, and "
+"the post template takes them as {source_name} and {source_url}."
+msgstr ""
+"Nazwa i adres serwisu są zapisywane z każdym wpisem, a szablon wpisu "
+"przyjmuje je jako {source_name} i {source_url}."
+
+#: includes/campaign-types/googlo_news.php:336
+msgid "Publication in the title."
+msgstr "Serwis w tytule."
+
+#: includes/campaign-types/googlo_news.php:337
+msgid ""
+"Google News ends every headline with the name of the publication. The "
+"campaign takes it off; tick this to keep it."
+msgstr ""
+"Google News kończy każdy nagłówek nazwą serwisu. Kampania ją usuwa; zaznacz "
+"to, aby ją zachować."
+
+#: includes/campaign-types/googlo_news.php:340
+msgid "Related coverage."
+msgstr "Powiązane materiały."
+
+#: includes/campaign-types/googlo_news.php:341
+msgid ""
+"On a topic, Google News lists other articles about the same story under each "
+"headline. Tick this to add that list to the post."
+msgstr ""
+"W temacie Google News wymienia pod każdym nagłówkiem inne artykuły o tej "
+"samej sprawie. Zaznacz to, aby dodać tę listę do wpisu."
+
+#: includes/campaign-types/googlo_news.php:352
+msgid "Google News Campaign Options"
+msgstr "Opcje kampanii Google News"
+
+#: includes/campaign-types/googlo_news.php:373
+msgid "Keep the name of the publication at the end of the title"
+msgstr "Zachowaj nazwę serwisu na końcu tytułu"
+
+#: includes/campaign-types/googlo_news.php:375
+msgid "Add the related coverage Google News lists under the headline"
+msgstr "Dodaj powiązane materiały, które Google News wymienia pod nagłówkiem"
+
+#: includes/campaign-types/googlo_news.php:390
+msgid "Original article"
+msgstr "Oryginalny artykuł"
+
+#: includes/campaign-types/googlo_news.php:391
+#: includes/campaign-types/vimeo.php:395
+msgid "PRO Feature"
+msgstr "Funkcja PRO"
+
+#: includes/campaign-types/googlo_news.php:395
+msgid "Link each post to the article on the publication's own site"
+msgstr "Połącz każdy wpis z artykułem na stronie samego serwisu"
+
+#: includes/campaign-types/googlo_news.php:399
+msgid "Skip the item when its article is not found"
+msgstr "Pomiń element, gdy jego artykuł nie zostanie znaleziony"
+
+#: includes/campaign-types/googlo_news.php:402
+msgid ""
+"Professional looks each headline up on the site of its publication, so the "
+"source link, the canonical URL and Full Content work on the article itself."
+msgstr ""
+"Professional wyszukuje każdy nagłówek na stronie jego serwisu, aby odnośnik "
+"do źródła, kanoniczny adres URL i Full Content działały na samym artykule."
+
+#: includes/campaign-types/googlo_news.php:61 includes/module/actions.php:194
+msgid "Google News"
+msgstr "Google News"
 
 #: includes/campaign-types/vimeo.php:258
 msgid "Parsing Vimeo video and feed item contents."
@@ -610,10 +707,6 @@ msgstr "Użyj tylko jako obrazka wyróżniającego"
 #: includes/campaign-types/vimeo.php:394
 msgid "Vimeo API"
 msgstr "API Vimeo"
-
-#: includes/campaign-types/vimeo.php:395
-msgid "PRO Feature"
-msgstr "Funkcja PRO"
 
 #: includes/campaign-types/vimeo.php:399
 msgid "Fetch through the Vimeo API instead of the feed."
@@ -749,7 +842,7 @@ msgstr "Odśwież przeglądarkę i spróbuj ponownie."
 #: includes/debug_page.php:1096 includes/debug_page.php:3712
 #: includes/wpematico_functions.php:2987 includes/wpematico_functions.php:3012
 #: includes/wpematico_functions.php:3208 includes/wpematico_functions.php:3387
-#: includes/xml-importer.php:361 includes/settings/page.php:1265
+#: includes/xml-importer.php:361 includes/settings/page.php:1277
 msgid "You are not allowed to do this."
 msgstr "Brak uprawnień do wykonania tej czynności."
 
@@ -759,7 +852,7 @@ msgid ""
 "or use \"Clear Campaign\"."
 msgstr ""
 "Ta kampania jest już uruchomiona (od %d s). Poczekaj, aż się zakończy, lub "
-"użyj \"Wyczyść kampanię\"."
+"użyj „Wyczyść kampanię”."
 
 #: includes/campaign_edit.php:437
 msgid "There's an error with the supplied RegEx expression in word: %s"
@@ -1080,7 +1173,7 @@ msgstr "Podgląd kampanii"
 msgid "Feed (default)"
 msgstr "Kanał (domyślny)"
 
-#: includes/campaign_edit_functions.php:226 includes/module/actions.php:194
+#: includes/campaign_edit_functions.php:226 includes/module/actions.php:203
 msgid "YouTube"
 msgstr "YouTube"
 
@@ -1441,7 +1534,7 @@ msgid "%s has to be installed and activated for this to work."
 msgstr "Aby to działało, %s musi być zainstalowana i włączona."
 
 #: includes/campaign_edit_functions.php:615 includes/campaign_help.php:160
-#: includes/settings/help.php:60 includes/module/actions.php:560
+#: includes/settings/help.php:60 includes/module/actions.php:569
 msgid "Featured Image from URL"
 msgstr "Featured Image from URL"
 
@@ -1533,7 +1626,7 @@ msgid "Remove link to source videos"
 msgstr "Usuń odnośnik do filmów źródłowych"
 
 #: includes/campaign_edit_functions.php:775 includes/campaign_help.php:237
-#: includes/settings/help.php:201 includes/settings/page.php:498
+#: includes/settings/help.php:206 includes/settings/page.php:498
 msgid "Allow duplicate posts"
 msgstr "Zezwalaj na zduplikowane wpisy"
 
@@ -1545,8 +1638,7 @@ msgid ""
 msgstr ""
 "Gdy oba sprawdzenia są wyłączone, każdy element jest publikowany ponownie "
 "przy każdym uruchomieniu, bez końca. Aby publikować elementy o tym samym "
-"tytule, użyj \"Zezwalaj na zduplikowane tytuły\", a tę opcję zostaw w "
-"spokoju."
+"tytule, użyj „Zezwalaj na zduplikowane tytuły”, a tę opcję zostaw w spokoju."
 
 #: includes/campaign_edit_functions.php:779 includes/settings/page.php:506
 msgid "Allow duplicate titles"
@@ -1557,12 +1649,12 @@ msgid "Allow duplicate hashes (not recommended)"
 msgstr "Zezwalaj na zduplikowane skróty (niezalecane)"
 
 #: includes/campaign_edit_functions.php:784 includes/campaign_help.php:249
-#: includes/settings/help.php:218 includes/settings/page.php:526
+#: includes/settings/help.php:223 includes/settings/page.php:526
 msgid "Also check duplicates by source permalink"
 msgstr "Sprawdzaj duplikaty także po bezpośrednim odnośniku źródła"
 
 #: includes/campaign_edit_functions.php:789 includes/campaign_help.php:243
-#: includes/settings/help.php:207 includes/settings/page.php:535
+#: includes/settings/help.php:212 includes/settings/page.php:535
 msgid "Keep reading past a duplicate"
 msgstr "Czytaj dalej po napotkaniu duplikatu"
 
@@ -1650,61 +1742,57 @@ msgstr "Przeglądarka kanałów"
 msgid "Open URL in a new browser tab"
 msgstr "Otwórz adres URL w nowej karcie przeglądarki"
 
-#: includes/campaign_fetch.php:1008
+#: includes/campaign_fetch.php:1028
 msgid "The post has no featured image."
 msgstr "Wpis nie ma obrazka wyróżniającego."
 
-#: includes/campaign_fetch.php:1015
+#: includes/campaign_fetch.php:1035
 msgid "Attaching images"
 msgstr "Dołączanie obrazków"
 
-#: includes/campaign_fetch.php:1036
+#: includes/campaign_fetch.php:1056
 msgid "Attaching audios"
 msgstr "Dołączanie plików dźwiękowych"
 
-#: includes/campaign_fetch.php:1052
+#: includes/campaign_fetch.php:1072
 msgid "Attaching videos"
 msgstr "Dołączanie filmów"
 
-#: includes/campaign_fetch.php:1081
+#: includes/campaign_fetch.php:1101
 msgid "Campaign fetched in %s sec."
 msgstr "Kampanię pobrano w %s s."
 
-#: includes/campaign_fetch.php:1111
+#: includes/campaign_fetch.php:1131
 msgid "WPeMatico Log "
 msgstr "Dziennik WPeMatico "
 
-#: includes/campaign_fetch.php:1114
+#: includes/campaign_fetch.php:1134
 msgid "Campaign Name:"
 msgstr "Nazwa kampanii:"
 
-#: includes/campaign_fetch.php:1116
+#: includes/campaign_fetch.php:1136
 msgid "Errors:"
 msgstr "Błędy:"
 
-#: includes/campaign_fetch.php:1118
+#: includes/campaign_fetch.php:1138
 msgid "Warnings:"
 msgstr "Ostrzeżenia:"
 
-#: includes/campaign_fetch.php:1122
+#: includes/campaign_fetch.php:1142
 msgid "WPeMatico by "
 msgstr "WPeMatico, autor: "
 
-#: includes/campaign_fetch.php:1149
+#: includes/campaign_fetch.php:1169
 msgid "Campaign fetched in %1s sec."
 msgstr "Kampanię pobrano w %1s s."
 
-#: includes/campaign_fetch.php:1162
+#: includes/campaign_fetch.php:1182
 msgid "Processed Posts: %s"
 msgstr "Przetworzone wpisy: %s"
 
-#: includes/campaign_fetch.php:1163
+#: includes/campaign_fetch.php:1183
 msgid "Show detailed Log"
 msgstr "Pokaż szczegółowy dziennik"
-
-#: includes/campaign_fetch.php:1183 includes/campaigns_list.php:922
-msgid "Posts imported by this campaign."
-msgstr "Wpisy zaimportowane przez tę kampanię."
 
 #: includes/campaign_fetch.php:120
 msgid ""
@@ -1713,6 +1801,10 @@ msgid ""
 msgstr ""
 "Limit pamięci ustawiono na %1$s, ponieważ nie można użyć funkcji PHP "
 "memory_get_usage() do dynamicznego zwiększania pamięci!"
+
+#: includes/campaign_fetch.php:1203 includes/campaigns_list.php:922
+msgid "Posts imported by this campaign."
+msgstr "Wpisy zaimportowane przez tę kampanię."
 
 #: includes/campaign_fetch.php:131
 msgid "Ending feed, reached running timeout at %1$d sec."
@@ -1738,59 +1830,59 @@ msgstr "Osiągnięto limit pobierania kampanii przy %s."
 msgid "Reached running timeout at %1$d sec."
 msgstr "Osiągnięto limit czasu działania po %1$d s."
 
-#: includes/campaign_fetch.php:338
+#: includes/campaign_fetch.php:351
 msgid "%s posts added"
 msgstr "Dodano wpisów: %s"
 
-#: includes/campaign_fetch.php:353
+#: includes/campaign_fetch.php:366
 msgid "Processing item %s"
 msgstr "Przetwarzanie elementu %s"
 
-#: includes/campaign_fetch.php:367
+#: includes/campaign_fetch.php:380
 msgid "Assigning original date to post."
 msgstr "Przypisywanie oryginalnej daty do wpisu."
 
-#: includes/campaign_fetch.php:370
+#: includes/campaign_fetch.php:383
 msgid "Original date out of range.  Assigning current date to post."
 msgstr "Oryginalna data poza zakresem. Przypisywanie bieżącej daty do wpisu."
 
-#: includes/campaign_fetch.php:374
+#: includes/campaign_fetch.php:387
 msgid "Forced original date to post."
 msgstr "Wymuszono oryginalną datę wpisu."
 
-#: includes/campaign_fetch.php:512
+#: includes/campaign_fetch.php:525
 msgid "Assigning Auto Categories."
 msgstr "Przypisywanie kategorii automatycznych."
 
-#: includes/campaign_fetch.php:553
+#: includes/campaign_fetch.php:566
 msgid "Found category under parent: "
 msgstr "Znaleziono kategorię pod nadrzędną: "
 
-#: includes/campaign_fetch.php:569
+#: includes/campaign_fetch.php:582
 msgid "Category exists with correct parent: "
 msgstr "Kategoria istnieje z właściwą nadrzędną: "
 
-#: includes/campaign_fetch.php:592
+#: includes/campaign_fetch.php:605
 msgid "Adding Category: "
 msgstr "Dodawanie kategorii: "
 
-#: includes/campaign_fetch.php:594
+#: includes/campaign_fetch.php:607
 msgid "Auto Added by WPeMatico"
 msgstr "Dodane automatycznie przez WPeMatico"
 
-#: includes/campaign_fetch.php:610
+#: includes/campaign_fetch.php:623
 msgid "Created category: "
 msgstr "Utworzono kategorię: "
 
-#: includes/campaign_fetch.php:612
+#: includes/campaign_fetch.php:625
 msgid "Failed to create category: "
 msgstr "Nie udało się utworzyć kategorii: "
 
-#: includes/campaign_fetch.php:620
+#: includes/campaign_fetch.php:633
 msgid "Assigned category to post: "
 msgstr "Przypisano kategorię do wpisu: "
 
-#: includes/campaign_fetch.php:623
+#: includes/campaign_fetch.php:636
 msgid "Could not assign category: "
 msgstr "Nie można było przypisać kategorii: "
 
@@ -1798,175 +1890,180 @@ msgstr "Nie można było przypisać kategorii: "
 msgid "Campaign skipped: already running since %d sec ago."
 msgstr "Pominięto kampanię: działa już od %d s."
 
-#: includes/campaign_fetch.php:791
+#: includes/campaign_fetch.php:811
 msgid "Adding unfiltered content"
 msgstr "Dodawanie niefiltrowanej treści"
 
-#: includes/campaign_fetch.php:799
+#: includes/campaign_fetch.php:819
 msgid "Processing item pingbacks"
 msgstr "Przetwarzanie pingbacków elementu"
 
-#: includes/campaign_fetch.php:872
+#: includes/campaign_fetch.php:892
 msgid "Categories added: "
 msgstr "Dodane kategorie: "
 
-#: includes/campaign_fetch.php:884
+#: includes/campaign_fetch.php:904
 msgid "Tags added: "
 msgstr "Dodane tagi: "
 
-#: includes/campaign_fetch.php:896
+#: includes/campaign_fetch.php:916
 msgid "Post format added: "
 msgstr "Dodany format wpisu: "
 
-#: includes/campaign_fetch.php:917
+#: includes/campaign_fetch.php:937
 msgid "Skip Featured Image."
 msgstr "Pominięto obrazek wyróżniający."
 
-#: includes/campaign_fetch.php:921
+#: includes/campaign_fetch.php:941
 msgid "Featuring Image Into Post."
 msgstr "Ustawianie obrazka wyróżniającego we wpisie."
 
-#: includes/campaign_fetch.php:963 includes/campaign_fetch_functions.php:510
+#: includes/campaign_fetch.php:983 includes/campaign_fetch_functions.php:514
 msgid "Failed to obtain file:"
 msgstr "Nie udało się pobrać pliku:"
 
-#: includes/campaign_fetch.php:971
+#: includes/campaign_fetch.php:991
 msgid "Save Featured image file failed:"
 msgstr "Zapis pliku obrazka wyróżniającego nie powiódł się:"
 
-#: includes/campaign_fetch_functions.php:1000
+#: includes/campaign_fetch_functions.php:1004
 msgid "Fifu save set attachment from URL."
 msgstr "Fifu zapisał i ustawił załącznik z adresu URL."
 
-#: includes/campaign_fetch_functions.php:1089
+#: includes/campaign_fetch_functions.php:102
+#: includes/campaign_fetch_functions.php:112
+msgid "Cleaning Links from content."
+msgstr "Czyszczenie odnośników z treści."
+
+#: includes/campaign_fetch_functions.php:1093
 msgid "Parsing Youtube video and feed item contents."
 msgstr "Przetwarzanie filmu z Youtube i treści elementu kanału."
 
-#: includes/campaign_fetch_functions.php:118
-msgid "Parsing Post template."
-msgstr "Przetwarzanie szablonu wpisu."
-
-#: includes/campaign_fetch_functions.php:1201
+#: includes/campaign_fetch_functions.php:1205
 msgid "Looking for audios in content."
 msgstr "Szukanie plików dźwiękowych w treści."
 
-#: includes/campaign_fetch_functions.php:125
-msgid "Can't find the featured image to add to the content."
-msgstr "Nie można znaleźć obrazka wyróżniającego do dodania do treści."
+#: includes/campaign_fetch_functions.php:122
+msgid "Parsing Post template."
+msgstr "Przetwarzanie szablonu wpisu."
 
-#: includes/campaign_fetch_functions.php:1252
-#: includes/campaign_fetch_functions.php:1408
+#: includes/campaign_fetch_functions.php:1256
+#: includes/campaign_fetch_functions.php:1412
 msgid "Upload file failed:"
 msgstr "Przesyłanie pliku nie powiodło się:"
 
-#: includes/campaign_fetch_functions.php:1270
+#: includes/campaign_fetch_functions.php:1274
 msgid "Using remotely linked audios in content. No changes."
 msgstr ""
 "Używanie zdalnie podlinkowanych plików dźwiękowych w treści. Bez zmian."
 
-#: includes/campaign_fetch_functions.php:1356
+#: includes/campaign_fetch_functions.php:129
+msgid "Can't find the featured image to add to the content."
+msgstr "Nie można znaleźć obrazka wyróżniającego do dodania do treści."
+
+#: includes/campaign_fetch_functions.php:1360
 msgid "Looking for videos in content."
 msgstr "Szukanie filmów w treści."
 
-#: includes/campaign_fetch_functions.php:1426
+#: includes/campaign_fetch_functions.php:1430
 msgid "Using remotely linked videos in content. No changes."
 msgstr "Używanie zdalnie podlinkowanych filmów w treści. Bez zmian."
 
-#: includes/campaign_fetch_functions.php:1459
+#: includes/campaign_fetch_functions.php:1463
 msgid "Skipping standard videos..."
 msgstr "Pomijanie standardowych filmów..."
 
-#: includes/campaign_fetch_functions.php:1465
+#: includes/campaign_fetch_functions.php:1469
 msgid "Skipping Youtube Short..."
 msgstr "Pomijanie Youtube Short..."
 
-#: includes/campaign_fetch_functions.php:242
+#: includes/campaign_fetch_functions.php:246
 msgid "Processing Words to Category %s"
 msgstr "Przetwarzanie słów na kategorię %s"
 
-#: includes/campaign_fetch_functions.php:272
+#: includes/campaign_fetch_functions.php:276
 msgid "Found!: word %1$s to Cat_id %2$s"
 msgstr "Znaleziono!: słowo %1$s do Cat_id %2$s"
 
-#: includes/campaign_fetch_functions.php:277
+#: includes/campaign_fetch_functions.php:281
 msgid "Not found word %s"
 msgstr "Nie znaleziono słowa %s"
 
-#: includes/campaign_fetch_functions.php:284
+#: includes/campaign_fetch_functions.php:288
 msgid "Searching the category with more words."
 msgstr "Szukanie kategorii z największą liczbą słów."
 
-#: includes/campaign_fetch_functions.php:300
+#: includes/campaign_fetch_functions.php:304
 msgid "The category with more words in content: %s"
 msgstr "Kategoria z największą liczbą słów w treści: %s"
 
-#: includes/campaign_fetch_functions.php:307
+#: includes/campaign_fetch_functions.php:311
 msgid "Assign the first category: %s"
 msgstr "Przypisz pierwszą kategorię: %s"
 
-#: includes/campaign_fetch_functions.php:462
+#: includes/campaign_fetch_functions.php:466
 msgid "Looking for images in content."
 msgstr "Szukanie obrazków w treści."
 
-#: includes/campaign_fetch_functions.php:471
-#: includes/campaign_fetch_functions.php:1205
-#: includes/campaign_fetch_functions.php:1360
+#: includes/campaign_fetch_functions.php:475
+#: includes/campaign_fetch_functions.php:1209
+#: includes/campaign_fetch_functions.php:1364
 msgid "Uploading media..."
 msgstr "Przesyłanie mediów..."
 
-#: includes/campaign_fetch_functions.php:529
+#: includes/campaign_fetch_functions.php:533
 msgid "Save image file failed:"
 msgstr "Zapis pliku obrazka nie powiódł się:"
 
-#: includes/campaign_fetch_functions.php:540
-#: includes/campaign_fetch_functions.php:1259
-#: includes/campaign_fetch_functions.php:1415
+#: includes/campaign_fetch_functions.php:544
+#: includes/campaign_fetch_functions.php:1263
+#: includes/campaign_fetch_functions.php:1419
 msgid "Extension not allowed: "
 msgstr "Niedozwolone rozszerzenie: "
 
-#: includes/campaign_fetch_functions.php:543
-#: includes/campaign_fetch_functions.php:1261
-#: includes/campaign_fetch_functions.php:1417
+#: includes/campaign_fetch_functions.php:547
+#: includes/campaign_fetch_functions.php:1265
+#: includes/campaign_fetch_functions.php:1421
 msgid "Stripped src."
 msgstr "Usunięto src."
 
-#: includes/campaign_fetch_functions.php:561
+#: includes/campaign_fetch_functions.php:565
 msgid "Using remotely linked images in content. No changes."
 msgstr "Używanie zdalnie podlinkowanych obrazków w treści. Bez zmian."
 
-#: includes/campaign_fetch_functions.php:598
+#: includes/campaign_fetch_functions.php:602
 msgid "Attaching file:"
 msgstr "Dołączanie pliku:"
 
-#: includes/campaign_fetch_functions.php:601
+#: includes/campaign_fetch_functions.php:605
 msgid "Sorry, the attachment could not be inserted. An error has occurred."
 msgstr "Nie można było wstawić załącznika. Wystąpił błąd."
 
-#: includes/campaign_fetch_functions.php:636
+#: includes/campaign_fetch_functions.php:640
 msgid "Executing featured image selector..."
 msgstr "Uruchamianie selektora obrazka wyróżniającego..."
 
-#: includes/campaign_fetch_functions.php:640
+#: includes/campaign_fetch_functions.php:644
 msgid "Featured image \"%1$s\": %2$s"
-msgstr "Obrazek wyróżniający \"%1$s\": %2$s"
+msgstr "Obrazek wyróżniający „%1$s”: %2$s"
 
-#: includes/campaign_fetch_functions.php:643
+#: includes/campaign_fetch_functions.php:647
 msgid "No image was found according to the selected index."
 msgstr "Nie znaleziono obrazka dla wybranego indeksu."
 
-#: includes/campaign_fetch_functions.php:648
+#: includes/campaign_fetch_functions.php:652
 msgid "The first image was not found in the content."
 msgstr "Nie znaleziono pierwszego obrazka w treści."
 
-#: includes/campaign_fetch_functions.php:650
+#: includes/campaign_fetch_functions.php:654
 msgid "Using first image as the featured image."
 msgstr "Używanie pierwszego obrazka jako obrazka wyróżniającego."
 
-#: includes/campaign_fetch_functions.php:656
+#: includes/campaign_fetch_functions.php:660
 msgid "The last image was not found in the content."
 msgstr "Nie znaleziono ostatniego obrazka w treści."
 
-#: includes/campaign_fetch_functions.php:658
+#: includes/campaign_fetch_functions.php:662
 msgid "Using last image as the featured image."
 msgstr "Używanie ostatniego obrazka jako obrazka wyróżniającego."
 
@@ -1974,48 +2071,43 @@ msgstr "Używanie ostatniego obrazka jako obrazka wyróżniającego."
 msgid "Deleting html tags: %s"
 msgstr "Usuwanie znaczników html: %s"
 
-#: includes/campaign_fetch_functions.php:865
+#: includes/campaign_fetch_functions.php:869
 msgid "Getting srcset attribute..."
 msgstr "Pobieranie atrybutu srcset..."
 
-#: includes/campaign_fetch_functions.php:890
+#: includes/campaign_fetch_functions.php:894
 msgid "Overriding src attribute with value: %s from srcset."
 msgstr "Nadpisywanie atrybutu src wartością %s z srcset."
 
-#: includes/campaign_fetch_functions.php:937
-#: includes/campaign_fetch_functions.php:1178
-#: includes/campaign_fetch_functions.php:1333
+#: includes/campaign_fetch_functions.php:941
+#: includes/campaign_fetch_functions.php:1182
+#: includes/campaign_fetch_functions.php:1337
 msgid "Removing: %s from content."
 msgstr "Usuwanie %s z treści."
 
-#: includes/campaign_fetch_functions.php:945
+#: includes/campaign_fetch_functions.php:949
 msgid "Link with image URI not found in src."
 msgstr "Nie znaleziono w src odnośnika z adresem URI obrazka."
 
-#: includes/campaign_fetch_functions.php:948
+#: includes/campaign_fetch_functions.php:952
 msgid "Successfully removed with anchor link."
 msgstr "Pomyślnie usunięto wraz z odnośnikiem kotwicy."
 
-#: includes/campaign_fetch_functions.php:954
+#: includes/campaign_fetch_functions.php:958
 msgid "Image URI not found in src."
 msgstr "Nie znaleziono adresu URI obrazka w src."
 
-#: includes/campaign_fetch_functions.php:957
+#: includes/campaign_fetch_functions.php:961
 msgid "Successfully removed."
 msgstr "Pomyślnie usunięto."
 
-#: includes/campaign_fetch_functions.php:968
+#: includes/campaign_fetch_functions.php:972
 msgid "Setting up Featured Image From Url"
 msgstr "Konfigurowanie Featured Image From Url"
 
-#: includes/campaign_fetch_functions.php:971
+#: includes/campaign_fetch_functions.php:975
 msgid "Adding featured image post meta: "
 msgstr "Dodawanie metadanych wpisu dla obrazka wyróżniającego: "
-
-#: includes/campaign_fetch_functions.php:98
-#: includes/campaign_fetch_functions.php:108
-msgid "Cleaning Links from content."
-msgstr "Czyszczenie odnośników z treści."
 
 #: includes/campaign_help.php:101
 msgid "Use [embed]"
@@ -2319,7 +2411,7 @@ msgstr ""
 msgid "Duplicate options for this campaign"
 msgstr "Opcje duplikatów dla tej kampanii"
 
-#: includes/campaign_help.php:238 includes/settings/help.php:202
+#: includes/campaign_help.php:238 includes/settings/help.php:207
 msgid ""
 "Turns off both duplicate checks, so every item is published again on every "
 "run. Almost never what you want."
@@ -2327,11 +2419,11 @@ msgstr ""
 "Wyłącza oba sprawdzenia duplikatów, więc każdy element jest publikowany "
 "ponownie przy każdym uruchomieniu. Prawie nigdy nie o to chodzi."
 
-#: includes/campaign_help.php:239 includes/settings/help.php:203
+#: includes/campaign_help.php:239 includes/settings/help.php:208
 msgid "The two checks"
 msgstr "Dwa sprawdzenia"
 
-#: includes/campaign_help.php:239 includes/settings/help.php:203
+#: includes/campaign_help.php:239 includes/settings/help.php:208
 msgid ""
 "the post title, and a hash of the last item address the campaign read. The "
 "hash is the reliable one; titles alone fail often."
@@ -2354,10 +2446,10 @@ msgid ""
 "a title, use \"Allow duplicate titles\" and leave the hash check on."
 msgstr ""
 "Gdy oba są wyłączone, te same elementy napływają bez końca. Aby publikować "
-"elementy o tym samym tytule, użyj \"Zezwalaj na zduplikowane tytuły\" i "
+"elementy o tym samym tytule, użyj „Zezwalaj na zduplikowane tytuły” i "
 "pozostaw włączone sprawdzanie skrótu."
 
-#: includes/campaign_help.php:244 includes/settings/help.php:208
+#: includes/campaign_help.php:244 includes/settings/help.php:213
 msgid ""
 "The campaign skips each duplicate and keeps looking for new items, instead "
 "of stopping at the first one. Not recommended."
@@ -2365,11 +2457,11 @@ msgstr ""
 "Kampania pomija każdy duplikat i dalej szuka nowych elementów, zamiast "
 "zatrzymać się na pierwszym. Niezalecane."
 
-#: includes/campaign_help.php:245 includes/settings/help.php:209
+#: includes/campaign_help.php:245 includes/settings/help.php:214
 msgid "How it works"
 msgstr "Jak to działa"
 
-#: includes/campaign_help.php:245 includes/settings/help.php:209
+#: includes/campaign_help.php:245 includes/settings/help.php:214
 msgid ""
 "feed items come ordered newest first, so the campaign reads from the top and "
 "stops at the first item it already has: everything below it is older and "
@@ -2379,7 +2471,7 @@ msgstr ""
 "i zatrzymuje się na pierwszym elemencie, który już ma: wszystko poniżej jest "
 "starsze i już opublikowane."
 
-#: includes/campaign_help.php:246 includes/settings/help.php:210
+#: includes/campaign_help.php:246 includes/settings/help.php:215
 msgid ""
 "The hash only covers the last item read, so on a feed where the title check "
 "works poorly this option can publish the same item twice."
@@ -2388,7 +2480,7 @@ msgstr ""
 "sprawdzanie tytułu działa słabo, ta opcja może opublikować ten sam element "
 "dwa razy."
 
-#: includes/campaign_help.php:250 includes/settings/help.php:219
+#: includes/campaign_help.php:250 includes/settings/help.php:224
 msgid ""
 "One more query per item. Turn it on only if you still get duplicates, which "
 "happens with feeds that do not follow the standard."
@@ -2455,7 +2547,7 @@ msgstr ""
 "kanałach kampania zatrzymałaby się za wcześnie i zgubiła elementy."
 
 #: includes/campaign_help.php:311 includes/settings/help.php:147
-#: includes/module/actions.php:204
+#: includes/module/actions.php:213
 msgid "Words to Categories"
 msgstr "Słowa na kategorie"
 
@@ -2473,7 +2565,7 @@ msgid ""
 "To file every post that mentions \"motor\" under the category \"Engines\", "
 "type motor in the Word field and pick Engines in the categories list."
 msgstr ""
-"Aby każdy wpis zawierający słowo \"motor\" trafiał do kategorii \"Engines\", "
+"Aby każdy wpis zawierający słowo „motor” trafiał do kategorii „Engines”, "
 "wpisz motor w polu Słowo i wybierz Engines z listy kategorii."
 
 #: includes/campaign_help.php:315
@@ -2523,8 +2615,8 @@ msgid ""
 "To replace every \"ass\" with \"butt\", type ass in the origin field and "
 "butt in \"rewrite to\"."
 msgstr ""
-"Aby zastąpić każde \"ass\" słowem \"butt\", wpisz ass w polu źródłowym i "
-"butt w \"przepisz na\"."
+"Aby zastąpić każde „ass” słowem „butt”, wpisz ass w polu źródłowym i butt w "
+"„przepisz na”."
 
 #: includes/campaign_help.php:325
 msgid "Title:"
@@ -2535,7 +2627,7 @@ msgid ""
 "With \"Title\" checked the replacement runs on the title only, and unchecked "
 "on the content only. Add the same rewrite twice to cover both."
 msgstr ""
-"Gdy \"Tytuł\" jest zaznaczony, zamiana działa tylko w tytule, a gdy nie — "
+"Gdy „Tytuł” jest zaznaczony, zamiana działa tylko w tytule, a gdy nie — "
 "tylko w treści. Dodaj to samo przepisanie dwa razy, aby objąć oba."
 
 #: includes/campaign_help.php:327
@@ -2814,11 +2906,11 @@ msgid "Filtering out duplicates."
 msgstr "Odfiltrowywanie duplikatów."
 
 #: includes/campaign_preview.php:251 includes/campaign_preview_item.php:178
-#: includes/campaign_preview_item.php:295
+#: includes/campaign_preview_item.php:274
 msgid "You do not have sufficient permissions to preview this campaign."
 msgstr "Brak uprawnień do podglądu tej kampanii."
 
-#: includes/campaign_preview.php:362 includes/campaign_preview_item.php:353
+#: includes/campaign_preview.php:362 includes/campaign_preview_item.php:332
 msgid "WPeMatico Preview Feed"
 msgstr "Podgląd kanału WPeMatico"
 
@@ -2839,21 +2931,21 @@ msgstr "Działania"
 msgid "Next fetch"
 msgstr "Następne pobranie"
 
-#: includes/campaign_preview.php:450 includes/campaign_preview_item.php:378
+#: includes/campaign_preview.php:450 includes/campaign_preview_item.php:357
 msgid "Fetch Now"
 msgstr "Pobierz teraz"
 
-#: includes/campaign_preview.php:46 includes/campaign_preview_item.php:276
+#: includes/campaign_preview.php:46 includes/campaign_preview_item.php:255
 msgid "This action comes with the Manual Fetching add-on."
 msgstr "To działanie jest dostępne z dodatkiem Manual Fetching."
 
 #: includes/campaign_preview_item.php:187
-#: includes/campaign_preview_item.php:303
+#: includes/campaign_preview_item.php:282
 msgid "The item is invalid."
 msgstr "Element jest nieprawidłowy."
 
 #: includes/campaign_preview_item.php:194
-#: includes/campaign_preview_item.php:310
+#: includes/campaign_preview_item.php:289
 msgid "The feed is invalid."
 msgstr "Kanał jest nieprawidłowy."
 
@@ -2861,11 +2953,11 @@ msgstr "Kanał jest nieprawidłowy."
 msgid "The item could not be previewed."
 msgstr "Nie można było wyświetlić podglądu elementu."
 
-#: includes/campaign_preview_item.php:396
+#: includes/campaign_preview_item.php:375
 msgid "Loading post title..."
 msgstr "Wczytywanie tytułu wpisu..."
 
-#: includes/campaign_preview_item.php:400
+#: includes/campaign_preview_item.php:379
 msgid "Loading post content..."
 msgstr "Wczytywanie treści wpisu..."
 
@@ -2962,7 +3054,7 @@ msgstr "Włączono kampanii: %s"
 
 #: includes/campaigns_list.php:1611
 msgid "Nothing to change: every option was left on \"No change\"."
-msgstr "Nic do zmiany: wszystkie opcje pozostały na \"Bez zmian\"."
+msgstr "Nic do zmiany: wszystkie opcje pozostały na „Bez zmian”."
 
 #: includes/campaigns_list.php:1639 includes/campaigns_list.php:1641
 msgid "Campaigns updated successfully."
@@ -3275,7 +3367,7 @@ msgid ""
 "\" added."
 msgstr ""
 "Tworzy nową kampanię ze wszystkimi polami tej. Do tytułu dodawane jest "
-"\"(copy)\"."
+"„(copy)”."
 
 #: includes/campaigns_list_help.php:57
 msgid "Clears the log, the last run data and the post count of the campaign."
@@ -3340,7 +3432,7 @@ msgstr ""
 #: includes/campaigns_list_help.php:97
 msgid "\"Send to Trash\" removes all the selected campaigns in one go."
 msgstr ""
-"\"Przenieś do kosza\" usuwa wszystkie zaznaczone kampanie za jednym razem."
+"„Przenieś do kosza” usuwa wszystkie zaznaczone kampanie za jednym razem."
 
 #: includes/campaigns_list_help.php:99
 msgid "Select the campaigns, choose the action and click Apply."
@@ -4117,7 +4209,7 @@ msgid ""
 "post."
 msgstr ""
 "Full Content przepuszcza każdą pobraną stronę przez Tidy. Niektóre "
-"kompilacje biblioteki ignorują ustawienie \"nie zawijaj\" i łamią tekst po "
+"kompilacje biblioteki ignorują ustawienie „nie zawijaj” i łamią tekst po "
 "każdym słowie, co widać jako znak nowej linii między wszystkimi słowami "
 "zaimportowanego wpisu."
 
@@ -4132,7 +4224,7 @@ msgid ""
 "the text after every word. Posts imported with the Full Content addon will "
 "show a line break between all words. Ask your host to update libtidy."
 msgstr ""
-"Błędne zawijanie wierszy (libtidy %s). Ta kompilacja ignoruje \"wrap: 0\" i "
+"Błędne zawijanie wierszy (libtidy %s). Ta kompilacja ignoruje „wrap: 0” i "
 "łamie tekst po każdym słowie. Wpisy zaimportowane dodatkiem Full Content "
 "będą miały znak nowej linii między wszystkimi słowami. Poproś hosting o "
 "aktualizację libtidy."
@@ -4429,7 +4521,7 @@ msgid ""
 "common value is \"direct\"."
 msgstr ""
 "FileSystem Method jest używana przez funkcję automatycznych aktualizacji "
-"WordPressa. Najczęstsza wartość to \"direct\"."
+"WordPressa. Najczęstsza wartość to „direct”."
 
 #: includes/debug_page.php:2599
 msgid "WP Debug Mode:"
@@ -4599,7 +4691,7 @@ msgstr "Pobierz kanał"
 #: includes/debug_page.php:3712 includes/wpematico_functions.php:2987
 #: includes/wpematico_functions.php:3012 includes/wpematico_functions.php:3208
 #: includes/wpematico_functions.php:3387 includes/xml-importer.php:361
-#: includes/settings/page.php:1265 includes/module/manager.php:265
+#: includes/settings/page.php:1277 includes/module/manager.php:265
 msgid "Permission denied"
 msgstr "Brak uprawnień"
 
@@ -4633,13 +4725,13 @@ msgstr "Skopiowano do schowka."
 
 #: includes/debug_page.php:607 includes/tools_page.php:702
 #: includes/xml-importer.php:370 includes/settings/page.php:124
-#: includes/settings/page.php:1119
+#: includes/settings/page.php:1131
 msgid "Invalid request."
 msgstr "Nieprawidłowe żądanie."
 
 #: includes/debug_page.php:607 includes/tools_page.php:702
 #: includes/wpematico_functions.php:3378 includes/xml-importer.php:370
-#: includes/settings/page.php:124 includes/settings/page.php:1119
+#: includes/settings/page.php:124 includes/settings/page.php:1131
 msgid "Invalid request"
 msgstr "Nieprawidłowe żądanie"
 
@@ -4792,8 +4884,8 @@ msgid ""
 "its log was cleared."
 msgstr ""
 "Kiedy kampania ostatnio ukończyła uruchomienie — to także wartość całej "
-"kampanii, nie pojedynczego kanału. \"Nigdy\" oznacza, że nie uruchomiła się "
-"od utworzenia albo od wyczyszczenia dziennika."
+"kampanii, nie pojedynczego kanału. „Nigdy” oznacza, że nie uruchomiła się od "
+"utworzenia albo od wyczyszczenia dziennika."
 
 #: includes/feed_list_help.php:53
 msgid ""
@@ -4857,7 +4949,7 @@ msgid ""
 "filter, and \"Clear search\" undoes the global one."
 msgstr ""
 "Dopasowuje adres URL kanału i nazwę kampanii. Esc czyści filtr "
-"natychmiastowy, a \"Wyczyść wyszukiwanie\" cofa globalne."
+"natychmiastowy, a „Wyczyść wyszukiwanie” cofa globalne."
 
 #: includes/feed_list_help.php:68
 msgid "Sorting and page size."
@@ -4984,9 +5076,9 @@ msgid ""
 "a feed, and the site advertised one: that is the address to use, because a "
 "site may stop advertising it at any time."
 msgstr ""
-"Wiersz \"Kanał znaleziony przez automatyczne wykrywanie\" oznacza, że "
-"wklejono stronę, a nie kanał, a witryna wskazała kanał: to jest adres, "
-"którego należy użyć, bo witryna może w każdej chwili przestać go wskazywać."
+"Wiersz „Kanał znaleziony przez automatyczne wykrywanie” oznacza, że wklejono "
+"stronę, a nie kanał, a witryna wskazała kanał: to jest adres, którego należy "
+"użyć, bo witryna może w każdej chwili przestać go wskazywać."
 
 #: includes/feed_viewer_help.php:53
 msgid ""
@@ -5026,7 +5118,7 @@ msgid ""
 "page; that content in the box is the source blocking automated readers, not "
 "a plugin failure."
 msgstr ""
-"Wiele witryn odpowiada kodem 200 ze stroną \"włącz JavaScript\" albo stroną "
+"Wiele witryn odpowiada kodem 200 ze stroną „włącz JavaScript” albo stroną "
 "antybotową; ta zawartość w polu to źródło blokujące automatyczne czytniki, a "
 "nie awaria wtyczki."
 
@@ -6560,7 +6652,7 @@ msgid ""
 "want the migrated campaigns to skip the posts the previous plugin already "
 "published."
 msgstr ""
-"W ustawieniach WPeMatico włączono \"Wyłącz własne pola wtyczki\", więc "
+"W ustawieniach WPeMatico włączono „Wyłącz własne pola wtyczki”, więc "
 "zaimportowanych wpisów nie można porównać z bezpośrednim odnośnikiem źródła. "
 "Wyłącz tę opcję, jeśli chcesz, by przeniesione kampanie pomijały wpisy już "
 "opublikowane przez poprzednią wtyczkę."
@@ -7088,7 +7180,7 @@ msgstr ""
 "Publikuj wyselekcjonowane treści jako tematy forum albo jako odpowiedzi w "
 "nich."
 
-#: includes/module/actions.php:162 includes/module/actions.php:201
+#: includes/module/actions.php:162 includes/module/actions.php:210
 msgid "Enable it in a campaign by choosing its Campaign Type."
 msgstr "Włącz w kampanii, wybierając jej rodzaj kampanii."
 
@@ -7135,33 +7227,45 @@ msgstr ""
 "grupy, a kampania sama znajdzie kanał informacyjny."
 
 #: includes/module/actions.php:195
+msgid "Publish the news of a Google News search, topic or publication."
+msgstr "Publikuj wiadomości z wyszukiwania, tematu lub serwisu Google News."
+
+#: includes/module/actions.php:199
+msgid ""
+"Adds Google News to the Campaign Type list. Paste the address of the search, "
+"topic or publication and the campaign finds its feed on its own."
+msgstr ""
+"Dodaje Google News do listy rodzajów kampanii. Wklej adres wyszukiwania, "
+"tematu lub serwisu, a kampania sama znajdzie kanał informacyjny."
+
+#: includes/module/actions.php:204
 msgid "Import videos from YouTube channels."
 msgstr "Importuj filmy z kanałów YouTube."
 
-#: includes/module/actions.php:205
+#: includes/module/actions.php:214
 msgid ""
 "Assign categories automatically from the words found in the curated content."
 msgstr ""
 "Przypisuj kategorie automatycznie na podstawie słów znalezionych w "
 "wyselekcjonowanych treściach."
 
-#: includes/module/actions.php:209
+#: includes/module/actions.php:218
 msgid "Set the words and the category each one maps to in the Settings page."
 msgstr ""
 "Słowa i kategorie, którym odpowiadają, ustawia się na stronie Ustawień."
 
-#: includes/module/actions.php:213
+#: includes/module/actions.php:222
 msgid "Canonical URLs"
 msgstr "Kanoniczne adresy URL"
 
-#: includes/module/actions.php:214
+#: includes/module/actions.php:223
 msgid ""
 "Credit the original article with a canonical URL on every imported post."
 msgstr ""
 "Wskaż oryginalny artykuł kanonicznym adresem URL w każdym zaimportowanym "
 "wpisie."
 
-#: includes/module/actions.php:218
+#: includes/module/actions.php:227
 msgid ""
 "Tells search engines which is the original article, so the copy is not "
 "judged as duplicate content."
@@ -7169,26 +7273,26 @@ msgstr ""
 "Informuje wyszukiwarki, który artykuł jest oryginałem, dzięki czemu kopia "
 "nie jest oceniana jako zduplikowana treść."
 
-#: includes/module/actions.php:222
+#: includes/module/actions.php:231
 msgid "Download Images"
 msgstr "Pobieranie obrazków"
 
-#: includes/module/actions.php:223
+#: includes/module/actions.php:232
 msgid "Download the images of each item into the WordPress Media Library."
 msgstr "Pobieraj obrazki każdego elementu do multimediów WordPressa."
 
-#: includes/module/actions.php:228
+#: includes/module/actions.php:237
 msgid ""
 "Turn it on here; the size, quality and naming options are in the Settings "
 "page."
 msgstr ""
 "Włącz to tutaj; opcje rozmiaru, jakości i nazewnictwa są na stronie Ustawień."
 
-#: includes/module/actions.php:231
+#: includes/module/actions.php:240
 msgid "Featured Images"
 msgstr "Obrazki wyróżniające"
 
-#: includes/module/actions.php:232
+#: includes/module/actions.php:241
 msgid ""
 "Give every imported post a featured image, taken from the first image of the "
 "item."
@@ -7196,7 +7300,7 @@ msgstr ""
 "Nadaj każdemu zaimportowanemu wpisowi obrazek wyróżniający, wzięty z "
 "pierwszego obrazka elementu."
 
-#: includes/module/actions.php:237
+#: includes/module/actions.php:246
 msgid ""
 "Each campaign can override it, and the Featured Image from URL module "
 "decides whether the image is downloaded or linked."
@@ -7204,24 +7308,24 @@ msgstr ""
 "Każda kampania może to nadpisać, a moduł Featured Image from URL decyduje, "
 "czy obrazek jest pobierany, czy linkowany."
 
-#: includes/module/actions.php:241
+#: includes/module/actions.php:250
 msgid "Email Notifications"
 msgstr "Powiadomienia email"
 
-#: includes/module/actions.php:242
+#: includes/module/actions.php:251
 msgid "Get an email report every time a campaign finishes a run."
 msgstr ""
 "Otrzymuj raport emailem za każdym razem, gdy kampania zakończy uruchomienie."
 
-#: includes/module/actions.php:248
+#: includes/module/actions.php:257
 msgid "Deactivate in each campaign by clearing the email field."
 msgstr "Wyłącz w każdej kampanii, czyszcząc pole email."
 
-#: includes/module/actions.php:251
+#: includes/module/actions.php:260
 msgid "Random Galleries"
 msgstr "Losowe galerie"
 
-#: includes/module/actions.php:252
+#: includes/module/actions.php:261
 msgid ""
 "Group images by topic and give each post a featured image picked at random "
 "from its gallery."
@@ -7229,37 +7333,37 @@ msgstr ""
 "Grupuj obrazki według tematu i nadawaj każdemu wpisowi obrazek wyróżniający "
 "wylosowany z jego galerii."
 
-#: includes/module/actions.php:258 includes/module/actions.php:269
-#: includes/module/actions.php:652 includes/module/actions.php:664
-#: includes/module/actions.php:687
+#: includes/module/actions.php:267 includes/module/actions.php:278
+#: includes/module/actions.php:661 includes/module/actions.php:673
+#: includes/module/actions.php:696
 msgid "Available in the Professional addon."
 msgstr "Dostępne w dodatku Professional."
 
-#: includes/module/actions.php:261
+#: includes/module/actions.php:270
 msgid "Random Rewrites"
 msgstr "Losowe przepisywanie"
 
-#: includes/module/actions.php:262
+#: includes/module/actions.php:271
 msgid "Rewrite custom words randomly as synonyms."
 msgstr "Przepisuj wybrane słowa losowo na synonimy."
 
-#: includes/module/actions.php:266
+#: includes/module/actions.php:275
 msgid ""
 "You must complete the words separated by comma and per line in the textarea."
 msgstr ""
 "Słowa należy wpisać w polu tekstowym, oddzielone przecinkami, po jednym "
 "zestawie w wierszu."
 
-#: includes/module/actions.php:310
+#: includes/module/actions.php:319
 msgid "Turning this off deactivates the %s plugin."
 msgstr "Wyłączenie tej opcji wyłącza wtyczkę %s."
 
-#: includes/module/actions.php:312
+#: includes/module/actions.php:321
 msgid "The plugin is installed but not running. Turning this on activates %s."
 msgstr ""
 "Wtyczka jest zainstalowana, ale nie działa. Włączenie tej opcji włącza %s."
 
-#: includes/module/actions.php:318
+#: includes/module/actions.php:327
 msgid ""
 "%s is not installed yet. Install it from here, free, and this switch turns "
 "it on."
@@ -7267,60 +7371,60 @@ msgstr ""
 "%s nie jest jeszcze zainstalowana. Zainstaluj ją stąd, za darmo, a ten "
 "przełącznik ją włączy."
 
-#: includes/module/actions.php:322
+#: includes/module/actions.php:331
 msgid "Needs the %s addon. Get it at etruel.com and this switch enables it."
 msgstr ""
 "Wymaga dodatku %s. Zdobądź go na etruel.com, a ten przełącznik go włączy."
 
-#: includes/module/actions.php:361 includes/module/actions.php:435
+#: includes/module/actions.php:370 includes/module/actions.php:444
 msgid ""
 "%s is installed but not active. Turn it on and this module becomes available."
 msgstr ""
 "%s jest zainstalowana, ale wyłączona. Włącz ją, a ten moduł stanie się "
 "dostępny."
 
-#: includes/module/actions.php:420
+#: includes/module/actions.php:429
 msgid "It also needs the free %s plugin."
 msgstr "Wymaga też darmowej wtyczki %s."
 
-#: includes/module/actions.php:440
+#: includes/module/actions.php:449
 msgid "Needs the free %s plugin, which is not installed yet."
 msgstr "Wymaga darmowej wtyczki %s, która nie jest jeszcze zainstalowana."
 
-#: includes/module/actions.php:441 includes/module/dashboard.php:62
+#: includes/module/actions.php:450 includes/module/dashboard.php:62
 #: includes/module/manager.php:194
 msgid "Install"
 msgstr "Zainstaluj"
 
-#: includes/module/actions.php:516
+#: includes/module/actions.php:525
 msgid "Delete Duplicates"
 msgstr "Usuwanie duplikatów"
 
-#: includes/module/actions.php:517
+#: includes/module/actions.php:526
 msgid "Automatically search and delete duplicated posts by name or content."
 msgstr ""
 "Automatycznie wyszukuj i usuwaj zduplikowane wpisy według nazwy lub treści."
 
-#: includes/module/actions.php:522
+#: includes/module/actions.php:531
 msgid "Installs the free WP Delete Post Copies plugin from WordPress.org."
 msgstr "Instaluje darmową wtyczkę WP Delete Post Copies z WordPress.org."
 
-#: includes/module/actions.php:526
+#: includes/module/actions.php:535
 msgid "WPeMatico Polylang"
 msgstr "WPeMatico Polylang"
 
-#: includes/module/actions.php:527
+#: includes/module/actions.php:536
 msgid ""
 "Assigns the imported posts to the right language on sites running Polylang."
 msgstr ""
 "Przypisuje zaimportowane wpisy do właściwego języka w witrynach "
 "korzystających z Polylang."
 
-#: includes/module/actions.php:532
+#: includes/module/actions.php:541
 msgid "Installs the free WPeMatico Polylang plugin from WordPress.org."
 msgstr "Instaluje darmową wtyczkę WPeMatico Polylang z WordPress.org."
 
-#: includes/module/actions.php:539
+#: includes/module/actions.php:548
 msgid ""
 "The addon files each imported post under a language, and languages only "
 "exist while Polylang runs."
@@ -7328,11 +7432,11 @@ msgstr ""
 "Dodatek przypisuje każdy zaimportowany wpis do języka, a języki istnieją "
 "tylko wtedy, gdy działa Polylang."
 
-#: includes/module/actions.php:544
+#: includes/module/actions.php:553
 msgid "RSS Items Aggregator"
 msgstr "Agregator elementów RSS"
 
-#: includes/module/actions.php:545
+#: includes/module/actions.php:554
 msgid ""
 "Also known as RSS Feed Reader: shows the items of several feeds inside one "
 "post or page."
@@ -7340,22 +7444,22 @@ msgstr ""
 "Znany też jako RSS Feed Reader: pokazuje elementy kilku kanałów w jednym "
 "wpisie lub na jednej stronie."
 
-#: includes/module/actions.php:550
+#: includes/module/actions.php:559
 msgid "Installs the free WPeMatico RSS Feed Reader plugin from WordPress.org."
 msgstr "Instaluje darmową wtyczkę WPeMatico RSS Feed Reader z WordPress.org."
 
-#: includes/module/actions.php:551
+#: includes/module/actions.php:560
 msgid "Requires WPeMatico RSS Feed Reader"
 msgstr "Wymaga WPeMatico RSS Feed Reader"
 
-#: includes/module/actions.php:561
+#: includes/module/actions.php:570
 msgid ""
 "Use the image at its original URL as featured image, without downloading it."
 msgstr ""
 "Użyj obrazka pod jego oryginalnym adresem URL jako obrazka wyróżniającego, "
 "bez pobierania."
 
-#: includes/module/actions.php:568
+#: includes/module/actions.php:577
 msgid ""
 "Featured Images is off, so nothing picks the image to link — unless an addon "
 "such as Professional or Full Content supplies one."
@@ -7364,7 +7468,7 @@ msgstr ""
 "podlinkowania — chyba że dostarczy go dodatek taki jak Professional lub Full "
 "Content."
 
-#: includes/module/actions.php:569
+#: includes/module/actions.php:578
 msgid ""
 "The image is linked from its original site instead of being downloaded, so "
 "it takes up no space in your Media Library."
@@ -7372,7 +7476,7 @@ msgstr ""
 "Obrazek jest linkowany z oryginalnej witryny zamiast pobierany, więc nie "
 "zajmuje miejsca w multimediach."
 
-#: includes/module/actions.php:578
+#: includes/module/actions.php:587
 msgid ""
 "WPeMatico stores the image URL on each post; that plugin is what turns it "
 "into the featured image WordPress shows."
@@ -7380,21 +7484,21 @@ msgstr ""
 "WPeMatico zapisuje adres URL obrazka w każdym wpisie; to ta wtyczka zamienia "
 "go w obrazek wyróżniający wyświetlany przez WordPressa."
 
-#: includes/module/actions.php:589
+#: includes/module/actions.php:598
 msgid "Auto Delete"
 msgstr "Automatyczne usuwanie"
 
-#: includes/module/actions.php:590
+#: includes/module/actions.php:599
 msgid ""
 "Delete the posts of the categories you choose once they reach a given age."
 msgstr "Usuwaj wpisy z wybranych kategorii, gdy osiągną określony wiek."
 
-#: includes/module/actions.php:596
+#: includes/module/actions.php:605
 msgid "Helpful if you want to remove stale or old items automatically."
 msgstr ""
 "Przydatne, jeśli chcesz automatycznie usuwać nieaktualne lub stare elementy."
 
-#: includes/module/actions.php:604
+#: includes/module/actions.php:613
 msgid ""
 "The addon extends that free plugin, the same one the Delete Duplicates card "
 "installs."
@@ -7402,11 +7506,11 @@ msgstr ""
 "Dodatek rozszerza tę darmową wtyczkę, tę samą, którą instaluje karta "
 "Usuwanie duplikatów."
 
-#: includes/module/actions.php:609
+#: includes/module/actions.php:618
 msgid "Polyglot"
 msgstr "Polyglot"
 
-#: includes/module/actions.php:610
+#: includes/module/actions.php:619
 msgid ""
 "Translate the fetched content with any of several free and paid translation "
 "engines."
@@ -7414,99 +7518,99 @@ msgstr ""
 "Tłumacz pobrane treści dowolnym z kilku darmowych i płatnych silników "
 "tłumaczeń."
 
-#: includes/module/actions.php:617
+#: includes/module/actions.php:626
 msgid "Requires WPeMatico Polyglot addon"
 msgstr "Wymaga dodatku WPeMatico Polyglot"
 
-#: includes/module/actions.php:621
+#: includes/module/actions.php:630
 msgid "GPT Spinner AI"
 msgstr "GPT Spinner AI"
 
-#: includes/module/actions.php:622
+#: includes/module/actions.php:631
 msgid "Rewrite the fetched content automatically through an AI or spinner API."
 msgstr "Przepisuj pobrane treści automatycznie przez API AI lub spinnera."
 
-#: includes/module/actions.php:629
+#: includes/module/actions.php:638
 msgid "Requires AI addon"
 msgstr "Wymaga dodatku AI"
 
-#: includes/module/actions.php:633
+#: includes/module/actions.php:642
 msgid "Full Contents"
 msgstr "Full Contents"
 
-#: includes/module/actions.php:634
+#: includes/module/actions.php:643
 msgid "Enable full content extraction from each source website."
 msgstr "Włącz pobieranie pełnej treści z każdej witryny źródłowej."
 
-#: includes/module/actions.php:641
+#: includes/module/actions.php:650
 msgid "Requires WPeMatico Full Content addon"
 msgstr "Wymaga dodatku WPeMatico Full Content"
 
-#: includes/module/actions.php:645
+#: includes/module/actions.php:654
 msgid "Bulk Add Sources"
 msgstr "Zbiorcze dodawanie źródeł"
 
-#: includes/module/actions.php:646
+#: includes/module/actions.php:655
 msgid ""
 "Paste or upload a list of feeds to add many sources to a campaign at once."
 msgstr ""
 "Wklej lub prześlij listę kanałów, aby dodać do kampanii wiele źródeł naraz."
 
-#: includes/module/actions.php:653
+#: includes/module/actions.php:662
 msgid "A Professional feature, you can activate it here."
 msgstr "Funkcja Professional, możesz ją włączyć tutaj."
 
-#: includes/module/actions.php:657
+#: includes/module/actions.php:666
 msgid "Keyword Filtering"
 msgstr "Filtrowanie słów kluczowych"
 
-#: includes/module/actions.php:658
+#: includes/module/actions.php:667
 msgid ""
 "Keep or skip each item by the keywords found in its title or its content."
 msgstr ""
 "Zachowuj lub pomijaj każdy element według słów kluczowych znalezionych w "
 "tytule lub treści."
 
-#: includes/module/actions.php:668
+#: includes/module/actions.php:677
 msgid "Facebook Source"
 msgstr "Źródło Facebook"
 
-#: includes/module/actions.php:669
+#: includes/module/actions.php:678
 msgid "Import content from Facebook profiles and groups."
 msgstr "Importuj treści z profili i grup na Facebooku."
 
-#: includes/module/actions.php:676
+#: includes/module/actions.php:685
 msgid "Requires Facebook Campaign addon"
 msgstr "Wymaga dodatku Facebook Campaign"
 
-#: includes/module/actions.php:680
+#: includes/module/actions.php:689
 msgid "Export/Import Campaigns"
 msgstr "Eksport/import kampanii"
 
-#: includes/module/actions.php:681
+#: includes/module/actions.php:690
 msgid "Migrate campaigns between sites."
 msgstr "Przenoś kampanie między witrynami."
 
-#: includes/module/actions.php:691
+#: includes/module/actions.php:700
 msgid "Feed Creator"
 msgstr "Feed Creator"
 
-#: includes/module/actions.php:692
+#: includes/module/actions.php:701
 msgid ""
 "Generate custom RSS feeds from external webpages to fetch with WPeMatico."
 msgstr ""
 "Generuj własne kanały RSS z zewnętrznych stron internetowych, aby pobierać "
 "je przez WPeMatico."
 
-#: includes/module/actions.php:699
+#: includes/module/actions.php:708
 msgid "Requires \"Make Me Feed\" addon"
-msgstr "Wymaga dodatku \"Make Me Feed\""
+msgstr "Wymaga dodatku „Make Me Feed”"
 
-#: includes/module/actions.php:703
+#: includes/module/actions.php:712
 msgid "Publish To Email"
 msgstr "Publikowanie emailem"
 
-#: includes/module/actions.php:704
+#: includes/module/actions.php:713
 msgid ""
 "Mail each post of a campaign to an address that publishes it, instead of "
 "publishing it here or as well as here."
@@ -7514,15 +7618,15 @@ msgstr ""
 "Wysyłaj każdy wpis kampanii na adres, który go publikuje, zamiast publikować "
 "go tutaj albo oprócz tego."
 
-#: includes/module/actions.php:711
+#: includes/module/actions.php:720
 msgid "Requires Email Campaign addon"
 msgstr "Wymaga dodatku Email Campaign"
 
-#: includes/module/actions.php:715
+#: includes/module/actions.php:724
 msgid "Better Excerpts"
 msgstr "Better Excerpts"
 
-#: includes/module/actions.php:716
+#: includes/module/actions.php:725
 msgid ""
 "Cut the excerpt at the length you set and back to the end of the last whole "
 "sentence, never mid-word."
@@ -7530,15 +7634,15 @@ msgstr ""
 "Przycina zajawkę do ustawionej długości i cofa się do końca ostatniego "
 "pełnego zdania, nigdy w połowie słowa."
 
-#: includes/module/actions.php:723
+#: includes/module/actions.php:732
 msgid "Requires Better Excerpts addon"
 msgstr "Wymaga dodatku Better Excerpts"
 
-#: includes/module/actions.php:727
+#: includes/module/actions.php:736
 msgid "Synchronizer"
 msgstr "Synchronizer"
 
-#: includes/module/actions.php:728
+#: includes/module/actions.php:737
 msgid ""
 "Update the posts you already imported when the source article changes, "
 "instead of publishing a duplicate."
@@ -7546,15 +7650,15 @@ msgstr ""
 "Aktualizuj już zaimportowane wpisy, gdy zmienia się artykuł źródłowy, "
 "zamiast publikować duplikat."
 
-#: includes/module/actions.php:735
+#: includes/module/actions.php:744
 msgid "Requires Synchronizer addon"
 msgstr "Wymaga dodatku Synchronizer"
 
-#: includes/module/actions.php:739
+#: includes/module/actions.php:748
 msgid "Manual Fetching"
 msgstr "Manual Fetching"
 
-#: includes/module/actions.php:740
+#: includes/module/actions.php:749
 msgid ""
 "See the items each feed will bring, and publish the ones you choose one by "
 "one or in bulk."
@@ -7562,15 +7666,15 @@ msgstr ""
 "Zobacz elementy, które przyniesie każdy kanał, i publikuj wybrane pojedynczo "
 "lub zbiorczo."
 
-#: includes/module/actions.php:747
+#: includes/module/actions.php:756
 msgid "Requires Manual Fetching addon"
 msgstr "Wymaga dodatku Manual Fetching"
 
-#: includes/module/actions.php:751
+#: includes/module/actions.php:760
 msgid "Exporter"
 msgstr "Exporter"
 
-#: includes/module/actions.php:752
+#: includes/module/actions.php:761
 msgid ""
 "Export your posts to a file on a schedule, in the format your template "
 "defines, by download, folder, FTP or SSH."
@@ -7578,15 +7682,15 @@ msgstr ""
 "Eksportuj wpisy do pliku według harmonogramu, w formacie określonym przez "
 "twój szablon, przez pobranie, katalog, FTP lub SSH."
 
-#: includes/module/actions.php:759
+#: includes/module/actions.php:768
 msgid "Requires Exporter addon"
 msgstr "Wymaga dodatku Exporter"
 
-#: includes/module/actions.php:763
+#: includes/module/actions.php:772
 msgid "Office"
 msgstr "Office"
 
-#: includes/module/actions.php:764
+#: includes/module/actions.php:773
 msgid ""
 "Publish posts from the .docx and PDF files in a folder of your server, with "
 "their text and their images."
@@ -7594,32 +7698,32 @@ msgstr ""
 "Publikuj wpisy z plików .docx i PDF znajdujących się w katalogu na twoim "
 "serwerze, z ich tekstem i obrazkami."
 
-#: includes/module/actions.php:771
+#: includes/module/actions.php:780
 msgid "Requires Office Campaign addon"
 msgstr "Wymaga dodatku Office Campaign"
 
-#: includes/module/actions.php:779
+#: includes/module/actions.php:788
 msgid "Rewrite Rules"
 msgstr "Reguły przepisywania"
 
-#: includes/module/actions.php:780
+#: includes/module/actions.php:789
 msgid "Search and replace words or HTML in the fetched content, per campaign."
 msgstr ""
 "Wyszukuj i zamieniaj słowa lub HTML w pobranych treściach, osobno dla każdej "
 "kampanii."
 
-#: includes/module/actions.php:787
+#: includes/module/actions.php:796
 msgid "Customer Support"
 msgstr "Obsługa klienta"
 
-#: includes/module/actions.php:788
+#: includes/module/actions.php:797
 msgid ""
 "Free setup assistance and troubleshooting, or step up to Premium Support."
 msgstr ""
 "Darmowa pomoc w konfiguracji i rozwiązywaniu problemów albo przejście na "
 "Pomoc Premium."
 
-#: includes/module/actions.php:796
+#: includes/module/actions.php:805
 msgid "Requires registration at etruel.com"
 msgstr "Wymaga rejestracji na etruel.com"
 
@@ -8134,11 +8238,35 @@ msgstr ""
 "Vimeo publikuje 10 ostatnich filmów każdego z nich. Zostaw wyłączone, jeśli "
 "nie używasz Vimeo: rodzaj kampanii w ogóle nie jest wtedy wczytywany."
 
-#: includes/settings/help.php:160 includes/settings/page.php:737
+#: includes/settings/help.php:160
+msgid "Google News campaign type"
+msgstr "Rodzaj kampanii Google News"
+
+#: includes/settings/help.php:161
+msgid ""
+"Adds Google News to the campaign type list, to publish the news of a search, "
+"a topic or a publication. Paste the address and the campaign finds its feed "
+"on its own."
+msgstr ""
+"Dodaje Google News do listy rodzajów kampanii, aby publikować wiadomości z "
+"wyszukiwania, tematu lub serwisu. Wklej adres, a kampania sama znajdzie "
+"kanał informacyjny."
+
+#: includes/settings/help.php:162
+msgid ""
+"Each item brings the headline, the date and the name of the publication, and "
+"links to Google News. Leave this off if you do not use Google News: the "
+"campaign type is not loaded at all."
+msgstr ""
+"Każdy element przynosi nagłówek, datę i nazwę serwisu oraz prowadzi do "
+"Google News. Zostaw wyłączone, jeśli nie używasz Google News: rodzaj "
+"kampanii w ogóle nie jest wtedy wczytywany."
+
+#: includes/settings/help.php:165 includes/settings/page.php:749
 msgid "Canonical URL to the source"
 msgstr "Kanoniczny adres URL do źródła"
 
-#: includes/settings/help.php:161
+#: includes/settings/help.php:166
 msgid ""
 "Each imported post declares the original article as its canonical URL. It "
 "does not work on every server."
@@ -8146,7 +8274,7 @@ msgstr ""
 "Każdy zaimportowany wpis deklaruje oryginalny artykuł jako swój kanoniczny "
 "adres URL. Nie działa na każdym serwerze."
 
-#: includes/settings/help.php:162
+#: includes/settings/help.php:167
 msgid ""
 "This tells search engines which copy of the article is the one to index, so "
 "your site is not penalised for duplicated content."
@@ -8154,11 +8282,11 @@ msgstr ""
 "Informuje wyszukiwarki, którą kopię artykułu indeksować, dzięki czemu twoja "
 "witryna nie jest karana za zduplikowaną treść."
 
-#: includes/settings/help.php:167
+#: includes/settings/help.php:172
 msgid "Force the bundled SimplePie library"
 msgstr "Wymuś dołączoną bibliotekę SimplePie"
 
-#: includes/settings/help.php:168
+#: includes/settings/help.php:173
 msgid ""
 "Ignores the SimplePie that ships with WordPress. You only need this if that "
 "version gives you trouble."
@@ -8166,11 +8294,11 @@ msgstr ""
 "Ignoruje SimplePie dostarczane z WordPressem. Potrzebne tylko wtedy, gdy "
 "tamta wersja sprawia kłopoty."
 
-#: includes/settings/help.php:171 includes/settings/page.php:428
+#: includes/settings/help.php:176 includes/settings/page.php:428
 msgid "Set SimplePie \"stupidly fast\""
-msgstr "Ustaw SimplePie na \"stupidly fast\""
+msgstr "Ustaw SimplePie na „stupidly fast”"
 
-#: includes/settings/help.php:172
+#: includes/settings/help.php:177
 msgid ""
 "SimplePie gives up most of its sanitizing in exchange for speed: the feed "
 "content arrives with no parsers and no filters."
@@ -8178,7 +8306,7 @@ msgstr ""
 "SimplePie rezygnuje z większości oczyszczania w zamian za szybkość: treść "
 "kanału przychodzi bez parserów i bez filtrów."
 
-#: includes/settings/help.php:173
+#: includes/settings/help.php:178
 msgid ""
 "Nothing is stripped from the content: all HTML, styles and scripts come "
 "through. Use it only with feeds you trust; otherwise set the allowed tags "
@@ -8188,11 +8316,11 @@ msgstr ""
 "tylko z zaufanymi kanałami; w przeciwnym razie ustaw poniżej dozwolone "
 "znaczniki i atrybuty."
 
-#: includes/settings/help.php:176 includes/settings/page.php:436
+#: includes/settings/help.php:181 includes/settings/page.php:436
 msgid "HTML tags SimplePie strips"
 msgstr "Znaczniki HTML usuwane przez SimplePie"
 
-#: includes/settings/help.php:177
+#: includes/settings/help.php:182
 msgid ""
 "SimplePie removes these tags from the feed content. Take one out to let it "
 "through, for example iframe to keep embedded videos."
@@ -8200,11 +8328,11 @@ msgstr ""
 "SimplePie usuwa te znaczniki z treści kanału. Usuń któryś z listy, aby go "
 "przepuścić, na przykład iframe, by zachować osadzone filmy."
 
-#: includes/settings/help.php:180 includes/settings/page.php:446
+#: includes/settings/help.php:185 includes/settings/page.php:446
 msgid "HTML attributes SimplePie strips"
 msgstr "Atrybuty HTML usuwane przez SimplePie"
 
-#: includes/settings/help.php:181
+#: includes/settings/help.php:186
 msgid ""
 "SimplePie removes these attributes from the tags in the content. Take one "
 "out to keep it, or add more to strip."
@@ -8212,11 +8340,11 @@ msgstr ""
 "SimplePie usuwa te atrybuty ze znaczników w treści. Usuń któryś z listy, aby "
 "go zachować, albo dodaj kolejne do usuwania."
 
-#: includes/settings/help.php:186 includes/settings/page.php:470
+#: includes/settings/help.php:191 includes/settings/page.php:470
 msgid "Let campaigns skip the content filters"
 msgstr "Pozwól kampaniom pomijać filtry treści"
 
-#: includes/settings/help.php:187
+#: includes/settings/help.php:192
 msgid ""
 "Adds a switch to every campaign that stores the feed content exactly as it "
 "comes, scripts included. Use it only with sources you trust."
@@ -8224,7 +8352,7 @@ msgstr ""
 "Dodaje do każdej kampanii przełącznik, który zapisuje treść kanału dokładnie "
 "tak, jak przychodzi, łącznie ze skryptami. Używaj tylko dla zaufanych źródeł."
 
-#: includes/settings/help.php:188
+#: includes/settings/help.php:193
 msgid ""
 "WordPress inserts the post as usual and the content is then written straight "
 "to the database, past every filter."
@@ -8232,15 +8360,15 @@ msgstr ""
 "WordPress wstawia wpis jak zwykle, a treść jest następnie zapisywana "
 "bezpośrednio w bazie danych, z pominięciem wszystkich filtrów."
 
-#: includes/settings/help.php:189
+#: includes/settings/help.php:194
 msgid "See How WordPress Processes Post Content: "
 msgstr "Zobacz, jak WordPress przetwarza treść wpisów: "
 
-#: includes/settings/help.php:192
+#: includes/settings/help.php:197
 msgid "Timeout for a running campaign"
 msgstr "Limit czasu działającej kampanii"
 
-#: includes/settings/help.php:193
+#: includes/settings/help.php:198
 msgid ""
 "A campaign interrupted halfway stays marked as running until this many "
 "seconds have passed; then it runs again on its next schedule. Recommended: "
@@ -8250,17 +8378,17 @@ msgstr ""
 "upłynie tyle sekund; potem uruchamia się ponownie w następnym terminie. "
 "Zalecane: 300."
 
-#: includes/settings/help.php:194
+#: includes/settings/help.php:199
 msgid "Set 0 to keep it blocked until you click \"Clear campaign\" yourself."
 msgstr ""
 "Ustaw 0, aby pozostała zablokowana, dopóki samodzielnie nie klikniesz "
-"\"Wyczyść kampanię\"."
+"„Wyczyść kampanię”."
 
-#: includes/settings/help.php:197
+#: includes/settings/help.php:202
 msgid "Pause after every post"
 msgstr "Pauza po każdym wpisie"
 
-#: includes/settings/help.php:198
+#: includes/settings/help.php:203
 msgid ""
 "Waits this many seconds after inserting each post, to give the server a "
 "break on long runs. Leave 0 unless you have trouble."
@@ -8268,19 +8396,19 @@ msgstr ""
 "Czeka tyle sekund po wstawieniu każdego wpisu, aby dać serwerowi odetchnąć "
 "przy długich uruchomieniach. Zostaw 0, chyba że masz problemy."
 
-#: includes/settings/help.php:204
+#: includes/settings/help.php:209
 msgid ""
 "To publish items that share a title, use \"Allow duplicate titles\" instead "
 "and leave the hash check on."
 msgstr ""
-"Aby publikować elementy o tym samym tytule, użyj zamiast tego \"Zezwalaj na "
-"zduplikowane tytuły\" i pozostaw włączone sprawdzanie skrótu."
+"Aby publikować elementy o tym samym tytule, użyj zamiast tego „Zezwalaj na "
+"zduplikowane tytuły” i pozostaw włączone sprawdzanie skrótu."
 
-#: includes/settings/help.php:213 includes/settings/page.php:544
+#: includes/settings/help.php:218 includes/settings/page.php:544
 msgid "Do not save the plugin custom fields"
 msgstr "Nie zapisuj własnych pól wtyczki"
 
-#: includes/settings/help.php:214
+#: includes/settings/help.php:219
 msgid ""
 "Saves database space and costs you the source permalink, the campaign each "
 "post came from and every bulk action based on it."
@@ -8289,7 +8417,7 @@ msgstr ""
 "informacji o kampanii, z której pochodzi wpis, i wszystkich działań "
 "zbiorczych na niej opartych."
 
-#: includes/settings/help.php:215
+#: includes/settings/help.php:220
 msgid ""
 "By default each published post carries three custom fields with the campaign "
 "and the source item. Turning this on does not delete the ones already saved."
@@ -8297,11 +8425,11 @@ msgstr ""
 "Domyślnie każdy opublikowany wpis zawiera trzy własne pola z kampanią i "
 "elementem źródłowym. Włączenie tej opcji nie usuwa już zapisanych."
 
-#: includes/settings/help.php:224 includes/settings/page.php:573
+#: includes/settings/help.php:229 includes/settings/page.php:573
 msgid "Disable WPeMatico schedules"
 msgstr "Wyłącz harmonogramy WPeMatico"
 
-#: includes/settings/help.php:225
+#: includes/settings/help.php:230
 msgid ""
 "No campaign runs on its own any more. You run them by hand or from an "
 "external cron, which is the recommended setup."
@@ -8309,11 +8437,11 @@ msgstr ""
 "Żadna kampania nie uruchamia się już sama. Uruchamiasz je ręcznie albo z "
 "zewnętrznego crona, co jest zalecaną konfiguracją."
 
-#: includes/settings/help.php:228 includes/settings/page.php:607
+#: includes/settings/help.php:233 includes/settings/page.php:607
 msgid "Ask for a password on the external cron"
 msgstr "Wymagaj hasła dla zewnętrznego crona"
 
-#: includes/settings/help.php:229
+#: includes/settings/help.php:234
 msgid ""
 "Only a request carrying the code runs your campaigns. Off by default for "
 "backward compatibility, and strongly recommended."
@@ -8321,23 +8449,27 @@ msgstr ""
 "Tylko żądanie zawierające kod uruchamia twoje kampanie. Domyślnie wyłączone "
 "dla zgodności wstecznej, ale zdecydowanie zalecane."
 
-#: includes/settings/help.php:230
+#: includes/settings/help.php:235
 msgid "While this is off, the password below is ignored."
 msgstr "Dopóki ta opcja jest wyłączona, poniższe hasło jest ignorowane."
 
-#: includes/settings/help.php:233
+#: includes/settings/help.php:238
 msgid "External cron password"
 msgstr "Hasło zewnętrznego crona"
 
-#: includes/settings/help.php:234
+#: includes/settings/help.php:239
 msgid "Any text you like. It travels in the cron address as ?code=your_code."
 msgstr "Dowolny tekst. Jest przekazywany w adresie crona jako ?code=your_code."
 
-#: includes/settings/help.php:237 includes/settings/page.php:627
+#: includes/settings/help.php:24
+msgid "Global settings for images"
+msgstr "Globalne ustawienia obrazków"
+
+#: includes/settings/help.php:242 includes/settings/page.php:627
 msgid "Disable all WP_Cron"
 msgstr "Wyłącz cały WP_Cron"
 
-#: includes/settings/help.php:238
+#: includes/settings/help.php:243
 msgid ""
 "Stops every scheduled task on the site, WordPress own and other plugins "
 "included. Only do this if an external cron takes over."
@@ -8346,15 +8478,11 @@ msgstr ""
 "WordPressa i innych wtyczek. Rób to tylko wtedy, gdy jego rolę przejmuje "
 "zewnętrzny cron."
 
-#: includes/settings/help.php:24
-msgid "Global settings for images"
-msgstr "Globalne ustawienia obrazków"
-
-#: includes/settings/help.php:241 includes/settings/page.php:564
+#: includes/settings/help.php:246 includes/settings/page.php:564
 msgid "Use ALTERNATE_WP_CRON"
 msgstr "Użyj ALTERNATE_WP_CRON"
 
-#: includes/settings/help.php:242
+#: includes/settings/help.php:247
 msgid ""
 "Some servers block the way WordPress triggers its schedules. This constant "
 "works around it on almost any server."
@@ -8362,69 +8490,68 @@ msgstr ""
 "Niektóre serwery blokują sposób, w jaki WordPress wyzwala swoje "
 "harmonogramy. Ta stała obchodzi to na niemal każdym serwerze."
 
-#: includes/settings/help.php:245 includes/settings/page.php:657
-msgid "Log file for the external cron"
-msgstr "Plik dziennika zewnętrznego crona"
-
-#: includes/settings/help.php:246
-msgid ""
-"Writes a \"campaign title.txt.log\" file in the uploads folder with the "
-"steps of each external cron run. Useful while you set the cron up."
-msgstr ""
-"Zapisuje w katalogu uploads plik \"tytuł kampanii.txt.log\" z krokami "
-"każdego uruchomienia zewnętrznego crona. Przydatne podczas konfigurowania "
-"crona."
-
 #: includes/settings/help.php:25 includes/settings/help.php:86
 #: includes/settings/help.php:115
 msgid "These apply to every campaign, and each campaign can override them."
 msgstr "Dotyczą wszystkich kampanii, a każda kampania może je nadpisać."
 
-#: includes/settings/help.php:251 includes/settings/page.php:896
+#: includes/settings/help.php:250 includes/settings/page.php:657
+msgid "Log file for the external cron"
+msgstr "Plik dziennika zewnętrznego crona"
+
+#: includes/settings/help.php:251
+msgid ""
+"Writes a \"campaign title.txt.log\" file in the uploads folder with the "
+"steps of each external cron run. Useful while you set the cron up."
+msgstr ""
+"Zapisuje w katalogu uploads plik „tytuł kampanii.txt.log” z krokami każdego "
+"uruchomienia zewnętrznego crona. Przydatne podczas konfigurowania crona."
+
+#: includes/settings/help.php:256 includes/settings/page.php:908
 msgid "Campaign column in the posts lists"
 msgstr "Kolumna kampanii na listach wpisów"
 
-#: includes/settings/help.php:252
+#: includes/settings/help.php:257
 msgid "Adds a column showing which campaign published each post."
 msgstr "Dodaje kolumnę pokazującą, która kampania opublikowała dany wpis."
 
-#: includes/settings/help.php:255 includes/settings/page.php:903
+#: includes/settings/help.php:260 includes/settings/page.php:915
 msgid "Position of that column"
 msgstr "Pozycja tej kolumny"
 
-#: includes/settings/help.php:256
+#: includes/settings/help.php:261
 msgid "Where the campaign column sits among the others."
 msgstr "Gdzie kolumna kampanii znajduje się wśród pozostałych."
 
-#: includes/settings/help.php:259 includes/settings/page.php:916
+#: includes/settings/help.php:264 includes/settings/page.php:928
 msgid "Hide the campaign box in the post editor"
 msgstr "Ukryj pole kampanii w edytorze wpisów"
 
-#: includes/settings/help.php:260
+#: includes/settings/help.php:265
 msgid "Removes the WPeMatico box that shows where an imported post came from."
 msgstr "Usuwa pole WPeMatico pokazujące, skąd pochodzi zaimportowany wpis."
 
-#: includes/settings/help.php:263 includes/settings/page.php:925
+#: includes/settings/help.php:268 includes/settings/page.php:937
 msgid "Empty trash button on the lists"
 msgstr "Przycisk opróżniania kosza na listach"
 
-#: includes/settings/help.php:264
+#: includes/settings/help.php:269
 msgid "Adds a button to empty the trash on the post types you choose."
 msgstr "Dodaje przycisk opróżniania kosza dla wybranych typów treści."
 
-#: includes/settings/help.php:267 includes/settings/page.php:966
+#: includes/settings/help.php:272 includes/settings/page.php:978
 msgid "Hide the WP dashboard widget"
 msgstr "Ukryj widżet w kokpicie WP"
 
-#: includes/settings/help.php:268
+#: includes/settings/help.php:273
 msgid "Removes the WPeMatico widget from the WordPress dashboard."
 msgstr "Usuwa widżet WPeMatico z kokpitu WordPressa."
 
-#: includes/settings/help.php:273 includes/settings/page.php:757
+#: includes/settings/help.php:278 includes/settings/page.php:769
 msgid "Do not check feeds before saving"
 msgstr "Nie sprawdzaj kanałów przed zapisaniem"
 
-#: includes/settings/help.php:274
+#: includes/settings/help.php:279
 msgid ""
 "Saving a campaign no longer tests each feed address first. The campaign "
 "saves faster and a broken address goes unnoticed until it runs."
@@ -8433,11 +8560,11 @@ msgstr ""
 "zapisuje się szybciej, a zepsuty adres pozostaje niezauważony aż do "
 "uruchomienia."
 
-#: includes/settings/help.php:277 includes/settings/page.php:766
+#: includes/settings/help.php:282 includes/settings/page.php:778
 msgid "Enable \"Del hash\""
-msgstr "Włącz \"Usuń skrót\""
+msgstr "Włącz „Usuń skrót”"
 
-#: includes/settings/help.php:278
+#: includes/settings/help.php:283
 msgid ""
 "Adds a link on the campaigns list that clears the duplicate hashes of every "
 "feed in a campaign, so its items can be published again."
@@ -8446,25 +8573,25 @@ msgstr ""
 "kanałów kampanii, dzięki czemu jej elementy mogą zostać opublikowane "
 "ponownie."
 
-#: includes/settings/help.php:281 includes/settings/page.php:775
+#: includes/settings/help.php:286 includes/settings/page.php:787
 msgid "Enable \"See last log\""
-msgstr "Włącz \"Zobacz ostatni dziennik\""
+msgstr "Włącz „Zobacz ostatni dziennik”"
 
-#: includes/settings/help.php:282
+#: includes/settings/help.php:287
 msgid "Adds a link on the campaigns list that opens the log of the last run."
 msgstr ""
 "Dodaje na liście kampanii odnośnik otwierający dziennik ostatniego "
 "uruchomienia."
 
-#: includes/settings/help.php:285 includes/settings/page.php:793
+#: includes/settings/help.php:290 includes/settings/page.php:805
 msgid "Hide the WPeMatico credits"
 msgstr "Ukryj informację o autorach WPeMatico"
 
-#: includes/settings/help.php:286
+#: includes/settings/help.php:291
 msgid "I would really appreciate you leaving the credits on."
 msgstr "Będę naprawdę wdzięczny za pozostawienie tej informacji."
 
-#: includes/settings/help.php:288 includes/settings/page.php:800
+#: includes/settings/help.php:293 includes/settings/page.php:812
 msgid ""
 "If you cannot show them, a minute of your time to %1$s write a 5 star review "
 "on WordPress %2$s means just as much. :-) Thanks."
@@ -8472,32 +8599,17 @@ msgstr ""
 "Jeśli nie możesz jej wyświetlać, minuta twojego czasu na %1$s napisanie 5-"
 "gwiazdkowej recenzji na WordPress %2$s znaczy równie wiele. :-) Dziękuję."
 
-#: includes/settings/help.php:293 includes/settings/page.php:811
+#: includes/settings/help.php:298 includes/settings/page.php:823
 msgid "No description on auto categories"
 msgstr "Bez opisu automatycznych kategorii"
 
-#: includes/settings/help.php:294
+#: includes/settings/help.php:299
 msgid ""
 "Categories created from now on are left without the \"Created by WPeMatico\" "
 "description. The ones already created keep theirs until you edit them."
 msgstr ""
-"Kategorie tworzone od teraz pozostają bez opisu \"Created by WPeMatico\". Te "
+"Kategorie tworzone od teraz pozostają bez opisu „Created by WPeMatico”. Te "
 "już utworzone zachowują swój opis, dopóki ich nie edytujesz."
-
-#: includes/settings/help.php:297 includes/settings/page.php:821
-msgid "Do not load the Extensions page"
-msgstr "Nie wczytuj strony Rozszerzenia"
-
-#: includes/settings/help.php:298
-msgid "The Extensions menu stops asking our site for the add-on catalogue."
-msgstr ""
-"Menu Rozszerzenia przestaje pobierać z naszej witryny katalog dodatków."
-
-#: includes/settings/help.php:299
-msgid ""
-"You will see an empty page, or only the extensions you already have "
-"installed."
-msgstr "Zobaczysz pustą stronę albo tylko już zainstalowane rozszerzenia."
 
 #: includes/settings/help.php:30
 msgid ""
@@ -8508,28 +8620,31 @@ msgstr ""
 "%s) jest zapisywana w twoim katalogu Uploads. Po wyłączeniu obrazki "
 "pozostają na serwerze źródłowym."
 
-#: includes/settings/help.php:302 includes/settings/page.php:784
+#: includes/settings/help.php:302 includes/settings/page.php:833
+msgid "Do not load the Extensions page"
+msgstr "Nie wczytuj strony Rozszerzenia"
+
+#: includes/settings/help.php:303
+msgid "The Extensions menu stops asking our site for the add-on catalogue."
+msgstr ""
+"Menu Rozszerzenia przestaje pobierać z naszej witryny katalog dodatków."
+
+#: includes/settings/help.php:304
+msgid ""
+"You will see an empty page, or only the extensions you already have "
+"installed."
+msgstr "Zobaczysz pustą stronę albo tylko już zainstalowane rozszerzenia."
+
+#: includes/settings/help.php:307 includes/settings/page.php:796
 msgid "Enable XML uploads"
 msgstr "Włącz przesyłanie XML"
 
-#: includes/settings/help.php:303
+#: includes/settings/help.php:308
 msgid ""
 "Lets you upload XML files to the Media library, to use them in an XML "
 "campaign."
 msgstr ""
 "Pozwala przesyłać pliki XML do multimediów, aby używać ich w kampanii XML."
-
-#: includes/settings/help.php:306 includes/settings/page.php:830
-msgid "Decode HTML entities on publish"
-msgstr "Dekoduj encje HTML przy publikacji"
-
-#: includes/settings/help.php:307
-msgid ""
-"Turns entities such as &amp;amp; back into their character before the post "
-"is saved. Useful with feeds that encode the content twice."
-msgstr ""
-"Zamienia encje takie jak &amp;amp; z powrotem na znak przed zapisaniem "
-"wpisu. Przydatne dla kanałów, które kodują treść dwukrotnie."
 
 #: includes/settings/help.php:31
 msgid ""
@@ -8541,27 +8656,39 @@ msgstr ""
 "tracisz obrazek w dniu, w którym źródło go usunie. Każda kampania może "
 "ustawić to osobno."
 
+#: includes/settings/help.php:311 includes/settings/page.php:842
+msgid "Decode HTML entities on publish"
+msgstr "Dekoduj encje HTML przy publikacji"
+
 #: includes/settings/help.php:312
+msgid ""
+"Turns entities such as &amp;amp; back into their character before the post "
+"is saved. Useful with feeds that encode the content twice."
+msgstr ""
+"Zamienia encje takie jak &amp;amp; z powrotem na znak przed zapisaniem "
+"wpisu. Przydatne dla kanałów, które kodują treść dwukrotnie."
+
+#: includes/settings/help.php:317
 msgid "Sender email"
 msgstr "Email nadawcy"
 
-#: includes/settings/help.php:313
+#: includes/settings/help.php:318
 msgid "The address every email from this plugin is sent from."
 msgstr "Adres, z którego wysyłany jest każdy email tej wtyczki."
 
-#: includes/settings/help.php:316
+#: includes/settings/help.php:321
 msgid "Sender name"
 msgstr "Nazwa nadawcy"
 
-#: includes/settings/help.php:317
+#: includes/settings/help.php:322
 msgid "The name shown next to that address in your inbox."
 msgstr "Nazwa wyświetlana obok tego adresu w twojej skrzynce."
 
-#: includes/settings/help.php:329
+#: includes/settings/help.php:334
 msgid "Features available with the Professional add-on."
 msgstr "Funkcje dostępne z dodatkiem Professional."
 
-#: includes/settings/help.php:330
+#: includes/settings/help.php:335
 msgid ""
 "Publish or skip an item depending on the keywords found in its title or "
 "content."
@@ -8569,7 +8696,7 @@ msgstr ""
 "Publikuj lub pomijaj element w zależności od słów kluczowych znalezionych w "
 "tytule lub treści."
 
-#: includes/settings/help.php:331
+#: includes/settings/help.php:336
 msgid ""
 "Cut, publish or skip an item depending on how many words or letters its "
 "content has."
@@ -8577,12 +8704,12 @@ msgstr ""
 "Przycinaj, publikuj lub pomijaj element w zależności od liczby słów lub "
 "liter w jego treści."
 
-#: includes/settings/help.php:332
+#: includes/settings/help.php:337
 msgid ""
 "Build the title of every post of a campaign from a template of your own."
 msgstr "Buduj tytuł każdego wpisu kampanii według własnego szablonu."
 
-#: includes/settings/help.php:333
+#: includes/settings/help.php:338
 msgid ""
 "Generates the tags of every post automatically. Each campaign can turn that "
 "off and use a list of tags you write instead."
@@ -8590,13 +8717,13 @@ msgstr ""
 "Automatycznie generuje tagi każdego wpisu. Każda kampania może to wyłączyć i "
 "użyć zamiast tego napisanej przez ciebie listy tagów."
 
-#: includes/settings/help.php:334
+#: includes/settings/help.php:339
 msgid "Add custom fields, with template tags as their value, to every post."
 msgstr ""
 "Dodawaj do każdego wpisu własne pola, których wartością są znaczniki "
 "szablonu."
 
-#: includes/settings/help.php:335
+#: includes/settings/help.php:340
 msgid ""
 "Full Content is the add-on that fetches the whole article from the source "
 "site when the feed only carries a summary."
@@ -8604,7 +8731,7 @@ msgstr ""
 "Full Content to dodatek, który pobiera cały artykuł z witryny źródłowej, gdy "
 "kanał zawiera tylko streszczenie."
 
-#: includes/settings/help.php:336
+#: includes/settings/help.php:341
 msgid ""
 "Set an author per feed when editing a campaign. Feeds with no author of "
 "their own use the campaign author."
@@ -8612,7 +8739,7 @@ msgstr ""
 "Ustaw autora dla każdego kanału podczas edycji kampanii. Kanały bez własnego "
 "autora używają autora kampanii."
 
-#: includes/settings/help.php:337
+#: includes/settings/help.php:342
 msgid ""
 "Paste a list of feed addresses, with or without author names, straight into "
 "the campaign."
@@ -8725,11 +8852,11 @@ msgstr ""
 "Każdy pobrany plik dźwiękowy jest dodawany do multimediów i dołączany do "
 "swojego wpisu."
 
-#: includes/settings/page.php:1001
+#: includes/settings/page.php:1013
 msgid "Guided tours"
 msgstr "Przewodniki"
 
-#: includes/settings/page.php:1003
+#: includes/settings/page.php:1015
 msgid ""
 "Shows a short tour the first time you open each WPeMatico screen. Only for "
 "your user."
@@ -8737,23 +8864,23 @@ msgstr ""
 "Pokazuje krótki przewodnik przy pierwszym otwarciu każdego ekranu WPeMatico. "
 "Tylko dla twojego użytkownika."
 
-#: includes/settings/page.php:1034
+#: includes/settings/page.php:1046
 msgid "Highlights of the new release"
 msgstr "Najważniejsze nowości nowego wydania"
 
-#: includes/settings/page.php:1035 includes/lib/licenses_handlers.php:405
+#: includes/settings/page.php:1047 includes/lib/licenses_handlers.php:405
 msgid "Version"
 msgstr "Wersja"
 
-#: includes/settings/page.php:1047
+#: includes/settings/page.php:1059
 msgid "Read more on wpematico.com"
 msgstr "Dowiedz się więcej na wpematico.com"
 
-#: includes/settings/page.php:1049
+#: includes/settings/page.php:1061
 msgid "Your opinion about WPeMatico is very important to us."
 msgstr "Twoja opinia o WPeMatico jest dla nas bardzo ważna."
 
-#: includes/settings/page.php:1050
+#: includes/settings/page.php:1062
 msgid ""
 "By rating WPeMatico RSS Feed Fetcher, you help the plugin creators to "
 "improve their work and help other users to find the software they need. You "
@@ -8764,29 +8891,25 @@ msgstr ""
 "pracę, a innym użytkownikom znaleźć potrzebne oprogramowanie. Recenzję "
 "możesz napisać na forum WordPressa. Użyj dowolnego języka, doceniamy to!"
 
-#: includes/settings/page.php:1051
+#: includes/settings/page.php:1063
 msgid "Rate us on WordPress"
 msgstr "Oceń nas na WordPress"
 
-#: includes/settings/page.php:1053
+#: includes/settings/page.php:1065
 msgid "YES!"
 msgstr "TAK!"
 
-#: includes/settings/page.php:1074
+#: includes/settings/page.php:1086
 msgid "General Settings"
 msgstr "Ustawienia ogólne"
 
-#: includes/settings/page.php:1175 includes/settings/page.php:1201
+#: includes/settings/page.php:1187 includes/settings/page.php:1213
 msgid "Save settings"
 msgstr "Zapisz ustawienia"
 
-#: includes/settings/page.php:1301
+#: includes/settings/page.php:1313
 msgid "Settings saved."
 msgstr "Ustawienia zapisane."
-
-#: includes/settings/page.php:1324
-msgid "License keys saved."
-msgstr "Klucze licencyjne zapisane."
 
 #: includes/settings/page.php:133 includes/lib/licenses_handlers.php:319
 msgid ""
@@ -8796,6 +8919,10 @@ msgstr ""
 "Tutaj wpisuje się klucze licencyjne naszych wtyczek premium, jeśli którąś "
 "aktywujesz."
 
+#: includes/settings/page.php:1336
+msgid "License keys saved."
+msgstr "Klucze licencyjne zapisane."
+
 #: includes/settings/page.php:134 includes/lib/licenses_handlers.php:320
 msgid "See some of the WPeMatico Add-ons in the"
 msgstr "Zobacz niektóre dodatki WPeMatico w"
@@ -8803,8 +8930,8 @@ msgstr "Zobacz niektóre dodatki WPeMatico w"
 #: includes/settings/page.php:164 includes/settings/page.php:289
 #: includes/settings/page.php:353 includes/settings/page.php:418
 #: includes/settings/page.php:460 includes/settings/page.php:554
-#: includes/settings/page.php:683 includes/settings/page.php:747
-#: includes/settings/page.php:840 includes/settings/page.php:886
+#: includes/settings/page.php:683 includes/settings/page.php:759
+#: includes/settings/page.php:852 includes/settings/page.php:898
 msgid "Click to toggle"
 msgstr "Kliknij, aby przełączyć"
 
@@ -8963,17 +9090,17 @@ msgstr "Włącz funkcje"
 
 #: includes/settings/page.php:693
 msgid "Enable \"Rewrite\""
-msgstr "Włącz \"Przepisywanie\""
+msgstr "Włącz „Przepisywanie”"
 
 #: includes/settings/page.php:702
 msgid "Enable \"Words to Categories\""
-msgstr "Włącz \"Słowa na kategorie\""
+msgstr "Włącz „Słowa na kategorie”"
 
 #: includes/settings/page.php:711
 msgid "Enable the Vimeo campaign type"
 msgstr "Włącz rodzaj kampanii Vimeo"
 
-#: includes/settings/page.php:724
+#: includes/settings/page.php:724 includes/settings/page.php:741
 msgid "PRO"
 msgstr "PRO"
 
@@ -8985,7 +9112,19 @@ msgstr ""
 "Odczytywanie Vimeo przez API — ponad limit 10 filmów z kanału, z sortowaniem "
 "i twoimi prywatnymi filmami — jest dostępne z Professional."
 
-#: includes/settings/page.php:750
+#: includes/settings/page.php:737
+msgid "Enable the Google News campaign type"
+msgstr "Włącz rodzaj kampanii Google News"
+
+#: includes/settings/page.php:741
+msgid ""
+"Linking each post to the article on the publication's own site, so Full "
+"Content reads it, comes with Professional."
+msgstr ""
+"Łączenie każdego wpisu z artykułem na stronie samego serwisu, aby Full "
+"Content mógł go odczytać, jest dostępne z Professional."
+
+#: includes/settings/page.php:762
 msgid "Advanced Actions"
 msgstr "Zaawansowane działania"
 
@@ -8993,31 +9132,31 @@ msgstr "Zaawansowane działania"
 msgid "Invalid email."
 msgstr "Nieprawidłowy email."
 
-#: includes/settings/page.php:843
+#: includes/settings/page.php:855
 msgid "Sending e-Mails"
 msgstr "Wysyłanie emaili"
 
-#: includes/settings/page.php:848
+#: includes/settings/page.php:860
 msgid "Sender email:"
 msgstr "Email nadawcy:"
 
-#: includes/settings/page.php:854
+#: includes/settings/page.php:866
 msgid "Sender name:"
 msgstr "Nazwa nadawcy:"
 
-#: includes/settings/page.php:861
+#: includes/settings/page.php:873
 msgid "Sendmail path:"
 msgstr "Ścieżka Sendmail:"
 
-#: includes/settings/page.php:889
+#: includes/settings/page.php:901
 msgid "WordPress Backend Tools"
 msgstr "Narzędzia zaplecza WordPressa"
 
-#: includes/settings/page.php:931
+#: includes/settings/page.php:943
 msgid "Post types it applies to"
 msgstr "Typy treści, których dotyczy"
 
-#: includes/settings/page.php:972
+#: includes/settings/page.php:984
 msgid "Roles that see the dashboard widget:"
 msgstr "Role, które widzą widżet kokpitu:"
 
@@ -9532,7 +9671,7 @@ msgid ""
 "plugins list."
 msgstr ""
 "Wybrane działania zostaną wykonane po wyłączeniu wtyczki WPeMatico i "
-"wybraniu \"Usuń\" w wierszu WPeMatico na liście wtyczek."
+"wybraniu „Usuń” w wierszu WPeMatico na liście wtyczek."
 
 #: includes/tools_page.php:754
 msgid "Invalid request method."
@@ -9715,8 +9854,8 @@ msgid ""
 "> Tools > Danger Zone."
 msgstr ""
 "%1$s wskazuje na %2$s, adres we własnej sieci tego serwera. Jeśli to "
-"zamierzone, włącz \"Zezwalaj na kanały pod adresami prywatnymi i lokalnymi\" "
-"w WPeMatico > Narzędzia > Strefa zagrożenia."
+"zamierzone, włącz „Zezwalaj na kanały pod adresami prywatnymi i lokalnymi” w "
+"WPeMatico > Narzędzia > Strefa zagrożenia."
 
 #: includes/wpematico_functions.php:1780
 msgid ""
@@ -9955,7 +10094,7 @@ msgstr "Błąd: adres kanału jest pusty."
 #: includes/xml-importer.php:417
 msgid ""
 "This file is an RSS feed: use the \"Feed\" campaign type instead of XML."
-msgstr "Ten plik to kanał RSS: użyj rodzaju kampanii \"Kanał\" zamiast XML."
+msgstr "Ten plik to kanał RSS: użyj rodzaju kampanii „Kanał” zamiast XML."
 
 #: includes/xml-importer.php:42
 msgid "XMLs"
@@ -10009,98 +10148,98 @@ msgstr "Wybierz węzeł XML."
 msgid "PHP 7.0 or higher needed!"
 msgstr "Wymagane jest PHP 7.0 lub nowsze!"
 
-#: wpematico_class.php:160 includes/wpematico_functions.php:3155
+#: wpematico_class.php:162 includes/wpematico_functions.php:3155
 msgid "Empty Trash"
 msgstr "Opróżnij kosz"
 
-#: wpematico_class.php:178
+#: wpematico_class.php:180
 msgid "There are no campaigns yet."
 msgstr "Nie ma jeszcze żadnych kampanii."
 
-#: wpematico_class.php:180
+#: wpematico_class.php:182
 msgid "You need to create a campaign to begin using WPeMatico."
 msgstr "Aby zacząć korzystać z WPeMatico, musisz utworzyć kampanię."
 
-#: wpematico_class.php:182
+#: wpematico_class.php:184
 msgid ""
 "If you need help, check out the tips to get started with WPeMatico or just "
 msgstr ""
 "Jeśli potrzebujesz pomocy, zajrzyj do wskazówek na początek pracy z "
 "WPeMatico albo po prostu "
 
-#: wpematico_class.php:183
+#: wpematico_class.php:185
 msgid "add New Campaign"
 msgstr "utwórz nową kampanię"
 
-#: wpematico_class.php:186 includes/lib/welcome.php:190
+#: wpematico_class.php:188 includes/lib/welcome.php:190
 msgid "Getting Started"
 msgstr "Pierwsze kroki"
 
-#: wpematico_class.php:192 wpematico_class.php:353 wpematico_class.php:354
+#: wpematico_class.php:194 wpematico_class.php:355 wpematico_class.php:356
 #: includes/dashboard-widgets.php:552 includes/debug_page.php:2927
 msgid "Campaigns"
 msgstr "Kampanie"
 
-#: wpematico_class.php:193 includes/tools_page.php:501
+#: wpematico_class.php:195 includes/tools_page.php:501
 #: includes/tools_page.php:665 includes/wp-backend-helpers.php:65
 msgid "Campaign"
 msgstr "Kampania"
 
-#: wpematico_class.php:194
+#: wpematico_class.php:196
 msgid "Add New"
 msgstr "Utwórz"
 
-#: wpematico_class.php:195
+#: wpematico_class.php:197
 msgid "Add New Campaign"
 msgstr "Utwórz kampanię"
 
-#: wpematico_class.php:196
+#: wpematico_class.php:198
 msgid "Edit Campaign"
 msgstr "Edytuj kampanię"
 
-#: wpematico_class.php:197
+#: wpematico_class.php:199
 msgid "New Campaign"
 msgstr "Nowa kampania"
 
-#: wpematico_class.php:198
+#: wpematico_class.php:200
 msgid "All Campaigns"
 msgstr "Wszystkie kampanie"
 
-#: wpematico_class.php:199
+#: wpematico_class.php:201
 msgid "View Campaign"
 msgstr "Zobacz kampanię"
 
-#: wpematico_class.php:200
+#: wpematico_class.php:202
 msgid "Search Campaign"
 msgstr "Szukaj kampanii"
 
-#: wpematico_class.php:202
+#: wpematico_class.php:204
 msgid "No Campaign found in Trash"
 msgstr "Nie znaleziono kampanii w koszu"
 
-#: wpematico_class.php:244
+#: wpematico_class.php:246
 msgid "Reset Menu Position"
 msgstr "Zresetuj pozycję menu"
 
-#: wpematico_class.php:250
+#: wpematico_class.php:252
 msgid "Turn this on if the WPeMatico menu does not appear in the admin menu."
 msgstr "Włącz, jeśli menu WPeMatico nie pojawia się w menu administracyjnym."
 
-#: wpematico_class.php:255
+#: wpematico_class.php:257
 msgid "See local Addons in plugin list"
 msgstr "Pokaż lokalne dodatki na liście wtyczek"
 
-#: wpematico_class.php:261
+#: wpematico_class.php:263
 msgid ""
 "Turn this on to list the add-ons on your Plugins page, like any other plugin."
 msgstr ""
 "Włącz, aby dodatki były widoczne na stronie Wtyczki, jak każda inna wtyczka."
 
-#: wpematico_class.php:266
+#: wpematico_class.php:268
 msgid "Hide Reviews on Settings"
 msgstr "Ukryj recenzje w Ustawieniach"
 
-#: wpematico_class.php:272
+#: wpematico_class.php:274
 msgid ""
 "Turn this on if the Settings page comes out incomplete because your server "
 "cannot read external addresses."
@@ -10108,7 +10247,7 @@ msgstr ""
 "Włącz, jeśli strona Ustawień wyświetla się niekompletnie, ponieważ twój "
 "serwer nie może odczytać zewnętrznych adresów."
 
-#: wpematico_class.php:310
+#: wpematico_class.php:312
 msgid ""
 "If the WPeMatico menu is missing, another plugin or your theme has taken its "
 "position."
@@ -10116,15 +10255,15 @@ msgstr ""
 "Jeśli brakuje menu WPeMatico, jego pozycję zajęła inna wtyczka albo twój "
 "motyw."
 
-#: wpematico_class.php:311
+#: wpematico_class.php:313
 msgid ""
 "Tick \"Reset Menu Position\" to move the menu to the end of the WordPress "
 "menu."
 msgstr ""
-"Zaznacz \"Zresetuj pozycję menu\", aby przenieść menu na koniec menu "
+"Zaznacz „Zresetuj pozycję menu”, aby przenieść menu na koniec menu "
 "WordPressa."
 
-#: wpematico_class.php:313
+#: wpematico_class.php:315
 msgid ""
 "A Settings page that does not render fully usually means your server cannot "
 "reach external pages."
@@ -10132,15 +10271,15 @@ msgstr ""
 "Strona Ustawień, która nie wyświetla się w całości, zwykle oznacza, że twój "
 "serwer nie może połączyć się z zewnętrznymi stronami."
 
-#: wpematico_class.php:314
+#: wpematico_class.php:316
 msgid ""
 "Tick \"Hide Reviews on Settings\" to show a plain link to the reviews page "
 "instead."
 msgstr ""
-"Zaznacz \"Ukryj recenzje w Ustawieniach\", aby zamiast tego pokazać zwykły "
+"Zaznacz „Ukryj recenzje w Ustawieniach”, aby zamiast tego pokazać zwykły "
 "odnośnik do strony recenzji."
 
-#: wpematico_class.php:318
+#: wpematico_class.php:320
 msgid ""
 "You must click the Save Changes button at the bottom of the screen for new "
 "settings to take effect."
@@ -10148,39 +10287,39 @@ msgstr ""
 "Aby nowe ustawienia zaczęły obowiązywać, kliknij przycisk Zapisz zmiany na "
 "dole ekranu."
 
-#: wpematico_class.php:331 wpematico_class.php:332
+#: wpematico_class.php:333 wpematico_class.php:334
 msgid "WPeMatico"
 msgstr "WPeMatico"
 
-#: wpematico_class.php:343
+#: wpematico_class.php:345
 msgid "WPeMatico Dashboard"
 msgstr "Kokpit WPeMatico"
 
-#: wpematico_class.php:344 includes/module/dashboard.php:106
+#: wpematico_class.php:346 includes/module/dashboard.php:106
 msgid "Dashboard"
 msgstr "Kokpit"
 
-#: wpematico_class.php:368 wpematico_class.php:369
+#: wpematico_class.php:370 wpematico_class.php:371
 #: includes/dashboard-widgets.php:554 includes/plugin_functions.php:339
-#: includes/settings/functions.php:43 includes/settings/page.php:1078
-#: includes/settings/page.php:1151 includes/module/dashboard.php:32
+#: includes/settings/functions.php:43 includes/settings/page.php:1090
+#: includes/settings/page.php:1163 includes/module/dashboard.php:32
 #: includes/module/manager.php:187
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: wpematico_class.php:379 wpematico_class.php:380 includes/tools_tabs.php:17
+#: wpematico_class.php:381 wpematico_class.php:382 includes/tools_tabs.php:17
 msgid "Tools"
 msgstr "Narzędzia"
 
-#: wpematico_class.php:397 wpematico_class.php:406
+#: wpematico_class.php:399 wpematico_class.php:408
 msgid "Add-ons"
 msgstr "Dodatki"
 
-#: wpematico_class.php:398 includes/addons_page.php:1461
+#: wpematico_class.php:400 includes/addons_page.php:1461
 msgid "WPeMatico Addons"
 msgstr "Dodatki WPeMatico"
 
-#: wpematico_class.php:407 includes/class-tour-helper.php:224
+#: wpematico_class.php:409 includes/class-tour-helper.php:224
 #: includes/plugin_functions.php:360
 msgid "Extensions"
 msgstr "Rozszerzenia"

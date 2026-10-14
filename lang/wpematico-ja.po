@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPeMatico 2.9\n"
 "Report-Msgid-Bugs-To: https://etruel.com/my-account/support/\n"
-"POT-Creation-Date: 2026-10-01 01:06+0000\n"
+"POT-Creation-Date: 2026-10-14 19:25+0000\n"
 "PO-Revision-Date: 2026-10-13 00:02+0000\n"
 "Last-Translator: Etruel Developments <translations@etruel.com>\n"
 "Language-Team: Etruel Developments <translations@etruel.com>\n"
@@ -397,7 +397,7 @@ msgstr "詳細"
 msgid "WPeMatico Addons "
 msgstr "WPeMatico アドオン "
 
-#: includes/addons_page.php:1516
+#: includes/addons_page.php:1516 includes/addons_page.php:1528
 msgid "Inactive &mdash; Now part of WPeMatico"
 msgstr "無効 &mdash; 現在は WPeMatico の一部です"
 
@@ -465,8 +465,8 @@ msgstr "etruel のストアで購入する"
 msgid "Activate %s on this site"
 msgstr "このサイトで %s を有効化"
 
-#: includes/addons_page.php:744 includes/module/actions.php:362
-#: includes/module/actions.php:436 includes/module/dashboard.php:64
+#: includes/addons_page.php:744 includes/module/actions.php:371
+#: includes/module/actions.php:445 includes/module/dashboard.php:64
 msgid "Activate"
 msgstr "有効化"
 
@@ -474,7 +474,7 @@ msgstr "有効化"
 msgid "See details and prices on etruel's store"
 msgstr "etruel のストアで詳細と価格を見る"
 
-#: includes/addons_page.php:762 includes/module/actions.php:305
+#: includes/addons_page.php:762 includes/module/actions.php:314
 #: includes/module/dashboard.php:55 includes/module/manager.php:130
 #: includes/module/manager.php:151 includes/module/manager.php:156
 msgid "Installed"
@@ -515,6 +515,102 @@ msgstr "選択したアドオンを削除しました。"
 #: includes/addons_page.php:923
 msgid "The selected add-ons have been deleted."
 msgstr "選択したアドオンを削除しました。"
+
+#: includes/campaign-types/googlo_news.php:174
+msgid "%s is not a Google News address."
+msgstr "%s は Google News のアドレスではありません。"
+
+#: includes/campaign-types/googlo_news.php:327
+msgid "Google News Campaign Type."
+msgstr "Google News キャンペーンタイプ。"
+
+#: includes/campaign-types/googlo_news.php:328
+msgid ""
+"Paste the address of a Google News search, topic or publication as your "
+"browser shows it, and the campaign finds its feed on its own:"
+msgstr ""
+"Google News の検索、トピック、または媒体のアドレスをブラウザーに表示されてい"
+"るとおりに貼り付けると、キャンペーンが自動的にそのフィードを見つけます:"
+
+#: includes/campaign-types/googlo_news.php:332
+msgid ""
+"Each item brings the headline, the date and the name of the publication, and "
+"links to Google News."
+msgstr ""
+"各アイテムには見出し、日付、媒体名が含まれ、Google News にリンクします。"
+
+#: includes/campaign-types/googlo_news.php:333
+msgid ""
+"The name and the address of the publication are saved with each post, and "
+"the post template takes them as {source_name} and {source_url}."
+msgstr ""
+"媒体の名前とアドレスは各投稿とともに保存され、投稿テンプレートでは "
+"{source_name} と {source_url} として使えます。"
+
+#: includes/campaign-types/googlo_news.php:336
+msgid "Publication in the title."
+msgstr "タイトル内の媒体名。"
+
+#: includes/campaign-types/googlo_news.php:337
+msgid ""
+"Google News ends every headline with the name of the publication. The "
+"campaign takes it off; tick this to keep it."
+msgstr ""
+"Google News はすべての見出しの末尾に媒体名を付けます。キャンペーンはそれを取"
+"り除きます。残す場合はこれにチェックを入れてください。"
+
+#: includes/campaign-types/googlo_news.php:340
+msgid "Related coverage."
+msgstr "関連記事。"
+
+#: includes/campaign-types/googlo_news.php:341
+msgid ""
+"On a topic, Google News lists other articles about the same story under each "
+"headline. Tick this to add that list to the post."
+msgstr ""
+"トピックでは、Google News は各見出しの下に同じ話題の別の記事を挙げます。その"
+"一覧を投稿に追加する場合はこれにチェックを入れてください。"
+
+#: includes/campaign-types/googlo_news.php:352
+msgid "Google News Campaign Options"
+msgstr "Google News キャンペーンのオプション"
+
+#: includes/campaign-types/googlo_news.php:373
+msgid "Keep the name of the publication at the end of the title"
+msgstr "タイトルの末尾に媒体名を残す"
+
+#: includes/campaign-types/googlo_news.php:375
+msgid "Add the related coverage Google News lists under the headline"
+msgstr "Google News が見出しの下に挙げる関連記事を追加"
+
+#: includes/campaign-types/googlo_news.php:390
+msgid "Original article"
+msgstr "元の記事"
+
+#: includes/campaign-types/googlo_news.php:391
+#: includes/campaign-types/vimeo.php:395
+msgid "PRO Feature"
+msgstr "PRO 機能"
+
+#: includes/campaign-types/googlo_news.php:395
+msgid "Link each post to the article on the publication's own site"
+msgstr "各投稿を媒体自身のサイトにある記事にリンク"
+
+#: includes/campaign-types/googlo_news.php:399
+msgid "Skip the item when its article is not found"
+msgstr "記事が見つからない場合はアイテムをスキップ"
+
+#: includes/campaign-types/googlo_news.php:402
+msgid ""
+"Professional looks each headline up on the site of its publication, so the "
+"source link, the canonical URL and Full Content work on the article itself."
+msgstr ""
+"Professional は各見出しをその媒体のサイトで検索し、ソースリンク、正規 URL、"
+"Full Content が記事そのものに対して機能するようにします。"
+
+#: includes/campaign-types/googlo_news.php:61 includes/module/actions.php:194
+msgid "Google News"
+msgstr "Google News"
 
 #: includes/campaign-types/vimeo.php:258
 msgid "Parsing Vimeo video and feed item contents."
@@ -602,10 +698,6 @@ msgstr "アイキャッチ画像としてのみ使用"
 #: includes/campaign-types/vimeo.php:394
 msgid "Vimeo API"
 msgstr "Vimeo API"
-
-#: includes/campaign-types/vimeo.php:395
-msgid "PRO Feature"
-msgstr "PRO 機能"
 
 #: includes/campaign-types/vimeo.php:399
 msgid "Fetch through the Vimeo API instead of the feed."
@@ -742,7 +834,7 @@ msgstr "ブラウザーを再読み込みして、もう一度お試しくださ
 #: includes/debug_page.php:1096 includes/debug_page.php:3712
 #: includes/wpematico_functions.php:2987 includes/wpematico_functions.php:3012
 #: includes/wpematico_functions.php:3208 includes/wpematico_functions.php:3387
-#: includes/xml-importer.php:361 includes/settings/page.php:1265
+#: includes/xml-importer.php:361 includes/settings/page.php:1277
 msgid "You are not allowed to do this."
 msgstr "この操作を実行する権限がありません。"
 
@@ -1076,7 +1168,7 @@ msgstr "キャンペーンをプレビュー"
 msgid "Feed (default)"
 msgstr "フィード (デフォルト)"
 
-#: includes/campaign_edit_functions.php:226 includes/module/actions.php:194
+#: includes/campaign_edit_functions.php:226 includes/module/actions.php:203
 msgid "YouTube"
 msgstr "YouTube"
 
@@ -1440,7 +1532,7 @@ msgstr ""
 "これを機能させるには、%s がインストールされ有効化されている必要があります。"
 
 #: includes/campaign_edit_functions.php:615 includes/campaign_help.php:160
-#: includes/settings/help.php:60 includes/module/actions.php:560
+#: includes/settings/help.php:60 includes/module/actions.php:569
 msgid "Featured Image from URL"
 msgstr "Featured Image from URL"
 
@@ -1532,7 +1624,7 @@ msgid "Remove link to source videos"
 msgstr "取得元動画へのリンクを削除"
 
 #: includes/campaign_edit_functions.php:775 includes/campaign_help.php:237
-#: includes/settings/help.php:201 includes/settings/page.php:498
+#: includes/settings/help.php:206 includes/settings/page.php:498
 msgid "Allow duplicate posts"
 msgstr "重複投稿を許可"
 
@@ -1555,12 +1647,12 @@ msgid "Allow duplicate hashes (not recommended)"
 msgstr "重複ハッシュを許可 (非推奨)"
 
 #: includes/campaign_edit_functions.php:784 includes/campaign_help.php:249
-#: includes/settings/help.php:218 includes/settings/page.php:526
+#: includes/settings/help.php:223 includes/settings/page.php:526
 msgid "Also check duplicates by source permalink"
 msgstr "取得元のパーマリンクでも重複を確認"
 
 #: includes/campaign_edit_functions.php:789 includes/campaign_help.php:243
-#: includes/settings/help.php:207 includes/settings/page.php:535
+#: includes/settings/help.php:212 includes/settings/page.php:535
 msgid "Keep reading past a duplicate"
 msgstr "重複の先も読み続ける"
 
@@ -1649,61 +1741,57 @@ msgstr "フィードビューアー"
 msgid "Open URL in a new browser tab"
 msgstr "URL をブラウザーの新しいタブで開く"
 
-#: includes/campaign_fetch.php:1008
+#: includes/campaign_fetch.php:1028
 msgid "The post has no featured image."
 msgstr "この投稿にはアイキャッチ画像がありません。"
 
-#: includes/campaign_fetch.php:1015
+#: includes/campaign_fetch.php:1035
 msgid "Attaching images"
 msgstr "画像を添付中"
 
-#: includes/campaign_fetch.php:1036
+#: includes/campaign_fetch.php:1056
 msgid "Attaching audios"
 msgstr "音声ファイルを添付中"
 
-#: includes/campaign_fetch.php:1052
+#: includes/campaign_fetch.php:1072
 msgid "Attaching videos"
 msgstr "動画を添付中"
 
-#: includes/campaign_fetch.php:1081
+#: includes/campaign_fetch.php:1101
 msgid "Campaign fetched in %s sec."
 msgstr "キャンペーンを %s 秒で取得しました。"
 
-#: includes/campaign_fetch.php:1111
+#: includes/campaign_fetch.php:1131
 msgid "WPeMatico Log "
 msgstr "WPeMatico ログ "
 
-#: includes/campaign_fetch.php:1114
+#: includes/campaign_fetch.php:1134
 msgid "Campaign Name:"
 msgstr "キャンペーン名:"
 
-#: includes/campaign_fetch.php:1116
+#: includes/campaign_fetch.php:1136
 msgid "Errors:"
 msgstr "エラー:"
 
-#: includes/campaign_fetch.php:1118
+#: includes/campaign_fetch.php:1138
 msgid "Warnings:"
 msgstr "警告:"
 
-#: includes/campaign_fetch.php:1122
+#: includes/campaign_fetch.php:1142
 msgid "WPeMatico by "
 msgstr "WPeMatico 作成者: "
 
-#: includes/campaign_fetch.php:1149
+#: includes/campaign_fetch.php:1169
 msgid "Campaign fetched in %1s sec."
 msgstr "キャンペーンを %1s 秒で取得しました。"
 
-#: includes/campaign_fetch.php:1162
+#: includes/campaign_fetch.php:1182
 msgid "Processed Posts: %s"
 msgstr "処理した投稿: %s"
 
-#: includes/campaign_fetch.php:1163
+#: includes/campaign_fetch.php:1183
 msgid "Show detailed Log"
 msgstr "詳細ログを表示"
-
-#: includes/campaign_fetch.php:1183 includes/campaigns_list.php:922
-msgid "Posts imported by this campaign."
-msgstr "このキャンペーンがインポートした投稿。"
 
 #: includes/campaign_fetch.php:120
 msgid ""
@@ -1712,6 +1800,10 @@ msgid ""
 msgstr ""
 "メモリ上限を %1$s に設定しました。PHP の memory_get_usage() 関数を使ってメモ"
 "リを動的に増やせないためです。"
+
+#: includes/campaign_fetch.php:1203 includes/campaigns_list.php:922
+msgid "Posts imported by this campaign."
+msgstr "このキャンペーンがインポートした投稿。"
 
 #: includes/campaign_fetch.php:131
 msgid "Ending feed, reached running timeout at %1$d sec."
@@ -1737,59 +1829,59 @@ msgstr "%s でキャンペーンの取得上限に達しました。"
 msgid "Reached running timeout at %1$d sec."
 msgstr "%1$d 秒で実行タイムアウトに達しました。"
 
-#: includes/campaign_fetch.php:338
+#: includes/campaign_fetch.php:351
 msgid "%s posts added"
 msgstr "%s 件の投稿を追加しました"
 
-#: includes/campaign_fetch.php:353
+#: includes/campaign_fetch.php:366
 msgid "Processing item %s"
 msgstr "項目 %s を処理中"
 
-#: includes/campaign_fetch.php:367
+#: includes/campaign_fetch.php:380
 msgid "Assigning original date to post."
 msgstr "元の日付を投稿に割り当て中。"
 
-#: includes/campaign_fetch.php:370
+#: includes/campaign_fetch.php:383
 msgid "Original date out of range.  Assigning current date to post."
 msgstr "元の日付が範囲外です。現在の日付を投稿に割り当てます。"
 
-#: includes/campaign_fetch.php:374
+#: includes/campaign_fetch.php:387
 msgid "Forced original date to post."
 msgstr "元の日付を投稿に強制適用しました。"
 
-#: includes/campaign_fetch.php:512
+#: includes/campaign_fetch.php:525
 msgid "Assigning Auto Categories."
 msgstr "自動カテゴリーを割り当て中。"
 
-#: includes/campaign_fetch.php:553
+#: includes/campaign_fetch.php:566
 msgid "Found category under parent: "
 msgstr "親の下にカテゴリーが見つかりました: "
 
-#: includes/campaign_fetch.php:569
+#: includes/campaign_fetch.php:582
 msgid "Category exists with correct parent: "
 msgstr "正しい親を持つカテゴリーが存在します: "
 
-#: includes/campaign_fetch.php:592
+#: includes/campaign_fetch.php:605
 msgid "Adding Category: "
 msgstr "カテゴリーを追加中: "
 
-#: includes/campaign_fetch.php:594
+#: includes/campaign_fetch.php:607
 msgid "Auto Added by WPeMatico"
 msgstr "WPeMatico が自動追加"
 
-#: includes/campaign_fetch.php:610
+#: includes/campaign_fetch.php:623
 msgid "Created category: "
 msgstr "作成したカテゴリー: "
 
-#: includes/campaign_fetch.php:612
+#: includes/campaign_fetch.php:625
 msgid "Failed to create category: "
 msgstr "カテゴリーの作成に失敗しました: "
 
-#: includes/campaign_fetch.php:620
+#: includes/campaign_fetch.php:633
 msgid "Assigned category to post: "
 msgstr "投稿に割り当てたカテゴリー: "
 
-#: includes/campaign_fetch.php:623
+#: includes/campaign_fetch.php:636
 msgid "Could not assign category: "
 msgstr "カテゴリーを割り当てられませんでした: "
 
@@ -1797,174 +1889,179 @@ msgstr "カテゴリーを割り当てられませんでした: "
 msgid "Campaign skipped: already running since %d sec ago."
 msgstr "キャンペーンをスキップしました: %d 秒前からすでに実行中です。"
 
-#: includes/campaign_fetch.php:791
+#: includes/campaign_fetch.php:811
 msgid "Adding unfiltered content"
 msgstr "フィルターなしのコンテンツを追加中"
 
-#: includes/campaign_fetch.php:799
+#: includes/campaign_fetch.php:819
 msgid "Processing item pingbacks"
 msgstr "項目のピンバックを処理中"
 
-#: includes/campaign_fetch.php:872
+#: includes/campaign_fetch.php:892
 msgid "Categories added: "
 msgstr "追加したカテゴリー: "
 
-#: includes/campaign_fetch.php:884
+#: includes/campaign_fetch.php:904
 msgid "Tags added: "
 msgstr "追加したタグ: "
 
-#: includes/campaign_fetch.php:896
+#: includes/campaign_fetch.php:916
 msgid "Post format added: "
 msgstr "追加した投稿フォーマット: "
 
-#: includes/campaign_fetch.php:917
+#: includes/campaign_fetch.php:937
 msgid "Skip Featured Image."
 msgstr "アイキャッチ画像をスキップします。"
 
-#: includes/campaign_fetch.php:921
+#: includes/campaign_fetch.php:941
 msgid "Featuring Image Into Post."
 msgstr "投稿にアイキャッチ画像を設定中。"
 
-#: includes/campaign_fetch.php:963 includes/campaign_fetch_functions.php:510
+#: includes/campaign_fetch.php:983 includes/campaign_fetch_functions.php:514
 msgid "Failed to obtain file:"
 msgstr "ファイルの取得に失敗しました:"
 
-#: includes/campaign_fetch.php:971
+#: includes/campaign_fetch.php:991
 msgid "Save Featured image file failed:"
 msgstr "アイキャッチ画像ファイルの保存に失敗しました:"
 
-#: includes/campaign_fetch_functions.php:1000
+#: includes/campaign_fetch_functions.php:1004
 msgid "Fifu save set attachment from URL."
 msgstr "Fifu が URL から添付ファイルを設定して保存しました。"
 
-#: includes/campaign_fetch_functions.php:1089
+#: includes/campaign_fetch_functions.php:102
+#: includes/campaign_fetch_functions.php:112
+msgid "Cleaning Links from content."
+msgstr "コンテンツからリンクを除去中。"
+
+#: includes/campaign_fetch_functions.php:1093
 msgid "Parsing Youtube video and feed item contents."
 msgstr "Youtube の動画とフィード項目の内容を解析中。"
 
-#: includes/campaign_fetch_functions.php:118
-msgid "Parsing Post template."
-msgstr "投稿テンプレートを解析中。"
-
-#: includes/campaign_fetch_functions.php:1201
+#: includes/campaign_fetch_functions.php:1205
 msgid "Looking for audios in content."
 msgstr "コンテンツ内の音声ファイルを検索中。"
 
-#: includes/campaign_fetch_functions.php:125
-msgid "Can't find the featured image to add to the content."
-msgstr "コンテンツに追加するアイキャッチ画像が見つかりません。"
+#: includes/campaign_fetch_functions.php:122
+msgid "Parsing Post template."
+msgstr "投稿テンプレートを解析中。"
 
-#: includes/campaign_fetch_functions.php:1252
-#: includes/campaign_fetch_functions.php:1408
+#: includes/campaign_fetch_functions.php:1256
+#: includes/campaign_fetch_functions.php:1412
 msgid "Upload file failed:"
 msgstr "ファイルのアップロードに失敗しました:"
 
-#: includes/campaign_fetch_functions.php:1270
+#: includes/campaign_fetch_functions.php:1274
 msgid "Using remotely linked audios in content. No changes."
 msgstr "コンテンツ内のリモートリンクの音声ファイルを使用します。変更なし。"
 
-#: includes/campaign_fetch_functions.php:1356
+#: includes/campaign_fetch_functions.php:129
+msgid "Can't find the featured image to add to the content."
+msgstr "コンテンツに追加するアイキャッチ画像が見つかりません。"
+
+#: includes/campaign_fetch_functions.php:1360
 msgid "Looking for videos in content."
 msgstr "コンテンツ内の動画を検索中。"
 
-#: includes/campaign_fetch_functions.php:1426
+#: includes/campaign_fetch_functions.php:1430
 msgid "Using remotely linked videos in content. No changes."
 msgstr "コンテンツ内のリモートリンクの動画を使用します。変更なし。"
 
-#: includes/campaign_fetch_functions.php:1459
+#: includes/campaign_fetch_functions.php:1463
 msgid "Skipping standard videos..."
 msgstr "通常の動画をスキップ中..."
 
-#: includes/campaign_fetch_functions.php:1465
+#: includes/campaign_fetch_functions.php:1469
 msgid "Skipping Youtube Short..."
 msgstr "Youtube ショートをスキップ中..."
 
-#: includes/campaign_fetch_functions.php:242
+#: includes/campaign_fetch_functions.php:246
 msgid "Processing Words to Category %s"
 msgstr "単語からカテゴリーへの処理中 %s"
 
-#: includes/campaign_fetch_functions.php:272
+#: includes/campaign_fetch_functions.php:276
 msgid "Found!: word %1$s to Cat_id %2$s"
 msgstr "見つかりました: 単語 %1$s → Cat_id %2$s"
 
-#: includes/campaign_fetch_functions.php:277
+#: includes/campaign_fetch_functions.php:281
 msgid "Not found word %s"
 msgstr "単語 %s は見つかりません"
 
-#: includes/campaign_fetch_functions.php:284
+#: includes/campaign_fetch_functions.php:288
 msgid "Searching the category with more words."
 msgstr "単語が最も多いカテゴリーを検索中。"
 
-#: includes/campaign_fetch_functions.php:300
+#: includes/campaign_fetch_functions.php:304
 msgid "The category with more words in content: %s"
 msgstr "コンテンツ内で単語が最も多いカテゴリー: %s"
 
-#: includes/campaign_fetch_functions.php:307
+#: includes/campaign_fetch_functions.php:311
 msgid "Assign the first category: %s"
 msgstr "最初のカテゴリーを割り当て: %s"
 
-#: includes/campaign_fetch_functions.php:462
+#: includes/campaign_fetch_functions.php:466
 msgid "Looking for images in content."
 msgstr "コンテンツ内の画像を検索中。"
 
-#: includes/campaign_fetch_functions.php:471
-#: includes/campaign_fetch_functions.php:1205
-#: includes/campaign_fetch_functions.php:1360
+#: includes/campaign_fetch_functions.php:475
+#: includes/campaign_fetch_functions.php:1209
+#: includes/campaign_fetch_functions.php:1364
 msgid "Uploading media..."
 msgstr "メディアをアップロード中..."
 
-#: includes/campaign_fetch_functions.php:529
+#: includes/campaign_fetch_functions.php:533
 msgid "Save image file failed:"
 msgstr "画像ファイルの保存に失敗しました:"
 
-#: includes/campaign_fetch_functions.php:540
-#: includes/campaign_fetch_functions.php:1259
-#: includes/campaign_fetch_functions.php:1415
+#: includes/campaign_fetch_functions.php:544
+#: includes/campaign_fetch_functions.php:1263
+#: includes/campaign_fetch_functions.php:1419
 msgid "Extension not allowed: "
 msgstr "許可されていない拡張子: "
 
-#: includes/campaign_fetch_functions.php:543
-#: includes/campaign_fetch_functions.php:1261
-#: includes/campaign_fetch_functions.php:1417
+#: includes/campaign_fetch_functions.php:547
+#: includes/campaign_fetch_functions.php:1265
+#: includes/campaign_fetch_functions.php:1421
 msgid "Stripped src."
 msgstr "src を除去しました。"
 
-#: includes/campaign_fetch_functions.php:561
+#: includes/campaign_fetch_functions.php:565
 msgid "Using remotely linked images in content. No changes."
 msgstr "コンテンツ内のリモートリンクの画像を使用します。変更なし。"
 
-#: includes/campaign_fetch_functions.php:598
+#: includes/campaign_fetch_functions.php:602
 msgid "Attaching file:"
 msgstr "ファイルを添付中:"
 
-#: includes/campaign_fetch_functions.php:601
+#: includes/campaign_fetch_functions.php:605
 msgid "Sorry, the attachment could not be inserted. An error has occurred."
 msgstr "添付ファイルを挿入できませんでした。エラーが発生しました。"
 
-#: includes/campaign_fetch_functions.php:636
+#: includes/campaign_fetch_functions.php:640
 msgid "Executing featured image selector..."
 msgstr "アイキャッチ画像セレクターを実行中..."
 
-#: includes/campaign_fetch_functions.php:640
+#: includes/campaign_fetch_functions.php:644
 msgid "Featured image \"%1$s\": %2$s"
 msgstr "アイキャッチ画像「%1$s」: %2$s"
 
-#: includes/campaign_fetch_functions.php:643
+#: includes/campaign_fetch_functions.php:647
 msgid "No image was found according to the selected index."
 msgstr "選択したインデックスに該当する画像が見つかりませんでした。"
 
-#: includes/campaign_fetch_functions.php:648
+#: includes/campaign_fetch_functions.php:652
 msgid "The first image was not found in the content."
 msgstr "コンテンツ内に最初の画像が見つかりませんでした。"
 
-#: includes/campaign_fetch_functions.php:650
+#: includes/campaign_fetch_functions.php:654
 msgid "Using first image as the featured image."
 msgstr "最初の画像をアイキャッチ画像として使用します。"
 
-#: includes/campaign_fetch_functions.php:656
+#: includes/campaign_fetch_functions.php:660
 msgid "The last image was not found in the content."
 msgstr "コンテンツ内に最後の画像が見つかりませんでした。"
 
-#: includes/campaign_fetch_functions.php:658
+#: includes/campaign_fetch_functions.php:662
 msgid "Using last image as the featured image."
 msgstr "最後の画像をアイキャッチ画像として使用します。"
 
@@ -1972,48 +2069,43 @@ msgstr "最後の画像をアイキャッチ画像として使用します。"
 msgid "Deleting html tags: %s"
 msgstr "HTML タグを削除中: %s"
 
-#: includes/campaign_fetch_functions.php:865
+#: includes/campaign_fetch_functions.php:869
 msgid "Getting srcset attribute..."
 msgstr "srcset 属性を取得中..."
 
-#: includes/campaign_fetch_functions.php:890
+#: includes/campaign_fetch_functions.php:894
 msgid "Overriding src attribute with value: %s from srcset."
 msgstr "src 属性を srcset の値 %s で上書き中。"
 
-#: includes/campaign_fetch_functions.php:937
-#: includes/campaign_fetch_functions.php:1178
-#: includes/campaign_fetch_functions.php:1333
+#: includes/campaign_fetch_functions.php:941
+#: includes/campaign_fetch_functions.php:1182
+#: includes/campaign_fetch_functions.php:1337
 msgid "Removing: %s from content."
 msgstr "コンテンツから %s を削除中。"
 
-#: includes/campaign_fetch_functions.php:945
+#: includes/campaign_fetch_functions.php:949
 msgid "Link with image URI not found in src."
 msgstr "画像 URI を含むリンクが src に見つかりません。"
 
-#: includes/campaign_fetch_functions.php:948
+#: includes/campaign_fetch_functions.php:952
 msgid "Successfully removed with anchor link."
 msgstr "アンカーリンクとともに正常に削除しました。"
 
-#: includes/campaign_fetch_functions.php:954
+#: includes/campaign_fetch_functions.php:958
 msgid "Image URI not found in src."
 msgstr "画像 URI が src に見つかりません。"
 
-#: includes/campaign_fetch_functions.php:957
+#: includes/campaign_fetch_functions.php:961
 msgid "Successfully removed."
 msgstr "正常に削除しました。"
 
-#: includes/campaign_fetch_functions.php:968
+#: includes/campaign_fetch_functions.php:972
 msgid "Setting up Featured Image From Url"
 msgstr "Featured Image From Url を設定中"
 
-#: includes/campaign_fetch_functions.php:971
+#: includes/campaign_fetch_functions.php:975
 msgid "Adding featured image post meta: "
 msgstr "アイキャッチ画像の投稿メタを追加中: "
-
-#: includes/campaign_fetch_functions.php:98
-#: includes/campaign_fetch_functions.php:108
-msgid "Cleaning Links from content."
-msgstr "コンテンツからリンクを除去中。"
 
 #: includes/campaign_help.php:101
 msgid "Use [embed]"
@@ -2311,7 +2403,7 @@ msgstr ""
 msgid "Duplicate options for this campaign"
 msgstr "このキャンペーンの重複オプション"
 
-#: includes/campaign_help.php:238 includes/settings/help.php:202
+#: includes/campaign_help.php:238 includes/settings/help.php:207
 msgid ""
 "Turns off both duplicate checks, so every item is published again on every "
 "run. Almost never what you want."
@@ -2319,11 +2411,11 @@ msgstr ""
 "両方の重複チェックをオフにするため、すべての項目が実行のたびに再び公開されま"
 "す。望ましい結果になることはほとんどありません。"
 
-#: includes/campaign_help.php:239 includes/settings/help.php:203
+#: includes/campaign_help.php:239 includes/settings/help.php:208
 msgid "The two checks"
 msgstr "2つのチェック"
 
-#: includes/campaign_help.php:239 includes/settings/help.php:203
+#: includes/campaign_help.php:239 includes/settings/help.php:208
 msgid ""
 "the post title, and a hash of the last item address the campaign read. The "
 "hash is the reliable one; titles alone fail often."
@@ -2349,7 +2441,7 @@ msgstr ""
 "るには、「重複タイトルを許可」を使い、ハッシュのチェックはオンのままにしてく"
 "ださい。"
 
-#: includes/campaign_help.php:244 includes/settings/help.php:208
+#: includes/campaign_help.php:244 includes/settings/help.php:213
 msgid ""
 "The campaign skips each duplicate and keeps looking for new items, instead "
 "of stopping at the first one. Not recommended."
@@ -2357,11 +2449,11 @@ msgstr ""
 "キャンペーンは最初の重複で止まらず、重複ごとにスキップして新しい項目を探し続"
 "けます。非推奨です。"
 
-#: includes/campaign_help.php:245 includes/settings/help.php:209
+#: includes/campaign_help.php:245 includes/settings/help.php:214
 msgid "How it works"
 msgstr "仕組み"
 
-#: includes/campaign_help.php:245 includes/settings/help.php:209
+#: includes/campaign_help.php:245 includes/settings/help.php:214
 msgid ""
 "feed items come ordered newest first, so the campaign reads from the top and "
 "stops at the first item it already has: everything below it is older and "
@@ -2370,7 +2462,7 @@ msgstr ""
 "フィード項目は新しい順に並んでいるため、キャンペーンは上から読み、すでに持っ"
 "ている最初の項目で止まります。その下はすべて古く、すでに公開済みです。"
 
-#: includes/campaign_help.php:246 includes/settings/help.php:210
+#: includes/campaign_help.php:246 includes/settings/help.php:215
 msgid ""
 "The hash only covers the last item read, so on a feed where the title check "
 "works poorly this option can publish the same item twice."
@@ -2379,7 +2471,7 @@ msgstr ""
 "く働かないフィードでは、このオプションによって同じ項目が2回公開されることがあ"
 "ります。"
 
-#: includes/campaign_help.php:250 includes/settings/help.php:219
+#: includes/campaign_help.php:250 includes/settings/help.php:224
 msgid ""
 "One more query per item. Turn it on only if you still get duplicates, which "
 "happens with feeds that do not follow the standard."
@@ -2445,7 +2537,7 @@ msgstr ""
 "キャンペーンが早く止まり、項目を取りこぼします。"
 
 #: includes/campaign_help.php:311 includes/settings/help.php:147
-#: includes/module/actions.php:204
+#: includes/module/actions.php:213
 msgid "Words to Categories"
 msgstr "単語からカテゴリーへ"
 
@@ -2799,11 +2891,11 @@ msgid "Filtering out duplicates."
 msgstr "重複を除外中。"
 
 #: includes/campaign_preview.php:251 includes/campaign_preview_item.php:178
-#: includes/campaign_preview_item.php:295
+#: includes/campaign_preview_item.php:274
 msgid "You do not have sufficient permissions to preview this campaign."
 msgstr "このキャンペーンをプレビューする権限がありません。"
 
-#: includes/campaign_preview.php:362 includes/campaign_preview_item.php:353
+#: includes/campaign_preview.php:362 includes/campaign_preview_item.php:332
 msgid "WPeMatico Preview Feed"
 msgstr "WPeMatico フィードプレビュー"
 
@@ -2824,21 +2916,21 @@ msgstr "操作"
 msgid "Next fetch"
 msgstr "次回の取得"
 
-#: includes/campaign_preview.php:450 includes/campaign_preview_item.php:378
+#: includes/campaign_preview.php:450 includes/campaign_preview_item.php:357
 msgid "Fetch Now"
 msgstr "今すぐ取得"
 
-#: includes/campaign_preview.php:46 includes/campaign_preview_item.php:276
+#: includes/campaign_preview.php:46 includes/campaign_preview_item.php:255
 msgid "This action comes with the Manual Fetching add-on."
 msgstr "この操作は Manual Fetching アドオンに含まれています。"
 
 #: includes/campaign_preview_item.php:187
-#: includes/campaign_preview_item.php:303
+#: includes/campaign_preview_item.php:282
 msgid "The item is invalid."
 msgstr "項目が無効です。"
 
 #: includes/campaign_preview_item.php:194
-#: includes/campaign_preview_item.php:310
+#: includes/campaign_preview_item.php:289
 msgid "The feed is invalid."
 msgstr "フィードが無効です。"
 
@@ -2846,11 +2938,11 @@ msgstr "フィードが無効です。"
 msgid "The item could not be previewed."
 msgstr "項目をプレビューできませんでした。"
 
-#: includes/campaign_preview_item.php:396
+#: includes/campaign_preview_item.php:375
 msgid "Loading post title..."
 msgstr "投稿タイトルを読み込み中..."
 
-#: includes/campaign_preview_item.php:400
+#: includes/campaign_preview_item.php:379
 msgid "Loading post content..."
 msgstr "投稿コンテンツを読み込み中..."
 
@@ -4560,7 +4652,7 @@ msgstr "フィードを取得"
 #: includes/debug_page.php:3712 includes/wpematico_functions.php:2987
 #: includes/wpematico_functions.php:3012 includes/wpematico_functions.php:3208
 #: includes/wpematico_functions.php:3387 includes/xml-importer.php:361
-#: includes/settings/page.php:1265 includes/module/manager.php:265
+#: includes/settings/page.php:1277 includes/module/manager.php:265
 msgid "Permission denied"
 msgstr "権限がありません"
 
@@ -4595,13 +4687,13 @@ msgstr "クリップボードにコピーしました。"
 
 #: includes/debug_page.php:607 includes/tools_page.php:702
 #: includes/xml-importer.php:370 includes/settings/page.php:124
-#: includes/settings/page.php:1119
+#: includes/settings/page.php:1131
 msgid "Invalid request."
 msgstr "無効なリクエストです。"
 
 #: includes/debug_page.php:607 includes/tools_page.php:702
 #: includes/wpematico_functions.php:3378 includes/xml-importer.php:370
-#: includes/settings/page.php:124 includes/settings/page.php:1119
+#: includes/settings/page.php:124 includes/settings/page.php:1131
 msgid "Invalid request"
 msgstr "無効なリクエスト"
 
@@ -6957,7 +7049,7 @@ msgstr ""
 "キュレーションしたコンテンツをフォーラムのトピックとして、またはトピックへの"
 "返信として公開します。"
 
-#: includes/module/actions.php:162 includes/module/actions.php:201
+#: includes/module/actions.php:162 includes/module/actions.php:210
 msgid "Enable it in a campaign by choosing its Campaign Type."
 msgstr "キャンペーンでキャンペーンタイプを選択して有効にします。"
 
@@ -7004,29 +7096,41 @@ msgstr ""
 "す。"
 
 #: includes/module/actions.php:195
+msgid "Publish the news of a Google News search, topic or publication."
+msgstr "Google News の検索、トピック、または媒体のニュースを公開します。"
+
+#: includes/module/actions.php:199
+msgid ""
+"Adds Google News to the Campaign Type list. Paste the address of the search, "
+"topic or publication and the campaign finds its feed on its own."
+msgstr ""
+"キャンペーンタイプの一覧に Google News を追加します。検索、トピック、または媒"
+"体のアドレスを貼り付けると、キャンペーンが自動的にフィードを見つけます。"
+
+#: includes/module/actions.php:204
 msgid "Import videos from YouTube channels."
 msgstr "YouTube チャンネルから動画をインポートします。"
 
-#: includes/module/actions.php:205
+#: includes/module/actions.php:214
 msgid ""
 "Assign categories automatically from the words found in the curated content."
 msgstr ""
 "キュレーションしたコンテンツ内の単語から、カテゴリーを自動的に割り当てます。"
 
-#: includes/module/actions.php:209
+#: includes/module/actions.php:218
 msgid "Set the words and the category each one maps to in the Settings page."
 msgstr "単語と、それぞれが対応するカテゴリーを設定ページで設定します。"
 
-#: includes/module/actions.php:213
+#: includes/module/actions.php:222
 msgid "Canonical URLs"
 msgstr "カノニカル URL"
 
-#: includes/module/actions.php:214
+#: includes/module/actions.php:223
 msgid ""
 "Credit the original article with a canonical URL on every imported post."
 msgstr "インポートした各投稿にカノニカル URL を付けて、元記事を明示します。"
 
-#: includes/module/actions.php:218
+#: includes/module/actions.php:227
 msgid ""
 "Tells search engines which is the original article, so the copy is not "
 "judged as duplicate content."
@@ -7034,15 +7138,15 @@ msgstr ""
 "どれが元記事かを検索エンジンに伝えるので、コピーが重複コンテンツと判断されま"
 "せん。"
 
-#: includes/module/actions.php:222
+#: includes/module/actions.php:231
 msgid "Download Images"
 msgstr "画像のダウンロード"
 
-#: includes/module/actions.php:223
+#: includes/module/actions.php:232
 msgid "Download the images of each item into the WordPress Media Library."
 msgstr "各項目の画像を WordPress のメディアライブラリにダウンロードします。"
 
-#: includes/module/actions.php:228
+#: includes/module/actions.php:237
 msgid ""
 "Turn it on here; the size, quality and naming options are in the Settings "
 "page."
@@ -7050,11 +7154,11 @@ msgstr ""
 "ここでオンにします。サイズ、品質、ファイル名のオプションは設定ページにありま"
 "す。"
 
-#: includes/module/actions.php:231
+#: includes/module/actions.php:240
 msgid "Featured Images"
 msgstr "アイキャッチ画像"
 
-#: includes/module/actions.php:232
+#: includes/module/actions.php:241
 msgid ""
 "Give every imported post a featured image, taken from the first image of the "
 "item."
@@ -7062,7 +7166,7 @@ msgstr ""
 "インポートした各投稿に、項目の最初の画像から取ったアイキャッチ画像を設定しま"
 "す。"
 
-#: includes/module/actions.php:237
+#: includes/module/actions.php:246
 msgid ""
 "Each campaign can override it, and the Featured Image from URL module "
 "decides whether the image is downloaded or linked."
@@ -7070,23 +7174,23 @@ msgstr ""
 "各キャンペーンで上書きでき、画像をダウンロードするかリンクするかは Featured "
 "Image from URL モジュールが決めます。"
 
-#: includes/module/actions.php:241
+#: includes/module/actions.php:250
 msgid "Email Notifications"
 msgstr "メール通知"
 
-#: includes/module/actions.php:242
+#: includes/module/actions.php:251
 msgid "Get an email report every time a campaign finishes a run."
 msgstr "キャンペーンが実行を終えるたびにメールでレポートを受け取ります。"
 
-#: includes/module/actions.php:248
+#: includes/module/actions.php:257
 msgid "Deactivate in each campaign by clearing the email field."
 msgstr "各キャンペーンでメールのフィールドを空にすると無効になります。"
 
-#: includes/module/actions.php:251
+#: includes/module/actions.php:260
 msgid "Random Galleries"
 msgstr "ランダムギャラリー"
 
-#: includes/module/actions.php:252
+#: includes/module/actions.php:261
 msgid ""
 "Group images by topic and give each post a featured image picked at random "
 "from its gallery."
@@ -7094,36 +7198,36 @@ msgstr ""
 "画像をトピックごとにまとめ、各投稿にそのギャラリーからランダムに選んだアイ"
 "キャッチ画像を設定します。"
 
-#: includes/module/actions.php:258 includes/module/actions.php:269
-#: includes/module/actions.php:652 includes/module/actions.php:664
-#: includes/module/actions.php:687
+#: includes/module/actions.php:267 includes/module/actions.php:278
+#: includes/module/actions.php:661 includes/module/actions.php:673
+#: includes/module/actions.php:696
 msgid "Available in the Professional addon."
 msgstr "Professional アドオンで利用できます。"
 
-#: includes/module/actions.php:261
+#: includes/module/actions.php:270
 msgid "Random Rewrites"
 msgstr "ランダム書き換え"
 
-#: includes/module/actions.php:262
+#: includes/module/actions.php:271
 msgid "Rewrite custom words randomly as synonyms."
 msgstr "指定した単語を類義語にランダムに書き換えます。"
 
-#: includes/module/actions.php:266
+#: includes/module/actions.php:275
 msgid ""
 "You must complete the words separated by comma and per line in the textarea."
 msgstr "テキストエリアに、単語をコンマ区切りで1行ずつ入力する必要があります。"
 
-#: includes/module/actions.php:310
+#: includes/module/actions.php:319
 msgid "Turning this off deactivates the %s plugin."
 msgstr "これをオフにすると %s プラグインが無効化されます。"
 
-#: includes/module/actions.php:312
+#: includes/module/actions.php:321
 msgid "The plugin is installed but not running. Turning this on activates %s."
 msgstr ""
 "プラグインはインストール済みですが動作していません。これをオンにすると %s が"
 "有効化されます。"
 
-#: includes/module/actions.php:318
+#: includes/module/actions.php:327
 msgid ""
 "%s is not installed yet. Install it from here, free, and this switch turns "
 "it on."
@@ -7131,63 +7235,63 @@ msgstr ""
 "%s はまだインストールされていません。ここから無料でインストールすると、このス"
 "イッチで有効になります。"
 
-#: includes/module/actions.php:322
+#: includes/module/actions.php:331
 msgid "Needs the %s addon. Get it at etruel.com and this switch enables it."
 msgstr ""
 "%s アドオンが必要です。etruel.com で入手すると、このスイッチで有効になりま"
 "す。"
 
-#: includes/module/actions.php:361 includes/module/actions.php:435
+#: includes/module/actions.php:370 includes/module/actions.php:444
 msgid ""
 "%s is installed but not active. Turn it on and this module becomes available."
 msgstr ""
 "%s はインストール済みですが有効ではありません。有効化すると、このモジュールが"
 "利用可能になります。"
 
-#: includes/module/actions.php:420
+#: includes/module/actions.php:429
 msgid "It also needs the free %s plugin."
 msgstr "無料の %s プラグインも必要です。"
 
-#: includes/module/actions.php:440
+#: includes/module/actions.php:449
 msgid "Needs the free %s plugin, which is not installed yet."
 msgstr "無料の %s プラグインが必要ですが、まだインストールされていません。"
 
-#: includes/module/actions.php:441 includes/module/dashboard.php:62
+#: includes/module/actions.php:450 includes/module/dashboard.php:62
 #: includes/module/manager.php:194
 msgid "Install"
 msgstr "インストール"
 
-#: includes/module/actions.php:516
+#: includes/module/actions.php:525
 msgid "Delete Duplicates"
 msgstr "重複の削除"
 
-#: includes/module/actions.php:517
+#: includes/module/actions.php:526
 msgid "Automatically search and delete duplicated posts by name or content."
 msgstr "名前またはコンテンツが重複する投稿を自動的に検索して削除します。"
 
-#: includes/module/actions.php:522
+#: includes/module/actions.php:531
 msgid "Installs the free WP Delete Post Copies plugin from WordPress.org."
 msgstr ""
 "WordPress.org から無料の WP Delete Post Copies プラグインをインストールしま"
 "す。"
 
-#: includes/module/actions.php:526
+#: includes/module/actions.php:535
 msgid "WPeMatico Polylang"
 msgstr "WPeMatico Polylang"
 
-#: includes/module/actions.php:527
+#: includes/module/actions.php:536
 msgid ""
 "Assigns the imported posts to the right language on sites running Polylang."
 msgstr ""
 "Polylang を使用しているサイトで、インポートした投稿を適切な言語に割り当てま"
 "す。"
 
-#: includes/module/actions.php:532
+#: includes/module/actions.php:541
 msgid "Installs the free WPeMatico Polylang plugin from WordPress.org."
 msgstr ""
 "WordPress.org から無料の WPeMatico Polylang プラグインをインストールします。"
 
-#: includes/module/actions.php:539
+#: includes/module/actions.php:548
 msgid ""
 "The addon files each imported post under a language, and languages only "
 "exist while Polylang runs."
@@ -7195,11 +7299,11 @@ msgstr ""
 "このアドオンはインポートした各投稿を言語に分類しますが、言語は Polylang の動"
 "作中にのみ存在します。"
 
-#: includes/module/actions.php:544
+#: includes/module/actions.php:553
 msgid "RSS Items Aggregator"
 msgstr "RSS 項目アグリゲーター"
 
-#: includes/module/actions.php:545
+#: includes/module/actions.php:554
 msgid ""
 "Also known as RSS Feed Reader: shows the items of several feeds inside one "
 "post or page."
@@ -7207,23 +7311,23 @@ msgstr ""
 "RSS Feed Reader とも呼ばれます。複数のフィードの項目を1つの投稿または固定ペー"
 "ジ内に表示します。"
 
-#: includes/module/actions.php:550
+#: includes/module/actions.php:559
 msgid "Installs the free WPeMatico RSS Feed Reader plugin from WordPress.org."
 msgstr ""
 "WordPress.org から無料の WPeMatico RSS Feed Reader プラグインをインストールし"
 "ます。"
 
-#: includes/module/actions.php:551
+#: includes/module/actions.php:560
 msgid "Requires WPeMatico RSS Feed Reader"
 msgstr "WPeMatico RSS Feed Reader が必要です"
 
-#: includes/module/actions.php:561
+#: includes/module/actions.php:570
 msgid ""
 "Use the image at its original URL as featured image, without downloading it."
 msgstr ""
 "画像をダウンロードせず、元の URL のままアイキャッチ画像として使用します。"
 
-#: includes/module/actions.php:568
+#: includes/module/actions.php:577
 msgid ""
 "Featured Images is off, so nothing picks the image to link — unless an addon "
 "such as Professional or Full Content supplies one."
@@ -7231,7 +7335,7 @@ msgstr ""
 "アイキャッチ画像がオフのため、リンクする画像を選ぶものがありません。"
 "Professional や Full Content などのアドオンが提供する場合は別です。"
 
-#: includes/module/actions.php:569
+#: includes/module/actions.php:578
 msgid ""
 "The image is linked from its original site instead of being downloaded, so "
 "it takes up no space in your Media Library."
@@ -7239,7 +7343,7 @@ msgstr ""
 "画像はダウンロードされず元のサイトからリンクされるので、メディアライブラリの"
 "容量を使いません。"
 
-#: includes/module/actions.php:578
+#: includes/module/actions.php:587
 msgid ""
 "WPeMatico stores the image URL on each post; that plugin is what turns it "
 "into the featured image WordPress shows."
@@ -7247,20 +7351,20 @@ msgstr ""
 "WPeMatico は各投稿に画像 URL を保存します。それを WordPress が表示するアイ"
 "キャッチ画像にするのがそのプラグインです。"
 
-#: includes/module/actions.php:589
+#: includes/module/actions.php:598
 msgid "Auto Delete"
 msgstr "自動削除"
 
-#: includes/module/actions.php:590
+#: includes/module/actions.php:599
 msgid ""
 "Delete the posts of the categories you choose once they reach a given age."
 msgstr "選択したカテゴリーの投稿を、指定した日数が経過したら削除します。"
 
-#: includes/module/actions.php:596
+#: includes/module/actions.php:605
 msgid "Helpful if you want to remove stale or old items automatically."
 msgstr "古くなった項目を自動的に削除したい場合に便利です。"
 
-#: includes/module/actions.php:604
+#: includes/module/actions.php:613
 msgid ""
 "The addon extends that free plugin, the same one the Delete Duplicates card "
 "installs."
@@ -7268,110 +7372,110 @@ msgstr ""
 "このアドオンは、重複の削除カードがインストールするのと同じ無料プラグインを拡"
 "張します。"
 
-#: includes/module/actions.php:609
+#: includes/module/actions.php:618
 msgid "Polyglot"
 msgstr "Polyglot"
 
-#: includes/module/actions.php:610
+#: includes/module/actions.php:619
 msgid ""
 "Translate the fetched content with any of several free and paid translation "
 "engines."
 msgstr ""
 "取得したコンテンツを、複数の無料・有料の翻訳エンジンのいずれかで翻訳します。"
 
-#: includes/module/actions.php:617
+#: includes/module/actions.php:626
 msgid "Requires WPeMatico Polyglot addon"
 msgstr "WPeMatico Polyglot アドオンが必要です"
 
-#: includes/module/actions.php:621
+#: includes/module/actions.php:630
 msgid "GPT Spinner AI"
 msgstr "GPT Spinner AI"
 
-#: includes/module/actions.php:622
+#: includes/module/actions.php:631
 msgid "Rewrite the fetched content automatically through an AI or spinner API."
 msgstr "取得したコンテンツを、AI またはスピナーの API で自動的に書き換えます。"
 
-#: includes/module/actions.php:629
+#: includes/module/actions.php:638
 msgid "Requires AI addon"
 msgstr "AI アドオンが必要です"
 
-#: includes/module/actions.php:633
+#: includes/module/actions.php:642
 msgid "Full Contents"
 msgstr "Full Contents"
 
-#: includes/module/actions.php:634
+#: includes/module/actions.php:643
 msgid "Enable full content extraction from each source website."
 msgstr "各取得元サイトからの全文抽出を有効にします。"
 
-#: includes/module/actions.php:641
+#: includes/module/actions.php:650
 msgid "Requires WPeMatico Full Content addon"
 msgstr "WPeMatico Full Content アドオンが必要です"
 
-#: includes/module/actions.php:645
+#: includes/module/actions.php:654
 msgid "Bulk Add Sources"
 msgstr "ソースの一括追加"
 
-#: includes/module/actions.php:646
+#: includes/module/actions.php:655
 msgid ""
 "Paste or upload a list of feeds to add many sources to a campaign at once."
 msgstr ""
 "フィードのリストを貼り付けるかアップロードして、多数のソースを一度にキャン"
 "ペーンに追加します。"
 
-#: includes/module/actions.php:653
+#: includes/module/actions.php:662
 msgid "A Professional feature, you can activate it here."
 msgstr "Professional の機能です。ここで有効化できます。"
 
-#: includes/module/actions.php:657
+#: includes/module/actions.php:666
 msgid "Keyword Filtering"
 msgstr "キーワードフィルタリング"
 
-#: includes/module/actions.php:658
+#: includes/module/actions.php:667
 msgid ""
 "Keep or skip each item by the keywords found in its title or its content."
 msgstr ""
 "タイトルまたはコンテンツ内のキーワードによって、各項目を保持またはスキップし"
 "ます。"
 
-#: includes/module/actions.php:668
+#: includes/module/actions.php:677
 msgid "Facebook Source"
 msgstr "Facebook ソース"
 
-#: includes/module/actions.php:669
+#: includes/module/actions.php:678
 msgid "Import content from Facebook profiles and groups."
 msgstr "Facebook のプロフィールやグループからコンテンツをインポートします。"
 
-#: includes/module/actions.php:676
+#: includes/module/actions.php:685
 msgid "Requires Facebook Campaign addon"
 msgstr "Facebook Campaign アドオンが必要です"
 
-#: includes/module/actions.php:680
+#: includes/module/actions.php:689
 msgid "Export/Import Campaigns"
 msgstr "キャンペーンのエクスポート/インポート"
 
-#: includes/module/actions.php:681
+#: includes/module/actions.php:690
 msgid "Migrate campaigns between sites."
 msgstr "サイト間でキャンペーンを移行します。"
 
-#: includes/module/actions.php:691
+#: includes/module/actions.php:700
 msgid "Feed Creator"
 msgstr "Feed Creator"
 
-#: includes/module/actions.php:692
+#: includes/module/actions.php:701
 msgid ""
 "Generate custom RSS feeds from external webpages to fetch with WPeMatico."
 msgstr ""
 "外部のウェブページから独自の RSS フィードを生成し、WPeMatico で取得します。"
 
-#: includes/module/actions.php:699
+#: includes/module/actions.php:708
 msgid "Requires \"Make Me Feed\" addon"
 msgstr "「Make Me Feed」アドオンが必要です"
 
-#: includes/module/actions.php:703
+#: includes/module/actions.php:712
 msgid "Publish To Email"
 msgstr "メールで公開"
 
-#: includes/module/actions.php:704
+#: includes/module/actions.php:713
 msgid ""
 "Mail each post of a campaign to an address that publishes it, instead of "
 "publishing it here or as well as here."
@@ -7379,15 +7483,15 @@ msgstr ""
 "キャンペーンの各投稿を、ここで公開する代わりに、またはそれに加えて、メールで"
 "公開できるアドレスに送信します。"
 
-#: includes/module/actions.php:711
+#: includes/module/actions.php:720
 msgid "Requires Email Campaign addon"
 msgstr "Email Campaign アドオンが必要です"
 
-#: includes/module/actions.php:715
+#: includes/module/actions.php:724
 msgid "Better Excerpts"
 msgstr "Better Excerpts"
 
-#: includes/module/actions.php:716
+#: includes/module/actions.php:725
 msgid ""
 "Cut the excerpt at the length you set and back to the end of the last whole "
 "sentence, never mid-word."
@@ -7395,15 +7499,15 @@ msgstr ""
 "設定した長さで抜粋を切り、単語の途中ではなく、最後の完全な文の終わりまで戻し"
 "ます。"
 
-#: includes/module/actions.php:723
+#: includes/module/actions.php:732
 msgid "Requires Better Excerpts addon"
 msgstr "Better Excerpts アドオンが必要です"
 
-#: includes/module/actions.php:727
+#: includes/module/actions.php:736
 msgid "Synchronizer"
 msgstr "Synchronizer"
 
-#: includes/module/actions.php:728
+#: includes/module/actions.php:737
 msgid ""
 "Update the posts you already imported when the source article changes, "
 "instead of publishing a duplicate."
@@ -7411,15 +7515,15 @@ msgstr ""
 "取得元の記事が変更されたとき、重複を公開する代わりに、インポート済みの投稿を"
 "更新します。"
 
-#: includes/module/actions.php:735
+#: includes/module/actions.php:744
 msgid "Requires Synchronizer addon"
 msgstr "Synchronizer アドオンが必要です"
 
-#: includes/module/actions.php:739
+#: includes/module/actions.php:748
 msgid "Manual Fetching"
 msgstr "Manual Fetching"
 
-#: includes/module/actions.php:740
+#: includes/module/actions.php:749
 msgid ""
 "See the items each feed will bring, and publish the ones you choose one by "
 "one or in bulk."
@@ -7427,15 +7531,15 @@ msgstr ""
 "各フィードが取り込む項目を確認し、選んだものを1件ずつ、または一括で公開しま"
 "す。"
 
-#: includes/module/actions.php:747
+#: includes/module/actions.php:756
 msgid "Requires Manual Fetching addon"
 msgstr "Manual Fetching アドオンが必要です"
 
-#: includes/module/actions.php:751
+#: includes/module/actions.php:760
 msgid "Exporter"
 msgstr "Exporter"
 
-#: includes/module/actions.php:752
+#: includes/module/actions.php:761
 msgid ""
 "Export your posts to a file on a schedule, in the format your template "
 "defines, by download, folder, FTP or SSH."
@@ -7443,15 +7547,15 @@ msgstr ""
 "テンプレートで定義したフォーマットで、投稿をスケジュールに従ってファイルにエ"
 "クスポートします。ダウンロード、フォルダー、FTP、SSH に対応しています。"
 
-#: includes/module/actions.php:759
+#: includes/module/actions.php:768
 msgid "Requires Exporter addon"
 msgstr "Exporter アドオンが必要です"
 
-#: includes/module/actions.php:763
+#: includes/module/actions.php:772
 msgid "Office"
 msgstr "Office"
 
-#: includes/module/actions.php:764
+#: includes/module/actions.php:773
 msgid ""
 "Publish posts from the .docx and PDF files in a folder of your server, with "
 "their text and their images."
@@ -7459,31 +7563,31 @@ msgstr ""
 "サーバー上のフォルダーにある .docx と PDF ファイルから、テキストと画像を含む"
 "投稿を公開します。"
 
-#: includes/module/actions.php:771
+#: includes/module/actions.php:780
 msgid "Requires Office Campaign addon"
 msgstr "Office Campaign アドオンが必要です"
 
-#: includes/module/actions.php:779
+#: includes/module/actions.php:788
 msgid "Rewrite Rules"
 msgstr "書き換えルール"
 
-#: includes/module/actions.php:780
+#: includes/module/actions.php:789
 msgid "Search and replace words or HTML in the fetched content, per campaign."
 msgstr ""
 "取得したコンテンツ内の単語や HTML を、キャンペーンごとに検索して置換します。"
 
-#: includes/module/actions.php:787
+#: includes/module/actions.php:796
 msgid "Customer Support"
 msgstr "カスタマーサポート"
 
-#: includes/module/actions.php:788
+#: includes/module/actions.php:797
 msgid ""
 "Free setup assistance and troubleshooting, or step up to Premium Support."
 msgstr ""
 "無料のセットアップ支援とトラブルシューティング。プレミアムサポートへのアップ"
 "グレードも可能です。"
 
-#: includes/module/actions.php:796
+#: includes/module/actions.php:805
 msgid "Requires registration at etruel.com"
 msgstr "etruel.com での登録が必要です"
 
@@ -7994,11 +8098,35 @@ msgstr ""
 "Vimeo はそれぞれ最新の10本の動画を公開します。Vimeo を使わない場合はオフのま"
 "まにしてください。キャンペーンタイプ自体が読み込まれません。"
 
-#: includes/settings/help.php:160 includes/settings/page.php:737
+#: includes/settings/help.php:160
+msgid "Google News campaign type"
+msgstr "Google News キャンペーンタイプ"
+
+#: includes/settings/help.php:161
+msgid ""
+"Adds Google News to the campaign type list, to publish the news of a search, "
+"a topic or a publication. Paste the address and the campaign finds its feed "
+"on its own."
+msgstr ""
+"キャンペーンタイプの一覧に Google News を追加し、検索、トピック、または媒体の"
+"ニュースを公開します。アドレスを貼り付けると、キャンペーンが自動的にフィード"
+"を見つけます。"
+
+#: includes/settings/help.php:162
+msgid ""
+"Each item brings the headline, the date and the name of the publication, and "
+"links to Google News. Leave this off if you do not use Google News: the "
+"campaign type is not loaded at all."
+msgstr ""
+"各アイテムには見出し、日付、媒体名が含まれ、Google News にリンクします。"
+"Google News を使わない場合はオフのままにしてください。キャンペーンタイプ自体"
+"が読み込まれません。"
+
+#: includes/settings/help.php:165 includes/settings/page.php:749
 msgid "Canonical URL to the source"
 msgstr "取得元へのカノニカル URL"
 
-#: includes/settings/help.php:161
+#: includes/settings/help.php:166
 msgid ""
 "Each imported post declares the original article as its canonical URL. It "
 "does not work on every server."
@@ -8006,7 +8134,7 @@ msgstr ""
 "インポートした各投稿は、元記事をカノニカル URL として宣言します。すべてのサー"
 "バーで動作するわけではありません。"
 
-#: includes/settings/help.php:162
+#: includes/settings/help.php:167
 msgid ""
 "This tells search engines which copy of the article is the one to index, so "
 "your site is not penalised for duplicated content."
@@ -8014,11 +8142,11 @@ msgstr ""
 "記事のどのコピーをインデックスすべきかを検索エンジンに伝えるので、重複コンテ"
 "ンツとしてサイトがペナルティを受けません。"
 
-#: includes/settings/help.php:167
+#: includes/settings/help.php:172
 msgid "Force the bundled SimplePie library"
 msgstr "同梱の SimplePie ライブラリを強制使用"
 
-#: includes/settings/help.php:168
+#: includes/settings/help.php:173
 msgid ""
 "Ignores the SimplePie that ships with WordPress. You only need this if that "
 "version gives you trouble."
@@ -8026,11 +8154,11 @@ msgstr ""
 "WordPress に付属の SimplePie を無視します。そのバージョンで問題が起きる場合に"
 "のみ必要です。"
 
-#: includes/settings/help.php:171 includes/settings/page.php:428
+#: includes/settings/help.php:176 includes/settings/page.php:428
 msgid "Set SimplePie \"stupidly fast\""
 msgstr "SimplePie を「stupidly fast」に設定"
 
-#: includes/settings/help.php:172
+#: includes/settings/help.php:177
 msgid ""
 "SimplePie gives up most of its sanitizing in exchange for speed: the feed "
 "content arrives with no parsers and no filters."
@@ -8038,7 +8166,7 @@ msgstr ""
 "SimplePie は速度と引き換えにサニタイズの大半を省略します。フィードのコンテン"
 "ツはパーサーもフィルターも通さずに届きます。"
 
-#: includes/settings/help.php:173
+#: includes/settings/help.php:178
 msgid ""
 "Nothing is stripped from the content: all HTML, styles and scripts come "
 "through. Use it only with feeds you trust; otherwise set the allowed tags "
@@ -8048,11 +8176,11 @@ msgstr ""
 "通ります。信頼できるフィードにのみ使用し、そうでない場合は下で許可するタグと"
 "属性を設定してください。"
 
-#: includes/settings/help.php:176 includes/settings/page.php:436
+#: includes/settings/help.php:181 includes/settings/page.php:436
 msgid "HTML tags SimplePie strips"
 msgstr "SimplePie が除去する HTML タグ"
 
-#: includes/settings/help.php:177
+#: includes/settings/help.php:182
 msgid ""
 "SimplePie removes these tags from the feed content. Take one out to let it "
 "through, for example iframe to keep embedded videos."
@@ -8060,11 +8188,11 @@ msgstr ""
 "SimplePie はフィードのコンテンツからこれらのタグを削除します。通したいものは"
 "外してください。たとえば埋め込み動画を残すには iframe を外します。"
 
-#: includes/settings/help.php:180 includes/settings/page.php:446
+#: includes/settings/help.php:185 includes/settings/page.php:446
 msgid "HTML attributes SimplePie strips"
 msgstr "SimplePie が除去する HTML 属性"
 
-#: includes/settings/help.php:181
+#: includes/settings/help.php:186
 msgid ""
 "SimplePie removes these attributes from the tags in the content. Take one "
 "out to keep it, or add more to strip."
@@ -8072,11 +8200,11 @@ msgstr ""
 "SimplePie はコンテンツ内のタグからこれらの属性を削除します。残したいものは外"
 "し、除去したいものは追加してください。"
 
-#: includes/settings/help.php:186 includes/settings/page.php:470
+#: includes/settings/help.php:191 includes/settings/page.php:470
 msgid "Let campaigns skip the content filters"
 msgstr "キャンペーンでコンテンツフィルターをスキップ可能にする"
 
-#: includes/settings/help.php:187
+#: includes/settings/help.php:192
 msgid ""
 "Adds a switch to every campaign that stores the feed content exactly as it "
 "comes, scripts included. Use it only with sources you trust."
@@ -8084,7 +8212,7 @@ msgstr ""
 "フィードのコンテンツをスクリプトも含めて届いたまま保存するスイッチを、すべて"
 "のキャンペーンに追加します。信頼できる取得元にのみ使用してください。"
 
-#: includes/settings/help.php:188
+#: includes/settings/help.php:193
 msgid ""
 "WordPress inserts the post as usual and the content is then written straight "
 "to the database, past every filter."
@@ -8092,15 +8220,15 @@ msgstr ""
 "WordPress は通常どおり投稿を挿入し、その後コンテンツがすべてのフィルターを通"
 "さずデータベースに直接書き込まれます。"
 
-#: includes/settings/help.php:189
+#: includes/settings/help.php:194
 msgid "See How WordPress Processes Post Content: "
 msgstr "WordPress が投稿コンテンツを処理する仕組みを見る: "
 
-#: includes/settings/help.php:192
+#: includes/settings/help.php:197
 msgid "Timeout for a running campaign"
 msgstr "実行中キャンペーンのタイムアウト"
 
-#: includes/settings/help.php:193
+#: includes/settings/help.php:198
 msgid ""
 "A campaign interrupted halfway stays marked as running until this many "
 "seconds have passed; then it runs again on its next schedule. Recommended: "
@@ -8109,17 +8237,17 @@ msgstr ""
 "途中で中断されたキャンペーンは、この秒数が経過するまで実行中のままになり、そ"
 "の後、次のスケジュールで再び実行されます。推奨: 300。"
 
-#: includes/settings/help.php:194
+#: includes/settings/help.php:199
 msgid "Set 0 to keep it blocked until you click \"Clear campaign\" yourself."
 msgstr ""
 "0 にすると、自分で「キャンペーンをクリア」をクリックするまでブロックされたま"
 "まになります。"
 
-#: includes/settings/help.php:197
+#: includes/settings/help.php:202
 msgid "Pause after every post"
 msgstr "投稿ごとに一時停止"
 
-#: includes/settings/help.php:198
+#: includes/settings/help.php:203
 msgid ""
 "Waits this many seconds after inserting each post, to give the server a "
 "break on long runs. Leave 0 unless you have trouble."
@@ -8127,7 +8255,7 @@ msgstr ""
 "各投稿の挿入後にこの秒数だけ待機し、長時間の実行でサーバーを休ませます。問題"
 "がなければ 0 のままにしてください。"
 
-#: includes/settings/help.php:204
+#: includes/settings/help.php:209
 msgid ""
 "To publish items that share a title, use \"Allow duplicate titles\" instead "
 "and leave the hash check on."
@@ -8135,11 +8263,11 @@ msgstr ""
 "タイトルが同じ項目を公開するには、代わりに「重複タイトルを許可」を使い、ハッ"
 "シュのチェックはオンのままにしてください。"
 
-#: includes/settings/help.php:213 includes/settings/page.php:544
+#: includes/settings/help.php:218 includes/settings/page.php:544
 msgid "Do not save the plugin custom fields"
 msgstr "プラグインのカスタムフィールドを保存しない"
 
-#: includes/settings/help.php:214
+#: includes/settings/help.php:219
 msgid ""
 "Saves database space and costs you the source permalink, the campaign each "
 "post came from and every bulk action based on it."
@@ -8147,7 +8275,7 @@ msgstr ""
 "データベースの容量を節約できますが、取得元のパーマリンク、各投稿の元のキャン"
 "ペーン、それに基づくすべての一括操作が使えなくなります。"
 
-#: includes/settings/help.php:215
+#: includes/settings/help.php:220
 msgid ""
 "By default each published post carries three custom fields with the campaign "
 "and the source item. Turning this on does not delete the ones already saved."
@@ -8155,11 +8283,11 @@ msgstr ""
 "デフォルトでは、公開される各投稿にキャンペーンと取得元項目を示す3つのカスタム"
 "フィールドが付きます。これをオンにしても、保存済みのものは削除されません。"
 
-#: includes/settings/help.php:224 includes/settings/page.php:573
+#: includes/settings/help.php:229 includes/settings/page.php:573
 msgid "Disable WPeMatico schedules"
 msgstr "WPeMatico のスケジュールを無効化"
 
-#: includes/settings/help.php:225
+#: includes/settings/help.php:230
 msgid ""
 "No campaign runs on its own any more. You run them by hand or from an "
 "external cron, which is the recommended setup."
@@ -8167,11 +8295,11 @@ msgstr ""
 "キャンペーンは自動では実行されなくなります。手動または外部 cron から実行しま"
 "す。外部 cron が推奨の構成です。"
 
-#: includes/settings/help.php:228 includes/settings/page.php:607
+#: includes/settings/help.php:233 includes/settings/page.php:607
 msgid "Ask for a password on the external cron"
 msgstr "外部 cron でパスワードを要求"
 
-#: includes/settings/help.php:229
+#: includes/settings/help.php:234
 msgid ""
 "Only a request carrying the code runs your campaigns. Off by default for "
 "backward compatibility, and strongly recommended."
@@ -8179,23 +8307,27 @@ msgstr ""
 "コードを含むリクエストだけがキャンペーンを実行します。後方互換性のためデフォ"
 "ルトではオフですが、強く推奨します。"
 
-#: includes/settings/help.php:230
+#: includes/settings/help.php:235
 msgid "While this is off, the password below is ignored."
 msgstr "これがオフの間、下のパスワードは無視されます。"
 
-#: includes/settings/help.php:233
+#: includes/settings/help.php:238
 msgid "External cron password"
 msgstr "外部 cron のパスワード"
 
-#: includes/settings/help.php:234
+#: includes/settings/help.php:239
 msgid "Any text you like. It travels in the cron address as ?code=your_code."
 msgstr "任意のテキスト。cron のアドレスに ?code=your_code として含めます。"
 
-#: includes/settings/help.php:237 includes/settings/page.php:627
+#: includes/settings/help.php:24
+msgid "Global settings for images"
+msgstr "画像の全体設定"
+
+#: includes/settings/help.php:242 includes/settings/page.php:627
 msgid "Disable all WP_Cron"
 msgstr "すべての WP_Cron を無効化"
 
-#: includes/settings/help.php:238
+#: includes/settings/help.php:243
 msgid ""
 "Stops every scheduled task on the site, WordPress own and other plugins "
 "included. Only do this if an external cron takes over."
@@ -8203,15 +8335,11 @@ msgstr ""
 "WordPress 自身や他のプラグインのものも含め、サイトのすべてのスケジュールタス"
 "クを停止します。外部 cron が代わりを務める場合にのみ行ってください。"
 
-#: includes/settings/help.php:24
-msgid "Global settings for images"
-msgstr "画像の全体設定"
-
-#: includes/settings/help.php:241 includes/settings/page.php:564
+#: includes/settings/help.php:246 includes/settings/page.php:564
 msgid "Use ALTERNATE_WP_CRON"
 msgstr "ALTERNATE_WP_CRON を使用"
 
-#: includes/settings/help.php:242
+#: includes/settings/help.php:247
 msgid ""
 "Some servers block the way WordPress triggers its schedules. This constant "
 "works around it on almost any server."
@@ -8219,11 +8347,17 @@ msgstr ""
 "一部のサーバーは、WordPress がスケジュールを起動する方法をブロックします。こ"
 "の定数は、ほぼすべてのサーバーでそれを回避します。"
 
-#: includes/settings/help.php:245 includes/settings/page.php:657
+#: includes/settings/help.php:25 includes/settings/help.php:86
+#: includes/settings/help.php:115
+msgid "These apply to every campaign, and each campaign can override them."
+msgstr ""
+"これらはすべてのキャンペーンに適用され、各キャンペーンで上書きできます。"
+
+#: includes/settings/help.php:250 includes/settings/page.php:657
 msgid "Log file for the external cron"
 msgstr "外部 cron のログファイル"
 
-#: includes/settings/help.php:246
+#: includes/settings/help.php:251
 msgid ""
 "Writes a \"campaign title.txt.log\" file in the uploads folder with the "
 "steps of each external cron run. Useful while you set the cron up."
@@ -8231,57 +8365,51 @@ msgstr ""
 "外部 cron の各実行の手順を記録した「キャンペーンタイトル.txt.log」ファイルを"
 "アップロードフォルダーに書き込みます。cron の設定中に便利です。"
 
-#: includes/settings/help.php:25 includes/settings/help.php:86
-#: includes/settings/help.php:115
-msgid "These apply to every campaign, and each campaign can override them."
-msgstr ""
-"これらはすべてのキャンペーンに適用され、各キャンペーンで上書きできます。"
-
-#: includes/settings/help.php:251 includes/settings/page.php:896
+#: includes/settings/help.php:256 includes/settings/page.php:908
 msgid "Campaign column in the posts lists"
 msgstr "投稿一覧のキャンペーン列"
 
-#: includes/settings/help.php:252
+#: includes/settings/help.php:257
 msgid "Adds a column showing which campaign published each post."
 msgstr "各投稿をどのキャンペーンが公開したかを示す列を追加します。"
 
-#: includes/settings/help.php:255 includes/settings/page.php:903
+#: includes/settings/help.php:260 includes/settings/page.php:915
 msgid "Position of that column"
 msgstr "その列の位置"
 
-#: includes/settings/help.php:256
+#: includes/settings/help.php:261
 msgid "Where the campaign column sits among the others."
 msgstr "他の列の中でキャンペーン列を置く位置。"
 
-#: includes/settings/help.php:259 includes/settings/page.php:916
+#: includes/settings/help.php:264 includes/settings/page.php:928
 msgid "Hide the campaign box in the post editor"
 msgstr "投稿エディターのキャンペーンボックスを非表示"
 
-#: includes/settings/help.php:260
+#: includes/settings/help.php:265
 msgid "Removes the WPeMatico box that shows where an imported post came from."
 msgstr "インポートした投稿の取得元を示す WPeMatico ボックスを削除します。"
 
-#: includes/settings/help.php:263 includes/settings/page.php:925
+#: includes/settings/help.php:268 includes/settings/page.php:937
 msgid "Empty trash button on the lists"
 msgstr "一覧に「ゴミ箱を空にする」ボタン"
 
-#: includes/settings/help.php:264
+#: includes/settings/help.php:269
 msgid "Adds a button to empty the trash on the post types you choose."
 msgstr "選択した投稿タイプに、ゴミ箱を空にするボタンを追加します。"
 
-#: includes/settings/help.php:267 includes/settings/page.php:966
+#: includes/settings/help.php:272 includes/settings/page.php:978
 msgid "Hide the WP dashboard widget"
 msgstr "WP ダッシュボードのウィジェットを非表示"
 
-#: includes/settings/help.php:268
+#: includes/settings/help.php:273
 msgid "Removes the WPeMatico widget from the WordPress dashboard."
 msgstr "WordPress ダッシュボードから WPeMatico ウィジェットを削除します。"
 
-#: includes/settings/help.php:273 includes/settings/page.php:757
+#: includes/settings/help.php:278 includes/settings/page.php:769
 msgid "Do not check feeds before saving"
 msgstr "保存前にフィードを確認しない"
 
-#: includes/settings/help.php:274
+#: includes/settings/help.php:279
 msgid ""
 "Saving a campaign no longer tests each feed address first. The campaign "
 "saves faster and a broken address goes unnoticed until it runs."
@@ -8289,11 +8417,11 @@ msgstr ""
 "キャンペーンの保存時に、各フィードのアドレスを先にテストしなくなります。保存"
 "は速くなりますが、壊れたアドレスは実行されるまで気付かれません。"
 
-#: includes/settings/help.php:277 includes/settings/page.php:766
+#: includes/settings/help.php:282 includes/settings/page.php:778
 msgid "Enable \"Del hash\""
 msgstr "「ハッシュ削除」を有効化"
 
-#: includes/settings/help.php:278
+#: includes/settings/help.php:283
 msgid ""
 "Adds a link on the campaigns list that clears the duplicate hashes of every "
 "feed in a campaign, so its items can be published again."
@@ -8301,23 +8429,23 @@ msgstr ""
 "キャンペーン内のすべてのフィードの重複ハッシュをクリアするリンクをキャンペー"
 "ン一覧に追加し、項目を再び公開できるようにします。"
 
-#: includes/settings/help.php:281 includes/settings/page.php:775
+#: includes/settings/help.php:286 includes/settings/page.php:787
 msgid "Enable \"See last log\""
 msgstr "「最新のログを見る」を有効化"
 
-#: includes/settings/help.php:282
+#: includes/settings/help.php:287
 msgid "Adds a link on the campaigns list that opens the log of the last run."
 msgstr "前回の実行ログを開くリンクをキャンペーン一覧に追加します。"
 
-#: includes/settings/help.php:285 includes/settings/page.php:793
+#: includes/settings/help.php:290 includes/settings/page.php:805
 msgid "Hide the WPeMatico credits"
 msgstr "WPeMatico のクレジットを非表示"
 
-#: includes/settings/help.php:286
+#: includes/settings/help.php:291
 msgid "I would really appreciate you leaving the credits on."
 msgstr "クレジットを表示したままにしていただけると、とてもありがたいです。"
 
-#: includes/settings/help.php:288 includes/settings/page.php:800
+#: includes/settings/help.php:293 includes/settings/page.php:812
 msgid ""
 "If you cannot show them, a minute of your time to %1$s write a 5 star review "
 "on WordPress %2$s means just as much. :-) Thanks."
@@ -8325,33 +8453,17 @@ msgstr ""
 "表示できない場合は、少しお時間を割いて %1$sWordPress で星5つのレビューを書い"
 "て%2$sいただければ、同じくらい励みになります。:-) ありがとうございます。"
 
-#: includes/settings/help.php:293 includes/settings/page.php:811
+#: includes/settings/help.php:298 includes/settings/page.php:823
 msgid "No description on auto categories"
 msgstr "自動カテゴリーに説明を付けない"
 
-#: includes/settings/help.php:294
+#: includes/settings/help.php:299
 msgid ""
 "Categories created from now on are left without the \"Created by WPeMatico\" "
 "description. The ones already created keep theirs until you edit them."
 msgstr ""
 "今後作成されるカテゴリーには「Created by WPeMatico」の説明が付きません。作成"
 "済みのものは、編集するまで説明が残ります。"
-
-#: includes/settings/help.php:297 includes/settings/page.php:821
-msgid "Do not load the Extensions page"
-msgstr "拡張機能ページを読み込まない"
-
-#: includes/settings/help.php:298
-msgid "The Extensions menu stops asking our site for the add-on catalogue."
-msgstr ""
-"拡張機能メニューが、私たちのサイトにアドオンのカタログを問い合わせなくなりま"
-"す。"
-
-#: includes/settings/help.php:299
-msgid ""
-"You will see an empty page, or only the extensions you already have "
-"installed."
-msgstr "空のページ、またはインストール済みの拡張機能だけが表示されます。"
 
 #: includes/settings/help.php:30
 msgid ""
@@ -8361,29 +8473,33 @@ msgstr ""
 "フィード項目内で見つかったすべての画像 (%s タグ内のみ) のコピーがアップロード"
 "フォルダーに保存されます。オフの場合、画像は取得元サーバーに残ります。"
 
-#: includes/settings/help.php:302 includes/settings/page.php:784
+#: includes/settings/help.php:302 includes/settings/page.php:833
+msgid "Do not load the Extensions page"
+msgstr "拡張機能ページを読み込まない"
+
+#: includes/settings/help.php:303
+msgid "The Extensions menu stops asking our site for the add-on catalogue."
+msgstr ""
+"拡張機能メニューが、私たちのサイトにアドオンのカタログを問い合わせなくなりま"
+"す。"
+
+#: includes/settings/help.php:304
+msgid ""
+"You will see an empty page, or only the extensions you already have "
+"installed."
+msgstr "空のページ、またはインストール済みの拡張機能だけが表示されます。"
+
+#: includes/settings/help.php:307 includes/settings/page.php:796
 msgid "Enable XML uploads"
 msgstr "XML アップロードを有効化"
 
-#: includes/settings/help.php:303
+#: includes/settings/help.php:308
 msgid ""
 "Lets you upload XML files to the Media library, to use them in an XML "
 "campaign."
 msgstr ""
 "XML キャンペーンで使うために、XML ファイルをメディアライブラリにアップロード"
 "できるようにします。"
-
-#: includes/settings/help.php:306 includes/settings/page.php:830
-msgid "Decode HTML entities on publish"
-msgstr "公開時に HTML エンティティをデコード"
-
-#: includes/settings/help.php:307
-msgid ""
-"Turns entities such as &amp;amp; back into their character before the post "
-"is saved. Useful with feeds that encode the content twice."
-msgstr ""
-"投稿を保存する前に、&amp;amp; などのエンティティを元の文字に戻します。コンテ"
-"ンツを二重にエンコードするフィードで便利です。"
 
 #: includes/settings/help.php:31
 msgid ""
@@ -8394,27 +8510,39 @@ msgstr ""
 "取得元サーバーにリンクすると容量を節約でき、ページも速くなりますが、取得元が"
 "削除した日に画像を失います。各キャンペーンで個別に設定できます。"
 
+#: includes/settings/help.php:311 includes/settings/page.php:842
+msgid "Decode HTML entities on publish"
+msgstr "公開時に HTML エンティティをデコード"
+
 #: includes/settings/help.php:312
+msgid ""
+"Turns entities such as &amp;amp; back into their character before the post "
+"is saved. Useful with feeds that encode the content twice."
+msgstr ""
+"投稿を保存する前に、&amp;amp; などのエンティティを元の文字に戻します。コンテ"
+"ンツを二重にエンコードするフィードで便利です。"
+
+#: includes/settings/help.php:317
 msgid "Sender email"
 msgstr "送信者メール"
 
-#: includes/settings/help.php:313
+#: includes/settings/help.php:318
 msgid "The address every email from this plugin is sent from."
 msgstr "このプラグインからのすべてのメールの送信元アドレス。"
 
-#: includes/settings/help.php:316
+#: includes/settings/help.php:321
 msgid "Sender name"
 msgstr "送信者名"
 
-#: includes/settings/help.php:317
+#: includes/settings/help.php:322
 msgid "The name shown next to that address in your inbox."
 msgstr "受信トレイでそのアドレスの横に表示される名前。"
 
-#: includes/settings/help.php:329
+#: includes/settings/help.php:334
 msgid "Features available with the Professional add-on."
 msgstr "Professional アドオンで利用できる機能。"
 
-#: includes/settings/help.php:330
+#: includes/settings/help.php:335
 msgid ""
 "Publish or skip an item depending on the keywords found in its title or "
 "content."
@@ -8422,7 +8550,7 @@ msgstr ""
 "タイトルまたはコンテンツ内のキーワードに応じて、項目を公開またはスキップしま"
 "す。"
 
-#: includes/settings/help.php:331
+#: includes/settings/help.php:336
 msgid ""
 "Cut, publish or skip an item depending on how many words or letters its "
 "content has."
@@ -8430,13 +8558,13 @@ msgstr ""
 "コンテンツの単語数または文字数に応じて、項目を切り詰め、公開、またはスキップ"
 "します。"
 
-#: includes/settings/help.php:332
+#: includes/settings/help.php:337
 msgid ""
 "Build the title of every post of a campaign from a template of your own."
 msgstr ""
 "キャンペーンのすべての投稿のタイトルを、独自のテンプレートから作成します。"
 
-#: includes/settings/help.php:333
+#: includes/settings/help.php:338
 msgid ""
 "Generates the tags of every post automatically. Each campaign can turn that "
 "off and use a list of tags you write instead."
@@ -8444,12 +8572,12 @@ msgstr ""
 "すべての投稿のタグを自動生成します。各キャンペーンでこれをオフにし、代わりに"
 "自分で書いたタグのリストを使うこともできます。"
 
-#: includes/settings/help.php:334
+#: includes/settings/help.php:339
 msgid "Add custom fields, with template tags as their value, to every post."
 msgstr ""
 "テンプレートタグを値とするカスタムフィールドを、すべての投稿に追加します。"
 
-#: includes/settings/help.php:335
+#: includes/settings/help.php:340
 msgid ""
 "Full Content is the add-on that fetches the whole article from the source "
 "site when the feed only carries a summary."
@@ -8457,7 +8585,7 @@ msgstr ""
 "Full Content は、フィードが要約しか含まない場合に、取得元サイトから記事全文を"
 "取得するアドオンです。"
 
-#: includes/settings/help.php:336
+#: includes/settings/help.php:341
 msgid ""
 "Set an author per feed when editing a campaign. Feeds with no author of "
 "their own use the campaign author."
@@ -8465,7 +8593,7 @@ msgstr ""
 "キャンペーンの編集時に、フィードごとに投稿者を設定します。独自の投稿者がない"
 "フィードはキャンペーンの投稿者を使います。"
 
-#: includes/settings/help.php:337
+#: includes/settings/help.php:342
 msgid ""
 "Paste a list of feed addresses, with or without author names, straight into "
 "the campaign."
@@ -8577,11 +8705,11 @@ msgstr ""
 "ダウンロードしたすべての音声ファイルがメディアライブラリに追加され、投稿に添"
 "付されます。"
 
-#: includes/settings/page.php:1001
+#: includes/settings/page.php:1013
 msgid "Guided tours"
 msgstr "ガイドツアー"
 
-#: includes/settings/page.php:1003
+#: includes/settings/page.php:1015
 msgid ""
 "Shows a short tour the first time you open each WPeMatico screen. Only for "
 "your user."
@@ -8589,23 +8717,23 @@ msgstr ""
 "各 WPeMatico 画面を初めて開いたときに短いツアーを表示します。あなたのユーザー"
 "のみが対象です。"
 
-#: includes/settings/page.php:1034
+#: includes/settings/page.php:1046
 msgid "Highlights of the new release"
 msgstr "新しいリリースの注目点"
 
-#: includes/settings/page.php:1035 includes/lib/licenses_handlers.php:405
+#: includes/settings/page.php:1047 includes/lib/licenses_handlers.php:405
 msgid "Version"
 msgstr "バージョン"
 
-#: includes/settings/page.php:1047
+#: includes/settings/page.php:1059
 msgid "Read more on wpematico.com"
 msgstr "wpematico.com で詳しく読む"
 
-#: includes/settings/page.php:1049
+#: includes/settings/page.php:1061
 msgid "Your opinion about WPeMatico is very important to us."
 msgstr "WPeMatico についてのご意見は、私たちにとって非常に重要です。"
 
-#: includes/settings/page.php:1050
+#: includes/settings/page.php:1062
 msgid ""
 "By rating WPeMatico RSS Feed Fetcher, you help the plugin creators to "
 "improve their work and help other users to find the software they need. You "
@@ -8616,29 +8744,25 @@ msgstr ""
 "のユーザーが必要なソフトウェアを見つける手助けになります。レビューは "
 "WordPress フォーラムに書けます。お好きな言語でどうぞ。感謝します !"
 
-#: includes/settings/page.php:1051
+#: includes/settings/page.php:1063
 msgid "Rate us on WordPress"
 msgstr "WordPress で評価する"
 
-#: includes/settings/page.php:1053
+#: includes/settings/page.php:1065
 msgid "YES!"
 msgstr "はい !"
 
-#: includes/settings/page.php:1074
+#: includes/settings/page.php:1086
 msgid "General Settings"
 msgstr "一般設定"
 
-#: includes/settings/page.php:1175 includes/settings/page.php:1201
+#: includes/settings/page.php:1187 includes/settings/page.php:1213
 msgid "Save settings"
 msgstr "設定を保存"
 
-#: includes/settings/page.php:1301
+#: includes/settings/page.php:1313
 msgid "Settings saved."
 msgstr "設定を保存しました。"
-
-#: includes/settings/page.php:1324
-msgid "License keys saved."
-msgstr "ライセンスキーを保存しました。"
 
 #: includes/settings/page.php:133 includes/lib/licenses_handlers.php:319
 msgid ""
@@ -8647,6 +8771,10 @@ msgid ""
 msgstr ""
 "プレミアムプラグインを有効化した場合、ここにそのライセンスキーを入力します。"
 
+#: includes/settings/page.php:1336
+msgid "License keys saved."
+msgstr "ライセンスキーを保存しました。"
+
 #: includes/settings/page.php:134 includes/lib/licenses_handlers.php:320
 msgid "See some of the WPeMatico Add-ons in the"
 msgstr "WPeMatico アドオンの一部はこちらでご覧ください:"
@@ -8654,8 +8782,8 @@ msgstr "WPeMatico アドオンの一部はこちらでご覧ください:"
 #: includes/settings/page.php:164 includes/settings/page.php:289
 #: includes/settings/page.php:353 includes/settings/page.php:418
 #: includes/settings/page.php:460 includes/settings/page.php:554
-#: includes/settings/page.php:683 includes/settings/page.php:747
-#: includes/settings/page.php:840 includes/settings/page.php:886
+#: includes/settings/page.php:683 includes/settings/page.php:759
+#: includes/settings/page.php:852 includes/settings/page.php:898
 msgid "Click to toggle"
 msgstr "クリックで切り替え"
 
@@ -8823,7 +8951,7 @@ msgstr "「単語からカテゴリーへ」を有効化"
 msgid "Enable the Vimeo campaign type"
 msgstr "Vimeo キャンペーンタイプを有効化"
 
-#: includes/settings/page.php:724
+#: includes/settings/page.php:724 includes/settings/page.php:741
 msgid "PRO"
 msgstr "PRO"
 
@@ -8835,7 +8963,19 @@ msgstr ""
 "API 経由で Vimeo を読み取る機能 (フィードの10本制限を超え、並べ替えや非公開動"
 "画にも対応) は Professional に含まれます。"
 
-#: includes/settings/page.php:750
+#: includes/settings/page.php:737
+msgid "Enable the Google News campaign type"
+msgstr "Google News キャンペーンタイプを有効化"
+
+#: includes/settings/page.php:741
+msgid ""
+"Linking each post to the article on the publication's own site, so Full "
+"Content reads it, comes with Professional."
+msgstr ""
+"各投稿を媒体自身のサイトにある記事にリンクし、Full Content がそれを読み込める"
+"ようにする機能は Professional に含まれます。"
+
+#: includes/settings/page.php:762
 msgid "Advanced Actions"
 msgstr "高度な操作"
 
@@ -8843,31 +8983,31 @@ msgstr "高度な操作"
 msgid "Invalid email."
 msgstr "無効なメールアドレスです。"
 
-#: includes/settings/page.php:843
+#: includes/settings/page.php:855
 msgid "Sending e-Mails"
 msgstr "メールの送信"
 
-#: includes/settings/page.php:848
+#: includes/settings/page.php:860
 msgid "Sender email:"
 msgstr "送信者メール:"
 
-#: includes/settings/page.php:854
+#: includes/settings/page.php:866
 msgid "Sender name:"
 msgstr "送信者名:"
 
-#: includes/settings/page.php:861
+#: includes/settings/page.php:873
 msgid "Sendmail path:"
 msgstr "Sendmail のパス:"
 
-#: includes/settings/page.php:889
+#: includes/settings/page.php:901
 msgid "WordPress Backend Tools"
 msgstr "WordPress バックエンドツール"
 
-#: includes/settings/page.php:931
+#: includes/settings/page.php:943
 msgid "Post types it applies to"
 msgstr "適用する投稿タイプ"
 
-#: includes/settings/page.php:972
+#: includes/settings/page.php:984
 msgid "Roles that see the dashboard widget:"
 msgstr "ダッシュボードウィジェットを表示する権限グループ:"
 
@@ -9847,99 +9987,99 @@ msgstr "XML ノードを選択してください。"
 msgid "PHP 7.0 or higher needed!"
 msgstr "PHP 7.0 以降が必要です !"
 
-#: wpematico_class.php:160 includes/wpematico_functions.php:3155
+#: wpematico_class.php:162 includes/wpematico_functions.php:3155
 msgid "Empty Trash"
 msgstr "ゴミ箱を空にする"
 
-#: wpematico_class.php:178
+#: wpematico_class.php:180
 msgid "There are no campaigns yet."
 msgstr "まだキャンペーンがありません。"
 
-#: wpematico_class.php:180
+#: wpematico_class.php:182
 msgid "You need to create a campaign to begin using WPeMatico."
 msgstr "WPeMatico を使い始めるには、キャンペーンを作成する必要があります。"
 
-#: wpematico_class.php:182
+#: wpematico_class.php:184
 msgid ""
 "If you need help, check out the tips to get started with WPeMatico or just "
 msgstr ""
 "ヘルプが必要な場合は、WPeMatico を使い始めるためのヒントを確認するか、 "
 
-#: wpematico_class.php:183
+#: wpematico_class.php:185
 msgid "add New Campaign"
 msgstr "新規キャンペーンを追加"
 
-#: wpematico_class.php:186 includes/lib/welcome.php:190
+#: wpematico_class.php:188 includes/lib/welcome.php:190
 msgid "Getting Started"
 msgstr "はじめに"
 
-#: wpematico_class.php:192 wpematico_class.php:353 wpematico_class.php:354
+#: wpematico_class.php:194 wpematico_class.php:355 wpematico_class.php:356
 #: includes/dashboard-widgets.php:552 includes/debug_page.php:2927
 msgid "Campaigns"
 msgstr "キャンペーン"
 
-#: wpematico_class.php:193 includes/tools_page.php:501
+#: wpematico_class.php:195 includes/tools_page.php:501
 #: includes/tools_page.php:665 includes/wp-backend-helpers.php:65
 msgid "Campaign"
 msgstr "キャンペーン"
 
-#: wpematico_class.php:194
+#: wpematico_class.php:196
 msgid "Add New"
 msgstr "新規追加"
 
-#: wpematico_class.php:195
+#: wpematico_class.php:197
 msgid "Add New Campaign"
 msgstr "新規キャンペーンを追加"
 
-#: wpematico_class.php:196
+#: wpematico_class.php:198
 msgid "Edit Campaign"
 msgstr "キャンペーンを編集"
 
-#: wpematico_class.php:197
+#: wpematico_class.php:199
 msgid "New Campaign"
 msgstr "新規キャンペーン"
 
-#: wpematico_class.php:198
+#: wpematico_class.php:200
 msgid "All Campaigns"
 msgstr "すべてのキャンペーン"
 
-#: wpematico_class.php:199
+#: wpematico_class.php:201
 msgid "View Campaign"
 msgstr "キャンペーンを表示"
 
-#: wpematico_class.php:200
+#: wpematico_class.php:202
 msgid "Search Campaign"
 msgstr "キャンペーンを検索"
 
-#: wpematico_class.php:202
+#: wpematico_class.php:204
 msgid "No Campaign found in Trash"
 msgstr "ゴミ箱内にキャンペーンは見つかりませんでした"
 
-#: wpematico_class.php:244
+#: wpematico_class.php:246
 msgid "Reset Menu Position"
 msgstr "メニュー位置をリセット"
 
-#: wpematico_class.php:250
+#: wpematico_class.php:252
 msgid "Turn this on if the WPeMatico menu does not appear in the admin menu."
 msgstr ""
 "管理メニューに WPeMatico メニューが表示されない場合は、これをオンにします。"
 
-#: wpematico_class.php:255
+#: wpematico_class.php:257
 msgid "See local Addons in plugin list"
 msgstr "プラグイン一覧にローカルのアドオンを表示"
 
-#: wpematico_class.php:261
+#: wpematico_class.php:263
 msgid ""
 "Turn this on to list the add-ons on your Plugins page, like any other plugin."
 msgstr ""
 "これをオンにすると、他のプラグインと同じように、アドオンがプラグインページに"
 "一覧表示されます。"
 
-#: wpematico_class.php:266
+#: wpematico_class.php:268
 msgid "Hide Reviews on Settings"
 msgstr "設定でレビューを非表示"
 
-#: wpematico_class.php:272
+#: wpematico_class.php:274
 msgid ""
 "Turn this on if the Settings page comes out incomplete because your server "
 "cannot read external addresses."
@@ -9947,7 +10087,7 @@ msgstr ""
 "サーバーが外部アドレスを読み取れず、設定ページが不完全に表示される場合は、こ"
 "れをオンにします。"
 
-#: wpematico_class.php:310
+#: wpematico_class.php:312
 msgid ""
 "If the WPeMatico menu is missing, another plugin or your theme has taken its "
 "position."
@@ -9955,7 +10095,7 @@ msgstr ""
 "WPeMatico メニューがない場合、他のプラグインまたはテーマがその位置を使ってい"
 "ます。"
 
-#: wpematico_class.php:311
+#: wpematico_class.php:313
 msgid ""
 "Tick \"Reset Menu Position\" to move the menu to the end of the WordPress "
 "menu."
@@ -9963,7 +10103,7 @@ msgstr ""
 "「メニュー位置をリセット」にチェックを入れると、メニューが WordPress メニュー"
 "の末尾に移動します。"
 
-#: wpematico_class.php:313
+#: wpematico_class.php:315
 msgid ""
 "A Settings page that does not render fully usually means your server cannot "
 "reach external pages."
@@ -9971,7 +10111,7 @@ msgstr ""
 "設定ページが完全に表示されない場合、たいていはサーバーが外部ページに到達でき"
 "ないことが原因です。"
 
-#: wpematico_class.php:314
+#: wpematico_class.php:316
 msgid ""
 "Tick \"Hide Reviews on Settings\" to show a plain link to the reviews page "
 "instead."
@@ -9979,7 +10119,7 @@ msgstr ""
 "「設定でレビューを非表示」にチェックを入れると、代わりにレビューページへのシ"
 "ンプルなリンクが表示されます。"
 
-#: wpematico_class.php:318
+#: wpematico_class.php:320
 msgid ""
 "You must click the Save Changes button at the bottom of the screen for new "
 "settings to take effect."
@@ -9987,39 +10127,39 @@ msgstr ""
 "新しい設定を有効にするには、画面下部の「変更を保存」ボタンをクリックする必要"
 "があります。"
 
-#: wpematico_class.php:331 wpematico_class.php:332
+#: wpematico_class.php:333 wpematico_class.php:334
 msgid "WPeMatico"
 msgstr "WPeMatico"
 
-#: wpematico_class.php:343
+#: wpematico_class.php:345
 msgid "WPeMatico Dashboard"
 msgstr "WPeMatico ダッシュボード"
 
-#: wpematico_class.php:344 includes/module/dashboard.php:106
+#: wpematico_class.php:346 includes/module/dashboard.php:106
 msgid "Dashboard"
 msgstr "ダッシュボード"
 
-#: wpematico_class.php:368 wpematico_class.php:369
+#: wpematico_class.php:370 wpematico_class.php:371
 #: includes/dashboard-widgets.php:554 includes/plugin_functions.php:339
-#: includes/settings/functions.php:43 includes/settings/page.php:1078
-#: includes/settings/page.php:1151 includes/module/dashboard.php:32
+#: includes/settings/functions.php:43 includes/settings/page.php:1090
+#: includes/settings/page.php:1163 includes/module/dashboard.php:32
 #: includes/module/manager.php:187
 msgid "Settings"
 msgstr "設定"
 
-#: wpematico_class.php:379 wpematico_class.php:380 includes/tools_tabs.php:17
+#: wpematico_class.php:381 wpematico_class.php:382 includes/tools_tabs.php:17
 msgid "Tools"
 msgstr "ツール"
 
-#: wpematico_class.php:397 wpematico_class.php:406
+#: wpematico_class.php:399 wpematico_class.php:408
 msgid "Add-ons"
 msgstr "アドオン"
 
-#: wpematico_class.php:398 includes/addons_page.php:1461
+#: wpematico_class.php:400 includes/addons_page.php:1461
 msgid "WPeMatico Addons"
 msgstr "WPeMatico アドオン"
 
-#: wpematico_class.php:407 includes/class-tour-helper.php:224
+#: wpematico_class.php:409 includes/class-tour-helper.php:224
 #: includes/plugin_functions.php:360
 msgid "Extensions"
 msgstr "拡張機能"

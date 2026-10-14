@@ -226,28 +226,7 @@ class wpematico_campaign_preview_item {
 	* @since 2.8.26
 	*/
 	public static function allowed_preview_html() {
-		$allowed			= wp_kses_allowed_html('post');
-		$allowed['iframe']	= array(
-			'src'			 => true,
-			'width'			 => true,
-			'height'		 => true,
-			'title'			 => true,
-			'class'			 => true,
-			'id'			 => true,
-			'name'			 => true,
-			// Video services wrap the player in a positioned box and put the geometry in a
-			// style attribute; wp_kses() runs it through safecss_filter_attr().
-			'style'			 => true,
-			'frameborder'	 => true,
-			'scrolling'		 => true,
-			'marginwidth'	 => true,
-			'marginheight'	 => true,
-			'loading'		 => true,
-			'referrerpolicy' => true,
-			'sandbox'		 => true,
-			'allow'			 => true,
-			'allowfullscreen' => true,
-		);
+		$allowed = WPeMatico_Feed_HTML::allowed_html();
 
 		return apply_filters('wpematico_preview_item_allowed_html', $allowed);
 	}

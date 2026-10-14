@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPeMatico 2.9\n"
 "Report-Msgid-Bugs-To: https://etruel.com/my-account/support/\n"
-"POT-Creation-Date: 2026-10-01 01:06+0000\n"
+"POT-Creation-Date: 2026-10-14 19:25+0000\n"
 "PO-Revision-Date: 2026-09-26 21:08\n"
 "Last-Translator: Etruel Developments <translations@etruel.com>\n"
 "Language-Team: Etruel Developments <translations@etruel.com>\n"
@@ -32,7 +32,7 @@ msgid ""
 "Update WPeMatico first, then the add-ons. The links offered on each screen "
 "already follow that order."
 msgstr ""
-"Werk eerst WPeMatico bij en daarna de add-ons. De links op elk scherm volgen "
+"Update eerst WPeMatico en daarna de add-ons. De links op elk scherm volgen "
 "die volgorde al."
 
 #: includes/addons_help.php:102
@@ -42,8 +42,8 @@ msgid ""
 "cannot support it."
 msgstr ""
 "Een add-on die nieuwer is dan de hoofdplugin schakelt zijn eigen functies "
-"uit en vermeldt welke versie van WPeMatico hij nodig heeft, in plaats van te "
-"draaien op een kern die hem niet kan ondersteunen."
+"uit en vermeldt welke versie van WPeMatico hij nodig heeft, in plaats van "
+"uitgevoerd te worden op een kern die hem niet kan ondersteunen."
 
 #: includes/addons_help.php:105
 msgid "No update showing when you expect one."
@@ -56,7 +56,7 @@ msgid ""
 "site's sources right away."
 msgstr ""
 "WordPress bewaart het antwoord over updates enkele uren in de cache. "
-"„Opnieuw controleren“ bovenaan Dashboard &rsaquo; Updates vraagt het de "
+"“Opnieuw controleren” bovenaan Dashboard &rsaquo; Updates vraagt het de "
 "winkel en de bronnen van deze site meteen opnieuw."
 
 #: includes/addons_help.php:160
@@ -103,13 +103,13 @@ msgid ""
 "among the other plugins; this screen works the same either way."
 msgstr ""
 "WPeMatico-add-ons staan standaard niet in de gewone pluginlijst. "
-"Instellingen &rsaquo; Schrijven &rsaquo; „Lokale add-ons in de pluginlijst "
-"tonen“ zet ze terug tussen de andere plugins; dit scherm werkt hoe dan ook "
+"Instellingen &rsaquo; Schrijven &rsaquo; “Lokale add-ons in de pluginlijst "
+"tonen” zet ze terug tussen de andere plugins; dit scherm werkt hoe dan ook "
 "hetzelfde."
 
 #: includes/addons_help.php:36
 msgid "The views, the counter and the search box."
-msgstr "De weergaven, de teller en het zoekveld."
+msgstr "De weergaven, de teller en het zoekvak."
 
 #: includes/addons_help.php:37
 msgid ""
@@ -124,7 +124,7 @@ msgid ""
 "The number beside \"WPeMatico Addons\" in the menu is how many installed add-"
 "ons have an update waiting."
 msgstr ""
-"Het getal naast „WPeMatico Addons“ in het menu geeft aan voor hoeveel "
+"Het getal naast “WPeMatico Addons” in het menu geeft aan voor hoeveel "
 "geïnstalleerde add-ons een update klaarstaat."
 
 #: includes/addons_help.php:39
@@ -132,7 +132,7 @@ msgid ""
 "Typing in the search box hides the rows on screen as you type; pressing "
 "Enter searches the whole list, catalogue included."
 msgstr ""
-"Typen in het zoekveld verbergt de rijen op het scherm terwijl je typt; met "
+"Typen in het zoekvak verbergt de rijen op het scherm terwijl je typt; met "
 "Enter doorzoek je de hele lijst, catalogus inbegrepen."
 
 #: includes/addons_help.php:42
@@ -144,8 +144,8 @@ msgid ""
 "Activate starts an add-on that is installed and stopped. Enable auto-updates "
 "appears once it is running and its license is valid."
 msgstr ""
-"Activeren start een add-on die geïnstalleerd maar gestopt is. Automatische "
-"updates inschakelen verschijnt zodra hij draait en zijn licentie geldig is."
+"Activeren start een add-on die geïnstalleerd maar gestopt is. Auto-updates "
+"inschakelen verschijnt zodra hij wordt uitgevoerd en zijn licentie geldig is."
 
 #: includes/addons_help.php:44
 msgid ""
@@ -164,7 +164,7 @@ msgid ""
 msgstr ""
 "Geïnstalleerd, zonder verdere actie, betekent dat de schakelaar hier niet "
 "aangeboden kan worden: ofwel voert deze site helemaal geen automatische "
-"updates uit, ofwel mag jouw gebruiker geen plugins updaten."
+"updates uit, ofwel mag je gebruiker geen plugins updaten."
 
 #: includes/addons_help.php:48 includes/campaigns_list_help.php:91
 msgid "Bulk actions."
@@ -219,8 +219,8 @@ msgid ""
 "WordPress emails the site administrator after it installs an update, and "
 "when one fails."
 msgstr ""
-"WordPress mailt de sitebeheerder nadat het een update heeft geïnstalleerd, "
-"en wanneer er een mislukt."
+"WordPress stuurt de sitebeheerder e-mails nadat het een update heeft "
+"geïnstalleerd, en wanneer er een mislukt."
 
 #: includes/addons_help.php:61
 msgid "WPeMatico updates first, always."
@@ -278,7 +278,7 @@ msgstr ""
 
 #: includes/addons_help.php:72
 msgid "Sites where they cannot run."
-msgstr "Sites waar ze niet kunnen draaien."
+msgstr "Sites waar ze niet uitgevoerd kunnen worden."
 
 #: includes/addons_help.php:73
 msgid ""
@@ -312,8 +312,8 @@ msgid ""
 "Settings &rsaquo; Licenses."
 msgstr ""
 "Een betaalde add-on ontvangt updates zolang zijn licentiesleutel op deze "
-"site bewaard is, erop geactiveerd en niet verlopen. Sleutels voer je in bij "
-"WPeMatico &rsaquo; Instellingen &rsaquo; Licenties."
+"site is opgeslagen, erop geactiveerd en niet verlopen. Sleutels voer je in "
+"bij WPeMatico &rsaquo; Instellingen &rsaquo; Licenties."
 
 #: includes/addons_help.php:81
 msgid ""
@@ -333,9 +333,9 @@ msgid ""
 "activate it there, which is also where a site you no longer use can be "
 "released."
 msgstr ""
-"Geen sleutel bewaard: voer hem in op het scherm Licenties. Niet geactiveerd "
-"op deze site: activeer hem daar; daar kun je ook een site vrijgeven die je "
-"niet meer gebruikt."
+"Geen sleutel opgeslagen: voer hem in op het scherm Licenties. Niet "
+"geactiveerd op deze site: activeer hem daar; daar kun je ook een site "
+"vrijgeven die je niet meer gebruikt."
 
 #: includes/addons_help.php:86
 msgid ""
@@ -403,7 +403,7 @@ msgstr "Details"
 msgid "WPeMatico Addons "
 msgstr "WPeMatico Addons "
 
-#: includes/addons_page.php:1516
+#: includes/addons_page.php:1516 includes/addons_page.php:1528
 msgid "Inactive &mdash; Now part of WPeMatico"
 msgstr "Inactief &mdash; nu onderdeel van WPeMatico"
 
@@ -471,8 +471,8 @@ msgstr "Kopen in de winkel van etruel"
 msgid "Activate %s on this site"
 msgstr "%s activeren op deze site"
 
-#: includes/addons_page.php:744 includes/module/actions.php:362
-#: includes/module/actions.php:436 includes/module/dashboard.php:64
+#: includes/addons_page.php:744 includes/module/actions.php:371
+#: includes/module/actions.php:445 includes/module/dashboard.php:64
 msgid "Activate"
 msgstr "Activeren"
 
@@ -480,7 +480,7 @@ msgstr "Activeren"
 msgid "See details and prices on etruel's store"
 msgstr "Details en prijzen bekijken in de winkel van etruel"
 
-#: includes/addons_page.php:762 includes/module/actions.php:305
+#: includes/addons_page.php:762 includes/module/actions.php:314
 #: includes/module/dashboard.php:55 includes/module/manager.php:130
 #: includes/module/manager.php:151 includes/module/manager.php:156
 msgid "Installed"
@@ -524,6 +524,104 @@ msgstr "De geselecteerde add-on is verwijderd."
 #: includes/addons_page.php:923
 msgid "The selected add-ons have been deleted."
 msgstr "De geselecteerde add-ons zijn verwijderd."
+
+#: includes/campaign-types/googlo_news.php:174
+msgid "%s is not a Google News address."
+msgstr "%s is geen Google News-adres."
+
+#: includes/campaign-types/googlo_news.php:327
+msgid "Google News Campaign Type."
+msgstr "Campagnetype Google News."
+
+#: includes/campaign-types/googlo_news.php:328
+msgid ""
+"Paste the address of a Google News search, topic or publication as your "
+"browser shows it, and the campaign finds its feed on its own:"
+msgstr ""
+"Plak het adres van een Google News-zoekopdracht, -onderwerp of -publicatie "
+"zoals je browser het toont, en de campagne vindt de feed zelf:"
+
+#: includes/campaign-types/googlo_news.php:332
+msgid ""
+"Each item brings the headline, the date and the name of the publication, and "
+"links to Google News."
+msgstr ""
+"Elk item brengt de kop, de datum en de naam van de publicatie mee, en linkt "
+"naar Google News."
+
+#: includes/campaign-types/googlo_news.php:333
+msgid ""
+"The name and the address of the publication are saved with each post, and "
+"the post template takes them as {source_name} and {source_url}."
+msgstr ""
+"De naam en het adres van de publicatie worden bij elk bericht opgeslagen, en "
+"het berichtsjabloon neemt ze over als {source_name} en {source_url}."
+
+#: includes/campaign-types/googlo_news.php:336
+msgid "Publication in the title."
+msgstr "Publicatie in de titel."
+
+#: includes/campaign-types/googlo_news.php:337
+msgid ""
+"Google News ends every headline with the name of the publication. The "
+"campaign takes it off; tick this to keep it."
+msgstr ""
+"Google News sluit elke kop af met de naam van de publicatie. De campagne "
+"haalt die weg; vink dit aan om hem te houden."
+
+#: includes/campaign-types/googlo_news.php:340
+msgid "Related coverage."
+msgstr "Gerelateerde berichtgeving."
+
+#: includes/campaign-types/googlo_news.php:341
+msgid ""
+"On a topic, Google News lists other articles about the same story under each "
+"headline. Tick this to add that list to the post."
+msgstr ""
+"Bij een onderwerp toont Google News onder elke kop andere artikelen over "
+"hetzelfde verhaal. Vink dit aan om die lijst aan het bericht toe te voegen."
+
+#: includes/campaign-types/googlo_news.php:352
+msgid "Google News Campaign Options"
+msgstr "Google News-campagneopties"
+
+#: includes/campaign-types/googlo_news.php:373
+msgid "Keep the name of the publication at the end of the title"
+msgstr "De naam van de publicatie aan het einde van de titel houden"
+
+#: includes/campaign-types/googlo_news.php:375
+msgid "Add the related coverage Google News lists under the headline"
+msgstr ""
+"De gerelateerde berichtgeving toevoegen die Google News onder de kop toont"
+
+#: includes/campaign-types/googlo_news.php:390
+msgid "Original article"
+msgstr "Oorspronkelijk artikel"
+
+#: includes/campaign-types/googlo_news.php:391
+#: includes/campaign-types/vimeo.php:395
+msgid "PRO Feature"
+msgstr "PRO-functie"
+
+#: includes/campaign-types/googlo_news.php:395
+msgid "Link each post to the article on the publication's own site"
+msgstr "Elk bericht linken naar het artikel op de site van de publicatie"
+
+#: includes/campaign-types/googlo_news.php:399
+msgid "Skip the item when its article is not found"
+msgstr "Het item overslaan als het artikel niet wordt gevonden"
+
+#: includes/campaign-types/googlo_news.php:402
+msgid ""
+"Professional looks each headline up on the site of its publication, so the "
+"source link, the canonical URL and Full Content work on the article itself."
+msgstr ""
+"Professional zoekt elke kop op de site van de publicatie op, zodat de "
+"bronlink, de canonieke URL en Full Content met het artikel zelf werken."
+
+#: includes/campaign-types/googlo_news.php:61 includes/module/actions.php:194
+msgid "Google News"
+msgstr "Google News"
 
 #: includes/campaign-types/vimeo.php:258
 msgid "Parsing Vimeo video and feed item contents."
@@ -614,10 +712,6 @@ msgstr "Alleen als uitgelichte afbeelding gebruiken"
 msgid "Vimeo API"
 msgstr "Vimeo-API"
 
-#: includes/campaign-types/vimeo.php:395
-msgid "PRO Feature"
-msgstr "PRO-functie"
-
 #: includes/campaign-types/vimeo.php:399
 msgid "Fetch through the Vimeo API instead of the feed."
 msgstr "Ophalen via de Vimeo-API in plaats van via de feed."
@@ -691,7 +785,7 @@ msgstr "Laden…"
 
 #: includes/campaign_edit.php:144
 msgid "Update the campaign to save your changes."
-msgstr "Werk de campagne bij om je wijzigingen op te slaan."
+msgstr "Update de campagne om je wijzigingen op te slaan."
 
 #: includes/campaign_edit.php:146
 msgid "Public"
@@ -754,9 +848,9 @@ msgstr "Ververs je browser en probeer het opnieuw."
 #: includes/debug_page.php:1096 includes/debug_page.php:3712
 #: includes/wpematico_functions.php:2987 includes/wpematico_functions.php:3012
 #: includes/wpematico_functions.php:3208 includes/wpematico_functions.php:3387
-#: includes/xml-importer.php:361 includes/settings/page.php:1265
+#: includes/xml-importer.php:361 includes/settings/page.php:1277
 msgid "You are not allowed to do this."
-msgstr "Je mag dit niet doen."
+msgstr "Je hebt geen toestemming om dit te doen."
 
 #: includes/campaign_edit.php:205
 msgid ""
@@ -764,16 +858,17 @@ msgid ""
 "or use \"Clear Campaign\"."
 msgstr ""
 "Deze campagne draait al (sinds %d sec.). Wacht tot ze klaar is of gebruik "
-"„Campagne wissen“."
+"“Campagne wissen”."
 
 #: includes/campaign_edit.php:437
 msgid "There's an error with the supplied RegEx expression in word: %s"
-msgstr "Er zit een fout in de opgegeven reguliere expressie bij het woord: %s"
+msgstr ""
+"Er zit een fout in de opgegeven reguliere uitdrukking bij het woord: %s"
 
 #: includes/campaign_edit.php:455
 msgid "There's an error with the supplied RegEx expression in ReWrite: %s"
 msgstr ""
-"Er zit een fout in de opgegeven reguliere expressie bij Herschrijven: %s"
+"Er zit een fout in de opgegeven reguliere uitdrukking bij Herschrijven: %s"
 
 #: includes/campaign_edit.php:488
 msgid "At least one feed URL must be filled."
@@ -837,7 +932,7 @@ msgstr "Weekdag:"
 
 #: includes/campaign_edit_functions.php:1158
 msgid "Update Campaign to save Feeds order"
-msgstr "Werk de campagne bij om de volgorde van de feeds op te slaan"
+msgstr "Update de campagne om de volgorde van de feeds op te slaan"
 
 #: includes/campaign_edit_functions.php:1173
 msgid "Check if this feed works"
@@ -849,7 +944,7 @@ msgstr "Deze campagne stoppen en deactiveren"
 
 #: includes/campaign_edit_functions.php:118
 msgid "Activate the schedule"
-msgstr "Planning inschakelen"
+msgstr "Planning activeren"
 
 #: includes/campaign_edit_functions.php:1185
 msgid "Add Feed"
@@ -1088,7 +1183,7 @@ msgstr "Voorbeeld van de campagne"
 msgid "Feed (default)"
 msgstr "Feed (standaard)"
 
-#: includes/campaign_edit_functions.php:226 includes/module/actions.php:194
+#: includes/campaign_edit_functions.php:226 includes/module/actions.php:203
 msgid "YouTube"
 msgstr "YouTube"
 
@@ -1263,7 +1358,7 @@ msgstr "De titel van het feeditem."
 
 #: includes/campaign_edit_functions.php:491
 msgid "The parsed post content."
-msgstr "De verwerkte berichtcontent."
+msgstr "De verwerkte content van het bericht."
 
 #: includes/campaign_edit_functions.php:492 includes/campaign_help.php:280
 msgid "The feed item description."
@@ -1299,7 +1394,7 @@ msgstr "De beschrijving van de feed."
 
 #: includes/campaign_edit_functions.php:500 includes/campaign_help.php:288
 msgid "The feed's logo image URL."
-msgstr "De URL van het logo van de feed."
+msgstr "De URL van de logo-afbeelding van de feed."
 
 #: includes/campaign_edit_functions.php:501 includes/campaign_help.php:289
 msgid "The feed's Favicon URL."
@@ -1315,11 +1410,11 @@ msgstr "Het ID van deze campagne."
 
 #: includes/campaign_edit_functions.php:504 includes/campaign_help.php:292
 msgid "The date of the post item."
-msgstr "De datum van het item."
+msgstr "De datum van het bericht."
 
 #: includes/campaign_edit_functions.php:505 includes/campaign_help.php:293
 msgid "The time of the post item."
-msgstr "Het tijdstip van het item."
+msgstr "Het tijdstip van het bericht."
 
 #: includes/campaign_edit_functions.php:508 includes/campaign_help.php:295
 msgid "Examples:"
@@ -1358,7 +1453,7 @@ msgid ""
 "link:"
 msgstr ""
 "Om boven die link een galerij van drie kolommen met alle afbeeldingen van "
-"het bericht te zetten:"
+"het bericht toe te voegen:"
 
 #: includes/campaign_edit_functions.php:515 includes/campaign_help.php:302
 msgid ""
@@ -1458,13 +1553,14 @@ msgid "%s has to be installed and activated for this to work."
 msgstr "%s moet geïnstalleerd en actief zijn om dit te laten werken."
 
 #: includes/campaign_edit_functions.php:615 includes/campaign_help.php:160
-#: includes/settings/help.php:60 includes/module/actions.php:560
+#: includes/settings/help.php:60 includes/module/actions.php:569
 msgid "Featured Image from URL"
 msgstr "Featured Image from URL"
 
 #: includes/campaign_edit_functions.php:621
 msgid "Use the video link as featured when available"
-msgstr "De videolink als uitgelichte afbeelding gebruiken als die er is"
+msgstr ""
+"De videolink als uitgelichte afbeelding gebruiken als die beschikbaar is"
 
 #: includes/campaign_edit_functions.php:630
 msgid "Advanced Options"
@@ -1550,7 +1646,7 @@ msgid "Remove link to source videos"
 msgstr "Link naar de bronvideo's verwijderen"
 
 #: includes/campaign_edit_functions.php:775 includes/campaign_help.php:237
-#: includes/settings/help.php:201 includes/settings/page.php:498
+#: includes/settings/help.php:206 includes/settings/page.php:498
 msgid "Allow duplicate posts"
 msgstr "Dubbele berichten toestaan"
 
@@ -1562,7 +1658,7 @@ msgid ""
 msgstr ""
 "Met beide controles uit wordt elk item bij elke uitvoering opnieuw "
 "gepubliceerd, eindeloos. Om items met dezelfde titel te publiceren gebruik "
-"je „Dubbele titels toestaan” en laat je deze met rust."
+"je “Dubbele titels toestaan” en laat je deze met rust."
 
 #: includes/campaign_edit_functions.php:779 includes/settings/page.php:506
 msgid "Allow duplicate titles"
@@ -1573,12 +1669,12 @@ msgid "Allow duplicate hashes (not recommended)"
 msgstr "Dubbele hashes toestaan (niet aanbevolen)"
 
 #: includes/campaign_edit_functions.php:784 includes/campaign_help.php:249
-#: includes/settings/help.php:218 includes/settings/page.php:526
+#: includes/settings/help.php:223 includes/settings/page.php:526
 msgid "Also check duplicates by source permalink"
 msgstr "Duplicaten ook op de bronpermalink controleren"
 
 #: includes/campaign_edit_functions.php:789 includes/campaign_help.php:243
-#: includes/settings/help.php:207 includes/settings/page.php:535
+#: includes/settings/help.php:212 includes/settings/page.php:535
 msgid "Keep reading past a duplicate"
 msgstr "Doorlezen na een duplicaat"
 
@@ -1634,7 +1730,7 @@ msgstr "Verwijderen: "
 
 #: includes/campaign_edit_functions.php:888
 msgid "With none selected, all of them apply."
-msgstr "Kies je er geen, dan gelden ze allemaal."
+msgstr "Als er geen is geselecteerd, gelden ze allemaal."
 
 #: includes/campaign_edit_functions.php:896 includes/campaign_help.php:88
 msgid "Store the content unfiltered"
@@ -1666,63 +1762,59 @@ msgstr "Feedviewer"
 #: includes/campaign_edit_functions.php:92 includes/tools_page.php:544
 #: includes/tools_page.php:546
 msgid "Open URL in a new browser tab"
-msgstr "URL in een nieuw browsertabblad openen"
+msgstr "URL in een nieuwe browsertab openen"
 
-#: includes/campaign_fetch.php:1008
+#: includes/campaign_fetch.php:1028
 msgid "The post has no featured image."
 msgstr "Het bericht heeft geen uitgelichte afbeelding."
 
-#: includes/campaign_fetch.php:1015
+#: includes/campaign_fetch.php:1035
 msgid "Attaching images"
 msgstr "Afbeeldingen worden gekoppeld"
 
-#: includes/campaign_fetch.php:1036
+#: includes/campaign_fetch.php:1056
 msgid "Attaching audios"
 msgstr "Audio wordt gekoppeld"
 
-#: includes/campaign_fetch.php:1052
+#: includes/campaign_fetch.php:1072
 msgid "Attaching videos"
 msgstr "Video's worden gekoppeld"
 
-#: includes/campaign_fetch.php:1081
+#: includes/campaign_fetch.php:1101
 msgid "Campaign fetched in %s sec."
 msgstr "Campagne opgehaald in %s sec."
 
-#: includes/campaign_fetch.php:1111
+#: includes/campaign_fetch.php:1131
 msgid "WPeMatico Log "
 msgstr "WPeMatico-log "
 
-#: includes/campaign_fetch.php:1114
+#: includes/campaign_fetch.php:1134
 msgid "Campaign Name:"
 msgstr "Naam van de campagne:"
 
-#: includes/campaign_fetch.php:1116
+#: includes/campaign_fetch.php:1136
 msgid "Errors:"
 msgstr "Fouten:"
 
-#: includes/campaign_fetch.php:1118
+#: includes/campaign_fetch.php:1138
 msgid "Warnings:"
 msgstr "Waarschuwingen:"
 
-#: includes/campaign_fetch.php:1122
+#: includes/campaign_fetch.php:1142
 msgid "WPeMatico by "
 msgstr "WPeMatico door "
 
-#: includes/campaign_fetch.php:1149
+#: includes/campaign_fetch.php:1169
 msgid "Campaign fetched in %1s sec."
 msgstr "Campagne opgehaald in %1s sec."
 
-#: includes/campaign_fetch.php:1162
+#: includes/campaign_fetch.php:1182
 msgid "Processed Posts: %s"
 msgstr "Verwerkte berichten: %s"
 
-#: includes/campaign_fetch.php:1163
+#: includes/campaign_fetch.php:1183
 msgid "Show detailed Log"
 msgstr "Gedetailleerd log tonen"
-
-#: includes/campaign_fetch.php:1183 includes/campaigns_list.php:922
-msgid "Posts imported by this campaign."
-msgstr "Door deze campagne geïmporteerde berichten."
 
 #: includes/campaign_fetch.php:120
 msgid ""
@@ -1732,9 +1824,13 @@ msgstr ""
 "Geheugenlimiet op %1$s gezet, omdat de PHP-functie memory_get_usage() niet "
 "gebruikt kan worden om het geheugen dynamisch te verhogen!"
 
+#: includes/campaign_fetch.php:1203 includes/campaigns_list.php:922
+msgid "Posts imported by this campaign."
+msgstr "Door deze campagne geïmporteerde berichten."
+
 #: includes/campaign_fetch.php:131
 msgid "Ending feed, reached running timeout at %1$d sec."
-msgstr "Feed wordt beëindigd, looptijdlimiet van %1$d sec. bereikt."
+msgstr "Feed wordt beëindigd, time-out voor uitvoeren van %1$d sec. bereikt."
 
 #: includes/campaign_fetch.php:183
 msgid "Processing feed %s."
@@ -1754,239 +1850,244 @@ msgstr "Ophaallimiet van de campagne bereikt bij %s."
 
 #: includes/campaign_fetch.php:298
 msgid "Reached running timeout at %1$d sec."
-msgstr "Looptijdlimiet van %1$d sec. bereikt."
+msgstr "Time-out voor uitvoeren van %1$d sec. bereikt."
 
-#: includes/campaign_fetch.php:338
+#: includes/campaign_fetch.php:351
 msgid "%s posts added"
 msgstr "%s berichten toegevoegd"
 
-#: includes/campaign_fetch.php:353
+#: includes/campaign_fetch.php:366
 msgid "Processing item %s"
 msgstr "Item %s wordt verwerkt"
 
-#: includes/campaign_fetch.php:367
+#: includes/campaign_fetch.php:380
 msgid "Assigning original date to post."
 msgstr "Oorspronkelijke datum wordt aan het bericht toegekend."
 
-#: includes/campaign_fetch.php:370
+#: includes/campaign_fetch.php:383
 msgid "Original date out of range.  Assigning current date to post."
 msgstr ""
 "Oorspronkelijke datum buiten bereik. Het bericht krijgt de huidige datum."
 
-#: includes/campaign_fetch.php:374
+#: includes/campaign_fetch.php:387
 msgid "Forced original date to post."
 msgstr "Oorspronkelijke datum aan het bericht opgelegd."
 
-#: includes/campaign_fetch.php:512
+#: includes/campaign_fetch.php:525
 msgid "Assigning Auto Categories."
 msgstr "Automatische categorieën worden toegekend."
 
-#: includes/campaign_fetch.php:553
+#: includes/campaign_fetch.php:566
 msgid "Found category under parent: "
 msgstr "Categorie gevonden onder de hoofdcategorie: "
 
-#: includes/campaign_fetch.php:569
+#: includes/campaign_fetch.php:582
 msgid "Category exists with correct parent: "
 msgstr "Categorie bestaat met de juiste hoofdcategorie: "
 
-#: includes/campaign_fetch.php:592
+#: includes/campaign_fetch.php:605
 msgid "Adding Category: "
 msgstr "Categorie wordt toegevoegd: "
 
-#: includes/campaign_fetch.php:594
+#: includes/campaign_fetch.php:607
 msgid "Auto Added by WPeMatico"
 msgstr "Automatisch toegevoegd door WPeMatico"
 
-#: includes/campaign_fetch.php:610
+#: includes/campaign_fetch.php:623
 msgid "Created category: "
 msgstr "Categorie aangemaakt: "
 
-#: includes/campaign_fetch.php:612
+#: includes/campaign_fetch.php:625
 msgid "Failed to create category: "
 msgstr "Categorie aanmaken mislukt: "
 
-#: includes/campaign_fetch.php:620
+#: includes/campaign_fetch.php:633
 msgid "Assigned category to post: "
 msgstr "Categorie aan het bericht toegekend: "
 
-#: includes/campaign_fetch.php:623
+#: includes/campaign_fetch.php:636
 msgid "Could not assign category: "
 msgstr "Categorie kon niet worden toegekend: "
 
 #: includes/campaign_fetch.php:67
 msgid "Campaign skipped: already running since %d sec ago."
-msgstr "Campagne overgeslagen: draait al sinds %d sec."
+msgstr "Campagne overgeslagen: wordt al %d sec. uitgevoerd."
 
-#: includes/campaign_fetch.php:791
+#: includes/campaign_fetch.php:811
 msgid "Adding unfiltered content"
 msgstr "Ongefilterde content wordt toegevoegd"
 
-#: includes/campaign_fetch.php:799
+#: includes/campaign_fetch.php:819
 msgid "Processing item pingbacks"
 msgstr "Pingbacks van het item worden verwerkt"
 
-#: includes/campaign_fetch.php:872
+#: includes/campaign_fetch.php:892
 msgid "Categories added: "
 msgstr "Toegevoegde categorieën: "
 
-#: includes/campaign_fetch.php:884
+#: includes/campaign_fetch.php:904
 msgid "Tags added: "
 msgstr "Toegevoegde tags: "
 
-#: includes/campaign_fetch.php:896
+#: includes/campaign_fetch.php:916
 msgid "Post format added: "
-msgstr "Toegevoegd berichtformaat: "
+msgstr "Bericht format toegevoegd: "
 
-#: includes/campaign_fetch.php:917
+#: includes/campaign_fetch.php:937
 msgid "Skip Featured Image."
 msgstr "Uitgelichte afbeelding overgeslagen."
 
-#: includes/campaign_fetch.php:921
+#: includes/campaign_fetch.php:941
 msgid "Featuring Image Into Post."
 msgstr "Afbeelding wordt als uitgelichte afbeelding ingesteld."
 
-#: includes/campaign_fetch.php:963 includes/campaign_fetch_functions.php:510
+#: includes/campaign_fetch.php:983 includes/campaign_fetch_functions.php:514
 msgid "Failed to obtain file:"
 msgstr "Bestand kon niet worden opgehaald:"
 
-#: includes/campaign_fetch.php:971
+#: includes/campaign_fetch.php:991
 msgid "Save Featured image file failed:"
 msgstr "Opslaan van het bestand van de uitgelichte afbeelding mislukt:"
 
-#: includes/campaign_fetch_functions.php:1000
+#: includes/campaign_fetch_functions.php:1004
 msgid "Fifu save set attachment from URL."
 msgstr "Fifu slaat de bijlage vanaf de URL op."
 
-#: includes/campaign_fetch_functions.php:1089
+#: includes/campaign_fetch_functions.php:102
+#: includes/campaign_fetch_functions.php:112
+msgid "Cleaning Links from content."
+msgstr "Links worden uit de content gehaald."
+
+#: includes/campaign_fetch_functions.php:1093
 msgid "Parsing Youtube video and feed item contents."
 msgstr "YouTube-video en content van het feeditem worden verwerkt."
 
-#: includes/campaign_fetch_functions.php:118
-msgid "Parsing Post template."
-msgstr "Berichttemplate wordt verwerkt."
-
-#: includes/campaign_fetch_functions.php:1201
+#: includes/campaign_fetch_functions.php:1205
 msgid "Looking for audios in content."
 msgstr "Er wordt naar audio in de content gezocht."
 
-#: includes/campaign_fetch_functions.php:125
+#: includes/campaign_fetch_functions.php:122
+msgid "Parsing Post template."
+msgstr "Berichttemplate wordt verwerkt."
+
+#: includes/campaign_fetch_functions.php:1256
+#: includes/campaign_fetch_functions.php:1412
+msgid "Upload file failed:"
+msgstr "Uploaden van bestand mislukt:"
+
+#: includes/campaign_fetch_functions.php:1274
+msgid "Using remotely linked audios in content. No changes."
+msgstr "Audio blijft extern gelinkt in de content. Geen wijzigingen."
+
+#: includes/campaign_fetch_functions.php:129
 msgid "Can't find the featured image to add to the content."
 msgstr ""
 "De uitgelichte afbeelding om aan de content toe te voegen is niet gevonden."
 
-#: includes/campaign_fetch_functions.php:1252
-#: includes/campaign_fetch_functions.php:1408
-msgid "Upload file failed:"
-msgstr "Uploaden van bestand mislukt:"
-
-#: includes/campaign_fetch_functions.php:1270
-msgid "Using remotely linked audios in content. No changes."
-msgstr "Audio blijft extern gelinkt in de content. Geen wijzigingen."
-
-#: includes/campaign_fetch_functions.php:1356
+#: includes/campaign_fetch_functions.php:1360
 msgid "Looking for videos in content."
 msgstr "Er wordt naar video's in de content gezocht."
 
-#: includes/campaign_fetch_functions.php:1426
+#: includes/campaign_fetch_functions.php:1430
 msgid "Using remotely linked videos in content. No changes."
 msgstr "Video's blijven extern gelinkt in de content. Geen wijzigingen."
 
-#: includes/campaign_fetch_functions.php:1459
+#: includes/campaign_fetch_functions.php:1463
 msgid "Skipping standard videos..."
 msgstr "Gewone video's worden overgeslagen…"
 
-#: includes/campaign_fetch_functions.php:1465
+#: includes/campaign_fetch_functions.php:1469
 msgid "Skipping Youtube Short..."
 msgstr "YouTube Short wordt overgeslagen…"
 
-#: includes/campaign_fetch_functions.php:242
+#: includes/campaign_fetch_functions.php:246
 msgid "Processing Words to Category %s"
 msgstr "Woorden naar categorie %s worden verwerkt"
 
-#: includes/campaign_fetch_functions.php:272
+#: includes/campaign_fetch_functions.php:276
 msgid "Found!: word %1$s to Cat_id %2$s"
 msgstr "Gevonden!: woord %1$s naar categorie-ID %2$s"
 
-#: includes/campaign_fetch_functions.php:277
+#: includes/campaign_fetch_functions.php:281
 msgid "Not found word %s"
 msgstr "Woord %s niet gevonden"
 
-#: includes/campaign_fetch_functions.php:284
+#: includes/campaign_fetch_functions.php:288
 msgid "Searching the category with more words."
 msgstr "Er wordt gezocht naar de categorie met de meeste woorden."
 
-#: includes/campaign_fetch_functions.php:300
+#: includes/campaign_fetch_functions.php:304
 msgid "The category with more words in content: %s"
 msgstr "Categorie met de meeste woorden in de content: %s"
 
-#: includes/campaign_fetch_functions.php:307
+#: includes/campaign_fetch_functions.php:311
 msgid "Assign the first category: %s"
 msgstr "Eerste categorie wordt toegekend: %s"
 
-#: includes/campaign_fetch_functions.php:462
+#: includes/campaign_fetch_functions.php:466
 msgid "Looking for images in content."
 msgstr "Er wordt naar afbeeldingen in de content gezocht."
 
-#: includes/campaign_fetch_functions.php:471
-#: includes/campaign_fetch_functions.php:1205
-#: includes/campaign_fetch_functions.php:1360
+#: includes/campaign_fetch_functions.php:475
+#: includes/campaign_fetch_functions.php:1209
+#: includes/campaign_fetch_functions.php:1364
 msgid "Uploading media..."
 msgstr "Media worden geüpload…"
 
-#: includes/campaign_fetch_functions.php:529
+#: includes/campaign_fetch_functions.php:533
 msgid "Save image file failed:"
 msgstr "Opslaan van het afbeeldingsbestand mislukt:"
 
-#: includes/campaign_fetch_functions.php:540
-#: includes/campaign_fetch_functions.php:1259
-#: includes/campaign_fetch_functions.php:1415
+#: includes/campaign_fetch_functions.php:544
+#: includes/campaign_fetch_functions.php:1263
+#: includes/campaign_fetch_functions.php:1419
 msgid "Extension not allowed: "
 msgstr "Extensie niet toegestaan: "
 
-#: includes/campaign_fetch_functions.php:543
-#: includes/campaign_fetch_functions.php:1261
-#: includes/campaign_fetch_functions.php:1417
+#: includes/campaign_fetch_functions.php:547
+#: includes/campaign_fetch_functions.php:1265
+#: includes/campaign_fetch_functions.php:1421
 msgid "Stripped src."
 msgstr "src opgeschoond."
 
-#: includes/campaign_fetch_functions.php:561
+#: includes/campaign_fetch_functions.php:565
 msgid "Using remotely linked images in content. No changes."
 msgstr "Afbeeldingen blijven extern gelinkt in de content. Geen wijzigingen."
 
-#: includes/campaign_fetch_functions.php:598
+#: includes/campaign_fetch_functions.php:602
 msgid "Attaching file:"
 msgstr "Bestand wordt gekoppeld:"
 
-#: includes/campaign_fetch_functions.php:601
+#: includes/campaign_fetch_functions.php:605
 msgid "Sorry, the attachment could not be inserted. An error has occurred."
 msgstr ""
 "Sorry, de bijlage kon niet worden ingevoegd. Er is een fout opgetreden."
 
-#: includes/campaign_fetch_functions.php:636
+#: includes/campaign_fetch_functions.php:640
 msgid "Executing featured image selector..."
 msgstr "Keuzehulp voor de uitgelichte afbeelding wordt uitgevoerd…"
 
-#: includes/campaign_fetch_functions.php:640
+#: includes/campaign_fetch_functions.php:644
 msgid "Featured image \"%1$s\": %2$s"
-msgstr "Uitgelichte afbeelding „%1$s”: %2$s"
+msgstr "Uitgelichte afbeelding “%1$s”: %2$s"
 
-#: includes/campaign_fetch_functions.php:643
+#: includes/campaign_fetch_functions.php:647
 msgid "No image was found according to the selected index."
-msgstr "Er is geen afbeelding gevonden op de gekozen index."
+msgstr "Er is geen afbeelding gevonden op de geselecteerde index."
 
-#: includes/campaign_fetch_functions.php:648
+#: includes/campaign_fetch_functions.php:652
 msgid "The first image was not found in the content."
 msgstr "De eerste afbeelding is niet in de content gevonden."
 
-#: includes/campaign_fetch_functions.php:650
+#: includes/campaign_fetch_functions.php:654
 msgid "Using first image as the featured image."
 msgstr "De eerste afbeelding wordt als uitgelichte afbeelding gebruikt."
 
-#: includes/campaign_fetch_functions.php:656
+#: includes/campaign_fetch_functions.php:660
 msgid "The last image was not found in the content."
 msgstr "De laatste afbeelding is niet in de content gevonden."
 
-#: includes/campaign_fetch_functions.php:658
+#: includes/campaign_fetch_functions.php:662
 msgid "Using last image as the featured image."
 msgstr "De laatste afbeelding wordt als uitgelichte afbeelding gebruikt."
 
@@ -1994,48 +2095,43 @@ msgstr "De laatste afbeelding wordt als uitgelichte afbeelding gebruikt."
 msgid "Deleting html tags: %s"
 msgstr "HTML-tags worden verwijderd: %s"
 
-#: includes/campaign_fetch_functions.php:865
+#: includes/campaign_fetch_functions.php:869
 msgid "Getting srcset attribute..."
 msgstr "Het srcset-kenmerk wordt uitgelezen…"
 
-#: includes/campaign_fetch_functions.php:890
+#: includes/campaign_fetch_functions.php:894
 msgid "Overriding src attribute with value: %s from srcset."
 msgstr "Het src-kenmerk wordt overschreven met waarde %s uit srcset."
 
-#: includes/campaign_fetch_functions.php:937
-#: includes/campaign_fetch_functions.php:1178
-#: includes/campaign_fetch_functions.php:1333
+#: includes/campaign_fetch_functions.php:941
+#: includes/campaign_fetch_functions.php:1182
+#: includes/campaign_fetch_functions.php:1337
 msgid "Removing: %s from content."
 msgstr "%s wordt uit de content verwijderd."
 
-#: includes/campaign_fetch_functions.php:945
+#: includes/campaign_fetch_functions.php:949
 msgid "Link with image URI not found in src."
 msgstr "Link met de afbeeldings-URI niet in src gevonden."
 
-#: includes/campaign_fetch_functions.php:948
+#: includes/campaign_fetch_functions.php:952
 msgid "Successfully removed with anchor link."
 msgstr "Met succes verwijderd, inclusief de link."
 
-#: includes/campaign_fetch_functions.php:954
+#: includes/campaign_fetch_functions.php:958
 msgid "Image URI not found in src."
 msgstr "Afbeeldings-URI niet in src gevonden."
 
-#: includes/campaign_fetch_functions.php:957
+#: includes/campaign_fetch_functions.php:961
 msgid "Successfully removed."
 msgstr "Met succes verwijderd."
 
-#: includes/campaign_fetch_functions.php:968
+#: includes/campaign_fetch_functions.php:972
 msgid "Setting up Featured Image From Url"
 msgstr "Featured Image From Url wordt ingesteld"
 
-#: includes/campaign_fetch_functions.php:971
+#: includes/campaign_fetch_functions.php:975
 msgid "Adding featured image post meta: "
 msgstr "Berichtmeta voor de uitgelichte afbeelding wordt toegevoegd: "
-
-#: includes/campaign_fetch_functions.php:98
-#: includes/campaign_fetch_functions.php:108
-msgid "Cleaning Links from content."
-msgstr "Links worden uit de content gehaald."
 
 #: includes/campaign_help.php:101
 msgid "Use [embed]"
@@ -2092,8 +2188,8 @@ msgid ""
 "The campaign runs on its own, at the times you set below. WP-cron fires "
 "within about 5 minutes of the hour; an external cron is exact."
 msgstr ""
-"De campagne draait vanzelf, op de tijden die je hieronder instelt. WP-cron "
-"gaat af met zo’n 5 minuten speling; een externe cron is exact."
+"De campagne wordt vanzelf uitgevoerd, op de tijden die je hieronder instelt. "
+"WP-cron gaat af met zo’n 5 minuten speling; een externe cron is exact."
 
 #: includes/campaign_help.php:121
 msgid "You can see some examples here:"
@@ -2126,8 +2222,8 @@ msgid ""
 "points at your copy. Off, the images stay on the source server."
 msgstr ""
 "Elke afbeelding in een %s-tag wordt in je uploadsmap opgeslagen en de "
-"content wijst naar jouw kopie. Uit blijven de afbeeldingen op de server van "
-"de bron staan."
+"content wijst naar je kopie. Uit blijven de afbeeldingen op de server van de "
+"bron staan."
 
 #: includes/campaign_help.php:140
 msgid ""
@@ -2144,7 +2240,7 @@ msgid ""
 "pointing at the source site."
 msgstr ""
 "Als een afbeelding niet gedownload kan worden, wordt haar %s-tag verwijderd "
-"in plaats van naar de bronsite te wijzen."
+"in plaats van naar de site van de bron te wijzen."
 
 #: includes/campaign_help.php:149 includes/settings/help.php:47
 msgid "Read the srcset attribute of the %s tag"
@@ -2205,8 +2301,8 @@ msgid ""
 "The image used as featured is stripped from the post content, so your theme "
 "does not show it twice."
 msgstr ""
-"De afbeelding die als uitgelicht wordt gebruikt, wordt uit de content "
-"gehaald, zodat je thema haar niet twee keer toont."
+"De afbeelding die als uitgelichte afbeelding wordt gebruikt, wordt uit de "
+"content van het bericht gehaald, zodat je thema haar niet twee keer toont."
 
 #: includes/campaign_help.php:173 includes/settings/help.php:74
 #: includes/settings/page.php:264
@@ -2238,7 +2334,7 @@ msgid ""
 "Saves the image exactly as it comes from the source, skipping WordPress. "
 "Faster, but it does not work on every server."
 msgstr ""
-"Bewaart de afbeelding precies zoals ze van de bron komt, zonder WordPress. "
+"Slaat de afbeelding precies op zoals ze van de bron komt, zonder WordPress. "
 "Sneller, maar het werkt niet op elke server."
 
 #: includes/campaign_help.php:185
@@ -2255,8 +2351,7 @@ msgid ""
 "points at your copy. Off, the files stay on the source server."
 msgstr ""
 "Elke audio in een %s-tag wordt in je uploadsmap opgeslagen en de content "
-"wijst naar jouw kopie. Uit blijven de bestanden op de server van de bron "
-"staan."
+"wijst naar je kopie. Uit blijven de bestanden op de server van de bron staan."
 
 #: includes/campaign_help.php:195
 msgid ""
@@ -2281,7 +2376,7 @@ msgid ""
 "pointing at the source site."
 msgstr ""
 "Als een audio niet gedownload kan worden, wordt zijn %s-tag verwijderd in "
-"plaats van naar de bronsite te wijzen."
+"plaats van naar de site van de bron te wijzen."
 
 #: includes/campaign_help.php:203 includes/settings/help.php:107
 msgid "Use custom upload for audios"
@@ -2292,7 +2387,7 @@ msgid ""
 "Saves the audio exactly as it comes from the source, skipping WordPress. "
 "Faster, but it does not work on every server."
 msgstr ""
-"Bewaart de audio precies zoals hij van de bron komt, zonder WordPress. "
+"Slaat de audio precies op zoals hij van de bron komt, zonder WordPress. "
 "Sneller, maar het werkt niet op elke server."
 
 #: includes/campaign_help.php:207
@@ -2305,7 +2400,7 @@ msgid ""
 "points at your copy. Video files are heavy: they fill your disk fast."
 msgstr ""
 "Elke video in een %s-tag wordt in je uploadsmap opgeslagen en de content "
-"wijst naar jouw kopie. Video’s zijn zwaar: ze vullen je schijf snel."
+"wijst naar je kopie. Video’s zijn zwaar: ze vullen je schijf snel."
 
 #: includes/campaign_help.php:217
 msgid ""
@@ -2321,7 +2416,7 @@ msgid ""
 "at the source site."
 msgstr ""
 "Als een video niet gedownload kan worden, wordt zijn %s-tag verwijderd in "
-"plaats van naar de bronsite te wijzen."
+"plaats van naar de site van de bron te wijzen."
 
 #: includes/campaign_help.php:225 includes/settings/help.php:136
 msgid "Use custom upload for videos"
@@ -2332,14 +2427,14 @@ msgid ""
 "Saves the video exactly as it comes from the source, skipping WordPress. "
 "Faster, but it does not work on every server."
 msgstr ""
-"Bewaart de video precies zoals hij van de bron komt, zonder WordPress. "
+"Slaat de video precies op zoals hij van de bron komt, zonder WordPress. "
 "Sneller, maar het werkt niet op elke server."
 
 #: includes/campaign_help.php:232
 msgid "Duplicate options for this campaign"
 msgstr "Duplicaatopties van deze campagne"
 
-#: includes/campaign_help.php:238 includes/settings/help.php:202
+#: includes/campaign_help.php:238 includes/settings/help.php:207
 msgid ""
 "Turns off both duplicate checks, so every item is published again on every "
 "run. Almost never what you want."
@@ -2347,11 +2442,11 @@ msgstr ""
 "Zet beide duplicaatcontroles uit, zodat elk item bij elke uitvoering opnieuw "
 "wordt gepubliceerd. Bijna nooit wat je wilt."
 
-#: includes/campaign_help.php:239 includes/settings/help.php:203
+#: includes/campaign_help.php:239 includes/settings/help.php:208
 msgid "The two checks"
 msgstr "De twee controles"
 
-#: includes/campaign_help.php:239 includes/settings/help.php:203
+#: includes/campaign_help.php:239 includes/settings/help.php:208
 msgid ""
 "the post title, and a hash of the last item address the campaign read. The "
 "hash is the reliable one; titles alone fail often."
@@ -2364,9 +2459,9 @@ msgid ""
 "How many items to take from each feed above. Between 3 and 5, running more "
 "often, loses fewer items than a big number run rarely. Use 0 for no limit."
 msgstr ""
-"Hoeveel items uit elke feed hierboven worden gehaald. 3 tot 5, maar vaker "
-"uitgevoerd, verliest minder items dan een groot aantal dat zelden draait. "
-"Gebruik 0 voor geen limiet."
+"Hoeveel items uit elke feed hierboven worden gehaald. 3 tot 5, vaker "
+"uitgevoerd, verliest minder items dan een groot aantal dat zelden wordt "
+"uitgevoerd. Gebruik 0 voor geen limiet."
 
 #: includes/campaign_help.php:240
 msgid ""
@@ -2374,10 +2469,10 @@ msgid ""
 "a title, use \"Allow duplicate titles\" and leave the hash check on."
 msgstr ""
 "Met beide uit komen dezelfde items eindeloos terug. Om items met dezelfde "
-"titel te publiceren gebruik je „Dubbele titels toestaan” en laat je de "
+"titel te publiceren gebruik je “Dubbele titels toestaan” en laat je de "
 "hashcontrole aan."
 
-#: includes/campaign_help.php:244 includes/settings/help.php:208
+#: includes/campaign_help.php:244 includes/settings/help.php:213
 msgid ""
 "The campaign skips each duplicate and keeps looking for new items, instead "
 "of stopping at the first one. Not recommended."
@@ -2385,11 +2480,11 @@ msgstr ""
 "De campagne slaat elk duplicaat over en blijft naar nieuwe items zoeken, in "
 "plaats van bij het eerste te stoppen. Niet aanbevolen."
 
-#: includes/campaign_help.php:245 includes/settings/help.php:209
+#: includes/campaign_help.php:245 includes/settings/help.php:214
 msgid "How it works"
 msgstr "Hoe het werkt"
 
-#: includes/campaign_help.php:245 includes/settings/help.php:209
+#: includes/campaign_help.php:245 includes/settings/help.php:214
 msgid ""
 "feed items come ordered newest first, so the campaign reads from the top and "
 "stops at the first item it already has: everything below it is older and "
@@ -2399,7 +2494,7 @@ msgstr ""
 "stopt bij het eerste item dat ze al heeft: alles daaronder is ouder en al "
 "gepubliceerd."
 
-#: includes/campaign_help.php:246 includes/settings/help.php:210
+#: includes/campaign_help.php:246 includes/settings/help.php:215
 msgid ""
 "The hash only covers the last item read, so on a feed where the title check "
 "works poorly this option can publish the same item twice."
@@ -2408,7 +2503,7 @@ msgstr ""
 "titelcontrole slecht werkt kan deze optie hetzelfde item twee keer "
 "publiceren."
 
-#: includes/campaign_help.php:250 includes/settings/help.php:219
+#: includes/campaign_help.php:250 includes/settings/help.php:224
 msgid ""
 "One more query per item. Turn it on only if you still get duplicates, which "
 "happens with feeds that do not follow the standard."
@@ -2476,7 +2571,7 @@ msgstr ""
 "campagne anders te vroeg stoppen en items missen."
 
 #: includes/campaign_help.php:311 includes/settings/help.php:147
-#: includes/module/actions.php:204
+#: includes/module/actions.php:213
 msgid "Words to Categories"
 msgstr "Woorden naar categorieën"
 
@@ -2496,12 +2591,12 @@ msgid ""
 "To file every post that mentions \"motor\" under the category \"Engines\", "
 "type motor in the Word field and pick Engines in the categories list."
 msgstr ""
-"Om elk bericht dat „motor” noemt in de categorie „Motoren” te zetten, typ je "
+"Om elk bericht dat “motor” noemt in de categorie “Motoren” te zetten, typ je "
 "motor in het veld Woord en kies je Motoren in de categorielijst."
 
 #: includes/campaign_help.php:315
 msgid "Regular Expressions"
-msgstr "Reguliere expressies"
+msgstr "Reguliere uitdrukkingen"
 
 #: includes/campaign_help.php:316
 msgid ""
@@ -2511,11 +2606,11 @@ msgid ""
 "it runs over the whole field. To match regardless of case, leave the 'Case "
 "sensitive' box below unchecked."
 msgstr ""
-"Reguliere expressies worden ondersteund, wat je een vak per woord scheelt: "
-"in plaats van een vak voor motor en een voor auto, allebei naar Motoren, "
-"gebruik je de |-operator — (motor|auto). Schrijf de expressie zonder "
-"scheidingstekens of vlaggen; ze geldt voor het hele veld. Wil je "
-"hoofdletterongevoelig zoeken, laat dan het vakje „Hoofdlettergevoelig” "
+"Reguliere uitdrukkingen worden ondersteund, wat je een vak per woord "
+"scheelt: in plaats van een vak voor motor en een voor auto, allebei naar "
+"Motoren, gebruik je de |-operator — (motor|auto). Schrijf de uitdrukking "
+"zonder scheidingstekens of vlaggen; ze wordt uitgevoerd op het hele vak. Wil "
+"je hoofdletterongevoelig zoeken, laat dan het vakje “Hoofdlettergevoelig” "
 "hieronder leeg."
 
 #: includes/campaign_help.php:32
@@ -2547,8 +2642,8 @@ msgid ""
 "To replace every \"ass\" with \"butt\", type ass in the origin field and "
 "butt in \"rewrite to\"."
 msgstr ""
-"Om elke „ass” door „butt” te vervangen, typ je ass in het bronveld en butt "
-"in „herschrijven naar”."
+"Om elke “ass” door “butt” te vervangen, typ je ass in het bronveld en butt "
+"in “herschrijven naar”."
 
 #: includes/campaign_help.php:325
 msgid "Title:"
@@ -2559,9 +2654,9 @@ msgid ""
 "With \"Title\" checked the replacement runs on the title only, and unchecked "
 "on the content only. Add the same rewrite twice to cover both."
 msgstr ""
-"Met „Titel” aangevinkt geldt de vervanging alleen voor de titel, uitgevinkt "
-"alleen voor de content. Voeg dezelfde herschrijving twee keer toe om beide "
-"te dekken."
+"Met “Titel” aangevinkt wordt de vervanging alleen op de titel uitgevoerd, "
+"uitgevinkt alleen op de content. Voeg dezelfde herschrijving twee keer toe "
+"om beide te dekken."
 
 #: includes/campaign_help.php:327
 msgid "Relinking:"
@@ -2573,11 +2668,11 @@ msgid ""
 "origin field and %s in the 'relink to' field."
 msgstr ""
 "Om elke vermelding van google in een link naar Google te veranderen, typ je "
-"google in het bronveld en %s in het veld „linken naar”."
+"google in het bronveld en %s in het veld “linken naar”."
 
 #: includes/campaign_help.php:329
 msgid "Regular expressions"
-msgstr "Reguliere expressies"
+msgstr "Reguliere uitdrukkingen"
 
 #: includes/campaign_help.php:33
 msgid ""
@@ -2591,8 +2686,9 @@ msgid ""
 "Regular expressions are supported, which saves you one box per word: to "
 "replace both ass and arse with butt, use the | operator -- (ass|arse)."
 msgstr ""
-"Reguliere expressies worden ondersteund, wat je een vak per woord scheelt: "
-"om ass en arse door butt te vervangen, gebruik je de |-operator — (ass|arse)."
+"Reguliere uitdrukkingen worden ondersteund, wat je een vak per woord "
+"scheelt: om ass en arse door butt te vervangen, gebruik je de |-operator — "
+"(ass|arse)."
 
 #: includes/campaign_help.php:335
 msgid "Categories"
@@ -2645,15 +2741,15 @@ msgstr "Tags die aan elk bericht van deze campagne worden toegevoegd."
 #: includes/campaign_help.php:355 includes/campaigns_list.php:1226
 #: includes/campaigns_list.php:1415
 msgid "Post format"
-msgstr "Berichtformaat"
+msgstr "Bericht format"
 
 #: includes/campaign_help.php:356
 msgid ""
 "The post format for this campaign, if your theme supports formats. Leave it "
 "on Standard if it does not."
 msgstr ""
-"De berichtindeling van deze campagne, als je thema indelingen ondersteunt. "
-"Laat anders Standaard staan."
+"Het bericht format van deze campagne, als je thema formats ondersteunt. Laat "
+"anders Standaard staan."
 
 #: includes/campaign_help.php:36
 msgid "it is not in the future."
@@ -2756,13 +2852,14 @@ msgid ""
 "the value you see is always the one that will be used. Administrators and "
 "editors are not affected."
 msgstr ""
-"De auteur en de berichtstatus worden opgeslagen zoals jouw eigen gebruiker "
-"ze mag instellen, want de campagne draait later volgens haar planning, "
-"wanneer niemand is ingelogd. Een gebruiker die niet mag publiceren slaat de "
-"campagne op met de status Wacht op review, en wie geen berichten aan anderen "
-"mag toekennen slaat ze op onder de eigen naam. Het campagnescherm meldt dat "
-"meteen na het opslaan, dus de waarde die je ziet is altijd de waarde die "
-"gebruikt wordt. Beheerders en redacteuren merken hier niets van."
+"De auteur en de berichtstatus worden opgeslagen zoals je eigen gebruiker ze "
+"mag instellen, want de campagne wordt later volgens haar planning "
+"uitgevoerd, wanneer niemand is ingelogd. Een gebruiker die niet mag "
+"publiceren slaat de campagne op met de status Wachtend op beoordeling, en "
+"wie geen berichten aan anderen mag toekennen slaat ze op onder de eigen "
+"naam. Het campagnescherm meldt dat meteen na het opslaan, dus de waarde die "
+"je ziet is altijd de waarde die gebruikt wordt. Beheerders en redacteuren "
+"merken hier niets van."
 
 #: includes/campaign_help.php:75
 msgid ""
@@ -2770,7 +2867,7 @@ msgid ""
 "WordPress builds the excerpt from the content."
 msgstr ""
 "Het beschrijvingsveld van het item wordt als samenvatting van het bericht "
-"opgeslagen. Anders bouwt WordPress de samenvatting uit de content."
+"opgeslagen. Anders bouwt WordPress de samenvatting op uit de content."
 
 #: includes/campaign_help.php:76
 msgid ""
@@ -2838,7 +2935,7 @@ msgid "Filtering out duplicates."
 msgstr "Duplicaten worden eruit gefilterd."
 
 #: includes/campaign_preview.php:251 includes/campaign_preview_item.php:178
-#: includes/campaign_preview_item.php:295
+#: includes/campaign_preview_item.php:274
 msgid "You do not have sufficient permissions to preview this campaign."
 msgstr ""
 "Je hebt niet genoeg rechten om een voorbeeld van deze campagne te "
@@ -2847,7 +2944,7 @@ msgstr ""
 "bekijken.Je hebt niet genoeg rechten om een voorbeeld van deze campagne te "
 "bekijken."
 
-#: includes/campaign_preview.php:362 includes/campaign_preview_item.php:353
+#: includes/campaign_preview.php:362 includes/campaign_preview_item.php:332
 msgid "WPeMatico Preview Feed"
 msgstr "WPeMatico feedvoorbeeld"
 
@@ -2868,21 +2965,21 @@ msgstr "Acties"
 msgid "Next fetch"
 msgstr "Volgende ophaalronde"
 
-#: includes/campaign_preview.php:450 includes/campaign_preview_item.php:378
+#: includes/campaign_preview.php:450 includes/campaign_preview_item.php:357
 msgid "Fetch Now"
 msgstr "Nu ophalen"
 
-#: includes/campaign_preview.php:46 includes/campaign_preview_item.php:276
+#: includes/campaign_preview.php:46 includes/campaign_preview_item.php:255
 msgid "This action comes with the Manual Fetching add-on."
 msgstr "Deze actie komt met de add-on Manual Fetching."
 
 #: includes/campaign_preview_item.php:187
-#: includes/campaign_preview_item.php:303
+#: includes/campaign_preview_item.php:282
 msgid "The item is invalid."
 msgstr "Het item is ongeldig."
 
 #: includes/campaign_preview_item.php:194
-#: includes/campaign_preview_item.php:310
+#: includes/campaign_preview_item.php:289
 msgid "The feed is invalid."
 msgstr "De feed is ongeldig."
 
@@ -2890,11 +2987,11 @@ msgstr "De feed is ongeldig."
 msgid "The item could not be previewed."
 msgstr "Het item kon niet bekeken worden."
 
-#: includes/campaign_preview_item.php:396
+#: includes/campaign_preview_item.php:375
 msgid "Loading post title..."
 msgstr "Berichttitel laden…"
 
-#: includes/campaign_preview_item.php:400
+#: includes/campaign_preview_item.php:379
 msgid "Loading post content..."
 msgstr "Berichtcontent laden…"
 
@@ -2990,7 +3087,7 @@ msgstr "%s campagnes geactiveerd"
 
 #: includes/campaigns_list.php:1611
 msgid "Nothing to change: every option was left on \"No change\"."
-msgstr "Niets te wijzigen: elke optie stond op „Niet wijzigen“."
+msgstr "Niets te wijzigen: elke optie stond op “Niet wijzigen”."
 
 #: includes/campaigns_list.php:1639 includes/campaigns_list.php:1641
 msgid "Campaigns updated successfully."
@@ -3052,7 +3149,7 @@ msgstr "Campagne geactiveerd"
 
 #: includes/campaigns_list.php:493
 msgid "Campaign deactivated"
-msgstr "Campagne uitgeschakeld"
+msgstr "Campagne gedeactiveerd"
 
 #: includes/campaigns_list.php:530
 msgid "Reset Campaign"
@@ -3219,7 +3316,7 @@ msgstr "Planning van de campagne starten/activeren"
 
 #: includes/campaigns_list.php:936 includes/campaigns_list.php:980
 msgid "Running since:"
-msgstr "Draait sinds:"
+msgstr "Wordt uitgevoerd sinds:"
 
 #: includes/campaigns_list.php:944
 msgid "Stop the run and release the campaign"
@@ -3245,13 +3342,13 @@ msgstr "Kolommen."
 #: includes/campaigns_list_help.php:25
 msgid "The name you gave it. Hover to show the quick actions underneath."
 msgstr ""
-"De naam die je hem gaf. Ga er met de muis overheen om de snelle acties "
-"eronder te zien."
+"De naam die je hem gaf. Hover erover om de snelle acties eronder te zien."
 
 #: includes/campaigns_list_help.php:27
 msgid "The post type and status every new entry is published with."
 msgstr ""
-"Het berichttype en de status waarmee elk nieuw item wordt gepubliceerd."
+"Het berichttype en de status waarmee elke nieuwe vermelding wordt "
+"gepubliceerd."
 
 #: includes/campaigns_list_help.php:29
 msgid ""
@@ -3306,7 +3403,7 @@ msgid ""
 "\" added."
 msgstr ""
 "Maakt een nieuwe campagne met alle velden van deze. Aan de titel wordt "
-"„(copy)” toegevoegd."
+"“(copy)” toegevoegd."
 
 #: includes/campaigns_list_help.php:57
 msgid "Clears the log, the last run data and the post count of the campaign."
@@ -3319,7 +3416,7 @@ msgid ""
 "Every campaign saves a hash of the last feed item it fetched, to avoid "
 "duplicates. This deletes it, so those items can be fetched again."
 msgstr ""
-"Elke campagne bewaart een hash van het laatst opgehaalde feed-item om "
+"Elke campagne slaat een hash op van het laatst opgehaalde feed-item om "
 "duplicaten te vermijden. Dit wist hem, zodat die items opnieuw opgehaald "
 "kunnen worden."
 
@@ -3369,7 +3466,7 @@ msgstr ""
 
 #: includes/campaigns_list_help.php:97
 msgid "\"Send to Trash\" removes all the selected campaigns in one go."
-msgstr "„Naar prullenbak” haalt alle geselecteerde campagnes in één keer weg."
+msgstr "“Naar prullenbak” verwijdert alle geselecteerde campagnes in één keer."
 
 #: includes/campaigns_list_help.php:99
 msgid "Select the campaigns, choose the action and click Apply."
@@ -3406,7 +3503,7 @@ msgstr "Planning"
 
 #: includes/class-tour-helper.php:119
 msgid "How often the campaign runs on its own."
-msgstr "Hoe vaak de campagne vanzelf draait."
+msgstr "Hoe vaak de campagne vanzelf wordt uitgevoerd."
 
 #: includes/class-tour-helper.php:125
 msgid "The Wizard"
@@ -3427,7 +3524,7 @@ msgid ""
 "extension adds its own tab below them."
 msgstr ""
 "Algemeen, Geavanceerd en Back-end tools bevatten de instellingen van "
-"WPeMatico. Elke extensie voegt daaronder een eigen tabblad toe."
+"WPeMatico. Elke extensie voegt daaronder een eigen tab toe."
 
 #: includes/class-tour-helper.php:141
 msgid "Boxes"
@@ -3436,8 +3533,7 @@ msgstr "Vakken"
 #: includes/class-tour-helper.php:142
 msgid "Collapse a box from its header or drag it to sort the screen your way."
 msgstr ""
-"Klap een vak in via de kop of sleep het om het scherm naar jouw zin te "
-"ordenen."
+"Klap een vak in via de kop of sleep het om het scherm naar je zin te ordenen."
 
 #: includes/class-tour-helper.php:148
 msgid "Save"
@@ -3452,8 +3548,8 @@ msgid ""
 "Every option has a (?) with a short explanation, and the Help tab has the "
 "whole story."
 msgstr ""
-"Elke optie heeft een (?) met een korte uitleg, en het tabblad Hulp heeft het "
-"hele verhaal."
+"Elke optie heeft een (?) met een korte uitleg, en de tab Hulp heeft het hele "
+"verhaal."
 
 #: includes/class-tour-helper.php:161
 msgid "Extra features"
@@ -3477,7 +3573,7 @@ msgstr "Feedcontroles, logs, XML-uploads en ander gedrag voor alle campagnes."
 
 #: includes/class-tour-helper.php:177
 msgid "Your admin screens"
-msgstr "Jouw beheerschermen"
+msgstr "Je beheerschermen"
 
 #: includes/class-tour-helper.php:178
 msgid ""
@@ -3573,8 +3669,8 @@ msgid ""
 "Turns its schedule on, so it runs on its own. It shows red while the "
 "schedule is on."
 msgstr ""
-"Zet de planning aan, zodat de campagne vanzelf draait. Het pictogram is rood "
-"zolang de planning aan staat."
+"Zet de planning aan, zodat de campagne vanzelf wordt uitgevoerd. Het icoon "
+"is rood zolang de planning aan staat."
 
 #: includes/class-tour-helper.php:246
 msgid "Turns the schedule off, or stops a run in progress."
@@ -3603,7 +3699,7 @@ msgstr "Meer nodig?"
 #: includes/class-tour-helper.php:40
 msgid ""
 "The Help tab at the top of every WPeMatico screen explains it in detail."
-msgstr "Het tabblad Hulp bovenaan elk WPeMatico-scherm legt het in detail uit."
+msgstr "De tab Hulp bovenaan elk WPeMatico-scherm legt het in detail uit."
 
 #: includes/class-tour-helper.php:49 includes/lib/welcome.php:64
 msgid "Welcome to WPeMatico"
@@ -3736,7 +3832,7 @@ msgstr "Vandaag"
 
 #: includes/dashboard-widgets.php:621
 msgid "No campaign has run yet."
-msgstr "Er heeft nog geen campagne gedraaid."
+msgstr "Er is nog geen campagne uitgevoerd."
 
 #: includes/dashboard-widgets.php:622
 msgid "Create a campaign and WPeMatico will start bringing posts in."
@@ -3748,7 +3844,7 @@ msgstr "Je eerste campagne toevoegen"
 
 #: includes/dashboard-widgets.php:649 includes/dashboard-widgets.php:692
 msgid "running %s"
-msgstr "draait %s"
+msgstr "wordt uitgevoerd %s"
 
 #: includes/dashboard-widgets.php:658 includes/dashboard-widgets.php:718
 msgid "timed out %s"
@@ -3760,7 +3856,7 @@ msgstr "Er staat niets gepland."
 
 #: includes/dashboard-widgets.php:677
 msgid "Campaigns run on a schedule once you switch them on."
-msgstr "Campagnes draaien volgens planning zodra je ze aanzet."
+msgstr "Campagnes worden volgens planning uitgevoerd zodra je ze activeert."
 
 #: includes/dashboard-widgets.php:679
 msgid "Go to campaigns"
@@ -3974,7 +4070,7 @@ msgstr "PHP Max Input Vars:"
 
 #: includes/debug_page.php:1746
 msgid "How many variables your server accepts in a single request."
-msgstr "Hoeveel variabelen je server in één verzoek accepteert."
+msgstr "Hoeveel variabelen je server in één aanvraag accepteert."
 
 #: includes/debug_page.php:1760
 msgid "%1$s - Recommended Value: %2$s."
@@ -4004,7 +4100,8 @@ msgstr ""
 
 #: includes/debug_page.php:1798
 msgid "To give a campaign 5 minutes to run without timeouts, "
-msgstr "Om een campagne 5 minuten te geven zonder time-outs, "
+msgstr ""
+"Om een campagne 5 minuten te geven om zonder time-outs te worden uitgevoerd, "
 
 #: includes/debug_page.php:1802
 msgid "seconds of max execution time is required."
@@ -4034,7 +4131,7 @@ msgstr "PHP-geheugenlimiet:"
 #: includes/debug_page.php:1836
 msgid "The maximum amount of memory (RAM) that your PHP allows in this server."
 msgstr ""
-"De maximale hoeveelheid geheugen (RAM) die PHP op deze server toestaat."
+"De maximale hoeveelheid geheugen (RAM) die je PHP op deze server toestaat."
 
 #. translators: %1$s current PHP Memory limit value. %2$s URL.
 #: includes/debug_page.php:1846
@@ -4074,8 +4171,8 @@ msgid ""
 "Lets a script change a PHP setting while it runs; the previous value comes "
 "back when it ends. "
 msgstr ""
-"Laat een script een PHP-instelling wijzigen zolang het draait; daarna komt "
-"de oude waarde terug. "
+"Laat een script een PHP-instelling wijzigen zolang het wordt uitgevoerd; "
+"daarna komt de oude waarde terug. "
 
 #: includes/debug_page.php:1922
 msgid "We recommend enabling ini_set() on your server. "
@@ -4147,7 +4244,7 @@ msgid ""
 "post."
 msgstr ""
 "Full Content haalt elke opgehaalde pagina door Tidy. Sommige builds van de "
-"bibliotheek negeren de instelling „niet afbreken“ en breken de tekst na elk "
+"bibliotheek negeren de instelling “niet afbreken” en breken de tekst na elk "
 "woord af, wat zichtbaar wordt als een regeleinde tussen alle woorden van het "
 "geïmporteerde bericht."
 
@@ -4162,7 +4259,7 @@ msgid ""
 "the text after every word. Posts imported with the Full Content addon will "
 "show a line break between all words. Ask your host to update libtidy."
 msgstr ""
-"Kapotte regelafbreking (libtidy %s). Deze build negeert „wrap: 0“ en breekt "
+"Kapotte regelafbreking (libtidy %s). Deze build negeert “wrap: 0” en breekt "
 "de tekst na elk woord af. Berichten die met de add-on Full Content zijn "
 "geïmporteerd, tonen dan een regeleinde tussen alle woorden. Vraag je host "
 "libtidy te updaten."
@@ -4176,8 +4273,8 @@ msgid ""
 "WPeMatico uses this library to resize images and speed up your site's "
 "loading time"
 msgstr ""
-"WPeMatico gebruikt deze bibliotheek om afbeeldingen te verkleinen en je site "
-"sneller te laten laden"
+"WPeMatico gebruikt deze bibliotheek om het formaat van afbeeldingen aan te "
+"passen en je site sneller te laten laden"
 
 #: includes/debug_page.php:2104
 msgid "XML (php.net/xml):"
@@ -4286,7 +4383,7 @@ msgstr "Home-URL:"
 
 #: includes/debug_page.php:2335
 msgid "The URL of your site's homepage."
-msgstr "De URL van de startpagina van je site."
+msgstr "De URL van de homepage van je site."
 
 #: includes/debug_page.php:2343
 msgid "Site URL:"
@@ -4310,15 +4407,15 @@ msgstr "WP Multisite:"
 
 #: includes/debug_page.php:2365
 msgid "Whether or not you have WordPress Multisite enabled."
-msgstr "Of WordPress Multisite aanstaat of niet."
+msgstr "Of je WordPress Multisite hebt ingeschakeld of niet."
 
 #: includes/debug_page.php:2371
 msgid ""
 "WPeMatico was not fully tested in Multisite. Test it and give us your "
 "comments on the "
 msgstr ""
-"WPeMatico is niet volledig getest in Multisite. Probeer het en geef ons je "
-"commentaar op de "
+"WPeMatico is niet volledig getest in Multisite. Test het en geef ons je "
+"reacties op de "
 
 #: includes/debug_page.php:2371
 msgid "forums"
@@ -4369,7 +4466,7 @@ msgstr "Voorpagina toont:"
 
 #: includes/debug_page.php:2481
 msgid "WordPress option Show On Front."
-msgstr "WordPress-optie „Voorpagina toont”."
+msgstr "WordPress-optie “Voorpagina toont”."
 
 #: includes/debug_page.php:2505
 msgid "WP Remote Get:"
@@ -4458,7 +4555,7 @@ msgid ""
 "common value is \"direct\"."
 msgstr ""
 "De bestandssysteemmethode gebruikt WordPress voor zijn eigen automatische "
-"updates. De gebruikelijkste waarde is „direct“."
+"updates. De gebruikelijkste waarde is “direct”."
 
 #: includes/debug_page.php:2599
 msgid "WP Debug Mode:"
@@ -4486,7 +4583,7 @@ msgstr "WP-debugweergave:"
 
 #: includes/debug_page.php:264
 msgid "Format"
-msgstr "Formaat"
+msgstr "Format"
 
 #: includes/debug_page.php:2641
 msgid ""
@@ -4627,7 +4724,7 @@ msgstr "Feed ophalen"
 #: includes/debug_page.php:3712 includes/wpematico_functions.php:2987
 #: includes/wpematico_functions.php:3012 includes/wpematico_functions.php:3208
 #: includes/wpematico_functions.php:3387 includes/xml-importer.php:361
-#: includes/settings/page.php:1265 includes/module/manager.php:265
+#: includes/settings/page.php:1277 includes/module/manager.php:265
 msgid "Permission denied"
 msgstr "Toegang geweigerd"
 
@@ -4652,7 +4749,7 @@ msgid ""
 "The request could not be completed. Check the browser console and your "
 "server error log."
 msgstr ""
-"Het verzoek kon niet worden voltooid. Controleer de browserconsole en het "
+"De aanvraag kon niet worden afgerond. Controleer de browserconsole en het "
 "foutenlog van je server."
 
 #: includes/debug_page.php:414
@@ -4661,15 +4758,15 @@ msgstr "Gekopieerd naar het klembord."
 
 #: includes/debug_page.php:607 includes/tools_page.php:702
 #: includes/xml-importer.php:370 includes/settings/page.php:124
-#: includes/settings/page.php:1119
+#: includes/settings/page.php:1131
 msgid "Invalid request."
-msgstr "Ongeldig verzoek."
+msgstr "Ongeldige aanvraag."
 
 #: includes/debug_page.php:607 includes/tools_page.php:702
 #: includes/wpematico_functions.php:3378 includes/xml-importer.php:370
-#: includes/settings/page.php:124 includes/settings/page.php:1119
+#: includes/settings/page.php:124 includes/settings/page.php:1131
 msgid "Invalid request"
-msgstr "Ongeldig verzoek"
+msgstr "Ongeldige aanvraag"
 
 #: includes/debug_page.php:631
 msgid "Use this file to get support on "
@@ -4715,7 +4812,7 @@ msgstr "De controle kon niet worden voltooid."
 
 #: includes/debug_page.php:76
 msgid "You do not have sufficient permissions to use this tool."
-msgstr "Je hebt niet genoeg rechten om dit gereedschap te gebruiken."
+msgstr "Je hebt niet genoeg rechten om deze tool te gebruiken."
 
 #: includes/debug_page.php:82
 msgid "Enter a valid feed URL starting with http:// or https://"
@@ -4764,7 +4861,7 @@ msgid ""
 "on every run."
 msgstr ""
 "Het adres precies zoals de campagne het opslaat, en dat is wat bij elke "
-"ronde wordt opgevraagd."
+"uitvoering wordt aangevraagd."
 
 #: includes/feed_list_help.php:39
 msgid ""
@@ -4820,17 +4917,17 @@ msgid ""
 "per-feed one. \"Never\" means it has not run since it was created or since "
 "its log was cleared."
 msgstr ""
-"Wanneer de campagne voor het laatst een ronde heeft afgerond — opnieuw een "
-"waarde van de hele campagne, niet per feed. „Nooit“ betekent dat ze sinds "
-"haar aanmaak of sinds het wissen van haar log niet heeft gedraaid."
+"Wanneer de campagne voor het laatst is uitgevoerd — opnieuw een waarde van "
+"de hele campagne, niet per feed. “Nooit” betekent dat ze niet meer is "
+"uitgevoerd sinds haar aanmaak of sinds haar log is gewist."
 
 #: includes/feed_list_help.php:53
 msgid ""
 "A campaign that is active but has not run in a long time usually means cron "
 "is not firing. The Tools &rsaquo; System tab checks that."
 msgstr ""
-"Een campagne die actief is maar lang niet heeft gedraaid, betekent meestal "
-"dat cron niet afgaat. Het tabblad Tools &rsaquo; Systeem controleert dat."
+"Een campagne die actief is maar lang niet is uitgevoerd, betekent meestal "
+"dat cron niet afgaat. De tab Tools &rsaquo; Systeem controleert dat."
 
 #: includes/feed_list_help.php:56
 msgid "Actions."
@@ -4838,22 +4935,22 @@ msgstr "Acties."
 
 #: includes/feed_list_help.php:57
 msgid "Edit campaign opens the campaign that holds this feed."
-msgstr "„Campagne bewerken“ opent de campagne waar deze feed bij hoort."
+msgstr "“Campagne bewerken” opent de campagne waar deze feed bij hoort."
 
 #: includes/feed_list_help.php:58
 msgid ""
 "Inspect in Feed Viewer requests the URL and shows the raw answer, which is "
 "the fastest way to tell a broken feed from a broken campaign."
 msgstr ""
-"„Bekijken in Feedviewer“ vraagt de URL op en toont het ruwe antwoord: de "
+"“Bekijken in Feedviewer” vraagt de URL op en toont het ruwe antwoord: de "
 "snelste manier om een kapotte feed van een kapotte campagne te onderscheiden."
 
 #: includes/feed_list_help.php:59
 msgid ""
 "Open URL loads the address in a new browser tab, as your browser sees it."
 msgstr ""
-"„URL openen“ laadt het adres in een nieuw browsertabblad, zoals je browser "
-"het ziet."
+"“URL openen” laadt het adres in een nieuwe browsertab, zoals je browser het "
+"ziet."
 
 #: includes/feed_list_help.php:62
 msgid "Searching and filtering."
@@ -4885,7 +4982,7 @@ msgid ""
 "filter, and \"Clear search\" undoes the global one."
 msgstr ""
 "Er wordt gezocht in de feed-URL en de campagnenaam. Esc wist het directe "
-"filter en „Zoekopdracht wissen“ maakt de globale zoekopdracht ongedaan."
+"filter en “Zoekopdracht wissen” maakt de globale zoekopdracht ongedaan."
 
 #: includes/feed_list_help.php:68
 msgid "Sorting and page size."
@@ -4980,8 +5077,8 @@ msgid ""
 "The result is a coloured message with the summary and the headers, and the "
 "complete unmodified answer in the box below."
 msgstr ""
-"Het resultaat is een gekleurde melding met de samenvatting en de headers, en "
-"daaronder het volledige, ongewijzigde antwoord."
+"Het resultaat is een gekleurd bericht met de samenvatting en de headers, en "
+"in het vak daaronder het volledige, ongewijzigde antwoord."
 
 #: includes/feed_viewer_help.php:49
 msgid "Green result: the feed was parsed."
@@ -4993,9 +5090,9 @@ msgid ""
 "and how many items it carries, and the box shows the XML as the source sent "
 "it."
 msgstr ""
-"De URL is een geldige RSS- of Atom-feed. De samenvatting noemt het formaat, "
+"De URL is een geldige RSS- of Atom-feed. De samenvatting noemt het format, "
 "de titel en het aantal items, en het vak toont de XML zoals de bron hem "
-"verstuurde."
+"heeft verzonden."
 
 #: includes/feed_viewer_help.php:51
 msgid ""
@@ -5011,7 +5108,7 @@ msgid ""
 "a feed, and the site advertised one: that is the address to use, because a "
 "site may stop advertising it at any time."
 msgstr ""
-"De regel „Feed gevonden via autodiscovery“ betekent dat je een pagina hebt "
+"De regel “Feed gevonden via autodiscovery” betekent dat je een pagina hebt "
 "geplakt en geen feed, en dat de site er een aankondigde: gebruik dat adres, "
 "want een site kan er elk moment mee ophouden."
 
@@ -5020,8 +5117,8 @@ msgid ""
 "This is the answer before any campaign filter runs, so anything missing here "
 "will also be missing in the campaign."
 msgstr ""
-"Dit is het antwoord vóór welk campagnefilter dan ook, dus wat hier "
-"ontbreekt, ontbreekt ook in de campagne."
+"Dit is het antwoord voordat een campagnefilter wordt uitgevoerd, dus wat "
+"hier ontbreekt, ontbreekt ook in de campagne."
 
 #: includes/feed_viewer_help.php:56
 msgid "Yellow result: it answers, but it is not a feed."
@@ -5034,8 +5131,8 @@ msgid ""
 "printed first."
 msgstr ""
 "De parser heeft de content geweigerd, dus is de URL nog eens als gewone "
-"pagina opgevraagd om te laten zien wat er werkelijk staat. De reden van de "
-"parser staat bovenaan."
+"pagina opgevraagd om je te laten zien wat er werkelijk staat. De reden van "
+"de parser staat bovenaan."
 
 #: includes/feed_viewer_help.php:58
 msgid ""
@@ -5044,8 +5141,8 @@ msgid ""
 "request, and 404 that the address no longer exists."
 msgstr ""
 "HTTP-code 200 met HTML in het vak betekent dat je het adres van een pagina "
-"hebt geplakt in plaats van de feed. 401 of 403 betekent dat de bron het "
-"verzoek weigert, en 404 dat het adres niet meer bestaat."
+"hebt geplakt in plaats van de feed. 401 of 403 betekent dat de bron de "
+"aanvraag weigert, en 404 dat het adres niet meer bestaat."
 
 #: includes/feed_viewer_help.php:59
 msgid ""
@@ -5053,7 +5150,7 @@ msgid ""
 "page; that content in the box is the source blocking automated readers, not "
 "a plugin failure."
 msgstr ""
-"Veel sites antwoorden met 200 en een „schakel JavaScript in“- of "
+"Veel sites antwoorden met 200 en een “schakel JavaScript in”- of "
 "antibotpagina; die content in het vak is de bron die automatische lezers "
 "blokkeert, geen fout van de plugin."
 
@@ -5067,7 +5164,7 @@ msgid ""
 "of content. It is a problem between your server and the source, not a "
 "problem with the feed."
 msgstr ""
-"Het verzoek kreeg nooit antwoord, dus toont het vak de netwerkfout in plaats "
+"De aanvraag kreeg nooit antwoord, dus toont het vak de netwerkfout in plaats "
 "van content. Het probleem zit tussen je server en de bron, niet in de feed."
 
 #: includes/feed_viewer_help.php:64
@@ -5078,7 +5175,7 @@ msgid ""
 msgstr ""
 "Typische oorzaken zijn een naam die niet te herleiden is, een verlopen of "
 "ongeldig SSL-certificaat, een firewall bij je hosting die uitgaande "
-"verzoeken blokkeert, of een bron die te traag antwoordt."
+"aanvragen blokkeert, of een bron die te traag antwoordt."
 
 #: includes/feed_viewer_help.php:65
 msgid ""
@@ -5086,8 +5183,8 @@ msgid ""
 "tests on the Tools &rsaquo; System tab before blaming the sources."
 msgstr ""
 "Mislukken meerdere ongerelateerde feeds op dezelfde manier, controleer dan "
-"eerst de tests voor uitgaande verzoeken op het tabblad Tools &rsaquo; "
-"Systeem voordat je de bronnen de schuld geeft."
+"eerst de tests voor uitgaande aanvragen op de tab Tools &rsaquo; Systeem "
+"voordat je de bronnen de schuld geeft."
 
 #: includes/feed_viewer_help.php:68
 msgid "Response headers."
@@ -5100,8 +5197,8 @@ msgid ""
 "tell you how fresh the content is."
 msgstr ""
 "Wat de bron over haar eigen antwoord zegt. De interessante zijn content-type "
-"(een feed hoort xml te zijn, geen html), last-modified en etag, die aangeven "
-"hoe vers de content is."
+"(een feed hoort xml te zijn, geen html), last-modified en etag, die je laten "
+"zien hoe vers de content is."
 
 #: includes/feed_viewer_help.php:70
 msgid ""
@@ -5367,10 +5464,10 @@ msgid_plural ""
 "WPeMatico does not update automatically, so the %d add-ons that do will stay "
 "on their current version until you update WPeMatico."
 msgstr[0] ""
-"WPeMatico werkt zichzelf niet automatisch bij, dus de %d add-on die dat wel "
+"WPeMatico updatet zichzelf niet automatisch, dus de %d add-on die dat wel "
 "doet blijft op de huidige versie totdat je WPeMatico updatet."
 msgstr[1] ""
-"WPeMatico werkt zichzelf niet automatisch bij, dus de %d add-ons die dat wel "
+"WPeMatico updatet zichzelf niet automatisch, dus de %d add-ons die dat wel "
 "doen blijven op hun huidige versie totdat je WPeMatico updatet."
 
 #: includes/lib/welcome.php:151
@@ -5499,8 +5596,8 @@ msgid ""
 msgstr ""
 "Hij laat zien wat hij gaat aanmaken voordat hij iets aanraakt, en importeert "
 "elke feed met zijn planning, berichttype, status, auteur en categorieën. De "
-"campagnes komen gedeactiveerd binnen, dus er wordt niets gepubliceerd tot "
-"jij beslist."
+"campagnes komen gedeactiveerd binnen, dus er wordt niets gepubliceerd tot je "
+"beslist."
 
 #: includes/lib/welcome.php:303
 msgid "Switch on the Plugin Importers card in the Dashboard to get started."
@@ -5549,8 +5646,8 @@ msgid ""
 "Four numbers, a 7-day chart, and a tab that only appears when something "
 "needs you."
 msgstr ""
-"Vier getallen, een grafiek over 7 dagen, en een tabblad dat alleen "
-"verschijnt als er iets je aandacht vraagt."
+"Vier getallen, een grafiek over 7 dagen, en een tab die alleen verschijnt "
+"als er iets je aandacht vraagt."
 
 #: includes/lib/welcome.php:329
 msgid ""
@@ -5592,8 +5689,8 @@ msgid ""
 "It reports format, title, item count and HTTP code, finds the feed when you "
 "paste a page, and gives you the real reason a request failed."
 msgstr ""
-"Hij meldt formaat, titel, aantal items en HTTP-code, vindt de feed wanneer "
-"je een pagina plakt, en geeft je de echte reden waarom een verzoek mislukte."
+"Hij meldt format, titel, aantal items en HTTP-code, vindt de feed wanneer je "
+"een pagina plakt, en geeft je de echte reden waarom een aanvraag mislukte."
 
 #: includes/lib/welcome.php:365
 msgid "System Status opens instantly"
@@ -5632,8 +5729,8 @@ msgid ""
 "It asks the fetch engine the same question a run does, so it works with "
 "every campaign type — Vimeo and the types an add-on registers included."
 msgstr ""
-"Het stelt de ophaalmotor dezelfde vraag als een echte ronde, dus het werkt "
-"met elk campagnetype — Vimeo en de types van een add-on inbegrepen."
+"Het stelt de ophaalmotor dezelfde vraag als een echte uitvoering, dus het "
+"werkt met elk campagnetype — Vimeo en de types van een add-on inbegrepen."
 
 #: includes/lib/welcome.php:390
 msgid "Updates that never pull the rug"
@@ -5644,9 +5741,9 @@ msgid ""
 "An add-on that falls behind keeps running and updating; only the features "
 "that need the new core wait, and a notice says which version puts it right."
 msgstr ""
-"Een add-on die achterloopt blijft werken en updaten; alleen de functies die "
-"de nieuwe kern nodig hebben wachten, en een melding zegt welke versie het "
-"oplost."
+"Een add-on die achterloopt wordt gewoon uitgevoerd en blijft updaten; alleen "
+"de functies die de nieuwe kern nodig hebben wachten, en een melding zegt "
+"welke versie het oplost."
 
 #: includes/lib/welcome.php:398
 msgid "The complete changelog"
@@ -5741,8 +5838,8 @@ msgid ""
 "Your 5-star rating helps other people find the plugin, and your comment "
 "helps us make it better."
 msgstr ""
-"Je 5 sterren helpen anderen de plugin te vinden, en je opmerking helpt ons "
-"hem beter te maken."
+"Je waardering van 5 sterren helpt anderen de plugin te vinden, en je reactie "
+"helpt ons hem beter te maken."
 
 #: includes/lib/welcome.php:481 includes/lib/welcome.php:696
 msgid "Support ticket system for free"
@@ -5795,11 +5892,11 @@ msgstr ""
 
 #: includes/lib/welcome.php:589
 msgid "1. Add the campaign and its feed"
-msgstr "1. Maak de campagne en haar feed aan"
+msgstr "1. Voeg de campagne en haar feed toe"
 
 #: includes/lib/welcome.php:591
 msgid "WPeMatico → Campaigns → Add New Campaign."
-msgstr "WPeMatico → Campagnes → Nieuwe campagne."
+msgstr "WPeMatico → Campagnes → Nieuwe campagne toevoegen."
 
 #: includes/lib/welcome.php:592
 msgid ""
@@ -5846,15 +5943,15 @@ msgid ""
 "Published if you want to review first — and the schedule that decides how "
 "often the campaign runs."
 msgstr ""
-"Bij Opties voor deze campagne stel je in hoeveel items er per ronde worden "
-"opgehaald, wie de auteur van de nieuwe berichten is en wat er met hun "
+"Bij Opties voor deze campagne stel je in hoeveel items er per uitvoering "
+"worden opgehaald, wie de auteur van de nieuwe berichten is en wat er met hun "
 "content gebeurt. In het vak Publiceren ernaast staan de status en het "
 "berichttype — Concept in plaats van Gepubliceerd als je eerst wilt nakijken "
-"— en de planning die bepaalt hoe vaak de campagne draait."
+"— en de planning die bepaalt hoe vaak de campagne wordt uitgevoerd."
 
 #: includes/lib/welcome.php:617
 msgid "3. Preview it, run it, and you are done"
-msgstr "3. Bekijk een voorbeeld, laat hem draaien, en klaar"
+msgstr "3. Bekijk een voorbeeld, voer hem uit, en je bent klaar"
 
 #: includes/lib/welcome.php:619
 msgid "The Campaign Control Panel, beside the Publish button."
@@ -5869,8 +5966,9 @@ msgid ""
 msgstr ""
 "Voorbeeld toont de items die de campagne zou ophalen zonder iets te "
 "publiceren. Nu uitvoeren doet het één keer, en het paneel vertelt daarna "
-"wanneer ze draaide, hoe lang het duurde en hoeveel berichten ze ophaalde. "
-"Vanaf dan draait de campagne vanzelf, volgens de planning die je koos."
+"wanneer ze is uitgevoerd, hoe lang het duurde en hoeveel berichten ze "
+"ophaalde. Vanaf dan wordt de campagne vanzelf uitgevoerd, volgens de "
+"planning die je koos."
 
 #: includes/lib/welcome.php:624
 msgid "The Campaign Control Panel"
@@ -5878,7 +5976,7 @@ msgstr "Het bedieningspaneel van de campagne"
 
 #: includes/lib/welcome.php:632
 msgid "Once it is running"
-msgstr "Zodra ze draait"
+msgstr "Zodra ze wordt uitgevoerd"
 
 #: includes/lib/welcome.php:641
 msgid "Keep an eye on it"
@@ -5890,9 +5988,9 @@ msgid ""
 "campaign, and you can run or pause any of them from its row. The WPeMatico "
 "Summary widget puts the same on your WordPress dashboard."
 msgstr ""
-"De campagnelijst toont van elke campagne de staat, de laatste ronde en het "
-"aantal berichten, en je kunt elke campagne vanuit haar regel starten of "
-"pauzeren. Het widget WPeMatico-overzicht zet hetzelfde op je WordPress-"
+"De campagnelijst toont van elke campagne de staat, de laatste uitvoering en "
+"het aantal berichten, en je kunt elke campagne vanuit haar regel uitvoeren "
+"of pauzeren. Het widget WPeMatico-overzicht zet hetzelfde op je WordPress-"
 "dashboard."
 
 #: includes/lib/welcome.php:643
@@ -5942,7 +6040,7 @@ msgid ""
 "read."
 msgstr ""
 "Plak een willekeurig adres in de Feedviewer en hij zegt je of het een feed "
-"is, welk formaat hij heeft en hoeveel items hij bevat — of de echte reden "
+"is, welk format hij heeft en hoeveel items hij bevat — of de echte reden "
 "waarom hij niet gelezen kan worden."
 
 #: includes/lib/welcome.php:676
@@ -5956,8 +6054,8 @@ msgid ""
 "documentation for that screen."
 msgstr ""
 "De (?)-tekens naast elke optie leggen uit wat ze doet, en stellen vaak een "
-"instelling voor. Het tabblad Hulp rechtsboven op elk WPeMatico-scherm opent "
-"de documentatie voor dat scherm."
+"instelling voor. De tab Hulp rechtsboven op elk WPeMatico-scherm opent de "
+"documentatie voor dat scherm."
 
 #: includes/lib/welcome.php:683
 msgid "Coming from another RSS plugin?"
@@ -5969,7 +6067,7 @@ msgid ""
 "WPeMatico campaigns, deactivated until you decide to start them."
 msgstr ""
 "De Migratietoolkit maakt de feeds van Feedzy of WP RSS Aggregator opnieuw "
-"aan als WPeMatico-campagnes, gedeactiveerd tot jij besluit ze te starten."
+"aan als WPeMatico-campagnes, gedeactiveerd tot je besluit ze te starten."
 
 #: includes/lib/welcome.php:691
 msgid "Need more help?"
@@ -6141,7 +6239,7 @@ msgid ""
 "This will migrate all campaigns from the selected plugin to WPeMatico. "
 "Continue?"
 msgstr ""
-"Hiermee worden alle campagnes van de gekozen plugin naar WPeMatico "
+"Hiermee worden alle campagnes van de geselecteerde plugin naar WPeMatico "
 "gemigreerd. Doorgaan?"
 
 #: includes/migration/class-migration-manager.php:192
@@ -6173,8 +6271,8 @@ msgid ""
 "These pages still embed WP RSS Aggregator. Replace each one with its "
 "WPeMatico shortcode."
 msgstr ""
-"Deze pagina's gebruiken nog WP RSS Aggregator. Vervang elke pagina door haar "
-"WPeMatico-shortcode."
+"Deze pagina's sluiten WP RSS Aggregator nog in. Vervang elke pagina door "
+"haar WPeMatico-shortcode."
 
 #: includes/migration/class-migration-manager.php:199
 msgid "Page / Post"
@@ -6328,11 +6426,11 @@ msgid_plural ""
 "WPeMatico found feeds from these plugins on this site: %s. Enable the Plugin "
 "Importers module to bring them over as campaigns."
 msgstr[0] ""
-"WPeMatico heeft op deze site feeds van %s gevonden. Zet de module Plugin-"
-"importeurs aan om ze als campagnes over te nemen."
+"WPeMatico heeft op deze site feeds van %s gevonden. Activeer de module "
+"Plugin-importeerfuncties om ze als campagnes over te nemen."
 msgstr[1] ""
-"WPeMatico heeft op deze site feeds van deze plugins gevonden: %s. Zet de "
-"module Plugin-importeurs aan om ze als campagnes over te nemen."
+"WPeMatico heeft op deze site feeds van deze plugins gevonden: %s. Activeer "
+"de module Plugin-importeerfuncties om ze als campagnes over te nemen."
 
 #: includes/migration/detect.php:260
 msgid "WPeMatico Migration Toolkit"
@@ -6354,7 +6452,7 @@ msgid ""
 "Each detected plugin gets its own tab; nothing is changed in the source "
 "plugin, so you can import, compare the result, and only then retire it."
 msgstr ""
-"Elke gevonden plugin krijgt zijn eigen tabblad; in de bronplugin wordt niets "
+"Elke gevonden plugin krijgt zijn eigen tab; in de bronplugin wordt niets "
 "gewijzigd, dus je kunt importeren, het resultaat vergelijken en hem pas "
 "daarna uitzetten."
 
@@ -6399,7 +6497,7 @@ msgid ""
 msgstr ""
 "Een feedgroep is slechts een benoemde lijst met feeds. Wat een campagne "
 "wordt, is de importtaak die hem gebruikt (in Feedzy een regel op het scherm "
-"Import Posts)."
+"Import Posts, waar berichten worden geïmporteerd)."
 
 #: includes/migration/help.php:44
 msgid ""
@@ -6456,8 +6554,8 @@ msgid ""
 "later and run the import again to fill in the missing fields."
 msgstr ""
 "Je kunt nu ook zonder die add-on importeren — er gaan geen brongegevens "
-"verloren. Installeer hem later en voer de import opnieuw uit om de "
-"ontbrekende velden te vullen."
+"verloren. Installeer hem later: als de import opnieuw wordt uitgevoerd, "
+"worden de ontbrekende velden gevuld."
 
 #: includes/migration/help.php:55
 msgid "Adopt the posts already published by this plugin."
@@ -6469,7 +6567,7 @@ msgid ""
 "posts to their new campaign so WPeMatico knows the items were already "
 "imported and does not publish them a second time."
 msgstr ""
-"De bronplugin publiceert waarschijnlijk al een tijdje. Dit koppelt die "
+"De bronplugin publiceert waarschijnlijk al een tijdje. Dit linkt die "
 "berichten aan hun nieuwe campagne, zodat WPeMatico weet dat de items al "
 "geïmporteerd zijn en ze geen tweede keer publiceert."
 
@@ -6578,7 +6676,7 @@ msgid ""
 "want the migrated campaigns to skip the posts the previous plugin already "
 "published."
 msgstr ""
-"„Aangepaste pluginvelden uitschakelen“ staat aan in de WPeMatico-"
+"“Aangepaste pluginvelden uitschakelen” staat aan in de WPeMatico-"
 "instellingen, dus geïmporteerde berichten kunnen niet tegen de bronpermalink "
 "gecontroleerd worden. Zet het uit als je wilt dat de gemigreerde campagnes "
 "de berichten overslaan die de vorige plugin al publiceerde."
@@ -6641,8 +6739,8 @@ msgid ""
 "<strong>Keyword Filtering was enabled in the WPeMatico Professional "
 "settings</strong> so the imported filters run."
 msgstr ""
-"<strong>Keywordfiltering is in de instellingen van WPeMatico Professional "
-"aangezet</strong> zodat de geïmporteerde filters werken."
+"<strong>Keywordfiltering is geactiveerd in de instellingen van WPeMatico "
+"Professional</strong> zodat de geïmporteerde filters worden uitgevoerd."
 
 #: includes/migration/importers/class-migrator-feedzy-rss-feeds.php:351
 #: includes/migration/importers/class-migrator-wp-rss-aggregator.php:269
@@ -6724,7 +6822,7 @@ msgid ""
 "Aggregator and let it migrate your feeds to v5 first, then run this "
 "migration."
 msgstr ""
-"De feeds van WP RSS Aggregator staan nog in het oude formaat (v4). Open WP "
+"De feeds van WP RSS Aggregator staan nog in het oude format (v4). Open WP "
 "RSS Aggregator, laat het je feeds eerst naar v5 migreren en voer daarna deze "
 "migratie uit."
 
@@ -6758,13 +6856,13 @@ msgid_plural ""
 "<strong>create posts</strong>, so they were imported deactivated. Review "
 "them and activate their scheduling when you are ready."
 msgstr[0] ""
-"%d feed die in WP RSS Aggregator liep werd een campagne die "
-"<strong>berichten aanmaakt</strong> en is daarom uitgeschakeld geïmporteerd. "
-"Bekijk hem en zet de planning aan wanneer je zover bent."
+"%d feed die in WP RSS Aggregator werd uitgevoerd is een campagne geworden "
+"die <strong>berichten aanmaakt</strong>, dus is hij gedeactiveerd "
+"geïmporteerd. Beoordeel hem en activeer de planning wanneer je zover bent."
 msgstr[1] ""
-"%d feeds die in WP RSS Aggregator liepen werden campagnes die "
-"<strong>berichten aanmaken</strong> en zijn daarom uitgeschakeld "
-"geïmporteerd. Bekijk ze en zet hun planning aan wanneer je zover bent."
+"%d feeds die in WP RSS Aggregator werden uitgevoerd zijn campagnes geworden "
+"die <strong>berichten aanmaken</strong>, dus zijn ze gedeactiveerd "
+"geïmporteerd. Beoordeel ze en activeer hun planning wanneer je zover bent."
 
 #: includes/migration/importers/class-migrator-wp-rss-aggregator.php:262
 msgid ""
@@ -6852,7 +6950,7 @@ msgstr "Importeren uit %s"
 #: includes/migration/views/migration-box.php:216
 #: includes/migration/views/migration-box.php:256
 msgid "This import will create %1$s and update %2$s."
-msgstr "Deze import maakt %1$s aan en werkt %2$s bij."
+msgstr "Deze import maakt %1$s aan en zal %2$s updaten."
 
 #: includes/migration/views/migration-box.php:217
 #: includes/migration/views/migration-box.php:233
@@ -6873,8 +6971,8 @@ msgstr[1] "%d al gemigreerd"
 #: includes/migration/views/migration-box.php:262
 msgid "This import will update %d already migrated campaign."
 msgid_plural "This import will update %d already migrated campaigns."
-msgstr[0] "Deze import werkt %d al gemigreerde campagne bij."
-msgstr[1] "Deze import werkt %d al gemigreerde campagnes bij."
+msgstr[0] "Deze import zal %d al gemigreerde campagne updaten."
+msgstr[1] "Deze import zal %d al gemigreerde campagnes updaten."
 
 #: includes/migration/views/migration-box.php:227
 msgid "%d of them is an RSS Feed Reader campaign."
@@ -7029,7 +7127,7 @@ msgid ""
 "feed was running."
 msgstr ""
 "Campagnes die berichten aanmaken, worden gedeactiveerd geïmporteerd, of de "
-"feed nu liep of niet."
+"feed nu werd uitgevoerd of niet."
 
 #: includes/migration/views/migration-box.php:68
 msgid "the source plugin"
@@ -7083,7 +7181,7 @@ msgid "Publish the curated content as forum topics, or as replies to them."
 msgstr ""
 "Publiceer de verzamelde content als forumonderwerpen, of als reacties daarop."
 
-#: includes/module/actions.php:162 includes/module/actions.php:201
+#: includes/module/actions.php:162 includes/module/actions.php:210
 msgid "Enable it in a campaign by choosing its Campaign Type."
 msgstr "Zet het in een campagne aan door haar campagnetype te kiezen."
 
@@ -7130,33 +7228,48 @@ msgstr ""
 "profiel, kanaal of de groep en de campagne vindt de feed zelf."
 
 #: includes/module/actions.php:195
+msgid "Publish the news of a Google News search, topic or publication."
+msgstr ""
+"Publiceer het nieuws van een Google News-zoekopdracht, -onderwerp of "
+"-publicatie."
+
+#: includes/module/actions.php:199
+msgid ""
+"Adds Google News to the Campaign Type list. Paste the address of the search, "
+"topic or publication and the campaign finds its feed on its own."
+msgstr ""
+"Voegt Google News toe aan de lijst met campagnetypen. Plak het adres van de "
+"zoekopdracht, het onderwerp of de publicatie en de campagne vindt de feed "
+"zelf."
+
+#: includes/module/actions.php:204
 msgid "Import videos from YouTube channels."
 msgstr "Importeer video's uit YouTube-kanalen."
 
-#: includes/module/actions.php:205
+#: includes/module/actions.php:214
 msgid ""
 "Assign categories automatically from the words found in the curated content."
 msgstr ""
 "Ken categorieën automatisch toe op basis van de woorden in de verzamelde "
 "content."
 
-#: includes/module/actions.php:209
+#: includes/module/actions.php:218
 msgid "Set the words and the category each one maps to in the Settings page."
 msgstr ""
 "Stel de woorden en de bijbehorende categorie in op de instellingenpagina."
 
-#: includes/module/actions.php:213
+#: includes/module/actions.php:222
 msgid "Canonical URLs"
 msgstr "Canonieke URL's"
 
-#: includes/module/actions.php:214
+#: includes/module/actions.php:223
 msgid ""
 "Credit the original article with a canonical URL on every imported post."
 msgstr ""
 "Vermeld het oorspronkelijke artikel met een canonieke URL op elk "
 "geïmporteerd bericht."
 
-#: includes/module/actions.php:218
+#: includes/module/actions.php:227
 msgid ""
 "Tells search engines which is the original article, so the copy is not "
 "judged as duplicate content."
@@ -7164,16 +7277,16 @@ msgstr ""
 "Vertelt zoekmachines welk artikel het origineel is, zodat de kopie niet als "
 "dubbele content geldt."
 
-#: includes/module/actions.php:222
+#: includes/module/actions.php:231
 msgid "Download Images"
 msgstr "Afbeeldingen downloaden"
 
-#: includes/module/actions.php:223
+#: includes/module/actions.php:232
 msgid "Download the images of each item into the WordPress Media Library."
 msgstr ""
 "Download de afbeeldingen van elk item naar de WordPress-mediabibliotheek."
 
-#: includes/module/actions.php:228
+#: includes/module/actions.php:237
 msgid ""
 "Turn it on here; the size, quality and naming options are in the Settings "
 "page."
@@ -7181,11 +7294,11 @@ msgstr ""
 "Zet het hier aan; de opties voor formaat, kwaliteit en naamgeving staan op "
 "de instellingenpagina."
 
-#: includes/module/actions.php:231
+#: includes/module/actions.php:240
 msgid "Featured Images"
 msgstr "Uitgelichte afbeeldingen"
 
-#: includes/module/actions.php:232
+#: includes/module/actions.php:241
 msgid ""
 "Give every imported post a featured image, taken from the first image of the "
 "item."
@@ -7193,7 +7306,7 @@ msgstr ""
 "Geef elk geïmporteerd bericht een uitgelichte afbeelding, genomen uit de "
 "eerste afbeelding van het item."
 
-#: includes/module/actions.php:237
+#: includes/module/actions.php:246
 msgid ""
 "Each campaign can override it, and the Featured Image from URL module "
 "decides whether the image is downloaded or linked."
@@ -7201,24 +7314,25 @@ msgstr ""
 "Elke campagne kan dit overschrijven, en de module Uitgelichte afbeelding "
 "vanaf URL bepaalt of de afbeelding gedownload of gelinkt wordt."
 
-#: includes/module/actions.php:241
+#: includes/module/actions.php:250
 msgid "Email Notifications"
 msgstr "E-mailmeldingen"
 
-#: includes/module/actions.php:242
+#: includes/module/actions.php:251
 msgid "Get an email report every time a campaign finishes a run."
 msgstr ""
-"Ontvang een rapport per e-mail telkens als een campagne een ronde afrondt."
+"Ontvang een rapport per e-mail telkens als een campagne klaar is met "
+"uitvoeren."
 
-#: includes/module/actions.php:248
+#: includes/module/actions.php:257
 msgid "Deactivate in each campaign by clearing the email field."
 msgstr "Zet het per campagne uit door het e-mailveld leeg te maken."
 
-#: includes/module/actions.php:251
+#: includes/module/actions.php:260
 msgid "Random Galleries"
 msgstr "Willekeurige galerijen"
 
-#: includes/module/actions.php:252
+#: includes/module/actions.php:261
 msgid ""
 "Group images by topic and give each post a featured image picked at random "
 "from its gallery."
@@ -7226,37 +7340,37 @@ msgstr ""
 "Groepeer afbeeldingen op onderwerp en geef elk bericht een willekeurig "
 "gekozen uitgelichte afbeelding uit zijn galerij."
 
-#: includes/module/actions.php:258 includes/module/actions.php:269
-#: includes/module/actions.php:652 includes/module/actions.php:664
-#: includes/module/actions.php:687
+#: includes/module/actions.php:267 includes/module/actions.php:278
+#: includes/module/actions.php:661 includes/module/actions.php:673
+#: includes/module/actions.php:696
 msgid "Available in the Professional addon."
 msgstr "Beschikbaar in de add-on Professional."
 
-#: includes/module/actions.php:261
+#: includes/module/actions.php:270
 msgid "Random Rewrites"
 msgstr "Willekeurige herschrijvingen"
 
-#: includes/module/actions.php:262
+#: includes/module/actions.php:271
 msgid "Rewrite custom words randomly as synonyms."
 msgstr "Herschrijf bepaalde woorden willekeurig met synoniemen."
 
-#: includes/module/actions.php:266
+#: includes/module/actions.php:275
 msgid ""
 "You must complete the words separated by comma and per line in the textarea."
 msgstr ""
 "Je moet de woorden per regel en gescheiden door komma's in het tekstvak "
 "invullen."
 
-#: includes/module/actions.php:310
+#: includes/module/actions.php:319
 msgid "Turning this off deactivates the %s plugin."
 msgstr "Dit uitzetten deactiveert de plugin %s."
 
-#: includes/module/actions.php:312
+#: includes/module/actions.php:321
 msgid "The plugin is installed but not running. Turning this on activates %s."
 msgstr ""
 "De plugin is geïnstalleerd maar draait niet. Dit aanzetten activeert %s."
 
-#: includes/module/actions.php:318
+#: includes/module/actions.php:327
 msgid ""
 "%s is not installed yet. Install it from here, free, and this switch turns "
 "it on."
@@ -7264,71 +7378,71 @@ msgstr ""
 "%s is nog niet geïnstalleerd. Installeer het hier, gratis, en deze "
 "schakelaar zet het aan."
 
-#: includes/module/actions.php:322
+#: includes/module/actions.php:331
 msgid "Needs the %s addon. Get it at etruel.com and this switch enables it."
 msgstr ""
 "Vereist de add-on %s. Haal hem op etruel.com en deze schakelaar zet hem aan."
 
-#: includes/module/actions.php:361 includes/module/actions.php:435
+#: includes/module/actions.php:370 includes/module/actions.php:444
 msgid ""
 "%s is installed but not active. Turn it on and this module becomes available."
 msgstr ""
 "%s is geïnstalleerd maar niet actief. Zet het aan en deze module komt "
 "beschikbaar."
 
-#: includes/module/actions.php:420
+#: includes/module/actions.php:429
 msgid "It also needs the free %s plugin."
 msgstr "Het heeft ook de gratis plugin %s nodig."
 
-#: includes/module/actions.php:440
+#: includes/module/actions.php:449
 msgid "Needs the free %s plugin, which is not installed yet."
 msgstr "Vereist de gratis plugin %s, die nog niet geïnstalleerd is."
 
-#: includes/module/actions.php:441 includes/module/dashboard.php:62
+#: includes/module/actions.php:450 includes/module/dashboard.php:62
 #: includes/module/manager.php:194
 msgid "Install"
 msgstr "Installeren"
 
-#: includes/module/actions.php:516
+#: includes/module/actions.php:525
 msgid "Delete Duplicates"
 msgstr "Duplicaten verwijderen"
 
-#: includes/module/actions.php:517
+#: includes/module/actions.php:526
 msgid "Automatically search and delete duplicated posts by name or content."
 msgstr "Zoek en verwijder automatisch dubbele berichten op naam of content."
 
-#: includes/module/actions.php:522
+#: includes/module/actions.php:531
 msgid "Installs the free WP Delete Post Copies plugin from WordPress.org."
 msgstr "Installeert de gratis plugin WP Delete Post Copies van WordPress.org."
 
-#: includes/module/actions.php:526
+#: includes/module/actions.php:535
 msgid "WPeMatico Polylang"
 msgstr "WPeMatico Polylang"
 
-#: includes/module/actions.php:527
+#: includes/module/actions.php:536
 msgid ""
 "Assigns the imported posts to the right language on sites running Polylang."
 msgstr ""
 "Wijst de geïmporteerde berichten aan de juiste taal toe op sites met "
 "Polylang."
 
-#: includes/module/actions.php:532
+#: includes/module/actions.php:541
 msgid "Installs the free WPeMatico Polylang plugin from WordPress.org."
 msgstr "Installeert de gratis plugin WPeMatico Polylang van WordPress.org."
 
-#: includes/module/actions.php:539
+#: includes/module/actions.php:548
 msgid ""
 "The addon files each imported post under a language, and languages only "
 "exist while Polylang runs."
 msgstr ""
 "De add-on zet elk geïmporteerd bericht onder een taal, en talen bestaan "
-"alleen zolang Polylang draait."
+"alleen zolang Polylang wordt uitgevoerd."
 
-#: includes/module/actions.php:544
+#: includes/module/actions.php:553
 msgid "RSS Items Aggregator"
 msgstr "RSS-itemsverzamelaar"
 
-#: includes/module/actions.php:545
+#: includes/module/actions.php:554
 msgid ""
 "Also known as RSS Feed Reader: shows the items of several feeds inside one "
 "post or page."
@@ -7336,23 +7450,23 @@ msgstr ""
 "Ook bekend als RSS Feed Reader: toont de items van meerdere feeds binnen één "
 "bericht of pagina."
 
-#: includes/module/actions.php:550
+#: includes/module/actions.php:559
 msgid "Installs the free WPeMatico RSS Feed Reader plugin from WordPress.org."
 msgstr ""
 "Installeert de gratis plugin WPeMatico RSS Feed Reader van WordPress.org."
 
-#: includes/module/actions.php:551
+#: includes/module/actions.php:560
 msgid "Requires WPeMatico RSS Feed Reader"
 msgstr "Vereist WPeMatico RSS Feed Reader"
 
-#: includes/module/actions.php:561
+#: includes/module/actions.php:570
 msgid ""
 "Use the image at its original URL as featured image, without downloading it."
 msgstr ""
 "De afbeelding op haar oorspronkelijke URL als uitgelichte afbeelding "
 "gebruiken, zonder haar te downloaden."
 
-#: includes/module/actions.php:568
+#: includes/module/actions.php:577
 msgid ""
 "Featured Images is off, so nothing picks the image to link — unless an addon "
 "such as Professional or Full Content supplies one."
@@ -7360,7 +7474,7 @@ msgstr ""
 "Uitgelichte afbeeldingen staat uit, dus niets kiest de te linken afbeelding "
 "— tenzij een add-on zoals Professional of Full Content er een levert."
 
-#: includes/module/actions.php:569
+#: includes/module/actions.php:578
 msgid ""
 "The image is linked from its original site instead of being downloaded, so "
 "it takes up no space in your Media Library."
@@ -7368,7 +7482,7 @@ msgstr ""
 "De afbeelding wordt vanaf haar oorspronkelijke site gelinkt in plaats van "
 "gedownload, dus ze neemt geen ruimte in je mediabibliotheek in."
 
-#: includes/module/actions.php:578
+#: includes/module/actions.php:587
 msgid ""
 "WPeMatico stores the image URL on each post; that plugin is what turns it "
 "into the featured image WordPress shows."
@@ -7376,22 +7490,22 @@ msgstr ""
 "WPeMatico bewaart de afbeeldings-URL bij elk bericht; die plugin maakt er de "
 "uitgelichte afbeelding van die WordPress toont."
 
-#: includes/module/actions.php:589
+#: includes/module/actions.php:598
 msgid "Auto Delete"
 msgstr "Automatisch verwijderen"
 
-#: includes/module/actions.php:590
+#: includes/module/actions.php:599
 msgid ""
 "Delete the posts of the categories you choose once they reach a given age."
 msgstr ""
 "Verwijder de berichten van de categorieën die je kiest zodra ze een bepaalde "
 "leeftijd bereiken."
 
-#: includes/module/actions.php:596
+#: includes/module/actions.php:605
 msgid "Helpful if you want to remove stale or old items automatically."
 msgstr "Handig als je verouderde of oude items automatisch wilt opruimen."
 
-#: includes/module/actions.php:604
+#: includes/module/actions.php:613
 msgid ""
 "The addon extends that free plugin, the same one the Delete Duplicates card "
 "installs."
@@ -7399,11 +7513,11 @@ msgstr ""
 "De add-on bouwt voort op die gratis plugin, dezelfde die de kaart Duplicaten "
 "verwijderen installeert."
 
-#: includes/module/actions.php:609
+#: includes/module/actions.php:618
 msgid "Polyglot"
 msgstr "Polyglot"
 
-#: includes/module/actions.php:610
+#: includes/module/actions.php:619
 msgid ""
 "Translate the fetched content with any of several free and paid translation "
 "engines."
@@ -7411,100 +7525,100 @@ msgstr ""
 "Vertaal de opgehaalde content met een van de vele gratis en betaalde "
 "vertaalmachines."
 
-#: includes/module/actions.php:617
+#: includes/module/actions.php:626
 msgid "Requires WPeMatico Polyglot addon"
 msgstr "Vereist de add-on WPeMatico Polyglot"
 
-#: includes/module/actions.php:621
+#: includes/module/actions.php:630
 msgid "GPT Spinner AI"
 msgstr "GPT Spinner AI"
 
-#: includes/module/actions.php:622
+#: includes/module/actions.php:631
 msgid "Rewrite the fetched content automatically through an AI or spinner API."
 msgstr ""
 "Herschrijf de opgehaalde content automatisch via een AI- of spinner-API."
 
-#: includes/module/actions.php:629
+#: includes/module/actions.php:638
 msgid "Requires AI addon"
 msgstr "Vereist de AI-add-on"
 
-#: includes/module/actions.php:633
+#: includes/module/actions.php:642
 msgid "Full Contents"
 msgstr "Volledige content"
 
-#: includes/module/actions.php:634
+#: includes/module/actions.php:643
 msgid "Enable full content extraction from each source website."
 msgstr "Zet het ophalen van de volledige content van elke bronwebsite aan."
 
-#: includes/module/actions.php:641
+#: includes/module/actions.php:650
 msgid "Requires WPeMatico Full Content addon"
 msgstr "Vereist de add-on WPeMatico Full Content"
 
-#: includes/module/actions.php:645
+#: includes/module/actions.php:654
 msgid "Bulk Add Sources"
 msgstr "Bronnen in bulk toevoegen"
 
-#: includes/module/actions.php:646
+#: includes/module/actions.php:655
 msgid ""
 "Paste or upload a list of feeds to add many sources to a campaign at once."
 msgstr ""
 "Plak of upload een lijst met feeds om in één keer veel bronnen aan een "
 "campagne toe te voegen."
 
-#: includes/module/actions.php:653
+#: includes/module/actions.php:662
 msgid "A Professional feature, you can activate it here."
 msgstr "Een Professional-functie, die je hier kunt activeren."
 
-#: includes/module/actions.php:657
+#: includes/module/actions.php:666
 msgid "Keyword Filtering"
 msgstr "Keywordfiltering"
 
-#: includes/module/actions.php:658
+#: includes/module/actions.php:667
 msgid ""
 "Keep or skip each item by the keywords found in its title or its content."
 msgstr ""
 "Behoud of sla elk item over op basis van de keywords in de titel of de "
 "content."
 
-#: includes/module/actions.php:668
+#: includes/module/actions.php:677
 msgid "Facebook Source"
 msgstr "Facebook als bron"
 
-#: includes/module/actions.php:669
+#: includes/module/actions.php:678
 msgid "Import content from Facebook profiles and groups."
 msgstr "Importeer content van Facebook-profielen en -groepen."
 
-#: includes/module/actions.php:676
+#: includes/module/actions.php:685
 msgid "Requires Facebook Campaign addon"
 msgstr "Vereist de add-on Facebook Campaign"
 
-#: includes/module/actions.php:680
+#: includes/module/actions.php:689
 msgid "Export/Import Campaigns"
 msgstr "Campagnes exporteren/importeren"
 
-#: includes/module/actions.php:681
+#: includes/module/actions.php:690
 msgid "Migrate campaigns between sites."
 msgstr "Verplaats campagnes tussen sites."
 
-#: includes/module/actions.php:691
+#: includes/module/actions.php:700
 msgid "Feed Creator"
 msgstr "Feed Creator"
 
-#: includes/module/actions.php:692
+#: includes/module/actions.php:701
 msgid ""
 "Generate custom RSS feeds from external webpages to fetch with WPeMatico."
 msgstr ""
 "Maak eigen RSS-feeds van externe webpagina's om met WPeMatico op te halen."
 
-#: includes/module/actions.php:699
+#: includes/module/actions.php:708
 msgid "Requires \"Make Me Feed\" addon"
-msgstr "Vereist de add-on „Make Me Feed“"
+msgstr "Vereist de add-on “Make Me Feed”"
 
-#: includes/module/actions.php:703
+#: includes/module/actions.php:712
 msgid "Publish To Email"
 msgstr "Publiceren via e-mail"
 
-#: includes/module/actions.php:704
+#: includes/module/actions.php:713
 msgid ""
 "Mail each post of a campaign to an address that publishes it, instead of "
 "publishing it here or as well as here."
@@ -7512,15 +7626,15 @@ msgstr ""
 "Stuur elk bericht van een campagne naar een adres dat het publiceert, in "
 "plaats van hier — of naast hier."
 
-#: includes/module/actions.php:711
+#: includes/module/actions.php:720
 msgid "Requires Email Campaign addon"
 msgstr "Vereist de add-on Email Campaign"
 
-#: includes/module/actions.php:715
+#: includes/module/actions.php:724
 msgid "Better Excerpts"
 msgstr "Betere samenvattingen"
 
-#: includes/module/actions.php:716
+#: includes/module/actions.php:725
 msgid ""
 "Cut the excerpt at the length you set and back to the end of the last whole "
 "sentence, never mid-word."
@@ -7528,31 +7642,31 @@ msgstr ""
 "Kort de samenvatting af op de lengte die je instelt, tot het einde van de "
 "laatste hele zin, nooit midden in een woord."
 
-#: includes/module/actions.php:723
+#: includes/module/actions.php:732
 msgid "Requires Better Excerpts addon"
 msgstr "Vereist de add-on Better Excerpts"
 
-#: includes/module/actions.php:727
+#: includes/module/actions.php:736
 msgid "Synchronizer"
 msgstr "Synchronizer"
 
-#: includes/module/actions.php:728
+#: includes/module/actions.php:737
 msgid ""
 "Update the posts you already imported when the source article changes, "
 "instead of publishing a duplicate."
 msgstr ""
-"Werk de al geïmporteerde berichten bij wanneer het bronartikel verandert, in "
-"plaats van een duplicaat te publiceren."
+"Update de berichten die je al hebt geïmporteerd wanneer het bronartikel "
+"verandert, in plaats van een duplicaat te publiceren."
 
-#: includes/module/actions.php:735
+#: includes/module/actions.php:744
 msgid "Requires Synchronizer addon"
 msgstr "Vereist de add-on Synchronizer"
 
-#: includes/module/actions.php:739
+#: includes/module/actions.php:748
 msgid "Manual Fetching"
 msgstr "Handmatig ophalen"
 
-#: includes/module/actions.php:740
+#: includes/module/actions.php:749
 msgid ""
 "See the items each feed will bring, and publish the ones you choose one by "
 "one or in bulk."
@@ -7560,31 +7674,31 @@ msgstr ""
 "Bekijk welke items elke feed zal brengen en publiceer de gekozen items één "
 "voor één of in bulk."
 
-#: includes/module/actions.php:747
+#: includes/module/actions.php:756
 msgid "Requires Manual Fetching addon"
 msgstr "Vereist de add-on Manual Fetching"
 
-#: includes/module/actions.php:751
+#: includes/module/actions.php:760
 msgid "Exporter"
 msgstr "Exporter"
 
-#: includes/module/actions.php:752
+#: includes/module/actions.php:761
 msgid ""
 "Export your posts to a file on a schedule, in the format your template "
 "defines, by download, folder, FTP or SSH."
 msgstr ""
-"Exporteer je berichten volgens een planning naar een bestand, in het formaat "
+"Exporteer je berichten volgens een planning naar een bestand, in het format "
 "dat je template bepaalt, via download, map, FTP of SSH."
 
-#: includes/module/actions.php:759
+#: includes/module/actions.php:768
 msgid "Requires Exporter addon"
 msgstr "Vereist de add-on Exporter"
 
-#: includes/module/actions.php:763
+#: includes/module/actions.php:772
 msgid "Office"
 msgstr "Office"
 
-#: includes/module/actions.php:764
+#: includes/module/actions.php:773
 msgid ""
 "Publish posts from the .docx and PDF files in a folder of your server, with "
 "their text and their images."
@@ -7592,31 +7706,31 @@ msgstr ""
 "Publiceer berichten uit de .docx- en PDF-bestanden in een map op je server, "
 "met hun tekst en hun afbeeldingen."
 
-#: includes/module/actions.php:771
+#: includes/module/actions.php:780
 msgid "Requires Office Campaign addon"
 msgstr "Vereist de add-on Office Campaign"
 
-#: includes/module/actions.php:779
+#: includes/module/actions.php:788
 msgid "Rewrite Rules"
 msgstr "Herschrijfregels"
 
-#: includes/module/actions.php:780
+#: includes/module/actions.php:789
 msgid "Search and replace words or HTML in the fetched content, per campaign."
 msgstr ""
 "Zoek en vervang woorden of HTML in de opgehaalde content, per campagne."
 
-#: includes/module/actions.php:787
+#: includes/module/actions.php:796
 msgid "Customer Support"
 msgstr "Klantenondersteuning"
 
-#: includes/module/actions.php:788
+#: includes/module/actions.php:797
 msgid ""
 "Free setup assistance and troubleshooting, or step up to Premium Support."
 msgstr ""
 "Gratis hulp bij installatie en problemen, of stap over op Premium "
 "ondersteuning."
 
-#: includes/module/actions.php:796
+#: includes/module/actions.php:805
 msgid "Requires registration at etruel.com"
 msgstr "Vereist registratie op etruel.com"
 
@@ -7728,7 +7842,7 @@ msgstr "HAAL HET"
 
 #: includes/module/manager.php:227
 msgid "Toggle %s module"
-msgstr "Module %s omschakelen"
+msgstr "Toggle module %s"
 
 #: includes/module/manager.php:272
 msgid "Invalid module"
@@ -7800,7 +7914,7 @@ msgstr "Plugin met succes geïnstalleerd en geactiveerd."
 
 #: includes/module/manager.php:44
 msgid "Content Parsers"
-msgstr "Inhoudsparsers"
+msgstr "Contentparsers"
 
 #: includes/module/manager.php:442
 msgid "Plugin installed successfully. Activation skipped."
@@ -8038,7 +8152,7 @@ msgid ""
 "instead of pointing at the source site."
 msgstr ""
 "Als een audio niet gedownload kan worden, wordt zijn %s-tag uit de content "
-"verwijderd in plaats van naar de bronsite te wijzen."
+"verwijderd in plaats van naar de site van de bron te wijzen."
 
 #: includes/settings/help.php:104
 msgid "If the audio sits inside an %s tag, that link is removed as well."
@@ -8082,7 +8196,7 @@ msgid ""
 "instead of pointing at the source site."
 msgstr ""
 "Als een video niet gedownload kan worden, wordt zijn %s-tag uit de content "
-"verwijderd in plaats van naar de bronsite te wijzen."
+"verwijderd in plaats van naar de site van de bron te wijzen."
 
 #: includes/settings/help.php:133
 msgid "If the video sits inside an %s tag, that link is removed as well."
@@ -8131,11 +8245,35 @@ msgstr ""
 "Vimeo publiceert van elk de laatste 10 video's. Laat dit uit als je Vimeo "
 "niet gebruikt: het campagnetype wordt dan helemaal niet geladen."
 
-#: includes/settings/help.php:160 includes/settings/page.php:737
+#: includes/settings/help.php:160
+msgid "Google News campaign type"
+msgstr "Google News-campagnetype"
+
+#: includes/settings/help.php:161
+msgid ""
+"Adds Google News to the campaign type list, to publish the news of a search, "
+"a topic or a publication. Paste the address and the campaign finds its feed "
+"on its own."
+msgstr ""
+"Voegt Google News toe aan de lijst met campagnetypen, om het nieuws van een "
+"zoekopdracht, onderwerp of publicatie te publiceren. Plak het adres en de "
+"campagne vindt de feed zelf."
+
+#: includes/settings/help.php:162
+msgid ""
+"Each item brings the headline, the date and the name of the publication, and "
+"links to Google News. Leave this off if you do not use Google News: the "
+"campaign type is not loaded at all."
+msgstr ""
+"Elk item brengt de kop, de datum en de naam van de publicatie mee, en linkt "
+"naar Google News. Laat dit uit als je Google News niet gebruikt: het "
+"campagnetype wordt dan helemaal niet geladen."
+
+#: includes/settings/help.php:165 includes/settings/page.php:749
 msgid "Canonical URL to the source"
 msgstr "Canonieke URL naar de bron"
 
-#: includes/settings/help.php:161
+#: includes/settings/help.php:166
 msgid ""
 "Each imported post declares the original article as its canonical URL. It "
 "does not work on every server."
@@ -8143,7 +8281,7 @@ msgstr ""
 "Elk geïmporteerd bericht noemt het oorspronkelijke artikel als zijn "
 "canonieke URL. Het werkt niet op elke server."
 
-#: includes/settings/help.php:162
+#: includes/settings/help.php:167
 msgid ""
 "This tells search engines which copy of the article is the one to index, so "
 "your site is not penalised for duplicated content."
@@ -8151,11 +8289,11 @@ msgstr ""
 "Dit vertelt zoekmachines welke kopie van het artikel ze moeten indexeren, "
 "zodat je site niet wordt afgestraft voor dubbele content."
 
-#: includes/settings/help.php:167
+#: includes/settings/help.php:172
 msgid "Force the bundled SimplePie library"
 msgstr "De meegeleverde SimplePie-bibliotheek afdwingen"
 
-#: includes/settings/help.php:168
+#: includes/settings/help.php:173
 msgid ""
 "Ignores the SimplePie that ships with WordPress. You only need this if that "
 "version gives you trouble."
@@ -8163,11 +8301,11 @@ msgstr ""
 "Negeert de SimplePie die met WordPress meekomt. Je hebt dit alleen nodig als "
 "die versie problemen geeft."
 
-#: includes/settings/help.php:171 includes/settings/page.php:428
+#: includes/settings/help.php:176 includes/settings/page.php:428
 msgid "Set SimplePie \"stupidly fast\""
-msgstr "SimplePie op „stupidly fast” zetten"
+msgstr "SimplePie op “stupidly fast” zetten"
 
-#: includes/settings/help.php:172
+#: includes/settings/help.php:177
 msgid ""
 "SimplePie gives up most of its sanitizing in exchange for speed: the feed "
 "content arrives with no parsers and no filters."
@@ -8175,7 +8313,7 @@ msgstr ""
 "SimplePie geeft bijna al zijn opschoning op in ruil voor snelheid: de "
 "feedcontent komt binnen zonder parsers en zonder filters."
 
-#: includes/settings/help.php:173
+#: includes/settings/help.php:178
 msgid ""
 "Nothing is stripped from the content: all HTML, styles and scripts come "
 "through. Use it only with feeds you trust; otherwise set the allowed tags "
@@ -8185,11 +8323,11 @@ msgstr ""
 "door. Gebruik dit alleen bij feeds die je vertrouwt; stel anders hieronder "
 "de toegestane tags en attributen in."
 
-#: includes/settings/help.php:176 includes/settings/page.php:436
+#: includes/settings/help.php:181 includes/settings/page.php:436
 msgid "HTML tags SimplePie strips"
 msgstr "HTML-tags die SimplePie verwijdert"
 
-#: includes/settings/help.php:177
+#: includes/settings/help.php:182
 msgid ""
 "SimplePie removes these tags from the feed content. Take one out to let it "
 "through, for example iframe to keep embedded videos."
@@ -8197,11 +8335,11 @@ msgstr ""
 "SimplePie verwijdert deze tags uit de feedcontent. Haal er een uit de lijst "
 "om hem door te laten, bijvoorbeeld iframe voor ingesloten video’s."
 
-#: includes/settings/help.php:180 includes/settings/page.php:446
+#: includes/settings/help.php:185 includes/settings/page.php:446
 msgid "HTML attributes SimplePie strips"
 msgstr "HTML-attributen die SimplePie verwijdert"
 
-#: includes/settings/help.php:181
+#: includes/settings/help.php:186
 msgid ""
 "SimplePie removes these attributes from the tags in the content. Take one "
 "out to keep it, or add more to strip."
@@ -8209,11 +8347,11 @@ msgstr ""
 "SimplePie verwijdert ook deze attributen uit de tags in de content. Haal er "
 "een uit om hem te houden, of voeg er meer toe."
 
-#: includes/settings/help.php:186 includes/settings/page.php:470
+#: includes/settings/help.php:191 includes/settings/page.php:470
 msgid "Let campaigns skip the content filters"
-msgstr "Campagnes de inhoudsfilters laten overslaan"
+msgstr "Campagnes de contentfilters laten overslaan"
 
-#: includes/settings/help.php:187
+#: includes/settings/help.php:192
 msgid ""
 "Adds a switch to every campaign that stores the feed content exactly as it "
 "comes, scripts included. Use it only with sources you trust."
@@ -8222,7 +8360,7 @@ msgstr ""
 "hij binnenkomt, scripts inbegrepen. Gebruik dit alleen bij bronnen die je "
 "vertrouwt."
 
-#: includes/settings/help.php:188
+#: includes/settings/help.php:193
 msgid ""
 "WordPress inserts the post as usual and the content is then written straight "
 "to the database, past every filter."
@@ -8230,15 +8368,15 @@ msgstr ""
 "WordPress voegt het bericht gewoon in, waarna de content rechtstreeks naar "
 "de database wordt geschreven, langs elk filter."
 
-#: includes/settings/help.php:189
+#: includes/settings/help.php:194
 msgid "See How WordPress Processes Post Content: "
-msgstr "Zie „How WordPress Processes Post Content“: "
+msgstr "Zie “How WordPress Processes Post Content”: "
 
-#: includes/settings/help.php:192
+#: includes/settings/help.php:197
 msgid "Timeout for a running campaign"
 msgstr "Time-out voor een draaiende campagne"
 
-#: includes/settings/help.php:193
+#: includes/settings/help.php:198
 msgid ""
 "A campaign interrupted halfway stays marked as running until this many "
 "seconds have passed; then it runs again on its next schedule. Recommended: "
@@ -8248,36 +8386,37 @@ msgstr ""
 "gemarkeerd; daarna draait hij weer op zijn volgende planning. Aanbevolen: "
 "300."
 
-#: includes/settings/help.php:194
+#: includes/settings/help.php:199
 msgid "Set 0 to keep it blocked until you click \"Clear campaign\" yourself."
 msgstr ""
-"Zet 0 om hem geblokkeerd te houden tot je zelf op „Campagne vrijgeven” klikt."
+"Zet 0 om hem geblokkeerd te houden tot je zelf op “Campagne vrijgeven” klikt."
 
-#: includes/settings/help.php:197
+#: includes/settings/help.php:202
 msgid "Pause after every post"
 msgstr "Pauze na elk bericht"
 
-#: includes/settings/help.php:198
+#: includes/settings/help.php:203
 msgid ""
 "Waits this many seconds after inserting each post, to give the server a "
 "break on long runs. Leave 0 unless you have trouble."
 msgstr ""
-"Wacht zoveel seconden na het invoegen van elk bericht, om de server bij "
-"lange runs lucht te geven. Laat 0 staan tenzij je problemen hebt."
+"Wacht zoveel seconden na het invoegen van elk bericht, om de server rust te "
+"geven als de campagne lang wordt uitgevoerd. Laat 0 staan tenzij je "
+"problemen hebt."
 
-#: includes/settings/help.php:204
+#: includes/settings/help.php:209
 msgid ""
 "To publish items that share a title, use \"Allow duplicate titles\" instead "
 "and leave the hash check on."
 msgstr ""
-"Om items met dezelfde titel te publiceren gebruik je „Dubbele titels "
+"Om items met dezelfde titel te publiceren gebruik je “Dubbele titels "
 "toestaan” en laat je de hashcontrole aan."
 
-#: includes/settings/help.php:213 includes/settings/page.php:544
+#: includes/settings/help.php:218 includes/settings/page.php:544
 msgid "Do not save the plugin custom fields"
 msgstr "De aangepaste velden van de plugin niet opslaan"
 
-#: includes/settings/help.php:214
+#: includes/settings/help.php:219
 msgid ""
 "Saves database space and costs you the source permalink, the campaign each "
 "post came from and every bulk action based on it."
@@ -8285,7 +8424,7 @@ msgstr ""
 "Bespaart ruimte in de database en kost je de bronpermalink, de campagne waar "
 "elk bericht vandaan komt en elke bulkactie die daarop steunt."
 
-#: includes/settings/help.php:215
+#: includes/settings/help.php:220
 msgid ""
 "By default each published post carries three custom fields with the campaign "
 "and the source item. Turning this on does not delete the ones already saved."
@@ -8293,48 +8432,52 @@ msgstr ""
 "Standaard draagt elk gepubliceerd bericht drie aangepaste velden met de "
 "campagne en het bronitem. Dit aanzetten wist de al opgeslagen velden niet."
 
-#: includes/settings/help.php:224 includes/settings/page.php:573
+#: includes/settings/help.php:229 includes/settings/page.php:573
 msgid "Disable WPeMatico schedules"
 msgstr "WPeMatico-planningen uitschakelen"
 
-#: includes/settings/help.php:225
+#: includes/settings/help.php:230
 msgid ""
 "No campaign runs on its own any more. You run them by hand or from an "
 "external cron, which is the recommended setup."
 msgstr ""
-"Geen enkele campagne draait nog vanzelf. Je start ze met de hand of vanaf "
-"een externe cron, wat de aanbevolen opzet is."
+"Geen enkele campagne wordt nog vanzelf uitgevoerd. Je voert ze met de hand "
+"uit of vanaf een externe cron, wat de aanbevolen opzet is."
 
-#: includes/settings/help.php:228 includes/settings/page.php:607
+#: includes/settings/help.php:233 includes/settings/page.php:607
 msgid "Ask for a password on the external cron"
 msgstr "Om een wachtwoord vragen bij de externe cron"
 
-#: includes/settings/help.php:229
+#: includes/settings/help.php:234
 msgid ""
 "Only a request carrying the code runs your campaigns. Off by default for "
 "backward compatibility, and strongly recommended."
 msgstr ""
-"Alleen een verzoek met de code voert je campagnes uit. Standaard uit vanwege "
-"compatibiliteit, en sterk aanbevolen."
+"Alleen een aanvraag met de code voert je campagnes uit. Standaard uit "
+"vanwege compatibiliteit, en sterk aanbevolen."
 
-#: includes/settings/help.php:230
+#: includes/settings/help.php:235
 msgid "While this is off, the password below is ignored."
 msgstr "Zolang dit uit staat, wordt het wachtwoord hieronder genegeerd."
 
-#: includes/settings/help.php:233
+#: includes/settings/help.php:238
 msgid "External cron password"
 msgstr "Wachtwoord van de externe cron"
 
-#: includes/settings/help.php:234
+#: includes/settings/help.php:239
 msgid "Any text you like. It travels in the cron address as ?code=your_code."
 msgstr ""
 "Elke tekst die je wilt. Hij reist mee in het cronadres als ?code=jouw_code."
 
-#: includes/settings/help.php:237 includes/settings/page.php:627
+#: includes/settings/help.php:24
+msgid "Global settings for images"
+msgstr "Algemene instellingen voor afbeeldingen"
+
+#: includes/settings/help.php:242 includes/settings/page.php:627
 msgid "Disable all WP_Cron"
 msgstr "Alle WP_Cron uitschakelen"
 
-#: includes/settings/help.php:238
+#: includes/settings/help.php:243
 msgid ""
 "Stops every scheduled task on the site, WordPress own and other plugins "
 "included. Only do this if an external cron takes over."
@@ -8342,15 +8485,11 @@ msgstr ""
 "Stopt elke geplande taak op de site, die van WordPress en van andere plugins "
 "inbegrepen. Doe dit alleen als een externe cron het overneemt."
 
-#: includes/settings/help.php:24
-msgid "Global settings for images"
-msgstr "Algemene instellingen voor afbeeldingen"
-
-#: includes/settings/help.php:241 includes/settings/page.php:564
+#: includes/settings/help.php:246 includes/settings/page.php:564
 msgid "Use ALTERNATE_WP_CRON"
 msgstr "ALTERNATE_WP_CRON gebruiken"
 
-#: includes/settings/help.php:242
+#: includes/settings/help.php:247
 msgid ""
 "Some servers block the way WordPress triggers its schedules. This constant "
 "works around it on almost any server."
@@ -8358,73 +8497,74 @@ msgstr ""
 "Sommige servers blokkeren de manier waarop WordPress zijn planningen start. "
 "Deze constante omzeilt dat op bijna elke server."
 
-#: includes/settings/help.php:245 includes/settings/page.php:657
-msgid "Log file for the external cron"
-msgstr "Logbestand voor de externe cron"
-
-#: includes/settings/help.php:246
-msgid ""
-"Writes a \"campaign title.txt.log\" file in the uploads folder with the "
-"steps of each external cron run. Useful while you set the cron up."
-msgstr ""
-"Schrijft een bestand „campagnetitel.txt.log” in de uploadsmap met de stappen "
-"van elke externe cronuitvoering. Handig terwijl je de cron opzet."
-
 #: includes/settings/help.php:25 includes/settings/help.php:86
 #: includes/settings/help.php:115
 msgid "These apply to every campaign, and each campaign can override them."
 msgstr "Ze gelden voor elke campagne, en elke campagne kan ze overschrijven."
 
-#: includes/settings/help.php:251 includes/settings/page.php:896
+#: includes/settings/help.php:250 includes/settings/page.php:657
+msgid "Log file for the external cron"
+msgstr "Logbestand voor de externe cron"
+
+#: includes/settings/help.php:251
+msgid ""
+"Writes a \"campaign title.txt.log\" file in the uploads folder with the "
+"steps of each external cron run. Useful while you set the cron up."
+msgstr ""
+"Schrijft een bestand “campagnetitel.txt.log” in de uploadsmap met de stappen "
+"van elke keer dat de externe cron wordt uitgevoerd. Handig terwijl je de "
+"cron instelt."
+
+#: includes/settings/help.php:256 includes/settings/page.php:908
 msgid "Campaign column in the posts lists"
 msgstr "Campagnekolom in de berichtenlijsten"
 
-#: includes/settings/help.php:252
+#: includes/settings/help.php:257
 msgid "Adds a column showing which campaign published each post."
 msgstr ""
 "Voegt een kolom toe die laat zien welke campagne elk bericht publiceerde."
 
-#: includes/settings/help.php:255 includes/settings/page.php:903
+#: includes/settings/help.php:260 includes/settings/page.php:915
 msgid "Position of that column"
 msgstr "Positie van die kolom"
 
-#: includes/settings/help.php:256
+#: includes/settings/help.php:261
 msgid "Where the campaign column sits among the others."
 msgstr "Waar de campagnekolom tussen de andere staat."
 
-#: includes/settings/help.php:259 includes/settings/page.php:916
+#: includes/settings/help.php:264 includes/settings/page.php:928
 msgid "Hide the campaign box in the post editor"
 msgstr "Het campagnevak in de berichteditor verbergen"
 
-#: includes/settings/help.php:260
+#: includes/settings/help.php:265
 msgid "Removes the WPeMatico box that shows where an imported post came from."
 msgstr ""
 "Haalt het WPeMatico-vak weg dat laat zien waar een geïmporteerd bericht "
 "vandaan komt."
 
-#: includes/settings/help.php:263 includes/settings/page.php:925
+#: includes/settings/help.php:268 includes/settings/page.php:937
 msgid "Empty trash button on the lists"
-msgstr "Knop „Prullenbak legen” in de lijsten"
+msgstr "Knop “Prullenbak legen” in de lijsten"
 
-#: includes/settings/help.php:264
+#: includes/settings/help.php:269
 msgid "Adds a button to empty the trash on the post types you choose."
 msgstr ""
 "Voegt een knop toe om de prullenbak te legen bij de berichttypen die je "
 "kiest."
 
-#: includes/settings/help.php:267 includes/settings/page.php:966
+#: includes/settings/help.php:272 includes/settings/page.php:978
 msgid "Hide the WP dashboard widget"
 msgstr "De WP-dashboardwidget verbergen"
 
-#: includes/settings/help.php:268
+#: includes/settings/help.php:273
 msgid "Removes the WPeMatico widget from the WordPress dashboard."
 msgstr "Haalt de WPeMatico-widget uit het WordPress-dashboard."
 
-#: includes/settings/help.php:273 includes/settings/page.php:757
+#: includes/settings/help.php:278 includes/settings/page.php:769
 msgid "Do not check feeds before saving"
 msgstr "Feeds niet controleren voor het opslaan"
 
-#: includes/settings/help.php:274
+#: includes/settings/help.php:279
 msgid ""
 "Saving a campaign no longer tests each feed address first. The campaign "
 "saves faster and a broken address goes unnoticed until it runs."
@@ -8432,11 +8572,11 @@ msgstr ""
 "Bij het opslaan van een campagne wordt niet meer elk feedadres getest. De "
 "campagne slaat sneller op, en een kapot adres valt pas op bij de uitvoering."
 
-#: includes/settings/help.php:277 includes/settings/page.php:766
+#: includes/settings/help.php:282 includes/settings/page.php:778
 msgid "Enable \"Del hash\""
-msgstr "„Hash wissen” inschakelen"
+msgstr "“Hash wissen” inschakelen"
 
-#: includes/settings/help.php:278
+#: includes/settings/help.php:283
 msgid ""
 "Adds a link on the campaigns list that clears the duplicate hashes of every "
 "feed in a campaign, so its items can be published again."
@@ -8444,25 +8584,25 @@ msgstr ""
 "Voegt in de campagnelijst een link toe die de duplicaathashes van alle feeds "
 "van een campagne wist, zodat de items opnieuw gepubliceerd kunnen worden."
 
-#: includes/settings/help.php:281 includes/settings/page.php:775
+#: includes/settings/help.php:286 includes/settings/page.php:787
 msgid "Enable \"See last log\""
-msgstr "„Laatste log bekijken“ inschakelen"
+msgstr "“Laatste log bekijken” inschakelen"
 
-#: includes/settings/help.php:282
+#: includes/settings/help.php:287
 msgid "Adds a link on the campaigns list that opens the log of the last run."
 msgstr ""
 "Voegt in de campagnelijst een link toe die het log van de laatste uitvoering "
 "opent."
 
-#: includes/settings/help.php:285 includes/settings/page.php:793
+#: includes/settings/help.php:290 includes/settings/page.php:805
 msgid "Hide the WPeMatico credits"
 msgstr "De WPeMatico-credits verbergen"
 
-#: includes/settings/help.php:286
+#: includes/settings/help.php:291
 msgid "I would really appreciate you leaving the credits on."
 msgstr "Ik zou het erg waarderen als je de credits aan laat staan."
 
-#: includes/settings/help.php:288 includes/settings/page.php:800
+#: includes/settings/help.php:293 includes/settings/page.php:812
 msgid ""
 "If you cannot show them, a minute of your time to %1$s write a 5 star review "
 "on WordPress %2$s means just as much. :-) Thanks."
@@ -8470,32 +8610,17 @@ msgstr ""
 "Kun je ze niet tonen, dan is een minuut van je tijd voor %1$s een 5-"
 "sterrenbeoordeling op WordPress %2$s net zoveel waard. :-) Bedankt."
 
-#: includes/settings/help.php:293 includes/settings/page.php:811
+#: includes/settings/help.php:298 includes/settings/page.php:823
 msgid "No description on auto categories"
 msgstr "Geen beschrijving bij automatische categorieën"
 
-#: includes/settings/help.php:294
+#: includes/settings/help.php:299
 msgid ""
 "Categories created from now on are left without the \"Created by WPeMatico\" "
 "description. The ones already created keep theirs until you edit them."
 msgstr ""
 "Categorieën die vanaf nu worden aangemaakt blijven zonder de beschrijving "
-"„Created by WPeMatico”. De al aangemaakte houden de hunne tot je ze bewerkt."
-
-#: includes/settings/help.php:297 includes/settings/page.php:821
-msgid "Do not load the Extensions page"
-msgstr "De pagina Extensies niet laden"
-
-#: includes/settings/help.php:298
-msgid "The Extensions menu stops asking our site for the add-on catalogue."
-msgstr "Het menu Add-ons vraagt onze site niet meer om de catalogus."
-
-#: includes/settings/help.php:299
-msgid ""
-"You will see an empty page, or only the extensions you already have "
-"installed."
-msgstr ""
-"Je ziet een lege pagina, of alleen de extensies die je al hebt geïnstalleerd."
+"“Created by WPeMatico”. De al aangemaakte houden de hunne tot je ze bewerkt."
 
 #: includes/settings/help.php:30
 msgid ""
@@ -8506,29 +8631,32 @@ msgstr ""
 "je uploadsmap opgeslagen. Uit blijven de afbeeldingen op de server van de "
 "bron staan."
 
-#: includes/settings/help.php:302 includes/settings/page.php:784
+#: includes/settings/help.php:302 includes/settings/page.php:833
+msgid "Do not load the Extensions page"
+msgstr "De pagina Extensies niet laden"
+
+#: includes/settings/help.php:303
+msgid "The Extensions menu stops asking our site for the add-on catalogue."
+msgstr "Het menu Add-ons vraagt onze site niet meer om de catalogus."
+
+#: includes/settings/help.php:304
+msgid ""
+"You will see an empty page, or only the extensions you already have "
+"installed."
+msgstr ""
+"Je ziet een lege pagina, of alleen de extensies die je al hebt geïnstalleerd."
+
+#: includes/settings/help.php:307 includes/settings/page.php:796
 msgid "Enable XML uploads"
 msgstr "XML-uploads toestaan"
 
-#: includes/settings/help.php:303
+#: includes/settings/help.php:308
 msgid ""
 "Lets you upload XML files to the Media library, to use them in an XML "
 "campaign."
 msgstr ""
 "Laat je XML-bestanden naar de mediabibliotheek uploaden om ze in een XML-"
 "campagne te gebruiken."
-
-#: includes/settings/help.php:306 includes/settings/page.php:830
-msgid "Decode HTML entities on publish"
-msgstr "HTML-entiteiten decoderen bij publiceren"
-
-#: includes/settings/help.php:307
-msgid ""
-"Turns entities such as &amp;amp; back into their character before the post "
-"is saved. Useful with feeds that encode the content twice."
-msgstr ""
-"Zet entiteiten als &amp;amp; terug om in hun teken voordat het bericht wordt "
-"opgeslagen. Handig bij feeds die de content dubbel coderen."
 
 #: includes/settings/help.php:31
 msgid ""
@@ -8540,27 +8668,39 @@ msgstr ""
 "je raakt de afbeelding kwijt op de dag dat de bron haar weghaalt. Elke "
 "campagne kan dit zelf bepalen."
 
+#: includes/settings/help.php:311 includes/settings/page.php:842
+msgid "Decode HTML entities on publish"
+msgstr "HTML-entiteiten decoderen bij publiceren"
+
 #: includes/settings/help.php:312
+msgid ""
+"Turns entities such as &amp;amp; back into their character before the post "
+"is saved. Useful with feeds that encode the content twice."
+msgstr ""
+"Zet entiteiten als &amp;amp; terug om in hun teken voordat het bericht wordt "
+"opgeslagen. Handig bij feeds die de content dubbel coderen."
+
+#: includes/settings/help.php:317
 msgid "Sender email"
 msgstr "E-mail van de afzender"
 
-#: includes/settings/help.php:313
+#: includes/settings/help.php:318
 msgid "The address every email from this plugin is sent from."
 msgstr "Het adres waarvandaan elke e-mail van deze plugin wordt verstuurd."
 
-#: includes/settings/help.php:316
+#: includes/settings/help.php:321
 msgid "Sender name"
 msgstr "Naam van de afzender"
 
-#: includes/settings/help.php:317
+#: includes/settings/help.php:322
 msgid "The name shown next to that address in your inbox."
 msgstr "De naam die naast dat adres in je inbox staat."
 
-#: includes/settings/help.php:329
+#: includes/settings/help.php:334
 msgid "Features available with the Professional add-on."
 msgstr "Functies die je met de add-on Professional krijgt."
 
-#: includes/settings/help.php:330
+#: includes/settings/help.php:335
 msgid ""
 "Publish or skip an item depending on the keywords found in its title or "
 "content."
@@ -8568,7 +8708,7 @@ msgstr ""
 "Een item publiceren of overslaan op grond van de keywords in de titel of de "
 "content."
 
-#: includes/settings/help.php:331
+#: includes/settings/help.php:336
 msgid ""
 "Cut, publish or skip an item depending on how many words or letters its "
 "content has."
@@ -8576,13 +8716,13 @@ msgstr ""
 "Een item afkappen, publiceren of overslaan op grond van hoeveel woorden of "
 "letters de content heeft."
 
-#: includes/settings/help.php:332
+#: includes/settings/help.php:337
 msgid ""
 "Build the title of every post of a campaign from a template of your own."
 msgstr ""
 "De titel van elk bericht van een campagne opbouwen uit een eigen template."
 
-#: includes/settings/help.php:333
+#: includes/settings/help.php:338
 msgid ""
 "Generates the tags of every post automatically. Each campaign can turn that "
 "off and use a list of tags you write instead."
@@ -8590,12 +8730,12 @@ msgstr ""
 "Genereert de tags van elk bericht automatisch. Elke campagne kan dat "
 "uitzetten en in plaats daarvan een lijst gebruiken die je zelf schrijft."
 
-#: includes/settings/help.php:334
+#: includes/settings/help.php:339
 msgid "Add custom fields, with template tags as their value, to every post."
 msgstr ""
 "Voegt aan elk bericht aangepaste velden toe met sjabloontags als waarde."
 
-#: includes/settings/help.php:335
+#: includes/settings/help.php:340
 msgid ""
 "Full Content is the add-on that fetches the whole article from the source "
 "site when the feed only carries a summary."
@@ -8603,7 +8743,7 @@ msgstr ""
 "Full Content is de add-on die het hele artikel van de bronsite haalt wanneer "
 "de feed alleen een samenvatting draagt."
 
-#: includes/settings/help.php:336
+#: includes/settings/help.php:341
 msgid ""
 "Set an author per feed when editing a campaign. Feeds with no author of "
 "their own use the campaign author."
@@ -8611,7 +8751,7 @@ msgstr ""
 "Stel bij het bewerken van een campagne een auteur per feed in. Feeds zonder "
 "eigen auteur gebruiken de auteur van de campagne."
 
-#: includes/settings/help.php:337
+#: includes/settings/help.php:342
 msgid ""
 "Paste a list of feed addresses, with or without author names, straight into "
 "the campaign."
@@ -8642,7 +8782,7 @@ msgid ""
 "instead of pointing at the source site."
 msgstr ""
 "Als een afbeelding niet gedownload kan worden, wordt haar %s-tag uit de "
-"content verwijderd in plaats van naar de bronsite te wijzen."
+"content verwijderd in plaats van naar de site van de bron te wijzen."
 
 #: includes/settings/help.php:43
 msgid "If the image sits inside an %s tag, that link is removed as well."
@@ -8685,8 +8825,8 @@ msgid ""
 "images arrive at once."
 msgstr ""
 "Zet het uit als afbeeldingen niet meer verschijnen, of als je wilt dat "
-"WordPress al zijn afbeeldingsformaten maakt. Die maken kost veel bronnen als "
-"er veel afbeeldingen tegelijk binnenkomen."
+"WordPress al zijn afbeeldingsformaten aanmaakt. Die aanmaken kost veel "
+"gegevensbronnen als er veel afbeeldingen tegelijk binnenkomen."
 
 #: includes/settings/help.php:80
 msgid ""
@@ -8724,35 +8864,35 @@ msgstr ""
 "Elke gedownloade audio komt in de mediabibliotheek en wordt aan zijn bericht "
 "gehangen."
 
-#: includes/settings/page.php:1001
+#: includes/settings/page.php:1013
 msgid "Guided tours"
 msgstr "Rondleidingen"
 
-#: includes/settings/page.php:1003
+#: includes/settings/page.php:1015
 msgid ""
 "Shows a short tour the first time you open each WPeMatico screen. Only for "
 "your user."
 msgstr ""
 "Toont een korte rondleiding de eerste keer dat je een WPeMatico-scherm "
-"opent. Alleen voor jouw gebruiker."
+"opent. Alleen voor je eigen gebruiker."
 
-#: includes/settings/page.php:1034
+#: includes/settings/page.php:1046
 msgid "Highlights of the new release"
 msgstr "Hoogtepunten van de nieuwe versie"
 
-#: includes/settings/page.php:1035 includes/lib/licenses_handlers.php:405
+#: includes/settings/page.php:1047 includes/lib/licenses_handlers.php:405
 msgid "Version"
 msgstr "Versie"
 
-#: includes/settings/page.php:1047
+#: includes/settings/page.php:1059
 msgid "Read more on wpematico.com"
 msgstr "Lees meer op wpematico.com"
 
-#: includes/settings/page.php:1049
+#: includes/settings/page.php:1061
 msgid "Your opinion about WPeMatico is very important to us."
-msgstr "Jouw mening over WPeMatico is heel belangrijk voor ons."
+msgstr "Je mening over WPeMatico is heel belangrijk voor ons."
 
-#: includes/settings/page.php:1050
+#: includes/settings/page.php:1062
 msgid ""
 "By rating WPeMatico RSS Feed Fetcher, you help the plugin creators to "
 "improve their work and help other users to find the software they need. You "
@@ -8764,29 +8904,25 @@ msgstr ""
 "Schrijf je recensie op het WordPress-forum, in de taal van je keuze — we "
 "stellen het op prijs!"
 
-#: includes/settings/page.php:1051
+#: includes/settings/page.php:1063
 msgid "Rate us on WordPress"
 msgstr "Beoordeel ons op WordPress"
 
-#: includes/settings/page.php:1053
+#: includes/settings/page.php:1065
 msgid "YES!"
 msgstr "JA!"
 
-#: includes/settings/page.php:1074
+#: includes/settings/page.php:1086
 msgid "General Settings"
 msgstr "Algemene instellingen"
 
-#: includes/settings/page.php:1175 includes/settings/page.php:1201
+#: includes/settings/page.php:1187 includes/settings/page.php:1213
 msgid "Save settings"
 msgstr "Instellingen opslaan"
 
-#: includes/settings/page.php:1301
+#: includes/settings/page.php:1313
 msgid "Settings saved."
 msgstr "Instellingen opgeslagen."
-
-#: includes/settings/page.php:1324
-msgid "License keys saved."
-msgstr "Licentiesleutels opgeslagen."
 
 #: includes/settings/page.php:133 includes/lib/licenses_handlers.php:319
 msgid ""
@@ -8796,6 +8932,10 @@ msgstr ""
 "Hier voer je de licentiesleutels in van onze premium plugins, mocht je er "
 "een activeren."
 
+#: includes/settings/page.php:1336
+msgid "License keys saved."
+msgstr "Licentiesleutels opgeslagen."
+
 #: includes/settings/page.php:134 includes/lib/licenses_handlers.php:320
 msgid "See some of the WPeMatico Add-ons in the"
 msgstr "Bekijk enkele WPeMatico-add-ons in de"
@@ -8803,8 +8943,8 @@ msgstr "Bekijk enkele WPeMatico-add-ons in de"
 #: includes/settings/page.php:164 includes/settings/page.php:289
 #: includes/settings/page.php:353 includes/settings/page.php:418
 #: includes/settings/page.php:460 includes/settings/page.php:554
-#: includes/settings/page.php:683 includes/settings/page.php:747
-#: includes/settings/page.php:840 includes/settings/page.php:886
+#: includes/settings/page.php:683 includes/settings/page.php:759
+#: includes/settings/page.php:852 includes/settings/page.php:898
 msgid "Click to toggle"
 msgstr "Klik om in of uit te klappen"
 
@@ -8896,7 +9036,7 @@ msgstr ""
 
 #: includes/settings/page.php:478
 msgid "Timeout for a running campaign:"
-msgstr "Time-out voor een draaiende campagne:"
+msgstr "Time-out voor een campagne die wordt uitgevoerd:"
 
 #: includes/settings/page.php:480
 msgid "Seconds."
@@ -8962,17 +9102,17 @@ msgstr "Functies inschakelen"
 
 #: includes/settings/page.php:693
 msgid "Enable \"Rewrite\""
-msgstr "„Herschrijven” inschakelen"
+msgstr "“Herschrijven” inschakelen"
 
 #: includes/settings/page.php:702
 msgid "Enable \"Words to Categories\""
-msgstr "„Woorden naar categorieën” inschakelen"
+msgstr "“Woorden naar categorieën” inschakelen"
 
 #: includes/settings/page.php:711
 msgid "Enable the Vimeo campaign type"
 msgstr "Het Vimeo-campagnetype inschakelen"
 
-#: includes/settings/page.php:724
+#: includes/settings/page.php:724 includes/settings/page.php:741
 msgid "PRO"
 msgstr "PRO"
 
@@ -8984,7 +9124,19 @@ msgstr ""
 "Vimeo via zijn API lezen — voorbij de grens van 10 video's uit de feed, met "
 "sortering en je privévideo's — zit in Professional."
 
-#: includes/settings/page.php:750
+#: includes/settings/page.php:737
+msgid "Enable the Google News campaign type"
+msgstr "Het Google News-campagnetype inschakelen"
+
+#: includes/settings/page.php:741
+msgid ""
+"Linking each post to the article on the publication's own site, so Full "
+"Content reads it, comes with Professional."
+msgstr ""
+"Elk bericht linken naar het artikel op de site van de publicatie, zodat Full "
+"Content het leest, zit in Professional."
+
+#: includes/settings/page.php:762
 msgid "Advanced Actions"
 msgstr "Geavanceerde acties"
 
@@ -8992,31 +9144,31 @@ msgstr "Geavanceerde acties"
 msgid "Invalid email."
 msgstr "Ongeldig e-mailadres."
 
-#: includes/settings/page.php:843
+#: includes/settings/page.php:855
 msgid "Sending e-Mails"
 msgstr "E-mails versturen"
 
-#: includes/settings/page.php:848
+#: includes/settings/page.php:860
 msgid "Sender email:"
 msgstr "E-mail van de afzender:"
 
-#: includes/settings/page.php:854
+#: includes/settings/page.php:866
 msgid "Sender name:"
 msgstr "Naam van de afzender:"
 
-#: includes/settings/page.php:861
+#: includes/settings/page.php:873
 msgid "Sendmail path:"
 msgstr "Sendmail-pad:"
 
-#: includes/settings/page.php:889
+#: includes/settings/page.php:901
 msgid "WordPress Backend Tools"
 msgstr "WordPress Back-end tools"
 
-#: includes/settings/page.php:931
+#: includes/settings/page.php:943
 msgid "Post types it applies to"
 msgstr "Berichttypen waarvoor het geldt"
 
-#: includes/settings/page.php:972
+#: includes/settings/page.php:984
 msgid "Roles that see the dashboard widget:"
 msgstr "Rollen die de dashboardwidget zien:"
 
@@ -9152,7 +9304,7 @@ msgstr "Vertaalvriendelijk"
 
 #: includes/settings/widgets.php:323
 msgid "WPeMatico speaks your language"
-msgstr "WPeMatico spreekt jouw taal"
+msgstr "WPeMatico spreekt je taal"
 
 #: includes/settings/widgets.php:324
 msgid ""
@@ -9235,7 +9387,7 @@ msgstr "De WPeMatico 2.7-reeks is er!"
 
 #: includes/smart_notifications.php:209
 msgid "Join our giveaways to win “almost” FREE amazing prizes! 🎁"
-msgstr "Doe mee aan onze acties en win „bijna“ gratis mooie prijzen! 🎁"
+msgstr "Doe mee aan onze acties en win “bijna” gratis mooie prijzen! 🎁"
 
 #: includes/smart_notifications.php:211
 msgid ""
@@ -9259,9 +9411,9 @@ msgid ""
 "and its addons for your current site into a .json file. The exported file "
 "contains all the relevant settings."
 msgstr ""
-"Met deze functie exporteer je de configuratie van WPeMatico en zijn add-ons "
-"voor deze site naar een .json-bestand. Dat bestand bevat alle relevante "
-"instellingen."
+"Deze functie staat je toe de configuratie van WPeMatico en zijn add-ons voor "
+"deze site te exporteren naar een .json-bestand. Het geëxporteerde bestand "
+"bevat alle relevante instellingen."
 
 #: includes/tools_help.php:41
 msgid ""
@@ -9280,7 +9432,7 @@ msgid ""
 "using a configuration that you've previously exported."
 msgstr ""
 "Nuttig als je WPeMatico op een nieuwe site snel wilt instellen met een "
-"eerder geëxporteerde configuratie."
+"configuratie die je eerder hebt geëxporteerd."
 
 #: includes/tools_help.php:47
 msgid ""
@@ -9449,17 +9601,16 @@ msgstr "WPeMatico-logs inschakelen"
 
 #: includes/tools_page.php:714
 msgid "This action will activate the function"
-msgstr "Deze actie schakelt de functie in"
+msgstr "Deze actie zal de functie activeren"
 
 #: includes/tools_page.php:714
 msgid "and its panel in a new tab to follow log messages inside the code."
 msgstr ""
-"en haar paneel op een nieuw tabblad, om logberichten binnen de code te "
-"volgen."
+"en haar paneel op een nieuwe tab, om logberichten binnen de code te volgen."
 
 #: includes/tools_page.php:716
 msgid "Activate Debug Logs in Campaigns"
-msgstr "Debuglogs in campagnes inschakelen"
+msgstr "Debuglogs in campagnes activeren"
 
 #: includes/tools_page.php:718
 msgid ""
@@ -9467,9 +9618,9 @@ msgid ""
 "of only the last one, to allow follow all actions and behaviors when "
 "campaign runs."
 msgstr ""
-"Deze actie bewaart de logs van de laatste 10 rondes van elke campagne in "
-"plaats van alleen de laatste, zodat je alle acties en gedragingen tijdens "
-"een ronde kunt volgen."
+"Deze actie slaat de logs van de laatste 10 keer dat elke campagne is "
+"uitgevoerd op, in plaats van alleen de laatste, om toe te staan dat je alle "
+"acties en gedragingen volgt wanneer een campagne wordt uitgevoerd."
 
 #: includes/tools_page.php:719
 msgid "Delete all Debug Logs in Campaigns"
@@ -9527,8 +9678,9 @@ msgid ""
 "deactivated and you select \"Delete\" it in the WPeMatico row from the "
 "plugins list."
 msgstr ""
-"Deze gekozen acties worden uitgevoerd nadat de plugin WPeMatico "
-"gedeactiveerd is en je in de pluginlijst op zijn regel „Verwijderen“ kiest."
+"Deze geselecteerde acties worden uitgevoerd nadat de plugin WPeMatico "
+"gedeactiveerd is en je in de pluginlijst op zijn regel “Verwijderen” "
+"selecteert."
 
 #: includes/tools_page.php:754
 msgid "Invalid request method."
@@ -9552,19 +9704,19 @@ msgstr "Sommige logs waren misschien al weg of konden niet verwijderd worden."
 
 #: includes/tools_page.php:792
 msgid "The WPeMatico Logs were activated."
-msgstr "De WPeMatico-logs zijn ingeschakeld."
+msgstr "De WPeMatico-logs zijn geactiveerd."
 
 #: includes/tools_page.php:793
 msgid "The WPeMatico Logs were deactivated."
-msgstr "De WPeMatico-logs zijn uitgeschakeld."
+msgstr "De WPeMatico-logs zijn gedeactiveerd."
 
 #: includes/tools_page.php:796
 msgid "The Campaigns Debug Logs were activated."
-msgstr "De debuglogs van de campagnes zijn ingeschakeld."
+msgstr "De debuglogs van de campagnes zijn geactiveerd."
 
 #: includes/tools_page.php:797
 msgid "The Campaigns Debug Logs were deactivated."
-msgstr "De debuglogs van de campagnes zijn uitgeschakeld."
+msgstr "De debuglogs van de campagnes zijn gedeactiveerd."
 
 #: includes/tools_page.php:800
 msgid "Feeds on private and local addresses are now allowed."
@@ -9576,7 +9728,7 @@ msgstr "Campagnes halen alleen feeds op die op het openbare internet staan."
 
 #: includes/tools_page.php:804
 msgid "Delete Options on Uninstall saved."
-msgstr "„Opties verwijderen bij deïnstallatie“ opgeslagen."
+msgstr "“Opties verwijderen bij deïnstallatie” opgeslagen."
 
 #: includes/tools_page.php:805 includes/tools_page.php:811
 msgid "The actions are executed when the plugin is uninstalled."
@@ -9584,15 +9736,15 @@ msgstr "De acties worden uitgevoerd wanneer de plugin verwijderd wordt."
 
 #: includes/tools_page.php:806
 msgid "Delete Options on Uninstall cleared."
-msgstr "„Opties verwijderen bij deïnstallatie“ ongedaan gemaakt."
+msgstr "“Opties verwijderen bij deïnstallatie” ongedaan gemaakt."
 
 #: includes/tools_page.php:810
 msgid "Delete Campaigns on Uninstall saved."
-msgstr "„Campagnes verwijderen bij deïnstallatie“ opgeslagen."
+msgstr "“Campagnes verwijderen bij deïnstallatie” opgeslagen."
 
 #: includes/tools_page.php:812
 msgid "Delete Campaigns on Uninstall cleared."
-msgstr "„Campagnes verwijderen bij deïnstallatie“ ongedaan gemaakt."
+msgstr "“Campagnes verwijderen bij deïnstallatie” ongedaan gemaakt."
 
 #: includes/tools_page.php:856
 msgid ""
@@ -9648,7 +9800,7 @@ msgstr "WPeMatico campagne-info"
 
 #: includes/wp-backend-helpers.php:162
 msgid "All links are no-follow and open in a new browser tab."
-msgstr "Alle links zijn nofollow en openen in een nieuw browsertabblad."
+msgstr "Alle links zijn nofollow en openen in een nieuwe browsertab."
 
 #: includes/wp-backend-helpers.php:187
 msgid "Published by Campaign"
@@ -9707,7 +9859,7 @@ msgid ""
 "> Tools > Danger Zone."
 msgstr ""
 "%1$s wijst naar %2$s, een adres in het eigen netwerk van deze server. Als "
-"dat de bedoeling is, zet dan „Feeds op privé- en lokale adressen toestaan“ "
+"dat de bedoeling is, zet dan “Feeds op privé- en lokale adressen toestaan” "
 "aan bij WPeMatico > Tools > Gevarenzone."
 
 #: includes/wpematico_functions.php:1780
@@ -9786,8 +9938,8 @@ msgid ""
 "enable them again."
 msgstr ""
 "- %1$s %2$s is niet compatibel met WPeMatico %3$s, dus zijn functies zijn "
-"uitgezet zodat je campagnes blijven draaien. Werk hem bij naar %4$s of hoger "
-"om ze weer in te schakelen."
+"uitgezet zodat je campagnes uitgevoerd blijven worden. Update hem naar %4$s "
+"of hoger om ze weer te activeren."
 
 #: includes/wpematico_functions.php:2792
 msgid "Go to update Now"
@@ -9840,8 +9992,8 @@ msgid ""
 "Imported posts will be attributed to you, because your user cannot assign "
 "posts to other users."
 msgstr ""
-"Geïmporteerde berichten komen op jouw naam, omdat je gebruiker geen "
-"berichten aan anderen mag toekennen."
+"Geïmporteerde berichten komen op je naam, omdat je gebruiker geen berichten "
+"aan anderen mag toekennen."
 
 #: includes/wpematico_functions.php:3330
 msgid ""
@@ -9873,7 +10025,7 @@ msgstr "Niet gedetecteerd"
 
 #: includes/wpematico_functions.php:3505
 msgid "5 Stars Ratings on WordPress"
-msgstr "5-sterrenbeoordelingen op WordPress"
+msgstr "5-sterrenwaarderingen op WordPress"
 
 #: includes/wpematico_functions.php:3578
 msgid "Trying to set %1$s = %2$s: '%3$s' - Old value: %4$s."
@@ -9947,7 +10099,7 @@ msgstr "Fout: het feedadres is leeg."
 msgid ""
 "This file is an RSS feed: use the \"Feed\" campaign type instead of XML."
 msgstr ""
-"Dit bestand is een RSS-feed: gebruik het campagnetype „Feed” in plaats van "
+"Dit bestand is een RSS-feed: gebruik het campagnetype “Feed” in plaats van "
 "XML."
 
 #: includes/xml-importer.php:42
@@ -10001,99 +10153,99 @@ msgstr "Kies een XML-node."
 msgid "PHP 7.0 or higher needed!"
 msgstr "PHP 7.0 of hoger is nodig!"
 
-#: wpematico_class.php:160 includes/wpematico_functions.php:3155
+#: wpematico_class.php:162 includes/wpematico_functions.php:3155
 msgid "Empty Trash"
 msgstr "Prullenbak legen"
 
-#: wpematico_class.php:178
+#: wpematico_class.php:180
 msgid "There are no campaigns yet."
 msgstr "Er zijn nog geen campagnes."
 
-#: wpematico_class.php:180
+#: wpematico_class.php:182
 msgid "You need to create a campaign to begin using WPeMatico."
 msgstr "Je moet een campagne maken om WPeMatico te kunnen gebruiken."
 
-#: wpematico_class.php:182
+#: wpematico_class.php:184
 msgid ""
 "If you need help, check out the tips to get started with WPeMatico or just "
 msgstr ""
 "Heb je hulp nodig, bekijk dan de tips om met WPeMatico te beginnen, of "
 "gewoon "
 
-#: wpematico_class.php:183
+#: wpematico_class.php:185
 msgid "add New Campaign"
 msgstr "een nieuwe campagne toevoegen"
 
-#: wpematico_class.php:186 includes/lib/welcome.php:190
+#: wpematico_class.php:188 includes/lib/welcome.php:190
 msgid "Getting Started"
 msgstr "Aan de slag"
 
-#: wpematico_class.php:192 wpematico_class.php:353 wpematico_class.php:354
+#: wpematico_class.php:194 wpematico_class.php:355 wpematico_class.php:356
 #: includes/dashboard-widgets.php:552 includes/debug_page.php:2927
 msgid "Campaigns"
 msgstr "Campagnes"
 
-#: wpematico_class.php:193 includes/tools_page.php:501
+#: wpematico_class.php:195 includes/tools_page.php:501
 #: includes/tools_page.php:665 includes/wp-backend-helpers.php:65
 msgid "Campaign"
 msgstr "Campagne"
 
-#: wpematico_class.php:194
+#: wpematico_class.php:196
 msgid "Add New"
 msgstr "Nieuwe toevoegen"
 
-#: wpematico_class.php:195
+#: wpematico_class.php:197
 msgid "Add New Campaign"
 msgstr "Nieuwe campagne toevoegen"
 
-#: wpematico_class.php:196
+#: wpematico_class.php:198
 msgid "Edit Campaign"
 msgstr "Campagne bewerken"
 
-#: wpematico_class.php:197
+#: wpematico_class.php:199
 msgid "New Campaign"
 msgstr "Nieuwe campagne"
 
-#: wpematico_class.php:198
+#: wpematico_class.php:200
 msgid "All Campaigns"
 msgstr "Alle campagnes"
 
-#: wpematico_class.php:199
+#: wpematico_class.php:201
 msgid "View Campaign"
 msgstr "Campagne bekijken"
 
-#: wpematico_class.php:200
+#: wpematico_class.php:202
 msgid "Search Campaign"
 msgstr "Campagne zoeken"
 
-#: wpematico_class.php:202
+#: wpematico_class.php:204
 msgid "No Campaign found in Trash"
 msgstr "Geen campagne in de prullenbak gevonden"
 
-#: wpematico_class.php:244
+#: wpematico_class.php:246
 msgid "Reset Menu Position"
 msgstr "Menupositie resetten"
 
-#: wpematico_class.php:250
+#: wpematico_class.php:252
 msgid "Turn this on if the WPeMatico menu does not appear in the admin menu."
 msgstr "Zet dit aan als het WPeMatico-menu niet in het beheermenu verschijnt."
 
-#: wpematico_class.php:255
+#: wpematico_class.php:257
 msgid "See local Addons in plugin list"
 msgstr "Lokale add-ons in de pluginlijst tonen"
 
-#: wpematico_class.php:261
+#: wpematico_class.php:263
 msgid ""
 "Turn this on to list the add-ons on your Plugins page, like any other plugin."
 msgstr ""
 "Zet dit aan om de add-ons op je pagina Plugins te tonen, net als elke andere "
 "plugin."
 
-#: wpematico_class.php:266
+#: wpematico_class.php:268
 msgid "Hide Reviews on Settings"
 msgstr "Recensies in de instellingen verbergen"
 
-#: wpematico_class.php:272
+#: wpematico_class.php:274
 msgid ""
 "Turn this on if the Settings page comes out incomplete because your server "
 "cannot read external addresses."
@@ -10101,7 +10253,7 @@ msgstr ""
 "Zet dit aan als de instellingenpagina onvolledig oogt doordat je server geen "
 "externe adressen kan lezen."
 
-#: wpematico_class.php:310
+#: wpematico_class.php:312
 msgid ""
 "If the WPeMatico menu is missing, another plugin or your theme has taken its "
 "position."
@@ -10109,15 +10261,15 @@ msgstr ""
 "Ontbreekt het WPeMatico-menu, dan heeft een andere plugin of je thema zijn "
 "plaats ingenomen."
 
-#: wpematico_class.php:311
+#: wpematico_class.php:313
 msgid ""
 "Tick \"Reset Menu Position\" to move the menu to the end of the WordPress "
 "menu."
 msgstr ""
-"Vink „Menupositie herstellen” aan om het menu naar het eind van het "
-"WordPress-menu te verplaatsen."
+"Vink “Menupositie resetten” aan om het menu naar het eind van het WordPress-"
+"menu te verplaatsen."
 
-#: wpematico_class.php:313
+#: wpematico_class.php:315
 msgid ""
 "A Settings page that does not render fully usually means your server cannot "
 "reach external pages."
@@ -10125,15 +10277,15 @@ msgstr ""
 "Een instellingenpagina die niet volledig verschijnt, betekent meestal dat je "
 "server geen externe pagina’s kan bereiken."
 
-#: wpematico_class.php:314
+#: wpematico_class.php:316
 msgid ""
 "Tick \"Hide Reviews on Settings\" to show a plain link to the reviews page "
 "instead."
 msgstr ""
-"Vink „Beoordelingen in instellingen verbergen” aan om er een eenvoudige link "
+"Vink “Beoordelingen in instellingen verbergen” aan om er een eenvoudige link "
 "naar de beoordelingspagina voor in de plaats te tonen."
 
-#: wpematico_class.php:318
+#: wpematico_class.php:320
 msgid ""
 "You must click the Save Changes button at the bottom of the screen for new "
 "settings to take effect."
@@ -10141,39 +10293,39 @@ msgstr ""
 "Je moet onderaan het scherm op Wijzigingen opslaan klikken voordat de nieuwe "
 "instellingen werken."
 
-#: wpematico_class.php:331 wpematico_class.php:332
+#: wpematico_class.php:333 wpematico_class.php:334
 msgid "WPeMatico"
 msgstr "WPeMatico"
 
-#: wpematico_class.php:343
+#: wpematico_class.php:345
 msgid "WPeMatico Dashboard"
 msgstr "WPeMatico-dashboard"
 
-#: wpematico_class.php:344 includes/module/dashboard.php:106
+#: wpematico_class.php:346 includes/module/dashboard.php:106
 msgid "Dashboard"
 msgstr "Dashboard"
 
-#: wpematico_class.php:368 wpematico_class.php:369
+#: wpematico_class.php:370 wpematico_class.php:371
 #: includes/dashboard-widgets.php:554 includes/plugin_functions.php:339
-#: includes/settings/functions.php:43 includes/settings/page.php:1078
-#: includes/settings/page.php:1151 includes/module/dashboard.php:32
+#: includes/settings/functions.php:43 includes/settings/page.php:1090
+#: includes/settings/page.php:1163 includes/module/dashboard.php:32
 #: includes/module/manager.php:187
 msgid "Settings"
 msgstr "Instellingen"
 
-#: wpematico_class.php:379 wpematico_class.php:380 includes/tools_tabs.php:17
+#: wpematico_class.php:381 wpematico_class.php:382 includes/tools_tabs.php:17
 msgid "Tools"
 msgstr "Tools"
 
-#: wpematico_class.php:397 wpematico_class.php:406
+#: wpematico_class.php:399 wpematico_class.php:408
 msgid "Add-ons"
 msgstr "Add-ons"
 
-#: wpematico_class.php:398 includes/addons_page.php:1461
+#: wpematico_class.php:400 includes/addons_page.php:1461
 msgid "WPeMatico Addons"
 msgstr "WPeMatico Addons"
 
-#: wpematico_class.php:407 includes/class-tour-helper.php:224
+#: wpematico_class.php:409 includes/class-tour-helper.php:224
 #: includes/plugin_functions.php:360
 msgid "Extensions"
 msgstr "Extensies"

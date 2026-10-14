@@ -3777,7 +3777,7 @@ function wpematico_debug_info_download() {
 
 			echo "<br />\n\n" . '### CAMPAIGN ID Name:     ' . $post->ID . ' ' . get_the_title($post->ID) . "<br />\n\n";
 
-			echo get_post_meta($post->ID, 'last_campaign_log', true);
+			echo wp_kses((string) get_post_meta($post->ID, 'last_campaign_log', true), wpematico_log_allowed_html());
 
 		endforeach;
 

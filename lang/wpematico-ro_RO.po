@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPeMatico 2.9\n"
 "Report-Msgid-Bugs-To: https://etruel.com/my-account/support/\n"
-"POT-Creation-Date: 2026-10-01 01:06+0000\n"
+"POT-Creation-Date: 2026-10-14 19:25+0000\n"
 "PO-Revision-Date: 2026-09-26 21:08\n"
 "Last-Translator: Etruel Developments <translations@etruel.com>\n"
 "Language-Team: Etruel Developments <translations@etruel.com>\n"
@@ -405,7 +405,7 @@ msgstr "Detalii"
 msgid "WPeMatico Addons "
 msgstr "Suplimente WPeMatico "
 
-#: includes/addons_page.php:1516
+#: includes/addons_page.php:1516 includes/addons_page.php:1528
 msgid "Inactive &mdash; Now part of WPeMatico"
 msgstr "Inactiv &mdash; acum face parte din WPeMatico"
 
@@ -473,8 +473,8 @@ msgstr "Cumpără din magazinul etruel"
 msgid "Activate %s on this site"
 msgstr "Activează %s pe acest site"
 
-#: includes/addons_page.php:744 includes/module/actions.php:362
-#: includes/module/actions.php:436 includes/module/dashboard.php:64
+#: includes/addons_page.php:744 includes/module/actions.php:371
+#: includes/module/actions.php:445 includes/module/dashboard.php:64
 msgid "Activate"
 msgstr "Activează"
 
@@ -482,7 +482,7 @@ msgstr "Activează"
 msgid "See details and prices on etruel's store"
 msgstr "Vezi detalii și prețuri în magazinul etruel"
 
-#: includes/addons_page.php:762 includes/module/actions.php:305
+#: includes/addons_page.php:762 includes/module/actions.php:314
 #: includes/module/dashboard.php:55 includes/module/manager.php:130
 #: includes/module/manager.php:151 includes/module/manager.php:156
 msgid "Installed"
@@ -524,6 +524,103 @@ msgstr "Suplimentul selectat a fost șters."
 #: includes/addons_page.php:923
 msgid "The selected add-ons have been deleted."
 msgstr "Suplimentele selectate au fost șterse."
+
+#: includes/campaign-types/googlo_news.php:174
+msgid "%s is not a Google News address."
+msgstr "%s nu este o adresă Google News."
+
+#: includes/campaign-types/googlo_news.php:327
+msgid "Google News Campaign Type."
+msgstr "Tipul de campanie Google News."
+
+#: includes/campaign-types/googlo_news.php:328
+msgid ""
+"Paste the address of a Google News search, topic or publication as your "
+"browser shows it, and the campaign finds its feed on its own:"
+msgstr ""
+"Lipește adresa unei căutări, a unui subiect sau a unei publicații Google "
+"News așa cum o arată navigatorul tău, iar campania îi găsește singură fluxul:"
+
+#: includes/campaign-types/googlo_news.php:332
+msgid ""
+"Each item brings the headline, the date and the name of the publication, and "
+"links to Google News."
+msgstr ""
+"Fiecare element aduce titlul, data și numele publicației și trimite către "
+"Google News."
+
+#: includes/campaign-types/googlo_news.php:333
+msgid ""
+"The name and the address of the publication are saved with each post, and "
+"the post template takes them as {source_name} and {source_url}."
+msgstr ""
+"Numele și adresa publicației se salvează cu fiecare articol, iar șablonul de "
+"articol le preia ca {source_name} și {source_url}."
+
+#: includes/campaign-types/googlo_news.php:336
+msgid "Publication in the title."
+msgstr "Publicația în titlu."
+
+#: includes/campaign-types/googlo_news.php:337
+msgid ""
+"Google News ends every headline with the name of the publication. The "
+"campaign takes it off; tick this to keep it."
+msgstr ""
+"Google News încheie fiecare titlu cu numele publicației. Campania îl "
+"elimină; bifează asta ca să îl păstrezi."
+
+#: includes/campaign-types/googlo_news.php:340
+msgid "Related coverage."
+msgstr "Acoperire asociată."
+
+#: includes/campaign-types/googlo_news.php:341
+msgid ""
+"On a topic, Google News lists other articles about the same story under each "
+"headline. Tick this to add that list to the post."
+msgstr ""
+"La un subiect, Google News listează sub fiecare titlu alte articole despre "
+"aceeași știre. Bifează asta ca să adaugi lista în articol."
+
+#: includes/campaign-types/googlo_news.php:352
+msgid "Google News Campaign Options"
+msgstr "Opțiuni pentru campania Google News"
+
+#: includes/campaign-types/googlo_news.php:373
+msgid "Keep the name of the publication at the end of the title"
+msgstr "Păstrează numele publicației la finalul titlului"
+
+#: includes/campaign-types/googlo_news.php:375
+msgid "Add the related coverage Google News lists under the headline"
+msgstr "Adaugă acoperirea asociată pe care Google News o listează sub titlu"
+
+#: includes/campaign-types/googlo_news.php:390
+msgid "Original article"
+msgstr "Articolul original"
+
+#: includes/campaign-types/googlo_news.php:391
+#: includes/campaign-types/vimeo.php:395
+msgid "PRO Feature"
+msgstr "Funcționalitate PRO"
+
+#: includes/campaign-types/googlo_news.php:395
+msgid "Link each post to the article on the publication's own site"
+msgstr "Leagă fiecare articol de articolul de pe site-ul publicației"
+
+#: includes/campaign-types/googlo_news.php:399
+msgid "Skip the item when its article is not found"
+msgstr "Sari peste element când articolul lui nu este găsit"
+
+#: includes/campaign-types/googlo_news.php:402
+msgid ""
+"Professional looks each headline up on the site of its publication, so the "
+"source link, the canonical URL and Full Content work on the article itself."
+msgstr ""
+"Professional caută fiecare titlu pe site-ul publicației lui, ca legătura "
+"către sursă, URL-ul canonic și Full Content să lucreze pe articolul însuși."
+
+#: includes/campaign-types/googlo_news.php:61 includes/module/actions.php:194
+msgid "Google News"
+msgstr "Google News"
 
 #: includes/campaign-types/vimeo.php:258
 msgid "Parsing Vimeo video and feed item contents."
@@ -612,10 +709,6 @@ msgstr "Folosește-o doar ca imagine reprezentativă"
 #: includes/campaign-types/vimeo.php:394
 msgid "Vimeo API"
 msgstr "API Vimeo"
-
-#: includes/campaign-types/vimeo.php:395
-msgid "PRO Feature"
-msgstr "Funcționalitate PRO"
 
 #: includes/campaign-types/vimeo.php:399
 msgid "Fetch through the Vimeo API instead of the feed."
@@ -752,7 +845,7 @@ msgstr "Reîmprospătează navigatorul și încearcă din nou."
 #: includes/debug_page.php:1096 includes/debug_page.php:3712
 #: includes/wpematico_functions.php:2987 includes/wpematico_functions.php:3012
 #: includes/wpematico_functions.php:3208 includes/wpematico_functions.php:3387
-#: includes/xml-importer.php:361 includes/settings/page.php:1265
+#: includes/xml-importer.php:361 includes/settings/page.php:1277
 msgid "You are not allowed to do this."
 msgstr "Nu ai voie să faci asta."
 
@@ -1084,7 +1177,7 @@ msgstr "Previzualizează campania"
 msgid "Feed (default)"
 msgstr "Flux (implicit)"
 
-#: includes/campaign_edit_functions.php:226 includes/module/actions.php:194
+#: includes/campaign_edit_functions.php:226 includes/module/actions.php:203
 msgid "YouTube"
 msgstr "YouTube"
 
@@ -1452,7 +1545,7 @@ msgid "%s has to be installed and activated for this to work."
 msgstr "%s trebuie instalat și activ pentru ca asta să funcționeze."
 
 #: includes/campaign_edit_functions.php:615 includes/campaign_help.php:160
-#: includes/settings/help.php:60 includes/module/actions.php:560
+#: includes/settings/help.php:60 includes/module/actions.php:569
 msgid "Featured Image from URL"
 msgstr "Featured Image from URL"
 
@@ -1545,7 +1638,7 @@ msgid "Remove link to source videos"
 msgstr "Elimină legătura către videoclipurile sursă"
 
 #: includes/campaign_edit_functions.php:775 includes/campaign_help.php:237
-#: includes/settings/help.php:201 includes/settings/page.php:498
+#: includes/settings/help.php:206 includes/settings/page.php:498
 msgid "Allow duplicate posts"
 msgstr "Permite articole duplicate"
 
@@ -1568,12 +1661,12 @@ msgid "Allow duplicate hashes (not recommended)"
 msgstr "Permite hash-uri duplicate (nerecomandat)"
 
 #: includes/campaign_edit_functions.php:784 includes/campaign_help.php:249
-#: includes/settings/help.php:218 includes/settings/page.php:526
+#: includes/settings/help.php:223 includes/settings/page.php:526
 msgid "Also check duplicates by source permalink"
 msgstr "Verifică duplicatele și după legătura permanentă a sursei"
 
 #: includes/campaign_edit_functions.php:789 includes/campaign_help.php:243
-#: includes/settings/help.php:207 includes/settings/page.php:535
+#: includes/settings/help.php:212 includes/settings/page.php:535
 msgid "Keep reading past a duplicate"
 msgstr "Continuă citirea după un duplicat"
 
@@ -1662,61 +1755,57 @@ msgstr "Vizualizator de fluxuri"
 msgid "Open URL in a new browser tab"
 msgstr "Deschide adresa într-o filă nouă"
 
-#: includes/campaign_fetch.php:1008
+#: includes/campaign_fetch.php:1028
 msgid "The post has no featured image."
 msgstr "Articolul nu are imagine reprezentativă."
 
-#: includes/campaign_fetch.php:1015
+#: includes/campaign_fetch.php:1035
 msgid "Attaching images"
 msgstr "Se atașează imaginile"
 
-#: includes/campaign_fetch.php:1036
+#: includes/campaign_fetch.php:1056
 msgid "Attaching audios"
 msgstr "Se atașează fișierele audio"
 
-#: includes/campaign_fetch.php:1052
+#: includes/campaign_fetch.php:1072
 msgid "Attaching videos"
 msgstr "Se atașează videoclipurile"
 
-#: includes/campaign_fetch.php:1081
+#: includes/campaign_fetch.php:1101
 msgid "Campaign fetched in %s sec."
 msgstr "Campanie rulată în %s sec."
 
-#: includes/campaign_fetch.php:1111
+#: includes/campaign_fetch.php:1131
 msgid "WPeMatico Log "
 msgstr "Jurnal WPeMatico "
 
-#: includes/campaign_fetch.php:1114
+#: includes/campaign_fetch.php:1134
 msgid "Campaign Name:"
 msgstr "Numele campaniei:"
 
-#: includes/campaign_fetch.php:1116
+#: includes/campaign_fetch.php:1136
 msgid "Errors:"
 msgstr "Erori:"
 
-#: includes/campaign_fetch.php:1118
+#: includes/campaign_fetch.php:1138
 msgid "Warnings:"
 msgstr "Avertismente:"
 
-#: includes/campaign_fetch.php:1122
+#: includes/campaign_fetch.php:1142
 msgid "WPeMatico by "
 msgstr "WPeMatico de "
 
-#: includes/campaign_fetch.php:1149
+#: includes/campaign_fetch.php:1169
 msgid "Campaign fetched in %1s sec."
 msgstr "Campanie rulată în %1s sec."
 
-#: includes/campaign_fetch.php:1162
+#: includes/campaign_fetch.php:1182
 msgid "Processed Posts: %s"
 msgstr "Articole procesate: %s"
 
-#: includes/campaign_fetch.php:1163
+#: includes/campaign_fetch.php:1183
 msgid "Show detailed Log"
 msgstr "Arată jurnalul detaliat"
-
-#: includes/campaign_fetch.php:1183 includes/campaigns_list.php:922
-msgid "Posts imported by this campaign."
-msgstr "Articole importate de această campanie."
 
 #: includes/campaign_fetch.php:120
 msgid ""
@@ -1725,6 +1814,10 @@ msgid ""
 msgstr ""
 "Limita de memorie a fost pusă la %1$s, deoarece funcția PHP "
 "memory_get_usage() nu poate fi folosită pentru a mări dinamic memoria!"
+
+#: includes/campaign_fetch.php:1203 includes/campaigns_list.php:922
+msgid "Posts imported by this campaign."
+msgstr "Articole importate de această campanie."
 
 #: includes/campaign_fetch.php:131
 msgid "Ending feed, reached running timeout at %1$d sec."
@@ -1750,61 +1843,61 @@ msgstr "Limita de preluare a campaniei atinsă la %s."
 msgid "Reached running timeout at %1$d sec."
 msgstr "S-a atins limita de timp de rulare la %1$d sec."
 
-#: includes/campaign_fetch.php:338
+#: includes/campaign_fetch.php:351
 msgid "%s posts added"
 msgstr "%s articole adăugate"
 
-#: includes/campaign_fetch.php:353
+#: includes/campaign_fetch.php:366
 msgid "Processing item %s"
 msgstr "Se procesează elementul %s"
 
-#: includes/campaign_fetch.php:367
+#: includes/campaign_fetch.php:380
 msgid "Assigning original date to post."
 msgstr "Se atribuie articolului data originală."
 
-#: includes/campaign_fetch.php:370
+#: includes/campaign_fetch.php:383
 msgid "Original date out of range.  Assigning current date to post."
 msgstr ""
 "Data originală este în afara intervalului. Articolului i se atribuie data "
 "curentă."
 
-#: includes/campaign_fetch.php:374
+#: includes/campaign_fetch.php:387
 msgid "Forced original date to post."
 msgstr "Data originală a fost impusă articolului."
 
-#: includes/campaign_fetch.php:512
+#: includes/campaign_fetch.php:525
 msgid "Assigning Auto Categories."
 msgstr "Se atribuie categoriile automate."
 
-#: includes/campaign_fetch.php:553
+#: includes/campaign_fetch.php:566
 msgid "Found category under parent: "
 msgstr "Categorie găsită sub părinte: "
 
-#: includes/campaign_fetch.php:569
+#: includes/campaign_fetch.php:582
 msgid "Category exists with correct parent: "
 msgstr "Categoria există cu părintele corect: "
 
-#: includes/campaign_fetch.php:592
+#: includes/campaign_fetch.php:605
 msgid "Adding Category: "
 msgstr "Se adaugă categoria: "
 
-#: includes/campaign_fetch.php:594
+#: includes/campaign_fetch.php:607
 msgid "Auto Added by WPeMatico"
 msgstr "Adăugată automat de WPeMatico"
 
-#: includes/campaign_fetch.php:610
+#: includes/campaign_fetch.php:623
 msgid "Created category: "
 msgstr "Categorie creată: "
 
-#: includes/campaign_fetch.php:612
+#: includes/campaign_fetch.php:625
 msgid "Failed to create category: "
 msgstr "Crearea categoriei a eșuat: "
 
-#: includes/campaign_fetch.php:620
+#: includes/campaign_fetch.php:633
 msgid "Assigned category to post: "
 msgstr "Categorie atribuită articolului: "
 
-#: includes/campaign_fetch.php:623
+#: includes/campaign_fetch.php:636
 msgid "Could not assign category: "
 msgstr "Categoria nu a putut fi atribuită: "
 
@@ -1812,174 +1905,179 @@ msgstr "Categoria nu a putut fi atribuită: "
 msgid "Campaign skipped: already running since %d sec ago."
 msgstr "Campanie sărită: rulează deja de %d sec."
 
-#: includes/campaign_fetch.php:791
+#: includes/campaign_fetch.php:811
 msgid "Adding unfiltered content"
 msgstr "Se adaugă conținut nefiltrat"
 
-#: includes/campaign_fetch.php:799
+#: includes/campaign_fetch.php:819
 msgid "Processing item pingbacks"
 msgstr "Se procesează pingback-urile elementului"
 
-#: includes/campaign_fetch.php:872
+#: includes/campaign_fetch.php:892
 msgid "Categories added: "
 msgstr "Categorii adăugate: "
 
-#: includes/campaign_fetch.php:884
+#: includes/campaign_fetch.php:904
 msgid "Tags added: "
 msgstr "Etichete adăugate: "
 
-#: includes/campaign_fetch.php:896
+#: includes/campaign_fetch.php:916
 msgid "Post format added: "
 msgstr "Format de articol adăugat: "
 
-#: includes/campaign_fetch.php:917
+#: includes/campaign_fetch.php:937
 msgid "Skip Featured Image."
 msgstr "Imagine reprezentativă sărită."
 
-#: includes/campaign_fetch.php:921
+#: includes/campaign_fetch.php:941
 msgid "Featuring Image Into Post."
 msgstr "Se stabilește imaginea reprezentativă a articolului."
 
-#: includes/campaign_fetch.php:963 includes/campaign_fetch_functions.php:510
+#: includes/campaign_fetch.php:983 includes/campaign_fetch_functions.php:514
 msgid "Failed to obtain file:"
 msgstr "Fișierul nu a putut fi obținut:"
 
-#: includes/campaign_fetch.php:971
+#: includes/campaign_fetch.php:991
 msgid "Save Featured image file failed:"
 msgstr "Salvarea fișierului imaginii reprezentative a eșuat:"
 
-#: includes/campaign_fetch_functions.php:1000
+#: includes/campaign_fetch_functions.php:1004
 msgid "Fifu save set attachment from URL."
 msgstr "Fifu salvează atașamentul de la adresa URL."
 
-#: includes/campaign_fetch_functions.php:1089
+#: includes/campaign_fetch_functions.php:102
+#: includes/campaign_fetch_functions.php:112
+msgid "Cleaning Links from content."
+msgstr "Se curăță legăturile din conținut."
+
+#: includes/campaign_fetch_functions.php:1093
 msgid "Parsing Youtube video and feed item contents."
 msgstr "Se prelucrează videoclipul YouTube și conținutul elementului din flux."
 
-#: includes/campaign_fetch_functions.php:118
-msgid "Parsing Post template."
-msgstr "Se prelucrează șablonul de articol."
-
-#: includes/campaign_fetch_functions.php:1201
+#: includes/campaign_fetch_functions.php:1205
 msgid "Looking for audios in content."
 msgstr "Se caută fișiere audio în conținut."
 
-#: includes/campaign_fetch_functions.php:125
-msgid "Can't find the featured image to add to the content."
-msgstr "Nu se găsește imaginea reprezentativă de adăugat în conținut."
+#: includes/campaign_fetch_functions.php:122
+msgid "Parsing Post template."
+msgstr "Se prelucrează șablonul de articol."
 
-#: includes/campaign_fetch_functions.php:1252
-#: includes/campaign_fetch_functions.php:1408
+#: includes/campaign_fetch_functions.php:1256
+#: includes/campaign_fetch_functions.php:1412
 msgid "Upload file failed:"
 msgstr "Încărcarea fișierului a eșuat:"
 
-#: includes/campaign_fetch_functions.php:1270
+#: includes/campaign_fetch_functions.php:1274
 msgid "Using remotely linked audios in content. No changes."
 msgstr "Fișierele audio rămân legate extern în conținut. Nicio modificare."
 
-#: includes/campaign_fetch_functions.php:1356
+#: includes/campaign_fetch_functions.php:129
+msgid "Can't find the featured image to add to the content."
+msgstr "Nu se găsește imaginea reprezentativă de adăugat în conținut."
+
+#: includes/campaign_fetch_functions.php:1360
 msgid "Looking for videos in content."
 msgstr "Se caută videoclipuri în conținut."
 
-#: includes/campaign_fetch_functions.php:1426
+#: includes/campaign_fetch_functions.php:1430
 msgid "Using remotely linked videos in content. No changes."
 msgstr "Videoclipurile rămân legate extern în conținut. Nicio modificare."
 
-#: includes/campaign_fetch_functions.php:1459
+#: includes/campaign_fetch_functions.php:1463
 msgid "Skipping standard videos..."
 msgstr "Se sar videoclipurile obișnuite…"
 
-#: includes/campaign_fetch_functions.php:1465
+#: includes/campaign_fetch_functions.php:1469
 msgid "Skipping Youtube Short..."
 msgstr "Se sare un YouTube Short…"
 
-#: includes/campaign_fetch_functions.php:242
+#: includes/campaign_fetch_functions.php:246
 msgid "Processing Words to Category %s"
 msgstr "Se procesează Cuvinte în categoria %s"
 
-#: includes/campaign_fetch_functions.php:272
+#: includes/campaign_fetch_functions.php:276
 msgid "Found!: word %1$s to Cat_id %2$s"
 msgstr "Găsit!: cuvântul %1$s către categoria %2$s"
 
-#: includes/campaign_fetch_functions.php:277
+#: includes/campaign_fetch_functions.php:281
 msgid "Not found word %s"
 msgstr "Cuvântul %s nu a fost găsit"
 
-#: includes/campaign_fetch_functions.php:284
+#: includes/campaign_fetch_functions.php:288
 msgid "Searching the category with more words."
 msgstr "Se caută categoria cu cele mai multe cuvinte."
 
-#: includes/campaign_fetch_functions.php:300
+#: includes/campaign_fetch_functions.php:304
 msgid "The category with more words in content: %s"
 msgstr "Categoria cu cele mai multe cuvinte în conținut: %s"
 
-#: includes/campaign_fetch_functions.php:307
+#: includes/campaign_fetch_functions.php:311
 msgid "Assign the first category: %s"
 msgstr "Se atribuie prima categorie: %s"
 
-#: includes/campaign_fetch_functions.php:462
+#: includes/campaign_fetch_functions.php:466
 msgid "Looking for images in content."
 msgstr "Se caută imagini în conținut."
 
-#: includes/campaign_fetch_functions.php:471
-#: includes/campaign_fetch_functions.php:1205
-#: includes/campaign_fetch_functions.php:1360
+#: includes/campaign_fetch_functions.php:475
+#: includes/campaign_fetch_functions.php:1209
+#: includes/campaign_fetch_functions.php:1364
 msgid "Uploading media..."
 msgstr "Se încarcă fișierele media…"
 
-#: includes/campaign_fetch_functions.php:529
+#: includes/campaign_fetch_functions.php:533
 msgid "Save image file failed:"
 msgstr "Salvarea fișierului imagine a eșuat:"
 
-#: includes/campaign_fetch_functions.php:540
-#: includes/campaign_fetch_functions.php:1259
-#: includes/campaign_fetch_functions.php:1415
+#: includes/campaign_fetch_functions.php:544
+#: includes/campaign_fetch_functions.php:1263
+#: includes/campaign_fetch_functions.php:1419
 msgid "Extension not allowed: "
 msgstr "Extensie nepermisă: "
 
-#: includes/campaign_fetch_functions.php:543
-#: includes/campaign_fetch_functions.php:1261
-#: includes/campaign_fetch_functions.php:1417
+#: includes/campaign_fetch_functions.php:547
+#: includes/campaign_fetch_functions.php:1265
+#: includes/campaign_fetch_functions.php:1421
 msgid "Stripped src."
 msgstr "Atributul src a fost curățat."
 
-#: includes/campaign_fetch_functions.php:561
+#: includes/campaign_fetch_functions.php:565
 msgid "Using remotely linked images in content. No changes."
 msgstr "Imaginile rămân legate extern în conținut. Nicio modificare."
 
-#: includes/campaign_fetch_functions.php:598
+#: includes/campaign_fetch_functions.php:602
 msgid "Attaching file:"
 msgstr "Se atașează fișierul:"
 
-#: includes/campaign_fetch_functions.php:601
+#: includes/campaign_fetch_functions.php:605
 msgid "Sorry, the attachment could not be inserted. An error has occurred."
 msgstr "Ne pare rău, atașamentul nu a putut fi inserat. A apărut o eroare."
 
-#: includes/campaign_fetch_functions.php:636
+#: includes/campaign_fetch_functions.php:640
 msgid "Executing featured image selector..."
 msgstr "Se execută selectorul de imagine reprezentativă…"
 
-#: includes/campaign_fetch_functions.php:640
+#: includes/campaign_fetch_functions.php:644
 msgid "Featured image \"%1$s\": %2$s"
 msgstr "Imagine reprezentativă „%1$s”: %2$s"
 
-#: includes/campaign_fetch_functions.php:643
+#: includes/campaign_fetch_functions.php:647
 msgid "No image was found according to the selected index."
 msgstr "Nu s-a găsit nicio imagine la indexul selectat."
 
-#: includes/campaign_fetch_functions.php:648
+#: includes/campaign_fetch_functions.php:652
 msgid "The first image was not found in the content."
 msgstr "Prima imagine nu a fost găsită în conținut."
 
-#: includes/campaign_fetch_functions.php:650
+#: includes/campaign_fetch_functions.php:654
 msgid "Using first image as the featured image."
 msgstr "Prima imagine este folosită ca imagine reprezentativă."
 
-#: includes/campaign_fetch_functions.php:656
+#: includes/campaign_fetch_functions.php:660
 msgid "The last image was not found in the content."
 msgstr "Ultima imagine nu a fost găsită în conținut."
 
-#: includes/campaign_fetch_functions.php:658
+#: includes/campaign_fetch_functions.php:662
 msgid "Using last image as the featured image."
 msgstr "Ultima imagine este folosită ca imagine reprezentativă."
 
@@ -1987,48 +2085,43 @@ msgstr "Ultima imagine este folosită ca imagine reprezentativă."
 msgid "Deleting html tags: %s"
 msgstr "Se șterg etichetele HTML: %s"
 
-#: includes/campaign_fetch_functions.php:865
+#: includes/campaign_fetch_functions.php:869
 msgid "Getting srcset attribute..."
 msgstr "Se citește atributul srcset…"
 
-#: includes/campaign_fetch_functions.php:890
+#: includes/campaign_fetch_functions.php:894
 msgid "Overriding src attribute with value: %s from srcset."
 msgstr "Atributul src este înlocuit cu valoarea %s din srcset."
 
-#: includes/campaign_fetch_functions.php:937
-#: includes/campaign_fetch_functions.php:1178
-#: includes/campaign_fetch_functions.php:1333
+#: includes/campaign_fetch_functions.php:941
+#: includes/campaign_fetch_functions.php:1182
+#: includes/campaign_fetch_functions.php:1337
 msgid "Removing: %s from content."
 msgstr "Se elimină %s din conținut."
 
-#: includes/campaign_fetch_functions.php:945
+#: includes/campaign_fetch_functions.php:949
 msgid "Link with image URI not found in src."
 msgstr "Legătura cu URI-ul imaginii nu a fost găsită în src."
 
-#: includes/campaign_fetch_functions.php:948
+#: includes/campaign_fetch_functions.php:952
 msgid "Successfully removed with anchor link."
 msgstr "Eliminat cu succes, împreună cu legătura."
 
-#: includes/campaign_fetch_functions.php:954
+#: includes/campaign_fetch_functions.php:958
 msgid "Image URI not found in src."
 msgstr "URI-ul imaginii nu a fost găsit în src."
 
-#: includes/campaign_fetch_functions.php:957
+#: includes/campaign_fetch_functions.php:961
 msgid "Successfully removed."
 msgstr "Eliminat cu succes."
 
-#: includes/campaign_fetch_functions.php:968
+#: includes/campaign_fetch_functions.php:972
 msgid "Setting up Featured Image From Url"
 msgstr "Se configurează Featured Image From Url"
 
-#: includes/campaign_fetch_functions.php:971
+#: includes/campaign_fetch_functions.php:975
 msgid "Adding featured image post meta: "
 msgstr "Se adaugă metadata imaginii reprezentative: "
-
-#: includes/campaign_fetch_functions.php:98
-#: includes/campaign_fetch_functions.php:108
-msgid "Cleaning Links from content."
-msgstr "Se curăță legăturile din conținut."
 
 #: includes/campaign_help.php:101
 msgid "Use [embed]"
@@ -2331,7 +2424,7 @@ msgstr ""
 msgid "Duplicate options for this campaign"
 msgstr "Opțiunile de duplicate ale acestei campanii"
 
-#: includes/campaign_help.php:238 includes/settings/help.php:202
+#: includes/campaign_help.php:238 includes/settings/help.php:207
 msgid ""
 "Turns off both duplicate checks, so every item is published again on every "
 "run. Almost never what you want."
@@ -2339,11 +2432,11 @@ msgstr ""
 "Oprește ambele verificări de duplicate, așa că fiecare element se publică "
 "din nou la fiecare rulare. Aproape niciodată ce vrei."
 
-#: includes/campaign_help.php:239 includes/settings/help.php:203
+#: includes/campaign_help.php:239 includes/settings/help.php:208
 msgid "The two checks"
 msgstr "Cele două verificări"
 
-#: includes/campaign_help.php:239 includes/settings/help.php:203
+#: includes/campaign_help.php:239 includes/settings/help.php:208
 msgid ""
 "the post title, and a hash of the last item address the campaign read. The "
 "hash is the reliable one; titles alone fail often."
@@ -2369,7 +2462,7 @@ msgstr ""
 "elemente cu același titlu, folosește „Permite titluri duplicate” și lasă "
 "verificarea după hash pornită."
 
-#: includes/campaign_help.php:244 includes/settings/help.php:208
+#: includes/campaign_help.php:244 includes/settings/help.php:213
 msgid ""
 "The campaign skips each duplicate and keeps looking for new items, instead "
 "of stopping at the first one. Not recommended."
@@ -2377,11 +2470,11 @@ msgstr ""
 "Campania sare peste fiecare duplicat și caută mai departe elemente noi, în "
 "loc să se oprească la primul. Nerecomandat."
 
-#: includes/campaign_help.php:245 includes/settings/help.php:209
+#: includes/campaign_help.php:245 includes/settings/help.php:214
 msgid "How it works"
 msgstr "Cum funcționează"
 
-#: includes/campaign_help.php:245 includes/settings/help.php:209
+#: includes/campaign_help.php:245 includes/settings/help.php:214
 msgid ""
 "feed items come ordered newest first, so the campaign reads from the top and "
 "stops at the first item it already has: everything below it is older and "
@@ -2391,7 +2484,7 @@ msgstr ""
 "citește de sus și se oprește la primul element pe care îl are deja: tot ce "
 "urmează e mai vechi și deja publicat."
 
-#: includes/campaign_help.php:246 includes/settings/help.php:210
+#: includes/campaign_help.php:246 includes/settings/help.php:215
 msgid ""
 "The hash only covers the last item read, so on a feed where the title check "
 "works poorly this option can publish the same item twice."
@@ -2400,7 +2493,7 @@ msgstr ""
 "verificarea după titlu merge prost această opțiune poate publica același "
 "element de două ori."
 
-#: includes/campaign_help.php:250 includes/settings/help.php:219
+#: includes/campaign_help.php:250 includes/settings/help.php:224
 msgid ""
 "One more query per item. Turn it on only if you still get duplicates, which "
 "happens with feeds that do not follow the standard."
@@ -2468,7 +2561,7 @@ msgstr ""
 "campania s-ar opri prea devreme și ar pierde elemente."
 
 #: includes/campaign_help.php:311 includes/settings/help.php:147
-#: includes/module/actions.php:204
+#: includes/module/actions.php:213
 msgid "Words to Categories"
 msgstr "Cuvinte în categorii"
 
@@ -2829,11 +2922,11 @@ msgid "Filtering out duplicates."
 msgstr "Se filtrează duplicatele."
 
 #: includes/campaign_preview.php:251 includes/campaign_preview_item.php:178
-#: includes/campaign_preview_item.php:295
+#: includes/campaign_preview_item.php:274
 msgid "You do not have sufficient permissions to preview this campaign."
 msgstr "Nu ai drepturi suficiente pentru a previzualiza această campanie."
 
-#: includes/campaign_preview.php:362 includes/campaign_preview_item.php:353
+#: includes/campaign_preview.php:362 includes/campaign_preview_item.php:332
 msgid "WPeMatico Preview Feed"
 msgstr "Previzualizare flux WPeMatico"
 
@@ -2854,21 +2947,21 @@ msgstr "Acțiuni"
 msgid "Next fetch"
 msgstr "Următoarea preluare"
 
-#: includes/campaign_preview.php:450 includes/campaign_preview_item.php:378
+#: includes/campaign_preview.php:450 includes/campaign_preview_item.php:357
 msgid "Fetch Now"
 msgstr "Preia acum"
 
-#: includes/campaign_preview.php:46 includes/campaign_preview_item.php:276
+#: includes/campaign_preview.php:46 includes/campaign_preview_item.php:255
 msgid "This action comes with the Manual Fetching add-on."
 msgstr "Această acțiune vine cu suplimentul Manual Fetching."
 
 #: includes/campaign_preview_item.php:187
-#: includes/campaign_preview_item.php:303
+#: includes/campaign_preview_item.php:282
 msgid "The item is invalid."
 msgstr "Elementul nu este valid."
 
 #: includes/campaign_preview_item.php:194
-#: includes/campaign_preview_item.php:310
+#: includes/campaign_preview_item.php:289
 msgid "The feed is invalid."
 msgstr "Fluxul nu este valid."
 
@@ -2876,11 +2969,11 @@ msgstr "Fluxul nu este valid."
 msgid "The item could not be previewed."
 msgstr "Elementul nu a putut fi previzualizat."
 
-#: includes/campaign_preview_item.php:396
+#: includes/campaign_preview_item.php:375
 msgid "Loading post title..."
 msgstr "Se încarcă titlul articolului…"
 
-#: includes/campaign_preview_item.php:400
+#: includes/campaign_preview_item.php:379
 msgid "Loading post content..."
 msgstr "Se încarcă conținutul articolului…"
 
@@ -4613,7 +4706,7 @@ msgstr "Preia fluxul"
 #: includes/debug_page.php:3712 includes/wpematico_functions.php:2987
 #: includes/wpematico_functions.php:3012 includes/wpematico_functions.php:3208
 #: includes/wpematico_functions.php:3387 includes/xml-importer.php:361
-#: includes/settings/page.php:1265 includes/module/manager.php:265
+#: includes/settings/page.php:1277 includes/module/manager.php:265
 msgid "Permission denied"
 msgstr "Permisiune refuzată"
 
@@ -4647,13 +4740,13 @@ msgstr "Copiat în clipboard."
 
 #: includes/debug_page.php:607 includes/tools_page.php:702
 #: includes/xml-importer.php:370 includes/settings/page.php:124
-#: includes/settings/page.php:1119
+#: includes/settings/page.php:1131
 msgid "Invalid request."
 msgstr "Cerere nevalidă."
 
 #: includes/debug_page.php:607 includes/tools_page.php:702
 #: includes/wpematico_functions.php:3378 includes/xml-importer.php:370
-#: includes/settings/page.php:124 includes/settings/page.php:1119
+#: includes/settings/page.php:124 includes/settings/page.php:1131
 msgid "Invalid request"
 msgstr "Cerere nevalidă"
 
@@ -7107,7 +7200,7 @@ msgid "Publish the curated content as forum topics, or as replies to them."
 msgstr ""
 "Publică conținutul adunat ca subiecte de forum sau ca răspunsuri la ele."
 
-#: includes/module/actions.php:162 includes/module/actions.php:201
+#: includes/module/actions.php:162 includes/module/actions.php:210
 msgid "Enable it in a campaign by choosing its Campaign Type."
 msgstr "Activează-l într-o campanie alegându-i tipul de campanie."
 
@@ -7153,32 +7246,46 @@ msgstr ""
 "canalului sau grupului, iar campania își găsește singură fluxul."
 
 #: includes/module/actions.php:195
+msgid "Publish the news of a Google News search, topic or publication."
+msgstr ""
+"Publică știrile unei căutări, ale unui subiect sau ale unei publicații "
+"Google News."
+
+#: includes/module/actions.php:199
+msgid ""
+"Adds Google News to the Campaign Type list. Paste the address of the search, "
+"topic or publication and the campaign finds its feed on its own."
+msgstr ""
+"Adaugă Google News în lista tipurilor de campanie. Lipește adresa căutării, "
+"a subiectului sau a publicației, iar campania își găsește singură fluxul."
+
+#: includes/module/actions.php:204
 msgid "Import videos from YouTube channels."
 msgstr "Importă videoclipuri din canale YouTube."
 
-#: includes/module/actions.php:205
+#: includes/module/actions.php:214
 msgid ""
 "Assign categories automatically from the words found in the curated content."
 msgstr ""
 "Atribuie categorii automat, după cuvintele găsite în conținutul adunat."
 
-#: includes/module/actions.php:209
+#: includes/module/actions.php:218
 msgid "Set the words and the category each one maps to in the Settings page."
 msgstr ""
 "Stabilește cuvintele și categoria corespunzătoare fiecăruia în pagina de "
 "setări."
 
-#: includes/module/actions.php:213
+#: includes/module/actions.php:222
 msgid "Canonical URLs"
 msgstr "URL-uri canonice"
 
-#: includes/module/actions.php:214
+#: includes/module/actions.php:223
 msgid ""
 "Credit the original article with a canonical URL on every imported post."
 msgstr ""
 "Creditează articolul original cu un URL canonic pe fiecare articol importat."
 
-#: includes/module/actions.php:218
+#: includes/module/actions.php:227
 msgid ""
 "Tells search engines which is the original article, so the copy is not "
 "judged as duplicate content."
@@ -7186,15 +7293,15 @@ msgstr ""
 "Le spune motoarelor de căutare care este articolul original, ca să nu fie "
 "copia considerată conținut duplicat."
 
-#: includes/module/actions.php:222
+#: includes/module/actions.php:231
 msgid "Download Images"
 msgstr "Descarcă imaginile"
 
-#: includes/module/actions.php:223
+#: includes/module/actions.php:232
 msgid "Download the images of each item into the WordPress Media Library."
 msgstr "Descarcă imaginile fiecărui element în biblioteca media WordPress."
 
-#: includes/module/actions.php:228
+#: includes/module/actions.php:237
 msgid ""
 "Turn it on here; the size, quality and naming options are in the Settings "
 "page."
@@ -7202,11 +7309,11 @@ msgstr ""
 "Pornește-l de aici; opțiunile de dimensiune, calitate și denumire sunt în "
 "pagina de setări."
 
-#: includes/module/actions.php:231
+#: includes/module/actions.php:240
 msgid "Featured Images"
 msgstr "Imagini reprezentative"
 
-#: includes/module/actions.php:232
+#: includes/module/actions.php:241
 msgid ""
 "Give every imported post a featured image, taken from the first image of the "
 "item."
@@ -7214,7 +7321,7 @@ msgstr ""
 "Dă fiecărui articol importat o imagine reprezentativă, luată din prima "
 "imagine a elementului."
 
-#: includes/module/actions.php:237
+#: includes/module/actions.php:246
 msgid ""
 "Each campaign can override it, and the Featured Image from URL module "
 "decides whether the image is downloaded or linked."
@@ -7222,24 +7329,24 @@ msgstr ""
 "Fiecare campanie poate schimba asta, iar extensia Imagine reprezentativă "
 "dintr-un URL decide dacă imaginea e descărcată sau doar legată."
 
-#: includes/module/actions.php:241
+#: includes/module/actions.php:250
 msgid "Email Notifications"
 msgstr "Notificări pe email"
 
-#: includes/module/actions.php:242
+#: includes/module/actions.php:251
 msgid "Get an email report every time a campaign finishes a run."
 msgstr ""
 "Primește un raport pe email de fiecare dată când o campanie termină o rulare."
 
-#: includes/module/actions.php:248
+#: includes/module/actions.php:257
 msgid "Deactivate in each campaign by clearing the email field."
 msgstr "Dezactivează în fiecare campanie golind câmpul de email."
 
-#: includes/module/actions.php:251
+#: includes/module/actions.php:260
 msgid "Random Galleries"
 msgstr "Galerii aleatorii"
 
-#: includes/module/actions.php:252
+#: includes/module/actions.php:261
 msgid ""
 "Group images by topic and give each post a featured image picked at random "
 "from its gallery."
@@ -7247,37 +7354,37 @@ msgstr ""
 "Grupează imaginile pe teme și dă fiecărui articol o imagine reprezentativă "
 "aleasă la întâmplare din galeria lui."
 
-#: includes/module/actions.php:258 includes/module/actions.php:269
-#: includes/module/actions.php:652 includes/module/actions.php:664
-#: includes/module/actions.php:687
+#: includes/module/actions.php:267 includes/module/actions.php:278
+#: includes/module/actions.php:661 includes/module/actions.php:673
+#: includes/module/actions.php:696
 msgid "Available in the Professional addon."
 msgstr "Disponibil în suplimentul Professional."
 
-#: includes/module/actions.php:261
+#: includes/module/actions.php:270
 msgid "Random Rewrites"
 msgstr "Rescrieri aleatorii"
 
-#: includes/module/actions.php:262
+#: includes/module/actions.php:271
 msgid "Rewrite custom words randomly as synonyms."
 msgstr "Rescrie anumite cuvinte la întâmplare, cu sinonime."
 
-#: includes/module/actions.php:266
+#: includes/module/actions.php:275
 msgid ""
 "You must complete the words separated by comma and per line in the textarea."
 msgstr ""
 "Trebuie să completezi cuvintele separate prin virgulă, câte o linie pentru "
 "fiecare set, în caseta de text."
 
-#: includes/module/actions.php:310
+#: includes/module/actions.php:319
 msgid "Turning this off deactivates the %s plugin."
 msgstr "Dacă oprești asta, modulul %s se dezactivează."
 
-#: includes/module/actions.php:312
+#: includes/module/actions.php:321
 msgid "The plugin is installed but not running. Turning this on activates %s."
 msgstr ""
 "Modulul este instalat, dar nu rulează. Dacă pornești asta, se activează %s."
 
-#: includes/module/actions.php:318
+#: includes/module/actions.php:327
 msgid ""
 "%s is not installed yet. Install it from here, free, and this switch turns "
 "it on."
@@ -7285,61 +7392,61 @@ msgstr ""
 "%s nu este încă instalat. Instalează-l de aici, gratuit, iar acest comutator "
 "îl va porni."
 
-#: includes/module/actions.php:322
+#: includes/module/actions.php:331
 msgid "Needs the %s addon. Get it at etruel.com and this switch enables it."
 msgstr ""
 "Necesită suplimentul %s. Ia-l de pe etruel.com și acest comutator îl va "
 "activa."
 
-#: includes/module/actions.php:361 includes/module/actions.php:435
+#: includes/module/actions.php:370 includes/module/actions.php:444
 msgid ""
 "%s is installed but not active. Turn it on and this module becomes available."
 msgstr ""
 "%s este instalat, dar nu este activ. Pornește-l și această extensie devine "
 "disponibilă."
 
-#: includes/module/actions.php:420
+#: includes/module/actions.php:429
 msgid "It also needs the free %s plugin."
 msgstr "Are nevoie și de modulul gratuit %s."
 
-#: includes/module/actions.php:440
+#: includes/module/actions.php:449
 msgid "Needs the free %s plugin, which is not installed yet."
 msgstr "Necesită modulul gratuit %s, care nu este încă instalat."
 
-#: includes/module/actions.php:441 includes/module/dashboard.php:62
+#: includes/module/actions.php:450 includes/module/dashboard.php:62
 #: includes/module/manager.php:194
 msgid "Install"
 msgstr "Instalează"
 
-#: includes/module/actions.php:516
+#: includes/module/actions.php:525
 msgid "Delete Duplicates"
 msgstr "Șterge duplicatele"
 
-#: includes/module/actions.php:517
+#: includes/module/actions.php:526
 msgid "Automatically search and delete duplicated posts by name or content."
 msgstr ""
 "Caută și șterge automat articolele duplicate după nume sau după conținut."
 
-#: includes/module/actions.php:522
+#: includes/module/actions.php:531
 msgid "Installs the free WP Delete Post Copies plugin from WordPress.org."
 msgstr "Instalează modulul gratuit WP Delete Post Copies de pe WordPress.org."
 
-#: includes/module/actions.php:526
+#: includes/module/actions.php:535
 msgid "WPeMatico Polylang"
 msgstr "WPeMatico Polylang"
 
-#: includes/module/actions.php:527
+#: includes/module/actions.php:536
 msgid ""
 "Assigns the imported posts to the right language on sites running Polylang."
 msgstr ""
 "Atribuie articolele importate limbii potrivite pe siturile care folosesc "
 "Polylang."
 
-#: includes/module/actions.php:532
+#: includes/module/actions.php:541
 msgid "Installs the free WPeMatico Polylang plugin from WordPress.org."
 msgstr "Instalează modulul gratuit WPeMatico Polylang de pe WordPress.org."
 
-#: includes/module/actions.php:539
+#: includes/module/actions.php:548
 msgid ""
 "The addon files each imported post under a language, and languages only "
 "exist while Polylang runs."
@@ -7347,11 +7454,11 @@ msgstr ""
 "Suplimentul încadrează fiecare articol importat într-o limbă, iar limbile "
 "există doar cât timp rulează Polylang."
 
-#: includes/module/actions.php:544
+#: includes/module/actions.php:553
 msgid "RSS Items Aggregator"
 msgstr "Agregator de elemente RSS"
 
-#: includes/module/actions.php:545
+#: includes/module/actions.php:554
 msgid ""
 "Also known as RSS Feed Reader: shows the items of several feeds inside one "
 "post or page."
@@ -7359,23 +7466,23 @@ msgstr ""
 "Cunoscut și ca RSS Feed Reader: arată elementele mai multor fluxuri într-un "
 "singur articol sau pagină."
 
-#: includes/module/actions.php:550
+#: includes/module/actions.php:559
 msgid "Installs the free WPeMatico RSS Feed Reader plugin from WordPress.org."
 msgstr ""
 "Instalează modulul gratuit WPeMatico RSS Feed Reader de pe WordPress.org."
 
-#: includes/module/actions.php:551
+#: includes/module/actions.php:560
 msgid "Requires WPeMatico RSS Feed Reader"
 msgstr "Necesită WPeMatico RSS Feed Reader"
 
-#: includes/module/actions.php:561
+#: includes/module/actions.php:570
 msgid ""
 "Use the image at its original URL as featured image, without downloading it."
 msgstr ""
 "Folosește imaginea de la adresa ei originală ca imagine reprezentativă, fără "
 "să o descarce."
 
-#: includes/module/actions.php:568
+#: includes/module/actions.php:577
 msgid ""
 "Featured Images is off, so nothing picks the image to link — unless an addon "
 "such as Professional or Full Content supplies one."
@@ -7383,7 +7490,7 @@ msgstr ""
 "Imagini reprezentative este oprit, deci nimic nu alege imaginea de legat — "
 "decât dacă o oferă un supliment precum Professional sau Full Content."
 
-#: includes/module/actions.php:569
+#: includes/module/actions.php:578
 msgid ""
 "The image is linked from its original site instead of being downloaded, so "
 "it takes up no space in your Media Library."
@@ -7391,7 +7498,7 @@ msgstr ""
 "Imaginea este legată de pe situl ei original în loc să fie descărcată, așa "
 "că nu ocupă spațiu în biblioteca ta media."
 
-#: includes/module/actions.php:578
+#: includes/module/actions.php:587
 msgid ""
 "WPeMatico stores the image URL on each post; that plugin is what turns it "
 "into the featured image WordPress shows."
@@ -7399,22 +7506,22 @@ msgstr ""
 "WPeMatico salvează adresa imaginii pe fiecare articol; acel modul este cel "
 "care o transformă în imaginea reprezentativă pe care o arată WordPress."
 
-#: includes/module/actions.php:589
+#: includes/module/actions.php:598
 msgid "Auto Delete"
 msgstr "Ștergere automată"
 
-#: includes/module/actions.php:590
+#: includes/module/actions.php:599
 msgid ""
 "Delete the posts of the categories you choose once they reach a given age."
 msgstr ""
 "Șterge articolele din categoriile pe care le alegi, odată ce ating o anumită "
 "vechime."
 
-#: includes/module/actions.php:596
+#: includes/module/actions.php:605
 msgid "Helpful if you want to remove stale or old items automatically."
 msgstr "Util dacă vrei să scapi automat de elementele vechi sau depășite."
 
-#: includes/module/actions.php:604
+#: includes/module/actions.php:613
 msgid ""
 "The addon extends that free plugin, the same one the Delete Duplicates card "
 "installs."
@@ -7422,11 +7529,11 @@ msgstr ""
 "Suplimentul extinde acel modul gratuit, același pe care îl instalează cardul "
 "Șterge duplicatele."
 
-#: includes/module/actions.php:609
+#: includes/module/actions.php:618
 msgid "Polyglot"
 msgstr "Polyglot"
 
-#: includes/module/actions.php:610
+#: includes/module/actions.php:619
 msgid ""
 "Translate the fetched content with any of several free and paid translation "
 "engines."
@@ -7434,100 +7541,100 @@ msgstr ""
 "Traduce conținutul preluat cu oricare dintre mai multe motoare de traducere, "
 "gratuite sau cu plată."
 
-#: includes/module/actions.php:617
+#: includes/module/actions.php:626
 msgid "Requires WPeMatico Polyglot addon"
 msgstr "Necesită suplimentul WPeMatico Polyglot"
 
-#: includes/module/actions.php:621
+#: includes/module/actions.php:630
 msgid "GPT Spinner AI"
 msgstr "GPT Spinner AI"
 
-#: includes/module/actions.php:622
+#: includes/module/actions.php:631
 msgid "Rewrite the fetched content automatically through an AI or spinner API."
 msgstr "Rescrie automat conținutul preluat printr-un API de IA sau de spinner."
 
-#: includes/module/actions.php:629
+#: includes/module/actions.php:638
 msgid "Requires AI addon"
 msgstr "Necesită suplimentul de IA"
 
-#: includes/module/actions.php:633
+#: includes/module/actions.php:642
 msgid "Full Contents"
 msgstr "Conținut complet"
 
-#: includes/module/actions.php:634
+#: includes/module/actions.php:643
 msgid "Enable full content extraction from each source website."
 msgstr "Activează extragerea conținutului complet de pe fiecare sit sursă."
 
-#: includes/module/actions.php:641
+#: includes/module/actions.php:650
 msgid "Requires WPeMatico Full Content addon"
 msgstr "Necesită suplimentul WPeMatico Full Content"
 
-#: includes/module/actions.php:645
+#: includes/module/actions.php:654
 msgid "Bulk Add Sources"
 msgstr "Adăugare în masă de surse"
 
-#: includes/module/actions.php:646
+#: includes/module/actions.php:655
 msgid ""
 "Paste or upload a list of feeds to add many sources to a campaign at once."
 msgstr ""
 "Lipește sau încarcă o listă de fluxuri ca să adaugi multe surse într-o "
 "campanie dintr-o dată."
 
-#: includes/module/actions.php:653
+#: includes/module/actions.php:662
 msgid "A Professional feature, you can activate it here."
 msgstr "O funcționalitate Professional, pe care o poți activa aici."
 
-#: includes/module/actions.php:657
+#: includes/module/actions.php:666
 msgid "Keyword Filtering"
 msgstr "Filtrare după cuvinte-cheie"
 
-#: includes/module/actions.php:658
+#: includes/module/actions.php:667
 msgid ""
 "Keep or skip each item by the keywords found in its title or its content."
 msgstr ""
 "Păstrează sau sari peste fiecare element după cuvintele-cheie găsite în "
 "titlul sau în conținutul lui."
 
-#: includes/module/actions.php:668
+#: includes/module/actions.php:677
 msgid "Facebook Source"
 msgstr "Sursă Facebook"
 
-#: includes/module/actions.php:669
+#: includes/module/actions.php:678
 msgid "Import content from Facebook profiles and groups."
 msgstr "Importă conținut din profiluri și grupuri Facebook."
 
-#: includes/module/actions.php:676
+#: includes/module/actions.php:685
 msgid "Requires Facebook Campaign addon"
 msgstr "Necesită suplimentul Facebook Campaign"
 
-#: includes/module/actions.php:680
+#: includes/module/actions.php:689
 msgid "Export/Import Campaigns"
 msgstr "Exportă/importă campanii"
 
-#: includes/module/actions.php:681
+#: includes/module/actions.php:690
 msgid "Migrate campaigns between sites."
 msgstr "Mută campanii între situri."
 
-#: includes/module/actions.php:691
+#: includes/module/actions.php:700
 msgid "Feed Creator"
 msgstr "Feed Creator"
 
-#: includes/module/actions.php:692
+#: includes/module/actions.php:701
 msgid ""
 "Generate custom RSS feeds from external webpages to fetch with WPeMatico."
 msgstr ""
 "Generează fluxuri RSS personalizate din pagini web externe, ca să le preia "
 "WPeMatico."
 
-#: includes/module/actions.php:699
+#: includes/module/actions.php:708
 msgid "Requires \"Make Me Feed\" addon"
 msgstr "Necesită suplimentul „Make Me Feed”"
 
-#: includes/module/actions.php:703
+#: includes/module/actions.php:712
 msgid "Publish To Email"
 msgstr "Publicare prin email"
 
-#: includes/module/actions.php:704
+#: includes/module/actions.php:713
 msgid ""
 "Mail each post of a campaign to an address that publishes it, instead of "
 "publishing it here or as well as here."
@@ -7535,15 +7642,15 @@ msgstr ""
 "Trimite fiecare articol al unei campanii către o adresă care îl publică, în "
 "loc să-l publici aici — sau pe lângă asta."
 
-#: includes/module/actions.php:711
+#: includes/module/actions.php:720
 msgid "Requires Email Campaign addon"
 msgstr "Necesită suplimentul Email Campaign"
 
-#: includes/module/actions.php:715
+#: includes/module/actions.php:724
 msgid "Better Excerpts"
 msgstr "Rezumate mai bune"
 
-#: includes/module/actions.php:716
+#: includes/module/actions.php:725
 msgid ""
 "Cut the excerpt at the length you set and back to the end of the last whole "
 "sentence, never mid-word."
@@ -7551,15 +7658,15 @@ msgstr ""
 "Taie rezumatul la lungimea pe care o stabilești, revenind la finalul ultimei "
 "propoziții întregi, niciodată la mijloc de cuvânt."
 
-#: includes/module/actions.php:723
+#: includes/module/actions.php:732
 msgid "Requires Better Excerpts addon"
 msgstr "Necesită suplimentul Better Excerpts"
 
-#: includes/module/actions.php:727
+#: includes/module/actions.php:736
 msgid "Synchronizer"
 msgstr "Synchronizer"
 
-#: includes/module/actions.php:728
+#: includes/module/actions.php:737
 msgid ""
 "Update the posts you already imported when the source article changes, "
 "instead of publishing a duplicate."
@@ -7567,15 +7674,15 @@ msgstr ""
 "Actualizează articolele deja importate când se schimbă articolul sursă, în "
 "loc să publici un duplicat."
 
-#: includes/module/actions.php:735
+#: includes/module/actions.php:744
 msgid "Requires Synchronizer addon"
 msgstr "Necesită suplimentul Synchronizer"
 
-#: includes/module/actions.php:739
+#: includes/module/actions.php:748
 msgid "Manual Fetching"
 msgstr "Preluare manuală"
 
-#: includes/module/actions.php:740
+#: includes/module/actions.php:749
 msgid ""
 "See the items each feed will bring, and publish the ones you choose one by "
 "one or in bulk."
@@ -7583,15 +7690,15 @@ msgstr ""
 "Vezi ce elemente va aduce fiecare flux și publică-le pe cele alese, unul "
 "câte unul sau în masă."
 
-#: includes/module/actions.php:747
+#: includes/module/actions.php:756
 msgid "Requires Manual Fetching addon"
 msgstr "Necesită suplimentul Manual Fetching"
 
-#: includes/module/actions.php:751
+#: includes/module/actions.php:760
 msgid "Exporter"
 msgstr "Exporter"
 
-#: includes/module/actions.php:752
+#: includes/module/actions.php:761
 msgid ""
 "Export your posts to a file on a schedule, in the format your template "
 "defines, by download, folder, FTP or SSH."
@@ -7599,15 +7706,15 @@ msgstr ""
 "Exportă-ți articolele într-un fișier, după un program, în formatul definit "
 "de șablonul tău, prin descărcare, dosar, FTP sau SSH."
 
-#: includes/module/actions.php:759
+#: includes/module/actions.php:768
 msgid "Requires Exporter addon"
 msgstr "Necesită suplimentul Exporter"
 
-#: includes/module/actions.php:763
+#: includes/module/actions.php:772
 msgid "Office"
 msgstr "Office"
 
-#: includes/module/actions.php:764
+#: includes/module/actions.php:773
 msgid ""
 "Publish posts from the .docx and PDF files in a folder of your server, with "
 "their text and their images."
@@ -7615,31 +7722,31 @@ msgstr ""
 "Publică articole din fișierele .docx și PDF dintr-un dosar de pe serverul "
 "tău, cu textul și imaginile lor."
 
-#: includes/module/actions.php:771
+#: includes/module/actions.php:780
 msgid "Requires Office Campaign addon"
 msgstr "Necesită suplimentul Office Campaign"
 
-#: includes/module/actions.php:779
+#: includes/module/actions.php:788
 msgid "Rewrite Rules"
 msgstr "Reguli de rescriere"
 
-#: includes/module/actions.php:780
+#: includes/module/actions.php:789
 msgid "Search and replace words or HTML in the fetched content, per campaign."
 msgstr ""
 "Caută și înlocuiește cuvinte sau HTML în conținutul preluat, pentru fiecare "
 "campanie."
 
-#: includes/module/actions.php:787
+#: includes/module/actions.php:796
 msgid "Customer Support"
 msgstr "Asistență clienți"
 
-#: includes/module/actions.php:788
+#: includes/module/actions.php:797
 msgid ""
 "Free setup assistance and troubleshooting, or step up to Premium Support."
 msgstr ""
 "Ajutor gratuit la configurare și depanare, sau treci la asistența Premium."
 
-#: includes/module/actions.php:796
+#: includes/module/actions.php:805
 msgid "Requires registration at etruel.com"
 msgstr "Necesită înregistrare pe etruel.com"
 
@@ -8150,11 +8257,35 @@ msgstr ""
 "Vimeo publică ultimele 10 videoclipuri ale fiecăruia. Lasă asta oprit dacă "
 "nu folosești Vimeo: tipul de campanie nici măcar nu se încarcă."
 
-#: includes/settings/help.php:160 includes/settings/page.php:737
+#: includes/settings/help.php:160
+msgid "Google News campaign type"
+msgstr "Tip de campanie Google News"
+
+#: includes/settings/help.php:161
+msgid ""
+"Adds Google News to the campaign type list, to publish the news of a search, "
+"a topic or a publication. Paste the address and the campaign finds its feed "
+"on its own."
+msgstr ""
+"Adaugă Google News în lista tipurilor de campanie, ca să publici știrile "
+"unei căutări, ale unui subiect sau ale unei publicații. Lipește adresa și "
+"campania își găsește singură fluxul."
+
+#: includes/settings/help.php:162
+msgid ""
+"Each item brings the headline, the date and the name of the publication, and "
+"links to Google News. Leave this off if you do not use Google News: the "
+"campaign type is not loaded at all."
+msgstr ""
+"Fiecare element aduce titlul, data și numele publicației și trimite către "
+"Google News. Lasă asta oprit dacă nu folosești Google News: tipul de "
+"campanie nici măcar nu se încarcă."
+
+#: includes/settings/help.php:165 includes/settings/page.php:749
 msgid "Canonical URL to the source"
 msgstr "URL canonic către sursă"
 
-#: includes/settings/help.php:161
+#: includes/settings/help.php:166
 msgid ""
 "Each imported post declares the original article as its canonical URL. It "
 "does not work on every server."
@@ -8162,7 +8293,7 @@ msgstr ""
 "Fiecare articol importat declară articolul original ca URL canonic al său. "
 "Nu funcționează pe orice server."
 
-#: includes/settings/help.php:162
+#: includes/settings/help.php:167
 msgid ""
 "This tells search engines which copy of the article is the one to index, so "
 "your site is not penalised for duplicated content."
@@ -8170,11 +8301,11 @@ msgstr ""
 "Asta le spune motoarelor de căutare ce copie a articolului să indexeze, ca "
 "site-ul tău să nu fie penalizat pentru conținut duplicat."
 
-#: includes/settings/help.php:167
+#: includes/settings/help.php:172
 msgid "Force the bundled SimplePie library"
 msgstr "Forțează biblioteca SimplePie inclusă"
 
-#: includes/settings/help.php:168
+#: includes/settings/help.php:173
 msgid ""
 "Ignores the SimplePie that ships with WordPress. You only need this if that "
 "version gives you trouble."
@@ -8182,11 +8313,11 @@ msgstr ""
 "Ignoră SimplePie care vine cu WordPress. Ai nevoie de asta doar dacă acea "
 "versiune îți dă bătăi de cap."
 
-#: includes/settings/help.php:171 includes/settings/page.php:428
+#: includes/settings/help.php:176 includes/settings/page.php:428
 msgid "Set SimplePie \"stupidly fast\""
 msgstr "Pune SimplePie pe „stupidly fast”"
 
-#: includes/settings/help.php:172
+#: includes/settings/help.php:177
 msgid ""
 "SimplePie gives up most of its sanitizing in exchange for speed: the feed "
 "content arrives with no parsers and no filters."
@@ -8194,7 +8325,7 @@ msgstr ""
 "SimplePie renunță la aproape toată curățarea în schimbul vitezei: conținutul "
 "fluxului sosește fără analizoare și fără filtre."
 
-#: includes/settings/help.php:173
+#: includes/settings/help.php:178
 msgid ""
 "Nothing is stripped from the content: all HTML, styles and scripts come "
 "through. Use it only with feeds you trust; otherwise set the allowed tags "
@@ -8204,11 +8335,11 @@ msgstr ""
 "Folosește-l doar cu fluxuri în care ai încredere; altfel stabilește mai jos "
 "etichetele și atributele permise."
 
-#: includes/settings/help.php:176 includes/settings/page.php:436
+#: includes/settings/help.php:181 includes/settings/page.php:436
 msgid "HTML tags SimplePie strips"
 msgstr "Etichete HTML pe care SimplePie le scoate"
 
-#: includes/settings/help.php:177
+#: includes/settings/help.php:182
 msgid ""
 "SimplePie removes these tags from the feed content. Take one out to let it "
 "through, for example iframe to keep embedded videos."
@@ -8216,11 +8347,11 @@ msgstr ""
 "SimplePie scoate aceste etichete din conținutul fluxului. Scoate una din "
 "listă ca să treacă, de exemplu iframe pentru videoclipurile încorporate."
 
-#: includes/settings/help.php:180 includes/settings/page.php:446
+#: includes/settings/help.php:185 includes/settings/page.php:446
 msgid "HTML attributes SimplePie strips"
 msgstr "Atribute HTML pe care SimplePie le scoate"
 
-#: includes/settings/help.php:181
+#: includes/settings/help.php:186
 msgid ""
 "SimplePie removes these attributes from the tags in the content. Take one "
 "out to keep it, or add more to strip."
@@ -8228,11 +8359,11 @@ msgstr ""
 "SimplePie scoate și aceste atribute din etichetele conținutului. Scoate unul "
 "ca să îl păstrezi, sau adaugă altele."
 
-#: includes/settings/help.php:186 includes/settings/page.php:470
+#: includes/settings/help.php:191 includes/settings/page.php:470
 msgid "Let campaigns skip the content filters"
 msgstr "Permite campaniilor să sară peste filtrele de conținut"
 
-#: includes/settings/help.php:187
+#: includes/settings/help.php:192
 msgid ""
 "Adds a switch to every campaign that stores the feed content exactly as it "
 "comes, scripts included. Use it only with sources you trust."
@@ -8241,7 +8372,7 @@ msgstr ""
 "exact cum vine, cu scripturi cu tot. Folosește-l doar cu surse în care ai "
 "încredere."
 
-#: includes/settings/help.php:188
+#: includes/settings/help.php:193
 msgid ""
 "WordPress inserts the post as usual and the content is then written straight "
 "to the database, past every filter."
@@ -8249,15 +8380,15 @@ msgstr ""
 "WordPress inserează articolul ca de obicei, apoi conținutul se scrie direct "
 "în baza de date, pe lângă orice filtru."
 
-#: includes/settings/help.php:189
+#: includes/settings/help.php:194
 msgid "See How WordPress Processes Post Content: "
 msgstr "Vezi „How WordPress Processes Post Content”: "
 
-#: includes/settings/help.php:192
+#: includes/settings/help.php:197
 msgid "Timeout for a running campaign"
 msgstr "Timp de așteptare pentru o campanie în rulare"
 
-#: includes/settings/help.php:193
+#: includes/settings/help.php:198
 msgid ""
 "A campaign interrupted halfway stays marked as running until this many "
 "seconds have passed; then it runs again on its next schedule. Recommended: "
@@ -8266,15 +8397,15 @@ msgstr ""
 "O campanie întreruptă la jumătate rămâne marcată ca fiind în rulare atâtea "
 "secunde; apoi rulează din nou la următoarea programare. Recomandat: 300."
 
-#: includes/settings/help.php:194
+#: includes/settings/help.php:199
 msgid "Set 0 to keep it blocked until you click \"Clear campaign\" yourself."
 msgstr "Pune 0 ca să rămână blocată până apeși tu pe „Eliberează campania”."
 
-#: includes/settings/help.php:197
+#: includes/settings/help.php:202
 msgid "Pause after every post"
 msgstr "Pauză după fiecare articol"
 
-#: includes/settings/help.php:198
+#: includes/settings/help.php:203
 msgid ""
 "Waits this many seconds after inserting each post, to give the server a "
 "break on long runs. Leave 0 unless you have trouble."
@@ -8282,7 +8413,7 @@ msgstr ""
 "Așteaptă atâtea secunde după inserarea fiecărui articol, ca să dea "
 "serverului un răgaz la rulările lungi. Lasă 0 dacă nu ai probleme."
 
-#: includes/settings/help.php:204
+#: includes/settings/help.php:209
 msgid ""
 "To publish items that share a title, use \"Allow duplicate titles\" instead "
 "and leave the hash check on."
@@ -8290,11 +8421,11 @@ msgstr ""
 "Ca să publici elemente cu același titlu, folosește „Permite titluri "
 "duplicate” și lasă verificarea după hash pornită."
 
-#: includes/settings/help.php:213 includes/settings/page.php:544
+#: includes/settings/help.php:218 includes/settings/page.php:544
 msgid "Do not save the plugin custom fields"
 msgstr "Nu salva câmpurile personalizate ale modulului"
 
-#: includes/settings/help.php:214
+#: includes/settings/help.php:219
 msgid ""
 "Saves database space and costs you the source permalink, the campaign each "
 "post came from and every bulk action based on it."
@@ -8303,7 +8434,7 @@ msgstr ""
 "sursei, campania din care a venit fiecare articol și orice acțiune în masă "
 "bazată pe ele."
 
-#: includes/settings/help.php:215
+#: includes/settings/help.php:220
 msgid ""
 "By default each published post carries three custom fields with the campaign "
 "and the source item. Turning this on does not delete the ones already saved."
@@ -8312,11 +8443,11 @@ msgstr ""
 "campania și elementul sursă. Pornirea acestei opțiuni nu le șterge pe cele "
 "deja salvate."
 
-#: includes/settings/help.php:224 includes/settings/page.php:573
+#: includes/settings/help.php:229 includes/settings/page.php:573
 msgid "Disable WPeMatico schedules"
 msgstr "Dezactivează programările WPeMatico"
 
-#: includes/settings/help.php:225
+#: includes/settings/help.php:230
 msgid ""
 "No campaign runs on its own any more. You run them by hand or from an "
 "external cron, which is the recommended setup."
@@ -8324,11 +8455,11 @@ msgstr ""
 "Nicio campanie nu mai rulează singură. Le pornești manual sau dintr-un cron "
 "extern, ceea ce este recomandat."
 
-#: includes/settings/help.php:228 includes/settings/page.php:607
+#: includes/settings/help.php:233 includes/settings/page.php:607
 msgid "Ask for a password on the external cron"
 msgstr "Cere o parolă la cronul extern"
 
-#: includes/settings/help.php:229
+#: includes/settings/help.php:234
 msgid ""
 "Only a request carrying the code runs your campaigns. Off by default for "
 "backward compatibility, and strongly recommended."
@@ -8336,23 +8467,27 @@ msgstr ""
 "Doar o cerere care poartă codul îți rulează campaniile. Oprit implicit din "
 "compatibilitate, dar puternic recomandat."
 
-#: includes/settings/help.php:230
+#: includes/settings/help.php:235
 msgid "While this is off, the password below is ignored."
 msgstr "Cât timp asta e oprită, parola de mai jos este ignorată."
 
-#: includes/settings/help.php:233
+#: includes/settings/help.php:238
 msgid "External cron password"
 msgstr "Parola cronului extern"
 
-#: includes/settings/help.php:234
+#: includes/settings/help.php:239
 msgid "Any text you like. It travels in the cron address as ?code=your_code."
 msgstr "Orice text vrei. Călătorește în adresa cronului ca ?code=codul_tău."
 
-#: includes/settings/help.php:237 includes/settings/page.php:627
+#: includes/settings/help.php:24
+msgid "Global settings for images"
+msgstr "Setări generale pentru imagini"
+
+#: includes/settings/help.php:242 includes/settings/page.php:627
 msgid "Disable all WP_Cron"
 msgstr "Dezactivează tot WP_Cron"
 
-#: includes/settings/help.php:238
+#: includes/settings/help.php:243
 msgid ""
 "Stops every scheduled task on the site, WordPress own and other plugins "
 "included. Only do this if an external cron takes over."
@@ -8360,15 +8495,11 @@ msgstr ""
 "Oprește toate sarcinile programate ale site-ului, inclusiv ale WordPress și "
 "ale altor module. Fă asta doar dacă preia un cron extern."
 
-#: includes/settings/help.php:24
-msgid "Global settings for images"
-msgstr "Setări generale pentru imagini"
-
-#: includes/settings/help.php:241 includes/settings/page.php:564
+#: includes/settings/help.php:246 includes/settings/page.php:564
 msgid "Use ALTERNATE_WP_CRON"
 msgstr "Folosește ALTERNATE_WP_CRON"
 
-#: includes/settings/help.php:242
+#: includes/settings/help.php:247
 msgid ""
 "Some servers block the way WordPress triggers its schedules. This constant "
 "works around it on almost any server."
@@ -8376,11 +8507,16 @@ msgstr ""
 "Unele servere blochează felul în care WordPress își pornește programările. "
 "Această constantă rezolvă problema pe aproape orice server."
 
-#: includes/settings/help.php:245 includes/settings/page.php:657
+#: includes/settings/help.php:25 includes/settings/help.php:86
+#: includes/settings/help.php:115
+msgid "These apply to every campaign, and each campaign can override them."
+msgstr "Se aplică tuturor campaniilor, iar fiecare campanie le poate înlocui."
+
+#: includes/settings/help.php:250 includes/settings/page.php:657
 msgid "Log file for the external cron"
 msgstr "Fișier jurnal pentru cronul extern"
 
-#: includes/settings/help.php:246
+#: includes/settings/help.php:251
 msgid ""
 "Writes a \"campaign title.txt.log\" file in the uploads folder with the "
 "steps of each external cron run. Useful while you set the cron up."
@@ -8388,59 +8524,54 @@ msgstr ""
 "Scrie în dosarul de încărcări un fișier „titlul campaniei.txt.log” cu pașii "
 "fiecărei rulări a cronului extern. Util cât timp îl configurezi."
 
-#: includes/settings/help.php:25 includes/settings/help.php:86
-#: includes/settings/help.php:115
-msgid "These apply to every campaign, and each campaign can override them."
-msgstr "Se aplică tuturor campaniilor, iar fiecare campanie le poate înlocui."
-
-#: includes/settings/help.php:251 includes/settings/page.php:896
+#: includes/settings/help.php:256 includes/settings/page.php:908
 msgid "Campaign column in the posts lists"
 msgstr "Coloana campaniei în listele de articole"
 
-#: includes/settings/help.php:252
+#: includes/settings/help.php:257
 msgid "Adds a column showing which campaign published each post."
 msgstr "Adaugă o coloană care arată ce campanie a publicat fiecare articol."
 
-#: includes/settings/help.php:255 includes/settings/page.php:903
+#: includes/settings/help.php:260 includes/settings/page.php:915
 msgid "Position of that column"
 msgstr "Poziția acelei coloane"
 
-#: includes/settings/help.php:256
+#: includes/settings/help.php:261
 msgid "Where the campaign column sits among the others."
 msgstr "Unde stă coloana campaniei între celelalte."
 
-#: includes/settings/help.php:259 includes/settings/page.php:916
+#: includes/settings/help.php:264 includes/settings/page.php:928
 msgid "Hide the campaign box in the post editor"
 msgstr "Ascunde caseta campaniei în editorul de articole"
 
-#: includes/settings/help.php:260
+#: includes/settings/help.php:265
 msgid "Removes the WPeMatico box that shows where an imported post came from."
 msgstr ""
 "Scoate caseta WPeMatico care arată de unde a venit un articol importat."
 
-#: includes/settings/help.php:263 includes/settings/page.php:925
+#: includes/settings/help.php:268 includes/settings/page.php:937
 msgid "Empty trash button on the lists"
 msgstr "Buton de golire a gunoiului în liste"
 
-#: includes/settings/help.php:264
+#: includes/settings/help.php:269
 msgid "Adds a button to empty the trash on the post types you choose."
 msgstr ""
 "Adaugă un buton de golire a gunoiului la tipurile de conținut pe care le "
 "alegi."
 
-#: includes/settings/help.php:267 includes/settings/page.php:966
+#: includes/settings/help.php:272 includes/settings/page.php:978
 msgid "Hide the WP dashboard widget"
 msgstr "Ascunde piesa din panoul de control WP"
 
-#: includes/settings/help.php:268
+#: includes/settings/help.php:273
 msgid "Removes the WPeMatico widget from the WordPress dashboard."
 msgstr "Scoate piesa WPeMatico din panoul de control WordPress."
 
-#: includes/settings/help.php:273 includes/settings/page.php:757
+#: includes/settings/help.php:278 includes/settings/page.php:769
 msgid "Do not check feeds before saving"
 msgstr "Nu verifica fluxurile înainte de salvare"
 
-#: includes/settings/help.php:274
+#: includes/settings/help.php:279
 msgid ""
 "Saving a campaign no longer tests each feed address first. The campaign "
 "saves faster and a broken address goes unnoticed until it runs."
@@ -8449,11 +8580,11 @@ msgstr ""
 "Campania se salvează mai repede, iar o adresă stricată trece neobservată "
 "până la rulare."
 
-#: includes/settings/help.php:277 includes/settings/page.php:766
+#: includes/settings/help.php:282 includes/settings/page.php:778
 msgid "Enable \"Del hash\""
 msgstr "Activează „Șterge hash-ul”"
 
-#: includes/settings/help.php:278
+#: includes/settings/help.php:283
 msgid ""
 "Adds a link on the campaigns list that clears the duplicate hashes of every "
 "feed in a campaign, so its items can be published again."
@@ -8462,24 +8593,24 @@ msgstr ""
 "ale tuturor fluxurilor unei campanii, ca elementele ei să poată fi publicate "
 "din nou."
 
-#: includes/settings/help.php:281 includes/settings/page.php:775
+#: includes/settings/help.php:286 includes/settings/page.php:787
 msgid "Enable \"See last log\""
 msgstr "Activează „Vezi ultimul jurnal”"
 
-#: includes/settings/help.php:282
+#: includes/settings/help.php:287
 msgid "Adds a link on the campaigns list that opens the log of the last run."
 msgstr ""
 "Adaugă în lista de campanii o legătură care deschide jurnalul ultimei rulări."
 
-#: includes/settings/help.php:285 includes/settings/page.php:793
+#: includes/settings/help.php:290 includes/settings/page.php:805
 msgid "Hide the WPeMatico credits"
 msgstr "Ascunde creditele WPeMatico"
 
-#: includes/settings/help.php:286
+#: includes/settings/help.php:291
 msgid "I would really appreciate you leaving the credits on."
 msgstr "Aș aprecia mult dacă ai lăsa creditele pornite."
 
-#: includes/settings/help.php:288 includes/settings/page.php:800
+#: includes/settings/help.php:293 includes/settings/page.php:812
 msgid ""
 "If you cannot show them, a minute of your time to %1$s write a 5 star review "
 "on WordPress %2$s means just as much. :-) Thanks."
@@ -8487,31 +8618,17 @@ msgstr ""
 "Dacă nu le poți arăta, un minut din timpul tău pentru %1$s o recenzie de 5 "
 "stele pe WordPress %2$s valorează la fel de mult. :-) Mulțumesc."
 
-#: includes/settings/help.php:293 includes/settings/page.php:811
+#: includes/settings/help.php:298 includes/settings/page.php:823
 msgid "No description on auto categories"
 msgstr "Fără descriere la categoriile automate"
 
-#: includes/settings/help.php:294
+#: includes/settings/help.php:299
 msgid ""
 "Categories created from now on are left without the \"Created by WPeMatico\" "
 "description. The ones already created keep theirs until you edit them."
 msgstr ""
 "Categoriile create de acum înainte rămân fără descrierea „Created by "
 "WPeMatico”. Cele deja create o păstrează pe a lor până le editezi."
-
-#: includes/settings/help.php:297 includes/settings/page.php:821
-msgid "Do not load the Extensions page"
-msgstr "Nu încărca pagina de extensii"
-
-#: includes/settings/help.php:298
-msgid "The Extensions menu stops asking our site for the add-on catalogue."
-msgstr "Meniul Suplimente nu mai cere catalogul de pe site-ul nostru."
-
-#: includes/settings/help.php:299
-msgid ""
-"You will see an empty page, or only the extensions you already have "
-"installed."
-msgstr "Vei vedea o pagină goală, sau doar extensiile deja instalate."
 
 #: includes/settings/help.php:30
 msgid ""
@@ -8522,29 +8639,31 @@ msgstr ""
 "salvează în dosarul tău de încărcări. Oprit, imaginile rămân pe serverul "
 "sursei."
 
-#: includes/settings/help.php:302 includes/settings/page.php:784
+#: includes/settings/help.php:302 includes/settings/page.php:833
+msgid "Do not load the Extensions page"
+msgstr "Nu încărca pagina de extensii"
+
+#: includes/settings/help.php:303
+msgid "The Extensions menu stops asking our site for the add-on catalogue."
+msgstr "Meniul Suplimente nu mai cere catalogul de pe site-ul nostru."
+
+#: includes/settings/help.php:304
+msgid ""
+"You will see an empty page, or only the extensions you already have "
+"installed."
+msgstr "Vei vedea o pagină goală, sau doar extensiile deja instalate."
+
+#: includes/settings/help.php:307 includes/settings/page.php:796
 msgid "Enable XML uploads"
 msgstr "Permite încărcarea de XML"
 
-#: includes/settings/help.php:303
+#: includes/settings/help.php:308
 msgid ""
 "Lets you upload XML files to the Media library, to use them in an XML "
 "campaign."
 msgstr ""
 "Îți permite să încarci fișiere XML în biblioteca media, ca să le folosești "
 "într-o campanie XML."
-
-#: includes/settings/help.php:306 includes/settings/page.php:830
-msgid "Decode HTML entities on publish"
-msgstr "Decodează entitățile HTML la publicare"
-
-#: includes/settings/help.php:307
-msgid ""
-"Turns entities such as &amp;amp; back into their character before the post "
-"is saved. Useful with feeds that encode the content twice."
-msgstr ""
-"Transformă entități precum &amp;amp; înapoi în caracterul lor înainte de "
-"salvarea articolului. Util cu fluxuri care codifică conținutul de două ori."
 
 #: includes/settings/help.php:31
 msgid ""
@@ -8556,27 +8675,39 @@ msgstr ""
 "rapide, dar pierzi imaginea în ziua în care sursa o șterge. Fiecare campanie "
 "poate hotărî singură."
 
+#: includes/settings/help.php:311 includes/settings/page.php:842
+msgid "Decode HTML entities on publish"
+msgstr "Decodează entitățile HTML la publicare"
+
 #: includes/settings/help.php:312
+msgid ""
+"Turns entities such as &amp;amp; back into their character before the post "
+"is saved. Useful with feeds that encode the content twice."
+msgstr ""
+"Transformă entități precum &amp;amp; înapoi în caracterul lor înainte de "
+"salvarea articolului. Util cu fluxuri care codifică conținutul de două ori."
+
+#: includes/settings/help.php:317
 msgid "Sender email"
 msgstr "Emailul expeditorului"
 
-#: includes/settings/help.php:313
+#: includes/settings/help.php:318
 msgid "The address every email from this plugin is sent from."
 msgstr "Adresa de la care pleacă fiecare email al acestui modul."
 
-#: includes/settings/help.php:316
+#: includes/settings/help.php:321
 msgid "Sender name"
 msgstr "Numele expeditorului"
 
-#: includes/settings/help.php:317
+#: includes/settings/help.php:322
 msgid "The name shown next to that address in your inbox."
 msgstr "Numele afișat lângă acea adresă în căsuța ta poștală."
 
-#: includes/settings/help.php:329
+#: includes/settings/help.php:334
 msgid "Features available with the Professional add-on."
 msgstr "Funcționalități disponibile cu suplimentul Professional."
 
-#: includes/settings/help.php:330
+#: includes/settings/help.php:335
 msgid ""
 "Publish or skip an item depending on the keywords found in its title or "
 "content."
@@ -8584,7 +8715,7 @@ msgstr ""
 "Publică sau ignoră un element în funcție de cuvintele-cheie din titlul sau "
 "conținutul lui."
 
-#: includes/settings/help.php:331
+#: includes/settings/help.php:336
 msgid ""
 "Cut, publish or skip an item depending on how many words or letters its "
 "content has."
@@ -8592,13 +8723,13 @@ msgstr ""
 "Taie, publică sau ignoră un element în funcție de câte cuvinte sau litere "
 "are conținutul lui."
 
-#: includes/settings/help.php:332
+#: includes/settings/help.php:337
 msgid ""
 "Build the title of every post of a campaign from a template of your own."
 msgstr ""
 "Construiește titlul fiecărui articol al unei campanii dintr-un șablon al tău."
 
-#: includes/settings/help.php:333
+#: includes/settings/help.php:338
 msgid ""
 "Generates the tags of every post automatically. Each campaign can turn that "
 "off and use a list of tags you write instead."
@@ -8606,13 +8737,13 @@ msgstr ""
 "Generează automat etichetele fiecărui articol. Fiecare campanie poate opri "
 "asta și folosi o listă de etichete scrisă de tine."
 
-#: includes/settings/help.php:334
+#: includes/settings/help.php:339
 msgid "Add custom fields, with template tags as their value, to every post."
 msgstr ""
 "Adaugă fiecărui articol câmpuri personalizate având ca valoare etichete de "
 "șablon."
 
-#: includes/settings/help.php:335
+#: includes/settings/help.php:340
 msgid ""
 "Full Content is the add-on that fetches the whole article from the source "
 "site when the feed only carries a summary."
@@ -8620,7 +8751,7 @@ msgstr ""
 "Full Content este suplimentul care aduce articolul întreg de pe site-ul "
 "sursă atunci când fluxul poartă doar un rezumat."
 
-#: includes/settings/help.php:336
+#: includes/settings/help.php:341
 msgid ""
 "Set an author per feed when editing a campaign. Feeds with no author of "
 "their own use the campaign author."
@@ -8628,7 +8759,7 @@ msgstr ""
 "Stabilește un autor pe flux la editarea unei campanii. Fluxurile fără autor "
 "propriu folosesc autorul campaniei."
 
-#: includes/settings/help.php:337
+#: includes/settings/help.php:342
 msgid ""
 "Paste a list of feed addresses, with or without author names, straight into "
 "the campaign."
@@ -8741,11 +8872,11 @@ msgstr ""
 "Fiecare sunet descărcat ajunge în biblioteca media și se atașează la "
 "articolul lui."
 
-#: includes/settings/page.php:1001
+#: includes/settings/page.php:1013
 msgid "Guided tours"
 msgstr "Tururi ghidate"
 
-#: includes/settings/page.php:1003
+#: includes/settings/page.php:1015
 msgid ""
 "Shows a short tour the first time you open each WPeMatico screen. Only for "
 "your user."
@@ -8753,23 +8884,23 @@ msgstr ""
 "Arată un tur scurt prima dată când deschizi fiecare ecran WPeMatico. Doar "
 "pentru utilizatorul tău."
 
-#: includes/settings/page.php:1034
+#: includes/settings/page.php:1046
 msgid "Highlights of the new release"
 msgstr "Cele mai importante din noua versiune"
 
-#: includes/settings/page.php:1035 includes/lib/licenses_handlers.php:405
+#: includes/settings/page.php:1047 includes/lib/licenses_handlers.php:405
 msgid "Version"
 msgstr "Versiune"
 
-#: includes/settings/page.php:1047
+#: includes/settings/page.php:1059
 msgid "Read more on wpematico.com"
 msgstr "Citește mai mult pe wpematico.com"
 
-#: includes/settings/page.php:1049
+#: includes/settings/page.php:1061
 msgid "Your opinion about WPeMatico is very important to us."
 msgstr "Părerea ta despre WPeMatico este foarte importantă pentru noi."
 
-#: includes/settings/page.php:1050
+#: includes/settings/page.php:1062
 msgid ""
 "By rating WPeMatico RSS Feed Fetcher, you help the plugin creators to "
 "improve their work and help other users to find the software they need. You "
@@ -8781,29 +8912,25 @@ msgstr ""
 "nevoie. Îți poți scrie recenzia pe forumul WordPress, în limba pe care o "
 "preferi — o apreciem!"
 
-#: includes/settings/page.php:1051
+#: includes/settings/page.php:1063
 msgid "Rate us on WordPress"
 msgstr "Evaluează-ne pe WordPress"
 
-#: includes/settings/page.php:1053
+#: includes/settings/page.php:1065
 msgid "YES!"
 msgstr "DA!"
 
-#: includes/settings/page.php:1074
+#: includes/settings/page.php:1086
 msgid "General Settings"
 msgstr "Setări generale"
 
-#: includes/settings/page.php:1175 includes/settings/page.php:1201
+#: includes/settings/page.php:1187 includes/settings/page.php:1213
 msgid "Save settings"
 msgstr "Salvează setările"
 
-#: includes/settings/page.php:1301
+#: includes/settings/page.php:1313
 msgid "Settings saved."
 msgstr "Setări salvate."
-
-#: includes/settings/page.php:1324
-msgid "License keys saved."
-msgstr "Chei de licență salvate."
 
 #: includes/settings/page.php:133 includes/lib/licenses_handlers.php:319
 msgid ""
@@ -8813,6 +8940,10 @@ msgstr ""
 "Aici introduci cheile de licență pentru unul dintre modulele noastre "
 "premium, dacă activezi vreunul."
 
+#: includes/settings/page.php:1336
+msgid "License keys saved."
+msgstr "Chei de licență salvate."
+
 #: includes/settings/page.php:134 includes/lib/licenses_handlers.php:320
 msgid "See some of the WPeMatico Add-ons in the"
 msgstr "Vezi câteva dintre suplimentele WPeMatico în"
@@ -8820,8 +8951,8 @@ msgstr "Vezi câteva dintre suplimentele WPeMatico în"
 #: includes/settings/page.php:164 includes/settings/page.php:289
 #: includes/settings/page.php:353 includes/settings/page.php:418
 #: includes/settings/page.php:460 includes/settings/page.php:554
-#: includes/settings/page.php:683 includes/settings/page.php:747
-#: includes/settings/page.php:840 includes/settings/page.php:886
+#: includes/settings/page.php:683 includes/settings/page.php:759
+#: includes/settings/page.php:852 includes/settings/page.php:898
 msgid "Click to toggle"
 msgstr "Apasă pentru a plia/desface"
 
@@ -8989,7 +9120,7 @@ msgstr "Activează „Cuvinte în categorii”"
 msgid "Enable the Vimeo campaign type"
 msgstr "Activează tipul de campanie Vimeo"
 
-#: includes/settings/page.php:724
+#: includes/settings/page.php:724 includes/settings/page.php:741
 msgid "PRO"
 msgstr "PRO"
 
@@ -9002,7 +9133,19 @@ msgstr ""
 "fluxului, cu sortare și cu videoclipurile tale private — vine cu "
 "Professional."
 
-#: includes/settings/page.php:750
+#: includes/settings/page.php:737
+msgid "Enable the Google News campaign type"
+msgstr "Activează tipul de campanie Google News"
+
+#: includes/settings/page.php:741
+msgid ""
+"Linking each post to the article on the publication's own site, so Full "
+"Content reads it, comes with Professional."
+msgstr ""
+"Legarea fiecărui articol de articolul de pe site-ul publicației, ca Full "
+"Content să îl citească, vine cu Professional."
+
+#: includes/settings/page.php:762
 msgid "Advanced Actions"
 msgstr "Acțiuni avansate"
 
@@ -9010,31 +9153,31 @@ msgstr "Acțiuni avansate"
 msgid "Invalid email."
 msgstr "Email nevalid."
 
-#: includes/settings/page.php:843
+#: includes/settings/page.php:855
 msgid "Sending e-Mails"
 msgstr "Trimiterea emailurilor"
 
-#: includes/settings/page.php:848
+#: includes/settings/page.php:860
 msgid "Sender email:"
 msgstr "Emailul expeditorului:"
 
-#: includes/settings/page.php:854
+#: includes/settings/page.php:866
 msgid "Sender name:"
 msgstr "Numele expeditorului:"
 
-#: includes/settings/page.php:861
+#: includes/settings/page.php:873
 msgid "Sendmail path:"
 msgstr "Calea Sendmail:"
 
-#: includes/settings/page.php:889
+#: includes/settings/page.php:901
 msgid "WordPress Backend Tools"
 msgstr "Unelte de administrare WordPress"
 
-#: includes/settings/page.php:931
+#: includes/settings/page.php:943
 msgid "Post types it applies to"
 msgstr "Tipurile de conținut cărora li se aplică"
 
-#: includes/settings/page.php:972
+#: includes/settings/page.php:984
 msgid "Roles that see the dashboard widget:"
 msgstr "Rolurile care văd piesa:"
 
@@ -10024,100 +10167,100 @@ msgstr "Alege un nod XML."
 msgid "PHP 7.0 or higher needed!"
 msgstr "Necesită PHP 7.0 sau mai nou!"
 
-#: wpematico_class.php:160 includes/wpematico_functions.php:3155
+#: wpematico_class.php:162 includes/wpematico_functions.php:3155
 msgid "Empty Trash"
 msgstr "Golește gunoiul"
 
-#: wpematico_class.php:178
+#: wpematico_class.php:180
 msgid "There are no campaigns yet."
 msgstr "Încă nu există campanii."
 
-#: wpematico_class.php:180
+#: wpematico_class.php:182
 msgid "You need to create a campaign to begin using WPeMatico."
 msgstr "Trebuie să creezi o campanie ca să începi să folosești WPeMatico."
 
-#: wpematico_class.php:182
+#: wpematico_class.php:184
 msgid ""
 "If you need help, check out the tips to get started with WPeMatico or just "
 msgstr ""
 "Dacă ai nevoie de ajutor, vezi sfaturile pentru începutul cu WPeMatico sau "
 "pur și simplu "
 
-#: wpematico_class.php:183
+#: wpematico_class.php:185
 msgid "add New Campaign"
 msgstr "adaugă o campanie nouă"
 
-#: wpematico_class.php:186 includes/lib/welcome.php:190
+#: wpematico_class.php:188 includes/lib/welcome.php:190
 msgid "Getting Started"
 msgstr "Primii pași"
 
-#: wpematico_class.php:192 wpematico_class.php:353 wpematico_class.php:354
+#: wpematico_class.php:194 wpematico_class.php:355 wpematico_class.php:356
 #: includes/dashboard-widgets.php:552 includes/debug_page.php:2927
 msgid "Campaigns"
 msgstr "Campanii"
 
-#: wpematico_class.php:193 includes/tools_page.php:501
+#: wpematico_class.php:195 includes/tools_page.php:501
 #: includes/tools_page.php:665 includes/wp-backend-helpers.php:65
 msgid "Campaign"
 msgstr "Campanie"
 
-#: wpematico_class.php:194
+#: wpematico_class.php:196
 msgid "Add New"
 msgstr "Adaugă"
 
-#: wpematico_class.php:195
+#: wpematico_class.php:197
 msgid "Add New Campaign"
 msgstr "Adaugă o campanie nouă"
 
-#: wpematico_class.php:196
+#: wpematico_class.php:198
 msgid "Edit Campaign"
 msgstr "Editează campania"
 
-#: wpematico_class.php:197
+#: wpematico_class.php:199
 msgid "New Campaign"
 msgstr "Campanie nouă"
 
-#: wpematico_class.php:198
+#: wpematico_class.php:200
 msgid "All Campaigns"
 msgstr "Toate campaniile"
 
-#: wpematico_class.php:199
+#: wpematico_class.php:201
 msgid "View Campaign"
 msgstr "Vezi campania"
 
-#: wpematico_class.php:200
+#: wpematico_class.php:202
 msgid "Search Campaign"
 msgstr "Caută campanie"
 
-#: wpematico_class.php:202
+#: wpematico_class.php:204
 msgid "No Campaign found in Trash"
 msgstr "Nicio campanie găsită la gunoi"
 
-#: wpematico_class.php:244
+#: wpematico_class.php:246
 msgid "Reset Menu Position"
 msgstr "Restaurează poziția meniului"
 
-#: wpematico_class.php:250
+#: wpematico_class.php:252
 msgid "Turn this on if the WPeMatico menu does not appear in the admin menu."
 msgstr ""
 "Pornește asta dacă meniul WPeMatico nu apare în meniul de administrare."
 
-#: wpematico_class.php:255
+#: wpematico_class.php:257
 msgid "See local Addons in plugin list"
 msgstr "Arată modulele locale în lista de module"
 
-#: wpematico_class.php:261
+#: wpematico_class.php:263
 msgid ""
 "Turn this on to list the add-ons on your Plugins page, like any other plugin."
 msgstr ""
 "Pornește asta ca suplimentele să apară în pagina ta Module, ca orice alt "
 "modul."
 
-#: wpematico_class.php:266
+#: wpematico_class.php:268
 msgid "Hide Reviews on Settings"
 msgstr "Ascunde recenziile din setări"
 
-#: wpematico_class.php:272
+#: wpematico_class.php:274
 msgid ""
 "Turn this on if the Settings page comes out incomplete because your server "
 "cannot read external addresses."
@@ -10125,13 +10268,13 @@ msgstr ""
 "Pornește asta dacă pagina de setări iese incompletă fiindcă serverul tău nu "
 "poate citi adrese externe."
 
-#: wpematico_class.php:310
+#: wpematico_class.php:312
 msgid ""
 "If the WPeMatico menu is missing, another plugin or your theme has taken its "
 "position."
 msgstr "Dacă meniul WPeMatico lipsește, alt modul sau tema ta i-a luat locul."
 
-#: wpematico_class.php:311
+#: wpematico_class.php:313
 msgid ""
 "Tick \"Reset Menu Position\" to move the menu to the end of the WordPress "
 "menu."
@@ -10139,7 +10282,7 @@ msgstr ""
 "Bifează „Resetează poziția meniului” ca să muți meniul la finalul meniului "
 "WordPress."
 
-#: wpematico_class.php:313
+#: wpematico_class.php:315
 msgid ""
 "A Settings page that does not render fully usually means your server cannot "
 "reach external pages."
@@ -10147,7 +10290,7 @@ msgstr ""
 "O pagină de setări care nu apare întreagă înseamnă de obicei că serverul tău "
 "nu ajunge la pagini externe."
 
-#: wpematico_class.php:314
+#: wpematico_class.php:316
 msgid ""
 "Tick \"Hide Reviews on Settings\" to show a plain link to the reviews page "
 "instead."
@@ -10155,7 +10298,7 @@ msgstr ""
 "Bifează „Ascunde recenziile din Setări” ca să se afișeze în locul lor o "
 "simplă legătură către pagina de recenzii."
 
-#: wpematico_class.php:318
+#: wpematico_class.php:320
 msgid ""
 "You must click the Save Changes button at the bottom of the screen for new "
 "settings to take effect."
@@ -10163,39 +10306,39 @@ msgstr ""
 "Trebuie să apeși butonul Salvează modificările din josul ecranului ca "
 "setările noi să intre în vigoare."
 
-#: wpematico_class.php:331 wpematico_class.php:332
+#: wpematico_class.php:333 wpematico_class.php:334
 msgid "WPeMatico"
 msgstr "WPeMatico"
 
-#: wpematico_class.php:343
+#: wpematico_class.php:345
 msgid "WPeMatico Dashboard"
 msgstr "Panou WPeMatico"
 
-#: wpematico_class.php:344 includes/module/dashboard.php:106
+#: wpematico_class.php:346 includes/module/dashboard.php:106
 msgid "Dashboard"
 msgstr "Panou control"
 
-#: wpematico_class.php:368 wpematico_class.php:369
+#: wpematico_class.php:370 wpematico_class.php:371
 #: includes/dashboard-widgets.php:554 includes/plugin_functions.php:339
-#: includes/settings/functions.php:43 includes/settings/page.php:1078
-#: includes/settings/page.php:1151 includes/module/dashboard.php:32
+#: includes/settings/functions.php:43 includes/settings/page.php:1090
+#: includes/settings/page.php:1163 includes/module/dashboard.php:32
 #: includes/module/manager.php:187
 msgid "Settings"
 msgstr "Setări"
 
-#: wpematico_class.php:379 wpematico_class.php:380 includes/tools_tabs.php:17
+#: wpematico_class.php:381 wpematico_class.php:382 includes/tools_tabs.php:17
 msgid "Tools"
 msgstr "Unelte"
 
-#: wpematico_class.php:397 wpematico_class.php:406
+#: wpematico_class.php:399 wpematico_class.php:408
 msgid "Add-ons"
 msgstr "Suplimente"
 
-#: wpematico_class.php:398 includes/addons_page.php:1461
+#: wpematico_class.php:400 includes/addons_page.php:1461
 msgid "WPeMatico Addons"
 msgstr "Suplimente WPeMatico"
 
-#: wpematico_class.php:407 includes/class-tour-helper.php:224
+#: wpematico_class.php:409 includes/class-tour-helper.php:224
 #: includes/plugin_functions.php:360
 msgid "Extensions"
 msgstr "Extensii"

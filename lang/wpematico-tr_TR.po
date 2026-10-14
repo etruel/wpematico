@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPeMatico 2.9\n"
 "Report-Msgid-Bugs-To: https://etruel.com/my-account/support/\n"
-"POT-Creation-Date: 2026-10-01 01:06+0000\n"
+"POT-Creation-Date: 2026-10-14 19:25+0000\n"
 "PO-Revision-Date: 2026-10-13 00:02+0000\n"
 "Last-Translator: Etruel Developments <translations@etruel.com>\n"
 "Language-Team: Etruel Developments <translations@etruel.com>\n"
@@ -402,7 +402,7 @@ msgstr "Ayrıntılar"
 msgid "WPeMatico Addons "
 msgstr "WPeMatico ek eklentileri "
 
-#: includes/addons_page.php:1516
+#: includes/addons_page.php:1516 includes/addons_page.php:1528
 msgid "Inactive &mdash; Now part of WPeMatico"
 msgstr "Etkin değil &mdash; Artık WPeMatico'nun parçası"
 
@@ -470,8 +470,8 @@ msgstr "etruel mağazasında satın almaya git"
 msgid "Activate %s on this site"
 msgstr "%s eklentisini bu sitede etkinleştir"
 
-#: includes/addons_page.php:744 includes/module/actions.php:362
-#: includes/module/actions.php:436 includes/module/dashboard.php:64
+#: includes/addons_page.php:744 includes/module/actions.php:371
+#: includes/module/actions.php:445 includes/module/dashboard.php:64
 msgid "Activate"
 msgstr "Etkinleştir"
 
@@ -479,7 +479,7 @@ msgstr "Etkinleştir"
 msgid "See details and prices on etruel's store"
 msgstr "etruel mağazasında ayrıntılara ve fiyatlara bak"
 
-#: includes/addons_page.php:762 includes/module/actions.php:305
+#: includes/addons_page.php:762 includes/module/actions.php:314
 #: includes/module/dashboard.php:55 includes/module/manager.php:130
 #: includes/module/manager.php:151 includes/module/manager.php:156
 msgid "Installed"
@@ -522,6 +522,103 @@ msgstr "Seçilen ek eklenti silindi."
 #: includes/addons_page.php:923
 msgid "The selected add-ons have been deleted."
 msgstr "Seçilen ek eklentiler silindi."
+
+#: includes/campaign-types/googlo_news.php:174
+msgid "%s is not a Google News address."
+msgstr "%s bir Google News adresi değil."
+
+#: includes/campaign-types/googlo_news.php:327
+msgid "Google News Campaign Type."
+msgstr "Google News kampanya türü."
+
+#: includes/campaign-types/googlo_news.php:328
+msgid ""
+"Paste the address of a Google News search, topic or publication as your "
+"browser shows it, and the campaign finds its feed on its own:"
+msgstr ""
+"Bir Google News aramasının, konusunun ya da yayınının adresini tarayıcınızın "
+"gösterdiği gibi yapıştırın; kampanya akışını kendisi bulur:"
+
+#: includes/campaign-types/googlo_news.php:332
+msgid ""
+"Each item brings the headline, the date and the name of the publication, and "
+"links to Google News."
+msgstr ""
+"Her öğe manşeti, tarihi ve yayının adını getirir ve Google News'e bağlantı "
+"verir."
+
+#: includes/campaign-types/googlo_news.php:333
+msgid ""
+"The name and the address of the publication are saved with each post, and "
+"the post template takes them as {source_name} and {source_url}."
+msgstr ""
+"Yayının adı ve adresi her yazıyla birlikte kaydedilir ve yazı şablonu "
+"bunları {source_name} ve {source_url} olarak alır."
+
+#: includes/campaign-types/googlo_news.php:336
+msgid "Publication in the title."
+msgstr "Başlıkta yayın."
+
+#: includes/campaign-types/googlo_news.php:337
+msgid ""
+"Google News ends every headline with the name of the publication. The "
+"campaign takes it off; tick this to keep it."
+msgstr ""
+"Google News her manşeti yayının adıyla bitirir. Kampanya bunu kaldırır; "
+"korumak için bunu işaretleyin."
+
+#: includes/campaign-types/googlo_news.php:340
+msgid "Related coverage."
+msgstr "İlgili haberler."
+
+#: includes/campaign-types/googlo_news.php:341
+msgid ""
+"On a topic, Google News lists other articles about the same story under each "
+"headline. Tick this to add that list to the post."
+msgstr ""
+"Bir konuda Google News her manşetin altında aynı olayla ilgili başka "
+"haberleri listeler. Bu listeyi yazıya eklemek için bunu işaretleyin."
+
+#: includes/campaign-types/googlo_news.php:352
+msgid "Google News Campaign Options"
+msgstr "Google News kampanya seçenekleri"
+
+#: includes/campaign-types/googlo_news.php:373
+msgid "Keep the name of the publication at the end of the title"
+msgstr "Yayının adını başlığın sonunda koru"
+
+#: includes/campaign-types/googlo_news.php:375
+msgid "Add the related coverage Google News lists under the headline"
+msgstr "Google News'in manşetin altında listelediği ilgili haberleri ekle"
+
+#: includes/campaign-types/googlo_news.php:390
+msgid "Original article"
+msgstr "Özgün haber"
+
+#: includes/campaign-types/googlo_news.php:391
+#: includes/campaign-types/vimeo.php:395
+msgid "PRO Feature"
+msgstr "PRO özelliği"
+
+#: includes/campaign-types/googlo_news.php:395
+msgid "Link each post to the article on the publication's own site"
+msgstr "Her yazıyı yayının kendi sitesindeki habere bağla"
+
+#: includes/campaign-types/googlo_news.php:399
+msgid "Skip the item when its article is not found"
+msgstr "Haberi bulunamadığında öğeyi atla"
+
+#: includes/campaign-types/googlo_news.php:402
+msgid ""
+"Professional looks each headline up on the site of its publication, so the "
+"source link, the canonical URL and Full Content work on the article itself."
+msgstr ""
+"Professional her manşeti yayının sitesinde arar; böylece kaynak bağlantısı, "
+"kurallı URL ve Full Content haberin kendisi üzerinde çalışır."
+
+#: includes/campaign-types/googlo_news.php:61 includes/module/actions.php:194
+msgid "Google News"
+msgstr "Google News"
 
 #: includes/campaign-types/vimeo.php:258
 msgid "Parsing Vimeo video and feed item contents."
@@ -608,10 +705,6 @@ msgstr "Yalnızca öne çıkarılmış görsel olarak kullan"
 #: includes/campaign-types/vimeo.php:394
 msgid "Vimeo API"
 msgstr "Vimeo API"
-
-#: includes/campaign-types/vimeo.php:395
-msgid "PRO Feature"
-msgstr "PRO özelliği"
 
 #: includes/campaign-types/vimeo.php:399
 msgid "Fetch through the Vimeo API instead of the feed."
@@ -749,7 +842,7 @@ msgstr "Tarayıcınızı yenileyip yeniden deneyin."
 #: includes/debug_page.php:1096 includes/debug_page.php:3712
 #: includes/wpematico_functions.php:2987 includes/wpematico_functions.php:3012
 #: includes/wpematico_functions.php:3208 includes/wpematico_functions.php:3387
-#: includes/xml-importer.php:361 includes/settings/page.php:1265
+#: includes/xml-importer.php:361 includes/settings/page.php:1277
 msgid "You are not allowed to do this."
 msgstr "Bunu yapma izniniz yok."
 
@@ -1082,7 +1175,7 @@ msgstr "Kampanyayı ön izle"
 msgid "Feed (default)"
 msgstr "Akış (varsayılan)"
 
-#: includes/campaign_edit_functions.php:226 includes/module/actions.php:194
+#: includes/campaign_edit_functions.php:226 includes/module/actions.php:203
 msgid "YouTube"
 msgstr "YouTube"
 
@@ -1446,7 +1539,7 @@ msgid "%s has to be installed and activated for this to work."
 msgstr "Bunun çalışması için %s kurulu ve etkin olmalıdır."
 
 #: includes/campaign_edit_functions.php:615 includes/campaign_help.php:160
-#: includes/settings/help.php:60 includes/module/actions.php:560
+#: includes/settings/help.php:60 includes/module/actions.php:569
 msgid "Featured Image from URL"
 msgstr "Featured Image from URL"
 
@@ -1538,7 +1631,7 @@ msgid "Remove link to source videos"
 msgstr "Kaynak videolara bağlantıyı kaldır"
 
 #: includes/campaign_edit_functions.php:775 includes/campaign_help.php:237
-#: includes/settings/help.php:201 includes/settings/page.php:498
+#: includes/settings/help.php:206 includes/settings/page.php:498
 msgid "Allow duplicate posts"
 msgstr "Yinelenen yazılara izin ver"
 
@@ -1561,12 +1654,12 @@ msgid "Allow duplicate hashes (not recommended)"
 msgstr "Yinelenen karmalara izin ver (önerilmez)"
 
 #: includes/campaign_edit_functions.php:784 includes/campaign_help.php:249
-#: includes/settings/help.php:218 includes/settings/page.php:526
+#: includes/settings/help.php:223 includes/settings/page.php:526
 msgid "Also check duplicates by source permalink"
 msgstr "Yinelenenleri kaynak kalıcı bağlantısıyla da denetle"
 
 #: includes/campaign_edit_functions.php:789 includes/campaign_help.php:243
-#: includes/settings/help.php:207 includes/settings/page.php:535
+#: includes/settings/help.php:212 includes/settings/page.php:535
 msgid "Keep reading past a duplicate"
 msgstr "Yinelenenden sonra okumayı sürdür"
 
@@ -1654,61 +1747,57 @@ msgstr "Akış görüntüleyici"
 msgid "Open URL in a new browser tab"
 msgstr "Adresi yeni tarayıcı sekmesinde aç"
 
-#: includes/campaign_fetch.php:1008
+#: includes/campaign_fetch.php:1028
 msgid "The post has no featured image."
 msgstr "Yazının öne çıkarılmış görseli yok."
 
-#: includes/campaign_fetch.php:1015
+#: includes/campaign_fetch.php:1035
 msgid "Attaching images"
 msgstr "Görseller ekleniyor"
 
-#: includes/campaign_fetch.php:1036
+#: includes/campaign_fetch.php:1056
 msgid "Attaching audios"
 msgstr "Sesler ekleniyor"
 
-#: includes/campaign_fetch.php:1052
+#: includes/campaign_fetch.php:1072
 msgid "Attaching videos"
 msgstr "Videolar ekleniyor"
 
-#: includes/campaign_fetch.php:1081
+#: includes/campaign_fetch.php:1101
 msgid "Campaign fetched in %s sec."
 msgstr "Kampanya %s sn içinde getirildi."
 
-#: includes/campaign_fetch.php:1111
+#: includes/campaign_fetch.php:1131
 msgid "WPeMatico Log "
 msgstr "WPeMatico günlüğü "
 
-#: includes/campaign_fetch.php:1114
+#: includes/campaign_fetch.php:1134
 msgid "Campaign Name:"
 msgstr "Kampanya adı:"
 
-#: includes/campaign_fetch.php:1116
+#: includes/campaign_fetch.php:1136
 msgid "Errors:"
 msgstr "Hatalar:"
 
-#: includes/campaign_fetch.php:1118
+#: includes/campaign_fetch.php:1138
 msgid "Warnings:"
 msgstr "Uyarılar:"
 
-#: includes/campaign_fetch.php:1122
+#: includes/campaign_fetch.php:1142
 msgid "WPeMatico by "
 msgstr "WPeMatico, geliştiren: "
 
-#: includes/campaign_fetch.php:1149
+#: includes/campaign_fetch.php:1169
 msgid "Campaign fetched in %1s sec."
 msgstr "Kampanya %1s sn içinde getirildi."
 
-#: includes/campaign_fetch.php:1162
+#: includes/campaign_fetch.php:1182
 msgid "Processed Posts: %s"
 msgstr "İşlenen yazılar: %s"
 
-#: includes/campaign_fetch.php:1163
+#: includes/campaign_fetch.php:1183
 msgid "Show detailed Log"
 msgstr "Ayrıntılı günlüğü göster"
-
-#: includes/campaign_fetch.php:1183 includes/campaigns_list.php:922
-msgid "Posts imported by this campaign."
-msgstr "Bu kampanyanın içe aktardığı yazılar."
 
 #: includes/campaign_fetch.php:120
 msgid ""
@@ -1717,6 +1806,10 @@ msgid ""
 msgstr ""
 "Bellek sınırı %1$s olarak ayarlandı, çünkü belleği dinamik olarak artırmak "
 "için PHP memory_get_usage() işlevi kullanılamıyor!"
+
+#: includes/campaign_fetch.php:1203 includes/campaigns_list.php:922
+msgid "Posts imported by this campaign."
+msgstr "Bu kampanyanın içe aktardığı yazılar."
 
 #: includes/campaign_fetch.php:131
 msgid "Ending feed, reached running timeout at %1$d sec."
@@ -1742,59 +1835,59 @@ msgstr "Kampanya getirme sınırına %s noktasında ulaşıldı."
 msgid "Reached running timeout at %1$d sec."
 msgstr "%1$d sn'de çalışma zaman aşımına ulaşıldı."
 
-#: includes/campaign_fetch.php:338
+#: includes/campaign_fetch.php:351
 msgid "%s posts added"
 msgstr "%s yazı eklendi"
 
-#: includes/campaign_fetch.php:353
+#: includes/campaign_fetch.php:366
 msgid "Processing item %s"
 msgstr "%s ögesi işleniyor"
 
-#: includes/campaign_fetch.php:367
+#: includes/campaign_fetch.php:380
 msgid "Assigning original date to post."
 msgstr "Yazıya özgün tarih atanıyor."
 
-#: includes/campaign_fetch.php:370
+#: includes/campaign_fetch.php:383
 msgid "Original date out of range.  Assigning current date to post."
 msgstr "Özgün tarih aralık dışında. Yazıya geçerli tarih atanıyor."
 
-#: includes/campaign_fetch.php:374
+#: includes/campaign_fetch.php:387
 msgid "Forced original date to post."
 msgstr "Yazıya özgün tarih zorlandı."
 
-#: includes/campaign_fetch.php:512
+#: includes/campaign_fetch.php:525
 msgid "Assigning Auto Categories."
 msgstr "Otomatik kategoriler atanıyor."
 
-#: includes/campaign_fetch.php:553
+#: includes/campaign_fetch.php:566
 msgid "Found category under parent: "
 msgstr "Üst kategori altında kategori bulundu: "
 
-#: includes/campaign_fetch.php:569
+#: includes/campaign_fetch.php:582
 msgid "Category exists with correct parent: "
 msgstr "Kategori doğru üst kategoriyle var: "
 
-#: includes/campaign_fetch.php:592
+#: includes/campaign_fetch.php:605
 msgid "Adding Category: "
 msgstr "Kategori ekleniyor: "
 
-#: includes/campaign_fetch.php:594
+#: includes/campaign_fetch.php:607
 msgid "Auto Added by WPeMatico"
 msgstr "WPeMatico tarafından otomatik eklendi"
 
-#: includes/campaign_fetch.php:610
+#: includes/campaign_fetch.php:623
 msgid "Created category: "
 msgstr "Oluşturulan kategori: "
 
-#: includes/campaign_fetch.php:612
+#: includes/campaign_fetch.php:625
 msgid "Failed to create category: "
 msgstr "Kategori oluşturulamadı: "
 
-#: includes/campaign_fetch.php:620
+#: includes/campaign_fetch.php:633
 msgid "Assigned category to post: "
 msgstr "Yazıya atanan kategori: "
 
-#: includes/campaign_fetch.php:623
+#: includes/campaign_fetch.php:636
 msgid "Could not assign category: "
 msgstr "Kategori atanamadı: "
 
@@ -1802,174 +1895,179 @@ msgstr "Kategori atanamadı: "
 msgid "Campaign skipped: already running since %d sec ago."
 msgstr "Kampanya atlandı: %d sn'dir zaten çalışıyor."
 
-#: includes/campaign_fetch.php:791
+#: includes/campaign_fetch.php:811
 msgid "Adding unfiltered content"
 msgstr "Süzülmemiş içerik ekleniyor"
 
-#: includes/campaign_fetch.php:799
+#: includes/campaign_fetch.php:819
 msgid "Processing item pingbacks"
 msgstr "Öge geri bildirimleri işleniyor"
 
-#: includes/campaign_fetch.php:872
+#: includes/campaign_fetch.php:892
 msgid "Categories added: "
 msgstr "Eklenen kategoriler: "
 
-#: includes/campaign_fetch.php:884
+#: includes/campaign_fetch.php:904
 msgid "Tags added: "
 msgstr "Eklenen etiketler: "
 
-#: includes/campaign_fetch.php:896
+#: includes/campaign_fetch.php:916
 msgid "Post format added: "
 msgstr "Eklenen yazı biçimi: "
 
-#: includes/campaign_fetch.php:917
+#: includes/campaign_fetch.php:937
 msgid "Skip Featured Image."
 msgstr "Öne çıkarılmış görsel atlanıyor."
 
-#: includes/campaign_fetch.php:921
+#: includes/campaign_fetch.php:941
 msgid "Featuring Image Into Post."
 msgstr "Görsel yazıda öne çıkarılıyor."
 
-#: includes/campaign_fetch.php:963 includes/campaign_fetch_functions.php:510
+#: includes/campaign_fetch.php:983 includes/campaign_fetch_functions.php:514
 msgid "Failed to obtain file:"
 msgstr "Dosya alınamadı:"
 
-#: includes/campaign_fetch.php:971
+#: includes/campaign_fetch.php:991
 msgid "Save Featured image file failed:"
 msgstr "Öne çıkarılmış görsel dosyası kaydedilemedi:"
 
-#: includes/campaign_fetch_functions.php:1000
+#: includes/campaign_fetch_functions.php:1004
 msgid "Fifu save set attachment from URL."
 msgstr "Fifu, eki adresten ayarlayıp kaydetti."
 
-#: includes/campaign_fetch_functions.php:1089
+#: includes/campaign_fetch_functions.php:102
+#: includes/campaign_fetch_functions.php:112
+msgid "Cleaning Links from content."
+msgstr "İçerikten bağlantılar temizleniyor."
+
+#: includes/campaign_fetch_functions.php:1093
 msgid "Parsing Youtube video and feed item contents."
 msgstr "Youtube videosu ve akış ögesi içeriği ayrıştırılıyor."
 
-#: includes/campaign_fetch_functions.php:118
-msgid "Parsing Post template."
-msgstr "Yazı şablonu ayrıştırılıyor."
-
-#: includes/campaign_fetch_functions.php:1201
+#: includes/campaign_fetch_functions.php:1205
 msgid "Looking for audios in content."
 msgstr "İçerikte sesler aranıyor."
 
-#: includes/campaign_fetch_functions.php:125
-msgid "Can't find the featured image to add to the content."
-msgstr "İçeriğe eklenecek öne çıkarılmış görsel bulunamıyor."
+#: includes/campaign_fetch_functions.php:122
+msgid "Parsing Post template."
+msgstr "Yazı şablonu ayrıştırılıyor."
 
-#: includes/campaign_fetch_functions.php:1252
-#: includes/campaign_fetch_functions.php:1408
+#: includes/campaign_fetch_functions.php:1256
+#: includes/campaign_fetch_functions.php:1412
 msgid "Upload file failed:"
 msgstr "Dosya yüklenemedi:"
 
-#: includes/campaign_fetch_functions.php:1270
+#: includes/campaign_fetch_functions.php:1274
 msgid "Using remotely linked audios in content. No changes."
 msgstr "İçerikte uzaktan bağlantılı sesler kullanılıyor. Değişiklik yok."
 
-#: includes/campaign_fetch_functions.php:1356
+#: includes/campaign_fetch_functions.php:129
+msgid "Can't find the featured image to add to the content."
+msgstr "İçeriğe eklenecek öne çıkarılmış görsel bulunamıyor."
+
+#: includes/campaign_fetch_functions.php:1360
 msgid "Looking for videos in content."
 msgstr "İçerikte videolar aranıyor."
 
-#: includes/campaign_fetch_functions.php:1426
+#: includes/campaign_fetch_functions.php:1430
 msgid "Using remotely linked videos in content. No changes."
 msgstr "İçerikte uzaktan bağlantılı videolar kullanılıyor. Değişiklik yok."
 
-#: includes/campaign_fetch_functions.php:1459
+#: includes/campaign_fetch_functions.php:1463
 msgid "Skipping standard videos..."
 msgstr "Standart videolar atlanıyor..."
 
-#: includes/campaign_fetch_functions.php:1465
+#: includes/campaign_fetch_functions.php:1469
 msgid "Skipping Youtube Short..."
 msgstr "Youtube Short atlanıyor..."
 
-#: includes/campaign_fetch_functions.php:242
+#: includes/campaign_fetch_functions.php:246
 msgid "Processing Words to Category %s"
 msgstr "Sözcükten kategoriye işleniyor %s"
 
-#: includes/campaign_fetch_functions.php:272
+#: includes/campaign_fetch_functions.php:276
 msgid "Found!: word %1$s to Cat_id %2$s"
 msgstr "Bulundu!: %1$s sözcüğü, Cat_id %2$s"
 
-#: includes/campaign_fetch_functions.php:277
+#: includes/campaign_fetch_functions.php:281
 msgid "Not found word %s"
 msgstr "%s sözcüğü bulunamadı"
 
-#: includes/campaign_fetch_functions.php:284
+#: includes/campaign_fetch_functions.php:288
 msgid "Searching the category with more words."
 msgstr "En çok sözcüğe sahip kategori aranıyor."
 
-#: includes/campaign_fetch_functions.php:300
+#: includes/campaign_fetch_functions.php:304
 msgid "The category with more words in content: %s"
 msgstr "İçerikte en çok sözcüğe sahip kategori: %s"
 
-#: includes/campaign_fetch_functions.php:307
+#: includes/campaign_fetch_functions.php:311
 msgid "Assign the first category: %s"
 msgstr "İlk kategoriyi ata: %s"
 
-#: includes/campaign_fetch_functions.php:462
+#: includes/campaign_fetch_functions.php:466
 msgid "Looking for images in content."
 msgstr "İçerikte görseller aranıyor."
 
-#: includes/campaign_fetch_functions.php:471
-#: includes/campaign_fetch_functions.php:1205
-#: includes/campaign_fetch_functions.php:1360
+#: includes/campaign_fetch_functions.php:475
+#: includes/campaign_fetch_functions.php:1209
+#: includes/campaign_fetch_functions.php:1364
 msgid "Uploading media..."
 msgstr "Ortam yükleniyor..."
 
-#: includes/campaign_fetch_functions.php:529
+#: includes/campaign_fetch_functions.php:533
 msgid "Save image file failed:"
 msgstr "Görsel dosyası kaydedilemedi:"
 
-#: includes/campaign_fetch_functions.php:540
-#: includes/campaign_fetch_functions.php:1259
-#: includes/campaign_fetch_functions.php:1415
+#: includes/campaign_fetch_functions.php:544
+#: includes/campaign_fetch_functions.php:1263
+#: includes/campaign_fetch_functions.php:1419
 msgid "Extension not allowed: "
 msgstr "İzin verilmeyen uzantı: "
 
-#: includes/campaign_fetch_functions.php:543
-#: includes/campaign_fetch_functions.php:1261
-#: includes/campaign_fetch_functions.php:1417
+#: includes/campaign_fetch_functions.php:547
+#: includes/campaign_fetch_functions.php:1265
+#: includes/campaign_fetch_functions.php:1421
 msgid "Stripped src."
 msgstr "src temizlendi."
 
-#: includes/campaign_fetch_functions.php:561
+#: includes/campaign_fetch_functions.php:565
 msgid "Using remotely linked images in content. No changes."
 msgstr "İçerikte uzaktan bağlantılı görseller kullanılıyor. Değişiklik yok."
 
-#: includes/campaign_fetch_functions.php:598
+#: includes/campaign_fetch_functions.php:602
 msgid "Attaching file:"
 msgstr "Dosya ekleniyor:"
 
-#: includes/campaign_fetch_functions.php:601
+#: includes/campaign_fetch_functions.php:605
 msgid "Sorry, the attachment could not be inserted. An error has occurred."
 msgstr "Ek dosya eklenemedi. Bir hata oluştu."
 
-#: includes/campaign_fetch_functions.php:636
+#: includes/campaign_fetch_functions.php:640
 msgid "Executing featured image selector..."
 msgstr "Öne çıkarılmış görsel seçici çalıştırılıyor..."
 
-#: includes/campaign_fetch_functions.php:640
+#: includes/campaign_fetch_functions.php:644
 msgid "Featured image \"%1$s\": %2$s"
 msgstr "Öne çıkarılmış görsel \"%1$s\": %2$s"
 
-#: includes/campaign_fetch_functions.php:643
+#: includes/campaign_fetch_functions.php:647
 msgid "No image was found according to the selected index."
 msgstr "Seçilen dizine göre görsel bulunamadı."
 
-#: includes/campaign_fetch_functions.php:648
+#: includes/campaign_fetch_functions.php:652
 msgid "The first image was not found in the content."
 msgstr "İlk görsel içerikte bulunamadı."
 
-#: includes/campaign_fetch_functions.php:650
+#: includes/campaign_fetch_functions.php:654
 msgid "Using first image as the featured image."
 msgstr "İlk görsel öne çıkarılmış görsel olarak kullanılıyor."
 
-#: includes/campaign_fetch_functions.php:656
+#: includes/campaign_fetch_functions.php:660
 msgid "The last image was not found in the content."
 msgstr "Son görsel içerikte bulunamadı."
 
-#: includes/campaign_fetch_functions.php:658
+#: includes/campaign_fetch_functions.php:662
 msgid "Using last image as the featured image."
 msgstr "Son görsel öne çıkarılmış görsel olarak kullanılıyor."
 
@@ -1977,48 +2075,43 @@ msgstr "Son görsel öne çıkarılmış görsel olarak kullanılıyor."
 msgid "Deleting html tags: %s"
 msgstr "HTML etiketleri siliniyor: %s"
 
-#: includes/campaign_fetch_functions.php:865
+#: includes/campaign_fetch_functions.php:869
 msgid "Getting srcset attribute..."
 msgstr "srcset özniteliği alınıyor..."
 
-#: includes/campaign_fetch_functions.php:890
+#: includes/campaign_fetch_functions.php:894
 msgid "Overriding src attribute with value: %s from srcset."
 msgstr "src özniteliği srcset'teki %s değeriyle değiştiriliyor."
 
-#: includes/campaign_fetch_functions.php:937
-#: includes/campaign_fetch_functions.php:1178
-#: includes/campaign_fetch_functions.php:1333
+#: includes/campaign_fetch_functions.php:941
+#: includes/campaign_fetch_functions.php:1182
+#: includes/campaign_fetch_functions.php:1337
 msgid "Removing: %s from content."
 msgstr "%s içerikten kaldırılıyor."
 
-#: includes/campaign_fetch_functions.php:945
+#: includes/campaign_fetch_functions.php:949
 msgid "Link with image URI not found in src."
 msgstr "src içinde görsel URI'si olan bağlantı bulunamadı."
 
-#: includes/campaign_fetch_functions.php:948
+#: includes/campaign_fetch_functions.php:952
 msgid "Successfully removed with anchor link."
 msgstr "Çapa bağlantısıyla birlikte kaldırıldı."
 
-#: includes/campaign_fetch_functions.php:954
+#: includes/campaign_fetch_functions.php:958
 msgid "Image URI not found in src."
 msgstr "src içinde görsel URI'si bulunamadı."
 
-#: includes/campaign_fetch_functions.php:957
+#: includes/campaign_fetch_functions.php:961
 msgid "Successfully removed."
 msgstr "Kaldırıldı."
 
-#: includes/campaign_fetch_functions.php:968
+#: includes/campaign_fetch_functions.php:972
 msgid "Setting up Featured Image From Url"
 msgstr "Featured Image From Url ayarlanıyor"
 
-#: includes/campaign_fetch_functions.php:971
+#: includes/campaign_fetch_functions.php:975
 msgid "Adding featured image post meta: "
 msgstr "Öne çıkarılmış görsel yazı üst verisi ekleniyor: "
-
-#: includes/campaign_fetch_functions.php:98
-#: includes/campaign_fetch_functions.php:108
-msgid "Cleaning Links from content."
-msgstr "İçerikten bağlantılar temizleniyor."
 
 #: includes/campaign_help.php:101
 msgid "Use [embed]"
@@ -2317,7 +2410,7 @@ msgstr ""
 msgid "Duplicate options for this campaign"
 msgstr "Bu kampanyanın yinelenen seçenekleri"
 
-#: includes/campaign_help.php:238 includes/settings/help.php:202
+#: includes/campaign_help.php:238 includes/settings/help.php:207
 msgid ""
 "Turns off both duplicate checks, so every item is published again on every "
 "run. Almost never what you want."
@@ -2325,11 +2418,11 @@ msgstr ""
 "Her iki yinelenen denetimini de kapatır; böylece her öge her çalışmada "
 "yeniden yayınlanır. Neredeyse hiçbir zaman istediğiniz şey değildir."
 
-#: includes/campaign_help.php:239 includes/settings/help.php:203
+#: includes/campaign_help.php:239 includes/settings/help.php:208
 msgid "The two checks"
 msgstr "İki denetim"
 
-#: includes/campaign_help.php:239 includes/settings/help.php:203
+#: includes/campaign_help.php:239 includes/settings/help.php:208
 msgid ""
 "the post title, and a hash of the last item address the campaign read. The "
 "hash is the reliable one; titles alone fail often."
@@ -2355,7 +2448,7 @@ msgstr ""
 "ögeleri yayınlamak için \"Yinelenen başlıklara izin ver\" seçeneğini "
 "kullanın ve karma denetimini açık bırakın."
 
-#: includes/campaign_help.php:244 includes/settings/help.php:208
+#: includes/campaign_help.php:244 includes/settings/help.php:213
 msgid ""
 "The campaign skips each duplicate and keeps looking for new items, instead "
 "of stopping at the first one. Not recommended."
@@ -2363,11 +2456,11 @@ msgstr ""
 "Kampanya ilk yinelenende durmak yerine her yineleneni atlar ve yeni ögeleri "
 "aramayı sürdürür. Önerilmez."
 
-#: includes/campaign_help.php:245 includes/settings/help.php:209
+#: includes/campaign_help.php:245 includes/settings/help.php:214
 msgid "How it works"
 msgstr "Nasıl çalışır"
 
-#: includes/campaign_help.php:245 includes/settings/help.php:209
+#: includes/campaign_help.php:245 includes/settings/help.php:214
 msgid ""
 "feed items come ordered newest first, so the campaign reads from the top and "
 "stops at the first item it already has: everything below it is older and "
@@ -2377,7 +2470,7 @@ msgstr ""
 "okur ve zaten sahip olduğu ilk ögede durur: altındaki her şey daha eskidir "
 "ve zaten yayınlanmıştır."
 
-#: includes/campaign_help.php:246 includes/settings/help.php:210
+#: includes/campaign_help.php:246 includes/settings/help.php:215
 msgid ""
 "The hash only covers the last item read, so on a feed where the title check "
 "works poorly this option can publish the same item twice."
@@ -2385,7 +2478,7 @@ msgstr ""
 "Karma yalnızca okunan son ögeyi kapsar; bu nedenle başlık denetiminin kötü "
 "çalıştığı bir akışta bu seçenek aynı ögeyi iki kez yayınlayabilir."
 
-#: includes/campaign_help.php:250 includes/settings/help.php:219
+#: includes/campaign_help.php:250 includes/settings/help.php:224
 msgid ""
 "One more query per item. Turn it on only if you still get duplicates, which "
 "happens with feeds that do not follow the standard."
@@ -2453,7 +2546,7 @@ msgstr ""
 "erken durur ve öge kaçırır."
 
 #: includes/campaign_help.php:311 includes/settings/help.php:147
-#: includes/module/actions.php:204
+#: includes/module/actions.php:213
 msgid "Words to Categories"
 msgstr "Sözcükten kategoriye"
 
@@ -2809,11 +2902,11 @@ msgid "Filtering out duplicates."
 msgstr "Yinelenenler ayıklanıyor."
 
 #: includes/campaign_preview.php:251 includes/campaign_preview_item.php:178
-#: includes/campaign_preview_item.php:295
+#: includes/campaign_preview_item.php:274
 msgid "You do not have sufficient permissions to preview this campaign."
 msgstr "Bu kampanyayı ön izlemek için yeterli izniniz yok."
 
-#: includes/campaign_preview.php:362 includes/campaign_preview_item.php:353
+#: includes/campaign_preview.php:362 includes/campaign_preview_item.php:332
 msgid "WPeMatico Preview Feed"
 msgstr "WPeMatico akış ön izlemesi"
 
@@ -2834,21 +2927,21 @@ msgstr "Eylemler"
 msgid "Next fetch"
 msgstr "Sonraki getirme"
 
-#: includes/campaign_preview.php:450 includes/campaign_preview_item.php:378
+#: includes/campaign_preview.php:450 includes/campaign_preview_item.php:357
 msgid "Fetch Now"
 msgstr "Şimdi getir"
 
-#: includes/campaign_preview.php:46 includes/campaign_preview_item.php:276
+#: includes/campaign_preview.php:46 includes/campaign_preview_item.php:255
 msgid "This action comes with the Manual Fetching add-on."
 msgstr "Bu eylem Manual Fetching ek eklentisiyle gelir."
 
 #: includes/campaign_preview_item.php:187
-#: includes/campaign_preview_item.php:303
+#: includes/campaign_preview_item.php:282
 msgid "The item is invalid."
 msgstr "Öge geçersiz."
 
 #: includes/campaign_preview_item.php:194
-#: includes/campaign_preview_item.php:310
+#: includes/campaign_preview_item.php:289
 msgid "The feed is invalid."
 msgstr "Akış geçersiz."
 
@@ -2856,11 +2949,11 @@ msgstr "Akış geçersiz."
 msgid "The item could not be previewed."
 msgstr "Öge ön izlenemedi."
 
-#: includes/campaign_preview_item.php:396
+#: includes/campaign_preview_item.php:375
 msgid "Loading post title..."
 msgstr "Yazı başlığı yükleniyor..."
 
-#: includes/campaign_preview_item.php:400
+#: includes/campaign_preview_item.php:379
 msgid "Loading post content..."
 msgstr "Yazı içeriği yükleniyor..."
 
@@ -4593,7 +4686,7 @@ msgstr "Akışı al"
 #: includes/debug_page.php:3712 includes/wpematico_functions.php:2987
 #: includes/wpematico_functions.php:3012 includes/wpematico_functions.php:3208
 #: includes/wpematico_functions.php:3387 includes/xml-importer.php:361
-#: includes/settings/page.php:1265 includes/module/manager.php:265
+#: includes/settings/page.php:1277 includes/module/manager.php:265
 msgid "Permission denied"
 msgstr "İzin verilmedi"
 
@@ -4627,13 +4720,13 @@ msgstr "Panoya kopyalandı."
 
 #: includes/debug_page.php:607 includes/tools_page.php:702
 #: includes/xml-importer.php:370 includes/settings/page.php:124
-#: includes/settings/page.php:1119
+#: includes/settings/page.php:1131
 msgid "Invalid request."
 msgstr "Geçersiz istek."
 
 #: includes/debug_page.php:607 includes/tools_page.php:702
 #: includes/wpematico_functions.php:3378 includes/xml-importer.php:370
-#: includes/settings/page.php:124 includes/settings/page.php:1119
+#: includes/settings/page.php:124 includes/settings/page.php:1131
 msgid "Invalid request"
 msgstr "Geçersiz istek"
 
@@ -7050,7 +7143,7 @@ msgid "Publish the curated content as forum topics, or as replies to them."
 msgstr ""
 "Derlenen içeriği forum konuları olarak ya da onlara yanıt olarak yayınlayın."
 
-#: includes/module/actions.php:162 includes/module/actions.php:201
+#: includes/module/actions.php:162 includes/module/actions.php:210
 msgid "Enable it in a campaign by choosing its Campaign Type."
 msgstr "Bir kampanyada kampanya türünü seçerek etkinleştirin."
 
@@ -7095,30 +7188,43 @@ msgstr ""
 "adresini yapıştırın; kampanya akışını kendisi bulur."
 
 #: includes/module/actions.php:195
+msgid "Publish the news of a Google News search, topic or publication."
+msgstr ""
+"Bir Google News aramasının, konusunun ya da yayınının haberlerini yayınlayın."
+
+#: includes/module/actions.php:199
+msgid ""
+"Adds Google News to the Campaign Type list. Paste the address of the search, "
+"topic or publication and the campaign finds its feed on its own."
+msgstr ""
+"Google News'i kampanya türü listesine ekler. Aramanın, konunun ya da yayının "
+"adresini yapıştırın; kampanya akışını kendisi bulur."
+
+#: includes/module/actions.php:204
 msgid "Import videos from YouTube channels."
 msgstr "YouTube kanallarından video içe aktarın."
 
-#: includes/module/actions.php:205
+#: includes/module/actions.php:214
 msgid ""
 "Assign categories automatically from the words found in the curated content."
 msgstr ""
 "Derlenen içerikte bulunan sözcüklerden kategorileri otomatik olarak atayın."
 
-#: includes/module/actions.php:209
+#: includes/module/actions.php:218
 msgid "Set the words and the category each one maps to in the Settings page."
 msgstr ""
 "Sözcükleri ve her birinin eşlendiği kategoriyi Ayarlar sayfasında belirleyin."
 
-#: includes/module/actions.php:213
+#: includes/module/actions.php:222
 msgid "Canonical URLs"
 msgstr "Standart adresler"
 
-#: includes/module/actions.php:214
+#: includes/module/actions.php:223
 msgid ""
 "Credit the original article with a canonical URL on every imported post."
 msgstr "İçe aktarılan her yazıda özgün makaleyi standart bir adresle belirtin."
 
-#: includes/module/actions.php:218
+#: includes/module/actions.php:227
 msgid ""
 "Tells search engines which is the original article, so the copy is not "
 "judged as duplicate content."
@@ -7126,26 +7232,26 @@ msgstr ""
 "Arama motorlarına hangisinin özgün makale olduğunu söyler; böylece kopya "
 "yinelenen içerik sayılmaz."
 
-#: includes/module/actions.php:222
+#: includes/module/actions.php:231
 msgid "Download Images"
 msgstr "Görselleri indir"
 
-#: includes/module/actions.php:223
+#: includes/module/actions.php:232
 msgid "Download the images of each item into the WordPress Media Library."
 msgstr "Her ögenin görsellerini WordPress ortam kütüphanesine indirin."
 
-#: includes/module/actions.php:228
+#: includes/module/actions.php:237
 msgid ""
 "Turn it on here; the size, quality and naming options are in the Settings "
 "page."
 msgstr ""
 "Buradan açın; boyut, kalite ve adlandırma seçenekleri Ayarlar sayfasındadır."
 
-#: includes/module/actions.php:231
+#: includes/module/actions.php:240
 msgid "Featured Images"
 msgstr "Öne çıkarılmış görseller"
 
-#: includes/module/actions.php:232
+#: includes/module/actions.php:241
 msgid ""
 "Give every imported post a featured image, taken from the first image of the "
 "item."
@@ -7153,7 +7259,7 @@ msgstr ""
 "İçe aktarılan her yazıya, ögenin ilk görselinden alınan bir öne çıkarılmış "
 "görsel verin."
 
-#: includes/module/actions.php:237
+#: includes/module/actions.php:246
 msgid ""
 "Each campaign can override it, and the Featured Image from URL module "
 "decides whether the image is downloaded or linked."
@@ -7161,23 +7267,23 @@ msgstr ""
 "Her kampanya bunu değiştirebilir; görselin indirilmesine mi yoksa "
 "bağlanmasına mı Featured Image from URL modülü karar verir."
 
-#: includes/module/actions.php:241
+#: includes/module/actions.php:250
 msgid "Email Notifications"
 msgstr "E-posta bildirimleri"
 
-#: includes/module/actions.php:242
+#: includes/module/actions.php:251
 msgid "Get an email report every time a campaign finishes a run."
 msgstr "Bir kampanya çalışmasını her bitirdiğinde e-postayla rapor alın."
 
-#: includes/module/actions.php:248
+#: includes/module/actions.php:257
 msgid "Deactivate in each campaign by clearing the email field."
 msgstr "Her kampanyada e-posta alanını boşaltarak kapatın."
 
-#: includes/module/actions.php:251
+#: includes/module/actions.php:260
 msgid "Random Galleries"
 msgstr "Rastgele galeriler"
 
-#: includes/module/actions.php:252
+#: includes/module/actions.php:261
 msgid ""
 "Group images by topic and give each post a featured image picked at random "
 "from its gallery."
@@ -7185,92 +7291,92 @@ msgstr ""
 "Görselleri konuya göre gruplayın ve her yazıya galerisinden rastgele seçilen "
 "bir öne çıkarılmış görsel verin."
 
-#: includes/module/actions.php:258 includes/module/actions.php:269
-#: includes/module/actions.php:652 includes/module/actions.php:664
-#: includes/module/actions.php:687
+#: includes/module/actions.php:267 includes/module/actions.php:278
+#: includes/module/actions.php:661 includes/module/actions.php:673
+#: includes/module/actions.php:696
 msgid "Available in the Professional addon."
 msgstr "Professional ek eklentisinde bulunur."
 
-#: includes/module/actions.php:261
+#: includes/module/actions.php:270
 msgid "Random Rewrites"
 msgstr "Rastgele yeniden yazmalar"
 
-#: includes/module/actions.php:262
+#: includes/module/actions.php:271
 msgid "Rewrite custom words randomly as synonyms."
 msgstr "Özel sözcükleri eş anlamlılarıyla rastgele yeniden yazın."
 
-#: includes/module/actions.php:266
+#: includes/module/actions.php:275
 msgid ""
 "You must complete the words separated by comma and per line in the textarea."
 msgstr ""
 "Sözcükleri metin alanına virgülle ayırarak ve satır satır girmelisiniz."
 
-#: includes/module/actions.php:310
+#: includes/module/actions.php:319
 msgid "Turning this off deactivates the %s plugin."
 msgstr "Bunu kapatmak %s eklentisini etkisizleştirir."
 
-#: includes/module/actions.php:312
+#: includes/module/actions.php:321
 msgid "The plugin is installed but not running. Turning this on activates %s."
 msgstr ""
 "Eklenti kurulu ama çalışmıyor. Bunu açmak %s eklentisini etkinleştirir."
 
-#: includes/module/actions.php:318
+#: includes/module/actions.php:327
 msgid ""
 "%s is not installed yet. Install it from here, free, and this switch turns "
 "it on."
 msgstr "%s henüz kurulu değil. Buradan ücretsiz kurun; bu anahtar onu açar."
 
-#: includes/module/actions.php:322
+#: includes/module/actions.php:331
 msgid "Needs the %s addon. Get it at etruel.com and this switch enables it."
 msgstr ""
 "%s ek eklentisi gerekir. etruel.com'dan edinin; bu anahtar onu etkinleştirir."
 
-#: includes/module/actions.php:361 includes/module/actions.php:435
+#: includes/module/actions.php:370 includes/module/actions.php:444
 msgid ""
 "%s is installed but not active. Turn it on and this module becomes available."
 msgstr ""
 "%s kurulu ama etkin değil. Etkinleştirin; bu modül kullanılabilir olur."
 
-#: includes/module/actions.php:420
+#: includes/module/actions.php:429
 msgid "It also needs the free %s plugin."
 msgstr "Ücretsiz %s eklentisi de gerekir."
 
-#: includes/module/actions.php:440
+#: includes/module/actions.php:449
 msgid "Needs the free %s plugin, which is not installed yet."
 msgstr "Henüz kurulu olmayan ücretsiz %s eklentisi gerekir."
 
-#: includes/module/actions.php:441 includes/module/dashboard.php:62
+#: includes/module/actions.php:450 includes/module/dashboard.php:62
 #: includes/module/manager.php:194
 msgid "Install"
 msgstr "Kur"
 
-#: includes/module/actions.php:516
+#: includes/module/actions.php:525
 msgid "Delete Duplicates"
 msgstr "Yinelenenleri sil"
 
-#: includes/module/actions.php:517
+#: includes/module/actions.php:526
 msgid "Automatically search and delete duplicated posts by name or content."
 msgstr ""
 "Ada ya da içeriğe göre yinelenen yazıları otomatik olarak arayıp silin."
 
-#: includes/module/actions.php:522
+#: includes/module/actions.php:531
 msgid "Installs the free WP Delete Post Copies plugin from WordPress.org."
 msgstr "Ücretsiz WP Delete Post Copies eklentisini WordPress.org'dan kurar."
 
-#: includes/module/actions.php:526
+#: includes/module/actions.php:535
 msgid "WPeMatico Polylang"
 msgstr "WPeMatico Polylang"
 
-#: includes/module/actions.php:527
+#: includes/module/actions.php:536
 msgid ""
 "Assigns the imported posts to the right language on sites running Polylang."
 msgstr "Polylang kullanan sitelerde içe aktarılan yazıları doğru dile atar."
 
-#: includes/module/actions.php:532
+#: includes/module/actions.php:541
 msgid "Installs the free WPeMatico Polylang plugin from WordPress.org."
 msgstr "Ücretsiz WPeMatico Polylang eklentisini WordPress.org'dan kurar."
 
-#: includes/module/actions.php:539
+#: includes/module/actions.php:548
 msgid ""
 "The addon files each imported post under a language, and languages only "
 "exist while Polylang runs."
@@ -7278,11 +7384,11 @@ msgstr ""
 "Ek eklenti içe aktarılan her yazıyı bir dile yerleştirir; diller ise "
 "yalnızca Polylang çalışırken vardır."
 
-#: includes/module/actions.php:544
+#: includes/module/actions.php:553
 msgid "RSS Items Aggregator"
 msgstr "RSS öge toplayıcı"
 
-#: includes/module/actions.php:545
+#: includes/module/actions.php:554
 msgid ""
 "Also known as RSS Feed Reader: shows the items of several feeds inside one "
 "post or page."
@@ -7290,23 +7396,23 @@ msgstr ""
 "RSS Feed Reader olarak da bilinir: birkaç akışın ögelerini tek bir yazı ya "
 "da sayfa içinde gösterir."
 
-#: includes/module/actions.php:550
+#: includes/module/actions.php:559
 msgid "Installs the free WPeMatico RSS Feed Reader plugin from WordPress.org."
 msgstr ""
 "Ücretsiz WPeMatico RSS Feed Reader eklentisini WordPress.org'dan kurar."
 
-#: includes/module/actions.php:551
+#: includes/module/actions.php:560
 msgid "Requires WPeMatico RSS Feed Reader"
 msgstr "WPeMatico RSS Feed Reader gerektirir"
 
-#: includes/module/actions.php:561
+#: includes/module/actions.php:570
 msgid ""
 "Use the image at its original URL as featured image, without downloading it."
 msgstr ""
 "Görseli indirmeden, özgün adresindeki haliyle öne çıkarılmış görsel olarak "
 "kullanın."
 
-#: includes/module/actions.php:568
+#: includes/module/actions.php:577
 msgid ""
 "Featured Images is off, so nothing picks the image to link — unless an addon "
 "such as Professional or Full Content supplies one."
@@ -7314,7 +7420,7 @@ msgstr ""
 "Öne çıkarılmış görseller kapalı; bu yüzden bağlanacak görseli seçen bir şey "
 "yok — Professional ya da Full Content gibi bir ek eklenti sağlamadıkça."
 
-#: includes/module/actions.php:569
+#: includes/module/actions.php:578
 msgid ""
 "The image is linked from its original site instead of being downloaded, so "
 "it takes up no space in your Media Library."
@@ -7322,7 +7428,7 @@ msgstr ""
 "Görsel indirilmek yerine özgün sitesinden bağlanır; bu yüzden ortam "
 "kütüphanenizde yer kaplamaz."
 
-#: includes/module/actions.php:578
+#: includes/module/actions.php:587
 msgid ""
 "WPeMatico stores the image URL on each post; that plugin is what turns it "
 "into the featured image WordPress shows."
@@ -7330,22 +7436,22 @@ msgstr ""
 "WPeMatico görsel adresini her yazıda saklar; onu WordPress'in gösterdiği öne "
 "çıkarılmış görsele dönüştüren o eklentidir."
 
-#: includes/module/actions.php:589
+#: includes/module/actions.php:598
 msgid "Auto Delete"
 msgstr "Otomatik silme"
 
-#: includes/module/actions.php:590
+#: includes/module/actions.php:599
 msgid ""
 "Delete the posts of the categories you choose once they reach a given age."
 msgstr ""
 "Seçtiğiniz kategorilerin yazılarını belirli bir yaşa ulaştıklarında silin."
 
-#: includes/module/actions.php:596
+#: includes/module/actions.php:605
 msgid "Helpful if you want to remove stale or old items automatically."
 msgstr ""
 "Bayat ya da eski ögeleri otomatik olarak kaldırmak istiyorsanız yararlıdır."
 
-#: includes/module/actions.php:604
+#: includes/module/actions.php:613
 msgid ""
 "The addon extends that free plugin, the same one the Delete Duplicates card "
 "installs."
@@ -7353,11 +7459,11 @@ msgstr ""
 "Ek eklenti, Yinelenenleri sil kartının kurduğu aynı ücretsiz eklentiyi "
 "genişletir."
 
-#: includes/module/actions.php:609
+#: includes/module/actions.php:618
 msgid "Polyglot"
 msgstr "Polyglot"
 
-#: includes/module/actions.php:610
+#: includes/module/actions.php:619
 msgid ""
 "Translate the fetched content with any of several free and paid translation "
 "engines."
@@ -7365,102 +7471,102 @@ msgstr ""
 "Getirilen içeriği birkaç ücretsiz ve ücretli çeviri motorundan herhangi "
 "biriyle çevirin."
 
-#: includes/module/actions.php:617
+#: includes/module/actions.php:626
 msgid "Requires WPeMatico Polyglot addon"
 msgstr "WPeMatico Polyglot ek eklentisi gerektirir"
 
-#: includes/module/actions.php:621
+#: includes/module/actions.php:630
 msgid "GPT Spinner AI"
 msgstr "GPT Spinner AI"
 
-#: includes/module/actions.php:622
+#: includes/module/actions.php:631
 msgid "Rewrite the fetched content automatically through an AI or spinner API."
 msgstr ""
 "Getirilen içeriği bir yapay zekâ ya da spinner API'si üzerinden otomatik "
 "olarak yeniden yazın."
 
-#: includes/module/actions.php:629
+#: includes/module/actions.php:638
 msgid "Requires AI addon"
 msgstr "Yapay zekâ ek eklentisi gerektirir"
 
-#: includes/module/actions.php:633
+#: includes/module/actions.php:642
 msgid "Full Contents"
 msgstr "Full Contents"
 
-#: includes/module/actions.php:634
+#: includes/module/actions.php:643
 msgid "Enable full content extraction from each source website."
 msgstr "Her kaynak siteden tam içerik çıkarmayı etkinleştirin."
 
-#: includes/module/actions.php:641
+#: includes/module/actions.php:650
 msgid "Requires WPeMatico Full Content addon"
 msgstr "WPeMatico Full Content ek eklentisi gerektirir"
 
-#: includes/module/actions.php:645
+#: includes/module/actions.php:654
 msgid "Bulk Add Sources"
 msgstr "Toplu kaynak ekleme"
 
-#: includes/module/actions.php:646
+#: includes/module/actions.php:655
 msgid ""
 "Paste or upload a list of feeds to add many sources to a campaign at once."
 msgstr ""
 "Bir kampanyaya aynı anda çok sayıda kaynak eklemek için akış listesi "
 "yapıştırın ya da yükleyin."
 
-#: includes/module/actions.php:653
+#: includes/module/actions.php:662
 msgid "A Professional feature, you can activate it here."
 msgstr "Bir Professional özelliği; buradan etkinleştirebilirsiniz."
 
-#: includes/module/actions.php:657
+#: includes/module/actions.php:666
 msgid "Keyword Filtering"
 msgstr "Anahtar sözcük süzme"
 
-#: includes/module/actions.php:658
+#: includes/module/actions.php:667
 msgid ""
 "Keep or skip each item by the keywords found in its title or its content."
 msgstr ""
 "Her ögeyi başlığında ya da içeriğinde bulunan anahtar sözcüklere göre tutun "
 "ya da atlayın."
 
-#: includes/module/actions.php:668
+#: includes/module/actions.php:677
 msgid "Facebook Source"
 msgstr "Facebook kaynağı"
 
-#: includes/module/actions.php:669
+#: includes/module/actions.php:678
 msgid "Import content from Facebook profiles and groups."
 msgstr "Facebook profillerinden ve gruplarından içerik içe aktarın."
 
-#: includes/module/actions.php:676
+#: includes/module/actions.php:685
 msgid "Requires Facebook Campaign addon"
 msgstr "Facebook Campaign ek eklentisi gerektirir"
 
-#: includes/module/actions.php:680
+#: includes/module/actions.php:689
 msgid "Export/Import Campaigns"
 msgstr "Kampanyaları dışa/içe aktar"
 
-#: includes/module/actions.php:681
+#: includes/module/actions.php:690
 msgid "Migrate campaigns between sites."
 msgstr "Kampanyaları siteler arasında taşıyın."
 
-#: includes/module/actions.php:691
+#: includes/module/actions.php:700
 msgid "Feed Creator"
 msgstr "Feed Creator"
 
-#: includes/module/actions.php:692
+#: includes/module/actions.php:701
 msgid ""
 "Generate custom RSS feeds from external webpages to fetch with WPeMatico."
 msgstr ""
 "WPeMatico ile getirmek üzere harici web sayfalarından özel RSS akışları "
 "üretin."
 
-#: includes/module/actions.php:699
+#: includes/module/actions.php:708
 msgid "Requires \"Make Me Feed\" addon"
 msgstr "\"Make Me Feed\" ek eklentisi gerektirir"
 
-#: includes/module/actions.php:703
+#: includes/module/actions.php:712
 msgid "Publish To Email"
 msgstr "E-postayla yayınla"
 
-#: includes/module/actions.php:704
+#: includes/module/actions.php:713
 msgid ""
 "Mail each post of a campaign to an address that publishes it, instead of "
 "publishing it here or as well as here."
@@ -7468,15 +7574,15 @@ msgstr ""
 "Bir kampanyanın her yazısını, burada yayınlamak yerine ya da buna ek olarak, "
 "onu yayınlayan bir adrese e-postayla gönderin."
 
-#: includes/module/actions.php:711
+#: includes/module/actions.php:720
 msgid "Requires Email Campaign addon"
 msgstr "Email Campaign ek eklentisi gerektirir"
 
-#: includes/module/actions.php:715
+#: includes/module/actions.php:724
 msgid "Better Excerpts"
 msgstr "Better Excerpts"
 
-#: includes/module/actions.php:716
+#: includes/module/actions.php:725
 msgid ""
 "Cut the excerpt at the length you set and back to the end of the last whole "
 "sentence, never mid-word."
@@ -7484,15 +7590,15 @@ msgstr ""
 "Özeti belirlediğiniz uzunlukta keser ve son tam cümlenin sonuna geri çeker; "
 "asla sözcük ortasında bırakmaz."
 
-#: includes/module/actions.php:723
+#: includes/module/actions.php:732
 msgid "Requires Better Excerpts addon"
 msgstr "Better Excerpts ek eklentisi gerektirir"
 
-#: includes/module/actions.php:727
+#: includes/module/actions.php:736
 msgid "Synchronizer"
 msgstr "Synchronizer"
 
-#: includes/module/actions.php:728
+#: includes/module/actions.php:737
 msgid ""
 "Update the posts you already imported when the source article changes, "
 "instead of publishing a duplicate."
@@ -7500,15 +7606,15 @@ msgstr ""
 "Kaynak makale değiştiğinde, yinelenen yayınlamak yerine daha önce içe "
 "aktardığınız yazıları güncelleyin."
 
-#: includes/module/actions.php:735
+#: includes/module/actions.php:744
 msgid "Requires Synchronizer addon"
 msgstr "Synchronizer ek eklentisi gerektirir"
 
-#: includes/module/actions.php:739
+#: includes/module/actions.php:748
 msgid "Manual Fetching"
 msgstr "Manual Fetching"
 
-#: includes/module/actions.php:740
+#: includes/module/actions.php:749
 msgid ""
 "See the items each feed will bring, and publish the ones you choose one by "
 "one or in bulk."
@@ -7516,15 +7622,15 @@ msgstr ""
 "Her akışın getireceği ögeleri görün ve seçtiklerinizi tek tek ya da toplu "
 "olarak yayınlayın."
 
-#: includes/module/actions.php:747
+#: includes/module/actions.php:756
 msgid "Requires Manual Fetching addon"
 msgstr "Manual Fetching ek eklentisi gerektirir"
 
-#: includes/module/actions.php:751
+#: includes/module/actions.php:760
 msgid "Exporter"
 msgstr "Exporter"
 
-#: includes/module/actions.php:752
+#: includes/module/actions.php:761
 msgid ""
 "Export your posts to a file on a schedule, in the format your template "
 "defines, by download, folder, FTP or SSH."
@@ -7532,15 +7638,15 @@ msgstr ""
 "Yazılarınızı bir zamanlamayla, şablonunuzun tanımladığı biçimde, indirme, "
 "klasör, FTP ya da SSH yoluyla bir dosyaya dışa aktarın."
 
-#: includes/module/actions.php:759
+#: includes/module/actions.php:768
 msgid "Requires Exporter addon"
 msgstr "Exporter ek eklentisi gerektirir"
 
-#: includes/module/actions.php:763
+#: includes/module/actions.php:772
 msgid "Office"
 msgstr "Office"
 
-#: includes/module/actions.php:764
+#: includes/module/actions.php:773
 msgid ""
 "Publish posts from the .docx and PDF files in a folder of your server, with "
 "their text and their images."
@@ -7548,30 +7654,30 @@ msgstr ""
 "Sunucunuzdaki bir klasörde bulunan .docx ve PDF dosyalarından, metinleri ve "
 "görselleriyle yazı yayınlayın."
 
-#: includes/module/actions.php:771
+#: includes/module/actions.php:780
 msgid "Requires Office Campaign addon"
 msgstr "Office Campaign ek eklentisi gerektirir"
 
-#: includes/module/actions.php:779
+#: includes/module/actions.php:788
 msgid "Rewrite Rules"
 msgstr "Yeniden yazma kuralları"
 
-#: includes/module/actions.php:780
+#: includes/module/actions.php:789
 msgid "Search and replace words or HTML in the fetched content, per campaign."
 msgstr ""
 "Getirilen içerikte kampanya bazında sözcük ya da HTML arayıp değiştirin."
 
-#: includes/module/actions.php:787
+#: includes/module/actions.php:796
 msgid "Customer Support"
 msgstr "Müşteri desteği"
 
-#: includes/module/actions.php:788
+#: includes/module/actions.php:797
 msgid ""
 "Free setup assistance and troubleshooting, or step up to Premium Support."
 msgstr ""
 "Ücretsiz kurulum yardımı ve sorun giderme; ya da Premium Destek'e geçin."
 
-#: includes/module/actions.php:796
+#: includes/module/actions.php:805
 msgid "Requires registration at etruel.com"
 msgstr "etruel.com'da kayıt gerektirir"
 
@@ -8083,11 +8189,35 @@ msgstr ""
 "Vimeo her biri için son 10 videoyu yayınlar. Vimeo kullanmıyorsanız kapalı "
 "bırakın: kampanya türü hiç yüklenmez."
 
-#: includes/settings/help.php:160 includes/settings/page.php:737
+#: includes/settings/help.php:160
+msgid "Google News campaign type"
+msgstr "Google News kampanya türü"
+
+#: includes/settings/help.php:161
+msgid ""
+"Adds Google News to the campaign type list, to publish the news of a search, "
+"a topic or a publication. Paste the address and the campaign finds its feed "
+"on its own."
+msgstr ""
+"Bir aramanın, konunun ya da yayının haberlerini yayınlamak için Google "
+"News'i kampanya türü listesine ekler. Adresi yapıştırın; kampanya akışını "
+"kendisi bulur."
+
+#: includes/settings/help.php:162
+msgid ""
+"Each item brings the headline, the date and the name of the publication, and "
+"links to Google News. Leave this off if you do not use Google News: the "
+"campaign type is not loaded at all."
+msgstr ""
+"Her öğe manşeti, tarihi ve yayının adını getirir ve Google News'e bağlantı "
+"verir. Google News kullanmıyorsanız kapalı bırakın: kampanya türü hiç "
+"yüklenmez."
+
+#: includes/settings/help.php:165 includes/settings/page.php:749
 msgid "Canonical URL to the source"
 msgstr "Kaynağa standart adres"
 
-#: includes/settings/help.php:161
+#: includes/settings/help.php:166
 msgid ""
 "Each imported post declares the original article as its canonical URL. It "
 "does not work on every server."
@@ -8095,7 +8225,7 @@ msgstr ""
 "İçe aktarılan her yazı özgün makaleyi standart adresi olarak bildirir. Her "
 "sunucuda çalışmaz."
 
-#: includes/settings/help.php:162
+#: includes/settings/help.php:167
 msgid ""
 "This tells search engines which copy of the article is the one to index, so "
 "your site is not penalised for duplicated content."
@@ -8103,11 +8233,11 @@ msgstr ""
 "Bu, arama motorlarına makalenin hangi kopyasının dizine ekleneceğini söyler; "
 "böylece siteniz yinelenen içerik yüzünden cezalandırılmaz."
 
-#: includes/settings/help.php:167
+#: includes/settings/help.php:172
 msgid "Force the bundled SimplePie library"
 msgstr "Paketle gelen SimplePie kütüphanesini zorla"
 
-#: includes/settings/help.php:168
+#: includes/settings/help.php:173
 msgid ""
 "Ignores the SimplePie that ships with WordPress. You only need this if that "
 "version gives you trouble."
@@ -8115,11 +8245,11 @@ msgstr ""
 "WordPress ile gelen SimplePie'yi yok sayar. Buna yalnızca o sürüm sorun "
 "çıkarıyorsa gerek duyarsınız."
 
-#: includes/settings/help.php:171 includes/settings/page.php:428
+#: includes/settings/help.php:176 includes/settings/page.php:428
 msgid "Set SimplePie \"stupidly fast\""
 msgstr "SimplePie'yi \"stupidly fast\" olarak ayarla"
 
-#: includes/settings/help.php:172
+#: includes/settings/help.php:177
 msgid ""
 "SimplePie gives up most of its sanitizing in exchange for speed: the feed "
 "content arrives with no parsers and no filters."
@@ -8127,7 +8257,7 @@ msgstr ""
 "SimplePie hız karşılığında temizleme işlemlerinin çoğundan vazgeçer: akış "
 "içeriği ayrıştırıcı ve süzgeç olmadan gelir."
 
-#: includes/settings/help.php:173
+#: includes/settings/help.php:178
 msgid ""
 "Nothing is stripped from the content: all HTML, styles and scripts come "
 "through. Use it only with feeds you trust; otherwise set the allowed tags "
@@ -8137,11 +8267,11 @@ msgstr ""
 "Yalnızca güvendiğiniz akışlarla kullanın; aksi halde izin verilen etiketleri "
 "ve öznitelikleri aşağıda ayarlayın."
 
-#: includes/settings/help.php:176 includes/settings/page.php:436
+#: includes/settings/help.php:181 includes/settings/page.php:436
 msgid "HTML tags SimplePie strips"
 msgstr "SimplePie'nin temizlediği HTML etiketleri"
 
-#: includes/settings/help.php:177
+#: includes/settings/help.php:182
 msgid ""
 "SimplePie removes these tags from the feed content. Take one out to let it "
 "through, for example iframe to keep embedded videos."
@@ -8149,11 +8279,11 @@ msgstr ""
 "SimplePie bu etiketleri akış içeriğinden kaldırır. Geçmesini istediğinizi "
 "listeden çıkarın; örneğin gömülü videoları korumak için iframe."
 
-#: includes/settings/help.php:180 includes/settings/page.php:446
+#: includes/settings/help.php:185 includes/settings/page.php:446
 msgid "HTML attributes SimplePie strips"
 msgstr "SimplePie'nin temizlediği HTML öznitelikleri"
 
-#: includes/settings/help.php:181
+#: includes/settings/help.php:186
 msgid ""
 "SimplePie removes these attributes from the tags in the content. Take one "
 "out to keep it, or add more to strip."
@@ -8161,11 +8291,11 @@ msgstr ""
 "SimplePie bu öznitelikleri içerikteki etiketlerden kaldırır. Korumak için "
 "birini çıkarın ya da temizlenecek başkalarını ekleyin."
 
-#: includes/settings/help.php:186 includes/settings/page.php:470
+#: includes/settings/help.php:191 includes/settings/page.php:470
 msgid "Let campaigns skip the content filters"
 msgstr "Kampanyaların içerik süzgeçlerini atlamasına izin ver"
 
-#: includes/settings/help.php:187
+#: includes/settings/help.php:192
 msgid ""
 "Adds a switch to every campaign that stores the feed content exactly as it "
 "comes, scripts included. Use it only with sources you trust."
@@ -8173,7 +8303,7 @@ msgstr ""
 "Her kampanyaya, akış içeriğini betikler dahil tam geldiği gibi saklayan bir "
 "anahtar ekler. Yalnızca güvendiğiniz kaynaklarla kullanın."
 
-#: includes/settings/help.php:188
+#: includes/settings/help.php:193
 msgid ""
 "WordPress inserts the post as usual and the content is then written straight "
 "to the database, past every filter."
@@ -8181,15 +8311,15 @@ msgstr ""
 "WordPress yazıyı her zamanki gibi ekler, ardından içerik tüm süzgeçleri "
 "atlayarak doğrudan veritabanına yazılır."
 
-#: includes/settings/help.php:189
+#: includes/settings/help.php:194
 msgid "See How WordPress Processes Post Content: "
 msgstr "WordPress'in yazı içeriğini nasıl işlediğine bakın: "
 
-#: includes/settings/help.php:192
+#: includes/settings/help.php:197
 msgid "Timeout for a running campaign"
 msgstr "Çalışan kampanya için zaman aşımı"
 
-#: includes/settings/help.php:193
+#: includes/settings/help.php:198
 msgid ""
 "A campaign interrupted halfway stays marked as running until this many "
 "seconds have passed; then it runs again on its next schedule. Recommended: "
@@ -8199,17 +8329,17 @@ msgstr ""
 "işaretli kalır; sonra bir sonraki zamanlamasında yeniden çalışır. Önerilen: "
 "300."
 
-#: includes/settings/help.php:194
+#: includes/settings/help.php:199
 msgid "Set 0 to keep it blocked until you click \"Clear campaign\" yourself."
 msgstr ""
 "Siz \"Kampanyayı temizle\" düğmesine tıklayana kadar engelli kalması için 0 "
 "yapın."
 
-#: includes/settings/help.php:197
+#: includes/settings/help.php:202
 msgid "Pause after every post"
 msgstr "Her yazıdan sonra duraklat"
 
-#: includes/settings/help.php:198
+#: includes/settings/help.php:203
 msgid ""
 "Waits this many seconds after inserting each post, to give the server a "
 "break on long runs. Leave 0 unless you have trouble."
@@ -8217,7 +8347,7 @@ msgstr ""
 "Uzun çalışmalarda sunucuya soluk aldırmak için her yazıyı ekledikten sonra "
 "bu kadar saniye bekler. Sorun yaşamıyorsanız 0 bırakın."
 
-#: includes/settings/help.php:204
+#: includes/settings/help.php:209
 msgid ""
 "To publish items that share a title, use \"Allow duplicate titles\" instead "
 "and leave the hash check on."
@@ -8225,11 +8355,11 @@ msgstr ""
 "Aynı başlığı taşıyan ögeleri yayınlamak için bunun yerine \"Yinelenen "
 "başlıklara izin ver\" seçeneğini kullanın ve karma denetimini açık bırakın."
 
-#: includes/settings/help.php:213 includes/settings/page.php:544
+#: includes/settings/help.php:218 includes/settings/page.php:544
 msgid "Do not save the plugin custom fields"
 msgstr "Eklentinin özel alanlarını kaydetme"
 
-#: includes/settings/help.php:214
+#: includes/settings/help.php:219
 msgid ""
 "Saves database space and costs you the source permalink, the campaign each "
 "post came from and every bulk action based on it."
@@ -8237,7 +8367,7 @@ msgstr ""
 "Veritabanında yer kazandırır; karşılığında kaynak kalıcı bağlantısını, her "
 "yazının geldiği kampanyayı ve buna dayalı tüm toplu işlemleri yitirirsiniz."
 
-#: includes/settings/help.php:215
+#: includes/settings/help.php:220
 msgid ""
 "By default each published post carries three custom fields with the campaign "
 "and the source item. Turning this on does not delete the ones already saved."
@@ -8245,11 +8375,11 @@ msgstr ""
 "Varsayılan olarak yayınlanan her yazı, kampanyayı ve kaynak ögeyi içeren üç "
 "özel alan taşır. Bunu açmak önceden kaydedilenleri silmez."
 
-#: includes/settings/help.php:224 includes/settings/page.php:573
+#: includes/settings/help.php:229 includes/settings/page.php:573
 msgid "Disable WPeMatico schedules"
 msgstr "WPeMatico zamanlamalarını etkisizleştir"
 
-#: includes/settings/help.php:225
+#: includes/settings/help.php:230
 msgid ""
 "No campaign runs on its own any more. You run them by hand or from an "
 "external cron, which is the recommended setup."
@@ -8257,11 +8387,11 @@ msgstr ""
 "Artık hiçbir kampanya kendiliğinden çalışmaz. Onları elle ya da harici bir "
 "cron ile çalıştırırsınız; önerilen kurulum da budur."
 
-#: includes/settings/help.php:228 includes/settings/page.php:607
+#: includes/settings/help.php:233 includes/settings/page.php:607
 msgid "Ask for a password on the external cron"
 msgstr "Harici cron için parola iste"
 
-#: includes/settings/help.php:229
+#: includes/settings/help.php:234
 msgid ""
 "Only a request carrying the code runs your campaigns. Off by default for "
 "backward compatibility, and strongly recommended."
@@ -8269,25 +8399,29 @@ msgstr ""
 "Yalnızca kodu taşıyan bir istek kampanyalarınızı çalıştırır. Geriye dönük "
 "uyumluluk için varsayılan olarak kapalıdır ve şiddetle önerilir."
 
-#: includes/settings/help.php:230
+#: includes/settings/help.php:235
 msgid "While this is off, the password below is ignored."
 msgstr "Bu kapalıyken aşağıdaki parola yok sayılır."
 
-#: includes/settings/help.php:233
+#: includes/settings/help.php:238
 msgid "External cron password"
 msgstr "Harici cron parolası"
 
-#: includes/settings/help.php:234
+#: includes/settings/help.php:239
 msgid "Any text you like. It travels in the cron address as ?code=your_code."
 msgstr ""
 "İstediğiniz herhangi bir metin. Cron adresinde ?code=your_code olarak "
 "taşınır."
 
-#: includes/settings/help.php:237 includes/settings/page.php:627
+#: includes/settings/help.php:24
+msgid "Global settings for images"
+msgstr "Görseller için genel ayarlar"
+
+#: includes/settings/help.php:242 includes/settings/page.php:627
 msgid "Disable all WP_Cron"
 msgstr "Tüm WP_Cron'u etkisizleştir"
 
-#: includes/settings/help.php:238
+#: includes/settings/help.php:243
 msgid ""
 "Stops every scheduled task on the site, WordPress own and other plugins "
 "included. Only do this if an external cron takes over."
@@ -8296,15 +8430,11 @@ msgstr ""
 "zamanlanmış görevleri durdurur. Bunu yalnızca yerini harici bir cron "
 "alıyorsa yapın."
 
-#: includes/settings/help.php:24
-msgid "Global settings for images"
-msgstr "Görseller için genel ayarlar"
-
-#: includes/settings/help.php:241 includes/settings/page.php:564
+#: includes/settings/help.php:246 includes/settings/page.php:564
 msgid "Use ALTERNATE_WP_CRON"
 msgstr "ALTERNATE_WP_CRON kullan"
 
-#: includes/settings/help.php:242
+#: includes/settings/help.php:247
 msgid ""
 "Some servers block the way WordPress triggers its schedules. This constant "
 "works around it on almost any server."
@@ -8312,11 +8442,17 @@ msgstr ""
 "Bazı sunucular WordPress'in zamanlamalarını tetikleme yöntemini engeller. Bu "
 "sabit, neredeyse her sunucuda bunu aşar."
 
-#: includes/settings/help.php:245 includes/settings/page.php:657
+#: includes/settings/help.php:25 includes/settings/help.php:86
+#: includes/settings/help.php:115
+msgid "These apply to every campaign, and each campaign can override them."
+msgstr ""
+"Bunlar her kampanyaya uygulanır ve her kampanya bunları değiştirebilir."
+
+#: includes/settings/help.php:250 includes/settings/page.php:657
 msgid "Log file for the external cron"
 msgstr "Harici cron için günlük dosyası"
 
-#: includes/settings/help.php:246
+#: includes/settings/help.php:251
 msgid ""
 "Writes a \"campaign title.txt.log\" file in the uploads folder with the "
 "steps of each external cron run. Useful while you set the cron up."
@@ -8324,59 +8460,53 @@ msgstr ""
 "Uploads klasörüne, her harici cron çalışmasının adımlarını içeren bir "
 "\"kampanya başlığı.txt.log\" dosyası yazar. Cron'u kurarken yararlıdır."
 
-#: includes/settings/help.php:25 includes/settings/help.php:86
-#: includes/settings/help.php:115
-msgid "These apply to every campaign, and each campaign can override them."
-msgstr ""
-"Bunlar her kampanyaya uygulanır ve her kampanya bunları değiştirebilir."
-
-#: includes/settings/help.php:251 includes/settings/page.php:896
+#: includes/settings/help.php:256 includes/settings/page.php:908
 msgid "Campaign column in the posts lists"
 msgstr "Yazı listelerinde kampanya sütunu"
 
-#: includes/settings/help.php:252
+#: includes/settings/help.php:257
 msgid "Adds a column showing which campaign published each post."
 msgstr "Her yazıyı hangi kampanyanın yayınladığını gösteren bir sütun ekler."
 
-#: includes/settings/help.php:255 includes/settings/page.php:903
+#: includes/settings/help.php:260 includes/settings/page.php:915
 msgid "Position of that column"
 msgstr "O sütunun konumu"
 
-#: includes/settings/help.php:256
+#: includes/settings/help.php:261
 msgid "Where the campaign column sits among the others."
 msgstr "Kampanya sütununun diğerleri arasındaki yeri."
 
-#: includes/settings/help.php:259 includes/settings/page.php:916
+#: includes/settings/help.php:264 includes/settings/page.php:928
 msgid "Hide the campaign box in the post editor"
 msgstr "Yazı düzenleyicisinde kampanya kutusunu gizle"
 
-#: includes/settings/help.php:260
+#: includes/settings/help.php:265
 msgid "Removes the WPeMatico box that shows where an imported post came from."
 msgstr ""
 "İçe aktarılan bir yazının nereden geldiğini gösteren WPeMatico kutusunu "
 "kaldırır."
 
-#: includes/settings/help.php:263 includes/settings/page.php:925
+#: includes/settings/help.php:268 includes/settings/page.php:937
 msgid "Empty trash button on the lists"
 msgstr "Listelerde çöpü boşalt düğmesi"
 
-#: includes/settings/help.php:264
+#: includes/settings/help.php:269
 msgid "Adds a button to empty the trash on the post types you choose."
 msgstr "Seçtiğiniz yazı türlerinde çöpü boşaltmak için bir düğme ekler."
 
-#: includes/settings/help.php:267 includes/settings/page.php:966
+#: includes/settings/help.php:272 includes/settings/page.php:978
 msgid "Hide the WP dashboard widget"
 msgstr "WP başlangıç ekranı bileşenini gizle"
 
-#: includes/settings/help.php:268
+#: includes/settings/help.php:273
 msgid "Removes the WPeMatico widget from the WordPress dashboard."
 msgstr "WPeMatico bileşenini WordPress başlangıç ekranından kaldırır."
 
-#: includes/settings/help.php:273 includes/settings/page.php:757
+#: includes/settings/help.php:278 includes/settings/page.php:769
 msgid "Do not check feeds before saving"
 msgstr "Kaydetmeden önce akışları denetleme"
 
-#: includes/settings/help.php:274
+#: includes/settings/help.php:279
 msgid ""
 "Saving a campaign no longer tests each feed address first. The campaign "
 "saves faster and a broken address goes unnoticed until it runs."
@@ -8384,11 +8514,11 @@ msgstr ""
 "Bir kampanyayı kaydetmek artık önce her akış adresini sınamaz. Kampanya daha "
 "hızlı kaydedilir ve bozuk bir adres çalışana kadar fark edilmez."
 
-#: includes/settings/help.php:277 includes/settings/page.php:766
+#: includes/settings/help.php:282 includes/settings/page.php:778
 msgid "Enable \"Del hash\""
 msgstr "\"Karmayı sil\" seçeneğini etkinleştir"
 
-#: includes/settings/help.php:278
+#: includes/settings/help.php:283
 msgid ""
 "Adds a link on the campaigns list that clears the duplicate hashes of every "
 "feed in a campaign, so its items can be published again."
@@ -8396,23 +8526,23 @@ msgstr ""
 "Kampanya listesine, bir kampanyadaki her akışın yinelenen karmalarını "
 "temizleyen bir bağlantı ekler; böylece ögeleri yeniden yayınlanabilir."
 
-#: includes/settings/help.php:281 includes/settings/page.php:775
+#: includes/settings/help.php:286 includes/settings/page.php:787
 msgid "Enable \"See last log\""
 msgstr "\"Son günlüğe bak\" seçeneğini etkinleştir"
 
-#: includes/settings/help.php:282
+#: includes/settings/help.php:287
 msgid "Adds a link on the campaigns list that opens the log of the last run."
 msgstr "Kampanya listesine son çalışmanın günlüğünü açan bir bağlantı ekler."
 
-#: includes/settings/help.php:285 includes/settings/page.php:793
+#: includes/settings/help.php:290 includes/settings/page.php:805
 msgid "Hide the WPeMatico credits"
 msgstr "WPeMatico emeği geçenler bilgisini gizle"
 
-#: includes/settings/help.php:286
+#: includes/settings/help.php:291
 msgid "I would really appreciate you leaving the credits on."
 msgstr "Bu bilgiyi açık bırakırsanız gerçekten çok sevinirim."
 
-#: includes/settings/help.php:288 includes/settings/page.php:800
+#: includes/settings/help.php:293 includes/settings/page.php:812
 msgid ""
 "If you cannot show them, a minute of your time to %1$s write a 5 star review "
 "on WordPress %2$s means just as much. :-) Thanks."
@@ -8420,11 +8550,11 @@ msgstr ""
 "Gösteremiyorsanız, bir dakikanızı ayırıp %1$s WordPress'te 5 yıldızlı bir "
 "inceleme yazmanız %2$s da en az o kadar değerlidir. :-) Teşekkürler."
 
-#: includes/settings/help.php:293 includes/settings/page.php:811
+#: includes/settings/help.php:298 includes/settings/page.php:823
 msgid "No description on auto categories"
 msgstr "Otomatik kategorilerde açıklama olmasın"
 
-#: includes/settings/help.php:294
+#: includes/settings/help.php:299
 msgid ""
 "Categories created from now on are left without the \"Created by WPeMatico\" "
 "description. The ones already created keep theirs until you edit them."
@@ -8432,20 +8562,6 @@ msgstr ""
 "Bundan sonra oluşturulan kategoriler \"Created by WPeMatico\" açıklaması "
 "olmadan bırakılır. Önceden oluşturulanlar, siz düzenleyene kadar "
 "açıklamalarını korur."
-
-#: includes/settings/help.php:297 includes/settings/page.php:821
-msgid "Do not load the Extensions page"
-msgstr "Uzantılar sayfasını yükleme"
-
-#: includes/settings/help.php:298
-msgid "The Extensions menu stops asking our site for the add-on catalogue."
-msgstr "Uzantılar menüsü, ek eklenti kataloğunu sitemizden istemeyi bırakır."
-
-#: includes/settings/help.php:299
-msgid ""
-"You will see an empty page, or only the extensions you already have "
-"installed."
-msgstr "Boş bir sayfa ya da yalnızca kurulu uzantılarınızı görürsünüz."
 
 #: includes/settings/help.php:30
 msgid ""
@@ -8455,29 +8571,31 @@ msgstr ""
 "Akış ögesinde bulunan her görselin (yalnızca %s etiketlerinde) bir kopyası "
 "Uploads klasörünüze kaydedilir. Kapalıyken görseller kaynak sunucuda kalır."
 
-#: includes/settings/help.php:302 includes/settings/page.php:784
+#: includes/settings/help.php:302 includes/settings/page.php:833
+msgid "Do not load the Extensions page"
+msgstr "Uzantılar sayfasını yükleme"
+
+#: includes/settings/help.php:303
+msgid "The Extensions menu stops asking our site for the add-on catalogue."
+msgstr "Uzantılar menüsü, ek eklenti kataloğunu sitemizden istemeyi bırakır."
+
+#: includes/settings/help.php:304
+msgid ""
+"You will see an empty page, or only the extensions you already have "
+"installed."
+msgstr "Boş bir sayfa ya da yalnızca kurulu uzantılarınızı görürsünüz."
+
+#: includes/settings/help.php:307 includes/settings/page.php:796
 msgid "Enable XML uploads"
 msgstr "XML yüklemelerini etkinleştir"
 
-#: includes/settings/help.php:303
+#: includes/settings/help.php:308
 msgid ""
 "Lets you upload XML files to the Media library, to use them in an XML "
 "campaign."
 msgstr ""
 "XML kampanyasında kullanmak üzere ortam kütüphanesine XML dosyaları "
 "yüklemenizi sağlar."
-
-#: includes/settings/help.php:306 includes/settings/page.php:830
-msgid "Decode HTML entities on publish"
-msgstr "Yayınlarken HTML varlıklarını çöz"
-
-#: includes/settings/help.php:307
-msgid ""
-"Turns entities such as &amp;amp; back into their character before the post "
-"is saved. Useful with feeds that encode the content twice."
-msgstr ""
-"Yazı kaydedilmeden önce &amp;amp; gibi varlıkları yeniden karakterlerine "
-"dönüştürür. İçeriği iki kez kodlayan akışlarda yararlıdır."
 
 #: includes/settings/help.php:31
 msgid ""
@@ -8489,27 +8607,39 @@ msgstr ""
 "kaynak görseli kaldırdığı gün onu yitirirsiniz. Her kampanya bunu kendisi "
 "ayarlayabilir."
 
+#: includes/settings/help.php:311 includes/settings/page.php:842
+msgid "Decode HTML entities on publish"
+msgstr "Yayınlarken HTML varlıklarını çöz"
+
 #: includes/settings/help.php:312
+msgid ""
+"Turns entities such as &amp;amp; back into their character before the post "
+"is saved. Useful with feeds that encode the content twice."
+msgstr ""
+"Yazı kaydedilmeden önce &amp;amp; gibi varlıkları yeniden karakterlerine "
+"dönüştürür. İçeriği iki kez kodlayan akışlarda yararlıdır."
+
+#: includes/settings/help.php:317
 msgid "Sender email"
 msgstr "Gönderen e-postası"
 
-#: includes/settings/help.php:313
+#: includes/settings/help.php:318
 msgid "The address every email from this plugin is sent from."
 msgstr "Bu eklentiden gelen her e-postanın gönderildiği adres."
 
-#: includes/settings/help.php:316
+#: includes/settings/help.php:321
 msgid "Sender name"
 msgstr "Gönderen adı"
 
-#: includes/settings/help.php:317
+#: includes/settings/help.php:322
 msgid "The name shown next to that address in your inbox."
 msgstr "Gelen kutunuzda o adresin yanında gösterilen ad."
 
-#: includes/settings/help.php:329
+#: includes/settings/help.php:334
 msgid "Features available with the Professional add-on."
 msgstr "Professional ek eklentisiyle kullanılabilen özellikler."
 
-#: includes/settings/help.php:330
+#: includes/settings/help.php:335
 msgid ""
 "Publish or skip an item depending on the keywords found in its title or "
 "content."
@@ -8517,7 +8647,7 @@ msgstr ""
 "Bir ögeyi başlığında ya da içeriğinde bulunan anahtar sözcüklere göre "
 "yayınlayın ya da atlayın."
 
-#: includes/settings/help.php:331
+#: includes/settings/help.php:336
 msgid ""
 "Cut, publish or skip an item depending on how many words or letters its "
 "content has."
@@ -8525,12 +8655,12 @@ msgstr ""
 "Bir ögeyi içeriğindeki sözcük ya da harf sayısına göre kesin, yayınlayın ya "
 "da atlayın."
 
-#: includes/settings/help.php:332
+#: includes/settings/help.php:337
 msgid ""
 "Build the title of every post of a campaign from a template of your own."
 msgstr "Bir kampanyanın her yazısının başlığını kendi şablonunuzdan oluşturun."
 
-#: includes/settings/help.php:333
+#: includes/settings/help.php:338
 msgid ""
 "Generates the tags of every post automatically. Each campaign can turn that "
 "off and use a list of tags you write instead."
@@ -8538,11 +8668,11 @@ msgstr ""
 "Her yazının etiketlerini otomatik üretir. Her kampanya bunu kapatıp yerine "
 "sizin yazdığınız bir etiket listesini kullanabilir."
 
-#: includes/settings/help.php:334
+#: includes/settings/help.php:339
 msgid "Add custom fields, with template tags as their value, to every post."
 msgstr "Her yazıya, değeri şablon etiketleri olan özel alanlar ekleyin."
 
-#: includes/settings/help.php:335
+#: includes/settings/help.php:340
 msgid ""
 "Full Content is the add-on that fetches the whole article from the source "
 "site when the feed only carries a summary."
@@ -8550,7 +8680,7 @@ msgstr ""
 "Full Content, akış yalnızca özet taşıdığında makalenin tamamını kaynak "
 "siteden getiren ek eklentidir."
 
-#: includes/settings/help.php:336
+#: includes/settings/help.php:341
 msgid ""
 "Set an author per feed when editing a campaign. Feeds with no author of "
 "their own use the campaign author."
@@ -8558,7 +8688,7 @@ msgstr ""
 "Bir kampanyayı düzenlerken akış başına yazar belirleyin. Kendi yazarı "
 "olmayan akışlar kampanyanın yazarını kullanır."
 
-#: includes/settings/help.php:337
+#: includes/settings/help.php:342
 msgid ""
 "Paste a list of feed addresses, with or without author names, straight into "
 "the campaign."
@@ -8665,11 +8795,11 @@ msgid ""
 "post."
 msgstr "İndirilen her ses ortam kütüphanesine eklenir ve yazısına iliştirilir."
 
-#: includes/settings/page.php:1001
+#: includes/settings/page.php:1013
 msgid "Guided tours"
 msgstr "Rehberli turlar"
 
-#: includes/settings/page.php:1003
+#: includes/settings/page.php:1015
 msgid ""
 "Shows a short tour the first time you open each WPeMatico screen. Only for "
 "your user."
@@ -8677,23 +8807,23 @@ msgstr ""
 "Her WPeMatico ekranını ilk açtığınızda kısa bir tur gösterir. Yalnızca sizin "
 "kullanıcınız için."
 
-#: includes/settings/page.php:1034
+#: includes/settings/page.php:1046
 msgid "Highlights of the new release"
 msgstr "Yeni dağıtımın öne çıkanları"
 
-#: includes/settings/page.php:1035 includes/lib/licenses_handlers.php:405
+#: includes/settings/page.php:1047 includes/lib/licenses_handlers.php:405
 msgid "Version"
 msgstr "Sürüm"
 
-#: includes/settings/page.php:1047
+#: includes/settings/page.php:1059
 msgid "Read more on wpematico.com"
 msgstr "Devamını wpematico.com'da okuyun"
 
-#: includes/settings/page.php:1049
+#: includes/settings/page.php:1061
 msgid "Your opinion about WPeMatico is very important to us."
 msgstr "WPeMatico hakkındaki görüşünüz bizim için çok önemli."
 
-#: includes/settings/page.php:1050
+#: includes/settings/page.php:1062
 msgid ""
 "By rating WPeMatico RSS Feed Fetcher, you help the plugin creators to "
 "improve their work and help other users to find the software they need. You "
@@ -8705,29 +8835,25 @@ msgstr ""
 "bulmasına yardım edersiniz. İncelemenizi WordPress forumuna yazabilirsiniz. "
 "Dilediğiniz dili kullanın, minnettar oluruz!"
 
-#: includes/settings/page.php:1051
+#: includes/settings/page.php:1063
 msgid "Rate us on WordPress"
 msgstr "Bizi WordPress'te puanlayın"
 
-#: includes/settings/page.php:1053
+#: includes/settings/page.php:1065
 msgid "YES!"
 msgstr "EVET!"
 
-#: includes/settings/page.php:1074
+#: includes/settings/page.php:1086
 msgid "General Settings"
 msgstr "Genel ayarlar"
 
-#: includes/settings/page.php:1175 includes/settings/page.php:1201
+#: includes/settings/page.php:1187 includes/settings/page.php:1213
 msgid "Save settings"
 msgstr "Ayarları kaydet"
 
-#: includes/settings/page.php:1301
+#: includes/settings/page.php:1313
 msgid "Settings saved."
 msgstr "Ayarlar kaydedildi."
-
-#: includes/settings/page.php:1324
-msgid "License keys saved."
-msgstr "Lisans anahtarları kaydedildi."
 
 #: includes/settings/page.php:133 includes/lib/licenses_handlers.php:319
 msgid ""
@@ -8737,6 +8863,10 @@ msgstr ""
 "Premium eklentilerimizden birini etkinleştirirseniz lisans anahtarlarını "
 "buraya girersiniz."
 
+#: includes/settings/page.php:1336
+msgid "License keys saved."
+msgstr "Lisans anahtarları kaydedildi."
+
 #: includes/settings/page.php:134 includes/lib/licenses_handlers.php:320
 msgid "See some of the WPeMatico Add-ons in the"
 msgstr "WPeMatico ek eklentilerinden bazılarını şurada görün:"
@@ -8744,8 +8874,8 @@ msgstr "WPeMatico ek eklentilerinden bazılarını şurada görün:"
 #: includes/settings/page.php:164 includes/settings/page.php:289
 #: includes/settings/page.php:353 includes/settings/page.php:418
 #: includes/settings/page.php:460 includes/settings/page.php:554
-#: includes/settings/page.php:683 includes/settings/page.php:747
-#: includes/settings/page.php:840 includes/settings/page.php:886
+#: includes/settings/page.php:683 includes/settings/page.php:759
+#: includes/settings/page.php:852 includes/settings/page.php:898
 msgid "Click to toggle"
 msgstr "Açıp kapatmak için tıklayın"
 
@@ -8912,7 +9042,7 @@ msgstr "\"Sözcükten kategoriye\" özelliğini etkinleştir"
 msgid "Enable the Vimeo campaign type"
 msgstr "Vimeo kampanya türünü etkinleştir"
 
-#: includes/settings/page.php:724
+#: includes/settings/page.php:724 includes/settings/page.php:741
 msgid "PRO"
 msgstr "PRO"
 
@@ -8924,7 +9054,19 @@ msgstr ""
 "Vimeo'yu API'si üzerinden okumak — akışın 10 video sınırının ötesinde, "
 "sıralamayla ve özel videolarınızla — Professional ile gelir."
 
-#: includes/settings/page.php:750
+#: includes/settings/page.php:737
+msgid "Enable the Google News campaign type"
+msgstr "Google News kampanya türünü etkinleştir"
+
+#: includes/settings/page.php:741
+msgid ""
+"Linking each post to the article on the publication's own site, so Full "
+"Content reads it, comes with Professional."
+msgstr ""
+"Her yazıyı yayının kendi sitesindeki habere bağlamak, böylece Full "
+"Content'in onu okuması, Professional ile gelir."
+
+#: includes/settings/page.php:762
 msgid "Advanced Actions"
 msgstr "Gelişmiş eylemler"
 
@@ -8932,31 +9074,31 @@ msgstr "Gelişmiş eylemler"
 msgid "Invalid email."
 msgstr "Geçersiz e-posta."
 
-#: includes/settings/page.php:843
+#: includes/settings/page.php:855
 msgid "Sending e-Mails"
 msgstr "E-posta gönderimi"
 
-#: includes/settings/page.php:848
+#: includes/settings/page.php:860
 msgid "Sender email:"
 msgstr "Gönderen e-postası:"
 
-#: includes/settings/page.php:854
+#: includes/settings/page.php:866
 msgid "Sender name:"
 msgstr "Gönderen adı:"
 
-#: includes/settings/page.php:861
+#: includes/settings/page.php:873
 msgid "Sendmail path:"
 msgstr "Sendmail yolu:"
 
-#: includes/settings/page.php:889
+#: includes/settings/page.php:901
 msgid "WordPress Backend Tools"
 msgstr "WordPress arka uç araçları"
 
-#: includes/settings/page.php:931
+#: includes/settings/page.php:943
 msgid "Post types it applies to"
 msgstr "Uygulandığı yazı türleri"
 
-#: includes/settings/page.php:972
+#: includes/settings/page.php:984
 msgid "Roles that see the dashboard widget:"
 msgstr "Başlangıç ekranı bileşenini gören roller:"
 
@@ -9937,100 +10079,100 @@ msgstr "Bir XML düğümü seçin."
 msgid "PHP 7.0 or higher needed!"
 msgstr "PHP 7.0 ya da üstü gerekir!"
 
-#: wpematico_class.php:160 includes/wpematico_functions.php:3155
+#: wpematico_class.php:162 includes/wpematico_functions.php:3155
 msgid "Empty Trash"
 msgstr "Çöpü boşalt"
 
-#: wpematico_class.php:178
+#: wpematico_class.php:180
 msgid "There are no campaigns yet."
 msgstr "Henüz kampanya yok."
 
-#: wpematico_class.php:180
+#: wpematico_class.php:182
 msgid "You need to create a campaign to begin using WPeMatico."
 msgstr ""
 "WPeMatico'yu kullanmaya başlamak için bir kampanya oluşturmanız gerekir."
 
-#: wpematico_class.php:182
+#: wpematico_class.php:184
 msgid ""
 "If you need help, check out the tips to get started with WPeMatico or just "
 msgstr ""
 "Yardıma gereksiniminiz olursa WPeMatico'ya başlama ipuçlarına göz atın ya da "
 "yalnızca "
 
-#: wpematico_class.php:183
+#: wpematico_class.php:185
 msgid "add New Campaign"
 msgstr "yeni kampanya ekleyin"
 
-#: wpematico_class.php:186 includes/lib/welcome.php:190
+#: wpematico_class.php:188 includes/lib/welcome.php:190
 msgid "Getting Started"
 msgstr "Başlarken"
 
-#: wpematico_class.php:192 wpematico_class.php:353 wpematico_class.php:354
+#: wpematico_class.php:194 wpematico_class.php:355 wpematico_class.php:356
 #: includes/dashboard-widgets.php:552 includes/debug_page.php:2927
 msgid "Campaigns"
 msgstr "Kampanyalar"
 
-#: wpematico_class.php:193 includes/tools_page.php:501
+#: wpematico_class.php:195 includes/tools_page.php:501
 #: includes/tools_page.php:665 includes/wp-backend-helpers.php:65
 msgid "Campaign"
 msgstr "Kampanya"
 
-#: wpematico_class.php:194
+#: wpematico_class.php:196
 msgid "Add New"
 msgstr "Yeni ekle"
 
-#: wpematico_class.php:195
+#: wpematico_class.php:197
 msgid "Add New Campaign"
 msgstr "Yeni kampanya ekle"
 
-#: wpematico_class.php:196
+#: wpematico_class.php:198
 msgid "Edit Campaign"
 msgstr "Kampanyayı düzenle"
 
-#: wpematico_class.php:197
+#: wpematico_class.php:199
 msgid "New Campaign"
 msgstr "Yeni kampanya"
 
-#: wpematico_class.php:198
+#: wpematico_class.php:200
 msgid "All Campaigns"
 msgstr "Tüm kampanyalar"
 
-#: wpematico_class.php:199
+#: wpematico_class.php:201
 msgid "View Campaign"
 msgstr "Kampanyayı görüntüle"
 
-#: wpematico_class.php:200
+#: wpematico_class.php:202
 msgid "Search Campaign"
 msgstr "Kampanya ara"
 
-#: wpematico_class.php:202
+#: wpematico_class.php:204
 msgid "No Campaign found in Trash"
 msgstr "Çöpte kampanya bulunamadı"
 
-#: wpematico_class.php:244
+#: wpematico_class.php:246
 msgid "Reset Menu Position"
 msgstr "Menü konumunu sıfırla"
 
-#: wpematico_class.php:250
+#: wpematico_class.php:252
 msgid "Turn this on if the WPeMatico menu does not appear in the admin menu."
 msgstr "WPeMatico menüsü yönetim menüsünde görünmüyorsa bunu açın."
 
-#: wpematico_class.php:255
+#: wpematico_class.php:257
 msgid "See local Addons in plugin list"
 msgstr "Yerel ek eklentileri eklenti listesinde göster"
 
-#: wpematico_class.php:261
+#: wpematico_class.php:263
 msgid ""
 "Turn this on to list the add-ons on your Plugins page, like any other plugin."
 msgstr ""
 "Ek eklentileri diğer eklentiler gibi Eklentiler sayfanızda listelemek için "
 "bunu açın."
 
-#: wpematico_class.php:266
+#: wpematico_class.php:268
 msgid "Hide Reviews on Settings"
 msgstr "Ayarlar'da incelemeleri gizle"
 
-#: wpematico_class.php:272
+#: wpematico_class.php:274
 msgid ""
 "Turn this on if the Settings page comes out incomplete because your server "
 "cannot read external addresses."
@@ -10038,7 +10180,7 @@ msgstr ""
 "Sunucunuz harici adresleri okuyamadığı için Ayarlar sayfası eksik "
 "görünüyorsa bunu açın."
 
-#: wpematico_class.php:310
+#: wpematico_class.php:312
 msgid ""
 "If the WPeMatico menu is missing, another plugin or your theme has taken its "
 "position."
@@ -10046,7 +10188,7 @@ msgstr ""
 "WPeMatico menüsü yoksa başka bir eklenti ya da temanız onun konumunu "
 "almıştır."
 
-#: wpematico_class.php:311
+#: wpematico_class.php:313
 msgid ""
 "Tick \"Reset Menu Position\" to move the menu to the end of the WordPress "
 "menu."
@@ -10054,7 +10196,7 @@ msgstr ""
 "Menüyü WordPress menüsünün sonuna taşımak için \"Menü konumunu sıfırla\" "
 "seçeneğini işaretleyin."
 
-#: wpematico_class.php:313
+#: wpematico_class.php:315
 msgid ""
 "A Settings page that does not render fully usually means your server cannot "
 "reach external pages."
@@ -10062,7 +10204,7 @@ msgstr ""
 "Tam olarak görüntülenmeyen bir Ayarlar sayfası genellikle sunucunuzun harici "
 "sayfalara ulaşamadığı anlamına gelir."
 
-#: wpematico_class.php:314
+#: wpematico_class.php:316
 msgid ""
 "Tick \"Hide Reviews on Settings\" to show a plain link to the reviews page "
 "instead."
@@ -10070,7 +10212,7 @@ msgstr ""
 "Bunun yerine incelemeler sayfasına düz bir bağlantı göstermek için "
 "\"Ayarlar'da incelemeleri gizle\" seçeneğini işaretleyin."
 
-#: wpematico_class.php:318
+#: wpematico_class.php:320
 msgid ""
 "You must click the Save Changes button at the bottom of the screen for new "
 "settings to take effect."
@@ -10078,39 +10220,39 @@ msgstr ""
 "Yeni ayarların geçerli olması için ekranın altındaki Değişiklikleri kaydet "
 "düğmesine tıklamalısınız."
 
-#: wpematico_class.php:331 wpematico_class.php:332
+#: wpematico_class.php:333 wpematico_class.php:334
 msgid "WPeMatico"
 msgstr "WPeMatico"
 
-#: wpematico_class.php:343
+#: wpematico_class.php:345
 msgid "WPeMatico Dashboard"
 msgstr "WPeMatico Başlangıç ekranı"
 
-#: wpematico_class.php:344 includes/module/dashboard.php:106
+#: wpematico_class.php:346 includes/module/dashboard.php:106
 msgid "Dashboard"
 msgstr "Başlangıç"
 
-#: wpematico_class.php:368 wpematico_class.php:369
+#: wpematico_class.php:370 wpematico_class.php:371
 #: includes/dashboard-widgets.php:554 includes/plugin_functions.php:339
-#: includes/settings/functions.php:43 includes/settings/page.php:1078
-#: includes/settings/page.php:1151 includes/module/dashboard.php:32
+#: includes/settings/functions.php:43 includes/settings/page.php:1090
+#: includes/settings/page.php:1163 includes/module/dashboard.php:32
 #: includes/module/manager.php:187
 msgid "Settings"
 msgstr "Ayarlar"
 
-#: wpematico_class.php:379 wpematico_class.php:380 includes/tools_tabs.php:17
+#: wpematico_class.php:381 wpematico_class.php:382 includes/tools_tabs.php:17
 msgid "Tools"
 msgstr "Araçlar"
 
-#: wpematico_class.php:397 wpematico_class.php:406
+#: wpematico_class.php:399 wpematico_class.php:408
 msgid "Add-ons"
 msgstr "Ek eklentiler"
 
-#: wpematico_class.php:398 includes/addons_page.php:1461
+#: wpematico_class.php:400 includes/addons_page.php:1461
 msgid "WPeMatico Addons"
 msgstr "WPeMatico ek eklentileri"
 
-#: wpematico_class.php:407 includes/class-tour-helper.php:224
+#: wpematico_class.php:409 includes/class-tour-helper.php:224
 #: includes/plugin_functions.php:360
 msgid "Extensions"
 msgstr "Uzantılar"

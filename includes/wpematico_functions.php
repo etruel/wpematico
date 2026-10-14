@@ -3599,6 +3599,28 @@ function wpematico_init_set($index, $value, $log_only_fail = false) {
 }
 
 /**
+ * The markup a campaign log line may carry. Log lines quote titles and addresses read
+ * from feeds, so they are filtered when written and again when shown.
+ *
+ * @since 2.9.1
+ * @return array Tags and attributes, in wp_kses() format.
+ */
+function wpematico_log_allowed_html() {
+	return array(
+		'span'	 => array('style' => true, 'title' => true, 'class' => true),
+		'a'		 => array('href' => true, 'target' => true, 'title' => true, 'rel' => true),
+		'b'		 => array(),
+		'strong' => array(),
+		'em'	 => array(),
+		'i'		 => array(),
+		'br'	 => array(),
+		'hr'	 => array(),
+		'code'	 => array(),
+		'pre'	 => array(),
+	);
+}
+
+/**
  * function for PHP error handling saved as Campaign Logs.
  * 
  * @global string $campaign_log_message Currently log where to add next line. 
@@ -3612,6 +3634,8 @@ function wpematico_init_set($index, $value, $log_only_fail = false) {
  */
 function wpematico_joberrorhandler($errno, $errstr, $errfile, $errline) {
 	global $campaign_log_message, $jobwarnings, $joberrors;
+
+	$errstr = wp_kses((string) $errstr, wpematico_log_allowed_html());
 
 	//Generate timestamp
 	if (!version_compare(phpversion(), '6.9.0', '>')) { // PHP Version < 5.7 dirname 2nd 

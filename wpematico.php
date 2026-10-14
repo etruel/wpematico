@@ -3,7 +3,7 @@
  * Plugin Name: WPeMatico
  * Plugin URI: https://www.wpematico.com
  * Description: Create posts automatically from RSS/Atom feeds organized into campaigns with multiples filters.  If you like it, please rate it 5 stars.
- * Version: 2.9.1-beta
+ * Version: 2.9.1
  * Requires at least: 4.8
  * Requires PHP: 7.0
  * Author: Etruel Developments LLC
@@ -130,6 +130,7 @@ if (!class_exists('Main_WPeMatico')) {
 			require_once(WPEMATICO_PLUGIN_DIR . 'includes/cron_functions.php');
 			require_once(WPEMATICO_PLUGIN_DIR . 'includes/compatibilities.php');
 			require_once(WPEMATICO_PLUGIN_DIR . 'includes/wpematico_functions.php');
+			require_once(WPEMATICO_PLUGIN_DIR . 'includes/feed-html.php');
 			require_once(WPEMATICO_PLUGIN_DIR . 'wpematico_class.php');
 			require_once(WPEMATICO_PLUGIN_DIR . 'includes/xml-importer.php');
 			require_once(WPEMATICO_PLUGIN_DIR . 'includes/cron.php');
