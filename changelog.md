@@ -1,5 +1,124 @@
 == Changelog ==
 
+= 2.8.14 – Dec 1, 2025 =
+Confirmed compatibility with WordPress 6.9.
+
+= 2.8.13 – Nov 13, 2025 =
+* **Fixes vulnerability** reported by WPScan in the campaign edit screen.
+* Other minor fixes.
+
+= 2.8.12 – Oct 23, 2025 =
+* **Fixes Authenticated (Subscriber+) Server-Side Request Forgery** (reported by Wordfence).
+* Added a Namespace to the blank-simplepie class to allow enclosure images in contents outside feeds.
+
+= 2.8.11 – Sep 24, 2025 =
+* **Fixes Sensitive Data Exposure vulnerability** in download debug log (reported by Patchstack).
+* Fixes typos.
+
+= 2.8.10 – Aug 6, 2025 =
+* Improvement of the filters used to load the list of campaigns.
+* Fixes an issue incorporated in the latest release that slowed down the connection on campaign edit.
+* Fixes typos.
+
+= 2.8.9 – Aug 4, 2025 =
+* Fixes an issue with improperly sanitized action buttons in the campaign list.
+* Fixes wrong sanitized html "Next Run" column in the campaign list.
+* Improves errors handling function on campaigns fetching process and logs.
+
+= 2.8.8 – Jul 24, 2025 =
+* **Fixes CSRF vulnerability** in plugin deactivation feedback system (reported by Wordfence).
+* Only applies to users with the “activate plugins” capability.
+* Added nonce verification for all feedback AJAX requests.
+* Implemented strict input validation for deactivation reasons.
+* Adds pre-deactivation plugin state verification.
+* Fixes minor HTML formatting in feedback modal.
+
+= 2.8.7 – Jul 3, 2025 =
+
+* Refactored few missed internal function names with a prefix to avoid naming conflicts with other plugins.
+
+= 2.8.6 – Jun 21, 2025 =
+
+* **New Debug Logs Tool!** Easily track what’s happening under the hood of WPeMatico with a dedicated log viewer in the Tools menu. Perfect for developers and advanced users. [Learn how to use it.](https://etruel.com/question/how-to-use-wpematico-log/)
+* Implemented **WP_Filesystem** for safer and more WordPress-compliant file operations.
+
+= 2.8.5 May 19, 2025 =
+
+* Applied multiple input sanitization and overall security enhancements.
+* Fixes an image URL in Settings screen.
+
+= 2.8.4 May 9, 2025 =
+
+* Fixed broken HTML formatting in campaign log messages.
+* Fixed issue where Bulk Edit actions were not saving data correctly.
+* Resolved CSRF vulnerability when saving campaigns.
+* Improved consistency of JSON responses in various AJAX methods.
+* Applied multiple input sanitization and overall security enhancements.
+
+= 2.8.3 May 2, 2025 =
+
+* Fixes Broken Access Control vulnerability on campaign save action. Thanks to domiee13 and Patchstack!
+* Fixes in strings returned by the campaign edit screen. 
+* Fixes few texts on Notices.
+
+= 2.8.2 Abr 2, 2025 =
+
+* Enhanced image upload handling and processing for improved reliability.
+* Refined feedback email content when the plugin is deactivated.
+* Replaced custom function with WordPress native `attachment_url_to_postid` for better compatibility and performance.
+* NOTE: **Enlarges the version required for the [WPeMatico Professional](https://etruel.com/downloads/wpematico-professional/) addon to 3.2**  
+
+= 2.8.1 Mar 25, 2025 =
+
+* **Fixed few bugs incorporated in the last version.**
+* Fixes images fetched from the enclosure being skipped during processing on Professional Extension.
+* Fixes featured image assignment issue where the last image was being assigned instead of the first one.
+* Fixes visibility issue with the "Save Image attributes on WP Media" option, which was hidden unintentionally.
+* Improves feedback popup notifications for better user experience.
+
+= 2.8 Mar 1, 2025 =
+
+Major Version 2.8 focuses on **highly requested features** and **new functionalities** designed for future (but near) general improvements.
+Recommended to test it in a staging environment before updating production websites.
+
+#### _Enhancements:_
+
+> * **New feature to retrieve image attributes and store them in WP Media.**  
+>   Now, image attributes such as alt text, captions, and metadata will be fetched and saved along with the images in WordPress Media Library.  
+
+> * **New feature to limit the number of automatically created categories.**  
+>   Allows better control over taxonomy creation, preventing excessive automatic category generation.  
+
+> * **New direct link to WPeMatico extensions from the plugins page.**  
+>   Easily discover and manage premium add-ons for enhanced functionality.
+
+> * **New feedback form when deactivating the plugin.**  
+>   Users can now provide insights and reasons for deactivation, helping improve WPeMatico.
+
+> * **New functionality to integrate features from discontinued addons into the free core.**
+>   Some features previously exclusive to Pro addons will now be gradually included in the free version.
+
+> * **Quick Edit improvements: Added taxonomy support for custom post types in campaigns.**
+>   Now, users can assign taxonomies directly in the Quick Edit feature for better campaign organization.
+
+> * **Improved campaign execution notifications from the campaign list.**
+>   Enhances visibility and user experience when running campaigns manually.
+
+> * Various **UI/UX cosmetic improvements**.  
+
+> * **Tested with WordPress 6.7.2** to ensure full compatibility.  
+
+#### _Bugfixes:_
+
+> * Fixes Notice: Function _load_textdomain_just_in_time was called incorrectly.
+> * Fixes **several security issues** to enhance plugin stability and safety.
+
+#### _Recent (may break) changes:_
+
+> * NOTE: **Enlarges the version required for the [WPeMatico Professional](https://etruel.com/downloads/wpematico-professional/) addon to 3.1**  
+> * NOTE2: **Enlarges the version required for the [WPeMatico GPT Spinner](https://etruel.com/downloads/wpematico-gpt-spinner/) addon to 2.0**  
+
+
 = 2.7.11 Nov 27, 2024 =
 
 * Tested with WordPress 6.7.1
