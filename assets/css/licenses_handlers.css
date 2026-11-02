@@ -166,29 +166,29 @@
 }
 
 /* ── Action buttons ────────────────────────────────────────── */
-.postbox-license .btn_license_deactivate.button-secondary {
+.postbox-license .wpe-license-act[data-do="deactivate_license"].button-secondary {
 	color: #d63638;
 	border-color: #f5a8a9;
 }
-.postbox-license .btn_license_deactivate.button-secondary:hover {
+.postbox-license .wpe-license-act[data-do="deactivate_license"].button-secondary:hover {
 	background: #d63638;
 	border-color: #d63638;
 	color: #fff;
 }
-.postbox-license .btn_license_activate.button-secondary {
+.postbox-license .wpe-license-act[data-do="activate_license"].button-secondary {
 	color: #00a32a;
 	border-color: #7ad47f;
 }
-.postbox-license .btn_license_activate.button-secondary:hover {
+.postbox-license .wpe-license-act[data-do="activate_license"].button-secondary:hover {
 	background: #00a32a;
 	border-color: #00a32a;
 	color: #fff;
 }
 
-/* AJAX check-license feedback */
-.license-check-valid    { color: #00a32a; font-size: 13px; font-weight: 600; }
-.license-check-invalid  { color: #d63638; font-size: 13px; font-weight: 600; }
-.license-check-mismatch { color: #996800; font-size: 13px; font-weight: 600; }
+/* What the last button press answered */
+.postbox-license .wpe-license-message { font-size: 13px; font-weight: 600; min-height: 1px; }
+.postbox-license .wpe-license-message.ok  { color: #00a32a; }
+.postbox-license .wpe-license-message.err { color: #d63638; }
 
 /* Empty-state message */
 .wpe-licenses-empty {

@@ -1316,24 +1316,10 @@ if (!class_exists('WPeMatico_Settings')) :
 
 				// Save license keys when present (licenses tab)
 				if (!empty($_POST['license_key']) && is_array($_POST['license_key'])) {
-					$keys = array_map('sanitize_key', $_POST['license_key']);
-					update_option('wpematico_license_keys', $keys);
-					$plugins_args = apply_filters('wpematico_plugins_updater_args', array());
-					foreach ($keys as $plugin_name => $key) {
-						if (empty($plugins_args[$plugin_name]) || empty($key)) continue;
-						$check_args = array(
-							'license'   => $key,
-							'item_name' => urlencode($plugins_args[$plugin_name]['api_data']['item_name']),
-							'url'       => home_url(),
-							'version'   => $plugins_args[$plugin_name]['api_data']['version'],
-							'author'    => 'Esteban Truelsegaard',
-						);
-						$license_data = wpematico_licenses_handlers::check_license($plugins_args[$plugin_name]['api_url'], $check_args);
-						if (is_object($license_data)) {
-							wpematico_licenses_handlers::set_license_status($plugin_name, $license_data->license);
-						}
+					$saved = wpematico_licenses_handlers::save_keys(wp_unslash($_POST['license_key']));
+					if ($saved) {
+						WPeMatico::add_wp_notice(array('text' => $saved['text'], 'error' => $saved['error'], 'below-h2' => false));
 					}
-					WPeMatico::add_wp_notice(array('text' => __('License keys saved.', 'wpematico'), 'below-h2' => false));
 				}
 
 				error_reporting($errlev);

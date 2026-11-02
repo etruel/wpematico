@@ -583,6 +583,7 @@ function wpematico_owned_options() {
 		'wpematico_license_status',
 		'wpematico_license_ids',
 		'wpematico_license_expires',
+		'wpematico_license_info',
 		'wpematico_updates_waiting',
 		'wpematico_core_autoupdate_added',
 		'wpematico_notices',

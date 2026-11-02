@@ -1,7 +1,11 @@
 <?php
 /**
- * File to manage *Addons* licenses to allow update them automatically. 
+ * File to manage *Addons* licenses to allow update them automatically.
  * Unifies all installed extensions licenses in this file to use the EDD_SL_Plugin_Updater library.
+ *
+ * Options: `wpematico_license_keys` (key per add-on), `wpematico_license_status`, `wpematico_license_expires`,
+ * `wpematico_license_ids` and `wpematico_license_info` (what the store last said about the account, so the
+ * screen never asks it on every load).
  */
 
 // Exit if accessed directly
@@ -11,46 +15,56 @@ if ( !defined('ABSPATH') ) {
 	exit();
 }
 class wpematico_licenses_handlers {
+
+	const NONCE			= 'wpe-nonce-handler-license';
+	const CHECK_EVERY	= 12 * HOUR_IN_SECONDS;
+	const ACCOUNT_URL	= 'https://etruel.com/my-account/purchase-history/';
+	const CHECKOUT_URL	= 'https://etruel.com/checkout/';
+
 	function __construct() {
-		add_action('admin_init', array(__CLASS__, 'extension_updater'), 0 );
+		add_action('init', array(__CLASS__, 'extension_updater'), 0 );
 		add_action('wpempro_licenses_forms', array(__CLASS__, 'license_page') );
 		add_action('admin_print_scripts', array(__CLASS__, 'scripts'));
 		add_action('admin_print_styles', array(__CLASS__, 'styles'));
-		
-		add_action('wp_ajax_wpematico_check_license', array(__CLASS__, 'ajax_check_license'));
-		add_action('wp_ajax_wpematico_status_license', array(__CLASS__, 'ajax_change_status_license'));
-		
-		add_action( 'admin_post_wpematico_save_licenses', array(__CLASS__, 'save_licenses'));
 
+		add_action('wp_ajax_wpematico_license', array(__CLASS__, 'ajax_license'));
 	}
+
+	/**
+	 * Updates come from the store. It runs in the admin and in WP-Cron, whose update check
+	 * never fires admin_init.
+	 */
 	public static function extension_updater() {
+		if (!is_admin() && !wp_doing_cron() && !defined('WP_CLI')) {
+			return;
+		}
 		$plugins_args = array();
 		$plugins_args = apply_filters('wpematico_plugins_updater_args', $plugins_args);
-		
+
 		if(!class_exists( 'EDD_SL_Plugin_Updater') && !empty($plugins_args)) {
 			if(file_exists(WPEMATICO_PLUGIN_DIR . 'includes/lib/EDD_SL_Plugin_Updater.php')) {
 				require_once(WPEMATICO_PLUGIN_DIR . 'includes/lib/EDD_SL_Plugin_Updater.php');
-			} 
+			}
 		}
-		
-		
+
+
 		foreach ($plugins_args as $plugin_name => $args) {
 			$license_key = self::get_key($plugin_name);
 			$edd_updater = new EDD_SL_Plugin_Updater($args['api_url'], $args['plugin_file'], array(
-					'version' 	=> $args['api_data']['version'], 
-					'license' 	=> $license_key, 		
-					'item_name' => $args['api_data']['item_name'], 	
+					'version' 	=> $args['api_data']['version'],
+					'license' 	=> $license_key,
+					'item_name' => $args['api_data']['item_name'],
 					'author' 	=> $args['api_data']['author'],
 					'item_id' 	=> (empty($args['api_data']['item_id']) ? false : $args['api_data']['item_id']),
 					'beta' 		=> (empty($args['api_data']['beta']) ? false : $args['api_data']['beta']),
 				)
 			);
-			
+
 			if( ! is_multisite() ) {
 				//$current = get_site_transient( 'update_plugins' );
 				add_action( 'after_plugin_row_' . plugin_basename($args['plugin_file']), 'wp_plugin_update_row', 10, 2 );
 			}
-			
+
 		}
 	}
 	public static function get_key($plugin_name) {
@@ -111,12 +125,14 @@ class wpematico_licenses_handlers {
 		if (!is_object($license_data)) {
 			return;
 		}
-		if (!empty($license_data->license)) {
+		// 'failed' is the answer to a deactivation that did not happen, not a state of the license.
+		if (!empty($license_data->license) && is_string($license_data->license) && 'failed' !== $license_data->license) {
 			self::set_license_status($plugin_name, $license_data->license);
 		}
 		if (!empty($license_data->expires)) {
 			self::set_license_expires($plugin_name, $license_data->expires);
 		}
+		self::set_license_info($plugin_name, $license_data);
 	}
 	public static function get_license_id($plugin_name) {
 		$ids = get_option('wpematico_license_ids');
@@ -136,6 +152,62 @@ class wpematico_licenses_handlers {
 		$ids[$plugin_name] = (int) $id;
 		update_option( 'wpematico_license_ids', $ids);
 	}
+
+	/**
+	 * What the store last said about the account behind a license.
+	 *
+	 * @return array Empty when the store has not been asked yet.
+	 */
+	public static function get_license_info($plugin_name) {
+		$all = get_option('wpematico_license_info');
+		return (is_array($all) && isset($all[$plugin_name]) && is_array($all[$plugin_name])) ? $all[$plugin_name] : array();
+	}
+
+	private static function set_license_info($plugin_name, $data) {
+		$expires = isset($data->expires) ? (string) $data->expires : '';
+		$info	 = array(
+			'expires'			=> ('lifetime' === $expires) ? 'lifetime' : substr(sanitize_text_field($expires), 0, 10),
+			'site_count'		=> isset($data->site_count) ? (int) $data->site_count : 0,
+			'license_limit'		=> isset($data->license_limit) ? (int) $data->license_limit : 0,
+			'activations_left'	=> (isset($data->activations_left) && 'unlimited' === $data->activations_left) ? 'unlimited' : (isset($data->activations_left) ? (int) $data->activations_left : 0),
+			'payment_id'		=> isset($data->payment_id) ? (int) $data->payment_id : 0,
+			'license_id'		=> (int) self::extract_license_id_from_data($data),
+			'item_id'			=> isset($data->item_id) ? (int) $data->item_id : 0,
+			'customer_name'		=> isset($data->customer_name) ? sanitize_text_field($data->customer_name) : '',
+			'customer_email'	=> isset($data->customer_email) ? sanitize_email($data->customer_email) : '',
+			'checked'			=> time(),
+		);
+		if (empty($info['license_id']) && $stored = self::get_license_id($plugin_name)) {
+			$info['license_id'] = (int) $stored;
+		}
+		$all = get_option('wpematico_license_info');
+		$all = is_array($all) ? $all : array();
+		$all[$plugin_name] = $info;
+		update_option('wpematico_license_info', $all, false);
+	}
+
+	/**
+	 * The store did not answer: ask again in five minutes, not on every load of the screen.
+	 */
+	private static function postpone_check($plugin_name) {
+		$all  = get_option('wpematico_license_info');
+		$all  = is_array($all) ? $all : array();
+		$info = (isset($all[$plugin_name]) && is_array($all[$plugin_name])) ? $all[$plugin_name] : array();
+		$info['checked'] = time() - self::CHECK_EVERY + 5 * MINUTE_IN_SECONDS;
+		$all[$plugin_name] = $info;
+		update_option('wpematico_license_info', $all, false);
+	}
+
+	private static function forget($plugin_name) {
+		foreach (array('wpematico_license_status', 'wpematico_license_expires', 'wpematico_license_ids', 'wpematico_license_info') as $option) {
+			$map = get_option($option);
+			if (is_array($map) && isset($map[$plugin_name])) {
+				unset($map[$plugin_name]);
+				update_option($option, $map, false);
+			}
+		}
+	}
+
 	private static function extract_license_id_from_data($license_data) {
 		if ( !is_object($license_data) ) {
 			return false;
@@ -180,138 +252,341 @@ class wpematico_licenses_handlers {
 		}
 		return $args;
 	}
-	public static function change_status_license($plugin_name, $action) {
+
+	/**
+	 * The store's product id of an add-on: the one it declares, else the one the store told.
+	 */
+	private static function download_id($plugin_name, $args) {
+		if (!empty($args['api_data']['item_id'])) {
+			return (int) $args['api_data']['item_id'];
+		}
+		$info = self::get_license_info($plugin_name);
+		if (!empty($info['item_id'])) {
+			return (int) $info['item_id'];
+		}
+		return (int) self::get_item_id_from_feed_cache($args['api_data']['item_name']);
+	}
+
+	/**
+	 * A key as the screen shows it: the last four characters, so a license can be told
+	 * apart without exposing it to whoever looks at the screen.
+	 */
+	public static function mask_key($key) {
+		$key = (string) $key;
+		$len = strlen($key);
+		if ($len <= 8) {
+			return str_repeat('*', $len);
+		}
+		return str_repeat('*', 12) . substr($key, -4);
+	}
+
+	/**
+	 * What a field posted back: the stored key when it is the masked one, else what was typed.
+	 */
+	private static function resolve_posted_key($plugin_name, $posted) {
+		$posted = trim(sanitize_text_field((string) $posted));
+		$stored = self::get_key($plugin_name);
+		if ('' !== $posted && $stored && self::mask_key($stored) === $posted) {
+			return $stored;
+		}
+		return $posted;
+	}
+
+	/**
+	 * One request to the store: the answer as an object, or false when it did not give a usable one.
+	 */
+	private static function post($api_url, $api_params) {
+		$response = wp_remote_post(esc_url_raw($api_url), array('timeout' => 15, 'body' => $api_params));
+		if (is_wp_error($response) || 200 !== (int) wp_remote_retrieve_response_code($response)) {
+			return false;
+		}
+		$license_data = json_decode(wp_remote_retrieve_body($response));
+		return is_object($license_data) ? $license_data : false;
+	}
+
+	/**
+	 * Asks the store to check, activate or deactivate a license of an add-on, and remembers the answer.
+	 *
+	 * @param  string      $plugin_name  Key of the add-on in `wpematico_plugins_updater_args`.
+	 * @param  string      $action       check_license | activate_license | deactivate_license
+	 * @param  string|null $license      The key; the stored one when null.
+	 * @return object|false
+	 */
+	public static function change_status_license($plugin_name, $action, $license = null) {
+		if (!in_array($action, array('check_license', 'activate_license', 'deactivate_license'), true)) {
+			return false;
+		}
 		$plugins_args = array();
 		$plugins_args = apply_filters('wpematico_plugins_updater_args', $plugins_args);
 		if (empty($plugins_args[$plugin_name])) {
 			return false;
-		}	
-		$license = self::get_key($plugin_name);
-		
-		$api_params = array(
-			'edd_action'=> $action,
-			'license' 	=> $license,
-			'item_name' => urlencode($plugins_args[$plugin_name]['api_data']['item_name']),
-			'url'       => home_url()
-		);
-
-			
-		$response = wp_remote_post( esc_url_raw($plugins_args[$plugin_name]['api_url']), array( 'timeout' => 15, 'sslverify' => false, 'body' => $api_params ) );
-		if (is_wp_error($response)) {
+		}
+		if (null === $license) {
+			$license = self::get_key($plugin_name);
+		}
+		if (empty($license)) {
 			return false;
 		}
-				
-		$license_data = json_decode( wp_remote_retrieve_body( $response ) );
+
+		$api_url = $plugins_args[$plugin_name]['api_url'];
+		$args	 = self::build_check_license_args($license, $plugins_args[$plugin_name]);
+		$args['edd_action'] = $action;
+
+		$license_data = self::post($api_url, $args);
+		if (!$license_data) {
+			self::postpone_check($plugin_name);
+			return false;
+		}
 		self::remember_license_data($plugin_name, $license_data);
+		if ($license_id = self::extract_license_id_from_data($license_data)) {
+			self::set_license_id($plugin_name, $license_id);
+		}
+
+		// A refused activation says 'invalid' and puts the reason in `error`: an expired key
+		// and a key with no activations left both look the same until the license is asked.
+		if ('activate_license' === $action && (empty($license_data->license) || 'valid' !== $license_data->license)) {
+			$args['edd_action'] = 'check_license';
+			$real = self::post($api_url, $args);
+			if ($real) {
+				self::remember_license_data($plugin_name, $real);
+			}
+		}
 		return $license_data;
 	}
-	public static function ajax_change_status_license() {
-		
-		$nonce = !empty($_POST['nonce']) ? sanitize_text_field($_POST['nonce']) : '';
-		
-		if (!wp_verify_nonce($nonce, 'wpe-nonce-handler-license')) {
-		   wp_die('Security check'); 
-		}
-		
-		
-		if (!empty($_POST['plugin_name']) && !empty($_POST['status'])) {
-			
-			$plugin_name	= sanitize_text_field($_POST['plugin_name']);
-			$status 		= sanitize_text_field($_POST['status']);
-			
-			$action_return = self::change_status_license($plugin_name, $status);
-			echo json_encode($action_return);
-			wp_die();
-			
-		}
-		
-	}
-	public static function ajax_check_license() {
-		$nonce = !empty($_POST['nonce']) ? sanitize_text_field($_POST['nonce']) : '';
-		
-		if (!wp_verify_nonce($nonce, 'wpe-nonce-handler-license')) {
-		   wp_die('Security check'); 
-		}
 
-		
-		$plugin_name = sanitize_text_field($_POST['plugin_name']);
-		$plugins_args = array();
-		$plugins_args = apply_filters('wpematico_plugins_updater_args', $plugins_args);
-		if (empty($plugins_args[$plugin_name])) {
-			wp_die('error');
-		}
-		$license = sanitize_text_field($_POST['license']);
-		$args = array(
-			'license' 	=> $license,
-			'item_name' => urlencode($plugins_args[$plugin_name]['api_data']['item_name']),
-			'url'       => home_url(),
-			'version' 	=> $plugins_args[$plugin_name]['api_data']['version'],
-			'author' 	=> 'Esteban Truelsegaard'	
-		);
-		$api_url = $plugins_args[$plugin_name]['api_url'];
-		$lisense_object = self::check_license($api_url, $args);
-		echo json_encode($lisense_object);
-		wp_die();
-	}
 	public static function check_license($api_url, $args) {
 		$args['edd_action'] = 'check_license';
-		$api_params = $args;
-		$response = wp_remote_post( esc_url_raw($api_url), array( 'timeout' => 15, 'sslverify' => false, 'body' => $api_params ) );
-		if (is_wp_error($response)) {
+		return self::post($api_url, $args);
+	}
+
+	/**
+	 * Stores the keys the Licenses tab posted and activates the ones that changed.
+	 *
+	 * Only the add-ons that are loaded are touched: a key of an add-on that is deactivated
+	 * stays where it is. A masked key means "unchanged".
+	 *
+	 * @param  array $posted  license_key[] as posted, unslashed.
+	 * @return array|false  text and error flag of the notice, or false when the user may not.
+	 */
+	public static function save_keys($posted) {
+		if (!current_user_can('manage_options') || !is_array($posted)) {
 			return false;
 		}
-		$license_data = json_decode( wp_remote_retrieve_body( $response ) );
-		return $license_data;
-		
+		$plugins_args = array();
+		$plugins_args = apply_filters('wpematico_plugins_updater_args', $plugins_args);
+		$keys = get_option('wpematico_license_keys');
+		$keys = is_array($keys) ? $keys : array();
+		$text  = '';
+		$error = false;
+
+		foreach ($plugins_args as $plugin_name => $args) {
+			if (!isset($posted[$plugin_name]) || !is_string($posted[$plugin_name])) {
+				continue;
+			}
+			$new = self::resolve_posted_key($plugin_name, $posted[$plugin_name]);
+			$old = isset($keys[$plugin_name]) ? (string) $keys[$plugin_name] : '';
+			if ($new === $old) {
+				continue;
+			}
+			if ('' !== $old && 'valid' === self::get_license_status($plugin_name)) {
+				self::change_status_license($plugin_name, 'deactivate_license', $old);
+			}
+			if ('' === $new) {
+				unset($keys[$plugin_name]);
+				update_option('wpematico_license_keys', $keys);
+				self::forget($plugin_name);
+				continue;
+			}
+			$keys[$plugin_name] = $new;
+			update_option('wpematico_license_keys', $keys);
+			self::forget($plugin_name);
+			$data  = self::change_status_license($plugin_name, 'activate_license', $new);
+			$text  = self::activation_message($data);
+			$error = !($data && !empty($data->license) && 'valid' === $data->license);
+		}
+		return array('text' => ('' !== $text) ? $text : __('License keys saved.', 'wpematico'), 'error' => $error);
 	}
+
+	/**
+	 * The sentence for the answer to an activation.
+	 */
+	private static function activation_message($data) {
+		if (!$data) {
+			return __('The license server did not answer. Try again in a moment.', 'wpematico');
+		}
+		if (!empty($data->license) && 'valid' === $data->license) {
+			return __('License activated for this site!', 'wpematico');
+		}
+		return self::refusal_message($data);
+	}
+
+	private static function refusal_message($data) {
+		$messages = array(
+			'expired'				=> __('This license has expired.', 'wpematico'),
+			'disabled'				=> __('This license has been disabled.', 'wpematico'),
+			'revoked'				=> __('This license has been disabled.', 'wpematico'),
+			'missing'				=> __('This license key does not exist.', 'wpematico'),
+			'invalid'				=> __('This license key does not exist.', 'wpematico'),
+			'no_activations_left'	=> __('This license has no activations left.', 'wpematico'),
+			'item_name_mismatch'	=> __('This license key is for another product.', 'wpematico'),
+			'invalid_item_id'		=> __('This license key is for another product.', 'wpematico'),
+		);
+		$code = (isset($data->error) && is_string($data->error)) ? $data->error : ((isset($data->license) && is_string($data->license)) ? $data->license : '');
+		return isset($messages[$code]) ? $messages[$code] : __('The license could not be activated.', 'wpematico');
+	}
+
+	/**
+	 * Check, activate or deactivate from the buttons of the Licenses tab.
+	 *
+	 * Answers the refreshed status block. A key typed and not yet saved can only be checked,
+	 * and then there is a message and no block.
+	 */
+	public static function ajax_license() {
+		if (!current_user_can('manage_options') || !check_ajax_referer(self::NONCE, 'nonce', false)) {
+			wp_send_json_error(array('message' => __('You are not allowed to do this.', 'wpematico')), 403);
+		}
+		$do			 = isset($_POST['do']) ? sanitize_key(wp_unslash($_POST['do'])) : '';
+		$plugin_name = isset($_POST['plugin']) ? sanitize_text_field(wp_unslash($_POST['plugin'])) : '';
+		$typed		 = isset($_POST['license']) ? self::resolve_posted_key($plugin_name, wp_unslash($_POST['license'])) : '';
+
+		$plugins_args = array();
+		$plugins_args = apply_filters('wpematico_plugins_updater_args', $plugins_args);
+		if (!in_array($do, array('check_license', 'activate_license', 'deactivate_license'), true) || empty($plugins_args[$plugin_name])) {
+			wp_send_json_error(array('message' => __('Invalid request.', 'wpematico')), 400);
+		}
+
+		$stored = self::get_key($plugin_name);
+		if ('check_license' === $do && '' !== $typed && $typed !== $stored) {
+			$args = self::build_check_license_args($typed, $plugins_args[$plugin_name]);
+			$data = self::check_license($plugins_args[$plugin_name]['api_url'], $args);
+			if (!$data) {
+				wp_send_json_error(array('message' => __('The license server did not answer. Try again in a moment.', 'wpematico')));
+			}
+			$good = in_array(isset($data->license) ? $data->license : '', array('valid', 'inactive', 'site_inactive'), true);
+			wp_send_json_success(array('html' => '', 'message' => $good ? __('This key is valid, please save settings.', 'wpematico') : self::refusal_message($data), 'ok' => $good));
+		}
+
+		if (!$stored) {
+			wp_send_json_error(array('message' => __('Save a license key first.', 'wpematico')));
+		}
+		$data = self::change_status_license($plugin_name, $do);
+		if (!$data) {
+			wp_send_json_error(array('message' => __('The license server did not answer. Try again in a moment.', 'wpematico')));
+		}
+		wp_send_json_success(array(
+			'html'		=> self::render_status($plugin_name, $plugins_args[$plugin_name]),
+			'message'	=> ('activate_license' === $do) ? self::activation_message($data) : '',
+			'ok'		=> ('activate_license' !== $do) || (!empty($data->license) && 'valid' === $data->license),
+		));
+	}
+
 	public static function styles() {
 		$screen = get_current_screen();
 		if (!is_null($screen)) {
 			if ($screen->id == 'wpematico_page_wpematico_settings') {
-				wp_enqueue_style('wpematico-settings-licenses', WPEMATICO_PLUGIN_URL . 'assets/css/licenses_handlers.css');
+				wp_enqueue_style('wpematico-settings-licenses', WPEMATICO_PLUGIN_URL . 'assets/css/licenses_handlers.css', array(), WPEMATICO_VERSION);
 			}
 		}
 	}
 	public static function scripts() {
 		$screen = get_current_screen();
-		if ($screen->id == 'wpematico_page_wpematico_settings') {
+		if (!is_null($screen) && $screen->id == 'wpematico_page_wpematico_settings') {
 			wp_enqueue_script( 'wpematico-jquery-settings-licenses', WPEMATICO_PLUGIN_URL. 'assets/js/licenses_handlers.js', array( 'jquery' ), WPEMATICO_VERSION, true );
 			wp_localize_script('wpematico-jquery-settings-licenses', 'wpematico_license_object',
 				array('ajax_url' => admin_url( 'admin-ajax.php' ),
 					'txt_check_license' 	=> __('Check License', 'wpematico'),
-					'nonce_handler_license' => wp_create_nonce('wpe-nonce-handler-license')
+					'txt_working'			=> __('Working…', 'wpematico'),
+					'txt_failed'			=> __('The license server did not answer. Try again in a moment.', 'wpematico'),
+					'nonce_handler_license' => wp_create_nonce(self::NONCE)
 				)
 			);
 		}
 	}
-	public static function save_licenses() {
-		if (!isset($_POST['wpematico_save_licenses_nonce']) || !wp_verify_nonce($_POST['wpematico_save_licenses_nonce'], 'wpematico_save_licenses')) {
-			wp_redirect(admin_url('admin.php?page=wpematico_settings&tab=pro_licenses'));
-			exit();
+
+	/**
+	 * The page of the customer's account for this license: its sites or its upgrades.
+	 */
+	private static function account_url($info, $license_id, $view = '') {
+		$params = array('action' => 'manage_licenses', 'payment_id' => $info['payment_id']);
+		if ('' !== $view) {
+			$params = array('view' => $view) + $params;
 		}
-		$keys = (isset($_POST['license_key']) && !empty($_POST['license_key']) ) ? array_map( 'sanitize_key', $_POST['license_key'] ) : array(); 
-		$plugins_args = array();
-		$plugins_args = apply_filters('wpematico_plugins_updater_args', $plugins_args);
-		update_option( 'wpematico_license_keys', $keys);
-		foreach ($keys as $plugin_name => $key) {
-			if (empty($plugins_args[$plugin_name])) {
-				continue;
-			}
-			$license = $keys[$plugin_name];
-			$args = self::build_check_license_args($license, $plugins_args[$plugin_name]);
-			$api_url = $plugins_args[$plugin_name]['api_url'];
-			$lisense_object = self::check_license($api_url, $args);
-			self::remember_license_data($plugin_name, $lisense_object);
-			$license_id = self::extract_license_id_from_data($lisense_object);
-			if ($license_id) {
-				self::set_license_id($plugin_name, $license_id);
-			}
+		if ($license_id) {
+			$params['license_id'] = $license_id;
 		}
-		wp_redirect(admin_url('admin.php?page=wpematico_settings&tab=pro_licenses'));
-		exit();
+		return add_query_arg($params, self::ACCOUNT_URL);
 	}
+
+	private static function extend_url($license, $download_id) {
+		return add_query_arg(array('edd_license_key' => $license, 'download_id' => $download_id ? $download_id : ''), self::CHECKOUT_URL);
+	}
+
+	/**
+	 * The status part of a license card: state, buttons, and what the store says about the account.
+	 *
+	 * The store is asked only when it has not been in the last twelve hours; Check License,
+	 * Activate and Deactivate ask it at once.
+	 */
+	public static function render_status($plugin_name, $args) {
+		$license = self::get_key($plugin_name);
+		if (!$license) {
+			return '';
+		}
+		$info = self::get_license_info($plugin_name);
+		if (empty($info['checked']) || $info['checked'] < time() - self::CHECK_EVERY) {
+			self::change_status_license($plugin_name, 'check_license');
+			$info = self::get_license_info($plugin_name);
+		}
+		$status = self::get_license_status($plugin_name);
+
+		$button = '<input class="button-secondary wpe-license-act" data-do="%s" type="button" value="%s" />';
+		$html	= '<p>';
+		if ('valid' === $status) {
+			$html .= '<span class="validcheck"></span><strong>' . esc_html__('Valid', 'wpematico') . '</strong> '
+				. sprintf($button, 'deactivate_license', esc_attr__('Deactivate License', 'wpematico'));
+		} elseif ('expired' === $status) {
+			$html .= '<span class="renewcheck"></span><strong>' . esc_html__('Expired', 'wpematico') . '</strong>';
+		} elseif (in_array($status, array('inactive', 'deactivated', 'site_inactive'), true)) {
+			$html .= '<span class="warningcheck"></span><strong>' . esc_html__('Inactive', 'wpematico') . '</strong> '
+				. sprintf($button, 'activate_license', esc_attr__('Activate License', 'wpematico'));
+		} elseif ($status) {
+			$html .= '<span class="renewcheck"></span><strong>' . esc_html__('Invalid', 'wpematico') . '</strong>';
+		}
+		$html .= ' ' . sprintf($button, 'check_license', esc_attr__('Check License', 'wpematico')) . '</p>';
+
+		if (!empty($info['payment_id'])) {
+			$expires	 = isset($info['expires']) ? $info['expires'] : '';
+			$left		 = isset($info['activations_left']) ? $info['activations_left'] : 0;
+			$limit		 = isset($info['license_limit']) ? (int) $info['license_limit'] : 0;
+			$license_id	 = !empty($info['license_id']) ? (int) $info['license_id'] : (int) self::get_license_id($plugin_name);
+			$download_id = self::download_id($plugin_name, $args);
+
+			$html .= '<div class="license-meta-info">';
+			if ('valid' !== $status && 'unlimited' !== $left && $limit > 0 && (int) $left <= 0) {
+				$html .= '<div class="wpe-license-notice"><a href="' . esc_url(self::account_url($info, $license_id)) . '" target="_blank" rel="noopener">' . esc_html__("No activations left. Click here to manage the sites you've activated licenses on.", 'wpematico') . '</a></div>';
+			}
+			if ('lifetime' !== $expires && '' !== $expires && false !== strtotime($expires) && strtotime($expires) < time() + 2 * WEEK_IN_SECONDS) {
+				$html .= '<div class="wpe-license-notice"><a href="' . esc_url(self::extend_url($license, $download_id)) . '" target="_blank" rel="noopener">' . esc_html__('Renew your license to continue receiving updates and support.', 'wpematico') . '</a></div>';
+			}
+			$html .= '<strong>' . esc_html__('Activations', 'wpematico') . ':</strong> ' . (int) $info['site_count'] . '/' . ($limit > 0 ? $limit : '&infin;')
+				. ' (' . ('unlimited' === $left ? esc_html__('unlimited', 'wpematico') : (int) $left) . ' ' . esc_html__('left', 'wpematico') . ')<br/>'
+				. '<strong>' . esc_html__('Expires on', 'wpematico') . ':</strong> <code>' . esc_html('lifetime' === $expires ? __('Lifetime', 'wpematico') : $expires) . '</code><br/>'
+				. '<strong>' . esc_html__('Version', 'wpematico') . ':</strong> ' . esc_html($args['api_data']['version']) . '<br/>'
+				. '<strong>' . esc_html__('Registered to', 'wpematico') . ':</strong> ' . esc_html($info['customer_name']) . ' (<code>' . esc_html($info['customer_email']) . '</code>)'
+				. '<div class="wpe-license-links">'
+				. '<a href="' . esc_url(self::account_url($info, $license_id)) . '" target="_blank" rel="noopener">' . esc_html__('Manage Sites', 'wpematico') . '</a>'
+				. ' &ndash; '
+				. '<a href="' . esc_url(self::account_url($info, $license_id, 'upgrades')) . '" target="_blank" rel="noopener">' . esc_html__('View Upgrades', 'wpematico') . '</a>'
+				. ('lifetime' === $expires ? '' : ' &ndash; <a href="' . esc_url(self::extend_url($license, $download_id)) . '" target="_blank" rel="noopener">' . esc_html__('Extend', 'wpematico') . '</a>')
+				. '</div></div>';
+		}
+		return $html;
+	}
+
 	public static function license_page() {
-		
+		if (!current_user_can('manage_options')) {
+			return;
+		}
 		$plugins_args = array();
 		$plugins_args = apply_filters('wpematico_plugins_updater_args', $plugins_args);
 
@@ -323,151 +598,28 @@ class wpematico_licenses_handlers {
 		echo '<div class="wpe-licenses-form">';
 		foreach ($plugins_args as $plugin_name => $args) {
 			$license = self::get_key($plugin_name);
-			$plugin_title_name = $args['api_data']['item_name'];
-			$license_status = self::get_license_status($plugin_name);
+			$name	 = esc_attr($plugin_name);
 
-			if ($license != false) {
-					
-				$args_check = self::build_check_license_args($license, $args);
-				$api_url = $args['api_url'];
-				$license_data = self::check_license($api_url, $args_check);
-					
-				if (is_object($license_data)) {
-					$license_status = (!empty($license_data->license) ? $license_data->license : $license_status );
-					self::remember_license_data($plugin_name, $license_data);
-					$api_id = self::extract_license_id_from_data($license_data);
-					if ($api_id) {
-						self::set_license_id($plugin_name, $api_id);
-					}
-					}
-			}
-
-
-			$status_license_html = '';
-			if ($license_status != false && $license_status == 'valid') {
-				$status_license_html = '<span class="validcheck"></span><strong>'.__('Valid', 'wpematico').'</strong>
-										<input id="'.$plugin_name.'_btn_license_deactivate" class="btn_license_deactivate button-secondary" name="'.$plugin_name.'_btn_license_deactivate" type="button" value="'.__('Deactivate License', 'wpematico').'" />';
-			} else if ($license_status === 'invalid' || $license_status === 'item_name_mismatch' ) {
-				$status_license_html = '<span class="renewcheck"></span><strong>'.__('Invalid', 'wpematico').'</strong>';
-			} else if ($license_status === 'expired') {
-				$status_license_html = '<span class="renewcheck"></span><strong>'.__('Expired', 'wpematico').'</strong>';
-			} elseif($license_status === 'inactive' || $license_status === 'deactivated' || $license_status === 'site_inactive' ) {
-				$status_license_html = '<span class="warningcheck"></span><strong>'.__('Inactive', 'wpematico').'</strong>
-				<input id="'.$plugin_name.'_btn_license_activate" class="btn_license_activate button-secondary" name="'.$plugin_name.'_btn_license_activate" type="button" value="'.__('Activate License', 'wpematico').'" />
-				';
-			}
-			
-			
-			$html_addons = '
-			<div class="postbox-license">
-			<h2><span class="dashicons dashicons-admin-plugins"></span>' . esc_html( $plugin_title_name ) . esc_html__(' License', 'wpematico') . '</h2>
+			echo '<div class="postbox-license" data-plugin="' . $name . '">
+			<h2><span class="dashicons dashicons-admin-plugins"></span>' . esc_html($args['api_data']['item_name']) . esc_html__(' License', 'wpematico') . '</h2>
 			<div class="wpe-license-body">
 			<div class="wpe-lk-field">
-				<label class="wpe-lk-label" for="license_key_'.$plugin_name.'">'.__('License Key', 'wpematico').'</label>
-				<input id="license_key_'.$plugin_name.'" data-plugin="'.$plugin_name.'" class="inp_license_key" name="license_key['.$plugin_name.']" type="text" value="'.esc_attr( $license ).'" />
-				<span class="wpe-lk-hint">'.__('Enter your license key', 'wpematico').'</span>
-			</div>';
-				if ($license != false) {
-					$html_div = '';
-					
-
-					if (is_object($license_data)) {
-						
-						$currentActivations = !empty($license_data->site_count) ? $license_data->site_count : 0;
-						$activationsLeft = !empty($license_data->activations_left) ? $license_data->activations_left : 0;
-						$activationsLimit = !empty($license_data->license_limit) ? $license_data->license_limit : 0;
-						$expires = !empty($license_data->expires) ? $license_data->expires : 0;
-						$expires = ( $expires=='lifetime')? __('Lifetime','wpematico') : substr( $expires, 0, strpos( $expires, " "));
-
-						if (!empty($license_data->payment_id) && !empty($license_data->license_limit)) {
-							
-							$html_div .= '<div class="license-meta-info">';
-
-							if ($license_status !== 'valid' && $activationsLeft === 0) {
-								$account_lid = self::extract_license_id_from_data($license_data) ?: self::get_license_id($plugin_name);
-								$account_params = ['action' => 'manage_licenses', 'payment_id' => $license_data->payment_id];
-								if ($account_lid) {
-									$account_params['license_id'] = $account_lid;
-								}
-								$accountUrl = add_query_arg( $account_params, 'https://etruel.com/my-account/purchase-history/' );
-								$html_div .= '<div class="wpe-license-notice"><a href="'.esc_url($accountUrl).'" target="_blank">'.__("No activations left. Click here to manage the sites you've activated licenses on.", 'wpematico').'</a></div>';
-							}
-							if ( strtotime($expires) < strtotime("+2 weeks") && $license_data->expires != 'lifetime') {
-								$renewalUrl = add_query_arg( [
-									'edd_license_key' => $license,
-									'download_id'     => !empty($license_data->download_id) ? $license_data->download_id : '',
-								], 'https://etruel.com/checkout/' );
-								$html_div .= '<div class="wpe-license-notice"><a href="'.esc_url($renewalUrl).'" target="_blank">'.__('Renew your license to continue receiving updates and support.', 'wpematico').'</a></div>';
-							}
-
-							$html_div .= '<strong>'.__('Activations', 'wpematico').':</strong> '.$currentActivations.'/'.$activationsLimit.' ('.$activationsLeft.' '.__('left','wpematico').')<br/>'
-								.'<strong>'.__('Expires on', 'wpematico').':</strong> <code>'.$expires.'</code><br/>'
-								.'<strong>'.__('Version', 'wpematico').':</strong> '.esc_html($args['api_data']['version']).'<br/>'
-								.'<strong>'.__('Registered to', 'wpematico').':</strong> '.esc_html($license_data->customer_name).' (<code>'.esc_html($license_data->customer_email).'</code>)';
-
-							if (!empty($license_data->payment_id)) {
-								$base  = 'https://etruel.com/my-account/purchase-history/';
-								$pid   = $license_data->payment_id;
-								$lid   = self::extract_license_id_from_data($license_data) ?: self::get_license_id($plugin_name);
-								$did   = !empty($license_data->download_id) ? $license_data->download_id
-										: ( !empty($license_data->item_id) ? $license_data->item_id
-										: ( !empty($args['api_data']['item_id']) ? $args['api_data']['item_id']
-										: ( self::get_item_id_from_feed_cache($args['api_data']['item_name']) ?: '' ) ) );
-
-								$manage_params   = ['action' => 'manage_licenses', 'payment_id' => $pid];
-								$upgrades_params = ['view' => 'upgrades', 'action' => 'manage_licenses', 'payment_id' => $pid];
-								if ($lid) {
-									$manage_params['license_id']   = $lid;
-									$upgrades_params['license_id'] = $lid;
-								}
-
-								$manage_url   = esc_url( add_query_arg( $manage_params,   $base ) );
-								$upgrades_url = esc_url( add_query_arg( $upgrades_params, $base ) );
-								$extend_url   = esc_url( add_query_arg( ['edd_license_key' => $license, 'download_id' => $did], 'https://etruel.com/checkout/' ) );
-
-								$html_div .= '<div class="wpe-license-links">'
-									.'<a href="'.$manage_url.'" target="_blank">'.__('Manage Sites','wpematico').'</a>'
-									.' &ndash; '
-									.'<a href="'.$upgrades_url.'" target="_blank">'.__('View Upgrades','wpematico').'</a>'
-									.' &ndash; '
-									.'<a href="'.$extend_url.'" target="_blank">'.__('Extend','wpematico').'</a>'
-									.'</div>';
-							}
-
-							$html_div .= '</div>';			
-							
-						}
-					}
-								
-					$html_addons .= '<div id="tr_license_status_'.$plugin_name.'" class="tr_license_status wpe-status-section">
-						<div class="wpe-status-subtitle">'.__('Activated for updates', 'wpematico').'</div>
-						<div id="td_license_status_'.$plugin_name.'" class="wpe-status-row">
-							<p>'.$status_license_html.'</p>
-							<div id="'.$plugin_name.'_ajax_status_license">'.$html_div.'</div>
-						</div>
-					</div>';
-				} else {
-					$html_addons .= '<div id="tr_license_status_'.$plugin_name.'" class="tr_license_status wpe-status-section" style="display:none;">
-						<div class="wpe-status-subtitle">'.__('Activated for updates', 'wpematico').'</div>
-						<div id="td_license_status_'.$plugin_name.'" class="wpe-status-row">
-							<input id="'.$plugin_name.'_btn_license_check" class="btn_license_check button-secondary" name="'.$plugin_name.'_btn_license_check" type="button" value="'.__('Check License', 'wpematico').'"/>
-							<div id="'.$plugin_name.'_ajax_status_license" style="display:none;"></div>
-						</div>
-					</div>';
-					
-				}
-				
-						
-			$html_addons .= '</div><!-- .wpe-license-body -->
+				<label class="wpe-lk-label" for="license_key_' . $name . '">' . esc_html__('License Key', 'wpematico') . '</label>
+				<input id="license_key_' . $name . '" data-plugin="' . $name . '" class="inp_license_key" name="license_key[' . $name . ']" type="text" autocomplete="off" spellcheck="false" value="' . esc_attr($license ? self::mask_key($license) : '') . '" />
+				<span class="wpe-lk-hint">' . esc_html__('Enter your license key', 'wpematico') . '</span>
+			</div>
+			<div class="wpe-status-section"' . ($license ? '' : ' style="display:none;"') . '>
+				<div class="wpe-status-subtitle">' . esc_html__('Activated for updates', 'wpematico') . '</div>
+				<div class="wpe-status-row">' . self::render_status($plugin_name, $args) . '</div>
+				<div class="wpe-license-message" role="status"></div>
+			</div>
+			</div><!-- .wpe-license-body -->
 			</div><!-- .postbox-license -->
 			';
-			
-			echo $html_addons;
-			
 		}
 		echo '</div><!-- .wpe-licenses-form -->';
 	}
-	
+
 }
 $wpematico_licenses_handlers = new wpematico_licenses_handlers();
 ?>

@@ -783,8 +783,8 @@ if (!class_exists('WPeMatico_Campaigns')) :
 					// We'll just return here printing the error msg on hidden div.
 					$text .= '</div>
 						<div class="post_id">' . $post->ID . '</div>
-						<div class="error_code">' . "Error retrieving campaign data: " . $errorMessage . '</div>
-						<div class="error_message">' . $errorMessage;
+						<div class="error_code">' . esc_html("Error retrieving campaign data: " . $errorMessage) . '</div>
+						<div class="error_message">' . esc_html($errorMessage);
 					return $text;
 				}
 
@@ -805,20 +805,20 @@ if (!class_exists('WPeMatico_Campaigns')) :
 
 				/* Concatenation of the $text variable with HTML elements and campaign data */
 				$text .= '</div>
-					<div class="post_id">' . $post->ID . '</div>
-					<div class="campaign_max">' . $campaign_max . '</div>
-					<div class="campaign_feeddate">' . $campaign_feeddate . '</div>
-					<div class="campaign_author">' . $campaign_author . '</div>
-					<div class="campaign_linktosource">' . $campaign_linktosource . '</div>
-					<div class="campaign_commentstatus">' . $campaign_commentstatus . '</div>
-					<div class="campaign_allowpings">' . $campaign_allowpings . '</div>
-					<div class="campaign_woutfilter">' . $campaign_woutfilter . '</div>
-					<div class="campaign_strip_links">' . $campaign_strip_links . '</div>
-					<div class="campaign_customposttype">' . $campaign_customposttype . '</div>
-					<div class="campaign_posttype">' . $campaign_posttype . '</div>
-					<div class="campaign_post_format">' . $campaign_post_format . '</div>
-					<div class="campaign_categories">' . implode(',', $campaign_categories) . '</div>
-					<div class="campaign_tags">' . stripslashes($campaign_tags);
+					<div class="post_id">' . (int) $post->ID . '</div>
+					<div class="campaign_max">' . esc_html($campaign_max) . '</div>
+					<div class="campaign_feeddate">' . esc_html($campaign_feeddate) . '</div>
+					<div class="campaign_author">' . esc_html($campaign_author) . '</div>
+					<div class="campaign_linktosource">' . esc_html($campaign_linktosource) . '</div>
+					<div class="campaign_commentstatus">' . esc_html($campaign_commentstatus) . '</div>
+					<div class="campaign_allowpings">' . esc_html($campaign_allowpings) . '</div>
+					<div class="campaign_woutfilter">' . esc_html($campaign_woutfilter) . '</div>
+					<div class="campaign_strip_links">' . esc_html($campaign_strip_links) . '</div>
+					<div class="campaign_customposttype">' . esc_html($campaign_customposttype) . '</div>
+					<div class="campaign_posttype">' . esc_html($campaign_posttype) . '</div>
+					<div class="campaign_post_format">' . esc_html($campaign_post_format) . '</div>
+					<div class="campaign_categories">' . implode(',', array_map('absint', $campaign_categories)) . '</div>
+					<div class="campaign_tags">' . esc_html(stripslashes($campaign_tags));
 			}
 			return $text;
 		}

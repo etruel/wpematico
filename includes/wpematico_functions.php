@@ -1104,6 +1104,8 @@ if (!class_exists('WPeMatico_functions')) {
 			# All: the chosen ones plus the newly added.
 			if (in_array('category', $arrTaxonomies)) {
 				$campaigndata['campaign_categories'] = (!isset($post_data['post_category'])) ? ((!isset($post_data['campaign_categories'])) ? array() : (array) $post_data['campaign_categories']) : (array) $post_data['post_category'];
+				// Categories are term ids; anything else is not a category.
+				$campaigndata['campaign_categories'] = array_values(array_filter(array_map('absint', array_filter($campaigndata['campaign_categories'], 'is_scalar'))));
 			} else {
 				$campaigndata['campaign_categories'] = array();
 			}
@@ -1849,8 +1851,10 @@ if (!class_exists('WPeMatico_functions')) {
 		 * Resolves a host and reports the first internal address it points to.
 		 *
 		 * Returns null both when the host is external and when it cannot be resolved here, so
-		 * a DNS failure never blocks a fetch. Only IPv4 records are resolved, which is what
-		 * gethostbynamel() offers; an IP literal of either family is classified directly.
+		 * a DNS failure never blocks a fetch. A and AAAA records are both resolved, because the
+		 * HTTP client connects to whichever family answers; an IP literal of either family is
+		 * classified directly. This runs before every fetch: it must not cost more than the
+		 * lookup the connection itself makes.
 		 *
 		 * @since 2.8.26
 		 * @param   string  $host
@@ -1872,9 +1876,42 @@ if (!class_exists('WPeMatico_functions')) {
 			} else {
 				// One lookup per host and per request: a multipage feed asks about the same
 				// host once per page, and a cron pass often reads several feeds of one site.
-				$resolved = @gethostbynamel($host);
-				if (is_array($resolved)) {
-					$addresses = $resolved;
+				if (function_exists('socket_addrinfo_lookup')) {
+					// getaddrinfo(): the resolver the HTTP client connects through, so what is
+					// checked is what is reached. A and AAAA come together, /etc/hosts included.
+					$lookup = @socket_addrinfo_lookup($host, null, array('ai_socktype' => SOCK_STREAM));
+					if (is_array($lookup)) {
+						foreach ($lookup as $info) {
+							$explained = socket_addrinfo_explain($info);
+							if (!empty($explained['ai_addr']['sin_addr'])) {
+								$addresses[] = $explained['ai_addr']['sin_addr'];
+							} elseif (!empty($explained['ai_addr']['sin6_addr'])) {
+								$addresses[] = $explained['ai_addr']['sin6_addr'];
+							}
+						}
+					}
+				} else {
+					$resolved = @gethostbynamel($host);
+					if (is_array($resolved)) {
+						$addresses = $resolved;
+					}
+
+					// A host with no A record may still have an AAAA one. dns_get_record() has
+					// no timeout of its own and can wait a minute on a name server that does
+					// not answer AAAA, so it is asked only when nothing else resolved. The
+					// handler keeps a DNS failure out of error_get_last(), which `@` does not.
+					if (empty($addresses) && function_exists('dns_get_record')) {
+						set_error_handler('__return_true');
+						$records = dns_get_record($host, DNS_AAAA);
+						restore_error_handler();
+						if (is_array($records)) {
+							foreach ($records as $record) {
+								if (!empty($record['ipv6'])) {
+									$addresses[] = $record['ipv6'];
+								}
+							}
+						}
+					}
 				}
 			}
 
@@ -2801,14 +2838,14 @@ if (!class_exists('WPeMatico_functions')) {
 		 */
 		public static function plugin_get_version($file = '') {
 			if (empty($file))
-				$file					= __FILE__;
-			if (!function_exists('get_plugins'))
-				require_once(ABSPATH . basename(admin_url()) . '/includes/plugin.php');
-			$plugin_folder			= get_plugins('/' . plugin_basename(dirname($file)));
-			$plugin_file			= basename(($file));
-			$plugin_info			= array();
-			$plugin_info['Name']	= $plugin_folder[$plugin_file]['Name'];
-			$plugin_info['Version'] = $plugin_folder[$plugin_file]['Version'];
+				$file = WPEMATICO_ROOTFILE;
+			// The header of the file itself: scanning the plugins folder finds nothing when
+			// the folder is reached through a path WordPress does not map to plugins/<name>.
+			$plugin_info = get_file_data($file, array('Name' => 'Plugin Name', 'Version' => 'Version'), 'plugin');
+			if (empty($plugin_info['Name']))
+				$plugin_info['Name'] = 'WPeMatico';
+			if (empty($plugin_info['Version']))
+				$plugin_info['Version'] = WPEMATICO_VERSION;
 			return $plugin_info;
 		}
 

@@ -1,112 +1,49 @@
 jQuery(document).ready(function($) {
+	var cfg = window.wpematico_license_object;
 
-
-	startHookActivate();
-	startHookDesactivate();
-
-
-	jQuery('.inp_license_key').on("keyup", function(e) {
-		inp_license_key(this);
-	});
-	jQuery(".inp_license_key").bind({
-		copy: function(e) {
-			inp_license_key(this, true);
-		},
-		paste: function(e) {
-			inp_license_key(this, true);
-		},
-		cut: function(e) {
-			inp_license_key(this, true);
+	// Typing a key offers to check it before it is saved.
+	$('.wpe-licenses-form').on('input paste cut', '.inp_license_key', function() {
+		var $card = $(this).closest('.postbox-license'),
+			$section = $card.find('.wpe-status-section');
+		if ('' === $(this).val()) {
+			$section.fadeOut();
+			return;
 		}
+		$section.find('.wpe-status-row').html('<p><input class="button-secondary wpe-license-act" data-do="check_license" type="button" value="' + cfg.txt_check_license + '" /></p>');
+		$section.find('.wpe-license-message').attr('class', 'wpe-license-message').text('');
+		$section.fadeIn();
 	});
 
+	// Check, Activate and Deactivate: the server answers with the status block as it now is.
+	$('.wpe-licenses-form').on('click', '.wpe-license-act', function() {
+		var $btn = $(this),
+			$card = $btn.closest('.postbox-license'),
+			$row = $card.find('.wpe-status-row'),
+			$msg = $card.find('.wpe-license-message');
 
+		$card.find('.wpe-license-act').prop('disabled', true);
+		$msg.attr('class', 'wpe-license-message').text(cfg.txt_working);
+
+		$.post(cfg.ajax_url, {
+			action: 'wpematico_license',
+			nonce: cfg.nonce_handler_license,
+			plugin: $card.data('plugin'),
+			do: $btn.data('do'),
+			license: $card.find('.inp_license_key').val()
+		}).done(function(res) {
+			if (res && res.success) {
+				if (res.data.html) {
+					$row.html(res.data.html);
+				}
+				$msg.addClass(res.data.ok ? 'ok' : 'err').text(res.data.message || '');
+				$card.find('.wpe-license-act').prop('disabled', false);
+			} else {
+				$msg.addClass('err').text(res && res.data ? res.data.message : cfg.txt_failed);
+				$card.find('.wpe-license-act').prop('disabled', false);
+			}
+		}).fail(function() {
+			$msg.addClass('err').text(cfg.txt_failed);
+			$card.find('.wpe-license-act').prop('disabled', false);
+		});
+	});
 });
-
-function inp_license_key(element, copy = false) {
-	var plugin_name = jQuery(element).data('plugin');
-	if (jQuery(element).val() == '' && !copy) {
-		jQuery('#tr_license_status_' + plugin_name).fadeOut();
-		return false;
-	}
-
-	jQuery('#td_license_status_' + plugin_name).html('<input id="' + plugin_name + '_btn_license_check" class="btn_license_check button-secondary" name="' + plugin_name + '_btn_license_check" type="button" value="' + wpematico_license_object.txt_check_license + '" /><div id="' + plugin_name + '_ajax_status_license" style="display:none;"></div>');
-	jQuery('#tr_license_status_' + plugin_name).fadeIn();
-	jQuery('.btn_license_check').on("click", function(e) {
-		var plugin_name_check = this.id.replace('_btn_license_check', '');
-		jQuery(this).prop('disabled', true);
-		jQuery('#' + plugin_name_check + '_ajax_status_license').html('Checking key...');
-		jQuery('#' + plugin_name_check + '_ajax_status_license').fadeIn();
-		var data_request = {
-			action: 'wpematico_check_license',
-			plugin_name: plugin_name_check,
-			license: jQuery('#license_key_' + plugin_name_check).val(),
-			nonce: wpematico_license_object.nonce_handler_license
-		}
-
-		jQuery.post(wpematico_license_object.ajax_url, data_request, function(data) {
-			var response = jQuery.parseJSON(data);
-			console.log(response);
-			if (response.license == 'invalid' || response.license == 'expired') {
-				jQuery('#' + data_request.plugin_name + '_ajax_status_license').html('<span class="license-check-invalid">&#9888; This key is ' + response.license + '</span>');
-			}
-			else if (response.license == 'item_name_mismatch') {
-				jQuery('#' + data_request.plugin_name + '_ajax_status_license').html('<span class="license-check-mismatch">&#9888; This key is invalid for this plugin.</span>');
-			}
-			else {
-				jQuery('#' + data_request.plugin_name + '_ajax_status_license').html('<span class="license-check-valid">&#10004; This key is valid, please save settings.</span>');
-			}
-
-			jQuery('#' + data_request.plugin_name + '_btn_license_check').prop('disabled', false);
-		});
-
-	});
-
-}
-
-function startHookActivate() {
-	jQuery('.btn_license_activate').on("click", function(e) {
-		var plugin_name = this.id.replace('_btn_license_activate', '');
-		jQuery(this).prop('disabled', true);
-		jQuery('#' + plugin_name + '_ajax_status_license').html('Activating key...');
-		jQuery('#' + plugin_name + '_ajax_status_license').fadeIn();
-		var data_request = {
-			action: 'wpematico_status_license',
-			plugin_name: plugin_name,
-			status: 'activate_license',
-			nonce: wpematico_license_object.nonce_handler_license
-		}
-
-		jQuery.post(wpematico_license_object.ajax_url, data_request, function(data) {
-			var response = jQuery.parseJSON(data);
-			console.log(response);
-			jQuery('#' + data_request.plugin_name + '_btn_license_activate').prop('disabled', false);
-			jQuery('#td_license_status_' + data_request.plugin_name).html('<p><span class="validcheck"></span><strong>Valid</strong> <input id="' + data_request.plugin_name + '_btn_license_deactivate" class="btn_license_deactivate button-secondary" name="' + data_request.plugin_name + '_btn_license_deactivate" type="button" value="Deactivate License" /></p><div id="' + data_request.plugin_name + '_ajax_status_license"></div>');
-			startHookDesactivate();
-
-		});
-	});
-}
-
-function startHookDesactivate() {
-	jQuery('.btn_license_deactivate').on("click", function(e) {
-		var plugin_name = this.id.replace('_btn_license_deactivate', '');
-		jQuery(this).prop('disabled', true);
-		jQuery('#' + plugin_name + '_ajax_status_license').html('Deactivating key...');
-		jQuery('#' + plugin_name + '_ajax_status_license').fadeIn();
-		var data_request = {
-			action: 'wpematico_status_license',
-			plugin_name: plugin_name,
-			status: 'deactivate_license',
-			nonce: wpematico_license_object.nonce_handler_license
-		}
-
-		jQuery.post(wpematico_license_object.ajax_url, data_request, function(data) {
-			var response = jQuery.parseJSON(data);
-			console.log(response);
-			jQuery('#' + data_request.plugin_name + '_btn_license_deactivate').prop('disabled', false);
-			jQuery('#td_license_status_' + data_request.plugin_name).html('<p><span class="warningcheck"></span><strong>Inactive</strong> <input id="' + data_request.plugin_name + '_btn_license_activate" class="btn_license_activate button-secondary" name="' + data_request.plugin_name + '_btn_license_activate" type="button" value="Activate License" /></p><div id="' + data_request.plugin_name + '_ajax_status_license"></div>');
-			startHookActivate();
-		});
-	});
-}
