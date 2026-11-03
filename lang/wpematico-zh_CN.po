@@ -11821,3 +11821,67 @@ msgstr "附加组件"
 #~ msgstr ""
 #~ "勾选“在设置中隐藏评价”即可避免这种情况；届时只会显示一个指向 WordPress 评"
 #~ "价页面的链接。"
+
+#: includes/lib/licenses_handlers.php:415 includes/lib/licenses_handlers.php:463 includes/lib/licenses_handlers.php:474 includes/lib/licenses_handlers.php:525
+msgid "The license server did not answer. Try again in a moment."
+msgstr "许可证服务器没有响应，请稍后再试。"
+
+#: includes/lib/licenses_handlers.php:418
+msgid "License activated for this site!"
+msgstr "已为本站启用许可证！"
+
+#: includes/lib/licenses_handlers.php:425
+msgid "This license has expired."
+msgstr "此许可证已过期。"
+
+#: includes/lib/licenses_handlers.php:426 includes/lib/licenses_handlers.php:427
+msgid "This license has been disabled."
+msgstr "此许可证已被禁用。"
+
+#: includes/lib/licenses_handlers.php:428 includes/lib/licenses_handlers.php:429
+msgid "This license key does not exist."
+msgstr "此许可证密钥不存在。"
+
+#: includes/lib/licenses_handlers.php:430
+msgid "This license has no activations left."
+msgstr "此许可证已没有可用的启用次数。"
+
+#: includes/lib/licenses_handlers.php:431 includes/lib/licenses_handlers.php:432
+msgid "This license key is for another product."
+msgstr "此许可证密钥属于其他产品。"
+
+#: includes/lib/licenses_handlers.php:435
+msgid "The license could not be activated."
+msgstr "无法启用许可证。"
+
+#: includes/lib/licenses_handlers.php:466
+msgid "This key is valid, please save settings."
+msgstr "此密钥有效，请保存设置。"
+
+#: includes/lib/licenses_handlers.php:470
+msgid "Save a license key first."
+msgstr "请先保存许可证密钥。"
+
+#: includes/lib/licenses_handlers.php:498
+msgid "License deactivated for this site."
+msgstr "已为本站停用许可证。"
+
+#: includes/lib/licenses_handlers.php:498
+msgid "The license could not be deactivated."
+msgstr "无法停用许可证。"
+
+#: includes/lib/licenses_handlers.php:501
+msgid "The license is valid and active for this site."
+msgstr "许可证有效，并已在本站启用。"
+
+#: includes/lib/licenses_handlers.php:504
+msgid "The license is valid but this site is not activated with it."
+msgstr "许可证有效，但本站尚未使用它启用。"
+
+#: includes/lib/licenses_handlers.php:524
+msgid "Working…"
+msgstr "处理中…"
+
+#: includes/lib/licenses_handlers.php:598
+msgid "unlimited"
+msgstr "不限"

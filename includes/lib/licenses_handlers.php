@@ -473,11 +473,37 @@ class wpematico_licenses_handlers {
 		if (!$data) {
 			wp_send_json_error(array('message' => __('The license server did not answer. Try again in a moment.', 'wpematico')));
 		}
+		$answer = self::answer_message($do, $data);
 		wp_send_json_success(array(
 			'html'		=> self::render_status($plugin_name, $plugins_args[$plugin_name]),
-			'message'	=> ('activate_license' === $do) ? self::activation_message($data) : '',
-			'ok'		=> ('activate_license' !== $do) || (!empty($data->license) && 'valid' === $data->license),
+			'message'	=> $answer['text'],
+			'ok'		=> $answer['ok'],
 		));
+	}
+
+	/**
+	 * The sentence under a card for what the store answered to a button. Each button says
+	 * something, because pressing Check on a license that is already valid repaints the
+	 * same block and would look as if nothing happened.
+	 *
+	 * @return array text and whether it is good news.
+	 */
+	private static function answer_message($do, $data) {
+		$license = (!empty($data->license) && is_string($data->license)) ? $data->license : '';
+		if ('activate_license' === $do) {
+			return array('text' => self::activation_message($data), 'ok' => 'valid' === $license);
+		}
+		if ('deactivate_license' === $do) {
+			$done = in_array($license, array('deactivated', 'inactive', 'site_inactive'), true);
+			return array('text' => $done ? __('License deactivated for this site.', 'wpematico') : __('The license could not be deactivated.', 'wpematico'), 'ok' => $done);
+		}
+		if ('valid' === $license) {
+			return array('text' => __('The license is valid and active for this site.', 'wpematico'), 'ok' => true);
+		}
+		if (in_array($license, array('inactive', 'site_inactive', 'deactivated'), true)) {
+			return array('text' => __('The license is valid but this site is not activated with it.', 'wpematico'), 'ok' => false);
+		}
+		return array('text' => self::refusal_message($data), 'ok' => false);
 	}
 
 	public static function styles() {

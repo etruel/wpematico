@@ -12851,3 +12851,67 @@ msgstr "Extensiones"
 #~ "Haz clic en la casilla de verificación \"Ocultar reseñas en la "
 #~ "configuración\" para evitar esto y muestra sólo un enlace a la página de "
 #~ "reseñas de Wordpress."
+
+#: includes/lib/licenses_handlers.php:415 includes/lib/licenses_handlers.php:463 includes/lib/licenses_handlers.php:474 includes/lib/licenses_handlers.php:525
+msgid "The license server did not answer. Try again in a moment."
+msgstr "El servidor de licencias no respondió. Inténtalo de nuevo en un momento."
+
+#: includes/lib/licenses_handlers.php:418
+msgid "License activated for this site!"
+msgstr "¡Licencia activada para este sitio!"
+
+#: includes/lib/licenses_handlers.php:425
+msgid "This license has expired."
+msgstr "Esta licencia ha caducado."
+
+#: includes/lib/licenses_handlers.php:426 includes/lib/licenses_handlers.php:427
+msgid "This license has been disabled."
+msgstr "Esta licencia ha sido deshabilitada."
+
+#: includes/lib/licenses_handlers.php:428 includes/lib/licenses_handlers.php:429
+msgid "This license key does not exist."
+msgstr "Esta clave de licencia no existe."
+
+#: includes/lib/licenses_handlers.php:430
+msgid "This license has no activations left."
+msgstr "Esta licencia no tiene activaciones disponibles."
+
+#: includes/lib/licenses_handlers.php:431 includes/lib/licenses_handlers.php:432
+msgid "This license key is for another product."
+msgstr "Esta clave de licencia es de otro producto."
+
+#: includes/lib/licenses_handlers.php:435
+msgid "The license could not be activated."
+msgstr "No se pudo activar la licencia."
+
+#: includes/lib/licenses_handlers.php:466
+msgid "This key is valid, please save settings."
+msgstr "Esta clave es válida, guarda los ajustes."
+
+#: includes/lib/licenses_handlers.php:470
+msgid "Save a license key first."
+msgstr "Primero guarda una clave de licencia."
+
+#: includes/lib/licenses_handlers.php:498
+msgid "License deactivated for this site."
+msgstr "Licencia desactivada para este sitio."
+
+#: includes/lib/licenses_handlers.php:498
+msgid "The license could not be deactivated."
+msgstr "No se pudo desactivar la licencia."
+
+#: includes/lib/licenses_handlers.php:501
+msgid "The license is valid and active for this site."
+msgstr "La licencia es válida y está activa en este sitio."
+
+#: includes/lib/licenses_handlers.php:504
+msgid "The license is valid but this site is not activated with it."
+msgstr "La licencia es válida, pero este sitio no está activado con ella."
+
+#: includes/lib/licenses_handlers.php:524
+msgid "Working…"
+msgstr "Trabajando…"
+
+#: includes/lib/licenses_handlers.php:598
+msgid "unlimited"
+msgstr "ilimitadas"

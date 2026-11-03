@@ -12716,3 +12716,67 @@ msgstr "Расширения"
 #~ msgstr ""
 #~ "Отметьте «Скрыть отзывы в настройках», чтобы этого избежать: останется "
 #~ "только ссылка на страницу отзывов WordPress."
+
+#: includes/lib/licenses_handlers.php:415 includes/lib/licenses_handlers.php:463 includes/lib/licenses_handlers.php:474 includes/lib/licenses_handlers.php:525
+msgid "The license server did not answer. Try again in a moment."
+msgstr "Сервер лицензий не ответил. Повторите попытку чуть позже."
+
+#: includes/lib/licenses_handlers.php:418
+msgid "License activated for this site!"
+msgstr "Лицензия активирована для этого сайта!"
+
+#: includes/lib/licenses_handlers.php:425
+msgid "This license has expired."
+msgstr "Срок действия этой лицензии истёк."
+
+#: includes/lib/licenses_handlers.php:426 includes/lib/licenses_handlers.php:427
+msgid "This license has been disabled."
+msgstr "Эта лицензия отключена."
+
+#: includes/lib/licenses_handlers.php:428 includes/lib/licenses_handlers.php:429
+msgid "This license key does not exist."
+msgstr "Такого лицензионного ключа не существует."
+
+#: includes/lib/licenses_handlers.php:430
+msgid "This license has no activations left."
+msgstr "У этой лицензии не осталось активаций."
+
+#: includes/lib/licenses_handlers.php:431 includes/lib/licenses_handlers.php:432
+msgid "This license key is for another product."
+msgstr "Этот лицензионный ключ предназначен для другого продукта."
+
+#: includes/lib/licenses_handlers.php:435
+msgid "The license could not be activated."
+msgstr "Не удалось активировать лицензию."
+
+#: includes/lib/licenses_handlers.php:466
+msgid "This key is valid, please save settings."
+msgstr "Ключ действителен, сохраните настройки."
+
+#: includes/lib/licenses_handlers.php:470
+msgid "Save a license key first."
+msgstr "Сначала сохраните лицензионный ключ."
+
+#: includes/lib/licenses_handlers.php:498
+msgid "License deactivated for this site."
+msgstr "Лицензия деактивирована для этого сайта."
+
+#: includes/lib/licenses_handlers.php:498
+msgid "The license could not be deactivated."
+msgstr "Не удалось деактивировать лицензию."
+
+#: includes/lib/licenses_handlers.php:501
+msgid "The license is valid and active for this site."
+msgstr "Лицензия действительна и активна на этом сайте."
+
+#: includes/lib/licenses_handlers.php:504
+msgid "The license is valid but this site is not activated with it."
+msgstr "Лицензия действительна, но этот сайт с ней не активирован."
+
+#: includes/lib/licenses_handlers.php:524
+msgid "Working…"
+msgstr "Выполняется…"
+
+#: includes/lib/licenses_handlers.php:598
+msgid "unlimited"
+msgstr "без ограничений"

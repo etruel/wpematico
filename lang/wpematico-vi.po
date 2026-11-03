@@ -10107,3 +10107,67 @@ msgstr "Add-on WPeMatico"
 #: includes/plugin_functions.php:360
 msgid "Extensions"
 msgstr "Tiện ích mở rộng"
+
+#: includes/lib/licenses_handlers.php:415 includes/lib/licenses_handlers.php:463 includes/lib/licenses_handlers.php:474 includes/lib/licenses_handlers.php:525
+msgid "The license server did not answer. Try again in a moment."
+msgstr "Máy chủ giấy phép không phản hồi. Vui lòng thử lại sau giây lát."
+
+#: includes/lib/licenses_handlers.php:418
+msgid "License activated for this site!"
+msgstr "Đã kích hoạt giấy phép cho trang web này!"
+
+#: includes/lib/licenses_handlers.php:425
+msgid "This license has expired."
+msgstr "Giấy phép này đã hết hạn."
+
+#: includes/lib/licenses_handlers.php:426 includes/lib/licenses_handlers.php:427
+msgid "This license has been disabled."
+msgstr "Giấy phép này đã bị tắt."
+
+#: includes/lib/licenses_handlers.php:428 includes/lib/licenses_handlers.php:429
+msgid "This license key does not exist."
+msgstr "Khoá giấy phép này không tồn tại."
+
+#: includes/lib/licenses_handlers.php:430
+msgid "This license has no activations left."
+msgstr "Giấy phép này không còn lượt kích hoạt nào."
+
+#: includes/lib/licenses_handlers.php:431 includes/lib/licenses_handlers.php:432
+msgid "This license key is for another product."
+msgstr "Khoá giấy phép này dành cho sản phẩm khác."
+
+#: includes/lib/licenses_handlers.php:435
+msgid "The license could not be activated."
+msgstr "Không thể kích hoạt giấy phép."
+
+#: includes/lib/licenses_handlers.php:466
+msgid "This key is valid, please save settings."
+msgstr "Khoá này hợp lệ, vui lòng lưu cài đặt."
+
+#: includes/lib/licenses_handlers.php:470
+msgid "Save a license key first."
+msgstr "Hãy lưu khoá giấy phép trước."
+
+#: includes/lib/licenses_handlers.php:498
+msgid "License deactivated for this site."
+msgstr "Đã huỷ kích hoạt giấy phép cho trang web này."
+
+#: includes/lib/licenses_handlers.php:498
+msgid "The license could not be deactivated."
+msgstr "Không thể huỷ kích hoạt giấy phép."
+
+#: includes/lib/licenses_handlers.php:501
+msgid "The license is valid and active for this site."
+msgstr "Giấy phép hợp lệ và đang hoạt động trên trang web này."
+
+#: includes/lib/licenses_handlers.php:504
+msgid "The license is valid but this site is not activated with it."
+msgstr "Giấy phép hợp lệ nhưng trang web này chưa được kích hoạt bằng giấy phép đó."
+
+#: includes/lib/licenses_handlers.php:524
+msgid "Working…"
+msgstr "Đang xử lý…"
+
+#: includes/lib/licenses_handlers.php:598
+msgid "unlimited"
+msgstr "không giới hạn"

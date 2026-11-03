@@ -12838,3 +12838,67 @@ msgstr "Extensies"
 #~ msgstr ""
 #~ "Vink „Recensies in de instellingen verbergen“ aan om dat te voorkomen; "
 #~ "dan verschijnt alleen een link naar de WordPress-recensiepagina."
+
+#: includes/lib/licenses_handlers.php:415 includes/lib/licenses_handlers.php:463 includes/lib/licenses_handlers.php:474 includes/lib/licenses_handlers.php:525
+msgid "The license server did not answer. Try again in a moment."
+msgstr "De licentieserver antwoordde niet. Probeer het zo meteen opnieuw."
+
+#: includes/lib/licenses_handlers.php:418
+msgid "License activated for this site!"
+msgstr "Licentie geactiveerd voor deze site!"
+
+#: includes/lib/licenses_handlers.php:425
+msgid "This license has expired."
+msgstr "Deze licentie is verlopen."
+
+#: includes/lib/licenses_handlers.php:426 includes/lib/licenses_handlers.php:427
+msgid "This license has been disabled."
+msgstr "Deze licentie is uitgeschakeld."
+
+#: includes/lib/licenses_handlers.php:428 includes/lib/licenses_handlers.php:429
+msgid "This license key does not exist."
+msgstr "Deze licentiesleutel bestaat niet."
+
+#: includes/lib/licenses_handlers.php:430
+msgid "This license has no activations left."
+msgstr "Deze licentie heeft geen activeringen meer over."
+
+#: includes/lib/licenses_handlers.php:431 includes/lib/licenses_handlers.php:432
+msgid "This license key is for another product."
+msgstr "Deze licentiesleutel is voor een ander product."
+
+#: includes/lib/licenses_handlers.php:435
+msgid "The license could not be activated."
+msgstr "De licentie kon niet worden geactiveerd."
+
+#: includes/lib/licenses_handlers.php:466
+msgid "This key is valid, please save settings."
+msgstr "Deze sleutel is geldig, sla de instellingen op."
+
+#: includes/lib/licenses_handlers.php:470
+msgid "Save a license key first."
+msgstr "Sla eerst een licentiesleutel op."
+
+#: includes/lib/licenses_handlers.php:498
+msgid "License deactivated for this site."
+msgstr "Licentie gedeactiveerd voor deze site."
+
+#: includes/lib/licenses_handlers.php:498
+msgid "The license could not be deactivated."
+msgstr "De licentie kon niet worden gedeactiveerd."
+
+#: includes/lib/licenses_handlers.php:501
+msgid "The license is valid and active for this site."
+msgstr "De licentie is geldig en actief op deze site."
+
+#: includes/lib/licenses_handlers.php:504
+msgid "The license is valid but this site is not activated with it."
+msgstr "De licentie is geldig, maar deze site is er niet mee geactiveerd."
+
+#: includes/lib/licenses_handlers.php:524
+msgid "Working…"
+msgstr "Bezig…"
+
+#: includes/lib/licenses_handlers.php:598
+msgid "unlimited"
+msgstr "onbeperkt"

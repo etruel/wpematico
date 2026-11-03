@@ -12873,3 +12873,67 @@ msgstr "Extensii"
 #~ msgstr ""
 #~ "Bifează „Ascunde recenziile din setări” ca să eviți asta; va apărea doar "
 #~ "o legătură către pagina de recenzii WordPress."
+
+#: includes/lib/licenses_handlers.php:415 includes/lib/licenses_handlers.php:463 includes/lib/licenses_handlers.php:474 includes/lib/licenses_handlers.php:525
+msgid "The license server did not answer. Try again in a moment."
+msgstr "Serverul de licențe nu a răspuns. Încearcă din nou peste un moment."
+
+#: includes/lib/licenses_handlers.php:418
+msgid "License activated for this site!"
+msgstr "Licență activată pentru acest sit!"
+
+#: includes/lib/licenses_handlers.php:425
+msgid "This license has expired."
+msgstr "Această licență a expirat."
+
+#: includes/lib/licenses_handlers.php:426 includes/lib/licenses_handlers.php:427
+msgid "This license has been disabled."
+msgstr "Această licență a fost dezactivată."
+
+#: includes/lib/licenses_handlers.php:428 includes/lib/licenses_handlers.php:429
+msgid "This license key does not exist."
+msgstr "Această cheie de licență nu există."
+
+#: includes/lib/licenses_handlers.php:430
+msgid "This license has no activations left."
+msgstr "Această licență nu mai are activări disponibile."
+
+#: includes/lib/licenses_handlers.php:431 includes/lib/licenses_handlers.php:432
+msgid "This license key is for another product."
+msgstr "Această cheie de licență este pentru alt produs."
+
+#: includes/lib/licenses_handlers.php:435
+msgid "The license could not be activated."
+msgstr "Licența nu a putut fi activată."
+
+#: includes/lib/licenses_handlers.php:466
+msgid "This key is valid, please save settings."
+msgstr "Această cheie este validă, salvează setările."
+
+#: includes/lib/licenses_handlers.php:470
+msgid "Save a license key first."
+msgstr "Salvează mai întâi o cheie de licență."
+
+#: includes/lib/licenses_handlers.php:498
+msgid "License deactivated for this site."
+msgstr "Licență dezactivată pentru acest sit."
+
+#: includes/lib/licenses_handlers.php:498
+msgid "The license could not be deactivated."
+msgstr "Licența nu a putut fi dezactivată."
+
+#: includes/lib/licenses_handlers.php:501
+msgid "The license is valid and active for this site."
+msgstr "Licența este validă și activă pe acest sit."
+
+#: includes/lib/licenses_handlers.php:504
+msgid "The license is valid but this site is not activated with it."
+msgstr "Licența este validă, dar acest sit nu este activat cu ea."
+
+#: includes/lib/licenses_handlers.php:524
+msgid "Working…"
+msgstr "Se procesează…"
+
+#: includes/lib/licenses_handlers.php:598
+msgid "unlimited"
+msgstr "nelimitate"

@@ -10299,3 +10299,67 @@ msgstr "Complementos do WPeMatico"
 #: includes/plugin_functions.php:360
 msgid "Extensions"
 msgstr "Extensões"
+
+#: includes/lib/licenses_handlers.php:415 includes/lib/licenses_handlers.php:463 includes/lib/licenses_handlers.php:474 includes/lib/licenses_handlers.php:525
+msgid "The license server did not answer. Try again in a moment."
+msgstr "O servidor de licenças não respondeu. Tente novamente em instantes."
+
+#: includes/lib/licenses_handlers.php:418
+msgid "License activated for this site!"
+msgstr "Licença ativada para este site!"
+
+#: includes/lib/licenses_handlers.php:425
+msgid "This license has expired."
+msgstr "Esta licença expirou."
+
+#: includes/lib/licenses_handlers.php:426 includes/lib/licenses_handlers.php:427
+msgid "This license has been disabled."
+msgstr "Esta licença foi desativada."
+
+#: includes/lib/licenses_handlers.php:428 includes/lib/licenses_handlers.php:429
+msgid "This license key does not exist."
+msgstr "Esta chave de licença não existe."
+
+#: includes/lib/licenses_handlers.php:430
+msgid "This license has no activations left."
+msgstr "Esta licença não tem mais ativações disponíveis."
+
+#: includes/lib/licenses_handlers.php:431 includes/lib/licenses_handlers.php:432
+msgid "This license key is for another product."
+msgstr "Esta chave de licença é de outro produto."
+
+#: includes/lib/licenses_handlers.php:435
+msgid "The license could not be activated."
+msgstr "Não foi possível ativar a licença."
+
+#: includes/lib/licenses_handlers.php:466
+msgid "This key is valid, please save settings."
+msgstr "Esta chave é válida, salve as configurações."
+
+#: includes/lib/licenses_handlers.php:470
+msgid "Save a license key first."
+msgstr "Salve primeiro uma chave de licença."
+
+#: includes/lib/licenses_handlers.php:498
+msgid "License deactivated for this site."
+msgstr "Licença desativada para este site."
+
+#: includes/lib/licenses_handlers.php:498
+msgid "The license could not be deactivated."
+msgstr "Não foi possível desativar a licença."
+
+#: includes/lib/licenses_handlers.php:501
+msgid "The license is valid and active for this site."
+msgstr "A licença é válida e está ativa neste site."
+
+#: includes/lib/licenses_handlers.php:504
+msgid "The license is valid but this site is not activated with it."
+msgstr "A licença é válida, mas este site não está ativado com ela."
+
+#: includes/lib/licenses_handlers.php:524
+msgid "Working…"
+msgstr "Processando…"
+
+#: includes/lib/licenses_handlers.php:598
+msgid "unlimited"
+msgstr "ilimitadas"

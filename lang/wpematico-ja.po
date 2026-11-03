@@ -10163,3 +10163,67 @@ msgstr "WPeMatico アドオン"
 #: includes/plugin_functions.php:360
 msgid "Extensions"
 msgstr "拡張機能"
+
+#: includes/lib/licenses_handlers.php:415 includes/lib/licenses_handlers.php:463 includes/lib/licenses_handlers.php:474 includes/lib/licenses_handlers.php:525
+msgid "The license server did not answer. Try again in a moment."
+msgstr "ライセンスサーバーが応答しませんでした。しばらくしてからもう一度お試しください。"
+
+#: includes/lib/licenses_handlers.php:418
+msgid "License activated for this site!"
+msgstr "このサイトのライセンスを有効化しました！"
+
+#: includes/lib/licenses_handlers.php:425
+msgid "This license has expired."
+msgstr "このライセンスは期限切れです。"
+
+#: includes/lib/licenses_handlers.php:426 includes/lib/licenses_handlers.php:427
+msgid "This license has been disabled."
+msgstr "このライセンスは無効化されています。"
+
+#: includes/lib/licenses_handlers.php:428 includes/lib/licenses_handlers.php:429
+msgid "This license key does not exist."
+msgstr "このライセンスキーは存在しません。"
+
+#: includes/lib/licenses_handlers.php:430
+msgid "This license has no activations left."
+msgstr "このライセンスには、有効化できる残り回数がありません。"
+
+#: includes/lib/licenses_handlers.php:431 includes/lib/licenses_handlers.php:432
+msgid "This license key is for another product."
+msgstr "このライセンスキーは別の製品用です。"
+
+#: includes/lib/licenses_handlers.php:435
+msgid "The license could not be activated."
+msgstr "ライセンスを有効化できませんでした。"
+
+#: includes/lib/licenses_handlers.php:466
+msgid "This key is valid, please save settings."
+msgstr "このキーは有効です。設定を保存してください。"
+
+#: includes/lib/licenses_handlers.php:470
+msgid "Save a license key first."
+msgstr "先にライセンスキーを保存してください。"
+
+#: includes/lib/licenses_handlers.php:498
+msgid "License deactivated for this site."
+msgstr "このサイトのライセンスを無効化しました。"
+
+#: includes/lib/licenses_handlers.php:498
+msgid "The license could not be deactivated."
+msgstr "ライセンスを無効化できませんでした。"
+
+#: includes/lib/licenses_handlers.php:501
+msgid "The license is valid and active for this site."
+msgstr "ライセンスは有効で、このサイトで有効化されています。"
+
+#: includes/lib/licenses_handlers.php:504
+msgid "The license is valid but this site is not activated with it."
+msgstr "ライセンスは有効ですが、このサイトはこのライセンスで有効化されていません。"
+
+#: includes/lib/licenses_handlers.php:524
+msgid "Working…"
+msgstr "処理中…"
+
+#: includes/lib/licenses_handlers.php:598
+msgid "unlimited"
+msgstr "無制限"

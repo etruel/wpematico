@@ -1,11 +1,11 @@
 # Copyright (C) 2026 etruel Developments
-# This file is distributed under the same license as the WPeMatico plugin.
+# This file is distributed under the same license as the WPeMatico RSS Feed Fetcher plugin.
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: WPeMatico 2.9.1\n"
+"Project-Id-Version: WPeMatico RSS Feed Fetcher 2.9.2\n"
 "Report-Msgid-Bugs-To: https://etruel.com/my-account/support/\n"
-"POT-Creation-Date: 2026-10-14 19:25+0000\n"
+"POT-Creation-Date: 2026-11-03 10:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Etruel Developments <translations@etruel.com>\n"
@@ -619,7 +619,7 @@ msgstr ""
 msgid "Please refresh your browser and try again."
 msgstr ""
 
-#: includes/campaign_edit.php:199 includes/campaigns_list.php:444 includes/campaigns_list.php:486 includes/campaigns_list.php:521 includes/campaigns_list.php:556 includes/campaigns_list.php:597 includes/debug_page.php:1096 includes/debug_page.php:3712 includes/wpematico_functions.php:2987 includes/wpematico_functions.php:3012 includes/wpematico_functions.php:3208 includes/wpematico_functions.php:3387 includes/xml-importer.php:361 includes/settings/page.php:1277
+#: includes/campaign_edit.php:199 includes/campaigns_list.php:444 includes/campaigns_list.php:486 includes/campaigns_list.php:521 includes/campaigns_list.php:556 includes/campaigns_list.php:597 includes/debug_page.php:1096 includes/debug_page.php:3712 includes/wpematico_functions.php:3024 includes/wpematico_functions.php:3049 includes/wpematico_functions.php:3245 includes/wpematico_functions.php:3424 includes/xml-importer.php:361 includes/settings/page.php:1317 includes/lib/licenses_handlers.php:446
 msgid "You are not allowed to do this."
 msgstr ""
 
@@ -2639,7 +2639,7 @@ msgstr ""
 msgid "Stop the run and release the campaign"
 msgstr ""
 
-#: includes/campaigns_list.php:953 includes/tools_page.php:514 includes/lib/licenses_handlers.php:355
+#: includes/campaigns_list.php:953 includes/tools_page.php:514 includes/lib/licenses_handlers.php:576
 msgid "Inactive"
 msgstr ""
 
@@ -3102,7 +3102,7 @@ msgstr ""
 msgid "Checking the connection to etruel.com…"
 msgstr ""
 
-#: includes/debug_page.php:113 includes/wpematico_functions.php:2323 includes/wpematico_functions.php:2351
+#: includes/debug_page.php:113 includes/wpematico_functions.php:2360 includes/wpematico_functions.php:2388
 msgid "The feed %s has been parsed successfully."
 msgstr ""
 
@@ -3802,7 +3802,7 @@ msgstr ""
 msgid "Get Feed"
 msgstr ""
 
-#: includes/debug_page.php:3712 includes/wpematico_functions.php:2987 includes/wpematico_functions.php:3012 includes/wpematico_functions.php:3208 includes/wpematico_functions.php:3387 includes/xml-importer.php:361 includes/settings/page.php:1277 includes/module/manager.php:265
+#: includes/debug_page.php:3712 includes/wpematico_functions.php:3024 includes/wpematico_functions.php:3049 includes/wpematico_functions.php:3245 includes/wpematico_functions.php:3424 includes/xml-importer.php:361 includes/settings/page.php:1317 includes/module/manager.php:265
 msgid "Permission denied"
 msgstr ""
 
@@ -3830,11 +3830,11 @@ msgstr ""
 msgid "Copied to the clipboard."
 msgstr ""
 
-#: includes/debug_page.php:607 includes/tools_page.php:702 includes/xml-importer.php:370 includes/settings/page.php:124 includes/settings/page.php:1131
+#: includes/debug_page.php:607 includes/tools_page.php:702 includes/xml-importer.php:370 includes/settings/page.php:124 includes/settings/page.php:1171 includes/lib/licenses_handlers.php:455
 msgid "Invalid request."
 msgstr ""
 
-#: includes/debug_page.php:607 includes/tools_page.php:702 includes/wpematico_functions.php:3378 includes/xml-importer.php:370 includes/settings/page.php:124 includes/settings/page.php:1131
+#: includes/debug_page.php:607 includes/tools_page.php:702 includes/wpematico_functions.php:3415 includes/xml-importer.php:370 includes/settings/page.php:124 includes/settings/page.php:1171
 msgid "Invalid request"
 msgstr ""
 
@@ -4128,83 +4128,151 @@ msgstr ""
 msgid "You do not have permission to install plugin updates"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:281 includes/lib/licenses_handlers.php:453
+#: includes/lib/licenses_handlers.php:407
+msgid "License keys saved."
+msgstr ""
+
+#: includes/lib/licenses_handlers.php:415 includes/lib/licenses_handlers.php:463 includes/lib/licenses_handlers.php:474 includes/lib/licenses_handlers.php:525
+msgid "The license server did not answer. Try again in a moment."
+msgstr ""
+
+#: includes/lib/licenses_handlers.php:418
+msgid "License activated for this site!"
+msgstr ""
+
+#: includes/lib/licenses_handlers.php:425
+msgid "This license has expired."
+msgstr ""
+
+#: includes/lib/licenses_handlers.php:426 includes/lib/licenses_handlers.php:427
+msgid "This license has been disabled."
+msgstr ""
+
+#: includes/lib/licenses_handlers.php:428 includes/lib/licenses_handlers.php:429
+msgid "This license key does not exist."
+msgstr ""
+
+#: includes/lib/licenses_handlers.php:430
+msgid "This license has no activations left."
+msgstr ""
+
+#: includes/lib/licenses_handlers.php:431 includes/lib/licenses_handlers.php:432
+msgid "This license key is for another product."
+msgstr ""
+
+#: includes/lib/licenses_handlers.php:435
+msgid "The license could not be activated."
+msgstr ""
+
+#: includes/lib/licenses_handlers.php:466
+msgid "This key is valid, please save settings."
+msgstr ""
+
+#: includes/lib/licenses_handlers.php:470
+msgid "Save a license key first."
+msgstr ""
+
+#: includes/lib/licenses_handlers.php:498
+msgid "License deactivated for this site."
+msgstr ""
+
+#: includes/lib/licenses_handlers.php:498
+msgid "The license could not be deactivated."
+msgstr ""
+
+#: includes/lib/licenses_handlers.php:501
+msgid "The license is valid and active for this site."
+msgstr ""
+
+#: includes/lib/licenses_handlers.php:504
+msgid "The license is valid but this site is not activated with it."
+msgstr ""
+
+#: includes/lib/licenses_handlers.php:523 includes/lib/licenses_handlers.php:581
 msgid "Check License"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:348
+#: includes/lib/licenses_handlers.php:524
+msgid "Working…"
+msgstr ""
+
+#: includes/lib/licenses_handlers.php:571
 msgid "Valid"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:349
+#: includes/lib/licenses_handlers.php:572
 msgid "Deactivate License"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:351
-msgid "Invalid"
-msgstr ""
-
-#: includes/lib/licenses_handlers.php:353
+#: includes/lib/licenses_handlers.php:574
 msgid "Expired"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:356
+#: includes/lib/licenses_handlers.php:577
 msgid "Activate License"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:363
-msgid " License"
+#: includes/lib/licenses_handlers.php:579
+msgid "Invalid"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:366
-msgid "License Key"
-msgstr ""
-
-#: includes/lib/licenses_handlers.php:368
-msgid "Enter your license key"
-msgstr ""
-
-#: includes/lib/licenses_handlers.php:380
-msgid "Lifetime"
-msgstr ""
-
-#: includes/lib/licenses_handlers.php:393
+#: includes/lib/licenses_handlers.php:592
 msgid "No activations left. Click here to manage the sites you've activated licenses on."
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:400
+#: includes/lib/licenses_handlers.php:595
 msgid "Renew your license to continue receiving updates and support."
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:403
+#: includes/lib/licenses_handlers.php:597
 msgid "Activations"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:403
+#: includes/lib/licenses_handlers.php:598
+msgid "unlimited"
+msgstr ""
+
+#: includes/lib/licenses_handlers.php:598
 msgid "left"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:404
+#: includes/lib/licenses_handlers.php:599
 msgid "Expires on"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:406
+#: includes/lib/licenses_handlers.php:599
+msgid "Lifetime"
+msgstr ""
+
+#: includes/lib/licenses_handlers.php:601
 msgid "Registered to"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:429
+#: includes/lib/licenses_handlers.php:603
 msgid "Manage Sites"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:431
+#: includes/lib/licenses_handlers.php:605
 msgid "View Upgrades"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:433
+#: includes/lib/licenses_handlers.php:606
 msgid "Extend"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:443 includes/lib/licenses_handlers.php:451
+#: includes/lib/licenses_handlers.php:630
+msgid " License"
+msgstr ""
+
+#: includes/lib/licenses_handlers.php:633
+msgid "License Key"
+msgstr ""
+
+#: includes/lib/licenses_handlers.php:635
+msgid "Enter your license key"
+msgstr ""
+
+#: includes/lib/licenses_handlers.php:638
 msgid "Activated for updates"
 msgstr ""
 
@@ -6723,56 +6791,52 @@ msgstr ""
 msgid "Shows a short tour the first time you open each WPeMatico screen. Only for your user."
 msgstr ""
 
-#: includes/settings/page.php:1046
+#: includes/settings/page.php:1091
 msgid "Highlights of the new release"
 msgstr ""
 
-#: includes/settings/page.php:1047 includes/lib/licenses_handlers.php:405
+#: includes/settings/page.php:1092 includes/lib/licenses_handlers.php:600
 msgid "Version"
 msgstr ""
 
-#: includes/settings/page.php:1059
+#: includes/settings/page.php:1099
 msgid "Read more on wpematico.com"
 msgstr ""
 
-#: includes/settings/page.php:1061
+#: includes/settings/page.php:1101
 msgid "Your opinion about WPeMatico is very important to us."
 msgstr ""
 
-#: includes/settings/page.php:1062
+#: includes/settings/page.php:1102
 msgid "By rating WPeMatico RSS Feed Fetcher, you help the plugin creators to improve their work and help other users to find the software they need. You can write your review on WordPress forum. Use the language of your choice, we appreciate it!"
 msgstr ""
 
-#: includes/settings/page.php:1063
+#: includes/settings/page.php:1103
 msgid "Rate us on WordPress"
 msgstr ""
 
-#: includes/settings/page.php:1065
+#: includes/settings/page.php:1105
 msgid "YES!"
 msgstr ""
 
-#: includes/settings/page.php:1086
+#: includes/settings/page.php:1126
 msgid "General Settings"
 msgstr ""
 
-#: includes/settings/page.php:1187 includes/settings/page.php:1213
+#: includes/settings/page.php:1227 includes/settings/page.php:1253
 msgid "Save settings"
 msgstr ""
 
-#: includes/settings/page.php:1313
-msgid "Settings saved."
-msgstr ""
-
-#: includes/settings/page.php:133 includes/lib/licenses_handlers.php:319
+#: includes/settings/page.php:133 includes/lib/licenses_handlers.php:620
 msgid "This is where you would enter the license keys for one of our premium plugins, should you activate one."
 msgstr ""
 
-#: includes/settings/page.php:1336
-msgid "License keys saved."
+#: includes/settings/page.php:134 includes/lib/licenses_handlers.php:621
+msgid "See some of the WPeMatico Add-ons in the"
 msgstr ""
 
-#: includes/settings/page.php:134 includes/lib/licenses_handlers.php:320
-msgid "See some of the WPeMatico Add-ons in the"
+#: includes/settings/page.php:1353
+msgid "Settings saved."
 msgstr ""
 
 #: includes/settings/page.php:164 includes/settings/page.php:289 includes/settings/page.php:353 includes/settings/page.php:418 includes/settings/page.php:460 includes/settings/page.php:554 includes/settings/page.php:683 includes/settings/page.php:759 includes/settings/page.php:852 includes/settings/page.php:898
@@ -7548,180 +7612,180 @@ msgstr ""
 msgid "Category Added in a WPeMatico Campaign"
 msgstr ""
 
-#: includes/wpematico_functions.php:1626
+#: includes/wpematico_functions.php:1628
 msgid "Found duplicated hash '%s'"
 msgstr ""
 
-#: includes/wpematico_functions.php:1632
+#: includes/wpematico_functions.php:1634
 msgid "Found duplicated hash of item '%s'"
 msgstr ""
 
-#: includes/wpematico_functions.php:1639
+#: includes/wpematico_functions.php:1641
 msgid "Found duplicated title '%s'"
 msgstr ""
 
-#: includes/wpematico_functions.php:1701
+#: includes/wpematico_functions.php:1703
 msgid "The feed URL is empty."
 msgstr ""
 
-#: includes/wpematico_functions.php:1714
+#: includes/wpematico_functions.php:1716
 msgid "%s is not a valid feed address. A feed must be an http:// or https:// URL."
 msgstr ""
 
-#: includes/wpematico_functions.php:1754
+#: includes/wpematico_functions.php:1756
 msgid "%1$s points to %2$s, an address on this server's own network. If that is intended, enable \"Allow feeds on private and local addresses\" in WPeMatico > Tools > Danger Zone."
 msgstr ""
 
-#: includes/wpematico_functions.php:1780
+#: includes/wpematico_functions.php:1782
 msgid "%s looks like a file on this server, not a feed address. A feed must be an http:// or https:// URL."
 msgstr ""
 
-#: includes/wpematico_functions.php:2045 includes/lib/class-wpematico-simplepie-file.php:70
+#: includes/wpematico_functions.php:2082 includes/lib/class-wpematico-simplepie-file.php:70
 msgid "Feed not fetched: %s"
 msgstr ""
 
-#: includes/wpematico_functions.php:2182
+#: includes/wpematico_functions.php:2219
 msgid "Multipage feed: page %1$d of %2$s returned no new items, stopping pagination. The source may not support the pagination parameter."
 msgstr ""
 
-#: includes/wpematico_functions.php:2211
+#: includes/wpematico_functions.php:2248
 msgid "Multipage feed: discarded %d repeated items found across pages."
 msgstr ""
 
 #. translators: %s The feed URL the pasted address resolves to.
-#: includes/wpematico_functions.php:2306
+#: includes/wpematico_functions.php:2343
 msgid "The address resolves to the feed %s, which is the one this campaign fetches."
 msgstr ""
 
-#: includes/wpematico_functions.php:2318
+#: includes/wpematico_functions.php:2355
 msgid "A feed that answers only to a browser can still be read with the Force Feed or Change User Agent features of "
 msgstr ""
 
-#: includes/wpematico_functions.php:2325
+#: includes/wpematico_functions.php:2362
 msgid "Feed Title:"
 msgstr ""
 
-#: includes/wpematico_functions.php:2326
+#: includes/wpematico_functions.php:2363
 msgid "Generator:"
 msgstr ""
 
-#: includes/wpematico_functions.php:2327
+#: includes/wpematico_functions.php:2364
 msgid "Character encoding:"
 msgstr ""
 
-#: includes/wpematico_functions.php:2330
+#: includes/wpematico_functions.php:2367
 msgid "Last Item Title:"
 msgstr ""
 
-#: includes/wpematico_functions.php:2337
+#: includes/wpematico_functions.php:2374
 msgid "Description:"
 msgstr ""
 
-#: includes/wpematico_functions.php:2344 includes/wpematico_functions.php:2354
+#: includes/wpematico_functions.php:2381 includes/wpematico_functions.php:2391
 msgid "The feed %1$s cannot be parsed. SimplePie said: %2$s"
 msgstr ""
 
-#: includes/wpematico_functions.php:2361
+#: includes/wpematico_functions.php:2398
 msgid "Undetected"
 msgstr ""
 
-#: includes/wpematico_functions.php:2786
+#: includes/wpematico_functions.php:2823
 msgid "- %1$s %2$s is not compatible with WPeMatico %3$s, so its features have been turned off to keep your campaigns running. Update it to %4$s or higher to enable them again."
 msgstr ""
 
-#: includes/wpematico_functions.php:2792
+#: includes/wpematico_functions.php:2829
 msgid "Go to update Now"
 msgstr ""
 
-#: includes/wpematico_functions.php:2854
+#: includes/wpematico_functions.php:2891
 msgid "Error with wp_remote_request:"
 msgstr ""
 
-#: includes/wpematico_functions.php:2857
+#: includes/wpematico_functions.php:2894
 msgid "Error with wp_remote_get:"
 msgstr ""
 
-#: includes/wpematico_functions.php:3005
+#: includes/wpematico_functions.php:3042
 msgid "Exporting failed"
 msgstr ""
 
-#: includes/wpematico_functions.php:3023
+#: includes/wpematico_functions.php:3060
 msgid "Can't upload! Just .txt files allowed!"
 msgstr ""
 
-#: includes/wpematico_functions.php:3034
+#: includes/wpematico_functions.php:3071
 msgid "Can't import! The file is not a valid WPeMatico settings file."
 msgstr ""
 
-#: includes/wpematico_functions.php:3059
+#: includes/wpematico_functions.php:3096
 msgid "Can't import! The file has no settings belonging to WPeMatico or its active addons."
 msgstr ""
 
-#: includes/wpematico_functions.php:3065
+#: includes/wpematico_functions.php:3102
 msgid "Settings Imported."
 msgstr ""
 
-#: includes/wpematico_functions.php:3306
+#: includes/wpematico_functions.php:3343
 msgid "Imported posts will be saved as pending review, because your user cannot publish posts."
 msgstr ""
 
-#: includes/wpematico_functions.php:3317
+#: includes/wpematico_functions.php:3354
 msgid "Imported posts will be attributed to you, because your user cannot assign posts to other users."
 msgstr ""
 
-#: includes/wpematico_functions.php:3330
+#: includes/wpematico_functions.php:3367
 msgid "Imported content will be filtered the same way WordPress filters your own posts, because your user cannot post unfiltered HTML. Some embeds may not be kept."
 msgstr ""
 
-#: includes/wpematico_functions.php:3378
+#: includes/wpematico_functions.php:3415
 msgid "The campaign is invalid."
 msgstr ""
 
-#: includes/wpematico_functions.php:3383
+#: includes/wpematico_functions.php:3420
 msgid "This link is no longer valid. Please reload the campaign and try again."
 msgstr ""
 
-#: includes/wpematico_functions.php:3383 includes/lib/welcome.php:802
+#: includes/wpematico_functions.php:3420 includes/lib/welcome.php:802
 msgid "Security check"
 msgstr ""
 
-#: includes/wpematico_functions.php:3465
+#: includes/wpematico_functions.php:3502
 msgid "Not detected"
 msgstr ""
 
-#: includes/wpematico_functions.php:3505
+#: includes/wpematico_functions.php:3542
 msgid "5 Stars Ratings on WordPress"
 msgstr ""
 
-#: includes/wpematico_functions.php:3578
+#: includes/wpematico_functions.php:3615
 msgid "Trying to set %1$s = %2$s: '%3$s' - Old value: %4$s."
 msgstr ""
 
-#: includes/wpematico_functions.php:3585 includes/wpematico_functions.php:3593
+#: includes/wpematico_functions.php:3622 includes/wpematico_functions.php:3630
 msgid "Failed"
 msgstr ""
 
-#: includes/wpematico_functions.php:3593
+#: includes/wpematico_functions.php:3630
 msgid "Success"
 msgstr ""
 
-#: includes/wpematico_functions.php:3639
+#: includes/wpematico_functions.php:3700
 msgid "[WARNING]"
 msgstr ""
 
-#: includes/wpematico_functions.php:3644
+#: includes/wpematico_functions.php:3705
 msgid "[ERROR]"
 msgstr ""
 
-#: includes/wpematico_functions.php:3648
+#: includes/wpematico_functions.php:3709
 msgid "[DEPRECATED]"
 msgstr ""
 
-#: includes/wpematico_functions.php:3654
+#: includes/wpematico_functions.php:3715
 msgid "[STRICT NOTICE]"
 msgstr ""
 
-#: includes/wpematico_functions.php:3657
+#: includes/wpematico_functions.php:3718
 msgid "[RECOVERABLE ERROR]"
 msgstr ""
 
@@ -7816,7 +7880,7 @@ msgstr ""
 msgid "PHP 7.0 or higher needed!"
 msgstr ""
 
-#: wpematico_class.php:162 includes/wpematico_functions.php:3155
+#: wpematico_class.php:162 includes/wpematico_functions.php:3192
 msgid "Empty Trash"
 msgstr ""
 
@@ -7936,7 +8000,7 @@ msgstr ""
 msgid "Dashboard"
 msgstr ""
 
-#: wpematico_class.php:370 wpematico_class.php:371 includes/dashboard-widgets.php:554 includes/plugin_functions.php:339 includes/settings/functions.php:43 includes/settings/page.php:1090 includes/settings/page.php:1163 includes/module/dashboard.php:32 includes/module/manager.php:187
+#: wpematico_class.php:370 wpematico_class.php:371 includes/dashboard-widgets.php:554 includes/plugin_functions.php:339 includes/settings/functions.php:43 includes/settings/page.php:1130 includes/settings/page.php:1203 includes/module/dashboard.php:32 includes/module/manager.php:187
 msgid "Settings"
 msgstr ""
 
