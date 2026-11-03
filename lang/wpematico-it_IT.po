@@ -10462,3 +10462,7 @@ msgstr "Operazione in corso…"
 #: includes/lib/licenses_handlers.php:598
 msgid "unlimited"
 msgstr "illimitate"
+
+#: includes/lib/licenses_handlers.php:463
+msgid "Please wait a few seconds before asking the store again."
+msgstr "Attendi qualche secondo prima di interrogare di nuovo lo store."

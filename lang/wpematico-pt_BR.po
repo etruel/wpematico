@@ -10363,3 +10363,7 @@ msgstr "Processando…"
 #: includes/lib/licenses_handlers.php:598
 msgid "unlimited"
 msgstr "ilimitadas"
+
+#: includes/lib/licenses_handlers.php:463
+msgid "Please wait a few seconds before asking the store again."
+msgstr "Aguarde alguns segundos antes de consultar a loja novamente."

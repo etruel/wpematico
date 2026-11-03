@@ -238,7 +238,9 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 * **Improved:** Saving a license key activates this site for updates and support, and replacing a key releases the activation of the old one. Check License, Activate License and Deactivate License show what the store answered and the new state of the license.
 * **Improved:** The Licenses screen asks the store about your licenses once every twelve hours, or when you press a button, so the screen opens at once. Licenses with unlimited activations show their account data.
 * **Improved:** The Renew and Extend links of the Licenses screen open the checkout of the add-on's own product, and a lifetime license offers no renewal.
-* **Improved:** Updates of the add-ons are also found by WP-Cron and WP-CLI, and the Licenses screen is for administrators only.
+* **Improved:** A valid license shows the state "Activated for updates" and Deactivate License; Check License appears for a license that is not valid, and the store is asked at most once every ten seconds for each add-on.
+* **Improved:** The Add-Ons screen reminds you that WPeMatico does not update automatically only while a WPeMatico update is waiting, which is when the add-ons wait for it.
+* **Improved:** WordPress finds the updates of your add-ons also when it checks in the background, and the Licenses screen is for administrators only.
 * **Improved:** WPeMatico starts cleanly on servers that reach the plugin folder through a symbolic link.
 * **Performance:** Every tab of the Settings screen opens at once: the highlights of the latest release are kept for twelve hours instead of being requested from wpematico.com on each visit.
 

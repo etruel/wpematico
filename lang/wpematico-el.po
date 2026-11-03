@@ -13096,3 +13096,7 @@ msgstr "Σε εξέλιξη…"
 #: includes/lib/licenses_handlers.php:598
 msgid "unlimited"
 msgstr "απεριόριστες"
+
+#: includes/lib/licenses_handlers.php:463
+msgid "Please wait a few seconds before asking the store again."
+msgstr "Περιμένετε λίγα δευτερόλεπτα πριν ρωτήσετε ξανά το κατάστημα."

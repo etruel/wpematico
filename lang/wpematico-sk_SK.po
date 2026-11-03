@@ -12729,3 +12729,7 @@ msgstr "Pracuje sa…"
 #: includes/lib/licenses_handlers.php:598
 msgid "unlimited"
 msgstr "neobmedzene"
+
+#: includes/lib/licenses_handlers.php:463
+msgid "Please wait a few seconds before asking the store again."
+msgstr "Počkajte niekoľko sekúnd, než sa obchodu opýtate znova."

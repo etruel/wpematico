@@ -690,6 +690,12 @@ function wpematico_addons_auto_update_notice() {
 		return;
 	}
 
+	// An add-on waits only while the core plugin has an update pending: with the core
+	// up to date nothing is held back and there is nothing to warn about.
+	if (!class_exists('WPeMatico_Update') || '' === WPeMatico_Update::pending_core_version_on_disk()) {
+		return;
+	}
+
 	$auto_updates = (array) get_site_option('auto_update_plugins', array());
 	$core		  = plugin_basename(WPEMATICO_ROOTFILE);
 	if (empty($auto_updates) || in_array($core, $auto_updates, true)) {

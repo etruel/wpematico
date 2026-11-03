@@ -12346,3 +12346,7 @@ msgstr "جارٍ التنفيذ…"
 #: includes/lib/licenses_handlers.php:598
 msgid "unlimited"
 msgstr "غير محدودة"
+
+#: includes/lib/licenses_handlers.php:463
+msgid "Please wait a few seconds before asking the store again."
+msgstr "انتظر بضع ثوانٍ قبل أن تسأل المتجر مرة أخرى."

@@ -10320,3 +10320,7 @@ msgstr "Çalışıyor…"
 #: includes/lib/licenses_handlers.php:598
 msgid "unlimited"
 msgstr "sınırsız"
+
+#: includes/lib/licenses_handlers.php:463
+msgid "Please wait a few seconds before asking the store again."
+msgstr "Mağazaya yeniden sormadan önce lütfen birkaç saniye bekleyin."

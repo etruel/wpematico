@@ -12780,3 +12780,7 @@ msgstr "Выполняется…"
 #: includes/lib/licenses_handlers.php:598
 msgid "unlimited"
 msgstr "без ограничений"
+
+#: includes/lib/licenses_handlers.php:463
+msgid "Please wait a few seconds before asking the store again."
+msgstr "Подождите несколько секунд, прежде чем снова обращаться к магазину."

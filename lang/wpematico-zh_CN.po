@@ -11885,3 +11885,7 @@ msgstr "处理中…"
 #: includes/lib/licenses_handlers.php:598
 msgid "unlimited"
 msgstr "不限"
+
+#: includes/lib/licenses_handlers.php:463
+msgid "Please wait a few seconds before asking the store again."
+msgstr "请等待几秒钟，再重新查询商店。"

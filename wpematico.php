@@ -127,6 +127,17 @@ if (!class_exists('Main_WPeMatico')) {
 			if (!is_admin() && (wp_doing_cron() || (defined('WP_CLI') && WP_CLI))) {
 				require_once(WPEMATICO_PLUGIN_DIR . 'includes/lib/update_class.php');
 			}
+			// WP-Cron's own update check has to see the add-ons' updates, but almost every
+			// cron request is a campaign run: the licence code is loaded only when one of
+			// the events that look for updates is about to run, and not at all otherwise.
+			if (!is_admin() && wp_doing_cron()) {
+				$load_updaters = function () {
+					require_once(WPEMATICO_PLUGIN_DIR . 'includes/lib/licenses_handlers.php');
+					wpematico_licenses_handlers::extension_updater();
+				};
+				add_action('wp_update_plugins', $load_updaters, 0);
+				add_action('wp_maybe_auto_update', $load_updaters, 0);
+			}
 			require_once(WPEMATICO_PLUGIN_DIR . 'includes/cron_functions.php');
 			require_once(WPEMATICO_PLUGIN_DIR . 'includes/compatibilities.php');
 			require_once(WPEMATICO_PLUGIN_DIR . 'includes/wpematico_functions.php');

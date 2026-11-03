@@ -22,7 +22,7 @@ class wpematico_licenses_handlers {
 	const CHECKOUT_URL	= 'https://etruel.com/checkout/';
 
 	function __construct() {
-		add_action('init', array(__CLASS__, 'extension_updater'), 0 );
+		add_action('init', array(__CLASS__, 'updater_context'), 0 );
 		add_action('wpempro_licenses_forms', array(__CLASS__, 'license_page') );
 		add_action('admin_print_scripts', array(__CLASS__, 'scripts'));
 		add_action('admin_print_styles', array(__CLASS__, 'styles'));
@@ -31,13 +31,22 @@ class wpematico_licenses_handlers {
 	}
 
 	/**
-	 * Updates come from the store. It runs in the admin and in WP-Cron, whose update check
-	 * never fires admin_init.
+	 * Updates come from the store: the admin builds the updaters at once. WP-Cron, whose
+	 * update check never fires admin_init, loads this file and builds them only when one of
+	 * its update events is about to run (see wpematico.php), so a campaign run pays nothing.
 	 */
+	public static function updater_context() {
+		if (is_admin()) {
+			self::extension_updater();
+		}
+	}
+
 	public static function extension_updater() {
-		if (!is_admin() && !wp_doing_cron() && !defined('WP_CLI')) {
+		static $built = false;
+		if ($built) {
 			return;
 		}
+		$built = true;
 		$plugins_args = array();
 		$plugins_args = apply_filters('wpematico_plugins_updater_args', $plugins_args);
 
@@ -455,6 +464,15 @@ class wpematico_licenses_handlers {
 			wp_send_json_error(array('message' => __('Invalid request.', 'wpematico')), 400);
 		}
 
+		// One question to the store per add-on every ten seconds, whoever asks and however:
+		// a loop on this endpoint would otherwise become a loop on the store, and each call
+		// holds a PHP worker for as long as the store takes.
+		$gate = 'wpematico_license_wait_' . md5($plugin_name);
+		if (get_transient($gate)) {
+			wp_send_json_error(array('message' => __('Please wait a few seconds before asking the store again.', 'wpematico')));
+		}
+		set_transient($gate, 1, 10);
+
 		$stored = self::get_key($plugin_name);
 		if ('check_license' === $do && '' !== $typed && $typed !== $stored) {
 			$args = self::build_check_license_args($typed, $plugins_args[$plugin_name]);
@@ -565,20 +583,28 @@ class wpematico_licenses_handlers {
 		}
 		$status = self::get_license_status($plugin_name);
 
+		// A valid license has nothing to check: the screen asks the store again by itself
+		// every twelve hours. Check License is for a license that is not valid, once the
+		// reason (a renewal, a corrected key) has been dealt with.
 		$button = '<input class="button-secondary wpe-license-act" data-do="%s" type="button" value="%s" />';
-		$html	= '<p>';
+		$html	= '';
 		if ('valid' === $status) {
-			$html .= '<span class="validcheck"></span><strong>' . esc_html__('Valid', 'wpematico') . '</strong> '
+			$html .= '<div class="wpe-status-subtitle">' . esc_html__('Activated for updates', 'wpematico') . '</div><p>'
+				. '<span class="validcheck"></span><strong>' . esc_html__('Valid', 'wpematico') . '</strong> '
 				. sprintf($button, 'deactivate_license', esc_attr__('Deactivate License', 'wpematico'));
-		} elseif ('expired' === $status) {
-			$html .= '<span class="renewcheck"></span><strong>' . esc_html__('Expired', 'wpematico') . '</strong>';
 		} elseif (in_array($status, array('inactive', 'deactivated', 'site_inactive'), true)) {
-			$html .= '<span class="warningcheck"></span><strong>' . esc_html__('Inactive', 'wpematico') . '</strong> '
+			$html .= '<p><span class="warningcheck"></span><strong>' . esc_html__('Inactive', 'wpematico') . '</strong> '
 				. sprintf($button, 'activate_license', esc_attr__('Activate License', 'wpematico'));
-		} elseif ($status) {
-			$html .= '<span class="renewcheck"></span><strong>' . esc_html__('Invalid', 'wpematico') . '</strong>';
+		} else {
+			$html .= '<p>';
+			if ('expired' === $status) {
+				$html .= '<span class="renewcheck"></span><strong>' . esc_html__('Expired', 'wpematico') . '</strong> ';
+			} elseif ($status) {
+				$html .= '<span class="renewcheck"></span><strong>' . esc_html__('Invalid', 'wpematico') . '</strong> ';
+			}
+			$html .= sprintf($button, 'check_license', esc_attr__('Check License', 'wpematico'));
 		}
-		$html .= ' ' . sprintf($button, 'check_license', esc_attr__('Check License', 'wpematico')) . '</p>';
+		$html .= '</p>';
 
 		if (!empty($info['payment_id'])) {
 			$expires	 = isset($info['expires']) ? $info['expires'] : '';
@@ -635,7 +661,6 @@ class wpematico_licenses_handlers {
 				<span class="wpe-lk-hint">' . esc_html__('Enter your license key', 'wpematico') . '</span>
 			</div>
 			<div class="wpe-status-section"' . ($license ? '' : ' style="display:none;"') . '>
-				<div class="wpe-status-subtitle">' . esc_html__('Activated for updates', 'wpematico') . '</div>
 				<div class="wpe-status-row">' . self::render_status($plugin_name, $args) . '</div>
 				<div class="wpe-license-message" role="status"></div>
 			</div>

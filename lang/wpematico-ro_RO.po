@@ -12937,3 +12937,7 @@ msgstr "Se procesează…"
 #: includes/lib/licenses_handlers.php:598
 msgid "unlimited"
 msgstr "nelimitate"
+
+#: includes/lib/licenses_handlers.php:463
+msgid "Please wait a few seconds before asking the store again."
+msgstr "Așteaptă câteva secunde înainte de a interoga din nou magazinul."

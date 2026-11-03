@@ -12902,3 +12902,7 @@ msgstr "Bezig…"
 #: includes/lib/licenses_handlers.php:598
 msgid "unlimited"
 msgstr "onbeperkt"
+
+#: includes/lib/licenses_handlers.php:463
+msgid "Please wait a few seconds before asking the store again."
+msgstr "Wacht een paar seconden voordat je de winkel opnieuw raadpleegt."

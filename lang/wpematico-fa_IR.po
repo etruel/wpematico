@@ -12531,3 +12531,7 @@ msgstr "در حال انجام…"
 #: includes/lib/licenses_handlers.php:598
 msgid "unlimited"
 msgstr "نامحدود"
+
+#: includes/lib/licenses_handlers.php:463
+msgid "Please wait a few seconds before asking the store again."
+msgstr "لطفاً چند ثانیه صبر کنید و سپس دوباره از فروشگاه بپرسید."

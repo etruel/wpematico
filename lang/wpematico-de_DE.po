@@ -13010,3 +13010,7 @@ msgstr "Wird ausgeführt…"
 #: includes/lib/licenses_handlers.php:598
 msgid "unlimited"
 msgstr "unbegrenzt"
+
+#: includes/lib/licenses_handlers.php:463
+msgid "Please wait a few seconds before asking the store again."
+msgstr "Warte ein paar Sekunden, bevor du den Shop erneut abfragst."

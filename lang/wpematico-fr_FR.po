@@ -13091,3 +13091,7 @@ msgstr "Traitement en cours…"
 #: includes/lib/licenses_handlers.php:598
 msgid "unlimited"
 msgstr "illimitées"
+
+#: includes/lib/licenses_handlers.php:463
+msgid "Please wait a few seconds before asking the store again."
+msgstr "Patientez quelques secondes avant d'interroger de nouveau la boutique."

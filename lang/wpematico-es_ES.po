@@ -12927,3 +12927,7 @@ msgstr "Trabajando…"
 #: includes/lib/licenses_handlers.php:598
 msgid "unlimited"
 msgstr "ilimitadas"
+
+#: includes/lib/licenses_handlers.php:463
+msgid "Please wait a few seconds before asking the store again."
+msgstr "Espera unos segundos antes de volver a consultar la tienda."

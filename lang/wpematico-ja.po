@@ -10227,3 +10227,7 @@ msgstr "処理中…"
 #: includes/lib/licenses_handlers.php:598
 msgid "unlimited"
 msgstr "無制限"
+
+#: includes/lib/licenses_handlers.php:463
+msgid "Please wait a few seconds before asking the store again."
+msgstr "ストアに再度問い合わせる前に、数秒お待ちください。"

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPeMatico RSS Feed Fetcher 2.9.2\n"
 "Report-Msgid-Bugs-To: https://etruel.com/my-account/support/\n"
-"POT-Creation-Date: 2026-11-03 10:50+0000\n"
+"POT-Creation-Date: 2026-11-03 14:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Etruel Developments <translations@etruel.com>\n"
@@ -231,23 +231,23 @@ msgstr ""
 msgid "On Dashboard &rsaquo; Updates an add-on that is waiting cannot be selected, so a bulk update does not attempt what it cannot install."
 msgstr ""
 
-#: includes/addons_page.php:1016
+#: includes/addons_page.php:1022
 msgid "Go to %s WebPage"
 msgstr ""
 
-#: includes/addons_page.php:1018
+#: includes/addons_page.php:1024
 msgid "Open %s WebPage in new window."
 msgstr ""
 
-#: includes/addons_page.php:1019
+#: includes/addons_page.php:1025
 msgid "Details"
 msgstr ""
 
-#: includes/addons_page.php:1458
+#: includes/addons_page.php:1464
 msgid "WPeMatico Addons "
 msgstr ""
 
-#: includes/addons_page.php:1516 includes/addons_page.php:1528
+#: includes/addons_page.php:1522 includes/addons_page.php:1534
 msgid "Inactive &mdash; Now part of WPeMatico"
 msgstr ""
 
@@ -311,55 +311,55 @@ msgstr ""
 msgid "Go to purchase on the etruel's store"
 msgstr ""
 
-#: includes/addons_page.php:742
+#: includes/addons_page.php:748
 msgid "Activate %s on this site"
 msgstr ""
 
-#: includes/addons_page.php:744 includes/module/actions.php:371 includes/module/actions.php:445 includes/module/dashboard.php:64
+#: includes/addons_page.php:750 includes/module/actions.php:371 includes/module/actions.php:445 includes/module/dashboard.php:64
 msgid "Activate"
 msgstr ""
 
-#: includes/addons_page.php:756
+#: includes/addons_page.php:762
 msgid "See details and prices on etruel's store"
 msgstr ""
 
-#: includes/addons_page.php:762 includes/module/actions.php:314 includes/module/dashboard.php:55 includes/module/manager.php:130 includes/module/manager.php:151 includes/module/manager.php:156
+#: includes/addons_page.php:768 includes/module/actions.php:314 includes/module/dashboard.php:55 includes/module/manager.php:130 includes/module/manager.php:151 includes/module/manager.php:156
 msgid "Installed"
 msgstr ""
 
-#: includes/addons_page.php:780
+#: includes/addons_page.php:786
 msgid "Add license"
 msgstr ""
 
-#: includes/addons_page.php:781
+#: includes/addons_page.php:787
 msgid "Renew license"
 msgstr ""
 
-#: includes/addons_page.php:782 includes/addons_page.php:790
+#: includes/addons_page.php:788 includes/addons_page.php:796
 msgid "Activate license"
 msgstr ""
 
-#: includes/addons_page.php:783
+#: includes/addons_page.php:789
 msgid "Check license"
 msgstr ""
 
-#: includes/addons_page.php:788
+#: includes/addons_page.php:794
 msgid "Activate this addon's license to enable automatic updates"
 msgstr ""
 
-#: includes/addons_page.php:902
+#: includes/addons_page.php:908
 msgid "The plugin could not be activated because it triggered a fatal error."
 msgstr ""
 
-#: includes/addons_page.php:916
+#: includes/addons_page.php:922
 msgid "Deletion failed:"
 msgstr ""
 
-#: includes/addons_page.php:922
+#: includes/addons_page.php:928
 msgid "The selected add-on has been deleted."
 msgstr ""
 
-#: includes/addons_page.php:923
+#: includes/addons_page.php:929
 msgid "The selected add-ons have been deleted."
 msgstr ""
 
@@ -2639,7 +2639,7 @@ msgstr ""
 msgid "Stop the run and release the campaign"
 msgstr ""
 
-#: includes/campaigns_list.php:953 includes/tools_page.php:514 includes/lib/licenses_handlers.php:576
+#: includes/campaigns_list.php:953 includes/tools_page.php:514 includes/lib/licenses_handlers.php:587
 msgid "Inactive"
 msgstr ""
 
@@ -4132,7 +4132,7 @@ msgstr ""
 msgid "License keys saved."
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:415 includes/lib/licenses_handlers.php:463 includes/lib/licenses_handlers.php:474 includes/lib/licenses_handlers.php:525
+#: includes/lib/licenses_handlers.php:415 includes/lib/licenses_handlers.php:472 includes/lib/licenses_handlers.php:483 includes/lib/licenses_handlers.php:534
 msgid "The license server did not answer. Try again in a moment."
 msgstr ""
 
@@ -4164,116 +4164,120 @@ msgstr ""
 msgid "The license could not be activated."
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:466
+#: includes/lib/licenses_handlers.php:463
+msgid "Please wait a few seconds before asking the store again."
+msgstr ""
+
+#: includes/lib/licenses_handlers.php:475
 msgid "This key is valid, please save settings."
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:470
+#: includes/lib/licenses_handlers.php:479
 msgid "Save a license key first."
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:498
+#: includes/lib/licenses_handlers.php:507
 msgid "License deactivated for this site."
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:498
+#: includes/lib/licenses_handlers.php:507
 msgid "The license could not be deactivated."
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:501
+#: includes/lib/licenses_handlers.php:510
 msgid "The license is valid and active for this site."
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:504
+#: includes/lib/licenses_handlers.php:513
 msgid "The license is valid but this site is not activated with it."
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:523 includes/lib/licenses_handlers.php:581
+#: includes/lib/licenses_handlers.php:532 includes/lib/licenses_handlers.php:596
 msgid "Check License"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:524
+#: includes/lib/licenses_handlers.php:533
 msgid "Working…"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:571
+#: includes/lib/licenses_handlers.php:583
+msgid "Activated for updates"
+msgstr ""
+
+#: includes/lib/licenses_handlers.php:584
 msgid "Valid"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:572
+#: includes/lib/licenses_handlers.php:585
 msgid "Deactivate License"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:574
-msgid "Expired"
-msgstr ""
-
-#: includes/lib/licenses_handlers.php:577
+#: includes/lib/licenses_handlers.php:588
 msgid "Activate License"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:579
+#: includes/lib/licenses_handlers.php:592
+msgid "Expired"
+msgstr ""
+
+#: includes/lib/licenses_handlers.php:594
 msgid "Invalid"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:592
+#: includes/lib/licenses_handlers.php:609
 msgid "No activations left. Click here to manage the sites you've activated licenses on."
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:595
+#: includes/lib/licenses_handlers.php:612
 msgid "Renew your license to continue receiving updates and support."
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:597
+#: includes/lib/licenses_handlers.php:614
 msgid "Activations"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:598
+#: includes/lib/licenses_handlers.php:615
 msgid "unlimited"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:598
+#: includes/lib/licenses_handlers.php:615
 msgid "left"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:599
+#: includes/lib/licenses_handlers.php:616
 msgid "Expires on"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:599
+#: includes/lib/licenses_handlers.php:616
 msgid "Lifetime"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:601
+#: includes/lib/licenses_handlers.php:618
 msgid "Registered to"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:603
+#: includes/lib/licenses_handlers.php:620
 msgid "Manage Sites"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:605
+#: includes/lib/licenses_handlers.php:622
 msgid "View Upgrades"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:606
+#: includes/lib/licenses_handlers.php:623
 msgid "Extend"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:630
+#: includes/lib/licenses_handlers.php:647
 msgid " License"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:633
+#: includes/lib/licenses_handlers.php:650
 msgid "License Key"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:635
+#: includes/lib/licenses_handlers.php:652
 msgid "Enter your license key"
-msgstr ""
-
-#: includes/lib/licenses_handlers.php:638
-msgid "Activated for updates"
 msgstr ""
 
 #: includes/lib/update_reasons.php:112
@@ -6795,7 +6799,7 @@ msgstr ""
 msgid "Highlights of the new release"
 msgstr ""
 
-#: includes/settings/page.php:1092 includes/lib/licenses_handlers.php:600
+#: includes/settings/page.php:1092 includes/lib/licenses_handlers.php:617
 msgid "Version"
 msgstr ""
 
@@ -6827,11 +6831,11 @@ msgstr ""
 msgid "Save settings"
 msgstr ""
 
-#: includes/settings/page.php:133 includes/lib/licenses_handlers.php:620
+#: includes/settings/page.php:133 includes/lib/licenses_handlers.php:637
 msgid "This is where you would enter the license keys for one of our premium plugins, should you activate one."
 msgstr ""
 
-#: includes/settings/page.php:134 includes/lib/licenses_handlers.php:621
+#: includes/settings/page.php:134 includes/lib/licenses_handlers.php:638
 msgid "See some of the WPeMatico Add-ons in the"
 msgstr ""
 
@@ -8012,7 +8016,7 @@ msgstr ""
 msgid "Add-ons"
 msgstr ""
 
-#: wpematico_class.php:400 includes/addons_page.php:1461
+#: wpematico_class.php:400 includes/addons_page.php:1467
 msgid "WPeMatico Addons"
 msgstr ""
 

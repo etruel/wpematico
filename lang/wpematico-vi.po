@@ -10171,3 +10171,7 @@ msgstr "Đang xử lý…"
 #: includes/lib/licenses_handlers.php:598
 msgid "unlimited"
 msgstr "không giới hạn"
+
+#: includes/lib/licenses_handlers.php:463
+msgid "Please wait a few seconds before asking the store again."
+msgstr "Vui lòng đợi vài giây trước khi hỏi lại cửa hàng."
