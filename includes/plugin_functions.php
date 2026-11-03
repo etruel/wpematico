@@ -600,6 +600,8 @@ function wpematico_owned_options() {
 		'wpematico_dashboard_chart',
 		'wpematico_dashboard_news',
 		'wpematico_dashboard_news_backoff',
+		'wpematico_release_notes',
+		'wpematico_release_notes_backoff',
 		'action_notice_wpematico_addons',
 		'etruel_wpematico_addons_data',
 		'_etruel_wpem_reviews_data',

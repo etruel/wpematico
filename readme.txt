@@ -240,6 +240,7 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 * **Improved:** The Renew and Extend links of the Licenses screen open the checkout of the add-on's own product, and a lifetime license offers no renewal.
 * **Improved:** Updates of the add-ons are also found by WP-Cron and WP-CLI, and the Licenses screen is for administrators only.
 * **Improved:** WPeMatico starts cleanly on servers that reach the plugin folder through a symbolic link.
+* **Performance:** Every tab of the Settings screen opens at once: the highlights of the latest release are kept for twelve hours instead of being requested from wpematico.com on each visit.
 
 = 2.9.1 – Oct 14, 2026 =
 
