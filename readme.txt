@@ -3,7 +3,7 @@ Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS, XML, feed to post, rss aggregator, content curation
 Stable tag: 2.9.2
-Tested up to: 7.1
+Tested up to: 7.2
 Requires at least: 4.8
 Requires PHP: 7.0
 License: GPLv2 or later
@@ -230,7 +230,7 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 
 = 2.9.2 – Nov 2, 2026 =
 
-> _**Recommended security update for all users.**_
+> _**Recommended security update for all users.** Tested up to WordPress 7.2._
 
 * **Security:** Feed addresses are checked against every address their host resolves to, over IPv4 and IPv6, for a scheduled run, an external cron, a manual "Run Now", the previews and the feed tests. Thanks to Aita Avela for reporting.
 * **Security:** The categories of a campaign are saved as category IDs, and everything the campaigns list shows about a campaign is escaped on screen.
