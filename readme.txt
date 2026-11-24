@@ -235,6 +235,7 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 * **Performance:** Each new feed item finds the article its link leads to through the whole chain of redirects, in a few seconds at most, and moves on when a site does not answer. Every address on the way is checked like a feed address.
 * **Improved:** A campaign run stops at the time limit set in Settings from the moment it starts reading the feed.
 * **Improved:** Run Once in the campaigns list shows the new run time on the row of the campaign that ran.
+* **Improved:** Images whose address carries parameters after the file name (`photo.jpg?w=800`) are saved to the Media Library under their own file name.
 
 = 2.9.2 – Nov 2, 2026 =
 

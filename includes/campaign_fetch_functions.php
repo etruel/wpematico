@@ -733,7 +733,7 @@ class wpematico_campaign_fetch_functions {
 
 	public function parse_src_image($imagen_src_real) {
 		// Decode URL encoding to properly handle spaces and special characters
-		$imagen_src_real = rawurldecode($imagen_src_real);
+		$imagen_src_real = rawurldecode(wp_specialchars_decode($imagen_src_real, ENT_QUOTES));
 
 		// Replace spaces with %20 to keep URLs valid
 		$imagen_src_real = str_replace(' ', '%20', $imagen_src_real);
@@ -744,8 +744,9 @@ class wpematico_campaign_fetch_functions {
 
 	public function parse_dst_image($imagen_src_real, $current_item, $campaign, $item) {
 		$imagen_src_real = apply_filters('wpematico_img_src_before_parse', $imagen_src_real, $current_item, $campaign, $item);
-		// Decode URL to handle special characters correctly
-		$basename = rawurldecode(basename($imagen_src_real));
+		// The name comes from the path: a query string is not part of the file name.
+		$path	  = wp_parse_url($imagen_src_real, PHP_URL_PATH);
+		$basename = rawurldecode(basename(empty($path) ? $imagen_src_real : $path));
 
 		// Extract extension and filename
 		$ext = pathinfo($basename, PATHINFO_EXTENSION);
