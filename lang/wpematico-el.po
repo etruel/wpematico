@@ -13100,3 +13100,19 @@ msgstr "απεριόριστες"
 #: includes/lib/licenses_handlers.php:463
 msgid "Please wait a few seconds before asking the store again."
 msgstr "Περιμένετε λίγα δευτερόλεπτα πριν ρωτήσετε ξανά το κατάστημα."
+
+#. translators: %d: number of campaigns
+#: includes/campaigns_list.php:157
+msgid "%d active campaign has been waiting for its scheduled run for more than two days."
+msgid_plural "%d active campaigns have been waiting for their scheduled run for more than two days."
+msgstr[0] "%d ενεργή καμπάνια περιμένει την προγραμματισμένη εκτέλεσή της για περισσότερες από δύο ημέρες."
+msgstr[1] "%d ενεργές καμπάνιες περιμένουν την προγραμματισμένη εκτέλεσή τους για περισσότερες από δύο ημέρες."
+
+#. translators: 1: the option's name, 2: the external cron address
+#: includes/campaigns_list.php:163
+msgid "%1$s is on, so campaigns run only when %2$s is called. If your server cron calls wp-cron.php instead, turn that option off."
+msgstr "Η επιλογή %1$s είναι ενεργή, οπότε οι καμπάνιες εκτελούνται μόνο όταν καλείται το %2$s. Αν το cron του διακομιστή σας καλεί αντί γι’ αυτό το wp-cron.php, απενεργοποιήστε αυτή την επιλογή."
+
+#: includes/campaigns_list.php:168
+msgid "Check that WordPress scheduled tasks (WP-Cron) run on this site: if DISABLE_WP_CRON is set, a server cron has to call wp-cron.php."
+msgstr "Ελέγξτε ότι οι προγραμματισμένες εργασίες του WordPress (WP-Cron) εκτελούνται σε αυτόν τον ιστότοπο: αν έχει οριστεί το DISABLE_WP_CRON, ένα cron του διακομιστή πρέπει να καλεί το wp-cron.php."

@@ -1,11 +1,11 @@
 # Copyright (C) 2026 etruel Developments
-# This file is distributed under the same license as the WPeMatico RSS Feed Fetcher plugin.
+# This file is distributed under the same license as the WPeMatico plugin.
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: WPeMatico RSS Feed Fetcher 2.9.2\n"
+"Project-Id-Version: WPeMatico 2.9.3\n"
 "Report-Msgid-Bugs-To: https://etruel.com/my-account/support/\n"
-"POT-Creation-Date: 2026-11-03 14:19+0000\n"
+"POT-Creation-Date: 2026-11-24 15:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Etruel Developments <translations@etruel.com>\n"
@@ -531,7 +531,7 @@ msgstr ""
 msgid "Type the new feed addresses."
 msgstr ""
 
-#: includes/campaign_edit.php:128 includes/campaigns_list.php:315
+#: includes/campaign_edit.php:128 includes/campaigns_list.php:366
 msgid "Running Campaign..."
 msgstr ""
 
@@ -579,7 +579,7 @@ msgstr ""
 msgid "Notes for yourself about this campaign."
 msgstr ""
 
-#: includes/campaign_edit.php:153 includes/campaigns_list.php:321
+#: includes/campaign_edit.php:153 includes/campaigns_list.php:372
 msgid "Hiding..."
 msgstr ""
 
@@ -619,7 +619,7 @@ msgstr ""
 msgid "Please refresh your browser and try again."
 msgstr ""
 
-#: includes/campaign_edit.php:199 includes/campaigns_list.php:444 includes/campaigns_list.php:486 includes/campaigns_list.php:521 includes/campaigns_list.php:556 includes/campaigns_list.php:597 includes/debug_page.php:1096 includes/debug_page.php:3712 includes/wpematico_functions.php:3024 includes/wpematico_functions.php:3049 includes/wpematico_functions.php:3245 includes/wpematico_functions.php:3424 includes/xml-importer.php:361 includes/settings/page.php:1317 includes/lib/licenses_handlers.php:446
+#: includes/campaign_edit.php:199 includes/campaigns_list.php:495 includes/campaigns_list.php:537 includes/campaigns_list.php:572 includes/campaigns_list.php:607 includes/campaigns_list.php:648 includes/debug_page.php:1096 includes/debug_page.php:3712 includes/wpematico_functions.php:3024 includes/wpematico_functions.php:3049 includes/wpematico_functions.php:3245 includes/wpematico_functions.php:3424 includes/xml-importer.php:361 includes/settings/page.php:1317 includes/lib/licenses_handlers.php:455
 msgid "You are not allowed to do this."
 msgstr ""
 
@@ -699,7 +699,7 @@ msgstr ""
 msgid "Check if this feed works"
 msgstr ""
 
-#: includes/campaign_edit_functions.php:118 includes/campaigns_list.php:931
+#: includes/campaign_edit_functions.php:118 includes/campaigns_list.php:982
 msgid "Stop and deactivate this campaign"
 msgstr ""
 
@@ -803,7 +803,7 @@ msgstr ""
 msgid "- Create new topics -"
 msgstr ""
 
-#: includes/campaign_edit_functions.php:132 includes/campaign_edit_functions.php:137 includes/campaigns_list.php:949 includes/campaigns_list.php:954
+#: includes/campaign_edit_functions.php:132 includes/campaign_edit_functions.php:137 includes/campaigns_list.php:1000 includes/campaigns_list.php:1005
 msgid "Run Once"
 msgstr ""
 
@@ -847,11 +847,11 @@ msgstr ""
 msgid "Quick add"
 msgstr ""
 
-#: includes/campaign_edit_functions.php:1440 includes/campaign_preview.php:401 includes/campaigns_list.php:1193 includes/campaigns_list.php:1396 includes/debug_page.php:2955 includes/tools_page.php:508 includes/tools_page.php:666 includes/tools_tabs.php:53 includes/migration/views/migration-box.php:422
+#: includes/campaign_edit_functions.php:1440 includes/campaign_preview.php:401 includes/campaigns_list.php:1244 includes/campaigns_list.php:1447 includes/debug_page.php:2955 includes/tools_page.php:508 includes/tools_page.php:666 includes/tools_tabs.php:53 includes/migration/views/migration-box.php:422
 msgid "Status"
 msgstr ""
 
-#: includes/campaign_edit_functions.php:1469 includes/campaigns_list.php:1179 includes/campaigns_list.php:1380 includes/migration/views/migration-box.php:421
+#: includes/campaign_edit_functions.php:1469 includes/campaigns_list.php:1230 includes/campaigns_list.php:1431 includes/migration/views/migration-box.php:421
 msgid "Post type"
 msgstr ""
 
@@ -867,7 +867,7 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#: includes/campaign_edit_functions.php:152 includes/campaigns_list.php:948 includes/campaigns_list.php:984
+#: includes/campaign_edit_functions.php:152 includes/campaigns_list.php:999 includes/campaigns_list.php:1035
 msgid "Next Run:"
 msgstr ""
 
@@ -879,7 +879,7 @@ msgstr ""
 msgid "Time taken:"
 msgstr ""
 
-#: includes/campaign_edit_functions.php:164 includes/campaigns_list.php:936 includes/campaigns_list.php:969 includes/campaigns_list.php:980
+#: includes/campaign_edit_functions.php:164 includes/campaigns_list.php:987 includes/campaigns_list.php:1020 includes/campaigns_list.php:1031
 msgid "sec."
 msgstr ""
 
@@ -887,7 +887,7 @@ msgstr ""
 msgid "Run status:"
 msgstr ""
 
-#: includes/campaign_edit_functions.php:173 includes/campaigns_list.php:992
+#: includes/campaign_edit_functions.php:173 includes/campaigns_list.php:1043
 msgid "Timed out after %1$s sec. on %2$s"
 msgstr ""
 
@@ -899,11 +899,11 @@ msgstr ""
 msgid "Total fetched:"
 msgstr ""
 
-#: includes/campaign_edit_functions.php:195 includes/campaigns_list.php:742
+#: includes/campaign_edit_functions.php:195 includes/campaigns_list.php:793
 msgid "Reset post count"
 msgstr ""
 
-#: includes/campaign_edit_functions.php:196 includes/campaigns_list.php:747
+#: includes/campaign_edit_functions.php:196 includes/campaigns_list.php:798
 msgid "Delete hash code for duplicates"
 msgstr ""
 
@@ -927,7 +927,7 @@ msgstr ""
 msgid "bbPress Forums"
 msgstr ""
 
-#: includes/campaign_edit_functions.php:23 includes/campaigns_list.php:216 includes/campaigns_list.php:831 includes/campaigns_list_help.php:29 includes/module/manager.php:48
+#: includes/campaign_edit_functions.php:23 includes/campaigns_list.php:267 includes/campaigns_list.php:882 includes/campaigns_list_help.php:29 includes/module/manager.php:48
 msgid "Campaign Type"
 msgstr ""
 
@@ -1479,7 +1479,7 @@ msgstr ""
 msgid "Memory limit set to %1$s ,because can not use PHP: memory_get_usage() function to dynamically increase the Memory!"
 msgstr ""
 
-#: includes/campaign_fetch.php:1203 includes/campaigns_list.php:922
+#: includes/campaign_fetch.php:1203 includes/campaigns_list.php:973
 msgid "Posts imported by this campaign."
 msgstr ""
 
@@ -2147,7 +2147,7 @@ msgstr ""
 msgid "Tags added to every post of this campaign."
 msgstr ""
 
-#: includes/campaign_help.php:355 includes/campaigns_list.php:1226 includes/campaigns_list.php:1415
+#: includes/campaign_help.php:355 includes/campaigns_list.php:1277 includes/campaigns_list.php:1466
 msgid "Post format"
 msgstr ""
 
@@ -2207,7 +2207,7 @@ msgstr ""
 msgid "Whether the posts of this campaign accept comments."
 msgstr ""
 
-#: includes/campaign_help.php:69 includes/campaigns_list.php:1160 includes/campaigns_list.php:1356
+#: includes/campaign_help.php:69 includes/campaigns_list.php:1211 includes/campaigns_list.php:1407
 msgid "Author"
 msgstr ""
 
@@ -2323,332 +2323,352 @@ msgstr ""
 msgid "Loading post content..."
 msgstr ""
 
-#: includes/campaigns_list.php:1153 includes/campaigns_list.php:1348
-msgid "Campaign Options"
-msgstr ""
-
-#: includes/campaigns_list.php:1156 includes/campaigns_list.php:1350
-msgid "Items per fetch"
-msgstr ""
-
-#: includes/campaigns_list.php:1164 includes/campaigns_list.php:1369
-msgid "Discussion"
-msgstr ""
-
-#: includes/campaigns_list.php:1168 includes/campaigns_list.php:1373
-msgid "Open"
-msgstr ""
-
-#: includes/campaigns_list.php:1169 includes/campaigns_list.php:1374
-msgid "Closed"
-msgstr ""
-
-#: includes/campaigns_list.php:117
-msgid "WARNING! WPeMatico Debug mode has been activated at Tools->System Status->Danger Zone."
-msgstr ""
-
-#: includes/campaigns_list.php:1170 includes/campaigns_list.php:1375
-msgid "Registered only"
-msgstr ""
-
-#: includes/campaigns_list.php:118
-msgid "Be sure to deactivate it after your tests to avoid performance issues."
-msgstr ""
-
-#: includes/campaigns_list.php:1239 includes/campaigns_list.php:1340
-msgid "Use feed date"
-msgstr ""
-
-#: includes/campaigns_list.php:1243 includes/campaigns_list.php:1341
-msgid "Allow pings"
-msgstr ""
-
-#: includes/campaigns_list.php:1247 includes/campaigns_list.php:1342
-msgid "Title links to source"
-msgstr ""
-
-#: includes/campaigns_list.php:1251 includes/campaigns_list.php:1343
-msgid "Strip links"
-msgstr ""
-
-#: includes/campaigns_list.php:1338
-msgid "&mdash; No change &mdash;"
-msgstr ""
-
-#: includes/campaigns_list.php:1352
-msgid "No change"
-msgstr ""
-
-#: includes/campaigns_list.php:139
-msgid "Start campaigns"
-msgstr ""
-
-#: includes/campaigns_list.php:140
-msgid "Stop campaigns"
-msgstr ""
-
-#: includes/campaigns_list.php:1433 includes/wpematico_functions.php:91 includes/module/dashboard.php:66
-msgid "Yes"
-msgstr ""
-
-#: includes/campaigns_list.php:1434 includes/debug_page.php:2375 includes/wpematico_functions.php:91 includes/module/dashboard.php:65
-msgid "No"
-msgstr ""
-
-#: includes/campaigns_list.php:1577
-msgid "Security check failed."
-msgstr ""
-
-#: includes/campaigns_list.php:1584
-msgid "No post IDs provided."
-msgstr ""
-
-#: includes/campaigns_list.php:160
-msgid "%s Campaigns activated"
-msgstr ""
-
-#: includes/campaigns_list.php:1611
-msgid "Nothing to change: every option was left on \"No change\"."
-msgstr ""
-
-#: includes/campaigns_list.php:1639 includes/campaigns_list.php:1641
-msgid "Campaigns updated successfully."
-msgstr ""
-
-#: includes/campaigns_list.php:167
-msgid "%s Campaigns deactivated"
-msgstr ""
-
-#: includes/campaigns_list.php:269
-msgid "Run Selected Campaigns"
-msgstr ""
-
-#: includes/campaigns_list.php:286
-msgid "Visit"
-msgstr ""
-
-#: includes/campaigns_list.php:313
-msgid "Current time of the site"
-msgstr ""
-
-#: includes/campaigns_list.php:316
-msgid "Please select campaign(s) to Run."
-msgstr ""
-
-#: includes/campaigns_list.php:317
-msgid "Slug"
-msgstr ""
-
-#: includes/campaigns_list.php:318
-msgid "Password"
-msgstr ""
-
-#: includes/campaigns_list.php:319
-msgid "Date"
-msgstr ""
-
-#: includes/campaigns_list.php:322
-msgid "Dismissed"
-msgstr ""
-
-#: includes/campaigns_list.php:338
-msgid "(Copy)"
-msgstr ""
-
-#: includes/campaigns_list.php:432 includes/campaigns_list.php:474 includes/campaigns_list.php:509 includes/campaigns_list.php:544 includes/campaigns_list.php:584
-msgid "No campaign ID has been supplied!"
-msgstr ""
-
-#: includes/campaigns_list.php:461
-msgid "Copy campaign failed, could not find original:"
-msgstr ""
-
-#: includes/campaigns_list.php:493
-msgid "Campaign activated"
-msgstr ""
-
-#: includes/campaigns_list.php:493
-msgid "Campaign deactivated"
-msgstr ""
-
-#: includes/campaigns_list.php:530
-msgid "Reset Campaign"
-msgstr ""
-
-#: includes/campaigns_list.php:569
-msgid "Hash deleted on campaign"
-msgstr ""
-
-#: includes/campaigns_list.php:617
-msgid "Campaign cleared"
-msgstr ""
-
-#: includes/campaigns_list.php:633 includes/campaigns_list.php:636
-msgid "Campaign updated."
-msgstr ""
-
-#: includes/campaigns_list.php:634
-msgid "Custom field updated."
-msgstr ""
-
-#: includes/campaigns_list.php:635
-msgid "Custom field deleted."
-msgstr ""
-
-#: includes/campaigns_list.php:638
-msgid "Campaign restored to revision from %s"
-msgstr ""
-
-#: includes/campaigns_list.php:639
-msgid "Campaign published."
-msgstr ""
-
-#: includes/campaigns_list.php:640
-msgid "Campaign saved."
-msgstr ""
-
-#: includes/campaigns_list.php:641
-msgid "Campaign submitted."
-msgstr ""
-
-#: includes/campaigns_list.php:643
-msgid "Campaign scheduled for: %1$s."
-msgstr ""
-
-#: includes/campaigns_list.php:643 includes/campaigns_list.php:648
-msgid "Preview campaign"
-msgstr ""
-
-#: includes/campaigns_list.php:645
-msgid "M j, Y @ G:i"
-msgstr ""
-
-#: includes/campaigns_list.php:648
-msgid "Campaign draft updated. "
-msgstr ""
-
-#: includes/campaigns_list.php:702
-msgid "Edit this item"
-msgstr ""
-
-#: includes/campaigns_list.php:702 includes/campaigns_list_help.php:49
-msgid "Edit"
-msgstr ""
-
-#: includes/campaigns_list.php:703
-msgid "Edit this item inline"
-msgstr ""
-
-#: includes/campaigns_list.php:703 includes/campaigns_list_help.php:51
-msgid "Quick Edit"
-msgstr ""
-
-#: includes/campaigns_list.php:707
-msgid "Restore this item from the Trash"
-msgstr ""
-
-#: includes/campaigns_list.php:707
-msgid "Restore"
-msgstr ""
-
-#: includes/campaigns_list.php:709
-msgid "Move this item to the Trash"
-msgstr ""
-
-#: includes/campaigns_list.php:709 includes/campaigns_list_help.php:53
-msgid "Trash"
-msgstr ""
-
-#: includes/campaigns_list.php:711
-msgid "Delete this item permanently"
-msgstr ""
-
-#: includes/campaigns_list.php:711
-msgid "Delete Permanently"
-msgstr ""
-
-#: includes/campaigns_list.php:740
-msgid "Clone this item"
-msgstr ""
-
-#: includes/campaigns_list.php:740 includes/campaigns_list_help.php:55 includes/debug_page.php:384
-msgid "Copy"
-msgstr ""
-
-#: includes/campaigns_list.php:742 includes/campaigns_list_help.php:57
-msgid "Reset"
-msgstr ""
-
-#: includes/campaigns_list.php:747 includes/campaigns_list_help.php:59
-msgid "Del Hash"
-msgstr ""
-
-#: includes/campaigns_list.php:756
-msgid "See last log of campaign. (Open a PopUp window)"
-msgstr ""
-
-#: includes/campaigns_list.php:756 includes/campaigns_list_help.php:61
-msgid "See Log"
-msgstr ""
-
-#: includes/campaigns_list.php:761
-msgid "Clear fetching and restore campaign"
-msgstr ""
-
-#: includes/campaigns_list.php:761
-msgid "Clear campaign"
-msgstr ""
-
-#: includes/campaigns_list.php:829 includes/campaigns_list_help.php:25
-msgid "Campaign Name"
-msgstr ""
-
-#: includes/campaigns_list.php:830 includes/campaigns_list_help.php:27 includes/debug_page.php:2953
-msgid "Publish as"
-msgstr ""
-
-#: includes/campaigns_list.php:832 includes/campaigns_list_help.php:31
-msgid "Current State"
-msgstr ""
-
-#: includes/campaigns_list.php:833 includes/campaigns_list_help.php:33 includes/debug_page.php:2961
-msgid "Last Run"
-msgstr ""
-
-#: includes/campaigns_list.php:834 includes/campaigns_list_help.php:35
-msgid "Posts"
-msgstr ""
-
-#: includes/campaigns_list.php:858
-msgid "Error retrieving campaign data: "
-msgstr ""
-
-#: includes/campaigns_list.php:863
-msgid "Broken campaign :("
-msgstr ""
-
-#: includes/campaigns_list.php:931
-msgid "Start/Activate Campaign Scheduler"
-msgstr ""
-
-#: includes/campaigns_list.php:936 includes/campaigns_list.php:980
-msgid "Running since:"
-msgstr ""
-
-#: includes/campaigns_list.php:944
-msgid "Stop the run and release the campaign"
-msgstr ""
-
-#: includes/campaigns_list.php:953 includes/tools_page.php:514 includes/lib/licenses_handlers.php:587
+#: includes/campaigns_list.php:1004 includes/tools_page.php:514 includes/lib/licenses_handlers.php:596
 msgid "Inactive"
 msgstr ""
 
-#: includes/campaigns_list.php:969
+#: includes/campaigns_list.php:1020
 msgid "Runtime:"
 msgstr ""
 
-#: includes/campaigns_list.php:972
+#: includes/campaigns_list.php:1023
 msgid "None"
+msgstr ""
+
+#: includes/campaigns_list.php:118
+msgid "WARNING! WPeMatico Debug mode has been activated at Tools->System Status->Danger Zone."
+msgstr ""
+
+#: includes/campaigns_list.php:119
+msgid "Be sure to deactivate it after your tests to avoid performance issues."
+msgstr ""
+
+#: includes/campaigns_list.php:1204 includes/campaigns_list.php:1399
+msgid "Campaign Options"
+msgstr ""
+
+#: includes/campaigns_list.php:1207 includes/campaigns_list.php:1401
+msgid "Items per fetch"
+msgstr ""
+
+#: includes/campaigns_list.php:1215 includes/campaigns_list.php:1420
+msgid "Discussion"
+msgstr ""
+
+#: includes/campaigns_list.php:1219 includes/campaigns_list.php:1424
+msgid "Open"
+msgstr ""
+
+#: includes/campaigns_list.php:1220 includes/campaigns_list.php:1425
+msgid "Closed"
+msgstr ""
+
+#: includes/campaigns_list.php:1221 includes/campaigns_list.php:1426
+msgid "Registered only"
+msgstr ""
+
+#: includes/campaigns_list.php:1290 includes/campaigns_list.php:1391
+msgid "Use feed date"
+msgstr ""
+
+#: includes/campaigns_list.php:1294 includes/campaigns_list.php:1392
+msgid "Allow pings"
+msgstr ""
+
+#: includes/campaigns_list.php:1298 includes/campaigns_list.php:1393
+msgid "Title links to source"
+msgstr ""
+
+#: includes/campaigns_list.php:1302 includes/campaigns_list.php:1394
+msgid "Strip links"
+msgstr ""
+
+#: includes/campaigns_list.php:1389
+msgid "&mdash; No change &mdash;"
+msgstr ""
+
+#: includes/campaigns_list.php:1403
+msgid "No change"
+msgstr ""
+
+#: includes/campaigns_list.php:1484 includes/wpematico_functions.php:91 includes/module/dashboard.php:66
+msgid "Yes"
+msgstr ""
+
+#: includes/campaigns_list.php:1485 includes/debug_page.php:2375 includes/wpematico_functions.php:91 includes/module/dashboard.php:65
+msgid "No"
+msgstr ""
+
+#. translators: %d: number of campaigns
+#: includes/campaigns_list.php:157
+msgid "%d active campaign has been waiting for its scheduled run for more than two days."
+msgid_plural "%d active campaigns have been waiting for their scheduled run for more than two days."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/campaigns_list.php:1628
+msgid "Security check failed."
+msgstr ""
+
+#. translators: 1: the option's name, 2: the external cron address
+#: includes/campaigns_list.php:163
+msgid "%1$s is on, so campaigns run only when %2$s is called. If your server cron calls wp-cron.php instead, turn that option off."
+msgstr ""
+
+#: includes/campaigns_list.php:1635
+msgid "No post IDs provided."
+msgstr ""
+
+#: includes/campaigns_list.php:164 includes/settings/help.php:229 includes/settings/page.php:573
+msgid "Disable WPeMatico schedules"
+msgstr ""
+
+#: includes/campaigns_list.php:1662
+msgid "Nothing to change: every option was left on \"No change\"."
+msgstr ""
+
+#: includes/campaigns_list.php:168
+msgid "Check that WordPress scheduled tasks (WP-Cron) run on this site: if DISABLE_WP_CRON is set, a server cron has to call wp-cron.php."
+msgstr ""
+
+#: includes/campaigns_list.php:1690 includes/campaigns_list.php:1692
+msgid "Campaigns updated successfully."
+msgstr ""
+
+#: includes/campaigns_list.php:190
+msgid "Start campaigns"
+msgstr ""
+
+#: includes/campaigns_list.php:191
+msgid "Stop campaigns"
+msgstr ""
+
+#: includes/campaigns_list.php:211
+msgid "%s Campaigns activated"
+msgstr ""
+
+#: includes/campaigns_list.php:218
+msgid "%s Campaigns deactivated"
+msgstr ""
+
+#: includes/campaigns_list.php:320
+msgid "Run Selected Campaigns"
+msgstr ""
+
+#: includes/campaigns_list.php:337
+msgid "Visit"
+msgstr ""
+
+#: includes/campaigns_list.php:364
+msgid "Current time of the site"
+msgstr ""
+
+#: includes/campaigns_list.php:367
+msgid "Please select campaign(s) to Run."
+msgstr ""
+
+#: includes/campaigns_list.php:368
+msgid "Slug"
+msgstr ""
+
+#: includes/campaigns_list.php:369
+msgid "Password"
+msgstr ""
+
+#: includes/campaigns_list.php:370
+msgid "Date"
+msgstr ""
+
+#: includes/campaigns_list.php:373
+msgid "Dismissed"
+msgstr ""
+
+#: includes/campaigns_list.php:389
+msgid "(Copy)"
+msgstr ""
+
+#: includes/campaigns_list.php:483 includes/campaigns_list.php:525 includes/campaigns_list.php:560 includes/campaigns_list.php:595 includes/campaigns_list.php:635
+msgid "No campaign ID has been supplied!"
+msgstr ""
+
+#: includes/campaigns_list.php:512
+msgid "Copy campaign failed, could not find original:"
+msgstr ""
+
+#: includes/campaigns_list.php:544
+msgid "Campaign activated"
+msgstr ""
+
+#: includes/campaigns_list.php:544
+msgid "Campaign deactivated"
+msgstr ""
+
+#: includes/campaigns_list.php:581
+msgid "Reset Campaign"
+msgstr ""
+
+#: includes/campaigns_list.php:620
+msgid "Hash deleted on campaign"
+msgstr ""
+
+#: includes/campaigns_list.php:668
+msgid "Campaign cleared"
+msgstr ""
+
+#: includes/campaigns_list.php:684 includes/campaigns_list.php:687
+msgid "Campaign updated."
+msgstr ""
+
+#: includes/campaigns_list.php:685
+msgid "Custom field updated."
+msgstr ""
+
+#: includes/campaigns_list.php:686
+msgid "Custom field deleted."
+msgstr ""
+
+#: includes/campaigns_list.php:689
+msgid "Campaign restored to revision from %s"
+msgstr ""
+
+#: includes/campaigns_list.php:690
+msgid "Campaign published."
+msgstr ""
+
+#: includes/campaigns_list.php:691
+msgid "Campaign saved."
+msgstr ""
+
+#: includes/campaigns_list.php:692
+msgid "Campaign submitted."
+msgstr ""
+
+#: includes/campaigns_list.php:694
+msgid "Campaign scheduled for: %1$s."
+msgstr ""
+
+#: includes/campaigns_list.php:694 includes/campaigns_list.php:699
+msgid "Preview campaign"
+msgstr ""
+
+#: includes/campaigns_list.php:696
+msgid "M j, Y @ G:i"
+msgstr ""
+
+#: includes/campaigns_list.php:699
+msgid "Campaign draft updated. "
+msgstr ""
+
+#: includes/campaigns_list.php:753
+msgid "Edit this item"
+msgstr ""
+
+#: includes/campaigns_list.php:753 includes/campaigns_list_help.php:49
+msgid "Edit"
+msgstr ""
+
+#: includes/campaigns_list.php:754
+msgid "Edit this item inline"
+msgstr ""
+
+#: includes/campaigns_list.php:754 includes/campaigns_list_help.php:51
+msgid "Quick Edit"
+msgstr ""
+
+#: includes/campaigns_list.php:758
+msgid "Restore this item from the Trash"
+msgstr ""
+
+#: includes/campaigns_list.php:758
+msgid "Restore"
+msgstr ""
+
+#: includes/campaigns_list.php:760
+msgid "Move this item to the Trash"
+msgstr ""
+
+#: includes/campaigns_list.php:760 includes/campaigns_list_help.php:53
+msgid "Trash"
+msgstr ""
+
+#: includes/campaigns_list.php:762
+msgid "Delete this item permanently"
+msgstr ""
+
+#: includes/campaigns_list.php:762
+msgid "Delete Permanently"
+msgstr ""
+
+#: includes/campaigns_list.php:791
+msgid "Clone this item"
+msgstr ""
+
+#: includes/campaigns_list.php:791 includes/campaigns_list_help.php:55 includes/debug_page.php:384
+msgid "Copy"
+msgstr ""
+
+#: includes/campaigns_list.php:793 includes/campaigns_list_help.php:57
+msgid "Reset"
+msgstr ""
+
+#: includes/campaigns_list.php:798 includes/campaigns_list_help.php:59
+msgid "Del Hash"
+msgstr ""
+
+#: includes/campaigns_list.php:807
+msgid "See last log of campaign. (Open a PopUp window)"
+msgstr ""
+
+#: includes/campaigns_list.php:807 includes/campaigns_list_help.php:61
+msgid "See Log"
+msgstr ""
+
+#: includes/campaigns_list.php:812
+msgid "Clear fetching and restore campaign"
+msgstr ""
+
+#: includes/campaigns_list.php:812
+msgid "Clear campaign"
+msgstr ""
+
+#: includes/campaigns_list.php:880 includes/campaigns_list_help.php:25
+msgid "Campaign Name"
+msgstr ""
+
+#: includes/campaigns_list.php:881 includes/campaigns_list_help.php:27 includes/debug_page.php:2953
+msgid "Publish as"
+msgstr ""
+
+#: includes/campaigns_list.php:883 includes/campaigns_list_help.php:31
+msgid "Current State"
+msgstr ""
+
+#: includes/campaigns_list.php:884 includes/campaigns_list_help.php:33 includes/debug_page.php:2961
+msgid "Last Run"
+msgstr ""
+
+#: includes/campaigns_list.php:885 includes/campaigns_list_help.php:35
+msgid "Posts"
+msgstr ""
+
+#: includes/campaigns_list.php:909
+msgid "Error retrieving campaign data: "
+msgstr ""
+
+#: includes/campaigns_list.php:914
+msgid "Broken campaign :("
+msgstr ""
+
+#: includes/campaigns_list.php:982
+msgid "Start/Activate Campaign Scheduler"
+msgstr ""
+
+#: includes/campaigns_list.php:987 includes/campaigns_list.php:1031
+msgid "Running since:"
+msgstr ""
+
+#: includes/campaigns_list.php:995
+msgid "Stop the run and release the campaign"
 msgstr ""
 
 #: includes/campaigns_list_help.php:23
@@ -3830,7 +3850,7 @@ msgstr ""
 msgid "Copied to the clipboard."
 msgstr ""
 
-#: includes/debug_page.php:607 includes/tools_page.php:702 includes/xml-importer.php:370 includes/settings/page.php:124 includes/settings/page.php:1171 includes/lib/licenses_handlers.php:455
+#: includes/debug_page.php:607 includes/tools_page.php:702 includes/xml-importer.php:370 includes/settings/page.php:124 includes/settings/page.php:1171 includes/lib/licenses_handlers.php:464
 msgid "Invalid request."
 msgstr ""
 
@@ -4128,155 +4148,155 @@ msgstr ""
 msgid "You do not have permission to install plugin updates"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:407
+#: includes/lib/licenses_handlers.php:416
 msgid "License keys saved."
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:415 includes/lib/licenses_handlers.php:472 includes/lib/licenses_handlers.php:483 includes/lib/licenses_handlers.php:534
+#: includes/lib/licenses_handlers.php:424 includes/lib/licenses_handlers.php:481 includes/lib/licenses_handlers.php:492 includes/lib/licenses_handlers.php:543
 msgid "The license server did not answer. Try again in a moment."
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:418
+#: includes/lib/licenses_handlers.php:427
 msgid "License activated for this site!"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:425
+#: includes/lib/licenses_handlers.php:434
 msgid "This license has expired."
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:426 includes/lib/licenses_handlers.php:427
+#: includes/lib/licenses_handlers.php:435 includes/lib/licenses_handlers.php:436
 msgid "This license has been disabled."
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:428 includes/lib/licenses_handlers.php:429
+#: includes/lib/licenses_handlers.php:437 includes/lib/licenses_handlers.php:438
 msgid "This license key does not exist."
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:430
+#: includes/lib/licenses_handlers.php:439
 msgid "This license has no activations left."
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:431 includes/lib/licenses_handlers.php:432
+#: includes/lib/licenses_handlers.php:440 includes/lib/licenses_handlers.php:441
 msgid "This license key is for another product."
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:435
+#: includes/lib/licenses_handlers.php:444
 msgid "The license could not be activated."
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:463
+#: includes/lib/licenses_handlers.php:472
 msgid "Please wait a few seconds before asking the store again."
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:475
+#: includes/lib/licenses_handlers.php:484
 msgid "This key is valid, please save settings."
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:479
+#: includes/lib/licenses_handlers.php:488
 msgid "Save a license key first."
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:507
+#: includes/lib/licenses_handlers.php:516
 msgid "License deactivated for this site."
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:507
+#: includes/lib/licenses_handlers.php:516
 msgid "The license could not be deactivated."
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:510
+#: includes/lib/licenses_handlers.php:519
 msgid "The license is valid and active for this site."
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:513
+#: includes/lib/licenses_handlers.php:522
 msgid "The license is valid but this site is not activated with it."
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:532 includes/lib/licenses_handlers.php:596
+#: includes/lib/licenses_handlers.php:541 includes/lib/licenses_handlers.php:605
 msgid "Check License"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:533
+#: includes/lib/licenses_handlers.php:542
 msgid "Working…"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:583
+#: includes/lib/licenses_handlers.php:592
 msgid "Activated for updates"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:584
+#: includes/lib/licenses_handlers.php:593
 msgid "Valid"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:585
+#: includes/lib/licenses_handlers.php:594
 msgid "Deactivate License"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:588
+#: includes/lib/licenses_handlers.php:597
 msgid "Activate License"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:592
+#: includes/lib/licenses_handlers.php:601
 msgid "Expired"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:594
+#: includes/lib/licenses_handlers.php:603
 msgid "Invalid"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:609
+#: includes/lib/licenses_handlers.php:618
 msgid "No activations left. Click here to manage the sites you've activated licenses on."
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:612
+#: includes/lib/licenses_handlers.php:621
 msgid "Renew your license to continue receiving updates and support."
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:614
+#: includes/lib/licenses_handlers.php:623
 msgid "Activations"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:615
+#: includes/lib/licenses_handlers.php:624
 msgid "unlimited"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:615
+#: includes/lib/licenses_handlers.php:624
 msgid "left"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:616
+#: includes/lib/licenses_handlers.php:625
 msgid "Expires on"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:616
+#: includes/lib/licenses_handlers.php:625
 msgid "Lifetime"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:618
+#: includes/lib/licenses_handlers.php:627
 msgid "Registered to"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:620
+#: includes/lib/licenses_handlers.php:629
 msgid "Manage Sites"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:622
+#: includes/lib/licenses_handlers.php:631
 msgid "View Upgrades"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:623
+#: includes/lib/licenses_handlers.php:632
 msgid "Extend"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:647
+#: includes/lib/licenses_handlers.php:656
 msgid " License"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:650
+#: includes/lib/licenses_handlers.php:659
 msgid "License Key"
 msgstr ""
 
-#: includes/lib/licenses_handlers.php:652
+#: includes/lib/licenses_handlers.php:661
 msgid "Enter your license key"
 msgstr ""
 
@@ -6495,10 +6515,6 @@ msgstr ""
 msgid "By default each published post carries three custom fields with the campaign and the source item. Turning this on does not delete the ones already saved."
 msgstr ""
 
-#: includes/settings/help.php:229 includes/settings/page.php:573
-msgid "Disable WPeMatico schedules"
-msgstr ""
-
 #: includes/settings/help.php:230
 msgid "No campaign runs on its own any more. You run them by hand or from an external cron, which is the recommended setup."
 msgstr ""
@@ -6799,7 +6815,7 @@ msgstr ""
 msgid "Highlights of the new release"
 msgstr ""
 
-#: includes/settings/page.php:1092 includes/lib/licenses_handlers.php:617
+#: includes/settings/page.php:1092 includes/lib/licenses_handlers.php:626
 msgid "Version"
 msgstr ""
 
@@ -6831,11 +6847,11 @@ msgstr ""
 msgid "Save settings"
 msgstr ""
 
-#: includes/settings/page.php:133 includes/lib/licenses_handlers.php:637
+#: includes/settings/page.php:133 includes/lib/licenses_handlers.php:646
 msgid "This is where you would enter the license keys for one of our premium plugins, should you activate one."
 msgstr ""
 
-#: includes/settings/page.php:134 includes/lib/licenses_handlers.php:638
+#: includes/settings/page.php:134 includes/lib/licenses_handlers.php:647
 msgid "See some of the WPeMatico Add-ons in the"
 msgstr ""
 

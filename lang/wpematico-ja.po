@@ -10231,3 +10231,18 @@ msgstr "無制限"
 #: includes/lib/licenses_handlers.php:463
 msgid "Please wait a few seconds before asking the store again."
 msgstr "ストアに再度問い合わせる前に、数秒お待ちください。"
+
+#. translators: %d: number of campaigns
+#: includes/campaigns_list.php:157
+msgid "%d active campaign has been waiting for its scheduled run for more than two days."
+msgid_plural "%d active campaigns have been waiting for their scheduled run for more than two days."
+msgstr[0] "%d 件の有効なキャンペーンが、予定された実行を 2 日以上待っています。"
+
+#. translators: 1: the option's name, 2: the external cron address
+#: includes/campaigns_list.php:163
+msgid "%1$s is on, so campaigns run only when %2$s is called. If your server cron calls wp-cron.php instead, turn that option off."
+msgstr "%1$s がオンのため、キャンペーンは %2$s が呼び出されたときにのみ実行されます。サーバーの cron が代わりに wp-cron.php を呼び出している場合は、このオプションをオフにしてください。"
+
+#: includes/campaigns_list.php:168
+msgid "Check that WordPress scheduled tasks (WP-Cron) run on this site: if DISABLE_WP_CRON is set, a server cron has to call wp-cron.php."
+msgstr "このサイトで WordPress の予定タスク (WP-Cron) が実行されているか確認してください。DISABLE_WP_CRON が設定されている場合は、サーバーの cron が wp-cron.php を呼び出す必要があります。"

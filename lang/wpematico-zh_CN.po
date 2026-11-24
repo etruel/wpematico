@@ -11889,3 +11889,18 @@ msgstr "不限"
 #: includes/lib/licenses_handlers.php:463
 msgid "Please wait a few seconds before asking the store again."
 msgstr "请等待几秒钟，再重新查询商店。"
+
+#. translators: %d: number of campaigns
+#: includes/campaigns_list.php:157
+msgid "%d active campaign has been waiting for its scheduled run for more than two days."
+msgid_plural "%d active campaigns have been waiting for their scheduled run for more than two days."
+msgstr[0] "%d 个已启用的采集任务已等待其计划运行超过两天。"
+
+#. translators: 1: the option's name, 2: the external cron address
+#: includes/campaigns_list.php:163
+msgid "%1$s is on, so campaigns run only when %2$s is called. If your server cron calls wp-cron.php instead, turn that option off."
+msgstr "%1$s 已开启，因此采集任务只在调用 %2$s 时运行。如果服务器的 cron 调用的是 wp-cron.php，请关闭此选项。"
+
+#: includes/campaigns_list.php:168
+msgid "Check that WordPress scheduled tasks (WP-Cron) run on this site: if DISABLE_WP_CRON is set, a server cron has to call wp-cron.php."
+msgstr "请检查本站的 WordPress 计划任务（WP-Cron）是否在运行：如果设置了 DISABLE_WP_CRON，需要由服务器的 cron 调用 wp-cron.php。"

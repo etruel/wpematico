@@ -12733,3 +12733,20 @@ msgstr "neobmedzene"
 #: includes/lib/licenses_handlers.php:463
 msgid "Please wait a few seconds before asking the store again."
 msgstr "Počkajte niekoľko sekúnd, než sa obchodu opýtate znova."
+
+#. translators: %d: number of campaigns
+#: includes/campaigns_list.php:157
+msgid "%d active campaign has been waiting for its scheduled run for more than two days."
+msgid_plural "%d active campaigns have been waiting for their scheduled run for more than two days."
+msgstr[0] "%d aktívna kampaň čaká na plánované spustenie viac ako dva dni."
+msgstr[1] "%d aktívne kampane čakajú na plánované spustenie viac ako dva dni."
+msgstr[2] "%d aktívnych kampaní čaká na plánované spustenie viac ako dva dni."
+
+#. translators: 1: the option's name, 2: the external cron address
+#: includes/campaigns_list.php:163
+msgid "%1$s is on, so campaigns run only when %2$s is called. If your server cron calls wp-cron.php instead, turn that option off."
+msgstr "Možnosť %1$s je zapnutá, takže kampane sa spúšťajú iba pri volaní %2$s. Ak cron vášho servera namiesto toho volá wp-cron.php, túto možnosť vypnite."
+
+#: includes/campaigns_list.php:168
+msgid "Check that WordPress scheduled tasks (WP-Cron) run on this site: if DISABLE_WP_CRON is set, a server cron has to call wp-cron.php."
+msgstr "Skontrolujte, či na vašej webovej stránke bežia plánované úlohy WordPressu (WP-Cron): ak je nastavená konštanta DISABLE_WP_CRON, cron servera musí volať wp-cron.php."

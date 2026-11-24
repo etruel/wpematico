@@ -10324,3 +10324,19 @@ msgstr "sınırsız"
 #: includes/lib/licenses_handlers.php:463
 msgid "Please wait a few seconds before asking the store again."
 msgstr "Mağazaya yeniden sormadan önce lütfen birkaç saniye bekleyin."
+
+#. translators: %d: number of campaigns
+#: includes/campaigns_list.php:157
+msgid "%d active campaign has been waiting for its scheduled run for more than two days."
+msgid_plural "%d active campaigns have been waiting for their scheduled run for more than two days."
+msgstr[0] "%d etkin kampanya iki günden uzun süredir zamanlanmış çalışmasını bekliyor."
+msgstr[1] "%d etkin kampanya iki günden uzun süredir zamanlanmış çalışmasını bekliyor."
+
+#. translators: 1: the option's name, 2: the external cron address
+#: includes/campaigns_list.php:163
+msgid "%1$s is on, so campaigns run only when %2$s is called. If your server cron calls wp-cron.php instead, turn that option off."
+msgstr "%1$s açık, bu yüzden kampanyalar yalnızca %2$s çağrıldığında çalışır. Sunucunuzun cron'u bunun yerine wp-cron.php'yi çağırıyorsa bu seçeneği kapatın."
+
+#: includes/campaigns_list.php:168
+msgid "Check that WordPress scheduled tasks (WP-Cron) run on this site: if DISABLE_WP_CRON is set, a server cron has to call wp-cron.php."
+msgstr "WordPress zamanlanmış görevlerinin (WP-Cron) bu sitede çalıştığını denetleyin: DISABLE_WP_CRON tanımlıysa wp-cron.php'yi bir sunucu cron'u çağırmalıdır."

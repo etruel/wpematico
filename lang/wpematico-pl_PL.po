@@ -10391,3 +10391,20 @@ msgstr "bez limitu"
 #: includes/lib/licenses_handlers.php:463
 msgid "Please wait a few seconds before asking the store again."
 msgstr "Odczekaj kilka sekund, zanim ponownie zapytasz sklep."
+
+#. translators: %d: number of campaigns
+#: includes/campaigns_list.php:157
+msgid "%d active campaign has been waiting for its scheduled run for more than two days."
+msgid_plural "%d active campaigns have been waiting for their scheduled run for more than two days."
+msgstr[0] "%d aktywna kampania czeka na zaplanowane uruchomienie od ponad dwóch dni."
+msgstr[1] "%d aktywne kampanie czekają na zaplanowane uruchomienie od ponad dwóch dni."
+msgstr[2] "%d aktywnych kampanii czeka na zaplanowane uruchomienie od ponad dwóch dni."
+
+#. translators: 1: the option's name, 2: the external cron address
+#: includes/campaigns_list.php:163
+msgid "%1$s is on, so campaigns run only when %2$s is called. If your server cron calls wp-cron.php instead, turn that option off."
+msgstr "Opcja %1$s jest włączona, więc kampanie uruchamiają się tylko po wywołaniu %2$s. Jeśli cron twojego serwera wywołuje zamiast tego wp-cron.php, wyłącz tę opcję."
+
+#: includes/campaigns_list.php:168
+msgid "Check that WordPress scheduled tasks (WP-Cron) run on this site: if DISABLE_WP_CRON is set, a server cron has to call wp-cron.php."
+msgstr "Sprawdź, czy zaplanowane zadania WordPressa (WP-Cron) działają na tej witrynie: jeśli ustawiono DISABLE_WP_CRON, cron serwera musi wywoływać wp-cron.php."
