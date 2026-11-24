@@ -88,6 +88,16 @@ function update_count_cell(c_ID) {
     }
 }
 
+// Every row prints its own #lastruntime, so both ids are looked up inside this
+// campaign's row and this campaign's answer.
+function update_runtime_cell(c_ID) {
+    var $runtime = jQuery('tr#post-' + c_ID + ' #lastruntime');
+    var $ret = jQuery('#campaign-running-' + c_ID + ' #ret_lastruntime');
+    if ($runtime.length && $ret.length) {
+        $runtime.html($ret.html()).attr('style', 'font-weight: bold;');
+    }
+}
+
 function run_now(c_ID) {
     jQuery('html').css('cursor', 'wait');
     jQuery('#post-' + c_ID + ' .state_buttons.dashicons-controls-play').addClass('green');
@@ -111,8 +121,7 @@ function run_now(c_ID) {
         } else {
             jQuery('#post-' + c_ID ).after('<tr class="wpe_campaign-running-tr" id="campaign-running-' + c_ID + '"><td colspan="7" class="campaign-running"><div id="fieldserror" class="notice notice-alt notice-success fade">' + msgdev + '</div></td></tr>');
             update_count_cell(c_ID);
-            jQuery("#lastruntime").html(jQuery("#ret_lastruntime").html());
-            jQuery("#lastruntime").attr('style', 'font-weight: bold;');
+            update_runtime_cell(c_ID);
         }
         jQuery('html').css('cursor', 'auto');
         jQuery('#post-' + c_ID + ' .state_buttons.dashicons-controls-play').removeClass('green');
@@ -158,8 +167,7 @@ function run_all() {
             } else {
                 jQuery('#post-' + c_ID ).after('<tr class="wpe_campaign-running-tr" id="campaign-running-' + c_ID + '"><td colspan="7" class="campaign-running"><div id="' + messageContainerId + '" class="notice notice-alt notice-success fade">' + msgdev + '</div></td></tr>');
                 update_count_cell(c_ID);
-                jQuery("#lastruntime").html(jQuery("#ret_lastruntime").html());
-                jQuery("#lastruntime").attr('style', 'font-weight: bold;');
+                update_runtime_cell(c_ID);
             }
 
             jQuery('#post-' + c_ID + ' .state_buttons.dashicons-controls-play').removeClass('green');

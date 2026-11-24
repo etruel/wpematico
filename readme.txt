@@ -232,6 +232,9 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 
 * **Improved:** The campaigns list and the WPeMatico Dashboard tell you when your active campaigns have been waiting for their scheduled run for more than two days, and what in your cron setup to look at.
 * **Improved:** The news on the WPeMatico Dashboard come only from the WPeMatico posts of the etruel.com blog.
+* **Performance:** Each new feed item finds the article its link leads to through the whole chain of redirects, in a few seconds at most, and moves on when a site does not answer. Every address on the way is checked like a feed address.
+* **Improved:** A campaign run stops at the time limit set in Settings from the moment it starts reading the feed.
+* **Improved:** Run Once in the campaigns list shows the new run time on the row of the campaign that ran.
 
 = 2.9.2 – Nov 2, 2026 =
 

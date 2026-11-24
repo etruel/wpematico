@@ -237,8 +237,14 @@ class wpematico_campaign_fetch extends wpematico_campaign_fetch_functions {
             $simplePieItems = $simplepie->get_items(0, $batchSize);
         }
 
+        $campaign_timeout = (int) $this->cfg['campaign_timeout'];
         foreach ($simplePieItems as $item) {
-            
+            if ($campaign_timeout > 0 && time() - $this->campaign['starttime'] >= $campaign_timeout) {
+				/* translators: %s Decimal. Timeout Seconds */
+                trigger_error(sprintf(__('Reached running timeout at %1$d sec.', 'wpematico'), $campaign_timeout), E_USER_WARNING);
+                break;
+            }
+
             if ($item->get_permalink() || $this->campaign['campaign_type'] == 'youtube' || $this->campaign['campaign_type'] == 'xml' || !empty($item->get_item_tags('', 'link')) ) {
                 $permalink = $item->get_permalink();
             } else {
