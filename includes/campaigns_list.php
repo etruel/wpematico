@@ -14,6 +14,7 @@ if (!class_exists('WPeMatico_Campaigns')) :
             // Global actions & filters (always loaded)
             add_filter('post_updated_messages', array(__CLASS__, 'wpematico_updated_messages'));
             add_action('admin_notices', array(__CLASS__, 'wpematico_debug_notice'));
+            add_action('admin_notices', array(__CLASS__, 'overdue_schedule_notice'));
             add_action('admin_action_wpematico_copy_campaign', array(__CLASS__, 'wpematico_copy_campaign'));
             add_action('admin_action_wpematico_toggle_campaign', array(__CLASS__, 'wpematico_toggle_campaign'));
             add_action('admin_action_wpematico_reset_campaign', array(__CLASS__, 'wpematico_reset_campaign'));
@@ -118,6 +119,56 @@ if (!class_exists('WPeMatico_Campaigns')) :
 						. esc_html__('Be sure to deactivate it after your tests to avoid performance issues.', 'wpematico');
 				printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), $message); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
+		}
+
+		/**
+		 * Active campaigns whose scheduled run is long past: nothing is running them.
+		 *
+		 * Derived from the cronnextrun meta every run rewrites, so it needs no state of
+		 * its own and costs one query, only on the campaigns list and the dashboard.
+		 *
+		 * @return void
+		 */
+		public static function overdue_schedule_notice() {
+			$screen = get_current_screen();
+			if (empty($screen) || !in_array($screen->id, array('edit-wpematico', 'toplevel_page_wpematico_dashboard'), true)) {
+				return;
+			}
+			if (!current_user_can('manage_options')) {
+				return;
+			}
+
+			global $wpdb, $cfg;
+			$overdue = (int) $wpdb->get_var($wpdb->prepare(
+					"SELECT COUNT(*)
+					 FROM {$wpdb->postmeta} nr
+					 INNER JOIN {$wpdb->postmeta} act ON act.post_id = nr.post_id AND act.meta_key = 'activated' AND act.meta_value = '1'
+					 INNER JOIN {$wpdb->posts} p ON p.ID = nr.post_id AND p.post_type = 'wpematico' AND p.post_status = 'publish'
+					 WHERE nr.meta_key = 'cronnextrun' AND CAST(nr.meta_value AS UNSIGNED) > 0 AND CAST(nr.meta_value AS UNSIGNED) < %d",
+					time() - 2 * DAY_IN_SECONDS
+			));
+			if (!$overdue) {
+				return;
+			}
+
+			$settings = admin_url('admin.php?page=wpematico_settings#disabwpcron');
+			$text     = sprintf(
+					/* translators: %d: number of campaigns */
+					_n('%d active campaign has been waiting for its scheduled run for more than two days.', '%d active campaigns have been waiting for their scheduled run for more than two days.', $overdue, 'wpematico'),
+					$overdue
+			);
+			if (!empty($cfg['dontruncron'])) {
+				$text .= ' ' . sprintf(
+						/* translators: 1: the option's name, 2: the external cron address */
+						__('%1$s is on, so campaigns run only when %2$s is called. If your server cron calls wp-cron.php instead, turn that option off.', 'wpematico'),
+						'<a href="' . esc_url($settings) . '"><strong>' . esc_html__('Disable WPeMatico schedules', 'wpematico') . '</strong></a>',
+						'<code>' . esc_html(admin_url('admin-post.php?action=wpematico_cron')) . '</code>'
+				);
+			} else {
+				$text .= ' ' . esc_html__('Check that WordPress scheduled tasks (WP-Cron) run on this site: if DISABLE_WP_CRON is set, a server cron has to call wp-cron.php.', 'wpematico');
+			}
+
+			printf('<div class="notice notice-warning"><p>%s</p></div>', wp_kses_post($text));
 		}
 
 		/**

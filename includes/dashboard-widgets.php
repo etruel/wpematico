@@ -19,8 +19,8 @@ if (!class_exists('WPeMatico_Dashboard_Widgets')) :
 		const CHART_TRANSIENT = 'wpematico_dashboard_chart';
 		const NEWS_TRANSIENT  = 'wpematico_dashboard_news';
 		const NEWS_BACKOFF    = 'wpematico_dashboard_news_backoff';
-		const NEWS_FEED       = 'https://etruel.com/feed/';
-		const NEWS_SITE       = 'https://etruel.com/';
+		const NEWS_FEED       = 'https://etruel.com/tag/wpematico/feed/';
+		const NEWS_SITE       = 'https://etruel.com/tag/wpematico/';
 		const NEWS_HELP       = 'https://etruel.com/faqs/wpematico/';
 
 		public static function hooks() {

@@ -2,7 +2,7 @@
 Contributors: etruel, khaztiel, gerarjos14, sniuk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8V39NWK3NFQU
 Tags: RSS, XML, feed to post, rss aggregator, content curation
-Stable tag: 2.9.2
+Stable tag: 2.9.3
 Tested up to: 7.2
 Requires at least: 4.8
 Requires PHP: 7.0
@@ -227,6 +227,11 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 == Changelog ==
 
 > See all detailed changelog at [WPeMatico Releases](https://wpematico.com/releases/)
+
+= 2.9.3 – Nov 24, 2026 =
+
+* **Improved:** The campaigns list and the WPeMatico Dashboard tell you when your active campaigns have been waiting for their scheduled run for more than two days, and what in your cron setup to look at.
+* **Improved:** The news on the WPeMatico Dashboard come only from the WPeMatico posts of the etruel.com blog.
 
 = 2.9.2 – Nov 2, 2026 =
 
