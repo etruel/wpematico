@@ -236,6 +236,7 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 * **Improved:** A campaign run stops at the time limit set in Settings from the moment it starts reading the feed.
 * **Improved:** Run Once in the campaigns list shows the new run time on the row of the campaign that ran.
 * **Improved:** Images whose address carries parameters after the file name (`photo.jpg?w=800`) are saved to the Media Library under their own file name.
+* **Note:** WPeMatico Professional users: update Professional to 3.7.4 together with this version.
 
 = 2.9.2 – Nov 2, 2026 =
 
