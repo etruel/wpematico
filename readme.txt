@@ -228,7 +228,7 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 
 > See all detailed changelog at [WPeMatico Releases](https://wpematico.com/releases/)
 
-= 2.9.3 – Nov 24, 2026 =
+= 2.9.3 – Nov 25, 2026 =
 
 > _**Recommended security update for all users.**_
 
