@@ -230,6 +230,9 @@ We welcome tutorials, videos, PDFs, and feature suggestions. Send contributions 
 
 = 2.9.3 – Nov 24, 2026 =
 
+> _**Recommended security update for all users.**_
+
+* **Security:** Further hardening of the campaign editor, which shows every saved field exactly as you wrote it. Thanks to Dmitrii Ignatyev (CleanTalk) for reporting.
 * **Improved:** The campaigns list and the WPeMatico Dashboard tell you when your active campaigns have been waiting for their scheduled run for more than two days, and what in your cron setup to look at.
 * **Improved:** The news on the WPeMatico Dashboard come only from the WPeMatico posts of the etruel.com blog.
 * **Performance:** Each new feed item finds the article its link leads to through the whole chain of redirects, in a few seconds at most, and moves on when a site does not answer. Every address on the way is checked like a feed address.

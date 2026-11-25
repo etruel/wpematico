@@ -435,7 +435,12 @@ public static function template_box( $post ) {
 		 */
 		
 		$campaign_enable_template = $campaign_data['campaign_enable_template'];
-		$campaign_template = $campaign_data['campaign_template'];
+		$campaign_template = stripslashes($campaign_data['campaign_template']);
+		$template_html	   = esc_textarea($campaign_template);
+		if ('' === $template_html && '' !== $campaign_template) {
+			// Bytes that are not valid in the site's charset: replace only those, as the browser does.
+			$template_html = htmlspecialchars($campaign_template, ENT_QUOTES | ENT_SUBSTITUTE, get_option('blog_charset'));
+		}
 		//$cfg = get_option(WPeMatico :: OPTION_KEY);
 		?>
 		<p class="he20"><b><?php _e('Build every post around the text the feed brings, adding content of your own.', 'wpematico' ) ?></b></p>
@@ -444,7 +449,7 @@ public static function template_box( $post ) {
 				<input name="campaign_enable_template" id="campaign_enable_template" class="checkbox" value="1" type="checkbox"<?php checked($campaign_enable_template,true) ?> /> <?php _e('Use custom posts template', 'wpematico' ) ?>
 			</label>
 			<div id="postemplatearea" style="<?php echo (checked($campaign_enable_template,true))?'':'display:none'; ?>">
-				<textarea class="widefat" rows="5" id="campaign_template" name="campaign_template" /><?php echo stripslashes($campaign_template) ?></textarea><br/>
+				<textarea class="widefat" rows="5" id="campaign_template" name="campaign_template"><?php echo $template_html; ?></textarea><br/>
 				<span class="description"><?php _e('{content} has to be in the template, or the post is published without the text from the feed. The template is applied after the options above.', 'wpematico' ); ?></span>
 				<p class="he20" id="tags_note" class="note left"><?php _e('Allowed tags', 'wpematico' ); ?>: </p>
 				<p id="tags_list" style="border-left: 3px solid #EEEEEE; color: #999999; font-size: 11px; padding-left: 6px;margin-top: 0;">
@@ -1333,7 +1338,7 @@ public static function feeds_box( $post ) {
 		
 		?>
 		<p><b><?php echo '<label for="campaign_tags">' . __('Tags:', 'wpematico' ) . '</label>'; ?></b>
-		<textarea style="" class="large-text" id="campaign_tags" name="campaign_tags"><?php echo stripslashes($campaign_tags); ?></textarea><br />
+		<textarea style="" class="large-text" id="campaign_tags" name="campaign_tags"><?php echo esc_textarea(stripslashes($campaign_tags)); ?></textarea><br />
 		<?php echo __('Separate the tags with commas.', 'wpematico' ); ?></p>
 		<?php do_action('wpematico_pos_tags_settings', $post); ?>
 		<?php
